@@ -37,7 +37,7 @@ export const translations: Translations = {
 
     // hint
     "hint.text":
-      "All the magic works on the user's devices. If the device is offline, its files are also offline.",
+    "All the magic works on your devices. If you are offline — all files are offline.",
 
     // misc
     "device.label": "device",
@@ -83,14 +83,14 @@ export const translations: Translations = {
     "header.lang.aria": "Сменить язык",
 
     // hero
-    "hero.line1": "Твоё устройство",
+    "hero.line1": "Твой девайс",
     "hero.line2": "это облако",
     "hero.desc":
       "Приватный чат + мгновенные ссылки на файлы. Вся переписка остаётся только у участников на устройствах.",
 
     // hint
     "hint.text":
-      "Вся магия работает на устройствах пользователя. Если устройство оффлайн — его файлы оффлайн.",
+    "Вся магия работает на твоих устройствах. Если ты оффлайн — все файлы оффлайн.",
 
     // misc
     "device.label": "device",
