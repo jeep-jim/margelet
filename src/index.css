@@ -1,0 +1,38 @@
+@import "tailwindcss";
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* margeleT: lightweight custom scrollbar */
+:root {
+  --m-scroll-track: rgba(255,255,255,0.04);
+  --m-scroll-thumb: rgba(255,255,255,0.16);
+  --m-scroll-thumb-hover: rgba(255,255,255,0.26);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--m-scroll-thumb) var(--m-scroll-track);
+}
+
+/* Chromium / Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--m-scroll-track);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--m-scroll-thumb);
+  border-radius: 999px;
+  border: 2px solid rgba(0,0,0,0.35); /* делает "мягкий" thumb */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--m-scroll-thumb-hover);
+}
