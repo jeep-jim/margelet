@@ -1,239 +1,322 @@
 // src/webrtc/useP2PSession.ts
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { signalPull, signalSend, type SignalEnvelope } from "./signal";
+import { makeEnvelope, signalPull, signalSend, type SignalEnvelope } from "./signal";
 
-type UseP2PSessionArgs = {
-  sessionId: string;
-  meId: string;
-  peerId: string;
-  pollingMs?: number;
+export type P2PStatus =
+  | "idle"
+  | "need-peer"
+  | "connecting"
+  | "connected"
+  | "fallback-kv"
+  | "error";
+
+export type P2PChatMsg = {
+  id: string;
+  ts: number;
+  from: "me" | "other" | "system";
+  text: string;
 };
 
-type P2PState = "idle" | "connecting" | "connected" | "closed" | "error";
-
-const DEFAULT_ICE: RTCConfiguration = {
-  iceServers: [
-    { urls: ["stun:stun.l.google.com:19302", "stun:global.stun.twilio.com:3478"] },
-  ],
-};
-
-function isInitiator(meId: string, peerId: string) {
-  return meId.localeCompare(peerId) < 0;
+function getOrCreatePeerId() {
+  const k = "margelet.peerId";
+  const cur = localStorage.getItem(k);
+  if (cur) return cur;
+  const id = crypto?.randomUUID?.() ?? `${Math.random().toString(16).slice(2)}-${Date.now()}`;
+  localStorage.setItem(k, id);
+  return id;
 }
 
-export function useP2PSession({ sessionId, meId, peerId, pollingMs = 700 }: UseP2PSessionArgs) {
-  const initiator = useMemo(() => isInitiator(meId, peerId), [meId, peerId]);
+const ICE_SERVERS: RTCIceServer[] = [
+  { urls: ["stun:stun.l.google.com:19302", "stun:global.stun.twilio.com:3478"] },
+];
+
+type UseP2PArgs = {
+  sessionId: string;
+  otherPeerId?: string; // peerId собеседника
+  enabled?: boolean;
+  // сколько ждать P2P, прежде чем перейти на KV fallback
+  fallbackAfterMs?: number;
+};
+
+export function useP2PSession({
+  sessionId,
+  otherPeerId,
+  enabled = true,
+  fallbackAfterMs = 9000,
+}: UseP2PArgs) {
+  const myPeerId = useMemo(getOrCreatePeerId, []);
 
   const pcRef = useRef<RTCPeerConnection | null>(null);
   const dcRef = useRef<RTCDataChannel | null>(null);
+  const pollTimer = useRef<number | null>(null);
+  const startedAt = useRef<number>(0);
 
-  const pollTimerRef = useRef<number | null>(null);
-  const stoppedRef = useRef(false);
-  const makingOfferRef = useRef(false);
+  const [status, setStatus] = useState<P2PStatus>(() => {
+    if (!enabled) return "idle";
+    if (!otherPeerId) return "need-peer";
+    return "connecting";
+  });
 
-  const [state, setState] = useState<P2PState>("idle");
   const [lastError, setLastError] = useState<string | null>(null);
-  const [chatLog, setChatLog] = useState<Array<{ from: string; text: string; ts: number }>>([]);
+  const [chatLog, setChatLog] = useState<P2PChatMsg[]>([]);
 
-  const teardown = useCallback(() => {
-    stoppedRef.current = true;
-
-    if (pollTimerRef.current) {
-      window.clearInterval(pollTimerRef.current);
-      pollTimerRef.current = null;
-    }
-
-    try {
-      dcRef.current?.close();
-    } catch {}
-    dcRef.current = null;
-
-    try {
-      pcRef.current?.close();
-    } catch {}
-    pcRef.current = null;
-
-    setState("closed");
+  const pushSystem = useCallback((text: string) => {
+    setChatLog((s) => [...s, { id: crypto.randomUUID?.() ?? String(Date.now()), ts: Date.now(), from: "system", text }]);
   }, []);
 
-  const attachDataChannel = useCallback(
-    (dc: RTCDataChannel) => {
-      dcRef.current = dc;
-
-      dc.onopen = () => setState("connected");
-      dc.onclose = () => setState("closed");
-      dc.onerror = () => {
-        setState("error");
-        setLastError("DataChannel error");
-      };
-
-      dc.onmessage = (ev) => {
-        const raw = typeof ev.data === "string" ? ev.data : "";
-        let parsed: any = null;
-        try {
-          parsed = JSON.parse(raw);
-        } catch {}
-
-        if (parsed?.type === "chat" && typeof parsed?.text === "string") {
-          setChatLog((prev) => [...prev, { from: peerId, text: parsed.text, ts: Date.now() }]);
-          return;
-        }
-
-        if (raw) setChatLog((prev) => [...prev, { from: peerId, text: raw, ts: Date.now() }]);
-      };
+  const safeSendSignal = useCallback(
+    async (env: Omit<SignalEnvelope, "ts" | "id">) => {
+      const full = makeEnvelope(env);
+      const r = await signalSend(full);
+      if (!r.ok) throw new Error(r.error || "signal-send failed");
     },
-    [peerId]
+    []
   );
 
   const ensurePC = useCallback(() => {
     if (pcRef.current) return pcRef.current;
 
-    const pc = new RTCPeerConnection(DEFAULT_ICE);
+    const pc = new RTCPeerConnection({ iceServers: ICE_SERVERS });
     pcRef.current = pc;
 
-    pc.onconnectionstatechange = () => {
-      const s = pc.connectionState;
-      if (s === "connected") setState("connected");
-      else if (s === "connecting") setState("connecting");
-      else if (s === "failed") {
-        setState("error");
-        setLastError("WebRTC connection failed (possible NAT/TURN issue)");
+    pc.onicecandidate = (e) => {
+      if (e.candidate && otherPeerId) {
+        safeSendSignal({
+          sessionId,
+          from: myPeerId,
+          to: otherPeerId,
+          type: "ice",
+          payload: e.candidate.toJSON(),
+        }).catch(() => {});
       }
     };
 
-    pc.onicecandidate = (e) => {
-      if (!e.candidate) return;
-      void signalSend({
-        sessionId,
-        from: meId,
-        to: peerId,
-        type: "ice",
-        payload: e.candidate.toJSON(),
-      }).catch(() => {});
+    pc.onconnectionstatechange = () => {
+      const st = pc.connectionState;
+      if (st === "connected") {
+        setStatus("connected");
+      } else if (st === "failed" || st === "disconnected") {
+        // Не рвём сразу — дадим шанс fallback
+      }
     };
 
-    pc.ondatachannel = (e) => attachDataChannel(e.channel);
+    pc.ondatachannel = (e) => {
+      dcRef.current = e.channel;
+      e.channel.onopen = () => setStatus("connected");
+      e.channel.onmessage = (m) => {
+        try {
+          const data = JSON.parse(m.data);
+          if (data?.t === "chat") {
+            setChatLog((s) => [
+              ...s,
+              { id: data.id, ts: data.ts, from: "other", text: String(data.text ?? "") },
+            ]);
+          }
+        } catch {
+          // ignore
+        }
+      };
+    };
 
     return pc;
-  }, [attachDataChannel, sessionId, meId, peerId]);
+  }, [myPeerId, otherPeerId, safeSendSignal, sessionId]);
 
-  const start = useCallback(async () => {
-    stoppedRef.current = false;
-    setState("connecting");
-    setLastError(null);
-
+  const startOffer = useCallback(async () => {
+    if (!otherPeerId) return;
     const pc = ensurePC();
 
-    // initiator создаёт DC
-    if (initiator && !dcRef.current) {
+    // создаём DataChannel на инициаторе
+    if (!dcRef.current) {
       const dc = pc.createDataChannel("margelet", { ordered: true });
-      attachDataChannel(dc);
-    }
-
-    // polling
-    if (!pollTimerRef.current) {
-      pollTimerRef.current = window.setInterval(async () => {
-        if (stoppedRef.current) return;
-
-        let msgs: SignalEnvelope[] = [];
+      dcRef.current = dc;
+      dc.onopen = () => setStatus("connected");
+      dc.onmessage = (m) => {
         try {
-          msgs = await signalPull(sessionId, meId);
-        } catch {
-          return;
-        }
-
-        for (const msg of msgs) {
-          if (!pcRef.current) continue;
-          if (msg.from !== peerId) continue;
-
-          const pcNow = pcRef.current;
-
-          if (msg.type === "offer") {
-            if (initiator) continue; // simple glare avoidance
-            await pcNow.setRemoteDescription(msg.payload);
-            const answer = await pcNow.createAnswer();
-            await pcNow.setLocalDescription(answer);
-            await signalSend({
-              sessionId,
-              from: meId,
-              to: peerId,
-              type: "answer",
-              payload: pcNow.localDescription,
-            });
+          const data = JSON.parse(m.data);
+          if (data?.t === "chat") {
+            setChatLog((s) => [
+              ...s,
+              { id: data.id, ts: data.ts, from: "other", text: String(data.text ?? "") },
+            ]);
           }
-
-          if (msg.type === "answer") {
-            if (!initiator) continue;
-            await pcNow.setRemoteDescription(msg.payload);
-          }
-
-          if (msg.type === "ice") {
-            try {
-              await pcNow.addIceCandidate(msg.payload);
-            } catch {}
-          }
-
-          if (msg.type === "event") {
-            // Phase 2: call:ring/accept/reject/end
-          }
-        }
-      }, pollingMs);
+        } catch {}
+      };
     }
 
-    // initiator: offer
-    if (initiator) {
-      if (makingOfferRef.current) return;
-      makingOfferRef.current = true;
-      try {
-        const offer = await pc.createOffer();
-        await pc.setLocalDescription(offer);
-        await signalSend({
+    const offer = await pc.createOffer();
+    await pc.setLocalDescription(offer);
+
+    await safeSendSignal({
+      sessionId,
+      from: myPeerId,
+      to: otherPeerId,
+      type: "offer",
+      payload: offer,
+    });
+
+    pushSystem("🛰️ Отправили offer…");
+  }, [ensurePC, myPeerId, otherPeerId, pushSystem, safeSendSignal, sessionId]);
+
+  const handleSignal = useCallback(
+    async (msg: SignalEnvelope) => {
+      if (!otherPeerId) return;
+      if (msg.sessionId !== sessionId) return;
+      if (msg.to !== myPeerId) return;
+
+      const pc = ensurePC();
+
+      if (msg.type === "offer") {
+        await pc.setRemoteDescription(msg.payload);
+        const answer = await pc.createAnswer();
+        await pc.setLocalDescription(answer);
+
+        await safeSendSignal({
           sessionId,
-          from: meId,
-          to: peerId,
-          type: "offer",
-          payload: pc.localDescription,
+          from: myPeerId,
+          to: otherPeerId,
+          type: "answer",
+          payload: answer,
         });
-      } finally {
-        makingOfferRef.current = false;
+
+        pushSystem("🛰️ Получили offer → отправили answer");
       }
+
+      if (msg.type === "answer") {
+        await pc.setRemoteDescription(msg.payload);
+        pushSystem("🛰️ Получили answer");
+      }
+
+      if (msg.type === "ice") {
+        try {
+          await pc.addIceCandidate(msg.payload);
+        } catch {
+          // ignore
+        }
+      }
+
+      // KV fallback chat
+      if (msg.type === "chat") {
+        setChatLog((s) => [
+          ...s,
+          {
+            id: msg.id,
+            ts: msg.ts,
+            from: "other",
+            text: String(msg.payload?.text ?? ""),
+          },
+        ]);
+      }
+    },
+    [ensurePC, myPeerId, otherPeerId, pushSystem, safeSendSignal, sessionId]
+  );
+
+  const poll = useCallback(async () => {
+    try {
+      const res = await signalPull({ sessionId, peerId: myPeerId, limit: 64 });
+      if (!res.ok) return;
+      for (const m of res.messages) {
+        await handleSignal(m);
+      }
+
+      // fallback decision
+      if (status === "connecting" && Date.now() - startedAt.current > fallbackAfterMs) {
+        // если не connected — уходим в kv fallback
+        if (pcRef.current?.connectionState !== "connected") {
+          setStatus("fallback-kv");
+          pushSystem("⚠️ P2P не поднялся. Переключились на KV-чат (работает у всех, TURN добавим позже).");
+        }
+      }
+    } catch (e: any) {
+      setLastError(e?.message ?? "poll error");
     }
-  }, [ensurePC, initiator, attachDataChannel, sessionId, meId, peerId, pollingMs]);
-
-  const sendChat = useCallback(
-    (text: string) => {
-      const dc = dcRef.current;
-      if (!dc || dc.readyState !== "open") return false;
-
-      dc.send(JSON.stringify({ type: "chat", text }));
-      setChatLog((prev) => [...prev, { from: meId, text, ts: Date.now() }]);
-      return true;
-    },
-    [meId]
-  );
-
-  const sendEvent = useCallback(
-    async (event: any) => {
-      await signalSend({
-        sessionId,
-        from: meId,
-        to: peerId,
-        type: "event",
-        payload: event,
-      });
-    },
-    [sessionId, meId, peerId]
-  );
+  }, [fallbackAfterMs, handleSignal, myPeerId, pushSystem, sessionId, status]);
 
   useEffect(() => {
-    if (!sessionId || !meId || !peerId) return;
-    void start().catch((e: any) => {
-      setState("error");
-      setLastError(e?.message ?? "start error");
-    });
-    return () => teardown();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionId, meId, peerId]);
+    if (!enabled) return;
+    if (!sessionId) return;
 
-  return { state, lastError, initiator, chatLog, sendChat, sendEvent, teardown };
+    if (!otherPeerId) {
+      setStatus("need-peer");
+      return;
+    }
+
+    setStatus("connecting");
+    setLastError(null);
+    startedAt.current = Date.now();
+
+    // стартуем offer только если "мы инициатор"
+    // правило: инициатор — тот, у кого peerId лексикографически меньше (чтобы не было гонки)
+    const initiator = myPeerId < otherPeerId;
+
+    // запускаем polling
+    if (pollTimer.current) window.clearInterval(pollTimer.current);
+    pollTimer.current = window.setInterval(() => poll(), 650);
+
+    // лёгкая задержка, чтобы оба успели стартануть polling
+    const t = window.setTimeout(() => {
+      if (initiator) startOffer().catch((e) => setLastError(String(e?.message ?? e)));
+      else pushSystem("🛰️ Ждём offer от собеседника…");
+    }, 350);
+
+    return () => {
+      window.clearTimeout(t);
+      if (pollTimer.current) window.clearInterval(pollTimer.current);
+      pollTimer.current = null;
+
+      dcRef.current?.close();
+      dcRef.current = null;
+
+      pcRef.current?.close();
+      pcRef.current = null;
+    };
+  }, [enabled, myPeerId, otherPeerId, poll, pushSystem, sessionId, startOffer]);
+
+  const sendChat = useCallback(
+    async (text: string) => {
+      if (!text.trim()) return;
+
+      const id = crypto.randomUUID?.() ?? `${Date.now()}-${Math.random()}`;
+      const ts = Date.now();
+
+      // optimistic local
+      setChatLog((s) => [...s, { id, ts, from: "me", text }]);
+
+      // 1) если DataChannel открыт — шлём туда
+      const dc = dcRef.current;
+      if (dc && dc.readyState === "open") {
+        dc.send(JSON.stringify({ t: "chat", id, ts, text }));
+        return;
+      }
+
+      // 2) иначе fallback через KV (тип chat)
+      if (!otherPeerId) return;
+
+      await safeSendSignal({
+        sessionId,
+        from: myPeerId,
+        to: otherPeerId,
+        type: "chat",
+        payload: { text },
+      });
+    },
+    [myPeerId, otherPeerId, safeSendSignal, sessionId]
+  );
+
+  const inviteLink = useMemo(() => {
+    // друг откроет эту ссылку и у него будет sid + to
+    const u = new URL(window.location.href);
+    u.searchParams.set("sid", sessionId);
+    u.searchParams.set("to", myPeerId);
+    return u.toString();
+  }, [myPeerId, sessionId]);
+
+  return {
+    myPeerId,
+    otherPeerId: otherPeerId ?? null,
+    status,
+    lastError,
+    chatLog,
+    sendChat,
+    inviteLink,
+  };
 }

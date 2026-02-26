@@ -1,40 +1,38 @@
 // src/webrtc/signal.ts
-export type SignalType = "offer" | "answer" | "ice" | "event";
+export type SignalType = "offer" | "answer" | "ice" | "event" | "chat";
 
-export type SignalEnvelope<T = any> = {
+export type SignalEnvelope = {
   sessionId: string;
   from: string;
   to: string;
   type: SignalType;
-  payload: T;
-  ts?: number;
-  id?: string;
+  payload: any;
+  ts: number;
+  id: string;
 };
 
-export type PullResponse = {
-  ok: boolean;
-  messages: SignalEnvelope[];
-};
-
-export async function signalSend(msg: SignalEnvelope) {
-  const r = await fetch("/api/signal-send", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(msg),
-  });
-  if (!r.ok) throw new Error(`signal-send failed: ${r.status}`);
-  const data = await r.json().catch(() => ({}));
-  if (data?.ok === false) throw new Error(data?.error ?? "signal-send error");
-  return true;
+function nowId() {
+  return Math.random().toString(16).slice(2) + Date.now().toString(16);
 }
 
-export async function signalPull(sessionId: string, peerId: string, limit = 64) {
-  const r = await fetch("/api/signal-pull", {
+export function makeEnvelope(partial: Omit<SignalEnvelope, "ts" | "id">): SignalEnvelope {
+  return { ...partial, ts: Date.now(), id: nowId() };
+}
+
+async function postJSON<T>(url: string, body: any): Promise<T> {
+  const r = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ sessionId, peerId, limit }),
+    body: JSON.stringify(body),
   });
-  if (!r.ok) throw new Error(`signal-pull failed: ${r.status}`);
-  const data = (await r.json()) as PullResponse;
-  return (data?.messages ?? []) as SignalEnvelope[];
+  const data = (await r.json()) as T;
+  return data;
+}
+
+export async function signalSend(env: SignalEnvelope) {
+  return postJSON<{ ok: boolean; error?: string }>("/api/signal-send", env);
+}
+
+export async function signalPull(args: { sessionId: string; peerId: string; limit?: number }) {
+  return postJSON<{ ok: boolean; messages: SignalEnvelope[]; error?: string }>("/api/signal-pull", args);
 }
