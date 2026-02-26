@@ -21,6 +21,11 @@ function clamp(n: number, a: number, b: number) {
 export default function ChatRoomDesktop(props: ChatRoomProps & { onOpenRoom?: (roomId: string) => void }) {
   const [rightOpen, setRightOpen] = useState(true);
 
+  // P2P (optional props injected by ChatRoom.tsx)
+  const p2pState = (props as any).p2pState as string | undefined;
+  const p2pPeerId = (props as any).p2pPeerId as string | undefined;
+  const p2pLastError = (props as any).p2p?.lastError as string | undefined;
+
   const [leftW, setLeftW] = useState(() => {
     const v = Number(localStorage.getItem(LS_LEFT));
     return Number.isFinite(v) && v > 0 ? v : 320;
@@ -146,6 +151,27 @@ export default function ChatRoomDesktop(props: ChatRoomProps & { onOpenRoom?: (r
         fontWeight: 900,
         cursor: "pointer",
       } as React.CSSProperties,
+
+      status: {
+        position: "absolute",
+        top: 12,
+        left: 12,
+        zIndex: 30,
+        display: "flex",
+        gap: 8,
+        alignItems: "center",
+        padding: "6px 10px",
+        borderRadius: 999,
+        border: `1px solid ${T.line}`,
+        background: "rgba(0,0,0,0.35)",
+        color: T.text,
+        fontSize: 12,
+        fontWeight: 900,
+        maxWidth: 520,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+      } as React.CSSProperties,
     };
   }, [T, leftW, rightW, rightOpen]);
 
@@ -171,6 +197,19 @@ export default function ChatRoomDesktop(props: ChatRoomProps & { onOpenRoom?: (r
 
       {/* CENTER */}
       <main style={{ ...S.panel, ...S.center }}>
+        {(p2pState || p2pPeerId) && (
+          <div style={S.status} title={p2pLastError || ""}>
+            <span>🛰️ P2P:</span>
+            <span style={{ opacity: 0.85 }}>{p2pState ?? "—"}</span>
+            {p2pPeerId ? (
+              <span style={{ opacity: 0.6, fontWeight: 800 }}>· peer: {p2pPeerId}</span>
+            ) : (
+              <span style={{ opacity: 0.6, fontWeight: 800 }}>· peer: (missing)</span>
+            )}
+            {p2pLastError ? <span style={{ opacity: 0.75 }}>· {p2pLastError}</span> : null}
+          </div>
+        )}
+
         <button type="button" style={S.floatBtn} onClick={() => setRightOpen((v) => !v)}>
           {rightOpen ? "Hide panel" : "Show panel"}
         </button>

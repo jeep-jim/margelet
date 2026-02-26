@@ -300,6 +300,8 @@ function AutoGrowTextarea({
   bg,
   border,
   color,
+  inputRef,
+  onFocus,
 }: {
   value: string;
   onChange: (v: string) => void;
@@ -308,8 +310,11 @@ function AutoGrowTextarea({
   bg: string;
   border: string;
   color: string;
+  inputRef?: React.RefObject<HTMLTextAreaElement | null>;
+  onFocus?: () => void;
 }) {
-  const ref = useRef<HTMLTextAreaElement | null>(null);
+  const innerRef = useRef<HTMLTextAreaElement | null>(null);
+  const ref = inputRef ?? innerRef;
 
   useEffect(() => {
     const ta = ref.current;
@@ -326,6 +331,7 @@ function AutoGrowTextarea({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
+      onFocus={() => onFocus?.()}
       style={{
         width: "100%",
         resize: "none",
@@ -357,6 +363,57 @@ function AutoGrowTextarea({
 export default function ChatRoomMobile(props: ChatRoomProps) {
   const openProfile = props.onOpenProfile ?? props.onProfile;
   const openSearch = props.onOpenSearch ?? props.onSearch;
+
+
+  // --- P2P wiring (injected by ChatRoom.tsx) --------------------------------
+  const p2pState = (props as any).p2pState as string | undefined;
+  const p2pChatLog = ((props as any).p2pChatLog ?? (props as any).p2p?.chatLog) as
+    | Array<{ from: string; text: string; ts: number }>
+    | undefined;
+  const p2pSendChat = ((props as any).p2pSendChat ?? (props as any).p2p?.sendChat) as
+    | ((t: string) => boolean)
+    | undefined;
+  const p2pMeId = ((props as any).p2pMeId ?? (props as any).p2pMeId) as string | undefined;
+  const p2pPeerId = ((props as any).p2pPeerId ?? (props as any).peerId ?? (props as any).peerDeviceId) as
+    | string
+    | undefined;
+
+  const p2pEnabled = !!p2pSendChat && !!p2pPeerId;
+
+  // --- Mobile keyboard fix (iOS/Android) -------------------------------------
+  const [keyboardInset, setKeyboardInset] = useState(0);
+  const composerRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
+
+  useEffect(() => {
+    if (props.embedded) return; // desktop embedded: keyboard handled by container
+    const vv = (window as any).visualViewport as VisualViewport | undefined;
+    if (!vv) return;
+
+    const update = () => {
+      // keyboardInset = сколько "съело" viewport по высоте
+      const inset = Math.max(0, Math.round(window.innerHeight - vv.height - (vv.offsetTop || 0)));
+      setKeyboardInset(inset);
+      // когда клавиатура открылась и фокус в инпуте — держим низ
+      if (document.activeElement === inputRef.current) {
+        requestAnimationFrame(() => {
+          
+        });
+      }
+    };
+
+    update();
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    window.addEventListener("orientationchange", update);
+
+    return () => {
+      vv.removeEventListener("resize", update);
+      vv.removeEventListener("scroll", update);
+      window.removeEventListener("orientationchange", update);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.embedded]);
 
   const title = useMemo(() => {
     if (props.roomId === "margelet-public") return "margeleT • общий";
@@ -403,23 +460,56 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
     };
   }, [mode]);
 
-  const [msgs, setMsgs] = useState<Msg[]>(() => {
+    const [msgs, setMsgs] = useState<Msg[]>(() => {
     try {
       const raw = localStorage.getItem(storeKey);
-      if (!raw) {
-        const seed: Msg[] = [
-          { id: nowId(), ts: Date.now() - 1000 * 60 * 20, from: "system", text: `Ты в комнате: ${title}` },
-          { id: nowId(), ts: Date.now() - 1000 * 60 * 18, from: "other", text: "Йо. Тут будет настоящий чат + звонки + поиск по шаренным файлам." },
-          { id: nowId(), ts: Date.now() - 1000 * 60 * 16, from: "me", text: "Погнали. Хочу, чтобы это выглядело как шедевр 😈" },
-        ];
-        return seed;
-      }
+      if (!raw) return [];
       const parsed = JSON.parse(raw) as Msg[];
       return Array.isArray(parsed) ? parsed : [];
     } catch {
       return [];
     }
   });
+
+// Собираем единый список сообщений:
+  // - локальные system/моки (msgs)
+  // - P2P chat log (из useP2PSession)
+  const displayMsgs: Msg[] = useMemo(() => {
+    const out: Msg[] = [];
+
+    // локальные сообщения (system + fallback)
+    out.push(...msgs);
+
+    // P2P: превращаем в Msg, чтобы не переписывать UI
+    if (p2pChatLog && p2pChatLog.length) {
+      const me = p2pMeId ?? meIdFallback();
+      for (let i = 0; i < p2pChatLog.length; i++) {
+        const m = p2pChatLog[i];
+        const from = m.from === me ? "me" : "other";
+        out.push({
+          id: `p2p_${m.ts}_${i}`,
+          ts: m.ts,
+          from,
+          text: m.text,
+        });
+      }
+    }
+
+    // сортируем по времени (моки могут быть с прошлым ts)
+    out.sort((a, b) => a.ts - b.ts);
+    return out;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [msgs, p2pChatLog, p2pMeId]);
+
+  function meIdFallback() {
+    // если ChatRoom.tsx ещё не прокинул — используем стабильный localStorage id
+    try {
+      const v = localStorage.getItem("margelet_peer_id_v1");
+      if (v) return v;
+    } catch {}
+    return "me";
+  }
+
 
   useEffect(() => {
     try {
@@ -482,7 +572,7 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
     // обычное поведение — держим низ только если юзер уже внизу
     if (isNearBottom()) scrollToBottom("auto");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [msgs.length]);
+  }, [displayMsgs.length]);
 
   useEffect(() => {
     const el = listRef.current;
@@ -514,13 +604,13 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
 
   const daysIndex = useMemo(() => {
     const map = new Map<string, { label: string; firstMsgId: string; ts: number }>();
-    for (const m of msgs) {
+    for (const m of displayMsgs) {
       if (m.from === "system") continue;
       const k = dayKey(m.ts);
       if (!map.has(k)) map.set(k, { label: fmtDate(m.ts), firstMsgId: m.id, ts: m.ts });
     }
     return Array.from(map.values()).sort((a, b) => a.ts - b.ts);
-  }, [msgs]);
+  }, [displayMsgs]);
 
   const scrollToMsg = (id: string) => {
     const el = listRef.current;
@@ -536,36 +626,57 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
     if (!v) return;
 
     forceScrollRef.current = true;
+
+    // 1) P2P first (если включён)
+    if (p2pSendChat && p2pPeerId) {
+      const ok = p2pSendChat(v);
+      if (ok) {
+        setText("");
+        // держим низ (особенно на мобилке с клавой)
+        requestAnimationFrame(() => {
+          scrollToBottom("smooth");
+          requestAnimationFrame(() => scrollToBottom("smooth"));
+        });
+        return;
+      }
+
+      // если не отправилось — покажем системку и оставим fallback
+      setMsgs((prev) => [
+        ...prev,
+        {
+          id: nowId(),
+          ts: Date.now(),
+          from: "system",
+          text: p2pState === "connecting" ? "🛰️ P2P ещё подключается…" : "🛰️ P2P не готов (нет канала).",
+        },
+      ]);
+    }
+
+    // 2) Fallback (локальный мок, чтобы UI не был пустой)
     setMsgs((prev) => [...prev, { id: nowId(), ts: Date.now(), from: "me", text: v }]);
     setText("");
 
-    // ✅ максимально надежно: двойной rAF + sentinel scrollIntoView
     requestAnimationFrame(() => {
       scrollToBottom("smooth");
       requestAnimationFrame(() => scrollToBottom("smooth"));
     });
 
-    window.setTimeout(() => {
-      // если юзер уже не внизу — не дёргаем его ответом
-      const shouldAutoScroll = isNearBottom();
-      if (shouldAutoScroll) forceScrollRef.current = true;
+    // Мок-ответ оставляем только если P2P не включён
+    if (!p2pEnabled) {
+      window.setTimeout(() => {
+        const shouldAutoScroll = isNearBottom();
+        if (shouldAutoScroll) forceScrollRef.current = true;
 
-      setMsgs((prev) => [
-        ...prev,
-        { id: nowId(), ts: Date.now(), from: "other", text: "Принял ✅ (пока это мок, потом будет реальный p2p/репликация)" },
-      ]);
-
-      if (shouldAutoScroll) {
-        requestAnimationFrame(() => {
-          scrollToBottom("smooth");
-          requestAnimationFrame(() => scrollToBottom("smooth"));
-        });
-      }
-    }, 420);
+        setMsgs((prev) => [
+          ...prev,
+          { id: nowId(), ts: Date.now(), from: "other", text: "Ок. Сейчас подключим настоящий P2P чат 😈" },
+        ]);
+      }, 600);
+    }
   };
 
   const editMsg = (id: string) => {
-    const cur = msgs.find((m) => m.id === id);
+    const cur = displayMsgs.find((m) => m.id === id);
     if (!cur || cur.from === "system") return;
     const next = window.prompt("Редактировать сообщение:", cur.text);
     if (next === null) return;
@@ -573,7 +684,7 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
   };
 
   const deleteMsg = (id: string) => {
-    const cur = msgs.find((m) => m.id === id);
+    const cur = displayMsgs.find((m) => m.id === id);
     if (!cur || cur.from === "system") return;
     const ok = window.confirm("Удалить сообщение у себя?");
     if (!ok) return;
@@ -581,7 +692,7 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
   };
 
   const reactMsg = (id: string) => {
-    const cur = msgs.find((m) => m.id === id);
+    const cur = displayMsgs.find((m) => m.id === id);
     if (!cur || cur.from === "system") return;
     pushSystem("Реакции: позже 😉");
   };
@@ -608,7 +719,7 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
   };
 
   const deleteSelectedForAll = () => {
-    const onlyMine = selectedIds.filter((id) => msgs.find((m) => m.id === id)?.from === "me");
+    const onlyMine = selectedIds.filter((id) => displayMsgs.find((m) => m.id === id)?.from === "me");
     if (onlyMine.length === 0) return;
     const ok = window.confirm(`Удалить у всех (только твои)? (${onlyMine.length})`);
     if (!ok) return;
@@ -957,9 +1068,19 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
 
   return (
     <div
+      onPointerDown={(e) => {
+        if (props.embedded) return;
+        const t = e.target as HTMLElement | null;
+        const tag = t?.tagName?.toLowerCase();
+        // если тап не по инпуту/кнопке — убираем клаву
+        if (tag !== "textarea" && tag !== "input" && tag !== "button" && tag !== "svg" && tag !== "path") {
+          const ae = document.activeElement as HTMLElement | null;
+          if (ae && (ae.tagName === "TEXTAREA" || ae.tagName === "INPUT")) ae.blur();
+        }
+      }}
       style={{
-        minHeight: props.embedded ? 0 : "100vh",
-        height: props.embedded ? "100%" : undefined,
+        minHeight: props.embedded ? 0 : "100dvh",
+        height: props.embedded ? "100%" : "100dvh",
         background: ui.pageBg,
         color: ui.text,
         fontFamily: "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
@@ -1139,11 +1260,7 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
                 <IconBtn title="Поиск" onClick={() => openSearch?.()}>
                   <Icon name="search" size={20} />
                 </IconBtn>
-
-                <IconBtn title="Выделить сообщения" onClick={() => toggleSelectMode(true)}>
-                  <Icon name="check" size={18} />
-                </IconBtn>
-              </>
+</>
             ) : (
               <button
                 type="button"
@@ -1271,13 +1388,48 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
             }}
           >
             {/* А вот этот блок только для центрирования контента */}
-            <div style={{ maxWidth: 980, width: "100%", margin: "0 auto", padding: "16px 12px 92px" }}>
-              {msgs.map((m, idx) => (
+            <div
+              style={{
+                maxWidth: 980,
+                width: "100%",
+                margin: "0 auto",
+                padding: props.embedded
+                  ? "16px 12px 92px"
+                  : `16px 12px calc(92px + env(safe-area-inset-bottom) + ${keyboardInset}px)`,
+              }}
+            >
+              
+              {displayMsgs.length === 0 && (
+                <div
+                  style={{
+                    padding: "18px 14px",
+                    border: `1px dashed ${ui.line}`,
+                    borderRadius: 16,
+                    background: mode === "dark" ? "rgba(0,0,0,0.18)" : "rgba(255,255,255,0.75)",
+                    color: ui.text,
+                    maxWidth: 520,
+                    margin: "24px auto 0",
+                  }}
+                >
+                  <div style={{ fontWeight: 950, fontSize: 16, marginBottom: 6 }}>Пока нет сообщений</div>
+                  <div style={{ opacity: 0.72, fontWeight: 700, lineHeight: 1.35 }}>
+                    Напиши первое сообщение снизу 👇
+                  </div>
+
+                  {p2pEnabled && !p2pPeerId && (
+                    <div style={{ marginTop: 10, opacity: 0.78, fontWeight: 800, lineHeight: 1.35 }}>
+                      🛰️ Для P2P нужен <span style={{ color: ui.violet }}>peerId</span> собеседника (device id).
+                    </div>
+                  )}
+                </div>
+              )}
+
+{displayMsgs.map((m, idx) => (
                 <Bubble
                   key={m.id}
                   m={m}
-                  prev={idx > 0 ? msgs[idx - 1] : undefined}
-                  next={idx < msgs.length - 1 ? msgs[idx + 1] : undefined}
+                  prev={idx > 0 ? displayMsgs[idx - 1] : undefined}
+                  next={idx < displayMsgs.length - 1 ? displayMsgs[idx + 1] : undefined}
                 />
               ))}
 
@@ -1389,9 +1541,11 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
         style={{
           position: "sticky",
           bottom: 0,
+          transform: props.embedded ? undefined : keyboardInset ? `translateY(-${keyboardInset}px)` : undefined,
           zIndex: 12,
           background: ui.composerBg,
           borderTop: `1px solid ${ui.line}`,
+          paddingBottom: props.embedded ? 0 : "env(safe-area-inset-bottom)",
         }}
       >
         <div style={{ maxWidth: 980, width: "100%", margin: "0 auto", padding: "10px 12px" }}>
@@ -1491,7 +1645,23 @@ export default function ChatRoomMobile(props: ChatRoomProps) {
                 </button>
               )}
 
-              <AutoGrowTextarea value={text} onChange={setText} onSend={send} placeholder="Напиши сообщение…" bg={ui.inputBg} border={ui.inputBorder} color={ui.text} />
+              <AutoGrowTextarea
+                value={text}
+                onChange={setText}
+                onSend={send}
+                placeholder="Напиши сообщение…"
+                bg={ui.inputBg}
+                border={ui.inputBorder}
+                color={ui.text}
+                inputRef={inputRef}
+                onFocus={() => {
+                  // когда открылась клавиатура — держим низ
+                  requestAnimationFrame(() => {
+                    scrollToBottom("auto");
+                    requestAnimationFrame(() => scrollToBottom("auto"));
+                  });
+                }}
+              />
             </div>
           </div>
         </div>
