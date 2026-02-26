@@ -295,7 +295,7 @@ export default function OnboardingDeviceStep({
               marginBottom: 12,
             }}
           >
-            <WalrusIcon size={22} />
+            <WalrusIcon size={39} />
             <span
               style={{
                 fontSize: 13,

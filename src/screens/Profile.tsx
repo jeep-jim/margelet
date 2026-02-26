@@ -9,11 +9,25 @@ type ProfileProps = {
 
 type TabKey = "profile" | "devices" | "files";
 
-const LS_AVATAR = "margelet_avatar_v1"; // локально, пока без сервера
+const brand = {
+  bg: "#272632",
+  text: "#EAE5E3",
 
-function cn(...xs: Array<string | false | null | undefined>) {
-  return xs.filter(Boolean).join(" ");
-}
+  pink: "#FFA3CE",
+  violet: "#BE95FA",
+  green: "#66D492",
+
+  panel: "#2E2D3B",
+  panel2: "#323144",
+  border: "rgba(255,255,255,0.10)",
+  border2: "rgba(255,255,255,0.14)",
+
+  inputBg: "rgba(0,0,0,0.22)",
+  muted: "rgba(234,229,227,0.70)",
+  hint: "rgba(234,229,227,0.55)",
+};
+
+const LS_AVATAR = "margelet_avatar_v1";
 
 function safeParse<T>(raw: string | null, fallback: T): T {
   try {
@@ -33,10 +47,37 @@ function toBase64(file: File): Promise<string> {
   });
 }
 
+function IconPencil({ size = 16, color = brand.text }: { size?: number; color?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M12 20h9"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4 11.5-11.5Z"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ArrowBack() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden style={{ display: "block" }}>
+      <path d="M19 11H7.9" stroke={brand.pink} strokeWidth="3" strokeLinecap="round" />
+      <path d="M8.2 5.3L2.5 11l5.7 5.7V5.3Z" fill={brand.pink} />
+    </svg>
+  );
+}
+
 export default function Profile({ onBack, displayName, setDisplayName, title }: ProfileProps) {
   const [tab, setTab] = useState<TabKey>("profile");
 
-  // имя: либо из пропсов (если роутер управляет), либо локально
   const [nameLocal, setNameLocal] = useState<string>(displayName ?? "");
   useEffect(() => {
     if (typeof displayName === "string") setNameLocal(displayName);
@@ -45,26 +86,43 @@ export default function Profile({ onBack, displayName, setDisplayName, title }: 
   const [avatar, setAvatar] = useState<string>(() => localStorage.getItem(LS_AVATAR) || "");
   const fileRef = useRef<HTMLInputElement | null>(null);
 
-  const [showPhotoMenu, setShowPhotoMenu] = useState(false);
   const [toast, setToast] = useState<string>("");
+  const toastTimer = useRef<number | null>(null);
 
-  const userId = useMemo(() => {
-    // пробуем вытащить что-то похожее на id из localStorage, но не ломаемся
-    // если у тебя id хранится иначе — не страшно, просто показываем как "user"
+  const showToast = (msg: string) => {
+    setToast(msg);
+    if (toastTimer.current) window.clearTimeout(toastTimer.current);
+    toastTimer.current = window.setTimeout(() => setToast(""), 1400);
+  };
+
+  const deviceId = useMemo(() => {
+    const v = localStorage.getItem("margeleT_device_id") || localStorage.getItem("margelet_device_id") || "";
+    if (v) return v;
+    // fallback: попробуем угадать
     const all = Object.keys(localStorage);
     const guessKey =
-      all.find((k) => /user/i.test(k) && /id/i.test(k)) ||
-      all.find((k) => /user/i.test(k)) ||
       all.find((k) => /device/i.test(k) && /id/i.test(k)) ||
+      all.find((k) => /user/i.test(k) && /id/i.test(k)) ||
       "";
     const raw = guessKey ? localStorage.getItem(guessKey) : null;
-    if (!raw) return "";
-    const v = safeParse<any>(raw, raw);
-    if (typeof v === "string") return v;
-    if (typeof v?.id === "string") return v.id;
-    if (typeof v?.userId === "string") return v.userId;
+    const parsed = safeParse<any>(raw, raw);
+    if (typeof parsed === "string") return parsed;
+    if (typeof parsed?.id === "string") return parsed.id;
     return "";
   }, []);
+
+  const handle = useMemo(() => {
+    const h = localStorage.getItem("margelet_handle_v1") || localStorage.getItem("margelet_handle") || "";
+    if (h) return h.startsWith("@") ? h : `@${h}`;
+    // если нет — показываем нейтрально
+    return "@you";
+  }, []);
+
+  const inviteLink = useMemo(() => {
+    const origin = window.location.origin;
+    const uid = deviceId || "device";
+    return `${origin}#invite=${encodeURIComponent(handle)}&d=${encodeURIComponent(uid)}`;
+  }, [deviceId, handle]);
 
   const handleBack = () => {
     if (onBack) onBack();
@@ -72,34 +130,9 @@ export default function Profile({ onBack, displayName, setDisplayName, title }: 
   };
 
   const handleSaveName = () => {
-    if (setDisplayName) setDisplayName(nameLocal);
-    setToast("Имя сохранено ✅");
-    setTimeout(() => setToast(""), 1400);
-  };
-
-  const inviteLink = useMemo(() => {
-    const origin = window.location.origin;
-    const handle = "@jim"; // пока мок — у тебя дальше будет реальный ник
-    const uid = userId || "user";
-    return `${origin}#invite=${encodeURIComponent(handle)}&u=${encodeURIComponent(uid)}`;
-  }, [userId]);
-
-  const copyInvite = async () => {
-    try {
-      await navigator.clipboard.writeText(inviteLink);
-      setToast("Ссылка скопирована ✅");
-    } catch {
-      // fallback
-      const ta = document.createElement("textarea");
-      ta.value = inviteLink;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-      setToast("Ссылка скопирована ✅");
-    } finally {
-      setTimeout(() => setToast(""), 1400);
-    }
+    const v = (nameLocal || "").trim();
+    if (setDisplayName) setDisplayName(v);
+    showToast("Сохранено");
   };
 
   const pickPhoto = () => fileRef.current?.click();
@@ -109,338 +142,450 @@ export default function Profile({ onBack, displayName, setDisplayName, title }: 
     e.target.value = "";
     if (!f) return;
     if (!f.type.startsWith("image/")) {
-      setToast("Нужна картинка 🖼️");
-      setTimeout(() => setToast(""), 1400);
+      showToast("Нужна картинка");
       return;
     }
     const b64 = await toBase64(f);
     setAvatar(b64);
     localStorage.setItem(LS_AVATAR, b64);
-    setShowPhotoMenu(false);
-    setToast("Фото обновлено ✅");
-    setTimeout(() => setToast(""), 1400);
+    showToast("Фото обновлено");
   };
 
   const removePhoto = () => {
     setAvatar("");
     localStorage.removeItem(LS_AVATAR);
-    setShowPhotoMenu(false);
-    setToast("Фото удалено ✅");
-    setTimeout(() => setToast(""), 1400);
+    showToast("Фото удалено");
+  };
+
+  const copyInvite = async () => {
+    try {
+      await navigator.clipboard.writeText(inviteLink);
+      showToast("Скопировано");
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = inviteLink;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      showToast("Скопировано");
+    }
   };
 
   const logout = () => {
-    // Самый надёжный “выйти” для текущего MVP: чистим локалку и отправляем на старт
+    // ВАЖНО: не чистим "всё подряд", иначе ты теряешь вообще весь UX.
+    // Минимальный “выход” для MVP: убираем отображаемое имя + avatar (как будто “сброс профиля на устройстве”).
     try {
-      localStorage.clear();
-      sessionStorage.clear();
+      localStorage.removeItem("margelet_display_name");
+      localStorage.removeItem(LS_AVATAR);
+      // экран/навигацию пусть App решает сам
     } catch {}
-    // на всякий: полный перезагруз на главную
     window.location.href = "/";
   };
 
-  const TabButton = ({
-    k,
-    label,
-  }: {
-    k: TabKey;
-    label: string;
-  }) => {
+  const TabBtn = ({ k, label }: { k: TabKey; label: string }) => {
     const active = tab === k;
     return (
       <button
         type="button"
         onClick={() => setTab(k)}
-        className={cn(
-          "relative px-4 py-2 rounded-full text-sm font-semibold transition",
-          active
-            ? "text-violet-200 bg-white/5"
-            : "text-white/60 hover:text-white/80 hover:bg-white/5"
-        )}
+        style={{
+          padding: "10px 14px",
+          borderRadius: 14,
+          border: `1px solid ${active ? brand.border2 : brand.border}`,
+          background: active ? brand.panel2 : "transparent",
+          color: active ? brand.text : brand.muted,
+          fontWeight: 800,
+          fontSize: 14,
+          cursor: "pointer",
+          transition: "0.15s ease",
+        }}
       >
         {label}
-        <span
-          className={cn(
-            "absolute left-3 right-3 -bottom-1 h-[2px] rounded-full transition",
-            active ? "bg-violet-400" : "bg-transparent"
-          )}
-        />
       </button>
     );
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#141522] text-white">
-      {/* header — как на твоей странице с галочкой: слева “← Назад”, справа RU и “Выйти” */}
-      <div className="mx-auto w-full max-w-[980px] px-4 pt-4">
-        <div className="flex items-center justify-between">
+    <div
+      style={{
+        minHeight: "100vh",
+        background: brand.bg,
+        color: brand.text,
+        fontFamily: "Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif",
+      }}
+    >
+      {/* Fix white scrollbar / page bg */}
+      <style>
+        {`
+          html, body { background: ${brand.bg}; }
+          body { margin: 0; }
+          /* scrollbar */
+          *::-webkit-scrollbar { width: 10px; height: 10px; }
+          *::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); border-radius: 999px; }
+          *::-webkit-scrollbar-track { background: ${brand.bg}; }
+        `}
+      </style>
+
+      <div style={{ maxWidth: 700, margin: "0 auto", padding: "clamp(16px, 4vw, 24px)" }}>
+        {/* header */}
+        <header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingTop: 2,
+          }}
+        >
           <button
             type="button"
             onClick={handleBack}
-            className="group inline-flex items-center gap-2 text-white/80 hover:text-white transition"
+            style={{
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+              padding: 0,
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              color: brand.muted,
+            }}
+            aria-label="Back"
+            title="Back"
           >
-            <span className="text-[22px] leading-none text-pink-300 group-hover:text-pink-200">
-              ←
-            </span>
-            <span className="text-sm font-semibold text-pink-200/90 group-hover:text-pink-200">
-              Назад
-            </span>
+            <ArrowBack />
+            <span style={{ fontWeight: 900, fontSize: 18, lineHeight: 1, color: brand.pink }}>Назад</span>
           </button>
 
-          <div className="flex items-center gap-3">
-            <div className="text-sm font-semibold text-white/70">RU</div>
+          <button
+            type="button"
+            onClick={logout}
+            style={{
+              padding: "10px 14px",
+              borderRadius: 16,
+              border: `1px solid ${brand.border}`,
+              background: brand.panel,
+              color: brand.text,
+              fontWeight: 800,
+              cursor: "pointer",
+            }}
+            title="Выйти"
+          >
+            Выйти
+          </button>
+        </header>
 
-            <button
-              type="button"
-              onClick={logout}
-              className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-white/80 hover:text-white transition text-sm font-semibold"
-              title="Выйти"
-            >
-              Выйти
-            </button>
-          </div>
-        </div>
+        <div style={{ height: 1, background: "rgba(255,255,255,0.08)", marginTop: 12 }} />
 
         {/* title */}
-        <div className="mt-5">
-          <div className="text-3xl font-extrabold tracking-tight">
+        <div style={{ marginTop: 18 }}>
+          <div style={{ fontSize: 44, fontWeight: 900, letterSpacing: -0.6, lineHeight: 1.05 }}>
             {title || "Профиль"}
           </div>
-          <div className="mt-1 text-sm text-white/50">
-            {`@jim${userId ? ` • id ${String(userId).slice(0, 8)}…` : ""}`}
+          <div style={{ marginTop: 6, color: brand.muted, fontSize: 14, fontWeight: 700 }}>
+            {handle}
+            {deviceId ? ` • id ${String(deviceId).slice(0, 8)}…` : ""}
           </div>
         </div>
 
         {/* tabs */}
-        <div className="mt-5 flex items-center gap-2">
-          <TabButton k="profile" label="Профиль" />
-          <TabButton k="devices" label="Устройства" />
-          <TabButton k="files" label="Файлы" />
+        <div style={{ marginTop: 18, display: "flex", gap: 10 }}>
+          <TabBtn k="profile" label="Профиль" />
+          <TabBtn k="devices" label="Устройства" />
+          <TabBtn k="files" label="Файлы" />
         </div>
 
-        {/* content card */}
-        <div className="mt-5 rounded-2xl bg-white/[0.04] border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.35)] overflow-hidden">
-          {/* subtle top gradient */}
-          <div className="h-20 bg-gradient-to-r from-violet-500/10 via-pink-500/10 to-cyan-500/10" />
-
+        {/* content */}
+        <div
+          style={{
+            marginTop: 16,
+            borderRadius: 22,
+            border: `1px solid ${brand.border}`,
+            background: brand.panel,
+            padding: 16,
+          }}
+        >
           {tab === "profile" && (
-            <div className="p-4 md:p-6">
-              <div className="flex items-start gap-4">
+            <>
+              {/* top row: avatar + name */}
+              <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
                 {/* avatar */}
-                <div className="relative">
-                  <div
-                    className={cn(
-                      "group relative h-16 w-16 md:h-20 md:w-20 rounded-2xl overflow-hidden",
-                      "bg-white/5 border border-white/10"
-                    )}
-                    onClick={() => setShowPhotoMenu(true)}
-                    role="button"
-                    tabIndex={0}
-                    title="Изменить фото"
+                <div style={{ position: "relative", width: 72, height: 72 }}>
+                  <button
+                    type="button"
+                    onClick={pickPhoto}
+                    style={{
+                      width: 72,
+                      height: 72,
+                      borderRadius: 18,
+                      border: `1px solid ${brand.border}`,
+                      background: brand.panel2,
+                      padding: 0,
+                      cursor: "pointer",
+                      overflow: "hidden",
+                    }}
+                    title="Фото"
                   >
                     {avatar ? (
-                      <img
-                        src={avatar}
-                        alt="avatar"
-                        className="h-full w-full object-cover"
-                      />
+                      <img src={avatar} alt="avatar" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     ) : (
-                      <div className="h-full w-full grid place-items-center">
-                        <div className="text-xl font-extrabold text-white/70">
-                          {(nameLocal?.trim()?.[0] || "J").toUpperCase()}
-                        </div>
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "grid",
+                          placeItems: "center",
+                          fontWeight: 900,
+                          fontSize: 28,
+                          color: brand.text,
+                        }}
+                      >
+                        {(nameLocal?.trim()?.[0] || "U").toUpperCase()}
                       </div>
                     )}
+                  </button>
 
-                    {/* pencil overlay (desktop hover) */}
-                    <div className="hidden md:flex absolute inset-0 items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition">
-                      <div className="px-2.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-semibold">
-                        ✏️ Фото
-                      </div>
-                    </div>
-
-                    {/* pencil badge (mobile always) */}
-                    <div className="md:hidden absolute -right-2 -bottom-2 h-8 w-8 rounded-full bg-white/10 border border-white/20 grid place-items-center">
-                      ✏️
-                    </div>
+                  <div
+                    style={{
+                      position: "absolute",
+                      right: -6,
+                      bottom: -6,
+                      width: 34,
+                      height: 34,
+                      borderRadius: 12,
+                      border: `1px solid ${brand.border}`,
+                      background: brand.panel,
+                      display: "grid",
+                      placeItems: "center",
+                      pointerEvents: "none",
+                    }}
+                    aria-hidden
+                  >
+                    <IconPencil size={16} color={brand.violet} />
                   </div>
 
-                  <input
-                    ref={fileRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={onPickFile}
-                    className="hidden"
-                  />
+                  <input ref={fileRef} type="file" accept="image/*" onChange={onPickFile} style={{ display: "none" }} />
                 </div>
 
-                {/* name + save */}
-                <div className="flex-1">
-                  <div className="text-xs text-white/60 font-semibold">
-                    Твоё имя (будет видно в чатах)
-                  </div>
+                {/* name */}
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 13, color: brand.hint, fontWeight: 800 }}>Твоё имя (видно в чатах)</div>
 
-                  <div className="mt-2 flex items-center gap-2">
+                  <div style={{ marginTop: 8, display: "flex", gap: 10 }}>
                     <input
                       value={nameLocal}
                       onChange={(e) => setNameLocal(e.target.value)}
                       placeholder="Например: Jim"
-                      className={cn(
-                        "flex-1 h-11 px-4 rounded-xl",
-                        "bg-[#0f1020]/60 border border-white/10",
-                        "outline-none focus:border-violet-400/60"
-                      )}
+                      style={{
+                        flex: 1,
+                        height: 44,
+                        padding: "0 14px",
+                        borderRadius: 16,
+                        border: `1px solid ${brand.border}`,
+                        background: brand.inputBg,
+                        outline: "none",
+                        color: brand.text,
+                        fontSize: 15,
+                        fontWeight: 700,
+                      }}
                     />
 
                     <button
                       type="button"
                       onClick={handleSaveName}
-                      className={cn(
-                        "h-11 px-4 rounded-xl font-semibold",
-                        "bg-violet-500/20 border border-violet-300/20",
-                        "text-violet-200 hover:bg-violet-500/25 transition"
-                      )}
+                      style={{
+                        height: 44,
+                        padding: "0 16px",
+                        borderRadius: 16,
+                        border: `1px solid ${brand.border}`,
+                        background: brand.violet,
+                        color: brand.bg,
+                        fontWeight: 900,
+                        cursor: "pointer",
+                        whiteSpace: "nowrap",
+                      }}
                     >
                       Сохранить
                     </button>
                   </div>
 
-                  {/* chips */}
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
-                      @jim
+                  <div style={{ marginTop: 10, display: "flex", gap: 10, flexWrap: "wrap" }}>
+                    <span
+                      style={{
+                        padding: "8px 10px",
+                        borderRadius: 999,
+                        border: `1px solid ${brand.border}`,
+                        background: "transparent",
+                        color: brand.muted,
+                        fontWeight: 800,
+                        fontSize: 12,
+                      }}
+                    >
+                      {handle}
                     </span>
-                    {userId && (
-                      <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
-                        user • {String(userId).slice(0, 8)}
+
+                    {deviceId && (
+                      <span
+                        style={{
+                          padding: "8px 10px",
+                          borderRadius: 999,
+                          border: `1px solid ${brand.border}`,
+                          background: "transparent",
+                          color: brand.muted,
+                          fontWeight: 800,
+                          fontSize: 12,
+                        }}
+                      >
+                        id • {String(deviceId).slice(0, 8)}
                       </span>
                     )}
-                    <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white/70">
-                      коп. @ (позже)
-                    </span>
+
+                    {avatar ? (
+                      <button
+                        type="button"
+                        onClick={removePhoto}
+                        style={{
+                          padding: "8px 10px",
+                          borderRadius: 999,
+                          border: `1px solid ${brand.border}`,
+                          background: "transparent",
+                          color: "rgba(255,255,255,0.75)",
+                          fontWeight: 800,
+                          fontSize: 12,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Удалить фото
+                      </button>
+                    ) : null}
                   </div>
                 </div>
               </div>
 
               {/* invite */}
-              <div className="mt-5 rounded-2xl bg-white/5 border border-white/10 p-4">
-                <div className="text-xs font-semibold text-white/70">
-                  Инвайт (привязка устройства)
-                </div>
+              <div style={{ marginTop: 16, borderTop: `1px solid ${brand.border}`, paddingTop: 16 }}>
+                <div style={{ fontSize: 13, color: brand.hint, fontWeight: 900 }}>Инвайт для привязки устройства</div>
 
-                <div className="mt-2 flex items-center gap-2">
+                <div style={{ marginTop: 10, display: "flex", gap: 10, alignItems: "center" }}>
                   <div
-                    className={cn(
-                      "flex-1 h-11 px-4 rounded-xl flex items-center",
-                      "bg-[#0f1020]/60 border border-white/10 text-white/70",
-                      "overflow-hidden"
-                    )}
+                    style={{
+                      flex: 1,
+                      height: 44,
+                      padding: "0 14px",
+                      borderRadius: 16,
+                      border: `1px solid ${brand.border}`,
+                      background: brand.inputBg,
+                      display: "flex",
+                      alignItems: "center",
+                      overflow: "hidden",
+                    }}
                     title={inviteLink}
                   >
-                    <span className="truncate">{inviteLink}</span>
+                    <span
+                      style={{
+                        fontSize: 13,
+                        color: brand.muted,
+                        fontWeight: 800,
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        width: "100%",
+                      }}
+                    >
+                      {inviteLink}
+                    </span>
                   </div>
 
                   <button
                     type="button"
                     onClick={copyInvite}
-                    className={cn(
-                      "h-11 px-4 rounded-xl font-semibold",
-                      "bg-pink-500/15 border border-pink-300/20",
-                      "text-pink-200 hover:bg-pink-500/20 transition"
-                    )}
+                    style={{
+                      height: 44,
+                      padding: "0 16px",
+                      borderRadius: 16,
+                      border: `1px solid ${brand.border}`,
+                      background: brand.panel2,
+                      color: brand.text,
+                      fontWeight: 900,
+                      cursor: "pointer",
+                      whiteSpace: "nowrap",
+                    }}
                   >
                     Копировать
                   </button>
                 </div>
 
-                <div className="mt-3 text-xs text-white/45">
-                  Профиль — это центр продукта: identity + devices + shares. Дальше сюда добавим
-                  звонки/микрофон/реальный QR.
+                <div style={{ marginTop: 10, color: brand.hint, fontSize: 13, fontWeight: 700, lineHeight: 1.35 }}>
+                  Это не “аккаунт на сервере”. Это привязка устройств между собой (device-first).
                 </div>
               </div>
-            </div>
+            </>
           )}
 
           {tab === "devices" && (
-            <div className="p-6">
-              <div className="text-white/70 font-semibold">Устройства</div>
-              <div className="mt-2 text-white/45 text-sm">
-                Тут будет список устройств, онлайн/оффлайн, и управление привязками. (Скоро)
+            <>
+              <div style={{ fontSize: 16, fontWeight: 900 }}>Устройства</div>
+              <div style={{ marginTop: 8, color: brand.muted, fontSize: 14, fontWeight: 700, lineHeight: 1.35 }}>
+                Здесь будет список привязанных устройств и статус online/offline.
               </div>
-            </div>
+
+              <div style={{ marginTop: 14, borderTop: `1px solid ${brand.border}`, paddingTop: 14 }}>
+                <div style={{ color: brand.hint, fontWeight: 900, fontSize: 13 }}>Текущее устройство</div>
+                <div
+                  style={{
+                    marginTop: 8,
+                    padding: 14,
+                    borderRadius: 18,
+                    border: `1px solid ${brand.border}`,
+                    background: brand.panel2,
+                    display: "flex",
+                    justifyContent: "space-between",
+                    gap: 10,
+                    alignItems: "center",
+                  }}
+                >
+                  <div style={{ minWidth: 0 }}>
+                    <div style={{ fontWeight: 900, fontSize: 14 }}>Device</div>
+                    <div style={{ marginTop: 4, color: brand.muted, fontWeight: 800, fontSize: 12 }}>
+                      id • {deviceId ? String(deviceId).slice(0, 12) : "—"}
+                    </div>
+                  </div>
+                  <div style={{ fontWeight: 900, fontSize: 12, color: brand.green }}>online</div>
+                </div>
+              </div>
+            </>
           )}
 
           {tab === "files" && (
-            <div className="p-6">
-              <div className="text-white/70 font-semibold">Файлы</div>
-              <div className="mt-2 text-white/45 text-sm">
-                Тут будут твои шеры, загрузки и история. (Скоро)
+            <>
+              <div style={{ fontSize: 16, fontWeight: 900 }}>Файлы</div>
+              <div style={{ marginTop: 8, color: brand.muted, fontSize: 14, fontWeight: 700, lineHeight: 1.35 }}>
+                Здесь будет твой file hub: шеры, быстрый предпросмотр, история.
               </div>
-            </div>
+            </>
           )}
         </div>
 
-        {/* photo menu modal */}
-        {showPhotoMenu && (
-          <div
-            className="fixed inset-0 z-50 bg-black/60 grid place-items-center px-4"
-            onMouseDown={(e) => {
-              if (e.target === e.currentTarget) setShowPhotoMenu(false);
-            }}
-          >
-            <div className="w-full max-w-sm rounded-2xl bg-[#15162a] border border-white/10 overflow-hidden">
-              <div className="p-4">
-                <div className="text-base font-extrabold">Фото профиля</div>
-                <div className="mt-1 text-sm text-white/50">
-                  Добавить или удалить фото (как ты хотел — через аватарку ✏️)
-                </div>
-              </div>
-
-              <div className="px-4 pb-4 flex flex-col gap-2">
-                <button
-                  type="button"
-                  onClick={pickPhoto}
-                  className="h-11 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 font-semibold transition"
-                >
-                  Добавить / заменить
-                </button>
-
-                <button
-                  type="button"
-                  onClick={removePhoto}
-                  disabled={!avatar}
-                  className={cn(
-                    "h-11 rounded-xl border font-semibold transition",
-                    avatar
-                      ? "bg-red-500/10 hover:bg-red-500/15 border-red-300/20 text-red-200"
-                      : "bg-white/5 border-white/10 text-white/30 cursor-not-allowed"
-                  )}
-                >
-                  Удалить
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setShowPhotoMenu(false)}
-                  className="h-11 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 font-semibold transition"
-                >
-                  Закрыть
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* toast */}
         {toast && (
-          <div className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50">
-            <div className="px-4 py-2 rounded-full bg-black/70 border border-white/10 text-white/90 text-sm font-semibold">
+          <div style={{ position: "fixed", left: "50%", bottom: 18, transform: "translateX(-50%)", zIndex: 50 }}>
+            <div
+              style={{
+                padding: "10px 14px",
+                borderRadius: 999,
+                background: "rgba(0,0,0,0.55)",
+                border: `1px solid ${brand.border}`,
+                color: brand.text,
+                fontWeight: 900,
+                fontSize: 13,
+              }}
+            >
               {toast}
             </div>
           </div>
         )}
 
-        <div className="h-10" />
+        <div style={{ height: 16 }} />
       </div>
     </div>
   );

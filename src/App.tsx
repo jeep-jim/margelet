@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import OnboardingDeviceStep from "./screens/OnboardingDeviceStep";
 import Chats from "./screens/Chats";
 import ChatRoom from "./screens/ChatRoom";
@@ -101,20 +101,80 @@ function getOrCreateDeviceId(storageKey = "margeleT_device_id"): string {
   }
 }
 
+/** ---------- AUTH STORAGE LAYER (минимальный, но рабочий) ---------- **/
+const LS_IDENTITY = "margelet_identity_v1";
+const LS_SESSION = "margelet_session_v1";
+
+type IdentityV1 = {
+  deviceId: string;
+  deviceName: string; // имя устройства, которое вводим в onboarding
+  deviceLabel: string; // Windows • Chrome
+};
+
+type SessionV1 = {
+  authed: true;
+  ts: number;
+};
+
+function readJson<T>(key: string): T | null {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? (JSON.parse(raw) as T) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeJson<T>(key: string, v: T) {
+  try {
+    localStorage.setItem(key, JSON.stringify(v));
+  } catch {}
+}
+
+function hasIdentity(): boolean {
+  const id = readJson<IdentityV1>(LS_IDENTITY);
+  return !!(id && id.deviceId && id.deviceName);
+}
+
+function hasSession(): boolean {
+  const s = readJson<SessionV1>(LS_SESSION);
+  return !!(s && s.authed);
+}
+
+function ensureSession() {
+  writeJson<SessionV1>(LS_SESSION, { authed: true, ts: Date.now() });
+}
+
 export default function App() {
   const { t } = useI18n();
 
   const [screen, setScreen] = usePersisted<Screen>("margelet_screen", "landing");
   const [tab, setTab] = usePersisted<TabKey>("margelet_tab", "control");
 
+  // оставляем твои поля ради совместимости UI
   const [displayName, setDisplayName] = usePersisted<string>("margelet_display_name", "");
   const [deviceLabel] = usePersisted<string>("margelet_device_label", makeDefaultDeviceLabel());
-
   const [activeRoomId, setActiveRoomId] = usePersisted<string | null>("margelet_active_room_id", null);
 
   useEffect(() => {
     getOrCreateDeviceId();
   }, []);
+
+  // ✅ Самое важное: если пытаемся открыть "chats/room/profile/search" без сессии — выкидываем на onboarding/landing
+  useEffect(() => {
+    const protectedScreens: Screen[] = ["chats", "room", "profile", "search"];
+    if (protectedScreens.includes(screen)) {
+      if (!hasIdentity()) {
+        setScreen("onboarding");
+        return;
+      }
+      if (!hasSession()) {
+        // identity есть, но сессии нет => "Sign in"
+        setScreen("onboarding");
+        return;
+      }
+    }
+  }, [screen, setScreen]);
 
   const ui = useMemo(
     () => ({
@@ -138,7 +198,7 @@ export default function App() {
     setScreen("room");
   };
 
-  // ✅ ROUTER (simple, no react-router yet)
+  // ✅ ROUTER
   if (screen === "onboarding") {
     return (
       <div
@@ -175,15 +235,7 @@ export default function App() {
               aria-label={t("header.back")}
               title={t("header.back")}
             >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden
-                style={{ display: "block" }}
-              >
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden style={{ display: "block" }}>
                 <path d="M19 11H7.9" stroke={brand.pink} strokeWidth="3" strokeLinecap="round" />
                 <path d="M8.2 5.3L2.5 11l5.7 5.7V5.3Z" fill={brand.pink} />
               </svg>
@@ -196,9 +248,39 @@ export default function App() {
 
           <div style={{ marginTop: 28 }}>
             <OnboardingDeviceStep
-              onContinue={(deviceName) => {
-                setDisplayName(deviceName?.trim() || "User");
-                setScreen("chats");
+              onContinue={(deviceName, mode) => {
+                const deviceId = getOrCreateDeviceId();
+                const name = (deviceName || "").trim() || "My device";
+
+                // ✅ Create: создаём identity (и тем самым “запоминаем устройство”)
+                if (mode === "create") {
+                  const identity: IdentityV1 = {
+                    deviceId,
+                    deviceName: name,
+                    deviceLabel,
+                  };
+                  writeJson<IdentityV1>(LS_IDENTITY, identity);
+
+                  // для UI оставим displayName = deviceName (до появления @handle)
+                  setDisplayName(name);
+                  ensureSession();
+                  setScreen("chats");
+                  return;
+                }
+
+                // ✅ Restore: если identity уже есть — просто поднимаем сессию.
+                // если identity нет — пока пускаем (QR/restore сделаем следующим шагом), но не считаем это “созданием”.
+                if (mode === "restore") {
+                  if (hasIdentity()) {
+                    ensureSession();
+                    setScreen("chats");
+                    return;
+                  }
+
+                  // fallback: пока нет полноценного restore, отправим на create (чтобы не было “ввёл что угодно и вошёл”)
+                  setScreen("onboarding");
+                  return;
+                }
               }}
             />
           </div>
@@ -233,6 +315,7 @@ export default function App() {
   }
 
   if (screen === "profile") {
+    // ⚠️ logout чинится в Profile.tsx (его ты ещё не вставил текстом)
     return <Profile displayName={displayName || "User"} setDisplayName={setDisplayName} onBack={goChats} />;
   }
 
@@ -240,14 +323,17 @@ export default function App() {
     return <Search onBack={goChats} onOpenRoom={(roomId) => openRoom(roomId)} />;
   }
 
-  // ✅ landing moved to Landing.tsx
   return (
     <Landing
       tab={tab}
       setTab={setTab}
       deviceLabel={deviceLabel}
       displayName={displayName || ""}
-      onEnterChats={goChats}
+      onEnterChats={() => {
+        // если уже есть identity+session — пускаем
+        if (hasIdentity() && hasSession()) setScreen("chats");
+        else setScreen("onboarding");
+      }}
       onEnterOnboarding={goOnboarding}
     />
   );

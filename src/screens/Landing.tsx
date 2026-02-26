@@ -307,7 +307,7 @@ export default function Landing({
         <div style={{ height: 1, background: ui.line, marginTop: 12 }} />
 
         {/* HERO */}
-        <div style={{ marginTop: 40 }}>
+        <div style={{ marginTop: 30 }}>
           <h1
             style={{
               margin: 0,
@@ -350,7 +350,7 @@ export default function Landing({
         </div>
 
         {/* TABS + CARD */}
-        <div style={{ marginTop: 40 }}>
+        <div style={{ marginTop: 30 }}>
         {/* TABS */}
         <div
             style={{
@@ -448,7 +448,7 @@ export default function Landing({
             }}
           >
             <span style={{ color: ui.muted }}>{t("device.label")}</span>
-            <span style={{ margin: "0 10px", color: brand.green }}>•</span>
+            <span style={{ margin: "0 5px", color: brand.green }}>•</span>
             <strong style={{ color: brand.green }}>{deviceLabel}</strong>
           </div>
 
@@ -460,12 +460,12 @@ export default function Landing({
               else onEnterOnboarding();
             }}
             style={{
-              marginTop: 16,
+              marginTop: 10,
               width: "100%",
               padding: "14px 0",
               borderRadius: 20,
               background: ui.ctaBg,
-              border: `1px solid ${ui.border}`,
+              border: `0px solid ${ui.border}`,
               color: ui.ctaText,
               fontWeight: 700,
               cursor: "pointer",
