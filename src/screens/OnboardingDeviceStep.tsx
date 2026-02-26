@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { useI18n } from "../i18n";
 
 const brand = {
@@ -25,27 +25,117 @@ const brand = {
 
 function WalrusIcon({ size = 48 }: { size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 120 120"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden
-    >
+    <svg width={size} height={size} viewBox="0 0 120 120" fill="none">
       <ellipse cx="60" cy="70" rx="40" ry="28" fill={brand.violet} />
       <circle cx="60" cy="45" r="28" fill={brand.violet} />
-
       <circle cx="48" cy="42" r="8" stroke={brand.bg} strokeWidth="3" />
       <circle cx="72" cy="42" r="8" stroke={brand.bg} strokeWidth="3" />
       <line x1="56" y1="42" x2="64" y2="42" stroke={brand.bg} strokeWidth="3" />
-
       <circle cx="48" cy="42" r="3" fill={brand.bg} />
       <circle cx="72" cy="42" r="3" fill={brand.bg} />
-
-      {/* no pure white */}
       <rect x="50" y="58" width="6" height="18" rx="3" fill={brand.text} opacity="0.85" />
       <rect x="64" y="58" width="6" height="18" rx="3" fill={brand.text} opacity="0.85" />
+    </svg>
+  );
+}
+
+function DeviceTile({
+  active,
+  children,
+}: {
+  active?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      style={{
+        width: 64,
+        height: 64,
+        borderRadius: 18,
+        border: `2px solid ${active ? brand.violet : brand.border}`,
+        background: "transparent",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        transition: "0.2s ease",
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function LaptopIcon({ active }: { active?: boolean }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <rect
+        x="4"
+        y="5"
+        width="16"
+        height="10"
+        rx="2"
+        stroke={active ? brand.violet : brand.text}
+        strokeWidth="1.6"
+      />
+      <path
+        d="M2 18h20"
+        stroke={active ? brand.violet : brand.text}
+        strokeWidth="1.6"
+      />
+    </svg>
+  );
+}
+
+function PhoneIcon({ active }: { active?: boolean }) {
+  return (
+    <svg width="22" height="26" viewBox="0 0 24 24" fill="none">
+      <rect
+        x="7"
+        y="3"
+        width="10"
+        height="18"
+        rx="3"
+        stroke={active ? brand.violet : brand.text}
+        strokeWidth="1.6"
+      />
+      <circle cx="12" cy="17" r="1" fill={active ? brand.violet : brand.text} />
+    </svg>
+  );
+}
+
+function TabletIcon({ active }: { active?: boolean }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <rect
+        x="5"
+        y="4"
+        width="14"
+        height="16"
+        rx="3"
+        stroke={active ? brand.violet : brand.text}
+        strokeWidth="1.6"
+      />
+    </svg>
+  );
+}
+
+function MonitorIcon({ active }: { active?: boolean }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <rect
+        x="3"
+        y="4"
+        width="18"
+        height="12"
+        rx="2"
+        stroke={active ? brand.violet : brand.text}
+        strokeWidth="1.6"
+      />
+      <path
+        d="M8 20h8M12 16v4"
+        stroke={active ? brand.violet : brand.text}
+        strokeWidth="1.6"
+      />
     </svg>
   );
 }
@@ -59,10 +149,34 @@ export default function OnboardingDeviceStep({
 
   const [deviceName, setDeviceName] = useState("");
   const [mode, setMode] = useState<"create" | "restore">("create");
+  const [deviceType, setDeviceType] = useState<"desktop" | "mobile" | "tablet">("desktop");
+
+  // restore UX
+  const [restoreMethod, setRestoreMethod] = useState<"password" | "qr">("qr");
+  const [password, setPassword] = useState("");
+
+  const [knownHandle, setKnownHandle] = useState<string>("");
+
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    if (/iPad|Tablet/i.test(ua)) setDeviceType("tablet");
+    else if (/Mobi|Android|iPhone/i.test(ua)) setDeviceType("mobile");
+    else setDeviceType("desktop");
+
+    // "уже входил" — значит на устройстве есть локальный handle
+    const h = localStorage.getItem("margelet_handle_v1") || "";
+    setKnownHandle(h);
+
+    // если уже входил — по умолчанию показываем пароль
+    setRestoreMethod(h ? "password" : "qr");
+  }, []);
 
   const hasName = deviceName.trim().length > 0;
   const isCreate = mode === "create";
-  const isCtaDisabled = isCreate && !hasName;
+  const isCtaDisabled =
+    (isCreate && !hasName) ||
+    (!isCreate && restoreMethod === "password" && !knownHandle) || // если нет handle — парольный вход невозможен
+    (!isCreate && restoreMethod === "password" && password.trim().length === 0); // пароль обязателен (пока)
 
   const ui = useMemo(
     () => ({
@@ -85,15 +199,7 @@ export default function OnboardingDeviceStep({
 
   return (
     <div style={{ width: "100%", maxWidth: 560, margin: "0 auto" }}>
-      <style>
-        {`
-          .mgt-device-input::placeholder {
-            color: ${ui.placeholder};
-            opacity: 1;
-          }
-        `}
-      </style>
-
+      {/* ВЕРХ НЕ ТРОГАЕМ ВООБЩЕ */}
       <div style={{ marginBottom: 40 }}>
         <h1
           style={{
@@ -108,14 +214,14 @@ export default function OnboardingDeviceStep({
 
         <div
           style={{
-            marginTop: 14,
+            marginTop: 16,
             display: "flex",
             gap: 14,
             alignItems: "flex-start",
+            maxWidth: 520,
           }}
         >
-          <WalrusIcon size={52} />
-          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.4, color: ui.muted }}>
+          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.35, color: ui.muted }}>
             {t("onb.subtitle.1")}
             <br />
             {t("onb.subtitle.2")}
@@ -123,7 +229,26 @@ export default function OnboardingDeviceStep({
         </div>
       </div>
 
-      <div style={{ display: "flex", gap: 12, marginBottom: 30 }}>
+      {/* Устройства */}
+      {mode === "create" && (
+        <div style={{ display: "flex", gap: 14, marginBottom: 22 }}>
+          <DeviceTile active={deviceType === "desktop"}>
+            <LaptopIcon active={deviceType === "desktop"} />
+          </DeviceTile>
+          <DeviceTile active={deviceType === "mobile"}>
+            <PhoneIcon active={deviceType === "mobile"} />
+          </DeviceTile>
+          <DeviceTile active={deviceType === "tablet"}>
+            <TabletIcon active={deviceType === "tablet"} />
+          </DeviceTile>
+          <DeviceTile>
+            <MonitorIcon />
+          </DeviceTile>
+        </div>
+      )}
+
+      {/* Кнопки Create/Restore */}
+      <div style={{ display: "flex", gap: 12, marginBottom: 18 }}>
         <button
           type="button"
           onClick={() => setMode("create")}
@@ -159,75 +284,202 @@ export default function OnboardingDeviceStep({
         </button>
       </div>
 
-      <div
-        style={{
-          padding: 24,
-          borderRadius: 24,
-          background: ui.cardBg,
-          border: `1px solid ${ui.border}`,
-        }}
-      >
-        {mode === "create" ? (
-          <>
-            <h3 style={{ margin: 0, marginBottom: 12 }}>
-              {t("onb.card.create.title")}
-            </h3>
-
-            <input
-              className="mgt-device-input"
-              value={deviceName}
-              onChange={(e) => setDeviceName(e.target.value)}
-              placeholder={t("onb.card.create.placeholder")}
+      {/* CREATE */}
+      {mode === "create" ? (
+        <>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              marginBottom: 12,
+            }}
+          >
+            <WalrusIcon size={22} />
+            <span
               style={{
-                width: "100%",
-                padding: "14px 16px",
-                borderRadius: 16,
-                border: `1px solid ${ui.border}`,
-                background: ui.inputBg,
-                fontSize: 15,
-                outline: "none",
-                color: brand.text,
-                caretColor: brand.violet,
-              }}
-            />
-
-            <p style={{ marginTop: 14, fontSize: 13, color: ui.hint }}>
-              {t("onb.card.create.hint")}
-            </p>
-          </>
-        ) : (
-          <>
-            <h3 style={{ margin: 0, marginBottom: 12 }}>
-              {t("onb.card.restore.title")}
-            </h3>
-
-            <div
-              style={{
-                height: 180,
-                borderRadius: 20,
-                background: ui.qrBg,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 14,
+                fontSize: 13,
                 color: ui.hint,
+                fontWeight: 400,
               }}
             >
-              {t("onb.card.restore.box")}
-            </div>
-          </>
-        )}
-      </div>
+              {t("onb.card.create.title")}
+            </span>
+          </div>
 
+          <input
+            value={deviceName}
+            onChange={(e) => setDeviceName(e.target.value)}
+            placeholder={t("onb.card.create.placeholder")}
+            style={{
+              width: "100%",
+              padding: "14px 16px",
+              borderRadius: 16,
+              border: `1px solid ${ui.border}`,
+              background: ui.inputBg,
+              fontSize: 15,
+              outline: "none",
+              color: brand.text,
+              caretColor: brand.violet,
+            }}
+          />
+        </>
+      ) : (
+        /* RESTORE (умный) */
+        <>
+          <div
+            style={{
+              padding: 24,
+              borderRadius: 24,
+              background: ui.cardBg,
+              border: `1px solid ${ui.border}`,
+            }}
+          >
+            {/* Заголовок restore */}
+            <h3 style={{ margin: 0, marginBottom: 12 }}>{t("onb.card.restore.title")}</h3>
+
+            {/* Если уже входили на этом устройстве — даём пароль как основной */}
+            {knownHandle ? (
+              <>
+                {/* переключатель способа */}
+                <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
+                  <button
+                    type="button"
+                    onClick={() => setRestoreMethod("password")}
+                    style={{
+                      flex: 1,
+                      padding: "10px 0",
+                      borderRadius: 14,
+                      border: `1px solid ${ui.border}`,
+                      background: restoreMethod === "password" ? brand.violet : ui.tabIdleBg,
+                      color: restoreMethod === "password" ? brand.bg : brand.text,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {t("onb.restore.method.password")}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setRestoreMethod("qr")}
+                    style={{
+                      flex: 1,
+                      padding: "10px 0",
+                      borderRadius: 14,
+                      border: `1px solid ${ui.border}`,
+                      background: restoreMethod === "qr" ? brand.green : ui.tabIdleBg,
+                      color: restoreMethod === "qr" ? brand.bg : brand.text,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {t("onb.restore.method.qr")}
+                  </button>
+                </div>
+
+                {restoreMethod === "password" ? (
+                  <>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                      <WalrusIcon size={22} />
+                      <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>
+                        @{knownHandle}
+                      </span>
+                    </div>
+
+                    <input
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder={t("onb.restore.password.placeholder")}
+                      type="password"
+                      style={{
+                        width: "100%",
+                        padding: "14px 16px",
+                        borderRadius: 16,
+                        border: `1px solid ${ui.border}`,
+                        background: ui.inputBg,
+                        fontSize: 15,
+                        outline: "none",
+                        color: brand.text,
+                        caretColor: brand.violet,
+                      }}
+                    />
+
+                    <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
+                      {t("onb.restore.password.hint")}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      style={{
+                        height: 180,
+                        borderRadius: 20,
+                        background: ui.qrBg,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 14,
+                        color: ui.hint,
+                      }}
+                    >
+                      {t("onb.card.restore.box")}
+                    </div>
+
+                    <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
+                      {t("onb.restore.qr.hint")}
+                    </div>
+                  </>
+                )}
+              </>
+            ) : (
+              /* нет локального профиля — только QR */
+              <>
+                <div
+                  style={{
+                    height: 180,
+                    borderRadius: 20,
+                    background: ui.qrBg,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 14,
+                    color: ui.hint,
+                  }}
+                >
+                  {t("onb.card.restore.box")}
+                </div>
+
+                <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
+                  {t("onb.restore.qr.hint")}
+                </div>
+              </>
+            )}
+          </div>
+        </>
+      )}
+
+      {/* CTA */}
       <button
         type="button"
         disabled={isCtaDisabled}
         onClick={() => {
           if (isCtaDisabled) return;
+
+          // маленький мостик: если restore/password — сохраняем пароль временно для следующего шага
+          if (mode === "restore") {
+            localStorage.setItem("margelet_restore_method_v1", restoreMethod);
+            if (restoreMethod === "password") {
+              localStorage.setItem("margelet_restore_password_v1", password);
+            } else {
+              localStorage.removeItem("margelet_restore_password_v1");
+            }
+          }
+
           onContinue?.(deviceName, mode);
         }}
         style={{
-          marginTop: 30,
+          marginTop: 10,
           width: "100%",
           padding: "16px 0",
           borderRadius: 20,

@@ -5,6 +5,35 @@ type Props = {
   onOpenRoom: (roomId: string) => void;
 };
 
+/**
+ * MVP: user id = @nickname (no phone contacts).
+ * We store your nickname locally so you can DM others by searching @nickname.
+ */
+function getOrCreateMyHandle(storageKey = "margelet_handle_v1") {
+  if (typeof window === "undefined") return "me";
+  const cur = localStorage.getItem(storageKey);
+  if (cur && cur.trim()) return cur.trim();
+
+  // fallback: generate a short handle from random
+  const seed =
+    (globalThis.crypto as any)?.randomUUID?.()?.split("-")[0] ??
+    Math.random().toString(16).slice(2, 8);
+
+  const next = `user_${seed}`;
+  try {
+    localStorage.setItem(storageKey, next);
+  } catch {}
+  return next;
+}
+
+function dmRoomId(a: string, b: string) {
+  const aa = (a || "").replace(/^@/, "").trim();
+  const bb = (b || "").replace(/^@/, "").trim();
+  if (!aa || !bb) return "";
+  const [x, y] = [aa, bb].sort();
+  return `dm:${x}:${y}`;
+}
+
 const brand = {
   bgDark: "#272632",
   textLight: "#EAE5E3",
@@ -36,20 +65,36 @@ export default function Search(props: Props) {
     []
   );
 
+  const myHandle = useMemo(() => getOrCreateMyHandle(), []);
+  const myTag = `@${myHandle}`;
+
   const [q, setQ] = useState("");
 
   const results: Result[] = useMemo(() => {
+    // NOTE: replace with real index later. Keeping your mock list but adding "me" pin.
     const base: Result[] = [
       { id: "r1", type: "room", title: "margeleT • общий", meta: "Public room (later)" },
       { id: "r2", type: "room", title: "Друзья", meta: "Private chats (later)" },
       { id: "f1", type: "file", title: "Design System (pdf)", meta: "shared by @jim • view / download" },
+
+      // show my own tag so user understands identity
+      { id: "me", type: "user", title: myTag, meta: "это ты (локальный аккаунт MVP)" },
+
+      // sample user result
       { id: "u1", type: "user", title: "@jim", meta: "device-first account" },
     ];
 
     const s = q.trim().toLowerCase();
     if (!s) return base;
-    return base.filter((x) => (x.title + " " + x.meta).toLowerCase().includes(s));
-  }, [q]);
+
+    // convenience: if user types without '@', still match
+    const s2 = s.startsWith("@") ? s : `@${s}`;
+
+    return base.filter((x) => {
+      const hay = (x.title + " " + x.meta).toLowerCase();
+      return hay.includes(s) || hay.includes(s2);
+    });
+  }, [q, myTag]);
 
   const pill = (label: string, color: string) => (
     <span
@@ -138,7 +183,7 @@ export default function Search(props: Props) {
             }}
           />
           <div style={{ marginTop: 10, fontSize: 12, opacity: 0.6, lineHeight: 1.35 }}>
-            MVP-логика позже: публичные узлы + индексация событий комнаты + лимиты доступа ссылок.
+            MVP: пишем людям по @nickname. Позже: публичные узлы + индексация + лимиты доступа ссылок.
           </div>
         </div>
 
@@ -157,7 +202,18 @@ export default function Search(props: Props) {
                 onClick={() => {
                   if (r.type === "room" && r.title.includes("общий")) props.onOpenRoom("margelet_public");
                   else if (r.type === "room" && r.title.includes("Друзья")) props.onOpenRoom("friends");
-                  else alert("Откроем это позже ✅");
+                  else if (r.type === "user") {
+                    const target = r.title.replace(/^@/, "").trim();
+                    if (!target) return;
+                    if (target === myHandle) {
+                      // it's me — no-op for now
+                      return;
+                    }
+                    const rid = dmRoomId(myHandle, target);
+                    if (rid) props.onOpenRoom(rid);
+                  } else {
+                    alert("Откроем это позже ✅");
+                  }
                 }}
                 style={{
                   width: "100%",

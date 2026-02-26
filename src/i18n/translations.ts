@@ -64,8 +64,8 @@ export const translations: Translations = {
     "onb.subtitle.1": "margeleT does not use your phone number.",
     "onb.subtitle.2": "Access is created via devices.",
 
-    "onb.mode.create": "Create access",
-    "onb.mode.restore": "I already have an account",
+    "onb.mode.create": "Create",
+    "onb.mode.restore": "Sign in",
 
     "onb.card.create.title": "Name this device",
     "onb.card.create.placeholder": "For example: MacBook Jim",
@@ -75,6 +75,16 @@ export const translations: Translations = {
     "onb.card.restore.box": "QR scanner will be here",
 
     "onb.cta.continue": "Continue",
+
+        // onboarding (restore)
+    "onb.restore.method.password": "Password",
+    "onb.restore.method.qr": "QR",
+
+    "onb.restore.password.placeholder": "Password",
+    "onb.restore.password.hint":
+      "If you lost a device, sign in via QR from another device.",
+    "onb.restore.qr.hint":
+      "Open margeleT on a device where you're already signed in and scan the QR.",
   },
 
   ru: {
@@ -118,8 +128,8 @@ export const translations: Translations = {
     "onb.subtitle.1": "margeleT не использует номер телефона.",
     "onb.subtitle.2": "Доступ создаётся через устройства.",
 
-    "onb.mode.create": "Создать доступ",
-    "onb.mode.restore": "У меня есть аккаунт",
+    "onb.mode.create": "Создать",
+    "onb.mode.restore": "Войти",
 
     "onb.card.create.title": "Назови это устройство",
     "onb.card.create.placeholder": "Например: MacBook Jim",
@@ -129,6 +139,16 @@ export const translations: Translations = {
     "onb.card.restore.box": "Здесь будет сканер QR",
 
     "onb.cta.continue": "Продолжить",
+
+        // onboarding (restore)
+    "onb.restore.method.password": "Пароль",
+    "onb.restore.method.qr": "QR",
+
+    "onb.restore.password.placeholder": "Пароль",
+    "onb.restore.password.hint":
+      "Если потерял устройство — войди через QR с другого устройства.",
+    "onb.restore.qr.hint":
+      "Открой margeleT на устройстве, где ты уже вошёл, и отсканируй QR.",
   },
 
   // --- placeholders: add translations later; t() will fallback to EN ---

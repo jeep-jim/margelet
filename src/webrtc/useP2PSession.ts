@@ -17,7 +17,7 @@ export type P2PChatMsg = {
   text: string;
 };
 
-function getOrCreatePeerId() {
+function getOrCreateDeviceId() {
   const k = "margelet.peerId";
   const cur = localStorage.getItem(k);
   if (cur) return cur;
@@ -26,25 +26,74 @@ function getOrCreatePeerId() {
   return id;
 }
 
+/**
+ * MVP account id (stable, human): @nickname (without @).
+ * Used as "address" in KV signaling so Search(@nick) works.
+ */
+function getOrCreateHandle() {
+  const k = "margelet_handle_v1";
+  const cur = localStorage.getItem(k);
+  if (cur && cur.trim()) return cur.trim();
+
+  // fallback: derived from device id
+  const dev = getOrCreateDeviceId();
+  const short = dev.split("-")[0].slice(0, 6);
+  const next = `user_${short}`;
+  try {
+    localStorage.setItem(k, next);
+  } catch {}
+  return next;
+}
+
 const ICE_SERVERS: RTCIceServer[] = [
   { urls: ["stun:stun.l.google.com:19302", "stun:global.stun.twilio.com:3478"] },
 ];
 
-type UseP2PArgs = {
+export type UseP2PArgs = {
   sessionId: string;
-  otherPeerId?: string; // peerId собеседника
+
+  /**
+   * Who you want to talk to (their @handle without @).
+   * If missing -> we still poll, but we can't send.
+   */
+  otherPeerId?: string;
+
+  /**
+   * Optional override for "my id" (account id). If not provided -> local handle.
+   * This is the key that will be used in signal-pull as peerId.
+   */
+  myPeerId?: string;
+
   enabled?: boolean;
-  // сколько ждать P2P, прежде чем перейти на KV fallback
+
+  // how long to wait before switching to KV chat fallback (no TURN)
   fallbackAfterMs?: number;
+
+  /**
+   * When we receive first inbound msg and otherPeerId is empty,
+   * we can discover it from msg.from and report to UI.
+   */
+  onPeerDiscovered?: (peerId: string) => void;
 };
 
 export function useP2PSession({
   sessionId,
-  otherPeerId,
+  otherPeerId: otherPeerIdProp,
+  myPeerId: myPeerIdProp,
   enabled = true,
   fallbackAfterMs = 9000,
+  onPeerDiscovered,
 }: UseP2PArgs) {
-  const myPeerId = useMemo(getOrCreatePeerId, []);
+  const myPeerId = useMemo(() => {
+    const v = (myPeerIdProp || "").trim();
+    return v ? v : getOrCreateHandle();
+  }, [myPeerIdProp]);
+
+  // local mutable "other" (so we can discover it on inbound)
+  const otherPeerIdRef = useRef<string | undefined>(undefined);
+  useEffect(() => {
+    otherPeerIdRef.current = (otherPeerIdProp || "").trim() || undefined;
+  }, [otherPeerIdProp]);
 
   const pcRef = useRef<RTCPeerConnection | null>(null);
   const dcRef = useRef<RTCDataChannel | null>(null);
@@ -53,7 +102,7 @@ export function useP2PSession({
 
   const [status, setStatus] = useState<P2PStatus>(() => {
     if (!enabled) return "idle";
-    if (!otherPeerId) return "need-peer";
+    if (!otherPeerIdProp) return "need-peer";
     return "connecting";
   });
 
@@ -61,7 +110,15 @@ export function useP2PSession({
   const [chatLog, setChatLog] = useState<P2PChatMsg[]>([]);
 
   const pushSystem = useCallback((text: string) => {
-    setChatLog((s) => [...s, { id: crypto.randomUUID?.() ?? String(Date.now()), ts: Date.now(), from: "system", text }]);
+    setChatLog((s) => [
+      ...s,
+      {
+        id: crypto.randomUUID?.() ?? String(Date.now()),
+        ts: Date.now(),
+        from: "system",
+        text,
+      },
+    ]);
   }, []);
 
   const safeSendSignal = useCallback(
@@ -80,11 +137,12 @@ export function useP2PSession({
     pcRef.current = pc;
 
     pc.onicecandidate = (e) => {
-      if (e.candidate && otherPeerId) {
+      const other = otherPeerIdRef.current;
+      if (e.candidate && other) {
         safeSendSignal({
           sessionId,
           from: myPeerId,
-          to: otherPeerId,
+          to: other,
           type: "ice",
           payload: e.candidate.toJSON(),
         }).catch(() => {});
@@ -93,11 +151,7 @@ export function useP2PSession({
 
     pc.onconnectionstatechange = () => {
       const st = pc.connectionState;
-      if (st === "connected") {
-        setStatus("connected");
-      } else if (st === "failed" || st === "disconnected") {
-        // Не рвём сразу — дадим шанс fallback
-      }
+      if (st === "connected") setStatus("connected");
     };
 
     pc.ondatachannel = (e) => {
@@ -112,20 +166,20 @@ export function useP2PSession({
               { id: data.id, ts: data.ts, from: "other", text: String(data.text ?? "") },
             ]);
           }
-        } catch {
-          // ignore
-        }
+        } catch {}
       };
     };
 
     return pc;
-  }, [myPeerId, otherPeerId, safeSendSignal, sessionId]);
+  }, [myPeerId, safeSendSignal, sessionId]);
 
   const startOffer = useCallback(async () => {
-    if (!otherPeerId) return;
+    const other = otherPeerIdRef.current;
+    if (!other) return;
+
     const pc = ensurePC();
 
-    // создаём DataChannel на инициаторе
+    // initiator creates DataChannel
     if (!dcRef.current) {
       const dc = pc.createDataChannel("margelet", { ordered: true });
       dcRef.current = dc;
@@ -149,20 +203,29 @@ export function useP2PSession({
     await safeSendSignal({
       sessionId,
       from: myPeerId,
-      to: otherPeerId,
+      to: other,
       type: "offer",
       payload: offer,
     });
 
     pushSystem("🛰️ Отправили offer…");
-  }, [ensurePC, myPeerId, otherPeerId, pushSystem, safeSendSignal, sessionId]);
+  }, [ensurePC, myPeerId, pushSystem, safeSendSignal, sessionId]);
 
   const handleSignal = useCallback(
     async (msg: SignalEnvelope) => {
-      if (!otherPeerId) return;
+      const other = otherPeerIdRef.current;
       if (msg.sessionId !== sessionId) return;
       if (msg.to !== myPeerId) return;
 
+      // discover other peer id if not set
+      if (!other && msg.from && msg.from !== myPeerId) {
+        otherPeerIdRef.current = msg.from;
+        setStatus("connecting");
+        onPeerDiscovered?.(msg.from);
+        pushSystem(`👤 Найден собеседник: @${msg.from}`);
+      }
+
+      const realOther = otherPeerIdRef.current;
       const pc = ensurePC();
 
       if (msg.type === "offer") {
@@ -170,15 +233,16 @@ export function useP2PSession({
         const answer = await pc.createAnswer();
         await pc.setLocalDescription(answer);
 
-        await safeSendSignal({
-          sessionId,
-          from: myPeerId,
-          to: otherPeerId,
-          type: "answer",
-          payload: answer,
-        });
-
-        pushSystem("🛰️ Получили offer → отправили answer");
+        if (realOther) {
+          await safeSendSignal({
+            sessionId,
+            from: myPeerId,
+            to: realOther,
+            type: "answer",
+            payload: answer,
+          });
+          pushSystem("🛰️ Получили offer → отправили answer");
+        }
       }
 
       if (msg.type === "answer") {
@@ -189,9 +253,7 @@ export function useP2PSession({
       if (msg.type === "ice") {
         try {
           await pc.addIceCandidate(msg.payload);
-        } catch {
-          // ignore
-        }
+        } catch {}
       }
 
       // KV fallback chat
@@ -207,23 +269,23 @@ export function useP2PSession({
         ]);
       }
     },
-    [ensurePC, myPeerId, otherPeerId, pushSystem, safeSendSignal, sessionId]
+    [ensurePC, myPeerId, onPeerDiscovered, pushSystem, safeSendSignal, sessionId]
   );
 
   const poll = useCallback(async () => {
     try {
       const res = await signalPull({ sessionId, peerId: myPeerId, limit: 64 });
       if (!res.ok) return;
+
       for (const m of res.messages) {
         await handleSignal(m);
       }
 
       // fallback decision
       if (status === "connecting" && Date.now() - startedAt.current > fallbackAfterMs) {
-        // если не connected — уходим в kv fallback
         if (pcRef.current?.connectionState !== "connected") {
           setStatus("fallback-kv");
-          pushSystem("⚠️ P2P не поднялся. Переключились на KV-чат (работает у всех, TURN добавим позже).");
+          pushSystem("⚠️ P2P не поднялся. Переключились на KV-чат (TURN добавим позже).");
         }
       }
     } catch (e: any) {
@@ -235,31 +297,39 @@ export function useP2PSession({
     if (!enabled) return;
     if (!sessionId) return;
 
-    if (!otherPeerId) {
-      setStatus("need-peer");
-      return;
-    }
-
-    setStatus("connecting");
     setLastError(null);
     startedAt.current = Date.now();
 
-    // стартуем offer только если "мы инициатор"
-    // правило: инициатор — тот, у кого peerId лексикографически меньше (чтобы не было гонки)
-    const initiator = myPeerId < otherPeerId;
+    // status init
+    setStatus(otherPeerIdRef.current ? "connecting" : "need-peer");
 
-    // запускаем polling
+    // start polling ALWAYS (even if otherPeerId unknown) — so inbound can discover it
     if (pollTimer.current) window.clearInterval(pollTimer.current);
     pollTimer.current = window.setInterval(() => poll(), 650);
 
-    // лёгкая задержка, чтобы оба успели стартануть polling
-    const t = window.setTimeout(() => {
-      if (initiator) startOffer().catch((e) => setLastError(String(e?.message ?? e)));
-      else pushSystem("🛰️ Ждём offer от собеседника…");
-    }, 350);
+    // start offer only if we already have otherPeerId
+    const other = otherPeerIdRef.current;
+    if (other) {
+      const initiator = myPeerId < other;
+      const t = window.setTimeout(() => {
+        if (initiator) startOffer().catch((e) => setLastError(String(e?.message ?? e)));
+        else pushSystem("🛰️ Ждём offer от собеседника…");
+      }, 350);
+
+      return () => {
+        window.clearTimeout(t);
+        if (pollTimer.current) window.clearInterval(pollTimer.current);
+        pollTimer.current = null;
+
+        dcRef.current?.close();
+        dcRef.current = null;
+
+        pcRef.current?.close();
+        pcRef.current = null;
+      };
+    }
 
     return () => {
-      window.clearTimeout(t);
       if (pollTimer.current) window.clearInterval(pollTimer.current);
       pollTimer.current = null;
 
@@ -269,7 +339,7 @@ export function useP2PSession({
       pcRef.current?.close();
       pcRef.current = null;
     };
-  }, [enabled, myPeerId, otherPeerId, poll, pushSystem, sessionId, startOffer]);
+  }, [enabled, myPeerId, poll, pushSystem, sessionId, startOffer]);
 
   const sendChat = useCallback(
     async (text: string) => {
@@ -281,29 +351,30 @@ export function useP2PSession({
       // optimistic local
       setChatLog((s) => [...s, { id, ts, from: "me", text }]);
 
-      // 1) если DataChannel открыт — шлём туда
       const dc = dcRef.current;
       if (dc && dc.readyState === "open") {
         dc.send(JSON.stringify({ t: "chat", id, ts, text }));
         return;
       }
 
-      // 2) иначе fallback через KV (тип chat)
-      if (!otherPeerId) return;
+      const other = otherPeerIdRef.current;
+      if (!other) {
+        pushSystem("⚠️ Нет адреса собеседника (otherPeerId). Откройте DM через поиск по @nickname.");
+        return;
+      }
 
       await safeSendSignal({
         sessionId,
         from: myPeerId,
-        to: otherPeerId,
+        to: other,
         type: "chat",
         payload: { text },
       });
     },
-    [myPeerId, otherPeerId, safeSendSignal, sessionId]
+    [myPeerId, pushSystem, safeSendSignal, sessionId]
   );
 
   const inviteLink = useMemo(() => {
-    // друг откроет эту ссылку и у него будет sid + to
     const u = new URL(window.location.href);
     u.searchParams.set("sid", sessionId);
     u.searchParams.set("to", myPeerId);
@@ -312,7 +383,7 @@ export function useP2PSession({
 
   return {
     myPeerId,
-    otherPeerId: otherPeerId ?? null,
+    otherPeerId: otherPeerIdRef.current ?? null,
     status,
     lastError,
     chatLog,
