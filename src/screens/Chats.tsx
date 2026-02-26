@@ -287,7 +287,7 @@ function Modal({
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.32)",
-        zIndex: 400,
+        zIndex: 1000,
         display: "grid",
         placeItems: "center",
         padding: 14,
@@ -344,7 +344,8 @@ function Popover({
       onClose();
     };
     window.addEventListener("mousedown", onDown);
-    return () => window.removeEventListener("mousedown", onDown);
+    window.addEventListener("touchstart", onDown as any, { passive: true } as any);
+    return () => { window.removeEventListener("mousedown", onDown); window.removeEventListener("touchstart", onDown as any); };
   }, [open, anchorRef, onClose]);
 
   if (!open || !pos) return null;
@@ -361,7 +362,7 @@ function Popover({
         background: surface,
         backdropFilter: "blur(12px)",
         overflow: "hidden",
-        zIndex: 450,
+        zIndex: 900,
         boxShadow: "0 18px 50px rgba(0,0,0,0.35)",
       }}
     >
@@ -494,7 +495,7 @@ export default function Chats(props: ChatsProps) {
 
   const doCreateChat = () => {
     setActionOpen(false);
-    setCreateOpen(true);
+    setTimeout(() => setCreateOpen(true), 0);
   };
 
   const doShareFile = () => {
