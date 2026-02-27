@@ -28,22 +28,7 @@ const LS_AVATAR = "margelet_avatar_v1";
 const LS_HANDLE = "margelet_handle_v1";
 const LS_DEVICE_ID = "margeleT_device_id";
 const LS_DEVICE_LABEL = "margelet_device_label";
-const LS_ACCOUNT = "margelet_account_v1";
-
-type AccountV1 = {
-  handle: string;
-  displayName: string;
-  pinHash: string;
-  createdAt: number;
-};
-
-async function sha256Hex(input: string): Promise<string> {
-  const enc = new TextEncoder().encode(input);
-  const buffer = await crypto.subtle.digest("SHA-256", enc);
-  return Array.from(new Uint8Array(buffer))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-}
+const LS_PIN = "margelet_pin_v1";
 
 function toBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -52,6 +37,27 @@ function toBase64(file: File): Promise<string> {
     r.onerror = reject;
     r.readAsDataURL(file);
   });
+}
+
+function readLsString(key: string): string {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return "";
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "string" ? parsed : String(parsed ?? "");
+  } catch {
+    try {
+      return localStorage.getItem(key) || "";
+    } catch {
+      return "";
+    }
+  }
+}
+
+function writeLsString(key: string, v: string) {
+  try {
+    localStorage.setItem(key, JSON.stringify(v));
+  } catch {}
 }
 
 function CopyIcon({ size = 18 }: { size?: number }) {
@@ -65,6 +71,20 @@ function CopyIcon({ size = 18 }: { size?: number }) {
         strokeWidth="1.6"
         strokeLinecap="round"
       />
+    </svg>
+  );
+}
+
+function PencilIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path
+        d="M4 20h4l11-11a2.5 2.5 0 0 0-4-4L4 16v4Z"
+        stroke="rgba(234,229,227,0.9)"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path d="M13 6l5 5" stroke="rgba(234,229,227,0.7)" strokeWidth="1.6" strokeLinecap="round" />
     </svg>
   );
 }
@@ -107,19 +127,8 @@ function validateHandle(h: string) {
   return { ok: true as const };
 }
 
-function readAccount(): AccountV1 | null {
-  try {
-    const raw = localStorage.getItem(LS_ACCOUNT);
-    return raw ? (JSON.parse(raw) as AccountV1) : null;
-  } catch {
-    return null;
-  }
-}
-
-function writeAccount(acc: AccountV1) {
-  try {
-    localStorage.setItem(LS_ACCOUNT, JSON.stringify(acc));
-  } catch {}
+function isValidPin(pin: string) {
+  return /^\d{4}$/.test(pin);
 }
 
 export default function Profile({
@@ -137,25 +146,13 @@ export default function Profile({
     if (typeof displayName === "string") setNameLocal(displayName);
   }, [displayName]);
 
-  const [handleLocal, setHandleLocal] = useState<string>(handle ?? "");
+  const [handleLocal, setHandleLocal] = useState<string>(() => {
+    const fromProp = typeof handle === "string" ? handle : "";
+    return fromProp || readLsString(LS_HANDLE) || "";
+  });
   useEffect(() => {
     if (typeof handle === "string") setHandleLocal(handle);
   }, [handle]);
-
-  // подтянем handle из LS если props не передали
-  useEffect(() => {
-    if (handleLocal?.trim()) return;
-    try {
-      const raw = localStorage.getItem(LS_HANDLE);
-      if (!raw) return;
-      const parsed = JSON.parse(raw);
-      const v = typeof parsed === "string" ? parsed : String(parsed ?? "");
-      if (v) setHandleLocal(v);
-    } catch {
-      const v = localStorage.getItem(LS_HANDLE) || "";
-      if (v) setHandleLocal(v);
-    }
-  }, []);
 
   const [avatar, setAvatar] = useState<string>(() => localStorage.getItem(LS_AVATAR) || "");
   const fileRef = useRef<HTMLInputElement | null>(null);
@@ -167,39 +164,38 @@ export default function Profile({
   const deviceLabel = useMemo(() => localStorage.getItem(LS_DEVICE_LABEL) || "", []);
 
   // PIN change
-  const [currentPin, setCurrentPin] = useState("");
-  const [newPin, setNewPin] = useState("");
+  const [pinCurrent, setPinCurrent] = useState("");
+  const [pinNew, setPinNew] = useState("");
   const [pinError, setPinError] = useState("");
+
+  // avatar menu
+  const [avatarMenu, setAvatarMenu] = useState(false);
 
   const showToast = (msg: string) => {
     setToast(msg);
     window.setTimeout(() => setToast(""), 1400);
   };
 
+  useEffect(() => {
+    const onDoc = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      if (target.closest?.("[data-avatar-menu]")) return;
+      setAvatarMenu(false);
+    };
+    document.addEventListener("click", onDoc);
+    return () => document.removeEventListener("click", onDoc);
+  }, []);
+
   const handleBack = () => {
     if (onBack) onBack();
     else window.history.back();
-  };
-
-  const syncAccountDisplayName = (v: string) => {
-    const acc = readAccount();
-    if (!acc) return;
-    acc.displayName = v;
-    writeAccount(acc);
-  };
-
-  const syncAccountHandle = (h: string) => {
-    const acc = readAccount();
-    if (!acc) return;
-    acc.handle = h;
-    writeAccount(acc);
   };
 
   const saveName = () => {
     const v = nameLocal.trim();
     if (!v) return;
     setDisplayName?.(v);
-    syncAccountDisplayName(v);
     showToast("Сохранено ✅");
   };
 
@@ -217,12 +213,7 @@ export default function Profile({
     setHandleError("");
     setHandleLocal(h);
     setHandle?.(h);
-
-    try {
-      localStorage.setItem(LS_HANDLE, JSON.stringify(h));
-    } catch {}
-
-    syncAccountHandle(h);
+    writeLsString(LS_HANDLE, h);
     showToast("Ник сохранён ✅");
   };
 
@@ -240,12 +231,14 @@ export default function Profile({
     setAvatar(b64);
     localStorage.setItem(LS_AVATAR, b64);
     showToast("Фото обновлено ✅");
+    setAvatarMenu(false);
   };
 
   const removePhoto = () => {
     setAvatar("");
     localStorage.removeItem(LS_AVATAR);
     showToast("Фото удалено ✅");
+    setAvatarMenu(false);
   };
 
   const inviteLink = useMemo(() => {
@@ -270,42 +263,31 @@ export default function Profile({
     }
   };
 
-  const changePin = async () => {
+  const changePin = () => {
     setPinError("");
-    const c = currentPin.trim();
-    const n = newPin.trim();
 
-    if (!/^\d{4}$/.test(c)) {
-      setPinError("Текущий PIN: 4 цифры");
+    const saved = readLsString(LS_PIN);
+
+    if (!isValidPin(pinCurrent)) {
+      setPinError("Текущий PIN — 4 цифры");
       return;
     }
-    if (!/^\d{4}$/.test(n)) {
-      setPinError("Новый PIN: 4 цифры");
-      return;
-    }
-
-    const acc = readAccount();
-    if (!acc) {
-      setPinError("Аккаунт не найден");
-      return;
-    }
-
-    const cHash = await sha256Hex(c);
-    if (cHash !== acc.pinHash) {
+    if (saved && pinCurrent !== saved) {
       setPinError("Текущий PIN неверный");
       return;
     }
-
-    const nHash = await sha256Hex(n);
-    acc.pinHash = nHash;
-    writeAccount(acc);
-
-    setCurrentPin("");
-    setNewPin("");
+    if (!isValidPin(pinNew)) {
+      setPinError("Новый PIN — 4 цифры");
+      return;
+    }
+    writeLsString(LS_PIN, pinNew);
+    setPinCurrent("");
+    setPinNew("");
     showToast("PIN обновлён ✅");
   };
 
   const logout = () => {
+    // IMPORTANT: не стираем identity / pin / профиль
     onLogout?.();
     showToast("Выход ✅");
   };
@@ -345,14 +327,7 @@ export default function Profile({
     >
       <div style={{ maxWidth: 700, margin: "0 auto", padding: "clamp(16px, 4vw, 24px)" }}>
         {/* header */}
-        <header
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingTop: 2,
-          }}
-        >
+        <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 2 }}>
           <button
             type="button"
             onClick={handleBack}
@@ -398,29 +373,107 @@ export default function Profile({
 
         {/* top identity row */}
         <div style={{ marginTop: 18, display: "flex", alignItems: "center", gap: 12 }}>
-          <button
-            type="button"
-            onClick={pickPhoto}
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 18,
-              border: `1px solid ${brand.border}`,
-              background: "rgba(255,255,255,0.04)",
-              overflow: "hidden",
-              cursor: "pointer",
-              padding: 0,
-            }}
-            title="Фото"
-          >
-            {avatar ? (
-              <img src={avatar} alt="avatar" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-            ) : (
-              <div style={{ width: "100%", height: "100%", display: "grid", placeItems: "center", fontWeight: 900 }}>
-                {(nameLocal?.trim()?.[0] || "U").toUpperCase()}
+          <div style={{ position: "relative" }} data-avatar-menu>
+            <button
+              type="button"
+              onClick={() => setAvatarMenu((s) => !s)}
+              style={{
+                width: 56,
+                height: 56,
+                borderRadius: 18,
+                border: `1px solid ${brand.border}`,
+                background: "rgba(255,255,255,0.04)",
+                overflow: "hidden",
+                cursor: "pointer",
+                padding: 0,
+                position: "relative",
+              }}
+              title="Аватар"
+            >
+              {avatar ? (
+                <img src={avatar} alt="avatar" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              ) : (
+                <div style={{ width: "100%", height: "100%", display: "grid", placeItems: "center", fontWeight: 900 }}>
+                  {(nameLocal?.trim()?.[0] || "U").toUpperCase()}
+                </div>
+              )}
+
+              {/* карандаш */}
+              <span
+                style={{
+                  position: "absolute",
+                  right: -6,
+                  bottom: -6,
+                  width: 28,
+                  height: 28,
+                  borderRadius: 12,
+                  background: "rgba(0,0,0,0.45)",
+                  border: `1px solid ${brand.border}`,
+                  display: "grid",
+                  placeItems: "center",
+                }}
+                aria-hidden
+              >
+                <PencilIcon size={16} />
+              </span>
+            </button>
+
+            {avatarMenu ? (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 62,
+                  left: 0,
+                  width: 180,
+                  borderRadius: 16,
+                  border: `1px solid ${brand.border}`,
+                  background: "rgba(0,0,0,0.55)",
+                  backdropFilter: "blur(10px)",
+                  padding: 8,
+                  zIndex: 50,
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={pickPhoto}
+                  style={{
+                    width: "100%",
+                    padding: "10px 12px",
+                    borderRadius: 12,
+                    border: "none",
+                    background: "rgba(255,255,255,0.06)",
+                    color: brand.text,
+                    fontWeight: 900,
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                >
+                  Выбрать фото
+                </button>
+
+                {avatar ? (
+                  <button
+                    type="button"
+                    onClick={removePhoto}
+                    style={{
+                      width: "100%",
+                      padding: "10px 12px",
+                      marginTop: 6,
+                      borderRadius: 12,
+                      border: "none",
+                      background: "rgba(255,80,120,0.14)",
+                      color: "rgba(255,160,190,0.95)",
+                      fontWeight: 900,
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                  >
+                    Удалить фото
+                  </button>
+                ) : null}
               </div>
-            )}
-          </button>
+            ) : null}
+          </div>
 
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontSize: 18, fontWeight: 900, lineHeight: 1.1, marginBottom: 4 }}>
@@ -448,9 +501,7 @@ export default function Profile({
             <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
               {/* Display name */}
               <div>
-                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>
-                  Имя (видно в чатах)
-                </div>
+                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>Имя (видно в чатах)</div>
                 <div style={{ display: "flex", gap: 10 }}>
                   <input
                     value={nameLocal}
@@ -466,6 +517,7 @@ export default function Profile({
                       color: brand.text,
                       outline: "none",
                       fontSize: 15,
+                      minWidth: 0,
                     }}
                   />
                   <button
@@ -480,6 +532,8 @@ export default function Profile({
                       border: "none",
                       fontWeight: 900,
                       cursor: "pointer",
+                      minWidth: 120,
+                      flexShrink: 0,
                     }}
                   >
                     Сохранить
@@ -489,9 +543,7 @@ export default function Profile({
 
               {/* Handle */}
               <div>
-                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>
-                  Никнейм (@username)
-                </div>
+                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>Никнейм (@username)</div>
 
                 <div style={{ display: "flex", gap: 10 }}>
                   <input
@@ -515,6 +567,7 @@ export default function Profile({
                       color: brand.text,
                       outline: "none",
                       fontSize: 15,
+                      minWidth: 0,
                     }}
                   />
                   <button
@@ -529,9 +582,11 @@ export default function Profile({
                       border: "none",
                       fontWeight: 900,
                       cursor: "pointer",
+                      minWidth: 72,
+                      flexShrink: 0,
                     }}
                   >
-                    Ок
+                    Ok
                   </button>
                 </div>
 
@@ -546,17 +601,15 @@ export default function Profile({
                 )}
               </div>
 
-              {/* Change PIN */}
+              {/* PIN change */}
               <div>
-                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>
-                  Сменить PIN (4 цифры)
-                </div>
+                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>Сменить PIN (4 цифры)</div>
 
                 <div style={{ display: "flex", gap: 10 }}>
                   <input
-                    value={currentPin}
+                    value={pinCurrent}
                     onChange={(e) => {
-                      setCurrentPin(e.target.value.replace(/\D/g, "").slice(0, 4));
+                      setPinCurrent(e.target.value.replace(/\D/g, "").slice(0, 4));
                       setPinError("");
                     }}
                     placeholder="Текущий"
@@ -572,14 +625,14 @@ export default function Profile({
                       color: brand.text,
                       outline: "none",
                       fontSize: 15,
-                      letterSpacing: 4,
+                      minWidth: 0,
                     }}
                   />
 
                   <input
-                    value={newPin}
+                    value={pinNew}
                     onChange={(e) => {
-                      setNewPin(e.target.value.replace(/\D/g, "").slice(0, 4));
+                      setPinNew(e.target.value.replace(/\D/g, "").slice(0, 4));
                       setPinError("");
                     }}
                     placeholder="Новый"
@@ -595,25 +648,29 @@ export default function Profile({
                       color: brand.text,
                       outline: "none",
                       fontSize: 15,
-                      letterSpacing: 4,
+                      minWidth: 0,
                     }}
                   />
 
                   <button
                     type="button"
                     onClick={changePin}
+                    disabled={!(isValidPin(pinCurrent) && isValidPin(pinNew))}
                     style={{
                       height: 46,
                       padding: "0 16px",
                       borderRadius: 16,
-                      background: brand.green,
-                      color: brand.bg,
+                      background: "rgba(190,149,250,0.18)",
+                      color: brand.violet,
                       border: "none",
                       fontWeight: 900,
-                      cursor: "pointer",
+                      cursor: isValidPin(pinCurrent) && isValidPin(pinNew) ? "pointer" : "not-allowed",
+                      opacity: isValidPin(pinCurrent) && isValidPin(pinNew) ? 1 : 0.55,
+                      minWidth: 72,
+                      flexShrink: 0,
                     }}
                   >
-                    Ок
+                    Ok
                   </button>
                 </div>
 
@@ -630,9 +687,7 @@ export default function Profile({
 
               {/* Invite row */}
               <div>
-                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>
-                  Инвайт для привязки устройства
-                </div>
+                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>Инвайт для привязки устройства</div>
 
                 <button
                   type="button"
@@ -666,26 +721,6 @@ export default function Profile({
                   </span>
                   <CopyIcon />
                 </button>
-
-                <div style={{ marginTop: 10, display: "flex", gap: 10 }}>
-                  <button
-                    type="button"
-                    onClick={removePhoto}
-                    disabled={!avatar}
-                    style={{
-                      height: 38,
-                      padding: "0 14px",
-                      borderRadius: 14,
-                      background: avatar ? "rgba(255,80,120,0.16)" : "rgba(255,255,255,0.05)",
-                      color: avatar ? "rgba(255,160,190,0.95)" : "rgba(234,229,227,0.30)",
-                      border: "none",
-                      fontWeight: 900,
-                      cursor: avatar ? "pointer" : "not-allowed",
-                    }}
-                  >
-                    Удалить фото
-                  </button>
-                </div>
               </div>
             </div>
           )}

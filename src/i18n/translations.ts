@@ -33,7 +33,7 @@ export const translations: Translations = {
     "hero.line1": "Your device",
     "hero.line2": "is your cloud",
     "hero.desc":
-      "Private chat + instant links to files. All correspondence remains only on the participants' devices.",
+      "Private chat + instant file links. All correspondence remains yours.",
 
     // hint
     "hint.text":
@@ -96,7 +96,7 @@ export const translations: Translations = {
     "hero.line1": "Твой девайс",
     "hero.line2": "это облако",
     "hero.desc":
-      "Приватный чат + мгновенные ссылки на файлы. Вся переписка остаётся только у участников на устройствах.",
+      "Приватный чат + мгновенные ссылки на файлы. Вся переписка остаётся у тебя.",
 
     // hint
     "hint.text":

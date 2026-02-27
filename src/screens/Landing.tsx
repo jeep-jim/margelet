@@ -429,7 +429,7 @@ export default function Landing({
         </div>
 
         {/* HINT */}
-        <div style={{ marginTop: 28, display: "flex", gap: 12, alignItems: "center" }}>
+        <div style={{ marginTop: 18, display: "flex", gap: 12, alignItems: "center" }}>
           <div style={{ color: ui.hint, transform: "translateY(1px)" }}>
             <MonoLogo size={24} />
           </div>

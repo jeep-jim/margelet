@@ -101,11 +101,10 @@ function getOrCreateDeviceId(storageKey = "margeleT_device_id"): string {
   }
 }
 
-/** ---------- AUTH STORAGE LAYER (расширенный, рабочий) ---------- **/
+/** ---------- AUTH STORAGE LAYER (минимальный, но рабочий) ---------- **/
 const LS_IDENTITY = "margelet_identity_v1";
 const LS_SESSION = "margelet_session_v1";
-const LS_ACCOUNT = "margelet_account_v1";
-const LS_HANDLE = "margelet_handle_v1";
+const LS_PIN = "margelet_pin_v1";
 
 type IdentityV1 = {
   deviceId: string;
@@ -116,13 +115,6 @@ type IdentityV1 = {
 type SessionV1 = {
   authed: true;
   ts: number;
-};
-
-type AccountV1 = {
-  handle: string; // "@jim"
-  displayName: string; // "Jim"
-  pinHash: string; // sha256(pin)
-  createdAt: number;
 };
 
 function readJson<T>(key: string): T | null {
@@ -140,6 +132,27 @@ function writeJson<T>(key: string, v: T) {
   } catch {}
 }
 
+function readPin(): string {
+  try {
+    const raw = localStorage.getItem(LS_PIN);
+    if (!raw) return "";
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "string" ? parsed : String(parsed ?? "");
+  } catch {
+    try {
+      return localStorage.getItem(LS_PIN) || "";
+    } catch {
+      return "";
+    }
+  }
+}
+
+function writePin(pin: string) {
+  try {
+    localStorage.setItem(LS_PIN, JSON.stringify(pin));
+  } catch {}
+}
+
 function hasIdentity(): boolean {
   const id = readJson<IdentityV1>(LS_IDENTITY);
   return !!(id && id.deviceId && id.deviceName);
@@ -154,33 +167,8 @@ function ensureSession() {
   writeJson<SessionV1>(LS_SESSION, { authed: true, ts: Date.now() });
 }
 
-function readHandleCompat(): string {
-  // handle может лежать JSON-строкой (через setItem(JSON.stringify))
-  try {
-    const raw = localStorage.getItem(LS_HANDLE);
-    if (!raw) return "@you";
-    const parsed = JSON.parse(raw);
-    const v = typeof parsed === "string" ? parsed : String(parsed ?? "");
-    const s = (v || "").trim();
-    if (!s) return "@you";
-    return s.startsWith("@") ? s : `@${s}`;
-  } catch {
-    try {
-      const s = (localStorage.getItem(LS_HANDLE) || "").trim();
-      if (!s) return "@you";
-      return s.startsWith("@") ? s : `@${s}`;
-    } catch {
-      return "@you";
-    }
-  }
-}
-
-async function sha256Hex(input: string): Promise<string> {
-  const enc = new TextEncoder().encode(input);
-  const buffer = await crypto.subtle.digest("SHA-256", enc);
-  return Array.from(new Uint8Array(buffer))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
+function isValidPin(pin: string) {
+  return /^\d{4}$/.test(pin);
 }
 
 export default function App() {
@@ -194,20 +182,27 @@ export default function App() {
   const [deviceLabel] = usePersisted<string>("margelet_device_label", makeDefaultDeviceLabel());
   const [activeRoomId, setActiveRoomId] = usePersisted<string | null>("margelet_active_room_id", null);
 
+  // onboarding mode: если профиль уже есть — встречаем "Войти"
+  const [onbMode, setOnbMode] = useState<"create" | "restore">(() => {
+    return hasIdentity() ? "restore" : "create";
+  });
+
   useEffect(() => {
     getOrCreateDeviceId();
   }, []);
 
-  // ✅ Guard: нельзя в защищённые экраны без identity+session
+  // ✅ если пытаемся открыть "chats/room/profile/search" без сессии — выкидываем на onboarding
   useEffect(() => {
     const protectedScreens: Screen[] = ["chats", "room", "profile", "search"];
     if (protectedScreens.includes(screen)) {
       if (!hasIdentity()) {
         setScreen("onboarding");
+        setOnbMode("create");
         return;
       }
       if (!hasSession()) {
         setScreen("onboarding");
+        setOnbMode("restore");
         return;
       }
     }
@@ -225,7 +220,10 @@ export default function App() {
   );
 
   const goLanding = () => setScreen("landing");
-  const goOnboarding = () => setScreen("onboarding");
+  const goOnboarding = () => {
+    setScreen("onboarding");
+    setOnbMode(hasIdentity() ? "restore" : "create");
+  };
   const goChats = () => setScreen("chats");
   const goProfile = () => setScreen("profile");
   const goSearch = () => setScreen("search");
@@ -235,11 +233,10 @@ export default function App() {
     setScreen("room");
   };
 
-  const account = readJson<AccountV1>(LS_ACCOUNT);
-  const accountExists = !!(account && account.pinHash);
-
   // ✅ ROUTER
   if (screen === "onboarding") {
+    const canShowCreateInHeader = hasIdentity(); // если уже есть профиль — на входе показываем "Создать" справа
+
     return (
       <div
         style={{
@@ -282,86 +279,78 @@ export default function App() {
 
               <span style={{ fontWeight: 800, fontSize: 18, lineHeight: 1 }}>{t("header.back")}</span>
             </button>
+
+            {canShowCreateInHeader ? (
+              <button
+                type="button"
+                onClick={() => setOnbMode("create")}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  color: brand.violet,
+                  fontWeight: 900,
+                  fontSize: 18,
+                  textDecoration: "underline",
+                  textUnderlineOffset: 4,
+                }}
+                title="Создать"
+              >
+                Создать
+              </button>
+            ) : (
+              <div style={{ width: 1 }} />
+            )}
           </header>
 
           <div style={{ height: 1, background: ui.line, marginTop: 12 }} />
 
           <div style={{ marginTop: 28 }}>
             <OnboardingDeviceStep
-              accountExists={accountExists}
-              accountDisplayName={account?.displayName || displayName || ""}
-              accountHandle={account?.handle || readHandleCompat()}
-              onContinue={async (deviceName, mode, pin4) => {
+              mode={onbMode}
+              onModeChange={(m) => setOnbMode(m)}
+              onContinue={({ deviceName, mode, pin }) => {
                 const deviceId = getOrCreateDeviceId();
                 const name = (deviceName || "").trim() || "My device";
 
-                const pin = (pin4 || "").trim();
-                if (!/^\d{4}$/.test(pin)) return;
-
-                const pinHash = await sha256Hex(pin);
-
-                // ✅ Create
+                // CREATE
                 if (mode === "create") {
-                  // identity
+                  // PIN обязателен
+                  if (!isValidPin(pin)) return;
+
                   const identity: IdentityV1 = {
                     deviceId,
                     deviceName: name,
                     deviceLabel,
                   };
                   writeJson<IdentityV1>(LS_IDENTITY, identity);
+                  writePin(pin);
 
-                  // account
-                  const newAccount: AccountV1 = {
-                    handle: readHandleCompat(), // пока @you, потом поменяешь в профиле
-                    displayName: name, // на MVP displayName = name (как у тебя сейчас)
-                    pinHash,
-                    createdAt: Date.now(),
-                  };
-                  writeJson<AccountV1>(LS_ACCOUNT, newAccount);
-
-                  // UI compat
+                  // для UI оставим displayName = deviceName (до появления @handle)
                   setDisplayName(name);
-
-                  // session
                   ensureSession();
                   setScreen("chats");
                   return;
                 }
 
-                // ✅ Restore
+                // RESTORE
                 if (mode === "restore") {
-                  const acc = readJson<AccountV1>(LS_ACCOUNT);
-                  if (!acc) return;
-
-                  if (acc.pinHash !== pinHash) {
-                    // без “фейков”: просто не пускаем
-                    // (alert пока ок, потом заменим на toast)
-                    alert("Неверный PIN");
+                  if (!hasIdentity()) {
+                    setOnbMode("create");
                     return;
                   }
 
-                  // если на устройстве ещё нет identity (новый девайс) — создаём
-                  if (!hasIdentity()) {
-                    const identity: IdentityV1 = {
-                      deviceId,
-                      deviceName: name,
-                      deviceLabel,
-                    };
-                    writeJson<IdentityV1>(LS_IDENTITY, identity);
+                  const savedPin = readPin();
+                  if (!isValidPin(pin) || pin !== savedPin) {
+                    // ошибку покажет сам onboarding, тут просто не пускаем
+                    return;
                   }
-
-                  // синкаем displayName в UI
-                  setDisplayName(acc.displayName || name);
 
                   ensureSession();
                   setScreen("chats");
                   return;
                 }
-              }}
-              onCreateNew={() => {
-                // “Создать” из встречающего экрана
-                // просто скажем onboarding перейти в create-mode (внутри компонента)
-                // компонент сам переключится
               }}
             />
           </div>
@@ -403,6 +392,7 @@ export default function App() {
         onBack={goChats}
         onLogout={() => {
           try {
+            // logout = сбрасываем только сессию/навигацию, НЕ трогаем identity/pin/профиль
             localStorage.removeItem(LS_SESSION);
             localStorage.setItem("margelet_active_room_id", JSON.stringify(null));
             localStorage.setItem("margelet_screen", JSON.stringify("landing"));
@@ -425,8 +415,9 @@ export default function App() {
       deviceLabel={deviceLabel}
       displayName={displayName || ""}
       onEnterChats={() => {
+        // если уже есть identity+session — пускаем
         if (hasIdentity() && hasSession()) setScreen("chats");
-        else setScreen("onboarding");
+        else goOnboarding();
       }}
       onEnterOnboarding={goOnboarding}
     />
