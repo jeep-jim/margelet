@@ -59,6 +59,37 @@ function clamp(n: number, a: number, b: number) {
   return Math.max(a, Math.min(b, n));
 }
 
+
+function normalizeAtHandle(raw: string): string {
+  const s = (raw || "").trim();
+  if (!s) return "";
+  const h = s.startsWith("@") ? s : `@${s}`;
+  return h.toLowerCase();
+}
+
+async function apiPostJSON<T>(url: string, body: any): Promise<T> {
+  const r = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  return (await r.json()) as T;
+}
+
+async function apiGetJSON<T>(url: string): Promise<T> {
+  const r = await fetch(url, { method: "GET" });
+  return (await r.json()) as T;
+}
+
+function getMyPeerId(): string {
+  try {
+    const v = localStorage.getItem("margelet_handle_v1") || "";
+    return v.trim() || "me";
+  } catch {
+    return "me";
+  }
+}
+
 function Icon({
   name,
   size = 20,
@@ -462,15 +493,69 @@ export default function Chats(props: ChatsProps) {
   const meName = (props.displayName?.trim() || "User").slice(0, 24);
   const deviceLabel = (props.deviceLabel?.trim() || "").slice(0, 24);
 
+  // ---------- Username directory (claim my handle once) ----------
+  useEffect(() => {
+    const myPeerId = getMyPeerId();
+    const handle = normalizeAtHandle(myPeerId);
+    // claim is idempotent; if handle taken by someone else, we'll see it later on profile screen
+    apiPostJSON<{ ok: boolean; error?: string }>("/api/handle-claim", { handle, peerId: myPeerId }).catch(() => {});
+  }, []);
+
   // ---------- Create modal ----------
   const [createOpen, setCreateOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newType, setNewType] = useState<RoomType>("private");
+  const [createBusy, setCreateBusy] = useState(false);
+  const [createErr, setCreateErr] = useState<string>("");
 
   const canCreate = newTitle.trim().length >= 2;
 
-  const createRoom = () => {
+  const createRoom = async () => {
     if (!canCreate) return;
+    
+    // If user typed @handle in a private room — treat as DM
+    const raw = newTitle.trim();
+    const myPeerId = getMyPeerId();
+    const at = normalizeAtHandle(raw);
+
+    if (newType === "private" && at.startsWith("@")) {
+      setCreateErr("");
+      setCreateBusy(true);
+      try {
+        const res = await apiGetJSON<{ ok: boolean; peerId?: string; error?: string }>(
+          `/api/handle-resolve?handle=${encodeURIComponent(at)}`
+        );
+        if (!res.ok || !res.peerId) {
+          setCreateErr(res.error || "Пользователь не найден");
+          return;
+        }
+
+        const otherPeerId = String(res.peerId).trim();
+        if (!otherPeerId) {
+          setCreateErr("Пользователь не найден");
+          return;
+        }
+
+        if (otherPeerId === myPeerId) {
+          setCreateErr("Нельзя написать самому себе 🙂");
+          return;
+        }
+
+        const roomId = `dm:${[myPeerId, otherPeerId].sort().join(":")}`;
+        setNewTitle("");
+        setNewType("private");
+        setCreateOpen(false);
+        props.onOpenRoom?.(roomId);
+        return;
+      } catch {
+        setCreateErr("Ошибка сети");
+        return;
+      } finally {
+        setCreateBusy(false);
+      }
+    }
+
+    // Default: create room (old behavior)
     const r: Room = {
       id: nowId("room"),
       title: newTitle.trim(),
@@ -857,7 +942,7 @@ export default function Chats(props: ChatsProps) {
                   >
                     <Icon name="hash" size={18} />
                   </div>
-                  Создать чат / комнату
+                  {createBusy ? "…" : newType === "private" ? "Открыть диалог" : "Создать"} чат / комнату
                 </button>
 
                 <div style={{ height: 10 }} />
@@ -1422,6 +1507,16 @@ export default function Chats(props: ChatsProps) {
                     transition: "width 0.25s ease",
                   }}
                 />
+            {newType === "private" ? (
+              <div style={{ marginTop: 8, color: brand.hint, fontSize: 12, lineHeight: 1.35 }}>
+                Для личного диалога введи <b style={{ color: brand.text }}>@username</b> (например: <b style={{ color: brand.violet }}>@alex</b>)
+              </div>
+            ) : null}
+            {createErr ? (
+              <div style={{ marginTop: 8, color: "rgba(255,120,160,0.95)", fontSize: 12, fontWeight: 900 }}>
+                {createErr}
+              </div>
+            ) : null}
               </div>
             </div>
           </div>
@@ -1636,7 +1731,7 @@ export default function Chats(props: ChatsProps) {
       {/* Create room modal */}
       <Modal open={createOpen} onClose={() => setCreateOpen(false)} line={brand.line} surface={"rgba(0,0,0,0.55)"} text={brand.text}>
         <div style={{ padding: 14, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-          <div style={{ fontWeight: 950, fontSize: 16 }}>Создать комнату</div>
+          <div style={{ fontWeight: 950, fontSize: 16 }}>Создать чат</div>
           <button
             type="button"
             onClick={() => setCreateOpen(false)}
@@ -1656,7 +1751,7 @@ export default function Chats(props: ChatsProps) {
             <input
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
-              placeholder="Например: дизайн / команда / семья…"
+              placeholder={newType === "private" ? "@username" : "Например: дизайн / команда / семья…"}
               style={{
                 width: "100%",
                 height: 44,
@@ -1715,22 +1810,22 @@ export default function Chats(props: ChatsProps) {
           <button
             type="button"
             onClick={createRoom}
-            disabled={!canCreate}
+            disabled={!canCreate || createBusy}
             style={{
               height: 44,
               borderRadius: 16,
               border: `1px solid ${brand.border}`,
-              background: canCreate ? "rgba(190,149,250,0.22)" : "rgba(255,255,255,0.06)",
-              color: canCreate ? brand.violet : brand.hint,
+              background: canCreate && !createBusy ? "rgba(190,149,250,0.22)" : "rgba(255,255,255,0.06)",
+              color: canCreate && !createBusy ? brand.violet : brand.hint,
               fontWeight: 950,
-              cursor: canCreate ? "pointer" : "not-allowed",
+              cursor: canCreate && !createBusy ? "pointer" : "not-allowed",
             }}
           >
             Создать
           </button>
 
           <div style={{ color: brand.hint, fontSize: 12, lineHeight: 1.35 }}>
-            Сейчас это мок. Позже: настройки комнаты, участники, права, репликация и P2P-шаринг файлов.
+            Private: вводишь @username → откроется личный диалог. Public: создаётся комната (как раньше).
           </div>
         </div>
       </Modal>
