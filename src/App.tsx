@@ -316,7 +316,23 @@ export default function App() {
 
   if (screen === "profile") {
     // ⚠️ logout чинится в Profile.tsx (его ты ещё не вставил текстом)
-    return <Profile displayName={displayName || "User"} setDisplayName={setDisplayName} onBack={goChats} />;
+    return (
+      <Profile
+        displayName={displayName || "User"}
+        setDisplayName={setDisplayName}
+        onBack={goChats}
+        onLogout={() => {
+          try {
+            // logout = сбрасываем только сессию/навигацию, НЕ трогаем identity (device/account)
+            localStorage.removeItem("margelet_session_v1");
+            localStorage.setItem("margelet_active_room_id", JSON.stringify(null));
+            localStorage.setItem("margelet_screen", JSON.stringify("landing"));
+          } catch {}
+          setActiveRoomId(null);
+          setScreen("landing");
+        }}
+      />
+    );
   }
 
   if (screen === "search") {

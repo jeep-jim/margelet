@@ -23,6 +23,23 @@ const brand = {
   ctaActiveText: "#272632",
 };
 
+
+function readLsString(key: string): string {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return "";
+    // usePersisted хранит JSON.stringify, но старый код мог хранить plain string
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "string" ? parsed : String(parsed ?? "");
+  } catch {
+    try {
+      return localStorage.getItem(key) || "";
+    } catch {
+      return "";
+    }
+  }
+}
+
 function WalrusIcon({ size = 48 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 120 120" fill="none">
@@ -148,14 +165,22 @@ export default function OnboardingDeviceStep({
   const { t } = useI18n();
 
   const [deviceName, setDeviceName] = useState("");
-  const [mode, setMode] = useState<"create" | "restore">("create");
+
+  // "уже входил" = на девайсе есть локальный профиль (имя или handle)
+  const initialName = useMemo(() => readLsString("margelet_display_name"), []);
+  const initialHandle = useMemo(() => readLsString("margelet_handle_v1"), []);
+  const initialKnown = initialName || initialHandle;
+
+  // если уже входил — стартуем со вкладки "Войти"
+  const [mode, setMode] = useState<"create" | "restore">(initialKnown ? "restore" : "create");
   const [deviceType, setDeviceType] = useState<"desktop" | "mobile" | "tablet">("desktop");
 
   // restore UX
-  const [restoreMethod, setRestoreMethod] = useState<"password" | "qr">("qr");
+  const [restoreMethod, setRestoreMethod] = useState<"password" | "qr">(initialKnown ? "password" : "qr");
   const [password, setPassword] = useState("");
 
-  const [knownHandle, setKnownHandle] = useState<string>("");
+  const [knownName, setKnownName] = useState<string>(initialName || "");
+  const [knownHandle, setKnownHandle] = useState<string>(initialHandle || "");
 
   useEffect(() => {
     const ua = navigator.userAgent;
@@ -163,20 +188,32 @@ export default function OnboardingDeviceStep({
     else if (/Mobi|Android|iPhone/i.test(ua)) setDeviceType("mobile");
     else setDeviceType("desktop");
 
-    // "уже входил" — значит на устройстве есть локальный handle
-    const h = localStorage.getItem("margelet_handle_v1") || "";
-    setKnownHandle(h);
+    const name = readLsString("margelet_display_name");
+    const handle = readLsString("margelet_handle_v1");
 
-    // если уже входил — по умолчанию показываем пароль
-    setRestoreMethod(h ? "password" : "qr");
+    setKnownName(name);
+    setKnownHandle(handle);
+
+    const hasKnown = !!(name || handle);
+
+    // если уже входили — эта страница должна встречать: сразу "Войти"
+    if (hasKnown) {
+      setMode("restore");
+      setRestoreMethod("password");
+    } else {
+      setMode("create");
+      setRestoreMethod("qr");
+    }
   }, []);
 
   const hasName = deviceName.trim().length > 0;
   const isCreate = mode === "create";
+  const hasKnown = !!(knownName || knownHandle);
+
   const isCtaDisabled =
     (isCreate && !hasName) ||
-    (!isCreate && restoreMethod === "password" && !knownHandle) || // если нет handle — парольный вход невозможен
-    (!isCreate && restoreMethod === "password" && password.trim().length === 0); // пароль обязателен (пока)
+    (!isCreate && restoreMethod === "password" && password.trim().length === 0) || // пароль обязателен (пока)
+    (!isCreate && restoreMethod === "password" && !hasKnown); // без локального профиля парольный вход не показываем
 
   const ui = useMemo(
     () => ({
@@ -209,7 +246,7 @@ export default function OnboardingDeviceStep({
             margin: 0,
           }}
         >
-          {t("onb.title")}
+          {mode === "restore" && (knownName || knownHandle) ? `Привет, ${knownName || knownHandle}!` : t("onb.title")}
         </h1>
 
         <div
@@ -222,9 +259,15 @@ export default function OnboardingDeviceStep({
           }}
         >
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.35, color: ui.muted }}>
-            {t("onb.subtitle.1")}
-            <br />
-            {t("onb.subtitle.2")}
+            {mode === "restore" && (knownName || knownHandle) ? (
+              <>Введи свой пароль {knownName || knownHandle}</>
+            ) : (
+              <>
+                {t("onb.subtitle.1")}
+                <br />
+                {t("onb.subtitle.2")}
+              </>
+            )}
           </p>
         </div>
       </div>
@@ -251,7 +294,7 @@ export default function OnboardingDeviceStep({
       <div style={{ display: "flex", gap: 12, marginBottom: 18 }}>
         <button
           type="button"
-          onClick={() => setMode("create")}
+          onClick={() => { setMode("create"); }}
           style={{
             flex: 1,
             padding: "12px 0",
@@ -268,7 +311,7 @@ export default function OnboardingDeviceStep({
 
         <button
           type="button"
-          onClick={() => setMode("restore")}
+          onClick={() => { setMode("restore"); setRestoreMethod(hasKnown ? "password" : "qr"); }}
           style={{
             flex: 1,
             padding: "12px 0",
@@ -325,7 +368,7 @@ export default function OnboardingDeviceStep({
           />
         </>
       ) : (
-        /* RESTORE (умный) */
+        /* RESTORE (встречающий) */
         <>
           <div
             style={{
@@ -335,108 +378,61 @@ export default function OnboardingDeviceStep({
               border: `1px solid ${ui.border}`,
             }}
           >
-            {/* Заголовок restore */}
-            <h3 style={{ margin: 0, marginBottom: 12 }}>{t("onb.card.restore.title")}</h3>
-
-            {/* Если уже входили на этом устройстве — даём пароль как основной */}
-            {knownHandle ? (
+            {/* Если уже есть локальный профиль — показываем пароль первым экраном */}
+            {hasKnown ? (
               <>
-                {/* переключатель способа */}
-                <div style={{ display: "flex", gap: 10, marginBottom: 14 }}>
-                  <button
-                    type="button"
-                    onClick={() => setRestoreMethod("password")}
-                    style={{
-                      flex: 1,
-                      padding: "10px 0",
-                      borderRadius: 14,
-                      border: `1px solid ${ui.border}`,
-                      background: restoreMethod === "password" ? brand.violet : ui.tabIdleBg,
-                      color: restoreMethod === "password" ? brand.bg : brand.text,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                    }}
-                  >
-                    {t("onb.restore.method.password")}
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setRestoreMethod("qr")}
-                    style={{
-                      flex: 1,
-                      padding: "10px 0",
-                      borderRadius: 14,
-                      border: `1px solid ${ui.border}`,
-                      background: restoreMethod === "qr" ? brand.green : ui.tabIdleBg,
-                      color: restoreMethod === "qr" ? brand.bg : brand.text,
-                      fontWeight: 700,
-                      cursor: "pointer",
-                    }}
-                  >
-                    {t("onb.restore.method.qr")}
-                  </button>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                  <WalrusIcon size={22} />
+                  <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>
+                    {knownHandle ? `@${knownHandle}` : knownName}
+                  </span>
                 </div>
 
-                {restoreMethod === "password" ? (
-                  <>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                      <WalrusIcon size={22} />
-                      <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>
-                        @{knownHandle}
-                      </span>
-                    </div>
-
-                    <input
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder={t("onb.restore.password.placeholder")}
-                      type="password"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px",
-                        borderRadius: 16,
-                        border: `1px solid ${ui.border}`,
-                        background: ui.inputBg,
-                        fontSize: 15,
-                        outline: "none",
-                        color: brand.text,
-                        caretColor: brand.violet,
-                      }}
-                    />
-
-                    <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
-                      {t("onb.restore.password.hint")}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div
-                      style={{
-                        height: 180,
-                        borderRadius: 20,
-                        background: ui.qrBg,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: 14,
-                        color: ui.hint,
-                      }}
-                    >
-                      {t("onb.card.restore.box")}
-                    </div>
-
-                    <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
-                      {t("onb.restore.qr.hint")}
-                    </div>
-                  </>
-                )}
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder={`Пароль ${knownName || knownHandle}`}
+                  type="password"
+                  style={{
+                    width: "100%",
+                    padding: "14px 16px",
+                    borderRadius: 16,
+                    border: `1px solid ${ui.border}`,
+                    background: ui.inputBg,
+                    fontSize: 15,
+                    outline: "none",
+                    color: brand.text,
+                    caretColor: brand.violet,
+                  }}
+                />
               </>
-            ) : (
-              /* нет локального профиля — только QR */
+            ) : null}
+
+            {/* QR restore — всегда видно как отдельная "вторая линия" */}
+            <button
+              type="button"
+              onClick={() => setRestoreMethod("qr")}
+              style={{
+                width: "100%",
+                marginTop: hasKnown ? 14 : 0,
+                padding: "12px 14px",
+                borderRadius: 16,
+                border: `1px solid ${ui.border}`,
+                background: restoreMethod === "qr" || !hasKnown ? ui.tabIdleBg : "transparent",
+                color: brand.text,
+                fontWeight: 700,
+                cursor: "pointer",
+                textAlign: "left",
+              }}
+            >
+              Восстановить через QR
+            </button>
+
+            {(restoreMethod === "qr" || !hasKnown) && (
               <>
                 <div
                   style={{
+                    marginTop: 12,
                     height: 180,
                     borderRadius: 20,
                     background: ui.qrBg,
@@ -456,8 +452,7 @@ export default function OnboardingDeviceStep({
               </>
             )}
           </div>
-        </>
-      )}
+        </>)}
 
       {/* CTA */}
       <button
