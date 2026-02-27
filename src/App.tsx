@@ -101,9 +101,11 @@ function getOrCreateDeviceId(storageKey = "margeleT_device_id"): string {
   }
 }
 
-/** ---------- AUTH STORAGE LAYER (минимальный, но рабочий) ---------- **/
+/** ---------- AUTH STORAGE LAYER (расширенный, рабочий) ---------- **/
 const LS_IDENTITY = "margelet_identity_v1";
 const LS_SESSION = "margelet_session_v1";
+const LS_ACCOUNT = "margelet_account_v1";
+const LS_HANDLE = "margelet_handle_v1";
 
 type IdentityV1 = {
   deviceId: string;
@@ -114,6 +116,13 @@ type IdentityV1 = {
 type SessionV1 = {
   authed: true;
   ts: number;
+};
+
+type AccountV1 = {
+  handle: string; // "@jim"
+  displayName: string; // "Jim"
+  pinHash: string; // sha256(pin)
+  createdAt: number;
 };
 
 function readJson<T>(key: string): T | null {
@@ -145,6 +154,35 @@ function ensureSession() {
   writeJson<SessionV1>(LS_SESSION, { authed: true, ts: Date.now() });
 }
 
+function readHandleCompat(): string {
+  // handle может лежать JSON-строкой (через setItem(JSON.stringify))
+  try {
+    const raw = localStorage.getItem(LS_HANDLE);
+    if (!raw) return "@you";
+    const parsed = JSON.parse(raw);
+    const v = typeof parsed === "string" ? parsed : String(parsed ?? "");
+    const s = (v || "").trim();
+    if (!s) return "@you";
+    return s.startsWith("@") ? s : `@${s}`;
+  } catch {
+    try {
+      const s = (localStorage.getItem(LS_HANDLE) || "").trim();
+      if (!s) return "@you";
+      return s.startsWith("@") ? s : `@${s}`;
+    } catch {
+      return "@you";
+    }
+  }
+}
+
+async function sha256Hex(input: string): Promise<string> {
+  const enc = new TextEncoder().encode(input);
+  const buffer = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
 export default function App() {
   const { t } = useI18n();
 
@@ -160,7 +198,7 @@ export default function App() {
     getOrCreateDeviceId();
   }, []);
 
-  // ✅ Самое важное: если пытаемся открыть "chats/room/profile/search" без сессии — выкидываем на onboarding/landing
+  // ✅ Guard: нельзя в защищённые экраны без identity+session
   useEffect(() => {
     const protectedScreens: Screen[] = ["chats", "room", "profile", "search"];
     if (protectedScreens.includes(screen)) {
@@ -169,7 +207,6 @@ export default function App() {
         return;
       }
       if (!hasSession()) {
-        // identity есть, но сессии нет => "Sign in"
         setScreen("onboarding");
         return;
       }
@@ -197,6 +234,9 @@ export default function App() {
     setActiveRoomId(roomId);
     setScreen("room");
   };
+
+  const account = readJson<AccountV1>(LS_ACCOUNT);
+  const accountExists = !!(account && account.pinHash);
 
   // ✅ ROUTER
   if (screen === "onboarding") {
@@ -248,12 +288,21 @@ export default function App() {
 
           <div style={{ marginTop: 28 }}>
             <OnboardingDeviceStep
-              onContinue={(deviceName, mode) => {
+              accountExists={accountExists}
+              accountDisplayName={account?.displayName || displayName || ""}
+              accountHandle={account?.handle || readHandleCompat()}
+              onContinue={async (deviceName, mode, pin4) => {
                 const deviceId = getOrCreateDeviceId();
                 const name = (deviceName || "").trim() || "My device";
 
-                // ✅ Create: создаём identity (и тем самым “запоминаем устройство”)
+                const pin = (pin4 || "").trim();
+                if (!/^\d{4}$/.test(pin)) return;
+
+                const pinHash = await sha256Hex(pin);
+
+                // ✅ Create
                 if (mode === "create") {
+                  // identity
                   const identity: IdentityV1 = {
                     deviceId,
                     deviceName: name,
@@ -261,26 +310,58 @@ export default function App() {
                   };
                   writeJson<IdentityV1>(LS_IDENTITY, identity);
 
-                  // для UI оставим displayName = deviceName (до появления @handle)
+                  // account
+                  const newAccount: AccountV1 = {
+                    handle: readHandleCompat(), // пока @you, потом поменяешь в профиле
+                    displayName: name, // на MVP displayName = name (как у тебя сейчас)
+                    pinHash,
+                    createdAt: Date.now(),
+                  };
+                  writeJson<AccountV1>(LS_ACCOUNT, newAccount);
+
+                  // UI compat
                   setDisplayName(name);
+
+                  // session
                   ensureSession();
                   setScreen("chats");
                   return;
                 }
 
-                // ✅ Restore: если identity уже есть — просто поднимаем сессию.
-                // если identity нет — пока пускаем (QR/restore сделаем следующим шагом), но не считаем это “созданием”.
+                // ✅ Restore
                 if (mode === "restore") {
-                  if (hasIdentity()) {
-                    ensureSession();
-                    setScreen("chats");
+                  const acc = readJson<AccountV1>(LS_ACCOUNT);
+                  if (!acc) return;
+
+                  if (acc.pinHash !== pinHash) {
+                    // без “фейков”: просто не пускаем
+                    // (alert пока ок, потом заменим на toast)
+                    alert("Неверный PIN");
                     return;
                   }
 
-                  // fallback: пока нет полноценного restore, отправим на create (чтобы не было “ввёл что угодно и вошёл”)
-                  setScreen("onboarding");
+                  // если на устройстве ещё нет identity (новый девайс) — создаём
+                  if (!hasIdentity()) {
+                    const identity: IdentityV1 = {
+                      deviceId,
+                      deviceName: name,
+                      deviceLabel,
+                    };
+                    writeJson<IdentityV1>(LS_IDENTITY, identity);
+                  }
+
+                  // синкаем displayName в UI
+                  setDisplayName(acc.displayName || name);
+
+                  ensureSession();
+                  setScreen("chats");
                   return;
                 }
+              }}
+              onCreateNew={() => {
+                // “Создать” из встречающего экрана
+                // просто скажем onboarding перейти в create-mode (внутри компонента)
+                // компонент сам переключится
               }}
             />
           </div>
@@ -315,7 +396,6 @@ export default function App() {
   }
 
   if (screen === "profile") {
-    // ⚠️ logout чинится в Profile.tsx (его ты ещё не вставил текстом)
     return (
       <Profile
         displayName={displayName || "User"}
@@ -323,8 +403,7 @@ export default function App() {
         onBack={goChats}
         onLogout={() => {
           try {
-            // logout = сбрасываем только сессию/навигацию, НЕ трогаем identity (device/account)
-            localStorage.removeItem("margelet_session_v1");
+            localStorage.removeItem(LS_SESSION);
             localStorage.setItem("margelet_active_room_id", JSON.stringify(null));
             localStorage.setItem("margelet_screen", JSON.stringify("landing"));
           } catch {}
@@ -346,7 +425,6 @@ export default function App() {
       deviceLabel={deviceLabel}
       displayName={displayName || ""}
       onEnterChats={() => {
-        // если уже есть identity+session — пускаем
         if (hasIdentity() && hasSession()) setScreen("chats");
         else setScreen("onboarding");
       }}

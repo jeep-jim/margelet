@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { useI18n } from "../i18n";
 
 const brand = {
@@ -23,12 +23,10 @@ const brand = {
   ctaActiveText: "#272632",
 };
 
-
 function readLsString(key: string): string {
   try {
     const raw = localStorage.getItem(key);
     if (!raw) return "";
-    // usePersisted хранит JSON.stringify, но старый код мог хранить plain string
     const parsed = JSON.parse(raw);
     return typeof parsed === "string" ? parsed : String(parsed ?? "");
   } catch {
@@ -56,13 +54,7 @@ function WalrusIcon({ size = 48 }: { size?: number }) {
   );
 }
 
-function DeviceTile({
-  active,
-  children,
-}: {
-  active?: boolean;
-  children: React.ReactNode;
-}) {
+function DeviceTile({ active, children }: { active?: boolean; children: React.ReactNode }) {
   return (
     <div
       style={{
@@ -85,102 +77,126 @@ function DeviceTile({
 function LaptopIcon({ active }: { active?: boolean }) {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-      <rect
-        x="4"
-        y="5"
-        width="16"
-        height="10"
-        rx="2"
-        stroke={active ? brand.violet : brand.text}
-        strokeWidth="1.6"
-      />
-      <path
-        d="M2 18h20"
-        stroke={active ? brand.violet : brand.text}
-        strokeWidth="1.6"
-      />
+      <rect x="4" y="5" width="16" height="10" rx="2" stroke={active ? brand.violet : brand.text} strokeWidth="1.6" />
+      <path d="M2 18h20" stroke={active ? brand.violet : brand.text} strokeWidth="1.6" />
     </svg>
   );
 }
-
 function PhoneIcon({ active }: { active?: boolean }) {
   return (
     <svg width="22" height="26" viewBox="0 0 24 24" fill="none">
-      <rect
-        x="7"
-        y="3"
-        width="10"
-        height="18"
-        rx="3"
-        stroke={active ? brand.violet : brand.text}
-        strokeWidth="1.6"
-      />
+      <rect x="7" y="3" width="10" height="18" rx="3" stroke={active ? brand.violet : brand.text} strokeWidth="1.6" />
       <circle cx="12" cy="17" r="1" fill={active ? brand.violet : brand.text} />
     </svg>
   );
 }
-
 function TabletIcon({ active }: { active?: boolean }) {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-      <rect
-        x="5"
-        y="4"
-        width="14"
-        height="16"
-        rx="3"
-        stroke={active ? brand.violet : brand.text}
-        strokeWidth="1.6"
-      />
+      <rect x="5" y="4" width="14" height="16" rx="3" stroke={active ? brand.violet : brand.text} strokeWidth="1.6" />
+    </svg>
+  );
+}
+function MonitorIcon({ active }: { active?: boolean }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <rect x="3" y="4" width="18" height="12" rx="2" stroke={active ? brand.violet : brand.text} strokeWidth="1.6" />
+      <path d="M8 20h8M12 16v4" stroke={active ? brand.violet : brand.text} strokeWidth="1.6" />
     </svg>
   );
 }
 
-function MonitorIcon({ active }: { active?: boolean }) {
+function PinBoxes({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  const ref = useRef<HTMLInputElement | null>(null);
+  const digits = (value || "").slice(0, 4).split("");
+  while (digits.length < 4) digits.push("");
+
   return (
-    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-      <rect
-        x="3"
-        y="4"
-        width="18"
-        height="12"
-        rx="2"
-        stroke={active ? brand.violet : brand.text}
-        strokeWidth="1.6"
+    <div
+      onClick={() => ref.current?.focus()}
+      style={{
+        display: "flex",
+        gap: 12,
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        marginTop: 14,
+        marginBottom: 8,
+        cursor: "text",
+      }}
+    >
+      {/* скрытый инпут */}
+      <input
+        ref={ref}
+        value={value}
+        onChange={(e) => onChange(e.target.value.replace(/\D/g, "").slice(0, 4))}
+        inputMode="numeric"
+        pattern="\d*"
+        autoComplete="one-time-code"
+        style={{
+          position: "absolute",
+          opacity: 0,
+          width: 1,
+          height: 1,
+          pointerEvents: "none",
+        }}
       />
-      <path
-        d="M8 20h8M12 16v4"
-        stroke={active ? brand.violet : brand.text}
-        strokeWidth="1.6"
-      />
-    </svg>
+
+      {digits.map((d, i) => (
+        <div
+          key={i}
+          style={{
+            width: 54,
+            height: 54,
+            borderRadius: 18,
+            border: `1px solid ${brand.border}`,
+            background: "rgba(0,0,0,0.25)",
+            display: "grid",
+            placeItems: "center",
+            fontSize: 22,
+            fontWeight: 900,
+            color: brand.text,
+            letterSpacing: 1,
+          }}
+        >
+          {d ? "•" : ""}
+        </div>
+      ))}
+    </div>
   );
 }
 
 export default function OnboardingDeviceStep({
   onContinue,
+  accountExists,
+  accountDisplayName,
+  accountHandle,
 }: {
-  onContinue?: (deviceName: string, mode: "create" | "restore") => void;
+  onContinue?: (deviceName: string, mode: "create" | "restore", pin4: string) => void;
+  accountExists?: boolean;
+  accountDisplayName?: string;
+  accountHandle?: string;
+  onCreateNew?: () => void;
 }) {
   const { t } = useI18n();
 
   const [deviceName, setDeviceName] = useState("");
+  const [deviceType, setDeviceType] = useState<"desktop" | "mobile" | "tablet">("desktop");
+  const [pin, setPin] = useState("");
 
-  // "уже входил" = на девайсе есть локальный профиль (имя или handle)
+  // локальные “из прошлого” (на всякий случай совместимости)
   const initialName = useMemo(() => readLsString("margelet_display_name"), []);
   const initialHandle = useMemo(() => readLsString("margelet_handle_v1"), []);
-  const initialKnown = initialName || initialHandle;
 
-  // если уже входил — стартуем со вкладки "Войти"
-  const [mode, setMode] = useState<"create" | "restore">(initialKnown ? "restore" : "create");
-  const [deviceType, setDeviceType] = useState<"desktop" | "mobile" | "tablet">("desktop");
-
-  // restore UX
-  const [restoreMethod, setRestoreMethod] = useState<"password" | "qr">(initialKnown ? "password" : "qr");
-  const [password, setPassword] = useState("");
-
-  const [knownName, setKnownName] = useState<string>(initialName || "");
-  const [knownHandle, setKnownHandle] = useState<string>(initialHandle || "");
+  // главный режим UX: если account есть — встречаем (restore), иначе — create
+  const [mode, setMode] = useState<"create" | "restore">(accountExists ? "restore" : "create");
+  const [restoreMethod, setRestoreMethod] = useState<"password" | "qr">("password");
 
   useEffect(() => {
     const ua = navigator.userAgent;
@@ -188,32 +204,19 @@ export default function OnboardingDeviceStep({
     else if (/Mobi|Android|iPhone/i.test(ua)) setDeviceType("mobile");
     else setDeviceType("desktop");
 
-    const name = readLsString("margelet_display_name");
-    const handle = readLsString("margelet_handle_v1");
+    setMode(accountExists ? "restore" : "create");
+    setRestoreMethod("password");
 
-    setKnownName(name);
-    setKnownHandle(handle);
+    // чтобы на create было красиво — подставим прошлое имя если есть
+    if (!accountExists && initialName) setDeviceName(initialName);
+  }, [accountExists, initialName]);
 
-    const hasKnown = !!(name || handle);
-
-    // если уже входили — эта страница должна встречать: сразу "Войти"
-    if (hasKnown) {
-      setMode("restore");
-      setRestoreMethod("password");
-    } else {
-      setMode("create");
-      setRestoreMethod("qr");
-    }
-  }, []);
+  const isCreate = mode === "create";
 
   const hasName = deviceName.trim().length > 0;
-  const isCreate = mode === "create";
-  const hasKnown = !!(knownName || knownHandle);
+  const pinOk = /^\d{4}$/.test(pin);
 
-  const isCtaDisabled =
-    (isCreate && !hasName) ||
-    (!isCreate && restoreMethod === "password" && password.trim().length === 0) || // пароль обязателен (пока)
-    (!isCreate && restoreMethod === "password" && !hasKnown); // без локального профиля парольный вход не показываем
+  const isCtaDisabled = (isCreate && !hasName) || !pinOk;
 
   const ui = useMemo(
     () => ({
@@ -223,7 +226,6 @@ export default function OnboardingDeviceStep({
       inputBg: brand.inputBg,
       muted: "rgba(234,229,227,0.70)",
       hint: "rgba(234,229,227,0.60)",
-      placeholder: "rgba(234,229,227,0.35)",
       qrBg: brand.qrBg,
 
       ctaBg: isCtaDisabled ? brand.ctaIdleBg : brand.ctaActiveBg,
@@ -234,10 +236,39 @@ export default function OnboardingDeviceStep({
     [isCtaDisabled]
   );
 
+  const knownName = (accountDisplayName || initialName || "").trim();
+  const knownHandle = (accountHandle || initialHandle || "").trim();
+
   return (
     <div style={{ width: "100%", maxWidth: 560, margin: "0 auto" }}>
-      {/* ВЕРХ НЕ ТРОГАЕМ ВООБЩЕ */}
-      <div style={{ marginBottom: 40 }}>
+      {/* верх */}
+      <div style={{ marginBottom: 34, position: "relative" }}>
+        {mode === "restore" && (
+          <button
+            type="button"
+            onClick={() => {
+              setMode("create");
+              setPin("");
+            }}
+            style={{
+              position: "absolute",
+              right: 0,
+              top: 6,
+              background: "transparent",
+              border: "none",
+              color: brand.text,
+              opacity: 0.85,
+              fontWeight: 900,
+              cursor: "pointer",
+              padding: "6px 10px",
+              borderRadius: 12,
+            }}
+            title="Создать"
+          >
+            Создать
+          </button>
+        )}
+
         <h1
           style={{
             fontSize: 42,
@@ -246,21 +277,15 @@ export default function OnboardingDeviceStep({
             margin: 0,
           }}
         >
-          {mode === "restore" && (knownName || knownHandle) ? `Привет, ${knownName || knownHandle}!` : t("onb.title")}
+          {mode === "restore" && (knownName || knownHandle)
+            ? `Привет, ${knownName || knownHandle}!`
+            : t("onb.title")}
         </h1>
 
-        <div
-          style={{
-            marginTop: 16,
-            display: "flex",
-            gap: 14,
-            alignItems: "flex-start",
-            maxWidth: 520,
-          }}
-        >
+        <div style={{ marginTop: 16, display: "flex", gap: 14, alignItems: "flex-start", maxWidth: 520 }}>
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.35, color: ui.muted }}>
-            {mode === "restore" && (knownName || knownHandle) ? (
-              <>Введи свой пароль {knownName || knownHandle}</>
+            {mode === "restore" ? (
+              <>Введи свой PIN</>
             ) : (
               <>
                 {t("onb.subtitle.1")}
@@ -272,80 +297,28 @@ export default function OnboardingDeviceStep({
         </div>
       </div>
 
-      {/* Устройства */}
-      {mode === "create" && (
-        <div style={{ display: "flex", gap: 14, marginBottom: 22 }}>
-          <DeviceTile active={deviceType === "desktop"}>
-            <LaptopIcon active={deviceType === "desktop"} />
-          </DeviceTile>
-          <DeviceTile active={deviceType === "mobile"}>
-            <PhoneIcon active={deviceType === "mobile"} />
-          </DeviceTile>
-          <DeviceTile active={deviceType === "tablet"}>
-            <TabletIcon active={deviceType === "tablet"} />
-          </DeviceTile>
-          <DeviceTile>
-            <MonitorIcon />
-          </DeviceTile>
-        </div>
-      )}
-
-      {/* Кнопки Create/Restore */}
-      <div style={{ display: "flex", gap: 12, marginBottom: 18 }}>
-        <button
-          type="button"
-          onClick={() => { setMode("create"); }}
-          style={{
-            flex: 1,
-            padding: "12px 0",
-            borderRadius: 16,
-            border: `1px solid ${ui.border}`,
-            background: mode === "create" ? brand.violet : ui.tabIdleBg,
-            color: mode === "create" ? brand.bg : brand.text,
-            fontWeight: 700,
-            cursor: "pointer",
-          }}
-        >
-          {t("onb.mode.create")}
-        </button>
-
-        <button
-          type="button"
-          onClick={() => { setMode("restore"); setRestoreMethod(hasKnown ? "password" : "qr"); }}
-          style={{
-            flex: 1,
-            padding: "12px 0",
-            borderRadius: 16,
-            border: `1px solid ${ui.border}`,
-            background: mode === "restore" ? brand.green : ui.tabIdleBg,
-            color: mode === "restore" ? brand.bg : brand.text,
-            fontWeight: 700,
-            cursor: "pointer",
-          }}
-        >
-          {t("onb.mode.restore")}
-        </button>
-      </div>
-
       {/* CREATE */}
       {mode === "create" ? (
         <>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              marginBottom: 12,
-            }}
-          >
+          {/* устройства — по центру */}
+          <div style={{ display: "flex", gap: 14, marginBottom: 22, justifyContent: "center" }}>
+            <DeviceTile active={deviceType === "desktop"}>
+              <LaptopIcon active={deviceType === "desktop"} />
+            </DeviceTile>
+            <DeviceTile active={deviceType === "mobile"}>
+              <PhoneIcon active={deviceType === "mobile"} />
+            </DeviceTile>
+            <DeviceTile active={deviceType === "tablet"}>
+              <TabletIcon active={deviceType === "tablet"} />
+            </DeviceTile>
+            <DeviceTile>
+              <MonitorIcon />
+            </DeviceTile>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
             <WalrusIcon size={39} />
-            <span
-              style={{
-                fontSize: 13,
-                color: ui.hint,
-                fontWeight: 400,
-              }}
-            >
+            <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>
               {t("onb.card.create.title")}
             </span>
           </div>
@@ -364,8 +337,59 @@ export default function OnboardingDeviceStep({
               outline: "none",
               color: brand.text,
               caretColor: brand.violet,
+              marginBottom: 14,
             }}
           />
+
+          {/* PIN по центру */}
+          <div
+            style={{
+              padding: 22,
+              borderRadius: 24,
+              background: ui.cardBg,
+              border: `1px solid ${ui.border}`,
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+              <WalrusIcon size={22} />
+              <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>
+                Придумай PIN (4 цифры)
+              </span>
+            </div>
+
+            <PinBoxes value={pin} onChange={setPin} />
+
+            <div style={{ marginTop: 8, fontSize: 12, color: ui.hint }}>
+              PIN обязателен. Можно сменить в профиле.
+            </div>
+          </div>
+
+          {/* CTA */}
+          <button
+            type="button"
+            disabled={isCtaDisabled}
+            onClick={() => {
+              if (isCtaDisabled) return;
+              onContinue?.(deviceName, "create", pin);
+            }}
+            style={{
+              marginTop: 12,
+              width: "100%",
+              padding: "16px 0",
+              borderRadius: 20,
+              border: `1px solid ${ui.border}`,
+              background: ui.ctaBg,
+              color: ui.ctaText,
+              fontWeight: 800,
+              fontSize: 15,
+              cursor: isCtaDisabled ? "not-allowed" : "pointer",
+              transition: "0.2s ease",
+              opacity: ui.ctaOpacity,
+              filter: ui.ctaFilter,
+            }}
+          >
+            {t("onb.cta.continue")}
+          </button>
         </>
       ) : (
         /* RESTORE (встречающий) */
@@ -378,47 +402,55 @@ export default function OnboardingDeviceStep({
               border: `1px solid ${ui.border}`,
             }}
           >
-            {/* Если уже есть локальный профиль — показываем пароль первым экраном */}
-            {hasKnown ? (
-              <>
-                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                  <WalrusIcon size={22} />
-                  <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>
-                    {knownHandle ? `@${knownHandle}` : knownName}
-                  </span>
-                </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10, justifyContent: "center" }}>
+              <WalrusIcon size={22} />
+              <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>
+                {knownHandle || "@you"}
+              </span>
+            </div>
 
-                <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder={`Пароль ${knownName || knownHandle}`}
-                  type="password"
-                  style={{
-                    width: "100%",
-                    padding: "14px 16px",
-                    borderRadius: 16,
-                    border: `1px solid ${ui.border}`,
-                    background: ui.inputBg,
-                    fontSize: 15,
-                    outline: "none",
-                    color: brand.text,
-                    caretColor: brand.violet,
-                  }}
-                />
-              </>
-            ) : null}
+            {/* PIN boxes centered */}
+            <PinBoxes value={pin} onChange={setPin} />
 
-            {/* QR restore — всегда видно как отдельная "вторая линия" */}
+            {/* CTA */}
+            <button
+              type="button"
+              disabled={isCtaDisabled}
+              onClick={() => {
+                if (isCtaDisabled) return;
+                // deviceName тут может быть пустым — но App сам подставит "My device" если надо
+                onContinue?.(deviceName, "restore", pin);
+              }}
+              style={{
+                marginTop: 10,
+                width: "100%",
+                padding: "16px 0",
+                borderRadius: 20,
+                border: `1px solid ${ui.border}`,
+                background: ui.ctaBg,
+                color: ui.ctaText,
+                fontWeight: 800,
+                fontSize: 15,
+                cursor: isCtaDisabled ? "not-allowed" : "pointer",
+                transition: "0.2s ease",
+                opacity: ui.ctaOpacity,
+                filter: ui.ctaFilter,
+              }}
+            >
+              Войти
+            </button>
+
+            {/* QR restore — второй блок как у тебя */}
             <button
               type="button"
               onClick={() => setRestoreMethod("qr")}
               style={{
                 width: "100%",
-                marginTop: hasKnown ? 14 : 0,
+                marginTop: 14,
                 padding: "12px 14px",
                 borderRadius: 16,
                 border: `1px solid ${ui.border}`,
-                background: restoreMethod === "qr" || !hasKnown ? ui.tabIdleBg : "transparent",
+                background: restoreMethod === "qr" ? ui.tabIdleBg : "transparent",
                 color: brand.text,
                 fontWeight: 700,
                 cursor: "pointer",
@@ -428,7 +460,7 @@ export default function OnboardingDeviceStep({
               Восстановить через QR
             </button>
 
-            {(restoreMethod === "qr" || !hasKnown) && (
+            {restoreMethod === "qr" && (
               <>
                 <div
                   style={{
@@ -452,45 +484,8 @@ export default function OnboardingDeviceStep({
               </>
             )}
           </div>
-        </>)}
-
-      {/* CTA */}
-      <button
-        type="button"
-        disabled={isCtaDisabled}
-        onClick={() => {
-          if (isCtaDisabled) return;
-
-          // маленький мостик: если restore/password — сохраняем пароль временно для следующего шага
-          if (mode === "restore") {
-            localStorage.setItem("margelet_restore_method_v1", restoreMethod);
-            if (restoreMethod === "password") {
-              localStorage.setItem("margelet_restore_password_v1", password);
-            } else {
-              localStorage.removeItem("margelet_restore_password_v1");
-            }
-          }
-
-          onContinue?.(deviceName, mode);
-        }}
-        style={{
-          marginTop: 10,
-          width: "100%",
-          padding: "16px 0",
-          borderRadius: 20,
-          border: `1px solid ${ui.border}`,
-          background: ui.ctaBg,
-          color: ui.ctaText,
-          fontWeight: 800,
-          fontSize: 15,
-          cursor: isCtaDisabled ? "not-allowed" : "pointer",
-          transition: "0.2s ease",
-          opacity: ui.ctaOpacity,
-          filter: ui.ctaFilter,
-        }}
-      >
-        {t("onb.cta.continue")}
-      </button>
+        </>
+      )}
     </div>
   );
 }

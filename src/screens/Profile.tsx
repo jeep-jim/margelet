@@ -28,14 +28,21 @@ const LS_AVATAR = "margelet_avatar_v1";
 const LS_HANDLE = "margelet_handle_v1";
 const LS_DEVICE_ID = "margeleT_device_id";
 const LS_DEVICE_LABEL = "margelet_device_label";
+const LS_ACCOUNT = "margelet_account_v1";
 
-function safeParse<T>(raw: string | null, fallback: T): T {
-  try {
-    if (!raw) return fallback;
-    return JSON.parse(raw) as T;
-  } catch {
-    return fallback;
-  }
+type AccountV1 = {
+  handle: string;
+  displayName: string;
+  pinHash: string;
+  createdAt: number;
+};
+
+async function sha256Hex(input: string): Promise<string> {
+  const enc = new TextEncoder().encode(input);
+  const buffer = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buffer))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
 }
 
 function toBase64(file: File): Promise<string> {
@@ -50,13 +57,7 @@ function toBase64(file: File): Promise<string> {
 function CopyIcon({ size = 18 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M9 9h10v10H9V9Z"
-        stroke={brand.text}
-        strokeOpacity="0.85"
-        strokeWidth="1.6"
-        rx="2"
-      />
+      <path d="M9 9h10v10H9V9Z" stroke={brand.text} strokeOpacity="0.85" strokeWidth="1.6" rx="2" />
       <path
         d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"
         stroke={brand.text}
@@ -106,6 +107,21 @@ function validateHandle(h: string) {
   return { ok: true as const };
 }
 
+function readAccount(): AccountV1 | null {
+  try {
+    const raw = localStorage.getItem(LS_ACCOUNT);
+    return raw ? (JSON.parse(raw) as AccountV1) : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeAccount(acc: AccountV1) {
+  try {
+    localStorage.setItem(LS_ACCOUNT, JSON.stringify(acc));
+  } catch {}
+}
+
 export default function Profile({
   onBack,
   onLogout,
@@ -126,6 +142,21 @@ export default function Profile({
     if (typeof handle === "string") setHandleLocal(handle);
   }, [handle]);
 
+  // подтянем handle из LS если props не передали
+  useEffect(() => {
+    if (handleLocal?.trim()) return;
+    try {
+      const raw = localStorage.getItem(LS_HANDLE);
+      if (!raw) return;
+      const parsed = JSON.parse(raw);
+      const v = typeof parsed === "string" ? parsed : String(parsed ?? "");
+      if (v) setHandleLocal(v);
+    } catch {
+      const v = localStorage.getItem(LS_HANDLE) || "";
+      if (v) setHandleLocal(v);
+    }
+  }, []);
+
   const [avatar, setAvatar] = useState<string>(() => localStorage.getItem(LS_AVATAR) || "");
   const fileRef = useRef<HTMLInputElement | null>(null);
 
@@ -134,6 +165,11 @@ export default function Profile({
 
   const deviceId = useMemo(() => localStorage.getItem(LS_DEVICE_ID) || "", []);
   const deviceLabel = useMemo(() => localStorage.getItem(LS_DEVICE_LABEL) || "", []);
+
+  // PIN change
+  const [currentPin, setCurrentPin] = useState("");
+  const [newPin, setNewPin] = useState("");
+  const [pinError, setPinError] = useState("");
 
   const showToast = (msg: string) => {
     setToast(msg);
@@ -145,10 +181,25 @@ export default function Profile({
     else window.history.back();
   };
 
+  const syncAccountDisplayName = (v: string) => {
+    const acc = readAccount();
+    if (!acc) return;
+    acc.displayName = v;
+    writeAccount(acc);
+  };
+
+  const syncAccountHandle = (h: string) => {
+    const acc = readAccount();
+    if (!acc) return;
+    acc.handle = h;
+    writeAccount(acc);
+  };
+
   const saveName = () => {
     const v = nameLocal.trim();
     if (!v) return;
     setDisplayName?.(v);
+    syncAccountDisplayName(v);
     showToast("Сохранено ✅");
   };
 
@@ -166,9 +217,12 @@ export default function Profile({
     setHandleError("");
     setHandleLocal(h);
     setHandle?.(h);
+
     try {
       localStorage.setItem(LS_HANDLE, JSON.stringify(h));
     } catch {}
+
+    syncAccountHandle(h);
     showToast("Ник сохранён ✅");
   };
 
@@ -216,8 +270,42 @@ export default function Profile({
     }
   };
 
+  const changePin = async () => {
+    setPinError("");
+    const c = currentPin.trim();
+    const n = newPin.trim();
+
+    if (!/^\d{4}$/.test(c)) {
+      setPinError("Текущий PIN: 4 цифры");
+      return;
+    }
+    if (!/^\d{4}$/.test(n)) {
+      setPinError("Новый PIN: 4 цифры");
+      return;
+    }
+
+    const acc = readAccount();
+    if (!acc) {
+      setPinError("Аккаунт не найден");
+      return;
+    }
+
+    const cHash = await sha256Hex(c);
+    if (cHash !== acc.pinHash) {
+      setPinError("Текущий PIN неверный");
+      return;
+    }
+
+    const nHash = await sha256Hex(n);
+    acc.pinHash = nHash;
+    writeAccount(acc);
+
+    setCurrentPin("");
+    setNewPin("");
+    showToast("PIN обновлён ✅");
+  };
+
   const logout = () => {
-    // IMPORTANT: не стираем identity
     onLogout?.();
     showToast("Выход ✅");
   };
@@ -413,7 +501,6 @@ export default function Profile({
                       setHandleError("");
                     }}
                     onBlur={() => {
-                      // мягко нормализуем
                       const n = normalizeHandle(handleLocal);
                       if (n) setHandleLocal(n);
                     }}
@@ -459,7 +546,89 @@ export default function Profile({
                 )}
               </div>
 
-              {/* Invite row (full width, copy icon at end) */}
+              {/* Change PIN */}
+              <div>
+                <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>
+                  Сменить PIN (4 цифры)
+                </div>
+
+                <div style={{ display: "flex", gap: 10 }}>
+                  <input
+                    value={currentPin}
+                    onChange={(e) => {
+                      setCurrentPin(e.target.value.replace(/\D/g, "").slice(0, 4));
+                      setPinError("");
+                    }}
+                    placeholder="Текущий"
+                    inputMode="numeric"
+                    type="password"
+                    style={{
+                      flex: 1,
+                      height: 46,
+                      padding: "0 14px",
+                      borderRadius: 16,
+                      border: `1px solid ${pinError ? "rgba(255,80,120,0.45)" : brand.border}`,
+                      background: brand.inputBg,
+                      color: brand.text,
+                      outline: "none",
+                      fontSize: 15,
+                      letterSpacing: 4,
+                    }}
+                  />
+
+                  <input
+                    value={newPin}
+                    onChange={(e) => {
+                      setNewPin(e.target.value.replace(/\D/g, "").slice(0, 4));
+                      setPinError("");
+                    }}
+                    placeholder="Новый"
+                    inputMode="numeric"
+                    type="password"
+                    style={{
+                      flex: 1,
+                      height: 46,
+                      padding: "0 14px",
+                      borderRadius: 16,
+                      border: `1px solid ${pinError ? "rgba(255,80,120,0.45)" : brand.border}`,
+                      background: brand.inputBg,
+                      color: brand.text,
+                      outline: "none",
+                      fontSize: 15,
+                      letterSpacing: 4,
+                    }}
+                  />
+
+                  <button
+                    type="button"
+                    onClick={changePin}
+                    style={{
+                      height: 46,
+                      padding: "0 16px",
+                      borderRadius: 16,
+                      background: brand.green,
+                      color: brand.bg,
+                      border: "none",
+                      fontWeight: 900,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Ок
+                  </button>
+                </div>
+
+                {pinError ? (
+                  <div style={{ marginTop: 8, fontSize: 12, color: "rgba(255,120,160,0.95)", fontWeight: 800 }}>
+                    {pinError}
+                  </div>
+                ) : (
+                  <div style={{ marginTop: 8, fontSize: 12, color: brand.hint }}>
+                    Для смены PIN введи текущий и новый.
+                  </div>
+                )}
+              </div>
+
+              {/* Invite row */}
               <div>
                 <div style={{ fontSize: 12, fontWeight: 900, color: brand.hint, marginBottom: 8 }}>
                   Инвайт для привязки устройства
