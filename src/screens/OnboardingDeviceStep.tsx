@@ -100,6 +100,34 @@ function sanitizePin(raw: string) {
   return (raw || "").replace(/[^\d]/g, "").slice(0, 4);
 }
 
+// ----- handle helpers (Telegram-like) -----
+function normalizeHandleInput(raw: string) {
+  let s = (raw || "").trim();
+  if (!s) return "";
+  if (!s.startsWith("@")) s = "@" + s;
+  s = s.toLowerCase();
+  return s;
+}
+function handleToPeerId(handleWithAt: string) {
+  return normalizeHandleInput(handleWithAt).replace(/^@/, "");
+}
+function isValidHandle(handleWithAt: string) {
+  const h = normalizeHandleInput(handleWithAt);
+  return /^@[a-z0-9_]{3,32}$/.test(h);
+}
+
+async function claimHandle(handleWithAt: string) {
+  const handle = normalizeHandleInput(handleWithAt);
+  const peerId = handleToPeerId(handle);
+  const r = await fetch("/api/handle-claim", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ handle, peerId }),
+  });
+  const data = await r.json();
+  return data as { ok: boolean; error?: string; handle?: string; peerId?: string };
+}
+
 export default function OnboardingDeviceStep({
   onContinue,
 }: {
@@ -119,6 +147,16 @@ export default function OnboardingDeviceStep({
   const [knownName, setKnownName] = useState<string>(initialName || "");
   const [knownHandle, setKnownHandle] = useState<string>(initialHandle || "");
 
+  // NEW: handle input (Telegram-like)
+  const [handleInput, setHandleInput] = useState(() => {
+    // храним как было: без @ в localStorage, но пользователю показываем как @
+    const stored = (readLsString("margelet_handle_v1") || "").trim();
+    if (!stored) return "";
+    return stored.startsWith("@") ? stored : "@" + stored;
+  });
+  const [handleErr, setHandleErr] = useState("");
+  const [claimBusy, setClaimBusy] = useState(false);
+
   // PIN
   const [pin, setPin] = useState("");
   const [pinFocused, setPinFocused] = useState(false);
@@ -135,16 +173,18 @@ export default function OnboardingDeviceStep({
 
     const name = readLsString("margelet_display_name");
     const handle = readLsString("margelet_handle_v1");
+
     setKnownName(name);
     setKnownHandle(handle);
 
     const hasKnown = !!(name || handle);
+    setMode(hasKnown ? "restore" : "create");
 
-    if (hasKnown) {
-      setMode("restore");
-    } else {
-      setMode("create");
+    // sync handle input if any
+    if (handle && !handleInput) {
+      setHandleInput(handle.startsWith("@") ? handle : "@" + handle);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const ui = useMemo(
@@ -167,15 +207,22 @@ export default function OnboardingDeviceStep({
   const hasKnown = !!(knownName || knownHandle);
 
   const isCreate = mode === "create";
-
   const isCtaDisabled = (isCreate && (!hasName || !hasPin)) || (!isCreate && (!hasKnown || !hasPin));
 
   const activeIndex = Math.min(pin.length, 3);
 
+  // ✅ Fix: no mobile scroll jump on focus
   const focusPin = () => {
-    pinInputRef.current?.focus();
     setPinFocused(true);
+    try {
+      // @ts-ignore
+      pinInputRef.current?.focus({ preventScroll: true });
+    } catch {
+      pinInputRef.current?.focus();
+    }
   };
+
+  const hideQrWhileTyping = deviceType === "mobile" && pinFocused;
 
   const PinCell = ({ idx }: { idx: number }) => {
     const filled = idx < pin.length;
@@ -244,6 +291,61 @@ export default function OnboardingDeviceStep({
     );
   };
 
+  // NEW: Telegram-like create account step → claim handle (required)
+  const doClaimIfNeeded = async () => {
+    setHandleErr("");
+
+    // handle is required in create
+    if (mode === "create") {
+      const h = normalizeHandleInput(handleInput);
+      if (!isValidHandle(h)) {
+        setHandleErr("Ник должен быть типа @jim (3–32 символа, латиница/цифры/_)");
+        return false;
+      }
+
+      // store WITHOUT @ as your codebase expects (margelet_handle_v1)
+      const peerId = handleToPeerId(h);
+      try {
+        localStorage.setItem("margelet_handle_v1", peerId);
+      } catch {}
+
+      setClaimBusy(true);
+      try {
+        const res = await claimHandle(h);
+        if (!res.ok) {
+          if (res.error === "TAKEN") setHandleErr("Этот @username уже занят 😬");
+          else setHandleErr(res.error || "Не удалось зарегистрировать @username");
+          return false;
+        }
+        return true;
+      } catch (e: any) {
+        setHandleErr(e?.message ?? "Не удалось зарегистрировать @username");
+        return false;
+      } finally {
+        setClaimBusy(false);
+      }
+    }
+
+    // restore: ensure mapping exists too (silent best-effort)
+    if (mode === "restore") {
+      const stored = (readLsString("margelet_handle_v1") || "").trim();
+      if (!stored) return true;
+
+      const h = stored.startsWith("@") ? stored : "@" + stored;
+      setClaimBusy(true);
+      try {
+        await claimHandle(h);
+      } catch {
+        // no hard fail for restore
+      } finally {
+        setClaimBusy(false);
+      }
+      return true;
+    }
+
+    return true;
+  };
+
   return (
     <div style={{ width: "100%", maxWidth: 560, margin: "0 auto" }}>
       <style>{`
@@ -274,7 +376,6 @@ export default function OnboardingDeviceStep({
             <button
               type="button"
               onClick={() => {
-                // пока просто UX: очистить ввод
                 setPin("");
                 setPinError("");
                 focusPin();
@@ -324,6 +425,7 @@ export default function OnboardingDeviceStep({
             setPin("");
             setPinError("");
             setRevealPin(false);
+            setHandleErr("");
           }}
           style={{
             flex: 1,
@@ -346,6 +448,7 @@ export default function OnboardingDeviceStep({
             setPin("");
             setPinError("");
             setRevealPin(false);
+            setHandleErr("");
           }}
           style={{
             flex: 1,
@@ -362,9 +465,48 @@ export default function OnboardingDeviceStep({
         </button>
       </div>
 
-      {/* CREATE: имя устройства */}
+      {/* CREATE: handle + имя устройства */}
       {mode === "create" && (
         <>
+          {/* NEW: @username */}
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+            <span style={{ fontSize: 18 }}>@</span>
+            <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>Username (как в Telegram)</span>
+          </div>
+
+          <input
+            value={handleInput}
+            onChange={(e) => {
+              setHandleInput(e.target.value);
+              setHandleErr("");
+            }}
+            placeholder="@jim"
+            autoCapitalize="none"
+            autoCorrect="off"
+            spellCheck={false}
+            style={{
+              width: "100%",
+              padding: "14px 16px",
+              borderRadius: 16,
+              border: `1px solid ${ui.border}`,
+              background: ui.inputBg,
+              fontSize: 15,
+              outline: "none",
+              color: brand.text,
+              caretColor: brand.violet,
+              marginBottom: 10,
+            }}
+          />
+          {handleErr ? (
+            <div style={{ marginTop: -2, marginBottom: 12, fontSize: 12, color: "rgba(255,120,160,0.95)", fontWeight: 900 }}>
+              {handleErr}
+            </div>
+          ) : (
+            <div style={{ marginTop: -2, marginBottom: 12, fontSize: 12, color: ui.hint }}>
+              Латиница/цифры/_. Пример: <b>@jim</b>
+            </div>
+          )}
+
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
             <span style={{ fontSize: 22 }}>🦭</span>
             <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>{t("onb.card.create.title")}</span>
@@ -392,7 +534,6 @@ export default function OnboardingDeviceStep({
             Придумай PIN (4 цифры)
           </div>
 
-          {/* PIN row (без контейнеров-карточек) */}
           <div style={{ display: "flex", justifyContent: "center", gap: 14, marginBottom: 10 }}>
             <PinCell idx={0} />
             <PinCell idx={1} />
@@ -404,16 +545,47 @@ export default function OnboardingDeviceStep({
           <div style={{ fontSize: 13, color: ui.hint, marginBottom: 12 }}>
             PIN обязателен. Можно сменить в профиле.
           </div>
+
+          <button
+            type="button"
+            disabled={isCtaDisabled || claimBusy}
+            onClick={async () => {
+              if (isCtaDisabled || claimBusy) return;
+
+              // claim handle BEFORE continue
+              const ok = await doClaimIfNeeded();
+              if (!ok) return;
+
+              onContinue?.(deviceName, "create", pin);
+            }}
+            style={{
+              marginTop: 10,
+              width: "100%",
+              padding: "16px 0",
+              borderRadius: 20,
+              border: `1px solid ${ui.border}`,
+              background: isCtaDisabled ? brand.ctaIdleBg : ui.ctaBg,
+              color: isCtaDisabled ? brand.ctaIdleText : ui.ctaText,
+              fontWeight: 800,
+              fontSize: 15,
+              cursor: isCtaDisabled || claimBusy ? "not-allowed" : "pointer",
+              transition: "0.2s ease",
+              opacity: isCtaDisabled || claimBusy ? 0.82 : 1,
+              filter: isCtaDisabled || claimBusy ? "saturate(0.9)" : "none",
+            }}
+          >
+            {claimBusy ? "Регистрируем @username…" : t("onb.cta.continue")}
+          </button>
         </>
       )}
 
-      {/* RESTORE: привет + handle + PIN (без контейнера) */}
+      {/* RESTORE: привет + handle + PIN */}
       {mode === "restore" && (
         <>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, marginBottom: 12 }}>
             <span style={{ fontSize: 18 }}>🦭</span>
             <span style={{ fontSize: 14, color: brand.text, fontWeight: 900, opacity: 0.9 }}>
-              {knownHandle?.trim() || "@you"}
+              {knownHandle?.trim() ? (knownHandle.startsWith("@") ? knownHandle : `@${knownHandle}`) : "@you"}
             </span>
           </div>
 
@@ -437,11 +609,10 @@ export default function OnboardingDeviceStep({
 
           <button
             type="button"
-            onClick={() => {
+            onClick={async () => {
               if (!hasKnown) return;
               if (!/^\d{4}$/.test(pin)) return;
 
-              // лёгкая проверка прямо тут, чтобы App не дергать без надобности:
               const stored = readLsString("margelet_pin_v1");
               if (stored && stored !== pin) {
                 setPinError("Неверный PIN");
@@ -449,6 +620,9 @@ export default function OnboardingDeviceStep({
                 focusPin();
                 return;
               }
+
+              // ensure claim exists (best-effort)
+              await doClaimIfNeeded();
 
               onContinue?.("", "restore", pin);
             }}
@@ -461,82 +635,61 @@ export default function OnboardingDeviceStep({
               color: brand.violet,
               fontWeight: 900,
               fontSize: 15,
-              cursor: !hasKnown || !hasPin ? "not-allowed" : "pointer",
-              opacity: !hasKnown || !hasPin ? 0.6 : 1,
+              cursor: !hasKnown || !hasPin || claimBusy ? "not-allowed" : "pointer",
+              opacity: !hasKnown || !hasPin || claimBusy ? 0.6 : 1,
               marginBottom: 14,
             }}
-            disabled={!hasKnown || !hasPin}
+            disabled={!hasKnown || !hasPin || claimBusy}
           >
-            Войти
+            {claimBusy ? "Проверяем аккаунт…" : "Войти"}
           </button>
 
-          {/* QR restore block (оставляем как у тебя) */}
-          <button
-            type="button"
-            style={{
-              width: "100%",
-              padding: "12px 14px",
-              borderRadius: 16,
-              border: `1px solid ${ui.border}`,
-              background: ui.tabIdleBg,
-              color: brand.text,
-              fontWeight: 800,
-              cursor: "pointer",
-              textAlign: "left",
-              marginBottom: 12,
-            }}
-          >
-            Восстановить через QR
-          </button>
+          {/* QR restore block (но на мобилке скрываем при вводе PIN) */}
+          {!hideQrWhileTyping ? (
+            <>
+              <button
+                type="button"
+                style={{
+                  width: "100%",
+                  padding: "12px 14px",
+                  borderRadius: 16,
+                  border: `1px solid ${ui.border}`,
+                  background: ui.tabIdleBg,
+                  color: brand.text,
+                  fontWeight: 800,
+                  cursor: "pointer",
+                  textAlign: "left",
+                  marginBottom: 12,
+                }}
+              >
+                Восстановить через QR
+              </button>
 
-          <div
-            style={{
-              height: 180,
-              borderRadius: 20,
-              background: ui.qrBg,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 14,
-              color: ui.hint,
-            }}
-          >
-            {t("onb.card.restore.box")}
-          </div>
+              <div
+                style={{
+                  height: 180,
+                  borderRadius: 20,
+                  background: ui.qrBg,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 14,
+                  color: ui.hint,
+                }}
+              >
+                {t("onb.card.restore.box")}
+              </div>
 
-          <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
-            {t("onb.restore.qr.hint")}
-          </div>
+              <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
+                {t("onb.restore.qr.hint")}
+              </div>
+            </>
+          ) : (
+            <div style={{ textAlign: "center", marginTop: 6, fontSize: 12, color: ui.hint }}>
+              QR будет ниже — сначала введи PIN 🙂
+            </div>
+          )}
         </>
-      )}
-
-      {/* CTA для Create */}
-      {mode === "create" && (
-        <button
-          type="button"
-          disabled={isCtaDisabled}
-          onClick={() => {
-            if (isCtaDisabled) return;
-            onContinue?.(deviceName, "create", pin);
-          }}
-          style={{
-            marginTop: 10,
-            width: "100%",
-            padding: "16px 0",
-            borderRadius: 20,
-            border: `1px solid ${ui.border}`,
-            background: isCtaDisabled ? brand.ctaIdleBg : ui.ctaBg,
-            color: isCtaDisabled ? brand.ctaIdleText : ui.ctaText,
-            fontWeight: 800,
-            fontSize: 15,
-            cursor: isCtaDisabled ? "not-allowed" : "pointer",
-            transition: "0.2s ease",
-            opacity: isCtaDisabled ? 0.92 : 1,
-            filter: isCtaDisabled ? "saturate(0.9)" : "none",
-          }}
-        >
-          {t("onb.cta.continue")}
-        </button>
       )}
 
       {/* скрытый input под PIN */}
@@ -555,11 +708,14 @@ export default function OnboardingDeviceStep({
         type="tel"
         maxLength={4}
         style={{
-          position: "absolute",
+          // ✅ Fix: fixed prevents mobile scroll jump to "bottom input"
+          position: "fixed",
+          top: 0,
+          left: 0,
           opacity: 0,
-          pointerEvents: "none",
           width: 1,
           height: 1,
+          zIndex: -1,
         }}
       />
     </div>

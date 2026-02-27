@@ -1,52 +1,50 @@
-// api/handle-claim.ts
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { kv } from "@vercel/kv";
 
-function cors(res: VercelResponse) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-}
-
 function normalizeHandle(raw: unknown): string | null {
   if (typeof raw !== "string") return null;
-  const s = raw.trim();
-  if (!s) return null;
-  const withAt = s.startsWith("@") ? s : `@${s}`;
-  const h = withAt.toLowerCase();
+  let h = raw.trim();
+  if (!h) return null;
+  if (!h.startsWith("@")) h = "@" + h;
+  h = h.toLowerCase();
 
-  // allow: @ + [a-z0-9_], 3..32
+  // @ + [a-z0-9_], 3..32
   if (!/^@[a-z0-9_]{3,32}$/.test(h)) return null;
   return h;
 }
 
+function normalizePeerId(raw: unknown): string | null {
+  if (typeof raw !== "string") return null;
+  const p = raw.trim();
+  // peerId = handle без @ (или любой стабильный id)
+  if (!/^[a-z0-9_]{3,64}$/i.test(p)) return null;
+  return p;
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  cors(res);
-  if (req.method === "OPTIONS") return res.status(204).end();
-  if (req.method !== "POST") return res.status(405).json({ ok: false, error: "METHOD_NOT_ALLOWED" });
-
-  const handle = normalizeHandle((req.body as any)?.handle);
-  const peerId = typeof (req.body as any)?.peerId === "string" ? (req.body as any).peerId.trim() : "";
-
-  if (!handle) return res.status(400).json({ ok: false, error: "BAD_HANDLE" });
-  if (!peerId) return res.status(400).json({ ok: false, error: "BAD_PEER_ID" });
-
-  const key = `handle:${handle}`;
+  if (req.method !== "POST") {
+    return res.status(405).json({ ok: false, error: "METHOD_NOT_ALLOWED" });
+  }
 
   try {
-    const cur = await kv.get<string>(key);
+    const handle = normalizeHandle(req.body?.handle);
+    const peerId = normalizePeerId(req.body?.peerId);
 
-    // idempotent claim
-    if (cur && cur !== peerId) {
-      return res.status(409).json({ ok: false, error: "HANDLE_TAKEN" });
+    if (!handle) return res.status(400).json({ ok: false, error: "BAD_HANDLE" });
+    if (!peerId) return res.status(400).json({ ok: false, error: "BAD_PEER_ID" });
+
+    const key = `handle:${handle}`; // handle:@jim -> peerId
+
+    const existing = (await kv.get<string>(key)) || null;
+
+    // idempotent: если уже твой — ок
+    if (existing && existing !== peerId) {
+      return res.status(409).json({ ok: false, error: "TAKEN" });
     }
 
     await kv.set(key, peerId);
-    // optional reverse index (useful later)
-    await kv.set(`peer:${peerId}`, handle);
-
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, handle, peerId });
   } catch (e: any) {
-    return res.status(500).json({ ok: false, error: e?.message || "KV_ERROR" });
+    return res.status(500).json({ ok: false, error: e?.message ?? "SERVER_ERROR" });
   }
 }

@@ -1,5 +1,4 @@
-// src/webrtc/signal.ts
-export type SignalType = "offer" | "answer" | "ice" | "event" | "chat";
+export type SignalType = "chat";
 
 export type SignalEnvelope = {
   sessionId: string;
@@ -34,5 +33,8 @@ export async function signalSend(env: SignalEnvelope) {
 }
 
 export async function signalPull(args: { sessionId: string; peerId: string; limit?: number }) {
-  return postJSON<{ ok: boolean; messages: SignalEnvelope[]; error?: string }>("/api/signal-pull", args);
+  return postJSON<{ ok: boolean; messages: SignalEnvelope[]; error?: string }>(
+    "/api/signal-pull",
+    args
+  );
 }
