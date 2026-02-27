@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect, useRef } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import { useI18n } from "../i18n";
 
 const brand = {
@@ -38,40 +38,6 @@ function readLsString(key: string): string {
   }
 }
 
-function readPin(): string {
-  return readLsString("margelet_pin_v1");
-}
-
-function WalrusIcon({ size = 48 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none">
-      <ellipse cx="60" cy="70" rx="40" ry="28" fill={brand.violet} />
-      <circle cx="60" cy="45" r="28" fill={brand.violet} />
-      <circle cx="48" cy="42" r="8" stroke={brand.bg} strokeWidth="3" />
-      <circle cx="72" cy="42" r="8" stroke={brand.bg} strokeWidth="3" />
-      <line x1="56" y1="42" x2="64" y2="42" stroke={brand.bg} strokeWidth="3" />
-      <circle cx="48" cy="42" r="3" fill={brand.bg} />
-      <circle cx="72" cy="42" r="3" fill={brand.bg} />
-      <rect x="50" y="58" width="6" height="18" rx="3" fill={brand.text} opacity="0.85" />
-      <rect x="64" y="58" width="6" height="18" rx="3" fill={brand.text} opacity="0.85" />
-    </svg>
-  );
-}
-
-function WalrusGlassesButton({ active }: { active?: boolean }) {
-  // морж в очках 😎 — кнопка показать/скрыть PIN
-  return (
-    <svg width="28" height="28" viewBox="0 0 64 64" fill="none" aria-hidden style={{ display: "block" }}>
-      <circle cx="32" cy="32" r="26" fill={active ? "rgba(190,149,250,0.22)" : "rgba(255,255,255,0.06)"} />
-      <circle cx="32" cy="34" r="16" fill={brand.violet} opacity="0.22" />
-      <rect x="16" y="28" width="14" height="10" rx="5" fill="rgba(0,0,0,0.35)" stroke="rgba(234,229,227,0.55)" />
-      <rect x="34" y="28" width="14" height="10" rx="5" fill="rgba(0,0,0,0.35)" stroke="rgba(234,229,227,0.55)" />
-      <path d="M30 32h4" stroke="rgba(234,229,227,0.55)" strokeWidth="2" strokeLinecap="round" />
-      <path d="M23 42c3 2 15 2 18 0" stroke="rgba(234,229,227,0.35)" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 function DeviceTile({
   active,
   children,
@@ -106,7 +72,6 @@ function LaptopIcon({ active }: { active?: boolean }) {
     </svg>
   );
 }
-
 function PhoneIcon({ active }: { active?: boolean }) {
   return (
     <svg width="22" height="26" viewBox="0 0 24 24" fill="none">
@@ -115,7 +80,6 @@ function PhoneIcon({ active }: { active?: boolean }) {
     </svg>
   );
 }
-
 function TabletIcon({ active }: { active?: boolean }) {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -123,7 +87,6 @@ function TabletIcon({ active }: { active?: boolean }) {
     </svg>
   );
 }
-
 function MonitorIcon({ active }: { active?: boolean }) {
   return (
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
@@ -133,175 +96,36 @@ function MonitorIcon({ active }: { active?: boolean }) {
   );
 }
 
-function isValidPin(pin: string) {
-  return /^\d{4}$/.test(pin);
-}
-
-function PinCells({
-  label,
-  value,
-  onChange,
-  error,
-  helper,
-  showDigits,
-  onToggleShow,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  error?: string;
-  helper?: string;
-  showDigits: boolean;
-  onToggleShow: () => void;
-}) {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const [focused, setFocused] = useState(false);
-
-  const digits = value.slice(0, 4).split("");
-  const activeIndex = Math.min(digits.length, 3);
-
-  return (
-    <div>
-      <style>{`
-        @keyframes pinBlink { 0%{opacity:0.0} 45%{opacity:0.0} 55%{opacity:1.0} 100%{opacity:1.0} }
-        .pinCaret { width:2px; height:18px; border-radius:2px; background:${brand.violet}; animation: pinBlink 1s infinite; }
-      `}</style>
-
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 10 }}>
-        <div style={{ fontSize: 13, color: "rgba(234,229,227,0.60)", fontWeight: 700 }}>{label}</div>
-
-        <button
-          type="button"
-          onClick={onToggleShow}
-          style={{
-            width: 38,
-            height: 38,
-            borderRadius: 14,
-            border: `1px solid ${brand.border}`,
-            background: "rgba(255,255,255,0.04)",
-            cursor: "pointer",
-            display: "grid",
-            placeItems: "center",
-          }}
-          title={showDigits ? "Скрыть" : "Показать"}
-          aria-label={showDigits ? "Скрыть PIN" : "Показать PIN"}
-        >
-          <WalrusGlassesButton active={showDigits} />
-        </button>
-      </div>
-
-      <button
-        type="button"
-        onClick={() => inputRef.current?.focus()}
-        style={{
-          width: "100%",
-          border: `1px solid ${error ? "rgba(255,80,120,0.45)" : brand.border}`,
-          background: "rgba(255,255,255,0.04)",
-          borderRadius: 22,
-          padding: 16,
-          cursor: "text",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "center", gap: 12 }}>
-          {new Array(4).fill(0).map((_, i) => {
-            const filled = typeof digits[i] !== "undefined";
-            const isActive = focused && i === activeIndex;
-            const showCaret = isActive && value.length < 4;
-
-            return (
-              <div
-                key={i}
-                style={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: 18,
-                  border: `2px solid ${isActive ? brand.violet : "rgba(255,255,255,0.08)"}`,
-                  background: "rgba(0,0,0,0.22)",
-                  display: "grid",
-                  placeItems: "center",
-                  position: "relative",
-                }}
-              >
-                {filled ? (
-                  <div style={{ fontWeight: 900, fontSize: 20, color: brand.text, letterSpacing: 1 }}>
-                    {showDigits ? digits[i] : "•"}
-                  </div>
-                ) : showCaret ? (
-                  <div className="pinCaret" />
-                ) : (
-                  <div style={{ width: 10, height: 10, borderRadius: 10, background: "transparent" }} />
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        <input
-          ref={inputRef}
-          value={value}
-          inputMode="numeric"
-          autoComplete="one-time-code"
-          pattern="[0-9]*"
-          maxLength={4}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          onChange={(e) => {
-            const next = (e.target.value || "").replace(/\D/g, "").slice(0, 4);
-            onChange(next);
-          }}
-          style={{
-            position: "absolute",
-            opacity: 0,
-            pointerEvents: "none",
-            width: 1,
-            height: 1,
-          }}
-        />
-      </button>
-
-      {error ? (
-        <div style={{ marginTop: 10, fontSize: 12, color: "rgba(255,120,160,0.95)", fontWeight: 800 }}>
-          {error}
-        </div>
-      ) : helper ? (
-        <div style={{ marginTop: 10, fontSize: 12, color: "rgba(234,229,227,0.55)", fontWeight: 700 }}>
-          {helper}
-        </div>
-      ) : null}
-    </div>
-  );
+function sanitizePin(raw: string) {
+  return (raw || "").replace(/[^\d]/g, "").slice(0, 4);
 }
 
 export default function OnboardingDeviceStep({
-  mode,
-  onModeChange,
   onContinue,
 }: {
-  mode: "create" | "restore";
-  onModeChange?: (m: "create" | "restore") => void;
-  onContinue?: (payload: { deviceName: string; mode: "create" | "restore"; pin: string }) => void;
+  onContinue?: (deviceName: string, mode: "create" | "restore", pin4: string) => void;
 }) {
   const { t } = useI18n();
 
   const [deviceName, setDeviceName] = useState("");
 
-  // "уже входил" = на девайсе есть локальный профиль (имя или handle)
-  const [knownName, setKnownName] = useState<string>(() => readLsString("margelet_display_name"));
-  const [knownHandle, setKnownHandle] = useState<string>(() => readLsString("margelet_handle_v1"));
-  const hasKnown = !!(knownName || knownHandle);
+  const initialName = useMemo(() => readLsString("margelet_display_name"), []);
+  const initialHandle = useMemo(() => readLsString("margelet_handle_v1"), []);
+  const initialKnown = initialName || initialHandle;
 
+  const [mode, setMode] = useState<"create" | "restore">(initialKnown ? "restore" : "create");
   const [deviceType, setDeviceType] = useState<"desktop" | "mobile" | "tablet">("desktop");
+
+  const [knownName, setKnownName] = useState<string>(initialName || "");
+  const [knownHandle, setKnownHandle] = useState<string>(initialHandle || "");
 
   // PIN
   const [pin, setPin] = useState("");
-  const [showPin, setShowPin] = useState(false);
+  const [pinFocused, setPinFocused] = useState(false);
+  const [revealPin, setRevealPin] = useState(false);
+  const [pinError, setPinError] = useState("");
 
-  // ошибки
-  const [pinError, setPinError] = useState<string>("");
-  const [nameError, setNameError] = useState<string>("");
-
-  // restore UX
-  const [restoreMethod, setRestoreMethod] = useState<"password" | "qr">("password");
+  const pinInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const ua = navigator.userAgent;
@@ -314,112 +138,128 @@ export default function OnboardingDeviceStep({
     setKnownName(name);
     setKnownHandle(handle);
 
-    // если профиля нет — restoreMethod по умолчанию QR
-    if (!(name || handle)) setRestoreMethod("qr");
-  }, []);
+    const hasKnown = !!(name || handle);
 
-  useEffect(() => {
-    // если пришли снаружи (App) в restore — встречаем PIN
-    if (mode === "restore") setRestoreMethod(hasKnown ? "password" : "qr");
-    if (mode === "create") setRestoreMethod("qr");
-    setPin("");
-    setPinError("");
-    setNameError("");
-  }, [mode, hasKnown]);
+    if (hasKnown) {
+      setMode("restore");
+    } else {
+      setMode("create");
+    }
+  }, []);
 
   const ui = useMemo(
     () => ({
       border: brand.border,
-      cardBg: brand.surface,
       tabIdleBg: brand.surface2,
       inputBg: brand.inputBg,
       muted: "rgba(234,229,227,0.70)",
       hint: "rgba(234,229,227,0.60)",
       qrBg: brand.qrBg,
+
+      ctaBg: brand.ctaActiveBg,
+      ctaText: brand.ctaActiveText,
     }),
     []
   );
 
+  const hasName = deviceName.trim().length > 0;
+  const hasPin = /^\d{4}$/.test(pin);
+  const hasKnown = !!(knownName || knownHandle);
+
   const isCreate = mode === "create";
 
-  const isCtaDisabled = (() => {
-    if (isCreate) {
-      const okName = deviceName.trim().length > 0;
-      const okPin = isValidPin(pin);
-      return !(okName && okPin);
-    }
+  const isCtaDisabled = (isCreate && (!hasName || !hasPin)) || (!isCreate && (!hasKnown || !hasPin));
 
-    // restore
-    if (restoreMethod === "qr") return false; // QR можно нажать "Продолжить" (потом сделаем реальный сканер)
-    if (!hasKnown) return true;
-    return !isValidPin(pin);
-  })();
+  const activeIndex = Math.min(pin.length, 3);
 
-  const ctaBg = isCtaDisabled ? brand.ctaIdleBg : brand.ctaActiveBg;
-  const ctaText = isCtaDisabled ? brand.ctaIdleText : brand.ctaActiveText;
+  const focusPin = () => {
+    pinInputRef.current?.focus();
+    setPinFocused(true);
+  };
 
-  const tryContinue = () => {
-    setPinError("");
-    setNameError("");
+  const PinCell = ({ idx }: { idx: number }) => {
+    const filled = idx < pin.length;
+    const isActive = pinFocused && idx === activeIndex;
 
-    if (mode === "create") {
-      if (!deviceName.trim()) {
-        setNameError("Назови устройство");
-        return;
-      }
-      if (!isValidPin(pin)) {
-        setPinError("PIN должен быть из 4 цифр");
-        return;
-      }
-      onContinue?.({ deviceName, mode, pin });
-      return;
-    }
+    return (
+      <button
+        type="button"
+        onClick={focusPin}
+        style={{
+          width: 64,
+          height: 64,
+          borderRadius: 18,
+          border: `2px solid ${isActive ? brand.violet : brand.border}`,
+          background: "rgba(0,0,0,0.10)",
+          display: "grid",
+          placeItems: "center",
+          cursor: "text",
+          padding: 0,
+        }}
+        aria-label={`PIN ${idx + 1}`}
+      >
+        {filled ? (
+          <span style={{ fontSize: 22, fontWeight: 900, color: brand.text, opacity: 0.95 }}>
+            {revealPin ? pin[idx] : "•"}
+          </span>
+        ) : isActive ? (
+          <span
+            className="margelet-pin-caret"
+            style={{
+              width: 2,
+              height: 22,
+              borderRadius: 2,
+              background: "rgba(234,229,227,0.85)",
+              display: "block",
+            }}
+          />
+        ) : (
+          <span style={{ width: 10, height: 10, borderRadius: 10, background: "transparent", display: "block" }} />
+        )}
+      </button>
+    );
+  };
 
-    // restore
-    if (restoreMethod === "qr") {
-      // пока просто оставляем вход через QR следующим шагом (ты хотел без фейков — тут не пускаю в чаты)
-      // Но UI не ломаем: можно нажать — и дальше уже ты подключишь реальный restore.
-      // Если хочешь, тут можно будет показывать "Скоро".
-      onContinue?.({ deviceName: "", mode, pin: "" });
-      return;
-    }
-
-    if (!hasKnown) {
-      setPinError("На этом устройстве нет сохранённого профиля");
-      return;
-    }
-
-    const saved = readPin();
-    if (!isValidPin(pin)) {
-      setPinError("PIN должен быть из 4 цифр");
-      return;
-    }
-    if (saved && pin !== saved) {
-      setPinError("Неверный PIN");
-      return;
-    }
-
-    onContinue?.({ deviceName: "", mode, pin });
+  const EyeCell = () => {
+    return (
+      <button
+        type="button"
+        onClick={() => setRevealPin((v) => !v)}
+        style={{
+          width: 64,
+          height: 64,
+          borderRadius: 18,
+          border: `2px solid ${brand.border}`,
+          background: "rgba(0,0,0,0.10)",
+          display: "grid",
+          placeItems: "center",
+          cursor: "pointer",
+          padding: 0,
+        }}
+        aria-label="Показать PIN"
+        title={revealPin ? "Скрыть" : "Показать"}
+      >
+        <span style={{ fontSize: 22, lineHeight: 1 }}>{revealPin ? "🙈" : "👀"}</span>
+      </button>
+    );
   };
 
   return (
     <div style={{ width: "100%", maxWidth: 560, margin: "0 auto" }}>
-      {/* ВЕРХ НЕ ТРОГАЕМ ВООБЩЕ */}
+      <style>{`
+        @keyframes margeleTPinBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+        .margelet-pin-caret { animation: margeleTPinBlink 1s infinite; }
+      `}</style>
+
+      {/* ВЕРХ НЕ ТРОГАЕМ */}
       <div style={{ marginBottom: 40 }}>
-        <h1
-          style={{
-            fontSize: 42,
-            fontWeight: 800,
-            lineHeight: 1.05,
-            margin: 0,
-          }}
-        >
-          {mode === "restore" && hasKnown ? `Привет, ${knownName || knownHandle}!` : t("onb.title")}
+        <h1 style={{ fontSize: 42, fontWeight: 800, lineHeight: 1.05, margin: 0 }}>
+          {mode === "restore" && (knownName || knownHandle) ? `Привет, ${knownName || knownHandle}!` : t("onb.title")}
         </h1>
 
-        <div style={{ marginTop: 16, display: "flex", justifyContent: "space-between", gap: 16, alignItems: "flex-start" }}>
-          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.35, color: ui.muted, maxWidth: 520 }}>
-            {mode === "restore" && hasKnown ? (
+        <div style={{ marginTop: 16, display: "flex", gap: 14, alignItems: "flex-start", maxWidth: 520 }}>
+          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.35, color: ui.muted }}>
+            {mode === "restore" && (knownName || knownHandle) ? (
               <>Введи свой PIN</>
             ) : (
               <>
@@ -430,31 +270,34 @@ export default function OnboardingDeviceStep({
             )}
           </p>
 
-          {mode === "restore" ? (
+          {mode === "restore" && (
             <button
               type="button"
-              onClick={() => setRestoreMethod("qr")}
+              onClick={() => {
+                // пока просто UX: очистить ввод
+                setPin("");
+                setPinError("");
+                focusPin();
+              }}
               style={{
+                marginLeft: "auto",
                 background: "transparent",
                 border: "none",
-                padding: 0,
                 color: brand.pink,
                 fontWeight: 900,
                 cursor: "pointer",
                 textDecoration: "underline",
-                textUnderlineOffset: 4,
-                whiteSpace: "nowrap",
-                opacity: 0.9,
+                textUnderlineOffset: 6,
               }}
               title="Забыл"
             >
               Забыл
             </button>
-          ) : null}
+          )}
         </div>
       </div>
 
-      {/* Устройства (только create) */}
+      {/* Устройства (только Create) */}
       {mode === "create" && (
         <div style={{ display: "flex", justifyContent: "center", gap: 14, marginBottom: 22 }}>
           <DeviceTile active={deviceType === "desktop"}>
@@ -476,7 +319,12 @@ export default function OnboardingDeviceStep({
       <div style={{ display: "flex", gap: 12, marginBottom: 18 }}>
         <button
           type="button"
-          onClick={() => onModeChange?.("create")}
+          onClick={() => {
+            setMode("create");
+            setPin("");
+            setPinError("");
+            setRevealPin(false);
+          }}
           style={{
             flex: 1,
             padding: "12px 0",
@@ -484,16 +332,21 @@ export default function OnboardingDeviceStep({
             border: `1px solid ${ui.border}`,
             background: mode === "create" ? brand.violet : ui.tabIdleBg,
             color: mode === "create" ? brand.bg : brand.text,
-            fontWeight: 800,
+            fontWeight: 700,
             cursor: "pointer",
           }}
         >
-          {t("onb.mode.create")}
+          Создать
         </button>
 
         <button
           type="button"
-          onClick={() => onModeChange?.("restore")}
+          onClick={() => {
+            setMode("restore");
+            setPin("");
+            setPinError("");
+            setRevealPin(false);
+          }}
           style={{
             flex: 1,
             padding: "12px 0",
@@ -501,183 +354,180 @@ export default function OnboardingDeviceStep({
             border: `1px solid ${ui.border}`,
             background: mode === "restore" ? brand.green : ui.tabIdleBg,
             color: mode === "restore" ? brand.bg : brand.text,
-            fontWeight: 800,
+            fontWeight: 700,
             cursor: "pointer",
           }}
         >
-          {t("onb.mode.restore")}
+          Войти
         </button>
       </div>
 
-      {/* CREATE */}
-      {mode === "create" ? (
+      {/* CREATE: имя устройства */}
+      {mode === "create" && (
         <>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-            <WalrusIcon size={39} />
+            <span style={{ fontSize: 22 }}>🦭</span>
             <span style={{ fontSize: 13, color: ui.hint, fontWeight: 400 }}>{t("onb.card.create.title")}</span>
           </div>
 
           <input
             value={deviceName}
-            onChange={(e) => {
-              setDeviceName(e.target.value);
-              setNameError("");
-            }}
+            onChange={(e) => setDeviceName(e.target.value)}
             placeholder={t("onb.card.create.placeholder")}
             style={{
               width: "100%",
               padding: "14px 16px",
               borderRadius: 16,
-              border: `1px solid ${nameError ? "rgba(255,80,120,0.45)" : ui.border}`,
+              border: `1px solid ${ui.border}`,
               background: ui.inputBg,
               fontSize: 15,
               outline: "none",
               color: brand.text,
               caretColor: brand.violet,
+              marginBottom: 14,
             }}
           />
 
-          {nameError ? (
-            <div style={{ marginTop: 8, fontSize: 12, color: "rgba(255,120,160,0.95)", fontWeight: 800 }}>
-              {nameError}
-            </div>
-          ) : null}
+          <div style={{ fontSize: 12, fontWeight: 900, color: ui.hint, marginBottom: 10 }}>
+            Придумай PIN (4 цифры)
+          </div>
 
-          <div style={{ marginTop: 14 }}>
-            <PinCells
-              label="Придумай PIN (4 цифры)"
-              value={pin}
-              onChange={(v) => {
-                setPin(v);
-                setPinError("");
-              }}
-              error={pinError}
-              helper="PIN обязателен. Можно сменить в профиле."
-              showDigits={showPin}
-              onToggleShow={() => setShowPin((s) => !s)}
-            />
+          {/* PIN row (без контейнеров-карточек) */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 14, marginBottom: 10 }}>
+            <PinCell idx={0} />
+            <PinCell idx={1} />
+            <PinCell idx={2} />
+            <PinCell idx={3} />
+            <EyeCell />
+          </div>
+
+          <div style={{ fontSize: 13, color: ui.hint, marginBottom: 12 }}>
+            PIN обязателен. Можно сменить в профиле.
           </div>
         </>
-      ) : (
-        // RESTORE (встречающий)
-        <div
-          style={{
-            padding: 24,
-            borderRadius: 24,
-            background: ui.cardBg,
-            border: `1px solid ${ui.border}`,
-          }}
-        >
-          {hasKnown ? (
-            <>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginBottom: 14 }}>
-                <WalrusIcon size={22} />
-                <span style={{ fontSize: 13, color: ui.hint, fontWeight: 800 }}>
-                  {knownHandle ? (knownHandle.startsWith("@") ? knownHandle : `@${knownHandle}`) : knownName}
-                </span>
-              </div>
+      )}
 
-              <PinCells
-                label=""
-                value={pin}
-                onChange={(v) => {
-                  setPin(v);
-                  setPinError("");
-                }}
-                error={pinError}
-                helper=""
-                showDigits={showPin}
-                onToggleShow={() => setShowPin((s) => !s)}
-              />
+      {/* RESTORE: привет + handle + PIN (без контейнера) */}
+      {mode === "restore" && (
+        <>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 10, marginBottom: 12 }}>
+            <span style={{ fontSize: 18 }}>🦭</span>
+            <span style={{ fontSize: 14, color: brand.text, fontWeight: 900, opacity: 0.9 }}>
+              {knownHandle?.trim() || "@you"}
+            </span>
+          </div>
 
-              <button
-                type="button"
-                disabled={!isValidPin(pin)}
-                onClick={tryContinue}
-                style={{
-                  marginTop: 14,
-                  width: "100%",
-                  padding: "16px 0",
-                  borderRadius: 20,
-                  border: `1px solid ${ui.border}`,
-                  background: "#0E0E0E",
-                  color: brand.violet,
-                  fontWeight: 900,
-                  fontSize: 15,
-                  cursor: isValidPin(pin) ? "pointer" : "not-allowed",
-                  opacity: isValidPin(pin) ? 1 : 0.55,
-                }}
-              >
-                Войти
-              </button>
-            </>
+          <div style={{ display: "flex", justifyContent: "center", gap: 14, marginBottom: 12 }}>
+            <PinCell idx={0} />
+            <PinCell idx={1} />
+            <PinCell idx={2} />
+            <PinCell idx={3} />
+            <EyeCell />
+          </div>
+
+          {pinError ? (
+            <div style={{ textAlign: "center", marginTop: -4, marginBottom: 10, fontSize: 12, color: "rgba(255,120,160,0.95)", fontWeight: 900 }}>
+              {pinError}
+            </div>
           ) : (
-            <div style={{ fontSize: 13, color: ui.hint, fontWeight: 800 }}>
-              На этом устройстве нет сохранённого профиля.
+            <div style={{ textAlign: "center", marginTop: -4, marginBottom: 10, fontSize: 12, color: ui.hint }}>
+              Введи 4 цифры PIN
             </div>
           )}
 
-          {/* QR restore */}
           <button
             type="button"
-            onClick={() => setRestoreMethod("qr")}
+            onClick={() => {
+              if (!hasKnown) return;
+              if (!/^\d{4}$/.test(pin)) return;
+
+              // лёгкая проверка прямо тут, чтобы App не дергать без надобности:
+              const stored = readLsString("margelet_pin_v1");
+              if (stored && stored !== pin) {
+                setPinError("Неверный PIN");
+                setPin("");
+                focusPin();
+                return;
+              }
+
+              onContinue?.("", "restore", pin);
+            }}
             style={{
               width: "100%",
-              marginTop: 14,
-              padding: "14px 14px",
-              borderRadius: 18,
+              padding: "16px 0",
+              borderRadius: 20,
               border: `1px solid ${ui.border}`,
-              background: "rgba(255,255,255,0.04)",
-              color: brand.text,
+              background: "rgba(0,0,0,0.35)",
+              color: brand.violet,
               fontWeight: 900,
+              fontSize: 15,
+              cursor: !hasKnown || !hasPin ? "not-allowed" : "pointer",
+              opacity: !hasKnown || !hasPin ? 0.6 : 1,
+              marginBottom: 14,
+            }}
+            disabled={!hasKnown || !hasPin}
+          >
+            Войти
+          </button>
+
+          {/* QR restore block (оставляем как у тебя) */}
+          <button
+            type="button"
+            style={{
+              width: "100%",
+              padding: "12px 14px",
+              borderRadius: 16,
+              border: `1px solid ${ui.border}`,
+              background: ui.tabIdleBg,
+              color: brand.text,
+              fontWeight: 800,
               cursor: "pointer",
               textAlign: "left",
+              marginBottom: 12,
             }}
           >
             Восстановить через QR
           </button>
 
-          {restoreMethod === "qr" ? (
-            <>
-              <div
-                style={{
-                  marginTop: 12,
-                  height: 180,
-                  borderRadius: 20,
-                  background: ui.qrBg,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 14,
-                  color: ui.hint,
-                }}
-              >
-                {t("onb.card.restore.box")}
-              </div>
+          <div
+            style={{
+              height: 180,
+              borderRadius: 20,
+              background: ui.qrBg,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 14,
+              color: ui.hint,
+            }}
+          >
+            {t("onb.card.restore.box")}
+          </div>
 
-              <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
-                {t("onb.restore.qr.hint")}
-              </div>
-            </>
-          ) : null}
-        </div>
+          <div style={{ marginTop: 10, fontSize: 13, color: ui.hint }}>
+            {t("onb.restore.qr.hint")}
+          </div>
+        </>
       )}
 
-      {/* CTA (для create оставляем общий) */}
-      {mode === "create" ? (
+      {/* CTA для Create */}
+      {mode === "create" && (
         <button
           type="button"
           disabled={isCtaDisabled}
-          onClick={tryContinue}
+          onClick={() => {
+            if (isCtaDisabled) return;
+            onContinue?.(deviceName, "create", pin);
+          }}
           style={{
             marginTop: 10,
             width: "100%",
             padding: "16px 0",
             borderRadius: 20,
             border: `1px solid ${ui.border}`,
-            background: ctaBg,
-            color: ctaText,
-            fontWeight: 900,
+            background: isCtaDisabled ? brand.ctaIdleBg : ui.ctaBg,
+            color: isCtaDisabled ? brand.ctaIdleText : ui.ctaText,
+            fontWeight: 800,
             fontSize: 15,
             cursor: isCtaDisabled ? "not-allowed" : "pointer",
             transition: "0.2s ease",
@@ -687,7 +537,31 @@ export default function OnboardingDeviceStep({
         >
           {t("onb.cta.continue")}
         </button>
-      ) : null}
+      )}
+
+      {/* скрытый input под PIN */}
+      <input
+        ref={pinInputRef}
+        value={pin}
+        onChange={(e) => {
+          const v = sanitizePin(e.target.value);
+          setPin(v);
+          setPinError("");
+        }}
+        onFocus={() => setPinFocused(true)}
+        onBlur={() => setPinFocused(false)}
+        inputMode="numeric"
+        pattern="\d*"
+        type="tel"
+        maxLength={4}
+        style={{
+          position: "absolute",
+          opacity: 0,
+          pointerEvents: "none",
+          width: 1,
+          height: 1,
+        }}
+      />
     </div>
   );
 }

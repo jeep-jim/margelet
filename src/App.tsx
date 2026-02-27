@@ -108,8 +108,8 @@ const LS_PIN = "margelet_pin_v1";
 
 type IdentityV1 = {
   deviceId: string;
-  deviceName: string; // имя устройства, которое вводим в onboarding
-  deviceLabel: string; // Windows • Chrome
+  deviceName: string;
+  deviceLabel: string;
 };
 
 type SessionV1 = {
@@ -132,27 +132,6 @@ function writeJson<T>(key: string, v: T) {
   } catch {}
 }
 
-function readPin(): string {
-  try {
-    const raw = localStorage.getItem(LS_PIN);
-    if (!raw) return "";
-    const parsed = JSON.parse(raw);
-    return typeof parsed === "string" ? parsed : String(parsed ?? "");
-  } catch {
-    try {
-      return localStorage.getItem(LS_PIN) || "";
-    } catch {
-      return "";
-    }
-  }
-}
-
-function writePin(pin: string) {
-  try {
-    localStorage.setItem(LS_PIN, JSON.stringify(pin));
-  } catch {}
-}
-
 function hasIdentity(): boolean {
   const id = readJson<IdentityV1>(LS_IDENTITY);
   return !!(id && id.deviceId && id.deviceName);
@@ -167,12 +146,34 @@ function ensureSession() {
   writeJson<SessionV1>(LS_SESSION, { authed: true, ts: Date.now() });
 }
 
+function readPin(): string {
+  try {
+    const raw = localStorage.getItem(LS_PIN);
+    if (!raw) return "";
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "string" ? parsed : "";
+  } catch {
+    try {
+      return localStorage.getItem(LS_PIN) || "";
+    } catch {
+      return "";
+    }
+  }
+}
+
+function writePin(pin4: string) {
+  try {
+    localStorage.setItem(LS_PIN, JSON.stringify(pin4));
+  } catch {}
+}
+
 function isValidPin(pin: string) {
   return /^\d{4}$/.test(pin);
 }
 
 export default function App() {
-  const { t } = useI18n();
+  const i18n = useI18n() as any;
+  const t = i18n?.t || ((k: string) => k);
 
   const [screen, setScreen] = usePersisted<Screen>("margelet_screen", "landing");
   const [tab, setTab] = usePersisted<TabKey>("margelet_tab", "control");
@@ -182,27 +183,20 @@ export default function App() {
   const [deviceLabel] = usePersisted<string>("margelet_device_label", makeDefaultDeviceLabel());
   const [activeRoomId, setActiveRoomId] = usePersisted<string | null>("margelet_active_room_id", null);
 
-  // onboarding mode: если профиль уже есть — встречаем "Войти"
-  const [onbMode, setOnbMode] = useState<"create" | "restore">(() => {
-    return hasIdentity() ? "restore" : "create";
-  });
-
   useEffect(() => {
     getOrCreateDeviceId();
   }, []);
 
-  // ✅ если пытаемся открыть "chats/room/profile/search" без сессии — выкидываем на onboarding
+  // ✅ если пытаемся открыть "chats/room/profile/search" без сессии — выкидываем в onboarding
   useEffect(() => {
     const protectedScreens: Screen[] = ["chats", "room", "profile", "search"];
     if (protectedScreens.includes(screen)) {
       if (!hasIdentity()) {
         setScreen("onboarding");
-        setOnbMode("create");
         return;
       }
       if (!hasSession()) {
         setScreen("onboarding");
-        setOnbMode("restore");
         return;
       }
     }
@@ -220,10 +214,7 @@ export default function App() {
   );
 
   const goLanding = () => setScreen("landing");
-  const goOnboarding = () => {
-    setScreen("onboarding");
-    setOnbMode(hasIdentity() ? "restore" : "create");
-  };
+  const goOnboarding = () => setScreen("onboarding");
   const goChats = () => setScreen("chats");
   const goProfile = () => setScreen("profile");
   const goSearch = () => setScreen("search");
@@ -233,10 +224,24 @@ export default function App() {
     setScreen("room");
   };
 
+  // language switcher (мягко: если в useI18n есть setLang — юзаем, иначе localStorage + reload)
+  const lang = (i18n?.lang as string) || (i18n?.locale as string) || "ru";
+  const setLang = i18n?.setLang || i18n?.setLocale;
+
+  const toggleLang = () => {
+    const next = String(lang).toLowerCase().startsWith("ru") ? "en" : "ru";
+    try {
+      if (typeof setLang === "function") {
+        setLang(next);
+        return;
+      }
+      localStorage.setItem("margelet_lang", JSON.stringify(next));
+    } catch {}
+    window.location.reload();
+  };
+
   // ✅ ROUTER
   if (screen === "onboarding") {
-    const canShowCreateInHeader = hasIdentity(); // если уже есть профиль — на входе показываем "Создать" справа
-
     return (
       <div
         style={{
@@ -280,44 +285,40 @@ export default function App() {
               <span style={{ fontWeight: 800, fontSize: 18, lineHeight: 1 }}>{t("header.back")}</span>
             </button>
 
-            {canShowCreateInHeader ? (
-              <button
-                type="button"
-                onClick={() => setOnbMode("create")}
-                style={{
-                  background: "transparent",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: 0,
-                  color: brand.violet,
-                  fontWeight: 900,
-                  fontSize: 18,
-                  textDecoration: "underline",
-                  textUnderlineOffset: 4,
-                }}
-                title="Создать"
-              >
-                Создать
-              </button>
-            ) : (
-              <div style={{ width: 1 }} />
-            )}
+            {/* ✅ вместо "Создать" — язык как на главной */}
+            <button
+              type="button"
+              onClick={toggleLang}
+              style={{
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                color: ui.muted,
+                fontWeight: 900,
+                fontSize: 16,
+                textDecoration: "underline",
+                textUnderlineOffset: 6,
+                opacity: 0.95,
+              }}
+              title="Language"
+              aria-label="Language"
+            >
+              {String(lang).toLowerCase().startsWith("ru") ? "Ru" : "En"}
+            </button>
           </header>
 
           <div style={{ height: 1, background: ui.line, marginTop: 12 }} />
 
           <div style={{ marginTop: 28 }}>
             <OnboardingDeviceStep
-              mode={onbMode}
-              onModeChange={(m) => setOnbMode(m)}
-              onContinue={({ deviceName, mode, pin }) => {
+              onContinue={(deviceName, mode, pin4) => {
                 const deviceId = getOrCreateDeviceId();
                 const name = (deviceName || "").trim() || "My device";
 
-                // CREATE
+                // ✅ Create: создаём identity + PIN
                 if (mode === "create") {
-                  // PIN обязателен
-                  if (!isValidPin(pin)) return;
+                  if (!isValidPin(pin4 || "")) return;
 
                   const identity: IdentityV1 = {
                     deviceId,
@@ -325,27 +326,23 @@ export default function App() {
                     deviceLabel,
                   };
                   writeJson<IdentityV1>(LS_IDENTITY, identity);
-                  writePin(pin);
-
-                  // для UI оставим displayName = deviceName (до появления @handle)
+                  writePin(String(pin4));
                   setDisplayName(name);
+
                   ensureSession();
                   setScreen("chats");
                   return;
                 }
 
-                // RESTORE
+                // ✅ Restore: identity должна быть, PIN должен совпасть
                 if (mode === "restore") {
                   if (!hasIdentity()) {
-                    setOnbMode("create");
+                    setScreen("onboarding");
                     return;
                   }
-
-                  const savedPin = readPin();
-                  if (!isValidPin(pin) || pin !== savedPin) {
-                    // ошибку покажет сам onboarding, тут просто не пускаем
-                    return;
-                  }
+                  const saved = readPin();
+                  if (!saved || !isValidPin(saved)) return;
+                  if (String(pin4 || "") !== saved) return;
 
                   ensureSession();
                   setScreen("chats");
@@ -417,7 +414,7 @@ export default function App() {
       onEnterChats={() => {
         // если уже есть identity+session — пускаем
         if (hasIdentity() && hasSession()) setScreen("chats");
-        else goOnboarding();
+        else setScreen("onboarding");
       }}
       onEnterOnboarding={goOnboarding}
     />
