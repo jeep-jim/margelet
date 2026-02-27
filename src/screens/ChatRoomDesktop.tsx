@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import ChatRoomMobile, { type ChatRoomProps } from "./ChatRoomMobile";
 import RoomFilesSidebar from "./RoomFilesSidebar";
-import RoomMiniChats from "./RoomMiniChats";
 
 type DragSide = "left" | "right" | null;
 
@@ -179,7 +178,6 @@ export default function ChatRoomDesktop(props: ChatRoomProps & { onOpenRoom?: (r
     <div style={S.root}>
       {/* LEFT */}
       <aside style={S.panel}>
-        <RoomMiniChats roomId={props.roomId} onBack={props.onBack} onOpenRoom={props.onOpenRoom} />
       </aside>
 
       {/* LEFT RESIZE */}
