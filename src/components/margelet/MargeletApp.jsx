@@ -835,7 +835,19 @@ export default function MargeletApp() {
     <div className="min-h-screen bg-[linear-gradient(135deg,#d9d6ff_0%,#dde8ff_50%,#d8f0ff_100%)] text-slate-900">
       <div className="mx-auto grid max-w-7xl grid-cols-[240px_1fr] gap-4 p-4">
         <Card className="sticky top-4 h-fit">
-          <div className="mb-4"><div className="text-2xl font-black tracking-tight whitespace-nowrap"><span className="bg-[linear-gradient(90deg,#5B8DEF,#8B6CF0)] bg-clip-text text-transparent">@</span><span className="text-slate-900">margelet</span></div><div className="mt-1 text-sm text-slate-500">{copy.platformLabel}</div></div>
+        <div className="mb-4">
+        <div className="flex items-center gap-2 whitespace-nowrap">
+            <img
+            src="/icon.png"
+            alt="margelet"
+            className="h-7 w-7 rounded-md"
+            />
+            <span className="text-2xl font-black tracking-tight text-slate-900">
+            margelet
+            </span>
+        </div>
+        <div className="mt-1 text-sm text-slate-500">{copy.platformLabel}</div>
+        </div>
           <Sidebar tab={tab} setTab={setTab} lang={lang} setLang={setLang} copy={copy} currentAuthor={currentAuthor} onOpenAuthor={() => setSelectedAuthor(currentAuthor)} />
         </Card>
 
