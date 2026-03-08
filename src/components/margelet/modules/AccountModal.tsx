@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { LogOut, Plus, X, CreditCard, Star, Wallet } from "lucide-react";
+import { LogOut, Plus, X } from "lucide-react";
 
 type TgUser = {
   id: number | string;
@@ -133,45 +133,6 @@ export default function AccountModal({
                   </div>
                   <div className="mt-2 break-all text-sm font-medium sm:text-base">
                     {telegramId}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4 rounded-[20px] border border-slate-200 bg-slate-50 p-4 sm:mt-5 sm:rounded-[24px] sm:p-5">
-              <div className="text-[10px] uppercase tracking-[0.22em] text-slate-400 sm:text-[11px]">
-                Subscription
-              </div>
-              <h3 className="mt-1 text-base font-semibold sm:text-xl">Подписка</h3>
-
-              <div className="mt-3 grid gap-3 sm:mt-4 sm:grid-cols-3">
-                <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-4">
-                  <div className="flex items-center gap-2 text-slate-500">
-                    <CreditCard size={16} />
-                    <span className="text-sm">Тариф</span>
-                  </div>
-                  <div className="mt-2 text-sm font-medium sm:mt-3 sm:text-base">
-                    Скоро
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-4">
-                  <div className="flex items-center gap-2 text-slate-500">
-                    <Wallet size={16} />
-                    <span className="text-sm">Баланс</span>
-                  </div>
-                  <div className="mt-2 text-sm font-medium sm:mt-3 sm:text-base">
-                    —
-                  </div>
-                </div>
-
-                <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-4">
-                  <div className="flex items-center gap-2 text-slate-500">
-                    <Star size={16} />
-                    <span className="text-sm">Telegram Stars</span>
-                  </div>
-                  <div className="mt-2 text-sm font-medium sm:mt-3 sm:text-base">
-                    —
                   </div>
                 </div>
               </div>
