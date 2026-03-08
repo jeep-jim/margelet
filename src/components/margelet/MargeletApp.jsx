@@ -14,21 +14,19 @@ import {
   Lock,
   Layers3,
   FolderKanban,
-  ChevronRight,
 } from "lucide-react";
 
 import Sidebar from "./layout/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Agents from "./pages/Agents";
-import Marketplace from "./pages/Marketplace";
+import AgentWorkspace from "./pages/AgentWorkspace";
 import Analytics from "./pages/Analytics";
 import Billing from "./pages/Billing";
 import SettingsPage from "./pages/Settings";
+
 import {
   getCurrentAuthor,
   getPublicTotals,
-  getLocalizedFeedItems,
-  getPublicStoreAgents,
   getFilteredAgents,
   getSelectedWorkspaceAgent,
   getEditingAgent,
@@ -36,13 +34,13 @@ import {
 
 function ModalShell({ children, onClose, wide = false }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/40 p-3 backdrop-blur-md sm:p-4">
       <div
         className={`w-full ${
           wide ? "max-w-6xl" : "max-w-3xl"
-        } rounded-[32px] border border-white/70 bg-white shadow-2xl`}
+        } rounded-[28px] border border-white/70 bg-white shadow-2xl`}
       >
-        <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-200 px-4 py-4 sm:px-6">
           <div className="text-sm font-semibold text-slate-500">margelet</div>
           <button
             onClick={onClose}
@@ -51,7 +49,7 @@ function ModalShell({ children, onClose, wide = false }) {
             <X size={16} />
           </button>
         </div>
-        <div className="max-h-[82vh] overflow-auto p-6">{children}</div>
+        <div className="max-h-[82vh] overflow-auto p-4 sm:p-6">{children}</div>
       </div>
     </div>
   );
@@ -60,7 +58,7 @@ function ModalShell({ children, onClose, wide = false }) {
 function Card({ children, className = "" }) {
   return (
     <div
-      className={`rounded-3xl border border-white/70 bg-white/80 p-5 shadow-[0_18px_50px_rgba(88,94,160,0.12)] backdrop-blur-xl ${className}`}
+      className={`rounded-3xl border border-white/70 bg-white/85 p-4 shadow-[0_18px_50px_rgba(88,94,160,0.12)] backdrop-blur-xl sm:p-5 ${className}`}
     >
       {children}
     </div>
@@ -137,24 +135,6 @@ function Toggle({ checked, onChange, leftLabel, rightLabel }) {
   );
 }
 
-function AuthorMini({ author, onOpen }) {
-  return (
-    <button
-      onClick={() => onOpen(author)}
-      className="mt-4 flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 text-left transition hover:bg-white"
-    >
-      <Avatar name={author.name} image={author.image} size="sm" />
-      <div className="min-w-0 flex-1">
-        <div className="truncate text-sm font-semibold text-slate-900">
-          {author.name}
-        </div>
-        <div className="truncate text-xs text-slate-500">{author.handle}</div>
-      </div>
-      <ChevronRight size={14} className="text-slate-400" />
-    </button>
-  );
-}
-
 const TelegramIcon = () => (
   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="#229ED9">
     <path d="M9.04 15.54l-.39 5.46c.56 0 .8-.24 1.1-.53l2.63-2.52 5.45 3.99c1 .55 1.7.26 1.96-.92l3.56-16.67.01-.01c.31-1.46-.53-2.03-1.5-1.67L1.74 9.67c-1.43.56-1.41 1.36-.24 1.72l5.1 1.59L18.4 6.1c.55-.33 1.05-.15.64.18" />
@@ -181,9 +161,20 @@ const TikTokIcon = () => (
 
 const COPY = {
   en: {
+    details1Title: "What is Margelet",
+    details1Text:
+    "Control panel for content agents, channels and publishing workflows.",
+    details2Title: "What agents actually do",
+    details2Text:
+    "They create scripts, voiceovers, captions, scenes and publishing-ready outputs.",
+    details3Title: "How it works",
+    details3Text:
+    "Connect channels, create agents, queue content and track performance from one workspace.",
+    details4Title: "Autoposting on Pro",
+    details4Text:
+    "Autoposting works only where platform access and rules allow it.",
     dashboard: "Dashboard",
     agents: "Agents",
-    marketplace: "Marketplace",
     analytics: "Analytics",
     billing: "Billing",
     settings: "Settings",
@@ -196,7 +187,6 @@ const COPY = {
     agentsCurrently: "agents currently in work",
     videos: "Videos",
     views: "Views",
-    installs: "Installs",
     agent: "Agent",
     agentsCount: "Agents",
     inWork: "In work",
@@ -219,8 +209,6 @@ const COPY = {
     pauseAgent: "Pause agent",
     startAgent: "Start agent",
     configure: "Configure",
-    generatedThisWeek: "generated this week",
-    crossPlatformTotal: "cross-platform total",
     billingTitle: "Telegram Stars plans",
     billingDesc:
       "Pay inside Telegram and unlock more agents and video capacity",
@@ -255,8 +243,7 @@ const COPY = {
     agentWizardTitle: "Create agent",
     readyTemplates: "Ready templates",
     customAgent: "Custom agent",
-    pickTemplate:
-      "Pick a template or build your own agent from scratch.",
+    pickTemplate: "Pick a template or build your own agent from scratch.",
     topic: "Topic",
     automationMode: "Automation mode",
     manualMode: "Manual review",
@@ -295,65 +282,52 @@ const COPY = {
     active: "Active",
     manual: "Manual",
     auto: "Auto",
-    madeWith: "made with margelet",
-    authorAgents: "Agents",
-    authorCatalog: "Author agents",
-    authorCatalogHint: "Public catalog from this creator",
-    openAgent: "Open agent",
-    telegramIdentityHint:
-      "Telegram login will be the creator identity, Stars wallet and future payout profile.",
-    details1Title: "What is Margelet",
-    details1Text:
-      "Control panel for content agents, channels and publishing workflows.",
-    details2Title: "What agents actually do",
-    details2Text:
-      "They create scripts, voiceovers, captions, scenes and publishing-ready outputs.",
-    details3Title: "How it works",
-    details3Text:
-      "Connect channels, create agents, queue content and track performance from one workspace.",
-    details4Title: "Autoposting on Pro",
-    details4Text:
-      "Autoposting works only where platform access and rules allow it.",
-    creatorHub: "Creator Hub",
-    creatorHubDesc: "Public growth page for every creator",
-    totalAgentInstalls: "Total agent installs",
-    viewsGenerated: "Views generated",
-    allAgents: "all agents",
-    growing: "growing",
-    feedTitle: "Agent Feed",
-    feedDesc:
-      "Public discovery page where viral agent outputs sell the product themselves",
-    discoveryLoop: "discovery loop",
-    whyMatters: "Why this page matters",
+    creatorHub: "Creator workspace",
+    creatorHubDesc: "Overview of your content system and active agent setup",
+    totalAgentInstalls: "Configured agents",
+    viewsGenerated: "Generated reach",
+    allAgents: "across all agents",
+    growing: "active growth",
+    feedTitle: "Content examples",
+    feedDesc: "Recent agent output examples and reusable content patterns",
+    discoveryLoop: "content loop",
+    whyMatters: "Why it matters",
     whyMattersText:
-      "People do not just browse agents. They discover proof that agents create winning content.",
-    growthMechanic: "Growth mechanic",
+      "Agents should help you generate repeatable content formats that are easy to review, improve and publish.",
+    growthMechanic: "How it works",
     growthMechanicText:
-      "Every good video becomes a store ad for the agent and a profile ad for the creator.",
-    outcome: "Outcome",
+      "Each agent turns a niche, format and content angle into a repeatable production workflow.",
+    outcome: "Result",
     outcomeText:
-      "Margelet becomes both the factory and the discovery layer for content agents.",
-    variantLearning: "Variant learning",
-    variantLearningDesc: "What the system should keep reusing",
+      "Margelet becomes a clean operating system for creating, testing and scaling short-form content.",
   },
   ru: {
+    details1Title: "Что такое Margelet",
+    details1Text:
+    "Панель управления для контент-агентов, каналов и процессов публикации.",
+    details2Title: "Чем занимаются агенты",
+    details2Text:
+    "Они создают сценарии, озвучку, субтитры, сцены и готовый к публикации контент.",
+    details3Title: "Как это работает",
+    details3Text:
+    "Подключай каналы, создавай агентов, ставь контент в очередь и отслеживай результат в одном рабочем пространстве.",
+    details4Title: "Автопостинг на Pro",
+    details4Text:
+    "Автопостинг работает только там, где платформа даёт доступ и разрешает такой сценарий.",
     dashboard: "Панель",
     agents: "Агенты",
-    marketplace: "Маркетплейс",
     analytics: "Аналитика",
     billing: "Тарифы",
     settings: "Настройки",
     language: "Язык",
     platformLabel: "Платформа контент-агентов",
-    heroTitle:
-      "Помогай каналу выпускать больше контента с меньшими усилиями",
+    heroTitle: "Помогай каналу выпускать больше контента с меньшими усилиями",
     heroDesc:
       "Подключай каналы, создавай агентов под разные задачи и управляй тем, как они помогают с идеями, сценариями, видео, публикацией и ростом канала.",
     liveStatus: "Живой статус",
     agentsCurrently: "агентов сейчас в работе",
     videos: "Видео",
     views: "Просмотры",
-    installs: "Установки",
     agent: "Агент",
     agentsCount: "Агенты",
     inWork: "В работе",
@@ -372,13 +346,10 @@ const COPY = {
     connected: "Подключено",
     pending: "Ожидает",
     connectNewChannel: "Подключить новый канал",
-    launchPauseConfigure:
-      "Запускай, ставь на паузу и настраивай автоматизацию",
+    launchPauseConfigure: "Запускай, ставь на паузу и настраивай автоматизацию",
     pauseAgent: "Пауза",
     startAgent: "Запустить",
     configure: "Настроить",
-    generatedThisWeek: "сгенерировано за неделю",
-    crossPlatformTotal: "суммарно по платформам",
     billingTitle: "Тарифы Telegram Stars",
     billingDesc:
       "Плати внутри Telegram и открывай больше агентов и объёма видео",
@@ -413,8 +384,7 @@ const COPY = {
     agentWizardTitle: "Создать агента",
     readyTemplates: "Готовые агенты",
     customAgent: "Свой агент",
-    pickTemplate:
-      "Начни с готового шаблона или собери агента с нуля.",
+    pickTemplate: "Начни с готового шаблона или собери агента с нуля.",
     topic: "Тема",
     automationMode: "Режим автоматизации",
     manualMode: "Ручное одобрение",
@@ -445,54 +415,31 @@ const COPY = {
     detailsOpenHint:
       "Сначала пойми продукт, потом собери первого рабочего агента.",
     autopostLabel: "Автопостинг",
-    templatesHint:
-      "Начни быстро с готовых агентов или собери своего.",
+    templatesHint: "Начни быстро с готовых агентов или собери своего.",
     historyTitle: "История",
     openWorkspace: "Открыть рабочую зону",
     all: "Все",
     active: "Активные",
     manual: "Ручные",
     auto: "Авто",
-    madeWith: "сделано в margelet",
-    authorAgents: "Агенты",
-    authorCatalog: "Агенты автора",
-    authorCatalogHint: "Публичный каталог этого автора",
-    openAgent: "Открыть агента",
-    telegramIdentityHint:
-      "Telegram-логин будет личностью автора, Stars-кошельком и будущим профилем выплат.",
-    details1Title: "Что такое Margelet",
-    details1Text:
-      "Панель управления для контент-агентов, каналов и процессов публикации.",
-    details2Title: "Чем занимаются агенты",
-    details2Text:
-      "Они создают сценарии, озвучку, субтитры, сцены и готовый к публикации контент.",
-    details3Title: "Как это работает",
-    details3Text:
-      "Подключай каналы, создавай агентов, ставь контент в очередь и отслеживай результат в одном рабочем пространстве.",
-    details4Title: "Автопостинг на Pro",
-    details4Text:
-      "Автопостинг работает только там, где платформа даёт доступ и разрешает такой сценарий.",
-    creatorHub: "Хаб автора",
-    creatorHubDesc: "Публичная страница роста для каждого автора",
-    totalAgentInstalls: "Всего установок агентов",
-    viewsGenerated: "Просмотров принесено",
-    allAgents: "все агенты",
-    growing: "растёт",
-    feedTitle: "Лента агентов",
-    feedDesc:
-      "Публичная страница, где вирусные результаты агентов сами продают продукт",
-    discoveryLoop: "петля роста",
+    creatorHub: "Рабочая зона автора",
+    creatorHubDesc: "Обзор твоей контент-системы и активных настроек агентов",
+    totalAgentInstalls: "Настроенные агенты",
+    viewsGenerated: "Сгенерированный охват",
+    allAgents: "по всем агентам",
+    growing: "активный рост",
+    feedTitle: "Примеры контента",
+    feedDesc: "Недавние результаты агентов и переиспользуемые контент-паттерны",
+    discoveryLoop: "контент-цикл",
     whyMatters: "Почему это важно",
     whyMattersText:
-      "Люди не просто листают агентов. Они видят доказательство, что агенты реально приносят результат.",
-    growthMechanic: "Механика роста",
+      "Агенты должны помогать собирать повторяемые форматы контента, которые легко проверять, улучшать и публиковать.",
+    growthMechanic: "Как это работает",
     growthMechanicText:
-      "Каждое удачное видео становится рекламой агента и профиля автора.",
+      "Каждый агент превращает нишу, формат и контент-угол в повторяемый производственный процесс.",
     outcome: "Результат",
     outcomeText:
-      "Margelet становится и фабрикой, и слоем discovery для контент-агентов.",
-    variantLearning: "Обучение вариаций",
-    variantLearningDesc: "Что система должна переиспользовать дальше",
+      "Margelet становится чистой операционной системой для создания, тестирования и масштабирования short-form контента.",
   },
 };
 
@@ -527,7 +474,7 @@ function ConnectChannelModal({ copy, onClose }) {
         {rows.map((row) => (
           <div
             key={row.name}
-            className="flex items-center justify-between rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4"
+            className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 sm:flex-row sm:items-center sm:justify-between"
           >
             <div className="flex items-center gap-3">
               {row.icon}
@@ -549,9 +496,6 @@ function ConnectChannelModal({ copy, onClose }) {
 
 function AgentWizardModal({ copy, onClose, onSave }) {
   const [mode, setMode] = useState("templates");
-  const [selectedTemplate, setSelectedTemplate] = useState(
-    getPublicStoreAgents("en")[0]
-  );
   const [name, setName] = useState("Custom Agent");
   const [topic, setTopic] = useState("business");
   const [videosPerDay, setVideosPerDay] = useState(3);
@@ -566,37 +510,76 @@ function AgentWizardModal({ copy, onClose, onSave }) {
   const [voice, setVoice] = useState("AI voice");
   const [style, setStyle] = useState("Hook + script + captions");
   const selectedCount = Object.values(channels).filter(Boolean).length;
-  const templateLibrary = useMemo(() => getPublicStoreAgents("en"), []);
+
+  const templateLibrary = [
+    {
+      id: "tpl_motivation",
+      title: "Motivation Agent",
+      topic: "motivation",
+      videos: 5,
+      length: 30,
+      style: "Hook + advice",
+      autopost: false,
+      icon: "🔥",
+    },
+    {
+      id: "tpl_news",
+      title: "News Agent",
+      topic: "news",
+      videos: 12,
+      length: 45,
+      style: "News recap",
+      autopost: true,
+      icon: "📰",
+    },
+    {
+      id: "tpl_business",
+      title: "Business Agent",
+      topic: "business",
+      videos: 3,
+      length: 60,
+      style: "Talking head",
+      autopost: true,
+      icon: "💼",
+    },
+    {
+      id: "tpl_facts",
+      title: "Facts Agent",
+      topic: "facts",
+      videos: 8,
+      length: 20,
+      style: "Voice + captions",
+      autopost: false,
+      icon: "🧠",
+    },
+  ];
+
+  const [selectedTemplate, setSelectedTemplate] = useState(templateLibrary[0]);
+
+  const buildPlatformLabel = () =>
+    [
+      channels.telegram && "Telegram",
+      channels.youtube && "Shorts",
+      channels.instagram && "Reels",
+      channels.tiktok && "TikTok",
+    ]
+      .filter(Boolean)
+      .join(" + ") || "Telegram";
 
   const createFromTemplate = () => {
     onSave({
-      name:
-        selectedTemplate.key === "motivation"
-          ? "Motivation Agent"
-          : selectedTemplate.key === "news"
-          ? "News Agent"
-          : selectedTemplate.key === "business"
-          ? "Business Agent"
-          : "Facts Agent",
+      name: selectedTemplate.title,
       topic: selectedTemplate.topic,
       videos: selectedTemplate.videos,
       active: false,
       status: "Paused",
-      platform:
-        [
-          channels.telegram && "Telegram",
-          channels.youtube && "Shorts",
-          channels.instagram && "Reels",
-          channels.tiktok && "TikTok",
-        ]
-          .filter(Boolean)
-          .join(" + ") || "Telegram",
+      platform: buildPlatformLabel(),
       lastRun: "never",
       health: "warning",
       autopost: selectedTemplate.autopost,
       mode: selectedTemplate.autopost ? "Auto" : "Manual",
       length: selectedTemplate.length,
-      voice: selectedTemplate.key === "business" ? "AI voice" : "Mixed",
+      voice: selectedTemplate.title === "Business Agent" ? "AI voice" : "Mixed",
       style: selectedTemplate.style,
     });
     onClose();
@@ -609,15 +592,7 @@ function AgentWizardModal({ copy, onClose, onSave }) {
       videos: videosPerDay,
       active: false,
       status: "Paused",
-      platform:
-        [
-          channels.telegram && "Telegram",
-          channels.youtube && "Shorts",
-          channels.instagram && "Reels",
-          channels.tiktok && "TikTok",
-        ]
-          .filter(Boolean)
-          .join(" + ") || "Telegram",
+      platform: buildPlatformLabel(),
       lastRun: "never",
       health: "warning",
       autopost,
@@ -631,7 +606,7 @@ function AgentWizardModal({ copy, onClose, onSave }) {
 
   return (
     <ModalShell onClose={onClose} wide>
-      <div className="flex items-start justify-between gap-6">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between lg:gap-6">
         <div>
           <div className="text-2xl font-black text-slate-900">
             {copy.agentWizardTitle}
@@ -684,13 +659,7 @@ function AgentWizardModal({ copy, onClose, onSave }) {
                 >
                   <div className="text-2xl">{tpl.icon}</div>
                   <div className="mt-2 font-semibold text-slate-900">
-                    {tpl.key === "motivation"
-                      ? "Motivation Agent"
-                      : tpl.key === "news"
-                      ? "News Agent"
-                      : tpl.key === "business"
-                      ? "Business Agent"
-                      : "Facts Agent"}
+                    {tpl.title}
                   </div>
                   <div className="mt-1 text-sm text-slate-500">
                     {tpl.videos} {copy.videosPerDay}
@@ -863,7 +832,7 @@ function AgentWizardModal({ copy, onClose, onSave }) {
               <div className="mb-2 text-sm font-semibold text-slate-500">
                 {copy.platforms}
               </div>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {[
                   ["telegram", "Telegram"],
                   ["youtube", "YouTube Shorts"],
@@ -912,7 +881,7 @@ function AgentWizardModal({ copy, onClose, onSave }) {
               />
               <StepChip
                 icon={<Clapperboard size={14} />}
-                label="Variant scoring"
+                label={copy.generatedVideo}
                 active
               />
               <StepChip
@@ -963,7 +932,7 @@ function AgentSettingsModal({ copy, agent, onClose, onSave }) {
 
   return (
     <ModalShell onClose={onClose}>
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="text-2xl font-black text-slate-900">
             {copy.agentSettings}
@@ -987,13 +956,11 @@ function AgentSettingsModal({ copy, agent, onClose, onSave }) {
               leftLabel={copy.manualMode}
               rightLabel={copy.autoMode}
             />
-            <div className="mt-4 grid grid-cols-3 gap-2">
+            <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
               {[1, 3, 5, 10].map((v) => (
                 <button
                   key={v}
-                  onClick={() =>
-                    setForm((prev) => ({ ...prev, videos: v }))
-                  }
+                  onClick={() => setForm((prev) => ({ ...prev, videos: v }))}
                   className={`rounded-2xl px-4 py-3 text-sm font-semibold ${
                     form.videos === v
                       ? "bg-violet-600 text-white"
@@ -1045,9 +1012,7 @@ function AgentSettingsModal({ copy, agent, onClose, onSave }) {
               {[15, 30, 60].map((v) => (
                 <button
                   key={v}
-                  onClick={() =>
-                    setForm((prev) => ({ ...prev, length: v }))
-                  }
+                  onClick={() => setForm((prev) => ({ ...prev, length: v }))}
                   className={`rounded-2xl px-4 py-3 text-sm font-semibold ${
                     form.length === v
                       ? "bg-sky-600 text-white"
@@ -1102,7 +1067,7 @@ function AgentSettingsModal({ copy, agent, onClose, onSave }) {
         </div>
       </div>
 
-      <div className="mt-6 flex justify-end gap-3">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
         <button
           onClick={onClose}
           className="rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700"
@@ -1127,451 +1092,20 @@ function AgentSettingsModal({ copy, agent, onClose, onSave }) {
   );
 }
 
-function StoreAgentModal({ agent, onClose, onInstall, onOpenAuthor, copy }) {
-  if (!agent) return null;
-
-  return (
-    <ModalShell onClose={onClose} wide>
-      <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <div className="text-4xl">{agent.icon}</div>
-              <div className="mt-3 text-2xl font-black text-slate-900">
-                {agent.title}
-              </div>
-              <div className="mt-2 text-sm text-slate-500">
-                {agent.installs} {copy.installs.toLowerCase()} • ★ {agent.rating} •{" "}
-                {agent.type}
-              </div>
-            </div>
-            <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-              {agent.price}
-            </div>
-          </div>
-
-          <AuthorMini author={agent.author} onOpen={onOpenAuthor} />
-
-          <div className="mt-5 rounded-3xl bg-slate-50 p-5">
-            <div className="text-sm font-semibold text-slate-500">
-              Description
-            </div>
-            <p className="mt-2 text-sm leading-7 text-slate-600">
-              {agent.description}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {agent.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-4 grid grid-cols-3 gap-3">
-            <Card className="bg-slate-50/80 p-4">
-              <div className="text-xs text-slate-500">Monthly installs</div>
-              <div className="mt-2 text-xl font-bold text-slate-900">
-                {agent.installs}
-              </div>
-            </Card>
-            <Card className="bg-slate-50/80 p-4">
-              <div className="text-xs text-slate-500">Avg CTR</div>
-              <div className="mt-2 text-xl font-bold text-slate-900">
-                {agent.ctr}
-              </div>
-            </Card>
-            <Card className="bg-slate-50/80 p-4">
-              <div className="text-xs text-slate-500">Creator revenue</div>
-              <div className="mt-2 text-xl font-bold text-slate-900">
-                {agent.revenue}
-              </div>
-            </Card>
-          </div>
-
-          <Card className="mt-4 bg-slate-50/80">
-            <div className="text-lg font-semibold text-slate-900">
-              Revenue split
-            </div>
-            <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-              <div className="rounded-2xl bg-white p-4">
-                <div className="text-xs text-slate-500">Creator</div>
-                <div className="mt-2 text-xl font-black text-slate-900">
-                  70%
-                </div>
-              </div>
-              <div className="rounded-2xl bg-white p-4">
-                <div className="text-xs text-slate-500">Platform</div>
-                <div className="mt-2 text-xl font-black text-slate-900">
-                  30%
-                </div>
-              </div>
-              <div className="rounded-2xl bg-white p-4">
-                <div className="text-xs text-slate-500">Payout</div>
-                <div className="mt-2 text-xl font-black text-slate-900">
-                  Stars
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        <div className="space-y-4">
-          <Card>
-            <div className="text-lg font-semibold text-slate-900">Preview</div>
-            <div className="mt-4 rounded-3xl bg-[linear-gradient(135deg,#ede9fe,#dbeafe)] p-5">
-              <div className="aspect-[9/16] rounded-3xl border border-white/70 bg-white/70 p-4 shadow-inner">
-                <div className="flex h-full flex-col justify-between">
-                  <div>
-                    <div className="inline-flex rounded-full bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-white">
-                      {agent.previewLabel}
-                    </div>
-                    <div className="mt-4 text-lg font-black text-slate-900">
-                      {agent.previewTitle}
-                    </div>
-                    <div className="mt-2 text-sm text-slate-600">
-                      {agent.previewText}
-                    </div>
-                  </div>
-                  <div className="rounded-2xl bg-slate-900/90 p-3 text-xs text-white">
-                    voice + captions + video composition
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          <Card>
-            <div className="text-lg font-semibold text-slate-900">Reviews</div>
-            <div className="mt-4 space-y-3">
-              {agent.reviews.map((review) => (
-                <div
-                  key={review.name}
-                  className="rounded-2xl border border-slate-200 bg-white p-4"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="font-semibold text-slate-900">
-                      {review.name}
-                    </div>
-                    <div className="text-xs font-semibold text-amber-600">
-                      ★ {review.rating}
-                    </div>
-                  </div>
-                  <div className="mt-2 text-sm text-slate-600">
-                    {review.text}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <button
-              onClick={onInstall}
-              className={`mt-4 w-full rounded-2xl py-3 text-sm font-semibold text-white ${
-                agent.type === "Paid" ? "bg-slate-500" : "bg-indigo-600"
-              }`}
-            >
-              {agent.type === "Paid" ? "Buy & Install" : "Install"}
-            </button>
-          </Card>
-        </div>
-      </div>
-    </ModalShell>
-  );
-}
-
-function PublishAgentModal({ agent, onClose, onPublish, author }) {
-  const [title, setTitle] = useState(agent?.name || "");
-  const [description, setDescription] = useState(
-    "Built for short-form content with strong hooks, captions and queue-ready publishing."
-  );
-  const [category, setCategory] = useState("Growth");
-  const [price, setPrice] = useState("120");
-  const [tags, setTags] = useState("growth, hooks, shorts");
-
-  return (
-    <ModalShell onClose={onClose} wide>
-      <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div>
-          <div className="text-2xl font-black text-slate-900">
-            Publish agent
-          </div>
-          <div className="mt-2 text-sm text-slate-500">
-            Create a public store page and start earning Stars from installs.
-          </div>
-
-          <div className="mt-4 flex items-center gap-3 rounded-2xl bg-slate-50 p-3">
-            <Avatar name={author.name} image={author.image} size="sm" />
-            <div>
-              <div className="text-sm font-semibold text-slate-900">
-                {author.name}
-              </div>
-              <div className="text-xs text-slate-500">
-                Telegram creator identity
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-6 space-y-4">
-            <div>
-              <div className="mb-2 text-sm font-semibold text-slate-500">
-                Agent name
-              </div>
-              <input
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none"
-              />
-            </div>
-
-            <div>
-              <div className="mb-2 text-sm font-semibold text-slate-500">
-                Description
-              </div>
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={5}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none"
-              />
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div>
-                <div className="mb-2 text-sm font-semibold text-slate-500">
-                  Category
-                </div>
-                <select
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none"
-                >
-                  <option>Growth</option>
-                  <option>News</option>
-                  <option>Motivation</option>
-                  <option>Finance</option>
-                  <option>AI content</option>
-                </select>
-              </div>
-
-              <div>
-                <div className="mb-2 text-sm font-semibold text-slate-500">
-                  Price (Stars)
-                </div>
-                <input
-                  value={price}
-                  onChange={(e) =>
-                    setPrice(e.target.value.replace(/[^0-9]/g, ""))
-                  }
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none"
-                />
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-2 text-sm font-semibold text-slate-500">
-                Tags
-              </div>
-              <input
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-                className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none"
-              />
-            </div>
-          </div>
-        </div>
-
-        <Card className="bg-slate-50/80">
-          <div className="text-lg font-semibold text-slate-900">
-            Store preview
-          </div>
-
-          <div className="mt-4 rounded-3xl border border-slate-200 bg-white p-5">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <div className="text-2xl">🤖</div>
-                <div className="mt-3 text-xl font-black text-slate-900">
-                  {title || agent?.name || "Untitled agent"}
-                </div>
-                <div className="mt-1 text-sm text-slate-500">
-                  ★ 4.8 • new listing • Paid
-                </div>
-              </div>
-              <div className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
-                ⭐ {price || "0"}
-              </div>
-            </div>
-
-            <div className="mt-4 flex items-center gap-3 rounded-2xl bg-slate-50 p-3">
-              <Avatar name={author.name} image={author.image} size="sm" />
-              <div>
-                <div className="text-sm font-semibold text-slate-900">
-                  {author.name}
-                </div>
-                <div className="text-xs text-slate-500">{author.handle}</div>
-              </div>
-            </div>
-
-            <p className="mt-4 text-sm leading-7 text-slate-600">
-              {description}
-            </p>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {tags
-                .split(",")
-                .map((tag) => tag.trim())
-                .filter(Boolean)
-                .map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs font-medium text-slate-600"
-                  >
-                    {tag}
-                  </span>
-                ))}
-            </div>
-
-            <div className="mt-5 grid grid-cols-3 gap-3 text-center">
-              <div className="rounded-2xl bg-slate-50 p-3">
-                <div className="text-xs text-slate-500">Creator</div>
-                <div className="mt-2 font-black text-slate-900">70%</div>
-              </div>
-              <div className="rounded-2xl bg-slate-50 p-3">
-                <div className="text-xs text-slate-500">Platform</div>
-                <div className="mt-2 font-black text-slate-900">30%</div>
-              </div>
-              <div className="rounded-2xl bg-slate-50 p-3">
-                <div className="text-xs text-slate-500">Category</div>
-                <div className="mt-2 font-black text-slate-900">
-                  {category}
-                </div>
-              </div>
-            </div>
-
-            <button
-              onClick={onPublish}
-              className="mt-5 w-full rounded-2xl bg-violet-600 py-3 text-sm font-semibold text-white"
-            >
-              Publish listing
-            </button>
-          </div>
-        </Card>
-      </div>
-    </ModalShell>
-  );
-}
-
-function AuthorProfileModal({ author, agents, onClose, onOpenStoreAgent, copy }) {
-  if (!author) return null;
-
-  const authored = agents.filter((a) => a.author.id === author.id);
-
-  return (
-    <ModalShell onClose={onClose} wide>
-      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-        <Card className="bg-slate-50/80">
-          <div className="flex items-center gap-4">
-            <Avatar name={author.name} image={author.image} size="lg" />
-            <div>
-              <div className="text-2xl font-black text-slate-900">
-                {author.name}
-              </div>
-              <div className="text-sm text-slate-500">{author.handle}</div>
-            </div>
-          </div>
-
-          <p className="mt-4 text-sm leading-7 text-slate-600">{author.bio}</p>
-
-          <div className="mt-5 grid grid-cols-3 gap-3">
-            <div className="rounded-2xl bg-white p-4 text-center">
-              <div className="text-xs text-slate-500">{copy.authorAgents}</div>
-              <div className="mt-2 text-xl font-black text-slate-900">
-                {authored.length}
-              </div>
-            </div>
-            <div className="rounded-2xl bg-white p-4 text-center">
-              <div className="text-xs text-slate-500">{copy.installs}</div>
-              <div className="mt-2 text-xl font-black text-slate-900">
-                {author.installs}
-              </div>
-            </div>
-            <div className="rounded-2xl bg-white p-4 text-center">
-              <div className="text-xs text-slate-500">Stars</div>
-              <div className="mt-2 text-xl font-black text-slate-900">
-                {author.revenue}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-5 rounded-2xl bg-white p-4 text-sm text-slate-600">
-            {copy.telegramIdentityHint}
-          </div>
-        </Card>
-
-        <div className="space-y-4">
-          <div>
-            <div className="text-xl font-semibold text-slate-900">
-              {copy.authorCatalog}
-            </div>
-            <div className="text-sm text-slate-500">
-              {copy.authorCatalogHint}
-            </div>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {authored.map((agent) => (
-              <Card key={agent.id}>
-                <div className="flex items-start justify-between gap-3">
-                  <div className="text-3xl">{agent.icon}</div>
-                  <div className="rounded-full bg-slate-100 px-2 py-1 text-[11px] font-semibold text-slate-600">
-                    {agent.type}
-                  </div>
-                </div>
-                <div className="mt-3 text-lg font-semibold text-slate-900">
-                  {agent.title}
-                </div>
-                <div className="mt-1 text-sm text-slate-500">
-                  {agent.installs} {copy.installs.toLowerCase()} • ★{" "}
-                  {agent.rating}
-                </div>
-                <button
-                  onClick={() => onOpenStoreAgent(agent)}
-                  className="mt-4 w-full rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
-                >
-                  {copy.openAgent}
-                </button>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </div>
-    </ModalShell>
-  );
-}
-
 export default function MargeletApp() {
-  const [tab, setTab] = useState("dashboard");
-  const [lang, setLang] = useState("en");
+  const [tab, setTab] = useState("agents");
+  const [lang, setLang] = useState("ru");
   const [showDetails, setShowDetails] = useState(false);
   const [showConnectModal, setShowConnectModal] = useState(false);
   const [showWizard, setShowWizard] = useState(false);
   const [editingAgentId, setEditingAgentId] = useState(null);
+  const [agentOutput, setAgentOutput] = useState(null);
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(null);
-  const [selectedStoreAgent, setSelectedStoreAgent] = useState(null);
-  const [publishingAgent, setPublishingAgent] = useState(null);
-  const [creatorStars, setCreatorStars] = useState(8420);
-  const [publishedListings, setPublishedListings] = useState(3);
-  const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [agentSearch, setAgentSearch] = useState("");
   const [agentFilter, setAgentFilter] = useState("all");
 
   const copy = COPY[lang];
-
   const currentAuthor = getCurrentAuthor();
-
-  const feedItems = useMemo(() => getLocalizedFeedItems(lang), [lang]);
 
   const [agents, setAgents] = useState([
     {
@@ -1624,8 +1158,6 @@ export default function MargeletApp() {
     },
   ]);
 
-  const storeAgents = useMemo(() => getPublicStoreAgents(lang), [lang]);
-
   const totals = useMemo(() => getPublicTotals(agents), [agents]);
 
   const editingAgent = useMemo(
@@ -1669,47 +1201,22 @@ export default function MargeletApp() {
       prev.map((agent) => (agent.id === updatedAgent.id ? updatedAgent : agent))
     );
 
-  const simulateInstall = (price = 0) => {
-    const creatorShare = Math.floor(price * 0.7);
-    if (creatorShare > 0) setCreatorStars((s) => s + creatorShare);
-  };
-
-  const publishAgentToStore = () => {
-    setPublishedListings((n) => n + 1);
-    setPublishingAgent(null);
-  };
-
   return (
     <div className="min-h-screen bg-[linear-gradient(135deg,#d9d6ff_0%,#dde8ff_50%,#d8f0ff_100%)] text-slate-900">
-      <div className="mx-auto grid max-w-7xl grid-cols-[240px_1fr] gap-4 p-4">
-        <Card className="sticky top-4 h-fit">
-          <div className="mb-4">
-            <div className="flex items-center gap-2 whitespace-nowrap">
-              <img
-                src="/icon.png"
-                alt="margelet"
-                className="h-7 w-7 rounded-md"
-              />
-              <span className="text-2xl font-black tracking-tight text-slate-900">
-                margelet
-              </span>
-            </div>
-            <div className="mt-1 text-sm text-slate-500">
-              {copy.platformLabel}
-            </div>
-          </div>
+      <Sidebar
+        tab={tab}
+        setTab={(nextTab) => {
+          setTab(nextTab);
+          if (nextTab !== "agents") setAgentOutput(null);
+        }}
+        lang={lang}
+        setLang={setLang}
+        copy={copy}
+        currentAuthor={currentAuthor}
+        onOpenAuthor={() => {}}
+      />
 
-          <Sidebar
-            tab={tab}
-            setTab={setTab}
-            lang={lang}
-            setLang={setLang}
-            copy={copy}
-            currentAuthor={currentAuthor}
-            onOpenAuthor={() => setSelectedAuthor(currentAuthor)}
-          />
-        </Card>
-
+      <div className="mx-auto w-full max-w-7xl px-3 pb-16 pt-3 sm:px-4 sm:pt-4 lg:px-6">
         <div className="space-y-4">
           {tab === "dashboard" && (
             <Dashboard
@@ -1723,18 +1230,18 @@ export default function MargeletApp() {
               selectedWorkspaceAgent={selectedWorkspaceAgent}
               setSelectedWorkspaceId={setSelectedWorkspaceId}
               setEditingAgentId={setEditingAgentId}
-              setPublishingAgent={setPublishingAgent}
               currentAuthor={currentAuthor}
-              feedItems={feedItems}
-              setSelectedAuthor={setSelectedAuthor}
+              feedItems={[]}
+              setSelectedAuthor={() => {}}
               lang={lang}
             />
           )}
 
-          {tab === "agents" && (
+          {tab === "agents" && !agentOutput && (
             <Agents
               copy={copy}
               agentSearch={agentSearch}
+              setAgentOutput={setAgentOutput}
               setAgentSearch={setAgentSearch}
               agentFilter={agentFilter}
               setAgentFilter={setAgentFilter}
@@ -1746,17 +1253,10 @@ export default function MargeletApp() {
             />
           )}
 
-          {tab === "marketplace" && (
-            <Marketplace
-              copy={copy}
-              lang={lang}
-              storeAgents={storeAgents}
-              setSelectedAuthor={setSelectedAuthor}
-              setSelectedStoreAgent={setSelectedStoreAgent}
-              creatorStars={creatorStars}
-              publishedListings={publishedListings}
-              agents={agents}
-              setPublishingAgent={setPublishingAgent}
+          {tab === "agents" && agentOutput && (
+            <AgentWorkspace
+              agentOutput={agentOutput}
+              onBack={() => setAgentOutput(null)}
             />
           )}
 
@@ -1783,37 +1283,6 @@ export default function MargeletApp() {
         />
       )}
 
-      {selectedStoreAgent && (
-        <StoreAgentModal
-          agent={selectedStoreAgent}
-          onClose={() => setSelectedStoreAgent(null)}
-          onInstall={() => {
-            const price =
-              selectedStoreAgent.type === "Paid"
-                ? Number(
-                    (selectedStoreAgent.price || "").replace(/[^0-9]/g, "")
-                  )
-                : 0;
-            simulateInstall(price);
-            setSelectedStoreAgent(null);
-          }}
-          onOpenAuthor={(author) => {
-            setSelectedStoreAgent(null);
-            setSelectedAuthor(author);
-          }}
-          copy={copy}
-        />
-      )}
-
-      {publishingAgent && (
-        <PublishAgentModal
-          agent={publishingAgent}
-          author={currentAuthor}
-          onClose={() => setPublishingAgent(null)}
-          onPublish={publishAgentToStore}
-        />
-      )}
-
       {editingAgent && (
         <AgentSettingsModal
           copy={copy}
@@ -1822,23 +1291,6 @@ export default function MargeletApp() {
           onSave={updateAgent}
         />
       )}
-
-      {selectedAuthor && (
-        <AuthorProfileModal
-          author={selectedAuthor}
-          agents={storeAgents}
-          onClose={() => setSelectedAuthor(null)}
-          onOpenStoreAgent={(agent) => {
-            setSelectedAuthor(null);
-            setSelectedStoreAgent(agent);
-          }}
-          copy={copy}
-        />
-      )}
-
-      <div className="fixed bottom-4 right-4 rounded-2xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white shadow-lg">
-        Creator balance ⭐ {creatorStars}
-      </div>
     </div>
   );
 }

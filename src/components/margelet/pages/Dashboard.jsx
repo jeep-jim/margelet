@@ -20,38 +20,14 @@ import {
   Activity,
   ChevronRight,
   FlaskConical,
-  TrendingUp,
-  Radio,
 } from "lucide-react";
 
 function Card({ children, className = "" }) {
   return (
     <div
-      className={`rounded-3xl border border-white/70 bg-white/80 p-5 shadow-[0_18px_50px_rgba(88,94,160,0.12)] backdrop-blur-xl ${className}`}
+      className={`rounded-3xl border border-white/70 bg-white/85 p-4 shadow-[0_18px_50px_rgba(88,94,160,0.12)] backdrop-blur-xl sm:p-5 ${className}`}
     >
       {children}
-    </div>
-  );
-}
-
-function Avatar({ name, image, size = "md" }) {
-  const sizeMap = {
-    sm: "h-9 w-9 text-xs",
-    md: "h-11 w-11 text-sm",
-    lg: "h-14 w-14 text-base",
-  };
-
-  return image ? (
-    <img
-      src={image}
-      alt={name}
-      className={`${sizeMap[size]} rounded-full object-cover ring-2 ring-white/80`}
-    />
-  ) : (
-    <div
-      className={`${sizeMap[size]} flex items-center justify-center rounded-full bg-[linear-gradient(135deg,#8b5cf6,#60a5fa)] font-bold text-white ring-2 ring-white/80`}
-    >
-      {name.slice(0, 1).toUpperCase()}
     </div>
   );
 }
@@ -72,7 +48,9 @@ function StatCard({ emoji, value, label, hint }) {
   return (
     <Card className="p-4 text-center">
       <div className="mb-2 text-2xl">{emoji}</div>
-      <div className="text-3xl font-black tracking-tight">{value}</div>
+      <div className="text-3xl font-black tracking-tight text-slate-900">
+        {value}
+      </div>
       <div className="mt-1 text-sm font-medium text-slate-700">{label}</div>
       <div className="mt-1 text-xs text-slate-500">{hint}</div>
     </Card>
@@ -89,11 +67,13 @@ function PlatformPill({ icon, name, state = "connected", copy }) {
     <div
       className={`flex items-center justify-between rounded-2xl border px-4 py-3 ${tone}`}
     >
-      <div className="flex items-center gap-3 font-medium text-slate-900">
-        <div className="flex h-5 w-5 items-center justify-center">{icon}</div>
-        {name}
+      <div className="flex min-w-0 items-center gap-3 font-medium text-slate-900">
+        <div className="flex h-5 w-5 shrink-0 items-center justify-center">
+          {icon}
+        </div>
+        <span className="truncate">{name}</span>
       </div>
-      <div className="text-xs font-semibold text-slate-600">
+      <div className="shrink-0 text-xs font-semibold text-slate-600">
         {state === "connected" ? copy.connected : copy.pending}
       </div>
     </div>
@@ -123,14 +103,14 @@ function QueueItem({ title, time, status, platform }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <div className="font-semibold text-slate-900">{title}</div>
           <div className="mt-1 text-xs text-slate-500">
             {platform} • {time}
           </div>
         </div>
         <div
-          className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${styles[status]}`}
+          className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold ${styles[status]}`}
         >
           {status}
         </div>
@@ -149,9 +129,9 @@ function AssetRow({ icon, title, state, meta }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
       <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3 text-slate-900">
-          {icon}
-          <div>
+        <div className="flex min-w-0 items-center gap-3 text-slate-900">
+          <div className="shrink-0">{icon}</div>
+          <div className="min-w-0">
             <div className="font-medium">{title}</div>
             {meta ? (
               <div className="mt-1 text-xs text-slate-500">{meta}</div>
@@ -159,7 +139,7 @@ function AssetRow({ icon, title, state, meta }) {
           </div>
         </div>
         <div
-          className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${map[state]}`}
+          className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold ${map[state]}`}
         >
           {state}
         </div>
@@ -178,86 +158,20 @@ function VariantCard({ title, score, hook, state }) {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-4">
       <div className="flex items-start justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <div className="font-semibold text-slate-900">{title}</div>
           <div className="mt-2 text-sm leading-6 text-slate-500">{hook}</div>
         </div>
         <div
-          className={`rounded-full border px-2.5 py-1 text-xs font-semibold ${stateMap[state]}`}
+          className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-semibold ${stateMap[state]}`}
         >
           {state}
         </div>
       </div>
       <div className="mt-4 flex items-center justify-between">
-        <div className="text-xs text-slate-500">Viral score</div>
+        <div className="text-xs text-slate-500">Score</div>
         <div className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-2.5 py-1 text-xs font-semibold text-violet-700">
           <Activity size={12} /> {score}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function AgentFeedCard({ item, onOpenAuthor, copy }) {
-  return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          <Avatar name={item.author.name} image={item.author.image} size="sm" />
-          <div>
-            <button
-              onClick={() => onOpenAuthor(item.author)}
-              className="text-sm font-semibold text-slate-900 hover:text-violet-700"
-            >
-              {item.author.name}
-            </button>
-            <div className="text-xs text-slate-500">{item.author.handle}</div>
-          </div>
-        </div>
-        <div className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700">
-          <TrendingUp size={12} /> {item.growth}
-        </div>
-      </div>
-
-      <div className="mt-4 rounded-3xl bg-[linear-gradient(135deg,#ede9fe,#dbeafe)] p-4">
-        <div className="aspect-[9/16] rounded-[24px] border border-white/70 bg-white/80 p-4 shadow-inner">
-          <div className="flex h-full flex-col justify-between">
-            <div>
-              <div className="inline-flex rounded-full bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-white">
-                {item.label}
-              </div>
-              <div className="mt-4 text-lg font-black leading-tight text-slate-900">
-                {item.title}
-              </div>
-              <div className="mt-2 text-sm leading-6 text-slate-600">
-                {item.caption}
-              </div>
-            </div>
-            <div className="rounded-2xl bg-slate-900 px-3 py-2 text-xs font-semibold text-white">
-              {copy.madeWith}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-4 grid grid-cols-3 gap-3 text-center">
-        <div className="rounded-2xl bg-slate-50 p-3">
-          <div className="text-xs text-slate-500">{copy.views}</div>
-          <div className="mt-1 text-sm font-bold text-slate-900">
-            {item.views}
-          </div>
-        </div>
-        <div className="rounded-2xl bg-slate-50 p-3">
-          <div className="text-xs text-slate-500">{copy.installs}</div>
-          <div className="mt-1 text-sm font-bold text-slate-900">
-            {item.installs}
-          </div>
-        </div>
-        <div className="rounded-2xl bg-slate-50 p-3">
-          <div className="text-xs text-slate-500">{copy.agent}</div>
-          <div className="mt-1 text-sm font-bold text-slate-900">
-            {item.agent}
-          </div>
         </div>
       </div>
     </div>
@@ -288,17 +202,7 @@ const TikTokIcon = () => (
   </svg>
 );
 
-function AgentWorkspace({
-  copy,
-  agent,
-  onBack,
-  onConfigure,
-  onPublish,
-  currentAuthor,
-  feedItems,
-  onOpenAuthor,
-  lang,
-}) {
+function AgentWorkspace({ copy, agent, onBack, onConfigure }) {
   if (!agent) return null;
 
   const queue = [
@@ -367,19 +271,20 @@ function AgentWorkspace({
   return (
     <>
       <Card>
-        <div className="flex items-start justify-between gap-4">
-          <div>
+        <div className="flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between">
+          <div className="min-w-0">
             <button
               onClick={onBack}
               className="mb-3 rounded-xl bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-700"
             >
               ← {copy.back}
             </button>
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-100 text-violet-700">
+
+            <div className="flex items-start gap-3">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-violet-100 text-violet-700">
                 <Bot size={22} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-2xl font-black text-slate-900">
                   {agent.name}
                 </div>
@@ -392,12 +297,6 @@ function AgentWorkspace({
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={onPublish}
-              className="rounded-xl bg-indigo-600 px-4 py-2 text-sm font-semibold text-white"
-            >
-              Publish to Marketplace
-            </button>
             <StatusPill active={agent.active} copy={copy} />
             <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">
               {agent.mode}
@@ -412,7 +311,7 @@ function AgentWorkspace({
         </div>
       </Card>
 
-      <div className="grid grid-cols-[1.08fr_0.92fr] gap-4">
+      <div className="grid gap-4 xl:grid-cols-[1.08fr_0.92fr]">
         <div className="space-y-4">
           <Card>
             <div className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-900">
@@ -465,7 +364,7 @@ function AgentWorkspace({
           </Card>
 
           <Card>
-            <div className="mb-4 flex items-center justify-between gap-3">
+            <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-2 text-lg font-semibold text-slate-900">
                 <FlaskConical size={18} /> Variant Lab
               </div>
@@ -474,7 +373,7 @@ function AgentWorkspace({
               </div>
             </div>
 
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-2 2xl:grid-cols-3">
               {variants.map((variant) => (
                 <VariantCard key={variant.title} {...variant} />
               ))}
@@ -543,130 +442,41 @@ function AgentWorkspace({
               ))}
             </div>
           </Card>
-        </div>
-      </div>
 
-      <Card>
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div>
-            <div className="text-xl font-semibold">{copy.creatorHub}</div>
-            <div className="text-sm text-slate-500">{copy.creatorHubDesc}</div>
-          </div>
-          <div className="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700">
-            viral loop
-          </div>
-        </div>
+          <Card>
+            <div className="text-lg font-semibold text-slate-900">
+              {copy.creatorHub}
+            </div>
+            <div className="mt-1 text-sm text-slate-500">
+              {copy.creatorHubDesc}
+            </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">Creator</div>
-            <div className="mt-3 flex items-center gap-3">
-              <Avatar
-                name={currentAuthor.name}
-                image={currentAuthor.image}
-                size="sm"
-              />
-              <div>
-                <div className="text-sm font-semibold text-slate-900">
-                  {currentAuthor.handle}
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <div className="text-xs text-slate-500">
+                  {copy.totalAgentInstalls}
                 </div>
-                <div className="text-xs text-slate-500">AI content builder</div>
+                <div className="mt-2 text-2xl font-black text-slate-900">3</div>
+                <div className="mt-1 text-xs text-emerald-600">
+                  {copy.growing}
+                </div>
+              </div>
+
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <div className="text-xs text-slate-500">
+                  {copy.viewsGenerated}
+                </div>
+                <div className="mt-2 text-2xl font-black text-slate-900">
+                  48.3M
+                </div>
+                <div className="mt-1 text-xs text-slate-500">
+                  {copy.allAgents}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">
-              {copy.totalAgentInstalls}
-            </div>
-            <div className="mt-3 text-2xl font-semibold text-slate-900">
-              12,421
-            </div>
-            <div className="text-xs text-emerald-600">{copy.growing}</div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">{copy.viewsGenerated}</div>
-            <div className="mt-3 text-2xl font-semibold text-slate-900">
-              48.3M
-            </div>
-            <div className="text-xs text-emerald-600">{copy.allAgents}</div>
-          </div>
+          </Card>
         </div>
-
-        <div className="mt-6 grid gap-3 md:grid-cols-3">
-          <VariantCard
-            title="Motivation Viral Agent"
-            score={93}
-            hook="Nobody tells you this about discipline"
-            state="ready"
-          />
-          <VariantCard
-            title="AI News Shorts"
-            score={88}
-            hook="AI just replaced another job"
-            state="queued"
-          />
-          <VariantCard
-            title="History Facts Engine"
-            score={81}
-            hook="This event changed the world"
-            state="draft"
-          />
-        </div>
-
-        <div className="mt-4 text-sm text-slate-500">
-          {lang === "ru"
-            ? "Эта страница становится публичной для каждого автора. Люди находят агентов, копируют их и устанавливают."
-            : "This page becomes public for every creator. People discover agents, copy them, and install them."}
-        </div>
-      </Card>
-
-      <Card>
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div>
-            <div className="text-xl font-semibold">{copy.feedTitle}</div>
-            <div className="text-sm text-slate-500">{copy.feedDesc}</div>
-          </div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
-            <Radio size={12} /> {copy.discoveryLoop}
-          </div>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {feedItems.map((item) => (
-            <AgentFeedCard
-              key={item.id}
-              item={item}
-              onOpenAuthor={onOpenAuthor}
-              copy={copy}
-            />
-          ))}
-        </div>
-
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">{copy.whyMatters}</div>
-            <div className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-              {copy.whyMattersText}
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">
-              {copy.growthMechanic}
-            </div>
-            <div className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-              {copy.growthMechanicText}
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">{copy.outcome}</div>
-            <div className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-              {copy.outcomeText}
-            </div>
-          </div>
-        </div>
-      </Card>
+      </div>
     </>
   );
 }
@@ -682,11 +492,6 @@ export default function Dashboard({
   selectedWorkspaceAgent,
   setSelectedWorkspaceId,
   setEditingAgentId,
-  setPublishingAgent,
-  currentAuthor,
-  feedItems,
-  setSelectedAuthor,
-  lang,
 }) {
   return selectedWorkspaceAgent ? (
     <AgentWorkspace
@@ -694,18 +499,13 @@ export default function Dashboard({
       agent={selectedWorkspaceAgent}
       onBack={() => setSelectedWorkspaceId(null)}
       onConfigure={() => setEditingAgentId(selectedWorkspaceAgent.id)}
-      onPublish={() => setPublishingAgent(selectedWorkspaceAgent)}
-      currentAuthor={currentAuthor}
-      feedItems={feedItems}
-      onOpenAuthor={setSelectedAuthor}
-      lang={lang}
     />
   ) : (
     <>
       <Card className="overflow-hidden bg-[linear-gradient(135deg,rgba(139,92,246,0.92),rgba(59,130,246,0.85))] text-white">
-        <div className="flex items-start justify-between gap-6">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-black tracking-tight">
+            <h1 className="text-2xl font-black tracking-tight sm:text-3xl">
               {copy.heroTitle}
             </h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-white/85">
@@ -741,7 +541,7 @@ export default function Dashboard({
             </div>
           </div>
 
-          <div className="hidden min-w-[220px] rounded-3xl bg-white/15 p-4 backdrop-blur md:block">
+          <div className="w-full rounded-3xl bg-white/15 p-4 backdrop-blur lg:w-[240px]">
             <div className="text-xs text-white/70">{copy.liveStatus}</div>
             <div className="mt-2 text-2xl font-black">
               {totals.activeAgents}/{totals.agents}
@@ -797,7 +597,7 @@ export default function Dashboard({
         </Card>
       )}
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <StatCard
           emoji="🎬"
           value={totals.videos}
@@ -824,9 +624,9 @@ export default function Dashboard({
         />
       </div>
 
-      <div className="grid grid-cols-[1.2fr_0.8fr] gap-4">
+      <div className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
         <Card>
-          <div className="mb-4 flex items-center justify-between">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="text-lg font-semibold">{copy.agentActivity}</div>
               <div className="text-sm text-slate-500">
@@ -848,8 +648,8 @@ export default function Dashboard({
                 key={agent.id}
                 className="rounded-2xl border border-slate-200 bg-white/70 px-4 py-3"
               >
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="min-w-0">
                     <div className="font-semibold">{agent.name}</div>
                     <div className="mt-1 text-xs text-slate-500">
                       {agent.topic} • {agent.videos} {copy.videosPerDay} •{" "}
@@ -857,10 +657,10 @@ export default function Dashboard({
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <div className="text-right text-xs text-slate-500">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="text-xs text-slate-500 sm:text-right">
                       <div>{agent.lastRun}</div>
-                      <div className="mt-1 flex items-center justify-end gap-1">
+                      <div className="mt-1 flex items-center gap-1 sm:justify-end">
                         {agent.health === "healthy" ? (
                           <CheckCircle2
                             size={12}
@@ -943,148 +743,6 @@ export default function Dashboard({
           </button>
         </Card>
       </div>
-
-      <Card>
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div>
-            <div className="text-xl font-semibold">{copy.creatorHub}</div>
-            <div className="text-sm text-slate-500">{copy.creatorHubDesc}</div>
-          </div>
-          <div className="rounded-full bg-violet-50 px-3 py-1 text-xs font-semibold text-violet-700">
-            viral loop
-          </div>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">Creator</div>
-            <div className="mt-3 flex items-center gap-3">
-              <Avatar
-                name={currentAuthor.name}
-                image={currentAuthor.image}
-                size="sm"
-              />
-              <div>
-                <div className="text-sm font-semibold text-slate-900">
-                  {currentAuthor.handle}
-                </div>
-                <div className="text-xs text-slate-500">AI content builder</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">
-              {copy.totalAgentInstalls}
-            </div>
-            <div className="mt-3 text-2xl font-semibold text-slate-900">
-              12,421
-            </div>
-            <div className="text-xs text-emerald-600">{copy.growing}</div>
-          </div>
-
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">{copy.viewsGenerated}</div>
-            <div className="mt-3 text-2xl font-semibold text-slate-900">
-              48.3M
-            </div>
-            <div className="text-xs text-emerald-600">{copy.allAgents}</div>
-          </div>
-        </div>
-
-        <div className="mt-6 grid gap-3 md:grid-cols-3">
-          <VariantCard
-            title={
-              lang === "ru"
-                ? "Вирусный агент мотивации"
-                : "Motivation Viral Agent"
-            }
-            score={93}
-            hook={
-              lang === "ru"
-                ? "Никто не говорит тебе этого о дисциплине"
-                : "Nobody tells you this about discipline"
-            }
-            state="ready"
-          />
-          <VariantCard
-            title={lang === "ru" ? "AI Новости Shorts" : "AI News Shorts"}
-            score={88}
-            hook={
-              lang === "ru"
-                ? "AI только что заменил ещё одну профессию"
-                : "AI just replaced another job"
-            }
-            state="queued"
-          />
-          <VariantCard
-            title={
-              lang === "ru"
-                ? "Движок фактов истории"
-                : "History Facts Engine"
-            }
-            score={81}
-            hook={
-              lang === "ru"
-                ? "Это событие изменило мир"
-                : "This event changed the world"
-            }
-            state="draft"
-          />
-        </div>
-
-        <div className="mt-4 text-sm text-slate-500">
-          {lang === "ru"
-            ? "Это публичная страница каждого автора. Люди видят агентов, переходят в профиль и устанавливают их."
-            : "This page becomes public for every creator. People discover agents, copy them, and install them."}
-        </div>
-      </Card>
-
-      <Card>
-        <div className="mb-4 flex items-center justify-between gap-3">
-          <div>
-            <div className="text-xl font-semibold">{copy.feedTitle}</div>
-            <div className="text-sm text-slate-500">{copy.feedDesc}</div>
-          </div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">
-            <Radio size={12} /> {copy.discoveryLoop}
-          </div>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {feedItems.map((item) => (
-            <AgentFeedCard
-              key={item.id}
-              item={item}
-              onOpenAuthor={setSelectedAuthor}
-              copy={copy}
-            />
-          ))}
-        </div>
-
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">{copy.whyMatters}</div>
-            <div className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-              {copy.whyMattersText}
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">
-              {copy.growthMechanic}
-            </div>
-            <div className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-              {copy.growthMechanicText}
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4">
-            <div className="text-xs text-slate-500">{copy.outcome}</div>
-            <div className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-              {copy.outcomeText}
-            </div>
-          </div>
-        </div>
-      </Card>
     </>
   );
 }
