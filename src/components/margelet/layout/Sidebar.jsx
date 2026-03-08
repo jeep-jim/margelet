@@ -447,13 +447,13 @@ export default function Sidebar({
         onAuth={handleAuthSuccess}
       />
 
-      <AccountModal
+        <AccountModal
         open={accountOpen}
         onClose={() => setAccountOpen(false)}
         tgUser={visibleUser}
         onLogout={handleLogout}
-        onClearSession={handleClearSession}
-      />
+        onAddAccount={() => setAuthOpen(true)}
+        />    
     </>
   );
 }
