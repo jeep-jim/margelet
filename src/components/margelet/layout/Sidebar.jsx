@@ -12,7 +12,6 @@ import {
   User,
   X,
   MessageCircle,
-  ShieldCheck,
   LogOut,
 } from "lucide-react";
 
@@ -98,56 +97,61 @@ function TelegramAuthModal({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/30 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-sm rounded-[28px] border border-white/70 bg-white p-6 shadow-[0_30px_90px_rgba(15,23,42,0.18)]">
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex items-start gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#8b5cf6,#60a5fa)] text-white">
-              <MessageCircle size={20} />
-            </div>
+    <div className="fixed inset-0 z-[120] flex items-center justify-center bg-slate-900/35 p-4 backdrop-blur-sm">
+      <div className="w-full max-w-[360px] overflow-hidden rounded-[30px] bg-white shadow-[0_30px_90px_rgba(15,23,42,0.22)]">
+        <div className="relative overflow-hidden px-6 pb-6 pt-6 text-white">
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,#8b5cf6_0%,#7c6cff_35%,#60a5fa_100%)]" />
 
-            <div>
-              <div className="text-xl font-black text-slate-900">
-                Вход
-              </div>
-              <div className="mt-1 text-sm text-slate-500">
-                Быстрый доступ к аккаунту
-              </div>
-            </div>
+          <div className="absolute inset-0 grid grid-cols-8 grid-rows-5 opacity-20">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <div
+                key={i}
+                className={`${i % 3 === 0 ? "bg-white/20" : "bg-transparent"} border border-white/10`}
+              />
+            ))}
           </div>
 
-          <button
-            onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-100 text-slate-600 transition hover:bg-slate-200"
-            aria-label="Close"
-          >
-            <X size={16} />
-          </button>
-        </div>
+          <div className="relative">
+            <button
+              onClick={onClose}
+              className="absolute right-0 top-0 inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/15 text-white transition hover:bg-white/25"
+              aria-label="Close"
+            >
+              <X size={16} />
+            </button>
 
-        <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-          <div className="text-sm font-medium text-slate-700">
-            Оплата внутри Telegram Stars
+            <div className="flex items-start gap-4 pr-12">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white/18 text-[24px] backdrop-blur">
+                👾
+              </div>
+
+              <div className="min-w-0 pt-1">
+                <div className="text-[36px] font-black leading-none tracking-[-0.03em]">
+                  Вход
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 text-[14px] font-semibold leading-none text-white/95 whitespace-nowrap">
+              только через аккаунт Telegram
+            </div>
+
+            <div className="mt-7 text-[24px] font-black tracking-[-0.01em] leading-none whitespace-nowrap">
+              margeleT → Telegram
+            </div>
           </div>
         </div>
 
-        <div className="mt-5">
+        <div className="px-6 pb-6 pt-5">
           {!botUsername ? (
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900">
-              Не задан Telegram bot username.
-              <br />
-              Добавь в <span className="font-mono">.env.local</span>:
-              <div className="mt-2 rounded-xl bg-white px-3 py-2 font-mono text-xs text-slate-800">
-                NEXT_PUBLIC_TELEGRAM_BOT_USERNAME=agent_margelet_bot
-              </div>
+              Не задан bot username в переменных окружения.
             </div>
           ) : (
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <div
-                ref={widgetRef}
-                className="flex min-h-[56px] items-center justify-center"
-              />
-            </div>
+            <div
+              ref={widgetRef}
+              className="flex min-h-[64px] items-center justify-center"
+            />
           )}
         </div>
       </div>
@@ -241,11 +245,13 @@ export default function Sidebar({
     setTgUser(null);
   };
 
-  const visibleUser = currentAuthor || tgUser;
+  const visibleUser = tgUser || currentAuthor;
 
-  const authLabel = visibleUser?.username
-    ? `@${visibleUser.username}`
-    : visibleUser?.first_name || visibleUser?.name || "Войти";
+  const authLabel = tgUser
+    ? tgUser?.username
+      ? `@${tgUser.username}`
+      : tgUser?.first_name || "Аккаунт"
+    : "Войти";
 
   const NavButton = ({ item }) => {
     const Icon = item.icon;
@@ -302,15 +308,10 @@ export default function Sidebar({
               className="inline-flex h-11 items-center gap-2 rounded-2xl bg-white/70 px-3 text-sm font-medium text-slate-700 transition hover:bg-white"
               title={authLabel}
             >
-              {visibleUser?.photo_url || visibleUser?.image ? (
+              {tgUser?.photo_url ? (
                 <Avatar
-                  name={
-                    visibleUser?.first_name ||
-                    visibleUser?.name ||
-                    visibleUser?.username ||
-                    "User"
-                  }
-                  image={visibleUser?.photo_url || visibleUser?.image}
+                  name={tgUser?.first_name || tgUser?.username || "User"}
+                  image={tgUser.photo_url}
                   size="sm"
                 />
               ) : (
@@ -391,15 +392,10 @@ export default function Sidebar({
                 }}
                 className="mb-4 flex w-full items-center gap-3 rounded-2xl bg-slate-50 p-3 text-left transition hover:bg-slate-100"
               >
-                {visibleUser?.photo_url || visibleUser?.image ? (
+                {tgUser?.photo_url ? (
                   <Avatar
-                    name={
-                      visibleUser?.first_name ||
-                      visibleUser?.name ||
-                      visibleUser?.username ||
-                      "User"
-                    }
-                    image={visibleUser?.photo_url || visibleUser?.image}
+                    name={tgUser?.first_name || tgUser?.username || "User"}
+                    image={tgUser.photo_url}
                     size="md"
                   />
                 ) : (
@@ -413,7 +409,7 @@ export default function Sidebar({
                     {authLabel}
                   </div>
                   <div className="truncate text-xs text-slate-500">
-                    Вход через Telegram
+                    Аккаунт
                   </div>
                 </div>
               </button>
