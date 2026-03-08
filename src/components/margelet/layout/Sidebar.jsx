@@ -11,9 +11,9 @@ import {
   Settings,
   User,
   X,
-  MessageCircle,
   LogOut,
 } from "lucide-react";
+import AccountModal from "../modules/AccountModal";
 
 const TG_USER_LS_KEY = "margelet_tg_user_v1";
 
@@ -39,11 +39,7 @@ function Avatar({ name, image, size = "md" }) {
   );
 }
 
-function TelegramAuthModal({
-  open,
-  onClose,
-  onAuth,
-}) {
+function TelegramAuthModal({ open, onClose, onAuth }) {
   const widgetRef = useRef(null);
   const botUsername = process.env.NEXT_PUBLIC_TELEGRAM_BOT_USERNAME;
 
@@ -91,6 +87,9 @@ function TelegramAuthModal({
       if (widgetRef.current) {
         widgetRef.current.innerHTML = "";
       }
+      try {
+        delete window[callbackName];
+      } catch {}
     };
   }, [open, botUsername, onAuth, onClose]);
 
@@ -106,7 +105,9 @@ function TelegramAuthModal({
             {Array.from({ length: 40 }).map((_, i) => (
               <div
                 key={i}
-                className={`${i % 3 === 0 ? "bg-white/20" : "bg-transparent"} border border-white/10`}
+                className={`${
+                  i % 3 === 0 ? "bg-white/20" : "bg-transparent"
+                } border border-white/10`}
               />
             ))}
           </div>
@@ -132,11 +133,11 @@ function TelegramAuthModal({
               </div>
             </div>
 
-            <div className="mt-4 text-[14px] font-semibold leading-none text-white/95 whitespace-nowrap">
+            <div className="mt-4 whitespace-nowrap text-[14px] font-semibold leading-none text-white/95">
               только через аккаунт Telegram
             </div>
 
-            <div className="mt-7 text-[24px] font-black tracking-[-0.01em] leading-none whitespace-nowrap">
+            <div className="mt-7 whitespace-nowrap text-[24px] font-black leading-none tracking-[-0.01em]">
               margeleT → Telegram
             </div>
           </div>
@@ -171,6 +172,7 @@ export default function Sidebar({
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
   const [tgUser, setTgUser] = useState(null);
 
   useEffect(() => {
@@ -228,7 +230,7 @@ export default function Sidebar({
 
   const handleOpenAuth = () => {
     if (tgUser) {
-      onOpenAuthor?.();
+      setAccountOpen(true);
       return;
     }
 
@@ -241,8 +243,21 @@ export default function Sidebar({
   };
 
   const handleLogout = () => {
-    localStorage.removeItem(TG_USER_LS_KEY);
+    try {
+      localStorage.removeItem(TG_USER_LS_KEY);
+    } catch {}
+
     setTgUser(null);
+    setAccountOpen(false);
+  };
+
+  const handleClearSession = () => {
+    try {
+      localStorage.removeItem(TG_USER_LS_KEY);
+    } catch {}
+
+    setTgUser(null);
+    setAccountOpen(false);
   };
 
   const visibleUser = tgUser || currentAuthor;
@@ -322,17 +337,6 @@ export default function Sidebar({
               <span className="hidden lg:inline">{authLabel}</span>
             </button>
 
-            {tgUser ? (
-              <button
-                onClick={handleLogout}
-                className="inline-flex h-11 items-center gap-2 rounded-2xl bg-white/70 px-3 text-sm font-medium text-slate-700 transition hover:bg-white"
-                title="Выйти"
-              >
-                <LogOut size={16} />
-                <span className="hidden lg:inline">Выйти</span>
-              </button>
-            ) : null}
-
             <button
               onClick={() => setLang(lang === "en" ? "ru" : "en")}
               className="inline-flex h-11 items-center gap-2 rounded-2xl bg-white/70 px-3 text-sm font-medium text-slate-700 transition hover:bg-white"
@@ -384,7 +388,7 @@ export default function Sidebar({
               <button
                 onClick={() => {
                   if (tgUser) {
-                    onOpenAuthor?.();
+                    setAccountOpen(true);
                   } else {
                     setAuthOpen(true);
                   }
@@ -420,19 +424,6 @@ export default function Sidebar({
                 ))}
               </div>
 
-              {tgUser ? (
-                <button
-                  onClick={() => {
-                    handleLogout();
-                    setMobileOpen(false);
-                  }}
-                  className="mt-4 flex w-full items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3 text-left text-slate-700 transition hover:bg-slate-100"
-                >
-                  <LogOut size={16} />
-                  <span className="font-medium">Выйти</span>
-                </button>
-              ) : null}
-
               <div className="mt-4 border-t border-slate-200 pt-4">
                 <button
                   onClick={() => setLang(lang === "en" ? "ru" : "en")}
@@ -454,6 +445,14 @@ export default function Sidebar({
         open={authOpen}
         onClose={() => setAuthOpen(false)}
         onAuth={handleAuthSuccess}
+      />
+
+      <AccountModal
+        open={accountOpen}
+        onClose={() => setAccountOpen(false)}
+        tgUser={visibleUser}
+        onLogout={handleLogout}
+        onClearSession={handleClearSession}
       />
     </>
   );
