@@ -47,6 +47,10 @@ import {
   FileVideo,
   ListChecks,
   FolderKanban,
+  Cpu,
+  Radio,
+  LibraryBig,
+  SlidersHorizontal,
 } from "lucide-react";
 
 function Card({ children, className = "" }) {
@@ -289,6 +293,40 @@ function ModeCard({ item, active, onClick }) {
   );
 }
 
+function ChoiceCard({ title, desc, active, onClick, icon: Icon }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`rounded-2xl border p-4 text-left transition ${
+        active
+          ? "border-slate-900 bg-slate-900 text-white shadow-sm"
+          : "border-slate-300 bg-slate-50 hover:border-slate-400 hover:bg-white"
+      }`}
+    >
+      <div className="flex items-start gap-3">
+        <div
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl ${
+            active ? "bg-white/15 text-white" : "bg-white text-slate-600"
+          }`}
+        >
+          {Icon ? <Icon size={18} /> : <Check size={16} />}
+        </div>
+        <div className="min-w-0">
+          <div className={`text-sm font-black ${active ? "text-white" : "text-slate-900"}`}>
+            {title}
+          </div>
+          {desc ? (
+            <div className={`mt-1 text-xs ${active ? "text-white/75" : "text-slate-500"}`}>
+              {desc}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </button>
+  );
+}
+
 const categoryOptions = [
   { value: "motivation", label: "Мотивация" },
   { value: "news", label: "Новости" },
@@ -463,6 +501,277 @@ const renderModeOptions = [
     icon: Video,
   },
 ];
+
+const brainStyleOptions = [
+  {
+    value: "sharp",
+    label: "Sharp",
+    desc: "Остро, коротко, уверенно.",
+    icon: Zap,
+  },
+  {
+    value: "educational",
+    label: "Educational",
+    desc: "Понятно, полезно, по шагам.",
+    icon: BadgeHelp,
+  },
+  {
+    value: "entertaining",
+    label: "Entertaining",
+    desc: "Живо, с драйвом и вау-эффектом.",
+    icon: Sparkles,
+  },
+  {
+    value: "premium",
+    label: "Premium",
+    desc: "Дорого, чисто, статусно.",
+    icon: Briefcase,
+  },
+  {
+    value: "aggressive",
+    label: "Aggressive",
+    desc: "Жёстко, напористо, с провокацией.",
+    icon: Flame,
+  },
+  {
+    value: "calm",
+    label: "Calm",
+    desc: "Спокойно, ровно, без шума.",
+    icon: Brain,
+  },
+];
+
+const brainHookOptions = [
+  {
+    value: "problem-first",
+    label: "Problem first",
+    desc: "Сразу заходит через боль.",
+    icon: AlertCircle,
+  },
+  {
+    value: "bold-claim",
+    label: "Bold claim",
+    desc: "Сильное заявление с первых секунд.",
+    icon: Rocket,
+  },
+  {
+    value: "question",
+    label: "Question",
+    desc: "Вопросом цепляет внимание.",
+    icon: BadgeHelp,
+  },
+  {
+    value: "contrarian",
+    label: "Contrarian",
+    desc: "Ломает привычное мнение.",
+    icon: Target,
+  },
+  {
+    value: "story-hook",
+    label: "Story hook",
+    desc: "Начинает как историю.",
+    icon: FileText,
+  },
+  {
+    value: "trend-hook",
+    label: "Trend hook",
+    desc: "Опирается на тренд или инфоповод.",
+    icon: Newspaper,
+  },
+];
+
+const brainLogicOptions = [
+  {
+    value: "insight-to-action",
+    label: "Insight → Action",
+    desc: "Сначала мысль, потом действие.",
+    icon: Brain,
+  },
+  {
+    value: "problem-to-fix",
+    label: "Problem → Fix",
+    desc: "Боль и сразу решение.",
+    icon: WoundIcon(),
+  },
+  {
+    value: "myth-to-truth",
+    label: "Myth → Truth",
+    desc: "Разрушает заблуждение.",
+    icon: ShieldCheck,
+  },
+  {
+    value: "steps-tutorial",
+    label: "Steps / Tutorial",
+    desc: "Пошаговый сценарий.",
+    icon: ListChecks,
+  },
+  {
+    value: "storytelling",
+    label: "Storytelling",
+    desc: "Логика через сюжет.",
+    icon: LibraryBig,
+  },
+  {
+    value: "comparison",
+    label: "Comparison",
+    desc: "Сравнение двух подходов.",
+    icon: SlidersHorizontal,
+  },
+];
+
+const brainStructureOptions = [
+  {
+    value: "hook-problem-solution-cta",
+    label: "Hook → Problem → Solution → CTA",
+    desc: "Классическая быстрая структура.",
+    icon: Layers3,
+  },
+  {
+    value: "hook-steps-result",
+    label: "Hook → Steps → Result",
+    desc: "Через конкретные шаги.",
+    icon: ListChecks,
+  },
+  {
+    value: "question-answer-cta",
+    label: "Question → Answer → CTA",
+    desc: "Простой понятный формат.",
+    icon: BadgeHelp,
+  },
+  {
+    value: "story-lesson-cta",
+    label: "Story → Lesson → CTA",
+    desc: "История и вывод.",
+    icon: FileText,
+  },
+  {
+    value: "claim-proof-offer",
+    label: "Claim → Proof → Offer",
+    desc: "Сначала тезис, потом доказательство.",
+    icon: ShieldCheck,
+  },
+];
+
+const brainPersonaOptions = [
+  {
+    value: "expert-friend",
+    label: "Expert friend",
+    desc: "Эксперт, но без занудства.",
+    icon: Users,
+  },
+  {
+    value: "analyst",
+    label: "Analyst",
+    desc: "Факты, разбор, логика.",
+    icon: Cpu,
+  },
+  {
+    value: "creator",
+    label: "Creator",
+    desc: "От лица практикующего автора.",
+    icon: Sparkles,
+  },
+  {
+    value: "mentor",
+    label: "Mentor",
+    desc: "Подача как наставник.",
+    icon: Brain,
+  },
+  {
+    value: "news-voice",
+    label: "News voice",
+    desc: "Холодно, быстро, по фактам.",
+    icon: Newspaper,
+  },
+  {
+    value: "storyteller",
+    label: "Storyteller",
+    desc: "Говорит как рассказчик.",
+    icon: LibraryBig,
+  },
+];
+
+const brainProofOptions = [
+  {
+    value: "examples",
+    label: "Examples",
+    desc: "Через примеры и кейсы.",
+    icon: FolderKanban,
+  },
+  {
+    value: "facts",
+    label: "Facts",
+    desc: "Факты и тезисы.",
+    icon: ShieldCheck,
+  },
+  {
+    value: "personal-tone",
+    label: "Personal tone",
+    desc: "Как будто из личного опыта.",
+    icon: Users,
+  },
+  {
+    value: "visual-cues",
+    label: "Visual cues",
+    desc: "Упор на кадры и подсказки визуала.",
+    icon: ImageIcon,
+  },
+  {
+    value: "data-points",
+    label: "Data points",
+    desc: "Через цифры и метрики.",
+    icon: Hash,
+  },
+  {
+    value: "social-proof",
+    label: "Social proof",
+    desc: "Через доверие и подтверждение извне.",
+    icon: CheckCircle2,
+  },
+];
+
+const brainCtaOptions = [
+  {
+    value: "soft",
+    label: "Soft",
+    desc: "Мягкий ненавязчивый CTA.",
+    icon: Sparkles,
+  },
+  {
+    value: "direct",
+    label: "Direct",
+    desc: "Прямой призыв к действию.",
+    icon: Rocket,
+  },
+  {
+    value: "community",
+    label: "Community",
+    desc: "Вовлекает в диалог и комьюнити.",
+    icon: Users,
+  },
+  {
+    value: "curiosity",
+    label: "Curiosity",
+    desc: "Оставляет интригу.",
+    icon: BadgeHelp,
+  },
+  {
+    value: "save-share",
+    label: "Save & share",
+    desc: "Под сохранение и репост.",
+    icon: Download,
+  },
+  {
+    value: "follow-part-2",
+    label: "Follow for part 2",
+    desc: "Сериализация контента.",
+    icon: Radio,
+  },
+];
+
+function WoundIcon() {
+  return Target;
+}
 
 function getAccentClass(accentKey) {
   return (
@@ -647,6 +956,23 @@ export default function AgentWorkspace({
     return agent?.outputType || "slideshow-video";
   }, [agent]);
 
+  const initialBrain = useMemo(
+    () => ({
+      style: agent?.brain?.style || "sharp",
+      hookType: agent?.brain?.hookType || "problem-first",
+      scriptLogic: agent?.brain?.scriptLogic || "insight-to-action",
+      videoStructure: agent?.brain?.videoStructure || "hook-problem-solution-cta",
+      persona: agent?.brain?.persona || "expert-friend",
+      proofMode: agent?.brain?.proofMode || "examples",
+      ctaStyle: agent?.brain?.ctaStyle || "soft",
+      energy:
+        typeof agent?.brain?.energy === "number"
+          ? agent.brain.energy
+          : Number(agent?.brain?.energy || 70),
+    }),
+    [agent]
+  );
+
   const [workspace, setWorkspace] = useState({
     name: agent?.name || "",
     topic: agent?.topic || "",
@@ -670,6 +996,15 @@ export default function AgentWorkspace({
     briefTone: agent?.tone || "",
     briefStyle: videoPlan?.style || agent?.style || "",
     briefRestrictions: "",
+
+    brainStyle: initialBrain.style,
+    brainHookType: initialBrain.hookType,
+    brainScriptLogic: initialBrain.scriptLogic,
+    brainVideoStructure: initialBrain.videoStructure,
+    brainPersona: initialBrain.persona,
+    brainProofMode: initialBrain.proofMode,
+    brainCtaStyle: initialBrain.ctaStyle,
+    brainEnergy: initialBrain.energy,
 
     sourceLinks: "",
     sourceNotes: "",
@@ -746,6 +1081,22 @@ export default function AgentWorkspace({
     [workspace.visualSourceType]
   );
 
+  const activeBrainStyle = brainStyleOptions.find((item) => item.value === workspace.brainStyle);
+  const activeBrainHook = brainHookOptions.find((item) => item.value === workspace.brainHookType);
+  const activeBrainLogic = brainLogicOptions.find((item) => item.value === workspace.brainScriptLogic);
+  const activeBrainStructure = brainStructureOptions.find(
+    (item) => item.value === workspace.brainVideoStructure
+  );
+  const activeBrainPersona = brainPersonaOptions.find(
+    (item) => item.value === workspace.brainPersona
+  );
+  const activeBrainProof = brainProofOptions.find(
+    (item) => item.value === workspace.brainProofMode
+  );
+  const activeBrainCta = brainCtaOptions.find(
+    (item) => item.value === workspace.brainCtaStyle
+  );
+
   const readiness = useMemo(() => {
     const items = [
       {
@@ -776,6 +1127,19 @@ export default function AgentWorkspace({
             : "Заполни, для кого контент и зачем он нужен.",
       },
       {
+        ok: Boolean(
+          workspace.brainStyle &&
+            workspace.brainHookType &&
+            workspace.brainScriptLogic &&
+            workspace.brainVideoStructure
+        ),
+        title: "Логика поведения агента выбрана",
+        hint:
+          activeBrainStyle && activeBrainHook
+            ? `${activeBrainStyle.label} • ${activeBrainHook.label}`
+            : "Настрой Agent Brain.",
+      },
+      {
         ok: Boolean(workspace.duration && workspace.voice && workspace.format),
         title: "Генерация настроена",
         hint:
@@ -799,9 +1163,9 @@ export default function AgentWorkspace({
       completed,
       total: items.length,
       percent: Math.round((completed / items.length) * 100),
-      ready: completed >= 5,
+      ready: completed >= 6,
     };
-  }, [workspace, selectedPlatformLabels, outputMeta, visualMeta]);
+  }, [workspace, selectedPlatformLabels, outputMeta, visualMeta, activeBrainStyle, activeBrainHook]);
 
   const workspaceReady =
     workspace.name.trim() &&
@@ -811,7 +1175,11 @@ export default function AgentWorkspace({
     (workspace.topic.trim() || workspace.briefChannel.trim()) &&
     workspace.duration &&
     workspace.voice &&
-    workspace.publishPlatforms.length > 0;
+    workspace.publishPlatforms.length > 0 &&
+    workspace.brainStyle &&
+    workspace.brainHookType &&
+    workspace.brainScriptLogic &&
+    workspace.brainVideoStructure;
 
   const setField = (key, value) => {
     setWorkspace((prev) => ({ ...prev, [key]: value }));
@@ -865,6 +1233,16 @@ export default function AgentWorkspace({
       style: workspace.briefStyle,
       restrictions: workspace.briefRestrictions,
     },
+    brain: {
+      style: workspace.brainStyle,
+      hookType: workspace.brainHookType,
+      scriptLogic: workspace.brainScriptLogic,
+      videoStructure: workspace.brainVideoStructure,
+      persona: workspace.brainPersona,
+      proofMode: workspace.brainProofMode,
+      ctaStyle: workspace.brainCtaStyle,
+      energy: Number(workspace.brainEnergy) || 70,
+    },
     sources: {
       links: workspace.sourceLinks,
       notes: workspace.sourceNotes,
@@ -903,6 +1281,16 @@ export default function AgentWorkspace({
     platforms: workspace.publishPlatforms,
     requestedVideos,
     videosPerDay: requestedVideos,
+    brain: {
+      style: workspace.brainStyle,
+      hookType: workspace.brainHookType,
+      scriptLogic: workspace.brainScriptLogic,
+      videoStructure: workspace.brainVideoStructure,
+      persona: workspace.brainPersona,
+      proofMode: workspace.brainProofMode,
+      ctaStyle: workspace.brainCtaStyle,
+      energy: Number(workspace.brainEnergy) || 70,
+    },
     workspace,
   });
 
@@ -1023,7 +1411,7 @@ export default function AgentWorkspace({
 
             <div className="mt-3 max-w-3xl text-sm text-slate-600">
               Здесь настраивается агент целиком: что он производит, откуда берёт визуал,
-              что выдаёт на выходе, куда публикует и как работает вживую.
+              как думает, что выдаёт на выходе, куда публикует и как работает вживую.
             </div>
           </div>
 
@@ -1198,7 +1586,7 @@ export default function AgentWorkspace({
                   </div>
                 </div>
               </div>
-              
+
               <div className="grid gap-4 md:grid-cols-2">
                 <Input
                   label="Название агента"
@@ -1453,6 +1841,198 @@ export default function AgentWorkspace({
                     + {item}
                   </button>
                 ))}
+              </div>
+            </div>
+          </Card>
+
+          <Card>
+            <SectionTitle
+              icon={Brain}
+              title="Agent Brain"
+              desc="Как агент думает, с какого хука стартует, как строит ролик и каким голосом подаёт идею."
+            />
+
+            <div className="mt-5 space-y-5">
+              <div className="rounded-2xl border border-violet-200 bg-violet-50 p-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  <Pill className="bg-white text-slate-700 ring-1 ring-slate-200">
+                    <Brain size={12} />
+                    {activeBrainStyle?.label || "Style"}
+                  </Pill>
+                  <Pill className="bg-white text-slate-700 ring-1 ring-slate-200">
+                    <Rocket size={12} />
+                    {activeBrainHook?.label || "Hook"}
+                  </Pill>
+                  <Pill className="bg-white text-slate-700 ring-1 ring-slate-200">
+                    <Cpu size={12} />
+                    {activeBrainLogic?.label || "Logic"}
+                  </Pill>
+                  <Pill className="bg-white text-slate-700 ring-1 ring-slate-200">
+                    <Layers3 size={12} />
+                    {activeBrainStructure?.label || "Structure"}
+                  </Pill>
+                  <Pill className="bg-white text-slate-700 ring-1 ring-slate-200">
+                    <Users size={12} />
+                    {activeBrainPersona?.label || "Persona"}
+                  </Pill>
+                </div>
+
+                <div className="mt-4 grid gap-3 md:grid-cols-3">
+                  <MiniInfo icon={Brain} label="Style" value={activeBrainStyle?.label} />
+                  <MiniInfo icon={Rocket} label="Hook" value={activeBrainHook?.label} />
+                  <MiniInfo icon={Cpu} label="Logic" value={activeBrainLogic?.label} />
+                  <MiniInfo icon={Layers3} label="Structure" value={activeBrainStructure?.label} />
+                  <MiniInfo icon={ShieldCheck} label="Proof" value={activeBrainProof?.label} />
+                  <MiniInfo icon={Radio} label="CTA style" value={activeBrainCta?.label} />
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 text-xs font-bold text-slate-600">Style</div>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {brainStyleOptions.map((item) => (
+                    <ChoiceCard
+                      key={item.value}
+                      title={item.label}
+                      desc={item.desc}
+                      icon={item.icon}
+                      active={workspace.brainStyle === item.value}
+                      onClick={() => setField("brainStyle", item.value)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 text-xs font-bold text-slate-600">Hook type</div>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {brainHookOptions.map((item) => (
+                    <ChoiceCard
+                      key={item.value}
+                      title={item.label}
+                      desc={item.desc}
+                      icon={item.icon}
+                      active={workspace.brainHookType === item.value}
+                      onClick={() => setField("brainHookType", item.value)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 text-xs font-bold text-slate-600">Script logic</div>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {brainLogicOptions.map((item) => (
+                    <ChoiceCard
+                      key={item.value}
+                      title={item.label}
+                      desc={item.desc}
+                      icon={item.icon}
+                      active={workspace.brainScriptLogic === item.value}
+                      onClick={() => setField("brainScriptLogic", item.value)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 text-xs font-bold text-slate-600">Video structure</div>
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {brainStructureOptions.map((item) => (
+                    <ChoiceCard
+                      key={item.value}
+                      title={item.label}
+                      desc={item.desc}
+                      icon={item.icon}
+                      active={workspace.brainVideoStructure === item.value}
+                      onClick={() => setField("brainVideoStructure", item.value)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="mb-2 text-xs font-bold text-slate-600">Persona</div>
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {brainPersonaOptions.map((item) => (
+                    <ChoiceCard
+                      key={item.value}
+                      title={item.label}
+                      desc={item.desc}
+                      icon={item.icon}
+                      active={workspace.brainPersona === item.value}
+                      onClick={() => setField("brainPersona", item.value)}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <div className="grid gap-5 lg:grid-cols-2">
+                <div>
+                  <div className="mb-2 text-xs font-bold text-slate-600">Proof mode</div>
+                  <div className="grid gap-3">
+                    {brainProofOptions.map((item) => (
+                      <ChoiceCard
+                        key={item.value}
+                        title={item.label}
+                        desc={item.desc}
+                        icon={item.icon}
+                        active={workspace.brainProofMode === item.value}
+                        onClick={() => setField("brainProofMode", item.value)}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <div className="mb-2 text-xs font-bold text-slate-600">CTA style</div>
+                  <div className="grid gap-3">
+                    {brainCtaOptions.map((item) => (
+                      <ChoiceCard
+                        key={item.value}
+                        title={item.label}
+                        desc={item.desc}
+                        icon={item.icon}
+                        active={workspace.brainCtaStyle === item.value}
+                        onClick={() => setField("brainCtaStyle", item.value)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-300 bg-slate-50 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <div className="text-sm font-bold text-slate-900">Energy</div>
+                    <div className="mt-1 text-xs text-slate-500">
+                      Насколько напористо и интенсивно агент подаёт контент.
+                    </div>
+                  </div>
+
+                  <Pill className="bg-white text-slate-700 ring-1 ring-slate-200">
+                    <Zap size={12} />
+                    {workspace.brainEnergy}%
+                  </Pill>
+                </div>
+
+                <div className="mt-4">
+                  <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    step="1"
+                    value={workspace.brainEnergy}
+                    onChange={(e) => setField("brainEnergy", Number(e.target.value))}
+                    className="h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-sky-500"
+                  />
+                </div>
+
+                <div className="mt-3 flex justify-between text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                  <span>Calm</span>
+                  <span>Balanced</span>
+                  <span>Intense</span>
+                </div>
               </div>
             </div>
           </Card>
@@ -1818,6 +2398,22 @@ export default function AgentWorkspace({
               </div>
             </div>
 
+            <div className="mt-4 rounded-2xl border border-violet-200 bg-violet-50 p-4">
+              <div className="flex items-center gap-2 text-sm font-black text-slate-900">
+                <Brain size={16} />
+                Сводка Agent Brain
+              </div>
+
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                <MiniInfo icon={Brain} label="Style" value={activeBrainStyle?.label} />
+                <MiniInfo icon={Rocket} label="Hook" value={activeBrainHook?.label} />
+                <MiniInfo icon={Cpu} label="Logic" value={activeBrainLogic?.label} />
+                <MiniInfo icon={Layers3} label="Structure" value={activeBrainStructure?.label} />
+                <MiniInfo icon={Users} label="Persona" value={activeBrainPersona?.label} />
+                <MiniInfo icon={Zap} label="Energy" value={`${workspace.brainEnergy}%`} />
+              </div>
+            </div>
+
             <div className="mt-4 grid gap-3">
               <button
                 onClick={handleGenerateOne}
@@ -1852,7 +2448,7 @@ export default function AgentWorkspace({
 
             {!workspaceReady ? (
               <div className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-                Заполни формат производства, тему, бриф, параметры генерации и выбери соцсети,
+                Заполни формат производства, тему, бриф, Agent Brain, параметры генерации и выбери соцсети,
                 чтобы агент был готов к работе.
               </div>
             ) : null}
@@ -1897,6 +2493,16 @@ export default function AgentWorkspace({
                 icon={Send}
                 label="Площадки"
                 value={selectedPlatformLabels.join(", ")}
+              />
+              <MiniInfo
+                icon={Brain}
+                label="Style"
+                value={activeBrainStyle?.label}
+              />
+              <MiniInfo
+                icon={Rocket}
+                label="Hook"
+                value={activeBrainHook?.label}
               />
             </div>
           </Card>

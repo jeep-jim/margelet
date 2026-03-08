@@ -5,6 +5,25 @@ import { generateCaptions } from "./captionEngine";
 import { generateVoicePlan } from "./voiceEngine";
 import { renderVideoPlan } from "./videoRenderer";
 import { createPublishPlan } from "./publishEngine";
+import { pickTrendTopic } from "./trendEngine";
+
+function normalizeBrain(agent) {
+  const brain = agent?.brain || {};
+
+  return {
+    style: brain.style || "sharp",
+    hookType: brain.hookType || "problem-first",
+    scriptLogic: brain.scriptLogic || "insight-to-action",
+    videoStructure: brain.videoStructure || "hook-problem-solution-cta",
+    persona: brain.persona || "expert-friend",
+    proofMode: brain.proofMode || "examples",
+    ctaStyle: brain.ctaStyle || "soft",
+    energy:
+      typeof brain.energy === "number"
+        ? brain.energy
+        : Number(brain.energy || 70),
+  };
+}
 
 function getProduction(agent) {
   const outputType = agent?.outputType || "slideshow-video";
@@ -75,12 +94,13 @@ function buildFallbackVideoPlan(agent, script, scenes, captions, production) {
     topic: agent?.topic || "",
     title: script?.title || "",
     hook: script?.hook || "",
-    style: agent?.briefStyle || agent?.style || "default",
+    style: agent?.briefStyle || agent?.style || agent?.brain?.style || "default",
     voice: agent?.voice || "ai",
     totalDuration: Number(agent?.lengthSec || agent?.length || 30),
     visualSourceType: production.visualSourceType,
     renderMode: production.renderMode,
     status: "assets-only",
+    brain: agent?.brain || normalizeBrain(agent),
     scenes: Array.isArray(scenes) ? scenes : [],
     captions: Array.isArray(captions) ? captions : [],
   };
@@ -124,15 +144,83 @@ function buildVariantAgent(agentConfig, index, total) {
   };
 }
 
+function mergeWorkspaceIntoAgent(normalized, workspace = {}) {
+  const mergedBrain = normalizeBrain({
+    brain: {
+      style: workspace?.brainStyle,
+      hookType: workspace?.brainHookType,
+      scriptLogic: workspace?.brainScriptLogic,
+      videoStructure: workspace?.brainVideoStructure,
+      persona: workspace?.brainPersona,
+      proofMode: workspace?.brainProofMode,
+      ctaStyle: workspace?.brainCtaStyle,
+      energy: workspace?.brainEnergy,
+      ...(normalized?.brain || {}),
+    },
+  });
+
+  return {
+    ...normalized,
+    topic: workspace?.topic || workspace?.briefChannel || normalized?.topic || "",
+    cta: workspace?.cta || normalized?.cta || "",
+    format: workspace?.format || normalized?.format || "9:16",
+    voice: workspace?.voice || normalized?.voice || "auto",
+    outputType: workspace?.outputType || normalized?.outputType || "slideshow-video",
+    visualSourceType:
+      workspace?.visualSourceType ||
+      normalized?.visualSourceType ||
+      "template",
+    renderMode: workspace?.renderMode || normalized?.renderMode || "full-video",
+    lengthSec: Number(
+      workspace?.duration || normalized?.lengthSec || normalized?.length || 30
+    ),
+    videosPerDay: Number(
+      workspace?.videosPerDay || normalized?.videosPerDay || normalized?.videos || 1
+    ),
+    platforms:
+      Array.isArray(workspace?.publishPlatforms) && workspace.publishPlatforms.length
+        ? workspace.publishPlatforms
+        : normalized?.platforms || ["telegram", "youtube-shorts"],
+    autopost:
+      workspace?.publishMode === "autopost"
+        ? true
+        : typeof normalized?.autopost === "boolean"
+        ? normalized.autopost
+        : false,
+    briefChannel: workspace?.briefChannel || normalized?.briefChannel || "",
+    briefAudience: workspace?.briefAudience || normalized?.briefAudience || "",
+    briefGoal: workspace?.briefGoal || normalized?.briefGoal || "",
+    briefTone: workspace?.briefTone || normalized?.briefTone || "",
+    briefStyle: workspace?.briefStyle || normalized?.briefStyle || normalized?.style || "",
+    briefRestrictions:
+      workspace?.briefRestrictions || normalized?.briefRestrictions || "",
+    sourceLinks: workspace?.sourceLinks || normalized?.sourceLinks || "",
+    sourceNotes: workspace?.sourceNotes || normalized?.sourceNotes || "",
+    sourceReferences:
+      workspace?.sourceReferences || normalized?.sourceReferences || "",
+    sourceIdeas: workspace?.sourceIdeas || normalized?.sourceIdeas || "",
+    authorAssetsNotes:
+      workspace?.authorAssetsNotes || normalized?.authorAssetsNotes || "",
+    brain: mergedBrain,
+  };
+}
+
 async function runSingleAgent(agentConfig) {
   const normalized = normalizeAgent(agentConfig);
-  const production = getProduction(normalized);
+  const withWorkspace = mergeWorkspaceIntoAgent(
+    normalized,
+    agentConfig?.workspace || {}
+  );
+  const production = getProduction(withWorkspace);
 
   const agent = {
-    ...normalized,
+    ...withWorkspace,
     ...production,
+    brain: normalizeBrain(withWorkspace),
     pipeline: buildPipeline(production.outputType, production.renderMode),
   };
+
+  agent.topic = await pickTrendTopic(agent.topic);
 
   const script = await generateScript(agent);
 
