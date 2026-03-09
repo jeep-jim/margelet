@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Menu, Globe, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import AccountModal from "../modules/AccountModal";
 
 const TG_USER_LS_KEY = "margelet_tg_user_v1";
@@ -205,7 +205,9 @@ export default function Sidebar({
             <Link
               href="/agents"
               className={`text-[15px] font-bold transition ${
-                isAgentsActive ? "text-[#bc8cff]" : "text-[#222222] hover:text-[#8f63ff]"
+                isAgentsActive
+                  ? "text-[#bc8cff]"
+                  : "text-[#222222] hover:text-[#8f63ff]"
               }`}
             >
               <span className="mr-1">👾</span>
@@ -215,7 +217,9 @@ export default function Sidebar({
             <Link
               href="/price"
               className={`text-[15px] font-bold transition ${
-                isBillingActive ? "text-[#bc8cff]" : "text-[#222222] hover:text-[#8f63ff]"
+                isBillingActive
+                  ? "text-[#bc8cff]"
+                  : "text-[#222222] hover:text-[#8f63ff]"
               }`}
             >
               <span className="mr-1">⭐</span>
@@ -246,18 +250,28 @@ export default function Sidebar({
             </button>
           </div>
 
-          <button
-            onClick={() => setMobileOpen(true)}
-            className="ml-auto inline-flex h-10 w-10 items-center justify-center text-[#1d1d1d] md:hidden"
-            aria-label="Open menu"
-          >
-            <Menu size={22} />
-          </button>
+          <div className="ml-auto flex items-center gap-4 md:hidden">
+            <button
+              onClick={() => setLang(lang === "en" ? "ru" : "en")}
+              className="text-[15px] font-bold uppercase text-[#1d1d1d]"
+              aria-label="Switch language"
+            >
+              {lang}
+            </button>
+
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="inline-flex h-10 w-10 items-center justify-center text-[#1d1d1d]"
+              aria-label="Open menu"
+            >
+              <Menu size={22} />
+            </button>
+          </div>
         </div>
       </header>
 
       {mobileOpen && (
-        <div className="fixed inset-0 z-[110] bg-black/30 backdrop-blur-sm md:hidden">
+        <div onClick={() => setMobileOpen(false)} className="fixed inset-0 z-[110] bg-black/30 backdrop-blur-sm md:hidden" >
           <div className="absolute right-0 top-0 flex h-full w-[300px] flex-col bg-[#eef2ff] p-5 shadow-2xl">
             <div className="mb-6 flex items-center justify-between">
               <div className="text-[18px] font-black text-[#1d1d1d]">
@@ -304,13 +318,6 @@ export default function Sidebar({
                   alt={tgUser?.first_name || tgUser?.username || "Telegram user"}
                 />
                 <span>{authLabel}</span>
-              </button>
-
-              <button
-                onClick={() => setLang(lang === "en" ? "ru" : "en")}
-                className="text-[15px] font-bold uppercase text-[#1d1d1d]"
-              >
-                {lang}
               </button>
             </div>
           </div>

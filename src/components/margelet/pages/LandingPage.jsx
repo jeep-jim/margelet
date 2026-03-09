@@ -15,16 +15,16 @@ function PixelButtonLink({ children, href, className = "" }) {
     <Link
       href={href}
       style={pixelClip()}
-      className={`inline-flex items-center justify-center bg-[#63cd8d] px-8 py-[15px] text-[17px] font-extrabold text-[#0d8a4e] transition hover:brightness-[1.03] ${className}`}
+      className={`inline-flex items-center justify-center bg-[#63cd8d] px-8 py-4 text-[18px] font-bold !text-[#0d8a4e] transition hover:brightness-[1.03] ${className}`}
     >
-      <span className="text-[#0d8a4e]">{children}</span>
+      {children}
     </Link>
   );
 }
 
 export default function LandingPage({ copy }) {
   return (
-    <div className="mx-auto w-full max-w-[1120px] px-4 pb-12 pt-5 md:px-6 md:pb-16 md:pt-6">
+    <div className="mx-auto w-full max-w-[1120px] px-4 pb-10 pt-4 md:px-0 md:pb-12 md:pt-0">
       <section className="relative">
         {/* DESKTOP */}
         <div className="relative hidden md:block">
@@ -34,12 +34,12 @@ export default function LandingPage({ copy }) {
             className="block h-auto w-full object-contain"
           />
 
-          <div className="absolute left-[28px] top-[56px] z-10 max-w-[330px]">
-            <h1 className="whitespace-nowrap text-[31px] font-extrabold leading-[1.02] tracking-[-0.025em] text-[#8f6ab5] lg:text-[33px]">
+          <div className="absolute left-[28px] top-[54px] z-10 max-w-[330px]">
+            <h1 className="whitespace-nowrap text-[32px] font-extrabold leading-[1.02] tracking-[-0.02em] text-[#8f6ab5]">
               {copy.heroTitle}
             </h1>
 
-            <div className="mt-3 space-y-[2px] text-[17px] font-normal leading-[1.45] text-[#8f6ab5] lg:text-[18px]">
+            <div className="mt-3 space-y-[2px] text-[17px] font-normal leading-[1.45] text-[#8f6ab5]">
               {copy.heroLines.map((line) => (
                 <div key={line} className="whitespace-nowrap">
                   {line}
@@ -51,19 +51,19 @@ export default function LandingPage({ copy }) {
 
         {/* MOBILE */}
         <div className="block md:hidden">
-          <div className="px-1 pt-3">
-            <h1 className="whitespace-nowrap text-[26px] font-extrabold leading-[1.02] tracking-[-0.025em] text-[#8f6ab5]">
+          <div className="pt-3">
+            <h1 className="whitespace-nowrap text-[26px] font-extrabold leading-[1.02] tracking-[-0.02em] text-[#8f6ab5]">
               {copy.heroTitle}
             </h1>
 
-            <div className="mt-4 space-y-[3px] text-[16px] font-normal leading-[1.45] text-[#8f6ab5]">
+            <div className="mt-3 space-y-[2px] text-[16px] font-normal leading-[1.45] text-[#8f6ab5]">
               {copy.heroLines.map((line) => (
                 <div key={line}>{line}</div>
               ))}
             </div>
           </div>
 
-          <div className="mt-2">
+          <div className="-mt-5">
             <img
               src="/landing/hero-banner.png"
               alt="margelet hero"
@@ -73,20 +73,26 @@ export default function LandingPage({ copy }) {
         </div>
       </section>
 
-      <div className="mt-1 border-t border-white/60 pt-4 md:-mt-1 md:pt-5">
-        <div className="grid gap-5 md:grid-cols-[320px_1fr] md:items-start md:gap-8">
-          <div className="flex justify-start">
-            <PixelButtonLink href="/agents" className="w-full md:w-[305px]">
+      <div className="-mt-9 border-t border-white/60 pt-5 md:-mt-1 md:pt-4">
+        <div className="grid gap-4 md:grid-cols-[320px_1fr] md:items-start md:gap-8">
+          <div>
+            <PixelButtonLink href="/agents" className="w-full md:w-[320px]">
               {copy.cta}
             </PixelButtonLink>
           </div>
 
           <div className="max-w-[760px]">
-            <div className="text-[8px] font-extrabold leading-[1.04] tracking-[-0.025em] text-[#8b72b9] md:text-[38px] lg:text-[40px]">
+            {/* DESKTOP BOTTOM TITLE */}
+            <div className="hidden md:block text-[24px] font-extrabold leading-[1.02] tracking-[-0.02em] text-[#8f6ab5]">
               {copy.bottomTitle}
             </div>
 
-            <div className="mt-3 max-w-[760px] text-[17px] font-normal leading-[1.45] text-[#6672a8] md:text-[18px]">
+            {/* MOBILE BOTTOM TITLE */}
+            <div className="block md:hidden text-[26px] font-extrabold leading-[1.02] tracking-[-0.02em] text-[#8f6ab5]">
+              {copy.bottomTitle}
+            </div>
+
+            <div className="mt-3 text-[17px] leading-[1.45] text-[#8f6ab5] md:text-[17px]">
               {copy.bottomText}
             </div>
           </div>
