@@ -1,29 +1,22 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Menu, Globe, User, X } from "lucide-react";
+import Link from "next/link";
+import { Menu, Globe, X } from "lucide-react";
 import AccountModal from "../modules/AccountModal";
 
 const TG_USER_LS_KEY = "margelet_tg_user_v1";
 
-function Avatar({ name, image, size = "md" }) {
-  const sizeMap = {
-    sm: "h-9 w-9 text-xs",
-    md: "h-10 w-10 text-sm",
-    lg: "h-14 w-14 text-base",
-  };
+function SquareTelegramAvatar({ photoUrl, alt = "Telegram user" }) {
+  if (photoUrl) {
+    return <img src={photoUrl} alt={alt} className="h-10 w-10 object-cover" />;
+  }
 
-  return image ? (
-    <img
-      src={image}
-      alt={name}
-      className={`${sizeMap[size]} rounded-full object-cover ring-2 ring-white/80`}
-    />
-  ) : (
-    <div
-      className={`${sizeMap[size]} flex items-center justify-center rounded-full bg-[linear-gradient(135deg,#8b5cf6,#60a5fa)] font-bold text-white ring-2 ring-white/80`}
-    >
-      {(name || "U").slice(0, 1).toUpperCase()}
+  return (
+    <div className="flex h-10 w-10 items-center justify-center bg-[#8fd3ff] text-white">
+      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+        <path d="M21.9 4.6c.3-1.2-.4-1.7-1.4-1.3L2.4 10.3c-1.2.5-1.2 1.2-.2 1.5l4.6 1.4 10.6-6.7c.5-.3 1-.1.6.2L9.5 14.4l-.3 4.7c.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l2.9-14.5z" />
+      </svg>
     </div>
   );
 }
@@ -73,9 +66,7 @@ function TelegramAuthModal({ open, onClose, onAuth }) {
     widgetRef.current.appendChild(script);
 
     return () => {
-      if (widgetRef.current) {
-        widgetRef.current.innerHTML = "";
-      }
+      if (widgetRef.current) widgetRef.current.innerHTML = "";
       try {
         delete window[callbackName];
       } catch {}
@@ -150,13 +141,11 @@ function TelegramAuthModal({ open, onClose, onAuth }) {
 }
 
 export default function Sidebar({
-  tab,
-  setTab,
+  currentPage,
   lang,
   setLang,
   copy,
   currentAuthor,
-  onTelegramAuth,
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
@@ -175,7 +164,6 @@ export default function Sidebar({
 
   const handleAuthSuccess = (user) => {
     setTgUser(user);
-    onTelegramAuth?.(user);
   };
 
   const handleLogout = () => {
@@ -194,33 +182,14 @@ export default function Sidebar({
       : tgUser?.first_name || "Аккаунт"
     : "Войти";
 
-  const NavLink = ({ itemKey, label, icon }) => {
-    const active = tab === itemKey;
-
-    return (
-      <button
-        onClick={() => {
-          setTab(itemKey);
-          setMobileOpen(false);
-        }}
-        className={`text-[15px] font-bold transition ${
-          active ? "text-[#bc8cff]" : "text-[#222222] hover:text-[#8f63ff]"
-        }`}
-      >
-        <span className="mr-1">{icon}</span>
-        {label}
-      </button>
-    );
-  };
+  const isAgentsActive = currentPage === "agents" || currentPage === "landing";
+  const isBillingActive = currentPage === "billing";
 
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-white/40 bg-[#e3e7fb]/90 backdrop-blur">
         <div className="mx-auto flex h-[68px] w-full max-w-[1120px] items-center gap-4 px-4 md:px-6">
-          <button
-            onClick={() => setTab("agents")}
-            className="flex items-center gap-3"
-          >
+          <Link href="/" className="flex items-center gap-3">
             <img src="/icon.png" alt="margelet" className="h-9 w-9" />
             <div className="text-left leading-none">
               <div className="text-[18px] font-black text-[#1a1a1a]">
@@ -230,11 +199,28 @@ export default function Sidebar({
                 agent video maker
               </div>
             </div>
-          </button>
+          </Link>
 
           <div className="hidden flex-1 items-center justify-center gap-10 md:flex">
-            <NavLink itemKey="agents" label={copy.agents} icon="👾" />
-            <NavLink itemKey="billing" label={copy.billing} icon="⭐" />
+            <Link
+              href="/agents"
+              className={`text-[15px] font-bold transition ${
+                isAgentsActive ? "text-[#bc8cff]" : "text-[#222222] hover:text-[#8f63ff]"
+              }`}
+            >
+              <span className="mr-1">👾</span>
+              {copy.agents}
+            </Link>
+
+            <Link
+              href="/price"
+              className={`text-[15px] font-bold transition ${
+                isBillingActive ? "text-[#bc8cff]" : "text-[#222222] hover:text-[#8f63ff]"
+              }`}
+            >
+              <span className="mr-1">⭐</span>
+              {copy.billing}
+            </Link>
           </div>
 
           <div className="ml-auto hidden items-center gap-6 md:flex">
@@ -245,11 +231,10 @@ export default function Sidebar({
               }}
               className="flex items-center gap-3 text-[15px] font-bold text-[#1d1d1d]"
             >
-              <div className="flex h-10 w-10 items-center justify-center bg-[#8fd3ff] text-white">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-                  <path d="M21.9 4.6c.3-1.2-.4-1.7-1.4-1.3L2.4 10.3c-1.2.5-1.2 1.2-.2 1.5l4.6 1.4 10.6-6.7c.5-.3 1-.1.6.2L9.5 14.4l-.3 4.7c.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l2.9-14.5z" />
-                </svg>
-              </div>
+              <SquareTelegramAvatar
+                photoUrl={tgUser?.photo_url || ""}
+                alt={tgUser?.first_name || tgUser?.username || "Telegram user"}
+              />
               <span>{authLabel}</span>
             </button>
 
@@ -284,8 +269,25 @@ export default function Sidebar({
             </div>
 
             <div className="flex flex-col gap-4">
-              <NavLink itemKey="agents" label={copy.agents} icon="👾" />
-              <NavLink itemKey="billing" label={copy.billing} icon="⭐" />
+              <Link
+                href="/agents"
+                onClick={() => setMobileOpen(false)}
+                className={`text-[15px] font-bold ${
+                  isAgentsActive ? "text-[#bc8cff]" : "text-[#222222]"
+                }`}
+              >
+                👾 {copy.agents}
+              </Link>
+
+              <Link
+                href="/price"
+                onClick={() => setMobileOpen(false)}
+                className={`text-[15px] font-bold ${
+                  isBillingActive ? "text-[#bc8cff]" : "text-[#222222]"
+                }`}
+              >
+                ⭐ {copy.billing}
+              </Link>
             </div>
 
             <div className="mt-8 border-t border-slate-200 pt-6">
@@ -297,11 +299,10 @@ export default function Sidebar({
                 }}
                 className="mb-4 flex items-center gap-3 text-[15px] font-bold text-[#1d1d1d]"
               >
-                <div className="flex h-10 w-10 items-center justify-center bg-[#8fd3ff] text-white">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
-                    <path d="M21.9 4.6c.3-1.2-.4-1.7-1.4-1.3L2.4 10.3c-1.2.5-1.2 1.2-.2 1.5l4.6 1.4 10.6-6.7c.5-.3 1-.1.6.2L9.5 14.4l-.3 4.7c.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l2.9-14.5z" />
-                  </svg>
-                </div>
+                <SquareTelegramAvatar
+                  photoUrl={tgUser?.photo_url || ""}
+                  alt={tgUser?.first_name || tgUser?.username || "Telegram user"}
+                />
                 <span>{authLabel}</span>
               </button>
 
