@@ -50,7 +50,6 @@ const COPY = {
     yes: "Да",
     no: "Нет",
     removeFile: "Удалить файл",
-    moreFiles: "Ещё файлы",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -175,7 +174,6 @@ const COPY = {
     yes: "Yes",
     no: "No",
     removeFile: "Remove file",
-    moreFiles: "More files",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -309,27 +307,6 @@ function pixelClip() {
     clipPath:
       "polygon(0 8px, 8px 8px, 8px 0, calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px))",
   };
-}
-
-function LogoArrowIcon({
-  className = "",
-  direction = "right",
-  color = "currentColor",
-}) {
-  const isLeft = direction === "left";
-
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className={className}
-      aria-hidden="true"
-      style={{ transform: isLeft ? "scaleX(-1)" : "none" }}
-    >
-      <rect x="4" y="4" width="6" height="6" fill={color} />
-      <rect x="10" y="10" width="6" height="6" fill={color} />
-      <rect x="16" y="4" width="4" height="4" fill={color} />
-    </svg>
-  );
 }
 
 function InstagramIcon({ className = "" }) {
@@ -554,7 +531,11 @@ function AssetThumb({ item, onRemove, removeLabel }) {
   return (
     <div className="group relative h-[58px] w-[58px] shrink-0 overflow-hidden bg-white md:h-[60px] md:w-[60px]">
       {item.kind === "image" ? (
-        <img src={item.src} alt={item.name || ""} className="h-full w-full object-cover" />
+        <img
+          src={item.src}
+          alt={item.name || ""}
+          className="h-full w-full object-cover"
+        />
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center px-1 text-center">
           <div className="text-[11px] font-bold uppercase text-[#7780aa]">
@@ -575,33 +556,6 @@ function AssetThumb({ item, onRemove, removeLabel }) {
         <X size={14} />
       </button>
     </div>
-  );
-}
-
-function ArrowCard({
-  onClick,
-  direction = "right",
-  tone = "violet",
-  className = "",
-  label,
-}) {
-  const isSoft = tone === "soft";
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`inline-flex items-center justify-center ${className} ${
-        isSoft ? "bg-[#cfd5ec]" : "bg-white"
-      }`}
-      style={pixelClip()}
-      aria-label={label}
-    >
-      <LogoArrowIcon
-        direction={direction}
-        className="h-8 w-8"
-        color={isSoft ? "#aeb6d6" : "#b78dff"}
-      />
-    </button>
   );
 }
 
@@ -750,9 +704,15 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const [selectedFormat, setSelectedFormat] = useState(null);
   const [topic, setTopic] = useState("");
-  const [duration, setDuration] = useState(COPY[lang]?.durations?.[3] || COPY.ru.durations[3]);
-  const [tone, setTone] = useState(COPY[lang]?.tones?.[0] || COPY.ru.tones[0]);
-  const [voice, setVoice] = useState(COPY[lang]?.voices?.[0] || COPY.ru.voices[0]);
+  const [duration, setDuration] = useState(
+    COPY[lang]?.durations?.[3] || COPY.ru.durations[3]
+  );
+  const [tone, setTone] = useState(
+    COPY[lang]?.tones?.[0] || COPY.ru.tones[0]
+  );
+  const [voice, setVoice] = useState(
+    COPY[lang]?.voices?.[0] || COPY.ru.voices[0]
+  );
   const [link, setLink] = useState("");
   const [assets, setAssets] = useState([
     { id: "a1", src: DEMO_POSTERS[0], name: "demo-1.jpg", ext: "jpg", kind: "image" },
@@ -782,27 +742,26 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
       const saved = JSON.parse(raw);
 
-      if (saved?.selectedFormat !== undefined) setSelectedFormat(saved.selectedFormat || null);
+      if (saved?.selectedFormat !== undefined) {
+        setSelectedFormat(saved.selectedFormat || null);
+      }
       if (typeof saved?.topic === "string") setTopic(saved.topic);
       if (typeof saved?.link === "string") setLink(saved.link);
-      if (Array.isArray(saved?.assets) && saved.assets.length) setAssets(saved.assets.slice(0, MAX_ASSETS));
-
+      if (Array.isArray(saved?.assets) && saved.assets.length) {
+        setAssets(saved.assets.slice(0, MAX_ASSETS));
+      }
       if (saved?.duration && COPY[lang].durations.includes(saved.duration)) {
         setDuration(saved.duration);
       }
-
       if (saved?.tone && COPY[lang].tones.includes(saved.tone)) {
         setTone(saved.tone);
       }
-
       if (saved?.voice && COPY[lang].voices.includes(saved.voice)) {
         setVoice(saved.voice);
       }
-
       if (Array.isArray(saved?.variants)) {
         setVariants(saved.variants);
       }
-
       if (typeof saved?.activeVariant === "number") {
         setActiveVariant(saved.activeVariant);
       }
@@ -899,7 +858,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
     : t.previewAction;
 
   const visibleAssets = assets.slice(0, ASSET_SLOTS);
-  const hasAssetOverflow = assets.length >= ASSET_SLOTS;
 
   const handleFiles = async (fileList) => {
     const list = Array.from(fileList || []);
@@ -994,7 +952,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
       <div className="min-h-screen overflow-x-hidden bg-[#dfe6fb] pb-20 pt-0 md:px-8 xl:px-0">
         <div className="mx-auto w-full max-w-[1120px] lg:grid lg:grid-cols-[1fr_354px] lg:gap-7">
           <div className="min-w-0 space-y-4 md:space-y-5">
-            <section className="workspace-section w-full bg-transparent">
+            <section className="workspace-section workspace-section-transparent w-full bg-transparent">
               <div className="section-inner py-0 md:px-0">
                 <div className="flex flex-wrap items-baseline gap-2 border-b border-white/60 pb-4 md:pb-5">
                   <h2 className="text-[20px] font-bold text-[#7a5d9d] md:text-[24px]">
@@ -1006,36 +964,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
                   <InfoHint text={t.step1Hint} />
                 </div>
 
-                <div className="relative mt-5 md:mt-7">
-                  <ArrowCard
-                    onClick={() =>
-                      categoryRef.current?.scrollBy({
-                        left: -320,
-                        behavior: "smooth",
-                      })
-                    }
-                    direction="left"
-                    label="Scroll formats left"
-                    className="absolute left-0 top-0 z-10 hidden h-[88px] w-[88px] md:flex"
-                  />
-
-                  <ArrowCard
-                    onClick={() =>
-                      categoryRef.current?.scrollBy({
-                        left: 320,
-                        behavior: "smooth",
-                      })
-                    }
-                    direction="right"
-                    label="Scroll formats right"
-                    className="absolute right-0 top-0 z-10 hidden h-[88px] w-[88px] md:flex"
-                  />
-
+                <div className="mt-5 md:mt-7">
                   <div
                     ref={categoryRef}
-                    className="no-scrollbar min-w-0 overflow-x-auto pb-2"
+                    className="desktop-scroll mobile-swipe overflow-x-auto pb-3"
                   >
-                    <div className="flex gap-[16px] pl-[2px] md:gap-[18px] md:px-[106px]">
+                    <div className="flex w-max gap-[16px] pr-2 md:gap-[18px]">
                       {FORMAT_ITEMS.map((item) => (
                         <FormatTile
                           key={item.id}
@@ -1122,38 +1056,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 {assets.length > 0 && (
-                  <div className="relative mt-5 md:mt-7">
-                    <ArrowCard
-                      onClick={() =>
-                        assetsRef.current?.scrollBy({
-                          left: -220,
-                          behavior: "smooth",
-                        })
-                      }
-                      direction="left"
-                      tone="soft"
-                      label="Scroll files left"
-                      className="absolute left-0 top-0 z-10 hidden h-[60px] w-[60px] md:flex"
-                    />
-
-                    <ArrowCard
-                      onClick={() =>
-                        assetsRef.current?.scrollBy({
-                          left: 220,
-                          behavior: "smooth",
-                        })
-                      }
-                      direction="right"
-                      tone="soft"
-                      label="Scroll files right"
-                      className="absolute right-0 top-0 z-10 hidden h-[60px] w-[60px] md:flex"
-                    />
-
+                  <div className="mt-5 md:mt-7">
                     <div
                       ref={assetsRef}
-                      className="no-scrollbar overflow-x-auto pb-1"
+                      className="desktop-scroll mobile-swipe overflow-x-auto pb-3"
                     >
-                      <div className="flex gap-3 md:gap-4 md:px-[72px]">
+                      <div className="flex w-max gap-3 pr-2 md:gap-4">
                         {visibleAssets.map((item) => (
                           <AssetThumb
                             key={item.id}
@@ -1175,27 +1083,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
                               {n}
                             </div>
                           ))}
-
-                        {hasAssetOverflow && (
-                          <button
-                            type="button"
-                            onClick={() =>
-                              assetsRef.current?.scrollBy({
-                                left: 220,
-                                behavior: "smooth",
-                              })
-                            }
-                            className="hidden h-[60px] w-[60px] shrink-0 items-center justify-center bg-[#cfd5ec] md:flex"
-                            style={pixelClip()}
-                            aria-label={t.moreFiles}
-                          >
-                            <LogoArrowIcon
-                              className="h-7 w-7"
-                              color="#aeb6d6"
-                              direction="right"
-                            />
-                          </button>
-                        )}
                       </div>
                     </div>
                   </div>
@@ -1365,15 +1252,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
       />
 
       <style jsx>{`
-        .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-
         .checkerboard {
           background-color: #17151d;
           background-image:
@@ -1385,11 +1263,48 @@ export default function AgentWorkspace({ lang = "ru" }) {
           background-position: 0 0, 0 32px, 32px -32px, -32px 0px;
         }
 
+        .mobile-swipe {
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .mobile-swipe::-webkit-scrollbar {
+          display: none;
+        }
+
+        .desktop-scroll {
+          scrollbar-width: thin;
+          scrollbar-color: #bb9af9 rgba(255, 255, 255, 0.72);
+        }
+
+        .desktop-scroll::-webkit-scrollbar {
+          height: 8px;
+        }
+
+        .desktop-scroll::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.72);
+          border-radius: 999px;
+        }
+
+        .desktop-scroll::-webkit-scrollbar-thumb {
+          background: #bb9af9;
+          border-radius: 999px;
+        }
+
+        .desktop-scroll::-webkit-scrollbar-thumb:hover {
+          background: #a77df0;
+        }
+
         @media (max-width: 767px) {
           .workspace-section {
             width: 100vw;
             margin-left: calc(50% - 50vw);
             margin-right: calc(50% - 50vw);
+          }
+
+          .workspace-section-transparent {
+            padding-left: 0;
+            padding-right: 0;
           }
 
           .section-inner {
