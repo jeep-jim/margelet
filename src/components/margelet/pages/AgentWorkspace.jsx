@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   ChevronDown,
   Download,
@@ -8,6 +8,10 @@ import {
   Info,
   X,
 } from "lucide-react";
+
+const STORAGE_KEY = "margelet_agent_workspace_v1";
+const MAX_ASSETS = 12;
+const ASSET_SLOTS = 9;
 
 const COPY = {
   ru: {
@@ -20,14 +24,14 @@ const COPY = {
     step3Title: "3. Тема видео",
     step3Tail: "пиши так, как будто ставишь задачу реальному продюсеру.",
     dropTitle: "Перетащи файлы или нажми загрузить",
-    dropHint: "jpeg, png, mp4, avi, mp3, PDF, DOC, TXT.",
+    dropHint: "jpeg, png, webp, mp4, avi, mp3, PDF, DOC, TXT.",
     upload: "Загрузить",
     linkPlaceholder: "https://Ссылка на любой источник",
     duration: "Длительность",
     tone: "Тон",
     voice: "Голос",
     trend: "Найди тренд",
-    doForMe: "Сделай за меня",
+    doForMe: "Заполни всё за меня",
     preview: "Предпросмотр",
     previewAction: "Предпросмотр",
     generateAction: "Сгенерировать!",
@@ -40,11 +44,20 @@ const COPY = {
     readyToPost: "Готово для выгрузки в соцсети:",
     fileWeight: "Вес файла",
     fileFormat: "Файл",
+    confirmRegenerateTitle: "Эти ролики не то, переделаем?",
+    confirmRegenerateText:
+      "Текущие варианты будут заменены новыми. Продолжить?",
+    yes: "Да",
+    no: "Нет",
+    removeFile: "Удалить файл",
+    moreFiles: "Ещё файлы",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
       youtube: "YouTube",
       telegram: "Telegram",
+      vk: "VK",
+      discord: "Discord",
     },
     durations: [
       "10 секунд",
@@ -136,14 +149,14 @@ const COPY = {
     step3Title: "3. Video topic",
     step3Tail: "write it like you're briefing a real producer.",
     dropTitle: "Drag files or click upload",
-    dropHint: "jpeg, png, mp4, avi, mp3, PDF, DOC, TXT.",
+    dropHint: "jpeg, png, webp, mp4, avi, mp3, PDF, DOC, TXT.",
     upload: "Upload",
     linkPlaceholder: "https://Link to any source",
     duration: "Duration",
     tone: "Tone",
     voice: "Voice",
     trend: "Find trend",
-    doForMe: "Do it for me",
+    doForMe: "Fill everything for me",
     preview: "Preview",
     previewAction: "Preview",
     generateAction: "Generate!",
@@ -156,11 +169,20 @@ const COPY = {
     readyToPost: "Ready to upload to social media:",
     fileWeight: "File size",
     fileFormat: "File",
+    confirmRegenerateTitle: "These videos are not right. Regenerate them?",
+    confirmRegenerateText:
+      "The current variants will be replaced with new ones. Continue?",
+    yes: "Yes",
+    no: "No",
+    removeFile: "Remove file",
+    moreFiles: "More files",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
       youtube: "YouTube",
       telegram: "Telegram",
+      vk: "VK",
+      discord: "Discord",
     },
     durations: ["10 sec", "15 sec", "20 sec", "30 sec", "40 sec", "60 sec"],
     tones: ["Dynamic", "Calm", "Premium", "Friendly"],
@@ -289,20 +311,23 @@ function pixelClip() {
   };
 }
 
-function LogoArrowIcon({ className = "", direction = "right" }) {
+function LogoArrowIcon({
+  className = "",
+  direction = "right",
+  color = "currentColor",
+}) {
+  const isLeft = direction === "left";
+
   return (
     <svg
       viewBox="0 0 24 24"
       className={className}
-      fill="currentColor"
       aria-hidden="true"
-      style={{
-        transform: direction === "left" ? "scaleX(-1)" : "none",
-      }}
+      style={{ transform: isLeft ? "scaleX(-1)" : "none" }}
     >
-      <rect x="4" y="4" width="6" height="6" />
-      <rect x="10" y="10" width="6" height="6" />
-      <rect x="16" y="4" width="4" height="4" />
+      <rect x="4" y="4" width="6" height="6" fill={color} />
+      <rect x="10" y="10" width="6" height="6" fill={color} />
+      <rect x="16" y="4" width="4" height="4" fill={color} />
     </svg>
   );
 }
@@ -368,6 +393,30 @@ function TelegramIcon({ className = "" }) {
       <circle cx="12" cy="12" r="10" fill="#27A6E5" />
       <path
         d="M17.7 7.2 6.8 11.4c-.7.3-.7.7-.1.9l2.8.9 6.4-4c.3-.2.7-.1.4.1l-5.2 4.7-.2 2.8c.4 0 .6-.2.8-.4l1.4-1.4 2.9 2.1c.6.3 1 .1 1.1-.5l1.7-8.7c.2-.7-.2-1-.9-.7z"
+        fill="white"
+      />
+    </svg>
+  );
+}
+
+function VkIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="#0077FF" />
+      <path
+        d="M7.2 8.2c.1 0 .3 0 .3.2.6 1.2 1.2 2.3 2 3.3.2.3.4.4.5.4.1 0 .2-.1.2-.5V8.8c0-.4.1-.6.5-.6h1.8c.3 0 .4.2.4.5v1.5c0 .5 0 .8.2.8.2 0 .4-.3.8-.8.7-.9 1.2-1.9 1.5-1.9H17c.3 0 .5.2.4.5-.2.7-1.6 2.5-1.6 2.5-.1.1-.2.3 0 .5 0 0 1.2 1.2 1.5 2 .1.3 0 .5-.4.5h-1.4c-.3 0-.4-.1-.6-.3-.8-.9-1-1-1.2-1-.1 0-.2.1-.2.4v.4c0 .4-.1.5-.5.5-2.4 0-4.5-2.9-5.4-5-.1-.3 0-.5.3-.5h1.3z"
+        fill="white"
+      />
+    </svg>
+  );
+}
+
+function DiscordIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="#5865F2" />
+      <path
+        d="M16.8 8.1c-1-.5-2-.8-2-.8l-.1.2c.9.2 1.3.5 1.3.5-1.4-.8-2.8-.8-4-.6-.9.1-1.7.4-2.4.8.2-.1.7-.3 1.4-.5l-.1-.2s-1 .3-2 .8c0 0-1 1.4-1.3 4.1.8 1 1.9 1.5 1.9 1.5l.5-.7c-.5-.2-.8-.5-.8-.5.1.1.2.1.3.2 0 0 0 0 .1 0 .1 0 .1.1.2.1.4.2.8.3 1.2.3.7.1 1.5.1 2.2 0 .4-.1.8-.2 1.2-.3.1 0 .1-.1.2-.1 0 0 0 0 .1 0 .1-.1.2-.1.3-.2 0 0-.3.3-.8.5l.5.7s1.1-.5 1.9-1.5c-.4-2.7-1.3-4.1-1.3-4.1zM10.3 12.8c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9zm3.4 0c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9z"
         fill="white"
       />
     </svg>
@@ -501,15 +550,27 @@ function FormatTile({ active, icon, label, onClick }) {
   );
 }
 
-function AssetThumb({ src, onRemove }) {
+function AssetThumb({ item, onRemove, removeLabel }) {
   return (
     <div className="group relative h-[58px] w-[58px] shrink-0 overflow-hidden bg-white md:h-[60px] md:w-[60px]">
-      <img src={src} alt="" className="h-full w-full object-cover" />
+      {item.kind === "image" ? (
+        <img src={item.src} alt={item.name || ""} className="h-full w-full object-cover" />
+      ) : (
+        <div className="flex h-full w-full flex-col items-center justify-center px-1 text-center">
+          <div className="text-[11px] font-bold uppercase text-[#7780aa]">
+            {item.ext || item.kind}
+          </div>
+          <div className="mt-1 line-clamp-2 text-[9px] leading-[1.15] text-[#8d94ba]">
+            {item.name}
+          </div>
+        </div>
+      )}
+
       <button
         type="button"
         onClick={onRemove}
         className="absolute right-1 top-1 inline-flex h-6 w-6 items-center justify-center bg-black/55 text-white opacity-100 transition md:opacity-0 md:group-hover:opacity-100"
-        aria-label="Remove file"
+        aria-label={removeLabel}
       >
         <X size={14} />
       </button>
@@ -517,14 +578,29 @@ function AssetThumb({ src, onRemove }) {
   );
 }
 
-function AssetArrowSlot() {
+function ArrowCard({
+  onClick,
+  direction = "right",
+  tone = "violet",
+  className = "",
+  label,
+}) {
+  const isSoft = tone === "soft";
   return (
     <button
       type="button"
-      className="hidden h-[60px] w-[60px] shrink-0 items-center justify-center bg-white text-[#b7bddd] md:flex"
-      aria-label="More files"
+      onClick={onClick}
+      className={`inline-flex items-center justify-center ${className} ${
+        isSoft ? "bg-[#cfd5ec]" : "bg-white"
+      }`}
+      style={pixelClip()}
+      aria-label={label}
     >
-      <LogoArrowIcon className="h-7 w-7 text-[#b7bddd]" />
+      <LogoArrowIcon
+        direction={direction}
+        className="h-8 w-8"
+        color={isSoft ? "#aeb6d6" : "#b78dff"}
+      />
     </button>
   );
 }
@@ -556,6 +632,15 @@ function InfoHint({ text }) {
   );
 }
 
+function SocialItem({ icon, label }) {
+  return (
+    <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
+      {icon}
+      <span>{label}</span>
+    </div>
+  );
+}
+
 function PreviewReadyCard({ t, currentFormatLabel, duration, tone }) {
   return (
     <div className="space-y-2 text-[13px] text-[#6f7394]">
@@ -567,25 +652,97 @@ function PreviewReadyCard({ t, currentFormatLabel, duration, tone }) {
       </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
-        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
-          <InstagramIcon className="h-5 w-5 shrink-0" />
-          <span>{t.socials.instagram}</span>
+        <SocialItem
+          icon={<InstagramIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.instagram}
+        />
+        <SocialItem
+          icon={<TikTokIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.tiktok}
+        />
+        <SocialItem
+          icon={<YouTubeIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.youtube}
+        />
+        <SocialItem
+          icon={<TelegramIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.telegram}
+        />
+        <SocialItem
+          icon={<VkIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.vk}
+        />
+        <SocialItem
+          icon={<DiscordIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.discord}
+        />
+      </div>
+    </div>
+  );
+}
+
+function ConfirmModal({ t, open, onClose, onConfirm }) {
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/45 px-4">
+      <div
+        className="w-full max-w-[420px] bg-white p-5 shadow-[0_18px_60px_rgba(0,0,0,0.18)] md:p-6"
+        style={pixelClip()}
+      >
+        <div className="text-[20px] font-bold text-[#3f3562]">
+          {t.confirmRegenerateTitle}
         </div>
-        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
-          <TikTokIcon className="h-5 w-5 shrink-0" />
-          <span>{t.socials.tiktok}</span>
+        <div className="mt-3 text-[15px] leading-[1.5] text-[#6b6690]">
+          {t.confirmRegenerateText}
         </div>
-        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
-          <YouTubeIcon className="h-5 w-5 shrink-0" />
-          <span>{t.socials.youtube}</span>
-        </div>
-        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
-          <TelegramIcon className="h-5 w-5 shrink-0" />
-          <span>{t.socials.telegram}</span>
+
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          <PixelButton color="soft" className="w-full" onClick={onClose}>
+            {t.no}
+          </PixelButton>
+          <PixelButton color="pink" className="w-full" onClick={onConfirm}>
+            {t.yes}
+          </PixelButton>
         </div>
       </div>
     </div>
   );
+}
+
+async function fileToAsset(file, index) {
+  const ext = file.name.split(".").pop()?.toLowerCase() || "";
+  const kind = file.type.startsWith("image/")
+    ? "image"
+    : file.type.startsWith("video/")
+    ? "video"
+    : file.type.startsWith("audio/")
+    ? "audio"
+    : "file";
+
+  if (kind === "image") {
+    const src = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.readAsDataURL(file);
+    });
+
+    return {
+      id: `${Date.now()}-${index}-${file.name}`,
+      src,
+      name: file.name,
+      ext,
+      kind,
+    };
+  }
+
+  return {
+    id: `${Date.now()}-${index}-${file.name}`,
+    src: "",
+    name: file.name,
+    ext,
+    kind,
+  };
 }
 
 export default function AgentWorkspace({ lang = "ru" }) {
@@ -593,25 +750,112 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const [selectedFormat, setSelectedFormat] = useState(null);
   const [topic, setTopic] = useState("");
-  const [duration, setDuration] = useState(t.durations[3]);
-  const [tone, setTone] = useState(t.tones[0]);
-  const [voice, setVoice] = useState(t.voices[0]);
+  const [duration, setDuration] = useState(COPY[lang]?.durations?.[3] || COPY.ru.durations[3]);
+  const [tone, setTone] = useState(COPY[lang]?.tones?.[0] || COPY.ru.tones[0]);
+  const [voice, setVoice] = useState(COPY[lang]?.voices?.[0] || COPY.ru.voices[0]);
   const [link, setLink] = useState("");
   const [assets, setAssets] = useState([
-    { id: "a1", src: DEMO_POSTERS[0] },
-    { id: "a2", src: DEMO_POSTERS[1] },
-    { id: "a3", src: DEMO_POSTERS[2] },
-    { id: "a4", src: DEMO_POSTERS[3] },
+    { id: "a1", src: DEMO_POSTERS[0], name: "demo-1.jpg", ext: "jpg", kind: "image" },
+    { id: "a2", src: DEMO_POSTERS[1], name: "demo-2.jpg", ext: "jpg", kind: "image" },
+    { id: "a3", src: DEMO_POSTERS[2], name: "demo-3.jpg", ext: "jpg", kind: "image" },
+    { id: "a4", src: DEMO_POSTERS[3], name: "demo-4.jpg", ext: "jpg", kind: "image" },
   ]);
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [variants, setVariants] = useState([]);
   const [activeVariant, setActiveVariant] = useState(0);
+  const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
 
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
   const categoryRef = useRef(null);
   const assetsRef = useRef(null);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) {
+        setHydrated(true);
+        return;
+      }
+
+      const saved = JSON.parse(raw);
+
+      if (saved?.selectedFormat !== undefined) setSelectedFormat(saved.selectedFormat || null);
+      if (typeof saved?.topic === "string") setTopic(saved.topic);
+      if (typeof saved?.link === "string") setLink(saved.link);
+      if (Array.isArray(saved?.assets) && saved.assets.length) setAssets(saved.assets.slice(0, MAX_ASSETS));
+
+      if (saved?.duration && COPY[lang].durations.includes(saved.duration)) {
+        setDuration(saved.duration);
+      }
+
+      if (saved?.tone && COPY[lang].tones.includes(saved.tone)) {
+        setTone(saved.tone);
+      }
+
+      if (saved?.voice && COPY[lang].voices.includes(saved.voice)) {
+        setVoice(saved.voice);
+      }
+
+      if (Array.isArray(saved?.variants)) {
+        setVariants(saved.variants);
+      }
+
+      if (typeof saved?.activeVariant === "number") {
+        setActiveVariant(saved.activeVariant);
+      }
+    } catch (error) {
+      console.error("Failed to restore AgentWorkspace session", error);
+    } finally {
+      setHydrated(true);
+    }
+  }, [lang]);
+
+  useEffect(() => {
+    if (!hydrated) return;
+
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          selectedFormat,
+          topic,
+          duration,
+          tone,
+          voice,
+          link,
+          assets: assets.slice(0, MAX_ASSETS),
+          variants,
+          activeVariant,
+        })
+      );
+    } catch (error) {
+      console.error("Failed to save AgentWorkspace session", error);
+    }
+  }, [
+    hydrated,
+    selectedFormat,
+    topic,
+    duration,
+    tone,
+    voice,
+    link,
+    assets,
+    variants,
+    activeVariant,
+  ]);
+
+  useEffect(() => {
+    const durationFallback = COPY[lang]?.durations?.[3] || COPY.ru.durations[3];
+    const toneFallback = COPY[lang]?.tones?.[0] || COPY.ru.tones[0];
+    const voiceFallback = COPY[lang]?.voices?.[0] || COPY.ru.voices[0];
+
+    if (!COPY[lang]?.durations?.includes(duration)) setDuration(durationFallback);
+    if (!COPY[lang]?.tones?.includes(tone)) setTone(toneFallback);
+    if (!COPY[lang]?.voices?.includes(voice)) setVoice(voiceFallback);
+  }, [lang, duration, tone, voice]);
 
   const previewPoster = useMemo(() => {
     if (variants.length) {
@@ -636,9 +880,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const hasTopic = topic.trim().length > 8;
 
   const progress =
-    (hasCategory ? 20 : 0) +
+    (hasCategory ? 25 : 0) +
     (hasMaterials ? 35 : 0) +
-    (hasTopic ? 45 : 0);
+    (hasTopic ? 40 : 0);
 
   const canGenerate = hasCategory && (hasMaterials || hasTopic);
 
@@ -654,22 +898,18 @@ export default function AgentWorkspace({ lang = "ru" }) {
     ? t.generateAction
     : t.previewAction;
 
-  const handleFiles = (fileList) => {
+  const visibleAssets = assets.slice(0, ASSET_SLOTS);
+  const hasAssetOverflow = assets.length >= ASSET_SLOTS;
+
+  const handleFiles = async (fileList) => {
     const list = Array.from(fileList || []);
     if (!list.length) return;
 
-    const next = list.slice(0, 8).map((file, idx) => {
-      const isImage = file.type.startsWith("image/");
-      return {
-        id: `${Date.now()}-${idx}`,
-        src: isImage ? URL.createObjectURL(file) : "",
-        file,
-      };
-    });
-
-    setAssets((prev) =>
-      [...next, ...prev].filter((item) => item.src).slice(0, 8)
+    const next = await Promise.all(
+      list.slice(0, MAX_ASSETS).map((file, idx) => fileToAsset(file, idx))
     );
+
+    setAssets((prev) => [...next, ...prev].slice(0, MAX_ASSETS));
   };
 
   const removeAsset = (id) => {
@@ -725,7 +965,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const handlePrimaryAction = () => {
     if (variants.length) {
-      runGenerate();
+      setShowConfirmRegenerate(true);
       return;
     }
 
@@ -740,6 +980,11 @@ export default function AgentWorkspace({ lang = "ru" }) {
     });
   };
 
+  const handleConfirmRegenerate = () => {
+    setShowConfirmRegenerate(false);
+    runGenerate();
+  };
+
   const toggleFormat = (item) => {
     setSelectedFormat((prev) => (prev === item.id ? null : item.id));
   };
@@ -749,8 +994,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
       <div className="min-h-screen overflow-x-hidden bg-[#dfe6fb] pb-20 pt-0 md:px-8 xl:px-0">
         <div className="mx-auto w-full max-w-[1120px] lg:grid lg:grid-cols-[1fr_354px] lg:gap-7">
           <div className="min-w-0 space-y-4 md:space-y-5">
-            <section className="w-full bg-transparent">
-              <div className="section-inner px-4 py-0 md:px-0">
+            <section className="workspace-section w-full bg-transparent">
+              <div className="section-inner py-0 md:px-0">
                 <div className="flex flex-wrap items-baseline gap-2 border-b border-white/60 pb-4 md:pb-5">
                   <h2 className="text-[20px] font-bold text-[#7a5d9d] md:text-[24px]">
                     {t.step1Title}
@@ -762,35 +1007,29 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 <div className="relative mt-5 md:mt-7">
-                  <button
-                    type="button"
+                  <ArrowCard
                     onClick={() =>
                       categoryRef.current?.scrollBy({
                         left: -320,
                         behavior: "smooth",
                       })
                     }
-                    className="absolute left-0 top-0 z-10 hidden h-[88px] w-[88px] items-center justify-center bg-[#e3e7fb] md:flex"
-                    style={pixelClip()}
-                    aria-label="Scroll formats left"
-                  >
-                    <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" direction="left" />
-                  </button>
+                    direction="left"
+                    label="Scroll formats left"
+                    className="absolute left-0 top-0 z-10 hidden h-[88px] w-[88px] md:flex"
+                  />
 
-                  <button
-                    type="button"
+                  <ArrowCard
                     onClick={() =>
                       categoryRef.current?.scrollBy({
                         left: 320,
                         behavior: "smooth",
                       })
                     }
-                    className="absolute right-0 top-0 z-10 hidden h-[88px] w-[88px] items-center justify-center bg-[#e3e7fb] md:flex"
-                    style={pixelClip()}
-                    aria-label="Scroll formats right"
-                  >
-                    <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" direction="right" />
-                  </button>
+                    direction="right"
+                    label="Scroll formats right"
+                    className="absolute right-0 top-0 z-10 hidden h-[88px] w-[88px] md:flex"
+                  />
 
                   <div
                     ref={categoryRef}
@@ -825,8 +1064,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
               </div>
             </section>
 
-            <section className="w-full bg-[#cad4f4]">
-              <div className="section-inner px-4 py-5 md:p-7">
+            <section className="workspace-section w-full bg-[#cad4f4]">
+              <div className="section-inner py-5 md:p-7">
                 <div className="flex flex-wrap items-baseline gap-2">
                   <h2 className="text-[20px] font-bold text-[#4d5b92] md:text-[24px]">
                     {t.step2Title}
@@ -841,9 +1080,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
                     onDragOver={(e) => e.preventDefault()}
-                    onDrop={(e) => {
+                    onDrop={async (e) => {
                       e.preventDefault();
-                      handleFiles(e.dataTransfer.files);
+                      await handleFiles(e.dataTransfer.files);
                     }}
                     className="border-[3px] border-dashed border-white bg-[#d9e2fb] px-4 py-7 text-center md:px-5"
                   >
@@ -869,7 +1108,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     type="file"
                     multiple
                     className="hidden"
-                    onChange={(e) => handleFiles(e.target.files)}
+                    onChange={async (e) => handleFiles(e.target.files)}
                   />
                 </div>
 
@@ -884,60 +1123,79 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
                 {assets.length > 0 && (
                   <div className="relative mt-5 md:mt-7">
-                    <button
-                      type="button"
+                    <ArrowCard
                       onClick={() =>
                         assetsRef.current?.scrollBy({
                           left: -220,
                           behavior: "smooth",
                         })
                       }
-                      className="absolute left-0 top-0 z-10 hidden h-[60px] w-[60px] items-center justify-center bg-[#cad4f4] md:flex"
-                      aria-label="Scroll files left"
-                    >
-                      <LogoArrowIcon className="h-7 w-7 text-[#b7bddd]" direction="left" />
-                    </button>
+                      direction="left"
+                      tone="soft"
+                      label="Scroll files left"
+                      className="absolute left-0 top-0 z-10 hidden h-[60px] w-[60px] md:flex"
+                    />
 
-                    <button
-                      type="button"
+                    <ArrowCard
                       onClick={() =>
                         assetsRef.current?.scrollBy({
                           left: 220,
                           behavior: "smooth",
                         })
                       }
-                      className="absolute right-0 top-0 z-10 hidden h-[60px] w-[60px] items-center justify-center bg-[#cad4f4] md:flex"
-                      aria-label="Scroll files right"
-                    >
-                      <LogoArrowIcon className="h-7 w-7 text-[#b7bddd]" direction="right" />
-                    </button>
+                      direction="right"
+                      tone="soft"
+                      label="Scroll files right"
+                      className="absolute right-0 top-0 z-10 hidden h-[60px] w-[60px] md:flex"
+                    />
 
                     <div
                       ref={assetsRef}
                       className="no-scrollbar overflow-x-auto pb-1"
                     >
                       <div className="flex gap-3 md:gap-4 md:px-[72px]">
-                        {assets.map((item) => (
+                        {visibleAssets.map((item) => (
                           <AssetThumb
                             key={item.id}
-                            src={item.src}
+                            item={item}
+                            removeLabel={t.removeFile}
                             onRemove={() => removeAsset(item.id)}
                           />
                         ))}
 
-                        {Array.from(
-                          { length: Math.max(0, 8 - assets.length) },
-                          (_, i) => assets.length + i + 1
-                        ).map((n) => (
-                          <div
-                            key={n}
-                            className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[18px] font-semibold text-[#c8c9df] md:h-[60px] md:w-[60px]"
-                          >
-                            {n}
-                          </div>
-                        ))}
+                        {assets.length < ASSET_SLOTS &&
+                          Array.from(
+                            { length: Math.max(0, ASSET_SLOTS - assets.length) },
+                            (_, i) => assets.length + i + 1
+                          ).map((n) => (
+                            <div
+                              key={n}
+                              className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[18px] font-semibold text-[#c8c9df] md:h-[60px] md:w-[60px]"
+                            >
+                              {n}
+                            </div>
+                          ))}
 
-                        <AssetArrowSlot />
+                        {hasAssetOverflow && (
+                          <button
+                            type="button"
+                            onClick={() =>
+                              assetsRef.current?.scrollBy({
+                                left: 220,
+                                behavior: "smooth",
+                              })
+                            }
+                            className="hidden h-[60px] w-[60px] shrink-0 items-center justify-center bg-[#cfd5ec] md:flex"
+                            style={pixelClip()}
+                            aria-label={t.moreFiles}
+                          >
+                            <LogoArrowIcon
+                              className="h-7 w-7"
+                              color="#aeb6d6"
+                              direction="right"
+                            />
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -945,8 +1203,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
               </div>
             </section>
 
-            <section className="w-full bg-[#c9b8f3]">
-              <div className="section-inner px-4 py-5 md:p-7">
+            <section className="workspace-section w-full bg-[#c9b8f3]">
+              <div className="section-inner py-5 md:p-7">
                 <div className="flex flex-wrap items-baseline gap-2">
                   <h2 className="text-[20px] font-bold text-[#5b447b] md:text-[24px]">
                     {t.step3Title}
@@ -1065,16 +1323,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 {t.download}
               </PixelButton>
 
-              <div className="hidden lg:block">
-                <ProgressActionButton
-                  text={isGenerating ? t.generating : desktopActionText}
-                  progress={progress}
-                  onClick={handlePrimaryAction}
-                  disabled={isGenerating}
-                  showProgress={hasCategory}
-                />
-              </div>
-
               {variants.length > 0 && (
                 <PreviewReadyCard
                   t={t}
@@ -1083,6 +1331,16 @@ export default function AgentWorkspace({ lang = "ru" }) {
                   tone={tone}
                 />
               )}
+
+              <div className="hidden lg:block">
+                <ProgressActionButton
+                  text={isGenerating ? t.generating : desktopActionText}
+                  progress={progress}
+                  onClick={handlePrimaryAction}
+                  disabled={isGenerating}
+                  showProgress={progress > 0}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -1095,9 +1353,16 @@ export default function AgentWorkspace({ lang = "ru" }) {
           onClick={handlePrimaryAction}
           disabled={isGenerating}
           mobile
-          showProgress={hasCategory}
+          showProgress={progress > 0}
         />
       </div>
+
+      <ConfirmModal
+        t={t}
+        open={showConfirmRegenerate}
+        onClose={() => setShowConfirmRegenerate(false)}
+        onConfirm={handleConfirmRegenerate}
+      />
 
       <style jsx>{`
         .no-scrollbar {
@@ -1121,17 +1386,18 @@ export default function AgentWorkspace({ lang = "ru" }) {
         }
 
         @media (max-width: 767px) {
-          section.w-full.bg-transparent,
-          section.w-full.bg-\[\#cad4f4\],
-          section.w-full.bg-\[\#c9b8f3\] {
+          .workspace-section {
             width: 100vw;
             margin-left: calc(50% - 50vw);
             margin-right: calc(50% - 50vw);
           }
 
           .section-inner {
-            padding-left: 16px;
-            padding-right: 16px;
+            width: calc(100vw - 32px);
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 0;
+            padding-right: 0;
           }
         }
       `}</style>

@@ -193,7 +193,7 @@ export default function Sidebar({
             <img src="/icon.png" alt="margelet" className="h-9 w-9" />
             <div className="text-left leading-none">
               <div className="text-[18px] font-black text-[#1a1a1a]">
-                margelet
+                margeleT
               </div>
               <div className="mt-1 text-[11px] font-medium text-[#555]">
                 ai video makers
