@@ -40,6 +40,12 @@ const COPY = {
     readyToPost: "Готово для выгрузки в соцсети:",
     fileWeight: "Вес файла",
     fileFormat: "Файл",
+    socials: {
+      instagram: "Instagram",
+      tiktok: "TikTok",
+      youtube: "YouTube",
+      telegram: "Telegram",
+    },
     durations: [
       "10 секунд",
       "15 секунд",
@@ -50,12 +56,6 @@ const COPY = {
     ],
     tones: ["Динамично", "Спокойно", "Дорого", "Дружелюбно"],
     voices: ["Автоматический", "Энергичный", "Спокойный", "Рассказчик"],
-    socials: {
-      instagram: "Instagram",
-      tiktok: "TikTok",
-      youtube: "YouTube",
-      telegram: "Telegram",
-    },
     formats: {
       motivation: "Мотивация",
       business: "Бизнес",
@@ -156,15 +156,15 @@ const COPY = {
     readyToPost: "Ready to upload to social media:",
     fileWeight: "File size",
     fileFormat: "File",
-    durations: ["10 sec", "15 sec", "20 sec", "30 sec", "40 sec", "60 sec"],
-    tones: ["Dynamic", "Calm", "Premium", "Friendly"],
-    voices: ["Automatic", "Energetic", "Calm", "Narrator"],
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
       youtube: "YouTube",
       telegram: "Telegram",
     },
+    durations: ["10 sec", "15 sec", "20 sec", "30 sec", "40 sec", "60 sec"],
+    tones: ["Dynamic", "Calm", "Premium", "Friendly"],
+    voices: ["Automatic", "Energetic", "Calm", "Narrator"],
     formats: {
       motivation: "Motivation",
       business: "Business",
@@ -289,13 +289,16 @@ function pixelClip() {
   };
 }
 
-function LogoArrowIcon({ className = "" }) {
+function LogoArrowIcon({ className = "", direction = "right" }) {
   return (
     <svg
       viewBox="0 0 24 24"
       className={className}
       fill="currentColor"
       aria-hidden="true"
+      style={{
+        transform: direction === "left" ? "scaleX(-1)" : "none",
+      }}
     >
       <rect x="4" y="4" width="6" height="6" />
       <rect x="10" y="10" width="6" height="6" />
@@ -308,14 +311,14 @@ function InstagramIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <defs>
-        <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+        <linearGradient id="igGradFixed" x1="0%" y1="100%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#feda75" />
           <stop offset="35%" stopColor="#fa7e1e" />
           <stop offset="65%" stopColor="#d62976" />
           <stop offset="100%" stopColor="#4f5bd5" />
         </linearGradient>
       </defs>
-      <rect x="3" y="3" width="18" height="18" rx="5" fill="url(#igGrad)" />
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="url(#igGradFixed)" />
       <circle cx="12" cy="12" r="4.2" fill="none" stroke="white" strokeWidth="1.8" />
       <circle cx="17.2" cy="6.8" r="1.2" fill="white" />
     </svg>
@@ -518,7 +521,7 @@ function AssetArrowSlot() {
   return (
     <button
       type="button"
-      className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[#b7bddd] md:h-[60px] md:w-[60px]"
+      className="hidden h-[60px] w-[60px] shrink-0 items-center justify-center bg-white text-[#b7bddd] md:flex"
       aria-label="More files"
     >
       <LogoArrowIcon className="h-7 w-7 text-[#b7bddd]" />
@@ -553,12 +556,7 @@ function InfoHint({ text }) {
   );
 }
 
-function PreviewReadyCard({
-  t,
-  currentFormatLabel,
-  duration,
-  tone,
-}) {
+function PreviewReadyCard({ t, currentFormatLabel, duration, tone }) {
   return (
     <div className="space-y-2 text-[13px] text-[#6f7394]">
       <div className="font-semibold text-[#5a628d]">{t.readyToPost}</div>
@@ -568,7 +566,7 @@ function PreviewReadyCard({
         {t.fileWeight}: 14.8 MB
       </div>
 
-      <div className="flex items-center gap-3 pt-1">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
         <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
           <InstagramIcon className="h-5 w-5 shrink-0" />
           <span>{t.socials.instagram}</span>
@@ -613,6 +611,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
   const categoryRef = useRef(null);
+  const assetsRef = useRef(null);
 
   const previewPoster = useMemo(() => {
     if (variants.length) {
@@ -763,42 +762,51 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 <div className="relative mt-5 md:mt-7">
-                  <div className="flex items-start gap-4">
-                    <div
-                      ref={categoryRef}
-                      className="no-scrollbar min-w-0 flex-1 overflow-x-auto pb-2"
-                    >
-                      <div className="flex gap-[16px] pl-[2px] md:gap-[18px]">
-                        {FORMAT_ITEMS.map((item) => (
-                          <FormatTile
-                            key={item.id}
-                            icon={item.icon}
-                            label={t.formats[item.id]}
-                            active={selectedFormat === item.id}
-                            onClick={() => toggleFormat(item)}
-                          />
-                        ))}
-                      </div>
-                    </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      categoryRef.current?.scrollBy({
+                        left: -320,
+                        behavior: "smooth",
+                      })
+                    }
+                    className="absolute left-0 top-0 z-10 hidden h-[88px] w-[88px] items-center justify-center bg-[#e3e7fb] md:flex"
+                    style={pixelClip()}
+                    aria-label="Scroll formats left"
+                  >
+                    <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" direction="left" />
+                  </button>
 
-                    <button
-                      type="button"
-                      onClick={() =>
-                        categoryRef.current?.scrollBy({
-                          left: 320,
-                          behavior: "smooth",
-                        })
-                      }
-                      className="hidden shrink-0 flex-col items-center md:flex"
-                      aria-label="Scroll formats"
-                    >
-                      <div className="flex h-[88px] w-[88px] items-center justify-center bg-white">
-                        <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" />
-                      </div>
-                      <div className="mt-3 text-center text-[15px] font-semibold text-[#171717]">
-                        Ещё
-                      </div>
-                    </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      categoryRef.current?.scrollBy({
+                        left: 320,
+                        behavior: "smooth",
+                      })
+                    }
+                    className="absolute right-0 top-0 z-10 hidden h-[88px] w-[88px] items-center justify-center bg-[#e3e7fb] md:flex"
+                    style={pixelClip()}
+                    aria-label="Scroll formats right"
+                  >
+                    <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" direction="right" />
+                  </button>
+
+                  <div
+                    ref={categoryRef}
+                    className="no-scrollbar min-w-0 overflow-x-auto pb-2"
+                  >
+                    <div className="flex gap-[16px] pl-[2px] md:gap-[18px] md:px-[106px]">
+                      {FORMAT_ITEMS.map((item) => (
+                        <FormatTile
+                          key={item.id}
+                          icon={item.icon}
+                          label={t.formats[item.id]}
+                          active={selectedFormat === item.id}
+                          onClick={() => toggleFormat(item)}
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
 
@@ -875,28 +883,63 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 {assets.length > 0 && (
-                  <div className="no-scrollbar mt-5 flex gap-3 overflow-x-auto pb-1 md:mt-7 md:gap-4">
-                    {assets.map((item) => (
-                      <AssetThumb
-                        key={item.id}
-                        src={item.src}
-                        onRemove={() => removeAsset(item.id)}
-                      />
-                    ))}
+                  <div className="relative mt-5 md:mt-7">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        assetsRef.current?.scrollBy({
+                          left: -220,
+                          behavior: "smooth",
+                        })
+                      }
+                      className="absolute left-0 top-0 z-10 hidden h-[60px] w-[60px] items-center justify-center bg-[#cad4f4] md:flex"
+                      aria-label="Scroll files left"
+                    >
+                      <LogoArrowIcon className="h-7 w-7 text-[#b7bddd]" direction="left" />
+                    </button>
 
-                    {Array.from(
-                      { length: Math.max(0, 8 - assets.length) },
-                      (_, i) => assets.length + i + 1
-                    ).map((n) => (
-                      <div
-                        key={n}
-                        className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[18px] font-semibold text-[#c8c9df] md:h-[60px] md:w-[60px]"
-                      >
-                        {n}
+                    <button
+                      type="button"
+                      onClick={() =>
+                        assetsRef.current?.scrollBy({
+                          left: 220,
+                          behavior: "smooth",
+                        })
+                      }
+                      className="absolute right-0 top-0 z-10 hidden h-[60px] w-[60px] items-center justify-center bg-[#cad4f4] md:flex"
+                      aria-label="Scroll files right"
+                    >
+                      <LogoArrowIcon className="h-7 w-7 text-[#b7bddd]" direction="right" />
+                    </button>
+
+                    <div
+                      ref={assetsRef}
+                      className="no-scrollbar overflow-x-auto pb-1"
+                    >
+                      <div className="flex gap-3 md:gap-4 md:px-[72px]">
+                        {assets.map((item) => (
+                          <AssetThumb
+                            key={item.id}
+                            src={item.src}
+                            onRemove={() => removeAsset(item.id)}
+                          />
+                        ))}
+
+                        {Array.from(
+                          { length: Math.max(0, 8 - assets.length) },
+                          (_, i) => assets.length + i + 1
+                        ).map((n) => (
+                          <div
+                            key={n}
+                            className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[18px] font-semibold text-[#c8c9df] md:h-[60px] md:w-[60px]"
+                          >
+                            {n}
+                          </div>
+                        ))}
+
+                        <AssetArrowSlot />
                       </div>
-                    ))}
-
-                    <AssetArrowSlot />
+                    </div>
                   </div>
                 )}
               </div>
@@ -1046,27 +1089,14 @@ export default function AgentWorkspace({ lang = "ru" }) {
       </div>
 
       <div className="fixed bottom-4 left-4 right-4 z-50 lg:hidden">
-        <div className="space-y-3">
-          {variants.length > 0 && (
-            <div className="rounded-none bg-[#dfe6fb] px-1 py-0">
-              <PreviewReadyCard
-                t={t}
-                currentFormatLabel={currentFormatLabel}
-                duration={duration}
-                tone={tone}
-              />
-            </div>
-          )}
-
-          <ProgressActionButton
-            text={isGenerating ? t.generating : mobileActionText}
-            progress={progress}
-            onClick={handlePrimaryAction}
-            disabled={isGenerating}
-            mobile
-            showProgress={hasCategory}
-          />
-        </div>
+        <ProgressActionButton
+          text={isGenerating ? t.generating : mobileActionText}
+          progress={progress}
+          onClick={handlePrimaryAction}
+          disabled={isGenerating}
+          mobile
+          showProgress={hasCategory}
+        />
       </div>
 
       <style jsx>{`
