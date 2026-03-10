@@ -1,124 +1,223 @@
-function getBrain(agent) {
-  const brain = agent?.brain || {};
+// captionEngine.js
+// Генерация caption timeline на основе voiceEngine.
+// Делает short-form captions для TikTok / Reels / Shorts.
+
+export async function buildCaptionPlans(request, voicePlanResult, scenePlanResult) {
+  const variants = voicePlanResult?.variants || [];
+  const sceneVariants = mapSceneVariants(scenePlanResult?.variants || []);
+  const tone = request?.config?.tone || "dynamic";
+
+  const plans = variants.map((voiceVariant) => {
+    const sceneVariant = sceneVariants.get(voiceVariant.id);
+
+    return buildSingleCaptionPlan({
+      voiceVariant,
+      sceneVariant,
+      tone,
+    });
+  });
 
   return {
-    style: brain.style || "sharp",
-    hookType: brain.hookType || "problem-first",
-    scriptLogic: brain.scriptLogic || "insight-to-action",
-    videoStructure: brain.videoStructure || "hook-problem-solution-cta",
-    persona: brain.persona || "expert-friend",
-    proofMode: brain.proofMode || "examples",
-    ctaStyle: brain.ctaStyle || "soft",
-    energy:
-      typeof brain.energy === "number"
-        ? brain.energy
-        : Number(brain.energy || 70),
+    input: {
+      requestId: request?.meta?.requestId || null,
+      variantCount: plans.length,
+      tone,
+    },
+    variants: plans,
   };
 }
 
-function splitCaptionText(text, brain) {
-  const safe = String(text || "").trim();
-  if (!safe) return [];
+function buildSingleCaptionPlan({ voiceVariant, sceneVariant, tone }) {
+  const segments = voiceVariant?.segments || [];
+  const timeline = voiceVariant?.timing?.segments || [];
 
-  const maxLen =
-    brain.energy >= 80 ? 26 : brain.style === "premium" ? 38 : 32;
+  const captions = segments.map((segment, index) =>
+    buildCaptionSegment({
+      segment,
+      timing: timeline[index],
+      tone,
+    })
+  );
 
-  const words = safe.split(/\s+/);
+  const captionTimeline = buildCaptionTimeline(captions);
+
+  return {
+    id: voiceVariant.id,
+    kind: voiceVariant.kind,
+    label: voiceVariant.label,
+    style: buildCaptionStyle(tone),
+    captions,
+    timeline: captionTimeline,
+    readabilityScore: computeReadabilityScore(captions),
+  };
+}
+
+function buildCaptionSegment({ segment, timing, tone }) {
+  const baseText = segment.normalizedText || segment.text || "";
+
+  const words = splitCaptionWords(baseText);
+  const chunks = buildCaptionChunks(words, tone);
+
+  const startMs = timing?.speechStartMs || timing?.startMs || 0;
+  const endMs = timing?.speechEndMs || timing?.endMs || 0;
+
+  return {
+    id: `caption_${segment.id}`,
+    sceneId: segment.sceneId,
+    role: segment.role,
+    startMs,
+    endMs,
+    chunks,
+    accentWords: segment?.emphasis?.accentWords || [],
+    style: chooseCaptionStyle(segment.role, tone),
+  };
+}
+
+function buildCaptionChunks(words, tone) {
+  const maxWords =
+    tone === "dynamic"
+      ? 4
+      : tone === "premium"
+      ? 5
+      : tone === "calm"
+      ? 6
+      : 5;
+
   const chunks = [];
-  let current = "";
+  let buffer = [];
 
   for (const word of words) {
-    const next = current ? `${current} ${word}` : word;
+    buffer.push(word);
 
-    if (next.length <= maxLen) {
-      current = next;
-    } else {
-      if (current) chunks.push(current);
-      current = word;
+    if (buffer.length >= maxWords) {
+      chunks.push(buffer.join(" "));
+      buffer = [];
     }
   }
 
-  if (current) chunks.push(current);
+  if (buffer.length) {
+    chunks.push(buffer.join(" "));
+  }
 
-  return chunks.length ? chunks : [safe];
+  return chunks.map((text, index) => ({
+    order: index + 1,
+    text,
+  }));
 }
 
-function normalizeCaptionText(text, role, brain) {
-  let value = String(text || "").trim();
-  if (!value) return "";
+function buildCaptionTimeline(captions) {
+  return captions.map((caption) => ({
+    id: caption.id,
+    startMs: caption.startMs,
+    endMs: caption.endMs,
+    role: caption.role,
+  }));
+}
 
-  if (role === "hook" || role === "claim" || role === "question") {
-    if (brain.energy >= 75) {
-      value = value.toUpperCase();
+function buildCaptionStyle(tone) {
+  if (tone === "dynamic") {
+    return {
+      font: "bold-shortform",
+      case: "upper",
+      highlight: "accent-word",
+      animation: "pop-in",
+      placement: "lower-third",
+    };
+  }
+
+  if (tone === "premium") {
+    return {
+      font: "clean-modern",
+      case: "sentence",
+      highlight: "minimal",
+      animation: "fade-up",
+      placement: "center-lower",
+    };
+  }
+
+  if (tone === "calm") {
+    return {
+      font: "clean-readable",
+      case: "sentence",
+      highlight: "none",
+      animation: "soft-fade",
+      placement: "lower-third",
+    };
+  }
+
+  return {
+    font: "shortform-default",
+    case: "sentence",
+    highlight: "accent-word",
+    animation: "fade-up",
+    placement: "lower-third",
+  };
+}
+
+function chooseCaptionStyle(role, tone) {
+  if (role === "hook") {
+    return {
+      emphasis: "strong",
+      scale: 1.2,
+      animation: tone === "dynamic" ? "impact-pop" : "fade-up",
+    };
+  }
+
+  if (role === "cta") {
+    return {
+      emphasis: "medium",
+      scale: 1.05,
+      animation: "fade-up",
+    };
+  }
+
+  return {
+    emphasis: "normal",
+    scale: 1,
+    animation: "fade",
+  };
+}
+
+function splitCaptionWords(text) {
+  return safeText(text)
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function computeReadabilityScore(captions) {
+  if (!captions.length) return 0;
+
+  let totalWords = 0;
+  let totalChunks = 0;
+
+  for (const caption of captions) {
+    for (const chunk of caption.chunks) {
+      totalChunks += 1;
+      totalWords += splitCaptionWords(chunk.text).length;
     }
-    return value;
   }
 
-  return value;
+  const avgWords = totalWords / Math.max(totalChunks, 1);
+
+  if (avgWords <= 3) return 95;
+  if (avgWords <= 5) return 90;
+  if (avgWords <= 7) return 80;
+
+  return 70;
 }
 
-function getCaptionStyle(role, brain) {
-  if (role === "hook" || role === "claim" || role === "question") return "hook";
-  if (role === "cta" || role === "offer" || role === "result") return "cta";
-  if (brain.style === "premium") return "premium";
-  if (brain.style === "educational") return "educational";
-  return "body";
+function mapSceneVariants(list) {
+  const map = new Map();
+
+  for (const item of list || []) {
+    if (item?.id) map.set(item.id, item);
+  }
+
+  return map;
 }
 
-export async function generateCaptions(agent, scriptResult, scenes) {
-  const brain = getBrain(agent);
-  const hook = scriptResult?.hook || "";
-  const safeScenes = Array.isArray(scenes) ? scenes : [];
-  const captions = [];
-
-  if (hook) {
-    captions.push({
-      id: "hook",
-      start: 0,
-      end: brain.energy >= 75 ? 1.8 : 2.2,
-      text: normalizeCaptionText(hook, "hook", brain),
-      style: "hook",
-    });
-  }
-
-  let cursor = hook ? (brain.energy >= 75 ? 1.8 : 2.2) : 0;
-
-  safeScenes.forEach((scene, index) => {
-    const duration = Math.max(2, Number(scene?.duration) || 4);
-    const role = scene?.role || "body";
-    const rawText = scene?.overlay || scene?.text || "";
-    const normalized = normalizeCaptionText(rawText, role, brain);
-    const chunks = splitCaptionText(normalized, brain);
-
-    if (!chunks.length) return;
-
-    const partDuration = Math.max(0.9, duration / chunks.length);
-
-    chunks.forEach((chunk, partIndex) => {
-      const start = cursor + partIndex * partDuration;
-      const end = start + partDuration;
-
-      captions.push({
-        id: `scene-${index + 1}-${partIndex + 1}`,
-        start: Number(start.toFixed(2)),
-        end: Number(end.toFixed(2)),
-        text: chunk,
-        style: getCaptionStyle(role, brain),
-      });
-    });
-
-    cursor += duration;
-  });
-
-  if (scriptResult?.cta) {
-    captions.push({
-      id: "final-cta",
-      start: Number(cursor.toFixed(2)),
-      end: Number((cursor + 2.2).toFixed(2)),
-      text: normalizeCaptionText(scriptResult.cta, "cta", brain),
-      style: "cta",
-    });
-  }
-
-  return captions;
+function safeText(value) {
+  if (value == null) return "";
+  return String(value).trim();
 }

@@ -1,141 +1,411 @@
-function getBrain(agent) {
-  const brain = agent?.brain || {};
+// voiceEngine.js
+// Строит voice plan для Margelet:
+// - разбивает narration на сегменты
+// - распределяет тайминги по сценам
+// - задаёт delivery / pauses / emphasis
+// - готовит структуру под будущий TTS provider
+
+export async function buildVoicePlans(request, scriptResult, scenePlanResult) {
+  const config = request?.config || {};
+  const variants = scenePlanResult?.variants || [];
+  const scriptVariants = mapScriptVariants(scriptResult?.variants || []);
+
+  const plans = variants.map((variantPlan) => {
+    const scriptVariant = scriptVariants.get(variantPlan.id) || null;
+
+    return buildSingleVoicePlan({
+      config,
+      variantPlan,
+      scriptVariant,
+    });
+  });
 
   return {
-    style: brain.style || "sharp",
-    hookType: brain.hookType || "problem-first",
-    scriptLogic: brain.scriptLogic || "insight-to-action",
-    videoStructure: brain.videoStructure || "hook-problem-solution-cta",
-    persona: brain.persona || "expert-friend",
-    proofMode: brain.proofMode || "examples",
-    ctaStyle: brain.ctaStyle || "soft",
-    energy:
-      typeof brain.energy === "number"
-        ? brain.energy
-        : Number(brain.energy || 70),
+    input: {
+      requestId: request?.meta?.requestId || null,
+      variantCount: plans.length,
+      voice: config.voice || "auto",
+      tone: config.tone || "dynamic",
+    },
+    variants: plans,
   };
 }
 
-function getVoiceStyle(agent, brain) {
-  const voice = agent?.voice || agent?.generation?.voice || "ai";
+function buildSingleVoicePlan({ config, variantPlan, scriptVariant }) {
+  const scenes = variantPlan?.scenes || [];
+  const baseVoice = config.voice || "auto";
+  const baseTone = config.tone || "dynamic";
+
+  const segments = scenes.map((scene, index) =>
+    buildVoiceSegment({
+      scene,
+      index,
+      baseVoice,
+      baseTone,
+      variantPlan,
+    })
+  );
+
+  const timing = buildVoiceTiming(segments);
+  const providerHints = buildProviderHints({
+    baseVoice,
+    baseTone,
+    variantPlan,
+    segments,
+  });
+
+  const assembledText = segments.map((item) => item.text).join(" ").trim();
 
   return {
-    provider: "planned",
-    voice,
-    language: "auto",
-    pace:
-      brain.energy >= 80
-        ? "fast"
-        : brain.energy <= 35
-        ? "calm"
-        : "balanced",
-    tone:
-      brain.style === "premium"
-        ? "polished"
-        : brain.style === "educational"
-        ? "clear"
-        : brain.style === "entertaining"
-        ? "animated"
-        : brain.style === "aggressive"
-        ? "punchy"
-        : "natural",
-    persona: brain.persona || "expert-friend",
+    id: variantPlan.id,
+    kind: variantPlan.kind,
+    label: variantPlan.label,
+    voiceProfile: {
+      voice: baseVoice,
+      tone: baseTone,
+      delivery: variantPlan?.direction?.narrationDelivery || "balanced",
+      pacing: variantPlan?.direction?.pacing || "medium",
+      energy: variantPlan?.direction?.energy || "balanced",
+    },
+    synthesis: {
+      provider: "pending-provider",
+      language: detectLanguage(assembledText),
+      providerHints,
+    },
+    text: {
+      fullText: assembledText,
+      fullTextNormalized: normalizeSpeechText(assembledText),
+      lineCount: segments.length,
+    },
+    segments,
+    timing,
+    qualityHints: buildQualityHints(segments, scriptVariant, variantPlan),
   };
 }
 
-function normalizeSegments(scriptResult, scenes) {
-  const safeScenes = Array.isArray(scenes) ? scenes : [];
+function buildVoiceSegment({
+  scene,
+  index,
+  baseVoice,
+  baseTone,
+  variantPlan,
+}) {
+  const sourceText =
+    safeText(scene?.narrative?.narration) ||
+    safeText(scene?.narrative?.caption) ||
+    "";
 
-  if (safeScenes.length) {
-    return safeScenes.map((scene) => ({
-      id: scene.id,
-      role: scene.role || "body",
-      text: scene.text || "",
-      duration: Number(scene.duration) || 4,
-    }));
-  }
+  const normalizedText = normalizeSpeechText(sourceText);
+  const durationMs = scene?.timing?.durationMs || estimateDurationMs(normalizedText, baseTone);
+  const role = scene?.role || "body";
+  const emphasis = scene?.narrative?.emphasis || "medium";
 
-  const fallback = [];
+  const delivery = pickSegmentDelivery({
+    role,
+    baseVoice,
+    baseTone,
+    emphasis,
+    variantPlan,
+  });
 
-  if (scriptResult?.hook) {
-    fallback.push({
-      id: "hook",
-      role: "hook",
-      text: scriptResult.hook,
-      duration: 3,
-    });
-  }
+  const pauseAfterMs = pickPauseAfter(role, baseTone);
+  const speechRate = pickSpeechRate(role, baseVoice, baseTone);
+  const pitch = pickPitch(role, baseVoice, baseTone);
+  const volume = pickVolume(role, emphasis, baseTone);
 
-  if (Array.isArray(scriptResult?.structure)) {
-    scriptResult.structure.forEach((line, index) => {
-      fallback.push({
-        id: `line-${index + 1}`,
-        role: "body",
-        text: line,
-        duration: 4,
-      });
-    });
-  }
-
-  if (scriptResult?.cta) {
-    fallback.push({
-      id: "cta",
-      role: "cta",
-      text: scriptResult.cta,
-      duration: 2.5,
-    });
-  }
-
-  return fallback;
+  return {
+    id: `voice_${scene?.id || index + 1}`,
+    sceneId: scene?.id || `scene_${index + 1}`,
+    order: index + 1,
+    role,
+    text: sourceText,
+    normalizedText,
+    durationMs,
+    targetWindowMs: durationMs,
+    pauseAfterMs,
+    delivery: {
+      style: delivery.style,
+      intensity: delivery.intensity,
+      warmth: delivery.warmth,
+      clarity: delivery.clarity,
+      speechRate,
+      pitch,
+      volume,
+    },
+    emphasis: {
+      level: emphasis,
+      accentWords: extractAccentWords(sourceText),
+    },
+    timingHints: {
+      startPaddingMs: role === "hook" ? 60 : 120,
+      endPaddingMs: role === "cta" ? 40 : 80,
+      fitMode: role === "hook" ? "tight" : "balanced",
+    },
+  };
 }
 
-function buildVoiceDirection(role, brain) {
+function buildVoiceTiming(segments) {
+  let cursorMs = 0;
+
+  const timeline = segments.map((segment) => {
+    const startMs = cursorMs;
+    const speechDurationMs = segment.durationMs;
+    const endSpeechMs = startMs + speechDurationMs;
+    const endMs = endSpeechMs + (segment.pauseAfterMs || 0);
+
+    cursorMs = endMs;
+
+    return {
+      segmentId: segment.id,
+      sceneId: segment.sceneId,
+      role: segment.role,
+      startMs,
+      speechStartMs: startMs,
+      speechEndMs: endSpeechMs,
+      endMs,
+      durationMs: speechDurationMs,
+      pauseAfterMs: segment.pauseAfterMs || 0,
+    };
+  });
+
+  return {
+    totalSpeechMs: timeline.reduce((sum, item) => sum + item.durationMs, 0),
+    totalTimelineMs: timeline.length ? timeline[timeline.length - 1].endMs : 0,
+    segments: timeline,
+  };
+}
+
+function buildProviderHints({ baseVoice, baseTone, variantPlan, segments }) {
+  return {
+    providerVoiceKey: buildProviderVoiceKey(baseVoice, baseTone),
+    outputFormat: "wav",
+    sampleRate: 44100,
+    channelMode: "mono",
+    trimSilence: true,
+    normalizeLoudness: true,
+    stitchSegments: true,
+    hookPriorityBoost: true,
+    targetDelivery:
+      variantPlan?.direction?.narrationDelivery || voiceToDelivery(baseVoice),
+    segmentCount: segments.length,
+  };
+}
+
+function buildQualityHints(segments, scriptVariant, variantPlan) {
+  const hookSegment = segments.find((item) => item.role === "hook") || null;
+  const ctaSegment = segments.find((item) => item.role === "cta") || null;
+
+  return {
+    needsHookPrecision: Boolean(hookSegment),
+    needsCtaSeparation: Boolean(ctaSegment),
+    shouldRebalanceIfTooFast: segments.some((item) => item.delivery.speechRate > 1.08),
+    shouldRebalanceIfTooSlow: segments.some((item) => item.delivery.speechRate < 0.92),
+    containsAccentWords: segments.some(
+      (item) => (item?.emphasis?.accentWords || []).length > 0
+    ),
+    targetStyle:
+      variantPlan?.direction?.variantStyle ||
+      scriptVariant?.direction?.editDirection?.variantStyle ||
+      "balanced short-form narration",
+  };
+}
+
+function pickSegmentDelivery({
+  role,
+  baseVoice,
+  baseTone,
+  emphasis,
+  variantPlan,
+}) {
+  const voiceMode = voiceToDelivery(baseVoice);
+  const toneMode = toneToDelivery(baseTone);
+
   if (role === "hook") {
-    return brain.energy >= 75
-      ? "Open strong and immediately grab attention."
-      : "Open clearly and confidently.";
+    return {
+      style:
+        toneMode === "premium"
+          ? "controlled-impact"
+          : toneMode === "calm"
+          ? "clear-invite"
+          : "high-contrast-hook",
+      intensity: emphasis === "high" ? "high" : "medium-high",
+      warmth: voiceMode === "narrative" ? "medium" : "medium-low",
+      clarity: "high",
+    };
+  }
+
+  if (role === "proof" || role === "solution") {
+    return {
+      style: "confident-explainer",
+      intensity: "medium",
+      warmth: toneMode === "friendly" ? "high" : "medium",
+      clarity: "high",
+    };
   }
 
   if (role === "cta") {
-    if (brain.ctaStyle === "soft") return "Finish softly and naturally.";
-    if (brain.ctaStyle === "curiosity") return "Finish with intrigue.";
-    if (brain.ctaStyle === "community") return "Invite response and participation.";
-    return "Finish with a clear direct call to action.";
+    return {
+      style:
+        variantPlan?.direction?.tone === "premium"
+          ? "clean-closing"
+          : "direct-closing",
+      intensity: "medium",
+      warmth: "medium-high",
+      clarity: "high",
+    };
   }
 
-  if (brain.style === "premium") return "Deliver in a polished controlled way.";
-  if (brain.style === "educational") return "Deliver clearly and explain simply.";
-  if (brain.style === "entertaining") return "Deliver with movement and energy.";
-  if (brain.style === "aggressive") return "Deliver with punch and urgency.";
-
-  return "Deliver naturally and clearly.";
+  return {
+    style:
+      toneMode === "calm"
+        ? "balanced-explainer"
+        : toneMode === "premium"
+        ? "refined-explainer"
+        : "shortform-explainer",
+    intensity: emphasis === "high" ? "medium-high" : "medium",
+    warmth: toneMode === "friendly" ? "high" : "medium",
+    clarity: "high",
+  };
 }
 
-export async function generateVoicePlan(agent, scriptResult, scenes) {
-  const brain = getBrain(agent);
-  const voiceStyle = getVoiceStyle(agent, brain);
-  const segments = normalizeSegments(scriptResult, scenes);
+function pickPauseAfter(role, tone) {
+  if (role === "hook") return tone === "dynamic" ? 140 : 180;
+  if (role === "cta") return 60;
+  if (role === "proof") return 120;
+  return tone === "calm" ? 180 : 120;
+}
 
-  return {
-    provider: voiceStyle.provider,
-    voice: voiceStyle.voice,
-    language: voiceStyle.language,
-    status: "planned",
-    pace: voiceStyle.pace,
-    tone: voiceStyle.tone,
-    persona: voiceStyle.persona,
-    energy: brain.energy,
-    segments: segments.map((segment) => ({
-      id: segment.id,
-      role: segment.role,
-      text: segment.text,
-      duration: segment.duration,
-      direction: buildVoiceDirection(segment.role, brain),
-      file: null,
-    })),
-    fullText: segments
-      .map((segment) => segment.text)
-      .filter(Boolean)
-      .join(" "),
-  };
+function pickSpeechRate(role, voice, tone) {
+  let rate = 1.0;
+
+  if (tone === "dynamic") rate += 0.06;
+  if (tone === "premium") rate -= 0.04;
+  if (tone === "calm") rate -= 0.05;
+  if (voice === "energetic") rate += 0.05;
+  if (voice === "narrator") rate -= 0.02;
+
+  if (role === "hook") rate += 0.03;
+  if (role === "cta") rate -= 0.01;
+
+  return clamp(Number(rate.toFixed(2)), 0.85, 1.15);
+}
+
+function pickPitch(role, voice, tone) {
+  let pitch = 0;
+
+  if (voice === "energetic") pitch += 1;
+  if (voice === "calm") pitch -= 1;
+  if (tone === "premium") pitch -= 0.5;
+  if (role === "hook") pitch += 0.5;
+
+  return clamp(Number(pitch.toFixed(1)), -3, 3);
+}
+
+function pickVolume(role, emphasis, tone) {
+  let volume = 1.0;
+
+  if (role === "hook") volume += 0.08;
+  if (role === "cta") volume += 0.03;
+  if (emphasis === "high") volume += 0.04;
+  if (tone === "premium") volume -= 0.02;
+
+  return clamp(Number(volume.toFixed(2)), 0.85, 1.15);
+}
+
+function buildProviderVoiceKey(voice, tone) {
+  const v = voice || "auto";
+  const t = tone || "dynamic";
+  return `${v}-${t}`;
+}
+
+function voiceToDelivery(voice) {
+  if (voice === "energetic") return "energetic";
+  if (voice === "calm") return "calm";
+  if (voice === "narrator") return "narrative";
+  return "balanced";
+}
+
+function toneToDelivery(tone) {
+  if (tone === "premium") return "premium";
+  if (tone === "friendly") return "friendly";
+  if (tone === "calm") return "calm";
+  return "dynamic";
+}
+
+function estimateDurationMs(text, tone) {
+  const words = countWords(text);
+  const wpm =
+    tone === "dynamic"
+      ? 165
+      : tone === "calm"
+      ? 130
+      : tone === "premium"
+      ? 140
+      : 150;
+
+  const minutes = words / Math.max(wpm, 1);
+  const ms = minutes * 60 * 1000;
+
+  return Math.max(1200, Math.round(ms));
+}
+
+function extractAccentWords(text) {
+  const words = safeText(text)
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
+    .split(/\s+/)
+    .filter(Boolean);
+
+  const result = [];
+
+  for (const word of words) {
+    const clean = word.toLowerCase();
+    if (clean.length < 5) continue;
+    if (!result.includes(clean)) result.push(clean);
+    if (result.length >= 4) break;
+  }
+
+  return result;
+}
+
+function normalizeSpeechText(text) {
+  return safeText(text)
+    .replace(/\s+/g, " ")
+    .replace(/\s([,.!?;:])/g, "$1")
+    .replace(/[–—]/g, "-")
+    .trim();
+}
+
+function detectLanguage(text) {
+  const value = safeText(text);
+  if (!value) return "ru";
+
+  const cyrillic = (value.match(/[а-яё]/gi) || []).length;
+  const latin = (value.match(/[a-z]/gi) || []).length;
+
+  return cyrillic >= latin ? "ru" : "en";
+}
+
+function countWords(text) {
+  return safeText(text)
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
+function mapScriptVariants(list) {
+  const map = new Map();
+
+  for (const item of list || []) {
+    if (item?.id) map.set(item.id, item);
+  }
+
+  return map;
+}
+
+function safeText(value) {
+  if (value == null) return "";
+  return String(value).trim();
+}
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
 }

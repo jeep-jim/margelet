@@ -7,9 +7,11 @@ import {
   Play,
   Info,
   X,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 
-const STORAGE_KEY = "margelet_agent_workspace_v1";
+const STORAGE_KEY = "margelet_agent_workspace_v2";
 const MAX_ASSETS = 12;
 const ASSET_SLOTS = 9;
 
@@ -30,7 +32,7 @@ const COPY = {
     duration: "Длительность",
     tone: "Тон",
     voice: "Голос",
-    trend: "Найди тренд",
+    trend: "Найти тренд",
     doForMe: "Заполни всё за меня",
     preview: "Предпросмотр",
     previewAction: "Предпросмотр",
@@ -50,6 +52,14 @@ const COPY = {
     yes: "Да",
     no: "Нет",
     removeFile: "Удалить файл",
+    previewPreparing: "Собираем превью...",
+    previewReady: "Превью собрано",
+    previewNotPlayable: "Видео-превью подключим следующим шагом",
+    generationErrorFallback: "Не удалось сгенерировать варианты. Попробуй ещё раз.",
+    generationPanelTitle: "Что собрал Margelet",
+    generationHook: "Хук",
+    generationAngle: "Угол",
+    generationScenes: "Сцены",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -174,6 +184,14 @@ const COPY = {
     yes: "Yes",
     no: "No",
     removeFile: "Remove file",
+    previewPreparing: "Building preview...",
+    previewReady: "Preview ready",
+    previewNotPlayable: "Video preview will be connected next",
+    generationErrorFallback: "Failed to generate variants. Please try again.",
+    generationPanelTitle: "What Margelet built",
+    generationHook: "Hook",
+    generationAngle: "Angle",
+    generationScenes: "Scenes",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -664,6 +682,46 @@ function ConfirmModal({ t, open, onClose, onConfirm }) {
   );
 }
 
+function GenerationInfoCard({ t, activeVariantData }) {
+  if (!activeVariantData) return null;
+
+  return (
+    <div className="space-y-3 bg-white/70 p-4 text-[13px] text-[#4e557e]" style={pixelClip()}>
+      <div className="font-semibold text-[#4a4272]">{t.generationPanelTitle}</div>
+
+      {activeVariantData?.creative?.hook ? (
+        <div>
+          <div className="font-semibold text-[#6c63a2]">{t.generationHook}</div>
+          <div>{activeVariantData.creative.hook}</div>
+        </div>
+      ) : null}
+
+      {activeVariantData?.creative?.angle ? (
+        <div>
+          <div className="font-semibold text-[#6c63a2]">{t.generationAngle}</div>
+          <div>{activeVariantData.creative.angle}</div>
+        </div>
+      ) : null}
+
+      {activeVariantData?.scenes?.length ? (
+        <div>
+          <div className="font-semibold text-[#6c63a2]">{t.generationScenes}</div>
+          <div className="mt-2 space-y-2">
+            {activeVariantData.scenes.slice(0, 3).map((scene) => (
+              <div key={scene.id} className="rounded-[10px] bg-white/80 px-3 py-2">
+                <div className="text-[12px] font-semibold uppercase tracking-[0.02em] text-[#7d73b2]">
+                  {scene.role}
+                </div>
+                <div className="mt-1 text-[#4e557e]">{scene.caption || scene.narration}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 async function fileToAsset(file, index) {
   const ext = file.name.split(".").pop()?.toLowerCase() || "";
   const kind = file.type.startsWith("image/")
@@ -675,11 +733,7 @@ async function fileToAsset(file, index) {
     : "file";
 
   if (kind === "image") {
-    const src = await new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result || ""));
-      reader.readAsDataURL(file);
-    });
+    const src = await readFileAsDataUrl(file);
 
     return {
       id: `${Date.now()}-${index}-${file.name}`,
@@ -687,6 +741,8 @@ async function fileToAsset(file, index) {
       name: file.name,
       ext,
       kind,
+      size: file.size,
+      mimeType: file.type,
     };
   }
 
@@ -696,7 +752,39 @@ async function fileToAsset(file, index) {
     name: file.name,
     ext,
     kind,
+    size: file.size,
+    mimeType: file.type,
   };
+}
+
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function serializeAssetForApi(item) {
+  return {
+    id: item.id,
+    name: item.name,
+    src: item.src || "",
+    previewUrl: item.src || "",
+    ext: item.ext || "",
+    type: item.mimeType || guessMimeTypeFromKind(item.kind, item.ext),
+    mimeType: item.mimeType || guessMimeTypeFromKind(item.kind, item.ext),
+    size: item.size || null,
+    kind: item.kind || "file",
+  };
+}
+
+function guessMimeTypeFromKind(kind, ext) {
+  if (kind === "image") return `image/${ext === "jpg" ? "jpeg" : ext || "jpeg"}`;
+  if (kind === "video") return "video/mp4";
+  if (kind === "audio") return "audio/mpeg";
+  return "application/octet-stream";
 }
 
 export default function AgentWorkspace({ lang = "ru" }) {
@@ -726,11 +814,11 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const [activeVariant, setActiveVariant] = useState(0);
   const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [generationError, setGenerationError] = useState("");
+  const [lastPreviewPayload, setLastPreviewPayload] = useState(null);
 
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
-  const categoryRef = useRef(null);
-  const assetsRef = useRef(null);
 
   useEffect(() => {
     try {
@@ -742,9 +830,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
       const saved = JSON.parse(raw);
 
-      if (saved?.selectedFormat !== undefined) {
-        setSelectedFormat(saved.selectedFormat || null);
-      }
+      if (saved?.selectedFormat !== undefined) setSelectedFormat(saved.selectedFormat || null);
       if (typeof saved?.topic === "string") setTopic(saved.topic);
       if (typeof saved?.link === "string") setLink(saved.link);
       if (Array.isArray(saved?.assets) && saved.assets.length) {
@@ -764,6 +850,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
       }
       if (typeof saved?.activeVariant === "number") {
         setActiveVariant(saved.activeVariant);
+      }
+      if (saved?.lastPreviewPayload) {
+        setLastPreviewPayload(saved.lastPreviewPayload);
       }
     } catch (error) {
       console.error("Failed to restore AgentWorkspace session", error);
@@ -788,6 +877,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
           assets: assets.slice(0, MAX_ASSETS),
           variants,
           activeVariant,
+          lastPreviewPayload,
         })
       );
     } catch (error) {
@@ -804,6 +894,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     assets,
     variants,
     activeVariant,
+    lastPreviewPayload,
   ]);
 
   useEffect(() => {
@@ -823,11 +914,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     return DEMO_POSTERS[1];
   }, [variants, activeVariant]);
 
-  const previewVideo = useMemo(() => {
-    if (variants.length) return variants[activeVariant]?.video || "";
-    return "";
-  }, [variants, activeVariant]);
-
+  const activeVariantData = variants[activeVariant] || null;
   const currentFormatLabel = selectedFormat ? t.formats[selectedFormat] : "";
 
   const topicPlaceholder = `${t.examplePrefix} ${
@@ -874,34 +961,66 @@ export default function AgentWorkspace({ lang = "ru" }) {
     setAssets((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const runGenerate = () => {
+  const buildGenerationPayload = () => {
+    return {
+      format: selectedFormat,
+      topic: topic.trim(),
+      duration,
+      tone,
+      voice,
+      link: link.trim(),
+      notes: topic.trim(),
+      assets: assets.map(serializeAssetForApi),
+      mode: "preview",
+    };
+  };
+
+  const runGenerate = async () => {
     if (isGenerating || !canGenerate) return;
 
     setIsGenerating(true);
+    setGenerationError("");
 
-    setTimeout(() => {
-      setVariants([
-        {
-          id: "v1",
-          poster: assets[0]?.src || DEMO_POSTERS[0],
-          video:
-            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    try {
+      const payload = buildGenerationPayload();
+
+      const res = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-        {
-          id: "v2",
-          poster: assets[1]?.src || DEMO_POSTERS[1],
-          video:
-            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-        },
-        {
-          id: "v3",
-          poster: assets[2]?.src || DEMO_POSTERS[2],
-          video:
-            "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
-        },
-      ]);
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data?.ok) {
+        throw new Error(
+          data?.error?.message || t.generationErrorFallback
+        );
+      }
+
+      const nextVariants =
+        data?.preview?.variants?.map((variant, idx) => ({
+          id: variant.id || `v${idx + 1}`,
+          poster: variant.poster || DEMO_POSTERS[idx % DEMO_POSTERS.length],
+          previewUrl: variant.previewUrl || "",
+          hasPlayableVideo: false,
+          label: variant.label || null,
+          creative: variant.creative || null,
+          scenes: variant.scenes || [],
+          script: variant.script || null,
+          info: variant.info || null,
+          captions: variant.captions || [],
+          access: variant.access || null,
+          renderPlan: variant.renderPlan || null,
+          kind: variant.kind || null,
+          score: variant.score || null,
+        })) || [];
+
+      setVariants(nextVariants);
       setActiveVariant(0);
-      setIsGenerating(false);
+      setLastPreviewPayload(data.preview || null);
 
       requestAnimationFrame(() => {
         previewRef.current?.scrollIntoView({
@@ -909,7 +1028,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
           block: "start",
         });
       });
-    }, 1400);
+    } catch (error) {
+      console.error("Generation failed:", error);
+      setGenerationError(error?.message || t.generationErrorFallback);
+    } finally {
+      setIsGenerating(false);
+    }
   };
 
   const handleFillForMe = () => {
@@ -965,10 +1089,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 <div className="mt-5 md:mt-7">
-                  <div
-                    ref={categoryRef}
-                    className="desktop-scroll mobile-swipe overflow-x-auto pb-3"
-                  >
+                  <div className="desktop-scroll mobile-swipe overflow-x-auto pb-3">
                     <div className="flex w-max gap-[16px] pr-2 md:gap-[18px]">
                       {FORMAT_ITEMS.map((item) => (
                         <FormatTile
@@ -1057,10 +1178,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
                 {assets.length > 0 && (
                   <div className="mt-5 md:mt-7">
-                    <div
-                      ref={assetsRef}
-                      className="desktop-scroll mobile-swipe overflow-x-auto pb-3"
-                    >
+                    <div className="desktop-scroll mobile-swipe overflow-x-auto pb-3">
                       <div className="flex w-max gap-3 pr-2 md:gap-4">
                         {visibleAssets.map((item) => (
                           <AssetThumb
@@ -1142,13 +1260,61 @@ export default function AgentWorkspace({ lang = "ru" }) {
             <div className="space-y-5">
               <div className="overflow-hidden bg-[#111111]" style={pixelClip()}>
                 <div className="checkerboard relative aspect-[9/16] w-full">
-                  {previewVideo ? (
-                    <video
-                      src={previewVideo}
-                      controls
-                      className="h-full w-full object-cover"
-                      poster={previewPoster}
-                    />
+                  {isGenerating ? (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <div className="flex flex-col items-center text-white">
+                        <Loader2 className="h-10 w-10 animate-spin" />
+                        <div className="mt-5 text-[16px] font-semibold">{t.previewPreparing}</div>
+                      </div>
+                    </div>
+                  ) : variants.length ? (
+                    <div className="relative h-full w-full">
+                      {previewPoster ? (
+                        <img
+                          src={previewPoster}
+                          alt=""
+                          className="h-full w-full object-cover"
+                        />
+                      ) : null}
+
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.38)_100%)]" />
+
+                      <div className="absolute inset-x-4 top-4 flex items-center justify-between">
+                        <div
+                          className="bg-white/85 px-3 py-2 text-[12px] font-semibold text-[#2b2b35]"
+                          style={pixelClip()}
+                        >
+                          {t.previewReady}
+                        </div>
+                        {activeVariantData?.score ? (
+                          <div
+                            className="bg-[#8c62ff]/90 px-3 py-2 text-[12px] font-semibold text-white"
+                            style={pixelClip()}
+                          >
+                            Score {activeVariantData.score}
+                          </div>
+                        ) : null}
+                      </div>
+
+                      <div className="absolute inset-x-4 bottom-4 space-y-2">
+                        <div
+                          className="inline-flex items-center gap-2 bg-black/65 px-3 py-2 text-[13px] font-medium text-white"
+                          style={pixelClip()}
+                        >
+                          <Play size={14} fill="currentColor" />
+                          {t.previewNotPlayable}
+                        </div>
+
+                        {activeVariantData?.creative?.hook ? (
+                          <div
+                            className="bg-black/65 px-3 py-3 text-[14px] leading-[1.4] text-white"
+                            style={pixelClip()}
+                          >
+                            {activeVariantData.creative.hook}
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
                   ) : (
                     <div className="relative flex h-full w-full items-center justify-center">
                       <div className="relative z-10 flex flex-col items-center">
@@ -1167,6 +1333,16 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
               </div>
 
+              {generationError ? (
+                <div
+                  className="flex items-start gap-3 bg-[#ffe4e8] px-4 py-4 text-[14px] text-[#8a3550]"
+                  style={pixelClip()}
+                >
+                  <AlertCircle className="mt-[1px] h-5 w-5 shrink-0" />
+                  <div>{generationError}</div>
+                </div>
+              ) : null}
+
               <div className="bg-[#d7e3f3]">
                 <div className="grid grid-cols-3 gap-[12px] md:gap-[18px]">
                   {[0, 1, 2].map((idx) => {
@@ -1181,11 +1357,27 @@ export default function AgentWorkspace({ lang = "ru" }) {
                         }`}
                       >
                         {item ? (
-                          <img
-                            src={item.poster}
-                            alt=""
-                            className="h-full w-full object-cover"
-                          />
+                          <>
+                            {item.poster ? (
+                              <img
+                                src={item.poster}
+                                alt=""
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center bg-[#26232f] text-[24px] font-semibold text-[#c3c3d0] md:text-[26px]">
+                                {idx + 1}
+                              </div>
+                            )}
+                            <div className="absolute inset-x-2 bottom-2">
+                              <div
+                                className="truncate bg-black/70 px-2 py-1 text-[10px] font-semibold text-white"
+                                style={pixelClip()}
+                              >
+                                {item.label?.ru || item.label?.en || `Variant ${idx + 1}`}
+                              </div>
+                            </div>
+                          </>
                         ) : (
                           <div className="flex h-full w-full items-center justify-center bg-[#26232f] text-[24px] font-semibold text-[#c3c3d0] md:text-[26px]">
                             {idx + 1}
@@ -1218,6 +1410,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
                   tone={tone}
                 />
               )}
+
+              <GenerationInfoCard t={t} activeVariantData={activeVariantData} />
 
               <div className="hidden lg:block">
                 <ProgressActionButton
