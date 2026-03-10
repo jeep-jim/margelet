@@ -5,9 +5,8 @@ import {
   ChevronDown,
   Download,
   Play,
-  Sparkles,
-  X,
   Info,
+  X,
 } from "lucide-react";
 
 const COPY = {
@@ -40,6 +39,7 @@ const COPY = {
     variant: "Формат",
     readyToPost: "Готово для выгрузки в соцсети:",
     fileWeight: "Вес файла",
+    fileFormat: "Файл",
     durations: [
       "10 секунд",
       "15 секунд",
@@ -50,6 +50,12 @@ const COPY = {
     ],
     tones: ["Динамично", "Спокойно", "Дорого", "Дружелюбно"],
     voices: ["Автоматический", "Энергичный", "Спокойный", "Рассказчик"],
+    socials: {
+      instagram: "Instagram",
+      tiktok: "TikTok",
+      youtube: "YouTube",
+      telegram: "Telegram",
+    },
     formats: {
       motivation: "Мотивация",
       business: "Бизнес",
@@ -149,9 +155,16 @@ const COPY = {
     variant: "Format",
     readyToPost: "Ready to upload to social media:",
     fileWeight: "File size",
+    fileFormat: "File",
     durations: ["10 sec", "15 sec", "20 sec", "30 sec", "40 sec", "60 sec"],
     tones: ["Dynamic", "Calm", "Premium", "Friendly"],
     voices: ["Automatic", "Energetic", "Calm", "Narrator"],
+    socials: {
+      instagram: "Instagram",
+      tiktok: "TikTok",
+      youtube: "YouTube",
+      telegram: "Telegram",
+    },
     formats: {
       motivation: "Motivation",
       business: "Business",
@@ -278,8 +291,82 @@ function pixelClip() {
 
 function LogoArrowIcon({ className = "" }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
-      <path d="M8 5l8 7-8 7V5z" />
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <rect x="4" y="4" width="6" height="6" />
+      <rect x="10" y="10" width="6" height="6" />
+      <rect x="16" y="4" width="4" height="4" />
+    </svg>
+  );
+}
+
+function InstagramIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <defs>
+        <linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#feda75" />
+          <stop offset="35%" stopColor="#fa7e1e" />
+          <stop offset="65%" stopColor="#d62976" />
+          <stop offset="100%" stopColor="#4f5bd5" />
+        </linearGradient>
+      </defs>
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="url(#igGrad)" />
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="white" strokeWidth="1.8" />
+      <circle cx="17.2" cy="6.8" r="1.2" fill="white" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        d="M14.8 4c.5 1.6 1.6 2.8 3.2 3.5V10c-1.2 0-2.4-.3-3.5-1v5.4a4.9 4.9 0 1 1-4.9-4.9c.3 0 .6 0 .9.1v2.7a2.3 2.3 0 1 0 1.4 2.1V4h2.9z"
+        fill="#111111"
+      />
+      <path
+        d="M13.4 4v10.4a2.3 2.3 0 1 1-2.3-2.3c.2 0 .5 0 .7.1V9.5a4.9 4.9 0 0 0-.7 9.7 4.9 4.9 0 0 0 4.9-4.9V8.9c1 .7 2.1 1.1 3.4 1.1V7.5c-1.6-.7-2.8-1.9-3.2-3.5h-2.8z"
+        fill="#25F4EE"
+        opacity="0.9"
+      />
+      <path
+        d="M14.1 4v10.2a2.3 2.3 0 1 1-2.3-2.3c.2 0 .4 0 .6.1V9.4a4.9 4.9 0 1 0 4.9 4.9V8.7c1 .7 2.1 1.1 3.4 1.1V7.3c-1.6-.7-2.8-1.9-3.2-3.3h-3.4z"
+        fill="#FE2C55"
+        opacity="0.9"
+      />
+      <path
+        d="M14.3 4.2c.5 1.4 1.6 2.5 3.1 3.1v2c-1.2 0-2.3-.3-3.3-1v6a4.2 4.2 0 1 1-4.2-4.2c.3 0 .5 0 .8.1v2.1a2.1 2.1 0 1 0 1.3 2v-10h2.3z"
+        fill="#111111"
+      />
+    </svg>
+  );
+}
+
+function YouTubeIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        d="M21 8.5a3 3 0 0 0-2.1-2.1C17.1 6 12 6 12 6s-5.1 0-6.9.4A3 3 0 0 0 3 8.5 31 31 0 0 0 3 12a31 31 0 0 0 .4 3.5 3 3 0 0 0 2.1 2.1C6.9 18 12 18 12 18s5.1 0 6.9-.4a3 3 0 0 0 2.1-2.1c.3-1.1.4-2.3.4-3.5a31 31 0 0 0-.4-3.5z"
+        fill="#FF0033"
+      />
+      <path d="M10 9.3v5.4l4.7-2.7L10 9.3z" fill="white" />
+    </svg>
+  );
+}
+
+function TelegramIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="10" fill="#27A6E5" />
+      <path
+        d="M17.7 7.2 6.8 11.4c-.7.3-.7.7-.1.9l2.8.9 6.4-4c.3-.2.7-.1.4.1l-5.2 4.7-.2 2.8c.4 0 .6-.2.8-.4l1.4-1.4 2.9 2.1c.6.3 1 .1 1.1-.5l1.7-8.7c.2-.7-.2-1-.9-.7z"
+        fill="white"
+      />
     </svg>
   );
 }
@@ -473,17 +560,31 @@ function PreviewReadyCard({
   tone,
 }) {
   return (
-    <div className="hidden lg:block space-y-2 text-[13px] text-[#6f7394]">
+    <div className="space-y-2 text-[13px] text-[#6f7394]">
       <div className="font-semibold text-[#5a628d]">{t.readyToPost}</div>
+
       <div>
         {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · MP4 ·{" "}
         {t.fileWeight}: 14.8 MB
       </div>
-      <div className="flex items-center gap-3 text-[18px]">
-        <span title="Instagram">📸</span>
-        <span title="TikTok">🎵</span>
-        <span title="YouTube">▶️</span>
-        <span title="Telegram">✈️</span>
+
+      <div className="flex items-center gap-3 pt-1">
+        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
+          <InstagramIcon className="h-5 w-5 shrink-0" />
+          <span>{t.socials.instagram}</span>
+        </div>
+        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
+          <TikTokIcon className="h-5 w-5 shrink-0" />
+          <span>{t.socials.tiktok}</span>
+        </div>
+        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
+          <YouTubeIcon className="h-5 w-5 shrink-0" />
+          <span>{t.socials.youtube}</span>
+        </div>
+        <div className="flex items-center gap-2 text-[13px] text-[#4c557d]">
+          <TelegramIcon className="h-5 w-5 shrink-0" />
+          <span>{t.socials.telegram}</span>
+        </div>
       </div>
     </div>
   );
@@ -525,9 +626,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     return "";
   }, [variants, activeVariant]);
 
-  const currentFormatLabel = selectedFormat
-    ? t.formats[selectedFormat]
-    : "";
+  const currentFormatLabel = selectedFormat ? t.formats[selectedFormat] : "";
 
   const topicPlaceholder = `${t.examplePrefix} ${
     t.topicByFormat[selectedFormat] || t.topicByFormat.default
@@ -648,7 +747,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   return (
     <>
-      <div className="min-h-screen bg-[#dfe6fb] pb-28 pt-0 md:px-8 xl:px-0">
+      <div className="min-h-screen overflow-x-hidden bg-[#dfe6fb] pb-20 pt-0 md:px-8 xl:px-0">
         <div className="mx-auto w-full max-w-[1120px] lg:grid lg:grid-cols-[1fr_354px] lg:gap-7">
           <div className="min-w-0 space-y-4 md:space-y-5">
             <section className="w-full bg-transparent">
@@ -664,35 +763,43 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 <div className="relative mt-5 md:mt-7">
-                  <div
-                    ref={categoryRef}
-                    className="no-scrollbar min-w-0 flex gap-[16px] overflow-x-auto pr-[92px] pb-2 md:gap-[18px] md:pr-[96px]"
-                  >
-                    {FORMAT_ITEMS.map((item) => (
-                      <FormatTile
-                        key={item.id}
-                        icon={item.icon}
-                        label={t.formats[item.id]}
-                        active={selectedFormat === item.id}
-                        onClick={() => toggleFormat(item)}
-                      />
-                    ))}
-                  </div>
+                  <div className="flex items-start gap-4">
+                    <div
+                      ref={categoryRef}
+                      className="no-scrollbar min-w-0 flex-1 overflow-x-auto pb-2"
+                    >
+                      <div className="flex gap-[16px] pl-[2px] md:gap-[18px]">
+                        {FORMAT_ITEMS.map((item) => (
+                          <FormatTile
+                            key={item.id}
+                            icon={item.icon}
+                            label={t.formats[item.id]}
+                            active={selectedFormat === item.id}
+                            onClick={() => toggleFormat(item)}
+                          />
+                        ))}
+                      </div>
+                    </div>
 
-                  <button
-                    type="button"
-                    onClick={() =>
-                      categoryRef.current?.scrollBy({
-                        left: 320,
-                        behavior: "smooth",
-                      })
-                    }
-                    className="absolute right-0 top-0 z-10 flex h-[78px] w-[78px] items-center justify-center bg-[#e3e7fb] md:h-[88px] md:w-[88px]"
-                    style={pixelClip()}
-                    aria-label="Scroll formats"
-                  >
-                    <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" />
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        categoryRef.current?.scrollBy({
+                          left: 320,
+                          behavior: "smooth",
+                        })
+                      }
+                      className="hidden shrink-0 flex-col items-center md:flex"
+                      aria-label="Scroll formats"
+                    >
+                      <div className="flex h-[88px] w-[88px] items-center justify-center bg-white">
+                        <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" />
+                      </div>
+                      <div className="mt-3 text-center text-[15px] font-semibold text-[#171717]">
+                        Ещё
+                      </div>
+                    </button>
+                  </div>
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2">
@@ -939,14 +1046,27 @@ export default function AgentWorkspace({ lang = "ru" }) {
       </div>
 
       <div className="fixed bottom-4 left-4 right-4 z-50 lg:hidden">
-        <ProgressActionButton
-          text={isGenerating ? t.generating : mobileActionText}
-          progress={progress}
-          onClick={handlePrimaryAction}
-          disabled={isGenerating}
-          mobile
-          showProgress={hasCategory}
-        />
+        <div className="space-y-3">
+          {variants.length > 0 && (
+            <div className="rounded-none bg-[#dfe6fb] px-1 py-0">
+              <PreviewReadyCard
+                t={t}
+                currentFormatLabel={currentFormatLabel}
+                duration={duration}
+                tone={tone}
+              />
+            </div>
+          )}
+
+          <ProgressActionButton
+            text={isGenerating ? t.generating : mobileActionText}
+            progress={progress}
+            onClick={handlePrimaryAction}
+            disabled={isGenerating}
+            mobile
+            showProgress={hasCategory}
+          />
+        </div>
       </div>
 
       <style jsx>{`
