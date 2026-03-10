@@ -5,39 +5,51 @@ import {
   ChevronDown,
   Download,
   Play,
-  RefreshCcw,
-  Upload,
   Sparkles,
-  Link as LinkIcon,
+  X,
+  Info,
 } from "lucide-react";
 
 const COPY = {
   ru: {
     step1Title: "1. Выбери формат агента",
     step1Tail: "или оставь пустым",
+    step1Hint: "Формат влияет на стиль сценария, подачу и монтаж видео.",
     step2Title: "2. Материалы",
-    step2Tail: "сюда можно бросить файлы, фото, видео, ссылки и пояснения.",
+    step2Tail:
+      "сюда можно бросить файлы, фото, видео, аудио, ссылки и пояснения.",
     step3Title: "3. Тема видео",
     step3Tail: "пиши так, как будто ставишь задачу реальному продюсеру.",
-    dropTitle: "Перетащи файлы сюда или нажми для загрузки",
-    dropHint: "Поддержка: фото, видео, PDF, DOC, TXT.",
+    dropTitle: "Перетащи файлы или нажми загрузить",
+    dropHint: "jpeg, png, mp4, avi, mp3, PDF, DOC, TXT.",
     upload: "Загрузить",
     linkPlaceholder: "https://Ссылка на любой источник",
-    topicPlaceholder:
-      "Поставь задачу, например: Используй примеры только с рыжими котами",
     duration: "Длительность",
     tone: "Тон",
     voice: "Голос",
     trend: "Найди тренд",
     doForMe: "Сделай за меня",
-    start: "Готово, начинай!",
     preview: "Предпросмотр",
+    previewAction: "Предпросмотр",
+    generateAction: "Сгенерировать!",
+    regenerateAction: "Перегенерировать",
     createdThree: "Создано три варианта",
     download: "Скачать видео",
-    regenerate: "Перегенерировать",
-    mobilePreview: "Предпросмотр",
     generating: "Генерируем 3 варианта...",
-    variant: "Вариант",
+    examplePrefix: "Например:",
+    variant: "Формат",
+    readyToPost: "Готово для выгрузки в соцсети:",
+    fileWeight: "Вес файла",
+    durations: [
+      "10 секунд",
+      "15 секунд",
+      "20 секунд",
+      "30 секунд",
+      "40 секунд",
+      "60 секунд",
+    ],
+    tones: ["Динамично", "Спокойно", "Дорого", "Дружелюбно"],
+    voices: ["Автоматический", "Энергичный", "Спокойный", "Рассказчик"],
     formats: {
       motivation: "Мотивация",
       business: "Бизнес",
@@ -45,38 +57,101 @@ const COPY = {
       ai: "AI",
       crypto: "Крипта",
       facts: "Факты",
-      more: "Ещё",
+      tech: "Техно",
+      finance: "Финансы",
+      education: "Обучение",
+      history: "История",
+      gaming: "Игры",
+      stream: "Стримы",
+      reviews: "Обзоры",
+      gadgets: "Гаджеты",
+      cars: "Авто",
+      travel: "Путешествия",
+      food: "Еда",
+      fitness: "Фитнес",
+      health: "Здоровье",
+      science: "Наука",
+      space: "Космос",
+      animals: "Животные",
+      kids: "Детям",
+      music: "Музыка",
+      movies: "Кино",
+      culture: "Культура",
+      psychology: "Психология",
+      books: "Книги",
+      marketing: "Маркетинг",
+      startup: "Стартапы",
+      design: "Дизайн",
+      blog: "Блог",
     },
-    durations: ["10 секунд", "15 секунд", "20 секунд", "30 секунд", "40 секунд", "60 секунд"],
-    tones: ["Динамично", "Спокойно", "Дорого", "Дружелюбно"],
-    voices: ["Автоматический", "Энергичный", "Спокойный", "Рассказчик"],
+    topicByFormat: {
+      motivation: "Напиши ролик о том, почему дисциплина важнее мотивации",
+      business: "Сделай ролик про 3 ошибки предпринимателей в начале пути",
+      news: "Кратко перескажи главное событие дня простым языком",
+      ai: "Объясни простыми словами новый AI инструмент и чем он полезен",
+      crypto: "Объясни, почему Bitcoin снова у всех на слуху",
+      facts: "Сделай короткий ролик с 3 неожиданными фактами",
+      tech: "Покажи 3 технологии, которые уже меняют повседневную жизнь",
+      finance: "Объясни 3 ошибки в обращении с деньгами",
+      education: "Сделай ролик, который помогает быстро запомнить тему",
+      history:
+        "Кратко расскажи об историческом событии, которое всё изменило",
+      gaming: "Сделай топ-5 игр, которые стоит ждать в этом году",
+      stream: "Придумай формат клипа из ярких моментов стрима",
+      reviews: "Сделай честный короткий обзор нового продукта",
+      gadgets: "Покажи гаджет, который реально полезен каждый день",
+      cars: "Сделай ролик про авто, которое стоит своих денег",
+      travel: "Собери короткий ролик о месте, куда хочется улететь",
+      food: "Покажи блюдо, которое хочется попробовать сразу",
+      fitness: "Сделай ролик о простой привычке для хорошей формы",
+      health: "Объясни важную привычку для здоровья без перегруза",
+      science: "Расскажи научный факт, который удивляет с первых секунд",
+      space: "Сделай ролик о космическом объекте, который поражает масштабом",
+      animals: "Сделай видео про необычное поведение животных",
+      kids: "Придумай короткий полезный ролик для детей",
+      music: "Сделай ролик о треке или музыкальном тренде",
+      movies: "Расскажи о фильме, который стоит посмотреть",
+      culture: "Покажи культурный факт, который хочется пересказать друзьям",
+      psychology: "Объясни психологическую ловушку, в которую все попадают",
+      books: "Сделай ролик про книгу, которая реально меняет мышление",
+      marketing: "Расскажи о маркетинговом приёме, который работает",
+      startup: "Сделай ролик про стартап-идею с потенциалом",
+      design: "Объясни дизайнерский приём на простом примере",
+      blog: "Придумай тему для личного блога, которая цепляет",
+      default: "Используй примеры только с рыжими котами",
+    },
   },
   en: {
     step1Title: "1. Choose agent format",
     step1Tail: "or leave it empty",
+    step1Hint: "The format affects script style, delivery, and video editing.",
     step2Title: "2. Materials",
-    step2Tail: "drop files, photos, videos, links and notes here.",
+    step2Tail: "drop files, photos, videos, audio, links and notes here.",
     step3Title: "3. Video topic",
     step3Tail: "write it like you're briefing a real producer.",
-    dropTitle: "Drag files here or click to upload",
-    dropHint: "Supports: photo, video, PDF, DOC, TXT.",
+    dropTitle: "Drag files or click upload",
+    dropHint: "jpeg, png, mp4, avi, mp3, PDF, DOC, TXT.",
     upload: "Upload",
     linkPlaceholder: "https://Link to any source",
-    topicPlaceholder:
-      "Describe the task, for example: use examples only with orange cats",
     duration: "Duration",
     tone: "Tone",
     voice: "Voice",
     trend: "Find trend",
     doForMe: "Do it for me",
-    start: "Ready, start!",
     preview: "Preview",
+    previewAction: "Preview",
+    generateAction: "Generate!",
+    regenerateAction: "Regenerate",
     createdThree: "Three variants created",
     download: "Download video",
-    regenerate: "Regenerate",
-    mobilePreview: "Preview",
     generating: "Generating 3 variants...",
-    variant: "Variant",
+    examplePrefix: "For example:",
+    variant: "Format",
+    readyToPost: "Ready to upload to social media:",
+    fileWeight: "File size",
+    durations: ["10 sec", "15 sec", "20 sec", "30 sec", "40 sec", "60 sec"],
+    tones: ["Dynamic", "Calm", "Premium", "Friendly"],
+    voices: ["Automatic", "Energetic", "Calm", "Narrator"],
     formats: {
       motivation: "Motivation",
       business: "Business",
@@ -84,13 +159,80 @@ const COPY = {
       ai: "AI",
       crypto: "Crypto",
       facts: "Facts",
-      more: "More",
+      tech: "Tech",
+      finance: "Finance",
+      education: "Education",
+      history: "History",
+      gaming: "Gaming",
+      stream: "Streams",
+      reviews: "Reviews",
+      gadgets: "Gadgets",
+      cars: "Cars",
+      travel: "Travel",
+      food: "Food",
+      fitness: "Fitness",
+      health: "Health",
+      science: "Science",
+      space: "Space",
+      animals: "Animals",
+      kids: "Kids",
+      music: "Music",
+      movies: "Movies",
+      culture: "Culture",
+      psychology: "Psychology",
+      books: "Books",
+      marketing: "Marketing",
+      startup: "Startup",
+      design: "Design",
+      blog: "Blog",
     },
-    durations: ["10 sec", "15 sec", "20 sec", "30 sec", "40 sec", "60 sec"],
-    tones: ["Dynamic", "Calm", "Premium", "Friendly"],
-    voices: ["Automatic", "Energetic", "Calm", "Narrator"],
+    topicByFormat: {
+      motivation:
+        "Create a video about why discipline matters more than motivation",
+      business: "Make a video about 3 mistakes founders make early on",
+      news: "Summarize the biggest event of the day in simple words",
+      ai: "Explain a new AI tool and why people care about it",
+      crypto: "Explain why Bitcoin is back in the spotlight",
+      facts: "Make a short video with 3 surprising facts",
+      tech: "Show 3 technologies already changing daily life",
+      finance: "Explain 3 money mistakes most people make",
+      education: "Create a short video that helps learn a topic fast",
+      history:
+        "Tell a short story about a historical event that changed everything",
+      gaming: "Make a top-5 video of games worth waiting for this year",
+      stream: "Create a short highlight format from a live stream",
+      reviews: "Make a short honest review of a new product",
+      gadgets: "Show a gadget that is genuinely useful every day",
+      cars: "Make a video about a car that is worth the price",
+      travel: "Create a short video about a place people want to visit",
+      food: "Show a dish that instantly makes people hungry",
+      fitness: "Make a short video about one habit for better shape",
+      health: "Explain one important health habit without overcomplicating it",
+      science:
+        "Tell a science fact that surprises people in the first seconds",
+      space: "Make a video about a space object that feels unbelievable",
+      animals: "Show unusual animal behavior in a fun way",
+      kids: "Create a useful short video for kids",
+      music: "Make a video about a song or music trend",
+      movies: "Talk about a movie worth watching",
+      culture: "Show a culture fact people want to retell",
+      psychology: "Explain a psychology trap most people fall into",
+      books: "Make a short video about a book that changes thinking",
+      marketing: "Explain a marketing move that really works",
+      startup: "Make a video about a startup idea with real potential",
+      design: "Explain a design principle with a simple example",
+      blog: "Suggest a blog topic that feels instantly clickable",
+      default: "Use examples only with orange cats",
+    },
   },
 };
+
+const DEMO_POSTERS = [
+  "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=800&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop",
+];
 
 const FORMAT_ITEMS = [
   { id: "motivation", icon: "🧘" },
@@ -99,13 +241,32 @@ const FORMAT_ITEMS = [
   { id: "ai", icon: "🤖" },
   { id: "crypto", icon: "₿" },
   { id: "facts", icon: "📚" },
-  { id: "more", icon: "✚" },
-];
-
-const DEMO_POSTERS = [
-  "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=800&auto=format&fit=crop",
+  { id: "tech", icon: "💻" },
+  { id: "finance", icon: "📈" },
+  { id: "education", icon: "🎓" },
+  { id: "history", icon: "🏛️" },
+  { id: "gaming", icon: "🎮" },
+  { id: "stream", icon: "📺" },
+  { id: "reviews", icon: "⭐" },
+  { id: "gadgets", icon: "📱" },
+  { id: "cars", icon: "🚗" },
+  { id: "travel", icon: "✈️" },
+  { id: "food", icon: "🍔" },
+  { id: "fitness", icon: "💪" },
+  { id: "health", icon: "🧬" },
+  { id: "science", icon: "🔬" },
+  { id: "space", icon: "🚀" },
+  { id: "animals", icon: "🐶" },
+  { id: "kids", icon: "🧸" },
+  { id: "music", icon: "🎵" },
+  { id: "movies", icon: "🎬" },
+  { id: "culture", icon: "🎭" },
+  { id: "psychology", icon: "🧠" },
+  { id: "books", icon: "📖" },
+  { id: "marketing", icon: "📢" },
+  { id: "startup", icon: "🚀" },
+  { id: "design", icon: "🎨" },
+  { id: "blog", icon: "✍️" },
 ];
 
 function pixelClip() {
@@ -113,6 +274,14 @@ function pixelClip() {
     clipPath:
       "polygon(0 8px, 8px 8px, 8px 0, calc(100% - 8px) 0, calc(100% - 8px) 8px, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 8px calc(100% - 8px), 0 calc(100% - 8px))",
   };
+}
+
+function LogoArrowIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor">
+      <path d="M8 5l8 7-8 7V5z" />
+    </svg>
+  );
 }
 
 function PixelButton({
@@ -149,16 +318,51 @@ function PixelButton({
   );
 }
 
-function PixelSelect({ label, value, onChange, options }) {
+function ProgressActionButton({
+  text,
+  progress,
+  onClick,
+  mobile = false,
+  disabled = false,
+  showProgress = false,
+}) {
+  const pct = Math.max(0, Math.min(100, progress));
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      style={pixelClip()}
+      className={`relative w-full overflow-hidden text-white transition ${
+        mobile
+          ? "px-5 py-4 text-[16px] font-bold shadow-[0_10px_30px_rgba(88,62,155,0.25)]"
+          : "px-5 py-4 text-[18px] font-bold"
+      } ${disabled ? "cursor-not-allowed opacity-55" : "hover:brightness-[1.03]"}`}
+    >
+      <div className="absolute inset-0 bg-[#8c62ff]" />
+      {showProgress && (
+        <div
+          className="absolute inset-y-0 left-0 bg-[linear-gradient(90deg,#7f2cff_0%,#d700ff_100%)] transition-[width] duration-300"
+          style={{ width: `${pct}%` }}
+        />
+      )}
+      <span className="relative z-10">{text}</span>
+    </button>
+  );
+}
+
+function PlainSelect({ label, value, onChange, options }) {
   return (
     <div className="space-y-2">
-      <div className="text-[16px] font-semibold text-[#57558c]">{label}</div>
+      <div className="text-[14px] font-semibold text-[#57558c] md:text-[16px]">
+        {label}
+      </div>
       <div className="relative">
         <select
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          style={pixelClip()}
-          className="w-full appearance-none bg-white px-5 py-4 text-[15px] text-[#6b5fa0] outline-none"
+          className="w-full appearance-none bg-white px-4 py-4 text-[15px] text-[#6b5fa0] outline-none md:px-5"
         >
           {options.map((item) => (
             <option key={item} value={item}>
@@ -180,49 +384,115 @@ function FormatTile({ active, icon, label, onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group flex w-[88px] shrink-0 flex-col items-center"
+      className="group flex w-[84px] shrink-0 flex-col items-center md:w-[88px]"
     >
       <div
-        className={`flex h-[88px] w-[88px] items-center justify-center transition ${
+        style={active ? pixelClip() : undefined}
+        className={`flex h-[78px] w-[78px] items-center justify-center transition md:h-[88px] md:w-[88px] ${
           active ? "bg-[#b78dff]" : "bg-white"
         }`}
-        style={pixelClip()}
       >
-        <span className={`text-[34px] leading-none ${active ? "text-white" : ""}`}>{icon}</span>
+        <span
+          className={`text-[31px] leading-none md:text-[34px] ${
+            active ? "text-white" : ""
+          }`}
+        >
+          {icon}
+        </span>
       </div>
-      <div className={`mt-3 text-center text-[15px] font-semibold ${active ? "text-[#be8cff]" : "text-[#171717]"}`}>
+      <div
+        className={`mt-3 text-center text-[13px] font-semibold md:text-[15px] ${
+          active ? "text-[#be8cff]" : "text-[#171717]"
+        }`}
+      >
         {label}
       </div>
     </button>
   );
 }
 
-function ThumbSlot({ src, text, active, onClick }) {
+function AssetThumb({ src, onRemove }) {
+  return (
+    <div className="group relative h-[58px] w-[58px] shrink-0 overflow-hidden bg-white md:h-[60px] md:w-[60px]">
+      <img src={src} alt="" className="h-full w-full object-cover" />
+      <button
+        type="button"
+        onClick={onRemove}
+        className="absolute right-1 top-1 inline-flex h-6 w-6 items-center justify-center bg-black/55 text-white opacity-100 transition md:opacity-0 md:group-hover:opacity-100"
+        aria-label="Remove file"
+      >
+        <X size={14} />
+      </button>
+    </div>
+  );
+}
+
+function AssetArrowSlot() {
   return (
     <button
       type="button"
-      onClick={onClick}
-      className={`relative h-[60px] w-[60px] shrink-0 overflow-hidden bg-white ${
-        active ? "ring-2 ring-[#7e63ff]" : ""
-      }`}
-      style={pixelClip()}
+      className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[#b7bddd] md:h-[60px] md:w-[60px]"
+      aria-label="More files"
     >
-      {src ? (
-        <img src={src} alt="" className="h-full w-full object-cover" />
-      ) : (
-        <div className="flex h-full w-full items-center justify-center text-[18px] font-semibold text-[#c8c9df]">
-          {text}
-        </div>
-      )}
+      <LogoArrowIcon className="h-7 w-7 text-[#b7bddd]" />
     </button>
   );
 }
 
-export default function AgentStudioWorkspace() {
-  const [lang, setLang] = useState("ru");
-  const t = COPY[lang];
+function InfoHint({ text }) {
+  const [open, setOpen] = useState(false);
 
-  const [selectedFormat, setSelectedFormat] = useState("crypto");
+  return (
+    <div
+      className="relative inline-flex items-center"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="inline-flex h-5 w-5 items-center justify-center text-[#9e8fc9]"
+        aria-label="Info"
+      >
+        <Info size={14} />
+      </button>
+
+      {open && (
+        <div className="absolute left-1/2 top-[calc(100%+8px)] z-20 w-[220px] -translate-x-1/2 bg-white px-3 py-2 text-[12px] leading-[1.4] text-[#57558c] shadow-[0_12px_30px_rgba(45,55,90,0.16)]">
+          {text}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PreviewReadyCard({
+  t,
+  currentFormatLabel,
+  duration,
+  tone,
+}) {
+  return (
+    <div className="hidden lg:block space-y-2 text-[13px] text-[#6f7394]">
+      <div className="font-semibold text-[#5a628d]">{t.readyToPost}</div>
+      <div>
+        {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · MP4 ·{" "}
+        {t.fileWeight}: 14.8 MB
+      </div>
+      <div className="flex items-center gap-3 text-[18px]">
+        <span title="Instagram">📸</span>
+        <span title="TikTok">🎵</span>
+        <span title="YouTube">▶️</span>
+        <span title="Telegram">✈️</span>
+      </div>
+    </div>
+  );
+}
+
+export default function AgentWorkspace({ lang = "ru" }) {
+  const t = COPY[lang] || COPY.ru;
+
+  const [selectedFormat, setSelectedFormat] = useState(null);
   const [topic, setTopic] = useState("");
   const [duration, setDuration] = useState(t.durations[3]);
   const [tone, setTone] = useState(t.tones[0]);
@@ -232,7 +502,7 @@ export default function AgentStudioWorkspace() {
     { id: "a1", src: DEMO_POSTERS[0] },
     { id: "a2", src: DEMO_POSTERS[1] },
     { id: "a3", src: DEMO_POSTERS[2] },
-    { id: "a4", src: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop" },
+    { id: "a4", src: DEMO_POSTERS[3] },
   ]);
 
   const [isGenerating, setIsGenerating] = useState(false);
@@ -241,9 +511,12 @@ export default function AgentStudioWorkspace() {
 
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
+  const categoryRef = useRef(null);
 
   const previewPoster = useMemo(() => {
-    if (variants.length) return variants[activeVariant]?.poster || DEMO_POSTERS[0];
+    if (variants.length) {
+      return variants[activeVariant]?.poster || DEMO_POSTERS[0];
+    }
     return DEMO_POSTERS[1];
   }, [variants, activeVariant]);
 
@@ -252,7 +525,36 @@ export default function AgentStudioWorkspace() {
     return "";
   }, [variants, activeVariant]);
 
-  const currentFormatLabel = t.formats[selectedFormat] || "";
+  const currentFormatLabel = selectedFormat
+    ? t.formats[selectedFormat]
+    : "";
+
+  const topicPlaceholder = `${t.examplePrefix} ${
+    t.topicByFormat[selectedFormat] || t.topicByFormat.default
+  }`;
+
+  const hasCategory = Boolean(selectedFormat);
+  const hasMaterials = assets.length > 0 || link.trim().length > 3;
+  const hasTopic = topic.trim().length > 8;
+
+  const progress =
+    (hasCategory ? 20 : 0) +
+    (hasMaterials ? 35 : 0) +
+    (hasTopic ? 45 : 0);
+
+  const canGenerate = hasCategory && (hasMaterials || hasTopic);
+
+  const desktopActionText = variants.length
+    ? t.regenerateAction
+    : canGenerate
+    ? t.generateAction
+    : t.previewAction;
+
+  const mobileActionText = variants.length
+    ? t.regenerateAction
+    : canGenerate
+    ? t.generateAction
+    : t.previewAction;
 
   const handleFiles = (fileList) => {
     const list = Array.from(fileList || []);
@@ -267,11 +569,18 @@ export default function AgentStudioWorkspace() {
       };
     });
 
-    setAssets((prev) => [...next, ...prev].slice(0, 8));
+    setAssets((prev) =>
+      [...next, ...prev].filter((item) => item.src).slice(0, 8)
+    );
   };
 
-  const handleGenerate = () => {
-    if (isGenerating) return;
+  const removeAsset = (id) => {
+    setAssets((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const runGenerate = () => {
+    if (isGenerating || !canGenerate) return;
+
     setIsGenerating(true);
 
     setTimeout(() => {
@@ -297,281 +606,385 @@ export default function AgentStudioWorkspace() {
       ]);
       setActiveVariant(0);
       setIsGenerating(false);
+
+      requestAnimationFrame(() => {
+        previewRef.current?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
     }, 1400);
   };
 
-  const scrollToPreview = () => {
-    previewRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const handleFillForMe = () => {
+    const nextFormat = selectedFormat || "business";
+    setSelectedFormat(nextFormat);
+
+    if (!topic.trim()) {
+      setTopic(t.topicByFormat[nextFormat] || t.topicByFormat.default);
+    }
+  };
+
+  const handlePrimaryAction = () => {
+    if (variants.length) {
+      runGenerate();
+      return;
+    }
+
+    if (canGenerate) {
+      runGenerate();
+      return;
+    }
+
+    previewRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const toggleFormat = (item) => {
+    setSelectedFormat((prev) => (prev === item.id ? null : item.id));
   };
 
   return (
-    <div className="min-h-screen bg-[#dfe6fb] px-4 pb-28 pt-8 md:px-8 xl:px-0">
-      <div className="mx-auto w-full max-w-[1120px] lg:grid lg:grid-cols-[1fr_354px] lg:gap-7">
-        <div className="space-y-4 md:space-y-5">
-          <section>
-            <div className="px-2 md:px-0">
-              <div className="flex flex-wrap items-baseline gap-2 border-b border-white/60 pb-5">
-                <h2 className="text-[24px] font-bold text-[#7a5d9d]">{t.step1Title}</h2>
-                <span className="text-[18px] text-[#8d84b8]">{t.step1Tail}</span>
+    <>
+      <div className="min-h-screen bg-[#dfe6fb] pb-28 pt-0 md:px-8 xl:px-0">
+        <div className="mx-auto w-full max-w-[1120px] lg:grid lg:grid-cols-[1fr_354px] lg:gap-7">
+          <div className="min-w-0 space-y-4 md:space-y-5">
+            <section className="w-full bg-transparent">
+              <div className="section-inner px-4 py-0 md:px-0">
+                <div className="flex flex-wrap items-baseline gap-2 border-b border-white/60 pb-4 md:pb-5">
+                  <h2 className="text-[20px] font-bold text-[#7a5d9d] md:text-[24px]">
+                    {t.step1Title}
+                  </h2>
+                  <span className="text-[15px] text-[#8d84b8] md:text-[18px]">
+                    {t.step1Tail}
+                  </span>
+                  <InfoHint text={t.step1Hint} />
+                </div>
+
+                <div className="relative mt-5 md:mt-7">
+                  <div
+                    ref={categoryRef}
+                    className="no-scrollbar min-w-0 flex gap-[16px] overflow-x-auto pr-[92px] pb-2 md:gap-[18px] md:pr-[96px]"
+                  >
+                    {FORMAT_ITEMS.map((item) => (
+                      <FormatTile
+                        key={item.id}
+                        icon={item.icon}
+                        label={t.formats[item.id]}
+                        active={selectedFormat === item.id}
+                        onClick={() => toggleFormat(item)}
+                      />
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      categoryRef.current?.scrollBy({
+                        left: 320,
+                        behavior: "smooth",
+                      })
+                    }
+                    className="absolute right-0 top-0 z-10 flex h-[78px] w-[78px] items-center justify-center bg-[#e3e7fb] md:h-[88px] md:w-[88px]"
+                    style={pixelClip()}
+                    aria-label="Scroll formats"
+                  >
+                    <LogoArrowIcon className="h-8 w-8 text-[#b78dff]" />
+                  </button>
+                </div>
+
+                <div className="mt-4 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2">
+                  <PixelButton color="soft" className="w-full">
+                    {t.trend}
+                  </PixelButton>
+                  <PixelButton
+                    color="violet"
+                    className="w-full"
+                    onClick={handleFillForMe}
+                  >
+                    {t.doForMe}
+                  </PixelButton>
+                </div>
               </div>
-            </div>
+            </section>
 
-            <div className="mt-7 flex gap-[18px] overflow-x-auto pb-2">
-              {FORMAT_ITEMS.map((item) => (
-                <FormatTile
-                  key={item.id}
-                  icon={item.icon}
-                  label={t.formats[item.id]}
-                  active={selectedFormat === item.id}
-                  onClick={() => setSelectedFormat(item.id)}
-                />
-              ))}
-            </div>
-          </section>
+            <section className="w-full bg-[#cad4f4]">
+              <div className="section-inner px-4 py-5 md:p-7">
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <h2 className="text-[20px] font-bold text-[#4d5b92] md:text-[24px]">
+                    {t.step2Title}
+                  </h2>
+                  <span className="text-[15px] text-[#5f6796] md:text-[18px]">
+                    {t.step2Tail}
+                  </span>
+                </div>
 
-          <section className="bg-[#cad4f4] p-5 md:p-7" style={pixelClip()}>
-            <div className="flex flex-wrap items-baseline gap-2">
-              <h2 className="text-[24px] font-bold text-[#4d5b92]">{t.step2Title}</h2>
-              <span className="text-[18px] text-[#5f6796]">{t.step2Tail}</span>
-            </div>
-
-            <div className="mt-7 grid grid-cols-1 gap-0 md:grid-cols-[1fr_200px]">
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={(e) => {
-                  e.preventDefault();
-                  handleFiles(e.dataTransfer.files);
-                }}
-                className="border-[3px] border-dashed border-white bg-[#d9e2fb] px-5 py-7 text-center"
-              >
-                <div className="text-[18px] font-bold text-[#4d5b92]">{t.dropTitle}</div>
-                <div className="mt-2 text-[15px] text-[#4d5b92]">{t.dropHint}</div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="bg-[#91a5d9] px-5 py-7 text-[18px] font-bold text-white"
-              >
-                {t.upload}
-              </button>
-
-              <input
-                ref={fileInputRef}
-                type="file"
-                multiple
-                className="hidden"
-                onChange={(e) => handleFiles(e.target.files)}
-              />
-            </div>
-
-            <div className="mt-6">
-              <div className="relative">
-                <input
-                  value={link}
-                  onChange={(e) => setLink(e.target.value)}
-                  placeholder={t.linkPlaceholder}
-                  className="w-full bg-white px-6 py-5 text-[15px] text-[#b0b8d9] outline-none placeholder:text-[#b0b8d9]"
-                  style={pixelClip()}
-                />
-                <LinkIcon
-                  size={16}
-                  className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[#c9cfe7]"
-                />
-              </div>
-            </div>
-
-            <div className="mt-7 flex gap-4 overflow-x-auto pb-1">
-              <ThumbSlot src={assets[0]?.src} active={false} />
-              <ThumbSlot src={assets[1]?.src} active={false} />
-              <ThumbSlot src={assets[2]?.src} active={false} />
-              <ThumbSlot src={assets[3]?.src} active={false} />
-              <ThumbSlot text="6" active={false} />
-              <ThumbSlot text="7" active={false} />
-              <ThumbSlot text="8" active={false} />
-              <ThumbSlot text="✚" active={false} />
-            </div>
-          </section>
-
-          <section className="bg-[#c9b8f3] p-5 md:p-7" style={pixelClip()}>
-            <div className="flex flex-wrap items-baseline gap-2">
-              <h2 className="text-[24px] font-bold text-[#5b447b]">{t.step3Title}</h2>
-              <span className="text-[18px] text-[#6b5b8f]">{t.step3Tail}</span>
-            </div>
-
-            <div className="mt-7">
-              <textarea
-                rows={3}
-                value={topic}
-                onChange={(e) => setTopic(e.target.value)}
-                placeholder={t.topicPlaceholder}
-                className="w-full resize-none bg-white px-6 py-5 text-[16px] text-[#6b5fa0] outline-none placeholder:text-[#7d72a8]"
-                style={pixelClip()}
-              />
-            </div>
-
-            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-              <PixelSelect
-                label={t.duration}
-                value={duration}
-                onChange={setDuration}
-                options={t.durations}
-              />
-              <PixelSelect
-                label={t.tone}
-                value={tone}
-                onChange={setTone}
-                options={t.tones}
-              />
-              <PixelSelect
-                label={t.voice}
-                value={voice}
-                onChange={setVoice}
-                options={t.voices}
-              />
-            </div>
-
-            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-              <PixelButton color="soft" className="w-full">
-                {t.trend}
-              </PixelButton>
-              <PixelButton color="violet" className="w-full">
-                {t.doForMe}
-              </PixelButton>
-              <PixelButton
-                color="pink"
-                className="w-full"
-                onClick={handleGenerate}
-                disabled={isGenerating}
-                icon={isGenerating ? <RefreshCcw size={16} className="animate-spin" /> : <Sparkles size={16} />}
-              >
-                {isGenerating ? t.generating : t.start}
-              </PixelButton>
-            </div>
-          </section>
-        </div>
-
-        <div
-          ref={previewRef}
-          className="mt-6 lg:mt-0 lg:sticky lg:top-6 lg:self-start"
-        >
-          <div className="space-y-5">
-            <div className="overflow-hidden bg-[#111111]" style={pixelClip()}>
-              <div className="aspect-[9/16] w-full bg-[linear-gradient(90deg,#17151d_0%,#17151d_50%,#22202a_50%,#22202a_100%)] bg-[length:52px_52px]">
-                {previewVideo ? (
-                  <video
-                    src={previewVideo}
-                    controls
-                    className="h-full w-full object-cover"
-                    poster={previewPoster}
-                  />
-                ) : (
-                  <div className="relative flex h-full w-full items-center justify-center">
-                    <div className="absolute inset-0 bg-[linear-gradient(90deg,#17151d_0%,#17151d_50%,#26232f_50%,#26232f_100%)] bg-[length:52px_52px]" />
-                    <div className="relative z-10 flex flex-col items-center">
-                      <div
-                        className="flex h-[96px] w-[96px] items-center justify-center bg-white text-[#1d1d1d]"
-                        style={pixelClip()}
-                      >
-                        <Play size={42} fill="currentColor" />
-                      </div>
-                      <div className="mt-8 text-[18px] font-semibold text-[#8c8c8c]">
-                        {t.preview}
-                      </div>
+                <div className="mt-5 grid grid-cols-1 gap-0 md:mt-7 md:grid-cols-[1fr_200px]">
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    onDragOver={(e) => e.preventDefault()}
+                    onDrop={(e) => {
+                      e.preventDefault();
+                      handleFiles(e.dataTransfer.files);
+                    }}
+                    className="border-[3px] border-dashed border-white bg-[#d9e2fb] px-4 py-7 text-center md:px-5"
+                  >
+                    <div className="text-[16px] font-bold text-[#4d5b92] md:text-[18px]">
+                      {t.dropTitle}
                     </div>
+                    <div className="mt-2 text-[14px] text-[#4d5b92] md:text-[15px]">
+                      {t.dropHint}
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="mt-3 bg-[#91a5d9] px-5 py-5 text-[17px] font-bold text-white md:mt-0 md:py-7 md:text-[18px]"
+                    style={pixelClip()}
+                  >
+                    {t.upload}
+                  </button>
+
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => handleFiles(e.target.files)}
+                  />
+                </div>
+
+                <div className="mt-5 md:mt-6">
+                  <input
+                    value={link}
+                    onChange={(e) => setLink(e.target.value)}
+                    placeholder={t.linkPlaceholder}
+                    className="w-full bg-white px-5 py-5 text-[15px] text-[#7f86a8] outline-none placeholder:text-[#b0b8d9]"
+                  />
+                </div>
+
+                {assets.length > 0 && (
+                  <div className="no-scrollbar mt-5 flex gap-3 overflow-x-auto pb-1 md:mt-7 md:gap-4">
+                    {assets.map((item) => (
+                      <AssetThumb
+                        key={item.id}
+                        src={item.src}
+                        onRemove={() => removeAsset(item.id)}
+                      />
+                    ))}
+
+                    {Array.from(
+                      { length: Math.max(0, 8 - assets.length) },
+                      (_, i) => assets.length + i + 1
+                    ).map((n) => (
+                      <div
+                        key={n}
+                        className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[18px] font-semibold text-[#c8c9df] md:h-[60px] md:w-[60px]"
+                      >
+                        {n}
+                      </div>
+                    ))}
+
+                    <AssetArrowSlot />
                   </div>
                 )}
               </div>
-            </div>
+            </section>
 
-            <div className="bg-[#d7e3f3] p-0" style={pixelClip()}>
-              <div className="grid grid-cols-3 gap-[18px] p-[0]">
-                {[0, 1, 2].map((idx) => {
-                  const item = variants[idx];
-                  return (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => item && setActiveVariant(idx)}
-                      className={`relative aspect-[0.78/1] overflow-hidden ${
-                        idx === activeVariant ? "ring-2 ring-[#8d62ff]" : ""
-                      }`}
-                    >
-                      {item ? (
-                        <img
-                          src={item.poster}
-                          alt=""
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-[#26232f] text-[26px] font-semibold text-[#c3c3d0]">
-                          {idx + 1}
+            <section className="w-full bg-[#c9b8f3]">
+              <div className="section-inner px-4 py-5 md:p-7">
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <h2 className="text-[20px] font-bold text-[#5b447b] md:text-[24px]">
+                    {t.step3Title}
+                  </h2>
+                  <span className="text-[15px] text-[#6b5b8f] md:text-[18px]">
+                    {t.step3Tail}
+                  </span>
+                </div>
+
+                <div className="mt-5 md:mt-7">
+                  <textarea
+                    rows={3}
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    placeholder={topicPlaceholder}
+                    className="w-full resize-none bg-white px-5 py-5 text-[15px] text-[#6b5fa0] outline-none placeholder:text-[#7d72a8] md:text-[16px] md:px-6"
+                  />
+                </div>
+
+                <div className="mt-5 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-3">
+                  <PlainSelect
+                    label={t.duration}
+                    value={duration}
+                    onChange={setDuration}
+                    options={t.durations}
+                  />
+                  <PlainSelect
+                    label={t.tone}
+                    value={tone}
+                    onChange={setTone}
+                    options={t.tones}
+                  />
+                  <PlainSelect
+                    label={t.voice}
+                    value={voice}
+                    onChange={setVoice}
+                    options={t.voices}
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div
+            ref={previewRef}
+            className="mt-6 px-4 lg:mt-0 lg:px-0 lg:sticky lg:top-6 lg:self-start"
+          >
+            <div className="space-y-5">
+              <div className="overflow-hidden bg-[#111111]" style={pixelClip()}>
+                <div className="checkerboard relative aspect-[9/16] w-full">
+                  {previewVideo ? (
+                    <video
+                      src={previewVideo}
+                      controls
+                      className="h-full w-full object-cover"
+                      poster={previewPoster}
+                    />
+                  ) : (
+                    <div className="relative flex h-full w-full items-center justify-center">
+                      <div className="relative z-10 flex flex-col items-center">
+                        <div
+                          className="flex h-[96px] w-[96px] items-center justify-center bg-white text-[#1d1d1d]"
+                          style={pixelClip()}
+                        >
+                          <Play size={42} fill="currentColor" />
                         </div>
-                      )}
-                    </button>
-                  );
-                })}
+                        <div className="mt-8 text-[18px] font-semibold text-[#8c8c8c]">
+                          {t.preview}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className="px-3 pb-5 pt-4 text-center text-[17px] text-[#2a2a2a]">
-                {t.createdThree}
+
+              <div className="bg-[#d7e3f3]">
+                <div className="grid grid-cols-3 gap-[12px] md:gap-[18px]">
+                  {[0, 1, 2].map((idx) => {
+                    const item = variants[idx];
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => item && setActiveVariant(idx)}
+                        className={`relative aspect-[0.78/1] overflow-hidden ${
+                          idx === activeVariant ? "ring-2 ring-[#8d62ff]" : ""
+                        }`}
+                      >
+                        {item ? (
+                          <img
+                            src={item.poster}
+                            alt=""
+                            className="h-full w-full object-cover"
+                          />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-[#26232f] text-[24px] font-semibold text-[#c3c3d0] md:text-[26px]">
+                            {idx + 1}
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="px-3 pb-5 pt-4 text-center text-[16px] text-[#2a2a2a] md:text-[17px]">
+                  {t.createdThree}
+                </div>
               </div>
-            </div>
 
-            <PixelButton
-              color="green"
-              className="w-full text-[18px]"
-              icon={<Download size={18} />}
-              disabled={!variants.length}
-            >
-              {t.download}
-            </PixelButton>
-
-            <PixelButton
-              color="soft"
-              className="w-full text-[18px]"
-              icon={<RefreshCcw size={18} />}
-              onClick={handleGenerate}
-              disabled={isGenerating}
-            >
-              {t.regenerate}
-            </PixelButton>
-
-            <div className="hidden lg:flex items-center justify-end gap-3 pt-1">
-              <button
-                type="button"
-                onClick={() => setLang("ru")}
-                className={`text-[14px] font-semibold ${lang === "ru" ? "text-[#1b1b1b]" : "text-[#8a8ca7]"}`}
+              <PixelButton
+                color="green"
+                className="w-full text-[18px]"
+                icon={<Download size={18} />}
+                disabled={!variants.length}
               >
-                RU
-              </button>
-              <button
-                type="button"
-                onClick={() => setLang("en")}
-                className={`text-[14px] font-semibold ${lang === "en" ? "text-[#1b1b1b]" : "text-[#8a8ca7]"}`}
-              >
-                EN
-              </button>
-            </div>
+                {t.download}
+              </PixelButton>
 
-            <div className="hidden lg:block text-[13px] text-[#7a729d]">
-              {currentFormatLabel ? `${t.variant}: ${currentFormatLabel}` : ""}
+              <div className="hidden lg:block">
+                <ProgressActionButton
+                  text={isGenerating ? t.generating : desktopActionText}
+                  progress={progress}
+                  onClick={handlePrimaryAction}
+                  disabled={isGenerating}
+                  showProgress={hasCategory}
+                />
+              </div>
+
+              {variants.length > 0 && (
+                <PreviewReadyCard
+                  t={t}
+                  currentFormatLabel={currentFormatLabel}
+                  duration={duration}
+                  tone={tone}
+                />
+              )}
             </div>
           </div>
         </div>
       </div>
 
       <div className="fixed bottom-4 left-4 right-4 z-50 lg:hidden">
-        <button
-          type="button"
-          onClick={scrollToPreview}
-          style={pixelClip()}
-          className="w-full bg-[#8c62ff] px-5 py-4 text-[16px] font-bold text-white shadow-[0_10px_30px_rgba(88,62,155,0.25)]"
-        >
-          {t.mobilePreview}
-        </button>
+        <ProgressActionButton
+          text={isGenerating ? t.generating : mobileActionText}
+          progress={progress}
+          onClick={handlePrimaryAction}
+          disabled={isGenerating}
+          mobile
+          showProgress={hasCategory}
+        />
       </div>
-    </div>
+
+      <style jsx>{`
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+
+        .checkerboard {
+          background-color: #17151d;
+          background-image:
+            linear-gradient(45deg, #2a2437 25%, transparent 25%),
+            linear-gradient(-45deg, #2a2437 25%, transparent 25%),
+            linear-gradient(45deg, transparent 75%, #2a2437 75%),
+            linear-gradient(-45deg, transparent 75%, #2a2437 75%);
+          background-size: 64px 64px;
+          background-position: 0 0, 0 32px, 32px -32px, -32px 0px;
+        }
+
+        @media (max-width: 767px) {
+          section.w-full.bg-transparent,
+          section.w-full.bg-\[\#cad4f4\],
+          section.w-full.bg-\[\#c9b8f3\] {
+            width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+          }
+
+          .section-inner {
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+        }
+      `}</style>
+    </>
   );
 }

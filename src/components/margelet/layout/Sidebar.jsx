@@ -196,7 +196,7 @@ export default function Sidebar({
                 margelet
               </div>
               <div className="mt-1 text-[11px] font-medium text-[#555]">
-                agent video maker
+                ai video makers
               </div>
             </div>
           </Link>
