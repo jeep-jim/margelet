@@ -37,10 +37,6 @@ const COPY = {
     duration: "Длительность",
     tone: "Тон",
     voice: "Голос",
-    trend: "Найти тренд",
-    trendLoading: "Ищем тренд...",
-    trendError: "Не удалось подобрать тренд. Попробуй ещё раз.",
-    doForMe: "Заполни всё за меня",
     preview: "Предпросмотр",
     previewAction: "Предпросмотр",
     generateAction: "Сгенерировать!",
@@ -53,7 +49,6 @@ const COPY = {
     variant: "Формат",
     readyToPost: "Готово для выгрузки в соцсети:",
     fileWeight: "Вес файла",
-    fileFormat: "Файл",
     confirmRegenerateTitle: "Эти ролики не то, переделаем?",
     confirmRegenerateText:
       "Текущие варианты будут заменены новыми. Продолжить?",
@@ -62,25 +57,18 @@ const COPY = {
     removeFile: "Удалить файл",
     previewPreparing: "Собираем превью...",
     previewReady: "Превью собрано",
-    previewNotPlayable: "Нажми, чтобы посмотреть превью",
     previewPlay: "Смотреть превью",
     previewPause: "Пауза",
     generationErrorFallback:
       "Не удалось сгенерировать варианты. Попробуй ещё раз.",
     generationRequestTooLarge:
       "Слишком тяжёлый запрос. Удали часть файлов или большие изображения и попробуй снова.",
-    generationPanelTitle: "Что собрал Margelet",
-    generationHook: "Хук",
-    generationAngle: "Угол",
-    generationScenes: "Сцены",
-    details: "Подробнее",
-    close: "Закрыть",
     captionsLabel: "Показывать субтитры",
     authRequired: "Сначала авторизуйся через Telegram.",
     planRequired: "Для скачивания нужен активный тариф.",
     downloadError: "Не удалось скачать видео. Попробуй ещё раз.",
     loadingPreview: "Загружаем живое превью...",
-    autoMode: "Автогенерация выключена до нажатия кнопки",
+    autoMode: "Ручной запуск генерации",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -188,10 +176,6 @@ const COPY = {
     duration: "Duration",
     tone: "Tone",
     voice: "Voice",
-    trend: "Find trend",
-    trendLoading: "Finding trend...",
-    trendError: "Failed to find a trend. Try again.",
-    doForMe: "Fill everything for me",
     preview: "Preview",
     previewAction: "Preview",
     generateAction: "Generate!",
@@ -204,7 +188,6 @@ const COPY = {
     variant: "Format",
     readyToPost: "Ready to upload to social media:",
     fileWeight: "File size",
-    fileFormat: "File",
     confirmRegenerateTitle: "These videos are not right. Regenerate them?",
     confirmRegenerateText:
       "The current variants will be replaced with new ones. Continue?",
@@ -213,24 +196,17 @@ const COPY = {
     removeFile: "Remove file",
     previewPreparing: "Building preview...",
     previewReady: "Preview ready",
-    previewNotPlayable: "Tap to watch preview",
     previewPlay: "Play preview",
     previewPause: "Pause",
     generationErrorFallback: "Failed to generate variants. Please try again.",
     generationRequestTooLarge:
       "The request is too large. Remove some files or heavy images and try again.",
-    generationPanelTitle: "What Margelet built",
-    generationHook: "Hook",
-    generationAngle: "Angle",
-    generationScenes: "Scenes",
-    details: "Details",
-    close: "Close",
     captionsLabel: "Show subtitles",
     authRequired: "Please sign in with Telegram first.",
     planRequired: "An active plan is required to download.",
     downloadError: "Failed to download the video. Please try again.",
     loadingPreview: "Loading live preview...",
-    autoMode: "Auto-generate is off until you click the button",
+    autoMode: "Manual generation mode",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -432,22 +408,8 @@ function InstagramIcon({ className = "" }) {
           <stop offset="100%" stopColor="#4f5bd5" />
         </linearGradient>
       </defs>
-      <rect
-        x="3"
-        y="3"
-        width="18"
-        height="18"
-        rx="5"
-        fill="url(#igGradFixed)"
-      />
-      <circle
-        cx="12"
-        cy="12"
-        r="4.2"
-        fill="none"
-        stroke="white"
-        strokeWidth="1.8"
-      />
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="url(#igGradFixed)" />
+      <circle cx="12" cy="12" r="4.2" fill="none" stroke="white" strokeWidth="1.8" />
       <circle cx="17.2" cy="6.8" r="1.2" fill="white" />
     </svg>
   );
@@ -456,24 +418,10 @@ function InstagramIcon({ className = "" }) {
 function TikTokIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path
-        d="M14.8 4c.5 1.6 1.6 2.8 3.2 3.5V10c-1.2 0-2.4-.3-3.5-1v5.4a4.9 4.9 0 1 1-4.9-4.9c.3 0 .6 0 .9.1v2.7a2.3 2.3 0 1 0 1.4 2.1V4h2.9z"
-        fill="#111111"
-      />
-      <path
-        d="M13.4 4v10.4a2.3 2.3 0 1 1-2.3-2.3c.2 0 .5 0 .7.1V9.5a4.9 4.9 0 0 0-.7 9.7 4.9 4.9 0 0 0 4.9-4.9V8.9c1 .7 2.1 1.1 3.4 1.1V7.5c-1.6-.7-2.8-1.9-3.2-3.5h-2.8z"
-        fill="#25F4EE"
-        opacity="0.9"
-      />
-      <path
-        d="M14.1 4v10.2a2.3 2.3 0 1 1-2.3-2.3c.2 0 .4 0 .6.1V9.4a4.9 4.9 0 1 0 4.9 4.9V8.7c1 .7 2.1 1.1 3.4 1.1V7.3c-1.6-.7-2.8-1.9-3.2-3.3h-3.4z"
-        fill="#FE2C55"
-        opacity="0.9"
-      />
-      <path
-        d="M14.3 4.2c.5 1.4 1.6 2.5 3.1 3.1v2c-1.2 0-2.3-.3-3.3-1v6a4.2 4.2 0 1 1-4.2-4.2c.3 0 .5 0 .8.1v2.1a2.1 2.1 0 1 0 1.3 2v-10h2.3z"
-        fill="#111111"
-      />
+      <path d="M14.8 4c.5 1.6 1.6 2.8 3.2 3.5V10c-1.2 0-2.4-.3-3.5-1v5.4a4.9 4.9 0 1 1-4.9-4.9c.3 0 .6 0 .9.1v2.7a2.3 2.3 0 1 0 1.4 2.1V4h2.9z" fill="#111111" />
+      <path d="M13.4 4v10.4a2.3 2.3 0 1 1-2.3-2.3c.2 0 .5 0 .7.1V9.5a4.9 4.9 0 0 0-.7 9.7 4.9 4.9 0 0 0 4.9-4.9V8.9c1 .7 2.1 1.1 3.4 1.1V7.5c-1.6-.7-2.8-1.9-3.2-3.5h-2.8z" fill="#25F4EE" opacity="0.9" />
+      <path d="M14.1 4v10.2a2.3 2.3 0 1 1-2.3-2.3c.2 0 .4 0 .6.1V9.4a4.9 4.9 0 1 0 4.9 4.9V8.7c1 .7 2.1 1.1 3.4 1.1V7.3c-1.6-.7-2.8-1.9-3.2-3.3h-3.4z" fill="#FE2C55" opacity="0.9" />
+      <path d="M14.3 4.2c.5 1.4 1.6 2.5 3.1 3.1v2c-1.2 0-2.3-.3-3.3-1v6a4.2 4.2 0 1 1-4.2-4.2c.3 0 .5 0 .8.1v2.1a2.1 2.1 0 1 0 1.3 2v-10h2.3z" fill="#111111" />
     </svg>
   );
 }
@@ -481,10 +429,7 @@ function TikTokIcon({ className = "" }) {
 function YouTubeIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path
-        d="M21 8.5a3 3 0 0 0-2.1-2.1C17.1 6 12 6 12 6s-5.1 0-6.9.4A3 3 0 0 0 3 8.5 31 31 0 0 0 3 12a31 31 0 0 0 .4 3.5 3 3 0 0 0 2.1 2.1C6.9 18 12 18 12 18s5.1 0 6.9-.4a3 3 0 0 0 2.1-2.1c.3-1.1.4-2.3.4-3.5a31 31 0 0 0-.4-3.5z"
-        fill="#FF0033"
-      />
+      <path d="M21 8.5a3 3 0 0 0-2.1-2.1C17.1 6 12 6 12 6s-5.1 0-6.9.4A3 3 0 0 0 3 8.5 31 31 0 0 0 3 12a31 31 0 0 0 .4 3.5 3 3 0 0 0 2.1 2.1C6.9 18 12 18 12 18s5.1 0 6.9-.4a3 3 0 0 0 2.1-2.1c.3-1.1.4-2.3.4-3.5a31 31 0 0 0-.4-3.5z" fill="#FF0033" />
       <path d="M10 9.3v5.4l4.7-2.7L10 9.3z" fill="white" />
     </svg>
   );
@@ -494,10 +439,7 @@ function TelegramIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <circle cx="12" cy="12" r="10" fill="#27A6E5" />
-      <path
-        d="M17.7 7.2 6.8 11.4c-.7.3-.7.7-.1.9l2.8.9 6.4-4c.3-.2.7-.1.4.1l-5.2 4.7-.2 2.8c.4 0 .6-.2.8-.4l1.4-1.4 2.9 2.1c.6.3 1 .1 1.1-.5l1.7-8.7c.2-.7-.2-1-.9-.7z"
-        fill="white"
-      />
+      <path d="M17.7 7.2 6.8 11.4c-.7.3-.7.7-.1.9l2.8.9 6.4-4c.3-.2.7-.1.4.1l-5.2 4.7-.2 2.8c.4 0 .6-.2.8-.4l1.4-1.4 2.9 2.1c.6.3 1 .1 1.1-.5l1.7-8.7c.2-.7-.2-1-.9-.7z" fill="white" />
     </svg>
   );
 }
@@ -506,10 +448,7 @@ function VkIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="#0077FF" />
-      <path
-        d="M7.2 8.2c.1 0 .3 0 .3.2.6 1.2 1.2 2.3 2 3.3.2.3.4.4.5.4.1 0 .2-.1.2-.5V8.8c0-.4.1-.6.5-.6h1.8c.3 0 .4.2.4.5v1.5c0 .5 0 .8.2.8.2 0 .4-.3.8-.8.7-.9 1.2-1.9 1.5-1.9H17c.3 0 .5.2.4.5-.2.7-1.6 2.5-1.6 2.5-.1.1-.2.3 0 .5 0 0 1.2 1.2 1.5 2 .1.3 0 .5-.4.5h-1.4c-.3 0-.4-.1-.6-.3-.8-.9-1-1-1.2-1-.1 0-.2.1-.2.4v.4c0 .4-.1.5-.5.5-2.4 0-4.5-2.9-5.4-5-.1-.3 0-.5.3-.5h1.3z"
-        fill="white"
-      />
+      <path d="M7.2 8.2c.1 0 .3 0 .3.2.6 1.2 1.2 2.3 2 3.3.2.3.4.4.5.4.1 0 .2-.1.2-.5V8.8c0-.4.1-.6.5-.6h1.8c.3 0 .4.2.4.5v1.5c0 .5 0 .8.2.8.2 0 .4-.3.8-.8.7-.9 1.2-1.9 1.5-1.9H17c.3 0 .5.2.4.5-.2.7-1.6 2.5-1.6 2.5-.1.1-.2.3 0 .5 0 0 1.2 1.2 1.5 2 .1.3 0 .5-.4.5h-1.4c-.3 0-.4-.1-.6-.3-.8-.9-1-1-1.2-1-.1 0-.2.1-.2.4v.4c0 .4-.1.5-.5.5-2.4 0-4.5-2.9-5.4-5-.1-.3 0-.5.3-.5h1.3z" fill="white" />
     </svg>
   );
 }
@@ -518,10 +457,7 @@ function DiscordIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="#5865F2" />
-      <path
-        d="M16.8 8.1c-1-.5-2-.8-2-.8l-.1.2c.9.2 1.3.5 1.3.5-1.4-.8-2.8-.8-4-.6-.9.1-1.7.4-2.4.8.2-.1.7-.3 1.4-.5l-.1-.2s-1 .3-2 .8c0 0-1 1.4-1.3 4.1.8 1 1.9 1.5 1.9 1.5l.5-.7c-.5-.2-.8-.5-.8-.5.1.1.2.1.3.2 0 0 0 0 .1 0 .1 0 .1.1.2.1.4.2.8.3 1.2.3.7.1 1.5.1 2.2 0 .4-.1.8-.2 1.2-.3.1 0 .1-.1.2-.1 0 0 0 0 .1 0 .1-.1.2-.1.3-.2 0 0-.3.3-.8.5l.5.7s1.1-.5 1.9-1.5c-.4-2.7-1.3-4.1-1.3-4.1zM10.3 12.8c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9zm3.4 0c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9z"
-        fill="white"
-      />
+      <path d="M16.8 8.1c-1-.5-2-.8-2-.8l-.1.2c.9.2 1.3.5 1.3.5-1.4-.8-2.8-.8-4-.6-.9.1-1.7.4-2.4.8.2-.1.7-.3 1.4-.5l-.1-.2s-1 .3-2 .8c0 0-1 1.4-1.3 4.1.8 1 1.9 1.5 1.9 1.5l.5-.7c-.5-.2-.8-.5-.8-.5.1.1.2.1.3.2 0 0 0 0 .1 0 .1 0 .1.1.2.1.4.2.8.3 1.2.3.7.1 1.5.1 2.2 0 .4-.1.8-.2 1.2-.3.1 0 .1-.1.2-.1 0 0 0 0 .1 0 .1-.1.2-.1.3-.2 0 0-.3.3-.8.5l.5.7s1.1-.5 1.9-1.5c-.4-2.7-1.3-4.1-1.3-4.1zM10.3 12.8c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9zm3.4 0c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9z" fill="white" />
     </svg>
   );
 }
@@ -731,35 +667,16 @@ function PreviewReadyCard({ t, currentFormatLabel, duration, tone }) {
       <div className="font-semibold text-[#5a628d]">{t.readyToPost}</div>
 
       <div>
-        {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · WEBM ·{" "}
-        {t.fileWeight}: 14.8 MB
+        {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · WEBM · {t.fileWeight}: 14.8 MB
       </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
-        <SocialItem
-          icon={<InstagramIcon className="h-5 w-5 shrink-0" />}
-          label={t.socials.instagram}
-        />
-        <SocialItem
-          icon={<TikTokIcon className="h-5 w-5 shrink-0" />}
-          label={t.socials.tiktok}
-        />
-        <SocialItem
-          icon={<YouTubeIcon className="h-5 w-5 shrink-0" />}
-          label={t.socials.youtube}
-        />
-        <SocialItem
-          icon={<TelegramIcon className="h-5 w-5 shrink-0" />}
-          label={t.socials.telegram}
-        />
-        <SocialItem
-          icon={<VkIcon className="h-5 w-5 shrink-0" />}
-          label={t.socials.vk}
-        />
-        <SocialItem
-          icon={<DiscordIcon className="h-5 w-5 shrink-0" />}
-          label={t.socials.discord}
-        />
+        <SocialItem icon={<InstagramIcon className="h-5 w-5 shrink-0" />} label={t.socials.instagram} />
+        <SocialItem icon={<TikTokIcon className="h-5 w-5 shrink-0" />} label={t.socials.tiktok} />
+        <SocialItem icon={<YouTubeIcon className="h-5 w-5 shrink-0" />} label={t.socials.youtube} />
+        <SocialItem icon={<TelegramIcon className="h-5 w-5 shrink-0" />} label={t.socials.telegram} />
+        <SocialItem icon={<VkIcon className="h-5 w-5 shrink-0" />} label={t.socials.vk} />
+        <SocialItem icon={<DiscordIcon className="h-5 w-5 shrink-0" />} label={t.socials.discord} />
       </div>
     </div>
   );
@@ -788,78 +705,6 @@ function ConfirmModal({ t, open, onClose, onConfirm }) {
           <PixelButton color="pink" className="w-full" onClick={onConfirm}>
             {t.yes}
           </PixelButton>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function DetailsModal({ t, open, onClose, activeVariantData }) {
-  if (!open || !activeVariantData) return null;
-
-  return (
-    <div className="fixed inset-0 z-[95] flex items-center justify-center bg-black/50 px-4 py-6">
-      <div
-        className="max-h-[85vh] w-full max-w-[760px] overflow-hidden bg-white shadow-[0_18px_60px_rgba(0,0,0,0.2)]"
-        style={pixelClip()}
-      >
-        <div className="flex items-center justify-between border-b border-[#ebe7f7] px-5 py-4 md:px-6">
-          <div className="text-[18px] font-bold text-[#4a4272] md:text-[20px]">
-            {t.generationPanelTitle}
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex h-9 w-9 items-center justify-center text-[#7a73a6]"
-            aria-label={t.close}
-          >
-            <X size={18} />
-          </button>
-        </div>
-
-        <div className="max-h-[calc(85vh-72px)] overflow-y-auto px-5 py-5 md:px-6">
-          <div className="space-y-5 text-[14px] leading-[1.55] text-[#4e557e]">
-            {activeVariantData?.creative?.hook ? (
-              <div>
-                <div className="font-semibold text-[#6c63a2]">
-                  {t.generationHook}
-                </div>
-                <div className="mt-1">{activeVariantData.creative.hook}</div>
-              </div>
-            ) : null}
-
-            {activeVariantData?.creative?.angle ? (
-              <div>
-                <div className="font-semibold text-[#6c63a2]">
-                  {t.generationAngle}
-                </div>
-                <div className="mt-1">{activeVariantData.creative.angle}</div>
-              </div>
-            ) : null}
-
-            {activeVariantData?.scenes?.length ? (
-              <div>
-                <div className="font-semibold text-[#6c63a2]">
-                  {t.generationScenes}
-                </div>
-                <div className="mt-3 space-y-3">
-                  {activeVariantData.scenes.map((scene) => (
-                    <div
-                      key={scene.id}
-                      className="rounded-[12px] bg-[#f5f4fb] px-4 py-3"
-                    >
-                      <div className="text-[12px] font-semibold uppercase tracking-[0.02em] text-[#7d73b2]">
-                        {scene.role}
-                      </div>
-                      <div className="mt-1 text-[#4e557e]">
-                        {scene.caption || scene.narration}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : null}
-          </div>
         </div>
       </div>
     </div>
@@ -955,31 +800,10 @@ function serializeAssetForApi(item) {
 }
 
 function guessMimeTypeFromKind(kind, ext) {
-  if (kind === "image")
-    return `image/${ext === "jpg" ? "jpeg" : ext || "jpeg"}`;
+  if (kind === "image") return `image/${ext === "jpg" ? "jpeg" : ext || "jpeg"}`;
   if (kind === "video") return "video/mp4";
   if (kind === "audio") return "audio/mpeg";
   return "application/octet-stream";
-}
-
-function mapTrendToneToUi(toneValue, language) {
-  if (language === "ru") {
-    if (toneValue === "calm") return "Спокойно";
-    if (toneValue === "premium") return "Дорого";
-    if (toneValue === "friendly") return "Дружелюбно";
-    return "Динамично";
-  }
-
-  if (toneValue === "calm") return "Calm";
-  if (toneValue === "premium") return "Premium";
-  if (toneValue === "friendly") return "Friendly";
-  return "Dynamic";
-}
-
-function mapTrendDurationToUi(durationValue, language) {
-  const value = Number(durationValue) || 30;
-  if (language === "ru") return `${value} секунд`;
-  return `${value} sec`;
 }
 
 function getTelegramUser() {
@@ -1014,22 +838,13 @@ function mapApiPreviewVariant(variant, idx) {
     label: variant.label || null,
     creative: variant.creative || null,
     scenes: variant.scenes || [],
-    script: variant.script || null,
-    info: variant.info || null,
     captions: variant.captions || [],
-    access: variant.access || null,
     kind: variant.kind || null,
     score: variant.score || null,
     previewStatusUrl: endpoint.previewStatusUrl || variant.previewUrl || "",
     previewRenderUrl: endpoint.previewRenderUrl || "",
     previewStatus: variant?.preview?.status || "incomplete",
     readyForPreviewRender: Boolean(variant?.preview?.readyForPreviewRender),
-    requestId: variant?.preview?.endpoint?.previewStatusUrl
-      ? new URL(
-          variant.preview.endpoint.previewStatusUrl,
-          "http://localhost"
-        ).searchParams.get("requestId")
-      : null,
   };
 }
 
@@ -1077,17 +892,9 @@ async function readJsonSafely(res) {
 function normalizeServerErrorMessage(rawText, fallbackText) {
   const text = String(rawText || "");
 
-  if (/request entity too large/i.test(text)) {
-    return fallbackText;
-  }
-
-  if (/payload too large/i.test(text)) {
-    return fallbackText;
-  }
-
-  if (/413/i.test(text) && /entity|payload/i.test(text)) {
-    return fallbackText;
-  }
+  if (/request entity too large/i.test(text)) return fallbackText;
+  if (/payload too large/i.test(text)) return fallbackText;
+  if (/413/i.test(text) && /entity|payload/i.test(text)) return fallbackText;
 
   return "";
 }
@@ -1106,23 +913,16 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const [assets, setAssets] = useState(defaults.assets);
 
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isFindingTrend, setIsFindingTrend] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isLoadingLivePreview, setIsLoadingLivePreview] = useState(false);
   const [isPreviewPlaying, setIsPreviewPlaying] = useState(false);
   const [variants, setVariants] = useState(defaults.variants);
   const [activeVariant, setActiveVariant] = useState(defaults.activeVariant);
   const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [generationError, setGenerationError] = useState("");
-  const [trendError, setTrendError] = useState("");
-  const [lastPreviewPayload, setLastPreviewPayload] = useState(
-    defaults.lastPreviewPayload
-  );
-  const [lastGeneratedFingerprint, setLastGeneratedFingerprint] = useState(
-    defaults.lastGeneratedFingerprint
-  );
+  const [lastPreviewPayload, setLastPreviewPayload] = useState(defaults.lastPreviewPayload);
+  const [lastGeneratedFingerprint, setLastGeneratedFingerprint] = useState(defaults.lastGeneratedFingerprint);
   const [telegramIdentity, setTelegramIdentity] = useState("");
 
   const fileInputRef = useRef(null);
@@ -1150,10 +950,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const scrollToPreview = () => {
     requestAnimationFrame(() => {
-      previewRef.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      previewRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   };
 
@@ -1175,14 +972,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
         : defaults.assets
     );
     setVariants(Array.isArray(state.variants) ? state.variants : []);
-    setActiveVariant(
-      typeof state.activeVariant === "number" ? state.activeVariant : 0
-    );
+    setActiveVariant(typeof state.activeVariant === "number" ? state.activeVariant : 0);
     setLastPreviewPayload(state.lastPreviewPayload || null);
     setLastGeneratedFingerprint(state.lastGeneratedFingerprint || "");
     setGenerationError("");
-    setTrendError("");
-    setShowDetailsModal(false);
     stopPreviewRuntime();
   };
 
@@ -1287,9 +1080,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     };
 
     const handleStorage = (event) => {
-      if (event.key === TG_USER_KEY) {
-        syncTelegramState();
-      }
+      if (event.key === TG_USER_KEY) syncTelegramState();
     };
 
     window.addEventListener("storage", handleStorage);
@@ -1328,9 +1119,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const hasMaterials = assets.length > 0 || link.trim().length > 3;
   const hasTopic = topic.trim().length > 8;
 
-  const progress =
-    (hasCategory ? 25 : 0) + (hasMaterials ? 35 : 0) + (hasTopic ? 40 : 0);
-
+  const progress = (hasCategory ? 25 : 0) + (hasMaterials ? 35 : 0) + (hasTopic ? 40 : 0);
   const canGenerate = hasCategory && (hasMaterials || hasTopic);
 
   const desktopActionText = variants.length
@@ -1414,10 +1203,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
       const parsed = await readJsonSafely(res);
 
       if (!parsed.ok) {
-        const normalized = normalizeServerErrorMessage(
-          parsed.rawText,
-          t.generationRequestTooLarge
-        );
+        const normalized = normalizeServerErrorMessage(parsed.rawText, t.generationRequestTooLarge);
         throw new Error(normalized || t.generationErrorFallback);
       }
 
@@ -1428,16 +1214,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
       }
 
       const nextVariants =
-        data?.preview?.variants?.map((variant, idx) =>
-          mapApiPreviewVariant(variant, idx)
-        ) || [];
+        data?.preview?.variants?.map((variant, idx) => mapApiPreviewVariant(variant, idx)) || [];
 
       stopPreviewRuntime();
       setVariants(nextVariants);
       setActiveVariant(0);
       setLastPreviewPayload(data.preview || null);
       setLastGeneratedFingerprint(generationFingerprint);
-
       scrollToPreview();
     } catch (error) {
       console.error("Generation failed:", error);
@@ -1545,119 +1328,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
     const list = Array.from(fileList || []);
     if (!list.length) return;
 
-    const next = await Promise.all(
-      list.slice(0, MAX_ASSETS).map((file, idx) => fileToAsset(file, idx))
-    );
-
+    const next = await Promise.all(list.slice(0, MAX_ASSETS).map((file, idx) => fileToAsset(file, idx)));
     setAssets((prev) => [...next, ...prev].slice(0, MAX_ASSETS));
   };
 
   const removeAsset = (id) => {
     setAssets((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const handleFillForMe = async () => {
-    const nextFormat = selectedFormat || "business";
-    setSelectedFormat(nextFormat);
-
-    if (!topic.trim()) {
-      setTopic(t.topicByFormat[nextFormat] || t.topicByFormat.default);
-    }
-
-    if (!hasMaterials && assets.length === 0) {
-      setAssets([
-        {
-          id: "a1",
-          src: DEMO_POSTERS[0],
-          name: "demo-1.jpg",
-          ext: "jpg",
-          kind: "image",
-        },
-        {
-          id: "a2",
-          src: DEMO_POSTERS[1],
-          name: "demo-2.jpg",
-          ext: "jpg",
-          kind: "image",
-        },
-        {
-          id: "a3",
-          src: DEMO_POSTERS[2],
-          name: "demo-3.jpg",
-          ext: "jpg",
-          kind: "image",
-        },
-      ]);
-    }
-  };
-
-  const handleFindTrend = async () => {
-    if (isFindingTrend) return;
-
-    setIsFindingTrend(true);
-    setTrendError("");
-
-    try {
-      const format = selectedFormat || "other";
-      const params = new URLSearchParams({
-        format,
-        topic: topic.trim(),
-        locale: lang === "ru" ? "RU" : "US",
-        language: lang,
-      });
-
-      if (link.trim()) {
-        params.set("links", link.trim());
-      }
-      if (topic.trim()) {
-        params.set("notes", topic.trim());
-      }
-
-      const res = await fetch(`/api/trends?${params.toString()}`, {
-        cache: "no-store",
-      });
-
-      const parsed = await readJsonSafely(res);
-
-      if (!parsed.ok) {
-        throw new Error(t.trendError);
-      }
-
-      const result = parsed.data;
-
-      if (!res.ok || !result?.ok || !result?.best) {
-        throw new Error(result?.error?.message || t.trendError);
-      }
-
-      const best = result.best;
-
-      if (!selectedFormat) {
-        setSelectedFormat(format);
-      }
-
-      if (best.topic) {
-        setTopic(best.topic);
-      }
-
-      if (best.suggestedTone) {
-        const nextTone = mapTrendToneToUi(best.suggestedTone, lang);
-        if (COPY[lang]?.tones?.includes(nextTone)) {
-          setTone(nextTone);
-        }
-      }
-
-      if (best.suggestedDuration) {
-        const nextDuration = mapTrendDurationToUi(best.suggestedDuration, lang);
-        if (COPY[lang]?.durations?.includes(nextDuration)) {
-          setDuration(nextDuration);
-        }
-      }
-    } catch (error) {
-      console.error("Trend lookup failed:", error);
-      setTrendError(error?.message || t.trendError);
-    } finally {
-      setIsFindingTrend(false);
-    }
   };
 
   const handlePrimaryAction = () => {
@@ -1694,10 +1370,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
       const tgUser = getTelegramUser();
 
       const requestId = activeVariantData?.previewStatusUrl
-        ? new URL(
-            activeVariantData.previewStatusUrl,
-            window.location.origin
-          ).searchParams.get("requestId")
+        ? new URL(activeVariantData.previewStatusUrl, window.location.origin).searchParams.get("requestId")
         : null;
 
       if (!requestId) {
@@ -1710,16 +1383,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
       });
 
       if (tgUser?.telegramId || tgUser?.telegram_id || tgUser?.id) {
-        params.set(
-          "telegramId",
-          String(tgUser.telegramId || tgUser.telegram_id || tgUser.id)
-        );
+        params.set("telegramId", String(tgUser.telegramId || tgUser.telegram_id || tgUser.id));
       }
       if (tgUser?.username || tgUser?.userName) {
-        params.set(
-          "username",
-          String(tgUser.username || tgUser.userName).replace(/^@/, "")
-        );
+        params.set("username", String(tgUser.username || tgUser.userName).replace(/^@/, ""));
       }
 
       const res = await fetch(`/api/download?${params.toString()}`, {
@@ -1796,34 +1463,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     </div>
                   </div>
                 </div>
-
-                <div className="mt-4 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2">
-                  <PixelButton
-                    color="soft"
-                    className="w-full"
-                    onClick={handleFindTrend}
-                    disabled={isFindingTrend}
-                  >
-                    {isFindingTrend ? t.trendLoading : t.trend}
-                  </PixelButton>
-                  <PixelButton
-                    color="violet"
-                    className="w-full"
-                    onClick={handleFillForMe}
-                  >
-                    {t.doForMe}
-                  </PixelButton>
-                </div>
-
-                {trendError ? (
-                  <div
-                    className="mt-4 flex items-start gap-3 bg-[#ffe4e8] px-4 py-4 text-[14px] text-[#8a3550]"
-                    style={pixelClip()}
-                  >
-                    <AlertCircle className="mt-[1px] h-5 w-5 shrink-0" />
-                    <div>{trendError}</div>
-                  </div>
-                ) : null}
               </div>
             </section>
 
@@ -1898,10 +1537,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
                         ))}
 
                         {assets.length < ASSET_SLOTS &&
-                          Array.from(
-                            { length: Math.max(0, ASSET_SLOTS - assets.length) },
-                            (_, i) => assets.length + i + 1
-                          ).map((n) => (
+                          Array.from({ length: Math.max(0, ASSET_SLOTS - assets.length) }, (_, i) => assets.length + i + 1).map((n) => (
                             <div
                               key={n}
                               className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[18px] font-semibold text-[#c8c9df] md:h-[60px] md:w-[60px]"
@@ -1950,33 +1586,15 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 <div className="mt-5 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-3">
-                  <PlainSelect
-                    label={t.duration}
-                    value={duration}
-                    onChange={setDuration}
-                    options={t.durations}
-                  />
-                  <PlainSelect
-                    label={t.tone}
-                    value={tone}
-                    onChange={setTone}
-                    options={t.tones}
-                  />
-                  <PlainSelect
-                    label={t.voice}
-                    value={voice}
-                    onChange={setVoice}
-                    options={t.voices}
-                  />
+                  <PlainSelect label={t.duration} value={duration} onChange={setDuration} options={t.durations} />
+                  <PlainSelect label={t.tone} value={tone} onChange={setTone} options={t.tones} />
+                  <PlainSelect label={t.voice} value={voice} onChange={setVoice} options={t.voices} />
                 </div>
               </div>
             </section>
           </div>
 
-          <div
-            ref={previewRef}
-            className="mt-6 px-4 lg:mt-0 lg:px-0 lg:sticky lg:top-6 lg:self-start"
-          >
+          <div ref={previewRef} className="mt-6 px-4 lg:mt-0 lg:px-0 lg:sticky lg:top-6 lg:self-start">
             <div className="space-y-5">
               <div className="overflow-hidden bg-[#111111]" style={pixelClip()}>
                 <div className="checkerboard relative aspect-[9/16] w-full">
@@ -1984,41 +1602,25 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     <div className="flex h-full w-full items-center justify-center">
                       <div className="flex flex-col items-center text-white">
                         <Loader2 className="h-10 w-10 animate-spin" />
-                        <div className="mt-5 text-[16px] font-semibold">
-                          {t.previewPreparing}
-                        </div>
+                        <div className="mt-5 text-[16px] font-semibold">{t.previewPreparing}</div>
                       </div>
                     </div>
                   ) : variants.length ? (
                     <div className="relative h-full w-full">
-                      <div
-                        ref={livePreviewContainerRef}
-                        className="absolute inset-0 h-full w-full"
-                      />
-                      {!activeVariantData?.readyForPreviewRender &&
-                      previewPoster ? (
+                      <div ref={livePreviewContainerRef} className="absolute inset-0 h-full w-full" />
+                      {!activeVariantData?.readyForPreviewRender && previewPoster ? (
                         <>
-                          <img
-                            src={previewPoster}
-                            alt=""
-                            className="absolute inset-0 h-full w-full object-cover"
-                          />
+                          <img src={previewPoster} alt="" className="absolute inset-0 h-full w-full object-cover" />
                           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.38)_100%)]" />
                         </>
                       ) : null}
 
                       <div className="absolute inset-x-4 top-4 flex items-center justify-between">
-                        <div
-                          className="bg-white/85 px-3 py-2 text-[12px] font-semibold text-[#2b2b35]"
-                          style={pixelClip()}
-                        >
+                        <div className="bg-white/85 px-3 py-2 text-[12px] font-semibold text-[#2b2b35]" style={pixelClip()}>
                           {isLoadingLivePreview ? t.loadingPreview : t.previewReady}
                         </div>
                         {activeVariantData?.score ? (
-                          <div
-                            className="bg-[#8c62ff]/90 px-3 py-2 text-[12px] font-semibold text-white"
-                            style={pixelClip()}
-                          >
+                          <div className="bg-[#8c62ff]/90 px-3 py-2 text-[12px] font-semibold text-white" style={pixelClip()}>
                             Score {activeVariantData.score}
                           </div>
                         ) : null}
@@ -2036,19 +1638,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
                           }`}
                           style={pixelClip()}
                         >
-                          {isPreviewPlaying ? (
-                            <Pause size={14} fill="currentColor" />
-                          ) : (
-                            <Play size={14} fill="currentColor" />
-                          )}
+                          {isPreviewPlaying ? <Pause size={14} fill="currentColor" /> : <Play size={14} fill="currentColor" />}
                           {isPreviewPlaying ? t.previewPause : t.previewPlay}
                         </button>
 
                         {activeVariantData?.creative?.hook ? (
-                          <div
-                            className="line-clamp-3 max-w-[90%] bg-black/65 px-3 py-3 text-[14px] leading-[1.35] text-white"
-                            style={pixelClip()}
-                          >
+                          <div className="line-clamp-3 max-w-[90%] bg-black/65 px-3 py-3 text-[14px] leading-[1.35] text-white" style={pixelClip()}>
                             {activeVariantData.creative.hook}
                           </div>
                         ) : null}
@@ -2057,15 +1652,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
                   ) : (
                     <div className="relative flex h-full w-full items-center justify-center">
                       <div className="relative z-10 flex flex-col items-center">
-                        <div
-                          className="flex h-[96px] w-[96px] items-center justify-center bg-white text-[#1d1d1d]"
-                          style={pixelClip()}
-                        >
+                        <div className="flex h-[96px] w-[96px] items-center justify-center bg-white text-[#1d1d1d]" style={pixelClip()}>
                           <Play size={42} fill="currentColor" />
                         </div>
-                        <div className="mt-8 text-[18px] font-semibold text-[#8c8c8c]">
-                          {t.preview}
-                        </div>
+                        <div className="mt-8 text-[18px] font-semibold text-[#8c8c8c]">{t.preview}</div>
                       </div>
                     </div>
                   )}
@@ -2073,10 +1663,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
               </div>
 
               {generationError ? (
-                <div
-                  className="flex items-start gap-3 bg-[#ffe4e8] px-4 py-4 text-[14px] text-[#8a3550]"
-                  style={pixelClip()}
-                >
+                <div className="flex items-start gap-3 bg-[#ffe4e8] px-4 py-4 text-[14px] text-[#8a3550]" style={pixelClip()}>
                   <AlertCircle className="mt-[1px] h-5 w-5 shrink-0" />
                   <div>{generationError}</div>
                 </div>
@@ -2091,31 +1678,20 @@ export default function AgentWorkspace({ lang = "ru" }) {
                         key={idx}
                         type="button"
                         onClick={() => item && setActiveVariant(idx)}
-                        className={`relative aspect-[0.78/1] overflow-hidden ${
-                          idx === activeVariant ? "ring-2 ring-[#8d62ff]" : ""
-                        }`}
+                        className={`relative aspect-[0.78/1] overflow-hidden ${idx === activeVariant ? "ring-2 ring-[#8d62ff]" : ""}`}
                       >
                         {item ? (
                           <>
                             {item.poster ? (
-                              <img
-                                src={item.poster}
-                                alt=""
-                                className="h-full w-full object-cover"
-                              />
+                              <img src={item.poster} alt="" className="h-full w-full object-cover" />
                             ) : (
                               <div className="flex h-full w-full items-center justify-center bg-[#26232f] text-[24px] font-semibold text-[#c3c3d0] md:text-[26px]">
                                 {idx + 1}
                               </div>
                             )}
                             <div className="absolute inset-x-2 bottom-2">
-                              <div
-                                className="truncate bg-black/70 px-2 py-1 text-[10px] font-semibold text-white"
-                                style={pixelClip()}
-                              >
-                                {item.label?.ru ||
-                                  item.label?.en ||
-                                  `Variant ${idx + 1}`}
+                              <div className="truncate bg-black/70 px-2 py-1 text-[10px] font-semibold text-white" style={pixelClip()}>
+                                {item.label?.ru || item.label?.en || `Variant ${idx + 1}`}
                               </div>
                             </div>
                           </>
@@ -2137,13 +1713,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
               <PixelButton
                 color="green"
                 className="w-full text-[18px]"
-                icon={
-                  isDownloading ? (
-                    <Loader2 size={18} className="animate-spin" />
-                  ) : (
-                    <Download size={18} />
-                  )
-                }
+                icon={isDownloading ? <Loader2 size={18} className="animate-spin" /> : <Download size={18} />}
                 disabled={!variants.length || isDownloading}
                 onClick={handleDownload}
               >
@@ -2158,16 +1728,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
                   tone={tone}
                 />
               )}
-
-              {activeVariantData ? (
-                <PixelButton
-                  color="soft"
-                  className="w-full"
-                  onClick={() => setShowDetailsModal(true)}
-                >
-                  {t.details}
-                </PixelButton>
-              ) : null}
 
               <div className="hidden lg:block">
                 <ProgressActionButton
@@ -2199,13 +1759,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
         open={showConfirmRegenerate}
         onClose={() => setShowConfirmRegenerate(false)}
         onConfirm={handleConfirmRegenerate}
-      />
-
-      <DetailsModal
-        t={t}
-        open={showDetailsModal}
-        onClose={() => setShowDetailsModal(false)}
-        activeVariantData={activeVariantData}
       />
 
       <style jsx>{`
