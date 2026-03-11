@@ -66,6 +66,8 @@ const COPY = {
     previewPause: "Пауза",
     generationErrorFallback:
       "Не удалось сгенерировать варианты. Попробуй ещё раз.",
+    generationRequestTooLarge:
+      "Слишком тяжёлый запрос. Удали часть файлов или большие изображения и попробуй снова.",
     generationPanelTitle: "Что собрал Margelet",
     generationHook: "Хук",
     generationAngle: "Угол",
@@ -212,6 +214,8 @@ const COPY = {
     previewPlay: "Play preview",
     previewPause: "Pause",
     generationErrorFallback: "Failed to generate variants. Please try again.",
+    generationRequestTooLarge:
+      "The request is too large. Remove some files or heavy images and try again.",
     generationPanelTitle: "What Margelet built",
     generationHook: "Hook",
     generationAngle: "Angle",
@@ -911,11 +915,16 @@ function readFileAsDataUrl(file) {
 }
 
 function serializeAssetForApi(item) {
+  const safeSrc =
+    typeof item.src === "string" && item.src.startsWith("data:")
+      ? ""
+      : item.src || "";
+
   return {
     id: item.id,
     name: item.name,
-    src: item.src || "",
-    previewUrl: item.src || "",
+    src: safeSrc,
+    previewUrl: safeSrc,
     ext: item.ext || "",
     type: item.mimeType || guessMimeTypeFromKind(item.kind, item.ext),
     mimeType: item.mimeType || guessMimeTypeFromKind(item.kind, item.ext),
@@ -1030,6 +1039,38 @@ function buildGenerationFingerprint({
   });
 }
 
+async function readJsonSafely(res) {
+  const text = await res.text();
+
+  if (!text) {
+    return { ok: false, rawText: "", parseError: "EMPTY_RESPONSE" };
+  }
+
+  try {
+    return { ok: true, data: JSON.parse(text), rawText: text };
+  } catch {
+    return { ok: false, rawText: text, parseError: "INVALID_JSON" };
+  }
+}
+
+function normalizeServerErrorMessage(rawText, fallbackText) {
+  const text = String(rawText || "");
+
+  if (/request entity too large/i.test(text)) {
+    return fallbackText;
+  }
+
+  if (/payload too large/i.test(text)) {
+    return fallbackText;
+  }
+
+  if (/413/i.test(text) && /entity|payload/i.test(text)) {
+    return fallbackText;
+  }
+
+  return "";
+}
+
 export default function AgentWorkspace({ lang = "ru" }) {
   const t = COPY[lang] || COPY.ru;
   const defaults = useMemo(() => getDefaultWorkspace(lang), [lang]);
@@ -1083,6 +1124,15 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
     previewRuntimeRef.current = null;
     setIsPreviewPlaying(false);
+  };
+
+  const scrollToPreview = () => {
+    requestAnimationFrame(() => {
+      previewRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
   };
 
   const applyWorkspaceState = (state) => {
@@ -1323,6 +1373,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
     setGenerationError("");
     setIsPreviewPlaying(false);
 
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      scrollToPreview();
+    }
+
     try {
       const payload = buildGenerationPayload();
 
@@ -1334,7 +1388,17 @@ export default function AgentWorkspace({ lang = "ru" }) {
         body: JSON.stringify(payload),
       });
 
-      const data = await res.json();
+      const parsed = await readJsonSafely(res);
+
+      if (!parsed.ok) {
+        const normalized = normalizeServerErrorMessage(
+          parsed.rawText,
+          t.generationRequestTooLarge
+        );
+        throw new Error(normalized || t.generationErrorFallback);
+      }
+
+      const data = parsed.data;
 
       if (!res.ok || !data?.ok) {
         throw new Error(data?.error?.message || t.generationErrorFallback);
@@ -1351,15 +1415,11 @@ export default function AgentWorkspace({ lang = "ru" }) {
       setLastPreviewPayload(data.preview || null);
       setLastGeneratedFingerprint(generationFingerprint);
 
-      requestAnimationFrame(() => {
-        previewRef.current?.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      });
+      scrollToPreview();
     } catch (error) {
       console.error("Generation failed:", error);
       setGenerationError(error?.message || t.generationErrorFallback);
+      scrollToPreview();
     } finally {
       setIsGenerating(false);
     }
@@ -1386,7 +1446,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
           cache: "no-store",
         });
 
-        const data = await res.json();
+        const parsed = await readJsonSafely(res);
+
+        if (!parsed.ok) {
+          throw new Error(t.generationErrorFallback);
+        }
+
+        const data = parsed.data;
 
         if (!res.ok || !data?.ok || !data?.render) {
           throw new Error("Preview render is not ready yet.");
@@ -1528,7 +1594,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
         cache: "no-store",
       });
 
-      const result = await res.json();
+      const parsed = await readJsonSafely(res);
+
+      if (!parsed.ok) {
+        throw new Error(t.trendError);
+      }
+
+      const result = parsed.data;
 
       if (!res.ok || !result?.ok || !result?.best) {
         throw new Error(result?.error?.message || t.trendError);
@@ -1566,6 +1638,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
   };
 
   const handlePrimaryAction = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      scrollToPreview();
+    }
+
     if (variants.length) {
       setShowConfirmRegenerate(true);
       return;
@@ -1576,10 +1652,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
       return;
     }
 
-    previewRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    scrollToPreview();
   };
 
   const handleConfirmRegenerate = () => {
@@ -1630,7 +1703,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
         cache: "no-store",
       });
 
-      const data = await res.json();
+      const parsed = await readJsonSafely(res);
+
+      if (!parsed.ok) {
+        throw new Error(t.downloadError);
+      }
+
+      const data = parsed.data;
 
       if (res.status === 403) {
         const access = data?.access;
@@ -1652,6 +1731,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     } catch (error) {
       console.error("Download failed:", error);
       setGenerationError(error?.message || t.downloadError);
+      scrollToPreview();
     } finally {
       setIsDownloading(false);
     }
