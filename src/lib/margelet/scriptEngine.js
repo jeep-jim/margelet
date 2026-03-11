@@ -242,6 +242,7 @@ export async function buildScripts(request) {
   const duration = normalizeDuration(config.duration);
   const tone = config.tone || "dynamic";
   const voice = config.voice || "auto";
+  const textOverlayMode = normalizeTextOverlayMode(config.textOverlayMode);
 
   const formatStyle = FORMAT_STYLES[format] || FORMAT_STYLES.default;
   const toneRule = TONE_RULES[tone] || TONE_RULES.dynamic;
@@ -268,6 +269,7 @@ export async function buildScripts(request) {
     duration,
     tone,
     voice,
+    textOverlayMode,
     formatStyle,
     toneRule,
     voiceRule,
@@ -284,6 +286,7 @@ export async function buildScripts(request) {
     duration,
     tone,
     voice,
+    textOverlayMode,
     formatStyle,
     toneRule,
     voiceRule,
@@ -300,6 +303,7 @@ export async function buildScripts(request) {
     duration,
     tone,
     voice,
+    textOverlayMode,
     formatStyle,
     toneRule,
     voiceRule,
@@ -313,6 +317,7 @@ export async function buildScripts(request) {
       duration,
       tone,
       voice,
+      textOverlayMode,
     },
     context,
     variants: [strategyA, strategyB, strategyC],
@@ -329,6 +334,7 @@ function buildVariantStrategy({
   duration,
   tone,
   voice,
+  textOverlayMode,
   formatStyle,
   toneRule,
   voiceRule,
@@ -347,12 +353,13 @@ function buildVariantStrategy({
     tone,
   });
   const narration = buildNarrationFromScenes(scenes, toneRule);
-  const captions = buildCaptionsFromScenes(scenes, toneRule);
+  const captions = buildCaptionsFromScenes(scenes, toneRule, textOverlayMode);
   const cta = buildCta(format, context);
   const editDirection = buildEditDirection({
     kind,
     tone,
     voice,
+    textOverlayMode,
     formatStyle,
     toneRule,
     voiceRule,
@@ -374,6 +381,7 @@ function buildVariantStrategy({
     direction: {
       tone,
       voice,
+      textOverlayMode,
       pacing: formatStyle.pacing,
       vibe: formatStyle.vibe,
       editDirection,
@@ -389,7 +397,9 @@ function buildVariantStrategy({
       delivery: voiceRule.delivery,
     },
     captions: {
-      style: toneRule.captionStyle,
+      enabled: textOverlayMode !== "off",
+      mode: textOverlayMode,
+      style: resolveCaptionStyle(toneRule.captionStyle, textOverlayMode),
       lines: captions,
     },
     score: scoreVariant({ kind, context, tone, format }),
@@ -579,10 +589,17 @@ function buildNarrationFromScenes(scenes, toneRule) {
   };
 }
 
-function buildCaptionsFromScenes(scenes, toneRule) {
+function buildCaptionsFromScenes(scenes, toneRule, textOverlayMode = "subtitles") {
+  if (textOverlayMode === "off") {
+    return [];
+  }
+
   return scenes.map((scene) => ({
     sceneId: scene.id,
-    text: styleCaption(scene.caption, toneRule.captionStyle),
+    text:
+      textOverlayMode === "highlights"
+        ? styleHighlightCaption(scene.caption, scene.role)
+        : styleCaption(scene.caption, toneRule.captionStyle),
     role: scene.role,
   }));
 }
@@ -655,6 +672,7 @@ function buildEditDirection({
   kind,
   tone,
   voice,
+  textOverlayMode,
   formatStyle,
   toneRule,
   voiceRule,
@@ -677,6 +695,7 @@ function buildEditDirection({
     pacing: formatStyle.pacing,
     visualBase,
     soundtrack,
+    textOverlayMode,
     variantStyle:
       kind === "hook-first"
         ? "front-load attention and visual contrast"
@@ -826,7 +845,7 @@ function fitScenesToDuration(sceneTemplates, secondsPerScene, duration) {
     if (index === cloned.length - 1) {
       const prev = cloned
         .slice(0, index)
-        .reduce((sum, item, idx) => sum + Math.max(2, Math.round(item.durationSec * ratio)), 0);
+        .reduce((sum, item) => sum + Math.max(2, Math.round(item.durationSec * ratio)), 0);
       return {
         ...scene,
         durationSec: Math.max(2, duration - prev),
@@ -867,6 +886,29 @@ function styleCaption(text, captionStyle) {
   }
 
   return clean;
+}
+
+function styleHighlightCaption(text, role) {
+  const clean = simplifyCaption(text);
+  if (!clean) return "";
+
+  const words = clean.split(/\s+/).filter(Boolean);
+
+  if (role === "hook") {
+    return words.slice(0, 5).join(" ");
+  }
+
+  if (role === "cta") {
+    return words.slice(0, 4).join(" ");
+  }
+
+  return words.slice(0, 3).join(" ");
+}
+
+function resolveCaptionStyle(baseStyle, textOverlayMode) {
+  if (textOverlayMode === "off") return null;
+  if (textOverlayMode === "highlights") return "highlights";
+  return baseStyle;
 }
 
 function simplifyCaption(text) {
@@ -923,6 +965,17 @@ function normalizeDuration(value) {
   const num = Number(value);
   if (Number.isFinite(num) && num > 0) return Math.round(num);
   return 30;
+}
+
+function normalizeTextOverlayMode(value) {
+  if (!value) return "subtitles";
+
+  const mode = String(value).trim().toLowerCase();
+
+  if (mode === "off") return "off";
+  if (mode === "highlights") return "highlights";
+
+  return "subtitles";
 }
 
 function safeText(value) {

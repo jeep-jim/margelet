@@ -7,6 +7,7 @@ export function normalizeGenerationRequest(input = {}) {
   const duration = normalizeDuration(input.duration);
   const tone = normalizeTone(input.tone);
   const voice = normalizeVoice(input.voice);
+  const textOverlayMode = normalizeTextOverlayMode(input.textOverlayMode);
 
   const links = normalizeLinks(input.links || input.link);
   const notes = normalizeString(input.notes || "");
@@ -26,7 +27,8 @@ export function normalizeGenerationRequest(input = {}) {
       duration,
       tone,
       voice,
-      mode
+      mode,
+      textOverlayMode
     },
 
     sources: {
@@ -133,6 +135,17 @@ function normalizeVoice(voice) {
   };
 
   return map[voice] || "auto";
+}
+
+function normalizeTextOverlayMode(value) {
+  if (!value) return "subtitles";
+
+  const mode = String(value).trim().toLowerCase();
+
+  if (mode === "off") return "off";
+  if (mode === "highlights") return "highlights";
+
+  return "subtitles";
 }
 
 function normalizeLinks(input) {

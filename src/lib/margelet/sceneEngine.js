@@ -81,6 +81,9 @@ function buildSingleScenePlan({
     },
     direction: {
       ...variant.direction,
+      textOverlayMode: normalizeTextOverlayMode(
+        variant?.direction?.textOverlayMode || request?.config?.textOverlayMode
+      ),
       visualStrategy,
       musicPlan,
     },
@@ -113,7 +116,7 @@ function buildScene({
   const textOverlay = buildTextOverlay(scene, variant);
   const cameraMotion = buildCameraMotion(scene, selectedVisual, variant);
   const timing = buildSceneTiming(scene, selectedVisual, sceneIndex);
-  const captionMode = buildCaptionMode(scene, variant);
+  const captionMode = buildCaptionMode(scene, variant, request);
   const audioMode = buildAudioMode(scene, soundtrack, selectedVisual, variant);
   const composition = buildComposition(scene, selectedVisual, variant);
 
@@ -281,7 +284,22 @@ function buildSceneTiming(scene, selectedVisual, sceneIndex) {
 }
 
 function buildTextOverlay(scene, variant) {
-  const title = buildSceneTitle(scene, variant);
+  const textOverlayMode = normalizeTextOverlayMode(
+    variant?.direction?.textOverlayMode
+  );
+
+  if (textOverlayMode === "off") {
+    return {
+      enabled: false,
+      layout: null,
+      title: "",
+      kicker: "",
+      accentWords: [],
+      style: null,
+    };
+  }
+
+  const title = buildSceneTitle(scene, variant, textOverlayMode);
   const kicker = scene.role === "hook"
     ? variant?.creative?.hook || ""
     : scene.role === "cta"
@@ -292,16 +310,26 @@ function buildTextOverlay(scene, variant) {
     enabled: true,
     layout: pickOverlayLayout(scene.role),
     title,
-    kicker,
+    kicker: textOverlayMode === "highlights" ? trimHighlightText(kicker, scene.role) : kicker,
     accentWords: pickAccentWords(scene.caption || scene.narration),
-    style: pickTextStyle(variant?.direction?.tone, scene.role),
+    style: pickTextStyle(variant?.direction?.tone, scene.role, textOverlayMode),
+    mode: textOverlayMode,
   };
 }
 
-function buildSceneTitle(scene, variant) {
-  if (scene.role === "hook") return scene.caption || variant?.creative?.hook || "";
-  if (scene.role === "cta") return variant?.creative?.cta?.ru || scene.caption || "";
-  return scene.caption || "";
+function buildSceneTitle(scene, variant, textOverlayMode = "subtitles") {
+  const baseTitle =
+    scene.role === "hook"
+      ? scene.caption || variant?.creative?.hook || ""
+      : scene.role === "cta"
+      ? variant?.creative?.cta?.ru || scene.caption || ""
+      : scene.caption || "";
+
+  if (textOverlayMode === "highlights") {
+    return trimHighlightText(baseTitle, scene.role);
+  }
+
+  return baseTitle;
 }
 
 function buildCameraMotion(scene, selectedVisual, variant) {
@@ -331,8 +359,51 @@ function buildCameraMotion(scene, selectedVisual, variant) {
   };
 }
 
-function buildCaptionMode(scene, variant) {
+function buildCaptionMode(scene, variant, request) {
   const tone = variant?.direction?.tone || "dynamic";
+  const textOverlayMode = normalizeTextOverlayMode(
+    variant?.direction?.textOverlayMode || request?.config?.textOverlayMode
+  );
+
+  if (textOverlayMode === "off") {
+    return {
+      enabled: false,
+      style: null,
+      position: null,
+      emphasis: null,
+      mode: "off",
+    };
+  }
+
+  if (textOverlayMode === "highlights") {
+    if (scene.role === "hook") {
+      return {
+        enabled: true,
+        style: "highlight-punch",
+        position: "center-lower",
+        emphasis: "high",
+        mode: "highlights",
+      };
+    }
+
+    if (scene.role === "cta") {
+      return {
+        enabled: true,
+        style: "highlight-footer",
+        position: "lower-third",
+        emphasis: "medium",
+        mode: "highlights",
+      };
+    }
+
+    return {
+      enabled: true,
+      style: "highlight-line",
+      position: "lower-third",
+      emphasis: "high",
+      mode: "highlights",
+    };
+  }
 
   if (scene.role === "hook") {
     return {
@@ -340,6 +411,7 @@ function buildCaptionMode(scene, variant) {
       style: tone === "premium" ? "minimal-bold" : "highlight-punch",
       position: "center-lower",
       emphasis: "high",
+      mode: "subtitles",
     };
   }
 
@@ -349,6 +421,7 @@ function buildCaptionMode(scene, variant) {
       style: "clean-footer",
       position: "lower-third",
       emphasis: "medium",
+      mode: "subtitles",
     };
   }
 
@@ -357,6 +430,7 @@ function buildCaptionMode(scene, variant) {
     style: tone === "calm" ? "clean-line" : "dynamic-line",
     position: "lower-third",
     emphasis: scene.emphasis || "medium",
+    mode: "subtitles",
   };
 }
 
@@ -392,6 +466,7 @@ function buildAudioMode(scene, soundtrack, selectedVisual, variant) {
 
 function buildComposition(scene, selectedVisual, variant) {
   const tone = variant?.direction?.tone || "dynamic";
+  const textOverlayMode = normalizeTextOverlayMode(variant?.direction?.textOverlayMode);
 
   return {
     frame: {
@@ -400,7 +475,7 @@ function buildComposition(scene, selectedVisual, variant) {
       fit: selectedVisual.fit || "cover",
       crop: selectedVisual.crop || "center",
     },
-    layerOrder: buildLayerOrder(selectedVisual),
+    layerOrder: buildLayerOrder(selectedVisual, textOverlayMode),
     backgroundTreatment:
       selectedVisual.type === "video" || selectedVisual.type === "image"
         ? tone === "premium"
@@ -429,12 +504,15 @@ function buildProgressTag(scene, variant, sceneIndex) {
 }
 
 function buildRenderHints(scene, selectedVisual, variant) {
+  const textOverlayMode = normalizeTextOverlayMode(variant?.direction?.textOverlayMode);
+
   return {
     prioritizeReadability: true,
     avoidOvercrowding: true,
     useImpactCuts: variant?.direction?.tone === "dynamic",
     useElegantSpacing: variant?.direction?.tone === "premium",
-    shouldBurnCaptions: true,
+    shouldBurnCaptions: textOverlayMode !== "off",
+    textOverlayMode,
     shouldPreRenderPoster: scene.role === "hook",
     visualMode:
       selectedVisual.type === "video"
@@ -544,7 +622,13 @@ function pickOverlayLayout(role) {
   return "lower-third";
 }
 
-function pickTextStyle(tone, role) {
+function pickTextStyle(tone, role, textOverlayMode = "subtitles") {
+  if (textOverlayMode === "highlights") {
+    if (role === "hook") return "impact-highlight";
+    if (role === "cta") return "brand-highlight";
+    return tone === "calm" ? "clean-highlight" : "shortform-highlight";
+  }
+
   if (role === "hook") {
     return tone === "premium" ? "bold-clean" : "impact-highlight";
   }
@@ -587,10 +671,38 @@ function shouldPreferVideoForRole(role) {
   return role === "hook" || role === "proof" || role === "story";
 }
 
-function buildLayerOrder(selectedVisual) {
+function buildLayerOrder(selectedVisual, textOverlayMode = "subtitles") {
   if (selectedVisual.type === "video" || selectedVisual.type === "image") {
-    return ["background-media", "shade", "text", "captions", "micro-ui"];
+    return textOverlayMode === "off"
+      ? ["background-media", "shade", "micro-ui"]
+      : ["background-media", "shade", "text", "captions", "micro-ui"];
   }
 
-  return ["graphic-bg", "shapes", "text", "captions", "micro-ui"];
+  return textOverlayMode === "off"
+    ? ["graphic-bg", "shapes", "micro-ui"]
+    : ["graphic-bg", "shapes", "text", "captions", "micro-ui"];
+}
+
+function trimHighlightText(text, role) {
+  const words = safeText(text).split(/\s+/).filter(Boolean);
+
+  if (role === "hook") return words.slice(0, 5).join(" ");
+  if (role === "cta") return words.slice(0, 4).join(" ");
+  return words.slice(0, 3).join(" ");
+}
+
+function normalizeTextOverlayMode(value) {
+  if (!value) return "subtitles";
+
+  const mode = String(value).trim().toLowerCase();
+
+  if (mode === "off") return "off";
+  if (mode === "highlights") return "highlights";
+
+  return "subtitles";
+}
+
+function safeText(value) {
+  if (value == null) return "";
+  return String(value).trim();
 }

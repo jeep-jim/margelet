@@ -6,6 +6,7 @@ export async function buildCaptionPlans(request, voicePlanResult, scenePlanResul
   const variants = voicePlanResult?.variants || [];
   const sceneVariants = mapSceneVariants(scenePlanResult?.variants || []);
   const tone = request?.config?.tone || "dynamic";
+  const textOverlayMode = normalizeTextOverlayMode(request?.config?.textOverlayMode);
 
   const plans = variants.map((voiceVariant) => {
     const sceneVariant = sceneVariants.get(voiceVariant.id);
@@ -14,6 +15,7 @@ export async function buildCaptionPlans(request, voicePlanResult, scenePlanResul
       voiceVariant,
       sceneVariant,
       tone,
+      textOverlayMode,
     });
   });
 
@@ -22,22 +24,39 @@ export async function buildCaptionPlans(request, voicePlanResult, scenePlanResul
       requestId: request?.meta?.requestId || null,
       variantCount: plans.length,
       tone,
+      textOverlayMode,
     },
     variants: plans,
   };
 }
 
-function buildSingleCaptionPlan({ voiceVariant, sceneVariant, tone }) {
+function buildSingleCaptionPlan({ voiceVariant, sceneVariant, tone, textOverlayMode }) {
+  if (textOverlayMode === "off") {
+    return {
+      id: voiceVariant.id,
+      kind: voiceVariant.kind,
+      label: voiceVariant.label,
+      style: null,
+      mode: "off",
+      captions: [],
+      timeline: [],
+      readabilityScore: 0,
+    };
+  }
+
   const segments = voiceVariant?.segments || [];
   const timeline = voiceVariant?.timing?.segments || [];
 
-  const captions = segments.map((segment, index) =>
-    buildCaptionSegment({
-      segment,
-      timing: timeline[index],
-      tone,
-    })
-  );
+  const captions = segments
+    .map((segment, index) =>
+      buildCaptionSegment({
+        segment,
+        timing: timeline[index],
+        tone,
+        textOverlayMode,
+      })
+    )
+    .filter(Boolean);
 
   const captionTimeline = buildCaptionTimeline(captions);
 
@@ -45,21 +64,30 @@ function buildSingleCaptionPlan({ voiceVariant, sceneVariant, tone }) {
     id: voiceVariant.id,
     kind: voiceVariant.kind,
     label: voiceVariant.label,
-    style: buildCaptionStyle(tone),
+    style: buildCaptionStyle(tone, textOverlayMode),
+    mode: textOverlayMode,
     captions,
     timeline: captionTimeline,
     readabilityScore: computeReadabilityScore(captions),
   };
 }
 
-function buildCaptionSegment({ segment, timing, tone }) {
+function buildCaptionSegment({ segment, timing, tone, textOverlayMode }) {
   const baseText = segment.normalizedText || segment.text || "";
-
-  const words = splitCaptionWords(baseText);
-  const chunks = buildCaptionChunks(words, tone);
-
   const startMs = timing?.speechStartMs || timing?.startMs || 0;
   const endMs = timing?.speechEndMs || timing?.endMs || 0;
+  const accentWords = segment?.emphasis?.accentWords || [];
+
+  const chunks =
+    textOverlayMode === "highlights"
+      ? buildHighlightChunks({
+          text: baseText,
+          accentWords,
+          role: segment.role,
+        })
+      : buildCaptionChunks(splitCaptionWords(baseText), tone);
+
+  if (!chunks.length) return null;
 
   return {
     id: `caption_${segment.id}`,
@@ -68,8 +96,8 @@ function buildCaptionSegment({ segment, timing, tone }) {
     startMs,
     endMs,
     chunks,
-    accentWords: segment?.emphasis?.accentWords || [],
-    style: chooseCaptionStyle(segment.role, tone),
+    accentWords,
+    style: chooseCaptionStyle(segment.role, tone, textOverlayMode),
   };
 }
 
@@ -105,6 +133,34 @@ function buildCaptionChunks(words, tone) {
   }));
 }
 
+function buildHighlightChunks({ text, accentWords, role }) {
+  const clean = safeText(text);
+  if (!clean && (!accentWords || !accentWords.length)) return [];
+
+  if (role === "hook") {
+    return [
+      {
+        order: 1,
+        text: shortenText(clean, 5).toUpperCase(),
+      },
+    ].filter((item) => item.text);
+  }
+
+  if (accentWords.length > 0) {
+    return accentWords.slice(0, 3).map((word, index) => ({
+      order: index + 1,
+      text: String(word).toUpperCase(),
+    }));
+  }
+
+  return [
+    {
+      order: 1,
+      text: shortenText(clean, role === "cta" ? 4 : 3).toUpperCase(),
+    },
+  ].filter((item) => item.text);
+}
+
 function buildCaptionTimeline(captions) {
   return captions.map((caption) => ({
     id: caption.id,
@@ -114,7 +170,17 @@ function buildCaptionTimeline(captions) {
   }));
 }
 
-function buildCaptionStyle(tone) {
+function buildCaptionStyle(tone, textOverlayMode = "subtitles") {
+  if (textOverlayMode === "highlights") {
+    return {
+      font: "bold-shortform",
+      case: "upper",
+      highlight: "full-line",
+      animation: tone === "dynamic" ? "impact-pop" : "fade-up",
+      placement: "lower-third",
+    };
+  }
+
   if (tone === "dynamic") {
     return {
       font: "bold-shortform",
@@ -154,7 +220,31 @@ function buildCaptionStyle(tone) {
   };
 }
 
-function chooseCaptionStyle(role, tone) {
+function chooseCaptionStyle(role, tone, textOverlayMode = "subtitles") {
+  if (textOverlayMode === "highlights") {
+    if (role === "hook") {
+      return {
+        emphasis: "strong",
+        scale: 1.24,
+        animation: tone === "dynamic" ? "impact-pop" : "fade-up",
+      };
+    }
+
+    if (role === "cta") {
+      return {
+        emphasis: "medium",
+        scale: 1.08,
+        animation: "fade-up",
+      };
+    }
+
+    return {
+      emphasis: "strong",
+      scale: 1.08,
+      animation: tone === "dynamic" ? "pop-in" : "fade",
+    };
+  }
+
   if (role === "hook") {
     return {
       emphasis: "strong",
@@ -215,6 +305,21 @@ function mapSceneVariants(list) {
   }
 
   return map;
+}
+
+function shortenText(text, maxWords) {
+  return splitCaptionWords(text).slice(0, maxWords).join(" ");
+}
+
+function normalizeTextOverlayMode(value) {
+  if (!value) return "subtitles";
+
+  const mode = String(value).trim().toLowerCase();
+
+  if (mode === "off") return "off";
+  if (mode === "highlights") return "highlights";
+
+  return "subtitles";
 }
 
 function safeText(value) {

@@ -10,8 +10,9 @@ import {
   Loader2,
   AlertCircle,
 } from "lucide-react";
+import { findTrendIdeas } from "@/lib/margelet/trendEngine";
 
-const STORAGE_KEY = "margelet_agent_workspace_v2";
+const STORAGE_KEY = "margelet_agent_workspace_v3";
 const MAX_ASSETS = 12;
 const ASSET_SLOTS = 9;
 
@@ -33,6 +34,8 @@ const COPY = {
     tone: "Тон",
     voice: "Голос",
     trend: "Найти тренд",
+    trendLoading: "Ищем тренд...",
+    trendError: "Не удалось подобрать тренд. Попробуй ещё раз.",
     doForMe: "Заполни всё за меня",
     preview: "Предпросмотр",
     previewAction: "Предпросмотр",
@@ -55,11 +58,13 @@ const COPY = {
     previewPreparing: "Собираем превью...",
     previewReady: "Превью собрано",
     previewNotPlayable: "Видео-превью подключим следующим шагом",
-    generationErrorFallback: "Не удалось сгенерировать варианты. Попробуй ещё раз.",
+    generationErrorFallback:
+      "Не удалось сгенерировать варианты. Попробуй ещё раз.",
     generationPanelTitle: "Что собрал Margelet",
     generationHook: "Хук",
     generationAngle: "Угол",
     generationScenes: "Сцены",
+    captionsLabel: "Показывать субтитры",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -79,6 +84,7 @@ const COPY = {
     tones: ["Динамично", "Спокойно", "Дорого", "Дружелюбно"],
     voices: ["Автоматический", "Энергичный", "Спокойный", "Рассказчик"],
     formats: {
+      other: "Другое",
       motivation: "Мотивация",
       business: "Бизнес",
       news: "Новости",
@@ -113,6 +119,8 @@ const COPY = {
       blog: "Блог",
     },
     topicByFormat: {
+      other:
+        "Опиши любой формат ролика, который хочешь создать, простыми словами",
       motivation: "Напиши ролик о том, почему дисциплина важнее мотивации",
       business: "Сделай ролик про 3 ошибки предпринимателей в начале пути",
       news: "Кратко перескажи главное событие дня простым языком",
@@ -165,6 +173,8 @@ const COPY = {
     tone: "Tone",
     voice: "Voice",
     trend: "Find trend",
+    trendLoading: "Finding trend...",
+    trendError: "Failed to find a trend. Try again.",
     doForMe: "Fill everything for me",
     preview: "Preview",
     previewAction: "Preview",
@@ -192,6 +202,7 @@ const COPY = {
     generationHook: "Hook",
     generationAngle: "Angle",
     generationScenes: "Scenes",
+    captionsLabel: "Show subtitles",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -204,6 +215,7 @@ const COPY = {
     tones: ["Dynamic", "Calm", "Premium", "Friendly"],
     voices: ["Automatic", "Energetic", "Calm", "Narrator"],
     formats: {
+      other: "Other",
       motivation: "Motivation",
       business: "Business",
       news: "News",
@@ -238,6 +250,8 @@ const COPY = {
       blog: "Blog",
     },
     topicByFormat: {
+      other:
+        "Describe any kind of video you want to create in simple words",
       motivation:
         "Create a video about why discipline matters more than motivation",
       business: "Make a video about 3 mistakes founders make early on",
@@ -286,6 +300,7 @@ const DEMO_POSTERS = [
 ];
 
 const FORMAT_ITEMS = [
+  { id: "other", icon: "✨" },
   { id: "motivation", icon: "🧘" },
   { id: "business", icon: "💼" },
   { id: "news", icon: "📰" },
@@ -686,7 +701,10 @@ function GenerationInfoCard({ t, activeVariantData }) {
   if (!activeVariantData) return null;
 
   return (
-    <div className="space-y-3 bg-white/70 p-4 text-[13px] text-[#4e557e]" style={pixelClip()}>
+    <div
+      className="space-y-3 bg-white/70 p-4 text-[13px] text-[#4e557e]"
+      style={pixelClip()}
+    >
       <div className="font-semibold text-[#4a4272]">{t.generationPanelTitle}</div>
 
       {activeVariantData?.creative?.hook ? (
@@ -712,13 +730,40 @@ function GenerationInfoCard({ t, activeVariantData }) {
                 <div className="text-[12px] font-semibold uppercase tracking-[0.02em] text-[#7d73b2]">
                   {scene.role}
                 </div>
-                <div className="mt-1 text-[#4e557e]">{scene.caption || scene.narration}</div>
+                <div className="mt-1 text-[#4e557e]">
+                  {scene.caption || scene.narration}
+                </div>
               </div>
             ))}
           </div>
         </div>
       ) : null}
     </div>
+  );
+}
+
+function CaptionSwitch({ checked, onChange, label }) {
+  return (
+    <label className="flex items-center gap-3 cursor-pointer">
+      <div
+        onClick={() => onChange(!checked)}
+        className={`relative w-[48px] h-[24px] transition-colors ${
+          checked ? "bg-[#7a5af8]" : "bg-[#bfb7d6]"
+        }`}
+        style={pixelClip()}
+      >
+        <div
+          className={`absolute top-[3px] w-[18px] h-[18px] bg-white transition-all ${
+            checked ? "left-[27px]" : "left-[3px]"
+          }`}
+          style={pixelClip()}
+        />
+      </div>
+
+      <span className="text-[15px] text-[#5e547e] md:text-[16px]">
+        {label}
+      </span>
+    </label>
   );
 }
 
@@ -787,6 +832,26 @@ function guessMimeTypeFromKind(kind, ext) {
   return "application/octet-stream";
 }
 
+function mapTrendToneToUi(toneValue, language) {
+  if (language === "ru") {
+    if (toneValue === "calm") return "Спокойно";
+    if (toneValue === "premium") return "Дорого";
+    if (toneValue === "friendly") return "Дружелюбно";
+    return "Динамично";
+  }
+
+  if (toneValue === "calm") return "Calm";
+  if (toneValue === "premium") return "Premium";
+  if (toneValue === "friendly") return "Friendly";
+  return "Dynamic";
+}
+
+function mapTrendDurationToUi(durationValue, language) {
+  const value = Number(durationValue) || 30;
+  if (language === "ru") return `${value} секунд`;
+  return `${value} sec`;
+}
+
 export default function AgentWorkspace({ lang = "ru" }) {
   const t = COPY[lang] || COPY.ru;
 
@@ -795,13 +860,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const [duration, setDuration] = useState(
     COPY[lang]?.durations?.[3] || COPY.ru.durations[3]
   );
-  const [tone, setTone] = useState(
-    COPY[lang]?.tones?.[0] || COPY.ru.tones[0]
-  );
+  const [tone, setTone] = useState(COPY[lang]?.tones?.[0] || COPY.ru.tones[0]);
   const [voice, setVoice] = useState(
     COPY[lang]?.voices?.[0] || COPY.ru.voices[0]
   );
   const [link, setLink] = useState("");
+  const [showCaptions, setShowCaptions] = useState(true);
   const [assets, setAssets] = useState([
     { id: "a1", src: DEMO_POSTERS[0], name: "demo-1.jpg", ext: "jpg", kind: "image" },
     { id: "a2", src: DEMO_POSTERS[1], name: "demo-2.jpg", ext: "jpg", kind: "image" },
@@ -810,11 +874,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
   ]);
 
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isFindingTrend, setIsFindingTrend] = useState(false);
   const [variants, setVariants] = useState([]);
   const [activeVariant, setActiveVariant] = useState(0);
   const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [generationError, setGenerationError] = useState("");
+  const [trendError, setTrendError] = useState("");
   const [lastPreviewPayload, setLastPreviewPayload] = useState(null);
 
   const fileInputRef = useRef(null);
@@ -830,36 +896,31 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
       const saved = JSON.parse(raw);
 
-      if (saved?.selectedFormat !== undefined) setSelectedFormat(saved.selectedFormat || null);
+      if (saved?.selectedFormat !== undefined) {
+        setSelectedFormat(saved.selectedFormat || null);
+      }
       if (typeof saved?.topic === "string") setTopic(saved.topic);
       if (typeof saved?.link === "string") setLink(saved.link);
+      if (typeof saved?.showCaptions === "boolean") {
+        setShowCaptions(saved.showCaptions);
+      }
       if (Array.isArray(saved?.assets) && saved.assets.length) {
         setAssets(saved.assets.slice(0, MAX_ASSETS));
       }
-      if (saved?.duration && COPY[lang].durations.includes(saved.duration)) {
-        setDuration(saved.duration);
-      }
-      if (saved?.tone && COPY[lang].tones.includes(saved.tone)) {
-        setTone(saved.tone);
-      }
-      if (saved?.voice && COPY[lang].voices.includes(saved.voice)) {
-        setVoice(saved.voice);
-      }
-      if (Array.isArray(saved?.variants)) {
-        setVariants(saved.variants);
-      }
+      if (saved?.duration) setDuration(saved.duration);
+      if (saved?.tone) setTone(saved.tone);
+      if (saved?.voice) setVoice(saved.voice);
+      if (Array.isArray(saved?.variants)) setVariants(saved.variants);
       if (typeof saved?.activeVariant === "number") {
         setActiveVariant(saved.activeVariant);
       }
-      if (saved?.lastPreviewPayload) {
-        setLastPreviewPayload(saved.lastPreviewPayload);
-      }
+      if (saved?.lastPreviewPayload) setLastPreviewPayload(saved.lastPreviewPayload);
     } catch (error) {
       console.error("Failed to restore AgentWorkspace session", error);
     } finally {
       setHydrated(true);
     }
-  }, [lang]);
+  }, []);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -874,6 +935,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
           tone,
           voice,
           link,
+          showCaptions,
           assets: assets.slice(0, MAX_ASSETS),
           variants,
           activeVariant,
@@ -891,6 +953,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     tone,
     voice,
     link,
+    showCaptions,
     assets,
     variants,
     activeVariant,
@@ -916,7 +979,6 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const activeVariantData = variants[activeVariant] || null;
   const currentFormatLabel = selectedFormat ? t.formats[selectedFormat] : "";
-
   const topicPlaceholder = `${t.examplePrefix} ${
     t.topicByFormat[selectedFormat] || t.topicByFormat.default
   }`;
@@ -962,6 +1024,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
   };
 
   const buildGenerationPayload = () => {
+    const textOverlayMode = showCaptions ? "subtitles" : "off";
+
     return {
       format: selectedFormat,
       topic: topic.trim(),
@@ -972,6 +1036,15 @@ export default function AgentWorkspace({ lang = "ru" }) {
       notes: topic.trim(),
       assets: assets.map(serializeAssetForApi),
       mode: "preview",
+      showCaptions,
+      subtitlesEnabled: showCaptions,
+      textOverlayMode,
+      config: {
+        duration,
+        tone,
+        voice,
+        textOverlayMode,
+      },
     };
   };
 
@@ -995,9 +1068,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
       const data = await res.json();
 
       if (!res.ok || !data?.ok) {
-        throw new Error(
-          data?.error?.message || t.generationErrorFallback
-        );
+        throw new Error(data?.error?.message || t.generationErrorFallback);
       }
 
       const nextVariants =
@@ -1042,6 +1113,65 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
     if (!topic.trim()) {
       setTopic(t.topicByFormat[nextFormat] || t.topicByFormat.default);
+    }
+
+    if (!hasMaterials && assets.length === 0) {
+      setAssets([
+        { id: "a1", src: DEMO_POSTERS[0], name: "demo-1.jpg", ext: "jpg", kind: "image" },
+        { id: "a2", src: DEMO_POSTERS[1], name: "demo-2.jpg", ext: "jpg", kind: "image" },
+        { id: "a3", src: DEMO_POSTERS[2], name: "demo-3.jpg", ext: "jpg", kind: "image" },
+      ]);
+    }
+  };
+
+  const handleFindTrend = async () => {
+    if (isFindingTrend) return;
+
+    setIsFindingTrend(true);
+    setTrendError("");
+
+    try {
+      const format = selectedFormat || "other";
+      const result = await findTrendIdeas({
+        format,
+        topic: topic.trim(),
+        locale: lang === "ru" ? "RU" : "US",
+        language: lang,
+        links: link.trim() ? [link.trim()] : [],
+        notes: topic.trim(),
+      });
+
+      const best = result?.best;
+      if (!best) {
+        throw new Error(t.trendError);
+      }
+
+      if (!selectedFormat) {
+        setSelectedFormat(format);
+      }
+
+      if (best.topic) {
+        setTopic(best.topic);
+      }
+
+      if (best.suggestedTone) {
+        const nextTone = mapTrendToneToUi(best.suggestedTone, lang);
+        if (COPY[lang]?.tones?.includes(nextTone)) {
+          setTone(nextTone);
+        }
+      }
+
+      if (best.suggestedDuration) {
+        const nextDuration = mapTrendDurationToUi(best.suggestedDuration, lang);
+        if (COPY[lang]?.durations?.includes(nextDuration)) {
+          setDuration(nextDuration);
+        }
+      }
+    } catch (error) {
+      console.error("Trend lookup failed:", error);
+      setTrendError(error?.message || t.trendError);
+    } finally {
+      setIsFindingTrend(false);
     }
   };
 
@@ -1105,8 +1235,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2">
-                  <PixelButton color="soft" className="w-full">
-                    {t.trend}
+                  <PixelButton
+                    color="soft"
+                    className="w-full"
+                    onClick={handleFindTrend}
+                    disabled={isFindingTrend}
+                  >
+                    {isFindingTrend ? t.trendLoading : t.trend}
                   </PixelButton>
                   <PixelButton
                     color="violet"
@@ -1116,11 +1251,21 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     {t.doForMe}
                   </PixelButton>
                 </div>
+
+                {trendError ? (
+                  <div
+                    className="mt-4 flex items-start gap-3 bg-[#ffe4e8] px-4 py-4 text-[14px] text-[#8a3550]"
+                    style={pixelClip()}
+                  >
+                    <AlertCircle className="mt-[1px] h-5 w-5 shrink-0" />
+                    <div>{trendError}</div>
+                  </div>
+                ) : null}
               </div>
             </section>
 
-            <section className="workspace-section w-full bg-[#cad4f4]">
-              <div className="section-inner py-5 md:p-7">
+            <section className="workspace-section -mx-4 w-[calc(100%+32px)] bg-[#cad4f4] md:mx-0 md:w-full">
+              <div className="section-inner w-full py-5 md:p-7">
                 <div className="flex flex-wrap items-baseline gap-2">
                   <h2 className="text-[20px] font-bold text-[#4d5b92] md:text-[24px]">
                     {t.step2Title}
@@ -1208,8 +1353,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
               </div>
             </section>
 
-            <section className="workspace-section w-full bg-[#c9b8f3]">
-              <div className="section-inner py-5 md:p-7">
+            <section className="workspace-section -mx-4 w-[calc(100%+32px)] bg-[#c9b8f3] md:mx-0 md:w-full">
+              <div className="section-inner w-full py-5 md:p-7">
                 <div className="flex flex-wrap items-baseline gap-2">
                   <h2 className="text-[20px] font-bold text-[#5b447b] md:text-[24px]">
                     {t.step3Title}
@@ -1226,6 +1371,14 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     onChange={(e) => setTopic(e.target.value)}
                     placeholder={topicPlaceholder}
                     className="w-full resize-none bg-white px-5 py-5 text-[15px] text-[#6b5fa0] outline-none placeholder:text-[#7d72a8] md:text-[16px] md:px-6"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <CaptionSwitch
+                    checked={showCaptions}
+                    onChange={setShowCaptions}
+                    label={t.captionsLabel}
                   />
                 </div>
 

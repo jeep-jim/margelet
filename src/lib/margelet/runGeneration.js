@@ -1,14 +1,25 @@
-// runGeneration.js
-// Главный orchestration layer для Margelet.
-// Собирает весь pipeline генерации в один вызов.
+// src/lib/margelet/runGeneration.js
+// Main orchestration layer for Margelet.
+// Full generation pipeline with:
+// - request normalization
+// - input preparation
+// - scripts
+// - scenes
+// - voice planning
+// - real browser TTS execution
+// - captions
+// - preview render descriptors
+// - ephemeral preview store
 
 import { normalizeGenerationRequest } from "./generationSchema";
 import { prepareGenerationInput } from "./prepareGenerationInput";
 import { buildScripts } from "./scriptEngine";
 import { buildScenePlans } from "./sceneEngine";
 import { buildVoicePlans } from "./voiceEngine";
+import { runVoiceSynthesis } from "./voiceSynthesis";
 import { buildCaptionPlans } from "./captionEngine";
-import { buildRenderPlans } from "./renderEngine";
+import { buildPreviewRenders } from "./renderPreview";
+import { savePreviewDescriptors } from "./previewStore";
 
 export async function runGeneration(input = {}) {
   const startedAt = Date.now();
@@ -25,25 +36,110 @@ export async function runGeneration(input = {}) {
       scriptResult,
       scenePlanResult
     );
+
+    const voiceSynthesisResult = await runVoiceSynthesis(
+      preparedRequest,
+      voicePlanResult
+    );
+
+    if (!voiceSynthesisResult?.ok) {
+      return {
+        ok: false,
+        error: voiceSynthesisResult?.error || {
+          code: "VOICE_SYNTHESIS_FAILED",
+          message: "Voice synthesis failed.",
+        },
+        meta: {
+          startedAt,
+          finishedAt: Date.now(),
+          durationMs: Date.now() - startedAt,
+        },
+        pipeline: {
+          request: preparedRequest,
+          scripts: scriptResult,
+          scenes: scenePlanResult,
+          voice: voicePlanResult,
+          voiceSynthesis: voiceSynthesisResult,
+        },
+      };
+    }
+
     const captionPlanResult = await buildCaptionPlans(
       preparedRequest,
       voicePlanResult,
       scenePlanResult
     );
-    const renderPlanResult = await buildRenderPlans(
-      preparedRequest,
+
+    const previewRenderResult = await buildPreviewRenders({
+      request: preparedRequest,
       scenePlanResult,
       voicePlanResult,
-      captionPlanResult
-    );
+      voiceSynthesisResult,
+      captionPlanResult,
+    });
+
+    if (!previewRenderResult?.ok) {
+      return {
+        ok: false,
+        error: previewRenderResult?.error || {
+          code: "PREVIEW_RENDER_FAILED",
+          message: "Preview render preparation failed.",
+        },
+        meta: {
+          startedAt,
+          finishedAt: Date.now(),
+          durationMs: Date.now() - startedAt,
+        },
+        pipeline: {
+          request: preparedRequest,
+          scripts: scriptResult,
+          scenes: scenePlanResult,
+          voice: voicePlanResult,
+          voiceSynthesis: voiceSynthesisResult,
+          captions: captionPlanResult,
+          previewRenders: previewRenderResult,
+        },
+      };
+    }
+
+    const previewStoreResult = savePreviewDescriptors(previewRenderResult, {
+      ttlMinutes: 30,
+    });
+
+    if (!previewStoreResult?.ok) {
+      return {
+        ok: false,
+        error: previewStoreResult?.error || {
+          code: "PREVIEW_STORE_FAILED",
+          message: "Failed to store preview descriptors.",
+        },
+        meta: {
+          startedAt,
+          finishedAt: Date.now(),
+          durationMs: Date.now() - startedAt,
+        },
+        pipeline: {
+          request: preparedRequest,
+          scripts: scriptResult,
+          scenes: scenePlanResult,
+          voice: voicePlanResult,
+          voiceSynthesis: voiceSynthesisResult,
+          captions: captionPlanResult,
+          previewRenders: previewRenderResult,
+          previewStore: previewStoreResult,
+        },
+      };
+    }
 
     const preview = buildPreviewResponse({
       request: preparedRequest,
+      previewRenderResult,
+      previewStoreResult,
       scriptResult,
       scenePlanResult,
       voicePlanResult,
+      voiceSynthesisResult,
       captionPlanResult,
-      renderPlanResult,
     });
 
     return {
@@ -64,8 +160,10 @@ export async function runGeneration(input = {}) {
         scripts: scriptResult,
         scenes: scenePlanResult,
         voice: voicePlanResult,
+        voiceSynthesis: voiceSynthesisResult,
         captions: captionPlanResult,
-        render: renderPlanResult,
+        previewRenders: previewRenderResult,
+        previewStore: previewStoreResult,
       },
     };
   } catch (error) {
@@ -83,36 +181,41 @@ export async function runGeneration(input = {}) {
 
 function buildPreviewResponse({
   request,
+  previewRenderResult,
+  previewStoreResult,
   scriptResult,
   scenePlanResult,
   voicePlanResult,
+  voiceSynthesisResult,
   captionPlanResult,
-  renderPlanResult,
 }) {
+  const renderMap = mapById(previewRenderResult?.previews || []);
   const scriptMap = mapById(scriptResult?.variants || []);
   const sceneMap = mapById(scenePlanResult?.variants || []);
   const voiceMap = mapById(voicePlanResult?.variants || []);
+  const voiceSynthMap = mapById(voiceSynthesisResult?.variants || []);
   const captionMap = mapById(captionPlanResult?.variants || []);
-  const renderMap = mapById(renderPlanResult?.variants || []);
 
   const variantIds = Array.from(renderMap.keys());
 
   const variants = variantIds.map((id, index) => {
+    const renderPreview = renderMap.get(id) || null;
     const script = scriptMap.get(id) || null;
     const scene = sceneMap.get(id) || null;
     const voice = voiceMap.get(id) || null;
+    const voiceSynth = voiceSynthMap.get(id) || null;
     const captions = captionMap.get(id) || null;
-    const render = renderMap.get(id) || null;
 
     return buildPreviewVariant({
       id,
       index,
       request,
+      renderPreview,
       script,
       scene,
       voice,
+      voiceSynth,
       captions,
-      render,
     });
   });
 
@@ -126,6 +229,8 @@ function buildPreviewResponse({
       tone: request?.config?.tone || "dynamic",
       voice: request?.config?.voice || "auto",
       variantCount: variants.length,
+      previewStored: Boolean(previewStoreResult?.ok),
+      previewExpiresAt: previewStoreResult?.expiresAt || null,
     },
     access: {
       previewAllowed: true,
@@ -140,48 +245,49 @@ function buildPreviewVariant({
   id,
   index,
   request,
+  renderPreview,
   script,
   scene,
   voice,
+  voiceSynth,
   captions,
-  render,
 }) {
-  const sceneList = scene?.scenes || [];
-  const firstScene = sceneList[0] || null;
-  const previewFrame =
-    render?.preview?.previewFrame ||
-    firstScene?.source?.posterUrl ||
-    firstScene?.source?.previewUrl ||
-    "";
-
+  const requestId = request?.meta?.requestId || null;
   const totalDurationSec =
-    render?.export?.durationSec ||
+    renderPreview?.renderJob?.durationSec ||
     scene?.structure?.totalDurationSec ||
     request?.config?.duration ||
     30;
 
-  const previewUrl = buildEphemeralPreviewUrl({
-    requestId: request?.meta?.requestId,
-    variantId: id,
-    index,
-  });
-
   return {
     id,
-    label: script?.label || scene?.label || { ru: `Вариант ${index + 1}`, en: `Variant ${index + 1}` },
-    kind: script?.kind || scene?.kind || "default",
-    score: script?.score || scene?.score || 80,
+    label: script?.label || renderPreview?.label || {
+      ru: `Вариант ${index + 1}`,
+      en: `Variant ${index + 1}`,
+    },
+    kind: script?.kind || renderPreview?.kind || "default",
+    score: script?.score || renderPreview?.score || 80,
 
-    poster: previewFrame,
-    previewUrl,
+    poster: renderPreview?.poster?.url || "",
+    previewUrl:
+      renderPreview?.endpoint?.previewStatusUrl ||
+      buildPreviewStatusUrl(requestId, id),
+
+    playback: renderPreview?.playback || {
+      playable: false,
+      previewUrl: null,
+      reason: "preview_video_not_rendered_yet",
+    },
 
     info: {
       format: request?.config?.format || null,
       durationSec: totalDurationSec,
       tone: request?.config?.tone || "dynamic",
       voice: request?.config?.voice || "auto",
-      sceneCount: scene?.structure?.sceneCount || sceneList.length || 0,
+      sceneCount: scene?.structure?.sceneCount || 0,
       captionStyle: captions?.style || null,
+      previewStatus: renderPreview?.status || "incomplete",
+      readyForPreviewRender: Boolean(renderPreview?.readyForPreviewRender),
     },
 
     creative: {
@@ -191,26 +297,55 @@ function buildPreviewVariant({
     },
 
     script: {
-      fullText: voice?.text?.fullText || script?.narration?.fullText || "",
-      lines: voice?.segments?.map((segment) => ({
-        sceneId: segment.sceneId,
-        text: segment.text,
-        role: segment.role,
-      })) || [],
+      fullText:
+        voiceSynth?.text?.fullText ||
+        voice?.text?.fullText ||
+        script?.narration?.fullText ||
+        "",
+      lines:
+        voiceSynth?.spokenSegments?.map((segment) => ({
+          sceneId: segment.sceneId,
+          text:
+            segment?.planned?.text ||
+            segment?.planned?.normalizedText ||
+            "",
+          role: segment.role,
+          spoken: Boolean(segment?.executed),
+        })) ||
+        voice?.segments?.map((segment) => ({
+          sceneId: segment.sceneId,
+          text: segment.text,
+          role: segment.role,
+          spoken: false,
+        })) ||
+        [],
     },
 
-    scenes: sceneList.map((item) => ({
-      id: item.id,
-      role: item.role,
-      durationSec: item?.timing?.durationSec || 0,
-      sourceType: item?.source?.type || "generated",
-      sourceMode: item?.source?.mode || "generated-or-typography",
-      caption: item?.narrative?.caption || "",
-      narration: item?.narrative?.narration || "",
-    })),
+    scenes:
+      scene?.scenes?.map((item) => ({
+        id: item.id,
+        role: item.role,
+        durationSec: item?.timing?.durationSec || 0,
+        sourceType: item?.source?.type || "generated",
+        sourceMode: item?.source?.mode || "generated-or-typography",
+        caption: item?.narrative?.caption || "",
+        narration: item?.narrative?.narration || "",
+      })) || [],
 
     captions: captions?.captions || [],
-    renderPlan: render || null,
+
+    preview: {
+      status: renderPreview?.status || "incomplete",
+      readyForPreviewRender: Boolean(renderPreview?.readyForPreviewRender),
+      posterAvailable: Boolean(renderPreview?.poster?.available),
+      warnings: renderPreview?.readiness?.warnings || [],
+      endpoint: renderPreview?.endpoint || {
+        previewStatusUrl: buildPreviewStatusUrl(requestId, id),
+        previewRenderUrl: buildPreviewRenderUrl(requestId, id),
+      },
+    },
+
+    renderReadiness: renderPreview?.readiness || null,
 
     access: {
       canPreview: true,
@@ -248,20 +383,25 @@ function validateGenerationRequest(request) {
   }
 }
 
-function buildEphemeralPreviewUrl({ requestId, variantId, index }) {
-  const safeRequestId = requestId || "unknown";
-  const safeVariantId = variantId || `variant_${index + 1}`;
-
+function buildPreviewStatusUrl(requestId, variantId) {
   return `/api/generate/preview?requestId=${encodeURIComponent(
-    safeRequestId
-  )}&variantId=${encodeURIComponent(safeVariantId)}`;
+    requestId || "unknown"
+  )}&variantId=${encodeURIComponent(variantId || "unknown")}`;
+}
+
+function buildPreviewRenderUrl(requestId, variantId) {
+  return `/api/generate/preview/render?requestId=${encodeURIComponent(
+    requestId || "unknown"
+  )}&variantId=${encodeURIComponent(variantId || "unknown")}`;
 }
 
 function mapById(list) {
   const map = new Map();
 
   for (const item of list || []) {
-    if (item?.id) map.set(item.id, item);
+    if (item?.id) {
+      map.set(item.id, item);
+    }
   }
 
   return map;
