@@ -10,11 +10,14 @@ import {
   Loader2,
   AlertCircle,
 } from "lucide-react";
-import { findTrendIdeas } from "@/lib/margelet/trendEngine";
+import { runBrowserPreviewRenderer } from "@/lib/margelet/browserPreviewRenderer";
+import { exportVideo } from "@/lib/margelet/browserVideoExporter";
 
 const STORAGE_KEY = "margelet_agent_workspace_v3";
+const TG_USER_KEY = "margelet_tg_user_v1";
 const MAX_ASSETS = 12;
 const ASSET_SLOTS = 9;
+const AUTOGENERATE_DEBOUNCE_MS = 900;
 
 const COPY = {
   ru: {
@@ -43,6 +46,7 @@ const COPY = {
     regenerateAction: "Перегенерировать",
     createdThree: "Создано три варианта",
     download: "Скачать видео",
+    downloading: "Собираем видео...",
     generating: "Генерируем 3 варианта...",
     examplePrefix: "Например:",
     variant: "Формат",
@@ -57,7 +61,7 @@ const COPY = {
     removeFile: "Удалить файл",
     previewPreparing: "Собираем превью...",
     previewReady: "Превью собрано",
-    previewNotPlayable: "Видео-превью подключим следующим шагом",
+    previewNotPlayable: "Видео собрано локально в превью",
     generationErrorFallback:
       "Не удалось сгенерировать варианты. Попробуй ещё раз.",
     generationPanelTitle: "Что собрал Margelet",
@@ -65,6 +69,11 @@ const COPY = {
     generationAngle: "Угол",
     generationScenes: "Сцены",
     captionsLabel: "Показывать субтитры",
+    authRequired: "Сначала авторизуйся через Telegram.",
+    planRequired: "Для скачивания нужен активный тариф.",
+    downloadError: "Не удалось скачать видео. Попробуй ещё раз.",
+    loadingPreview: "Загружаем живое превью...",
+    autoMode: "Автогенерация включена",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -182,6 +191,7 @@ const COPY = {
     regenerateAction: "Regenerate",
     createdThree: "Three variants created",
     download: "Download video",
+    downloading: "Building video...",
     generating: "Generating 3 variants...",
     examplePrefix: "For example:",
     variant: "Format",
@@ -196,13 +206,18 @@ const COPY = {
     removeFile: "Remove file",
     previewPreparing: "Building preview...",
     previewReady: "Preview ready",
-    previewNotPlayable: "Video preview will be connected next",
+    previewNotPlayable: "Preview is rendered locally",
     generationErrorFallback: "Failed to generate variants. Please try again.",
     generationPanelTitle: "What Margelet built",
     generationHook: "Hook",
     generationAngle: "Angle",
     generationScenes: "Scenes",
     captionsLabel: "Show subtitles",
+    authRequired: "Please sign in with Telegram first.",
+    planRequired: "An active plan is required to download.",
+    downloadError: "Failed to download the video. Please try again.",
+    loadingPreview: "Loading live preview...",
+    autoMode: "Auto-generate is on",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -250,8 +265,7 @@ const COPY = {
       blog: "Blog",
     },
     topicByFormat: {
-      other:
-        "Describe any kind of video you want to create in simple words",
+      other: "Describe any kind of video you want to create in simple words",
       motivation:
         "Create a video about why discipline matters more than motivation",
       business: "Make a video about 3 mistakes founders make early on",
@@ -634,7 +648,7 @@ function PreviewReadyCard({ t, currentFormatLabel, duration, tone }) {
       <div className="font-semibold text-[#5a628d]">{t.readyToPost}</div>
 
       <div>
-        {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · MP4 ·{" "}
+        {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · WEBM ·{" "}
         {t.fileWeight}: 14.8 MB
       </div>
 
@@ -744,16 +758,16 @@ function GenerationInfoCard({ t, activeVariantData }) {
 
 function CaptionSwitch({ checked, onChange, label }) {
   return (
-    <label className="flex items-center gap-3 cursor-pointer">
+    <label className="flex cursor-pointer items-center gap-3">
       <div
         onClick={() => onChange(!checked)}
-        className={`relative w-[48px] h-[24px] transition-colors ${
+        className={`relative h-[24px] w-[48px] transition-colors ${
           checked ? "bg-[#7a5af8]" : "bg-[#bfb7d6]"
         }`}
         style={pixelClip()}
       >
         <div
-          className={`absolute top-[3px] w-[18px] h-[18px] bg-white transition-all ${
+          className={`absolute top-[3px] h-[18px] w-[18px] bg-white transition-all ${
             checked ? "left-[27px]" : "left-[3px]"
           }`}
           style={pixelClip()}
@@ -852,6 +866,69 @@ function mapTrendDurationToUi(durationValue, language) {
   return `${value} sec`;
 }
 
+function getTelegramUser() {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const raw = localStorage.getItem(TG_USER_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
+function mapApiPreviewVariant(variant, idx) {
+  const endpoint = variant?.preview?.endpoint || {};
+  return {
+    id: variant.id || `v${idx + 1}`,
+    poster: variant.poster || DEMO_POSTERS[idx % DEMO_POSTERS.length],
+    label: variant.label || null,
+    creative: variant.creative || null,
+    scenes: variant.scenes || [],
+    script: variant.script || null,
+    info: variant.info || null,
+    captions: variant.captions || [],
+    access: variant.access || null,
+    kind: variant.kind || null,
+    score: variant.score || null,
+    previewStatusUrl: endpoint.previewStatusUrl || variant.previewUrl || "",
+    previewRenderUrl: endpoint.previewRenderUrl || "",
+    previewStatus: variant?.preview?.status || "incomplete",
+    readyForPreviewRender: Boolean(variant?.preview?.readyForPreviewRender),
+    requestId: variant?.preview?.endpoint?.previewStatusUrl
+      ? new URL(variant.preview.endpoint.previewStatusUrl, "http://localhost").searchParams.get("requestId")
+      : null,
+  };
+}
+
+function buildGenerationFingerprint({
+  selectedFormat,
+  topic,
+  duration,
+  tone,
+  voice,
+  link,
+  showCaptions,
+  assets,
+}) {
+  return JSON.stringify({
+    selectedFormat,
+    topic: topic.trim(),
+    duration,
+    tone,
+    voice,
+    link: link.trim(),
+    showCaptions,
+    assets: assets.map((item) => ({
+      id: item.id,
+      name: item.name,
+      kind: item.kind,
+      src: item.src,
+    })),
+  });
+}
+
 export default function AgentWorkspace({ lang = "ru" }) {
   const t = COPY[lang] || COPY.ru;
 
@@ -875,6 +952,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [isFindingTrend, setIsFindingTrend] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [isLoadingLivePreview, setIsLoadingLivePreview] = useState(false);
   const [variants, setVariants] = useState([]);
   const [activeVariant, setActiveVariant] = useState(0);
   const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
@@ -882,9 +961,14 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const [generationError, setGenerationError] = useState("");
   const [trendError, setTrendError] = useState("");
   const [lastPreviewPayload, setLastPreviewPayload] = useState(null);
+  const [lastGeneratedFingerprint, setLastGeneratedFingerprint] = useState("");
 
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
+  const livePreviewContainerRef = useRef(null);
+  const previewRuntimeRef = useRef(null);
+  const autoGenerateTimeoutRef = useRef(null);
+  const livePreviewAbortRef = useRef(null);
 
   useEffect(() => {
     try {
@@ -896,14 +980,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
       const saved = JSON.parse(raw);
 
-      if (saved?.selectedFormat !== undefined) {
-        setSelectedFormat(saved.selectedFormat || null);
-      }
+      if (saved?.selectedFormat !== undefined) setSelectedFormat(saved.selectedFormat || null);
       if (typeof saved?.topic === "string") setTopic(saved.topic);
       if (typeof saved?.link === "string") setLink(saved.link);
-      if (typeof saved?.showCaptions === "boolean") {
-        setShowCaptions(saved.showCaptions);
-      }
+      if (typeof saved?.showCaptions === "boolean") setShowCaptions(saved.showCaptions);
       if (Array.isArray(saved?.assets) && saved.assets.length) {
         setAssets(saved.assets.slice(0, MAX_ASSETS));
       }
@@ -911,10 +991,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
       if (saved?.tone) setTone(saved.tone);
       if (saved?.voice) setVoice(saved.voice);
       if (Array.isArray(saved?.variants)) setVariants(saved.variants);
-      if (typeof saved?.activeVariant === "number") {
-        setActiveVariant(saved.activeVariant);
-      }
+      if (typeof saved?.activeVariant === "number") setActiveVariant(saved.activeVariant);
       if (saved?.lastPreviewPayload) setLastPreviewPayload(saved.lastPreviewPayload);
+      if (saved?.lastGeneratedFingerprint) setLastGeneratedFingerprint(saved.lastGeneratedFingerprint);
     } catch (error) {
       console.error("Failed to restore AgentWorkspace session", error);
     } finally {
@@ -940,6 +1019,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
           variants,
           activeVariant,
           lastPreviewPayload,
+          lastGeneratedFingerprint,
         })
       );
     } catch (error) {
@@ -958,6 +1038,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     variants,
     activeVariant,
     lastPreviewPayload,
+    lastGeneratedFingerprint,
   ]);
 
   useEffect(() => {
@@ -1008,20 +1089,20 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const visibleAssets = assets.slice(0, ASSET_SLOTS);
 
-  const handleFiles = async (fileList) => {
-    const list = Array.from(fileList || []);
-    if (!list.length) return;
-
-    const next = await Promise.all(
-      list.slice(0, MAX_ASSETS).map((file, idx) => fileToAsset(file, idx))
-    );
-
-    setAssets((prev) => [...next, ...prev].slice(0, MAX_ASSETS));
-  };
-
-  const removeAsset = (id) => {
-    setAssets((prev) => prev.filter((item) => item.id !== id));
-  };
+  const generationFingerprint = useMemo(
+    () =>
+      buildGenerationFingerprint({
+        selectedFormat,
+        topic,
+        duration,
+        tone,
+        voice,
+        link,
+        showCaptions,
+        assets,
+      }),
+    [selectedFormat, topic, duration, tone, voice, link, showCaptions, assets]
+  );
 
   const buildGenerationPayload = () => {
     const textOverlayMode = showCaptions ? "subtitles" : "off";
@@ -1048,8 +1129,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
     };
   };
 
-  const runGenerate = async () => {
-    if (isGenerating || !canGenerate) return;
+  const runGenerate = async ({ force = false } = {}) => {
+    if (isGenerating) return;
+    if (!canGenerate) return;
+    if (!force && generationFingerprint === lastGeneratedFingerprint) return;
 
     setIsGenerating(true);
     setGenerationError("");
@@ -1072,26 +1155,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
       }
 
       const nextVariants =
-        data?.preview?.variants?.map((variant, idx) => ({
-          id: variant.id || `v${idx + 1}`,
-          poster: variant.poster || DEMO_POSTERS[idx % DEMO_POSTERS.length],
-          previewUrl: variant.previewUrl || "",
-          hasPlayableVideo: false,
-          label: variant.label || null,
-          creative: variant.creative || null,
-          scenes: variant.scenes || [],
-          script: variant.script || null,
-          info: variant.info || null,
-          captions: variant.captions || [],
-          access: variant.access || null,
-          renderPlan: variant.renderPlan || null,
-          kind: variant.kind || null,
-          score: variant.score || null,
-        })) || [];
+        data?.preview?.variants?.map((variant, idx) => mapApiPreviewVariant(variant, idx)) || [];
 
       setVariants(nextVariants);
       setActiveVariant(0);
       setLastPreviewPayload(data.preview || null);
+      setLastGeneratedFingerprint(generationFingerprint);
 
       requestAnimationFrame(() => {
         previewRef.current?.scrollIntoView({
@@ -1107,7 +1176,118 @@ export default function AgentWorkspace({ lang = "ru" }) {
     }
   };
 
-  const handleFillForMe = () => {
+  useEffect(() => {
+    if (!hydrated) return;
+    if (!canGenerate) return;
+    if (generationFingerprint === lastGeneratedFingerprint) return;
+
+    if (autoGenerateTimeoutRef.current) {
+      clearTimeout(autoGenerateTimeoutRef.current);
+    }
+
+    autoGenerateTimeoutRef.current = setTimeout(() => {
+      runGenerate();
+    }, AUTOGENERATE_DEBOUNCE_MS);
+
+    return () => {
+      if (autoGenerateTimeoutRef.current) {
+        clearTimeout(autoGenerateTimeoutRef.current);
+      }
+    };
+  }, [hydrated, canGenerate, generationFingerprint, lastGeneratedFingerprint]);
+
+  useEffect(() => {
+    async function loadLivePreview() {
+      if (!activeVariantData?.previewRenderUrl) return;
+      if (!livePreviewContainerRef.current) return;
+
+      if (previewRuntimeRef.current?.stop) {
+        previewRuntimeRef.current.stop();
+      }
+
+      if (livePreviewAbortRef.current) {
+        livePreviewAbortRef.current.abort();
+      }
+
+      const controller = new AbortController();
+      livePreviewAbortRef.current = controller;
+      setIsLoadingLivePreview(true);
+
+      try {
+        const res = await fetch(activeVariantData.previewRenderUrl, {
+          signal: controller.signal,
+          cache: "no-store",
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || !data?.ok || !data?.render) {
+          throw new Error("Preview render is not ready yet.");
+        }
+
+        const descriptor = {
+          job: data.render.renderJob,
+          tracks: data.render.tracks,
+          preview: {
+            posterUrl: data.render.poster?.url || activeVariantData.poster || "",
+          },
+        };
+
+        const runtime = await runBrowserPreviewRenderer({
+          container: livePreviewContainerRef.current,
+          renderDescriptor: descriptor,
+        });
+
+        previewRuntimeRef.current = runtime;
+        runtime.play();
+      } catch (error) {
+        if (error?.name !== "AbortError") {
+          console.error("Live preview failed:", error);
+        }
+      } finally {
+        setIsLoadingLivePreview(false);
+      }
+    }
+
+    loadLivePreview();
+
+    return () => {
+      if (previewRuntimeRef.current?.stop) {
+        previewRuntimeRef.current.stop();
+      }
+    };
+  }, [activeVariantData?.id, activeVariantData?.previewRenderUrl]);
+
+  useEffect(() => {
+    return () => {
+      if (previewRuntimeRef.current?.stop) {
+        previewRuntimeRef.current.stop();
+      }
+      if (autoGenerateTimeoutRef.current) {
+        clearTimeout(autoGenerateTimeoutRef.current);
+      }
+      if (livePreviewAbortRef.current) {
+        livePreviewAbortRef.current.abort();
+      }
+    };
+  }, []);
+
+  const handleFiles = async (fileList) => {
+    const list = Array.from(fileList || []);
+    if (!list.length) return;
+
+    const next = await Promise.all(
+      list.slice(0, MAX_ASSETS).map((file, idx) => fileToAsset(file, idx))
+    );
+
+    setAssets((prev) => [...next, ...prev].slice(0, MAX_ASSETS));
+  };
+
+  const removeAsset = (id) => {
+    setAssets((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const handleFillForMe = async () => {
     const nextFormat = selectedFormat || "business";
     setSelectedFormat(nextFormat);
 
@@ -1132,19 +1312,31 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
     try {
       const format = selectedFormat || "other";
-      const result = await findTrendIdeas({
+      const params = new URLSearchParams({
         format,
         topic: topic.trim(),
         locale: lang === "ru" ? "RU" : "US",
         language: lang,
-        links: link.trim() ? [link.trim()] : [],
-        notes: topic.trim(),
       });
 
-      const best = result?.best;
-      if (!best) {
-        throw new Error(t.trendError);
+      if (link.trim()) {
+        params.set("links", link.trim());
       }
+      if (topic.trim()) {
+        params.set("notes", topic.trim());
+      }
+
+      const res = await fetch(`/api/trends?${params.toString()}`, {
+        cache: "no-store",
+      });
+
+      const result = await res.json();
+
+      if (!res.ok || !result?.ok || !result?.best) {
+        throw new Error(result?.error?.message || t.trendError);
+      }
+
+      const best = result.best;
 
       if (!selectedFormat) {
         setSelectedFormat(format);
@@ -1182,7 +1374,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     }
 
     if (canGenerate) {
-      runGenerate();
+      runGenerate({ force: true });
       return;
     }
 
@@ -1194,7 +1386,71 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const handleConfirmRegenerate = () => {
     setShowConfirmRegenerate(false);
-    runGenerate();
+    setLastGeneratedFingerprint("");
+    runGenerate({ force: true });
+  };
+
+  const handleDownload = async () => {
+    if (!activeVariantData?.previewRenderUrl) return;
+
+    setIsDownloading(true);
+    setGenerationError("");
+
+    try {
+      const tgUser = getTelegramUser();
+
+      const requestId = activeVariantData?.previewStatusUrl
+        ? new URL(activeVariantData.previewStatusUrl, window.location.origin).searchParams.get("requestId")
+        : null;
+
+      if (!requestId) {
+        throw new Error(t.downloadError);
+      }
+
+      const params = new URLSearchParams({
+        requestId,
+        variantId: activeVariantData.id,
+      });
+
+      if (tgUser?.telegramId || tgUser?.telegram_id || tgUser?.id) {
+        params.set(
+          "telegramId",
+          String(tgUser.telegramId || tgUser.telegram_id || tgUser.id)
+        );
+      }
+      if (tgUser?.username || tgUser?.userName) {
+        params.set("username", String(tgUser.username || tgUser.userName).replace(/^@/, ""));
+      }
+
+      const res = await fetch(`/api/download?${params.toString()}`, {
+        cache: "no-store",
+      });
+
+      const data = await res.json();
+
+      if (res.status === 403) {
+        const access = data?.access;
+        if (access?.ui?.modal === "auth") {
+          throw new Error(t.authRequired);
+        }
+        if (access?.ui?.redirectTo) {
+          window.location.href = access.ui.redirectTo;
+          return;
+        }
+        throw new Error(t.planRequired);
+      }
+
+      if (!res.ok || !data?.ok || !data?.download?.descriptor) {
+        throw new Error(data?.error?.message || t.downloadError);
+      }
+
+      await exportVideo(data.download.descriptor);
+    } catch (error) {
+      console.error("Download failed:", error);
+      setGenerationError(error?.message || t.downloadError);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   const toggleFormat = (item) => {
@@ -1382,6 +1638,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
                   />
                 </div>
 
+                <div className="mt-3 text-[12px] font-semibold uppercase tracking-[0.04em] text-[#7b69ae]">
+                  {t.autoMode}
+                </div>
+
                 <div className="mt-5 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-3">
                   <PlainSelect
                     label={t.duration}
@@ -1422,22 +1682,27 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     </div>
                   ) : variants.length ? (
                     <div className="relative h-full w-full">
-                      {previewPoster ? (
-                        <img
-                          src={previewPoster}
-                          alt=""
-                          className="h-full w-full object-cover"
-                        />
+                      <div
+                        ref={livePreviewContainerRef}
+                        className="absolute inset-0 h-full w-full"
+                      />
+                      {!activeVariantData?.readyForPreviewRender && previewPoster ? (
+                        <>
+                          <img
+                            src={previewPoster}
+                            alt=""
+                            className="absolute inset-0 h-full w-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.38)_100%)]" />
+                        </>
                       ) : null}
-
-                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.38)_100%)]" />
 
                       <div className="absolute inset-x-4 top-4 flex items-center justify-between">
                         <div
                           className="bg-white/85 px-3 py-2 text-[12px] font-semibold text-[#2b2b35]"
                           style={pixelClip()}
                         >
-                          {t.previewReady}
+                          {isLoadingLivePreview ? t.loadingPreview : t.previewReady}
                         </div>
                         {activeVariantData?.score ? (
                           <div
@@ -1549,10 +1814,17 @@ export default function AgentWorkspace({ lang = "ru" }) {
               <PixelButton
                 color="green"
                 className="w-full text-[18px]"
-                icon={<Download size={18} />}
-                disabled={!variants.length}
+                icon={
+                  isDownloading ? (
+                    <Loader2 size={18} className="animate-spin" />
+                  ) : (
+                    <Download size={18} />
+                  )
+                }
+                disabled={!variants.length || isDownloading}
+                onClick={handleDownload}
               >
-                {t.download}
+                {isDownloading ? t.downloading : t.download}
               </PixelButton>
 
               {variants.length > 0 && (
