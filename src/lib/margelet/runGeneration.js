@@ -1,12 +1,12 @@
 // src/lib/margelet/runGeneration.js
 // Main orchestration layer for Margelet.
-// Full generation pipeline with:
+// Server-safe generation pipeline with:
 // - request normalization
 // - input preparation
 // - scripts
 // - scenes
 // - voice planning
-// - real browser TTS execution
+// - deferred browser TTS metadata (no browser TTS on server)
 // - captions
 // - preview render descriptors
 // - ephemeral preview store
@@ -16,7 +16,6 @@ import { prepareGenerationInput } from "./prepareGenerationInput";
 import { buildScripts } from "./scriptEngine";
 import { buildScenePlans } from "./sceneEngine";
 import { buildVoicePlans } from "./voiceEngine";
-import { runVoiceSynthesis } from "./voiceSynthesis";
 import { buildCaptionPlans } from "./captionEngine";
 import { buildPreviewRenders } from "./renderPreview";
 import { savePreviewDescriptors } from "./previewStore";
@@ -37,32 +36,13 @@ export async function runGeneration(input = {}) {
       scenePlanResult
     );
 
-    const voiceSynthesisResult = await runVoiceSynthesis(
+    // IMPORTANT:
+    // Browser TTS must not run inside Next.js API routes / Node runtime.
+    // We prepare a deferred client-side synthesis payload instead.
+    const voiceSynthesisResult = createDeferredVoiceSynthesisResult(
       preparedRequest,
       voicePlanResult
     );
-
-    if (!voiceSynthesisResult?.ok) {
-      return {
-        ok: false,
-        error: voiceSynthesisResult?.error || {
-          code: "VOICE_SYNTHESIS_FAILED",
-          message: "Voice synthesis failed.",
-        },
-        meta: {
-          startedAt,
-          finishedAt: Date.now(),
-          durationMs: Date.now() - startedAt,
-        },
-        pipeline: {
-          request: preparedRequest,
-          scripts: scriptResult,
-          scenes: scenePlanResult,
-          voice: voicePlanResult,
-          voiceSynthesis: voiceSynthesisResult,
-        },
-      };
-    }
 
     const captionPlanResult = await buildCaptionPlans(
       preparedRequest,
@@ -145,9 +125,9 @@ export async function runGeneration(input = {}) {
     return {
       ok: true,
       request: {
-        requestId: preparedRequest.meta.requestId,
-        createdAt: preparedRequest.meta.createdAt,
-        mode: preparedRequest.config.mode,
+        requestId: preparedRequest?.meta?.requestId || null,
+        createdAt: preparedRequest?.meta?.createdAt || null,
+        mode: preparedRequest?.config?.mode || "preview",
       },
       meta: {
         startedAt,
@@ -177,6 +157,130 @@ export async function runGeneration(input = {}) {
       },
     };
   }
+}
+
+function createDeferredVoiceSynthesisResult(request, voicePlanResult) {
+  const startedAt = Date.now();
+  const variants = (voicePlanResult?.variants || []).map((variant) =>
+    createDeferredVoiceVariant(variant)
+  );
+
+  return {
+    ok: true,
+    provider: "browser-speech-synthesis",
+    mode: "deferred-client-runtime",
+    runtime: {
+      clientOnly: true,
+      deferred: true,
+      downloadableAudioFile: false,
+      deterministicAcrossDevices: false,
+      requiresBrowserRuntime: true,
+    },
+    input: {
+      requestId: request?.meta?.requestId || null,
+      variantCount: variants.length,
+      voice: request?.config?.voice || "auto",
+      tone: request?.config?.tone || "dynamic",
+    },
+    voices: [],
+    variants,
+    meta: {
+      startedAt,
+      finishedAt: Date.now(),
+      durationMs: Date.now() - startedAt,
+    },
+  };
+}
+
+function createDeferredVoiceVariant(variant) {
+  const plannedSegments = Array.isArray(variant?.segments) ? variant.segments : [];
+
+  return {
+    ok: true,
+    id: variant?.id || null,
+    kind: variant?.kind || null,
+    label: variant?.label || null,
+    deferred: true,
+    voiceProfile: variant?.voiceProfile || null,
+    synthesis: {
+      ...(variant?.synthesis || {}),
+      provider: "browser-speech-synthesis",
+      mode: "deferred-client-runtime",
+      limitations: {
+        downloadableAudioFile: false,
+        deterministicAcrossDevices: false,
+        requiresBrowserRuntime: true,
+      },
+      selectedVoice: null,
+      executedLanguage:
+        variant?.synthesis?.language ||
+        inferLanguageFromSegments(plannedSegments) ||
+        "ru",
+    },
+    text: variant?.text || {
+      fullText: plannedSegments
+        .map((segment) => safeText(segment?.normalizedText || segment?.text))
+        .filter(Boolean)
+        .join(" "),
+    },
+    sourceSegments: plannedSegments,
+    spokenSegments: plannedSegments.map((segment) => ({
+      id: segment?.id || null,
+      sceneId: segment?.sceneId || null,
+      role: segment?.role || "body",
+      planned: {
+        text: safeText(segment?.text),
+        normalizedText: safeText(segment?.normalizedText || segment?.text),
+        durationMs: Number(segment?.durationMs) || 0,
+        pauseAfterMs: Number(segment?.pauseAfterMs) || 0,
+        delivery: segment?.delivery || null,
+        emphasis: segment?.emphasis || null,
+        timingHints: segment?.timingHints || null,
+      },
+      executed: null,
+    })),
+    timing: buildPlannedTiming(plannedSegments),
+    qualityHints: variant?.qualityHints || null,
+    meta: {
+      deferred: true,
+      message: "Voice synthesis will run in the browser preview runtime.",
+    },
+  };
+}
+
+function buildPlannedTiming(segments) {
+  let cursorMs = 0;
+
+  const timeline = (segments || []).map((segment) => {
+    const durationMs = Number(segment?.durationMs) || 0;
+    const pauseAfterMs = Number(segment?.pauseAfterMs) || 0;
+
+    const startMs = cursorMs;
+    const speechStartMs = startMs;
+    const speechEndMs = speechStartMs + durationMs;
+    const endMs = speechEndMs + pauseAfterMs;
+
+    cursorMs = endMs;
+
+    return {
+      segmentId: segment?.id || null,
+      sceneId: segment?.sceneId || null,
+      role: segment?.role || "body",
+      startMs,
+      speechStartMs,
+      speechEndMs,
+      endMs,
+      durationMs,
+      pauseAfterMs,
+      status: "planned",
+    };
+  });
+
+  return {
+    totalSpeechMs: timeline.reduce((sum, item) => sum + item.durationMs, 0),
+    totalTimelineMs: timeline.length ? timeline[timeline.length - 1].endMs : 0,
+    segments: timeline,
+  };
 }
 
 function buildPreviewResponse({
@@ -405,6 +509,25 @@ function mapById(list) {
   }
 
   return map;
+}
+
+function inferLanguageFromSegments(segments) {
+  const text = (segments || [])
+    .map((item) => item?.normalizedText || item?.text || "")
+    .join(" ")
+    .trim();
+
+  if (!text) return "ru";
+
+  const cyrillic = (text.match(/[а-яё]/gi) || []).length;
+  const latin = (text.match(/[a-z]/gi) || []).length;
+
+  return cyrillic >= latin ? "ru" : "en";
+}
+
+function safeText(value) {
+  if (value == null) return "";
+  return String(value).trim();
 }
 
 function createGenerationError(code, message, details = null) {

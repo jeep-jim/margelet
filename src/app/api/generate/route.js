@@ -12,13 +12,18 @@ export async function POST(req) {
   try {
     const body = await req.json();
 
-    if (!body) {
+    if (!body || typeof body !== "object") {
       return NextResponse.json(
         {
           ok: false,
           error: {
             code: "EMPTY_REQUEST",
             message: "Generation request body is empty",
+          },
+          meta: {
+            startedAt,
+            finishedAt: Date.now(),
+            durationMs: Date.now() - startedAt,
           },
         },
         { status: 400 }
@@ -28,6 +33,14 @@ export async function POST(req) {
     const result = await runGeneration(body);
 
     if (!result?.ok) {
+      const code = result?.error?.code || "GENERATION_FAILED";
+      const status =
+        code === "FORMAT_REQUIRED" ||
+        code === "CONTENT_REQUIRED" ||
+        code === "EMPTY_REQUEST"
+          ? 400
+          : 500;
+
       return NextResponse.json(
         {
           ok: false,
@@ -35,26 +48,26 @@ export async function POST(req) {
             code: "GENERATION_FAILED",
             message: "Generation pipeline failed",
           },
-          meta: result.meta || null,
+          meta: result.meta || {
+            startedAt,
+            finishedAt: Date.now(),
+            durationMs: Date.now() - startedAt,
+          },
         },
-        { status: 500 }
+        { status }
       );
     }
 
     return NextResponse.json({
       ok: true,
-
       request: result.request,
-
       preview: result.preview,
-
       meta: {
         startedAt,
         finishedAt: Date.now(),
         durationMs: Date.now() - startedAt,
       },
     });
-
   } catch (error) {
     console.error("Generation route error:", error);
 
