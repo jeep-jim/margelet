@@ -5,6 +5,7 @@ import {
   ChevronDown,
   Download,
   Play,
+  Pause,
   Info,
   X,
   Loader2,
@@ -17,7 +18,6 @@ const STORAGE_KEY = "margelet_agent_workspace_v3";
 const TG_USER_KEY = "margelet_tg_user_v1";
 const MAX_ASSETS = 12;
 const ASSET_SLOTS = 9;
-const AUTOGENERATE_DEBOUNCE_MS = 900;
 
 const COPY = {
   ru: {
@@ -61,7 +61,9 @@ const COPY = {
     removeFile: "Удалить файл",
     previewPreparing: "Собираем превью...",
     previewReady: "Превью собрано",
-    previewNotPlayable: "Видео собрано локально в превью",
+    previewNotPlayable: "Нажми, чтобы посмотреть превью",
+    previewPlay: "Смотреть превью",
+    previewPause: "Пауза",
     generationErrorFallback:
       "Не удалось сгенерировать варианты. Попробуй ещё раз.",
     generationPanelTitle: "Что собрал Margelet",
@@ -73,7 +75,7 @@ const COPY = {
     planRequired: "Для скачивания нужен активный тариф.",
     downloadError: "Не удалось скачать видео. Попробуй ещё раз.",
     loadingPreview: "Загружаем живое превью...",
-    autoMode: "Автогенерация включена",
+    autoMode: "Автогенерация выключена до нажатия кнопки",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -206,7 +208,9 @@ const COPY = {
     removeFile: "Remove file",
     previewPreparing: "Building preview...",
     previewReady: "Preview ready",
-    previewNotPlayable: "Preview is rendered locally",
+    previewNotPlayable: "Tap to watch preview",
+    previewPlay: "Play preview",
+    previewPause: "Pause",
     generationErrorFallback: "Failed to generate variants. Please try again.",
     generationPanelTitle: "What Margelet built",
     generationHook: "Hook",
@@ -217,7 +221,7 @@ const COPY = {
     planRequired: "An active plan is required to download.",
     downloadError: "Failed to download the video. Please try again.",
     loadingPreview: "Loading live preview...",
-    autoMode: "Auto-generate is on",
+    autoMode: "Auto-generate is off until you click the button",
     socials: {
       instagram: "Instagram",
       tiktok: "TikTok",
@@ -356,6 +360,58 @@ function pixelClip() {
   };
 }
 
+function createDefaultAssets() {
+  return [
+    {
+      id: "a1",
+      src: DEMO_POSTERS[0],
+      name: "demo-1.jpg",
+      ext: "jpg",
+      kind: "image",
+    },
+    {
+      id: "a2",
+      src: DEMO_POSTERS[1],
+      name: "demo-2.jpg",
+      ext: "jpg",
+      kind: "image",
+    },
+    {
+      id: "a3",
+      src: DEMO_POSTERS[2],
+      name: "demo-3.jpg",
+      ext: "jpg",
+      kind: "image",
+    },
+    {
+      id: "a4",
+      src: DEMO_POSTERS[3],
+      name: "demo-4.jpg",
+      ext: "jpg",
+      kind: "image",
+    },
+  ];
+}
+
+function getDefaultWorkspace(lang) {
+  const copy = COPY[lang] || COPY.ru;
+
+  return {
+    selectedFormat: null,
+    topic: "",
+    duration: copy.durations?.[3] || COPY.ru.durations[3],
+    tone: copy.tones?.[0] || COPY.ru.tones[0],
+    voice: copy.voices?.[0] || COPY.ru.voices[0],
+    link: "",
+    showCaptions: true,
+    assets: createDefaultAssets(),
+    variants: [],
+    activeVariant: 0,
+    lastPreviewPayload: null,
+    lastGeneratedFingerprint: "",
+  };
+}
+
 function InstagramIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -367,8 +423,22 @@ function InstagramIcon({ className = "" }) {
           <stop offset="100%" stopColor="#4f5bd5" />
         </linearGradient>
       </defs>
-      <rect x="3" y="3" width="18" height="18" rx="5" fill="url(#igGradFixed)" />
-      <circle cx="12" cy="12" r="4.2" fill="none" stroke="white" strokeWidth="1.8" />
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        fill="url(#igGradFixed)"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="4.2"
+        fill="none"
+        stroke="white"
+        strokeWidth="1.8"
+      />
       <circle cx="17.2" cy="6.8" r="1.2" fill="white" />
     </svg>
   );
@@ -501,7 +571,11 @@ function ProgressActionButton({
         mobile
           ? "px-5 py-4 text-[16px] font-bold shadow-[0_10px_30px_rgba(88,62,155,0.25)]"
           : "px-5 py-4 text-[18px] font-bold"
-      } ${disabled ? "cursor-not-allowed opacity-55" : "hover:brightness-[1.03]"}`}
+      } ${
+        disabled
+          ? "cursor-not-allowed opacity-55"
+          : "hover:brightness-[1.03]"
+      }`}
     >
       <div className="absolute inset-0 bg-[#8c62ff]" />
       {showProgress && (
@@ -719,28 +793,39 @@ function GenerationInfoCard({ t, activeVariantData }) {
       className="space-y-3 bg-white/70 p-4 text-[13px] text-[#4e557e]"
       style={pixelClip()}
     >
-      <div className="font-semibold text-[#4a4272]">{t.generationPanelTitle}</div>
+      <div className="font-semibold text-[#4a4272]">
+        {t.generationPanelTitle}
+      </div>
 
       {activeVariantData?.creative?.hook ? (
         <div>
-          <div className="font-semibold text-[#6c63a2]">{t.generationHook}</div>
+          <div className="font-semibold text-[#6c63a2]">
+            {t.generationHook}
+          </div>
           <div>{activeVariantData.creative.hook}</div>
         </div>
       ) : null}
 
       {activeVariantData?.creative?.angle ? (
         <div>
-          <div className="font-semibold text-[#6c63a2]">{t.generationAngle}</div>
+          <div className="font-semibold text-[#6c63a2]">
+            {t.generationAngle}
+          </div>
           <div>{activeVariantData.creative.angle}</div>
         </div>
       ) : null}
 
       {activeVariantData?.scenes?.length ? (
         <div>
-          <div className="font-semibold text-[#6c63a2]">{t.generationScenes}</div>
+          <div className="font-semibold text-[#6c63a2]">
+            {t.generationScenes}
+          </div>
           <div className="mt-2 space-y-2">
             {activeVariantData.scenes.slice(0, 3).map((scene) => (
-              <div key={scene.id} className="rounded-[10px] bg-white/80 px-3 py-2">
+              <div
+                key={scene.id}
+                className="rounded-[10px] bg-white/80 px-3 py-2"
+              >
                 <div className="text-[12px] font-semibold uppercase tracking-[0.02em] text-[#7d73b2]">
                   {scene.role}
                 </div>
@@ -840,7 +925,8 @@ function serializeAssetForApi(item) {
 }
 
 function guessMimeTypeFromKind(kind, ext) {
-  if (kind === "image") return `image/${ext === "jpg" ? "jpeg" : ext || "jpeg"}`;
+  if (kind === "image")
+    return `image/${ext === "jpg" ? "jpeg" : ext || "jpeg"}`;
   if (kind === "video") return "video/mp4";
   if (kind === "audio") return "audio/mpeg";
   return "application/octet-stream";
@@ -878,6 +964,18 @@ function getTelegramUser() {
   }
 }
 
+function getTelegramIdentity(user) {
+  if (!user) return "";
+  return String(
+    user.telegramId ||
+      user.telegram_id ||
+      user.id ||
+      user.username ||
+      user.userName ||
+      ""
+  );
+}
+
 function mapApiPreviewVariant(variant, idx) {
   const endpoint = variant?.preview?.endpoint || {};
   return {
@@ -897,7 +995,10 @@ function mapApiPreviewVariant(variant, idx) {
     previewStatus: variant?.preview?.status || "incomplete",
     readyForPreviewRender: Boolean(variant?.preview?.readyForPreviewRender),
     requestId: variant?.preview?.endpoint?.previewStatusUrl
-      ? new URL(variant.preview.endpoint.previewStatusUrl, "http://localhost").searchParams.get("requestId")
+      ? new URL(
+          variant.preview.endpoint.previewStatusUrl,
+          "http://localhost"
+        ).searchParams.get("requestId")
       : null,
   };
 }
@@ -931,47 +1032,108 @@ function buildGenerationFingerprint({
 
 export default function AgentWorkspace({ lang = "ru" }) {
   const t = COPY[lang] || COPY.ru;
+  const defaults = useMemo(() => getDefaultWorkspace(lang), [lang]);
 
-  const [selectedFormat, setSelectedFormat] = useState(null);
-  const [topic, setTopic] = useState("");
-  const [duration, setDuration] = useState(
-    COPY[lang]?.durations?.[3] || COPY.ru.durations[3]
-  );
-  const [tone, setTone] = useState(COPY[lang]?.tones?.[0] || COPY.ru.tones[0]);
-  const [voice, setVoice] = useState(
-    COPY[lang]?.voices?.[0] || COPY.ru.voices[0]
-  );
-  const [link, setLink] = useState("");
-  const [showCaptions, setShowCaptions] = useState(true);
-  const [assets, setAssets] = useState([
-    { id: "a1", src: DEMO_POSTERS[0], name: "demo-1.jpg", ext: "jpg", kind: "image" },
-    { id: "a2", src: DEMO_POSTERS[1], name: "demo-2.jpg", ext: "jpg", kind: "image" },
-    { id: "a3", src: DEMO_POSTERS[2], name: "demo-3.jpg", ext: "jpg", kind: "image" },
-    { id: "a4", src: DEMO_POSTERS[3], name: "demo-4.jpg", ext: "jpg", kind: "image" },
-  ]);
+  const [selectedFormat, setSelectedFormat] = useState(defaults.selectedFormat);
+  const [topic, setTopic] = useState(defaults.topic);
+  const [duration, setDuration] = useState(defaults.duration);
+  const [tone, setTone] = useState(defaults.tone);
+  const [voice, setVoice] = useState(defaults.voice);
+  const [link, setLink] = useState(defaults.link);
+  const [showCaptions, setShowCaptions] = useState(defaults.showCaptions);
+  const [assets, setAssets] = useState(defaults.assets);
 
   const [isGenerating, setIsGenerating] = useState(false);
   const [isFindingTrend, setIsFindingTrend] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isLoadingLivePreview, setIsLoadingLivePreview] = useState(false);
-  const [variants, setVariants] = useState([]);
-  const [activeVariant, setActiveVariant] = useState(0);
+  const [isPreviewPlaying, setIsPreviewPlaying] = useState(false);
+  const [variants, setVariants] = useState(defaults.variants);
+  const [activeVariant, setActiveVariant] = useState(defaults.activeVariant);
   const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [generationError, setGenerationError] = useState("");
   const [trendError, setTrendError] = useState("");
-  const [lastPreviewPayload, setLastPreviewPayload] = useState(null);
-  const [lastGeneratedFingerprint, setLastGeneratedFingerprint] = useState("");
+  const [lastPreviewPayload, setLastPreviewPayload] = useState(
+    defaults.lastPreviewPayload
+  );
+  const [lastGeneratedFingerprint, setLastGeneratedFingerprint] = useState(
+    defaults.lastGeneratedFingerprint
+  );
+  const [telegramIdentity, setTelegramIdentity] = useState("");
 
   const fileInputRef = useRef(null);
   const previewRef = useRef(null);
   const livePreviewContainerRef = useRef(null);
   const previewRuntimeRef = useRef(null);
-  const autoGenerateTimeoutRef = useRef(null);
   const livePreviewAbortRef = useRef(null);
+
+  const stopPreviewRuntime = () => {
+    if (previewRuntimeRef.current?.pause) {
+      try {
+        previewRuntimeRef.current.pause();
+      } catch {}
+    }
+
+    if (previewRuntimeRef.current?.stop) {
+      try {
+        previewRuntimeRef.current.stop();
+      } catch {}
+    }
+
+    previewRuntimeRef.current = null;
+    setIsPreviewPlaying(false);
+  };
+
+  const applyWorkspaceState = (state) => {
+    setSelectedFormat(state.selectedFormat ?? defaults.selectedFormat);
+    setTopic(state.topic ?? defaults.topic);
+    setDuration(state.duration ?? defaults.duration);
+    setTone(state.tone ?? defaults.tone);
+    setVoice(state.voice ?? defaults.voice);
+    setLink(state.link ?? defaults.link);
+    setShowCaptions(
+      typeof state.showCaptions === "boolean"
+        ? state.showCaptions
+        : defaults.showCaptions
+    );
+    setAssets(
+      Array.isArray(state.assets) && state.assets.length
+        ? state.assets.slice(0, MAX_ASSETS)
+        : defaults.assets
+    );
+    setVariants(Array.isArray(state.variants) ? state.variants : []);
+    setActiveVariant(
+      typeof state.activeVariant === "number" ? state.activeVariant : 0
+    );
+    setLastPreviewPayload(state.lastPreviewPayload || null);
+    setLastGeneratedFingerprint(state.lastGeneratedFingerprint || "");
+    setGenerationError("");
+    setTrendError("");
+    stopPreviewRuntime();
+  };
+
+  const resetWorkspace = () => {
+    const freshDefaults = getDefaultWorkspace(lang);
+    applyWorkspaceState(freshDefaults);
+
+    try {
+      const currentIdentity = getTelegramIdentity(getTelegramUser());
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          ...freshDefaults,
+          telegramIdentity: currentIdentity,
+        })
+      );
+    } catch {}
+  };
 
   useEffect(() => {
     try {
+      const currentIdentity = getTelegramIdentity(getTelegramUser());
+      setTelegramIdentity(currentIdentity);
+
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) {
         setHydrated(true);
@@ -979,27 +1141,25 @@ export default function AgentWorkspace({ lang = "ru" }) {
       }
 
       const saved = JSON.parse(raw);
+      const savedIdentity = String(saved?.telegramIdentity || "");
 
-      if (saved?.selectedFormat !== undefined) setSelectedFormat(saved.selectedFormat || null);
-      if (typeof saved?.topic === "string") setTopic(saved.topic);
-      if (typeof saved?.link === "string") setLink(saved.link);
-      if (typeof saved?.showCaptions === "boolean") setShowCaptions(saved.showCaptions);
-      if (Array.isArray(saved?.assets) && saved.assets.length) {
-        setAssets(saved.assets.slice(0, MAX_ASSETS));
+      if (savedIdentity !== currentIdentity) {
+        localStorage.removeItem(STORAGE_KEY);
+        applyWorkspaceState(getDefaultWorkspace(lang));
+        setHydrated(true);
+        return;
       }
-      if (saved?.duration) setDuration(saved.duration);
-      if (saved?.tone) setTone(saved.tone);
-      if (saved?.voice) setVoice(saved.voice);
-      if (Array.isArray(saved?.variants)) setVariants(saved.variants);
-      if (typeof saved?.activeVariant === "number") setActiveVariant(saved.activeVariant);
-      if (saved?.lastPreviewPayload) setLastPreviewPayload(saved.lastPreviewPayload);
-      if (saved?.lastGeneratedFingerprint) setLastGeneratedFingerprint(saved.lastGeneratedFingerprint);
+
+      applyWorkspaceState({
+        ...getDefaultWorkspace(lang),
+        ...saved,
+      });
     } catch (error) {
       console.error("Failed to restore AgentWorkspace session", error);
     } finally {
       setHydrated(true);
     }
-  }, []);
+  }, [lang]);
 
   useEffect(() => {
     if (!hydrated) return;
@@ -1020,6 +1180,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
           activeVariant,
           lastPreviewPayload,
           lastGeneratedFingerprint,
+          telegramIdentity,
         })
       );
     } catch (error) {
@@ -1039,7 +1200,33 @@ export default function AgentWorkspace({ lang = "ru" }) {
     activeVariant,
     lastPreviewPayload,
     lastGeneratedFingerprint,
+    telegramIdentity,
   ]);
+
+  useEffect(() => {
+    const syncTelegramState = () => {
+      const currentIdentity = getTelegramIdentity(getTelegramUser());
+
+      if (currentIdentity !== telegramIdentity) {
+        setTelegramIdentity(currentIdentity);
+        resetWorkspace();
+      }
+    };
+
+    const handleStorage = (event) => {
+      if (event.key === TG_USER_KEY) {
+        syncTelegramState();
+      }
+    };
+
+    window.addEventListener("storage", handleStorage);
+    window.addEventListener("focus", syncTelegramState);
+
+    return () => {
+      window.removeEventListener("storage", handleStorage);
+      window.removeEventListener("focus", syncTelegramState);
+    };
+  }, [telegramIdentity, lang]);
 
   useEffect(() => {
     const durationFallback = COPY[lang]?.durations?.[3] || COPY.ru.durations[3];
@@ -1069,9 +1256,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const hasTopic = topic.trim().length > 8;
 
   const progress =
-    (hasCategory ? 25 : 0) +
-    (hasMaterials ? 35 : 0) +
-    (hasTopic ? 40 : 0);
+    (hasCategory ? 25 : 0) + (hasMaterials ? 35 : 0) + (hasTopic ? 40 : 0);
 
   const canGenerate = hasCategory && (hasMaterials || hasTopic);
 
@@ -1136,6 +1321,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
     setIsGenerating(true);
     setGenerationError("");
+    setIsPreviewPlaying(false);
 
     try {
       const payload = buildGenerationPayload();
@@ -1155,8 +1341,11 @@ export default function AgentWorkspace({ lang = "ru" }) {
       }
 
       const nextVariants =
-        data?.preview?.variants?.map((variant, idx) => mapApiPreviewVariant(variant, idx)) || [];
+        data?.preview?.variants?.map((variant, idx) =>
+          mapApiPreviewVariant(variant, idx)
+        ) || [];
 
+      stopPreviewRuntime();
       setVariants(nextVariants);
       setActiveVariant(0);
       setLastPreviewPayload(data.preview || null);
@@ -1177,33 +1366,11 @@ export default function AgentWorkspace({ lang = "ru" }) {
   };
 
   useEffect(() => {
-    if (!hydrated) return;
-    if (!canGenerate) return;
-    if (generationFingerprint === lastGeneratedFingerprint) return;
-
-    if (autoGenerateTimeoutRef.current) {
-      clearTimeout(autoGenerateTimeoutRef.current);
-    }
-
-    autoGenerateTimeoutRef.current = setTimeout(() => {
-      runGenerate();
-    }, AUTOGENERATE_DEBOUNCE_MS);
-
-    return () => {
-      if (autoGenerateTimeoutRef.current) {
-        clearTimeout(autoGenerateTimeoutRef.current);
-      }
-    };
-  }, [hydrated, canGenerate, generationFingerprint, lastGeneratedFingerprint]);
-
-  useEffect(() => {
     async function loadLivePreview() {
       if (!activeVariantData?.previewRenderUrl) return;
       if (!livePreviewContainerRef.current) return;
 
-      if (previewRuntimeRef.current?.stop) {
-        previewRuntimeRef.current.stop();
-      }
+      stopPreviewRuntime();
 
       if (livePreviewAbortRef.current) {
         livePreviewAbortRef.current.abort();
@@ -1239,7 +1406,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
         });
 
         previewRuntimeRef.current = runtime;
-        runtime.play();
+        setIsPreviewPlaying(false);
       } catch (error) {
         if (error?.name !== "AbortError") {
           console.error("Live preview failed:", error);
@@ -1252,25 +1419,38 @@ export default function AgentWorkspace({ lang = "ru" }) {
     loadLivePreview();
 
     return () => {
-      if (previewRuntimeRef.current?.stop) {
-        previewRuntimeRef.current.stop();
-      }
+      stopPreviewRuntime();
     };
   }, [activeVariantData?.id, activeVariantData?.previewRenderUrl]);
 
   useEffect(() => {
     return () => {
-      if (previewRuntimeRef.current?.stop) {
-        previewRuntimeRef.current.stop();
-      }
-      if (autoGenerateTimeoutRef.current) {
-        clearTimeout(autoGenerateTimeoutRef.current);
-      }
+      stopPreviewRuntime();
       if (livePreviewAbortRef.current) {
         livePreviewAbortRef.current.abort();
       }
     };
   }, []);
+
+  const handleTogglePreviewPlayback = () => {
+    const runtime = previewRuntimeRef.current;
+    if (!runtime) return;
+
+    if (isPreviewPlaying) {
+      if (runtime.pause) {
+        runtime.pause();
+      } else if (runtime.stop) {
+        runtime.stop();
+      }
+      setIsPreviewPlaying(false);
+      return;
+    }
+
+    if (runtime.play) {
+      runtime.play();
+      setIsPreviewPlaying(true);
+    }
+  };
 
   const handleFiles = async (fileList) => {
     const list = Array.from(fileList || []);
@@ -1297,9 +1477,27 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
     if (!hasMaterials && assets.length === 0) {
       setAssets([
-        { id: "a1", src: DEMO_POSTERS[0], name: "demo-1.jpg", ext: "jpg", kind: "image" },
-        { id: "a2", src: DEMO_POSTERS[1], name: "demo-2.jpg", ext: "jpg", kind: "image" },
-        { id: "a3", src: DEMO_POSTERS[2], name: "demo-3.jpg", ext: "jpg", kind: "image" },
+        {
+          id: "a1",
+          src: DEMO_POSTERS[0],
+          name: "demo-1.jpg",
+          ext: "jpg",
+          kind: "image",
+        },
+        {
+          id: "a2",
+          src: DEMO_POSTERS[1],
+          name: "demo-2.jpg",
+          ext: "jpg",
+          kind: "image",
+        },
+        {
+          id: "a3",
+          src: DEMO_POSTERS[2],
+          name: "demo-3.jpg",
+          ext: "jpg",
+          kind: "image",
+        },
       ]);
     }
   };
@@ -1400,7 +1598,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
       const tgUser = getTelegramUser();
 
       const requestId = activeVariantData?.previewStatusUrl
-        ? new URL(activeVariantData.previewStatusUrl, window.location.origin).searchParams.get("requestId")
+        ? new URL(
+            activeVariantData.previewStatusUrl,
+            window.location.origin
+          ).searchParams.get("requestId")
         : null;
 
       if (!requestId) {
@@ -1419,7 +1620,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
         );
       }
       if (tgUser?.username || tgUser?.userName) {
-        params.set("username", String(tgUser.username || tgUser.userName).replace(/^@/, ""));
+        params.set(
+          "username",
+          String(tgUser.username || tgUser.userName).replace(/^@/, "")
+        );
       }
 
       const res = await fetch(`/api/download?${params.toString()}`, {
@@ -1677,7 +1881,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     <div className="flex h-full w-full items-center justify-center">
                       <div className="flex flex-col items-center text-white">
                         <Loader2 className="h-10 w-10 animate-spin" />
-                        <div className="mt-5 text-[16px] font-semibold">{t.previewPreparing}</div>
+                        <div className="mt-5 text-[16px] font-semibold">
+                          {t.previewPreparing}
+                        </div>
                       </div>
                     </div>
                   ) : variants.length ? (
@@ -1686,7 +1892,8 @@ export default function AgentWorkspace({ lang = "ru" }) {
                         ref={livePreviewContainerRef}
                         className="absolute inset-0 h-full w-full"
                       />
-                      {!activeVariantData?.readyForPreviewRender && previewPoster ? (
+                      {!activeVariantData?.readyForPreviewRender &&
+                      previewPoster ? (
                         <>
                           <img
                             src={previewPoster}
@@ -1715,13 +1922,24 @@ export default function AgentWorkspace({ lang = "ru" }) {
                       </div>
 
                       <div className="absolute inset-x-4 bottom-4 space-y-2">
-                        <div
-                          className="inline-flex items-center gap-2 bg-black/65 px-3 py-2 text-[13px] font-medium text-white"
+                        <button
+                          type="button"
+                          onClick={handleTogglePreviewPlayback}
+                          disabled={!previewRuntimeRef.current || isLoadingLivePreview}
+                          className={`inline-flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-white ${
+                            !previewRuntimeRef.current || isLoadingLivePreview
+                              ? "cursor-not-allowed bg-black/45 opacity-70"
+                              : "bg-black/65 hover:bg-black/75"
+                          }`}
                           style={pixelClip()}
                         >
-                          <Play size={14} fill="currentColor" />
-                          {t.previewNotPlayable}
-                        </div>
+                          {isPreviewPlaying ? (
+                            <Pause size={14} fill="currentColor" />
+                          ) : (
+                            <Play size={14} fill="currentColor" />
+                          )}
+                          {isPreviewPlaying ? t.previewPause : t.previewPlay}
+                        </button>
 
                         {activeVariantData?.creative?.hook ? (
                           <div
@@ -1792,7 +2010,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
                                 className="truncate bg-black/70 px-2 py-1 text-[10px] font-semibold text-white"
                                 style={pixelClip()}
                               >
-                                {item.label?.ru || item.label?.en || `Variant ${idx + 1}`}
+                                {item.label?.ru ||
+                                  item.label?.en ||
+                                  `Variant ${idx + 1}`}
                               </div>
                             </div>
                           </>
