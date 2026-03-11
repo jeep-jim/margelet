@@ -1,8 +1,6 @@
 // src/lib/margelet/providers/renderProvider.js
 // Real render provider contract for Margelet preview rendering.
-// This provider does not fake video files.
-// It prepares a truthful render job that can be executed by a browser renderer,
-// serverless renderer, Remotion pipeline, FFmpeg worker, or another runtime.
+// Prepares truthful render jobs for browser preview / client export.
 
 export async function createRenderJobs(input = {}) {
   const {
@@ -66,16 +64,20 @@ function buildSingleRenderJob({
   synthesisVariant,
   captionVariant,
 }) {
-  const scenes = sceneVariant?.scenes || [];
-  const captions = captionVariant?.captions || [];
-  const synthesisSegments = synthesisVariant?.spokenSegments || [];
+  const scenes = Array.isArray(sceneVariant?.scenes) ? sceneVariant.scenes : [];
+  const captions = Array.isArray(captionVariant?.captions) ? captionVariant.captions : [];
+  const synthesisSegments = Array.isArray(synthesisVariant?.spokenSegments)
+    ? synthesisVariant.spokenSegments
+    : [];
   const exportSettings = sceneVariant?.exportPlan || buildFallbackExportPlan();
+
+  const sceneTimeline = buildSceneTimeline(scenes);
 
   const visualTracks = scenes.map((scene, sceneIndex) =>
     buildVisualTrack({
       scene,
       sceneIndex,
-      request,
+      absoluteStartMs: sceneTimeline[sceneIndex]?.startMs || 0,
     })
   );
 
@@ -95,11 +97,11 @@ function buildSingleRenderJob({
   );
 
   const soundtrackTrack = buildSoundtrackTrack(sceneVariant);
-  const timeline = buildProviderTimeline({
-    scenes,
-    synthesisSegments,
-    captions,
-  });
+  const timeline = {
+    scenes: sceneTimeline,
+    narration: buildNarrationTimeline(synthesisSegments),
+    captions: buildCaptionTimeline(captions),
+  };
 
   const readiness = buildReadinessReport({
     visualTracks,
@@ -112,12 +114,15 @@ function buildSingleRenderJob({
     id: variantId,
     order: index + 1,
     requestId: request?.meta?.requestId || null,
-    label: sceneVariant?.label || null,
-    kind: sceneVariant?.kind || null,
+    label: sceneVariant?.label || {
+      ru: `Вариант ${index + 1}`,
+      en: `Variant ${index + 1}`,
+    },
+    kind: sceneVariant?.kind || "default",
     score: sceneVariant?.score || null,
 
     job: {
-      renderer: "pending-runtime",
+      renderer: "browser-runtime",
       type: "preview",
       format: "mp4",
       aspectRatio: "9:16",
@@ -127,8 +132,9 @@ function buildSingleRenderJob({
         height: 1920,
       },
       durationSec:
-        sceneVariant?.structure?.totalDurationSec ||
-        request?.config?.duration ||
+        Number(sceneVariant?.structure?.totalDurationSec) ||
+        Number(request?.config?.duration) ||
+        inferDurationSecFromSceneTimeline(sceneTimeline) ||
         30,
     },
 
@@ -156,7 +162,7 @@ function buildSingleRenderJob({
   };
 }
 
-function buildVisualTrack({ scene, sceneIndex }) {
+function buildVisualTrack({ scene, sceneIndex, absoluteStartMs }) {
   const source = scene?.source || {};
   const timing = scene?.timing || {};
   const overlays = scene?.overlays || {};
@@ -164,8 +170,17 @@ function buildVisualTrack({ scene, sceneIndex }) {
   const composition = scene?.composition || {};
 
   const sourceType = source?.type || "generated";
-  const sourceUrl = source?.previewUrl || source?.posterUrl || "";
-  const hasConcreteSource = Boolean(sourceUrl);
+
+  const concreteUrl =
+    source?.url ||
+    source?.previewUrl ||
+    source?.posterUrl ||
+    source?.thumbnailUrl ||
+    "";
+
+  const hasConcreteSource = Boolean(concreteUrl);
+
+  const durationMs = Number(timing?.durationMs) || 0;
 
   return {
     id: `visual_${scene?.id || sceneIndex + 1}`,
@@ -174,17 +189,41 @@ function buildVisualTrack({ scene, sceneIndex }) {
     source: {
       type: sourceType,
       mode: source?.mode || "generated-or-typography",
-      url: hasConcreteSource ? sourceUrl : "",
-      posterUrl: source?.posterUrl || "",
+      url: hasConcreteSource ? concreteUrl : "",
+      previewUrl:
+        source?.previewUrl ||
+        source?.url ||
+        source?.posterUrl ||
+        source?.thumbnailUrl ||
+        "",
+      posterUrl:
+        source?.posterUrl ||
+        source?.previewUrl ||
+        source?.url ||
+        source?.thumbnailUrl ||
+        "",
+      thumbnailUrl:
+        source?.thumbnailUrl ||
+        source?.posterUrl ||
+        source?.previewUrl ||
+        source?.url ||
+        "",
       sourceId: source?.sourceId || null,
       generatorPrompt: source?.generatorPrompt || null,
       confidence: source?.confidence || "medium",
+      text:
+        source?.text ||
+        overlays?.text ||
+        scene?.narrative?.caption ||
+        scene?.narrative?.narration ||
+        "",
     },
     timing: {
-      startMs: calculateSceneAbsoluteStart(scene),
-      durationMs: timing?.durationMs || 0,
-      clipStartMs: timing?.clipStartMs || 0,
-      clipDurationMs: timing?.clipDurationMs || timing?.durationMs || 0,
+      startMs: absoluteStartMs,
+      endMs: absoluteStartMs + durationMs,
+      durationMs,
+      clipStartMs: Number(timing?.clipStartMs) || 0,
+      clipDurationMs: Number(timing?.clipDurationMs) || durationMs,
     },
     layout: {
       fit: composition?.frame?.fit || source?.fit || "cover",
@@ -218,6 +257,28 @@ function buildNarrationTrack({ segment, segmentIndex, synthesisVariant }) {
   const planned = segment?.planned || {};
   const executed = segment?.executed || null;
 
+  const durationMs =
+    Number(executed?.durationMs) ||
+    Number(planned?.durationMs) ||
+    0;
+
+  const startMs =
+    Number(segment?.timing?.startMs) ||
+    Number(segment?.timing?.speechStartMs) ||
+    0;
+
+  const speechStartMs =
+    Number(segment?.timing?.speechStartMs) ||
+    startMs;
+
+  const speechEndMs =
+    Number(segment?.timing?.speechEndMs) ||
+    (speechStartMs + durationMs);
+
+  const endMs =
+    Number(segment?.timing?.endMs) ||
+    speechEndMs + (Number(executed?.pauseAfterMs) || Number(planned?.pauseAfterMs) || 0);
+
   return {
     id: `narration_${segment?.id || segmentIndex + 1}`,
     sceneId: segment?.sceneId || null,
@@ -230,16 +291,30 @@ function buildNarrationTrack({ segment, segmentIndex, synthesisVariant }) {
       rate: executed?.rate ?? planned?.delivery?.speechRate ?? 1,
       pitch: executed?.pitch ?? planned?.delivery?.pitch ?? 1,
       volume: executed?.volume ?? planned?.delivery?.volume ?? 1,
+      audioUrl:
+        executed?.audioUrl ||
+        executed?.url ||
+        "",
     },
     timing: {
-      durationMs: executed?.durationMs ?? planned?.durationMs ?? 0,
-      pauseAfterMs: executed?.pauseAfterMs ?? planned?.pauseAfterMs ?? 0,
+      startMs,
+      speechStartMs,
+      speechEndMs,
+      endMs,
+      durationMs,
+      pauseAfterMs:
+        Number(executed?.pauseAfterMs) ||
+        Number(planned?.pauseAfterMs) ||
+        0,
     },
     delivery: planned?.delivery || null,
     readiness: {
-      renderable: Boolean(executed),
+      renderable: Boolean(executed?.audioUrl || executed?.url),
       downloadableAudio: false,
-      reason: executed ? null : "browser_tts_not_executed_for_segment",
+      reason:
+        executed?.audioUrl || executed?.url
+          ? null
+          : "browser_tts_not_executed_for_segment",
     },
   };
 }
@@ -251,8 +326,12 @@ function buildCaptionTrack({ caption, captionIndex }) {
     sceneId: caption?.sceneId || null,
     role: caption?.role || "body",
     timing: {
-      startMs: caption?.startMs || 0,
-      endMs: caption?.endMs || 0,
+      startMs: Number(caption?.startMs) || 0,
+      endMs: Number(caption?.endMs) || 0,
+      durationMs: Math.max(
+        0,
+        (Number(caption?.endMs) || 0) - (Number(caption?.startMs) || 0)
+      ),
     },
     style: caption?.style || null,
     chunks: (caption?.chunks || []).map((chunk, chunkIndex) => ({
@@ -270,25 +349,21 @@ function buildCaptionTrack({ caption, captionIndex }) {
 function buildSoundtrackTrack(sceneVariant) {
   const musicPlan = sceneVariant?.direction?.musicPlan || {};
   const soundtrackId = musicPlan?.soundtrackId || null;
-  const useUploadedTrack = Boolean(musicPlan?.useUploadedTrack && soundtrackId);
+  const soundtrackUrl = musicPlan?.soundtrackUrl || "";
+  const useUploadedTrack = Boolean(
+    musicPlan?.useUploadedTrack && (soundtrackId || soundtrackUrl)
+  );
 
   return {
     id: "soundtrack_main",
     enabled: useUploadedTrack,
     sourceId: soundtrackId,
+    sourceUrl: soundtrackUrl,
     duckingProfile: musicPlan?.duckingProfile || "balanced",
     readiness: {
       renderable: useUploadedTrack,
       reason: useUploadedTrack ? null : "no_uploaded_soundtrack",
     },
-  };
-}
-
-function buildProviderTimeline({ scenes, synthesisSegments, captions }) {
-  return {
-    scenes: buildSceneTimeline(scenes),
-    narration: buildNarrationTimeline(synthesisSegments),
-    captions: buildCaptionTimeline(captions),
   };
 }
 
@@ -341,7 +416,7 @@ function buildNarrationTimeline(synthesisSegments) {
       endMs,
       durationMs,
       pauseAfterMs,
-      spoken: Boolean(segment?.executed),
+      spoken: Boolean(segment?.executed?.audioUrl || segment?.executed?.url),
     };
   });
 }
@@ -351,8 +426,8 @@ function buildCaptionTimeline(captions) {
     captionId: caption?.id || null,
     sceneId: caption?.sceneId || null,
     role: caption?.role || "body",
-    startMs: caption?.startMs || 0,
-    endMs: caption?.endMs || 0,
+    startMs: Number(caption?.startMs) || 0,
+    endMs: Number(caption?.endMs) || 0,
   }));
 }
 
@@ -364,7 +439,8 @@ function buildReadinessReport({
 }) {
   const visualReadyCount = visualTracks.filter(
     (track) =>
-      track?.readiness?.hasConcreteSource || track?.readiness?.renderableAsTypography
+      track?.readiness?.hasConcreteSource ||
+      track?.readiness?.renderableAsTypography
   ).length;
 
   const narrationReadyCount = narrationTracks.filter(
@@ -382,7 +458,6 @@ function buildReadinessReport({
   const readyForPreviewRender =
     hasAnyVisuals &&
     visualReadyCount > 0 &&
-    (!hasAnyNarration || narrationReadyCount === narrationTracks.length) &&
     (!hasAnyCaptions || captionReadyCount === captionTracks.length);
 
   return {
@@ -443,14 +518,27 @@ function buildWarnings({
 
 function pickPosterFromTracks(visualTracks) {
   const firstConcrete = (visualTracks || []).find(
-    (track) => track?.source?.posterUrl || track?.source?.url
+    (track) =>
+      track?.source?.posterUrl ||
+      track?.source?.previewUrl ||
+      track?.source?.url
   );
 
-  return firstConcrete?.source?.posterUrl || firstConcrete?.source?.url || "";
+  return (
+    firstConcrete?.source?.posterUrl ||
+    firstConcrete?.source?.previewUrl ||
+    firstConcrete?.source?.url ||
+    ""
+  );
 }
 
-function calculateSceneAbsoluteStart(scene) {
-  return Number(scene?.order) > 1 ? 0 : 0;
+function inferDurationSecFromSceneTimeline(timeline) {
+  const last = Array.isArray(timeline) && timeline.length
+    ? timeline[timeline.length - 1]
+    : null;
+
+  if (!last?.endMs) return 0;
+  return Math.max(1, Math.ceil(last.endMs / 1000));
 }
 
 function buildFallbackExportPlan() {

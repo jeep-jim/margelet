@@ -1,3 +1,4 @@
+//src/components/margelet/pages/AgentWorkspace.jsx
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -72,6 +73,8 @@ const COPY = {
     generationHook: "Хук",
     generationAngle: "Угол",
     generationScenes: "Сцены",
+    details: "Подробнее",
+    close: "Закрыть",
     captionsLabel: "Показывать субтитры",
     authRequired: "Сначала авторизуйся через Telegram.",
     planRequired: "Для скачивания нужен активный тариф.",
@@ -220,6 +223,8 @@ const COPY = {
     generationHook: "Hook",
     generationAngle: "Angle",
     generationScenes: "Scenes",
+    details: "Details",
+    close: "Close",
     captionsLabel: "Show subtitles",
     authRequired: "Please sign in with Telegram first.",
     planRequired: "An active plan is required to download.",
@@ -343,7 +348,7 @@ const FORMAT_ITEMS = [
   { id: "fitness", icon: "💪" },
   { id: "health", icon: "🧬" },
   { id: "science", icon: "🔬" },
-  { id: "space", icon: "🚀" },
+  { id: "space", icon: "🌌" },
   { id: "animals", icon: "🐶" },
   { id: "kids", icon: "🧸" },
   { id: "music", icon: "🎵" },
@@ -789,58 +794,74 @@ function ConfirmModal({ t, open, onClose, onConfirm }) {
   );
 }
 
-function GenerationInfoCard({ t, activeVariantData }) {
-  if (!activeVariantData) return null;
+function DetailsModal({ t, open, onClose, activeVariantData }) {
+  if (!open || !activeVariantData) return null;
 
   return (
-    <div
-      className="space-y-3 bg-white/70 p-4 text-[13px] text-[#4e557e]"
-      style={pixelClip()}
-    >
-      <div className="font-semibold text-[#4a4272]">
-        {t.generationPanelTitle}
-      </div>
-
-      {activeVariantData?.creative?.hook ? (
-        <div>
-          <div className="font-semibold text-[#6c63a2]">
-            {t.generationHook}
+    <div className="fixed inset-0 z-[95] flex items-center justify-center bg-black/50 px-4 py-6">
+      <div
+        className="max-h-[85vh] w-full max-w-[760px] overflow-hidden bg-white shadow-[0_18px_60px_rgba(0,0,0,0.2)]"
+        style={pixelClip()}
+      >
+        <div className="flex items-center justify-between border-b border-[#ebe7f7] px-5 py-4 md:px-6">
+          <div className="text-[18px] font-bold text-[#4a4272] md:text-[20px]">
+            {t.generationPanelTitle}
           </div>
-          <div>{activeVariantData.creative.hook}</div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="inline-flex h-9 w-9 items-center justify-center text-[#7a73a6]"
+            aria-label={t.close}
+          >
+            <X size={18} />
+          </button>
         </div>
-      ) : null}
 
-      {activeVariantData?.creative?.angle ? (
-        <div>
-          <div className="font-semibold text-[#6c63a2]">
-            {t.generationAngle}
-          </div>
-          <div>{activeVariantData.creative.angle}</div>
-        </div>
-      ) : null}
-
-      {activeVariantData?.scenes?.length ? (
-        <div>
-          <div className="font-semibold text-[#6c63a2]">
-            {t.generationScenes}
-          </div>
-          <div className="mt-2 space-y-2">
-            {activeVariantData.scenes.slice(0, 3).map((scene) => (
-              <div
-                key={scene.id}
-                className="rounded-[10px] bg-white/80 px-3 py-2"
-              >
-                <div className="text-[12px] font-semibold uppercase tracking-[0.02em] text-[#7d73b2]">
-                  {scene.role}
+        <div className="max-h-[calc(85vh-72px)] overflow-y-auto px-5 py-5 md:px-6">
+          <div className="space-y-5 text-[14px] leading-[1.55] text-[#4e557e]">
+            {activeVariantData?.creative?.hook ? (
+              <div>
+                <div className="font-semibold text-[#6c63a2]">
+                  {t.generationHook}
                 </div>
-                <div className="mt-1 text-[#4e557e]">
-                  {scene.caption || scene.narration}
+                <div className="mt-1">{activeVariantData.creative.hook}</div>
+              </div>
+            ) : null}
+
+            {activeVariantData?.creative?.angle ? (
+              <div>
+                <div className="font-semibold text-[#6c63a2]">
+                  {t.generationAngle}
+                </div>
+                <div className="mt-1">{activeVariantData.creative.angle}</div>
+              </div>
+            ) : null}
+
+            {activeVariantData?.scenes?.length ? (
+              <div>
+                <div className="font-semibold text-[#6c63a2]">
+                  {t.generationScenes}
+                </div>
+                <div className="mt-3 space-y-3">
+                  {activeVariantData.scenes.map((scene) => (
+                    <div
+                      key={scene.id}
+                      className="rounded-[12px] bg-[#f5f4fb] px-4 py-3"
+                    >
+                      <div className="text-[12px] font-semibold uppercase tracking-[0.02em] text-[#7d73b2]">
+                        {scene.role}
+                      </div>
+                      <div className="mt-1 text-[#4e557e]">
+                        {scene.caption || scene.narration}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            ) : null}
           </div>
         </div>
-      ) : null}
+      </div>
     </div>
   );
 }
@@ -1092,6 +1113,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const [variants, setVariants] = useState(defaults.variants);
   const [activeVariant, setActiveVariant] = useState(defaults.activeVariant);
   const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [generationError, setGenerationError] = useState("");
   const [trendError, setTrendError] = useState("");
@@ -1160,6 +1182,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
     setLastGeneratedFingerprint(state.lastGeneratedFingerprint || "");
     setGenerationError("");
     setTrendError("");
+    setShowDetailsModal(false);
     stopPreviewRuntime();
   };
 
@@ -2023,7 +2046,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
                         {activeVariantData?.creative?.hook ? (
                           <div
-                            className="bg-black/65 px-3 py-3 text-[14px] leading-[1.4] text-white"
+                            className="line-clamp-3 max-w-[90%] bg-black/65 px-3 py-3 text-[14px] leading-[1.35] text-white"
                             style={pixelClip()}
                           >
                             {activeVariantData.creative.hook}
@@ -2136,7 +2159,15 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 />
               )}
 
-              <GenerationInfoCard t={t} activeVariantData={activeVariantData} />
+              {activeVariantData ? (
+                <PixelButton
+                  color="soft"
+                  className="w-full"
+                  onClick={() => setShowDetailsModal(true)}
+                >
+                  {t.details}
+                </PixelButton>
+              ) : null}
 
               <div className="hidden lg:block">
                 <ProgressActionButton
@@ -2168,6 +2199,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
         open={showConfirmRegenerate}
         onClose={() => setShowConfirmRegenerate(false)}
         onConfirm={handleConfirmRegenerate}
+      />
+
+      <DetailsModal
+        t={t}
+        open={showDetailsModal}
+        onClose={() => setShowDetailsModal(false)}
+        activeVariantData={activeVariantData}
       />
 
       <style jsx>{`
