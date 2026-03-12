@@ -46,14 +46,48 @@ function createPreviewRuntime(container, durationSec) {
   root.style.width = "100%";
   root.style.height = "100%";
   root.style.overflow = "hidden";
-  root.style.background = "transparent";
+  root.style.background = "#111";
 
-  const sceneLayer = document.createElement("div");
-  sceneLayer.style.position = "absolute";
-  sceneLayer.style.inset = "0";
-  sceneLayer.style.background = "transparent center / cover no-repeat";
-  sceneLayer.style.transition = "opacity 220ms ease";
-  sceneLayer.style.opacity = "1";
+  const imageLayer = document.createElement("img");
+  imageLayer.style.position = "absolute";
+  imageLayer.style.inset = "0";
+  imageLayer.style.width = "100%";
+  imageLayer.style.height = "100%";
+  imageLayer.style.objectFit = "cover";
+  imageLayer.style.opacity = "0";
+  imageLayer.style.transition = "opacity 220ms ease";
+  imageLayer.style.pointerEvents = "none";
+
+  const videoLayer = document.createElement("video");
+  videoLayer.style.position = "absolute";
+  videoLayer.style.inset = "0";
+  videoLayer.style.width = "100%";
+  videoLayer.style.height = "100%";
+  videoLayer.style.objectFit = "cover";
+  videoLayer.style.opacity = "0";
+  videoLayer.style.transition = "opacity 220ms ease";
+  videoLayer.style.pointerEvents = "none";
+  videoLayer.muted = true;
+  videoLayer.playsInline = true;
+  videoLayer.preload = "auto";
+  videoLayer.loop = false;
+
+  const fallbackTextLayer = document.createElement("div");
+  fallbackTextLayer.style.position = "absolute";
+  fallbackTextLayer.style.left = "8%";
+  fallbackTextLayer.style.right = "8%";
+  fallbackTextLayer.style.top = "50%";
+  fallbackTextLayer.style.transform = "translateY(-50%)";
+  fallbackTextLayer.style.textAlign = "center";
+  fallbackTextLayer.style.color = "#fff";
+  fallbackTextLayer.style.fontSize = "30px";
+  fallbackTextLayer.style.lineHeight = "1.2";
+  fallbackTextLayer.style.fontWeight = "800";
+  fallbackTextLayer.style.textShadow = "0 4px 12px rgba(0,0,0,0.82)";
+  fallbackTextLayer.style.opacity = "0";
+  fallbackTextLayer.style.transition = "opacity 220ms ease";
+  fallbackTextLayer.style.pointerEvents = "none";
+  fallbackTextLayer.style.wordBreak = "break-word";
 
   const overlayLayer = document.createElement("div");
   overlayLayer.style.position = "absolute";
@@ -86,8 +120,10 @@ function createPreviewRuntime(container, durationSec) {
   captionLayer.style.pointerEvents = "none";
   captionLayer.style.wordBreak = "break-word";
 
-  root.appendChild(sceneLayer);
+  root.appendChild(imageLayer);
+  root.appendChild(videoLayer);
   root.appendChild(posterLayer);
+  root.appendChild(fallbackTextLayer);
   root.appendChild(overlayLayer);
   root.appendChild(captionLayer);
 
@@ -102,6 +138,7 @@ function createPreviewRuntime(container, durationSec) {
   let startedAtMs = 0;
   let elapsedBeforePauseSec = 0;
   let isPlaying = false;
+
   let activeVisualKey = "";
   let activeCaptionText = "";
 
@@ -149,7 +186,6 @@ function createPreviewRuntime(container, durationSec) {
         start: startSec,
         duration,
         end: startSec + duration,
-        hasStarted: false,
       });
     }
   }
@@ -212,6 +248,10 @@ function createPreviewRuntime(container, durationSec) {
         track.audio.pause();
       } catch {}
     }
+
+    try {
+      videoLayer.pause();
+    } catch {}
   }
 
   function stop() {
@@ -225,15 +265,20 @@ function createPreviewRuntime(container, durationSec) {
     }
 
     for (const track of audioTracks) {
-      track.hasStarted = false;
       try {
         track.audio.pause();
         track.audio.currentTime = 0;
       } catch {}
     }
 
+    try {
+      videoLayer.pause();
+      videoLayer.currentTime = 0;
+    } catch {}
+
     activeCaptionText = "";
     captionLayer.textContent = "";
+    activeVisualKey = "";
     renderVisualAt(0);
   }
 
@@ -328,26 +373,112 @@ function createPreviewRuntime(container, durationSec) {
     const active = findActiveVisual(visualTrack, timeSec);
 
     if (!active) {
-      if (posterLayer.getAttribute("src")) {
-        posterLayer.style.opacity = "1";
-      }
-      sceneLayer.style.backgroundImage = "";
-      activeVisualKey = "";
+      showPosterOnly();
       return;
     }
 
-    const key = `${active.id}|${active.src}|${active.start}|${active.end}`;
-    if (key === activeVisualKey) return;
+    const key = `${active.id}|${active.src}|${active.type}|${active.start}|${active.end}`;
+    if (key === activeVisualKey) {
+      syncActiveVideoTime(active, timeSec);
+      return;
+    }
 
     activeVisualKey = key;
 
-    if (active.src) {
-      sceneLayer.style.backgroundImage = `url("${escapeCssUrl(active.src)}")`;
+    if (active.type === "video" && active.src) {
+      fallbackTextLayer.textContent = "";
+      fallbackTextLayer.style.opacity = "0";
+
+      imageLayer.removeAttribute("src");
+      imageLayer.style.opacity = "0";
+
+      if (videoLayer.src !== active.src) {
+        videoLayer.src = active.src;
+      }
+
       posterLayer.style.opacity = "0";
-    } else if (posterLayer.getAttribute("src")) {
-      sceneLayer.style.backgroundImage = "";
-      posterLayer.style.opacity = "1";
+      videoLayer.style.opacity = "1";
+
+      syncActiveVideoTime(active, timeSec);
+      if (isPlaying) {
+        videoLayer.play().catch(() => {});
+      }
+      return;
     }
+
+    if (active.type === "image" && active.src) {
+      try {
+        videoLayer.pause();
+      } catch {}
+      videoLayer.removeAttribute("src");
+      videoLayer.load();
+
+      imageLayer.src = active.src;
+      imageLayer.style.opacity = "1";
+
+      fallbackTextLayer.textContent = "";
+      fallbackTextLayer.style.opacity = "0";
+      posterLayer.style.opacity = "0";
+      videoLayer.style.opacity = "0";
+      return;
+    }
+
+    try {
+      videoLayer.pause();
+    } catch {}
+    videoLayer.removeAttribute("src");
+    videoLayer.load();
+
+    imageLayer.removeAttribute("src");
+    imageLayer.style.opacity = "0";
+
+    fallbackTextLayer.textContent = active.text || "";
+    fallbackTextLayer.style.opacity = active.text ? "1" : "0";
+
+    if (posterLayer.getAttribute("src")) {
+      posterLayer.style.opacity = "1";
+    } else {
+      posterLayer.style.opacity = "0";
+    }
+    videoLayer.style.opacity = "0";
+  }
+
+  function syncActiveVideoTime(active, timeSec) {
+    if (active.type !== "video") return;
+    if (!active.src) return;
+
+    const clipOffset = Math.max(0, timeSec - active.start);
+    const expectedTime = Math.max(0, (active.clipStartSec || 0) + clipOffset);
+
+    const drift = Math.abs((videoLayer.currentTime || 0) - expectedTime);
+    if (drift > 0.4) {
+      try {
+        videoLayer.currentTime = expectedTime;
+      } catch {}
+    }
+  }
+
+  function showPosterOnly() {
+    try {
+      videoLayer.pause();
+    } catch {}
+    videoLayer.removeAttribute("src");
+    videoLayer.load();
+
+    imageLayer.removeAttribute("src");
+    imageLayer.style.opacity = "0";
+    videoLayer.style.opacity = "0";
+
+    fallbackTextLayer.textContent = "";
+    fallbackTextLayer.style.opacity = "0";
+
+    if (posterLayer.getAttribute("src")) {
+      posterLayer.style.opacity = "1";
+    } else {
+      posterLayer.style.opacity = "0";
+    }
+
+    activeVisualKey = "";
   }
 
   return {
@@ -364,6 +495,11 @@ function createPreviewRuntime(container, durationSec) {
 function normalizeVisualTrack(visuals) {
   return (visuals || [])
     .map((item, index) => {
+      const sourceType =
+        item?.source?.type ||
+        item?.type ||
+        "generated";
+
       const src =
         item?.source?.url ||
         item?.source?.previewUrl ||
@@ -374,11 +510,18 @@ function normalizeVisualTrack(visuals) {
         item?.src ||
         "";
 
+      const text =
+        item?.source?.text ||
+        item?.overlays?.text?.title ||
+        item?.overlays?.text?.kicker ||
+        item?.text ||
+        "";
+
       const start = toSeconds(
         item?.timing?.startMs ??
           item?.timing?.fromMs ??
           item?.startMs ??
-          index * 3 * 1000
+          index * 3000
       );
 
       const rawEnd = toSeconds(
@@ -397,11 +540,20 @@ function normalizeVisualTrack(visuals) {
       const end =
         rawEnd > start ? rawEnd : duration > 0 ? start + duration : start + 3;
 
+      const clipStartSec = toSeconds(
+        item?.timing?.clipStartMs ??
+          item?.clipStartMs ??
+          0
+      );
+
       return {
         id: item?.id || `visual-${index + 1}`,
+        type: sourceType === "video" ? "video" : sourceType === "image" ? "image" : "generated",
         src,
+        text: String(text || "").trim(),
         start,
         end,
+        clipStartSec,
       };
     })
     .filter((item) => item.end > item.start);
@@ -491,8 +643,4 @@ function safeMsDelta(start, end) {
   const s = Number(start) || 0;
   const e = Number(end) || 0;
   return e > s ? e - s : 0;
-}
-
-function escapeCssUrl(url) {
-  return String(url).replace(/"/g, '\\"');
 }
