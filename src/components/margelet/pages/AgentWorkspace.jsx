@@ -1,4 +1,4 @@
-//src/components/margelet/pages/AgentWorkspace.jsx
+// src/components/margelet/pages/AgentWorkspace.jsx
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -15,7 +15,7 @@ import {
 import { runBrowserPreviewRenderer } from "@/lib/margelet/browserPreviewRenderer";
 import { exportVideo } from "@/lib/margelet/browserVideoExporter";
 
-const STORAGE_KEY = "margelet_agent_workspace_v3";
+const STORAGE_KEY = "margelet_agent_workspace_v4";
 const TG_USER_KEY = "margelet_tg_user_v1";
 const MAX_ASSETS = 12;
 const ASSET_SLOTS = 9;
@@ -30,8 +30,8 @@ const COPY = {
       "сюда можно бросить файлы, фото, видео, аудио, ссылки и пояснения.",
     step3Title: "3. Тема видео",
     step3Tail: "пиши так, как будто ставишь задачу реальному продюсеру.",
-    dropTitle: "Перетащи файлы или нажми загрузить",
-    dropHint: "jpeg, png, webp, mp4, avi, mp3, PDF, DOC, TXT.",
+    dropTitle: "Перетащи файлы сюда или нажми для загрузки",
+    dropHint: "Поддержка: фото, видео, PDF, DOC, TXT.",
     upload: "Загрузить",
     linkPlaceholder: "https://Ссылка на любой источник",
     duration: "Длительность",
@@ -169,8 +169,8 @@ const COPY = {
     step2Tail: "drop files, photos, videos, audio, links and notes here.",
     step3Title: "3. Video topic",
     step3Tail: "write it like you're briefing a real producer.",
-    dropTitle: "Drag files or click upload",
-    dropHint: "jpeg, png, webp, mp4, avi, mp3, PDF, DOC, TXT.",
+    dropTitle: "Drag files here or click to upload",
+    dropHint: "Support: photos, videos, PDF, DOC, TXT.",
     upload: "Upload",
     linkPlaceholder: "https://Link to any source",
     duration: "Duration",
@@ -295,13 +295,6 @@ const COPY = {
   },
 };
 
-const DEMO_POSTERS = [
-  "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=800&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800&auto=format&fit=crop",
-];
-
 const FORMAT_ITEMS = [
   { id: "other", icon: "✨" },
   { id: "motivation", icon: "🧘" },
@@ -324,7 +317,7 @@ const FORMAT_ITEMS = [
   { id: "fitness", icon: "💪" },
   { id: "health", icon: "🧬" },
   { id: "science", icon: "🔬" },
-  { id: "space", icon: "🌌" },
+  { id: "space", icon: "🚀" },
   { id: "animals", icon: "🐶" },
   { id: "kids", icon: "🧸" },
   { id: "music", icon: "🎵" },
@@ -345,39 +338,6 @@ function pixelClip() {
   };
 }
 
-function createDefaultAssets() {
-  return [
-    {
-      id: "a1",
-      src: DEMO_POSTERS[0],
-      name: "demo-1.jpg",
-      ext: "jpg",
-      kind: "image",
-    },
-    {
-      id: "a2",
-      src: DEMO_POSTERS[1],
-      name: "demo-2.jpg",
-      ext: "jpg",
-      kind: "image",
-    },
-    {
-      id: "a3",
-      src: DEMO_POSTERS[2],
-      name: "demo-3.jpg",
-      ext: "jpg",
-      kind: "image",
-    },
-    {
-      id: "a4",
-      src: DEMO_POSTERS[3],
-      name: "demo-4.jpg",
-      ext: "jpg",
-      kind: "image",
-    },
-  ];
-}
-
 function getDefaultWorkspace(lang) {
   const copy = COPY[lang] || COPY.ru;
 
@@ -389,7 +349,7 @@ function getDefaultWorkspace(lang) {
     voice: copy.voices?.[0] || COPY.ru.voices[0],
     link: "",
     showCaptions: true,
-    assets: createDefaultAssets(),
+    assets: [],
     variants: [],
     activeVariant: 0,
     lastPreviewPayload: null,
@@ -408,8 +368,22 @@ function InstagramIcon({ className = "" }) {
           <stop offset="100%" stopColor="#4f5bd5" />
         </linearGradient>
       </defs>
-      <rect x="3" y="3" width="18" height="18" rx="5" fill="url(#igGradFixed)" />
-      <circle cx="12" cy="12" r="4.2" fill="none" stroke="white" strokeWidth="1.8" />
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
+        rx="5"
+        fill="url(#igGradFixed)"
+      />
+      <circle
+        cx="12"
+        cy="12"
+        r="4.2"
+        fill="none"
+        stroke="white"
+        strokeWidth="1.8"
+      />
       <circle cx="17.2" cy="6.8" r="1.2" fill="white" />
     </svg>
   );
@@ -418,10 +392,24 @@ function InstagramIcon({ className = "" }) {
 function TikTokIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path d="M14.8 4c.5 1.6 1.6 2.8 3.2 3.5V10c-1.2 0-2.4-.3-3.5-1v5.4a4.9 4.9 0 1 1-4.9-4.9c.3 0 .6 0 .9.1v2.7a2.3 2.3 0 1 0 1.4 2.1V4h2.9z" fill="#111111" />
-      <path d="M13.4 4v10.4a2.3 2.3 0 1 1-2.3-2.3c.2 0 .5 0 .7.1V9.5a4.9 4.9 0 0 0-.7 9.7 4.9 4.9 0 0 0 4.9-4.9V8.9c1 .7 2.1 1.1 3.4 1.1V7.5c-1.6-.7-2.8-1.9-3.2-3.5h-2.8z" fill="#25F4EE" opacity="0.9" />
-      <path d="M14.1 4v10.2a2.3 2.3 0 1 1-2.3-2.3c.2 0 .4 0 .6.1V9.4a4.9 4.9 0 1 0 4.9 4.9V8.7c1 .7 2.1 1.1 3.4 1.1V7.3c-1.6-.7-2.8-1.9-3.2-3.3h-3.4z" fill="#FE2C55" opacity="0.9" />
-      <path d="M14.3 4.2c.5 1.4 1.6 2.5 3.1 3.1v2c-1.2 0-2.3-.3-3.3-1v6a4.2 4.2 0 1 1-4.2-4.2c.3 0 .5 0 .8.1v2.1a2.1 2.1 0 1 0 1.3 2v-10h2.3z" fill="#111111" />
+      <path
+        d="M14.8 4c.5 1.6 1.6 2.8 3.2 3.5V10c-1.2 0-2.4-.3-3.5-1v5.4a4.9 4.9 0 1 1-4.9-4.9c.3 0 .6 0 .9.1v2.7a2.3 2.3 0 1 0 1.4 2.1V4h2.9z"
+        fill="#111111"
+      />
+      <path
+        d="M13.4 4v10.4a2.3 2.3 0 1 1-2.3-2.3c.2 0 .5 0 .7.1V9.5a4.9 4.9 0 0 0-.7 9.7 4.9 4.9 0 0 0 4.9-4.9V8.9c1 .7 2.1 1.1 3.4 1.1V7.5c-1.6-.7-2.8-1.9-3.2-3.5h-2.8z"
+        fill="#25F4EE"
+        opacity="0.9"
+      />
+      <path
+        d="M14.1 4v10.2a2.3 2.3 0 1 1-2.3-2.3c.2 0 .4 0 .6.1V9.4a4.9 4.9 0 1 0 4.9 4.9V8.7c1 .7 2.1 1.1 3.4 1.1V7.3c-1.6-.7-2.8-1.9-3.2-3.3h-3.4z"
+        fill="#FE2C55"
+        opacity="0.9"
+      />
+      <path
+        d="M14.3 4.2c.5 1.4 1.6 2.5 3.1 3.1v2c-1.2 0-2.3-.3-3.3-1v6a4.2 4.2 0 1 1-4.2-4.2c.3 0 .5 0 .8.1v2.1a2.1 2.1 0 1 0 1.3 2v-10h2.3z"
+        fill="#111111"
+      />
     </svg>
   );
 }
@@ -429,7 +417,10 @@ function TikTokIcon({ className = "" }) {
 function YouTubeIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path d="M21 8.5a3 3 0 0 0-2.1-2.1C17.1 6 12 6 12 6s-5.1 0-6.9.4A3 3 0 0 0 3 8.5 31 31 0 0 0 3 12a31 31 0 0 0 .4 3.5 3 3 0 0 0 2.1 2.1C6.9 18 12 18 12 18s5.1 0 6.9-.4a3 3 0 0 0 2.1-2.1c.3-1.1.4-2.3.4-3.5a31 31 0 0 0-.4-3.5z" fill="#FF0033" />
+      <path
+        d="M21 8.5a3 3 0 0 0-2.1-2.1C17.1 6 12 6 12 6s-5.1 0-6.9.4A3 3 0 0 0 3 8.5 31 31 0 0 0 3 12a31 31 0 0 0 .4 3.5 3 3 0 0 0 2.1 2.1C6.9 18 12 18 12 18s5.1 0 6.9-.4a3 3 0 0 0 2.1-2.1c.3-1.1.4-2.3.4-3.5a31 31 0 0 0-.4-3.5z"
+        fill="#FF0033"
+      />
       <path d="M10 9.3v5.4l4.7-2.7L10 9.3z" fill="white" />
     </svg>
   );
@@ -439,7 +430,10 @@ function TelegramIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <circle cx="12" cy="12" r="10" fill="#27A6E5" />
-      <path d="M17.7 7.2 6.8 11.4c-.7.3-.7.7-.1.9l2.8.9 6.4-4c.3-.2.7-.1.4.1l-5.2 4.7-.2 2.8c.4 0 .6-.2.8-.4l1.4-1.4 2.9 2.1c.6.3 1 .1 1.1-.5l1.7-8.7c.2-.7-.2-1-.9-.7z" fill="white" />
+      <path
+        d="M17.7 7.2 6.8 11.4c-.7.3-.7.7-.1.9l2.8.9 6.4-4c.3-.2.7-.1.4.1l-5.2 4.7-.2 2.8c.4 0 .6-.2.8-.4l1.4-1.4 2.9 2.1c.6.3 1 .1 1.1-.5l1.7-8.7c.2-.7-.2-1-.9-.7z"
+        fill="white"
+      />
     </svg>
   );
 }
@@ -448,7 +442,10 @@ function VkIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="#0077FF" />
-      <path d="M7.2 8.2c.1 0 .3 0 .3.2.6 1.2 1.2 2.3 2 3.3.2.3.4.4.5.4.1 0 .2-.1.2-.5V8.8c0-.4.1-.6.5-.6h1.8c.3 0 .4.2.4.5v1.5c0 .5 0 .8.2.8.2 0 .4-.3.8-.8.7-.9 1.2-1.9 1.5-1.9H17c.3 0 .5.2.4.5-.2.7-1.6 2.5-1.6 2.5-.1.1-.2.3 0 .5 0 0 1.2 1.2 1.5 2 .1.3 0 .5-.4.5h-1.4c-.3 0-.4-.1-.6-.3-.8-.9-1-1-1.2-1-.1 0-.2.1-.2.4v.4c0 .4-.1.5-.5.5-2.4 0-4.5-2.9-5.4-5-.1-.3 0-.5.3-.5h1.3z" fill="white" />
+      <path
+        d="M7.2 8.2c.1 0 .3 0 .3.2.6 1.2 1.2 2.3 2 3.3.2.3.4.4.5.4.1 0 .2-.1.2-.5V8.8c0-.4.1-.6.5-.6h1.8c.3 0 .4.2.4.5v1.5c0 .5 0 .8.2.8.2 0 .4-.3.8-.8.7-.9 1.2-1.9 1.5-1.9H17c.3 0 .5.2.4.5-.2.7-1.6 2.5-1.6 2.5-.1.1-.2.3 0 .5 0 0 1.2 1.2 1.5 2 .1.3 0 .5-.4.5h-1.4c-.3 0-.4-.1-.6-.3-.8-.9-1-1-1.2-1-.1 0-.2.1-.2.4v.4c0 .4-.1.5-.5.5-2.4 0-4.5-2.9-5.4-5-.1-.3 0-.5.3-.5h1.3z"
+        fill="white"
+      />
     </svg>
   );
 }
@@ -457,7 +454,10 @@ function DiscordIcon({ className = "" }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
       <rect x="2.5" y="2.5" width="19" height="19" rx="5" fill="#5865F2" />
-      <path d="M16.8 8.1c-1-.5-2-.8-2-.8l-.1.2c.9.2 1.3.5 1.3.5-1.4-.8-2.8-.8-4-.6-.9.1-1.7.4-2.4.8.2-.1.7-.3 1.4-.5l-.1-.2s-1 .3-2 .8c0 0-1 1.4-1.3 4.1.8 1 1.9 1.5 1.9 1.5l.5-.7c-.5-.2-.8-.5-.8-.5.1.1.2.1.3.2 0 0 0 0 .1 0 .1 0 .1.1.2.1.4.2.8.3 1.2.3.7.1 1.5.1 2.2 0 .4-.1.8-.2 1.2-.3.1 0 .1-.1.2-.1 0 0 0 0 .1 0 .1-.1.2-.1.3-.2 0 0-.3.3-.8.5l.5.7s1.1-.5 1.9-1.5c-.4-2.7-1.3-4.1-1.3-4.1zM10.3 12.8c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9zm3.4 0c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9z" fill="white" />
+      <path
+        d="M16.8 8.1c-1-.5-2-.8-2-.8l-.1.2c.9.2 1.3.5 1.3.5-1.4-.8-2.8-.8-4-.6-.9.1-1.7.4-2.4.8.2-.1.7-.3 1.4-.5l-.1-.2s-1 .3-2 .8c0 0-1 1.4-1.3 4.1.8 1 1.9 1.5 1.9 1.5l.5-.7c-.5-.2-.8-.5-.8-.5.1.1.2.1.3.2 0 0 0 0 .1 0 .1 0 .1.1.2.1.4.2.8.3 1.2.3.7.1 1.5.1 2.2 0 .4-.1.8-.2 1.2-.3.1 0 .1-.1.2-.1 0 0 0 0 .1 0 .1-.1.2-.1.3-.2 0 0-.3.3-.8.5l.5.7s1.1-.5 1.9-1.5c-.4-2.7-1.3-4.1-1.3-4.1zM10.3 12.8c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9zm3.4 0c-.4 0-.8-.4-.8-.9s.3-.9.8-.9c.4 0 .8.4.8.9s-.3.9-.8.9z"
+        fill="white"
+      />
     </svg>
   );
 }
@@ -667,16 +667,35 @@ function PreviewReadyCard({ t, currentFormatLabel, duration, tone }) {
       <div className="font-semibold text-[#5a628d]">{t.readyToPost}</div>
 
       <div>
-        {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · WEBM · {t.fileWeight}: 14.8 MB
+        {t.variant}: {currentFormatLabel || "—"} · {duration} · {tone} · WEBM ·{" "}
+        {t.fileWeight}: 14.8 MB
       </div>
 
       <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
-        <SocialItem icon={<InstagramIcon className="h-5 w-5 shrink-0" />} label={t.socials.instagram} />
-        <SocialItem icon={<TikTokIcon className="h-5 w-5 shrink-0" />} label={t.socials.tiktok} />
-        <SocialItem icon={<YouTubeIcon className="h-5 w-5 shrink-0" />} label={t.socials.youtube} />
-        <SocialItem icon={<TelegramIcon className="h-5 w-5 shrink-0" />} label={t.socials.telegram} />
-        <SocialItem icon={<VkIcon className="h-5 w-5 shrink-0" />} label={t.socials.vk} />
-        <SocialItem icon={<DiscordIcon className="h-5 w-5 shrink-0" />} label={t.socials.discord} />
+        <SocialItem
+          icon={<InstagramIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.instagram}
+        />
+        <SocialItem
+          icon={<TikTokIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.tiktok}
+        />
+        <SocialItem
+          icon={<YouTubeIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.youtube}
+        />
+        <SocialItem
+          icon={<TelegramIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.telegram}
+        />
+        <SocialItem
+          icon={<VkIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.vk}
+        />
+        <SocialItem
+          icon={<DiscordIcon className="h-5 w-5 shrink-0" />}
+          label={t.socials.discord}
+        />
       </div>
     </div>
   );
@@ -757,17 +776,24 @@ async function fileToAsset(file, index) {
       kind,
       size: file.size,
       mimeType: file.type,
+      file,
     };
   }
 
+  const src =
+    kind === "video" || kind === "audio"
+      ? URL.createObjectURL(file)
+      : "";
+
   return {
     id: `${Date.now()}-${index}-${file.name}`,
-    src: "",
+    src,
     name: file.name,
     ext,
     kind,
     size: file.size,
     mimeType: file.type,
+    file,
   };
 }
 
@@ -781,16 +807,11 @@ function readFileAsDataUrl(file) {
 }
 
 function serializeAssetForApi(item) {
-  const safeSrc =
-    typeof item.src === "string" && item.src.startsWith("data:")
-      ? ""
-      : item.src || "";
-
   return {
     id: item.id,
     name: item.name,
-    src: safeSrc,
-    previewUrl: safeSrc,
+    src: item.src || "",
+    previewUrl: item.src || "",
     ext: item.ext || "",
     type: item.mimeType || guessMimeTypeFromKind(item.kind, item.ext),
     mimeType: item.mimeType || guessMimeTypeFromKind(item.kind, item.ext),
@@ -800,7 +821,8 @@ function serializeAssetForApi(item) {
 }
 
 function guessMimeTypeFromKind(kind, ext) {
-  if (kind === "image") return `image/${ext === "jpg" ? "jpeg" : ext || "jpeg"}`;
+  if (kind === "image")
+    return `image/${ext === "jpg" ? "jpeg" : ext || "jpeg"}`;
   if (kind === "video") return "video/mp4";
   if (kind === "audio") return "audio/mpeg";
   return "application/octet-stream";
@@ -834,7 +856,7 @@ function mapApiPreviewVariant(variant, idx) {
   const endpoint = variant?.preview?.endpoint || {};
   return {
     id: variant.id || `v${idx + 1}`,
-    poster: variant.poster || DEMO_POSTERS[idx % DEMO_POSTERS.length],
+    poster: variant.poster || "",
     label: variant.label || null,
     creative: variant.creative || null,
     scenes: variant.scenes || [],
@@ -899,6 +921,20 @@ function normalizeServerErrorMessage(rawText, fallbackText) {
   return "";
 }
 
+function cleanupAssetUrls(assets) {
+  for (const item of assets || []) {
+    if (
+      item?.src &&
+      typeof item.src === "string" &&
+      item.src.startsWith("blob:")
+    ) {
+      try {
+        URL.revokeObjectURL(item.src);
+      } catch {}
+    }
+  }
+}
+
 export default function AgentWorkspace({ lang = "ru" }) {
   const t = COPY[lang] || COPY.ru;
   const defaults = useMemo(() => getDefaultWorkspace(lang), [lang]);
@@ -921,8 +957,12 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const [showConfirmRegenerate, setShowConfirmRegenerate] = useState(false);
   const [hydrated, setHydrated] = useState(false);
   const [generationError, setGenerationError] = useState("");
-  const [lastPreviewPayload, setLastPreviewPayload] = useState(defaults.lastPreviewPayload);
-  const [lastGeneratedFingerprint, setLastGeneratedFingerprint] = useState(defaults.lastGeneratedFingerprint);
+  const [lastPreviewPayload, setLastPreviewPayload] = useState(
+    defaults.lastPreviewPayload
+  );
+  const [lastGeneratedFingerprint, setLastGeneratedFingerprint] = useState(
+    defaults.lastGeneratedFingerprint
+  );
   const [telegramIdentity, setTelegramIdentity] = useState("");
 
   const fileInputRef = useRef(null);
@@ -930,6 +970,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const livePreviewContainerRef = useRef(null);
   const previewRuntimeRef = useRef(null);
   const livePreviewAbortRef = useRef(null);
+  const previousAssetsRef = useRef([]);
 
   const stopPreviewRuntime = () => {
     if (previewRuntimeRef.current?.pause) {
@@ -950,7 +991,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
 
   const scrollToPreview = () => {
     requestAnimationFrame(() => {
-      previewRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      previewRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     });
   };
 
@@ -966,13 +1010,11 @@ export default function AgentWorkspace({ lang = "ru" }) {
         ? state.showCaptions
         : defaults.showCaptions
     );
-    setAssets(
-      Array.isArray(state.assets) && state.assets.length
-        ? state.assets.slice(0, MAX_ASSETS)
-        : defaults.assets
-    );
+    setAssets(Array.isArray(state.assets) ? state.assets.slice(0, MAX_ASSETS) : []);
     setVariants(Array.isArray(state.variants) ? state.variants : []);
-    setActiveVariant(typeof state.activeVariant === "number" ? state.activeVariant : 0);
+    setActiveVariant(
+      typeof state.activeVariant === "number" ? state.activeVariant : 0
+    );
     setLastPreviewPayload(state.lastPreviewPayload || null);
     setLastGeneratedFingerprint(state.lastGeneratedFingerprint || "");
     setGenerationError("");
@@ -1019,6 +1061,7 @@ export default function AgentWorkspace({ lang = "ru" }) {
       applyWorkspaceState({
         ...getDefaultWorkspace(lang),
         ...saved,
+        assets: Array.isArray(saved?.assets) ? saved.assets : [],
       });
     } catch (error) {
       console.error("Failed to restore AgentWorkspace session", error);
@@ -1097,16 +1140,32 @@ export default function AgentWorkspace({ lang = "ru" }) {
     const toneFallback = COPY[lang]?.tones?.[0] || COPY.ru.tones[0];
     const voiceFallback = COPY[lang]?.voices?.[0] || COPY.ru.voices[0];
 
-    if (!COPY[lang]?.durations?.includes(duration)) setDuration(durationFallback);
+    if (!COPY[lang]?.durations?.includes(duration))
+      setDuration(durationFallback);
     if (!COPY[lang]?.tones?.includes(tone)) setTone(toneFallback);
     if (!COPY[lang]?.voices?.includes(voice)) setVoice(voiceFallback);
   }, [lang, duration, tone, voice]);
 
+  useEffect(() => {
+    const prev = previousAssetsRef.current || [];
+    previousAssetsRef.current = assets;
+
+    return () => {
+      cleanupAssetUrls(prev);
+    };
+  }, [assets]);
+
+  useEffect(() => {
+    return () => {
+      cleanupAssetUrls(previousAssetsRef.current || []);
+    };
+  }, []);
+
   const previewPoster = useMemo(() => {
     if (variants.length) {
-      return variants[activeVariant]?.poster || DEMO_POSTERS[0];
+      return variants[activeVariant]?.poster || "";
     }
-    return DEMO_POSTERS[1];
+    return "";
   }, [variants, activeVariant]);
 
   const activeVariantData = variants[activeVariant] || null;
@@ -1119,7 +1178,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
   const hasMaterials = assets.length > 0 || link.trim().length > 3;
   const hasTopic = topic.trim().length > 8;
 
-  const progress = (hasCategory ? 25 : 0) + (hasMaterials ? 35 : 0) + (hasTopic ? 40 : 0);
+  const progress =
+    (hasCategory ? 25 : 0) + (hasMaterials ? 35 : 0) + (hasTopic ? 40 : 0);
+
   const canGenerate = hasCategory && (hasMaterials || hasTopic);
 
   const desktopActionText = variants.length
@@ -1203,7 +1264,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
       const parsed = await readJsonSafely(res);
 
       if (!parsed.ok) {
-        const normalized = normalizeServerErrorMessage(parsed.rawText, t.generationRequestTooLarge);
+        const normalized = normalizeServerErrorMessage(
+          parsed.rawText,
+          t.generationRequestTooLarge
+        );
         throw new Error(normalized || t.generationErrorFallback);
       }
 
@@ -1214,7 +1278,9 @@ export default function AgentWorkspace({ lang = "ru" }) {
       }
 
       const nextVariants =
-        data?.preview?.variants?.map((variant, idx) => mapApiPreviewVariant(variant, idx)) || [];
+        data?.preview?.variants?.map((variant, idx) =>
+          mapApiPreviewVariant(variant, idx)
+        ) || [];
 
       stopPreviewRuntime();
       setVariants(nextVariants);
@@ -1328,12 +1394,27 @@ export default function AgentWorkspace({ lang = "ru" }) {
     const list = Array.from(fileList || []);
     if (!list.length) return;
 
-    const next = await Promise.all(list.slice(0, MAX_ASSETS).map((file, idx) => fileToAsset(file, idx)));
+    const next = await Promise.all(
+      list.slice(0, MAX_ASSETS).map((file, idx) => fileToAsset(file, idx))
+    );
+
     setAssets((prev) => [...next, ...prev].slice(0, MAX_ASSETS));
   };
 
   const removeAsset = (id) => {
-    setAssets((prev) => prev.filter((item) => item.id !== id));
+    setAssets((prev) => {
+      const target = prev.find((item) => item.id === id);
+      if (
+        target?.src &&
+        typeof target.src === "string" &&
+        target.src.startsWith("blob:")
+      ) {
+        try {
+          URL.revokeObjectURL(target.src);
+        } catch {}
+      }
+      return prev.filter((item) => item.id !== id);
+    });
   };
 
   const handlePrimaryAction = () => {
@@ -1370,7 +1451,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
       const tgUser = getTelegramUser();
 
       const requestId = activeVariantData?.previewStatusUrl
-        ? new URL(activeVariantData.previewStatusUrl, window.location.origin).searchParams.get("requestId")
+        ? new URL(
+            activeVariantData.previewStatusUrl,
+            window.location.origin
+          ).searchParams.get("requestId")
         : null;
 
       if (!requestId) {
@@ -1383,10 +1467,16 @@ export default function AgentWorkspace({ lang = "ru" }) {
       });
 
       if (tgUser?.telegramId || tgUser?.telegram_id || tgUser?.id) {
-        params.set("telegramId", String(tgUser.telegramId || tgUser.telegram_id || tgUser.id));
+        params.set(
+          "telegramId",
+          String(tgUser.telegramId || tgUser.telegram_id || tgUser.id)
+        );
       }
       if (tgUser?.username || tgUser?.userName) {
-        params.set("username", String(tgUser.username || tgUser.userName).replace(/^@/, ""));
+        params.set(
+          "username",
+          String(tgUser.username || tgUser.userName).replace(/^@/, "")
+        );
       }
 
       const res = await fetch(`/api/download?${params.toString()}`, {
@@ -1537,7 +1627,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
                         ))}
 
                         {assets.length < ASSET_SLOTS &&
-                          Array.from({ length: Math.max(0, ASSET_SLOTS - assets.length) }, (_, i) => assets.length + i + 1).map((n) => (
+                          Array.from(
+                            { length: Math.max(0, ASSET_SLOTS - assets.length) },
+                            (_, i) => assets.length + i + 1
+                          ).map((n) => (
                             <div
                               key={n}
                               className="flex h-[58px] w-[58px] shrink-0 items-center justify-center bg-white text-[18px] font-semibold text-[#c8c9df] md:h-[60px] md:w-[60px]"
@@ -1586,15 +1679,33 @@ export default function AgentWorkspace({ lang = "ru" }) {
                 </div>
 
                 <div className="mt-5 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-3">
-                  <PlainSelect label={t.duration} value={duration} onChange={setDuration} options={t.durations} />
-                  <PlainSelect label={t.tone} value={tone} onChange={setTone} options={t.tones} />
-                  <PlainSelect label={t.voice} value={voice} onChange={setVoice} options={t.voices} />
+                  <PlainSelect
+                    label={t.duration}
+                    value={duration}
+                    onChange={setDuration}
+                    options={t.durations}
+                  />
+                  <PlainSelect
+                    label={t.tone}
+                    value={tone}
+                    onChange={setTone}
+                    options={t.tones}
+                  />
+                  <PlainSelect
+                    label={t.voice}
+                    value={voice}
+                    onChange={setVoice}
+                    options={t.voices}
+                  />
                 </div>
               </div>
             </section>
           </div>
 
-          <div ref={previewRef} className="mt-6 px-4 lg:mt-0 lg:px-0 lg:sticky lg:top-6 lg:self-start">
+          <div
+            ref={previewRef}
+            className="mt-6 px-4 lg:mt-0 lg:px-0 lg:sticky lg:top-6 lg:self-start"
+          >
             <div className="space-y-5">
               <div className="overflow-hidden bg-[#111111]" style={pixelClip()}>
                 <div className="checkerboard relative aspect-[9/16] w-full">
@@ -1602,25 +1713,42 @@ export default function AgentWorkspace({ lang = "ru" }) {
                     <div className="flex h-full w-full items-center justify-center">
                       <div className="flex flex-col items-center text-white">
                         <Loader2 className="h-10 w-10 animate-spin" />
-                        <div className="mt-5 text-[16px] font-semibold">{t.previewPreparing}</div>
+                        <div className="mt-5 text-[16px] font-semibold">
+                          {t.previewPreparing}
+                        </div>
                       </div>
                     </div>
                   ) : variants.length ? (
                     <div className="relative h-full w-full">
-                      <div ref={livePreviewContainerRef} className="absolute inset-0 h-full w-full" />
-                      {!activeVariantData?.readyForPreviewRender && previewPoster ? (
+                      <div
+                        ref={livePreviewContainerRef}
+                        className="absolute inset-0 h-full w-full"
+                      />
+
+                      {!activeVariantData?.readyForPreviewRender &&
+                      previewPoster ? (
                         <>
-                          <img src={previewPoster} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                          <img
+                            src={previewPoster}
+                            alt=""
+                            className="absolute inset-0 h-full w-full object-cover"
+                          />
                           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.12)_0%,rgba(0,0,0,0.38)_100%)]" />
                         </>
                       ) : null}
 
                       <div className="absolute inset-x-4 top-4 flex items-center justify-between">
-                        <div className="bg-white/85 px-3 py-2 text-[12px] font-semibold text-[#2b2b35]" style={pixelClip()}>
+                        <div
+                          className="bg-white/85 px-3 py-2 text-[12px] font-semibold text-[#2b2b35]"
+                          style={pixelClip()}
+                        >
                           {isLoadingLivePreview ? t.loadingPreview : t.previewReady}
                         </div>
                         {activeVariantData?.score ? (
-                          <div className="bg-[#8c62ff]/90 px-3 py-2 text-[12px] font-semibold text-white" style={pixelClip()}>
+                          <div
+                            className="bg-[#8c62ff]/90 px-3 py-2 text-[12px] font-semibold text-white"
+                            style={pixelClip()}
+                          >
                             Score {activeVariantData.score}
                           </div>
                         ) : null}
@@ -1638,13 +1766,22 @@ export default function AgentWorkspace({ lang = "ru" }) {
                           }`}
                           style={pixelClip()}
                         >
-                          {isPreviewPlaying ? <Pause size={14} fill="currentColor" /> : <Play size={14} fill="currentColor" />}
+                          {isPreviewPlaying ? (
+                            <Pause size={14} fill="currentColor" />
+                          ) : (
+                            <Play size={14} fill="currentColor" />
+                          )}
                           {isPreviewPlaying ? t.previewPause : t.previewPlay}
                         </button>
 
                         {activeVariantData?.creative?.hook ? (
-                          <div className="line-clamp-3 max-w-[90%] bg-black/65 px-3 py-3 text-[14px] leading-[1.35] text-white" style={pixelClip()}>
-                            {activeVariantData.creative.hook}
+                          <div
+                            className="line-clamp-3 max-w-[90%] bg-black/65 px-3 py-3 text-[14px] leading-[1.35] text-white"
+                            style={pixelClip()}
+                          >
+                            {String(activeVariantData.creative.hook)
+                              .replace(/\[object Object\]/g, "")
+                              .trim()}
                           </div>
                         ) : null}
                       </div>
@@ -1652,10 +1789,15 @@ export default function AgentWorkspace({ lang = "ru" }) {
                   ) : (
                     <div className="relative flex h-full w-full items-center justify-center">
                       <div className="relative z-10 flex flex-col items-center">
-                        <div className="flex h-[96px] w-[96px] items-center justify-center bg-white text-[#1d1d1d]" style={pixelClip()}>
+                        <div
+                          className="flex h-[96px] w-[96px] items-center justify-center bg-white text-[#1d1d1d]"
+                          style={pixelClip()}
+                        >
                           <Play size={42} fill="currentColor" />
                         </div>
-                        <div className="mt-8 text-[18px] font-semibold text-[#8c8c8c]">{t.preview}</div>
+                        <div className="mt-8 text-[18px] font-semibold text-[#8c8c8c]">
+                          {t.preview}
+                        </div>
                       </div>
                     </div>
                   )}
@@ -1663,7 +1805,10 @@ export default function AgentWorkspace({ lang = "ru" }) {
               </div>
 
               {generationError ? (
-                <div className="flex items-start gap-3 bg-[#ffe4e8] px-4 py-4 text-[14px] text-[#8a3550]" style={pixelClip()}>
+                <div
+                  className="flex items-start gap-3 bg-[#ffe4e8] px-4 py-4 text-[14px] text-[#8a3550]"
+                  style={pixelClip()}
+                >
                   <AlertCircle className="mt-[1px] h-5 w-5 shrink-0" />
                   <div>{generationError}</div>
                 </div>
@@ -1678,20 +1823,31 @@ export default function AgentWorkspace({ lang = "ru" }) {
                         key={idx}
                         type="button"
                         onClick={() => item && setActiveVariant(idx)}
-                        className={`relative aspect-[0.78/1] overflow-hidden ${idx === activeVariant ? "ring-2 ring-[#8d62ff]" : ""}`}
+                        className={`relative aspect-[0.78/1] overflow-hidden ${
+                          idx === activeVariant ? "ring-2 ring-[#8d62ff]" : ""
+                        }`}
                       >
                         {item ? (
                           <>
                             {item.poster ? (
-                              <img src={item.poster} alt="" className="h-full w-full object-cover" />
+                              <img
+                                src={item.poster}
+                                alt=""
+                                className="h-full w-full object-cover"
+                              />
                             ) : (
                               <div className="flex h-full w-full items-center justify-center bg-[#26232f] text-[24px] font-semibold text-[#c3c3d0] md:text-[26px]">
                                 {idx + 1}
                               </div>
                             )}
                             <div className="absolute inset-x-2 bottom-2">
-                              <div className="truncate bg-black/70 px-2 py-1 text-[10px] font-semibold text-white" style={pixelClip()}>
-                                {item.label?.ru || item.label?.en || `Variant ${idx + 1}`}
+                              <div
+                                className="truncate bg-black/70 px-2 py-1 text-[10px] font-semibold text-white"
+                                style={pixelClip()}
+                              >
+                                {item.label?.ru ||
+                                  item.label?.en ||
+                                  `Variant ${idx + 1}`}
                               </div>
                             </div>
                           </>
@@ -1713,7 +1869,13 @@ export default function AgentWorkspace({ lang = "ru" }) {
               <PixelButton
                 color="green"
                 className="w-full text-[18px]"
-                icon={isDownloading ? <Loader2 size={18} className="animate-spin" /> : <Download size={18} />}
+                icon={
+                  isDownloading ? (
+                    <Loader2 size={18} className="animate-spin" />
+                  ) : (
+                    <Download size={18} />
+                  )
+                }
                 disabled={!variants.length || isDownloading}
                 onClick={handleDownload}
               >

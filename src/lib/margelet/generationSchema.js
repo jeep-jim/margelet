@@ -190,9 +190,56 @@ function detectAssetType(asset) {
 
   if (!ext) return "file";
 
-  if (["jpg", "jpeg", "png", "webp"].includes(ext)) return "image";
-  if (["mp4", "mov", "webm"].includes(ext)) return "video";
-  if (["mp3", "wav", "aac"].includes(ext)) return "audio";
+    // detect asset type by extension
+    if (
+    [
+        "jpg",
+        "jpeg",
+        "png",
+        "webp",
+        "gif",
+        "bmp",
+        "svg",
+        "tiff",
+        "tif",
+        "heic",
+        "heif",
+        "avif"
+    ].includes(ext)
+    )
+    return "image";
+
+    if (
+    [
+        "mp4",
+        "mov",
+        "webm",
+        "m4v",
+        "avi",
+        "mkv",
+        "flv",
+        "wmv",
+        "3gp",
+        "mpeg",
+        "mpg"
+    ].includes(ext)
+    )
+    return "video";
+
+    if (
+    [
+        "mp3",
+        "wav",
+        "aac",
+        "m4a",
+        "ogg",
+        "oga",
+        "flac",
+        "aiff",
+        "wma"
+    ].includes(ext)
+    )
+    return "audio";
 
   return "file";
 }
