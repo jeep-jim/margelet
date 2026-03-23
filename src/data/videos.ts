@@ -1,0 +1,88 @@
+import type { Video } from "../types/app";
+
+export const initialVideos: Video[] = [
+  {
+    id: 1,
+    title: {
+      ru: "Как сделать движение дорогим",
+      en: "How to make motion feel expensive",
+    },
+    caption: {
+      ru: "Быстрый совет из дизайн-канала. Пост живёт в Telegram, а Margelet даёт ему вторую жизнь в ленте.",
+      en: "A fast tip from a design channel. The post lives in Telegram, and Margelet gives it a second life in the feed.",
+    },
+    channel: "Motion Lab",
+    avatar: "ML",
+    handle: "@motionlab",
+    views: "42.1K",
+    likes: 812,
+    comments: 34,
+    duration: "0:37",
+    lang: "RU",
+    postUrl: "https://t.me/motionlab/481",
+    bg: "from-violet-600 via-fuchsia-500 to-amber-400",
+  },
+  {
+    id: 2,
+    title: {
+      ru: "3 жёстких перехода в монтаже",
+      en: "3 brutal montage transitions",
+    },
+    caption: {
+      ru: "Короткий урок от автора. В реальном продукте здесь открывается Telegram-пост под видео, без перезалива контента.",
+      en: "A short lesson from the creator. In the real product, the Telegram post opens under the video without rehosting the content.",
+    },
+    channel: "Cut Frame",
+    avatar: "CF",
+    handle: "@cutframe",
+    views: "18.4K",
+    likes: 439,
+    comments: 12,
+    duration: "1:04",
+    lang: "RU",
+    postUrl: "https://t.me/cutframe/129",
+    bg: "from-cyan-500 via-blue-600 to-indigo-700",
+  },
+  {
+    id: 3,
+    title: {
+      ru: "AI цветокор: до / после",
+      en: "AI color grade: before / after",
+    },
+    caption: {
+      ru: "Карточка ленты для авторов, которым нужна новая аудитория за пределами подписчиков, но с сохранением оригинального источника в Telegram.",
+      en: "A feed card for creators who want a new audience beyond subscribers while keeping the original Telegram source.",
+    },
+    channel: "Neon Edit",
+    avatar: "NE",
+    handle: "@neonedit",
+    views: "73.8K",
+    likes: 1261,
+    comments: 89,
+    duration: "0:52",
+    lang: "ES",
+    postUrl: "https://t.me/neonedit/902",
+    bg: "from-emerald-500 via-teal-500 to-sky-500",
+  },
+  {
+    id: 4,
+    title: {
+      ru: "Контент из Telegram заслуживает настоящую ленту",
+      en: "Telegram content deserves a real feed",
+    },
+    caption: {
+      ru: "Пост-манифест автора. Контент создаётся как ценность, но после публикации часто живёт как мусор — Margelet возвращает его обратно в поле зрения.",
+      en: "A creator manifesto post. Content is created as value, but after publishing it often lives like trash — Margelet brings it back into view.",
+    },
+    channel: "Signal Culture",
+    avatar: "SC",
+    handle: "@signalculture",
+    views: "9.7K",
+    likes: 231,
+    comments: 7,
+    duration: "0:28",
+    lang: "DE",
+    postUrl: "https://t.me/signalculture/87",
+    bg: "from-orange-500 via-rose-500 to-pink-600",
+  },
+];
