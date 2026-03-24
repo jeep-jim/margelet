@@ -1,7 +1,13 @@
-import { Globe, Heart, Info, Bookmark } from "lucide-react";
+import {
+  Heart,
+  Info,
+  Bookmark,
+  ArrowRightLeft,
+  Send,
+  Play,
+} from "lucide-react";
 import { useState } from "react";
 import type { Locale, Video } from "../types/app";
-import { Button } from "../components/ui/Button";
 
 type Props = {
   locale: Locale;
@@ -11,50 +17,124 @@ type Props = {
 
 type CabinetTab = "saved" | "liked" | "about";
 
-function CabinetItem({
-  title,
-  subtitle,
+function LightTab({
+  active,
   onClick,
+  icon: Icon,
+  label,
 }: {
-  title: string;
-  subtitle?: string;
-  onClick?: () => void;
+  active: boolean;
+  onClick: () => void;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
 }) {
   return (
     <button
       onClick={onClick}
-      className="w-full rounded-2xl border border-neutral-200 bg-white p-4 text-left transition hover:bg-neutral-50"
+      className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
+        active
+          ? "bg-neutral-950 text-white"
+          : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
+      }`}
     >
-      <div className="text-[16px] font-semibold text-neutral-950">{title}</div>
-      {subtitle ? (
-        <div className="mt-1 text-sm leading-6 text-neutral-500">{subtitle}</div>
-      ) : null}
+      <Icon className="h-4 w-4" />
+      {label}
     </button>
   );
 }
 
-function VideoRow({
-  video,
-  locale,
+function AuthBlock() {
+  return (
+    <div className="overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
+      <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+        <div>
+          <div className="mb-3 inline-flex items-center gap-3 rounded-full bg-white/12 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <span>margeleT</span>
+            <ArrowRightLeft className="h-4 w-4" />
+            <span>Telegram</span>
+          </div>
+
+          <div className="text-[26px] font-semibold leading-tight">
+            Войти через Telegram
+          </div>
+
+          <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
+            Сохраняй видео, ставь лайки и управляй своим потоком внутри
+            margeleT.
+          </div>
+
+          <button className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100">
+            Авторизоваться
+          </button>
+        </div>
+
+        <div className="relative hidden min-h-[150px] md:block">
+          <div className="absolute right-0 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-white/14 blur-xl" />
+          <div className="absolute right-8 top-1/2 flex h-24 w-24 -translate-y-1/2 items-center justify-center rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md">
+            <Send className="h-10 w-10 -rotate-12 text-white" />
+          </div>
+          <div className="absolute right-28 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/18 bg-white/10 backdrop-blur-md">
+            <ArrowRightLeft className="h-6 w-6 text-white/95" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProfileBlock() {
+  return (
+    <div className="overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
+      <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+        <div>
+          <div className="mb-3 inline-flex items-center gap-3 rounded-full bg-white/12 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <span>margeleT</span>
+            <ArrowRightLeft className="h-4 w-4" />
+            <span>Telegram</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="h-12 w-12 rounded-full bg-white/25" />
+            <div className="min-w-0">
+              <div className="truncate text-lg font-semibold">
+                Имя пользователя
+              </div>
+              <div className="truncate text-sm text-white/90">@username</div>
+            </div>
+          </div>
+
+          <div className="mt-3 text-sm text-white/90">
+            Подключено к Telegram
+          </div>
+        </div>
+
+        <div className="relative hidden min-h-[150px] md:block">
+          <div className="absolute right-0 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-white/14 blur-xl" />
+          <div className="absolute right-8 top-1/2 flex h-24 w-24 -translate-y-1/2 items-center justify-center rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md">
+            <Send className="h-10 w-10 -rotate-12 text-white" />
+          </div>
+          <div className="absolute right-28 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/18 bg-white/10 backdrop-blur-md">
+            <ArrowRightLeft className="h-6 w-6 text-white/95" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CabinetTile({
   onOpen,
 }: {
-  video: Video;
-  locale: Locale;
   onOpen: () => void;
 }) {
   return (
     <button
       onClick={onOpen}
-      className="flex w-full items-center gap-3 rounded-2xl border border-neutral-200 bg-white p-3 text-left transition hover:bg-neutral-50"
+      className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-200"
     >
-      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-neutral-200" />
-      <div className="min-w-0 flex-1">
-        <div className="truncate text-[15px] font-semibold text-neutral-950">
-          {video.channel}
-        </div>
-        <div className="mt-1 line-clamp-2 text-sm leading-5 text-neutral-600">
-          {video.title[locale]}
-        </div>
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#d4d4d8_0%,#e5e7eb_100%)]" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-70 transition group-hover:opacity-100">
+        <Play className="h-7 w-7 text-neutral-800" />
       </div>
     </button>
   );
@@ -62,129 +142,84 @@ function VideoRow({
 
 export function CreatorScreen({ locale, videos, openPost }: Props) {
   const [tab, setTab] = useState<CabinetTab>("saved");
-  const [currentLocale, setCurrentLocale] = useState<Locale>(locale);
 
-  const savedVideos = videos.slice(0, 3);
-  const likedVideos = videos.slice(1, 4);
+  // временно: переключи на true, когда подключим Telegram auth
+  const isAuthorized = false;
+
+  const savedVideos = videos.slice(0, 5);
+  const likedVideos = videos.slice(1, 6);
 
   return (
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
       <div className="mx-auto max-w-[720px]">
-        <div className="mb-6">
-          <div className="text-[28px] font-semibold tracking-tight">Кабинет</div>
-          <div className="mt-1 text-sm text-neutral-500">
-            Твои действия, настройки и быстрый доступ
-          </div>
+        <div className="mb-5">
+          {isAuthorized ? <ProfileBlock /> : <AuthBlock />}
         </div>
 
         <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
-          <button
+          <LightTab
+            active={tab === "saved"}
             onClick={() => setTab("saved")}
-            className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
-              tab === "saved"
-                ? "bg-neutral-950 text-white"
-                : "bg-white text-neutral-700 border border-neutral-200"
-            }`}
-          >
-            <Bookmark className="h-4 w-4" />
-            Сохранённое
-          </button>
-
-          <button
+            icon={Bookmark}
+            label="Избранное"
+          />
+          <LightTab
+            active={tab === "liked"}
             onClick={() => setTab("liked")}
-            className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
-              tab === "liked"
-                ? "bg-neutral-950 text-white"
-                : "bg-white text-neutral-700 border border-neutral-200"
-            }`}
-          >
-            <Heart className="h-4 w-4" />
-            Лайкнутое
-          </button>
-
-          <button
+            icon={Heart}
+            label="Нравится"
+          />
+          <LightTab
+            active={tab === "about"}
             onClick={() => setTab("about")}
-            className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
-              tab === "about"
-                ? "bg-neutral-950 text-white"
-                : "bg-white text-neutral-700 border border-neutral-200"
-            }`}
-          >
-            <Info className="h-4 w-4" />О проекте
-          </button>
+            icon={Info}
+            label="О проекте"
+          />
         </div>
 
-        {tab === "saved" && (
-          <div className="space-y-3">
-            {savedVideos.map((video) => (
-              <VideoRow
-                key={video.id}
-                video={video}
-                locale={locale}
-                onOpen={() => openPost(video)}
-              />
-            ))}
+        {!isAuthorized && tab !== "about" ? (
+          <div className="rounded-2xl bg-white px-4 py-4 text-sm text-neutral-600">
+            Войди через Telegram, чтобы пользоваться этим разделом.
           </div>
-        )}
-
-        {tab === "liked" && (
-          <div className="space-y-3">
-            {likedVideos.map((video) => (
-              <VideoRow
-                key={video.id}
-                video={video}
-                locale={locale}
-                onOpen={() => openPost(video)}
-              />
-            ))}
-          </div>
-        )}
-
-        {tab === "about" && (
-          <div className="space-y-4">
-            <CabinetItem
-              title="Margelet"
-              subtitle="Лента видеоконтента из Telegram. Источник всегда остаётся оригинальным, а Margelet даёт контенту новую жизнь."
-            />
-
-            <div className="rounded-2xl border border-neutral-200 bg-white p-4">
-              <div className="mb-3 flex items-center gap-2 text-[16px] font-semibold text-neutral-950">
-                <Globe className="h-4 w-4" />
-                Язык интерфейса
+        ) : (
+          <>
+            {tab === "saved" && (
+              <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
+                {savedVideos.map((video) => (
+                  <CabinetTile
+                    key={video.id}
+                    onOpen={() => openPost(video)}
+                  />
+                ))}
               </div>
+            )}
 
-              <div className="flex gap-2">
-                <Button
-                  variant={currentLocale === "ru" ? "default" : "outline"}
-                  className="rounded-full"
-                  onClick={() => {
-                    setCurrentLocale("ru");
-                    localStorage.setItem("margelet-locale", "ru");
-                    window.location.reload();
-                  }}
-                >
-                  RU
-                </Button>
-
-                <Button
-                  variant={currentLocale === "en" ? "default" : "outline"}
-                  className="rounded-full"
-                  onClick={() => {
-                    setCurrentLocale("en");
-                    localStorage.setItem("margelet-locale", "en");
-                    window.location.reload();
-                  }}
-                >
-                  EN
-                </Button>
+            {tab === "liked" && (
+              <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
+                {likedVideos.map((video) => (
+                  <CabinetTile
+                    key={video.id}
+                    onOpen={() => openPost(video)}
+                  />
+                ))}
               </div>
-            </div>
+            )}
 
-            <CabinetItem
-              title="Как это работает"
-              subtitle="Ты листаешь ленту, открываешь видео по тапу, а весь трафик уходит в оригинальный Telegram-источник."
-            />
-          </div>
+            {tab === "about" && (
+              <div className="space-y-3">
+                <div className="rounded-2xl bg-white px-4 py-4 text-[15px] leading-7 text-neutral-700">
+                  MargeleT — это общая лента видео из Telegram. Мы не храним и
+                  не создаём новый контент, а даём Telegram-постам с видео новую
+                  жизнь в удобной ленте просмотра.
+                </div>
+
+                <div className="rounded-2xl bg-white px-4 py-4 text-[15px] leading-7 text-neutral-700">
+                  Автор добавляет ссылку на свой Telegram-пост, а пользователь
+                  смотрит видео как в привычной ленте и переходит к источнику.
+                </div>
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
