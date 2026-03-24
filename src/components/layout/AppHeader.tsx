@@ -1,4 +1,4 @@
-import { Play, Plus, User } from "lucide-react";
+import { Plus, User } from "lucide-react";
 import type { Locale, TabId } from "../../types/app";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 export function AppHeader({ current, setCurrent }: Props) {
   const tabs = [
-    { id: "feed" as const, label: "Лента", icon: Play },
+    // ❌ убрали Play (лента и так по логотипу)
     { id: "add" as const, label: "Добавить", icon: Plus },
     { id: "creator" as const, label: "Кабинет", icon: User },
   ];
@@ -17,19 +17,17 @@ export function AppHeader({ current, setCurrent }: Props) {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-neutral-200 bg-neutral-50/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-[720px] items-center justify-between px-4">
+        
+        {/* LOGO (оставляем твой стиль, просто без кружка) */}
         <button
           onClick={() => setCurrent("feed")}
-          className="flex items-center gap-3 text-left"
+          className="text-left"
           aria-label="Margelet"
           title="Margelet"
         >
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-950 text-sm font-bold text-white">
-            M
+          <div className="text-2xl font-extrabold tracking-[-0.03em] text-neutral-950">
+            margeleT
           </div>
-
-        <div className="text-2xl font-extrabold tracking-[-0.03em] text-neutral-950">
-          margeleT
-        </div>
         </button>
 
         <nav className="flex items-center gap-1">

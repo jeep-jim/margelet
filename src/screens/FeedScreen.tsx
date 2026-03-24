@@ -84,7 +84,7 @@ function FeedCard({
       </div>
 
       <button onClick={onOpen} className="relative mt-3 block w-full bg-neutral-100">
-        <div className="relative aspect-[9/14] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/12]">
+        <div className="relative aspect-[9/13] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/12]">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,#d4d4d8_0%,#e5e7eb_100%)]" />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/10 backdrop-blur-sm">
@@ -107,9 +107,8 @@ function FeedCard({
           </button>
         </div>
 
-        <div className="text-[15px] leading-6 text-neutral-900">
-          <span className="mr-2 font-semibold">{video.channel}</span>
-          <span>{video.title[locale]}</span>
+        <div className="truncate text-[15px] leading-6 text-neutral-900">
+          {video.title[locale]}
         </div>
       </div>
     </article>
@@ -239,7 +238,7 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
                         </div>
                       </button>
 
-                      <div className="max-w-[82%] text-[16px] leading-6 text-white/95">
+                      <div className="max-w-[82%] truncate text-[16px] leading-6 text-white/95">
                         {activeVideo.title[locale]}
                       </div>
                     </div>
