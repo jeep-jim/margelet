@@ -1,8 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ExternalLink, Play } from "lucide-react";
-import { messages } from "../../lib/i18n";
+import { ArrowLeft, Bookmark, Heart, MessageCircle, VolumeX } from "lucide-react";
 import type { Locale, Video } from "../../types/app";
-import { Button } from "../ui/Button";
 
 type Props = {
   video: Video | null;
@@ -10,9 +8,22 @@ type Props = {
   onClose: () => void;
 };
 
-export function PostModal({ video, locale, onClose }: Props) {
-  const t = messages[locale];
+function ViewerMetric({
+  icon: Icon,
+  value,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  value: string | number;
+}) {
+  return (
+    <button className="flex flex-col items-center gap-1 text-white">
+      <Icon className="h-8 w-8" />
+      <span className="text-sm font-medium">{value}</span>
+    </button>
+  );
+}
 
+export function PostModal({ video, locale, onClose }: Props) {
   if (!video) return null;
 
   return (
@@ -21,93 +32,59 @@ export function PostModal({ video, locale, onClose }: Props) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-md"
-        onClick={onClose}
+        className="fixed inset-0 z-50 bg-black"
       >
-        <motion.div
-          initial={{ y: 16, opacity: 0, scale: 0.98 }}
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          exit={{ y: 16, opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.22 }}
-          onClick={(e) => e.stopPropagation()}
-          className="w-full max-w-3xl overflow-hidden rounded-[34px] border border-white/10 bg-[#0f1017] text-white shadow-2xl"
-        >
-          <div className="flex items-center justify-between border-b border-white/10 p-4 sm:p-5">
-            <div className="flex items-center gap-3">
-              <button
-                onClick={onClose}
-                className="rounded-full border border-white/10 bg-white/5 p-2 text-white/80 hover:bg-white/10"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <div>
-                <div className="text-sm text-white/50">{t.sourcePost}</div>
-                <div className="font-semibold">{t.postView}</div>
-              </div>
-            </div>
-            <Button className="rounded-full">
-              <ExternalLink className="mr-2 h-4 w-4" />
-              {t.openInTelegram}
-            </Button>
-          </div>
+        <div className="relative h-full w-full overflow-hidden">
+          <div className="absolute inset-0 bg-neutral-950" />
 
-          <div className="grid gap-0 lg:grid-cols-[1fr_0.9fr]">
-            <div className={`min-h-[320px] bg-gradient-to-br ${video.bg} p-5`}>
-              <div className="flex h-full min-h-[320px] items-center justify-center rounded-[28px] border border-white/15 bg-black/12">
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-xl">
-                    <Play className="ml-1 h-9 w-9" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="h-full w-full max-w-[520px] bg-black">
+              <div className="relative h-full w-full overflow-hidden">
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,#111827_0%,#1f2937_100%)]" />
+
+                <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between">
+                  <button
+                    onClick={onClose}
+                    className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                  >
+                    <ArrowLeft className="h-6 w-6" />
+                  </button>
+
+                  <button className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
+                    <VolumeX className="h-5 w-5" />
+                  </button>
+                </div>
+
+                <div className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
+                  <ViewerMetric icon={Heart} value={video.likes} />
+                  <ViewerMetric icon={MessageCircle} value={video.comments} />
+                  <ViewerMetric icon={Bookmark} value={20} />
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-4 pb-8 pt-20 text-white">
+                  <div className="mb-3 flex items-center gap-3 text-left">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-black">
+                      {video.avatar}
+                    </div>
+
+                    <div className="min-w-0">
+                      <div className="truncate text-xl font-semibold">
+                        {video.channel}
+                      </div>
+                      <div className="truncate text-sm text-white/75">
+                        {video.handle}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-lg font-semibold">{t.focusView}</div>
-                  <div className="mt-2 text-sm text-white/75">{t.focusText}</div>
-                </div>
-              </div>
-            </div>
 
-            <div className="p-5 sm:p-6">
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-sm font-bold text-black">
-                  {video.avatar}
-                </div>
-                <div>
-                  <div className="font-semibold">{video.channel}</div>
-                  <div className="text-sm text-white/55">{video.handle}</div>
-                </div>
-              </div>
-
-              <div className="text-2xl font-semibold leading-tight">{video.title[locale]}</div>
-              <div className="mt-3 text-sm leading-6 text-white/72">{video.caption[locale]}</div>
-
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                  <div className="text-xs uppercase tracking-[0.16em] text-white/45">
-                    {t.viewsFull}
+                  <div className="max-w-[82%] line-clamp-2 text-[16px] leading-6 text-white/95">
+                    {video.title[locale]}
                   </div>
-                  <div className="mt-1 font-semibold">{video.views}</div>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                  <div className="text-xs uppercase tracking-[0.16em] text-white/45">
-                    {t.likesFull}
-                  </div>
-                  <div className="mt-1 font-semibold">{video.likes}</div>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                  <div className="text-xs uppercase tracking-[0.16em] text-white/45">
-                    {t.language}
-                  </div>
-                  <div className="mt-1 font-semibold">{video.lang}</div>
-                </div>
-              </div>
-
-              <div className="mt-5 rounded-[24px] border border-white/10 bg-white/5 p-4">
-                <div className="mb-2 text-xs uppercase tracking-[0.18em] text-white/45">
-                  {t.postUrl}
-                </div>
-                <div className="break-all text-sm text-white/70">{video.postUrl}</div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
     </AnimatePresence>
   );
