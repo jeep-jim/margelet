@@ -7,10 +7,10 @@ import {
   Play,
 } from "lucide-react";
 import { useState } from "react";
-import type { Locale, Video } from "../types/app";
+import type { Video } from "../types/app";
 
 type Props = {
-  locale: Locale;
+  locale: "ru" | "en";
   videos: Video[];
   openPost: (video: Video) => void;
 };
@@ -36,9 +36,11 @@ function LightTab({
           ? "bg-neutral-950 text-white"
           : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
       }`}
+      aria-label={label}
+      title={label}
     >
       <Icon className="h-4 w-4" />
-      {label}
+      <span className="hidden sm:inline">{label}</span>
     </button>
   );
 }
@@ -140,7 +142,7 @@ function CabinetTile({
   );
 }
 
-export function CreatorScreen({ locale, videos, openPost }: Props) {
+export function CreatorScreen({ videos, openPost }: Props) {
   const [tab, setTab] = useState<CabinetTab>("saved");
 
   // временно: переключи на true, когда подключим Telegram auth
@@ -178,8 +180,9 @@ export function CreatorScreen({ locale, videos, openPost }: Props) {
         </div>
 
         {!isAuthorized && tab !== "about" ? (
-          <div className="rounded-2xl bg-white px-4 py-4 text-sm text-neutral-600">
-            Войди через Telegram, чтобы пользоваться этим разделом.
+          <div className="rounded-2xl bg-white px-4 py-4 text-sm leading-6 text-neutral-600">
+            Авторизуйтесь, чтобы сохранять видео, которые вам понравились,
+            и иметь доступ к другим возможностям margeleT.
           </div>
         ) : (
           <>
