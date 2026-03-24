@@ -22,6 +22,7 @@ type Props = {
   onSkip: (id: number) => void;
   openPost: (video: Video) => void;
   setCurrent: (tab: TabId) => void;
+  openSource: (channel: string) => void;
 };
 
 function SourceHeader({
@@ -145,7 +146,9 @@ export function FeedScreen({
   onSkip,
   openPost,
   setCurrent,
+  openSource,
 }: Props) {
+
   const t = messages[locale];
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
 
@@ -176,7 +179,7 @@ export function FeedScreen({
             video={video}
             locale={locale}
             onOpen={() => openViewer(index)}
-            onOpenCreator={() => setCurrent("creator")}
+            onOpenCreator={() => openSource(video.channel)}
           />
         ))}
       </div>
@@ -239,7 +242,7 @@ export function FeedScreen({
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setCurrent("creator");
+                          openSource(activeVideo.channel);
                         }}
                         className="mb-3 flex items-center gap-3 text-left"
                       >

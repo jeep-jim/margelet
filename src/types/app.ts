@@ -5,7 +5,7 @@ export type LocalizedText = {
   en: string;
 };
 
-export type TabId = "intro" | "feed" | "add" | "creator";
+export type TabId = "intro" | "feed" | "add" | "creator" | "source";
 
 export type Video = {
   id: number;

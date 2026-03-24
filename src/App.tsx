@@ -7,14 +7,17 @@ import { AddScreen } from "./screens/AddScreen";
 import { CreatorScreen } from "./screens/CreatorScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
+import { SourceScreen } from "./screens/SourceScreen";
 import type { Locale, TabId, Video } from "./types/app";
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
+  const [previousTab, setPreviousTab] = useState<TabId>("feed");
   const [videos, setVideos] = useState<Video[]>(initialVideos);
   const [selectedPost, setSelectedPost] = useState<Video | null>(null);
+  const [selectedSourceChannel, setSelectedSourceChannel] = useState<string | null>(null);
 
   useEffect(() => {
     const initial = getInitialLocale();
@@ -88,9 +91,21 @@ export default function App() {
     ]);
   };
 
+  const openSource = (channel: string) => {
+    setPreviousTab(current);
+    setSelectedSourceChannel(channel);
+    setCurrent("source");
+  };
+
+  const goBackFromSource = () => {
+    setCurrent(previousTab);
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
+      {current !== "source" && (
+        <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
+      )}
 
       {!hasSeenIntro ? (
         <IntroScreen
@@ -116,6 +131,7 @@ export default function App() {
               onSkip={handleSkip}
               openPost={setSelectedPost}
               setCurrent={setCurrent}
+              openSource={openSource}
             />
           )}
 
@@ -123,6 +139,16 @@ export default function App() {
 
           {current === "creator" && (
             <CreatorScreen locale={locale} videos={videos} openPost={setSelectedPost} />
+          )}
+
+          {current === "source" && (
+            <SourceScreen
+              locale={locale}
+              videos={videos}
+              sourceChannel={selectedSourceChannel}
+              onBack={goBackFromSource}
+              onOpenPost={setSelectedPost}
+            />
           )}
         </>
       )}

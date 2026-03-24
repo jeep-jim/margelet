@@ -1,9 +1,7 @@
-import { useMemo } from "react";
-import { messages } from "../lib/i18n";
+import { Globe, Heart, Info, Bookmark } from "lucide-react";
+import { useState } from "react";
 import type { Locale, Video } from "../types/app";
-import { Badge } from "../components/ui/Badge";
 import { Button } from "../components/ui/Button";
-import { Card, CardContent } from "../components/ui/Card";
 
 type Props = {
   locale: Locale;
@@ -11,98 +9,183 @@ type Props = {
   openPost: (video: Video) => void;
 };
 
+type CabinetTab = "saved" | "liked" | "about";
+
+function CabinetItem({
+  title,
+  subtitle,
+  onClick,
+}: {
+  title: string;
+  subtitle?: string;
+  onClick?: () => void;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="w-full rounded-2xl border border-neutral-200 bg-white p-4 text-left transition hover:bg-neutral-50"
+    >
+      <div className="text-[16px] font-semibold text-neutral-950">{title}</div>
+      {subtitle ? (
+        <div className="mt-1 text-sm leading-6 text-neutral-500">{subtitle}</div>
+      ) : null}
+    </button>
+  );
+}
+
+function VideoRow({
+  video,
+  locale,
+  onOpen,
+}: {
+  video: Video;
+  locale: Locale;
+  onOpen: () => void;
+}) {
+  return (
+    <button
+      onClick={onOpen}
+      className="flex w-full items-center gap-3 rounded-2xl border border-neutral-200 bg-white p-3 text-left transition hover:bg-neutral-50"
+    >
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-neutral-200" />
+      <div className="min-w-0 flex-1">
+        <div className="truncate text-[15px] font-semibold text-neutral-950">
+          {video.channel}
+        </div>
+        <div className="mt-1 line-clamp-2 text-sm leading-5 text-neutral-600">
+          {video.title[locale]}
+        </div>
+      </div>
+    </button>
+  );
+}
+
 export function CreatorScreen({ locale, videos, openPost }: Props) {
-  const t = messages[locale];
-  const totalLikes = useMemo(() => videos.reduce((s, v) => s + v.likes, 0), [videos]);
+  const [tab, setTab] = useState<CabinetTab>("saved");
+  const [currentLocale, setCurrentLocale] = useState<Locale>(locale);
+
+  const savedVideos = videos.slice(0, 3);
+  const likedVideos = videos.slice(1, 4);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] px-4 pb-10 pt-28 text-white">
-      <div className="mx-auto max-w-6xl space-y-5">
-        <Card className="rounded-[34px] border-white/10 bg-gradient-to-br from-white/8 to-white/4 text-white backdrop-blur-2xl">
-          <CardContent className="p-6 sm:p-8">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center gap-4">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-xl font-bold text-black">
-                  ML
-                </div>
-                <div>
-                  <div className="text-2xl font-semibold">Motion Lab</div>
-                  <div className="text-white/60">@motionlab</div>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Badge className="rounded-full border-0 bg-white px-3 py-1 text-black">
-                  {t.creatorProfile}
-                </Badge>
-                <Badge className="rounded-full border border-white/12 bg-white/5 px-3 py-1 text-white">
-                  {t.publicSource}
-                </Badge>
-              </div>
-            </div>
-
-            <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              <Card className="rounded-[24px] border-white/10 bg-black/20 text-white">
-                <CardContent className="p-4">
-                  <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-                    {t.videos}
-                  </div>
-                  <div className="mt-2 text-2xl font-semibold">{videos.length}</div>
-                </CardContent>
-              </Card>
-
-              <Card className="rounded-[24px] border-white/10 bg-black/20 text-white">
-                <CardContent className="p-4">
-                  <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-                    {t.totalLikes}
-                  </div>
-                  <div className="mt-2 text-2xl font-semibold">{totalLikes.toLocaleString()}</div>
-                </CardContent>
-              </Card>
-
-              <Card className="rounded-[24px] border-white/10 bg-black/20 text-white">
-                <CardContent className="p-4">
-                  <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-                    {t.growthSignal}
-                  </div>
-                  <div className="mt-2 text-2xl font-semibold">+18%</div>
-                </CardContent>
-              </Card>
-            </div>
-          </CardContent>
-        </Card>
-
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {videos.map((video) => (
-            <Card
-              key={video.id}
-              className="overflow-hidden rounded-[30px] border-white/10 bg-white/5 text-white backdrop-blur-2xl"
-            >
-              <div className={`aspect-[4/5] bg-gradient-to-br ${video.bg} p-4`}>
-                <div className="flex h-full items-end rounded-[24px] border border-white/15 bg-black/10 p-4">
-                  <div>
-                    <Badge className="mb-2 rounded-full border-0 bg-black/35 px-3 py-1 text-white">
-                      {video.duration}
-                    </Badge>
-                    <div className="text-xl font-semibold leading-tight">
-                      {video.title[locale]}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <CardContent className="p-4">
-                <div className="mb-3 text-sm text-white/65">{video.caption[locale]}</div>
-                <div className="flex items-center justify-between">
-                  <div className="text-sm text-white/55">
-                    {video.views} {locale === "ru" ? "просмотров" : "views"}
-                  </div>
-                  <Button variant="outline" size="sm" onClick={() => openPost(video)}>
-                    {t.watchSource}
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+    <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
+      <div className="mx-auto max-w-[720px]">
+        <div className="mb-6">
+          <div className="text-[28px] font-semibold tracking-tight">Кабинет</div>
+          <div className="mt-1 text-sm text-neutral-500">
+            Твои действия, настройки и быстрый доступ
+          </div>
         </div>
+
+        <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
+          <button
+            onClick={() => setTab("saved")}
+            className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
+              tab === "saved"
+                ? "bg-neutral-950 text-white"
+                : "bg-white text-neutral-700 border border-neutral-200"
+            }`}
+          >
+            <Bookmark className="h-4 w-4" />
+            Сохранённое
+          </button>
+
+          <button
+            onClick={() => setTab("liked")}
+            className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
+              tab === "liked"
+                ? "bg-neutral-950 text-white"
+                : "bg-white text-neutral-700 border border-neutral-200"
+            }`}
+          >
+            <Heart className="h-4 w-4" />
+            Лайкнутое
+          </button>
+
+          <button
+            onClick={() => setTab("about")}
+            className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
+              tab === "about"
+                ? "bg-neutral-950 text-white"
+                : "bg-white text-neutral-700 border border-neutral-200"
+            }`}
+          >
+            <Info className="h-4 w-4" />О проекте
+          </button>
+        </div>
+
+        {tab === "saved" && (
+          <div className="space-y-3">
+            {savedVideos.map((video) => (
+              <VideoRow
+                key={video.id}
+                video={video}
+                locale={locale}
+                onOpen={() => openPost(video)}
+              />
+            ))}
+          </div>
+        )}
+
+        {tab === "liked" && (
+          <div className="space-y-3">
+            {likedVideos.map((video) => (
+              <VideoRow
+                key={video.id}
+                video={video}
+                locale={locale}
+                onOpen={() => openPost(video)}
+              />
+            ))}
+          </div>
+        )}
+
+        {tab === "about" && (
+          <div className="space-y-4">
+            <CabinetItem
+              title="Margelet"
+              subtitle="Лента видеоконтента из Telegram. Источник всегда остаётся оригинальным, а Margelet даёт контенту новую жизнь."
+            />
+
+            <div className="rounded-2xl border border-neutral-200 bg-white p-4">
+              <div className="mb-3 flex items-center gap-2 text-[16px] font-semibold text-neutral-950">
+                <Globe className="h-4 w-4" />
+                Язык интерфейса
+              </div>
+
+              <div className="flex gap-2">
+                <Button
+                  variant={currentLocale === "ru" ? "default" : "outline"}
+                  className="rounded-full"
+                  onClick={() => {
+                    setCurrentLocale("ru");
+                    localStorage.setItem("margelet-locale", "ru");
+                    window.location.reload();
+                  }}
+                >
+                  RU
+                </Button>
+
+                <Button
+                  variant={currentLocale === "en" ? "default" : "outline"}
+                  className="rounded-full"
+                  onClick={() => {
+                    setCurrentLocale("en");
+                    localStorage.setItem("margelet-locale", "en");
+                    window.location.reload();
+                  }}
+                >
+                  EN
+                </Button>
+              </div>
+            </div>
+
+            <CabinetItem
+              title="Как это работает"
+              subtitle="Ты листаешь ленту, открываешь видео по тапу, а весь трафик уходит в оригинальный Telegram-источник."
+            />
+          </div>
+        )}
       </div>
     </div>
   );
