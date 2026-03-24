@@ -6,8 +6,6 @@ import {
   MessageCircle,
   MoreVertical,
   Play,
-  Repeat2,
-  Send,
   VolumeX,
 } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -99,7 +97,6 @@ function FeedCard({
           <div className="flex items-center gap-4">
             <FeedMetric icon={Heart} value={video.likes} />
             <FeedMetric icon={MessageCircle} value={video.comments} />
-            <FeedMetric icon={Send} value={video.views} />
           </div>
 
           <button className="rounded-full p-1 text-neutral-900">
@@ -118,20 +115,26 @@ function FeedCard({
 function ViewerMetric({
   icon: Icon,
   value,
+  onClick,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   value: string | number;
+  onClick?: () => void;
 }) {
   return (
-    <div className="flex flex-col items-center gap-1 text-white">
+    <button
+      onClick={onClick}
+      className="flex flex-col items-center gap-1 text-white"
+    >
       <Icon className="h-8 w-8" />
       <span className="text-sm font-medium">{value}</span>
-    </div>
+    </button>
   );
 }
 
 export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [expandedCaption, setExpandedCaption] = useState(false);
 
   const activeVideo = useMemo(() => {
     if (viewerIndex === null) return null;
@@ -140,15 +143,18 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
 
   const openViewer = (index: number) => {
     setViewerIndex(index);
+    setExpandedCaption(false);
   };
 
   const closeViewer = () => {
     setViewerIndex(null);
+    setExpandedCaption(false);
   };
 
   const nextViewer = () => {
     if (viewerIndex === null) return;
     setViewerIndex((viewerIndex + 1) % videos.length);
+    setExpandedCaption(false);
   };
 
   return (
@@ -199,24 +205,16 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
                     </button>
 
                     <div className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onLike(activeVideo.id);
-                        }}
-                        className="rounded-full bg-black/20 p-2 text-white backdrop-blur-sm"
-                      >
-                        <Heart className="h-7 w-7" />
-                      </button>
-
-                      <ViewerMetric icon={Heart} value={activeVideo.likes} />
+                      <ViewerMetric
+                        icon={Heart}
+                        value={activeVideo.likes}
+                        onClick={() => onLike(activeVideo.id)}
+                      />
                       <ViewerMetric icon={MessageCircle} value={activeVideo.comments} />
-                      <ViewerMetric icon={Repeat2} value={2} />
-                      <ViewerMetric icon={Send} value={10} />
                       <ViewerMetric icon={Bookmark} value={20} />
                     </div>
 
-                    <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-4 pb-8 pt-20 text-white">
+                    <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-4 pb-8 pt-20 text-white">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
@@ -238,9 +236,25 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
                         </div>
                       </button>
 
-                      <div className="max-w-[82%] truncate text-[16px] leading-6 text-white/95">
+                      <div
+                        className={`max-w-[82%] text-[16px] leading-6 text-white/95 ${
+                          expandedCaption ? "" : "line-clamp-2"
+                        }`}
+                      >
                         {activeVideo.title[locale]}
                       </div>
+
+                      {activeVideo.title[locale].length > 60 && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setExpandedCaption((v) => !v);
+                          }}
+                          className="mt-1 text-sm font-medium text-white/75"
+                        >
+                          {expandedCaption ? "свернуть" : "ещё"}
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
