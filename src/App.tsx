@@ -10,6 +10,42 @@ import { IntroScreen } from "./screens/IntroScreen";
 import { SourceScreen } from "./screens/SourceScreen";
 import type { Locale, TabId, Video } from "./types/app";
 
+const TG_STORAGE_KEY = "margelet_tg_user";
+const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
+
+type TgUser = {
+  id: string;
+  first_name: string;
+  username?: string;
+  photo_url?: string;
+};
+
+function parseTelegramUserFromHash(): TgUser | null {
+  const hash = window.location.hash || "";
+  if (!hash.includes("tgAuthResult=")) return null;
+
+  try {
+    const rawPart = hash.split("tgAuthResult=")[1] ?? "";
+    const encodedJson = rawPart.split("&")[0] ?? "";
+    if (!encodedJson) return null;
+
+    const decodedJson = decodeURIComponent(encodedJson);
+    const parsed = JSON.parse(decodedJson);
+
+    if (!parsed?.id) return null;
+
+    return {
+      id: String(parsed.id),
+      first_name: parsed.first_name || "",
+      username: parsed.username || "",
+      photo_url: parsed.photo_url || "",
+    };
+  } catch (error) {
+    console.error("Failed to parse tgAuthResult from hash", error);
+    return null;
+  }
+}
+
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
@@ -31,30 +67,29 @@ export default function App() {
     localStorage.setItem("margelet-locale", locale);
   }, [locale]);
 
-  // 🔥 ВАЖНО: фикс Telegram auth
   useEffect(() => {
-    if (window.location.hash.includes("tgAuthResult")) {
-      try {
-        const raw = window.location.hash.replace("#tgAuthResult=", "");
-        const decoded = decodeURIComponent(raw);
-        const user = JSON.parse(decoded);
+    const tgUser = parseTelegramUserFromHash();
 
-        if (user?.id) {
-          localStorage.setItem("margelet_tg_user", JSON.stringify(user));
-        }
-      } catch (e) {
-        console.error("TG auth parse error", e);
-      }
+    if (!tgUser) {
+      sessionStorage.removeItem(TG_RELOAD_KEY);
+      return;
+    }
 
-      // убираем hash чтобы не было цикла
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname + window.location.search
-      );
+    localStorage.setItem(TG_STORAGE_KEY, JSON.stringify(tgUser));
 
-      // перезагрузка один раз
+    window.history.replaceState(
+      {},
+      document.title,
+      window.location.pathname + window.location.search
+    );
+
+    const alreadyReloaded = sessionStorage.getItem(TG_RELOAD_KEY) === "1";
+
+    if (!alreadyReloaded) {
+      sessionStorage.setItem(TG_RELOAD_KEY, "1");
       window.location.reload();
+    } else {
+      sessionStorage.removeItem(TG_RELOAD_KEY);
     }
   }, []);
 
@@ -65,7 +100,9 @@ export default function App() {
   };
 
   const handleLike = (id: number) => {
-    setVideos((prev) => prev.map((v) => (v.id === id ? { ...v, likes: v.likes + 1 } : v)));
+    setVideos((prev) =>
+      prev.map((v) => (v.id === id ? { ...v, likes: v.likes + 1 } : v))
+    );
   };
 
   const handleAdd = ({
@@ -157,10 +194,19 @@ export default function App() {
             />
           )}
 
-          {current === "add" && <AddScreen locale={locale} onAdd={handleAdd} />}
+          {current === "add" && (
+            <AddScreen
+              locale={locale}
+              onAdd={handleAdd}
+            />
+          )}
 
           {current === "creator" && (
-            <CreatorScreen locale={locale} videos={videos} openPost={setSelectedPost} />
+            <CreatorScreen
+              locale={locale}
+              videos={videos}
+              openPost={setSelectedPost}
+            />
           )}
 
           {current === "source" && (
@@ -175,7 +221,11 @@ export default function App() {
         </>
       )}
 
-      <PostModal video={selectedPost} locale={locale} onClose={() => setSelectedPost(null)} />
+      <PostModal
+        video={selectedPost}
+        locale={locale}
+        onClose={() => setSelectedPost(null)}
+      />
     </div>
   );
 }
