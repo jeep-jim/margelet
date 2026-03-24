@@ -28,6 +28,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (window.location.hash.includes("tgAuthResult")) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 50);
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("margelet-locale", locale);
   }, [locale]);
 
