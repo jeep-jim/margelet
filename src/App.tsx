@@ -28,16 +28,35 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (window.location.hash.includes("tgAuthResult")) {
-      setTimeout(() => {
-        window.location.reload();
-      }, 50);
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("margelet-locale", locale);
   }, [locale]);
+
+  // 🔥 ВАЖНО: фикс Telegram auth
+  useEffect(() => {
+    if (window.location.hash.includes("tgAuthResult")) {
+      try {
+        const raw = window.location.hash.replace("#tgAuthResult=", "");
+        const decoded = decodeURIComponent(raw);
+        const user = JSON.parse(decoded);
+
+        if (user?.id) {
+          localStorage.setItem("margelet_tg_user", JSON.stringify(user));
+        }
+      } catch (e) {
+        console.error("TG auth parse error", e);
+      }
+
+      // убираем hash чтобы не было цикла
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname + window.location.search
+      );
+
+      // перезагрузка один раз
+      window.location.reload();
+    }
+  }, []);
 
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
