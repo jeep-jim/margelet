@@ -6,15 +6,9 @@ import {
   Send,
   Play,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { Video } from "../types/app";
-
-const TELEGRAM_BOT_ID = "8298054487";
-
-function getTelegramAuthUrl() {
-  const origin = window.location.origin;
-  return `https://oauth.telegram.org/auth?bot_id=${TELEGRAM_BOT_ID}&origin=${origin}&request_access=write`;
-}
+import { useTelegramAuth, type TgUser } from "../lib/useTelegramAuth";
 
 type Props = {
   locale: "ru" | "en";
@@ -23,13 +17,6 @@ type Props = {
 };
 
 type CabinetTab = "saved" | "liked" | "about";
-
-type TgUser = {
-  id: string;
-  first_name: string;
-  username?: string;
-  photo_url?: string;
-};
 
 function LightTab({
   active,
@@ -59,7 +46,7 @@ function LightTab({
   );
 }
 
-function AuthBlock() {
+function AuthBlock({ onLogin }: { onLogin: () => void }) {
   return (
     <div className="overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
       <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
@@ -80,9 +67,7 @@ function AuthBlock() {
           </div>
 
           <button
-            onClick={() => {
-              window.location.href = getTelegramAuthUrl();
-            }}
+            onClick={onLogin}
             className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
           >
             Авторизоваться
@@ -115,13 +100,22 @@ function ProfileBlock({ user }: { user: TgUser }) {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-full bg-white/25" />
+            <div className="h-12 w-12 overflow-hidden rounded-full bg-white/25">
+              {user.photo_url ? (
+                <img
+                  src={user.photo_url}
+                  alt={user.first_name}
+                  className="h-full w-full object-cover"
+                />
+              ) : null}
+            </div>
+
             <div className="min-w-0">
               <div className="truncate text-lg font-semibold">
                 {user.first_name}
               </div>
               <div className="truncate text-sm text-white/90">
-                @{user.username}
+                {user.username ? `@${user.username}` : "Telegram user"}
               </div>
             </div>
           </div>
@@ -161,37 +155,7 @@ function CabinetTile({ onOpen }: { onOpen: () => void }) {
 
 export function CreatorScreen({ videos, openPost }: Props) {
   const [tab, setTab] = useState<CabinetTab>("saved");
-  const [user, setUser] = useState<TgUser | null>(null);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("id");
-
-    if (id) {
-      const nextUser: TgUser = {
-        id,
-        first_name: params.get("first_name") || "",
-        username: params.get("username") || "",
-        photo_url: params.get("photo_url") || "",
-      };
-
-      setUser(nextUser);
-      localStorage.setItem("margelet_tg_user", JSON.stringify(nextUser));
-      window.history.replaceState({}, document.title, window.location.pathname);
-      return;
-    }
-
-    const raw = localStorage.getItem("margelet_tg_user");
-    if (!raw) return;
-
-    try {
-      setUser(JSON.parse(raw));
-    } catch {
-      localStorage.removeItem("margelet_tg_user");
-    }
-  }, []);
-
-  const isAuthorized = !!user;
+  const { user, isAuthorized, login } = useTelegramAuth();
 
   const savedVideos = videos.slice(0, 5);
   const likedVideos = videos.slice(1, 6);
@@ -200,7 +164,11 @@ export function CreatorScreen({ videos, openPost }: Props) {
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
       <div className="mx-auto max-w-[720px]">
         <div className="mb-5">
-          {isAuthorized ? <ProfileBlock user={user!} /> : <AuthBlock />}
+          {isAuthorized && user ? (
+            <ProfileBlock user={user} />
+          ) : (
+            <AuthBlock onLogin={login} />
+          )}
         </div>
 
         <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
