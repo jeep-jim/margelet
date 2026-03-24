@@ -6,9 +6,16 @@ import {
   Send,
   Play,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Video } from "../types/app";
-import { useTelegramAuth, type TgUser } from "../lib/useTelegramAuth";
+
+const TELEGRAM_BOT_ID = "8298054487";
+const TG_STORAGE_KEY = "margelet_tg_user";
+
+function getTelegramAuthUrl() {
+  const origin = window.location.origin;
+  return `https://oauth.telegram.org/auth?bot_id=${TELEGRAM_BOT_ID}&origin=${origin}&request_access=write`;
+}
 
 type Props = {
   locale: "ru" | "en";
@@ -17,6 +24,51 @@ type Props = {
 };
 
 type CabinetTab = "saved" | "liked" | "about";
+
+type TgUser = {
+  id: string;
+  first_name: string;
+  username?: string;
+  photo_url?: string;
+};
+
+function readTelegramUserFromUrl(): TgUser | null {
+  const hash = window.location.hash || "";
+  const prefix = "#tgAuthResult=";
+
+  if (!hash.startsWith(prefix)) return null;
+
+  const encoded = hash.slice(prefix.length);
+  if (!encoded) return null;
+
+  try {
+    const decoded = decodeURIComponent(encoded);
+    const parsed = JSON.parse(decoded);
+
+    if (!parsed?.id) return null;
+
+    return {
+      id: String(parsed.id),
+      first_name: parsed.first_name || "",
+      username: parsed.username || "",
+      photo_url: parsed.photo_url || "",
+    };
+  } catch {
+    return null;
+  }
+}
+
+function readTelegramUserFromStorage(): TgUser | null {
+  const raw = localStorage.getItem(TG_STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw) as TgUser;
+  } catch {
+    localStorage.removeItem(TG_STORAGE_KEY);
+    return null;
+  }
+}
 
 function LightTab({
   active,
@@ -46,7 +98,7 @@ function LightTab({
   );
 }
 
-function AuthBlock({ onLogin }: { onLogin: () => void }) {
+function AuthBlock() {
   return (
     <div className="overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
       <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
@@ -67,7 +119,9 @@ function AuthBlock({ onLogin }: { onLogin: () => void }) {
           </div>
 
           <button
-            onClick={onLogin}
+            onClick={() => {
+              window.location.href = getTelegramAuthUrl();
+            }}
             className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
           >
             Авторизоваться
@@ -100,22 +154,13 @@ function ProfileBlock({ user }: { user: TgUser }) {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 overflow-hidden rounded-full bg-white/25">
-              {user.photo_url ? (
-                <img
-                  src={user.photo_url}
-                  alt={user.first_name}
-                  className="h-full w-full object-cover"
-                />
-              ) : null}
-            </div>
-
+            <div className="h-12 w-12 rounded-full bg-white/25" />
             <div className="min-w-0">
               <div className="truncate text-lg font-semibold">
                 {user.first_name}
               </div>
               <div className="truncate text-sm text-white/90">
-                {user.username ? `@${user.username}` : "Telegram user"}
+                @{user.username}
               </div>
             </div>
           </div>
@@ -155,7 +200,29 @@ function CabinetTile({ onOpen }: { onOpen: () => void }) {
 
 export function CreatorScreen({ videos, openPost }: Props) {
   const [tab, setTab] = useState<CabinetTab>("saved");
-  const { user, isAuthorized, login } = useTelegramAuth();
+  const [user, setUser] = useState<TgUser | null>(null);
+
+  useEffect(() => {
+    const urlUser = readTelegramUserFromUrl();
+
+    if (urlUser) {
+      setUser(urlUser);
+      localStorage.setItem(TG_STORAGE_KEY, JSON.stringify(urlUser));
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname + window.location.search
+      );
+      return;
+    }
+
+    const storedUser = readTelegramUserFromStorage();
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
+  const isAuthorized = !!user;
 
   const savedVideos = videos.slice(0, 5);
   const likedVideos = videos.slice(1, 6);
@@ -164,11 +231,7 @@ export function CreatorScreen({ videos, openPost }: Props) {
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
       <div className="mx-auto max-w-[720px]">
         <div className="mb-5">
-          {isAuthorized && user ? (
-            <ProfileBlock user={user} />
-          ) : (
-            <AuthBlock onLogin={login} />
-          )}
+          {isAuthorized ? <ProfileBlock user={user!} /> : <AuthBlock />}
         </div>
 
         <div className="mb-5 flex gap-2 overflow-x-auto pb-1">

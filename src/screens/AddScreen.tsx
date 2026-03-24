@@ -1,8 +1,15 @@
 import { ArrowRightLeft, Link as LinkIcon, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Locale } from "../types/app";
 import { Input } from "../components/ui/Input";
-import { useTelegramAuth } from "../lib/useTelegramAuth";
+
+const TELEGRAM_BOT_ID = "8298054487";
+const TG_STORAGE_KEY = "margelet_tg_user";
+
+function getTelegramAuthUrl() {
+  const origin = window.location.origin;
+  return `https://oauth.telegram.org/auth?bot_id=${TELEGRAM_BOT_ID}&origin=${origin}&request_access=write`;
+}
 
 type Props = {
   locale: Locale;
@@ -13,7 +20,52 @@ type Props = {
   }) => void;
 };
 
-function AuthBlock({ onLogin }: { onLogin: () => void }) {
+type TgUser = {
+  id: string;
+  first_name: string;
+  username?: string;
+  photo_url?: string;
+};
+
+function readTelegramUserFromUrl(): TgUser | null {
+  const hash = window.location.hash || "";
+  const prefix = "#tgAuthResult=";
+
+  if (!hash.startsWith(prefix)) return null;
+
+  const encoded = hash.slice(prefix.length);
+  if (!encoded) return null;
+
+  try {
+    const decoded = decodeURIComponent(encoded);
+    const parsed = JSON.parse(decoded);
+
+    if (!parsed?.id) return null;
+
+    return {
+      id: String(parsed.id),
+      first_name: parsed.first_name || "",
+      username: parsed.username || "",
+      photo_url: parsed.photo_url || "",
+    };
+  } catch {
+    return null;
+  }
+}
+
+function readTelegramUserFromStorage(): TgUser | null {
+  const raw = localStorage.getItem(TG_STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw) as TgUser;
+  } catch {
+    localStorage.removeItem(TG_STORAGE_KEY);
+    return null;
+  }
+}
+
+function AuthBlock() {
   return (
     <div className="mt-6">
       <div className="mb-4 text-lg font-semibold text-neutral-950">
@@ -21,7 +73,9 @@ function AuthBlock({ onLogin }: { onLogin: () => void }) {
       </div>
 
       <button
-        onClick={onLogin}
+        onClick={() => {
+          window.location.href = getTelegramAuthUrl();
+        }}
         className="flex w-full items-center justify-center gap-4 rounded-full bg-[#4da3ff] px-6 py-4 text-white transition hover:bg-[#3b92ea]"
       >
         <span className="text-lg font-semibold">margeleT</span>
@@ -34,7 +88,29 @@ function AuthBlock({ onLogin }: { onLogin: () => void }) {
 
 export function AddScreen({ onAdd }: Props) {
   const [url, setUrl] = useState("");
-  const { isAuthorized, login } = useTelegramAuth();
+  const [user, setUser] = useState<TgUser | null>(null);
+
+  useEffect(() => {
+    const urlUser = readTelegramUserFromUrl();
+
+    if (urlUser) {
+      setUser(urlUser);
+      localStorage.setItem(TG_STORAGE_KEY, JSON.stringify(urlUser));
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname + window.location.search
+      );
+      return;
+    }
+
+    const storedUser = readTelegramUserFromStorage();
+    if (storedUser) {
+      setUser(storedUser);
+    }
+  }, []);
+
+  const isAuthorized = !!user;
 
   const handleSubmit = () => {
     const cleanUrl = url.trim();
@@ -57,7 +133,7 @@ export function AddScreen({ onAdd }: Props) {
         </div>
 
         {!isAuthorized ? (
-          <AuthBlock onLogin={login} />
+          <AuthBlock />
         ) : (
           <div className="mt-6">
             <div className="mb-3 text-sm text-neutral-500">
