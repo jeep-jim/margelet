@@ -1,5 +1,4 @@
 import { Play, Plus, User } from "lucide-react";
-import { messages } from "../../lib/i18n";
 import type { Locale, TabId } from "../../types/app";
 
 type Props = {
@@ -8,23 +7,29 @@ type Props = {
   locale: Locale;
 };
 
-export function AppHeader({ current, setCurrent, locale }: Props) {
-  const t = messages[locale];
-
+export function AppHeader({ current, setCurrent }: Props) {
   const tabs = [
-    { id: "feed" as const, label: t.navFeed, icon: Play },
-    { id: "add" as const, label: t.navAdd, icon: Plus },
+    { id: "feed" as const, label: "Лента", icon: Play },
+    { id: "add" as const, label: "Добавить", icon: Plus },
     { id: "creator" as const, label: "Кабинет", icon: User },
   ];
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-neutral-200 bg-neutral-50/92 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-neutral-200 bg-neutral-50/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 w-full max-w-[720px] items-center justify-between px-4">
         <button
           onClick={() => setCurrent("feed")}
-          className="text-left text-[24px] font-semibold tracking-tight text-neutral-950"
+          className="flex items-center gap-3 text-left"
+          aria-label="Margelet"
+          title="Margelet"
         >
-          Margelet
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-neutral-950 text-sm font-bold text-white">
+            M
+          </div>
+
+        <div className="text-2xl font-extrabold tracking-[-0.03em] text-neutral-950">
+          margeleT
+        </div>
         </button>
 
         <nav className="flex items-center gap-1">

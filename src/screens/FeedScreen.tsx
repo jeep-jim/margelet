@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   Bookmark,
-  Eye,
   Heart,
   MessageCircle,
   MoreVertical,
@@ -12,16 +11,12 @@ import {
   VolumeX,
 } from "lucide-react";
 import { useMemo, useState } from "react";
-import type { Locale, TabId, Video } from "../types/app";
-import { messages } from "../lib/i18n";
+import type { Locale, Video } from "../types/app";
 
 type Props = {
   locale: Locale;
   videos: Video[];
   onLike: (id: number) => void;
-  onSkip: (id: number) => void;
-  openPost: (video: Video) => void;
-  setCurrent: (tab: TabId) => void;
   openSource: (channel: string) => void;
 };
 
@@ -88,10 +83,7 @@ function FeedCard({
         </button>
       </div>
 
-      <button
-        onClick={onOpen}
-        className="relative mt-3 block w-full bg-neutral-100"
-      >
+      <button onClick={onOpen} className="relative mt-3 block w-full bg-neutral-100">
         <div className="relative aspect-[9/14] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/12]">
           <div className="absolute inset-0 bg-[linear-gradient(180deg,#d4d4d8_0%,#e5e7eb_100%)]" />
           <div className="absolute inset-0 flex items-center justify-center">
@@ -139,17 +131,7 @@ function ViewerMetric({
   );
 }
 
-export function FeedScreen({
-  locale,
-  videos,
-  onLike,
-  onSkip,
-  openPost,
-  setCurrent,
-  openSource,
-}: Props) {
-
-  const t = messages[locale];
+export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
 
   const activeVideo = useMemo(() => {
@@ -213,10 +195,7 @@ export function FeedScreen({
                       </button>
                     </div>
 
-                    <button
-                      onClick={nextViewer}
-                      className="absolute inset-0 block h-full w-full"
-                    >
+                    <button onClick={nextViewer} className="absolute inset-0 block h-full w-full">
                       <span className="sr-only">Next video</span>
                     </button>
 

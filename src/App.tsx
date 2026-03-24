@@ -41,8 +41,6 @@ export default function App() {
     setVideos((prev) => prev.map((v) => (v.id === id ? { ...v, likes: v.likes + 1 } : v)));
   };
 
-  const handleSkip = (_id: number) => {};
-
   const handleAdd = ({
     url,
     title,
@@ -128,9 +126,6 @@ export default function App() {
               locale={locale}
               videos={videos}
               onLike={handleLike}
-              onSkip={handleSkip}
-              openPost={setSelectedPost}
-              setCurrent={setCurrent}
               openSource={openSource}
             />
           )}
