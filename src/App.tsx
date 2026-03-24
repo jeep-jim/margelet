@@ -20,17 +20,22 @@ type TgUser = {
   photo_url?: string;
 };
 
+function decodeBase64Url(value: string) {
+  const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
+  const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
+  return atob(padded);
+}
+
 function parseTelegramUserFromHash(): TgUser | null {
   const hash = window.location.hash || "";
-  if (!hash.includes("tgAuthResult=")) return null;
+  const match = hash.match(/tgAuthResult=([^&]+)/);
+
+  if (!match?.[1]) return null;
 
   try {
-    const rawPart = hash.split("tgAuthResult=")[1] ?? "";
-    const encodedJson = rawPart.split("&")[0] ?? "";
-    if (!encodedJson) return null;
-
-    const decodedJson = decodeURIComponent(encodedJson);
-    const parsed = JSON.parse(decodedJson);
+    const encoded = match[1];
+    const jsonString = decodeBase64Url(encoded);
+    const parsed = JSON.parse(jsonString);
 
     if (!parsed?.id) return null;
 
