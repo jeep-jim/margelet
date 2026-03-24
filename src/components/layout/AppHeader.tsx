@@ -1,4 +1,4 @@
-import { Play, Plus, Sparkles, User } from "lucide-react";
+import { Play, Plus, User } from "lucide-react";
 import { messages } from "../../lib/i18n";
 import type { Locale, TabId } from "../../types/app";
 
@@ -12,29 +12,22 @@ export function AppHeader({ current, setCurrent, locale }: Props) {
   const t = messages[locale];
 
   const tabs = [
-    { id: "intro" as const, label: t.navIntro, icon: Sparkles },
     { id: "feed" as const, label: t.navFeed, icon: Play },
     { id: "add" as const, label: t.navAdd, icon: Plus },
-    { id: "creator" as const, label: t.navCreator, icon: User },
+    { id: "creator" as const, label: "Кабинет", icon: User },
   ];
 
   return (
-    <div className="absolute inset-x-0 top-0 z-40 mx-auto w-full max-w-[520px] px-3 pt-3 sm:px-4 sm:pt-4">
-      <div className="flex items-center justify-between gap-3">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-neutral-200 bg-neutral-50/92 backdrop-blur-md">
+      <div className="mx-auto flex h-16 w-full max-w-[720px] items-center justify-between px-4">
         <button
           onClick={() => setCurrent("feed")}
-          className="flex h-12 items-center gap-2 rounded-full border border-white/10 bg-black/28 px-3 text-white/95 backdrop-blur-xl"
+          className="text-left text-[24px] font-semibold tracking-tight text-neutral-950"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-bold text-black">
-            M
-          </div>
-
-          <div className="leading-tight">
-            <div className="text-sm font-semibold">Margelet</div>
-          </div>
+          Margelet
         </button>
 
-        <div className="flex h-12 items-center gap-1 rounded-full border border-white/10 bg-black/28 p-1 text-white backdrop-blur-xl">
+        <nav className="flex items-center gap-1">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const active = current === tab.id;
@@ -43,19 +36,20 @@ export function AppHeader({ current, setCurrent, locale }: Props) {
               <button
                 key={tab.id}
                 onClick={() => setCurrent(tab.id)}
-                className={`flex h-10 items-center justify-center gap-2 rounded-full px-3 transition ${
+                className={`flex h-10 w-10 items-center justify-center rounded-full transition ${
                   active
-                    ? "bg-white text-black"
-                    : "text-white/75 hover:bg-white/8 hover:text-white"
+                    ? "bg-neutral-950 text-white"
+                    : "text-neutral-700 hover:bg-neutral-200"
                 }`}
+                aria-label={tab.label}
+                title={tab.label}
               >
-                <Icon className="h-4 w-4" />
-                <span className="hidden text-sm sm:inline">{tab.label}</span>
+                <Icon className="h-5 w-5" />
               </button>
             );
           })}
-        </div>
+        </nav>
       </div>
-    </div>
+    </header>
   );
 }
