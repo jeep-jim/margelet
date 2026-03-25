@@ -154,7 +154,16 @@ function ProfileBlock({ user }: { user: TgUser }) {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="h-12 w-12 rounded-full bg-white/25" />
+            <div className="h-12 w-12 overflow-hidden rounded-full bg-white/25">
+              {user.photo_url ? (
+                <img
+                  src={user.photo_url}
+                  alt={user.first_name}
+                  className="h-full w-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              ) : null}
+            </div>
             <div className="min-w-0">
               <div className="truncate text-lg font-semibold">
                 {user.first_name}
