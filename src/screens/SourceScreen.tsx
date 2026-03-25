@@ -7,6 +7,7 @@ import {
   Play,
   ExternalLink,
 } from "lucide-react";
+import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { Video } from "../types/app";
 
 type Props = {
@@ -125,8 +126,13 @@ export function SourceScreen({
             </div>
 
             <div className="min-w-0">
-              <div className="truncate text-[28px] font-semibold leading-tight text-neutral-950">
-                {source.channel}
+              <div className="flex items-center gap-2">
+                <div className="truncate text-[28px] font-semibold leading-tight text-neutral-950">
+                  {source.channel}
+                </div>
+                {source.channelVerified ? (
+                  <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+                ) : null}
               </div>
               <div className="truncate text-[16px] text-neutral-500">
                 {source.handle}

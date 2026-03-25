@@ -1,0 +1,190 @@
+import type { Locale, MediaType, Video } from "../types/app";
+
+export type SubmitPayload = {
+  url: string;
+  title?: string;
+  channel?: string;
+};
+
+export type ParsedTelegramPostUrl = {
+  originalUrl: string;
+  normalizedUrl: string;
+  host: string;
+  sourceHandle: string;
+  sourceUrl: string;
+  postId: string;
+};
+
+type BuildPostOptions = {
+  locale: Locale;
+  messages: {
+    newVideoFallback: string;
+    newVideoCaption: string;
+    newChannel: string;
+    newLang: string;
+  };
+  enMessages: {
+    newVideoFallback: string;
+    newVideoCaption: string;
+    newChannel: string;
+    newLang: string;
+  };
+};
+
+const TELEGRAM_HOSTS = new Set(["t.me", "www.t.me", "telegram.me", "www.telegram.me"]);
+
+export function normalizeTelegramUrl(raw: string): string {
+  const trimmed = raw.trim();
+
+  if (!trimmed) return "";
+
+  const withProtocol =
+    trimmed.startsWith("http://") || trimmed.startsWith("https://")
+      ? trimmed
+      : `https://${trimmed}`;
+
+  const url = new URL(withProtocol);
+  url.hash = "";
+
+  return url.toString();
+}
+
+export function parseTelegramPostUrl(raw: string): ParsedTelegramPostUrl | null {
+  if (!raw.trim()) return null;
+
+  try {
+    const normalizedUrl = normalizeTelegramUrl(raw);
+    const url = new URL(normalizedUrl);
+
+    if (!TELEGRAM_HOSTS.has(url.hostname)) return null;
+
+    const parts = url.pathname.split("/").filter(Boolean);
+
+    // Поддерживаем только публичные посты вида t.me/channel/123
+    if (parts.length !== 2) return null;
+
+    const [sourceHandle, postId] = parts;
+
+    if (!/^[A-Za-z0-9_]{4,}$/.test(sourceHandle)) return null;
+    if (!/^\d+$/.test(postId)) return null;
+
+    return {
+      originalUrl: raw,
+      normalizedUrl,
+      host: url.hostname,
+      sourceHandle,
+      sourceUrl: `https://t.me/${sourceHandle}`,
+      postId,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function isTelegramPostUrl(raw: string): boolean {
+  return !!parseTelegramPostUrl(raw);
+}
+
+export function inferMediaTypeFromUrl(raw: string, title = ""): MediaType {
+  const value = `${raw} ${title}`.toLowerCase();
+
+  if (
+    value.includes("image") ||
+    value.includes("img") ||
+    value.includes("photo") ||
+    value.includes("poster") ||
+    value.includes("art") ||
+    value.includes("pic") ||
+    value.includes("jpg") ||
+    value.includes("jpeg") ||
+    value.includes("png") ||
+    value.includes("webp")
+  ) {
+    return "image";
+  }
+
+  return "video";
+}
+
+export function buildAvatarLetters(source: string): string {
+  return (source || "TG")
+    .split(/[\s_]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((chunk) => chunk[0] ?? "")
+    .join("")
+    .toUpperCase();
+}
+
+export function buildHandle(source: string): string {
+  const clean = source.replace(/^@/, "").trim().toLowerCase();
+  return `@${clean || "telegram"}`;
+}
+
+export function buildSubmittedPost(
+  payload: SubmitPayload,
+  options: BuildPostOptions
+): Video {
+  const parsed = parseTelegramPostUrl(payload.url);
+
+  if (!parsed) {
+    throw new Error("INVALID_TELEGRAM_POST_URL");
+  }
+
+  const sourceName = payload.channel?.trim() || parsed.sourceHandle;
+  const handle = buildHandle(parsed.sourceHandle);
+  const mediaType = inferMediaTypeFromUrl(parsed.normalizedUrl, payload.title || "");
+
+  const palettes = [
+    "from-fuchsia-500 via-purple-600 to-indigo-700",
+    "from-amber-400 via-orange-500 to-rose-600",
+    "from-sky-400 via-cyan-500 to-teal-600",
+    "from-emerald-500 via-teal-500 to-cyan-600",
+    "from-rose-500 via-pink-500 to-orange-400",
+  ];
+
+  const titleRu =
+    payload.title?.trim() ||
+    (mediaType === "image"
+      ? `Пост из ${handle}`
+      : `Видео из ${handle}`);
+
+  const titleEn =
+    payload.title?.trim() ||
+    (mediaType === "image"
+      ? `Post from ${handle}`
+      : `Video from ${handle}`);
+
+  const captionRu =
+    mediaType === "image"
+      ? `Telegram-пост ${parsed.postId} с изображением из ${handle} добавлен в общую ленту MargeleT.`
+      : `Telegram-пост ${parsed.postId} с видео из ${handle} добавлен в общую ленту MargeleT.`;
+
+  const captionEn =
+    mediaType === "image"
+      ? `Telegram image post ${parsed.postId} from ${handle} was added to the shared MargeleT feed.`
+      : `Telegram video post ${parsed.postId} from ${handle} was added to the shared MargeleT feed.`;
+
+  return {
+    id: Date.now(),
+    mediaType,
+    title: {
+      ru: titleRu,
+      en: titleEn,
+    },
+    caption: {
+      ru: captionRu,
+      en: captionEn,
+    },
+    channel: sourceName || options.messages.newChannel,
+    avatar: buildAvatarLetters(sourceName || parsed.sourceHandle),
+    handle,
+    views: "0",
+    likes: 0,
+    comments: 0,
+    duration: mediaType === "video" ? "0:24" : "",
+    lang: options.messages.newLang || "RU",
+    postUrl: parsed.normalizedUrl,
+    bg: palettes[Math.floor(Math.random() * palettes.length)],
+  };
+}

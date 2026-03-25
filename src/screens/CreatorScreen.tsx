@@ -8,6 +8,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { Video } from "../types/app";
 
 const TELEGRAM_BOT_ID = "8298054487";
@@ -89,7 +90,7 @@ function AuthBlock() {
           </div>
 
           <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
-            Сохраняй видео, ставь лайки и управляй своим потоком внутри
+            Сохраняй посты, ставь лайки и управляй своим потоком внутри
             margeleT.
           </div>
 
@@ -119,9 +120,11 @@ function AuthBlock() {
 
 function ProfileBlock({
   user,
+  verified,
   onLogout,
 }: {
   user: TgUser;
+  verified: boolean;
   onLogout: () => void;
 }) {
   return (
@@ -147,9 +150,15 @@ function ProfileBlock({
             </div>
 
             <div className="min-w-0">
-              <div className="truncate text-lg font-semibold">
-                {user.first_name}
+              <div className="flex items-center gap-1.5">
+                <div className="truncate text-lg font-semibold">
+                  {user.first_name}
+                </div>
+                {verified ? (
+                  <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+                ) : null}
               </div>
+
               <div className="truncate text-sm text-neutral-500">
                 {user.username ? `@${user.username}` : "Telegram user"}
               </div>
@@ -185,15 +194,31 @@ function ProfileBlock({
   );
 }
 
-function CabinetTile({ onOpen }: { onOpen: () => void }) {
+function CabinetTile({
+  video,
+  onOpen,
+}: {
+  video: Video;
+  onOpen: () => void;
+}) {
   return (
     <button
       onClick={onOpen}
       className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-200"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,#d4d4d8_0%,#e5e7eb_100%)]" />
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${
+          video.bg || "from-neutral-300 to-neutral-200"
+        }`}
+      />
       <div className="absolute inset-0 flex items-center justify-center opacity-70 transition group-hover:opacity-100">
-        <Play className="h-7 w-7 text-neutral-800" />
+        {video.mediaType === "video" ? (
+          <Play className="h-7 w-7 text-neutral-800" />
+        ) : (
+          <div className="text-xs font-semibold uppercase tracking-[0.08em] text-neutral-800">
+            Image
+          </div>
+        )}
       </div>
     </button>
   );
@@ -220,12 +245,25 @@ export function CreatorScreen({ videos, openPost }: Props) {
   const savedVideos = videos.slice(0, 5);
   const likedVideos = videos.slice(1, 6);
 
+  const profileVerified = isAuthorized
+    ? videos.some(
+        (video) =>
+          !!video.channelVerified &&
+          user?.username &&
+          video.handle.toLowerCase() === `@${user.username.toLowerCase()}`
+      )
+    : false;
+
   return (
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
       <div className="mx-auto max-w-[720px]">
         <div className="mb-5">
           {isAuthorized && user ? (
-            <ProfileBlock user={user} onLogout={handleLogout} />
+            <ProfileBlock
+              user={user}
+              verified={profileVerified}
+              onLogout={handleLogout}
+            />
           ) : (
             <AuthBlock />
           )}
@@ -254,7 +292,7 @@ export function CreatorScreen({ videos, openPost }: Props) {
 
         {!isAuthorized && tab !== "about" ? (
           <div className="rounded-2xl bg-white px-4 py-4 text-sm leading-6 text-neutral-600">
-            Авторизуйтесь, чтобы сохранять видео, которые вам понравились,
+            Авторизуйтесь, чтобы сохранять посты, которые вам понравились,
             и иметь доступ к другим возможностям margeleT.
           </div>
         ) : (
@@ -262,7 +300,11 @@ export function CreatorScreen({ videos, openPost }: Props) {
             {tab === "saved" && (
               <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
                 {savedVideos.map((video) => (
-                  <CabinetTile key={video.id} onOpen={() => openPost(video)} />
+                  <CabinetTile
+                    key={video.id}
+                    video={video}
+                    onOpen={() => openPost(video)}
+                  />
                 ))}
               </div>
             )}
@@ -270,7 +312,11 @@ export function CreatorScreen({ videos, openPost }: Props) {
             {tab === "liked" && (
               <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
                 {likedVideos.map((video) => (
-                  <CabinetTile key={video.id} onOpen={() => openPost(video)} />
+                  <CabinetTile
+                    key={video.id}
+                    video={video}
+                    onOpen={() => openPost(video)}
+                  />
                 ))}
               </div>
             )}
@@ -278,7 +324,15 @@ export function CreatorScreen({ videos, openPost }: Props) {
             {tab === "about" && (
               <div className="space-y-3">
                 <div className="rounded-2xl bg-white px-4 py-4 text-[15px] leading-7 text-neutral-700">
-                  MargeleT — это общая лента видео из Telegram.
+                  MargeleT — это общая визуальная лента Telegram-постов.
+                  Контент создаётся как ценность, но часто тонет в каналах как
+                  мусор. MargeleT возвращает его в поле зрения.
+                </div>
+
+                <div className="rounded-2xl bg-white px-4 py-4 text-[15px] leading-7 text-neutral-700">
+                  Мы не делаем вторую соцсеть внутри соцсети. Комментарии,
+                  источник и переходы живут в Telegram, а MargeleT даёт общую
+                  ленту discovery.
                 </div>
               </div>
             )}

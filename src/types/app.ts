@@ -17,6 +17,7 @@ export type Video = {
   channel: string;
   avatar: string;
   handle: string;
+  channelVerified?: boolean;
   views: string;
   likes: number;
   comments: number;

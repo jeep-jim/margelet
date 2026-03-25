@@ -9,6 +9,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 import { useMemo, useState } from "react";
+import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { Locale, Video } from "../types/app";
 
 type Props = {
@@ -40,8 +41,13 @@ function SourceHeader({
       </div>
 
       <div className="min-w-0">
-        <div className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
-          {video.channel}
+        <div className="flex items-center gap-1.5">
+          <div className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
+            {video.channel}
+          </div>
+          {video.channelVerified ? (
+            <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+          ) : null}
         </div>
         <div className="truncate text-sm text-neutral-500">{video.handle}</div>
       </div>
@@ -330,8 +336,13 @@ export function FeedScreen({
                         </div>
 
                         <div className="min-w-0">
-                          <div className="truncate text-xl font-semibold">
-                            {activeVideo.channel}
+                          <div className="flex items-center gap-1.5">
+                            <div className="truncate text-xl font-semibold">
+                              {activeVideo.channel}
+                            </div>
+                            {activeVideo.channelVerified ? (
+                              <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+                            ) : null}
                           </div>
                           <div className="truncate text-sm text-white/75">
                             {activeVideo.handle}
