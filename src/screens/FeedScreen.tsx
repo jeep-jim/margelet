@@ -3,10 +3,10 @@ import {
   ArrowLeft,
   Bookmark,
   Heart,
-  MessageCircle,
   MoreVertical,
   Play,
   VolumeX,
+  Image as ImageIcon,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { Locale, Video } from "../types/app";
@@ -14,7 +14,10 @@ import type { Locale, Video } from "../types/app";
 type Props = {
   locale: Locale;
   videos: Video[];
-  onLike: (id: number) => void;
+  likedPostIds: number[];
+  savedPostIds: number[];
+  onToggleLike: (id: number) => void;
+  onToggleSave: (id: number) => void;
   openSource: (channel: string) => void;
 };
 
@@ -49,28 +52,54 @@ function SourceHeader({
 function FeedMetric({
   icon: Icon,
   value,
+  active = false,
+  onClick,
+  filledClassName,
+  idleClassName,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   value: string | number;
+  active?: boolean;
+  onClick?: () => void;
+  filledClassName?: string;
+  idleClassName?: string;
 }) {
   return (
-    <div className="flex items-center gap-2 text-neutral-950">
-      <Icon className="h-5 w-5" />
+    <button
+      onClick={onClick}
+      className="flex items-center gap-2 text-neutral-950"
+      type="button"
+    >
+      <Icon
+        className={`h-5 w-5 ${
+          active
+            ? filledClassName || "fill-current text-neutral-950"
+            : idleClassName || "text-neutral-950"
+        }`}
+      />
       <span className="text-[15px] font-medium">{value}</span>
-    </div>
+    </button>
   );
 }
 
 function FeedCard({
   video,
   locale,
+  liked,
+  saved,
   onOpen,
   onOpenCreator,
+  onToggleLike,
+  onToggleSave,
 }: {
   video: Video;
   locale: Locale;
+  liked: boolean;
+  saved: boolean;
   onOpen: () => void;
   onOpenCreator: () => void;
+  onToggleLike: () => void;
+  onToggleSave: () => void;
 }) {
   return (
     <article className="overflow-hidden border-b border-neutral-200 bg-white">
@@ -83,24 +112,55 @@ function FeedCard({
 
       <button onClick={onOpen} className="relative mt-3 block w-full bg-neutral-100">
         <div className="relative aspect-[9/13] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/12]">
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,#d4d4d8_0%,#e5e7eb_100%)]" />
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${
+              video.bg || "from-neutral-300 to-neutral-200"
+            }`}
+          />
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/10 backdrop-blur-sm">
-              <Play className="ml-1 h-8 w-8 text-neutral-900" />
+              {video.mediaType === "video" ? (
+                <Play className="ml-1 h-8 w-8 text-neutral-900" />
+              ) : (
+                <ImageIcon className="h-8 w-8 text-neutral-900" />
+              )}
             </div>
           </div>
+
+          <div className="absolute left-3 top-3 rounded-full bg-black/20 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm">
+            {video.mediaType}
+          </div>
+
+          {video.mediaType === "video" && video.duration ? (
+            <div className="absolute bottom-3 right-3 rounded-full bg-black/25 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+              {video.duration}
+            </div>
+          ) : null}
         </div>
       </button>
 
       <div className="px-4 py-3">
         <div className="mb-3 flex items-center justify-between gap-3">
           <div className="flex items-center gap-4">
-            <FeedMetric icon={Heart} value={video.likes} />
-            <FeedMetric icon={MessageCircle} value={video.comments} />
+            <FeedMetric
+              icon={Heart}
+              value={video.likes}
+              active={liked}
+              onClick={onToggleLike}
+              filledClassName="fill-current text-neutral-950"
+            />
           </div>
 
-          <button className="rounded-full p-1 text-neutral-900">
-            <Bookmark className="h-6 w-6" />
+          <button
+            className="rounded-full p-1 text-neutral-900"
+            onClick={onToggleSave}
+            type="button"
+          >
+            <Bookmark
+              className={`h-6 w-6 ${
+                saved ? "fill-current text-neutral-950" : "text-neutral-900"
+              }`}
+            />
           </button>
         </div>
 
@@ -115,24 +175,39 @@ function FeedCard({
 function ViewerMetric({
   icon: Icon,
   value,
+  active = false,
   onClick,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   value: string | number;
+  active?: boolean;
   onClick?: () => void;
 }) {
   return (
     <button
       onClick={onClick}
       className="flex flex-col items-center gap-1 text-white"
+      type="button"
     >
-      <Icon className="h-8 w-8" />
+      <Icon
+        className={`h-8 w-8 ${
+          active ? "fill-current text-white" : "text-white"
+        }`}
+      />
       <span className="text-sm font-medium">{value}</span>
     </button>
   );
 }
 
-export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
+export function FeedScreen({
+  locale,
+  videos,
+  likedPostIds,
+  savedPostIds,
+  onToggleLike,
+  onToggleSave,
+  openSource,
+}: Props) {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const [expandedCaption, setExpandedCaption] = useState(false);
 
@@ -140,6 +215,9 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
     if (viewerIndex === null) return null;
     return videos[viewerIndex] ?? null;
   }, [viewerIndex, videos]);
+
+  const activeLiked = activeVideo ? likedPostIds.includes(activeVideo.id) : false;
+  const activeSaved = activeVideo ? savedPostIds.includes(activeVideo.id) : false;
 
   const openViewer = (index: number) => {
     setViewerIndex(index);
@@ -165,8 +243,12 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
             key={video.id}
             video={video}
             locale={locale}
+            liked={likedPostIds.includes(video.id)}
+            saved={savedPostIds.includes(video.id)}
             onOpen={() => openViewer(index)}
             onOpenCreator={() => openSource(video.channel)}
+            onToggleLike={() => onToggleLike(video.id)}
+            onToggleSave={() => onToggleSave(video.id)}
           />
         ))}
       </div>
@@ -185,7 +267,11 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="h-full w-full max-w-[520px] bg-black">
                   <div className="relative h-full w-full overflow-hidden">
-                    <div className="absolute inset-0 bg-[linear-gradient(180deg,#111827_0%,#1f2937_100%)]" />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${
+                        activeVideo.bg || "from-neutral-800 to-neutral-700"
+                      }`}
+                    />
 
                     <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between">
                       <button
@@ -201,17 +287,34 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
                     </div>
 
                     <button onClick={nextViewer} className="absolute inset-0 block h-full w-full">
-                      <span className="sr-only">Next video</span>
+                      <span className="sr-only">Next post</span>
                     </button>
+
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {activeVideo.mediaType === "video" ? (
+                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/15 backdrop-blur-sm">
+                          <Play className="ml-1 h-12 w-12 text-white" />
+                        </div>
+                      ) : (
+                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/15 backdrop-blur-sm">
+                          <ImageIcon className="h-12 w-12 text-white" />
+                        </div>
+                      )}
+                    </div>
 
                     <div className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
                       <ViewerMetric
                         icon={Heart}
                         value={activeVideo.likes}
-                        onClick={() => onLike(activeVideo.id)}
+                        active={activeLiked}
+                        onClick={() => onToggleLike(activeVideo.id)}
                       />
-                      <ViewerMetric icon={MessageCircle} value={activeVideo.comments} />
-                      <ViewerMetric icon={Bookmark} value={20} />
+                      <ViewerMetric
+                        icon={Bookmark}
+                        value={20}
+                        active={activeSaved}
+                        onClick={() => onToggleSave(activeVideo.id)}
+                      />
                     </div>
 
                     <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-4 pb-8 pt-20 text-white">
@@ -236,6 +339,16 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
                         </div>
                       </button>
 
+                      <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
+                        <span>{activeVideo.mediaType}</span>
+                        {activeVideo.mediaType === "video" && activeVideo.duration ? (
+                          <>
+                            <span>•</span>
+                            <span>{activeVideo.duration}</span>
+                          </>
+                        ) : null}
+                      </div>
+
                       <div
                         className={`max-w-[82%] text-[16px] leading-6 text-white/95 ${
                           expandedCaption ? "" : "line-clamp-2"
@@ -243,6 +356,12 @@ export function FeedScreen({ locale, videos, onLike, openSource }: Props) {
                       >
                         {activeVideo.title[locale]}
                       </div>
+
+                      {activeVideo.caption?.[locale] ? (
+                        <div className="mt-2 max-w-[82%] text-sm leading-6 text-white/75">
+                          {activeVideo.caption[locale]}
+                        </div>
+                      ) : null}
 
                       {activeVideo.title[locale].length > 60 && (
                         <button

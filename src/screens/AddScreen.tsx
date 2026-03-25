@@ -1,5 +1,14 @@
-import { ArrowRightLeft, Link as LinkIcon, Plus } from "lucide-react";
-import { useEffect, useState } from "react";
+import {
+  ArrowRightLeft,
+  Link as LinkIcon,
+  Plus,
+  CheckCircle2,
+  AlertCircle,
+  Globe,
+  Image as ImageIcon,
+  Video,
+} from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "../types/app";
 import { Input } from "../components/ui/Input";
 
@@ -27,31 +36,10 @@ type TgUser = {
   photo_url?: string;
 };
 
-function readTelegramUserFromUrl(): TgUser | null {
-  const hash = window.location.hash || "";
-  const prefix = "#tgAuthResult=";
-
-  if (!hash.startsWith(prefix)) return null;
-
-  const encoded = hash.slice(prefix.length);
-  if (!encoded) return null;
-
-  try {
-    const decoded = decodeURIComponent(encoded);
-    const parsed = JSON.parse(decoded);
-
-    if (!parsed?.id) return null;
-
-    return {
-      id: String(parsed.id),
-      first_name: parsed.first_name || "",
-      username: parsed.username || "",
-      photo_url: parsed.photo_url || "",
-    };
-  } catch {
-    return null;
-  }
-}
+type ParsedTelegramPost = {
+  channel: string;
+  postId: string;
+};
 
 function readTelegramUserFromStorage(): TgUser | null {
   const raw = localStorage.getItem(TG_STORAGE_KEY);
@@ -65,23 +53,101 @@ function readTelegramUserFromStorage(): TgUser | null {
   }
 }
 
+function parseTelegramPostUrl(raw: string): ParsedTelegramPost | null {
+  const value = raw.trim();
+
+  if (!value) return null;
+
+  try {
+    const normalized = value.startsWith("http://") || value.startsWith("https://")
+      ? value
+      : `https://${value}`;
+
+    const url = new URL(normalized);
+
+    const hostname = url.hostname.replace(/^www\./, "");
+    if (hostname !== "t.me") return null;
+
+    const parts = url.pathname.split("/").filter(Boolean);
+
+    // Принимаем только публичные посты формата t.me/channel/123
+    if (parts.length !== 2) return null;
+
+    const [channel, postId] = parts;
+
+    if (!/^[A-Za-z0-9_]{4,}$/.test(channel)) return null;
+    if (!/^\d+$/.test(postId)) return null;
+
+    return { channel, postId };
+  } catch {
+    return null;
+  }
+}
+
 function AuthBlock() {
   return (
-    <div className="mt-6">
-      <div className="mb-4 text-lg font-semibold text-neutral-950">
-        Чтобы начать — авторизуйтесь
-      </div>
+    <div className="mt-6 overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
+      <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
+        <div>
+          <div className="mb-3 inline-flex items-center gap-3 rounded-full bg-white/12 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
+            <span>margeleT</span>
+            <ArrowRightLeft className="h-4 w-4" />
+            <span>Telegram</span>
+          </div>
 
-      <button
-        onClick={() => {
-          window.location.href = getTelegramAuthUrl();
-        }}
-        className="flex w-full items-center justify-center gap-4 rounded-full bg-[#4da3ff] px-6 py-4 text-white transition hover:bg-[#3b92ea]"
-      >
-        <span className="text-lg font-semibold">margeleT</span>
-        <ArrowRightLeft className="h-5 w-5" />
-        <span className="text-lg font-semibold">Telegram</span>
-      </button>
+          <div className="text-[26px] font-semibold leading-tight">
+            Войти через Telegram
+          </div>
+
+          <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
+            Авторизуйтесь, чтобы публиковать Telegram-посты в общей ленте
+            MargeleT.
+          </div>
+
+          <button
+            onClick={() => {
+              window.location.href = getTelegramAuthUrl();
+            }}
+            className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
+          >
+            Авторизоваться
+          </button>
+        </div>
+
+        <div className="hidden md:block">
+          <div className="rounded-[28px] border border-white/20 bg-white/10 p-4 backdrop-blur-md">
+            <div className="space-y-3 text-sm text-white/90">
+              <div className="flex items-center gap-2">
+                <Video className="h-4 w-4" />
+                <span>Видео-посты</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ImageIcon className="h-4 w-4" />
+                <span>Посты с картинкой</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Globe className="h-4 w-4" />
+                <span>Только публичные ссылки</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RuleItem({
+  icon: Icon,
+  text,
+}: {
+  icon: React.ComponentType<{ className?: string }>;
+  text: string;
+}) {
+  return (
+    <div className="flex items-start gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-700">
+      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-neutral-500" />
+      <span>{text}</span>
     </div>
   );
 }
@@ -89,39 +155,63 @@ function AuthBlock() {
 export function AddScreen({ onAdd }: Props) {
   const [url, setUrl] = useState("");
   const [user, setUser] = useState<TgUser | null>(null);
+  const [submitError, setSubmitError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
-    const urlUser = readTelegramUserFromUrl();
+    const syncUser = () => {
+      setUser(readTelegramUserFromStorage());
+    };
 
-    if (urlUser) {
-      setUser(urlUser);
-      localStorage.setItem(TG_STORAGE_KEY, JSON.stringify(urlUser));
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname + window.location.search
-      );
-      return;
-    }
+    syncUser();
 
-    const storedUser = readTelegramUserFromStorage();
-    if (storedUser) {
-      setUser(storedUser);
-    }
+    window.addEventListener("focus", syncUser);
+    window.addEventListener("storage", syncUser);
+
+    return () => {
+      window.removeEventListener("focus", syncUser);
+      window.removeEventListener("storage", syncUser);
+    };
   }, []);
 
   const isAuthorized = !!user;
 
+  const parsedPost = useMemo(() => parseTelegramPostUrl(url), [url]);
+
+  const validationMessage = useMemo(() => {
+    if (!url.trim()) return "";
+    if (parsedPost) return "";
+
+    return "Нужна публичная ссылка вида t.me/channel/123. Приватные, invite и кривые ссылки пока не принимаем.";
+  }, [parsedPost, url]);
+
   const handleSubmit = () => {
     const cleanUrl = url.trim();
-    if (!cleanUrl) return;
+
+    setSubmitError("");
+    setSuccessMessage("");
+
+    if (!cleanUrl) {
+      setSubmitError("Вставь ссылку на Telegram-пост.");
+      return;
+    }
+
+    if (!parsedPost) {
+      setSubmitError(
+        "Сейчас можно добавить только публичный Telegram-пост вида t.me/channel/123."
+      );
+      return;
+    }
 
     onAdd({
-      url: cleanUrl,
+      url: cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://")
+        ? cleanUrl
+        : `https://${cleanUrl}`,
       title: "",
-      channel: "",
+      channel: parsedPost.channel,
     });
 
+    setSuccessMessage("Пост добавлен в ленту.");
     setUrl("");
   };
 
@@ -129,34 +219,90 @@ export function AddScreen({ onAdd }: Props) {
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
       <div className="mx-auto max-w-[720px]">
         <div className="text-[28px] font-semibold tracking-tight">
-          Добавить видео
+          Добавить пост
         </div>
 
         {!isAuthorized ? (
           <AuthBlock />
         ) : (
-          <div className="mt-6">
-            <div className="mb-3 text-sm text-neutral-500">
-              Вставь ссылку на Telegram-пост
+          <div className="mt-6 space-y-4">
+            <div className="rounded-[28px] border border-neutral-200 bg-white p-5">
+              <div className="mb-2 text-sm font-medium text-neutral-500">
+                Вставь публичную ссылку на Telegram-пост
+              </div>
+
+              <div className="relative">
+                <LinkIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+                <Input
+                  value={url}
+                  onChange={(e) => {
+                    setUrl(e.target.value);
+                    if (submitError) setSubmitError("");
+                    if (successMessage) setSuccessMessage("");
+                  }}
+                  placeholder="https://t.me/channel/123"
+                  className="h-14 rounded-2xl border-neutral-200 bg-neutral-100 pl-11 pr-4 text-[15px] text-neutral-950"
+                />
+              </div>
+
+              {parsedPost && (
+                <div className="mt-3 flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
+                  <span>
+                    Ссылка выглядит валидно: @{parsedPost.channel}, пост{" "}
+                    {parsedPost.postId}
+                  </span>
+                </div>
+              )}
+
+              {!parsedPost && validationMessage && (
+                <div className="mt-3 flex items-center gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-700">
+                  <AlertCircle className="h-4 w-4 shrink-0" />
+                  <span>{validationMessage}</span>
+                </div>
+              )}
+
+              {submitError && (
+                <div className="mt-3 flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                  <AlertCircle className="h-4 w-4 shrink-0" />
+                  <span>{submitError}</span>
+                </div>
+              )}
+
+              {successMessage && (
+                <div className="mt-3 flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                  <CheckCircle2 className="h-4 w-4 shrink-0" />
+                  <span>{successMessage}</span>
+                </div>
+              )}
+
+              <button
+                onClick={handleSubmit}
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
+              >
+                <Plus className="h-4 w-4" />
+                Добавить в ленту
+              </button>
             </div>
 
-            <div className="relative">
-              <LinkIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
-              <Input
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-                placeholder="https://t.me/channel/123"
-                className="h-14 rounded-2xl border-neutral-200 bg-neutral-100 pl-11 pr-4 text-[15px] text-neutral-950"
+            <div className="grid gap-3 sm:grid-cols-2">
+              <RuleItem
+                icon={Video}
+                text="Можно добавлять Telegram-посты с видео."
+              />
+              <RuleItem
+                icon={ImageIcon}
+                text="Можно добавлять Telegram-посты с картинкой."
+              />
+              <RuleItem
+                icon={Globe}
+                text="Сейчас принимаем только публичные ссылки, чтобы источник был доступен всем."
+              />
+              <RuleItem
+                icon={ArrowRightLeft}
+                text="MargeleT ведёт в Telegram-источник и даёт посту вторую жизнь в общей ленте."
               />
             </div>
-
-            <button
-              onClick={handleSubmit}
-              className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
-            >
-              <Plus className="h-4 w-4" />
-              Добавить
-            </button>
           </div>
         )}
       </div>
