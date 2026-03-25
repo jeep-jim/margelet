@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
 import { PostModal } from "./components/modals/PostModal";
 import { initialVideos } from "./data/videos";
-import { getInitialLocale } from "./lib/i18n";
+import { getInitialLocale, messages } from "./lib/i18n";
+import { buildSubmittedPost } from "./lib/telegram";
 import { AddScreen } from "./screens/AddScreen";
 import { CreatorScreen } from "./screens/CreatorScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
 import { SourceScreen } from "./screens/SourceScreen";
-import type { Locale, TabId, Video, MediaType } from "./types/app";
+import type { Locale, TabId, Video } from "./types/app";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
@@ -49,32 +50,6 @@ function parseTelegramUserFromHash(): TgUser | null {
     console.error("Failed to parse tgAuthResult from hash", error);
     return null;
   }
-}
-
-function detectMediaType(url: string, title: string): MediaType {
-  const value = `${url} ${title}`.toLowerCase();
-
-  if (
-    value.includes("image") ||
-    value.includes("img") ||
-    value.includes("photo") ||
-    value.includes("poster") ||
-    value.includes("art") ||
-    value.includes("pic")
-  ) {
-    return "image";
-  }
-
-  return "video";
-}
-
-function buildAvatar(channel: string) {
-  return (channel || "NC")
-    .split(" ")
-    .slice(0, 2)
-    .map((s) => s[0] ?? "")
-    .join("")
-    .toUpperCase();
 }
 
 export default function App() {
@@ -175,72 +150,16 @@ export default function App() {
     title: string;
     channel: string;
   }) => {
-    const normalizedUrl =
-      url.startsWith("http://") || url.startsWith("https://")
-        ? url
-        : `https://${url}`;
-
-    const parsed = normalizedUrl.match(/t\.me\/([^/]+)\/(\d+)/i);
-    const parsedChannel = parsed?.[1] || "";
-    const postId = parsed?.[2] || "";
-
-    const cleanChannel = channel || parsedChannel || "telegram";
-    const cleanHandle = `@${cleanChannel.replace(/^@/, "")}`;
-
-    const mediaType = detectMediaType(normalizedUrl, title);
-
-    const palettes = [
-      "from-fuchsia-500 via-purple-600 to-indigo-700",
-      "from-amber-400 via-orange-500 to-rose-600",
-      "from-sky-400 via-cyan-500 to-teal-600",
-      "from-emerald-500 via-teal-500 to-cyan-600",
-      "from-rose-500 via-pink-500 to-orange-400",
-    ];
-
-    const generatedTitleRu =
-      mediaType === "image"
-        ? `Пост из ${cleanHandle}`
-        : `Видео из ${cleanHandle}`;
-
-    const generatedTitleEn =
-      mediaType === "image"
-        ? `Post from ${cleanHandle}`
-        : `Video from ${cleanHandle}`;
-
-    const generatedCaptionRu = postId
-      ? `Telegram-пост ${postId} из ${cleanHandle} добавлен в общую ленту MargeleT.`
-      : `Telegram-пост из ${cleanHandle} добавлен в общую ленту MargeleT.`;
-
-    const generatedCaptionEn = postId
-      ? `Telegram post ${postId} from ${cleanHandle} was added to the shared MargeleT feed.`
-      : `Telegram post from ${cleanHandle} was added to the shared MargeleT feed.`;
-
-    setVideos((prev) => [
+    const nextPost = buildSubmittedPost(
+      { url, title, channel },
       {
-        id: Date.now(),
-        mediaType,
-        title: {
-          ru: title || generatedTitleRu,
-          en: title || generatedTitleEn,
-        },
-        caption: {
-          ru: generatedCaptionRu,
-          en: generatedCaptionEn,
-        },
-        channel: cleanChannel,
-        avatar: buildAvatar(cleanChannel),
-        handle: cleanHandle,
-        views: "0",
-        likes: 0,
-        comments: 0,
-        duration: mediaType === "video" ? "0:24" : "",
-        lang: "RU",
-        postUrl: normalizedUrl,
-        bg: palettes[Math.floor(Math.random() * palettes.length)],
-      },
-      ...prev,
-    ]);
+        locale,
+        messages: messages[locale],
+        enMessages: messages.en,
+      }
+    );
 
+    setVideos((prev) => [nextPost, ...prev]);
     setCurrent("feed");
   };
 
@@ -313,6 +232,10 @@ export default function App() {
       <PostModal
         video={selectedPost}
         locale={locale}
+        likedPostIds={likedPostIds}
+        savedPostIds={savedPostIds}
+        onToggleLike={handleToggleLike}
+        onToggleSave={handleToggleSave}
         onClose={() => setSelectedPost(null)}
       />
     </div>

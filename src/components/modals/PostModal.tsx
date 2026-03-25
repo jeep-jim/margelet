@@ -1,41 +1,66 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, Bookmark, Heart, MessageCircle, VolumeX } from "lucide-react";
+import {
+  ArrowLeft,
+  Bookmark,
+  Heart,
+  Image as ImageIcon,
+  Play,
+  VolumeX,
+} from "lucide-react";
 import { useState } from "react";
+import { VerifiedBadge } from "../shared/VerifiedBadge";
 import type { Locale, Video } from "../../types/app";
 
 type Props = {
   video: Video | null;
   locale: Locale;
+  likedPostIds: number[];
+  savedPostIds: number[];
+  onToggleLike: (id: number) => void;
+  onToggleSave: (id: number) => void;
   onClose: () => void;
 };
 
 function ViewerMetric({
   icon: Icon,
   value,
+  active = false,
   onClick,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   value: string | number;
+  active?: boolean;
   onClick?: () => void;
 }) {
   return (
     <button
       onClick={onClick}
       className="flex flex-col items-center gap-1 text-white"
+      type="button"
     >
-      <Icon className="h-7 w-7" />
+      <Icon className={`h-7 w-7 ${active ? "fill-current text-white" : "text-white"}`} />
       <span className="text-sm font-medium">{value}</span>
     </button>
   );
 }
 
-export function PostModal({ video, locale, onClose }: Props) {
+export function PostModal({
+  video,
+  locale,
+  likedPostIds,
+  savedPostIds,
+  onToggleLike,
+  onToggleSave,
+  onClose,
+}: Props) {
   const [expanded, setExpanded] = useState(false);
 
   if (!video) return null;
 
   const text = video.title[locale];
   const isLong = text.length > 70;
+  const liked = likedPostIds.includes(video.id);
+  const saved = savedPostIds.includes(video.id);
 
   return (
     <AnimatePresence>
@@ -46,13 +71,8 @@ export function PostModal({ video, locale, onClose }: Props) {
         className="fixed inset-0 z-50 bg-black"
       >
         <div className="relative h-full w-full overflow-hidden">
-          {/* video area */}
-          <div className="absolute inset-0 bg-neutral-950" />
+          <div className={`absolute inset-0 bg-gradient-to-br ${video.bg || "from-neutral-800 to-neutral-700"}`} />
 
-          {/* пока placeholder под реальное видео */}
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,#111827_0%,#1f2937_100%)]" />
-
-          {/* top controls */}
           <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between">
             <button
               onClick={onClose}
@@ -66,29 +86,63 @@ export function PostModal({ video, locale, onClose }: Props) {
             </button>
           </div>
 
-          {/* right actions */}
-          <div className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
-            <ViewerMetric icon={Heart} value={video.likes} />
-            <ViewerMetric icon={MessageCircle} value={video.comments} />
-            <ViewerMetric icon={Bookmark} value={20} />
+          <div className="absolute inset-0 flex items-center justify-center">
+            {video.mediaType === "video" ? (
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/15 backdrop-blur-sm">
+                <Play className="ml-1 h-12 w-12 text-white" />
+              </div>
+            ) : (
+              <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/15 backdrop-blur-sm">
+                <ImageIcon className="h-12 w-12 text-white" />
+              </div>
+            )}
           </div>
 
-          {/* bottom content */}
+          <div className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
+            <ViewerMetric
+              icon={Heart}
+              value={video.likes}
+              active={liked}
+              onClick={() => onToggleLike(video.id)}
+            />
+            <ViewerMetric
+              icon={Bookmark}
+              value={20}
+              active={saved}
+              onClick={() => onToggleSave(video.id)}
+            />
+          </div>
+
           <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-4 pb-8 pt-20 text-white">
-            <button className="mb-3 flex items-center gap-3 text-left">
+            <div className="mb-3 flex items-center gap-3 text-left">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-sm font-bold text-black">
                 {video.avatar}
               </div>
 
               <div className="min-w-0">
-                <div className="truncate text-lg font-semibold">
-                  {video.channel}
+                <div className="flex items-center gap-1.5">
+                  <div className="truncate text-xl font-semibold">
+                    {video.channel}
+                  </div>
+                  {video.channelVerified ? (
+                    <VerifiedBadge className="shrink-0 text-[#2AABEE]" size={12} />
+                  ) : null}
                 </div>
                 <div className="truncate text-sm text-white/75">
                   {video.handle}
                 </div>
               </div>
-            </button>
+            </div>
+
+            <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
+              <span>{video.mediaType}</span>
+              {video.mediaType === "video" && video.duration ? (
+                <>
+                  <span>•</span>
+                  <span>{video.duration}</span>
+                </>
+              ) : null}
+            </div>
 
             <div
               className={`max-w-[82%] text-[16px] leading-6 text-white/95 ${
@@ -98,14 +152,20 @@ export function PostModal({ video, locale, onClose }: Props) {
               {text}
             </div>
 
-            {isLong && (
+            {video.caption?.[locale] ? (
+              <div className="mt-2 max-w-[82%] text-sm leading-6 text-white/75">
+                {video.caption[locale]}
+              </div>
+            ) : null}
+
+            {isLong ? (
               <button
                 onClick={() => setExpanded((v) => !v)}
                 className="mt-1 text-sm font-medium text-white/75"
               >
                 {expanded ? "свернуть" : "ещё"}
               </button>
-            )}
+            ) : null}
           </div>
         </div>
       </motion.div>
