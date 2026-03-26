@@ -8,7 +8,7 @@ import {
   VolumeX,
   Image as ImageIcon,
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { Locale, Video } from "../types/app";
 
@@ -241,6 +241,38 @@ export function FeedScreen({
     setExpandedCaption(false);
   };
 
+  useEffect(() => {
+    if (viewerIndex === null) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) < 30) return;
+      nextViewer();
+    };
+
+    let startY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY;
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const endY = e.changedTouches[0].clientY;
+      if (startY - endY > 50) {
+        nextViewer();
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [viewerIndex, videos]);
+
   return (
     <div className="min-h-screen bg-neutral-50 pt-20 text-neutral-950">
       <div className="mx-auto w-full max-w-[720px]">
@@ -287,12 +319,19 @@ export function FeedScreen({
                         <ArrowLeft className="h-6 w-6" />
                       </button>
 
-                      <button className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
-                        <VolumeX className="h-5 w-5" />
-                      </button>
+                      {activeVideo.mediaType === "video" ? (
+                        <button className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
+                          <VolumeX className="h-5 w-5" />
+                        </button>
+                      ) : (
+                        <div />
+                      )}
                     </div>
 
-                    <button onClick={nextViewer} className="absolute inset-0 block h-full w-full">
+                    <button
+                      onClick={nextViewer}
+                      className="absolute inset-0 block h-full w-full"
+                    >
                       <span className="sr-only">Next post</span>
                     </button>
 

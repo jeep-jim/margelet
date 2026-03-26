@@ -13,6 +13,8 @@ import type { Locale, TabId, Video } from "./types/app";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
+const LIKES_STORAGE_KEY = "margelet_likes";
+const SAVES_STORAGE_KEY = "margelet_saves";
 
 type TgUser = {
   id: string;
@@ -75,6 +77,35 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("margelet-locale", locale);
   }, [locale]);
+
+  useEffect(() => {
+    const storedLikes = localStorage.getItem(LIKES_STORAGE_KEY);
+    const storedSaves = localStorage.getItem(SAVES_STORAGE_KEY);
+
+    if (storedLikes) {
+      try {
+        setLikedPostIds(JSON.parse(storedLikes));
+      } catch {
+        localStorage.removeItem(LIKES_STORAGE_KEY);
+      }
+    }
+
+    if (storedSaves) {
+      try {
+        setSavedPostIds(JSON.parse(storedSaves));
+      } catch {
+        localStorage.removeItem(SAVES_STORAGE_KEY);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify(likedPostIds));
+  }, [likedPostIds]);
+
+  useEffect(() => {
+    localStorage.setItem(SAVES_STORAGE_KEY, JSON.stringify(savedPostIds));
+  }, [savedPostIds]);
 
   useEffect(() => {
     const tgUser = parseTelegramUserFromHash();

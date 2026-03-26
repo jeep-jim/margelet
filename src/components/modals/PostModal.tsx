@@ -7,7 +7,7 @@ import {
   Play,
   VolumeX,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VerifiedBadge } from "../shared/VerifiedBadge";
 import type { Locale, Video } from "../../types/app";
 
@@ -55,6 +55,10 @@ export function PostModal({
 }: Props) {
   const [expanded, setExpanded] = useState(false);
 
+  useEffect(() => {
+    setExpanded(false);
+  }, [video?.id]);
+
   if (!video) return null;
 
   const text = video.title[locale];
@@ -71,7 +75,11 @@ export function PostModal({
         className="fixed inset-0 z-50 bg-black"
       >
         <div className="relative h-full w-full overflow-hidden">
-          <div className={`absolute inset-0 bg-gradient-to-br ${video.bg || "from-neutral-800 to-neutral-700"}`} />
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${
+              video.bg || "from-neutral-800 to-neutral-700"
+            }`}
+          />
 
           <div className="absolute left-4 right-4 top-4 z-20 flex items-center justify-between">
             <button
@@ -81,9 +89,13 @@ export function PostModal({
               <ArrowLeft className="h-6 w-6" />
             </button>
 
-            <button className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
-              <VolumeX className="h-5 w-5" />
-            </button>
+            {video.mediaType === "video" ? (
+              <button className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
+                <VolumeX className="h-5 w-5" />
+              </button>
+            ) : (
+              <div />
+            )}
           </div>
 
           <div className="absolute inset-0 flex items-center justify-center">

@@ -228,7 +228,7 @@ export function AddScreen({ onAdd }: Props) {
           <div className="mt-6 space-y-4">
             <div className="rounded-[28px] border border-neutral-200 bg-white p-5">
               <div className="mb-2 text-sm font-medium text-neutral-500">
-                Вставь публичную ссылку на Telegram-пост
+                Публичнуа ссылка на Telegram-пост
               </div>
 
               <div className="relative">
