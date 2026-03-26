@@ -8,7 +8,6 @@ import {
   Volume2,
   VolumeX,
   Pause,
-  Image as ImageIcon,
   ChevronDown,
   X,
   Send,
@@ -27,12 +26,25 @@ type Props = {
   onToggleLike: (id: number) => void;
   onToggleSave: (id: number) => void;
   openSource: (channel: string) => void;
-  currentUserId: string | null;
-  onDeleteOwnPost: (post: Video) => Promise<void>;
-  onHidePost: (id: number) => void;
 };
 
 type FeedMode = "new" | "rising" | "trending";
+
+type TgUser = {
+  id: string;
+  first_name?: string;
+  username?: string;
+  photo_url?: string;
+};
+
+type MediaItem = {
+  type: "image" | "video";
+  url: string | null;
+  previewUrl?: string | null;
+};
+
+const TG_STORAGE_KEY = "margelet_tg_user";
+const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 
 const MODE_OPTIONS: { value: FeedMode; label: string }[] = [
   { value: "new", label: "Новое" },
@@ -74,7 +86,14 @@ function isAvatarUrl(value?: string | null) {
 function getDisplayText(video: Video, locale: Locale) {
   const caption = video.caption?.[locale]?.trim();
   const title = video.title?.[locale]?.trim();
-  return caption || title || "";
+
+  if (caption) return caption;
+
+  if (title && !/^video from @|^post from @|^видео из @|^пост из @/i.test(title)) {
+    return title;
+  }
+
+  return video.channel || "";
 }
 
 function buildShareUrl(video: Video) {
@@ -84,6 +103,90 @@ function buildShareUrl(video: Video) {
     .toLowerCase();
 
   return `${window.location.origin}/#/${cleanHandle}/${video.id}`;
+}
+
+function getCurrentTelegramUser(): TgUser | null {
+  try {
+    const raw = localStorage.getItem(TG_STORAGE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw) as TgUser;
+  } catch {
+    return null;
+  }
+}
+
+function getHiddenPostIds(): number[] {
+  try {
+    const raw = localStorage.getItem(HIDDEN_POSTS_STORAGE_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed.filter((v) => typeof v === "number") : [];
+  } catch {
+    return [];
+  }
+}
+
+function setHiddenPostIds(ids: number[]) {
+  localStorage.setItem(HIDDEN_POSTS_STORAGE_KEY, JSON.stringify(ids));
+}
+
+function getMediaItems(video: Video): MediaItem[] {
+  const rawMedia =
+    ((video as any).mediaItems as any[]) ||
+    ((video as any).media as any[]) ||
+    [];
+
+  if (Array.isArray(rawMedia) && rawMedia.length > 0) {
+    const normalized = rawMedia
+      .map((item) => {
+        const type =
+          item?.type === "video" ? "video" : "image";
+        const url =
+          typeof item?.url === "string" && item.url.trim()
+            ? item.url.trim()
+            : typeof item?.src === "string" && item.src.trim()
+              ? item.src.trim()
+              : null;
+
+        const previewUrl =
+          typeof item?.previewUrl === "string" && item.previewUrl.trim()
+            ? item.previewUrl.trim()
+            : typeof item?.poster === "string" && item.poster.trim()
+              ? item.poster.trim()
+              : url;
+
+        if (!url && !previewUrl) return null;
+
+        return {
+          type,
+          url,
+          previewUrl: previewUrl || null,
+        } satisfies MediaItem;
+      })
+      .filter(Boolean) as MediaItem[];
+
+    if (normalized.length > 0) {
+      return normalized;
+    }
+  }
+
+  if (video.mediaType === "video") {
+    return [
+      {
+        type: "video",
+        url: video.videoUrl || null,
+        previewUrl: video.previewUrl || null,
+      },
+    ];
+  }
+
+  return [
+    {
+      type: "image",
+      url: video.previewUrl || null,
+      previewUrl: video.previewUrl || null,
+    },
+  ];
 }
 
 function SourceAvatar({
@@ -98,7 +201,9 @@ function SourceAvatar({
 
   if (isAvatarUrl(video.avatar)) {
     return (
-      <div className={`relative shrink-0 overflow-hidden rounded-full bg-neutral-200 ${boxClass}`}>
+      <div
+        className={`relative shrink-0 overflow-hidden rounded-full bg-neutral-200 ${boxClass}`}
+      >
         <img
           src={video.avatar}
           alt={video.channel}
@@ -183,44 +288,25 @@ function FeedMetric({
   );
 }
 
-function PostMenu({
-  isOwner,
-  onDelete,
-  onHide,
-  onClose,
+function CardMediaDots({
+  count,
+  activeIndex,
 }: {
-  isOwner: boolean;
-  onDelete: () => void;
-  onHide: () => void;
-  onClose: () => void;
+  count: number;
+  activeIndex: number;
 }) {
+  if (count <= 1) return null;
+
   return (
-    <div className="absolute right-0 top-11 z-50 min-w-[220px] overflow-hidden rounded-2xl border border-neutral-200 bg-white p-1 shadow-xl">
-      {isOwner ? (
-        <button
-          type="button"
-          onClick={() => {
-            onDelete();
-            onClose();
-          }}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-600 transition hover:bg-rose-50"
-        >
-          <Trash2 className="h-4 w-4" />
-          <span>Удалить пост</span>
-        </button>
-      ) : (
-        <button
-          type="button"
-          onClick={() => {
-            onHide();
-            onClose();
-          }}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-neutral-700 transition hover:bg-neutral-100"
-        >
-          <EyeOff className="h-4 w-4" />
-          <span>Не показывать мне этот пост</span>
-        </button>
-      )}
+    <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/25 px-2 py-1 backdrop-blur-sm">
+      {Array.from({ length: count }).map((_, index) => (
+        <div
+          key={index}
+          className={`h-1.5 w-1.5 rounded-full ${
+            index === activeIndex ? "bg-white" : "bg-white/45"
+          }`}
+        />
+      ))}
     </div>
   );
 }
@@ -230,33 +316,50 @@ function FeedCard({
   locale,
   liked,
   saved,
-  isOwner,
+  expanded,
   menuOpen,
-  onMenuToggle,
-  onMenuClose,
-  onDelete,
-  onHide,
+  canDelete,
+  hideError,
+  deleteError,
+  deleting,
+  mediaIndex,
   onOpen,
   onOpenCreator,
   onToggleLike,
   onToggleSave,
+  onToggleExpand,
+  onToggleMenu,
+  onDelete,
+  onHide,
+  onPrevMedia,
+  onNextMedia,
 }: {
   video: Video;
   locale: Locale;
   liked: boolean;
   saved: boolean;
-  isOwner: boolean;
+  expanded: boolean;
   menuOpen: boolean;
-  onMenuToggle: () => void;
-  onMenuClose: () => void;
-  onDelete: () => void;
-  onHide: () => void;
+  canDelete: boolean;
+  hideError: string;
+  deleteError: string;
+  deleting: boolean;
+  mediaIndex: number;
   onOpen: () => void;
   onOpenCreator: () => void;
   onToggleLike: () => void;
   onToggleSave: () => void;
+  onToggleExpand: () => void;
+  onToggleMenu: () => void;
+  onDelete: () => void;
+  onHide: () => void;
+  onPrevMedia: () => void;
+  onNextMedia: () => void;
 }) {
   const displayText = getDisplayText(video, locale);
+  const mediaItems = getMediaItems(video);
+  const activeMedia = mediaItems[Math.max(0, Math.min(mediaIndex, mediaItems.length - 1))];
+  const showExpand = displayText.length > 110;
 
   return (
     <article className="overflow-hidden border-b border-neutral-200 bg-white">
@@ -267,58 +370,89 @@ function FeedCard({
           <button
             className="rounded-full p-2 text-neutral-700"
             type="button"
-            onClick={onMenuToggle}
+            onClick={onToggleMenu}
           >
             <MoreVertical className="h-5 w-5" />
           </button>
 
-          {menuOpen ? (
-            <PostMenu
-              isOwner={isOwner}
-              onDelete={onDelete}
-              onHide={onHide}
-              onClose={onMenuClose}
-            />
-          ) : null}
+          {menuOpen && (
+            <div className="absolute right-0 top-10 z-20 min-w-[220px] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl">
+              {canDelete ? (
+                <button
+                  type="button"
+                  onClick={onDelete}
+                  disabled={deleting}
+                  className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-rose-600 transition hover:bg-rose-50 disabled:opacity-60"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  <span>{deleting ? "Удаляем..." : "Удалить пост"}</span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={onHide}
+                  className="flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-neutral-700 transition hover:bg-neutral-50"
+                >
+                  <EyeOff className="h-4 w-4" />
+                  <span>Не показывать мне этот пост</span>
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
-      <button
-        onClick={onOpen}
-        className="relative mt-3 block w-full bg-neutral-100"
-        type="button"
-      >
+      <div className="relative mt-3 block w-full bg-neutral-100">
         <div className="relative aspect-[9/13] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/12]">
-          {video.previewUrl ? (
+          {activeMedia?.previewUrl ? (
             <img
-              src={video.previewUrl}
+              src={activeMedia.previewUrl}
               alt={displayText || video.channel}
               className="absolute inset-0 h-full w-full object-cover"
               referrerPolicy="no-referrer"
+              onClick={onOpen}
             />
           ) : (
             <div
-              className={`absolute inset-0 bg-gradient-to-br ${
-                video.bg || "from-neutral-300 to-neutral-200"
-              }`}
+              className="absolute inset-0 bg-neutral-200"
+              onClick={onOpen}
             />
           )}
 
+          {mediaItems.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={onPrevMedia}
+                className="absolute left-0 top-0 z-10 h-full w-1/4"
+                aria-label="Предыдущее медиа"
+              />
+              <button
+                type="button"
+                onClick={onNextMedia}
+                className="absolute right-0 top-0 z-10 h-full w-1/4"
+                aria-label="Следующее медиа"
+              />
+            </>
+          )}
+
           <div className="absolute left-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm">
-            {video.mediaType}
+            {activeMedia?.type || video.mediaType}
           </div>
 
           <div className="absolute right-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
             {getTagLabel(getResolvedTag(video))}
           </div>
 
-          {video.mediaType === "video" && video.duration ? (
+          {(activeMedia?.type === "video" || video.mediaType === "video") && video.duration ? (
             <div className="absolute bottom-3 right-3 rounded-full bg-black/35 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
               {video.duration}
             </div>
           ) : null}
+
+          <CardMediaDots count={mediaItems.length} activeIndex={mediaIndex} />
         </div>
-      </button>
+      </div>
 
       <div className="px-4 py-3">
         <div className="mb-3 flex items-center justify-between gap-3">
@@ -345,9 +479,27 @@ function FeedCard({
           </button>
         </div>
 
-        <div className="truncate text-[15px] leading-6 text-neutral-900">
+        <div className={`text-[15px] leading-6 text-neutral-900 ${expanded ? "" : "line-clamp-2"}`}>
           {displayText}
         </div>
+
+        {showExpand && (
+          <button
+            type="button"
+            onClick={onToggleExpand}
+            className="mt-1 text-sm font-medium text-neutral-500"
+          >
+            {expanded ? "свернуть" : "ещё"}
+          </button>
+        )}
+
+        {hideError ? (
+          <div className="mt-2 text-xs font-medium text-rose-600">{hideError}</div>
+        ) : null}
+
+        {deleteError ? (
+          <div className="mt-2 text-xs font-medium text-rose-600">{deleteError}</div>
+        ) : null}
       </div>
     </article>
   );
@@ -388,9 +540,6 @@ export function FeedScreen({
   onToggleLike,
   onToggleSave,
   openSource,
-  currentUserId,
-  onDeleteOwnPost,
-  onHidePost,
 }: Props) {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const [expandedCaption, setExpandedCaption] = useState(false);
@@ -400,12 +549,26 @@ export function FeedScreen({
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
-  const [cardMenuPostId, setCardMenuPostId] = useState<number | null>(null);
-  const [viewerMenuOpen, setViewerMenuOpen] = useState(false);
-  const [pendingDeleteId, setPendingDeleteId] = useState<number | null>(null);
+
+  const [hiddenPostIds, setHiddenPostIdsState] = useState<number[]>([]);
+  const [locallyDeletedPostIds, setLocallyDeletedPostIds] = useState<number[]>([]);
+  const [expandedCardIds, setExpandedCardIds] = useState<number[]>([]);
+  const [menuPostId, setMenuPostId] = useState<number | null>(null);
+  const [deleteLoadingId, setDeleteLoadingId] = useState<number | null>(null);
+  const [deleteErrorById, setDeleteErrorById] = useState<Record<number, string>>({});
+  const [hideErrorById, setHideErrorById] = useState<Record<number, string>>({});
+  const [cardMediaIndexes, setCardMediaIndexes] = useState<Record<number, number>>({});
+  const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionScrollRef = useRef<HTMLDivElement | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+
+  const currentUser = useMemo(() => getCurrentTelegramUser(), []);
+
+  useEffect(() => {
+    setHiddenPostIdsState(getHiddenPostIds());
+  }, []);
 
   const preferredTags = useMemo(() => {
     const source = videos.filter(
@@ -427,6 +590,12 @@ export function FeedScreen({
 
   const visibleVideos = useMemo(() => {
     let list = [...videos];
+
+    list = list.filter(
+      (video) =>
+        !hiddenPostIds.includes(video.id) &&
+        !locallyDeletedPostIds.includes(video.id)
+    );
 
     if (activeTag !== "all") {
       list = list.filter((video) => getResolvedTag(video) === activeTag);
@@ -462,55 +631,72 @@ export function FeedScreen({
     });
 
     return list;
-  }, [videos, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
+  }, [videos, hiddenPostIds, locallyDeletedPostIds, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
 
   const activeVideo = useMemo(() => {
     if (viewerIndex === null) return null;
     return visibleVideos[viewerIndex] ?? null;
   }, [viewerIndex, visibleVideos]);
 
+  const activeMediaItems = activeVideo ? getMediaItems(activeVideo) : [];
+  const activeMedia =
+    activeMediaItems[Math.max(0, Math.min(viewerMediaIndex, Math.max(0, activeMediaItems.length - 1)))] || null;
+
   const activeLiked = activeVideo ? likedPostIds.includes(activeVideo.id) : false;
   const activeSaved = activeVideo ? savedPostIds.includes(activeVideo.id) : false;
   const activeSaveCount = activeSaved ? 1 : 0;
   const activeDisplayText = activeVideo ? getDisplayText(activeVideo, locale) : "";
-  const activeIsOwner = !!(activeVideo && currentUserId && activeVideo.addedByUserId === currentUserId);
 
   const openViewer = (index: number) => {
     setViewerIndex(index);
+    setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
-    setViewerMenuOpen(false);
   };
 
   const closeViewer = () => {
     setViewerIndex(null);
+    setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
-    setViewerMenuOpen(false);
   };
 
   const nextViewer = () => {
     if (viewerIndex === null || visibleVideos.length === 0) return;
     setViewerIndex((viewerIndex + 1) % visibleVideos.length);
+    setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
-    setViewerMenuOpen(false);
   };
 
   const prevViewer = () => {
     if (viewerIndex === null || visibleVideos.length === 0) return;
     setViewerIndex((viewerIndex - 1 + visibleVideos.length) % visibleVideos.length);
+    setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
-    setViewerMenuOpen(false);
+  };
+
+  const nextCardMedia = (postId: number, mediaCount: number) => {
+    setCardMediaIndexes((prev) => ({
+      ...prev,
+      [postId]: ((prev[postId] || 0) + 1) % mediaCount,
+    }));
+  };
+
+  const prevCardMedia = (postId: number, mediaCount: number) => {
+    setCardMediaIndexes((prev) => ({
+      ...prev,
+      [postId]: ((prev[postId] || 0) - 1 + mediaCount) % mediaCount,
+    }));
   };
 
   const handleShare = async (video: Video) => {
@@ -544,38 +730,76 @@ export function FeedScreen({
     }
   };
 
-  const handleDeletePost = async (post: Video) => {
-    try {
-      setPendingDeleteId(post.id);
-      await onDeleteOwnPost(post);
-      setCardMenuPostId(null);
-      setViewerMenuOpen(false);
+  const toggleCardExpand = (postId: number) => {
+    setExpandedCardIds((prev) =>
+      prev.includes(postId)
+        ? prev.filter((id) => id !== postId)
+        : [...prev, postId]
+    );
+  };
 
-      if (activeVideo?.id === post.id) {
-        closeViewer();
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Не удалось удалить пост.");
-    } finally {
-      setPendingDeleteId(null);
+  const hidePost = (postId: number) => {
+    try {
+      const next = Array.from(new Set([...hiddenPostIds, postId]));
+      setHiddenPostIdsState(next);
+      setHiddenPostIds(next);
+      setMenuPostId(null);
+      setHideErrorById((prev) => ({ ...prev, [postId]: "" }));
+    } catch {
+      setHideErrorById((prev) => ({
+        ...prev,
+        [postId]: "Не удалось скрыть пост",
+      }));
     }
   };
 
-  const handleHideFromFeed = (post: Video) => {
-    onHidePost(post.id);
-    setCardMenuPostId(null);
-    setViewerMenuOpen(false);
+  const canDeletePost = (video: Video) => {
+    const createdByTelegramId = String((video as any).createdByTelegramId || "").trim();
+    if (!createdByTelegramId) return false;
+    if (!currentUser?.id) return false;
+    return String(currentUser.id) === createdByTelegramId;
+  };
 
-    if (activeVideo?.id === post.id) {
-      closeViewer();
+  const deletePost = async (video: Video) => {
+    try {
+      setDeleteLoadingId(video.id);
+      setDeleteErrorById((prev) => ({ ...prev, [video.id]: "" }));
+
+      const res = await fetch("/api/delete-post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: video.id,
+          url: video.postUrl,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("delete failed");
+      }
+
+      setLocallyDeletedPostIds((prev) => [...prev, video.id]);
+      setMenuPostId(null);
+
+      if (activeVideo?.id === video.id) {
+        closeViewer();
+      }
+    } catch {
+      setDeleteErrorById((prev) => ({
+        ...prev,
+        [video.id]: "Не удалось удалить пост",
+      }));
+    } finally {
+      setDeleteLoadingId(null);
     }
   };
 
   useEffect(() => {
     if (!videoRef.current) return;
     videoRef.current.muted = isMuted;
-  }, [isMuted, activeVideo?.id]);
+  }, [isMuted, activeVideo?.id, viewerMediaIndex]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -586,63 +810,7 @@ export function FeedScreen({
     } else {
       node.pause();
     }
-  }, [isPlaying, activeVideo?.id]);
-
-  useEffect(() => {
-    if (viewerIndex === null) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      const captionNode = captionScrollRef.current;
-
-      if (captionNode && captionNode.contains(e.target as Node)) {
-        return;
-      }
-
-      if (Math.abs(e.deltaY) < 30) return;
-
-      if (e.deltaY > 0) {
-        nextViewer();
-      } else {
-        prevViewer();
-      }
-    };
-
-    let startY = 0;
-    let startedInsideCaption = false;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      startY = e.touches[0].clientY;
-      const captionNode = captionScrollRef.current;
-      startedInsideCaption = !!(
-        captionNode && captionNode.contains(e.target as Node)
-      );
-    };
-
-    const handleTouchEnd = (e: TouchEvent) => {
-      if (startedInsideCaption) return;
-
-      const endY = e.changedTouches[0].clientY;
-      const delta = startY - endY;
-
-      if (Math.abs(delta) < 50) return;
-
-      if (delta > 0) {
-        nextViewer();
-      } else {
-        prevViewer();
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: true });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
-  }, [viewerIndex, visibleVideos]);
+  }, [isPlaying, activeVideo?.id, viewerMediaIndex]);
 
   useEffect(() => {
     if (!expandedCaption && captionScrollRef.current) {
@@ -726,7 +894,11 @@ export function FeedScreen({
 
       <div className="mx-auto w-full max-w-[720px]">
         {visibleVideos.map((video, index) => {
-          const isOwner = !!(currentUserId && video.addedByUserId === currentUserId);
+          const mediaItems = getMediaItems(video);
+          const mediaIndex = Math.max(
+            0,
+            Math.min(cardMediaIndexes[video.id] || 0, mediaItems.length - 1)
+          );
 
           return (
             <FeedCard
@@ -735,18 +907,25 @@ export function FeedScreen({
               locale={locale}
               liked={likedPostIds.includes(video.id)}
               saved={savedPostIds.includes(video.id)}
-              isOwner={isOwner}
-              menuOpen={cardMenuPostId === video.id}
-              onMenuToggle={() =>
-                setCardMenuPostId((prev) => (prev === video.id ? null : video.id))
-              }
-              onMenuClose={() => setCardMenuPostId(null)}
-              onDelete={() => handleDeletePost(video)}
-              onHide={() => handleHideFromFeed(video)}
+              expanded={expandedCardIds.includes(video.id)}
+              menuOpen={menuPostId === video.id}
+              canDelete={canDeletePost(video)}
+              hideError={hideErrorById[video.id] || ""}
+              deleteError={deleteErrorById[video.id] || ""}
+              deleting={deleteLoadingId === video.id}
+              mediaIndex={mediaIndex}
               onOpen={() => openViewer(index)}
               onOpenCreator={() => openSource(video.channel)}
               onToggleLike={() => onToggleLike(video.id)}
               onToggleSave={() => onToggleSave(video.id)}
+              onToggleExpand={() => toggleCardExpand(video.id)}
+              onToggleMenu={() =>
+                setMenuPostId((prev) => (prev === video.id ? null : video.id))
+              }
+              onDelete={() => deletePost(video)}
+              onHide={() => hidePost(video.id)}
+              onPrevMedia={() => prevCardMedia(video.id, mediaItems.length)}
+              onNextMedia={() => nextCardMedia(video.id, mediaItems.length)}
             />
           );
         })}
@@ -760,253 +939,258 @@ export function FeedScreen({
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-black"
           >
-            <div className="relative h-full w-full overflow-hidden">
+            <div className="relative h-full w-full overflow-hidden bg-black">
               <div className="absolute inset-0 bg-neutral-950" />
 
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-full max-w-[520px] bg-black">
-                  <div className="relative h-full w-full overflow-hidden">
-                    {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                      <video
-                        ref={videoRef}
-                        src={activeVideo.videoUrl}
-                        poster={activeVideo.previewUrl || undefined}
-                        className="absolute inset-0 h-full w-full object-cover"
-                        autoPlay
-                        loop
-                        playsInline
-                        muted={isMuted}
-                      />
-                    ) : activeVideo.previewUrl ? (
-                      <img
-                        src={activeVideo.previewUrl}
-                        alt={activeDisplayText || activeVideo.channel}
-                        className="absolute inset-0 h-full w-full object-cover"
-                        referrerPolicy="no-referrer"
-                      />
-                    ) : (
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-br ${
-                          activeVideo.bg || "from-neutral-800 to-neutral-700"
-                        }`}
-                      />
-                    )}
+                <div className="relative h-full w-full max-w-[520px] bg-black">
+                  {activeMedia?.type === "video" && activeMedia.url ? (
+                    <video
+                      ref={videoRef}
+                      src={activeMedia.url}
+                      poster={activeMedia.previewUrl || undefined}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      autoPlay
+                      loop
+                      playsInline
+                      muted={isMuted}
+                    />
+                  ) : activeMedia?.previewUrl ? (
+                    <img
+                      src={activeMedia.previewUrl}
+                      alt={activeDisplayText || activeVideo.channel}
+                      className="absolute inset-0 h-full w-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 bg-neutral-900" />
+                  )}
 
-                    <div className="absolute inset-0 bg-black/20" />
+                  <div className="absolute inset-0 bg-black/20" />
 
-                    <div className="absolute left-4 right-4 top-4 z-30 flex items-center justify-between">
+                  <div className="absolute left-4 right-4 top-4 z-30 flex items-center justify-between">
+                    <button
+                      onClick={closeViewer}
+                      className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                      type="button"
+                    >
+                      <ArrowLeft className="h-6 w-6" />
+                    </button>
+
+                    {activeMedia?.type === "video" && activeMedia.url ? (
                       <button
-                        onClick={closeViewer}
+                        onClick={() => setIsMuted((v) => !v)}
                         className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
                         type="button"
                       >
-                        <ArrowLeft className="h-6 w-6" />
+                        {isMuted ? (
+                          <VolumeX className="h-5 w-5" />
+                        ) : (
+                          <Volume2 className="h-5 w-5" />
+                        )}
                       </button>
+                    ) : (
+                      <div />
+                    )}
+                  </div>
 
-                      <div className="flex items-center gap-2">
-                        {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                          <button
-                            onClick={() => setIsMuted((v) => !v)}
-                            className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                            type="button"
-                          >
-                            {isMuted ? (
-                              <VolumeX className="h-5 w-5" />
-                            ) : (
-                              <Volume2 className="h-5 w-5" />
-                            )}
-                          </button>
-                        ) : null}
-
-                        <div className="relative">
-                          <button
-                            onClick={() => setViewerMenuOpen((prev) => !prev)}
-                            className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                            type="button"
-                          >
-                            <MoreVertical className="h-5 w-5" />
-                          </button>
-
-                          {viewerMenuOpen ? (
-                            <div className="absolute right-0 top-12 z-50 min-w-[220px] overflow-hidden rounded-2xl border border-neutral-700 bg-neutral-900 p-1 shadow-xl">
-                              {activeIsOwner ? (
-                                <button
-                                  type="button"
-                                  onClick={() => handleDeletePost(activeVideo)}
-                                  disabled={pendingDeleteId === activeVideo.id}
-                                  className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-400 transition hover:bg-white/5 disabled:opacity-50"
-                                >
-                                  <Trash2 className="h-4 w-4" />
-                                  <span>Удалить пост</span>
-                                </button>
-                              ) : (
-                                <button
-                                  type="button"
-                                  onClick={() => handleHideFromFeed(activeVideo)}
-                                  className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-white transition hover:bg-white/5"
-                                >
-                                  <EyeOff className="h-4 w-4" />
-                                  <span>Не показывать мне этот пост</span>
-                                </button>
-                              )}
-                            </div>
-                          ) : null}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className="absolute inset-0 z-10"
-                      onClick={() => {
-                        if (activeVideo.mediaType === "video" && activeVideo.videoUrl) {
-                          setIsPlaying((v) => !v);
-                        } else {
-                          nextViewer();
+                  {activeMediaItems.length > 1 && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setViewerMediaIndex((prev) =>
+                            (prev - 1 + activeMediaItems.length) % activeMediaItems.length
+                          )
                         }
-                      }}
-                    />
-
-                    <div
-                      className={`absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-200 ${
-                        activeVideo.mediaType === "video" && activeVideo.videoUrl && isPlaying
-                          ? "pointer-events-none opacity-0"
-                          : "opacity-100"
-                      }`}
-                    >
-                      {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setIsPlaying((v) => !v);
-                          }}
-                          className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
-                          type="button"
-                        >
-                          {isPlaying ? (
-                            <Pause className="h-12 w-12 text-white" />
-                          ) : (
-                            <Play className="ml-1 h-12 w-12 text-white" />
-                          )}
-                        </button>
-                      ) : (
-                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm">
-                          {activeVideo.mediaType === "video" ? (
-                            <Play className="ml-1 h-12 w-12 text-white" />
-                          ) : (
-                            <ImageIcon className="h-12 w-12 text-white" />
-                          )}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6">
-                      <ViewerMetric
-                        icon={Heart}
-                        value={activeVideo.likes}
-                        active={activeLiked}
-                        onClick={() => onToggleLike(activeVideo.id)}
+                        className="absolute left-0 top-0 z-20 h-full w-1/4"
+                        aria-label="Предыдущее медиа"
                       />
-                      <ViewerMetric
-                        icon={Bookmark}
-                        value={activeSaveCount}
-                        active={activeSaved}
-                        onClick={() => onToggleSave(activeVideo.id)}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setViewerMediaIndex((prev) =>
+                            (prev + 1) % activeMediaItems.length
+                          )
+                        }
+                        className="absolute right-0 top-0 z-20 h-full w-1/4"
+                        aria-label="Следующее медиа"
                       />
-                      <ViewerMetric
-                        icon={Send}
-                        value=""
-                        onClick={() => handleShare(activeVideo)}
-                      />
-                    </div>
+                    </>
+                  )}
 
-                    <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-4 pb-8 pt-20 text-white">
+                  <div
+                    className="absolute inset-0 z-10"
+                    onClick={() => {
+                      if (expandedCaption) return;
+
+                      if (activeMedia?.type === "video" && activeMedia.url) {
+                        setIsPlaying((v) => !v);
+                      }
+                    }}
+                    onTouchStart={(e) => {
+                      touchStartYRef.current = e.touches[0].clientY;
+                    }}
+                    onTouchEnd={(e) => {
+                      if (touchStartYRef.current === null || expandedCaption) {
+                        touchStartYRef.current = null;
+                        return;
+                      }
+
+                      const delta = touchStartYRef.current - e.changedTouches[0].clientY;
+
+                      if (Math.abs(delta) > 60 && activeMediaItems.length <= 1) {
+                        if (delta > 0) {
+                          nextViewer();
+                        } else {
+                          prevViewer();
+                        }
+                      }
+
+                      touchStartYRef.current = null;
+                    }}
+                  />
+
+                  <div
+                    className={`absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-200 ${
+                      activeMedia?.type === "video" && activeMedia.url && isPlaying
+                        ? "pointer-events-none opacity-0"
+                        : "opacity-100"
+                    }`}
+                  >
+                    {activeMedia?.type === "video" && activeMedia.url ? (
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          openSource(activeVideo.channel);
+                          setIsPlaying((v) => !v);
                         }}
-                        className="mb-3 flex items-center gap-3 text-left"
+                        className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
                         type="button"
                       >
-                        <SourceAvatar video={activeVideo} size="md" />
-
-                        <div className="min-w-0">
-                          <div className="flex items-center gap-1.5">
-                            <div className="truncate text-xl font-semibold">
-                              {activeVideo.channel}
-                            </div>
-                            {activeVideo.channelVerified ? (
-                              <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
-                            ) : null}
-                          </div>
-                          <div className="truncate text-sm text-white/75">
-                            {activeVideo.handle}
-                          </div>
-                        </div>
+                        {isPlaying ? (
+                          <Pause className="h-12 w-12 text-white" />
+                        ) : (
+                          <Play className="ml-1 h-12 w-12 text-white" />
+                        )}
                       </button>
+                    ) : null}
+                  </div>
 
-                      <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
-                        <span>{activeVideo.mediaType}</span>
-                        <span>•</span>
-                        <span>{getTagLabel(getResolvedTag(activeVideo))}</span>
-                        {activeVideo.mediaType === "video" && activeVideo.duration ? (
-                          <>
-                            <span>•</span>
-                            <span>{activeVideo.duration}</span>
-                          </>
-                        ) : null}
-                      </div>
+                  <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6">
+                    <ViewerMetric
+                      icon={Heart}
+                      value={activeVideo.likes}
+                      active={activeLiked}
+                      onClick={() => onToggleLike(activeVideo.id)}
+                    />
+                    <ViewerMetric
+                      icon={Bookmark}
+                      value={activeSaveCount}
+                      active={activeSaved}
+                      onClick={() => onToggleSave(activeVideo.id)}
+                    />
+                    <ViewerMetric
+                      icon={Send}
+                      value=""
+                      onClick={() => handleShare(activeVideo)}
+                    />
+                  </div>
 
-                      <div
-                        ref={captionScrollRef}
-                        className={`max-w-[82%] text-[16px] leading-6 text-white/95 ${
-                          expandedCaption
-                            ? "max-h-[34vh] overflow-y-auto pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-                            : "line-clamp-2"
-                        }`}
-                        onClick={(e) => {
-                          if (expandedCaption) {
-                            e.stopPropagation();
-                          }
-                        }}
-                        onWheel={(e) => {
-                          if (expandedCaption) {
-                            e.stopPropagation();
-                          }
-                        }}
-                        onTouchStart={(e) => {
-                          if (expandedCaption) {
-                            e.stopPropagation();
-                          }
-                        }}
-                        onTouchMove={(e) => {
-                          if (expandedCaption) {
-                            e.stopPropagation();
-                          }
-                        }}
-                      >
-                        {activeDisplayText}
-                      </div>
+                  <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/90 via-black/50 to-transparent px-4 pb-8 pt-20 text-white">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openSource(activeVideo.channel);
+                      }}
+                      className="mb-3 flex items-center gap-3 text-left"
+                      type="button"
+                    >
+                      <SourceAvatar video={activeVideo} size="md" />
 
-                      {activeDisplayText.length > 110 && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setExpandedCaption((v) => !v);
-                          }}
-                          className="mt-1 text-sm font-medium text-white/75"
-                          type="button"
-                        >
-                          {expandedCaption ? "свернуть" : "ещё"}
-                        </button>
-                      )}
-
-                      {copySuccessId === activeVideo.id ? (
-                        <div className="mt-2 text-xs font-medium text-[#7dd3fc]">
-                          Ссылка скопирована
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5">
+                          <div className="truncate text-xl font-semibold">
+                            {activeVideo.channel}
+                          </div>
+                          {activeVideo.channelVerified ? (
+                            <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+                          ) : null}
                         </div>
+                        <div className="truncate text-sm text-white/75">
+                          {activeVideo.handle}
+                        </div>
+                      </div>
+                    </button>
+
+                    <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
+                      <span>{activeMedia?.type || activeVideo.mediaType}</span>
+                      <span>•</span>
+                      <span>{getTagLabel(getResolvedTag(activeVideo))}</span>
+                      {(activeMedia?.type === "video" || activeVideo.mediaType === "video") && activeVideo.duration ? (
+                        <>
+                          <span>•</span>
+                          <span>{activeVideo.duration}</span>
+                        </>
                       ) : null}
                     </div>
+
+                    {activeMediaItems.length > 1 ? (
+                      <div className="mb-3 flex items-center gap-1.5">
+                        {activeMediaItems.map((_, index) => (
+                          <div
+                            key={index}
+                            className={`h-1.5 w-1.5 rounded-full ${
+                              index === viewerMediaIndex ? "bg-white" : "bg-white/45"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    ) : null}
+
+                    <div
+                      ref={captionScrollRef}
+                      className={`max-w-[82%] text-[16px] leading-6 text-white/95 ${
+                        expandedCaption
+                          ? "max-h-[34vh] overflow-y-auto overscroll-contain pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                          : "line-clamp-2"
+                      }`}
+                      style={{
+                        WebkitOverflowScrolling: "touch",
+                      }}
+                      onClick={(e) => {
+                        if (expandedCaption) e.stopPropagation();
+                      }}
+                      onWheel={(e) => {
+                        if (expandedCaption) e.stopPropagation();
+                      }}
+                      onTouchStart={(e) => {
+                        if (expandedCaption) e.stopPropagation();
+                      }}
+                      onTouchMove={(e) => {
+                        if (expandedCaption) e.stopPropagation();
+                      }}
+                    >
+                      {activeDisplayText}
+                    </div>
+
+                    {activeDisplayText.length > 110 && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpandedCaption((v) => !v);
+                        }}
+                        className="mt-1 text-sm font-medium text-white/75"
+                        type="button"
+                      >
+                        {expandedCaption ? "свернуть" : "ещё"}
+                      </button>
+                    )}
+
+                    {copySuccessId === activeVideo.id ? (
+                      <div className="mt-2 text-xs font-medium text-[#7dd3fc]">
+                        Ссылка скопирована
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               </div>

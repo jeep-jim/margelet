@@ -112,10 +112,6 @@ export default function App() {
     return [...serverVideos, ...fallbackSeed];
   }, [serverVideos]);
 
-  const visibleFeedVideos = useMemo(() => {
-    return videos.filter((video) => !hiddenPostIds.includes(video.id));
-  }, [videos, hiddenPostIds]);
-
   useEffect(() => {
     const initial = getInitialLocale();
     setLocale(initial);
@@ -304,44 +300,6 @@ export default function App() {
     );
   };
 
-  const handleHidePost = (id: number) => {
-    setHiddenPostIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
-
-    if (selectedPost?.id === id) {
-      setSelectedPost(null);
-    }
-  };
-
-  const handleDeleteOwnPost = async (post: Video) => {
-    if (!currentUserId) return;
-
-    const res = await fetch("/api/delete-post", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        id: post.id,
-        postUrl: post.postUrl,
-        userId: currentUserId,
-      }),
-    });
-
-    if (!res.ok) {
-      const data = await res.json().catch(() => ({}));
-      throw new Error(data?.error || "delete failed");
-    }
-
-    setServerVideos((prev) => prev.filter((video) => video.id !== post.id));
-    setHiddenPostIds((prev) => prev.filter((hiddenId) => hiddenId !== post.id));
-    setLikedPostIds((prev) => prev.filter((likedId) => likedId !== post.id));
-    setSavedPostIds((prev) => prev.filter((savedId) => savedId !== post.id));
-
-    if (selectedPost?.id === post.id) {
-      setSelectedPost(null);
-    }
-  };
-
   const handleAdd = async ({
     url,
     title,
@@ -449,15 +407,12 @@ export default function App() {
           {current === "feed" && (
             <FeedScreen
               locale={locale}
-              videos={visibleFeedVideos}
+              videos={videos}
               likedPostIds={likedPostIds}
               savedPostIds={savedPostIds}
               onToggleLike={handleToggleLike}
               onToggleSave={handleToggleSave}
               openSource={openSource}
-              currentUserId={currentUserId}
-              onDeleteOwnPost={handleDeleteOwnPost}
-              onHidePost={handleHidePost}
             />
           )}
 
