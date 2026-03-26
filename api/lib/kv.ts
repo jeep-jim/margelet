@@ -10,8 +10,15 @@ const env: EnvMap =
     }
   ).process?.env ?? {};
 
-const url = env.KV_REST_API_URL;
-const token = env.KV_REST_API_TOKEN;
+const url =
+  String(env.KV_REST_API_URL || "").trim() ||
+  String(env.BRAIN_KV_REST_API_URL || "").trim() ||
+  String(env.UPSTASH_REDIS_REST_URL || "").trim();
+
+const token =
+  String(env.KV_REST_API_TOKEN || "").trim() ||
+  String(env.BRAIN_KV_REST_API_TOKEN || "").trim() ||
+  String(env.UPSTASH_REDIS_REST_TOKEN || "").trim();
 
 if (!url || !token) {
   throw new Error("Missing KV_REST_API_URL or KV_REST_API_TOKEN");
@@ -27,37 +34,144 @@ function postKey(id: number | string) {
   return `${POST_KEY_PREFIX}${id}`;
 }
 
-function postUrlKey(url: string) {
-  return `${POST_URL_KEY_PREFIX}${url}`;
+function postUrlKey(postUrl: string) {
+  return `${POST_URL_KEY_PREFIX}${postUrl}`;
+}
+
+function asCleanString(value: unknown) {
+  return String(value ?? "").trim();
+}
+
+function asNullableString(value: unknown): string | null {
+  const s = asCleanString(value);
+  return s || null;
+}
+
+function asNumber(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+
+  const n = Number(asCleanString(value));
+  return Number.isFinite(n) ? n : null;
+}
+
+function isLocalizedText(value: any): value is { ru: string; en: string } {
+  return (
+    value &&
+    typeof value === "object" &&
+    typeof value.ru === "string" &&
+    typeof value.en === "string"
+  );
+}
+
+function normalizeLocalizedText(value: any, fallback = "") {
+  if (isLocalizedText(value)) {
+    return {
+      ru: asCleanString(value.ru) || fallback,
+      en: asCleanString(value.en) || fallback,
+    };
+  }
+
+  const text = asCleanString(value) || fallback;
+
+  return {
+    ru: text,
+    en: text,
+  };
+}
+
+function normalizeVideo(raw: any): Video | null {
+  if (!raw || typeof raw !== "object") {
+    return null;
+  }
+
+  const id = asNumber(raw.id);
+  const postUrl = asNullableString(raw.postUrl);
+  const channel = asCleanString(raw.channel);
+  const handle = asCleanString(raw.handle);
+  const mediaType = raw.mediaType === "video" ? "video" : raw.mediaType === "image" ? "image" : null;
+
+  if (!id || !postUrl || !channel || !handle || !mediaType) {
+    return null;
+  }
+
+  const title = normalizeLocalizedText(raw.title, channel);
+  const caption = normalizeLocalizedText(raw.caption, title.ru);
+
+  return {
+    id,
+    mediaType,
+    title,
+    caption,
+    channel,
+    avatar: asCleanString(raw.avatar) || "TG",
+    handle,
+    channelVerified: !!raw.channelVerified,
+    views: asCleanString(raw.views) || "0",
+    likes: asNumber(raw.likes) ?? 0,
+    comments: asNumber(raw.comments) ?? 0,
+    duration: asCleanString(raw.duration),
+    lang: asCleanString(raw.lang) || "RU",
+    postUrl,
+    bg: asCleanString(raw.bg) || "from-neutral-300 to-neutral-200",
+    tag: raw.tag || "other",
+    previewUrl: asNullableString(raw.previewUrl),
+    videoUrl: asNullableString(raw.videoUrl),
+  };
 }
 
 export async function getFeedPosts(limit = 100): Promise<Video[]> {
-  const ids = await redis.lrange<number>(FEED_IDS_KEY, 0, limit - 1);
+  const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, limit - 1);
 
-  if (!ids || ids.length === 0) return [];
+  if (!ids || ids.length === 0) {
+    return [];
+  }
 
   const posts = await Promise.all(
-    ids.map(async (id: number) => {
-      const data = await redis.get<Video>(postKey(id));
-      return data ?? null;
+    ids.map(async (id) => {
+      const normalizedId = asNumber(id);
+
+      if (!normalizedId) {
+        return null;
+      }
+
+      const raw = await redis.get(postKey(normalizedId));
+      return normalizeVideo(raw);
     })
   );
 
-  return posts.filter(Boolean) as Video[];
+  return posts.filter((post): post is Video => !!post);
 }
 
 export async function getPostByUrl(url: string): Promise<Video | null> {
-  const existingId = await redis.get<number | null>(postUrlKey(url));
-  if (existingId == null) return null;
+  const cleanUrl = asCleanString(url);
 
-  const existingPost = await redis.get<Video>(postKey(existingId));
-  return existingPost ?? null;
+  if (!cleanUrl) {
+    return null;
+  }
+
+  const existingIdRaw = await redis.get(postUrlKey(cleanUrl));
+  const existingId = asNumber(existingIdRaw);
+
+  if (!existingId) {
+    return null;
+  }
+
+  const raw = await redis.get(postKey(existingId));
+  return normalizeVideo(raw);
 }
 
 export async function savePost(post: Video): Promise<Video> {
-  await redis.set(postKey(post.id), post);
-  await redis.set(postUrlKey(post.postUrl), post.id);
-  await redis.lrem(FEED_IDS_KEY, 0, post.id);
-  await redis.lpush(FEED_IDS_KEY, post.id);
-  return post;
+  const normalized = normalizeVideo(post);
+
+  if (!normalized) {
+    throw new Error("INVALID_POST_PAYLOAD");
+  }
+
+  await redis.set(postKey(normalized.id), normalized);
+  await redis.set(postUrlKey(normalized.postUrl), normalized.id);
+
+  await redis.lrem(FEED_IDS_KEY, 0, normalized.id);
+  await redis.lpush(FEED_IDS_KEY, normalized.id);
+
+  return normalized;
 }
