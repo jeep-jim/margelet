@@ -13,7 +13,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import type { ContentTag, Locale, MediaType } from "../types/app";
 import { Input } from "../components/ui/Input";
-import { fetchTelegramPreview } from "../lib/telegram";
+import { fetchTelegramPreview, normalizeTelegramUrl } from "../lib/telegram";
 
 const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
@@ -45,7 +45,9 @@ type Props = {
   onAdd: (payload: {
     url: string;
     title: string;
+    caption?: string;
     channel: string;
+    avatar?: string | null;
     tag: ContentTag;
     previewUrl?: string | null;
     mediaType?: MediaType;
@@ -84,14 +86,14 @@ function parseTelegramPostUrl(raw: string): ParsedTelegramPost | null {
   if (!value) return null;
 
   try {
-    const normalized = value.startsWith("http://") || value.startsWith("https://")
-      ? value
-      : `https://${value}`;
+    const normalized = normalizeTelegramUrl(value);
+
+    if (!normalized) return null;
 
     const url = new URL(normalized);
-
     const hostname = url.hostname.replace(/^www\./, "");
-    if (hostname !== "t.me") return null;
+
+    if (hostname !== "t.me" && hostname !== "telegram.me") return null;
 
     const parts = url.pathname.split("/").filter(Boolean);
 
@@ -137,6 +139,7 @@ function AuthBlock() {
               window.location.href = getTelegramAuthUrl();
             }}
             className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
+            type="button"
           >
             Авторизоваться
           </button>
@@ -246,10 +249,12 @@ export function AddScreen({ onAdd }: Props) {
     try {
       setIsSubmitting(true);
 
-      const normalized =
-        cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://")
-          ? cleanUrl
-          : `https://${cleanUrl}`;
+      const normalized = normalizeTelegramUrl(cleanUrl);
+
+      if (!normalized) {
+        setSubmitError("Не удалось распознать ссылку на Telegram-пост.");
+        return;
+      }
 
       const preview = await fetchTelegramPreview(normalized);
 
@@ -259,10 +264,27 @@ export function AddScreen({ onAdd }: Props) {
           ? "image"
           : undefined;
 
+      const cleanCaption =
+        typeof preview?.caption === "string"
+          ? preview.caption.trim()
+          : "";
+
+      const cleanTitle =
+        typeof preview?.title === "string" && preview.title.trim()
+          ? preview.title.trim()
+          : parsedPost.channel;
+
+      const cleanAvatar =
+        typeof preview?.avatar === "string" && preview.avatar.trim()
+          ? preview.avatar.trim()
+          : null;
+
       await onAdd({
         url: normalized,
-        title: preview?.title || "",
+        title: cleanTitle,
+        caption: cleanCaption,
         channel: parsedPost.channel,
+        avatar: cleanAvatar,
         tag: selectedTag,
         previewUrl: preview?.image || null,
         mediaType,
@@ -346,7 +368,9 @@ export function AddScreen({ onAdd }: Props) {
                     }`}
                   >
                     <span>Выберите тег</span>
-                    <ChevronDown className={`h-4 w-4 transition ${tagsOpen ? "rotate-180" : ""}`} />
+                    <ChevronDown
+                      className={`h-4 w-4 transition ${tagsOpen ? "rotate-180" : ""}`}
+                    />
                   </button>
                 ) : (
                   <button
@@ -400,6 +424,7 @@ export function AddScreen({ onAdd }: Props) {
                 onClick={handleSubmit}
                 disabled={isSubmitting}
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
+                type="button"
               >
                 <Plus className="h-4 w-4" />
                 {isSubmitting ? "Публикуем..." : "Добавить в ленту"}

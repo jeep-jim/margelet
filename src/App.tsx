@@ -22,6 +22,11 @@ type TgUser = {
   photo_url?: string;
 };
 
+type PendingDeepLink = {
+  handle: string;
+  id: number;
+};
+
 function decodeBase64Url(value: string) {
   const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
   const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
@@ -53,6 +58,25 @@ function parseTelegramUserFromHash(): TgUser | null {
   }
 }
 
+function parsePostFromHash(): PendingDeepLink | null {
+  const hash = window.location.hash || "";
+  const match = hash.match(/^#\/([^/]+)\/(\d+)$/);
+
+  if (!match) return null;
+
+  return {
+    handle: match[1].toLowerCase(),
+    id: Number(match[2]),
+  };
+}
+
+function getVideoHandle(video: Video) {
+  return (video.handle || video.channel || "")
+    .replace(/^@/, "")
+    .trim()
+    .toLowerCase();
+}
+
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
@@ -62,6 +86,7 @@ export default function App() {
   const [selectedPost, setSelectedPost] = useState<Video | null>(null);
   const [selectedSourceChannel, setSelectedSourceChannel] = useState<string | null>(null);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
+  const [pendingDeepLink, setPendingDeepLink] = useState<PendingDeepLink | null>(null);
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
@@ -78,6 +103,29 @@ export default function App() {
 
     const introSeen = localStorage.getItem("margelet-intro-seen");
     setHasSeenIntro(introSeen === "1");
+
+    const deepLink = parsePostFromHash();
+    if (deepLink) {
+      setPendingDeepLink(deepLink);
+      setCurrent("feed");
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const deepLink = parsePostFromHash();
+      if (deepLink) {
+        setPendingDeepLink(deepLink);
+        setCurrent("feed");
+      } else if (!window.location.hash) {
+        setPendingDeepLink(null);
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   useEffect(() => {
@@ -164,6 +212,23 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!pendingDeepLink) return;
+    if (videos.length === 0) return;
+
+    const found = videos.find(
+      (video) =>
+        video.id === pendingDeepLink.id &&
+        getVideoHandle(video) === pendingDeepLink.handle
+    );
+
+    if (!found) return;
+
+    setSelectedPost(found);
+    setCurrent("feed");
+    setPendingDeepLink(null);
+  }, [pendingDeepLink, videos]);
+
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
@@ -206,7 +271,9 @@ export default function App() {
   const handleAdd = async ({
     url,
     title,
+    caption,
     channel,
+    avatar,
     tag,
     previewUrl,
     mediaType,
@@ -215,7 +282,9 @@ export default function App() {
   }: {
     url: string;
     title: string;
+    caption?: string;
     channel: string;
+    avatar?: string | null;
     tag: ContentTag;
     previewUrl?: string | null;
     mediaType?: MediaType;
@@ -230,7 +299,9 @@ export default function App() {
       body: JSON.stringify({
         url,
         title,
+        caption: caption || "",
         channel,
+        avatar: avatar || null,
         tag,
         previewUrl: previewUrl || null,
         mediaType,
@@ -264,6 +335,18 @@ export default function App() {
 
   const goBackFromSource = () => {
     setCurrent(previousTab);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedPost(null);
+
+    if (window.location.hash.startsWith("#/")) {
+      window.history.replaceState(
+        {},
+        document.title,
+        window.location.pathname + window.location.search
+      );
+    }
   };
 
   return (
@@ -334,7 +417,7 @@ export default function App() {
         savedPostIds={savedPostIds}
         onToggleLike={handleToggleLike}
         onToggleSave={handleToggleSave}
-        onClose={() => setSelectedPost(null)}
+        onClose={handleCloseModal}
       />
 
       {isFeedLoading && current === "feed" ? null : null}

@@ -13,7 +13,9 @@ export default async function handler(req: any, res: any) {
     const {
       url,
       title,
+      caption,
       channel,
+      avatar,
       tag,
       previewUrl,
       mediaType,
@@ -26,48 +28,105 @@ export default async function handler(req: any, res: any) {
     }
 
     const parsed = parseTelegramPostUrl(url);
+
     if (!parsed) {
       return res.status(400).json({ error: "Invalid Telegram post URL" });
     }
 
     const existing = await getPostByUrl(parsed.normalizedUrl);
+
     if (existing) {
       return res.status(200).json({ post: existing, duplicated: true });
     }
 
+    const cleanTitle =
+      typeof title === "string" && title.trim()
+        ? title.trim()
+        : channel || parsed.sourceHandle || "Telegram";
+
+    const cleanCaption =
+      typeof caption === "string" && caption.trim()
+        ? caption.trim()
+        : "";
+
+    const cleanChannel =
+      typeof channel === "string" && channel.trim()
+        ? channel.trim()
+        : parsed.sourceHandle;
+
+    const cleanAvatar =
+      typeof avatar === "string" && avatar.trim()
+        ? avatar.trim()
+        : null;
+
+    const cleanPreviewUrl =
+      typeof previewUrl === "string" && previewUrl.trim()
+        ? previewUrl.trim()
+        : null;
+
+    const cleanVideoUrl =
+      typeof videoUrl === "string" && videoUrl.trim()
+        ? videoUrl.trim()
+        : null;
+
     const post = buildSubmittedPost(
       {
         url: parsed.normalizedUrl,
-        title: title || "",
-        channel: channel || parsed.sourceHandle,
+        title: cleanTitle,
+        caption: cleanCaption,
+        channel: cleanChannel,
+        avatar: cleanAvatar,
         tag,
-        previewUrl: previewUrl || null,
+        previewUrl: cleanPreviewUrl,
         mediaType,
-        videoUrl: videoUrl || null,
+        videoUrl: cleanVideoUrl,
         channelVerified: !!channelVerified,
       },
       {
         locale: "ru",
         messages: {
-          newVideoFallback: "Новое видео",
-          newVideoCaption: "",
+          newVideoFallback: cleanTitle,
+          newVideoCaption: cleanCaption,
           newChannel: "telegram",
           newLang: "RU",
         },
         enMessages: {
-          newVideoFallback: "New video",
-          newVideoCaption: "",
+          newVideoFallback: cleanTitle,
+          newVideoCaption: cleanCaption,
           newChannel: "telegram",
           newLang: "EN",
         },
       }
     );
 
-    // Убираем служебный мусорный caption — лучше пусто, чем дублирование
-    post.caption = {
-      ru: "",
-      en: "",
+    post.title = {
+      ru: cleanTitle,
+      en: cleanTitle,
     };
+
+    post.caption = {
+      ru: cleanCaption || post.caption.ru,
+      en: cleanCaption || post.caption.en,
+    };
+
+    post.channel = cleanChannel || post.channel;
+    post.handle = cleanChannel || parsed.sourceHandle || post.handle;
+
+    if (cleanAvatar) {
+      post.avatar = cleanAvatar;
+    }
+
+    if (cleanPreviewUrl) {
+      post.previewUrl = cleanPreviewUrl;
+    }
+
+    if (cleanVideoUrl) {
+      post.videoUrl = cleanVideoUrl;
+    }
+
+    if (mediaType) {
+      post.mediaType = mediaType;
+    }
 
     const saved = await savePost(post);
 

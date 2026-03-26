@@ -3,7 +3,9 @@ import type { ContentTag, Locale, MediaType, Video } from "../types/app";
 export type SubmitPayload = {
   url: string;
   title?: string;
+  caption?: string;
   channel?: string;
+  avatar?: string | null;
   tag?: ContentTag;
   mediaType?: MediaType;
   previewUrl?: string | null;
@@ -24,6 +26,8 @@ export type TelegramPreview = {
   image: string | null;
   video: string | null;
   title: string | null;
+  caption: string | null;
+  avatar: string | null;
   verified?: boolean;
 };
 
@@ -43,7 +47,20 @@ type BuildPostOptions = {
   };
 };
 
-const TELEGRAM_HOSTS = new Set(["t.me", "www.t.me", "telegram.me", "www.telegram.me"]);
+const TELEGRAM_HOSTS = new Set([
+  "t.me",
+  "www.t.me",
+  "telegram.me",
+  "www.telegram.me",
+]);
+
+const FALLBACK_PREVIEW_GRADIENTS = [
+  "from-fuchsia-500 via-purple-600 to-indigo-700",
+  "from-amber-400 via-orange-500 to-rose-600",
+  "from-sky-400 via-cyan-500 to-teal-600",
+  "from-emerald-500 via-teal-500 to-cyan-600",
+  "from-rose-500 via-pink-500 to-orange-400",
+];
 
 export function normalizeTelegramUrl(raw: string): string {
   const trimmed = raw.trim();
@@ -107,11 +124,89 @@ export function buildHandle(source: string): string {
   return `@${clean || "telegram"}`;
 }
 
-export async function fetchTelegramPreview(url: string): Promise<TelegramPreview | null> {
+function chooseFallbackGradient(seed: string) {
+  let hash = 0;
+
+  for (let i = 0; i < seed.length; i += 1) {
+    hash = (hash << 5) - hash + seed.charCodeAt(i);
+    hash |= 0;
+  }
+
+  const index = Math.abs(hash) % FALLBACK_PREVIEW_GRADIENTS.length;
+  return FALLBACK_PREVIEW_GRADIENTS[index];
+}
+
+function sanitizeText(value?: string | null) {
+  if (typeof value !== "string") return "";
+  return value.trim();
+}
+
+function sanitizeUrl(value?: string | null) {
+  if (typeof value !== "string") return null;
+
+  const trimmed = value.trim();
+  if (!trimmed) return null;
+
+  return trimmed;
+}
+
+function getDefaultDuration(mediaType: MediaType) {
+  return mediaType === "video" ? "0:24" : "";
+}
+
+function buildDefaultTitle(
+  mediaType: MediaType,
+  handle: string,
+  locale: Locale
+) {
+  if (locale === "ru") {
+    return mediaType === "image" ? `Пост из ${handle}` : `Видео из ${handle}`;
+  }
+
+  return mediaType === "image" ? `Post from ${handle}` : `Video from ${handle}`;
+}
+
+function buildDefaultCaption(
+  mediaType: MediaType,
+  postId: string,
+  handle: string,
+  locale: Locale
+) {
+  if (locale === "ru") {
+    return mediaType === "image"
+      ? `Telegram-пост ${postId} с изображением из ${handle} добавлен в общую ленту MargeleT.`
+      : `Telegram-пост ${postId} с видео из ${handle} добавлен в общую ленту MargeleT.`;
+  }
+
+  return mediaType === "image"
+    ? `Telegram image post ${postId} from ${handle} was added to the shared MargeleT feed.`
+    : `Telegram video post ${postId} from ${handle} was added to the shared MargeleT feed.`;
+}
+
+export async function fetchTelegramPreview(
+  url: string
+): Promise<TelegramPreview | null> {
   try {
-    const res = await fetch(`/api/telegram-preview?url=${encodeURIComponent(url)}`);
+    const normalizedUrl = normalizeTelegramUrl(url);
+
+    if (!normalizedUrl) return null;
+
+    const res = await fetch(
+      `/api/telegram-preview?url=${encodeURIComponent(normalizedUrl)}`
+    );
+
     if (!res.ok) return null;
-    return await res.json();
+
+    const data = await res.json();
+
+    return {
+      image: typeof data?.image === "string" ? data.image : null,
+      video: typeof data?.video === "string" ? data.video : null,
+      title: typeof data?.title === "string" ? data.title : null,
+      caption: typeof data?.caption === "string" ? data.caption : null,
+      avatar: typeof data?.avatar === "string" ? data.avatar : null,
+      verified: !!data?.verified,
+    };
   } catch {
     return null;
   }
@@ -127,37 +222,39 @@ export function buildSubmittedPost(
     throw new Error("INVALID_TELEGRAM_POST_URL");
   }
 
-  const sourceName = payload.channel?.trim() || parsed.sourceHandle;
+  const sourceName = sanitizeText(payload.channel) || parsed.sourceHandle;
   const handle = buildHandle(parsed.sourceHandle);
-  const mediaType: MediaType =
-    payload.mediaType ||
-    (payload.videoUrl ? "video" : "image");
 
-  const palettes = [
-    "from-fuchsia-500 via-purple-600 to-indigo-700",
-    "from-amber-400 via-orange-500 to-rose-600",
-    "from-sky-400 via-cyan-500 to-teal-600",
-    "from-emerald-500 via-teal-500 to-cyan-600",
-    "from-rose-500 via-pink-500 to-orange-400",
-  ];
+  const mediaType: MediaType =
+    payload.mediaType || (payload.videoUrl ? "video" : "image");
+
+  const cleanTitle = sanitizeText(payload.title);
+  const cleanCaption = sanitizeText(payload.caption);
+  const cleanAvatar = sanitizeUrl(payload.avatar);
+  const cleanPreviewUrl = sanitizeUrl(payload.previewUrl);
+  const cleanVideoUrl = sanitizeUrl(payload.videoUrl);
 
   const titleRu =
-    payload.title?.trim() ||
-    (mediaType === "image" ? `Пост из ${handle}` : `Видео из ${handle}`);
+    cleanTitle ||
+    options.messages.newVideoFallback ||
+    buildDefaultTitle(mediaType, handle, "ru");
 
   const titleEn =
-    payload.title?.trim() ||
-    (mediaType === "image" ? `Post from ${handle}` : `Video from ${handle}`);
+    cleanTitle ||
+    options.enMessages.newVideoFallback ||
+    buildDefaultTitle(mediaType, handle, "en");
 
   const captionRu =
-    mediaType === "image"
-      ? `Telegram-пост ${parsed.postId} с изображением из ${handle} добавлен в общую ленту MargeleT.`
-      : `Telegram-пост ${parsed.postId} с видео из ${handle} добавлен в общую ленту MargeleT.`;
+    cleanCaption ||
+    options.messages.newVideoCaption ||
+    buildDefaultCaption(mediaType, parsed.postId, handle, "ru");
 
   const captionEn =
-    mediaType === "image"
-      ? `Telegram image post ${parsed.postId} from ${handle} was added to the shared MargeleT feed.`
-      : `Telegram video post ${parsed.postId} from ${handle} was added to the shared MargeleT feed.`;
+    cleanCaption ||
+    options.enMessages.newVideoCaption ||
+    buildDefaultCaption(mediaType, parsed.postId, handle, "en");
+
+  const avatar = cleanAvatar || buildAvatarLetters(sourceName || parsed.sourceHandle);
 
   return {
     id: Date.now(),
@@ -171,18 +268,18 @@ export function buildSubmittedPost(
       en: captionEn,
     },
     channel: sourceName || options.messages.newChannel,
-    avatar: buildAvatarLetters(sourceName || parsed.sourceHandle),
+    avatar,
     handle,
     channelVerified: !!payload.channelVerified,
     views: "0",
     likes: 0,
     comments: 0,
-    duration: mediaType === "video" ? "0:24" : "",
+    duration: getDefaultDuration(mediaType),
     lang: options.messages.newLang || "RU",
     postUrl: parsed.normalizedUrl,
-    bg: palettes[Math.floor(Math.random() * palettes.length)],
+    bg: chooseFallbackGradient(parsed.sourceHandle),
     tag: payload.tag || "other",
-    previewUrl: payload.previewUrl || null,
-    videoUrl: payload.videoUrl || null,
+    previewUrl: cleanPreviewUrl,
+    videoUrl: cleanVideoUrl,
   };
 }
