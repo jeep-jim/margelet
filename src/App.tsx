@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
 import { PostModal } from "./components/modals/PostModal";
 import { initialVideos } from "./data/videos";
-import { getInitialLocale, messages } from "./lib/i18n";
-import { buildSubmittedPost } from "./lib/telegram";
+import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
 import { CreatorScreen } from "./screens/CreatorScreen";
 import { FeedScreen } from "./screens/FeedScreen";
@@ -15,7 +14,6 @@ const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
 const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
-const FEED_STORAGE_KEY = "margelet_feed_posts";
 
 type TgUser = {
   id: string;
@@ -55,29 +53,24 @@ function parseTelegramUserFromHash(): TgUser | null {
   }
 }
 
-function readStoredVideos(): Video[] {
-  try {
-    const raw = localStorage.getItem(FEED_STORAGE_KEY);
-    if (!raw) return initialVideos;
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed) || parsed.length === 0) return initialVideos;
-    return parsed as Video[];
-  } catch {
-    return initialVideos;
-  }
-}
-
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
   const [previousTab, setPreviousTab] = useState<TabId>("feed");
-  const [videos, setVideos] = useState<Video[]>(() => readStoredVideos());
+  const [serverVideos, setServerVideos] = useState<Video[]>([]);
   const [selectedPost, setSelectedPost] = useState<Video | null>(null);
   const [selectedSourceChannel, setSelectedSourceChannel] = useState<string | null>(null);
+  const [isFeedLoading, setIsFeedLoading] = useState(true);
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
+
+  const videos = useMemo(() => {
+    const serverIds = new Set(serverVideos.map((video) => video.id));
+    const fallbackSeed = initialVideos.filter((video) => !serverIds.has(video.id));
+    return [...serverVideos, ...fallbackSeed];
+  }, [serverVideos]);
 
   useEffect(() => {
     const initial = getInitialLocale();
@@ -86,14 +79,6 @@ export default function App() {
     const introSeen = localStorage.getItem("margelet-intro-seen");
     setHasSeenIntro(introSeen === "1");
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("margelet-locale", locale);
-  }, [locale]);
-
-  useEffect(() => {
-    localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(videos));
-  }, [videos]);
 
   useEffect(() => {
     const storedLikes = localStorage.getItem(LIKES_STORAGE_KEY);
@@ -150,6 +135,35 @@ export default function App() {
     }
   }, []);
 
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadFeed() {
+      try {
+        setIsFeedLoading(true);
+        const res = await fetch("/api/feed");
+        if (!res.ok) throw new Error("feed request failed");
+
+        const data = await res.json();
+        if (!cancelled) {
+          setServerVideos(Array.isArray(data.posts) ? data.posts : []);
+        }
+      } catch (error) {
+        console.error("Failed to load feed", error);
+      } finally {
+        if (!cancelled) {
+          setIsFeedLoading(false);
+        }
+      }
+    }
+
+    loadFeed();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
@@ -163,7 +177,7 @@ export default function App() {
       isLiked ? prev.filter((postId) => postId !== id) : [...prev, id]
     );
 
-    setVideos((prev) =>
+    setServerVideos((prev) =>
       prev.map((v) =>
         v.id === id
           ? { ...v, likes: Math.max(0, v.likes + (isLiked ? -1 : 1)) }
@@ -189,7 +203,7 @@ export default function App() {
     );
   };
 
-  const handleAdd = ({
+  const handleAdd = async ({
     url,
     title,
     channel,
@@ -208,16 +222,37 @@ export default function App() {
     videoUrl?: string | null;
     channelVerified?: boolean;
   }) => {
-    const nextPost = buildSubmittedPost(
-      { url, title, channel, tag, previewUrl, mediaType, videoUrl, channelVerified },
-      {
-        locale,
-        messages: messages[locale],
-        enMessages: messages.en,
-      }
-    );
+    const res = await fetch("/api/submit-post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        url,
+        title,
+        channel,
+        tag,
+        previewUrl: previewUrl || null,
+        mediaType,
+        videoUrl: videoUrl || null,
+        channelVerified: !!channelVerified,
+      }),
+    });
 
-    setVideos((prev) => [nextPost, ...prev]);
+    if (!res.ok) {
+      throw new Error("submit failed");
+    }
+
+    const data = await res.json();
+    if (!data?.post) {
+      throw new Error("submit returned empty post");
+    }
+
+    setServerVideos((prev) => {
+      const rest = prev.filter((video) => video.id !== data.post.id);
+      return [data.post, ...rest];
+    });
+
     setCurrent("feed");
   };
 
@@ -265,7 +300,12 @@ export default function App() {
             />
           )}
 
-          {current === "add" && <AddScreen locale={locale} onAdd={handleAdd} />}
+          {current === "add" && (
+            <AddScreen
+              locale={locale}
+              onAdd={handleAdd}
+            />
+          )}
 
           {current === "creator" && (
             <CreatorScreen
@@ -296,6 +336,8 @@ export default function App() {
         onToggleSave={handleToggleSave}
         onClose={() => setSelectedPost(null)}
       />
+
+      {isFeedLoading && current === "feed" ? null : null}
     </div>
   );
 }

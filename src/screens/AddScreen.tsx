@@ -51,7 +51,7 @@ type Props = {
     mediaType?: MediaType;
     videoUrl?: string | null;
     channelVerified?: boolean;
-  }) => void;
+  }) => Promise<void>;
 };
 
 type TgUser = {
@@ -215,7 +215,7 @@ export function AddScreen({ onAdd }: Props) {
     return "Нужна публичная ссылка вида t.me/channel/123. Приватные, invite и кривые ссылки пока не принимаем.";
   }, [parsedPost, url]);
 
-  const clearErrorIfNeeded = () => {
+  const clearMessages = () => {
     if (submitError) setSubmitError("");
     if (successMessage) setSuccessMessage("");
   };
@@ -259,7 +259,7 @@ export function AddScreen({ onAdd }: Props) {
           ? "image"
           : undefined;
 
-      onAdd({
+      await onAdd({
         url: normalized,
         title: preview?.title || "",
         channel: parsedPost.channel,
@@ -274,8 +274,9 @@ export function AddScreen({ onAdd }: Props) {
       setUrl("");
       setSelectedTag(null);
       setTagsOpen(false);
-    } catch {
-      setSubmitError("Не удалось загрузить превью поста.");
+    } catch (error) {
+      console.error(error);
+      setSubmitError("Не удалось сохранить пост в общую ленту.");
     } finally {
       setIsSubmitting(false);
     }
@@ -303,7 +304,7 @@ export function AddScreen({ onAdd }: Props) {
                   value={url}
                   onChange={(e) => {
                     setUrl(e.target.value);
-                    clearErrorIfNeeded();
+                    clearMessages();
                   }}
                   placeholder="https://t.me/channel/123"
                   className="h-14 rounded-2xl border-neutral-200 bg-neutral-100 pl-11 pr-4 text-[15px] text-neutral-950"
@@ -336,7 +337,7 @@ export function AddScreen({ onAdd }: Props) {
                     type="button"
                     onClick={() => {
                       setTagsOpen((v) => !v);
-                      clearErrorIfNeeded();
+                      clearMessages();
                     }}
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
                       tagsOpen
@@ -352,7 +353,7 @@ export function AddScreen({ onAdd }: Props) {
                     type="button"
                     onClick={() => {
                       setSelectedTag(null);
-                      clearErrorIfNeeded();
+                      clearMessages();
                     }}
                     className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm text-white"
                   >
@@ -370,7 +371,7 @@ export function AddScreen({ onAdd }: Props) {
                         onClick={() => {
                           setSelectedTag(tag.value);
                           setTagsOpen(false);
-                          clearErrorIfNeeded();
+                          clearMessages();
                         }}
                         className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm text-neutral-700 transition hover:bg-neutral-100"
                       >
@@ -401,7 +402,7 @@ export function AddScreen({ onAdd }: Props) {
                 className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Plus className="h-4 w-4" />
-                {isSubmitting ? "Загружаем..." : "Добавить в ленту"}
+                {isSubmitting ? "Публикуем..." : "Добавить в ленту"}
               </button>
             </div>
 
