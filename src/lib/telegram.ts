@@ -121,7 +121,7 @@ export function buildAvatarLetters(source: string): string {
     .toUpperCase();
 }
 
-export function buildHandle(source: string): string {
+export function buildHandle(source: string) {
   const clean = source.replace(/^@/, "").trim().toLowerCase();
   return `@${clean || "telegram"}`;
 }
@@ -154,35 +154,6 @@ function sanitizeUrl(value?: string | null) {
 
 function getDefaultDuration(mediaType: MediaType) {
   return mediaType === "video" ? "0:24" : "";
-}
-
-function buildDefaultTitle(
-  mediaType: MediaType,
-  handle: string,
-  locale: Locale
-) {
-  if (locale === "ru") {
-    return mediaType === "image" ? `Пост из ${handle}` : `Видео из ${handle}`;
-  }
-
-  return mediaType === "image" ? `Post from ${handle}` : `Video from ${handle}`;
-}
-
-function buildDefaultCaption(
-  mediaType: MediaType,
-  postId: string,
-  handle: string,
-  locale: Locale
-) {
-  if (locale === "ru") {
-    return mediaType === "image"
-      ? `Telegram-пост ${postId} с изображением из ${handle} добавлен в общую ленту MargeleT.`
-      : `Telegram-пост ${postId} с видео из ${handle} добавлен в общую ленту MargeleT.`;
-  }
-
-  return mediaType === "image"
-    ? `Telegram image post ${postId} from ${handle} was added to the shared MargeleT feed.`
-    : `Telegram video post ${postId} from ${handle} was added to the shared MargeleT feed.`;
 }
 
 export async function fetchTelegramPreview(
@@ -269,31 +240,17 @@ export function buildSubmittedPost(
   const mediaType: MediaType =
     payload.mediaType || (payload.videoUrl ? "video" : "image");
 
-  const cleanTitle = sanitizeText(payload.title);
+  const cleanTitle = sanitizeText(payload.title) || sourceName;
   const cleanCaption = sanitizeText(payload.caption);
   const cleanAvatar = sanitizeUrl(payload.avatar);
   const cleanPreviewUrl = sanitizeUrl(payload.previewUrl);
   const cleanVideoUrl = sanitizeUrl(payload.videoUrl);
 
-  const titleRu =
-    cleanTitle ||
-    options.messages.newVideoFallback ||
-    buildDefaultTitle(mediaType, handle, "ru");
+  const titleRu = cleanTitle || options.messages.newVideoFallback || sourceName;
+  const titleEn = cleanTitle || options.enMessages.newVideoFallback || sourceName;
 
-  const titleEn =
-    cleanTitle ||
-    options.enMessages.newVideoFallback ||
-    buildDefaultTitle(mediaType, handle, "en");
-
-  const captionRu =
-    cleanCaption ||
-    options.messages.newVideoCaption ||
-    buildDefaultCaption(mediaType, parsed.postId, handle, "ru");
-
-  const captionEn =
-    cleanCaption ||
-    options.enMessages.newVideoCaption ||
-    buildDefaultCaption(mediaType, parsed.postId, handle, "en");
+  const captionRu = cleanCaption || "";
+  const captionEn = cleanCaption || "";
 
   const avatar =
     cleanAvatar || buildAvatarLetters(sourceName || parsed.sourceHandle);

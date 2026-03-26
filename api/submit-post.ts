@@ -99,19 +99,6 @@ export default async function handler(req: any, res: any) {
       }
     );
 
-    post.title = {
-      ru: cleanTitle,
-      en: cleanTitle,
-    };
-
-    post.caption = {
-      ru: cleanCaption || post.caption.ru,
-      en: cleanCaption || post.caption.en,
-    };
-
-    post.channel = cleanChannel || post.channel;
-    post.handle = cleanChannel || parsed.sourceHandle || post.handle;
-
     if (cleanAvatar) {
       post.avatar = cleanAvatar;
     }
@@ -127,6 +114,19 @@ export default async function handler(req: any, res: any) {
     if (mediaType) {
       post.mediaType = mediaType;
     }
+
+    post.title = {
+      ru: cleanTitle,
+      en: cleanTitle,
+    };
+
+    post.caption = {
+      ru: cleanCaption,
+      en: cleanCaption,
+    };
+
+    post.channel = cleanChannel;
+    post.handle = `@${cleanChannel.replace(/^@/, "").trim().toLowerCase()}`;
 
     const saved = await savePost(post);
 

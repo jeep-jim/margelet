@@ -34,11 +34,18 @@ function escapeRegExp(value: string) {
 }
 
 function normalizeUrl(value?: string | null) {
-  const v = String(value || "").trim();
-  if (!v) return null;
-  if (v.startsWith("//")) return `https:${v}`;
-  if (v.startsWith("http://")) return `https://${v.slice("http://".length)}`;
-  return v;
+  const raw = String(value || "").trim();
+  if (!raw) return null;
+
+  if (raw.startsWith("//")) return `https:${raw}`;
+  if (raw.startsWith("http://")) return `https://${raw.slice("http://".length)}`;
+  return raw;
+}
+
+function toProxyUrl(url?: string | null) {
+  const normalized = normalizeUrl(url);
+  if (!normalized) return null;
+  return `/api/media-proxy?url=${encodeURIComponent(normalized)}`;
 }
 
 function readMetaProperty(html: string, key: string) {
@@ -148,11 +155,11 @@ function extractAuthorNameFromMessageBlock(msgHtml: string, pageHtml: string) {
     }
   }
 
-  const pageTitle =
+  return (
     readMetaProperty(pageHtml, "og:title") ||
-    readMetaProperty(pageHtml, "twitter:title");
-
-  return cleanText(pageTitle);
+    readMetaProperty(pageHtml, "twitter:title") ||
+    null
+  );
 }
 
 function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -163,8 +170,7 @@ function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
     hay.includes("tgme_widget_message_owner_badge") ||
     hay.includes("tgme_widget_message_owner_verified_icon") ||
     hay.includes("verified-icon") ||
-    hay.includes("icon-verified") ||
-    /\bverified\b/.test(hay)
+    hay.includes("icon-verified")
   );
 }
 
@@ -200,11 +206,7 @@ function pickBgUrlFromStyle(tagHtml: string) {
 
 function isLikelyAvatarUrl(url: string) {
   const v = String(url || "").toLowerCase();
-  if (!v) return false;
-  if (v.includes("t.me/i/userpic/")) return true;
-  if (v.includes("/userpic/")) return true;
-  if (v.includes("userpic") && v.includes("t.me")) return true;
-  return false;
+  return v.includes("userpic") || v.includes("/i/userpic/") || v.includes("tg://");
 }
 
 function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -316,10 +318,7 @@ function parseTelegramPostUrl(url: string) {
   if (!/^[A-Za-z0-9_]{4,}$/.test(sourceHandle)) return null;
   if (!/^\d+$/.test(postId)) return null;
 
-  return {
-    sourceHandle,
-    postId,
-  };
+  return { sourceHandle, postId };
 }
 
 export default async function handler(req: any, res: any) {
@@ -387,12 +386,12 @@ export default async function handler(req: any, res: any) {
 
     return res.status(200).json({
       canonical,
-      image: media.image || null,
-      video: media.video || null,
-      poster: media.poster || null,
+      image: toProxyUrl(media.image) || null,
+      video: normalizeUrl(media.video) || null,
+      poster: toProxyUrl(media.poster) || null,
       title: cleanText(title),
       caption: cleanText(caption),
-      avatar: cleanText(avatar),
+      avatar: toProxyUrl(avatar) || null,
       verified,
     });
   } catch (error) {
