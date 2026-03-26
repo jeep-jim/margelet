@@ -8,7 +8,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
-import type { Video } from "../types/app";
+import type { ContentTag, Video } from "../types/app";
 
 type Props = {
   locale: "ru" | "en";
@@ -17,6 +17,30 @@ type Props = {
   onBack: () => void;
   onOpenPost: (video: Video) => void;
 };
+
+const TAG_LABELS: Record<ContentTag, string> = {
+  animals: "Животные",
+  news: "Новости",
+  business: "Бизнес",
+  creativity: "Творчество",
+  finance: "Финансы",
+  education: "Образование",
+  technology: "Технологии",
+  memes: "Мемы",
+  sports: "Спорт",
+  music: "Музыка",
+  travel: "Путешествия",
+  food: "Еда",
+  other: "Другое",
+};
+
+function getResolvedTag(video: Video): ContentTag {
+  return video.tag || "other";
+}
+
+function getTagLabel(tag: ContentTag) {
+  return TAG_LABELS[tag] || "Другое";
+}
 
 function StatInline({
   icon: Icon,
@@ -45,14 +69,33 @@ function SourceTile({
       onClick={onOpen}
       className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-200"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,#d4d4d8_0%,#e5e7eb_100%)]" />
+      {video.previewUrl ? (
+        <img
+          src={video.previewUrl}
+          alt={video.title.ru}
+          className="absolute inset-0 h-full w-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      ) : (
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${
+            video.bg || "from-neutral-300 to-neutral-200"
+          }`}
+        />
+      )}
+
+      <div className="absolute inset-0 bg-black/10" />
 
       <div className="absolute inset-0 flex items-center justify-center opacity-70 transition group-hover:opacity-100">
         {video.mediaType === "video" ? (
-          <Play className="h-7 w-7 text-neutral-800" />
+          <Play className="h-7 w-7 text-white" />
         ) : (
-          <ImageIcon className="h-7 w-7 text-neutral-800" />
+          <ImageIcon className="h-7 w-7 text-white" />
         )}
+      </div>
+
+      <div className="absolute right-2 top-2 rounded-full bg-black/40 px-2 py-0.5 text-[10px] text-white">
+        {getTagLabel(getResolvedTag(video))}
       </div>
     </button>
   );
@@ -138,6 +181,10 @@ export function SourceScreen({
                 {source.handle}
               </div>
             </div>
+          </div>
+
+          <div className="mt-4 inline-flex rounded-full bg-neutral-100 px-3 py-1.5 text-sm text-neutral-700">
+            {getTagLabel(getResolvedTag(source))}
           </div>
 
           <div className="mt-5 text-[15px] leading-7 text-neutral-700">

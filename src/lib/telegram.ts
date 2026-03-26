@@ -93,6 +93,11 @@ export function isTelegramPostUrl(raw: string): boolean {
   return !!parseTelegramPostUrl(raw);
 }
 
+export function inferMediaTypeFromPreview(preview: TelegramPreview | null): MediaType {
+  if (preview?.video) return "video";
+  return "image";
+}
+
 export function inferMediaTypeFromUrl(raw: string, title = ""): MediaType {
   const value = `${raw} ${title}`.toLowerCase();
 

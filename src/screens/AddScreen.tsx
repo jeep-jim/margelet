@@ -7,6 +7,8 @@ import {
   Globe,
   Image as ImageIcon,
   Video,
+  ChevronDown,
+  X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { ContentTag, Locale, MediaType } from "../types/app";
@@ -103,6 +105,10 @@ function parseTelegramPostUrl(raw: string): ParsedTelegramPost | null {
   }
 }
 
+function getTagLabel(tag: ContentTag) {
+  return TAG_OPTIONS.find((item) => item.value === tag)?.label || "Другое";
+}
+
 function AuthBlock() {
   return (
     <div className="mt-6 overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
@@ -176,7 +182,8 @@ export function AddScreen({ onAdd }: Props) {
   const [user, setUser] = useState<TgUser | null>(null);
   const [submitError, setSubmitError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [selectedTag, setSelectedTag] = useState<ContentTag>("creativity");
+  const [selectedTag, setSelectedTag] = useState<ContentTag | null>(null);
+  const [tagsOpen, setTagsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -223,6 +230,11 @@ export function AddScreen({ onAdd }: Props) {
       return;
     }
 
+    if (!selectedTag) {
+      setSubmitError("Выберите тег для поста.");
+      return;
+    }
+
     try {
       setIsSubmitting(true);
 
@@ -250,6 +262,8 @@ export function AddScreen({ onAdd }: Props) {
 
       setSuccessMessage("Пост добавлен в ленту.");
       setUrl("");
+      setSelectedTag(null);
+      setTagsOpen(false);
     } catch {
       setSubmitError("Не удалось загрузить превью поста.");
     } finally {
@@ -308,26 +322,47 @@ export function AddScreen({ onAdd }: Props) {
                   Категория
                 </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {TAG_OPTIONS.map((tag) => {
-                    const active = selectedTag === tag.value;
+                {!selectedTag ? (
+                  <button
+                    type="button"
+                    onClick={() => setTagsOpen((v) => !v)}
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
+                      tagsOpen
+                        ? "bg-neutral-950 text-white"
+                        : "border border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100"
+                    }`}
+                  >
+                    <span>Выберите тег</span>
+                    <ChevronDown className={`h-4 w-4 transition ${tagsOpen ? "rotate-180" : ""}`} />
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedTag(null)}
+                    className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm text-white"
+                  >
+                    <span>{getTagLabel(selectedTag)}</span>
+                    <X className="h-4 w-4" />
+                  </button>
+                )}
 
-                    return (
+                {tagsOpen && !selectedTag && (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {TAG_OPTIONS.map((tag) => (
                       <button
                         key={tag.value}
                         type="button"
-                        onClick={() => setSelectedTag(tag.value)}
-                        className={`rounded-full px-3 py-2 text-sm transition ${
-                          active
-                            ? "bg-neutral-950 text-white"
-                            : "border border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100"
-                        }`}
+                        onClick={() => {
+                          setSelectedTag(tag.value);
+                          setTagsOpen(false);
+                        }}
+                        className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm text-neutral-700 transition hover:bg-neutral-100"
                       >
                         {tag.label}
                       </button>
-                    );
-                  })}
-                </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {submitError && (

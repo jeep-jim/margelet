@@ -9,8 +9,8 @@ export const initialVideos: Video[] = [
       en: "How to make motion feel expensive",
     },
     caption: {
-      ru: "Быстрый совет из дизайн-канала. Пост живёт в Telegram, а Margelet даёт ему вторую жизнь в ленте.",
-      en: "A fast tip from a design channel. The post lives in Telegram, and Margelet gives it a second life in the feed.",
+      ru: "Быстрый совет из дизайн-канала. Пост живёт в Telegram, а MargeleT даёт ему вторую жизнь в ленте.",
+      en: "A fast tip from a design channel. The post lives in Telegram, and MargeleT gives it a second life in the feed.",
     },
     channel: "Motion Lab",
     avatar: "ML",
@@ -23,6 +23,8 @@ export const initialVideos: Video[] = [
     lang: "RU",
     postUrl: "https://t.me/motionlab/481",
     bg: "from-violet-600 via-fuchsia-500 to-amber-400",
+    tag: "creativity",
+    previewUrl: null,
   },
   {
     id: 2,
@@ -46,6 +48,8 @@ export const initialVideos: Video[] = [
     lang: "RU",
     postUrl: "https://t.me/visualclub/11",
     bg: "from-pink-500 via-rose-500 to-orange-500",
+    tag: "creativity",
+    previewUrl: null,
   },
   {
     id: 3,
@@ -69,6 +73,8 @@ export const initialVideos: Video[] = [
     lang: "ES",
     postUrl: "https://t.me/neonedit/902",
     bg: "from-emerald-500 via-teal-500 to-sky-500",
+    tag: "technology",
+    previewUrl: null,
   },
   {
     id: 4,
@@ -92,5 +98,7 @@ export const initialVideos: Video[] = [
     lang: "DE",
     postUrl: "https://t.me/signalculture/87",
     bg: "from-orange-500 via-rose-500 to-pink-600",
+    tag: "news",
+    previewUrl: null,
   },
 ];
