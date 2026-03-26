@@ -4,6 +4,10 @@ const ALLOWED_HOSTS = [
   "telegram.org",
   "telegra.ph",
   "telesco.pe",
+  "cdn1.telesco.pe",
+  "cdn2.telesco.pe",
+  "cdn3.telesco.pe",
+  "cdn4.telesco.pe",
 ];
 
 function isAllowedHost(hostname: string) {

@@ -170,7 +170,8 @@ function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
     hay.includes("tgme_widget_message_owner_badge") ||
     hay.includes("tgme_widget_message_owner_verified_icon") ||
     hay.includes("verified-icon") ||
-    hay.includes("icon-verified")
+    hay.includes("icon-verified") ||
+    /\bverified\b/.test(hay)
   );
 }
 
@@ -206,7 +207,11 @@ function pickBgUrlFromStyle(tagHtml: string) {
 
 function isLikelyAvatarUrl(url: string) {
   const v = String(url || "").toLowerCase();
-  return v.includes("userpic") || v.includes("/i/userpic/") || v.includes("tg://");
+  if (!v) return false;
+  if (v.includes("t.me/i/userpic/")) return true;
+  if (v.includes("/userpic/")) return true;
+  if (v.includes("userpic") && v.includes("t.me")) return true;
+  return false;
 }
 
 function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -252,28 +257,58 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     poster: null,
   };
 
-  const videoTag = msgHtml.match(/<video[\s\S]*?<\/video>/i)?.[0] || "";
-  if (videoTag) {
-    result.video =
-      pickAttr(videoTag, ["src", "data-src"]) ||
-      normalizeUrl(
-        msgHtml.match(/<source[^>]+src="([^"]+)"/i)?.[1] ||
-          msgHtml.match(/<source[^>]+src='([^']+)'/i)?.[1] ||
-          null
-      );
+  const videoPlayers = msgHtml.match(
+    /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap)[^"]*"[^>]*>/gi
+  ) ?? [];
 
-    result.poster = pickAttr(videoTag, ["poster"]) || null;
+  for (const tag of videoPlayers) {
+    const href = pickAttr(tag, ["data-video", "href", "data-src", "src"]);
+    const posterFromStyle = pickBgUrlFromStyle(tag);
+    const poster = normalizeUrl(posterFromStyle || pickAttr(tag, ["data-poster", "poster"]));
+    const video = normalizeUrl(href);
+
+    if (video && !isLikelyAvatarUrl(video)) {
+      result.video = video;
+      if (poster && !isLikelyAvatarUrl(poster)) {
+        result.poster = poster;
+      }
+      break;
+    }
   }
 
-  const photoWrapTag =
-    msgHtml.match(/<a[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/i)?.[0] ||
-    msgHtml.match(/<i[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/i)?.[0] ||
-    "";
+  if (!result.video) {
+    const videoTagRe = /<video\b[^>]*>/gi;
+    const videoTags = msgHtml.match(videoTagRe) ?? [];
 
-  if (photoWrapTag) {
-    result.image =
-      pickBgUrlFromStyle(photoWrapTag) ||
-      pickAttr(photoWrapTag, ["href", "src", "data-src"]);
+    for (const tag of videoTags) {
+      const src = pickAttr(tag, ["src", "data-src"]);
+      const poster = pickAttr(tag, ["poster", "data-poster"]);
+      const url = normalizeUrl(src);
+      const p = normalizeUrl(poster);
+
+      if (url && !isLikelyAvatarUrl(url)) {
+        result.video = url;
+        if (p && !isLikelyAvatarUrl(p)) {
+          result.poster = p;
+        }
+        break;
+      }
+    }
+  }
+
+  const photoWrapRe = /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
+  const photoWraps = msgHtml.match(photoWrapRe) ?? [];
+
+  for (const tag of photoWraps) {
+    const bg = pickBgUrlFromStyle(tag);
+    const href = pickAttr(tag, ["href", "data-href", "data-src", "src"]);
+    const url = normalizeUrl(bg || href);
+
+    if (!url) continue;
+    if (isLikelyAvatarUrl(url)) continue;
+
+    result.image = url;
+    break;
   }
 
   if (!result.image) {
@@ -282,7 +317,10 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       msgHtml.match(/<img[^>]+src='([^']+)'/i);
 
     if (imgMatch?.[1]) {
-      result.image = normalizeUrl(imgMatch[1]);
+      const img = normalizeUrl(imgMatch[1]);
+      if (img && !isLikelyAvatarUrl(img)) {
+        result.image = img;
+      }
     }
   }
 
@@ -387,7 +425,7 @@ export default async function handler(req: any, res: any) {
     return res.status(200).json({
       canonical,
       image: toProxyUrl(media.image) || null,
-      video: normalizeUrl(media.video) || null,
+      video: toProxyUrl(media.video) || null,
       poster: toProxyUrl(media.poster) || null,
       title: cleanText(title),
       caption: cleanText(caption),
