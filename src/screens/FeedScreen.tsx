@@ -12,6 +12,8 @@ import {
   ChevronDown,
   X,
   Send,
+  Trash2,
+  EyeOff,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
@@ -25,6 +27,9 @@ type Props = {
   onToggleLike: (id: number) => void;
   onToggleSave: (id: number) => void;
   openSource: (channel: string) => void;
+  currentUserId: string | null;
+  onDeleteOwnPost: (post: Video) => Promise<void>;
+  onHidePost: (id: number) => void;
 };
 
 type FeedMode = "new" | "rising" | "trending";
@@ -178,11 +183,59 @@ function FeedMetric({
   );
 }
 
+function PostMenu({
+  isOwner,
+  onDelete,
+  onHide,
+  onClose,
+}: {
+  isOwner: boolean;
+  onDelete: () => void;
+  onHide: () => void;
+  onClose: () => void;
+}) {
+  return (
+    <div className="absolute right-0 top-11 z-50 min-w-[220px] overflow-hidden rounded-2xl border border-neutral-200 bg-white p-1 shadow-xl">
+      {isOwner ? (
+        <button
+          type="button"
+          onClick={() => {
+            onDelete();
+            onClose();
+          }}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-600 transition hover:bg-rose-50"
+        >
+          <Trash2 className="h-4 w-4" />
+          <span>Удалить пост</span>
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => {
+            onHide();
+            onClose();
+          }}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-neutral-700 transition hover:bg-neutral-100"
+        >
+          <EyeOff className="h-4 w-4" />
+          <span>Не показывать мне этот пост</span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 function FeedCard({
   video,
   locale,
   liked,
   saved,
+  isOwner,
+  menuOpen,
+  onMenuToggle,
+  onMenuClose,
+  onDelete,
+  onHide,
   onOpen,
   onOpenCreator,
   onToggleLike,
@@ -192,6 +245,12 @@ function FeedCard({
   locale: Locale;
   liked: boolean;
   saved: boolean;
+  isOwner: boolean;
+  menuOpen: boolean;
+  onMenuToggle: () => void;
+  onMenuClose: () => void;
+  onDelete: () => void;
+  onHide: () => void;
   onOpen: () => void;
   onOpenCreator: () => void;
   onToggleLike: () => void;
@@ -203,9 +262,25 @@ function FeedCard({
     <article className="overflow-hidden border-b border-neutral-200 bg-white">
       <div className="flex items-center justify-between px-4 pt-4">
         <SourceHeader video={video} compact onOpenCreator={onOpenCreator} />
-        <button className="rounded-full p-2 text-neutral-700" type="button">
-          <MoreVertical className="h-5 w-5" />
-        </button>
+
+        <div className="relative">
+          <button
+            className="rounded-full p-2 text-neutral-700"
+            type="button"
+            onClick={onMenuToggle}
+          >
+            <MoreVertical className="h-5 w-5" />
+          </button>
+
+          {menuOpen ? (
+            <PostMenu
+              isOwner={isOwner}
+              onDelete={onDelete}
+              onHide={onHide}
+              onClose={onMenuClose}
+            />
+          ) : null}
+        </div>
       </div>
 
       <button
@@ -228,18 +303,6 @@ function FeedCard({
               }`}
             />
           )}
-
-          <div className="absolute inset-0 bg-black/5" />
-
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm">
-              {video.mediaType === "video" ? (
-                <Play className="ml-1 h-8 w-8 text-white" />
-              ) : (
-                <ImageIcon className="h-8 w-8 text-white" />
-              )}
-            </div>
-          </div>
 
           <div className="absolute left-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm">
             {video.mediaType}
@@ -325,6 +388,9 @@ export function FeedScreen({
   onToggleLike,
   onToggleSave,
   openSource,
+  currentUserId,
+  onDeleteOwnPost,
+  onHidePost,
 }: Props) {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const [expandedCaption, setExpandedCaption] = useState(false);
@@ -334,6 +400,9 @@ export function FeedScreen({
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
+  const [cardMenuPostId, setCardMenuPostId] = useState<number | null>(null);
+  const [viewerMenuOpen, setViewerMenuOpen] = useState(false);
+  const [pendingDeleteId, setPendingDeleteId] = useState<number | null>(null);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionScrollRef = useRef<HTMLDivElement | null>(null);
@@ -404,6 +473,7 @@ export function FeedScreen({
   const activeSaved = activeVideo ? savedPostIds.includes(activeVideo.id) : false;
   const activeSaveCount = activeSaved ? 1 : 0;
   const activeDisplayText = activeVideo ? getDisplayText(activeVideo, locale) : "";
+  const activeIsOwner = !!(activeVideo && currentUserId && activeVideo.addedByUserId === currentUserId);
 
   const openViewer = (index: number) => {
     setViewerIndex(index);
@@ -411,6 +481,7 @@ export function FeedScreen({
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
+    setViewerMenuOpen(false);
   };
 
   const closeViewer = () => {
@@ -419,6 +490,7 @@ export function FeedScreen({
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
+    setViewerMenuOpen(false);
   };
 
   const nextViewer = () => {
@@ -428,6 +500,7 @@ export function FeedScreen({
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
+    setViewerMenuOpen(false);
   };
 
   const prevViewer = () => {
@@ -437,6 +510,7 @@ export function FeedScreen({
     setIsMuted(true);
     setIsPlaying(true);
     setCopySuccessId(null);
+    setViewerMenuOpen(false);
   };
 
   const handleShare = async (video: Video) => {
@@ -467,6 +541,34 @@ export function FeedScreen({
       } catch {
         // ignore
       }
+    }
+  };
+
+  const handleDeletePost = async (post: Video) => {
+    try {
+      setPendingDeleteId(post.id);
+      await onDeleteOwnPost(post);
+      setCardMenuPostId(null);
+      setViewerMenuOpen(false);
+
+      if (activeVideo?.id === post.id) {
+        closeViewer();
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Не удалось удалить пост.");
+    } finally {
+      setPendingDeleteId(null);
+    }
+  };
+
+  const handleHideFromFeed = (post: Video) => {
+    onHidePost(post.id);
+    setCardMenuPostId(null);
+    setViewerMenuOpen(false);
+
+    if (activeVideo?.id === post.id) {
+      closeViewer();
     }
   };
 
@@ -623,19 +725,31 @@ export function FeedScreen({
       </div>
 
       <div className="mx-auto w-full max-w-[720px]">
-        {visibleVideos.map((video, index) => (
-          <FeedCard
-            key={video.id}
-            video={video}
-            locale={locale}
-            liked={likedPostIds.includes(video.id)}
-            saved={savedPostIds.includes(video.id)}
-            onOpen={() => openViewer(index)}
-            onOpenCreator={() => openSource(video.channel)}
-            onToggleLike={() => onToggleLike(video.id)}
-            onToggleSave={() => onToggleSave(video.id)}
-          />
-        ))}
+        {visibleVideos.map((video, index) => {
+          const isOwner = !!(currentUserId && video.addedByUserId === currentUserId);
+
+          return (
+            <FeedCard
+              key={video.id}
+              video={video}
+              locale={locale}
+              liked={likedPostIds.includes(video.id)}
+              saved={savedPostIds.includes(video.id)}
+              isOwner={isOwner}
+              menuOpen={cardMenuPostId === video.id}
+              onMenuToggle={() =>
+                setCardMenuPostId((prev) => (prev === video.id ? null : video.id))
+              }
+              onMenuClose={() => setCardMenuPostId(null)}
+              onDelete={() => handleDeletePost(video)}
+              onHide={() => handleHideFromFeed(video)}
+              onOpen={() => openViewer(index)}
+              onOpenCreator={() => openSource(video.channel)}
+              onToggleLike={() => onToggleLike(video.id)}
+              onToggleSave={() => onToggleSave(video.id)}
+            />
+          );
+        })}
       </div>
 
       <AnimatePresence>
@@ -689,21 +803,56 @@ export function FeedScreen({
                         <ArrowLeft className="h-6 w-6" />
                       </button>
 
-                      {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                        <button
-                          onClick={() => setIsMuted((v) => !v)}
-                          className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                          type="button"
-                        >
-                          {isMuted ? (
-                            <VolumeX className="h-5 w-5" />
-                          ) : (
-                            <Volume2 className="h-5 w-5" />
-                          )}
-                        </button>
-                      ) : (
-                        <div />
-                      )}
+                      <div className="flex items-center gap-2">
+                        {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                          <button
+                            onClick={() => setIsMuted((v) => !v)}
+                            className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                            type="button"
+                          >
+                            {isMuted ? (
+                              <VolumeX className="h-5 w-5" />
+                            ) : (
+                              <Volume2 className="h-5 w-5" />
+                            )}
+                          </button>
+                        ) : null}
+
+                        <div className="relative">
+                          <button
+                            onClick={() => setViewerMenuOpen((prev) => !prev)}
+                            className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                            type="button"
+                          >
+                            <MoreVertical className="h-5 w-5" />
+                          </button>
+
+                          {viewerMenuOpen ? (
+                            <div className="absolute right-0 top-12 z-50 min-w-[220px] overflow-hidden rounded-2xl border border-neutral-700 bg-neutral-900 p-1 shadow-xl">
+                              {activeIsOwner ? (
+                                <button
+                                  type="button"
+                                  onClick={() => handleDeletePost(activeVideo)}
+                                  disabled={pendingDeleteId === activeVideo.id}
+                                  className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-400 transition hover:bg-white/5 disabled:opacity-50"
+                                >
+                                  <Trash2 className="h-4 w-4" />
+                                  <span>Удалить пост</span>
+                                </button>
+                              ) : (
+                                <button
+                                  type="button"
+                                  onClick={() => handleHideFromFeed(activeVideo)}
+                                  className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-white transition hover:bg-white/5"
+                                >
+                                  <EyeOff className="h-4 w-4" />
+                                  <span>Не показывать мне этот пост</span>
+                                </button>
+                              )}
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
                     </div>
 
                     <div

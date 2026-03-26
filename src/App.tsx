@@ -14,6 +14,7 @@ const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
 const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
+const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 
 type TgUser = {
   id: string;
@@ -58,6 +59,18 @@ function parseTelegramUserFromHash(): TgUser | null {
   }
 }
 
+function readCurrentTelegramUser(): TgUser | null {
+  const raw = localStorage.getItem(TG_STORAGE_KEY);
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw) as TgUser;
+  } catch {
+    localStorage.removeItem(TG_STORAGE_KEY);
+    return null;
+  }
+}
+
 function parsePostFromHash(): PendingDeepLink | null {
   const hash = window.location.hash || "";
   const match = hash.match(/^#\/([^/]+)\/(\d+)$/);
@@ -90,6 +103,8 @@ export default function App() {
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
+  const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
+  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
 
   const videos = useMemo(() => {
     const serverIds = new Set(serverVideos.map((video) => video.id));
@@ -97,12 +112,19 @@ export default function App() {
     return [...serverVideos, ...fallbackSeed];
   }, [serverVideos]);
 
+  const visibleFeedVideos = useMemo(() => {
+    return videos.filter((video) => !hiddenPostIds.includes(video.id));
+  }, [videos, hiddenPostIds]);
+
   useEffect(() => {
     const initial = getInitialLocale();
     setLocale(initial);
 
     const introSeen = localStorage.getItem("margelet-intro-seen");
     setHasSeenIntro(introSeen === "1");
+
+    const currentUser = readCurrentTelegramUser();
+    setCurrentUserId(currentUser?.id || null);
 
     const deepLink = parsePostFromHash();
     if (deepLink) {
@@ -131,6 +153,7 @@ export default function App() {
   useEffect(() => {
     const storedLikes = localStorage.getItem(LIKES_STORAGE_KEY);
     const storedSaves = localStorage.getItem(SAVES_STORAGE_KEY);
+    const storedHidden = localStorage.getItem(HIDDEN_POSTS_STORAGE_KEY);
 
     if (storedLikes) {
       try {
@@ -147,6 +170,14 @@ export default function App() {
         localStorage.removeItem(SAVES_STORAGE_KEY);
       }
     }
+
+    if (storedHidden) {
+      try {
+        setHiddenPostIds(JSON.parse(storedHidden));
+      } catch {
+        localStorage.removeItem(HIDDEN_POSTS_STORAGE_KEY);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -158,6 +189,10 @@ export default function App() {
   }, [savedPostIds]);
 
   useEffect(() => {
+    localStorage.setItem(HIDDEN_POSTS_STORAGE_KEY, JSON.stringify(hiddenPostIds));
+  }, [hiddenPostIds]);
+
+  useEffect(() => {
     const tgUser = parseTelegramUserFromHash();
 
     if (!tgUser) {
@@ -166,6 +201,7 @@ export default function App() {
     }
 
     localStorage.setItem(TG_STORAGE_KEY, JSON.stringify(tgUser));
+    setCurrentUserId(tgUser.id);
 
     window.history.replaceState(
       {},
@@ -268,6 +304,44 @@ export default function App() {
     );
   };
 
+  const handleHidePost = (id: number) => {
+    setHiddenPostIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+
+    if (selectedPost?.id === id) {
+      setSelectedPost(null);
+    }
+  };
+
+  const handleDeleteOwnPost = async (post: Video) => {
+    if (!currentUserId) return;
+
+    const res = await fetch("/api/delete-post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id: post.id,
+        postUrl: post.postUrl,
+        userId: currentUserId,
+      }),
+    });
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      throw new Error(data?.error || "delete failed");
+    }
+
+    setServerVideos((prev) => prev.filter((video) => video.id !== post.id));
+    setHiddenPostIds((prev) => prev.filter((hiddenId) => hiddenId !== post.id));
+    setLikedPostIds((prev) => prev.filter((likedId) => likedId !== post.id));
+    setSavedPostIds((prev) => prev.filter((savedId) => savedId !== post.id));
+
+    if (selectedPost?.id === post.id) {
+      setSelectedPost(null);
+    }
+  };
+
   const handleAdd = async ({
     url,
     title,
@@ -307,6 +381,7 @@ export default function App() {
         mediaType,
         videoUrl: videoUrl || null,
         channelVerified: !!channelVerified,
+        addedByUserId: currentUserId || null,
       }),
     });
 
@@ -374,12 +449,15 @@ export default function App() {
           {current === "feed" && (
             <FeedScreen
               locale={locale}
-              videos={videos}
+              videos={visibleFeedVideos}
               likedPostIds={likedPostIds}
               savedPostIds={savedPostIds}
               onToggleLike={handleToggleLike}
               onToggleSave={handleToggleSave}
               openSource={openSource}
+              currentUserId={currentUserId}
+              onDeleteOwnPost={handleDeleteOwnPost}
+              onHidePost={handleHidePost}
             />
           )}
 

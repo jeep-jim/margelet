@@ -88,7 +88,12 @@ function normalizeVideo(raw: any): Video | null {
   const postUrl = asNullableString(raw.postUrl);
   const channel = asCleanString(raw.channel);
   const handle = asCleanString(raw.handle);
-  const mediaType = raw.mediaType === "video" ? "video" : raw.mediaType === "image" ? "image" : null;
+  const mediaType =
+    raw.mediaType === "video"
+      ? "video"
+      : raw.mediaType === "image"
+        ? "image"
+        : null;
 
   if (!id || !postUrl || !channel || !handle || !mediaType) {
     return null;
@@ -174,4 +179,34 @@ export async function savePost(post: Video): Promise<Video> {
   await redis.lpush(FEED_IDS_KEY, normalized.id);
 
   return normalized;
+}
+
+export async function deletePostById(id: number | string): Promise<boolean> {
+  const normalizedId = asNumber(id);
+
+  if (!normalizedId) {
+    return false;
+  }
+
+  const raw = await redis.get(postKey(normalizedId));
+  const post = normalizeVideo(raw);
+
+  await redis.del(postKey(normalizedId));
+  await redis.lrem(FEED_IDS_KEY, 0, normalizedId);
+
+  if (post?.postUrl) {
+    await redis.del(postUrlKey(post.postUrl));
+  }
+
+  return true;
+}
+
+export async function deletePostByUrl(url: string): Promise<boolean> {
+  const existing = await getPostByUrl(url);
+
+  if (!existing) {
+    return false;
+  }
+
+  return deletePostById(existing.id);
 }
