@@ -18,32 +18,46 @@ function stripTags(value: string) {
       .replace(/<[^>]+>/g, "")
   )
     .replace(/\n{3,}/g, "\n\n")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n[ \t]+/g, "\n")
     .trim();
 }
 
 function cleanText(value?: string | null) {
   if (typeof value !== "string") return null;
-
   const trimmed = value.trim();
   return trimmed || null;
 }
 
-function extractMeta(html: string, key: string) {
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function normalizeUrl(value?: string | null) {
+  const v = String(value || "").trim();
+  if (!v) return null;
+  if (v.startsWith("//")) return `https:${v}`;
+  if (v.startsWith("http://")) return `https://${v.slice("http://".length)}`;
+  return v;
+}
+
+function readMetaProperty(html: string, key: string) {
+  const escaped = escapeRegExp(key);
   const patterns = [
     new RegExp(
-      `<meta[^>]+property=["']${key}["'][^>]+content=["']([^"']+)["']`,
+      `<meta[^>]+property=["']${escaped}["'][^>]+content=["']([^"']+)["']`,
       "i"
     ),
     new RegExp(
-      `<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${key}["']`,
+      `<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${escaped}["']`,
       "i"
     ),
     new RegExp(
-      `<meta[^>]+name=["']${key}["'][^>]+content=["']([^"']+)["']`,
+      `<meta[^>]+name=["']${escaped}["'][^>]+content=["']([^"']+)["']`,
       "i"
     ),
     new RegExp(
-      `<meta[^>]+content=["']([^"']+)["'][^>]+name=["']${key}["']`,
+      `<meta[^>]+content=["']([^"']+)["'][^>]+name=["']${escaped}["']`,
       "i"
     ),
   ];
@@ -58,41 +72,51 @@ function extractMeta(html: string, key: string) {
   return null;
 }
 
-function extractVideoSrc(html: string) {
-  const patterns = [
-    /<video[^>]+src="([^"]+)"/i,
-    /<video[^>]+src='([^']+)'/i,
-    /<source[^>]+src="([^"]+)"/i,
-    /<source[^>]+src='([^']+)'/i,
-  ];
+function extractCanonicalLink(html: string) {
+  const match = html.match(
+    /<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i
+  );
+  return cleanText(match?.[1] || null);
+}
 
-  for (const pattern of patterns) {
-    const match = html.match(pattern);
-    if (match?.[1]) {
-      return cleanText(decodeHtml(match[1]));
+function extractMessageBlockByDataPost(html: string, dataPost: string) {
+  const marker = `data-post="${dataPost}"`;
+  const start = html.indexOf(marker);
+
+  if (start === -1) return "";
+
+  const widgetStart = html.lastIndexOf('<div class="tgme_widget_message', start);
+  if (widgetStart === -1) return "";
+
+  let depth = 0;
+  let i = widgetStart;
+
+  while (i < html.length) {
+    const nextOpen = html.indexOf("<div", i);
+    const nextClose = html.indexOf("</div>", i);
+
+    if (nextClose === -1) break;
+
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth += 1;
+      i = nextOpen + 4;
+      continue;
+    }
+
+    depth -= 1;
+    i = nextClose + 6;
+
+    if (depth <= 0) {
+      return html.slice(widgetStart, i);
     }
   }
 
-  return null;
+  return html.slice(widgetStart);
 }
 
-function extractPoster(html: string) {
-  const patterns = [
-    /<video[^>]+poster="([^"]+)"/i,
-    /<video[^>]+poster='([^']+)'/i,
-  ];
+function extractMessageTextFromMessageBlock(html: string) {
+  if (!html) return null;
 
-  for (const pattern of patterns) {
-    const match = html.match(pattern);
-    if (match?.[1]) {
-      return cleanText(decodeHtml(match[1]));
-    }
-  }
-
-  return null;
-}
-
-function extractMessageText(html: string) {
   const patterns = [
     /<div[^>]+class="[^"]*tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
     /<div[^>]+class='[^']*tgme_widget_message_text[^']*'[^>]*>([\s\S]*?)<\/div>/i,
@@ -106,50 +130,165 @@ function extractMessageText(html: string) {
     }
   }
 
-  const description =
-    extractMeta(html, "og:description") ||
-    extractMeta(html, "twitter:description");
-
-  return cleanText(description);
-}
-
-function extractAuthorAvatar(html: string) {
-  const patterns = [
-    /tgme_widget_message_user_photo[^>]+style="[^"]*background-image:url\('([^']+)'\)/i,
-    /tgme_widget_message_user_photo[^>]+style='[^']*background-image:url\("([^"]+)"\)/i,
-    /tgme_widget_message_user_photo[^>]+style="[^"]*background-image:url\(([^)]+)\)/i,
-    /tgme_widget_message_user_photo[^>]+src="([^"]+)"/i,
-    /tgme_widget_message_user_photo[^>]+src='([^']+)'/i,
-  ];
-
-  for (const pattern of patterns) {
-    const match = html.match(pattern);
-    if (match?.[1]) {
-      return cleanText(
-        decodeHtml(match[1].replace(/^['"]|['"]$/g, "").trim())
-      );
-    }
-  }
-
   return null;
 }
 
-function extractAuthorName(html: string) {
+function extractAuthorNameFromMessageBlock(msgHtml: string, pageHtml: string) {
   const patterns = [
-    /<div[^>]+class="[^"]*tgme_widget_message_author[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
     /<a[^>]+class="[^"]*tgme_widget_message_owner_name[^"]*"[^>]*>([\s\S]*?)<\/a>/i,
+    /<div[^>]+class="[^"]*tgme_widget_message_author[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
     /<div[^>]+class="[^"]*tgme_widget_message_from_author[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
   ];
 
   for (const pattern of patterns) {
-    const match = html.match(pattern);
+    const match = msgHtml.match(pattern);
     if (match?.[1]) {
       const text = cleanText(stripTags(match[1]));
       if (text) return text;
     }
   }
 
+  const pageTitle =
+    readMetaProperty(pageHtml, "og:title") ||
+    readMetaProperty(pageHtml, "twitter:title");
+
+  return cleanText(pageTitle);
+}
+
+function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
+  const hay = `${msgHtml}\n${pageHtml}`.toLowerCase();
+
+  return (
+    hay.includes("tgme_widget_message_owner_verified") ||
+    hay.includes("tgme_widget_message_owner_badge") ||
+    hay.includes("tgme_widget_message_owner_verified_icon") ||
+    hay.includes("verified-icon") ||
+    hay.includes("icon-verified") ||
+    /\bverified\b/.test(hay)
+  );
+}
+
+function pickAttr(tagHtml: string, names: string[]) {
+  for (const name of names) {
+    const pattern = new RegExp(
+      `\\b${escapeRegExp(name)}\\s*=\\s*("([^"]*)"|'([^']*)'|([^\\s>]+))`,
+      "i"
+    );
+
+    const match = tagHtml.match(pattern);
+    if (!match) continue;
+
+    const value = match[2] || match[3] || match[4] || "";
+    const normalized = normalizeUrl(decodeHtml(value));
+
+    if (normalized) return normalized;
+  }
+
   return null;
+}
+
+function pickBgUrlFromStyle(tagHtml: string) {
+  const match = tagHtml.match(/background-image\s*:\s*url\(([^)]+)\)/i);
+  if (!match) return null;
+
+  const value = String(match[1] || "")
+    .trim()
+    .replace(/^['"]|['"]$/g, "");
+
+  return normalizeUrl(value);
+}
+
+function isLikelyAvatarUrl(url: string) {
+  const v = String(url || "").toLowerCase();
+  if (!v) return false;
+  if (v.includes("t.me/i/userpic/")) return true;
+  if (v.includes("/userpic/")) return true;
+  if (v.includes("userpic") && v.includes("t.me")) return true;
+  return false;
+}
+
+function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) {
+  const userPhotoTag =
+    msgHtml.match(/<a[^>]*class="[^"]*tgme_widget_message_user_photo[^"]*"[^>]*>/i)?.[0] ||
+    msgHtml.match(/<i[^>]*class="[^"]*tgme_widget_message_user_photo[^"]*"[^>]*>/i)?.[0] ||
+    msgHtml.match(/<div[^>]*class="[^"]*tgme_widget_message_user_photo[^"]*"[^>]*>/i)?.[0] ||
+    "";
+
+  if (userPhotoTag) {
+    const bg = pickBgUrlFromStyle(userPhotoTag);
+    if (bg && isLikelyAvatarUrl(bg)) return bg;
+
+    const src = pickAttr(userPhotoTag, ["src", "data-src"]);
+    if (src && isLikelyAvatarUrl(src)) return src;
+  }
+
+  const pagePatterns = [
+    /<img[^>]+class="[^"]*tgme_page_photo_image[^"]*"[^>]+src="([^"]+)"/i,
+    /<img[^>]+src="([^"]+)"[^>]+class="[^"]*tgme_page_photo_image[^"]*"/i,
+    /<a[^>]+class="[^"]*tgme_channel_info_header_link[^"]*"[^>]*>\s*<i[^>]+style="[^"]*background-image:url\(([^)]+)\)/i,
+  ];
+
+  for (const pattern of pagePatterns) {
+    const match = pageHtml.match(pattern);
+    if (match?.[1]) {
+      const avatar = normalizeUrl(match[1].replace(/^['"]|['"]$/g, ""));
+      if (avatar) return avatar;
+    }
+  }
+
+  return null;
+}
+
+function extractMessageMediaFromMessageBlock(msgHtml: string) {
+  const result: {
+    image: string | null;
+    video: string | null;
+    poster: string | null;
+  } = {
+    image: null,
+    video: null,
+    poster: null,
+  };
+
+  const videoTag = msgHtml.match(/<video[\s\S]*?<\/video>/i)?.[0] || "";
+  if (videoTag) {
+    result.video =
+      pickAttr(videoTag, ["src", "data-src"]) ||
+      normalizeUrl(
+        msgHtml.match(/<source[^>]+src="([^"]+)"/i)?.[1] ||
+          msgHtml.match(/<source[^>]+src='([^']+)'/i)?.[1] ||
+          null
+      );
+
+    result.poster = pickAttr(videoTag, ["poster"]) || null;
+  }
+
+  const photoWrapTag =
+    msgHtml.match(/<a[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/i)?.[0] ||
+    msgHtml.match(/<i[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/i)?.[0] ||
+    "";
+
+  if (photoWrapTag) {
+    result.image =
+      pickBgUrlFromStyle(photoWrapTag) ||
+      pickAttr(photoWrapTag, ["href", "src", "data-src"]);
+  }
+
+  if (!result.image) {
+    const imgMatch =
+      msgHtml.match(/<img[^>]+src="([^"]+)"/i) ||
+      msgHtml.match(/<img[^>]+src='([^']+)'/i);
+
+    if (imgMatch?.[1]) {
+      result.image = normalizeUrl(imgMatch[1]);
+    }
+  }
+
+  if (!result.image && result.poster) {
+    result.image = result.poster;
+  }
+
+  return result;
 }
 
 function isTelegramPostUrl(url: string) {
@@ -166,8 +305,21 @@ function isTelegramPostUrl(url: string) {
   }
 }
 
-function extractVerified(html: string) {
-  return /verified/i.test(html) && /tgme_widget_message_owner/i.test(html);
+function parseTelegramPostUrl(url: string) {
+  const parsed = new URL(url);
+  const parts = parsed.pathname.split("/").filter(Boolean);
+
+  if (parts.length !== 2) return null;
+
+  const [sourceHandle, postId] = parts;
+
+  if (!/^[A-Za-z0-9_]{4,}$/.test(sourceHandle)) return null;
+  if (!/^\d+$/.test(postId)) return null;
+
+  return {
+    sourceHandle,
+    postId,
+  };
 }
 
 export default async function handler(req: any, res: any) {
@@ -182,49 +334,65 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Invalid Telegram post url" });
     }
 
-    const embedUrl = `${rawUrl}${rawUrl.includes("?") ? "&" : "?"}embed=1`;
+    const parsed = parseTelegramPostUrl(rawUrl);
 
-    const response = await fetch(embedUrl, {
+    if (!parsed) {
+      return res.status(400).json({ error: "Failed to parse Telegram post url" });
+    }
+
+    const webUrl = `https://t.me/s/${encodeURIComponent(parsed.sourceHandle)}/${encodeURIComponent(parsed.postId)}`;
+
+    const response = await fetch(webUrl, {
       headers: {
-        "User-Agent": "Mozilla/5.0",
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36",
         Accept: "text/html,application/xhtml+xml",
       },
     });
 
     if (!response.ok) {
-      return res.status(502).json({ error: "Failed to fetch Telegram embed" });
+      return res.status(502).json({ error: "Failed to fetch Telegram web page" });
     }
 
     const html = await response.text();
 
-    const image =
-      extractPoster(html) ||
-      extractMeta(html, "og:image") ||
-      extractMeta(html, "twitter:image") ||
-      null;
+    if (!html) {
+      return res.status(502).json({ error: "Empty Telegram page" });
+    }
 
-    const video =
-      extractVideoSrc(html) ||
-      extractMeta(html, "og:video") ||
-      extractMeta(html, "og:video:url") ||
-      null;
+    const canonical =
+      extractCanonicalLink(html) ||
+      `https://t.me/${parsed.sourceHandle}/${parsed.postId}`;
+
+    const msgHtml =
+      extractMessageBlockByDataPost(html, `${parsed.sourceHandle}/${parsed.postId}`) || "";
+
+    const media = extractMessageMediaFromMessageBlock(msgHtml);
 
     const title =
-      extractAuthorName(html) ||
-      extractMeta(html, "og:title") ||
-      extractMeta(html, "twitter:title") ||
+      extractAuthorNameFromMessageBlock(msgHtml, html) ||
+      parsed.sourceHandle;
+
+    const caption =
+      extractMessageTextFromMessageBlock(msgHtml) ||
+      readMetaProperty(html, "og:description") ||
+      readMetaProperty(html, "twitter:description") ||
       null;
 
-    const caption = extractMessageText(html);
-    const avatar = extractAuthorAvatar(html);
-    const verified = extractVerified(html);
+    const avatar =
+      extractAuthorAvatarFromMessageBlock(msgHtml, html) ||
+      null;
+
+    const verified = extractVerifiedFromMessageBlock(msgHtml, html);
 
     return res.status(200).json({
-      image,
-      video,
-      title,
-      caption,
-      avatar,
+      canonical,
+      image: media.image || null,
+      video: media.video || null,
+      poster: media.poster || null,
+      title: cleanText(title),
+      caption: cleanText(caption),
+      avatar: cleanText(avatar),
       verified,
     });
   } catch (error) {

@@ -23,8 +23,10 @@ export type ParsedTelegramPostUrl = {
 };
 
 export type TelegramPreview = {
+  canonical?: string | null;
   image: string | null;
   video: string | null;
+  poster?: string | null;
   title: string | null;
   caption: string | null;
   avatar: string | null;
@@ -199,12 +201,51 @@ export async function fetchTelegramPreview(
 
     const data = await res.json();
 
+    const image =
+      typeof data?.image === "string" && data.image.trim()
+        ? data.image.trim()
+        : typeof data?.poster === "string" && data.poster.trim()
+          ? data.poster.trim()
+          : null;
+
+    const video =
+      typeof data?.video === "string" && data.video.trim()
+        ? data.video.trim()
+        : null;
+
+    const title =
+      typeof data?.title === "string" && data.title.trim()
+        ? data.title.trim()
+        : null;
+
+    const caption =
+      typeof data?.caption === "string" && data.caption.trim()
+        ? data.caption.trim()
+        : null;
+
+    const avatar =
+      typeof data?.avatar === "string" && data.avatar.trim()
+        ? data.avatar.trim()
+        : null;
+
+    const canonical =
+      typeof data?.canonical === "string" && data.canonical.trim()
+        ? data.canonical.trim()
+        : normalizedUrl;
+
+    const poster =
+      typeof data?.poster === "string" && data.poster.trim()
+        ? data.poster.trim()
+        : null;
+
     return {
-      image: typeof data?.image === "string" ? data.image : null,
-      video: typeof data?.video === "string" ? data.video : null,
-      title: typeof data?.title === "string" ? data.title : null,
-      caption: typeof data?.caption === "string" ? data.caption : null,
-      avatar: typeof data?.avatar === "string" ? data.avatar : null,
+      canonical,
+      image,
+      video,
+      poster,
+      title,
+      caption,
+      avatar,
       verified: !!data?.verified,
     };
   } catch {
@@ -254,7 +295,8 @@ export function buildSubmittedPost(
     options.enMessages.newVideoCaption ||
     buildDefaultCaption(mediaType, parsed.postId, handle, "en");
 
-  const avatar = cleanAvatar || buildAvatarLetters(sourceName || parsed.sourceHandle);
+  const avatar =
+    cleanAvatar || buildAvatarLetters(sourceName || parsed.sourceHandle);
 
   return {
     id: Date.now(),
