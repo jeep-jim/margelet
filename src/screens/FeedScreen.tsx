@@ -69,14 +69,7 @@ function isAvatarUrl(value?: string | null) {
 function getDisplayText(video: Video, locale: Locale) {
   const caption = video.caption?.[locale]?.trim();
   const title = video.title?.[locale]?.trim();
-
-  if (caption) return caption;
-
-  if (title && !/^video from @|^post from @|^видео из @|^пост из @/i.test(title)) {
-    return title;
-  }
-
-  return video.channel || "";
+  return caption || title || "";
 }
 
 function buildShareUrl(video: Video) {
@@ -100,9 +93,7 @@ function SourceAvatar({
 
   if (isAvatarUrl(video.avatar)) {
     return (
-      <div
-        className={`relative shrink-0 overflow-hidden rounded-full bg-neutral-200 ${boxClass}`}
-      >
+      <div className={`relative shrink-0 overflow-hidden rounded-full bg-neutral-200 ${boxClass}`}>
         <img
           src={video.avatar}
           alt={video.channel}
@@ -231,7 +222,11 @@ function FeedCard({
               referrerPolicy="no-referrer"
             />
           ) : (
-            <div className="absolute inset-0 bg-neutral-200" />
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${
+                video.bg || "from-neutral-300 to-neutral-200"
+              }`}
+            />
           )}
 
           <div className="absolute inset-0 bg-black/5" />
@@ -287,7 +282,7 @@ function FeedCard({
           </button>
         </div>
 
-        <div className="line-clamp-2 text-[15px] leading-6 text-neutral-900">
+        <div className="truncate text-[15px] leading-6 text-neutral-900">
           {displayText}
         </div>
       </div>
@@ -342,8 +337,6 @@ export function FeedScreen({
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionScrollRef = useRef<HTMLDivElement | null>(null);
-  const touchStartYRef = useRef<number | null>(null);
-  const touchMovedRef = useRef(false);
 
   const preferredTags = useMemo(() => {
     const source = videos.filter(
@@ -494,6 +487,62 @@ export function FeedScreen({
   }, [isPlaying, activeVideo?.id]);
 
   useEffect(() => {
+    if (viewerIndex === null) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      const captionNode = captionScrollRef.current;
+
+      if (captionNode && captionNode.contains(e.target as Node)) {
+        return;
+      }
+
+      if (Math.abs(e.deltaY) < 30) return;
+
+      if (e.deltaY > 0) {
+        nextViewer();
+      } else {
+        prevViewer();
+      }
+    };
+
+    let startY = 0;
+    let startedInsideCaption = false;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0].clientY;
+      const captionNode = captionScrollRef.current;
+      startedInsideCaption = !!(
+        captionNode && captionNode.contains(e.target as Node)
+      );
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (startedInsideCaption) return;
+
+      const endY = e.changedTouches[0].clientY;
+      const delta = startY - endY;
+
+      if (Math.abs(delta) < 50) return;
+
+      if (delta > 0) {
+        nextViewer();
+      } else {
+        prevViewer();
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [viewerIndex, visibleVideos]);
+
+  useEffect(() => {
     if (!expandedCaption && captionScrollRef.current) {
       captionScrollRef.current.scrollTop = 0;
     }
@@ -597,239 +646,218 @@ export function FeedScreen({
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-black"
           >
-            <div className="relative h-full w-full overflow-hidden bg-black">
+            <div className="relative h-full w-full overflow-hidden">
               <div className="absolute inset-0 bg-neutral-950" />
 
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative h-full w-full max-w-[520px] bg-black">
-                  {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                    <video
-                      ref={videoRef}
-                      src={activeVideo.videoUrl}
-                      poster={activeVideo.previewUrl || undefined}
-                      className="absolute inset-0 h-full w-full object-cover"
-                      autoPlay
-                      loop
-                      playsInline
-                      muted={isMuted}
-                    />
-                  ) : activeVideo.previewUrl ? (
-                    <img
-                      src={activeVideo.previewUrl}
-                      alt={activeDisplayText || activeVideo.channel}
-                      className="absolute inset-0 h-full w-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-neutral-900" />
-                  )}
-
-                  <div className="absolute inset-0 bg-black/20" />
-
-                  <div className="absolute left-4 right-4 top-4 z-30 flex items-center justify-between">
-                    <button
-                      onClick={closeViewer}
-                      className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                      type="button"
-                    >
-                      <ArrowLeft className="h-6 w-6" />
-                    </button>
-
+                <div className="h-full w-full max-w-[520px] bg-black">
+                  <div className="relative h-full w-full overflow-hidden">
                     {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                      <video
+                        ref={videoRef}
+                        src={activeVideo.videoUrl}
+                        poster={activeVideo.previewUrl || undefined}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        autoPlay
+                        loop
+                        playsInline
+                        muted={isMuted}
+                      />
+                    ) : activeVideo.previewUrl ? (
+                      <img
+                        src={activeVideo.previewUrl}
+                        alt={activeDisplayText || activeVideo.channel}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${
+                          activeVideo.bg || "from-neutral-800 to-neutral-700"
+                        }`}
+                      />
+                    )}
+
+                    <div className="absolute inset-0 bg-black/20" />
+
+                    <div className="absolute left-4 right-4 top-4 z-30 flex items-center justify-between">
                       <button
-                        onClick={() => setIsMuted((v) => !v)}
+                        onClick={closeViewer}
                         className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
                         type="button"
                       >
-                        {isMuted ? (
-                          <VolumeX className="h-5 w-5" />
-                        ) : (
-                          <Volume2 className="h-5 w-5" />
-                        )}
+                        <ArrowLeft className="h-6 w-6" />
                       </button>
-                    ) : (
-                      <div />
-                    )}
-                  </div>
 
-                  <div
-                    className="absolute inset-0 z-10"
-                    onClick={() => {
-                      if (expandedCaption) return;
-
-                      if (activeVideo.mediaType === "video" && activeVideo.videoUrl) {
-                        setIsPlaying((v) => !v);
-                      }
-                    }}
-                    onTouchStart={(e) => {
-                      touchStartYRef.current = e.touches[0].clientY;
-                      touchMovedRef.current = false;
-                    }}
-                    onTouchMove={(e) => {
-                      if (touchStartYRef.current === null || expandedCaption) return;
-
-                      const delta = touchStartYRef.current - e.touches[0].clientY;
-                      if (Math.abs(delta) > 16) {
-                        touchMovedRef.current = true;
-                      }
-                    }}
-                    onTouchEnd={(e) => {
-                      if (touchStartYRef.current === null || expandedCaption) {
-                        touchStartYRef.current = null;
-                        touchMovedRef.current = false;
-                        return;
-                      }
-
-                      const delta = touchStartYRef.current - e.changedTouches[0].clientY;
-
-                      if (Math.abs(delta) > 60) {
-                        if (delta > 0) {
-                          nextViewer();
-                        } else {
-                          prevViewer();
-                        }
-                      }
-
-                      touchStartYRef.current = null;
-                      touchMovedRef.current = false;
-                    }}
-                  />
-
-                  <div
-                    className={`absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-200 ${
-                      activeVideo.mediaType === "video" && activeVideo.videoUrl && isPlaying
-                        ? "pointer-events-none opacity-0"
-                        : "opacity-100"
-                    }`}
-                  >
-                    {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setIsPlaying((v) => !v);
-                        }}
-                        className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
-                        type="button"
-                      >
-                        {isPlaying ? (
-                          <Pause className="h-12 w-12 text-white" />
-                        ) : (
-                          <Play className="ml-1 h-12 w-12 text-white" />
-                        )}
-                      </button>
-                    ) : (
-                      <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm">
-                        {activeVideo.mediaType === "video" ? (
-                          <Play className="ml-1 h-12 w-12 text-white" />
-                        ) : (
-                          <ImageIcon className="h-12 w-12 text-white" />
-                        )}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6">
-                    <ViewerMetric
-                      icon={Heart}
-                      value={activeVideo.likes}
-                      active={activeLiked}
-                      onClick={() => onToggleLike(activeVideo.id)}
-                    />
-                    <ViewerMetric
-                      icon={Bookmark}
-                      value={activeSaveCount}
-                      active={activeSaved}
-                      onClick={() => onToggleSave(activeVideo.id)}
-                    />
-                    <ViewerMetric
-                      icon={Send}
-                      value=""
-                      onClick={() => handleShare(activeVideo)}
-                    />
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/90 via-black/50 to-transparent px-4 pb-8 pt-20 text-white">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        openSource(activeVideo.channel);
-                      }}
-                      className="mb-3 flex items-center gap-3 text-left"
-                      type="button"
-                    >
-                      <SourceAvatar video={activeVideo} size="md" />
-
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <div className="truncate text-xl font-semibold">
-                            {activeVideo.channel}
-                          </div>
-                          {activeVideo.channelVerified ? (
-                            <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
-                          ) : null}
-                        </div>
-                        <div className="truncate text-sm text-white/75">
-                          {activeVideo.handle}
-                        </div>
-                      </div>
-                    </button>
-
-                    <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
-                      <span>{activeVideo.mediaType}</span>
-                      <span>•</span>
-                      <span>{getTagLabel(getResolvedTag(activeVideo))}</span>
-                      {activeVideo.mediaType === "video" && activeVideo.duration ? (
-                        <>
-                          <span>•</span>
-                          <span>{activeVideo.duration}</span>
-                        </>
-                      ) : null}
+                      {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                        <button
+                          onClick={() => setIsMuted((v) => !v)}
+                          className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                          type="button"
+                        >
+                          {isMuted ? (
+                            <VolumeX className="h-5 w-5" />
+                          ) : (
+                            <Volume2 className="h-5 w-5" />
+                          )}
+                        </button>
+                      ) : (
+                        <div />
+                      )}
                     </div>
 
                     <div
-                      ref={captionScrollRef}
-                      className={`max-w-[82%] text-[16px] leading-6 text-white/95 ${
-                        expandedCaption
-                          ? "max-h-[34vh] overflow-y-auto overscroll-contain pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-                          : "line-clamp-2"
+                      className="absolute inset-0 z-10"
+                      onClick={() => {
+                        if (activeVideo.mediaType === "video" && activeVideo.videoUrl) {
+                          setIsPlaying((v) => !v);
+                        } else {
+                          nextViewer();
+                        }
+                      }}
+                    />
+
+                    <div
+                      className={`absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-200 ${
+                        activeVideo.mediaType === "video" && activeVideo.videoUrl && isPlaying
+                          ? "pointer-events-none opacity-0"
+                          : "opacity-100"
                       }`}
-                      style={{
-                        WebkitOverflowScrolling: "touch",
-                      }}
-                      onClick={(e) => {
-                        if (expandedCaption) e.stopPropagation();
-                      }}
-                      onWheel={(e) => {
-                        if (expandedCaption) e.stopPropagation();
-                      }}
-                      onTouchStart={(e) => {
-                        if (expandedCaption) e.stopPropagation();
-                      }}
-                      onTouchMove={(e) => {
-                        if (expandedCaption) e.stopPropagation();
-                      }}
                     >
-                      {activeDisplayText}
+                      {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsPlaying((v) => !v);
+                          }}
+                          className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
+                          type="button"
+                        >
+                          {isPlaying ? (
+                            <Pause className="h-12 w-12 text-white" />
+                          ) : (
+                            <Play className="ml-1 h-12 w-12 text-white" />
+                          )}
+                        </button>
+                      ) : (
+                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm">
+                          {activeVideo.mediaType === "video" ? (
+                            <Play className="ml-1 h-12 w-12 text-white" />
+                          ) : (
+                            <ImageIcon className="h-12 w-12 text-white" />
+                          )}
+                        </div>
+                      )}
                     </div>
 
-                    {activeDisplayText.length > 110 && (
+                    <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6">
+                      <ViewerMetric
+                        icon={Heart}
+                        value={activeVideo.likes}
+                        active={activeLiked}
+                        onClick={() => onToggleLike(activeVideo.id)}
+                      />
+                      <ViewerMetric
+                        icon={Bookmark}
+                        value={activeSaveCount}
+                        active={activeSaved}
+                        onClick={() => onToggleSave(activeVideo.id)}
+                      />
+                      <ViewerMetric
+                        icon={Send}
+                        value=""
+                        onClick={() => handleShare(activeVideo)}
+                      />
+                    </div>
+
+                    <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-4 pb-8 pt-20 text-white">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
-                          setExpandedCaption((v) => !v);
+                          openSource(activeVideo.channel);
                         }}
-                        className="mt-1 text-sm font-medium text-white/75"
+                        className="mb-3 flex items-center gap-3 text-left"
                         type="button"
                       >
-                        {expandedCaption ? "свернуть" : "ещё"}
-                      </button>
-                    )}
+                        <SourceAvatar video={activeVideo} size="md" />
 
-                    {copySuccessId === activeVideo.id ? (
-                      <div className="mt-2 text-xs font-medium text-[#7dd3fc]">
-                        Ссылка скопирована
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <div className="truncate text-xl font-semibold">
+                              {activeVideo.channel}
+                            </div>
+                            {activeVideo.channelVerified ? (
+                              <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+                            ) : null}
+                          </div>
+                          <div className="truncate text-sm text-white/75">
+                            {activeVideo.handle}
+                          </div>
+                        </div>
+                      </button>
+
+                      <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
+                        <span>{activeVideo.mediaType}</span>
+                        <span>•</span>
+                        <span>{getTagLabel(getResolvedTag(activeVideo))}</span>
+                        {activeVideo.mediaType === "video" && activeVideo.duration ? (
+                          <>
+                            <span>•</span>
+                            <span>{activeVideo.duration}</span>
+                          </>
+                        ) : null}
                       </div>
-                    ) : null}
+
+                      <div
+                        ref={captionScrollRef}
+                        className={`max-w-[82%] text-[16px] leading-6 text-white/95 ${
+                          expandedCaption
+                            ? "max-h-[34vh] overflow-y-auto pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                            : "line-clamp-2"
+                        }`}
+                        onClick={(e) => {
+                          if (expandedCaption) {
+                            e.stopPropagation();
+                          }
+                        }}
+                        onWheel={(e) => {
+                          if (expandedCaption) {
+                            e.stopPropagation();
+                          }
+                        }}
+                        onTouchStart={(e) => {
+                          if (expandedCaption) {
+                            e.stopPropagation();
+                          }
+                        }}
+                        onTouchMove={(e) => {
+                          if (expandedCaption) {
+                            e.stopPropagation();
+                          }
+                        }}
+                      >
+                        {activeDisplayText}
+                      </div>
+
+                      {activeDisplayText.length > 110 && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setExpandedCaption((v) => !v);
+                          }}
+                          className="mt-1 text-sm font-medium text-white/75"
+                          type="button"
+                        >
+                          {expandedCaption ? "свернуть" : "ещё"}
+                        </button>
+                      )}
+
+                      {copySuccessId === activeVideo.id ? (
+                        <div className="mt-2 text-xs font-medium text-[#7dd3fc]">
+                          Ссылка скопирована
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               </div>
