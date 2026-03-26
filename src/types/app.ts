@@ -4,6 +4,25 @@ export type TabId = "intro" | "feed" | "add" | "creator" | "source";
 
 export type MediaType = "video" | "image";
 
+export type FeedMode = "new" | "trending" | "for_you";
+
+export type ContentTag =
+  | "animals"
+  | "news"
+  | "business"
+  | "creativity"
+  | "finance"
+  | "education"
+  | "technology"
+  | "memes"
+  | "sports"
+  | "music"
+  | "travel"
+  | "food"
+  | "other";
+
+export type FeedTag = "all" | ContentTag;
+
 export type LocalizedText = {
   ru: string;
   en: string;
@@ -25,4 +44,6 @@ export type Video = {
   lang: string;
   postUrl: string;
   bg: string;
+  tag?: ContentTag;
+  previewUrl?: string | null;
 };

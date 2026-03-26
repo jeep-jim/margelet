@@ -9,11 +9,28 @@ import {
   Video,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import type { Locale } from "../types/app";
+import type { ContentTag, Locale, MediaType } from "../types/app";
 import { Input } from "../components/ui/Input";
+import { fetchTelegramPreview } from "../lib/telegram";
 
 const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
+
+const TAG_OPTIONS: { value: ContentTag; label: string }[] = [
+  { value: "animals", label: "Животные" },
+  { value: "news", label: "Новости" },
+  { value: "business", label: "Бизнес" },
+  { value: "creativity", label: "Творчество" },
+  { value: "finance", label: "Финансы" },
+  { value: "education", label: "Образование" },
+  { value: "technology", label: "Технологии" },
+  { value: "memes", label: "Мемы" },
+  { value: "sports", label: "Спорт" },
+  { value: "music", label: "Музыка" },
+  { value: "travel", label: "Путешествия" },
+  { value: "food", label: "Еда" },
+  { value: "other", label: "Другое" },
+];
 
 function getTelegramAuthUrl() {
   const origin = window.location.origin;
@@ -26,6 +43,9 @@ type Props = {
     url: string;
     title: string;
     channel: string;
+    tag: ContentTag;
+    previewUrl?: string | null;
+    mediaType?: MediaType;
   }) => void;
 };
 
@@ -70,7 +90,6 @@ function parseTelegramPostUrl(raw: string): ParsedTelegramPost | null {
 
     const parts = url.pathname.split("/").filter(Boolean);
 
-    // Принимаем только публичные посты формата t.me/channel/123
     if (parts.length !== 2) return null;
 
     const [channel, postId] = parts;
@@ -157,6 +176,8 @@ export function AddScreen({ onAdd }: Props) {
   const [user, setUser] = useState<TgUser | null>(null);
   const [submitError, setSubmitError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [selectedTag, setSelectedTag] = useState<ContentTag>("creativity");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const syncUser = () => {
@@ -181,11 +202,10 @@ export function AddScreen({ onAdd }: Props) {
   const validationMessage = useMemo(() => {
     if (!url.trim()) return "";
     if (parsedPost) return "";
-
     return "Нужна публичная ссылка вида t.me/channel/123. Приватные, invite и кривые ссылки пока не принимаем.";
   }, [parsedPost, url]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const cleanUrl = url.trim();
 
     setSubmitError("");
@@ -203,16 +223,38 @@ export function AddScreen({ onAdd }: Props) {
       return;
     }
 
-    onAdd({
-      url: cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://")
-        ? cleanUrl
-        : `https://${cleanUrl}`,
-      title: "",
-      channel: parsedPost.channel,
-    });
+    try {
+      setIsSubmitting(true);
 
-    setSuccessMessage("Пост добавлен в ленту.");
-    setUrl("");
+      const normalized =
+        cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://")
+          ? cleanUrl
+          : `https://${cleanUrl}`;
+
+      const preview = await fetchTelegramPreview(normalized);
+
+      const mediaType: MediaType | undefined = preview?.video
+        ? "video"
+        : preview?.image
+          ? "image"
+          : undefined;
+
+      onAdd({
+        url: normalized,
+        title: preview?.title || "",
+        channel: parsedPost.channel,
+        tag: selectedTag,
+        previewUrl: preview?.image || null,
+        mediaType,
+      });
+
+      setSuccessMessage("Пост добавлен в ленту.");
+      setUrl("");
+    } catch {
+      setSubmitError("Не удалось загрузить превью поста.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -228,7 +270,7 @@ export function AddScreen({ onAdd }: Props) {
           <div className="mt-6 space-y-4">
             <div className="rounded-[28px] border border-neutral-200 bg-white p-5">
               <div className="mb-2 text-sm font-medium text-neutral-500">
-                Публичнуа ссылка на Telegram-пост
+                Публичная ссылка на Telegram-пост
               </div>
 
               <div className="relative">
@@ -249,8 +291,7 @@ export function AddScreen({ onAdd }: Props) {
                 <div className="mt-3 flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                   <CheckCircle2 className="h-4 w-4 shrink-0" />
                   <span>
-                    Ссылка выглядит валидно: @{parsedPost.channel}, пост{" "}
-                    {parsedPost.postId}
+                    Ссылка выглядит валидно: @{parsedPost.channel}, пост {parsedPost.postId}
                   </span>
                 </div>
               )}
@@ -261,6 +302,33 @@ export function AddScreen({ onAdd }: Props) {
                   <span>{validationMessage}</span>
                 </div>
               )}
+
+              <div className="mt-4">
+                <div className="mb-2 text-sm font-medium text-neutral-500">
+                  Категория
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {TAG_OPTIONS.map((tag) => {
+                    const active = selectedTag === tag.value;
+
+                    return (
+                      <button
+                        key={tag.value}
+                        type="button"
+                        onClick={() => setSelectedTag(tag.value)}
+                        className={`rounded-full px-3 py-2 text-sm transition ${
+                          active
+                            ? "bg-neutral-950 text-white"
+                            : "border border-neutral-200 bg-neutral-50 text-neutral-700 hover:bg-neutral-100"
+                        }`}
+                      >
+                        {tag.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
 
               {submitError && (
                 <div className="mt-3 flex items-center gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
@@ -278,10 +346,11 @@ export function AddScreen({ onAdd }: Props) {
 
               <button
                 onClick={handleSubmit}
-                className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
+                disabled={isSubmitting}
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <Plus className="h-4 w-4" />
-                Добавить в ленту
+                {isSubmitting ? "Загружаем..." : "Добавить в ленту"}
               </button>
             </div>
 

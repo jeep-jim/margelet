@@ -9,7 +9,7 @@ import { CreatorScreen } from "./screens/CreatorScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
 import { SourceScreen } from "./screens/SourceScreen";
-import type { Locale, TabId, Video } from "./types/app";
+import type { ContentTag, Locale, MediaType, TabId, Video } from "./types/app";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
@@ -176,13 +176,19 @@ export default function App() {
     url,
     title,
     channel,
+    tag,
+    previewUrl,
+    mediaType,
   }: {
     url: string;
     title: string;
     channel: string;
+    tag: ContentTag;
+    previewUrl?: string | null;
+    mediaType?: MediaType;
   }) => {
     const nextPost = buildSubmittedPost(
-      { url, title, channel },
+      { url, title, channel, tag, previewUrl, mediaType },
       {
         locale,
         messages: messages[locale],

@@ -1,9 +1,12 @@
-import type { Locale, MediaType, Video } from "../types/app";
+import type { ContentTag, Locale, MediaType, Video } from "../types/app";
 
 export type SubmitPayload = {
   url: string;
   title?: string;
   channel?: string;
+  tag?: ContentTag;
+  mediaType?: MediaType;
+  previewUrl?: string | null;
 };
 
 export type ParsedTelegramPostUrl = {
@@ -13,6 +16,12 @@ export type ParsedTelegramPostUrl = {
   sourceHandle: string;
   sourceUrl: string;
   postId: string;
+};
+
+export type TelegramPreview = {
+  image: string | null;
+  video: string | null;
+  title: string | null;
 };
 
 type BuildPostOptions = {
@@ -60,7 +69,6 @@ export function parseTelegramPostUrl(raw: string): ParsedTelegramPostUrl | null 
 
     const parts = url.pathname.split("/").filter(Boolean);
 
-    // Поддерживаем только публичные посты вида t.me/channel/123
     if (parts.length !== 2) return null;
 
     const [sourceHandle, postId] = parts;
@@ -121,6 +129,16 @@ export function buildHandle(source: string): string {
   return `@${clean || "telegram"}`;
 }
 
+export async function fetchTelegramPreview(url: string): Promise<TelegramPreview | null> {
+  try {
+    const res = await fetch(`/api/telegram-preview?url=${encodeURIComponent(url)}`);
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 export function buildSubmittedPost(
   payload: SubmitPayload,
   options: BuildPostOptions
@@ -133,7 +151,9 @@ export function buildSubmittedPost(
 
   const sourceName = payload.channel?.trim() || parsed.sourceHandle;
   const handle = buildHandle(parsed.sourceHandle);
-  const mediaType = inferMediaTypeFromUrl(parsed.normalizedUrl, payload.title || "");
+  const mediaType =
+    payload.mediaType ||
+    inferMediaTypeFromUrl(parsed.normalizedUrl, payload.title || "");
 
   const palettes = [
     "from-fuchsia-500 via-purple-600 to-indigo-700",
@@ -145,15 +165,11 @@ export function buildSubmittedPost(
 
   const titleRu =
     payload.title?.trim() ||
-    (mediaType === "image"
-      ? `Пост из ${handle}`
-      : `Видео из ${handle}`);
+    (mediaType === "image" ? `Пост из ${handle}` : `Видео из ${handle}`);
 
   const titleEn =
     payload.title?.trim() ||
-    (mediaType === "image"
-      ? `Post from ${handle}`
-      : `Video from ${handle}`);
+    (mediaType === "image" ? `Post from ${handle}` : `Video from ${handle}`);
 
   const captionRu =
     mediaType === "image"
@@ -186,5 +202,7 @@ export function buildSubmittedPost(
     lang: options.messages.newLang || "RU",
     postUrl: parsed.normalizedUrl,
     bg: palettes[Math.floor(Math.random() * palettes.length)],
+    tag: payload.tag || "other",
+    previewUrl: payload.previewUrl || null,
   };
 }
