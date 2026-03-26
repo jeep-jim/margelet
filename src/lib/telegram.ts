@@ -7,6 +7,8 @@ export type SubmitPayload = {
   tag?: ContentTag;
   mediaType?: MediaType;
   previewUrl?: string | null;
+  videoUrl?: string | null;
+  channelVerified?: boolean;
 };
 
 export type ParsedTelegramPostUrl = {
@@ -22,6 +24,7 @@ export type TelegramPreview = {
   image: string | null;
   video: string | null;
   title: string | null;
+  verified?: boolean;
 };
 
 type BuildPostOptions = {
@@ -89,36 +92,6 @@ export function parseTelegramPostUrl(raw: string): ParsedTelegramPostUrl | null 
   }
 }
 
-export function isTelegramPostUrl(raw: string): boolean {
-  return !!parseTelegramPostUrl(raw);
-}
-
-export function inferMediaTypeFromPreview(preview: TelegramPreview | null): MediaType {
-  if (preview?.video) return "video";
-  return "image";
-}
-
-export function inferMediaTypeFromUrl(raw: string, title = ""): MediaType {
-  const value = `${raw} ${title}`.toLowerCase();
-
-  if (
-    value.includes("image") ||
-    value.includes("img") ||
-    value.includes("photo") ||
-    value.includes("poster") ||
-    value.includes("art") ||
-    value.includes("pic") ||
-    value.includes("jpg") ||
-    value.includes("jpeg") ||
-    value.includes("png") ||
-    value.includes("webp")
-  ) {
-    return "image";
-  }
-
-  return "video";
-}
-
 export function buildAvatarLetters(source: string): string {
   return (source || "TG")
     .split(/[\s_]+/)
@@ -156,9 +129,9 @@ export function buildSubmittedPost(
 
   const sourceName = payload.channel?.trim() || parsed.sourceHandle;
   const handle = buildHandle(parsed.sourceHandle);
-  const mediaType =
+  const mediaType: MediaType =
     payload.mediaType ||
-    inferMediaTypeFromUrl(parsed.normalizedUrl, payload.title || "");
+    (payload.videoUrl ? "video" : "image");
 
   const palettes = [
     "from-fuchsia-500 via-purple-600 to-indigo-700",
@@ -200,6 +173,7 @@ export function buildSubmittedPost(
     channel: sourceName || options.messages.newChannel,
     avatar: buildAvatarLetters(sourceName || parsed.sourceHandle),
     handle,
+    channelVerified: !!payload.channelVerified,
     views: "0",
     likes: 0,
     comments: 0,
@@ -209,5 +183,6 @@ export function buildSubmittedPost(
     bg: palettes[Math.floor(Math.random() * palettes.length)],
     tag: payload.tag || "other",
     previewUrl: payload.previewUrl || null,
+    videoUrl: payload.videoUrl || null,
   };
 }

@@ -9,10 +9,56 @@ function decodeHtml(value: string) {
 
 function extractMeta(html: string, key: string) {
   const patterns = [
-    new RegExp(`<meta[^>]+property=["']${key}["'][^>]+content=["']([^"']+)["']`, "i"),
-    new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${key}["']`, "i"),
-    new RegExp(`<meta[^>]+name=["']${key}["'][^>]+content=["']([^"']+)["']`, "i"),
-    new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+name=["']${key}["']`, "i"),
+    new RegExp(
+      `<meta[^>]+property=["']${key}["'][^>]+content=["']([^"']+)["']`,
+      "i"
+    ),
+    new RegExp(
+      `<meta[^>]+content=["']([^"']+)["'][^>]+property=["']${key}["']`,
+      "i"
+    ),
+    new RegExp(
+      `<meta[^>]+name=["']${key}["'][^>]+content=["']([^"']+)["']`,
+      "i"
+    ),
+    new RegExp(
+      `<meta[^>]+content=["']([^"']+)["'][^>]+name=["']${key}["']`,
+      "i"
+    ),
+  ];
+
+  for (const pattern of patterns) {
+    const match = html.match(pattern);
+    if (match?.[1]) {
+      return decodeHtml(match[1]);
+    }
+  }
+
+  return null;
+}
+
+function extractVideoSrc(html: string) {
+  const patterns = [
+    /<video[^>]+src="([^"]+)"/i,
+    /<video[^>]+src='([^']+)'/i,
+    /<source[^>]+src="([^"]+)"/i,
+    /<source[^>]+src='([^']+)'/i,
+  ];
+
+  for (const pattern of patterns) {
+    const match = html.match(pattern);
+    if (match?.[1]) {
+      return decodeHtml(match[1]);
+    }
+  }
+
+  return null;
+}
+
+function extractPoster(html: string) {
+  const patterns = [
+    /<video[^>]+poster="([^"]+)"/i,
+    /<video[^>]+poster='([^']+)'/i,
   ];
 
   for (const pattern of patterns) {
@@ -36,6 +82,13 @@ function isTelegramPostUrl(url: string) {
   } catch {
     return false;
   }
+}
+
+function extractVerified(html: string) {
+  return (
+    /verified/i.test(html) &&
+    /tgme_widget_message_owner/i.test(html)
+  );
 }
 
 export default async function handler(req: any, res: any) {
@@ -66,11 +119,13 @@ export default async function handler(req: any, res: any) {
     const html = await response.text();
 
     const image =
+      extractPoster(html) ||
       extractMeta(html, "og:image") ||
       extractMeta(html, "twitter:image") ||
       null;
 
     const video =
+      extractVideoSrc(html) ||
       extractMeta(html, "og:video") ||
       extractMeta(html, "og:video:url") ||
       null;
@@ -80,10 +135,13 @@ export default async function handler(req: any, res: any) {
       extractMeta(html, "twitter:title") ||
       null;
 
+    const verified = extractVerified(html);
+
     return res.status(200).json({
       image,
       video,
       title,
+      verified,
     });
   } catch {
     return res.status(500).json({ error: "Failed to fetch preview" });

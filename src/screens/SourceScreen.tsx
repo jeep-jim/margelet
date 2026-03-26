@@ -19,6 +19,7 @@ type Props = {
 };
 
 const TAG_LABELS: Record<ContentTag, string> = {
+  people: "Люди",
   animals: "Животные",
   news: "Новости",
   business: "Бизнес",

@@ -15,6 +15,7 @@ const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
 const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
+const FEED_STORAGE_KEY = "margelet_feed_posts";
 
 type TgUser = {
   id: string;
@@ -54,12 +55,24 @@ function parseTelegramUserFromHash(): TgUser | null {
   }
 }
 
+function readStoredVideos(): Video[] {
+  try {
+    const raw = localStorage.getItem(FEED_STORAGE_KEY);
+    if (!raw) return initialVideos;
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || parsed.length === 0) return initialVideos;
+    return parsed as Video[];
+  } catch {
+    return initialVideos;
+  }
+}
+
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
   const [previousTab, setPreviousTab] = useState<TabId>("feed");
-  const [videos, setVideos] = useState<Video[]>(initialVideos);
+  const [videos, setVideos] = useState<Video[]>(() => readStoredVideos());
   const [selectedPost, setSelectedPost] = useState<Video | null>(null);
   const [selectedSourceChannel, setSelectedSourceChannel] = useState<string | null>(null);
 
@@ -77,6 +90,10 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("margelet-locale", locale);
   }, [locale]);
+
+  useEffect(() => {
+    localStorage.setItem(FEED_STORAGE_KEY, JSON.stringify(videos));
+  }, [videos]);
 
   useEffect(() => {
     const storedLikes = localStorage.getItem(LIKES_STORAGE_KEY);
@@ -179,6 +196,8 @@ export default function App() {
     tag,
     previewUrl,
     mediaType,
+    videoUrl,
+    channelVerified,
   }: {
     url: string;
     title: string;
@@ -186,9 +205,11 @@ export default function App() {
     tag: ContentTag;
     previewUrl?: string | null;
     mediaType?: MediaType;
+    videoUrl?: string | null;
+    channelVerified?: boolean;
   }) => {
     const nextPost = buildSubmittedPost(
-      { url, title, channel, tag, previewUrl, mediaType },
+      { url, title, channel, tag, previewUrl, mediaType, videoUrl, channelVerified },
       {
         locale,
         messages: messages[locale],

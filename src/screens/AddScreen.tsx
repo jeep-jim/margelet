@@ -19,6 +19,7 @@ const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
 
 const TAG_OPTIONS: { value: ContentTag; label: string }[] = [
+  { value: "people", label: "Люди" },
   { value: "animals", label: "Животные" },
   { value: "news", label: "Новости" },
   { value: "business", label: "Бизнес" },
@@ -48,6 +49,8 @@ type Props = {
     tag: ContentTag;
     previewUrl?: string | null;
     mediaType?: MediaType;
+    videoUrl?: string | null;
+    channelVerified?: boolean;
   }) => void;
 };
 
@@ -212,6 +215,11 @@ export function AddScreen({ onAdd }: Props) {
     return "Нужна публичная ссылка вида t.me/channel/123. Приватные, invite и кривые ссылки пока не принимаем.";
   }, [parsedPost, url]);
 
+  const clearErrorIfNeeded = () => {
+    if (submitError) setSubmitError("");
+    if (successMessage) setSuccessMessage("");
+  };
+
   const handleSubmit = async () => {
     const cleanUrl = url.trim();
 
@@ -258,6 +266,8 @@ export function AddScreen({ onAdd }: Props) {
         tag: selectedTag,
         previewUrl: preview?.image || null,
         mediaType,
+        videoUrl: preview?.video || null,
+        channelVerified: !!preview?.verified,
       });
 
       setSuccessMessage("Пост добавлен в ленту.");
@@ -293,8 +303,7 @@ export function AddScreen({ onAdd }: Props) {
                   value={url}
                   onChange={(e) => {
                     setUrl(e.target.value);
-                    if (submitError) setSubmitError("");
-                    if (successMessage) setSuccessMessage("");
+                    clearErrorIfNeeded();
                   }}
                   placeholder="https://t.me/channel/123"
                   className="h-14 rounded-2xl border-neutral-200 bg-neutral-100 pl-11 pr-4 text-[15px] text-neutral-950"
@@ -325,7 +334,10 @@ export function AddScreen({ onAdd }: Props) {
                 {!selectedTag ? (
                   <button
                     type="button"
-                    onClick={() => setTagsOpen((v) => !v)}
+                    onClick={() => {
+                      setTagsOpen((v) => !v);
+                      clearErrorIfNeeded();
+                    }}
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition ${
                       tagsOpen
                         ? "bg-neutral-950 text-white"
@@ -338,7 +350,10 @@ export function AddScreen({ onAdd }: Props) {
                 ) : (
                   <button
                     type="button"
-                    onClick={() => setSelectedTag(null)}
+                    onClick={() => {
+                      setSelectedTag(null);
+                      clearErrorIfNeeded();
+                    }}
                     className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm text-white"
                   >
                     <span>{getTagLabel(selectedTag)}</span>
@@ -355,6 +370,7 @@ export function AddScreen({ onAdd }: Props) {
                         onClick={() => {
                           setSelectedTag(tag.value);
                           setTagsOpen(false);
+                          clearErrorIfNeeded();
                         }}
                         className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm text-neutral-700 transition hover:bg-neutral-100"
                       >

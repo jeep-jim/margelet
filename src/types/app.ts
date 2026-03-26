@@ -4,9 +4,9 @@ export type TabId = "intro" | "feed" | "add" | "creator" | "source";
 
 export type MediaType = "video" | "image";
 
-export type FeedMode = "new" | "trending" | "for_you";
-
-export type ContentTag =
+export type FeedTag =
+  | "all"
+  | "people"
   | "animals"
   | "news"
   | "business"
@@ -21,7 +21,7 @@ export type ContentTag =
   | "food"
   | "other";
 
-export type FeedTag = "all" | ContentTag;
+export type ContentTag = Exclude<FeedTag, "all">;
 
 export type LocalizedText = {
   ru: string;
@@ -46,4 +46,5 @@ export type Video = {
   bg: string;
   tag?: ContentTag;
   previewUrl?: string | null;
+  videoUrl?: string | null;
 };

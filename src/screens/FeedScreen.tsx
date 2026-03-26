@@ -5,12 +5,14 @@ import {
   Heart,
   MoreVertical,
   Play,
+  Volume2,
   VolumeX,
+  Pause,
   Image as ImageIcon,
   ChevronDown,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { ContentTag, FeedTag, Locale, Video } from "../types/app";
 
@@ -34,6 +36,7 @@ const MODE_OPTIONS: { value: FeedMode; label: string }[] = [
 
 const TAG_OPTIONS: { value: FeedTag; label: string }[] = [
   { value: "all", label: "Все" },
+  { value: "people", label: "Люди" },
   { value: "animals", label: "Животные" },
   { value: "news", label: "Новости" },
   { value: "business", label: "Бизнес" },
@@ -171,7 +174,7 @@ function FeedCard({
           <div className="absolute inset-0 bg-black/5" />
 
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/10 backdrop-blur-sm">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm">
               {video.mediaType === "video" ? (
                 <Play className="ml-1 h-8 w-8 text-white" />
               ) : (
@@ -270,6 +273,9 @@ export function FeedScreen({
   const [feedMode, setFeedMode] = useState<FeedMode>("new");
   const [activeTag, setActiveTag] = useState<FeedTag>("all");
   const [tagsOpen, setTagsOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const preferredTags = useMemo(() => {
     const source = videos.filter(
@@ -335,22 +341,45 @@ export function FeedScreen({
 
   const activeLiked = activeVideo ? likedPostIds.includes(activeVideo.id) : false;
   const activeSaved = activeVideo ? savedPostIds.includes(activeVideo.id) : false;
+  const activeSaveCount = activeSaved ? 1 : 0;
 
   const openViewer = (index: number) => {
     setViewerIndex(index);
     setExpandedCaption(false);
+    setIsMuted(true);
+    setIsPlaying(true);
   };
 
   const closeViewer = () => {
     setViewerIndex(null);
     setExpandedCaption(false);
+    setIsMuted(true);
+    setIsPlaying(true);
   };
 
   const nextViewer = () => {
     if (viewerIndex === null || visibleVideos.length === 0) return;
     setViewerIndex((viewerIndex + 1) % visibleVideos.length);
     setExpandedCaption(false);
+    setIsMuted(true);
+    setIsPlaying(true);
   };
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = isMuted;
+  }, [isMuted, activeVideo?.id]);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node) return;
+
+    if (isPlaying) {
+      void node.play().catch(() => {});
+    } else {
+      node.pause();
+    }
+  }, [isPlaying, activeVideo?.id]);
 
   useEffect(() => {
     if (viewerIndex === null) return;
@@ -488,7 +517,18 @@ export function FeedScreen({
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="h-full w-full max-w-[520px] bg-black">
                   <div className="relative h-full w-full overflow-hidden">
-                    {activeVideo.previewUrl ? (
+                    {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                      <video
+                        ref={videoRef}
+                        src={activeVideo.videoUrl}
+                        poster={activeVideo.previewUrl || undefined}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        autoPlay
+                        loop
+                        playsInline
+                        muted={isMuted}
+                      />
+                    ) : activeVideo.previewUrl ? (
                       <img
                         src={activeVideo.previewUrl}
                         alt={activeVideo.title[locale]}
@@ -513,9 +553,12 @@ export function FeedScreen({
                         <ArrowLeft className="h-6 w-6" />
                       </button>
 
-                      {activeVideo.mediaType === "video" ? (
-                        <button className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
-                          <VolumeX className="h-5 w-5" />
+                      {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                        <button
+                          onClick={() => setIsMuted((v) => !v)}
+                          className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                        >
+                          {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
                         </button>
                       ) : (
                         <div />
@@ -530,13 +573,27 @@ export function FeedScreen({
                     </button>
 
                     <div className="absolute inset-0 flex items-center justify-center">
-                      {activeVideo.mediaType === "video" ? (
-                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/15 backdrop-blur-sm">
-                          <Play className="ml-1 h-12 w-12 text-white" />
-                        </div>
+                      {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsPlaying((v) => !v);
+                          }}
+                          className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
+                        >
+                          {isPlaying ? (
+                            <Pause className="h-12 w-12 text-white" />
+                          ) : (
+                            <Play className="ml-1 h-12 w-12 text-white" />
+                          )}
+                        </button>
                       ) : (
-                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/15 backdrop-blur-sm">
-                          <ImageIcon className="h-12 w-12 text-white" />
+                        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm">
+                          {activeVideo.mediaType === "video" ? (
+                            <Play className="ml-1 h-12 w-12 text-white" />
+                          ) : (
+                            <ImageIcon className="h-12 w-12 text-white" />
+                          )}
                         </div>
                       )}
                     </div>
@@ -550,7 +607,7 @@ export function FeedScreen({
                       />
                       <ViewerMetric
                         icon={Bookmark}
-                        value={20}
+                        value={activeSaveCount}
                         active={activeSaved}
                         onClick={() => onToggleSave(activeVideo.id)}
                       />

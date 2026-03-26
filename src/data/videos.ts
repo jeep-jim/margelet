@@ -25,6 +25,7 @@ export const initialVideos: Video[] = [
     bg: "from-violet-600 via-fuchsia-500 to-amber-400",
     tag: "creativity",
     previewUrl: null,
+    videoUrl: null,
   },
   {
     id: 2,
@@ -50,6 +51,7 @@ export const initialVideos: Video[] = [
     bg: "from-pink-500 via-rose-500 to-orange-500",
     tag: "creativity",
     previewUrl: null,
+    videoUrl: null,
   },
   {
     id: 3,
@@ -75,6 +77,7 @@ export const initialVideos: Video[] = [
     bg: "from-emerald-500 via-teal-500 to-sky-500",
     tag: "technology",
     previewUrl: null,
+    videoUrl: null,
   },
   {
     id: 4,
@@ -100,5 +103,6 @@ export const initialVideos: Video[] = [
     bg: "from-orange-500 via-rose-500 to-pink-600",
     tag: "news",
     previewUrl: null,
+    videoUrl: null,
   },
 ];
