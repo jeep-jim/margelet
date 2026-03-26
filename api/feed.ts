@@ -1,4 +1,4 @@
-import { getFeedPosts } from "../lib/kv";
+import { getFeedPosts } from "./lib/kv";
 
 export default async function handler(_: any, res: any) {
   try {

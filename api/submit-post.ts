@@ -1,4 +1,4 @@
-import { savePost, getPostByUrl } from "../lib/kv";
+import { savePost, getPostByUrl } from "./lib/kv";
 import { buildSubmittedPost, parseTelegramPostUrl } from "../src/lib/telegram";
 
 export default async function handler(req: any, res: any) {

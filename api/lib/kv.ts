@@ -1,5 +1,5 @@
 import { Redis } from "@upstash/redis";
-import type { Video } from "../src/types/app";
+import type { Video } from "../../src/types/app";
 
 type EnvMap = Record<string, string | undefined>;
 
