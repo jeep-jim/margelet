@@ -17,8 +17,7 @@ const SAVES_STORAGE_KEY = "margelet_saves";
 const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 
 const ADMIN_TELEGRAM_ID = "1372669404";
-const ADMIN_TELEGRAM_USERNAME = "jim";
-const ADMIN_HIDDEN_PATH = `/${ADMIN_TELEGRAM_USERNAME}/admin`;
+const ADMIN_HIDDEN_PATH = "/jim/admin";
 
 type TgUser = {
   id: string;
@@ -70,13 +69,6 @@ function readTelegramUserFromStorage(): TgUser | null {
   }
 }
 
-function normalizeUsername(value: string | null | undefined) {
-  return String(value || "")
-    .trim()
-    .replace(/^@+/, "")
-    .toLowerCase();
-}
-
 function normalizePathname(pathname: string) {
   if (!pathname) return "/";
   const clean = pathname.trim();
@@ -124,10 +116,7 @@ export default function App() {
     return serverVideos.filter((video) => !hiddenPostIds.includes(video.id));
   }, [serverVideos, hiddenPostIds]);
 
-  const normalizedCurrentUsername = normalizeUsername(currentTelegramUser?.username);
-  const isRealAdminUser =
-    currentTelegramUser?.id === ADMIN_TELEGRAM_ID &&
-    normalizedCurrentUsername === ADMIN_TELEGRAM_USERNAME;
+  const isRealAdminUser = currentTelegramUser?.id === ADMIN_TELEGRAM_ID;
 
   useEffect(() => {
     const initial = getInitialLocale();
@@ -357,7 +346,6 @@ export default function App() {
       body: JSON.stringify({
         id,
         telegramUserId: currentTelegramUser.id,
-        telegramUsername: currentTelegramUser.username || "",
       }),
     });
 
@@ -513,8 +501,6 @@ export default function App() {
             <AdminScreen
               locale={locale}
               telegramUserId={currentTelegramUser?.id || null}
-              telegramUsername={currentTelegramUser?.username || null}
-              adminPathUsername={ADMIN_TELEGRAM_USERNAME}
               onClose={navigateToFeed}
               onDeletePost={handleDeletePost}
             />

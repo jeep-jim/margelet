@@ -4,13 +4,13 @@ import type { Locale, Video } from "../types/app";
 type AdminScreenProps = {
   locale: Locale;
   telegramUserId: string | null;
-  telegramUsername: string | null;
-  adminPathUsername: string;
   onClose: () => void;
   onDeletePost: (id: number) => Promise<void>;
 };
 
 type LoadState = "idle" | "loading" | "ready" | "error";
+
+const ADMIN_TELEGRAM_ID = "1372669404";
 
 function getLocalizedText(
   value: { ru: string; en: string } | undefined,
@@ -18,13 +18,6 @@ function getLocalizedText(
 ) {
   if (!value) return "";
   return locale === "en" ? value.en || value.ru || "" : value.ru || value.en || "";
-}
-
-function normalizeUsername(value: string | null | undefined) {
-  return String(value || "")
-    .trim()
-    .replace(/^@+/, "")
-    .toLowerCase();
 }
 
 function buildSearchText(post: Video) {
@@ -52,8 +45,6 @@ function isTelegramMediaUrl(url?: string | null) {
 export function AdminScreen({
   locale,
   telegramUserId,
-  telegramUsername,
-  adminPathUsername,
   onClose,
   onDeletePost,
 }: AdminScreenProps) {
@@ -63,17 +54,13 @@ export function AdminScreen({
   const [errorText, setErrorText] = useState("");
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
-  const normalizedCurrentUsername = normalizeUsername(telegramUsername);
-  const normalizedAdminPathUsername = normalizeUsername(adminPathUsername);
-  const hasAdminUsernameAccess =
-    !!normalizedCurrentUsername &&
-    normalizedCurrentUsername === normalizedAdminPathUsername;
+  const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
 
   useEffect(() => {
     let cancelled = false;
 
     async function loadAdminPosts() {
-      if (!telegramUserId || !hasAdminUsernameAccess) {
+      if (!telegramUserId || !hasAdminAccess) {
         setPosts([]);
         setState("ready");
         return;
@@ -90,7 +77,6 @@ export function AdminScreen({
           },
           body: JSON.stringify({
             telegramUserId,
-            telegramUsername: telegramUsername || "",
           }),
         });
 
@@ -122,7 +108,7 @@ export function AdminScreen({
     return () => {
       cancelled = true;
     };
-  }, [telegramUserId, telegramUsername, hasAdminUsernameAccess, locale]);
+  }, [telegramUserId, hasAdminAccess, locale]);
 
   const filteredPosts = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -148,7 +134,7 @@ export function AdminScreen({
           back: "Back",
           accessDenied: "Access denied",
           accessDeniedText:
-            "This page is available only for the allowed Telegram username.",
+            "This page is available only for the allowed Telegram account.",
           loading: "Loading posts...",
           error: "Error",
           searchPlaceholder: "Search by channel / handle / URL / who added",
@@ -169,7 +155,6 @@ export function AdminScreen({
           typeImage: "Image",
           handle: "Handle",
           tgId: "Telegram ID",
-          close: "Close",
           yes: "Yes",
           no: "No",
           channelVerified: "Verified",
@@ -184,7 +169,7 @@ export function AdminScreen({
           back: "Назад",
           accessDenied: "Доступ запрещён",
           accessDeniedText:
-            "Эта страница доступна только для разрешённого Telegram username.",
+            "Эта страница доступна только для разрешённого Telegram аккаунта.",
           loading: "Загружаю посты...",
           error: "Ошибка",
           searchPlaceholder: "Поиск по каналу / handle / ссылке / кто добавил",
@@ -205,7 +190,6 @@ export function AdminScreen({
           typeImage: "Фото",
           handle: "Handle",
           tgId: "Telegram ID",
-          close: "Закрыть",
           yes: "Да",
           no: "Нет",
           channelVerified: "Верифицирован",
@@ -240,7 +224,7 @@ export function AdminScreen({
     }
   };
 
-  if (!hasAdminUsernameAccess) {
+  if (!hasAdminAccess) {
     return (
       <div className="min-h-screen bg-[#0a0a0f] text-white px-4 py-6 sm:px-6">
         <div className="mx-auto max-w-4xl">

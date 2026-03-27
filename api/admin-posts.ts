@@ -5,8 +5,6 @@ const ADMIN_TELEGRAM_IDS = new Set([
   "1372669404",
 ]);
 
-const ADMIN_TELEGRAM_USERNAME = "jim";
-
 const FEED_IDS_KEY = "margelet:feed:ids";
 const POST_KEY_PREFIX = "margelet:post:";
 
@@ -19,13 +17,6 @@ function asNumber(value: unknown): number | null {
 
   const n = Number(String(value || "").trim());
   return Number.isFinite(n) ? n : null;
-}
-
-function normalizeUsername(value: unknown) {
-  return String(value || "")
-    .trim()
-    .replace(/^@+/, "")
-    .toLowerCase();
 }
 
 export default async function handler(req: any, res: any) {
@@ -47,27 +38,18 @@ export default async function handler(req: any, res: any) {
         ? body.telegramUserId.trim()
         : "";
 
-    const telegramUsername = normalizeUsername(body.telegramUsername);
-
     if (!telegramUserId) {
       return res.status(400).json({ error: "Missing telegramUserId" });
     }
 
-    if (!telegramUsername) {
-      return res.status(400).json({ error: "Missing telegramUsername" });
-    }
-
-    const isAllowedAdminId = ADMIN_TELEGRAM_IDS.has(telegramUserId);
-    const isAllowedAdminUsername = telegramUsername === ADMIN_TELEGRAM_USERNAME;
-
-    if (!isAllowedAdminId || !isAllowedAdminUsername) {
+    if (!ADMIN_TELEGRAM_IDS.has(telegramUserId)) {
       return res.status(403).json({ error: "Forbidden" });
     }
 
     const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, 500);
 
     if (!ids || ids.length === 0) {
-      return res.status(200).json({ posts: [] });
+      return res.status(200).json({ ok: true, posts: [] });
     }
 
     const posts: Video[] = [];
