@@ -4,8 +4,6 @@ export type TabId = "intro" | "feed" | "add" | "creator" | "source" | "admin";
 
 export type MediaType = "video" | "image" | "text";
 
-export type MediaItemType = Exclude<MediaType, "text">;
-
 export type FeedTag =
   | "all"
   | "people"
@@ -30,17 +28,9 @@ export type LocalizedText = {
   en: string;
 };
 
-export type PostMedia = {
-  id: string;
-  type: MediaItemType;
-  url: string;
-  poster?: string | null;
-};
-
 export type Video = {
   id: number;
   mediaType: MediaType;
-  media?: PostMedia[];
   title: LocalizedText;
   caption: LocalizedText;
   channel: string;
