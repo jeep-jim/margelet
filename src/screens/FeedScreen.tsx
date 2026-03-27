@@ -65,8 +65,8 @@ const TAG_OPTIONS: { value: FeedTag; label: string }[] = [
 ];
 
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
-const DRAG_SWITCH_DISTANCE = 72;
-const DRAG_SWITCH_VELOCITY = 320;
+const DRAG_SWITCH_DISTANCE = 90;
+const DRAG_SWITCH_VELOCITY = 420;
 
 function getResolvedTag(video: Video): ContentTag {
   return video.tag || "other";
@@ -741,6 +741,15 @@ export function FeedScreen({
     setDragOffsetY(0);
   };
 
+  const handleMediaToggle = () => {
+    if (!activeVideo || activeVideo.mediaType !== "video" || !activeVideo.videoUrl) {
+      return;
+    }
+
+    setIsPlaying((prev) => !prev);
+  };
+
+
   const handleShare = async (video: Video) => {
     const shareUrl = buildShareUrl(video);
 
@@ -919,17 +928,17 @@ export function FeedScreen({
   }, [viewerIndex]);
 
   const viewerVariants = {
-    enter: (direction: ViewerDirection) => ({
+    enter: () => ({
       opacity: 1,
-      y: direction === "next" ? 24 : direction === "prev" ? -24 : 0,
+      y: 0,
     }),
     center: {
       opacity: 1,
       y: 0,
     },
-    exit: (direction: ViewerDirection) => ({
+    exit: () => ({
       opacity: 1,
-      y: direction === "next" ? -40 : direction === "prev" ? 40 : 0,
+      y: 0,
     }),
   };
 
@@ -1075,7 +1084,7 @@ export function FeedScreen({
                 </div>
               ) : null}
 
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 z-20 flex items-center justify-center">
                 <div className="h-full w-full max-w-[520px] bg-black overflow-hidden">
                   <AnimatePresence mode="wait" custom={viewerDirection}>
                     <motion.div
@@ -1085,10 +1094,10 @@ export function FeedScreen({
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      transition={{ duration: 0.16, ease: "linear" }}
+                      transition={{ duration: 0.01, ease: "linear" }}
                       drag="y"
                       dragDirectionLock
-                      dragElastic={0.01}
+                      dragElastic={0.04}
                       dragMomentum={false}
                       onDrag={(_, info) => {
                         setDragOffsetY(info.offset.y);
@@ -1119,6 +1128,15 @@ export function FeedScreen({
                       )}
 
                       <div className="absolute inset-0 bg-black/20" />
+
+                      {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                        <button
+                          type="button"
+                          onClick={handleMediaToggle}
+                          className="absolute inset-0 z-10 block"
+                          aria-label={isPlaying ? "Поставить видео на паузу" : "Продолжить видео"}
+                        />
+                      ) : null}
 
                       <div className="absolute left-4 right-4 top-4 z-30 flex items-center justify-between">
                         <button
