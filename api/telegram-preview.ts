@@ -38,10 +38,7 @@ function normalizeUrl(value?: string | null) {
   if (!raw) return null;
 
   if (raw.startsWith("//")) return `https:${raw}`;
-  if (raw.startsWith("http://")) {
-    return `https://${raw.slice("http://".length)}`;
-  }
-
+  if (raw.startsWith("http://")) return `https://${raw.slice("http://".length)}`;
   return raw;
 }
 
@@ -173,7 +170,8 @@ function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
     hay.includes("tgme_widget_message_owner_badge") ||
     hay.includes("tgme_widget_message_owner_verified_icon") ||
     hay.includes("verified-icon") ||
-    hay.includes("icon-verified")
+    hay.includes("icon-verified") ||
+    /\bverified\b/.test(hay)
   );
 }
 
@@ -286,26 +284,21 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     poster: null,
   };
 
-  const videoPlayers =
-    msgHtml.match(
-      /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap)[^"]*"[^>]*>/gi
-    ) ?? [];
+  const videoPlayers = msgHtml.match(
+    /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap)[^"]*"[^>]*>/gi
+  ) ?? [];
 
   for (const tag of videoPlayers) {
     const href = pickAttr(tag, ["data-video", "href", "data-src", "src"]);
     const posterFromStyle = pickBgUrlFromStyle(tag);
-    const poster = normalizeUrl(
-      posterFromStyle || pickAttr(tag, ["data-poster", "poster"])
-    );
+    const poster = normalizeUrl(posterFromStyle || pickAttr(tag, ["data-poster", "poster"]));
     const video = normalizeUrl(href);
 
     if (video && isLikelyTelegramVideoUrl(video)) {
       result.video = video;
-
       if (poster && !isLikelyAvatarUrl(poster)) {
         result.poster = poster;
       }
-
       break;
     }
   }
@@ -322,18 +315,15 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
 
       if (url && isLikelyTelegramVideoUrl(url)) {
         result.video = url;
-
         if (p && !isLikelyAvatarUrl(p)) {
           result.poster = p;
         }
-
         break;
       }
     }
   }
 
-  const photoWrapRe =
-    /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
+  const photoWrapRe = /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
   const photoWraps = msgHtml.match(photoWrapRe) ?? [];
 
   for (const tag of photoWraps) {
@@ -467,7 +457,7 @@ export default async function handler(req: any, res: any) {
       poster: toProxyUrl(media.poster) || null,
       title: cleanText(title),
       caption: cleanText(caption),
-      avatar: toProxyUrl(avatar) || null,
+      avatar: normalizeUrl(avatar) || null,
       verified,
     });
   } catch (error) {
