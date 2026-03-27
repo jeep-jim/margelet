@@ -114,6 +114,28 @@ function getTagLabel(tag: ContentTag) {
   return TAG_OPTIONS.find((item) => item.value === tag)?.label || "Другое";
 }
 
+function asCleanUrl(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed || null;
+}
+
+function isLikelyAvatarUrl(value: string | null | undefined) {
+  if (!value) return false;
+
+  const lower = value.toLowerCase();
+
+  return (
+    lower.includes("/userpic/") ||
+    lower.includes("userpic") ||
+    lower.includes("profile_photo") ||
+    lower.includes("channel_photo") ||
+    lower.includes("avatar") ||
+    lower.includes("tgme_page_photo") ||
+    lower.includes("telegram.org/file/") && lower.includes("photo")
+  );
+}
+
 function AuthBlock() {
   return (
     <div className="mt-6 overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
@@ -258,9 +280,26 @@ export function AddScreen({ onAdd }: Props) {
 
       const preview = await fetchTelegramPreview(normalized);
 
-      const mediaType: MediaType | undefined = preview?.video
+      const rawAvatar = asCleanUrl(preview?.avatar);
+      const rawImage = asCleanUrl(preview?.image);
+      const rawPoster = asCleanUrl((preview as any)?.poster);
+      const rawVideo = asCleanUrl(preview?.video);
+
+      const finalAvatar =
+        rawAvatar ||
+        (isLikelyAvatarUrl(rawImage) ? rawImage : null) ||
+        (isLikelyAvatarUrl(rawPoster) ? rawPoster : null);
+
+      const finalPreviewImage =
+        rawImage && !isLikelyAvatarUrl(rawImage)
+          ? rawImage
+          : rawPoster && !isLikelyAvatarUrl(rawPoster)
+            ? rawPoster
+            : null;
+
+      const mediaType: MediaType | undefined = rawVideo
         ? "video"
-        : preview?.image
+        : finalPreviewImage
           ? "image"
           : undefined;
 
@@ -274,21 +313,16 @@ export function AddScreen({ onAdd }: Props) {
           ? preview.title.trim()
           : parsedPost.channel;
 
-      const cleanAvatar =
-        typeof preview?.avatar === "string" && preview.avatar.trim()
-          ? preview.avatar.trim()
-          : null;
-
       await onAdd({
         url: normalized,
         title: cleanTitle,
         caption: cleanCaption,
         channel: parsedPost.channel,
-        avatar: cleanAvatar,
+        avatar: finalAvatar,
         tag: selectedTag,
-        previewUrl: preview?.image || null,
+        previewUrl: finalPreviewImage,
         mediaType,
-        videoUrl: preview?.video || null,
+        videoUrl: rawVideo,
         channelVerified: !!preview?.verified,
       });
 
