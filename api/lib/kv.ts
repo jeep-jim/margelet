@@ -1,5 +1,5 @@
 import { Redis } from "@upstash/redis";
-import type { PostMedia, Video } from "../../src/types/app";
+import type { Video } from "../../src/types/app";
 
 type EnvMap = Record<string, string | undefined>;
 
@@ -86,102 +86,6 @@ function normalizeMediaType(value: unknown): "video" | "image" | "text" | null {
   return null;
 }
 
-function normalizePostMediaItem(raw: any, index: number): PostMedia | null {
-  if (!raw || typeof raw !== "object") {
-    return null;
-  }
-
-  const type = raw.type === "video" ? "video" : raw.type === "image" ? "image" : null;
-  const url = asNullableString(raw.url);
-  const poster = asNullableString(raw.poster);
-
-  if (!type || !url) {
-    return null;
-  }
-
-  return {
-    id: asCleanString(raw.id) || `${type}-${index + 1}`,
-    type,
-    url,
-    poster: poster || null,
-  };
-}
-
-function buildLegacyMedia(raw: any): PostMedia[] {
-  const videoUrl = asNullableString(raw?.videoUrl);
-  const previewUrl = asNullableString(raw?.previewUrl);
-
-  if (videoUrl) {
-    return [
-      {
-        id: "video-1",
-        type: "video",
-        url: videoUrl,
-        poster: previewUrl || null,
-      },
-    ];
-  }
-
-  if (previewUrl) {
-    return [
-      {
-        id: "image-1",
-        type: "image",
-        url: previewUrl,
-        poster: null,
-      },
-    ];
-  }
-
-  return [];
-}
-
-function normalizePostMedia(raw: any): PostMedia[] {
-  const items = Array.isArray(raw?.media)
-    ? raw.media
-        .map((item: any, index: number) => normalizePostMediaItem(item, index))
-        .filter((item: PostMedia | null): item is PostMedia => !!item)
-    : [];
-
-  if (items.length > 0) {
-    return items;
-  }
-
-  return buildLegacyMedia(raw);
-}
-
-function deriveMediaType(
-  rawMediaType: unknown,
-  media: PostMedia[]
-): "video" | "image" | "text" | null {
-  const normalized = normalizeMediaType(rawMediaType);
-  if (normalized) return normalized;
-
-  const first = media[0];
-  if (!first) return "text";
-  return first.type;
-}
-
-function derivePreviewUrl(raw: any, media: PostMedia[]): string | null {
-  const explicitPreview = asNullableString(raw?.previewUrl);
-  if (explicitPreview) return explicitPreview;
-
-  const first = media[0];
-  if (!first) return null;
-  if (first.type === "image") return first.url;
-  if (first.type === "video") return first.poster || null;
-  return null;
-}
-
-function deriveVideoUrl(raw: any, media: PostMedia[]): string | null {
-  const explicitVideo = asNullableString(raw?.videoUrl);
-  if (explicitVideo) return explicitVideo;
-
-  const first = media[0];
-  if (first?.type === "video") return first.url;
-  return null;
-}
-
 function normalizeVideo(raw: any): Video | null {
   if (!raw || typeof raw !== "object") {
     return null;
@@ -191,20 +95,18 @@ function normalizeVideo(raw: any): Video | null {
   const postUrl = asNullableString(raw.postUrl);
   const channel = asCleanString(raw.channel);
   const handle = asCleanString(raw.handle);
-  const media = normalizePostMedia(raw);
-  const mediaType = deriveMediaType(raw.mediaType, media);
+  const mediaType = normalizeMediaType(raw.mediaType);
 
   if (!id || !postUrl || !channel || !handle || !mediaType) {
     return null;
   }
 
   const title = normalizeLocalizedText(raw.title, channel);
-  const caption = normalizeLocalizedText(raw.caption, "");
+  const caption = normalizeLocalizedText(raw.caption, title.ru);
 
   return {
     id,
     mediaType,
-    media,
     title,
     caption,
     channel,
@@ -219,8 +121,8 @@ function normalizeVideo(raw: any): Video | null {
     postUrl,
     bg: asCleanString(raw.bg) || "from-neutral-300 to-neutral-200",
     tag: raw.tag || "other",
-    previewUrl: derivePreviewUrl(raw, media),
-    videoUrl: deriveVideoUrl(raw, media),
+    previewUrl: asNullableString(raw.previewUrl),
+    videoUrl: asNullableString(raw.videoUrl),
     addedByTelegramId: asNullableString(raw.addedByTelegramId),
     addedByUsername: asNullableString(raw.addedByUsername),
   };
