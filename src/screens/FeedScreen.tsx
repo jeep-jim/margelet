@@ -58,6 +58,8 @@ const TAG_OPTIONS: { value: FeedTag; label: string }[] = [
   { value: "other", label: "Другое" },
 ];
 
+const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
+
 function getResolvedTag(video: Video): ContentTag {
   return video.tag || "other";
 }
@@ -185,23 +187,25 @@ function FeedMetric({
 
 function MoreMenu({
   isOwner,
+  isAdmin,
   onDelete,
   onHide,
 }: {
   isOwner: boolean;
+  isAdmin: boolean;
   onDelete: () => void;
   onHide: () => void;
 }) {
   return (
-    <div className="absolute right-0 top-12 z-40 min-w-[200px] rounded-2xl border border-neutral-200 bg-white p-2 shadow-xl">
-      {isOwner ? (
+    <div className="absolute right-0 top-12 z-40 min-w-[220px] rounded-2xl border border-neutral-200 bg-white p-2 shadow-xl">
+      {isOwner || isAdmin ? (
         <button
           type="button"
           onClick={onDelete}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-600 transition hover:bg-rose-50"
         >
           <Trash2 className="h-4 w-4" />
-          <span>Удалить пост</span>
+          <span>{isAdmin && !isOwner ? "Удалить пост (admin)" : "Удалить пост"}</span>
         </button>
       ) : (
         <button
@@ -217,12 +221,63 @@ function MoreMenu({
   );
 }
 
+function ExpandableFeedText({
+  text,
+}: {
+  text: string;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const [shouldClamp, setShouldClamp] = useState(false);
+  const measureRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const node = measureRef.current;
+    if (!node) return;
+
+    const styles = window.getComputedStyle(node);
+    const lineHeight = parseFloat(styles.lineHeight || "0");
+    if (!lineHeight) {
+      setShouldClamp(text.length > 120);
+      return;
+    }
+
+    const maxHeight = lineHeight * 2 + 1;
+    setShouldClamp(node.scrollHeight > maxHeight);
+  }, [text]);
+
+  if (!text) return null;
+
+  return (
+    <div className="text-[15px] leading-6 text-neutral-900">
+      <div
+        ref={measureRef}
+        className={`relative ${expanded ? "" : "line-clamp-2"}`}
+      >
+        {text}
+      </div>
+
+      {shouldClamp ? (
+        <div className="mt-0.5 flex justify-end">
+          <button
+            type="button"
+            onClick={() => setExpanded((v) => !v)}
+            className="text-sm font-medium text-neutral-500"
+          >
+            {expanded ? "Свернуть" : "Ещё"}
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function FeedCard({
   video,
   locale,
   liked,
   saved,
   isOwner,
+  isAdmin,
   menuOpen,
   onToggleMenu,
   onDelete,
@@ -237,6 +292,7 @@ function FeedCard({
   liked: boolean;
   saved: boolean;
   isOwner: boolean;
+  isAdmin: boolean;
   menuOpen: boolean;
   onToggleMenu: () => void;
   onDelete: () => void;
@@ -265,6 +321,7 @@ function FeedCard({
           {menuOpen ? (
             <MoreMenu
               isOwner={isOwner}
+              isAdmin={isAdmin}
               onDelete={onDelete}
               onHide={onHide}
             />
@@ -334,9 +391,7 @@ function FeedCard({
           </button>
         </div>
 
-        <div className="line-clamp-2 text-[15px] leading-6 text-neutral-900">
-          {displayText}
-        </div>
+        <ExpandableFeedText text={displayText} />
       </div>
     </article>
   );
@@ -726,6 +781,9 @@ export function FeedScreen({
             !!video.addedByTelegramId &&
             currentTelegramUserId === video.addedByTelegramId;
 
+          const isAdmin =
+            !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
+
           return (
             <FeedCard
               key={video.id}
@@ -734,6 +792,7 @@ export function FeedScreen({
               liked={likedPostIds.includes(video.id)}
               saved={savedPostIds.includes(video.id)}
               isOwner={isOwner}
+              isAdmin={isAdmin}
               menuOpen={menuPostId === video.id}
               onToggleMenu={() =>
                 setMenuPostId((prev) => (prev === video.id ? null : video.id))
@@ -836,6 +895,10 @@ export function FeedScreen({
                                 !!currentTelegramUserId &&
                                 !!activeVideo.addedByTelegramId &&
                                 currentTelegramUserId === activeVideo.addedByTelegramId
+                              }
+                              isAdmin={
+                                !!currentTelegramUserId &&
+                                ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)
                               }
                               onDelete={() => void handleDelete(activeVideo)}
                               onHide={() => handleHide(activeVideo)}

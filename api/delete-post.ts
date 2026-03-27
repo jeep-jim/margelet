@@ -1,5 +1,9 @@
 import { deletePostById, getPostById } from "./lib/kv.js";
 
+const ADMIN_TELEGRAM_IDS = new Set([
+  "1372669404",
+]);
+
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -33,13 +37,21 @@ export default async function handler(req: any, res: any) {
       return res.status(404).json({ error: "Post not found" });
     }
 
-    if (!post.addedByTelegramId || post.addedByTelegramId !== telegramUserId) {
+    const isAdmin = ADMIN_TELEGRAM_IDS.has(telegramUserId);
+    const isOwner =
+      !!post.addedByTelegramId && post.addedByTelegramId === telegramUserId;
+
+    if (!isAdmin && !isOwner) {
       return res.status(403).json({ error: "Forbidden" });
     }
 
     await deletePostById(id);
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({
+      ok: true,
+      deletedId: id,
+      deletedBy: isAdmin ? "admin" : "owner",
+    });
   } catch (error) {
     console.error("delete-post api error", error);
     return res.status(500).json({ error: "Failed to delete post" });
