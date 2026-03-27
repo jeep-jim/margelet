@@ -65,8 +65,8 @@ const TAG_OPTIONS: { value: FeedTag; label: string }[] = [
 ];
 
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
-const DRAG_SWITCH_DISTANCE = 90;
-const DRAG_SWITCH_VELOCITY = 420;
+const DRAG_SWITCH_DISTANCE = 72;
+const DRAG_SWITCH_VELOCITY = 320;
 
 function getResolvedTag(video: Video): ContentTag {
   return video.tag || "other";
@@ -1088,7 +1088,7 @@ export function FeedScreen({
                       transition={{ duration: 0.16, ease: "linear" }}
                       drag="y"
                       dragDirectionLock
-                      dragElastic={0.04}
+                      dragElastic={0.01}
                       dragMomentum={false}
                       onDrag={(_, info) => {
                         setDragOffsetY(info.offset.y);

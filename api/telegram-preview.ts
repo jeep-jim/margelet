@@ -38,10 +38,7 @@ function normalizeUrl(value?: string | null) {
   if (!raw) return null;
 
   if (raw.startsWith("//")) return `https:${raw}`;
-  if (raw.startsWith("http://")) {
-    return `https://${raw.slice("http://".length)}`;
-  }
-
+  if (raw.startsWith("http://")) return `https://${raw.slice("http://".length)}`;
   return raw;
 }
 
@@ -173,7 +170,8 @@ function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
     hay.includes("tgme_widget_message_owner_badge") ||
     hay.includes("tgme_widget_message_owner_verified_icon") ||
     hay.includes("verified-icon") ||
-    hay.includes("icon-verified")
+    hay.includes("icon-verified") ||
+    /\bverified\b/.test(hay)
   );
 }
 
@@ -210,37 +208,10 @@ function pickBgUrlFromStyle(tagHtml: string) {
 function isLikelyAvatarUrl(url: string) {
   const v = String(url || "").toLowerCase();
   if (!v) return false;
-
-  return (
-    v.includes("t.me/i/userpic/") ||
-    v.includes("/userpic/") ||
-    (v.includes("userpic") && v.includes("t.me")) ||
-    v.includes("tgme_page_photo") ||
-    v.includes("channel_photo") ||
-    v.includes("profile_photo")
-  );
-}
-
-function isLikelyTelegramImageUrl(url: string) {
-  const v = String(url || "").toLowerCase();
-  if (!v) return false;
-  if (isLikelyAvatarUrl(v)) return false;
-
-  return (
-    v.includes(".jpg") ||
-    v.includes(".jpeg") ||
-    v.includes(".png") ||
-    v.includes(".webp") ||
-    v.includes("/file/")
-  );
-}
-
-function isLikelyTelegramVideoUrl(url: string) {
-  const v = String(url || "").toLowerCase();
-  if (!v) return false;
-  if (isLikelyAvatarUrl(v)) return false;
-
-  return v.includes(".mp4") || v.includes("video");
+  if (v.includes("t.me/i/userpic/")) return true;
+  if (v.includes("/userpic/")) return true;
+  if (v.includes("userpic") && v.includes("t.me")) return true;
+  return false;
 }
 
 function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -268,7 +239,7 @@ function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) 
     const match = pageHtml.match(pattern);
     if (match?.[1]) {
       const avatar = normalizeUrl(match[1].replace(/^['"]|['"]$/g, ""));
-      if (avatar && isLikelyAvatarUrl(avatar)) return avatar;
+      if (avatar) return avatar;
     }
   }
 
@@ -286,26 +257,21 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     poster: null,
   };
 
-  const videoPlayers =
-    msgHtml.match(
-      /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap)[^"]*"[^>]*>/gi
-    ) ?? [];
+  const videoPlayers = msgHtml.match(
+    /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap)[^"]*"[^>]*>/gi
+  ) ?? [];
 
   for (const tag of videoPlayers) {
     const href = pickAttr(tag, ["data-video", "href", "data-src", "src"]);
     const posterFromStyle = pickBgUrlFromStyle(tag);
-    const poster = normalizeUrl(
-      posterFromStyle || pickAttr(tag, ["data-poster", "poster"])
-    );
+    const poster = normalizeUrl(posterFromStyle || pickAttr(tag, ["data-poster", "poster"]));
     const video = normalizeUrl(href);
 
-    if (video && isLikelyTelegramVideoUrl(video)) {
+    if (video && !isLikelyAvatarUrl(video)) {
       result.video = video;
-
       if (poster && !isLikelyAvatarUrl(poster)) {
         result.poster = poster;
       }
-
       break;
     }
   }
@@ -320,20 +286,17 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       const url = normalizeUrl(src);
       const p = normalizeUrl(poster);
 
-      if (url && isLikelyTelegramVideoUrl(url)) {
+      if (url && !isLikelyAvatarUrl(url)) {
         result.video = url;
-
         if (p && !isLikelyAvatarUrl(p)) {
           result.poster = p;
         }
-
         break;
       }
     }
   }
 
-  const photoWrapRe =
-    /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
+  const photoWrapRe = /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
   const photoWraps = msgHtml.match(photoWrapRe) ?? [];
 
   for (const tag of photoWraps) {
@@ -342,27 +305,26 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const url = normalizeUrl(bg || href);
 
     if (!url) continue;
-    if (!isLikelyTelegramImageUrl(url)) continue;
+    if (isLikelyAvatarUrl(url)) continue;
 
     result.image = url;
     break;
   }
 
   if (!result.image) {
-    const imgTagRe = /<img\b[^>]*>/gi;
-    const imgTags = msgHtml.match(imgTagRe) ?? [];
+    const imgMatch =
+      msgHtml.match(/<img[^>]+src="([^"]+)"/i) ||
+      msgHtml.match(/<img[^>]+src='([^']+)'/i);
 
-    for (const tag of imgTags) {
-      const src = pickAttr(tag, ["src", "data-src"]);
-      if (!src) continue;
-      if (!isLikelyTelegramImageUrl(src)) continue;
-
-      result.image = src;
-      break;
+    if (imgMatch?.[1]) {
+      const img = normalizeUrl(imgMatch[1]);
+      if (img && !isLikelyAvatarUrl(img)) {
+        result.image = img;
+      }
     }
   }
 
-  if (!result.image && result.poster && !isLikelyAvatarUrl(result.poster)) {
+  if (!result.image && result.poster) {
     result.image = result.poster;
   }
 
@@ -459,15 +421,18 @@ export default async function handler(req: any, res: any) {
       null;
 
     const verified = extractVerifiedFromMessageBlock(msgHtml, html);
+    const normalizedAvatar = normalizeUrl(avatar);
+    const normalizedImage = media.image && normalizedAvatar && normalizeUrl(media.image) === normalizedAvatar ? null : media.image;
+    const normalizedPoster = media.poster && normalizedAvatar && normalizeUrl(media.poster) === normalizedAvatar ? null : media.poster;
 
     return res.status(200).json({
       canonical,
-      image: toProxyUrl(media.image) || null,
+      image: toProxyUrl(normalizedImage) || null,
       video: toProxyUrl(media.video) || null,
-      poster: toProxyUrl(media.poster) || null,
+      poster: toProxyUrl(normalizedPoster) || null,
       title: cleanText(title),
       caption: cleanText(caption),
-      avatar: toProxyUrl(avatar) || null,
+      avatar: normalizeUrl(avatar) || null,
       verified,
     });
   } catch (error) {
