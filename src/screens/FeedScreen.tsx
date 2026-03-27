@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 import {
   ArrowLeft,
   Bookmark,
@@ -66,6 +66,8 @@ const TAG_OPTIONS: { value: FeedTag; label: string }[] = [
 ];
 
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
+const DRAG_SWITCH_DISTANCE = 120;
+const DRAG_SWITCH_VELOCITY = 500;
 
 function getResolvedTag(video: Video): ContentTag {
   return video.tag || "other";
@@ -78,6 +80,10 @@ function getTagLabel(tag: FeedTag) {
 function isAvatarUrl(value?: string | null) {
   if (!value) return false;
   return /^https?:\/\//i.test(value);
+}
+
+function hasVisualMedia(video: Video) {
+  return !!video.previewUrl || !!video.videoUrl;
 }
 
 function getDisplayText(video: Video, locale: Locale) {
@@ -199,8 +205,10 @@ function MoreMenu({
 
 function ExpandableFeedText({
   text,
+  clampLines = 2,
 }: {
   text: string;
+  clampLines?: number;
 }) {
   const [expanded, setExpanded] = useState(false);
   const [shouldClamp, setShouldClamp] = useState(false);
@@ -218,9 +226,9 @@ function ExpandableFeedText({
       return;
     }
 
-    const maxHeight = lineHeight * 2 + 1;
+    const maxHeight = lineHeight * clampLines + 1;
     setShouldClamp(node.scrollHeight > maxHeight);
-  }, [text]);
+  }, [text, clampLines]);
 
   useEffect(() => {
     setExpanded(false);
@@ -233,7 +241,7 @@ function ExpandableFeedText({
       <div className="relative">
         <div
           ref={measureRef}
-          className={`${expanded ? "" : "line-clamp-2 pr-14"}`}
+          className={`${expanded ? "" : `line-clamp-${clampLines} pr-14`}`}
         >
           {text}
         </div>
@@ -288,6 +296,7 @@ function FeedCard({
   onOpenCreator: () => void;
 }) {
   const displayText = getDisplayText(video, locale);
+  const mediaExists = hasVisualMedia(video);
 
   return (
     <article className="overflow-hidden border-b border-neutral-200 bg-white">
@@ -314,42 +323,70 @@ function FeedCard({
         </div>
       </div>
 
-      <button
-        onClick={onOpen}
-        className="relative mt-3 block w-full bg-neutral-100"
-        type="button"
-      >
-        <div className="relative aspect-[9/10.2] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/9.8]">
-          {video.previewUrl ? (
-            <img
-              src={video.previewUrl}
-              alt={displayText || video.channel}
-              className="absolute inset-0 h-full w-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-          ) : (
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${
-                video.bg || "from-neutral-300 to-neutral-200"
-              }`}
-            />
-          )}
+      {mediaExists ? (
+        <button
+          onClick={onOpen}
+          className="relative mt-3 block w-full bg-neutral-100"
+          type="button"
+        >
+          <div className="relative aspect-[9/10.2] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/9.8]">
+            {video.mediaType === "video" && video.videoUrl ? (
+              <video
+                src={video.videoUrl}
+                poster={video.previewUrl || undefined}
+                className="absolute inset-0 h-full w-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            ) : video.previewUrl ? (
+              <img
+                src={video.previewUrl}
+                alt={displayText || video.channel}
+                className="absolute inset-0 h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${
+                  video.bg || "from-neutral-300 to-neutral-200"
+                }`}
+              />
+            )}
 
-          <div className="absolute right-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
-            {getTagLabel(getResolvedTag(video))}
-          </div>
-
-          {video.mediaType === "video" && video.duration ? (
-            <div className="absolute bottom-3 right-3 rounded-full bg-black/35 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
-              {video.duration}
+            <div className="absolute right-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+              {getTagLabel(getResolvedTag(video))}
             </div>
-          ) : null}
-        </div>
-      </button>
 
-      <div className="px-4 py-3">
-        <ExpandableFeedText text={displayText} />
-      </div>
+            {video.mediaType === "video" && video.duration ? (
+              <div className="absolute bottom-3 right-3 rounded-full bg-black/35 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                {video.duration}
+              </div>
+            ) : null}
+          </div>
+        </button>
+      ) : null}
+
+      <button
+        type="button"
+        onClick={onOpen}
+        className={`block w-full px-4 py-3 text-left ${mediaExists ? "" : "pt-3"}`}
+      >
+        {!mediaExists && (
+          <div className="mb-2 flex items-center justify-between">
+            <div className="rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
+              {getTagLabel(getResolvedTag(video))}
+            </div>
+          </div>
+        )}
+
+        <ExpandableFeedText
+          text={displayText}
+          clampLines={mediaExists ? 2 : 10}
+        />
+      </button>
     </article>
   );
 }
@@ -420,13 +457,9 @@ export function FeedScreen({
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
   const [videoProgress, setVideoProgress] = useState(0);
-  const [videoDurationSeconds, setVideoDurationSeconds] = useState(0);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionScrollRef = useRef<HTMLDivElement | null>(null);
-  const viewerContentRef = useRef<HTMLDivElement | null>(null);
-  const touchStartYRef = useRef<number | null>(null);
-  const touchMovedRef = useRef(false);
 
   const preferredTags = useMemo(() => {
     const source = videos.filter(
@@ -505,7 +538,6 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
   }, []);
 
   const closeViewer = useCallback(() => {
@@ -518,7 +550,6 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
   }, []);
 
   const nextViewer = useCallback(() => {
@@ -532,7 +563,6 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
   }, [viewerIndex, visibleVideos.length]);
 
   const prevViewer = useCallback(() => {
@@ -546,8 +576,24 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
   }, [viewerIndex, visibleVideos.length]);
+
+  const handleViewerDragEnd = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    const offsetY = info.offset.y;
+    const velocityY = info.velocity.y;
+
+    if (offsetY < -DRAG_SWITCH_DISTANCE || velocityY < -DRAG_SWITCH_VELOCITY) {
+      nextViewer();
+      return;
+    }
+
+    if (offsetY > DRAG_SWITCH_DISTANCE || velocityY > DRAG_SWITCH_VELOCITY) {
+      prevViewer();
+    }
+  };
 
   const handleShare = async (video: Video) => {
     const shareUrl = buildShareUrl(video);
@@ -624,7 +670,6 @@ export function FeedScreen({
     const node = videoRef.current;
     if (!node || !activeVideo || activeVideo.mediaType !== "video") {
       setVideoProgress(0);
-      setVideoDurationSeconds(0);
       return;
     }
 
@@ -639,7 +684,6 @@ export function FeedScreen({
           ? node.currentTime
           : 0;
 
-      setVideoDurationSeconds(duration);
       setVideoProgress(duration > 0 ? Math.min(currentTime / duration, 1) : 0);
     };
 
@@ -692,13 +736,13 @@ export function FeedScreen({
         return;
       }
 
-      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      if (event.key === "ArrowDown") {
         event.preventDefault();
         nextViewer();
         return;
       }
 
-      if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      if (event.key === "ArrowUp") {
         event.preventDefault();
         prevViewer();
       }
@@ -713,19 +757,16 @@ export function FeedScreen({
 
   const viewerVariants = {
     enter: (direction: ViewerDirection) => ({
-      opacity: 0,
-      y: direction === "next" ? 32 : direction === "prev" ? -32 : 0,
-      scale: 0.985,
+      y: direction === "next" ? 80 : direction === "prev" ? -80 : 0,
+      opacity: 1,
     }),
     center: {
-      opacity: 1,
       y: 0,
-      scale: 1,
+      opacity: 1,
     },
     exit: (direction: ViewerDirection) => ({
-      opacity: 0,
-      y: direction === "next" ? -24 : direction === "prev" ? 24 : 0,
-      scale: 0.985,
+      y: direction === "next" ? -120 : direction === "prev" ? 120 : 0,
+      opacity: 1,
     }),
   };
 
@@ -857,60 +898,18 @@ export function FeedScreen({
                   <AnimatePresence mode="wait" custom={viewerDirection}>
                     <motion.div
                       key={activeVideo.id}
-                      ref={viewerContentRef}
                       custom={viewerDirection}
                       variants={viewerVariants}
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      transition={{ duration: 0.22, ease: "easeOut" }}
-                      className="relative h-full w-full overflow-hidden"
-                      onTouchStart={(e) => {
-                        const captionNode = captionScrollRef.current;
-                        if (captionNode && captionNode.contains(e.target as Node)) {
-                          touchStartYRef.current = null;
-                          touchMovedRef.current = false;
-                          return;
-                        }
-
-                        touchStartYRef.current = e.touches[0].clientY;
-                        touchMovedRef.current = false;
-                      }}
-                      onTouchMove={(e) => {
-                        if (touchStartYRef.current === null) return;
-
-                        const delta = Math.abs(
-                          touchStartYRef.current - e.touches[0].clientY
-                        );
-
-                        if (delta > 16) {
-                          touchMovedRef.current = true;
-                        }
-                      }}
-                      onTouchEnd={(e) => {
-                        if (touchStartYRef.current === null) return;
-
-                        const captionNode = captionScrollRef.current;
-                        if (captionNode && captionNode.contains(e.target as Node)) {
-                          touchStartYRef.current = null;
-                          touchMovedRef.current = false;
-                          return;
-                        }
-
-                        const endY = e.changedTouches[0].clientY;
-                        const delta = touchStartYRef.current - endY;
-
-                        touchStartYRef.current = null;
-
-                        if (!touchMovedRef.current) return;
-                        if (Math.abs(delta) < 110) return;
-
-                        if (delta > 0) {
-                          nextViewer();
-                        } else {
-                          prevViewer();
-                        }
-                      }}
+                      transition={{ duration: 0.22, ease: "linear" }}
+                      drag="y"
+                      dragDirectionLock
+                      dragElastic={0.08}
+                      dragMomentum={false}
+                      onDragEnd={handleViewerDragEnd}
+                      className="relative h-full w-full overflow-hidden touch-pan-y"
                     >
                       {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
                         <video
@@ -931,11 +930,7 @@ export function FeedScreen({
                           referrerPolicy="no-referrer"
                         />
                       ) : (
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-br ${
-                            activeVideo.bg || "from-neutral-800 to-neutral-700"
-                          }`}
-                        />
+                        <div className="absolute inset-0 bg-[#0a0a0f]" />
                       )}
 
                       <div className="absolute inset-0 bg-black/20" />
@@ -949,74 +944,53 @@ export function FeedScreen({
                           <ArrowLeft className="h-6 w-6" />
                         </button>
 
-                        <div className="relative">
-                          <button
-                            className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                            onClick={() =>
-                              setMenuPostId((prev) =>
-                                prev === activeVideo.id ? null : activeVideo.id
-                              )
-                            }
-                            type="button"
-                          >
-                            <MoreVertical className="h-5 w-5" />
-                          </button>
-
-                          {menuPostId === activeVideo.id ? (
-                            <div className="absolute right-0 top-14">
-                              <MoreMenu
-                                isOwner={
-                                  !!currentTelegramUserId &&
-                                  !!activeVideo.addedByTelegramId &&
-                                  currentTelegramUserId === activeVideo.addedByTelegramId
-                                }
-                                isAdmin={
-                                  !!currentTelegramUserId &&
-                                  ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)
-                                }
-                                onDelete={() => void handleDelete(activeVideo)}
-                                onHide={() => handleHide(activeVideo)}
-                              />
-                            </div>
+                        <div className="flex items-center gap-2">
+                          {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                            <button
+                              onClick={() => setIsMuted((v) => !v)}
+                              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                              type="button"
+                            >
+                              {isMuted ? (
+                                <VolumeX className="h-5 w-5" />
+                              ) : (
+                                <Volume2 className="h-5 w-5" />
+                              )}
+                            </button>
                           ) : null}
-                        </div>
-                      </div>
 
-                      {activeVideo.mediaType === "video" && (
-                        <div className="absolute left-4 right-4 top-[72px] z-30">
-                          <div className="h-1.5 overflow-hidden rounded-full bg-white/20">
-                            <div
-                              className="h-full rounded-full bg-white transition-[width] duration-100"
-                              style={{
-                                width: `${Math.max(0, Math.min(videoProgress * 100, 100))}%`,
-                              }}
-                            />
+                          <div className="relative">
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                              onClick={() =>
+                                setMenuPostId((prev) =>
+                                  prev === activeVideo.id ? null : activeVideo.id
+                                )
+                              }
+                              type="button"
+                            >
+                              <MoreVertical className="h-5 w-5" />
+                            </button>
+
+                            {menuPostId === activeVideo.id ? (
+                              <div className="absolute right-0 top-14">
+                                <MoreMenu
+                                  isOwner={
+                                    !!currentTelegramUserId &&
+                                    !!activeVideo.addedByTelegramId &&
+                                    currentTelegramUserId === activeVideo.addedByTelegramId
+                                  }
+                                  isAdmin={
+                                    !!currentTelegramUserId &&
+                                    ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)
+                                  }
+                                  onDelete={() => void handleDelete(activeVideo)}
+                                  onHide={() => handleHide(activeVideo)}
+                                />
+                              </div>
+                            ) : null}
                           </div>
                         </div>
-                      )}
-
-                      <div className="absolute left-4 top-1/2 z-30 -translate-y-1/2">
-                        <button
-                          type="button"
-                          onClick={prevViewer}
-                          className="flex h-11 w-11 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition hover:bg-black/35"
-                          aria-label="Предыдущий пост"
-                          title="Предыдущий пост"
-                        >
-                          <ChevronDown className="h-5 w-5 rotate-90" />
-                        </button>
-                      </div>
-
-                      <div className="absolute right-4 top-1/2 z-30 -translate-y-1/2">
-                        <button
-                          type="button"
-                          onClick={nextViewer}
-                          className="flex h-11 w-11 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition hover:bg-black/35"
-                          aria-label="Следующий пост"
-                          title="Следующий пост"
-                        >
-                          <ChevronDown className="h-5 w-5 -rotate-90" />
-                        </button>
                       </div>
 
                       <div className="absolute inset-0 flex items-center justify-center">
@@ -1053,16 +1027,22 @@ export function FeedScreen({
                           value=""
                           onClick={() => handleShare(activeVideo)}
                         />
-                        {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                          <ViewerMetric
-                            icon={isMuted ? VolumeX : Volume2}
-                            value=""
-                            onClick={() => setIsMuted((v) => !v)}
-                          />
-                        ) : null}
                       </div>
 
                       <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-4 pb-8 pt-20 text-white">
+                        {activeVideo.mediaType === "video" && (
+                          <div className="mb-4">
+                            <div className="h-1.5 overflow-hidden rounded-full bg-white/20">
+                              <div
+                                className="h-full rounded-full bg-white transition-[width] duration-100"
+                                style={{
+                                  width: `${Math.max(0, Math.min(videoProgress * 100, 100))}%`,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        )}
+
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
@@ -1094,13 +1074,6 @@ export function FeedScreen({
                             <>
                               <span>•</span>
                               <span>{activeVideo.duration}</span>
-                            </>
-                          ) : null}
-                          {activeVideo.mediaType === "video" &&
-                          videoDurationSeconds > 0 ? (
-                            <>
-                              <span>•</span>
-                              <span>{Math.round(videoProgress * 100)}%</span>
                             </>
                           ) : null}
                         </div>

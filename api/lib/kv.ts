@@ -79,6 +79,13 @@ function normalizeLocalizedText(value: any, fallback = "") {
   };
 }
 
+function normalizeMediaType(value: unknown): "video" | "image" | "text" | null {
+  if (value === "video") return "video";
+  if (value === "image") return "image";
+  if (value === "text") return "text";
+  return null;
+}
+
 function normalizeVideo(raw: any): Video | null {
   if (!raw || typeof raw !== "object") {
     return null;
@@ -88,12 +95,7 @@ function normalizeVideo(raw: any): Video | null {
   const postUrl = asNullableString(raw.postUrl);
   const channel = asCleanString(raw.channel);
   const handle = asCleanString(raw.handle);
-  const mediaType =
-    raw.mediaType === "video"
-      ? "video"
-      : raw.mediaType === "image"
-        ? "image"
-        : null;
+  const mediaType = normalizeMediaType(raw.mediaType);
 
   if (!id || !postUrl || !channel || !handle || !mediaType) {
     return null;

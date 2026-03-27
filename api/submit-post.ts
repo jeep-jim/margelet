@@ -71,6 +71,13 @@ export default async function handler(req: any, res: any) {
         ? videoUrl.trim()
         : null;
 
+    const resolvedMediaType =
+      cleanVideoUrl
+        ? "video"
+        : cleanPreviewUrl
+          ? "image"
+          : "text";
+
     const post = buildSubmittedPost(
       {
         url: parsed.normalizedUrl,
@@ -80,7 +87,7 @@ export default async function handler(req: any, res: any) {
         avatar: cleanAvatar,
         tag,
         previewUrl: cleanPreviewUrl,
-        mediaType,
+        mediaType: resolvedMediaType,
         videoUrl: cleanVideoUrl,
         channelVerified: !!channelVerified,
       },
@@ -105,17 +112,9 @@ export default async function handler(req: any, res: any) {
       post.avatar = cleanAvatar;
     }
 
-    if (cleanPreviewUrl) {
-      post.previewUrl = cleanPreviewUrl;
-    }
-
-    if (cleanVideoUrl) {
-      post.videoUrl = cleanVideoUrl;
-    }
-
-    if (mediaType) {
-      post.mediaType = mediaType;
-    }
+    post.previewUrl = cleanPreviewUrl;
+    post.videoUrl = cleanVideoUrl;
+    post.mediaType = resolvedMediaType;
 
     post.title = {
       ru: cleanTitle,

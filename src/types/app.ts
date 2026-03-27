@@ -2,7 +2,7 @@ export type Locale = "ru" | "en";
 
 export type TabId = "intro" | "feed" | "add" | "creator" | "source" | "admin";
 
-export type MediaType = "video" | "image";
+export type MediaType = "video" | "image" | "text";
 
 export type FeedTag =
   | "all"
