@@ -215,7 +215,8 @@ function isLikelyAvatarUrl(url: string) {
     (v.includes("userpic") && v.includes("t.me")) ||
     v.includes("tgme_page_photo") ||
     v.includes("channel_photo") ||
-    v.includes("profile_photo")
+    v.includes("profile_photo") ||
+    v.includes("avatar")
   );
 }
 
@@ -284,21 +285,26 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     poster: null,
   };
 
-  const videoPlayers = msgHtml.match(
-    /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap)[^"]*"[^>]*>/gi
-  ) ?? [];
+  const videoPlayers =
+    msgHtml.match(
+      /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap)[^"]*"[^>]*>/gi
+    ) ?? [];
 
   for (const tag of videoPlayers) {
     const href = pickAttr(tag, ["data-video", "href", "data-src", "src"]);
     const posterFromStyle = pickBgUrlFromStyle(tag);
-    const poster = normalizeUrl(posterFromStyle || pickAttr(tag, ["data-poster", "poster"]));
+    const poster = normalizeUrl(
+      posterFromStyle || pickAttr(tag, ["data-poster", "poster"])
+    );
     const video = normalizeUrl(href);
 
     if (video && isLikelyTelegramVideoUrl(video)) {
       result.video = video;
+
       if (poster && !isLikelyAvatarUrl(poster)) {
         result.poster = poster;
       }
+
       break;
     }
   }
@@ -315,15 +321,18 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
 
       if (url && isLikelyTelegramVideoUrl(url)) {
         result.video = url;
+
         if (p && !isLikelyAvatarUrl(p)) {
           result.poster = p;
         }
+
         break;
       }
     }
   }
 
-  const photoWrapRe = /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
+  const photoWrapRe =
+    /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
   const photoWraps = msgHtml.match(photoWrapRe) ?? [];
 
   for (const tag of photoWraps) {
