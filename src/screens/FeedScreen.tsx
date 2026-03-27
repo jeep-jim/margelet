@@ -236,6 +236,7 @@ function ExpandableFeedText({
 
     const styles = window.getComputedStyle(node);
     const lineHeight = parseFloat(styles.lineHeight || "0");
+
     if (!lineHeight) {
       setShouldClamp(text.length > 120);
       return;
@@ -249,21 +250,33 @@ function ExpandableFeedText({
 
   return (
     <div className="text-[15px] leading-6 text-neutral-900">
-      <div
-        ref={measureRef}
-        className={`relative ${expanded ? "" : "line-clamp-2"}`}
-      >
-        {text}
-      </div>
+      <div className="relative">
+        <div
+          ref={measureRef}
+          className={`${expanded ? "" : "line-clamp-2 pr-14"}`}
+        >
+          {text}
+        </div>
 
-      {shouldClamp ? (
-        <div className="mt-0.5 flex justify-end">
+        {shouldClamp && !expanded ? (
           <button
             type="button"
-            onClick={() => setExpanded((v) => !v)}
+            onClick={() => setExpanded(true)}
+            className="absolute bottom-0 right-0 bg-white pl-2 text-sm font-medium text-neutral-500"
+          >
+            Ещё
+          </button>
+        ) : null}
+      </div>
+
+      {shouldClamp && expanded ? (
+        <div className="mt-1 flex justify-end">
+          <button
+            type="button"
+            onClick={() => setExpanded(false)}
             className="text-sm font-medium text-neutral-500"
           >
-            {expanded ? "Свернуть" : "Ещё"}
+            Свернуть
           </button>
         </div>
       ) : null}
@@ -334,7 +347,7 @@ function FeedCard({
         className="relative mt-3 block w-full bg-neutral-100"
         type="button"
       >
-        <div className="relative aspect-[9/13] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/12]">
+        <div className="relative aspect-[9/10.2] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/9.8]">
           {video.previewUrl ? (
             <img
               src={video.previewUrl}
