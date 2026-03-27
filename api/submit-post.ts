@@ -21,6 +21,8 @@ export default async function handler(req: any, res: any) {
       mediaType,
       videoUrl,
       channelVerified,
+      addedByTelegramId,
+      addedByUsername,
     } = body;
 
     if (!url || typeof url !== "string") {
@@ -127,6 +129,14 @@ export default async function handler(req: any, res: any) {
 
     post.channel = cleanChannel;
     post.handle = `@${cleanChannel.replace(/^@/, "").trim().toLowerCase()}`;
+    post.addedByTelegramId =
+      typeof addedByTelegramId === "string" && addedByTelegramId.trim()
+        ? addedByTelegramId.trim()
+        : null;
+    post.addedByUsername =
+      typeof addedByUsername === "string" && addedByUsername.trim()
+        ? addedByUsername.trim()
+        : null;
 
     const saved = await savePost(post);
 

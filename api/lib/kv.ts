@@ -121,6 +121,8 @@ function normalizeVideo(raw: any): Video | null {
     tag: raw.tag || "other",
     previewUrl: asNullableString(raw.previewUrl),
     videoUrl: asNullableString(raw.videoUrl),
+    addedByTelegramId: asNullableString(raw.addedByTelegramId),
+    addedByUsername: asNullableString(raw.addedByUsername),
   };
 }
 
@@ -145,6 +147,11 @@ export async function getFeedPosts(limit = 100): Promise<Video[]> {
   );
 
   return posts.filter((post): post is Video => !!post);
+}
+
+export async function getPostById(id: number): Promise<Video | null> {
+  const raw = await redis.get(postKey(id));
+  return normalizeVideo(raw);
 }
 
 export async function getPostByUrl(url: string): Promise<Video | null> {
@@ -174,39 +181,22 @@ export async function savePost(post: Video): Promise<Video> {
 
   await redis.set(postKey(normalized.id), normalized);
   await redis.set(postUrlKey(normalized.postUrl), normalized.id);
-
   await redis.lrem(FEED_IDS_KEY, 0, normalized.id);
   await redis.lpush(FEED_IDS_KEY, normalized.id);
 
   return normalized;
 }
 
-export async function deletePostById(id: number | string): Promise<boolean> {
-  const normalizedId = asNumber(id);
-
-  if (!normalizedId) {
-    return false;
-  }
-
-  const raw = await redis.get(postKey(normalizedId));
-  const post = normalizeVideo(raw);
-
-  await redis.del(postKey(normalizedId));
-  await redis.lrem(FEED_IDS_KEY, 0, normalizedId);
-
-  if (post?.postUrl) {
-    await redis.del(postUrlKey(post.postUrl));
-  }
-
-  return true;
-}
-
-export async function deletePostByUrl(url: string): Promise<boolean> {
-  const existing = await getPostByUrl(url);
+export async function deletePostById(id: number): Promise<boolean> {
+  const existing = await getPostById(id);
 
   if (!existing) {
     return false;
   }
 
-  return deletePostById(existing.id);
+  await redis.del(postKey(id));
+  await redis.del(postUrlKey(existing.postUrl));
+  await redis.lrem(FEED_IDS_KEY, 0, id);
+
+  return true;
 }

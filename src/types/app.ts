@@ -47,5 +47,7 @@ export type Video = {
   tag?: ContentTag;
   previewUrl?: string | null;
   videoUrl?: string | null;
-  addedByUserId?: string | null;
+
+  addedByTelegramId?: string | null;
+  addedByUsername?: string | null;
 };

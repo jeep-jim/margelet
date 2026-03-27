@@ -23,11 +23,6 @@ type TgUser = {
   photo_url?: string;
 };
 
-type PendingDeepLink = {
-  handle: string;
-  id: number;
-};
-
 function decodeBase64Url(value: string) {
   const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
   const padded = base64.padEnd(Math.ceil(base64.length / 4) * 4, "=");
@@ -59,7 +54,7 @@ function parseTelegramUserFromHash(): TgUser | null {
   }
 }
 
-function readCurrentTelegramUser(): TgUser | null {
+function readTelegramUserFromStorage(): TgUser | null {
   const raw = localStorage.getItem(TG_STORAGE_KEY);
   if (!raw) return null;
 
@@ -71,25 +66,6 @@ function readCurrentTelegramUser(): TgUser | null {
   }
 }
 
-function parsePostFromHash(): PendingDeepLink | null {
-  const hash = window.location.hash || "";
-  const match = hash.match(/^#\/([^/]+)\/(\d+)$/);
-
-  if (!match) return null;
-
-  return {
-    handle: match[1].toLowerCase(),
-    id: Number(match[2]),
-  };
-}
-
-function getVideoHandle(video: Video) {
-  return (video.handle || video.channel || "")
-    .replace(/^@/, "")
-    .trim()
-    .toLowerCase();
-}
-
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
@@ -99,18 +75,21 @@ export default function App() {
   const [selectedPost, setSelectedPost] = useState<Video | null>(null);
   const [selectedSourceChannel, setSelectedSourceChannel] = useState<string | null>(null);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
-  const [pendingDeepLink, setPendingDeepLink] = useState<PendingDeepLink | null>(null);
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
-  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+  const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
 
   const videos = useMemo(() => {
     const serverIds = new Set(serverVideos.map((video) => video.id));
     const fallbackSeed = initialVideos.filter((video) => !serverIds.has(video.id));
-    return [...serverVideos, ...fallbackSeed];
-  }, [serverVideos]);
+    const combined = [...serverVideos, ...fallbackSeed];
+
+    if (hiddenPostIds.length === 0) return combined;
+
+    return combined.filter((video) => !hiddenPostIds.includes(video.id));
+  }, [serverVideos, hiddenPostIds]);
 
   useEffect(() => {
     const initial = getInitialLocale();
@@ -118,31 +97,20 @@ export default function App() {
 
     const introSeen = localStorage.getItem("margelet-intro-seen");
     setHasSeenIntro(introSeen === "1");
-
-    const currentUser = readCurrentTelegramUser();
-    setCurrentUserId(currentUser?.id || null);
-
-    const deepLink = parsePostFromHash();
-    if (deepLink) {
-      setPendingDeepLink(deepLink);
-      setCurrent("feed");
-    }
+    setCurrentTelegramUser(readTelegramUserFromStorage());
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const deepLink = parsePostFromHash();
-      if (deepLink) {
-        setPendingDeepLink(deepLink);
-        setCurrent("feed");
-      } else if (!window.location.hash) {
-        setPendingDeepLink(null);
-      }
+    const syncUser = () => {
+      setCurrentTelegramUser(readTelegramUserFromStorage());
     };
 
-    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("focus", syncUser);
+    window.addEventListener("storage", syncUser);
+
     return () => {
-      window.removeEventListener("hashchange", handleHashChange);
+      window.removeEventListener("focus", syncUser);
+      window.removeEventListener("storage", syncUser);
     };
   }, []);
 
@@ -197,7 +165,7 @@ export default function App() {
     }
 
     localStorage.setItem(TG_STORAGE_KEY, JSON.stringify(tgUser));
-    setCurrentUserId(tgUser.id);
+    setCurrentTelegramUser(tgUser);
 
     window.history.replaceState(
       {},
@@ -244,23 +212,6 @@ export default function App() {
     };
   }, []);
 
-  useEffect(() => {
-    if (!pendingDeepLink) return;
-    if (videos.length === 0) return;
-
-    const found = videos.find(
-      (video) =>
-        video.id === pendingDeepLink.id &&
-        getVideoHandle(video) === pendingDeepLink.handle
-    );
-
-    if (!found) return;
-
-    setSelectedPost(found);
-    setCurrent("feed");
-    setPendingDeepLink(null);
-  }, [pendingDeepLink, videos]);
-
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
@@ -298,6 +249,42 @@ export default function App() {
         ? prev.filter((postId) => postId !== id)
         : [...prev, id]
     );
+  };
+
+  const handleHidePost = (id: number) => {
+    setHiddenPostIds((prev) =>
+      prev.includes(id) ? prev : [...prev, id]
+    );
+
+    setSelectedPost((prev) => (prev?.id === id ? null : prev));
+  };
+
+  const handleDeletePost = async (id: number) => {
+    if (!currentTelegramUser?.id) {
+      throw new Error("NO_TELEGRAM_USER");
+    }
+
+    const res = await fetch("/api/delete-post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        telegramUserId: currentTelegramUser.id,
+      }),
+    });
+
+    if (!res.ok) {
+      const data = await res.json().catch(() => null);
+      throw new Error(data?.error || "delete failed");
+    }
+
+    setServerVideos((prev) => prev.filter((video) => video.id !== id));
+    setHiddenPostIds((prev) => prev.filter((postId) => postId !== id));
+    setLikedPostIds((prev) => prev.filter((postId) => postId !== id));
+    setSavedPostIds((prev) => prev.filter((postId) => postId !== id));
+    setSelectedPost((prev) => (prev?.id === id ? null : prev));
   };
 
   const handleAdd = async ({
@@ -339,7 +326,8 @@ export default function App() {
         mediaType,
         videoUrl: videoUrl || null,
         channelVerified: !!channelVerified,
-        addedByUserId: currentUserId || null,
+        addedByTelegramId: currentTelegramUser?.id || null,
+        addedByUsername: currentTelegramUser?.username || null,
       }),
     });
 
@@ -368,18 +356,6 @@ export default function App() {
 
   const goBackFromSource = () => {
     setCurrent(previousTab);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedPost(null);
-
-    if (window.location.hash.startsWith("#/")) {
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname + window.location.search
-      );
-    }
   };
 
   return (
@@ -412,6 +388,9 @@ export default function App() {
               savedPostIds={savedPostIds}
               onToggleLike={handleToggleLike}
               onToggleSave={handleToggleSave}
+              onHidePost={handleHidePost}
+              onDeletePost={handleDeletePost}
+              currentTelegramUserId={currentTelegramUser?.id || null}
               openSource={openSource}
             />
           )}
@@ -450,7 +429,7 @@ export default function App() {
         savedPostIds={savedPostIds}
         onToggleLike={handleToggleLike}
         onToggleSave={handleToggleSave}
-        onClose={handleCloseModal}
+        onClose={() => setSelectedPost(null)}
       />
 
       {isFeedLoading && current === "feed" ? null : null}
