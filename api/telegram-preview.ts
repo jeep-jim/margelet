@@ -1,3 +1,5 @@
+import { redis } from "./lib/kv";
+
 function decodeHtml(value: string) {
   return value
     .replace(/&amp;/g, "&")
@@ -170,8 +172,7 @@ function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
     hay.includes("tgme_widget_message_owner_badge") ||
     hay.includes("tgme_widget_message_owner_verified_icon") ||
     hay.includes("verified-icon") ||
-    hay.includes("icon-verified") ||
-    /\bverified\b/.test(hay)
+    hay.includes("icon-verified")
   );
 }
 
@@ -205,26 +206,28 @@ function pickBgUrlFromStyle(tagHtml: string) {
   return normalizeUrl(value);
 }
 
-function isLikelyAvatarUrl(url: string) {
+function isUserpicUrl(url: string) {
   const v = String(url || "").toLowerCase();
   if (!v) return false;
 
   return (
     v.includes("t.me/i/userpic/") ||
     v.includes("/userpic/") ||
-    (v.includes("userpic") && v.includes("t.me")) ||
-    v.includes("tgme_page_photo") ||
-    v.includes("channel_photo") ||
-    v.includes("profile_photo") ||
-    v.includes("profilephoto") ||
-    v.includes("avatar")
+    (v.includes("userpic") && v.includes("t.me"))
   );
 }
 
-function isUserpicUrl(url: string) {
+function isLikelyAvatarUrl(url: string) {
   const v = String(url || "").toLowerCase();
   if (!v) return false;
-  return v.includes("t.me/i/userpic/");
+
+  return (
+    isUserpicUrl(v) ||
+    v.includes("tgme_page_photo") ||
+    v.includes("channel_photo") ||
+    v.includes("profile_photo") ||
+    v.includes("avatar")
+  );
 }
 
 function isLikelyTelegramImageUrl(url: string) {
@@ -247,6 +250,41 @@ function isLikelyTelegramVideoUrl(url: string) {
   if (isLikelyAvatarUrl(v)) return false;
 
   return v.includes(".mp4") || v.includes("video");
+}
+
+function buildChannelAvatar(channel: string) {
+  const clean = String(channel || "").replace(/^@/, "").trim();
+  if (!clean) return null;
+  return `https://t.me/i/userpic/320/${encodeURIComponent(clean)}.jpg`;
+}
+
+function avatarCacheKey(channel: string) {
+  return `margelet:channel:avatar:${String(channel || "")
+    .trim()
+    .replace(/^@/, "")
+    .toLowerCase()}`;
+}
+
+async function readCachedChannelAvatar(channel: string) {
+  try {
+    const cached = await redis.get<string>(avatarCacheKey(channel));
+    const normalized = normalizeUrl(typeof cached === "string" ? cached : null);
+    return normalized || null;
+  } catch (error) {
+    console.error("telegram-preview avatar cache read error", error);
+    return null;
+  }
+}
+
+async function writeCachedChannelAvatar(channel: string, avatar: string | null) {
+  const normalized = normalizeUrl(avatar);
+  if (!normalized) return;
+
+  try {
+    await redis.set(avatarCacheKey(channel), normalized);
+  } catch (error) {
+    console.error("telegram-preview avatar cache write error", error);
+  }
 }
 
 function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -348,7 +386,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const url = normalizeUrl(bg || href);
 
     if (!url) continue;
-    if (isUserpicUrl(url) || isLikelyAvatarUrl(url)) continue;
+    if (isLikelyAvatarUrl(url)) continue;
     if (!isLikelyTelegramImageUrl(url)) continue;
 
     result.image = url;
@@ -362,7 +400,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     for (const tag of imgTags) {
       const src = pickAttr(tag, ["src", "data-src"]);
       if (!src) continue;
-      if (isUserpicUrl(src) || isLikelyAvatarUrl(src)) continue;
+      if (isLikelyAvatarUrl(src)) continue;
       if (!isLikelyTelegramImageUrl(src)) continue;
 
       result.image = src;
@@ -423,6 +461,9 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Failed to parse Telegram post url" });
     }
 
+    const fallbackAvatar = buildChannelAvatar(parsed.sourceHandle);
+    const cachedAvatar = await readCachedChannelAvatar(parsed.sourceHandle);
+
     const webUrl = `https://t.me/s/${encodeURIComponent(parsed.sourceHandle)}/${encodeURIComponent(parsed.postId)}`;
 
     const response = await fetch(webUrl, {
@@ -462,9 +503,19 @@ export default async function handler(req: any, res: any) {
       readMetaProperty(html, "twitter:description") ||
       null;
 
-    const avatar =
+    const pageAvatar =
       extractAuthorAvatarFromMessageBlock(msgHtml, html) ||
       null;
+
+    const finalAvatar =
+      normalizeUrl(pageAvatar) ||
+      cachedAvatar ||
+      fallbackAvatar ||
+      null;
+
+    if (finalAvatar) {
+      await writeCachedChannelAvatar(parsed.sourceHandle, finalAvatar);
+    }
 
     const verified = extractVerifiedFromMessageBlock(msgHtml, html);
 
@@ -475,7 +526,7 @@ export default async function handler(req: any, res: any) {
       poster: toProxyUrl(media.poster) || null,
       title: cleanText(title),
       caption: cleanText(caption),
-      avatar: normalizeUrl(avatar) || null,
+      avatar: finalAvatar,
       verified,
     });
   } catch (error) {
