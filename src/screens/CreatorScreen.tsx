@@ -6,13 +6,17 @@ import {
   Send,
   Play,
   LogOut,
+  Plus,
+  Image as ImageIcon,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { Video } from "../types/app";
 
 const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
+const LIKES_STORAGE_KEY = "margelet_likes";
+const SAVES_STORAGE_KEY = "margelet_saves";
 
 function getTelegramAuthUrl() {
   const origin = window.location.origin;
@@ -25,7 +29,7 @@ type Props = {
   openPost: (video: Video) => void;
 };
 
-type CabinetTab = "saved" | "liked" | "about";
+type CabinetTab = "added" | "saved" | "liked" | "about";
 
 type TgUser = {
   id: string;
@@ -44,6 +48,33 @@ function readTelegramUserFromStorage(): TgUser | null {
     localStorage.removeItem(TG_STORAGE_KEY);
     return null;
   }
+}
+
+function readNumberArrayFromStorage(key: string): number[] {
+  const raw = localStorage.getItem(key);
+  if (!raw) return [];
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .map((value) => Number(value))
+      .filter((value) => Number.isFinite(value));
+  } catch {
+    localStorage.removeItem(key);
+    return [];
+  }
+}
+
+function getDisplayText(video: Video, locale: "ru" | "en") {
+  const caption = video.caption?.[locale]?.trim();
+  const title = video.title?.[locale]?.trim();
+  return caption || title || video.channel || "";
+}
+
+function isAvatarUrl(value?: string | null) {
+  if (!value) return false;
+  return /^https?:\/\//i.test(value);
 }
 
 function LightTab({
@@ -67,6 +98,7 @@ function LightTab({
       }`}
       aria-label={label}
       title={label}
+      type="button"
     >
       <Icon className="h-4 w-4" />
       <span className="hidden sm:inline">{label}</span>
@@ -90,8 +122,8 @@ function AuthBlock() {
           </div>
 
           <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
-            Сохраняй посты, ставь лайки и управляй своим потоком внутри
-            margeleT.
+            Сохраняй посты, ставь лайки, добавляй публикации и управляй своим
+            потоком внутри margeleT.
           </div>
 
           <button
@@ -99,6 +131,7 @@ function AuthBlock() {
               window.location.href = getTelegramAuthUrl();
             }}
             className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
+            type="button"
           >
             Авторизоваться
           </button>
@@ -173,6 +206,7 @@ function ProfileBlock({
             <button
               onClick={onLogout}
               className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-700 transition hover:bg-neutral-100"
+              type="button"
             >
               <LogOut className="h-3.5 w-3.5" />
               Выйти
@@ -196,43 +230,129 @@ function ProfileBlock({
 
 function CabinetTile({
   video,
+  locale,
   onOpen,
 }: {
   video: Video;
+  locale: "ru" | "en";
   onOpen: () => void;
 }) {
+  const text = getDisplayText(video, locale);
+
   return (
     <button
       onClick={onOpen}
-      className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-200"
+      className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-200 text-left"
+      type="button"
     >
-      <div
-        className={`absolute inset-0 bg-gradient-to-br ${
-          video.bg || "from-neutral-300 to-neutral-200"
-        }`}
-      />
-      <div className="absolute inset-0 flex items-center justify-center opacity-70 transition group-hover:opacity-100">
-        {video.mediaType === "video" ? (
-          <Play className="h-7 w-7 text-neutral-800" />
-        ) : (
-          <div className="text-xs font-semibold uppercase tracking-[0.08em] text-neutral-800">
-            Image
+      {video.previewUrl ? (
+        <img
+          src={video.previewUrl}
+          alt={text || video.channel}
+          className="absolute inset-0 h-full w-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      ) : (
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${
+            video.bg || "from-neutral-300 to-neutral-200"
+          }`}
+        />
+      )}
+
+      <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/5" />
+
+      <div className="absolute left-3 top-3 rounded-full bg-black/45 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm">
+        {video.mediaType === "video" ? "Video" : "Image"}
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-3 text-white">
+        <div className="mb-2 flex items-center gap-2">
+          <div className="h-8 w-8 shrink-0 overflow-hidden rounded-full bg-white/90 text-[11px] font-bold text-black">
+            {isAvatarUrl(video.avatar) ? (
+              <img
+                src={video.avatar}
+                alt={video.channel}
+                className="h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            ) : (
+              <div className="flex h-full w-full items-center justify-center">
+                {String(video.avatar || "TG").slice(0, 2).toUpperCase()}
+              </div>
+            )}
           </div>
-        )}
+
+          <div className="min-w-0">
+            <div className="truncate text-sm font-semibold">{video.channel}</div>
+            <div className="truncate text-xs text-white/75">{video.handle}</div>
+          </div>
+        </div>
+
+        <div className="line-clamp-2 text-xs leading-5 text-white/90">
+          {text || "Telegram post"}
+        </div>
+
+        <div className="mt-2 flex items-center gap-2 text-[11px] text-white/70">
+          {video.mediaType === "video" ? (
+            <Play className="h-3.5 w-3.5" />
+          ) : (
+            <ImageIcon className="h-3.5 w-3.5" />
+          )}
+          <span>{video.likes}</span>
+        </div>
       </div>
     </button>
   );
 }
 
-export function CreatorScreen({ videos, openPost }: Props) {
-  const [tab, setTab] = useState<CabinetTab>("saved");
+function EmptyState({
+  text,
+}: {
+  text: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-dashed border-neutral-200 bg-white px-4 py-5 text-sm leading-6 text-neutral-500">
+      {text}
+    </div>
+  );
+}
+
+function AboutBlock() {
+  return (
+    <div className="rounded-[28px] border border-neutral-200 bg-white p-5 text-neutral-900 shadow-sm">
+      <div className="text-lg font-semibold">О проекте</div>
+      <div className="mt-3 text-sm leading-7 text-neutral-600">
+        MargeleT собирает Telegram-посты в общую ленту. Пост может добавить
+        любой пользователь, но в центре внимания всегда остаётся источник —
+        канал Telegram, а не человек, который принёс ссылку в ленту.
+      </div>
+    </div>
+  );
+}
+
+export function CreatorScreen({ locale, videos, openPost }: Props) {
+  const [tab, setTab] = useState<CabinetTab>("added");
   const [user, setUser] = useState<TgUser | null>(null);
+  const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
+  const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
 
   useEffect(() => {
-    const storedUser = readTelegramUserFromStorage();
-    if (storedUser) {
-      setUser(storedUser);
-    }
+    const syncFromStorage = () => {
+      setUser(readTelegramUserFromStorage());
+      setLikedPostIds(readNumberArrayFromStorage(LIKES_STORAGE_KEY));
+      setSavedPostIds(readNumberArrayFromStorage(SAVES_STORAGE_KEY));
+    };
+
+    syncFromStorage();
+
+    window.addEventListener("focus", syncFromStorage);
+    window.addEventListener("storage", syncFromStorage);
+
+    return () => {
+      window.removeEventListener("focus", syncFromStorage);
+      window.removeEventListener("storage", syncFromStorage);
+    };
   }, []);
 
   const isAuthorized = !!user;
@@ -242,8 +362,27 @@ export function CreatorScreen({ videos, openPost }: Props) {
     setUser(null);
   };
 
-  const savedVideos = videos.slice(0, 5);
-  const likedVideos = videos.slice(1, 6);
+  const addedVideos = useMemo(() => {
+    if (!user?.id) return [];
+
+    return [...videos]
+      .filter((video) => video.addedByTelegramId === user.id)
+      .sort((a, b) => b.id - a.id);
+  }, [videos, user?.id]);
+
+  const savedVideos = useMemo(() => {
+    const ids = new Set(savedPostIds);
+    return [...videos]
+      .filter((video) => ids.has(video.id))
+      .sort((a, b) => b.id - a.id);
+  }, [videos, savedPostIds]);
+
+  const likedVideos = useMemo(() => {
+    const ids = new Set(likedPostIds);
+    return [...videos]
+      .filter((video) => ids.has(video.id))
+      .sort((a, b) => b.id - a.id);
+  }, [videos, likedPostIds]);
 
   const profileVerified = isAuthorized
     ? videos.some(
@@ -253,6 +392,93 @@ export function CreatorScreen({ videos, openPost }: Props) {
           video.handle.toLowerCase() === `@${user.username.toLowerCase()}`
       )
     : false;
+
+  const tabContent = useMemo(() => {
+    if (tab === "added") {
+      if (!isAuthorized) {
+        return (
+          <EmptyState text="Авторизуйтесь через Telegram, чтобы видеть публикации, которые вы добавили." />
+        );
+      }
+
+      if (addedVideos.length === 0) {
+        return <EmptyState text="Вы ещё ничего не добавляли." />;
+      }
+
+      return (
+        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+          {addedVideos.map((video) => (
+            <CabinetTile
+              key={video.id}
+              video={video}
+              locale={locale}
+              onOpen={() => openPost(video)}
+            />
+          ))}
+        </div>
+      );
+    }
+
+    if (tab === "saved") {
+      if (!isAuthorized) {
+        return (
+          <EmptyState text="Авторизуйтесь, чтобы сохранять посты и видеть их здесь." />
+        );
+      }
+
+      if (savedVideos.length === 0) {
+        return <EmptyState text="У вас пока нет сохранённых публикаций." />;
+      }
+
+      return (
+        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+          {savedVideos.map((video) => (
+            <CabinetTile
+              key={video.id}
+              video={video}
+              locale={locale}
+              onOpen={() => openPost(video)}
+            />
+          ))}
+        </div>
+      );
+    }
+
+    if (tab === "liked") {
+      if (!isAuthorized) {
+        return (
+          <EmptyState text="Авторизуйтесь, чтобы ставить лайки и видеть их здесь." />
+        );
+      }
+
+      if (likedVideos.length === 0) {
+        return <EmptyState text="У вас пока нет лайкнутых публикаций." />;
+      }
+
+      return (
+        <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+          {likedVideos.map((video) => (
+            <CabinetTile
+              key={video.id}
+              video={video}
+              locale={locale}
+              onOpen={() => openPost(video)}
+            />
+          ))}
+        </div>
+      );
+    }
+
+    return <AboutBlock />;
+  }, [
+    tab,
+    isAuthorized,
+    addedVideos,
+    savedVideos,
+    likedVideos,
+    locale,
+    openPost,
+  ]);
 
   return (
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
@@ -271,6 +497,12 @@ export function CreatorScreen({ videos, openPost }: Props) {
 
         <div className="mb-5 flex gap-2 overflow-x-auto pb-1">
           <LightTab
+            active={tab === "added"}
+            onClick={() => setTab("added")}
+            icon={Plus}
+            label="Добавленные"
+          />
+          <LightTab
             active={tab === "saved"}
             onClick={() => setTab("saved")}
             icon={Bookmark}
@@ -280,7 +512,7 @@ export function CreatorScreen({ videos, openPost }: Props) {
             active={tab === "liked"}
             onClick={() => setTab("liked")}
             icon={Heart}
-            label="Нравится"
+            label="Лайки"
           />
           <LightTab
             active={tab === "about"}
@@ -290,54 +522,7 @@ export function CreatorScreen({ videos, openPost }: Props) {
           />
         </div>
 
-        {!isAuthorized && tab !== "about" ? (
-          <div className="rounded-2xl bg-white px-4 py-4 text-sm leading-6 text-neutral-600">
-            Авторизуйтесь, чтобы сохранять посты, которые вам понравились,
-            и иметь доступ к другим возможностям margeleT.
-          </div>
-        ) : (
-          <>
-            {tab === "saved" && (
-              <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
-                {savedVideos.map((video) => (
-                  <CabinetTile
-                    key={video.id}
-                    video={video}
-                    onOpen={() => openPost(video)}
-                  />
-                ))}
-              </div>
-            )}
-
-            {tab === "liked" && (
-              <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4">
-                {likedVideos.map((video) => (
-                  <CabinetTile
-                    key={video.id}
-                    video={video}
-                    onOpen={() => openPost(video)}
-                  />
-                ))}
-              </div>
-            )}
-
-            {tab === "about" && (
-              <div className="space-y-3">
-                <div className="rounded-2xl bg-white px-4 py-4 text-[15px] leading-7 text-neutral-700">
-                  MargeleT — это общая визуальная лента Telegram-постов.
-                  Контент создаётся как ценность, но часто тонет в каналах как
-                  мусор. MargeleT возвращает его в поле зрения.
-                </div>
-
-                <div className="rounded-2xl bg-white px-4 py-4 text-[15px] leading-7 text-neutral-700">
-                  Мы не делаем вторую соцсеть внутри соцсети. Комментарии,
-                  источник и переходы живут в Telegram, а MargeleT даёт общую
-                  ленту discovery.
-                </div>
-              </div>
-            )}
-          </>
-        )}
+        {tabContent}
       </div>
     </div>
   );

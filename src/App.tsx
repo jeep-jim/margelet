@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
 import { PostModal } from "./components/modals/PostModal";
-import { initialVideos } from "./data/videos";
 import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
 import { AdminScreen } from "./screens/AdminScreen";
@@ -89,7 +88,9 @@ function isAdminHiddenPath(pathname: string) {
 }
 
 function ensureRobotsMeta(name: string, content: string) {
-  let element = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+  let element = document.querySelector(
+    `meta[name="${name}"]`
+  ) as HTMLMetaElement | null;
 
   if (!element) {
     element = document.createElement("meta");
@@ -116,13 +117,11 @@ export default function App() {
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
 
   const videos = useMemo(() => {
-    const serverIds = new Set(serverVideos.map((video) => video.id));
-    const fallbackSeed = initialVideos.filter((video) => !serverIds.has(video.id));
-    const combined = [...serverVideos, ...fallbackSeed];
+    if (hiddenPostIds.length === 0) {
+      return serverVideos;
+    }
 
-    if (hiddenPostIds.length === 0) return combined;
-
-    return combined.filter((video) => !hiddenPostIds.includes(video.id));
+    return serverVideos.filter((video) => !hiddenPostIds.includes(video.id));
   }, [serverVideos, hiddenPostIds]);
 
   const normalizedCurrentUsername = normalizeUsername(currentTelegramUser?.username);
@@ -272,7 +271,8 @@ export default function App() {
   }, [current]);
 
   useEffect(() => {
-    const isAdminRoute = current === "admin" || isAdminHiddenPath(window.location.pathname);
+    const isAdminRoute =
+      current === "admin" || isAdminHiddenPath(window.location.pathname);
 
     if (isAdminRoute) {
       ensureRobotsMeta("robots", "noindex, nofollow, noarchive, nosnippet");
@@ -340,10 +340,7 @@ export default function App() {
   };
 
   const handleHidePost = (id: number) => {
-    setHiddenPostIds((prev) =>
-      prev.includes(id) ? prev : [...prev, id]
-    );
-
+    setHiddenPostIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
     setSelectedPost((prev) => (prev?.id === id ? null : prev));
   };
 
