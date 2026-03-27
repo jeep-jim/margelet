@@ -1,4 +1,4 @@
-import type { ContentTag, Locale, MediaType, PostMedia, Video } from "../types/app";
+import type { ContentTag, Locale, MediaType, Video } from "../types/app";
 
 export type SubmitPayload = {
   url: string;
@@ -11,7 +11,6 @@ export type SubmitPayload = {
   previewUrl?: string | null;
   videoUrl?: string | null;
   channelVerified?: boolean;
-  media?: PostMedia[] | null;
 };
 
 export type ParsedTelegramPostUrl = {
@@ -157,79 +156,6 @@ function getDefaultDuration(mediaType: MediaType) {
   return mediaType === "video" ? "0:24" : "";
 }
 
-function normalizePostMediaItem(
-  item: PostMedia | null | undefined,
-  index: number
-): PostMedia | null {
-  if (!item || typeof item !== "object") return null;
-
-  const type = item.type === "video" ? "video" : item.type === "image" ? "image" : null;
-  const url = sanitizeUrl(item.url);
-  const poster = sanitizeUrl(item.poster);
-
-  if (!type || !url) return null;
-
-  return {
-    id: sanitizeText(item.id) || `${type}-${index + 1}`,
-    type,
-    url,
-    poster: poster || null,
-  };
-}
-
-function buildMediaFromLegacyFields(payload: SubmitPayload): PostMedia[] {
-  const videoUrl = sanitizeUrl(payload.videoUrl);
-  const previewUrl = sanitizeUrl(payload.previewUrl);
-
-  if (videoUrl) {
-    return [
-      {
-        id: "video-1",
-        type: "video",
-        url: videoUrl,
-        poster: previewUrl || null,
-      },
-    ];
-  }
-
-  if (previewUrl) {
-    return [
-      {
-        id: "image-1",
-        type: "image",
-        url: previewUrl,
-        poster: null,
-      },
-    ];
-  }
-
-  return [];
-}
-
-function normalizePostMedia(payload: SubmitPayload): PostMedia[] {
-  const explicitMedia = Array.isArray(payload.media)
-    ? payload.media
-        .map((item, index) => normalizePostMediaItem(item, index))
-        .filter((item): item is PostMedia => !!item)
-    : [];
-
-  if (explicitMedia.length > 0) {
-    return explicitMedia;
-  }
-
-  return buildMediaFromLegacyFields(payload);
-}
-
-function getPrimaryMedia(media: PostMedia[]) {
-  return media[0] || null;
-}
-
-function getMediaTypeFromMedia(media: PostMedia[]): MediaType {
-  const primary = getPrimaryMedia(media);
-  if (!primary) return "text";
-  return primary.type;
-}
-
 export async function fetchTelegramPreview(
   url: string
 ): Promise<TelegramPreview | null> {
@@ -310,26 +236,15 @@ export function buildSubmittedPost(
 
   const sourceName = sanitizeText(payload.channel) || parsed.sourceHandle;
   const handle = buildHandle(parsed.sourceHandle);
+
+  const mediaType: MediaType =
+    payload.mediaType || (payload.videoUrl ? "video" : "image");
+
   const cleanTitle = sanitizeText(payload.title) || sourceName;
   const cleanCaption = sanitizeText(payload.caption);
   const cleanAvatar = sanitizeUrl(payload.avatar);
-  const media = normalizePostMedia(payload);
-  const primaryMedia = getPrimaryMedia(media);
-
-  const mediaType: MediaType =
-    payload.mediaType || getMediaTypeFromMedia(media);
-
-  const cleanPreviewUrl =
-    primaryMedia?.type === "image"
-      ? primaryMedia.url
-      : primaryMedia?.type === "video"
-        ? primaryMedia.poster || null
-        : sanitizeUrl(payload.previewUrl);
-
-  const cleanVideoUrl =
-    primaryMedia?.type === "video"
-      ? primaryMedia.url
-      : sanitizeUrl(payload.videoUrl);
+  const cleanPreviewUrl = sanitizeUrl(payload.previewUrl);
+  const cleanVideoUrl = sanitizeUrl(payload.videoUrl);
 
   const titleRu = cleanTitle || options.messages.newVideoFallback || sourceName;
   const titleEn = cleanTitle || options.enMessages.newVideoFallback || sourceName;
@@ -343,7 +258,6 @@ export function buildSubmittedPost(
   return {
     id: Date.now(),
     mediaType,
-    media,
     title: {
       ru: titleRu,
       en: titleEn,
