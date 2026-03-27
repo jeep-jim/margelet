@@ -216,8 +216,15 @@ function isLikelyAvatarUrl(url: string) {
     v.includes("tgme_page_photo") ||
     v.includes("channel_photo") ||
     v.includes("profile_photo") ||
+    v.includes("profilephoto") ||
     v.includes("avatar")
   );
+}
+
+function isUserpicUrl(url: string) {
+  const v = String(url || "").toLowerCase();
+  if (!v) return false;
+  return v.includes("t.me/i/userpic/");
 }
 
 function isLikelyTelegramImageUrl(url: string) {
@@ -341,6 +348,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const url = normalizeUrl(bg || href);
 
     if (!url) continue;
+    if (isUserpicUrl(url) || isLikelyAvatarUrl(url)) continue;
     if (!isLikelyTelegramImageUrl(url)) continue;
 
     result.image = url;
@@ -354,6 +362,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     for (const tag of imgTags) {
       const src = pickAttr(tag, ["src", "data-src"]);
       if (!src) continue;
+      if (isUserpicUrl(src) || isLikelyAvatarUrl(src)) continue;
       if (!isLikelyTelegramImageUrl(src)) continue;
 
       result.image = src;

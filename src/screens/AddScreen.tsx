@@ -136,6 +136,17 @@ function isLikelyAvatarUrl(value: string | null | undefined) {
   );
 }
 
+function isUserpicUrl(value: string | null | undefined) {
+  if (!value) return false;
+  return value.toLowerCase().includes("t.me/i/userpic/");
+}
+
+function buildChannelAvatar(channel: string) {
+  const clean = String(channel || "").replace(/^@/, "").trim();
+  if (!clean) return null;
+  return `https://t.me/i/userpic/320/${encodeURIComponent(clean)}.jpg`;
+}
+
 function AuthBlock() {
   return (
     <div className="mt-6 overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
@@ -285,15 +296,13 @@ export function AddScreen({ onAdd }: Props) {
       const rawPoster = asCleanUrl((preview as any)?.poster);
       const rawVideo = asCleanUrl(preview?.video);
 
-      const finalAvatar =
-        rawAvatar ||
-        (isLikelyAvatarUrl(rawImage) ? rawImage : null) ||
-        (isLikelyAvatarUrl(rawPoster) ? rawPoster : null);
+      const finalAvatar = rawAvatar || null;
+      const safeAvatar = finalAvatar || buildChannelAvatar(parsedPost.channel);
 
       const finalPreviewImage =
-        rawImage && !isLikelyAvatarUrl(rawImage)
+        rawImage && !isUserpicUrl(rawImage) && !isLikelyAvatarUrl(rawImage)
           ? rawImage
-          : rawPoster && !isLikelyAvatarUrl(rawPoster)
+          : rawPoster && !isUserpicUrl(rawPoster) && !isLikelyAvatarUrl(rawPoster)
             ? rawPoster
             : null;
 
@@ -315,7 +324,7 @@ export function AddScreen({ onAdd }: Props) {
         title: cleanTitle,
         caption: cleanCaption,
         channel: parsedPost.channel,
-        avatar: finalAvatar,
+        avatar: safeAvatar,
         tag: selectedTag,
         previewUrl: finalPreviewImage,
         mediaType,
