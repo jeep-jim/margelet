@@ -136,17 +136,6 @@ function isLikelyAvatarUrl(value: string | null | undefined) {
   );
 }
 
-function isUserpicUrl(value: string | null | undefined) {
-  if (!value) return false;
-  return value.toLowerCase().includes("t.me/i/userpic/");
-}
-
-function buildChannelAvatar(channel: string) {
-  const clean = String(channel || "").replace(/^@/, "").trim();
-  if (!clean) return null;
-  return `https://t.me/i/userpic/320/${encodeURIComponent(clean)}.jpg`;
-}
-
 function AuthBlock() {
   return (
     <div className="mt-6 overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
@@ -297,12 +286,11 @@ export function AddScreen({ onAdd }: Props) {
       const rawVideo = asCleanUrl(preview?.video);
 
       const finalAvatar = rawAvatar || null;
-      const safeAvatar = finalAvatar || buildChannelAvatar(parsedPost.channel);
 
       const finalPreviewImage =
-        rawImage && !isUserpicUrl(rawImage) && !isLikelyAvatarUrl(rawImage)
+        rawImage && !isLikelyAvatarUrl(rawImage)
           ? rawImage
-          : rawPoster && !isUserpicUrl(rawPoster) && !isLikelyAvatarUrl(rawPoster)
+          : rawPoster && !isLikelyAvatarUrl(rawPoster)
             ? rawPoster
             : null;
 
@@ -324,7 +312,7 @@ export function AddScreen({ onAdd }: Props) {
         title: cleanTitle,
         caption: cleanCaption,
         channel: parsedPost.channel,
-        avatar: safeAvatar,
+        avatar: finalAvatar,
         tag: selectedTag,
         previewUrl: finalPreviewImage,
         mediaType,
