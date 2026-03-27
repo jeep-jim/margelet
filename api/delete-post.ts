@@ -4,7 +4,21 @@ const ADMIN_TELEGRAM_IDS = new Set([
   "1372669404",
 ]);
 
+const ADMIN_TELEGRAM_USERNAME = "jim";
+
+function normalizeUsername(value: unknown) {
+  return String(value || "")
+    .trim()
+    .replace(/^@+/, "")
+    .toLowerCase();
+}
+
 export default async function handler(req: any, res: any) {
+  res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  res.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive, nosnippet");
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -23,6 +37,8 @@ export default async function handler(req: any, res: any) {
         ? body.telegramUserId.trim()
         : "";
 
+    const telegramUsername = normalizeUsername(body.telegramUsername);
+
     if (!Number.isFinite(id)) {
       return res.status(400).json({ error: "Missing id" });
     }
@@ -37,7 +53,10 @@ export default async function handler(req: any, res: any) {
       return res.status(404).json({ error: "Post not found" });
     }
 
-    const isAdmin = ADMIN_TELEGRAM_IDS.has(telegramUserId);
+    const isAdminId = ADMIN_TELEGRAM_IDS.has(telegramUserId);
+    const isAdminUsername = telegramUsername === ADMIN_TELEGRAM_USERNAME;
+    const isAdmin = isAdminId && isAdminUsername;
+
     const isOwner =
       !!post.addedByTelegramId && post.addedByTelegramId === telegramUserId;
 

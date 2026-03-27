@@ -4,6 +4,7 @@ import { PostModal } from "./components/modals/PostModal";
 import { initialVideos } from "./data/videos";
 import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
+import { AdminScreen } from "./screens/AdminScreen";
 import { CreatorScreen } from "./screens/CreatorScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
@@ -15,6 +16,10 @@ const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
 const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
 const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
+
+const ADMIN_TELEGRAM_ID = "1372669404";
+const ADMIN_TELEGRAM_USERNAME = "jim";
+const ADMIN_HIDDEN_PATH = `/${ADMIN_TELEGRAM_USERNAME}/admin`;
 
 type TgUser = {
   id: string;
@@ -66,6 +71,35 @@ function readTelegramUserFromStorage(): TgUser | null {
   }
 }
 
+function normalizeUsername(value: string | null | undefined) {
+  return String(value || "")
+    .trim()
+    .replace(/^@+/, "")
+    .toLowerCase();
+}
+
+function normalizePathname(pathname: string) {
+  if (!pathname) return "/";
+  const clean = pathname.trim();
+  return clean.length > 1 ? clean.replace(/\/+$/, "") : clean;
+}
+
+function isAdminHiddenPath(pathname: string) {
+  return normalizePathname(pathname) === ADMIN_HIDDEN_PATH;
+}
+
+function ensureRobotsMeta(name: string, content: string) {
+  let element = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+
+  if (!element) {
+    element = document.createElement("meta");
+    element.setAttribute("name", name);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("content", content);
+}
+
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
@@ -75,11 +109,11 @@ export default function App() {
   const [selectedPost, setSelectedPost] = useState<Video | null>(null);
   const [selectedSourceChannel, setSelectedSourceChannel] = useState<string | null>(null);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
+  const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
-  const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
 
   const videos = useMemo(() => {
     const serverIds = new Set(serverVideos.map((video) => video.id));
@@ -91,6 +125,11 @@ export default function App() {
     return combined.filter((video) => !hiddenPostIds.includes(video.id));
   }, [serverVideos, hiddenPostIds]);
 
+  const normalizedCurrentUsername = normalizeUsername(currentTelegramUser?.username);
+  const isRealAdminUser =
+    currentTelegramUser?.id === ADMIN_TELEGRAM_ID &&
+    normalizedCurrentUsername === ADMIN_TELEGRAM_USERNAME;
+
   useEffect(() => {
     const initial = getInitialLocale();
     setLocale(initial);
@@ -98,6 +137,10 @@ export default function App() {
     const introSeen = localStorage.getItem("margelet-intro-seen");
     setHasSeenIntro(introSeen === "1");
     setCurrentTelegramUser(readTelegramUserFromStorage());
+
+    if (isAdminHiddenPath(window.location.pathname)) {
+      setCurrent("admin");
+    }
   }, []);
 
   useEffect(() => {
@@ -212,9 +255,54 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const onPopState = () => {
+      if (isAdminHiddenPath(window.location.pathname)) {
+        setCurrent("admin");
+      } else if (current === "admin") {
+        setCurrent("feed");
+      }
+    };
+
+    window.addEventListener("popstate", onPopState);
+
+    return () => {
+      window.removeEventListener("popstate", onPopState);
+    };
+  }, [current]);
+
+  useEffect(() => {
+    const isAdminRoute = current === "admin" || isAdminHiddenPath(window.location.pathname);
+
+    if (isAdminRoute) {
+      ensureRobotsMeta("robots", "noindex, nofollow, noarchive, nosnippet");
+      ensureRobotsMeta("googlebot", "noindex, nofollow, noarchive, nosnippet");
+      document.title = "MargeleT";
+      return;
+    }
+
+    ensureRobotsMeta("robots", "index, follow");
+    ensureRobotsMeta("googlebot", "index, follow");
+    document.title = "MargeleT";
+  }, [current]);
+
+  const navigateToFeed = () => {
+    if (isAdminHiddenPath(window.location.pathname)) {
+      window.history.replaceState({}, document.title, "/");
+    }
+
+    setCurrent("feed");
+  };
+
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
+
+    if (isAdminHiddenPath(window.location.pathname)) {
+      setCurrent("admin");
+      return;
+    }
+
     setCurrent("feed");
   };
 
@@ -272,6 +360,7 @@ export default function App() {
       body: JSON.stringify({
         id,
         telegramUserId: currentTelegramUser.id,
+        telegramUsername: currentTelegramUser.username || "",
       }),
     });
 
@@ -358,13 +447,16 @@ export default function App() {
     setCurrent(previousTab);
   };
 
+  const shouldShowHeader = current !== "source" && current !== "admin";
+  const shouldShowIntro = !hasSeenIntro && current !== "admin";
+
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      {current !== "source" && (
+      {shouldShowHeader && (
         <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
       )}
 
-      {!hasSeenIntro ? (
+      {shouldShowIntro ? (
         <IntroScreen
           locale={locale}
           onChangeLocale={setLocale}
@@ -419,20 +511,35 @@ export default function App() {
               onOpenPost={setSelectedPost}
             />
           )}
+
+          {current === "admin" && (
+            <AdminScreen
+              locale={locale}
+              telegramUserId={currentTelegramUser?.id || null}
+              telegramUsername={currentTelegramUser?.username || null}
+              adminPathUsername={ADMIN_TELEGRAM_USERNAME}
+              onClose={navigateToFeed}
+              onDeletePost={handleDeletePost}
+            />
+          )}
         </>
       )}
 
-      <PostModal
-        video={selectedPost}
-        locale={locale}
-        likedPostIds={likedPostIds}
-        savedPostIds={savedPostIds}
-        onToggleLike={handleToggleLike}
-        onToggleSave={handleToggleSave}
-        onClose={() => setSelectedPost(null)}
-      />
+      {current !== "admin" && (
+        <PostModal
+          video={selectedPost}
+          locale={locale}
+          likedPostIds={likedPostIds}
+          savedPostIds={savedPostIds}
+          onToggleLike={handleToggleLike}
+          onToggleSave={handleToggleSave}
+          onClose={() => setSelectedPost(null)}
+        />
+      )}
 
       {isFeedLoading && current === "feed" ? null : null}
+
+      {isRealAdminUser ? null : null}
     </div>
   );
 }
