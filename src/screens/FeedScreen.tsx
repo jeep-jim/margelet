@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 import {
   ArrowLeft,
   Bookmark,
@@ -6,7 +6,6 @@ import {
   MoreVertical,
   Volume2,
   VolumeX,
-  Pause,
   ChevronDown,
   X,
   Send,
@@ -66,6 +65,8 @@ const TAG_OPTIONS: { value: FeedTag; label: string }[] = [
 ];
 
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
+const DRAG_SWITCH_DISTANCE = 90;
+const DRAG_SWITCH_VELOCITY = 420;
 
 function getResolvedTag(video: Video): ContentTag {
   return video.tag || "other";
@@ -78,6 +79,10 @@ function getTagLabel(tag: FeedTag) {
 function isAvatarUrl(value?: string | null) {
   if (!value) return false;
   return /^https?:\/\//i.test(value);
+}
+
+function hasVisualMedia(video: Video) {
+  return !!video.previewUrl || !!video.videoUrl;
 }
 
 function getDisplayText(video: Video, locale: Locale) {
@@ -264,6 +269,115 @@ function ExpandableFeedText({
   );
 }
 
+function ExpandableTextPostText({
+  text,
+}: {
+  text: string;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const [shouldClamp, setShouldClamp] = useState(false);
+  const measureRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const node = measureRef.current;
+    if (!node) return;
+
+    const styles = window.getComputedStyle(node);
+    const lineHeight = parseFloat(styles.lineHeight || "0");
+
+    if (!lineHeight) {
+      setShouldClamp(text.length > 400);
+      return;
+    }
+
+    const maxHeight = lineHeight * 10 + 1;
+    setShouldClamp(node.scrollHeight > maxHeight);
+  }, [text]);
+
+  useEffect(() => {
+    setExpanded(false);
+  }, [text]);
+
+  if (!text) return null;
+
+  return (
+    <div className="text-[15px] leading-7 text-neutral-900">
+      <div className="relative">
+        <div
+          ref={measureRef}
+          className={`${expanded ? "" : "line-clamp-[10] pr-14"}`}
+        >
+          {text}
+        </div>
+
+        {shouldClamp && !expanded ? (
+          <button
+            type="button"
+            onClick={() => setExpanded(true)}
+            className="absolute bottom-0 right-0 bg-white pl-2 text-sm font-medium text-neutral-500"
+          >
+            Ещё
+          </button>
+        ) : null}
+      </div>
+
+      {shouldClamp && expanded ? (
+        <div className="mt-1 flex justify-end">
+          <button
+            type="button"
+            onClick={() => setExpanded(false)}
+            className="text-sm font-medium text-neutral-500"
+          >
+            Свернуть
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function FeedMedia({
+  video,
+  displayText,
+}: {
+  video: Video;
+  displayText: string;
+}) {
+  if (video.mediaType === "video" && video.videoUrl) {
+    return (
+      <video
+        src={video.videoUrl}
+        poster={video.previewUrl || undefined}
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+    );
+  }
+
+  if (video.previewUrl) {
+    return (
+      <img
+        src={video.previewUrl}
+        alt={displayText || video.channel}
+        className="absolute inset-0 h-full w-full object-cover"
+        referrerPolicy="no-referrer"
+      />
+    );
+  }
+
+  return (
+    <div
+      className={`absolute inset-0 bg-gradient-to-br ${
+        video.bg || "from-neutral-300 to-neutral-200"
+      }`}
+    />
+  );
+}
+
 function FeedCard({
   video,
   locale,
@@ -288,6 +402,7 @@ function FeedCard({
   onOpenCreator: () => void;
 }) {
   const displayText = getDisplayText(video, locale);
+  const mediaExists = hasVisualMedia(video);
 
   return (
     <article className="overflow-hidden border-b border-neutral-200 bg-white">
@@ -314,42 +429,47 @@ function FeedCard({
         </div>
       </div>
 
-      <button
-        onClick={onOpen}
-        className="relative mt-3 block w-full bg-neutral-100"
-        type="button"
-      >
-        <div className="relative aspect-[9/10.2] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/9.8]">
-          {video.previewUrl ? (
-            <img
-              src={video.previewUrl}
-              alt={displayText || video.channel}
-              className="absolute inset-0 h-full w-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-          ) : (
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${
-                video.bg || "from-neutral-300 to-neutral-200"
-              }`}
-            />
-          )}
+      {mediaExists ? (
+        <button
+          onClick={onOpen}
+          className="relative mt-3 block w-full bg-neutral-100"
+          type="button"
+        >
+          <div className="relative aspect-[9/10.2] w-full overflow-hidden bg-neutral-200 sm:aspect-[9/9.8]">
+            <FeedMedia video={video} displayText={displayText} />
 
-          <div className="absolute right-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
-            {getTagLabel(getResolvedTag(video))}
+            <div className="absolute right-3 top-3 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+              {getTagLabel(getResolvedTag(video))}
+            </div>
+
+            {video.mediaType === "video" && video.duration ? (
+              <div className="absolute bottom-3 right-3 rounded-full bg-black/35 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                {video.duration}
+              </div>
+            ) : null}
+          </div>
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={onOpen}
+          className="block w-full px-4 pt-3 text-left"
+        >
+          <div className="mb-3 flex items-center justify-between">
+            <div className="rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
+              {getTagLabel(getResolvedTag(video))}
+            </div>
           </div>
 
-          {video.mediaType === "video" && video.duration ? (
-            <div className="absolute bottom-3 right-3 rounded-full bg-black/35 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
-              {video.duration}
-            </div>
-          ) : null}
-        </div>
-      </button>
+          <ExpandableTextPostText text={displayText} />
+        </button>
+      )}
 
-      <div className="px-4 py-3">
-        <ExpandableFeedText text={displayText} />
-      </div>
+      {mediaExists ? (
+        <div className="px-4 py-3">
+          <ExpandableFeedText text={displayText} />
+        </div>
+      ) : null}
     </article>
   );
 }
@@ -396,6 +516,44 @@ function parseDurationToSeconds(duration?: string) {
   return 0;
 }
 
+function ViewerBackgroundPreview({
+  video,
+  displayText,
+}: {
+  video: Video | null;
+  displayText: string;
+}) {
+  if (!video) return null;
+
+  if (video.mediaType === "video" && video.videoUrl) {
+    return (
+      <video
+        src={video.videoUrl}
+        poster={video.previewUrl || undefined}
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+    );
+  }
+
+  if (video.previewUrl) {
+    return (
+      <img
+        src={video.previewUrl}
+        alt={displayText || video.channel}
+        className="absolute inset-0 h-full w-full object-cover"
+        referrerPolicy="no-referrer"
+      />
+    );
+  }
+
+  return <div className="absolute inset-0 bg-[#0a0a0f]" />;
+}
+
 export function FeedScreen({
   locale,
   videos,
@@ -420,13 +578,12 @@ export function FeedScreen({
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
   const [videoProgress, setVideoProgress] = useState(0);
-  const [videoDurationSeconds, setVideoDurationSeconds] = useState(0);
+  const [dragOffsetY, setDragOffsetY] = useState(0);
+  const [viewerHeight, setViewerHeight] = useState(0);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionScrollRef = useRef<HTMLDivElement | null>(null);
-  const viewerContentRef = useRef<HTMLDivElement | null>(null);
-  const touchStartYRef = useRef<number | null>(null);
-  const touchMovedRef = useRef(false);
+  const viewerWrapRef = useRef<HTMLDivElement | null>(null);
 
   const preferredTags = useMemo(() => {
     const source = videos.filter(
@@ -490,6 +647,21 @@ export function FeedScreen({
     return visibleVideos[viewerIndex] ?? null;
   }, [viewerIndex, visibleVideos]);
 
+  const nextPreviewVideo = useMemo(() => {
+    if (viewerIndex === null || visibleVideos.length === 0) return null;
+    return visibleVideos[(viewerIndex + 1) % visibleVideos.length] ?? null;
+  }, [viewerIndex, visibleVideos]);
+
+  const prevPreviewVideo = useMemo(() => {
+    if (viewerIndex === null || visibleVideos.length === 0) return null;
+    return visibleVideos[(viewerIndex - 1 + visibleVideos.length) % visibleVideos.length] ?? null;
+  }, [viewerIndex, visibleVideos]);
+
+  const backgroundPreviewVideo = dragOffsetY < 0 ? nextPreviewVideo : dragOffsetY > 0 ? prevPreviewVideo : null;
+  const backgroundPreviewText = backgroundPreviewVideo
+    ? getDisplayText(backgroundPreviewVideo, locale)
+    : "";
+
   const activeLiked = activeVideo ? likedPostIds.includes(activeVideo.id) : false;
   const activeSaved = activeVideo ? savedPostIds.includes(activeVideo.id) : false;
   const activeSaveCount = activeSaved ? 1 : 0;
@@ -505,7 +677,7 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
+    setDragOffsetY(0);
   }, []);
 
   const closeViewer = useCallback(() => {
@@ -518,7 +690,7 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
+    setDragOffsetY(0);
   }, []);
 
   const nextViewer = useCallback(() => {
@@ -532,7 +704,7 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
+    setDragOffsetY(0);
   }, [viewerIndex, visibleVideos.length]);
 
   const prevViewer = useCallback(() => {
@@ -546,8 +718,28 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setVideoDurationSeconds(0);
+    setDragOffsetY(0);
   }, [viewerIndex, visibleVideos.length]);
+
+  const handleViewerDragEnd = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    const offsetY = info.offset.y;
+    const velocityY = info.velocity.y;
+
+    if (offsetY < -DRAG_SWITCH_DISTANCE || velocityY < -DRAG_SWITCH_VELOCITY) {
+      nextViewer();
+      return;
+    }
+
+    if (offsetY > DRAG_SWITCH_DISTANCE || velocityY > DRAG_SWITCH_VELOCITY) {
+      prevViewer();
+      return;
+    }
+
+    setDragOffsetY(0);
+  };
 
   const handleShare = async (video: Video) => {
     const shareUrl = buildShareUrl(video);
@@ -624,7 +816,6 @@ export function FeedScreen({
     const node = videoRef.current;
     if (!node || !activeVideo || activeVideo.mediaType !== "video") {
       setVideoProgress(0);
-      setVideoDurationSeconds(0);
       return;
     }
 
@@ -639,7 +830,6 @@ export function FeedScreen({
           ? node.currentTime
           : 0;
 
-      setVideoDurationSeconds(duration);
       setVideoProgress(duration > 0 ? Math.min(currentTime / duration, 1) : 0);
     };
 
@@ -692,13 +882,13 @@ export function FeedScreen({
         return;
       }
 
-      if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      if (event.key === "ArrowDown") {
         event.preventDefault();
         nextViewer();
         return;
       }
 
-      if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      if (event.key === "ArrowUp") {
         event.preventDefault();
         prevViewer();
       }
@@ -711,21 +901,35 @@ export function FeedScreen({
     };
   }, [viewerIndex, closeViewer, nextViewer, prevViewer]);
 
+  useEffect(() => {
+    const measure = () => {
+      if (viewerWrapRef.current) {
+        setViewerHeight(viewerWrapRef.current.clientHeight);
+      } else {
+        setViewerHeight(window.innerHeight);
+      }
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+
+    return () => {
+      window.removeEventListener("resize", measure);
+    };
+  }, [viewerIndex]);
+
   const viewerVariants = {
     enter: (direction: ViewerDirection) => ({
-      opacity: 0,
-      y: direction === "next" ? 32 : direction === "prev" ? -32 : 0,
-      scale: 0.985,
+      opacity: 1,
+      y: direction === "next" ? 24 : direction === "prev" ? -24 : 0,
     }),
     center: {
       opacity: 1,
       y: 0,
-      scale: 1,
     },
     exit: (direction: ViewerDirection) => ({
-      opacity: 0,
-      y: direction === "next" ? -24 : direction === "prev" ? 24 : 0,
-      scale: 0.985,
+      opacity: 1,
+      y: direction === "next" ? -40 : direction === "prev" ? 40 : 0,
     }),
   };
 
@@ -849,68 +1053,48 @@ export function FeedScreen({
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-black"
           >
-            <div className="relative h-full w-full overflow-hidden">
+            <div ref={viewerWrapRef} className="relative h-full w-full overflow-hidden">
               <div className="absolute inset-0 bg-neutral-950" />
 
+              {backgroundPreviewVideo && viewerHeight > 0 ? (
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    transform: `translateY(${
+                      dragOffsetY < 0
+                        ? viewerHeight + dragOffsetY
+                        : -viewerHeight + dragOffsetY
+                    }px)`,
+                  }}
+                >
+                  <ViewerBackgroundPreview
+                    video={backgroundPreviewVideo}
+                    displayText={backgroundPreviewText}
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                </div>
+              ) : null}
+
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="h-full w-full max-w-[520px] bg-black">
+                <div className="h-full w-full max-w-[520px] bg-black overflow-hidden">
                   <AnimatePresence mode="wait" custom={viewerDirection}>
                     <motion.div
                       key={activeVideo.id}
-                      ref={viewerContentRef}
                       custom={viewerDirection}
                       variants={viewerVariants}
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      transition={{ duration: 0.22, ease: "easeOut" }}
-                      className="relative h-full w-full overflow-hidden"
-                      onTouchStart={(e) => {
-                        const captionNode = captionScrollRef.current;
-                        if (captionNode && captionNode.contains(e.target as Node)) {
-                          touchStartYRef.current = null;
-                          touchMovedRef.current = false;
-                          return;
-                        }
-
-                        touchStartYRef.current = e.touches[0].clientY;
-                        touchMovedRef.current = false;
+                      transition={{ duration: 0.16, ease: "linear" }}
+                      drag="y"
+                      dragDirectionLock
+                      dragElastic={0.04}
+                      dragMomentum={false}
+                      onDrag={(_, info) => {
+                        setDragOffsetY(info.offset.y);
                       }}
-                      onTouchMove={(e) => {
-                        if (touchStartYRef.current === null) return;
-
-                        const delta = Math.abs(
-                          touchStartYRef.current - e.touches[0].clientY
-                        );
-
-                        if (delta > 16) {
-                          touchMovedRef.current = true;
-                        }
-                      }}
-                      onTouchEnd={(e) => {
-                        if (touchStartYRef.current === null) return;
-
-                        const captionNode = captionScrollRef.current;
-                        if (captionNode && captionNode.contains(e.target as Node)) {
-                          touchStartYRef.current = null;
-                          touchMovedRef.current = false;
-                          return;
-                        }
-
-                        const endY = e.changedTouches[0].clientY;
-                        const delta = touchStartYRef.current - endY;
-
-                        touchStartYRef.current = null;
-
-                        if (!touchMovedRef.current) return;
-                        if (Math.abs(delta) < 110) return;
-
-                        if (delta > 0) {
-                          nextViewer();
-                        } else {
-                          prevViewer();
-                        }
-                      }}
+                      onDragEnd={handleViewerDragEnd}
+                      className="relative h-full w-full overflow-hidden touch-pan-y"
                     >
                       {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
                         <video
@@ -931,11 +1115,7 @@ export function FeedScreen({
                           referrerPolicy="no-referrer"
                         />
                       ) : (
-                        <div
-                          className={`absolute inset-0 bg-gradient-to-br ${
-                            activeVideo.bg || "from-neutral-800 to-neutral-700"
-                          }`}
-                        />
+                        <div className="absolute inset-0 bg-[#0a0a0f]" />
                       )}
 
                       <div className="absolute inset-0 bg-black/20" />
@@ -949,88 +1129,65 @@ export function FeedScreen({
                           <ArrowLeft className="h-6 w-6" />
                         </button>
 
-                        <div className="relative">
-                          <button
-                            className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                            onClick={() =>
-                              setMenuPostId((prev) =>
-                                prev === activeVideo.id ? null : activeVideo.id
-                              )
-                            }
-                            type="button"
-                          >
-                            <MoreVertical className="h-5 w-5" />
-                          </button>
-
-                          {menuPostId === activeVideo.id ? (
-                            <div className="absolute right-0 top-14">
-                              <MoreMenu
-                                isOwner={
-                                  !!currentTelegramUserId &&
-                                  !!activeVideo.addedByTelegramId &&
-                                  currentTelegramUserId === activeVideo.addedByTelegramId
-                                }
-                                isAdmin={
-                                  !!currentTelegramUserId &&
-                                  ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)
-                                }
-                                onDelete={() => void handleDelete(activeVideo)}
-                                onHide={() => handleHide(activeVideo)}
-                              />
-                            </div>
+                        <div className="flex items-center gap-2">
+                          {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                            <button
+                              onClick={() => setIsMuted((v) => !v)}
+                              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                              type="button"
+                            >
+                              {isMuted ? (
+                                <VolumeX className="h-5 w-5" />
+                              ) : (
+                                <Volume2 className="h-5 w-5" />
+                              )}
+                            </button>
                           ) : null}
-                        </div>
-                      </div>
 
-                      {activeVideo.mediaType === "video" && (
-                        <div className="absolute left-4 right-4 top-[72px] z-30">
-                          <div className="h-1.5 overflow-hidden rounded-full bg-white/20">
-                            <div
-                              className="h-full rounded-full bg-white transition-[width] duration-100"
-                              style={{
-                                width: `${Math.max(0, Math.min(videoProgress * 100, 100))}%`,
-                              }}
-                            />
+                          <div className="relative">
+                            <button
+                              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+                              onClick={() =>
+                                setMenuPostId((prev) =>
+                                  prev === activeVideo.id ? null : activeVideo.id
+                                )
+                              }
+                              type="button"
+                            >
+                              <MoreVertical className="h-5 w-5" />
+                            </button>
+
+                            {menuPostId === activeVideo.id ? (
+                              <div className="absolute right-0 top-14">
+                                <MoreMenu
+                                  isOwner={
+                                    !!currentTelegramUserId &&
+                                    !!activeVideo.addedByTelegramId &&
+                                    currentTelegramUserId === activeVideo.addedByTelegramId
+                                  }
+                                  isAdmin={
+                                    !!currentTelegramUserId &&
+                                    ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)
+                                  }
+                                  onDelete={() => void handleDelete(activeVideo)}
+                                  onHide={() => handleHide(activeVideo)}
+                                />
+                              </div>
+                            ) : null}
                           </div>
                         </div>
-                      )}
-
-                      <div className="absolute left-4 top-1/2 z-30 -translate-y-1/2">
-                        <button
-                          type="button"
-                          onClick={prevViewer}
-                          className="flex h-11 w-11 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition hover:bg-black/35"
-                          aria-label="Предыдущий пост"
-                          title="Предыдущий пост"
-                        >
-                          <ChevronDown className="h-5 w-5 rotate-90" />
-                        </button>
-                      </div>
-
-                      <div className="absolute right-4 top-1/2 z-30 -translate-y-1/2">
-                        <button
-                          type="button"
-                          onClick={nextViewer}
-                          className="flex h-11 w-11 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition hover:bg-black/35"
-                          aria-label="Следующий пост"
-                          title="Следующий пост"
-                        >
-                          <ChevronDown className="h-5 w-5 -rotate-90" />
-                        </button>
                       </div>
 
                       <div className="absolute inset-0 flex items-center justify-center">
-                        {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
+                        {activeVideo.mediaType === "video" &&
+                        activeVideo.videoUrl &&
+                        !isPlaying ? (
                           <button
-                            onClick={() => setIsPlaying((v) => !v)}
+                            onClick={() => setIsPlaying(true)}
                             className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
                             type="button"
                           >
-                            {isPlaying ? (
-                              <Pause className="h-12 w-12 text-white" />
-                            ) : (
-                              <Play className="ml-1 h-12 w-12 text-white" />
-                            )}
+                            <Play className="ml-1 h-12 w-12 text-white" />
                           </button>
                         ) : null}
                       </div>
@@ -1053,13 +1210,6 @@ export function FeedScreen({
                           value=""
                           onClick={() => handleShare(activeVideo)}
                         />
-                        {activeVideo.mediaType === "video" && activeVideo.videoUrl ? (
-                          <ViewerMetric
-                            icon={isMuted ? VolumeX : Volume2}
-                            value=""
-                            onClick={() => setIsMuted((v) => !v)}
-                          />
-                        ) : null}
                       </div>
 
                       <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-4 pb-8 pt-20 text-white">
@@ -1087,23 +1237,6 @@ export function FeedScreen({
                             </div>
                           </div>
                         </button>
-
-                        <div className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/70">
-                          <span>{getTagLabel(getResolvedTag(activeVideo))}</span>
-                          {activeVideo.mediaType === "video" && activeVideo.duration ? (
-                            <>
-                              <span>•</span>
-                              <span>{activeVideo.duration}</span>
-                            </>
-                          ) : null}
-                          {activeVideo.mediaType === "video" &&
-                          videoDurationSeconds > 0 ? (
-                            <>
-                              <span>•</span>
-                              <span>{Math.round(videoProgress * 100)}%</span>
-                            </>
-                          ) : null}
-                        </div>
 
                         <div
                           ref={captionScrollRef}
@@ -1151,6 +1284,19 @@ export function FeedScreen({
                             {expandedCaption ? "свернуть" : "ещё"}
                           </button>
                         )}
+
+                        {activeVideo.mediaType === "video" ? (
+                          <div className="mt-3">
+                            <div className="h-1.5 overflow-hidden rounded-full bg-white/20">
+                              <div
+                                className="h-full rounded-full bg-white transition-[width] duration-100"
+                                style={{
+                                  width: `${Math.max(0, Math.min(videoProgress * 100, 100))}%`,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        ) : null}
 
                         {copySuccessId === activeVideo.id ? (
                           <div className="mt-2 text-xs font-medium text-[#7dd3fc]">

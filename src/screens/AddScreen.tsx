@@ -132,7 +132,7 @@ function isLikelyAvatarUrl(value: string | null | undefined) {
     lower.includes("channel_photo") ||
     lower.includes("avatar") ||
     lower.includes("tgme_page_photo") ||
-    lower.includes("telegram.org/file/") && lower.includes("photo")
+    (lower.includes("telegram") && lower.includes("photo"))
   );
 }
 
@@ -180,7 +180,7 @@ function AuthBlock() {
               </div>
               <div className="flex items-center gap-2">
                 <Globe className="h-4 w-4" />
-                <span>Только публичные ссылки</span>
+                <span>Текстовые посты тоже можно</span>
               </div>
             </div>
           </div>
@@ -237,7 +237,7 @@ export function AddScreen({ onAdd }: Props) {
   const validationMessage = useMemo(() => {
     if (!url.trim()) return "";
     if (parsedPost) return "";
-    return "Нужна публичная ссылка вида t.me/channel/123. Приватные, invite и кривые ссылки пока не принимаем.";
+    return "Нужна публичная ссылка вида t.me/channel/123. Приватные и кривые ссылки пока не принимаем.";
   }, [parsedPost, url]);
 
   const clearMessages = () => {
@@ -297,11 +297,8 @@ export function AddScreen({ onAdd }: Props) {
             ? rawPoster
             : null;
 
-      const mediaType: MediaType | undefined = rawVideo
-        ? "video"
-        : finalPreviewImage
-          ? "image"
-          : undefined;
+      const mediaType: MediaType =
+        rawVideo ? "video" : finalPreviewImage ? "image" : "text";
 
       const cleanCaption =
         typeof preview?.caption === "string"
@@ -476,7 +473,7 @@ export function AddScreen({ onAdd }: Props) {
               />
               <RuleItem
                 icon={Globe}
-                text="Сейчас принимаем только публичные ссылки, чтобы источник был доступен всем."
+                text="Можно добавлять и текстовые посты без медиа."
               />
               <RuleItem
                 icon={ArrowRightLeft}

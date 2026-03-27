@@ -221,21 +221,26 @@ function isLikelyAvatarUrl(url: string) {
   );
 }
 
-function isLikelyTelegramMediaUrl(url: string) {
+function isLikelyTelegramImageUrl(url: string) {
   const v = String(url || "").toLowerCase();
   if (!v) return false;
-
   if (isLikelyAvatarUrl(v)) return false;
 
   return (
-    v.includes("/file/") ||
-    v.includes("cdn") ||
     v.includes(".jpg") ||
     v.includes(".jpeg") ||
     v.includes(".png") ||
     v.includes(".webp") ||
-    v.includes(".mp4")
+    v.includes("/file/")
   );
+}
+
+function isLikelyTelegramVideoUrl(url: string) {
+  const v = String(url || "").toLowerCase();
+  if (!v) return false;
+  if (isLikelyAvatarUrl(v)) return false;
+
+  return v.includes(".mp4") || v.includes("video");
 }
 
 function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -294,7 +299,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     );
     const video = normalizeUrl(href);
 
-    if (video && !isLikelyAvatarUrl(video)) {
+    if (video && isLikelyTelegramVideoUrl(video)) {
       result.video = video;
 
       if (poster && !isLikelyAvatarUrl(poster)) {
@@ -315,7 +320,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       const url = normalizeUrl(src);
       const p = normalizeUrl(poster);
 
-      if (url && !isLikelyAvatarUrl(url)) {
+      if (url && isLikelyTelegramVideoUrl(url)) {
         result.video = url;
 
         if (p && !isLikelyAvatarUrl(p)) {
@@ -337,7 +342,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const url = normalizeUrl(bg || href);
 
     if (!url) continue;
-    if (!isLikelyTelegramMediaUrl(url)) continue;
+    if (!isLikelyTelegramImageUrl(url)) continue;
 
     result.image = url;
     break;
@@ -350,7 +355,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     for (const tag of imgTags) {
       const src = pickAttr(tag, ["src", "data-src"]);
       if (!src) continue;
-      if (!isLikelyTelegramMediaUrl(src)) continue;
+      if (!isLikelyTelegramImageUrl(src)) continue;
 
       result.image = src;
       break;
