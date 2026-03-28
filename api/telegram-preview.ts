@@ -247,12 +247,7 @@ function isLikelyTelegramVideoUrl(url: string) {
   if (!v) return false;
   if (isLikelyAvatarUrl(v)) return false;
 
-  return (
-    v.includes(".mp4") ||
-    v.includes(".webm") ||
-    v.includes("video") ||
-    v.includes("animation")
-  );
+  return v.includes(".mp4") || v.includes(".webm") || v.includes("video");
 }
 
 function isLikelyTelegramAudioUrl(url: string) {
@@ -292,7 +287,7 @@ function isLikelyTelegramFileUrl(url: string) {
   );
 }
 
-function looksLikeGifFromUrl(url: string) {
+function looksLikeGifUrl(url: string) {
   const v = String(url || "").toLowerCase();
   return v.includes(".gif") || v.includes("gif") || v.includes("animation");
 }
@@ -376,8 +371,8 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
   const hasVideoWrap =
     /tgme_widget_message_video_player/i.test(msgHtml) ||
     /tgme_widget_message_video_wrap/i.test(msgHtml) ||
-    /tgme_widget_message_animation/i.test(msgHtml) ||
     /tgme_widget_message_roundvideo/i.test(msgHtml);
+  const hasAnimationWrap = /tgme_widget_message_animation/i.test(msgHtml);
   const hasAudioWrap =
     /tgme_widget_message_voice_player/i.test(msgHtml) ||
     /tgme_widget_message_audio/i.test(msgHtml);
@@ -385,37 +380,70 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     /tgme_widget_message_document_wrap/i.test(msgHtml) ||
     /tgme_widget_message_document/i.test(msgHtml);
 
-  if (hasPhotoWrap || hasVideoWrap || hasAudioWrap || hasFileWrap || tooLarge) {
+  if (hasPhotoWrap || hasVideoWrap || hasAnimationWrap || hasAudioWrap || hasFileWrap || tooLarge) {
     result.hasMediaInOriginal = true;
   }
 
-  const videoPlayers =
+  if (tooLarge) {
+    result.mediaKind = "external_media";
+    return result;
+  }
+
+  const animationBlocks =
     msgHtml.match(
-      /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap|tgme_widget_message_animation|tgme_widget_message_roundvideo)[^"]*"[^>]*>/gi
+      /<(a|div)\b[^>]*class="[^"]*tgme_widget_message_animation[^"]*"[^>]*>/gi
     ) ?? [];
 
-  for (const tag of videoPlayers) {
-    const href = pickAttr(tag, ["data-video", "href", "data-src", "src"]);
-    const posterFromStyle = pickBgUrlFromStyle(tag);
-    const poster = normalizeUrl(
-      posterFromStyle || pickAttr(tag, ["data-poster", "poster"])
-    );
-    const video = normalizeUrl(href);
+  for (const tag of animationBlocks) {
+    const bg = pickBgUrlFromStyle(tag);
+    const poster = normalizeUrl(bg || pickAttr(tag, ["data-poster", "poster"]));
+    const href = pickAttr(tag, ["href", "data-src", "src"]);
 
-    if (video && isLikelyTelegramVideoUrl(video)) {
-      result.video = video;
-
-      if (poster && !isLikelyAvatarUrl(poster)) {
-        result.poster = poster;
-      }
-
+    if (poster && !isLikelyAvatarUrl(poster)) {
+      result.image = poster;
+      result.poster = poster;
       result.hasMediaInOriginal = true;
-      result.mediaKind = looksLikeGifFromUrl(video) || /animation/i.test(tag) ? "gif" : "video";
+      result.mediaKind = "gif";
+      break;
+    }
+
+    if (href && isLikelyTelegramImageUrl(href) && !isLikelyAvatarUrl(href)) {
+      result.image = href;
+      result.hasMediaInOriginal = true;
+      result.mediaKind = "gif";
       break;
     }
   }
 
-  if (!result.video) {
+  if (result.mediaKind === "none") {
+    const videoPlayers =
+      msgHtml.match(
+        /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap|tgme_widget_message_roundvideo)[^"]*"[^>]*>/gi
+      ) ?? [];
+
+    for (const tag of videoPlayers) {
+      const href = pickAttr(tag, ["data-video", "href", "data-src", "src"]);
+      const posterFromStyle = pickBgUrlFromStyle(tag);
+      const poster = normalizeUrl(
+        posterFromStyle || pickAttr(tag, ["data-poster", "poster"])
+      );
+      const video = normalizeUrl(href);
+
+      if (video && isLikelyTelegramVideoUrl(video)) {
+        result.video = video;
+
+        if (poster && !isLikelyAvatarUrl(poster)) {
+          result.poster = poster;
+        }
+
+        result.hasMediaInOriginal = true;
+        result.mediaKind = "video";
+        break;
+      }
+    }
+  }
+
+  if (result.mediaKind === "none") {
     const videoTagRe = /<video\b[^>]*>/gi;
     const videoTags = msgHtml.match(videoTagRe) ?? [];
 
@@ -425,7 +453,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       const url = normalizeUrl(src);
       const p = normalizeUrl(poster);
 
-      if (url && isLikelyTelegramVideoUrl(url)) {
+      if (url && isLikelyTelegramVideoUrl(url) && !looksLikeGifUrl(url)) {
         result.video = url;
 
         if (p && !isLikelyAvatarUrl(p)) {
@@ -433,7 +461,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
         }
 
         result.hasMediaInOriginal = true;
-        result.mediaKind = looksLikeGifFromUrl(url) ? "gif" : "video";
+        result.mediaKind = "video";
         break;
       }
     }
@@ -471,29 +499,28 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  const photoWrapRe =
-    /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
-  const photoWraps = msgHtml.match(photoWrapRe) ?? [];
+  if (result.mediaKind === "none") {
+    const photoWrapRe =
+      /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
+    const photoWraps = msgHtml.match(photoWrapRe) ?? [];
 
-  for (const tag of photoWraps) {
-    const bg = pickBgUrlFromStyle(tag);
-    const href = pickAttr(tag, ["href", "data-href", "data-src", "src"]);
-    const url = normalizeUrl(bg || href);
+    for (const tag of photoWraps) {
+      const bg = pickBgUrlFromStyle(tag);
+      const href = pickAttr(tag, ["href", "data-href", "data-src", "src"]);
+      const url = normalizeUrl(bg || href);
 
-    if (!url) continue;
-    if (isLikelyAvatarUrl(url)) continue;
-    if (!isLikelyTelegramImageUrl(url)) continue;
+      if (!url) continue;
+      if (isLikelyAvatarUrl(url)) continue;
+      if (!isLikelyTelegramImageUrl(url)) continue;
 
-    result.image = url;
-    result.hasMediaInOriginal = true;
-
-    if (result.mediaKind === "none") {
-      result.mediaKind = looksLikeGifFromUrl(url) ? "gif" : "image";
+      result.image = url;
+      result.hasMediaInOriginal = true;
+      result.mediaKind = looksLikeGifUrl(url) ? "gif" : "image";
+      break;
     }
-    break;
   }
 
-  if (!result.image) {
+  if (result.mediaKind === "none" && !result.image) {
     const imgTagRe = /<img\b[^>]*>/gi;
     const imgTags = msgHtml.match(imgTagRe) ?? [];
 
@@ -505,20 +532,8 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
 
       result.image = src;
       result.hasMediaInOriginal = true;
-
-      if (result.mediaKind === "none") {
-        result.mediaKind = looksLikeGifFromUrl(src) ? "gif" : "image";
-      }
+      result.mediaKind = looksLikeGifUrl(src) ? "gif" : "image";
       break;
-    }
-  }
-
-  if (!result.image && result.poster && !isLikelyAvatarUrl(result.poster)) {
-    result.image = result.poster;
-    result.hasMediaInOriginal = true;
-
-    if (result.mediaKind === "none") {
-      result.mediaKind = "image";
     }
   }
 
@@ -539,7 +554,10 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none" && result.hasMediaInOriginal) {
+  if (
+    result.mediaKind === "none" &&
+    result.hasMediaInOriginal
+  ) {
     result.mediaKind = "external_media";
   }
 
