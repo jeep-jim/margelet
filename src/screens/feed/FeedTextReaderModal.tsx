@@ -1,11 +1,28 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, Bookmark, Heart, ImageIcon, Send } from "lucide-react";
+import {
+  ArrowLeft,
+  Bookmark,
+  ExternalLink,
+  FileText,
+  Heart,
+  ImageIcon,
+  Music4,
+  Send,
+} from "lucide-react";
 import { useMemo } from "react";
 import type { Locale, Video } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
-import { getDisplayText } from "./feed.utils";
+import { getDisplayText, normalizeMediaList } from "./feed.utils";
 
+type MediaKind =
+  | "none"
+  | "image"
+  | "video"
+  | "gif"
+  | "audio"
+  | "file"
+  | "external_media";
 
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/gi;
@@ -63,6 +80,204 @@ function RichTextBlock({ text }: { text: string }) {
       })}
     </div>
   );
+}
+
+function getMediaKind(video: Video | null): MediaKind {
+  if (!video) return "none";
+  const kind = (video as any).mediaKind;
+  if (
+    kind === "image" ||
+    kind === "video" ||
+    kind === "gif" ||
+    kind === "audio" ||
+    kind === "file" ||
+    kind === "external_media"
+  ) {
+    return kind;
+  }
+
+  const media = normalizeMediaList(video);
+  if (media.some((item) => item.type === "video")) return "video";
+  if (media.some((item) => item.type === "image")) return "image";
+  return "none";
+}
+
+function getImageUrl(video: Video | null) {
+  if (!video) return null;
+
+  const media = normalizeMediaList(video);
+  const firstImage = media.find((item) => item.type === "image");
+  if (firstImage?.url) return firstImage.url;
+
+  return (video as any).previewUrl || null;
+}
+
+function getGifVideoUrl(video: Video | null) {
+  if (!video) return null;
+
+  const anyVideo = video as any;
+  if (typeof anyVideo.videoUrl === "string" && anyVideo.videoUrl) {
+    return anyVideo.videoUrl;
+  }
+
+  const media = normalizeMediaList(video);
+  const videoItem = media.find((item) => item.type === "video");
+  return videoItem?.url || null;
+}
+
+function getAudioUrl(video: Video | null) {
+  if (!video) return null;
+  return (video as any).audio || (video as any).audioUrl || null;
+}
+
+function getFileUrl(video: Video | null) {
+  if (!video) return null;
+  return (video as any).file || (video as any).fileUrl || null;
+}
+
+function MediaNotice({
+  icon,
+  children,
+}: {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mb-4 inline-flex max-w-full items-start gap-2 rounded-2xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
+      <div className="mt-0.5 shrink-0">{icon}</div>
+      <span>{children}</span>
+    </div>
+  );
+}
+
+function ReaderMediaBlock({ video }: { video: Video }) {
+  const kind = getMediaKind(video);
+  const imageUrl = getImageUrl(video);
+  const gifVideoUrl = getGifVideoUrl(video);
+  const audioUrl = getAudioUrl(video);
+  const fileUrl = getFileUrl(video);
+
+  if (kind === "image" && imageUrl) {
+    return (
+      <div className="mb-4 overflow-hidden rounded-3xl bg-neutral-100">
+        <img
+          src={imageUrl}
+          alt={video.channel}
+          className="h-auto w-full object-cover"
+          referrerPolicy="no-referrer"
+        />
+      </div>
+    );
+  }
+
+  if (kind === "gif") {
+    if (gifVideoUrl) {
+      return (
+        <div className="mb-4 overflow-hidden rounded-3xl bg-neutral-100">
+          <video
+            src={gifVideoUrl}
+            className="h-auto w-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+          />
+        </div>
+      );
+    }
+
+    if (imageUrl) {
+      return (
+        <div className="mb-4 overflow-hidden rounded-3xl bg-neutral-100">
+          <img
+            src={imageUrl}
+            alt={video.channel}
+            className="h-auto w-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      );
+    }
+  }
+
+  if (kind === "audio") {
+    return (
+      <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+        <div className="flex items-start gap-3">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+            <Music4 className="h-5 w-5" />
+          </div>
+
+          <div className="min-w-0 flex-1">
+            <div className="text-sm font-semibold text-neutral-950">
+              Аудио из поста Telegram
+            </div>
+            <div className="mt-1 text-sm text-neutral-500">
+              Откройте в Telegram, чтобы прослушать оригинал.
+            </div>
+
+            {audioUrl ? (
+              <audio className="mt-3 w-full" controls preload="none">
+                <source src={audioUrl} />
+              </audio>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (kind === "file") {
+    return (
+      <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+        <div className="flex items-start gap-3">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+            <FileText className="h-5 w-5" />
+          </div>
+
+          <div className="min-w-0 flex-1">
+            <div className="text-sm font-semibold text-neutral-950">
+              Вложение из поста Telegram
+            </div>
+            <div className="mt-1 text-sm text-neutral-500">
+              Файл доступен в оригинальном посте.
+            </div>
+
+            {fileUrl ? (
+              <a
+                href={fileUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
+              >
+                <span>Открыть файл</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (kind === "external_media") {
+    return (
+      <MediaNotice icon={<ImageIcon className="h-5 w-5 text-neutral-500" />}>
+        В этом посте есть медиа в Telegram. Здесь показываем только текст.
+      </MediaNotice>
+    );
+  }
+
+  if (!imageUrl && !(video as any).videoUrl && ((video as any).hasMediaInOriginal || false)) {
+    return (
+      <MediaNotice icon={<ImageIcon className="h-5 w-5 text-neutral-500" />}>
+        В этом посте есть медиа в Telegram. Здесь показываем только текст.
+      </MediaNotice>
+    );
+  }
+
+  return null;
 }
 
 export function FeedTextReaderModal({
@@ -133,14 +348,9 @@ export function FeedTextReaderModal({
                 </div>
               </div>
 
-              {!video.videoUrl && !video.previewUrl ? (
-                <div className="mb-4 inline-flex max-w-full items-start gap-2 rounded-2xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
-                  <ImageIcon className="mt-1 h-5 w-5 shrink-0 text-neutral-500" />
-                  <span>В этом посте в Telegram есть медиа. Здесь показываем только текст.</span>
-                </div>
-              ) : null}
+              <ReaderMediaBlock video={video} />
 
-              <RichTextBlock text={text} />
+              {text ? <RichTextBlock text={text} /> : null}
             </div>
 
             <div className="fixed bottom-0 left-0 right-0 z-20 border-t border-neutral-200 bg-white/96 px-4 py-3 backdrop-blur">
@@ -158,7 +368,9 @@ export function FeedTextReaderModal({
                   className="flex items-center gap-2 rounded-full px-4 py-2 text-neutral-900"
                   type="button"
                 >
-                  <Bookmark className={`h-5 w-5 ${saved ? "fill-current text-neutral-950" : ""}`} />
+                  <Bookmark
+                    className={`h-5 w-5 ${saved ? "fill-current text-neutral-950" : ""}`}
+                  />
                   <span className="text-sm font-medium">Сохранить</span>
                 </button>
 
