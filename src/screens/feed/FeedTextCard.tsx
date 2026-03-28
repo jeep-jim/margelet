@@ -31,7 +31,7 @@ export function FeedTextCard({
         </div>
       </div>
 
-      <div className="text-[15px] leading-7 text-neutral-900">
+      <div className="text-[15px] leading-6 text-neutral-900">
         <div className="line-clamp-5 whitespace-pre-wrap break-words">
           {displayText}
         </div>
