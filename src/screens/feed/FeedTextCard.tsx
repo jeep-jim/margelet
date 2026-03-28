@@ -1,4 +1,4 @@
-import { ExternalLink } from "lucide-react";
+import { Bookmark, ExternalLink, Heart, ImageIcon, Send } from "lucide-react";
 import type { Locale, Video } from "../../types/app";
 import { getResolvedTag, getTagLabel } from "./feed.utils";
 
@@ -12,27 +12,60 @@ export function FeedTextCard({
   onOpen: () => void;
 }) {
   const displayText = (video.caption?.[locale] || video.title?.[locale] || "").trim();
+  const hasMissingMedia = !video.previewUrl && !video.videoUrl;
 
   return (
     <div className="px-4 pb-4 pt-3">
-      <div className="mb-3 flex items-center justify-between">
-        <div className="rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
-          {getTagLabel(getResolvedTag(video))}
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <div className="flex min-w-0 items-center gap-2">
+          <div className="rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
+            {getTagLabel(getResolvedTag(video))}
+          </div>
+
+          {hasMissingMedia ? (
+            <div className="inline-flex min-w-0 items-center gap-1.5 rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
+              <ImageIcon className="h-3.5 w-3.5 shrink-0" />
+              <span className="truncate">Есть медиа</span>
+            </div>
+          ) : null}
         </div>
       </div>
-
-      {video.previewUrl === null && video.videoUrl === null ? (
-        <div className="mb-3 rounded-xl bg-neutral-100 px-3 py-2 text-xs text-neutral-600">
-            В оригинале есть медиа
-        </div>
-        ) : null}
 
       <div className="text-[15px] leading-7 text-neutral-900">
         <div className="line-clamp-5 whitespace-pre-wrap break-words">
           {displayText}
         </div>
 
-        <div className="mt-3 flex justify-end">
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-4 text-neutral-700">
+            <button
+              type="button"
+              className="flex items-center justify-center"
+              aria-label="Нравится"
+              title="Нравится"
+            >
+              <Heart className="h-5 w-5" />
+            </button>
+
+            <button
+              type="button"
+              className="flex items-center justify-center"
+              aria-label="Сохранить"
+              title="Сохранить"
+            >
+              <Bookmark className="h-5 w-5" />
+            </button>
+
+            <button
+              type="button"
+              className="flex items-center justify-center"
+              aria-label="Поделиться"
+              title="Поделиться"
+            >
+              <Send className="h-5 w-5" />
+            </button>
+          </div>
+
           <button
             type="button"
             onClick={onOpen}
