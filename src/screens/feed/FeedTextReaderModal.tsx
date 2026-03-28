@@ -101,7 +101,7 @@ export function FeedTextReaderModal({
               </button>
 
               <a
-                className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 transition"
+                className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
               >
                 <span>Открыть пост</span>
                 <ExternalLink className="h-4 w-4" />
