@@ -111,9 +111,10 @@ export function FeedScreen({
   }, [videos, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
 
   const viewerVideos = useMemo(() => {
-    return visibleVideos.filter((video) =>
-      normalizeMediaList(video).some((item) => item.type === "video")
-    );
+    return visibleVideos.filter((video) => {
+      const mediaKind = (video as any).mediaKind;
+      return mediaKind === "video";
+    });
   }, [visibleVideos]);
 
   const activeVideo = useMemo(() => {
@@ -138,24 +139,27 @@ export function FeedScreen({
     }));
   }, []);
 
-  const openViewerByVideo = useCallback((video: Video) => {
-    const nextIndex = viewerVideos.findIndex((item) => item.id === video.id);
-    if (nextIndex === -1) {
-      return;
-    }
+  const openViewerByVideo = useCallback(
+    (video: Video) => {
+      const nextIndex = viewerVideos.findIndex((item) => item.id === video.id);
+      if (nextIndex === -1) {
+        return;
+      }
 
-    setTextReaderVideo(null);
-    setViewerDirection(null);
-    setViewerIndex(nextIndex);
-    setViewerMediaIndex(0);
-    setExpandedCaption(false);
-    setIsMuted(true);
-    setIsPlaying(true);
-    setCopySuccessId(null);
-    setMenuPostId(null);
-    setActionError("");
-    setVideoProgress(0);
-  }, [viewerVideos]);
+      setTextReaderVideo(null);
+      setViewerDirection(null);
+      setViewerIndex(nextIndex);
+      setViewerMediaIndex(0);
+      setExpandedCaption(false);
+      setIsMuted(true);
+      setIsPlaying(true);
+      setCopySuccessId(null);
+      setMenuPostId(null);
+      setActionError("");
+      setVideoProgress(0);
+    },
+    [viewerVideos]
+  );
 
   const openTextReader = useCallback((video: Video) => {
     setViewerIndex(null);
@@ -418,9 +422,8 @@ export function FeedScreen({
           const isAdmin =
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
-          const hasVideoMedia = normalizeMediaList(video).some(
-            (item) => item.type === "video"
-          );
+          const mediaKind = (video as any).mediaKind;
+          const shouldOpenViewer = mediaKind === "video";
 
           return (
             <FeedCard
@@ -438,7 +441,7 @@ export function FeedScreen({
               }}
               onHide={() => handleHide(video)}
               onOpen={() => {
-                if (hasVideoMedia) {
+                if (shouldOpenViewer) {
                   openViewerByVideo(video);
                 } else {
                   openTextReader(video);
