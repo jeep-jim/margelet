@@ -21,6 +21,12 @@ export function FeedTextCard({
         </div>
       </div>
 
+      {video.previewUrl === null && video.videoUrl === null ? (
+        <div className="mb-3 rounded-xl bg-neutral-100 px-3 py-2 text-xs text-neutral-600">
+            В оригинале есть медиа
+        </div>
+        ) : null}
+
       <div className="text-[15px] leading-7 text-neutral-900">
         <div className="line-clamp-5 whitespace-pre-wrap break-words">
           {displayText}

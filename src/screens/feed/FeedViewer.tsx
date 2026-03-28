@@ -53,7 +53,6 @@ export function FeedViewer({
 
   const activeLiked = activeVideo ? likedPostIds.includes(activeVideo.id) : false;
   const activeSaved = activeVideo ? savedPostIds.includes(activeVideo.id) : false;
-  const activeSaveCount = activeSaved ? 1 : 0;
   const activeDisplayText = activeVideo ? getDisplayText(activeVideo, locale) : "";
 
   useEffect(() => {
@@ -249,16 +248,14 @@ export function FeedViewer({
                       />
                     ) : null}
                     <ViewerMetric
-                      icon={Heart}
-                      value={activeVideo.likes}
-                      active={activeLiked}
-                      onClick={() => onToggleLike(activeVideo.id)}
+                        icon={Heart}
+                        active={activeLiked}
+                        onClick={() => onToggleLike(activeVideo.id)}
                     />
                     <ViewerMetric
-                      icon={Bookmark}
-                      value={activeSaveCount}
-                      active={activeSaved}
-                      onClick={() => onToggleSave(activeVideo.id)}
+                        icon={Bookmark}
+                        active={activeSaved}
+                        onClick={() => onToggleSave(activeVideo.id)}
                     />
                     <ViewerActionButton
                       icon={Send}

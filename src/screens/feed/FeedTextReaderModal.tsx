@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, Bookmark, ExternalLink, Heart, Send } from "lucide-react";
+import { ArrowLeft, Bookmark, Heart, Send } from "lucide-react";
 import { useMemo } from "react";
 import type { Locale, Video } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
@@ -46,16 +46,20 @@ function RichTextBlock({ text }: { text: string }) {
 
   return (
     <div className="space-y-4 text-[16px] leading-8 text-neutral-900">
-      {paragraphs.map((paragraph, index) => (
-        <p key={index} className="whitespace-pre-wrap break-words">
-          {paragraph.split("\n").map((line, lineIndex) => (
-            <span key={lineIndex}>
-              {linkifyText(line)}
-              {lineIndex < paragraph.split("\n").length - 1 ? <br /> : null}
-            </span>
-          ))}
-        </p>
-      ))}
+      {paragraphs.map((paragraph, index) => {
+        const lines = paragraph.split("\n");
+
+        return (
+          <p key={index} className="whitespace-pre-wrap break-words">
+            {lines.map((line, lineIndex) => (
+              <span key={lineIndex}>
+                {linkifyText(line)}
+                {lineIndex < lines.length - 1 ? <br /> : null}
+              </span>
+            ))}
+          </p>
+        );
+      })}
     </div>
   );
 }
@@ -99,13 +103,6 @@ export function FeedTextReaderModal({
               >
                 <ArrowLeft className="h-5 w-5" />
               </button>
-
-              <a
-                className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
-              >
-                <span>Открыть пост</span>
-                <ExternalLink className="h-4 w-4" />
-              </a>
             </div>
 
             <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-28 pt-5">
@@ -125,6 +122,12 @@ export function FeedTextReaderModal({
                 </div>
               </div>
 
+              {!video.videoUrl && !video.previewUrl ? (
+                <div className="mb-4 rounded-xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
+                  В этом посте есть медиа в Telegram. Здесь показываем только текст.
+                </div>
+              ) : null}
+
               <RichTextBlock text={text} />
             </div>
 
@@ -136,7 +139,6 @@ export function FeedTextReaderModal({
                   type="button"
                 >
                   <Heart className={`h-5 w-5 ${liked ? "fill-current text-neutral-950" : ""}`} />
-                  <span className="text-sm font-medium">{video.likes}</span>
                 </button>
 
                 <button
@@ -148,6 +150,15 @@ export function FeedTextReaderModal({
                   <span className="text-sm font-medium">Сохранить</span>
                 </button>
 
+                <a
+                  href={video.postUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 rounded-full px-4 py-2 text-neutral-900"
+                >
+                  <span className="text-sm font-medium">Открыть в Telegram</span>
+                </a>
+
                 <button
                   onClick={() => {
                     void onShare(video);
@@ -156,7 +167,7 @@ export function FeedTextReaderModal({
                   type="button"
                 >
                   <Send className="h-5 w-5" />
-                  <span className="text-sm font-medium">Репост</span>
+                  <span className="text-sm font-medium">Поделиться</span>
                 </button>
               </div>
             </div>
