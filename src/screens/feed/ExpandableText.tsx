@@ -7,7 +7,7 @@ function ExpandableTextBase({
   textClassName,
 }: {
   text: string;
-  lines: number;
+  lines: 2 | 5 | 10;
   fallbackLimit: number;
   textClassName: string;
 }) {
@@ -37,12 +37,15 @@ function ExpandableTextBase({
 
   if (!text) return null;
 
+  const clampClass =
+    lines === 2 ? "line-clamp-2" : lines === 5 ? "line-clamp-5" : "line-clamp-[10]";
+
   return (
     <div className={textClassName}>
       <div className="relative">
         <div
           ref={measureRef}
-          className={expanded ? "" : `line-clamp-[${lines}] pr-14`}
+          className={expanded ? "" : `${clampClass} pr-14`}
         >
           {text}
         </div>
@@ -88,8 +91,8 @@ export function ExpandableTextPostText({ text }: { text: string }) {
   return (
     <ExpandableTextBase
       text={text}
-      lines={10}
-      fallbackLimit={400}
+      lines={5}
+      fallbackLimit={260}
       textClassName="text-[15px] leading-7 text-neutral-900"
     />
   );
