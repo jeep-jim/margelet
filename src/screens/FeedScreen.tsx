@@ -12,7 +12,6 @@ import {
   Trash2,
   EyeOff,
   Play,
-  Pause,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -23,6 +22,7 @@ import {
   useRef,
   useState,
   type ComponentType,
+  type MutableRefObject,
 } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { ContentTag, FeedTag, Locale, PostMedia, Video } from "../types/app";
@@ -68,8 +68,8 @@ const TAG_OPTIONS: { value: FeedTag; label: string }[] = [
 ];
 
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
-const DRAG_SWITCH_DISTANCE = 90;
-const DRAG_SWITCH_VELOCITY = 420;
+const DRAG_SWITCH_DISTANCE = 88;
+const DRAG_SWITCH_VELOCITY = 430;
 const HORIZONTAL_SWIPE_DISTANCE = 48;
 
 function getResolvedTag(video: Video): ContentTag {
@@ -92,12 +92,7 @@ function getDisplayText(video: Video, locale: Locale) {
 }
 
 function buildShareUrl(video: Video) {
-  const cleanHandle = (video.handle || video.channel || "telegram")
-    .replace(/^@/, "")
-    .trim()
-    .toLowerCase();
-
-  return `${window.location.origin}/${cleanHandle}/${video.id}`;
+  return video.postUrl || window.location.href;
 }
 
 function normalizeMediaList(video: Video): PostMedia[] {
@@ -394,20 +389,54 @@ function FeedMediaSlide({
   displayText,
   className = "",
   active = true,
+  muted = true,
+  videoRef,
 }: {
   item: PostMedia;
   displayText: string;
   className?: string;
   active?: boolean;
+  muted?: boolean;
+  videoRef?: MutableRefObject<HTMLVideoElement | null>;
 }) {
+  const localVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  const attachVideoRef = useCallback(
+    (node: HTMLVideoElement | null) => {
+      localVideoRef.current = node;
+      if (videoRef) {
+        videoRef.current = node;
+      }
+    },
+    [videoRef]
+  );
+
+  useEffect(() => {
+    if (item.type !== "video") return;
+
+    const node = localVideoRef.current;
+    if (!node) return;
+
+    node.muted = muted;
+
+    if (active) {
+      const playPromise = node.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
+      }
+    } else {
+      node.pause();
+    }
+  }, [active, muted, item.type, item.url]);
+
   if (item.type === "video") {
     return (
       <video
+        ref={attachVideoRef}
         src={item.url}
         poster={item.poster || undefined}
         className={className || "absolute inset-0 h-full w-full object-cover"}
-        autoPlay={active}
-        muted
+        muted={muted}
         loop
         playsInline
         preload="metadata"
@@ -474,6 +503,9 @@ function SwipeCarousel({
   activeIndex,
   onChange,
   controlsTone = "light",
+  mediaActive = true,
+  muted = true,
+  videoRef,
 }: {
   items: PostMedia[];
   displayText: string;
@@ -481,6 +513,9 @@ function SwipeCarousel({
   activeIndex: number;
   onChange: (next: number) => void;
   controlsTone?: "light" | "dark";
+  mediaActive?: boolean;
+  muted?: boolean;
+  videoRef?: MutableRefObject<HTMLVideoElement | null>;
 }) {
   const touchStartXRef = useRef<number | null>(null);
   const canPrev = activeIndex > 0;
@@ -513,7 +548,9 @@ function SwipeCarousel({
         item={current}
         displayText={displayText}
         className="absolute inset-0 h-full w-full object-cover"
-        active
+        active={current.type === "video" ? mediaActive : true}
+        muted={muted}
+        videoRef={current.type === "video" ? videoRef : undefined}
       />
 
       {canPrev ? (
@@ -588,9 +625,36 @@ function FeedCard({
   const displayText = getDisplayText(video, locale);
   const mediaItems = normalizeMediaList(video);
   const mediaExists = mediaItems.length > 0;
+  const cardRef = useRef<HTMLElement | null>(null);
+  const [isCardVisible, setIsCardVisible] = useState(false);
+
+  useEffect(() => {
+    const node = cardRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsCardVisible(
+          entry.isIntersecting && entry.intersectionRatio >= 0.6
+        );
+      },
+      {
+        threshold: [0, 0.25, 0.6, 0.85, 1],
+      }
+    );
+
+    observer.observe(node);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <article className="overflow-hidden border-b border-neutral-200 bg-white">
+    <article
+      ref={cardRef}
+      className="overflow-hidden border-b border-neutral-200 bg-white"
+    >
       <div className="flex items-center justify-between px-4 pt-4">
         <SourceHeader video={video} compact onOpenCreator={onOpenCreator} />
 
@@ -627,6 +691,8 @@ function FeedCard({
             activeIndex={Math.min(mediaIndex, mediaItems.length - 1)}
             onChange={onChangeMediaIndex}
             controlsTone="light"
+            mediaActive={isCardVisible}
+            muted
           />
 
           <div className="pointer-events-none absolute right-3 top-3 z-20 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
@@ -695,32 +761,23 @@ function ViewerMetric({
   );
 }
 
-function ViewerBackgroundPreview({
-  video,
-  displayText,
-  mediaIndex,
+function ViewerActionButton({
+  icon: Icon,
+  onClick,
 }: {
-  video: Video | null;
-  displayText: string;
-  mediaIndex: number;
+  icon: ComponentType<{ className?: string }>;
+  onClick: () => void;
 }) {
-  if (!video) return null;
-
-  const mediaItems = normalizeMediaList(video);
-  const item = mediaItems[Math.min(mediaIndex, mediaItems.length - 1)] || null;
-
-  if (item) {
-    return (
-      <FeedMediaSlide
-        item={item}
-        displayText={displayText || video.channel}
-        className="absolute inset-0 h-full w-full object-cover"
-        active={item.type === "video"}
-      />
-    );
-  }
-
-  return <div className="absolute inset-0 bg-[#0a0a0f]" />;
+  return (
+    <button
+      onClick={onClick}
+      className="flex flex-col items-center gap-1 text-white"
+      type="button"
+    >
+      <Icon className="h-8 w-8 text-white" />
+      <span className="text-sm font-medium opacity-0">0</span>
+    </button>
+  );
 }
 
 export function FeedScreen({
@@ -747,14 +804,11 @@ export function FeedScreen({
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
   const [videoProgress, setVideoProgress] = useState(0);
-  const [dragOffsetY, setDragOffsetY] = useState(0);
-  const [viewerHeight, setViewerHeight] = useState(0);
   const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>({});
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionScrollRef = useRef<HTMLDivElement | null>(null);
-  const viewerWrapRef = useRef<HTMLDivElement | null>(null);
 
   const preferredTags = useMemo(() => {
     const source = videos.filter(
@@ -825,21 +879,6 @@ export function FeedScreen({
   const activeViewerMedia =
     activeVideoMedia[Math.min(viewerMediaIndex, Math.max(activeVideoMedia.length - 1, 0))] || null;
 
-  const nextPreviewVideo = useMemo(() => {
-    if (viewerIndex === null || visibleVideos.length === 0) return null;
-    return visibleVideos[(viewerIndex + 1) % visibleVideos.length] ?? null;
-  }, [viewerIndex, visibleVideos]);
-
-  const prevPreviewVideo = useMemo(() => {
-    if (viewerIndex === null || visibleVideos.length === 0) return null;
-    return visibleVideos[(viewerIndex - 1 + visibleVideos.length) % visibleVideos.length] ?? null;
-  }, [viewerIndex, visibleVideos]);
-
-  const backgroundPreviewVideo = dragOffsetY < 0 ? nextPreviewVideo : dragOffsetY > 0 ? prevPreviewVideo : null;
-  const backgroundPreviewText = backgroundPreviewVideo
-    ? getDisplayText(backgroundPreviewVideo, locale)
-    : "";
-
   const activeLiked = activeVideo ? likedPostIds.includes(activeVideo.id) : false;
   const activeSaved = activeVideo ? savedPostIds.includes(activeVideo.id) : false;
   const activeSaveCount = activeSaved ? 1 : 0;
@@ -863,7 +902,6 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setDragOffsetY(0);
   }, []);
 
   const closeViewer = useCallback(() => {
@@ -877,7 +915,6 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setDragOffsetY(0);
   }, []);
 
   const nextViewer = useCallback(() => {
@@ -892,7 +929,6 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setDragOffsetY(0);
   }, [viewerIndex, visibleVideos.length]);
 
   const prevViewer = useCallback(() => {
@@ -907,7 +943,6 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-    setDragOffsetY(0);
   }, [viewerIndex, visibleVideos.length]);
 
   const handleViewerDragEnd = (
@@ -926,8 +961,6 @@ export function FeedScreen({
       prevViewer();
       return;
     }
-
-    setDragOffsetY(0);
   };
 
   const handleMediaToggle = () => {
@@ -1000,14 +1033,14 @@ export function FeedScreen({
 
   useEffect(() => {
     const node = videoRef.current;
-    if (!node) return;
+    if (!node || !activeViewerMedia || activeViewerMedia.type !== "video") return;
 
     if (isPlaying) {
       void node.play().catch(() => {});
     } else {
       node.pause();
     }
-  }, [isPlaying, activeVideo?.id, viewerMediaIndex]);
+  }, [isPlaying, activeVideo?.id, viewerMediaIndex, activeViewerMedia?.type]);
 
   useEffect(() => {
     if (activeViewerMedia?.type !== "video") {
@@ -1118,35 +1151,18 @@ export function FeedScreen({
     };
   }, [viewerIndex, closeViewer, nextViewer, prevViewer, activeVideoMedia.length]);
 
-  useEffect(() => {
-    const measure = () => {
-      if (viewerWrapRef.current) {
-        setViewerHeight(viewerWrapRef.current.clientHeight);
-      } else {
-        setViewerHeight(window.innerHeight);
-      }
-    };
-
-    measure();
-    window.addEventListener("resize", measure);
-
-    return () => {
-      window.removeEventListener("resize", measure);
-    };
-  }, [viewerIndex]);
-
   const viewerVariants = {
-    enter: () => ({
+    enter: (direction: ViewerDirection) => ({
+      y: direction === "next" ? "100%" : direction === "prev" ? "-100%" : 0,
       opacity: 1,
-      y: 0,
     }),
     center: {
-      opacity: 1,
       y: 0,
+      opacity: 1,
     },
-    exit: () => ({
-      opacity: 1,
-      y: 0,
+    exit: (direction: ViewerDirection) => ({
+      y: direction === "next" ? "-18%" : direction === "prev" ? "18%" : 0,
+      opacity: 0.72,
     }),
   };
 
@@ -1273,40 +1289,19 @@ export function FeedScreen({
         })}
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false} custom={viewerDirection}>
         {activeVideo && (
           <motion.div
+            key={`viewer-shell-${activeVideo.id}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-black"
           >
-            <div ref={viewerWrapRef} className="relative h-full w-full overflow-hidden">
-              <div className="absolute inset-0 bg-neutral-950" />
-
-              {backgroundPreviewVideo && viewerHeight > 0 ? (
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    transform: `translateY(${
-                      dragOffsetY < 0
-                        ? viewerHeight + dragOffsetY
-                        : -viewerHeight + dragOffsetY
-                    }px)`,
-                  }}
-                >
-                  <ViewerBackgroundPreview
-                    video={backgroundPreviewVideo}
-                    displayText={backgroundPreviewText}
-                    mediaIndex={0}
-                  />
-                  <div className="absolute inset-0 bg-black/20" />
-                </div>
-              ) : null}
-
+            <div className="relative h-full w-full overflow-hidden">
               <div className="absolute inset-0 z-20 flex items-center justify-center">
                 <div className="h-full w-full max-w-[520px] overflow-hidden bg-black">
-                  <AnimatePresence mode="wait" custom={viewerDirection}>
+                  <AnimatePresence initial={false} mode="wait" custom={viewerDirection}>
                     <motion.div
                       key={activeVideo.id}
                       custom={viewerDirection}
@@ -1314,14 +1309,11 @@ export function FeedScreen({
                       initial="enter"
                       animate="center"
                       exit="exit"
-                      transition={{ duration: 0.01, ease: "linear" }}
+                      transition={{ type: "spring", stiffness: 320, damping: 34, mass: 0.92 }}
                       drag="y"
                       dragDirectionLock
                       dragElastic={0.04}
                       dragMomentum={false}
-                      onDrag={(_, info) => {
-                        setDragOffsetY(info.offset.y);
-                      }}
                       onDragEnd={handleViewerDragEnd}
                       className="relative h-full w-full overflow-hidden touch-pan-y"
                     >
@@ -1333,6 +1325,9 @@ export function FeedScreen({
                           activeIndex={Math.min(viewerMediaIndex, activeVideoMedia.length - 1)}
                           onChange={setViewerMediaIndex}
                           controlsTone="light"
+                          mediaActive={activeViewerMedia?.type === "video" ? isPlaying : true}
+                          muted={isMuted}
+                          videoRef={videoRef}
                         />
                       ) : (
                         <div className="absolute inset-0 bg-[#0a0a0f]" />
@@ -1358,71 +1353,45 @@ export function FeedScreen({
                           <ArrowLeft className="h-6 w-6" />
                         </button>
 
-                        <div className="flex items-center gap-2">
-                          {activeViewerMedia?.type === "video" ? (
-                            <button
-                              onClick={() => setIsMuted((v) => !v)}
-                              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                              type="button"
-                            >
-                              {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-                            </button>
-                          ) : null}
-
+                        <div className="relative">
                           <button
-                            onClick={() => void handleShare(activeVideo)}
+                            onClick={() =>
+                              setMenuPostId((prev) =>
+                                prev === activeVideo.id ? null : activeVideo.id
+                              )
+                            }
                             className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
                             type="button"
                           >
-                            <Send className="h-5 w-5" />
+                            <MoreVertical className="h-5 w-5" />
                           </button>
 
-                          <div className="relative">
-                            <button
-                              onClick={() =>
-                                setMenuPostId((prev) =>
-                                  prev === activeVideo.id ? null : activeVideo.id
-                                )
-                              }
-                              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-                              type="button"
-                            >
-                              <MoreVertical className="h-5 w-5" />
-                            </button>
-
-                            {menuPostId === activeVideo.id ? (
-                              <MoreMenu
-                                isOwner={activeIsOwner}
-                                isAdmin={activeIsAdmin}
-                                onDelete={() => void handleDelete(activeVideo)}
-                                onHide={() => handleHide(activeVideo)}
-                              />
-                            ) : null}
-                          </div>
+                          {menuPostId === activeVideo.id ? (
+                            <MoreMenu
+                              isOwner={activeIsOwner}
+                              isAdmin={activeIsAdmin}
+                              onDelete={() => void handleDelete(activeVideo)}
+                              onHide={() => handleHide(activeVideo)}
+                            />
+                          ) : null}
                         </div>
                       </div>
 
-                      <div className="absolute inset-0 z-20 flex items-center justify-center">
-                        {activeViewerMedia?.type === "video" ? (
-                          <button
-                            onClick={() => setIsPlaying((v) => !v)}
-                            className="flex h-24 w-24 items-center justify-center rounded-full bg-black/20 backdrop-blur-sm"
-                            type="button"
-                          >
-                            {isPlaying ? (
-                              <Pause className="h-12 w-12 text-white" />
-                            ) : (
-                              <Play className="ml-1 h-12 w-12 text-white" />
-                            )}
-                          </button>
-                        ) : (
-                          <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/15 backdrop-blur-sm">
-                            <Play className="ml-1 h-12 w-12 text-white opacity-0" />
+                      {activeViewerMedia?.type === "video" && !isPlaying ? (
+                        <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center">
+                          <div className="flex h-24 w-24 items-center justify-center rounded-full bg-black/30 backdrop-blur-sm">
+                            <Play className="ml-1 h-12 w-12 text-white" />
                           </div>
-                        )}
-                      </div>
+                        </div>
+                      ) : null}
 
                       <div className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-6">
+                        {activeViewerMedia?.type === "video" ? (
+                          <ViewerActionButton
+                            icon={isMuted ? VolumeX : Volume2}
+                            onClick={() => setIsMuted((v) => !v)}
+                          />
+                        ) : null}
                         <ViewerMetric
                           icon={Heart}
                           value={activeVideo.likes}
@@ -1435,6 +1404,10 @@ export function FeedScreen({
                           active={activeSaved}
                           onClick={() => onToggleSave(activeVideo.id)}
                         />
+                        <ViewerActionButton
+                          icon={Send}
+                          onClick={() => void handleShare(activeVideo)}
+                        />
                       </div>
 
                       <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-4 pb-8 pt-20 text-white">
@@ -1443,7 +1416,7 @@ export function FeedScreen({
                             e.stopPropagation();
                             openSource(activeVideo.channel);
                           }}
-                          className="mb-3 flex items-center gap-3 text-left"
+                          className="mb-3 flex items-center gap-3 pr-20 text-left"
                           type="button"
                         >
                           <SourceAvatar video={activeVideo} size="md" />
