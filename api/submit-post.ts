@@ -8,6 +8,10 @@ function asCleanString(value: unknown): string | null {
   return trimmed || null;
 }
 
+function normalizeBoolean(value: unknown): boolean {
+  return value === true;
+}
+
 function normalizeMediaItem(raw: any, index: number): PostMedia | null {
   if (!raw || typeof raw !== "object") return null;
 
@@ -23,6 +27,19 @@ function normalizeMediaItem(raw: any, index: number): PostMedia | null {
     url,
     poster: poster || null,
   };
+}
+
+function resolveMediaTypeFromKind(
+  mediaKind: string | null,
+  finalMedia: PostMedia[]
+): "video" | "image" | "text" {
+  if (finalMedia[0]?.type === "video") return "video";
+  if (finalMedia[0]?.type === "image") return "image";
+
+  if (mediaKind === "video") return "video";
+  if (mediaKind === "image" || mediaKind === "gif") return "image";
+
+  return "text";
 }
 
 export default async function handler(req: any, res: any) {
@@ -42,8 +59,13 @@ export default async function handler(req: any, res: any) {
       avatar,
       tag,
       previewUrl,
+      poster,
       mediaType,
+      mediaKind,
       videoUrl,
+      audio,
+      file,
+      hasMediaInOriginal,
       channelVerified,
       addedByTelegramId,
       addedByUsername,
@@ -73,14 +95,15 @@ export default async function handler(req: any, res: any) {
       "Telegram";
 
     const cleanCaption = asCleanString(caption) || "";
-
     const cleanChannel = asCleanString(channel) || parsed.sourceHandle;
-
     const cleanAvatar = asCleanString(avatar);
 
     const cleanPreviewUrl = asCleanString(previewUrl);
-
+    const cleanPoster = asCleanString(poster);
     const cleanVideoUrl = asCleanString(videoUrl);
+    const cleanAudioUrl = asCleanString(audio);
+    const cleanFileUrl = asCleanString(file);
+    const cleanMediaKind = asCleanString(mediaKind);
 
     const normalizedMedia = Array.isArray(media)
       ? media
@@ -97,7 +120,7 @@ export default async function handler(req: any, res: any) {
                 id: "video-1",
                 type: "video" as const,
                 url: cleanVideoUrl,
-                poster: cleanPreviewUrl || null,
+                poster: cleanPoster || cleanPreviewUrl || null,
               },
             ]
           : cleanPreviewUrl
@@ -112,10 +135,9 @@ export default async function handler(req: any, res: any) {
             : [];
 
     const resolvedMediaType =
-      finalMedia[0]?.type ||
-      (mediaType === "video" || mediaType === "image" || mediaType === "text"
+      mediaType === "video" || mediaType === "image" || mediaType === "text"
         ? mediaType
-        : "text");
+        : resolveMediaTypeFromKind(cleanMediaKind, finalMedia);
 
     const post = buildSubmittedPost(
       {
@@ -153,16 +175,19 @@ export default async function handler(req: any, res: any) {
     }
 
     post.media = finalMedia;
+
     post.previewUrl =
       finalMedia[0]?.type === "image"
         ? finalMedia[0].url
         : finalMedia[0]?.type === "video"
-          ? finalMedia[0].poster || null
-          : null;
+          ? finalMedia[0].poster || cleanPoster || cleanPreviewUrl || null
+          : cleanPreviewUrl || null;
+
     post.videoUrl =
       finalMedia[0]?.type === "video"
         ? finalMedia[0].url
-        : null;
+        : cleanVideoUrl || null;
+
     post.mediaType = resolvedMediaType;
 
     post.title = {
@@ -179,6 +204,12 @@ export default async function handler(req: any, res: any) {
     post.handle = `@${cleanChannel.replace(/^@/, "").trim().toLowerCase()}`;
     post.addedByTelegramId = asCleanString(addedByTelegramId);
     post.addedByUsername = asCleanString(addedByUsername);
+
+    (post as any).poster = cleanPoster || cleanPreviewUrl || null;
+    (post as any).audio = cleanAudioUrl;
+    (post as any).file = cleanFileUrl;
+    (post as any).mediaKind = cleanMediaKind || resolvedMediaType;
+    (post as any).hasMediaInOriginal = normalizeBoolean(hasMediaInOriginal);
 
     const saved = await savePost(post);
 
