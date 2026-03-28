@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   Bookmark,
+  ChevronLeft,
+  ChevronRight,
   ExternalLink,
   FileText,
   Heart,
@@ -9,20 +11,13 @@ import {
   Music4,
   Send,
 } from "lucide-react";
-import { useMemo } from "react";
-import type { Locale, Video } from "../../types/app";
+import { useEffect, useMemo, useState } from "react";
+import type { Locale, MediaKind, PostMedia, Video } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { getDisplayText, normalizeMediaList } from "./feed.utils";
 
-type MediaKind =
-  | "none"
-  | "image"
-  | "video"
-  | "gif"
-  | "audio"
-  | "file"
-  | "external_media";
+const HORIZONTAL_SWIPE_DISTANCE = 48;
 
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/gi;
@@ -82,57 +77,51 @@ function RichTextBlock({ text }: { text: string }) {
   );
 }
 
-function getMediaKind(video: Video | null): MediaKind {
+function getResolvedMediaKind(video: Video | null): MediaKind {
   if (!video) return "none";
-  const kind = (video as any).mediaKind;
-  if (
-    kind === "image" ||
-    kind === "video" ||
-    kind === "gif" ||
-    kind === "audio" ||
-    kind === "file" ||
-    kind === "external_media"
-  ) {
-    return kind;
-  }
+  if (video.mediaKind) return video.mediaKind;
 
   const media = normalizeMediaList(video);
   if (media.some((item) => item.type === "video")) return "video";
   if (media.some((item) => item.type === "image")) return "image";
+
   return "none";
 }
 
-function getImageUrl(video: Video | null) {
-  if (!video) return null;
+function getImageItems(video: Video | null): PostMedia[] {
+  if (!video) return [];
 
   const media = normalizeMediaList(video);
-  const firstImage = media.find((item) => item.type === "image");
-  if (firstImage?.url) return firstImage.url;
+  const imageItems = media.filter((item) => item.type === "image");
 
-  return (video as any).previewUrl || null;
+  if (imageItems.length > 0) {
+    return imageItems;
+  }
+
+  if (video.previewUrl) {
+    return [
+      {
+        id: "image-1",
+        type: "image",
+        url: video.previewUrl,
+        poster: null,
+      },
+    ];
+  }
+
+  return [];
 }
 
 function getGifVideoUrl(video: Video | null) {
   if (!video) return null;
 
-  const anyVideo = video as any;
-  if (typeof anyVideo.videoUrl === "string" && anyVideo.videoUrl) {
-    return anyVideo.videoUrl;
+  if (video.videoUrl) {
+    return video.videoUrl;
   }
 
   const media = normalizeMediaList(video);
   const videoItem = media.find((item) => item.type === "video");
   return videoItem?.url || null;
-}
-
-function getAudioUrl(video: Video | null) {
-  if (!video) return null;
-  return (video as any).audio || (video as any).audioUrl || null;
-}
-
-function getFileUrl(video: Video | null) {
-  if (!video) return null;
-  return (video as any).file || (video as any).fileUrl || null;
 }
 
 function MediaNotice({
@@ -150,24 +139,130 @@ function MediaNotice({
   );
 }
 
-function ReaderMediaBlock({ video }: { video: Video }) {
-  const kind = getMediaKind(video);
-  const imageUrl = getImageUrl(video);
-  const gifVideoUrl = getGifVideoUrl(video);
-  const audioUrl = getAudioUrl(video);
-  const fileUrl = getFileUrl(video);
+function MediaDots({
+  total,
+  activeIndex,
+  onSelect,
+}: {
+  total: number;
+  activeIndex: number;
+  onSelect: (index: number) => void;
+}) {
+  if (total <= 1) return null;
 
-  if (kind === "image" && imageUrl) {
-    return (
-      <div className="mb-4 overflow-hidden rounded-3xl bg-neutral-100">
-        <img
-          src={imageUrl}
-          alt={video.channel}
-          className="h-auto w-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-      </div>
-    );
+  return (
+    <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5">
+      {Array.from({ length: total }).map((_, index) => {
+        const active = index === activeIndex;
+        return (
+          <button
+            key={index}
+            type="button"
+            onClick={() => onSelect(index)}
+            className={`h-2.5 rounded-full transition-all ${
+              active ? "w-5 bg-white" : "w-2.5 bg-white/45"
+            }`}
+            aria-label={`Переключить фото ${index + 1}`}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
+function ReaderImageCarousel({ items, alt }: { items: PostMedia[]; alt: string }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartXRef = useState<{ current: number | null }>({ current: null })[0];
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [items]);
+
+  if (items.length === 0) return null;
+
+  const current = items[Math.min(activeIndex, items.length - 1)];
+  const canPrev = activeIndex > 0;
+  const canNext = activeIndex < items.length - 1;
+
+  return (
+    <div
+      className="relative mb-4 overflow-hidden rounded-3xl bg-neutral-100"
+      onTouchStart={(event) => {
+        touchStartXRef.current = event.touches[0]?.clientX ?? null;
+      }}
+      onTouchEnd={(event) => {
+        const startX = touchStartXRef.current;
+        const endX = event.changedTouches[0]?.clientX ?? null;
+        touchStartXRef.current = null;
+
+        if (startX === null || endX === null) return;
+
+        const delta = endX - startX;
+
+        if (delta <= -HORIZONTAL_SWIPE_DISTANCE && canNext) {
+          setActiveIndex((prev) => prev + 1);
+        }
+
+        if (delta >= HORIZONTAL_SWIPE_DISTANCE && canPrev) {
+          setActiveIndex((prev) => prev - 1);
+        }
+      }}
+    >
+      <img
+        src={current.url}
+        alt={alt}
+        className="h-auto w-full object-cover"
+        referrerPolicy="no-referrer"
+      />
+
+      {items.length > 1 ? (
+        <>
+          <div className="pointer-events-none absolute left-3 top-3 z-20 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
+            {activeIndex + 1}/{items.length}
+          </div>
+
+          {canPrev ? (
+            <button
+              type="button"
+              onClick={() => setActiveIndex((prev) => prev - 1)}
+              className="absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+              aria-label="Предыдущее фото"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          ) : null}
+
+          {canNext ? (
+            <button
+              type="button"
+              onClick={() => setActiveIndex((prev) => prev + 1)}
+              className="absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
+              aria-label="Следующее фото"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          ) : null}
+
+          <MediaDots
+            total={items.length}
+            activeIndex={activeIndex}
+            onSelect={setActiveIndex}
+          />
+        </>
+      ) : null}
+    </div>
+  );
+}
+
+function ReaderMediaBlock({ video }: { video: Video }) {
+  const kind = getResolvedMediaKind(video);
+  const imageItems = getImageItems(video);
+  const gifVideoUrl = getGifVideoUrl(video);
+  const audioUrl = video.audio || null;
+  const fileUrl = video.file || null;
+
+  if (kind === "image" && imageItems.length > 0) {
+    return <ReaderImageCarousel items={imageItems} alt={video.channel} />;
   }
 
   if (kind === "gif") {
@@ -187,17 +282,8 @@ function ReaderMediaBlock({ video }: { video: Video }) {
       );
     }
 
-    if (imageUrl) {
-      return (
-        <div className="mb-4 overflow-hidden rounded-3xl bg-neutral-100">
-          <img
-            src={imageUrl}
-            alt={video.channel}
-            className="h-auto w-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-        </div>
-      );
+    if (imageItems.length > 0) {
+      return <ReaderImageCarousel items={imageItems} alt={video.channel} />;
     }
   }
 
@@ -214,7 +300,9 @@ function ReaderMediaBlock({ video }: { video: Video }) {
               Аудио из поста Telegram
             </div>
             <div className="mt-1 text-sm text-neutral-500">
-              Откройте в Telegram, чтобы прослушать оригинал.
+              {audioUrl
+                ? "Можно прослушать прямо здесь или открыть оригинал в Telegram."
+                : "Откройте в Telegram, чтобы прослушать оригинал."}
             </div>
 
             {audioUrl ? (
@@ -269,7 +357,11 @@ function ReaderMediaBlock({ video }: { video: Video }) {
     );
   }
 
-  if (!imageUrl && !(video as any).videoUrl && ((video as any).hasMediaInOriginal || false)) {
+  if (
+    imageItems.length === 0 &&
+    !video.videoUrl &&
+    (video.hasMediaInOriginal || false)
+  ) {
     return (
       <MediaNotice icon={<ImageIcon className="h-5 w-5 text-neutral-500" />}>
         В этом посте есть медиа в Telegram. Здесь показываем только текст.
