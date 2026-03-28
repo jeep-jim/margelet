@@ -294,7 +294,7 @@ function isLikelyTelegramFileUrl(url: string) {
 
 function looksLikeGifFromUrl(url: string) {
   const v = String(url || "").toLowerCase();
-  return v.includes(".gif") || v.includes("gif");
+  return v.includes(".gif") || v.includes("gif") || v.includes("animation");
 }
 
 function hasTooLargeMediaGate(msgHtml: string) {
@@ -303,7 +303,6 @@ function hasTooLargeMediaGate(msgHtml: string) {
 
   return (
     text.includes("media is too big") ||
-    text.includes("view in telegram") ||
     hay.includes("tgme_widget_message_error") ||
     hay.includes("tgme_widget_message_default_error")
   );
@@ -373,7 +372,6 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
 
   const tooLarge = hasTooLargeMediaGate(msgHtml);
 
-  const lowerHtml = msgHtml.toLowerCase();
   const hasPhotoWrap = /tgme_widget_message_photo_wrap/i.test(msgHtml);
   const hasVideoWrap =
     /tgme_widget_message_video_player/i.test(msgHtml) ||
@@ -389,11 +387,6 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
 
   if (hasPhotoWrap || hasVideoWrap || hasAudioWrap || hasFileWrap || tooLarge) {
     result.hasMediaInOriginal = true;
-  }
-
-  if (tooLarge) {
-    result.mediaKind = "external_media";
-    return result;
   }
 
   const videoPlayers =
@@ -546,10 +539,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (
-    result.mediaKind === "none" &&
-    result.hasMediaInOriginal
-  ) {
+  if (result.mediaKind === "none" && result.hasMediaInOriginal) {
     result.mediaKind = "external_media";
   }
 
