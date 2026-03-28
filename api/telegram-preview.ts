@@ -170,15 +170,14 @@ function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
     hay.includes("tgme_widget_message_owner_badge") ||
     hay.includes("tgme_widget_message_owner_verified_icon") ||
     hay.includes("verified-icon") ||
-    hay.includes("icon-verified") ||
-    /\bverified\b/.test(hay)
+    hay.includes("icon-verified")
   );
 }
 
 function pickAttr(tagHtml: string, names: string[]) {
   for (const name of names) {
     const pattern = new RegExp(
-      `\\b${escapeRegExp(name)}\\s*=\\s*("([^"]*)"|'([^']*)'|([^\\s>]+))`,
+      `\\b${escapeRegExp(name)}\\s*=\\s*(\"([^\"]*)\"|'([^']*)'|([^\\s>]+))`,
       "i"
     );
 
@@ -205,26 +204,28 @@ function pickBgUrlFromStyle(tagHtml: string) {
   return normalizeUrl(value);
 }
 
-function isLikelyAvatarUrl(url: string) {
+function isUserpicUrl(url: string) {
   const v = String(url || "").toLowerCase();
   if (!v) return false;
 
   return (
     v.includes("t.me/i/userpic/") ||
     v.includes("/userpic/") ||
-    (v.includes("userpic") && v.includes("t.me")) ||
-    v.includes("tgme_page_photo") ||
-    v.includes("channel_photo") ||
-    v.includes("profile_photo") ||
-    v.includes("profilephoto") ||
-    v.includes("avatar")
+    (v.includes("userpic") && v.includes("t.me"))
   );
 }
 
-function isUserpicUrl(url: string) {
+function isLikelyAvatarUrl(url: string) {
   const v = String(url || "").toLowerCase();
   if (!v) return false;
-  return v.includes("t.me/i/userpic/");
+
+  return (
+    isUserpicUrl(v) ||
+    v.includes("tgme_page_photo") ||
+    v.includes("channel_photo") ||
+    v.includes("profile_photo") ||
+    v.includes("avatar")
+  );
 }
 
 function isLikelyTelegramImageUrl(url: string) {
@@ -247,6 +248,18 @@ function isLikelyTelegramVideoUrl(url: string) {
   if (isLikelyAvatarUrl(v)) return false;
 
   return v.includes(".mp4") || v.includes("video");
+}
+
+function hasTooLargeMediaGate(msgHtml: string) {
+  const text = stripTags(msgHtml || "").toLowerCase();
+  const hay = String(msgHtml || "").toLowerCase();
+
+  return (
+    text.includes("media is too big") ||
+    text.includes("view in telegram") ||
+    hay.includes("tgme_widget_message_error") ||
+    hay.includes("tgme_widget_message_default_error")
+  );
 }
 
 function extractAuthorAvatarFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -291,6 +304,10 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     video: null,
     poster: null,
   };
+
+  if (!msgHtml || hasTooLargeMediaGate(msgHtml)) {
+    return result;
+  }
 
   const videoPlayers =
     msgHtml.match(
@@ -348,7 +365,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const url = normalizeUrl(bg || href);
 
     if (!url) continue;
-    if (isUserpicUrl(url) || isLikelyAvatarUrl(url)) continue;
+    if (isLikelyAvatarUrl(url)) continue;
     if (!isLikelyTelegramImageUrl(url)) continue;
 
     result.image = url;
@@ -362,7 +379,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     for (const tag of imgTags) {
       const src = pickAttr(tag, ["src", "data-src"]);
       if (!src) continue;
-      if (isUserpicUrl(src) || isLikelyAvatarUrl(src)) continue;
+      if (isLikelyAvatarUrl(src)) continue;
       if (!isLikelyTelegramImageUrl(src)) continue;
 
       result.image = src;
@@ -458,8 +475,6 @@ export default async function handler(req: any, res: any) {
 
     const caption =
       extractMessageTextFromMessageBlock(msgHtml) ||
-      readMetaProperty(html, "og:description") ||
-      readMetaProperty(html, "twitter:description") ||
       null;
 
     const avatar =
@@ -467,6 +482,7 @@ export default async function handler(req: any, res: any) {
       null;
 
     const verified = extractVerifiedFromMessageBlock(msgHtml, html);
+    const mediaTooLarge = hasTooLargeMediaGate(msgHtml);
 
     return res.status(200).json({
       canonical,
@@ -477,6 +493,7 @@ export default async function handler(req: any, res: any) {
       caption: cleanText(caption),
       avatar: normalizeUrl(avatar) || null,
       verified,
+      mediaTooLarge,
     });
   } catch (error) {
     console.error("telegram-preview api error", error);
