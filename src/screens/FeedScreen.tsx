@@ -14,6 +14,14 @@ import {
   normalizeMediaList,
 } from "./feed/feed.utils";
 
+function isRealVideoPost(video: Video) {
+  if (video.mediaKind === "video") return true;
+  if (video.videoUrl) return true;
+
+  const media = normalizeMediaList(video);
+  return media.some((item) => item.type === "video");
+}
+
 export function FeedScreen({
   locale,
   videos,
@@ -111,10 +119,7 @@ export function FeedScreen({
   }, [videos, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
 
   const viewerVideos = useMemo(() => {
-    return visibleVideos.filter((video) => {
-      const mediaKind = (video as any).mediaKind;
-      return mediaKind === "video";
-    });
+    return visibleVideos.filter((video) => isRealVideoPost(video));
   }, [visibleVideos]);
 
   const activeVideo = useMemo(() => {
@@ -142,9 +147,7 @@ export function FeedScreen({
   const openViewerByVideo = useCallback(
     (video: Video) => {
       const nextIndex = viewerVideos.findIndex((item) => item.id === video.id);
-      if (nextIndex === -1) {
-        return;
-      }
+      if (nextIndex === -1) return;
 
       setTextReaderVideo(null);
       setViewerDirection(null);
@@ -422,8 +425,7 @@ export function FeedScreen({
           const isAdmin =
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
-          const mediaKind = (video as any).mediaKind;
-          const shouldOpenViewer = mediaKind === "video";
+          const shouldOpenViewer = isRealVideoPost(video);
 
           return (
             <FeedCard

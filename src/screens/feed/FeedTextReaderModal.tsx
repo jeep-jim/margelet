@@ -8,10 +8,12 @@ import {
   FileText,
   Heart,
   ImageIcon,
-  Music4,
+  Pause,
+  Play,
   Send,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Locale, MediaKind, PostMedia, Video } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
@@ -124,6 +126,16 @@ function getGifVideoUrl(video: Video | null) {
   return videoItem?.url || null;
 }
 
+function formatTime(seconds: number) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+
+  const totalSeconds = Math.floor(seconds);
+  const mins = Math.floor(totalSeconds / 60);
+  const secs = totalSeconds % 60;
+
+  return `${mins}:${String(secs).padStart(2, "0")}`;
+}
+
 function MediaNotice({
   icon,
   children,
@@ -172,7 +184,7 @@ function MediaDots({
 
 function ReaderImageCarousel({ items, alt }: { items: PostMedia[]; alt: string }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const touchStartXRef = useState<{ current: number | null }>({ current: null })[0];
+  const touchStartXRef = useRef<number | null>(null);
 
   useEffect(() => {
     setActiveIndex(0);
@@ -254,6 +266,122 @@ function ReaderImageCarousel({ items, alt }: { items: PostMedia[]; alt: string }
   );
 }
 
+function ReaderAudioBlock({ audioUrl }: { audioUrl: string | null }) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
+  useEffect(() => {
+    const node = audioRef.current;
+    if (!node) return;
+
+    const handleLoadedMetadata = () => {
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const handleTimeUpdate = () => {
+      setCurrentTime(Number.isFinite(node.currentTime) ? node.currentTime : 0);
+    };
+
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setCurrentTime(0);
+    };
+
+    const handlePause = () => {
+      setIsPlaying(false);
+    };
+
+    const handlePlay = () => {
+      setIsPlaying(true);
+    };
+
+    node.addEventListener("loadedmetadata", handleLoadedMetadata);
+    node.addEventListener("timeupdate", handleTimeUpdate);
+    node.addEventListener("ended", handleEnded);
+    node.addEventListener("pause", handlePause);
+    node.addEventListener("play", handlePlay);
+
+    return () => {
+      node.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      node.removeEventListener("timeupdate", handleTimeUpdate);
+      node.removeEventListener("ended", handleEnded);
+      node.removeEventListener("pause", handlePause);
+      node.removeEventListener("play", handlePlay);
+    };
+  }, [audioUrl]);
+
+  useEffect(() => {
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setDuration(0);
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+  }, [audioUrl]);
+
+  const progress = duration > 0 ? Math.min(currentTime / duration, 1) : 0;
+
+  return (
+    <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+      <div className="flex items-start gap-3">
+        <button
+          type="button"
+          onClick={() => {
+            const node = audioRef.current;
+            if (!node || !audioUrl) return;
+
+            if (node.paused) {
+              void node.play().catch(() => {});
+            } else {
+              node.pause();
+            }
+          }}
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white"
+          aria-label={isPlaying ? "Пауза" : "Воспроизвести"}
+        >
+          {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
+        </button>
+
+        <div className="min-w-0 flex-1">
+          <div className="text-sm font-semibold text-neutral-950">
+            Аудио из поста Telegram
+          </div>
+          <div className="mt-1 text-sm text-neutral-500">
+            {audioUrl
+              ? "Можно прослушать прямо здесь или открыть оригинал в Telegram."
+              : "Откройте в Telegram, чтобы прослушать оригинал."}
+          </div>
+
+          {audioUrl ? (
+            <>
+              <audio ref={audioRef} preload="metadata">
+                <source src={audioUrl} />
+              </audio>
+
+              <div className="mt-3">
+                <div className="h-2 overflow-hidden rounded-full bg-neutral-200">
+                  <div
+                    className="h-full rounded-full bg-neutral-900 transition-[width] duration-100"
+                    style={{ width: `${progress * 100}%` }}
+                  />
+                </div>
+
+                <div className="mt-2 flex items-center justify-between text-xs text-neutral-500">
+                  <span>{formatTime(currentTime)}</span>
+                  <span>{formatTime(duration)}</span>
+                </div>
+              </div>
+            </>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ReaderMediaBlock({ video }: { video: Video }) {
   const kind = getResolvedMediaKind(video);
   const imageItems = getImageItems(video);
@@ -288,32 +416,7 @@ function ReaderMediaBlock({ video }: { video: Video }) {
   }
 
   if (kind === "audio") {
-    return (
-      <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
-        <div className="flex items-start gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
-            <Music4 className="h-5 w-5" />
-          </div>
-
-          <div className="min-w-0 flex-1">
-            <div className="text-sm font-semibold text-neutral-950">
-              Аудио из поста Telegram
-            </div>
-            <div className="mt-1 text-sm text-neutral-500">
-              {audioUrl
-                ? "Можно прослушать прямо здесь или открыть оригинал в Telegram."
-                : "Откройте в Telegram, чтобы прослушать оригинал."}
-            </div>
-
-            {audioUrl ? (
-              <audio className="mt-3 w-full" controls preload="none">
-                <source src={audioUrl} />
-              </audio>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    );
+    return <ReaderAudioBlock audioUrl={audioUrl} />;
   }
 
   if (kind === "file") {
