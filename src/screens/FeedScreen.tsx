@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { ContentTag, FeedTag } from "../types/app";
+import type { ContentTag, FeedTag, Video } from "../types/app";
 import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
+import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
 import { ADMIN_TELEGRAM_IDS } from "./feed/feed.constants";
-import type { FeedMode, FeedScreenProps, ViewerDirection } from "./feed/feed.types";
+import type { FeedMode, ViewerDirection } from "./feed/feed.types";
 import { getResolvedTag, getDisplayText, buildShareUrl, parseDurationToSeconds, normalizeMediaList } from "./feed/feed.utils";
 
 export function FeedScreen({
@@ -18,8 +19,20 @@ export function FeedScreen({
   onDeletePost,
   currentTelegramUserId,
   openSource,
-}: FeedScreenProps) {
+}: {
+  locale: "ru" | "en";
+  videos: Video[];
+  likedPostIds: number[];
+  savedPostIds: number[];
+  onToggleLike: (id: number) => void;
+  onToggleSave: (id: number) => void;
+  onHidePost: (id: number) => void;
+  onDeletePost: (id: number) => Promise<void>;
+  currentTelegramUserId: string | null;
+  openSource: (channel: string) => void;
+}) {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [textReaderVideo, setTextReaderVideo] = useState<Video | null>(null);
   const [viewerDirection, setViewerDirection] = useState<ViewerDirection>(null);
   const [expandedCaption, setExpandedCaption] = useState(false);
   const [feedMode, setFeedMode] = useState<FeedMode>("new");
@@ -113,6 +126,7 @@ export function FeedScreen({
   }, []);
 
   const openViewer = useCallback((index: number) => {
+    setTextReaderVideo(null);
     setViewerDirection(null);
     setViewerIndex(index);
     setViewerMediaIndex(0);
@@ -123,6 +137,14 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
+  }, []);
+
+  const openTextReader = useCallback((video: Video) => {
+    setViewerIndex(null);
+    setTextReaderVideo(video);
+    setCopySuccessId(null);
+    setMenuPostId(null);
+    setActionError("");
   }, []);
 
   const closeViewer = useCallback(() => {
@@ -166,7 +188,7 @@ export function FeedScreen({
     setVideoProgress(0);
   }, [viewerIndex, visibleVideos.length]);
 
-  const handleShare = async (video: (typeof visibleVideos)[number]) => {
+  const handleShare = async (video: Video) => {
     const shareUrl = buildShareUrl(video);
 
     try {
@@ -197,7 +219,7 @@ export function FeedScreen({
     }
   };
 
-  const handleDelete = async (video: (typeof visibleVideos)[number]) => {
+  const handleDelete = async (video: Video) => {
     try {
       setActionError("");
       await onDeletePost(video.id);
@@ -206,18 +228,24 @@ export function FeedScreen({
       if (activeVideo?.id === video.id) {
         closeViewer();
       }
+      if (textReaderVideo?.id === video.id) {
+        setTextReaderVideo(null);
+      }
     } catch (error: any) {
       setActionError(String(error?.message || "Не удалось удалить пост"));
     }
   };
 
-  const handleHide = (video: (typeof visibleVideos)[number]) => {
+  const handleHide = (video: Video) => {
     setActionError("");
     onHidePost(video.id);
     setMenuPostId(null);
 
     if (activeVideo?.id === video.id) {
       closeViewer();
+    }
+    if (textReaderVideo?.id === video.id) {
+      setTextReaderVideo(null);
     }
   };
 
@@ -286,6 +314,22 @@ export function FeedScreen({
   }, [activeVideo?.id, activeVideo?.duration, activeViewerMedia?.url, activeViewerMedia?.type]);
 
   useEffect(() => {
+    const hasOverlay = viewerIndex !== null || !!textReaderVideo;
+    if (!hasOverlay) return;
+
+    const originalBodyOverflow = document.body.style.overflow;
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = originalBodyOverflow;
+      document.documentElement.style.overflow = originalHtmlOverflow;
+    };
+  }, [viewerIndex, textReaderVideo]);
+
+  useEffect(() => {
     if (viewerIndex === null) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -325,21 +369,6 @@ export function FeedScreen({
     };
   }, [viewerIndex, closeViewer, nextViewer, prevViewer, activeVideoMedia.length]);
 
-  useEffect(() => {
-    if (viewerIndex === null) return;
-
-    const originalBodyOverflow = document.body.style.overflow;
-    const originalHtmlOverflow = document.documentElement.style.overflow;
-
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = originalBodyOverflow;
-      document.documentElement.style.overflow = originalHtmlOverflow;
-    };
-  }, [viewerIndex]);
-
   return (
     <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
       <FeedHeader
@@ -369,6 +398,8 @@ export function FeedScreen({
           const isAdmin =
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
+          const hasMedia = normalizeMediaList(video).length > 0;
+
           return (
             <FeedCard
               key={video.id}
@@ -384,7 +415,13 @@ export function FeedScreen({
                 void handleDelete(video);
               }}
               onHide={() => handleHide(video)}
-              onOpen={() => openViewer(index)}
+              onOpen={() => {
+                if (hasMedia) {
+                  openViewer(index);
+                } else {
+                  openTextReader(video);
+                }
+              }}
               onOpenCreator={() => openSource(video.channel)}
               mediaIndex={feedMediaIndexes[video.id] || 0}
               onChangeMediaIndex={(next) => setFeedCardMediaIndex(video.id, next)}
@@ -423,6 +460,17 @@ export function FeedScreen({
         prevViewer={prevViewer}
         handleShare={handleShare}
         setActionError={setActionError}
+      />
+
+      <FeedTextReaderModal
+        video={textReaderVideo}
+        locale={locale}
+        liked={!!textReaderVideo && likedPostIds.includes(textReaderVideo.id)}
+        saved={!!textReaderVideo && savedPostIds.includes(textReaderVideo.id)}
+        onClose={() => setTextReaderVideo(null)}
+        onToggleLike={onToggleLike}
+        onToggleSave={onToggleSave}
+        onShare={handleShare}
       />
     </div>
   );
