@@ -37,7 +37,7 @@ export function FeedTextCard({
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-4 text-neutral-700">
+          <div className="flex items-center gap-8 text-neutral-700">
             <button
               type="button"
               className="flex items-center justify-center"

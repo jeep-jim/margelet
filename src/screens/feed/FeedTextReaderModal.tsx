@@ -1,10 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, Bookmark, ExternalLink, Heart, ImageIcon, Send } from "lucide-react";
+import { ArrowLeft, Bookmark, Heart, ImageIcon, Send } from "lucide-react";
 import { useMemo } from "react";
 import type { Locale, Video } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { getDisplayText } from "./feed.utils";
+
 
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/gi;
@@ -110,8 +111,8 @@ export function FeedTextReaderModal({
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
               >
-                <span>Открыть в Telegram</span>
-                <ExternalLink className="h-4 w-4" />
+                <span className="text-white">Открыть в Telegram</span>
+                <Send className="h-4 w-4 text-white" />
               </a>
             </div>
 
@@ -134,7 +135,7 @@ export function FeedTextReaderModal({
 
               {!video.videoUrl && !video.previewUrl ? (
                 <div className="mb-4 inline-flex max-w-full items-start gap-2 rounded-2xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
-                  <ImageIcon className="mt-0.5 h-4 w-4 shrink-0" />
+                  <ImageIcon className="mt-1 h-5 w-5 shrink-0 text-neutral-500" />
                   <span>В этом посте есть медиа в Telegram. Здесь показываем только текст.</span>
                 </div>
               ) : null}
