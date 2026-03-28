@@ -6,7 +6,13 @@ import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
 import { ADMIN_TELEGRAM_IDS } from "./feed/feed.constants";
 import type { FeedMode, ViewerDirection } from "./feed/feed.types";
-import { getResolvedTag, getDisplayText, buildShareUrl, parseDurationToSeconds, normalizeMediaList } from "./feed/feed.utils";
+import {
+  getResolvedTag,
+  getDisplayText,
+  buildShareUrl,
+  parseDurationToSeconds,
+  normalizeMediaList,
+} from "./feed/feed.utils";
 
 export function FeedScreen({
   locale,
@@ -104,10 +110,16 @@ export function FeedScreen({
     return list;
   }, [videos, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
 
+  const viewerVideos = useMemo(() => {
+    return visibleVideos.filter((video) =>
+      normalizeMediaList(video).some((item) => item.type === "video")
+    );
+  }, [visibleVideos]);
+
   const activeVideo = useMemo(() => {
     if (viewerIndex === null) return null;
-    return visibleVideos[viewerIndex] ?? null;
-  }, [viewerIndex, visibleVideos]);
+    return viewerVideos[viewerIndex] ?? null;
+  }, [viewerIndex, viewerVideos]);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -116,7 +128,8 @@ export function FeedScreen({
   }, [activeVideo]);
 
   const activeViewerMedia =
-    activeVideoMedia[Math.min(viewerMediaIndex, Math.max(activeVideoMedia.length - 1, 0))] || null;
+    activeVideoMedia[Math.min(viewerMediaIndex, Math.max(activeVideoMedia.length - 1, 0))] ||
+    null;
 
   const setFeedCardMediaIndex = useCallback((videoId: number, nextIndex: number) => {
     setFeedMediaIndexes((prev) => ({
@@ -125,10 +138,15 @@ export function FeedScreen({
     }));
   }, []);
 
-  const openViewer = useCallback((index: number) => {
+  const openViewerByVideo = useCallback((video: Video) => {
+    const nextIndex = viewerVideos.findIndex((item) => item.id === video.id);
+    if (nextIndex === -1) {
+      return;
+    }
+
     setTextReaderVideo(null);
     setViewerDirection(null);
-    setViewerIndex(index);
+    setViewerIndex(nextIndex);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
@@ -137,7 +155,7 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-  }, []);
+  }, [viewerVideos]);
 
   const openTextReader = useCallback((video: Video) => {
     setViewerIndex(null);
@@ -161,9 +179,9 @@ export function FeedScreen({
   }, []);
 
   const nextViewer = useCallback(() => {
-    if (viewerIndex === null || visibleVideos.length === 0) return;
+    if (viewerIndex === null || viewerVideos.length === 0) return;
     setViewerDirection("next");
-    setViewerIndex((viewerIndex + 1) % visibleVideos.length);
+    setViewerIndex((viewerIndex + 1) % viewerVideos.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
@@ -172,12 +190,12 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-  }, [viewerIndex, visibleVideos.length]);
+  }, [viewerIndex, viewerVideos.length]);
 
   const prevViewer = useCallback(() => {
-    if (viewerIndex === null || visibleVideos.length === 0) return;
+    if (viewerIndex === null || viewerVideos.length === 0) return;
     setViewerDirection("prev");
-    setViewerIndex((viewerIndex - 1 + visibleVideos.length) % visibleVideos.length);
+    setViewerIndex((viewerIndex - 1 + viewerVideos.length) % viewerVideos.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
@@ -186,7 +204,7 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-  }, [viewerIndex, visibleVideos.length]);
+  }, [viewerIndex, viewerVideos.length]);
 
   const handleShare = async (video: Video) => {
     const shareUrl = buildShareUrl(video);
@@ -352,7 +370,9 @@ export function FeedScreen({
 
       if (event.key === "ArrowRight" && activeVideoMedia.length > 1) {
         event.preventDefault();
-        setViewerMediaIndex((prev) => Math.min(prev + 1, activeVideoMedia.length - 1));
+        setViewerMediaIndex((prev) =>
+          Math.min(prev + 1, activeVideoMedia.length - 1)
+        );
         return;
       }
 
@@ -389,7 +409,7 @@ export function FeedScreen({
       ) : null}
 
       <div className="mx-auto w-full max-w-[720px]">
-        {visibleVideos.map((video, index) => {
+        {visibleVideos.map((video) => {
           const isOwner =
             !!currentTelegramUserId &&
             !!video.addedByTelegramId &&
@@ -398,7 +418,9 @@ export function FeedScreen({
           const isAdmin =
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
-          const hasMedia = normalizeMediaList(video).length > 0;
+          const hasVideoMedia = normalizeMediaList(video).some(
+            (item) => item.type === "video"
+          );
 
           return (
             <FeedCard
@@ -416,8 +438,8 @@ export function FeedScreen({
               }}
               onHide={() => handleHide(video)}
               onOpen={() => {
-                if (hasMedia) {
-                  openViewer(index);
+                if (hasVideoMedia) {
+                  openViewerByVideo(video);
                 } else {
                   openTextReader(video);
                 }
