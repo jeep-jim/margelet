@@ -46,7 +46,7 @@ function RichTextBlock({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <div className="space-y-3 text-[16px] leading-4 text-neutral-900">
+    <div className="space-y-3 text-[16px] leading-5 text-neutral-900">
       {paragraphs.map((paragraph, index) => {
         const lines = paragraph.split("\n");
 
