@@ -2,16 +2,20 @@ import { useEffect, useRef, useState } from "react";
 
 function ExpandableTextBase({
   text,
-  lines,
+  collapsedLines,
+  expandedLines,
   fallbackLimit,
   textClassName,
+  onOpen,
 }: {
   text: string;
-  lines: 2 | 5 | 10;
+  collapsedLines: 2 | 5 | 10;
+  expandedLines: 5 | 10;
   fallbackLimit: number;
   textClassName: string;
+  onOpen?: () => void;
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [stage, setStage] = useState<0 | 1>(0);
   const [shouldClamp, setShouldClamp] = useState(false);
   const measureRef = useRef<HTMLDivElement | null>(null);
 
@@ -27,33 +31,38 @@ function ExpandableTextBase({
       return;
     }
 
-    const maxHeight = lineHeight * lines + 1;
+    const maxHeight = lineHeight * collapsedLines + 1;
     setShouldClamp(node.scrollHeight > maxHeight);
-  }, [fallbackLimit, lines, text]);
+  }, [collapsedLines, fallbackLimit, text]);
 
   useEffect(() => {
-    setExpanded(false);
+    setStage(0);
   }, [text]);
 
   if (!text) return null;
 
   const clampClass =
-    lines === 2 ? "line-clamp-2" : lines === 5 ? "line-clamp-5" : "line-clamp-[10]";
+    stage === 0
+      ? collapsedLines === 2
+        ? "line-clamp-2"
+        : collapsedLines === 5
+          ? "line-clamp-5"
+          : "line-clamp-[10]"
+      : expandedLines === 5
+        ? "line-clamp-5"
+        : "line-clamp-[10]";
 
   return (
     <div className={textClassName}>
       <div className="relative">
-        <div
-          ref={measureRef}
-          className={expanded ? "" : `${clampClass} pr-14`}
-        >
+        <div ref={measureRef} className={`${clampClass} pr-16 whitespace-pre-wrap break-words`}>
           {text}
         </div>
 
-        {shouldClamp && !expanded ? (
+        {shouldClamp && stage === 0 ? (
           <button
             type="button"
-            onClick={() => setExpanded(true)}
+            onClick={() => setStage(1)}
             className="absolute bottom-0 right-0 bg-white pl-2 text-sm font-medium text-neutral-500"
           >
             Ещё
@@ -61,14 +70,14 @@ function ExpandableTextBase({
         ) : null}
       </div>
 
-      {shouldClamp && expanded ? (
-        <div className="mt-1 flex justify-end">
+      {shouldClamp && stage === 1 && onOpen ? (
+        <div className="mt-2 flex justify-end">
           <button
             type="button"
-            onClick={() => setExpanded(false)}
-            className="text-sm font-medium text-neutral-500"
+            onClick={onOpen}
+            className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
           >
-            Свернуть
+            Читать
           </button>
         </div>
       ) : null}
@@ -76,13 +85,21 @@ function ExpandableTextBase({
   );
 }
 
-export function ExpandableFeedText({ text }: { text: string }) {
+export function ExpandableFeedText({
+  text,
+  onOpen,
+}: {
+  text: string;
+  onOpen?: () => void;
+}) {
   return (
     <ExpandableTextBase
       text={text}
-      lines={2}
+      collapsedLines={2}
+      expandedLines={5}
       fallbackLimit={120}
       textClassName="text-[15px] leading-6 text-neutral-900"
+      onOpen={onOpen}
     />
   );
 }
@@ -91,7 +108,8 @@ export function ExpandableTextPostText({ text }: { text: string }) {
   return (
     <ExpandableTextBase
       text={text}
-      lines={5}
+      collapsedLines={5}
+      expandedLines={10}
       fallbackLimit={260}
       textClassName="text-[15px] leading-7 text-neutral-900"
     />

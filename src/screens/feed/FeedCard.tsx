@@ -105,7 +105,7 @@ export function FeedCard(props: FeedCardProps) {
 
       {shouldUseMediaCard && displayText ? (
         <div className="px-4 py-3">
-          <ExpandableFeedText text={displayText} />
+          <ExpandableFeedText text={displayText} onOpen={onOpen} />
         </div>
       ) : null}
     </article>
