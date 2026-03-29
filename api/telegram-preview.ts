@@ -475,6 +475,22 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
   }
 
   if (!result.audio) {
+    const audioSourceTags = msgHtml.match(/<source\b[^>]*>/gi) ?? [];
+
+    for (const tag of audioSourceTags) {
+      const src = pickAttr(tag, ["src", "data-src"]);
+      if (src && isLikelyTelegramAudioUrl(src)) {
+        result.audio = src;
+        result.hasMediaInOriginal = true;
+        if (result.mediaKind === "none") {
+          result.mediaKind = "audio";
+        }
+        break;
+      }
+    }
+  }
+
+  if (!result.audio) {
     const audioWraps =
       msgHtml.match(
         /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_voice_player|tgme_widget_message_audio)[^"]*"[^>]*>/gi
