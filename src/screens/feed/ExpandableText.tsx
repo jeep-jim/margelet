@@ -6,14 +6,18 @@ function ExpandableTextBase({
   expandedLines,
   fallbackLimit,
   textClassName,
-  onOpen,
+  children,
 }: {
   text: string;
   collapsedLines: 2 | 5 | 10;
   expandedLines: 5 | 10;
   fallbackLimit: number;
   textClassName: string;
-  onOpen?: () => void;
+  children?: (state: {
+    expanded: boolean;
+    clamped: boolean;
+    expand: () => void;
+  }) => React.ReactNode;
 }) {
   const [stage, setStage] = useState<0 | 1>(0);
   const [shouldClamp, setShouldClamp] = useState(false);
@@ -52,44 +56,38 @@ function ExpandableTextBase({
         ? "line-clamp-5"
         : "line-clamp-[10]";
 
-  const actionLabel = stage === 0 ? "Ещё" : "Читать";
-
-  const handleAction = () => {
-    if (stage === 0) {
-      setStage(1);
-      return;
-    }
-
-    onOpen?.();
-  };
-
   return (
-    <div className={textClassName}>
-      <div ref={measureRef} className={`${clampClass} whitespace-pre-wrap break-words`}>
-        {text}
+    <>
+      <div className={textClassName}>
+        <div
+          ref={measureRef}
+          className={`${clampClass} whitespace-pre-wrap break-words`}
+        >
+          {text}
+        </div>
       </div>
 
-      {shouldClamp && onOpen ? (
-        <div className="mt-2 flex justify-end">
-          <button
-            type="button"
-            onClick={handleAction}
-            className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
-          >
-            {actionLabel}
-          </button>
-        </div>
-      ) : null}
-    </div>
+      {children
+        ? children({
+            expanded: stage === 1,
+            clamped: shouldClamp,
+            expand: () => setStage(1),
+          })
+        : null}
+    </>
   );
 }
 
 export function ExpandableFeedText({
   text,
-  onOpen,
+  children,
 }: {
   text: string;
-  onOpen?: () => void;
+  children?: (state: {
+    expanded: boolean;
+    clamped: boolean;
+    expand: () => void;
+  }) => React.ReactNode;
 }) {
   return (
     <ExpandableTextBase
@@ -98,8 +96,9 @@ export function ExpandableFeedText({
       expandedLines={5}
       fallbackLimit={120}
       textClassName="text-[15px] leading-6 text-neutral-900"
-      onOpen={onOpen}
-    />
+    >
+      {children}
+    </ExpandableTextBase>
   );
 }
 

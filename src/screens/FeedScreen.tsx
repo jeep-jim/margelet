@@ -451,7 +451,7 @@ export function FeedScreen({
               }}
               onOpenCreator={() => openSource(video.channel)}
               mediaIndex={feedMediaIndexes[video.id] || 0}
-              onChangeMediaIndex={(next) => setFeedCardMediaIndex(video.id, next)}
+              onChangeMediaIndex={(next: number) => setFeedCardMediaIndex(video.id, next)}
             />
           );
         })}
