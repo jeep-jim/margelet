@@ -42,12 +42,6 @@ function normalizeUrl(value?: string | null) {
   return raw;
 }
 
-function toProxyUrl(url?: string | null) {
-  const normalized = normalizeUrl(url);
-  if (!normalized) return null;
-  return `/api/media-proxy?url=${encodeURIComponent(normalized)}`;
-}
-
 function readMetaProperty(html: string, key: string) {
   const escaped = escapeRegExp(key);
   const patterns = [
@@ -554,10 +548,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (
-    result.mediaKind === "none" &&
-    result.hasMediaInOriginal
-  ) {
+  if (result.mediaKind === "none" && result.hasMediaInOriginal) {
     result.mediaKind = "external_media";
   }
 
@@ -590,6 +581,13 @@ function parseTelegramPostUrl(url: string) {
   if (!/^\d+$/.test(postId)) return null;
 
   return { sourceHandle, postId };
+}
+
+function toSafeProxyUrl(url?: string | null) {
+  const normalized = normalizeUrl(url);
+  if (!normalized) return null;
+  if (isLikelyAvatarUrl(normalized)) return null;
+  return `/api/media-proxy?url=${encodeURIComponent(normalized)}`;
 }
 
 export default async function handler(req: any, res: any) {
@@ -656,11 +654,11 @@ export default async function handler(req: any, res: any) {
 
     return res.status(200).json({
       canonical,
-      image: toProxyUrl(media.image) || null,
-      video: toProxyUrl(media.video) || null,
-      poster: toProxyUrl(media.poster) || null,
-      audio: toProxyUrl(media.audio) || null,
-      file: toProxyUrl(media.file) || null,
+      image: toSafeProxyUrl(media.image),
+      video: toSafeProxyUrl(media.video),
+      poster: toSafeProxyUrl(media.poster),
+      audio: toSafeProxyUrl(media.audio),
+      file: toSafeProxyUrl(media.file),
       title: cleanText(title),
       caption: cleanText(caption),
       avatar: normalizeUrl(avatar) || null,
