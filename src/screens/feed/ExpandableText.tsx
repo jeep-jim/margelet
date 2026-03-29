@@ -55,7 +55,7 @@ function ExpandableTextBase({
   return (
     <div className={textClassName}>
       <div className="relative">
-        <div ref={measureRef} className={`${clampClass} pr-16 whitespace-pre-wrap break-words`}>
+        <div ref={measureRef} className={`${clampClass} whitespace-pre-wrap break-words`}>
           {text}
         </div>
 
