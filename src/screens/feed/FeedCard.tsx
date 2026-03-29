@@ -6,7 +6,7 @@ import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
-import { getDisplayText } from "./feed.utils";
+import { getDisplayText, normalizeMediaList } from "./feed.utils";
 
 export function FeedCard(props: FeedCardProps) {
   const {
@@ -23,18 +23,22 @@ export function FeedCard(props: FeedCardProps) {
   } = props;
 
   const displayText = getDisplayText(video, locale);
+  const mediaItems = normalizeMediaList(video);
 
-  // ❗️ ВАЖНО: определяем по ТИПУ, а не по наличию URL
+  const mediaKind = video.mediaKind || "none";
+  const hasStoredMedia = mediaItems.length > 0;
+
   const hasMediaByType =
-    video.mediaKind === "image" ||
-    video.mediaKind === "gif" ||
-    video.mediaKind === "video" ||
-    video.mediaKind === "audio" ||
-    video.mediaKind === "file";
+    mediaKind === "image" ||
+    mediaKind === "gif" ||
+    mediaKind === "video" ||
+    mediaKind === "audio" ||
+    mediaKind === "file";
 
+  const isExternalMedia = mediaKind === "external_media";
 
-  // ❗️ финальное решение
-  const shouldUseMediaCard = hasMediaByType;
+  const shouldUseMediaCard =
+    !isExternalMedia && (hasMediaByType || hasStoredMedia);
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
@@ -67,11 +71,7 @@ export function FeedCard(props: FeedCardProps) {
       className="overflow-hidden border-b border-neutral-200 bg-white"
     >
       <div className="flex items-center justify-between px-4 pt-4">
-        <FeedSourceHeader
-          video={video}
-          compact
-          onOpenCreator={onOpenCreator}
-        />
+        <FeedSourceHeader video={video} compact onOpenCreator={onOpenCreator} />
 
         <div className="relative">
           <button
@@ -93,7 +93,6 @@ export function FeedCard(props: FeedCardProps) {
         </div>
       </div>
 
-      {/* 🔥 ВЫБОР КАРТОЧКИ ПО mediaKind */}
       {shouldUseMediaCard ? (
         <FeedMediaCard
           {...props}
@@ -104,7 +103,6 @@ export function FeedCard(props: FeedCardProps) {
         <FeedTextCard video={video} locale={locale} onOpen={onOpen} />
       )}
 
-      {/* текст под медиа */}
       {shouldUseMediaCard && displayText ? (
         <div className="px-4 py-3">
           <ExpandableFeedText text={displayText} />
