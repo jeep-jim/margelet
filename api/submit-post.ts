@@ -82,6 +82,8 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Invalid Telegram post URL" });
     }
 
+    const realHandle = parsed.sourceHandle;
+
     const existing = await getPostByUrl(parsed.normalizedUrl);
 
     if (existing) {
@@ -201,7 +203,7 @@ export default async function handler(req: any, res: any) {
     };
 
     post.channel = cleanChannel;
-    post.handle = `@${cleanChannel.replace(/^@/, "").trim().toLowerCase()}`;
+    post.handle = `@${realHandle}`;
     post.addedByTelegramId = asCleanString(addedByTelegramId);
     post.addedByUsername = asCleanString(addedByUsername);
 
