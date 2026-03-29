@@ -20,11 +20,26 @@ export function FeedCard(props: FeedCardProps) {
     onHide,
     onOpen,
     onOpenCreator,
-   } = props;
-  
+  } = props;
+
   const displayText = getDisplayText(video, locale);
+
   const mediaItems = normalizeMediaList(video);
-  const mediaExists = mediaItems.length > 0;
+
+  // ❗️ ВАЖНО: определяем по ТИПУ, а не по наличию URL
+  const hasMediaByType =
+    video.mediaKind === "image" ||
+    video.mediaKind === "gif" ||
+    video.mediaKind === "video" ||
+    video.mediaKind === "audio" ||
+    video.mediaKind === "file";
+
+  const isExternalMedia = video.mediaKind === "external_media";
+
+  // ❗️ финальное решение
+  const shouldUseMediaCard = hasMediaByType;
+  const shouldUseTextCard = !hasMediaByType || isExternalMedia;
+
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
 
@@ -34,7 +49,9 @@ export function FeedCard(props: FeedCardProps) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsCardVisible(entry.isIntersecting && entry.intersectionRatio >= 0.6);
+        setIsCardVisible(
+          entry.isIntersecting && entry.intersectionRatio >= 0.6
+        );
       },
       {
         threshold: [0, 0.25, 0.6, 0.85, 1],
@@ -54,7 +71,11 @@ export function FeedCard(props: FeedCardProps) {
       className="overflow-hidden border-b border-neutral-200 bg-white"
     >
       <div className="flex items-center justify-between px-4 pt-4">
-        <FeedSourceHeader video={video} compact onOpenCreator={onOpenCreator} />
+        <FeedSourceHeader
+          video={video}
+          compact
+          onOpenCreator={onOpenCreator}
+        />
 
         <div className="relative">
           <button
@@ -76,21 +97,19 @@ export function FeedCard(props: FeedCardProps) {
         </div>
       </div>
 
-      {mediaExists ? (
+      {/* 🔥 ВЫБОР КАРТОЧКИ ПО mediaKind */}
+      {shouldUseMediaCard ? (
         <FeedMediaCard
           {...props}
           displayText={displayText}
           isCardVisible={isCardVisible}
         />
       ) : (
-        <FeedTextCard
-          video={video}
-          locale={locale}
-          onOpen={onOpen}
-        />
+        <FeedTextCard video={video} locale={locale} onOpen={onOpen} />
       )}
 
-      {mediaExists ? (
+      {/* текст под медиа */}
+      {shouldUseMediaCard && displayText ? (
         <div className="px-4 py-3">
           <ExpandableFeedText text={displayText} />
         </div>
