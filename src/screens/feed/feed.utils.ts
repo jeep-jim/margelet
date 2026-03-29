@@ -9,9 +9,18 @@ export function getTagLabel(tag: FeedTag) {
   return TAG_OPTIONS.find((item) => item.value === tag)?.label || "Все";
 }
 
+// 🔥 ФИКС: нормальная проверка аватарки
 export function isAvatarUrl(value?: string | null) {
-  if (!value) return false;
-  return /^https?:\/\//i.test(value);
+  const v = String(value || "").toLowerCase();
+  if (!v) return false;
+
+  return (
+    v.includes("userpic") ||
+    v.includes("tgme_page_photo") ||
+    v.includes("channel_photo") ||
+    v.includes("profile_photo") ||
+    v.includes("avatar")
+  );
 }
 
 export function getDisplayText(video: Video, locale: Locale) {
@@ -31,22 +40,26 @@ export function normalizeMediaList(video: Video): PostMedia[] {
         !!item &&
         (item.type === "image" || item.type === "video") &&
         typeof item.url === "string" &&
-        !!item.url.trim()
+        !!item.url.trim() &&
+        !isAvatarUrl(item.url) // 🔥 ВАЖНО
     );
   }
 
-  if (video.videoUrl) {
+  if (video.videoUrl && !isAvatarUrl(video.videoUrl)) {
     return [
       {
         id: "video-1",
         type: "video",
         url: video.videoUrl,
-        poster: video.previewUrl || null,
+        poster:
+          video.previewUrl && !isAvatarUrl(video.previewUrl)
+            ? video.previewUrl
+            : null,
       },
     ];
   }
 
-  if (video.previewUrl) {
+  if (video.previewUrl && !isAvatarUrl(video.previewUrl)) {
     return [
       {
         id: "image-1",

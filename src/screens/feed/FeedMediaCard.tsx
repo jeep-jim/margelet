@@ -85,7 +85,7 @@ export function FeedMediaCard({
     return (
       <button
         onClick={onOpen}
-        className="relative mt-3 block w-full overflow-hidden rounded-[20px] bg-neutral-100 text-left"
+        className="relative mt-3 block w-full overflow-hidden bg-neutral-100 text-left"
         type="button"
       >
         <div className="flex aspect-[9/10.2] w-full flex-col justify-between p-4 sm:aspect-[9/9.8]">
@@ -123,7 +123,7 @@ export function FeedMediaCard({
   return (
     <button
       onClick={onOpen}
-      className="relative mt-3 block w-full overflow-hidden rounded-[20px] bg-neutral-100 text-left"
+      className="relative mt-3 block w-full overflow-hidden bg-neutral-100 text-left"
       type="button"
     >
       <FeedCarousel
