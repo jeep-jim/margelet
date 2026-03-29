@@ -6,7 +6,7 @@ import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
-import { getDisplayText, normalizeMediaList } from "./feed.utils";
+import { getDisplayText } from "./feed.utils";
 
 export function FeedCard(props: FeedCardProps) {
   const {
@@ -24,8 +24,6 @@ export function FeedCard(props: FeedCardProps) {
 
   const displayText = getDisplayText(video, locale);
 
-  const mediaItems = normalizeMediaList(video);
-
   // ❗️ ВАЖНО: определяем по ТИПУ, а не по наличию URL
   const hasMediaByType =
     video.mediaKind === "image" ||
@@ -34,11 +32,9 @@ export function FeedCard(props: FeedCardProps) {
     video.mediaKind === "audio" ||
     video.mediaKind === "file";
 
-  const isExternalMedia = video.mediaKind === "external_media";
 
   // ❗️ финальное решение
   const shouldUseMediaCard = hasMediaByType;
-  const shouldUseTextCard = !hasMediaByType || isExternalMedia;
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
