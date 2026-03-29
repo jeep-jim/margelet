@@ -139,7 +139,7 @@ export function FeedCard(props: FeedCardProps) {
                       <button
                         type="button"
                         onClick={expanded ? onOpen : expand}
-                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
+                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                       >
                         <span>{expanded ? "Читать" : "Ещё"}</span>
                         {expanded ? <ExternalLink className="h-4 w-4" /> : null}
@@ -148,7 +148,7 @@ export function FeedCard(props: FeedCardProps) {
                       <button
                         type="button"
                         onClick={onOpen}
-                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
+                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                       >
                         <span>Читать</span>
                         <ExternalLink className="h-4 w-4" />
