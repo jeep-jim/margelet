@@ -52,32 +52,31 @@ function ExpandableTextBase({
         ? "line-clamp-5"
         : "line-clamp-[10]";
 
+  const actionLabel = stage === 0 ? "Ещё" : "Читать";
+
+  const handleAction = () => {
+    if (stage === 0) {
+      setStage(1);
+      return;
+    }
+
+    onOpen?.();
+  };
+
   return (
     <div className={textClassName}>
-      <div className="relative">
-        <div ref={measureRef} className={`${clampClass} whitespace-pre-wrap break-words`}>
-          {text}
-        </div>
-
-        {shouldClamp && stage === 0 ? (
-          <button
-            type="button"
-            onClick={() => setStage(1)}
-            className="absolute bottom-0 right-0 bg-white pl-2 text-sm font-medium text-neutral-500"
-          >
-            Ещё
-          </button>
-        ) : null}
+      <div ref={measureRef} className={`${clampClass} whitespace-pre-wrap break-words`}>
+        {text}
       </div>
 
-      {shouldClamp && stage === 1 && onOpen ? (
+      {shouldClamp && onOpen ? (
         <div className="mt-2 flex justify-end">
           <button
             type="button"
-            onClick={onOpen}
+            onClick={handleAction}
             className="rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
           >
-            Читать
+            {actionLabel}
           </button>
         </div>
       ) : null}

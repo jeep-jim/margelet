@@ -103,44 +103,34 @@ export function FeedCard(props: FeedCardProps) {
 
           {displayText ? (
             <div className="px-4 py-3">
-              <ExpandableFeedText text={displayText} />
+              <ExpandableFeedText text={displayText} onOpen={onOpen} />
 
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-8 text-neutral-700">
-                  <button
-                    type="button"
-                    className="flex items-center justify-center"
-                    aria-label="Нравится"
-                    title="Нравится"
-                  >
-                    <Heart className="h-5 w-5" />
-                  </button>
-
-                  <button
-                    type="button"
-                    className="flex items-center justify-center"
-                    aria-label="Сохранить"
-                    title="Сохранить"
-                  >
-                    <Bookmark className="h-5 w-5" />
-                  </button>
-
-                  <button
-                    type="button"
-                    className="flex items-center justify-center"
-                    aria-label="Поделиться"
-                    title="Поделиться"
-                  >
-                    <Send className="h-5 w-5" />
-                  </button>
-                </div>
+              <div className="mt-4 flex items-center justify-start gap-8 text-neutral-700">
+                <button
+                  type="button"
+                  className="flex items-center justify-center"
+                  aria-label="Нравится"
+                  title="Нравится"
+                >
+                  <Heart className="h-5 w-5" />
+                </button>
 
                 <button
                   type="button"
-                  onClick={onOpen}
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
+                  className="flex items-center justify-center"
+                  aria-label="Сохранить"
+                  title="Сохранить"
                 >
-                  <span>Читать</span>
+                  <Bookmark className="h-5 w-5" />
+                </button>
+
+                <button
+                  type="button"
+                  className="flex items-center justify-center"
+                  aria-label="Поделиться"
+                  title="Поделиться"
+                >
+                  <Send className="h-5 w-5" />
                 </button>
               </div>
             </div>
