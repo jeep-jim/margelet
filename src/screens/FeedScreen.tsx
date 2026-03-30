@@ -15,12 +15,10 @@ import {
 } from "./feed/feed.utils";
 
 function isRealVideoPost(video: Video) {
-  if (video.mediaKind === "gif") return false;
-  if (video.mediaKind === "audio") return false;
-  if (video.mediaKind === "file") return false;
-  if (video.mediaKind === "external_media") return false;
+  if (video.mediaKind) {
+    return video.mediaKind === "video";
+  }
 
-  if (video.mediaKind === "video") return true;
   if (video.videoUrl) return true;
 
   const media = normalizeMediaList(video);
