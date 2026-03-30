@@ -149,11 +149,16 @@ function extractAuthorNameFromMessageBlock(msgHtml: string, pageHtml: string) {
     }
   }
 
-  return (
+  const metaTitle =
     readMetaProperty(pageHtml, "og:title") ||
-    readMetaProperty(pageHtml, "twitter:title") ||
-    null
-  );
+    readMetaProperty(pageHtml, "twitter:title");
+
+  if (metaTitle) {
+    // Telegram даёт формат: "Молянов — Telegram"
+    return metaTitle.replace(/\s+—\s+Telegram$/i, "").trim();
+  }
+
+  return null;
 }
 
 function extractVerifiedFromMessageBlock(msgHtml: string, pageHtml: string) {
@@ -374,6 +379,8 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     /tgme_widget_message_document_wrap/i.test(msgHtml) ||
     /tgme_widget_message_document/i.test(msgHtml);
 
+  const shouldBlockImageFallback = hasAudioWrap || hasFileWrap;
+
   if (hasPhotoWrap || hasVideoWrap || hasAnimationWrap || hasAudioWrap || hasFileWrap || tooLarge) {
     result.hasMediaInOriginal = true;
   }
@@ -409,7 +416,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none") {
+  if (result.mediaKind === "none" && !shouldBlockImageFallback) {
     const videoPlayers =
       msgHtml.match(
         /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap|tgme_widget_message_roundvideo)[^"]*"[^>]*>/gi
@@ -437,7 +444,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none") {
+  if (result.mediaKind === "none" && !shouldBlockImageFallback) {
     const videoTagRe = /<video\b[^>]*>/gi;
     const videoTags = msgHtml.match(videoTagRe) ?? [];
 
