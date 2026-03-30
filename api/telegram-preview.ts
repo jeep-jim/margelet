@@ -399,6 +399,17 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const bg = pickBgUrlFromStyle(tag);
     const poster = normalizeUrl(bg || pickAttr(tag, ["data-poster", "poster"]));
     const href = pickAttr(tag, ["href", "data-src", "src"]);
+    const dataVideo = pickAttr(tag, ["data-video"]);
+
+    if (dataVideo && isLikelyTelegramVideoUrl(dataVideo)) {
+      result.video = dataVideo;
+      if (poster && !isLikelyAvatarUrl(poster)) {
+        result.poster = poster;
+      }
+      result.hasMediaInOriginal = true;
+      result.mediaKind = "gif";
+      break;
+    }
 
     if (poster && !isLikelyAvatarUrl(poster)) {
       result.image = poster;
