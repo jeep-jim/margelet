@@ -33,11 +33,14 @@ function resolveMediaTypeFromKind(
   mediaKind: string | null,
   finalMedia: PostMedia[]
 ): "video" | "image" | "text" {
+  if (mediaKind === "video") return "video";
+
+  if (mediaKind === "gif") return "image";
+
+  if (mediaKind === "image") return "image";
+
   if (finalMedia[0]?.type === "video") return "video";
   if (finalMedia[0]?.type === "image") return "image";
-
-  if (mediaKind === "video") return "video";
-  if (mediaKind === "image" || mediaKind === "gif") return "image";
 
   return "text";
 }
