@@ -55,8 +55,20 @@ export function FeedScreen({
   const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>({});
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
+  const safePosts = useMemo(() => {
+    return posts.filter(
+      (post) =>
+        !!post &&
+        typeof post.id === "number" &&
+        !!post.source &&
+        typeof post.source.title === "string" &&
+        typeof post.source.handle === "string" &&
+        Array.isArray(post.media)
+    );
+  }, [posts]);
+
   const preferredTags = useMemo(() => {
-    const source = posts.filter(
+    const source = safePosts.filter(
       (post) => likedPostIds.includes(post.id) || savedPostIds.includes(post.id)
     );
 
@@ -70,10 +82,10 @@ export function FeedScreen({
     return Array.from(counts.entries())
       .sort((a, b) => b[1] - a[1])
       .map(([tag]) => tag);
-  }, [posts, likedPostIds, savedPostIds]);
+  }, [safePosts, likedPostIds, savedPostIds]);
 
   const visiblePosts = useMemo(() => {
-    let list = [...posts];
+    let list = [...safePosts];
 
     if (activeTag !== "all") {
       list = list.filter((post) => getResolvedTag(post) === activeTag);
@@ -122,7 +134,7 @@ export function FeedScreen({
     });
 
     return list;
-  }, [posts, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
+  }, [safePosts, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
 
   const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isRealVideoPost(post));
@@ -261,10 +273,12 @@ export function FeedScreen({
 
       <div className="mx-auto w-full max-w-[720px]">
         {visiblePosts.map((post) => {
+          const ownerTelegramId = post.addedBy?.telegramId ?? null;
+
           const isOwner =
             !!currentTelegramUserId &&
-            !!post.addedBy.telegramId &&
-            currentTelegramUserId === post.addedBy.telegramId;
+            !!ownerTelegramId &&
+            currentTelegramUserId === ownerTelegramId;
 
           const isAdmin =
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
