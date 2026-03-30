@@ -31,9 +31,7 @@ export function FeedCard(props: FeedCardProps) {
   const hasMediaByType =
     mediaKind === "image" ||
     mediaKind === "gif" ||
-    mediaKind === "video" ||
-    mediaKind === "audio" ||
-    mediaKind === "file";
+    mediaKind === "video";
 
   const isExternalMedia = mediaKind === "external_media";
 

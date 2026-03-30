@@ -15,11 +15,7 @@ import {
 } from "./feed/feed.utils";
 
 function isRealVideoPost(video: Video) {
-  if (video.mediaKind === "video") return true;
-  if (video.videoUrl) return true;
-
-  const media = normalizeMediaList(video);
-  return media.some((item) => item.type === "video");
+  return video.mediaKind === "video";
 }
 
 export function FeedScreen({
