@@ -34,10 +34,11 @@ function resolveMediaTypeFromKind(
   finalMedia: PostMedia[]
 ): "video" | "image" | "text" {
   if (mediaKind === "video") return "video";
-
   if (mediaKind === "gif") return "image";
-
   if (mediaKind === "image") return "image";
+  if (mediaKind === "audio" || mediaKind === "file" || mediaKind === "external_media") {
+    return "text";
+  }
 
   if (finalMedia[0]?.type === "video") return "video";
   if (finalMedia[0]?.type === "image") return "image";
@@ -100,7 +101,10 @@ export default async function handler(req: any, res: any) {
       "Telegram";
 
     const cleanCaption = asCleanString(caption) || "";
-    const cleanChannel = asCleanString(title) || asCleanString(channel) || parsed.sourceHandle;
+    const cleanChannel =
+      asCleanString(title) ||
+      asCleanString(channel) ||
+      parsed.sourceHandle;
     const cleanAvatar = asCleanString(avatar);
 
     const cleanPreviewUrl = asCleanString(previewUrl);
@@ -128,13 +132,13 @@ export default async function handler(req: any, res: any) {
                 poster: cleanPoster || cleanPreviewUrl || null,
               },
             ]
-          : cleanMediaKind === "gif" && (cleanPoster || cleanPreviewUrl)
+          : cleanMediaKind === "gif" && cleanVideoUrl
             ? [
                 {
-                  id: "image-1",
-                  type: "image" as const,
-                  url: cleanPoster || cleanPreviewUrl!,
-                  poster: null,
+                  id: "video-1",
+                  type: "video" as const,
+                  url: cleanVideoUrl,
+                  poster: cleanPoster || cleanPreviewUrl || null,
                 },
               ]
             : cleanPreviewUrl
@@ -153,6 +157,10 @@ export default async function handler(req: any, res: any) {
         ? mediaType
         : resolveMediaTypeFromKind(cleanMediaKind, finalMedia);
 
+    const mediaTypeForPost = cleanMediaKind === "gif" ? "image" : resolvedMediaType;
+    const builderVideoUrl =
+      cleanMediaKind === "video" ? cleanVideoUrl : null;
+
     const post = buildSubmittedPost(
       {
         url: parsed.normalizedUrl,
@@ -163,8 +171,8 @@ export default async function handler(req: any, res: any) {
         tag,
         media: finalMedia,
         previewUrl: cleanPreviewUrl,
-        mediaType: resolvedMediaType,
-        videoUrl: cleanVideoUrl,
+        mediaType: mediaTypeForPost,
+        videoUrl: builderVideoUrl,
         channelVerified: !!channelVerified,
       },
       {
@@ -191,18 +199,22 @@ export default async function handler(req: any, res: any) {
     post.media = finalMedia;
 
     post.previewUrl =
-      finalMedia[0]?.type === "image"
-        ? finalMedia[0].url
-        : finalMedia[0]?.type === "video"
-          ? finalMedia[0].poster || cleanPoster || cleanPreviewUrl || null
-          : cleanPreviewUrl || null;
+      cleanMediaKind === "gif"
+        ? cleanPoster || cleanPreviewUrl || null
+        : finalMedia[0]?.type === "image"
+          ? finalMedia[0].url
+          : finalMedia[0]?.type === "video"
+            ? finalMedia[0].poster || cleanPoster || cleanPreviewUrl || null
+            : cleanPreviewUrl || null;
 
     post.videoUrl =
-      finalMedia[0]?.type === "video"
-        ? finalMedia[0].url
-        : cleanVideoUrl || null;
+      cleanMediaKind === "gif"
+        ? cleanVideoUrl || null
+        : finalMedia[0]?.type === "video"
+          ? finalMedia[0].url
+          : cleanVideoUrl || null;
 
-    post.mediaType = resolvedMediaType;
+    post.mediaType = mediaTypeForPost;
 
     post.title = {
       ru: cleanTitle,

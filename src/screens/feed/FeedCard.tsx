@@ -28,15 +28,15 @@ export function FeedCard(props: FeedCardProps) {
   const mediaKind = video.mediaKind || "none";
   const hasStoredMedia = mediaItems.length > 0;
 
-  const hasMediaByType =
+  const isVisualMediaKind =
     mediaKind === "image" ||
     mediaKind === "gif" ||
     mediaKind === "video";
 
-  const isExternalMedia = mediaKind === "external_media";
-
   const shouldUseMediaCard =
-    !isExternalMedia && (hasMediaByType || hasStoredMedia);
+    mediaKind === "none"
+      ? hasStoredMedia
+      : isVisualMediaKind;
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);

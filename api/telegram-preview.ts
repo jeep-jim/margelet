@@ -154,7 +154,6 @@ function extractAuthorNameFromMessageBlock(msgHtml: string, pageHtml: string) {
     readMetaProperty(pageHtml, "twitter:title");
 
   if (metaTitle) {
-    // Telegram даёт формат: "Молянов — Telegram"
     return metaTitle.replace(/\s+—\s+Telegram$/i, "").trim();
   }
 
@@ -381,7 +380,14 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
 
   const shouldBlockImageFallback = hasAudioWrap || hasFileWrap;
 
-  if (hasPhotoWrap || hasVideoWrap || hasAnimationWrap || hasAudioWrap || hasFileWrap || tooLarge) {
+  if (
+    hasPhotoWrap ||
+    hasVideoWrap ||
+    hasAnimationWrap ||
+    hasAudioWrap ||
+    hasFileWrap ||
+    tooLarge
+  ) {
     result.hasMediaInOriginal = true;
   }
 
@@ -405,6 +411,18 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       result.video = dataVideo;
       if (poster && !isLikelyAvatarUrl(poster)) {
         result.poster = poster;
+        result.image = poster;
+      }
+      result.hasMediaInOriginal = true;
+      result.mediaKind = "gif";
+      break;
+    }
+
+    if (href && isLikelyTelegramVideoUrl(href)) {
+      result.video = href;
+      if (poster && !isLikelyAvatarUrl(poster)) {
+        result.poster = poster;
+        result.image = poster;
       }
       result.hasMediaInOriginal = true;
       result.mediaKind = "gif";
@@ -427,7 +445,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none" && !shouldBlockImageFallback) {
+  if (result.mediaKind === "none") {
     const videoPlayers =
       msgHtml.match(
         /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap|tgme_widget_message_roundvideo)[^"]*"[^>]*>/gi
@@ -440,20 +458,27 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
         posterFromStyle || pickAttr(tag, ["data-poster", "poster"])
       );
       const video = normalizeUrl(href);
+      const tagLooksAnimated =
+        hasAnimationWrap || /animation/i.test(tag) || looksLikeGifUrl(String(video || ""));
 
       if (video && isLikelyTelegramVideoUrl(video)) {
         result.video = video;
 
         if (poster && !isLikelyAvatarUrl(poster)) {
           result.poster = poster;
+          if (tagLooksAnimated) {
+            result.image = poster;
+          }
         }
 
-        result.mediaKind = hasAnimationWrap ? "gif" : "video";
+        result.hasMediaInOriginal = true;
+        result.mediaKind = tagLooksAnimated ? "gif" : "video";
+        break;
       }
     }
   }
 
-  if (result.mediaKind === "none" && !shouldBlockImageFallback) {
+  if (result.mediaKind === "none") {
     const videoTagRe = /<video\b[^>]*>/gi;
     const videoTags = msgHtml.match(videoTagRe) ?? [];
 
@@ -462,15 +487,22 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       const poster = pickAttr(tag, ["poster", "data-poster"]);
       const url = normalizeUrl(src);
       const p = normalizeUrl(poster);
+      const tagLooksAnimated =
+        hasAnimationWrap || /animation/i.test(tag) || looksLikeGifUrl(String(url || ""));
 
-      if (url && isLikelyTelegramVideoUrl(url) && !looksLikeGifUrl(url)) {
+      if (url && isLikelyTelegramVideoUrl(url) && (!looksLikeGifUrl(url) || tagLooksAnimated)) {
         result.video = url;
 
         if (p && !isLikelyAvatarUrl(p)) {
           result.poster = p;
+          if (tagLooksAnimated) {
+            result.image = p;
+          }
         }
 
-        result.mediaKind = hasAnimationWrap ? "gif" : "video";
+        result.hasMediaInOriginal = true;
+        result.mediaKind = tagLooksAnimated ? "gif" : "video";
+        break;
       }
     }
   }
@@ -523,7 +555,11 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none") {
+  if (!result.audio && hasAudioWrap && result.mediaKind === "none") {
+    result.mediaKind = "audio";
+  }
+
+  if (result.mediaKind === "none" && !shouldBlockImageFallback) {
     const photoWrapRe =
       /<a\b[^>]*class="[^"]*tgme_widget_message_photo_wrap[^"]*"[^>]*>/gi;
     const photoWraps = msgHtml.match(photoWrapRe) ?? [];
@@ -544,7 +580,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none" && !result.image) {
+  if (result.mediaKind === "none" && !result.image && !shouldBlockImageFallback) {
     const imgTagRe = /<img\b[^>]*>/gi;
     const imgTags = msgHtml.match(imgTagRe) ?? [];
 
@@ -576,6 +612,10 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       }
       break;
     }
+  }
+
+  if (!result.file && hasFileWrap && result.mediaKind === "none") {
+    result.mediaKind = "file";
   }
 
   if (result.mediaKind === "none" && result.hasMediaInOriginal) {
