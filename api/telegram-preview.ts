@@ -587,7 +587,14 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     for (const tag of imgTags) {
       const src = pickAttr(tag, ["src", "data-src"]);
       if (!src) continue;
+
+      // ❌ отсекаем аватарки
       if (isLikelyAvatarUrl(src)) continue;
+
+      // ❌ отсекаем всё, что не реальный Telegram CDN медиа-файл
+      // (это ключевая правка)
+      if (!src.includes("cdn") || !src.includes("/file/")) continue;
+
       if (!isLikelyTelegramImageUrl(src)) continue;
 
       result.image = src;
@@ -595,8 +602,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       result.mediaKind = looksLikeGifUrl(src) ? "gif" : "image";
       break;
     }
-  }
-  
+  }  
 
   const documentLinks =
     msgHtml.match(/<a\b[^>]*href="[^"]+"[^>]*>/gi) ?? [];
