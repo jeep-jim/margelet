@@ -377,8 +377,17 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
   const hasFileWrap =
     /tgme_widget_message_document_wrap/i.test(msgHtml) ||
     /tgme_widget_message_document/i.test(msgHtml);
+  const hasWebpagePreview =
+    /tgme_widget_message_link_preview/i.test(msgHtml) ||
+    /tgme_widget_message_webpage/i.test(msgHtml) ||
+    /tgme_widget_message_site_name/i.test(msgHtml) ||
+    /tgme_widget_message_link\b/i.test(msgHtml) ||
+    /tgme_widget_message_invoice/i.test(msgHtml);
 
-  const shouldBlockImageFallback = hasAudioWrap || hasFileWrap;
+  const shouldBlockImageFallback =
+    hasAudioWrap ||
+    hasFileWrap ||
+    (hasWebpagePreview && !hasVideoWrap && !hasAnimationWrap && !hasAudioWrap && !hasFileWrap);
 
   if (
     hasPhotoWrap ||
@@ -458,21 +467,16 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
         posterFromStyle || pickAttr(tag, ["data-poster", "poster"])
       );
       const video = normalizeUrl(href);
-      const tagLooksAnimated =
-        hasAnimationWrap || /animation/i.test(tag) || looksLikeGifUrl(String(video || ""));
 
       if (video && isLikelyTelegramVideoUrl(video)) {
         result.video = video;
 
         if (poster && !isLikelyAvatarUrl(poster)) {
           result.poster = poster;
-          if (tagLooksAnimated) {
-            result.image = poster;
-          }
         }
 
         result.hasMediaInOriginal = true;
-        result.mediaKind = tagLooksAnimated ? "gif" : "video";
+        result.mediaKind = "video";
         break;
       }
     }
@@ -487,21 +491,16 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       const poster = pickAttr(tag, ["poster", "data-poster"]);
       const url = normalizeUrl(src);
       const p = normalizeUrl(poster);
-      const tagLooksAnimated =
-        hasAnimationWrap || /animation/i.test(tag) || looksLikeGifUrl(String(url || ""));
 
-      if (url && isLikelyTelegramVideoUrl(url) && (!looksLikeGifUrl(url) || tagLooksAnimated)) {
+      if (url && isLikelyTelegramVideoUrl(url) && !looksLikeGifUrl(url)) {
         result.video = url;
 
         if (p && !isLikelyAvatarUrl(p)) {
           result.poster = p;
-          if (tagLooksAnimated) {
-            result.image = p;
-          }
         }
 
         result.hasMediaInOriginal = true;
-        result.mediaKind = tagLooksAnimated ? "gif" : "video";
+        result.mediaKind = "video";
         break;
       }
     }
@@ -565,6 +564,16 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const photoWraps = msgHtml.match(photoWrapRe) ?? [];
 
     for (const tag of photoWraps) {
+      const className = String(tag).toLowerCase();
+
+      if (
+        className.includes("link_preview") ||
+        className.includes("webpage") ||
+        className.includes("invoice")
+      ) {
+        continue;
+      }
+
       const bg = pickBgUrlFromStyle(tag);
       const href = pickAttr(tag, ["href", "data-href", "data-src", "src"]);
       const url = normalizeUrl(bg || href);
@@ -585,15 +594,18 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     const imgTags = msgHtml.match(imgTagRe) ?? [];
 
     for (const tag of imgTags) {
+      const tagHtml = String(tag).toLowerCase();
       const src = pickAttr(tag, ["src", "data-src"]);
       if (!src) continue;
-
-      // ❌ отсекаем аватарки
       if (isLikelyAvatarUrl(src)) continue;
 
-      // ❌ отсекаем всё, что не реальный Telegram CDN медиа-файл
-      // (это ключевая правка)
-      if (!src.includes("cdn") || !src.includes("/file/")) continue;
+      if (
+        tagHtml.includes("link_preview") ||
+        tagHtml.includes("webpage") ||
+        tagHtml.includes("invoice")
+      ) {
+        continue;
+      }
 
       if (!isLikelyTelegramImageUrl(src)) continue;
 
@@ -602,7 +614,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
       result.mediaKind = looksLikeGifUrl(src) ? "gif" : "image";
       break;
     }
-  }  
+  }
 
   const documentLinks =
     msgHtml.match(/<a\b[^>]*href="[^"]+"[^>]*>/gi) ?? [];
