@@ -6,7 +6,7 @@ import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
-import { getDisplayText, normalizeMediaList } from "./feed.utils";
+import { getDisplayText } from "./feed.utils";
 
 export function FeedCard(props: FeedCardProps) {
   const {
@@ -23,20 +23,15 @@ export function FeedCard(props: FeedCardProps) {
   } = props;
 
   const displayText = getDisplayText(video, locale);
-  const mediaItems = normalizeMediaList(video);
 
   const mediaKind = video.mediaKind || "none";
-  const hasStoredMedia = mediaItems.length > 0;
 
   const isVisualMediaKind =
     mediaKind === "image" ||
     mediaKind === "gif" ||
     mediaKind === "video";
 
-  const shouldUseMediaCard =
-    mediaKind === "none"
-      ? hasStoredMedia
-      : isVisualMediaKind;
+  const shouldUseMediaCard = isVisualMediaKind;
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
