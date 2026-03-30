@@ -445,7 +445,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none") {
+  if (result.mediaKind === "none" && !hasAnimationWrap) {
     const videoPlayers =
       msgHtml.match(
         /<(a|div)\b[^>]*class="[^"]*(tgme_widget_message_video_player|tgme_widget_message_video_wrap|tgme_widget_message_roundvideo)[^"]*"[^>]*>/gi
@@ -478,7 +478,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     }
   }
 
-  if (result.mediaKind === "none") {
+  if (result.mediaKind === "none" && !hasAnimationWrap) {
     const videoTagRe = /<video\b[^>]*>/gi;
     const videoTags = msgHtml.match(videoTagRe) ?? [];
 
