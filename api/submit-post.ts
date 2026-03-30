@@ -116,7 +116,7 @@ export default async function handler(req: any, res: any) {
     const finalMedia =
       normalizedMedia.length > 0
         ? normalizedMedia
-        : cleanVideoUrl
+        : cleanMediaKind === "video" && cleanVideoUrl
           ? [
               {
                 id: "video-1",
@@ -125,16 +125,25 @@ export default async function handler(req: any, res: any) {
                 poster: cleanPoster || cleanPreviewUrl || null,
               },
             ]
-          : cleanPreviewUrl
+          : cleanMediaKind === "gif" && (cleanPoster || cleanPreviewUrl)
             ? [
                 {
                   id: "image-1",
                   type: "image" as const,
-                  url: cleanPreviewUrl,
+                  url: cleanPoster || cleanPreviewUrl!,
                   poster: null,
                 },
               ]
-            : [];
+            : cleanPreviewUrl
+              ? [
+                  {
+                    id: "image-1",
+                    type: "image" as const,
+                    url: cleanPreviewUrl,
+                    poster: null,
+                  },
+                ]
+              : [];
 
     const resolvedMediaType =
       mediaType === "video" || mediaType === "image" || mediaType === "text"
