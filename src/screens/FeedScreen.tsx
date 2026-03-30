@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import type { ContentTag, FeedTag, IngestedPost } from "../types/app";
 import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
@@ -10,7 +10,6 @@ import {
   getResolvedTag,
   getDisplayText,
   buildShareUrl,
-  normalizeMediaList,
 } from "./feed/feed.utils";
 
 function isRealVideoPost(post: IngestedPost) {
@@ -133,16 +132,6 @@ export function FeedScreen({
     if (viewerIndex === null) return null;
     return viewerPosts[viewerIndex] ?? null;
   }, [viewerIndex, viewerPosts]);
-
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const activePostMedia = useMemo(() => {
-    return activePost ? normalizeMediaList(activePost) : [];
-  }, [activePost]);
-
-  const activeViewerMedia =
-    activePostMedia[Math.min(viewerMediaIndex, Math.max(activePostMedia.length - 1, 0))] ||
-    null;
 
   const setFeedCardMediaIndex = useCallback((postId: number, nextIndex: number) => {
     setFeedMediaIndexes((prev) => ({

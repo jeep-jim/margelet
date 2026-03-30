@@ -11,7 +11,6 @@ import { getDisplayText, normalizeMediaList } from "./feed.utils";
 export function FeedCard(props: FeedCardProps) {
   const {
     post,
-    locale,
     isOwner,
     isAdmin,
     menuOpen,
@@ -83,13 +82,13 @@ export function FeedCard(props: FeedCardProps) {
           isCardVisible={isCardVisible}
         />
       ) : (
-        <FeedTextCard post={post} locale={locale} onOpen={onOpen} />
+        <FeedTextCard post={post} onOpen={onOpen} />
       )}
 
       {displayText ? (
         <div className="px-4 py-3">
           <ExpandableFeedText text={displayText}>
-            {({ expanded, clamped, expand }) => (
+            {({ expanded, expand }) => (
               <div className="mt-4 flex items-center justify-between gap-3">
                 <div className="flex items-center gap-8 text-neutral-700">
                   <button type="button">

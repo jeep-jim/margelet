@@ -9,7 +9,7 @@ import {
   Send,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { IngestedPost, Locale } from "../../types/app";
+import type { IngestedPost } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { MediaDots } from "./FeedCarousel";
@@ -236,7 +236,7 @@ function ReaderMediaBlock({ post }: { post: IngestedPost }) {
 
 export function FeedTextReaderModal({
   post,
-  locale,
+  locale: _locale,
   liked,
   saved,
   onClose,
@@ -245,7 +245,7 @@ export function FeedTextReaderModal({
   onShare,
 }: {
   post: IngestedPost | null;
-  locale: Locale;
+  locale: "ru" | "en";
   liked: boolean;
   saved: boolean;
   onClose: () => void;

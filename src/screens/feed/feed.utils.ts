@@ -1,4 +1,4 @@
-import type { ContentTag, FeedTag, Locale, IngestedPost } from "../../types/app";
+import type { ContentTag, FeedTag, IngestedPost } from "../../types/app";
 import { TAG_OPTIONS } from "./feed.constants";
 
 export function getResolvedTag(post: IngestedPost): ContentTag {

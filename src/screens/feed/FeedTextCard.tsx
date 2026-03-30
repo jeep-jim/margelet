@@ -7,7 +7,7 @@ import {
   FileText,
   Send,
 } from "lucide-react";
-import type { Locale, IngestedPost } from "../../types/app";
+import type { IngestedPost } from "../../types/app";
 import { getResolvedTag, getTagLabel } from "./feed.utils";
 
 function getMediaBadge(post: IngestedPost) {
@@ -32,17 +32,13 @@ function getMediaBadge(post: IngestedPost) {
 
 export function FeedTextCard({
   post,
-  locale,
   onOpen,
 }: {
   post: IngestedPost;
-  locale: Locale;
   onOpen: () => void;
 }) {
   const displayText = (post.text || "").trim();
-
   const mediaBadge = getMediaBadge(post);
-
   const isPureText = post.contentType === "text";
 
   return (

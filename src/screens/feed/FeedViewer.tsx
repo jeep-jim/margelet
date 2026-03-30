@@ -1,31 +1,15 @@
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ArrowLeft,
-  Bookmark,
-  Heart,
-  MoreVertical,
-  Play,
-  Send,
-  Volume2,
-  VolumeX,
-} from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useMemo, useRef } from "react";
 import type { ViewerProps } from "./feed.types";
 import { FeedCarousel } from "./FeedCarousel";
-import { FeedMoreMenu } from "./FeedMoreMenu";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
-import { ViewerActionButton, ViewerMetric } from "./FeedViewerActions";
 import { normalizeMediaList } from "./feed.utils";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 
 export function FeedViewer({
-  locale,
   activePost,
-  viewerDirection,
   isMuted,
-  setIsMuted,
-  isPlaying,
-  setIsPlaying,
   viewerMediaIndex,
   setViewerMediaIndex,
   closeViewer,
@@ -35,9 +19,6 @@ export function FeedViewer({
   const media = useMemo(() => {
     return activePost ? normalizeMediaList(activePost) : [];
   }, [activePost]);
-
-  const activeMedia =
-    media[Math.min(viewerMediaIndex, Math.max(media.length - 1, 0))] || null;
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -56,7 +37,7 @@ export function FeedViewer({
         className="fixed inset-0 z-50 bg-black"
       >
         <div className="relative h-full w-full">
-          {activeMedia ? (
+          {media.length > 0 ? (
             <FeedCarousel
               items={media}
               displayText={activePost.text}
@@ -73,6 +54,7 @@ export function FeedViewer({
             <button
               onClick={closeViewer}
               className="flex h-11 w-11 items-center justify-center rounded-full bg-black/40 text-white"
+              type="button"
             >
               <ArrowLeft />
             </button>
@@ -85,9 +67,9 @@ export function FeedViewer({
               <div>
                 <div className="flex items-center gap-2">
                   {activePost.source.title}
-                  {activePost.source.verified && (
+                  {activePost.source.verified ? (
                     <VerifiedBadge className="text-[#2AABEE]" />
-                  )}
+                  ) : null}
                 </div>
 
                 <div className="text-sm opacity-70">
@@ -96,9 +78,7 @@ export function FeedViewer({
               </div>
             </div>
 
-            <div className="mt-3 text-sm">
-              {activePost.text}
-            </div>
+            <div className="mt-3 text-sm">{activePost.text}</div>
           </div>
         </div>
       </motion.div>

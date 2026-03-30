@@ -295,7 +295,11 @@ function EmptyState({ text }: { text: string }) {
   );
 }
 
-export function CreatorScreen({ locale, posts, openPost }: Props) {
+export function CreatorScreen({
+  locale: _locale,
+  posts,
+  openPost,
+}: Props) {
   const [user, setUser] = useState<TgUser | null>(null);
   const [tab, setTab] = useState<CabinetTab>("added");
   const [likedIds, setLikedIds] = useState<number[]>([]);
@@ -354,7 +358,7 @@ export function CreatorScreen({ locale, posts, openPost }: Props) {
         ) : (
           <ProfileBlock
             user={user}
-            verified={true}
+            verified
             onLogout={handleLogout}
           />
         )}

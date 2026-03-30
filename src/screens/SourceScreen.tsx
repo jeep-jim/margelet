@@ -89,7 +89,7 @@ function SourceTile({
 }
 
 export function SourceScreen({
-  locale,
+  locale: _locale,
   posts,
   sourceHandle,
   onBack,
