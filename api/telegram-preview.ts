@@ -381,22 +381,16 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
     /tgme_widget_message_link_preview/i.test(msgHtml) ||
     /tgme_widget_message_webpage/i.test(msgHtml) ||
     /tgme_widget_message_site_name/i.test(msgHtml) ||
+    /tgme_widget_message_link\b/i.test(msgHtml) ||
     /tgme_widget_message_invoice/i.test(msgHtml);
-
-  const shouldIgnorePreviewImages =
-    hasWebpagePreview &&
-    !hasVideoWrap &&
-    !hasAnimationWrap &&
-    !hasAudioWrap &&
-    !hasFileWrap;
 
   const shouldBlockImageFallback =
     hasAudioWrap ||
     hasFileWrap ||
-    shouldIgnorePreviewImages;
+    (hasWebpagePreview && !hasVideoWrap && !hasAnimationWrap && !hasAudioWrap && !hasFileWrap);
 
   if (
-    (hasPhotoWrap && !shouldIgnorePreviewImages) ||
+    hasPhotoWrap ||
     hasVideoWrap ||
     hasAnimationWrap ||
     hasAudioWrap ||

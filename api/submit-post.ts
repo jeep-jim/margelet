@@ -141,7 +141,7 @@ export default async function handler(req: any, res: any) {
                   poster: cleanPoster || cleanPreviewUrl || null,
                 },
               ]
-            : cleanPreviewUrl
+            : cleanMediaKind === "image" && cleanPreviewUrl
               ? [
                   {
                     id: "image-1",
@@ -170,7 +170,14 @@ export default async function handler(req: any, res: any) {
         avatar: cleanAvatar,
         tag,
         media: finalMedia,
-        previewUrl: cleanPreviewUrl,
+        previewUrl:
+          cleanMediaKind === "image"
+            ? cleanPreviewUrl
+            : cleanMediaKind === "gif"
+              ? cleanPoster || cleanPreviewUrl
+              : cleanMediaKind === "video"
+                ? cleanPoster || cleanPreviewUrl
+                : null,
         mediaType: mediaTypeForPost,
         videoUrl: builderVideoUrl,
         channelVerified: !!channelVerified,
@@ -199,20 +206,18 @@ export default async function handler(req: any, res: any) {
     post.media = finalMedia;
 
     post.previewUrl =
-      cleanMediaKind === "gif"
-        ? cleanPoster || cleanPreviewUrl || null
-        : finalMedia[0]?.type === "image"
-          ? finalMedia[0].url
-          : finalMedia[0]?.type === "video"
-            ? finalMedia[0].poster || cleanPoster || cleanPreviewUrl || null
-            : cleanPreviewUrl || null;
+      cleanMediaKind === "image"
+        ? cleanPreviewUrl || null
+        : cleanMediaKind === "gif"
+          ? cleanPoster || cleanPreviewUrl || null
+          : cleanMediaKind === "video"
+            ? cleanPoster || cleanPreviewUrl || null
+            : null;
 
     post.videoUrl =
-      cleanMediaKind === "gif"
+      cleanMediaKind === "video" || cleanMediaKind === "gif"
         ? cleanVideoUrl || null
-        : finalMedia[0]?.type === "video"
-          ? finalMedia[0].url
-          : cleanVideoUrl || null;
+        : null;
 
     post.mediaType = mediaTypeForPost;
 
@@ -231,7 +236,10 @@ export default async function handler(req: any, res: any) {
     post.addedByTelegramId = asCleanString(addedByTelegramId);
     post.addedByUsername = asCleanString(addedByUsername);
 
-    (post as any).poster = cleanPoster || cleanPreviewUrl || null;
+    (post as any).poster =
+      cleanMediaKind === "video" || cleanMediaKind === "gif"
+        ? cleanPoster || cleanPreviewUrl || null
+        : null;
     (post as any).audio = cleanAudioUrl;
     (post as any).file = cleanFileUrl;
     (post as any).mediaKind = cleanMediaKind || resolvedMediaType;
