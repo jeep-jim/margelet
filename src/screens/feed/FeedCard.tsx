@@ -67,11 +67,9 @@ export function FeedCard(props: FeedCardProps) {
     mediaKind === "gif" ||
     mediaKind === "video";
 
-  const hasStoredVisualMedia =
-    (video.mediaKind === "image" || video.mediaKind === "gif" || video.mediaKind === "video") &&
-    safeMediaItems.some(
-      (item) => item.type === "image" || item.type === "video"
-    );
+  const hasStoredVisualMedia = safeMediaItems.some(
+    (item) => item.type === "image" || item.type === "video"
+  );
 
   const shouldUseMediaCard =
     isVisualMediaKind || (mediaKind === "none" && hasStoredVisualMedia);
