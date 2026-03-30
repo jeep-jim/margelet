@@ -97,7 +97,7 @@ export default async function handler(req: any, res: any) {
       "Telegram";
 
     const cleanCaption = asCleanString(caption) || "";
-    const cleanChannel = asCleanString(channel) || parsed.sourceHandle;
+    const cleanChannel = asCleanString(title) || asCleanString(channel) || parsed.sourceHandle;
     const cleanAvatar = asCleanString(avatar);
 
     const cleanPreviewUrl = asCleanString(previewUrl);
