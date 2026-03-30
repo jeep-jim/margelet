@@ -221,6 +221,15 @@ function normalizeVideo(raw: any): Video | null {
     tag: raw.tag || "other",
     previewUrl: derivePreviewUrl(raw, media),
     videoUrl: deriveVideoUrl(raw, media),
+
+    // 🔥 ДОБАВИТЬ ВОТ ЭТО
+    poster: asNullableString(raw.poster),
+    audio: asNullableString(raw.audio),
+    file: asNullableString(raw.file),
+
+    mediaKind: raw.mediaKind || "none",
+    hasMediaInOriginal: !!raw.hasMediaInOriginal,    
+    
     addedByTelegramId: asNullableString(raw.addedByTelegramId),
     addedByUsername: asNullableString(raw.addedByUsername),
   };
