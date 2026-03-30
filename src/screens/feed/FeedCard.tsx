@@ -6,7 +6,35 @@ import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
-import { getDisplayText } from "./feed.utils";
+import { getDisplayText, normalizeMediaList } from "./feed.utils";
+
+function getMediaItemUrl(item: unknown): string {
+  if (!item || typeof item !== "object") return "";
+
+  const record = item as Record<string, unknown>;
+  const candidates = [record.url, record.src, record.poster];
+
+  for (const candidate of candidates) {
+    if (typeof candidate === "string" && candidate.trim()) {
+      return candidate.trim();
+    }
+  }
+
+  return "";
+}
+
+function isBlockedPreviewUrl(url?: string | null) {
+  const value = String(url || "").toLowerCase();
+  if (!value) return true;
+
+  return (
+    value.includes("userpic") ||
+    value.includes("/avatar") ||
+    value.includes("tgme_page_photo") ||
+    value.includes("channel_photo") ||
+    value.includes("profile_photo")
+  );
+}
 
 export function FeedCard(props: FeedCardProps) {
   const {
@@ -24,6 +52,14 @@ export function FeedCard(props: FeedCardProps) {
 
   const displayText = getDisplayText(video, locale);
 
+  const rawMediaItems = normalizeMediaList(video);
+  const safeMediaItems = rawMediaItems.filter((item) => {
+    const url = getMediaItemUrl(item);
+    if (!url) return false;
+    if (isBlockedPreviewUrl(url)) return false;
+    return true;
+  });
+
   const mediaKind = video.mediaKind || "none";
 
   const isVisualMediaKind =
@@ -31,7 +67,12 @@ export function FeedCard(props: FeedCardProps) {
     mediaKind === "gif" ||
     mediaKind === "video";
 
-  const shouldUseMediaCard = isVisualMediaKind;
+  const hasStoredVisualMedia = safeMediaItems.some(
+    (item) => item.type === "image" || item.type === "video"
+  );
+
+  const shouldUseMediaCard =
+    isVisualMediaKind || (mediaKind === "none" && hasStoredVisualMedia);
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
