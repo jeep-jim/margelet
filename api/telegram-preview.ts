@@ -448,9 +448,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
           result.poster = poster;
         }
 
-        result.hasMediaInOriginal = true;
-        result.mediaKind = "video";
-        break;
+        result.mediaKind = hasAnimationWrap ? "gif" : "video";
       }
     }
   }
@@ -472,9 +470,7 @@ function extractMessageMediaFromMessageBlock(msgHtml: string) {
           result.poster = p;
         }
 
-        result.hasMediaInOriginal = true;
-        result.mediaKind = "video";
-        break;
+        result.mediaKind = hasAnimationWrap ? "gif" : "video";
       }
     }
   }
