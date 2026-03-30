@@ -2,19 +2,6 @@ export type Locale = "ru" | "en";
 
 export type TabId = "intro" | "feed" | "add" | "creator" | "source" | "admin";
 
-export type MediaType = "video" | "image" | "text";
-
-export type MediaItemType = Exclude<MediaType, "text">;
-
-export type MediaKind =
-  | "none"
-  | "image"
-  | "video"
-  | "gif"
-  | "audio"
-  | "file"
-  | "external_media";
-
 export type FeedTag =
   | "all"
   | "people"
@@ -34,48 +21,64 @@ export type FeedTag =
 
 export type ContentTag = Exclude<FeedTag, "all">;
 
-export type LocalizedText = {
-  ru: string;
-  en: string;
-};
-
-export type PostMedia = {
-  id: string;
-  type: MediaItemType;
-  url: string;
-  poster?: string | null;
-};
-
-export type Video = {
+export type IngestedPost = {
   id: number;
-  mediaType: MediaType;
-  mediaKind?: MediaKind;
-  media?: PostMedia[];
-
-  title: LocalizedText;
-  caption: LocalizedText;
-
-  channel: string;
-  avatar: string;
-  handle: string;
-  channelVerified?: boolean;
-
-  views: string;
-  likes: number;
-  comments: number;
-  duration: string;
-  lang: string;
   postUrl: string;
-  bg: string;
-  tag?: ContentTag;
 
-  previewUrl?: string | null;
-  videoUrl?: string | null;
-  poster?: string | null;
-  audio?: string | null;
-  file?: string | null;
-  hasMediaInOriginal?: boolean;
+  source: {
+    handle: string;
+    title: string;
+    avatar: string | null;
+    verified: boolean;
+  };
 
-  addedByTelegramId?: string | null;
-  addedByUsername?: string | null;
+  text: string;
+
+  links: Array<{
+    label: string | null;
+    url: string;
+  }>;
+
+  contentType:
+    | "text"
+    | "image"
+    | "gallery"
+    | "gif"
+    | "video"
+    | "audio"
+    | "file"
+    | "mixed"
+    | "external_media";
+
+  media: Array<{
+    id: string;
+    kind: "image" | "video" | "audio" | "file";
+    url: string;
+    poster?: string | null;
+    mimeType?: string | null;
+    fileName?: string | null;
+    width?: number | null;
+    height?: number | null;
+    duration?: number | null;
+  }>;
+
+  hasMediaInOriginal: boolean;
+
+  fallbackReason: null | "not_fetched" | "expired" | "unsupported" | "blocked";
+
+  createdAt: string;
+  expiresAt: string;
+  ttlHours: number;
+
+  tag: ContentTag;
+
+  addedBy: {
+    telegramId: string | null;
+    username: string | null;
+  };
+
+  billing: {
+    plan: "free" | "pro_1m" | "pro_3m" | "pro_12m";
+    autopublishEnabled: boolean;
+  };
 };

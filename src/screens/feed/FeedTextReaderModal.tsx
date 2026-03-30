@@ -2,22 +2,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   Bookmark,
-  ChevronLeft,
-  ChevronRight,
   ExternalLink,
   FileText,
   Heart,
   ImageIcon,
-  Pause,
-  Play,
   Send,
 } from "lucide-react";
-
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { Locale, MediaKind, PostMedia, Video } from "../../types/app";
+import type { IngestedPost, Locale } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
-import { getDisplayText, normalizeMediaList } from "./feed.utils";
+import { MediaDots } from "./FeedCarousel";
 
 const HORIZONTAL_SWIPE_DISTANCE = 48;
 
@@ -26,8 +21,7 @@ function linkifyText(text: string) {
   const parts = text.split(urlRegex);
 
   return parts.map((part, index) => {
-    const isUrl = urlRegex.test(part);
-    urlRegex.lastIndex = 0;
+    const isUrl = /^(https?:\/\/|www\.)/i.test(part);
 
     if (!isUrl) {
       return <span key={index}>{part}</span>;
@@ -60,7 +54,7 @@ function RichTextBlock({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <div className="space-y-4 text-[16px] leading-5 text-neutral-900">
+    <div className="space-y-4 text-[16px] leading-6 text-neutral-900">
       {paragraphs.map((paragraph, index) => {
         const lines = paragraph.split("\n");
 
@@ -79,110 +73,14 @@ function RichTextBlock({ text }: { text: string }) {
   );
 }
 
-function getResolvedMediaKind(video: Video | null): MediaKind {
-  if (!video) return "none";
-  if (video.mediaKind) return video.mediaKind;
-
-  const media = normalizeMediaList(video);
-  if (media.some((item) => item.type === "video")) return "video";
-  if (media.some((item) => item.type === "image")) return "image";
-
-  return "none";
-}
-
-function getImageItems(video: Video | null): PostMedia[] {
-  if (!video) return [];
-
-  const media = normalizeMediaList(video);
-  const imageItems = media.filter((item) => item.type === "image");
-
-  if (imageItems.length > 0) {
-    return imageItems;
-  }
-
-  if (video.previewUrl) {
-    return [
-      {
-        id: "image-1",
-        type: "image",
-        url: video.previewUrl,
-        poster: null,
-      },
-    ];
-  }
-
-  return [];
-}
-
-function getGifVideoUrl(video: Video | null) {
-  if (!video) return null;
-
-  if (video.videoUrl) {
-    return video.videoUrl;
-  }
-
-  const media = normalizeMediaList(video);
-  const videoItem = media.find((item) => item.type === "video");
-  return videoItem?.url || null;
-}
-
-function formatTime(seconds: number) {
-  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
-
-  const totalSeconds = Math.floor(seconds);
-  const mins = Math.floor(totalSeconds / 60);
-  const secs = totalSeconds % 60;
-
-  return `${mins}:${String(secs).padStart(2, "0")}`;
-}
-
-function MediaNotice({
-  icon,
-  children,
+function ReaderImageCarousel({
+  items,
+  alt,
 }: {
-  icon: React.ReactNode;
-  children: React.ReactNode;
+  items: IngestedPost["media"];
+  alt: string;
 }) {
-  return (
-    <div className="mb-4 inline-flex max-w-full items-start gap-2 rounded-2xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
-      <div className="mt-0.5 shrink-0">{icon}</div>
-      <span>{children}</span>
-    </div>
-  );
-}
-
-function MediaDots({
-  total,
-  activeIndex,
-  onSelect,
-}: {
-  total: number;
-  activeIndex: number;
-  onSelect: (index: number) => void;
-}) {
-  if (total <= 1) return null;
-
-  return (
-    <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5">
-      {Array.from({ length: total }).map((_, index) => {
-        const active = index === activeIndex;
-        return (
-          <button
-            key={index}
-            type="button"
-            onClick={() => onSelect(index)}
-            className={`h-2.5 rounded-full transition-all ${
-              active ? "w-5 bg-white" : "w-2.5 bg-white/45"
-            }`}
-            aria-label={`Переключить фото ${index + 1}`}
-          />
-        );
-      })}
-    </div>
-  );
-}
-
-function ReaderImageCarousel({ items, alt }: { items: PostMedia[]; alt: string }) {
+  const images = items.filter((item) => item.kind === "image");
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartXRef = useRef<number | null>(null);
 
@@ -190,11 +88,11 @@ function ReaderImageCarousel({ items, alt }: { items: PostMedia[]; alt: string }
     setActiveIndex(0);
   }, [items]);
 
-  if (items.length === 0) return null;
+  if (images.length === 0) return null;
 
-  const current = items[Math.min(activeIndex, items.length - 1)];
+  const current = images[Math.min(activeIndex, images.length - 1)];
   const canPrev = activeIndex > 0;
-  const canNext = activeIndex < items.length - 1;
+  const canNext = activeIndex < images.length - 1;
 
   return (
     <div
@@ -227,38 +125,17 @@ function ReaderImageCarousel({ items, alt }: { items: PostMedia[]; alt: string }
         referrerPolicy="no-referrer"
       />
 
-      {items.length > 1 ? (
+      {images.length > 1 ? (
         <>
           <div className="pointer-events-none absolute left-3 top-3 z-20 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
-            {activeIndex + 1}/{items.length}
+            {activeIndex + 1}/{images.length}
           </div>
 
-          {canPrev ? (
-            <button
-              type="button"
-              onClick={() => setActiveIndex((prev) => prev - 1)}
-              className="absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-              aria-label="Предыдущее фото"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-          ) : null}
-
-          {canNext ? (
-            <button
-              type="button"
-              onClick={() => setActiveIndex((prev) => prev + 1)}
-              className="absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm"
-              aria-label="Следующее фото"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          ) : null}
-
           <MediaDots
-            total={items.length}
+            total={images.length}
             activeIndex={activeIndex}
             onSelect={setActiveIndex}
+            light
           />
         </>
       ) : null}
@@ -266,160 +143,55 @@ function ReaderImageCarousel({ items, alt }: { items: PostMedia[]; alt: string }
   );
 }
 
-function ReaderAudioBlock({ audioUrl }: { audioUrl: string | null }) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-
-  useEffect(() => {
-    const node = audioRef.current;
-    if (!node) return;
-
-    const handleLoadedMetadata = () => {
-      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
-    };
-
-    const handleTimeUpdate = () => {
-      setCurrentTime(Number.isFinite(node.currentTime) ? node.currentTime : 0);
-    };
-
-    const handleEnded = () => {
-      setIsPlaying(false);
-      setCurrentTime(0);
-    };
-
-    const handlePause = () => {
-      setIsPlaying(false);
-    };
-
-    const handlePlay = () => {
-      setIsPlaying(true);
-    };
-
-    node.addEventListener("loadedmetadata", handleLoadedMetadata);
-    node.addEventListener("timeupdate", handleTimeUpdate);
-    node.addEventListener("ended", handleEnded);
-    node.addEventListener("pause", handlePause);
-    node.addEventListener("play", handlePlay);
-
-    return () => {
-      node.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      node.removeEventListener("timeupdate", handleTimeUpdate);
-      node.removeEventListener("ended", handleEnded);
-      node.removeEventListener("pause", handlePause);
-      node.removeEventListener("play", handlePlay);
-    };
-  }, [audioUrl]);
-
-  useEffect(() => {
-    setIsPlaying(false);
-    setCurrentTime(0);
-    setDuration(0);
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
-  }, [audioUrl]);
-
-  const progress = duration > 0 ? Math.min(currentTime / duration, 1) : 0;
-
+function MediaNotice({
+  icon,
+  children,
+}: {
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
-    <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
-      <div className="flex items-start gap-3">
-        <button
-          type="button"
-          onClick={() => {
-            const node = audioRef.current;
-            if (!node || !audioUrl) return;
-
-            if (node.paused) {
-              void node.play().catch(() => {});
-            } else {
-              node.pause();
-            }
-          }}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white"
-          aria-label={isPlaying ? "Пауза" : "Воспроизвести"}
-        >
-          {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="ml-0.5 h-5 w-5" />}
-        </button>
-
-        <div className="min-w-0 flex-1">
-          <div className="text-sm font-semibold text-neutral-950">
-            Аудио из поста Telegram
-          </div>
-          <div className="mt-1 text-sm text-neutral-500">
-            {audioUrl
-              ? "Можно прослушать прямо здесь или открыть оригинал в Telegram."
-              : "Откройте в Telegram, чтобы прослушать оригинал."}
-          </div>
-
-          {audioUrl ? (
-            <>
-              <audio ref={audioRef} preload="metadata">
-                <source src={audioUrl} />
-              </audio>
-
-              <div className="mt-3">
-                <div className="h-2 overflow-hidden rounded-full bg-neutral-200">
-                  <div
-                    className="h-full rounded-full bg-neutral-900 transition-[width] duration-100"
-                    style={{ width: `${progress * 100}%` }}
-                  />
-                </div>
-
-                <div className="mt-2 flex items-center justify-between text-xs text-neutral-500">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{formatTime(duration)}</span>
-                </div>
-              </div>
-            </>
-          ) : null}
-        </div>
-      </div>
+    <div className="mb-4 inline-flex max-w-full items-start gap-2 rounded-2xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
+      <div className="mt-0.5 shrink-0">{icon}</div>
+      <span>{children}</span>
     </div>
   );
 }
 
-function ReaderMediaBlock({ video }: { video: Video }) {
-  const kind = getResolvedMediaKind(video);
-  const imageItems = getImageItems(video);
-  const gifVideoUrl = getGifVideoUrl(video);
-  const audioUrl = video.audio || null;
-  const fileUrl = video.file || null;
+function ReaderMediaBlock({ post }: { post: IngestedPost }) {
+  const imageItems = post.media.filter((item) => item.kind === "image");
+  const videoItem = post.media.find((item) => item.kind === "video");
+  const audioItem = post.media.find((item) => item.kind === "audio");
+  const fileItem = post.media.find((item) => item.kind === "file");
 
-  if (kind === "image" && imageItems.length > 0) {
-    return <ReaderImageCarousel items={imageItems} alt={video.channel} />;
+  if (imageItems.length > 0) {
+    return <ReaderImageCarousel items={imageItems} alt={post.source.title} />;
   }
 
-  if (kind === "gif") {
-    if (gifVideoUrl) {
-      return (
-        <div className="mb-4 overflow-hidden rounded-3xl bg-neutral-100">
-          <video
-            src={gifVideoUrl}
-            className="h-auto w-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-          />
-        </div>
-      );
-    }
-
-    if (imageItems.length > 0) {
-      return <ReaderImageCarousel items={imageItems} alt={video.channel} />;
-    }
+  if (videoItem) {
+    return (
+      <div className="mb-4 overflow-hidden rounded-3xl bg-black">
+        <video
+          src={videoItem.url}
+          poster={videoItem.poster || undefined}
+          className="h-auto w-full"
+          controls
+          playsInline
+          preload="metadata"
+        />
+      </div>
+    );
   }
 
-  if (kind === "audio") {
-    return <ReaderAudioBlock audioUrl={audioUrl} />;
+  if (audioItem) {
+    return (
+      <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+        <audio src={audioItem.url} controls className="w-full" preload="metadata" />
+      </div>
+    );
   }
 
-  if (kind === "file") {
+  if (fileItem) {
     return (
       <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
         <div className="flex items-start gap-3">
@@ -431,40 +203,27 @@ function ReaderMediaBlock({ video }: { video: Video }) {
             <div className="text-sm font-semibold text-neutral-950">
               Вложение из поста Telegram
             </div>
+
             <div className="mt-1 text-sm text-neutral-500">
               Файл доступен в оригинальном посте.
             </div>
 
-            {fileUrl ? (
-              <a
-                href={fileUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
-              >
-                <span>Открыть файл</span>
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            ) : null}
+            <a
+              href={fileItem.url}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
+            >
+              <span>Открыть файл</span>
+              <ExternalLink className="h-4 w-4" />
+            </a>
           </div>
         </div>
       </div>
     );
   }
 
-  if (kind === "external_media") {
-    return (
-      <MediaNotice icon={<ImageIcon className="h-5 w-5 text-neutral-500" />}>
-        В этом посте есть медиа в Telegram. Здесь показываем только текст.
-      </MediaNotice>
-    );
-  }
-
-  if (
-    imageItems.length === 0 &&
-    !video.videoUrl &&
-    (video.hasMediaInOriginal || false)
-  ) {
+  if (post.hasMediaInOriginal) {
     return (
       <MediaNotice icon={<ImageIcon className="h-5 w-5 text-neutral-500" />}>
         В этом посте есть медиа в Telegram. Здесь показываем только текст.
@@ -476,7 +235,7 @@ function ReaderMediaBlock({ video }: { video: Video }) {
 }
 
 export function FeedTextReaderModal({
-  video,
+  post,
   locale,
   liked,
   saved,
@@ -485,103 +244,97 @@ export function FeedTextReaderModal({
   onToggleSave,
   onShare,
 }: {
-  video: Video | null;
+  post: IngestedPost | null;
   locale: Locale;
   liked: boolean;
   saved: boolean;
   onClose: () => void;
   onToggleLike: (id: number) => void;
   onToggleSave: (id: number) => void;
-  onShare: (video: Video) => Promise<void>;
+  onShare: (post: IngestedPost) => Promise<void>;
 }) {
-  const text = video ? getDisplayText(video, locale) : "";
+  const text = post?.text || "";
 
   return (
     <AnimatePresence>
-      {video ? (
+      {post ? (
         <motion.div
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[60] bg-black/35 backdrop-blur-[2px]"
         >
-          <div className="mx-auto flex h-full w-full max-w-[720px] flex-col bg-white">
-            <div className="sticky top-0 z-20 flex items-center justify-between border-b border-neutral-200 bg-white px-4 py-3">
+          <motion.div
+            className="absolute inset-x-0 bottom-0 mx-auto max-h-[92vh] w-full max-w-[720px] overflow-hidden rounded-t-[32px] bg-white"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", stiffness: 260, damping: 28 }}
+          >
+            <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3">
               <button
                 onClick={onClose}
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
                 type="button"
               >
                 <ArrowLeft className="h-5 w-5" />
               </button>
 
-              <a
-                href={video.postUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
-              >
-                <span className="text-white">Открыть в Telegram</span>
-                <Send className="h-4 w-4 text-white" />
-              </a>
+              <div className="text-sm font-semibold text-neutral-900">
+                Пост из Telegram
+              </div>
+
+              <div className="w-10" />
             </div>
 
-            <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-28 pt-5">
-              <div className="mb-5 flex items-center gap-3">
-                <FeedSourceAvatar video={video} size="md" />
+            <div className="max-h-[calc(92vh-68px)] overflow-y-auto px-4 pb-8 pt-4">
+              <div className="mb-4 flex items-center gap-3">
+                <FeedSourceAvatar post={post} size="md" />
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <div className="truncate text-[20px] font-semibold leading-tight text-neutral-950">
-                      {video.channel}
+                    <div className="truncate text-[18px] font-semibold text-neutral-950">
+                      {post.source.title}
                     </div>
-                    {video.channelVerified ? (
+                    {post.source.verified ? (
                       <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
                     ) : null}
                   </div>
-                  <div className="truncate text-sm text-neutral-500">{video.handle}</div>
+
+                  <div className="truncate text-sm text-neutral-500">
+                    @{post.source.handle}
+                  </div>
                 </div>
               </div>
 
-              <ReaderMediaBlock video={video} />
+              <ReaderMediaBlock post={post} />
 
               {text ? <RichTextBlock text={text} /> : null}
-            </div>
 
-            <div className="fixed bottom-0 left-0 right-0 z-20 border-t border-neutral-200 bg-white/96 px-4 py-3 backdrop-blur">
-              <div className="mx-auto flex w-full max-w-[720px] items-center justify-between">
-                <button
-                  onClick={() => onToggleLike(video.id)}
-                  className="flex items-center gap-2 rounded-full px-4 py-2 text-neutral-900"
-                  type="button"
-                >
-                  <Heart className={`h-5 w-5 ${liked ? "fill-current text-neutral-950" : ""}`} />
+              <div className="mt-6 flex items-center gap-8 text-neutral-700">
+                <button type="button" onClick={() => onToggleLike(post.id)}>
+                  <Heart
+                    className={`h-5 w-5 ${liked ? "fill-current text-neutral-950" : ""}`}
+                  />
                 </button>
 
-                <button
-                  onClick={() => onToggleSave(video.id)}
-                  className="flex items-center gap-2 rounded-full px-4 py-2 text-neutral-900"
-                  type="button"
-                >
+                <button type="button" onClick={() => onToggleSave(post.id)}>
                   <Bookmark
                     className={`h-5 w-5 ${saved ? "fill-current text-neutral-950" : ""}`}
                   />
-                  <span className="text-sm font-medium">Сохранить</span>
                 </button>
 
                 <button
-                  onClick={() => {
-                    void onShare(video);
-                  }}
-                  className="flex items-center gap-2 rounded-full px-4 py-2 text-neutral-900"
                   type="button"
+                  onClick={() => {
+                    void onShare(post);
+                  }}
                 >
                   <Send className="h-5 w-5" />
-                  <span className="text-sm font-medium">Поделиться</span>
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       ) : null}
     </AnimatePresence>

@@ -7,84 +7,50 @@ import {
   FileText,
   Send,
 } from "lucide-react";
-import type { Locale, Video } from "../../types/app";
+import type { Locale, IngestedPost } from "../../types/app";
 import { getResolvedTag, getTagLabel } from "./feed.utils";
 
-function getMediaKind(video: Video) {
-  return video.mediaKind || "none";
-}
-
-function getMediaBadge(video: Video) {
-  const kind = getMediaKind(video);
-
-  if (kind === "audio") {
-    return {
-      icon: <Music4 className="h-3.5 w-3.5" />,
-      label: "Аудио",
-    };
+function getMediaBadge(post: IngestedPost) {
+  if (post.contentType === "audio") {
+    return { icon: <Music4 className="h-3.5 w-3.5" />, label: "Аудио" };
   }
 
-  if (kind === "file") {
-    return {
-      icon: <FileText className="h-3.5 w-3.5" />,
-      label: "Файл",
-    };
+  if (post.contentType === "file") {
+    return { icon: <FileText className="h-3.5 w-3.5" />, label: "Файл" };
   }
 
-  if (kind === "image") {
-    return {
-      icon: <ImageIcon className="h-3.5 w-3.5" />,
-      label: "Изображение",
-    };
+  if (post.contentType === "image" || post.contentType === "gif") {
+    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: "Изображение" };
   }
 
-  if (kind === "gif") {
-    return {
-      icon: <ImageIcon className="h-3.5 w-3.5" />,
-      label: "GIF",
-    };
-  }
-
-  if (kind === "external_media") {
-    return {
-      icon: <ImageIcon className="h-3.5 w-3.5" />,
-      label: "Есть медиа",
-    };
-  }
-
-  if (video.hasMediaInOriginal) {
-    return {
-      icon: <ImageIcon className="h-3.5 w-3.5" />,
-      label: "Есть медиа",
-    };
+  if (post.hasMediaInOriginal) {
+    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: "Есть медиа" };
   }
 
   return null;
 }
 
 export function FeedTextCard({
-  video,
+  post,
   locale,
   onOpen,
 }: {
-  video: Video;
+  post: IngestedPost;
   locale: Locale;
   onOpen: () => void;
 }) {
-  const displayText =
-    (video.caption?.[locale] || video.title?.[locale] || "").trim();
+  const displayText = (post.text || "").trim();
 
-  const mediaBadge = getMediaBadge(video);
-  const mediaKind = getMediaKind(video);
+  const mediaBadge = getMediaBadge(post);
 
-  const isPureText = mediaKind === "none";
+  const isPureText = post.contentType === "text";
 
   return (
     <div className="px-4 pb-4 pt-3">
       <div className="mb-3 flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           <div className="rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
-            {getTagLabel(getResolvedTag(video))}
+            {getTagLabel(getResolvedTag(post))}
           </div>
 
           {mediaBadge ? (

@@ -1,6 +1,6 @@
 import { savePost, getPostByUrl } from "./lib/kv.js";
-import { buildSubmittedPost, parseTelegramPostUrl } from "../src/lib/telegram.js";
-import type { PostMedia } from "../src/types/app";
+import { parseTelegramPostUrl, ingestTelegramPost } from "../src/lib/telegram.js";
+import type { IngestedPost, ContentTag } from "../src/types/app";
 
 function asCleanString(value: unknown): string | null {
   if (typeof value !== "string") return null;
@@ -8,42 +8,16 @@ function asCleanString(value: unknown): string | null {
   return trimmed || null;
 }
 
-function normalizeBoolean(value: unknown): boolean {
-  return value === true;
+function resolvePlan(plan: unknown): IngestedPost["billing"]["plan"] {
+  if (plan === "pro_1m") return "pro_1m";
+  if (plan === "pro_3m") return "pro_3m";
+  if (plan === "pro_12m") return "pro_12m";
+  return "free";
 }
 
-function normalizeMediaItem(raw: any, index: number): PostMedia | null {
-  if (!raw || typeof raw !== "object") return null;
-
-  const type = raw.type === "video" ? "video" : raw.type === "image" ? "image" : null;
-  const url = asCleanString(raw.url);
-  const poster = asCleanString(raw.poster);
-
-  if (!type || !url) return null;
-
-  return {
-    id: asCleanString(raw.id) || `${type}-${index + 1}`,
-    type,
-    url,
-    poster: poster || null,
-  };
-}
-
-function resolveMediaTypeFromKind(
-  mediaKind: string | null,
-  finalMedia: PostMedia[]
-): "video" | "image" | "text" {
-  if (mediaKind === "video") return "video";
-  if (mediaKind === "gif") return "image";
-  if (mediaKind === "image") return "image";
-  if (mediaKind === "audio" || mediaKind === "file" || mediaKind === "external_media") {
-    return "text";
-  }
-
-  if (finalMedia[0]?.type === "video") return "video";
-  if (finalMedia[0]?.type === "image") return "image";
-
-  return "text";
+function resolveTTL(plan: IngestedPost["billing"]["plan"]): number {
+  if (plan === "pro_12m") return 48;
+  return 24;
 }
 
 export default async function handler(req: any, res: any) {
@@ -55,28 +29,11 @@ export default async function handler(req: any, res: any) {
     const body =
       typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
 
-    const {
-      url,
-      title,
-      caption,
-      channel,
-      avatar,
-      tag,
-      previewUrl,
-      poster,
-      mediaType,
-      mediaKind,
-      videoUrl,
-      audio,
-      file,
-      hasMediaInOriginal,
-      channelVerified,
-      addedByTelegramId,
-      addedByUsername,
-      media,
-    } = body;
+    const url = asCleanString(body.url);
+    const tag = body.tag as ContentTag;
+    const plan = resolvePlan(body.plan);
 
-    if (!url || typeof url !== "string") {
+    if (!url) {
       return res.status(400).json({ error: "Missing url" });
     }
 
@@ -86,156 +43,63 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Invalid Telegram post URL" });
     }
 
-    const realHandle = parsed.sourceHandle;
+    const normalizedUrl = parsed.normalizedUrl;
 
-    const existing = await getPostByUrl(parsed.normalizedUrl);
+    const existing = await getPostByUrl(normalizedUrl);
 
     if (existing) {
       return res.status(200).json({ post: existing, duplicated: true });
     }
 
-    const cleanTitle =
-      asCleanString(title) ||
-      asCleanString(channel) ||
-      parsed.sourceHandle ||
-      "Telegram";
+    // 🔥 ГЛАВНОЕ: ingest Telegram поста
+    const ingest = await ingestTelegramPost(normalizedUrl);
 
-    const cleanCaption = asCleanString(caption) || "";
-    const cleanChannel =
-      asCleanString(title) ||
-      asCleanString(channel) ||
-      parsed.sourceHandle;
-    const cleanAvatar = asCleanString(avatar);
-
-    const cleanPreviewUrl = asCleanString(previewUrl);
-    const cleanPoster = asCleanString(poster);
-    const cleanVideoUrl = asCleanString(videoUrl);
-    const cleanAudioUrl = asCleanString(audio);
-    const cleanFileUrl = asCleanString(file);
-    const cleanMediaKind = asCleanString(mediaKind);
-
-    const normalizedMedia = Array.isArray(media)
-      ? media
-          .map((item, index) => normalizeMediaItem(item, index))
-          .filter((item): item is PostMedia => !!item)
-      : [];
-
-    const finalMedia =
-      normalizedMedia.length > 0
-        ? normalizedMedia
-        : cleanMediaKind === "video" && cleanVideoUrl
-          ? [
-              {
-                id: "video-1",
-                type: "video" as const,
-                url: cleanVideoUrl,
-                poster: cleanPoster || cleanPreviewUrl || null,
-              },
-            ]
-          : cleanMediaKind === "gif" && cleanVideoUrl
-            ? [
-                {
-                  id: "video-1",
-                  type: "video" as const,
-                  url: cleanVideoUrl,
-                  poster: cleanPoster || cleanPreviewUrl || null,
-                },
-              ]
-            : cleanPreviewUrl
-              ? [
-                  {
-                    id: "image-1",
-                    type: "image" as const,
-                    url: cleanPreviewUrl,
-                    poster: null,
-                  },
-                ]
-              : [];
-
-    const resolvedMediaType =
-      mediaType === "video" || mediaType === "image" || mediaType === "text"
-        ? mediaType
-        : resolveMediaTypeFromKind(cleanMediaKind, finalMedia);
-
-    const mediaTypeForPost = cleanMediaKind === "gif" ? "image" : resolvedMediaType;
-    const builderVideoUrl =
-      cleanMediaKind === "video" ? cleanVideoUrl : null;
-
-    const post = buildSubmittedPost(
-      {
-        url: parsed.normalizedUrl,
-        title: cleanTitle,
-        caption: cleanCaption,
-        channel: cleanChannel,
-        avatar: cleanAvatar,
-        tag,
-        media: finalMedia,
-        previewUrl: cleanPreviewUrl,
-        mediaType: mediaTypeForPost,
-        videoUrl: builderVideoUrl,
-        channelVerified: !!channelVerified,
-      },
-      {
-        locale: "ru",
-        messages: {
-          newVideoFallback: cleanTitle,
-          newVideoCaption: cleanCaption,
-          newChannel: "telegram",
-          newLang: "RU",
-        },
-        enMessages: {
-          newVideoFallback: cleanTitle,
-          newVideoCaption: cleanCaption,
-          newChannel: "telegram",
-          newLang: "EN",
-        },
-      }
-    );
-
-    if (cleanAvatar) {
-      post.avatar = cleanAvatar;
+    if (!ingest) {
+      return res.status(500).json({ error: "Failed to ingest Telegram post" });
     }
 
-    post.media = finalMedia;
+    const ttlHours = resolveTTL(plan);
+    const now = new Date();
+    const expires = new Date(now.getTime() + ttlHours * 3600 * 1000);
 
-    post.previewUrl =
-      cleanMediaKind === "gif"
-        ? cleanPoster || cleanPreviewUrl || null
-        : finalMedia[0]?.type === "image"
-          ? finalMedia[0].url
-          : finalMedia[0]?.type === "video"
-            ? finalMedia[0].poster || cleanPoster || cleanPreviewUrl || null
-            : cleanPreviewUrl || null;
+    const post: IngestedPost = {
+      id: Date.now(),
 
-    post.videoUrl =
-      cleanMediaKind === "gif"
-        ? cleanVideoUrl || null
-        : finalMedia[0]?.type === "video"
-          ? finalMedia[0].url
-          : cleanVideoUrl || null;
+      postUrl: normalizedUrl,
 
-    post.mediaType = mediaTypeForPost;
+      source: {
+        handle: ingest.source.handle,
+        title: ingest.source.title,
+        avatar: ingest.source.avatar,
+        verified: ingest.source.verified,
+      },
 
-    post.title = {
-      ru: cleanTitle,
-      en: cleanTitle,
+      text: ingest.text,
+      links: ingest.links,
+
+      contentType: ingest.contentType,
+      media: ingest.media,
+
+      hasMediaInOriginal: ingest.hasMediaInOriginal,
+      fallbackReason: ingest.fallbackReason,
+
+      createdAt: now.toISOString(),
+      expiresAt: expires.toISOString(),
+      ttlHours,
+
+      tag: tag || "other",
+
+      addedBy: {
+        telegramId: asCleanString(body.addedByTelegramId),
+        username: asCleanString(body.addedByUsername),
+      },
+
+      billing: {
+        plan,
+        autopublishEnabled:
+          plan === "pro_3m" || plan === "pro_12m",
+      },
     };
-
-    post.caption = {
-      ru: cleanCaption,
-      en: cleanCaption,
-    };
-
-    post.channel = cleanChannel;
-    post.handle = `@${realHandle}`;
-    post.addedByTelegramId = asCleanString(addedByTelegramId);
-    post.addedByUsername = asCleanString(addedByUsername);
-
-    (post as any).poster = cleanPoster || cleanPreviewUrl || null;
-    (post as any).audio = cleanAudioUrl;
-    (post as any).file = cleanFileUrl;
-    (post as any).mediaKind = cleanMediaKind || resolvedMediaType;
-    (post as any).hasMediaInOriginal = normalizeBoolean(hasMediaInOriginal);
 
     const saved = await savePost(post);
 

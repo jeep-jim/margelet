@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import type { Locale, Video } from "../types/app";
+import type { IngestedPost, Locale } from "../types/app";
 
 type AdminScreenProps = {
   locale: Locale;
@@ -12,34 +12,19 @@ type LoadState = "idle" | "loading" | "ready" | "error";
 
 const ADMIN_TELEGRAM_ID = "1372669404";
 
-function getLocalizedText(
-  value: { ru: string; en: string } | undefined,
-  locale: Locale
-) {
-  if (!value) return "";
-  return locale === "en" ? value.en || value.ru || "" : value.ru || value.en || "";
-}
-
-function buildSearchText(post: Video) {
+function buildSearchText(post: IngestedPost) {
   return [
-    post.channel,
-    post.handle,
+    post.source.title,
+    post.source.handle,
     post.postUrl,
-    post.addedByUsername || "",
-    post.addedByTelegramId || "",
+    post.addedBy.username || "",
+    post.addedBy.telegramId || "",
     post.tag || "",
-    post.title?.ru || "",
-    post.title?.en || "",
-    post.caption?.ru || "",
-    post.caption?.en || "",
+    post.text || "",
+    post.billing.plan || "",
   ]
     .join(" ")
     .toLowerCase();
-}
-
-function isTelegramMediaUrl(url?: string | null) {
-  if (!url) return false;
-  return /telegram|t\.me|cdn/i.test(url);
 }
 
 export function AdminScreen({
@@ -48,7 +33,7 @@ export function AdminScreen({
   onClose,
   onDeletePost,
 }: AdminScreenProps) {
-  const [posts, setPosts] = useState<Video[]>([]);
+  const [posts, setPosts] = useState<IngestedPost[]>([]);
   const [query, setQuery] = useState("");
   const [state, setState] = useState<LoadState>("idle");
   const [errorText, setErrorText] = useState("");
@@ -103,7 +88,7 @@ export function AdminScreen({
       }
     }
 
-    loadAdminPosts();
+    void loadAdminPosts();
 
     return () => {
       cancelled = true;
@@ -121,8 +106,8 @@ export function AdminScreen({
     return {
       total: posts.length,
       visible: filteredPosts.length,
-      withPreview: posts.filter((post) => !!post.previewUrl).length,
-      withVideo: posts.filter((post) => post.mediaType === "video").length,
+      withMedia: posts.filter((post) => post.media.length > 0).length,
+      video: posts.filter((post) => post.contentType === "video").length,
     };
   }, [posts, filteredPosts]);
 
@@ -137,31 +122,19 @@ export function AdminScreen({
             "This page is available only for the allowed Telegram account.",
           loading: "Loading posts...",
           error: "Error",
-          searchPlaceholder: "Search by channel / handle / URL / who added",
+          searchPlaceholder: "Search by source / handle / URL / who added",
           total: "Total",
           visible: "Found",
-          withPreview: "With preview",
+          withMedia: "With media",
           withVideo: "Video",
           empty: "No posts found",
-          source: "Source",
-          addedBy: "Added by",
-          link: "Open post",
           deletePost: "Delete post",
           deleting: "Deleting...",
-          media: "Media",
-          preview: "Preview",
-          noPreview: "No preview",
-          typeVideo: "Video",
-          typeImage: "Image",
-          handle: "Handle",
-          tgId: "Telegram ID",
-          yes: "Yes",
-          no: "No",
-          channelVerified: "Verified",
-          postId: "Post ID",
-          titleLabel: "Title",
-          captionLabel: "Text",
-          avatarLabel: "Avatar",
+          source: "Source",
+          type: "Type",
+          addedBy: "Added by",
+          expiresAt: "Expires",
+          open: "Open Telegram",
         }
       : {
           title: "Admin",
@@ -172,31 +145,19 @@ export function AdminScreen({
             "Эта страница доступна только для разрешённого Telegram аккаунта.",
           loading: "Загружаю посты...",
           error: "Ошибка",
-          searchPlaceholder: "Поиск по каналу / handle / ссылке / кто добавил",
+          searchPlaceholder: "Поиск по источнику / handle / ссылке / кто добавил",
           total: "Всего",
           visible: "Найдено",
-          withPreview: "С превью",
+          withMedia: "С медиа",
           withVideo: "Видео",
           empty: "Посты не найдены",
-          source: "Источник",
-          addedBy: "Добавил",
-          link: "Открыть пост",
           deletePost: "Удалить пост",
           deleting: "Удаляю...",
-          media: "Медиа",
-          preview: "Превью",
-          noPreview: "Нет превью",
-          typeVideo: "Видео",
-          typeImage: "Фото",
-          handle: "Handle",
-          tgId: "Telegram ID",
-          yes: "Да",
-          no: "Нет",
-          channelVerified: "Верифицирован",
-          postId: "ID поста",
-          titleLabel: "Заголовок",
-          captionLabel: "Текст",
-          avatarLabel: "Аватар",
+          source: "Источник",
+          type: "Тип",
+          addedBy: "Добавил",
+          expiresAt: "Истекает",
+          open: "Открыть Telegram",
         };
 
   const handleDelete = async (id: number) => {
@@ -226,7 +187,7 @@ export function AdminScreen({
 
   if (!hasAdminAccess) {
     return (
-      <div className="min-h-screen bg-[#0a0a0f] text-white px-4 py-6 sm:px-6">
+      <div className="min-h-screen bg-[#0a0a0f] px-4 py-6 text-white sm:px-6">
         <div className="mx-auto max-w-4xl">
           <div className="mb-4 flex items-center justify-between gap-3">
             <div>
@@ -257,7 +218,7 @@ export function AdminScreen({
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white px-4 py-4 sm:px-6 sm:py-6">
+    <div className="min-h-screen bg-[#0a0a0f] px-4 py-4 text-white sm:px-6 sm:py-6">
       <div className="mx-auto max-w-7xl">
         <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -293,16 +254,16 @@ export function AdminScreen({
 
           <div className="rounded-[20px] border border-white/10 bg-white/5 p-4">
             <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-              {strings.withPreview}
+              {strings.withMedia}
             </div>
-            <div className="mt-2 text-2xl font-semibold">{stats.withPreview}</div>
+            <div className="mt-2 text-2xl font-semibold">{stats.withMedia}</div>
           </div>
 
           <div className="rounded-[20px] border border-white/10 bg-white/5 p-4">
             <div className="text-xs uppercase tracking-[0.18em] text-white/45">
               {strings.withVideo}
             </div>
-            <div className="mt-2 text-2xl font-semibold">{stats.withVideo}</div>
+            <div className="mt-2 text-2xl font-semibold">{stats.video}</div>
           </div>
         </div>
 
@@ -336,13 +297,13 @@ export function AdminScreen({
 
         <div className="space-y-4">
           {filteredPosts.map((post) => {
-            const title = getLocalizedText(post.title, locale);
-            const caption = getLocalizedText(post.caption, locale);
-            const preview = post.previewUrl;
-            const avatar = post.avatar;
+            const preview =
+              post.media.find((item) => item.kind === "image")?.url ||
+              post.media.find((item) => item.kind === "video")?.poster ||
+              post.source.avatar ||
+              null;
+
             const isDeleting = deletingId === post.id;
-            const avatarLooksLikeUrl =
-              typeof avatar === "string" && /^https?:\/\//i.test(avatar);
 
             return (
               <article
@@ -353,178 +314,77 @@ export function AdminScreen({
                   <div className="relative border-b border-white/10 bg-[#0f1117] lg:border-b-0 lg:border-r">
                     <div className="aspect-[4/5] w-full overflow-hidden bg-black/20">
                       {preview ? (
-                        post.mediaType === "video" ? (
-                          <video
-                            src={preview}
-                            className="h-full w-full object-cover"
-                            muted
-                            playsInline
-                            preload="metadata"
-                          />
-                        ) : (
-                          <img
-                            src={preview}
-                            alt={title || post.channel}
-                            className="h-full w-full object-cover"
-                          />
-                        )
+                        <img
+                          src={preview}
+                          alt={post.source.title}
+                          className="h-full w-full object-cover"
+                          referrerPolicy="no-referrer"
+                        />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center px-4 text-center text-sm text-white/35">
-                          {strings.noPreview}
+                        <div className="flex h-full w-full items-center justify-center text-sm text-white/35">
+                          no preview
                         </div>
                       )}
                     </div>
-
-                    <div className="border-t border-white/10 p-3">
-                      <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                        {strings.media}
-                      </div>
-                      <div className="mt-2 text-sm text-white/85">
-                        {post.mediaType === "video"
-                          ? strings.typeVideo
-                          : strings.typeImage}
-                      </div>
-
-                      <div className="mt-4 text-[11px] uppercase tracking-[0.18em] text-white/40">
-                        {strings.preview}
-                      </div>
-                      <div className="mt-2 break-all text-xs text-white/55">
-                        {preview || strings.noPreview}
-                      </div>
-                    </div>
                   </div>
 
-                  <div className="p-4 sm:p-5">
-                    <div className="flex flex-col gap-4">
-                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                        <div className="min-w-0">
-                          <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                            {strings.source}
-                          </div>
-
-                          <div className="mt-2 flex items-center gap-3">
-                            <div className="h-10 w-10 overflow-hidden rounded-full border border-white/10 bg-white/10">
-                              {avatarLooksLikeUrl ? (
-                                <img
-                                  src={avatar}
-                                  alt={post.channel}
-                                  className="h-full w-full object-cover"
-                                />
-                              ) : (
-                                <div className="flex h-full w-full items-center justify-center text-xs font-semibold text-white/70">
-                                  {String(avatar || "TG").slice(0, 2).toUpperCase()}
-                                </div>
-                              )}
-                            </div>
-
-                            <div className="min-w-0">
-                              <div className="truncate text-base font-semibold text-white">
-                                {post.channel}
-                              </div>
-                              <div className="mt-1 truncate text-sm text-white/55">
-                                {post.handle}
-                              </div>
-                            </div>
-                          </div>
+                  <div className="p-5">
+                    <div className="mb-3 flex items-start justify-between gap-4">
+                      <div className="min-w-0">
+                        <div className="truncate text-lg font-semibold">
+                          {post.source.title}
                         </div>
-
-                        <button
-                          type="button"
-                          onClick={() => handleDelete(post.id)}
-                          disabled={isDeleting}
-                          className="inline-flex h-11 shrink-0 items-center justify-center rounded-full border border-red-500/30 bg-red-500/15 px-5 text-sm font-medium text-red-100 transition hover:bg-red-500/20 disabled:cursor-not-allowed disabled:opacity-60"
-                        >
-                          {isDeleting ? strings.deleting : strings.deletePost}
-                        </button>
-                      </div>
-
-                      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                        <div className="rounded-[18px] border border-white/10 bg-black/10 p-3">
-                          <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                            {strings.postId}
-                          </div>
-                          <div className="mt-2 break-all text-sm text-white/85">
-                            {post.id}
-                          </div>
-                        </div>
-
-                        <div className="rounded-[18px] border border-white/10 bg-black/10 p-3">
-                          <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                            {strings.handle}
-                          </div>
-                          <div className="mt-2 break-all text-sm text-white/85">
-                            {post.handle || "—"}
-                          </div>
-                        </div>
-
-                        <div className="rounded-[18px] border border-white/10 bg-black/10 p-3">
-                          <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                            {strings.channelVerified}
-                          </div>
-                          <div className="mt-2 text-sm text-white/85">
-                            {post.channelVerified ? strings.yes : strings.no}
-                          </div>
-                        </div>
-
-                        <div className="rounded-[18px] border border-white/10 bg-black/10 p-3">
-                          <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                            {strings.addedBy}
-                          </div>
-                          <div className="mt-2 break-all text-sm text-white/85">
-                            {post.addedByUsername ? `@${post.addedByUsername}` : "—"}
-                          </div>
-                        </div>
-
-                        <div className="rounded-[18px] border border-white/10 bg-black/10 p-3">
-                          <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                            {strings.tgId}
-                          </div>
-                          <div className="mt-2 break-all text-sm text-white/85">
-                            {post.addedByTelegramId || "—"}
-                          </div>
-                        </div>
-
-                        <div className="rounded-[18px] border border-white/10 bg-black/10 p-3">
-                          <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                            {strings.avatarLabel}
-                          </div>
-                          <div className="mt-2 break-all text-sm text-white/85">
-                            {isTelegramMediaUrl(avatar) ? avatar : avatar || "—"}
-                          </div>
+                        <div className="truncate text-sm text-white/50">
+                          @{post.source.handle}
                         </div>
                       </div>
 
-                      <div className="rounded-[20px] border border-white/10 bg-black/10 p-4">
-                        <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                          {strings.titleLabel}
-                        </div>
-                        <div className="mt-2 text-sm leading-6 text-white/90">
-                          {title || "—"}
-                        </div>
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          void handleDelete(post.id);
+                        }}
+                        disabled={isDeleting}
+                        className="rounded-full bg-rose-500 px-4 py-2 text-sm font-medium text-white transition disabled:opacity-60"
+                      >
+                        {isDeleting ? strings.deleting : strings.deletePost}
+                      </button>
+                    </div>
 
-                      <div className="rounded-[20px] border border-white/10 bg-black/10 p-4">
-                        <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                          {strings.captionLabel}
-                        </div>
-                        <div className="mt-2 whitespace-pre-wrap break-words text-sm leading-6 text-white/78">
-                          {caption || "—"}
-                        </div>
+                    <div className="grid gap-2 text-sm text-white/75 sm:grid-cols-2">
+                      <div>
+                        <span className="text-white/45">{strings.type}: </span>
+                        {post.contentType}
                       </div>
+                      <div>
+                        <span className="text-white/45">{strings.addedBy}: </span>
+                        {post.addedBy.username || post.addedBy.telegramId || "—"}
+                      </div>
+                      <div>
+                        <span className="text-white/45">{strings.expiresAt}: </span>
+                        {new Date(post.expiresAt).toLocaleString()}
+                      </div>
+                      <div>
+                        <span className="text-white/45">plan: </span>
+                        {post.billing.plan}
+                      </div>
+                    </div>
 
-                      <div className="rounded-[20px] border border-white/10 bg-black/10 p-4">
-                        <div className="text-[11px] uppercase tracking-[0.18em] text-white/40">
-                          {strings.link}
-                        </div>
-                        <a
-                          href={post.postUrl}
-                          target="_blank"
-                          rel="noreferrer noopener nofollow"
-                          className="mt-2 block break-all text-sm text-[#8ab4ff] underline underline-offset-4"
-                        >
-                          {post.postUrl}
-                        </a>
+                    {post.text ? (
+                      <div className="mt-4 line-clamp-4 whitespace-pre-wrap break-words text-sm leading-6 text-white/85">
+                        {post.text}
                       </div>
+                    ) : null}
+
+                    <div className="mt-4">
+                      <a
+                        href={post.postUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/85 transition hover:bg-white/10"
+                      >
+                        {strings.open}
+                      </a>
                     </div>
                   </div>
                 </div>

@@ -1,14 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
-import { PostModal } from "./components/modals/PostModal";
 import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
-import { AdminScreen } from "./screens/AdminScreen";
-import { CreatorScreen } from "./screens/CreatorScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
-import { SourceScreen } from "./screens/SourceScreen";
-import type { ContentTag, Locale, MediaType, TabId, Video } from "./types/app";
+import type { ContentTag, IngestedPost, Locale, TabId } from "./types/app";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
@@ -16,7 +12,6 @@ const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
 const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 
-const ADMIN_TELEGRAM_ID = "1372669404";
 const ADMIN_HIDDEN_PATH = "/jim/admin";
 
 type TgUser = {
@@ -97,10 +92,7 @@ export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
-  const [previousTab, setPreviousTab] = useState<TabId>("feed");
-  const [serverVideos, setServerVideos] = useState<Video[]>([]);
-  const [selectedPost, setSelectedPost] = useState<Video | null>(null);
-  const [selectedSourceChannel, setSelectedSourceChannel] = useState<string | null>(null);
+  const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
   const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
 
@@ -108,15 +100,13 @@ export default function App() {
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
 
-  const videos = useMemo(() => {
+  const posts = useMemo(() => {
     if (hiddenPostIds.length === 0) {
-      return serverVideos;
+      return serverPosts;
     }
 
-    return serverVideos.filter((video) => !hiddenPostIds.includes(video.id));
-  }, [serverVideos, hiddenPostIds]);
-
-  const isRealAdminUser = currentTelegramUser?.id === ADMIN_TELEGRAM_ID;
+    return serverPosts.filter((post) => !hiddenPostIds.includes(post.id));
+  }, [serverPosts, hiddenPostIds]);
 
   useEffect(() => {
     const initial = getInitialLocale();
@@ -220,12 +210,14 @@ export default function App() {
     async function loadFeed() {
       try {
         setIsFeedLoading(true);
+
         const res = await fetch("/api/feed");
         if (!res.ok) throw new Error("feed request failed");
 
         const data = await res.json();
+
         if (!cancelled) {
-          setServerVideos(Array.isArray(data.posts) ? data.posts : []);
+          setServerPosts(Array.isArray(data.posts) ? data.posts : []);
         }
       } catch (error) {
         console.error("Failed to load feed", error);
@@ -236,28 +228,12 @@ export default function App() {
       }
     }
 
-    loadFeed();
+    void loadFeed();
 
     return () => {
       cancelled = true;
     };
   }, []);
-
-  useEffect(() => {
-    const onPopState = () => {
-      if (isAdminHiddenPath(window.location.pathname)) {
-        setCurrent("admin");
-      } else if (current === "admin") {
-        setCurrent("feed");
-      }
-    };
-
-    window.addEventListener("popstate", onPopState);
-
-    return () => {
-      window.removeEventListener("popstate", onPopState);
-    };
-  }, [current]);
 
   useEffect(() => {
     const isAdminRoute =
@@ -275,62 +251,26 @@ export default function App() {
     document.title = "MargeleT";
   }, [current]);
 
-  const navigateToFeed = () => {
-    if (isAdminHiddenPath(window.location.pathname)) {
-      window.history.replaceState({}, document.title, "/");
-    }
-
-    setCurrent("feed");
-  };
-
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
-
-    if (isAdminHiddenPath(window.location.pathname)) {
-      setCurrent("admin");
-      return;
-    }
-
     setCurrent("feed");
   };
 
   const handleToggleLike = (id: number) => {
-    const isLiked = likedPostIds.includes(id);
-
     setLikedPostIds((prev) =>
-      isLiked ? prev.filter((postId) => postId !== id) : [...prev, id]
-    );
-
-    setServerVideos((prev) =>
-      prev.map((v) =>
-        v.id === id
-          ? { ...v, likes: Math.max(0, v.likes + (isLiked ? -1 : 1)) }
-          : v
-      )
-    );
-
-    setSelectedPost((prev) =>
-      prev && prev.id === id
-        ? {
-            ...prev,
-            likes: Math.max(0, prev.likes + (isLiked ? -1 : 1)),
-          }
-        : prev
+      prev.includes(id) ? prev.filter((postId) => postId !== id) : [...prev, id]
     );
   };
 
   const handleToggleSave = (id: number) => {
     setSavedPostIds((prev) =>
-      prev.includes(id)
-        ? prev.filter((postId) => postId !== id)
-        : [...prev, id]
+      prev.includes(id) ? prev.filter((postId) => postId !== id) : [...prev, id]
     );
   };
 
   const handleHidePost = (id: number) => {
     setHiddenPostIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
-    setSelectedPost((prev) => (prev?.id === id ? null : prev));
   };
 
   const handleDeletePost = async (id: number) => {
@@ -354,35 +294,18 @@ export default function App() {
       throw new Error(data?.error || "delete failed");
     }
 
-    setServerVideos((prev) => prev.filter((video) => video.id !== id));
+    setServerPosts((prev) => prev.filter((post) => post.id !== id));
     setHiddenPostIds((prev) => prev.filter((postId) => postId !== id));
     setLikedPostIds((prev) => prev.filter((postId) => postId !== id));
     setSavedPostIds((prev) => prev.filter((postId) => postId !== id));
-    setSelectedPost((prev) => (prev?.id === id ? null : prev));
   };
 
   const handleAdd = async ({
     url,
-    title,
-    caption,
-    channel,
-    avatar,
     tag,
-    previewUrl,
-    mediaType,
-    videoUrl,
-    channelVerified,
   }: {
     url: string;
-    title: string;
-    caption?: string;
-    channel: string;
-    avatar?: string | null;
     tag: ContentTag;
-    previewUrl?: string | null;
-    mediaType?: MediaType;
-    videoUrl?: string | null;
-    channelVerified?: boolean;
   }) => {
     const res = await fetch("/api/submit-post", {
       method: "POST",
@@ -391,15 +314,7 @@ export default function App() {
       },
       body: JSON.stringify({
         url,
-        title,
-        caption: caption || "",
-        channel,
-        avatar: avatar || null,
         tag,
-        previewUrl: previewUrl || null,
-        mediaType,
-        videoUrl: videoUrl || null,
-        channelVerified: !!channelVerified,
         addedByTelegramId: currentTelegramUser?.id || null,
         addedByUsername: currentTelegramUser?.username || null,
       }),
@@ -410,36 +325,31 @@ export default function App() {
     }
 
     const data = await res.json();
+
     if (!data?.post) {
       throw new Error("submit returned empty post");
     }
 
-    setServerVideos((prev) => {
-      const rest = prev.filter((video) => video.id !== data.post.id);
+    setServerPosts((prev) => {
+      const rest = prev.filter((post) => post.id !== data.post.id);
       return [data.post, ...rest];
     });
 
     setCurrent("feed");
   };
 
-  const openSource = (channel: string) => {
-    setPreviousTab(current);
-    setSelectedSourceChannel(channel);
-    setCurrent("source");
+  const openSource = (_handle: string) => {
+    // source экран позже переподключим к новой модели
   };
 
-  const goBackFromSource = () => {
-    setCurrent(previousTab);
-  };
-
-  const shouldShowHeader = current !== "source" && current !== "admin";
+  const shouldShowHeader = current !== "admin";
   const shouldShowIntro = !hasSeenIntro && current !== "admin";
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      {shouldShowHeader && (
+      {shouldShowHeader ? (
         <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
-      )}
+      ) : null}
 
       {shouldShowIntro ? (
         <IntroScreen
@@ -449,18 +359,18 @@ export default function App() {
         />
       ) : (
         <>
-          {current === "intro" && (
+          {current === "intro" ? (
             <IntroScreen
               locale={locale}
               onChangeLocale={setLocale}
               onFinish={handleFinishIntro}
             />
-          )}
+          ) : null}
 
-          {current === "feed" && (
+          {current === "feed" ? (
             <FeedScreen
               locale={locale}
-              videos={videos}
+              posts={posts}
               likedPostIds={likedPostIds}
               savedPostIds={savedPostIds}
               onToggleLike={handleToggleLike}
@@ -470,59 +380,40 @@ export default function App() {
               currentTelegramUserId={currentTelegramUser?.id || null}
               openSource={openSource}
             />
-          )}
+          ) : null}
 
-          {current === "add" && (
+          {current === "add" ? (
             <AddScreen
               locale={locale}
               onAdd={handleAdd}
             />
-          )}
+          ) : null}
 
-          {current === "creator" && (
-            <CreatorScreen
-              locale={locale}
-              videos={videos}
-              openPost={setSelectedPost}
-            />
-          )}
+          {current === "creator" ? (
+            <div className="px-4 pb-10 pt-24 text-center text-neutral-300">
+              Creator экран переподключим следующим.
+            </div>
+          ) : null}
 
-          {current === "source" && (
-            <SourceScreen
-              locale={locale}
-              videos={videos}
-              sourceChannel={selectedSourceChannel}
-              onBack={goBackFromSource}
-              onOpenPost={setSelectedPost}
-            />
-          )}
+          {current === "source" ? (
+            <div className="px-4 pb-10 pt-24 text-center text-neutral-300">
+              Source экран переподключим следующим.
+            </div>
+          ) : null}
 
-          {current === "admin" && (
-            <AdminScreen
-              locale={locale}
-              telegramUserId={currentTelegramUser?.id || null}
-              onClose={navigateToFeed}
-              onDeletePost={handleDeletePost}
-            />
-          )}
+          {current === "admin" ? (
+            <div className="px-4 pb-10 pt-24 text-center text-neutral-300">
+              Admin экран переподключим следующим.
+            </div>
+          ) : null}
         </>
       )}
 
-      {current !== "admin" && (
-        <PostModal
-          video={selectedPost}
-          locale={locale}
-          likedPostIds={likedPostIds}
-          savedPostIds={savedPostIds}
-          onToggleLike={handleToggleLike}
-          onToggleSave={handleToggleSave}
-          onClose={() => setSelectedPost(null)}
-        />
-      )}
-
-      {isFeedLoading && current === "feed" ? null : null}
-
-      {isRealAdminUser ? null : null}
+      {isFeedLoading && current === "feed" ? (
+        <div className="pointer-events-none fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm text-white backdrop-blur">
+          Загрузка ленты...
+        </div>
+      ) : null}
     </div>
   );
 }

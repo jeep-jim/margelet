@@ -19,7 +19,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const posts = await getFeedPosts(100);
+    const limit =
+      typeof req.query.limit === "string"
+        ? Math.min(parseInt(req.query.limit, 10) || 100, 200)
+        : 100;
+
+    const posts = await getFeedPosts(limit);
 
     return res.status(200).json({
       posts,

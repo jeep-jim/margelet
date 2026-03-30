@@ -1,8 +1,6 @@
 import { deletePostById, getPostById } from "./lib/kv.js";
 
-const ADMIN_TELEGRAM_IDS = new Set([
-  "1372669404",
-]);
+const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
 export default async function handler(req: any, res: any) {
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
@@ -44,7 +42,7 @@ export default async function handler(req: any, res: any) {
 
     const isAdmin = ADMIN_TELEGRAM_IDS.has(telegramUserId);
     const isOwner =
-      !!post.addedByTelegramId && post.addedByTelegramId === telegramUserId;
+      !!post.addedBy.telegramId && post.addedBy.telegramId === telegramUserId;
 
     if (!isAdmin && !isOwner) {
       return res.status(403).json({ error: "Forbidden" });

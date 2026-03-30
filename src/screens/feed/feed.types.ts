@@ -1,11 +1,16 @@
-import type { Locale, Video } from "../../types/app";
+import type { Locale, IngestedPost } from "../../types/app";
 
 export type FeedMode = "new" | "rising" | "trending";
 export type ViewerDirection = "next" | "prev" | null;
 
+export type FeedOption<T extends string> = {
+  value: T;
+  label: string;
+};
+
 export type FeedScreenProps = {
   locale: Locale;
-  videos: Video[];
+  posts: IngestedPost[];
   likedPostIds: number[];
   savedPostIds: number[];
   onToggleLike: (id: number) => void;
@@ -13,16 +18,11 @@ export type FeedScreenProps = {
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
   currentTelegramUserId: string | null;
-  openSource: (channel: string) => void;
-};
-
-export type FeedOption<T extends string> = {
-  value: T;
-  label: string;
+  openSource: (handle: string) => void;
 };
 
 export type FeedCardProps = {
-  video: Video;
+  post: IngestedPost;
   locale: Locale;
   isOwner: boolean;
   isAdmin: boolean;
@@ -40,11 +40,12 @@ export type FeedTextCardProps = FeedCardProps;
 
 export type FeedMediaCardProps = FeedCardProps & {
   displayText: string;
+  isCardVisible?: boolean;
 };
 
 export type ViewerProps = {
   locale: Locale;
-  activeVideo: Video | null;
+  activePost: IngestedPost | null;
   viewerDirection: ViewerDirection;
   expandedCaption: boolean;
   setExpandedCaption: React.Dispatch<React.SetStateAction<boolean>>;
@@ -66,10 +67,10 @@ export type ViewerProps = {
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
   currentTelegramUserId: string | null;
-  openSource: (channel: string) => void;
+  openSource: (handle: string) => void;
   closeViewer: () => void;
   nextViewer: () => void;
   prevViewer: () => void;
-  handleShare: (video: Video) => Promise<void>;
+  handleShare: (post: IngestedPost) => Promise<void>;
   setActionError: React.Dispatch<React.SetStateAction<string>>;
 };

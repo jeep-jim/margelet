@@ -1,9 +1,7 @@
 import { redis } from "./lib/kv.js";
-import type { Video } from "../src/types/app.js";
+import type { IngestedPost } from "../src/types/app.js";
 
-const ADMIN_TELEGRAM_IDS = new Set([
-  "1372669404",
-]);
+const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
 const FEED_IDS_KEY = "margelet:feed:ids";
 const POST_KEY_PREFIX = "margelet:post:";
@@ -52,7 +50,7 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json({ ok: true, posts: [] });
     }
 
-    const posts: Video[] = [];
+    const posts: IngestedPost[] = [];
 
     for (const rawId of ids) {
       const id = asNumber(rawId);
@@ -61,7 +59,7 @@ export default async function handler(req: any, res: any) {
       const raw = await redis.get(postKey(id));
       if (!raw || typeof raw !== "object") continue;
 
-      posts.push(raw as Video);
+      posts.push(raw as IngestedPost);
     }
 
     return res.status(200).json({

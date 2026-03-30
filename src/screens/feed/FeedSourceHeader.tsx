@@ -1,25 +1,24 @@
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
-import type { Video } from "../../types/app";
-import { isAvatarUrl } from "./feed.utils";
+import type { IngestedPost } from "../../types/app";
 
 export function FeedSourceAvatar({
-  video,
+  post,
   size = "md",
 }: {
-  video: Video;
+  post: IngestedPost;
   size?: "sm" | "md";
 }) {
   const boxClass =
     size === "sm" ? "h-10 w-10 text-sm" : "h-11 w-11 text-sm";
 
-  if (isAvatarUrl(video.avatar)) {
+  if (post.source.avatar) {
     return (
       <div
         className={`relative shrink-0 overflow-hidden rounded-full bg-neutral-200 ${boxClass}`}
       >
         <img
-          src={video.avatar}
-          alt={video.channel}
+          src={post.source.avatar}
+          alt={post.source.title}
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
         />
@@ -31,17 +30,17 @@ export function FeedSourceAvatar({
     <div
       className={`flex shrink-0 items-center justify-center rounded-full bg-neutral-200 font-bold text-neutral-900 ${boxClass}`}
     >
-      {String(video.avatar || "TG").slice(0, 2).toUpperCase()}
+      {String(post.source.title || "TG").slice(0, 2).toUpperCase()}
     </div>
   );
 }
 
 export function FeedSourceHeader({
-  video,
+  post,
   compact = false,
   onOpenCreator,
 }: {
-  video: Video;
+  post: IngestedPost;
   compact?: boolean;
   onOpenCreator: () => void;
 }) {
@@ -51,18 +50,22 @@ export function FeedSourceHeader({
       className={`flex items-center gap-3 text-left ${compact ? "" : "px-4 pt-4 pb-3"}`}
       type="button"
     >
-      <FeedSourceAvatar video={video} size="sm" />
+      <FeedSourceAvatar post={post} size="sm" />
 
       <div className="min-w-0">
         <div className="flex items-center gap-1.5">
           <div className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
-            {video.channel}
+            {post.source.title}
           </div>
-          {video.channelVerified ? (
+
+          {post.source.verified ? (
             <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
           ) : null}
         </div>
-        <div className="truncate text-sm text-neutral-500">{video.handle}</div>
+
+        <div className="truncate text-sm text-neutral-500">
+          @{post.source.handle}
+        </div>
       </div>
     </button>
   );

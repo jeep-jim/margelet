@@ -8,37 +8,9 @@ import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
 import { getDisplayText, normalizeMediaList } from "./feed.utils";
 
-function getMediaItemUrl(item: unknown): string {
-  if (!item || typeof item !== "object") return "";
-
-  const record = item as Record<string, unknown>;
-  const candidates = [record.url, record.src, record.poster];
-
-  for (const candidate of candidates) {
-    if (typeof candidate === "string" && candidate.trim()) {
-      return candidate.trim();
-    }
-  }
-
-  return "";
-}
-
-function isBlockedPreviewUrl(url?: string | null) {
-  const value = String(url || "").toLowerCase();
-  if (!value) return true;
-
-  return (
-    value.includes("userpic") ||
-    value.includes("/avatar") ||
-    value.includes("tgme_page_photo") ||
-    value.includes("channel_photo") ||
-    value.includes("profile_photo")
-  );
-}
-
 export function FeedCard(props: FeedCardProps) {
   const {
-    video,
+    post,
     locale,
     isOwner,
     isAdmin,
@@ -50,29 +22,11 @@ export function FeedCard(props: FeedCardProps) {
     onOpenCreator,
   } = props;
 
-  const displayText = getDisplayText(video, locale);
+  const displayText = getDisplayText(post);
 
-  const rawMediaItems = normalizeMediaList(video);
-  const safeMediaItems = rawMediaItems.filter((item) => {
-    const url = getMediaItemUrl(item);
-    if (!url) return false;
-    if (isBlockedPreviewUrl(url)) return false;
-    return true;
-  });
+  const media = normalizeMediaList(post);
 
-  const mediaKind = video.mediaKind || "none";
-
-  const isVisualMediaKind =
-    mediaKind === "image" ||
-    mediaKind === "gif" ||
-    mediaKind === "video";
-
-  const hasStoredVisualMedia = safeMediaItems.some(
-    (item) => item.type === "image" || item.type === "video"
-  );
-
-  const shouldUseMediaCard =
-    isVisualMediaKind || (mediaKind === "none" && hasStoredVisualMedia);
+  const hasMedia = media.length > 0;
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
@@ -87,16 +41,11 @@ export function FeedCard(props: FeedCardProps) {
           entry.isIntersecting && entry.intersectionRatio >= 0.6
         );
       },
-      {
-        threshold: [0, 0.25, 0.6, 0.85, 1],
-      }
+      { threshold: [0, 0.6, 1] }
     );
 
     observer.observe(node);
-
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -105,7 +54,7 @@ export function FeedCard(props: FeedCardProps) {
       className="overflow-hidden border-b border-neutral-200 bg-white"
     >
       <div className="flex items-center justify-between px-4 pt-4">
-        <FeedSourceHeader video={video} compact onOpenCreator={onOpenCreator} />
+        <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
 
         <div className="relative">
           <button
@@ -127,76 +76,48 @@ export function FeedCard(props: FeedCardProps) {
         </div>
       </div>
 
-      {shouldUseMediaCard ? (
-        <>
-          <FeedMediaCard
-            {...props}
-            displayText={displayText}
-            isCardVisible={isCardVisible}
-          />
-
-          {displayText ? (
-            <div className="px-4 py-3">
-              <ExpandableFeedText text={displayText}>
-                {({ expanded, clamped, expand }) => (
-                  <div className="mt-4 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-8 text-neutral-700">
-                      <button
-                        type="button"
-                        className="flex items-center justify-center"
-                        aria-label="Нравится"
-                        title="Нравится"
-                      >
-                        <Heart className="h-5 w-5" />
-                      </button>
-
-                      <button
-                        type="button"
-                        className="flex items-center justify-center"
-                        aria-label="Сохранить"
-                        title="Сохранить"
-                      >
-                        <Bookmark className="h-5 w-5" />
-                      </button>
-
-                      <button
-                        type="button"
-                        className="flex items-center justify-center"
-                        aria-label="Поделиться"
-                        title="Поделиться"
-                      >
-                        <Send className="h-5 w-5" />
-                      </button>
-                    </div>
-
-                    {clamped ? (
-                      <button
-                        type="button"
-                        onClick={expanded ? onOpen : expand}
-                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
-                      >
-                        <span>{expanded ? "Читать" : "Ещё"}</span>
-                        {expanded ? <ExternalLink className="h-4 w-4" /> : null}
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={onOpen}
-                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
-                      >
-                        <span>Читать</span>
-                        <ExternalLink className="h-4 w-4" />
-                      </button>
-                    )}
-                  </div>
-                )}
-              </ExpandableFeedText>
-            </div>
-          ) : null}
-        </>
+      {hasMedia ? (
+        <FeedMediaCard
+          {...props}
+          displayText={displayText}
+          isCardVisible={isCardVisible}
+        />
       ) : (
-        <FeedTextCard video={video} locale={locale} onOpen={onOpen} />
+        <FeedTextCard post={post} locale={locale} onOpen={onOpen} />
       )}
+
+      {displayText ? (
+        <div className="px-4 py-3">
+          <ExpandableFeedText text={displayText}>
+            {({ expanded, clamped, expand }) => (
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <div className="flex items-center gap-8 text-neutral-700">
+                  <button type="button">
+                    <Heart className="h-5 w-5" />
+                  </button>
+
+                  <button type="button">
+                    <Bookmark className="h-5 w-5" />
+                  </button>
+
+                  <button type="button">
+                    <Send className="h-5 w-5" />
+                  </button>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={expanded ? onOpen : expand}
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
+                >
+                  <span>{expanded ? "Читать" : "Ещё"}</span>
+                  <ExternalLink className="h-4 w-4" />
+                </button>
+              </div>
+            )}
+          </ExpandableFeedText>
+        </div>
+      ) : null}
     </article>
   );
 }

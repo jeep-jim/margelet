@@ -35,7 +35,7 @@ export default async function handler(req: any, res: any) {
     const upstream = await fetch(target.toString(), {
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123 Safari/537.36",
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
         Accept: "*/*",
       },
     });
@@ -46,11 +46,10 @@ export default async function handler(req: any, res: any) {
 
     const contentType =
       upstream.headers.get("content-type") || "application/octet-stream";
-    const cacheControl =
-      upstream.headers.get("cache-control") || "public, max-age=86400";
 
+    // 🔥 TTL синхронизируем с логикой постов (максимум 48h)
     res.setHeader("Content-Type", contentType);
-    res.setHeader("Cache-Control", cacheControl);
+    res.setHeader("Cache-Control", "public, max-age=172800, stale-while-revalidate=86400");
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     const arrayBuffer = await upstream.arrayBuffer();

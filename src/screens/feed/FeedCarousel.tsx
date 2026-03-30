@@ -1,7 +1,17 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useRef, type MutableRefObject } from "react";
-import type { PostMedia } from "../../types/app";
 import { HORIZONTAL_SWIPE_DISTANCE } from "./feed.constants";
+
+type CarouselItem = {
+  id: string;
+  kind: "image" | "video" | "audio" | "file";
+  url: string;
+  poster?: string | null;
+};
+
+function isVideoItem(item: CarouselItem) {
+  return item.kind === "video";
+}
 
 export function FeedMediaSlide({
   item,
@@ -11,7 +21,7 @@ export function FeedMediaSlide({
   muted = true,
   videoRef,
 }: {
-  item: PostMedia;
+  item: CarouselItem;
   displayText: string;
   className?: string;
   active?: boolean;
@@ -31,7 +41,7 @@ export function FeedMediaSlide({
   );
 
   useEffect(() => {
-    if (item.type !== "video") return;
+    if (!isVideoItem(item)) return;
 
     const node = localVideoRef.current;
     if (!node) return;
@@ -46,9 +56,9 @@ export function FeedMediaSlide({
     } else {
       node.pause();
     }
-  }, [active, muted, item.type, item.url]);
+  }, [active, muted, item]);
 
-  if (item.type === "video") {
+  if (isVideoItem(item)) {
     return (
       <video
         ref={attachVideoRef}
@@ -90,6 +100,7 @@ export function MediaDots({
     <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5">
       {Array.from({ length: total }).map((_, index) => {
         const active = index === activeIndex;
+
         return (
           <button
             key={index}
@@ -126,7 +137,7 @@ export function FeedCarousel({
   muted = true,
   videoRef,
 }: {
-  items: PostMedia[];
+  items: CarouselItem[];
   displayText: string;
   aspectClass: string;
   activeIndex: number;
@@ -137,9 +148,17 @@ export function FeedCarousel({
   videoRef?: MutableRefObject<HTMLVideoElement | null>;
 }) {
   const touchStartXRef = useRef<number | null>(null);
-  const canPrev = activeIndex > 0;
-  const canNext = activeIndex < items.length - 1;
-  const current = items[activeIndex];
+
+  if (!items.length) {
+    return (
+      <div className={`relative ${aspectClass} w-full overflow-hidden bg-neutral-200`} />
+    );
+  }
+
+  const safeIndex = Math.min(Math.max(activeIndex, 0), items.length - 1);
+  const canPrev = safeIndex > 0;
+  const canNext = safeIndex < items.length - 1;
+  const current = items[safeIndex];
 
   return (
     <div
@@ -155,11 +174,13 @@ export function FeedCarousel({
         if (startX === null || endX === null) return;
 
         const delta = endX - startX;
+
         if (delta <= -HORIZONTAL_SWIPE_DISTANCE && canNext) {
-          onChange(activeIndex + 1);
+          onChange(safeIndex + 1);
         }
+
         if (delta >= HORIZONTAL_SWIPE_DISTANCE && canPrev) {
-          onChange(activeIndex - 1);
+          onChange(safeIndex - 1);
         }
       }}
     >
@@ -167,9 +188,9 @@ export function FeedCarousel({
         item={current}
         displayText={displayText}
         className="absolute inset-0 h-full w-full object-cover"
-        active={current.type === "video" ? mediaActive : true}
+        active={isVideoItem(current) ? mediaActive : true}
         muted={muted}
-        videoRef={current.type === "video" ? videoRef : undefined}
+        videoRef={isVideoItem(current) ? videoRef : undefined}
       />
 
       {canPrev ? (
@@ -177,10 +198,12 @@ export function FeedCarousel({
           type="button"
           onClick={(event) => {
             event.stopPropagation();
-            onChange(activeIndex - 1);
+            onChange(safeIndex - 1);
           }}
           className={`absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
-            controlsTone === "light" ? "bg-black/35 text-white" : "bg-white/85 text-neutral-900"
+            controlsTone === "light"
+              ? "bg-black/35 text-white"
+              : "bg-white/85 text-neutral-900"
           }`}
           aria-label="Предыдущее медиа"
         >
@@ -193,10 +216,12 @@ export function FeedCarousel({
           type="button"
           onClick={(event) => {
             event.stopPropagation();
-            onChange(activeIndex + 1);
+            onChange(safeIndex + 1);
           }}
           className={`absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
-            controlsTone === "light" ? "bg-black/35 text-white" : "bg-white/85 text-neutral-900"
+            controlsTone === "light"
+              ? "bg-black/35 text-white"
+              : "bg-white/85 text-neutral-900"
           }`}
           aria-label="Следующее медиа"
         >
@@ -206,7 +231,7 @@ export function FeedCarousel({
 
       <MediaDots
         total={items.length}
-        activeIndex={activeIndex}
+        activeIndex={safeIndex}
         onSelect={onChange}
         light={controlsTone === "light"}
       />

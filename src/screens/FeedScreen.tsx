@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { ContentTag, FeedTag, Video } from "../types/app";
+import { useCallback, useMemo, useRef, useState } from "react";
+import type { ContentTag, FeedTag, IngestedPost } from "../types/app";
 import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
@@ -10,24 +10,16 @@ import {
   getResolvedTag,
   getDisplayText,
   buildShareUrl,
-  parseDurationToSeconds,
   normalizeMediaList,
 } from "./feed/feed.utils";
 
-function isRealVideoPost(video: Video) {
-  if (video.mediaKind) {
-    return video.mediaKind === "video";
-  }
-
-  if (video.videoUrl) return true;
-
-  const media = normalizeMediaList(video);
-  return media.some((item) => item.type === "video");
+function isRealVideoPost(post: IngestedPost) {
+  return post.contentType === "video" || post.media.some((item) => item.kind === "video");
 }
 
 export function FeedScreen({
   locale,
-  videos,
+  posts,
   likedPostIds,
   savedPostIds,
   onToggleLike,
@@ -38,7 +30,7 @@ export function FeedScreen({
   openSource,
 }: {
   locale: "ru" | "en";
-  videos: Video[];
+  posts: IngestedPost[];
   likedPostIds: number[];
   savedPostIds: number[];
   onToggleLike: (id: number) => void;
@@ -46,10 +38,10 @@ export function FeedScreen({
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
   currentTelegramUserId: string | null;
-  openSource: (channel: string) => void;
+  openSource: (handle: string) => void;
 }) {
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
-  const [textReaderVideo, setTextReaderVideo] = useState<Video | null>(null);
+  const [textReaderPost, setTextReaderPost] = useState<IngestedPost | null>(null);
   const [viewerDirection, setViewerDirection] = useState<ViewerDirection>(null);
   const [expandedCaption, setExpandedCaption] = useState(false);
   const [feedMode, setFeedMode] = useState<FeedMode>("new");
@@ -65,28 +57,27 @@ export function FeedScreen({
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   const preferredTags = useMemo(() => {
-    const source = videos.filter(
-      (video) =>
-        likedPostIds.includes(video.id) || savedPostIds.includes(video.id)
+    const source = posts.filter(
+      (post) => likedPostIds.includes(post.id) || savedPostIds.includes(post.id)
     );
 
     const counts = new Map<ContentTag, number>();
 
-    source.forEach((video) => {
-      const tag = getResolvedTag(video);
+    source.forEach((post) => {
+      const tag = getResolvedTag(post);
       counts.set(tag, (counts.get(tag) || 0) + 1);
     });
 
     return Array.from(counts.entries())
       .sort((a, b) => b[1] - a[1])
       .map(([tag]) => tag);
-  }, [videos, likedPostIds, savedPostIds]);
+  }, [posts, likedPostIds, savedPostIds]);
 
-  const visibleVideos = useMemo(() => {
-    let list = [...videos];
+  const visiblePosts = useMemo(() => {
+    let list = [...posts];
 
     if (activeTag !== "all") {
-      list = list.filter((video) => getResolvedTag(video) === activeTag);
+      list = list.filter((post) => getResolvedTag(post) === activeTag);
     }
 
     if (feedMode === "new") {
@@ -95,7 +86,20 @@ export function FeedScreen({
     }
 
     if (feedMode === "trending") {
-      list.sort((a, b) => b.likes - a.likes);
+      list.sort((a, b) => {
+        const aScore =
+          (likedPostIds.includes(a.id) ? 2 : 0) +
+          (savedPostIds.includes(a.id) ? 3 : 0) +
+          a.media.length;
+
+        const bScore =
+          (likedPostIds.includes(b.id) ? 2 : 0) +
+          (savedPostIds.includes(b.id) ? 3 : 0) +
+          b.media.length;
+
+        return bScore - aScore;
+      });
+
       return list;
     }
 
@@ -104,55 +108,55 @@ export function FeedScreen({
       const bTag = getResolvedTag(b);
 
       const aScore =
-        a.likes * 1.2 +
         (likedPostIds.includes(a.id) ? 6 : 0) +
         (savedPostIds.includes(a.id) ? 8 : 0) +
-        (preferredTags.includes(aTag) ? 4 : 0);
+        (preferredTags.includes(aTag) ? 4 : 0) +
+        a.media.length;
 
       const bScore =
-        b.likes * 1.2 +
         (likedPostIds.includes(b.id) ? 6 : 0) +
         (savedPostIds.includes(b.id) ? 8 : 0) +
-        (preferredTags.includes(bTag) ? 4 : 0);
+        (preferredTags.includes(bTag) ? 4 : 0) +
+        b.media.length;
 
       return bScore - aScore;
     });
 
     return list;
-  }, [videos, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
+  }, [posts, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
 
-  const viewerVideos = useMemo(() => {
-    return visibleVideos.filter((video) => isRealVideoPost(video));
-  }, [visibleVideos]);
+  const viewerPosts = useMemo(() => {
+    return visiblePosts.filter((post) => isRealVideoPost(post));
+  }, [visiblePosts]);
 
-  const activeVideo = useMemo(() => {
+  const activePost = useMemo(() => {
     if (viewerIndex === null) return null;
-    return viewerVideos[viewerIndex] ?? null;
-  }, [viewerIndex, viewerVideos]);
+    return viewerPosts[viewerIndex] ?? null;
+  }, [viewerIndex, viewerPosts]);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const activeVideoMedia = useMemo(() => {
-    return activeVideo ? normalizeMediaList(activeVideo) : [];
-  }, [activeVideo]);
+  const activePostMedia = useMemo(() => {
+    return activePost ? normalizeMediaList(activePost) : [];
+  }, [activePost]);
 
   const activeViewerMedia =
-    activeVideoMedia[Math.min(viewerMediaIndex, Math.max(activeVideoMedia.length - 1, 0))] ||
+    activePostMedia[Math.min(viewerMediaIndex, Math.max(activePostMedia.length - 1, 0))] ||
     null;
 
-  const setFeedCardMediaIndex = useCallback((videoId: number, nextIndex: number) => {
+  const setFeedCardMediaIndex = useCallback((postId: number, nextIndex: number) => {
     setFeedMediaIndexes((prev) => ({
       ...prev,
-      [videoId]: Math.max(0, nextIndex),
+      [postId]: Math.max(0, nextIndex),
     }));
   }, []);
 
-  const openViewerByVideo = useCallback(
-    (video: Video) => {
-      const nextIndex = viewerVideos.findIndex((item) => item.id === video.id);
+  const openViewerByPost = useCallback(
+    (post: IngestedPost) => {
+      const nextIndex = viewerPosts.findIndex((item) => item.id === post.id);
       if (nextIndex === -1) return;
 
-      setTextReaderVideo(null);
+      setTextReaderPost(null);
       setViewerDirection(null);
       setViewerIndex(nextIndex);
       setViewerMediaIndex(0);
@@ -164,12 +168,12 @@ export function FeedScreen({
       setActionError("");
       setVideoProgress(0);
     },
-    [viewerVideos]
+    [viewerPosts]
   );
 
-  const openTextReader = useCallback((video: Video) => {
+  const openTextReader = useCallback((post: IngestedPost) => {
     setViewerIndex(null);
-    setTextReaderVideo(video);
+    setTextReaderPost(post);
     setCopySuccessId(null);
     setMenuPostId(null);
     setActionError("");
@@ -189,9 +193,9 @@ export function FeedScreen({
   }, []);
 
   const nextViewer = useCallback(() => {
-    if (viewerIndex === null || viewerVideos.length === 0) return;
+    if (viewerIndex === null || viewerPosts.length === 0) return;
     setViewerDirection("next");
-    setViewerIndex((viewerIndex + 1) % viewerVideos.length);
+    setViewerIndex((viewerIndex + 1) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
@@ -200,12 +204,12 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-  }, [viewerIndex, viewerVideos.length]);
+  }, [viewerIndex, viewerPosts.length]);
 
   const prevViewer = useCallback(() => {
-    if (viewerIndex === null || viewerVideos.length === 0) return;
+    if (viewerIndex === null || viewerPosts.length === 0) return;
     setViewerDirection("prev");
-    setViewerIndex((viewerIndex - 1 + viewerVideos.length) % viewerVideos.length);
+    setViewerIndex((viewerIndex - 1 + viewerPosts.length) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsMuted(true);
@@ -214,190 +218,38 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-  }, [viewerIndex, viewerVideos.length]);
+  }, [viewerIndex, viewerPosts.length]);
 
-  const handleShare = async (video: Video) => {
-    const shareUrl = buildShareUrl(video);
+  const handleShare = async (post: IngestedPost) => {
+    const shareUrl = buildShareUrl(post);
 
     try {
       if (navigator.share) {
         await navigator.share({
-          title: video.channel,
-          text: getDisplayText(video, locale),
+          title: post.source.title,
+          text: getDisplayText(post),
           url: shareUrl,
         });
       } else {
         await navigator.clipboard.writeText(shareUrl);
       }
 
-      setCopySuccessId(video.id);
+      setCopySuccessId(post.id);
       window.setTimeout(() => {
-        setCopySuccessId((prev) => (prev === video.id ? null : prev));
+        setCopySuccessId((prev) => (prev === post.id ? null : prev));
       }, 1600);
     } catch {
       try {
         await navigator.clipboard.writeText(shareUrl);
-        setCopySuccessId(video.id);
+        setCopySuccessId(post.id);
         window.setTimeout(() => {
-          setCopySuccessId((prev) => (prev === video.id ? null : prev));
+          setCopySuccessId((prev) => (prev === post.id ? null : prev));
         }, 1600);
       } catch {
-        // ignore
+        //
       }
     }
   };
-
-  const handleDelete = async (video: Video) => {
-    try {
-      setActionError("");
-      await onDeletePost(video.id);
-      setMenuPostId(null);
-
-      if (activeVideo?.id === video.id) {
-        closeViewer();
-      }
-      if (textReaderVideo?.id === video.id) {
-        setTextReaderVideo(null);
-      }
-    } catch (error: any) {
-      setActionError(String(error?.message || "Не удалось удалить пост"));
-    }
-  };
-
-  const handleHide = (video: Video) => {
-    setActionError("");
-    onHidePost(video.id);
-    setMenuPostId(null);
-
-    if (activeVideo?.id === video.id) {
-      closeViewer();
-    }
-    if (textReaderVideo?.id === video.id) {
-      setTextReaderVideo(null);
-    }
-  };
-
-  useEffect(() => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = isMuted;
-  }, [isMuted, activeVideo?.id, viewerMediaIndex]);
-
-  useEffect(() => {
-    const node = videoRef.current;
-    if (!node || !activeViewerMedia || activeViewerMedia.type !== "video") return;
-
-    if (isPlaying) {
-      void node.play().catch(() => {});
-    } else {
-      node.pause();
-    }
-  }, [isPlaying, activeVideo?.id, viewerMediaIndex, activeViewerMedia?.type]);
-
-  useEffect(() => {
-    if (activeViewerMedia?.type !== "video") {
-      setIsPlaying(true);
-      setIsMuted(true);
-      setVideoProgress(0);
-    }
-  }, [activeViewerMedia?.type]);
-
-  useEffect(() => {
-    const node = videoRef.current;
-    if (!node || !activeViewerMedia || activeViewerMedia.type !== "video") {
-      setVideoProgress(0);
-      return;
-    }
-
-    const updateProgress = () => {
-      const duration =
-        Number.isFinite(node.duration) && node.duration > 0
-          ? node.duration
-          : parseDurationToSeconds(activeVideo?.duration);
-
-      const currentTime =
-        Number.isFinite(node.currentTime) && node.currentTime >= 0
-          ? node.currentTime
-          : 0;
-
-      setVideoProgress(duration > 0 ? Math.min(currentTime / duration, 1) : 0);
-    };
-
-    const handleLoadedMetadata = () => updateProgress();
-    const handleTimeUpdate = () => updateProgress();
-    const handleEnded = () => {
-      setVideoProgress(1);
-    };
-
-    updateProgress();
-
-    node.addEventListener("loadedmetadata", handleLoadedMetadata);
-    node.addEventListener("timeupdate", handleTimeUpdate);
-    node.addEventListener("ended", handleEnded);
-
-    return () => {
-      node.removeEventListener("loadedmetadata", handleLoadedMetadata);
-      node.removeEventListener("timeupdate", handleTimeUpdate);
-      node.removeEventListener("ended", handleEnded);
-    };
-  }, [activeVideo?.id, activeVideo?.duration, activeViewerMedia?.url, activeViewerMedia?.type]);
-
-  useEffect(() => {
-    const hasOverlay = viewerIndex !== null || !!textReaderVideo;
-    if (!hasOverlay) return;
-
-    const originalBodyOverflow = document.body.style.overflow;
-    const originalHtmlOverflow = document.documentElement.style.overflow;
-
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = originalBodyOverflow;
-      document.documentElement.style.overflow = originalHtmlOverflow;
-    };
-  }, [viewerIndex, textReaderVideo]);
-
-  useEffect(() => {
-    if (viewerIndex === null) return;
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeViewer();
-        return;
-      }
-
-      if (event.key === "ArrowDown") {
-        event.preventDefault();
-        nextViewer();
-        return;
-      }
-
-      if (event.key === "ArrowUp") {
-        event.preventDefault();
-        prevViewer();
-        return;
-      }
-
-      if (event.key === "ArrowRight" && activeVideoMedia.length > 1) {
-        event.preventDefault();
-        setViewerMediaIndex((prev) =>
-          Math.min(prev + 1, activeVideoMedia.length - 1)
-        );
-        return;
-      }
-
-      if (event.key === "ArrowLeft" && activeVideoMedia.length > 1) {
-        event.preventDefault();
-        setViewerMediaIndex((prev) => Math.max(prev - 1, 0));
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [viewerIndex, closeViewer, nextViewer, prevViewer, activeVideoMedia.length]);
 
   return (
     <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
@@ -419,42 +271,42 @@ export function FeedScreen({
       ) : null}
 
       <div className="mx-auto w-full max-w-[720px]">
-        {visibleVideos.map((video) => {
+        {visiblePosts.map((post) => {
           const isOwner =
             !!currentTelegramUserId &&
-            !!video.addedByTelegramId &&
-            currentTelegramUserId === video.addedByTelegramId;
+            !!post.addedBy.telegramId &&
+            currentTelegramUserId === post.addedBy.telegramId;
 
           const isAdmin =
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
-          const shouldOpenViewer = isRealVideoPost(video);
+          const shouldOpenViewer = isRealVideoPost(post);
 
           return (
             <FeedCard
-              key={video.id}
-              video={video}
+              key={post.id}
+              post={post}
               locale={locale}
               isOwner={isOwner}
               isAdmin={isAdmin}
-              menuOpen={menuPostId === video.id}
+              menuOpen={menuPostId === post.id}
               onToggleMenu={() =>
-                setMenuPostId((prev) => (prev === video.id ? null : video.id))
+                setMenuPostId((prev) => (prev === post.id ? null : post.id))
               }
               onDelete={() => {
-                void handleDelete(video);
+                void onDeletePost(post.id);
               }}
-              onHide={() => handleHide(video)}
+              onHide={() => onHidePost(post.id)}
               onOpen={() => {
                 if (shouldOpenViewer) {
-                  openViewerByVideo(video);
+                  openViewerByPost(post);
                 } else {
-                  openTextReader(video);
+                  openTextReader(post);
                 }
               }}
-              onOpenCreator={() => openSource(video.channel)}
-              mediaIndex={feedMediaIndexes[video.id] || 0}
-              onChangeMediaIndex={(next: number) => setFeedCardMediaIndex(video.id, next)}
+              onOpenCreator={() => openSource(post.source.handle)}
+              mediaIndex={feedMediaIndexes[post.id] || 0}
+              onChangeMediaIndex={(next: number) => setFeedCardMediaIndex(post.id, next)}
             />
           );
         })}
@@ -462,7 +314,7 @@ export function FeedScreen({
 
       <FeedViewer
         locale={locale}
-        activeVideo={activeVideo}
+        activePost={activePost}
         viewerDirection={viewerDirection}
         expandedCaption={expandedCaption}
         setExpandedCaption={setExpandedCaption}
@@ -493,11 +345,11 @@ export function FeedScreen({
       />
 
       <FeedTextReaderModal
-        video={textReaderVideo}
+        post={textReaderPost}
         locale={locale}
-        liked={!!textReaderVideo && likedPostIds.includes(textReaderVideo.id)}
-        saved={!!textReaderVideo && savedPostIds.includes(textReaderVideo.id)}
-        onClose={() => setTextReaderVideo(null)}
+        liked={!!textReaderPost && likedPostIds.includes(textReaderPost.id)}
+        saved={!!textReaderPost && savedPostIds.includes(textReaderPost.id)}
+        onClose={() => setTextReaderPost(null)}
         onToggleLike={onToggleLike}
         onToggleSave={onToggleSave}
         onShare={handleShare}
