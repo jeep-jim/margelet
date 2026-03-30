@@ -15,7 +15,16 @@ import {
 } from "./feed/feed.utils";
 
 function isRealVideoPost(video: Video) {
-  return video.mediaKind === "video";
+  if (video.mediaKind === "gif") return false;
+  if (video.mediaKind === "audio") return false;
+  if (video.mediaKind === "file") return false;
+  if (video.mediaKind === "external_media") return false;
+
+  if (video.mediaKind === "video") return true;
+  if (video.videoUrl) return true;
+
+  const media = normalizeMediaList(video);
+  return media.some((item) => item.type === "video");
 }
 
 export function FeedScreen({
