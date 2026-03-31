@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
@@ -33,23 +33,19 @@ function linkifyText(text: string) {
   });
 }
 
-function RichPreview({
-  text,
-  expanded,
-}: {
-  text: string;
-  expanded: boolean;
-}) {
-  const paragraphs = text
-    .replace(/\r/g, "")
-    .split(/\n{2,}/)
-    .map((part) => part.trim())
-    .filter(Boolean);
+function RichPreview({ text, clamp }: { text: string; clamp: boolean }) {
+  const paragraphs = useMemo(() => {
+    return text
+      .replace(/\r/g, "")
+      .split(/\n{2,}/)
+      .map((part) => part.trim())
+      .filter(Boolean);
+  }, [text]);
 
   return (
     <div
       className={`text-[15px] leading-7 text-neutral-900 ${
-        expanded ? "" : "line-clamp-5"
+        clamp ? "line-clamp-3" : ""
       }`}
     >
       {paragraphs.map((paragraph, index) => {
@@ -90,13 +86,12 @@ export function ExpandableFeedText({
 
     const styles = window.getComputedStyle(node);
     const lineHeight = parseFloat(styles.lineHeight || "0");
-
     if (!lineHeight) {
-      setShouldClamp(text.length > 220);
+      setShouldClamp(text.length > 180);
       return;
     }
 
-    const maxHeight = lineHeight * 5 + 2;
+    const maxHeight = lineHeight * 3 + 2;
     setShouldClamp(node.scrollHeight > maxHeight);
   }, [text]);
 
@@ -108,14 +103,14 @@ export function ExpandableFeedText({
           className="pointer-events-none absolute left-0 top-0 w-full opacity-0"
           aria-hidden
         >
-          <RichPreview text={text} expanded />
+          <RichPreview text={text} clamp={false} />
         </div>
 
-        <RichPreview text={text} expanded={expanded || !shouldClamp} />
+        <RichPreview text={text} clamp={!expanded && shouldClamp} />
       </div>
 
       {children({
-        expanded,
+        expanded: expanded || !shouldClamp,
         expand: () => setExpanded(true),
       })}
     </>
