@@ -128,7 +128,7 @@ function detectGifFromChunk(chunk: string, videoUrl: string | null) {
   return (
     /tgme_widget_message_animation/i.test(chunk) ||
     /tgme_widget_message_gif/i.test(chunk) ||
-    /autoplay/i.test(chunk) && /loop/i.test(chunk) && /muted/i.test(chunk)
+    (/autoplay/i.test(chunk) && /loop/i.test(chunk) && /muted/i.test(chunk))
   );
 }
 
@@ -324,18 +324,21 @@ function buildOrderedMedia(html: string) {
     const rawUrl = normalizeAssetUrl(match[1]);
     if (!rawUrl) return;
 
-    const chunk = html.slice(Math.max(0, (match.index || 0) - 300), (match.index || 0) + 900);
+    const chunk = html.slice(
+      Math.max(0, (match.index || 0) - 300),
+      (match.index || 0) + 900
+    );
     const poster =
       normalizeAssetUrl(
-        extract(
-          chunk,
-          /background-image:url\('([^']+)'\)/i
-        )
+        extract(chunk, /background-image:url\('([^']+)'\)/i)
       ) || null;
 
     const duration = parseDurationText(
       decodeHtml(
-        extract(chunk, /class="tgme_widget_message_video_duration"[^>]*>([\s\S]*?)<\/(?:time|div)>/i) || ""
+        extract(
+          chunk,
+          /class="tgme_widget_message_video_duration"[^>]*>([\s\S]*?)<\/(?:time|div)>/i
+        ) || ""
       )
     );
 
@@ -363,7 +366,9 @@ function buildOrderedMedia(html: string) {
   );
 
   audioMatches.forEach((match) => {
-    const raw = normalizeAssetUrl(match[1] || match[2] || match[3] || match[4] || "");
+    const raw = normalizeAssetUrl(
+      match[1] || match[2] || match[3] || match[4] || ""
+    );
     if (!raw || !looksLikeAudioUrl(raw)) return;
 
     const key = `audio:${raw}`;
@@ -383,20 +388,24 @@ function buildOrderedMedia(html: string) {
 
   const docMatches = extractAll(
     html,
-    /class="tgme_widget_message_document(?:_wrap)?[^"]*"[\s\S]{0,300}?href="([^"]+)"/gi
+    /class="tgme_widget_message_document(?:_wrap)?[^"]*"[\s\S]{0,400}?href="([^"]+)"/gi
   );
 
   docMatches.forEach((match) => {
     const raw = normalizeAssetUrl(match[1]);
     if (!raw) return;
 
-    const chunk = html.slice(Math.max(0, (match.index || 0) - 200), (match.index || 0) + 600);
-    const fileName = decodeHtml(
-      extract(
-        chunk,
-        /class="tgme_widget_message_document_name[^"]*"[^>]*>([\s\S]*?)<\/div>/i
-      ) || ""
-    ) || null;
+    const chunk = html.slice(
+      Math.max(0, (match.index || 0) - 200),
+      (match.index || 0) + 700
+    );
+    const fileName =
+      decodeHtml(
+        extract(
+          chunk,
+          /class="tgme_widget_message_document_name[^"]*"[^>]*>([\s\S]*?)<\/div>/i
+        ) || ""
+      ) || null;
 
     if (looksLikeAudioUrl(raw) || looksLikeAudioUrl(fileName)) {
       const key = `audio:${raw}`;
@@ -439,7 +448,9 @@ function buildOrderedMedia(html: string) {
   }));
 }
 
-function resolveContentType(media: IngestedPost["media"]): IngestedPost["contentType"] {
+function resolveContentType(
+  media: IngestedPost["media"]
+): IngestedPost["contentType"] {
   if (!media.length) return "text";
 
   if (media.length === 1) {
@@ -453,11 +464,13 @@ function resolveContentType(media: IngestedPost["media"]): IngestedPost["content
     }
   }
 
-  const uniqueKinds = new Set(
-    media.map((item) =>
-      item.kind === "video" && item.mimeType?.includes("gif") ? "gif" : item.kind
-    )
+  const normalizedKinds = media.map((item) =>
+    item.kind === "video" && item.mimeType?.includes("gif")
+      ? "gif"
+      : item.kind
   );
+
+  const uniqueKinds = new Set(normalizedKinds);
 
   if (uniqueKinds.size === 1 && uniqueKinds.has("image")) {
     return "gallery";
