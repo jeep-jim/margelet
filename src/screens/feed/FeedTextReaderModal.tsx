@@ -5,15 +5,19 @@ import {
   ExternalLink,
   FileText,
   Heart,
-  Send,
   Music4,
+  Send,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { IngestedPost } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { FeedCarousel } from "./FeedCarousel";
-import { normalizeMediaList } from "./feed.utils";
+import {
+  getAudioMedia,
+  getFileMedia,
+  normalizeMediaList,
+} from "./feed.utils";
 
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
@@ -74,6 +78,22 @@ function RichTextBlock({ text }: { text: string }) {
         );
       })}
     </div>
+  );
+}
+
+function hasMusicLikeTag(post: IngestedPost) {
+  const tag = String(post.tag || "").toLowerCase();
+  const title = String(post.source.title || "").toLowerCase();
+  const text = String(post.text || "").toLowerCase();
+
+  return (
+    tag === "music" ||
+    title.includes("музык") ||
+    title.includes("music") ||
+    text.includes("трек") ||
+    text.includes("track") ||
+    text.includes("песня") ||
+    text.includes("music")
   );
 }
 
@@ -172,6 +192,41 @@ function FileList({
   );
 }
 
+function MusicFallback({ post }: { post: IngestedPost }) {
+  if (!hasMusicLikeTag(post)) return null;
+
+  return (
+    <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+      <div className="flex items-start gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+          <Music4 className="h-5 w-5" />
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <div className="text-sm font-semibold text-neutral-950">
+            Музыка доступна в оригинальном посте
+          </div>
+
+          <div className="mt-1 text-sm text-neutral-500">
+            Здесь показываем карточку поста. Оригинальный трек можно открыть в Telegram.
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              window.open(post.postUrl, "_blank", "noopener,noreferrer");
+            }}
+            className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
+          >
+            <span>Открыть в Telegram</span>
+            <ExternalLink className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function FeedTextReaderModal({
   post,
   locale: _locale,
@@ -198,8 +253,8 @@ export function FeedTextReaderModal({
     (item) => item.kind === "image" || item.kind === "video"
   );
 
-  const audioMedia = media.filter((item) => item.kind === "audio");
-  const fileMedia = media.filter((item) => item.kind === "file");
+  const audioMedia = post ? getAudioMedia(post) : [];
+  const fileMedia = post ? getFileMedia(post) : [];
 
   return (
     <AnimatePresence>
@@ -269,7 +324,10 @@ export function FeedTextReaderModal({
                   <FeedCarousel
                     items={visualMedia}
                     aspectClass="aspect-[4/5]"
-                    activeIndex={Math.min(mediaIndex, Math.max(visualMedia.length - 1, 0))}
+                    activeIndex={Math.min(
+                      mediaIndex,
+                      Math.max(visualMedia.length - 1, 0)
+                    )}
                     onChange={setMediaIndex}
                     controlsTone="dark"
                     fit="contain"
@@ -279,8 +337,11 @@ export function FeedTextReaderModal({
               ) : null}
 
               <AudioList items={audioMedia} />
-
               <FileList items={fileMedia} />
+
+              {audioMedia.length === 0 && fileMedia.length === 0 ? (
+                <MusicFallback post={post} />
+              ) : null}
 
               {text ? <RichTextBlock text={text} /> : null}
             </div>

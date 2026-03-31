@@ -73,6 +73,22 @@ function linkifyText(text: string) {
   });
 }
 
+function hasMusicLikeTag(post: IngestedPost) {
+  const tag = String(post.tag || "").toLowerCase();
+  const title = String(post.source.title || "").toLowerCase();
+  const text = String(post.text || "").toLowerCase();
+
+  return (
+    tag === "music" ||
+    title.includes("музык") ||
+    title.includes("music") ||
+    text.includes("трек") ||
+    text.includes("track") ||
+    text.includes("песня") ||
+    text.includes("music")
+  );
+}
+
 function AudioPreview({
   post,
 }: {
@@ -80,20 +96,38 @@ function AudioPreview({
 }) {
   const audioItems = getAudioMedia(post);
   const fileItems = getFileMedia(post);
+  const isMusicLike = hasMusicLikeTag(post);
 
-  if (audioItems.length === 0 && fileItems.length === 0) {
+  if (audioItems.length === 0 && fileItems.length === 0 && !isMusicLike) {
     return null;
   }
 
   const total = audioItems.length + fileItems.length;
   const primaryAudio = audioItems[0];
   const primaryFile = fileItems[0];
+  const hasPlayableAudio = audioItems.length > 0;
+
+  const title =
+    primaryAudio?.fileName?.trim() ||
+    primaryFile?.fileName?.trim() ||
+    (isMusicLike ? "Музыка из поста Telegram" : "Файл из поста Telegram");
+
+  const subtitle =
+    hasPlayableAudio
+      ? total > 1
+        ? `${total} аудио / вложения в посте`
+        : "Аудио из поста Telegram"
+      : total > 0
+        ? total > 1
+          ? `${total} вложения в посте`
+          : "Вложение из поста Telegram"
+        : "Музыка доступна в оригинальном Telegram-посте";
 
   return (
     <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
       <div className="flex items-start gap-3">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
-          {audioItems.length > 0 ? (
+          {hasPlayableAudio || isMusicLike ? (
             <Music4 className="h-5 w-5" />
           ) : (
             <FileText className="h-5 w-5" />
@@ -102,20 +136,10 @@ function AudioPreview({
 
         <div className="min-w-0 flex-1">
           <div className="truncate text-sm font-semibold text-neutral-950">
-            {primaryAudio?.fileName?.trim() ||
-              primaryFile?.fileName?.trim() ||
-              (audioItems.length > 0 ? "Аудио из поста Telegram" : "Файл из поста Telegram")}
+            {title}
           </div>
 
-          <div className="mt-1 text-sm text-neutral-500">
-            {audioItems.length > 0
-              ? total > 1
-                ? `${total} аудио / вложения в посте`
-                : "Аудио из поста Telegram"
-              : total > 1
-                ? `${total} вложения в посте`
-                : "Вложение из поста Telegram"}
-          </div>
+          <div className="mt-1 text-sm text-neutral-500">{subtitle}</div>
 
           <div className="mt-3 flex items-center gap-2 text-neutral-700">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-neutral-200">
@@ -123,7 +147,11 @@ function AudioPreview({
             </div>
 
             <div className="h-2 flex-1 rounded-full bg-neutral-200">
-              <div className="h-2 w-1/3 rounded-full bg-neutral-900" />
+              <div
+                className={`h-2 rounded-full ${
+                  hasPlayableAudio ? "w-1/3 bg-neutral-900" : "w-1/4 bg-neutral-400"
+                }`}
+              />
             </div>
           </div>
         </div>
