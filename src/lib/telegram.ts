@@ -84,6 +84,26 @@ function extractAll(html: string, re: RegExp) {
   return out;
 }
 
+function parseDurationText(value?: string | null) {
+  if (!value) return undefined;
+
+  const raw = value.trim();
+  if (!raw) return undefined;
+
+  const parts = raw.split(":").map((item) => Number(item.trim()));
+  if (parts.some((item) => !Number.isFinite(item))) return undefined;
+
+  if (parts.length === 2) {
+    return parts[0] * 60 + parts[1];
+  }
+
+  if (parts.length === 3) {
+    return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  }
+
+  return undefined;
+}
+
 export function normalizeTelegramUrl(raw: string): string {
   const trimmed = raw.trim();
 
@@ -269,7 +289,10 @@ function extractWidgetVideoUrl(html: string) {
 function extractWidgetAudioUrl(html: string) {
   const directAudio =
     extract(html, /<audio[^>]+src="([^"]+)"[^>]*>/i) ||
-    extract(html, /<source[^>]+type="audio\/[^"]*"[^>]+src="([^"]+)"[^>]*>/i);
+    extract(html, /<source[^>]+type="audio\/[^"]*"[^>]+src="([^"]+)"[^>]*>/i) ||
+    extract(html, /data-audio="([^"]+)"/i) ||
+    extract(html, /data-ogg="([^"]+)"/i) ||
+    extract(html, /tgme_widget_message_voice_player[^>]+src="([^"]+)"/i);
 
   return normalizeAssetUrl(directAudio);
 }
@@ -310,6 +333,20 @@ function extractVideoPoster(html: string) {
     );
 
   return normalizeAssetUrl(stylePoster);
+}
+
+function extractVideoDuration(html: string) {
+  const raw =
+    extract(
+      html,
+      /class="tgme_widget_message_video_duration"[^>]*>([\s\S]*?)<\/time>/i
+    ) ||
+    extract(
+      html,
+      /class="tgme_widget_message_video_duration"[^>]*>([\s\S]*?)<\/div>/i
+    );
+
+  return parseDurationText(decodeHtml(raw || ""));
 }
 
 function detectGif(html: string, videoUrl: string | null) {
@@ -360,6 +397,7 @@ export async function ingestTelegramPost(
     const fileUrl = extractWidgetFileUrl(html);
     const fileName = extractWidgetFileName(html);
     const videoPoster = extractVideoPoster(html);
+    const videoDuration = extractVideoDuration(html);
     const photoUrls = extractWidgetPhotoUrls(html);
 
     let media: IngestedPost["media"] = [];
@@ -374,6 +412,8 @@ export async function ingestTelegramPost(
           kind: "video",
           url: toProxy(videoUrl) || videoUrl,
           poster: toProxy(videoPoster) || null,
+          duration: videoDuration,
+          mimeType: isGif ? "image/gif" : "video/mp4",
         },
       ];
 
@@ -384,6 +424,8 @@ export async function ingestTelegramPost(
           id: "audio-1",
           kind: "audio",
           url: toProxy(audioUrl) || audioUrl,
+          mimeType: "audio/mpeg",
+          fileName,
         },
       ];
       contentType = "audio";

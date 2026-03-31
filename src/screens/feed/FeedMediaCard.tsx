@@ -41,6 +41,7 @@ export function FeedMediaCard({
     if (activeItem?.kind !== "video") return;
 
     if (isCardVisible) {
+      node.currentTime = node.currentTime || 0;
       const playPromise = node.play();
       if (playPromise && typeof playPromise.catch === "function") {
         playPromise.catch(() => {});
@@ -49,6 +50,15 @@ export function FeedMediaCard({
       node.pause();
     }
   }, [isCardVisible, activeItem?.kind, mediaIndex, post.id]);
+
+  const handleOpen = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+
+    onOpen();
+  };
 
   return (
     <div className="relative">
@@ -92,7 +102,7 @@ export function FeedMediaCard({
 
       <button
         type="button"
-        onClick={onOpen}
+        onClick={handleOpen}
         className="absolute inset-0 z-10"
         aria-label="Открыть пост"
       />

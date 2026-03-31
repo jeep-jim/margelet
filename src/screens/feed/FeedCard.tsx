@@ -73,11 +73,13 @@ export function FeedCard(props: FeedCardProps) {
 
       {hasMedia ? (
         <>
-          <FeedMediaCard
-            {...props}
-            displayText={displayText}
-            isCardVisible={isCardVisible}
-          />
+          <div className="mt-3">
+            <FeedMediaCard
+              {...props}
+              displayText={displayText}
+              isCardVisible={isCardVisible}
+            />
+          </div>
 
           {displayText ? (
             <div className="px-4 py-3">

@@ -46,7 +46,7 @@ export function FeedScreen({
   const [feedMode, setFeedMode] = useState<FeedMode>("new");
   const [activeTag, setActiveTag] = useState<FeedTag>("all");
   const [tagsOpen, setTagsOpen] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
@@ -132,7 +132,7 @@ export function FeedScreen({
         (preferredTags.includes(bTag) ? 4 : 0) +
         b.media.length;
 
-      return bScore - aScore;
+        return bScore - aScore;
     });
 
     return list;
@@ -164,7 +164,7 @@ export function FeedScreen({
       setViewerIndex(nextIndex);
       setViewerMediaIndex(0);
       setExpandedCaption(false);
-      setIsMuted(true);
+      setIsMuted(false);
       setIsPlaying(true);
       setCopySuccessId(null);
       setMenuPostId(null);
@@ -187,7 +187,7 @@ export function FeedScreen({
     setViewerIndex(null);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
-    setIsMuted(true);
+    setIsMuted(false);
     setIsPlaying(true);
     setCopySuccessId(null);
     setMenuPostId(null);
@@ -201,7 +201,7 @@ export function FeedScreen({
     setViewerIndex((viewerIndex + 1) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
-    setIsMuted(true);
+    setIsMuted(false);
     setIsPlaying(true);
     setCopySuccessId(null);
     setMenuPostId(null);
@@ -215,7 +215,7 @@ export function FeedScreen({
     setViewerIndex((viewerIndex - 1 + viewerPosts.length) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
-    setIsMuted(true);
+    setIsMuted(false);
     setIsPlaying(true);
     setCopySuccessId(null);
     setMenuPostId(null);
