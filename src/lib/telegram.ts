@@ -16,6 +16,24 @@ const TELEGRAM_HOSTS = new Set([
   "www.telegram.me",
 ]);
 
+function getApiBaseUrl() {
+  if (typeof window !== "undefined") {
+    return "";
+  }
+
+  const env =
+    globalThis as typeof globalThis & {
+      process?: { env?: Record<string, string | undefined> };
+    };
+
+  const vercelUrl = env.process?.env?.VERCEL_URL?.trim();
+  if (vercelUrl) {
+    return `https://${vercelUrl}`;
+  }
+
+  return "http://localhost:3000";
+}
+
 export function normalizeTelegramUrl(raw: string): string {
   const trimmed = raw.trim();
 
@@ -85,11 +103,17 @@ export async function ingestTelegramPost(
     const parsed = parseTelegramPostUrl(url);
     if (!parsed) return null;
 
+    const baseUrl = getApiBaseUrl();
+
     const res = await fetch(
-      `/api/telegram-preview?url=${encodeURIComponent(parsed.normalizedUrl)}`
+      `${baseUrl}/api/telegram-preview?url=${encodeURIComponent(
+        parsed.normalizedUrl
+      )}`
     );
 
-    if (!res.ok) return null;
+    if (!res.ok) {
+      return null;
+    }
 
     const data = await res.json();
 
@@ -152,13 +176,10 @@ export async function ingestTelegramPost(
         avatar,
         verified: !!data?.verified,
       },
-
       text,
       links: [],
-
       contentType,
       media,
-
       hasMediaInOriginal: !!(video || image),
       fallbackReason: null,
     };
