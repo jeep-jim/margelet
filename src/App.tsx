@@ -91,6 +91,27 @@ function ensureRobotsMeta(name: string, content: string) {
   element.setAttribute("content", content);
 }
 
+function parseSharedPath(pathname: string) {
+  const clean = normalizePathname(pathname);
+  const parts = clean.split("/").filter(Boolean);
+
+  if (parts.length !== 2) {
+    return null;
+  }
+
+  const [handle, postId] = parts;
+
+  if (!handle || !postId) {
+    return null;
+  }
+
+  return { handle, postId };
+}
+
+function getPostIdFromUrl(postUrl: string) {
+  return postUrl.split("/").filter(Boolean).pop() || "";
+}
+
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
@@ -104,13 +125,35 @@ export default function App() {
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
 
+  const sharedPath = useMemo(() => {
+    if (typeof window === "undefined") return null;
+    return parseSharedPath(window.location.pathname);
+  }, []);
+
   const posts = useMemo(() => {
-    if (hiddenPostIds.length === 0) {
-      return serverPosts;
+    const visible =
+      hiddenPostIds.length === 0
+        ? serverPosts
+        : serverPosts.filter((post) => !hiddenPostIds.includes(post.id));
+
+    if (!sharedPath) {
+      return visible;
     }
 
-    return serverPosts.filter((post) => !hiddenPostIds.includes(post.id));
-  }, [serverPosts, hiddenPostIds]);
+    const matchIndex = visible.findIndex((post) => {
+      return (
+        post.source.handle === sharedPath.handle &&
+        getPostIdFromUrl(post.postUrl) === sharedPath.postId
+      );
+    });
+
+    if (matchIndex <= 0) {
+      return visible;
+    }
+
+    const target = visible[matchIndex];
+    return [target, ...visible.filter((post) => post.id !== target.id)];
+  }, [serverPosts, hiddenPostIds, sharedPath]);
 
   useEffect(() => {
     const initial = getInitialLocale();
@@ -122,8 +165,13 @@ export default function App() {
 
     if (isAdminHiddenPath(window.location.pathname)) {
       setCurrent("admin");
+      return;
     }
-  }, []);
+
+    if (sharedPath) {
+      setCurrent("feed");
+    }
+  }, [sharedPath]);
 
   useEffect(() => {
     const syncUser = () => {
@@ -327,14 +375,11 @@ export default function App() {
   const openSource = (handle: string) => {
     setSelectedSourceHandle(handle);
     setCurrent("source");
-  };
-
-  const openPost = (_post: IngestedPost) => {
-    setCurrent("feed");
+    window.history.replaceState({}, document.title, `/${handle}`);
   };
 
   const shouldShowHeader = current !== "admin";
-  const shouldShowIntro = !hasSeenIntro && current !== "admin";
+  const shouldShowIntro = !hasSeenIntro && current !== "admin" && !sharedPath;
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
@@ -381,7 +426,9 @@ export default function App() {
             <CreatorScreen
               locale={locale}
               posts={posts}
-              openPost={openPost}
+              openPost={() => {
+                setCurrent("feed");
+              }}
             />
           ) : null}
 
@@ -390,8 +437,13 @@ export default function App() {
               locale={locale}
               posts={posts}
               sourceHandle={selectedSourceHandle}
-              onBack={() => setCurrent("feed")}
-              onOpenPost={openPost}
+              onBack={() => {
+                setCurrent("feed");
+                window.history.replaceState({}, document.title, "/");
+              }}
+              onOpenPost={() => {
+                setCurrent("feed");
+              }}
             />
           ) : null}
 

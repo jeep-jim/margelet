@@ -1,25 +1,82 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
-function ExpandableTextBase({
+function linkifyText(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
+  const parts = text.split(urlRegex);
+
+  return parts.map((part, index) => {
+    const isUrl = /^(https?:\/\/|www\.|t\.me\/)/i.test(part);
+
+    if (!isUrl) {
+      return <span key={index}>{part}</span>;
+    }
+
+    const href =
+      part.startsWith("http")
+        ? part
+        : part.startsWith("t.me/")
+          ? `https://${part}`
+          : `https://${part}`;
+
+    return (
+      <a
+        key={index}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="break-all text-[#2563eb] underline underline-offset-2"
+        onClick={(event) => event.stopPropagation()}
+      >
+        {part}
+      </a>
+    );
+  });
+}
+
+function RichPreview({ text, clamp }: { text: string; clamp: boolean }) {
+  const paragraphs = useMemo(() => {
+    return text
+      .replace(/\r/g, "")
+      .split(/\n{2,}/)
+      .map((part) => part.trim())
+      .filter(Boolean);
+  }, [text]);
+
+  return (
+    <div
+      className={`text-[15px] leading-7 text-neutral-900 ${
+        clamp ? "line-clamp-3" : ""
+      }`}
+    >
+      {paragraphs.map((paragraph, index) => {
+        const lines = paragraph.split("\n");
+
+        return (
+          <p key={index} className="whitespace-pre-wrap break-words">
+            {lines.map((line, lineIndex) => (
+              <span key={lineIndex}>
+                {linkifyText(line)}
+                {lineIndex < lines.length - 1 ? <br /> : null}
+              </span>
+            ))}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+export function ExpandableFeedText({
   text,
-  collapsedLines,
-  expandedLines,
-  fallbackLimit,
-  textClassName,
   children,
 }: {
   text: string;
-  collapsedLines: 2 | 5 | 10;
-  expandedLines: 5 | 10;
-  fallbackLimit: number;
-  textClassName: string;
-  children?: (state: {
+  children: (state: {
     expanded: boolean;
-    clamped: boolean;
     expand: () => void;
-  }) => React.ReactNode;
+  }) => ReactNode;
 }) {
-  const [stage, setStage] = useState<0 | 1>(0);
+  const [expanded, setExpanded] = useState(false);
   const [shouldClamp, setShouldClamp] = useState(false);
   const measureRef = useRef<HTMLDivElement | null>(null);
 
@@ -29,87 +86,33 @@ function ExpandableTextBase({
 
     const styles = window.getComputedStyle(node);
     const lineHeight = parseFloat(styles.lineHeight || "0");
-
     if (!lineHeight) {
-      setShouldClamp(text.length > fallbackLimit);
+      setShouldClamp(text.length > 180);
       return;
     }
 
-    const maxHeight = lineHeight * collapsedLines + 1;
+    const maxHeight = lineHeight * 3 + 2;
     setShouldClamp(node.scrollHeight > maxHeight);
-  }, [collapsedLines, fallbackLimit, text]);
-
-  useEffect(() => {
-    setStage(0);
   }, [text]);
-
-  if (!text) return null;
-
-  const clampClass =
-    stage === 0
-      ? collapsedLines === 2
-        ? "line-clamp-2"
-        : collapsedLines === 5
-          ? "line-clamp-5"
-          : "line-clamp-[10]"
-      : expandedLines === 5
-        ? "line-clamp-5"
-        : "line-clamp-[10]";
 
   return (
     <>
-      <div className={textClassName}>
+      <div className="relative">
         <div
           ref={measureRef}
-          className={`${clampClass} whitespace-pre-wrap break-words`}
+          className="pointer-events-none absolute left-0 top-0 w-full opacity-0"
+          aria-hidden
         >
-          {text}
+          <RichPreview text={text} clamp={false} />
         </div>
+
+        <RichPreview text={text} clamp={!expanded && shouldClamp} />
       </div>
 
-      {children
-        ? children({
-            expanded: stage === 1,
-            clamped: shouldClamp,
-            expand: () => setStage(1),
-          })
-        : null}
+      {children({
+        expanded: expanded || !shouldClamp,
+        expand: () => setExpanded(true),
+      })}
     </>
-  );
-}
-
-export function ExpandableFeedText({
-  text,
-  children,
-}: {
-  text: string;
-  children?: (state: {
-    expanded: boolean;
-    clamped: boolean;
-    expand: () => void;
-  }) => React.ReactNode;
-}) {
-  return (
-    <ExpandableTextBase
-      text={text}
-      collapsedLines={2}
-      expandedLines={5}
-      fallbackLimit={120}
-      textClassName="text-[15px] leading-6 text-neutral-900"
-    >
-      {children}
-    </ExpandableTextBase>
-  );
-}
-
-export function ExpandableTextPostText({ text }: { text: string }) {
-  return (
-    <ExpandableTextBase
-      text={text}
-      collapsedLines={5}
-      expandedLines={10}
-      fallbackLimit={260}
-      textClassName="text-[15px] leading-7 text-neutral-900"
-    />
   );
 }

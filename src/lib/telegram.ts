@@ -16,6 +16,11 @@ const TELEGRAM_HOSTS = new Set([
   "www.telegram.me",
 ]);
 
+type OrderedMediaItem = {
+  index: number;
+  item: IngestedPost["media"][number];
+};
+
 function normalizeAssetUrl(value?: string | null) {
   if (!value) return null;
   const v = value.trim();
@@ -72,13 +77,11 @@ function extract(html: string, re: RegExp) {
 }
 
 function extractAll(html: string, re: RegExp) {
-  const out: string[] = [];
+  const out: RegExpExecArray[] = [];
   let match: RegExpExecArray | null;
 
   while ((match = re.exec(html))) {
-    if (match[1]) {
-      out.push(match[1]);
-    }
+    out.push(match);
   }
 
   return out;
@@ -113,8 +116,19 @@ function looksLikeAudioUrl(url?: string | null) {
     v.includes(".m4a") ||
     v.includes(".ogg") ||
     v.includes(".opus") ||
+    v.includes(".wav") ||
     v.includes("audio") ||
     v.includes("voice")
+  );
+}
+
+function detectGifFromChunk(chunk: string, videoUrl: string | null) {
+  if (!videoUrl) return false;
+
+  return (
+    /tgme_widget_message_animation/i.test(chunk) ||
+    /tgme_widget_message_gif/i.test(chunk) ||
+    /autoplay/i.test(chunk) && /loop/i.test(chunk) && /muted/i.test(chunk)
   );
 }
 
@@ -274,103 +288,182 @@ function extractLinks(rawTextHtml: string) {
   return links;
 }
 
-function extractWidgetPhotoUrls(html: string) {
-  const photoWraps = extractAll(
+function buildOrderedMedia(html: string) {
+  const ordered: OrderedMediaItem[] = [];
+  const seen = new Set<string>();
+
+  const photoMatches = extractAll(
     html,
-    /class="tgme_widget_message_photo_wrap[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/gi
+    /class="tgme_widget_message_(?:photo_wrap|grouped_wrap)[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)[^"]*"/gi
   );
 
-  const groupedWraps = extractAll(
+  photoMatches.forEach((match) => {
+    const url = normalizeAssetUrl(match[1]);
+    if (!url) return;
+
+    const key = `image:${url}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+
+    ordered.push({
+      index: match.index || 0,
+      item: {
+        id: `image-${ordered.length + 1}`,
+        kind: "image",
+        url: toProxy(url) || url,
+      },
+    });
+  });
+
+  const videoMatches = extractAll(
     html,
-    /class="tgme_widget_message_grouped_wrap[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/gi
+    /<(?:video|source)[^>]+src="([^"]+)"[^>]*>/gi
   );
 
-  const urls = [...photoWraps, ...groupedWraps]
-    .map((value) => normalizeAssetUrl(value))
-    .filter(Boolean) as string[];
+  videoMatches.forEach((match) => {
+    const rawUrl = normalizeAssetUrl(match[1]);
+    if (!rawUrl) return;
 
-  return Array.from(new Set(urls));
-}
+    const chunk = html.slice(Math.max(0, (match.index || 0) - 300), (match.index || 0) + 900);
+    const poster =
+      normalizeAssetUrl(
+        extract(
+          chunk,
+          /background-image:url\('([^']+)'\)/i
+        )
+      ) || null;
 
-function extractWidgetVideoUrl(html: string) {
-  const sourceUrl =
-    extract(html, /<source[^>]+src="([^"]+)"[^>]*>/i) ||
-    extract(html, /<video[^>]+src="([^"]+)"[^>]*>/i);
-
-  return normalizeAssetUrl(sourceUrl);
-}
-
-function extractWidgetAudioUrl(html: string) {
-  const directAudio =
-    extract(html, /<audio[^>]+src="([^"]+)"[^>]*>/i) ||
-    extract(html, /<source[^>]+type="audio\/[^"]*"[^>]+src="([^"]+)"[^>]*>/i) ||
-    extract(html, /data-audio="([^"]+)"/i) ||
-    extract(html, /data-ogg="([^"]+)"/i) ||
-    extract(html, /href="([^"]+)"/i);
-
-  const normalized = normalizeAssetUrl(directAudio);
-  return looksLikeAudioUrl(normalized) ? normalized : null;
-}
-
-function extractWidgetFileUrl(html: string) {
-  const docHref =
-    extract(
-      html,
-      /class="tgme_widget_message_document_wrap[^"]*"[^>]+href="([^"]+)"/i
-    ) ||
-    extract(
-      html,
-      /class="tgme_widget_message_document[^"]*"[\s\S]*?<a[^>]+href="([^"]+)"/i
+    const duration = parseDurationText(
+      decodeHtml(
+        extract(chunk, /class="tgme_widget_message_video_duration"[^>]*>([\s\S]*?)<\/(?:time|div)>/i) || ""
+      )
     );
 
-  return normalizeAssetUrl(docHref);
-}
+    const isGif = detectGifFromChunk(chunk, rawUrl);
+    const key = `${isGif ? "gif" : "video"}:${rawUrl}`;
+    if (seen.has(key)) return;
+    seen.add(key);
 
-function extractWidgetFileName(html: string) {
-  const name =
-    extract(
-      html,
-      /class="tgme_widget_message_document_name[^"]*"[^>]*>([\s\S]*?)<\/div>/i
-    ) || "";
+    ordered.push({
+      index: match.index || 0,
+      item: {
+        id: `${isGif ? "gif" : "video"}-${ordered.length + 1}`,
+        kind: "video",
+        url: toProxy(rawUrl) || rawUrl,
+        poster: poster ? toProxy(poster) || poster : null,
+        duration,
+        mimeType: isGif ? "image/gif" : "video/mp4",
+      },
+    });
+  });
 
-  return decodeHtml(name) || null;
-}
-
-function extractVideoPoster(html: string) {
-  const stylePoster =
-    extract(
-      html,
-      /class="tgme_widget_message_video_thumb[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/i
-    ) ||
-    extract(
-      html,
-      /class="tgme_widget_message_video_player[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/i
-    );
-
-  return normalizeAssetUrl(stylePoster);
-}
-
-function extractVideoDuration(html: string) {
-  const raw =
-    extract(
-      html,
-      /class="tgme_widget_message_video_duration"[^>]*>([\s\S]*?)<\/time>/i
-    ) ||
-    extract(
-      html,
-      /class="tgme_widget_message_video_duration"[^>]*>([\s\S]*?)<\/div>/i
-    );
-
-  return parseDurationText(decodeHtml(raw || ""));
-}
-
-function detectGif(html: string, videoUrl: string | null) {
-  if (!videoUrl) return false;
-
-  return (
-    /tgme_widget_message_animation/i.test(html) ||
-    /tgme_widget_message_gif/i.test(html)
+  const audioMatches = extractAll(
+    html,
+    /(?:<audio[^>]+src="([^"]+)"[^>]*>|<source[^>]+type="audio\/[^"]*"[^>]+src="([^"]+)"[^>]*>|data-audio="([^"]+)"|data-ogg="([^"]+)")/gi
   );
+
+  audioMatches.forEach((match) => {
+    const raw = normalizeAssetUrl(match[1] || match[2] || match[3] || match[4] || "");
+    if (!raw || !looksLikeAudioUrl(raw)) return;
+
+    const key = `audio:${raw}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+
+    ordered.push({
+      index: match.index || 0,
+      item: {
+        id: `audio-${ordered.length + 1}`,
+        kind: "audio",
+        url: toProxy(raw) || raw,
+        mimeType: "audio/mpeg",
+      },
+    });
+  });
+
+  const docMatches = extractAll(
+    html,
+    /class="tgme_widget_message_document(?:_wrap)?[^"]*"[\s\S]{0,300}?href="([^"]+)"/gi
+  );
+
+  docMatches.forEach((match) => {
+    const raw = normalizeAssetUrl(match[1]);
+    if (!raw) return;
+
+    const chunk = html.slice(Math.max(0, (match.index || 0) - 200), (match.index || 0) + 600);
+    const fileName = decodeHtml(
+      extract(
+        chunk,
+        /class="tgme_widget_message_document_name[^"]*"[^>]*>([\s\S]*?)<\/div>/i
+      ) || ""
+    ) || null;
+
+    if (looksLikeAudioUrl(raw) || looksLikeAudioUrl(fileName)) {
+      const key = `audio:${raw}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+
+      ordered.push({
+        index: match.index || 0,
+        item: {
+          id: `audio-${ordered.length + 1}`,
+          kind: "audio",
+          url: toProxy(raw) || raw,
+          mimeType: "audio/mpeg",
+          fileName,
+        },
+      });
+      return;
+    }
+
+    const key = `file:${raw}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+
+    ordered.push({
+      index: match.index || 0,
+      item: {
+        id: `file-${ordered.length + 1}`,
+        kind: "file",
+        url: toProxy(raw) || raw,
+        fileName,
+      },
+    });
+  });
+
+  ordered.sort((a, b) => a.index - b.index);
+
+  return ordered.map((entry, index) => ({
+    ...entry.item,
+    id: entry.item.id || `${entry.item.kind}-${index + 1}`,
+  }));
+}
+
+function resolveContentType(media: IngestedPost["media"]): IngestedPost["contentType"] {
+  if (!media.length) return "text";
+
+  if (media.length === 1) {
+    const first = media[0];
+
+    if (first.kind === "audio") return "audio";
+    if (first.kind === "file") return "file";
+    if (first.kind === "image") return "image";
+    if (first.kind === "video") {
+      return first.mimeType?.includes("gif") ? "gif" : "video";
+    }
+  }
+
+  const uniqueKinds = new Set(
+    media.map((item) =>
+      item.kind === "video" && item.mimeType?.includes("gif") ? "gif" : item.kind
+    )
+  );
+
+  if (uniqueKinds.size === 1 && uniqueKinds.has("image")) {
+    return "gallery";
+  }
+
+  return "mixed";
 }
 
 export async function ingestTelegramPost(
@@ -407,70 +500,8 @@ export async function ingestTelegramPost(
       /verified-icon/i.test(html) ||
       /tgme_page_verified_badge/i.test(html);
 
-    const videoUrl = extractWidgetVideoUrl(html);
-    const audioUrl = extractWidgetAudioUrl(html);
-    const fileUrl = extractWidgetFileUrl(html);
-    const fileName = extractWidgetFileName(html);
-    const videoPoster = extractVideoPoster(html);
-    const videoDuration = extractVideoDuration(html);
-    const photoUrls = extractWidgetPhotoUrls(html);
-
-    let media: IngestedPost["media"] = [];
-    let contentType: IngestedPost["contentType"] = "text";
-
-    if (videoUrl) {
-      const isGif = detectGif(html, videoUrl);
-
-      media = [
-        {
-          id: isGif ? "gif-1" : "video-1",
-          kind: "video",
-          url: toProxy(videoUrl) || videoUrl,
-          poster: toProxy(videoPoster) || null,
-          duration: videoDuration,
-          mimeType: isGif ? "image/gif" : "video/mp4",
-        },
-      ];
-
-      contentType = isGif ? "gif" : "video";
-    } else if (audioUrl) {
-      media = [
-        {
-          id: "audio-1",
-          kind: "audio",
-          url: toProxy(audioUrl) || audioUrl,
-          mimeType: "audio/mpeg",
-          fileName,
-        },
-      ];
-      contentType = "audio";
-    } else if (photoUrls.length > 1) {
-      media = photoUrls.map((photo, index) => ({
-        id: `image-${index + 1}`,
-        kind: "image",
-        url: toProxy(photo) || photo,
-      }));
-      contentType = "gallery";
-    } else if (photoUrls.length === 1) {
-      media = [
-        {
-          id: "image-1",
-          kind: "image",
-          url: toProxy(photoUrls[0]) || photoUrls[0],
-        },
-      ];
-      contentType = "image";
-    } else if (fileUrl) {
-      media = [
-        {
-          id: "file-1",
-          kind: "file",
-          url: toProxy(fileUrl) || fileUrl,
-          fileName,
-        },
-      ];
-      contentType = looksLikeAudioUrl(fileUrl) ? "audio" : "file";
-    }
+    const media = buildOrderedMedia(html);
+    const contentType = resolveContentType(media);
 
     return {
       source: {
@@ -483,12 +514,7 @@ export async function ingestTelegramPost(
       links,
       contentType,
       media,
-      hasMediaInOriginal: !!(
-        videoUrl ||
-        audioUrl ||
-        fileUrl ||
-        photoUrls.length > 0
-      ),
+      hasMediaInOriginal: media.length > 0,
       fallbackReason: null,
     };
   } catch (error) {

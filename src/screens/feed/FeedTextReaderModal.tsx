@@ -3,18 +3,15 @@ import {
   ArrowLeft,
   Bell,
   ExternalLink,
-  FileText,
   Heart,
-  ImageIcon,
   Send,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useState } from "react";
 import type { IngestedPost } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
-import { MediaDots } from "./FeedCarousel";
-
-const HORIZONTAL_SWIPE_DISTANCE = 48;
+import { FeedCarousel } from "./FeedCarousel";
+import { normalizeMediaList } from "./feed.utils";
 
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
@@ -28,7 +25,11 @@ function linkifyText(text: string) {
     }
 
     const href =
-      part.startsWith("http") ? part : part.startsWith("t.me/") ? `https://${part}` : `https://${part}`;
+      part.startsWith("http")
+        ? part
+        : part.startsWith("t.me/")
+          ? `https://${part}`
+          : `https://${part}`;
 
     return (
       <a
@@ -74,151 +75,6 @@ function RichTextBlock({ text }: { text: string }) {
   );
 }
 
-function ReaderImageCarousel({
-  items,
-  alt,
-}: {
-  items: IngestedPost["media"];
-  alt: string;
-}) {
-  const images = items.filter((item) => item.kind === "image");
-  const [activeIndex, setActiveIndex] = useState(0);
-  const touchStartXRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    setActiveIndex(0);
-  }, [items]);
-
-  if (images.length === 0) return null;
-
-  const current = images[Math.min(activeIndex, images.length - 1)];
-  const canPrev = activeIndex > 0;
-  const canNext = activeIndex < images.length - 1;
-
-  return (
-    <div
-      className="relative mb-4 overflow-hidden rounded-3xl bg-neutral-100"
-      onTouchStart={(event) => {
-        touchStartXRef.current = event.touches[0]?.clientX ?? null;
-      }}
-      onTouchEnd={(event) => {
-        const startX = touchStartXRef.current;
-        const endX = event.changedTouches[0]?.clientX ?? null;
-        touchStartXRef.current = null;
-
-        if (startX === null || endX === null) return;
-
-        const delta = endX - startX;
-
-        if (delta <= -HORIZONTAL_SWIPE_DISTANCE && canNext) {
-          setActiveIndex((prev) => prev + 1);
-        }
-
-        if (delta >= HORIZONTAL_SWIPE_DISTANCE && canPrev) {
-          setActiveIndex((prev) => prev - 1);
-        }
-      }}
-    >
-      <img
-        src={current.url}
-        alt={alt}
-        className="h-auto w-full object-cover"
-        referrerPolicy="no-referrer"
-      />
-
-      {images.length > 1 ? (
-        <>
-          <div className="pointer-events-none absolute left-3 top-3 z-20 rounded-full bg-black/35 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-sm">
-            {activeIndex + 1}/{images.length}
-          </div>
-
-          <MediaDots
-            total={images.length}
-            activeIndex={activeIndex}
-            onSelect={setActiveIndex}
-            light
-          />
-        </>
-      ) : null}
-    </div>
-  );
-}
-
-function MediaNotice({
-  icon,
-  children,
-}: {
-  icon: ReactNode;
-  children: ReactNode;
-}) {
-  return (
-    <div className="mb-4 inline-flex max-w-full items-start gap-2 rounded-2xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
-      <div className="mt-0.5 shrink-0">{icon}</div>
-      <span>{children}</span>
-    </div>
-  );
-}
-
-function ReaderMediaBlock({ post }: { post: IngestedPost }) {
-  const imageItems = post.media.filter((item) => item.kind === "image");
-  const audioItem = post.media.find((item) => item.kind === "audio");
-  const fileItem = post.media.find((item) => item.kind === "file");
-
-  if (imageItems.length > 0) {
-    return <ReaderImageCarousel items={imageItems} alt={post.source.title} />;
-  }
-
-  if (audioItem) {
-    return (
-      <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
-        <audio src={audioItem.url} controls className="w-full" preload="metadata" />
-      </div>
-    );
-  }
-
-  if (fileItem) {
-    return (
-      <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
-        <div className="flex items-start gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
-            <FileText className="h-5 w-5" />
-          </div>
-
-          <div className="min-w-0 flex-1">
-            <div className="text-sm font-semibold text-neutral-950">
-              Вложение из поста Telegram
-            </div>
-
-            <div className="mt-1 text-sm text-neutral-500">
-              Файл доступен в оригинальном посте.
-            </div>
-
-            <a
-              href={fileItem.url}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
-            >
-              <span>Открыть файл</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (post.hasMediaInOriginal) {
-    return (
-      <MediaNotice icon={<ImageIcon className="h-5 w-5 text-neutral-500" />}>
-        В этом посте есть медиа в Telegram. Здесь показываем только текст.
-      </MediaNotice>
-    );
-  }
-
-  return null;
-}
-
 export function FeedTextReaderModal({
   post,
   locale: _locale,
@@ -238,6 +94,8 @@ export function FeedTextReaderModal({
   onShare: (post: IngestedPost) => Promise<void>;
 }) {
   const text = post?.text || "";
+  const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
+  const [mediaIndex, setMediaIndex] = useState(0);
 
   return (
     <AnimatePresence>
@@ -279,7 +137,11 @@ export function FeedTextReaderModal({
             </div>
 
             <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
-              <div className="mb-4 flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => window.location.assign(`/${post.source.handle}`)}
+                className="mb-4 flex items-center gap-3 text-left"
+              >
                 <FeedSourceAvatar post={post} size="md" />
 
                 <div className="min-w-0">
@@ -296,9 +158,21 @@ export function FeedTextReaderModal({
                     @{post.source.handle}
                   </div>
                 </div>
-              </div>
+              </button>
 
-              <ReaderMediaBlock post={post} />
+              {media.length > 0 ? (
+                <div className="mb-4">
+                  <FeedCarousel
+                    items={media}
+                    aspectClass="aspect-[4/5]"
+                    activeIndex={mediaIndex}
+                    onChange={setMediaIndex}
+                    controlsTone="dark"
+                    fit="contain"
+                    enableFullscreen
+                  />
+                </div>
+              ) : null}
 
               {text ? <RichTextBlock text={text} /> : null}
             </div>

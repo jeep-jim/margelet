@@ -18,8 +18,13 @@ function getMediaBadge(post: IngestedPost) {
     return { icon: <FileText className="h-3.5 w-3.5" />, label: "Файл" };
   }
 
-  if (post.contentType === "image" || post.contentType === "gif") {
-    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: "Изображение" };
+  if (
+    post.contentType === "image" ||
+    post.contentType === "gif" ||
+    post.contentType === "gallery" ||
+    post.contentType === "mixed"
+  ) {
+    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: "Медиа" };
   }
 
   if (post.hasMediaInOriginal) {
@@ -27,6 +32,39 @@ function getMediaBadge(post: IngestedPost) {
   }
 
   return null;
+}
+
+function linkifyText(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
+  const parts = text.split(urlRegex);
+
+  return parts.map((part, index) => {
+    const isUrl = /^(https?:\/\/|www\.|t\.me\/)/i.test(part);
+
+    if (!isUrl) {
+      return <span key={index}>{part}</span>;
+    }
+
+    const href =
+      part.startsWith("http")
+        ? part
+        : part.startsWith("t.me/")
+          ? `https://${part}`
+          : `https://${part}`;
+
+    return (
+      <a
+        key={index}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="break-all text-[#2563eb] underline underline-offset-2"
+        onClick={(event) => event.stopPropagation()}
+      >
+        {part}
+      </a>
+    );
+  });
 }
 
 export function FeedTextCard({
@@ -58,7 +96,7 @@ export function FeedTextCard({
 
       <div className="text-[15px] leading-6 text-neutral-900">
         <div className="line-clamp-5 whitespace-pre-wrap break-words">
-          {displayText}
+          {linkifyText(displayText)}
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-3">
