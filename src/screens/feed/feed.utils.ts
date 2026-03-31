@@ -18,5 +18,19 @@ export function buildShareUrl(post: IngestedPost) {
 }
 
 export function normalizeMediaList(post: IngestedPost) {
-  return Array.isArray(post.media) ? post.media : [];
+  if (!Array.isArray(post.media)) {
+    return [];
+  }
+
+  return post.media.map((item, index) => ({
+    id: item.id || `${item.kind}-${index + 1}`,
+    kind: item.kind,
+    url: item.url,
+    poster: item.poster ?? null,
+    mimeType: item.mimeType ?? null,
+    fileName: item.fileName ?? null,
+    width: item.width,
+    height: item.height,
+    duration: item.duration,
+  }));
 }

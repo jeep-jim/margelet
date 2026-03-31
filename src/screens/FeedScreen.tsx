@@ -7,13 +7,13 @@ import { FeedViewer } from "./feed/FeedViewer";
 import { ADMIN_TELEGRAM_IDS } from "./feed/feed.constants";
 import type { FeedMode, ViewerDirection } from "./feed/feed.types";
 import {
-  getResolvedTag,
-  getDisplayText,
   buildShareUrl,
+  getDisplayText,
+  getResolvedTag,
 } from "./feed/feed.utils";
 
-function isRealVideoPost(post: IngestedPost) {
-  return post.contentType === "video" || post.media.some((item) => item.kind === "video");
+function isVideoViewerPost(post: IngestedPost) {
+  return post.contentType === "video";
 }
 
 export function FeedScreen({
@@ -52,7 +52,9 @@ export function FeedScreen({
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
   const [videoProgress, setVideoProgress] = useState(0);
-  const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>({});
+  const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>(
+    {}
+  );
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   const safePosts = useMemo(() => {
@@ -137,7 +139,7 @@ export function FeedScreen({
   }, [safePosts, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
 
   const viewerPosts = useMemo(() => {
-    return visiblePosts.filter((post) => isRealVideoPost(post));
+    return visiblePosts.filter((post) => isVideoViewerPost(post));
   }, [visiblePosts]);
 
   const activePost = useMemo(() => {
@@ -252,6 +254,15 @@ export function FeedScreen({
     }
   };
 
+  const handleOpenPost = (post: IngestedPost) => {
+    if (isVideoViewerPost(post)) {
+      openViewerByPost(post);
+      return;
+    }
+
+    openTextReader(post);
+  };
+
   return (
     <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
       <FeedHeader
@@ -283,8 +294,6 @@ export function FeedScreen({
           const isAdmin =
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
-          const shouldOpenViewer = isRealVideoPost(post);
-
           return (
             <FeedCard
               key={post.id}
@@ -300,13 +309,7 @@ export function FeedScreen({
                 void onDeletePost(post.id);
               }}
               onHide={() => onHidePost(post.id)}
-              onOpen={() => {
-                if (shouldOpenViewer) {
-                  openViewerByPost(post);
-                } else {
-                  openTextReader(post);
-                }
-              }}
+              onOpen={() => handleOpenPost(post)}
               onOpenCreator={() => openSource(post.source.handle)}
               mediaIndex={feedMediaIndexes[post.id] || 0}
               onChangeMediaIndex={(next: number) => setFeedCardMediaIndex(post.id, next)}
