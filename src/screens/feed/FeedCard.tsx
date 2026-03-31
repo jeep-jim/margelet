@@ -82,7 +82,7 @@ export function FeedCard(props: FeedCardProps) {
           {displayText ? (
             <div className="px-4 py-3">
               <ExpandableFeedText text={displayText}>
-                {({ expand }) => (
+                {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-8 text-neutral-700">
                       <button type="button">
@@ -94,14 +94,24 @@ export function FeedCard(props: FeedCardProps) {
                       </button>
                     </div>
 
-                    <button
-                      type="button"
-                      onClick={expand}
-                      className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
-                    >
-                      <span>Ещё</span>
-                      <ExternalLink className="h-4 w-4" />
-                    </button>
+                    {expanded ? (
+                      <button
+                        type="button"
+                        onClick={onOpen}
+                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
+                      >
+                        <span>Читать</span>
+                        <ExternalLink className="h-4 w-4" />
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={expand}
+                        className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
+                      >
+                        <span>Ещё</span>
+                      </button>
+                    )}
                   </div>
                 )}
               </ExpandableFeedText>

@@ -17,17 +17,18 @@ import { MediaDots } from "./FeedCarousel";
 const HORIZONTAL_SWIPE_DISTANCE = 48;
 
 function linkifyText(text: string) {
-  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+)/gi;
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
   const parts = text.split(urlRegex);
 
   return parts.map((part, index) => {
-    const isUrl = /^(https?:\/\/|www\.)/i.test(part);
+    const isUrl = /^(https?:\/\/|www\.|t\.me\/)/i.test(part);
 
     if (!isUrl) {
       return <span key={index}>{part}</span>;
     }
 
-    const href = part.startsWith("http") ? part : `https://${part}`;
+    const href =
+      part.startsWith("http") ? part : part.startsWith("t.me/") ? `https://${part}` : `https://${part}`;
 
     return (
       <a
@@ -162,27 +163,9 @@ function ReaderMediaBlock({ post }: { post: IngestedPost }) {
   const imageItems = post.media.filter((item) => item.kind === "image");
   const audioItem = post.media.find((item) => item.kind === "audio");
   const fileItem = post.media.find((item) => item.kind === "file");
-  const videoItem = post.media.find((item) => item.kind === "video");
 
   if (imageItems.length > 0) {
     return <ReaderImageCarousel items={imageItems} alt={post.source.title} />;
-  }
-
-  if (post.contentType === "gif" && videoItem) {
-    return (
-      <div className="mb-4 overflow-hidden rounded-3xl bg-black">
-        <video
-          src={videoItem.url}
-          poster={videoItem.poster || undefined}
-          className="h-auto w-full"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        />
-      </div>
-    );
   }
 
   if (audioItem) {
