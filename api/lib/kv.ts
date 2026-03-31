@@ -38,6 +38,259 @@ function postUrlKey(postUrl: string) {
   return `${POST_URL_KEY_PREFIX}${postUrl}`;
 }
 
+function asString(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return trimmed || null;
+}
+
+function asNumber(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  const n = Number(String(value ?? "").trim());
+  return Number.isFinite(n) ? n : null;
+}
+
+function stripAt(value: string | null) {
+  return String(value || "").replace(/^@/, "").trim();
+}
+
+function pickLocalizedText(value: unknown): string {
+  if (typeof value === "string") {
+    return value.trim();
+  }
+
+  if (value && typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    const ru = asString(record.ru);
+    const en = asString(record.en);
+    return ru || en || "";
+  }
+
+  return "";
+}
+
+function normalizeLegacyMedia(raw: Record<string, unknown>): IngestedPost["media"] {
+  const media = Array.isArray(raw.media) ? raw.media : [];
+
+  const normalizedFromArray = media
+    .map((item, index) => {
+      if (!item || typeof item !== "object") return null;
+
+      const record = item as Record<string, unknown>;
+      const type = asString(record.type);
+      const url = asString(record.url);
+      const poster = asString(record.poster);
+
+      if (!type || !url) return null;
+      if (type !== "image" && type !== "video") return null;
+
+      return {
+        id: asString(record.id) || `${type}-${index + 1}`,
+        kind: type,
+        url,
+        poster: poster || null,
+      } as IngestedPost["media"][number];
+    })
+    .filter(Boolean) as IngestedPost["media"];
+
+  if (normalizedFromArray.length > 0) {
+    return normalizedFromArray;
+  }
+
+  const videoUrl = asString(raw.videoUrl);
+  const previewUrl = asString(raw.previewUrl);
+  const audioUrl = asString(raw.audio);
+  const fileUrl = asString(raw.file);
+  const poster = asString(raw.poster);
+
+  if (videoUrl) {
+    return [
+      {
+        id: "video-1",
+        kind: "video",
+        url: videoUrl,
+        poster: poster || previewUrl || null,
+      },
+    ];
+  }
+
+  if (previewUrl) {
+    return [
+      {
+        id: "image-1",
+        kind: "image",
+        url: previewUrl,
+      },
+    ];
+  }
+
+  if (audioUrl) {
+    return [
+      {
+        id: "audio-1",
+        kind: "audio",
+        url: audioUrl,
+      },
+    ];
+  }
+
+  if (fileUrl) {
+    return [
+      {
+        id: "file-1",
+        kind: "file",
+        url: fileUrl,
+      },
+    ];
+  }
+
+  return [];
+}
+
+function deriveLegacyContentType(
+  raw: Record<string, unknown>,
+  media: IngestedPost["media"]
+): IngestedPost["contentType"] {
+  const explicitMediaKind = asString(raw.mediaKind);
+  const explicitMediaType = asString(raw.mediaType);
+
+  if (explicitMediaKind === "gif") return "gif";
+  if (explicitMediaKind === "audio") return "audio";
+  if (explicitMediaKind === "file") return "file";
+  if (explicitMediaKind === "external_media") return "external_media";
+
+  if (explicitMediaType === "video") return "video";
+  if (explicitMediaType === "image") {
+    return media.length > 1 ? "gallery" : "image";
+  }
+  if (explicitMediaType === "text") return "text";
+
+  if (media.some((item) => item.kind === "video")) return "video";
+  if (media.filter((item) => item.kind === "image").length > 1) return "gallery";
+  if (media.some((item) => item.kind === "image")) return "image";
+  if (media.some((item) => item.kind === "audio")) return "audio";
+  if (media.some((item) => item.kind === "file")) return "file";
+
+  return "text";
+}
+
+function looksLikeNewPost(raw: Record<string, unknown>) {
+  return (
+    !!raw.source &&
+    typeof raw.source === "object" &&
+    typeof raw.contentType === "string" &&
+    !!raw.addedBy &&
+    typeof raw.addedBy === "object"
+  );
+}
+
+function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
+  const id = asNumber(raw.id);
+  const postUrl = asString(raw.postUrl);
+  const source = raw.source as Record<string, unknown> | undefined;
+  const addedBy = raw.addedBy as Record<string, unknown> | undefined;
+  const billing = raw.billing as Record<string, unknown> | undefined;
+  const media = Array.isArray(raw.media) ? (raw.media as IngestedPost["media"]) : [];
+
+  if (!id || !postUrl || !source || !addedBy || !billing) {
+    return null;
+  }
+
+  return {
+    id,
+    postUrl,
+    source: {
+      handle: stripAt(asString(source.handle)),
+      title: asString(source.title) || stripAt(asString(source.handle)) || "Telegram",
+      avatar: asString(source.avatar),
+      verified: !!source.verified,
+    },
+    text: asString(raw.text) || "",
+    links: Array.isArray(raw.links)
+      ? (raw.links as Array<{ label: string | null; url: string }>)
+      : [],
+    contentType: (asString(raw.contentType) as IngestedPost["contentType"]) || "text",
+    media,
+    hasMediaInOriginal: !!raw.hasMediaInOriginal,
+    fallbackReason:
+      (raw.fallbackReason as IngestedPost["fallbackReason"]) ?? null,
+    createdAt: asString(raw.createdAt) || new Date(id).toISOString(),
+    expiresAt:
+      asString(raw.expiresAt) ||
+      new Date(id + 24 * 3600 * 1000).toISOString(),
+    ttlHours: asNumber(raw.ttlHours) || 24,
+    tag: (asString(raw.tag) as IngestedPost["tag"]) || "other",
+    addedBy: {
+      telegramId: asString(addedBy.telegramId),
+      username: asString(addedBy.username),
+    },
+    billing: {
+      plan:
+        (asString(billing.plan) as IngestedPost["billing"]["plan"]) || "free",
+      autopublishEnabled: !!billing.autopublishEnabled,
+    },
+  };
+}
+
+function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null {
+  const id = asNumber(raw.id);
+  const postUrl = asString(raw.postUrl);
+  const channel = pickLocalizedText(raw.title) || asString(raw.channel) || "Telegram";
+  const handle = stripAt(asString(raw.handle)) || "telegram";
+  const media = normalizeLegacyMedia(raw);
+
+  if (!id || !postUrl) {
+    return null;
+  }
+
+  const ttlHours = 24;
+  const createdAt = new Date(id).toISOString();
+  const expiresAt = new Date(id + ttlHours * 3600 * 1000).toISOString();
+
+  return {
+    id,
+    postUrl,
+    source: {
+      handle,
+      title: channel,
+      avatar: asString(raw.avatar),
+      verified: !!raw.channelVerified,
+    },
+    text: pickLocalizedText(raw.caption),
+    links: [],
+    contentType: deriveLegacyContentType(raw, media),
+    media,
+    hasMediaInOriginal: !!raw.hasMediaInOriginal || media.length > 0,
+    fallbackReason: null,
+    createdAt,
+    expiresAt,
+    ttlHours,
+    tag: (asString(raw.tag) as IngestedPost["tag"]) || "other",
+    addedBy: {
+      telegramId: asString(raw.addedByTelegramId),
+      username: asString(raw.addedByUsername),
+    },
+    billing: {
+      plan: "free",
+      autopublishEnabled: false,
+    },
+  };
+}
+
+function normalizeAnyPost(raw: unknown): IngestedPost | null {
+  if (!raw || typeof raw !== "object") {
+    return null;
+  }
+
+  const record = raw as Record<string, unknown>;
+
+  if (looksLikeNewPost(record)) {
+    return normalizeNewPost(record);
+  }
+
+  return normalizeLegacyPost(record);
+}
+
 export async function savePost(post: IngestedPost): Promise<IngestedPost> {
   const ttlSeconds = post.ttlHours * 3600;
 
@@ -68,8 +321,8 @@ export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
         return null;
       }
 
-      const post = await redis.get(postKey(id));
-      return (post as IngestedPost | null) ?? null;
+      const raw = await redis.get(postKey(id));
+      return normalizeAnyPost(raw);
     })
   );
 
@@ -77,8 +330,8 @@ export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
 }
 
 export async function getPostById(id: number): Promise<IngestedPost | null> {
-  const post = await redis.get(postKey(id));
-  return (post as IngestedPost | null) ?? null;
+  const raw = await redis.get(postKey(id));
+  return normalizeAnyPost(raw);
 }
 
 export async function getPostByUrl(url: string): Promise<IngestedPost | null> {
@@ -95,8 +348,8 @@ export async function getPostByUrl(url: string): Promise<IngestedPost | null> {
     return null;
   }
 
-  const post = await redis.get(postKey(existingId));
-  return (post as IngestedPost | null) ?? null;
+  const raw = await redis.get(postKey(existingId));
+  return normalizeAnyPost(raw);
 }
 
 export async function deletePostById(id: number): Promise<boolean> {
