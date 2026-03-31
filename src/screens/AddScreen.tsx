@@ -6,7 +6,6 @@ import {
   AlertCircle,
   Globe,
   ChevronDown,
-  X,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import type { ContentTag, Locale } from "../types/app";
@@ -214,6 +213,11 @@ export function AddScreen({ onAdd }: Props) {
     setSubmitError("");
     setSuccessMessage("");
 
+    if (!isAuthorized) {
+      setSubmitError("Сначала авторизуйтесь через Telegram.");
+      return;
+    }
+
     if (!cleanUrl) {
       setSubmitError("Вставь ссылку на Telegram-пост.");
       return;
@@ -248,9 +252,11 @@ export function AddScreen({ onAdd }: Props) {
       setUrl("");
       setSelectedTag(null);
       setTagsOpen(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      setSubmitError("Не удалось сохранить пост в общую ленту.");
+      setSubmitError(
+        String(error?.message || "Не удалось сохранить пост в общую ленту.")
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -282,6 +288,11 @@ export function AddScreen({ onAdd }: Props) {
               <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
               <span>{validationMessage}</span>
             </div>
+          ) : url.trim() && parsedPost ? (
+            <div className="mt-3 flex items-start gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
+              <span>Ссылка распознана: @{parsedPost.channel} / {parsedPost.postId}</span>
+            </div>
           ) : null}
 
           <div className="mt-5">
@@ -308,6 +319,7 @@ export function AddScreen({ onAdd }: Props) {
                       onClick={() => {
                         setSelectedTag(tag.value);
                         setTagsOpen(false);
+                        if (submitError) setSubmitError("");
                       }}
                       className={`rounded-full px-4 py-2 text-sm font-medium transition ${
                         active
@@ -343,9 +355,9 @@ export function AddScreen({ onAdd }: Props) {
               void handleSubmit();
             }}
             disabled={isSubmitting}
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition disabled:opacity-60"
+            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition disabled:opacity-60"
           >
-            {isSubmitting ? <X className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+            <Plus className="h-4 w-4" />
             <span>{isSubmitting ? "Публикуем..." : "Опубликовать"}</span>
           </button>
         </div>

@@ -4,6 +4,9 @@ import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
+import { CreatorScreen } from "./screens/CreatorScreen";
+import { SourceScreen } from "./screens/SourceScreen";
+import { AdminScreen } from "./screens/AdminScreen";
 import type { ContentTag, IngestedPost, Locale, TabId } from "./types/app";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
@@ -95,6 +98,7 @@ export default function App() {
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
   const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
+  const [selectedSourceHandle, setSelectedSourceHandle] = useState<string | null>(null);
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
@@ -204,35 +208,24 @@ export default function App() {
     }
   }, []);
 
-  useEffect(() => {
-    let cancelled = false;
+  const loadFeed = async () => {
+    setIsFeedLoading(true);
 
-    async function loadFeed() {
-      try {
-        setIsFeedLoading(true);
+    try {
+      const res = await fetch("/api/feed");
+      if (!res.ok) throw new Error("feed request failed");
 
-        const res = await fetch("/api/feed");
-        if (!res.ok) throw new Error("feed request failed");
-
-        const data = await res.json();
-
-        if (!cancelled) {
-          setServerPosts(Array.isArray(data.posts) ? data.posts : []);
-        }
-      } catch (error) {
-        console.error("Failed to load feed", error);
-      } finally {
-        if (!cancelled) {
-          setIsFeedLoading(false);
-        }
-      }
+      const data = await res.json();
+      setServerPosts(Array.isArray(data.posts) ? data.posts : []);
+    } catch (error) {
+      console.error("Failed to load feed", error);
+    } finally {
+      setIsFeedLoading(false);
     }
+  };
 
+  useEffect(() => {
     void loadFeed();
-
-    return () => {
-      cancelled = true;
-    };
   }, []);
 
   useEffect(() => {
@@ -289,8 +282,9 @@ export default function App() {
       }),
     });
 
+    const data = await res.json().catch(() => null);
+
     if (!res.ok) {
-      const data = await res.json().catch(() => null);
       throw new Error(data?.error || "delete failed");
     }
 
@@ -320,26 +314,23 @@ export default function App() {
       }),
     });
 
+    const data = await res.json().catch(() => null);
+
     if (!res.ok) {
-      throw new Error("submit failed");
+      throw new Error(data?.error || "submit failed");
     }
 
-    const data = await res.json();
-
-    if (!data?.post) {
-      throw new Error("submit returned empty post");
-    }
-
-    setServerPosts((prev) => {
-      const rest = prev.filter((post) => post.id !== data.post.id);
-      return [data.post, ...rest];
-    });
-
+    await loadFeed();
     setCurrent("feed");
   };
 
-  const openSource = (_handle: string) => {
-    // source экран позже переподключим к новой модели
+  const openSource = (handle: string) => {
+    setSelectedSourceHandle(handle);
+    setCurrent("source");
+  };
+
+  const openPost = (_post: IngestedPost) => {
+    setCurrent("feed");
   };
 
   const shouldShowHeader = current !== "admin";
@@ -383,28 +374,34 @@ export default function App() {
           ) : null}
 
           {current === "add" ? (
-            <AddScreen
-              locale={locale}
-              onAdd={handleAdd}
-            />
+            <AddScreen locale={locale} onAdd={handleAdd} />
           ) : null}
 
           {current === "creator" ? (
-            <div className="px-4 pb-10 pt-24 text-center text-neutral-300">
-              Creator экран переподключим следующим.
-            </div>
+            <CreatorScreen
+              locale={locale}
+              posts={posts}
+              openPost={openPost}
+            />
           ) : null}
 
           {current === "source" ? (
-            <div className="px-4 pb-10 pt-24 text-center text-neutral-300">
-              Source экран переподключим следующим.
-            </div>
+            <SourceScreen
+              locale={locale}
+              posts={posts}
+              sourceHandle={selectedSourceHandle}
+              onBack={() => setCurrent("feed")}
+              onOpenPost={openPost}
+            />
           ) : null}
 
           {current === "admin" ? (
-            <div className="px-4 pb-10 pt-24 text-center text-neutral-300">
-              Admin экран переподключим следующим.
-            </div>
+            <AdminScreen
+              locale={locale}
+              telegramUserId={currentTelegramUser?.id || null}
+              onClose={() => setCurrent("feed")}
+              onDeletePost={handleDeletePost}
+            />
           ) : null}
         </>
       )}
