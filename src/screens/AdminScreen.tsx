@@ -22,13 +22,13 @@ function buildSearchText(post: IngestedPost) {
     post.tag || "",
     post.text || "",
     post.billing.plan || "",
+    post.status || "",
   ]
     .join(" ")
     .toLowerCase();
 }
 
 export function AdminScreen({
-  locale,
   telegramUserId,
   onClose,
   onDeletePost,
@@ -36,362 +36,272 @@ export function AdminScreen({
   const [posts, setPosts] = useState<IngestedPost[]>([]);
   const [query, setQuery] = useState("");
   const [state, setState] = useState<LoadState>("idle");
-  const [errorText, setErrorText] = useState("");
-  const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [statusFilter, setStatusFilter] = useState<
+    "all" | "published" | "pending" | "blocked"
+  >("all");
+
+  const [analytics, setAnalytics] = useState<any>(null);
 
   const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
 
+  // 🔥 загрузка постов
   useEffect(() => {
     let cancelled = false;
 
-    async function loadAdminPosts() {
-      if (!telegramUserId || !hasAdminAccess) {
-        setPosts([]);
-        setState("ready");
-        return;
-      }
+    async function loadPosts() {
+      if (!telegramUserId || !hasAdminAccess) return;
 
       try {
         setState("loading");
-        setErrorText("");
 
         const res = await fetch("/api/admin-posts", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            telegramUserId,
-          }),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ telegramUserId }),
         });
 
-        const data = await res.json().catch(() => null);
-
-        if (!res.ok) {
-          throw new Error(data?.error || "Failed to load admin posts");
-        }
+        const data = await res.json();
 
         if (!cancelled) {
-          setPosts(Array.isArray(data?.posts) ? data.posts : []);
+          setPosts(data.posts || []);
           setState("ready");
         }
-      } catch (error: any) {
+      } catch {
         if (!cancelled) {
           setState("error");
-          setErrorText(
-            error?.message ||
-              (locale === "en"
-                ? "Failed to load admin posts"
-                : "Не удалось загрузить посты для админки")
-          );
         }
       }
     }
 
-    void loadAdminPosts();
+    loadPosts();
 
     return () => {
       cancelled = true;
     };
-  }, [telegramUserId, hasAdminAccess, locale]);
+  }, [telegramUserId, hasAdminAccess]);
+
+  // 🔥 загрузка аналитики
+  useEffect(() => {
+    if (!telegramUserId || !hasAdminAccess) return;
+
+    fetch("/api/admin-analytics", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ telegramUserId }),
+    })
+      .then((r) => r.json())
+      .then(setAnalytics)
+      .catch(() => {});
+  }, [telegramUserId, hasAdminAccess]);
 
   const filteredPosts = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return posts;
 
-    return posts.filter((post) => buildSearchText(post).includes(q));
-  }, [posts, query]);
+    return posts.filter((post) => {
+      const matchesQuery = q
+        ? buildSearchText(post).includes(q)
+        : true;
 
-  const stats = useMemo(() => {
-    return {
-      total: posts.length,
-      visible: filteredPosts.length,
-      withMedia: posts.filter((post) => post.media.length > 0).length,
-      video: posts.filter((post) => post.contentType === "video").length,
-    };
-  }, [posts, filteredPosts]);
+      const matchesStatus =
+        statusFilter === "all"
+          ? true
+          : (post.status || "published") === statusFilter;
 
-  const strings =
-    locale === "en"
-      ? {
-          title: "Admin",
-          subtitle: "Hidden moderation panel",
-          back: "Back",
-          accessDenied: "Access denied",
-          accessDeniedText:
-            "This page is available only for the allowed Telegram account.",
-          loading: "Loading posts...",
-          error: "Error",
-          searchPlaceholder: "Search by source / handle / URL / who added",
-          total: "Total",
-          visible: "Found",
-          withMedia: "With media",
-          withVideo: "Video",
-          empty: "No posts found",
-          deletePost: "Delete post",
-          deleting: "Deleting...",
-          source: "Source",
-          type: "Type",
-          addedBy: "Added by",
-          expiresAt: "Expires",
-          open: "Open Telegram",
-        }
-      : {
-          title: "Admin",
-          subtitle: "Скрытая панель модерации",
-          back: "Назад",
-          accessDenied: "Доступ запрещён",
-          accessDeniedText:
-            "Эта страница доступна только для разрешённого Telegram аккаунта.",
-          loading: "Загружаю посты...",
-          error: "Ошибка",
-          searchPlaceholder: "Поиск по источнику / handle / ссылке / кто добавил",
-          total: "Всего",
-          visible: "Найдено",
-          withMedia: "С медиа",
-          withVideo: "Видео",
-          empty: "Посты не найдены",
-          deletePost: "Удалить пост",
-          deleting: "Удаляю...",
-          source: "Источник",
-          type: "Тип",
-          addedBy: "Добавил",
-          expiresAt: "Истекает",
-          open: "Открыть Telegram",
-        };
+      return matchesQuery && matchesStatus;
+    });
+  }, [posts, query, statusFilter]);
 
   const handleDelete = async (id: number) => {
-    const ok = window.confirm(
-      locale === "en"
-        ? "Delete this post permanently?"
-        : "Удалить этот пост навсегда?"
+    if (!window.confirm("Удалить пост?")) return;
+
+    await onDeletePost(id);
+    setPosts((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  const handleUpdateStatus = async (
+    id: number,
+    status: "published" | "blocked"
+  ) => {
+    await fetch("/api/admin-posts", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status, telegramUserId }),
+    });
+
+    setPosts((prev) =>
+      prev.map((p) =>
+        p.id === id ? { ...p, status } : p
+      )
     );
-
-    if (!ok) return;
-
-    try {
-      setDeletingId(id);
-      await onDeletePost(id);
-      setPosts((prev) => prev.filter((post) => post.id !== id));
-    } catch (error: any) {
-      window.alert(
-        error?.message ||
-          (locale === "en"
-            ? "Failed to delete post"
-            : "Не удалось удалить пост")
-      );
-    } finally {
-      setDeletingId(null);
-    }
   };
 
   if (!hasAdminAccess) {
     return (
-      <div className="min-h-screen bg-[#0a0a0f] px-4 py-6 text-white sm:px-6">
-        <div className="mx-auto max-w-4xl">
-          <div className="mb-4 flex items-center justify-between gap-3">
-            <div>
-              <div className="text-[22px] font-semibold">{strings.title}</div>
-              <div className="text-sm text-white/50">{strings.subtitle}</div>
-            </div>
-
-            <button
-              type="button"
-              onClick={onClose}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
-            >
-              {strings.back}
-            </button>
-          </div>
-
-          <div className="rounded-[24px] border border-red-500/20 bg-red-500/10 p-5">
-            <div className="text-lg font-semibold text-red-200">
-              {strings.accessDenied}
-            </div>
-            <div className="mt-2 text-sm leading-6 text-red-100/80">
-              {strings.accessDeniedText}
-            </div>
-          </div>
-        </div>
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        Нет доступа
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] px-4 py-4 text-white sm:px-6 sm:py-6">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-end sm:justify-between">
+    <div className="min-h-screen bg-[#0a0a0f] text-white p-4">
+      <div className="max-w-6xl mx-auto">
+
+        {/* HEADER */}
+        <div className="flex justify-between mb-4">
           <div>
-            <div className="text-[24px] font-semibold tracking-tight">
-              {strings.title}
+            <div className="text-xl font-semibold">Admin</div>
+            <div className="text-sm text-white/40">
+              управление + аналитика
             </div>
-            <div className="mt-1 text-sm text-white/50">{strings.subtitle}</div>
           </div>
 
           <button
-            type="button"
             onClick={onClose}
-            className="inline-flex h-11 items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 text-sm font-medium text-white/85 transition hover:bg-white/10"
+            className="px-4 py-2 bg-white/10 rounded-full"
           >
-            {strings.back}
+            назад
           </button>
         </div>
 
-        <div className="mb-4 grid grid-cols-2 gap-3 sm:mb-6 sm:grid-cols-4">
-          <div className="rounded-[20px] border border-white/10 bg-white/5 p-4">
-            <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-              {strings.total}
-            </div>
-            <div className="mt-2 text-2xl font-semibold">{stats.total}</div>
-          </div>
+        {/* 🔥 ANALYTICS */}
+        {analytics && (
+          <div className="mb-6 p-4 rounded-xl bg-white/5 border border-white/10">
+            <div className="text-lg font-semibold mb-2">Analytics</div>
 
-          <div className="rounded-[20px] border border-white/10 bg-white/5 p-4">
-            <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-              {strings.visible}
+            <div className="text-sm mb-2">
+              👁 Views: {analytics.views}
             </div>
-            <div className="mt-2 text-2xl font-semibold">{stats.visible}</div>
-          </div>
 
-          <div className="rounded-[20px] border border-white/10 bg-white/5 p-4">
-            <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-              {strings.withMedia}
+            <div className="text-sm mb-2">
+              🌍 Countries:
+              {Object.entries(analytics.countries || {}).map(([k, v]) => (
+                <div key={k}>
+                  {k}: {String(v)}
+                  </div>
+                )
+              )}
             </div>
-            <div className="mt-2 text-2xl font-semibold">{stats.withMedia}</div>
-          </div>
 
-          <div className="rounded-[20px] border border-white/10 bg-white/5 p-4">
-            <div className="text-xs uppercase tracking-[0.18em] text-white/45">
-              {strings.withVideo}
+            <div className="text-sm">
+              📱 Devices:
+              {Object.entries(analytics.countries || {}).map(([k, v]) => (
+                <div key={k}>
+                  {k}: {String(v)}
+                  </div>
+                )
+              )}
             </div>
-            <div className="mt-2 text-2xl font-semibold">{stats.video}</div>
           </div>
+        )}
+
+        {/* FILTER */}
+        <div className="flex gap-2 mb-4 flex-wrap">
+          {["all", "published", "pending", "blocked"].map((s) => (
+            <button
+              key={s}
+              onClick={() => setStatusFilter(s as any)}
+              className={`px-3 py-1 rounded-full text-sm ${
+                statusFilter === s
+                  ? "bg-white text-black"
+                  : "bg-white/10"
+              }`}
+            >
+              {s}
+            </button>
+          ))}
         </div>
 
-        <div className="mb-4 rounded-[24px] border border-white/10 bg-white/5 p-3 sm:mb-6 sm:p-4">
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={strings.searchPlaceholder}
-            className="h-12 w-full rounded-[16px] border border-white/10 bg-[#11131a] px-4 text-sm text-white outline-none placeholder:text-white/35"
-          />
-        </div>
+        {/* SEARCH */}
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="поиск..."
+          className="w-full mb-4 px-4 py-3 rounded-xl bg-white/10"
+        />
 
-        {state === "loading" && (
-          <div className="rounded-[24px] border border-white/10 bg-white/5 p-5 text-sm text-white/70">
-            {strings.loading}
-          </div>
-        )}
-
-        {state === "error" && (
-          <div className="rounded-[24px] border border-red-500/20 bg-red-500/10 p-5">
-            <div className="text-sm font-medium text-red-200">{strings.error}</div>
-            <div className="mt-2 text-sm text-red-100/80">{errorText}</div>
-          </div>
-        )}
-
-        {state === "ready" && filteredPosts.length === 0 && (
-          <div className="rounded-[24px] border border-white/10 bg-white/5 p-5 text-sm text-white/70">
-            {strings.empty}
-          </div>
-        )}
-
-        <div className="space-y-4">
+        {/* LIST */}
+        <div className="space-y-3">
           {filteredPosts.map((post) => {
-            const preview =
-              post.media.find((item) => item.kind === "image")?.url ||
-              post.media.find((item) => item.kind === "video")?.poster ||
-              post.source.avatar ||
-              null;
-
-            const isDeleting = deletingId === post.id;
+            const status = post.status || "published";
 
             return (
-              <article
+              <div
                 key={post.id}
-                className="overflow-hidden rounded-[28px] border border-white/10 bg-white/5"
+                className="p-4 rounded-xl bg-white/5 border border-white/10"
               >
-                <div className="grid gap-0 lg:grid-cols-[240px_minmax(0,1fr)]">
-                  <div className="relative border-b border-white/10 bg-[#0f1117] lg:border-b-0 lg:border-r">
-                    <div className="aspect-[4/5] w-full overflow-hidden bg-black/20">
-                      {preview ? (
-                        <img
-                          src={preview}
-                          alt={post.source.title}
-                          className="h-full w-full object-cover"
-                          referrerPolicy="no-referrer"
-                        />
-                      ) : (
-                        <div className="flex h-full w-full items-center justify-center text-sm text-white/35">
-                          no preview
-                        </div>
-                      )}
+                <div className="flex justify-between">
+                  <div>
+                    <div className="font-semibold">
+                      {post.source.title}
+                    </div>
+                    <div className="text-xs text-white/50">
+                      @{post.source.handle}
                     </div>
                   </div>
 
-                  <div className="p-5">
-                    <div className="mb-3 flex items-start justify-between gap-4">
-                      <div className="min-w-0">
-                        <div className="truncate text-lg font-semibold">
-                          {post.source.title}
-                        </div>
-                        <div className="truncate text-sm text-white/50">
-                          @{post.source.handle}
-                        </div>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => {
-                          void handleDelete(post.id);
-                        }}
-                        disabled={isDeleting}
-                        className="rounded-full bg-rose-500 px-4 py-2 text-sm font-medium text-white transition disabled:opacity-60"
-                      >
-                        {isDeleting ? strings.deleting : strings.deletePost}
-                      </button>
-                    </div>
-
-                    <div className="grid gap-2 text-sm text-white/75 sm:grid-cols-2">
-                      <div>
-                        <span className="text-white/45">{strings.type}: </span>
-                        {post.contentType}
-                      </div>
-                      <div>
-                        <span className="text-white/45">{strings.addedBy}: </span>
-                        {post.addedBy.username || post.addedBy.telegramId || "—"}
-                      </div>
-                      <div>
-                        <span className="text-white/45">{strings.expiresAt}: </span>
-                        {new Date(post.expiresAt).toLocaleString()}
-                      </div>
-                      <div>
-                        <span className="text-white/45">plan: </span>
-                        {post.billing.plan}
-                      </div>
-                    </div>
-
-                    {post.text ? (
-                      <div className="mt-4 line-clamp-4 whitespace-pre-wrap break-words text-sm leading-6 text-white/85">
-                        {post.text}
-                      </div>
-                    ) : null}
-
-                    <div className="mt-4">
-                      <a
-                        href={post.postUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/85 transition hover:bg-white/10"
-                      >
-                        {strings.open}
-                      </a>
-                    </div>
+                  <div className="text-xs px-2 py-1 rounded bg-white/10">
+                    {status}
                   </div>
                 </div>
-              </article>
+
+                <div className="text-xs mt-2 text-white/60">
+                  {post.addedBy.username ||
+                    post.addedBy.telegramId}
+                </div>
+
+                <div className="flex gap-2 mt-3 flex-wrap">
+
+                  {status === "pending" && (
+                    <>
+                      <button
+                        onClick={() =>
+                          handleUpdateStatus(
+                            post.id,
+                            "published"
+                          )
+                        }
+                        className="px-3 py-1 bg-green-500 rounded"
+                      >
+                        approve
+                      </button>
+
+                      <button
+                        onClick={() =>
+                          handleUpdateStatus(
+                            post.id,
+                            "blocked"
+                          )
+                        }
+                        className="px-3 py-1 bg-yellow-500 rounded"
+                      >
+                        reject
+                      </button>
+                    </>
+                  )}
+
+                  <button
+                    onClick={() => handleDelete(post.id)}
+                    className="px-3 py-1 bg-red-500 rounded"
+                  >
+                    delete
+                  </button>
+
+                  <a
+                    href={post.postUrl}
+                    target="_blank"
+                    className="px-3 py-1 bg-white/10 rounded"
+                  >
+                    open
+                  </a>
+                </div>
+              </div>
             );
           })}
         </div>
+
       </div>
     </div>
   );

@@ -17,15 +17,15 @@ function asNumber(value: unknown): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+function isAdmin(telegramUserId: string) {
+  return ADMIN_TELEGRAM_IDS.has(telegramUserId);
+}
+
 export default async function handler(req: any, res: any) {
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
   res.setHeader("Pragma", "no-cache");
   res.setHeader("Expires", "0");
   res.setHeader("X-Robots-Tag", "noindex, nofollow, noarchive, nosnippet");
-
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
 
   try {
     const body =
@@ -40,34 +40,83 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: "Missing telegramUserId" });
     }
 
-    if (!ADMIN_TELEGRAM_IDS.has(telegramUserId)) {
+    if (!isAdmin(telegramUserId)) {
       return res.status(403).json({ error: "Forbidden" });
     }
 
-    const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, 500);
+    // =========================
+    // GET POSTS (старый режим)
+    // =========================
+    if (req.method === "POST") {
+      const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, 500);
 
-    if (!ids || ids.length === 0) {
-      return res.status(200).json({ ok: true, posts: [] });
+      if (!ids || ids.length === 0) {
+        return res.status(200).json({ ok: true, posts: [] });
+      }
+
+      const posts: IngestedPost[] = [];
+
+      for (const rawId of ids) {
+        const id = asNumber(rawId);
+        if (!id) continue;
+
+        const raw = await redis.get(postKey(id));
+        if (!raw || typeof raw !== "object") continue;
+
+        posts.push(raw as IngestedPost);
+      }
+
+      return res.status(200).json({
+        ok: true,
+        posts,
+      });
     }
 
-    const posts: IngestedPost[] = [];
+    // =========================
+    // PATCH (approve / reject)
+    // =========================
+    if (req.method === "PATCH") {
+      const id = asNumber(body.id);
+      const status = body.status;
 
-    for (const rawId of ids) {
-      const id = asNumber(rawId);
-      if (!id) continue;
+      if (!id) {
+        return res.status(400).json({ error: "Missing id" });
+      }
 
-      const raw = await redis.get(postKey(id));
-      if (!raw || typeof raw !== "object") continue;
+      if (!["published", "blocked"].includes(status)) {
+        return res.status(400).json({ error: "Invalid status" });
+      }
 
-      posts.push(raw as IngestedPost);
+      const key = postKey(id);
+      const raw = await redis.get(key);
+
+      if (!raw || typeof raw !== "object") {
+        return res.status(404).json({ error: "Post not found" });
+      }
+
+      const post = raw as IngestedPost;
+
+      const updated: IngestedPost = {
+        ...post,
+        status,
+        moderation: {
+          status,
+          reason: null,
+          reviewedAt: new Date().toISOString(),
+        },
+      };
+
+      await redis.set(key, updated);
+
+      return res.status(200).json({
+        ok: true,
+        post: updated,
+      });
     }
 
-    return res.status(200).json({
-      ok: true,
-      posts,
-    });
+    return res.status(405).json({ error: "Method not allowed" });
   } catch (error) {
     console.error("admin-posts api error", error);
-    return res.status(500).json({ error: "Failed to load admin posts" });
+    return res.status(500).json({ error: "Failed" });
   }
 }
