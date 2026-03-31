@@ -42,3 +42,25 @@ export function normalizeMediaList(post: IngestedPost) {
     duration: item.duration,
   }));
 }
+
+export function getVisualMedia(post: IngestedPost) {
+  return normalizeMediaList(post).filter(
+    (item) => item.kind === "image" || item.kind === "video"
+  );
+}
+
+export function getAudioMedia(post: IngestedPost) {
+  return normalizeMediaList(post).filter((item) => item.kind === "audio");
+}
+
+export function getFileMedia(post: IngestedPost) {
+  return normalizeMediaList(post).filter((item) => item.kind === "file");
+}
+
+export function hasVisualMedia(post: IngestedPost) {
+  return getVisualMedia(post).length > 0;
+}
+
+export function hasAudioLikeMedia(post: IngestedPost) {
+  return getAudioMedia(post).length > 0 || getFileMedia(post).length > 0;
+}

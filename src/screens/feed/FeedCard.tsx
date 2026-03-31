@@ -6,7 +6,11 @@ import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
-import { getDisplayText, normalizeMediaList } from "./feed.utils";
+import {
+  getDisplayText,
+  hasAudioLikeMedia,
+  hasVisualMedia,
+} from "./feed.utils";
 
 export function FeedCard(props: FeedCardProps) {
   const {
@@ -22,8 +26,8 @@ export function FeedCard(props: FeedCardProps) {
   } = props;
 
   const displayText = getDisplayText(post);
-  const media = normalizeMediaList(post);
-  const hasMedia = media.length > 0;
+  const showVisualMedia = hasVisualMedia(post);
+  const hasAudioOrFiles = hasAudioLikeMedia(post);
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
@@ -48,10 +52,10 @@ export function FeedCard(props: FeedCardProps) {
       ref={cardRef}
       className="overflow-hidden border-b border-neutral-200 bg-white"
     >
-      <div className="flex items-center justify-between px-4 pt-4">
+      <div className="flex items-center justify-between gap-3 px-4 pt-4">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
 
-        <div className="relative">
+        <div className="relative shrink-0">
           <button
             className="rounded-full p-2 text-neutral-700"
             onClick={onToggleMenu}
@@ -71,7 +75,7 @@ export function FeedCard(props: FeedCardProps) {
         </div>
       </div>
 
-      {hasMedia ? (
+      {showVisualMedia ? (
         <>
           <div className="mt-3">
             <FeedMediaCard
@@ -143,6 +147,8 @@ export function FeedCard(props: FeedCardProps) {
             </div>
           )}
         </>
+      ) : hasAudioOrFiles ? (
+        <FeedTextCard post={post} onOpen={onOpen} />
       ) : (
         <FeedTextCard post={post} onOpen={onOpen} />
       )}

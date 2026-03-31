@@ -47,14 +47,14 @@ export function FeedSourceHeader({
   return (
     <button
       onClick={onOpenCreator}
-      className={`flex items-center gap-3 text-left ${compact ? "" : "px-4 pt-4 pb-3"}`}
+      className={`flex min-w-0 flex-1 items-center gap-3 text-left ${compact ? "" : "px-4 pt-4 pb-3"}`}
       type="button"
     >
       <FeedSourceAvatar post={post} size="sm" />
 
-      <div className="min-w-0">
-        <div className="flex items-center gap-1.5">
-          <div className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
+      <div className="min-w-0 flex-1 overflow-hidden">
+        <div className="flex min-w-0 items-center gap-1.5">
+          <div className="min-w-0 truncate text-[18px] font-semibold leading-tight text-neutral-950">
             {post.source.title}
           </div>
 

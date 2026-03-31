@@ -5,9 +5,15 @@ import {
   Music4,
   FileText,
   Send,
+  Play,
 } from "lucide-react";
 import type { IngestedPost } from "../../types/app";
-import { getResolvedTag, getTagLabel } from "./feed.utils";
+import {
+  getResolvedTag,
+  getTagLabel,
+  getAudioMedia,
+  getFileMedia,
+} from "./feed.utils";
 
 function getMediaBadge(post: IngestedPost) {
   if (post.contentType === "audio") {
@@ -67,6 +73,65 @@ function linkifyText(text: string) {
   });
 }
 
+function AudioPreview({
+  post,
+}: {
+  post: IngestedPost;
+}) {
+  const audioItems = getAudioMedia(post);
+  const fileItems = getFileMedia(post);
+
+  if (audioItems.length === 0 && fileItems.length === 0) {
+    return null;
+  }
+
+  const total = audioItems.length + fileItems.length;
+  const primaryAudio = audioItems[0];
+  const primaryFile = fileItems[0];
+
+  return (
+    <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+      <div className="flex items-start gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+          {audioItems.length > 0 ? (
+            <Music4 className="h-5 w-5" />
+          ) : (
+            <FileText className="h-5 w-5" />
+          )}
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <div className="truncate text-sm font-semibold text-neutral-950">
+            {primaryAudio?.fileName?.trim() ||
+              primaryFile?.fileName?.trim() ||
+              (audioItems.length > 0 ? "Аудио из поста Telegram" : "Файл из поста Telegram")}
+          </div>
+
+          <div className="mt-1 text-sm text-neutral-500">
+            {audioItems.length > 0
+              ? total > 1
+                ? `${total} аудио / вложения в посте`
+                : "Аудио из поста Telegram"
+              : total > 1
+                ? `${total} вложения в посте`
+                : "Вложение из поста Telegram"}
+          </div>
+
+          <div className="mt-3 flex items-center gap-2 text-neutral-700">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-neutral-200">
+              <Play className="ml-0.5 h-4 w-4" />
+            </div>
+
+            <div className="h-2 flex-1 rounded-full bg-neutral-200">
+              <div className="h-2 w-1/3 rounded-full bg-neutral-900" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function FeedTextCard({
   post,
   onOpen,
@@ -94,10 +159,14 @@ export function FeedTextCard({
         </div>
       </div>
 
+      <AudioPreview post={post} />
+
       <div className="text-[15px] leading-6 text-neutral-900">
-        <div className="line-clamp-5 whitespace-pre-wrap break-words">
-          {linkifyText(displayText)}
-        </div>
+        {displayText ? (
+          <div className="line-clamp-5 whitespace-pre-wrap break-words">
+            {linkifyText(displayText)}
+          </div>
+        ) : null}
 
         <div className="mt-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-8 text-neutral-700">
