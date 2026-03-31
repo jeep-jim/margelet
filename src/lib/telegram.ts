@@ -16,22 +16,65 @@ const TELEGRAM_HOSTS = new Set([
   "www.telegram.me",
 ]);
 
-function getApiBaseUrl() {
-  if (typeof window !== "undefined") {
-    return "";
-  }
+function clean(value?: string | null) {
+  if (typeof value !== "string") return null;
+  const v = value.trim();
+  return v || null;
+}
 
-  const env =
-    globalThis as typeof globalThis & {
-      process?: { env?: Record<string, string | undefined> };
-    };
+function normalizeAssetUrl(value?: string | null) {
+  if (!value) return null;
+  const v = value.trim();
+  if (!v) return null;
 
-  const vercelUrl = env.process?.env?.VERCEL_URL?.trim();
-  if (vercelUrl) {
-    return `https://${vercelUrl}`;
-  }
+  if (v.startsWith("//")) return `https:${v}`;
+  if (v.startsWith("http://")) return `https://${v.slice(7)}`;
+  return v;
+}
 
-  return "http://localhost:3000";
+function toProxy(url?: string | null) {
+  const normalized = normalizeAssetUrl(url);
+  if (!normalized) return null;
+  return `/api/media-proxy?url=${encodeURIComponent(normalized)}`;
+}
+
+function extract(html: string, re: RegExp) {
+  const match = html.match(re);
+  return match?.[1] || null;
+}
+
+function decodeHtml(input: string) {
+  return input
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x27;/g, "'")
+    .replace(/&#x2F;/g, "/")
+    .replace(/&#33;/g, "!")
+    .replace(/&#40;/g, "(")
+    .replace(/&#41;/g, ")")
+    .replace(/&#44;/g, ",")
+    .replace(/&#58;/g, ":")
+    .replace(/&#59;/g, ";")
+    .replace(/&#63;/g, "?")
+    .replace(/&#64;/g, "@")
+    .replace(/&#91;/g, "[")
+    .replace(/&#93;/g, "]")
+    .replace(/&#123;/g, "{")
+    .replace(/&#125;/g, "}")
+    .replace(/&#8209;/g, "-")
+    .replace(/&#8211;/g, "–")
+    .replace(/&#8212;/g, "—")
+    .replace(/&#8230;/g, "…")
+    .replace(/&#(\d+);/g, (_, code) => {
+      const num = Number(code);
+      return Number.isFinite(num) ? String.fromCharCode(num) : _;
+    })
+    .trim();
 }
 
 export function normalizeTelegramUrl(raw: string): string {
@@ -83,6 +126,30 @@ export function parseTelegramPostUrl(
   }
 }
 
+async function fetchTelegramPostHtml(parsed: ParsedTelegramPostUrl) {
+  const webUrl = `https://t.me/s/${parsed.sourceHandle}/${parsed.postId}`;
+
+  const response = await fetch(webUrl, {
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
+      Accept: "text/html,application/xhtml+xml",
+      "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
+      Referer: "https://t.me/",
+    },
+    redirect: "follow",
+  });
+
+  if (!response.ok) {
+    const text = await response.text().catch(() => "");
+    throw new Error(
+      `Telegram fetch failed: ${response.status} ${text.slice(0, 180)}`
+    );
+  }
+
+  return response.text();
+}
+
 export async function ingestTelegramPost(
   url: string
 ): Promise<{
@@ -103,47 +170,53 @@ export async function ingestTelegramPost(
     const parsed = parseTelegramPostUrl(url);
     if (!parsed) return null;
 
-    const baseUrl = getApiBaseUrl();
+    const html = await fetchTelegramPostHtml(parsed);
 
-    const res = await fetch(
-      `${baseUrl}/api/telegram-preview?url=${encodeURIComponent(
-        parsed.normalizedUrl
-      )}`
-    );
-
-    if (!res.ok) {
-      return null;
-    }
-
-    const data = await res.json();
-
-    const text =
-      typeof data?.caption === "string" ? data.caption.trim() : "";
-
-    const image =
-      typeof data?.image === "string" && data.image.trim()
-        ? data.image.trim()
-        : null;
-
-    const video =
-      typeof data?.video === "string" && data.video.trim()
-        ? data.video.trim()
-        : null;
-
-    const poster =
-      typeof data?.poster === "string" && data.poster.trim()
-        ? data.poster.trim()
-        : null;
-
-    const avatar =
-      typeof data?.avatar === "string" && data.avatar.trim()
-        ? data.avatar.trim()
-        : null;
+    const rawText =
+      extract(
+        html,
+        /<div class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/i
+      ) || "";
 
     const title =
-      typeof data?.title === "string" && data.title.trim()
-        ? data.title.trim()
-        : parsed.sourceHandle;
+      clean(extract(html, /<meta property="og:title" content="([^"]+)"/i)) ||
+      parsed.sourceHandle;
+
+    const image = clean(
+      extract(html, /<meta property="og:image" content="([^"]+)"/i)
+    );
+
+    const video = clean(
+      extract(html, /<meta property="og:video" content="([^"]+)"/i)
+    );
+
+    const avatar = clean(
+      extract(
+        html,
+        /<img[^>]+class="tgme_page_photo_image"[^>]+src="([^"]+)"/i
+      )
+    );
+
+    const verified =
+      /tgme_page_extra[^>]*>[\s\S]*?verified/i.test(html) ||
+      /verified-icon/i.test(html) ||
+      /tgme_icon_verified/i.test(html);
+
+    const text = decodeHtml(rawText);
+
+    const links: Array<{ label: string | null; url: string }> = [];
+    const linkRegex = /<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+    let match: RegExpExecArray | null;
+
+    while ((match = linkRegex.exec(rawText))) {
+      const href = normalizeAssetUrl(match[1]);
+      const label = decodeHtml(match[2] || "");
+      if (!href) continue;
+      links.push({
+        label: label || null,
+        url: href,
+      });
+    }
 
     let media: IngestedPost["media"] = [];
     let contentType: IngestedPost["contentType"] = "text";
@@ -153,8 +226,8 @@ export async function ingestTelegramPost(
         {
           id: "video-1",
           kind: "video",
-          url: video,
-          poster: poster || image || null,
+          url: toProxy(video) || video,
+          poster: toProxy(image) || null,
         },
       ];
       contentType = "video";
@@ -163,7 +236,7 @@ export async function ingestTelegramPost(
         {
           id: "image-1",
           kind: "image",
-          url: image,
+          url: toProxy(image) || image,
         },
       ];
       contentType = "image";
@@ -173,17 +246,18 @@ export async function ingestTelegramPost(
       source: {
         handle: parsed.sourceHandle,
         title,
-        avatar,
-        verified: !!data?.verified,
+        avatar: normalizeAssetUrl(avatar),
+        verified,
       },
       text,
-      links: [],
+      links,
       contentType,
       media,
       hasMediaInOriginal: !!(video || image),
       fallbackReason: null,
     };
-  } catch {
+  } catch (error) {
+    console.error("ingestTelegramPost error", error);
     return null;
   }
 }
