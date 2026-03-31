@@ -43,6 +43,19 @@ function extract(html: string, re: RegExp) {
   return match?.[1] || null;
 }
 
+function extractAll(html: string, re: RegExp) {
+  const out: string[] = [];
+  let match: RegExpExecArray | null;
+
+  while ((match = re.exec(html))) {
+    if (match[1]) {
+      out.push(match[1]);
+    }
+  }
+
+  return out;
+}
+
 function decodeHtml(input: string) {
   return input
     .replace(/<br\s*\/?>/gi, "\n")
@@ -150,6 +163,67 @@ async function fetchTelegramPostHtml(parsed: ParsedTelegramPostUrl) {
   return response.text();
 }
 
+function extractWidgetPhotoUrls(html: string) {
+  const styleUrls = extractAll(
+    html,
+    /tgme_widget_message_photo_wrap[^>]+style="[^"]*background-image:url\('([^']+)'\)/gi
+  );
+
+  const groupedStyleUrls = extractAll(
+    html,
+    /tgme_widget_message_grouped_wrap[^>]+style="[^"]*background-image:url\('([^']+)'\)/gi
+  );
+
+  const imgUrls = extractAll(
+    html,
+    /<img[^>]+src="([^"]+)"[^>]*>/gi
+  );
+
+  const candidates = [...styleUrls, ...groupedStyleUrls, ...imgUrls]
+    .map((value) => normalizeAssetUrl(value))
+    .filter(Boolean) as string[];
+
+  const filtered = candidates.filter((url) => {
+    const lower = url.toLowerCase();
+
+    if (lower.includes("/i/userpic/")) return false;
+    if (lower.includes("tgme_page_photo")) return false;
+    if (lower.includes("emoji")) return false;
+
+    return true;
+  });
+
+  return Array.from(new Set(filtered));
+}
+
+function extractWidgetVideoUrl(html: string) {
+  const sourceUrl =
+    extract(html, /<source[^>]+src="([^"]+)"[^>]*>/i) ||
+    extract(html, /<video[^>]+src="([^"]+)"[^>]*>/i) ||
+    extract(html, /tgme_widget_message_video_player[^>]+src="([^"]+)"/i);
+
+  return normalizeAssetUrl(sourceUrl);
+}
+
+function extractLinks(rawTextHtml: string) {
+  const links: Array<{ label: string | null; url: string }> = [];
+  const linkRegex = /<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  let match: RegExpExecArray | null;
+
+  while ((match = linkRegex.exec(rawTextHtml))) {
+    const href = normalizeAssetUrl(match[1]);
+    const label = decodeHtml(match[2] || "");
+    if (!href) continue;
+
+    links.push({
+      label: label || null,
+      url: href,
+    });
+  }
+
+  return links;
+}
+
 export async function ingestTelegramPost(
   url: string
 ): Promise<{
@@ -172,7 +246,7 @@ export async function ingestTelegramPost(
 
     const html = await fetchTelegramPostHtml(parsed);
 
-    const rawText =
+    const rawTextHtml =
       extract(
         html,
         /<div class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/i
@@ -182,12 +256,8 @@ export async function ingestTelegramPost(
       clean(extract(html, /<meta property="og:title" content="([^"]+)"/i)) ||
       parsed.sourceHandle;
 
-    const image = clean(
+    const ogImage = clean(
       extract(html, /<meta property="og:image" content="([^"]+)"/i)
-    );
-
-    const video = clean(
-      extract(html, /<meta property="og:video" content="([^"]+)"/i)
     );
 
     const avatar = clean(
@@ -198,45 +268,42 @@ export async function ingestTelegramPost(
     );
 
     const verified =
-      /tgme_page_extra[^>]*>[\s\S]*?verified/i.test(html) ||
+      /tgme_icon_verified/i.test(html) ||
       /verified-icon/i.test(html) ||
-      /tgme_icon_verified/i.test(html);
+      /<span[^>]+class="tgme_page_verified_badge"/i.test(html);
 
-    const text = decodeHtml(rawText);
+    const text = decodeHtml(rawTextHtml);
+    const links = extractLinks(rawTextHtml);
 
-    const links: Array<{ label: string | null; url: string }> = [];
-    const linkRegex = /<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
-    let match: RegExpExecArray | null;
-
-    while ((match = linkRegex.exec(rawText))) {
-      const href = normalizeAssetUrl(match[1]);
-      const label = decodeHtml(match[2] || "");
-      if (!href) continue;
-      links.push({
-        label: label || null,
-        url: href,
-      });
-    }
+    const widgetVideo = extractWidgetVideoUrl(html);
+    const widgetPhotos = extractWidgetPhotoUrls(html);
 
     let media: IngestedPost["media"] = [];
     let contentType: IngestedPost["contentType"] = "text";
 
-    if (video) {
+    if (widgetVideo) {
       media = [
         {
           id: "video-1",
           kind: "video",
-          url: toProxy(video) || video,
-          poster: toProxy(image) || null,
+          url: toProxy(widgetVideo) || widgetVideo,
+          poster: toProxy(ogImage) || null,
         },
       ];
       contentType = "video";
-    } else if (image) {
+    } else if (widgetPhotos.length > 1) {
+      media = widgetPhotos.map((photo, index) => ({
+        id: `image-${index + 1}`,
+        kind: "image",
+        url: toProxy(photo) || photo,
+      }));
+      contentType = "gallery";
+    } else if (widgetPhotos.length === 1) {
       media = [
         {
           id: "image-1",
           kind: "image",
-          url: toProxy(image) || image,
+          url: toProxy(widgetPhotos[0]) || widgetPhotos[0],
         },
       ];
       contentType = "image";
@@ -253,7 +320,7 @@ export async function ingestTelegramPost(
       links,
       contentType,
       media,
-      hasMediaInOriginal: !!(video || image),
+      hasMediaInOriginal: !!(widgetVideo || widgetPhotos.length > 0),
       fallbackReason: null,
     };
   } catch (error) {
