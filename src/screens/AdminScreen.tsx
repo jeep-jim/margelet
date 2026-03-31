@@ -149,6 +149,18 @@ export function AdminScreen({
     <div className="min-h-screen bg-[#0a0a0f] text-white p-4">
       <div className="max-w-6xl mx-auto">
 
+        {state === "loading" && (
+          <div className="mb-4 text-sm text-white/50">
+            loading...
+          </div>
+        )}
+
+        {state === "error" && (
+          <div className="mb-4 text-sm text-red-400">
+            ошибка загрузки
+          </div>
+        )}
+
         {/* HEADER */}
         <div className="flex justify-between mb-4">
           <div>
