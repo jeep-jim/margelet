@@ -14,7 +14,15 @@ export function getDisplayText(post: IngestedPost) {
 }
 
 export function buildShareUrl(post: IngestedPost) {
-  return post.postUrl;
+  const origin =
+    typeof window !== "undefined"
+      ? window.location.origin
+      : "https://www.margelet.space";
+
+  const postId = post.postUrl.split("/").filter(Boolean).pop() || String(post.id);
+  const handle = post.source.handle || "telegram";
+
+  return `${origin}/${handle}/${postId}`;
 }
 
 export function normalizeMediaList(post: IngestedPost) {

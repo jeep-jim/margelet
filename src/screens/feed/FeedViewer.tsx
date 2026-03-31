@@ -257,6 +257,7 @@ export function FeedViewer({
               mediaActive
               muted={isMuted}
               videoRef={videoRef}
+              fit="cover"
             />
           </div>
 
@@ -322,53 +323,55 @@ export function FeedViewer({
           </div>
 
           <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-6 pt-10 text-white">
-            <div className="flex items-center gap-3">
-              <FeedSourceAvatar post={activePost} />
+            <div className="w-full md:max-w-[380px]">
+              <div className="flex items-center gap-3">
+                <FeedSourceAvatar post={activePost} />
 
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <div className="truncate text-[18px] font-semibold">
-                    {activePost.source.title}
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <div className="truncate text-[18px] font-semibold">
+                      {activePost.source.title}
+                    </div>
+                    {activePost.source.verified ? (
+                      <VerifiedBadge className="text-[#2AABEE]" />
+                    ) : null}
                   </div>
-                  {activePost.source.verified ? (
-                    <VerifiedBadge className="text-[#2AABEE]" />
-                  ) : null}
-                </div>
 
-                <div className="text-sm opacity-80">
-                  @{activePost.source.handle}
+                  <div className="text-sm opacity-80">
+                    @{activePost.source.handle}
+                  </div>
                 </div>
               </div>
+
+              {activePost.text ? (
+                <div className="mt-3">
+                  <div
+                    className={`text-[15px] leading-6 text-white ${
+                      expandedText ? "overflow-y-auto" : "line-clamp-3"
+                    }`}
+                    style={
+                      expandedText
+                        ? { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
+                        : undefined
+                    }
+                    onWheel={(event) => event.stopPropagation()}
+                    onTouchStart={(event) => event.stopPropagation()}
+                    onTouchMove={(event) => event.stopPropagation()}
+                    onTouchEnd={(event) => event.stopPropagation()}
+                  >
+                    {linkifyText(activePost.text)}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setExpandedText((prev) => !prev)}
+                    className="mt-2 text-sm font-medium text-white/90"
+                  >
+                    {expandedText ? "Скрыть" : "Ещё"}
+                  </button>
+                </div>
+              ) : null}
             </div>
-
-            {activePost.text ? (
-              <div className="mt-3 max-w-[82%]">
-                <div
-                  className={`text-[15px] leading-6 text-white ${
-                    expandedText ? "overflow-y-auto" : "line-clamp-3"
-                  }`}
-                  style={
-                    expandedText
-                      ? { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
-                      : undefined
-                  }
-                  onWheel={(event) => event.stopPropagation()}
-                  onTouchStart={(event) => event.stopPropagation()}
-                  onTouchMove={(event) => event.stopPropagation()}
-                  onTouchEnd={(event) => event.stopPropagation()}
-                >
-                  {linkifyText(activePost.text)}
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => setExpandedText((prev) => !prev)}
-                  className="mt-2 text-sm font-medium text-white/90"
-                >
-                  {expandedText ? "Скрыть" : "Ещё"}
-                </button>
-              </div>
-            ) : null}
 
             <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/20">
               <div

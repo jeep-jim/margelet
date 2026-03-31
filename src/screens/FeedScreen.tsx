@@ -8,11 +8,18 @@ import { ADMIN_TELEGRAM_IDS } from "./feed/feed.constants";
 import type { FeedMode, ViewerDirection } from "./feed/feed.types";
 import {
   buildShareUrl,
-  getDisplayText,
   getResolvedTag,
 } from "./feed/feed.utils";
 
+function isGifPost(post: IngestedPost) {
+  return (
+    post.contentType === "gif" ||
+    post.media.some((item) => item.mimeType?.includes("gif"))
+  );
+}
+
 function isVideoViewerPost(post: IngestedPost) {
+  if (isGifPost(post)) return false;
   return post.contentType === "video";
 }
 
@@ -225,8 +232,6 @@ export function FeedScreen({
     try {
       if (navigator.share) {
         await navigator.share({
-          title: post.source.title,
-          text: getDisplayText(post),
           url: shareUrl,
         });
       } else {

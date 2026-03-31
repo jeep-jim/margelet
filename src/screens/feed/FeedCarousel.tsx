@@ -1,5 +1,5 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useMemo, useRef } from "react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type CarouselItem = {
   id: string;
@@ -65,6 +65,8 @@ export function FeedCarousel({
   mediaActive = false,
   muted = true,
   videoRef,
+  fit = "cover",
+  enableFullscreen = false,
 }: {
   items: CarouselItem[];
   displayText?: string;
@@ -75,8 +77,13 @@ export function FeedCarousel({
   mediaActive?: boolean;
   muted?: boolean;
   videoRef?: React.RefObject<HTMLVideoElement | null>;
+  fit?: "cover" | "contain";
+  enableFullscreen?: boolean;
 }) {
   const touchStartXRef = useRef<number | null>(null);
+  const [fullscreenOpen, setFullscreenOpen] = useState(false);
+  const [fullscreenIndex, setFullscreenIndex] = useState(activeIndex);
+
   const current =
     items[Math.min(activeIndex, Math.max(items.length - 1, 0))] || null;
 
@@ -90,7 +97,6 @@ export function FeedCarousel({
     node.muted = muted;
 
     if (mediaActive) {
-      node.currentTime = 0;
       const promise = node.play();
       if (promise && typeof promise.catch === "function") {
         promise.catch(() => {});
@@ -100,7 +106,12 @@ export function FeedCarousel({
     }
   }, [current?.id, current?.kind, mediaActive, muted, videoRef]);
 
-  const mediaNode = useMemo(() => {
+  useEffect(() => {
+    if (!fullscreenOpen) return;
+    setFullscreenIndex(activeIndex);
+  }, [activeIndex, fullscreenOpen]);
+
+  const renderItem = useMemo(() => {
     if (!current) return null;
 
     if (current.kind === "video") {
@@ -109,7 +120,7 @@ export function FeedCarousel({
           ref={videoRef}
           src={current.url}
           poster={current.poster || undefined}
-          className="h-full w-full object-contain"
+          className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
           playsInline
           preload="metadata"
           muted={muted}
@@ -123,7 +134,7 @@ export function FeedCarousel({
         <img
           src={current.url}
           alt=""
-          className="h-full w-full object-contain"
+          className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
           referrerPolicy="no-referrer"
         />
       );
@@ -153,74 +164,152 @@ export function FeedCarousel({
     }
 
     return null;
-  }, [current, muted, videoRef]);
+  }, [current, fit, muted, videoRef]);
+
+  const fullscreenItem =
+    items[Math.min(fullscreenIndex, Math.max(items.length - 1, 0))] || null;
 
   return (
-    <div
-      className={`relative w-full overflow-hidden bg-black ${aspectClass}`}
-      onTouchStart={(event) => {
-        touchStartXRef.current = event.touches[0]?.clientX ?? null;
-      }}
-      onTouchEnd={(event) => {
-        const startX = touchStartXRef.current;
-        const endX = event.changedTouches[0]?.clientX ?? null;
-        touchStartXRef.current = null;
+    <>
+      <div
+        className={`relative w-full overflow-hidden bg-neutral-100 ${aspectClass}`}
+        onTouchStart={(event) => {
+          touchStartXRef.current = event.touches[0]?.clientX ?? null;
+        }}
+        onTouchEnd={(event) => {
+          const startX = touchStartXRef.current;
+          const endX = event.changedTouches[0]?.clientX ?? null;
+          touchStartXRef.current = null;
 
-        if (startX === null || endX === null || !onChange) return;
+          if (startX === null || endX === null || !onChange) return;
 
-        const delta = endX - startX;
+          const delta = endX - startX;
 
-        if (delta <= -48 && canNext) {
-          onChange(activeIndex + 1);
-        } else if (delta >= 48 && canPrev) {
-          onChange(activeIndex - 1);
-        }
-      }}
-    >
-      {mediaNode}
-
-      {canPrev ? (
-        <button
-          type="button"
+          if (delta <= -48 && canNext) {
+            onChange(activeIndex + 1);
+          } else if (delta >= 48 && canPrev) {
+            onChange(activeIndex - 1);
+          }
+        }}
+      >
+        <div
+          className={enableFullscreen ? "h-full w-full cursor-zoom-in" : "h-full w-full"}
           onClick={(event) => {
+            if (!enableFullscreen) return;
             event.stopPropagation();
-            onChange?.(activeIndex - 1);
+            setFullscreenIndex(activeIndex);
+            setFullscreenOpen(true);
           }}
-          className={`absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
-            controlsTone === "light"
-              ? "bg-black/35 text-white"
-              : "bg-white/85 text-neutral-900"
-          }`}
-          aria-label="Предыдущее медиа"
         >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
-      ) : null}
+          {renderItem}
+        </div>
 
-      {canNext ? (
-        <button
-          type="button"
-          onClick={(event) => {
-            event.stopPropagation();
-            onChange?.(activeIndex + 1);
-          }}
-          className={`absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
-            controlsTone === "light"
-              ? "bg-black/35 text-white"
-              : "bg-white/85 text-neutral-900"
-          }`}
-          aria-label="Следующее медиа"
+        {canPrev ? (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onChange?.(activeIndex - 1);
+            }}
+            className={`absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
+              controlsTone === "light"
+                ? "bg-black/35 text-white"
+                : "bg-white/85 text-neutral-900"
+            }`}
+            aria-label="Предыдущее медиа"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+        ) : null}
+
+        {canNext ? (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onChange?.(activeIndex + 1);
+            }}
+            className={`absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
+              controlsTone === "light"
+                ? "bg-black/35 text-white"
+                : "bg-white/85 text-neutral-900"
+            }`}
+            aria-label="Следующее медиа"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        ) : null}
+
+        <MediaDots
+          total={items.length}
+          activeIndex={activeIndex}
+          onSelect={(index) => onChange?.(index)}
+          light={controlsTone === "light"}
+        />
+      </div>
+
+      {fullscreenOpen && fullscreenItem ? (
+        <div
+          className="fixed inset-0 z-[80] bg-black"
+          onClick={() => setFullscreenOpen(false)}
         >
-          <ChevronRight className="h-5 w-5" />
-        </button>
-      ) : null}
+          <button
+            type="button"
+            onClick={() => setFullscreenOpen(false)}
+            className="absolute left-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white"
+          >
+            <X className="h-5 w-5" />
+          </button>
 
-      <MediaDots
-        total={items.length}
-        activeIndex={activeIndex}
-        onSelect={(index) => onChange?.(index)}
-        light={controlsTone === "light"}
-      />
-    </div>
+          {fullscreenIndex > 0 ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setFullscreenIndex((prev) => prev - 1);
+              }}
+              className="absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          ) : null}
+
+          {fullscreenIndex < items.length - 1 ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setFullscreenIndex((prev) => prev + 1);
+              }}
+              className="absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          ) : null}
+
+          <div className="flex h-full w-full items-center justify-center p-4">
+            {fullscreenItem.kind === "image" ? (
+              <img
+                src={fullscreenItem.url}
+                alt=""
+                className="max-h-full max-w-full object-contain"
+                referrerPolicy="no-referrer"
+              />
+            ) : fullscreenItem.kind === "video" ? (
+              <video
+                src={fullscreenItem.url}
+                poster={fullscreenItem.poster || undefined}
+                className="max-h-full max-w-full object-contain"
+                autoPlay
+                loop
+                muted={muted}
+                playsInline
+                controls
+              />
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }

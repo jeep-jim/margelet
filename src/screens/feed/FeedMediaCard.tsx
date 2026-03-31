@@ -51,6 +51,7 @@ export function FeedMediaCard({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
+  const [measuredDuration, setMeasuredDuration] = useState<number | null>(null);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
@@ -77,6 +78,26 @@ export function FeedMediaCard({
       window.removeEventListener(FEED_PAUSE_EVENT, pauseAll);
     };
   }, []);
+
+  useEffect(() => {
+    setMeasuredDuration(null);
+
+    const node = videoRef.current;
+    if (!node || activeItem?.kind !== "video") return;
+
+    const onLoaded = () => {
+      if (Number.isFinite(node.duration)) {
+        setMeasuredDuration(node.duration);
+      }
+    };
+
+    node.addEventListener("loadedmetadata", onLoaded);
+    onLoaded();
+
+    return () => {
+      node.removeEventListener("loadedmetadata", onLoaded);
+    };
+  }, [activeItem?.id, activeItem?.kind]);
 
   useEffect(() => {
     if (!forcedPaused) return;
@@ -113,8 +134,10 @@ export function FeedMediaCard({
     onOpen();
   };
 
+  const durationToShow = activeItem?.duration ?? measuredDuration;
+
   return (
-    <div className="relative">
+    <div className="relative" onClick={handleOpen}>
       <FeedCarousel
         items={media}
         aspectClass="aspect-[4/5]"
@@ -124,13 +147,15 @@ export function FeedMediaCard({
         mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
+        fit="cover"
+        enableFullscreen={post.contentType !== "video"}
       />
 
       {activeItem?.kind === "video" ? (
         <>
-          {formatDuration(activeItem.duration) ? (
+          {formatDuration(durationToShow) ? (
             <div className="absolute bottom-3 left-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[12px] font-medium text-white backdrop-blur-sm">
-              {formatDuration(activeItem.duration)}
+              {formatDuration(durationToShow)}
             </div>
           ) : null}
 
@@ -153,13 +178,6 @@ export function FeedMediaCard({
           </button>
         </>
       ) : null}
-
-      <button
-        type="button"
-        onClick={handleOpen}
-        className="absolute inset-0 z-10"
-        aria-label="Открыть пост"
-      />
     </div>
   );
 }
