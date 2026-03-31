@@ -16,12 +16,6 @@ const TELEGRAM_HOSTS = new Set([
   "www.telegram.me",
 ]);
 
-function clean(value?: string | null) {
-  if (typeof value !== "string") return null;
-  const v = value.trim();
-  return v || null;
-}
-
 function normalizeAssetUrl(value?: string | null) {
   if (!value) return null;
   const v = value.trim();
@@ -36,24 +30,6 @@ function toProxy(url?: string | null) {
   const normalized = normalizeAssetUrl(url);
   if (!normalized) return null;
   return `/api/media-proxy?url=${encodeURIComponent(normalized)}`;
-}
-
-function extract(html: string, re: RegExp) {
-  const match = html.match(re);
-  return match?.[1] || null;
-}
-
-function extractAll(html: string, re: RegExp) {
-  const out: string[] = [];
-  let match: RegExpExecArray | null;
-
-  while ((match = re.exec(html))) {
-    if (match[1]) {
-      out.push(match[1]);
-    }
-  }
-
-  return out;
 }
 
 function decodeHtml(input: string) {
@@ -88,6 +64,24 @@ function decodeHtml(input: string) {
       return Number.isFinite(num) ? String.fromCharCode(num) : _;
     })
     .trim();
+}
+
+function extract(html: string, re: RegExp) {
+  const match = html.match(re);
+  return match?.[1] || null;
+}
+
+function extractAll(html: string, re: RegExp) {
+  const out: string[] = [];
+  let match: RegExpExecArray | null;
+
+  while ((match = re.exec(html))) {
+    if (match[1]) {
+      out.push(match[1]);
+    }
+  }
+
+  return out;
 }
 
 export function normalizeTelegramUrl(raw: string): string {
@@ -139,70 +133,92 @@ export function parseTelegramPostUrl(
   }
 }
 
-async function fetchTelegramPostHtml(parsed: ParsedTelegramPostUrl) {
-  const webUrl = `https://t.me/s/${parsed.sourceHandle}/${parsed.postId}`;
+async function fetchTelegramEmbedHtml(parsed: ParsedTelegramPostUrl) {
+  const embedCandidates = [
+    `https://t.me/${parsed.sourceHandle}/${parsed.postId}?embed=1&mode=tme`,
+    `https://t.me/${parsed.sourceHandle}/${parsed.postId}?embed=1`,
+  ];
 
-  const response = await fetch(webUrl, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
-      Accept: "text/html,application/xhtml+xml",
-      "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
-      Referer: "https://t.me/",
-    },
-    redirect: "follow",
-  });
+  let lastError: unknown = null;
 
-  if (!response.ok) {
-    const text = await response.text().catch(() => "");
-    throw new Error(
-      `Telegram fetch failed: ${response.status} ${text.slice(0, 180)}`
-    );
+  for (const url of embedCandidates) {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
+          Accept: "text/html,application/xhtml+xml",
+          "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
+          Referer: "https://t.me/",
+        },
+        redirect: "follow",
+      });
+
+      if (!response.ok) {
+        const text = await response.text().catch(() => "");
+        lastError = new Error(
+          `Telegram embed fetch failed: ${response.status} ${text.slice(0, 180)}`
+        );
+        continue;
+      }
+
+      const html = await response.text();
+      if (html && html.includes("tgme_widget_message")) {
+        return html;
+      }
+    } catch (error) {
+      lastError = error;
+    }
   }
 
-  return response.text();
+  throw lastError || new Error("Failed to fetch Telegram embed");
 }
 
-function extractWidgetPhotoUrls(html: string) {
-  const styleUrls = extractAll(
-    html,
-    /tgme_widget_message_photo_wrap[^>]+style="[^"]*background-image:url\('([^']+)'\)/gi
-  );
+function extractSourceTitle(html: string, fallbackHandle: string) {
+  const raw =
+    extract(
+      html,
+      /<div class="tgme_widget_message_author[^"]*"[^>]*>\s*<a[^>]*>([\s\S]*?)<\/a>/i
+    ) ||
+    extract(
+      html,
+      /<a[^>]+class="tgme_widget_message_author_name"[^>]*>([\s\S]*?)<\/a>/i
+    ) ||
+    extract(html, /<meta property="og:title" content="([^"]+)"/i);
 
-  const groupedStyleUrls = extractAll(
-    html,
-    /tgme_widget_message_grouped_wrap[^>]+style="[^"]*background-image:url\('([^']+)'\)/gi
-  );
-
-  const imgUrls = extractAll(
-    html,
-    /<img[^>]+src="([^"]+)"[^>]*>/gi
-  );
-
-  const candidates = [...styleUrls, ...groupedStyleUrls, ...imgUrls]
-    .map((value) => normalizeAssetUrl(value))
-    .filter(Boolean) as string[];
-
-  const filtered = candidates.filter((url) => {
-    const lower = url.toLowerCase();
-
-    if (lower.includes("/i/userpic/")) return false;
-    if (lower.includes("tgme_page_photo")) return false;
-    if (lower.includes("emoji")) return false;
-
-    return true;
-  });
-
-  return Array.from(new Set(filtered));
+  return decodeHtml(raw || fallbackHandle) || fallbackHandle;
 }
 
-function extractWidgetVideoUrl(html: string) {
-  const sourceUrl =
-    extract(html, /<source[^>]+src="([^"]+)"[^>]*>/i) ||
-    extract(html, /<video[^>]+src="([^"]+)"[^>]*>/i) ||
-    extract(html, /tgme_widget_message_video_player[^>]+src="([^"]+)"/i);
+function extractSourceAvatar(html: string) {
+  const styleAvatar =
+    extract(
+      html,
+      /class="tgme_widget_message_user_photo[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/i
+    ) ||
+    extract(
+      html,
+      /class="tgme_widget_message_user_photo[^"]*"[^>]*style="[^"]*background-image:url\((&quot;|")?([^'")]+)(&quot;|")?\)/i
+    );
 
-  return normalizeAssetUrl(sourceUrl);
+  if (styleAvatar) {
+    return normalizeAssetUrl(styleAvatar);
+  }
+
+  const imgAvatar = extract(
+    html,
+    /class="tgme_widget_message_user_photo[^"]*"[\s\S]*?<img[^>]+src="([^"]+)"/i
+  );
+
+  return normalizeAssetUrl(imgAvatar);
+}
+
+function extractTextHtml(html: string) {
+  return (
+    extract(
+      html,
+      /<div class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/i
+    ) || ""
+  );
 }
 
 function extractLinks(rawTextHtml: string) {
@@ -222,6 +238,56 @@ function extractLinks(rawTextHtml: string) {
   }
 
   return links;
+}
+
+function extractWidgetPhotoUrls(html: string) {
+  const photoWraps = extractAll(
+    html,
+    /class="tgme_widget_message_photo_wrap[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/gi
+  );
+
+  const groupedWraps = extractAll(
+    html,
+    /class="tgme_widget_message_grouped_wrap[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/gi
+  );
+
+  const urls = [...photoWraps, ...groupedWraps]
+    .map((value) => normalizeAssetUrl(value))
+    .filter(Boolean) as string[];
+
+  return Array.from(new Set(urls));
+}
+
+function extractWidgetVideoUrl(html: string) {
+  const sourceUrl =
+    extract(html, /<source[^>]+src="([^"]+)"[^>]*>/i) ||
+    extract(html, /<video[^>]+src="([^"]+)"[^>]*>/i);
+
+  return normalizeAssetUrl(sourceUrl);
+}
+
+function extractVideoPoster(html: string) {
+  const stylePoster =
+    extract(
+      html,
+      /class="tgme_widget_message_video_thumb[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/i
+    ) ||
+    extract(
+      html,
+      /class="tgme_widget_message_video_player[^"]*"[^>]*style="[^"]*background-image:url\('([^']+)'\)/i
+    );
+
+  return normalizeAssetUrl(stylePoster);
+}
+
+function detectGif(html: string, videoUrl: string | null) {
+  if (!videoUrl) return false;
+
+  return (
+    /tgme_widget_message_animation/i.test(html) ||
+    /tgme_widget_message_gif/i.test(html) ||
+    /\.mp4(\?|$)/i.test(videoUrl)
+  );
 }
 
 export async function ingestTelegramPost(
@@ -244,66 +310,53 @@ export async function ingestTelegramPost(
     const parsed = parseTelegramPostUrl(url);
     if (!parsed) return null;
 
-    const html = await fetchTelegramPostHtml(parsed);
+    const html = await fetchTelegramEmbedHtml(parsed);
 
-    const rawTextHtml =
-      extract(
-        html,
-        /<div class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/i
-      ) || "";
+    const rawTextHtml = extractTextHtml(html);
+    const text = decodeHtml(rawTextHtml);
+    const links = extractLinks(rawTextHtml);
 
-    const title =
-      clean(extract(html, /<meta property="og:title" content="([^"]+)"/i)) ||
-      parsed.sourceHandle;
-
-    const ogImage = clean(
-      extract(html, /<meta property="og:image" content="([^"]+)"/i)
-    );
-
-    const avatar = clean(
-      extract(
-        html,
-        /<img[^>]+class="tgme_page_photo_image"[^>]+src="([^"]+)"/i
-      )
-    );
+    const sourceTitle = extractSourceTitle(html, parsed.sourceHandle);
+    const sourceAvatar = extractSourceAvatar(html);
 
     const verified =
       /tgme_icon_verified/i.test(html) ||
       /verified-icon/i.test(html) ||
-      /<span[^>]+class="tgme_page_verified_badge"/i.test(html);
+      /tgme_page_verified_badge/i.test(html);
 
-    const text = decodeHtml(rawTextHtml);
-    const links = extractLinks(rawTextHtml);
-
-    const widgetVideo = extractWidgetVideoUrl(html);
-    const widgetPhotos = extractWidgetPhotoUrls(html);
+    const videoUrl = extractWidgetVideoUrl(html);
+    const videoPoster = extractVideoPoster(html);
+    const photoUrls = extractWidgetPhotoUrls(html);
 
     let media: IngestedPost["media"] = [];
     let contentType: IngestedPost["contentType"] = "text";
 
-    if (widgetVideo) {
+    if (videoUrl) {
+      const isGif = detectGif(html, videoUrl);
+
       media = [
         {
-          id: "video-1",
+          id: isGif ? "gif-1" : "video-1",
           kind: "video",
-          url: toProxy(widgetVideo) || widgetVideo,
-          poster: toProxy(ogImage) || null,
+          url: toProxy(videoUrl) || videoUrl,
+          poster: toProxy(videoPoster) || null,
         },
       ];
-      contentType = "video";
-    } else if (widgetPhotos.length > 1) {
-      media = widgetPhotos.map((photo, index) => ({
+
+      contentType = isGif ? "gif" : "video";
+    } else if (photoUrls.length > 1) {
+      media = photoUrls.map((photo, index) => ({
         id: `image-${index + 1}`,
         kind: "image",
         url: toProxy(photo) || photo,
       }));
       contentType = "gallery";
-    } else if (widgetPhotos.length === 1) {
+    } else if (photoUrls.length === 1) {
       media = [
         {
           id: "image-1",
           kind: "image",
-          url: toProxy(widgetPhotos[0]) || widgetPhotos[0],
+          url: toProxy(photoUrls[0]) || photoUrls[0],
         },
       ];
       contentType = "image";
@@ -312,15 +365,15 @@ export async function ingestTelegramPost(
     return {
       source: {
         handle: parsed.sourceHandle,
-        title,
-        avatar: normalizeAssetUrl(avatar),
+        title: sourceTitle,
+        avatar: sourceAvatar,
         verified,
       },
       text,
       links,
       contentType,
       media,
-      hasMediaInOriginal: !!(widgetVideo || widgetPhotos.length > 0),
+      hasMediaInOriginal: !!(videoUrl || photoUrls.length > 0),
       fallbackReason: null,
     };
   } catch (error) {
