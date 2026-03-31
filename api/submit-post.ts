@@ -1,6 +1,11 @@
-import { savePost, getPostByUrl } from "./lib/kv.js";
+import { savePost, getPostByUrl, getFeedPosts } from "./lib/kv.js";
 import { parseTelegramPostUrl, ingestTelegramPost } from "../src/lib/telegram.js";
 import type { IngestedPost, ContentTag } from "../src/types/app";
+
+type UserRole = "user" | "channel_owner" | "admin";
+type PostStatus = "published" | "pending" | "blocked";
+
+const DAILY_USER_LIMIT = 1;
 
 function asCleanString(value: unknown): string | null {
   if (typeof value !== "string") return null;
@@ -20,6 +25,62 @@ function resolveTTL(plan: IngestedPost["billing"]["plan"]): number {
   return 24;
 }
 
+function resolveRole(value: unknown): UserRole {
+  if (value === "admin") return "admin";
+  if (value === "channel_owner") return "channel_owner";
+  return "user";
+}
+
+function getStartOfUtcDay() {
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+}
+
+async function getUserPostsToday(telegramId: string | null) {
+  if (!telegramId) return 0;
+
+  const posts = await getFeedPosts(200); // достаточно для MVP
+  const dayStart = getStartOfUtcDay().getTime();
+
+  return posts.filter((post) => {
+    if (post.addedBy?.telegramId !== telegramId) return false;
+
+    const createdAt = Date.parse(post.createdAt || "");
+    if (!Number.isFinite(createdAt)) return false;
+
+    return createdAt >= dayStart;
+  }).length;
+}
+
+function simpleModeration(text: string): PostStatus {
+  const t = text.toLowerCase();
+
+  if (
+    t.includes("cp") ||
+    t.includes("pedo") ||
+    t.includes("pedophile") ||
+    t.includes("child porn")
+  ) {
+    return "blocked";
+  }
+
+  if (
+    t.includes("porn") ||
+    t.includes("nsfw") ||
+    t.includes("sex") ||
+    t.includes("xxx") ||
+    t.includes("gore") ||
+    t.includes("suicide") ||
+    t.includes("drug") ||
+    t.includes("casino") ||
+    t.includes("scam")
+  ) {
+    return "pending";
+  }
+
+  return "published";
+}
+
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -30,8 +91,11 @@ export default async function handler(req: any, res: any) {
       typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
 
     const url = asCleanString(body.url);
-    const tag = body.tag as ContentTag;
     const plan = resolvePlan(body.plan);
+    const role = resolveRole(body.role);
+
+    const addedByTelegramId = asCleanString(body.addedByTelegramId);
+    const addedByUsername = asCleanString(body.addedByUsername);
 
     if (!url) {
       return res.status(400).json({ error: "Missing url" });
@@ -51,18 +115,51 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json({ post: existing, duplicated: true });
     }
 
-    // 🔥 ГЛАВНОЕ: ingest Telegram поста
+    if (!addedByTelegramId && role !== "admin") {
+      return res.status(401).json({ error: "Telegram auth required" });
+    }
+
+    // 🔥 лимит для обычного пользователя
+    if (role === "user") {
+      const count = await getUserPostsToday(addedByTelegramId);
+
+      if (count >= DAILY_USER_LIMIT) {
+        return res.status(429).json({
+          error: "Daily limit reached",
+        });
+      }
+
+      if (!body.tag) {
+        return res.status(400).json({
+          error: "Tag required for user",
+        });
+      }
+    }
+
     const ingest = await ingestTelegramPost(normalizedUrl);
 
     if (!ingest) {
       return res.status(500).json({ error: "Failed to ingest Telegram post" });
     }
 
+    // 🔥 простая модерация
+    const moderationText = `
+      ${normalizedUrl}
+      ${ingest.source.title}
+      ${ingest.source.handle}
+      ${ingest.text}
+    `;
+
+    const status = simpleModeration(moderationText);
+
     const ttlHours = resolveTTL(plan);
     const now = new Date();
     const expires = new Date(now.getTime() + ttlHours * 3600 * 1000);
 
-    const post: IngestedPost = {
+    const post: IngestedPost & {
+      status: PostStatus;
+      role?: UserRole;
+    } = {
       id: Date.now(),
 
       postUrl: normalizedUrl,
@@ -87,11 +184,11 @@ export default async function handler(req: any, res: any) {
       expiresAt: expires.toISOString(),
       ttlHours,
 
-      tag: tag || "other",
+      tag: body.tag || "other",
 
       addedBy: {
-        telegramId: asCleanString(body.addedByTelegramId),
-        username: asCleanString(body.addedByUsername),
+        telegramId: addedByTelegramId,
+        username: addedByUsername,
       },
 
       billing: {
@@ -99,11 +196,17 @@ export default async function handler(req: any, res: any) {
         autopublishEnabled:
           plan === "pro_3m" || plan === "pro_12m",
       },
+
+      status,
+      role,
     };
 
     const saved = await savePost(post);
 
-    return res.status(200).json({ post: saved });
+    return res.status(200).json({
+      post: saved,
+      status: saved.status,
+    });
   } catch (error) {
     console.error("submit-post api error", error);
     return res.status(500).json({ error: "Failed to submit post" });

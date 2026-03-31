@@ -21,6 +21,9 @@ export type FeedTag =
 
 export type ContentTag = Exclude<FeedTag, "all">;
 
+export type PostStatus = "published" | "pending" | "blocked";
+export type UserRole = "user" | "channel_owner" | "admin";
+
 export type IngestedPost = {
   id: number;
   postUrl: string;
@@ -80,5 +83,14 @@ export type IngestedPost = {
   billing: {
     plan: "free" | "pro_1m" | "pro_3m" | "pro_12m";
     autopublishEnabled: boolean;
+  };
+
+  status?: PostStatus;
+  role?: UserRole;
+
+  moderation?: {
+    status: PostStatus;
+    reason: string | null;
+    reviewedAt: string | null;
   };
 };

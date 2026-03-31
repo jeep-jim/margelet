@@ -37,6 +37,27 @@ function toProxy(url?: string | null) {
   return `/api/media-proxy?url=${encodeURIComponent(normalized)}`;
 }
 
+function pickPrimaryUrl(url?: string | null) {
+  return normalizeAssetUrl(url);
+}
+
+function buildHybridMediaUrl(url?: string | null) {
+  const directUrl = pickPrimaryUrl(url);
+  if (!directUrl) {
+    return {
+      directUrl: null,
+      proxyUrl: null,
+      preferredUrl: null,
+    };
+  }
+
+  return {
+    directUrl,
+    proxyUrl: toProxy(directUrl),
+    preferredUrl: directUrl,
+  };
+}
+
 function decodeHtml(input: string) {
   return input
     .replace(/<br\s*\/?>/gi, "\n")
@@ -298,10 +319,10 @@ function buildOrderedMedia(html: string) {
   );
 
   photoMatches.forEach((match) => {
-    const url = normalizeAssetUrl(match[1]);
-    if (!url) return;
+    const hybrid = buildHybridMediaUrl(match[1]);
+    if (!hybrid.preferredUrl) return;
 
-    const key = `image:${url}`;
+    const key = `image:${hybrid.preferredUrl}`;
     if (seen.has(key)) return;
     seen.add(key);
 
@@ -310,7 +331,7 @@ function buildOrderedMedia(html: string) {
       item: {
         id: `image-${ordered.length + 1}`,
         kind: "image",
-        url: toProxy(url) || url,
+        url: hybrid.preferredUrl,
       },
     });
   });
@@ -321,17 +342,17 @@ function buildOrderedMedia(html: string) {
   );
 
   videoMatches.forEach((match) => {
-    const rawUrl = normalizeAssetUrl(match[1]);
-    if (!rawUrl) return;
+    const videoHybrid = buildHybridMediaUrl(match[1]);
+    if (!videoHybrid.preferredUrl) return;
 
     const chunk = html.slice(
       Math.max(0, (match.index || 0) - 300),
       (match.index || 0) + 900
     );
-    const poster =
-      normalizeAssetUrl(
-        extract(chunk, /background-image:url\('([^']+)'\)/i)
-      ) || null;
+
+    const posterHybrid = buildHybridMediaUrl(
+      extract(chunk, /background-image:url\('([^']+)'\)/i) || null
+    );
 
     const duration = parseDurationText(
       decodeHtml(
@@ -342,8 +363,8 @@ function buildOrderedMedia(html: string) {
       )
     );
 
-    const isGif = detectGifFromChunk(chunk, rawUrl);
-    const key = `${isGif ? "gif" : "video"}:${rawUrl}`;
+    const isGif = detectGifFromChunk(chunk, videoHybrid.preferredUrl);
+    const key = `${isGif ? "gif" : "video"}:${videoHybrid.preferredUrl}`;
     if (seen.has(key)) return;
     seen.add(key);
 
@@ -352,8 +373,8 @@ function buildOrderedMedia(html: string) {
       item: {
         id: `${isGif ? "gif" : "video"}-${ordered.length + 1}`,
         kind: "video",
-        url: toProxy(rawUrl) || rawUrl,
-        poster: poster ? toProxy(poster) || poster : null,
+        url: videoHybrid.preferredUrl,
+        poster: posterHybrid.preferredUrl,
         duration,
         mimeType: isGif ? "image/gif" : "video/mp4",
       },
@@ -366,12 +387,12 @@ function buildOrderedMedia(html: string) {
   );
 
   audioMatches.forEach((match) => {
-    const raw = normalizeAssetUrl(
+    const hybrid = buildHybridMediaUrl(
       match[1] || match[2] || match[3] || match[4] || ""
     );
-    if (!raw || !looksLikeAudioUrl(raw)) return;
+    if (!hybrid.preferredUrl || !looksLikeAudioUrl(hybrid.preferredUrl)) return;
 
-    const key = `audio:${raw}`;
+    const key = `audio:${hybrid.preferredUrl}`;
     if (seen.has(key)) return;
     seen.add(key);
 
@@ -380,7 +401,7 @@ function buildOrderedMedia(html: string) {
       item: {
         id: `audio-${ordered.length + 1}`,
         kind: "audio",
-        url: toProxy(raw) || raw,
+        url: hybrid.preferredUrl,
         mimeType: "audio/mpeg",
       },
     });
@@ -392,8 +413,8 @@ function buildOrderedMedia(html: string) {
   );
 
   docMatches.forEach((match) => {
-    const raw = normalizeAssetUrl(match[1]);
-    if (!raw) return;
+    const hybrid = buildHybridMediaUrl(match[1]);
+    if (!hybrid.preferredUrl) return;
 
     const chunk = html.slice(
       Math.max(0, (match.index || 0) - 200),
@@ -407,8 +428,8 @@ function buildOrderedMedia(html: string) {
         ) || ""
       ) || null;
 
-    if (looksLikeAudioUrl(raw) || looksLikeAudioUrl(fileName)) {
-      const key = `audio:${raw}`;
+    if (looksLikeAudioUrl(hybrid.preferredUrl) || looksLikeAudioUrl(fileName)) {
+      const key = `audio:${hybrid.preferredUrl}`;
       if (seen.has(key)) return;
       seen.add(key);
 
@@ -417,7 +438,7 @@ function buildOrderedMedia(html: string) {
         item: {
           id: `audio-${ordered.length + 1}`,
           kind: "audio",
-          url: toProxy(raw) || raw,
+          url: hybrid.preferredUrl,
           mimeType: "audio/mpeg",
           fileName,
         },
@@ -425,7 +446,7 @@ function buildOrderedMedia(html: string) {
       return;
     }
 
-    const key = `file:${raw}`;
+    const key = `file:${hybrid.preferredUrl}`;
     if (seen.has(key)) return;
     seen.add(key);
 
@@ -434,7 +455,7 @@ function buildOrderedMedia(html: string) {
       item: {
         id: `file-${ordered.length + 1}`,
         kind: "file",
-        url: toProxy(raw) || raw,
+        url: hybrid.preferredUrl,
         fileName,
       },
     });

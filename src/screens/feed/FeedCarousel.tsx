@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type CarouselItem = {
   id: string;
@@ -12,6 +12,99 @@ type CarouselItem = {
   height?: number | null;
   duration?: number | null;
 };
+
+function toProxy(url: string) {
+  return `/api/media-proxy?url=${encodeURIComponent(url)}`;
+}
+
+type HybridMediaProps = {
+  item: CarouselItem;
+  fit: "cover" | "contain";
+  muted: boolean;
+  videoRef?: React.RefObject<HTMLVideoElement | null>;
+};
+
+function HybridMedia({
+  item,
+  fit,
+  muted,
+  videoRef,
+}: HybridMediaProps) {
+  const [src, setSrc] = useState(item.url);
+  const [posterSrc, setPosterSrc] = useState(item.poster ?? null);
+  const [didFallback, setDidFallback] = useState(false);
+
+  useEffect(() => {
+    setSrc(item.url);
+    setPosterSrc(item.poster ?? null);
+    setDidFallback(false);
+  }, [item.id, item.url, item.poster]);
+
+  const handleSrcError = () => {
+    if (didFallback) return;
+    setDidFallback(true);
+    setSrc(toProxy(item.url));
+  };
+
+  if (item.kind === "video") {
+    return (
+      <video
+        ref={videoRef}
+        src={src}
+        onError={handleSrcError}
+        poster={posterSrc || undefined}
+        className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
+        playsInline
+        preload="metadata"
+        muted={muted}
+        controls={false}
+      />
+    );
+  }
+
+  if (item.kind === "image") {
+    return (
+      <img
+        src={src}
+        onError={handleSrcError}
+        alt=""
+        className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
+        referrerPolicy="no-referrer"
+      />
+    );
+  }
+
+  if (item.kind === "audio") {
+    return (
+      <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
+        <audio
+          src={src}
+          onError={handleSrcError}
+          controls
+          className="w-full max-w-[420px]"
+          preload="metadata"
+        />
+      </div>
+    );
+  }
+
+  if (item.kind === "file") {
+    return (
+      <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
+        <a
+          href={src}
+          target="_blank"
+          rel="noreferrer"
+          className="rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
+        >
+          {item.fileName || "Открыть файл"}
+        </a>
+      </div>
+    );
+  }
+
+  return null;
+}
 
 export function MediaDots({
   total,
@@ -111,61 +204,6 @@ export function FeedCarousel({
     setFullscreenIndex(activeIndex);
   }, [activeIndex, fullscreenOpen]);
 
-  const renderItem = useMemo(() => {
-    if (!current) return null;
-
-    if (current.kind === "video") {
-      return (
-        <video
-          ref={videoRef}
-          src={current.url}
-          poster={current.poster || undefined}
-          className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
-          playsInline
-          preload="metadata"
-          muted={muted}
-          controls={false}
-        />
-      );
-    }
-
-    if (current.kind === "image") {
-      return (
-        <img
-          src={current.url}
-          alt=""
-          className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
-          referrerPolicy="no-referrer"
-        />
-      );
-    }
-
-    if (current.kind === "audio") {
-      return (
-        <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
-          <audio src={current.url} controls className="w-full max-w-[420px]" preload="metadata" />
-        </div>
-      );
-    }
-
-    if (current.kind === "file") {
-      return (
-        <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
-          <a
-            href={current.url}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
-          >
-            {current.fileName || "Открыть файл"}
-          </a>
-        </div>
-      );
-    }
-
-    return null;
-  }, [current, fit, muted, videoRef]);
-
   const fullscreenItem =
     items[Math.min(fullscreenIndex, Math.max(items.length - 1, 0))] || null;
 
@@ -201,7 +239,14 @@ export function FeedCarousel({
             setFullscreenOpen(true);
           }}
         >
-          {renderItem}
+          {current ? (
+            <HybridMedia
+              item={current}
+              fit={fit}
+              muted={muted}
+              videoRef={videoRef}
+            />
+          ) : null}
         </div>
 
         {canPrev ? (
@@ -288,25 +333,11 @@ export function FeedCarousel({
           ) : null}
 
           <div className="flex h-full w-full items-center justify-center p-4">
-            {fullscreenItem.kind === "image" ? (
-              <img
-                src={fullscreenItem.url}
-                alt=""
-                className="max-h-full max-w-full object-contain"
-                referrerPolicy="no-referrer"
-              />
-            ) : fullscreenItem.kind === "video" ? (
-              <video
-                src={fullscreenItem.url}
-                poster={fullscreenItem.poster || undefined}
-                className="max-h-full max-w-full object-contain"
-                autoPlay
-                loop
-                muted={muted}
-                playsInline
-                controls
-              />
-            ) : null}
+            <HybridMedia
+              item={fullscreenItem}
+              fit="contain"
+              muted={muted}
+            />
           </div>
         </div>
       ) : null}
