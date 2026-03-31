@@ -1,14 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
-  Bookmark,
+  Bell,
   ExternalLink,
   FileText,
   Heart,
   ImageIcon,
   Send,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { IngestedPost } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
@@ -54,7 +54,7 @@ function RichTextBlock({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <div className="space-y-4 text-[16px] leading-6 text-neutral-900">
+    <div className="space-y-4 text-[16px] leading-7 text-neutral-900">
       {paragraphs.map((paragraph, index) => {
         const lines = paragraph.split("\n");
 
@@ -147,8 +147,8 @@ function MediaNotice({
   icon,
   children,
 }: {
-  icon: React.ReactNode;
-  children: React.ReactNode;
+  icon: ReactNode;
+  children: ReactNode;
 }) {
   return (
     <div className="mb-4 inline-flex max-w-full items-start gap-2 rounded-2xl bg-neutral-100 px-3 py-2 text-sm text-neutral-600">
@@ -160,22 +160,24 @@ function MediaNotice({
 
 function ReaderMediaBlock({ post }: { post: IngestedPost }) {
   const imageItems = post.media.filter((item) => item.kind === "image");
-  const videoItem = post.media.find((item) => item.kind === "video");
   const audioItem = post.media.find((item) => item.kind === "audio");
   const fileItem = post.media.find((item) => item.kind === "file");
+  const videoItem = post.media.find((item) => item.kind === "video");
 
   if (imageItems.length > 0) {
     return <ReaderImageCarousel items={imageItems} alt={post.source.title} />;
   }
 
-  if (videoItem) {
+  if (post.contentType === "gif" && videoItem) {
     return (
       <div className="mb-4 overflow-hidden rounded-3xl bg-black">
         <video
           src={videoItem.url}
           poster={videoItem.poster || undefined}
           className="h-auto w-full"
-          controls
+          autoPlay
+          loop
+          muted
           playsInline
           preload="metadata"
         />
@@ -238,10 +240,9 @@ export function FeedTextReaderModal({
   post,
   locale: _locale,
   liked,
-  saved,
   onClose,
   onToggleLike,
-  onToggleSave,
+  onToggleSave: _onToggleSave,
   onShare,
 }: {
   post: IngestedPost | null;
@@ -259,17 +260,19 @@ export function FeedTextReaderModal({
     <AnimatePresence>
       {post ? (
         <motion.div
-          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 bg-black/45 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={onClose}
         >
           <motion.div
-            className="absolute inset-x-0 bottom-0 mx-auto max-h-[92vh] w-full max-w-[720px] overflow-hidden rounded-t-[32px] bg-white"
+            className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[720px] flex-col overflow-hidden rounded-t-[32px] bg-white"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 260, damping: 28 }}
+            onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3">
               <button
@@ -284,10 +287,15 @@ export function FeedTextReaderModal({
                 Пост из Telegram
               </div>
 
-              <div className="w-10" />
+              <button
+                type="button"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
+              >
+                <Bell className="h-5 w-5" />
+              </button>
             </div>
 
-            <div className="max-h-[calc(92vh-68px)] overflow-y-auto px-4 pb-8 pt-4">
+            <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
               <div className="mb-4 flex items-center gap-3">
                 <FeedSourceAvatar post={post} size="md" />
 
@@ -310,27 +318,36 @@ export function FeedTextReaderModal({
               <ReaderMediaBlock post={post} />
 
               {text ? <RichTextBlock text={text} /> : null}
+            </div>
 
-              <div className="mt-6 flex items-center gap-8 text-neutral-700">
-                <button type="button" onClick={() => onToggleLike(post.id)}>
-                  <Heart
-                    className={`h-5 w-5 ${liked ? "fill-current text-neutral-950" : ""}`}
-                  />
-                </button>
+            <div className="sticky bottom-0 border-t border-neutral-200 bg-white px-4 py-3">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-8 text-neutral-700">
+                  <button type="button" onClick={() => onToggleLike(post.id)}>
+                    <Heart
+                      className={`h-5 w-5 ${liked ? "fill-current text-neutral-950" : ""}`}
+                    />
+                  </button>
 
-                <button type="button" onClick={() => onToggleSave(post.id)}>
-                  <Bookmark
-                    className={`h-5 w-5 ${saved ? "fill-current text-neutral-950" : ""}`}
-                  />
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      void onShare(post);
+                    }}
+                  >
+                    <Send className="h-5 w-5" />
+                  </button>
+                </div>
 
                 <button
                   type="button"
                   onClick={() => {
-                    void onShare(post);
+                    window.open(post.postUrl, "_blank", "noopener,noreferrer");
                   }}
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-medium text-white"
                 >
-                  <Send className="h-5 w-5" />
+                  <span>Открыть в Telegram</span>
+                  <ExternalLink className="h-4 w-4" />
                 </button>
               </div>
             </div>

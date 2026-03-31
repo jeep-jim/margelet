@@ -1,5 +1,4 @@
 import {
-  Bookmark,
   ExternalLink,
   Heart,
   ImageIcon,
@@ -39,7 +38,6 @@ export function FeedTextCard({
 }) {
   const displayText = (post.text || "").trim();
   const mediaBadge = getMediaBadge(post);
-  const isPureText = post.contentType === "text";
 
   return (
     <div className="px-4 pb-4 pt-3">
@@ -58,7 +56,7 @@ export function FeedTextCard({
         </div>
       </div>
 
-      <div className="text-[15px] leading-5 text-neutral-900">
+      <div className="text-[15px] leading-6 text-neutral-900">
         <div className="line-clamp-5 whitespace-pre-wrap break-words">
           {displayText}
         </div>
@@ -67,10 +65,6 @@ export function FeedTextCard({
           <div className="flex items-center gap-8 text-neutral-700">
             <button type="button">
               <Heart className="h-5 w-5" />
-            </button>
-
-            <button type="button">
-              <Bookmark className="h-5 w-5" />
             </button>
 
             <button type="button">
@@ -83,7 +77,7 @@ export function FeedTextCard({
             onClick={onOpen}
             className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
           >
-            <span>{isPureText ? "Читать" : "Открыть"}</span>
+            <span>Читать</span>
             <ExternalLink className="h-4 w-4" />
           </button>
         </div>

@@ -1,4 +1,4 @@
-import { Bookmark, ExternalLink, Heart, MoreVertical, Send } from "lucide-react";
+import { ExternalLink, Heart, MoreVertical, Send } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FeedCardProps } from "./feed.types";
 import { FeedMoreMenu } from "./FeedMoreMenu";
@@ -22,9 +22,7 @@ export function FeedCard(props: FeedCardProps) {
   } = props;
 
   const displayText = getDisplayText(post);
-
   const media = normalizeMediaList(post);
-
   const hasMedia = media.length > 0;
 
   const cardRef = useRef<HTMLElement | null>(null);
@@ -36,9 +34,7 @@ export function FeedCard(props: FeedCardProps) {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsCardVisible(
-          entry.isIntersecting && entry.intersectionRatio >= 0.6
-        );
+        setIsCardVisible(entry.isIntersecting && entry.intersectionRatio >= 0.6);
       },
       { threshold: [0, 0.6, 1] }
     );
@@ -76,27 +72,46 @@ export function FeedCard(props: FeedCardProps) {
       </div>
 
       {hasMedia ? (
-        <FeedMediaCard
-          {...props}
-          displayText={displayText}
-          isCardVisible={isCardVisible}
-        />
-      ) : (
-        <FeedTextCard post={post} onOpen={onOpen} />
-      )}
+        <>
+          <FeedMediaCard
+            {...props}
+            displayText={displayText}
+            isCardVisible={isCardVisible}
+          />
 
-      {displayText ? (
-        <div className="px-4 py-3">
-          <ExpandableFeedText text={displayText}>
-            {({ expanded, expand }) => (
-              <div className="mt-4 flex items-center justify-between gap-3">
+          {displayText ? (
+            <div className="px-4 py-3">
+              <ExpandableFeedText text={displayText}>
+                {({ expand }) => (
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-8 text-neutral-700">
+                      <button type="button">
+                        <Heart className="h-5 w-5" />
+                      </button>
+
+                      <button type="button">
+                        <Send className="h-5 w-5" />
+                      </button>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={expand}
+                      className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
+                    >
+                      <span>Ещё</span>
+                      <ExternalLink className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
+              </ExpandableFeedText>
+            </div>
+          ) : (
+            <div className="px-4 py-3">
+              <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-8 text-neutral-700">
                   <button type="button">
                     <Heart className="h-5 w-5" />
-                  </button>
-
-                  <button type="button">
-                    <Bookmark className="h-5 w-5" />
                   </button>
 
                   <button type="button">
@@ -106,17 +121,19 @@ export function FeedCard(props: FeedCardProps) {
 
                 <button
                   type="button"
-                  onClick={expanded ? onOpen : expand}
+                  onClick={onOpen}
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                 >
-                  <span>{expanded ? "Читать" : "Ещё"}</span>
+                  <span>Открыть</span>
                   <ExternalLink className="h-4 w-4" />
                 </button>
               </div>
-            )}
-          </ExpandableFeedText>
-        </div>
-      ) : null}
+            </div>
+          )}
+        </>
+      ) : (
+        <FeedTextCard post={post} onOpen={onOpen} />
+      )}
     </article>
   );
 }

@@ -266,6 +266,38 @@ function extractWidgetVideoUrl(html: string) {
   return normalizeAssetUrl(sourceUrl);
 }
 
+function extractWidgetAudioUrl(html: string) {
+  const directAudio =
+    extract(html, /<audio[^>]+src="([^"]+)"[^>]*>/i) ||
+    extract(html, /<source[^>]+type="audio\/[^"]*"[^>]+src="([^"]+)"[^>]*>/i);
+
+  return normalizeAssetUrl(directAudio);
+}
+
+function extractWidgetFileUrl(html: string) {
+  const docHref =
+    extract(
+      html,
+      /class="tgme_widget_message_document_wrap[^"]*"[^>]+href="([^"]+)"/i
+    ) ||
+    extract(
+      html,
+      /class="tgme_widget_message_document[^"]*"[\s\S]*?<a[^>]+href="([^"]+)"/i
+    );
+
+  return normalizeAssetUrl(docHref);
+}
+
+function extractWidgetFileName(html: string) {
+  const name =
+    extract(
+      html,
+      /class="tgme_widget_message_document_name[^"]*"[^>]*>([\s\S]*?)<\/div>/i
+    ) || "";
+
+  return decodeHtml(name) || null;
+}
+
 function extractVideoPoster(html: string) {
   const stylePoster =
     extract(
@@ -285,8 +317,7 @@ function detectGif(html: string, videoUrl: string | null) {
 
   return (
     /tgme_widget_message_animation/i.test(html) ||
-    /tgme_widget_message_gif/i.test(html) ||
-    /\.mp4(\?|$)/i.test(videoUrl)
+    /tgme_widget_message_gif/i.test(html)
   );
 }
 
@@ -325,6 +356,9 @@ export async function ingestTelegramPost(
       /tgme_page_verified_badge/i.test(html);
 
     const videoUrl = extractWidgetVideoUrl(html);
+    const audioUrl = extractWidgetAudioUrl(html);
+    const fileUrl = extractWidgetFileUrl(html);
+    const fileName = extractWidgetFileName(html);
     const videoPoster = extractVideoPoster(html);
     const photoUrls = extractWidgetPhotoUrls(html);
 
@@ -344,6 +378,15 @@ export async function ingestTelegramPost(
       ];
 
       contentType = isGif ? "gif" : "video";
+    } else if (audioUrl) {
+      media = [
+        {
+          id: "audio-1",
+          kind: "audio",
+          url: toProxy(audioUrl) || audioUrl,
+        },
+      ];
+      contentType = "audio";
     } else if (photoUrls.length > 1) {
       media = photoUrls.map((photo, index) => ({
         id: `image-${index + 1}`,
@@ -360,6 +403,16 @@ export async function ingestTelegramPost(
         },
       ];
       contentType = "image";
+    } else if (fileUrl) {
+      media = [
+        {
+          id: "file-1",
+          kind: "file",
+          url: toProxy(fileUrl) || fileUrl,
+          fileName,
+        },
+      ];
+      contentType = "file";
     }
 
     return {
@@ -373,7 +426,12 @@ export async function ingestTelegramPost(
       links,
       contentType,
       media,
-      hasMediaInOriginal: !!(videoUrl || photoUrls.length > 0),
+      hasMediaInOriginal: !!(
+        videoUrl ||
+        audioUrl ||
+        fileUrl ||
+        photoUrls.length > 0
+      ),
       fallbackReason: null,
     };
   } catch (error) {
