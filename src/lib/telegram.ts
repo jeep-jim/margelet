@@ -65,8 +65,6 @@ export function parseTelegramPostUrl(
   }
 }
 
-// 🔥 ОСНОВА INGEST
-
 export async function ingestTelegramPost(
   url: string
 ): Promise<{
@@ -84,8 +82,11 @@ export async function ingestTelegramPost(
   fallbackReason: IngestedPost["fallbackReason"];
 } | null> {
   try {
+    const parsed = parseTelegramPostUrl(url);
+    if (!parsed) return null;
+
     const res = await fetch(
-      `/api/telegram-preview?url=${encodeURIComponent(url)}`
+      `/api/telegram-preview?url=${encodeURIComponent(parsed.normalizedUrl)}`
     );
 
     if (!res.ok) return null;
@@ -96,21 +97,29 @@ export async function ingestTelegramPost(
       typeof data?.caption === "string" ? data.caption.trim() : "";
 
     const image =
-      typeof data?.image === "string" ? data.image.trim() : null;
+      typeof data?.image === "string" && data.image.trim()
+        ? data.image.trim()
+        : null;
 
     const video =
-      typeof data?.video === "string" ? data.video.trim() : null;
+      typeof data?.video === "string" && data.video.trim()
+        ? data.video.trim()
+        : null;
 
     const poster =
-      typeof data?.poster === "string" ? data.poster.trim() : null;
+      typeof data?.poster === "string" && data.poster.trim()
+        ? data.poster.trim()
+        : null;
 
     const avatar =
-      typeof data?.avatar === "string" ? data.avatar.trim() : null;
+      typeof data?.avatar === "string" && data.avatar.trim()
+        ? data.avatar.trim()
+        : null;
 
     const title =
       typeof data?.title === "string" && data.title.trim()
         ? data.title.trim()
-        : data?.sourceHandle || "Telegram";
+        : parsed.sourceHandle;
 
     let media: IngestedPost["media"] = [];
     let contentType: IngestedPost["contentType"] = "text";
@@ -138,7 +147,7 @@ export async function ingestTelegramPost(
 
     return {
       source: {
-        handle: data?.handle || "",
+        handle: parsed.sourceHandle,
         title,
         avatar,
         verified: !!data?.verified,
