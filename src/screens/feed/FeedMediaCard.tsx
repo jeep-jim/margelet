@@ -4,6 +4,10 @@ import type { FeedMediaCardProps } from "./feed.types";
 import { FeedCarousel } from "./FeedCarousel";
 import { normalizeMediaList } from "./feed.utils";
 
+const FEED_MUTE_KEY = "margelet_feed_muted";
+const FEED_MUTE_EVENT = "margelet:feed-mute-change";
+const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+
 function formatDuration(seconds?: number | null) {
   if (!seconds || !Number.isFinite(seconds)) return null;
 
@@ -12,6 +16,28 @@ function formatDuration(seconds?: number | null) {
   const secs = total % 60;
 
   return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
+
+function readGlobalMuted() {
+  try {
+    return localStorage.getItem(FEED_MUTE_KEY) !== "0";
+  } catch {
+    return true;
+  }
+}
+
+function writeGlobalMuted(value: boolean) {
+  try {
+    localStorage.setItem(FEED_MUTE_KEY, value ? "1" : "0");
+  } catch {
+    //
+  }
+
+  window.dispatchEvent(
+    new CustomEvent(FEED_MUTE_EVENT, {
+      detail: { muted: value },
+    })
+  );
 }
 
 export function FeedMediaCard({
@@ -23,10 +49,42 @@ export function FeedMediaCard({
 }: FeedMediaCardProps) {
   const media = normalizeMediaList(post);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [muted, setMuted] = useState(true);
+  const [muted, setMuted] = useState(readGlobalMuted());
+  const [forcedPaused, setForcedPaused] = useState(false);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
+
+  useEffect(() => {
+    const syncMuted = (event: Event) => {
+      const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
+      setMuted(typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted());
+    };
+
+    const pauseAll = () => {
+      setForcedPaused(true);
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    };
+
+    window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+    window.addEventListener(FEED_PAUSE_EVENT, pauseAll);
+
+    return () => {
+      window.removeEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+      window.removeEventListener(FEED_PAUSE_EVENT, pauseAll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!forcedPaused) return;
+    if (!isCardVisible) return;
+    if (activeItem?.kind !== "video") return;
+
+    setForcedPaused(false);
+  }, [forcedPaused, isCardVisible, activeItem?.kind, mediaIndex]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -40,8 +98,7 @@ export function FeedMediaCard({
 
     if (activeItem?.kind !== "video") return;
 
-    if (isCardVisible) {
-      node.currentTime = node.currentTime || 0;
+    if (isCardVisible && !forcedPaused) {
       const playPromise = node.play();
       if (playPromise && typeof playPromise.catch === "function") {
         playPromise.catch(() => {});
@@ -49,14 +106,10 @@ export function FeedMediaCard({
     } else {
       node.pause();
     }
-  }, [isCardVisible, activeItem?.kind, mediaIndex, post.id]);
+  }, [isCardVisible, forcedPaused, activeItem?.kind, mediaIndex, post.id]);
 
   const handleOpen = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
     onOpen();
   };
 
@@ -64,12 +117,11 @@ export function FeedMediaCard({
     <div className="relative">
       <FeedCarousel
         items={media}
-        displayText={post.text}
         aspectClass="aspect-[4/5]"
         activeIndex={mediaIndex}
         onChange={onChangeMediaIndex}
         controlsTone="light"
-        mediaActive={isCardVisible}
+        mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
       />
@@ -86,7 +138,9 @@ export function FeedMediaCard({
             type="button"
             onClick={(event) => {
               event.stopPropagation();
-              setMuted((prev) => !prev);
+              const next = !muted;
+              setMuted(next);
+              writeGlobalMuted(next);
             }}
             className="absolute bottom-3 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm"
             aria-label={muted ? "Включить звук" : "Выключить звук"}

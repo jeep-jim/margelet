@@ -132,7 +132,7 @@ export function FeedScreen({
         (preferredTags.includes(bTag) ? 4 : 0) +
         b.media.length;
 
-        return bScore - aScore;
+      return bScore - aScore;
     });
 
     return list;
@@ -164,7 +164,6 @@ export function FeedScreen({
       setViewerIndex(nextIndex);
       setViewerMediaIndex(0);
       setExpandedCaption(false);
-      setIsMuted(false);
       setIsPlaying(true);
       setCopySuccessId(null);
       setMenuPostId(null);
@@ -187,7 +186,6 @@ export function FeedScreen({
     setViewerIndex(null);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
-    setIsMuted(false);
     setIsPlaying(true);
     setCopySuccessId(null);
     setMenuPostId(null);
@@ -201,7 +199,6 @@ export function FeedScreen({
     setViewerIndex((viewerIndex + 1) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
-    setIsMuted(false);
     setIsPlaying(true);
     setCopySuccessId(null);
     setMenuPostId(null);
@@ -215,7 +212,6 @@ export function FeedScreen({
     setViewerIndex((viewerIndex - 1 + viewerPosts.length) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
-    setIsMuted(false);
     setIsPlaying(true);
     setCopySuccessId(null);
     setMenuPostId(null);

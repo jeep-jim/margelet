@@ -1,87 +1,17 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useCallback, useEffect, useRef, type MutableRefObject } from "react";
-import { HORIZONTAL_SWIPE_DISTANCE } from "./feed.constants";
+import { useEffect, useMemo, useRef } from "react";
 
 type CarouselItem = {
   id: string;
   kind: "image" | "video" | "audio" | "file";
   url: string;
   poster?: string | null;
+  mimeType?: string | null;
+  fileName?: string | null;
+  width?: number | null;
+  height?: number | null;
+  duration?: number | null;
 };
-
-function isVideoItem(item: CarouselItem) {
-  return item.kind === "video";
-}
-
-export function FeedMediaSlide({
-  item,
-  displayText,
-  className = "",
-  active = true,
-  muted = true,
-  videoRef,
-}: {
-  item: CarouselItem;
-  displayText: string;
-  className?: string;
-  active?: boolean;
-  muted?: boolean;
-  videoRef?: MutableRefObject<HTMLVideoElement | null>;
-}) {
-  const localVideoRef = useRef<HTMLVideoElement | null>(null);
-
-  const attachVideoRef = useCallback(
-    (node: HTMLVideoElement | null) => {
-      localVideoRef.current = node;
-      if (videoRef) {
-        videoRef.current = node;
-      }
-    },
-    [videoRef]
-  );
-
-  useEffect(() => {
-    if (!isVideoItem(item)) return;
-
-    const node = localVideoRef.current;
-    if (!node) return;
-
-    node.muted = muted;
-
-    if (active) {
-      const playPromise = node.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {});
-      }
-    } else {
-      node.pause();
-    }
-  }, [active, muted, item]);
-
-  if (isVideoItem(item)) {
-    return (
-      <video
-        ref={attachVideoRef}
-        src={item.url}
-        poster={item.poster || undefined}
-        className={className || "absolute inset-0 h-full w-full object-cover"}
-        muted={muted}
-        loop
-        playsInline
-        preload="metadata"
-      />
-    );
-  }
-
-  return (
-    <img
-      src={item.url}
-      alt={displayText}
-      className={className || "absolute inset-0 h-full w-full object-cover"}
-      referrerPolicy="no-referrer"
-    />
-  );
-}
 
 export function MediaDots({
   total,
@@ -91,13 +21,13 @@ export function MediaDots({
 }: {
   total: number;
   activeIndex: number;
-  onSelect?: (index: number) => void;
+  onSelect: (index: number) => void;
   light?: boolean;
 }) {
   if (total <= 1) return null;
 
   return (
-    <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5">
+    <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5">
       {Array.from({ length: total }).map((_, index) => {
         const active = index === activeIndex;
 
@@ -107,18 +37,18 @@ export function MediaDots({
             type="button"
             onClick={(event) => {
               event.stopPropagation();
-              onSelect?.(index);
+              onSelect(index);
             }}
-            className={`h-2.5 rounded-full transition-all ${
+            className={`pointer-events-auto h-2.5 rounded-full transition ${
               active
                 ? light
                   ? "w-5 bg-white"
-                  : "w-5 bg-neutral-950"
+                  : "w-5 bg-neutral-900"
                 : light
-                  ? "w-2.5 bg-white/45"
-                  : "w-2.5 bg-neutral-950/35"
+                  ? "w-2.5 bg-white/55"
+                  : "w-2.5 bg-neutral-900/35"
             }`}
-            aria-label={`Переключить медиа ${index + 1}`}
+            aria-label={`media ${index + 1}`}
           />
         );
       })}
@@ -128,41 +58,106 @@ export function MediaDots({
 
 export function FeedCarousel({
   items,
-  displayText,
   aspectClass,
-  activeIndex,
+  activeIndex = 0,
   onChange,
   controlsTone = "light",
-  mediaActive = true,
+  mediaActive = false,
   muted = true,
   videoRef,
 }: {
   items: CarouselItem[];
-  displayText: string;
+  displayText?: string;
   aspectClass: string;
-  activeIndex: number;
-  onChange: (next: number) => void;
+  activeIndex?: number;
+  onChange?: (index: number) => void;
   controlsTone?: "light" | "dark";
   mediaActive?: boolean;
   muted?: boolean;
-  videoRef?: MutableRefObject<HTMLVideoElement | null>;
+  videoRef?: React.RefObject<HTMLVideoElement | null>;
 }) {
   const touchStartXRef = useRef<number | null>(null);
+  const current =
+    items[Math.min(activeIndex, Math.max(items.length - 1, 0))] || null;
 
-  if (!items.length) {
-    return (
-      <div className={`relative ${aspectClass} w-full overflow-hidden bg-neutral-200`} />
-    );
-  }
+  const canPrev = activeIndex > 0;
+  const canNext = activeIndex < items.length - 1;
 
-  const safeIndex = Math.min(Math.max(activeIndex, 0), items.length - 1);
-  const canPrev = safeIndex > 0;
-  const canNext = safeIndex < items.length - 1;
-  const current = items[safeIndex];
+  useEffect(() => {
+    const node = videoRef?.current;
+    if (!node || current?.kind !== "video") return;
+
+    node.muted = muted;
+
+    if (mediaActive) {
+      node.currentTime = 0;
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+    } else {
+      node.pause();
+    }
+  }, [current?.id, current?.kind, mediaActive, muted, videoRef]);
+
+  const mediaNode = useMemo(() => {
+    if (!current) return null;
+
+    if (current.kind === "video") {
+      return (
+        <video
+          ref={videoRef}
+          src={current.url}
+          poster={current.poster || undefined}
+          className="h-full w-full object-contain"
+          playsInline
+          preload="metadata"
+          muted={muted}
+          controls={false}
+        />
+      );
+    }
+
+    if (current.kind === "image") {
+      return (
+        <img
+          src={current.url}
+          alt=""
+          className="h-full w-full object-contain"
+          referrerPolicy="no-referrer"
+        />
+      );
+    }
+
+    if (current.kind === "audio") {
+      return (
+        <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
+          <audio src={current.url} controls className="w-full max-w-[420px]" preload="metadata" />
+        </div>
+      );
+    }
+
+    if (current.kind === "file") {
+      return (
+        <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
+          <a
+            href={current.url}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
+          >
+            {current.fileName || "Открыть файл"}
+          </a>
+        </div>
+      );
+    }
+
+    return null;
+  }, [current, muted, videoRef]);
 
   return (
     <div
-      className={`relative ${aspectClass} w-full overflow-hidden bg-neutral-200`}
+      className={`relative w-full overflow-hidden bg-black ${aspectClass}`}
       onTouchStart={(event) => {
         touchStartXRef.current = event.touches[0]?.clientX ?? null;
       }}
@@ -171,34 +166,25 @@ export function FeedCarousel({
         const endX = event.changedTouches[0]?.clientX ?? null;
         touchStartXRef.current = null;
 
-        if (startX === null || endX === null) return;
+        if (startX === null || endX === null || !onChange) return;
 
         const delta = endX - startX;
 
-        if (delta <= -HORIZONTAL_SWIPE_DISTANCE && canNext) {
-          onChange(safeIndex + 1);
-        }
-
-        if (delta >= HORIZONTAL_SWIPE_DISTANCE && canPrev) {
-          onChange(safeIndex - 1);
+        if (delta <= -48 && canNext) {
+          onChange(activeIndex + 1);
+        } else if (delta >= 48 && canPrev) {
+          onChange(activeIndex - 1);
         }
       }}
     >
-      <FeedMediaSlide
-        item={current}
-        displayText={displayText}
-        className="absolute inset-0 h-full w-full object-cover"
-        active={isVideoItem(current) ? mediaActive : true}
-        muted={muted}
-        videoRef={isVideoItem(current) ? videoRef : undefined}
-      />
+      {mediaNode}
 
       {canPrev ? (
         <button
           type="button"
           onClick={(event) => {
             event.stopPropagation();
-            onChange(safeIndex - 1);
+            onChange?.(activeIndex - 1);
           }}
           className={`absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
             controlsTone === "light"
@@ -216,7 +202,7 @@ export function FeedCarousel({
           type="button"
           onClick={(event) => {
             event.stopPropagation();
-            onChange(safeIndex + 1);
+            onChange?.(activeIndex + 1);
           }}
           className={`absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
             controlsTone === "light"
@@ -231,8 +217,8 @@ export function FeedCarousel({
 
       <MediaDots
         total={items.length}
-        activeIndex={safeIndex}
-        onSelect={onChange}
+        activeIndex={activeIndex}
+        onSelect={(index) => onChange?.(index)}
         light={controlsTone === "light"}
       />
     </div>

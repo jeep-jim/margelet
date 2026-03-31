@@ -17,6 +17,53 @@ import { normalizeMediaList } from "./feed.utils";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 
 const MAX_EXPANDED_TEXT_HEIGHT = 260;
+const FEED_MUTE_KEY = "margelet_feed_muted";
+const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+
+function readGlobalMuted() {
+  try {
+    return localStorage.getItem(FEED_MUTE_KEY) !== "0";
+  } catch {
+    return false;
+  }
+}
+
+function writeGlobalMuted(value: boolean) {
+  try {
+    localStorage.setItem(FEED_MUTE_KEY, value ? "1" : "0");
+  } catch {
+    //
+  }
+}
+
+function linkifyText(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
+  const parts = text.split(urlRegex);
+
+  return parts.map((part, index) => {
+    const isUrl = /^(https?:\/\/|www\.|t\.me\/)/i.test(part);
+
+    if (!isUrl) {
+      return <span key={index}>{part}</span>;
+    }
+
+    const href =
+      part.startsWith("http") ? part : part.startsWith("t.me/") ? `https://${part}` : `https://${part}`;
+
+    return (
+      <a
+        key={index}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="break-all text-[#5ea1ff] underline underline-offset-2"
+        onClick={(event) => event.stopPropagation()}
+      >
+        {part}
+      </a>
+    );
+  });
+}
 
 export function FeedViewer({
   activePost,
@@ -46,10 +93,18 @@ export function FeedViewer({
   }, [activePost]);
 
   useEffect(() => {
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
+  }, [activePost?.id]);
+
+  useEffect(() => {
     setExpandedText(false);
     setProgress(0);
     setShowCenterControl(false);
   }, [activePost?.id]);
+
+  useEffect(() => {
+    setIsMuted(readGlobalMuted());
+  }, [activePost?.id, setIsMuted]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -75,11 +130,14 @@ export function FeedViewer({
     const node = videoRef.current;
     if (!node) return;
     node.muted = isMuted;
+    writeGlobalMuted(isMuted);
   }, [isMuted, viewerMediaIndex, activePost?.id]);
 
   useEffect(() => {
     const node = videoRef.current;
     if (!node) return;
+
+    node.currentTime = 0;
 
     if (isPlaying) {
       const promise = node.play();
@@ -162,10 +220,9 @@ export function FeedViewer({
   return (
     <AnimatePresence>
       <motion.div
-        key={activePost.id}
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        exit={{ opacity: 1 }}
         className="fixed inset-0 z-50 bg-black"
         onWheel={handleWheel}
         onTouchStart={(event) => {
@@ -187,26 +244,23 @@ export function FeedViewer({
           }
         }}
       >
-        <div className="relative h-full w-full overflow-hidden">
-          {media.length > 0 ? (
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              onClick={togglePlay}
-            >
-              <FeedCarousel
-                items={media}
-                displayText={activePost.text}
-                aspectClass="h-full"
-                activeIndex={viewerMediaIndex}
-                onChange={setViewerMediaIndex}
-                mediaActive
-                muted={isMuted}
-                videoRef={videoRef}
-              />
-            </div>
-          ) : null}
+        <div className="relative h-full w-full overflow-hidden bg-black">
+          <div
+            className="absolute inset-0 flex items-center justify-center bg-black"
+            onClick={togglePlay}
+          >
+            <FeedCarousel
+              items={media}
+              aspectClass="h-full"
+              activeIndex={viewerMediaIndex}
+              onChange={setViewerMediaIndex}
+              mediaActive
+              muted={isMuted}
+              videoRef={videoRef}
+            />
+          </div>
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/68" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/72" />
 
           <div className="absolute left-4 top-4 z-30">
             <button
@@ -228,7 +282,7 @@ export function FeedViewer({
           </div>
 
           {showCenterControl ? (
-            <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+            <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
                 {isPlaying ? (
                   <Pause className="h-8 w-8" />
@@ -240,7 +294,12 @@ export function FeedViewer({
           ) : null}
 
           <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6 text-white">
-            <button type="button" onClick={() => setIsMuted((prev) => !prev)}>
+            <button
+              type="button"
+              onClick={() => {
+                setIsMuted((prev) => !prev);
+              }}
+            >
               {isMuted ? (
                 <VolumeX className="h-7 w-7" />
               ) : (
@@ -285,7 +344,7 @@ export function FeedViewer({
             {activePost.text ? (
               <div className="mt-3 max-w-[82%]">
                 <div
-                  className={`whitespace-pre-wrap text-[15px] leading-6 text-white ${
+                  className={`text-[15px] leading-6 text-white ${
                     expandedText ? "overflow-y-auto" : "line-clamp-3"
                   }`}
                   style={
@@ -293,8 +352,12 @@ export function FeedViewer({
                       ? { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
                       : undefined
                   }
+                  onWheel={(event) => event.stopPropagation()}
+                  onTouchStart={(event) => event.stopPropagation()}
+                  onTouchMove={(event) => event.stopPropagation()}
+                  onTouchEnd={(event) => event.stopPropagation()}
                 >
-                  {activePost.text}
+                  {linkifyText(activePost.text)}
                 </div>
 
                 <button

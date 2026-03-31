@@ -104,6 +104,20 @@ function parseDurationText(value?: string | null) {
   return undefined;
 }
 
+function looksLikeAudioUrl(url?: string | null) {
+  const v = String(url || "").toLowerCase();
+  if (!v) return false;
+
+  return (
+    v.includes(".mp3") ||
+    v.includes(".m4a") ||
+    v.includes(".ogg") ||
+    v.includes(".opus") ||
+    v.includes("audio") ||
+    v.includes("voice")
+  );
+}
+
 export function normalizeTelegramUrl(raw: string): string {
   const trimmed = raw.trim();
 
@@ -292,9 +306,10 @@ function extractWidgetAudioUrl(html: string) {
     extract(html, /<source[^>]+type="audio\/[^"]*"[^>]+src="([^"]+)"[^>]*>/i) ||
     extract(html, /data-audio="([^"]+)"/i) ||
     extract(html, /data-ogg="([^"]+)"/i) ||
-    extract(html, /tgme_widget_message_voice_player[^>]+src="([^"]+)"/i);
+    extract(html, /href="([^"]+)"/i);
 
-  return normalizeAssetUrl(directAudio);
+  const normalized = normalizeAssetUrl(directAudio);
+  return looksLikeAudioUrl(normalized) ? normalized : null;
 }
 
 function extractWidgetFileUrl(html: string) {
@@ -454,7 +469,7 @@ export async function ingestTelegramPost(
           fileName,
         },
       ];
-      contentType = "file";
+      contentType = looksLikeAudioUrl(fileUrl) ? "audio" : "file";
     }
 
     return {
