@@ -1,3 +1,7 @@
+export const config = {
+  runtime: "edge",
+};
+
 const ALLOWED_HOSTS = [
   "t.me",
   "telegram.me",
@@ -18,18 +22,19 @@ function isAllowedHost(hostname: string) {
   );
 }
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: Request) {
   try {
-    const rawUrl = req.query?.url;
+    const { searchParams } = new URL(req.url);
+    const rawUrl = searchParams.get("url");
 
-    if (!rawUrl || typeof rawUrl !== "string") {
-      return res.status(400).send("Missing url");
+    if (!rawUrl) {
+      return new Response("Missing url", { status: 400 });
     }
 
     const target = new URL(rawUrl);
 
     if (!isAllowedHost(target.hostname)) {
-      return res.status(400).send("Disallowed host");
+      return new Response("Disallowed host", { status: 400 });
     }
 
     const upstream = await fetch(target.toString(), {
@@ -41,21 +46,27 @@ export default async function handler(req: any, res: any) {
     });
 
     if (!upstream.ok) {
-      return res.status(upstream.status).send("Upstream fetch failed");
+      return new Response("Upstream fetch failed", {
+        status: upstream.status,
+      });
     }
 
     const contentType =
       upstream.headers.get("content-type") || "application/octet-stream";
 
-    // 🔥 TTL синхронизируем с логикой постов (максимум 48h)
-    res.setHeader("Content-Type", contentType);
-    res.setHeader("Cache-Control", "public, max-age=172800, stale-while-revalidate=86400");
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    const buffer = await upstream.arrayBuffer();
 
-    const arrayBuffer = await upstream.arrayBuffer();
-    return res.status(200).send(Buffer.from(arrayBuffer));
+    return new Response(buffer, {
+      status: 200,
+      headers: {
+        "Content-Type": contentType,
+        "Cache-Control":
+          "public, max-age=172800, stale-while-revalidate=86400",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   } catch (error) {
     console.error("media-proxy error", error);
-    return res.status(500).send("Media proxy failed");
+    return new Response("Media proxy failed", { status: 500 });
   }
 }
