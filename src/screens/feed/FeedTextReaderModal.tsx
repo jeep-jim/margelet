@@ -3,8 +3,10 @@ import {
   ArrowLeft,
   Bell,
   ExternalLink,
+  FileText,
   Heart,
   Send,
+  Music4,
 } from "lucide-react";
 import { useMemo, useState } from "react";
 import type { IngestedPost } from "../../types/app";
@@ -75,6 +77,101 @@ function RichTextBlock({ text }: { text: string }) {
   );
 }
 
+function AudioList({
+  items,
+}: {
+  items: Array<{
+    id: string;
+    url: string;
+    fileName?: string | null;
+  }>;
+}) {
+  if (items.length === 0) return null;
+
+  return (
+    <div className="mb-4 space-y-3">
+      {items.map((item, index) => (
+        <div
+          key={item.id || `${item.url}-${index}`}
+          className="rounded-3xl border border-neutral-200 bg-neutral-50 p-4"
+        >
+          <div className="mb-3 flex items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+              <Music4 className="h-5 w-5" />
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-semibold text-neutral-950">
+                {item.fileName?.trim() || `Аудио ${index + 1}`}
+              </div>
+
+              <div className="mt-1 text-sm text-neutral-500">
+                Аудио из поста Telegram
+              </div>
+            </div>
+          </div>
+
+          <audio
+            src={item.url}
+            controls
+            preload="metadata"
+            className="w-full"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function FileList({
+  items,
+}: {
+  items: Array<{
+    id: string;
+    url: string;
+    fileName?: string | null;
+  }>;
+}) {
+  if (items.length === 0) return null;
+
+  return (
+    <div className="mb-4 space-y-3">
+      {items.map((item, index) => (
+        <div
+          key={item.id || `${item.url}-${index}`}
+          className="rounded-3xl border border-neutral-200 bg-neutral-50 p-4"
+        >
+          <div className="flex items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+              <FileText className="h-5 w-5" />
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-semibold text-neutral-950">
+                {item.fileName?.trim() || `Файл ${index + 1}`}
+              </div>
+
+              <div className="mt-1 text-sm text-neutral-500">
+                Вложение из поста Telegram
+              </div>
+
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
+              >
+                <span>Открыть файл</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function FeedTextReaderModal({
   post,
   locale: _locale,
@@ -96,6 +193,13 @@ export function FeedTextReaderModal({
   const text = post?.text || "";
   const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
   const [mediaIndex, setMediaIndex] = useState(0);
+
+  const visualMedia = media.filter(
+    (item) => item.kind === "image" || item.kind === "video"
+  );
+
+  const audioMedia = media.filter((item) => item.kind === "audio");
+  const fileMedia = media.filter((item) => item.kind === "file");
 
   return (
     <AnimatePresence>
@@ -160,12 +264,12 @@ export function FeedTextReaderModal({
                 </div>
               </button>
 
-              {media.length > 0 ? (
+              {visualMedia.length > 0 ? (
                 <div className="mb-4">
                   <FeedCarousel
-                    items={media}
+                    items={visualMedia}
                     aspectClass="aspect-[4/5]"
-                    activeIndex={mediaIndex}
+                    activeIndex={Math.min(mediaIndex, Math.max(visualMedia.length - 1, 0))}
                     onChange={setMediaIndex}
                     controlsTone="dark"
                     fit="contain"
@@ -173,6 +277,10 @@ export function FeedTextReaderModal({
                   />
                 </div>
               ) : null}
+
+              <AudioList items={audioMedia} />
+
+              <FileList items={fileMedia} />
 
               {text ? <RichTextBlock text={text} /> : null}
             </div>
