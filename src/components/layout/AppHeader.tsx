@@ -1,10 +1,11 @@
-import { Play, User } from "lucide-react";
+import { User } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Locale, TabId } from "../../types/app";
 import {
   FEED_FILTER_STATE_EVENT,
   FEED_FILTER_TOGGLE_EVENT,
 } from "../../screens/feed/feed.constants";
+import { MargeletMark } from "../shared/MargeletMark";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 
@@ -96,16 +97,17 @@ export function AppHeader({ current, setCurrent }: Props) {
             title={current === "feed" ? "Фильтры" : "Назад"}
             type="button"
           >
-            <Play
-              className={`h-5 w-5 transition ${
+            <div
+              className={`transition ${
                 showBackArrow
-                  ? "rotate-180"
+                  ? "rotate-210"
                   : filtersOpen
-                    ? "rotate-180"
-                    : "rotate-90"
+                    ? "rotate-210"
+                    : "rotate-240"
               }`}
-              fill="currentColor"
-            />
+            >
+              <MargeletMark className="h-5 w-5" colorClassName="text-neutral-950" />
+            </div>
           </button>
         </div>
 
