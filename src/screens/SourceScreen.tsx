@@ -17,24 +17,59 @@ type Props = {
 };
 
 const TAG_LABELS: Record<ContentTag, string> = {
-  people: "Люди",
-  animals: "Животные",
-  news: "Новости",
-  business: "Бизнес",
-  creativity: "Творчество",
-  finance: "Финансы",
-  education: "Образование",
-  technology: "Технологии",
-  memes: "Мемы",
-  sports: "Спорт",
-  music: "Музыка",
-  travel: "Путешествия",
-  food: "Еда",
-  other: "Другое",
+  news: "📰 Новости",
+  politics: "🏛 Политика",
+  war: "🪖 Война",
+  economy: "📈 Экономика",
+  business: "💼 Бизнес",
+  creativity: "🎭 Творчество",
+  finance: "💰 Финансы",
+  crypto: "₿ Крипта",
+  technology: "💻 Технологии",
+  ai: "🤖 AI",
+  science: "🔬 Наука",
+  space: "🚀 Космос",
+  education: "📚 Образование",
+  history: "🏺 История",
+  culture: "🏛 Культура",
+  art: "🎨 Арт",
+  design: "🧩 Дизайн",
+  books: "📖 Книги",
+  cinema: "🎬 Кино",
+  series: "📺 Сериалы",
+  music: "🎵 Музыка",
+  gaming: "🎮 Игры",
+  memes: "😂 Мемы",
+  humor: "😄 Юмор",
+  sports: "⚽ Спорт",
+  mma: "🥊 MMA",
+  travel: "✈️ Путешествия",
+  food: "🍔 Еда",
+  recipes: "🍳 Рецепты",
+  health: "🩺 Здоровье",
+  fitness: "🏋️ Фитнес",
+  psychology: "🧠 Психология",
+  relationships: "❤️ Отношения",
+  fashion: "👗 Мода",
+  beauty: "💄 Красота",
+  photography: "📷 Фото",
+  nature: "🌿 Природа",
+  animals: "🐾 Животные",
+  people: "🧑 Люди",
+  celebrities: "⭐ Звёзды",
+  marketing: "📣 Маркетинг",
+  startups: "🛠 Стартапы",
+  jobs: "🧳 Работа",
+  real_estate: "🏠 Недвижимость",
+  auto: "🚗 Авто",
+  gadgets: "📱 Гаджеты",
+  parenting: "👶 Родительство",
+  telegram: "✈️ Telegram",
+  other: "🌀 Другое",
 };
 
 function getTagLabel(tag: ContentTag) {
-  return TAG_LABELS[tag] || "Другое";
+  return TAG_LABELS[tag] || "🌀 Другое";
 }
 
 function getPreview(post: IngestedPost) {
@@ -121,7 +156,6 @@ export function SourceScreen({
 
   const totalMedia = sourcePosts.filter((post) => post.media.length > 0).length;
   const totalVideos = sourcePosts.filter((post) => post.contentType === "video").length;
-  const totalImages = sourcePosts.filter((post) => post.contentType === "image").length;
 
   const openTelegramSource = () => {
     window.open(`https://t.me/${source.source.handle}`, "_blank", "noopener,noreferrer");
@@ -194,7 +228,7 @@ export function SourceScreen({
               <div className="text-xs uppercase tracking-[0.16em] text-neutral-400">
                 Медиа
               </div>
-              <div className="mt-2 text-2xl font-semibold">{totalMedia + totalImages}</div>
+              <div className="mt-2 text-2xl font-semibold">{totalMedia}</div>
             </div>
           </div>
 

@@ -1,15 +1,18 @@
-import { useCallback, useMemo, useState } from "react";
-import type { ContentTag, FeedTag, IngestedPost } from "../types/app";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import type { ContentTag, IngestedPost } from "../types/app";
 import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
-import { ADMIN_TELEGRAM_IDS } from "./feed/feed.constants";
-import type { FeedMode, ViewerDirection } from "./feed/feed.types";
 import {
-  buildShareUrl,
-  getResolvedTag,
-} from "./feed/feed.utils";
+  ADMIN_TELEGRAM_IDS,
+  FEED_FILTER_TOGGLE_EVENT,
+} from "./feed/feed.constants";
+import type { ViewerDirection } from "./feed/feed.types";
+import { buildShareUrl, getResolvedTag } from "./feed/feed.utils";
+
+const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
+const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 
 function isGifPost(post: IngestedPost) {
   return (
@@ -21,6 +24,29 @@ function isGifPost(post: IngestedPost) {
 function isVideoViewerPost(post: IngestedPost) {
   if (isGifPost(post)) return false;
   return post.contentType === "video";
+}
+
+function readSelectedTagsFromStorage(): ContentTag[] {
+  try {
+    const raw = localStorage.getItem(SELECTED_TAGS_STORAGE_KEY);
+    if (!raw) return [];
+
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed.filter((item): item is ContentTag => typeof item === "string");
+  } catch {
+    localStorage.removeItem(SELECTED_TAGS_STORAGE_KEY);
+    return [];
+  }
+}
+
+function readSearchQueryFromStorage() {
+  try {
+    return localStorage.getItem(FEED_SEARCH_STORAGE_KEY) || "";
+  } catch {
+    return "";
+  }
 }
 
 export function FeedScreen({
@@ -50,9 +76,9 @@ export function FeedScreen({
   const [textReaderPost, setTextReaderPost] = useState<IngestedPost | null>(null);
   const [viewerDirection, setViewerDirection] = useState<ViewerDirection>(null);
   const [expandedCaption, setExpandedCaption] = useState(false);
-  const [feedMode, setFeedMode] = useState<FeedMode>("new");
-  const [activeTag, setActiveTag] = useState<FeedTag>("all");
   const [tagsOpen, setTagsOpen] = useState(false);
+  const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
@@ -63,6 +89,40 @@ export function FeedScreen({
     {}
   );
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
+
+  useEffect(() => {
+    setSelectedTags(readSelectedTagsFromStorage());
+    setSearchQuery(readSearchQueryFromStorage());
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(
+      SELECTED_TAGS_STORAGE_KEY,
+      JSON.stringify(selectedTags)
+    );
+  }, [selectedTags]);
+
+  useEffect(() => {
+    localStorage.setItem(FEED_SEARCH_STORAGE_KEY, searchQuery);
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const handleToggle = () => {
+      setTagsOpen((prev) => !prev);
+    };
+
+    window.addEventListener(
+      FEED_FILTER_TOGGLE_EVENT,
+      handleToggle as EventListener
+    );
+
+    return () => {
+      window.removeEventListener(
+        FEED_FILTER_TOGGLE_EVENT,
+        handleToggle as EventListener
+      );
+    };
+  }, []);
 
   const safePosts = useMemo(() => {
     return posts.filter(
@@ -76,74 +136,36 @@ export function FeedScreen({
     );
   }, [posts]);
 
-  const preferredTags = useMemo(() => {
-    const source = safePosts.filter(
-      (post) => likedPostIds.includes(post.id) || savedPostIds.includes(post.id)
-    );
-
-    const counts = new Map<ContentTag, number>();
-
-    source.forEach((post) => {
-      const tag = getResolvedTag(post);
-      counts.set(tag, (counts.get(tag) || 0) + 1);
-    });
-
-    return Array.from(counts.entries())
-      .sort((a, b) => b[1] - a[1])
-      .map(([tag]) => tag);
-  }, [safePosts, likedPostIds, savedPostIds]);
-
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
 
-    if (activeTag !== "all") {
-      list = list.filter((post) => getResolvedTag(post) === activeTag);
+    if (selectedTags.length > 0) {
+      list = list.filter((post) =>
+        selectedTags.includes(getResolvedTag(post))
+      );
     }
 
-    if (feedMode === "new") {
-      list.sort((a, b) => b.id - a.id);
-      return list;
-    }
+    const q = searchQuery.trim().toLowerCase();
 
-    if (feedMode === "trending") {
-      list.sort((a, b) => {
-        const aScore =
-          (likedPostIds.includes(a.id) ? 2 : 0) +
-          (savedPostIds.includes(a.id) ? 3 : 0) +
-          a.media.length;
+    if (q) {
+      list = list.filter((post) => {
+        const haystack = [
+          post.source.title,
+          post.source.handle,
+          post.text,
+          post.postUrl,
+          post.tag,
+        ]
+          .join(" ")
+          .toLowerCase();
 
-        const bScore =
-          (likedPostIds.includes(b.id) ? 2 : 0) +
-          (savedPostIds.includes(b.id) ? 3 : 0) +
-          b.media.length;
-
-        return bScore - aScore;
+        return haystack.includes(q);
       });
-
-      return list;
     }
 
-    list.sort((a, b) => {
-      const aTag = getResolvedTag(a);
-      const bTag = getResolvedTag(b);
-
-      const aScore =
-        (likedPostIds.includes(a.id) ? 6 : 0) +
-        (savedPostIds.includes(a.id) ? 8 : 0) +
-        (preferredTags.includes(aTag) ? 4 : 0) +
-        a.media.length;
-
-      const bScore =
-        (likedPostIds.includes(b.id) ? 6 : 0) +
-        (savedPostIds.includes(b.id) ? 8 : 0) +
-        (preferredTags.includes(bTag) ? 4 : 0) +
-        b.media.length;
-
-      return bScore - aScore;
-    });
-
+    list.sort((a, b) => b.id - a.id);
     return list;
-  }, [safePosts, activeTag, feedMode, likedPostIds, savedPostIds, preferredTags]);
+  }, [safePosts, selectedTags, searchQuery]);
 
   const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isVideoViewerPost(post));
@@ -264,13 +286,26 @@ export function FeedScreen({
     openTextReader(post);
   };
 
+  const toggleTag = (tag: ContentTag) => {
+    setSelectedTags((prev) =>
+      prev.includes(tag)
+        ? prev.filter((item) => item !== tag)
+        : [...prev, tag]
+    );
+  };
+
+  const clearTags = () => {
+    setSelectedTags([]);
+  };
+
   return (
     <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
       <FeedHeader
-        feedMode={feedMode}
-        setFeedMode={setFeedMode}
-        activeTag={activeTag}
-        setActiveTag={setActiveTag}
+        selectedTags={selectedTags}
+        toggleTag={toggleTag}
+        clearTags={clearTags}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
         tagsOpen={tagsOpen}
         setTagsOpen={setTagsOpen}
       />
@@ -279,6 +314,29 @@ export function FeedScreen({
         <div className="mx-auto mb-3 w-full max-w-[720px] px-4">
           <div className="rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
             {actionError}
+          </div>
+        </div>
+      ) : null}
+
+      {visiblePosts.length === 0 ? (
+        <div className="mx-auto mt-2 w-full max-w-[720px] px-4">
+          <div className="rounded-[28px] border border-neutral-200 bg-white px-5 py-8 text-center">
+            <div className="text-lg font-semibold text-neutral-950">
+              Ничего не найдено
+            </div>
+            <div className="mt-2 text-sm leading-6 text-neutral-500">
+              Попробуй снять часть тегов или очистить поиск.
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchQuery("");
+                clearTags();
+              }}
+              className="mt-4 rounded-full bg-neutral-950 px-4 py-2 text-sm text-white"
+            >
+              Очистить всё
+            </button>
           </div>
         </div>
       ) : null}

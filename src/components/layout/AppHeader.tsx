@@ -1,6 +1,7 @@
-import { Plus, User } from "lucide-react";
+import { Play, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Locale, TabId } from "../../types/app";
+import { FEED_FILTER_TOGGLE_EVENT } from "../../screens/feed/feed.constants";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 
@@ -49,23 +50,40 @@ export function AppHeader({ current, setCurrent }: Props) {
   }, []);
 
   const isCreatorActive = current === "creator";
-  const isAddActive = current === "add";
+  const showBackToFeed =
+    current === "creator" || current === "add" || current === "source";
+
+  const handleLeftAction = () => {
+    if (current === "feed") {
+      window.dispatchEvent(new CustomEvent(FEED_FILTER_TOGGLE_EVENT));
+      return;
+    }
+
+    if (showBackToFeed) {
+      setCurrent("feed");
+      return;
+    }
+
+    setCurrent("feed");
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-neutral-200 bg-neutral-50/95 backdrop-blur-md">
       <div className="mx-auto grid h-16 w-full max-w-[720px] grid-cols-3 items-center px-4">
         <div className="flex items-center justify-start">
           <button
-            onClick={() => setCurrent("add")}
-            className={`flex h-10 w-10 items-center justify-center rounded-full transition ${
-              isAddActive
-                ? "bg-neutral-950 text-white"
-                : "text-neutral-700 hover:bg-neutral-200"
-            }`}
-            aria-label="Добавить"
-            title="Добавить"
+            onClick={handleLeftAction}
+            className="flex h-10 w-10 items-center justify-center rounded-full text-neutral-700 transition hover:bg-neutral-200"
+            aria-label={current === "feed" ? "Фильтры" : "Назад"}
+            title={current === "feed" ? "Фильтры" : "Назад"}
+            type="button"
           >
-            <Plus className="h-5 w-5" />
+            <Play
+              className={`h-5 w-5 transition ${
+                current === "feed" ? "rotate-90" : "rotate-180"
+              }`}
+              fill="currentColor"
+            />
           </button>
         </div>
 
@@ -75,6 +93,7 @@ export function AppHeader({ current, setCurrent }: Props) {
             className="text-center"
             aria-label="Margelet"
             title="Margelet"
+            type="button"
           >
             <div className="text-2xl font-extrabold tracking-[-0.03em] text-neutral-950">
               margeleT
@@ -92,6 +111,7 @@ export function AppHeader({ current, setCurrent }: Props) {
             }`}
             aria-label="Кабинет"
             title="Кабинет"
+            type="button"
           >
             {user?.photo_url ? (
               <img
