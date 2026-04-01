@@ -14,7 +14,6 @@ const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
 const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
 const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
-const CONNECTED_CHANNEL_STORAGE_KEY = "margelet_connected_channel";
 
 const ADMIN_HIDDEN_PATH = "/jim/admin";
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
@@ -27,6 +26,20 @@ type TgUser = {
 };
 
 type UserRole = "guest" | "user" | "channel_owner" | "admin";
+type BillingPlan = "free" | "pro_1m" | "pro_3m" | "pro_12m";
+
+type AccessInfo = {
+  telegramUserId: string;
+  username: string | null;
+  role: "user" | "channel_owner" | "admin";
+  plan: BillingPlan;
+  note: string | null;
+  grantedBy: string | null;
+  createdAt: string;
+  updatedAt: string;
+  expiresAt: string | null;
+  isActive: boolean;
+};
 
 function decodeBase64Url(value: string) {
   const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
@@ -69,21 +82,6 @@ function readTelegramUserFromStorage(): TgUser | null {
     localStorage.removeItem(TG_STORAGE_KEY);
     return null;
   }
-}
-
-function hasConnectedChannel() {
-  try {
-    return !!localStorage.getItem(CONNECTED_CHANNEL_STORAGE_KEY);
-  } catch {
-    return false;
-  }
-}
-
-function resolveCurrentUserRole(user: TgUser | null): UserRole {
-  if (!user) return "guest";
-  if (ADMIN_TELEGRAM_IDS.has(user.id)) return "admin";
-  if (hasConnectedChannel()) return "channel_owner";
-  return "user";
 }
 
 function normalizePathname(pathname: string) {
@@ -131,6 +129,23 @@ function getPostIdFromUrl(postUrl: string) {
   return postUrl.split("/").filter(Boolean).pop() || "";
 }
 
+function fallbackAccess(user: TgUser | null): AccessInfo | null {
+  if (!user) return null;
+
+  return {
+    telegramUserId: user.id,
+    username: user.username || null,
+    role: ADMIN_TELEGRAM_IDS.has(user.id) ? "admin" : "user",
+    plan: "free",
+    note: null,
+    grantedBy: null,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    expiresAt: null,
+    isActive: true,
+  };
+}
+
 export default function App() {
   const [locale, setLocale] = useState<Locale>("ru");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
@@ -139,15 +154,21 @@ export default function App() {
   const [isFeedLoading, setIsFeedLoading] = useState(true);
   const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
   const [selectedSourceHandle, setSelectedSourceHandle] = useState<string | null>(null);
+  const [accessInfo, setAccessInfo] = useState<AccessInfo | null>(null);
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
 
-  const userRole = useMemo(
-    () => resolveCurrentUserRole(currentTelegramUser),
-    [currentTelegramUser]
-  );
+  const userRole = useMemo<UserRole>(() => {
+    if (!currentTelegramUser) return "guest";
+    return accessInfo?.role || fallbackAccess(currentTelegramUser)?.role || "user";
+  }, [accessInfo, currentTelegramUser]);
+
+  const userPlan = useMemo<BillingPlan>(() => {
+    if (!currentTelegramUser) return "free";
+    return accessInfo?.plan || "free";
+  }, [accessInfo, currentTelegramUser]);
 
   const sharedPath = useMemo(() => {
     if (typeof window === "undefined") return null;
@@ -280,6 +301,45 @@ export default function App() {
     }
   }, []);
 
+  useEffect(() => {
+    if (!currentTelegramUser?.id) {
+      setAccessInfo(null);
+      return;
+    }
+
+    let cancelled = false;
+
+    async function loadAccess() {
+      try {
+        const res = await fetch("/api/access", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            telegramUserId: currentTelegramUser?.id || "",
+          }),
+        });
+
+        const data = await res.json().catch(() => null);
+
+        if (!cancelled) {
+          setAccessInfo(data?.access || fallbackAccess(currentTelegramUser));
+        }
+      } catch {
+        if (!cancelled) {
+          setAccessInfo(fallbackAccess(currentTelegramUser));
+        }
+      }
+    }
+
+    void loadAccess();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [currentTelegramUser]);
+
   const loadFeed = async () => {
     setIsFeedLoading(true);
 
@@ -386,6 +446,7 @@ export default function App() {
         url,
         tag,
         role: userRole === "guest" ? "user" : userRole,
+        plan: userPlan,
         addedByTelegramId: currentTelegramUser?.id || null,
         addedByUsername: currentTelegramUser?.username || null,
       }),
