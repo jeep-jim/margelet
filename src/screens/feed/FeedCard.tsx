@@ -23,6 +23,9 @@ export function FeedCard(props: FeedCardProps) {
     onHide,
     onOpen,
     onOpenCreator,
+    liked,
+    onToggleLike,
+    onShare,
   } = props;
 
   const displayText = getDisplayText(post);
@@ -91,11 +94,17 @@ export function FeedCard(props: FeedCardProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-8 text-neutral-700">
-                      <button type="button">
-                        <Heart className="h-5 w-5" />
+                      <button type="button" onClick={onToggleLike}>
+                        <Heart
+                          className={`h-5 w-5 ${
+                            liked
+                              ? "fill-neutral-950 text-neutral-950"
+                              : "text-neutral-700"
+                          }`}
+                        />
                       </button>
 
-                      <button type="button">
+                      <button type="button" onClick={onShare}>
                         <Send className="h-5 w-5" />
                       </button>
                     </div>
@@ -126,11 +135,17 @@ export function FeedCard(props: FeedCardProps) {
             <div className="px-4 py-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-8 text-neutral-700">
-                  <button type="button">
-                    <Heart className="h-5 w-5" />
+                  <button type="button" onClick={onToggleLike}>
+                    <Heart
+                      className={`h-5 w-5 ${
+                        liked
+                          ? "fill-neutral-950 text-neutral-950"
+                          : "text-neutral-700"
+                      }`}
+                    />
                   </button>
 
-                  <button type="button">
+                  <button type="button" onClick={onShare}>
                     <Send className="h-5 w-5" />
                   </button>
                 </div>

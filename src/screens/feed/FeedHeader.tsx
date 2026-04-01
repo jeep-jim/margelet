@@ -24,73 +24,75 @@ export function FeedHeader({
   }
 
   return (
-    <div className="mx-auto w-full max-w-[720px] px-4 py-3">
-      <div className="rounded-[24px] border border-neutral-200 bg-white p-4">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <div className="text-base font-semibold text-neutral-950">
-              Темы и поиск
+    <div className="fixed inset-x-0 top-16 z-30">
+      <div className="mx-auto w-full max-w-[720px] px-4 pt-3">
+        <div className="max-h-[calc(100vh-88px)] overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-4 shadow-[0_24px_80px_rgba(0,0,0,0.12)]">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <div className="text-base font-semibold text-neutral-950">
+                Темы и поиск
+              </div>
+              <div className="mt-1 text-sm leading-6 text-neutral-500">
+                {selectedCount > 0
+                  ? `Выбрано тем: ${selectedCount}`
+                  : "Выбери темы, чтобы персонализировать ленту."}
+              </div>
             </div>
-            <div className="mt-1 text-sm leading-6 text-neutral-500">
-              {selectedCount > 0
-                ? `Выбрано тем: ${selectedCount}`
-                : "Выбери темы, чтобы персонализировать ленту."}
-            </div>
+
+            <button
+              type="button"
+              onClick={() => setTagsOpen(false)}
+              className="rounded-full bg-neutral-100 p-2 text-neutral-700"
+              aria-label="Закрыть фильтры"
+              title="Закрыть фильтры"
+            >
+              <X className="h-4 w-4" />
+            </button>
           </div>
 
-          <button
-            type="button"
-            onClick={() => setTagsOpen(false)}
-            className="rounded-full bg-neutral-100 p-2 text-neutral-700"
-            aria-label="Закрыть фильтры"
-            title="Закрыть фильтры"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
+          <div className="relative mt-4">
+            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+            <input
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder="Поиск по каналу, тексту, ссылке..."
+              className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 py-3 pl-11 pr-4 text-sm text-neutral-950 outline-none placeholder:text-neutral-400 focus:border-neutral-300"
+            />
+          </div>
 
-        <div className="relative mt-4">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
-          <input
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder="Поиск по каналу, тексту, ссылке..."
-            className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 py-3 pl-11 pr-4 text-sm text-neutral-950 outline-none placeholder:text-neutral-400 focus:border-neutral-300"
-          />
-        </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {CONTENT_TAG_OPTIONS.map((tag) => {
+              const active = selectedTags.includes(tag.value);
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {CONTENT_TAG_OPTIONS.map((tag) => {
-            const active = selectedTags.includes(tag.value);
+              return (
+                <button
+                  key={tag.value}
+                  type="button"
+                  onClick={() => toggleTag(tag.value)}
+                  className={`rounded-full px-3 py-2 text-sm transition ${
+                    active
+                      ? "bg-neutral-950 text-white"
+                      : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
+                  }`}
+                >
+                  {tag.label}
+                </button>
+              );
+            })}
+          </div>
 
-            return (
-              <button
-                key={tag.value}
-                type="button"
-                onClick={() => toggleTag(tag.value)}
-                className={`rounded-full px-3 py-2 text-sm transition ${
-                  active
-                    ? "bg-neutral-950 text-white"
-                    : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
-                }`}
-              >
-                {tag.label}
-              </button>
-            );
-          })}
-        </div>
+          <div className="mt-4 flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={clearTags}
+              className="rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-sm text-neutral-700"
+            >
+              Очистить всё
+            </button>
 
-        <div className="mt-4 flex items-center justify-between gap-3">
-          <button
-            type="button"
-            onClick={clearTags}
-            className="rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-sm text-neutral-700"
-          >
-            Очистить всё
-          </button>
-
-          <div className="text-xs text-neutral-400">
-            {selectedCount > 0 ? `Тем выбрано: ${selectedCount}` : "Все темы"}
+            <div className="text-xs text-neutral-400">
+              {selectedCount > 0 ? `Тем выбрано: ${selectedCount}` : "Все темы"}
+            </div>
           </div>
         </div>
       </div>

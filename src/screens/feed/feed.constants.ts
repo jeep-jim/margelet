@@ -26,7 +26,6 @@ export const TAG_OPTIONS: FeedOption<FeedTag>[] = [
 
   { value: "art", label: "🎨 Арт" },
   { value: "design", label: "🧩 Дизайн" },
-  { value: "creativity", label: "✨ Творчество" },
   { value: "photography", label: "📷 Фото" },
 
   { value: "cinema", label: "🎬 Кино" },
@@ -74,3 +73,4 @@ export const DRAG_SWITCH_VELOCITY = 430;
 export const HORIZONTAL_SWIPE_DISTANCE = 48;
 
 export const FEED_FILTER_TOGGLE_EVENT = "margelet-toggle-feed-filters";
+export const FEED_FILTER_STATE_EVENT = "margelet-feed-filter-state";

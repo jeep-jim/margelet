@@ -33,6 +33,9 @@ export type FeedCardProps = {
   onOpenCreator: () => void;
   mediaIndex: number;
   onChangeMediaIndex: (next: number) => void;
+  liked: boolean;
+  onToggleLike: () => void;
+  onShare: () => void;
 };
 
 export type FeedTextCardProps = FeedCardProps;

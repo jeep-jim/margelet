@@ -7,6 +7,7 @@ import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
 import {
   ADMIN_TELEGRAM_IDS,
+  FEED_FILTER_STATE_EVENT,
   FEED_FILTER_TOGGLE_EVENT,
 } from "./feed/feed.constants";
 import type { ViewerDirection } from "./feed/feed.types";
@@ -78,7 +79,7 @@ function readSubscriptionsCount() {
 
 function SubscriptionsHint() {
   return (
-    <div className="mx-auto mb-4 w-full max-w-[720px] px-4">
+    <div className="mx-auto mb-4 mt-4 w-full max-w-[720px] px-4">
       <div className="flex items-center gap-4 rounded-[28px] border border-neutral-200 bg-white px-4 py-4">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-neutral-950">
           <Bell className="h-5 w-5 text-neutral-950" />
@@ -104,7 +105,7 @@ function SubscriptionsBar({
   if (!items.length) return null;
 
   return (
-    <div className="mx-auto mb-4 w-full max-w-[720px] px-4">
+    <div className="mx-auto mb-4 mt-4 w-full max-w-[720px] px-4">
       <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex gap-3">
           {items.map((item) => (
@@ -114,13 +115,7 @@ function SubscriptionsBar({
               onClick={() => onOpen(item.handle)}
               className="flex w-[72px] shrink-0 flex-col items-center gap-1.5 text-center"
             >
-              <div
-                className={`rounded-full p-[2px] ${
-                  item.hasNew
-                    ? "bg-gradient-to-br from-fuchsia-500 via-orange-400 to-yellow-300"
-                    : "bg-neutral-300"
-                }`}
-              >
+              <div className="rounded-full border-2 border-neutral-950 p-[2px]">
                 <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white">
                   {item.avatar ? (
                     <img
@@ -235,6 +230,14 @@ export function FeedScreen({
       window.removeEventListener("storage", syncSubscriptions);
     };
   }, []);
+
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent(FEED_FILTER_STATE_EVENT, {
+        detail: tagsOpen,
+      })
+    );
+  }, [tagsOpen]);
 
   const safePosts = useMemo(() => {
     return posts.filter(
@@ -516,6 +519,11 @@ export function FeedScreen({
               onOpenCreator={() => openSource(post.source.handle)}
               mediaIndex={feedMediaIndexes[post.id] || 0}
               onChangeMediaIndex={(next: number) => setFeedCardMediaIndex(post.id, next)}
+              liked={likedPostIds.includes(post.id)}
+              onToggleLike={() => onToggleLike(post.id)}
+              onShare={() => {
+                void handleShare(post);
+              }}
             />
           );
         })}

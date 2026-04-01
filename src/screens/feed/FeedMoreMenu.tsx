@@ -29,7 +29,7 @@ export function FeedMoreMenu({
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-neutral-800 transition hover:bg-neutral-100"
         >
           <EyeOff className="h-4 w-4" />
-          <span>Не показывать мне этот пост</span>
+          <span>Скрыть этот пост</span>
         </button>
       )}
     </div>

@@ -62,10 +62,12 @@ export function FeedSourceHeader({
   post,
   compact = false,
   onOpenCreator,
+  showBell = false,
 }: {
   post: IngestedPost;
   compact?: boolean;
   onOpenCreator: () => void;
+  showBell?: boolean;
 }) {
   const [subscribed, setSubscribed] = useState(false);
 
@@ -102,25 +104,27 @@ export function FeedSourceHeader({
         </div>
       </button>
 
-      <button
-        onClick={() => {
-          const next = toggleSub(post.source.handle);
-          setSubscribed(next.includes(post.source.handle));
-          window.dispatchEvent(new Event("storage"));
-        }}
-        className={`ml-1 flex shrink-0 items-center justify-center rounded-full bg-neutral-100 ${bellSize}`}
-        type="button"
-        aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
-        title={subscribed ? "Отключить уведомления" : "Включить уведомления"}
-      >
-        <Bell
-          className={`h-4 w-4 ${
-            subscribed
-              ? "fill-neutral-950 text-neutral-950"
-              : "text-neutral-400"
-          }`}
-        />
-      </button>
+      {showBell ? (
+        <button
+          onClick={() => {
+            const next = toggleSub(post.source.handle);
+            setSubscribed(next.includes(post.source.handle));
+            window.dispatchEvent(new Event("storage"));
+          }}
+          className={`ml-1 flex shrink-0 items-center justify-center rounded-full bg-neutral-100 ${bellSize}`}
+          type="button"
+          aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
+          title={subscribed ? "Отключить уведомления" : "Включить уведомления"}
+        >
+          <Bell
+            className={`h-4 w-4 ${
+              subscribed
+                ? "fill-neutral-950 text-neutral-950"
+                : "text-neutral-400"
+            }`}
+          />
+        </button>
+      ) : null}
     </div>
   );
 }

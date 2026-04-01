@@ -1,7 +1,10 @@
 import { Play, User } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Locale, TabId } from "../../types/app";
-import { FEED_FILTER_TOGGLE_EVENT } from "../../screens/feed/feed.constants";
+import {
+  FEED_FILTER_STATE_EVENT,
+  FEED_FILTER_TOGGLE_EVENT,
+} from "../../screens/feed/feed.constants";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 
@@ -32,6 +35,7 @@ function readTelegramUserFromStorage(): TgUser | null {
 
 export function AppHeader({ current, setCurrent }: Props) {
   const [user, setUser] = useState<TgUser | null>(null);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   useEffect(() => {
     const syncUser = () => {
@@ -49,7 +53,27 @@ export function AppHeader({ current, setCurrent }: Props) {
     };
   }, []);
 
+  useEffect(() => {
+    const handleState = (event: Event) => {
+      const customEvent = event as CustomEvent<boolean>;
+      setFiltersOpen(Boolean(customEvent.detail));
+    };
+
+    window.addEventListener(
+      FEED_FILTER_STATE_EVENT,
+      handleState as EventListener
+    );
+
+    return () => {
+      window.removeEventListener(
+        FEED_FILTER_STATE_EVENT,
+        handleState as EventListener
+      );
+    };
+  }, []);
+
   const isCreatorActive = current === "creator";
+  const showBackArrow =
     current === "creator" || current === "add" || current === "source";
 
   const handleLeftAction = () => {
@@ -74,7 +98,11 @@ export function AppHeader({ current, setCurrent }: Props) {
           >
             <Play
               className={`h-5 w-5 transition ${
-                current === "feed" ? "rotate-90" : "rotate-180"
+                showBackArrow
+                  ? "rotate-180"
+                  : filtersOpen
+                    ? "rotate-180"
+                    : "rotate-90"
               }`}
               fill="currentColor"
             />
