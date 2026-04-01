@@ -19,6 +19,7 @@ import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 const MAX_EXPANDED_TEXT_HEIGHT = 260;
 const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+const SUB_KEY = "margelet_subscriptions";
 
 function readGlobalMuted() {
   try {
@@ -36,6 +37,29 @@ function writeGlobalMuted(value: boolean) {
   }
 }
 
+function getSubs(): string[] {
+  try {
+    const raw = localStorage.getItem(SUB_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function toggleSub(handle: string) {
+  const current = getSubs();
+  const exists = current.includes(handle);
+
+  const next = exists
+    ? current.filter((h) => h !== handle)
+    : [...current, handle];
+
+  localStorage.setItem(SUB_KEY, JSON.stringify(next));
+  return next;
+}
+
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
   const parts = text.split(urlRegex);
@@ -47,8 +71,11 @@ function linkifyText(text: string) {
       return <span key={index}>{part}</span>;
     }
 
-    const href =
-      part.startsWith("http") ? part : part.startsWith("t.me/") ? `https://${part}` : `https://${part}`;
+    const href = part.startsWith("http")
+      ? part
+      : part.startsWith("t.me/")
+        ? `https://${part}`
+        : `https://${part}`;
 
     return (
       <a
@@ -87,6 +114,7 @@ export function FeedViewer({
   const [expandedText, setExpandedText] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showCenterControl, setShowCenterControl] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   const media = useMemo(() => {
     return activePost ? normalizeMediaList(activePost) : [];
@@ -100,7 +128,8 @@ export function FeedViewer({
     setExpandedText(false);
     setProgress(0);
     setShowCenterControl(false);
-  }, [activePost?.id]);
+    setSubscribed(activePost ? getSubs().includes(activePost.source.handle) : false);
+  }, [activePost?.id, activePost?.source.handle]);
 
   useEffect(() => {
     setIsMuted(readGlobalMuted());
@@ -276,9 +305,18 @@ export function FeedViewer({
           <div className="absolute right-4 top-4 z-30">
             <button
               type="button"
+              onClick={() => {
+                const next = toggleSub(activePost.source.handle);
+                setSubscribed(next.includes(activePost.source.handle));
+                window.dispatchEvent(new Event("storage"));
+              }}
               className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white"
             >
-              <Bell className="h-5 w-5" />
+              <Bell
+                className={`h-5 w-5 ${
+                  subscribed ? "fill-current text-white" : "text-white"
+                }`}
+              />
             </button>
           </div>
 
