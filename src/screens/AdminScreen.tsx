@@ -188,7 +188,7 @@ export function AdminScreen({
             </div>
 
             <div className="text-sm mb-2">
-              🌍 Countries:
+               🌍 Countries:
               {Object.entries(analytics.countries || {}).map(([k, v]) => (
                 <div key={k}>
                   {k}: {String(v)}
