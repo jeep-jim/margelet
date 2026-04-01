@@ -745,7 +745,7 @@ export function AdminScreen({
                     onClick={() => toggleExpanded(post.id)}
                     className="rounded-xl bg-white/10 px-3 py-2 text-sm"
                   >
-                    {isExpanded ? "Скрыть детали" : "Показать детали"}
+                    {isExpanded ? "Скрыть" : "Детали"}
                   </button>
                 </div>
 
