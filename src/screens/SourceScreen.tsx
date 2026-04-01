@@ -1,10 +1,12 @@
 import {
   ArrowLeft,
+  Bell,
   Image as ImageIcon,
   MoreVertical,
   Play,
   ExternalLink,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { ContentTag, IngestedPost } from "../types/app";
 
@@ -15,6 +17,8 @@ type Props = {
   onBack: () => void;
   onOpenPost: (post: IngestedPost) => void;
 };
+
+const SUB_KEY = "margelet_subscriptions";
 
 const TAG_LABELS: Record<ContentTag, string> = {
   news: "📰 Новости",
@@ -67,6 +71,29 @@ const TAG_LABELS: Record<ContentTag, string> = {
   telegram: "✈️ Telegram",
   other: "🌀 Другое",
 };
+
+function getSubs(): string[] {
+  try {
+    const raw = localStorage.getItem(SUB_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function toggleSub(handle: string) {
+  const current = getSubs();
+  const exists = current.includes(handle);
+
+  const next = exists
+    ? current.filter((h) => h !== handle)
+    : [...current, handle];
+
+  localStorage.setItem(SUB_KEY, JSON.stringify(next));
+  return next;
+}
 
 function getTagLabel(tag: ContentTag) {
   return TAG_LABELS[tag] || "🌀 Другое";
@@ -132,6 +159,12 @@ export function SourceScreen({
 }: Props) {
   const sourcePosts = posts.filter((post) => post.source.handle === sourceHandle);
   const source = sourcePosts[0];
+  const [subscribed, setSubscribed] = useState(false);
+
+  useEffect(() => {
+    if (!source?.source.handle) return;
+    setSubscribed(getSubs().includes(source.source.handle));
+  }, [source?.source.handle]);
 
   if (!source) {
     return (
@@ -232,14 +265,36 @@ export function SourceScreen({
             </div>
           </div>
 
-          <button
-            onClick={openTelegramSource}
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
-            type="button"
-          >
-            <span>Открыть канал</span>
-            <ExternalLink className="h-4 w-4" />
-          </button>
+          <div className="mt-5 flex items-center gap-3">
+            <button
+              onClick={openTelegramSource}
+              className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
+              type="button"
+            >
+              <span>Открыть канал</span>
+              <ExternalLink className="h-4 w-4" />
+            </button>
+
+            <button
+              onClick={() => {
+                const next = toggleSub(source.source.handle);
+                setSubscribed(next.includes(source.source.handle));
+                window.dispatchEvent(new Event("storage"));
+              }}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100"
+              type="button"
+              aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
+              title={subscribed ? "Отключить уведомления" : "Включить уведомления"}
+            >
+              <Bell
+                className={`h-5 w-5 ${
+                  subscribed
+                    ? "fill-neutral-950 text-neutral-950"
+                    : "text-neutral-400"
+                }`}
+              />
+            </button>
+          </div>
         </section>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">

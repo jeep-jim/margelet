@@ -16,6 +16,13 @@ const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 
+type SubscriptionBubble = {
+  handle: string;
+  title: string;
+  avatar: string | null;
+  hasNew: boolean;
+};
+
 function isGifPost(post: IngestedPost) {
   return (
     post.contentType === "gif" ||
@@ -51,18 +58,22 @@ function readSearchQueryFromStorage() {
   }
 }
 
-function readSubscriptionsCount() {
+function readSubscriptionsFromStorage(): string[] {
   try {
     const raw = localStorage.getItem(SUBSCRIPTIONS_STORAGE_KEY);
-    if (!raw) return 0;
+    if (!raw) return [];
 
     const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return 0;
+    if (!Array.isArray(parsed)) return [];
 
-    return parsed.filter((item) => typeof item === "string" && item.trim()).length;
+    return parsed.filter((item): item is string => typeof item === "string" && !!item.trim());
   } catch {
-    return 0;
+    return [];
   }
+}
+
+function readSubscriptionsCount() {
+  return readSubscriptionsFromStorage().length;
 }
 
 function SubscriptionsHint() {
@@ -75,12 +86,62 @@ function SubscriptionsHint() {
 
         <div className="min-w-0">
           <div className="text-sm font-semibold text-neutral-950">
-            Здесь будут новые посты интересных тебе каналов
+            Здесь будут новые посты каналов, в которых включено уведомление
           </div>
-          <div className="mt-1 text-sm leading-6 text-neutral-500">
-            Когда включишь показывать новости от каналов, их новые публикации будут
-            появляться здесь.
-          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SubscriptionsBar({
+  items,
+  onOpen,
+}: {
+  items: SubscriptionBubble[];
+  onOpen: (handle: string) => void;
+}) {
+  if (!items.length) return null;
+
+  return (
+    <div className="mx-auto mb-4 w-full max-w-[720px] px-4">
+      <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex gap-3">
+          {items.map((item) => (
+            <button
+              key={item.handle}
+              type="button"
+              onClick={() => onOpen(item.handle)}
+              className="flex w-[72px] shrink-0 flex-col items-center gap-1.5 text-center"
+            >
+              <div
+                className={`rounded-full p-[2px] ${
+                  item.hasNew
+                    ? "bg-gradient-to-br from-fuchsia-500 via-orange-400 to-yellow-300"
+                    : "bg-neutral-300"
+                }`}
+              >
+                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white">
+                  {item.avatar ? (
+                    <img
+                      src={item.avatar}
+                      alt={item.title}
+                      className="h-full w-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-neutral-200 text-xs font-bold text-neutral-800">
+                      {item.title.slice(0, 2).toUpperCase()}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="w-full truncate text-[11px] font-medium text-neutral-700">
+                {item.title}
+              </div>
+            </button>
+          ))}
         </div>
       </div>
     </div>
@@ -118,6 +179,7 @@ export function FeedScreen({
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [subscriptionsCount, setSubscriptionsCount] = useState(0);
+  const [subscriptionHandles, setSubscriptionHandles] = useState<string[]>([]);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
@@ -133,6 +195,7 @@ export function FeedScreen({
     setSelectedTags(readSelectedTagsFromStorage());
     setSearchQuery(readSearchQueryFromStorage());
     setSubscriptionsCount(readSubscriptionsCount());
+    setSubscriptionHandles(readSubscriptionsFromStorage());
   }, []);
 
   useEffect(() => {
@@ -153,6 +216,7 @@ export function FeedScreen({
 
     const syncSubscriptions = () => {
       setSubscriptionsCount(readSubscriptionsCount());
+      setSubscriptionHandles(readSubscriptionsFromStorage());
     };
 
     window.addEventListener(
@@ -183,6 +247,29 @@ export function FeedScreen({
         Array.isArray(post.media)
     );
   }, [posts]);
+
+  const subscriptionBubbles = useMemo(() => {
+    if (subscriptionHandles.length === 0) return [];
+
+    const seen = new Set<string>();
+    const result: SubscriptionBubble[] = [];
+
+    for (const post of safePosts) {
+      const handle = post.source.handle;
+      if (!subscriptionHandles.includes(handle)) continue;
+      if (seen.has(handle)) continue;
+
+      seen.add(handle);
+      result.push({
+        handle,
+        title: post.source.title,
+        avatar: post.source.avatar,
+        hasNew: true,
+      });
+    }
+
+    return result;
+  }, [safePosts, subscriptionHandles]);
 
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
@@ -359,6 +446,13 @@ export function FeedScreen({
       />
 
       {!tagsOpen && subscriptionsCount === 0 ? <SubscriptionsHint /> : null}
+
+      {!tagsOpen && subscriptionsCount > 0 ? (
+        <SubscriptionsBar
+          items={subscriptionBubbles}
+          onOpen={(handle) => openSource(handle)}
+        />
+      ) : null}
 
       {actionError ? (
         <div className="mx-auto mb-3 w-full max-w-[720px] px-4">

@@ -15,13 +15,13 @@ export const TAG_OPTIONS: FeedOption<FeedTag>[] = [
   { value: "technology", label: "💻 Технологии" },
   { value: "ai", label: "🤖 AI" },
   { value: "science", label: "🔬 Наука" },
-  { value: "space", label: "🚀 Космос" },
+  { value: "space", label: "🌀 Космос" },
   { value: "gadgets", label: "📱 Гаджеты" },
   { value: "telegram", label: "✈️ Telegram" },
 
   { value: "education", label: "📚 Образование" },
   { value: "history", label: "🏺 История" },
-  { value: "culture", label: "🏛 Культура" },
+  { value: "culture", label: "🎭 Культура" },
   { value: "books", label: "📖 Книги" },
 
   { value: "art", label: "🎨 Арт" },
@@ -42,7 +42,7 @@ export const TAG_OPTIONS: FeedOption<FeedTag>[] = [
   { value: "fitness", label: "🏋️ Фитнес" },
   { value: "health", label: "🩺 Здоровье" },
 
-  { value: "travel", label: "✈️ Путешествия" },
+  { value: "travel", label: "🧳 Путешествия" },
   { value: "food", label: "🍔 Еда" },
   { value: "recipes", label: "🍳 Рецепты" },
 
@@ -59,12 +59,12 @@ export const TAG_OPTIONS: FeedOption<FeedTag>[] = [
   { value: "celebrities", label: "⭐ Звёзды" },
 
   { value: "marketing", label: "📣 Маркетинг" },
-  { value: "startups", label: "🛠 Стартапы" },
-  { value: "jobs", label: "🧳 Работа" },
+  { value: "startups", label: "🚀 Стартапы" },
+  { value: "jobs", label: "🛠 Работа" },
   { value: "real_estate", label: "🏠 Недвижимость" },
   { value: "auto", label: "🚗 Авто" },
 
-  { value: "other", label: "🌀 Другое" },
+  { value: "other", label: "☝ Другое" },
 ];
 
 export const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);

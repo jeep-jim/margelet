@@ -301,7 +301,7 @@ export function FeedTextReaderModal({
                 onClick={() => window.location.assign(`/${post.source.handle}`)}
                 className="mb-4 flex items-center gap-3 text-left"
               >
-                <FeedSourceAvatar post={post} size="md" />
+                <FeedSourceAvatar post={post} />
 
                 <div className="min-w-0">
                   <div className="flex items-center gap-1.5">
