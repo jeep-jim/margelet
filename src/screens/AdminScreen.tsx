@@ -25,6 +25,16 @@ type AccessGrant = {
   isActive: boolean;
 };
 
+type AnalyticsResponse = {
+  views: number;
+  countries: Record<string, string>;
+  devices: Record<string, string>;
+  today: number;
+  last7: number;
+  last30: number;
+  days: Record<string, string>;
+};
+
 const ADMIN_TELEGRAM_ID = "1372669404";
 
 function buildSearchText(post: IngestedPost) {
@@ -139,7 +149,7 @@ export function AdminScreen({
     "all" | "published" | "pending" | "blocked"
   >("all");
 
-  const [analytics, setAnalytics] = useState<any>(null);
+  const [analytics, setAnalytics] = useState<AnalyticsResponse | null>(null);
   const [grants, setGrants] = useState<AccessGrant[]>([]);
   const [grantsLoading, setGrantsLoading] = useState(false);
   const [savingGrant, setSavingGrant] = useState(false);
@@ -201,7 +211,7 @@ export function AdminScreen({
       body: JSON.stringify({ telegramUserId }),
     })
       .then((r) => r.json())
-      .then(setAnalytics)
+      .then((data) => setAnalytics(data))
       .catch(() => {});
   }, [telegramUserId, hasAdminAccess]);
 
@@ -438,19 +448,42 @@ export function AdminScreen({
           </div>
         </div>
 
-        {analytics && (
+        {analytics ? (
           <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
             <div className="mb-3 text-lg font-semibold">Аналитика</div>
 
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 md:grid-cols-4">
               <div className="rounded-xl bg-black/20 p-3">
-                <div className="text-sm text-white/50">Просмотры</div>
+                <div className="text-sm text-white/50">Сегодня</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.today || 0}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">7 дней</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.last7 || 0}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">30 дней</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.last30 || 0}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">Всего</div>
                 <div className="mt-1 text-2xl font-semibold">
                   {analytics.views || 0}
                 </div>
               </div>
+            </div>
 
-              <div className="rounded-xl bg-black/20 p-3 md:col-span-2">
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              <div className="rounded-xl bg-black/20 p-3">
                 <div className="text-sm text-white/50">Страны</div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {sortedCountries.length > 0 ? (
@@ -468,7 +501,7 @@ export function AdminScreen({
                 </div>
               </div>
 
-              <div className="rounded-xl bg-black/20 p-3 md:col-span-3">
+              <div className="rounded-xl bg-black/20 p-3">
                 <div className="text-sm text-white/50">Устройства</div>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {sortedDevices.length > 0 ? (
@@ -488,11 +521,11 @@ export function AdminScreen({
             </div>
 
             <div className="mt-3 text-xs leading-6 text-white/35">
-              Это реальные, но приблизительные данные MVP: страна определяется по
-              Vercel IP-заголовку, устройство — по user-agent.
+              Это реальные, но приблизительные данные MVP. Твои просмотры не
+              считаются, если ты заходишь под своим Telegram ID администратора.
             </div>
           </div>
-        )}
+        ) : null}
 
         <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
           <div className="mb-4 text-lg font-semibold">Управление доступом</div>
@@ -745,7 +778,7 @@ export function AdminScreen({
                     onClick={() => toggleExpanded(post.id)}
                     className="rounded-xl bg-white/10 px-3 py-2 text-sm"
                   >
-                    {isExpanded ? "Скрыть" : "Детали"}
+                    {isExpanded ? "Скрыть детали" : "Показать детали"}
                   </button>
                 </div>
 

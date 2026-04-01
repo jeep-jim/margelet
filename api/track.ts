@@ -1,6 +1,12 @@
 import { redis } from "./lib/kv.js";
 
 const STATS_KEY = "margelet:stats";
+const ADMIN_IDS = ["1372669404"];
+
+function getTodayKey() {
+  const d = new Date();
+  return d.toISOString().slice(0, 10); // YYYY-MM-DD
+}
 
 function getCountry(req: any) {
   return req.headers["x-vercel-ip-country"] || "unknown";
@@ -20,17 +26,33 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
+    const body =
+      typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
+
+    const telegramUserId =
+      req.headers["x-telegram-id"] || body.telegramUserId;
+
+    // ❌ НЕ считаем админа
+    if (telegramUserId && ADMIN_IDS.includes(String(telegramUserId))) {
+      return res.status(200).json({ ok: true, skipped: "admin" });
+    }
+
     const ua = req.headers["user-agent"] || "";
     const country = getCountry(req);
     const device = getDevice(ua);
 
-    // глобальный счётчик
+    const today = getTodayKey();
+
+    // 🔥 ОБЩИЕ
     await redis.hincrby(STATS_KEY, "views", 1);
 
-    // страна
+    // 🔥 ПО ДНЯМ
+    await redis.hincrby(`${STATS_KEY}:days`, today, 1);
+
+    // 🔥 СТРАНЫ
     await redis.hincrby(`${STATS_KEY}:countries`, country, 1);
 
-    // устройство
+    // 🔥 УСТРОЙСТВА
     await redis.hincrby(`${STATS_KEY}:devices`, device, 1);
 
     return res.status(200).json({ ok: true });

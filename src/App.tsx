@@ -377,8 +377,17 @@ export default function App() {
   }, [current]);
 
   useEffect(() => {
-    fetch("/api/track", { method: "POST" }).catch(() => {});
-  }, []);
+    fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": currentTelegramUser?.id || "",
+      },
+      body: JSON.stringify({
+        telegramUserId: currentTelegramUser?.id || null,
+      }),
+    }).catch(() => {});
+  }, [currentTelegramUser]);
 
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
