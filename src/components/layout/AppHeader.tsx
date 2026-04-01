@@ -50,7 +50,6 @@ export function AppHeader({ current, setCurrent }: Props) {
   }, []);
 
   const isCreatorActive = current === "creator";
-  const showBackToFeed =
     current === "creator" || current === "add" || current === "source";
 
   const handleLeftAction = () => {
