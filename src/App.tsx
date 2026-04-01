@@ -14,8 +14,10 @@ const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
 const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
 const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
+const CONNECTED_CHANNEL_STORAGE_KEY = "margelet_connected_channel";
 
 const ADMIN_HIDDEN_PATH = "/jim/admin";
+const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
 type TgUser = {
   id: string;
@@ -23,6 +25,8 @@ type TgUser = {
   username?: string;
   photo_url?: string;
 };
+
+type UserRole = "guest" | "user" | "channel_owner" | "admin";
 
 function decodeBase64Url(value: string) {
   const base64 = value.replace(/-/g, "+").replace(/_/g, "/");
@@ -65,6 +69,21 @@ function readTelegramUserFromStorage(): TgUser | null {
     localStorage.removeItem(TG_STORAGE_KEY);
     return null;
   }
+}
+
+function hasConnectedChannel() {
+  try {
+    return !!localStorage.getItem(CONNECTED_CHANNEL_STORAGE_KEY);
+  } catch {
+    return false;
+  }
+}
+
+function resolveCurrentUserRole(user: TgUser | null): UserRole {
+  if (!user) return "guest";
+  if (ADMIN_TELEGRAM_IDS.has(user.id)) return "admin";
+  if (hasConnectedChannel()) return "channel_owner";
+  return "user";
 }
 
 function normalizePathname(pathname: string) {
@@ -124,6 +143,11 @@ export default function App() {
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
+
+  const userRole = useMemo(
+    () => resolveCurrentUserRole(currentTelegramUser),
+    [currentTelegramUser]
+  );
 
   const sharedPath = useMemo(() => {
     if (typeof window === "undefined") return null;
@@ -292,6 +316,10 @@ export default function App() {
     document.title = "MargeleT";
   }, [current]);
 
+  useEffect(() => {
+    fetch("/api/track", { method: "POST" }).catch(() => {});
+  }, []);
+
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
@@ -357,6 +385,7 @@ export default function App() {
       body: JSON.stringify({
         url,
         tag,
+        role: userRole === "guest" ? "user" : userRole,
         addedByTelegramId: currentTelegramUser?.id || null,
         addedByUsername: currentTelegramUser?.username || null,
       }),
@@ -419,7 +448,12 @@ export default function App() {
           ) : null}
 
           {current === "add" ? (
-            <AddScreen locale={locale} onAdd={handleAdd} />
+            <AddScreen
+              locale={locale}
+              currentTelegramUser={currentTelegramUser}
+              userRole={userRole}
+              onAdd={handleAdd}
+            />
           ) : null}
 
           {current === "creator" ? (

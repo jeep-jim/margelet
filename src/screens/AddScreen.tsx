@@ -9,15 +9,12 @@ import {
   ShieldCheck,
   Lock,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { ContentTag, Locale } from "../types/app";
 import { Input } from "../components/ui/Input";
 import { normalizeTelegramUrl } from "../lib/telegram";
 
 const TELEGRAM_BOT_ID = "8298054487";
-const TG_STORAGE_KEY = "margelet_tg_user";
-const ROLE_STORAGE_KEY = "margelet_user_role";
-const CONNECTED_CHANNEL_STORAGE_KEY = "margelet_connected_channel";
 const LAST_SUBMIT_AT_KEY = "margelet_last_submit_at";
 
 const TAG_OPTIONS: { value: ContentTag; label: string }[] = [
@@ -37,14 +34,6 @@ const TAG_OPTIONS: { value: ContentTag; label: string }[] = [
   { value: "other", label: "Другое" },
 ];
 
-type Props = {
-  locale: Locale;
-  onAdd: (payload: {
-    url: string;
-    tag: ContentTag;
-  }) => Promise<void>;
-};
-
 type TgUser = {
   id: string;
   first_name: string;
@@ -52,28 +41,26 @@ type TgUser = {
   photo_url?: string;
 };
 
+type UserRole = "guest" | "user" | "channel_owner" | "admin";
+
+type Props = {
+  locale: Locale;
+  currentTelegramUser: TgUser | null;
+  userRole: UserRole;
+  onAdd: (payload: {
+    url: string;
+    tag: ContentTag;
+  }) => Promise<void>;
+};
+
 type ParsedTelegramPost = {
   channel: string;
   postId: string;
 };
 
-type UserRole = "guest" | "user" | "channel_owner" | "admin";
-
 function getTelegramAuthUrl() {
   const origin = window.location.origin;
   return `https://oauth.telegram.org/auth?bot_id=${TELEGRAM_BOT_ID}&origin=${origin}&request_access=write`;
-}
-
-function readTelegramUserFromStorage(): TgUser | null {
-  const raw = localStorage.getItem(TG_STORAGE_KEY);
-  if (!raw) return null;
-
-  try {
-    return JSON.parse(raw) as TgUser;
-  } catch {
-    localStorage.removeItem(TG_STORAGE_KEY);
-    return null;
-  }
 }
 
 function parseTelegramPostUrl(raw: string): ParsedTelegramPost | null {
@@ -133,20 +120,6 @@ function hasDailyDemoLimitReached(role: UserRole) {
   return lastSubmitAt >= getStartOfTodayTimestamp();
 }
 
-function resolveUserRole(user: TgUser | null): UserRole {
-  if (!user) return "guest";
-
-  const storedRole = localStorage.getItem(ROLE_STORAGE_KEY);
-  if (storedRole === "admin") return "admin";
-  if (storedRole === "channel_owner") return "channel_owner";
-  if (storedRole === "user") return "user";
-
-  const connectedChannel = localStorage.getItem(CONNECTED_CHANNEL_STORAGE_KEY);
-  if (connectedChannel) return "channel_owner";
-
-  return "user";
-}
-
 function getRoleTitle(role: UserRole) {
   switch (role) {
     case "admin":
@@ -163,7 +136,7 @@ function getRoleTitle(role: UserRole) {
 function getRoleDescription(role: UserRole) {
   switch (role) {
     case "admin":
-      return "Полный доступ. Можно добавлять посты без демо-лимита.";
+      return "Ты владелец ресурса. Для тебя нет демо-лимита и ты можешь добавлять посты свободно.";
     case "channel_owner":
       return "Канал подключён. Можно публиковать посты без суточного лимита.";
     case "user":
@@ -171,6 +144,28 @@ function getRoleDescription(role: UserRole) {
     default:
       return "Авторизуйтесь через Telegram, чтобы добавить пост.";
   }
+}
+
+function normalizeSubmitError(message: string) {
+  const value = String(message || "").trim();
+
+  if (!value) {
+    return "Не удалось сохранить пост.";
+  }
+
+  if (value === "Daily limit reached" || value === "DAILY_LIMIT_REACHED") {
+    return "На сегодня лимит уже исчерпан.";
+  }
+
+  if (value === "Tag required for user") {
+    return "Для пробного доступа нужно выбрать тег.";
+  }
+
+  if (value === "Telegram auth required") {
+    return "Сначала авторизуйтесь через Telegram.";
+  }
+
+  return value;
 }
 
 function AuthBlock() {
@@ -189,8 +184,8 @@ function AuthBlock() {
           </div>
 
           <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
-            Авторизуйтесь, чтобы добавлять Telegram-посты. Обычный доступ даёт
-            демо-лимит, а полный режим откроется после подключения канала.
+            Авторизуйтесь, чтобы добавлять Telegram-посты. Для владельцев каналов и
+            для администратора действуют полные права доступа.
           </div>
 
           <button
@@ -213,11 +208,11 @@ function AuthBlock() {
               </div>
               <div className="flex items-center gap-2">
                 <Plus className="h-4 w-4" />
-                <span>Демо-доступ для обычного пользователя</span>
+                <span>Добавление в ленту</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-4 w-4" />
-                <span>Основной поток — через подключённые каналы</span>
+                <span>Дальше ingest сделает всё сам</span>
               </div>
             </div>
           </div>
@@ -277,8 +272,8 @@ function AccessCard({
             role === "admin"
               ? "bg-violet-100 text-violet-700"
               : role === "channel_owner"
-              ? "bg-emerald-100 text-emerald-700"
-              : "bg-neutral-100 text-neutral-700"
+                ? "bg-emerald-100 text-emerald-700"
+                : "bg-neutral-100 text-neutral-700"
           }`}
         >
           {role === "admin" || role === "channel_owner" ? (
@@ -294,8 +289,8 @@ function AccessCard({
         <div className="mt-4 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-700">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>
-            Лимит на сегодня уже использован. Завтра можно будет добавить ещё
-            один пост, либо подключи канал для нормального доступа.
+            Лимит на сегодня уже использован. Завтра можно будет добавить ещё один
+            пост.
           </span>
         </div>
       ) : null}
@@ -303,39 +298,24 @@ function AccessCard({
   );
 }
 
-export function AddScreen({ onAdd }: Props) {
+export function AddScreen({
+  locale,
+  currentTelegramUser,
+  userRole,
+  onAdd,
+}: Props) {
   const [url, setUrl] = useState("");
-  const [user, setUser] = useState<TgUser | null>(null);
   const [submitError, setSubmitError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [selectedTag, setSelectedTag] = useState<ContentTag | null>(null);
   const [tagsOpen, setTagsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    const syncUser = () => {
-      setUser(readTelegramUserFromStorage());
-    };
-
-    syncUser();
-
-    window.addEventListener("focus", syncUser);
-    window.addEventListener("storage", syncUser);
-
-    return () => {
-      window.removeEventListener("focus", syncUser);
-      window.removeEventListener("storage", syncUser);
-    };
-  }, []);
-
-  const isAuthorized = !!user;
-  const role = useMemo(() => resolveUserRole(user), [user]);
+  const isAuthorized = !!currentTelegramUser;
+  const role = userRole;
   const isDemoUser = role === "user";
   const isPrivileged = role === "channel_owner" || role === "admin";
-  const demoLimitReached = useMemo(
-    () => hasDailyDemoLimitReached(role),
-    [role, isSubmitting, successMessage]
-  );
+  const demoLimitReached = hasDailyDemoLimitReached(role);
 
   const parsedPost = useMemo(() => parseTelegramPostUrl(url), [url]);
 
@@ -353,11 +333,11 @@ export function AddScreen({ onAdd }: Props) {
     }
 
     if (role === "admin") {
-      return "Админ может публиковать без демо-лимита.";
+      return "Ты админ. Для тебя демо-лимит не действует.";
     }
 
     if (role === "channel_owner") {
-      return "Подключённый канал публикует без демо-лимита. Позже сюда добавим defaultTag от канала.";
+      return "Подключённый канал публикует без демо-лимита.";
     }
 
     if (demoLimitReached) {
@@ -390,7 +370,7 @@ export function AddScreen({ onAdd }: Props) {
 
     if (isDemoUser && demoLimitReached) {
       setSubmitError(
-        "На сегодня лимит уже исчерпан. Завтра можно добавить ещё один пост, либо подключи канал для полного доступа."
+        "На сегодня лимит уже исчерпан. Завтра можно добавить ещё один пост."
       );
       return;
     }
@@ -435,7 +415,7 @@ export function AddScreen({ onAdd }: Props) {
 
       setSuccessMessage(
         isPrivileged
-          ? "Пост добавлен. Для подключённых каналов позже сюда подключим defaultTag и автологику."
+          ? "Пост добавлен в ленту."
           : "Пост добавлен в ленту."
       );
       setUrl("");
@@ -444,7 +424,9 @@ export function AddScreen({ onAdd }: Props) {
     } catch (error: any) {
       console.error(error);
       setSubmitError(
-        String(error?.message || "Не удалось сохранить пост в общую ленту.")
+        normalizeSubmitError(
+          String(error?.message || "Не удалось сохранить пост.")
+        )
       );
     } finally {
       setIsSubmitting(false);
@@ -455,21 +437,19 @@ export function AddScreen({ onAdd }: Props) {
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
       <div className="mx-auto max-w-[720px]">
         <div className="text-[28px] font-semibold tracking-tight">
-          Добавить пост
+          {locale === "en" ? "Add post" : "Добавить пост"}
         </div>
 
         {!isAuthorized ? <AuthBlock /> : null}
 
         <AccessCard
-          user={user}
+          user={currentTelegramUser}
           role={role}
           demoLimitReached={demoLimitReached}
         />
 
         <div className="mt-6 rounded-[32px] border border-neutral-200 bg-white p-5 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-          <div className="mb-4 text-[18px] font-semibold">
-            Ссылка на Telegram-пост
-          </div>
+          <div className="mb-4 text-[18px] font-semibold">Ссылка на Telegram-пост</div>
 
           <Input
             value={url}
@@ -488,9 +468,7 @@ export function AddScreen({ onAdd }: Props) {
           ) : url.trim() && parsedPost ? (
             <div className="mt-3 flex items-start gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
               <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>
-                Ссылка распознана: @{parsedPost.channel} / {parsedPost.postId}
-              </span>
+              <span>Ссылка распознана: @{parsedPost.channel} / {parsedPost.postId}</span>
             </div>
           ) : null}
 
@@ -504,18 +482,14 @@ export function AddScreen({ onAdd }: Props) {
               onClick={() => setTagsOpen((prev) => !prev)}
               className="flex w-full items-center justify-between rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-left"
             >
-              <span
-                className={selectedTag ? "text-neutral-950" : "text-neutral-400"}
-              >
+              <span className={selectedTag ? "text-neutral-950" : "text-neutral-400"}>
                 {selectedTag
                   ? getTagLabel(selectedTag)
                   : tagRequired
-                  ? "Выбери тег"
-                  : "Тег можно не выбирать пока"}
+                    ? "Выбери тег"
+                    : "Тег можно не выбирать"}
               </span>
-              <ChevronDown
-                className={`h-4 w-4 transition ${tagsOpen ? "rotate-180" : ""}`}
-              />
+              <ChevronDown className={`h-4 w-4 transition ${tagsOpen ? "rotate-180" : ""}`} />
             </button>
 
             {tagsOpen ? (
@@ -547,9 +521,8 @@ export function AddScreen({ onAdd }: Props) {
 
             {!tagRequired ? (
               <div className="mt-3 text-sm leading-6 text-neutral-500">
-                Для подключённых каналов позже подставим defaultTag
-                автоматически. Пока без выбора тега отправим как{" "}
-                <span className="font-medium text-neutral-700">other</span>.
+                Для админа и владельца канала тег можно не выбирать. Если не выбран,
+                отправим как <span className="font-medium text-neutral-700">other</span>.
               </div>
             ) : null}
           </div>
@@ -581,25 +554,16 @@ export function AddScreen({ onAdd }: Props) {
               {isSubmitting
                 ? "Публикуем..."
                 : isDemoUser && demoLimitReached
-                ? "Лимит на сегодня исчерпан"
-                : "Опубликовать"}
+                  ? "Лимит на сегодня исчерпан"
+                  : "Опубликовать"}
             </span>
           </button>
         </div>
 
         <div className="mt-6 grid gap-3">
-          <RuleItem
-            icon={LinkIcon}
-            text="Добавляй только публичные посты из Telegram."
-          />
-          <RuleItem
-            icon={Globe}
-            text="Контент попадает в ленту временно и живёт ограниченное время."
-          />
-          <RuleItem
-            icon={CheckCircle2}
-            text="Сейчас обычный доступ ограничен. Основной поток контента будет идти через подключённые каналы."
-          />
+          <RuleItem icon={LinkIcon} text="Добавляй только публичные посты из Telegram." />
+          <RuleItem icon={Globe} text="Контент попадает в ленту временно и живёт ограниченное время." />
+          <RuleItem icon={CheckCircle2} text="Для администратора и владельца канала демо-лимит не действует." />
         </div>
       </div>
     </div>
