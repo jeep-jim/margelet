@@ -52,8 +52,82 @@ function formatDate(value?: string | null) {
   return new Date(ms).toLocaleString();
 }
 
+function getStatusLabel(status?: string) {
+  switch (status) {
+    case "published":
+      return "Опубликован";
+    case "pending":
+      return "На проверке";
+    case "blocked":
+      return "Заблокирован";
+    default:
+      return "Опубликован";
+  }
+}
+
+function getPlanLabel(plan?: string) {
+  switch (plan) {
+    case "free":
+      return "Бесплатно";
+    case "pro_1m":
+      return "PRO 1 мес";
+    case "pro_3m":
+      return "PRO 3 мес";
+    case "pro_12m":
+      return "PRO 12 мес";
+    default:
+      return plan || "—";
+  }
+}
+
+function getRoleLabel(role?: string) {
+  switch (role) {
+    case "user":
+      return "Пользователь";
+    case "channel_owner":
+      return "Владелец канала";
+    case "admin":
+      return "Админ";
+    default:
+      return role || "—";
+  }
+}
+
+function getPreviewUrl(post: IngestedPost) {
+  return (
+    post.media.find((item) => item.kind === "image")?.url ||
+    post.media.find((item) => item.kind === "video")?.poster ||
+    post.source.avatar ||
+    null
+  );
+}
+
+function getContentTypeLabel(type?: string) {
+  switch (type) {
+    case "text":
+      return "Текст";
+    case "image":
+      return "Изображение";
+    case "gallery":
+      return "Галерея";
+    case "gif":
+      return "GIF";
+    case "video":
+      return "Видео";
+    case "audio":
+      return "Аудио";
+    case "file":
+      return "Файл";
+    case "mixed":
+      return "Смешанный";
+    case "external_media":
+      return "Внешнее медиа";
+    default:
+      return type || "—";
+  }
+}
+
 export function AdminScreen({
-  locale,
   telegramUserId,
   onClose,
   onDeletePost,
@@ -70,6 +144,7 @@ export function AdminScreen({
   const [grantsLoading, setGrantsLoading] = useState(false);
   const [savingGrant, setSavingGrant] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [expandedPostIds, setExpandedPostIds] = useState<number[]>([]);
 
   const [targetTelegramUserId, setTargetTelegramUserId] = useState("");
   const [targetUsername, setTargetUsername] = useState("");
@@ -169,8 +244,39 @@ export function AdminScreen({
     });
   }, [posts, query, statusFilter]);
 
+  const stats = useMemo(() => {
+    return {
+      total: posts.length,
+      pending: posts.filter((post) => (post.status || "published") === "pending")
+        .length,
+      blocked: posts.filter((post) => (post.status || "published") === "blocked")
+        .length,
+      published: posts.filter(
+        (post) => (post.status || "published") === "published"
+      ).length,
+    };
+  }, [posts]);
+
+  const sortedCountries = useMemo(() => {
+    return Object.entries(analytics?.countries || {}).sort(
+      (a, b) => Number(b[1]) - Number(a[1])
+    );
+  }, [analytics]);
+
+  const sortedDevices = useMemo(() => {
+    return Object.entries(analytics?.devices || {}).sort(
+      (a, b) => Number(b[1]) - Number(a[1])
+    );
+  }, [analytics]);
+
+  const toggleExpanded = (id: number) => {
+    setExpandedPostIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
   const handleDelete = async (id: number) => {
-    if (!window.confirm(locale === "en" ? "Delete post?" : "Удалить пост?")) return;
+    if (!window.confirm("Удалить пост?")) return;
 
     try {
       setDeletingId(id);
@@ -197,7 +303,7 @@ export function AdminScreen({
   const handleSaveGrant = async () => {
     if (!telegramUserId) return;
     if (!targetTelegramUserId.trim()) {
-      window.alert(locale === "en" ? "Enter Telegram ID" : "Укажи Telegram ID");
+      window.alert("Укажи Telegram ID");
       return;
     }
 
@@ -241,7 +347,7 @@ export function AdminScreen({
 
   const handleDeleteGrant = async (targetId: string) => {
     if (!telegramUserId) return;
-    if (!window.confirm(locale === "en" ? "Delete access?" : "Удалить доступ?")) return;
+    if (!window.confirm("Удалить доступ?")) return;
 
     try {
       const res = await fetch("/api/admin-access", {
@@ -269,124 +375,176 @@ export function AdminScreen({
 
   if (!hasAdminAccess) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        {locale === "en" ? "Access denied" : "Нет доступа"}
+      <div className="flex min-h-screen items-center justify-center bg-black text-white">
+        Нет доступа
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white p-4">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#0a0a0f] px-3 py-4 text-white sm:px-4">
+      <div className="mx-auto max-w-6xl">
         {state === "loading" && (
-          <div className="mb-4 text-sm text-white/50">
-            {locale === "en" ? "loading..." : "загрузка..."}
-          </div>
+          <div className="mb-4 text-sm text-white/50">загрузка...</div>
         )}
 
         {state === "error" && (
-          <div className="mb-4 text-sm text-red-400">
-            {locale === "en" ? "load error" : "ошибка загрузки"}
-          </div>
+          <div className="mb-4 text-sm text-red-400">ошибка загрузки</div>
         )}
 
-        <div className="mb-4 flex justify-between">
+        <div className="mb-4 flex items-start justify-between gap-3">
           <div>
-            <div className="text-xl font-semibold">Admin</div>
-            <div className="text-sm text-white/40">
-              {locale === "en"
-                ? "management + analytics + access"
-                : "управление + аналитика + доступы"}
+            <div className="text-[26px] font-semibold tracking-tight">Admin</div>
+            <div className="text-sm text-white/45">
+              управление · аналитика · доступы
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-white/10 rounded-full"
+            className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
           >
-            {locale === "en" ? "back" : "назад"}
+            назад
           </button>
         </div>
 
+        <div className="mb-4 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              Всего
+            </div>
+            <div className="mt-2 text-2xl font-semibold">{stats.total}</div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              Опубликовано
+            </div>
+            <div className="mt-2 text-2xl font-semibold">{stats.published}</div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              На проверке
+            </div>
+            <div className="mt-2 text-2xl font-semibold">{stats.pending}</div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              Заблокировано
+            </div>
+            <div className="mt-2 text-2xl font-semibold">{stats.blocked}</div>
+          </div>
+        </div>
+
         {analytics && (
-          <div className="mb-6 rounded-xl bg-white/5 border border-white/10 p-4">
-            <div className="mb-2 text-lg font-semibold">Analytics</div>
+          <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="mb-3 text-lg font-semibold">Аналитика</div>
 
-            <div className="mb-2 text-sm">👁 Views: {analytics.views}</div>
-
-            <div className="mb-2 text-sm">
-              🌍 Countries:
-              {Object.entries(analytics.countries || {}).map(([k, v]) => (
-                <div key={k}>
-                  {k}: {String(v)}
+            <div className="grid gap-3 md:grid-cols-3">
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">Просмотры</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.views || 0}
                 </div>
-              ))}
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3 md:col-span-2">
+                <div className="text-sm text-white/50">Страны</div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {sortedCountries.length > 0 ? (
+                    sortedCountries.map(([k, v]) => (
+                      <div
+                        key={k}
+                        className="rounded-full bg-white/10 px-3 py-1 text-sm"
+                      >
+                        {k}: {String(v)}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-sm text-white/35">пока пусто</div>
+                  )}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3 md:col-span-3">
+                <div className="text-sm text-white/50">Устройства</div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {sortedDevices.length > 0 ? (
+                    sortedDevices.map(([k, v]) => (
+                      <div
+                        key={k}
+                        className="rounded-full bg-white/10 px-3 py-1 text-sm"
+                      >
+                        {k}: {String(v)}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-sm text-white/35">пока пусто</div>
+                  )}
+                </div>
+              </div>
             </div>
 
-            <div className="text-sm">
-              📱 Devices:
-              {Object.entries(analytics.devices || {}).map(([k, v]) => (
-                <div key={k}>
-                  {k}: {String(v)}
-                </div>
-              ))}
+            <div className="mt-3 text-xs leading-6 text-white/35">
+              Это реальные, но приблизительные данные MVP: страна определяется по
+              Vercel IP-заголовку, устройство — по user-agent.
             </div>
           </div>
         )}
 
-        <div className="mb-6 rounded-xl border border-white/10 bg-white/5 p-4">
-          <div className="mb-4 text-lg font-semibold">
-            {locale === "en" ? "Access management" : "Управление доступом"}
-          </div>
+        <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="mb-4 text-lg font-semibold">Управление доступом</div>
 
           <div className="grid gap-3 md:grid-cols-2">
             <input
               value={targetTelegramUserId}
               onChange={(event) => setTargetTelegramUserId(event.target.value)}
               placeholder="Telegram ID"
-              className="rounded-xl bg-white/10 px-4 py-3 outline-none"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
             />
 
             <input
               value={targetUsername}
               onChange={(event) => setTargetUsername(event.target.value)}
               placeholder="@username"
-              className="rounded-xl bg-white/10 px-4 py-3 outline-none"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
             />
 
             <select
               value={grantRole}
               onChange={(event) => setGrantRole(event.target.value as AccessRole)}
-              className="rounded-xl bg-white/10 px-4 py-3 outline-none"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
             >
-              <option value="user">user</option>
-              <option value="channel_owner">channel_owner</option>
-              <option value="admin">admin</option>
+              <option value="user">Пользователь</option>
+              <option value="channel_owner">Владелец канала</option>
+              <option value="admin">Админ</option>
             </select>
 
             <select
               value={grantPlan}
               onChange={(event) => setGrantPlan(event.target.value as AccessPlan)}
-              className="rounded-xl bg-white/10 px-4 py-3 outline-none"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
             >
-              <option value="free">free</option>
-              <option value="pro_1m">pro_1m</option>
-              <option value="pro_3m">pro_3m</option>
-              <option value="pro_12m">pro_12m</option>
+              <option value="free">Бесплатно</option>
+              <option value="pro_1m">PRO 1 мес</option>
+              <option value="pro_3m">PRO 3 мес</option>
+              <option value="pro_12m">PRO 12 мес</option>
             </select>
 
             <input
               value={durationDays}
               onChange={(event) => setDurationDays(event.target.value)}
-              placeholder={locale === "en" ? "duration days" : "срок в днях"}
-              className="rounded-xl bg-white/10 px-4 py-3 outline-none"
+              placeholder="Срок в днях"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
             />
 
             <input
               value={grantNote}
               onChange={(event) => setGrantNote(event.target.value)}
-              placeholder={locale === "en" ? "note / barter / comment" : "заметка / бартер / комментарий"}
-              className="rounded-xl bg-white/10 px-4 py-3 outline-none"
+              placeholder="Заметка / бартер / комментарий"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
             />
           </div>
 
@@ -396,30 +554,18 @@ export function AdminScreen({
               void handleSaveGrant();
             }}
             disabled={savingGrant}
-            className="mt-4 rounded-full bg-white px-4 py-2 text-black disabled:opacity-60"
+            className="mt-4 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
           >
-            {savingGrant
-              ? locale === "en"
-                ? "saving..."
-                : "сохраняю..."
-              : locale === "en"
-                ? "save access"
-                : "сохранить доступ"}
+            {savingGrant ? "сохраняю..." : "сохранить доступ"}
           </button>
 
           <div className="mt-5">
-            <div className="mb-2 text-sm text-white/50">
-              {locale === "en" ? "current grants" : "текущие доступы"}
-            </div>
+            <div className="mb-2 text-sm text-white/45">Текущие доступы</div>
 
             {grantsLoading ? (
-              <div className="text-sm text-white/50">
-                {locale === "en" ? "loading..." : "загрузка..."}
-              </div>
+              <div className="text-sm text-white/45">загрузка...</div>
             ) : grants.length === 0 ? (
-              <div className="text-sm text-white/40">
-                {locale === "en" ? "no grants yet" : "доступов пока нет"}
-              </div>
+              <div className="text-sm text-white/35">доступов пока нет</div>
             ) : (
               <div className="space-y-3">
                 {grants.map((grant) => (
@@ -427,10 +573,12 @@ export function AdminScreen({
                     key={grant.telegramUserId}
                     className="rounded-xl border border-white/10 bg-black/20 p-4"
                   >
-                    <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div className="flex items-start justify-between gap-3">
                       <div>
                         <div className="font-semibold">
-                          {grant.username ? `@${grant.username}` : grant.telegramUserId}
+                          {grant.username
+                            ? `@${grant.username}`
+                            : grant.telegramUserId}
                         </div>
                         <div className="mt-1 text-xs text-white/50">
                           ID: {grant.telegramUserId}
@@ -444,21 +592,15 @@ export function AdminScreen({
                         }}
                         className="rounded-full bg-red-500 px-3 py-1 text-sm"
                       >
-                        {locale === "en" ? "remove" : "удалить"}
+                        удалить
                       </button>
                     </div>
 
                     <div className="mt-3 grid gap-2 text-sm text-white/75 md:grid-cols-2">
-                      <div>role: {grant.role}</div>
-                      <div>plan: {grant.plan}</div>
-                      <div>
-                        {locale === "en" ? "active:" : "активен:"}{" "}
-                        {grant.isActive ? "yes" : "no"}
-                      </div>
-                      <div>
-                        {locale === "en" ? "expires:" : "истекает:"}{" "}
-                        {formatDate(grant.expiresAt)}
-                      </div>
+                      <div>Роль: {getRoleLabel(grant.role)}</div>
+                      <div>Тариф: {getPlanLabel(grant.plan)}</div>
+                      <div>Активен: {grant.isActive ? "да" : "нет"}</div>
+                      <div>Истекает: {formatDate(grant.expiresAt)}</div>
                     </div>
 
                     {grant.note ? (
@@ -471,16 +613,23 @@ export function AdminScreen({
           </div>
         </div>
 
-        <div className="mb-4 flex gap-2 flex-wrap">
-          {["all", "published", "pending", "blocked"].map((s) => (
+        <div className="mb-3 flex flex-wrap gap-2">
+          {[
+            { value: "all", label: "Все" },
+            { value: "published", label: "Опубликованные" },
+            { value: "pending", label: "На проверке" },
+            { value: "blocked", label: "Заблокированные" },
+          ].map((item) => (
             <button
-              key={s}
-              onClick={() => setStatusFilter(s as any)}
-              className={`px-3 py-1 rounded-full text-sm ${
-                statusFilter === s ? "bg-white text-black" : "bg-white/10"
+              key={item.value}
+              onClick={() => setStatusFilter(item.value as any)}
+              className={`rounded-full px-4 py-2 text-sm transition ${
+                statusFilter === item.value
+                  ? "bg-white text-black"
+                  : "bg-white/10 text-white"
               }`}
             >
-              {s}
+              {item.label}
             </button>
           ))}
         </div>
@@ -488,54 +637,86 @@ export function AdminScreen({
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder={locale === "en" ? "search..." : "поиск..."}
-          className="w-full mb-4 px-4 py-3 rounded-xl bg-white/10"
+          placeholder="Поиск по каналу, ссылке, пользователю, тексту..."
+          className="mb-4 w-full rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
         />
 
         <div className="space-y-3">
           {filteredPosts.map((post) => {
             const status = post.status || "published";
             const isDeleting = deletingId === post.id;
+            const isExpanded = expandedPostIds.includes(post.id);
+            const preview = getPreviewUrl(post);
 
             return (
               <div
                 key={post.id}
-                className="p-4 rounded-xl bg-white/5 border border-white/10"
+                className="rounded-2xl border border-white/10 bg-white/5 p-3"
               >
-                <div className="flex justify-between gap-4">
-                  <div className="min-w-0">
-                    <div className="font-semibold truncate">{post.source.title}</div>
-                    <div className="text-xs text-white/50">@{post.source.handle}</div>
+                <div className="flex gap-3">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-black/30">
+                    {preview ? (
+                      <img
+                        src={preview}
+                        alt={post.source.title}
+                        className="h-full w-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-[11px] text-white/25">
+                        нет
+                        <br />
+                        превью
+                      </div>
+                    )}
                   </div>
 
-                  <div className="text-xs px-2 py-1 rounded bg-white/10">
-                    {status}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="truncate text-[18px] font-semibold">
+                          {post.source.title}
+                        </div>
+                        <div className="truncate text-sm text-white/50">
+                          @{post.source.handle}
+                        </div>
+                      </div>
+
+                      <div className="shrink-0 rounded-xl bg-white/10 px-3 py-2 text-xs">
+                        {getStatusLabel(status)}
+                      </div>
+                    </div>
+
+                    <div className="mt-2 grid gap-1 text-xs text-white/60 sm:grid-cols-2">
+                      <div>
+                        Добавил: {post.addedBy.username || post.addedBy.telegramId || "—"}
+                      </div>
+                      <div>Тип: {getContentTypeLabel(post.contentType)}</div>
+                      <div>Тег: {post.tag || "—"}</div>
+                      <div>Тариф: {getPlanLabel(post.billing.plan)}</div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-2 text-xs text-white/60">
-                  {post.addedBy.username || post.addedBy.telegramId || "—"}
-                </div>
-
-                <div className="mt-3 flex gap-2 flex-wrap">
+                <div className="mt-3 flex flex-wrap gap-2">
                   {status === "pending" && (
                     <>
                       <button
                         onClick={() => {
                           void handleUpdateStatus(post.id, "published");
                         }}
-                        className="px-3 py-1 bg-green-500 rounded"
+                        className="rounded-xl bg-green-600 px-3 py-2 text-sm"
                       >
-                        approve
+                        Одобрить
                       </button>
 
                       <button
                         onClick={() => {
                           void handleUpdateStatus(post.id, "blocked");
                         }}
-                        className="px-3 py-1 bg-yellow-500 rounded"
+                        className="rounded-xl bg-yellow-600 px-3 py-2 text-sm"
                       >
-                        reject
+                        Заблокировать
                       </button>
                     </>
                   )}
@@ -545,24 +726,47 @@ export function AdminScreen({
                       void handleDelete(post.id);
                     }}
                     disabled={isDeleting}
-                    className="px-3 py-1 bg-red-500 rounded disabled:opacity-60"
+                    className="rounded-xl bg-red-500 px-3 py-2 text-sm disabled:opacity-60"
                   >
-                    {isDeleting
-                      ? locale === "en"
-                        ? "deleting..."
-                        : "удаляю..."
-                      : "delete"}
+                    {isDeleting ? "Удаляю..." : "Удалить"}
                   </button>
 
                   <a
                     href={post.postUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-3 py-1 bg-white/10 rounded"
+                    className="rounded-xl bg-white/10 px-3 py-2 text-sm"
                   >
-                    open
+                    Открыть
                   </a>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleExpanded(post.id)}
+                    className="rounded-xl bg-white/10 px-3 py-2 text-sm"
+                  >
+                    {isExpanded ? "Скрыть детали" : "Показать детали"}
+                  </button>
                 </div>
+
+                {isExpanded ? (
+                  <div className="mt-3 rounded-xl bg-black/20 p-3">
+                    <div className="grid gap-2 text-sm text-white/75 md:grid-cols-2">
+                      <div>ID поста: {post.id}</div>
+                      <div>Media: {post.media.length}</div>
+                      <div>Создан: {formatDate(post.createdAt)}</div>
+                      <div>Истекает: {formatDate(post.expiresAt)}</div>
+                      <div>Источник: {post.postUrl}</div>
+                      <div>Fallback: {post.fallbackReason || "—"}</div>
+                    </div>
+
+                    {post.text ? (
+                      <div className="mt-3 whitespace-pre-wrap break-words rounded-xl bg-white/5 p-3 text-sm leading-6 text-white/85">
+                        {post.text}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             );
           })}
