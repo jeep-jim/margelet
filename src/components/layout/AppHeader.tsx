@@ -59,11 +59,6 @@ export function AppHeader({ current, setCurrent }: Props) {
       return;
     }
 
-    if (showBackToFeed) {
-      setCurrent("feed");
-      return;
-    }
-
     setCurrent("feed");
   };
 

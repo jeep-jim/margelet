@@ -1,3 +1,4 @@
+import { Bell } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ContentTag, IngestedPost } from "../types/app";
 import { FeedCard } from "./feed/FeedCard";
@@ -13,6 +14,7 @@ import { buildShareUrl, getResolvedTag } from "./feed/feed.utils";
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
+const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 
 function isGifPost(post: IngestedPost) {
   return (
@@ -49,6 +51,42 @@ function readSearchQueryFromStorage() {
   }
 }
 
+function readSubscriptionsCount() {
+  try {
+    const raw = localStorage.getItem(SUBSCRIPTIONS_STORAGE_KEY);
+    if (!raw) return 0;
+
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return 0;
+
+    return parsed.filter((item) => typeof item === "string" && item.trim()).length;
+  } catch {
+    return 0;
+  }
+}
+
+function SubscriptionsHint() {
+  return (
+    <div className="mx-auto mb-4 w-full max-w-[720px] px-4">
+      <div className="flex items-center gap-4 rounded-[28px] border border-neutral-200 bg-white px-4 py-4">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-neutral-950">
+          <Bell className="h-5 w-5 text-neutral-950" />
+        </div>
+
+        <div className="min-w-0">
+          <div className="text-sm font-semibold text-neutral-950">
+            Здесь будут новые посты интересных тебе каналов
+          </div>
+          <div className="mt-1 text-sm leading-6 text-neutral-500">
+            Когда включишь показывать новости от каналов, их новые публикации будут
+            появляться здесь.
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function FeedScreen({
   locale,
   posts,
@@ -79,6 +117,7 @@ export function FeedScreen({
   const [tagsOpen, setTagsOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [subscriptionsCount, setSubscriptionsCount] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
@@ -93,6 +132,7 @@ export function FeedScreen({
   useEffect(() => {
     setSelectedTags(readSelectedTagsFromStorage());
     setSearchQuery(readSearchQueryFromStorage());
+    setSubscriptionsCount(readSubscriptionsCount());
   }, []);
 
   useEffect(() => {
@@ -111,16 +151,24 @@ export function FeedScreen({
       setTagsOpen((prev) => !prev);
     };
 
+    const syncSubscriptions = () => {
+      setSubscriptionsCount(readSubscriptionsCount());
+    };
+
     window.addEventListener(
       FEED_FILTER_TOGGLE_EVENT,
       handleToggle as EventListener
     );
+    window.addEventListener("focus", syncSubscriptions);
+    window.addEventListener("storage", syncSubscriptions);
 
     return () => {
       window.removeEventListener(
         FEED_FILTER_TOGGLE_EVENT,
         handleToggle as EventListener
       );
+      window.removeEventListener("focus", syncSubscriptions);
+      window.removeEventListener("storage", syncSubscriptions);
     };
   }, []);
 
@@ -309,6 +357,8 @@ export function FeedScreen({
         tagsOpen={tagsOpen}
         setTagsOpen={setTagsOpen}
       />
+
+      {!tagsOpen && subscriptionsCount === 0 ? <SubscriptionsHint /> : null}
 
       {actionError ? (
         <div className="mx-auto mb-3 w-full max-w-[720px] px-4">
