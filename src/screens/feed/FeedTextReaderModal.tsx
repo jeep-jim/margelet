@@ -378,7 +378,7 @@ export function FeedTextReaderModal({
                 <div className="mb-4">
                   <FeedCarousel
                     items={visualMedia}
-                    aspectClass="aspect-[4/5]"
+                    aspectClass=""
                     activeIndex={Math.min(
                       mediaIndex,
                       Math.max(visualMedia.length - 1, 0)
@@ -386,6 +386,8 @@ export function FeedTextReaderModal({
                     onChange={setMediaIndex}
                     controlsTone="dark"
                     fit="contain"
+                    mode="adaptive"
+                    maxMediaHeightClass="max-h-[62vh] sm:max-h-[70vh]"
                     enableFullscreen
                   />
                 </div>
