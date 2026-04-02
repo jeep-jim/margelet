@@ -140,16 +140,14 @@ export function FeedMediaCard({
     <div className="relative" onClick={handleOpen}>
       <FeedCarousel
         items={media}
-        aspectClass=""
+        aspectClass="aspect-[4/5]"
         activeIndex={mediaIndex}
         onChange={onChangeMediaIndex}
         controlsTone="light"
         mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
-        fit="contain"
-        mode="adaptive"
-        maxMediaHeightClass="max-h-[72vh] sm:max-h-[780px]"
+        fit="cover"
         enableFullscreen={post.contentType !== "video"}
       />
 
