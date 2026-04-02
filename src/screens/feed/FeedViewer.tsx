@@ -121,6 +121,17 @@ export function FeedViewer({
   }, [activePost]);
 
   useEffect(() => {
+    if (!activePost) return;
+
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [activePost]);
+
+  useEffect(() => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
   }, [activePost?.id]);
 
@@ -134,17 +145,6 @@ export function FeedViewer({
   useEffect(() => {
     setIsMuted(readGlobalMuted());
   }, [activePost?.id, setIsMuted]);
-
-  useEffect(() => {
-    if (!activePost) return;
-
-    const original = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.body.style.overflow = original;
-    };
-  }, [activePost]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -239,8 +239,6 @@ export function FeedViewer({
   };
 
   const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
-    event.preventDefault();
-
     if (wheelLockRef.current) return;
 
     const delta = event.deltaY;
@@ -288,20 +286,18 @@ export function FeedViewer({
       >
         <div className="relative h-full w-full overflow-hidden bg-black">
           <div
-            className="absolute inset-0 flex items-center justify-center bg-black px-4 py-6"
+            className="absolute inset-0 flex items-center justify-center bg-black"
             onClick={togglePlay}
           >
             <FeedCarousel
               items={media}
-              aspectClass=""
+              aspectClass="h-full"
               activeIndex={viewerMediaIndex}
               onChange={setViewerMediaIndex}
               mediaActive
               muted={isMuted}
               videoRef={videoRef}
               fit="contain"
-              mode="adaptive"
-              maxMediaHeightClass="max-h-[88vh]"
             />
           </div>
 
@@ -350,26 +346,19 @@ export function FeedViewer({
           <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6 text-white">
             <button
               type="button"
-              onClick={() => setIsMuted((prev) => !prev)}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35"
+              onClick={() => {
+                setIsMuted((prev) => !prev);
+              }}
             >
               {isMuted ? (
-                <VolumeX className="h-5 w-5" />
+                <VolumeX className="h-7 w-7" />
               ) : (
-                <Volume2 className="h-5 w-5" />
+                <Volume2 className="h-7 w-7" />
               )}
             </button>
 
-            <button
-              type="button"
-              onClick={() => onToggleLike(activePost.id)}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35"
-            >
-              <Heart
-                className={`h-5 w-5 ${
-                  liked ? "fill-current text-white" : "text-white"
-                }`}
-              />
+            <button type="button" onClick={() => onToggleLike(activePost.id)}>
+              <Heart className={`h-7 w-7 ${liked ? "fill-current" : ""}`} />
             </button>
 
             <button
@@ -377,72 +366,67 @@ export function FeedViewer({
               onClick={() => {
                 void handleShare(activePost);
               }}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35"
             >
-              <Send className="h-5 w-5" />
+              <Send className="h-7 w-7" />
             </button>
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 z-30">
-            <div className="mx-auto flex max-w-[720px] items-end justify-between gap-4 px-4 pb-5">
-              <div className="min-w-0 flex-1 text-white">
-                <button
-                  type="button"
-                  onClick={() => window.location.assign(`/${activePost.source.handle}`)}
-                  className="mb-3 flex items-center gap-3 text-left"
-                >
-                  <FeedSourceAvatar post={activePost} compact />
+          <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-6 pt-10 text-white">
+            <div className="w-full md:max-w-[380px]">
+              <div className="flex items-center gap-3">
+                <FeedSourceAvatar post={activePost} />
 
-                  <div className="min-w-0">
-                    <div className="flex items-center gap-1.5">
-                      <div className="truncate text-base font-semibold">
-                        {activePost.source.title}
-                      </div>
-                      {activePost.source.verified ? (
-                        <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
-                      ) : null}
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <div className="truncate text-[18px] font-semibold">
+                      {activePost.source.title}
                     </div>
-
-                    <div className="truncate text-sm text-white/70">
-                      @{activePost.source.handle}
-                    </div>
-                  </div>
-                </button>
-
-                {activePost.text ? (
-                  <div className="max-w-[560px]">
-                    <div
-                      className={`overflow-hidden text-sm leading-6 text-white ${
-                        expandedText ? "" : `max-h-[${MAX_EXPANDED_TEXT_HEIGHT}px]`
-                      }`}
-                      style={
-                        expandedText
-                          ? undefined
-                          : { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
-                      }
-                    >
-                      {linkifyText(activePost.text)}
-                    </div>
-
-                    {activePost.text.length > 220 ? (
-                      <button
-                        type="button"
-                        onClick={() => setExpandedText((prev) => !prev)}
-                        className="mt-2 rounded-full bg-white/12 px-3 py-1.5 text-sm font-medium text-white"
-                      >
-                        {expandedText ? "Свернуть" : "Ещё"}
-                      </button>
+                    {activePost.source.verified ? (
+                      <VerifiedBadge className="text-[#2AABEE]" />
                     ) : null}
                   </div>
-                ) : null}
 
-                <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/20">
-                  <div
-                    className="h-full rounded-full bg-white"
-                    style={{ width: `${progress}%` }}
-                  />
+                  <div className="text-sm opacity-80">
+                    @{activePost.source.handle}
+                  </div>
                 </div>
               </div>
+
+              {activePost.text ? (
+                <div className="mt-3">
+                  <div
+                    className={`text-[15px] leading-6 text-white ${
+                      expandedText ? "overflow-y-auto" : "line-clamp-3"
+                    }`}
+                    style={
+                      expandedText
+                        ? { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
+                        : undefined
+                    }
+                    onWheel={(event) => event.stopPropagation()}
+                    onTouchStart={(event) => event.stopPropagation()}
+                    onTouchMove={(event) => event.stopPropagation()}
+                    onTouchEnd={(event) => event.stopPropagation()}
+                  >
+                    {linkifyText(activePost.text)}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setExpandedText((prev) => !prev)}
+                    className="mt-2 text-sm font-medium text-white/90"
+                  >
+                    {expandedText ? "Скрыть" : "Ещё"}
+                  </button>
+                </div>
+              ) : null}
+            </div>
+
+            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/20">
+              <div
+                className="h-full rounded-full bg-white"
+                style={{ width: `${progress}%` }}
+              />
             </div>
           </div>
         </div>
