@@ -54,7 +54,7 @@ function HybridMedia({
 
   if (item.kind === "audio") {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
+      <div className="flex h-full w-full items-center justify-center bg-black px-4">
         <audio
           src={item.url}
           controls
@@ -67,7 +67,7 @@ function HybridMedia({
 
   if (item.kind === "file") {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
+      <div className="flex h-full w-full items-center justify-center bg-black px-4">
         <a
           href={item.url}
           target="_blank"
@@ -187,7 +187,7 @@ export function FeedCarousel({
   return (
     <>
       <div
-        className={`relative w-full overflow-hidden bg-neutral-100 ${aspectClass}`}
+        className={`relative w-full overflow-hidden bg-black ${aspectClass}`}
         onTouchStart={(event) => {
           touchStartXRef.current = event.touches[0]?.clientX ?? null;
         }}

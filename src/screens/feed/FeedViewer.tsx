@@ -121,6 +121,17 @@ export function FeedViewer({
   }, [activePost]);
 
   useEffect(() => {
+    if (!activePost) return;
+
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [activePost]);
+
+  useEffect(() => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
   }, [activePost?.id]);
 
@@ -286,7 +297,7 @@ export function FeedViewer({
               mediaActive
               muted={isMuted}
               videoRef={videoRef}
-              fit="cover"
+              fit="contain"
             />
           </div>
 
