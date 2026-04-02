@@ -204,10 +204,14 @@ function FileList({
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium !text-white no-underline"
+                style={{ color: "#ffffff" }}
               >
-                <span>Открыть файл</span>
-                <ExternalLink className="h-4 w-4" />
+                <span style={{ color: "#ffffff" }}>Открыть файл</span>
+                <ExternalLink
+                  className="h-4 w-4"
+                  style={{ color: "#ffffff" }}
+                />
               </a>
             </div>
           </div>

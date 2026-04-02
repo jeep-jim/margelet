@@ -18,6 +18,8 @@ type HybridMediaProps = {
   fit: "cover" | "contain";
   muted: boolean;
   videoRef?: React.RefObject<HTMLVideoElement | null>;
+  mode: "fixed" | "adaptive";
+  maxMediaHeightClass: string;
 };
 
 function HybridMedia({
@@ -25,14 +27,23 @@ function HybridMedia({
   fit,
   muted,
   videoRef,
+  mode,
+  maxMediaHeightClass,
 }: HybridMediaProps) {
+  const mediaClass =
+    mode === "adaptive"
+      ? `block h-auto w-auto max-w-full ${maxMediaHeightClass} ${
+          fit === "cover" ? "object-cover" : "object-contain"
+        }`
+      : `h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`;
+
   if (item.kind === "video") {
     return (
       <video
         ref={videoRef}
         src={item.url}
         poster={item.poster || undefined}
-        className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
+        className={mediaClass}
         playsInline
         preload="metadata"
         muted={muted}
@@ -46,7 +57,7 @@ function HybridMedia({
       <img
         src={item.url}
         alt=""
-        className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
+        className={mediaClass}
         referrerPolicy="no-referrer"
       />
     );
@@ -54,7 +65,7 @@ function HybridMedia({
 
   if (item.kind === "audio") {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-black px-4">
+      <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4 py-8">
         <audio
           src={item.url}
           controls
@@ -67,7 +78,7 @@ function HybridMedia({
 
   if (item.kind === "file") {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-black px-4">
+      <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4 py-8">
         <a
           href={item.url}
           target="_blank"
@@ -137,6 +148,8 @@ export function FeedCarousel({
   videoRef,
   fit = "cover",
   enableFullscreen = false,
+  mode = "fixed",
+  maxMediaHeightClass = "max-h-[70vh]",
 }: {
   items: CarouselItem[];
   displayText?: string;
@@ -149,6 +162,8 @@ export function FeedCarousel({
   videoRef?: React.RefObject<HTMLVideoElement | null>;
   fit?: "cover" | "contain";
   enableFullscreen?: boolean;
+  mode?: "fixed" | "adaptive";
+  maxMediaHeightClass?: string;
 }) {
   const touchStartXRef = useRef<number | null>(null);
   const [fullscreenOpen, setFullscreenOpen] = useState(false);
@@ -184,10 +199,24 @@ export function FeedCarousel({
   const fullscreenItem =
     items[Math.min(fullscreenIndex, Math.max(items.length - 1, 0))] || null;
 
+  const rootClass =
+    mode === "adaptive"
+      ? `relative flex w-full items-center justify-center overflow-hidden bg-black ${aspectClass}`
+      : `relative w-full overflow-hidden bg-black ${aspectClass}`;
+
+  const clickAreaClass =
+    mode === "adaptive"
+      ? enableFullscreen
+        ? "flex w-full items-center justify-center cursor-zoom-in"
+        : "flex w-full items-center justify-center"
+      : enableFullscreen
+        ? "h-full w-full cursor-zoom-in"
+        : "h-full w-full";
+
   return (
     <>
       <div
-        className={`relative w-full overflow-hidden bg-black ${aspectClass}`}
+        className={rootClass}
         onTouchStart={(event) => {
           touchStartXRef.current = event.touches[0]?.clientX ?? null;
         }}
@@ -208,7 +237,7 @@ export function FeedCarousel({
         }}
       >
         <div
-          className={enableFullscreen ? "h-full w-full cursor-zoom-in" : "h-full w-full"}
+          className={clickAreaClass}
           onClick={(event) => {
             if (!enableFullscreen) return;
             event.stopPropagation();
@@ -222,6 +251,8 @@ export function FeedCarousel({
               fit={fit}
               muted={muted}
               videoRef={videoRef}
+              mode={mode}
+              maxMediaHeightClass={maxMediaHeightClass}
             />
           ) : null}
         </div>
@@ -323,6 +354,8 @@ export function FeedCarousel({
               item={fullscreenItem}
               fit="contain"
               muted={muted}
+              mode="adaptive"
+              maxMediaHeightClass="max-h-[88vh]"
             />
           </div>
 
