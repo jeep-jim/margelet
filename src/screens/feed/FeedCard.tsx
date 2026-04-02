@@ -8,6 +8,8 @@ import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
 import {
   getDisplayText,
+  getResolvedTag,
+  getTagLabel,
   hasAudioLikeMedia,
   hasVisualMedia,
 } from "./feed.utils";
@@ -31,6 +33,7 @@ export function FeedCard(props: FeedCardProps) {
   const displayText = getDisplayText(post);
   const showVisualMedia = hasVisualMedia(post);
   const hasAudioOrFiles = hasAudioLikeMedia(post);
+  const tagLabel = getTagLabel(getResolvedTag(post));
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
@@ -80,12 +83,10 @@ export function FeedCard(props: FeedCardProps) {
 
       {showVisualMedia ? (
         <>
-          <div className="mt-3 relative">
-            
-            {/* ТЕГ СВЕРХУ */}
+          <div className="relative mt-3">
             <div className="absolute left-3 top-3 z-20">
-              <div className="rounded-full bg-black/60 backdrop-blur px-3 py-1 text-[11px] font-medium text-white">
-                {post.tag}
+              <div className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
+                {tagLabel}
               </div>
             </div>
 
