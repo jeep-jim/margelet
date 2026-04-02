@@ -13,10 +13,6 @@ type CarouselItem = {
   duration?: number | null;
 };
 
-function toProxy(url: string) {
-  return `/api/media-proxy?url=${encodeURIComponent(url)}`;
-}
-
 type HybridMediaProps = {
   item: CarouselItem;
   fit: "cover" | "contain";
@@ -30,29 +26,12 @@ function HybridMedia({
   muted,
   videoRef,
 }: HybridMediaProps) {
-  const [src, setSrc] = useState(item.url);
-  const [posterSrc, setPosterSrc] = useState(item.poster ?? null);
-  const [didFallback, setDidFallback] = useState(false);
-
-  useEffect(() => {
-    setSrc(item.url);
-    setPosterSrc(item.poster ?? null);
-    setDidFallback(false);
-  }, [item.id, item.url, item.poster]);
-
-  const handleSrcError = () => {
-    if (didFallback) return;
-    setDidFallback(true);
-    setSrc(toProxy(item.url));
-  };
-
   if (item.kind === "video") {
     return (
       <video
         ref={videoRef}
-        src={src}
-        onError={handleSrcError}
-        poster={posterSrc || undefined}
+        src={item.url}
+        poster={item.poster || undefined}
         className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
         playsInline
         preload="metadata"
@@ -65,8 +44,7 @@ function HybridMedia({
   if (item.kind === "image") {
     return (
       <img
-        src={src}
-        onError={handleSrcError}
+        src={item.url}
         alt=""
         className={`h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`}
         referrerPolicy="no-referrer"
@@ -78,8 +56,7 @@ function HybridMedia({
     return (
       <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
         <audio
-          src={src}
-          onError={handleSrcError}
+          src={item.url}
           controls
           className="w-full max-w-[420px]"
           preload="metadata"
@@ -92,7 +69,7 @@ function HybridMedia({
     return (
       <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4">
         <a
-          href={src}
+          href={item.url}
           target="_blank"
           rel="noreferrer"
           className="rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
@@ -293,15 +270,19 @@ export function FeedCarousel({
         />
       </div>
 
-      {fullscreenOpen && fullscreenItem ? (
+      {enableFullscreen && fullscreenOpen && fullscreenItem ? (
         <div
-          className="fixed inset-0 z-[80] bg-black"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4"
           onClick={() => setFullscreenOpen(false)}
         >
           <button
             type="button"
-            onClick={() => setFullscreenOpen(false)}
-            className="absolute left-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-black/45 text-white"
+            onClick={(event) => {
+              event.stopPropagation();
+              setFullscreenOpen(false);
+            }}
+            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
+            aria-label="Закрыть"
           >
             <X className="h-5 w-5" />
           </button>
@@ -311,11 +292,12 @@ export function FeedCarousel({
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
-                setFullscreenIndex((prev) => prev - 1);
+                setFullscreenIndex((prev) => Math.max(0, prev - 1));
               }}
-              className="absolute left-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white"
+              className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
+              aria-label="Предыдущее медиа"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-6 w-6" />
             </button>
           ) : null}
 
@@ -324,21 +306,32 @@ export function FeedCarousel({
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
-                setFullscreenIndex((prev) => prev + 1);
+                setFullscreenIndex((prev) => Math.min(items.length - 1, prev + 1));
               }}
-              className="absolute right-4 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white"
+              className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
+              aria-label="Следующее медиа"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-6 w-6" />
             </button>
           ) : null}
 
-          <div className="flex h-full w-full items-center justify-center p-4">
+          <div
+            className="flex max-h-full max-w-full items-center justify-center"
+            onClick={(event) => event.stopPropagation()}
+          >
             <HybridMedia
               item={fullscreenItem}
               fit="contain"
               muted={muted}
             />
           </div>
+
+          <MediaDots
+            total={items.length}
+            activeIndex={fullscreenIndex}
+            onSelect={setFullscreenIndex}
+            light
+          />
         </div>
       ) : null}
     </>
