@@ -16,7 +16,6 @@ import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { normalizeMediaList } from "./feed.utils";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 
-const MAX_EXPANDED_TEXT_HEIGHT = 260;
 const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 const SUB_KEY = "margelet_subscriptions";
@@ -111,7 +110,6 @@ export function FeedViewer({
   const wheelLockRef = useRef(false);
   const touchStartYRef = useRef<number | null>(null);
 
-  const [expandedText, setExpandedText] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showCenterControl, setShowCenterControl] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -136,7 +134,6 @@ export function FeedViewer({
   }, [activePost?.id]);
 
   useEffect(() => {
-    setExpandedText(false);
     setProgress(0);
     setShowCenterControl(false);
     setSubscribed(activePost ? getSubs().includes(activePost.source.handle) : false);
@@ -393,31 +390,31 @@ export function FeedViewer({
               </div>
 
               {activePost.text ? (
-                <div className="mt-3">
-                  <div
-                    className={`text-[15px] leading-6 text-white ${
-                      expandedText ? "overflow-y-auto" : "line-clamp-3"
-                    }`}
-                    style={
-                      expandedText
-                        ? { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
-                        : undefined
-                    }
-                    onWheel={(event) => event.stopPropagation()}
-                    onTouchStart={(event) => event.stopPropagation()}
-                    onTouchMove={(event) => event.stopPropagation()}
-                    onTouchEnd={(event) => event.stopPropagation()}
-                  >
-                    {linkifyText(activePost.text)}
-                  </div>
+                <div className="max-w-[560px] relative">
+                  <div className="relative">
+                    <div
+                      className="text-sm leading-6 text-white overflow-hidden"
+                      style={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: "vertical",
+                      }}
+                    >
+                      {linkifyText(activePost.text)}
+                    </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setExpandedText((prev) => !prev)}
-                    className="mt-2 text-sm font-medium text-white/90"
-                  >
-                    {expandedText ? "Скрыть" : "Ещё"}
-                  </button>
+                    {(activePost.text || "").length > 80 && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          window.open(activePost.postUrl, "_blank", "noopener,noreferrer")
+                        }
+                        className="absolute bottom-0 right-0 bg-black pl-2 text-sm font-medium text-white"
+                      >
+                        Ещё
+                      </button>
+                    )}
+                  </div>
                 </div>
               ) : null}
             </div>
