@@ -14,12 +14,6 @@ function normalizeUrl(value?: string | null) {
   return v;
 }
 
-function toProxy(url?: string | null) {
-  const n = normalizeUrl(url);
-  if (!n) return null;
-  return `/api/media-proxy?url=${encodeURIComponent(n)}`;
-}
-
 function parseUrl(raw: string) {
   const u = new URL(raw);
   const parts = u.pathname.split("/").filter(Boolean);
@@ -94,9 +88,9 @@ export default async function handler(req: any, res: any) {
       title: clean(title),
       caption: clean(text),
 
-      image: toProxy(image),
-      video: toProxy(video),
-      poster: toProxy(poster),
+      image: normalizeUrl(image),
+      video: normalizeUrl(video),
+      poster: normalizeUrl(poster),
 
       avatar: normalizeUrl(avatar),
       verified: false,
