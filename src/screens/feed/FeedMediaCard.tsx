@@ -29,7 +29,9 @@ function readGlobalMuted() {
 function writeGlobalMuted(value: boolean) {
   try {
     localStorage.setItem(FEED_MUTE_KEY, value ? "1" : "0");
-  } catch {}
+  } catch {
+    //
+  }
 
   window.dispatchEvent(
     new CustomEvent(FEED_MUTE_EVENT, {
@@ -37,6 +39,14 @@ function writeGlobalMuted(value: boolean) {
     })
   );
 }
+
+type PreviewResponse = {
+  image?: string | null;
+  video?: string | null;
+  poster?: string | null;
+  avatar?: string | null;
+  mediaKind?: "image" | "video" | "none";
+};
 
 export function FeedMediaCard({
   post,
@@ -53,10 +63,74 @@ export function FeedMediaCard({
   const [forcedPaused, setForcedPaused] = useState(false);
   const [measuredDuration, setMeasuredDuration] = useState<number | null>(null);
 
+  useEffect(() => {
+    setMedia(normalizeMediaList(post));
+    setRetryUsed(false);
+  }, [post]);
+
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
 
-  // 🔥 retry логика
+  const buildRefreshedMedia = (
+    currentMedia: ReturnType<typeof normalizeMediaList>,
+    data: PreviewResponse
+  ) => {
+    if (!currentMedia.length) {
+      if (data.video) {
+        return [
+          {
+            id: "refreshed-video-1",
+            kind: "video" as const,
+            url: data.video,
+            poster: data.poster ?? data.image ?? null,
+            mimeType: null,
+            fileName: null,
+            width: null,
+            height: null,
+            duration: null,
+          },
+        ];
+      }
+
+      if (data.image) {
+        return [
+          {
+            id: "refreshed-image-1",
+            kind: "image" as const,
+            url: data.image,
+            poster: null,
+            mimeType: null,
+            fileName: null,
+            width: null,
+            height: null,
+            duration: null,
+          },
+        ];
+      }
+
+      return currentMedia;
+    }
+
+    return currentMedia.map((item) => {
+      if (item.kind === "video" && data.video) {
+        return {
+          ...item,
+          url: data.video,
+          poster: data.poster ?? data.image ?? item.poster ?? null,
+        };
+      }
+
+      if (item.kind === "image" && data.image) {
+        return {
+          ...item,
+          url: data.image,
+        };
+      }
+
+      return item;
+    });
+  };
+
   const tryRefreshMedia = async () => {
     if (retryUsed) return;
     if (!post.postUrl) return;
@@ -65,24 +139,20 @@ export function FeedMediaCard({
 
     try {
       const res = await fetch(
-        `/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`
+        `/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`,
+        {
+          cache: "no-store",
+        }
       );
 
       if (!res.ok) return;
 
-      const data = await res.json();
+      const data: PreviewResponse = await res.json();
       if (!data) return;
 
-      const refreshed = normalizeMediaList({
-        ...post,
-        ...data,
-      });
-
-      if (refreshed?.length) {
-        setMedia(refreshed);
-      }
+      setMedia((prev) => buildRefreshedMedia(prev, data));
     } catch {
-      // тихо
+      //
     }
   };
 
@@ -127,7 +197,7 @@ export function FeedMediaCard({
     return () => {
       node.removeEventListener("loadedmetadata", onLoaded);
     };
-  }, [activeItem?.id, activeItem?.kind]);
+  }, [activeItem?.id, activeItem?.kind, activeItem?.url]);
 
   useEffect(() => {
     if (!forcedPaused) return;
@@ -157,7 +227,7 @@ export function FeedMediaCard({
     } else {
       node.pause();
     }
-  }, [isCardVisible, forcedPaused, activeItem?.kind, mediaIndex, post.id]);
+  }, [isCardVisible, forcedPaused, activeItem?.kind, activeItem?.url, mediaIndex, post.id]);
 
   const handleOpen = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
@@ -179,7 +249,7 @@ export function FeedMediaCard({
         videoRef={videoRef}
         fit="cover"
         enableFullscreen={post.contentType !== "video"}
-        onMediaError={tryRefreshMedia} // 🔥 ВАЖНО
+        onMediaError={tryRefreshMedia}
       />
 
       {activeItem?.kind === "video" ? (
