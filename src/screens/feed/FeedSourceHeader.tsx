@@ -48,7 +48,17 @@ export function FeedSourceAvatar({
           alt={post.source.title}
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
-        />
+          onError={async (e) => {
+            try {
+              const res = await fetch(`/api/telegram-preview?url=https://t.me/${post.source.handle}`);
+              const data = await res.json();
+
+              if (data.avatar) {
+                (e.currentTarget as HTMLImageElement).src = data.avatar;
+              }
+            } catch {}
+          }}
+        />        
       ) : (
         <div className="flex h-full w-full items-center justify-center">
           {String(post.source.title || "TG").slice(0, 2).toUpperCase()}
