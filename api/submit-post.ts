@@ -39,7 +39,7 @@ function getStartOfUtcDay() {
 async function getUserPostsToday(telegramId: string | null) {
   if (!telegramId) return 0;
 
-  const posts = await getFeedPosts(200); // достаточно для MVP
+  const posts = await getFeedPosts(200);
   const dayStart = getStartOfUtcDay().getTime();
 
   return posts.filter((post) => {
@@ -119,7 +119,6 @@ export default async function handler(req: any, res: any) {
       return res.status(401).json({ error: "Telegram auth required" });
     }
 
-    // 🔥 лимит для обычного пользователя
     if (role === "user") {
       const count = await getUserPostsToday(addedByTelegramId);
 
@@ -142,7 +141,6 @@ export default async function handler(req: any, res: any) {
       return res.status(500).json({ error: "Failed to ingest Telegram post" });
     }
 
-    // 🔥 простая модерация
     const moderationText = `
       ${normalizedUrl}
       ${ingest.source.title}
@@ -154,11 +152,13 @@ export default async function handler(req: any, res: any) {
 
     const ttlHours = resolveTTL(plan);
     const now = new Date();
+    const nowIso = now.toISOString();
     const expires = new Date(now.getTime() + ttlHours * 3600 * 1000);
 
     const post: IngestedPost & {
       status: PostStatus;
       role?: UserRole;
+      mediaRefreshedAt?: string | null;
     } = {
       id: Date.now(),
 
@@ -180,9 +180,10 @@ export default async function handler(req: any, res: any) {
       hasMediaInOriginal: ingest.hasMediaInOriginal,
       fallbackReason: ingest.fallbackReason,
 
-      createdAt: now.toISOString(),
+      createdAt: nowIso,
       expiresAt: expires.toISOString(),
       ttlHours,
+      mediaRefreshedAt: nowIso,
 
       tag: body.tag || "other",
 

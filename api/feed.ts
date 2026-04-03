@@ -29,7 +29,7 @@ function shouldRefresh(post: RefreshablePost) {
   if (!Number.isFinite(lastRefresh)) return false;
 
   const now = Date.now();
-  const refreshEveryMs = 2 * 60 * 60 * 1000; // раз в 2 часа
+  const refreshEveryMs = 60 * 60 * 1000; // раз в 1 час
 
   return now - lastRefresh >= refreshEveryMs;
 }
@@ -58,7 +58,7 @@ async function refreshPostKeepingTtl(post: RefreshablePost): Promise<Refreshable
       hasMediaInOriginal: ingest.hasMediaInOriginal,
       fallbackReason: ingest.fallbackReason,
 
-      // 🔥 не трогаем жизнь контейнера
+      // не трогаем жизнь контейнера
       id: post.id,
       postUrl: post.postUrl,
       createdAt: post.createdAt,
@@ -69,6 +69,7 @@ async function refreshPostKeepingTtl(post: RefreshablePost): Promise<Refreshable
       billing: post.billing,
       status: post.status,
       role: post.role,
+      moderation: post.moderation,
 
       mediaRefreshedAt: refreshedAt,
     };
