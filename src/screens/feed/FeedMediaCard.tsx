@@ -29,9 +29,7 @@ function readGlobalMuted() {
 function writeGlobalMuted(value: boolean) {
   try {
     localStorage.setItem(FEED_MUTE_KEY, value ? "1" : "0");
-  } catch {
-    //
-  }
+  } catch {}
 
   window.dispatchEvent(
     new CustomEvent(FEED_MUTE_EVENT, {
@@ -47,7 +45,9 @@ export function FeedMediaCard({
   onChangeMediaIndex,
   isCardVisible = false,
 }: FeedMediaCardProps) {
-  const media = normalizeMediaList(post);
+  const [media, setMedia] = useState(() => normalizeMediaList(post));
+  const [retryUsed, setRetryUsed] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
@@ -55,6 +55,36 @@ export function FeedMediaCard({
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
+
+  // 🔥 retry логика
+  const tryRefreshMedia = async () => {
+    if (retryUsed) return;
+    if (!post.postUrl) return;
+
+    setRetryUsed(true);
+
+    try {
+      const res = await fetch(
+        `/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`
+      );
+
+      if (!res.ok) return;
+
+      const data = await res.json();
+      if (!data) return;
+
+      const refreshed = normalizeMediaList({
+        ...post,
+        ...data,
+      });
+
+      if (refreshed?.length) {
+        setMedia(refreshed);
+      }
+    } catch {
+      // тихо
+    }
+  };
 
   useEffect(() => {
     const syncMuted = (event: Event) => {
@@ -149,6 +179,7 @@ export function FeedMediaCard({
         videoRef={videoRef}
         fit="cover"
         enableFullscreen={post.contentType !== "video"}
+        onMediaError={tryRefreshMedia} // 🔥 ВАЖНО
       />
 
       {activeItem?.kind === "video" ? (

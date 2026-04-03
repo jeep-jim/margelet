@@ -20,6 +20,7 @@ type HybridMediaProps = {
   videoRef?: React.RefObject<HTMLVideoElement | null>;
   mode: "fixed" | "adaptive";
   maxMediaHeightClass: string;
+  onMediaError?: () => void;
 };
 
 function HybridMedia({
@@ -29,6 +30,7 @@ function HybridMedia({
   videoRef,
   mode,
   maxMediaHeightClass,
+  onMediaError,
 }: HybridMediaProps) {
   const mediaClass =
     mode === "adaptive"
@@ -48,6 +50,7 @@ function HybridMedia({
         preload="metadata"
         muted={muted}
         controls={false}
+        onError={onMediaError}
       />
     );
   }
@@ -59,6 +62,7 @@ function HybridMedia({
         alt=""
         className={mediaClass}
         referrerPolicy="no-referrer"
+        onError={onMediaError}
       />
     );
   }
@@ -71,6 +75,7 @@ function HybridMedia({
           controls
           className="w-full max-w-[420px]"
           preload="metadata"
+          onError={onMediaError}
         />
       </div>
     );
@@ -150,6 +155,7 @@ export function FeedCarousel({
   enableFullscreen = false,
   mode = "fixed",
   maxMediaHeightClass = "max-h-[70vh]",
+  onMediaError,
 }: {
   items: CarouselItem[];
   displayText?: string;
@@ -164,6 +170,7 @@ export function FeedCarousel({
   enableFullscreen?: boolean;
   mode?: "fixed" | "adaptive";
   maxMediaHeightClass?: string;
+  onMediaError?: () => void;
 }) {
   const touchStartXRef = useRef<number | null>(null);
   const [fullscreenOpen, setFullscreenOpen] = useState(false);
@@ -253,6 +260,7 @@ export function FeedCarousel({
               videoRef={videoRef}
               mode={mode}
               maxMediaHeightClass={maxMediaHeightClass}
+              onMediaError={onMediaError}
             />
           ) : null}
         </div>
@@ -356,6 +364,7 @@ export function FeedCarousel({
               muted={muted}
               mode="adaptive"
               maxMediaHeightClass="max-h-[88vh]"
+              onMediaError={onMediaError}
             />
           </div>
 
