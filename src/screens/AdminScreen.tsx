@@ -517,10 +517,10 @@ export function AdminScreen({
               url,
               tag: bulkTag,
               role: "admin",
-              plan: "pro_12m",
+              plan: "free",
               addedByTelegramId: telegramUserId,
               addedByUsername: "admin",
-            }),
+            }),            
           });
 
           const data = await res.json().catch(() => null);
