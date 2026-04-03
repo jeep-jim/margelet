@@ -1,569 +1,1063 @@
-import {
-  ArrowRightLeft,
-  Link as LinkIcon,
-  Plus,
-  CheckCircle2,
-  AlertCircle,
-  Globe,
-  ChevronDown,
-  ShieldCheck,
-  Lock,
-} from "lucide-react";
-import { useMemo, useState } from "react";
-import type { ContentTag, Locale } from "../types/app";
-import { Input } from "../components/ui/Input";
-import { normalizeTelegramUrl } from "../lib/telegram";
+import { useEffect, useMemo, useState } from "react";
+import type { ContentTag, IngestedPost, Locale } from "../types/app";
 
-const TELEGRAM_BOT_ID = "8298054487";
-const LAST_SUBMIT_AT_KEY = "margelet_last_submit_at";
+type AdminScreenProps = {
+  locale: Locale;
+  telegramUserId: string | null;
+  onClose: () => void;
+  onDeletePost: (id: number) => Promise<void>;
+};
 
-const TAG_OPTIONS: { value: ContentTag; label: string }[] = [
-  { value: "people", label: "Люди" },
-  { value: "animals", label: "Животные" },
-  { value: "news", label: "Новости" },
-  { value: "business", label: "Бизнес" },
-  { value: "creativity", label: "Творчество" },
-  { value: "finance", label: "Финансы" },
-  { value: "education", label: "Образование" },
-  { value: "technology", label: "Технологии" },
-  { value: "memes", label: "Мемы" },
-  { value: "sports", label: "Спорт" },
-  { value: "music", label: "Музыка" },
-  { value: "travel", label: "Путешествия" },
-  { value: "food", label: "Еда" },
-  { value: "other", label: "Другое" },
+type LoadState = "idle" | "loading" | "ready" | "error";
+type AccessRole = "user" | "channel_owner" | "admin";
+type AccessPlan = "free" | "pro_1m" | "pro_3m" | "pro_12m";
+
+type AccessGrant = {
+  telegramUserId: string;
+  username: string | null;
+  role: AccessRole;
+  plan: AccessPlan;
+  note: string | null;
+  grantedBy: string | null;
+  createdAt: string;
+  updatedAt: string;
+  expiresAt: string | null;
+  isActive: boolean;
+};
+
+type AnalyticsResponse = {
+  views: number;
+  countries: Record<string, string>;
+  devices: Record<string, string>;
+  today: number;
+  last7: number;
+  last30: number;
+  days: Record<string, string>;
+};
+
+type BulkResultItem = {
+  url: string;
+  status: "ok" | "error";
+  error?: string;
+};
+
+const ADMIN_TELEGRAM_ID = "1372669404";
+
+const BULK_TAG_OPTIONS: Array<{ value: ContentTag; label: string }> = [
+  { value: "other", label: "☝️ Другое" },
+  { value: "news", label: "📰 Новости" },
+  { value: "politics", label: "🏛️ Политика" },
+  { value: "war", label: "🎖️ Война" },
+  { value: "economy", label: "📈 Экономика" },
+  { value: "business", label: "💼 Бизнес" },
+  { value: "finance", label: "💰 Финансы" },
+  { value: "crypto", label: "₿ Крипта" },
+
+  { value: "technology", label: "💻 Технологии" },
+  { value: "ai", label: "🤖 AI" },
+  { value: "science", label: "🔬 Наука" },
+  { value: "space", label: "🪐 Космос" },
+  { value: "gadgets", label: "📱 Гаджеты" },
+  { value: "telegram", label: "✈️ Telegram" },
+
+  { value: "education", label: "📚 Образование" },
+  { value: "history", label: "🏺 История" },
+  { value: "culture", label: "🎭 Культура" },
+  { value: "books", label: "📖 Книги" },
+
+  { value: "art", label: "🎨 Арт" },
+  { value: "design", label: "🧩 Дизайн" },
+  { value: "photography", label: "📷 Фото" },
+
+  { value: "cinema", label: "🎬 Кино" },
+  { value: "series", label: "📺 Сериалы" },
+
+  { value: "music", label: "🎵 Музыка" },
+  { value: "gaming", label: "🎮 Игры" },
+
+  { value: "memes", label: "😂 Мемы" },
+  { value: "humor", label: "😁 Юмор" },
+
+  { value: "sports", label: "⚽ Спорт" },
+  { value: "mma", label: "🥊 MMA" },
+  { value: "fitness", label: "🏋️ Фитнес" },
+  { value: "health", label: "🩺 Здоровье" },
+
+  { value: "travel", label: "🧳 Путешествия" },
+  { value: "food", label: "🍔 Еда" },
+  { value: "recipes", label: "🍳 Рецепты" },
+
+  { value: "psychology", label: "🧠 Психология" },
+  { value: "relationships", label: "❤️ Отношения" },
+  { value: "parenting", label: "👶 Родительство" },
+
+  { value: "fashion", label: "👗 Мода" },
+  { value: "beauty", label: "💄 Красота" },
+
+  { value: "nature", label: "🌿 Природа" },
+  { value: "animals", label: "🐾 Животные" },
+  { value: "people", label: "🧑 Люди" },
+  { value: "celebrities", label: "⭐ Звёзды" },
+
+  { value: "marketing", label: "📣 Маркетинг" },
+  { value: "startups", label: "🚀 Стартапы" },
+  { value: "jobs", label: "🛠️ Работа" },
+  { value: "real_estate", label: "🏠 Недвижимость" },
+  { value: "auto", label: "🚗 Авто" },
+
+  { value: "creativity", label: "✨ Творчество" },
 ];
 
-type TgUser = {
-  id: string;
-  first_name: string;
-  username?: string;
-  photo_url?: string;
-};
-
-type UserRole = "guest" | "user" | "channel_owner" | "admin";
-
-type Props = {
-  locale: Locale;
-  currentTelegramUser: TgUser | null;
-  userRole: UserRole;
-  onAdd: (payload: {
-    url: string;
-    tag: ContentTag;
-  }) => Promise<void>;
-};
-
-type ParsedTelegramPost = {
-  channel: string;
-  postId: string;
-};
-
-function getTelegramAuthUrl() {
-  const origin = window.location.origin;
-  return `https://oauth.telegram.org/auth?bot_id=${TELEGRAM_BOT_ID}&origin=${origin}&request_access=write`;
+function buildSearchText(post: IngestedPost) {
+  return [
+    post.source.title,
+    post.source.handle,
+    post.postUrl,
+    post.addedBy.username || "",
+    post.addedBy.telegramId || "",
+    post.tag || "",
+    post.text || "",
+    post.billing.plan || "",
+    post.status || "",
+  ]
+    .join(" ")
+    .toLowerCase();
 }
 
-function parseTelegramPostUrl(raw: string): ParsedTelegramPost | null {
-  const value = raw.trim();
-  if (!value) return null;
+function formatDate(value?: string | null) {
+  if (!value) return "—";
 
-  try {
-    const normalized = normalizeTelegramUrl(value);
-    if (!normalized) return null;
+  const ms = Date.parse(value);
+  if (!Number.isFinite(ms)) return "—";
 
-    const url = new URL(normalized);
-    const hostname = url.hostname.replace(/^www\./, "");
+  return new Date(ms).toLocaleString();
+}
 
-    if (hostname !== "t.me" && hostname !== "telegram.me") return null;
+function formatRemaining(value?: string | null) {
+  if (!value) return "—";
 
-    const parts = url.pathname.split("/").filter(Boolean);
-    if (parts.length !== 2) return null;
+  const diff = Date.parse(value) - Date.now();
+  if (!Number.isFinite(diff) || diff <= 0) return "00:00:00";
 
-    const [channel, postId] = parts;
+  const totalSeconds = Math.floor(diff / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
 
-    if (!/^[A-Za-z0-9_]{4,}$/.test(channel)) return null;
-    if (!/^\d+$/.test(postId)) return null;
+  return [
+    String(hours).padStart(2, "0"),
+    String(minutes).padStart(2, "0"),
+    String(seconds).padStart(2, "0"),
+  ].join(":");
+}
 
-    return { channel, postId };
-  } catch {
-    return null;
+function getStatusLabel(status?: string) {
+  switch (status) {
+    case "published":
+      return "Опубликован";
+    case "pending":
+      return "На проверке";
+    case "blocked":
+      return "Заблокирован";
+    default:
+      return "Опубликован";
   }
 }
 
-function getTagLabel(tag: ContentTag) {
-  return TAG_OPTIONS.find((item) => item.value === tag)?.label || "Другое";
+function getPlanLabel(plan?: string) {
+  switch (plan) {
+    case "free":
+      return "Бесплатно";
+    case "pro_1m":
+      return "PRO 1 мес";
+    case "pro_3m":
+      return "PRO 3 мес";
+    case "pro_12m":
+      return "PRO 12 мес";
+    default:
+      return plan || "—";
+  }
 }
 
-function getStartOfTodayTimestamp() {
-  const now = new Date();
-  return new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-}
-
-function readLastSubmitAt(): number | null {
-  const raw = localStorage.getItem(LAST_SUBMIT_AT_KEY);
-  if (!raw) return null;
-
-  const value = Number(raw);
-  return Number.isFinite(value) ? value : null;
-}
-
-function writeLastSubmitAt(timestamp: number) {
-  localStorage.setItem(LAST_SUBMIT_AT_KEY, String(timestamp));
-}
-
-function hasDailyDemoLimitReached(role: UserRole) {
-  if (role !== "user") return false;
-
-  const lastSubmitAt = readLastSubmitAt();
-  if (!lastSubmitAt) return false;
-
-  return lastSubmitAt >= getStartOfTodayTimestamp();
-}
-
-function getRoleTitle(role: UserRole) {
+function getRoleLabel(role?: string) {
   switch (role) {
-    case "admin":
-      return "Админ";
+    case "user":
+      return "Пользователь";
     case "channel_owner":
       return "Владелец канала";
-    case "user":
-      return "Пробный доступ";
-    default:
-      return "Гость";
-  }
-}
-
-function getRoleDescription(role: UserRole) {
-  switch (role) {
     case "admin":
-      return "Ты владелец ресурса. Для тебя нет демо-лимита и ты можешь добавлять посты свободно.";
-    case "channel_owner":
-      return "Канал подключён. Можно публиковать посты без суточного лимита.";
-    case "user":
-      return "Сейчас это демо-доступ: можно добавить только 1 пост в день.";
+      return "Админ";
     default:
-      return "Авторизуйтесь через Telegram, чтобы добавить пост.";
+      return role || "—";
   }
 }
 
-function normalizeSubmitError(message: string) {
+function getPreviewUrl(post: IngestedPost) {
+  return (
+    post.media.find((item) => item.kind === "image")?.url ||
+    post.media.find((item) => item.kind === "video")?.poster ||
+    post.source.avatar ||
+    null
+  );
+}
+
+function getContentTypeLabel(type?: string) {
+  switch (type) {
+    case "text":
+      return "Текст";
+    case "image":
+      return "Изображение";
+    case "gallery":
+      return "Галерея";
+    case "gif":
+      return "GIF";
+    case "video":
+      return "Видео";
+    case "audio":
+      return "Аудио";
+    case "file":
+      return "Файл";
+    case "mixed":
+      return "Смешанный";
+    case "external_media":
+      return "Внешнее медиа";
+    default:
+      return type || "—";
+  }
+}
+
+function normalizeBulkError(message: string) {
   const value = String(message || "").trim();
 
-  if (!value) {
-    return "Не удалось сохранить пост.";
-  }
-
-  if (value === "Daily limit reached" || value === "DAILY_LIMIT_REACHED") {
-    return "На сегодня лимит уже исчерпан.";
-  }
-
-  if (value === "Tag required for user") {
-    return "Для пробного доступа нужно выбрать тег.";
-  }
-
-  if (value === "Telegram auth required") {
-    return "Сначала авторизуйтесь через Telegram.";
-  }
+  if (!value) return "ошибка";
+  if (value === "Invalid Telegram post URL") return "невалидная ссылка";
+  if (value === "Failed to ingest Telegram post") return "не удалось забрать пост";
+  if (value === "Daily limit reached") return "дневной лимит";
 
   return value;
 }
 
-function AuthBlock() {
-  return (
-    <div className="mt-6 overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
-      <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-        <div>
-          <div className="mb-3 inline-flex items-center gap-3 rounded-full bg-white/12 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
-            <span>margeleT</span>
-            <ArrowRightLeft className="h-4 w-4" />
-            <span>Telegram</span>
-          </div>
+export function AdminScreen({
+  telegramUserId,
+  onClose,
+  onDeletePost,
+}: AdminScreenProps) {
+  const [, setTick] = useState(0);
+  const [posts, setPosts] = useState<IngestedPost[]>([]);
+  const [query, setQuery] = useState("");
+  const [state, setState] = useState<LoadState>("idle");
+  const [statusFilter, setStatusFilter] = useState<
+    "all" | "published" | "pending" | "blocked"
+  >("all");
 
-          <div className="text-[26px] font-semibold leading-tight">
-            Войти через Telegram
-          </div>
+  const [analytics, setAnalytics] = useState<AnalyticsResponse | null>(null);
+  const [grants, setGrants] = useState<AccessGrant[]>([]);
+  const [grantsLoading, setGrantsLoading] = useState(false);
+  const [savingGrant, setSavingGrant] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [expandedPostIds, setExpandedPostIds] = useState<number[]>([]);
 
-          <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
-            Авторизуйтесь, чтобы добавлять Telegram-посты. Для владельцев каналов и
-            для администратора действуют полные права доступа.
-          </div>
+  const [targetTelegramUserId, setTargetTelegramUserId] = useState("");
+  const [targetUsername, setTargetUsername] = useState("");
+  const [grantRole, setGrantRole] = useState<AccessRole>("channel_owner");
+  const [grantPlan, setGrantPlan] = useState<AccessPlan>("free");
+  const [durationDays, setDurationDays] = useState("30");
+  const [grantNote, setGrantNote] = useState("");
 
-          <button
-            onClick={() => {
-              window.location.href = getTelegramAuthUrl();
-            }}
-            className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
-            type="button"
-          >
-            Авторизоваться
-          </button>
-        </div>
+  const [bulkText, setBulkText] = useState("");
+  const [bulkTag, setBulkTag] = useState<ContentTag>("other");
+  const [bulkLoading, setBulkLoading] = useState(false);
+  const [bulkResult, setBulkResult] = useState<BulkResultItem[]>([]);
 
-        <div className="hidden md:block">
-          <div className="rounded-[28px] border border-white/20 bg-white/10 p-4 backdrop-blur-md">
-            <div className="space-y-3 text-sm text-white/90">
-              <div className="flex items-center gap-2">
-                <Globe className="h-4 w-4" />
-                <span>Публичная ссылка на пост</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Plus className="h-4 w-4" />
-                <span>Добавление в ленту</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4" />
-                <span>Дальше ingest сделает всё сам</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+  const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
 
-function RuleItem({
-  icon: Icon,
-  text,
-}: {
-  icon: React.ComponentType<{ className?: string }>;
-  text: string;
-}) {
-  return (
-    <div className="flex items-start gap-3 rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-700">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-neutral-500" />
-      <span>{text}</span>
-    </div>
-  );
-}
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setTick((prev) => prev + 1);
+    }, 1000);
 
-function AccessCard({
-  user,
-  role,
-  demoLimitReached,
-}: {
-  user: TgUser | null;
-  role: UserRole;
-  demoLimitReached: boolean;
-}) {
-  if (!user) return null;
+    return () => window.clearInterval(timer);
+  }, []);
 
-  const title = getRoleTitle(role);
-  const description = getRoleDescription(role);
-  const showWarning = role === "user" && demoLimitReached;
+  const loadPosts = async () => {
+    if (!telegramUserId || !hasAdminAccess) return;
 
-  return (
-    <div className="mt-6 rounded-[28px] border border-neutral-200 bg-white p-4 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-      <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <div className="text-sm text-neutral-500">
-            {user.first_name || user.username || "Telegram"}
-          </div>
-          <div className="mt-1 text-[18px] font-semibold text-neutral-950">
-            {title}
-          </div>
-          <div className="mt-2 text-sm leading-6 text-neutral-600">
-            {description}
-          </div>
-        </div>
+    try {
+      setState("loading");
 
-        <div
-          className={`inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold ${
-            role === "admin"
-              ? "bg-violet-100 text-violet-700"
-              : role === "channel_owner"
-                ? "bg-emerald-100 text-emerald-700"
-                : "bg-neutral-100 text-neutral-700"
-          }`}
-        >
-          {role === "admin" || role === "channel_owner" ? (
-            <ShieldCheck className="h-3.5 w-3.5" />
-          ) : (
-            <Lock className="h-3.5 w-3.5" />
-          )}
-          <span>{title}</span>
-        </div>
-      </div>
+      const res = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramUserId }),
+      });
 
-      {showWarning ? (
-        <div className="mt-4 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-700">
-          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-          <span>
-            Лимит на сегодня уже использован. Завтра можно будет добавить ещё один
-            пост.
-          </span>
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-export function AddScreen({
-  locale,
-  currentTelegramUser,
-  userRole,
-  onAdd,
-}: Props) {
-  const [url, setUrl] = useState("");
-  const [submitError, setSubmitError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [selectedTag, setSelectedTag] = useState<ContentTag | null>(null);
-  const [tagsOpen, setTagsOpen] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const isAuthorized = !!currentTelegramUser;
-  const role = userRole;
-  const isDemoUser = role === "user";
-  const isPrivileged = role === "channel_owner" || role === "admin";
-  const demoLimitReached = hasDailyDemoLimitReached(role);
-
-  const parsedPost = useMemo(() => parseTelegramPostUrl(url), [url]);
-
-  const validationMessage = useMemo(() => {
-    if (!url.trim()) return "";
-    if (parsedPost) return "";
-    return "Нужна публичная ссылка вида t.me/channel/123. Приватные и кривые ссылки пока не принимаем.";
-  }, [parsedPost, url]);
-
-  const tagRequired = isDemoUser;
-
-  const submitHint = useMemo(() => {
-    if (!isAuthorized) {
-      return "Сначала войди через Telegram.";
+      const data = await res.json();
+      setPosts(Array.isArray(data?.posts) ? data.posts : []);
+      setState("ready");
+    } catch {
+      setState("error");
     }
-
-    if (role === "admin") {
-      return "Ты админ. Для тебя демо-лимит не действует.";
-    }
-
-    if (role === "channel_owner") {
-      return "Подключённый канал публикует без демо-лимита.";
-    }
-
-    if (demoLimitReached) {
-      return "Пробный лимит на сегодня уже использован.";
-    }
-
-    return "Обычный пользователь может добавить 1 пост в день.";
-  }, [demoLimitReached, isAuthorized, role]);
-
-  const clearMessages = () => {
-    if (submitError) setSubmitError("");
-    if (successMessage) setSuccessMessage("");
   };
 
-  const handleSubmit = async () => {
-    const cleanUrl = url.trim();
+  useEffect(() => {
+    if (!telegramUserId || !hasAdminAccess) return;
+    void loadPosts();
+  }, [telegramUserId, hasAdminAccess]);
 
-    setSubmitError("");
-    setSuccessMessage("");
+  useEffect(() => {
+    if (!telegramUserId || !hasAdminAccess) return;
 
-    if (!isAuthorized) {
-      setSubmitError("Сначала авторизуйтесь через Telegram.");
-      return;
+    fetch("/api/admin-analytics", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ telegramUserId }),
+    })
+      .then((r) => r.json())
+      .then((data) => setAnalytics(data))
+      .catch(() => {});
+  }, [telegramUserId, hasAdminAccess]);
+
+  const loadGrants = async () => {
+    if (!telegramUserId || !hasAdminAccess) return;
+
+    try {
+      setGrantsLoading(true);
+
+      const res = await fetch("/api/admin-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramUserId }),
+      });
+
+      const data = await res.json().catch(() => null);
+      setGrants(Array.isArray(data?.grants) ? data.grants : []);
+    } catch {
+      //
+    } finally {
+      setGrantsLoading(false);
     }
+  };
 
-    if (role === "guest") {
-      setSubmitError("Сначала авторизуйтесь через Telegram.");
-      return;
+  useEffect(() => {
+    void loadGrants();
+  }, [telegramUserId, hasAdminAccess]);
+
+  const filteredPosts = useMemo(() => {
+    const q = query.trim().toLowerCase();
+
+    return posts.filter((post) => {
+      const matchesQuery = q ? buildSearchText(post).includes(q) : true;
+      const matchesStatus =
+        statusFilter === "all"
+          ? true
+          : (post.status || "published") === statusFilter;
+
+      return matchesQuery && matchesStatus;
+    });
+  }, [posts, query, statusFilter]);
+
+  const stats = useMemo(() => {
+    return {
+      total: posts.length,
+      pending: posts.filter((post) => (post.status || "published") === "pending")
+        .length,
+      blocked: posts.filter((post) => (post.status || "published") === "blocked")
+        .length,
+      published: posts.filter(
+        (post) => (post.status || "published") === "published"
+      ).length,
+    };
+  }, [posts]);
+
+  const sortedCountries = useMemo(() => {
+    return Object.entries(analytics?.countries || {}).sort(
+      (a, b) => Number(b[1]) - Number(a[1])
+    );
+  }, [analytics]);
+
+  const sortedDevices = useMemo(() => {
+    return Object.entries(analytics?.devices || {}).sort(
+      (a, b) => Number(b[1]) - Number(a[1])
+    );
+  }, [analytics]);
+
+  const toggleExpanded = (id: number) => {
+    setExpandedPostIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+
+  const handleDelete = async (id: number) => {
+    if (!window.confirm("Удалить пост?")) return;
+
+    try {
+      setDeletingId(id);
+      await onDeletePost(id);
+      setPosts((prev) => prev.filter((p) => p.id !== id));
+    } finally {
+      setDeletingId(null);
     }
+  };
 
-    if (isDemoUser && demoLimitReached) {
-      setSubmitError(
-        "На сегодня лимит уже исчерпан. Завтра можно добавить ещё один пост."
-      );
-      return;
-    }
+  const handleUpdateStatus = async (
+    id: number,
+    status: "published" | "blocked"
+  ) => {
+    await fetch("/api/admin-posts", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, status, telegramUserId }),
+    });
 
-    if (!cleanUrl) {
-      setSubmitError("Вставь ссылку на Telegram-пост.");
-      return;
-    }
+    setPosts((prev) => prev.map((p) => (p.id === id ? { ...p, status } : p)));
+  };
 
-    if (!parsedPost) {
-      setSubmitError(
-        "Сейчас можно добавить только публичный Telegram-пост вида t.me/channel/123."
-      );
-      return;
-    }
-
-    if (tagRequired && !selectedTag) {
-      setSubmitError("Выберите тег для поста.");
+  const handleSaveGrant = async () => {
+    if (!telegramUserId) return;
+    if (!targetTelegramUserId.trim()) {
+      window.alert("Укажи Telegram ID");
       return;
     }
 
     try {
-      setIsSubmitting(true);
+      setSavingGrant(true);
 
-      const normalized = normalizeTelegramUrl(cleanUrl);
-
-      if (!normalized) {
-        setSubmitError("Не удалось распознать ссылку на Telegram-пост.");
-        return;
-      }
-
-      const effectiveTag = selectedTag || "other";
-
-      await onAdd({
-        url: normalized,
-        tag: effectiveTag,
+      const res = await fetch("/api/admin-access", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          telegramUserId,
+          targetTelegramUserId: targetTelegramUserId.trim(),
+          username: targetUsername.trim() || null,
+          role: grantRole,
+          plan: grantPlan,
+          durationDays: durationDays.trim() || null,
+          note: grantNote.trim() || null,
+        }),
       });
 
-      if (isDemoUser) {
-        writeLastSubmitAt(Date.now());
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || "save grant failed");
       }
 
-      setSuccessMessage(
-        isPrivileged
-          ? "Пост добавлен в ленту."
-          : "Пост добавлен в ленту."
-      );
-      setUrl("");
-      setSelectedTag(null);
-      setTagsOpen(false);
+      setTargetTelegramUserId("");
+      setTargetUsername("");
+      setGrantRole("channel_owner");
+      setGrantPlan("free");
+      setDurationDays("30");
+      setGrantNote("");
+
+      await loadGrants();
     } catch (error: any) {
-      console.error(error);
-      setSubmitError(
-        normalizeSubmitError(
-          String(error?.message || "Не удалось сохранить пост.")
-        )
-      );
+      window.alert(error?.message || "Не удалось сохранить доступ");
     } finally {
-      setIsSubmitting(false);
+      setSavingGrant(false);
     }
   };
 
+  const handleDeleteGrant = async (targetId: string) => {
+    if (!telegramUserId) return;
+    if (!window.confirm("Удалить доступ?")) return;
+
+    try {
+      const res = await fetch("/api/admin-access", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          telegramUserId,
+          targetTelegramUserId: targetId,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || "delete grant failed");
+      }
+
+      setGrants((prev) =>
+        prev.filter((item) => item.telegramUserId !== targetId)
+      );
+    } catch (error: any) {
+      window.alert(error?.message || "Не удалось удалить доступ");
+    }
+  };
+
+  const handleBulkSubmit = async () => {
+    if (!telegramUserId) return;
+
+    const urls = bulkText
+      .split("\n")
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    if (urls.length === 0) {
+      window.alert("Вставь хотя бы одну ссылку");
+      return;
+    }
+
+    try {
+      setBulkLoading(true);
+      setBulkResult([]);
+
+      const results: BulkResultItem[] = [];
+
+      for (const url of urls) {
+        try {
+          const res = await fetch("/api/submit-post", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              url,
+              tag: bulkTag,
+              role: "admin",
+              plan: "pro_12m",
+              addedByTelegramId: telegramUserId,
+              addedByUsername: "admin",
+            }),
+          });
+
+          const data = await res.json().catch(() => null);
+
+          if (!res.ok) {
+            results.push({
+              url,
+              status: "error",
+              error: normalizeBulkError(data?.error || "ошибка"),
+            });
+          } else {
+            results.push({
+              url,
+              status: "ok",
+            });
+          }
+        } catch (error: any) {
+          results.push({
+            url,
+            status: "error",
+            error: normalizeBulkError(error?.message || "ошибка сети"),
+          });
+        }
+      }
+
+      setBulkResult(results);
+      await loadPosts();
+    } finally {
+      setBulkLoading(false);
+    }
+  };
+
+  if (!hasAdminAccess) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-black text-white">
+        Нет доступа
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
-      <div className="mx-auto max-w-[720px]">
-        <div className="text-[28px] font-semibold tracking-tight">
-          {locale === "en" ? "Add post" : "Добавить пост"}
+    <div className="min-h-screen bg-[#0a0a0f] px-3 py-4 text-white sm:px-4">
+      <div className="mx-auto max-w-6xl">
+        {state === "loading" && (
+          <div className="mb-4 text-sm text-white/50">загрузка...</div>
+        )}
+
+        {state === "error" && (
+          <div className="mb-4 text-sm text-red-400">ошибка загрузки</div>
+        )}
+
+        <div className="mb-4 flex items-start justify-between gap-3">
+          <div>
+            <div className="text-[26px] font-semibold tracking-tight">Admin</div>
+            <div className="text-sm text-white/45">
+              управление · аналитика · доступы
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
+          >
+            назад
+          </button>
         </div>
 
-        {!isAuthorized ? <AuthBlock /> : null}
-
-        <AccessCard
-          user={currentTelegramUser}
-          role={role}
-          demoLimitReached={demoLimitReached}
-        />
-
-        <div className="mt-6 rounded-[32px] border border-neutral-200 bg-white p-5 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-          <div className="mb-4 text-[18px] font-semibold">Ссылка на Telegram-пост</div>
-
-          <Input
-            value={url}
-            onChange={(event) => {
-              clearMessages();
-              setUrl(event.target.value);
-            }}
-            placeholder="https://t.me/channel/123"
-          />
-
-          {validationMessage ? (
-            <div className="mt-3 flex items-start gap-2 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-700">
-              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>{validationMessage}</span>
+        <div className="mb-4 grid grid-cols-2 gap-3 md:grid-cols-4">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              Всего
             </div>
-          ) : url.trim() && parsedPost ? (
-            <div className="mt-3 flex items-start gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>Ссылка распознана: @{parsedPost.channel} / {parsedPost.postId}</span>
-            </div>
-          ) : null}
-
-          <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm text-neutral-600">
-            {submitHint}
+            <div className="mt-2 text-2xl font-semibold">{stats.total}</div>
           </div>
 
-          <div className="mt-5">
-            <button
-              type="button"
-              onClick={() => setTagsOpen((prev) => !prev)}
-              className="flex w-full items-center justify-between rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-left"
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              Опубликовано
+            </div>
+            <div className="mt-2 text-2xl font-semibold">{stats.published}</div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              На проверке
+            </div>
+            <div className="mt-2 text-2xl font-semibold">{stats.pending}</div>
+          </div>
+
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="text-xs uppercase tracking-[0.18em] text-white/40">
+              Заблокировано
+            </div>
+            <div className="mt-2 text-2xl font-semibold">{stats.blocked}</div>
+          </div>
+        </div>
+
+        {analytics ? (
+          <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+            <div className="mb-3 text-lg font-semibold">Аналитика</div>
+
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">Сегодня</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.today || 0}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">7 дней</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.last7 || 0}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">30 дней</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.last30 || 0}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">Всего</div>
+                <div className="mt-1 text-2xl font-semibold">
+                  {analytics.views || 0}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">Страны</div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {sortedCountries.length > 0 ? (
+                    sortedCountries.map(([k, v]) => (
+                      <div
+                        key={k}
+                        className="rounded-full bg-white/10 px-3 py-1 text-sm"
+                      >
+                        {k}: {String(v)}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-sm text-white/35">пока пусто</div>
+                  )}
+                </div>
+              </div>
+
+              <div className="rounded-xl bg-black/20 p-3">
+                <div className="text-sm text-white/50">Устройства</div>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {sortedDevices.length > 0 ? (
+                    sortedDevices.map(([k, v]) => (
+                      <div
+                        key={k}
+                        className="rounded-full bg-white/10 px-3 py-1 text-sm"
+                      >
+                        {k}: {String(v)}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="text-sm text-white/35">пока пусто</div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-3 text-xs leading-6 text-white/35">
+              Это реальные, но приблизительные данные MVP. Твои просмотры не
+              считаются, если ты заходишь под своим Telegram ID администратора.
+            </div>
+          </div>
+        ) : null}
+
+        <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="mb-4 text-lg font-semibold">Управление доступом</div>
+
+          <div className="grid gap-3 md:grid-cols-2">
+            <input
+              value={targetTelegramUserId}
+              onChange={(event) => setTargetTelegramUserId(event.target.value)}
+              placeholder="Telegram ID"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+            />
+
+            <input
+              value={targetUsername}
+              onChange={(event) => setTargetUsername(event.target.value)}
+              placeholder="@username"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+            />
+
+            <select
+              value={grantRole}
+              onChange={(event) => setGrantRole(event.target.value as AccessRole)}
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
             >
-              <span className={selectedTag ? "text-neutral-950" : "text-neutral-400"}>
-                {selectedTag
-                  ? getTagLabel(selectedTag)
-                  : tagRequired
-                    ? "Выбери тег"
-                    : "Тег можно не выбирать"}
-              </span>
-              <ChevronDown className={`h-4 w-4 transition ${tagsOpen ? "rotate-180" : ""}`} />
-            </button>
+              <option value="user">Пользователь</option>
+              <option value="channel_owner">Владелец канала</option>
+              <option value="admin">Админ</option>
+            </select>
 
-            {tagsOpen ? (
-              <div className="mt-3 flex flex-wrap gap-2">
-                {TAG_OPTIONS.map((tag) => {
-                  const active = selectedTag === tag.value;
+            <select
+              value={grantPlan}
+              onChange={(event) => setGrantPlan(event.target.value as AccessPlan)}
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+            >
+              <option value="free">Бесплатно</option>
+              <option value="pro_1m">PRO 1 мес</option>
+              <option value="pro_3m">PRO 3 мес</option>
+              <option value="pro_12m">PRO 12 мес</option>
+            </select>
 
-                  return (
-                    <button
-                      key={tag.value}
-                      type="button"
-                      onClick={() => {
-                        setSelectedTag(tag.value);
-                        setTagsOpen(false);
-                        if (submitError) setSubmitError("");
-                      }}
-                      className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                        active
-                          ? "bg-neutral-950 text-white"
-                          : "bg-neutral-100 text-neutral-800"
-                      }`}
-                    >
-                      {tag.label}
-                    </button>
-                  );
-                })}
-              </div>
-            ) : null}
+            <input
+              value={durationDays}
+              onChange={(event) => setDurationDays(event.target.value)}
+              placeholder="Срок в днях"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+            />
 
-            {!tagRequired ? (
-              <div className="mt-3 text-sm leading-6 text-neutral-500">
-                Для админа и владельца канала тег можно не выбирать. Если не выбран,
-                отправим как <span className="font-medium text-neutral-700">other</span>.
-              </div>
-            ) : null}
+            <input
+              value={grantNote}
+              onChange={(event) => setGrantNote(event.target.value)}
+              placeholder="Заметка / бартер / комментарий"
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+            />
           </div>
-
-          {submitError ? (
-            <div className="mt-4 flex items-start gap-2 rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
-              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>{submitError}</span>
-            </div>
-          ) : null}
-
-          {successMessage ? (
-            <div className="mt-4 flex items-start gap-2 rounded-2xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
-              <span>{successMessage}</span>
-            </div>
-          ) : null}
 
           <button
             type="button"
             onClick={() => {
-              void handleSubmit();
+              void handleSaveGrant();
             }}
-            disabled={isSubmitting || (isDemoUser && demoLimitReached)}
-            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition disabled:opacity-60"
+            disabled={savingGrant}
+            className="mt-4 rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
           >
-            <Plus className="h-4 w-4" />
-            <span>
-              {isSubmitting
-                ? "Публикуем..."
-                : isDemoUser && demoLimitReached
-                  ? "Лимит на сегодня исчерпан"
-                  : "Опубликовать"}
-            </span>
+            {savingGrant ? "сохраняю..." : "сохранить доступ"}
           </button>
+
+          <div className="mt-5">
+            <div className="mb-2 text-sm text-white/45">Текущие доступы</div>
+
+            {grantsLoading ? (
+              <div className="text-sm text-white/45">загрузка...</div>
+            ) : grants.length === 0 ? (
+              <div className="text-sm text-white/35">доступов пока нет</div>
+            ) : (
+              <div className="space-y-3">
+                {grants.map((grant) => (
+                  <div
+                    key={grant.telegramUserId}
+                    className="rounded-xl border border-white/10 bg-black/20 p-4"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <div className="font-semibold">
+                          {grant.username
+                            ? `@${grant.username}`
+                            : grant.telegramUserId}
+                        </div>
+                        <div className="mt-1 text-xs text-white/50">
+                          ID: {grant.telegramUserId}
+                        </div>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          void handleDeleteGrant(grant.telegramUserId);
+                        }}
+                        className="rounded-full bg-red-500 px-3 py-1 text-sm"
+                      >
+                        удалить
+                      </button>
+                    </div>
+
+                    <div className="mt-3 grid gap-2 text-sm text-white/75 md:grid-cols-2">
+                      <div>Роль: {getRoleLabel(grant.role)}</div>
+                      <div>Тариф: {getPlanLabel(grant.plan)}</div>
+                      <div>Активен: {grant.isActive ? "да" : "нет"}</div>
+                      <div>Истекает: {formatDate(grant.expiresAt)}</div>
+                    </div>
+
+                    {grant.note ? (
+                      <div className="mt-3 text-sm text-white/70">{grant.note}</div>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
-        <div className="mt-6 grid gap-3">
-          <RuleItem icon={LinkIcon} text="Добавляй только публичные посты из Telegram." />
-          <RuleItem icon={Globe} text="Контент попадает в ленту временно и живёт ограниченное время." />
-          <RuleItem icon={CheckCircle2} text="Для администратора и владельца канала демо-лимит не действует." />
+        <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div className="mb-4 text-lg font-semibold">Массовый импорт постов</div>
+
+          <textarea
+            value={bulkText}
+            onChange={(event) => setBulkText(event.target.value)}
+            placeholder={`https://t.me/channel_one/1
+https://t.me/channel_two/2
+https://t.me/channel_three/3`}
+            className="h-36 w-full rounded-xl border border-white/10 bg-[#1a1b24] p-4 text-sm text-white outline-none placeholder:text-white/35"
+          />
+
+          <div className="mt-3 flex flex-col gap-3 md:flex-row">
+            <select
+              value={bulkTag}
+              onChange={(event) => setBulkTag(event.target.value as ContentTag)}
+              className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+            >
+              {BULK_TAG_OPTIONS.map((item) => (
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+
+            <button
+              type="button"
+              onClick={() => {
+                void handleBulkSubmit();
+              }}
+              disabled={bulkLoading}
+              className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
+            >
+              {bulkLoading ? "загружаю..." : "загрузить пачку"}
+            </button>
+          </div>
+
+          {bulkResult.length > 0 ? (
+            <div className="mt-4 space-y-2">
+              {bulkResult.map((item, index) => (
+                <div
+                  key={`${item.url}-${index}`}
+                  className={`rounded-xl px-3 py-2 text-sm ${
+                    item.status === "ok"
+                      ? "bg-green-500/15 text-green-300"
+                      : "bg-red-500/15 text-red-300"
+                  }`}
+                >
+                  <div>
+                    {item.status === "ok" ? "✅" : "❌"} {item.url}
+                  </div>
+                  {item.error ? (
+                    <div className="mt-1 text-xs opacity-80">{item.error}</div>
+                  ) : null}
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mb-3 flex flex-wrap gap-2">
+          {[
+            { value: "all", label: "Все" },
+            { value: "published", label: "Опубликованные" },
+            { value: "pending", label: "На проверке" },
+            { value: "blocked", label: "Заблокированные" },
+          ].map((item) => (
+            <button
+              key={item.value}
+              onClick={() => setStatusFilter(item.value as any)}
+              className={`rounded-full px-4 py-2 text-sm transition ${
+                statusFilter === item.value
+                  ? "bg-white text-black"
+                  : "bg-white/10 text-white"
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Поиск по каналу, ссылке, пользователю, тексту..."
+          className="mb-4 w-full rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+        />
+
+        <div className="space-y-3">
+          {filteredPosts.map((post) => {
+            const status = post.status || "published";
+            const isDeleting = deletingId === post.id;
+            const isExpanded = expandedPostIds.includes(post.id);
+            const preview = getPreviewUrl(post);
+
+            return (
+              <div
+                key={post.id}
+                className="rounded-2xl border border-white/10 bg-white/5 p-3"
+              >
+                <div className="flex gap-3">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-black/30">
+                    {preview ? (
+                      <img
+                        src={preview}
+                        alt={post.source.title}
+                        className="h-full w-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-[11px] text-white/25">
+                        нет
+                        <br />
+                        превью
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="truncate text-[18px] font-semibold">
+                          {post.source.title}
+                        </div>
+                        <div className="truncate text-sm text-white/50">
+                          @{post.source.handle}
+                        </div>
+                      </div>
+
+                      <div className="shrink-0 rounded-xl bg-white/10 px-3 py-2 text-xs">
+                        {getStatusLabel(status)}
+                      </div>
+                    </div>
+
+                    <div className="mt-2 grid gap-1 text-xs text-white/60 sm:grid-cols-2">
+                      <div>
+                        Добавил: {post.addedBy.username || post.addedBy.telegramId || "—"}
+                      </div>
+                      <div>Тип: {getContentTypeLabel(post.contentType)}</div>
+                      <div>Тег: {BULK_TAG_OPTIONS.find((x) => x.value === post.tag)?.label || post.tag || "—"}</div>
+                      <div>Тариф: {getPlanLabel(post.billing.plan)}</div>
+                      <div>Создан: {formatDate(post.createdAt)}</div>
+                      <div>Истекает: {formatDate(post.expiresAt)}</div>
+                      <div>Удалится через: {formatRemaining(post.expiresAt)}</div>
+                      <div>
+                        Обновлён медиа: {formatDate(post.mediaRefreshedAt || post.createdAt)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {status === "pending" && (
+                    <>
+                      <button
+                        onClick={() => {
+                          void handleUpdateStatus(post.id, "published");
+                        }}
+                        className="rounded-xl bg-green-600 px-3 py-2 text-sm"
+                      >
+                        Одобрить
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          void handleUpdateStatus(post.id, "blocked");
+                        }}
+                        className="rounded-xl bg-yellow-600 px-3 py-2 text-sm"
+                      >
+                        Заблокировать
+                      </button>
+                    </>
+                  )}
+
+                  {status === "blocked" && (
+                    <button
+                      onClick={() => {
+                        void handleUpdateStatus(post.id, "published");
+                      }}
+                      className="rounded-xl bg-green-600 px-3 py-2 text-sm"
+                    >
+                      Разблокировать
+                    </button>
+                  )}
+
+                  <button
+                    onClick={() => {
+                      void handleDelete(post.id);
+                    }}
+                    disabled={isDeleting}
+                    className="rounded-xl bg-red-500 px-3 py-2 text-sm disabled:opacity-60"
+                  >
+                    {isDeleting ? "Удаляю..." : "Удалить"}
+                  </button>
+
+                  <a
+                    href={post.postUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-xl bg-white/10 px-3 py-2 text-sm"
+                  >
+                    Открыть
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleExpanded(post.id)}
+                    className="rounded-xl bg-white/10 px-3 py-2 text-sm"
+                  >
+                    {isExpanded ? "Скрыть детали" : "Детали"}
+                  </button>
+                </div>
+
+                {isExpanded ? (
+                  <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3">
+                    <div className="grid gap-2 text-sm text-white/75 md:grid-cols-2">
+                      <div>ID: {post.id}</div>
+                      <div>URL: {post.postUrl}</div>
+                      <div>Статус: {getStatusLabel(status)}</div>
+                      <div>План: {getPlanLabel(post.billing.plan)}</div>
+                      <div>Роль: {getRoleLabel(post.role)}</div>
+                      <div>TTL: {post.ttlHours} ч</div>
+                      <div>Media count: {post.media.length}</div>
+                      <div>Fallback: {post.fallbackReason || "—"}</div>
+                    </div>
+
+                    {post.text ? (
+                      <div className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-white/75">
+                        {post.text}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+
+          {filteredPosts.length === 0 && state === "ready" ? (
+            <div className="rounded-2xl border border-dashed border-white/10 p-6 text-center text-sm text-white/35">
+              ничего не найдено
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

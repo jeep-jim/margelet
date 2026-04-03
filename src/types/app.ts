@@ -107,6 +107,7 @@ export type IngestedPost = {
   createdAt: string;
   expiresAt: string;
   ttlHours: number;
+  mediaRefreshedAt?: string | null;
 
   tag: ContentTag;
 
