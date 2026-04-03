@@ -44,20 +44,68 @@ type BulkResultItem = {
 const ADMIN_TELEGRAM_ID = "1372669404";
 
 const BULK_TAG_OPTIONS: Array<{ value: ContentTag; label: string }> = [
-  { value: "other", label: "Другое" },
-  { value: "news", label: "Новости" },
-  { value: "memes", label: "Мемы" },
-  { value: "technology", label: "Технологии" },
-  { value: "business", label: "Бизнес" },
-  { value: "education", label: "Образование" },
-  { value: "music", label: "Музыка" },
-  { value: "sports", label: "Спорт" },
-  { value: "people", label: "Люди" },
-  { value: "animals", label: "Животные" },
-  { value: "creativity", label: "Творчество" },
-  { value: "finance", label: "Финансы" },
-  { value: "travel", label: "Путешествия" },
-  { value: "food", label: "Еда" },
+  { value: "other", label: "☝️ Другое" },
+  { value: "news", label: "📰 Новости" },
+  { value: "politics", label: "🏛️ Политика" },
+  { value: "war", label: "🎖️ Война" },
+  { value: "economy", label: "📈 Экономика" },
+  { value: "business", label: "💼 Бизнес" },
+  { value: "finance", label: "💰 Финансы" },
+  { value: "crypto", label: "₿ Крипта" },
+
+  { value: "technology", label: "💻 Технологии" },
+  { value: "ai", label: "🤖 AI" },
+  { value: "science", label: "🔬 Наука" },
+  { value: "space", label: "🪐 Космос" },
+  { value: "gadgets", label: "📱 Гаджеты" },
+  { value: "telegram", label: "✈️ Telegram" },
+
+  { value: "education", label: "📚 Образование" },
+  { value: "history", label: "🏺 История" },
+  { value: "culture", label: "🎭 Культура" },
+  { value: "books", label: "📖 Книги" },
+
+  { value: "art", label: "🎨 Арт" },
+  { value: "design", label: "🧩 Дизайн" },
+  { value: "photography", label: "📷 Фото" },
+
+  { value: "cinema", label: "🎬 Кино" },
+  { value: "series", label: "📺 Сериалы" },
+
+  { value: "music", label: "🎵 Музыка" },
+  { value: "gaming", label: "🎮 Игры" },
+
+  { value: "memes", label: "😂 Мемы" },
+  { value: "humor", label: "😁 Юмор" },
+
+  { value: "sports", label: "⚽ Спорт" },
+  { value: "mma", label: "🥊 MMA" },
+  { value: "fitness", label: "🏋️ Фитнес" },
+  { value: "health", label: "🩺 Здоровье" },
+
+  { value: "travel", label: "🧳 Путешествия" },
+  { value: "food", label: "🍔 Еда" },
+  { value: "recipes", label: "🍳 Рецепты" },
+
+  { value: "psychology", label: "🧠 Психология" },
+  { value: "relationships", label: "❤️ Отношения" },
+  { value: "parenting", label: "👶 Родительство" },
+
+  { value: "fashion", label: "👗 Мода" },
+  { value: "beauty", label: "💄 Красота" },
+
+  { value: "nature", label: "🌿 Природа" },
+  { value: "animals", label: "🐾 Животные" },
+  { value: "people", label: "🧑 Люди" },
+  { value: "celebrities", label: "⭐ Звёзды" },
+
+  { value: "marketing", label: "📣 Маркетинг" },
+  { value: "startups", label: "🚀 Стартапы" },
+  { value: "jobs", label: "🛠️ Работа" },
+  { value: "real_estate", label: "🏠 Недвижимость" },
+  { value: "auto", label: "🚗 Авто" },
+
+  { value: "creativity", label: "✨ Творчество" },
 ];
 
 function buildSearchText(post: IngestedPost) {
@@ -83,6 +131,24 @@ function formatDate(value?: string | null) {
   if (!Number.isFinite(ms)) return "—";
 
   return new Date(ms).toLocaleString();
+}
+
+function formatRemaining(value?: string | null) {
+  if (!value) return "—";
+
+  const diff = Date.parse(value) - Date.now();
+  if (!Number.isFinite(diff) || diff <= 0) return "00:00:00";
+
+  const totalSeconds = Math.floor(diff / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return [
+    String(hours).padStart(2, "0"),
+    String(minutes).padStart(2, "0"),
+    String(seconds).padStart(2, "0"),
+  ].join(":");
 }
 
 function getStatusLabel(status?: string) {
@@ -164,18 +230,9 @@ function normalizeBulkError(message: string) {
   const value = String(message || "").trim();
 
   if (!value) return "ошибка";
-
-  if (value === "Invalid Telegram post URL") {
-    return "невалидная ссылка";
-  }
-
-  if (value === "Failed to ingest Telegram post") {
-    return "не удалось забрать пост";
-  }
-
-  if (value === "Daily limit reached") {
-    return "дневной лимит";
-  }
+  if (value === "Invalid Telegram post URL") return "невалидная ссылка";
+  if (value === "Failed to ingest Telegram post") return "не удалось забрать пост";
+  if (value === "Daily limit reached") return "дневной лимит";
 
   return value;
 }
@@ -185,6 +242,7 @@ export function AdminScreen({
   onClose,
   onDeletePost,
 }: AdminScreenProps) {
+  const [, setTick] = useState(0);
   const [posts, setPosts] = useState<IngestedPost[]>([]);
   const [query, setQuery] = useState("");
   const [state, setState] = useState<LoadState>("idle");
@@ -212,6 +270,14 @@ export function AdminScreen({
   const [bulkResult, setBulkResult] = useState<BulkResultItem[]>([]);
 
   const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setTick((prev) => prev + 1);
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   const loadPosts = async () => {
     if (!telegramUserId || !hasAdminAccess) return;
@@ -889,8 +955,14 @@ https://t.me/channel_three/3`}
                         Добавил: {post.addedBy.username || post.addedBy.telegramId || "—"}
                       </div>
                       <div>Тип: {getContentTypeLabel(post.contentType)}</div>
-                      <div>Тег: {post.tag || "—"}</div>
+                      <div>Тег: {BULK_TAG_OPTIONS.find((x) => x.value === post.tag)?.label || post.tag || "—"}</div>
                       <div>Тариф: {getPlanLabel(post.billing.plan)}</div>
+                      <div>Создан: {formatDate(post.createdAt)}</div>
+                      <div>Истекает: {formatDate(post.expiresAt)}</div>
+                      <div>Удалится через: {formatRemaining(post.expiresAt)}</div>
+                      <div>
+                        Обновлён медиа: {formatDate(post.mediaRefreshedAt || post.createdAt)}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -916,6 +988,17 @@ https://t.me/channel_three/3`}
                         Заблокировать
                       </button>
                     </>
+                  )}
+
+                  {status === "blocked" && (
+                    <button
+                      onClick={() => {
+                        void handleUpdateStatus(post.id, "published");
+                      }}
+                      className="rounded-xl bg-green-600 px-3 py-2 text-sm"
+                    >
+                      Разблокировать
+                    </button>
                   )}
 
                   <button
@@ -947,18 +1030,20 @@ https://t.me/channel_three/3`}
                 </div>
 
                 {isExpanded ? (
-                  <div className="mt-3 rounded-xl bg-black/20 p-3">
+                  <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3">
                     <div className="grid gap-2 text-sm text-white/75 md:grid-cols-2">
-                      <div>ID поста: {post.id}</div>
-                      <div>Media: {post.media.length}</div>
-                      <div>Создан: {formatDate(post.createdAt)}</div>
-                      <div>Истекает: {formatDate(post.expiresAt)}</div>
-                      <div>Источник: {post.postUrl}</div>
+                      <div>ID: {post.id}</div>
+                      <div>URL: {post.postUrl}</div>
+                      <div>Статус: {getStatusLabel(status)}</div>
+                      <div>План: {getPlanLabel(post.billing.plan)}</div>
+                      <div>Роль: {getRoleLabel(post.role)}</div>
+                      <div>TTL: {post.ttlHours} ч</div>
+                      <div>Media count: {post.media.length}</div>
                       <div>Fallback: {post.fallbackReason || "—"}</div>
                     </div>
 
                     {post.text ? (
-                      <div className="mt-3 whitespace-pre-wrap break-words rounded-xl bg-white/5 p-3 text-sm leading-6 text-white/85">
+                      <div className="mt-3 whitespace-pre-wrap break-words text-sm leading-6 text-white/75">
                         {post.text}
                       </div>
                     ) : null}
@@ -967,6 +1052,12 @@ https://t.me/channel_three/3`}
               </div>
             );
           })}
+
+          {filteredPosts.length === 0 && state === "ready" ? (
+            <div className="rounded-2xl border border-dashed border-white/10 p-6 text-center text-sm text-white/35">
+              ничего не найдено
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
