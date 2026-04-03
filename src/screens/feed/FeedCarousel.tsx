@@ -30,14 +30,6 @@ function HybridMedia({
   mode,
   maxMediaHeightClass,
 }: HybridMediaProps) {
-  const [src, setSrc] = useState(item.url);
-  const [triedRefresh, setTriedRefresh] = useState(false);
-
-  useEffect(() => {
-    setSrc(item.url);
-    setTriedRefresh(false);
-  }, [item.url]);
-
   const mediaClass =
     mode === "adaptive"
       ? `block h-auto w-auto max-w-full ${maxMediaHeightClass} ${
@@ -45,40 +37,17 @@ function HybridMedia({
         }`
       : `h-full w-full ${fit === "cover" ? "object-cover" : "object-contain"}`;
 
-  const tryRefresh = async () => {
-    if (triedRefresh) return;
-    setTriedRefresh(true);
-
-    try {
-      const url = window.location.origin + window.location.pathname;
-
-      const res = await fetch(`/api/telegram-preview?url=${encodeURIComponent(url)}`);
-      const data = await res.json();
-
-      if (item.kind === "video" && data.video) {
-        setSrc(data.video);
-      }
-
-      if (item.kind === "image" && data.image) {
-        setSrc(data.image);
-      }
-    } catch {
-      // молча
-    }
-  };
-
   if (item.kind === "video") {
     return (
       <video
         ref={videoRef}
-        src={src}
+        src={item.url}
         poster={item.poster || undefined}
         className={mediaClass}
         playsInline
         preload="metadata"
         muted={muted}
         controls={false}
-        onError={tryRefresh}
       />
     );
   }
@@ -86,11 +55,10 @@ function HybridMedia({
   if (item.kind === "image") {
     return (
       <img
-        src={src}
+        src={item.url}
         alt=""
         className={mediaClass}
         referrerPolicy="no-referrer"
-        onError={tryRefresh}
       />
     );
   }
@@ -99,11 +67,10 @@ function HybridMedia({
     return (
       <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4 py-8">
         <audio
-          src={src}
+          src={item.url}
           controls
           className="w-full max-w-[420px]"
           preload="metadata"
-          onError={tryRefresh}
         />
       </div>
     );
@@ -113,7 +80,7 @@ function HybridMedia({
     return (
       <div className="flex h-full w-full items-center justify-center bg-neutral-100 px-4 py-8">
         <a
-          href={src}
+          href={item.url}
           target="_blank"
           rel="noreferrer"
           className="rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
