@@ -82,13 +82,20 @@ function normalizeLegacyMedia(raw: Record<string, unknown>): IngestedPost["media
       const poster = asString(record.poster);
 
       if (!type || !url) return null;
-      if (type !== "image" && type !== "video") return null;
+      if (type !== "image" && type !== "video" && type !== "audio" && type !== "file") {
+        return null;
+      }
 
       return {
         id: asString(record.id) || `${type}-${index + 1}`,
         kind: type,
         url,
         poster: poster || null,
+        mimeType: asString(record.mimeType),
+        fileName: asString(record.fileName),
+        width: asNumber(record.width),
+        height: asNumber(record.height),
+        duration: asNumber(record.duration),
       } as IngestedPost["media"][number];
     })
     .filter(Boolean) as IngestedPost["media"];
@@ -196,7 +203,7 @@ function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
     return null;
   }
 
-  return {
+  const post: IngestedPost = {
     id,
     postUrl,
     source: {
@@ -230,6 +237,27 @@ function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
       autopublishEnabled: !!billing.autopublishEnabled,
     },
   };
+
+  if ("status" in raw) {
+    (post as IngestedPost & { status?: "published" | "pending" | "blocked" }).status =
+      raw.status === "published" || raw.status === "pending" || raw.status === "blocked"
+        ? raw.status
+        : undefined;
+  }
+
+  if ("role" in raw) {
+    (post as IngestedPost & { role?: "user" | "channel_owner" | "admin" }).role =
+      raw.role === "user" || raw.role === "channel_owner" || raw.role === "admin"
+        ? raw.role
+        : undefined;
+  }  
+
+  if ("mediaRefreshedAt" in raw) {
+    (post as IngestedPost & { mediaRefreshedAt?: string | null }).mediaRefreshedAt =
+      asString(raw.mediaRefreshedAt);
+  }
+
+  return post;
 }
 
 function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null {
@@ -247,7 +275,7 @@ function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null 
   const createdAt = new Date(id).toISOString();
   const expiresAt = new Date(id + ttlHours * 3600 * 1000).toISOString();
 
-  return {
+  const post: IngestedPost = {
     id,
     postUrl,
     source: {
@@ -275,6 +303,27 @@ function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null 
       autopublishEnabled: false,
     },
   };
+
+  if ("status" in raw) {
+    (post as IngestedPost & { status?: "published" | "pending" | "blocked" }).status =
+      raw.status === "published" || raw.status === "pending" || raw.status === "blocked"
+        ? raw.status
+        : undefined;
+  }
+
+  if ("role" in raw) {
+    (post as IngestedPost & { role?: "user" | "channel_owner" | "admin" }).role =
+      raw.role === "user" || raw.role === "channel_owner" || raw.role === "admin"
+        ? raw.role
+        : undefined;
+  }
+
+  if ("mediaRefreshedAt" in raw) {
+    (post as IngestedPost & { mediaRefreshedAt?: string | null }).mediaRefreshedAt =
+      asString(raw.mediaRefreshedAt);
+  }
+
+  return post;
 }
 
 function normalizeAnyPost(raw: unknown): IngestedPost | null {
@@ -291,8 +340,18 @@ function normalizeAnyPost(raw: unknown): IngestedPost | null {
   return normalizeLegacyPost(record);
 }
 
+function getRemainingTtlSeconds(post: IngestedPost) {
+  const expiresAtMs = Date.parse(post.expiresAt || "");
+  if (!Number.isFinite(expiresAtMs)) {
+    return Math.max(1, post.ttlHours * 3600);
+  }
+
+  const remaining = Math.floor((expiresAtMs - Date.now()) / 1000);
+  return Math.max(1, remaining);
+}
+
 export async function savePost(post: IngestedPost): Promise<IngestedPost> {
-  const ttlSeconds = post.ttlHours * 3600;
+  const ttlSeconds = getRemainingTtlSeconds(post);
 
   await redis.set(postKey(post.id), post, {
     ex: ttlSeconds,

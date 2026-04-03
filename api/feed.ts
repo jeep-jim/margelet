@@ -1,6 +1,13 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { getFeedPosts, savePost } from "./lib/kv.js";
+import { ingestTelegramPost } from "../src/lib/telegram.js";
 import type { IngestedPost } from "../src/types/app";
+
+type RefreshablePost = IngestedPost & {
+  status?: string;
+  role?: string;
+  mediaRefreshedAt?: string | null;
+};
 
 function setCors(res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -9,74 +16,68 @@ function setCors(res: VercelResponse) {
 }
 
 function isVisiblePost(post: IngestedPost) {
-  if (!post.status) return true;
-  return post.status === "published";
+  const status = (post as RefreshablePost).status;
+  if (!status) return true;
+  return status === "published";
 }
 
-// 🔥 проверка: нужно ли обновлять медиа
-function shouldRefresh(post: IngestedPost) {
-  const created = Date.parse(post.createdAt || "");
-  if (!Number.isFinite(created)) return false;
+function shouldRefresh(post: RefreshablePost) {
+  const lastRefresh =
+    Date.parse(post.mediaRefreshedAt || "") ||
+    Date.parse(post.createdAt || "");
+
+  if (!Number.isFinite(lastRefresh)) return false;
 
   const now = Date.now();
+  const refreshEveryMs = 2 * 60 * 60 * 1000; // раз в 2 часа
 
-  // каждые 30 минут
-  return now - created > 30 * 60 * 1000;
+  return now - lastRefresh >= refreshEveryMs;
 }
 
-// 🔥 проверка: есть ли битое медиа
-function hasBrokenMedia(post: IngestedPost) {
-  if (!post.media || post.media.length === 0) return false;
-
-  return post.media.some((m) =>
-    m.url?.includes("telesco.pe")
-  );
-}
-
-// 🔥 обновление поста
-async function refreshPost(post: IngestedPost): Promise<IngestedPost> {
+async function refreshPostKeepingTtl(post: RefreshablePost): Promise<RefreshablePost> {
   try {
-    const res = await fetch(
-      `${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""}/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`
-    );
+    const ingest = await ingestTelegramPost(post.postUrl);
+    if (!ingest) return post;
 
-    if (!res.ok) return post;
+    const refreshedAt = new Date().toISOString();
 
-    const data = await res.json();
-
-    const updated: IngestedPost = {
+    const updated: RefreshablePost = {
       ...post,
 
       source: {
-        ...post.source,
-        avatar: data.avatar || post.source.avatar,
+        handle: ingest.source.handle,
+        title: ingest.source.title,
+        avatar: ingest.source.avatar,
+        verified: ingest.source.verified,
       },
 
-      media:
-        data.video
-          ? [
-              {
-                id: "video-1",
-                kind: "video",
-                url: data.video,
-                poster: data.poster || null,
-              },
-            ]
-          : data.image
-          ? [
-              {
-                id: "image-1",
-                kind: "image",
-                url: data.image,
-              },
-            ]
-          : post.media,
+      text: ingest.text,
+      links: ingest.links,
+      contentType: ingest.contentType,
+      media: ingest.media,
+      hasMediaInOriginal: ingest.hasMediaInOriginal,
+      fallbackReason: ingest.fallbackReason,
+
+      // 🔥 не трогаем жизнь контейнера
+      id: post.id,
+      postUrl: post.postUrl,
+      createdAt: post.createdAt,
+      expiresAt: post.expiresAt,
+      ttlHours: post.ttlHours,
+      tag: post.tag,
+      addedBy: post.addedBy,
+      billing: post.billing,
+      status: post.status,
+      role: post.role,
+
+      mediaRefreshedAt: refreshedAt,
     };
 
     await savePost(updated);
 
     return updated;
-  } catch {
+  } catch (error) {
+    console.error("refreshPostKeepingTtl error", error);
     return post;
   }
 }
@@ -98,15 +99,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         ? Math.min(parseInt(req.query.limit, 10) || 100, 200)
         : 100;
 
-    const posts = await getFeedPosts(limit);
+    const posts = (await getFeedPosts(limit)) as RefreshablePost[];
 
-    // 🔥 ГЛАВНОЕ: авто-refresh
     const refreshedPosts = await Promise.all(
       posts.map(async (post) => {
-        if (hasBrokenMedia(post) || shouldRefresh(post)) {
-          return await refreshPost(post);
+        if (!shouldRefresh(post)) {
+          return post;
         }
-        return post;
+
+        return refreshPostKeepingTtl(post);
       })
     );
 
