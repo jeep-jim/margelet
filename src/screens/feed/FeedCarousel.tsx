@@ -5,7 +5,6 @@ type CarouselItem = {
   id: string;
   kind: "image" | "video" | "audio" | "file";
   url: string;
-  postUrl?: string;
   poster?: string | null;
   mimeType?: string | null;
   fileName?: string | null;
@@ -32,14 +31,12 @@ function HybridMedia({
   maxMediaHeightClass,
 }: HybridMediaProps) {
   const [src, setSrc] = useState(item.url);
-  const [posterSrc, setPosterSrc] = useState(item.poster ?? null);
   const [triedRefresh, setTriedRefresh] = useState(false);
 
   useEffect(() => {
     setSrc(item.url);
-    setPosterSrc(item.poster ?? null);
     setTriedRefresh(false);
-  }, [item.url, item.poster]);
+  }, [item.url]);
 
   const mediaClass =
     mode === "adaptive"
@@ -50,17 +47,12 @@ function HybridMedia({
 
   const tryRefresh = async () => {
     if (triedRefresh) return;
-    if (!item.postUrl) return;
-
     setTriedRefresh(true);
 
     try {
-      const res = await fetch(
-        `/api/telegram-preview?url=${encodeURIComponent(item.postUrl)}`
-      );
+      const url = window.location.origin + window.location.pathname;
 
-      if (!res.ok) return;
-
+      const res = await fetch(`/api/telegram-preview?url=${encodeURIComponent(url)}`);
       const data = await res.json();
 
       if (item.kind === "video" && data.video) {
@@ -70,12 +62,8 @@ function HybridMedia({
       if (item.kind === "image" && data.image) {
         setSrc(data.image);
       }
-
-      if (data.poster) {
-        setPosterSrc(data.poster);
-      }
     } catch {
-      //
+      // молча
     }
   };
 
@@ -84,7 +72,7 @@ function HybridMedia({
       <video
         ref={videoRef}
         src={src}
-        poster={posterSrc || undefined}
+        poster={item.poster || undefined}
         className={mediaClass}
         playsInline
         preload="metadata"
@@ -382,9 +370,7 @@ export function FeedCarousel({
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
-                setFullscreenIndex((prev) =>
-                  Math.min(items.length - 1, prev + 1)
-                );
+                setFullscreenIndex((prev) => Math.min(items.length - 1, prev + 1));
               }}
               className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
               aria-label="Следующее медиа"
