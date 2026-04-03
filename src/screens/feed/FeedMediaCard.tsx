@@ -47,7 +47,11 @@ export function FeedMediaCard({
   onChangeMediaIndex,
   isCardVisible = false,
 }: FeedMediaCardProps) {
-  const media = normalizeMediaList(post);
+  const media = normalizeMediaList(post).map((item) => ({
+    ...item,
+    postUrl: post.postUrl,
+  }));
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
@@ -140,14 +144,16 @@ export function FeedMediaCard({
     <div className="relative" onClick={handleOpen}>
       <FeedCarousel
         items={media}
-        aspectClass="aspect-[4/5]"
+        aspectClass=""
         activeIndex={mediaIndex}
         onChange={onChangeMediaIndex}
         controlsTone="light"
         mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
-        fit="cover"
+        fit="contain"
+        mode="adaptive"
+        maxMediaHeightClass="max-h-[72vh] sm:max-h-[780px]"
         enableFullscreen={post.contentType !== "video"}
       />
 
