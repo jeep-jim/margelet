@@ -37,38 +37,28 @@ export function FeedSourceAvatar({
 }) {
   const sizeClass = compact ? "h-10 w-10" : "h-12 w-12";
   const textClass = compact ? "text-sm" : "text-base";
-  const [avatarSrc, setAvatarSrc] = useState(post.source.avatar);
-
-  useEffect(() => {
-    setAvatarSrc(post.source.avatar);
-  }, [post.source.avatar, post.id]);
 
   return (
     <div
       className={`${sizeClass} overflow-hidden rounded-full bg-neutral-200 ${textClass} font-bold text-neutral-900`}
     >
-      {avatarSrc ? (
+      {post.source.avatar ? (
         <img
-          src={avatarSrc}
+          src={post.source.avatar}
           alt={post.source.title}
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
-          onError={async () => {
+          onError={async (e) => {
             try {
-              const res = await fetch(
-                `/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`
-              );
-              if (!res.ok) return;
-
+              const res = await fetch(`/api/telegram-preview?url=https://t.me/${post.source.handle}`);
               const data = await res.json();
+
               if (data.avatar) {
-                setAvatarSrc(data.avatar);
+                (e.currentTarget as HTMLImageElement).src = data.avatar;
               }
-            } catch {
-              //
-            }
+            } catch {}
           }}
-        />
+        />        
       ) : (
         <div className="flex h-full w-full items-center justify-center">
           {String(post.source.title || "TG").slice(0, 2).toUpperCase()}
