@@ -57,15 +57,12 @@ export function AdminScreen({
   const [analytics, setAnalytics] = useState<AnalyticsResponse | null>(null);
   const [grants, setGrants] = useState<AccessGrant[]>([]);
   const [grantsLoading, setGrantsLoading] = useState(false);
+  const [sources, setSources] = useState<TrustedSource[]>([]);
 
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
     const firstEnabled = COUNTRIES.find((item) => item.enabled);
     return firstEnabled?.code || "ru";
   });
-
-  // Пока backend под trusted sources ещё не подключен.
-  // Оставляем пустой список, чтобы UI уже был готов.
-  const [sources] = useState<TrustedSource[]>([]);
 
   const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
 
@@ -78,7 +75,7 @@ export function AdminScreen({
       const res = await fetch("/api/admin-posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramUserId }),
+        body: JSON.stringify({ telegramUserId, entity: "posts" }),
       });
 
       const data = await res.json().catch(() => null);
@@ -129,11 +126,29 @@ export function AdminScreen({
     }
   };
 
+  const loadSources = async () => {
+    if (!telegramUserId || !hasAdminAccess) return;
+
+    try {
+      const res = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramUserId, entity: "sources" }),
+      });
+
+      const data = await res.json().catch(() => null);
+      setSources(Array.isArray(data?.sources) ? data.sources : []);
+    } catch {
+      //
+    }
+  };
+
   useEffect(() => {
     if (!telegramUserId || !hasAdminAccess) return;
     void loadPosts();
     void loadAnalytics();
     void loadGrants();
+    void loadSources();
   }, [telegramUserId, hasAdminAccess]);
 
   const stats = useMemo(() => {
@@ -239,8 +254,10 @@ export function AdminScreen({
           />
 
           <AdminSourcesSection
+            telegramUserId={telegramUserId}
             countryCode={selectedCountryCode}
             sources={sources}
+            onSourcesReload={loadSources}
           />
 
           <AdminBulkImportSection

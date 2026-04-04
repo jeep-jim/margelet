@@ -1,19 +1,32 @@
 import { useMemo, useState } from "react";
+import type { ContentTag } from "../../types/app";
 import type { CountryCode } from "./admin.countries";
 import type { TrustedSource } from "./admin.types";
 import { AdminSectionCard } from "./AdminSectionCard";
 import { ADMIN_TAG_OPTIONS } from "./admin.tag-options";
 
 type AdminSourcesSectionProps = {
+  telegramUserId: string | null;
   countryCode: CountryCode;
   sources: TrustedSource[];
+  onSourcesReload?: () => Promise<void> | void;
 };
 
 export function AdminSourcesSection({
+  telegramUserId,
   countryCode,
   sources,
+  onSourcesReload,
 }: AdminSourcesSectionProps) {
   const [query, setQuery] = useState("");
+
+  const [handle, setHandle] = useState("");
+  const [title, setTitle] = useState("");
+  const [defaultTag, setDefaultTag] = useState<ContentTag>("other");
+  const [status, setStatus] = useState<TrustedSource["status"]>("active");
+  const [note, setNote] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   const filteredSources = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -35,43 +48,177 @@ export function AdminSourcesSection({
     });
   }, [sources, query, countryCode]);
 
+  const handleSave = async () => {
+    if (!telegramUserId) return;
+
+    if (!handle.trim()) {
+      window.alert("Укажи @handle канала");
+      return;
+    }
+
+    if (!title.trim()) {
+      window.alert("Укажи название канала");
+      return;
+    }
+
+    try {
+      setSaving(true);
+
+      const res = await fetch("/api/admin-posts", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "sources",
+          telegramUserId,
+          countryCode,
+          handle: handle.trim(),
+          title: title.trim(),
+          defaultTag,
+          status,
+          note: note.trim() || null,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || "save source failed");
+      }
+
+      setHandle("");
+      setTitle("");
+      setDefaultTag("other");
+      setStatus("active");
+      setNote("");
+
+      if (onSourcesReload) {
+        await onSourcesReload();
+      }
+    } catch (error: any) {
+      window.alert(error?.message || "Не удалось сохранить источник");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async (source: TrustedSource) => {
+    if (!telegramUserId) return;
+    if (!window.confirm(`Удалить источник @${source.handle}?`)) return;
+
+    try {
+      setDeletingId(source.id);
+
+      const res = await fetch("/api/admin-posts", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "sources",
+          telegramUserId,
+          id: source.id,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || "delete source failed");
+      }
+
+      if (onSourcesReload) {
+        await onSourcesReload();
+      }
+    } catch (error: any) {
+      window.alert(error?.message || "Не удалось удалить источник");
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
   return (
     <AdminSectionCard
       title="Источники"
-      subtitle="Доверенные публичные каналы этой страны. Это заготовка под автопарсинг."
-      right={
-        <button
-          type="button"
-          className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/70"
-          disabled
-        >
-          скоро добавим
-        </button>
-      }
+      subtitle="Доверенные публичные каналы этой страны. Отсюда позже пойдёт автопарсинг."
     >
-      <div className="mb-4 grid gap-3 md:grid-cols-[1fr_220px_180px]">
+      <div className="grid gap-3 md:grid-cols-2">
         <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Поиск по названию, handle, заметке..."
+          value={handle}
+          onChange={(event) => setHandle(event.target.value)}
+          placeholder="@channel_handle"
           className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
         />
 
-        <div className="rounded-xl border border-dashed border-white/10 bg-[#1a1b24] px-4 py-3 text-sm text-white/35">
+        <input
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          placeholder="Название канала"
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+        />
+
+        <select
+          value={defaultTag}
+          onChange={(event) => setDefaultTag(event.target.value as ContentTag)}
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+        >
+          {ADMIN_TAG_OPTIONS.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={status}
+          onChange={(event) => setStatus(event.target.value as TrustedSource["status"])}
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+        >
+          <option value="active">активен</option>
+          <option value="paused">пауза</option>
+        </select>
+
+        <input
+          value={note}
+          onChange={(event) => setNote(event.target.value)}
+          placeholder="Заметка / комментарий"
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35 md:col-span-2"
+        />
+      </div>
+
+      <div className="mt-3 flex flex-wrap gap-3">
+        <button
+          type="button"
+          onClick={() => {
+            void handleSave();
+          }}
+          disabled={saving}
+          className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
+        >
+          {saving ? "сохраняю..." : "добавить источник"}
+        </button>
+
+        <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/70">
           страна: {countryCode.toUpperCase()}
         </div>
 
-        <div className="rounded-xl border border-dashed border-white/10 bg-[#1a1b24] px-4 py-3 text-sm text-white/35">
+        <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/70">
           всего: {filteredSources.length}
         </div>
       </div>
 
+      <div className="mt-4">
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Поиск по названию, handle, заметке..."
+          className="w-full rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+        />
+      </div>
+
       {filteredSources.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-white/10 p-5 text-sm text-white/35">
-          Пока нет каналов для этой страны. Здесь позже появится список trusted public channels.
+        <div className="mt-4 rounded-xl border border-dashed border-white/10 p-5 text-sm text-white/35">
+          Пока нет каналов для этой страны.
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="mt-4 space-y-3">
           {filteredSources.map((source) => {
             const tagLabel =
               ADMIN_TAG_OPTIONS.find((item) => item.value === source.defaultTag)?.label ||
@@ -106,23 +253,28 @@ export function AdminSourcesSection({
                 <div className="mt-3 grid gap-2 text-sm text-white/70 md:grid-cols-2">
                   <div>Страна: {source.countryCode.toUpperCase()}</div>
                   <div>Тег по умолчанию: {tagLabel}</div>
-                  <div>
-                    Последний post id: {source.lastSeenPostId ?? "—"}
-                  </div>
-                  <div>
-                    Импортировано постов: {source.importedPostsCount}
-                  </div>
-                  <div>
-                    Последняя проверка: {source.lastCheckedAt || "—"}
-                  </div>
-                  <div>
-                    Последний импорт: {source.lastImportedAt || "—"}
-                  </div>
+                  <div>Последний post id: {source.lastSeenPostId ?? "—"}</div>
+                  <div>Импортировано постов: {source.importedPostsCount}</div>
+                  <div>Последняя проверка: {source.lastCheckedAt || "—"}</div>
+                  <div>Последний импорт: {source.lastImportedAt || "—"}</div>
                 </div>
 
                 {source.note ? (
                   <div className="mt-3 text-sm text-white/60">{source.note}</div>
                 ) : null}
+
+                <div className="mt-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      void handleDelete(source);
+                    }}
+                    disabled={deletingId === source.id}
+                    className="rounded-xl bg-red-500 px-3 py-2 text-sm disabled:opacity-60"
+                  >
+                    {deletingId === source.id ? "Удаляю..." : "Удалить"}
+                  </button>
+                </div>
               </div>
             );
           })}
