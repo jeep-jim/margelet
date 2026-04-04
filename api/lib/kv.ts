@@ -352,17 +352,18 @@ function getRemainingTtlSeconds(post: IngestedPost) {
 
 export async function savePost(post: IngestedPost): Promise<IngestedPost> {
   const ttlSeconds = getRemainingTtlSeconds(post);
+  const idValue = String(post.id);
 
   await redis.set(postKey(post.id), post, {
     ex: ttlSeconds,
   });
 
-  await redis.set(postUrlKey(post.postUrl), post.id, {
+  await redis.set(postUrlKey(post.postUrl), idValue, {
     ex: ttlSeconds,
   });
 
-  await redis.lrem(FEED_IDS_KEY, 0, post.id);
-  await redis.lpush(FEED_IDS_KEY, post.id);
+  await redis.lrem(FEED_IDS_KEY, 0, idValue);
+  await redis.lpush(FEED_IDS_KEY, idValue);
 
   return post;
 }
@@ -374,12 +375,20 @@ export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
     return [];
   }
 
-  const posts = await Promise.all(
-    ids.map(async (id) => {
-      if (typeof id !== "string" && typeof id !== "number") {
-        return null;
-      }
+  const uniqueIds = Array.from(
+    new Set(
+      ids
+        .map((id) =>
+          typeof id === "string" || typeof id === "number"
+            ? String(id)
+            : null
+        )
+        .filter((id): id is string => Boolean(id))
+    )
+  );
 
+  const posts = await Promise.all(
+    uniqueIds.map(async (id) => {
       const raw = await redis.get(postKey(id));
       return normalizeAnyPost(raw);
     })

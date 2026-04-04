@@ -44,9 +44,6 @@ export default async function handler(req: any, res: any) {
       return res.status(403).json({ error: "Forbidden" });
     }
 
-    // =========================
-    // GET POSTS (старый режим)
-    // =========================
     if (req.method === "POST") {
       const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, 500);
 
@@ -54,13 +51,21 @@ export default async function handler(req: any, res: any) {
         return res.status(200).json({ ok: true, posts: [] });
       }
 
+      const uniqueIds = Array.from(
+        new Set(
+          ids
+            .map((rawId) => {
+              const id = asNumber(rawId);
+              return id ? String(id) : null;
+            })
+            .filter((id): id is string => Boolean(id))
+        )
+      );
+
       const posts: IngestedPost[] = [];
 
-      for (const rawId of ids) {
-        const id = asNumber(rawId);
-        if (!id) continue;
-
-        const raw = await redis.get(postKey(id));
+      for (const rawId of uniqueIds) {
+        const raw = await redis.get(postKey(rawId));
         if (!raw || typeof raw !== "object") continue;
 
         posts.push(raw as IngestedPost);
@@ -72,9 +77,6 @@ export default async function handler(req: any, res: any) {
       });
     }
 
-    // =========================
-    // PATCH (approve / reject)
-    // =========================
     if (req.method === "PATCH") {
       const id = asNumber(body.id);
       const status = body.status;
