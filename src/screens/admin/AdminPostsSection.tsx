@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { IngestedPost } from "../../types/app";
 import { AdminSectionCard } from "./AdminSectionCard";
 import {
@@ -24,12 +24,21 @@ export function AdminPostsSection({
   state,
   onDeletePost,
 }: AdminPostsSectionProps) {
+  const [, setTick] = useState(0);
   const [query, setQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<
     "all" | "published" | "pending" | "blocked"
   >("all");
   const [expandedPostIds, setExpandedPostIds] = useState<number[]>([]);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setTick((prev) => prev + 1);
+    }, 1000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   const filteredPosts = useMemo(() => {
     const q = query.trim().toLowerCase();
