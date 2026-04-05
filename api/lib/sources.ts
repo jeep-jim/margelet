@@ -393,6 +393,15 @@ async function pollOneSource(source: TrustedSource) {
     const newestSeen = Math.max(...ids);
     const lastSeen = source.lastSeenPostId || 0;
 
+    // 🔥 Первый запуск: просто запоминаем верхний postId и не тащим историю
+    if (lastSeen <= 0) {
+      await touchSourceAfterPoll(source, {
+        lastCheckedAt: checkedAt,
+        lastSeenPostId: newestSeen,
+      });
+      return;
+    }
+
     const newIds = ids
       .filter((id) => id > lastSeen)
       .sort((a, b) => a - b)
