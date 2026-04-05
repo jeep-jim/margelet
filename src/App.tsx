@@ -361,6 +361,51 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    let intervalId: number | null = null;
+
+    const runHeartbeat = () => {
+      if (document.visibilityState !== "visible") return;
+
+      fetch("/api/feed?limit=1", {
+        method: "GET",
+        cache: "no-store",
+      }).catch(() => {});
+    };
+
+    const startHeartbeat = () => {
+      if (intervalId !== null) return;
+
+      intervalId = window.setInterval(() => {
+        runHeartbeat();
+      }, 60000);
+    };
+
+    const stopHeartbeat = () => {
+      if (intervalId === null) return;
+
+      window.clearInterval(intervalId);
+      intervalId = null;
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        runHeartbeat();
+        startHeartbeat();
+      } else {
+        stopHeartbeat();
+      }
+    };
+
+    handleVisibilityChange();
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      stopHeartbeat();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+  useEffect(() => {
     const isAdminRoute =
       current === "admin" || isAdminHiddenPath(window.location.pathname);
 

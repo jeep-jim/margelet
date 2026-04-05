@@ -10,6 +10,8 @@ type RefreshablePost = IngestedPost & {
   mediaRefreshedAt?: string | null;
 };
 
+let lastPollAt = 0;
+
 function setCors(res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
@@ -30,7 +32,7 @@ function shouldRefresh(post: RefreshablePost) {
   if (!Number.isFinite(lastRefresh)) return false;
 
   const now = Date.now();
-  const refreshEveryMs = 60 * 60 * 1000; // раз в 1 час
+  const refreshEveryMs = 60 * 60 * 1000;
 
   return now - lastRefresh >= refreshEveryMs;
 }
@@ -83,6 +85,20 @@ async function refreshPostKeepingTtl(post: RefreshablePost): Promise<Refreshable
   }
 }
 
+function tryRunPoller() {
+  const now = Date.now();
+  const cooldown = 30 * 1000;
+
+  if (now - lastPollAt < cooldown) return;
+
+  lastPollAt = now;
+
+  // 🔥 запускаем БЕЗ await (в фоне)
+  runTrustedSourcesPolling().catch((err) => {
+    console.error("poller error", err);
+  });
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);
 
@@ -95,7 +111,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    await runTrustedSourcesPolling();
+    // 🔥 теперь poller не блокирует ответ
+    tryRunPoller();
 
     const limit =
       typeof req.query.limit === "string"

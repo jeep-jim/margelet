@@ -67,23 +67,33 @@ function normalizeSource(raw: unknown): TrustedSource | null {
   };
 }
 
-export async function listSources(limit = 1000): Promise<TrustedSource[]> {
-  const ids = await redis.lrange<string>(SOURCES_IDS_KEY, 0, limit - 1);
+async function getAllSourceIds(): Promise<string[]> {
+  const ids = await redis.lrange<string>(SOURCES_IDS_KEY, 0, -1);
 
   if (!ids || ids.length === 0) {
     return [];
   }
 
-  const uniqueIds = Array.from(
+  return Array.from(
     new Set(
       ids
         .map((id) => (typeof id === "string" ? id.trim() : ""))
         .filter(Boolean)
     )
   );
+}
+
+export async function listSources(limit = 1000): Promise<TrustedSource[]> {
+  const ids = await getAllSourceIds();
+
+  if (ids.length === 0) {
+    return [];
+  }
+
+  const limitedIds = ids.slice(0, Math.max(0, limit));
 
   const items = await Promise.all(
-    uniqueIds.map(async (id) => {
+    limitedIds.map(async (id) => {
       const raw = await redis.get(sourceKey(id));
       return normalizeSource(raw);
     })
@@ -100,16 +110,43 @@ export async function listSources(limit = 1000): Promise<TrustedSource[]> {
 }
 
 export async function listSourcesToPoll(limit = 5): Promise<TrustedSource[]> {
-  const all = await listSources(2000);
+  const ids = await getAllSourceIds();
 
-  return all
-    .filter((source) => source.status === "active")
-    .sort((a, b) => {
-      const aTs = Date.parse(a.lastCheckedAt || a.createdAt || "") || 0;
-      const bTs = Date.parse(b.lastCheckedAt || b.createdAt || "") || 0;
-      return aTs - bTs;
+  if (ids.length === 0) {
+    return [];
+  }
+
+  const scored: Array<{ id: string; ts: number }> = [];
+
+  for (const id of ids) {
+    const raw = await redis.get(sourceKey(id));
+    const source = normalizeSource(raw);
+
+    if (!source || source.status !== "active") {
+      continue;
+    }
+
+    const ts = Date.parse(source.lastCheckedAt || source.createdAt || "") || 0;
+    scored.push({ id, ts });
+  }
+
+  const pickedIds = scored
+    .sort((a, b) => a.ts - b.ts)
+    .slice(0, Math.max(0, limit))
+    .map((item) => item.id);
+
+  if (pickedIds.length === 0) {
+    return [];
+  }
+
+  const items = await Promise.all(
+    pickedIds.map(async (id) => {
+      const raw = await redis.get(sourceKey(id));
+      return normalizeSource(raw);
     })
-    .slice(0, limit);
+  );
+
+  return items.filter((item): item is TrustedSource => !!item);
 }
 
 export async function getSourceById(id: string): Promise<TrustedSource | null> {
