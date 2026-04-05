@@ -99,6 +99,19 @@ export async function listSources(limit = 1000): Promise<TrustedSource[]> {
     });
 }
 
+export async function listSourcesToPoll(limit = 5): Promise<TrustedSource[]> {
+  const all = await listSources(2000);
+
+  return all
+    .filter((source) => source.status === "active")
+    .sort((a, b) => {
+      const aTs = Date.parse(a.lastCheckedAt || a.createdAt || "") || 0;
+      const bTs = Date.parse(b.lastCheckedAt || b.createdAt || "") || 0;
+      return aTs - bTs;
+    })
+    .slice(0, limit);
+}
+
 export async function getSourceById(id: string): Promise<TrustedSource | null> {
   const raw = await redis.get(sourceKey(id));
   return normalizeSource(raw);
@@ -126,8 +139,14 @@ export async function saveSource(
     note: input.note || null,
     createdAt: existing?.createdAt || input.createdAt || nowIso,
     updatedAt: input.updatedAt || nowIso,
-    lastCheckedAt: input.lastCheckedAt || existing?.lastCheckedAt || null,
-    lastImportedAt: input.lastImportedAt || existing?.lastImportedAt || null,
+    lastCheckedAt:
+      input.lastCheckedAt !== undefined
+        ? input.lastCheckedAt
+        : existing?.lastCheckedAt || null,
+    lastImportedAt:
+      input.lastImportedAt !== undefined
+        ? input.lastImportedAt
+        : existing?.lastImportedAt || null,
     lastSeenPostId:
       typeof input.lastSeenPostId === "number"
         ? input.lastSeenPostId
@@ -143,6 +162,39 @@ export async function saveSource(
   await redis.lpush(SOURCES_IDS_KEY, id);
 
   return source;
+}
+
+export async function touchSourceAfterPoll(
+  source: TrustedSource,
+  payload: {
+    lastCheckedAt: string;
+    lastImportedAt?: string | null;
+    lastSeenPostId?: number | null;
+    importedPostsCountDelta?: number;
+  }
+): Promise<TrustedSource> {
+  return saveSource({
+    id: source.id,
+    countryCode: source.countryCode,
+    handle: source.handle,
+    title: source.title,
+    defaultTag: source.defaultTag,
+    status: source.status,
+    note: source.note,
+    createdAt: source.createdAt,
+    updatedAt: new Date().toISOString(),
+    lastCheckedAt: payload.lastCheckedAt,
+    lastImportedAt:
+      payload.lastImportedAt !== undefined
+        ? payload.lastImportedAt
+        : source.lastImportedAt,
+    lastSeenPostId:
+      payload.lastSeenPostId !== undefined
+        ? payload.lastSeenPostId
+        : source.lastSeenPostId,
+    importedPostsCount:
+      (source.importedPostsCount || 0) + (payload.importedPostsCountDelta || 0),
+  });
 }
 
 export async function deleteSourceById(id: string): Promise<boolean> {

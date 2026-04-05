@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { getFeedPosts, savePost } from "./lib/kv.js";
 import { ingestTelegramPost } from "../src/lib/telegram.js";
+import { runTrustedSourcesPolling } from "./lib/source-poller.js";
 import type { IngestedPost } from "../src/types/app";
 
 type RefreshablePost = IngestedPost & {
@@ -58,7 +59,6 @@ async function refreshPostKeepingTtl(post: RefreshablePost): Promise<Refreshable
       hasMediaInOriginal: ingest.hasMediaInOriginal,
       fallbackReason: ingest.fallbackReason,
 
-      // не трогаем жизнь контейнера
       id: post.id,
       postUrl: post.postUrl,
       createdAt: post.createdAt,
@@ -95,6 +95,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    await runTrustedSourcesPolling();
+
     const limit =
       typeof req.query.limit === "string"
         ? Math.min(parseInt(req.query.limit, 10) || 100, 200)
