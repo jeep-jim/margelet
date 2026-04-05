@@ -166,7 +166,26 @@ export function normalizeTelegramUrl(raw: string): string {
   const url = new URL(withProtocol);
   url.hash = "";
 
-  return url.toString();
+  const hostname = url.hostname.toLowerCase();
+  if (!TELEGRAM_HOSTS.has(hostname)) {
+    return url.toString();
+  }
+
+  const parts = url.pathname.split("/").filter(Boolean);
+
+  if (parts.length !== 2) {
+    return url.toString();
+  }
+
+  const [sourceHandleRaw, postIdRaw] = parts;
+  const sourceHandle = sourceHandleRaw.replace(/^@/, "").trim();
+  const postId = postIdRaw.trim();
+
+  if (!/^[A-Za-z0-9_]{4,}$/.test(sourceHandle) || !/^\d+$/.test(postId)) {
+    return url.toString();
+  }
+
+  return `https://t.me/${sourceHandle}/${postId}?single`;
 }
 
 export function parseTelegramPostUrl(
@@ -191,7 +210,7 @@ export function parseTelegramPostUrl(
 
     return {
       originalUrl: raw,
-      normalizedUrl,
+      normalizedUrl: `https://t.me/${sourceHandle}/${postId}?single`,
       host: url.hostname,
       sourceHandle,
       sourceUrl: `https://t.me/${sourceHandle}`,

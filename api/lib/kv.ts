@@ -1,5 +1,6 @@
 import { Redis } from "@upstash/redis";
 import type { IngestedPost } from "../../src/types/app";
+import { parseTelegramPostUrl } from "../../src/lib/telegram.js";
 
 type EnvMap = Record<string, string | undefined>;
 
@@ -250,7 +251,7 @@ function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
       raw.role === "user" || raw.role === "channel_owner" || raw.role === "admin"
         ? raw.role
         : undefined;
-  }  
+  }
 
   if ("mediaRefreshedAt" in raw) {
     (post as IngestedPost & { mediaRefreshedAt?: string | null }).mediaRefreshedAt =
@@ -350,22 +351,50 @@ function getRemainingTtlSeconds(post: IngestedPost) {
   return Math.max(1, remaining);
 }
 
+function getCanonicalPostUrl(url: string) {
+  const parsed = parseTelegramPostUrl(url);
+  return parsed?.normalizedUrl || url.trim();
+}
+
 export async function savePost(post: IngestedPost): Promise<IngestedPost> {
+  const canonicalPostUrl = getCanonicalPostUrl(post.postUrl);
   const ttlSeconds = getRemainingTtlSeconds(post);
   const idValue = String(post.id);
 
-  await redis.set(postKey(post.id), post, {
+  const existingIdRaw = await redis.get(postUrlKey(canonicalPostUrl));
+  const existingId =
+    typeof existingIdRaw === "number"
+      ? existingIdRaw
+      : typeof existingIdRaw === "string" && existingIdRaw.trim()
+        ? Number(existingIdRaw)
+        : null;
+
+  if (existingId && Number.isFinite(existingId) && existingId !== post.id) {
+    const existingRaw = await redis.get(postKey(existingId));
+    const existingPost = normalizeAnyPost(existingRaw);
+
+    if (existingPost) {
+      return existingPost;
+    }
+  }
+
+  const normalizedPost: IngestedPost = {
+    ...post,
+    postUrl: canonicalPostUrl,
+  };
+
+  await redis.set(postKey(normalizedPost.id), normalizedPost, {
     ex: ttlSeconds,
   });
 
-  await redis.set(postUrlKey(post.postUrl), idValue, {
+  await redis.set(postUrlKey(canonicalPostUrl), idValue, {
     ex: ttlSeconds,
   });
 
   await redis.lrem(FEED_IDS_KEY, 0, idValue);
   await redis.lpush(FEED_IDS_KEY, idValue);
 
-  return post;
+  return normalizedPost;
 }
 
 export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
@@ -394,16 +423,44 @@ export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
     })
   );
 
-  return posts.filter((post): post is IngestedPost => !!post);
+  const validPosts = posts.filter((post): post is IngestedPost => !!post);
+  const seenUrls = new Set<string>();
+  const deduped: IngestedPost[] = [];
+
+  for (const post of validPosts) {
+    const canonicalUrl = getCanonicalPostUrl(post.postUrl);
+
+    if (seenUrls.has(canonicalUrl)) {
+      continue;
+    }
+
+    seenUrls.add(canonicalUrl);
+    deduped.push({
+      ...post,
+      postUrl: canonicalUrl,
+    });
+  }
+
+  return deduped;
 }
 
 export async function getPostById(id: number): Promise<IngestedPost | null> {
   const raw = await redis.get(postKey(id));
-  return normalizeAnyPost(raw);
+  const post = normalizeAnyPost(raw);
+
+  if (!post) {
+    return null;
+  }
+
+  return {
+    ...post,
+    postUrl: getCanonicalPostUrl(post.postUrl),
+  };
 }
 
 export async function getPostByUrl(url: string): Promise<IngestedPost | null> {
-  const existingIdRaw = await redis.get(postUrlKey(url));
+  const canonicalUrl = getCanonicalPostUrl(url);
+  const existingIdRaw = await redis.get(postUrlKey(canonicalUrl));
 
   const existingId =
     typeof existingIdRaw === "number"
@@ -417,7 +474,16 @@ export async function getPostByUrl(url: string): Promise<IngestedPost | null> {
   }
 
   const raw = await redis.get(postKey(existingId));
-  return normalizeAnyPost(raw);
+  const post = normalizeAnyPost(raw);
+
+  if (!post) {
+    return null;
+  }
+
+  return {
+    ...post,
+    postUrl: canonicalUrl,
+  };
 }
 
 export async function deletePostById(id: number): Promise<boolean> {
@@ -427,9 +493,12 @@ export async function deletePostById(id: number): Promise<boolean> {
     return false;
   }
 
+  const canonicalUrl = getCanonicalPostUrl(existing.postUrl);
+
   await redis.del(postKey(id));
-  await redis.del(postUrlKey(existing.postUrl));
+  await redis.del(postUrlKey(canonicalUrl));
   await redis.lrem(FEED_IDS_KEY, 0, id);
+  await redis.lrem(FEED_IDS_KEY, 0, String(id));
 
   return true;
 }
