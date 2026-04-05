@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { getFeedPosts, savePost } from "./lib/kv.js";
 import { ingestTelegramPost } from "../src/lib/telegram.js";
-import { runTrustedSourcesPolling } from "./lib/source-poller.js";
+import { runTrustedSourcesPolling } from "./lib/sources.js";
 import type { IngestedPost } from "../src/types/app";
 
 type RefreshablePost = IngestedPost & {
@@ -93,7 +93,6 @@ function tryRunPoller() {
 
   lastPollAt = now;
 
-  // 🔥 запускаем БЕЗ await (в фоне)
   runTrustedSourcesPolling().catch((err) => {
     console.error("poller error", err);
   });
@@ -111,7 +110,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // 🔥 теперь poller не блокирует ответ
     tryRunPoller();
 
     const limit =

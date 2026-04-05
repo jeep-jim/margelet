@@ -461,12 +461,13 @@ export default function App() {
       throw new Error("NO_TELEGRAM_USER");
     }
 
-    const res = await fetch("/api/delete-post", {
+    const res = await fetch("/api/admin-posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        entity: "posts",
         id,
         telegramUserId: currentTelegramUser.id,
       }),
