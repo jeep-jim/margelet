@@ -16,6 +16,15 @@ const POSTS_PER_SOURCE_SCAN = 12;
 const MAX_NEW_POSTS_PER_SOURCE = 3;
 const SOURCE_CONCURRENCY = 6;
 
+// 🔥 Глобальный лимит импорта:
+// poller runs every 30 sec, so 25 per run = max 50 per minute
+const MAX_IMPORTED_POSTS_PER_RUN = 25;
+
+type ImportBudgetState = {
+  reserved: number;
+  imported: number;
+};
+
 function sourceKey(id: string) {
   return `${SOURCE_KEY_PREFIX}${id}`;
 }
@@ -350,33 +359,71 @@ function buildAutoImportedPost(
   };
 }
 
-async function importPostFromSource(source: TrustedSource, postId: number) {
-  const url = buildCanonicalPostUrl(source.handle, postId);
-  const parsed = parseTelegramPostUrl(url);
-
-  if (!parsed) {
+function tryReserveImportSlot(state: ImportBudgetState) {
+  if (state.reserved >= MAX_IMPORTED_POSTS_PER_RUN) {
     return false;
   }
 
-  const normalizedUrl = parsed.normalizedUrl;
-  const existing = await getPostByUrl(normalizedUrl);
-
-  if (existing) {
-    return false;
-  }
-
-  const ingest = await ingestTelegramPost(normalizedUrl);
-  if (!ingest) {
-    return false;
-  }
-
-  const post = buildAutoImportedPost(source, ingest, normalizedUrl);
-  await savePost(post);
-
+  state.reserved += 1;
   return true;
 }
 
-async function pollOneSource(source: TrustedSource) {
+function releaseReservedImportSlot(state: ImportBudgetState, wasImported: boolean) {
+  if (wasImported) {
+    state.imported += 1;
+    return;
+  }
+
+  state.reserved = Math.max(0, state.reserved - 1);
+}
+
+async function importPostFromSource(
+  source: TrustedSource,
+  postId: number,
+  budget: ImportBudgetState
+) {
+  if (!tryReserveImportSlot(budget)) {
+    return { ok: false, budgetReached: true };
+  }
+
+  try {
+    const url = buildCanonicalPostUrl(source.handle, postId);
+    const parsed = parseTelegramPostUrl(url);
+
+    if (!parsed) {
+      releaseReservedImportSlot(budget, false);
+      return { ok: false, budgetReached: false };
+    }
+
+    const normalizedUrl = parsed.normalizedUrl;
+    const existing = await getPostByUrl(normalizedUrl);
+
+    if (existing) {
+      releaseReservedImportSlot(budget, false);
+      return { ok: false, budgetReached: false };
+    }
+
+    const ingest = await ingestTelegramPost(normalizedUrl);
+    if (!ingest) {
+      releaseReservedImportSlot(budget, false);
+      return { ok: false, budgetReached: false };
+    }
+
+    const post = buildAutoImportedPost(source, ingest, normalizedUrl);
+    const saved = await savePost(post);
+
+    const imported = saved.id === post.id;
+    releaseReservedImportSlot(budget, imported);
+
+    return { ok: imported, budgetReached: false };
+  } catch (error) {
+    releaseReservedImportSlot(budget, false);
+    console.error("importPostFromSource error", source.handle, postId, error);
+    return { ok: false, budgetReached: false };
+  }
+}
+
+async function pollOneSource(source: TrustedSource, budget: ImportBudgetState) {
   const checkedAt = new Date().toISOString();
 
   try {
@@ -393,7 +440,7 @@ async function pollOneSource(source: TrustedSource) {
     const newestSeen = Math.max(...ids);
     const lastSeen = source.lastSeenPostId || 0;
 
-    // 🔥 Первый запуск: просто запоминаем верхний postId и не тащим историю
+    // Первый запуск: просто фиксируем верхний postId
     if (lastSeen <= 0) {
       await touchSourceAfterPoll(source, {
         lastCheckedAt: checkedAt,
@@ -411,8 +458,13 @@ async function pollOneSource(source: TrustedSource) {
     let lastImportedAt: string | null = null;
 
     for (const postId of newIds) {
-      const ok = await importPostFromSource(source, postId);
-      if (ok) {
+      const result = await importPostFromSource(source, postId, budget);
+
+      if (result.budgetReached) {
+        break;
+      }
+
+      if (result.ok) {
         imported += 1;
         lastImportedAt = new Date().toISOString();
       }
@@ -495,8 +547,17 @@ export async function runTrustedSourcesPolling() {
       return;
     }
 
+    const budget: ImportBudgetState = {
+      reserved: 0,
+      imported: 0,
+    };
+
     await runWithConcurrency(sources, SOURCE_CONCURRENCY, async (source) => {
-      await pollOneSource(source);
+      if (budget.reserved >= MAX_IMPORTED_POSTS_PER_RUN) {
+        return;
+      }
+
+      await pollOneSource(source, budget);
     });
   } catch (error) {
     console.error("runTrustedSourcesPolling error", error);
