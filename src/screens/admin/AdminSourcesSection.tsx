@@ -20,16 +20,13 @@ export function AdminSourcesSection({
 }: AdminSourcesSectionProps) {
   const [query, setQuery] = useState("");
 
-  // одиночный
   const [handle, setHandle] = useState("");
   const [title, setTitle] = useState("");
-
-  // массовый
-  const [bulkText, setBulkText] = useState("");
-
   const [defaultTag, setDefaultTag] = useState<ContentTag>("other");
-  const [status, setStatus] = useState<TrustedSource["status"]>("active");
+  const [status] = useState<TrustedSource["status"]>("active");
   const [note, setNote] = useState("");
+
+  const [bulkText, setBulkText] = useState("");
 
   const [saving, setSaving] = useState(false);
   const [bulkSaving, setBulkSaving] = useState(false);
@@ -55,17 +52,23 @@ export function AdminSourcesSection({
     });
   }, [sources, query, countryCode]);
 
-  // --- одиночный ---
   const handleSave = async () => {
     if (!telegramUserId) return;
 
-    if (!handle.trim()) return alert("Укажи @handle");
-    if (!title.trim()) return alert("Укажи название");
+    if (!handle.trim()) {
+      window.alert("Укажи @handle канала");
+      return;
+    }
+
+    if (!title.trim()) {
+      window.alert("Укажи название канала");
+      return;
+    }
 
     try {
       setSaving(true);
 
-      await fetch("/api/admin-posts", {
+      const res = await fetch("/api/admin-posts", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -80,48 +83,74 @@ export function AdminSourcesSection({
         }),
       });
 
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || "save source failed");
+      }
+
       setHandle("");
       setTitle("");
+      setDefaultTag("other");
       setNote("");
 
-      await onSourcesReload?.();
+      if (onSourcesReload) {
+        await onSourcesReload();
+      }
+    } catch (error: any) {
+      window.alert(error?.message || "Не удалось сохранить источник");
     } finally {
       setSaving(false);
     }
   };
 
-  // --- 🔥 массовый импорт ---
   const handleBulkImport = async () => {
     if (!telegramUserId) return;
 
     const handles = bulkText
       .split("\n")
-      .map((h) => h.trim().replace("@", ""))
-      .filter(Boolean);
+      .map((item) => item.trim())
+      .filter(Boolean)
+      .map((item) => item.replace(/^@/, ""));
 
-    if (handles.length === 0) return;
+    if (handles.length === 0) {
+      window.alert("Вставь хотя бы один handle");
+      return;
+    }
 
     try {
       setBulkSaving(true);
 
-      for (const h of handles) {
-        await fetch("/api/admin-posts", {
+      for (const bulkHandle of handles) {
+        const res = await fetch("/api/admin-posts", {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             entity: "sources",
             telegramUserId,
             countryCode,
-            handle: h,
-            title: h,
+            handle: bulkHandle,
+            title: bulkHandle,
             defaultTag,
             status,
+            note: null,
           }),
         });
+
+        const data = await res.json().catch(() => null);
+
+        if (!res.ok) {
+          throw new Error(data?.error || `save source failed: ${bulkHandle}`);
+        }
       }
 
       setBulkText("");
-      await onSourcesReload?.();
+
+      if (onSourcesReload) {
+        await onSourcesReload();
+      }
+    } catch (error: any) {
+      window.alert(error?.message || "Не удалось загрузить пачку источников");
     } finally {
       setBulkSaving(false);
     }
@@ -129,12 +158,12 @@ export function AdminSourcesSection({
 
   const handleDelete = async (source: TrustedSource) => {
     if (!telegramUserId) return;
-    if (!confirm(`Удалить @${source.handle}?`)) return;
+    if (!window.confirm(`Удалить источник @${source.handle}?`)) return;
 
     try {
       setDeletingId(source.id);
 
-      await fetch("/api/admin-posts", {
+      const res = await fetch("/api/admin-posts", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -144,35 +173,46 @@ export function AdminSourcesSection({
         }),
       });
 
-      await onSourcesReload?.();
+      const data = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(data?.error || "delete source failed");
+      }
+
+      if (onSourcesReload) {
+        await onSourcesReload();
+      }
+    } catch (error: any) {
+      window.alert(error?.message || "Не удалось удалить источник");
     } finally {
       setDeletingId(null);
     }
   };
 
   return (
-    <AdminSectionCard title="Источники" subtitle="Каналы и массовый импорт">
-
-      {/* --- одиночный --- */}
+    <AdminSectionCard
+      title="Источники"
+      subtitle="Доверенные публичные каналы этой страны. Отсюда позже пойдёт автопарсинг."
+    >
       <div className="grid gap-3 md:grid-cols-2">
         <input
           value={handle}
-          onChange={(e) => setHandle(e.target.value)}
+          onChange={(event) => setHandle(event.target.value)}
           placeholder="@channel_handle"
-          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white"
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
         />
 
         <input
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
           placeholder="Название канала"
-          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white"
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
         />
 
         <select
           value={defaultTag}
-          onChange={(e) => setDefaultTag(e.target.value as ContentTag)}
-          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white"
+          onChange={(event) => setDefaultTag(event.target.value as ContentTag)}
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
         >
           {ADMIN_TAG_OPTIONS.map((item) => (
             <option key={item.value} value={item.value}>
@@ -181,65 +221,139 @@ export function AdminSourcesSection({
           ))}
         </select>
 
-        <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value as any)}
-          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white"
-        >
-          <option value="active">активен</option>
-          <option value="paused">пауза</option>
-        </select>
+        <div className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white/70">
+          статус: {status === "active" ? "активен" : "пауза"}
+        </div>
 
         <input
           value={note}
-          onChange={(e) => setNote(e.target.value)}
-          placeholder="Заметка"
-          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white md:col-span-2"
+          onChange={(event) => setNote(event.target.value)}
+          placeholder="Заметка / комментарий"
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35 md:col-span-2"
         />
       </div>
 
-      <button
-        onClick={handleSave}
-        disabled={saving}
-        className="mt-3 rounded-full bg-white px-5 py-2 text-black"
-      >
-        добавить источник
-      </button>
+      <div className="mt-3 flex flex-wrap gap-3">
+        <button
+          type="button"
+          onClick={() => {
+            void handleSave();
+          }}
+          disabled={saving}
+          className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
+        >
+          {saving ? "сохраняю..." : "добавить источник"}
+        </button>
 
-      {/* --- 🔥 массовый --- */}
-      <div className="mt-6">
+        <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/70">
+          страна: {countryCode.toUpperCase()}
+        </div>
+
+        <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/70">
+          всего: {filteredSources.length}
+        </div>
+      </div>
+
+      <div className="mt-4">
         <textarea
           value={bulkText}
-          onChange={(e) => setBulkText(e.target.value)}
-          placeholder={`@bbc\n@cnn\n@reuters`}
-          className="w-full h-40 rounded-xl bg-[#1a1b24] p-3 text-white"
+          onChange={(event) => setBulkText(event.target.value)}
+          placeholder="@bbc
+@cnn
+@reuters"
+          className="min-h-[120px] w-full rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
         />
+      </div>
 
+      <div className="mt-3">
         <button
-          onClick={handleBulkImport}
+          type="button"
+          onClick={() => {
+            void handleBulkImport();
+          }}
           disabled={bulkSaving}
-          className="mt-3 w-full rounded-xl bg-white py-3 text-black"
+          className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
         >
           {bulkSaving ? "загружаю..." : "загрузить пачку"}
         </button>
       </div>
 
-      {/* --- список --- */}
-      <div className="mt-6 space-y-3">
-        {filteredSources.map((source) => (
-          <div key={source.id} className="p-3 rounded-xl bg-black/20">
-            <div className="font-semibold">{source.title}</div>
-            <div className="text-sm text-white/50">@{source.handle}</div>
-
-            <button
-              onClick={() => handleDelete(source)}
-              className="mt-2 bg-red-500 px-3 py-2 rounded"
-            >
-              удалить
-            </button>
-          </div>
-        ))}
+      <div className="mt-4">
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Поиск по названию, handle, заметке..."
+          className="w-full rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+        />
       </div>
+
+      {filteredSources.length === 0 ? (
+        <div className="mt-4 rounded-xl border border-dashed border-white/10 p-5 text-sm text-white/35">
+          Пока нет каналов для этой страны.
+        </div>
+      ) : (
+        <div className="mt-4 space-y-3">
+          {filteredSources.map((source) => {
+            const tagLabel =
+              ADMIN_TAG_OPTIONS.find((item) => item.value === source.defaultTag)?.label ||
+              source.defaultTag;
+
+            return (
+              <div
+                key={source.id}
+                className="rounded-xl border border-white/10 bg-black/20 p-4"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="truncate text-base font-semibold text-white">
+                      {source.title}
+                    </div>
+                    <div className="truncate text-sm text-white/50">
+                      @{source.handle}
+                    </div>
+                  </div>
+
+                  <div
+                    className={`rounded-full px-3 py-1 text-xs ${
+                      source.status === "active"
+                        ? "bg-green-500/15 text-green-300"
+                        : "bg-yellow-500/15 text-yellow-300"
+                    }`}
+                  >
+                    {source.status === "active" ? "активен" : "пауза"}
+                  </div>
+                </div>
+
+                <div className="mt-3 grid gap-2 text-sm text-white/70 md:grid-cols-2">
+                  <div>Страна: {source.countryCode.toUpperCase()}</div>
+                  <div>Тег по умолчанию: {tagLabel}</div>
+                  <div>Последний post id: {source.lastSeenPostId ?? "—"}</div>
+                  <div>Импортировано постов: {source.importedPostsCount}</div>
+                  <div>Последняя проверка: {source.lastCheckedAt || "—"}</div>
+                  <div>Последний импорт: {source.lastImportedAt || "—"}</div>
+                </div>
+
+                {source.note ? (
+                  <div className="mt-3 text-sm text-white/60">{source.note}</div>
+                ) : null}
+
+                <div className="mt-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      void handleDelete(source);
+                    }}
+                    disabled={deletingId === source.id}
+                    className="rounded-xl bg-red-500 px-3 py-2 text-sm disabled:opacity-60"
+                  >
+                    {deletingId === source.id ? "Удаляю..." : "Удалить"}
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </AdminSectionCard>
   );
 }
