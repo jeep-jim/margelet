@@ -568,12 +568,13 @@ const [locale, setLocale] = useState<Locale>("en");
           {current === "creator" ? (
             <CreatorScreen
               locale={locale}
+              setLocale={setLocale}
               posts={posts}
               openPost={() => {
                 setCurrent("feed");
               }}
             />
-          ) : null}
+          ) : null}          
 
           {current === "source" ? (
             <SourceScreen

@@ -1,21 +1,21 @@
 import {
   Heart,
   Info,
-  Bookmark,
-  ArrowRightLeft,
-  Send,
   LogOut,
-  Plus,
+  Globe,
+  Sparkles,
+  Send,
+  ArrowRightLeft,
 } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
-import type { IngestedPost } from "../types/app";
-import type { Locale } from "../types/app";
+import type { IngestedPost, Locale } from "../types/app";
+import { SITE_LOCALES } from "../lib/locales";
 
 const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
 const LIKES_STORAGE_KEY = "margelet_likes";
-const SAVES_STORAGE_KEY = "margelet_saves";
+const LANGUAGE_STORAGE_KEY = "margelet_locale";
 
 function getTelegramAuthUrl() {
   const origin = window.location.origin;
@@ -24,11 +24,12 @@ function getTelegramAuthUrl() {
 
 type Props = {
   locale: Locale;
+  setLocale: (locale: Locale) => void;
   posts: IngestedPost[];
   openPost: (post: IngestedPost) => void;
 };
 
-type CabinetTab = "added" | "saved" | "liked" | "about";
+type CabinetTab = "liked" | "language" | "channel" | "about";
 
 type TgUser = {
   id: string;
@@ -97,7 +98,7 @@ function LightTab({
       type="button"
     >
       <Icon className="h-4 w-4" />
-      <span className="hidden sm:inline">{label}</span>
+      <span>{label}</span>
     </button>
   );
 }
@@ -118,7 +119,8 @@ function AuthBlock() {
           </div>
 
           <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
-            Сохраняй посты, ставь лайки, добавляй публикации и управляй своим потоком внутри margeleT.
+            Авторизуйся, чтобы управлять своим кабинетом, смотреть понравившиеся
+            публикации и отправлять заявку на добавление собственного канала.
           </div>
 
           <button
@@ -137,9 +139,6 @@ function AuthBlock() {
           <div className="absolute right-8 top-1/2 flex h-24 w-24 -translate-y-1/2 items-center justify-center rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md">
             <Send className="h-10 w-10 -rotate-12 text-white" />
           </div>
-          <div className="absolute right-28 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-white/18 bg-white/10 backdrop-blur-md">
-            <ArrowRightLeft className="h-6 w-6 text-white/95" />
-          </div>
         </div>
       </div>
     </div>
@@ -148,11 +147,9 @@ function AuthBlock() {
 
 function ProfileBlock({
   user,
-  verified,
   onLogout,
 }: {
   user: TgUser;
-  verified: boolean;
   onLogout: () => void;
 }) {
   return (
@@ -182,9 +179,7 @@ function ProfileBlock({
                 <div className="truncate text-lg font-semibold">
                   {user.first_name}
                 </div>
-                {verified ? (
-                  <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
-                ) : null}
+                <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
               </div>
 
               <div className="truncate text-sm text-neutral-500">
@@ -213,9 +208,6 @@ function ProfileBlock({
           <div className="absolute right-0 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-neutral-100 blur-xl" />
           <div className="absolute right-8 top-1/2 flex h-24 w-24 -translate-y-1/2 items-center justify-center rounded-[28px] border border-neutral-200 bg-neutral-50">
             <Send className="h-10 w-10 -rotate-12 text-neutral-700" />
-          </div>
-          <div className="absolute right-28 top-1/2 flex h-14 w-14 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-200 bg-white">
-            <ArrowRightLeft className="h-6 w-6 text-neutral-700" />
           </div>
         </div>
       </div>
@@ -297,20 +289,20 @@ function EmptyState({ text }: { text: string }) {
 }
 
 export function CreatorScreen({
-  locale: _locale,
+  locale,
+  setLocale,
   posts,
   openPost,
 }: Props) {
   const [user, setUser] = useState<TgUser | null>(null);
-  const [tab, setTab] = useState<CabinetTab>("added");
+  const [tab, setTab] = useState<CabinetTab>("language");
   const [likedIds, setLikedIds] = useState<number[]>([]);
-  const [savedIds, setSavedIds] = useState<number[]>([]);
+  const [channelUrl, setChannelUrl] = useState("");
 
   useEffect(() => {
     const sync = () => {
       setUser(readTelegramUserFromStorage());
       setLikedIds(readNumberArrayFromStorage(LIKES_STORAGE_KEY));
-      setSavedIds(readNumberArrayFromStorage(SAVES_STORAGE_KEY));
     };
 
     sync();
@@ -324,31 +316,40 @@ export function CreatorScreen({
     };
   }, []);
 
-  const addedPosts = useMemo(() => {
-    if (!user?.id) return [];
-    return posts.filter((post) => post.addedBy.telegramId === user.id);
-  }, [posts, user?.id]);
-
   const likedPosts = useMemo(() => {
     return posts.filter((post) => likedIds.includes(post.id));
   }, [posts, likedIds]);
 
-  const savedPosts = useMemo(() => {
-    return posts.filter((post) => savedIds.includes(post.id));
-  }, [posts, savedIds]);
-
-  const visiblePosts =
-    tab === "added"
-      ? addedPosts
-      : tab === "liked"
-        ? likedPosts
-        : tab === "saved"
-          ? savedPosts
-          : [];
-
   const handleLogout = () => {
     localStorage.removeItem(TG_STORAGE_KEY);
     setUser(null);
+  };
+
+  const handleChangeLocale = (nextLocale: Locale) => {
+    setLocale(nextLocale);
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLocale);
+  };
+
+  const handleReplayIntro = () => {
+    localStorage.removeItem("margelet-intro-seen");
+    window.location.reload();
+  };
+
+  const handleSubmitChannel = () => {
+    const value = channelUrl.trim();
+
+    if (!value) {
+      alert("Вставь ссылку на Telegram-канал");
+      return;
+    }
+
+    if (!/^https?:\/\/t\.me\/[A-Za-z0-9_]+\/?$/.test(value)) {
+      alert("Нужна ссылка вида https://t.me/channel_name");
+      return;
+    }
+
+    alert("Заявка на канал отправлена. Позже подключим реальную отправку в админку.");
+    setChannelUrl("");
   };
 
   return (
@@ -357,31 +358,27 @@ export function CreatorScreen({
         {!user ? (
           <AuthBlock />
         ) : (
-          <ProfileBlock
-            user={user}
-            verified
-            onLogout={handleLogout}
-          />
+          <ProfileBlock user={user} onLogout={handleLogout} />
         )}
 
         <div className="flex flex-wrap gap-2">
           <LightTab
-            active={tab === "added"}
-            onClick={() => setTab("added")}
-            icon={Plus}
-            label="Добавил"
-          />
-          <LightTab
-            active={tab === "saved"}
-            onClick={() => setTab("saved")}
-            icon={Bookmark}
-            label="Сохранённое"
+            active={tab === "language"}
+            onClick={() => setTab("language")}
+            icon={Globe}
+            label="Язык"
           />
           <LightTab
             active={tab === "liked"}
             onClick={() => setTab("liked")}
             icon={Heart}
             label="Нравится"
+          />
+          <LightTab
+            active={tab === "channel"}
+            onClick={() => setTab("channel")}
+            icon={Send}
+            label="Добавить канал"
           />
           <LightTab
             active={tab === "about"}
@@ -391,25 +388,106 @@ export function CreatorScreen({
           />
         </div>
 
+        {tab === "language" ? (
+          <div className="space-y-4">
+            <div className="rounded-[28px] border border-neutral-200 bg-white p-6">
+              <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
+                <Globe className="h-4 w-4" />
+                Выбор языка
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {SITE_LOCALES.filter((item) => item.enabled).map((item) => (
+                  <button
+                    key={item.code}
+                    type="button"
+                    onClick={() => handleChangeLocale(item.code as Locale)}
+                    className={`rounded-full px-4 py-2 text-sm transition ${
+                      locale === item.code
+                        ? "bg-neutral-950 text-white"
+                        : "border border-neutral-200 bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                    }`}
+                  >
+                    {item.nativeLabel}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[28px] border border-neutral-200 bg-white p-6">
+              <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
+                <Sparkles className="h-4 w-4" />
+                Интро
+              </div>
+
+              <div className="text-sm leading-6 text-neutral-600">
+                Здесь можно снова открыть первое приветственное интро и проверить
+                тексты, слайды и будущие арты.
+              </div>
+
+              <button
+                type="button"
+                onClick={handleReplayIntro}
+                className="mt-4 inline-flex items-center rounded-full bg-neutral-950 px-4 py-2 text-sm text-white transition hover:bg-neutral-800"
+              >
+                Смотреть интро снова
+              </button>
+            </div>
+          </div>
+        ) : null}
+
+        {tab === "liked" ? (
+          likedPosts.length === 0 ? (
+            <EmptyState text="Здесь пока пусто." />
+          ) : (
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {likedPosts.map((post) => (
+                <CabinetTile
+                  key={post.id}
+                  post={post}
+                  onOpen={() => openPost(post)}
+                />
+              ))}
+            </div>
+          )
+        ) : null}
+
+        {tab === "channel" ? (
+          <div className="rounded-[28px] border border-neutral-200 bg-white p-6">
+            <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
+              <Send className="h-4 w-4" />
+              Подать заявку на добавление своего канала
+            </div>
+
+            <div className="text-sm leading-6 text-neutral-600">
+              Вставь ссылку на Telegram-канал. Канал не публикуется автоматически —
+              он должен пройти модерацию.
+            </div>
+
+            <input
+              value={channelUrl}
+              onChange={(event) => setChannelUrl(event.target.value)}
+              placeholder="https://t.me/your_channel"
+              className="mt-4 w-full rounded-full border border-neutral-200 px-4 py-3 text-sm outline-none transition focus:border-neutral-950"
+            />
+
+            <button
+              type="button"
+              onClick={handleSubmitChannel}
+              className="mt-4 inline-flex items-center rounded-full bg-neutral-950 px-4 py-2 text-sm text-white transition hover:bg-neutral-800"
+            >
+              Отправить заявку
+            </button>
+          </div>
+        ) : null}
+
         {tab === "about" ? (
           <div className="rounded-[28px] border border-neutral-200 bg-white p-6 text-sm leading-7 text-neutral-700">
-            MargeleT — это слой дистрибуции актуального Telegram-контента.
-            Посты живут ограниченное время, а интерфейс показывает их через
-            нормализованную ingest-модель.
+            margeleT — это слой дистрибуции актуального Telegram-контента.
+            Контент показывается через нормализованную ingest-модель, а источником
+            всегда остаётся оригинальный Telegram-канал.
           </div>
-        ) : visiblePosts.length === 0 ? (
-          <EmptyState text="Здесь пока пусто." />
-        ) : (
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {visiblePosts.map((post) => (
-              <CabinetTile
-                key={post.id}
-                post={post}
-                onOpen={() => openPost(post)}
-              />
-            ))}
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
