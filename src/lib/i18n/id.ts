@@ -1,0 +1,126 @@
+import type { TranslationSchema } from "./types";
+
+export const id: TranslationSchema = {
+  common: {
+    loading: "Memuat...",
+    save: "Simpan",
+    cancel: "Batal",
+    delete: "Hapus",
+    edit: "Edit",
+    close: "Tutup",
+    back: "Kembali",
+    continue: "Lanjutkan",
+    confirm: "Konfirmasi",
+    retry: "Coba lagi",
+    more: "Lainnya",
+    less: "Lebih sedikit",
+    open: "Buka",
+    yes: "Ya",
+    no: "Tidak",
+    search: "Cari",
+    clear: "Bersihkan",
+  },
+
+  brand: {
+    appName: "margeleT",
+    tagline: "Feed video Telegram",
+  },
+
+  nav: {
+    feed: "Feed",
+    add: "Tambah",
+    creator: "Pembuat",
+    profile: "Profil",
+    admin: "Admin",
+    about: "Tentang proyek",
+  },
+
+  feed: {
+    title: "Feed",
+    empty: "Belum ada apa pun di sini",
+    loading: "Memuat feed...",
+    openChannel: "Buka kanal",
+    openPost: "Buka postingan",
+    share: "Bagikan",
+    save: "Simpan",
+    saved: "Tersimpan",
+    like: "Suka",
+    liked: "Ditandai",
+    readMore: "Baca selengkapnya",
+    collapse: "Sembunyikan",
+    noPosts: "Tidak ada postingan untuk pilihan ini",
+    unsupportedMedia: "Media ini tidak tersedia",
+    sourceLabel: "Sumber",
+    originalPost: "Postingan Telegram asli",
+    embeddedBlock: "Blok Telegram tertanam",
+    swipeHint: "Ketuk di luar untuk menutup penampil.",
+  },
+
+  modes: {
+    new: "Baru",
+    rising: "Naik",
+    trending: "Tren",
+  },
+
+  addSource: {
+    title: "Tambah kanal",
+    subtitle: "Kirim tautan kanal Telegram untuk moderasi.",
+    inputLabel: "Tautan kanal",
+    inputPlaceholder: "Tempel URL kanal Telegram",
+    submit: "Kirim untuk moderasi",
+    success: "Permintaan kanal terkirim",
+    moderationNote: "Kanal tidak akan dipublikasikan secara otomatis.",
+    invalidUrl: "Masukkan tautan Telegram yang valid",
+    telegramOnly: "Hanya tautan Telegram yang didukung",
+    channelSent: "Kanal Anda telah dikirim untuk moderasi",
+  },
+
+  creator: {
+    title: "Pembuat",
+    subtitle: "Tambahkan satu tautan postingan Telegram",
+    sourceName: "Kanal / pembuat",
+    sourcePlaceholder: "Nama kanal",
+    postUrl: "Tautan postingan Telegram",
+    postUrlPlaceholder: "Tempel URL postingan Telegram",
+    submit: "Tambahkan ke margeleT",
+    success: "Postingan dikirim ke feed",
+    checksTitle: "Yang diperiksa MVP",
+    checkPublic: "Tautan postingan Telegram publik",
+    checkMedia: "Postingan asli berisi media yang dapat diputar",
+    checkMetadata: "Judul / caption / metadata kanal tersedia",
+  },
+
+  profile: {
+    title: "Profil",
+    subtitle: "Preferensi dan akun Anda",
+    language: "Bahasa",
+    country: "Negara",
+    telegram: "Telegram",
+    notConnected: "Belum terhubung",
+    connected: "Terhubung",
+    connectTelegram: "Hubungkan Telegram",
+    logout: "Keluar",
+    preferences: "Preferensi",
+  },
+
+  auth: {
+    signIn: "Masuk",
+    signOut: "Keluar",
+    authorize: "Otorisasi",
+    authRequired: "Otorisasi diperlukan",
+    authDescription:
+      "Masuk untuk menyimpan video yang Anda suka dan mengakses lebih banyak fitur margeleT.",
+  },
+
+  errors: {
+    unknown: "Terjadi kesalahan",
+    network: "Kesalahan jaringan",
+    forbidden: "Akses ditolak",
+    notFound: "Tidak ditemukan",
+    requiredField: "Kolom ini wajib diisi",
+    invalidTelegramUrl: "URL Telegram tidak valid",
+    failedToLoadFeed: "Gagal memuat feed",
+    failedToSubmit: "Gagal mengirim",
+    failedToSave: "Gagal menyimpan",
+  },
+};

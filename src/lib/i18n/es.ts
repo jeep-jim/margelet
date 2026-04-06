@@ -1,0 +1,126 @@
+import type { TranslationSchema } from "./types";
+
+export const es: TranslationSchema = {
+  common: {
+    loading: "Cargando...",
+    save: "Guardar",
+    cancel: "Cancelar",
+    delete: "Eliminar",
+    edit: "Editar",
+    close: "Cerrar",
+    back: "Atrás",
+    continue: "Continuar",
+    confirm: "Confirmar",
+    retry: "Reintentar",
+    more: "Más",
+    less: "Menos",
+    open: "Abrir",
+    yes: "Sí",
+    no: "No",
+    search: "Buscar",
+    clear: "Limpiar",
+  },
+
+  brand: {
+    appName: "margeleT",
+    tagline: "Feed de video de Telegram",
+  },
+
+  nav: {
+    feed: "Feed",
+    add: "Añadir",
+    creator: "Autor",
+    profile: "Perfil",
+    admin: "Admin",
+    about: "Acerca del proyecto",
+  },
+
+  feed: {
+    title: "Feed",
+    empty: "Todavía no hay nada aquí",
+    loading: "Cargando feed...",
+    openChannel: "Abrir canal",
+    openPost: "Abrir publicación",
+    share: "Compartir",
+    save: "Guardar",
+    saved: "Guardado",
+    like: "Me gusta",
+    liked: "Marcado",
+    readMore: "Leer más",
+    collapse: "Ocultar",
+    noPosts: "No se encontraron publicaciones para esta selección",
+    unsupportedMedia: "Este archivo multimedia no está disponible",
+    sourceLabel: "Fuente",
+    originalPost: "Publicación original de Telegram",
+    embeddedBlock: "Bloque incrustado de Telegram",
+    swipeHint: "Toca fuera para cerrar el visor.",
+  },
+
+  modes: {
+    new: "Nuevo",
+    rising: "En alza",
+    trending: "Tendencias",
+  },
+
+  addSource: {
+    title: "Añadir canal",
+    subtitle: "Envía un enlace de canal de Telegram para moderación.",
+    inputLabel: "Enlace del canal",
+    inputPlaceholder: "Pega la URL del canal de Telegram",
+    submit: "Enviar a moderación",
+    success: "Solicitud de canal enviada",
+    moderationNote: "El canal no se publicará automáticamente.",
+    invalidUrl: "Introduce un enlace válido de Telegram",
+    telegramOnly: "Solo se admiten enlaces de Telegram",
+    channelSent: "Tu canal fue enviado a moderación",
+  },
+
+  creator: {
+    title: "Autor",
+    subtitle: "Añade un enlace a una publicación de Telegram",
+    sourceName: "Canal / autor",
+    sourcePlaceholder: "Nombre del canal",
+    postUrl: "Enlace de publicación de Telegram",
+    postUrlPlaceholder: "Pega la URL de la publicación de Telegram",
+    submit: "Añadir a margeleT",
+    success: "Publicación enviada al feed",
+    checksTitle: "Qué comprueba el MVP",
+    checkPublic: "Enlace público de publicación de Telegram",
+    checkMedia: "La publicación original contiene medios reproducibles",
+    checkMetadata: "Título / descripción / metadatos del canal disponibles",
+  },
+
+  profile: {
+    title: "Perfil",
+    subtitle: "Tus preferencias y tu cuenta",
+    language: "Idioma",
+    country: "País",
+    telegram: "Telegram",
+    notConnected: "No conectado",
+    connected: "Conectado",
+    connectTelegram: "Conectar Telegram",
+    logout: "Cerrar sesión",
+    preferences: "Preferencias",
+  },
+
+  auth: {
+    signIn: "Iniciar sesión",
+    signOut: "Cerrar sesión",
+    authorize: "Autorizar",
+    authRequired: "Se requiere autorización",
+    authDescription:
+      "Autorízate para guardar los videos que te gustan y acceder a más funciones de margeleT.",
+  },
+
+  errors: {
+    unknown: "Algo salió mal",
+    network: "Error de red",
+    forbidden: "Acceso denegado",
+    notFound: "No encontrado",
+    requiredField: "Este campo es obligatorio",
+    invalidTelegramUrl: "URL de Telegram no válida",
+    failedToLoadFeed: "No se pudo cargar el feed",
+    failedToSubmit: "No se pudo enviar",
+    failedToSave: "No se pudo guardar",
+  },
+};

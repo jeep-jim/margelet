@@ -1,0 +1,126 @@
+import type { TranslationSchema } from "./types";
+
+export const ru: TranslationSchema = {
+  common: {
+    loading: "Загрузка...",
+    save: "Сохранить",
+    cancel: "Отмена",
+    delete: "Удалить",
+    edit: "Редактировать",
+    close: "Закрыть",
+    back: "Назад",
+    continue: "Продолжить",
+    confirm: "Подтвердить",
+    retry: "Повторить",
+    more: "Ещё",
+    less: "Скрыть",
+    open: "Открыть",
+    yes: "Да",
+    no: "Нет",
+    search: "Поиск",
+    clear: "Очистить",
+  },
+
+  brand: {
+    appName: "margeleT",
+    tagline: "Лента видео из Telegram",
+  },
+
+  nav: {
+    feed: "Лента",
+    add: "Добавить",
+    creator: "Автор",
+    profile: "Профиль",
+    admin: "Админ",
+    about: "О проекте",
+  },
+
+  feed: {
+    title: "Лента",
+    empty: "Пока ничего нет",
+    loading: "Загружаем ленту...",
+    openChannel: "Открыть канал",
+    openPost: "Открыть пост",
+    share: "Поделиться",
+    save: "Сохранить",
+    saved: "Сохранено",
+    like: "Нравится",
+    liked: "Отмечено",
+    readMore: "Читать дальше",
+    collapse: "Скрыть",
+    noPosts: "Для этого выбора постов пока нет",
+    unsupportedMedia: "Этот медиафайл недоступен",
+    sourceLabel: "Источник",
+    originalPost: "Оригинальный пост Telegram",
+    embeddedBlock: "Встроенный блок Telegram-поста",
+    swipeHint: "Нажми вне окна, чтобы закрыть просмотр.",
+  },
+
+  modes: {
+    new: "Новое",
+    rising: "Взлетает",
+    trending: "Тренды",
+  },
+
+  addSource: {
+    title: "Добавить канал",
+    subtitle: "Отправь ссылку на Telegram-канал на модерацию.",
+    inputLabel: "Ссылка на канал",
+    inputPlaceholder: "Вставь ссылку на Telegram-канал",
+    submit: "Отправить на модерацию",
+    success: "Запрос на канал отправлен",
+    moderationNote: "Канал не будет опубликован автоматически.",
+    invalidUrl: "Введите корректную ссылку Telegram",
+    telegramOnly: "Поддерживаются только ссылки Telegram",
+    channelSent: "Твой канал отправлен на модерацию",
+  },
+
+  creator: {
+    title: "Автор",
+    subtitle: "Добавь одну ссылку на Telegram-пост",
+    sourceName: "Канал / автор",
+    sourcePlaceholder: "Название канала",
+    postUrl: "Ссылка на Telegram-пост",
+    postUrlPlaceholder: "Вставь ссылку на Telegram-пост",
+    submit: "Добавить в margeleT",
+    success: "Пост отправлен в ленту",
+    checksTitle: "Что проверяет MVP",
+    checkPublic: "Публичная ссылка на Telegram-пост",
+    checkMedia: "В исходном посте есть воспроизводимое медиа",
+    checkMetadata: "Доступны title / caption / метаданные канала",
+  },
+
+  profile: {
+    title: "Профиль",
+    subtitle: "Твои настройки и аккаунт",
+    language: "Язык",
+    country: "Страна",
+    telegram: "Telegram",
+    notConnected: "Не подключён",
+    connected: "Подключён",
+    connectTelegram: "Подключить Telegram",
+    logout: "Выйти",
+    preferences: "Настройки",
+  },
+
+  auth: {
+    signIn: "Войти",
+    signOut: "Выйти",
+    authorize: "Авторизоваться",
+    authRequired: "Нужна авторизация",
+    authDescription:
+      "Авторизуйтесь, чтобы сохранять видео которые вам понравились и иметь доступ к другим возможностям margeleT.",
+  },
+
+  errors: {
+    unknown: "Что-то пошло не так",
+    network: "Ошибка сети",
+    forbidden: "Доступ запрещён",
+    notFound: "Не найдено",
+    requiredField: "Это поле обязательно",
+    invalidTelegramUrl: "Некорректная ссылка Telegram",
+    failedToLoadFeed: "Не удалось загрузить ленту",
+    failedToSubmit: "Не удалось отправить",
+    failedToSave: "Не удалось сохранить",
+  },
+};

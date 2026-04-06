@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
 import { getInitialLocale } from "./lib/i18n";
+import type { SiteLocale } from "./lib/locales";
 import { AddScreen } from "./screens/AddScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
@@ -26,13 +27,11 @@ type TgUser = {
 };
 
 type UserRole = "guest" | "user" | "channel_owner" | "admin";
-type BillingPlan = "free" | "pro_1m" | "pro_3m" | "pro_12m";
 
 type AccessInfo = {
   telegramUserId: string;
   username: string | null;
   role: "user" | "channel_owner" | "admin";
-  plan: BillingPlan;
   note: string | null;
   grantedBy: string | null;
   createdAt: string;
@@ -136,7 +135,6 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
     telegramUserId: user.id,
     username: user.username || null,
     role: ADMIN_TELEGRAM_IDS.has(user.id) ? "admin" : "user",
-    plan: "free",
     note: null,
     grantedBy: null,
     createdAt: new Date().toISOString(),
@@ -147,7 +145,7 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
 }
 
 export default function App() {
-  const [locale, setLocale] = useState<Locale>("ru");
+  const [locale, setLocale] = useState<SiteLocale>("en");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
@@ -163,11 +161,6 @@ export default function App() {
   const userRole = useMemo<UserRole>(() => {
     if (!currentTelegramUser) return "guest";
     return accessInfo?.role || fallbackAccess(currentTelegramUser)?.role || "user";
-  }, [accessInfo, currentTelegramUser]);
-
-  const userPlan = useMemo<BillingPlan>(() => {
-    if (!currentTelegramUser) return "free";
-    return accessInfo?.plan || "free";
   }, [accessInfo, currentTelegramUser]);
 
   const sharedPath = useMemo(() => {
@@ -302,7 +295,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (!currentTelegramUser?.id) {
+    const telegramUserId = currentTelegramUser?.id;
+
+    if (!telegramUserId) {
       setAccessInfo(null);
       return;
     }
@@ -317,7 +312,7 @@ export default function App() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            telegramUserId: currentTelegramUser?.id || "",
+            telegramUserId,
           }),
         });
 
@@ -338,7 +333,7 @@ export default function App() {
     return () => {
       cancelled = true;
     };
-  }, [currentTelegramUser]);
+  }, [currentTelegramUser]);  
 
   const loadFeed = async () => {
     setIsFeedLoading(true);
@@ -412,13 +407,13 @@ export default function App() {
     if (isAdminRoute) {
       ensureRobotsMeta("robots", "noindex, nofollow, noarchive, nosnippet");
       ensureRobotsMeta("googlebot", "noindex, nofollow, noarchive, nosnippet");
-      document.title = "MargeleT";
+      document.title = "margeleT";
       return;
     }
 
     ensureRobotsMeta("robots", "index, follow");
     ensureRobotsMeta("googlebot", "index, follow");
-    document.title = "MargeleT";
+    document.title = "margeleT";
   }, [current]);
 
   useEffect(() => {
@@ -501,7 +496,6 @@ export default function App() {
         url,
         tag,
         role: userRole === "guest" ? "user" : userRole,
-        plan: userPlan,
         addedByTelegramId: currentTelegramUser?.id || null,
         addedByUsername: currentTelegramUser?.username || null,
       }),
@@ -529,28 +523,32 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
       {shouldShowHeader ? (
-        <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
+        <AppHeader
+          current={current}
+          setCurrent={setCurrent}
+          locale={locale as unknown as Locale}
+        />
       ) : null}
 
       {shouldShowIntro ? (
         <IntroScreen
-          locale={locale}
-          onChangeLocale={setLocale}
+          locale={locale as unknown as Locale}
+          onChangeLocale={setLocale as (locale: Locale) => void}
           onFinish={handleFinishIntro}
         />
       ) : (
         <>
           {current === "intro" ? (
             <IntroScreen
-              locale={locale}
-              onChangeLocale={setLocale}
+              locale={locale as unknown as Locale}
+              onChangeLocale={setLocale as (locale: Locale) => void}
               onFinish={handleFinishIntro}
             />
           ) : null}
 
           {current === "feed" ? (
             <FeedScreen
-              locale={locale}
+              locale={locale as unknown as Locale}
               posts={posts}
               likedPostIds={likedPostIds}
               savedPostIds={savedPostIds}
@@ -565,7 +563,7 @@ export default function App() {
 
           {current === "add" ? (
             <AddScreen
-              locale={locale}
+              locale={locale as unknown as Locale}
               currentTelegramUser={currentTelegramUser}
               userRole={userRole}
               onAdd={handleAdd}
@@ -574,7 +572,7 @@ export default function App() {
 
           {current === "creator" ? (
             <CreatorScreen
-              locale={locale}
+              locale={locale as unknown as Locale}
               posts={posts}
               openPost={() => {
                 setCurrent("feed");
@@ -584,7 +582,7 @@ export default function App() {
 
           {current === "source" ? (
             <SourceScreen
-              locale={locale}
+              locale={locale as unknown as Locale}
               posts={posts}
               sourceHandle={selectedSourceHandle}
               onBack={() => {
@@ -599,7 +597,7 @@ export default function App() {
 
           {current === "admin" ? (
             <AdminScreen
-              locale={locale}
+              locale={locale as unknown as Locale}
               telegramUserId={currentTelegramUser?.id || null}
               onClose={() => setCurrent("feed")}
               onDeletePost={handleDeletePost}

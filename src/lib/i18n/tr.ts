@@ -1,0 +1,126 @@
+import type { TranslationSchema } from "./types";
+
+export const tr: TranslationSchema = {
+  common: {
+    loading: "Yükleniyor...",
+    save: "Kaydet",
+    cancel: "İptal",
+    delete: "Sil",
+    edit: "Düzenle",
+    close: "Kapat",
+    back: "Geri",
+    continue: "Devam et",
+    confirm: "Onayla",
+    retry: "Tekrar dene",
+    more: "Daha fazla",
+    less: "Daha az",
+    open: "Aç",
+    yes: "Evet",
+    no: "Hayır",
+    search: "Ara",
+    clear: "Temizle",
+  },
+
+  brand: {
+    appName: "margeleT",
+    tagline: "Telegram video akışı",
+  },
+
+  nav: {
+    feed: "Akış",
+    add: "Ekle",
+    creator: "Yazar",
+    profile: "Profil",
+    admin: "Yönetici",
+    about: "Proje hakkında",
+  },
+
+  feed: {
+    title: "Akış",
+    empty: "Henüz burada bir şey yok",
+    loading: "Akış yükleniyor...",
+    openChannel: "Kanalı aç",
+    openPost: "Gönderiyi aç",
+    share: "Paylaş",
+    save: "Kaydet",
+    saved: "Kaydedildi",
+    like: "Beğen",
+    liked: "İşaretlendi",
+    readMore: "Devamını oku",
+    collapse: "Gizle",
+    noPosts: "Bu seçim için gönderi bulunamadı",
+    unsupportedMedia: "Bu medya kullanılamıyor",
+    sourceLabel: "Kaynak",
+    originalPost: "Orijinal Telegram gönderisi",
+    embeddedBlock: "Gömülü Telegram bloğu",
+    swipeHint: "Görüntüleyiciyi kapatmak için dışarı dokun.",
+  },
+
+  modes: {
+    new: "Yeni",
+    rising: "Yükselen",
+    trending: "Trendler",
+  },
+
+  addSource: {
+    title: "Kanal ekle",
+    subtitle: "Moderasyon için bir Telegram kanal bağlantısı gönder.",
+    inputLabel: "Kanal bağlantısı",
+    inputPlaceholder: "Telegram kanal URL'sini yapıştır",
+    submit: "Moderasyona gönder",
+    success: "Kanal isteği gönderildi",
+    moderationNote: "Kanal otomatik olarak yayınlanmayacak.",
+    invalidUrl: "Lütfen geçerli bir Telegram bağlantısı gir",
+    telegramOnly: "Yalnızca Telegram bağlantıları desteklenir",
+    channelSent: "Kanalın moderasyona gönderildi",
+  },
+
+  creator: {
+    title: "Yazar",
+    subtitle: "Bir Telegram gönderi bağlantısı ekle",
+    sourceName: "Kanal / yazar",
+    sourcePlaceholder: "Kanal adı",
+    postUrl: "Telegram gönderi bağlantısı",
+    postUrlPlaceholder: "Telegram gönderi URL'sini yapıştır",
+    submit: "margeleT'e ekle",
+    success: "Gönderi akışa gönderildi",
+    checksTitle: "MVP neyi kontrol eder",
+    checkPublic: "Herkese açık Telegram gönderi bağlantısı",
+    checkMedia: "Orijinal gönderi oynatılabilir medya içeriyor",
+    checkMetadata: "Başlık / açıklama / kanal meta verileri mevcut",
+  },
+
+  profile: {
+    title: "Profil",
+    subtitle: "Tercihlerin ve hesabın",
+    language: "Dil",
+    country: "Ülke",
+    telegram: "Telegram",
+    notConnected: "Bağlı değil",
+    connected: "Bağlı",
+    connectTelegram: "Telegram bağla",
+    logout: "Çıkış yap",
+    preferences: "Tercihler",
+  },
+
+  auth: {
+    signIn: "Giriş yap",
+    signOut: "Çıkış yap",
+    authorize: "Yetkilendir",
+    authRequired: "Yetkilendirme gerekli",
+    authDescription:
+      "Beğendiğin videoları kaydetmek ve daha fazla margeleT özelliğine erişmek için giriş yap.",
+  },
+
+  errors: {
+    unknown: "Bir şeyler ters gitti",
+    network: "Ağ hatası",
+    forbidden: "Erişim reddedildi",
+    notFound: "Bulunamadı",
+    requiredField: "Bu alan zorunludur",
+    invalidTelegramUrl: "Geçersiz Telegram URL'si",
+    failedToLoadFeed: "Akış yüklenemedi",
+    failedToSubmit: "Gönderilemedi",
+    failedToSave: "Kaydedilemedi",
+  },
+};
