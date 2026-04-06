@@ -269,6 +269,7 @@ export function AdminScreen({
             posts={posts}
             state={state}
             onDeletePost={handleDeletePost}
+            telegramUserId={telegramUserId}
           />
 
           <AdminAccessSection
