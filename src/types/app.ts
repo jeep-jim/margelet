@@ -1,4 +1,5 @@
-export type Locale = "ru" | "en";
+import type { ActiveLocale } from "../lib/locales";
+export type Locale = ActiveLocale;
 
 export type TabId = "intro" | "feed" | "add" | "creator" | "source" | "admin";
 

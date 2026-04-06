@@ -1,5 +1,6 @@
 import { Bell } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import type { Locale } from "../types/app";
 import type { ContentTag, IngestedPost } from "../types/app";
 import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
@@ -155,7 +156,7 @@ export function FeedScreen({
   currentTelegramUserId,
   openSource,
 }: {
-  locale: "ru" | "en";
+  locale: Locale;
   posts: IngestedPost[];
   likedPostIds: number[];
   savedPostIds: number[];

@@ -10,19 +10,29 @@ import { ptBr } from "./pt-br";
 import { ru } from "./ru";
 import { getStoredLocale, setStoredLocale } from "./storage";
 import { tr } from "./tr";
-import type { Locale, TranslationSchema } from "./types";
+import type { TranslationSchema } from "./types";
 
-export const messages: Record<Locale, TranslationSchema> = {
-  ru,
-  en,
-  de,
-  es,
-  tr,
-  fr,
-  it,
-  "pt-br": ptBr,
-  id,
-  pl,
+const INTRO_FALLBACK_EN = en.intro;
+const INTRO_FALLBACK_RU = ru.intro;
+
+function withIntroFallback(dict: TranslationSchema, locale: SiteLocale): TranslationSchema {
+  return {
+    ...dict,
+    intro: dict.intro ?? (locale === "ru" ? INTRO_FALLBACK_RU : INTRO_FALLBACK_EN),
+  };
+}
+
+export const messages: Record<SiteLocale, TranslationSchema> = {
+  ru: withIntroFallback(ru, "ru"),
+  en: withIntroFallback(en, "en"),
+  de: withIntroFallback(de, "de"),
+  es: withIntroFallback(es, "es"),
+  tr: withIntroFallback(tr, "tr"),
+  fr: withIntroFallback(fr, "fr"),
+  it: withIntroFallback(it, "it"),
+  "pt-br": withIntroFallback(ptBr, "pt-br"),
+  id: withIntroFallback(id, "id"),
+  pl: withIntroFallback(pl, "pl"),
 };
 
 export function getInitialLocale(): SiteLocale {
@@ -61,12 +71,4 @@ export function setLocale(locale: SiteLocale) {
 
 export function getEnabledLocales() {
   return SITE_LOCALES.filter((item) => item.enabled);
-}
-
-export function t<
-  TSection extends keyof TranslationSchema,
-  TKey extends keyof TranslationSchema[TSection]
->(locale: SiteLocale, section: TSection, key: TKey): TranslationSchema[TSection][TKey] {
-  const dict = getMessages(locale);
-  return dict[section][key];
 }

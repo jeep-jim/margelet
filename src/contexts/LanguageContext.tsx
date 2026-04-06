@@ -20,13 +20,7 @@ type LanguageContextValue = {
   setLocale: (locale: SiteLocale) => void;
   messages: TranslationSchema;
   enabledLocales: ReturnType<typeof getEnabledLocales>;
-  t: <
-    TSection extends keyof TranslationSchema,
-    TKey extends keyof TranslationSchema[TSection]
-  >(
-    section: TSection,
-    key: TKey
-  ) => TranslationSchema[TSection][TKey];
+  t: (section: keyof TranslationSchema) => TranslationSchema[keyof TranslationSchema];
 };
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
@@ -39,26 +33,20 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = locale;
   }, [locale]);
 
-  const messages = useMemo(() => getMessages(locale), [locale]);
+  const dict = useMemo(() => getMessages(locale), [locale]);
   const enabledLocales = useMemo(() => getEnabledLocales(), []);
 
   const value = useMemo<LanguageContextValue>(() => {
     return {
       locale,
-      setLocale: (nextLocale) => {
-        setLocaleState(nextLocale);
-      },
-      messages,
+      setLocale: setLocaleState,
+      messages: dict,
       enabledLocales,
-      t: (section, key) => messages[section][key],
+      t: (section) => dict[section],
     };
-  }, [locale, messages, enabledLocales]);
+  }, [locale, dict, enabledLocales]);
 
-  return (
-    <LanguageContext.Provider value={value}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {

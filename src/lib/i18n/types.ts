@@ -37,6 +37,15 @@ export type TranslationSchema = {
     about: string;
   };
 
+  intro?: {
+    slides: Array<{
+      title: string;
+      text: string;
+    }>;
+    next: string;
+    enter: string;
+  };
+
   feed: {
     title: string;
     empty: string;

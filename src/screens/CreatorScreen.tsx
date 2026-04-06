@@ -10,6 +10,7 @@ import {
 import { useMemo, useState, useEffect } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { IngestedPost } from "../types/app";
+import type { Locale } from "../types/app";
 
 const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
@@ -22,7 +23,7 @@ function getTelegramAuthUrl() {
 }
 
 type Props = {
-  locale: "ru" | "en";
+  locale: Locale;
   posts: IngestedPost[];
   openPost: (post: IngestedPost) => void;
 };

@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import type { Locale } from "../../types/app";
 import {
   ArrowLeft,
   Bell,
@@ -266,7 +267,7 @@ export function FeedTextReaderModal({
   onShare,
 }: {
   post: IngestedPost | null;
-  locale: "ru" | "en";
+  locale: Locale;
   liked: boolean;
   saved: boolean;
   onClose: () => void;

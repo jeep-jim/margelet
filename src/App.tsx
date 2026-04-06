@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
 import { getInitialLocale } from "./lib/i18n";
-import type { SiteLocale } from "./lib/locales";
 import { AddScreen } from "./screens/AddScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { IntroScreen } from "./screens/IntroScreen";
@@ -145,7 +144,7 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
 }
 
 export default function App() {
-  const [locale, setLocale] = useState<SiteLocale>("en");
+const [locale, setLocale] = useState<Locale>("en");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
@@ -333,7 +332,7 @@ export default function App() {
     return () => {
       cancelled = true;
     };
-  }, [currentTelegramUser]);  
+  }, [currentTelegramUser]);
 
   const loadFeed = async () => {
     setIsFeedLoading(true);
@@ -523,32 +522,28 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
       {shouldShowHeader ? (
-        <AppHeader
-          current={current}
-          setCurrent={setCurrent}
-          locale={locale as unknown as Locale}
-        />
+        <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
       ) : null}
 
       {shouldShowIntro ? (
         <IntroScreen
-          locale={locale as unknown as Locale}
-          onChangeLocale={setLocale as (locale: Locale) => void}
+          locale={locale}
+          onChangeLocale={setLocale}
           onFinish={handleFinishIntro}
         />
       ) : (
         <>
           {current === "intro" ? (
             <IntroScreen
-              locale={locale as unknown as Locale}
-              onChangeLocale={setLocale as (locale: Locale) => void}
+              locale={locale}
+              onChangeLocale={setLocale}
               onFinish={handleFinishIntro}
             />
           ) : null}
 
           {current === "feed" ? (
             <FeedScreen
-              locale={locale as unknown as Locale}
+              locale={locale}
               posts={posts}
               likedPostIds={likedPostIds}
               savedPostIds={savedPostIds}
@@ -563,7 +558,7 @@ export default function App() {
 
           {current === "add" ? (
             <AddScreen
-              locale={locale as unknown as Locale}
+              locale={locale}
               currentTelegramUser={currentTelegramUser}
               userRole={userRole}
               onAdd={handleAdd}
@@ -572,7 +567,7 @@ export default function App() {
 
           {current === "creator" ? (
             <CreatorScreen
-              locale={locale as unknown as Locale}
+              locale={locale}
               posts={posts}
               openPost={() => {
                 setCurrent("feed");
@@ -582,7 +577,7 @@ export default function App() {
 
           {current === "source" ? (
             <SourceScreen
-              locale={locale as unknown as Locale}
+              locale={locale}
               posts={posts}
               sourceHandle={selectedSourceHandle}
               onBack={() => {
@@ -597,7 +592,7 @@ export default function App() {
 
           {current === "admin" ? (
             <AdminScreen
-              locale={locale as unknown as Locale}
+              locale={locale}
               telegramUserId={currentTelegramUser?.id || null}
               onClose={() => setCurrent("feed")}
               onDeletePost={handleDeletePost}

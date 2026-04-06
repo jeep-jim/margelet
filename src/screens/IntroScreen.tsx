@@ -1,25 +1,68 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { messages } from "../lib/i18n";
-import type { Locale } from "../types/app";
+import type { SiteLocale } from "../lib/locales";
 import { Button } from "../components/ui/Button";
 
 type Props = {
-  locale: Locale;
-  onChangeLocale: (locale: Locale) => void;
+  locale: SiteLocale;
+  onChangeLocale: (locale: SiteLocale) => void;
   onFinish: () => void;
 };
 
+const INTRO_FALLBACK = {
+  ru: {
+    slides: [
+      {
+        title: "Добро пожаловать в margeleT",
+        text: "Глобальная лента настоящего контента из Telegram.",
+      },
+      {
+        title: "Только оригинальные источники",
+        text: "Каждый пост всегда связан со своим Telegram-каналом.",
+      },
+      {
+        title: "Чисто и быстро",
+        text: "Открывай, смотри и листай без лишнего шума.",
+      },
+      {
+        title: "Выбирай свой язык",
+        text: "Интерфейс и контент могут подстраиваться под выбранную страну.",
+      },
+    ],
+    next: "Далее",
+    enter: "Войти",
+  },
+  default: {
+    slides: [
+      {
+        title: "Welcome to margeleT",
+        text: "A global feed of real Telegram content.",
+      },
+      {
+        title: "Only original sources",
+        text: "Every post stays connected to its original Telegram channel.",
+      },
+      {
+        title: "Clean and fast",
+        text: "Open, watch and scroll without extra noise.",
+      },
+      {
+        title: "Choose your language",
+        text: "The interface and content can adapt to your selected market.",
+      },
+    ],
+    next: "Next",
+    enter: "Enter",
+  },
+};
+
 export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
-  const t = messages[locale];
+  const dict = messages[locale];
+  const intro =
+    dict.intro ?? (locale === "ru" ? INTRO_FALLBACK.ru : INTRO_FALLBACK.default);
 
-  const pages = [
-    { title: t.intro1Title, text: t.intro1Text },
-    { title: t.intro2Title, text: t.intro2Text },
-    { title: t.intro3Title, text: t.intro3Text },
-    { title: t.intro4Title, text: t.intro4Text },
-  ];
-
+  const pages = intro.slides;
   const [index, setIndex] = React.useState(0);
   const isLast = index === pages.length - 1;
 
@@ -51,10 +94,12 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
             </AnimatePresence>
 
             <div className="flex justify-center gap-2">
-              {pages.map((_, i) => (
+              {pages.map((_, i: number) => (
                 <div
                   key={i}
-                  className={`h-2 w-2 rounded-full ${i === index ? "bg-white" : "bg-white/30"}`}
+                  className={`h-2 w-2 rounded-full ${
+                    i === index ? "bg-white" : "bg-white/30"
+                  }`}
                 />
               ))}
             </div>
@@ -63,11 +108,15 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
               <Button
                 className="rounded-2xl"
                 onClick={() => {
-                  if (isLast) onFinish();
-                  else setIndex((i) => i + 1);
+                  if (isLast) {
+                    onFinish();
+                    return;
+                  }
+
+                  setIndex((prev) => prev + 1);
                 }}
               >
-                {isLast ? t.enter : t.next}
+                {isLast ? intro.enter : intro.next}
               </Button>
             </div>
           </div>

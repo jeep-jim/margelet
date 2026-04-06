@@ -35,6 +35,29 @@ export const en: TranslationSchema = {
     about: "About",
   },
 
+  intro: {
+    slides: [
+      {
+        title: "Welcome to margeleT",
+        text: "A global feed of real Telegram content.",
+      },
+      {
+        title: "Only original sources",
+        text: "Every post stays connected to its original Telegram channel.",
+      },
+      {
+        title: "Clean and fast",
+        text: "Open, watch and scroll without extra noise.",
+      },
+      {
+        title: "Choose your language",
+        text: "The interface and content can adapt to your selected market.",
+      },
+    ],
+    next: "Next",
+    enter: "Enter",
+  },
+
   feed: {
     title: "Feed",
     empty: "Nothing here yet",

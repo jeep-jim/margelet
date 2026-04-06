@@ -6,12 +6,13 @@ import {
   Play,
   ExternalLink,
 } from "lucide-react";
+import type { Locale } from "../types/app";
 import { useEffect, useState } from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { ContentTag, IngestedPost } from "../types/app";
 
 type Props = {
-  locale: "ru" | "en";
+  locale: Locale;
   posts: IngestedPost[];
   sourceHandle: string | null;
   onBack: () => void;
