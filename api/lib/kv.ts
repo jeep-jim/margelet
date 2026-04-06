@@ -361,24 +361,17 @@ function getCanonicalPostUrl(url: string) {
   return parsed?.normalizedUrl || url.trim();
 }
 
-export async function markPostAsDeleted(url: string): Promise<void> {
+export async function markPostAsDeleted(url: string) {
   const canonicalUrl = getCanonicalPostUrl(url);
-
   await redis.set(deletedPostUrlKey(canonicalUrl), "1", {
-    ex: 3 * 24 * 60 * 60,
+    ex: 60 * 60 * 24 * 7,
   });
 }
 
-export async function isPostDeleted(url: string): Promise<boolean> {
+export async function isPostDeleted(url: string) {
   const canonicalUrl = getCanonicalPostUrl(url);
-  const raw = await redis.get(deletedPostUrlKey(canonicalUrl));
-
-  return raw === "1" || raw === 1 || raw === true;
-}
-
-export async function clearDeletedPostMark(url: string): Promise<void> {
-  const canonicalUrl = getCanonicalPostUrl(url);
-  await redis.del(deletedPostUrlKey(canonicalUrl));
+  const value = await redis.get(deletedPostUrlKey(canonicalUrl));
+  return Boolean(value);
 }
 
 export async function savePost(post: IngestedPost): Promise<IngestedPost> {
@@ -407,8 +400,6 @@ export async function savePost(post: IngestedPost): Promise<IngestedPost> {
     ...post,
     postUrl: canonicalPostUrl,
   };
-
-  await clearDeletedPostMark(canonicalPostUrl);
 
   await redis.set(postKey(normalizedPost.id), normalizedPost, {
     ex: ttlSeconds,
@@ -513,6 +504,26 @@ export async function getPostByUrl(url: string): Promise<IngestedPost | null> {
   };
 }
 
+async function getAllStoredPostIds(): Promise<string[]> {
+  const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, -1);
+
+  if (!ids || ids.length === 0) {
+    return [];
+  }
+
+  return Array.from(
+    new Set(
+      ids
+        .map((id) =>
+          typeof id === "string" || typeof id === "number"
+            ? String(id)
+            : null
+        )
+        .filter((id): id is string => Boolean(id))
+    )
+  );
+}
+
 export async function deletePostById(id: number): Promise<boolean> {
   const existing = await getPostById(id);
 
@@ -521,13 +532,31 @@ export async function deletePostById(id: number): Promise<boolean> {
   }
 
   const canonicalUrl = getCanonicalPostUrl(existing.postUrl);
-
   await markPostAsDeleted(canonicalUrl);
 
-  await redis.del(postKey(id));
+  const allIds = await getAllStoredPostIds();
+
+  for (const rawId of allIds) {
+    const raw = await redis.get(postKey(rawId));
+    const post = normalizeAnyPost(raw);
+
+    if (!post) {
+      await redis.lrem(FEED_IDS_KEY, 0, rawId);
+      continue;
+    }
+
+    const postCanonicalUrl = getCanonicalPostUrl(post.postUrl);
+
+    if (postCanonicalUrl !== canonicalUrl) {
+      continue;
+    }
+
+    await redis.del(postKey(rawId));
+    await redis.lrem(FEED_IDS_KEY, 0, rawId);
+    await redis.lrem(FEED_IDS_KEY, 0, Number(rawId));
+  }
+
   await redis.del(postUrlKey(canonicalUrl));
-  await redis.lrem(FEED_IDS_KEY, 0, id);
-  await redis.lrem(FEED_IDS_KEY, 0, String(id));
 
   return true;
 }

@@ -1,4 +1,4 @@
-import { redis, deletePostById, getPostById } from "./lib/kv.js";
+import { deletePostById, getFeedPosts, getPostById, redis } from "./lib/kv.js";
 import {
   deleteSourceById,
   getSourceById,
@@ -11,13 +11,6 @@ import type { CountryCode } from "../src/screens/admin/admin.countries.js";
 import type { TrustedSource } from "../src/screens/admin/admin.types.js";
 
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
-
-const FEED_IDS_KEY = "margelet:feed:ids";
-const POST_KEY_PREFIX = "margelet:post:";
-
-function postKey(id: number | string) {
-  return `${POST_KEY_PREFIX}${id}`;
-}
 
 function asString(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
@@ -88,31 +81,7 @@ export default async function handler(req: any, res: any) {
         });
       }
 
-      const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, 500);
-
-      if (!ids || ids.length === 0) {
-        return res.status(200).json({ ok: true, entity: "posts", posts: [] });
-      }
-
-      const uniqueIds = Array.from(
-        new Set(
-          ids
-            .map((rawId) => {
-              const id = asNumber(rawId);
-              return id ? String(id) : null;
-            })
-            .filter((id): id is string => Boolean(id))
-        )
-      );
-
-      const posts: IngestedPost[] = [];
-
-      for (const rawId of uniqueIds) {
-        const raw = await redis.get(postKey(rawId));
-        if (!raw || typeof raw !== "object") continue;
-
-        posts.push(raw as IngestedPost);
-      }
+      const posts = await getFeedPosts(500);
 
       return res.status(200).json({
         ok: true,
@@ -187,14 +156,11 @@ export default async function handler(req: any, res: any) {
         return res.status(400).json({ error: "Invalid status" });
       }
 
-      const key = postKey(id);
-      const raw = await redis.get(key);
+      const post = await getPostById(id);
 
-      if (!raw || typeof raw !== "object") {
+      if (!post) {
         return res.status(404).json({ error: "Post not found" });
       }
-
-      const post = raw as IngestedPost;
 
       const updated: IngestedPost = {
         ...post,
@@ -206,7 +172,7 @@ export default async function handler(req: any, res: any) {
         },
       };
 
-      await redis.set(key, updated);
+      await redis.set(`margelet:post:${id}`, updated);
 
       return res.status(200).json({
         ok: true,
