@@ -462,7 +462,7 @@ export default function App() {
     }
 
     const res = await fetch("/api/admin-posts", {
-      method: "POST",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
