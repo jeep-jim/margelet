@@ -1,4 +1,4 @@
-import { getPostByUrl, savePost, redis, isPostDeleted } from "./kv.js";
+import { getPostByUrl, savePost, redis } from "./kv.js";
 import type { ContentTag } from "../../src/types/app.js";
 import type { CountryCode } from "../../src/screens/admin/admin.countries.js";
 import type { TrustedSource } from "../../src/screens/admin/admin.types.js";
@@ -20,6 +20,11 @@ const MAX_IMPORTED_POSTS_PER_RUN = 25;
 type ImportBudgetState = {
   reserved: number;
   imported: number;
+};
+
+type SourceMeta = {
+  title: string | null;
+  avatarUrl: string | null;
 };
 
 function sourceKey(id: string) {
@@ -50,64 +55,89 @@ function buildSourceId(countryCode: CountryCode, handle: string) {
   return `${countryCode}:${normalizeHandle(handle)}`;
 }
 
-function extractFirst(html: string, re: RegExp) {
-  const match = html.match(re);
-  return match?.[1] || null;
-}
-
 function normalizeAssetUrl(value?: string | null) {
   if (!value) return null;
   const v = value.trim();
   if (!v) return null;
-
-  const decoded = v.replace(/&amp;/g, "&");
-
-  if (decoded.startsWith("//")) return `https:${decoded}`;
-  if (decoded.startsWith("http://")) return `https://${decoded.slice(7)}`;
-  return decoded;
+  if (v.startsWith("//")) return `https:${v}`;
+  if (v.startsWith("http://")) return `https://${v.slice(7)}`;
+  return v;
 }
 
-function parseChannelMeta(html: string, fallbackHandle: string) {
-  const title =
-    extractFirst(html, /<meta property="og:title" content="([^"]+)"/i) ||
-    extractFirst(html, /<meta name="twitter:title" content="([^"]+)"/i) ||
-    extractFirst(
-      html,
-      /<div class="tgme_channel_info_header_title"[^>]*>\s*<span[^>]*>([\s\S]*?)<\/span>/i
-    ) ||
-    extractFirst(
-      html,
-      /<div class="tgme_page_title"[^>]*>\s*<span[^>]*>([\s\S]*?)<\/span>/i
-    ) ||
-    fallbackHandle;
-
-  const avatar =
-    extractFirst(html, /<img[^>]+class="tgme_page_photo_image"[^>]+src="([^"]+)"/i) ||
-    extractFirst(html, /<img[^>]+class="tgme_channel_info_header_photo_image"[^>]+src="([^"]+)"/i) ||
-    extractFirst(html, /<img[^>]+src="([^"]+)"[^>]+class="tgme_page_photo_image"/i) ||
-    extractFirst(html, /<img[^>]+src="([^"]+)"[^>]+class="tgme_channel_info_header_photo_image"/i) ||
-    null;
-
-  return {
-    title: String(title || fallbackHandle).replace(/<[^>]+>/g, "").trim() || fallbackHandle,
-    avatar: normalizeAssetUrl(avatar),
-  };
+function decodeHtml(input: string) {
+  return input
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n\n")
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&#x27;/g, "'")
+    .replace(/&#x2F;/g, "/")
+    .replace(/&#8211;/g, "–")
+    .replace(/&#8212;/g, "—")
+    .replace(/&#8230;/g, "…")
+    .trim();
 }
 
-async function enrichSourceMeta(handle: string, fallbackTitle: string) {
+function extract(html: string, re: RegExp) {
+  const match = html.match(re);
+  return match?.[1] || null;
+}
+
+async function fetchChannelMeta(handle: string): Promise<SourceMeta> {
   try {
-    const html = await fetchChannelHtml(handle);
-    const meta = parseChannelMeta(html, fallbackTitle || handle);
+    const normalizedHandle = normalizeHandle(handle);
+    const url = `https://t.me/s/${normalizedHandle}`;
+
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
+        Accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
+        Referer: "https://t.me/",
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+      },
+      redirect: "follow",
+    });
+
+    if (!res.ok) {
+      return { title: null, avatarUrl: null };
+    }
+
+    const html = await res.text();
+
+    const title =
+      extract(html, /<meta property="og:title" content="([^"]+)"/i) ||
+      extract(
+        html,
+        /<div class="tgme_channel_info_header_title"[^>]*>([\s\S]*?)<\/div>/i
+      ) ||
+      extract(
+        html,
+        /<div class="tgme_page_title"[^>]*>([\s\S]*?)<\/div>/i
+      ) ||
+      null;
+
+    const avatar =
+      extract(html, /<meta property="og:image" content="([^"]+)"/i) ||
+      extract(html, /<link rel="image_src" href="([^"]+)"/i) ||
+      extract(
+        html,
+        /class="tgme_page_photo_image"[^>]+src="([^"]+)"/i
+      ) ||
+      null;
 
     return {
-      title: meta.title || fallbackTitle || handle,
-      avatar: meta.avatar || null,
+      title: title ? decodeHtml(title) : null,
+      avatarUrl: normalizeAssetUrl(avatar),
     };
   } catch {
-    return {
-      title: fallbackTitle || handle,
-      avatar: null,
-    };
+    return { title: null, avatarUrl: null };
   }
 }
 
@@ -132,7 +162,7 @@ function normalizeSource(raw: unknown): TrustedSource | null {
     countryCode,
     handle: normalizeHandle(handle),
     title,
-    avatar: asString(record.avatar),
+    avatarUrl: asString(record.avatarUrl),
     defaultTag,
     status,
     note: asString(record.note),
@@ -249,7 +279,10 @@ export async function saveSource(
     countryCode: input.countryCode,
     handle: normalizeHandle(input.handle),
     title: input.title.trim(),
-    avatar: input.avatar || null,
+    avatarUrl:
+      input.avatarUrl !== undefined
+        ? input.avatarUrl
+        : existing?.avatarUrl ?? null,
     defaultTag: input.defaultTag,
     status: input.status,
     note: input.note || null,
@@ -280,6 +313,70 @@ export async function saveSource(
   return source;
 }
 
+export async function upsertSourceWithMeta(
+  input: {
+    countryCode: CountryCode;
+    handle: string;
+    title?: string | null;
+    avatarUrl?: string | null;
+    defaultTag: ContentTag;
+    status: TrustedSource["status"];
+    note?: string | null;
+  } & {
+    id?: string;
+    createdAt?: string;
+    updatedAt?: string;
+    lastCheckedAt?: string | null;
+    lastImportedAt?: string | null;
+    lastSeenPostId?: number | null;
+    importedPostsCount?: number;
+  }
+): Promise<TrustedSource> {
+  const sourceId = input.id || buildSourceId(input.countryCode, input.handle);
+  const existing = await getSourceById(sourceId);
+  const meta = await fetchChannelMeta(input.handle);
+
+  const finalTitle =
+    (input.title || "").trim() ||
+    meta.title ||
+    existing?.title ||
+    normalizeHandle(input.handle);
+
+  const finalAvatarUrl =
+    input.avatarUrl !== undefined
+      ? input.avatarUrl
+      : meta.avatarUrl ?? existing?.avatarUrl ?? null;
+
+  return saveSource({
+    id: sourceId,
+    countryCode: input.countryCode,
+    handle: input.handle,
+    title: finalTitle,
+    avatarUrl: finalAvatarUrl,
+    defaultTag: input.defaultTag,
+    status: input.status,
+    note: input.note || null,
+    createdAt: input.createdAt,
+    updatedAt: input.updatedAt,
+    lastCheckedAt:
+      input.lastCheckedAt !== undefined
+        ? input.lastCheckedAt
+        : existing?.lastCheckedAt ?? null,
+    lastImportedAt:
+      input.lastImportedAt !== undefined
+        ? input.lastImportedAt
+        : existing?.lastImportedAt ?? null,
+    lastSeenPostId:
+      input.lastSeenPostId !== undefined
+        ? input.lastSeenPostId
+        : existing?.lastSeenPostId ?? null,
+    importedPostsCount:
+      input.importedPostsCount !== undefined
+        ? input.importedPostsCount
+        : existing?.importedPostsCount ?? 0,
+  });
+}
+
 export async function touchSourceAfterPoll(
   source: TrustedSource,
   payload: {
@@ -294,7 +391,7 @@ export async function touchSourceAfterPoll(
     countryCode: source.countryCode,
     handle: source.handle,
     title: source.title,
-    avatar: source.avatar,
+    avatarUrl: source.avatarUrl,
     defaultTag: source.defaultTag,
     status: source.status,
     note: source.note,
@@ -457,13 +554,6 @@ async function importPostFromSource(
     }
 
     const normalizedUrl = parsed.normalizedUrl;
-
-    const deleted = await isPostDeleted(normalizedUrl);
-    if (deleted) {
-      releaseReservedImportSlot(budget, false);
-      return { ok: false, budgetReached: false };
-    }
-
     const existing = await getPostByUrl(normalizedUrl);
 
     if (existing) {
@@ -509,28 +599,12 @@ async function pollOneSource(source: TrustedSource, budget: ImportBudgetState) {
     const lastSeen = source.lastSeenPostId || 0;
 
     if (lastSeen <= 0) {
-      const meta = parseChannelMeta(html, source.title || source.handle);
-
-      await saveSource({
-        id: source.id,
-        countryCode: source.countryCode,
-        handle: source.handle,
-        title: meta.title || source.title,
-        avatar: meta.avatar || source.avatar,
-        defaultTag: source.defaultTag,
-        status: source.status,
-        note: source.note,
-        createdAt: source.createdAt,
-        updatedAt: new Date().toISOString(),
+      await touchSourceAfterPoll(source, {
         lastCheckedAt: checkedAt,
-        lastImportedAt: source.lastImportedAt,
         lastSeenPostId: newestSeen,
-        importedPostsCount: source.importedPostsCount,
       });
       return;
     }
-
-    const meta = parseChannelMeta(html, source.title || source.handle);
 
     const newIds = ids
       .filter((id) => id > lastSeen)
@@ -553,21 +627,11 @@ async function pollOneSource(source: TrustedSource, budget: ImportBudgetState) {
       }
     }
 
-    await saveSource({
-      id: source.id,
-      countryCode: source.countryCode,
-      handle: source.handle,
-      title: meta.title || source.title,
-      avatar: meta.avatar || source.avatar,
-      defaultTag: source.defaultTag,
-      status: source.status,
-      note: source.note,
-      createdAt: source.createdAt,
-      updatedAt: new Date().toISOString(),
+    await touchSourceAfterPoll(source, {
       lastCheckedAt: checkedAt,
       lastImportedAt: lastImportedAt ?? source.lastImportedAt,
       lastSeenPostId: Math.max(newestSeen, lastSeen),
-      importedPostsCount: (source.importedPostsCount || 0) + imported,
+      importedPostsCountDelta: imported,
     });
   } catch (error) {
     console.error("pollOneSource error", source.handle, error);
@@ -625,37 +689,6 @@ async function tryAcquirePollerLock() {
   });
 
   return true;
-}
-
-export async function upsertSourceWithMeta(input: {
-  countryCode: CountryCode;
-  handle: string;
-  title: string;
-  defaultTag: ContentTag;
-  status: TrustedSource["status"];
-  note?: string | null;
-  existing?: TrustedSource | null;
-}) {
-  const normalizedHandle = normalizeHandle(input.handle);
-  const meta = await enrichSourceMeta(normalizedHandle, input.title || normalizedHandle);
-  const existing = input.existing || (await getSourceById(buildSourceId(input.countryCode, normalizedHandle)));
-
-  return saveSource({
-    id: buildSourceId(input.countryCode, normalizedHandle),
-    countryCode: input.countryCode,
-    handle: normalizedHandle,
-    title: meta.title || input.title || normalizedHandle,
-    avatar: meta.avatar || existing?.avatar || null,
-    defaultTag: input.defaultTag,
-    status: input.status,
-    note: input.note || null,
-    createdAt: existing?.createdAt,
-    updatedAt: new Date().toISOString(),
-    lastCheckedAt: existing?.lastCheckedAt ?? null,
-    lastImportedAt: existing?.lastImportedAt ?? null,
-    lastSeenPostId: existing?.lastSeenPostId ?? null,
-    importedPostsCount: existing?.importedPostsCount ?? 0,
-  });
 }
 
 export async function runTrustedSourcesPolling() {

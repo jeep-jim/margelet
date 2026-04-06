@@ -4,7 +4,6 @@ import {
   getSourceById,
   listSources,
   makeSourceId,
-  saveSource,
   upsertSourceWithMeta,
 } from "./lib/sources.js";
 import type { IngestedPost, ContentTag } from "../src/types/app.js";
@@ -95,11 +94,10 @@ export default async function handler(req: any, res: any) {
       if (entity === "sources") {
         const countryCode = body.countryCode;
         const handle = asString(body.handle);
-        const title = asString(body.title);
+        const title = asNullableString(body.title);
         const defaultTag = body.defaultTag;
         const status = body.status;
         const note = asNullableString(body.note);
-        const sourceIdFromBody = asString(body.id);
 
         if (!isCountryCode(countryCode)) {
           return res.status(400).json({ error: "Missing countryCode" });
@@ -107,10 +105,6 @@ export default async function handler(req: any, res: any) {
 
         if (!handle) {
           return res.status(400).json({ error: "Missing handle" });
-        }
-
-        if (!title) {
-          return res.status(400).json({ error: "Missing title" });
         }
 
         if (!isContentTag(defaultTag)) {
@@ -121,17 +115,17 @@ export default async function handler(req: any, res: any) {
           return res.status(400).json({ error: "Invalid source status" });
         }
 
-        const sourceId = sourceIdFromBody || makeSourceId(countryCode, handle);
+        const sourceId = makeSourceId(countryCode, handle);
         const existing = await getSourceById(sourceId);
 
         const source = await upsertSourceWithMeta({
+          id: sourceId,
           countryCode,
           handle,
           title,
           defaultTag,
           status,
           note,
-          existing,
         });
 
         return res.status(200).json({

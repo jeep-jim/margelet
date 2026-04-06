@@ -12,6 +12,14 @@ type AdminSourcesSectionProps = {
   onSourcesReload?: () => Promise<void> | void;
 };
 
+function getAvatarUrl(source: TrustedSource) {
+  if ("avatarUrl" in source && typeof source.avatarUrl === "string") {
+    return source.avatarUrl.trim() || null;
+  }
+
+  return null;
+}
+
 export function AdminSourcesSection({
   telegramUserId,
   countryCode,
@@ -63,6 +71,16 @@ export function AdminSourcesSection({
     setNote("");
   };
 
+  const handleEdit = (source: TrustedSource) => {
+    setEditingId(source.id);
+    setHandle(source.handle);
+    setTitle(source.title);
+    setDefaultTag(source.defaultTag);
+    setStatus(source.status);
+    setNote(source.note || "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleSave = async () => {
     if (!telegramUserId) return;
 
@@ -85,7 +103,6 @@ export function AdminSourcesSection({
         body: JSON.stringify({
           entity: "sources",
           telegramUserId,
-          id: editingId,
           countryCode,
           handle: handle.trim(),
           title: title.trim(),
@@ -163,16 +180,6 @@ export function AdminSourcesSection({
     } finally {
       setBulkSaving(false);
     }
-  };
-
-  const handleEdit = (source: TrustedSource) => {
-    setEditingId(source.id);
-    setHandle(source.handle);
-    setTitle(source.title);
-    setDefaultTag(source.defaultTag);
-    setStatus(source.status);
-    setNote(source.note || "");
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleDelete = async (source: TrustedSource) => {
@@ -271,9 +278,7 @@ export function AdminSourcesSection({
           className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
         >
           {saving
-            ? editingId
-              ? "сохраняю..."
-              : "добавляю..."
+            ? "сохраняю..."
             : editingId
               ? "сохранить изменения"
               : "добавить источник"}
@@ -342,24 +347,29 @@ export function AdminSourcesSection({
               ADMIN_TAG_OPTIONS.find((item) => item.value === source.defaultTag)?.label ||
               source.defaultTag;
 
+            const avatarUrl = getAvatarUrl(source);
+
             return (
               <div
                 key={source.id}
                 className="rounded-xl border border-white/10 bg-black/20 p-4"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0 flex items-start gap-3">
+                  <div className="flex min-w-0 items-start gap-3">
                     <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-white/10">
-                      {source.avatar ? (
+                      {avatarUrl ? (
                         <img
-                          src={source.avatar}
+                          src={avatarUrl}
                           alt={source.title}
                           className="h-full w-full object-cover"
                           referrerPolicy="no-referrer"
                         />
                       ) : (
-                        <div className="flex h-full w-full items-center justify-center text-xs text-white/40">
-                          {source.title.slice(0, 2).toUpperCase()}
+                        <div className="flex h-full w-full items-center justify-center text-sm font-semibold text-white/60">
+                          {(source.title || source.handle || "?")
+                            .trim()
+                            .charAt(0)
+                            .toUpperCase()}
                         </div>
                       )}
                     </div>
@@ -398,7 +408,15 @@ export function AdminSourcesSection({
                   <div className="mt-3 text-sm text-white/60">{source.note}</div>
                 ) : null}
 
-                <div className="mt-3">
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleEdit(source)}
+                    className="rounded-xl bg-blue-500 px-3 py-2 text-sm text-white"
+                  >
+                    Редактировать
+                  </button>
+
                   <button
                     type="button"
                     onClick={() => {
@@ -410,13 +428,6 @@ export function AdminSourcesSection({
                     {deletingId === source.id ? "Удаляю..." : "Удалить"}
                   </button>
                 </div>
-                    <button
-                        type="button"
-                        onClick={() => handleEdit(source)}
-                        className="rounded-xl bg-blue-500 px-3 py-2 text-sm"
-                    >
-                        Редактировать
-                    </button>
               </div>
             );
           })}
