@@ -15,6 +15,7 @@ export type TrustedSource = {
   countryCode: CountryCode;
   handle: string;
   title: string;
+  avatar: string | null;
   defaultTag: ContentTag;
   status: TrustedSourceStatus;
   note: string | null;

@@ -5,6 +5,7 @@ import {
   listSources,
   makeSourceId,
   saveSource,
+  upsertSourceWithMeta,
 } from "./lib/sources.js";
 import type { IngestedPost, ContentTag } from "../src/types/app.js";
 import type { CountryCode } from "../src/screens/admin/admin.countries.js";
@@ -98,6 +99,7 @@ export default async function handler(req: any, res: any) {
         const defaultTag = body.defaultTag;
         const status = body.status;
         const note = asNullableString(body.note);
+        const sourceIdFromBody = asString(body.id);
 
         if (!isCountryCode(countryCode)) {
           return res.status(400).json({ error: "Missing countryCode" });
@@ -119,23 +121,17 @@ export default async function handler(req: any, res: any) {
           return res.status(400).json({ error: "Invalid source status" });
         }
 
-        const sourceId = makeSourceId(countryCode, handle);
+        const sourceId = sourceIdFromBody || makeSourceId(countryCode, handle);
         const existing = await getSourceById(sourceId);
 
-        const source = await saveSource({
-          id: sourceId,
+        const source = await upsertSourceWithMeta({
           countryCode,
           handle,
           title,
           defaultTag,
           status,
           note,
-          createdAt: existing?.createdAt,
-          updatedAt: new Date().toISOString(),
-          lastCheckedAt: existing?.lastCheckedAt ?? null,
-          lastImportedAt: existing?.lastImportedAt ?? null,
-          lastSeenPostId: existing?.lastSeenPostId ?? null,
-          importedPostsCount: existing?.importedPostsCount ?? 0,
+          existing,
         });
 
         return res.status(200).json({

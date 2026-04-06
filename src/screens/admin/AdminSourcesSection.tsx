@@ -20,10 +20,12 @@ export function AdminSourcesSection({
 }: AdminSourcesSectionProps) {
   const [query, setQuery] = useState("");
 
+  const [editingId, setEditingId] = useState<string | null>(null);
+
   const [handle, setHandle] = useState("");
   const [title, setTitle] = useState("");
   const [defaultTag, setDefaultTag] = useState<ContentTag>("other");
-  const [status] = useState<TrustedSource["status"]>("active");
+  const [status, setStatus] = useState<TrustedSource["status"]>("active");
   const [note, setNote] = useState("");
 
   const [bulkText, setBulkText] = useState("");
@@ -52,6 +54,15 @@ export function AdminSourcesSection({
     });
   }, [sources, query, countryCode]);
 
+  const resetForm = () => {
+    setEditingId(null);
+    setHandle("");
+    setTitle("");
+    setDefaultTag("other");
+    setStatus("active");
+    setNote("");
+  };
+
   const handleSave = async () => {
     if (!telegramUserId) return;
 
@@ -74,6 +85,7 @@ export function AdminSourcesSection({
         body: JSON.stringify({
           entity: "sources",
           telegramUserId,
+          id: editingId,
           countryCode,
           handle: handle.trim(),
           title: title.trim(),
@@ -89,10 +101,7 @@ export function AdminSourcesSection({
         throw new Error(data?.error || "save source failed");
       }
 
-      setHandle("");
-      setTitle("");
-      setDefaultTag("other");
-      setNote("");
+      resetForm();
 
       if (onSourcesReload) {
         await onSourcesReload();
@@ -156,6 +165,16 @@ export function AdminSourcesSection({
     }
   };
 
+  const handleEdit = (source: TrustedSource) => {
+    setEditingId(source.id);
+    setHandle(source.handle);
+    setTitle(source.title);
+    setDefaultTag(source.defaultTag);
+    setStatus(source.status);
+    setNote(source.note || "");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const handleDelete = async (source: TrustedSource) => {
     if (!telegramUserId) return;
     if (!window.confirm(`Удалить источник @${source.handle}?`)) return;
@@ -177,6 +196,10 @@ export function AdminSourcesSection({
 
       if (!res.ok) {
         throw new Error(data?.error || "delete source failed");
+      }
+
+      if (editingId === source.id) {
+        resetForm();
       }
 
       if (onSourcesReload) {
@@ -221,9 +244,14 @@ export function AdminSourcesSection({
           ))}
         </select>
 
-        <div className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white/70">
-          статус: {status === "active" ? "активен" : "пауза"}
-        </div>
+        <select
+          value={status}
+          onChange={(event) => setStatus(event.target.value as TrustedSource["status"])}
+          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+        >
+          <option value="active">активен</option>
+          <option value="paused">пауза</option>
+        </select>
 
         <input
           value={note}
@@ -242,8 +270,24 @@ export function AdminSourcesSection({
           disabled={saving}
           className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
         >
-          {saving ? "сохраняю..." : "добавить источник"}
+          {saving
+            ? editingId
+              ? "сохраняю..."
+              : "добавляю..."
+            : editingId
+              ? "сохранить изменения"
+              : "добавить источник"}
         </button>
+
+        {editingId ? (
+          <button
+            type="button"
+            onClick={resetForm}
+            className="rounded-full bg-white/10 px-5 py-2.5 text-sm font-medium text-white"
+          >
+            отменить редактирование
+          </button>
+        ) : null}
 
         <div className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/70">
           страна: {countryCode.toUpperCase()}
@@ -304,12 +348,29 @@ export function AdminSourcesSection({
                 className="rounded-xl border border-white/10 bg-black/20 p-4"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <div className="truncate text-base font-semibold text-white">
-                      {source.title}
+                  <div className="min-w-0 flex items-start gap-3">
+                    <div className="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-white/10">
+                      {source.avatar ? (
+                        <img
+                          src={source.avatar}
+                          alt={source.title}
+                          className="h-full w-full object-cover"
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <div className="flex h-full w-full items-center justify-center text-xs text-white/40">
+                          {source.title.slice(0, 2).toUpperCase()}
+                        </div>
+                      )}
                     </div>
-                    <div className="truncate text-sm text-white/50">
-                      @{source.handle}
+
+                    <div className="min-w-0">
+                      <div className="truncate text-base font-semibold text-white">
+                        {source.title}
+                      </div>
+                      <div className="truncate text-sm text-white/50">
+                        @{source.handle}
+                      </div>
                     </div>
                   </div>
 
@@ -349,6 +410,13 @@ export function AdminSourcesSection({
                     {deletingId === source.id ? "Удаляю..." : "Удалить"}
                   </button>
                 </div>
+                    <button
+                        type="button"
+                        onClick={() => handleEdit(source)}
+                        className="rounded-xl bg-blue-500 px-3 py-2 text-sm"
+                    >
+                        Редактировать
+                    </button>
               </div>
             );
           })}
