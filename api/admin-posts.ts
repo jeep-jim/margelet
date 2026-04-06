@@ -1,6 +1,7 @@
 import { redis, deletePostById, getPostById } from "./lib/kv.js";
 import {
   deleteSourceById,
+  getSourceById,
   listSources,
   makeSourceId,
   saveSource,
@@ -78,7 +79,7 @@ export default async function handler(req: any, res: any) {
 
     if (req.method === "POST") {
       if (entity === "sources") {
-        const sources = await listSources(2000);
+        const sources = await listSources(5000);
 
         return res.status(200).json({
           ok: true,
@@ -149,18 +150,23 @@ export default async function handler(req: any, res: any) {
           return res.status(400).json({ error: "Invalid source status" });
         }
 
+        const sourceId = makeSourceId(countryCode, handle);
+        const existing = await getSourceById(sourceId);
+
         const source = await saveSource({
-          id: makeSourceId(countryCode, handle),
+          id: sourceId,
           countryCode,
           handle,
           title,
           defaultTag,
           status,
           note,
-          lastCheckedAt: null,
-          lastImportedAt: null,
-          lastSeenPostId: null,
-          importedPostsCount: 0,
+          createdAt: existing?.createdAt,
+          updatedAt: new Date().toISOString(),
+          lastCheckedAt: existing?.lastCheckedAt ?? null,
+          lastImportedAt: existing?.lastImportedAt ?? null,
+          lastSeenPostId: existing?.lastSeenPostId ?? null,
+          importedPostsCount: existing?.importedPostsCount ?? 0,
         });
 
         return res.status(200).json({

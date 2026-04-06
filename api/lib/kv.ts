@@ -30,6 +30,7 @@ export const redis = new Redis({ url, token });
 const FEED_IDS_KEY = "margelet:feed:ids";
 const POST_KEY_PREFIX = "margelet:post:";
 const POST_URL_KEY_PREFIX = "margelet:post:url:";
+const DELETED_POST_URL_KEY_PREFIX = "margelet:deleted:url:";
 
 function postKey(id: number | string) {
   return `${POST_KEY_PREFIX}${id}`;
@@ -37,6 +38,10 @@ function postKey(id: number | string) {
 
 function postUrlKey(postUrl: string) {
   return `${POST_URL_KEY_PREFIX}${postUrl}`;
+}
+
+function deletedPostUrlKey(postUrl: string) {
+  return `${DELETED_POST_URL_KEY_PREFIX}${postUrl}`;
 }
 
 function asString(value: unknown): string | null {
@@ -356,6 +361,26 @@ function getCanonicalPostUrl(url: string) {
   return parsed?.normalizedUrl || url.trim();
 }
 
+export async function markPostAsDeleted(url: string): Promise<void> {
+  const canonicalUrl = getCanonicalPostUrl(url);
+
+  await redis.set(deletedPostUrlKey(canonicalUrl), "1", {
+    ex: 3 * 24 * 60 * 60,
+  });
+}
+
+export async function isPostDeleted(url: string): Promise<boolean> {
+  const canonicalUrl = getCanonicalPostUrl(url);
+  const raw = await redis.get(deletedPostUrlKey(canonicalUrl));
+
+  return raw === "1" || raw === 1 || raw === true;
+}
+
+export async function clearDeletedPostMark(url: string): Promise<void> {
+  const canonicalUrl = getCanonicalPostUrl(url);
+  await redis.del(deletedPostUrlKey(canonicalUrl));
+}
+
 export async function savePost(post: IngestedPost): Promise<IngestedPost> {
   const canonicalPostUrl = getCanonicalPostUrl(post.postUrl);
   const ttlSeconds = getRemainingTtlSeconds(post);
@@ -382,6 +407,8 @@ export async function savePost(post: IngestedPost): Promise<IngestedPost> {
     ...post,
     postUrl: canonicalPostUrl,
   };
+
+  await clearDeletedPostMark(canonicalPostUrl);
 
   await redis.set(postKey(normalizedPost.id), normalizedPost, {
     ex: ttlSeconds,
@@ -494,6 +521,8 @@ export async function deletePostById(id: number): Promise<boolean> {
   }
 
   const canonicalUrl = getCanonicalPostUrl(existing.postUrl);
+
+  await markPostAsDeleted(canonicalUrl);
 
   await redis.del(postKey(id));
   await redis.del(postUrlKey(canonicalUrl));

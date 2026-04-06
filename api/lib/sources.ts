@@ -1,4 +1,4 @@
-import { getPostByUrl, savePost, redis } from "./kv.js";
+import { getPostByUrl, savePost, redis, isPostDeleted } from "./kv.js";
 import type { ContentTag } from "../../src/types/app.js";
 import type { CountryCode } from "../../src/screens/admin/admin.countries.js";
 import type { TrustedSource } from "../../src/screens/admin/admin.types.js";
@@ -16,7 +16,6 @@ const POSTS_PER_SOURCE_SCAN = 12;
 const MAX_NEW_POSTS_PER_SOURCE = 3;
 const SOURCE_CONCURRENCY = 6;
 
-// 🔥 Глобальный лимит импорта:
 // poller runs every 30 sec, so 25 per run = max 50 per minute
 const MAX_IMPORTED_POSTS_PER_RUN = 25;
 
@@ -396,6 +395,13 @@ async function importPostFromSource(
     }
 
     const normalizedUrl = parsed.normalizedUrl;
+
+    const deleted = await isPostDeleted(normalizedUrl);
+    if (deleted) {
+      releaseReservedImportSlot(budget, false);
+      return { ok: false, budgetReached: false };
+    }
+
     const existing = await getPostByUrl(normalizedUrl);
 
     if (existing) {
@@ -440,7 +446,6 @@ async function pollOneSource(source: TrustedSource, budget: ImportBudgetState) {
     const newestSeen = Math.max(...ids);
     const lastSeen = source.lastSeenPostId || 0;
 
-    // Первый запуск: просто фиксируем верхний postId
     if (lastSeen <= 0) {
       await touchSourceAfterPoll(source, {
         lastCheckedAt: checkedAt,
