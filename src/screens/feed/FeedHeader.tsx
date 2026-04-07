@@ -1,8 +1,7 @@
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import type { ContentTag } from "../../types/app";
+import type { ContentTag, Locale } from "../../types/app";
 import { TAG_OPTIONS } from "./feed.constants";
-import type { FeedHeaderProps } from "./feed.types";
 import { getTagLabel } from "./feed.utils";
 
 const CONTENT_TAG_OPTIONS: Array<{ value: ContentTag; label?: string }> =
@@ -10,15 +9,27 @@ const CONTENT_TAG_OPTIONS: Array<{ value: ContentTag; label?: string }> =
     (tag): tag is { value: ContentTag; label?: string } => tag.value !== "all"
   );
 
+type FeedHeaderProps = {
+  locale: Locale;
+  selectedTags: ContentTag[];
+  toggleTag: (tag: ContentTag) => void;
+  clearTags: () => void;
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  tagsOpen: boolean;
+  setTagsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  resultsCount: number;
+};
+
 export function FeedHeader({
   locale,
   selectedTags,
   toggleTag,
-  clearTags,
   searchQuery,
   setSearchQuery,
   tagsOpen,
   setTagsOpen,
+  resultsCount,
 }: FeedHeaderProps) {
   const [draftQuery, setDraftQuery] = useState(searchQuery);
 
@@ -36,84 +47,96 @@ export function FeedHeader({
       subtitle: "Choose topics to personalize your feed.",
       selectedTopics: "Topics selected",
       searchPlaceholder: "Search by channel, text, link...",
-      clearAll: "Clear",
+      show: "Show",
       allTopics: "All topics",
+      found: "found",
     },
     ru: {
       title: "Темы и поиск",
       subtitle: "Выбери темы, чтобы персонализировать ленту.",
       selectedTopics: "Тем выбрано",
       searchPlaceholder: "Поиск по каналу, тексту, ссылке...",
-      clearAll: "Очистить",
+      show: "Показать",
       allTopics: "Все темы",
+      found: "найдено",
     },
     de: {
       title: "Themen & Suche",
       subtitle: "Wähle Themen, um deinen Feed zu personalisieren.",
       selectedTopics: "Themen ausgewählt",
       searchPlaceholder: "Nach Kanal, Text, Link suchen...",
-      clearAll: "Löschen",
+      show: "Anzeigen",
       allTopics: "Alle Themen",
+      found: "gefunden",
     },
     es: {
       title: "Temas y búsqueda",
       subtitle: "Elige temas para personalizar tu feed.",
       selectedTopics: "Temas seleccionados",
       searchPlaceholder: "Buscar por canal, texto, enlace...",
-      clearAll: "Limpiar",
+      show: "Mostrar",
       allTopics: "Todos los temas",
+      found: "encontrados",
     },
     tr: {
       title: "Konular ve arama",
       subtitle: "Akışını kişiselleştirmek için konuları seç.",
       selectedTopics: "Seçilen konular",
       searchPlaceholder: "Kanal, metin, bağlantı ile ara...",
-      clearAll: "Temizle",
+      show: "Göster",
       allTopics: "Tüm konular",
+      found: "bulundu",
     },
     fr: {
       title: "Thèmes et recherche",
       subtitle: "Choisis des thèmes pour personnaliser ton flux.",
       selectedTopics: "Thèmes sélectionnés",
       searchPlaceholder: "Rechercher par canal, texte, lien...",
-      clearAll: "Effacer",
+      show: "Afficher",
       allTopics: "Tous les thèmes",
+      found: "trouvés",
     },
     it: {
       title: "Temi e ricerca",
       subtitle: "Scegli i temi per personalizzare il feed.",
       selectedTopics: "Temi selezionati",
       searchPlaceholder: "Cerca per canale, testo, link...",
-      clearAll: "Pulisci",
+      show: "Mostra",
       allTopics: "Tutti i temi",
+      found: "trovati",
     },
     "pt-br": {
       title: "Tópicos e busca",
       subtitle: "Escolha tópicos para personalizar seu feed.",
       selectedTopics: "Tópicos selecionados",
       searchPlaceholder: "Buscar por canal, texto, link...",
-      clearAll: "Limpar",
+      show: "Mostrar",
       allTopics: "Todos os tópicos",
+      found: "encontrados",
     },
     id: {
       title: "Topik & pencarian",
       subtitle: "Pilih topik untuk mempersonalisasi feed.",
       selectedTopics: "Topik dipilih",
       searchPlaceholder: "Cari berdasarkan channel, teks, link...",
-      clearAll: "Bersihkan",
+      show: "Tampilkan",
       allTopics: "Semua topik",
+      found: "ditemukan",
     },
     pl: {
       title: "Tematy i wyszukiwanie",
       subtitle: "Wybierz tematy, aby spersonalizować feed.",
       selectedTopics: "Wybrane tematy",
       searchPlaceholder: "Szukaj po kanale, tekście, linku...",
-      clearAll: "Wyczyść",
+      show: "Pokaż",
       allTopics: "Wszystkie tematy",
+      found: "znaleziono",
     },
   } as const;
 
   const copy = COPY[locale] ?? COPY.en;
+  const hasPendingChanges =
+    selectedCount > 0 || draftQuery.trim().length > 0;
 
   if (!tagsOpen) {
     return null;
@@ -190,20 +213,18 @@ export function FeedHeader({
             <div className="flex items-center justify-between gap-3">
               <button
                 type="button"
-                onClick={() => {
-                  clearTags();
-                  setDraftQuery("");
-                  setSearchQuery("");
-                }}
-                className="w-full rounded-2xl bg-neutral-200 px-4 py-3 text-sm font-medium text-neutral-900 transition hover:bg-neutral-300"
+                onClick={applySearchAndClose}
+                className={`w-full rounded-2xl px-4 py-3 text-sm font-medium transition ${
+                  hasPendingChanges
+                    ? "bg-neutral-950 text-white hover:bg-neutral-800"
+                    : "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
+                }`}
               >
-                {copy.clearAll}
+                {copy.show}
               </button>
 
               <div className="hidden whitespace-nowrap text-xs text-neutral-400 sm:block">
-                {selectedCount > 0
-                  ? `${copy.selectedTopics}: ${selectedCount}`
-                  : copy.allTopics}
+                {resultsCount} {copy.found}
               </div>
             </div>
           </div>

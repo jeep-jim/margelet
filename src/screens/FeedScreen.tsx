@@ -238,6 +238,7 @@ export function FeedScreen({
   onDeletePost,
   currentTelegramUserId,
   openSource,
+  isFeedLoading,
 }: {
   locale: Locale;
   posts: IngestedPost[];
@@ -249,7 +250,8 @@ export function FeedScreen({
   onDeletePost: (id: number) => Promise<void>;
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
-}) {
+  isFeedLoading: boolean;
+}) {  
   const copy = FEED_SCREEN_COPY[locale] ?? FEED_SCREEN_COPY.en;
 
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
@@ -531,8 +533,8 @@ export function FeedScreen({
         setSearchQuery={setSearchQuery}
         tagsOpen={tagsOpen}
         setTagsOpen={setTagsOpen}
+        resultsCount={visiblePosts.length}
       />
-
 
       {!tagsOpen && subscriptionsCount === 0 ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
@@ -553,7 +555,7 @@ export function FeedScreen({
         </div>
       ) : null}
 
-      {visiblePosts.length === 0 ? (
+      {!isFeedLoading && visiblePosts.length === 0 ? (
         <div className="mx-auto mt-2 w-full max-w-[570px] px-4">
           <div className="rounded-[28px] border border-neutral-200 bg-white px-5 py-8 text-center">
             <div className="text-lg font-semibold text-neutral-950">

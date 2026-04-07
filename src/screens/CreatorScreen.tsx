@@ -551,7 +551,7 @@ function LocaleDropdown({
       </button>
 
       {open ? (
-        <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-80 overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-2 shadow-xl">
+        <div className="absolute bottom-[calc(100%+8px)] left-0 right-0 z-30 max-h-80 overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-2 shadow-xl">          
           {options.map((item) => {
             const isActive = item.code === value;
 

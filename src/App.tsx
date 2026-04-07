@@ -564,6 +564,7 @@ const [locale, setLocale] = useState<Locale>("en");
             <FeedScreen
               locale={locale}
               posts={posts}
+              isFeedLoading={isFeedLoading}
               likedPostIds={likedPostIds}
               savedPostIds={savedPostIds}
               onToggleLike={handleToggleLike}
