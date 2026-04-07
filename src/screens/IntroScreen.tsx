@@ -259,11 +259,22 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
 };
 
 function getSortedLocales() {
-  return [...SITE_LOCALES].sort((a, b) =>
+  const sorted = [...SITE_LOCALES].sort((a, b) =>
     a.nativeLabel.localeCompare(b.nativeLabel, undefined, {
       sensitivity: "base",
     }),
   );
+
+  const ruIndex = sorted.findIndex((l) => l.code === "ru");
+
+  if (ruIndex === -1) return sorted;
+
+  const [ru] = sorted.splice(ruIndex, 1);
+
+  const insertIndex = Math.min(3, sorted.length);
+  sorted.splice(insertIndex, 0, ru);
+
+  return sorted;
 }
 
 export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
