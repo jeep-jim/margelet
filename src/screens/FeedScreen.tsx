@@ -159,10 +159,6 @@ function readSubscriptionsFromStorage(): string[] {
   }
 }
 
-function readSubscriptionsCount() {
-  return readSubscriptionsFromStorage().length;
-}
-
 function SubscriptionsHint({ text }: { text: string }) {
   return (
     <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
@@ -261,7 +257,6 @@ export function FeedScreen({
   const [tagsOpen, setTagsOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [subscriptionsCount, setSubscriptionsCount] = useState(0);
   const [subscriptionHandles, setSubscriptionHandles] = useState<string[]>([]);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -274,12 +269,11 @@ export function FeedScreen({
   );
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
-  useEffect(() => {
-    setSelectedTags(readSelectedTagsFromStorage());
-    setSearchQuery(readSearchQueryFromStorage());
-    setSubscriptionsCount(readSubscriptionsCount());
-    setSubscriptionHandles(readSubscriptionsFromStorage());
-  }, []);
+useEffect(() => {
+  setSelectedTags(readSelectedTagsFromStorage());
+  setSearchQuery(readSearchQueryFromStorage());
+  setSubscriptionHandles(readSubscriptionsFromStorage());
+}, []);
 
   useEffect(() => {
     localStorage.setItem(
@@ -298,7 +292,6 @@ export function FeedScreen({
     };
 
     const syncSubscriptions = () => {
-      setSubscriptionsCount(readSubscriptionsCount());
       setSubscriptionHandles(readSubscriptionsFromStorage());
     };
 
@@ -518,34 +511,41 @@ export function FeedScreen({
     );
   };
 
-  const clearTags = () => {
-    setSelectedTags([]);
-  };
+const clearTags = () => {
+  setSelectedTags([]);
+};
 
-  return (
-    <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
-      <FeedHeader
-        locale={locale}
-        selectedTags={selectedTags}
-        toggleTag={toggleTag}
-        clearTags={clearTags}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        tagsOpen={tagsOpen}
-        setTagsOpen={setTagsOpen}
-        resultsCount={visiblePosts.length}
+const hasSubscriptions = subscriptionHandles.length > 0;
+const hasBubbles = subscriptionBubbles.length > 0;
+
+return (
+  <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
+    <FeedHeader
+      locale={locale}
+      selectedTags={selectedTags}
+      toggleTag={toggleTag}
+      clearTags={clearTags}
+      searchQuery={searchQuery}
+      setSearchQuery={setSearchQuery}
+      tagsOpen={tagsOpen}
+      setTagsOpen={setTagsOpen}
+      resultsCount={visiblePosts.length}
+    />
+
+    {!tagsOpen && !hasSubscriptions ? (
+      <SubscriptionsHint text={copy.subscriptionsHint} />
+    ) : null}
+
+    {!tagsOpen && hasSubscriptions && hasBubbles ? (
+      <SubscriptionsBar
+        items={subscriptionBubbles}
+        onOpen={(handle) => openSource(handle)}
       />
+    ) : null}
 
-      {!tagsOpen && subscriptionsCount === 0 ? (
-        <SubscriptionsHint text={copy.subscriptionsHint} />
-      ) : null}
-
-      {!tagsOpen && subscriptionsCount > 0 ? (
-        <SubscriptionsBar
-          items={subscriptionBubbles}
-          onOpen={(handle) => openSource(handle)}
-        />
-      ) : null}
+    {!tagsOpen && hasSubscriptions && !hasBubbles ? (
+      <SubscriptionsHint text={copy.subscriptionsHint} />
+    ) : null}      
 
       {actionError ? (
         <div className="mx-auto mb-3 w-full max-w-[570px] px-4">

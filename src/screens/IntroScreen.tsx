@@ -31,11 +31,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Welcome to margeleT",
-        text: "A global feed of real Telegram content.",
+        text: "A global feed of fresh content from Telegram.",
       },
       {
         title: "Only original sources",
-        text: "Every post stays connected to its original Telegram channel.",
+        text: "Each post is available in the original Telegram channel.",
       },
       {
         title: "Clean and fast",
@@ -55,11 +55,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Добро пожаловать в margeleT",
-        text: "Глобальная лента настоящего контента из Telegram.",
+        text: "Глобальная лента свежего контента из Telegram.",
       },
       {
         title: "Только открытые источники",
-        text: "Каждый пост всегда связан со своим Telegram-каналом.",
+        text: "Каждый пост доступен в авторском Telegram-канале.",
       },
       {
         title: "Чисто и быстро",
@@ -79,11 +79,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Willkommen bei margeleT",
-        text: "Ein globaler Feed mit echtem Telegram-Content.",
+        text: "Ein globaler Feed mit frischen Inhalten aus Telegram.",
       },
       {
-        title: "Nur originale Quellen",
-        text: "Jeder Beitrag bleibt immer mit seinem ursprünglichen Telegram-Kanal verbunden.",
+        title: "Nur offene Quellen",
+        text: "Jeder Beitrag ist im ursprünglichen Telegram-Kanal verfügbar.",
       },
       {
         title: "Sauber und schnell",
@@ -103,11 +103,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Bienvenido a margeleT",
-        text: "Un feed global de contenido real de Telegram.",
+        text: "Un feed global de contenido reciente de Telegram.",
       },
       {
-        title: "Solo fuentes originales",
-        text: "Cada publicación siempre permanece conectada a su canal original de Telegram.",
+        title: "Solo fuentes abiertas",
+        text: "Cada publicación está disponible en su canal original de Telegram.",
       },
       {
         title: "Limpio y rápido",
@@ -127,11 +127,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "margeleT'e hoş geldin",
-        text: "Gerçek Telegram içeriğinin küresel akışı.",
+        text: "Telegram'dan taze içeriklerin küresel akışı.",
       },
       {
-        title: "Sadece orijinal kaynaklar",
-        text: "Her gönderi her zaman kendi orijinal Telegram kanalına bağlı kalır.",
+        title: "Sadece açık kaynaklar",
+        text: "Her gönderi, orijinal Telegram kanalında erişilebilir durumda.",
       },
       {
         title: "Temiz ve hızlı",
@@ -151,11 +151,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Bienvenue dans margeleT",
-        text: "Un flux mondial de vrai contenu Telegram.",
+        text: "Un flux mondial de contenu récent provenant de Telegram.",
       },
       {
-        title: "Uniquement des sources originales",
-        text: "Chaque publication reste toujours liée à son canal Telegram d’origine.",
+        title: "Uniquement des sources ouvertes",
+        text: "Chaque publication est disponible dans son canal Telegram d’origine.",
       },
       {
         title: "Propre et rapide",
@@ -175,11 +175,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Benvenuto in margeleT",
-        text: "Un feed globale di vero contenuto Telegram.",
+        text: "Un feed globale di contenuti freschi da Telegram.",
       },
       {
-        title: "Solo fonti originali",
-        text: "Ogni post resta sempre collegato al suo canale Telegram originale.",
+        title: "Solo fonti aperte",
+        text: "Ogni post è disponibile nel canale Telegram originale dell’autore.",
       },
       {
         title: "Pulito e veloce",
@@ -199,11 +199,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Bem-vindo ao margeleT",
-        text: "Um feed global de conteúdo real do Telegram.",
+        text: "Um feed global de conteúdo novo do Telegram.",
       },
       {
-        title: "Somente fontes originais",
-        text: "Cada post permanece sempre conectado ao seu canal original do Telegram.",
+        title: "Somente fontes abertas",
+        text: "Cada post está disponível no canal original do Telegram.",
       },
       {
         title: "Limpo e rápido",
@@ -223,11 +223,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Selamat datang di margeleT",
-        text: "Feed global dari konten Telegram yang nyata.",
+        text: "Feed global dari konten segar dari Telegram.",
       },
       {
-        title: "Hanya sumber asli",
-        text: "Setiap postingan selalu tetap terhubung ke kanal Telegram aslinya.",
+        title: "Hanya sumber terbuka",
+        text: "Setiap posting tersedia di channel Telegram asli penulisnya.",
       },
       {
         title: "Bersih dan cepat",
@@ -247,11 +247,11 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Witamy w margeleT",
-        text: "Globalny feed prawdziwych treści z Telegrama.",
+        text: "Globalny feed świeżych treści z Telegrama.",
       },
       {
-        title: "Tylko oryginalne źródła",
-        text: "Każdy post zawsze pozostaje połączony ze swoim oryginalnym kanałem Telegram.",
+        title: "Tylko otwarte źródła",
+        text: "Każdy post jest dostępny w autorskim kanale Telegram.",
       },
       {
         title: "Czysto i szybko",
