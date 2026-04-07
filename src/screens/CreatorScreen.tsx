@@ -5,10 +5,17 @@ import {
   Globe,
   Sparkles,
   Send,
-  ArrowRightLeft,
   Plus,
+  ChevronDown,
+  Check,
 } from "lucide-react";
-import { useMemo, useState, useEffect } from "react";
+import {
+  useMemo,
+  useState,
+  useEffect,
+  useRef,
+  type ComponentType,
+} from "react";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { IngestedPost, Locale } from "../types/app";
 import { SITE_LOCALES } from "../lib/locales";
@@ -17,6 +24,8 @@ const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
 const LIKES_STORAGE_KEY = "margelet_likes";
 const LANGUAGE_STORAGE_KEY = "margelet_locale";
+const INTRO_LANGUAGE_STORAGE_KEY = "margelet_intro_locale";
+const INTRO_SEEN_STORAGE_KEY = "margelet-intro-seen";
 
 function getTelegramAuthUrl() {
   const origin = window.location.origin;
@@ -46,9 +55,11 @@ type ScreenCopy = {
   connectedToTelegram: string;
   logout: string;
   languageTitle: string;
+  languageDropdownLabel: string;
   introTitle: string;
   introText: string;
   introButton: string;
+  introLanguageLabel: string;
   channelTitle: string;
   channelText: string;
   channelPlaceholder: string;
@@ -58,6 +69,11 @@ type ScreenCopy = {
   channelSuccess: string;
   aboutText: string;
   emptyLiked: string;
+  telegramUserFallback: string;
+  likedTabTitle: string;
+  channelTabTitle: string;
+  aboutTabTitle: string;
+  languageTabTitle: string;
 };
 
 const COPY: Record<Locale, ScreenCopy> = {
@@ -69,10 +85,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Connected to Telegram",
     logout: "Log out",
     languageTitle: "Choose language",
+    languageDropdownLabel: "Website language",
     introTitle: "Intro",
     introText:
       "Here you can open the intro again and review texts, slides and future artworks.",
     introButton: "Watch intro again",
+    introLanguageLabel: "Intro language",
     channelTitle: "Submit your channel",
     channelText:
       "Paste a Telegram channel link. It will go to moderation and will not be published automatically.",
@@ -85,6 +103,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT is a distribution layer for current Telegram content. The source of every post always remains the original Telegram channel.",
     emptyLiked: "There is nothing here yet.",
+    telegramUserFallback: "Telegram user",
+    likedTabTitle: "Liked",
+    channelTabTitle: "Add channel",
+    aboutTabTitle: "About",
+    languageTabTitle: "Language",
   },
   ru: {
     authTitle: "Войти через Telegram",
@@ -94,10 +117,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Подключено к Telegram",
     logout: "Выйти",
     languageTitle: "Выбор языка",
+    languageDropdownLabel: "Язык сайта",
     introTitle: "Интро",
     introText:
       "Здесь можно снова открыть первое приветственное интро и проверить тексты, слайды и будущие арты.",
     introButton: "Смотреть интро снова",
+    introLanguageLabel: "Язык интро",
     channelTitle: "Подать заявку на добавление своего канала",
     channelText:
       "Вставь ссылку на Telegram-канал. Канал не публикуется автоматически — он должен пройти модерацию.",
@@ -110,6 +135,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT — это слой дистрибуции актуального Telegram-контента. Источником каждого поста всегда остаётся оригинальный Telegram-канал.",
     emptyLiked: "Здесь пока пусто.",
+    telegramUserFallback: "Пользователь Telegram",
+    likedTabTitle: "Понравилось",
+    channelTabTitle: "Добавить канал",
+    aboutTabTitle: "О проекте",
+    languageTabTitle: "Язык",
   },
   de: {
     authTitle: "Mit Telegram anmelden",
@@ -119,10 +149,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Mit Telegram verbunden",
     logout: "Abmelden",
     languageTitle: "Sprache wählen",
+    languageDropdownLabel: "Webseitensprache",
     introTitle: "Intro",
     introText:
       "Hier kannst du das Intro erneut öffnen und Texte, Slides und künftige Artworks prüfen.",
     introButton: "Intro erneut ansehen",
+    introLanguageLabel: "Intro-Sprache",
     channelTitle: "Eigenen Kanal einreichen",
     channelText:
       "Füge einen Telegram-Kanal-Link ein. Er geht in die Moderation und wird nicht automatisch veröffentlicht.",
@@ -135,6 +167,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT ist eine Distributionsebene für aktuellen Telegram-Content. Die Quelle jedes Beitrags bleibt immer der originale Telegram-Kanal.",
     emptyLiked: "Hier ist noch nichts.",
+    telegramUserFallback: "Telegram-Nutzer",
+    likedTabTitle: "Likes",
+    channelTabTitle: "Kanal hinzufügen",
+    aboutTabTitle: "Über",
+    languageTabTitle: "Sprache",
   },
   es: {
     authTitle: "Entrar con Telegram",
@@ -144,10 +181,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Conectado a Telegram",
     logout: "Salir",
     languageTitle: "Elegir idioma",
+    languageDropdownLabel: "Idioma del sitio",
     introTitle: "Intro",
     introText:
       "Aquí puedes abrir de nuevo la intro y revisar textos, diapositivas y futuros artes.",
     introButton: "Ver intro otra vez",
+    introLanguageLabel: "Idioma de la intro",
     channelTitle: "Enviar tu canal",
     channelText:
       "Pega un enlace de canal de Telegram. Irá a moderación y no se publicará automáticamente.",
@@ -160,6 +199,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT es una capa de distribución de contenido actual de Telegram. La fuente de cada publicación siempre sigue siendo el canal original.",
     emptyLiked: "Aquí todavía no hay nada.",
+    telegramUserFallback: "Usuario de Telegram",
+    likedTabTitle: "Me gusta",
+    channelTabTitle: "Añadir canal",
+    aboutTabTitle: "Acerca de",
+    languageTabTitle: "Idioma",
   },
   tr: {
     authTitle: "Telegram ile giriş yap",
@@ -169,10 +213,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Telegram bağlı",
     logout: "Çıkış yap",
     languageTitle: "Dil seç",
+    languageDropdownLabel: "Site dili",
     introTitle: "Intro",
     introText:
       "Buradan intro'yu tekrar açabilir, metinleri, slaytları ve gelecekteki görselleri kontrol edebilirsin.",
     introButton: "Intro'yu tekrar izle",
+    introLanguageLabel: "Intro dili",
     channelTitle: "Kanalını gönder",
     channelText:
       "Telegram kanal bağlantısını yapıştır. Moderasyona gider ve otomatik yayınlanmaz.",
@@ -185,6 +231,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT, güncel Telegram içeriği için bir dağıtım katmanıdır. Her gönderinin kaynağı her zaman orijinal Telegram kanalı olarak kalır.",
     emptyLiked: "Burada henüz hiçbir şey yok.",
+    telegramUserFallback: "Telegram kullanıcısı",
+    likedTabTitle: "Beğenilenler",
+    channelTabTitle: "Kanal ekle",
+    aboutTabTitle: "Hakkında",
+    languageTabTitle: "Dil",
   },
   fr: {
     authTitle: "Se connecter avec Telegram",
@@ -194,10 +245,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Connecté à Telegram",
     logout: "Se déconnecter",
     languageTitle: "Choisir la langue",
+    languageDropdownLabel: "Langue du site",
     introTitle: "Intro",
     introText:
       "Ici tu peux rouvrir l’intro et vérifier les textes, les slides et les futurs artworks.",
     introButton: "Revoir l’intro",
+    introLanguageLabel: "Langue de l’intro",
     channelTitle: "Envoyer ton canal",
     channelText:
       "Colle un lien de canal Telegram. Il partira en modération et ne sera pas publié automatiquement.",
@@ -210,6 +263,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT est une couche de distribution pour le contenu Telegram actuel. La source de chaque publication reste toujours le canal Telegram d’origine.",
     emptyLiked: "Il n’y a encore rien ici.",
+    telegramUserFallback: "Utilisateur Telegram",
+    likedTabTitle: "Aimés",
+    channelTabTitle: "Ajouter un canal",
+    aboutTabTitle: "À propos",
+    languageTabTitle: "Langue",
   },
   it: {
     authTitle: "Accedi con Telegram",
@@ -219,10 +277,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Connesso a Telegram",
     logout: "Esci",
     languageTitle: "Scegli lingua",
+    languageDropdownLabel: "Lingua del sito",
     introTitle: "Intro",
     introText:
       "Qui puoi aprire di nuovo l’intro e controllare testi, slide e futuri artwork.",
     introButton: "Guarda di nuovo l’intro",
+    introLanguageLabel: "Lingua dell’intro",
     channelTitle: "Invia il tuo canale",
     channelText:
       "Incolla un link di un canale Telegram. Andrà in moderazione e non sarà pubblicato automaticamente.",
@@ -235,6 +295,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT è un livello di distribuzione per i contenuti Telegram attuali. La fonte di ogni post resta sempre il canale Telegram originale.",
     emptyLiked: "Qui non c’è ancora nulla.",
+    telegramUserFallback: "Utente Telegram",
+    likedTabTitle: "Piaciuti",
+    channelTabTitle: "Aggiungi canale",
+    aboutTabTitle: "Info",
+    languageTabTitle: "Lingua",
   },
   "pt-br": {
     authTitle: "Entrar com Telegram",
@@ -244,10 +309,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Conectado ao Telegram",
     logout: "Sair",
     languageTitle: "Escolher idioma",
+    languageDropdownLabel: "Idioma do site",
     introTitle: "Intro",
     introText:
       "Aqui você pode abrir a intro novamente e revisar textos, slides e futuras artes.",
     introButton: "Ver intro novamente",
+    introLanguageLabel: "Idioma da intro",
     channelTitle: "Enviar seu canal",
     channelText:
       "Cole o link de um canal do Telegram. Ele vai para moderação e não será publicado automaticamente.",
@@ -260,6 +327,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT é uma camada de distribuição para conteúdo atual do Telegram. A fonte de cada post sempre permanece o canal original do Telegram.",
     emptyLiked: "Ainda não há nada aqui.",
+    telegramUserFallback: "Usuário do Telegram",
+    likedTabTitle: "Curtidos",
+    channelTabTitle: "Adicionar canal",
+    aboutTabTitle: "Sobre",
+    languageTabTitle: "Idioma",
   },
   id: {
     authTitle: "Masuk dengan Telegram",
@@ -269,10 +341,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Terhubung ke Telegram",
     logout: "Keluar",
     languageTitle: "Pilih bahasa",
+    languageDropdownLabel: "Bahasa situs",
     introTitle: "Intro",
     introText:
       "Di sini kamu bisa membuka intro lagi dan memeriksa teks, slide, dan artwork selanjutnya.",
     introButton: "Lihat intro lagi",
+    introLanguageLabel: "Bahasa intro",
     channelTitle: "Kirim kanalmu",
     channelText:
       "Tempel tautan kanal Telegram. Kanal akan masuk moderasi dan tidak dipublikasikan otomatis.",
@@ -285,6 +359,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT adalah lapisan distribusi untuk konten Telegram saat ini. Sumber setiap postingan selalu tetap kanal Telegram asli.",
     emptyLiked: "Belum ada apa pun di sini.",
+    telegramUserFallback: "Pengguna Telegram",
+    likedTabTitle: "Disukai",
+    channelTabTitle: "Tambah kanal",
+    aboutTabTitle: "Tentang",
+    languageTabTitle: "Bahasa",
   },
   pl: {
     authTitle: "Zaloguj się przez Telegram",
@@ -294,10 +373,12 @@ const COPY: Record<Locale, ScreenCopy> = {
     connectedToTelegram: "Połączono z Telegramem",
     logout: "Wyloguj się",
     languageTitle: "Wybierz język",
+    languageDropdownLabel: "Język strony",
     introTitle: "Intro",
     introText:
       "Tutaj możesz ponownie otworzyć intro i sprawdzić teksty, slajdy oraz przyszłe arty.",
     introButton: "Obejrzyj intro ponownie",
+    introLanguageLabel: "Język intro",
     channelTitle: "Wyślij swój kanał",
     channelText:
       "Wklej link do kanału Telegram. Trafi do moderacji i nie zostanie opublikowany automatycznie.",
@@ -310,21 +391,13 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutText:
       "margeleT to warstwa dystrybucji aktualnych treści z Telegrama. Źródłem każdego posta zawsze pozostaje oryginalny kanał Telegram.",
     emptyLiked: "Na razie nic tu nie ma.",
+    telegramUserFallback: "Użytkownik Telegrama",
+    likedTabTitle: "Polubione",
+    channelTabTitle: "Dodaj kanał",
+    aboutTabTitle: "O projekcie",
+    languageTabTitle: "Język",
   },
 };
-
-const LANGUAGE_ORDER: Locale[] = [
-  "en",
-  "de",
-  "es",
-  "tr",
-  "fr",
-  "it",
-  "pt-br",
-  "id",
-  "pl",
-  "ru",
-];
 
 const LOCALE_SHORT: Record<Locale, string> = {
   en: "EN",
@@ -379,6 +452,22 @@ function readNumberArrayFromStorage(key: string): number[] {
   }
 }
 
+function readLocaleFromStorage(key: string, fallback: Locale): Locale {
+  const raw = localStorage.getItem(key);
+  if (!raw) return fallback;
+
+  const exists = SITE_LOCALES.some((item) => item.code === raw);
+  return exists ? (raw as Locale) : fallback;
+}
+
+function buildAlphabeticalLocales() {
+  return [...SITE_LOCALES].sort((a, b) =>
+    a.nativeLabel.localeCompare(b.nativeLabel, undefined, {
+      sensitivity: "base",
+    }),
+  );
+}
+
 function TopIconButton({
   active,
   onClick,
@@ -387,7 +476,7 @@ function TopIconButton({
 }: {
   active: boolean;
   onClick: () => void;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
   title: string;
 }) {
   return (
@@ -436,42 +525,118 @@ function LanguageChip({
   );
 }
 
+function LocaleDropdown({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: Locale;
+  onChange: (locale: Locale) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement | null>(null);
+
+  const options = useMemo(() => buildAlphabeticalLocales(), []);
+  const selected = getLocaleOption(value);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (!rootRef.current) return;
+
+      if (!rootRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  return (
+    <div ref={rootRef} className="relative">
+      <div className="mb-2 text-xs font-medium uppercase tracking-[0.08em] text-neutral-500">
+        {label}
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        className="flex min-h-[52px] w-full items-center justify-between rounded-full border border-neutral-200 bg-white px-4 py-3 text-left transition hover:bg-neutral-50"
+      >
+        <span className="truncate pr-4 text-sm font-medium text-neutral-900">
+          {selected?.nativeLabel ?? value}
+        </span>
+
+        <ChevronDown
+          className={`h-4 w-4 shrink-0 text-neutral-500 transition ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {open ? (
+        <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-30 max-h-80 overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-2 shadow-xl">
+          {options.map((item) => {
+            const isActive = item.code === value;
+
+            return (
+              <button
+                key={item.code}
+                type="button"
+                onClick={() => {
+                  onChange(item.code as Locale);
+                  setOpen(false);
+                }}
+                className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm transition ${
+                  isActive
+                    ? "bg-neutral-950 text-white"
+                    : "text-neutral-700 hover:bg-neutral-100"
+                }`}
+              >
+                <span className="truncate pr-4">{item.nativeLabel}</span>
+                {isActive ? <Check className="h-4 w-4 shrink-0" /> : null}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function AuthBlock({ copy }: { copy: ScreenCopy }) {
   return (
-    <div className="overflow-hidden rounded-[32px] bg-[#4da3ff] text-white">
-      <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-        <div>
-          <div className="mb-3 inline-flex items-center gap-3 rounded-full bg-white/12 px-4 py-2 text-sm font-semibold backdrop-blur-sm">
-            <span>margeleT</span>
-            <ArrowRightLeft className="h-4 w-4" />
-            <span>Telegram</span>
-          </div>
-
-          <div className="text-[26px] font-semibold leading-tight">
-            {copy.authTitle}
-          </div>
-
-          <div className="mt-2 max-w-[28rem] text-sm leading-6 text-white/92">
-            {copy.authText}
-          </div>
-
-          <button
-            onClick={() => {
-              window.location.href = getTelegramAuthUrl();
-            }}
-            className="mt-5 inline-flex items-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-neutral-950 transition hover:bg-neutral-100"
-            type="button"
-          >
-            {copy.authButton}
-          </button>
+    <div className="overflow-hidden rounded-[32px] border border-neutral-200 bg-white text-neutral-950 shadow-sm">
+      <div className="px-5 py-5">
+        <div className="text-[26px] font-semibold leading-tight">
+          {copy.authTitle}
         </div>
 
-        <div className="relative hidden min-h-[150px] md:block">
-          <div className="absolute right-0 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-white/14 blur-xl" />
-          <div className="absolute right-8 top-1/2 flex h-24 w-24 -translate-y-1/2 items-center justify-center rounded-[28px] border border-white/20 bg-white/10 backdrop-blur-md">
-            <Send className="h-10 w-10 -rotate-12 text-white" />
-          </div>
+        <div className="mt-2 max-w-[32rem] text-sm leading-6 text-neutral-600">
+          {copy.authText}
         </div>
+
+        <button
+          onClick={() => {
+            window.location.href = getTelegramAuthUrl();
+          }}
+          className="mt-5 inline-flex items-center rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-neutral-800"
+          type="button"
+        >
+          {copy.authButton}
+        </button>
       </div>
     </div>
   );
@@ -488,61 +653,48 @@ function ProfileBlock({
 }) {
   return (
     <div className="overflow-hidden rounded-[32px] border border-neutral-200 bg-white text-neutral-950 shadow-sm">
-      <div className="grid gap-5 px-5 py-5 md:grid-cols-[1.1fr_0.9fr] md:items-center">
-        <div>
-          <div className="mb-3 inline-flex items-center gap-3 rounded-full bg-neutral-100 px-4 py-2 text-sm font-semibold text-neutral-700">
-            <span>margeleT</span>
-            <ArrowRightLeft className="h-4 w-4" />
-            <span>Telegram</span>
+      <div className="px-5 py-5">
+        <div className="flex items-start gap-3">
+          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-neutral-200">
+            {user.photo_url ? (
+              <img
+                src={user.photo_url}
+                alt={user.first_name}
+                className="h-full w-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            ) : null}
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="h-14 w-14 overflow-hidden rounded-full bg-neutral-200">
-              {user.photo_url ? (
-                <img
-                  src={user.photo_url}
-                  alt={user.first_name}
-                  className="h-full w-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-              ) : null}
-            </div>
-
-            <div className="min-w-0">
-              <div className="flex items-center gap-1.5">
-                <div className="truncate text-lg font-semibold">
-                  {user.first_name}
-                </div>
-                <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5">
+              <div className="truncate text-lg font-semibold">
+                {user.first_name}
               </div>
-
-              <div className="truncate text-sm text-neutral-500">
-                {user.username ? `@${user.username}` : "Telegram user"}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4 flex flex-wrap items-center gap-2">
-            <div className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
-              {copy.connectedToTelegram}
+              <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
             </div>
 
-            <button
-              onClick={onLogout}
-              className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-700 transition hover:bg-neutral-100"
-              type="button"
-            >
-              <LogOut className="h-3.5 w-3.5" />
-              {copy.logout}
-            </button>
+            <div className="truncate text-sm text-neutral-500">
+              {user.username
+                ? `@${user.username}`
+                : copy.telegramUserFallback}
+            </div>
           </div>
         </div>
 
-        <div className="relative hidden min-h-[150px] md:block">
-          <div className="absolute right-0 top-1/2 h-28 w-28 -translate-y-1/2 rounded-full bg-neutral-100 blur-xl" />
-          <div className="absolute right-8 top-1/2 flex h-24 w-24 -translate-y-1/2 items-center justify-center rounded-[28px] border border-neutral-200 bg-neutral-50">
-            <Send className="h-10 w-10 -rotate-12 text-neutral-700" />
+        <div className="mt-4 flex items-center justify-between gap-3">
+          <div className="inline-flex min-h-[32px] items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+            {copy.connectedToTelegram}
           </div>
+
+          <button
+            onClick={onLogout}
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-700 transition hover:bg-neutral-100"
+            type="button"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            {copy.logout}
+          </button>
         </div>
       </div>
     </div>
@@ -599,7 +751,9 @@ function CabinetTile({
           </div>
 
           <div className="min-w-0">
-            <div className="truncate text-sm font-semibold">{post.source.title}</div>
+            <div className="truncate text-sm font-semibold">
+              {post.source.title}
+            </div>
             <div className="truncate text-xs text-white/75">
               @{post.source.handle}
             </div>
@@ -632,11 +786,17 @@ export function CreatorScreen({
   const [tab, setTab] = useState<CabinetTab>("language");
   const [likedIds, setLikedIds] = useState<number[]>([]);
   const [channelUrl, setChannelUrl] = useState("");
+  const [introLocale, setIntroLocale] = useState<Locale>(() =>
+    typeof window === "undefined"
+      ? locale
+      : readLocaleFromStorage(INTRO_LANGUAGE_STORAGE_KEY, locale),
+  );
 
   useEffect(() => {
     const sync = () => {
       setUser(readTelegramUserFromStorage());
       setLikedIds(readNumberArrayFromStorage(LIKES_STORAGE_KEY));
+      setIntroLocale(readLocaleFromStorage(INTRO_LANGUAGE_STORAGE_KEY, locale));
     };
 
     sync();
@@ -648,7 +808,11 @@ export function CreatorScreen({
       window.removeEventListener("focus", sync);
       window.removeEventListener("storage", sync);
     };
-  }, []);
+  }, [locale]);
+
+  useEffect(() => {
+    localStorage.setItem(INTRO_LANGUAGE_STORAGE_KEY, introLocale);
+  }, [introLocale]);
 
   const copy = COPY[locale] ?? COPY.en;
 
@@ -667,7 +831,10 @@ export function CreatorScreen({
   };
 
   const handleReplayIntro = () => {
-    localStorage.removeItem("margelet-intro-seen");
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, introLocale);
+    localStorage.setItem(INTRO_LANGUAGE_STORAGE_KEY, introLocale);
+    setLocale(introLocale);
+    localStorage.removeItem(INTRO_SEEN_STORAGE_KEY);
     window.location.reload();
   };
 
@@ -688,10 +855,6 @@ export function CreatorScreen({
     setChannelUrl("");
   };
 
-  const orderedLocales = LANGUAGE_ORDER
-    .map((code) => getLocaleOption(code))
-    .filter(Boolean);
-
   return (
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
       <div className="mx-auto max-w-[720px] space-y-6">
@@ -701,34 +864,38 @@ export function CreatorScreen({
           <ProfileBlock user={user} copy={copy} onLogout={handleLogout} />
         )}
 
-        <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1">
-          <TopIconButton
-            active={tab === "liked"}
-            onClick={() => setTab("liked")}
-            icon={Heart}
-            title="Liked"
-          />
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1">
+            <TopIconButton
+              active={tab === "liked"}
+              onClick={() => setTab("liked")}
+              icon={Heart}
+              title={copy.likedTabTitle}
+            />
 
-          <TopIconButton
-            active={tab === "channel"}
-            onClick={() => setTab("channel")}
-            icon={Plus}
-            title="Add channel"
-          />
+            <TopIconButton
+              active={tab === "channel"}
+              onClick={() => setTab("channel")}
+              icon={Plus}
+              title={copy.channelTabTitle}
+            />
 
-          <TopIconButton
-            active={tab === "about"}
-            onClick={() => setTab("about")}
-            icon={Info}
-            title="About"
-          />
+            <TopIconButton
+              active={tab === "about"}
+              onClick={() => setTab("about")}
+              icon={Info}
+              title={copy.aboutTabTitle}
+            />
+          </div>
 
-          <LanguageChip
-            active={tab === "language"}
-            onClick={() => setTab("language")}
-            label={LOCALE_SHORT[locale]}
-            title="Language"
-          />
+          <div className="shrink-0">
+            <LanguageChip
+              active={tab === "language"}
+              onClick={() => setTab("language")}
+              label={LOCALE_SHORT[locale]}
+              title={copy.languageTabTitle}
+            />
+          </div>
         </div>
 
         {tab === "language" ? (
@@ -739,28 +906,11 @@ export function CreatorScreen({
                 {copy.languageTitle}
               </div>
 
-              <div className="flex flex-wrap gap-3">
-                {orderedLocales.map((item) => {
-                  if (!item) return null;
-
-                  const isActive = locale === item.code;
-
-                  return (
-                    <button
-                      key={item.code}
-                      type="button"
-                      onClick={() => handleChangeLocale(item.code as Locale)}
-                      className={`inline-flex min-h-[44px] items-center rounded-full px-5 text-sm transition ${
-                        isActive
-                          ? "bg-neutral-950 text-white"
-                          : "border border-neutral-200 bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
-                      }`}
-                    >
-                      {item.nativeLabel}
-                    </button>
-                  );
-                })}
-              </div>
+              <LocaleDropdown
+                label={copy.languageDropdownLabel}
+                value={locale}
+                onChange={handleChangeLocale}
+              />
             </div>
 
             <div className="rounded-[28px] border border-neutral-200 bg-white p-6">
@@ -771,6 +921,14 @@ export function CreatorScreen({
 
               <div className="text-sm leading-6 text-neutral-600">
                 {copy.introText}
+              </div>
+
+              <div className="mt-4">
+                <LocaleDropdown
+                  label={copy.introLanguageLabel}
+                  value={introLocale}
+                  onChange={setIntroLocale}
+                />
               </div>
 
               <button
