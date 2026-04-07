@@ -56,6 +56,15 @@ export const es: TranslationSchema = {
     swipeHint: "Toca fuera para cerrar el visor.",
   },
 
+  source: {
+    notFound: "Fuente no encontrada",
+    posts: "Publicaciones",
+    video: "Video",
+    media: "Medios",
+    enableNotifications: "Activar notificaciones",
+    disableNotifications: "Desactivar notificaciones",
+  },
+
   modes: {
     new: "Nuevo",
     rising: "En alza",

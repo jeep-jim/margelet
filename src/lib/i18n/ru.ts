@@ -79,6 +79,15 @@ export const ru: TranslationSchema = {
     swipeHint: "Нажми вне окна, чтобы закрыть просмотр.",
   },
 
+  source: {
+    notFound: "Источник не найден",
+    posts: "Посты",
+    video: "Видео",
+    media: "Медиа",
+    enableNotifications: "Включить уведомления",
+    disableNotifications: "Отключить уведомления",
+  },
+
   modes: {
     new: "Новое",
     rising: "Взлетает",

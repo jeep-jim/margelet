@@ -67,6 +67,15 @@ export type TranslationSchema = {
     swipeHint: string;
   };
 
+  source: {
+    notFound: string;
+    posts: string;
+    video: string;
+    media: string;
+    enableNotifications: string;
+    disableNotifications: string;
+  };
+
   modes: {
     new: string;
     rising: string;

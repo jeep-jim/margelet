@@ -56,6 +56,15 @@ export const id: TranslationSchema = {
     swipeHint: "Ketuk di luar untuk menutup penampil.",
   },
 
+  source: {
+    notFound: "Sumber tidak ditemukan",
+    posts: "Postingan",
+    video: "Video",
+    media: "Media",
+    enableNotifications: "Aktifkan notifikasi",
+    disableNotifications: "Nonaktifkan notifikasi",
+  },
+
   modes: {
     new: "Baru",
     rising: "Naik",

@@ -56,6 +56,15 @@ export const pl: TranslationSchema = {
     swipeHint: "Stuknij poza obszarem, aby zamknąć podgląd.",
   },
 
+  source: {
+    notFound: "Nie znaleziono źródła",
+    posts: "Posty",
+    video: "Wideo",
+    media: "Media",
+    enableNotifications: "Włącz powiadomienia",
+    disableNotifications: "Wyłącz powiadomienia",
+  },
+
   modes: {
     new: "Nowe",
     rising: "Rosnące",

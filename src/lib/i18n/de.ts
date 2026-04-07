@@ -56,6 +56,15 @@ export const de: TranslationSchema = {
     swipeHint: "Außerhalb tippen, um den Viewer zu schließen.",
   },
 
+  source: {
+    notFound: "Quelle nicht gefunden",
+    posts: "Beiträge",
+    video: "Video",
+    media: "Medien",
+    enableNotifications: "Benachrichtigungen aktivieren",
+    disableNotifications: "Benachrichtigungen deaktivieren",
+  },
+
   modes: {
     new: "Neu",
     rising: "Steigend",

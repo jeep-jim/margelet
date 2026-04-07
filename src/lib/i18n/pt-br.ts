@@ -56,6 +56,15 @@ export const ptBr: TranslationSchema = {
     swipeHint: "Toque fora para fechar o visualizador.",
   },
 
+  source: {
+    notFound: "Fonte não encontrada",
+    posts: "Posts",
+    video: "Vídeo",
+    media: "Mídia",
+    enableNotifications: "Ativar notificações",
+    disableNotifications: "Desativar notificações",
+  },
+
   modes: {
     new: "Novos",
     rising: "Em alta",

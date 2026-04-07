@@ -1,15 +1,16 @@
 import {
   ArrowLeft,
   Bell,
-  Image as ImageIcon,
   MoreVertical,
   Play,
   ExternalLink,
 } from "lucide-react";
-import type { Locale } from "../types/app";
 import { useEffect, useState } from "react";
+import { getMessages } from "../lib/i18n";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
-import type { ContentTag, IngestedPost } from "../types/app";
+import { getTagLabel } from "./feed/feed.utils";
+import type { Locale } from "../types/app";
+import type { IngestedPost } from "../types/app";
 
 type Props = {
   locale: Locale;
@@ -20,58 +21,6 @@ type Props = {
 };
 
 const SUB_KEY = "margelet_subscriptions";
-
-const TAG_LABELS: Record<ContentTag, string> = {
-  news: "📰 Новости",
-  politics: "🏛 Политика",
-  war: "🪖 Война",
-  economy: "📈 Экономика",
-  business: "💼 Бизнес",
-  creativity: "🎭 Творчество",
-  finance: "💰 Финансы",
-  crypto: "₿ Крипта",
-  technology: "💻 Технологии",
-  ai: "🤖 AI",
-  science: "🔬 Наука",
-  space: "🚀 Космос",
-  education: "📚 Образование",
-  history: "🏺 История",
-  culture: "🏛 Культура",
-  art: "🎨 Арт",
-  design: "🧩 Дизайн",
-  books: "📖 Книги",
-  cinema: "🎬 Кино",
-  series: "📺 Сериалы",
-  music: "🎵 Музыка",
-  gaming: "🎮 Игры",
-  memes: "😂 Мемы",
-  humor: "😄 Юмор",
-  sports: "⚽ Спорт",
-  mma: "🥊 MMA",
-  travel: "✈️ Путешествия",
-  food: "🍔 Еда",
-  recipes: "🍳 Рецепты",
-  health: "🩺 Здоровье",
-  fitness: "🏋️ Фитнес",
-  psychology: "🧠 Психология",
-  relationships: "❤️ Отношения",
-  fashion: "👗 Мода",
-  beauty: "💄 Красота",
-  photography: "📷 Фото",
-  nature: "🌿 Природа",
-  animals: "🐾 Животные",
-  people: "🧑 Люди",
-  celebrities: "⭐ Звёзды",
-  marketing: "📣 Маркетинг",
-  startups: "🛠 Стартапы",
-  jobs: "🧳 Работа",
-  real_estate: "🏠 Недвижимость",
-  auto: "🚗 Авто",
-  gadgets: "📱 Гаджеты",
-  parenting: "👶 Родительство",
-  telegram: "✈️ Telegram",
-  other: "🌀 Другое",
-};
 
 function getSubs(): string[] {
   try {
@@ -96,10 +45,6 @@ function toggleSub(handle: string) {
   return next;
 }
 
-function getTagLabel(tag: ContentTag) {
-  return TAG_LABELS[tag] || "🌀 Другое";
-}
-
 function getPreview(post: IngestedPost) {
   return (
     post.media.find((item) => item.kind === "image")?.url ||
@@ -110,9 +55,11 @@ function getPreview(post: IngestedPost) {
 
 function SourceTile({
   post,
+  locale,
   onOpen,
 }: {
   post: IngestedPost;
+  locale: Locale;
   onOpen: () => void;
 }) {
   const preview = getPreview(post);
@@ -136,28 +83,27 @@ function SourceTile({
 
       <div className="absolute inset-0 bg-black/10" />
 
-      <div className="absolute inset-0 flex items-center justify-center opacity-70 transition group-hover:opacity-100">
-        {post.contentType === "video" ? (
+      {post.contentType === "video" ? (
+        <div className="absolute inset-0 flex items-center justify-center opacity-70 transition group-hover:opacity-100">
           <Play className="h-7 w-7 text-white" />
-        ) : (
-          <ImageIcon className="h-7 w-7 text-white" />
-        )}
-      </div>
+        </div>
+      ) : null}
 
       <div className="absolute right-2 top-2 rounded-full bg-black/40 px-2 py-0.5 text-[10px] text-white">
-        {getTagLabel(post.tag)}
+        {getTagLabel(post.tag, locale)}
       </div>
     </button>
   );
 }
 
 export function SourceScreen({
-  locale: _locale,
+  locale,
   posts,
   sourceHandle,
   onBack,
   onOpenPost,
 }: Props) {
+  const t = getMessages(locale);
   const sourcePosts = posts.filter((post) => post.source.handle === sourceHandle);
   const source = sourcePosts[0];
   const [subscribed, setSubscribed] = useState(false);
@@ -178,11 +124,11 @@ export function SourceScreen({
               type="button"
             >
               <ArrowLeft className="h-4 w-4" />
-              Назад
+              {t.common.back}
             </button>
           </div>
 
-          <div className="text-lg font-semibold">Источник не найден</div>
+          <div className="text-lg font-semibold">{t.source.notFound}</div>
         </div>
       </div>
     );
@@ -205,7 +151,7 @@ export function SourceScreen({
             type="button"
           >
             <ArrowLeft className="h-4 w-4" />
-            Назад
+            {t.common.back}
           </button>
 
           <button className="rounded-full p-2 text-neutral-500" type="button">
@@ -214,8 +160,8 @@ export function SourceScreen({
         </div>
 
         <section className="mb-6 overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5">
-          <div className="flex items-center gap-4">
-            <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-full bg-neutral-200 text-lg font-bold text-neutral-900">
+          <div className="flex items-start gap-4">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-neutral-200 text-xs font-bold text-neutral-900">
               {source.source.avatar ? (
                 <img
                   src={source.source.avatar}
@@ -228,16 +174,17 @@ export function SourceScreen({
               )}
             </div>
 
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <div className="truncate text-[28px] font-semibold leading-tight text-neutral-950">
+            <div className="min-w-0 flex-1 pr-2">
+              <div className="flex items-center gap-1.5">
+                <div className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
                   {source.source.title}
                 </div>
                 {source.source.verified ? (
                   <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
                 ) : null}
               </div>
-              <div className="truncate text-[16px] text-neutral-500">
+
+              <div className="mt-1 truncate text-[14px] text-neutral-500">
                 @{source.source.handle}
               </div>
             </div>
@@ -245,34 +192,34 @@ export function SourceScreen({
 
           <div className="mt-5 grid grid-cols-3 gap-3">
             <div className="rounded-2xl bg-neutral-50 p-4">
-              <div className="text-xs uppercase tracking-[0.16em] text-neutral-400">
-                Посты
+              <div className="text-[11px] uppercase tracking-[0.14em] text-neutral-400">
+                {t.source.posts}
               </div>
               <div className="mt-2 text-2xl font-semibold">{sourcePosts.length}</div>
             </div>
 
             <div className="rounded-2xl bg-neutral-50 p-4">
-              <div className="text-xs uppercase tracking-[0.16em] text-neutral-400">
-                Видео
+              <div className="text-[11px] uppercase tracking-[0.14em] text-neutral-400">
+                {t.source.video}
               </div>
               <div className="mt-2 text-2xl font-semibold">{totalVideos}</div>
             </div>
 
             <div className="rounded-2xl bg-neutral-50 p-4">
-              <div className="text-xs uppercase tracking-[0.16em] text-neutral-400">
-                Медиа
+              <div className="text-[11px] uppercase tracking-[0.14em] text-neutral-400">
+                {t.source.media}
               </div>
               <div className="mt-2 text-2xl font-semibold">{totalMedia}</div>
             </div>
           </div>
 
-          <div className="mt-5 flex items-center gap-3">
+          <div className="mt-5 flex w-full items-center justify-between gap-3">
             <button
               onClick={openTelegramSource}
               className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
               type="button"
             >
-              <span>Открыть канал</span>
+              <span>{t.feed.openChannel}</span>
               <ExternalLink className="h-4 w-4" />
             </button>
 
@@ -282,10 +229,18 @@ export function SourceScreen({
                 setSubscribed(next.includes(source.source.handle));
                 window.dispatchEvent(new Event("storage"));
               }}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100"
+              className="ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100"
               type="button"
-              aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
-              title={subscribed ? "Отключить уведомления" : "Включить уведомления"}
+              aria-label={
+                subscribed
+                  ? t.source.disableNotifications
+                  : t.source.enableNotifications
+              }
+              title={
+                subscribed
+                  ? t.source.disableNotifications
+                  : t.source.enableNotifications
+              }
             >
               <Bell
                 className={`h-5 w-5 ${
@@ -303,6 +258,7 @@ export function SourceScreen({
             <SourceTile
               key={post.id}
               post={post}
+              locale={locale}
               onOpen={() => onOpenPost(post)}
             />
           ))}

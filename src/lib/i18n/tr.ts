@@ -56,6 +56,15 @@ export const tr: TranslationSchema = {
     swipeHint: "Görüntüleyiciyi kapatmak için dışarı dokun.",
   },
 
+  source: {
+    notFound: "Kaynak bulunamadı",
+    posts: "Gönderiler",
+    video: "Video",
+    media: "Medya",
+    enableNotifications: "Bildirimleri aç",
+    disableNotifications: "Bildirimleri kapat",
+  },
+
   modes: {
     new: "Yeni",
     rising: "Yükselen",

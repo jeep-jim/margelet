@@ -56,6 +56,15 @@ export const fr: TranslationSchema = {
     swipeHint: "Touchez à l'extérieur pour fermer le lecteur.",
   },
 
+  source: {
+    notFound: "Source introuvable",
+    posts: "Publications",
+    video: "Vidéo",
+    media: "Médias",
+    enableNotifications: "Activer les notifications",
+    disableNotifications: "Désactiver les notifications",
+  },
+
   modes: {
     new: "Nouveau",
     rising: "En hausse",
