@@ -42,7 +42,7 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
   },
   ru: {
     subscriptionsHint:
-      "Здесь будут новые посты каналов, в которых включено уведомление",
+      "Тут будут новые посты каналов, в которых включено уведомление",
     emptyTitle: "Ничего не найдено",
     emptyText: "Попробуй снять часть тегов или очистить поиск.",
     clearAll: "Очистить всё",
@@ -72,7 +72,7 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
   },
   fr: {
     subscriptionsHint:
-      "Les nouvelles publications des chaînes avec notifications activées apparaîtront ici",
+      "De nouvelles publications des chaînes avec notifications activées apparaîtront ici",
     emptyTitle: "Rien trouvé",
     emptyText:
       "Essaie de retirer certains tags ou d’effacer la recherche.",
@@ -80,7 +80,7 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
   },
   it: {
     subscriptionsHint:
-      "Qui appariranno i nuovi post dei canali con notifiche attivate",
+      "Qui appariranno nuovi post dai canali con notifiche attivate",
     emptyTitle: "Nessun risultato",
     emptyText: "Prova a rimuovere alcuni tag o a cancellare la ricerca.",
     clearAll: "Cancella tutto",
@@ -94,14 +94,14 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
   },
   id: {
     subscriptionsHint:
-      "Postingan baru dari kanal dengan notifikasi aktif akan muncul di sini",
+      "Postingan baru dari channel dengan notifikasi aktif akan muncul di sini",
     emptyTitle: "Tidak ada yang ditemukan",
     emptyText: "Coba hapus beberapa tag atau bersihkan pencarian.",
     clearAll: "Bersihkan semua",
   },
   pl: {
     subscriptionsHint:
-      "Tutaj pojawią się nowe posty z kanałów z włączonymi powiadomieniami",
+      "Nowe posty z kanałów z włączonymi powiadomieniami pojawią się tutaj",
     emptyTitle: "Nic nie znaleziono",
     emptyText: "Spróbuj usunąć część tagów albo wyczyścić wyszukiwanie.",
     clearAll: "Wyczyść wszystko",
