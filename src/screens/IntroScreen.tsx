@@ -1,8 +1,8 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { messages } from "../lib/i18n";
-import { SITE_LOCALES, type SiteLocale } from "../lib/locales";
+import type { SiteLocale } from "../lib/locales";
+import { SITE_LOCALES } from "../lib/locales";
 import { Button } from "../components/ui/Button";
 
 type Props = {
@@ -11,30 +11,23 @@ type Props = {
   onFinish: () => void;
 };
 
-const INTRO_FALLBACK = {
-  ru: {
-    slides: [
-      {
-        title: "Добро пожаловать в margeleT",
-        text: "Глобальная лента настоящего контента из Telegram.",
-      },
-      {
-        title: "Только оригинальные источники",
-        text: "Каждый пост всегда связан со своим Telegram-каналом.",
-      },
-      {
-        title: "Чисто и быстро",
-        text: "Открывай, смотри и листай без лишнего шума.",
-      },
-      {
-        title: "Выбирай свой язык",
-        text: "Интерфейс и контент могут подстраиваться под выбранную страну.",
-      },
-    ],
-    next: "Далее",
-    enter: "Войти",
-  },
-  default: {
+type IntroSlide = {
+  title: string;
+  text: string;
+};
+
+type IntroCopy = {
+  slides: IntroSlide[];
+  next: string;
+  enter: string;
+  chooseLanguage: string;
+};
+
+const LANGUAGE_STORAGE_KEY = "margelet_locale";
+
+const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
+  en: {
+    chooseLanguage: "Choose language",
     slides: [
       {
         title: "Welcome to margeleT",
@@ -56,9 +49,214 @@ const INTRO_FALLBACK = {
     next: "Next",
     enter: "Enter",
   },
+  ru: {
+    chooseLanguage: "Выбрать язык",
+    slides: [
+      {
+        title: "Добро пожаловать в margeleT",
+        text: "Глобальная лента настоящего контента из Telegram.",
+      },
+      {
+        title: "Только оригинальные источники",
+        text: "Каждый пост всегда связан со своим Telegram-каналом.",
+      },
+      {
+        title: "Чисто и быстро",
+        text: "Открывай, смотри и листай без лишнего шума.",
+      },
+      {
+        title: "Выбирай свой язык",
+        text: "Интерфейс и контент могут подстраиваться под выбранную страну.",
+      },
+    ],
+    next: "Далее",
+    enter: "Войти",
+  },
+  de: {
+    chooseLanguage: "Sprache wählen",
+    slides: [
+      {
+        title: "Willkommen bei margeleT",
+        text: "Ein globaler Feed mit echtem Telegram-Content.",
+      },
+      {
+        title: "Nur originale Quellen",
+        text: "Jeder Beitrag bleibt immer mit seinem ursprünglichen Telegram-Kanal verbunden.",
+      },
+      {
+        title: "Sauber und schnell",
+        text: "Öffnen, ansehen und scrollen — ohne unnötigen Lärm.",
+      },
+      {
+        title: "Wähle deine Sprache",
+        text: "Interface und Content können sich an dein ausgewähltes Land anpassen.",
+      },
+    ],
+    next: "Weiter",
+    enter: "Betreten",
+  },
+  es: {
+    chooseLanguage: "Elegir idioma",
+    slides: [
+      {
+        title: "Bienvenido a margeleT",
+        text: "Un feed global de contenido real de Telegram.",
+      },
+      {
+        title: "Solo fuentes originales",
+        text: "Cada publicación siempre permanece conectada a su canal original de Telegram.",
+      },
+      {
+        title: "Limpio y rápido",
+        text: "Abre, mira y desliza sin ruido extra.",
+      },
+      {
+        title: "Elige tu idioma",
+        text: "La interfaz y el contenido pueden adaptarse a tu país seleccionado.",
+      },
+    ],
+    next: "Siguiente",
+    enter: "Entrar",
+  },
+  tr: {
+    chooseLanguage: "Dil seç",
+    slides: [
+      {
+        title: "margeleT'e hoş geldin",
+        text: "Gerçek Telegram içeriğinin küresel akışı.",
+      },
+      {
+        title: "Sadece orijinal kaynaklar",
+        text: "Her gönderi her zaman kendi orijinal Telegram kanalına bağlı kalır.",
+      },
+      {
+        title: "Temiz ve hızlı",
+        text: "Ekstra gürültü olmadan aç, izle ve kaydır.",
+      },
+      {
+        title: "Dilini seç",
+        text: "Arayüz ve içerik seçtiğin ülkeye göre uyarlanabilir.",
+      },
+    ],
+    next: "İleri",
+    enter: "Giriş",
+  },
+  fr: {
+    chooseLanguage: "Choisir la langue",
+    slides: [
+      {
+        title: "Bienvenue dans margeleT",
+        text: "Un flux mondial de vrai contenu Telegram.",
+      },
+      {
+        title: "Uniquement des sources originales",
+        text: "Chaque publication reste toujours liée à son canal Telegram d’origine.",
+      },
+      {
+        title: "Propre et rapide",
+        text: "Ouvre, regarde et fais défiler sans bruit inutile.",
+      },
+      {
+        title: "Choisis ta langue",
+        text: "L’interface et le contenu peuvent s’adapter au pays sélectionné.",
+      },
+    ],
+    next: "Suivant",
+    enter: "Entrer",
+  },
+  it: {
+    chooseLanguage: "Scegli lingua",
+    slides: [
+      {
+        title: "Benvenuto in margeleT",
+        text: "Un feed globale di vero contenuto Telegram.",
+      },
+      {
+        title: "Solo fonti originali",
+        text: "Ogni post resta sempre collegato al suo canale Telegram originale.",
+      },
+      {
+        title: "Pulito e veloce",
+        text: "Apri, guarda e scorri senza rumore inutile.",
+      },
+      {
+        title: "Scegli la tua lingua",
+        text: "L’interfaccia e i contenuti possono adattarsi al paese selezionato.",
+      },
+    ],
+    next: "Avanti",
+    enter: "Entra",
+  },
+  "pt-br": {
+    chooseLanguage: "Escolher idioma",
+    slides: [
+      {
+        title: "Bem-vindo ao margeleT",
+        text: "Um feed global de conteúdo real do Telegram.",
+      },
+      {
+        title: "Somente fontes originais",
+        text: "Cada post permanece sempre conectado ao seu canal original do Telegram.",
+      },
+      {
+        title: "Limpo e rápido",
+        text: "Abra, assista e deslize sem ruído extra.",
+      },
+      {
+        title: "Escolha seu idioma",
+        text: "A interface e o conteúdo podem se adaptar ao país selecionado.",
+      },
+    ],
+    next: "Próximo",
+    enter: "Entrar",
+  },
+  id: {
+    chooseLanguage: "Pilih bahasa",
+    slides: [
+      {
+        title: "Selamat datang di margeleT",
+        text: "Feed global dari konten Telegram yang nyata.",
+      },
+      {
+        title: "Hanya sumber asli",
+        text: "Setiap postingan selalu tetap terhubung ke kanal Telegram aslinya.",
+      },
+      {
+        title: "Bersih dan cepat",
+        text: "Buka, tonton, dan gulir tanpa gangguan berlebih.",
+      },
+      {
+        title: "Pilih bahasamu",
+        text: "Antarmuka dan konten bisa menyesuaikan dengan negara yang kamu pilih.",
+      },
+    ],
+    next: "Lanjut",
+    enter: "Masuk",
+  },
+  pl: {
+    chooseLanguage: "Wybierz język",
+    slides: [
+      {
+        title: "Witamy w margeleT",
+        text: "Globalny feed prawdziwych treści z Telegrama.",
+      },
+      {
+        title: "Tylko oryginalne źródła",
+        text: "Każdy post zawsze pozostaje połączony ze swoim oryginalnym kanałem Telegram.",
+      },
+      {
+        title: "Czysto i szybko",
+        text: "Otwieraj, oglądaj i przewijaj bez zbędnego szumu.",
+      },
+      {
+        title: "Wybierz swój język",
+        text: "Interfejs i treści mogą dostosować się do wybranego kraju.",
+      },
+    ],
+    next: "Dalej",
+    enter: "Wejdź",
+  },
 };
-
-const LANGUAGE_STORAGE_KEY = "margelet_locale";
 
 function getSortedLocales() {
   return [...SITE_LOCALES].sort((a, b) =>
@@ -69,10 +267,7 @@ function getSortedLocales() {
 }
 
 export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
-  const dict = messages[locale];
-  const intro =
-    dict.intro ?? (locale === "ru" ? INTRO_FALLBACK.ru : INTRO_FALLBACK.default);
-
+  const intro = INTRO_COPY[locale] ?? INTRO_COPY.en;
   const pages = intro.slides;
   const [index, setIndex] = React.useState(0);
   const isLast = index === pages.length - 1;
@@ -82,10 +277,10 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
     <div className="min-h-screen bg-[#0a0a0f] px-4 text-white">
       <div className="flex min-h-screen items-center justify-center">
         <div className="w-full max-w-md">
-          <div className="mb-7">
-            <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 px-3 py-2.5 backdrop-blur-sm">
-              <span className="truncate pr-3 text-sm font-medium text-white/90">
-                {locale === "ru" ? "Выбрать язык" : "Choose language"}
+          <div className="mb-10">
+            <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-5 pr-3 backdrop-blur-sm">
+              <span className="truncate pr-4 text-sm font-medium text-white/90">
+                {intro.chooseLanguage}
               </span>
 
               <div className="relative shrink-0">
@@ -96,7 +291,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                     onChangeLocale(nextLocale);
                     localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLocale);
                   }}
-                  className="appearance-none rounded-full border border-white/15 bg-white/5 px-4 py-2 pr-10 text-sm font-medium text-white outline-none"
+                  className="appearance-none rounded-full bg-white/5 px-4 py-2 pr-10 text-sm font-medium text-white outline-none"
                 >
                   {localeOptions.map((item) => (
                     <option
@@ -118,14 +313,16 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
             <div className="space-y-6">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={index}
+                  key={`${locale}-${index}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.25 }}
                 >
                   <div className="mb-3 text-3xl font-bold">{pages[index].title}</div>
-                  <div className="text-white/70">{pages[index].text}</div>
+                  <div className="mx-auto max-w-[22rem] text-white/70">
+                    {pages[index].text}
+                  </div>
                 </motion.div>
               </AnimatePresence>
 
