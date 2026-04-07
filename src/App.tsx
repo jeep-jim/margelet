@@ -18,6 +18,19 @@ const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 const ADMIN_HIDDEN_PATH = "/jim/admin";
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
+const FEED_LOADING_COPY: Record<Locale, string> = {
+  en: "Loading feed...",
+  ru: "Загрузка ленты...",
+  de: "Feed wird geladen...",
+  es: "Cargando feed...",
+  tr: "Akış yükleniyor...",
+  fr: "Chargement du flux...",
+  it: "Caricamento del feed...",
+  "pt-br": "Carregando feed...",
+  id: "Memuat feed...",
+  pl: "Ładowanie feedu...",
+};
+
 type TgUser = {
   id: string;
   first_name: string;
@@ -149,6 +162,7 @@ const [locale, setLocale] = useState<Locale>("en");
   const [current, setCurrent] = useState<TabId>("feed");
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
+  const [showFeedLoadingHint, setShowFeedLoadingHint] = useState(false);
   const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
   const [selectedSourceHandle, setSelectedSourceHandle] = useState<string | null>(null);
   const [accessInfo, setAccessInfo] = useState<AccessInfo | null>(null);
@@ -336,8 +350,14 @@ const [locale, setLocale] = useState<Locale>("en");
 
   const loadFeed = async () => {
     setIsFeedLoading(true);
+    setShowFeedLoadingHint(false);
 
     const controller = new AbortController();
+
+    const hintTimer = window.setTimeout(() => {
+      setShowFeedLoadingHint(true);
+    }, 1200);
+
     const timeoutId = window.setTimeout(() => {
       controller.abort();
     }, 8000);
@@ -348,7 +368,9 @@ const [locale, setLocale] = useState<Locale>("en");
         cache: "no-store",
       });
 
-      if (!res.ok) throw new Error("feed request failed");
+      if (!res.ok) {
+        throw new Error("feed request failed");
+      }
 
       const data = await res.json();
       setServerPosts(Array.isArray(data.posts) ? data.posts : []);
@@ -356,8 +378,10 @@ const [locale, setLocale] = useState<Locale>("en");
       console.error("Failed to load feed", error);
       setServerPosts([]);
     } finally {
+      window.clearTimeout(hintTimer);
       window.clearTimeout(timeoutId);
       setIsFeedLoading(false);
+      setShowFeedLoadingHint(false);
     }
   };
 
@@ -612,9 +636,9 @@ const [locale, setLocale] = useState<Locale>("en");
         </>
       )}
 
-      {isFeedLoading && current === "feed" && !shouldShowIntro ? (
+      {isFeedLoading && showFeedLoadingHint && current === "feed" && !shouldShowIntro ? (
         <div className="pointer-events-none fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm text-white backdrop-blur">
-          Загрузка ленты...
+          {FEED_LOADING_COPY[locale] ?? FEED_LOADING_COPY.en}
         </div>
       ) : null}      
     </div>
