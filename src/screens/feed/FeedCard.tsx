@@ -88,11 +88,12 @@ export function FeedCard(props: FeedCardProps) {
 
           {menuOpen ? (
             <FeedMoreMenu
+              locale={locale}
               isOwner={isOwner}
               isAdmin={isAdmin}
               onDelete={onDelete}
               onHide={onHide}
-            />
+            />            
           ) : null}
         </div>
       </div>

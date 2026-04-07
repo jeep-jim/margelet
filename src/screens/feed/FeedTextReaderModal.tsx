@@ -22,6 +22,149 @@ import {
 
 const SUB_KEY = "margelet_subscriptions";
 
+const COPY = {
+  en: {
+    postFromTelegram: "Post from Telegram",
+    enableNotifications: "Enable notifications",
+    disableNotifications: "Disable notifications",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio from Telegram post",
+    fileFallback: "File",
+    fileFromTelegram: "Attachment from Telegram post",
+    openFile: "Open file",
+    musicAvailable: "Music is available in the original post",
+    musicAvailableText:
+      "We show the post card here. You can open the original track in Telegram.",
+    openInTelegram: "Open in Telegram",
+  },
+  ru: {
+    postFromTelegram: "Пост из Telegram",
+    enableNotifications: "Включить уведомления",
+    disableNotifications: "Отключить уведомления",
+    audioFallback: "Аудио",
+    audioFromTelegram: "Аудио из поста Telegram",
+    fileFallback: "Файл",
+    fileFromTelegram: "Вложение из поста Telegram",
+    openFile: "Открыть файл",
+    musicAvailable: "Музыка доступна в оригинальном посте",
+    musicAvailableText:
+      "Здесь показываем карточку поста. Оригинальный трек можно открыть в Telegram.",
+    openInTelegram: "Открыть в Telegram",
+  },
+  de: {
+    postFromTelegram: "Beitrag aus Telegram",
+    enableNotifications: "Benachrichtigungen aktivieren",
+    disableNotifications: "Benachrichtigungen deaktivieren",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio aus dem Telegram-Beitrag",
+    fileFallback: "Datei",
+    fileFromTelegram: "Anhang aus dem Telegram-Beitrag",
+    openFile: "Datei öffnen",
+    musicAvailable: "Musik ist im Originalbeitrag verfügbar",
+    musicAvailableText:
+      "Hier zeigen wir die Beitragskarte. Den Original-Track kannst du in Telegram öffnen.",
+    openInTelegram: "In Telegram öffnen",
+  },
+  es: {
+    postFromTelegram: "Publicación de Telegram",
+    enableNotifications: "Activar notificaciones",
+    disableNotifications: "Desactivar notificaciones",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio de la publicación de Telegram",
+    fileFallback: "Archivo",
+    fileFromTelegram: "Adjunto de la publicación de Telegram",
+    openFile: "Abrir archivo",
+    musicAvailable: "La música está disponible en la publicación original",
+    musicAvailableText:
+      "Aquí mostramos la tarjeta de la publicación. Puedes abrir la pista original en Telegram.",
+    openInTelegram: "Abrir en Telegram",
+  },
+  tr: {
+    postFromTelegram: "Telegram gönderisi",
+    enableNotifications: "Bildirimleri aç",
+    disableNotifications: "Bildirimleri kapat",
+    audioFallback: "Ses",
+    audioFromTelegram: "Telegram gönderisindeki ses",
+    fileFallback: "Dosya",
+    fileFromTelegram: "Telegram gönderisindeki ek",
+    openFile: "Dosyayı aç",
+    musicAvailable: "Müzik orijinal gönderide mevcut",
+    musicAvailableText:
+      "Burada gönderi kartını gösteriyoruz. Orijinal parçayı Telegram'da açabilirsin.",
+    openInTelegram: "Telegram'da aç",
+  },
+  fr: {
+    postFromTelegram: "Post Telegram",
+    enableNotifications: "Activer les notifications",
+    disableNotifications: "Désactiver les notifications",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio du post Telegram",
+    fileFallback: "Fichier",
+    fileFromTelegram: "Pièce jointe du post Telegram",
+    openFile: "Ouvrir le fichier",
+    musicAvailable: "La musique est disponible dans le post d’origine",
+    musicAvailableText:
+      "Nous affichons ici la carte du post. Tu peux ouvrir le morceau original dans Telegram.",
+    openInTelegram: "Ouvrir dans Telegram",
+  },
+  it: {
+    postFromTelegram: "Post da Telegram",
+    enableNotifications: "Attiva notifiche",
+    disableNotifications: "Disattiva notifiche",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio dal post Telegram",
+    fileFallback: "File",
+    fileFromTelegram: "Allegato dal post Telegram",
+    openFile: "Apri file",
+    musicAvailable: "La musica è disponibile nel post originale",
+    musicAvailableText:
+      "Qui mostriamo la scheda del post. Puoi aprire la traccia originale in Telegram.",
+    openInTelegram: "Apri in Telegram",
+  },
+  "pt-br": {
+    postFromTelegram: "Post do Telegram",
+    enableNotifications: "Ativar notificações",
+    disableNotifications: "Desativar notificações",
+    audioFallback: "Áudio",
+    audioFromTelegram: "Áudio do post do Telegram",
+    fileFallback: "Arquivo",
+    fileFromTelegram: "Anexo do post do Telegram",
+    openFile: "Abrir arquivo",
+    musicAvailable: "A música está disponível no post original",
+    musicAvailableText:
+      "Aqui mostramos o card do post. Você pode abrir a faixa original no Telegram.",
+    openInTelegram: "Abrir no Telegram",
+  },
+  id: {
+    postFromTelegram: "Postingan dari Telegram",
+    enableNotifications: "Aktifkan notifikasi",
+    disableNotifications: "Nonaktifkan notifikasi",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio dari post Telegram",
+    fileFallback: "File",
+    fileFromTelegram: "Lampiran dari post Telegram",
+    openFile: "Buka file",
+    musicAvailable: "Musik tersedia di post asli",
+    musicAvailableText:
+      "Di sini kami menampilkan kartu post. Trek asli bisa dibuka di Telegram.",
+    openInTelegram: "Buka di Telegram",
+  },
+  pl: {
+    postFromTelegram: "Post z Telegrama",
+    enableNotifications: "Włącz powiadomienia",
+    disableNotifications: "Wyłącz powiadomienia",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio z posta Telegram",
+    fileFallback: "Plik",
+    fileFromTelegram: "Załącznik z posta Telegram",
+    openFile: "Otwórz plik",
+    musicAvailable: "Muzyka jest dostępna w oryginalnym poście",
+    musicAvailableText:
+      "Tutaj pokazujemy kartę posta. Oryginalny utwór możesz otworzyć w Telegramie.",
+    openInTelegram: "Otwórz w Telegramie",
+  },
+} as const;
+
 function getSubs(): string[] {
   try {
     const raw = localStorage.getItem(SUB_KEY);
@@ -125,14 +268,17 @@ function hasMusicLikeTag(post: IngestedPost) {
 
 function AudioList({
   items,
+  locale,
 }: {
   items: Array<{
     id: string;
     url: string;
     fileName?: string | null;
   }>;
+  locale: Locale;
 }) {
   if (items.length === 0) return null;
+  const copy = COPY[locale] ?? COPY.en;
 
   return (
     <div className="mb-4 space-y-3">
@@ -148,11 +294,11 @@ function AudioList({
 
             <div className="min-w-0 flex-1">
               <div className="text-sm font-semibold text-neutral-950">
-                {item.fileName?.trim() || `Аудио ${index + 1}`}
+                {item.fileName?.trim() || `${copy.audioFallback} ${index + 1}`}
               </div>
 
               <div className="mt-1 text-sm text-neutral-500">
-                Аудио из поста Telegram
+                {copy.audioFromTelegram}
               </div>
             </div>
           </div>
@@ -171,14 +317,17 @@ function AudioList({
 
 function FileList({
   items,
+  locale,
 }: {
   items: Array<{
     id: string;
     url: string;
     fileName?: string | null;
   }>;
+  locale: Locale;
 }) {
   if (items.length === 0) return null;
+  const copy = COPY[locale] ?? COPY.en;
 
   return (
     <div className="mb-4 space-y-3">
@@ -194,11 +343,11 @@ function FileList({
 
             <div className="min-w-0 flex-1">
               <div className="text-sm font-semibold text-neutral-950">
-                {item.fileName?.trim() || `Файл ${index + 1}`}
+                {item.fileName?.trim() || `${copy.fileFallback} ${index + 1}`}
               </div>
 
               <div className="mt-1 text-sm text-neutral-500">
-                Вложение из поста Telegram
+                {copy.fileFromTelegram}
               </div>
 
               <a
@@ -208,7 +357,7 @@ function FileList({
                 className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium !text-white no-underline"
                 style={{ color: "#ffffff" }}
               >
-                <span style={{ color: "#ffffff" }}>Открыть файл</span>
+                <span style={{ color: "#ffffff" }}>{copy.openFile}</span>
                 <ExternalLink
                   className="h-4 w-4"
                   style={{ color: "#ffffff" }}
@@ -222,8 +371,15 @@ function FileList({
   );
 }
 
-function MusicFallback({ post }: { post: IngestedPost }) {
+function MusicFallback({
+  post,
+  locale,
+}: {
+  post: IngestedPost;
+  locale: Locale;
+}) {
   if (!hasMusicLikeTag(post)) return null;
+  const copy = COPY[locale] ?? COPY.en;
 
   return (
     <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
@@ -234,11 +390,11 @@ function MusicFallback({ post }: { post: IngestedPost }) {
 
         <div className="min-w-0 flex-1">
           <div className="text-sm font-semibold text-neutral-950">
-            Музыка доступна в оригинальном посте
+            {copy.musicAvailable}
           </div>
 
           <div className="mt-1 text-sm text-neutral-500">
-            Здесь показываем карточку поста. Оригинальный трек можно открыть в Telegram.
+            {copy.musicAvailableText}
           </div>
 
           <button
@@ -248,7 +404,7 @@ function MusicFallback({ post }: { post: IngestedPost }) {
             }}
             className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
           >
-            <span>Открыть в Telegram</span>
+            <span>{copy.openInTelegram}</span>
             <ExternalLink className="h-4 w-4" />
           </button>
         </div>
@@ -259,7 +415,7 @@ function MusicFallback({ post }: { post: IngestedPost }) {
 
 export function FeedTextReaderModal({
   post,
-  locale: _locale,
+  locale,
   liked,
   onClose,
   onToggleLike,
@@ -275,6 +431,7 @@ export function FeedTextReaderModal({
   onToggleSave: (id: number) => void;
   onShare: (post: IngestedPost) => Promise<void>;
 }) {
+  const copy = COPY[locale] ?? COPY.en;
   const text = post?.text || "";
   const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
   const [mediaIndex, setMediaIndex] = useState(0);
@@ -331,7 +488,7 @@ export function FeedTextReaderModal({
               </button>
 
               <div className="text-sm font-semibold text-neutral-900">
-                Пост из Telegram
+                {copy.postFromTelegram}
               </div>
 
               <button
@@ -342,8 +499,16 @@ export function FeedTextReaderModal({
                   window.dispatchEvent(new Event("storage"));
                 }}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
-                aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
-                title={subscribed ? "Отключить уведомления" : "Включить уведомления"}
+                aria-label={
+                  subscribed
+                    ? copy.disableNotifications
+                    : copy.enableNotifications
+                }
+                title={
+                  subscribed
+                    ? copy.disableNotifications
+                    : copy.enableNotifications
+                }
               >
                 <Bell
                   className={`h-5 w-5 ${
@@ -396,11 +561,11 @@ export function FeedTextReaderModal({
                 </div>
               ) : null}
 
-              <AudioList items={audioMedia} />
-              <FileList items={fileMedia} />
+              <AudioList items={audioMedia} locale={locale} />
+              <FileList items={fileMedia} locale={locale} />
 
               {audioMedia.length === 0 && fileMedia.length === 0 ? (
-                <MusicFallback post={post} />
+                <MusicFallback post={post} locale={locale} />
               ) : null}
 
               {text ? <RichTextBlock text={text} /> : null}
@@ -411,7 +576,9 @@ export function FeedTextReaderModal({
                 <div className="flex items-center gap-8 text-neutral-700">
                   <button type="button" onClick={() => onToggleLike(post.id)}>
                     <Heart
-                      className={`h-5 w-5 ${liked ? "fill-current text-neutral-950" : ""}`}
+                      className={`h-5 w-5 ${
+                        liked ? "fill-current text-neutral-950" : ""
+                      }`}
                     />
                   </button>
 
@@ -432,7 +599,7 @@ export function FeedTextReaderModal({
                   }}
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-medium text-white"
                 >
-                  <span>Открыть в Telegram</span>
+                  <span>{copy.openInTelegram}</span>
                   <ExternalLink className="h-4 w-4" />
                 </button>
               </div>

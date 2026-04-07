@@ -836,7 +836,7 @@ export function CreatorScreen({
 
   return (
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
-      <div className="mx-auto max-w-[720px] space-y-6">
+      <div className="mx-auto max-w-[570px] space-y-6">
         {!user ? (
           <AuthBlock copy={copy} onReplayIntro={handleReplayIntro} />
         ) : (
