@@ -314,7 +314,7 @@ export function FeedTextReaderModal({
           onClick={onClose}
         >
           <motion.div
-            className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[720px] flex-col overflow-hidden rounded-t-[32px] bg-white"
+            className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-white"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}

@@ -25,7 +25,7 @@ export function FeedHeader({
 
   return (
     <div className="fixed inset-x-0 top-16 z-30">
-      <div className="mx-auto w-full max-w-[720px] px-4 pt-3">
+      <div className="mx-auto w-full max-w-[570px] px-4 pt-3">
         <div className="max-h-[calc(100vh-88px)] overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-4 shadow-[0_24px_80px_rgba(0,0,0,0.12)]">
           <div className="flex items-start justify-between gap-3">
             <div>

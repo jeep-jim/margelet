@@ -88,7 +88,7 @@ export function AppHeader({ current, setCurrent }: Props) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-neutral-200 bg-neutral-50/95 backdrop-blur-md">
-      <div className="mx-auto grid h-16 w-full max-w-[720px] grid-cols-3 items-center px-4">
+      <div className="mx-auto grid h-16 w-full max-w-[570px] grid-cols-3 items-center px-4">
         <div className="flex items-center justify-start">
           <button
             onClick={handleLeftAction}

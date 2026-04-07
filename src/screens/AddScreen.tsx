@@ -435,7 +435,7 @@ export function AddScreen({
 
   return (
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
-      <div className="mx-auto max-w-[720px]">
+      <div className="mx-auto max-w-[570px]">
         <div className="text-[28px] font-semibold tracking-tight">
           {locale === "en" ? "Add post" : "Добавить пост"}
         </div>
