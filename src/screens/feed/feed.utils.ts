@@ -1,12 +1,47 @@
-import type { ContentTag, FeedTag, IngestedPost } from "../../types/app";
-import { TAG_OPTIONS } from "./feed.constants";
+import type { ContentTag, FeedTag, IngestedPost, Locale } from "../../types/app";
+import { findTagByValue, getTagLabel as getSiteTagLabel } from "../../lib/tags";
 
 export function getResolvedTag(post: IngestedPost): ContentTag {
   return post.tag || "other";
 }
 
-export function getTagLabel(tag: FeedTag) {
-  return TAG_OPTIONS.find((item) => item.value === tag)?.label || "Все";
+export function getTagLabel(tag: FeedTag, locale: Locale) {
+  if (tag === "all") {
+    const allLabels: Record<Locale, string> = {
+      ru: "✨ Все темы",
+      en: "✨ All topics",
+      de: "✨ Alle Themen",
+      es: "✨ Todos los temas",
+      tr: "✨ Tüm konular",
+      fr: "✨ Tous les thèmes",
+      it: "✨ Tutti i temi",
+      "pt-br": "✨ Todos os tópicos",
+      id: "✨ Semua topik",
+      pl: "✨ Wszystkie tematy",
+    };
+
+    return allLabels[locale] ?? allLabels.en;
+  }
+
+  const found = findTagByValue(tag);
+  if (found) {
+    return getSiteTagLabel(found, locale);
+  }
+
+  const fallback: Record<Locale, string> = {
+    ru: "☝️ Другое",
+    en: "☝️ Other",
+    de: "☝️ Sonstiges",
+    es: "☝️ Otro",
+    tr: "☝️ Diğer",
+    fr: "☝️ Autre",
+    it: "☝️ Altro",
+    "pt-br": "☝️ Outro",
+    id: "☝️ Lainnya",
+    pl: "☝️ Inne",
+  };
+
+  return fallback[locale] ?? fallback.en;
 }
 
 export function getDisplayText(post: IngestedPost) {

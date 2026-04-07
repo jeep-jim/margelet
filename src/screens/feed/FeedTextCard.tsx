@@ -7,7 +7,7 @@ import {
   Send,
   Play,
 } from "lucide-react";
-import type { IngestedPost } from "../../types/app";
+import type { IngestedPost, Locale } from "../../types/app";
 import {
   getResolvedTag,
   getTagLabel,
@@ -15,13 +15,78 @@ import {
   getFileMedia,
 } from "./feed.utils";
 
-function getMediaBadge(post: IngestedPost) {
+function getMediaBadge(post: IngestedPost, locale: Locale) {
+  const COPY = {
+    en: {
+      audio: "Audio",
+      file: "File",
+      media: "Media",
+      hasMedia: "Has media",
+    },
+    ru: {
+      audio: "Аудио",
+      file: "Файл",
+      media: "Медиа",
+      hasMedia: "Есть медиа",
+    },
+    de: {
+      audio: "Audio",
+      file: "Datei",
+      media: "Medien",
+      hasMedia: "Mit Medien",
+    },
+    es: {
+      audio: "Audio",
+      file: "Archivo",
+      media: "Media",
+      hasMedia: "Tiene media",
+    },
+    tr: {
+      audio: "Ses",
+      file: "Dosya",
+      media: "Medya",
+      hasMedia: "Medya var",
+    },
+    fr: {
+      audio: "Audio",
+      file: "Fichier",
+      media: "Média",
+      hasMedia: "Avec média",
+    },
+    it: {
+      audio: "Audio",
+      file: "File",
+      media: "Media",
+      hasMedia: "Con media",
+    },
+    "pt-br": {
+      audio: "Áudio",
+      file: "Arquivo",
+      media: "Mídia",
+      hasMedia: "Tem mídia",
+    },
+    id: {
+      audio: "Audio",
+      file: "File",
+      media: "Media",
+      hasMedia: "Ada media",
+    },
+    pl: {
+      audio: "Audio",
+      file: "Plik",
+      media: "Media",
+      hasMedia: "Ma media",
+    },
+  } as const;
+
+  const copy = COPY[locale] ?? COPY.en;
+
   if (post.contentType === "audio") {
-    return { icon: <Music4 className="h-3.5 w-3.5" />, label: "Аудио" };
+    return { icon: <Music4 className="h-3.5 w-3.5" />, label: copy.audio };
   }
 
   if (post.contentType === "file") {
-    return { icon: <FileText className="h-3.5 w-3.5" />, label: "Файл" };
+    return { icon: <FileText className="h-3.5 w-3.5" />, label: copy.file };
   }
 
   if (
@@ -30,11 +95,11 @@ function getMediaBadge(post: IngestedPost) {
     post.contentType === "gallery" ||
     post.contentType === "mixed"
   ) {
-    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: "Медиа" };
+    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: copy.media };
   }
 
   if (post.hasMediaInOriginal) {
-    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: "Есть медиа" };
+    return { icon: <ImageIcon className="h-3.5 w-3.5" />, label: copy.hasMedia };
   }
 
   return null;
@@ -91,8 +156,10 @@ function hasMusicLikeTag(post: IngestedPost) {
 
 function AudioPreview({
   post,
+  locale,
 }: {
   post: IngestedPost;
+  locale: Locale;
 }) {
   const audioItems = getAudioMedia(post);
   const fileItems = getFileMedia(post);
@@ -102,6 +169,101 @@ function AudioPreview({
     return null;
   }
 
+  const COPY = {
+    en: {
+      telegramMusic: "Music from Telegram post",
+      telegramFile: "File from Telegram post",
+      audioSingle: "Audio from Telegram post",
+      audioMany: "audio / attachments in post",
+      fileSingle: "Attachment from Telegram post",
+      fileMany: "attachments in post",
+      musicAvailable: "Music is available in the original Telegram post",
+    },
+    ru: {
+      telegramMusic: "Музыка из поста Telegram",
+      telegramFile: "Файл из поста Telegram",
+      audioSingle: "Аудио из поста Telegram",
+      audioMany: "аудио / вложения в посте",
+      fileSingle: "Вложение из поста Telegram",
+      fileMany: "вложения в посте",
+      musicAvailable: "Музыка доступна в оригинальном Telegram-посте",
+    },
+    de: {
+      telegramMusic: "Musik aus dem Telegram-Post",
+      telegramFile: "Datei aus dem Telegram-Post",
+      audioSingle: "Audio aus dem Telegram-Post",
+      audioMany: "Audio / Anhänge im Beitrag",
+      fileSingle: "Anhang aus dem Telegram-Post",
+      fileMany: "Anhänge im Beitrag",
+      musicAvailable: "Musik ist im originalen Telegram-Post verfügbar",
+    },
+    es: {
+      telegramMusic: "Música del post de Telegram",
+      telegramFile: "Archivo del post de Telegram",
+      audioSingle: "Audio del post de Telegram",
+      audioMany: "audios / archivos adjuntos en el post",
+      fileSingle: "Adjunto del post de Telegram",
+      fileMany: "archivos adjuntos en el post",
+      musicAvailable: "La música está disponible en el post original de Telegram",
+    },
+    tr: {
+      telegramMusic: "Telegram gönderisindeki müzik",
+      telegramFile: "Telegram gönderisindeki dosya",
+      audioSingle: "Telegram gönderisindeki ses",
+      audioMany: "gönderide ses / ek",
+      fileSingle: "Telegram gönderisindeki ek",
+      fileMany: "gönderide ekler",
+      musicAvailable: "Müzik orijinal Telegram gönderisinde mevcut",
+    },
+    fr: {
+      telegramMusic: "Musique du post Telegram",
+      telegramFile: "Fichier du post Telegram",
+      audioSingle: "Audio du post Telegram",
+      audioMany: "audios / pièces jointes dans le post",
+      fileSingle: "Pièce jointe du post Telegram",
+      fileMany: "pièces jointes dans le post",
+      musicAvailable: "La musique est disponible dans le post Telegram d’origine",
+    },
+    it: {
+      telegramMusic: "Musica dal post Telegram",
+      telegramFile: "File dal post Telegram",
+      audioSingle: "Audio dal post Telegram",
+      audioMany: "audio / allegati nel post",
+      fileSingle: "Allegato dal post Telegram",
+      fileMany: "allegati nel post",
+      musicAvailable: "La musica è disponibile nel post Telegram originale",
+    },
+    "pt-br": {
+      telegramMusic: "Música do post do Telegram",
+      telegramFile: "Arquivo do post do Telegram",
+      audioSingle: "Áudio do post do Telegram",
+      audioMany: "áudios / anexos no post",
+      fileSingle: "Anexo do post do Telegram",
+      fileMany: "anexos no post",
+      musicAvailable: "A música está disponível no post original do Telegram",
+    },
+    id: {
+      telegramMusic: "Musik dari post Telegram",
+      telegramFile: "File dari post Telegram",
+      audioSingle: "Audio dari post Telegram",
+      audioMany: "audio / lampiran di post",
+      fileSingle: "Lampiran dari post Telegram",
+      fileMany: "lampiran di post",
+      musicAvailable: "Musik tersedia di post Telegram asli",
+    },
+    pl: {
+      telegramMusic: "Muzyka z posta Telegram",
+      telegramFile: "Plik z posta Telegram",
+      audioSingle: "Audio z posta Telegram",
+      audioMany: "audio / załączniki w poście",
+      fileSingle: "Załącznik z posta Telegram",
+      fileMany: "załączniki w poście",
+      musicAvailable: "Muzyka jest dostępna w oryginalnym poście Telegram",
+    },
+  } as const;
+
+  const copy = COPY[locale] ?? COPY.en;
+
   const total = audioItems.length + fileItems.length;
   const primaryAudio = audioItems[0];
   const primaryFile = fileItems[0];
@@ -110,18 +272,18 @@ function AudioPreview({
   const title =
     primaryAudio?.fileName?.trim() ||
     primaryFile?.fileName?.trim() ||
-    (isMusicLike ? "Музыка из поста Telegram" : "Файл из поста Telegram");
+    (isMusicLike ? copy.telegramMusic : copy.telegramFile);
 
   const subtitle =
     hasPlayableAudio
       ? total > 1
-        ? `${total} аудио / вложения в посте`
-        : "Аудио из поста Telegram"
+        ? `${total} ${copy.audioMany}`
+        : copy.audioSingle
       : total > 0
         ? total > 1
-          ? `${total} вложения в посте`
-          : "Вложение из поста Telegram"
-        : "Музыка доступна в оригинальном Telegram-посте";
+          ? `${total} ${copy.fileMany}`
+          : copy.fileSingle
+        : copy.musicAvailable;
 
   return (
     <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
@@ -161,21 +323,44 @@ function AudioPreview({
 }
 
 export function FeedTextCard({
+  locale,
   post,
+  liked,
+  onToggleLike,
+  onShare,
   onOpen,
 }: {
+  locale: Locale;
   post: IngestedPost;
+  liked: boolean;
+  onToggleLike: () => void;
+  onShare: () => void;
   onOpen: () => void;
 }) {
+  const COPY = {
+    en: { read: "Read" },
+    ru: { read: "Читать" },
+    de: { read: "Lesen" },
+    es: { read: "Leer" },
+    tr: { read: "Oku" },
+    fr: { read: "Lire" },
+    it: { read: "Leggi" },
+    "pt-br": { read: "Ler" },
+    id: { read: "Baca" },
+    pl: { read: "Czytaj" },
+  } as const;
+
+  const copy = COPY[locale] ?? COPY.en;
+
   const displayText = (post.text || "").trim();
-  const mediaBadge = getMediaBadge(post);
+  const mediaBadge = getMediaBadge(post, locale);
 
   return (
     <div className="px-4 pb-4 pt-3">
       <div className="mb-3 flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           <div className="rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
-            {getTagLabel(getResolvedTag(post))}
+            {getTagLabel(getResolvedTag(post), locale)}
           </div>
 
           {mediaBadge ? (
@@ -187,7 +372,7 @@ export function FeedTextCard({
         </div>
       </div>
 
-      <AudioPreview post={post} />
+      <AudioPreview post={post} locale={locale} />
 
       <div className="text-[15px] leading-6 text-neutral-900">
         {displayText ? (
@@ -198,11 +383,15 @@ export function FeedTextCard({
 
         <div className="mt-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-8 text-neutral-700">
-            <button type="button">
-              <Heart className="h-5 w-5" />
+            <button type="button" onClick={onToggleLike}>
+              <Heart
+                className={`h-5 w-5 ${
+                  liked ? "fill-neutral-950 text-neutral-950" : "text-neutral-700"
+                }`}
+              />
             </button>
 
-            <button type="button">
+            <button type="button" onClick={onShare}>
               <Send className="h-5 w-5" />
             </button>
           </div>
@@ -212,7 +401,7 @@ export function FeedTextCard({
             onClick={onOpen}
             className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
           >
-            <span>Читать</span>
+            <span>{copy.read}</span>
             <ExternalLink className="h-4 w-4" />
           </button>
         </div>

@@ -39,12 +39,28 @@ function writeGlobalMuted(value: boolean) {
 }
 
 export function FeedMediaCard({
+  locale,
   post,
   onOpen,
   mediaIndex,
   onChangeMediaIndex,
   isCardVisible = false,
 }: FeedMediaCardProps) {
+  const COPY = {
+    en: { mute: "Mute", unmute: "Unmute" },
+    ru: { mute: "Выключить звук", unmute: "Включить звук" },
+    de: { mute: "Ton aus", unmute: "Ton an" },
+    es: { mute: "Silenciar", unmute: "Activar sonido" },
+    tr: { mute: "Sesi kapat", unmute: "Sesi aç" },
+    fr: { mute: "Couper le son", unmute: "Activer le son" },
+    it: { mute: "Disattiva audio", unmute: "Attiva audio" },
+    "pt-br": { mute: "Silenciar", unmute: "Ativar som" },
+    id: { mute: "Matikan suara", unmute: "Nyalakan suara" },
+    pl: { mute: "Wycisz", unmute: "Włącz dźwięk" },
+  } as const;
+
+  const copy = COPY[locale] ?? COPY.en;
+
   const [media, setMedia] = useState(() => normalizeMediaList(post));
   const [retryUsed, setRetryUsed] = useState(false);
 
@@ -56,7 +72,6 @@ export function FeedMediaCard({
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
 
-  // 🔥 retry логика
   const tryRefreshMedia = async () => {
     if (retryUsed) return;
     if (!post.postUrl) return;
@@ -82,7 +97,7 @@ export function FeedMediaCard({
         setMedia(refreshed);
       }
     } catch {
-      // тихо
+      //
     }
   };
 
@@ -179,7 +194,7 @@ export function FeedMediaCard({
         videoRef={videoRef}
         fit="cover"
         enableFullscreen={post.contentType !== "video"}
-        onMediaError={tryRefreshMedia} // 🔥 ВАЖНО
+        onMediaError={tryRefreshMedia}
       />
 
       {activeItem?.kind === "video" ? (
@@ -199,7 +214,7 @@ export function FeedMediaCard({
               writeGlobalMuted(next);
             }}
             className="absolute bottom-3 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm"
-            aria-label={muted ? "Включить звук" : "Выключить звук"}
+            aria-label={muted ? copy.unmute : copy.mute}
           >
             {muted ? (
               <VolumeX className="h-5 w-5" />

@@ -17,6 +17,7 @@ import {
 export function FeedCard(props: FeedCardProps) {
   const {
     post,
+    locale,
     isOwner,
     isAdmin,
     menuOpen,
@@ -30,10 +31,25 @@ export function FeedCard(props: FeedCardProps) {
     onShare,
   } = props;
 
+  const COPY = {
+    en: { read: "Read", more: "More", open: "Open" },
+    ru: { read: "Читать", more: "Ещё", open: "Открыть" },
+    de: { read: "Lesen", more: "Mehr", open: "Öffnen" },
+    es: { read: "Leer", more: "Más", open: "Abrir" },
+    tr: { read: "Oku", more: "Daha fazla", open: "Aç" },
+    fr: { read: "Lire", more: "Plus", open: "Ouvrir" },
+    it: { read: "Leggi", more: "Altro", open: "Apri" },
+    "pt-br": { read: "Ler", more: "Mais", open: "Abrir" },
+    id: { read: "Baca", more: "Lainnya", open: "Buka" },
+    pl: { read: "Czytaj", more: "Więcej", open: "Otwórz" },
+  } as const;
+
+  const copy = COPY[locale] ?? COPY.en;
+
   const displayText = getDisplayText(post);
   const showVisualMedia = hasVisualMedia(post);
   const hasAudioOrFiles = hasAudioLikeMedia(post);
-  const tagLabel = getTagLabel(getResolvedTag(post));
+  const tagLabel = getTagLabel(getResolvedTag(post), locale);
 
   const cardRef = useRef<HTMLElement | null>(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
@@ -124,7 +140,7 @@ export function FeedCard(props: FeedCardProps) {
                         onClick={onOpen}
                         className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                       >
-                        <span>Читать</span>
+                        <span>{copy.read}</span>
                         <ExternalLink className="h-4 w-4" />
                       </button>
                     ) : (
@@ -133,7 +149,7 @@ export function FeedCard(props: FeedCardProps) {
                         onClick={expand}
                         className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                       >
-                        <span>Ещё</span>
+                        <span>{copy.more}</span>
                       </button>
                     )}
                   </div>
@@ -164,7 +180,7 @@ export function FeedCard(props: FeedCardProps) {
                   onClick={onOpen}
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                 >
-                  <span>Открыть</span>
+                  <span>{copy.open}</span>
                   <ExternalLink className="h-4 w-4" />
                 </button>
               </div>
@@ -172,9 +188,23 @@ export function FeedCard(props: FeedCardProps) {
           )}
         </>
       ) : hasAudioOrFiles ? (
-        <FeedTextCard post={post} onOpen={onOpen} />
+        <FeedTextCard
+          locale={locale}
+          post={post}
+          liked={liked}
+          onToggleLike={onToggleLike}
+          onShare={onShare}
+          onOpen={onOpen}
+        />
       ) : (
-        <FeedTextCard post={post} onOpen={onOpen} />
+        <FeedTextCard
+          locale={locale}
+          post={post}
+          liked={liked}
+          onToggleLike={onToggleLike}
+          onShare={onShare}
+          onOpen={onOpen}
+        />
       )}
     </article>
   );
