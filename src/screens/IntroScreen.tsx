@@ -295,15 +295,15 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
     <div className="min-h-screen bg-[#0a0a0f] px-4 text-white">
       <div className="flex min-h-screen items-center justify-center py-8">
         <div className="w-full max-w-md">
-          <div className="mb-8 flex justify-center">
+          <div className="mb-5 flex justify-center">
             <img
-              src="/hero.svg"
+              src="/hero.webp"
               alt="margeleT"
               className="h-auto w-full max-w-[420px] opacity-90"
             />
           </div>
 
-          <div className="mb-10">
+          <div className="mb-6">
             <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-6 pr-3 backdrop-blur-sm">
               <span className="truncate pr-4 text-sm font-medium text-white/90">
                 {intro.chooseLanguage}
@@ -336,8 +336,8 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
           </div>
 
           <div className="text-center">
-            <div className="space-y-6">
-              <div className="mx-auto flex min-h-[150px] max-w-[24rem] items-center justify-center">
+            <div className="space-y-4">
+              <div className="mx-auto flex min-h-[110px] max-w-[24rem] items-center justify-center">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={`${locale}-${index}`}

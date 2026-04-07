@@ -516,12 +516,11 @@ const [locale, setLocale] = useState<Locale>("en");
     window.history.replaceState({}, document.title, `/${handle}`);
   };
 
-  const shouldShowHeader = current !== "admin";
   const shouldShowIntro = !hasSeenIntro && current !== "admin" && !sharedPath;
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      {shouldShowHeader ? (
+      {(!shouldShowIntro && current !== "intro") ? (
         <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
       ) : null}
 
