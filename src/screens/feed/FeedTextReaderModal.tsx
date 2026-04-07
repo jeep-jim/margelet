@@ -203,8 +203,8 @@ function linkifyText(text: string) {
       part.startsWith("http")
         ? part
         : part.startsWith("t.me/")
-          ? `https://${part}`
-          : `https://${part}`;
+        ? `https://${part}`
+        : `https://${part}`;
 
     return (
       <a
@@ -520,17 +520,19 @@ export function FeedTextReaderModal({
               </button>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
+            <div className="min-h-0 flex-1 overflow-x-hidden overflow-y-auto px-4 pb-5 pt-4">
               <button
                 type="button"
                 onClick={() => window.location.assign(`/${post.source.handle}`)}
-                className="mb-4 flex items-center gap-3 text-left"
+                className="mb-4 flex w-full min-w-0 items-start gap-3 overflow-hidden text-left"
               >
-                <FeedSourceAvatar post={post} />
+                <div className="shrink-0">
+                  <FeedSourceAvatar post={post} />
+                </div>
 
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <div className="truncate text-[18px] font-semibold text-neutral-950">
+                <div className="min-w-0 flex-1 overflow-hidden pr-2">
+                  <div className="flex min-w-0 items-center gap-1.5">
+                    <div className="truncate text-[16px] font-semibold leading-tight text-neutral-950">
                       {post.source.title}
                     </div>
                     {post.source.verified ? (
@@ -538,14 +540,14 @@ export function FeedTextReaderModal({
                     ) : null}
                   </div>
 
-                  <div className="truncate text-sm text-neutral-500">
+                  <div className="mt-1 truncate text-sm text-neutral-500">
                     @{post.source.handle}
                   </div>
                 </div>
               </button>
 
               {visualMedia.length > 0 ? (
-                <div className="mb-4">
+                <div className="mb-4 overflow-hidden rounded-[24px]">
                   <FeedCarousel
                     items={visualMedia}
                     aspectClass="aspect-[4/5]"
@@ -556,6 +558,9 @@ export function FeedTextReaderModal({
                     onChange={setMediaIndex}
                     controlsTone="dark"
                     fit="contain"
+                    mode="adaptive"
+                    maxMediaHeightClass="max-h-full"
+                    backgroundClass="bg-transparent"
                     enableFullscreen
                   />
                 </div>

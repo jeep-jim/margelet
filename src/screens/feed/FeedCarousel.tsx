@@ -131,8 +131,8 @@ export function MediaDots({
                   ? "w-5 bg-white"
                   : "w-5 bg-neutral-900"
                 : light
-                  ? "w-2.5 bg-white/55"
-                  : "w-2.5 bg-neutral-900/35"
+                ? "w-2.5 bg-white/55"
+                : "w-2.5 bg-neutral-900/35"
             }`}
             aria-label={`media ${index + 1}`}
           />
@@ -155,6 +155,7 @@ export function FeedCarousel({
   enableFullscreen = false,
   mode = "fixed",
   maxMediaHeightClass = "max-h-[70vh]",
+  backgroundClass = "bg-black",
   onMediaError,
 }: {
   items: CarouselItem[];
@@ -170,6 +171,7 @@ export function FeedCarousel({
   enableFullscreen?: boolean;
   mode?: "fixed" | "adaptive";
   maxMediaHeightClass?: string;
+  backgroundClass?: string;
   onMediaError?: () => void;
 }) {
   const touchStartXRef = useRef<number | null>(null);
@@ -208,17 +210,17 @@ export function FeedCarousel({
 
   const rootClass =
     mode === "adaptive"
-      ? `relative flex w-full items-center justify-center overflow-hidden bg-black ${aspectClass}`
-      : `relative w-full overflow-hidden bg-black ${aspectClass}`;
+      ? `relative flex w-full max-w-full items-center justify-center overflow-hidden ${backgroundClass} ${aspectClass}`
+      : `relative w-full overflow-hidden ${backgroundClass} ${aspectClass}`;
 
   const clickAreaClass =
     mode === "adaptive"
       ? enableFullscreen
-        ? "flex w-full items-center justify-center cursor-zoom-in"
-        : "flex w-full items-center justify-center"
+        ? "flex w-full max-w-full items-center justify-center overflow-hidden cursor-zoom-in"
+        : "flex w-full max-w-full items-center justify-center overflow-hidden"
       : enableFullscreen
-        ? "h-full w-full cursor-zoom-in"
-        : "h-full w-full";
+      ? "h-full w-full cursor-zoom-in"
+      : "h-full w-full";
 
   return (
     <>
@@ -345,7 +347,9 @@ export function FeedCarousel({
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
-                setFullscreenIndex((prev) => Math.min(items.length - 1, prev + 1));
+                setFullscreenIndex((prev) =>
+                  Math.min(items.length - 1, prev + 1)
+                );
               }}
               className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
               aria-label="Следующее медиа"

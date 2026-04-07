@@ -104,7 +104,9 @@ export function FeedMediaCard({
   useEffect(() => {
     const syncMuted = (event: Event) => {
       const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
-      setMuted(typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted());
+      setMuted(
+        typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted()
+      );
     };
 
     const pauseAll = () => {
@@ -192,7 +194,10 @@ export function FeedMediaCard({
         mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
-        fit="cover"
+        fit="contain"
+        mode="adaptive"
+        maxMediaHeightClass="max-h-full"
+        backgroundClass="bg-white"
         enableFullscreen={post.contentType !== "video"}
         onMediaError={tryRefreshMedia}
       />
