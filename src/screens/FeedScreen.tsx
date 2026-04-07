@@ -25,6 +25,89 @@ type SubscriptionBubble = {
   hasNew: boolean;
 };
 
+type FeedScreenCopy = {
+  subscriptionsHint: string;
+  emptyTitle: string;
+  emptyText: string;
+  clearAll: string;
+};
+
+const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
+  en: {
+    subscriptionsHint:
+      "New posts from channels with notifications enabled will appear here",
+    emptyTitle: "Nothing found",
+    emptyText: "Try removing some tags or clearing the search.",
+    clearAll: "Clear all",
+  },
+  ru: {
+    subscriptionsHint:
+      "Здесь будут новые посты каналов, в которых включено уведомление",
+    emptyTitle: "Ничего не найдено",
+    emptyText: "Попробуй снять часть тегов или очистить поиск.",
+    clearAll: "Очистить всё",
+  },
+  de: {
+    subscriptionsHint:
+      "Hier erscheinen neue Beiträge von Kanälen mit aktivierten Benachrichtigungen",
+    emptyTitle: "Nichts gefunden",
+    emptyText:
+      "Versuche, einige Tags zu entfernen oder die Suche zu löschen.",
+    clearAll: "Alles löschen",
+  },
+  es: {
+    subscriptionsHint:
+      "Aquí aparecerán nuevas publicaciones de canales con notificaciones activadas",
+    emptyTitle: "No se encontró nada",
+    emptyText:
+      "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
+    clearAll: "Borrar todo",
+  },
+  tr: {
+    subscriptionsHint:
+      "Bildirimleri açık olan kanalların yeni gönderileri burada görünecek",
+    emptyTitle: "Hiçbir şey bulunamadı",
+    emptyText: "Bazı etiketleri kaldırmayı veya aramayı temizlemeyi dene.",
+    clearAll: "Hepsini temizle",
+  },
+  fr: {
+    subscriptionsHint:
+      "Les nouvelles publications des chaînes avec notifications activées apparaîtront ici",
+    emptyTitle: "Rien trouvé",
+    emptyText:
+      "Essaie de retirer certains tags ou d’effacer la recherche.",
+    clearAll: "Tout effacer",
+  },
+  it: {
+    subscriptionsHint:
+      "Qui appariranno i nuovi post dei canali con notifiche attivate",
+    emptyTitle: "Nessun risultato",
+    emptyText: "Prova a rimuovere alcuni tag o a cancellare la ricerca.",
+    clearAll: "Cancella tutto",
+  },
+  "pt-br": {
+    subscriptionsHint:
+      "Novos posts dos canais com notificações ativadas aparecerão aqui",
+    emptyTitle: "Nada encontrado",
+    emptyText: "Tente remover algumas tags ou limpar a busca.",
+    clearAll: "Limpar tudo",
+  },
+  id: {
+    subscriptionsHint:
+      "Postingan baru dari kanal dengan notifikasi aktif akan muncul di sini",
+    emptyTitle: "Tidak ada yang ditemukan",
+    emptyText: "Coba hapus beberapa tag atau bersihkan pencarian.",
+    clearAll: "Bersihkan semua",
+  },
+  pl: {
+    subscriptionsHint:
+      "Tutaj pojawią się nowe posty z kanałów z włączonymi powiadomieniami",
+    emptyTitle: "Nic nie znaleziono",
+    emptyText: "Spróbuj usunąć część tagów albo wyczyścić wyszukiwanie.",
+    clearAll: "Wyczyść wszystko",
+  },
+};
+
 function isGifPost(post: IngestedPost) {
   return (
     post.contentType === "gif" ||
@@ -68,7 +151,9 @@ function readSubscriptionsFromStorage(): string[] {
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
 
-    return parsed.filter((item): item is string => typeof item === "string" && !!item.trim());
+    return parsed.filter(
+      (item): item is string => typeof item === "string" && !!item.trim()
+    );
   } catch {
     return [];
   }
@@ -78,7 +163,7 @@ function readSubscriptionsCount() {
   return readSubscriptionsFromStorage().length;
 }
 
-function SubscriptionsHint() {
+function SubscriptionsHint({ text }: { text: string }) {
   return (
     <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
       <div className="flex items-center gap-4 rounded-[28px] border border-neutral-200 bg-white px-4 py-4">
@@ -87,9 +172,7 @@ function SubscriptionsHint() {
         </div>
 
         <div className="min-w-0">
-          <div className="text-sm font-semibold text-neutral-950">
-            Здесь будут новые посты каналов, в которых включено уведомление
-          </div>
+          <div className="text-sm font-semibold text-neutral-950">{text}</div>
         </div>
       </div>
     </div>
@@ -167,6 +250,8 @@ export function FeedScreen({
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
 }) {
+  const copy = FEED_SCREEN_COPY[locale] ?? FEED_SCREEN_COPY.en;
+
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const [textReaderPost, setTextReaderPost] = useState<IngestedPost | null>(null);
   const [viewerDirection, setViewerDirection] = useState<ViewerDirection>(null);
@@ -279,9 +364,7 @@ export function FeedScreen({
     let list = [...safePosts];
 
     if (selectedTags.length > 0) {
-      list = list.filter((post) =>
-        selectedTags.includes(getResolvedTag(post))
-      );
+      list = list.filter((post) => selectedTags.includes(getResolvedTag(post)));
     }
 
     const q = searchQuery.trim().toLowerCase();
@@ -449,7 +532,9 @@ export function FeedScreen({
         setTagsOpen={setTagsOpen}
       />
 
-      {!tagsOpen && subscriptionsCount === 0 ? <SubscriptionsHint /> : null}
+      {!tagsOpen && subscriptionsCount === 0 ? (
+        <SubscriptionsHint text={copy.subscriptionsHint} />
+      ) : null}
 
       {!tagsOpen && subscriptionsCount > 0 ? (
         <SubscriptionsBar
@@ -470,10 +555,10 @@ export function FeedScreen({
         <div className="mx-auto mt-2 w-full max-w-[570px] px-4">
           <div className="rounded-[28px] border border-neutral-200 bg-white px-5 py-8 text-center">
             <div className="text-lg font-semibold text-neutral-950">
-              Ничего не найдено
+              {copy.emptyTitle}
             </div>
             <div className="mt-2 text-sm leading-6 text-neutral-500">
-              Попробуй снять часть тегов или очистить поиск.
+              {copy.emptyText}
             </div>
             <button
               type="button"
@@ -483,7 +568,7 @@ export function FeedScreen({
               }}
               className="mt-4 rounded-full bg-neutral-950 px-4 py-2 text-sm text-white"
             >
-              Очистить всё
+              {copy.clearAll}
             </button>
           </div>
         </div>
@@ -519,7 +604,9 @@ export function FeedScreen({
               onOpen={() => handleOpenPost(post)}
               onOpenCreator={() => openSource(post.source.handle)}
               mediaIndex={feedMediaIndexes[post.id] || 0}
-              onChangeMediaIndex={(next: number) => setFeedCardMediaIndex(post.id, next)}
+              onChangeMediaIndex={(next: number) =>
+                setFeedCardMediaIndex(post.id, next)
+              }
               liked={likedPostIds.includes(post.id)}
               onToggleLike={() => onToggleLike(post.id)}
               onShare={() => {
