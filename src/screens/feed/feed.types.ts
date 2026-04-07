@@ -78,6 +78,7 @@ export type ViewerProps = {
 };
 
 export type FeedHeaderProps = {
+  locale: Locale;
   selectedTags: ContentTag[];
   toggleTag: (tag: ContentTag) => void;
   clearTags: () => void;

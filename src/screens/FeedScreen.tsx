@@ -523,6 +523,7 @@ export function FeedScreen({
   return (
     <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
       <FeedHeader
+        locale={locale}
         selectedTags={selectedTags}
         toggleTag={toggleTag}
         clearTags={clearTags}
@@ -531,6 +532,7 @@ export function FeedScreen({
         tagsOpen={tagsOpen}
         setTagsOpen={setTagsOpen}
       />
+
 
       {!tagsOpen && subscriptionsCount === 0 ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
