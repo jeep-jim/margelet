@@ -337,15 +337,26 @@ const [locale, setLocale] = useState<Locale>("en");
   const loadFeed = async () => {
     setIsFeedLoading(true);
 
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => {
+      controller.abort();
+    }, 8000);
+
     try {
-      const res = await fetch("/api/feed");
+      const res = await fetch("/api/feed", {
+        signal: controller.signal,
+        cache: "no-store",
+      });
+
       if (!res.ok) throw new Error("feed request failed");
 
       const data = await res.json();
       setServerPosts(Array.isArray(data.posts) ? data.posts : []);
     } catch (error) {
       console.error("Failed to load feed", error);
+      setServerPosts([]);
     } finally {
+      window.clearTimeout(timeoutId);
       setIsFeedLoading(false);
     }
   };
@@ -601,11 +612,11 @@ const [locale, setLocale] = useState<Locale>("en");
         </>
       )}
 
-      {isFeedLoading && current === "feed" ? (
+      {isFeedLoading && current === "feed" && !shouldShowIntro ? (
         <div className="pointer-events-none fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm text-white backdrop-blur">
           Загрузка ленты...
         </div>
-      ) : null}
+      ) : null}      
     </div>
   );
 }
