@@ -265,14 +265,12 @@ function getSortedLocales() {
     }),
   );
 
-  const ruIndex = sorted.findIndex((l) => l.code === "ru");
+  const ruIndex = sorted.findIndex((item) => item.code === "ru");
 
   if (ruIndex === -1) return sorted;
 
   const [ru] = sorted.splice(ruIndex, 1);
-
-  const insertIndex = Math.min(3, sorted.length);
-  sorted.splice(insertIndex, 0, ru);
+  sorted.splice(Math.min(3, sorted.length), 0, ru);
 
   return sorted;
 }
@@ -286,17 +284,18 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] px-4 text-white">
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center py-8">
         <div className="w-full max-w-md">
           <div className="mb-8 flex justify-center">
-              <img
-                src="/hero.svg"
-                alt="margeleT"
-                className="w-[220px] max-w-full opacity-90"
-              />
-            </div>
+            <img
+              src="/hero.svg"
+              alt="margeleT"
+              className="h-auto w-full max-w-[420px] opacity-90"
+            />
+          </div>
+
           <div className="mb-10">
-            <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-5 pr-3 backdrop-blur-sm">
+            <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-6 pr-3 backdrop-blur-sm">
               <span className="truncate pr-4 text-sm font-medium text-white/90">
                 {intro.chooseLanguage}
               </span>
@@ -329,20 +328,26 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
 
           <div className="text-center">
             <div className="space-y-6">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${locale}-${index}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <div className="mb-3 text-3xl font-bold">{pages[index].title}</div>
-                  <div className="mx-auto max-w-[22rem] text-white/70">
-                    {pages[index].text}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+              <div className="mx-auto flex min-h-[150px] max-w-[24rem] items-center justify-center">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={`${locale}-${index}`}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -16 }}
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                    className="w-full"
+                  >
+                    <div className="mb-3 text-3xl font-bold leading-tight">
+                      {pages[index].title}
+                    </div>
+
+                    <div className="mx-auto max-w-[22rem] text-base leading-7 text-white/70">
+                      {pages[index].text}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
               <div className="flex justify-center gap-2">
                 {pages.map((_, i: number) => (
