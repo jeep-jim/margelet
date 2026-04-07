@@ -43,12 +43,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Choose your language",
-        text: "The interface and content can adapt to your selected market.",
+        text: "The interface and content automatically adapt to your selected country.",
       },
     ],
     next: "Next",
     enter: "Enter",
   },
+
   ru: {
     chooseLanguage: "Выбрать язык",
     slides: [
@@ -66,12 +67,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Выбирай свой язык",
-        text: "Интерфейс и контент могут подстраиваться под выбранную страну.",
+        text: "Интерфейс и контент автоматически подстраиваются под выбранную страну.",
       },
     ],
     next: "Далее",
     enter: "Войти",
   },
+
   de: {
     chooseLanguage: "Sprache wählen",
     slides: [
@@ -89,12 +91,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Wähle deine Sprache",
-        text: "Interface und Content können sich an dein ausgewähltes Land anpassen.",
+        text: "Interface und Inhalte passen sich automatisch deinem ausgewählten Land an.",
       },
     ],
     next: "Weiter",
     enter: "Betreten",
   },
+
   es: {
     chooseLanguage: "Elegir idioma",
     slides: [
@@ -112,12 +115,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Elige tu idioma",
-        text: "La interfaz y el contenido pueden adaptarse a tu país seleccionado.",
+        text: "La interfaz y el contenido se adaptan automáticamente a tu país seleccionado.",
       },
     ],
     next: "Siguiente",
     enter: "Entrar",
   },
+
   tr: {
     chooseLanguage: "Dil seç",
     slides: [
@@ -135,12 +139,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Dilini seç",
-        text: "Arayüz ve içerik seçtiğin ülkeye göre uyarlanabilir.",
+        text: "Arayüz ve içerik seçtiğin ülkeye otomatik olarak uyum sağlar.",
       },
     ],
     next: "İleri",
     enter: "Giriş",
   },
+
   fr: {
     chooseLanguage: "Choisir la langue",
     slides: [
@@ -158,12 +163,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Choisis ta langue",
-        text: "L’interface et le contenu peuvent s’adapter au pays sélectionné.",
+        text: "L’interface et le contenu s’adaptent automatiquement au pays sélectionné.",
       },
     ],
     next: "Suivant",
     enter: "Entrer",
   },
+
   it: {
     chooseLanguage: "Scegli lingua",
     slides: [
@@ -181,12 +187,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Scegli la tua lingua",
-        text: "L’interfaccia e i contenuti possono adattarsi al paese selezionato.",
+        text: "L’interfaccia e i contenuti si adattano automaticamente al paese selezionato.",
       },
     ],
     next: "Avanti",
     enter: "Entra",
   },
+
   "pt-br": {
     chooseLanguage: "Escolher idioma",
     slides: [
@@ -204,12 +211,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Escolha seu idioma",
-        text: "A interface e o conteúdo podem se adaptar ao país selecionado.",
+        text: "A interface e o conteúdo se adaptam automaticamente ao país selecionado.",
       },
     ],
     next: "Próximo",
     enter: "Entrar",
   },
+
   id: {
     chooseLanguage: "Pilih bahasa",
     slides: [
@@ -227,12 +235,13 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Pilih bahasamu",
-        text: "Antarmuka dan konten bisa menyesuaikan dengan negara yang kamu pilih.",
+        text: "Antarmuka dan konten otomatis menyesuaikan dengan negara yang kamu pilih.",
       },
     ],
     next: "Lanjut",
     enter: "Masuk",
   },
+
   pl: {
     chooseLanguage: "Wybierz język",
     slides: [
@@ -250,7 +259,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
       },
       {
         title: "Wybierz swój język",
-        text: "Interfejs i treści mogą dostosować się do wybranego kraju.",
+        text: "Interfejs i treści automatycznie dostosowują się do wybranego kraju.",
       },
     ],
     next: "Dalej",

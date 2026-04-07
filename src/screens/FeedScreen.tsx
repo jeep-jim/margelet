@@ -80,7 +80,7 @@ function readSubscriptionsCount() {
 
 function SubscriptionsHint() {
   return (
-    <div className="mx-auto mb-4 mt-4 w-full max-w-[720px] px-4">
+    <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
       <div className="flex items-center gap-4 rounded-[28px] border border-neutral-200 bg-white px-4 py-4">
         <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-neutral-950">
           <Bell className="h-5 w-5 text-neutral-950" />
@@ -106,7 +106,7 @@ function SubscriptionsBar({
   if (!items.length) return null;
 
   return (
-    <div className="mx-auto mb-4 mt-4 w-full max-w-[720px] px-4">
+    <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
       <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex gap-3">
           {items.map((item) => (
@@ -459,7 +459,7 @@ export function FeedScreen({
       ) : null}
 
       {actionError ? (
-        <div className="mx-auto mb-3 w-full max-w-[720px] px-4">
+        <div className="mx-auto mb-3 w-full max-w-[570px] px-4">
           <div className="rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
             {actionError}
           </div>
@@ -467,7 +467,7 @@ export function FeedScreen({
       ) : null}
 
       {visiblePosts.length === 0 ? (
-        <div className="mx-auto mt-2 w-full max-w-[720px] px-4">
+        <div className="mx-auto mt-2 w-full max-w-[570px] px-4">
           <div className="rounded-[28px] border border-neutral-200 bg-white px-5 py-8 text-center">
             <div className="text-lg font-semibold text-neutral-950">
               Ничего не найдено
@@ -489,7 +489,7 @@ export function FeedScreen({
         </div>
       ) : null}
 
-      <div className="mx-auto w-full max-w-[720px]">
+      <div className="mx-auto w-full max-w-[570px]">
         {visiblePosts.map((post) => {
           const ownerTelegramId = post.addedBy?.telegramId ?? null;
 
