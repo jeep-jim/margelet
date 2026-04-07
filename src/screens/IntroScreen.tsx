@@ -293,18 +293,18 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] px-4 text-white">
-      <div className="flex min-h-screen items-center justify-center py-8">
+      <div className="flex min-h-screen items-start justify-center pt-4 pb-6 sm:pt-6">
         <div className="w-full max-w-md">
-          <div className="mb-5 flex justify-center">
+          <div className="mb-4 flex justify-center">
             <img
               src="/hero.webp"
               alt="margeleT"
-              className="h-auto w-full max-w-[420px] opacity-90"
+              className="h-auto w-full max-w-[360px] sm:max-w-[400px] opacity-90"
             />
           </div>
 
-          <div className="mb-6">
-            <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-6 pr-3 backdrop-blur-sm">
+          <div className="mb-5">
+            <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-5 pr-3 backdrop-blur-sm">
               <span className="truncate pr-4 text-sm font-medium text-white/90">
                 {intro.chooseLanguage}
               </span>
@@ -337,7 +337,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
 
           <div className="text-center">
             <div className="space-y-4">
-              <div className="mx-auto flex min-h-[110px] max-w-[24rem] items-center justify-center">
+              <div className="mx-auto flex min-h-[116px] max-w-[24rem] items-center justify-center sm:min-h-[126px]">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={`${locale}-${index}`}
@@ -347,7 +347,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                     transition={{ duration: 0.22, ease: "easeOut" }}
                     className="w-full"
                   >
-                    <div className="mb-3 text-3xl font-bold leading-tight">
+                    <div className="mb-3 text-[clamp(2rem,5vw,3rem)] font-bold leading-tight">
                       {pages[index].title}
                     </div>
 
@@ -369,9 +369,9 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                 ))}
               </div>
 
-              <div>
+              <div className="flex justify-center">
                 <Button
-                  className="rounded-2xl"
+                  className="min-w-[132px] rounded-2xl px-8 py-3 text-base"
                   onClick={() => {
                     if (isLast) {
                       onFinish();

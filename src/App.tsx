@@ -540,9 +540,9 @@ const [locale, setLocale] = useState<Locale>("en");
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      {(!shouldShowIntro && current !== "intro") ? (
+      {(!shouldShowIntro && current !== "intro" && current !== "admin") ? (
         <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
-      ) : null}
+      ) : null}      
 
       {shouldShowIntro ? (
         <IntroScreen
