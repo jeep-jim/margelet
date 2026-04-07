@@ -923,14 +923,6 @@ export function CreatorScreen({
                 {copy.introText}
               </div>
 
-              <div className="mt-4">
-                <LocaleDropdown
-                  label={copy.introLanguageLabel}
-                  value={introLocale}
-                  onChange={setIntroLocale}
-                />
-              </div>
-
               <button
                 type="button"
                 onClick={handleReplayIntro}
