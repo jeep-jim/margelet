@@ -162,7 +162,7 @@ const [locale, setLocale] = useState<Locale>("en");
   const [current, setCurrent] = useState<TabId>("feed");
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
-  const [showFeedLoadingHint, setShowFeedLoadingHint] = useState(false);
+  const [showFeedLoadingHint ] = useState(false);
   const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
   const [selectedSourceHandle, setSelectedSourceHandle] = useState<string | null>(null);
   const [accessInfo, setAccessInfo] = useState<AccessInfo | null>(null);
@@ -350,21 +350,9 @@ const [locale, setLocale] = useState<Locale>("en");
 
   const loadFeed = async () => {
     setIsFeedLoading(true);
-    setShowFeedLoadingHint(false);
-
-    const controller = new AbortController();
-
-    const hintTimer = window.setTimeout(() => {
-      setShowFeedLoadingHint(true);
-    }, 1200);
-
-    const timeoutId = window.setTimeout(() => {
-      controller.abort();
-    }, 8000);
 
     try {
       const res = await fetch("/api/feed", {
-        signal: controller.signal,
         cache: "no-store",
       });
 
@@ -378,10 +366,7 @@ const [locale, setLocale] = useState<Locale>("en");
       console.error("Failed to load feed", error);
       setServerPosts([]);
     } finally {
-      window.clearTimeout(hintTimer);
-      window.clearTimeout(timeoutId);
       setIsFeedLoading(false);
-      setShowFeedLoadingHint(false);
     }
   };
 
