@@ -3,10 +3,11 @@ import type { Locale } from "../../types/app";
 import type { ContentTag } from "../../types/app";
 import { TAG_OPTIONS } from "./feed.constants";
 import type { FeedHeaderProps } from "./feed.types";
+import { getTagLabel } from "./feed.utils";
 
-const CONTENT_TAG_OPTIONS: Array<{ value: ContentTag; label: string }> =
+const CONTENT_TAG_OPTIONS: Array<{ value: ContentTag; label?: string }> =
   TAG_OPTIONS.filter(
-    (tag): tag is { value: ContentTag; label: string } => tag.value !== "all"
+    (tag): tag is { value: ContentTag; label?: string } => tag.value !== "all"
   );
 
 type FeedHeaderCopy = {
@@ -181,7 +182,7 @@ export function FeedHeader({
                       : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
                   }`}
                 >
-                  {tag.label}
+                  {getTagLabel(tag.value, locale)}
                 </button>
               );
             })}

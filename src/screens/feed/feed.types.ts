@@ -4,7 +4,7 @@ export type ViewerDirection = "next" | "prev" | null;
 
 export type FeedOption<T extends string> = {
   value: T;
-  label: string;
+  label?: string;
 };
 
 export type FeedScreenProps = {
