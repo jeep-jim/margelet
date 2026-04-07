@@ -3,11 +3,11 @@ import {
   Info,
   LogOut,
   Globe,
-  Sparkles,
   Send,
   Plus,
   ChevronDown,
   Check,
+  Sparkles,
 } from "lucide-react";
 import {
   useMemo,
@@ -52,14 +52,11 @@ type ScreenCopy = {
   authTitle: string;
   authText: string;
   authButton: string;
+  introButtonShort: string;
   connectedToTelegram: string;
   logout: string;
   languageTitle: string;
   languageDropdownLabel: string;
-  introTitle: string;
-  introText: string;
-  introButton: string;
-  introLanguageLabel: string;
   channelTitle: string;
   channelText: string;
   channelPlaceholder: string;
@@ -82,15 +79,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Authorize to manage your cabinet, view liked posts and submit a request to add your own channel.",
     authButton: "Authorize",
+    introButtonShort: "Intro",
     connectedToTelegram: "Connected to Telegram",
     logout: "Log out",
     languageTitle: "Choose language",
     languageDropdownLabel: "Website language",
-    introTitle: "Intro",
-    introText:
-      "Here you can open the intro again and review texts, slides and future artworks.",
-    introButton: "Watch intro again",
-    introLanguageLabel: "Intro language",
     channelTitle: "Submit your channel",
     channelText:
       "Paste a Telegram channel link. It will go to moderation and will not be published automatically.",
@@ -114,15 +107,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Авторизуйся, чтобы управлять своим кабинетом, смотреть понравившиеся публикации и отправлять заявку на добавление собственного канала.",
     authButton: "Авторизоваться",
+    introButtonShort: "Intro",
     connectedToTelegram: "Подключено к Telegram",
     logout: "Выйти",
     languageTitle: "Выбор языка",
     languageDropdownLabel: "Язык сайта",
-    introTitle: "Интро",
-    introText:
-      "Здесь можно снова открыть первое приветственное интро и проверить тексты, слайды и будущие арты.",
-    introButton: "Смотреть интро снова",
-    introLanguageLabel: "Язык интро",
     channelTitle: "Подать заявку на добавление своего канала",
     channelText:
       "Вставь ссылку на Telegram-канал. Канал не публикуется автоматически — он должен пройти модерацию.",
@@ -146,15 +135,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Melde dich an, um dein Cabinet zu verwalten, gelikte Beiträge zu sehen und deinen Kanal zur Moderation einzureichen.",
     authButton: "Autorisieren",
+    introButtonShort: "Intro",
     connectedToTelegram: "Mit Telegram verbunden",
     logout: "Abmelden",
     languageTitle: "Sprache wählen",
     languageDropdownLabel: "Webseitensprache",
-    introTitle: "Intro",
-    introText:
-      "Hier kannst du das Intro erneut öffnen und Texte, Slides und künftige Artworks prüfen.",
-    introButton: "Intro erneut ansehen",
-    introLanguageLabel: "Intro-Sprache",
     channelTitle: "Eigenen Kanal einreichen",
     channelText:
       "Füge einen Telegram-Kanal-Link ein. Er geht in die Moderation und wird nicht automatisch veröffentlicht.",
@@ -178,15 +163,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Autorízate para gestionar tu cabinet, ver publicaciones marcadas y enviar tu canal a moderación.",
     authButton: "Autorizar",
+    introButtonShort: "Intro",
     connectedToTelegram: "Conectado a Telegram",
     logout: "Salir",
     languageTitle: "Elegir idioma",
     languageDropdownLabel: "Idioma del sitio",
-    introTitle: "Intro",
-    introText:
-      "Aquí puedes abrir de nuevo la intro y revisar textos, diapositivas y futuros artes.",
-    introButton: "Ver intro otra vez",
-    introLanguageLabel: "Idioma de la intro",
     channelTitle: "Enviar tu canal",
     channelText:
       "Pega un enlace de canal de Telegram. Irá a moderación y no se publicará automáticamente.",
@@ -210,15 +191,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Kabinetini yönetmek, beğendiğin gönderileri görmek ve kanalını moderasyona göndermek için giriş yap.",
     authButton: "Yetkilendir",
+    introButtonShort: "Intro",
     connectedToTelegram: "Telegram bağlı",
     logout: "Çıkış yap",
     languageTitle: "Dil seç",
     languageDropdownLabel: "Site dili",
-    introTitle: "Intro",
-    introText:
-      "Buradan intro'yu tekrar açabilir, metinleri, slaytları ve gelecekteki görselleri kontrol edebilirsin.",
-    introButton: "Intro'yu tekrar izle",
-    introLanguageLabel: "Intro dili",
     channelTitle: "Kanalını gönder",
     channelText:
       "Telegram kanal bağlantısını yapıştır. Moderasyona gider ve otomatik yayınlanmaz.",
@@ -242,15 +219,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Connecte-toi pour gérer ton cabinet, voir les publications aimées et envoyer ton canal à la modération.",
     authButton: "Autoriser",
+    introButtonShort: "Intro",
     connectedToTelegram: "Connecté à Telegram",
     logout: "Se déconnecter",
     languageTitle: "Choisir la langue",
     languageDropdownLabel: "Langue du site",
-    introTitle: "Intro",
-    introText:
-      "Ici tu peux rouvrir l’intro et vérifier les textes, les slides et les futurs artworks.",
-    introButton: "Revoir l’intro",
-    introLanguageLabel: "Langue de l’intro",
     channelTitle: "Envoyer ton canal",
     channelText:
       "Colle un lien de canal Telegram. Il partira en modération et ne sera pas publié automatiquement.",
@@ -274,15 +247,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Accedi per gestire il tuo cabinet, vedere i post piaciuti e inviare il tuo canale alla moderazione.",
     authButton: "Autorizza",
+    introButtonShort: "Intro",
     connectedToTelegram: "Connesso a Telegram",
     logout: "Esci",
     languageTitle: "Scegli lingua",
     languageDropdownLabel: "Lingua del sito",
-    introTitle: "Intro",
-    introText:
-      "Qui puoi aprire di nuovo l’intro e controllare testi, slide e futuri artwork.",
-    introButton: "Guarda di nuovo l’intro",
-    introLanguageLabel: "Lingua dell’intro",
     channelTitle: "Invia il tuo canale",
     channelText:
       "Incolla un link di un canale Telegram. Andrà in moderazione e non sarà pubblicato automaticamente.",
@@ -306,15 +275,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Entre para gerenciar seu cabinet, ver posts curtidos e enviar seu canal para moderação.",
     authButton: "Autorizar",
+    introButtonShort: "Intro",
     connectedToTelegram: "Conectado ao Telegram",
     logout: "Sair",
     languageTitle: "Escolher idioma",
     languageDropdownLabel: "Idioma do site",
-    introTitle: "Intro",
-    introText:
-      "Aqui você pode abrir a intro novamente e revisar textos, slides e futuras artes.",
-    introButton: "Ver intro novamente",
-    introLanguageLabel: "Idioma da intro",
     channelTitle: "Enviar seu canal",
     channelText:
       "Cole o link de um canal do Telegram. Ele vai para moderação e não será publicado automaticamente.",
@@ -338,15 +303,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Masuk untuk mengelola cabinet, melihat postingan yang disukai dan mengirim kanalmu ke moderasi.",
     authButton: "Otorisasi",
+    introButtonShort: "Intro",
     connectedToTelegram: "Terhubung ke Telegram",
     logout: "Keluar",
     languageTitle: "Pilih bahasa",
     languageDropdownLabel: "Bahasa situs",
-    introTitle: "Intro",
-    introText:
-      "Di sini kamu bisa membuka intro lagi dan memeriksa teks, slide, dan artwork selanjutnya.",
-    introButton: "Lihat intro lagi",
-    introLanguageLabel: "Bahasa intro",
     channelTitle: "Kirim kanalmu",
     channelText:
       "Tempel tautan kanal Telegram. Kanal akan masuk moderasi dan tidak dipublikasikan otomatis.",
@@ -370,15 +331,11 @@ const COPY: Record<Locale, ScreenCopy> = {
     authText:
       "Zaloguj się, aby zarządzać swoim cabinet, oglądać polubione posty i wysłać kanał do moderacji.",
     authButton: "Autoryzuj",
+    introButtonShort: "Intro",
     connectedToTelegram: "Połączono z Telegramem",
     logout: "Wyloguj się",
     languageTitle: "Wybierz język",
     languageDropdownLabel: "Język strony",
-    introTitle: "Intro",
-    introText:
-      "Tutaj możesz ponownie otworzyć intro i sprawdzić teksty, slajdy oraz przyszłe arty.",
-    introButton: "Obejrzyj intro ponownie",
-    introLanguageLabel: "Język intro",
     channelTitle: "Wyślij swój kanał",
     channelText:
       "Wklej link do kanału Telegram. Trafi do moderacji i nie zostanie opublikowany automatycznie.",
@@ -461,11 +418,19 @@ function readLocaleFromStorage(key: string, fallback: Locale): Locale {
 }
 
 function buildAlphabeticalLocales() {
-  return [...SITE_LOCALES].sort((a, b) =>
+  const sorted = [...SITE_LOCALES].sort((a, b) =>
     a.nativeLabel.localeCompare(b.nativeLabel, undefined, {
       sensitivity: "base",
-    }),
+    })
   );
+
+  const ruIndex = sorted.findIndex((item) => item.code === "ru");
+  if (ruIndex === -1) return sorted;
+
+  const [ru] = sorted.splice(ruIndex, 1);
+  sorted.splice(Math.min(3, sorted.length), 0, ru);
+
+  return sorted;
 }
 
 function TopIconButton({
@@ -543,7 +508,6 @@ function LocaleDropdown({
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (!rootRef.current) return;
-
       if (!rootRef.current.contains(event.target as Node)) {
         setOpen(false);
       }
@@ -616,7 +580,13 @@ function LocaleDropdown({
   );
 }
 
-function AuthBlock({ copy }: { copy: ScreenCopy }) {
+function AuthBlock({
+  copy,
+  onReplayIntro,
+}: {
+  copy: ScreenCopy;
+  onReplayIntro: () => void;
+}) {
   return (
     <div className="overflow-hidden rounded-[32px] border border-neutral-200 bg-white text-neutral-950 shadow-sm">
       <div className="px-5 py-5">
@@ -628,15 +598,26 @@ function AuthBlock({ copy }: { copy: ScreenCopy }) {
           {copy.authText}
         </div>
 
-        <button
-          onClick={() => {
-            window.location.href = getTelegramAuthUrl();
-          }}
-          className="mt-5 inline-flex items-center rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-neutral-800"
-          type="button"
-        >
-          {copy.authButton}
-        </button>
+        <div className="mt-5 flex items-center gap-3">
+          <button
+            onClick={() => {
+              window.location.href = getTelegramAuthUrl();
+            }}
+            className="inline-flex items-center rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-neutral-800"
+            type="button"
+          >
+            {copy.authButton}
+          </button>
+
+          <button
+            onClick={onReplayIntro}
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2.5 text-sm font-medium text-neutral-800 transition hover:bg-neutral-100"
+            type="button"
+          >
+            <Sparkles className="h-4 w-4" />
+            {copy.introButtonShort}
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -675,9 +656,7 @@ function ProfileBlock({
             </div>
 
             <div className="truncate text-sm text-neutral-500">
-              {user.username
-                ? `@${user.username}`
-                : copy.telegramUserFallback}
+              {user.username ? `@${user.username}` : copy.telegramUserFallback}
             </div>
           </div>
         </div>
@@ -789,7 +768,7 @@ export function CreatorScreen({
   const [introLocale, setIntroLocale] = useState<Locale>(() =>
     typeof window === "undefined"
       ? locale
-      : readLocaleFromStorage(INTRO_LANGUAGE_STORAGE_KEY, locale),
+      : readLocaleFromStorage(INTRO_LANGUAGE_STORAGE_KEY, locale)
   );
 
   useEffect(() => {
@@ -857,9 +836,9 @@ export function CreatorScreen({
 
   return (
     <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
-      <div className="mx-auto max-w-[570px] space-y-6">
+      <div className="mx-auto max-w-[720px] space-y-6">
         {!user ? (
-          <AuthBlock copy={copy} />
+          <AuthBlock copy={copy} onReplayIntro={handleReplayIntro} />
         ) : (
           <ProfileBlock user={user} copy={copy} onLogout={handleLogout} />
         )}
@@ -911,25 +890,6 @@ export function CreatorScreen({
                 value={locale}
                 onChange={handleChangeLocale}
               />
-            </div>
-
-            <div className="rounded-[28px] border border-neutral-200 bg-white p-6">
-              <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
-                <Sparkles className="h-4 w-4" />
-                {copy.introTitle}
-              </div>
-
-              <div className="text-sm leading-6 text-neutral-600">
-                {copy.introText}
-              </div>
-
-              <button
-                type="button"
-                onClick={handleReplayIntro}
-                className="mt-4 inline-flex items-center rounded-full bg-neutral-950 px-4 py-2 text-sm text-white transition hover:bg-neutral-800"
-              >
-                {copy.introButton}
-              </button>
             </div>
           </div>
         ) : null}
