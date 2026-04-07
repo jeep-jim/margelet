@@ -58,7 +58,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
         text: "Глобальная лента настоящего контента из Telegram.",
       },
       {
-        title: "Только оригинальные источники",
+        title: "Только открытые источники",
         text: "Каждый пост всегда связан со своим Telegram-каналом.",
       },
       {
