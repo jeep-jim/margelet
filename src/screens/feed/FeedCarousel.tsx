@@ -131,8 +131,8 @@ export function MediaDots({
                   ? "w-5 bg-white"
                   : "w-5 bg-neutral-900"
                 : light
-                ? "w-2.5 bg-white/55"
-                : "w-2.5 bg-neutral-900/35"
+                  ? "w-2.5 bg-white/55"
+                  : "w-2.5 bg-neutral-900/35"
             }`}
             aria-label={`media ${index + 1}`}
           />
@@ -210,17 +210,17 @@ export function FeedCarousel({
 
   const rootClass =
     mode === "adaptive"
-      ? `relative flex w-full max-w-full items-center justify-center overflow-hidden ${backgroundClass} ${aspectClass}`
+      ? `relative flex w-full max-w-full items-start justify-center overflow-hidden ${backgroundClass}`
       : `relative w-full overflow-hidden ${backgroundClass} ${aspectClass}`;
 
   const clickAreaClass =
     mode === "adaptive"
       ? enableFullscreen
-        ? "flex w-full max-w-full items-center justify-center overflow-hidden cursor-zoom-in"
-        : "flex w-full max-w-full items-center justify-center overflow-hidden"
+        ? "flex w-full max-w-full items-start justify-center overflow-hidden cursor-zoom-in"
+        : "flex w-full max-w-full items-start justify-center overflow-hidden"
       : enableFullscreen
-      ? "h-full w-full cursor-zoom-in"
-      : "h-full w-full";
+        ? "h-full w-full cursor-zoom-in"
+        : "h-full w-full";
 
   return (
     <>

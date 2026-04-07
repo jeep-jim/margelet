@@ -9,7 +9,7 @@ import {
   Music4,
   Send,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { IngestedPost } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
@@ -203,8 +203,8 @@ function linkifyText(text: string) {
       part.startsWith("http")
         ? part
         : part.startsWith("t.me/")
-        ? `https://${part}`
-        : `https://${part}`;
+          ? `https://${part}`
+          : `https://${part}`;
 
     return (
       <a
@@ -436,6 +436,8 @@ export function FeedTextReaderModal({
   const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
   const [mediaIndex, setMediaIndex] = useState(0);
   const [subscribed, setSubscribed] = useState(false);
+  const [muted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const visualMedia = media.filter(
     (item) => item.kind === "image" || item.kind === "video"
@@ -448,6 +450,10 @@ export function FeedTextReaderModal({
     if (!post) return;
     setSubscribed(getSubs().includes(post.source.handle));
   }, [post]);
+
+  useEffect(() => {
+    setMediaIndex(0);
+  }, [post?.id]);
 
   useEffect(() => {
     if (!post) return;
@@ -559,8 +565,11 @@ export function FeedTextReaderModal({
                     controlsTone="dark"
                     fit="contain"
                     mode="adaptive"
-                    maxMediaHeightClass="max-h-full"
+                    maxMediaHeightClass="max-h-[60vh]"
                     backgroundClass="bg-transparent"
+                    mediaActive
+                    muted={muted}
+                    videoRef={videoRef}
                     enableFullscreen
                   />
                 </div>

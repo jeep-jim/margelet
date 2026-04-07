@@ -196,7 +196,7 @@ export function FeedMediaCard({
         videoRef={videoRef}
         fit="contain"
         mode="adaptive"
-        maxMediaHeightClass="max-h-full"
+        maxMediaHeightClass="max-h-[460px]"
         backgroundClass="bg-white"
         enableFullscreen={post.contentType !== "video"}
         onMediaError={tryRefreshMedia}
