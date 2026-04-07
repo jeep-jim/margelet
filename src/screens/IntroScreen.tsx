@@ -288,6 +288,13 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
     <div className="min-h-screen bg-[#0a0a0f] px-4 text-white">
       <div className="flex min-h-screen items-center justify-center">
         <div className="w-full max-w-md">
+          <div className="mb-8 flex justify-center">
+              <img
+                src="/hero.svg"
+                alt="margeleT"
+                className="w-[220px] max-w-full opacity-90"
+              />
+            </div>
           <div className="mb-10">
             <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-5 pr-3 backdrop-blur-sm">
               <span className="truncate pr-4 text-sm font-medium text-white/90">
