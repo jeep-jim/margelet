@@ -205,26 +205,34 @@ export function FeedViewer({
   }, [isMuted, viewerMediaIndex, activePost?.id]);
 
   useEffect(() => {
-    if (!activeIsVideo) return;
+    const node = videoRef.current;
+    if (!node || activeItem?.kind !== "video") return;
 
-    const raf = window.requestAnimationFrame(() => {
+    if (isPlaying) {
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+    } else {
+      node.pause();
+    }
+  }, [isPlaying, activeItem?.id, activeItem?.kind]);
+
+  useEffect(() => {
+    if (!activeIsVideo) return;
+    if (!isPlaying) return;
+
+    const timer = window.setTimeout(() => {
       const node = videoRef.current;
       if (!node) return;
-
-      node.currentTime = 0;
-
-      if (isPlaying) {
-        const promise = node.play();
-        if (promise && typeof promise.catch === "function") {
-          promise.catch(() => {});
-        }
-      } else {
-        node.pause();
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
       }
-    });
+    }, 80);
 
-    return () => window.cancelAnimationFrame(raf);
-  }, [activeItem?.id, activeIsVideo, isPlaying]);
+    return () => window.clearTimeout(timer);
+  }, [viewerMediaIndex, activeItem?.id, activeIsVideo, isPlaying]);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {

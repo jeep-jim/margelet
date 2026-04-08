@@ -107,14 +107,12 @@ export function FeedMediaCard({
   const [retryUsed, setRetryUsed] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const centerTimerRef = useRef<number | null>(null);
 
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [showCenterControl, setShowCenterControl] = useState(false);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
@@ -164,7 +162,6 @@ export function FeedMediaCard({
       if (!node) return;
       node.pause();
       setIsVideoPlaying(false);
-      setShowCenterControl(true);
     };
 
     window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
@@ -177,20 +174,11 @@ export function FeedMediaCard({
   }, []);
 
   useEffect(() => {
-    return () => {
-      if (centerTimerRef.current) {
-        window.clearTimeout(centerTimerRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
     const node = videoRef.current;
     if (!node || activeItem?.kind !== "video") {
       setCurrentTime(0);
       setDuration(0);
       setIsVideoPlaying(false);
-      setShowCenterControl(false);
       return;
     }
 
@@ -205,12 +193,10 @@ export function FeedMediaCard({
 
     const onPlay = () => {
       setIsVideoPlaying(true);
-      setShowCenterControl(false);
     };
 
     const onPause = () => {
       setIsVideoPlaying(false);
-      setShowCenterControl(true);
     };
 
     node.addEventListener("loadedmetadata", syncMeta);
@@ -222,7 +208,6 @@ export function FeedMediaCard({
     syncMeta();
     syncTime();
     setIsVideoPlaying(!node.paused);
-    setShowCenterControl(node.paused);
 
     return () => {
       node.removeEventListener("loadedmetadata", syncMeta);
@@ -266,16 +251,6 @@ export function FeedMediaCard({
     onOpen();
   };
 
-  const pulseCenterControl = () => {
-    setShowCenterControl(true);
-    if (centerTimerRef.current) {
-      window.clearTimeout(centerTimerRef.current);
-    }
-    centerTimerRef.current = window.setTimeout(() => {
-      setShowCenterControl(false);
-    }, 650);
-  };
-
   const togglePlay = () => {
     const node = videoRef.current;
     if (!node || !activeIsVideo) return;
@@ -285,14 +260,12 @@ export function FeedMediaCard({
       if (promise && typeof promise.catch === "function") {
         promise.catch(() => {});
       }
-      setIsVideoPlaying(true);
       setForcedPaused(false);
-      pulseCenterControl();
+      setIsVideoPlaying(true);
     } else {
       node.pause();
-      setIsVideoPlaying(false);
       setForcedPaused(true);
-      setShowCenterControl(true);
+      setIsVideoPlaying(false);
     }
   };
 
@@ -325,14 +298,16 @@ export function FeedMediaCard({
         />
       ) : null}
 
-      {activeIsVideo && showCenterControl ? (
+      {activeIsVideo ? (
         <button
           type="button"
           onClick={(event) => {
             event.stopPropagation();
             togglePlay();
           }}
-          className="absolute left-1/2 top-1/2 z-20 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+          className={`absolute left-1/2 top-1/2 z-20 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-white backdrop-blur-sm transition ${
+            isVideoPlaying ? "bg-black/35 opacity-0" : "bg-black/45 opacity-100"
+          }`}
           aria-label={isVideoPlaying ? copy.pause : copy.play}
         >
           {isVideoPlaying ? (
