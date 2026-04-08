@@ -46,6 +46,7 @@ function HybridMedia({
   if (item.kind === "video") {
     return (
       <video
+        key={item.id}
         ref={videoRef}
         src={item.url}
         poster={item.poster || undefined}
@@ -67,6 +68,7 @@ function HybridMedia({
   if (item.kind === "image") {
     return (
       <img
+        key={item.id}
         src={item.url}
         alt=""
         className={mediaClass}
@@ -224,8 +226,8 @@ export function FeedCarousel({
         ? "flex w-full max-w-full items-start justify-center overflow-hidden cursor-zoom-in"
         : "flex w-full max-w-full items-start justify-center overflow-hidden"
       : enableFullscreen
-        ? "h-full w-full cursor-zoom-in"
-        : "h-full w-full";
+      ? "h-full w-full cursor-zoom-in"
+      : "h-full w-full";
 
   return (
     <>
@@ -373,10 +375,11 @@ export function FeedCarousel({
               item={fullscreenItem}
               fit="contain"
               muted={muted}
+              videoRef={videoRef}
               mode="adaptive"
               maxMediaHeightClass="max-h-[88vh]"
-              nativeVideoControls={false}
-              blockVideoClickPropagation={false}
+              nativeVideoControls={nativeVideoControls}
+              blockVideoClickPropagation={blockVideoClickPropagation}
               onMediaError={onMediaError}
             />
           </div>

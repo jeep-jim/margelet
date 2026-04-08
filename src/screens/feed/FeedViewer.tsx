@@ -240,7 +240,7 @@ export function FeedViewer({
         node.pause();
         setIsPlaying(false);
       }
-    }, 120);
+    }, 220);
 
     return () => window.clearTimeout(timer);
   }, [viewerMediaIndex, activeItem?.id, activeIsVideo, setIsPlaying]);
@@ -351,6 +351,7 @@ export function FeedViewer({
             onClick={togglePlay}
           >
             <FeedCarousel
+              key={`${activePost.id}-${viewerMediaIndex}-${activeItem?.id ?? "media"}`}
               items={media}
               aspectClass="h-full"
               activeIndex={viewerMediaIndex}

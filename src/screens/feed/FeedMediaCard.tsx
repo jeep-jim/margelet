@@ -191,13 +191,8 @@ export function FeedMediaCard({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
-    const onPlay = () => {
-      setIsVideoPlaying(true);
-    };
-
-    const onPause = () => {
-      setIsVideoPlaying(false);
-    };
+    const onPlay = () => setIsVideoPlaying(true);
+    const onPause = () => setIsVideoPlaying(false);
 
     node.addEventListener("loadedmetadata", syncMeta);
     node.addEventListener("timeupdate", syncTime);
@@ -291,33 +286,31 @@ export function FeedMediaCard({
       />
 
       {activeIsVideo ? (
-        <div
-          className="absolute inset-x-0 top-0 bottom-[58px] z-10 cursor-pointer"
-          onClick={handleOpen}
-          aria-hidden="true"
-        />
-      ) : null}
+        <>
+          <div
+            className="absolute left-0 right-0 top-0 bottom-[58px] z-10 cursor-pointer"
+            onClick={handleOpen}
+            aria-hidden="true"
+          />
 
-      {activeIsVideo ? (
-        <button
-          type="button"
-          onClick={(event) => {
-            event.stopPropagation();
-            togglePlay();
-          }}
-          className={`absolute left-1/2 top-1/2 z-20 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-white backdrop-blur-sm transition ${
-            isVideoPlaying
-              ? "bg-black/35 opacity-0 pointer-events-none"
-              : "bg-black/45 opacity-100 pointer-events-auto"
-          }`}
-          aria-label={isVideoPlaying ? copy.pause : copy.play}
-        >
-          {isVideoPlaying ? (
-            <Pause className="h-6 w-6" />
-          ) : (
-            <Play className="ml-0.5 h-6 w-6" />
-          )}
-        </button>
+          <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                togglePlay();
+              }}
+              className="flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+              aria-label={isVideoPlaying ? copy.pause : copy.play}
+            >
+              {isVideoPlaying ? (
+                <Pause className="h-6 w-6" />
+              ) : (
+                <Play className="ml-0.5 h-6 w-6" />
+              )}
+            </button>
+          </div>
+        </>
       ) : null}
 
       {activeIsVideo ? (
