@@ -256,9 +256,9 @@ export function FeedMediaCard({
     if (!node || !activeIsVideo) return;
 
     if (node.paused) {
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
+      const playPromise = node.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
       }
       setForcedPaused(false);
       setIsVideoPlaying(true);
@@ -306,7 +306,9 @@ export function FeedMediaCard({
             togglePlay();
           }}
           className={`absolute left-1/2 top-1/2 z-20 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full text-white backdrop-blur-sm transition ${
-            isVideoPlaying ? "bg-black/35 opacity-0" : "bg-black/45 opacity-100"
+            isVideoPlaying
+              ? "bg-black/35 opacity-0 pointer-events-none"
+              : "bg-black/45 opacity-100 pointer-events-auto"
           }`}
           aria-label={isVideoPlaying ? copy.pause : copy.play}
         >

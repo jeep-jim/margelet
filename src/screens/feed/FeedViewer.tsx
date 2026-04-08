@@ -118,6 +118,7 @@ export function FeedViewer({
   const wheelLockRef = useRef(false);
   const touchStartYRef = useRef<number | null>(null);
   const centerTimerRef = useRef<number | null>(null);
+  const autoplayWantedRef = useRef(isPlaying);
 
   const [expandedText, setExpandedText] = useState(false);
   const [showCenterControl, setShowCenterControl] = useState(false);
@@ -132,6 +133,10 @@ export function FeedViewer({
   const activeItem =
     media[Math.min(viewerMediaIndex, Math.max(media.length - 1, 0))] || null;
   const activeIsVideo = activeItem?.kind === "video";
+
+  useEffect(() => {
+    autoplayWantedRef.current = isPlaying;
+  }, [isPlaying]);
 
   useEffect(() => {
     if (!activePost) return;
@@ -209,9 +214,9 @@ export function FeedViewer({
     if (!node || activeItem?.kind !== "video") return;
 
     if (isPlaying) {
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
+      const playPromise = node.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
       }
     } else {
       node.pause();
@@ -220,19 +225,25 @@ export function FeedViewer({
 
   useEffect(() => {
     if (!activeIsVideo) return;
-    if (!isPlaying) return;
 
     const timer = window.setTimeout(() => {
       const node = videoRef.current;
       if (!node) return;
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
+
+      if (autoplayWantedRef.current) {
+        setIsPlaying(true);
+        const playPromise = node.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+          playPromise.catch(() => {});
+        }
+      } else {
+        node.pause();
+        setIsPlaying(false);
       }
-    }, 80);
+    }, 120);
 
     return () => window.clearTimeout(timer);
-  }, [viewerMediaIndex, activeItem?.id, activeIsVideo, isPlaying]);
+  }, [viewerMediaIndex, activeItem?.id, activeIsVideo, setIsPlaying]);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -273,13 +284,15 @@ export function FeedViewer({
     if (!node || !activeIsVideo) return;
 
     if (node.paused) {
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
+      autoplayWantedRef.current = true;
+      const playPromise = node.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
       }
       setIsPlaying(true);
       pulseCenterControl();
     } else {
+      autoplayWantedRef.current = false;
       node.pause();
       setIsPlaying(false);
       setShowCenterControl(true);
