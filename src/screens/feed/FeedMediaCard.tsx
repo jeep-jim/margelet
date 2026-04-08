@@ -1,4 +1,4 @@
-import { Volume2, VolumeX } from "lucide-react";
+import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FeedMediaCardProps } from "./feed.types";
 import { FeedCarousel } from "./FeedCarousel";
@@ -28,6 +28,13 @@ function writeGlobalMuted(value: boolean) {
   );
 }
 
+function formatTime(seconds: number) {
+  const safe = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+  const mins = Math.floor(safe / 60);
+  const secs = safe % 60;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
+
 export function FeedMediaCard({
   locale,
   post,
@@ -37,16 +44,61 @@ export function FeedMediaCard({
   isCardVisible = false,
 }: FeedMediaCardProps) {
   const COPY = {
-    en: { mute: "Mute", unmute: "Unmute" },
-    ru: { mute: "Выключить звук", unmute: "Включить звук" },
-    de: { mute: "Ton aus", unmute: "Ton an" },
-    es: { mute: "Silenciar", unmute: "Activar sonido" },
-    tr: { mute: "Sesi kapat", unmute: "Sesi aç" },
-    fr: { mute: "Couper le son", unmute: "Activer le son" },
-    it: { mute: "Disattiva audio", unmute: "Attiva audio" },
-    "pt-br": { mute: "Silenciar", unmute: "Ativar som" },
-    id: { mute: "Matikan suara", unmute: "Nyalakan suara" },
-    pl: { mute: "Wycisz", unmute: "Włącz dźwięk" },
+    en: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
+    ru: {
+      mute: "Выключить звук",
+      unmute: "Включить звук",
+      play: "Воспроизвести",
+      pause: "Пауза",
+    },
+    de: {
+      mute: "Ton aus",
+      unmute: "Ton an",
+      play: "Abspielen",
+      pause: "Pause",
+    },
+    es: {
+      mute: "Silenciar",
+      unmute: "Activar sonido",
+      play: "Reproducir",
+      pause: "Pausa",
+    },
+    tr: {
+      mute: "Sesi kapat",
+      unmute: "Sesi aç",
+      play: "Oynat",
+      pause: "Duraklat",
+    },
+    fr: {
+      mute: "Couper le son",
+      unmute: "Activer le son",
+      play: "Lire",
+      pause: "Pause",
+    },
+    it: {
+      mute: "Disattiva audio",
+      unmute: "Attiva audio",
+      play: "Riproduci",
+      pause: "Pausa",
+    },
+    "pt-br": {
+      mute: "Silenciar",
+      unmute: "Ativar som",
+      play: "Reproduzir",
+      pause: "Pausar",
+    },
+    id: {
+      mute: "Matikan suara",
+      unmute: "Nyalakan suara",
+      play: "Putar",
+      pause: "Jeda",
+    },
+    pl: {
+      mute: "Wycisz",
+      unmute: "Włącz dźwięk",
+      play: "Odtwórz",
+      pause: "Pauza",
+    },
   } as const;
 
   const copy = COPY[locale] ?? COPY.en;
@@ -57,6 +109,9 @@ export function FeedMediaCard({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
@@ -102,10 +157,10 @@ export function FeedMediaCard({
 
     const pauseAll = () => {
       setForcedPaused(true);
-      if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
+      const node = videoRef.current;
+      if (!node) return;
+      node.pause();
+      setIsVideoPlaying(false);
     };
 
     window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
@@ -118,10 +173,50 @@ export function FeedMediaCard({
   }, []);
 
   useEffect(() => {
+    const node = videoRef.current;
+    if (!node || activeItem?.kind !== "video") {
+      setCurrentTime(0);
+      setDuration(0);
+      setIsVideoPlaying(false);
+      return;
+    }
+
+    const syncMeta = () => {
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const syncTime = () => {
+      setCurrentTime(node.currentTime || 0);
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const syncPlaying = () => {
+      setIsVideoPlaying(!node.paused);
+    };
+
+    node.addEventListener("loadedmetadata", syncMeta);
+    node.addEventListener("timeupdate", syncTime);
+    node.addEventListener("play", syncPlaying);
+    node.addEventListener("pause", syncPlaying);
+    node.addEventListener("ended", syncPlaying);
+
+    syncMeta();
+    syncTime();
+    syncPlaying();
+
+    return () => {
+      node.removeEventListener("loadedmetadata", syncMeta);
+      node.removeEventListener("timeupdate", syncTime);
+      node.removeEventListener("play", syncPlaying);
+      node.removeEventListener("pause", syncPlaying);
+      node.removeEventListener("ended", syncPlaying);
+    };
+  }, [activeItem?.id, activeItem?.kind]);
+
+  useEffect(() => {
     if (!forcedPaused) return;
     if (!isCardVisible) return;
     if (activeItem?.kind !== "video") return;
-
     setForcedPaused(false);
   }, [forcedPaused, isCardVisible, activeItem?.kind, mediaIndex]);
 
@@ -137,9 +232,9 @@ export function FeedMediaCard({
     if (activeItem?.kind !== "video") return;
 
     if (isCardVisible && !forcedPaused) {
-      const playPromise = node.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {});
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
       }
     } else {
       node.pause();
@@ -149,6 +244,24 @@ export function FeedMediaCard({
   const handleOpen = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
     onOpen();
+  };
+
+  const togglePlay = () => {
+    const node = videoRef.current;
+    if (!node || !activeIsVideo) return;
+
+    if (node.paused) {
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+      setIsVideoPlaying(true);
+      setForcedPaused(false);
+    } else {
+      node.pause();
+      setIsVideoPlaying(false);
+      setForcedPaused(true);
+    }
   };
 
   return (
@@ -167,12 +280,14 @@ export function FeedMediaCard({
         maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
         backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
         enableFullscreen={!activeIsVideo}
+        nativeVideoControls={false}
+        blockVideoClickPropagation={false}
         onMediaError={tryRefreshMedia}
       />
 
       {activeIsVideo ? (
         <div
-          className="absolute inset-x-0 top-0 bottom-[54px] z-10 cursor-pointer"
+          className="absolute inset-x-0 top-0 bottom-[58px] z-10 cursor-pointer"
           onClick={handleOpen}
           aria-hidden="true"
         />
@@ -183,19 +298,65 @@ export function FeedMediaCard({
           type="button"
           onClick={(event) => {
             event.stopPropagation();
-            const next = !muted;
-            setMuted(next);
-            writeGlobalMuted(next);
+            togglePlay();
           }}
-          className="absolute bottom-3 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm"
-          aria-label={muted ? copy.unmute : copy.mute}
+          className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+          aria-label={isVideoPlaying ? copy.pause : copy.play}
         >
-          {muted ? (
-            <VolumeX className="h-5 w-5" />
+          {isVideoPlaying ? (
+            <Pause className="h-5 w-5" />
           ) : (
-            <Volume2 className="h-5 w-5" />
+            <Play className="ml-0.5 h-5 w-5" />
           )}
         </button>
+      ) : null}
+
+      {activeIsVideo ? (
+        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+          <div className="flex items-center gap-3">
+            <div className="min-w-[72px] text-[12px] font-medium text-white">
+              {formatTime(currentTime)} / {formatTime(duration)}
+            </div>
+
+            <input
+              type="range"
+              min={0}
+              max={duration || 0}
+              step={0.1}
+              value={Math.min(currentTime, duration || 0)}
+              onChange={(event) => {
+                event.stopPropagation();
+                const node = videoRef.current;
+                if (!node) return;
+                const next = Number(event.target.value);
+                node.currentTime = next;
+                setCurrentTime(next);
+              }}
+              onClick={(event) => event.stopPropagation()}
+              onMouseDown={(event) => event.stopPropagation()}
+              onTouchStart={(event) => event.stopPropagation()}
+              className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+            />
+
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                const next = !muted;
+                setMuted(next);
+                writeGlobalMuted(next);
+              }}
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+              aria-label={muted ? copy.unmute : copy.mute}
+            >
+              {muted ? (
+                <VolumeX className="h-5 w-5" />
+              ) : (
+                <Volume2 className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+        </div>
       ) : null}
     </div>
   );

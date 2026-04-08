@@ -20,6 +20,8 @@ type HybridMediaProps = {
   videoRef?: React.RefObject<HTMLVideoElement | null>;
   mode: "fixed" | "adaptive";
   maxMediaHeightClass: string;
+  nativeVideoControls: boolean;
+  blockVideoClickPropagation: boolean;
   onMediaError?: () => void;
 };
 
@@ -30,6 +32,8 @@ function HybridMedia({
   videoRef,
   mode,
   maxMediaHeightClass,
+  nativeVideoControls,
+  blockVideoClickPropagation,
   onMediaError,
 }: HybridMediaProps) {
   const mediaClass =
@@ -49,15 +53,16 @@ function HybridMedia({
         playsInline
         preload="metadata"
         muted={muted}
-        controls
-        onClick={(event) => {
-          // только контролы — без проброса наверх
-          event.stopPropagation();
-        }}
+        controls={nativeVideoControls}
+        onClick={
+          blockVideoClickPropagation
+            ? (event) => event.stopPropagation()
+            : undefined
+        }
         onError={onMediaError}
       />
     );
-  }  
+  }
 
   if (item.kind === "image") {
     return (
@@ -107,17 +112,15 @@ export function MediaDots({
   total,
   activeIndex,
   onSelect,
-  light = false,
 }: {
   total: number;
   activeIndex: number;
   onSelect: (index: number) => void;
-  light?: boolean;
 }) {
   if (total <= 1) return null;
 
   return (
-    <div className="pointer-events-none absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5">
+    <div className="pointer-events-none absolute left-1/2 top-3 z-20 flex -translate-x-1/2 items-center gap-1.5">
       {Array.from({ length: total }).map((_, index) => {
         const active = index === activeIndex;
 
@@ -129,14 +132,8 @@ export function MediaDots({
               event.stopPropagation();
               onSelect(index);
             }}
-            className={`pointer-events-auto h-2.5 rounded-full transition ${
-              active
-                ? light
-                  ? "w-5 bg-white"
-                  : "w-5 bg-neutral-900"
-                : light
-                  ? "w-2.5 bg-white/55"
-                  : "w-2.5 bg-neutral-900/35"
+            className={`pointer-events-auto h-2.5 rounded-full border border-black/20 transition ${
+              active ? "w-5 bg-white" : "w-2.5 bg-white/50"
             }`}
             aria-label={`media ${index + 1}`}
           />
@@ -160,6 +157,8 @@ export function FeedCarousel({
   mode = "fixed",
   maxMediaHeightClass = "max-h-[70vh]",
   backgroundClass = "bg-black",
+  nativeVideoControls = false,
+  blockVideoClickPropagation = true,
   onMediaError,
 }: {
   items: CarouselItem[];
@@ -176,6 +175,8 @@ export function FeedCarousel({
   mode?: "fixed" | "adaptive";
   maxMediaHeightClass?: string;
   backgroundClass?: string;
+  nativeVideoControls?: boolean;
+  blockVideoClickPropagation?: boolean;
   onMediaError?: () => void;
 }) {
   const touchStartXRef = useRef<number | null>(null);
@@ -267,6 +268,8 @@ export function FeedCarousel({
               videoRef={videoRef}
               mode={mode}
               maxMediaHeightClass={maxMediaHeightClass}
+              nativeVideoControls={nativeVideoControls}
+              blockVideoClickPropagation={blockVideoClickPropagation}
               onMediaError={onMediaError}
             />
           ) : null}
@@ -312,7 +315,6 @@ export function FeedCarousel({
           total={items.length}
           activeIndex={activeIndex}
           onSelect={(index) => onChange?.(index)}
-          light={controlsTone === "light"}
         />
       </div>
 
@@ -373,6 +375,8 @@ export function FeedCarousel({
               muted={muted}
               mode="adaptive"
               maxMediaHeightClass="max-h-[88vh]"
+              nativeVideoControls={false}
+              blockVideoClickPropagation={false}
               onMediaError={onMediaError}
             />
           </div>
@@ -381,7 +385,6 @@ export function FeedCarousel({
             total={items.length}
             activeIndex={fullscreenIndex}
             onSelect={setFullscreenIndex}
-            light
           />
         </div>
       ) : null}

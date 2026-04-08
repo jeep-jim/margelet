@@ -74,8 +74,8 @@ function linkifyText(text: string) {
     const href = part.startsWith("http")
       ? part
       : part.startsWith("t.me/")
-        ? `https://${part}`
-        : `https://${part}`;
+      ? `https://${part}`
+      : `https://${part}`;
 
     return (
       <a
@@ -90,6 +90,13 @@ function linkifyText(text: string) {
       </a>
     );
   });
+}
+
+function formatTime(seconds: number) {
+  const safe = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+  const mins = Math.floor(safe / 60);
+  const secs = safe % 60;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
 export function FeedViewer({
@@ -110,14 +117,21 @@ export function FeedViewer({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const wheelLockRef = useRef(false);
   const touchStartYRef = useRef<number | null>(null);
+  const centerTimerRef = useRef<number | null>(null);
 
   const [expandedText, setExpandedText] = useState(false);
   const [showCenterControl, setShowCenterControl] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const media = useMemo(() => {
     return activePost ? normalizeMediaList(activePost) : [];
   }, [activePost]);
+
+  const activeItem =
+    media[Math.min(viewerMediaIndex, Math.max(media.length - 1, 0))] || null;
+  const activeIsVideo = activeItem?.kind === "video";
 
   useEffect(() => {
     if (!activePost) return;
@@ -138,7 +152,9 @@ export function FeedViewer({
     setExpandedText(false);
     setShowCenterControl(false);
     setSubscribed(activePost ? getSubs().includes(activePost.source.handle) : false);
-  }, [activePost?.id, activePost?.source.handle]);
+    setCurrentTime(0);
+    setDuration(0);
+  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex]);
 
   useEffect(() => {
     setIsMuted(readGlobalMuted());
@@ -146,24 +162,43 @@ export function FeedViewer({
 
   useEffect(() => {
     const node = videoRef.current;
-    if (!node) return;
+    if (!node || activeItem?.kind !== "video") {
+      setCurrentTime(0);
+      setDuration(0);
+      return;
+    }
+
+    const syncMeta = () => {
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const syncTime = () => {
+      setCurrentTime(node.currentTime || 0);
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
 
     const syncPlaying = () => {
       setIsPlaying(!node.paused);
     };
 
+    node.addEventListener("loadedmetadata", syncMeta);
+    node.addEventListener("timeupdate", syncTime);
     node.addEventListener("play", syncPlaying);
     node.addEventListener("pause", syncPlaying);
     node.addEventListener("ended", syncPlaying);
 
+    syncMeta();
+    syncTime();
     syncPlaying();
 
     return () => {
+      node.removeEventListener("loadedmetadata", syncMeta);
+      node.removeEventListener("timeupdate", syncTime);
       node.removeEventListener("play", syncPlaying);
       node.removeEventListener("pause", syncPlaying);
       node.removeEventListener("ended", syncPlaying);
     };
-  }, [activePost?.id, viewerMediaIndex, setIsPlaying]);
+  }, [activePost?.id, activeItem?.id, activeItem?.kind, viewerMediaIndex, setIsPlaying]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -174,9 +209,7 @@ export function FeedViewer({
 
   useEffect(() => {
     const node = videoRef.current;
-    if (!node) return;
-
-    node.currentTime = 0;
+    if (!node || activeItem?.kind !== "video") return;
 
     if (isPlaying) {
       const promise = node.play();
@@ -186,7 +219,7 @@ export function FeedViewer({
     } else {
       node.pause();
     }
-  }, [isPlaying, viewerMediaIndex, activePost?.id]);
+  }, [isPlaying, activeItem?.id, activeItem?.kind, viewerMediaIndex]);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -205,6 +238,14 @@ export function FeedViewer({
     return () => window.removeEventListener("keydown", handleKey);
   }, [activePost, closeViewer, nextViewer, prevViewer]);
 
+  useEffect(() => {
+    return () => {
+      if (centerTimerRef.current) {
+        window.clearTimeout(centerTimerRef.current);
+      }
+    };
+  }, []);
+
   if (!activePost || activePost.contentType !== "video") {
     return null;
   }
@@ -214,15 +255,17 @@ export function FeedViewer({
 
   const pulseCenterControl = () => {
     setShowCenterControl(true);
-    window.clearTimeout((pulseCenterControl as unknown as { timer?: number }).timer);
-    (pulseCenterControl as unknown as { timer?: number }).timer = window.setTimeout(() => {
+    if (centerTimerRef.current) {
+      window.clearTimeout(centerTimerRef.current);
+    }
+    centerTimerRef.current = window.setTimeout(() => {
       setShowCenterControl(false);
     }, 650);
   };
 
   const togglePlay = () => {
     const node = videoRef.current;
-    if (!node) return;
+    if (!node || !activeIsVideo) return;
 
     if (node.paused) {
       const promise = node.play();
@@ -298,6 +341,8 @@ export function FeedViewer({
               muted={isMuted}
               videoRef={videoRef}
               fit="contain"
+              nativeVideoControls={false}
+              blockVideoClickPropagation={false}
             />
           </div>
 
@@ -344,19 +389,6 @@ export function FeedViewer({
           ) : null}
 
           <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6 text-white">
-            <button
-              type="button"
-              onClick={() => {
-                setIsMuted((prev) => !prev);
-              }}
-            >
-              {isMuted ? (
-                <VolumeX className="h-7 w-7" />
-              ) : (
-                <Volume2 className="h-7 w-7" />
-              )}
-            </button>
-
             <button type="button" onClick={() => onToggleLike(activePost.id)}>
               <Heart className={`h-7 w-7 ${liked ? "fill-current" : ""}`} />
             </button>
@@ -371,7 +403,7 @@ export function FeedViewer({
             </button>
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-6 pt-10 text-white">
+          <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pb-4 pt-10 text-white">
             <div className="w-full md:max-w-[380px]">
               <div className="flex items-center gap-3">
                 <FeedSourceAvatar post={activePost} />
@@ -427,6 +459,70 @@ export function FeedViewer({
                 </div>
               ) : null}
             </div>
+
+            {activeIsVideo ? (
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    togglePlay();
+                  }}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                  aria-label={isPlaying ? "Pause" : "Play"}
+                >
+                  {isPlaying ? (
+                    <Pause className="h-5 w-5" />
+                  ) : (
+                    <Play className="ml-0.5 h-5 w-5" />
+                  )}
+                </button>
+
+                <div className="min-w-[72px] text-[12px] font-medium text-white">
+                  {formatTime(currentTime)} / {formatTime(duration)}
+                </div>
+
+                <input
+                  type="range"
+                  min={0}
+                  max={duration || 0}
+                  step={0.1}
+                  value={Math.min(currentTime, duration || 0)}
+                  onChange={(event) => {
+                    event.stopPropagation();
+                    const node = videoRef.current;
+                    if (!node) return;
+                    const next = Number(event.target.value);
+                    node.currentTime = next;
+                    setCurrentTime(next);
+                  }}
+                  onClick={(event) => event.stopPropagation()}
+                  onMouseDown={(event) => event.stopPropagation()}
+                  onTouchStart={(event) => event.stopPropagation()}
+                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+                />
+
+                <button
+                  type="button"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setIsMuted((prev) => {
+                      const next = !prev;
+                      writeGlobalMuted(next);
+                      return next;
+                    });
+                  }}
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                  aria-label={isMuted ? "Unmute" : "Mute"}
+                >
+                  {isMuted ? (
+                    <VolumeX className="h-5 w-5" />
+                  ) : (
+                    <Volume2 className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       </motion.div>
