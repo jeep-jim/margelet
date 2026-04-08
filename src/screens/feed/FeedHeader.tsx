@@ -148,8 +148,8 @@ export function FeedHeader({
   };
 
   return (
-    <div className="fixed inset-x-0 top-16 bottom-0 z-30">
-      <div className="mx-auto h-full w-full max-w-[570px] bg-white md:border-x md:border-neutral-200">
+    <div className="fixed inset-x-0 top-16 bottom-0 z-[80] isolate">
+      <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-white md:border-x md:border-neutral-200">
         <div className="flex h-full flex-col">
           <div className="shrink-0 border-b border-neutral-200 bg-white px-4 pb-4 pt-4">
             <div className="text-base font-semibold leading-none text-neutral-950">
@@ -186,7 +186,7 @@ export function FeedHeader({
             </form>
           </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4">
+          <div className="min-h-0 flex-1 overflow-y-auto px-4 py-4 pb-6">
             <div className="flex flex-wrap gap-2">
               {CONTENT_TAG_OPTIONS.map((tag) => {
                 const active = selectedTags.includes(tag.value);
@@ -209,7 +209,7 @@ export function FeedHeader({
             </div>
           </div>
 
-          <div className="shrink-0 border-t border-neutral-200 bg-white px-4 py-4">
+          <div className="shrink-0 border-t border-neutral-200 bg-white px-4 py-4 pb-[calc(env(safe-area-inset-bottom)+16px)]">
             <div className="flex items-center justify-between gap-3">
               <button
                 type="button"

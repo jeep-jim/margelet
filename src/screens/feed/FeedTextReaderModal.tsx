@@ -707,13 +707,13 @@ export function FeedTextReaderModal({
               <button
                 type="button"
                 onClick={() => window.location.assign(`/${post.source.handle}`)}
-                className="mb-4 flex items-center gap-3 text-left"
+                className="mb-4 flex min-w-0 items-center gap-3 text-left"
               >
                 <FeedSourceAvatar post={post} />
 
-                <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <div className="truncate text-[18px] font-semibold text-neutral-950">
+                <div className="min-w-0 flex-1">
+                  <div className="flex min-w-0 items-center gap-1.5">
+                    <div className="min-w-0 flex-1 truncate text-[18px] font-semibold text-neutral-950">
                       {post.source.title}
                     </div>
                     {post.source.verified ? (
