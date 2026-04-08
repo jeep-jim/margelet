@@ -7,6 +7,7 @@ import type { IngestedPost } from "../../src/types/app.js";
 
 const SOURCES_IDS_KEY = "margelet:sources:ids";
 const SOURCE_KEY_PREFIX = "margelet:source:";
+const SOURCES_REGISTRY_KEY = "margelet:sources:registry";
 
 const POLLER_LOCK_KEY = "margelet:sources:poller:lock";
 const POLLER_RUN_EVERY_MS = 30 * 1000;
@@ -26,6 +27,8 @@ type SourceMeta = {
   title: string | null;
   avatarUrl: string | null;
 };
+
+type SourcesRegistry = Record<string, TrustedSource>;
 
 function sourceKey(id: string) {
   return `${SOURCE_KEY_PREFIX}${id}`;
@@ -49,6 +52,10 @@ function isStatus(value: unknown): value is TrustedSource["status"] {
 
 function normalizeHandle(handle: string) {
   return handle.replace(/^@/, "").trim().toLowerCase();
+}
+
+function normalizeCountryCode(value: string | null | undefined) {
+  return String(value || "").trim().toLowerCase() || null;
 }
 
 function buildSourceId(countryCode: CountryCode, handle: string) {
@@ -117,19 +124,13 @@ async function fetchChannelMeta(handle: string): Promise<SourceMeta> {
         html,
         /<div class="tgme_channel_info_header_title"[^>]*>([\s\S]*?)<\/div>/i
       ) ||
-      extract(
-        html,
-        /<div class="tgme_page_title"[^>]*>([\s\S]*?)<\/div>/i
-      ) ||
+      extract(html, /<div class="tgme_page_title"[^>]*>([\s\S]*?)<\/div>/i) ||
       null;
 
     const avatar =
       extract(html, /<meta property="og:image" content="([^"]+)"/i) ||
       extract(html, /<link rel="image_src" href="([^"]+)"/i) ||
-      extract(
-        html,
-        /class="tgme_page_photo_image"[^>]+src="([^"]+)"/i
-      ) ||
+      extract(html, /class="tgme_page_photo_image"[^>]+src="([^"]+)"/i) ||
       null;
 
     return {
@@ -175,20 +176,82 @@ function normalizeSource(raw: unknown): TrustedSource | null {
   };
 }
 
-async function getAllSourceIds(): Promise<string[]> {
-  const ids = await redis.lrange<string>(SOURCES_IDS_KEY, 0, -1);
+async function readRegistry(): Promise<SourcesRegistry> {
+  const raw = await redis.get(SOURCES_REGISTRY_KEY);
 
-  if (!ids || ids.length === 0) {
-    return [];
+  if (!raw || typeof raw !== "object") {
+    return {};
   }
 
-  return Array.from(
-    new Set(
-      ids
-        .map((id) => (typeof id === "string" ? id.trim() : ""))
-        .filter(Boolean)
-    )
-  );
+  const registryRaw = raw as Record<string, unknown>;
+  const result: SourcesRegistry = {};
+
+  for (const [id, value] of Object.entries(registryRaw)) {
+    const normalized = normalizeSource(value);
+    if (normalized) {
+      result[id] = normalized;
+    }
+  }
+
+  return result;
+}
+
+async function writeRegistry(registry: SourcesRegistry) {
+  await redis.set(SOURCES_REGISTRY_KEY, registry);
+}
+
+async function upsertRegistrySource(source: TrustedSource) {
+  const registry = await readRegistry();
+  registry[source.id] = source;
+  await writeRegistry(registry);
+}
+
+async function removeRegistrySource(id: string) {
+  const registry = await readRegistry();
+  if (id in registry) {
+    delete registry[id];
+    await writeRegistry(registry);
+  }
+}
+
+async function getAllSourceIds(): Promise<string[]> {
+  const ids = await redis.lrange<string>(SOURCES_IDS_KEY, 0, -1);
+  const registry = await readRegistry();
+
+  const merged = new Set<string>();
+
+  if (Array.isArray(ids)) {
+    for (const id of ids) {
+      if (typeof id === "string" && id.trim()) {
+        merged.add(id.trim());
+      }
+    }
+  }
+
+  for (const id of Object.keys(registry)) {
+    if (id.trim()) {
+      merged.add(id.trim());
+    }
+  }
+
+  return Array.from(merged);
+}
+
+async function getSourceFromStorage(id: string): Promise<TrustedSource | null> {
+  const raw = await redis.get(sourceKey(id));
+  const normalized = normalizeSource(raw);
+
+  if (normalized) {
+    return normalized;
+  }
+
+  const registry = await readRegistry();
+  return registry[id] || null;
+}
+
+async function repairSourceIndex(id: string) {
+  await redis.lrem(SOURCES_IDS_KEY, 0, id);
+  await redis.lpush(SOURCES_IDS_KEY, id);
 }
 
 export async function listSources(limit = 1000): Promise<TrustedSource[]> {
@@ -202,8 +265,13 @@ export async function listSources(limit = 1000): Promise<TrustedSource[]> {
 
   const items = await Promise.all(
     limitedIds.map(async (id) => {
-      const raw = await redis.get(sourceKey(id));
-      return normalizeSource(raw);
+      const source = await getSourceFromStorage(id);
+
+      if (source) {
+        await repairSourceIndex(id);
+      }
+
+      return source;
     })
   );
 
@@ -218,48 +286,30 @@ export async function listSources(limit = 1000): Promise<TrustedSource[]> {
 }
 
 export async function listSourcesToPoll(limit = 5): Promise<TrustedSource[]> {
-  const ids = await getAllSourceIds();
+  const all = await listSources(5000);
 
-  if (ids.length === 0) {
+  if (all.length === 0) {
     return [];
   }
 
-  const scored: Array<{ id: string; ts: number }> = [];
-
-  for (const id of ids) {
-    const raw = await redis.get(sourceKey(id));
-    const source = normalizeSource(raw);
-
-    if (!source || source.status !== "active") {
-      continue;
-    }
-
-    const ts = Date.parse(source.lastCheckedAt || source.createdAt || "") || 0;
-    scored.push({ id, ts });
-  }
-
-  const pickedIds = scored
-    .sort((a, b) => a.ts - b.ts)
-    .slice(0, Math.max(0, limit))
-    .map((item) => item.id);
-
-  if (pickedIds.length === 0) {
-    return [];
-  }
-
-  const items = await Promise.all(
-    pickedIds.map(async (id) => {
-      const raw = await redis.get(sourceKey(id));
-      return normalizeSource(raw);
+  return all
+    .filter((source) => source.status === "active")
+    .sort((a, b) => {
+      const aTs = Date.parse(a.lastCheckedAt || a.createdAt || "") || 0;
+      const bTs = Date.parse(b.lastCheckedAt || b.createdAt || "") || 0;
+      return aTs - bTs;
     })
-  );
-
-  return items.filter((item): item is TrustedSource => !!item);
+    .slice(0, Math.max(0, limit));
 }
 
 export async function getSourceById(id: string): Promise<TrustedSource | null> {
-  const raw = await redis.get(sourceKey(id));
-  return normalizeSource(raw);
+  const source = await getSourceFromStorage(id);
+
+  if (source) {
+    await repairSourceIndex(id);
+  }
+
+  return source;
 }
 
 export async function saveSource(
@@ -307,8 +357,8 @@ export async function saveSource(
   };
 
   await redis.set(sourceKey(id), source);
-  await redis.lrem(SOURCES_IDS_KEY, 0, id);
-  await redis.lpush(SOURCES_IDS_KEY, id);
+  await upsertRegistrySource(source);
+  await repairSourceIndex(id);
 
   return source;
 }
@@ -416,6 +466,7 @@ export async function deleteSourceById(id: string): Promise<boolean> {
   if (!existing) return false;
 
   await redis.del(sourceKey(id));
+  await removeRegistrySource(id);
   await redis.lrem(SOURCES_IDS_KEY, 0, id);
 
   return true;
@@ -512,6 +563,8 @@ function buildAutoImportedPost(
       plan: "free",
       autopublishEnabled: false,
     },
+    sourceId: source.id,
+    sourceCountryCode: normalizeCountryCode(source.countryCode),
     status: "published",
     role: "admin",
   };
@@ -651,18 +704,21 @@ async function runWithConcurrency<T>(
 
   let currentIndex = 0;
 
-  const runners = Array.from({ length: Math.min(concurrency, items.length) }, async () => {
-    while (true) {
-      const index = currentIndex;
-      currentIndex += 1;
+  const runners = Array.from(
+    { length: Math.min(concurrency, items.length) },
+    async () => {
+      while (true) {
+        const index = currentIndex;
+        currentIndex += 1;
 
-      if (index >= items.length) {
-        return;
+        if (index >= items.length) {
+          return;
+        }
+
+        await worker(items[index]);
       }
-
-      await worker(items[index]);
     }
-  });
+  );
 
   await Promise.all(runners);
 }

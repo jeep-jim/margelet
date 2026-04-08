@@ -122,6 +122,11 @@ export type IngestedPost = {
     autopublishEnabled: boolean;
   };
 
+  // Системные поля для автопарсинга доверенных источников.
+  // Optional, чтобы не ломать старые посты в Redis.
+  sourceId?: string | null;
+  sourceCountryCode?: string | null;
+
   status?: PostStatus;
   role?: UserRole;
 

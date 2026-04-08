@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
 import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
@@ -156,13 +156,24 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
+function buildFeedUrl(locale: Locale, limit?: number) {
+  const params = new URLSearchParams();
+  params.set("locale", locale);
+
+  if (typeof limit === "number" && Number.isFinite(limit) && limit > 0) {
+    params.set("limit", String(limit));
+  }
+
+  return `/api/feed?${params.toString()}`;
+}
+
 export default function App() {
-const [locale, setLocale] = useState<Locale>("en");
+  const [locale, setLocale] = useState<Locale>("en");
   const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
-  const [showFeedLoadingHint ] = useState(false);
+  const [showFeedLoadingHint] = useState(false);
   const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
   const [selectedSourceHandle, setSelectedSourceHandle] = useState<string | null>(null);
   const [accessInfo, setAccessInfo] = useState<AccessInfo | null>(null);
@@ -348,11 +359,11 @@ const [locale, setLocale] = useState<Locale>("en");
     };
   }, [currentTelegramUser]);
 
-  const loadFeed = async () => {
+  const loadFeed = useCallback(async () => {
     setIsFeedLoading(true);
 
     try {
-      const res = await fetch("/api/feed", {
+      const res = await fetch(buildFeedUrl(locale), {
         cache: "no-store",
       });
 
@@ -368,11 +379,11 @@ const [locale, setLocale] = useState<Locale>("en");
     } finally {
       setIsFeedLoading(false);
     }
-  };
+  }, [locale]);
 
   useEffect(() => {
     void loadFeed();
-  }, []);
+  }, [loadFeed]);
 
   useEffect(() => {
     let intervalId: number | null = null;
@@ -380,7 +391,7 @@ const [locale, setLocale] = useState<Locale>("en");
     const runHeartbeat = () => {
       if (document.visibilityState !== "visible") return;
 
-      fetch("/api/feed?limit=1", {
+      fetch(buildFeedUrl(locale, 1), {
         method: "GET",
         cache: "no-store",
       }).catch(() => {});
@@ -417,7 +428,7 @@ const [locale, setLocale] = useState<Locale>("en");
       stopHeartbeat();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     const isAdminRoute =
@@ -514,10 +525,11 @@ const [locale, setLocale] = useState<Locale>("en");
       body: JSON.stringify({
         url,
         tag,
+        locale,
         role: userRole === "guest" ? "user" : userRole,
         addedByTelegramId: currentTelegramUser?.id || null,
         addedByUsername: currentTelegramUser?.username || null,
-      }),
+      }),      
     });
 
     const data = await res.json().catch(() => null);
@@ -540,9 +552,9 @@ const [locale, setLocale] = useState<Locale>("en");
 
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
-      {(!shouldShowIntro && current !== "intro" && current !== "admin") ? (
+      {!shouldShowIntro && current !== "intro" && current !== "admin" ? (
         <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
-      ) : null}      
+      ) : null}
 
       {shouldShowIntro ? (
         <IntroScreen
@@ -594,7 +606,7 @@ const [locale, setLocale] = useState<Locale>("en");
                 setCurrent("feed");
               }}
             />
-          ) : null}          
+          ) : null}
 
           {current === "source" ? (
             <SourceScreen
@@ -626,7 +638,7 @@ const [locale, setLocale] = useState<Locale>("en");
         <div className="pointer-events-none fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm text-white backdrop-blur">
           {FEED_LOADING_COPY[locale] ?? FEED_LOADING_COPY.en}
         </div>
-      ) : null}      
+      ) : null}
     </div>
   );
 }

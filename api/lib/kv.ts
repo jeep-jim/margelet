@@ -75,7 +75,9 @@ function pickLocalizedText(value: unknown): string {
   return "";
 }
 
-function normalizeLegacyMedia(raw: Record<string, unknown>): IngestedPost["media"] {
+function normalizeLegacyMedia(
+  raw: Record<string, unknown>
+): IngestedPost["media"] {
   const media = Array.isArray(raw.media) ? raw.media : [];
 
   const normalizedFromArray = media
@@ -88,7 +90,12 @@ function normalizeLegacyMedia(raw: Record<string, unknown>): IngestedPost["media
       const poster = asString(record.poster);
 
       if (!type || !url) return null;
-      if (type !== "image" && type !== "video" && type !== "audio" && type !== "file") {
+      if (
+        type !== "image" &&
+        type !== "video" &&
+        type !== "audio" &&
+        type !== "file"
+      ) {
         return null;
       }
 
@@ -232,6 +239,7 @@ function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
       asString(raw.expiresAt) ||
       new Date(id + 24 * 3600 * 1000).toISOString(),
     ttlHours: asNumber(raw.ttlHours) || 24,
+    mediaRefreshedAt: asString(raw.mediaRefreshedAt),
     tag: (asString(raw.tag) as IngestedPost["tag"]) || "other",
     addedBy: {
       telegramId: asString(addedBy.telegramId),
@@ -242,25 +250,47 @@ function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
         (asString(billing.plan) as IngestedPost["billing"]["plan"]) || "free",
       autopublishEnabled: !!billing.autopublishEnabled,
     },
+    sourceId: asString(raw.sourceId),
+    sourceCountryCode: asString(raw.sourceCountryCode),
   };
 
   if ("status" in raw) {
-    (post as IngestedPost & { status?: "published" | "pending" | "blocked" }).status =
-      raw.status === "published" || raw.status === "pending" || raw.status === "blocked"
+    (
+      post as IngestedPost & {
+        status?: "published" | "pending" | "blocked";
+      }
+    ).status =
+      raw.status === "published" ||
+      raw.status === "pending" ||
+      raw.status === "blocked"
         ? raw.status
         : undefined;
   }
 
   if ("role" in raw) {
-    (post as IngestedPost & { role?: "user" | "channel_owner" | "admin" }).role =
+    (
+      post as IngestedPost & {
+        role?: "user" | "channel_owner" | "admin";
+      }
+    ).role =
       raw.role === "user" || raw.role === "channel_owner" || raw.role === "admin"
         ? raw.role
         : undefined;
   }
 
-  if ("mediaRefreshedAt" in raw) {
-    (post as IngestedPost & { mediaRefreshedAt?: string | null }).mediaRefreshedAt =
-      asString(raw.mediaRefreshedAt);
+  if ("moderation" in raw && raw.moderation && typeof raw.moderation === "object") {
+    const moderation = raw.moderation as Record<string, unknown>;
+
+    post.moderation = {
+      status:
+        moderation.status === "published" ||
+        moderation.status === "pending" ||
+        moderation.status === "blocked"
+          ? moderation.status
+          : "pending",
+      reason: asString(moderation.reason),
+      reviewedAt: asString(moderation.reviewedAt),
+    };
   }
 
   return post;
@@ -299,6 +329,7 @@ function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null 
     createdAt,
     expiresAt,
     ttlHours,
+    mediaRefreshedAt: asString(raw.mediaRefreshedAt),
     tag: (asString(raw.tag) as IngestedPost["tag"]) || "other",
     addedBy: {
       telegramId: asString(raw.addedByTelegramId),
@@ -308,25 +339,47 @@ function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null 
       plan: "free",
       autopublishEnabled: false,
     },
+    sourceId: asString(raw.sourceId),
+    sourceCountryCode: asString(raw.sourceCountryCode),
   };
 
   if ("status" in raw) {
-    (post as IngestedPost & { status?: "published" | "pending" | "blocked" }).status =
-      raw.status === "published" || raw.status === "pending" || raw.status === "blocked"
+    (
+      post as IngestedPost & {
+        status?: "published" | "pending" | "blocked";
+      }
+    ).status =
+      raw.status === "published" ||
+      raw.status === "pending" ||
+      raw.status === "blocked"
         ? raw.status
         : undefined;
   }
 
   if ("role" in raw) {
-    (post as IngestedPost & { role?: "user" | "channel_owner" | "admin" }).role =
+    (
+      post as IngestedPost & {
+        role?: "user" | "channel_owner" | "admin";
+      }
+    ).role =
       raw.role === "user" || raw.role === "channel_owner" || raw.role === "admin"
         ? raw.role
         : undefined;
   }
 
-  if ("mediaRefreshedAt" in raw) {
-    (post as IngestedPost & { mediaRefreshedAt?: string | null }).mediaRefreshedAt =
-      asString(raw.mediaRefreshedAt);
+  if ("moderation" in raw && raw.moderation && typeof raw.moderation === "object") {
+    const moderation = raw.moderation as Record<string, unknown>;
+
+    post.moderation = {
+      status:
+        moderation.status === "published" ||
+        moderation.status === "pending" ||
+        moderation.status === "blocked"
+          ? moderation.status
+          : "pending",
+      reason: asString(moderation.reason),
+      reviewedAt: asString(moderation.reviewedAt),
+    };
   }
 
   return post;
@@ -359,6 +412,40 @@ function getRemainingTtlSeconds(post: IngestedPost) {
 function getCanonicalPostUrl(url: string) {
   const parsed = parseTelegramPostUrl(url);
   return parsed?.normalizedUrl || url.trim();
+}
+
+function normalizeCountryCode(value: string | null | undefined) {
+  return String(value || "").trim().toLowerCase() || null;
+}
+
+function getCountryFromSourceId(sourceId: string | null | undefined) {
+  const normalized = asString(sourceId);
+  if (!normalized) return null;
+
+  const separatorIndex = normalized.indexOf(":");
+  if (separatorIndex <= 0) return null;
+
+  return normalizeCountryCode(normalized.slice(0, separatorIndex));
+}
+
+function resolvePostCountryCode(post: IngestedPost) {
+  return (
+    normalizeCountryCode(post.sourceCountryCode) ||
+    getCountryFromSourceId(post.sourceId) ||
+    null
+  );
+}
+
+function postMatchesCountry(post: IngestedPost, countryCode?: string | null) {
+  const normalizedFilter = normalizeCountryCode(countryCode);
+  if (!normalizedFilter) return true;
+
+  const normalizedPostCountry = resolvePostCountryCode(post);
+  if (!normalizedPostCountry) {
+    return false;
+  }
+
+  return normalizedPostCountry === normalizedFilter;
 }
 
 export async function markPostAsDeleted(url: string) {
@@ -399,6 +486,10 @@ export async function savePost(post: IngestedPost): Promise<IngestedPost> {
   const normalizedPost: IngestedPost = {
     ...post,
     postUrl: canonicalPostUrl,
+    sourceId: asString(post.sourceId),
+    sourceCountryCode:
+    normalizeCountryCode(post.sourceCountryCode) ||
+    getCountryFromSourceId(post.sourceId),
   };
 
   await redis.set(postKey(normalizedPost.id), normalizedPost, {
@@ -415,8 +506,14 @@ export async function savePost(post: IngestedPost): Promise<IngestedPost> {
   return normalizedPost;
 }
 
-export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
-  const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, limit - 1);
+export async function getFeedPosts(
+  limit = 100,
+  options?: {
+    countryCode?: string | null;
+  }
+): Promise<IngestedPost[]> {
+  const desired = Math.max(1, limit);
+  const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, Math.max(desired * 5, desired) - 1);
 
   if (!ids || ids.length === 0) {
     return [];
@@ -426,9 +523,7 @@ export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
     new Set(
       ids
         .map((id) =>
-          typeof id === "string" || typeof id === "number"
-            ? String(id)
-            : null
+          typeof id === "string" || typeof id === "number" ? String(id) : null
         )
         .filter((id): id is string => Boolean(id))
     )
@@ -446,6 +541,10 @@ export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
   const deduped: IngestedPost[] = [];
 
   for (const post of validPosts) {
+    if (!postMatchesCountry(post, options?.countryCode)) {
+      continue;
+    }
+
     const canonicalUrl = getCanonicalPostUrl(post.postUrl);
 
     if (seenUrls.has(canonicalUrl)) {
@@ -456,7 +555,12 @@ export async function getFeedPosts(limit = 100): Promise<IngestedPost[]> {
     deduped.push({
       ...post,
       postUrl: canonicalUrl,
+      sourceCountryCode: resolvePostCountryCode(post),
     });
+
+    if (deduped.length >= desired) {
+      break;
+    }
   }
 
   return deduped;
@@ -473,6 +577,7 @@ export async function getPostById(id: number): Promise<IngestedPost | null> {
   return {
     ...post,
     postUrl: getCanonicalPostUrl(post.postUrl),
+    sourceCountryCode: resolvePostCountryCode(post),
   };
 }
 
@@ -501,6 +606,7 @@ export async function getPostByUrl(url: string): Promise<IngestedPost | null> {
   return {
     ...post,
     postUrl: canonicalUrl,
+    sourceCountryCode: resolvePostCountryCode(post),
   };
 }
 
@@ -515,9 +621,7 @@ async function getAllStoredPostIds(): Promise<string[]> {
     new Set(
       ids
         .map((id) =>
-          typeof id === "string" || typeof id === "number"
-            ? String(id)
-            : null
+          typeof id === "string" || typeof id === "number" ? String(id) : null
         )
         .filter((id): id is string => Boolean(id))
     )

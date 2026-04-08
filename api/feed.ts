@@ -24,6 +24,23 @@ function isVisiblePost(post: IngestedPost) {
   return status === "published";
 }
 
+function normalizeCountryCode(value: unknown) {
+  if (typeof value !== "string") return null;
+  const normalized = value.trim().toLowerCase();
+  return normalized || null;
+}
+
+function resolveCountryCode(req: VercelRequest) {
+  const rawCountry =
+    typeof req.query.countryCode === "string"
+      ? req.query.countryCode
+      : typeof req.query.locale === "string"
+        ? req.query.locale
+        : null;
+
+  return normalizeCountryCode(rawCountry);
+}
+
 function shouldRefresh(post: RefreshablePost) {
   const lastRefresh =
     Date.parse(post.mediaRefreshedAt || "") ||
@@ -73,6 +90,10 @@ async function refreshPostKeepingTtl(post: RefreshablePost): Promise<Refreshable
       role: post.role,
       moderation: post.moderation,
 
+      // Важно: сохраняем жёсткую привязку к источнику/стране
+      sourceId: post.sourceId ?? null,
+      sourceCountryCode: post.sourceCountryCode ?? null,
+
       mediaRefreshedAt: refreshedAt,
     };
 
@@ -117,7 +138,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         ? Math.min(parseInt(req.query.limit, 10) || 100, 200)
         : 100;
 
-    const posts = (await getFeedPosts(limit)) as RefreshablePost[];
+    const countryCode = resolveCountryCode(req);
+
+    const posts = (await getFeedPosts(limit, {
+      countryCode,
+    })) as RefreshablePost[];
 
     const refreshedPosts = await Promise.all(
       posts.map(async (post) => {

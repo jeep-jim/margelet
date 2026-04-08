@@ -1,6 +1,6 @@
 import { savePost, getPostByUrl, getFeedPosts } from "./lib/kv.js";
 import { parseTelegramPostUrl, ingestTelegramPost } from "../src/lib/telegram.js";
-import type { IngestedPost, ContentTag } from "../src/types/app";
+import type { IngestedPost, ContentTag, Locale } from "../src/types/app";
 
 type UserRole = "user" | "channel_owner" | "admin";
 type PostStatus = "published" | "pending" | "blocked";
@@ -31,15 +31,37 @@ function resolveRole(value: unknown): UserRole {
   return "user";
 }
 
+function resolveLocale(value: unknown): Locale | null {
+  if (
+    value === "ru" ||
+    value === "en" ||
+    value === "de" ||
+    value === "es" ||
+    value === "tr" ||
+    value === "fr" ||
+    value === "it" ||
+    value === "pt-br" ||
+    value === "id" ||
+    value === "pl"
+  ) {
+    return value;
+  }
+
+  return null;
+}
+
 function getStartOfUtcDay() {
   const now = new Date();
   return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
 }
 
-async function getUserPostsToday(telegramId: string | null) {
+async function getUserPostsToday(telegramId: string | null, locale: Locale | null) {
   if (!telegramId) return 0;
 
-  const posts = await getFeedPosts(200);
+  const posts = await getFeedPosts(200, {
+    countryCode: locale,
+  });
+
   const dayStart = getStartOfUtcDay().getTime();
 
   return posts.filter((post) => {
@@ -93,12 +115,17 @@ export default async function handler(req: any, res: any) {
     const url = asCleanString(body.url);
     const plan = resolvePlan(body.plan);
     const role = resolveRole(body.role);
+    const locale = resolveLocale(body.locale);
 
     const addedByTelegramId = asCleanString(body.addedByTelegramId);
     const addedByUsername = asCleanString(body.addedByUsername);
 
     if (!url) {
       return res.status(400).json({ error: "Missing url" });
+    }
+
+    if (!locale) {
+      return res.status(400).json({ error: "Missing locale" });
     }
 
     const parsed = parseTelegramPostUrl(url);
@@ -120,7 +147,7 @@ export default async function handler(req: any, res: any) {
     }
 
     if (role === "user") {
-      const count = await getUserPostsToday(addedByTelegramId);
+      const count = await getUserPostsToday(addedByTelegramId, locale);
 
       if (count >= DAILY_USER_LIMIT) {
         return res.status(429).json({
@@ -197,6 +224,9 @@ export default async function handler(req: any, res: any) {
         autopublishEnabled:
           plan === "pro_3m" || plan === "pro_12m",
       },
+
+      sourceId: null,
+      sourceCountryCode: locale,
 
       status,
       role,
