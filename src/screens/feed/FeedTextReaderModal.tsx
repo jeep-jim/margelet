@@ -776,6 +776,22 @@ export function FeedTextReaderModal({
                     {activeIsVideo ? (
                       <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
                         <div className="flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              togglePlay();
+                            }}
+                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                            aria-label={isVideoPlaying ? copy.pause : copy.play}
+                          >
+                            {isVideoPlaying ? (
+                              <Pause className="h-5 w-5" />
+                            ) : (
+                              <Play className="ml-0.5 h-5 w-5" />
+                            )}
+                          </button>
+
                           <div className="min-w-[72px] text-[12px] font-medium text-white">
                             {formatTime(currentTime)} / {formatTime(duration)}
                           </div>
