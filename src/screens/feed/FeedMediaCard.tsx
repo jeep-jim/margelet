@@ -8,16 +8,6 @@ const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_MUTE_EVENT = "margelet:feed-mute-change";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 
-function formatDuration(seconds?: number | null) {
-  if (!seconds || !Number.isFinite(seconds)) return null;
-
-  const total = Math.max(0, Math.floor(seconds));
-  const mins = Math.floor(total / 60);
-  const secs = total % 60;
-
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
-
 function readGlobalMuted() {
   try {
     return localStorage.getItem(FEED_MUTE_KEY) !== "0";
@@ -67,7 +57,6 @@ export function FeedMediaCard({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
-  const [measuredDuration, setMeasuredDuration] = useState<number | null>(null);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
@@ -129,26 +118,6 @@ export function FeedMediaCard({
   }, []);
 
   useEffect(() => {
-    setMeasuredDuration(null);
-
-    const node = videoRef.current;
-    if (!node || activeItem?.kind !== "video") return;
-
-    const onLoaded = () => {
-      if (Number.isFinite(node.duration)) {
-        setMeasuredDuration(node.duration);
-      }
-    };
-
-    node.addEventListener("loadedmetadata", onLoaded);
-    onLoaded();
-
-    return () => {
-      node.removeEventListener("loadedmetadata", onLoaded);
-    };
-  }, [activeItem?.id, activeItem?.kind]);
-
-  useEffect(() => {
     if (!forcedPaused) return;
     if (!isCardVisible) return;
     if (activeItem?.kind !== "video") return;
@@ -165,7 +134,6 @@ export function FeedMediaCard({
   useEffect(() => {
     const node = videoRef.current;
     if (!node) return;
-
     if (activeItem?.kind !== "video") return;
 
     if (isCardVisible && !forcedPaused) {
@@ -183,53 +151,45 @@ export function FeedMediaCard({
     onOpen();
   };
 
-  const durationToShow = activeItem?.duration ?? measuredDuration;
-
   return (
-    <div className="relative" onClick={handleOpen}>
-      <FeedCarousel
-        items={media}
-        aspectClass="aspect-[4/5]"
-        activeIndex={mediaIndex}
-        onChange={onChangeMediaIndex}
-        controlsTone="light"
-        mediaActive={isCardVisible && !forcedPaused}
-        muted={muted}
-        videoRef={videoRef}
-        fit={activeIsVideo ? "cover" : "contain"}
-        mode={activeIsVideo ? "fixed" : "adaptive"}
-        maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
-        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
-        enableFullscreen={!activeIsVideo}
-        onMediaError={tryRefreshMedia}
-      />
+    <div className="relative">
+      <div onClick={handleOpen}>
+        <FeedCarousel
+          items={media}
+          aspectClass="aspect-[4/5]"
+          activeIndex={mediaIndex}
+          onChange={onChangeMediaIndex}
+          controlsTone="light"
+          mediaActive={isCardVisible && !forcedPaused}
+          muted={muted}
+          videoRef={videoRef}
+          fit={activeIsVideo ? "cover" : "contain"}
+          mode={activeIsVideo ? "fixed" : "adaptive"}
+          maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
+          backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
+          enableFullscreen={!activeIsVideo}
+          onMediaError={tryRefreshMedia}
+        />
+      </div>
 
       {activeIsVideo ? (
-        <>
-          {formatDuration(durationToShow) ? (
-            <div className="absolute bottom-3 left-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[12px] font-medium text-white backdrop-blur-sm">
-              {formatDuration(durationToShow)}
-            </div>
-          ) : null}
-
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              const next = !muted;
-              setMuted(next);
-              writeGlobalMuted(next);
-            }}
-            className="absolute bottom-3 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm"
-            aria-label={muted ? copy.unmute : copy.mute}
-          >
-            {muted ? (
-              <VolumeX className="h-5 w-5" />
-            ) : (
-              <Volume2 className="h-5 w-5" />
-            )}
-          </button>
-        </>
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            const next = !muted;
+            setMuted(next);
+            writeGlobalMuted(next);
+          }}
+          className="absolute bottom-3 right-3 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur-sm"
+          aria-label={muted ? copy.unmute : copy.mute}
+        >
+          {muted ? (
+            <VolumeX className="h-5 w-5" />
+          ) : (
+            <Volume2 className="h-5 w-5" />
+          )}
+        </button>
       ) : null}
     </div>
   );

@@ -50,11 +50,14 @@ function HybridMedia({
         preload="metadata"
         muted={muted}
         controls
-        onClick={(event) => event.stopPropagation()}
+        onClick={(event) => {
+          // только контролы — без проброса наверх
+          event.stopPropagation();
+        }}
         onError={onMediaError}
       />
     );
-  }
+  }  
 
   if (item.kind === "image") {
     return (
