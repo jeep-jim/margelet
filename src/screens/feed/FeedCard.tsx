@@ -14,6 +14,8 @@ import {
   hasVisualMedia,
 } from "./feed.utils";
 
+const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+
 export function FeedCard(props: FeedCardProps) {
   const {
     post,
@@ -69,6 +71,11 @@ export function FeedCard(props: FeedCardProps) {
     return () => observer.disconnect();
   }, []);
 
+  const openPostSafely = () => {
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
+    onOpen();
+  };
+
   return (
     <article
       ref={cardRef}
@@ -93,7 +100,7 @@ export function FeedCard(props: FeedCardProps) {
               isAdmin={isAdmin}
               onDelete={onDelete}
               onHide={onHide}
-            />            
+            />
           ) : null}
         </div>
       </div>
@@ -138,7 +145,7 @@ export function FeedCard(props: FeedCardProps) {
                     {expanded ? (
                       <button
                         type="button"
-                        onClick={onOpen}
+                        onClick={openPostSafely}
                         className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                       >
                         <span>{copy.read}</span>
@@ -178,7 +185,7 @@ export function FeedCard(props: FeedCardProps) {
 
                 <button
                   type="button"
-                  onClick={onOpen}
+                  onClick={openPostSafely}
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                 >
                   <span>{copy.open}</span>
@@ -195,7 +202,7 @@ export function FeedCard(props: FeedCardProps) {
           liked={liked}
           onToggleLike={onToggleLike}
           onShare={onShare}
-          onOpen={onOpen}
+          onOpen={openPostSafely}
         />
       ) : (
         <FeedTextCard
@@ -204,7 +211,7 @@ export function FeedCard(props: FeedCardProps) {
           liked={liked}
           onToggleLike={onToggleLike}
           onShare={onShare}
-          onOpen={onOpen}
+          onOpen={openPostSafely}
         />
       )}
     </article>

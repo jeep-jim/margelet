@@ -72,6 +72,8 @@ export function FeedMediaCard({
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
 
+  const activeIsVideo = activeItem?.kind === "video";
+
   const tryRefreshMedia = async () => {
     if (retryUsed) return;
     if (!post.postUrl) return;
@@ -194,15 +196,15 @@ export function FeedMediaCard({
         mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
-        fit="contain"
-        mode="adaptive"
-        maxMediaHeightClass="max-h-[460px]"
-        backgroundClass="bg-white"
-        enableFullscreen={post.contentType !== "video"}
+        fit={activeIsVideo ? "cover" : "contain"}
+        mode={activeIsVideo ? "fixed" : "adaptive"}
+        maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
+        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
+        enableFullscreen={!activeIsVideo}
         onMediaError={tryRefreshMedia}
       />
 
-      {activeItem?.kind === "video" ? (
+      {activeIsVideo ? (
         <>
           {formatDuration(durationToShow) ? (
             <div className="absolute bottom-3 left-3 z-20 rounded-full bg-black/60 px-2.5 py-1 text-[12px] font-medium text-white backdrop-blur-sm">

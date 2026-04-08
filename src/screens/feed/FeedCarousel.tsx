@@ -49,7 +49,8 @@ function HybridMedia({
         playsInline
         preload="metadata"
         muted={muted}
-        controls={false}
+        controls
+        onClick={(event) => event.stopPropagation()}
         onError={onMediaError}
       />
     );
@@ -249,6 +250,7 @@ export function FeedCarousel({
           className={clickAreaClass}
           onClick={(event) => {
             if (!enableFullscreen) return;
+            if (current?.kind === "video") return;
             event.stopPropagation();
             setFullscreenIndex(activeIndex);
             setFullscreenOpen(true);
