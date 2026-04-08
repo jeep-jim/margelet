@@ -296,25 +296,37 @@ export function FeedMediaCard({
             <button
               type="button"
               onClick={handleOpen}
-              className="absolute left-0 top-0 h-full w-[calc(50%-56px)]"
-              aria-label="Открыть видео"
+              className="absolute left-0 top-0 h-full w-[34%]"
+              aria-label="Open video post"
             />
             <button
               type="button"
               onClick={handleOpen}
-              className="absolute right-0 top-0 h-full w-[calc(50%-56px)]"
-              aria-label="Открыть видео"
+              className="absolute right-0 top-0 h-full w-[34%]"
+              aria-label="Open video post"
+            />
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="absolute left-[34%] right-[34%] top-0 h-[36%]"
+              aria-label="Open video post"
+            />
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="absolute bottom-0 left-[34%] right-[34%] h-[36%]"
+              aria-label="Open video post"
             />
           </div>
 
-          <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
             <button
               type="button"
               onClick={(event) => {
                 event.stopPropagation();
                 togglePlay();
               }}
-              className="flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
               aria-label={isVideoPlaying ? copy.pause : copy.play}
             >
               {isVideoPlaying ? (

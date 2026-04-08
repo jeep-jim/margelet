@@ -7,7 +7,11 @@ import {
   FileText,
   Heart,
   Music4,
+  Pause,
+  Play,
   Send,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { IngestedPost } from "../../types/app";
@@ -21,6 +25,9 @@ import {
 } from "./feed.utils";
 
 const SUB_KEY = "margelet_subscriptions";
+const FEED_MUTE_KEY = "margelet_feed_muted";
+const FEED_MUTE_EVENT = "margelet:feed-mute-change";
+const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 
 const COPY = {
   en: {
@@ -36,6 +43,10 @@ const COPY = {
     musicAvailableText:
       "We show the post card here. You can open the original track in Telegram.",
     openInTelegram: "Open in Telegram",
+    play: "Play",
+    pause: "Pause",
+    mute: "Mute",
+    unmute: "Unmute",
   },
   ru: {
     postFromTelegram: "Пост из Telegram",
@@ -50,6 +61,10 @@ const COPY = {
     musicAvailableText:
       "Здесь показываем карточку поста. Оригинальный трек можно открыть в Telegram.",
     openInTelegram: "Открыть в Telegram",
+    play: "Воспроизвести",
+    pause: "Пауза",
+    mute: "Выключить звук",
+    unmute: "Включить звук",
   },
   de: {
     postFromTelegram: "Beitrag aus Telegram",
@@ -64,6 +79,10 @@ const COPY = {
     musicAvailableText:
       "Hier zeigen wir die Beitragskarte. Den Original-Track kannst du in Telegram öffnen.",
     openInTelegram: "In Telegram öffnen",
+    play: "Abspielen",
+    pause: "Pause",
+    mute: "Ton aus",
+    unmute: "Ton an",
   },
   es: {
     postFromTelegram: "Publicación de Telegram",
@@ -78,6 +97,10 @@ const COPY = {
     musicAvailableText:
       "Aquí mostramos la tarjeta de la publicación. Puedes abrir la pista original en Telegram.",
     openInTelegram: "Abrir en Telegram",
+    play: "Reproducir",
+    pause: "Pausa",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
   },
   tr: {
     postFromTelegram: "Telegram gönderisi",
@@ -92,6 +115,10 @@ const COPY = {
     musicAvailableText:
       "Burada gönderi kartını gösteriyoruz. Orijinal parçayı Telegram'da açabilirsin.",
     openInTelegram: "Telegram'da aç",
+    play: "Oynat",
+    pause: "Duraklat",
+    mute: "Sesi kapat",
+    unmute: "Sesi aç",
   },
   fr: {
     postFromTelegram: "Post Telegram",
@@ -106,6 +133,10 @@ const COPY = {
     musicAvailableText:
       "Nous affichons ici la carte du post. Tu peux ouvrir le morceau original dans Telegram.",
     openInTelegram: "Ouvrir dans Telegram",
+    play: "Lire",
+    pause: "Pause",
+    mute: "Couper le son",
+    unmute: "Activer le son",
   },
   it: {
     postFromTelegram: "Post da Telegram",
@@ -120,6 +151,10 @@ const COPY = {
     musicAvailableText:
       "Qui mostriamo la scheda del post. Puoi aprire la traccia originale in Telegram.",
     openInTelegram: "Apri in Telegram",
+    play: "Riproduci",
+    pause: "Pausa",
+    mute: "Disattiva audio",
+    unmute: "Attiva audio",
   },
   "pt-br": {
     postFromTelegram: "Post do Telegram",
@@ -134,6 +169,10 @@ const COPY = {
     musicAvailableText:
       "Aqui mostramos o card do post. Você pode abrir a faixa original no Telegram.",
     openInTelegram: "Abrir no Telegram",
+    play: "Reproduzir",
+    pause: "Pausar",
+    mute: "Silenciar",
+    unmute: "Ativar som",
   },
   id: {
     postFromTelegram: "Postingan dari Telegram",
@@ -148,6 +187,10 @@ const COPY = {
     musicAvailableText:
       "Di sini kami menampilkan kartu post. Trek asli bisa dibuka di Telegram.",
     openInTelegram: "Buka di Telegram",
+    play: "Putar",
+    pause: "Jeda",
+    mute: "Matikan suara",
+    unmute: "Nyalakan suara",
   },
   pl: {
     postFromTelegram: "Post z Telegrama",
@@ -162,8 +205,39 @@ const COPY = {
     musicAvailableText:
       "Tutaj pokazujemy kartę posta. Oryginalny utwór możesz otworzyć w Telegramie.",
     openInTelegram: "Otwórz w Telegramie",
+    play: "Odtwórz",
+    pause: "Pauza",
+    mute: "Wycisz",
+    unmute: "Włącz dźwięk",
   },
 } as const;
+
+function readGlobalMuted() {
+  try {
+    return localStorage.getItem(FEED_MUTE_KEY) !== "0";
+  } catch {
+    return true;
+  }
+}
+
+function writeGlobalMuted(value: boolean) {
+  try {
+    localStorage.setItem(FEED_MUTE_KEY, value ? "1" : "0");
+  } catch {}
+
+  window.dispatchEvent(
+    new CustomEvent(FEED_MUTE_EVENT, {
+      detail: { muted: value },
+    })
+  );
+}
+
+function formatTime(seconds: number) {
+  const safe = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+  const mins = Math.floor(safe / 60);
+  const secs = safe % 60;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
 
 function getSubs(): string[] {
   try {
@@ -436,12 +510,20 @@ export function FeedTextReaderModal({
   const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
   const [mediaIndex, setMediaIndex] = useState(0);
   const [subscribed, setSubscribed] = useState(false);
-  const [muted] = useState(true);
+  const [muted, setMuted] = useState(readGlobalMuted());
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const visualMedia = media.filter(
     (item) => item.kind === "image" || item.kind === "video"
   );
+
+  const activeVisualItem =
+    visualMedia[Math.min(mediaIndex, Math.max(visualMedia.length - 1, 0))] ||
+    null;
+  const activeIsVideo = activeVisualItem?.kind === "video";
 
   const audioMedia = post ? getAudioMedia(post) : [];
   const fileMedia = post ? getFileMedia(post) : [];
@@ -453,6 +535,9 @@ export function FeedTextReaderModal({
 
   useEffect(() => {
     setMediaIndex(0);
+    setCurrentTime(0);
+    setDuration(0);
+    setIsVideoPlaying(true);
   }, [post?.id]);
 
   useEffect(() => {
@@ -460,11 +545,103 @@ export function FeedTextReaderModal({
 
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
 
     return () => {
       document.body.style.overflow = original;
     };
   }, [post]);
+
+  useEffect(() => {
+    const syncMuted = (event: Event) => {
+      const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
+      setMuted(
+        typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted()
+      );
+    };
+
+    window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+
+    return () => {
+      window.removeEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+    };
+  }, []);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node || !activeIsVideo) {
+      setCurrentTime(0);
+      setDuration(0);
+      return;
+    }
+
+    const syncMeta = () => {
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const syncTime = () => {
+      setCurrentTime(node.currentTime || 0);
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const onPlay = () => setIsVideoPlaying(true);
+    const onPause = () => setIsVideoPlaying(false);
+
+    node.addEventListener("loadedmetadata", syncMeta);
+    node.addEventListener("timeupdate", syncTime);
+    node.addEventListener("play", onPlay);
+    node.addEventListener("pause", onPause);
+    node.addEventListener("ended", onPause);
+
+    syncMeta();
+    syncTime();
+    setIsVideoPlaying(!node.paused);
+
+    return () => {
+      node.removeEventListener("loadedmetadata", syncMeta);
+      node.removeEventListener("timeupdate", syncTime);
+      node.removeEventListener("play", onPlay);
+      node.removeEventListener("pause", onPause);
+      node.removeEventListener("ended", onPause);
+    };
+  }, [activeVisualItem?.id, activeIsVideo]);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node) return;
+    node.muted = muted;
+    writeGlobalMuted(muted);
+  }, [muted, mediaIndex, post?.id]);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node || !activeIsVideo) return;
+
+    if (isVideoPlaying) {
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+    } else {
+      node.pause();
+    }
+  }, [isVideoPlaying, activeVisualItem?.id, activeIsVideo]);
+
+  const togglePlay = () => {
+    const node = videoRef.current;
+    if (!node || !activeIsVideo) return;
+
+    if (node.paused) {
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+      setIsVideoPlaying(true);
+    } else {
+      node.pause();
+      setIsVideoPlaying(false);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -554,24 +731,96 @@ export function FeedTextReaderModal({
 
               {visualMedia.length > 0 ? (
                 <div className="mb-4 overflow-hidden rounded-[24px]">
-                  <FeedCarousel
-                    items={visualMedia}
-                    aspectClass="aspect-[4/5]"
-                    activeIndex={Math.min(
-                      mediaIndex,
-                      Math.max(visualMedia.length - 1, 0)
-                    )}
-                    onChange={setMediaIndex}
-                    controlsTone="dark"
-                    fit="contain"
-                    mode="adaptive"
-                    maxMediaHeightClass="max-h-[60vh]"
-                    backgroundClass="bg-transparent"
-                    mediaActive
-                    muted={muted}
-                    videoRef={videoRef}
-                    enableFullscreen
-                  />
+                  <div className="relative">
+                    <FeedCarousel
+                      items={visualMedia}
+                      aspectClass="aspect-[4/5]"
+                      activeIndex={Math.min(
+                        mediaIndex,
+                        Math.max(visualMedia.length - 1, 0)
+                      )}
+                      onChange={setMediaIndex}
+                      controlsTone="dark"
+                      fit="contain"
+                      mode="adaptive"
+                      maxMediaHeightClass="max-h-[60vh]"
+                      backgroundClass="bg-transparent"
+                      mediaActive={activeIsVideo ? isVideoPlaying : true}
+                      muted={muted}
+                      videoRef={videoRef}
+                      enableFullscreen={!activeIsVideo}
+                      nativeVideoControls={false}
+                      blockVideoClickPropagation={false}
+                    />
+
+                    {activeIsVideo ? (
+                      <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            togglePlay();
+                          }}
+                          className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                          aria-label={isVideoPlaying ? copy.pause : copy.play}
+                        >
+                          {isVideoPlaying ? (
+                            <Pause className="h-6 w-6" />
+                          ) : (
+                            <Play className="ml-0.5 h-6 w-6" />
+                          )}
+                        </button>
+                      </div>
+                    ) : null}
+
+                    {activeIsVideo ? (
+                      <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+                        <div className="flex items-center gap-3">
+                          <div className="min-w-[72px] text-[12px] font-medium text-white">
+                            {formatTime(currentTime)} / {formatTime(duration)}
+                          </div>
+
+                          <input
+                            type="range"
+                            min={0}
+                            max={duration || 0}
+                            step={0.1}
+                            value={Math.min(currentTime, duration || 0)}
+                            onChange={(event) => {
+                              event.stopPropagation();
+                              const node = videoRef.current;
+                              if (!node) return;
+                              const next = Number(event.target.value);
+                              node.currentTime = next;
+                              setCurrentTime(next);
+                            }}
+                            onClick={(event) => event.stopPropagation()}
+                            onMouseDown={(event) => event.stopPropagation()}
+                            onTouchStart={(event) => event.stopPropagation()}
+                            className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+                          />
+
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              const next = !muted;
+                              setMuted(next);
+                              writeGlobalMuted(next);
+                            }}
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                            aria-label={muted ? copy.unmute : copy.mute}
+                          >
+                            {muted ? (
+                              <VolumeX className="h-5 w-5" />
+                            ) : (
+                              <Volume2 className="h-5 w-5" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               ) : null}
 
