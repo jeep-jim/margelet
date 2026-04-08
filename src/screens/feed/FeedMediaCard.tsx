@@ -107,11 +107,14 @@ export function FeedMediaCard({
   const [retryUsed, setRetryUsed] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const centerTimerRef = useRef<number | null>(null);
+
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [showCenterControl, setShowCenterControl] = useState(false);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
@@ -161,6 +164,7 @@ export function FeedMediaCard({
       if (!node) return;
       node.pause();
       setIsVideoPlaying(false);
+      setShowCenterControl(true);
     };
 
     window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
@@ -173,11 +177,20 @@ export function FeedMediaCard({
   }, []);
 
   useEffect(() => {
+    return () => {
+      if (centerTimerRef.current) {
+        window.clearTimeout(centerTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     const node = videoRef.current;
     if (!node || activeItem?.kind !== "video") {
       setCurrentTime(0);
       setDuration(0);
       setIsVideoPlaying(false);
+      setShowCenterControl(false);
       return;
     }
 
@@ -190,26 +203,33 @@ export function FeedMediaCard({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
-    const syncPlaying = () => {
-      setIsVideoPlaying(!node.paused);
+    const onPlay = () => {
+      setIsVideoPlaying(true);
+      setShowCenterControl(false);
+    };
+
+    const onPause = () => {
+      setIsVideoPlaying(false);
+      setShowCenterControl(true);
     };
 
     node.addEventListener("loadedmetadata", syncMeta);
     node.addEventListener("timeupdate", syncTime);
-    node.addEventListener("play", syncPlaying);
-    node.addEventListener("pause", syncPlaying);
-    node.addEventListener("ended", syncPlaying);
+    node.addEventListener("play", onPlay);
+    node.addEventListener("pause", onPause);
+    node.addEventListener("ended", onPause);
 
     syncMeta();
     syncTime();
-    syncPlaying();
+    setIsVideoPlaying(!node.paused);
+    setShowCenterControl(node.paused);
 
     return () => {
       node.removeEventListener("loadedmetadata", syncMeta);
       node.removeEventListener("timeupdate", syncTime);
-      node.removeEventListener("play", syncPlaying);
-      node.removeEventListener("pause", syncPlaying);
-      node.removeEventListener("ended", syncPlaying);
+      node.removeEventListener("play", onPlay);
+      node.removeEventListener("pause", onPause);
+      node.removeEventListener("ended", onPause);
     };
   }, [activeItem?.id, activeItem?.kind]);
 
@@ -246,6 +266,16 @@ export function FeedMediaCard({
     onOpen();
   };
 
+  const pulseCenterControl = () => {
+    setShowCenterControl(true);
+    if (centerTimerRef.current) {
+      window.clearTimeout(centerTimerRef.current);
+    }
+    centerTimerRef.current = window.setTimeout(() => {
+      setShowCenterControl(false);
+    }, 650);
+  };
+
   const togglePlay = () => {
     const node = videoRef.current;
     if (!node || !activeIsVideo) return;
@@ -257,10 +287,12 @@ export function FeedMediaCard({
       }
       setIsVideoPlaying(true);
       setForcedPaused(false);
+      pulseCenterControl();
     } else {
       node.pause();
       setIsVideoPlaying(false);
       setForcedPaused(true);
+      setShowCenterControl(true);
     }
   };
 
@@ -293,7 +325,7 @@ export function FeedMediaCard({
         />
       ) : null}
 
-      {activeIsVideo ? (
+      {activeIsVideo && showCenterControl ? (
         <button
           type="button"
           onClick={(event) => {

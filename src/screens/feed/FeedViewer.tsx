@@ -161,6 +161,14 @@ export function FeedViewer({
   }, [activePost?.id, setIsMuted]);
 
   useEffect(() => {
+    return () => {
+      if (centerTimerRef.current) {
+        window.clearTimeout(centerTimerRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
     const node = videoRef.current;
     if (!node || activeItem?.kind !== "video") {
       setCurrentTime(0);
@@ -177,28 +185,17 @@ export function FeedViewer({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
-    const syncPlaying = () => {
-      setIsPlaying(!node.paused);
-    };
-
     node.addEventListener("loadedmetadata", syncMeta);
     node.addEventListener("timeupdate", syncTime);
-    node.addEventListener("play", syncPlaying);
-    node.addEventListener("pause", syncPlaying);
-    node.addEventListener("ended", syncPlaying);
 
     syncMeta();
     syncTime();
-    syncPlaying();
 
     return () => {
       node.removeEventListener("loadedmetadata", syncMeta);
       node.removeEventListener("timeupdate", syncTime);
-      node.removeEventListener("play", syncPlaying);
-      node.removeEventListener("pause", syncPlaying);
-      node.removeEventListener("ended", syncPlaying);
     };
-  }, [activePost?.id, activeItem?.id, activeItem?.kind, viewerMediaIndex, setIsPlaying]);
+  }, [activePost?.id, activeItem?.id, activeItem?.kind, viewerMediaIndex]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -208,30 +205,21 @@ export function FeedViewer({
   }, [isMuted, viewerMediaIndex, activePost?.id]);
 
   useEffect(() => {
-    const node = videoRef.current;
-    if (!node || activeItem?.kind !== "video") return;
-
-    if (isPlaying) {
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
-      }
-    } else {
-      node.pause();
-    }
-  }, [isPlaying, activeItem?.id, activeItem?.kind, viewerMediaIndex]);
-
-  useEffect(() => {
     if (!activeIsVideo) return;
-    if (!isPlaying) return;
 
     const raf = window.requestAnimationFrame(() => {
       const node = videoRef.current;
       if (!node) return;
+
       node.currentTime = 0;
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
+
+      if (isPlaying) {
+        const promise = node.play();
+        if (promise && typeof promise.catch === "function") {
+          promise.catch(() => {});
+        }
+      } else {
+        node.pause();
       }
     });
 
@@ -254,14 +242,6 @@ export function FeedViewer({
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [activePost, closeViewer, nextViewer, prevViewer]);
-
-  useEffect(() => {
-    return () => {
-      if (centerTimerRef.current) {
-        window.clearTimeout(centerTimerRef.current);
-      }
-    };
-  }, []);
 
   if (!activePost || activePost.contentType !== "video") {
     return null;
@@ -290,12 +270,12 @@ export function FeedViewer({
         promise.catch(() => {});
       }
       setIsPlaying(true);
+      pulseCenterControl();
     } else {
       node.pause();
       setIsPlaying(false);
+      setShowCenterControl(true);
     }
-
-    pulseCenterControl();
   };
 
   const handleWheel = (event: React.WheelEvent<HTMLDivElement>) => {
@@ -354,7 +334,7 @@ export function FeedViewer({
               aspectClass="h-full"
               activeIndex={viewerMediaIndex}
               onChange={setViewerMediaIndex}
-              mediaActive
+              mediaActive={isPlaying}
               muted={isMuted}
               videoRef={videoRef}
               fit="contain"
