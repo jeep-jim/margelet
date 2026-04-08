@@ -291,78 +291,92 @@ export function FeedMediaCard({
       />
 
       {activeIsVideo ? (
-        <div className="absolute inset-x-0 top-0 bottom-[58px] z-10">
+        <>
           <button
             type="button"
             onClick={handleOpen}
-            className="absolute inset-0"
+            className="absolute inset-x-0 top-0 bottom-[58px] z-10"
             aria-label="Open video post"
           />
-        </div>
-      ) : null}
 
-      {activeIsVideo ? (
-        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                togglePlay();
-              }}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
-              aria-label={isVideoPlaying ? copy.pause : copy.play}
-            >
-              {isVideoPlaying ? (
-                <Pause className="h-5 w-5" />
-              ) : (
-                <Play className="ml-0.5 h-5 w-5" />
-              )}
-            </button>
+          <div className="absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  togglePlay();
+                }}
+                onMouseDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }}
+                onTouchStart={(event) => {
+                  event.stopPropagation();
+                }}
+                className="relative z-40 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                aria-label={isVideoPlaying ? copy.pause : copy.play}
+              >
+                {isVideoPlaying ? (
+                  <Pause className="h-5 w-5" />
+                ) : (
+                  <Play className="ml-0.5 h-5 w-5" />
+                )}
+              </button>
 
-            <div className="min-w-[72px] text-[12px] font-medium text-white">
-              {formatTime(currentTime)} / {formatTime(duration)}
+              <div className="min-w-[72px] text-[12px] font-medium text-white">
+                {formatTime(currentTime)} / {formatTime(duration)}
+              </div>
+
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                step={0.1}
+                value={Math.min(currentTime, duration || 0)}
+                onChange={(event) => {
+                  event.stopPropagation();
+                  const node = videoRef.current;
+                  if (!node) return;
+                  const next = Number(event.target.value);
+                  node.currentTime = next;
+                  setCurrentTime(next);
+                }}
+                onClick={(event) => event.stopPropagation()}
+                onMouseDown={(event) => event.stopPropagation()}
+                onTouchStart={(event) => event.stopPropagation()}
+                className="relative z-40 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+              />
+
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  const next = !muted;
+                  setMuted(next);
+                  writeGlobalMuted(next);
+                }}
+                onMouseDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }}
+                onTouchStart={(event) => {
+                  event.stopPropagation();
+                }}
+                className="relative z-40 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                aria-label={muted ? copy.unmute : copy.mute}
+              >
+                {muted ? (
+                  <VolumeX className="h-5 w-5" />
+                ) : (
+                  <Volume2 className="h-5 w-5" />
+                )}
+              </button>
             </div>
-
-            <input
-              type="range"
-              min={0}
-              max={duration || 0}
-              step={0.1}
-              value={Math.min(currentTime, duration || 0)}
-              onChange={(event) => {
-                event.stopPropagation();
-                const node = videoRef.current;
-                if (!node) return;
-                const next = Number(event.target.value);
-                node.currentTime = next;
-                setCurrentTime(next);
-              }}
-              onClick={(event) => event.stopPropagation()}
-              onMouseDown={(event) => event.stopPropagation()}
-              onTouchStart={(event) => event.stopPropagation()}
-              className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
-            />
-
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                const next = !muted;
-                setMuted(next);
-                writeGlobalMuted(next);
-              }}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
-              aria-label={muted ? copy.unmute : copy.mute}
-            >
-              {muted ? (
-                <VolumeX className="h-5 w-5" />
-              ) : (
-                <Volume2 className="h-5 w-5" />
-              )}
-            </button>
           </div>
-        </div>
+        </>
       ) : null}
     </div>
   );
