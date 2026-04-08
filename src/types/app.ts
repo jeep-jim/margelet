@@ -1,4 +1,5 @@
 import type { ActiveLocale } from "../lib/locales";
+
 export type Locale = ActiveLocale;
 
 export type TabId = "intro" | "feed" | "add" | "creator" | "source" | "admin";
@@ -110,7 +111,11 @@ export type IngestedPost = {
   ttlHours: number;
   mediaRefreshedAt?: string | null;
 
+  // legacy single-tag support
   tag: ContentTag;
+
+  // new multi-tag support
+  tags?: ContentTag[];
 
   addedBy: {
     telegramId: string | null;
@@ -122,8 +127,6 @@ export type IngestedPost = {
     autopublishEnabled: boolean;
   };
 
-  // Системные поля для автопарсинга доверенных источников.
-  // Optional, чтобы не ломать старые посты в Redis.
   sourceId?: string | null;
   sourceCountryCode?: string | null;
 

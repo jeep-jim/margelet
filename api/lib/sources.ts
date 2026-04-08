@@ -1,9 +1,8 @@
 import { getPostByUrl, savePost, redis } from "./kv.js";
-import type { ContentTag } from "../../src/types/app.js";
+import type { ContentTag, IngestedPost } from "../../src/types/app.js";
 import type { CountryCode } from "../../src/screens/admin/admin.countries.js";
 import type { TrustedSource } from "../../src/screens/admin/admin.types.js";
 import { ingestTelegramPost, parseTelegramPostUrl } from "../../src/lib/telegram.js";
-import type { IngestedPost } from "../../src/types/app.js";
 
 const SOURCES_IDS_KEY = "margelet:sources:ids";
 const SOURCE_KEY_PREFIX = "margelet:source:";
@@ -56,6 +55,22 @@ function normalizeHandle(handle: string) {
 
 function normalizeCountryCode(value: string | null | undefined) {
   return String(value || "").trim().toLowerCase() || null;
+}
+
+function normalizeTags(tags: unknown, fallbackTag?: ContentTag | null): ContentTag[] {
+  const normalized = Array.isArray(tags)
+    ? tags
+        .map((item) => asString(item))
+        .filter((item): item is ContentTag => Boolean(item))
+    : [];
+
+  const unique = Array.from(new Set(normalized));
+
+  if (unique.length > 0) {
+    return unique;
+  }
+
+  return fallbackTag ? [fallbackTag] : [];
 }
 
 function buildSourceId(countryCode: CountryCode, handle: string) {
@@ -165,6 +180,7 @@ function normalizeSource(raw: unknown): TrustedSource | null {
     title,
     avatarUrl: asString(record.avatarUrl),
     defaultTag,
+    tags: normalizeTags(record.tags, defaultTag),
     status,
     note: asString(record.note),
     createdAt: asString(record.createdAt) || new Date().toISOString(),
@@ -313,8 +329,9 @@ export async function getSourceById(id: string): Promise<TrustedSource | null> {
 }
 
 export async function saveSource(
-  input: Omit<TrustedSource, "id" | "createdAt" | "updatedAt"> & {
+  input: Omit<TrustedSource, "id" | "createdAt" | "updatedAt" | "tags"> & {
     id?: string;
+    tags?: ContentTag[];
     createdAt?: string;
     updatedAt?: string;
   }
@@ -334,6 +351,12 @@ export async function saveSource(
         ? input.avatarUrl
         : existing?.avatarUrl ?? null,
     defaultTag: input.defaultTag,
+    tags:
+      normalizeTags(input.tags, input.defaultTag).length > 0
+        ? normalizeTags(input.tags, input.defaultTag)
+        : existing?.tags?.length
+          ? existing.tags
+          : [input.defaultTag],
     status: input.status,
     note: input.note || null,
     createdAt: existing?.createdAt || input.createdAt || nowIso,
@@ -370,6 +393,7 @@ export async function upsertSourceWithMeta(
     title?: string | null;
     avatarUrl?: string | null;
     defaultTag: ContentTag;
+    tags?: ContentTag[];
     status: TrustedSource["status"];
     note?: string | null;
   } & {
@@ -404,6 +428,12 @@ export async function upsertSourceWithMeta(
     title: finalTitle,
     avatarUrl: finalAvatarUrl,
     defaultTag: input.defaultTag,
+    tags:
+      normalizeTags(input.tags, input.defaultTag).length > 0
+        ? normalizeTags(input.tags, input.defaultTag)
+        : existing?.tags?.length
+          ? existing.tags
+          : [input.defaultTag],
     status: input.status,
     note: input.note || null,
     createdAt: input.createdAt,
@@ -443,6 +473,7 @@ export async function touchSourceAfterPoll(
     title: source.title,
     avatarUrl: source.avatarUrl,
     defaultTag: source.defaultTag,
+    tags: source.tags,
     status: source.status,
     note: source.note,
     createdAt: source.createdAt,
@@ -555,6 +586,7 @@ function buildAutoImportedPost(
     ttlHours,
     mediaRefreshedAt: nowIso,
     tag: source.defaultTag,
+    tags: source.tags?.length ? source.tags : [source.defaultTag],
     addedBy: {
       telegramId: "1372669404",
       username: "admin",

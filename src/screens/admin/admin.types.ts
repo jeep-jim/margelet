@@ -16,7 +16,13 @@ export type TrustedSource = {
   handle: string;
   title: string;
   avatarUrl: string | null;
+
+  // legacy single-tag support
   defaultTag: ContentTag;
+
+  // new multi-tag support
+  tags: ContentTag[];
+
   status: TrustedSourceStatus;
   note: string | null;
   createdAt: string;

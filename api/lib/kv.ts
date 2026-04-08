@@ -1,5 +1,5 @@
 import { Redis } from "@upstash/redis";
-import type { IngestedPost } from "../../src/types/app";
+import type { IngestedPost, ContentTag } from "../../src/types/app";
 import { parseTelegramPostUrl } from "../../src/lib/telegram.js";
 
 type EnvMap = Record<string, string | undefined>;
@@ -73,6 +73,25 @@ function pickLocalizedText(value: unknown): string {
   }
 
   return "";
+}
+
+function normalizeTagList(
+  raw: unknown,
+  fallback: ContentTag = "other"
+): ContentTag[] {
+  const list = Array.isArray(raw)
+    ? raw
+        .map((item) => asString(item))
+        .filter((item): item is ContentTag => Boolean(item))
+    : [];
+
+  const unique = Array.from(new Set(list));
+
+  if (unique.length > 0) {
+    return unique;
+  }
+
+  return [fallback];
 }
 
 function normalizeLegacyMedia(
@@ -216,6 +235,9 @@ function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
     return null;
   }
 
+  const primaryTag = (asString(raw.tag) as ContentTag) || "other";
+  const tags = normalizeTagList(raw.tags, primaryTag);
+
   const post: IngestedPost = {
     id,
     postUrl,
@@ -240,7 +262,8 @@ function normalizeNewPost(raw: Record<string, unknown>): IngestedPost | null {
       new Date(id + 24 * 3600 * 1000).toISOString(),
     ttlHours: asNumber(raw.ttlHours) || 24,
     mediaRefreshedAt: asString(raw.mediaRefreshedAt),
-    tag: (asString(raw.tag) as IngestedPost["tag"]) || "other",
+    tag: primaryTag,
+    tags,
     addedBy: {
       telegramId: asString(addedBy.telegramId),
       username: asString(addedBy.username),
@@ -310,6 +333,8 @@ function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null 
   const ttlHours = 24;
   const createdAt = new Date(id).toISOString();
   const expiresAt = new Date(id + ttlHours * 3600 * 1000).toISOString();
+  const primaryTag = (asString(raw.tag) as ContentTag) || "other";
+  const tags = normalizeTagList(raw.tags, primaryTag);
 
   const post: IngestedPost = {
     id,
@@ -330,7 +355,8 @@ function normalizeLegacyPost(raw: Record<string, unknown>): IngestedPost | null 
     expiresAt,
     ttlHours,
     mediaRefreshedAt: asString(raw.mediaRefreshedAt),
-    tag: (asString(raw.tag) as IngestedPost["tag"]) || "other",
+    tag: primaryTag,
+    tags,
     addedBy: {
       telegramId: asString(raw.addedByTelegramId),
       username: asString(raw.addedByUsername),
@@ -483,13 +509,16 @@ export async function savePost(post: IngestedPost): Promise<IngestedPost> {
     }
   }
 
+  const primaryTag = (asString(post.tag) as ContentTag) || "other";
   const normalizedPost: IngestedPost = {
     ...post,
     postUrl: canonicalPostUrl,
+    tag: primaryTag,
+    tags: normalizeTagList(post.tags, primaryTag),
     sourceId: asString(post.sourceId),
     sourceCountryCode:
-    normalizeCountryCode(post.sourceCountryCode) ||
-    getCountryFromSourceId(post.sourceId),
+      normalizeCountryCode(post.sourceCountryCode) ||
+      getCountryFromSourceId(post.sourceId),
   };
 
   await redis.set(postKey(normalizedPost.id), normalizedPost, {
@@ -513,7 +542,11 @@ export async function getFeedPosts(
   }
 ): Promise<IngestedPost[]> {
   const desired = Math.max(1, limit);
-  const ids = await redis.lrange<number | string>(FEED_IDS_KEY, 0, Math.max(desired * 5, desired) - 1);
+  const ids = await redis.lrange<number | string>(
+    FEED_IDS_KEY,
+    0,
+    Math.max(desired * 5, desired) - 1
+  );
 
   if (!ids || ids.length === 0) {
     return [];
@@ -555,6 +588,7 @@ export async function getFeedPosts(
     deduped.push({
       ...post,
       postUrl: canonicalUrl,
+      tags: normalizeTagList(post.tags, post.tag || "other"),
       sourceCountryCode: resolvePostCountryCode(post),
     });
 
@@ -577,6 +611,7 @@ export async function getPostById(id: number): Promise<IngestedPost | null> {
   return {
     ...post,
     postUrl: getCanonicalPostUrl(post.postUrl),
+    tags: normalizeTagList(post.tags, post.tag || "other"),
     sourceCountryCode: resolvePostCountryCode(post),
   };
 }
@@ -606,6 +641,7 @@ export async function getPostByUrl(url: string): Promise<IngestedPost | null> {
   return {
     ...post,
     postUrl: canonicalUrl,
+    tags: normalizeTagList(post.tags, post.tag || "other"),
     sourceCountryCode: resolvePostCountryCode(post),
   };
 }

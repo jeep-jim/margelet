@@ -50,6 +50,26 @@ function resolveLocale(value: unknown): Locale | null {
   return null;
 }
 
+function resolveTag(value: unknown): ContentTag {
+  return (asCleanString(value) as ContentTag) || "other";
+}
+
+function normalizeTags(raw: unknown, fallback: ContentTag): ContentTag[] {
+  const tags = Array.isArray(raw)
+    ? raw
+        .map((item) => asCleanString(item))
+        .filter((item): item is ContentTag => Boolean(item))
+    : [];
+
+  const unique = Array.from(new Set(tags));
+
+  if (unique.length > 0) {
+    return unique;
+  }
+
+  return [fallback];
+}
+
 function getStartOfUtcDay() {
   const now = new Date();
   return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
@@ -146,6 +166,9 @@ export default async function handler(req: any, res: any) {
       return res.status(401).json({ error: "Telegram auth required" });
     }
 
+    const primaryTag = resolveTag(body.tag);
+    const tags = normalizeTags(body.tags, primaryTag);
+
     if (role === "user") {
       const count = await getUserPostsToday(addedByTelegramId, locale);
 
@@ -155,7 +178,7 @@ export default async function handler(req: any, res: any) {
         });
       }
 
-      if (!body.tag) {
+      if (!body.tag && !Array.isArray(body.tags)) {
         return res.status(400).json({
           error: "Tag required for user",
         });
@@ -212,7 +235,8 @@ export default async function handler(req: any, res: any) {
       ttlHours,
       mediaRefreshedAt: nowIso,
 
-      tag: body.tag || "other",
+      tag: primaryTag,
+      tags,
 
       addedBy: {
         telegramId: addedByTelegramId,
