@@ -191,8 +191,13 @@ export function FeedMediaCard({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
-    const onPlay = () => setIsVideoPlaying(true);
-    const onPause = () => setIsVideoPlaying(false);
+    const onPlay = () => {
+      setIsVideoPlaying(true);
+    };
+
+    const onPause = () => {
+      setIsVideoPlaying(false);
+    };
 
     node.addEventListener("loadedmetadata", syncMeta);
     node.addEventListener("timeupdate", syncTime);
@@ -287,13 +292,22 @@ export function FeedMediaCard({
 
       {activeIsVideo ? (
         <>
-          <div
-            className="absolute left-0 right-0 top-0 bottom-[58px] z-10 cursor-pointer"
-            onClick={handleOpen}
-            aria-hidden="true"
-          />
+          <div className="absolute inset-x-0 top-0 bottom-[58px] z-10">
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="absolute left-0 top-0 h-full w-[calc(50%-56px)]"
+              aria-label="Открыть видео"
+            />
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="absolute right-0 top-0 h-full w-[calc(50%-56px)]"
+              aria-label="Открыть видео"
+            />
+          </div>
 
-          <div className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
             <button
               type="button"
               onClick={(event) => {
