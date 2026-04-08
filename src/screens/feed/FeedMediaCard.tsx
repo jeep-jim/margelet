@@ -326,7 +326,9 @@ export function FeedMediaCard({
                 event.stopPropagation();
                 togglePlay();
               }}
-              className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+              className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-opacity duration-150 ${
+                isVideoPlaying ? "opacity-0" : "opacity-100"
+              }`}
               aria-label={isVideoPlaying ? copy.pause : copy.play}
             >
               {isVideoPlaying ? (
