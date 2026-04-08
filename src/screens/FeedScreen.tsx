@@ -12,7 +12,10 @@ import {
   FEED_FILTER_TOGGLE_EVENT,
 } from "./feed/feed.constants";
 import type { ViewerDirection } from "./feed/feed.types";
-import { buildShareUrl, getResolvedTag } from "./feed/feed.utils";
+import {
+  buildShareUrl,
+  getResolvedTags,
+} from "./feed/feed.utils";
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
@@ -247,7 +250,7 @@ export function FeedScreen({
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
   isFeedLoading: boolean;
-}) {  
+}) {
   const copy = FEED_SCREEN_COPY[locale] ?? FEED_SCREEN_COPY.en;
 
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
@@ -269,11 +272,11 @@ export function FeedScreen({
   );
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
-useEffect(() => {
-  setSelectedTags(readSelectedTagsFromStorage());
-  setSearchQuery(readSearchQueryFromStorage());
-  setSubscriptionHandles(readSubscriptionsFromStorage());
-}, []);
+  useEffect(() => {
+    setSelectedTags(readSelectedTagsFromStorage());
+    setSearchQuery(readSearchQueryFromStorage());
+    setSubscriptionHandles(readSubscriptionsFromStorage());
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(
@@ -359,7 +362,10 @@ useEffect(() => {
     let list = [...safePosts];
 
     if (selectedTags.length > 0) {
-      list = list.filter((post) => selectedTags.includes(getResolvedTag(post)));
+      list = list.filter((post) => {
+        const postTags = getResolvedTags(post);
+        return postTags.some((tag) => selectedTags.includes(tag));
+      });
     }
 
     const q = searchQuery.trim().toLowerCase();
@@ -372,6 +378,7 @@ useEffect(() => {
           post.text,
           post.postUrl,
           post.tag,
+          ...getResolvedTags(post),
         ]
           .join(" ")
           .toLowerCase();
@@ -511,41 +518,41 @@ useEffect(() => {
     );
   };
 
-const clearTags = () => {
-  setSelectedTags([]);
-};
+  const clearTags = () => {
+    setSelectedTags([]);
+  };
 
-const hasSubscriptions = subscriptionHandles.length > 0;
-const hasBubbles = subscriptionBubbles.length > 0;
+  const hasSubscriptions = subscriptionHandles.length > 0;
+  const hasBubbles = subscriptionBubbles.length > 0;
 
-return (
-  <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
-    <FeedHeader
-      locale={locale}
-      selectedTags={selectedTags}
-      toggleTag={toggleTag}
-      clearTags={clearTags}
-      searchQuery={searchQuery}
-      setSearchQuery={setSearchQuery}
-      tagsOpen={tagsOpen}
-      setTagsOpen={setTagsOpen}
-      resultsCount={visiblePosts.length}
-    />
-
-    {!tagsOpen && !hasSubscriptions ? (
-      <SubscriptionsHint text={copy.subscriptionsHint} />
-    ) : null}
-
-    {!tagsOpen && hasSubscriptions && hasBubbles ? (
-      <SubscriptionsBar
-        items={subscriptionBubbles}
-        onOpen={(handle) => openSource(handle)}
+  return (
+    <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
+      <FeedHeader
+        locale={locale}
+        selectedTags={selectedTags}
+        toggleTag={toggleTag}
+        clearTags={clearTags}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        tagsOpen={tagsOpen}
+        setTagsOpen={setTagsOpen}
+        resultsCount={visiblePosts.length}
       />
-    ) : null}
 
-    {!tagsOpen && hasSubscriptions && !hasBubbles ? (
-      <SubscriptionsHint text={copy.subscriptionsHint} />
-    ) : null}      
+      {!tagsOpen && !hasSubscriptions ? (
+        <SubscriptionsHint text={copy.subscriptionsHint} />
+      ) : null}
+
+      {!tagsOpen && hasSubscriptions && hasBubbles ? (
+        <SubscriptionsBar
+          items={subscriptionBubbles}
+          onOpen={(handle) => openSource(handle)}
+        />
+      ) : null}
+
+      {!tagsOpen && hasSubscriptions && !hasBubbles ? (
+        <SubscriptionsHint text={copy.subscriptionsHint} />
+      ) : null}
 
       {actionError ? (
         <div className="mx-auto mb-3 w-full max-w-[570px] px-4">

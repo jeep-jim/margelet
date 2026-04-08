@@ -84,13 +84,16 @@ async function refreshPostKeepingTtl(post: RefreshablePost): Promise<Refreshable
       expiresAt: post.expiresAt,
       ttlHours: post.ttlHours,
       tag: post.tag,
+      tags:
+        Array.isArray(post.tags) && post.tags.length > 0
+          ? post.tags
+          : [post.tag || "other"],
       addedBy: post.addedBy,
       billing: post.billing,
       status: post.status,
       role: post.role,
       moderation: post.moderation,
 
-      // Важно: сохраняем жёсткую привязку к источнику/стране
       sourceId: post.sourceId ?? null,
       sourceCountryCode: post.sourceCountryCode ?? null,
 

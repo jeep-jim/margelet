@@ -1,8 +1,22 @@
 import type { ContentTag, FeedTag, IngestedPost, Locale } from "../../types/app";
 import { findTagByValue, getTagLabel as getSiteTagLabel } from "../../lib/tags";
 
+export function getResolvedTags(post: IngestedPost): ContentTag[] {
+  if (Array.isArray(post.tags) && post.tags.length > 0) {
+    return Array.from(
+      new Set(
+        post.tags.filter(
+          (tag): tag is ContentTag => typeof tag === "string" && !!tag.trim()
+        )
+      )
+    );
+  }
+
+  return [post.tag || "other"];
+}
+
 export function getResolvedTag(post: IngestedPost): ContentTag {
-  return post.tag || "other";
+  return getResolvedTags(post)[0] || "other";
 }
 
 export function getTagLabel(tag: FeedTag, locale: Locale) {
