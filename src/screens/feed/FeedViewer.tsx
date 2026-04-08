@@ -222,6 +222,23 @@ export function FeedViewer({
   }, [isPlaying, activeItem?.id, activeItem?.kind, viewerMediaIndex]);
 
   useEffect(() => {
+    if (!activeIsVideo) return;
+    if (!isPlaying) return;
+
+    const raf = window.requestAnimationFrame(() => {
+      const node = videoRef.current;
+      if (!node) return;
+      node.currentTime = 0;
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+    });
+
+    return () => window.cancelAnimationFrame(raf);
+  }, [activeItem?.id, activeIsVideo, isPlaying]);
+
+  useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
       if (!activePost) return;
 

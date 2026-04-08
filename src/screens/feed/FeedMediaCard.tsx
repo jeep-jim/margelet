@@ -232,9 +232,9 @@ export function FeedMediaCard({
     if (activeItem?.kind !== "video") return;
 
     if (isCardVisible && !forcedPaused) {
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
+      const playPromise = node.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
       }
     } else {
       node.pause();
@@ -300,13 +300,13 @@ export function FeedMediaCard({
             event.stopPropagation();
             togglePlay();
           }}
-          className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+          className="absolute left-1/2 top-1/2 z-20 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
           aria-label={isVideoPlaying ? copy.pause : copy.play}
         >
           {isVideoPlaying ? (
-            <Pause className="h-5 w-5" />
+            <Pause className="h-6 w-6" />
           ) : (
-            <Play className="ml-0.5 h-5 w-5" />
+            <Play className="ml-0.5 h-6 w-6" />
           )}
         </button>
       ) : null}
