@@ -707,17 +707,20 @@ export function FeedTextReaderModal({
               <button
                 type="button"
                 onClick={() => window.location.assign(`/${post.source.handle}`)}
-                className="mb-4 flex min-w-0 items-center gap-3 text-left"
+                className="mb-4 flex w-full min-w-0 items-center gap-3 text-left"
               >
-                <FeedSourceAvatar post={post} />
+                <div className="shrink-0">
+                  <FeedSourceAvatar post={post} />
+                </div>
 
-                <div className="min-w-0 flex-1">
+                <div className="min-w-0 flex-1 overflow-hidden">
                   <div className="flex min-w-0 items-center gap-1.5">
-                    <div className="min-w-0 flex-1 truncate text-[18px] font-semibold text-neutral-950">
+                    <div className="min-w-0 flex-1 truncate whitespace-nowrap text-[18px] font-semibold text-neutral-950">
                       {post.source.title}
                     </div>
+
                     {post.source.verified ? (
-                      <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+                      <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
                     ) : null}
                   </div>
 
@@ -725,7 +728,7 @@ export function FeedTextReaderModal({
                     @{post.source.handle}
                   </div>
                 </div>
-              </button>
+              </button>              
 
               {visualMedia.length > 0 ? (
                 <div className="mb-4 overflow-hidden rounded-[24px]">
