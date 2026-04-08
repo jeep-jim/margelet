@@ -153,24 +153,30 @@ export function FeedMediaCard({
 
   return (
     <div className="relative">
-      <div onClick={handleOpen}>
-        <FeedCarousel
-          items={media}
-          aspectClass="aspect-[4/5]"
-          activeIndex={mediaIndex}
-          onChange={onChangeMediaIndex}
-          controlsTone="light"
-          mediaActive={isCardVisible && !forcedPaused}
-          muted={muted}
-          videoRef={videoRef}
-          fit={activeIsVideo ? "cover" : "contain"}
-          mode={activeIsVideo ? "fixed" : "adaptive"}
-          maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
-          backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
-          enableFullscreen={!activeIsVideo}
-          onMediaError={tryRefreshMedia}
+      <FeedCarousel
+        items={media}
+        aspectClass="aspect-[4/5]"
+        activeIndex={mediaIndex}
+        onChange={onChangeMediaIndex}
+        controlsTone="light"
+        mediaActive={isCardVisible && !forcedPaused}
+        muted={muted}
+        videoRef={videoRef}
+        fit={activeIsVideo ? "cover" : "contain"}
+        mode={activeIsVideo ? "fixed" : "adaptive"}
+        maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
+        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
+        enableFullscreen={!activeIsVideo}
+        onMediaError={tryRefreshMedia}
+      />
+
+      {activeIsVideo ? (
+        <div
+          className="absolute inset-x-0 top-0 bottom-[54px] z-10 cursor-pointer"
+          onClick={handleOpen}
+          aria-hidden="true"
         />
-      </div>
+      ) : null}
 
       {activeIsVideo ? (
         <button

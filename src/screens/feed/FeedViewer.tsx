@@ -112,7 +112,6 @@ export function FeedViewer({
   const touchStartYRef = useRef<number | null>(null);
 
   const [expandedText, setExpandedText] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [showCenterControl, setShowCenterControl] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
 
@@ -137,7 +136,6 @@ export function FeedViewer({
 
   useEffect(() => {
     setExpandedText(false);
-    setProgress(0);
     setShowCenterControl(false);
     setSubscribed(activePost ? getSubs().includes(activePost.source.handle) : false);
   }, [activePost?.id, activePost?.source.handle]);
@@ -147,24 +145,25 @@ export function FeedViewer({
   }, [activePost?.id, setIsMuted]);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      const node = videoRef.current;
-      if (!node) return;
+    const node = videoRef.current;
+    if (!node) return;
 
-      const duration = node.duration || 0;
-      const current = node.currentTime || 0;
-
-      if (duration > 0) {
-        setProgress((current / duration) * 100);
-      } else {
-        setProgress(0);
-      }
-
+    const syncPlaying = () => {
       setIsPlaying(!node.paused);
-    }, 200);
+    };
 
-    return () => window.clearInterval(interval);
-  }, [setIsPlaying]);
+    node.addEventListener("play", syncPlaying);
+    node.addEventListener("pause", syncPlaying);
+    node.addEventListener("ended", syncPlaying);
+
+    syncPlaying();
+
+    return () => {
+      node.removeEventListener("play", syncPlaying);
+      node.removeEventListener("pause", syncPlaying);
+      node.removeEventListener("ended", syncPlaying);
+    };
+  }, [activePost?.id, viewerMediaIndex, setIsPlaying]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -211,6 +210,7 @@ export function FeedViewer({
   }
 
   const liked = likedPostIds.includes(activePost.id);
+  const canToggleText = (activePost.text || "").length > 60;
 
   const pulseCenterControl = () => {
     setShowCenterControl(true);
@@ -371,7 +371,7 @@ export function FeedViewer({
             </button>
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 z-30 px-4 pb-6 pt-10 text-white">
+          <div className="absolute bottom-[72px] left-0 right-0 z-20 px-4 text-white">
             <div className="w-full md:max-w-[380px]">
               <div className="flex items-center gap-3">
                 <FeedSourceAvatar post={activePost} />
@@ -395,14 +395,28 @@ export function FeedViewer({
               {activePost.text ? (
                 <div className="mt-3">
                   <div
+                    role={canToggleText ? "button" : undefined}
+                    tabIndex={canToggleText ? 0 : undefined}
                     className={`text-[15px] leading-6 text-white ${
                       expandedText ? "overflow-y-auto" : "line-clamp-1"
-                    }`}
+                    } ${canToggleText ? "cursor-pointer" : ""}`}
                     style={
                       expandedText
                         ? { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
                         : undefined
                     }
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      if (!canToggleText) return;
+                      setExpandedText((prev) => !prev);
+                    }}
+                    onKeyDown={(event) => {
+                      if (!canToggleText) return;
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        setExpandedText((prev) => !prev);
+                      }
+                    }}
                     onWheel={(event) => event.stopPropagation()}
                     onTouchStart={(event) => event.stopPropagation()}
                     onTouchMove={(event) => event.stopPropagation()}
@@ -410,25 +424,8 @@ export function FeedViewer({
                   >
                     {linkifyText(activePost.text)}
                   </div>
-
-                  {(activePost.text || "").length > 60 && (
-                    <button
-                      type="button"
-                      onClick={() => setExpandedText((prev) => !prev)}
-                      className="mt-1 text-sm font-medium text-white/90"
-                    >
-                      {expandedText ? "Скрыть" : "Ещё"}
-                    </button>
-                  )}
                 </div>
-              ) : null}              
-            </div>
-
-            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/20">
-              <div
-                className="h-full rounded-full bg-white"
-                style={{ width: `${progress}%` }}
-              />
+              ) : null}
             </div>
           </div>
         </div>
