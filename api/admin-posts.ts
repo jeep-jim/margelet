@@ -81,7 +81,11 @@ export default async function handler(req: any, res: any) {
         });
       }
 
-      const posts = await getFeedPosts(500);
+      const countryCode = asNullableString(body.countryCode);
+
+      const posts = await getFeedPosts(1000, {
+        countryCode,
+      });      
 
       return res.status(200).json({
         ok: true,

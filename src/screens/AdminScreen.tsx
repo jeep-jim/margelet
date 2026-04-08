@@ -75,7 +75,11 @@ export function AdminScreen({
       const res = await fetch("/api/admin-posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramUserId, entity: "posts" }),
+        body: JSON.stringify({
+          telegramUserId,
+          entity: "posts",
+          countryCode: selectedCountryCode,
+        }),
       });
 
       const data = await res.json().catch(() => null);
@@ -84,7 +88,7 @@ export function AdminScreen({
     } catch {
       setState("error");
     }
-  };
+  };  
 
   const loadAnalytics = async () => {
     if (!telegramUserId || !hasAdminAccess) return;
@@ -133,7 +137,11 @@ export function AdminScreen({
       const res = await fetch("/api/admin-posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramUserId, entity: "sources" }),
+        body: JSON.stringify({
+          telegramUserId,
+          entity: "sources",
+          countryCode: selectedCountryCode,
+        }),
       });
 
       const data = await res.json().catch(() => null);
@@ -141,7 +149,7 @@ export function AdminScreen({
     } catch {
       //
     }
-  };
+  };  
 
   useEffect(() => {
     if (!telegramUserId || !hasAdminAccess) return;
