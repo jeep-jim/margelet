@@ -153,11 +153,17 @@ export function AdminScreen({
 
   useEffect(() => {
     if (!telegramUserId || !hasAdminAccess) return;
+
     void loadPosts();
+    void loadSources();
+  }, [telegramUserId, hasAdminAccess, selectedCountryCode]);
+
+  useEffect(() => {
+    if (!telegramUserId || !hasAdminAccess) return;
+
     void loadAnalytics();
     void loadGrants();
-    void loadSources();
-  }, [telegramUserId, hasAdminAccess]);
+  }, [telegramUserId, hasAdminAccess]);  
 
   const stats = useMemo(() => {
     return {

@@ -360,11 +360,15 @@ export default function App() {
   }, [currentTelegramUser]);
 
   const loadFeed = useCallback(async () => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     setIsFeedLoading(true);
 
     try {
       const res = await fetch(buildFeedUrl(locale), {
         cache: "no-store",
+        signal,
       });
 
       if (!res.ok) {
@@ -372,14 +376,23 @@ export default function App() {
       }
 
       const data = await res.json();
-      setServerPosts(Array.isArray(data.posts) ? data.posts : []);
-    } catch (error) {
-      console.error("Failed to load feed", error);
-      setServerPosts([]);
+
+      if (!signal.aborted) {
+        setServerPosts(Array.isArray(data.posts) ? data.posts : []);
+      }
+    } catch (error: any) {
+      if (error?.name !== "AbortError") {
+        console.error("Failed to load feed", error);
+        setServerPosts([]);
+      }
     } finally {
-      setIsFeedLoading(false);
+      if (!signal.aborted) {
+        setIsFeedLoading(false);
+      }
     }
-  }, [locale]);
+
+    return () => controller.abort();
+  }, [locale]);  
 
   useEffect(() => {
     void loadFeed();

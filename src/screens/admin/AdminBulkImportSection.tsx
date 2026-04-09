@@ -63,11 +63,12 @@ export function AdminBulkImportSection({
             body: JSON.stringify({
               url,
               tag: bulkTag,
+              locale: window.localStorage.getItem("margelet_locale") || "en",
               role: "admin",
               plan: "free",
               addedByTelegramId: telegramUserId,
               addedByUsername: "admin",
-            }),
+            }),            
           });
 
           const data = await res.json().catch(() => null);
