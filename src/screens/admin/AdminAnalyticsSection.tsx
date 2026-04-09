@@ -1,6 +1,33 @@
 import { useMemo } from "react";
 import { AdminSectionCard } from "./AdminSectionCard";
 
+type TopPostItem = {
+  id: number;
+  postUrl: string;
+  sourceHandle: string;
+  sourceTitle: string;
+  textPreview: string;
+  createdAt: string;
+  tag: string;
+  views: number;
+  opens: number;
+  tgClicks: number;
+  likes: number;
+  subscriptions: number;
+  score: number;
+};
+
+type TopSourceItem = {
+  handle: string;
+  title: string;
+  countryCode: string | null;
+  views: number;
+  opens: number;
+  tgClicks: number;
+  subscriptions: number;
+  score: number;
+};
+
 type AnalyticsResponse = {
   views: number;
   opens: number;
@@ -34,6 +61,9 @@ type AnalyticsResponse = {
   uniqueDays: Record<string, string>;
   openDays: Record<string, string>;
   tgClickDays: Record<string, string>;
+
+  topPosts: TopPostItem[];
+  topSources: TopSourceItem[];
 };
 
 type AdminAnalyticsSectionProps = {
@@ -192,6 +222,110 @@ export function AdminAnalyticsSection({
                   className="rounded-full bg-white/10 px-3 py-1 text-sm"
                 >
                   {k}: {String(v)}
+                </div>
+              ))
+            ) : (
+              <div className="text-sm text-white/35">пока пусто</div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-3 grid gap-3 lg:grid-cols-2">
+        <div className="rounded-xl bg-black/20 p-3">
+          <div className="text-sm text-white/50">Топ посты</div>
+          <div className="mt-3 space-y-3">
+            {(analytics.topPosts || []).length > 0 ? (
+              analytics.topPosts.map((post, index) => (
+                <div
+                  key={post.id}
+                  className="rounded-xl border border-white/10 bg-white/5 p-3"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="text-xs text-white/35">#{index + 1}</div>
+                      <div className="truncate text-sm font-semibold text-white">
+                        {post.sourceTitle}
+                      </div>
+                      <div className="truncate text-xs text-white/45">
+                        @{post.sourceHandle}
+                      </div>
+                    </div>
+
+                    <div className="rounded-full bg-white/10 px-2 py-1 text-xs">
+                      {post.score.toFixed(1)}
+                    </div>
+                  </div>
+
+                  {post.textPreview ? (
+                    <div className="mt-2 text-sm text-white/70">{post.textPreview}</div>
+                  ) : null}
+
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-white/60">
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      views: {post.views}
+                    </div>
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      opens: {post.opens}
+                    </div>
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      tg: {post.tgClicks}
+                    </div>
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      likes: {post.likes}
+                    </div>
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      bells: {post.subscriptions}
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-sm text-white/35">пока пусто</div>
+            )}
+          </div>
+        </div>
+
+        <div className="rounded-xl bg-black/20 p-3">
+          <div className="text-sm text-white/50">Топ источники</div>
+          <div className="mt-3 space-y-3">
+            {(analytics.topSources || []).length > 0 ? (
+              analytics.topSources.map((source, index) => (
+                <div
+                  key={source.handle}
+                  className="rounded-xl border border-white/10 bg-white/5 p-3"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
+                      <div className="text-xs text-white/35">#{index + 1}</div>
+                      <div className="truncate text-sm font-semibold text-white">
+                        {source.title}
+                      </div>
+                      <div className="truncate text-xs text-white/45">
+                        @{source.handle}
+                        {source.countryCode ? ` · ${source.countryCode}` : ""}
+                      </div>
+                    </div>
+
+                    <div className="rounded-full bg-white/10 px-2 py-1 text-xs">
+                      {source.score.toFixed(1)}
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap gap-2 text-xs text-white/60">
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      views: {source.views}
+                    </div>
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      opens: {source.opens}
+                    </div>
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      tg: {source.tgClicks}
+                    </div>
+                    <div className="rounded-full bg-white/10 px-2 py-1">
+                      bells: {source.subscriptions}
+                    </div>
+                  </div>
                 </div>
               ))
             ) : (

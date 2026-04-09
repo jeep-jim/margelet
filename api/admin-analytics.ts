@@ -1,7 +1,34 @@
-import { redis } from "./lib/kv.js";
+import { redis, getFeedPosts } from "./lib/kv.js";
 
 const ADMIN_IDS = new Set(["1372669404"]);
 const STATS_KEY = "margelet:stats";
+
+type TopPostItem = {
+  id: number;
+  postUrl: string;
+  sourceHandle: string;
+  sourceTitle: string;
+  textPreview: string;
+  createdAt: string;
+  tag: string;
+  views: number;
+  opens: number;
+  tgClicks: number;
+  likes: number;
+  subscriptions: number;
+  score: number;
+};
+
+type TopSourceItem = {
+  handle: string;
+  title: string;
+  countryCode: string | null;
+  views: number;
+  opens: number;
+  tgClicks: number;
+  subscriptions: number;
+  score: number;
+};
 
 function normalizeStringMap(value: unknown): Record<string, string> {
   if (!value || typeof value !== "object") {
@@ -30,6 +57,62 @@ function sumRange(days: Record<string, string>, range: number) {
   }
 
   return total;
+}
+
+function textPreview(text: string) {
+  return String(text || "").replace(/\s+/g, " ").trim().slice(0, 140);
+}
+
+function calcScore(params: {
+  views: number;
+  opens: number;
+  tgClicks: number;
+  likes: number;
+  subscriptions: number;
+}) {
+  return (
+    params.views * 0.15 +
+    params.opens * 1.5 +
+    params.tgClicks * 3 +
+    params.likes * 4 +
+    params.subscriptions * 5
+  );
+}
+
+async function getPostMetrics(postId: number) {
+  const raw = await redis.hgetall<Record<string, string | number>>(
+    `${STATS_KEY}:post:${postId}`
+  );
+
+  const views = Number(raw?.views || 0);
+  const opens = Number(raw?.opens || 0);
+  const tgClicks = Number(raw?.tgClicks || 0);
+  const likes = Number(raw?.likes || 0);
+
+  return {
+    views: Number.isFinite(views) ? views : 0,
+    opens: Number.isFinite(opens) ? opens : 0,
+    tgClicks: Number.isFinite(tgClicks) ? tgClicks : 0,
+    likes: Number.isFinite(likes) ? likes : 0,
+  };
+}
+
+async function getSourceMetrics(handle: string) {
+  const raw = await redis.hgetall<Record<string, string | number>>(
+    `${STATS_KEY}:source:${handle}`
+  );
+
+  const views = Number(raw?.views || 0);
+  const opens = Number(raw?.opens || 0);
+  const tgClicks = Number(raw?.tgClicks || 0);
+  const subscriptions = Number(raw?.subscriptions || 0);
+
+  return {
+    views: Number.isFinite(views) ? views : 0,
+    opens: Number.isFinite(opens) ? opens : 0,
+    tgClicks: Number.isFinite(tgClicks) ? tgClicks : 0,
+    subscriptions: Number.isFinite(subscriptions) ? subscriptions : 0,
+  };
 }
 
 export default async function handler(req: any, res: any) {
@@ -63,6 +146,7 @@ export default async function handler(req: any, res: any) {
       rawDaysUnique,
       rawDaysOpens,
       rawDaysTgClicks,
+      feedPosts,
     ] = await Promise.all([
       redis.hget(STATS_KEY, "views"),
       redis.hget(STATS_KEY, "opens"),
@@ -78,6 +162,7 @@ export default async function handler(req: any, res: any) {
       redis.hgetall(`${STATS_KEY}:unique:days`),
       redis.hgetall(`${STATS_KEY}:days:opens`),
       redis.hgetall(`${STATS_KEY}:days:tgClicks`),
+      getFeedPosts(400),
     ]);
 
     const countries = normalizeStringMap(rawCountries);
@@ -88,6 +173,80 @@ export default async function handler(req: any, res: any) {
     const uniqueDays = normalizeStringMap(rawDaysUnique);
     const openDays = normalizeStringMap(rawDaysOpens);
     const tgClickDays = normalizeStringMap(rawDaysTgClicks);
+
+    const topPostsRaw = await Promise.all(
+      (feedPosts || []).map(async (post) => {
+        const [postMetrics, sourceMetrics] = await Promise.all([
+          getPostMetrics(post.id),
+          getSourceMetrics(post.source.handle),
+        ]);
+
+        const score = calcScore({
+          views: postMetrics.views,
+          opens: postMetrics.opens,
+          tgClicks: postMetrics.tgClicks,
+          likes: postMetrics.likes,
+          subscriptions: sourceMetrics.subscriptions,
+        });
+
+        const item: TopPostItem = {
+          id: post.id,
+          postUrl: post.postUrl,
+          sourceHandle: post.source.handle,
+          sourceTitle: post.source.title,
+          textPreview: textPreview(post.text),
+          createdAt: post.createdAt,
+          tag: post.tag || "other",
+          views: postMetrics.views,
+          opens: postMetrics.opens,
+          tgClicks: postMetrics.tgClicks,
+          likes: postMetrics.likes,
+          subscriptions: sourceMetrics.subscriptions,
+          score,
+        };
+
+        return item;
+      })
+    );
+
+    const topPosts = topPostsRaw
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return b.id - a.id;
+      })
+      .slice(0, 12);
+
+    const sourceMap = new Map<string, TopSourceItem>();
+
+    for (const post of feedPosts || []) {
+      if (sourceMap.has(post.source.handle)) continue;
+
+      const sourceMetrics = await getSourceMetrics(post.source.handle);
+
+      sourceMap.set(post.source.handle, {
+        handle: post.source.handle,
+        title: post.source.title,
+        countryCode: post.sourceCountryCode || null,
+        views: sourceMetrics.views,
+        opens: sourceMetrics.opens,
+        tgClicks: sourceMetrics.tgClicks,
+        subscriptions: sourceMetrics.subscriptions,
+        score: calcScore({
+          views: sourceMetrics.views,
+          opens: sourceMetrics.opens,
+          tgClicks: sourceMetrics.tgClicks,
+          likes: 0,
+          subscriptions: sourceMetrics.subscriptions,
+        }),
+      });
+    }
+
+    const topSources = Array.from(sourceMap.values())
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return a.handle.localeCompare(b.handle);
+      })
+      .slice(0, 12);
 
     return res.status(200).json({
       views: Number(views || 0),
@@ -122,6 +281,9 @@ export default async function handler(req: any, res: any) {
       uniqueDays,
       openDays,
       tgClickDays,
+
+      topPosts,
+      topSources,
     });
   } catch (error) {
     console.error("analytics error", error);

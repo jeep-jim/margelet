@@ -33,6 +33,33 @@ type AccessGrant = {
   isActive: boolean;
 };
 
+type TopPostItem = {
+  id: number;
+  postUrl: string;
+  sourceHandle: string;
+  sourceTitle: string;
+  textPreview: string;
+  createdAt: string;
+  tag: string;
+  views: number;
+  opens: number;
+  tgClicks: number;
+  likes: number;
+  subscriptions: number;
+  score: number;
+};
+
+type TopSourceItem = {
+  handle: string;
+  title: string;
+  countryCode: string | null;
+  views: number;
+  opens: number;
+  tgClicks: number;
+  subscriptions: number;
+  score: number;
+};
+
 type AnalyticsResponse = {
   views: number;
   opens: number;
@@ -66,6 +93,9 @@ type AnalyticsResponse = {
   uniqueDays: Record<string, string>;
   openDays: Record<string, string>;
   tgClickDays: Record<string, string>;
+
+  topPosts: TopPostItem[];
+  topSources: TopSourceItem[];
 };
 
 const ADMIN_TELEGRAM_ID = "1372669404";
