@@ -364,6 +364,7 @@ export default function App() {
     const signal = controller.signal;
 
     setIsFeedLoading(true);
+    setServerPosts([]);    
 
     try {
       const res = await fetch(buildFeedUrl(locale), {

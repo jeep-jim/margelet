@@ -59,10 +59,29 @@ export function AdminScreen({
   const [grantsLoading, setGrantsLoading] = useState(false);
   const [sources, setSources] = useState<TrustedSource[]>([]);
 
+  const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
+
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
+    try {
+      const saved = localStorage.getItem(ADMIN_COUNTRY_STORAGE_KEY) as CountryCode | null;
+      if (saved && COUNTRIES.some((item) => item.code === saved && item.enabled)) {
+        return saved;
+      }
+    } catch {
+      //
+    }
+
     const firstEnabled = COUNTRIES.find((item) => item.enabled);
     return firstEnabled?.code || "ru";
   });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(ADMIN_COUNTRY_STORAGE_KEY, selectedCountryCode);
+    } catch {
+      //
+    }
+  }, [selectedCountryCode]);
 
   const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
 
