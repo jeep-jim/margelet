@@ -35,12 +35,37 @@ type AccessGrant = {
 
 type AnalyticsResponse = {
   views: number;
+  opens: number;
+  tgClicks: number;
+  likes: number;
+  subscriptions: number;
+  uniqueUsers: number;
+
   countries: Record<string, string>;
+  countriesUnique: Record<string, string>;
   devices: Record<string, string>;
-  today: number;
-  last7: number;
-  last30: number;
+  devicesUnique: Record<string, string>;
+
+  todayViews: number;
+  last7Views: number;
+  last30Views: number;
+
+  todayUniqueUsers: number;
+  last7UniqueUsers: number;
+  last30UniqueUsers: number;
+
+  todayOpens: number;
+  last7Opens: number;
+  last30Opens: number;
+
+  todayTgClicks: number;
+  last7TgClicks: number;
+  last30TgClicks: number;
+
   days: Record<string, string>;
+  uniqueDays: Record<string, string>;
+  openDays: Record<string, string>;
+  tgClickDays: Record<string, string>;
 };
 
 const ADMIN_TELEGRAM_ID = "1372669404";

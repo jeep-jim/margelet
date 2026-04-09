@@ -16,7 +16,7 @@ function getTodayKey() {
 }
 
 function getCountry(req: any) {
-  return req.headers["x-vercel-ip-country"] || "unknown";
+  return String(req.headers["x-vercel-ip-country"] || "unknown").toLowerCase();
 }
 
 function getDevice(userAgent: string) {
@@ -25,6 +25,20 @@ function getDevice(userAgent: string) {
   if (ua.includes("mobile")) return "mobile";
   if (ua.includes("tablet")) return "tablet";
   return "desktop";
+}
+
+function getIp(req: any) {
+  const forwarded = req.headers["x-forwarded-for"];
+  if (typeof forwarded === "string" && forwarded.trim()) {
+    return forwarded.split(",")[0].trim();
+  }
+
+  const realIp = req.headers["x-real-ip"];
+  if (typeof realIp === "string" && realIp.trim()) {
+    return realIp.trim();
+  }
+
+  return "unknown";
 }
 
 function asString(value: unknown) {
@@ -48,6 +62,22 @@ function normalizeAction(value: unknown): TrackAction {
   }
 
   return "view";
+}
+
+function getMetricField(action: TrackAction) {
+  switch (action) {
+    case "open":
+      return "opens";
+    case "tg_click":
+      return "tgClicks";
+    case "like":
+      return "likes";
+    case "subscribe":
+      return "subscriptions";
+    case "view":
+    default:
+      return "views";
+  }
 }
 
 function postMetricsKey(postId: number) {
@@ -74,20 +104,42 @@ function sourceSubscribersUsersKey(handle: string) {
   return `${STATS_KEY}:source:${handle}:subs:users`;
 }
 
-function getMetricField(action: TrackAction) {
-  switch (action) {
-    case "open":
-      return "opens";
-    case "tg_click":
-      return "tgClicks";
-    case "like":
-      return "likes";
-    case "subscribe":
-      return "subscriptions";
-    case "view":
-    default:
-      return "views";
+function dailyUniqueUsersSetKey(day: string) {
+  return `${STATS_KEY}:unique:users:day:${day}`;
+}
+
+function dailyUniqueUsersCountrySetKey(day: string, country: string) {
+  return `${STATS_KEY}:unique:users:country:${country}:day:${day}`;
+}
+
+function dailyUniqueUsersDeviceSetKey(day: string, device: string) {
+  return `${STATS_KEY}:unique:users:device:${device}:day:${day}`;
+}
+
+function allTimeUniqueUsersSetKey() {
+  return `${STATS_KEY}:unique:users:all`;
+}
+
+function allTimeUniqueUsersCountrySetKey(country: string) {
+  return `${STATS_KEY}:unique:users:country:${country}:all`;
+}
+
+function allTimeUniqueUsersDeviceSetKey(device: string) {
+  return `${STATS_KEY}:unique:users:device:${device}:all`;
+}
+
+function buildVisitorId(params: {
+  telegramUserId?: string;
+  ip: string;
+  ua: string;
+  country: string;
+}) {
+  if (params.telegramUserId) {
+    return `tg:${params.telegramUserId}`;
   }
+
+  const uaChunk = String(params.ua || "").toLowerCase().slice(0, 120);
+  return `anon:${params.ip}|${params.country}|${uaChunk}`;
 }
 
 async function incrementGlobalCounters(params: {
@@ -122,6 +174,42 @@ async function incrementSourceCounters(handle: string, action: TrackAction, day:
   const field = getMetricField(action);
   await redis.hincrby(sourceMetricsKey(handle), field, 1);
   await redis.hincrby(sourceDailyMetricsKey(handle, day), field, 1);
+}
+
+async function recordUniqueVisitor(params: {
+  visitorId: string;
+  day: string;
+  country: string;
+  device: string;
+}) {
+  const addedToDay = await redis.sadd(dailyUniqueUsersSetKey(params.day), params.visitorId);
+  if (Number(addedToDay) > 0) {
+    await redis.hincrby(`${STATS_KEY}:unique:days`, params.day, 1);
+  }
+
+  const addedToCountryDay = await redis.sadd(
+    dailyUniqueUsersCountrySetKey(params.day, params.country),
+    params.visitorId
+  );
+  if (Number(addedToCountryDay) > 0) {
+    await redis.hincrby(`${STATS_KEY}:countries:unique`, params.country, 1);
+  }
+
+  const addedToDeviceDay = await redis.sadd(
+    dailyUniqueUsersDeviceSetKey(params.day, params.device),
+    params.visitorId
+  );
+  if (Number(addedToDeviceDay) > 0) {
+    await redis.hincrby(`${STATS_KEY}:devices:unique`, params.device, 1);
+  }
+
+  const addedToAll = await redis.sadd(allTimeUniqueUsersSetKey(), params.visitorId);
+  if (Number(addedToAll) > 0) {
+    await redis.hincrby(STATS_KEY, "uniqueUsers", 1);
+  }
+
+  await redis.sadd(allTimeUniqueUsersCountrySetKey(params.country), params.visitorId);
+  await redis.sadd(allTimeUniqueUsersDeviceSetKey(params.device), params.visitorId);
 }
 
 async function toggleLike(params: {
@@ -243,10 +331,17 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json({ ok: true, skipped: "admin" });
     }
 
-    const ua = req.headers["user-agent"] || "";
+    const ua = String(req.headers["user-agent"] || "");
     const country = getCountry(req);
     const device = getDevice(ua);
     const day = getTodayKey();
+    const ip = getIp(req);
+    const visitorId = buildVisitorId({
+      telegramUserId,
+      ip,
+      ua,
+      country,
+    });
 
     if (action === "like") {
       if (!telegramUserId || !postId) {
@@ -286,6 +381,15 @@ export default async function handler(req: any, res: any) {
       country,
       device,
     });
+
+    if (action === "view" || action === "open" || action === "tg_click") {
+      await recordUniqueVisitor({
+        visitorId,
+        day,
+        country,
+        device,
+      });
+    }
 
     if (postId) {
       await incrementPostCounters(postId, action, day);
