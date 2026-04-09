@@ -20,6 +20,45 @@ const MAX_EXPANDED_TEXT_HEIGHT = 260;
 const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 const SUB_KEY = "margelet_subscriptions";
+const TG_STORAGE_KEY = "margelet_tg_user";
+
+function readTelegramUserId() {
+  try {
+    const raw = localStorage.getItem(TG_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed?.id ? String(parsed.id) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function trackAction(params: {
+  action: "open" | "like" | "subscribe";
+  postId: number;
+  sourceHandle: string;
+  telegramUserId?: string | null;
+}) {
+  try {
+    const res = await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": params.telegramUserId || "",
+      },
+      body: JSON.stringify({
+        action: params.action,
+        postId: params.postId,
+        sourceHandle: params.sourceHandle,
+        telegramUserId: params.telegramUserId || null,
+      }),
+    });
+
+    return await res.json().catch(() => null);
+  } catch {
+    return null;
+  }
+}
 
 function readGlobalMuted() {
   try {
@@ -74,8 +113,8 @@ function linkifyText(text: string) {
     const href = part.startsWith("http")
       ? part
       : part.startsWith("t.me/")
-      ? `https://${part}`
-      : `https://${part}`;
+        ? `https://${part}`
+        : `https://${part}`;
 
     return (
       <a
@@ -123,6 +162,7 @@ export function FeedViewer({
   const [expandedText, setExpandedText] = useState(false);
   const [showCenterControl, setShowCenterControl] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [localLiked, setLocalLiked] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -154,12 +194,31 @@ export function FeedViewer({
   }, [activePost?.id]);
 
   useEffect(() => {
+    if (!activePost) return;
+
     setExpandedText(false);
     setShowCenterControl(false);
-    setSubscribed(activePost ? getSubs().includes(activePost.source.handle) : false);
+    setSubscribed(getSubs().includes(activePost.source.handle));
+    setLocalLiked(likedPostIds.includes(activePost.id));
     setCurrentTime(0);
     setDuration(0);
-  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex]);
+
+    const telegramUserId = readTelegramUserId();
+
+    void trackAction({
+      action: "open",
+      postId: activePost.id,
+      sourceHandle: activePost.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+      if (typeof data?.subscribed === "boolean") {
+        setSubscribed(data.subscribed);
+      }
+    });
+  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex, likedPostIds]);
 
   useEffect(() => {
     setIsMuted(readGlobalMuted());
@@ -190,17 +249,27 @@ export function FeedViewer({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
+
     node.addEventListener("loadedmetadata", syncMeta);
     node.addEventListener("timeupdate", syncTime);
+    node.addEventListener("play", onPlay);
+    node.addEventListener("pause", onPause);
+    node.addEventListener("ended", onPause);
 
     syncMeta();
     syncTime();
+    setIsPlaying(!node.paused);
 
     return () => {
       node.removeEventListener("loadedmetadata", syncMeta);
       node.removeEventListener("timeupdate", syncTime);
+      node.removeEventListener("play", onPlay);
+      node.removeEventListener("pause", onPause);
+      node.removeEventListener("ended", onPause);
     };
-  }, [activePost?.id, activeItem?.id, activeItem?.kind, viewerMediaIndex]);
+  }, [activeItem?.id, activeItem?.kind, setIsPlaying]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -211,7 +280,7 @@ export function FeedViewer({
 
   useEffect(() => {
     const node = videoRef.current;
-    if (!node || activeItem?.kind !== "video") return;
+    if (!node || !activeIsVideo) return;
 
     if (isPlaying) {
       const playPromise = node.play();
@@ -221,29 +290,7 @@ export function FeedViewer({
     } else {
       node.pause();
     }
-  }, [isPlaying, activeItem?.id, activeItem?.kind]);
-
-  useEffect(() => {
-    if (!activeIsVideo) return;
-
-    const timer = window.setTimeout(() => {
-      const node = videoRef.current;
-      if (!node) return;
-
-      if (autoplayWantedRef.current) {
-        setIsPlaying(true);
-        const playPromise = node.play();
-        if (playPromise && typeof playPromise.catch === "function") {
-          playPromise.catch(() => {});
-        }
-      } else {
-        node.pause();
-        setIsPlaying(false);
-      }
-    }, 220);
-
-    return () => window.clearTimeout(timer);
-  }, [viewerMediaIndex, activeItem?.id, activeIsVideo, setIsPlaying]);
+  }, [isPlaying, activeIsVideo, activeItem?.id]);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -255,6 +302,9 @@ export function FeedViewer({
         nextViewer();
       } else if (event.key === "ArrowUp") {
         prevViewer();
+      } else if (event.key === " ") {
+        event.preventDefault();
+        togglePlay();
       }
     };
 
@@ -266,7 +316,6 @@ export function FeedViewer({
     return null;
   }
 
-  const liked = likedPostIds.includes(activePost.id);
   const canToggleText = (activePost.text || "").length > 60;
 
   const pulseCenterControl = () => {
@@ -316,6 +365,47 @@ export function FeedViewer({
     window.setTimeout(() => {
       wheelLockRef.current = false;
     }, 420);
+  };
+
+  const handleLikeClick = () => {
+    const telegramUserId = readTelegramUserId();
+
+    setLocalLiked((prev) => !prev);
+    onToggleLike(activePost.id);
+
+    if (!telegramUserId) return;
+
+    void trackAction({
+      action: "like",
+      postId: activePost.id,
+      sourceHandle: activePost.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+    });
+  };
+
+  const handleSubscribeClick = () => {
+    const telegramUserId = readTelegramUserId();
+    const next = toggleSub(activePost.source.handle);
+
+    setSubscribed(next.includes(activePost.source.handle));
+    window.dispatchEvent(new Event("storage"));
+
+    if (!telegramUserId) return;
+
+    void trackAction({
+      action: "subscribe",
+      postId: activePost.id,
+      sourceHandle: activePost.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.subscribed === "boolean") {
+        setSubscribed(data.subscribed);
+      }
+    });
   };
 
   return (
@@ -380,11 +470,7 @@ export function FeedViewer({
           <div className="absolute right-4 top-4 z-30">
             <button
               type="button"
-              onClick={() => {
-                const next = toggleSub(activePost.source.handle);
-                setSubscribed(next.includes(activePost.source.handle));
-                window.dispatchEvent(new Event("storage"));
-              }}
+              onClick={handleSubscribeClick}
               className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white"
             >
               <Bell
@@ -408,8 +494,8 @@ export function FeedViewer({
           ) : null}
 
           <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6 text-white">
-            <button type="button" onClick={() => onToggleLike(activePost.id)}>
-              <Heart className={`h-7 w-7 ${liked ? "fill-current" : ""}`} />
+            <button type="button" onClick={handleLikeClick}>
+              <Heart className={`h-7 w-7 ${localLiked ? "fill-current" : ""}`} />
             </button>
 
             <button
@@ -518,18 +604,14 @@ export function FeedViewer({
                   onClick={(event) => event.stopPropagation()}
                   onMouseDown={(event) => event.stopPropagation()}
                   onTouchStart={(event) => event.stopPropagation()}
-                  className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+                  className="h-[3px] w-full accent-white"
                 />
 
                 <button
                   type="button"
                   onClick={(event) => {
                     event.stopPropagation();
-                    setIsMuted((prev) => {
-                      const next = !prev;
-                      writeGlobalMuted(next);
-                      return next;
-                    });
+                    setIsMuted((prev) => !prev);
                   }}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
                   aria-label={isMuted ? "Unmute" : "Mute"}

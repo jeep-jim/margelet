@@ -28,6 +28,45 @@ const SUB_KEY = "margelet_subscriptions";
 const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_MUTE_EVENT = "margelet:feed-mute-change";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+const TG_STORAGE_KEY = "margelet_tg_user";
+
+function readTelegramUserId() {
+  try {
+    const raw = localStorage.getItem(TG_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed?.id ? String(parsed.id) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function trackAction(params: {
+  action: "open" | "tg_click" | "like" | "subscribe";
+  postId: number;
+  sourceHandle: string;
+  telegramUserId?: string | null;
+}) {
+  try {
+    const res = await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": params.telegramUserId || "",
+      },
+      body: JSON.stringify({
+        action: params.action,
+        postId: params.postId,
+        sourceHandle: params.sourceHandle,
+        telegramUserId: params.telegramUserId || null,
+      }),
+    });
+
+    return await res.json().catch(() => null);
+  } catch {
+    return null;
+  }
+}
 
 const COPY = {
   en: {
@@ -448,9 +487,11 @@ function FileList({
 function MusicFallback({
   post,
   locale,
+  onOpenOriginal,
 }: {
   post: IngestedPost;
   locale: Locale;
+  onOpenOriginal: () => void;
 }) {
   if (!hasMusicLikeTag(post)) return null;
   const copy = COPY[locale] ?? COPY.en;
@@ -473,9 +514,7 @@ function MusicFallback({
 
           <button
             type="button"
-            onClick={() => {
-              window.open(post.postUrl, "_blank", "noopener,noreferrer");
-            }}
+            onClick={onOpenOriginal}
             className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
           >
             <span>{copy.openInTelegram}</span>
@@ -510,6 +549,7 @@ export function FeedTextReaderModal({
   const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
   const [mediaIndex, setMediaIndex] = useState(0);
   const [subscribed, setSubscribed] = useState(false);
+  const [localLiked, setLocalLiked] = useState(liked);
   const [muted, setMuted] = useState(readGlobalMuted());
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
@@ -529,8 +569,29 @@ export function FeedTextReaderModal({
   const fileMedia = post ? getFileMedia(post) : [];
 
   useEffect(() => {
+    setLocalLiked(liked);
+  }, [liked, post?.id]);
+
+  useEffect(() => {
     if (!post) return;
+
     setSubscribed(getSubs().includes(post.source.handle));
+
+    const telegramUserId = readTelegramUserId();
+
+    void trackAction({
+      action: "open",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+      if (typeof data?.subscribed === "boolean") {
+        setSubscribed(data.subscribed);
+      }
+    });
   }, [post]);
 
   useEffect(() => {
@@ -643,6 +704,66 @@ export function FeedTextReaderModal({
     }
   };
 
+  const handleLikeClick = () => {
+    if (!post) return;
+
+    const telegramUserId = readTelegramUserId();
+
+    setLocalLiked((prev) => !prev);
+    onToggleLike(post.id);
+
+    if (!telegramUserId) return;
+
+    void trackAction({
+      action: "like",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+    });
+  };
+
+  const handleSubscribeClick = () => {
+    if (!post) return;
+
+    const telegramUserId = readTelegramUserId();
+    const next = toggleSub(post.source.handle);
+
+    setSubscribed(next.includes(post.source.handle));
+    window.dispatchEvent(new Event("storage"));
+
+    if (!telegramUserId) return;
+
+    void trackAction({
+      action: "subscribe",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.subscribed === "boolean") {
+        setSubscribed(data.subscribed);
+      }
+    });
+  };
+
+  const handleOpenTelegram = () => {
+    if (!post) return;
+
+    const telegramUserId = readTelegramUserId();
+
+    void trackAction({
+      action: "tg_click",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    });
+
+    window.open(post.postUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <AnimatePresence>
       {post ? (
@@ -676,11 +797,7 @@ export function FeedTextReaderModal({
 
               <button
                 type="button"
-                onClick={() => {
-                  const next = toggleSub(post.source.handle);
-                  setSubscribed(next.includes(post.source.handle));
-                  window.dispatchEvent(new Event("storage"));
-                }}
+                onClick={handleSubscribeClick}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
                 aria-label={
                   subscribed
@@ -728,7 +845,7 @@ export function FeedTextReaderModal({
                     @{post.source.handle}
                   </div>
                 </div>
-              </button>              
+              </button>
 
               {visualMedia.length > 0 ? (
                 <div className="mb-4 overflow-hidden rounded-[24px]">
@@ -785,17 +902,17 @@ export function FeedTextReaderModal({
                               event.stopPropagation();
                               togglePlay();
                             }}
-                            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
                             aria-label={isVideoPlaying ? copy.pause : copy.play}
                           >
                             {isVideoPlaying ? (
-                              <Pause className="h-5 w-5" />
+                              <Pause className="h-4 w-4" />
                             ) : (
-                              <Play className="ml-0.5 h-5 w-5" />
+                              <Play className="ml-0.5 h-4 w-4" />
                             )}
                           </button>
 
-                          <div className="min-w-[72px] text-[12px] font-medium text-white">
+                          <div className="min-w-[58px] text-[11px] font-medium text-white">
                             {formatTime(currentTime)} / {formatTime(duration)}
                           </div>
 
@@ -816,24 +933,22 @@ export function FeedTextReaderModal({
                             onClick={(event) => event.stopPropagation()}
                             onMouseDown={(event) => event.stopPropagation()}
                             onTouchStart={(event) => event.stopPropagation()}
-                            className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+                            className="h-[3px] w-full accent-white"
                           />
 
                           <button
                             type="button"
                             onClick={(event) => {
                               event.stopPropagation();
-                              const next = !muted;
-                              setMuted(next);
-                              writeGlobalMuted(next);
+                              setMuted((prev) => !prev);
                             }}
-                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
                             aria-label={muted ? copy.unmute : copy.mute}
                           >
                             {muted ? (
-                              <VolumeX className="h-5 w-5" />
+                              <VolumeX className="h-4 w-4" />
                             ) : (
-                              <Volume2 className="h-5 w-5" />
+                              <Volume2 className="h-4 w-4" />
                             )}
                           </button>
                         </div>
@@ -846,8 +961,16 @@ export function FeedTextReaderModal({
               <AudioList items={audioMedia} locale={locale} />
               <FileList items={fileMedia} locale={locale} />
 
-              {audioMedia.length === 0 && fileMedia.length === 0 ? (
-                <MusicFallback post={post} locale={locale} />
+              {audioMedia.length === 0 &&
+              fileMedia.length === 0 &&
+              text &&
+              !visualMedia.length &&
+              hasMusicLikeTag(post) ? (
+                <MusicFallback
+                  post={post}
+                  locale={locale}
+                  onOpenOriginal={handleOpenTelegram}
+                />
               ) : null}
 
               {text ? <RichTextBlock text={text} /> : null}
@@ -856,10 +979,10 @@ export function FeedTextReaderModal({
             <div className="sticky bottom-0 border-t border-neutral-200 bg-white px-4 py-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-8 text-neutral-700">
-                  <button type="button" onClick={() => onToggleLike(post.id)}>
+                  <button type="button" onClick={handleLikeClick}>
                     <Heart
                       className={`h-5 w-5 ${
-                        liked ? "fill-current text-neutral-950" : ""
+                        localLiked ? "fill-current text-neutral-950" : ""
                       }`}
                     />
                   </button>
@@ -876,9 +999,7 @@ export function FeedTextReaderModal({
 
                 <button
                   type="button"
-                  onClick={() => {
-                    window.open(post.postUrl, "_blank", "noopener,noreferrer");
-                  }}
+                  onClick={handleOpenTelegram}
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-medium text-white"
                 >
                   <span>{copy.openInTelegram}</span>

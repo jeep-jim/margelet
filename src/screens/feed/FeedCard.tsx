@@ -15,6 +15,45 @@ import {
 } from "./feed.utils";
 
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+const TG_STORAGE_KEY = "margelet_tg_user";
+
+function readTelegramUserId() {
+  try {
+    const raw = localStorage.getItem(TG_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed?.id ? String(parsed.id) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function trackAction(params: {
+  action: "view" | "open" | "like";
+  postId: number;
+  sourceHandle: string;
+  telegramUserId?: string | null;
+}) {
+  try {
+    const res = await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": params.telegramUserId || "",
+      },
+      body: JSON.stringify({
+        action: params.action,
+        postId: params.postId,
+        sourceHandle: params.sourceHandle,
+        telegramUserId: params.telegramUserId || null,
+      }),
+    });
+
+    return await res.json().catch(() => null);
+  } catch {
+    return null;
+  }
+}
 
 export function FeedCard(props: FeedCardProps) {
   const {
@@ -54,7 +93,14 @@ export function FeedCard(props: FeedCardProps) {
   const tagLabel = getTagLabel(getResolvedTag(post), locale);
 
   const cardRef = useRef<HTMLElement | null>(null);
+  const viewTrackedRef = useRef(false);
+
   const [isCardVisible, setIsCardVisible] = useState(false);
+  const [localLiked, setLocalLiked] = useState(liked);
+
+  useEffect(() => {
+    setLocalLiked(liked);
+  }, [liked, post.id]);
 
   useEffect(() => {
     const node = cardRef.current;
@@ -71,8 +117,60 @@ export function FeedCard(props: FeedCardProps) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (!isCardVisible || viewTrackedRef.current) return;
+    viewTrackedRef.current = true;
+
+    const telegramUserId = readTelegramUserId();
+
+    void trackAction({
+      action: "view",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+    });
+  }, [isCardVisible, post.id, post.source.handle]);
+
+  const handleLikeClick = () => {
+    const telegramUserId = readTelegramUserId();
+
+    setLocalLiked((prev) => !prev);
+    onToggleLike();
+
+    if (!telegramUserId) return;
+
+    void trackAction({
+      action: "like",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+    });
+  };
+
   const openPostSafely = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
+
+    const telegramUserId = readTelegramUserId();
+
+    void trackAction({
+      action: "open",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+    });
+
     onOpen();
   };
 
@@ -127,10 +225,10 @@ export function FeedCard(props: FeedCardProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-8 text-neutral-700">
-                      <button type="button" onClick={onToggleLike}>
+                      <button type="button" onClick={handleLikeClick}>
                         <Heart
                           className={`h-5 w-5 ${
-                            liked
+                            localLiked
                               ? "fill-neutral-950 text-neutral-950"
                               : "text-neutral-700"
                           }`}
@@ -168,10 +266,10 @@ export function FeedCard(props: FeedCardProps) {
             <div className="px-4 py-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-8 text-neutral-700">
-                  <button type="button" onClick={onToggleLike}>
+                  <button type="button" onClick={handleLikeClick}>
                     <Heart
                       className={`h-5 w-5 ${
-                        liked
+                        localLiked
                           ? "fill-neutral-950 text-neutral-950"
                           : "text-neutral-700"
                       }`}
@@ -199,8 +297,8 @@ export function FeedCard(props: FeedCardProps) {
         <FeedTextCard
           locale={locale}
           post={post}
-          liked={liked}
-          onToggleLike={onToggleLike}
+          liked={localLiked}
+          onToggleLike={handleLikeClick}
           onShare={onShare}
           onOpen={openPostSafely}
         />
@@ -208,8 +306,8 @@ export function FeedCard(props: FeedCardProps) {
         <FeedTextCard
           locale={locale}
           post={post}
-          liked={liked}
-          onToggleLike={onToggleLike}
+          liked={localLiked}
+          onToggleLike={handleLikeClick}
           onShare={onShare}
           onOpen={openPostSafely}
         />
