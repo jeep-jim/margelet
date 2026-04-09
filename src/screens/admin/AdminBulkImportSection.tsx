@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { ContentTag } from "../../types/app";
+import type { CountryCode } from "./admin.countries";
 import { AdminSectionCard } from "./AdminSectionCard";
 import { ADMIN_TAG_OPTIONS } from "./admin.tag-options";
 
@@ -11,6 +12,7 @@ type BulkResultItem = {
 
 type AdminBulkImportSectionProps = {
   telegramUserId: string | null;
+  countryCode: CountryCode;
   onImported?: () => Promise<void> | void;
 };
 
@@ -21,12 +23,14 @@ function normalizeBulkError(message: string) {
   if (value === "Invalid Telegram post URL") return "невалидная ссылка";
   if (value === "Failed to ingest Telegram post") return "не удалось забрать пост";
   if (value === "Daily limit reached") return "дневной лимит";
+  if (value === "Missing locale") return "не передана страна импорта";
 
   return value;
 }
 
 export function AdminBulkImportSection({
   telegramUserId,
+  countryCode,
   onImported,
 }: AdminBulkImportSectionProps) {
   const [bulkText, setBulkText] = useState("");
@@ -63,12 +67,12 @@ export function AdminBulkImportSection({
             body: JSON.stringify({
               url,
               tag: bulkTag,
-              locale: window.localStorage.getItem("margelet_locale") || "en",
+              locale: countryCode,
               role: "admin",
               plan: "free",
               addedByTelegramId: telegramUserId,
               addedByUsername: "admin",
-            }),            
+            }),
           });
 
           const data = await res.json().catch(() => null);

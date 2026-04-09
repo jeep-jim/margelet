@@ -276,6 +276,7 @@ export function AdminScreen({
 
           <AdminBulkImportSection
             telegramUserId={telegramUserId}
+            countryCode={selectedCountryCode}
             onImported={loadPosts}
           />
 
