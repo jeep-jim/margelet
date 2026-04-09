@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { getFeedPosts, savePost } from "./lib/kv.js";
+import { getFeedPosts, savePost, redis } from "./lib/kv.js";
 import { ingestTelegramPost } from "../src/lib/telegram.js";
 import { runTrustedSourcesPolling } from "./lib/sources.js";
 import type { IngestedPost } from "../src/types/app";
@@ -122,6 +122,112 @@ function tryRunPoller() {
   });
 }
 
+function getAgeHours(post: IngestedPost) {
+  const createdAtMs = Date.parse(post.createdAt || "");
+  if (!Number.isFinite(createdAtMs)) return 999;
+  return Math.max(0, (Date.now() - createdAtMs) / (1000 * 60 * 60));
+}
+
+function getFreshnessBoost(post: IngestedPost) {
+  const ageHours = getAgeHours(post);
+
+  if (ageHours <= 1) return 14;
+  if (ageHours <= 3) return 10;
+  if (ageHours <= 6) return 7;
+  if (ageHours <= 12) return 4;
+  if (ageHours <= 24) return 1;
+
+  return 0;
+}
+
+function getRecencyTieBreaker(post: IngestedPost) {
+  const createdAtMs = Date.parse(post.createdAt || "");
+  return Number.isFinite(createdAtMs) ? createdAtMs : 0;
+}
+
+async function getPostMetrics(postId: number) {
+  try {
+    const raw = await redis.hgetall<Record<string, string | number>>(
+      `margelet:stats:post:${postId}`
+    );
+
+    const views = Number(raw?.views || 0);
+    const opens = Number(raw?.opens || 0);
+    const tgClicks = Number(raw?.tgClicks || 0);
+    const likes = Number(raw?.likes || 0);
+
+    return {
+      views: Number.isFinite(views) ? views : 0,
+      opens: Number.isFinite(opens) ? opens : 0,
+      tgClicks: Number.isFinite(tgClicks) ? tgClicks : 0,
+      likes: Number.isFinite(likes) ? likes : 0,
+    };
+  } catch {
+    return {
+      views: 0,
+      opens: 0,
+      tgClicks: 0,
+      likes: 0,
+    };
+  }
+}
+
+async function getSourceMetrics(handle: string) {
+  try {
+    const raw = await redis.hgetall<Record<string, string | number>>(
+      `margelet:stats:source:${handle}`
+    );
+
+    const subscriptions = Number(raw?.subscriptions || 0);
+    const views = Number(raw?.views || 0);
+    const opens = Number(raw?.opens || 0);
+    const tgClicks = Number(raw?.tgClicks || 0);
+
+    return {
+      subscriptions: Number.isFinite(subscriptions) ? subscriptions : 0,
+      views: Number.isFinite(views) ? views : 0,
+      opens: Number.isFinite(opens) ? opens : 0,
+      tgClicks: Number.isFinite(tgClicks) ? tgClicks : 0,
+    };
+  } catch {
+    return {
+      subscriptions: 0,
+      views: 0,
+      opens: 0,
+      tgClicks: 0,
+    };
+  }
+}
+
+function calculateScore(params: {
+  post: IngestedPost;
+  postMetrics: {
+    views: number;
+    opens: number;
+    tgClicks: number;
+    likes: number;
+  };
+  sourceMetrics: {
+    subscriptions: number;
+    views: number;
+    opens: number;
+    tgClicks: number;
+  };
+}) {
+  const { post, postMetrics, sourceMetrics } = params;
+
+  const freshness = getFreshnessBoost(post);
+
+  const engagement =
+    postMetrics.views * 0.15 +
+    postMetrics.opens * 1.5 +
+    postMetrics.tgClicks * 3 +
+    postMetrics.likes * 4 +
+    sourceMetrics.subscriptions * 5;
+
+  return freshness + engagement;
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);
 
@@ -159,8 +265,37 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const visiblePosts = refreshedPosts.filter(isVisiblePost);
 
+    const ranked = await Promise.all(
+      visiblePosts.map(async (post) => {
+        const [postMetrics, sourceMetrics] = await Promise.all([
+          getPostMetrics(post.id),
+          getSourceMetrics(post.source.handle),
+        ]);
+
+        const score = calculateScore({
+          post,
+          postMetrics,
+          sourceMetrics,
+        });
+
+        return {
+          post,
+          score,
+          recency: getRecencyTieBreaker(post),
+        };
+      })
+    );
+
+    ranked.sort((a, b) => {
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+
+      return b.recency - a.recency;
+    });
+
     return res.status(200).json({
-      posts: visiblePosts,
+      posts: ranked.map((item) => item.post),
     });
   } catch (error) {
     console.error("feed api error", error);
