@@ -642,8 +642,11 @@ export default function App() {
               posts={posts}
               sourceHandle={selectedSourceHandle || sourcePathHandle}
               onBack={goHome}
-              onOpenPost={() => {
-                goHome();
+              onOpenPost={(post) => {
+                const postId = getPostIdFromUrl(post.postUrl);
+                setSelectedSourceHandle(post.source.handle);
+                setCurrent("feed");
+                replacePath(`/${post.source.handle}/${postId}`);
               }}
               likedPostIds={likedPostIds}
               onToggleLike={handleToggleLike}
@@ -652,7 +655,7 @@ export default function App() {
               currentTelegramUserId={currentTelegramUser?.id || null}
               openSource={openSource}
             />
-          ) : null}          
+          ) : null}
 
           {current === "admin" ? (
             <AdminScreen

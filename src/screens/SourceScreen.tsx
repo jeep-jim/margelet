@@ -1,9 +1,6 @@
 import {
-  ArrowLeft,
   Bell,
   ChevronDown,
-  ExternalLink,
-  MoreVertical,
   Star,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -57,7 +54,6 @@ export function SourceScreen({
   locale,
   posts,
   sourceHandle,
-  onBack,
   onOpenPost,
   likedPostIds,
   onToggleLike,
@@ -93,17 +89,6 @@ export function SourceScreen({
     return (
       <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
         <div className="mx-auto max-w-[570px] px-4 pb-10">
-          <div className="mb-6 flex items-center justify-between">
-            <button
-              onClick={onBack}
-              className="flex items-center gap-2 text-sm font-medium text-neutral-700"
-              type="button"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {t.common.back}
-            </button>
-          </div>
-
           <div className="text-lg font-semibold">{t.source.notFound}</div>
         </div>
       </div>
@@ -120,21 +105,6 @@ export function SourceScreen({
   return (
     <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
       <div className="mx-auto max-w-[570px] px-4 pb-10">
-        <div className="mb-6 flex items-center justify-between">
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-sm font-medium text-neutral-700"
-            type="button"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {t.common.back}
-          </button>
-
-          <button className="rounded-full p-2 text-neutral-500" type="button">
-            <MoreVertical className="h-5 w-5" />
-          </button>
-        </div>
-
         <section className="mb-6 overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5">
           <button
             type="button"
@@ -196,32 +166,33 @@ export function SourceScreen({
           <div className="mt-5 flex w-full items-center gap-3">
             <button
               onClick={openTelegramSource}
-              className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
+              className="inline-flex items-center rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
               type="button"
             >
               <span>{t.feed.openChannel}</span>
-              <ExternalLink className="h-4 w-4" />
             </button>
 
-            {/* стрелка рядом с кнопкой */}
             <button
               type="button"
               onClick={() => setInfoOpen((prev) => !prev)}
               className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+              aria-label="Информация"
+              title="Информация"
             >
               <ChevronDown
-                className={`h-5 w-5 transition-transform ${
+                className={`h-5 w-5 transition-transform duration-200 ${
                   infoOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
-            {/* справа группа */}
             <div className="ml-auto flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => setDonateOpen((prev) => !prev)}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+                aria-label="Поддержать канал"
+                title="Поддержать канал"
               >
                 <Star className="h-5 w-5" />
               </button>
@@ -234,6 +205,16 @@ export function SourceScreen({
                 }}
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100"
                 type="button"
+                aria-label={
+                  subscribed
+                    ? t.source.disableNotifications
+                    : t.source.enableNotifications
+                }
+                title={
+                  subscribed
+                    ? t.source.disableNotifications
+                    : t.source.enableNotifications
+                }
               >
                 <Bell
                   className={`h-5 w-5 ${
@@ -244,7 +225,7 @@ export function SourceScreen({
                 />
               </button>
             </div>
-          </div>          
+          </div>
 
           {infoOpen ? (
             <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
