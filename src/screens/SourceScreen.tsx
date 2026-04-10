@@ -66,7 +66,6 @@ export function SourceScreen({
   locale,
   posts,
   sourceHandle,
-  onOpenPost,
   likedPostIds,
   onToggleLike,
   onHidePost,
@@ -125,14 +124,20 @@ export function SourceScreen({
 
     if (source?.source.handle) {
       routeHandledRef.current = null;
-      openSource(source.source.handle);
+      window.history.replaceState({}, document.title, `/${source.source.handle}`);
     }
-  }, [openSource, source?.source.handle]);
+  }, [source?.source.handle]);  
 
   const openPostInsideSource = useCallback(
-    (post: IngestedPost, syncRoute = true) => {
-      if (syncRoute) {
-        onOpenPost(post);
+    (post: IngestedPost, updateUrl = true) => {
+      if (updateUrl) {
+        const postId = getPostIdFromUrl(post.postUrl);
+        window.history.replaceState(
+          {},
+          document.title,
+          `/${post.source.handle}/${postId}`
+        );
+        routeHandledRef.current = `${post.source.handle}/${postId}`;
       }
 
       setMenuPostId(null);
@@ -154,8 +159,8 @@ export function SourceScreen({
       setViewerMediaIndex(0);
       setTextReaderPost(post);
     },
-    [onOpenPost, viewerPosts]
-  );
+    [viewerPosts]
+  );  
 
   const nextViewer = useCallback(() => {
     if (viewerIndex === null || viewerPosts.length === 0) return;
