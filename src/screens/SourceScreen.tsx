@@ -39,9 +39,7 @@ function getSubs(): string[] {
 function toggleSub(handle: string) {
   const current = getSubs();
   const exists = current.includes(handle);
-
   const next = exists ? current.filter((h) => h !== handle) : [...current, handle];
-
   localStorage.setItem(SUB_KEY, JSON.stringify(next));
   return next;
 }
@@ -161,7 +159,6 @@ export function SourceScreen({
 
   const nextViewer = useCallback(() => {
     if (viewerIndex === null || viewerPosts.length === 0) return;
-
     setViewerIndex((viewerIndex + 1) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
@@ -172,7 +169,6 @@ export function SourceScreen({
 
   const prevViewer = useCallback(() => {
     if (viewerIndex === null || viewerPosts.length === 0) return;
-
     setViewerIndex((viewerIndex - 1 + viewerPosts.length) % viewerPosts.length);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
@@ -283,39 +279,19 @@ export function SourceScreen({
             </div>
           </div>
 
-          <div className="mt-5 flex items-start gap-3">
-            <div className="min-w-0 flex-1">
-              <button
-                type="button"
-                onClick={() => setInfoOpen((prev) => !prev)}
-                className="inline-flex h-10 items-center gap-2 rounded-full bg-neutral-100 px-4 text-[14px] font-medium text-neutral-950"
-              >
-                <span>{t.feed.openChannel}</span>
-                <ChevronDown
-                  className={`h-4 w-4 transition-transform duration-200 ${
-                    infoOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {infoOpen ? (
-                <div className="mt-4 text-sm leading-7 text-neutral-700">
-                  <div>
-                    В ленте показываются последние посты канала за 24 часа. Полная
-                    информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
-                    чтобы перейти в источник.
-                  </div>
-
-                  <button
-                    onClick={openTelegramSource}
-                    className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
-                    type="button"
-                  >
-                    <span>{t.feed.openChannel}</span>
-                  </button>
-                </div>
-              ) : null}
-            </div>
+          <div className="mt-5 flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={() => setInfoOpen((prev) => !prev)}
+              className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-neutral-100 px-4 text-[14px] font-medium text-neutral-950"
+            >
+              <span>{t.feed.openChannel}</span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-200 ${
+                  infoOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
 
             <div className="ml-auto flex shrink-0 items-center gap-3">
               <button
@@ -361,6 +337,24 @@ export function SourceScreen({
               </button>
             </div>
           </div>
+
+          {infoOpen ? (
+            <div className="mt-4 text-sm leading-7 text-neutral-700">
+              <div className="max-w-none">
+                В ленте показываются последние посты канала за 24 часа. Полная
+                информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
+                чтобы перейти в источник.
+              </div>
+
+              <button
+                onClick={openTelegramSource}
+                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
+                type="button"
+              >
+                <span>{t.feed.openChannel}</span>
+              </button>
+            </div>
+          ) : null}
 
           {donateOpen ? (
             <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
@@ -453,7 +447,6 @@ export function SourceScreen({
         onClose={closeOpenedPost}
         onToggleLike={onToggleLike}
         onToggleSave={() => {}}
-        onShare={async () => {}}
       />
     </div>
   );

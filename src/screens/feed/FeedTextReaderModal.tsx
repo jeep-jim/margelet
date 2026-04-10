@@ -9,7 +9,6 @@ import {
   Music4,
   Pause,
   Play,
-  Send,
   Volume2,
   VolumeX,
 } from "lucide-react";
@@ -533,7 +532,6 @@ export function FeedTextReaderModal({
   onClose,
   onToggleLike,
   onToggleSave: _onToggleSave,
-  onShare,
 }: {
   post: IngestedPost | null;
   locale: Locale;
@@ -542,7 +540,6 @@ export function FeedTextReaderModal({
   onClose: () => void;
   onToggleLike: (id: number) => void;
   onToggleSave: (id: number) => void;
-  onShare: (post: IngestedPost) => Promise<void>;
 }) {
   const copy = COPY[locale] ?? COPY.en;
   const text = post?.text || "";
@@ -824,28 +821,30 @@ export function FeedTextReaderModal({
               <button
                 type="button"
                 onClick={() => window.location.assign(`/${post.source.handle}`)}
-                className="mb-4 flex w-full min-w-0 items-center gap-3 text-left"
+                className="mb-4 flex w-full min-w-0 items-start gap-3 text-left"
               >
                 <div className="shrink-0">
                   <FeedSourceAvatar post={post} />
                 </div>
 
                 <div className="min-w-0 flex-1 overflow-hidden">
-                  <div className="flex min-w-0 items-center gap-1.5">
-                    <div className="min-w-0 flex-1 truncate whitespace-nowrap text-[18px] font-semibold text-neutral-950">
-                      {post.source.title}
-                    </div>
+                  <div className="min-w-0 overflow-hidden">
+                    <div className="inline-flex max-w-full items-center gap-1 align-top">
+                      <span className="truncate text-[18px] font-semibold text-neutral-950">
+                        {post.source.title}
+                      </span>
 
-                    {post.source.verified ? (
-                      <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
-                    ) : null}
+                      {post.source.verified ? (
+                        <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
+                      ) : null}
+                    </div>
                   </div>
 
                   <div className="truncate text-sm text-neutral-500">
                     @{post.source.handle}
                   </div>
                 </div>
-              </button>
+              </button>              
 
               {visualMedia.length > 0 ? (
                 <div className="mb-4 overflow-hidden rounded-[24px]">
@@ -986,17 +985,8 @@ export function FeedTextReaderModal({
                       }`}
                     />
                   </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      void onShare(post);
-                    }}
-                  >
-                    <Send className="h-5 w-5" />
-                  </button>
                 </div>
-
+                
                 <button
                   type="button"
                   onClick={handleOpenTelegram}

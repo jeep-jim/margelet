@@ -232,96 +232,90 @@ export function FeedMediaCard({
 
   return (
     <div className="relative">
-      <div
-        className="cursor-pointer"
-        onClick={onOpen}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            onOpen();
-          }
-        }}
-      >
-        <FeedCarousel
-          items={media}
-          aspectClass="aspect-[4/5]"
-          activeIndex={mediaIndex}
-          onChange={onChangeMediaIndex}
-          controlsTone="light"
-          mediaActive={isCardVisible && !forcedPaused}
-          muted={muted}
-          videoRef={videoRef}
-          fit={activeIsVideo ? "cover" : "contain"}
-          mode={activeIsVideo ? "fixed" : "adaptive"}
-          maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
-          backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
-          enableFullscreen={false}
-          nativeVideoControls={false}
-          blockVideoClickPropagation={false}
+      <FeedCarousel
+        items={media}
+        aspectClass="aspect-[4/5]"
+        activeIndex={mediaIndex}
+        onChange={onChangeMediaIndex}
+        controlsTone="light"
+        mediaActive={isCardVisible && !forcedPaused}
+        muted={muted}
+        videoRef={videoRef}
+        fit={activeIsVideo ? "cover" : "contain"}
+        mode={activeIsVideo ? "fixed" : "adaptive"}
+        maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
+        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
+        enableFullscreen={false}
+        nativeVideoControls={false}
+        blockVideoClickPropagation={false}
+      />
+
+      {!activeIsVideo ? (
+        <button
+          type="button"
+          onClick={onOpen}
+          className="absolute inset-0 z-20 cursor-pointer bg-transparent"
+          aria-label="Open post"
         />
-      </div>
+      ) : null}
 
       {activeIsVideo ? (
-        <>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onPointerDown={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  togglePlay();
-                }}
-                className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
-                aria-label={isVideoPlaying ? copy.pause : copy.play}
-              >
-                {isVideoPlaying ? (
-                  <Pause className="h-4 w-4" />
-                ) : (
-                  <Play className="ml-0.5 h-4 w-4" />
-                )}
-              </button>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onPointerDown={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                togglePlay();
+              }}
+              className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+              aria-label={isVideoPlaying ? copy.pause : copy.play}
+            >
+              {isVideoPlaying ? (
+                <Pause className="h-4 w-4" />
+              ) : (
+                <Play className="ml-0.5 h-4 w-4" />
+              )}
+            </button>
 
-              <div className="min-w-0 flex-1">
-                <div className="mb-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/25">
-                  <div
-                    className="h-full rounded-full bg-white"
-                    style={{
-                      width:
-                        duration > 0
-                          ? `${Math.min(100, (currentTime / duration) * 100)}%`
-                          : "0%",
-                    }}
-                  />
-                </div>
-
-                <div className="flex items-center justify-between text-[11px] font-medium text-white/90">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{formatTime(duration)}</span>
-                </div>
+            <div className="min-w-0 flex-1">
+              <div className="mb-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/25">
+                <div
+                  className="h-full rounded-full bg-white"
+                  style={{
+                    width:
+                      duration > 0
+                        ? `${Math.min(100, (currentTime / duration) * 100)}%`
+                        : "0%",
+                  }}
+                />
               </div>
 
-              <button
-                type="button"
-                onPointerDown={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                  toggleMute();
-                }}
-                className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
-                aria-label={muted ? copy.unmute : copy.mute}
-              >
-                {muted ? (
-                  <VolumeX className="h-4 w-4" />
-                ) : (
-                  <Volume2 className="h-4 w-4" />
-                )}
-              </button>
+              <div className="flex items-center justify-between text-[11px] font-medium text-white/90">
+                <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(duration)}</span>
+              </div>
             </div>
+
+            <button
+              type="button"
+              onPointerDown={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                toggleMute();
+              }}
+              className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+              aria-label={muted ? copy.unmute : copy.mute}
+            >
+              {muted ? (
+                <VolumeX className="h-4 w-4" />
+              ) : (
+                <Volume2 className="h-4 w-4" />
+              )}
+            </button>
           </div>
-        </>
+        </div>
       ) : null}
     </div>
   );

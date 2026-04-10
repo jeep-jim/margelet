@@ -668,7 +668,6 @@ export function FeedScreen({
         onClose={() => setTextReaderPost(null)}
         onToggleLike={onToggleLike}
         onToggleSave={onToggleSave}
-        onShare={handleShare}
       />
     </div>
   );
