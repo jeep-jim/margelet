@@ -1,11 +1,12 @@
 import {
   ArrowLeft,
   Bell,
+  ChevronDown,
+  ExternalLink,
   MoreVertical,
   Play,
-  ExternalLink,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getMessages } from "../lib/i18n";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import { getTagLabel } from "./feed/feed.utils";
@@ -51,6 +52,30 @@ function getPreview(post: IngestedPost) {
     post.media.find((item) => item.kind === "video")?.poster ||
     null
   );
+}
+
+function trackTelegramClick(post: IngestedPost) {
+  try {
+    const raw = localStorage.getItem("margelet_tg_user");
+    const parsed = raw ? JSON.parse(raw) : null;
+    const telegramUserId = parsed?.id ? String(parsed.id) : "";
+
+    void fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": telegramUserId,
+      },
+      body: JSON.stringify({
+        action: "tg_click",
+        postId: post.id,
+        sourceHandle: post.source.handle,
+        telegramUserId: telegramUserId || null,
+      }),
+    });
+  } catch {
+    //
+  }
 }
 
 function SourceTile({
@@ -104,9 +129,14 @@ export function SourceScreen({
   onOpenPost,
 }: Props) {
   const t = getMessages(locale);
-  const sourcePosts = posts.filter((post) => post.source.handle === sourceHandle);
+  const sourcePosts = useMemo(
+    () => posts.filter((post) => post.source.handle === sourceHandle),
+    [posts, sourceHandle]
+  );
   const source = sourcePosts[0];
+
   const [subscribed, setSubscribed] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   useEffect(() => {
     if (!source?.source.handle) return;
@@ -224,12 +254,26 @@ export function SourceScreen({
             </button>
 
             <button
+              type="button"
+              onClick={() => setInfoOpen((prev) => !prev)}
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-red-500 bg-white text-red-500"
+              aria-label="Информация"
+              title="Информация"
+            >
+              <ChevronDown
+                className={`h-5 w-5 transition-transform duration-200 ${
+                  infoOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            <button
               onClick={() => {
                 const next = toggleSub(source.source.handle);
                 setSubscribed(next.includes(source.source.handle));
                 window.dispatchEvent(new Event("storage"));
               }}
-              className="ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100"
               type="button"
               aria-label={
                 subscribed
@@ -251,6 +295,13 @@ export function SourceScreen({
               />
             </button>
           </div>
+
+          {infoOpen ? (
+            <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
+              В ленте показываются последние посты канала за 24 часа, полная информация
+              доступ в Telegram нажмите кнопку "Открыть канал" чтобы перейти в источник.
+            </div>
+          ) : null}
         </section>
 
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -259,7 +310,10 @@ export function SourceScreen({
               key={post.id}
               post={post}
               locale={locale}
-              onOpen={() => onOpenPost(post)}
+              onOpen={() => {
+                trackTelegramClick(post);
+                onOpenPost(post);
+              }}
             />
           ))}
         </div>

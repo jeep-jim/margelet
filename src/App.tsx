@@ -136,6 +136,23 @@ function parseSharedPath(pathname: string) {
   return { handle, postId };
 }
 
+function parseSourcePath(pathname: string) {
+  const clean = normalizePathname(pathname);
+  const parts = clean.split("/").filter(Boolean);
+
+  if (parts.length !== 1) {
+    return null;
+  }
+
+  const [handle] = parts;
+
+  if (!handle || handle === "jim") {
+    return null;
+  }
+
+  return handle;
+}
+
 function getPostIdFromUrl(postUrl: string) {
   return postUrl.split("/").filter(Boolean).pop() || "";
 }
@@ -177,6 +194,9 @@ export default function App() {
   const [currentTelegramUser, setCurrentTelegramUser] = useState<TgUser | null>(null);
   const [selectedSourceHandle, setSelectedSourceHandle] = useState<string | null>(null);
   const [accessInfo, setAccessInfo] = useState<AccessInfo | null>(null);
+  const [locationPath, setLocationPath] = useState<string>(() =>
+    typeof window === "undefined" ? "/" : normalizePathname(window.location.pathname)
+  );
 
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
@@ -187,10 +207,8 @@ export default function App() {
     return accessInfo?.role || fallbackAccess(currentTelegramUser)?.role || "user";
   }, [accessInfo, currentTelegramUser]);
 
-  const sharedPath = useMemo(() => {
-    if (typeof window === "undefined") return null;
-    return parseSharedPath(window.location.pathname);
-  }, []);
+  const sharedPath = useMemo(() => parseSharedPath(locationPath), [locationPath]);
+  const sourcePathHandle = useMemo(() => parseSourcePath(locationPath), [locationPath]);
 
   const posts = useMemo(() => {
     const visible =
@@ -217,6 +235,33 @@ export default function App() {
     return [target, ...visible.filter((post) => post.id !== target.id)];
   }, [serverPosts, hiddenPostIds, sharedPath]);
 
+  const syncPathState = useCallback(() => {
+    setLocationPath(normalizePathname(window.location.pathname));
+  }, []);
+
+  const replacePath = useCallback((nextPath: string) => {
+    const normalized = normalizePathname(nextPath);
+    if (normalizePathname(window.location.pathname) !== normalized) {
+      window.history.replaceState({}, document.title, normalized);
+    }
+    setLocationPath(normalized);
+  }, []);
+
+  const goHome = useCallback(() => {
+    setSelectedSourceHandle(null);
+    setCurrent("feed");
+    replacePath("/");
+  }, [replacePath]);
+
+  const openSource = useCallback(
+    (handle: string) => {
+      setSelectedSourceHandle(handle);
+      setCurrent("source");
+      replacePath(`/${handle}`);
+    },
+    [replacePath]
+  );
+
   useEffect(() => {
     const initial = getInitialLocale();
     setLocale(initial);
@@ -230,10 +275,58 @@ export default function App() {
       return;
     }
 
-    if (sharedPath) {
+    const currentShared = parseSharedPath(window.location.pathname);
+    if (currentShared) {
+      setSelectedSourceHandle(currentShared.handle);
       setCurrent("feed");
+      return;
     }
-  }, [sharedPath]);
+
+    const currentSource = parseSourcePath(window.location.pathname);
+    if (currentSource) {
+      setSelectedSourceHandle(currentSource);
+      setCurrent("source");
+      return;
+    }
+
+    setCurrent("feed");
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      syncPathState();
+
+      const pathname = normalizePathname(window.location.pathname);
+
+      if (isAdminHiddenPath(pathname)) {
+        setCurrent("admin");
+        return;
+      }
+
+      const currentShared = parseSharedPath(pathname);
+      if (currentShared) {
+        setSelectedSourceHandle(currentShared.handle);
+        setCurrent("feed");
+        return;
+      }
+
+      const currentSource = parseSourcePath(pathname);
+      if (currentSource) {
+        setSelectedSourceHandle(currentSource);
+        setCurrent("source");
+        return;
+      }
+
+      setSelectedSourceHandle(null);
+      setCurrent("feed");
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [syncPathState]);
 
   useEffect(() => {
     const syncUser = () => {
@@ -307,6 +400,7 @@ export default function App() {
       document.title,
       window.location.pathname + window.location.search
     );
+    syncPathState();
 
     const alreadyReloaded = sessionStorage.getItem(TG_RELOAD_KEY) === "1";
 
@@ -316,7 +410,7 @@ export default function App() {
     } else {
       sessionStorage.removeItem(TG_RELOAD_KEY);
     }
-  }, []);
+  }, [syncPathState]);
 
   useEffect(() => {
     const telegramUserId = currentTelegramUser?.id;
@@ -360,16 +454,12 @@ export default function App() {
   }, [currentTelegramUser]);
 
   const loadFeed = useCallback(async () => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-
     setIsFeedLoading(true);
-    setServerPosts([]);    
+    setServerPosts([]);
 
     try {
       const res = await fetch(buildFeedUrl(locale), {
         cache: "no-store",
-        signal,
       });
 
       if (!res.ok) {
@@ -377,106 +467,36 @@ export default function App() {
       }
 
       const data = await res.json();
-
-      if (!signal.aborted) {
-        setServerPosts(Array.isArray(data.posts) ? data.posts : []);
-      }
-    } catch (error: any) {
-      if (error?.name !== "AbortError") {
-        console.error("Failed to load feed", error);
-        setServerPosts([]);
-      }
+      setServerPosts(Array.isArray(data.posts) ? data.posts : []);
+    } catch (error) {
+      console.error("Failed to load feed", error);
+      setServerPosts([]);
     } finally {
-      if (!signal.aborted) {
-        setIsFeedLoading(false);
-      }
+      setIsFeedLoading(false);
     }
-
-    return () => controller.abort();
-  }, [locale]);  
+  }, [locale]);
 
   useEffect(() => {
     void loadFeed();
   }, [loadFeed]);
 
   useEffect(() => {
-    let intervalId: number | null = null;
-
-    const runHeartbeat = () => {
-      if (document.visibilityState !== "visible") return;
-
-      fetch(buildFeedUrl(locale, 1), {
-        method: "GET",
-        cache: "no-store",
-      }).catch(() => {});
-    };
-
-    const startHeartbeat = () => {
-      if (intervalId !== null) return;
-
-      intervalId = window.setInterval(() => {
-        runHeartbeat();
-      }, 60000);
-    };
-
-    const stopHeartbeat = () => {
-      if (intervalId === null) return;
-
-      window.clearInterval(intervalId);
-      intervalId = null;
-    };
-
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        runHeartbeat();
-        startHeartbeat();
-      } else {
-        stopHeartbeat();
-      }
-    };
-
-    handleVisibilityChange();
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      stopHeartbeat();
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [locale]);
-
-  useEffect(() => {
-    const isAdminRoute =
-      current === "admin" || isAdminHiddenPath(window.location.pathname);
-
-    if (isAdminRoute) {
-      ensureRobotsMeta("robots", "noindex, nofollow, noarchive, nosnippet");
-      ensureRobotsMeta("googlebot", "noindex, nofollow, noarchive, nosnippet");
-      document.title = "margeleT";
-      return;
-    }
-
-    ensureRobotsMeta("robots", "index, follow");
-    ensureRobotsMeta("googlebot", "index, follow");
-    document.title = "margeleT";
+    ensureRobotsMeta("robots", current === "admin" ? "noindex,nofollow" : "index,follow");
+    ensureRobotsMeta(
+      "googlebot",
+      current === "admin" ? "noindex,nofollow" : "index,follow"
+    );
   }, [current]);
 
-  useEffect(() => {
-    fetch("/api/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-telegram-id": currentTelegramUser?.id || "",
-      },
-      body: JSON.stringify({
-        telegramUserId: currentTelegramUser?.id || null,
-      }),
-    }).catch(() => {});
-  }, [currentTelegramUser]);
+  // УБРАН ФЕЙКОВЫЙ PAGE VIEW:
+  // раньше здесь каждый refresh слал /api/track без action,
+  // поэтому админка тоже считалась как просмотр.
 
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
     setCurrent("feed");
+    replacePath("/");
   };
 
   const handleToggleLike = (id: number) => {
@@ -543,7 +563,7 @@ export default function App() {
         role: userRole === "guest" ? "user" : userRole,
         addedByTelegramId: currentTelegramUser?.id || null,
         addedByUsername: currentTelegramUser?.username || null,
-      }),      
+      }),
     });
 
     const data = await res.json().catch(() => null);
@@ -553,13 +573,7 @@ export default function App() {
     }
 
     await loadFeed();
-    setCurrent("feed");
-  };
-
-  const openSource = (handle: string) => {
-    setSelectedSourceHandle(handle);
-    setCurrent("source");
-    window.history.replaceState({}, document.title, `/${handle}`);
+    goHome();
   };
 
   const shouldShowIntro = !hasSeenIntro && current !== "admin" && !sharedPath;
@@ -567,7 +581,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
       {!shouldShowIntro && current !== "intro" && current !== "admin" ? (
-        <AppHeader current={current} setCurrent={setCurrent} locale={locale} />
+        <AppHeader current={current} setCurrent={goHome as any} locale={locale} />
       ) : null}
 
       {shouldShowIntro ? (
@@ -617,7 +631,7 @@ export default function App() {
               setLocale={setLocale}
               posts={posts}
               openPost={() => {
-                setCurrent("feed");
+                goHome();
               }}
             />
           ) : null}
@@ -626,13 +640,13 @@ export default function App() {
             <SourceScreen
               locale={locale}
               posts={posts}
-              sourceHandle={selectedSourceHandle}
-              onBack={() => {
+              sourceHandle={selectedSourceHandle || sourcePathHandle}
+              onBack={goHome}
+              onOpenPost={(post) => {
+                const postId = getPostIdFromUrl(post.postUrl);
+                setSelectedSourceHandle(post.source.handle);
                 setCurrent("feed");
-                window.history.replaceState({}, document.title, "/");
-              }}
-              onOpenPost={() => {
-                setCurrent("feed");
+                replacePath(`/${post.source.handle}/${postId}`);
               }}
             />
           ) : null}
@@ -641,7 +655,7 @@ export default function App() {
             <AdminScreen
               locale={locale}
               telegramUserId={currentTelegramUser?.id || null}
-              onClose={() => setCurrent("feed")}
+              onClose={goHome}
               onDeletePost={handleDeletePost}
             />
           ) : null}
