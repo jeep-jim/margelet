@@ -109,7 +109,10 @@ export function AdminScreen({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ telegramUserId }),
+        body: JSON.stringify({
+          telegramUserId,
+          countryCode: selectedCountryCode,
+        }),
       });
 
       const data = await res.json().catch(() => null);
@@ -117,7 +120,7 @@ export function AdminScreen({
     } catch {
       //
     }
-  };
+  };  
 
   const loadGrants = async () => {
     if (!telegramUserId || !hasAdminAccess) return;
@@ -172,8 +175,13 @@ export function AdminScreen({
     if (!telegramUserId || !hasAdminAccess) return;
 
     void loadAnalytics();
+  }, [telegramUserId, hasAdminAccess, selectedCountryCode]);
+
+  useEffect(() => {
+    if (!telegramUserId || !hasAdminAccess) return;
+
     void loadGrants();
-  }, [telegramUserId, hasAdminAccess]);  
+  }, [telegramUserId, hasAdminAccess]);
 
   const stats = useMemo(() => {
     return {

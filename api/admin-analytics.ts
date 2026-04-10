@@ -79,6 +79,17 @@ function calcScore(params: {
   );
 }
 
+function normalizeCountryCode(value: unknown) {
+  if (typeof value !== "string") return null;
+  const normalized = value.trim().toLowerCase();
+  return normalized || null;
+}
+
+function matchesCountry(value: string | null | undefined, filter: string | null) {
+  if (!filter) return true;
+  return normalizeCountryCode(value) === filter;
+}
+
 async function getPostMetrics(postId: number) {
   const raw = await redis.hgetall<Record<string, string | number>>(
     `${STATS_KEY}:post:${postId}`
@@ -115,6 +126,18 @@ async function getSourceMetrics(handle: string) {
   };
 }
 
+function filterMapByCountry(
+  map: Record<string, string>,
+  countryCode: string | null
+) {
+  if (!countryCode) return map;
+
+  const value = map[countryCode];
+  if (typeof value === "undefined") return {};
+
+  return { [countryCode]: value };
+}
+
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -130,6 +153,8 @@ export default async function handler(req: any, res: any) {
     if (!ADMIN_IDS.has(telegramUserId)) {
       return res.status(403).json({ error: "Forbidden" });
     }
+
+    const countryCode = normalizeCountryCode(body.countryCode);
 
     const [
       views,
@@ -162,11 +187,14 @@ export default async function handler(req: any, res: any) {
       redis.hgetall(`${STATS_KEY}:unique:days`),
       redis.hgetall(`${STATS_KEY}:days:opens`),
       redis.hgetall(`${STATS_KEY}:days:tgClicks`),
-      getFeedPosts(400),
+      getFeedPosts(400, { countryCode }),
     ]);
 
-    const countries = normalizeStringMap(rawCountries);
-    const countriesUnique = normalizeStringMap(rawCountriesUnique);
+    const countries = filterMapByCountry(normalizeStringMap(rawCountries), countryCode);
+    const countriesUnique = filterMapByCountry(
+      normalizeStringMap(rawCountriesUnique),
+      countryCode
+    );
     const devices = normalizeStringMap(rawDevices);
     const devicesUnique = normalizeStringMap(rawDevicesUnique);
     const days = normalizeStringMap(rawDaysViews);
@@ -174,8 +202,12 @@ export default async function handler(req: any, res: any) {
     const openDays = normalizeStringMap(rawDaysOpens);
     const tgClickDays = normalizeStringMap(rawDaysTgClicks);
 
+    const filteredFeedPosts = (feedPosts || []).filter((post) =>
+      matchesCountry(post.sourceCountryCode, countryCode)
+    );
+
     const topPostsRaw = await Promise.all(
-      (feedPosts || []).map(async (post) => {
+      filteredFeedPosts.map(async (post) => {
         const [postMetrics, sourceMetrics] = await Promise.all([
           getPostMetrics(post.id),
           getSourceMetrics(post.source.handle),
@@ -218,7 +250,7 @@ export default async function handler(req: any, res: any) {
 
     const sourceMap = new Map<string, TopSourceItem>();
 
-    for (const post of feedPosts || []) {
+    for (const post of filteredFeedPosts) {
       if (sourceMap.has(post.source.handle)) continue;
 
       const sourceMetrics = await getSourceMetrics(post.source.handle);
