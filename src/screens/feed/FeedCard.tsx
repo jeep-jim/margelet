@@ -1,4 +1,4 @@
-import { ExternalLink, Heart, MoreVertical, Send } from "lucide-react";
+import { ExternalLink, Heart, MoreVertical } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FeedCardProps } from "./feed.types";
 import { FeedMoreMenu } from "./FeedMoreMenu";
@@ -69,7 +69,6 @@ export function FeedCard(props: FeedCardProps) {
     onOpenCreator,
     liked,
     onToggleLike,
-    onShare,
   } = props;
 
   const COPY = {
@@ -179,13 +178,16 @@ export function FeedCard(props: FeedCardProps) {
       ref={cardRef}
       className="overflow-hidden border-b border-neutral-200 bg-white"
     >
-      <div className="flex items-center justify-between gap-3 px-4 pt-4">
+      <div className="flex items-start justify-between gap-3 px-4 pt-4">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
 
-        <div className="relative shrink-0">
+        <div className="relative shrink-0 pr-0.5">
           <button
-            className="rounded-full p-2 text-neutral-700"
-            onClick={onToggleMenu}
+            className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-700"
+            onClick={(event) => {
+              event.stopPropagation();
+              onToggleMenu();
+            }}
             type="button"
           >
             <MoreVertical className="h-5 w-5" />
@@ -205,7 +207,18 @@ export function FeedCard(props: FeedCardProps) {
 
       {showVisualMedia ? (
         <>
-          <div className="relative mt-3">
+          <div
+            className="relative mt-3 cursor-pointer"
+            onClick={openPostSafely}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openPostSafely();
+              }
+            }}
+          >
             <div className="absolute left-3 top-3 z-20">
               <div className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
                 {tagLabel}
@@ -225,7 +238,13 @@ export function FeedCard(props: FeedCardProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-8 text-neutral-700">
-                      <button type="button" onClick={handleLikeClick}>
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleLikeClick();
+                        }}
+                      >
                         <Heart
                           className={`h-5 w-5 ${
                             localLiked
@@ -234,16 +253,15 @@ export function FeedCard(props: FeedCardProps) {
                           }`}
                         />
                       </button>
-
-                      <button type="button" onClick={onShare}>
-                        <Send className="h-5 w-5" />
-                      </button>
                     </div>
 
                     {expanded ? (
                       <button
                         type="button"
-                        onClick={openPostSafely}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          openPostSafely();
+                        }}
                         className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                       >
                         <span>{copy.read}</span>
@@ -252,7 +270,10 @@ export function FeedCard(props: FeedCardProps) {
                     ) : (
                       <button
                         type="button"
-                        onClick={expand}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          expand();
+                        }}
                         className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                       >
                         <span>{copy.more}</span>
@@ -266,7 +287,13 @@ export function FeedCard(props: FeedCardProps) {
             <div className="px-4 py-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-8 text-neutral-700">
-                  <button type="button" onClick={handleLikeClick}>
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleLikeClick();
+                    }}
+                  >
                     <Heart
                       className={`h-5 w-5 ${
                         localLiked
@@ -275,15 +302,14 @@ export function FeedCard(props: FeedCardProps) {
                       }`}
                     />
                   </button>
-
-                  <button type="button" onClick={onShare}>
-                    <Send className="h-5 w-5" />
-                  </button>
                 </div>
 
                 <button
                   type="button"
-                  onClick={openPostSafely}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    openPostSafely();
+                  }}
                   className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                 >
                   <span>{copy.open}</span>
@@ -299,7 +325,6 @@ export function FeedCard(props: FeedCardProps) {
           post={post}
           liked={localLiked}
           onToggleLike={handleLikeClick}
-          onShare={onShare}
           onOpen={openPostSafely}
         />
       ) : (
@@ -308,7 +333,6 @@ export function FeedCard(props: FeedCardProps) {
           post={post}
           liked={localLiked}
           onToggleLike={handleLikeClick}
-          onShare={onShare}
           onOpen={openPostSafely}
         />
       )}

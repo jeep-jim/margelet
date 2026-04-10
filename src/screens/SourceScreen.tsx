@@ -118,17 +118,16 @@ export function SourceScreen({
               )}
             </div>
 
-            <div className="min-w-0 flex-1 pr-2">
-              <div className="flex min-w-0 items-center gap-1">
-                <div className="min-w-0 flex-1 truncate whitespace-nowrap text-[18px] font-semibold leading-tight text-neutral-950">
-                  {source.source.title}
+            <div className="min-w-0 flex-1 overflow-hidden">
+              <div className="min-w-0 overflow-hidden">
+                <div className="inline-flex max-w-full items-center gap-1 align-top">
+                  <span className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
+                    {source.source.title}
+                  </span>
+                  {source.source.verified ? (
+                    <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
+                  ) : null}
                 </div>
-
-                {source.source.verified ? (
-                  <div className="shrink-0 pl-1">
-                    <VerifiedBadge className="h-4 w-4 text-[#2AABEE]" />
-                  </div>
-                ) : null}
               </div>
 
               <div className="mt-1 truncate text-[14px] text-neutral-500">
@@ -160,79 +159,83 @@ export function SourceScreen({
             </div>
           </div>
 
-          <div className="mt-5 flex w-full items-center gap-3">
-            <button
-              type="button"
-              onClick={() => setInfoOpen((prev) => !prev)}
-              className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-neutral-100 px-4 text-[14px] font-medium text-neutral-950"
-            >
-              <span>{t.feed.openChannel}</span>
-              <ChevronDown
-                className={`h-4 w-4 transition-transform duration-200 ${
-                  infoOpen ? "rotate-180" : ""
-                }`}
-              />
-            </button>
+          <div className="mt-5 flex items-start gap-3">
+            <div className="min-w-0 flex-1">
+              <button
+                type="button"
+                onClick={() => setInfoOpen((prev) => !prev)}
+                className="inline-flex h-10 items-center gap-2 rounded-full bg-neutral-100 px-4 text-[14px] font-medium text-neutral-950"
+              >
+                <span>{t.feed.openChannel}</span>
+                <ChevronDown
+                  className={`h-4 w-4 transition-transform duration-200 ${
+                    infoOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
 
-            <button
-              type="button"
-              onClick={() => setDonateOpen((prev) => !prev)}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
-              aria-label="Поддержать канал"
-              title="Поддержать канал"
-            >
-              <Star className="h-5 w-5" />
-            </button>
+              {infoOpen ? (
+                <div className="mt-4 pl-1 text-sm leading-7 text-neutral-700">
+                  В ленте показываются последние посты канала за 24 часа. Полная
+                  информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
+                  чтобы перейти в источник.
+                </div>
+              ) : null}
 
-            <button
-              onClick={() => {
-                const next = toggleSub(source.source.handle);
-                setSubscribed(next.includes(source.source.handle));
-                window.dispatchEvent(new Event("storage"));
-              }}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100"
-              type="button"
-              aria-label={
-                subscribed
-                  ? t.source.disableNotifications
-                  : t.source.enableNotifications
-              }
-              title={
-                subscribed
-                  ? t.source.disableNotifications
-                  : t.source.enableNotifications
-              }
-            >
-              <Bell
-                className={`h-5 w-5 ${
-                  subscribed
-                    ? "fill-neutral-950 text-neutral-950"
-                    : "text-neutral-400"
-                }`}
-              />
-            </button>
-          </div>
-
-          {infoOpen ? (
-            <div className="mt-4 pl-1 pr-1 text-sm leading-7 text-neutral-700">
-              В ленте показываются последние посты канала за 24 часа. Полная
-              информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
-              чтобы перейти в источник.
+              <div className="mt-4">
+                <button
+                  onClick={openTelegramSource}
+                  className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
+                  type="button"
+                >
+                  <span>{t.feed.openChannel}</span>
+                </button>
+              </div>
             </div>
-          ) : null}
 
-          <div className="mt-4">
-            <button
-              onClick={openTelegramSource}
-              className="inline-flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
-              type="button"
-            >
-              <span>{t.feed.openChannel}</span>
-            </button>
+            <div className="ml-auto flex shrink-0 items-center gap-3 pt-0">
+              <button
+                type="button"
+                onClick={() => setDonateOpen((prev) => !prev)}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+                aria-label="Поддержать канал"
+                title="Поддержать канал"
+              >
+                <Star className="h-5 w-5" />
+              </button>
+
+              <button
+                onClick={() => {
+                  const next = toggleSub(source.source.handle);
+                  setSubscribed(next.includes(source.source.handle));
+                  window.dispatchEvent(new Event("storage"));
+                }}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100"
+                type="button"
+                aria-label={
+                  subscribed
+                    ? t.source.disableNotifications
+                    : t.source.enableNotifications
+                }
+                title={
+                  subscribed
+                    ? t.source.disableNotifications
+                    : t.source.enableNotifications
+                }
+              >
+                <Bell
+                  className={`h-5 w-5 ${
+                    subscribed
+                      ? "fill-neutral-950 text-neutral-950"
+                      : "text-neutral-400"
+                  }`}
+                />
+              </button>
+            </div>
           </div>
 
           {donateOpen ? (
-            <div className="mt-4 pl-1 pr-1 text-sm leading-7 text-neutral-700">
+            <div className="mt-4 pl-1 text-sm leading-7 text-neutral-700">
               Скоро здесь появится возможность поддержать канал донатом.
             </div>
           ) : null}

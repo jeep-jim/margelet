@@ -80,22 +80,31 @@ export function FeedSourceHeader({
   const bellSize = compact ? "h-8 w-8" : "h-9 w-9";
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex min-w-0 items-center gap-3">
       <button
-        onClick={onOpenCreator}
-        className="flex min-w-0 items-center gap-3 text-left"
+        onClick={(event) => {
+          event.stopPropagation();
+          onOpenCreator();
+        }}
+        className="flex min-w-0 flex-1 items-center gap-3 text-left"
         type="button"
       >
-        <FeedSourceAvatar post={post} compact={compact} />
+        <div className="shrink-0">
+          <FeedSourceAvatar post={post} compact={compact} />
+        </div>
 
-        <div className="min-w-0">
-          <div className="flex items-center gap-1.5">
-            <div className={`truncate font-semibold text-neutral-950 ${titleClass}`}>
-              {post.source.title}
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <div className="min-w-0 overflow-hidden">
+            <div className="inline-flex max-w-full items-center gap-1 align-top">
+              <span
+                className={`truncate font-semibold leading-tight text-neutral-950 ${titleClass}`}
+              >
+                {post.source.title}
+              </span>
+              {post.source.verified ? (
+                <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
+              ) : null}
             </div>
-            {post.source.verified ? (
-              <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
-            ) : null}
           </div>
 
           <div className={`truncate text-neutral-500 ${handleClass}`}>
@@ -106,18 +115,18 @@ export function FeedSourceHeader({
 
       {showBell ? (
         <button
-          onClick={() => {
+          onClick={(event) => {
+            event.stopPropagation();
             const next = toggleSub(post.source.handle);
             setSubscribed(next.includes(post.source.handle));
             window.dispatchEvent(new Event("storage"));
           }}
           className={`ml-1 flex shrink-0 items-center justify-center rounded-full bg-neutral-100 ${bellSize}`}
           type="button"
-          aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
-          title={subscribed ? "Отключить уведомления" : "Включить уведомления"}
+          aria-label="Toggle notifications"
         >
           <Bell
-            className={`h-4 w-4 ${
+            className={`h-4.5 w-4.5 ${
               subscribed
                 ? "fill-neutral-950 text-neutral-950"
                 : "text-neutral-400"
