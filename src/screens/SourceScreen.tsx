@@ -4,12 +4,12 @@ import {
   ChevronDown,
   ExternalLink,
   MoreVertical,
-  Play,
+  Star,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { getMessages } from "../lib/i18n";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
-import { getTagLabel } from "./feed/feed.utils";
+import { FeedCard } from "./feed/FeedCard";
 import type { Locale } from "../types/app";
 import type { IngestedPost } from "../types/app";
 
@@ -19,9 +19,16 @@ type Props = {
   sourceHandle: string | null;
   onBack: () => void;
   onOpenPost: (post: IngestedPost) => void;
+  likedPostIds: number[];
+  onToggleLike: (id: number) => void;
+  onHidePost: (id: number) => void;
+  onDeletePost: (id: number) => Promise<void>;
+  currentTelegramUserId: string | null;
+  openSource: (handle: string) => void;
 };
 
 const SUB_KEY = "margelet_subscriptions";
+const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
 function getSubs(): string[] {
   try {
@@ -46,97 +53,36 @@ function toggleSub(handle: string) {
   return next;
 }
 
-function getPreview(post: IngestedPost) {
-  return (
-    post.media.find((item) => item.kind === "image")?.url ||
-    post.media.find((item) => item.kind === "video")?.poster ||
-    null
-  );
-}
-
-function trackTelegramClick(post: IngestedPost) {
-  try {
-    const raw = localStorage.getItem("margelet_tg_user");
-    const parsed = raw ? JSON.parse(raw) : null;
-    const telegramUserId = parsed?.id ? String(parsed.id) : "";
-
-    void fetch("/api/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-telegram-id": telegramUserId,
-      },
-      body: JSON.stringify({
-        action: "tg_click",
-        postId: post.id,
-        sourceHandle: post.source.handle,
-        telegramUserId: telegramUserId || null,
-      }),
-    });
-  } catch {
-    //
-  }
-}
-
-function SourceTile({
-  post,
-  locale,
-  onOpen,
-}: {
-  post: IngestedPost;
-  locale: Locale;
-  onOpen: () => void;
-}) {
-  const preview = getPreview(post);
-
-  return (
-    <button
-      onClick={onOpen}
-      className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-200"
-      type="button"
-    >
-      {preview ? (
-        <img
-          src={preview}
-          alt={post.text || post.source.title}
-          className="absolute inset-0 h-full w-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-300 to-neutral-200" />
-      )}
-
-      <div className="absolute inset-0 bg-black/10" />
-
-      {post.contentType === "video" ? (
-        <div className="absolute inset-0 flex items-center justify-center opacity-70 transition group-hover:opacity-100">
-          <Play className="h-7 w-7 text-white" />
-        </div>
-      ) : null}
-
-      <div className="absolute right-2 top-2 rounded-full bg-black/40 px-2 py-0.5 text-[10px] text-white">
-        {getTagLabel(post.tag, locale)}
-      </div>
-    </button>
-  );
-}
-
 export function SourceScreen({
   locale,
   posts,
   sourceHandle,
   onBack,
   onOpenPost,
+  likedPostIds,
+  onToggleLike,
+  onHidePost,
+  onDeletePost,
+  currentTelegramUserId,
+  openSource,
 }: Props) {
   const t = getMessages(locale);
-  const sourcePosts = useMemo(
-    () => posts.filter((post) => post.source.handle === sourceHandle),
-    [posts, sourceHandle]
-  );
+
+  const sourcePosts = useMemo(() => {
+    return posts
+      .filter((post) => post.source.handle === sourceHandle)
+      .sort((a, b) => b.id - a.id);
+  }, [posts, sourceHandle]);
+
   const source = sourcePosts[0];
 
   const [subscribed, setSubscribed] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
+  const [donateOpen, setDonateOpen] = useState(false);
+  const [menuPostId, setMenuPostId] = useState<number | null>(null);
+  const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>(
+    {}
+  );
 
   useEffect(() => {
     if (!source?.source.handle) return;
@@ -145,8 +91,8 @@ export function SourceScreen({
 
   if (!source) {
     return (
-      <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-6 text-neutral-950">
-        <div className="mx-auto max-w-[570px]">
+      <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
+        <div className="mx-auto max-w-[570px] px-4 pb-10">
           <div className="mb-6 flex items-center justify-between">
             <button
               onClick={onBack}
@@ -172,8 +118,8 @@ export function SourceScreen({
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-6 text-neutral-950">
-      <div className="mx-auto max-w-[570px]">
+    <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
+      <div className="mx-auto max-w-[570px] px-4 pb-10">
         <div className="mb-6 flex items-center justify-between">
           <button
             onClick={onBack}
@@ -190,7 +136,11 @@ export function SourceScreen({
         </div>
 
         <section className="mb-6 overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5">
-          <div className="flex items-start gap-4">
+          <button
+            type="button"
+            onClick={() => openSource(source.source.handle)}
+            className="flex w-full items-start gap-4 text-left"
+          >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-neutral-200 text-xs font-bold text-neutral-900">
               {source.source.avatar ? (
                 <img
@@ -218,7 +168,7 @@ export function SourceScreen({
                 @{source.source.handle}
               </div>
             </div>
-          </div>
+          </button>
 
           <div className="mt-5 grid grid-cols-3 gap-3">
             <div className="rounded-2xl bg-neutral-50 p-4">
@@ -243,7 +193,7 @@ export function SourceScreen({
             </div>
           </div>
 
-          <div className="mt-5 flex w-full items-center justify-between gap-3">
+          <div className="mt-5 flex w-full items-center gap-3">
             <button
               onClick={openTelegramSource}
               className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
@@ -253,69 +203,106 @@ export function SourceScreen({
               <ExternalLink className="h-4 w-4" />
             </button>
 
+            {/* стрелка рядом с кнопкой */}
             <button
               type="button"
               onClick={() => setInfoOpen((prev) => !prev)}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-red-500 bg-white text-red-500"
-              aria-label="Информация"
-              title="Информация"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
             >
               <ChevronDown
-                className={`h-5 w-5 transition-transform duration-200 ${
+                className={`h-5 w-5 transition-transform ${
                   infoOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
 
-            <button
-              onClick={() => {
-                const next = toggleSub(source.source.handle);
-                setSubscribed(next.includes(source.source.handle));
-                window.dispatchEvent(new Event("storage"));
-              }}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100"
-              type="button"
-              aria-label={
-                subscribed
-                  ? t.source.disableNotifications
-                  : t.source.enableNotifications
-              }
-              title={
-                subscribed
-                  ? t.source.disableNotifications
-                  : t.source.enableNotifications
-              }
-            >
-              <Bell
-                className={`h-5 w-5 ${
-                  subscribed
-                    ? "fill-neutral-950 text-neutral-950"
-                    : "text-neutral-400"
-                }`}
-              />
-            </button>
-          </div>
+            {/* справа группа */}
+            <div className="ml-auto flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setDonateOpen((prev) => !prev)}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+              >
+                <Star className="h-5 w-5" />
+              </button>
+
+              <button
+                onClick={() => {
+                  const next = toggleSub(source.source.handle);
+                  setSubscribed(next.includes(source.source.handle));
+                  window.dispatchEvent(new Event("storage"));
+                }}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100"
+                type="button"
+              >
+                <Bell
+                  className={`h-5 w-5 ${
+                    subscribed
+                      ? "fill-neutral-950 text-neutral-950"
+                      : "text-neutral-400"
+                  }`}
+                />
+              </button>
+            </div>
+          </div>          
 
           {infoOpen ? (
             <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
-              В ленте показываются последние посты канала за 24 часа, полная информация
-              доступ в Telegram нажмите кнопку "Открыть канал" чтобы перейти в источник.
+              В ленте показываются последние посты канала за 24 часа, полная
+              информация доступ в Telegram нажмите кнопку "Открыть канал" чтобы
+              перейти в источник.
+            </div>
+          ) : null}
+
+          {donateOpen ? (
+            <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
+              Скоро здесь появится возможность поддержать канал донатом.
             </div>
           ) : null}
         </section>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {sourcePosts.map((post) => (
-            <SourceTile
-              key={post.id}
-              post={post}
-              locale={locale}
-              onOpen={() => {
-                trackTelegramClick(post);
-                onOpenPost(post);
-              }}
-            />
-          ))}
+        <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white">
+          {sourcePosts.map((post) => {
+            const ownerTelegramId = post.addedBy?.telegramId ?? null;
+
+            const isOwner =
+              !!currentTelegramUserId &&
+              !!ownerTelegramId &&
+              currentTelegramUserId === ownerTelegramId;
+
+            const isAdmin =
+              !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
+
+            return (
+              <FeedCard
+                key={post.id}
+                post={post}
+                locale={locale}
+                isOwner={isOwner}
+                isAdmin={isAdmin}
+                menuOpen={menuPostId === post.id}
+                onToggleMenu={() =>
+                  setMenuPostId((prev) => (prev === post.id ? null : post.id))
+                }
+                onDelete={() => {
+                  void onDeletePost(post.id);
+                }}
+                onHide={() => onHidePost(post.id)}
+                onOpen={() => onOpenPost(post)}
+                onOpenCreator={() => openSource(post.source.handle)}
+                mediaIndex={feedMediaIndexes[post.id] || 0}
+                onChangeMediaIndex={(next: number) =>
+                  setFeedMediaIndexes((prev) => ({
+                    ...prev,
+                    [post.id]: Math.max(0, next),
+                  }))
+                }
+                liked={likedPostIds.includes(post.id)}
+                onToggleLike={() => onToggleLike(post.id)}
+                onShare={() => {}}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
