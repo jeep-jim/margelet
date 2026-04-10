@@ -181,7 +181,7 @@ export function FeedCard(props: FeedCardProps) {
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
       </div>
 
-      <div className="absolute right-2.5 top-4 z-20">
+            <div className="absolute right-1 top-4 z-20">
         <div className="relative">
           <button
             className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-700"
@@ -208,7 +208,18 @@ export function FeedCard(props: FeedCardProps) {
 
       {showVisualMedia ? (
         <>
-          <div className="relative mt-3">
+          <div
+            className="relative mt-3 cursor-pointer"
+            onClick={openPostSafely}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openPostSafely();
+              }
+            }}
+          >
             <div className="absolute left-3 top-3 z-20">
               <div className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
                 {tagLabel}

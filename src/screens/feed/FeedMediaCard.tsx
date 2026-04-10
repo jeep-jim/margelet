@@ -1,5 +1,5 @@
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FeedMediaCardProps } from "./feed.types";
 import { FeedCarousel } from "./FeedCarousel";
 import { normalizeMediaList } from "./feed.utils";
@@ -102,52 +102,76 @@ export function FeedMediaCard({
   } as const;
 
   const copy = COPY[locale] ?? COPY.en;
+
+  const [media, setMedia] = useState(() => normalizeMediaList(post));
+  const [retryUsed, setRetryUsed] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const media = useMemo(() => normalizeMediaList(post), [post]);
-  const activeItem = media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
-  const activeIsVideo = activeItem?.kind === "video";
 
   const [muted, setMuted] = useState(readGlobalMuted());
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [forcedPaused, setForcedPaused] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  const activeItem =
+    media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
+
+  const activeIsVideo = activeItem?.kind === "video";
+
+  const tryRefreshMedia = async () => {
+    if (retryUsed) return;
+    if (!post.postUrl) return;
+
+    setRetryUsed(true);
+
+    try {
+      const res = await fetch(
+        `/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`
+      );
+
+      if (!res.ok) return;
+
+      const data = await res.json();
+      if (!data) return;
+
+      const refreshed = normalizeMediaList({
+        ...post,
+        ...data,
+      });
+
+      if (refreshed?.length) {
+        setMedia(refreshed);
+      }
+    } catch {
+      //
+    }
+  };
 
   useEffect(() => {
-    const handleMuteChange = (event: Event) => {
+    const syncMuted = (event: Event) => {
       const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
-      if (typeof detail?.muted === "boolean") {
-        setMuted(detail.muted);
-      }
+      setMuted(
+        typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted()
+      );
     };
 
-    const handlePauseAll = () => {
+    const pauseAll = () => {
       setForcedPaused(true);
       const node = videoRef.current;
-      if (node) {
-        node.pause();
-      }
+      if (!node) return;
+      node.pause();
       setIsVideoPlaying(false);
     };
 
-    window.addEventListener(FEED_MUTE_EVENT, handleMuteChange as EventListener);
-    window.addEventListener(FEED_PAUSE_EVENT, handlePauseAll);
+    window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+    window.addEventListener(FEED_PAUSE_EVENT, pauseAll);
 
     return () => {
-      window.removeEventListener(FEED_MUTE_EVENT, handleMuteChange as EventListener);
-      window.removeEventListener(FEED_PAUSE_EVENT, handlePauseAll);
+      window.removeEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+      window.removeEventListener(FEED_PAUSE_EVENT, pauseAll);
     };
   }, []);
-
-  useEffect(() => {
-    setForcedPaused(false);
-  }, [post.id, mediaIndex]);
-
-  useEffect(() => {
-    const node = videoRef.current;
-    if (!node) return;
-    node.muted = muted;
-  }, [muted, mediaIndex, post.id]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -158,34 +182,36 @@ export function FeedMediaCard({
       return;
     }
 
+    const syncMeta = () => {
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
     const syncTime = () => {
       setCurrentTime(node.currentTime || 0);
-      setDuration(node.duration || 0);
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
     const onPlay = () => {
       setIsVideoPlaying(true);
-      syncTime();
     };
 
     const onPause = () => {
       setIsVideoPlaying(false);
-      syncTime();
     };
 
+    node.addEventListener("loadedmetadata", syncMeta);
     node.addEventListener("timeupdate", syncTime);
-    node.addEventListener("loadedmetadata", syncTime);
-    node.addEventListener("durationchange", syncTime);
     node.addEventListener("play", onPlay);
     node.addEventListener("pause", onPause);
     node.addEventListener("ended", onPause);
 
+    syncMeta();
     syncTime();
+    setIsVideoPlaying(!node.paused);
 
     return () => {
+      node.removeEventListener("loadedmetadata", syncMeta);
       node.removeEventListener("timeupdate", syncTime);
-      node.removeEventListener("loadedmetadata", syncTime);
-      node.removeEventListener("durationchange", syncTime);
       node.removeEventListener("play", onPlay);
       node.removeEventListener("pause", onPause);
       node.removeEventListener("ended", onPause);
@@ -193,8 +219,22 @@ export function FeedMediaCard({
   }, [activeItem?.id, activeItem?.kind]);
 
   useEffect(() => {
+    if (!forcedPaused) return;
+    if (!isCardVisible) return;
+    if (activeItem?.kind !== "video") return;
+    setForcedPaused(false);
+  }, [forcedPaused, isCardVisible, activeItem?.kind, mediaIndex]);
+
+  useEffect(() => {
     const node = videoRef.current;
-    if (!node || activeItem?.kind !== "video") return;
+    if (!node) return;
+    node.muted = muted;
+  }, [muted, mediaIndex, post.id]);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node) return;
+    if (activeItem?.kind !== "video") return;
 
     if (isCardVisible && !forcedPaused) {
       const playPromise = node.play();
@@ -205,6 +245,11 @@ export function FeedMediaCard({
       node.pause();
     }
   }, [isCardVisible, forcedPaused, activeItem?.kind, mediaIndex, post.id]);
+
+  const handleOpen = () => {
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
+    onOpen();
+  };
 
   const togglePlay = () => {
     const node = videoRef.current;
@@ -224,12 +269,6 @@ export function FeedMediaCard({
     }
   };
 
-  const toggleMute = () => {
-    const next = !muted;
-    setMuted(next);
-    writeGlobalMuted(next);
-  };
-
   return (
     <div className="relative">
       <FeedCarousel
@@ -245,73 +284,105 @@ export function FeedMediaCard({
         mode={activeIsVideo ? "fixed" : "adaptive"}
         maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
         backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
-        enableFullscreen={false}
+        enableFullscreen={!activeIsVideo}
         nativeVideoControls={false}
         blockVideoClickPropagation={false}
+        onMediaError={tryRefreshMedia}
       />
 
-      {!activeIsVideo ? (
-        <button
-          type="button"
-          onClick={onOpen}
-          className="absolute inset-0 z-20 cursor-pointer bg-transparent"
-          aria-label="Open post"
-        />
-      ) : null}
-
       {activeIsVideo ? (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
-          <div className="flex items-center gap-3">
+        <>
+          <div className="absolute inset-x-0 top-0 bottom-[58px] z-10">
             <button
               type="button"
-              onPointerDown={(event) => {
-                event.preventDefault();
+              onClick={handleOpen}
+              className="absolute left-0 top-0 h-full w-[34%]"
+              aria-label="Open video post"
+            />
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="absolute right-0 top-0 h-full w-[34%]"
+              aria-label="Open video post"
+            />
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="absolute left-[34%] right-[34%] top-0 h-[36%]"
+              aria-label="Open video post"
+            />
+            <button
+              type="button"
+              onClick={handleOpen}
+              className="absolute bottom-0 left-[34%] right-[34%] h-[36%]"
+              aria-label="Open video post"
+            />
+          </div>
+
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+            <button
+              type="button"
+              onClick={(event) => {
                 event.stopPropagation();
                 togglePlay();
               }}
-              className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+              className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-opacity duration-150 ${
+                isVideoPlaying ? "opacity-0" : "opacity-100"
+              }`}
               aria-label={isVideoPlaying ? copy.pause : copy.play}
             >
               {isVideoPlaying ? (
-                <Pause className="h-4 w-4" />
+                <Pause className="h-6 w-6" />
               ) : (
-                <Play className="ml-0.5 h-4 w-4" />
+                <Play className="ml-0.5 h-6 w-6" />
               )}
             </button>
+          </div>
+        </>
+      ) : null}
 
-            <div className="min-w-0 flex-1">
-              <div className="mb-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/25">
-                <div
-                  className="h-full rounded-full bg-white"
-                  style={{
-                    width:
-                      duration > 0
-                        ? `${Math.min(100, (currentTime / duration) * 100)}%`
-                        : "0%",
-                  }}
-                />
-              </div>
-
-              <div className="flex items-center justify-between text-[11px] font-medium text-white/90">
-                <span>{formatTime(currentTime)}</span>
-                <span>{formatTime(duration)}</span>
-              </div>
+      {activeIsVideo ? (
+        <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+          <div className="flex items-center gap-3">
+            <div className="min-w-[72px] text-[12px] font-medium text-white">
+              {formatTime(currentTime)} / {formatTime(duration)}
             </div>
+
+            <input
+              type="range"
+              min={0}
+              max={duration || 0}
+              step={0.1}
+              value={Math.min(currentTime, duration || 0)}
+              onChange={(event) => {
+                event.stopPropagation();
+                const node = videoRef.current;
+                if (!node) return;
+                const next = Number(event.target.value);
+                node.currentTime = next;
+                setCurrentTime(next);
+              }}
+              onClick={(event) => event.stopPropagation()}
+              onMouseDown={(event) => event.stopPropagation()}
+              onTouchStart={(event) => event.stopPropagation()}
+              className="h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+            />
 
             <button
               type="button"
-              onPointerDown={(event) => {
-                event.preventDefault();
+              onClick={(event) => {
                 event.stopPropagation();
-                toggleMute();
+                const next = !muted;
+                setMuted(next);
+                writeGlobalMuted(next);
               }}
-              className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
               aria-label={muted ? copy.unmute : copy.mute}
             >
               {muted ? (
-                <VolumeX className="h-4 w-4" />
+                <VolumeX className="h-5 w-5" />
               ) : (
-                <Volume2 className="h-4 w-4" />
+                <Volume2 className="h-5 w-5" />
               )}
             </button>
           </div>
