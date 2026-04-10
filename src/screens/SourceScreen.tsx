@@ -1,8 +1,4 @@
-import {
-  Bell,
-  ChevronDown,
-  Star,
-} from "lucide-react";
+import { Bell, ChevronDown, Star } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { getMessages } from "../lib/i18n";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
@@ -42,9 +38,7 @@ function toggleSub(handle: string) {
   const current = getSubs();
   const exists = current.includes(handle);
 
-  const next = exists
-    ? current.filter((h) => h !== handle)
-    : [...current, handle];
+  const next = exists ? current.filter((h) => h !== handle) : [...current, handle];
 
   localStorage.setItem(SUB_KEY, JSON.stringify(next));
   return next;
@@ -76,9 +70,7 @@ export function SourceScreen({
   const [infoOpen, setInfoOpen] = useState(false);
   const [donateOpen, setDonateOpen] = useState(false);
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
-  const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>(
-    {}
-  );
+  const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>({});
 
   useEffect(() => {
     if (!source?.source.handle) return;
@@ -87,7 +79,7 @@ export function SourceScreen({
 
   if (!source) {
     return (
-      <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
+      <div className="min-h-screen bg-neutral-50 pt-[76px] text-neutral-950">
         <div className="mx-auto max-w-[570px] px-4 pb-10">
           <div className="text-lg font-semibold">{t.source.notFound}</div>
         </div>
@@ -103,13 +95,13 @@ export function SourceScreen({
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
+    <div className="min-h-screen bg-neutral-50 pt-[76px] text-neutral-950">
       <div className="mx-auto max-w-[570px] px-4 pb-10">
         <section className="mb-6 overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5">
           <button
             type="button"
             onClick={() => openSource(source.source.handle)}
-            className="flex w-full items-start gap-4 text-left"
+            className="flex w-full min-w-0 items-start gap-4 text-left"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-neutral-200 text-xs font-bold text-neutral-900">
               {source.source.avatar ? (
@@ -125,12 +117,13 @@ export function SourceScreen({
             </div>
 
             <div className="min-w-0 flex-1 pr-2">
-              <div className="flex items-center gap-1.5">
-                <div className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
+              <div className="flex min-w-0 items-center gap-1.5">
+                <div className="min-w-0 flex-1 truncate whitespace-nowrap text-[18px] font-semibold leading-tight text-neutral-950">
                   {source.source.title}
                 </div>
+
                 {source.source.verified ? (
-                  <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+                  <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
                 ) : null}
               </div>
 
@@ -166,7 +159,7 @@ export function SourceScreen({
           <div className="mt-5 flex w-full items-center gap-3">
             <button
               onClick={openTelegramSource}
-              className="inline-flex items-center rounded-full bg-neutral-950 px-4 py-2 text-sm font-medium text-white"
+              className="inline-flex h-10 shrink-0 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
               type="button"
             >
               <span>{t.feed.openChannel}</span>
@@ -175,7 +168,7 @@ export function SourceScreen({
             <button
               type="button"
               onClick={() => setInfoOpen((prev) => !prev)}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
               aria-label="Информация"
               title="Информация"
             >
@@ -190,7 +183,7 @@ export function SourceScreen({
               <button
                 type="button"
                 onClick={() => setDonateOpen((prev) => !prev)}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
                 aria-label="Поддержать канал"
                 title="Поддержать канал"
               >
@@ -203,7 +196,7 @@ export function SourceScreen({
                   setSubscribed(next.includes(source.source.handle));
                   window.dispatchEvent(new Event("storage"));
                 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100"
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-neutral-100"
                 type="button"
                 aria-label={
                   subscribed

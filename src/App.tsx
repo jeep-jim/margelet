@@ -262,6 +262,39 @@ export default function App() {
     [replacePath]
   );
 
+  const handleHeaderTabChange = useCallback(
+    (tab: TabId) => {
+      if (tab === "feed") {
+        goHome();
+        return;
+      }
+
+      if (tab === "add") {
+        setSelectedSourceHandle(null);
+        setCurrent("add");
+        replacePath("/");
+        return;
+      }
+
+      if (tab === "creator") {
+        setSelectedSourceHandle(null);
+        setCurrent("creator");
+        replacePath("/");
+        return;
+      }
+
+      if (tab === "admin") {
+        setSelectedSourceHandle(null);
+        setCurrent("admin");
+        replacePath(ADMIN_HIDDEN_PATH);
+        return;
+      }
+
+      setCurrent(tab);
+    },
+    [goHome, replacePath]
+  );
+
   useEffect(() => {
     const initial = getInitialLocale();
     setLocale(initial);
@@ -278,7 +311,7 @@ export default function App() {
     const currentShared = parseSharedPath(window.location.pathname);
     if (currentShared) {
       setSelectedSourceHandle(currentShared.handle);
-      setCurrent("feed");
+      setCurrent("source");
       return;
     }
 
@@ -306,7 +339,7 @@ export default function App() {
       const currentShared = parseSharedPath(pathname);
       if (currentShared) {
         setSelectedSourceHandle(currentShared.handle);
-        setCurrent("feed");
+        setCurrent("source");
         return;
       }
 
@@ -488,10 +521,6 @@ export default function App() {
     );
   }, [current]);
 
-  // УБРАН ФЕЙКОВЫЙ PAGE VIEW:
-  // раньше здесь каждый refresh слал /api/track без action,
-  // поэтому админка тоже считалась как просмотр.
-
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");
     setHasSeenIntro(true);
@@ -581,7 +610,11 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#0a0a0f] text-white">
       {!shouldShowIntro && current !== "intro" && current !== "admin" ? (
-        <AppHeader current={current} setCurrent={goHome as any} locale={locale} />
+        <AppHeader
+          current={current}
+          setCurrent={handleHeaderTabChange}
+          locale={locale}
+        />
       ) : null}
 
       {shouldShowIntro ? (
@@ -645,7 +678,7 @@ export default function App() {
               onOpenPost={(post) => {
                 const postId = getPostIdFromUrl(post.postUrl);
                 setSelectedSourceHandle(post.source.handle);
-                setCurrent("feed");
+                setCurrent("source");
                 replacePath(`/${post.source.handle}/${postId}`);
               }}
               likedPostIds={likedPostIds}
