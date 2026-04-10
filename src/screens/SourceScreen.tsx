@@ -1,10 +1,12 @@
 import { Bell, ChevronDown, Star } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getMessages } from "../lib/i18n";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import { FeedCard } from "./feed/FeedCard";
-import type { Locale } from "../types/app";
-import type { IngestedPost } from "../types/app";
+import { FeedViewer } from "./feed/FeedViewer";
+import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
+import type { ViewerDirection } from "./feed/feed.types";
+import type { Locale, IngestedPost } from "../types/app";
 
 type Props = {
   locale: Locale;
@@ -21,7 +23,7 @@ type Props = {
 };
 
 const SUB_KEY = "margelet_subscriptions";
-const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
+const SAVED_POST_IDS_FALLBACK: number[] = [];
 
 function getSubs(): string[] {
   try {
@@ -44,6 +46,24 @@ function toggleSub(handle: string) {
   return next;
 }
 
+function getPostIdFromUrl(postUrl: string) {
+  return postUrl.split("/").filter(Boolean).pop() || "";
+}
+
+function hasVisualPost(post: IngestedPost) {
+  if (
+    post.contentType === "video" ||
+    post.contentType === "image" ||
+    post.contentType === "gallery" ||
+    post.contentType === "gif" ||
+    post.contentType === "mixed"
+  ) {
+    return true;
+  }
+
+  return post.media.some((item) => item.kind === "image" || item.kind === "video");
+}
+
 export function SourceScreen({
   locale,
   posts,
@@ -64,20 +84,124 @@ export function SourceScreen({
       .sort((a, b) => b.id - a.id);
   }, [posts, sourceHandle]);
 
+  const viewerPosts = useMemo(() => {
+    return sourcePosts.filter(hasVisualPost);
+  }, [sourcePosts]);
+
   const source = sourcePosts[0];
 
   const [subscribed, setSubscribed] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [donateOpen, setDonateOpen] = useState(false);
+
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
-  const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>(
-    {}
-  );
+  const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>({});
+
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+  const [textReaderPost, setTextReaderPost] = useState<IngestedPost | null>(null);
+
+  const [viewerDirection] = useState<ViewerDirection>(null);
+  const [expandedCaption, setExpandedCaption] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [copySuccessId] = useState<number | null>(null);
+  const [actionError, setActionError] = useState("");
+  const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
+  const [videoProgress] = useState(0);
+
+  const routeHandledRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (!source?.source.handle) return;
     setSubscribed(getSubs().includes(source.source.handle));
   }, [source?.source.handle]);
+
+  const closeOpenedPost = useCallback(() => {
+    setViewerIndex(null);
+    setTextReaderPost(null);
+    setViewerMediaIndex(0);
+    setExpandedCaption(false);
+    setIsPlaying(true);
+    setMenuPostId(null);
+    setActionError("");
+
+    if (source?.source.handle) {
+      routeHandledRef.current = null;
+      openSource(source.source.handle);
+    }
+  }, [openSource, source?.source.handle]);
+
+  const openPostInsideSource = useCallback(
+    (post: IngestedPost, syncRoute = true) => {
+      if (syncRoute) {
+        onOpenPost(post);
+      }
+
+      setMenuPostId(null);
+      setActionError("");
+      setExpandedCaption(false);
+
+      if (hasVisualPost(post)) {
+        const nextIndex = viewerPosts.findIndex((item) => item.id === post.id);
+        if (nextIndex === -1) return;
+
+        setTextReaderPost(null);
+        setViewerIndex(nextIndex);
+        setViewerMediaIndex(0);
+        setIsPlaying(true);
+        return;
+      }
+
+      setViewerIndex(null);
+      setViewerMediaIndex(0);
+      setTextReaderPost(post);
+    },
+    [onOpenPost, viewerPosts]
+  );
+
+  const nextViewer = useCallback(() => {
+    if (viewerIndex === null || viewerPosts.length === 0) return;
+
+    setViewerIndex((viewerIndex + 1) % viewerPosts.length);
+    setViewerMediaIndex(0);
+    setExpandedCaption(false);
+    setIsPlaying(true);
+    setMenuPostId(null);
+    setActionError("");
+  }, [viewerIndex, viewerPosts.length]);
+
+  const prevViewer = useCallback(() => {
+    if (viewerIndex === null || viewerPosts.length === 0) return;
+
+    setViewerIndex((viewerIndex - 1 + viewerPosts.length) % viewerPosts.length);
+    setViewerMediaIndex(0);
+    setExpandedCaption(false);
+    setIsPlaying(true);
+    setMenuPostId(null);
+    setActionError("");
+  }, [viewerIndex, viewerPosts.length]);
+
+  useEffect(() => {
+    if (!sourceHandle || sourcePosts.length === 0) return;
+
+    const clean = window.location.pathname.replace(/\/+$/, "");
+    const parts = clean.split("/").filter(Boolean);
+
+    if (parts.length !== 2) return;
+    if (parts[0] !== sourceHandle) return;
+
+    const routeKey = `${parts[0]}/${parts[1]}`;
+    if (routeHandledRef.current === routeKey) return;
+
+    const matchedPost = sourcePosts.find(
+      (post) => getPostIdFromUrl(post.postUrl) === parts[1]
+    );
+
+    if (!matchedPost) return;
+
+    routeHandledRef.current = routeKey;
+    openPostInsideSource(matchedPost, false);
+  }, [openPostInsideSource, sourceHandle, sourcePosts]);
 
   if (!source) {
     return (
@@ -91,6 +215,8 @@ export function SourceScreen({
 
   const totalMedia = sourcePosts.filter((post) => post.media.length > 0).length;
   const totalVideos = sourcePosts.filter((post) => post.contentType === "video").length;
+  const activeViewerPost =
+    viewerIndex === null ? null : viewerPosts[viewerIndex] || null;
 
   const openTelegramSource = () => {
     window.open(`https://t.me/${source.source.handle}`, "_blank", "noopener,noreferrer");
@@ -119,15 +245,13 @@ export function SourceScreen({
             </div>
 
             <div className="min-w-0 flex-1 overflow-hidden">
-              <div className="min-w-0 overflow-hidden">
-                <div className="inline-flex max-w-full items-center gap-1 align-top">
-                  <span className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
-                    {source.source.title}
-                  </span>
-                  {source.source.verified ? (
-                    <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
-                  ) : null}
-                </div>
+              <div className="inline-flex max-w-full items-center gap-1">
+                <span className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
+                  {source.source.title}
+                </span>
+                {source.source.verified ? (
+                  <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
+                ) : null}
               </div>
 
               <div className="mt-1 truncate text-[14px] text-neutral-500">
@@ -175,25 +299,25 @@ export function SourceScreen({
               </button>
 
               {infoOpen ? (
-                <div className="mt-4 pl-1 text-sm leading-7 text-neutral-700">
-                  В ленте показываются последние посты канала за 24 часа. Полная
-                  информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
-                  чтобы перейти в источник.
+                <div className="mt-4 text-sm leading-7 text-neutral-700">
+                  <div>
+                    В ленте показываются последние посты канала за 24 часа. Полная
+                    информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
+                    чтобы перейти в источник.
+                  </div>
+
+                  <button
+                    onClick={openTelegramSource}
+                    className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
+                    type="button"
+                  >
+                    <span>{t.feed.openChannel}</span>
+                  </button>
                 </div>
               ) : null}
-
-              <div className="mt-4">
-                <button
-                  onClick={openTelegramSource}
-                  className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
-                  type="button"
-                >
-                  <span>{t.feed.openChannel}</span>
-                </button>
-              </div>
             </div>
 
-            <div className="ml-auto flex shrink-0 items-center gap-3 pt-0">
+            <div className="ml-auto flex shrink-0 items-center gap-3">
               <button
                 type="button"
                 onClick={() => setDonateOpen((prev) => !prev)}
@@ -201,7 +325,11 @@ export function SourceScreen({
                 aria-label="Поддержать канал"
                 title="Поддержать канал"
               >
-                <Star className="h-5 w-5" />
+                <Star
+                  className={`h-5 w-5 ${
+                    donateOpen ? "fill-neutral-950 text-neutral-950" : "text-neutral-950"
+                  }`}
+                />
               </button>
 
               <button
@@ -235,7 +363,7 @@ export function SourceScreen({
           </div>
 
           {donateOpen ? (
-            <div className="mt-4 pl-1 text-sm leading-7 text-neutral-700">
+            <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
               Скоро здесь появится возможность поддержать канал донатом.
             </div>
           ) : null}
@@ -250,8 +378,7 @@ export function SourceScreen({
               !!ownerTelegramId &&
               currentTelegramUserId === ownerTelegramId;
 
-            const isAdmin =
-              !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
+            const isAdmin = currentTelegramUserId === "1372669404";
 
             return (
               <FeedCard
@@ -268,7 +395,7 @@ export function SourceScreen({
                   void onDeletePost(post.id);
                 }}
                 onHide={() => onHidePost(post.id)}
-                onOpen={() => onOpenPost(post)}
+                onOpen={() => openPostInsideSource(post, true)}
                 onOpenCreator={() => openSource(post.source.handle)}
                 mediaIndex={feedMediaIndexes[post.id] || 0}
                 onChangeMediaIndex={(next: number) =>
@@ -285,6 +412,49 @@ export function SourceScreen({
           })}
         </div>
       </div>
+
+      <FeedViewer
+        locale={locale}
+        activePost={activeViewerPost}
+        viewerDirection={viewerDirection}
+        expandedCaption={expandedCaption}
+        setExpandedCaption={setExpandedCaption}
+        isMuted={isMuted}
+        setIsMuted={setIsMuted}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        copySuccessId={copySuccessId}
+        menuPostId={menuPostId}
+        setMenuPostId={setMenuPostId}
+        actionError={actionError}
+        videoProgress={videoProgress}
+        viewerMediaIndex={viewerMediaIndex}
+        setViewerMediaIndex={setViewerMediaIndex}
+        likedPostIds={likedPostIds}
+        savedPostIds={SAVED_POST_IDS_FALLBACK}
+        onToggleLike={onToggleLike}
+        onToggleSave={() => {}}
+        onHidePost={onHidePost}
+        onDeletePost={onDeletePost}
+        currentTelegramUserId={currentTelegramUserId}
+        openSource={openSource}
+        closeViewer={closeOpenedPost}
+        nextViewer={nextViewer}
+        prevViewer={prevViewer}
+        handleShare={async () => {}}
+        setActionError={setActionError}
+      />
+
+      <FeedTextReaderModal
+        post={textReaderPost}
+        locale={locale}
+        liked={!!textReaderPost && likedPostIds.includes(textReaderPost.id)}
+        saved={false}
+        onClose={closeOpenedPost}
+        onToggleLike={onToggleLike}
+        onToggleSave={() => {}}
+        onShare={async () => {}}
+      />
     </div>
   );
 }

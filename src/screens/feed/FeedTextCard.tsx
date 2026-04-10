@@ -115,9 +115,7 @@ function linkifyText(text: string) {
       return <span key={index}>{part}</span>;
     }
 
-    const href = part.startsWith("http")
-      ? part
-      : `https://${part}`;
+    const href = part.startsWith("http") ? part : `https://${part}`;
 
     return (
       <a
@@ -145,6 +143,7 @@ function AudioPreview({
   const fileMedia = getFileMedia(post);
   const hasPlayableAudio = audioMedia.length > 0;
   const hasFiles = fileMedia.length > 0;
+
   if (!hasPlayableAudio && !hasFiles) {
     return null;
   }
@@ -153,119 +152,95 @@ function AudioPreview({
     en: {
       telegramAudio: "Audio from Telegram",
       telegramFile: "File from Telegram",
-      telegramMusic: "Music from Telegram",
       audioSingle: "1 audio",
       audioMany: "audio files",
       fileSingle: "1 file",
       fileMany: "files",
-      musicAvailable: "Available in original post",
     },
     ru: {
       telegramAudio: "Аудио из Telegram",
       telegramFile: "Файл из Telegram",
-      telegramMusic: "Музыка из Telegram",
       audioSingle: "1 аудио",
       audioMany: "аудио",
       fileSingle: "1 файл",
       fileMany: "файлов",
-      musicAvailable: "Доступно в оригинальном посте",
     },
     de: {
       telegramAudio: "Audio aus Telegram",
       telegramFile: "Datei aus Telegram",
-      telegramMusic: "Musik aus Telegram",
       audioSingle: "1 Audio",
       audioMany: "Audios",
       fileSingle: "1 Datei",
       fileMany: "Dateien",
-      musicAvailable: "Im Originalbeitrag verfügbar",
     },
     es: {
       telegramAudio: "Audio de Telegram",
       telegramFile: "Archivo de Telegram",
-      telegramMusic: "Música de Telegram",
       audioSingle: "1 audio",
       audioMany: "audios",
       fileSingle: "1 archivo",
       fileMany: "archivos",
-      musicAvailable: "Disponible en la publicación original",
     },
     tr: {
       telegramAudio: "Telegram sesi",
       telegramFile: "Telegram dosyası",
-      telegramMusic: "Telegram müziği",
       audioSingle: "1 ses",
       audioMany: "ses dosyası",
       fileSingle: "1 dosya",
       fileMany: "dosya",
-      musicAvailable: "Orijinal gönderide mevcut",
     },
     fr: {
       telegramAudio: "Audio Telegram",
       telegramFile: "Fichier Telegram",
-      telegramMusic: "Musique Telegram",
       audioSingle: "1 audio",
       audioMany: "audios",
       fileSingle: "1 fichier",
       fileMany: "fichiers",
-      musicAvailable: "Disponible dans le post original",
     },
     it: {
       telegramAudio: "Audio da Telegram",
       telegramFile: "File da Telegram",
-      telegramMusic: "Musica da Telegram",
       audioSingle: "1 audio",
       audioMany: "audio",
       fileSingle: "1 file",
       fileMany: "file",
-      musicAvailable: "Disponibile nel post originale",
     },
     "pt-br": {
       telegramAudio: "Áudio do Telegram",
       telegramFile: "Arquivo do Telegram",
-      telegramMusic: "Música do Telegram",
       audioSingle: "1 áudio",
       audioMany: "áudios",
       fileSingle: "1 arquivo",
       fileMany: "arquivos",
-      musicAvailable: "Disponível no post original",
     },
     id: {
       telegramAudio: "Audio dari Telegram",
       telegramFile: "File dari Telegram",
-      telegramMusic: "Musik dari Telegram",
       audioSingle: "1 audio",
       audioMany: "audio",
       fileSingle: "1 file",
       fileMany: "file",
-      musicAvailable: "Tersedia di post asli",
     },
     pl: {
       telegramAudio: "Audio z Telegrama",
       telegramFile: "Plik z Telegrama",
-      telegramMusic: "Muzyka z Telegrama",
       audioSingle: "1 audio",
       audioMany: "plików audio",
       fileSingle: "1 plik",
       fileMany: "plików",
-      musicAvailable: "Dostępne w oryginalnym poście",
     },
   } as const;
 
   const copy = COPY[locale] ?? COPY.en;
   const total = hasPlayableAudio ? audioMedia.length : fileMedia.length;
-  const title = hasPlayableAudio
-    ? copy.telegramAudio
-    : copy.telegramFile;      
-
-  const subtitle =
-    hasPlayableAudio
-      ? total > 1
-        ? `${total} ${copy.audioMany}`
-        : copy.audioSingle
-      : total > 1
-        ? `${total} ${copy.fileMany}`
-        : copy.fileSingle;        
+  const title = hasPlayableAudio ? copy.telegramAudio : copy.telegramFile;
+  const subtitle = hasPlayableAudio
+    ? total > 1
+      ? `${total} ${copy.audioMany}`
+      : copy.audioSingle
+    : total > 1
+      ? `${total} ${copy.fileMany}`
+      : copy.fileSingle;
 
   return (
     <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
@@ -275,7 +250,7 @@ function AudioPreview({
             <Music4 className="h-5 w-5" />
           ) : (
             <FileText className="h-5 w-5" />
-          )}          
+          )}
         </div>
 
         <div className="min-w-0 flex-1">

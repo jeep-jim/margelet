@@ -176,12 +176,14 @@ export function FeedCard(props: FeedCardProps) {
   return (
     <article
       ref={cardRef}
-      className="overflow-hidden border-b border-neutral-200 bg-white"
+      className="relative overflow-hidden border-b border-neutral-200 bg-white"
     >
-      <div className="flex items-start justify-between gap-3 px-4 pt-4">
+      <div className="px-4 pt-4 pr-14">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
+      </div>
 
-        <div className="relative shrink-0 pr-0.5">
+      <div className="absolute right-4 top-4 z-20">
+        <div className="relative">
           <button
             className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-700"
             onClick={(event) => {
