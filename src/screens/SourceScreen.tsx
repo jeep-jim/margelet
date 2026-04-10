@@ -49,17 +49,11 @@ function getPostIdFromUrl(postUrl: string) {
 }
 
 function hasVisualPost(post: IngestedPost) {
-  if (
-    post.contentType === "video" ||
-    post.contentType === "image" ||
-    post.contentType === "gallery" ||
-    post.contentType === "gif" ||
-    post.contentType === "mixed"
-  ) {
+  if (post.contentType === "video") {
     return true;
   }
 
-  return post.media.some((item) => item.kind === "image" || item.kind === "video");
+  return post.media.some((item) => item.kind === "video");
 }
 
 export function SourceScreen({
