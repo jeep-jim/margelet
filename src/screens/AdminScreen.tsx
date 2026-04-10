@@ -8,6 +8,7 @@ import { AdminCountriesSection } from "./admin/AdminCountriesSection";
 import { AdminPostsSection } from "./admin/AdminPostsSection";
 import { AdminSourcesSection } from "./admin/AdminSourcesSection";
 import type { TrustedSource } from "./admin/admin.types";
+import type { AnalyticsResponse } from "./admin/admin.analytics.types";
 
 type AdminScreenProps = {
   locale: Locale;
@@ -31,71 +32,6 @@ type AccessGrant = {
   updatedAt: string;
   expiresAt: string | null;
   isActive: boolean;
-};
-
-type TopPostItem = {
-  id: number;
-  postUrl: string;
-  sourceHandle: string;
-  sourceTitle: string;
-  textPreview: string;
-  createdAt: string;
-  tag: string;
-  views: number;
-  opens: number;
-  tgClicks: number;
-  likes: number;
-  subscriptions: number;
-  score: number;
-};
-
-type TopSourceItem = {
-  handle: string;
-  title: string;
-  countryCode: string | null;
-  views: number;
-  opens: number;
-  tgClicks: number;
-  subscriptions: number;
-  score: number;
-};
-
-type AnalyticsResponse = {
-  views: number;
-  opens: number;
-  tgClicks: number;
-  likes: number;
-  subscriptions: number;
-  uniqueUsers: number;
-
-  countries: Record<string, string>;
-  countriesUnique: Record<string, string>;
-  devices: Record<string, string>;
-  devicesUnique: Record<string, string>;
-
-  todayViews: number;
-  last7Views: number;
-  last30Views: number;
-
-  todayUniqueUsers: number;
-  last7UniqueUsers: number;
-  last30UniqueUsers: number;
-
-  todayOpens: number;
-  last7Opens: number;
-  last30Opens: number;
-
-  todayTgClicks: number;
-  last7TgClicks: number;
-  last30TgClicks: number;
-
-  days: Record<string, string>;
-  uniqueDays: Record<string, string>;
-  openDays: Record<string, string>;
-  tgClickDays: Record<string, string>;
-
-  topPosts: TopPostItem[];
-  topSources: TopSourceItem[];
 };
 
 const ADMIN_TELEGRAM_ID = "1372669404";
