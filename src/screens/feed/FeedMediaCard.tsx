@@ -303,19 +303,12 @@ export function FeedMediaCard({
             <div className="flex items-center gap-3">
               <button
                 type="button"
-                onClick={(event) => {
+                onPointerDown={(event) => {
                   event.preventDefault();
                   event.stopPropagation();
                   togglePlay();
                 }}
-                onMouseDown={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }}
-                onTouchStart={(event) => {
-                  event.stopPropagation();
-                }}
-                className="relative z-40 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                className="relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
                 aria-label={isVideoPlaying ? copy.pause : copy.play}
               >
                 {isVideoPlaying ? (
@@ -343,29 +336,22 @@ export function FeedMediaCard({
                   node.currentTime = next;
                   setCurrentTime(next);
                 }}
-                onClick={(event) => event.stopPropagation()}
-                onMouseDown={(event) => event.stopPropagation()}
-                onTouchStart={(event) => event.stopPropagation()}
-                className="relative z-40 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+                onPointerDown={(event) => {
+                  event.stopPropagation();
+                }}
+                className="relative z-50 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
               />
 
               <button
                 type="button"
-                onClick={(event) => {
+                onPointerDown={(event) => {
                   event.preventDefault();
                   event.stopPropagation();
                   const next = !muted;
                   setMuted(next);
                   writeGlobalMuted(next);
                 }}
-                onMouseDown={(event) => {
-                  event.preventDefault();
-                  event.stopPropagation();
-                }}
-                onTouchStart={(event) => {
-                  event.stopPropagation();
-                }}
-                className="relative z-40 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm"
+                className="relative z-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
                 aria-label={muted ? copy.unmute : copy.mute}
               >
                 {muted ? (
