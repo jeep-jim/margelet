@@ -5,7 +5,6 @@ import {
   Heart,
   Pause,
   Play,
-  Send,
   Volume2,
   VolumeX,
 } from "lucide-react";
@@ -21,6 +20,69 @@ const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 const SUB_KEY = "margelet_subscriptions";
 const TG_STORAGE_KEY = "margelet_tg_user";
+
+const COPY = {
+  en: {
+    play: "Play",
+    pause: "Pause",
+    mute: "Mute",
+    unmute: "Unmute",
+  },
+  ru: {
+    play: "Воспроизвести",
+    pause: "Пауза",
+    mute: "Выключить звук",
+    unmute: "Включить звук",
+  },
+  de: {
+    play: "Abspielen",
+    pause: "Pause",
+    mute: "Ton aus",
+    unmute: "Ton an",
+  },
+  es: {
+    play: "Reproducir",
+    pause: "Pausa",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
+  },
+  tr: {
+    play: "Oynat",
+    pause: "Duraklat",
+    mute: "Sesi kapat",
+    unmute: "Sesi aç",
+  },
+  fr: {
+    play: "Lire",
+    pause: "Pause",
+    mute: "Couper le son",
+    unmute: "Activer le son",
+  },
+  it: {
+    play: "Riproduci",
+    pause: "Pausa",
+    mute: "Disattiva audio",
+    unmute: "Attiva audio",
+  },
+  "pt-br": {
+    play: "Reproduzir",
+    pause: "Pausar",
+    mute: "Silenciar",
+    unmute: "Ativar som",
+  },
+  id: {
+    play: "Putar",
+    pause: "Jeda",
+    mute: "Matikan suara",
+    unmute: "Nyalakan suara",
+  },
+  pl: {
+    play: "Odtwórz",
+    pause: "Pauza",
+    mute: "Wycisz",
+    unmute: "Włącz dźwięk",
+  },
+} as const;
 
 function readTelegramUserId() {
   try {
@@ -139,20 +201,38 @@ function formatTime(seconds: number) {
 }
 
 export function FeedViewer({
+  locale,
   activePost,
+  viewerDirection: _viewerDirection,
+  expandedCaption: _expandedCaption,
+  setExpandedCaption: _setExpandedCaption,
   isMuted,
   setIsMuted,
   isPlaying,
   setIsPlaying,
+  copySuccessId: _copySuccessId,
+  menuPostId: _menuPostId,
+  setMenuPostId: _setMenuPostId,
+  actionError: _actionError,
+  videoProgress: _videoProgress,
   viewerMediaIndex,
   setViewerMediaIndex,
   likedPostIds,
+  savedPostIds: _savedPostIds,
   onToggleLike,
-  handleShare,
+  onToggleSave: _onToggleSave,
+  onHidePost: _onHidePost,
+  onDeletePost: _onDeletePost,
+  currentTelegramUserId: _currentTelegramUserId,
+  openSource: _openSource,
   closeViewer,
   nextViewer,
   prevViewer,
+  handleShare: _handleShare,
+  setActionError: _setActionError,
 }: ViewerProps) {
+  const copy = COPY[locale] ?? COPY.en;
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const wheelLockRef = useRef(false);
   const touchStartYRef = useRef<number | null>(null);
@@ -234,6 +314,7 @@ export function FeedViewer({
 
   useEffect(() => {
     const node = videoRef.current;
+
     if (!node || activeItem?.kind !== "video") {
       setCurrentTime(0);
       setDuration(0);
@@ -249,10 +330,18 @@ export function FeedViewer({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
-    const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
+    const onPlay = () => {
+      setIsPlaying(true);
+      syncTime();
+    };
+
+    const onPause = () => {
+      setIsPlaying(false);
+      syncTime();
+    };
 
     node.addEventListener("loadedmetadata", syncMeta);
+    node.addEventListener("durationchange", syncMeta);
     node.addEventListener("timeupdate", syncTime);
     node.addEventListener("play", onPlay);
     node.addEventListener("pause", onPause);
@@ -264,6 +353,7 @@ export function FeedViewer({
 
     return () => {
       node.removeEventListener("loadedmetadata", syncMeta);
+      node.removeEventListener("durationchange", syncMeta);
       node.removeEventListener("timeupdate", syncTime);
       node.removeEventListener("play", onPlay);
       node.removeEventListener("pause", onPause);
@@ -497,15 +587,6 @@ export function FeedViewer({
             <button type="button" onClick={handleLikeClick}>
               <Heart className={`h-7 w-7 ${localLiked ? "fill-current" : ""}`} />
             </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                void handleShare(activePost);
-              }}
-            >
-              <Send className="h-7 w-7" />
-            </button>
           </div>
 
           <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pb-4 pt-10 text-white">
@@ -574,7 +655,7 @@ export function FeedViewer({
                     togglePlay();
                   }}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
-                  aria-label={isPlaying ? "Pause" : "Play"}
+                  aria-label={isPlaying ? copy.pause : copy.play}
                 >
                   {isPlaying ? (
                     <Pause className="h-5 w-5" />
@@ -590,20 +671,21 @@ export function FeedViewer({
                 <input
                   type="range"
                   min={0}
-                  max={duration || 0}
+                  max={Math.max(duration, 0)}
                   step={0.1}
                   value={Math.min(currentTime, duration || 0)}
                   onChange={(event) => {
                     event.stopPropagation();
                     const node = videoRef.current;
                     if (!node) return;
+
                     const next = Number(event.target.value);
                     node.currentTime = next;
                     setCurrentTime(next);
                   }}
-                  onClick={(event) => event.stopPropagation()}
                   onMouseDown={(event) => event.stopPropagation()}
                   onTouchStart={(event) => event.stopPropagation()}
+                  onClick={(event) => event.stopPropagation()}
                   className="h-[3px] w-full accent-white"
                 />
 
@@ -614,7 +696,7 @@ export function FeedViewer({
                     setIsMuted((prev) => !prev);
                   }}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
-                  aria-label={isMuted ? "Unmute" : "Mute"}
+                  aria-label={isMuted ? copy.unmute : copy.mute}
                 >
                   {isMuted ? (
                     <VolumeX className="h-5 w-5" />
