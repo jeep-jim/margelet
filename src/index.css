@@ -1,6 +1,28 @@
 @import "tailwindcss";
 
-:root {
+/* =====================================================
+   THEME TOKENS
+   Light + Telegram App Dark Palette
+===================================================== */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-app: #f5f7fb;
+  --bg-surface: #ffffff;
+  --bg-surface-soft: #f8fafc;
+
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+
+  --border-soft: #e2e8f0;
+
+  --accent: #2563eb;
+  --accent-foreground: #ffffff;
+
+  --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+
   font-family:
     Inter,
     ui-sans-serif,
@@ -9,43 +31,25 @@
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-
-  --bg-app: #f5f5f5;
-  --bg-surface: #ffffff;
-  --bg-surface-soft: #fafafa;
-  --bg-surface-hover: #f2f2f2;
-  --text-primary: #0a0a0f;
-  --text-secondary: #5f5f6b;
-  --border-soft: #e5e5e5;
-  --bg-strong: #0a0a0f;
-  --bg-strong-hover: #17171f;
-  --text-strong-foreground: #ffffff;
-  --bg-success-soft: #ecfdf3;
-  --text-success: #047857;
-  --input-focus: #0a0a0f;
-  --header-bg: rgba(250, 250, 250, 0.95);
-  --shadow-soft: 0 8px 30px rgba(10, 10, 15, 0.06);
-  color-scheme: light;
-  background: var(--bg-app);
 }
 
-:root[data-theme="dark"] {
-  --bg-app: #0a0a0f;
-  --bg-surface: #12121a;
-  --bg-surface-soft: #171722;
-  --bg-surface-hover: #1f1f2b;
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.68);
-  --border-soft: rgba(255, 255, 255, 0.1);
-  --bg-strong: #ffffff;
-  --bg-strong-hover: rgba(255, 255, 255, 0.88);
-  --text-strong-foreground: #0a0a0f;
-  --bg-success-soft: rgba(16, 185, 129, 0.16);
-  --text-success: #86efac;
-  --input-focus: rgba(255, 255, 255, 0.28);
-  --header-bg: rgba(10, 10, 15, 0.86);
-  --shadow-soft: 0 18px 48px rgba(0, 0, 0, 0.32);
+[data-theme="dark"] {
   color-scheme: dark;
+
+  /* Telegram Android-like palette */
+  --bg-app: #17212b;
+  --bg-surface: #1f2c3a;
+  --bg-surface-soft: #223244;
+
+  --text-primary: #ffffff;
+  --text-secondary: #9fb0c0;
+
+  --border-soft: #2b3f53;
+
+  --accent: #5aa0ff;
+  --accent-foreground: #ffffff;
+
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.28);
 }
 
 html,
@@ -53,12 +57,23 @@ body,
 #root {
   margin: 0;
   min-height: 100%;
-  background: var(--bg-app);
 }
 
 body {
   min-height: 100vh;
+  background: var(--bg-app);
   color: var(--text-primary);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 * {
@@ -66,18 +81,8 @@ body {
 }
 
 button,
-input,
-textarea,
-select {
+input {
   font: inherit;
-}
-
-button,
-input,
-textarea,
-select,
-a {
-  -webkit-tap-highlight-color: transparent;
 }
 
 a {
@@ -86,19 +91,15 @@ a {
 }
 
 .bg-app {
-  background-color: var(--bg-app);
+  background: var(--bg-app);
 }
 
 .bg-surface {
-  background-color: var(--bg-surface);
+  background: var(--bg-surface);
 }
 
 .bg-surface-soft {
-  background-color: var(--bg-surface-soft);
-}
-
-.bg-surface-hover:hover {
-  background-color: var(--bg-surface-hover);
+  background: var(--bg-surface-soft);
 }
 
 .text-primary {
@@ -113,54 +114,19 @@ a {
   border-color: var(--border-soft);
 }
 
-.bg-strong {
-  background-color: var(--bg-strong);
+.bg-accent {
+  background: var(--accent);
 }
 
-.bg-strong-hover:hover {
-  background-color: var(--bg-strong-hover);
-}
-
-.text-strong-foreground {
-  color: var(--text-strong-foreground);
-}
-
-.bg-success-soft {
-  background-color: var(--bg-success-soft);
-}
-
-.text-success {
-  color: var(--text-success);
-}
-
-.header-surface {
-  background-color: var(--header-bg);
+.text-accent-foreground {
+  color: var(--accent-foreground);
 }
 
 .shadow-soft {
   box-shadow: var(--shadow-soft);
 }
 
-.focus-border-strong:focus {
-  border-color: var(--input-focus);
-}
-
-.theme-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-soft) transparent;
-}
-
-.theme-scrollbar::-webkit-scrollbar {
-  width: 10px;
-}
-
-.theme-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.theme-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--border-soft);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
+::selection {
+  background: var(--accent);
+  color: #fff;
 }
