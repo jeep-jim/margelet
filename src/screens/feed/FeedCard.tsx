@@ -209,18 +209,7 @@ export function FeedCard(props: FeedCardProps) {
 
       {showVisualMedia ? (
         <>
-          <div
-            className="relative mt-3 cursor-pointer"
-            onClick={openPostSafely}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault();
-                openPostSafely();
-              }
-            }}
-          >
+          <div className="relative mt-3">            
             <div className="absolute left-3 top-3 z-20">
               <div className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
                 {tagLabel}
