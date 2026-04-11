@@ -498,14 +498,6 @@ export function FeedViewer({
     });
   };
 
-  const handleScrub = (value: number) => {
-    const node = videoRef.current;
-    if (!node) return;
-
-    node.currentTime = value;
-    setCurrentTime(value);
-  };
-
   return (
     <AnimatePresence>
       <motion.div
@@ -669,11 +661,12 @@ export function FeedViewer({
               <div className="mt-3 flex items-center gap-3">
                 <button
                   type="button"
-                  onClick={(event) => {
+                  onPointerDown={(event) => {
+                    event.preventDefault();
                     event.stopPropagation();
                     togglePlay();
                   }}
-                  className="pointer-events-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                  className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
                   aria-label={isPlaying ? copy.pause : copy.play}
                 >
                   {isPlaying ? (
@@ -683,42 +676,41 @@ export function FeedViewer({
                   )}
                 </button>
 
-                <div className="min-w-0 flex-1">
-                  <input
-                    type="range"
-                    min={0}
-                    max={Math.max(duration, 0)}
-                    step={0.1}
-                    value={Math.min(currentTime, duration || 0)}
-                    onInput={(event) => {
-                      event.stopPropagation();
-                      handleScrub(Number((event.target as HTMLInputElement).value));
-                    }}
-                    onChange={(event) => {
-                      event.stopPropagation();
-                      handleScrub(Number(event.target.value));
-                    }}
-                    onPointerDown={(event) => event.stopPropagation()}
-                    onPointerUp={(event) => event.stopPropagation()}
-                    onMouseDown={(event) => event.stopPropagation()}
-                    onTouchStart={(event) => event.stopPropagation()}
-                    onClick={(event) => event.stopPropagation()}
-                    className="pointer-events-auto h-[3px] w-full accent-white"
-                  />
-
-                  <div className="mt-1 flex items-center justify-between text-[11px] font-medium text-white/90">
-                    <span>{formatTime(currentTime)}</span>
-                    <span>{formatTime(duration)}</span>
-                  </div>
+                <div className="min-w-[72px] text-[12px] font-medium text-white">
+                  {formatTime(currentTime)} / {formatTime(duration)}
                 </div>
+
+                <input
+                  type="range"
+                  min={0}
+                  max={duration || 0}
+                  step={0.1}
+                  value={Math.min(currentTime, duration || 0)}
+                  onChange={(event) => {
+                    event.stopPropagation();
+                    const node = videoRef.current;
+                    if (!node) return;
+
+                    const next = Number(event.target.value);
+                    node.currentTime = next;
+                    setCurrentTime(next);
+                  }}
+                  onPointerDown={(event) => {
+                    event.stopPropagation();
+                  }}
+                  className="pointer-events-auto relative z-50 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+                />
 
                 <button
                   type="button"
-                  onClick={(event) => {
+                  onPointerDown={(event) => {
+                    event.preventDefault();
                     event.stopPropagation();
-                    setIsMuted((prev) => !prev);
+                    const next = !isMuted;
+                    setIsMuted(next);
+                    writeGlobalMuted(next);
                   }}
-                  className="pointer-events-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                  className="pointer-events-auto relative z-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
                   aria-label={isMuted ? copy.unmute : copy.mute}
                 >
                   {isMuted ? (
@@ -728,7 +720,7 @@ export function FeedViewer({
                   )}
                 </button>
               </div>
-            ) : null}
+            ) : null}            
           </div>
         </div>
       </motion.div>
