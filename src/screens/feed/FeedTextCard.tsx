@@ -243,9 +243,9 @@ function AudioPreview({
       : copy.fileSingle;
 
   return (
-    <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+    <div className="mb-4 rounded-3xl border border-soft bg-surface-soft p-4">
       <div className="flex items-start gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-strong text-strong-foreground">
           {hasPlayableAudio ? (
             <Music4 className="h-5 w-5" />
           ) : (
@@ -254,21 +254,21 @@ function AudioPreview({
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="truncate text-sm font-semibold text-neutral-950">
+          <div className="truncate text-sm font-semibold text-primary">
             {title}
           </div>
 
-          <div className="mt-1 text-sm text-neutral-500">{subtitle}</div>
+          <div className="mt-1 text-sm text-secondary">{subtitle}</div>
 
-          <div className="mt-3 flex items-center gap-2 text-neutral-700">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-neutral-200">
-              <Play className="ml-0.5 h-4 w-4" />
+          <div className="mt-3 flex items-center gap-2 text-secondary">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-surface shadow-sm ring-1 ring-[color:var(--border-soft)]">
+              <Play className="ml-0.5 h-4 w-4 text-primary" />
             </div>
 
-            <div className="h-2 flex-1 rounded-full bg-neutral-200">
+            <div className="h-2 flex-1 rounded-full bg-[color:var(--border-soft)]">
               <div
                 className={`h-2 rounded-full ${
-                  hasPlayableAudio ? "w-1/3 bg-neutral-900" : "w-1/4 bg-neutral-400"
+                  hasPlayableAudio ? "w-1/3 bg-strong" : "w-1/4 bg-surface-hover"
                 }`}
               />
             </div>
@@ -313,12 +313,12 @@ export function FeedTextCard({
     <div className="px-4 pb-4 pt-3">
       <div className="mb-3 flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
-          <div className="rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
+          <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-secondary">
             {getTagLabel(getResolvedTag(post), locale)}
           </div>
 
           {mediaBadge ? (
-            <div className="inline-flex min-w-0 items-center gap-1.5 rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-medium text-neutral-600">
+            <div className="inline-flex min-w-0 items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-secondary">
               {mediaBadge.icon}
               <span className="truncate">{mediaBadge.label}</span>
             </div>
@@ -340,7 +340,7 @@ export function FeedTextCard({
       >
         <AudioPreview post={post} locale={locale} />
 
-        <div className="text-[15px] leading-6 text-neutral-900">
+        <div className="text-[15px] leading-6 text-primary">
           {displayText ? (
             <div className="line-clamp-5 whitespace-pre-wrap break-words">
               {linkifyText(displayText)}
@@ -350,7 +350,7 @@ export function FeedTextCard({
       </div>
 
       <div className="mt-4 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-8 text-neutral-700">
+        <div className="flex items-center gap-8 text-secondary">
           <button
             type="button"
             onClick={(event) => {
@@ -360,7 +360,7 @@ export function FeedTextCard({
           >
             <Heart
               className={`h-5 w-5 ${
-                liked ? "fill-neutral-950 text-neutral-950" : "text-neutral-700"
+                liked ? "fill-current text-primary" : "text-secondary"
               }`}
             />
           </button>
@@ -372,7 +372,7 @@ export function FeedTextCard({
             event.stopPropagation();
             onOpen();
           }}
-          className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
+          className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary"
         >
           <span>{copy.read}</span>
           <ExternalLink className="h-4 w-4" />

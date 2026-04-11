@@ -95,7 +95,7 @@ export function ExpandableFeedText({
       collapsedLines={2}
       expandedLines={5}
       fallbackLimit={120}
-      textClassName="text-[15px] leading-6 text-neutral-900"
+      textClassName="text-[15px] leading-6 text-primary"
     >
       {children}
     </ExpandableTextBase>
@@ -109,7 +109,7 @@ export function ExpandableTextPostText({ text }: { text: string }) {
       collapsedLines={5}
       expandedLines={10}
       fallbackLimit={260}
-      textClassName="text-[15px] leading-7 text-neutral-900"
+      textClassName="text-[15px] leading-7 text-primary"
     />
   );
 }
