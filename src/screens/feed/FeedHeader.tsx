@@ -1,4 +1,5 @@
 import { Search } from "lucide-react";
+import { createPortal } from "react-dom";
 import { useEffect, useState } from "react";
 import type { ContentTag, Locale } from "../../types/app";
 import { TAG_OPTIONS } from "./feed.constants";
@@ -147,7 +148,11 @@ export function FeedHeader({
     setTagsOpen(false);
   };
 
-  return (
+  if (typeof document === "undefined") {
+    return null;
+  }
+
+  return createPortal(
     <div className="fixed inset-x-0 top-16 bottom-0 z-[80] isolate">
       <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-white md:border-x md:border-neutral-200">
         <div className="flex h-full flex-col">
@@ -230,6 +235,7 @@ export function FeedHeader({
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }

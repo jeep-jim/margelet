@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -543,7 +544,11 @@ export function FeedViewer({
     });
   };
 
-  return (
+  if (typeof document === "undefined") {
+    return null;
+  }
+
+  return createPortal(
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 1 }}
@@ -645,7 +650,7 @@ export function FeedViewer({
                     if (activePost) {
                       _openSource(activePost.source.handle);
                       closeViewer();
-                    }                    
+                    }
                   }}
                   className="flex min-w-0 items-center gap-3 text-left"
                 >
@@ -678,7 +683,7 @@ export function FeedViewer({
                 >
                   <Heart className={`h-6 w-6 ${localLiked ? "fill-current" : ""}`} />
                 </button>
-              </div>              
+              </div>
 
               {activePost.text ? (
                 <div className="mt-3">
@@ -779,10 +784,11 @@ export function FeedViewer({
                   )}
                 </button>
               </div>
-            ) : null}            
+            ) : null}
           </div>
         </div>
       </motion.div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
