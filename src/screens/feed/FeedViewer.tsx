@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -544,11 +543,7 @@ export function FeedViewer({
     });
   };
 
-  if (typeof document === "undefined") {
-    return null;
-  }
-
-  return createPortal(
+  return (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 1 }}
@@ -643,27 +638,16 @@ export function FeedViewer({
           >
             <div className="w-full md:max-w-[380px]">
               <div className="flex items-end justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (activePost) {
-                      _openSource(activePost.source.handle);
-                      closeViewer();
-                    }
-                  }}
-                  className="flex min-w-0 items-center gap-3 text-left"
-                >
+                <div className="flex min-w-0 items-center gap-3">
                   <FeedSourceAvatar post={activePost} />
-
+                  
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <div className="truncate text-[18px] font-semibold">
                         {activePost.source.title}
                       </div>
-
                       {activePost.source.verified ? (
-                        <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
+                        <VerifiedBadge className="text-[#2AABEE]" />
                       ) : null}
                     </div>
 
@@ -671,14 +655,11 @@ export function FeedViewer({
                       @{activePost.source.handle}
                     </div>
                   </div>
-                </button>
+                </div>
 
                 <button
                   type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleLikeClick();
-                  }}
+                  onClick={handleLikeClick}
                   className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
                 >
                   <Heart className={`h-6 w-6 ${localLiked ? "fill-current" : ""}`} />
@@ -784,11 +765,10 @@ export function FeedViewer({
                   )}
                 </button>
               </div>
-            ) : null}
+            ) : null}            
           </div>
         </div>
       </motion.div>
-    </AnimatePresence>,
-    document.body
+    </AnimatePresence>
   );
 }

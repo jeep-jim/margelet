@@ -1,5 +1,4 @@
-import { Search, X } from "lucide-react";
-import { createPortal } from "react-dom";
+import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { ContentTag, Locale } from "../../types/app";
 import { TAG_OPTIONS } from "./feed.constants";
@@ -26,7 +25,6 @@ export function FeedHeader({
   locale,
   selectedTags,
   toggleTag,
-  clearTags,
   searchQuery,
   setSearchQuery,
   tagsOpen,
@@ -52,8 +50,6 @@ export function FeedHeader({
       show: "Show",
       allTopics: "All topics",
       found: "found",
-      clearSearch: "Clear search",
-      clearTopics: "Clear topics",
     },
     ru: {
       title: "Темы и поиск",
@@ -63,8 +59,6 @@ export function FeedHeader({
       show: "Показать",
       allTopics: "Все темы",
       found: "найдено",
-      clearSearch: "Очистить поиск",
-      clearTopics: "Очистить темы",
     },
     de: {
       title: "Themen & Suche",
@@ -74,8 +68,6 @@ export function FeedHeader({
       show: "Anzeigen",
       allTopics: "Alle Themen",
       found: "gefunden",
-      clearSearch: "Suche löschen",
-      clearTopics: "Themen löschen",
     },
     es: {
       title: "Temas y búsqueda",
@@ -85,8 +77,6 @@ export function FeedHeader({
       show: "Mostrar",
       allTopics: "Todos los temas",
       found: "encontrados",
-      clearSearch: "Borrar búsqueda",
-      clearTopics: "Borrar temas",
     },
     tr: {
       title: "Konular ve arama",
@@ -96,8 +86,6 @@ export function FeedHeader({
       show: "Göster",
       allTopics: "Tüm konular",
       found: "bulundu",
-      clearSearch: "Aramayı temizle",
-      clearTopics: "Konuları temizle",
     },
     fr: {
       title: "Thèmes et recherche",
@@ -107,8 +95,6 @@ export function FeedHeader({
       show: "Afficher",
       allTopics: "Tous les thèmes",
       found: "trouvés",
-      clearSearch: "Effacer la recherche",
-      clearTopics: "Effacer les thèmes",
     },
     it: {
       title: "Temi e ricerca",
@@ -118,8 +104,6 @@ export function FeedHeader({
       show: "Mostra",
       allTopics: "Tutti i temi",
       found: "trovati",
-      clearSearch: "Cancella ricerca",
-      clearTopics: "Cancella temi",
     },
     "pt-br": {
       title: "Tópicos e busca",
@@ -129,8 +113,6 @@ export function FeedHeader({
       show: "Mostrar",
       allTopics: "Todos os tópicos",
       found: "encontrados",
-      clearSearch: "Limpar busca",
-      clearTopics: "Limpar tópicos",
     },
     id: {
       title: "Topik & pencarian",
@@ -140,8 +122,6 @@ export function FeedHeader({
       show: "Tampilkan",
       allTopics: "Semua topik",
       found: "ditemukan",
-      clearSearch: "Bersihkan pencarian",
-      clearTopics: "Bersihkan topik",
     },
     pl: {
       title: "Tematy i wyszukiwanie",
@@ -151,8 +131,6 @@ export function FeedHeader({
       show: "Pokaż",
       allTopics: "Wszystkie tematy",
       found: "znaleziono",
-      clearSearch: "Wyczyść wyszukiwanie",
-      clearTopics: "Wyczyść tematy",
     },
   } as const;
 
@@ -169,47 +147,19 @@ export function FeedHeader({
     setTagsOpen(false);
   };
 
-  const handleClearTopics = () => {
-    clearTags();
-  };
-
-  const handleClearSearch = () => {
-    setDraftQuery("");
-  };
-
-  if (typeof document === "undefined") {
-    return null;
-  }
-
-  return createPortal(
-    <div className="theme-shell fixed inset-x-0 top-16 bottom-0 z-[80] isolate">
+  return (
+    <div className="fixed inset-x-0 top-16 bottom-0 z-[80] isolate">
       <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-white md:border-x md:border-neutral-200">
         <div className="flex h-full flex-col">
           <div className="shrink-0 border-b border-neutral-200 bg-white px-4 pb-4 pt-4">
-            <div className="flex items-start justify-between gap-3">
-              <div className="min-w-0">
-                <div className="text-base font-semibold leading-none text-neutral-950">
-                  {copy.title}
-                </div>
+            <div className="text-base font-semibold leading-none text-neutral-950">
+              {copy.title}
+            </div>
 
-                <div className="mt-2 truncate text-sm leading-6 text-neutral-500">
-                  {selectedCount > 0
-                    ? `${copy.selectedTopics}: ${selectedCount}`
-                    : copy.subtitle}
-                </div>
-              </div>
-
-              {selectedCount > 0 ? (
-                <button
-                  type="button"
-                  onClick={handleClearTopics}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-700 transition hover:bg-neutral-100"
-                  aria-label={copy.clearTopics}
-                  title={copy.clearTopics}
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              ) : null}
+            <div className="mt-2 truncate text-sm leading-6 text-neutral-500">
+              {selectedCount > 0
+                ? `${copy.selectedTopics}: ${selectedCount}`
+                : copy.subtitle}
             </div>
 
             <form
@@ -220,7 +170,6 @@ export function FeedHeader({
               }}
             >
               <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
-
               <input
                 value={draftQuery}
                 onChange={(event) => setDraftQuery(event.target.value)}
@@ -232,20 +181,8 @@ export function FeedHeader({
                 }}
                 enterKeyHint="search"
                 placeholder={copy.searchPlaceholder}
-                className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 py-3 pl-11 pr-12 text-sm text-neutral-950 outline-none placeholder:text-neutral-400 focus:border-neutral-300"
+                className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 py-3 pl-11 pr-4 text-sm text-neutral-950 outline-none placeholder:text-neutral-400 focus:border-neutral-300"
               />
-
-              {draftQuery.trim().length > 0 ? (
-                <button
-                  type="button"
-                  onClick={handleClearSearch}
-                  className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-neutral-100 text-neutral-700 transition hover:bg-neutral-200"
-                  aria-label={copy.clearSearch}
-                  title={copy.clearSearch}
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              ) : null}
             </form>
           </div>
 
@@ -293,7 +230,6 @@ export function FeedHeader({
           </div>
         </div>
       </div>
-    </div>,
-    document.body
+    </div>
   );
 }

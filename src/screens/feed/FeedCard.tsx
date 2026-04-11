@@ -5,7 +5,6 @@ import { FeedMoreMenu } from "./FeedMoreMenu";
 import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
 import { FeedTextCard } from "./FeedTextCard";
-import { ExpandableFeedText } from "./ExpandableText";
 import {
   getDisplayText,
   getResolvedTag,
@@ -72,16 +71,16 @@ export function FeedCard(props: FeedCardProps) {
   } = props;
 
   const COPY = {
-    en: { read: "Read", more: "More", open: "Open" },
-    ru: { read: "Читать", more: "Ещё", open: "Открыть" },
-    de: { read: "Lesen", more: "Mehr", open: "Öffnen" },
-    es: { read: "Leer", more: "Más", open: "Abrir" },
-    tr: { read: "Oku", more: "Daha fazla", open: "Aç" },
-    fr: { read: "Lire", more: "Plus", open: "Ouvrir" },
-    it: { read: "Leggi", more: "Altro", open: "Apri" },
-    "pt-br": { read: "Ler", more: "Mais", open: "Abrir" },
-    id: { read: "Baca", more: "Lainnya", open: "Buka" },
-    pl: { read: "Czytaj", more: "Więcej", open: "Otwórz" },
+    en: { read: "Read", open: "Open" },
+    ru: { read: "Читать", open: "Открыть" },
+    de: { read: "Lesen", open: "Öffnen" },
+    es: { read: "Leer", open: "Abrir" },
+    tr: { read: "Oku", open: "Aç" },
+    fr: { read: "Lire", open: "Ouvrir" },
+    it: { read: "Leggi", open: "Apri" },
+    "pt-br": { read: "Ler", open: "Abrir" },
+    id: { read: "Baca", open: "Buka" },
+    pl: { read: "Czytaj", open: "Otwórz" },
   } as const;
 
   const copy = COPY[locale] ?? COPY.en;
@@ -182,7 +181,7 @@ export function FeedCard(props: FeedCardProps) {
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
       </div>
 
-      <div className="absolute right-1 top-4 z-20">
+            <div className="absolute right-1 top-4 z-20">
         <div className="relative">
           <button
             className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-700"
@@ -209,7 +208,18 @@ export function FeedCard(props: FeedCardProps) {
 
       {showVisualMedia ? (
         <>
-          <div className="relative mt-3">            
+          <div
+            className="relative mt-3 cursor-pointer"
+            onClick={openPostSafely}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openPostSafely();
+              }
+            }}
+          >
             <div className="absolute left-3 top-3 z-20">
               <div className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
                 {tagLabel}
@@ -223,92 +233,56 @@ export function FeedCard(props: FeedCardProps) {
             />
           </div>
 
-          {displayText ? (
-            <div className="px-4 py-3">
-              <ExpandableFeedText text={displayText}>
-                {({ expanded, expand }) => (
-                  <div className="mt-4 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-8 text-neutral-700">
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleLikeClick();
-                        }}
-                      >
-                        <Heart
-                          className={`h-5 w-5 ${
-                            localLiked
-                              ? "fill-neutral-950 text-neutral-950"
-                              : "text-neutral-700"
-                          }`}
-                        />
-                      </button>
-                    </div>
+          <div className="px-4 py-3">
+            {displayText ? (
+              <div
+                className="mb-4 cursor-pointer whitespace-pre-wrap break-words text-[15px] leading-6 text-neutral-900"
+                onClick={openPostSafely}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openPostSafely();
+                  }
+                }}
+              >
+                <div className="line-clamp-3">{displayText}</div>
+              </div>
+            ) : null}
 
-                    {expanded ? (
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          openPostSafely();
-                        }}
-                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
-                      >
-                        <span>{copy.read}</span>
-                        <ExternalLink className="h-4 w-4" />
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          expand();
-                        }}
-                        className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
-                      >
-                        <span>{copy.more}</span>
-                      </button>
-                    )}
-                  </div>
-                )}
-              </ExpandableFeedText>
-            </div>
-          ) : (
-            <div className="px-4 py-3">
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-8 text-neutral-700">
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleLikeClick();
-                    }}
-                  >
-                    <Heart
-                      className={`h-5 w-5 ${
-                        localLiked
-                          ? "fill-neutral-950 text-neutral-950"
-                          : "text-neutral-700"
-                      }`}
-                    />
-                  </button>
-                </div>
-
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-8 text-neutral-700">
                 <button
                   type="button"
                   onClick={(event) => {
                     event.stopPropagation();
-                    openPostSafely();
+                    handleLikeClick();
                   }}
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
                 >
-                  <span>{copy.open}</span>
-                  <ExternalLink className="h-4 w-4" />
+                  <Heart
+                    className={`h-5 w-5 ${
+                      localLiked
+                        ? "fill-neutral-950 text-neutral-950"
+                        : "text-neutral-700"
+                    }`}
+                  />
                 </button>
               </div>
+
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  openPostSafely();
+                }}
+                className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800"
+              >
+                <span>{displayText ? copy.read : copy.open}</span>
+                <ExternalLink className="h-4 w-4" />
+              </button>
             </div>
-          )}
+          </div>
         </>
       ) : hasAudioOrFiles ? (
         <FeedTextCard

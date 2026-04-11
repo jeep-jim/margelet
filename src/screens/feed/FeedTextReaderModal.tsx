@@ -1,5 +1,5 @@
+
 import { AnimatePresence, motion } from "framer-motion";
-import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
 import {
   ArrowLeft,
@@ -386,39 +386,42 @@ function AudioList({
   items: Array<{
     id: string;
     url: string;
-    fileName?: string;
+    fileName?: string | null;
   }>;
   locale: Locale;
 }) {
+  if (items.length === 0) return null;
   const copy = COPY[locale] ?? COPY.en;
-
-  if (!items.length) return null;
 
   return (
     <div className="mb-4 space-y-3">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
-          key={item.id}
-          className="overflow-hidden rounded-[24px] border border-neutral-200 bg-neutral-50 p-4"
+          key={item.id || `${item.url}-${index}`}
+          className="rounded-3xl border border-neutral-200 bg-neutral-50 p-4"
         >
-          <div className="mb-3 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-950 text-white">
+          <div className="mb-3 flex items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
               <Music4 className="h-5 w-5" />
             </div>
 
-            <div className="min-w-0">
-              <div className="truncate text-sm font-semibold text-neutral-950">
-                {item.fileName || copy.audioFallback}
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-semibold text-neutral-950">
+                {item.fileName?.trim() || `${copy.audioFallback} ${index + 1}`}
               </div>
-              <div className="text-xs text-neutral-500">
+
+              <div className="mt-1 text-sm text-neutral-500">
                 {copy.audioFromTelegram}
               </div>
             </div>
           </div>
 
-          <audio controls className="w-full" preload="metadata">
-            <source src={item.url} />
-          </audio>
+          <audio
+            src={item.url}
+            controls
+            preload="metadata"
+            className="w-full"
+          />
         </div>
       ))}
     </div>
@@ -432,45 +435,48 @@ function FileList({
   items: Array<{
     id: string;
     url: string;
-    fileName?: string;
+    fileName?: string | null;
   }>;
   locale: Locale;
 }) {
+  if (items.length === 0) return null;
   const copy = COPY[locale] ?? COPY.en;
-
-  if (!items.length) return null;
 
   return (
     <div className="mb-4 space-y-3">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
-          key={item.id}
-          className="overflow-hidden rounded-[24px] border border-neutral-200 bg-neutral-50 p-4"
+          key={item.id || `${item.url}-${index}`}
+          className="rounded-3xl border border-neutral-200 bg-neutral-50 p-4"
         >
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex min-w-0 items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-950 text-white">
-                <FileText className="h-5 w-5" />
-              </div>
-
-              <div className="min-w-0">
-                <div className="truncate text-sm font-semibold text-neutral-950">
-                  {item.fileName || copy.fileFallback}
-                </div>
-                <div className="text-xs text-neutral-500">
-                  {copy.fileFromTelegram}
-                </div>
-              </div>
+          <div className="flex items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+              <FileText className="h-5 w-5" />
             </div>
 
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noreferrer"
-              className="shrink-0 rounded-full bg-neutral-950 px-3 py-2 text-xs font-medium text-white"
-            >
-              {copy.openFile}
-            </a>
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-semibold text-neutral-950">
+                {item.fileName?.trim() || `${copy.fileFallback} ${index + 1}`}
+              </div>
+
+              <div className="mt-1 text-sm text-neutral-500">
+                {copy.fileFromTelegram}
+              </div>
+
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium !text-white no-underline"
+                style={{ color: "#ffffff" }}
+              >
+                <span style={{ color: "#ffffff" }}>{copy.openFile}</span>
+                <ExternalLink
+                  className="h-4 w-4"
+                  style={{ color: "#ffffff" }}
+                />
+              </a>
+            </div>
           </div>
         </div>
       ))}
@@ -479,39 +485,43 @@ function FileList({
 }
 
 function MusicFallback({
+  post,
   locale,
   onOpenOriginal,
 }: {
+  post: IngestedPost;
   locale: Locale;
   onOpenOriginal: () => void;
-}) {  
+}) {
+  if (!hasMusicLikeTag(post)) return null;
   const copy = COPY[locale] ?? COPY.en;
 
   return (
-    <div className="mb-4 overflow-hidden rounded-[24px] border border-neutral-200 bg-neutral-50 p-4">
-      <div className="mb-3 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-950 text-white">
+    <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+      <div className="flex items-start gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
           <Music4 className="h-5 w-5" />
         </div>
 
-        <div className="min-w-0">
-          <div className="truncate text-sm font-semibold text-neutral-950">
+        <div className="min-w-0 flex-1">
+          <div className="text-sm font-semibold text-neutral-950">
             {copy.musicAvailable}
           </div>
-          <div className="text-xs text-neutral-500">
+
+          <div className="mt-1 text-sm text-neutral-500">
             {copy.musicAvailableText}
           </div>
+
+          <button
+            type="button"
+            onClick={onOpenOriginal}
+            className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
+          >
+            <span>{copy.openInTelegram}</span>
+            <ExternalLink className="h-4 w-4" />
+          </button>
         </div>
       </div>
-
-      <button
-        type="button"
-        onClick={onOpenOriginal}
-        className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-medium text-white"
-      >
-        <span>{copy.openInTelegram}</span>
-        <ExternalLink className="h-4 w-4" />
-      </button>
     </div>
   );
 }
@@ -520,7 +530,6 @@ export function FeedTextReaderModal({
   post,
   locale,
   liked,
-  saved: _saved,
   onClose,
   onToggleLike,
   onToggleSave: _onToggleSave,
@@ -542,21 +551,20 @@ export function FeedTextReaderModal({
   const [muted, setMuted] = useState(readGlobalMuted());
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
-
+  const [duration, setDuration] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const visualMedia = useMemo(
-    () => media.filter((item) => item.kind === "image" || item.kind === "video"),
-    [media]
+  const visualMedia = media.filter(
+    (item) => item.kind === "image" || item.kind === "video"
   );
-  const audioMedia = useMemo(() => (post ? getAudioMedia(post) : []), [post]);
-  const fileMedia = useMemo(() => (post ? getFileMedia(post) : []), [post]);
 
   const activeVisualItem =
-    visualMedia[Math.min(mediaIndex, Math.max(visualMedia.length - 1, 0))] || null;
+    visualMedia[Math.min(mediaIndex, Math.max(visualMedia.length - 1, 0))] ||
+    null;
   const activeIsVideo = activeVisualItem?.kind === "video";
 
-  const [duration, setDuration] = useState(0);
+  const audioMedia = post ? getAudioMedia(post) : [];
+  const fileMedia = post ? getFileMedia(post) : [];
 
   useEffect(() => {
     setLocalLiked(liked);
@@ -566,13 +574,6 @@ export function FeedTextReaderModal({
     if (!post) return;
 
     setSubscribed(getSubs().includes(post.source.handle));
-    setMediaIndex(0);
-    setMuted(readGlobalMuted());
-    setIsVideoPlaying(true);
-    setCurrentTime(0);
-    setDuration(0);
-
-    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
 
     const telegramUserId = readTelegramUserId();
 
@@ -589,26 +590,44 @@ export function FeedTextReaderModal({
         setSubscribed(data.subscribed);
       }
     });
-  }, [post?.id, post?.source.handle]);
+  }, [post]);
 
   useEffect(() => {
-    const handleMuteChange = (event: Event) => {
-      const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
-      if (typeof detail?.muted === "boolean") {
-        setMuted(detail.muted);
-      }
-    };
+    setMediaIndex(0);
+    setCurrentTime(0);
+    setDuration(0);
+    setIsVideoPlaying(true);
+  }, [post?.id]);
 
-    window.addEventListener(FEED_MUTE_EVENT, handleMuteChange as EventListener);
+  useEffect(() => {
+    if (!post) return;
+
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
 
     return () => {
-      window.removeEventListener(FEED_MUTE_EVENT, handleMuteChange as EventListener);
+      document.body.style.overflow = original;
+    };
+  }, [post]);
+
+  useEffect(() => {
+    const syncMuted = (event: Event) => {
+      const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
+      setMuted(
+        typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted()
+      );
+    };
+
+    window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+
+    return () => {
+      window.removeEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
     };
   }, []);
 
   useEffect(() => {
     const node = videoRef.current;
-
     if (!node || !activeIsVideo) {
       setCurrentTime(0);
       setDuration(0);
@@ -624,15 +643,8 @@ export function FeedTextReaderModal({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
-    const onPlay = () => {
-      setIsVideoPlaying(true);
-      syncTime();
-    };
-
-    const onPause = () => {
-      setIsVideoPlaying(false);
-      syncTime();
-    };
+    const onPlay = () => setIsVideoPlaying(true);
+    const onPause = () => setIsVideoPlaying(false);
 
     node.addEventListener("loadedmetadata", syncMeta);
     node.addEventListener("timeupdate", syncTime);
@@ -750,259 +762,245 @@ export function FeedTextReaderModal({
     window.open(post.postUrl, "_blank", "noopener,noreferrer");
   };
 
-  if (!post) return null;
-  if (typeof document === "undefined") return null;
-
-  return createPortal(
+  return (
     <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md"        
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-      >
+      {post ? (
         <motion.div
-          className="theme-shell absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-white"          
-          initial={{ y: "100%" }}
-          animate={{ y: 0 }}
-          exit={{ y: "100%" }}
-          transition={{ type: "spring", stiffness: 260, damping: 28 }}
-          onClick={(event) => event.stopPropagation()}
+          className="fixed inset-0 z-50 bg-black/45 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
         >
-          <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3">
-            <button
-              onClick={onClose}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
-              type="button"
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </button>
+          <motion.div
+            className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-white"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", stiffness: 260, damping: 28 }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3">
+              <button
+                onClick={onClose}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
+                type="button"
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </button>
 
-            <div className="text-sm font-semibold text-neutral-900">
-              {copy.postFromTelegram}
+              <div className="text-sm font-semibold text-neutral-900">
+                {copy.postFromTelegram}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleSubscribeClick}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
+                aria-label={
+                  subscribed
+                    ? copy.disableNotifications
+                    : copy.enableNotifications
+                }
+                title={
+                  subscribed
+                    ? copy.disableNotifications
+                    : copy.enableNotifications
+                }
+              >
+                <Bell
+                  className={`h-5 w-5 ${
+                    subscribed
+                      ? "fill-neutral-900 text-neutral-900"
+                      : "text-neutral-900"
+                  }`}
+                />
+              </button>
             </div>
 
-            <button
-              type="button"
-              onClick={handleSubscribeClick}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
-              aria-label={
-                subscribed
-                  ? copy.disableNotifications
-                  : copy.enableNotifications
-              }
-              title={
-                subscribed
-                  ? copy.disableNotifications
-                  : copy.enableNotifications
-              }
-            >
-              <Bell
-                className={`h-5 w-5 ${
-                  subscribed
-                    ? "fill-neutral-900 text-neutral-900"
-                    : "text-neutral-900"
-                }`}
-              />
-            </button>
-          </div>
+            <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
+              <button
+                type="button"
+                onClick={() => window.location.assign(`/${post.source.handle}`)}
+                className="mb-4 flex w-full min-w-0 items-start gap-3 text-left"
+              >
+                <div className="shrink-0">
+                  <FeedSourceAvatar post={post} />
+                </div>
 
-          <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
-            <button
-              type="button"
-              onClick={() => window.location.assign(`/${post.source.handle}`)}
-              className="mb-4 flex w-full min-w-0 items-start gap-3 text-left"
-            >
-              <div className="shrink-0">
-                <FeedSourceAvatar post={post} />
-              </div>
+                <div className="min-w-0 flex-1 overflow-hidden">
+                  <div className="min-w-0 overflow-hidden">
+                    <div className="inline-flex max-w-full items-center gap-1 align-top">
+                      <span className="truncate text-[18px] font-semibold text-neutral-950">
+                        {post.source.title}
+                      </span>
 
-              <div className="min-w-0 flex-1 overflow-hidden">
-                <div className="min-w-0 overflow-hidden">
-                  <div className="inline-flex max-w-full items-center gap-1 align-top">
-                    <span className="truncate text-[18px] font-semibold text-neutral-950">
-                      {post.source.title}
-                    </span>
+                      {post.source.verified ? (
+                        <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
+                      ) : null}
+                    </div>
+                  </div>
 
-                    {post.source.verified ? (
-                      <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
-                    ) : null}
+                  <div className="truncate text-sm text-neutral-500">
+                    @{post.source.handle}
                   </div>
                 </div>
+              </button>              
 
-                <div className="truncate text-sm text-neutral-500">
-                  @{post.source.handle}
-                </div>
-              </div>
-            </button>
+              {visualMedia.length > 0 ? (
+                <div className="mb-4 overflow-hidden rounded-[24px]">
+                  <div className="relative">
+                    <FeedCarousel
+                      items={visualMedia}
+                      aspectClass="aspect-[4/5]"
+                      activeIndex={Math.min(
+                        mediaIndex,
+                        Math.max(visualMedia.length - 1, 0)
+                      )}
+                      onChange={setMediaIndex}
+                      controlsTone="dark"
+                      fit="contain"
+                      mode="adaptive"
+                      maxMediaHeightClass="max-h-[60vh]"
+                      backgroundClass="bg-transparent"
+                      mediaActive={activeIsVideo ? isVideoPlaying : true}
+                      muted={muted}
+                      videoRef={videoRef}
+                      enableFullscreen={!activeIsVideo}
+                      nativeVideoControls={false}
+                      blockVideoClickPropagation={false}
+                    />
 
-            {visualMedia.length > 0 ? (
-              <div className="mb-4 overflow-hidden rounded-[24px]">
-                <div className="relative">
-                  <FeedCarousel
-                    items={visualMedia}
-                    aspectClass="aspect-[4/5]"
-                    activeIndex={Math.min(
-                      mediaIndex,
-                      Math.max(visualMedia.length - 1, 0)
-                    )}
-                    onChange={setMediaIndex}
-                    controlsTone="dark"
-                    fit="contain"
-                    mode="adaptive"
-                    maxMediaHeightClass="max-h-[60vh]"
-                    backgroundClass="bg-transparent"
-                    mediaActive={activeIsVideo ? isVideoPlaying : true}
-                    muted={muted}
-                    videoRef={videoRef}
-                    enableFullscreen={!activeIsVideo}
-                    nativeVideoControls={false}
-                    blockVideoClickPropagation={false}
-                  />
-
-                  {activeIsVideo ? (
-                    <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          togglePlay();
-                        }}
-                        className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-opacity duration-150 ${
-                          isVideoPlaying ? "opacity-0" : "opacity-100"
-                        }`}
-                        aria-label={isVideoPlaying ? copy.pause : copy.play}
-                      >
-                        {isVideoPlaying ? (
-                          <Pause className="h-6 w-6" />
-                        ) : (
-                          <Play className="ml-0.5 h-6 w-6" />
-                        )}
-                      </button>
-                    </div>
-                  ) : null}
-
-                  {activeIsVideo ? (
-                    <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
-                      <div className="flex items-center gap-3">
+                    {activeIsVideo ? (
+                      <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
                         <button
                           type="button"
                           onClick={(event) => {
                             event.stopPropagation();
                             togglePlay();
                           }}
-                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                          className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-opacity duration-150 ${
+                            isVideoPlaying ? "opacity-0" : "opacity-100"
+                          }`}
                           aria-label={isVideoPlaying ? copy.pause : copy.play}
                         >
                           {isVideoPlaying ? (
-                            <Pause className="h-4 w-4" />
+                            <Pause className="h-6 w-6" />
                           ) : (
-                            <Play className="ml-0.5 h-4 w-4" />
-                          )}
-                        </button>
-
-                        <div className="min-w-[58px] text-[11px] font-medium text-white">
-                          {formatTime(currentTime)} / {formatTime(duration)}
-                        </div>
-
-                        <input
-                          type="range"
-                          min={0}
-                          max={duration || 0}
-                          step={0.1}
-                          value={Math.min(currentTime, duration || 0)}
-                          onChange={(event) => {
-                            event.stopPropagation();
-                            const node = videoRef.current;
-                            if (!node) return;
-                            const next = Number(event.target.value);
-                            node.currentTime = next;
-                            setCurrentTime(next);
-                          }}
-                          onClick={(event) => event.stopPropagation()}
-                          onMouseDown={(event) => event.stopPropagation()}
-                          onTouchStart={(event) => event.stopPropagation()}
-                          className="h-[3px] w-full accent-white"
-                        />
-
-                        <button
-                          type="button"
-                          onClick={(event) => {
-                            event.stopPropagation();
-                            setMuted((prev) => !prev);
-                          }}
-                          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
-                          aria-label={muted ? copy.unmute : copy.mute}
-                        >
-                          {muted ? (
-                            <VolumeX className="h-4 w-4" />
-                          ) : (
-                            <Volume2 className="h-4 w-4" />
+                            <Play className="ml-0.5 h-6 w-6" />
                           )}
                         </button>
                       </div>
-                    </div>
-                  ) : null}
+                    ) : null}
+
+                    {activeIsVideo ? (
+                      <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+                        <div className="flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              togglePlay();
+                            }}
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                            aria-label={isVideoPlaying ? copy.pause : copy.play}
+                          >
+                            {isVideoPlaying ? (
+                              <Pause className="h-4 w-4" />
+                            ) : (
+                              <Play className="ml-0.5 h-4 w-4" />
+                            )}
+                          </button>
+
+                          <div className="min-w-[58px] text-[11px] font-medium text-white">
+                            {formatTime(currentTime)} / {formatTime(duration)}
+                          </div>
+
+                          <input
+                            type="range"
+                            min={0}
+                            max={duration || 0}
+                            step={0.1}
+                            value={Math.min(currentTime, duration || 0)}
+                            onChange={(event) => {
+                              event.stopPropagation();
+                              const node = videoRef.current;
+                              if (!node) return;
+                              const next = Number(event.target.value);
+                              node.currentTime = next;
+                              setCurrentTime(next);
+                            }}
+                            onClick={(event) => event.stopPropagation()}
+                            onMouseDown={(event) => event.stopPropagation()}
+                            onTouchStart={(event) => event.stopPropagation()}
+                            className="h-[3px] w-full accent-white"
+                          />
+
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setMuted((prev) => !prev);
+                            }}
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                            aria-label={muted ? copy.unmute : copy.mute}
+                          >
+                            {muted ? (
+                              <VolumeX className="h-4 w-4" />
+                            ) : (
+                              <Volume2 className="h-4 w-4" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-            ) : null}
+              ) : null}
 
-            <AudioList
-              items={audioMedia.map((item) => ({
-                ...item,
-                fileName: item.fileName ?? undefined,
-              }))}
-              locale={locale}
-            />
+              <AudioList items={audioMedia} locale={locale} />
+              <FileList items={fileMedia} locale={locale} />
 
-            <FileList
-              items={fileMedia.map((item) => ({
-                ...item,
-                fileName: item.fileName ?? undefined,
-              }))}
-              locale={locale}
-            />            
+              {audioMedia.length === 0 &&
+              fileMedia.length === 0 &&
+              text &&
+              !visualMedia.length &&
+              hasMusicLikeTag(post) ? (
+                <MusicFallback
+                  post={post}
+                  locale={locale}
+                  onOpenOriginal={handleOpenTelegram}
+                />
+              ) : null}
 
-            {audioMedia.length === 0 &&
-            fileMedia.length === 0 &&
-            text &&
-            !visualMedia.length &&
-            hasMusicLikeTag(post) ? (
-              <MusicFallback
-                locale={locale}
-                onOpenOriginal={handleOpenTelegram}
-              />              
-            ) : null}
+              {text ? <RichTextBlock text={text} /> : null}
+            </div>
 
-            {text ? <RichTextBlock text={text} /> : null}
-          </div>
-
-          <div className="sticky bottom-0 border-t border-neutral-200 bg-white px-4 py-3">
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-8 text-neutral-700">
-                <button type="button" onClick={handleLikeClick}>
-                  <Heart
-                    className={`h-5 w-5 ${
-                      localLiked ? "fill-current text-neutral-950" : ""
-                    }`}
-                  />
+            <div className="sticky bottom-0 border-t border-neutral-200 bg-white px-4 py-3">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-8 text-neutral-700">
+                  <button type="button" onClick={handleLikeClick}>
+                    <Heart
+                      className={`h-5 w-5 ${
+                        localLiked ? "fill-current text-neutral-950" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+                
+                <button
+                  type="button"
+                  onClick={handleOpenTelegram}
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-medium text-white"
+                >
+                  <span>{copy.openInTelegram}</span>
+                  <ExternalLink className="h-4 w-4" />
                 </button>
               </div>
-
-              <button
-                type="button"
-                onClick={handleOpenTelegram}
-                className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-medium text-white"
-              >
-                <span>{copy.openInTelegram}</span>
-                <ExternalLink className="h-4 w-4" />
-              </button>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
-      </motion.div>
-    </AnimatePresence>,
-    document.body
+      ) : null}
+    </AnimatePresence>
   );
 }
