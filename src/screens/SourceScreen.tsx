@@ -228,7 +228,7 @@ export function SourceScreen({
   return (
     <div className="min-h-screen bg-app pt-[76px] text-primary">
       <div className="mx-auto max-w-[570px] px-4 pb-10">
-        <section className="mb-6 overflow-hidden rounded-[28px] border border-soft bg-surface p-5 shadow-soft">
+        <section className="mb-6 overflow-hidden rounded-[28px] border border-soft bg-surface p-5">
           <button
             type="button"
             onClick={() => openSource(source.source.handle)}
@@ -290,7 +290,7 @@ export function SourceScreen({
             <button
               type="button"
               onClick={() => setInfoOpen((prev) => !prev)}
-              className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-surface-soft px-4 text-[14px] font-medium text-primary"
+              className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 text-[14px] font-medium text-primary"
             >
               <span>{t.feed.openChannel}</span>
               <ChevronDown
@@ -304,13 +304,13 @@ export function SourceScreen({
               <button
                 type="button"
                 onClick={() => setDonateOpen((prev) => !prev)}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
                 aria-label="Поддержать канал"
                 title="Поддержать канал"
               >
                 <Star
                   className={`h-5 w-5 ${
-                    donateOpen ? "fill-current text-primary" : "text-primary"
+                    donateOpen ? "fill-accent text-accent" : "text-neutral-950"
                   }`}
                 />
               </button>
@@ -321,7 +321,7 @@ export function SourceScreen({
                   setSubscribed(next.includes(source.source.handle));
                   window.dispatchEvent(new Event("storage"));
                 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-soft bg-surface-soft"
                 type="button"
                 aria-label={
                   subscribed
@@ -337,7 +337,7 @@ export function SourceScreen({
                 <Bell
                   className={`h-5 w-5 ${
                     subscribed
-                      ? "fill-current text-primary"
+                      ? "fill-accent text-accent"
                       : "text-secondary"
                   }`}
                 />
@@ -355,7 +355,7 @@ export function SourceScreen({
 
               <button
                 onClick={openTelegramSource}
-                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-strong px-4 text-[13px] font-medium leading-none text-strong-foreground bg-strong-hover sm:text-sm"
+                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-soft bg-surface-soft px-4 text-[13px] font-medium leading-none text-primary sm:text-sm"
                 type="button"
               >
                 <span>{t.feed.openChannel}</span>
@@ -370,7 +370,7 @@ export function SourceScreen({
           ) : null}
         </section>
 
-        <div className="overflow-hidden rounded-[28px] border border-soft bg-surface shadow-soft">
+        <div className="overflow-hidden">
           {sourcePosts.map((post) => {
             const ownerTelegramId = post.addedBy?.telegramId ?? null;
 

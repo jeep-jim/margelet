@@ -121,14 +121,14 @@ export function FeedSourceHeader({
             setSubscribed(next.includes(post.source.handle));
             window.dispatchEvent(new Event("storage"));
           }}
-          className={`ml-1 flex shrink-0 items-center justify-center rounded-full bg-surface-soft ${bellSize}`}
+          className={`ml-1 flex shrink-0 items-center justify-center rounded-full border border-soft bg-surface-soft ${bellSize}`}
           type="button"
           aria-label="Toggle notifications"
         >
           <Bell
             className={`h-4.5 w-4.5 ${
               subscribed
-                ? "fill-current text-primary"
+                ? "fill-accent text-accent"
                 : "text-secondary"
             }`}
           />

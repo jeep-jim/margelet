@@ -87,12 +87,12 @@ export function AppHeader({ current, setCurrent }: Props) {
   };
 
   return (
-    <header className="header-surface fixed inset-x-0 top-0 z-40 border-b border-soft backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-40 border-b border-soft bg-surface">
       <div className="mx-auto grid h-16 w-full max-w-[570px] grid-cols-3 items-center px-4">
         <div className="flex items-center justify-start">
           <button
             onClick={handleLeftAction}
-            className="text-secondary bg-surface-hover flex h-10 w-10 items-center justify-center rounded-full transition"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft"
             aria-label={current === "feed" ? "Фильтры" : "Назад"}
             title={current === "feed" ? "Фильтры" : "Назад"}
             type="button"
@@ -106,7 +106,7 @@ export function AppHeader({ current, setCurrent }: Props) {
                     : "rotate-240"
               }`}
             >
-              <MargeletMark className="text-primary h-5 w-5" />
+              <MargeletMark className="h-5 w-5" colorClassName="text-primary" />
             </div>
           </button>
         </div>
@@ -119,7 +119,7 @@ export function AppHeader({ current, setCurrent }: Props) {
             title="Margelet"
             type="button"
           >
-            <div className="text-primary text-2xl font-extrabold tracking-[-0.03em]">
+            <div className="text-2xl font-extrabold tracking-[-0.03em] text-primary">
               margeleT
             </div>
           </button>
@@ -130,8 +130,8 @@ export function AppHeader({ current, setCurrent }: Props) {
             onClick={() => setCurrent("creator")}
             className={`flex h-10 w-10 items-center justify-center overflow-hidden rounded-full transition ${
               isCreatorActive
-                ? "bg-strong text-strong-foreground"
-                : "text-secondary bg-surface-hover"
+                ? "bg-accent text-accent-foreground"
+                : "text-secondary hover:bg-surface-soft"
             }`}
             aria-label="Кабинет"
             title="Кабинет"

@@ -55,12 +55,6 @@ async function trackAction(params: {
   }
 }
 
-const ACTION_BUTTON_CLASS =
-  "inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-surface";
-
-const GHOST_BUTTON_CLASS =
-  "inline-flex items-center rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-surface";
-
 export function FeedCard(props: FeedCardProps) {
   const {
     post,
@@ -191,7 +185,7 @@ export function FeedCard(props: FeedCardProps) {
       <div className="absolute right-1 top-4 z-20">
         <div className="relative">
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft hover:text-primary"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft"
             onClick={(event) => {
               event.stopPropagation();
               onToggleMenu();
@@ -215,12 +209,7 @@ export function FeedCard(props: FeedCardProps) {
 
       {showVisualMedia ? (
         <>
-          <div className="relative mt-3">
-            <div className="absolute left-3 top-3 z-20">
-              <div className="rounded-full bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
-                {tagLabel}
-              </div>
-            </div>
+          <div className="relative mt-3">            
 
             <FeedMediaCard
               {...props}
@@ -234,7 +223,7 @@ export function FeedCard(props: FeedCardProps) {
               <ExpandableFeedText text={displayText}>
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-8 text-secondary">
+                    <div className="flex items-center gap-3 text-secondary">
                       <button
                         type="button"
                         onClick={(event) => {
@@ -245,11 +234,14 @@ export function FeedCard(props: FeedCardProps) {
                         <Heart
                           className={`h-5 w-5 ${
                             localLiked
-                              ? "fill-current text-primary"
+                              ? "fill-accent text-accent"
                               : "text-secondary"
                           }`}
                         />
                       </button>
+                      <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+                        {tagLabel}
+                      </div>
                     </div>
 
                     {expanded ? (
@@ -259,7 +251,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           openPostSafely();
                         }}
-                        className={ACTION_BUTTON_CLASS}
+                        className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.read}</span>
                         <ExternalLink className="h-4 w-4" />
@@ -271,7 +263,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           expand();
                         }}
-                        className={GHOST_BUTTON_CLASS}
+                        className="inline-flex items-center rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.more}</span>
                       </button>
@@ -283,7 +275,7 @@ export function FeedCard(props: FeedCardProps) {
           ) : (
             <div className="px-4 py-3">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-8 text-secondary">
+                <div className="flex items-center gap-3 text-secondary">
                   <button
                     type="button"
                     onClick={(event) => {
@@ -294,11 +286,14 @@ export function FeedCard(props: FeedCardProps) {
                     <Heart
                       className={`h-5 w-5 ${
                         localLiked
-                          ? "fill-current text-primary"
+                          ? "fill-accent text-accent"
                           : "text-secondary"
                       }`}
                     />
                   </button>
+                  <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+                    {tagLabel}
+                  </div>
                 </div>
 
                 <button
@@ -307,7 +302,7 @@ export function FeedCard(props: FeedCardProps) {
                     event.stopPropagation();
                     openPostSafely();
                   }}
-                  className={ACTION_BUTTON_CLASS}
+                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                 >
                   <span>{copy.open}</span>
                   <ExternalLink className="h-4 w-4" />
