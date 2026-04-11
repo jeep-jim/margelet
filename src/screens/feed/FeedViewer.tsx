@@ -258,6 +258,11 @@ export function FeedViewer({
     autoplayWantedRef.current = isPlaying;
   }, [isPlaying]);
 
+    useEffect(() => {
+    if (!activePost) return;
+    setLocalLiked(likedPostIds.includes(activePost.id));
+  }, [activePost?.id, likedPostIds]);
+
   useEffect(() => {
     if (!activePost) return;
 
@@ -279,7 +284,6 @@ export function FeedViewer({
     setExpandedText(false);
     setShowCenterControl(false);
     setSubscribed(getSubs().includes(activePost.source.handle));
-    setLocalLiked(likedPostIds.includes(activePost.id));
     setCurrentTime(0);
     setDuration(0);
 
@@ -291,14 +295,11 @@ export function FeedViewer({
       sourceHandle: activePost.source.handle,
       telegramUserId,
     }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
       if (typeof data?.subscribed === "boolean") {
         setSubscribed(data.subscribed);
       }
     });
-  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex, likedPostIds]);
+  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex]);  
 
   useEffect(() => {
     setIsMuted(readGlobalMuted());
@@ -330,6 +331,20 @@ export function FeedViewer({
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
+    const onLoadedMetadata = () => {
+      syncMeta();
+      syncTime();
+    };
+
+    const onDurationChange = () => {
+      syncMeta();
+      syncTime();
+    };
+
+    const onTimeUpdate = () => {
+      syncTime();
+    };
+
     const onPlay = () => {
       setIsPlaying(true);
       syncTime();
@@ -340,26 +355,56 @@ export function FeedViewer({
       syncTime();
     };
 
-    node.addEventListener("loadedmetadata", syncMeta);
-    node.addEventListener("durationchange", syncMeta);
-    node.addEventListener("timeupdate", syncTime);
+    node.addEventListener("loadedmetadata", onLoadedMetadata);
+    node.addEventListener("durationchange", onDurationChange);
+    node.addEventListener("timeupdate", onTimeUpdate);
     node.addEventListener("play", onPlay);
     node.addEventListener("pause", onPause);
     node.addEventListener("ended", onPause);
 
-    syncMeta();
-    syncTime();
-    setIsPlaying(!node.paused);
+    node.load();
+
+    const playIfNeeded = () => {
+      if (!autoplayWantedRef.current) return;
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+    };
+
+    if (node.readyState >= 1) {
+      syncMeta();
+      syncTime();
+      playIfNeeded();
+    } else {
+      const handleCanPlay = () => {
+        syncMeta();
+        syncTime();
+        playIfNeeded();
+      };
+
+      node.addEventListener("canplay", handleCanPlay, { once: true });
+
+      return () => {
+        node.removeEventListener("loadedmetadata", onLoadedMetadata);
+        node.removeEventListener("durationchange", onDurationChange);
+        node.removeEventListener("timeupdate", onTimeUpdate);
+        node.removeEventListener("play", onPlay);
+        node.removeEventListener("pause", onPause);
+        node.removeEventListener("ended", onPause);
+        node.removeEventListener("canplay", handleCanPlay);
+      };
+    }
 
     return () => {
-      node.removeEventListener("loadedmetadata", syncMeta);
-      node.removeEventListener("durationchange", syncMeta);
-      node.removeEventListener("timeupdate", syncTime);
+      node.removeEventListener("loadedmetadata", onLoadedMetadata);
+      node.removeEventListener("durationchange", onDurationChange);
+      node.removeEventListener("timeupdate", onTimeUpdate);
       node.removeEventListener("play", onPlay);
       node.removeEventListener("pause", onPause);
       node.removeEventListener("ended", onPause);
     };
-  }, [activeItem?.id, activeItem?.kind, setIsPlaying]);
+  }, [activePost?.id, viewerMediaIndex, activeItem?.id, activeItem?.kind, setIsPlaying]);  
 
   useEffect(() => {
     const node = videoRef.current;
