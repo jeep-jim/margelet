@@ -344,7 +344,7 @@ function RichTextBlock({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <div className="space-y-4 text-[16px] leading-7 text-neutral-900">
+    <div className="space-y-4 text-[16px] leading-7 text-primary">
       {paragraphs.map((paragraph, index) => {
         const lines = paragraph.split("\n");
 
@@ -398,19 +398,19 @@ function AudioList({
       {items.map((item, index) => (
         <div
           key={item.id || `${item.url}-${index}`}
-          className="rounded-3xl border border-neutral-200 bg-neutral-50 p-4"
+          className="rounded-3xl border border-soft bg-surface-soft p-4"
         >
           <div className="mb-3 flex items-start gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-strong text-strong-foreground">
               <Music4 className="h-5 w-5" />
             </div>
 
             <div className="min-w-0 flex-1">
-              <div className="text-sm font-semibold text-neutral-950">
+              <div className="text-sm font-semibold text-primary">
                 {item.fileName?.trim() || `${copy.audioFallback} ${index + 1}`}
               </div>
 
-              <div className="mt-1 text-sm text-neutral-500">
+              <div className="mt-1 text-sm text-secondary">
                 {copy.audioFromTelegram}
               </div>
             </div>
@@ -447,19 +447,19 @@ function FileList({
       {items.map((item, index) => (
         <div
           key={item.id || `${item.url}-${index}`}
-          className="rounded-3xl border border-neutral-200 bg-neutral-50 p-4"
+          className="rounded-3xl border border-soft bg-surface-soft p-4"
         >
           <div className="flex items-start gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-strong text-strong-foreground">
               <FileText className="h-5 w-5" />
             </div>
 
             <div className="min-w-0 flex-1">
-              <div className="text-sm font-semibold text-neutral-950">
+              <div className="text-sm font-semibold text-primary">
                 {item.fileName?.trim() || `${copy.fileFallback} ${index + 1}`}
               </div>
 
-              <div className="mt-1 text-sm text-neutral-500">
+              <div className="mt-1 text-sm text-secondary">
                 {copy.fileFromTelegram}
               </div>
 
@@ -467,7 +467,7 @@ function FileList({
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium !text-white no-underline"
+                className="mt-3 inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2 text-sm font-medium !text-strong-foreground no-underline"
                 style={{ color: "#ffffff" }}
               >
                 <span style={{ color: "#ffffff" }}>{copy.openFile}</span>
@@ -497,25 +497,25 @@ function MusicFallback({
   const copy = COPY[locale] ?? COPY.en;
 
   return (
-    <div className="mb-4 rounded-3xl border border-neutral-200 bg-neutral-50 p-4">
+    <div className="mb-4 rounded-3xl border border-soft bg-surface-soft p-4">
       <div className="flex items-start gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-neutral-900 text-white">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-strong text-strong-foreground">
           <Music4 className="h-5 w-5" />
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="text-sm font-semibold text-neutral-950">
+          <div className="text-sm font-semibold text-primary">
             {copy.musicAvailable}
           </div>
 
-          <div className="mt-1 text-sm text-neutral-500">
+          <div className="mt-1 text-sm text-secondary">
             {copy.musicAvailableText}
           </div>
 
           <button
             type="button"
             onClick={onOpenOriginal}
-            className="mt-3 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-sm font-medium text-white"
+            className="mt-3 inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2 text-sm font-medium text-strong-foreground bg-strong-hover"
           >
             <span>{copy.openInTelegram}</span>
             <ExternalLink className="h-4 w-4" />
@@ -773,30 +773,30 @@ export function FeedTextReaderModal({
           onClick={onClose}
         >
           <motion.div
-            className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-white"
+            className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-surface shadow-soft"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 260, damping: 28 }}
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center justify-between border-b border-neutral-200 px-4 py-3">
+            <div className="flex items-center justify-between border-b border-soft px-4 py-3">
               <button
                 onClick={onClose}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
                 type="button"
               >
                 <ArrowLeft className="h-5 w-5" />
               </button>
 
-              <div className="text-sm font-semibold text-neutral-900">
+              <div className="text-sm font-semibold text-primary">
                 {copy.postFromTelegram}
               </div>
 
               <button
                 type="button"
                 onClick={handleSubscribeClick}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-900"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
                 aria-label={
                   subscribed
                     ? copy.disableNotifications
@@ -811,8 +811,8 @@ export function FeedTextReaderModal({
                 <Bell
                   className={`h-5 w-5 ${
                     subscribed
-                      ? "fill-neutral-900 text-neutral-900"
-                      : "text-neutral-900"
+                      ? "fill-current text-primary"
+                      : "text-primary"
                   }`}
                 />
               </button>
@@ -831,7 +831,7 @@ export function FeedTextReaderModal({
                 <div className="min-w-0 flex-1 overflow-hidden">
                   <div className="min-w-0 overflow-hidden">
                     <div className="inline-flex max-w-full items-center gap-1 align-top">
-                      <span className="truncate text-[18px] font-semibold text-neutral-950">
+                      <span className="truncate text-[18px] font-semibold text-primary">
                         {post.source.title}
                       </span>
 
@@ -841,7 +841,7 @@ export function FeedTextReaderModal({
                     </div>
                   </div>
 
-                  <div className="truncate text-sm text-neutral-500">
+                  <div className="truncate text-sm text-secondary">
                     @{post.source.handle}
                   </div>
                 </div>
@@ -976,13 +976,13 @@ export function FeedTextReaderModal({
               {text ? <RichTextBlock text={text} /> : null}
             </div>
 
-            <div className="sticky bottom-0 border-t border-neutral-200 bg-white px-4 py-3">
+            <div className="sticky bottom-0 border-t border-soft bg-surface px-4 py-3">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-8 text-neutral-700">
+                <div className="flex items-center gap-8 text-secondary">
                   <button type="button" onClick={handleLikeClick}>
                     <Heart
                       className={`h-5 w-5 ${
-                        localLiked ? "fill-current text-neutral-950" : ""
+                        localLiked ? "fill-current text-primary" : ""
                       }`}
                     />
                   </button>
@@ -991,7 +991,7 @@ export function FeedTextReaderModal({
                 <button
                   type="button"
                   onClick={handleOpenTelegram}
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-950 px-4 py-2.5 text-sm font-medium text-white"
+                  className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-medium text-strong-foreground bg-strong-hover"
                 >
                   <span>{copy.openInTelegram}</span>
                   <ExternalLink className="h-4 w-4" />

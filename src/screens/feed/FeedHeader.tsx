@@ -149,14 +149,14 @@ export function FeedHeader({
 
   return (
     <div className="fixed inset-x-0 top-16 bottom-0 z-[80] isolate">
-      <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-white md:border-x md:border-neutral-200">
+      <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-surface shadow-soft md:border-x md:border-soft">
         <div className="flex h-full flex-col">
-          <div className="shrink-0 border-b border-neutral-200 bg-white px-4 pb-4 pt-4">
-            <div className="text-base font-semibold leading-none text-neutral-950">
+          <div className="shrink-0 border-b border-soft bg-surface px-4 pb-4 pt-4">
+            <div className="text-base font-semibold leading-none text-primary">
               {copy.title}
             </div>
 
-            <div className="mt-2 truncate text-sm leading-6 text-neutral-500">
+            <div className="mt-2 truncate text-sm leading-6 text-secondary">
               {selectedCount > 0
                 ? `${copy.selectedTopics}: ${selectedCount}`
                 : copy.subtitle}
@@ -169,7 +169,7 @@ export function FeedHeader({
                 applySearchAndClose();
               }}
             >
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
               <input
                 value={draftQuery}
                 onChange={(event) => setDraftQuery(event.target.value)}
@@ -181,7 +181,7 @@ export function FeedHeader({
                 }}
                 enterKeyHint="search"
                 placeholder={copy.searchPlaceholder}
-                className="w-full rounded-2xl border border-neutral-200 bg-neutral-50 py-3 pl-11 pr-4 text-sm text-neutral-950 outline-none placeholder:text-neutral-400 focus:border-neutral-300"
+                className="w-full rounded-2xl border border-soft bg-surface-soft py-3 pl-11 pr-4 text-sm text-primary outline-none placeholder:text-secondary focus-border-strong"
               />
             </form>
           </div>
@@ -198,8 +198,8 @@ export function FeedHeader({
                     onClick={() => toggleTag(tag.value)}
                     className={`rounded-full px-3 py-2 text-sm transition ${
                       active
-                        ? "bg-neutral-950 text-white"
-                        : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
+                        ? "bg-strong text-strong-foreground"
+                        : "border border-soft bg-surface text-secondary bg-surface-hover"
                     }`}
                   >
                     {getTagLabel(tag.value, locale)}
@@ -209,21 +209,21 @@ export function FeedHeader({
             </div>
           </div>
 
-          <div className="shrink-0 border-t border-neutral-200 bg-white px-4 py-4 pb-[calc(env(safe-area-inset-bottom)+16px)]">
+          <div className="shrink-0 border-t border-soft bg-surface px-4 py-4 pb-[calc(env(safe-area-inset-bottom)+16px)]">
             <div className="flex items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={applySearchAndClose}
                 className={`w-full rounded-2xl px-4 py-3 text-sm font-medium transition ${
                   hasPendingChanges
-                    ? "bg-neutral-950 text-white hover:bg-neutral-800"
-                    : "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
+                    ? "bg-strong text-strong-foreground bg-strong-hover"
+                    : "bg-surface-soft text-primary bg-surface-hover"
                 }`}
               >
                 {copy.show}
               </button>
 
-              <div className="hidden whitespace-nowrap text-xs text-neutral-400 sm:block">
+              <div className="hidden whitespace-nowrap text-xs text-secondary sm:block">
                 {resultsCount} {copy.found}
               </div>
             </div>

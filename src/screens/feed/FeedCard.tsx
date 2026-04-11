@@ -176,7 +176,7 @@ export function FeedCard(props: FeedCardProps) {
   return (
     <article
       ref={cardRef}
-      className="relative overflow-hidden border-b border-neutral-200 bg-white"
+      className="relative overflow-hidden border-b border-soft bg-surface"
     >
       <div className="px-4 pt-4 pr-12">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
@@ -185,7 +185,7 @@ export function FeedCard(props: FeedCardProps) {
       <div className="absolute right-1 top-4 z-20">
         <div className="relative">
           <button
-            className="flex h-9 w-9 items-center justify-center rounded-full text-neutral-700"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-secondary"
             onClick={(event) => {
               event.stopPropagation();
               onToggleMenu();
@@ -228,7 +228,7 @@ export function FeedCard(props: FeedCardProps) {
               <ExpandableFeedText text={displayText}>
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-8 text-neutral-700">
+                    <div className="flex items-center gap-8 text-secondary">
                       <button
                         type="button"
                         onClick={(event) => {
@@ -239,8 +239,8 @@ export function FeedCard(props: FeedCardProps) {
                         <Heart
                           className={`h-5 w-5 ${
                             localLiked
-                              ? "fill-neutral-950 text-neutral-950"
-                              : "text-neutral-700"
+                              ? "fill-current text-primary"
+                              : "text-secondary"
                           }`}
                         />
                       </button>
@@ -253,7 +253,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           openPostSafely();
                         }}
-                        className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
+                        className="inline-flex items-center gap-2 rounded-full bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.read}</span>
                         <ExternalLink className="h-4 w-4" />
@@ -265,7 +265,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           expand();
                         }}
-                        className="inline-flex items-center rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
+                        className="inline-flex items-center rounded-full bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.more}</span>
                       </button>
@@ -277,7 +277,7 @@ export function FeedCard(props: FeedCardProps) {
           ) : (
             <div className="px-4 py-3">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-8 text-neutral-700">
+                <div className="flex items-center gap-8 text-secondary">
                   <button
                     type="button"
                     onClick={(event) => {
@@ -288,8 +288,8 @@ export function FeedCard(props: FeedCardProps) {
                     <Heart
                       className={`h-5 w-5 ${
                         localLiked
-                          ? "fill-neutral-950 text-neutral-950"
-                          : "text-neutral-700"
+                          ? "fill-current text-primary"
+                          : "text-secondary"
                       }`}
                     />
                   </button>
@@ -301,7 +301,7 @@ export function FeedCard(props: FeedCardProps) {
                     event.stopPropagation();
                     openPostSafely();
                   }}
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-100 px-3 py-1.5 text-[14px] font-medium text-neutral-800"
+                  className="inline-flex items-center gap-2 rounded-full bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                 >
                   <span>{copy.open}</span>
                   <ExternalLink className="h-4 w-4" />

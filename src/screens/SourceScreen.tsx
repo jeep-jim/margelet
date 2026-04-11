@@ -208,7 +208,7 @@ export function SourceScreen({
 
   if (!source) {
     return (
-      <div className="min-h-screen bg-neutral-50 pt-[76px] text-neutral-950">
+      <div className="min-h-screen bg-app pt-[76px] text-primary">
         <div className="mx-auto max-w-[570px] px-4 pb-10">
           <div className="text-lg font-semibold">{t.source.notFound}</div>
         </div>
@@ -226,15 +226,15 @@ export function SourceScreen({
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 pt-[76px] text-neutral-950">
+    <div className="min-h-screen bg-app pt-[76px] text-primary">
       <div className="mx-auto max-w-[570px] px-4 pb-10">
-        <section className="mb-6 overflow-hidden rounded-[28px] border border-neutral-200 bg-white p-5">
+        <section className="mb-6 overflow-hidden rounded-[28px] border border-soft bg-surface p-5 shadow-soft">
           <button
             type="button"
             onClick={() => openSource(source.source.handle)}
             className="flex w-full min-w-0 items-start gap-4 text-left"
           >
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-neutral-200 text-xs font-bold text-neutral-900">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full bg-surface-soft text-xs font-bold text-primary">
               {source.source.avatar ? (
                 <img
                   src={source.source.avatar}
@@ -249,7 +249,7 @@ export function SourceScreen({
 
             <div className="min-w-0 flex-1 overflow-hidden">
               <div className="inline-flex max-w-full items-center gap-1">
-                <span className="truncate text-[18px] font-semibold leading-tight text-neutral-950">
+                <span className="truncate text-[18px] font-semibold leading-tight text-primary">
                   {source.source.title}
                 </span>
                 {source.source.verified ? (
@@ -257,29 +257,29 @@ export function SourceScreen({
                 ) : null}
               </div>
 
-              <div className="mt-1 truncate text-[14px] text-neutral-500">
+              <div className="mt-1 truncate text-[14px] text-secondary">
                 @{source.source.handle}
               </div>
             </div>
           </button>
 
           <div className="mt-5 grid grid-cols-3 gap-3">
-            <div className="rounded-2xl bg-neutral-50 p-4">
-              <div className="text-[11px] uppercase tracking-[0.14em] text-neutral-400">
+            <div className="rounded-2xl bg-surface-soft p-4">
+              <div className="text-[11px] uppercase tracking-[0.14em] text-secondary">
                 {t.source.posts}
               </div>
               <div className="mt-2 text-2xl font-semibold">{sourcePosts.length}</div>
             </div>
 
-            <div className="rounded-2xl bg-neutral-50 p-4">
-              <div className="text-[11px] uppercase tracking-[0.14em] text-neutral-400">
+            <div className="rounded-2xl bg-surface-soft p-4">
+              <div className="text-[11px] uppercase tracking-[0.14em] text-secondary">
                 {t.source.video}
               </div>
               <div className="mt-2 text-2xl font-semibold">{totalVideos}</div>
             </div>
 
-            <div className="rounded-2xl bg-neutral-50 p-4">
-              <div className="text-[11px] uppercase tracking-[0.14em] text-neutral-400">
+            <div className="rounded-2xl bg-surface-soft p-4">
+              <div className="text-[11px] uppercase tracking-[0.14em] text-secondary">
                 {t.source.media}
               </div>
               <div className="mt-2 text-2xl font-semibold">{totalMedia}</div>
@@ -290,7 +290,7 @@ export function SourceScreen({
             <button
               type="button"
               onClick={() => setInfoOpen((prev) => !prev)}
-              className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-neutral-100 px-4 text-[14px] font-medium text-neutral-950"
+              className="inline-flex h-10 shrink-0 items-center gap-2 rounded-full bg-surface-soft px-4 text-[14px] font-medium text-primary"
             >
               <span>{t.feed.openChannel}</span>
               <ChevronDown
@@ -304,13 +304,13 @@ export function SourceScreen({
               <button
                 type="button"
                 onClick={() => setDonateOpen((prev) => !prev)}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
                 aria-label="Поддержать канал"
                 title="Поддержать канал"
               >
                 <Star
                   className={`h-5 w-5 ${
-                    donateOpen ? "fill-neutral-950 text-neutral-950" : "text-neutral-950"
+                    donateOpen ? "fill-current text-primary" : "text-primary"
                   }`}
                 />
               </button>
@@ -321,7 +321,7 @@ export function SourceScreen({
                   setSubscribed(next.includes(source.source.handle));
                   window.dispatchEvent(new Event("storage"));
                 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft"
                 type="button"
                 aria-label={
                   subscribed
@@ -337,8 +337,8 @@ export function SourceScreen({
                 <Bell
                   className={`h-5 w-5 ${
                     subscribed
-                      ? "fill-neutral-950 text-neutral-950"
-                      : "text-neutral-400"
+                      ? "fill-current text-primary"
+                      : "text-secondary"
                   }`}
                 />
               </button>
@@ -346,7 +346,7 @@ export function SourceScreen({
           </div>
 
           {infoOpen ? (
-            <div className="mt-4 text-sm leading-7 text-neutral-700">
+            <div className="mt-4 text-sm leading-7 text-secondary">
               <div className="max-w-none">
                 В ленте показываются последние посты канала за 24 часа. Полная
                 информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
@@ -355,7 +355,7 @@ export function SourceScreen({
 
               <button
                 onClick={openTelegramSource}
-                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-neutral-950 px-4 text-[13px] font-medium leading-none text-white sm:text-sm"
+                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full bg-strong px-4 text-[13px] font-medium leading-none text-strong-foreground bg-strong-hover sm:text-sm"
                 type="button"
               >
                 <span>{t.feed.openChannel}</span>
@@ -364,13 +364,13 @@ export function SourceScreen({
           ) : null}
 
           {donateOpen ? (
-            <div className="mt-4 rounded-2xl bg-neutral-50 px-4 py-3 text-sm leading-6 text-neutral-700">
+            <div className="mt-4 rounded-2xl bg-surface-soft px-4 py-3 text-sm leading-6 text-secondary">
               Скоро здесь появится возможность поддержать канал донатом.
             </div>
           ) : null}
         </section>
 
-        <div className="overflow-hidden rounded-[28px] border border-neutral-200 bg-white">
+        <div className="overflow-hidden rounded-[28px] border border-soft bg-surface shadow-soft">
           {sourcePosts.map((post) => {
             const ownerTelegramId = post.addedBy?.telegramId ?? null;
 

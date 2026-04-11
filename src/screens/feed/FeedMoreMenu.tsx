@@ -70,7 +70,7 @@ export function FeedMoreMenu({
   const copy = COPY[locale] ?? COPY.en;
 
   return (
-    <div className="absolute right-0 top-12 z-40 min-w-[220px] rounded-2xl border border-neutral-200 bg-white p-2 shadow-xl">
+    <div className="absolute right-0 top-12 z-40 min-w-[220px] rounded-2xl border border-soft bg-surface p-2 shadow-soft">
       {isOwner || isAdmin ? (
         <button
           type="button"
@@ -84,7 +84,7 @@ export function FeedMoreMenu({
         <button
           type="button"
           onClick={onHide}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-neutral-800 transition hover:bg-neutral-100"
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition bg-surface-hover"
         >
           <EyeOff className="h-4 w-4" />
           <span>{copy.hide}</span>

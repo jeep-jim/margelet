@@ -165,13 +165,13 @@ function readSubscriptionsFromStorage(): string[] {
 function SubscriptionsHint({ text }: { text: string }) {
   return (
     <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
-      <div className="flex items-center gap-4 rounded-[28px] border border-neutral-200 bg-white px-4 py-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-neutral-950">
-          <Bell className="h-5 w-5 text-neutral-950" />
+      <div className="flex items-center gap-4 rounded-[28px] border border-soft bg-surface px-4 py-4 shadow-soft">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-dashed border-soft">
+          <Bell className="h-5 w-5 text-primary" />
         </div>
 
         <div className="min-w-0">
-          <div className="text-sm font-semibold text-neutral-950">{text}</div>
+          <div className="text-sm font-semibold text-primary">{text}</div>
         </div>
       </div>
     </div>
@@ -198,8 +198,8 @@ function SubscriptionsBar({
               onClick={() => onOpen(item.handle)}
               className="flex w-[72px] shrink-0 flex-col items-center gap-1.5 text-center"
             >
-              <div className="rounded-full border-2 border-neutral-950 p-[2px]">
-                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white">
+              <div className="rounded-full border-2 border-soft p-[2px]">
+                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-surface">
                   {item.avatar ? (
                     <img
                       src={item.avatar}
@@ -208,14 +208,14 @@ function SubscriptionsBar({
                       referrerPolicy="no-referrer"
                     />
                   ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-neutral-200 text-xs font-bold text-neutral-800">
+                    <div className="flex h-full w-full items-center justify-center bg-surface-soft text-xs font-bold text-primary">
                       {item.title.slice(0, 2).toUpperCase()}
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="w-full truncate text-[11px] font-medium text-neutral-700">
+              <div className="w-full truncate text-[11px] font-medium text-secondary">
                 {item.title}
               </div>
             </button>
@@ -526,7 +526,7 @@ export function FeedScreen({
   const hasBubbles = subscriptionBubbles.length > 0;
 
   return (
-    <div className="min-h-screen bg-neutral-50 pt-16 text-neutral-950">
+    <div className="min-h-screen bg-app pt-16 text-primary">
       <FeedHeader
         locale={locale}
         selectedTags={selectedTags}
@@ -564,7 +564,7 @@ export function FeedScreen({
 
       {!isFeedLoading && visiblePosts.length === 0 ? (
         <div className="mx-auto mt-2 w-full max-w-[570px] px-4">
-          <div className="rounded-[28px] border border-neutral-200 bg-white px-6 py-8 text-center">
+          <div className="rounded-[28px] border border-soft bg-surface px-6 py-8 text-center shadow-soft">
             <img
               src="/no_searsh.png"
               alt={copy.emptyTitle}
@@ -572,11 +572,11 @@ export function FeedScreen({
               draggable={false}
             />
 
-            <div className="text-[28px] font-semibold text-neutral-950">
+            <div className="text-[28px] font-semibold text-primary">
               {copy.emptyTitle}
             </div>
 
-            <div className="mx-auto mt-3 max-w-[260px] text-base leading-7 text-neutral-500">
+            <div className="mx-auto mt-3 max-w-[260px] text-base leading-7 text-secondary">
               {copy.emptyText}
             </div>
 
@@ -586,7 +586,7 @@ export function FeedScreen({
                 setSearchQuery("");
                 clearTags();
               }}
-              className="mt-6 inline-flex items-center justify-center rounded-full bg-neutral-950 px-6 py-3 text-sm font-medium text-white"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-strong px-6 py-3 text-sm font-medium text-strong-foreground bg-strong-hover"
             >
               {copy.clearAll}
             </button>

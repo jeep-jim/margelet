@@ -40,7 +40,7 @@ export function FeedSourceAvatar({
 
   return (
     <div
-      className={`${sizeClass} overflow-hidden rounded-full bg-neutral-200 ${textClass} font-bold text-neutral-900`}
+      className={`${sizeClass} overflow-hidden rounded-full bg-surface-soft ${textClass} font-bold text-primary`}
     >
       {post.source.avatar ? (
         <img
@@ -97,7 +97,7 @@ export function FeedSourceHeader({
           <div className="min-w-0 overflow-hidden">
             <div className="inline-flex max-w-full items-center gap-1 align-top">
               <span
-                className={`truncate font-semibold leading-tight text-neutral-950 ${titleClass}`}
+                className={`truncate font-semibold leading-tight text-primary ${titleClass}`}
               >
                 {post.source.title}
               </span>
@@ -107,7 +107,7 @@ export function FeedSourceHeader({
             </div>
           </div>
 
-          <div className={`truncate text-neutral-500 ${handleClass}`}>
+          <div className={`truncate text-secondary ${handleClass}`}>
             @{post.source.handle}
           </div>
         </div>
@@ -121,15 +121,15 @@ export function FeedSourceHeader({
             setSubscribed(next.includes(post.source.handle));
             window.dispatchEvent(new Event("storage"));
           }}
-          className={`ml-1 flex shrink-0 items-center justify-center rounded-full bg-neutral-100 ${bellSize}`}
+          className={`ml-1 flex shrink-0 items-center justify-center rounded-full bg-surface-soft ${bellSize}`}
           type="button"
           aria-label="Toggle notifications"
         >
           <Bell
             className={`h-4.5 w-4.5 ${
               subscribed
-                ? "fill-neutral-950 text-neutral-950"
-                : "text-neutral-400"
+                ? "fill-current text-primary"
+                : "text-secondary"
             }`}
           />
         </button>
