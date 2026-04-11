@@ -1,12 +1,11 @@
 {
-  "name": "Margelet",
-  "short_name": "Margelet",
-  "description": "Telegram video feed",
+  "name": "margeleT",
+  "short_name": "margeleT",
+  "description": "Global feed of fresh Telegram content. Discover real posts from original channels worldwide.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0f",
-  "theme_color": "#0a0a0f",
-  "lang": "ru",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -17,6 +16,12 @@
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
