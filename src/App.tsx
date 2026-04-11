@@ -606,9 +606,14 @@ export default function App() {
   };
 
   const shouldShowIntro = !hasSeenIntro && current !== "admin" && !sharedPath;
+  const useThemeShell = !shouldShowIntro && current !== "intro" && current !== "admin";
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
+    <div
+      className={`min-h-screen ${
+        useThemeShell ? "theme-shell" : "bg-[#0a0a0f] text-white"
+      }`}
+    >      
       {!shouldShowIntro && current !== "intro" && current !== "admin" ? (
         <AppHeader
           current={current}

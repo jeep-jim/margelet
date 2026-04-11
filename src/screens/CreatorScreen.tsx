@@ -8,6 +8,8 @@ import {
   ChevronDown,
   Check,
   Sparkles,
+  Sun,
+  Moon,
 } from "lucide-react";
 import {
   useMemo,
@@ -19,6 +21,7 @@ import {
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import type { IngestedPost, Locale } from "../types/app";
 import { SITE_LOCALES } from "../lib/locales";
+import { getTheme, toggleTheme, type Theme } from "../lib/theme";
 
 const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
@@ -765,6 +768,9 @@ export function CreatorScreen({
   const [tab, setTab] = useState<CabinetTab>("language");
   const [likedIds, setLikedIds] = useState<number[]>([]);
   const [channelUrl, setChannelUrl] = useState("");
+    const [theme, setTheme] = useState<Theme>(() =>
+    typeof window === "undefined" ? "light" : getTheme()
+  );
   const [introLocale, setIntroLocale] = useState<Locale>(() =>
     typeof window === "undefined"
       ? locale
@@ -776,7 +782,8 @@ export function CreatorScreen({
       setUser(readTelegramUserFromStorage());
       setLikedIds(readNumberArrayFromStorage(LIKES_STORAGE_KEY));
       setIntroLocale(readLocaleFromStorage(INTRO_LANGUAGE_STORAGE_KEY, locale));
-    };
+      setTheme(getTheme());
+    };    
 
     sync();
 
@@ -807,6 +814,11 @@ export function CreatorScreen({
   const handleChangeLocale = (nextLocale: Locale) => {
     setLocale(nextLocale);
     localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLocale);
+  };
+
+  const handleToggleTheme = () => {
+    const next = toggleTheme();
+    setTheme(next);
   };
 
   const handleReplayIntro = () => {
@@ -867,7 +879,14 @@ export function CreatorScreen({
             />
           </div>
 
-          <div className="shrink-0">
+          <div className="flex shrink-0 items-center gap-2">
+            <TopIconButton
+              active={theme === "dark"}
+              onClick={handleToggleTheme}
+              icon={theme === "dark" ? Sun : Moon}
+              title="Theme"
+            />
+
             <LanguageChip
               active={tab === "language"}
               onClick={() => setTab("language")}
@@ -875,7 +894,7 @@ export function CreatorScreen({
               title={copy.languageTabTitle}
             />
           </div>
-        </div>
+        </div>        
 
         {tab === "language" ? (
           <div className="space-y-4">
