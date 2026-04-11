@@ -611,9 +611,9 @@ export default function App() {
   return (
     <div
       className={`min-h-screen ${
-        useThemeShell ? "theme-shell" : "bg-[#0a0a0f] text-white"
+        useThemeShell ? "theme-shell" : "text-white"
       }`}
-    >      
+    >    
       {!shouldShowIntro && current !== "intro" && current !== "admin" ? (
         <AppHeader
           current={current}
