@@ -756,14 +756,14 @@ export function FeedTextReaderModal({
   return createPortal(
     <AnimatePresence>
       <motion.div
-        className="theme-shell fixed inset-0 z-50 bg-black/45 backdrop-blur-sm"        
+        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md"        
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
       >
         <motion.div
-          className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-white"
+          className="theme-shell absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-white"          
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
           exit={{ y: "100%" }}

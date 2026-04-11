@@ -564,26 +564,35 @@ export function FeedScreen({
 
       {!isFeedLoading && visiblePosts.length === 0 ? (
         <div className="mx-auto mt-2 w-full max-w-[570px] px-4">
-          <div className="rounded-[28px] border border-neutral-200 bg-white px-5 py-8 text-center">
-            <div className="text-lg font-semibold text-neutral-950">
+          <div className="rounded-[28px] border border-neutral-200 bg-white px-6 py-8 text-center">
+            <img
+              src="/no_searsh.png"
+              alt={copy.emptyTitle}
+              className="mx-auto mb-4 h-28 w-28 object-contain"
+              draggable={false}
+            />
+
+            <div className="text-[28px] font-semibold text-neutral-950">
               {copy.emptyTitle}
             </div>
-            <div className="mt-2 text-sm leading-6 text-neutral-500">
+
+            <div className="mx-auto mt-3 max-w-[260px] text-base leading-7 text-neutral-500">
               {copy.emptyText}
             </div>
+
             <button
               type="button"
               onClick={() => {
                 setSearchQuery("");
                 clearTags();
               }}
-              className="mt-4 rounded-full bg-neutral-950 px-4 py-2 text-sm text-white"
+              className="mt-6 inline-flex items-center justify-center rounded-full bg-neutral-950 px-6 py-3 text-sm font-medium text-white"
             >
               {copy.clearAll}
             </button>
           </div>
         </div>
-      ) : null}
+      ) : null}      
 
       <div className="mx-auto w-full max-w-[570px]">
         {visiblePosts.map((post) => {
