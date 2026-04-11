@@ -498,6 +498,14 @@ export function FeedViewer({
     });
   };
 
+  const handleScrub = (value: number) => {
+    const node = videoRef.current;
+    if (!node) return;
+
+    node.currentTime = value;
+    setCurrentTime(value);
+  };
+
   return (
     <AnimatePresence>
       <motion.div
@@ -583,31 +591,42 @@ export function FeedViewer({
             </div>
           ) : null}
 
-          <div className="absolute right-4 top-1/2 z-30 flex -translate-y-1/2 flex-col items-center gap-6 text-white">
-            <button type="button" onClick={handleLikeClick}>
-              <Heart className={`h-7 w-7 ${localLiked ? "fill-current" : ""}`} />
-            </button>
-          </div>
-
-          <div className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pb-4 pt-10 text-white">
+          <div
+            className="absolute bottom-0 left-0 right-0 z-30 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pb-4 pt-10 text-white"
+            onClick={(event) => event.stopPropagation()}
+            onMouseDown={(event) => event.stopPropagation()}
+            onTouchStart={(event) => event.stopPropagation()}
+            onTouchMove={(event) => event.stopPropagation()}
+            onTouchEnd={(event) => event.stopPropagation()}
+          >
             <div className="w-full md:max-w-[380px]">
-              <div className="flex items-center gap-3">
-                <FeedSourceAvatar post={activePost} />
+              <div className="flex items-end justify-between gap-3">
+                <div className="flex min-w-0 items-center gap-3">
+                  <FeedSourceAvatar post={activePost} />
 
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <div className="truncate text-[18px] font-semibold">
-                      {activePost.source.title}
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <div className="truncate text-[18px] font-semibold">
+                        {activePost.source.title}
+                      </div>
+                      {activePost.source.verified ? (
+                        <VerifiedBadge className="text-[#2AABEE]" />
+                      ) : null}
                     </div>
-                    {activePost.source.verified ? (
-                      <VerifiedBadge className="text-[#2AABEE]" />
-                    ) : null}
-                  </div>
 
-                  <div className="text-sm opacity-80">
-                    @{activePost.source.handle}
+                    <div className="text-sm opacity-80">
+                      @{activePost.source.handle}
+                    </div>
                   </div>
                 </div>
+
+                <button
+                  type="button"
+                  onClick={handleLikeClick}
+                  className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                >
+                  <Heart className={`h-6 w-6 ${localLiked ? "fill-current" : ""}`} />
+                </button>
               </div>
 
               {activePost.text ? (
@@ -654,7 +673,7 @@ export function FeedViewer({
                     event.stopPropagation();
                     togglePlay();
                   }}
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                  className="pointer-events-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
                   aria-label={isPlaying ? copy.pause : copy.play}
                 >
                   {isPlaying ? (
@@ -664,30 +683,34 @@ export function FeedViewer({
                   )}
                 </button>
 
-                <div className="min-w-[72px] text-[12px] font-medium text-white">
-                  {formatTime(currentTime)} / {formatTime(duration)}
+                <div className="min-w-0 flex-1">
+                  <input
+                    type="range"
+                    min={0}
+                    max={Math.max(duration, 0)}
+                    step={0.1}
+                    value={Math.min(currentTime, duration || 0)}
+                    onInput={(event) => {
+                      event.stopPropagation();
+                      handleScrub(Number((event.target as HTMLInputElement).value));
+                    }}
+                    onChange={(event) => {
+                      event.stopPropagation();
+                      handleScrub(Number(event.target.value));
+                    }}
+                    onPointerDown={(event) => event.stopPropagation()}
+                    onPointerUp={(event) => event.stopPropagation()}
+                    onMouseDown={(event) => event.stopPropagation()}
+                    onTouchStart={(event) => event.stopPropagation()}
+                    onClick={(event) => event.stopPropagation()}
+                    className="pointer-events-auto h-[3px] w-full accent-white"
+                  />
+
+                  <div className="mt-1 flex items-center justify-between text-[11px] font-medium text-white/90">
+                    <span>{formatTime(currentTime)}</span>
+                    <span>{formatTime(duration)}</span>
+                  </div>
                 </div>
-
-                <input
-                  type="range"
-                  min={0}
-                  max={Math.max(duration, 0)}
-                  step={0.1}
-                  value={Math.min(currentTime, duration || 0)}
-                  onChange={(event) => {
-                    event.stopPropagation();
-                    const node = videoRef.current;
-                    if (!node) return;
-
-                    const next = Number(event.target.value);
-                    node.currentTime = next;
-                    setCurrentTime(next);
-                  }}
-                  onMouseDown={(event) => event.stopPropagation()}
-                  onTouchStart={(event) => event.stopPropagation()}
-                  onClick={(event) => event.stopPropagation()}
-                  className="h-[3px] w-full accent-white"
-                />
 
                 <button
                   type="button"
@@ -695,7 +718,7 @@ export function FeedViewer({
                     event.stopPropagation();
                     setIsMuted((prev) => !prev);
                   }}
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                  className="pointer-events-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
                   aria-label={isMuted ? copy.unmute : copy.mute}
                 >
                   {isMuted ? (
