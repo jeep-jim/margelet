@@ -638,7 +638,17 @@ export function FeedViewer({
           >
             <div className="w-full md:max-w-[380px]">
               <div className="flex items-end justify-between gap-3">
-                <div className="flex min-w-0 items-center gap-3">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (activePost) {
+                      _openSource(activePost.source.handle);
+                      closeViewer();
+                    }                    
+                  }}
+                  className="flex min-w-0 items-center gap-3 text-left"
+                >
                   <FeedSourceAvatar post={activePost} />
 
                   <div className="min-w-0">
@@ -646,8 +656,9 @@ export function FeedViewer({
                       <div className="truncate text-[18px] font-semibold">
                         {activePost.source.title}
                       </div>
+
                       {activePost.source.verified ? (
-                        <VerifiedBadge className="text-[#2AABEE]" />
+                        <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
                       ) : null}
                     </div>
 
@@ -655,16 +666,19 @@ export function FeedViewer({
                       @{activePost.source.handle}
                     </div>
                   </div>
-                </div>
+                </button>
 
                 <button
                   type="button"
-                  onClick={handleLikeClick}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLikeClick();
+                  }}
                   className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
                 >
                   <Heart className={`h-6 w-6 ${localLiked ? "fill-current" : ""}`} />
                 </button>
-              </div>
+              </div>              
 
               {activePost.text ? (
                 <div className="mt-3">

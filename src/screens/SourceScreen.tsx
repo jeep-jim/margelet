@@ -103,6 +103,10 @@ export function SourceScreen({
     setSubscribed(getSubs().includes(source.source.handle));
   }, [source?.source.handle]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [sourceHandle]);
+
   const closeOpenedPost = useCallback(() => {
     setViewerIndex(null);
     setTextReaderPost(null);
@@ -194,6 +198,14 @@ export function SourceScreen({
     openPostInsideSource(matchedPost, false);
   }, [openPostInsideSource, sourceHandle, sourcePosts]);
 
+  if (!sourceHandle) {
+    return null;
+  }
+
+  if (posts.length === 0) {
+    return null;
+  }
+
   if (!source) {
     return (
       <div className="min-h-screen bg-neutral-50 pt-[76px] text-neutral-950">
@@ -202,7 +214,7 @@ export function SourceScreen({
         </div>
       </div>
     );
-  }
+  }  
 
   const totalMedia = sourcePosts.filter((post) => post.media.length > 0).length;
   const totalVideos = sourcePosts.filter((post) => post.contentType === "video").length;
