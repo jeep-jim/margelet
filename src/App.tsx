@@ -608,7 +608,7 @@ export default function App() {
   const shouldShowIntro = !hasSeenIntro && current !== "admin" && !sharedPath;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
+    <div className="bg-app text-primary min-h-screen">
       {!shouldShowIntro && current !== "intro" && current !== "admin" ? (
         <AppHeader
           current={current}

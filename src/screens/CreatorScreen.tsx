@@ -455,8 +455,8 @@ function TopIconButton({
       aria-label={title}
       className={`inline-flex h-12 w-12 items-center justify-center rounded-full transition ${
         active
-          ? "bg-neutral-950 text-white"
-          : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
+          ? "bg-strong text-strong-foreground"
+          : "border border-soft bg-surface text-secondary bg-surface-hover"
       }`}
     >
       <Icon className="h-5 w-5" />
@@ -483,8 +483,8 @@ function LanguageChip({
       aria-label={title}
       className={`inline-flex h-12 items-center gap-2 rounded-full px-4 transition ${
         active
-          ? "bg-neutral-950 text-white"
-          : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100"
+          ? "bg-strong text-strong-foreground"
+          : "border border-soft bg-surface text-secondary bg-surface-hover"
       }`}
     >
       <Globe className="h-4 w-4" />
@@ -533,28 +533,28 @@ function LocaleDropdown({
 
   return (
     <div ref={rootRef} className="relative">
-      <div className="mb-2 text-xs font-medium uppercase tracking-[0.08em] text-neutral-500">
+      <div className="text-secondary mb-2 text-xs font-medium uppercase tracking-[0.08em]">
         {label}
       </div>
 
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="flex min-h-[52px] w-full items-center justify-between rounded-full border border-neutral-200 bg-white px-4 py-3 text-left transition hover:bg-neutral-50"
+        className="bg-surface text-primary bg-surface-hover flex min-h-[52px] w-full items-center justify-between rounded-full border border-soft px-4 py-3 text-left transition"
       >
-        <span className="truncate pr-4 text-sm font-medium text-neutral-900">
+        <span className="text-primary truncate pr-4 text-sm font-medium">
           {selected?.nativeLabel ?? value}
         </span>
 
         <ChevronDown
-          className={`h-4 w-4 shrink-0 text-neutral-500 transition ${
+          className={`text-secondary h-4 w-4 shrink-0 transition ${
             open ? "rotate-180" : ""
           }`}
         />
       </button>
 
       {open ? (
-        <div className="absolute bottom-[calc(100%+8px)] left-0 right-0 z-30 max-h-80 overflow-y-auto rounded-[24px] border border-neutral-200 bg-white p-2 shadow-xl">          
+        <div className="theme-scrollbar bg-surface shadow-soft absolute bottom-[calc(100%+8px)] left-0 right-0 z-30 max-h-80 overflow-y-auto rounded-[24px] border border-soft p-2">          
           {options.map((item) => {
             const isActive = item.code === value;
 
@@ -568,8 +568,8 @@ function LocaleDropdown({
                 }}
                 className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm transition ${
                   isActive
-                    ? "bg-neutral-950 text-white"
-                    : "text-neutral-700 hover:bg-neutral-100"
+                    ? "bg-strong text-strong-foreground"
+                    : "text-secondary bg-surface-hover"
                 }`}
               >
                 <span className="truncate pr-4">{item.nativeLabel}</span>
@@ -591,13 +591,13 @@ function AuthBlock({
   onReplayIntro: () => void;
 }) {
   return (
-    <div className="overflow-hidden rounded-[32px] border border-neutral-200 bg-white text-neutral-950 shadow-sm">
+    <div className="bg-surface text-primary shadow-soft overflow-hidden rounded-[32px] border border-soft">
       <div className="px-5 py-5">
         <div className="text-[26px] font-semibold leading-tight">
           {copy.authTitle}
         </div>
 
-        <div className="mt-2 max-w-[32rem] text-sm leading-6 text-neutral-600">
+        <div className="text-secondary mt-2 max-w-[32rem] text-sm leading-6">
           {copy.authText}
         </div>
 
@@ -606,7 +606,7 @@ function AuthBlock({
             onClick={() => {
               window.location.href = getTelegramAuthUrl();
             }}
-            className="inline-flex items-center rounded-full bg-neutral-950 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-neutral-800"
+            className="bg-strong text-strong-foreground bg-strong-hover inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium transition"
             type="button"
           >
             {copy.authButton}
@@ -614,7 +614,7 @@ function AuthBlock({
 
           <button
             onClick={onReplayIntro}
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2.5 text-sm font-medium text-neutral-800 transition hover:bg-neutral-100"
+            className="bg-surface text-primary bg-surface-hover inline-flex items-center gap-2 rounded-full border border-soft px-4 py-2.5 text-sm font-medium transition"
             type="button"
           >
             <Sparkles className="h-4 w-4" />
@@ -636,10 +636,10 @@ function ProfileBlock({
   onLogout: () => void;
 }) {
   return (
-    <div className="overflow-hidden rounded-[32px] border border-neutral-200 bg-white text-neutral-950 shadow-sm">
+    <div className="bg-surface text-primary shadow-soft overflow-hidden rounded-[32px] border border-soft">
       <div className="px-5 py-5">
         <div className="flex items-start gap-3">
-          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-neutral-200">
+          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-surface-soft">
             {user.photo_url ? (
               <img
                 src={user.photo_url}
@@ -658,20 +658,20 @@ function ProfileBlock({
               <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
             </div>
 
-            <div className="truncate text-sm text-neutral-500">
+            <div className="text-secondary truncate text-sm">
               {user.username ? `@${user.username}` : copy.telegramUserFallback}
             </div>
           </div>
         </div>
 
         <div className="mt-4 flex items-center justify-between gap-3">
-          <div className="inline-flex min-h-[32px] items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+          <div className="bg-success-soft text-success inline-flex min-h-[32px] items-center rounded-full px-3 py-1 text-xs font-medium">
             {copy.connectedToTelegram}
           </div>
 
           <button
             onClick={onLogout}
-            className="inline-flex items-center gap-2 rounded-full border border-neutral-200 px-3 py-1.5 text-xs font-medium text-neutral-700 transition hover:bg-neutral-100"
+            className="text-secondary bg-surface-hover inline-flex items-center gap-2 rounded-full border border-soft px-3 py-1.5 text-xs font-medium transition"
             type="button"
           >
             <LogOut className="h-3.5 w-3.5" />
@@ -695,7 +695,7 @@ function CabinetTile({
   return (
     <button
       onClick={onOpen}
-      className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-neutral-200 text-left"
+      className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-surface-soft text-left"
       type="button"
     >
       {preview ? (
@@ -706,7 +706,7 @@ function CabinetTile({
           referrerPolicy="no-referrer"
         />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-300 to-neutral-200" />
+        <div className="absolute inset-0 bg-gradient-to-br from-neutral-300 to-neutral-200 dark:from-[#1f1f2b] dark:to-[#171722]" />
       )}
 
       <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/5" />
@@ -752,7 +752,7 @@ function CabinetTile({
 
 function EmptyState({ text }: { text: string }) {
   return (
-    <div className="rounded-[28px] border border-neutral-200 bg-white p-8 text-center text-sm text-neutral-500">
+    <div className="bg-surface text-secondary rounded-[28px] border border-soft p-8 text-center text-sm">
       {text}
     </div>
   );
@@ -847,7 +847,7 @@ export function CreatorScreen({
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 px-4 pb-10 pt-20 text-neutral-950">
+    <div className="bg-app text-primary min-h-screen px-4 pb-10 pt-20">
       <div className="mx-auto max-w-[570px] space-y-6">
         {!user ? (
           <AuthBlock copy={copy} onReplayIntro={handleReplayIntro} />
@@ -898,8 +898,8 @@ export function CreatorScreen({
 
         {tab === "language" ? (
           <div className="space-y-4">
-            <div className="rounded-[28px] border border-neutral-200 bg-white p-6">
-              <div className="mb-4 flex items-center gap-2 text-sm font-semibold">
+            <div className="bg-surface rounded-[28px] border border-soft p-6">
+              <div className="text-primary mb-4 flex items-center gap-2 text-sm font-semibold">
                 <Globe className="h-4 w-4" />
                 {copy.languageTitle}
               </div>
@@ -930,13 +930,13 @@ export function CreatorScreen({
         ) : null}
 
         {tab === "channel" ? (
-          <div className="rounded-[28px] border border-neutral-200 bg-white p-6">
-            <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
+          <div className="bg-surface rounded-[28px] border border-soft p-6">
+            <div className="text-primary mb-3 flex items-center gap-2 text-sm font-semibold">
               <Send className="h-4 w-4" />
               {copy.channelTitle}
             </div>
 
-            <div className="text-sm leading-6 text-neutral-600">
+            <div className="text-secondary text-sm leading-6">
               {copy.channelText}
             </div>
 
@@ -944,13 +944,13 @@ export function CreatorScreen({
               value={channelUrl}
               onChange={(event) => setChannelUrl(event.target.value)}
               placeholder={copy.channelPlaceholder}
-              className="mt-4 w-full rounded-full border border-neutral-200 px-4 py-3 text-sm outline-none transition focus:border-neutral-950"
+              className="bg-surface text-primary focus-border-strong mt-4 w-full rounded-full border border-soft px-4 py-3 text-sm outline-none transition"
             />
 
             <button
               type="button"
               onClick={handleSubmitChannel}
-              className="mt-4 inline-flex items-center rounded-full bg-neutral-950 px-4 py-2 text-sm text-white transition hover:bg-neutral-800"
+              className="bg-strong text-strong-foreground bg-strong-hover mt-4 inline-flex items-center rounded-full px-4 py-2 text-sm transition"
             >
               {copy.channelButton}
             </button>
@@ -958,7 +958,7 @@ export function CreatorScreen({
         ) : null}
 
         {tab === "about" ? (
-          <div className="rounded-[28px] border border-neutral-200 bg-white p-6 text-sm leading-7 text-neutral-700">
+          <div className="bg-surface text-secondary rounded-[28px] border border-soft p-6 text-sm leading-7">
             {copy.aboutText}
           </div>
         ) : null}
