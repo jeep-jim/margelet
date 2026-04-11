@@ -756,7 +756,7 @@ export function FeedTextReaderModal({
   return createPortal(
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 bg-black/45 backdrop-blur-sm"
+        className="theme-shell fixed inset-0 z-50 bg-black/45 backdrop-blur-sm"        
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
