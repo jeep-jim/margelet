@@ -304,14 +304,12 @@ export function SourceScreen({
               <button
                 type="button"
                 onClick={() => setDonateOpen((prev) => !prev)}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-100 text-neutral-950"
+                className={`flex h-10 w-10 items-center justify-center rounded-full border transition ${donateOpen ? "border-transparent bg-accent text-accent-foreground" : "border-soft bg-surface-soft text-primary hover:bg-app"}`}
                 aria-label="Поддержать канал"
                 title="Поддержать канал"
               >
                 <Star
-                  className={`h-5 w-5 ${
-                    donateOpen ? "fill-accent text-accent" : "text-neutral-950"
-                  }`}
+                  className={`h-5 w-5 ${donateOpen ? "fill-current" : ""}`}
                 />
               </button>
 
@@ -321,7 +319,7 @@ export function SourceScreen({
                   setSubscribed(next.includes(source.source.handle));
                   window.dispatchEvent(new Event("storage"));
                 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-soft bg-surface-soft"
+                className={`flex h-10 w-10 items-center justify-center rounded-full border transition ${subscribed ? "border-transparent bg-accent text-accent-foreground" : "border-soft bg-surface-soft text-secondary hover:bg-app"}`}
                 type="button"
                 aria-label={
                   subscribed
@@ -335,11 +333,7 @@ export function SourceScreen({
                 }
               >
                 <Bell
-                  className={`h-5 w-5 ${
-                    subscribed
-                      ? "fill-accent text-accent"
-                      : "text-secondary"
-                  }`}
+                  className={`h-5 w-5 ${subscribed ? "fill-current" : ""}`}
                 />
               </button>
             </div>
@@ -355,7 +349,7 @@ export function SourceScreen({
 
               <button
                 onClick={openTelegramSource}
-                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-soft bg-surface-soft px-4 text-[13px] font-medium leading-none text-primary sm:text-sm"
+                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-soft bg-surface-soft px-4 text-[13px] font-medium leading-none text-primary transition hover:bg-app sm:text-sm"
                 type="button"
               >
                 <span>{t.feed.openChannel}</span>
@@ -370,7 +364,7 @@ export function SourceScreen({
           ) : null}
         </section>
 
-        <div className="overflow-hidden">
+        <div className="-mx-4 overflow-hidden">
           {sourcePosts.map((post) => {
             const ownerTelegramId = post.addedBy?.telegramId ?? null;
 

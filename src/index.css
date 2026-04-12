@@ -130,3 +130,19 @@ a {
   background: var(--accent);
   color: #fff;
 }
+
+.bg-strong {
+  background: var(--accent);
+}
+
+.text-strong-foreground {
+  color: var(--accent-foreground);
+}
+
+.bg-strong-hover:hover {
+  background: color-mix(in srgb, var(--accent) 88%, black);
+}
+
+.bg-surface-hover:hover {
+  background: color-mix(in srgb, var(--bg-surface-soft) 86%, var(--bg-surface));
+}

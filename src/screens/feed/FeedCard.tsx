@@ -176,7 +176,7 @@ export function FeedCard(props: FeedCardProps) {
   return (
     <article
       ref={cardRef}
-      className="relative overflow-hidden border-b border-soft bg-surface"
+      className="relative border-b border-soft bg-surface"
     >
       <div className="px-4 pt-4 pr-12">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
@@ -209,7 +209,7 @@ export function FeedCard(props: FeedCardProps) {
 
       {showVisualMedia ? (
         <>
-          <div className="relative mt-3">            
+          <div className="relative mt-3">
 
             <FeedMediaCard
               {...props}
@@ -225,6 +225,7 @@ export function FeedCard(props: FeedCardProps) {
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3 text-secondary">
                       <button
+                        className="flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-surface-soft"
                         type="button"
                         onClick={(event) => {
                           event.stopPropagation();
@@ -239,7 +240,7 @@ export function FeedCard(props: FeedCardProps) {
                           }`}
                         />
                       </button>
-                      <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+                      <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
                         {tagLabel}
                       </div>
                     </div>
@@ -251,7 +252,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           openPostSafely();
                         }}
-                        className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                        className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-[14px] font-medium text-primary transition hover:bg-app"
                       >
                         <span>{copy.read}</span>
                         <ExternalLink className="h-4 w-4" />
@@ -263,7 +264,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           expand();
                         }}
-                        className="inline-flex items-center rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                        className="inline-flex items-center rounded-full border border-soft bg-surface-soft px-4 py-2 text-[14px] font-medium text-primary transition hover:bg-app"
                       >
                         <span>{copy.more}</span>
                       </button>
@@ -277,6 +278,7 @@ export function FeedCard(props: FeedCardProps) {
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 text-secondary">
                   <button
+                    className="flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-surface-soft"
                     type="button"
                     onClick={(event) => {
                       event.stopPropagation();
@@ -291,7 +293,7 @@ export function FeedCard(props: FeedCardProps) {
                       }`}
                     />
                   </button>
-                  <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+                  <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
                     {tagLabel}
                   </div>
                 </div>
@@ -302,7 +304,7 @@ export function FeedCard(props: FeedCardProps) {
                     event.stopPropagation();
                     openPostSafely();
                   }}
-                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-[14px] font-medium text-primary transition hover:bg-app"
                 >
                   <span>{copy.open}</span>
                   <ExternalLink className="h-4 w-4" />

@@ -467,14 +467,10 @@ function FileList({
                 href={item.url}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2 text-sm font-medium !text-strong-foreground no-underline"
-                style={{ color: "#ffffff" }}
+                className="mt-3 inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary no-underline transition hover:bg-app"
               >
-                <span style={{ color: "#ffffff" }}>{copy.openFile}</span>
-                <ExternalLink
-                  className="h-4 w-4"
-                  style={{ color: "#ffffff" }}
-                />
+                <span>{copy.openFile}</span>
+                <ExternalLink className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -515,7 +511,7 @@ function MusicFallback({
           <button
             type="button"
             onClick={onOpenOriginal}
-            className="mt-3 inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2 text-sm font-medium text-strong-foreground bg-strong-hover"
+            className="mt-3 inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-app"
           >
             <span>{copy.openInTelegram}</span>
             <ExternalLink className="h-4 w-4" />
@@ -991,7 +987,7 @@ export function FeedTextReaderModal({
                 <button
                   type="button"
                   onClick={handleOpenTelegram}
-                  className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-medium text-strong-foreground bg-strong-hover"
+                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm font-medium text-primary transition hover:bg-app"
                 >
                   <span>{copy.openInTelegram}</span>
                   <ExternalLink className="h-4 w-4" />

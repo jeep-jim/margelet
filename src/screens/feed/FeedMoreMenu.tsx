@@ -70,12 +70,12 @@ export function FeedMoreMenu({
   const copy = COPY[locale] ?? COPY.en;
 
   return (
-    <div className="absolute right-0 top-12 z-40 min-w-[220px] rounded-2xl border border-soft bg-surface p-2 shadow-soft">
+    <div className="absolute right-0 top-12 z-[120] min-w-[220px] rounded-2xl border border-soft bg-surface p-2 shadow-soft">
       {isOwner || isAdmin ? (
         <button
           type="button"
           onClick={onDelete}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-600 transition hover:bg-rose-50"
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-400 transition hover:bg-surface-soft"
         >
           <Trash2 className="h-4 w-4" />
           <span>{isAdmin && !isOwner ? copy.deleteAdmin : copy.delete}</span>
@@ -84,7 +84,7 @@ export function FeedMoreMenu({
         <button
           type="button"
           onClick={onHide}
-          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition bg-surface-hover"
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
         >
           <EyeOff className="h-4 w-4" />
           <span>{copy.hide}</span>

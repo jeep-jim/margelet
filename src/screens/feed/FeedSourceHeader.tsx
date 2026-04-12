@@ -121,16 +121,16 @@ export function FeedSourceHeader({
             setSubscribed(next.includes(post.source.handle));
             window.dispatchEvent(new Event("storage"));
           }}
-          className={`ml-1 flex shrink-0 items-center justify-center rounded-full border border-soft bg-surface-soft ${bellSize}`}
+          className={`ml-1 flex shrink-0 items-center justify-center rounded-full border transition ${bellSize} ${
+            subscribed
+              ? "border-transparent bg-accent text-accent-foreground"
+              : "border-soft bg-surface-soft text-secondary hover:bg-app"
+          }`}
           type="button"
           aria-label="Toggle notifications"
         >
           <Bell
-            className={`h-4.5 w-4.5 ${
-              subscribed
-                ? "fill-accent text-accent"
-                : "text-secondary"
-            }`}
+            className={`h-4.5 w-4.5 ${subscribed ? "fill-current" : ""}`}
           />
         </button>
       ) : null}

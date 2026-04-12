@@ -311,20 +311,16 @@ export function FeedTextCard({
 
   return (
     <div className="px-4 pb-4 pt-3">
-      <div className="mb-3 flex items-center justify-between gap-2">
-        <div className="flex min-w-0 items-center gap-2">
-          <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-secondary">
-            {getTagLabel(getResolvedTag(post), locale)}
-          </div>
-
-          {mediaBadge ? (
+      {mediaBadge ? (
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <div className="flex min-w-0 items-center gap-2">
             <div className="inline-flex min-w-0 items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-secondary">
               {mediaBadge.icon}
               <span className="truncate">{mediaBadge.label}</span>
             </div>
-          ) : null}
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div
         className="cursor-pointer"
@@ -350,13 +346,14 @@ export function FeedTextCard({
       </div>
 
       <div className="mt-4 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-8 text-secondary">
+        <div className="flex min-w-0 items-center gap-3 text-secondary">
           <button
             type="button"
             onClick={(event) => {
               event.stopPropagation();
               onToggleLike();
             }}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition hover:bg-surface-soft"
           >
             <Heart
               className={`h-5 w-5 ${
@@ -364,6 +361,10 @@ export function FeedTextCard({
               }`}
             />
           </button>
+
+          <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+            {getTagLabel(getResolvedTag(post), locale)}
+          </div>
         </div>
 
         <button
@@ -372,7 +373,7 @@ export function FeedTextCard({
             event.stopPropagation();
             onOpen();
           }}
-          className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary"
+          className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-app"
         >
           <span>{copy.read}</span>
           <ExternalLink className="h-4 w-4" />
