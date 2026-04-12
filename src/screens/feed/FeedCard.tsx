@@ -99,7 +99,7 @@ export function FeedCard(props: FeedCardProps) {
 
   useEffect(() => {
     setLocalLiked(liked);
-  }, [liked, post.id]);
+  }, [post.id]);  
 
   useEffect(() => {
     const node = cardRef.current;
