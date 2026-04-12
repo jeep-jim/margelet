@@ -7,6 +7,63 @@ type AnchorRect = {
   right: number;
 };
 
+function getSubs(): string[] {
+  try {
+    const raw = localStorage.getItem("margelet_subscriptions");
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function toggleSub(handle: string) {
+  const current = getSubs();
+  const exists = current.includes(handle);
+  const next = exists
+    ? current.filter((h) => h !== handle)
+    : [...current, handle];
+
+  localStorage.setItem("margelet_subscriptions", JSON.stringify(next));
+  return next;
+}
+
+function readTelegramUserId() {
+  try {
+    const raw = localStorage.getItem("margelet_tg_user");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed?.id ? String(parsed.id) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function trackSubscribe(params: {
+  postId: number;
+  sourceHandle: string;
+  telegramUserId?: string | null;
+}) {
+  try {
+    await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": params.telegramUserId || "",
+      },
+      body: JSON.stringify({
+        action: "subscribe",
+        postId: params.postId,
+        sourceHandle: params.sourceHandle,
+        telegramUserId: params.telegramUserId || null,
+      }),
+    });
+  } catch {
+    //
+  }
+}
+
 export function FeedMoreMenu({
   locale,
   isOwner,
@@ -14,9 +71,10 @@ export function FeedMoreMenu({
   onDelete,
   onHide,
   onOpenTelegram,
-  onToggleSubscribe,
   onRequestClose,
   anchorRect,
+  postId,
+  sourceHandle,
 }: {
   locale: Locale;
   isOwner: boolean;
@@ -24,16 +82,22 @@ export function FeedMoreMenu({
   onDelete: () => void;
   onHide: () => void;
   onOpenTelegram: () => void;
-  onToggleSubscribe: () => void;
   onRequestClose: () => void;
   anchorRect: AnchorRect | null;
+  postId: number;
+  sourceHandle: string;
 }) {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    setSubscribed(getSubs().includes(sourceHandle));
+  }, [sourceHandle]);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -136,14 +200,10 @@ export function FeedMoreMenu({
   const copy = COPY[locale] ?? COPY.en;
 
   const position = useMemo(() => {
-    const width = 248;
-    const rightGap = 12;
-    const top = (anchorRect?.top ?? 72) + 10;
-
     return {
-      top,
-      right: rightGap,
-      width,
+      top: Math.max(12, (anchorRect?.top ?? 72) + 8),
+      right: Math.max(12, anchorRect?.right ?? 12),
+      width: 252,
     };
   }, [anchorRect]);
 
@@ -155,7 +215,7 @@ export function FeedMoreMenu({
 
       <div
         ref={menuRef}
-        className="fixed z-[9999] min-w-[248px] rounded-[22px] border border-soft bg-surface p-2 shadow-soft"
+        className="fixed z-[9999] min-w-[252px] rounded-[22px] border border-soft bg-surface p-2 shadow-soft"
         style={{
           top: position.top,
           right: position.right,
@@ -164,13 +224,29 @@ export function FeedMoreMenu({
       >
         <button
           type="button"
-          onClick={() => {
-            onToggleSubscribe();
-            onRequestClose();
+          onClick={async () => {
+            const telegramUserId = readTelegramUserId();
+            const next = toggleSub(sourceHandle);
+            const isNowSubscribed = next.includes(sourceHandle);
+
+            setSubscribed(isNowSubscribed);
+            window.dispatchEvent(new Event("storage"));
+
+            if (telegramUserId) {
+              await trackSubscribe({
+                postId,
+                sourceHandle,
+                telegramUserId,
+              });
+            }
           }}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
         >
-          <Bell className="h-4 w-4" />
+          <Bell
+            className={`h-4 w-4 ${
+              subscribed ? "fill-current text-primary" : "text-secondary"
+            }`}
+          />
           <span>{copy.subscribe}</span>
         </button>
 

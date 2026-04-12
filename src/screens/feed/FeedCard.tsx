@@ -214,50 +214,12 @@ export function FeedCard(props: FeedCardProps) {
               onOpenTelegram={() => {
                 window.open(post.postUrl, "_blank", "noopener,noreferrer");
               }}
-              onToggleSubscribe={() => {
-                try {
-                  const key = "margelet_subscriptions";
-
-                  const raw = localStorage.getItem(key);
-                  const current = raw ? JSON.parse(raw) : [];
-                  const list = Array.isArray(current) ? current : [];
-
-                  const exists = list.includes(post.source.handle);
-
-                  const next = exists
-                    ? list.filter((h: string) => h !== post.source.handle)
-                    : [...list, post.source.handle];
-
-                  localStorage.setItem(key, JSON.stringify(next));
-                  window.dispatchEvent(new Event("storage"));
-
-                  const rawUser = localStorage.getItem("margelet_tg_user");
-                  const parsedUser = rawUser ? JSON.parse(rawUser) : null;
-                  const telegramUserId = parsedUser?.id ? String(parsedUser.id) : null;
-
-                  if (telegramUserId) {
-                    void fetch("/api/track", {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        "x-telegram-id": telegramUserId,
-                      },
-                      body: JSON.stringify({
-                        action: "subscribe",
-                        postId: post.id,
-                        sourceHandle: post.source.handle,
-                        telegramUserId,
-                      }),
-                    });
-                  }
-                } catch {
-                  //
-                }
-              }}              
               onRequestClose={onToggleMenu}
               anchorRect={menuAnchorRect}
+              postId={post.id}
+              sourceHandle={post.source.handle}
             />
-          ) : null}          
+          ) : null}             
         </div>
       </div>
 
