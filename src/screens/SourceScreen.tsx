@@ -104,6 +104,20 @@ export function SourceScreen({
   }, [source?.source.handle]);
 
   useEffect(() => {
+    if (!source?.source.handle) return;
+
+    const syncSubscribed = () => {
+      setSubscribed(getSubs().includes(source.source.handle));
+    };
+
+    window.addEventListener("storage", syncSubscribed);
+
+    return () => {
+      window.removeEventListener("storage", syncSubscribed);
+    };
+  }, [source?.source.handle]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [sourceHandle]);
 

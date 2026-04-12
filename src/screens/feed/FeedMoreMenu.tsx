@@ -1,5 +1,6 @@
 import { Bell, EyeOff, Send, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
 
 type AnchorRect = {
@@ -209,13 +210,13 @@ export function FeedMoreMenu({
 
   if (!mounted) return null;
 
-  return (
+  return createPortal(
     <>
-      <div className="fixed inset-0 z-[9998]" onClick={onRequestClose} />
+      <div className="fixed inset-0 z-[99998]" onClick={onRequestClose} />
 
       <div
         ref={menuRef}
-        className="fixed z-[9999] min-w-[252px] rounded-[22px] border border-soft bg-surface p-2 shadow-soft"
+        className="fixed z-[99999] min-w-[252px] rounded-[22px] border border-soft bg-surface p-2 shadow-soft"
         style={{
           top: position.top,
           right: position.right,
@@ -290,6 +291,7 @@ export function FeedMoreMenu({
           </button>
         )}
       </div>
-    </>
+    </>,
+    document.body
   );
 }
