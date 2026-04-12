@@ -12,20 +12,19 @@ import {
   FEED_FILTER_TOGGLE_EVENT,
 } from "./feed/feed.constants";
 import type { ViewerDirection } from "./feed/feed.types";
-import {
-  buildShareUrl,
-  getResolvedTags,
-} from "./feed/feed.utils";
+import { buildShareUrl, getResolvedTags } from "./feed/feed.utils";
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
+const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 
 type SubscriptionBubble = {
   handle: string;
   title: string;
   avatar: string | null;
   hasNew: boolean;
+  latestPostId: number;
 };
 
 type FeedScreenCopy = {
@@ -162,6 +161,46 @@ function readSubscriptionsFromStorage(): string[] {
   }
 }
 
+function readSeenSubscriptionsFromStorage(): Record<string, number> {
+  try {
+    const raw = localStorage.getItem(SEEN_SUBSCRIPTIONS_STORAGE_KEY);
+    if (!raw) return {};
+
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {};
+    }
+
+    const result: Record<string, number> = {};
+
+    for (const [key, value] of Object.entries(parsed)) {
+      if (
+        typeof key === "string" &&
+        typeof value === "number" &&
+        Number.isFinite(value)
+      ) {
+        result[key] = value;
+      }
+    }
+
+    return result;
+  } catch {
+    return {};
+  }
+}
+
+function writeSeenSubscriptionsToStorage(value: Record<string, number>) {
+  try {
+    localStorage.setItem(
+      SEEN_SUBSCRIPTIONS_STORAGE_KEY,
+      JSON.stringify(value)
+    );
+    window.dispatchEvent(new Event("storage"));
+  } catch {
+    //
+  }
+}
+
 function SubscriptionsHint({ text }: { text: string }) {
   return (
     <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
@@ -190,13 +229,13 @@ function SubscriptionsBar({
   return (
     <div className="mb-4 mt-4 w-full">
       <div className="overflow-x-auto pl-4 pr-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex min-w-max gap-1.5">
+        <div className="flex min-w-max gap-2">
           {items.map((item) => (
             <button
               key={item.handle}
               type="button"
               onClick={() => onOpen(item.handle)}
-              className="flex w-[68px] shrink-0 flex-col items-center gap-1 text-center"
+              className="flex w-[72px] shrink-0 flex-col items-center gap-1 text-center"
             >
               <div
                 className={`rounded-full border-2 p-[2px] ${
@@ -267,6 +306,9 @@ export function FeedScreen({
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [subscriptionHandles, setSubscriptionHandles] = useState<string[]>([]);
+  const [seenSubscriptionPosts, setSeenSubscriptionPosts] = useState<
+    Record<string, number>
+  >({});
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
@@ -282,6 +324,7 @@ export function FeedScreen({
     setSelectedTags(readSelectedTagsFromStorage());
     setSearchQuery(readSearchQueryFromStorage());
     setSubscriptionHandles(readSubscriptionsFromStorage());
+    setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
   }, []);
 
   useEffect(() => {
@@ -302,6 +345,7 @@ export function FeedScreen({
 
     const syncSubscriptions = () => {
       setSubscriptionHandles(readSubscriptionsFromStorage());
+      setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
     };
 
     window.addEventListener(
@@ -344,25 +388,42 @@ export function FeedScreen({
   const subscriptionBubbles = useMemo(() => {
     if (subscriptionHandles.length === 0) return [];
 
-    const seen = new Set<string>();
-    const result: SubscriptionBubble[] = [];
+    const latestByHandle = new Map<
+      string,
+      {
+        handle: string;
+        title: string;
+        avatar: string | null;
+        latestPostId: number;
+      }
+    >();
 
     for (const post of safePosts) {
       const handle = post.source.handle;
       if (!subscriptionHandles.includes(handle)) continue;
-      if (seen.has(handle)) continue;
 
-      seen.add(handle);
-      result.push({
-        handle,
-        title: post.source.title,
-        avatar: post.source.avatar,
-        hasNew: true,
-      });
+      const existing = latestByHandle.get(handle);
+
+      if (!existing || post.id > existing.latestPostId) {
+        latestByHandle.set(handle, {
+          handle,
+          title: post.source.title,
+          avatar: post.source.avatar,
+          latestPostId: post.id,
+        });
+      }
     }
 
-    return result;
-  }, [safePosts, subscriptionHandles]);
+    return Array.from(latestByHandle.values())
+      .sort((a, b) => b.latestPostId - a.latestPostId)
+      .map((item) => ({
+        handle: item.handle,
+        title: item.title,
+        avatar: item.avatar,
+        latestPostId: item.latestPostId,
+        hasNew: item.latestPostId > (seenSubscriptionPosts[item.handle] ?? 0),
+      }));
+  }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
 
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
@@ -552,7 +613,22 @@ export function FeedScreen({
       {!tagsOpen && hasSubscriptions && hasBubbles ? (
         <SubscriptionsBar
           items={subscriptionBubbles}
-          onOpen={(handle) => openSource(handle)}
+          onOpen={(handle) => {
+            const bubble = subscriptionBubbles.find((item) => item.handle === handle);
+
+            if (bubble) {
+              setSeenSubscriptionPosts((prev) => {
+                const next = {
+                  ...prev,
+                  [handle]: Math.max(prev[handle] ?? 0, bubble.latestPostId),
+                };
+                writeSeenSubscriptionsToStorage(next);
+                return next;
+              });
+            }
+
+            openSource(handle);
+          }}
         />
       ) : null}
 
@@ -598,7 +674,7 @@ export function FeedScreen({
             </button>
           </div>
         </div>
-      ) : null}      
+      ) : null}
 
       <div className="mx-auto w-full max-w-[570px]">
         {visiblePosts.map((post) => {
