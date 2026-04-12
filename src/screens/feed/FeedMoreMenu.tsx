@@ -127,70 +127,80 @@ export function FeedMoreMenu({
 
   const COPY = {
     en: {
-      subscribe: "Enable notifications",
+      subscribeOn: "Enable notifications",
+      subscribeOff: "Disable notifications",
       openTelegram: "Open in Telegram",
       delete: "Delete post",
       deleteAdmin: "Delete post (admin)",
       hide: "Hide this post",
     },
     ru: {
-      subscribe: "Включить уведомления",
+      subscribeOn: "Включить уведомления",
+      subscribeOff: "Отключить уведомления",
       openTelegram: "Открыть в Telegram",
       delete: "Удалить пост",
       deleteAdmin: "Удалить пост (admin)",
       hide: "Не показывать",
     },
     de: {
-      subscribe: "Benachrichtigungen aktivieren",
+      subscribeOn: "Benachrichtigungen aktivieren",
+      subscribeOff: "Benachrichtigungen deaktivieren",
       openTelegram: "In Telegram öffnen",
       delete: "Beitrag löschen",
       deleteAdmin: "Beitrag löschen (admin)",
       hide: "Diesen Beitrag ausblenden",
     },
     es: {
-      subscribe: "Activar notificaciones",
+      subscribeOn: "Activar notificaciones",
+      subscribeOff: "Desactivar notificaciones",
       openTelegram: "Abrir en Telegram",
       delete: "Eliminar publicación",
       deleteAdmin: "Eliminar publicación (admin)",
       hide: "Ocultar esta publicación",
     },
     tr: {
-      subscribe: "Bildirimleri aç",
+      subscribeOn: "Bildirimleri aç",
+      subscribeOff: "Bildirimleri kapat",
       openTelegram: "Telegram’da aç",
       delete: "Gönderiyi sil",
       deleteAdmin: "Gönderiyi sil (admin)",
       hide: "Bu gönderiyi gizle",
     },
     fr: {
-      subscribe: "Activer les notifications",
+      subscribeOn: "Activer les notifications",
+      subscribeOff: "Désactiver les notifications",
       openTelegram: "Ouvrir dans Telegram",
       delete: "Supprimer le post",
       deleteAdmin: "Supprimer le post (admin)",
       hide: "Masquer ce post",
     },
     it: {
-      subscribe: "Attiva notifiche",
+      subscribeOn: "Attiva notifiche",
+      subscribeOff: "Disattiva notifiche",
       openTelegram: "Apri in Telegram",
       delete: "Elimina post",
       deleteAdmin: "Elimina post (admin)",
       hide: "Nascondi questo post",
     },
     "pt-br": {
-      subscribe: "Ativar notificações",
+      subscribeOn: "Ativar notificações",
+      subscribeOff: "Desativar notificações",
       openTelegram: "Abrir no Telegram",
       delete: "Excluir post",
       deleteAdmin: "Excluir post (admin)",
       hide: "Ocultar este post",
     },
     id: {
-      subscribe: "Aktifkan notifikasi",
+      subscribeOn: "Aktifkan notifikasi",
+      subscribeOff: "Nonaktifkan notifikasi",
       openTelegram: "Buka di Telegram",
       delete: "Hapus postingan",
       deleteAdmin: "Hapus postingan (admin)",
       hide: "Sembunyikan postingan ini",
     },
     pl: {
-      subscribe: "Włącz powiadomienia",
+      subscribeOn: "Włącz powiadomienia",
+      subscribeOff: "Wyłącz powiadomienia",
       openTelegram: "Otwórz w Telegramie",
       delete: "Usuń post",
       deleteAdmin: "Usuń post (admin)",
@@ -248,7 +258,9 @@ export function FeedMoreMenu({
               subscribed ? "fill-current text-primary" : "text-secondary"
             }`}
           />
-          <span>{copy.subscribe}</span>
+          <span>
+            {subscribed ? copy.subscribeOff : copy.subscribeOn}
+          </span>
         </button>
 
         <button
