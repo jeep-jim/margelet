@@ -395,6 +395,7 @@ export function FeedScreen({
         title: string;
         avatar: string | null;
         latestPostId: number;
+        hasNew: boolean;
       }
     >();
 
@@ -405,26 +406,27 @@ export function FeedScreen({
       const existing = latestByHandle.get(handle);
 
       if (!existing || post.id > existing.latestPostId) {
+        const latestPostId = post.id;
+
         latestByHandle.set(handle, {
           handle,
           title: post.source.title,
           avatar: post.source.avatar,
-          latestPostId: post.id,
+          latestPostId,
+          hasNew: latestPostId > (seenSubscriptionPosts[handle] ?? 0),
         });
       }
     }
 
-    return Array.from(latestByHandle.values())
-      .sort((a, b) => b.latestPostId - a.latestPostId)
-      .map((item) => ({
-        handle: item.handle,
-        title: item.title,
-        avatar: item.avatar,
-        latestPostId: item.latestPostId,
-        hasNew: item.latestPostId > (seenSubscriptionPosts[item.handle] ?? 0),
-      }));
-  }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
+    return Array.from(latestByHandle.values()).sort((a, b) => {
+      if (a.hasNew !== b.hasNew) {
+        return a.hasNew ? -1 : 1;
+      }
 
+      return b.latestPostId - a.latestPostId;
+    });
+  }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
+  
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
 
