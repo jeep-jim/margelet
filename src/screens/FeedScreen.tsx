@@ -188,17 +188,23 @@ function SubscriptionsBar({
   if (!items.length) return null;
 
   return (
-    <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
-      <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex gap-3">
+    <div className="mb-4 mt-4 w-full">
+      <div className="overflow-x-auto pl-4 pr-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+        <div className="flex min-w-max gap-1.5">
           {items.map((item) => (
             <button
               key={item.handle}
               type="button"
               onClick={() => onOpen(item.handle)}
-              className="flex w-[72px] shrink-0 flex-col items-center gap-1.5 text-center"
+              className="flex w-[68px] shrink-0 flex-col items-center gap-1 text-center"
             >
-              <div className="rounded-full border-2 border-soft p-[2px]">
+              <div
+                className={`rounded-full border-2 p-[2px] ${
+                  item.hasNew
+                    ? "border-[color:var(--text-primary)]"
+                    : "border-soft"
+                }`}
+              >
                 <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-surface">
                   {item.avatar ? (
                     <img
