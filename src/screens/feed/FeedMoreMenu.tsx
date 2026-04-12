@@ -1,4 +1,4 @@
-import { Bell, EyeOff, Send, Trash2 } from "lucide-react";
+import { Bell, BellOff, EyeOff, Send, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
@@ -214,7 +214,7 @@ export function FeedMoreMenu({
     return {
       top: Math.max(12, (anchorRect?.top ?? 72) + 8),
       right: Math.max(12, anchorRect?.right ?? 12),
-      width: 252,
+      width: 286,
     };
   }, [anchorRect]);
 
@@ -226,7 +226,7 @@ export function FeedMoreMenu({
 
       <div
         ref={menuRef}
-        className="fixed z-[99999] min-w-[252px] rounded-[22px] border border-soft bg-surface p-2 shadow-soft"
+        className="fixed z-[99999] min-w-[286px] rounded-[22px] border border-soft bg-surface p-2 shadow-soft"
         style={{
           top: position.top,
           right: position.right,
@@ -253,11 +253,11 @@ export function FeedMoreMenu({
           }}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
         >
-          <Bell
-            className={`h-4 w-4 ${
-              subscribed ? "fill-current text-primary" : "text-secondary"
-            }`}
-          />
+          {subscribed ? (
+            <BellOff className="h-4 w-4 text-primary" />
+          ) : (
+            <Bell className="h-4 w-4 text-secondary" />
+          )}          
           <span>
             {subscribed ? copy.subscribeOff : copy.subscribeOn}
           </span>
