@@ -101,6 +101,7 @@ export function FeedCard(props: FeedCardProps) {
     setLocalLiked(liked);
   }, [post.id]);  
 
+  
   useEffect(() => {
     const node = cardRef.current;
     if (!node) return;
@@ -235,8 +236,8 @@ export function FeedCard(props: FeedCardProps) {
                         <Heart
                           className={`h-5 w-5 ${
                             localLiked
-                              ? "fill-accent text-accent"
-                              : "text-secondary"
+                              ? "fill-current text-primary"
+                              : "text-secondary"                              
                           }`}
                         />
                       </button>
@@ -290,8 +291,8 @@ export function FeedCard(props: FeedCardProps) {
                     <Heart
                       className={`h-5 w-5 ${
                         localLiked
-                          ? "fill-accent text-accent"
-                          : "text-secondary"
+                          ? "fill-current text-primary"
+                          : "text-secondary"                          
                       }`}
                     />
                   </button>
