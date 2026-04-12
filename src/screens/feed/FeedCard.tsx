@@ -95,11 +95,11 @@ export function FeedCard(props: FeedCardProps) {
   const viewTrackedRef = useRef(false);
 
   const [isCardVisible, setIsCardVisible] = useState(false);
-  const [localLiked, setLocalLiked] = useState(liked);
+  const [localLiked, setLocalLiked] = useState<boolean>(() => liked);
 
   useEffect(() => {
     setLocalLiked(liked);
-  }, [post.id]);  
+  }, [liked, post.id]);
 
   
   useEffect(() => {
