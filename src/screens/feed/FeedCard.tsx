@@ -96,6 +96,7 @@ export function FeedCard(props: FeedCardProps) {
 
   const [isCardVisible, setIsCardVisible] = useState(false);
   const [localLiked, setLocalLiked] = useState<boolean>(() => liked);
+  const [menuAnchorRect, setMenuAnchorRect] = useState<{ top: number; right: number } | null>(null);
 
   useEffect(() => {
     setLocalLiked(liked);
@@ -189,8 +190,15 @@ export function FeedCard(props: FeedCardProps) {
             className="flex h-9 w-9 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft"
             onClick={(event) => {
               event.stopPropagation();
+
+              const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
+              setMenuAnchorRect({
+                top: rect.bottom,
+                right: window.innerWidth - rect.right,
+              });
+
               onToggleMenu();
-            }}
+            }}            
             type="button"
           >
             <MoreVertical className="h-5 w-5" />
@@ -203,8 +211,16 @@ export function FeedCard(props: FeedCardProps) {
               isAdmin={isAdmin}
               onDelete={onDelete}
               onHide={onHide}
+              onOpenTelegram={() => {
+                window.open(post.postUrl, "_blank", "noopener,noreferrer");
+              }}
+              onToggleSubscribe={() => {
+                // пока только заглушка на будущее действие/связку
+              }}
+              onRequestClose={onToggleMenu}
+              anchorRect={menuAnchorRect}
             />
-          ) : null}
+          ) : null}          
         </div>
       </div>
 
