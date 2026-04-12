@@ -176,7 +176,7 @@ export function FeedCard(props: FeedCardProps) {
   return (
     <article
       ref={cardRef}
-      className="relative border-b border-soft bg-surface"
+      className="relative overflow-hidden border-b border-soft bg-surface"
     >
       <div className="px-4 pt-4 pr-12">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
@@ -210,7 +210,6 @@ export function FeedCard(props: FeedCardProps) {
       {showVisualMedia ? (
         <>
           <div className="relative mt-3">
-
             <FeedMediaCard
               {...props}
               displayText={displayText}
@@ -223,14 +222,15 @@ export function FeedCard(props: FeedCardProps) {
               <ExpandableFeedText text={displayText}>
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 text-secondary">
+                    <div className="relative z-10 flex items-center gap-2">
                       <button
-                        className="flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-surface-soft"
                         type="button"
                         onClick={(event) => {
                           event.stopPropagation();
                           handleLikeClick();
                         }}
+                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft active:scale-95"
+                        aria-label="Like post"
                       >
                         <Heart
                           className={`h-5 w-5 ${
@@ -240,6 +240,7 @@ export function FeedCard(props: FeedCardProps) {
                           }`}
                         />
                       </button>
+
                       <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
                         {tagLabel}
                       </div>
@@ -252,7 +253,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           openPostSafely();
                         }}
-                        className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-[14px] font-medium text-primary transition hover:bg-app"
+                        className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.read}</span>
                         <ExternalLink className="h-4 w-4" />
@@ -264,7 +265,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           expand();
                         }}
-                        className="inline-flex items-center rounded-full border border-soft bg-surface-soft px-4 py-2 text-[14px] font-medium text-primary transition hover:bg-app"
+                        className="inline-flex items-center rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.more}</span>
                       </button>
@@ -276,14 +277,15 @@ export function FeedCard(props: FeedCardProps) {
           ) : (
             <div className="px-4 py-3">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-3 text-secondary">
+                <div className="relative z-10 flex items-center gap-2">
                   <button
-                    className="flex h-9 w-9 items-center justify-center rounded-full transition hover:bg-surface-soft"
                     type="button"
                     onClick={(event) => {
                       event.stopPropagation();
                       handleLikeClick();
                     }}
+                    className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft active:scale-95"
+                    aria-label="Like post"
                   >
                     <Heart
                       className={`h-5 w-5 ${
@@ -293,6 +295,7 @@ export function FeedCard(props: FeedCardProps) {
                       }`}
                     />
                   </button>
+
                   <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
                     {tagLabel}
                   </div>
@@ -304,7 +307,7 @@ export function FeedCard(props: FeedCardProps) {
                     event.stopPropagation();
                     openPostSafely();
                   }}
-                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-[14px] font-medium text-primary transition hover:bg-app"
+                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                 >
                   <span>{copy.open}</span>
                   <ExternalLink className="h-4 w-4" />
