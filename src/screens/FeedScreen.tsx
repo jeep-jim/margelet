@@ -228,43 +228,45 @@ function SubscriptionsBar({
 
   return (
     <div className="mb-4 mt-4 w-full">
-      <div className="overflow-x-auto pl-4 pr-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-        <div className="flex min-w-max gap-2">
-          {items.map((item) => (
-            <button
-              key={item.handle}
-              type="button"
-              onClick={() => onOpen(item.handle)}
-              className="flex w-[72px] shrink-0 flex-col items-center gap-1 text-center"
-            >
-              <div
-                className={`rounded-full border-2 p-[2px] ${
-                  item.hasNew
-                    ? "border-[color:var(--text-primary)]"
-                    : "border-soft"
-                }`}
+      <div className="mx-auto w-full max-w-[570px]">
+        <div className="overflow-x-auto pl-4 pr-4 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex min-w-max gap-2.5">
+            {items.map((item) => (
+              <button
+                key={item.handle}
+                type="button"
+                onClick={() => onOpen(item.handle)}
+                className="flex w-[72px] shrink-0 flex-col items-center gap-1 text-center"
               >
-                <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-surface">
-                  {item.avatar ? (
-                    <img
-                      src={item.avatar}
-                      alt={item.title}
-                      className="h-full w-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-surface-soft text-xs font-bold text-primary">
-                      {item.title.slice(0, 2).toUpperCase()}
-                    </div>
-                  )}
+                <div
+                  className={`rounded-full border-2 p-[2px] ${
+                    item.hasNew
+                      ? "border-[color:var(--text-primary)]"
+                      : "border-soft"
+                  }`}
+                >
+                  <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-surface">
+                    {item.avatar ? (
+                      <img
+                        src={item.avatar}
+                        alt={item.title}
+                        className="h-full w-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-surface-soft text-xs font-bold text-primary">
+                        {item.title.slice(0, 2).toUpperCase()}
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <div className="w-full truncate text-[11px] font-medium text-secondary">
-                {item.title}
-              </div>
-            </button>
-          ))}
+                <div className="w-full truncate text-[11px] font-medium text-secondary">
+                  {item.title}
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
