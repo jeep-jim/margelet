@@ -292,7 +292,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
   const localeOptions = React.useMemo(() => getSortedLocales(), []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] px-4 text-white">
+    <div className="min-h-screen bg-[#17212b] px-4 text-white">
       <div className="flex min-h-screen items-start justify-center pt-4 pb-6 sm:pt-6">
         <div className="w-full max-w-md">
           <div className="mb-4 flex justify-center">
@@ -304,7 +304,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
           </div>
 
           <div className="mb-5">
-            <div className="flex items-center justify-between rounded-full border border-white/15 bg-white/5 py-2 pl-5 pr-3 backdrop-blur-sm">
+            <div className="flex items-center justify-between rounded-full border border-[#2b3f53] bg-[#1f2c3a] py-2 pl-5 pr-3">
               <span className="truncate pr-4 text-sm font-medium text-white/90">
                 {intro.chooseLanguage}
               </span>
@@ -317,20 +317,20 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                     onChangeLocale(nextLocale);
                     localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLocale);
                   }}
-                  className="appearance-none rounded-full bg-white/5 px-4 py-2 pr-10 text-sm font-medium text-white outline-none"
+                  className="appearance-none rounded-full border border-[#2b3f53] bg-[#223244] px-4 py-2 pr-10 text-sm font-medium text-white outline-none"
                 >
                   {localeOptions.map((item) => (
                     <option
                       key={item.code}
                       value={item.code}
-                      className="bg-[#0f1017] text-white"
+                      className="bg-[#1f2c3a] text-white"
                     >
                       {item.nativeLabel}
                     </option>
                   ))}
                 </select>
 
-                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-white/70" />
+                <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9fb0c0]" />
               </div>
             </div>
           </div>
@@ -347,11 +347,11 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                     transition={{ duration: 0.22, ease: "easeOut" }}
                     className="w-full"
                   >
-                    <div className="mb-3 text-[clamp(2rem,5vw,3rem)] font-bold leading-tight">
+                    <div className="mb-3 text-[clamp(2rem,5vw,3rem)] font-bold leading-tight text-white">
                       {pages[index].title}
                     </div>
 
-                    <div className="mx-auto max-w-[22rem] text-base leading-7 text-white/70">
+                    <div className="mx-auto max-w-[22rem] text-base leading-7 text-[#9fb0c0]">
                       {pages[index].text}
                     </div>
                   </motion.div>
@@ -363,7 +363,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                   <div
                     key={i}
                     className={`h-2 w-2 rounded-full ${
-                      i === index ? "bg-white" : "bg-white/30"
+                      i === index ? "bg-white" : "bg-[#516679]"
                     }`}
                   />
                 ))}
@@ -390,4 +390,4 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
       </div>
     </div>
   );
-}
+}  
