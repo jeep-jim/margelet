@@ -2,6 +2,9 @@ import { redis } from "./lib/kv.js";
 
 const STATS_KEY = "margelet:stats";
 const ADMIN_IDS = ["1372669404"];
+const VIEW_DEDUP_TTL_SECONDS = 60 * 60 * 6;
+const UNIQUE_DAILY_TTL_SECONDS = 60 * 60 * 24 * 8;
+const UNIQUE_ALL_TIME_TTL_SECONDS = 60 * 60 * 24 * 365;
 
 type TrackAction =
   | "view"
@@ -22,8 +25,11 @@ function getCountry(req: any) {
 function getDevice(userAgent: string) {
   const ua = String(userAgent || "").toLowerCase();
 
-  if (ua.includes("mobile")) return "mobile";
-  if (ua.includes("tablet")) return "tablet";
+  if (ua.includes("tablet") || ua.includes("ipad")) return "tablet";
+  if (ua.includes("mobile") || ua.includes("android") || ua.includes("iphone")) {
+    return "mobile";
+  }
+
   return "desktop";
 }
 
@@ -104,28 +110,24 @@ function sourceSubscribersUsersKey(handle: string) {
   return `${STATS_KEY}:source:${handle}:subs:users`;
 }
 
-function dailyUniqueUsersSetKey(day: string) {
-  return `${STATS_KEY}:unique:users:day:${day}`;
+function uniqueDayKey(day: string, visitorId: string) {
+  return `${STATS_KEY}:unique:day:${day}:${visitorId}`;
 }
 
-function dailyUniqueUsersCountrySetKey(day: string, country: string) {
-  return `${STATS_KEY}:unique:users:country:${country}:day:${day}`;
+function uniqueCountryDayKey(day: string, country: string, visitorId: string) {
+  return `${STATS_KEY}:unique:country:${country}:day:${day}:${visitorId}`;
 }
 
-function dailyUniqueUsersDeviceSetKey(day: string, device: string) {
-  return `${STATS_KEY}:unique:users:device:${device}:day:${day}`;
+function uniqueDeviceDayKey(day: string, device: string, visitorId: string) {
+  return `${STATS_KEY}:unique:device:${device}:day:${day}:${visitorId}`;
 }
 
-function allTimeUniqueUsersSetKey() {
-  return `${STATS_KEY}:unique:users:all`;
+function uniqueAllTimeKey(visitorId: string) {
+  return `${STATS_KEY}:unique:all:${visitorId}`;
 }
 
-function allTimeUniqueUsersCountrySetKey(country: string) {
-  return `${STATS_KEY}:unique:users:country:${country}:all`;
-}
-
-function allTimeUniqueUsersDeviceSetKey(device: string) {
-  return `${STATS_KEY}:unique:users:device:${device}:all`;
+function viewDedupKey(postId: number, visitorId: string) {
+  return `${STATS_KEY}:viewdedup:post:${postId}:${visitorId}`;
 }
 
 function buildVisitorId(params: {
@@ -151,29 +153,50 @@ async function incrementGlobalCounters(params: {
   const field = getMetricField(params.action);
 
   if (params.action === "view") {
-    await redis.hincrby(STATS_KEY, "views", 1);
-    await redis.hincrby(`${STATS_KEY}:days`, params.day, 1);
-    await redis.hincrby(`${STATS_KEY}:countries`, params.country, 1);
-    await redis.hincrby(`${STATS_KEY}:devices`, params.device, 1);
+    await Promise.all([
+      redis.hincrby(STATS_KEY, "views", 1),
+      redis.hincrby(`${STATS_KEY}:days`, params.day, 1),
+      redis.hincrby(`${STATS_KEY}:countries`, params.country, 1),
+      redis.hincrby(`${STATS_KEY}:devices`, params.device, 1),
+    ]);
     return;
   }
 
-  await redis.hincrby(STATS_KEY, field, 1);
-  await redis.hincrby(`${STATS_KEY}:days:${field}`, params.day, 1);
-  await redis.hincrby(`${STATS_KEY}:countries:${field}`, params.country, 1);
-  await redis.hincrby(`${STATS_KEY}:devices:${field}`, params.device, 1);
+  await Promise.all([
+    redis.hincrby(STATS_KEY, field, 1),
+    redis.hincrby(`${STATS_KEY}:days:${field}`, params.day, 1),
+    redis.hincrby(`${STATS_KEY}:countries:${field}`, params.country, 1),
+    redis.hincrby(`${STATS_KEY}:devices:${field}`, params.device, 1),
+  ]);
 }
 
 async function incrementPostCounters(postId: number, action: TrackAction, day: string) {
   const field = getMetricField(action);
-  await redis.hincrby(postMetricsKey(postId), field, 1);
-  await redis.hincrby(postDailyMetricsKey(postId, day), field, 1);
+  await Promise.all([
+    redis.hincrby(postMetricsKey(postId), field, 1),
+    redis.hincrby(postDailyMetricsKey(postId, day), field, 1),
+  ]);
 }
 
 async function incrementSourceCounters(handle: string, action: TrackAction, day: string) {
   const field = getMetricField(action);
-  await redis.hincrby(sourceMetricsKey(handle), field, 1);
-  await redis.hincrby(sourceDailyMetricsKey(handle, day), field, 1);
+  await Promise.all([
+    redis.hincrby(sourceMetricsKey(handle), field, 1),
+    redis.hincrby(sourceDailyMetricsKey(handle, day), field, 1),
+  ]);
+}
+
+async function trySetUniqueKey(key: string, ttlSeconds: number) {
+  try {
+    const result = await redis.set(key, "1", {
+      nx: true,
+      ex: ttlSeconds,
+    });
+
+    return result === "OK";
+  } catch {
+    return false;
+  }
 }
 
 async function recordUniqueVisitor(params: {
@@ -182,34 +205,53 @@ async function recordUniqueVisitor(params: {
   country: string;
   device: string;
 }) {
-  const addedToDay = await redis.sadd(dailyUniqueUsersSetKey(params.day), params.visitorId);
-  if (Number(addedToDay) > 0) {
-    await redis.hincrby(`${STATS_KEY}:unique:days`, params.day, 1);
+  const [addedToDay, addedToCountryDay, addedToDeviceDay, addedToAll] = await Promise.all([
+    trySetUniqueKey(uniqueDayKey(params.day, params.visitorId), UNIQUE_DAILY_TTL_SECONDS),
+    trySetUniqueKey(
+      uniqueCountryDayKey(params.day, params.country, params.visitorId),
+      UNIQUE_DAILY_TTL_SECONDS
+    ),
+    trySetUniqueKey(
+      uniqueDeviceDayKey(params.day, params.device, params.visitorId),
+      UNIQUE_DAILY_TTL_SECONDS
+    ),
+    trySetUniqueKey(uniqueAllTimeKey(params.visitorId), UNIQUE_ALL_TIME_TTL_SECONDS),
+  ]);
+
+  const tasks: Promise<unknown>[] = [];
+
+  if (addedToDay) {
+    tasks.push(redis.hincrby(`${STATS_KEY}:unique:days`, params.day, 1));
   }
 
-  const addedToCountryDay = await redis.sadd(
-    dailyUniqueUsersCountrySetKey(params.day, params.country),
-    params.visitorId
-  );
-  if (Number(addedToCountryDay) > 0) {
-    await redis.hincrby(`${STATS_KEY}:countries:unique`, params.country, 1);
+  if (addedToCountryDay) {
+    tasks.push(redis.hincrby(`${STATS_KEY}:countries:unique`, params.country, 1));
   }
 
-  const addedToDeviceDay = await redis.sadd(
-    dailyUniqueUsersDeviceSetKey(params.day, params.device),
-    params.visitorId
-  );
-  if (Number(addedToDeviceDay) > 0) {
-    await redis.hincrby(`${STATS_KEY}:devices:unique`, params.device, 1);
+  if (addedToDeviceDay) {
+    tasks.push(redis.hincrby(`${STATS_KEY}:devices:unique`, params.device, 1));
   }
 
-  const addedToAll = await redis.sadd(allTimeUniqueUsersSetKey(), params.visitorId);
-  if (Number(addedToAll) > 0) {
-    await redis.hincrby(STATS_KEY, "uniqueUsers", 1);
+  if (addedToAll) {
+    tasks.push(redis.hincrby(STATS_KEY, "uniqueUsers", 1));
   }
 
-  await redis.sadd(allTimeUniqueUsersCountrySetKey(params.country), params.visitorId);
-  await redis.sadd(allTimeUniqueUsersDeviceSetKey(params.device), params.visitorId);
+  if (tasks.length > 0) {
+    await Promise.all(tasks);
+  }
+}
+
+async function shouldCountView(postId: number, visitorId: string) {
+  try {
+    const result = await redis.set(viewDedupKey(postId, visitorId), "1", {
+      nx: true,
+      ex: VIEW_DEDUP_TTL_SECONDS,
+    });
+
+    return result === "OK";
+  } catch {
+    return true;
+  }
 }
 
 async function toggleLike(params: {
@@ -229,25 +271,28 @@ async function toggleLike(params: {
     const currentLikes = Number((await redis.hget(postMetricsKey(params.postId), "likes")) || 0);
     const currentGlobal = Number((await redis.hget(STATS_KEY, "likes")) || 0);
 
-    await redis.hset(postMetricsKey(params.postId), {
-      likes: Math.max(0, currentLikes - 1),
-    });
-    await redis.hset(STATS_KEY, {
-      likes: Math.max(0, currentGlobal - 1),
-    });
+    await Promise.all([
+      redis.hset(postMetricsKey(params.postId), {
+        likes: Math.max(0, currentLikes - 1),
+      }),
+      redis.hset(STATS_KEY, {
+        likes: Math.max(0, currentGlobal - 1),
+      }),
+    ]);
 
     return { liked: false };
   }
 
-  await redis.sadd(setKey, userKey);
-  await redis.hincrby(postMetricsKey(params.postId), "likes", 1);
-
-  await incrementGlobalCounters({
-    action: "like",
-    day: params.day,
-    country: params.country,
-    device: params.device,
-  });
+  await Promise.all([
+    redis.sadd(setKey, userKey),
+    redis.hincrby(postMetricsKey(params.postId), "likes", 1),
+    incrementGlobalCounters({
+      action: "like",
+      day: params.day,
+      country: params.country,
+      device: params.device,
+    }),
+  ]);
 
   return { liked: true };
 }
@@ -271,25 +316,28 @@ async function toggleSubscribe(params: {
     );
     const currentGlobal = Number((await redis.hget(STATS_KEY, "subscriptions")) || 0);
 
-    await redis.hset(sourceMetricsKey(params.sourceHandle), {
-      subscriptions: Math.max(0, currentSubs - 1),
-    });
-    await redis.hset(STATS_KEY, {
-      subscriptions: Math.max(0, currentGlobal - 1),
-    });
+    await Promise.all([
+      redis.hset(sourceMetricsKey(params.sourceHandle), {
+        subscriptions: Math.max(0, currentSubs - 1),
+      }),
+      redis.hset(STATS_KEY, {
+        subscriptions: Math.max(0, currentGlobal - 1),
+      }),
+    ]);
 
     return { subscribed: false };
   }
 
-  await redis.sadd(setKey, userKey);
-  await redis.hincrby(sourceMetricsKey(params.sourceHandle), "subscriptions", 1);
-
-  await incrementGlobalCounters({
-    action: "subscribe",
-    day: params.day,
-    country: params.country,
-    device: params.device,
-  });
+  await Promise.all([
+    redis.sadd(setKey, userKey),
+    redis.hincrby(sourceMetricsKey(params.sourceHandle), "subscriptions", 1),
+    incrementGlobalCounters({
+      action: "subscribe",
+      day: params.day,
+      country: params.country,
+      device: params.device,
+    }),
+  ]);
 
   return { subscribed: true };
 }
@@ -319,8 +367,7 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const body =
-      typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
+    const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
 
     const telegramUserId = asString(req.headers["x-telegram-id"] || body.telegramUserId);
     const action = normalizeAction(body.action);
@@ -375,6 +422,33 @@ export default async function handler(req: any, res: any) {
       return res.status(200).json({ ok: true, ...result });
     }
 
+    if (action === "view") {
+      if (!postId) {
+        return res.status(200).json({ ok: true, action, skipped: "missing-post" });
+      }
+
+      const shouldTrack = await shouldCountView(postId, visitorId);
+
+      if (!shouldTrack) {
+        if (telegramUserId) {
+          const state = await readState({
+            telegramUserId,
+            postId,
+            sourceHandle,
+          });
+
+          return res.status(200).json({
+            ok: true,
+            action,
+            deduped: true,
+            ...state,
+          });
+        }
+
+        return res.status(200).json({ ok: true, action, deduped: true });
+      }
+    }
+
     await incrementGlobalCounters({
       action,
       day,
@@ -382,21 +456,21 @@ export default async function handler(req: any, res: any) {
       device,
     });
 
-    if (action === "view" || action === "open" || action === "tg_click") {
-      await recordUniqueVisitor({
-        visitorId,
-        day,
-        country,
-        device,
-      });
-    }
-
     if (postId) {
       await incrementPostCounters(postId, action, day);
     }
 
     if (sourceHandle) {
       await incrementSourceCounters(sourceHandle, action, day);
+    }
+
+    if (action === "open" || action === "tg_click") {
+      await recordUniqueVisitor({
+        visitorId,
+        day,
+        country,
+        device,
+      });
     }
 
     if (telegramUserId) {
