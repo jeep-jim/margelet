@@ -162,29 +162,51 @@ function normalizeSource(raw: unknown): TrustedSource | null {
 
   const record = raw as Record<string, unknown>;
 
-  const id = asString(record.id);
-  const countryCode = asString(record.countryCode) as CountryCode | null;
-  const handle = asString(record.handle);
-  const title = asString(record.title);
-  const defaultTag = asString(record.defaultTag) as ContentTag | null;
-  const status = isStatus(record.status) ? record.status : null;
+  const rawHandle =
+    asString(record.handle) ||
+    asString(record.username) ||
+    asString(record.channelHandle);
+  const handle = rawHandle ? normalizeHandle(rawHandle) : null;
 
-  if (!id || !countryCode || !handle || !title || !defaultTag || !status) {
+  const countryCode = normalizeCountryCode(asString(record.countryCode)) as CountryCode | null;
+  const fallbackTag =
+    (asString(record.defaultTag) as ContentTag | null) ||
+    (asString(record.tag) as ContentTag | null) ||
+    (Array.isArray(record.tags)
+      ? ((record.tags
+          .map((item) => asString(item))
+          .find(Boolean) as ContentTag | null) || null)
+      : null) ||
+    "other";
+
+  const id =
+    asString(record.id) ||
+    (countryCode && handle ? buildSourceId(countryCode, handle) : null);
+
+  if (!id || !countryCode || !handle) {
     return null;
   }
+
+  const title =
+    asString(record.title) ||
+    asString(record.name) ||
+    asString(record.channelTitle) ||
+    handle;
+
+  const status = isStatus(record.status) ? record.status : "active";
 
   return {
     id,
     countryCode,
-    handle: normalizeHandle(handle),
+    handle,
     title,
-    avatarUrl: asString(record.avatarUrl),
-    defaultTag,
-    tags: normalizeTags(record.tags, defaultTag),
+    avatarUrl: normalizeAssetUrl(asString(record.avatarUrl) || asString(record.avatar) || asString(record.photoUrl)),
+    defaultTag: fallbackTag,
+    tags: normalizeTags(record.tags, fallbackTag),
     status,
     note: asString(record.note),
     createdAt: asString(record.createdAt) || new Date().toISOString(),
-    updatedAt: asString(record.updatedAt) || new Date().toISOString(),
+    updatedAt: asString(record.updatedAt) || asString(record.createdAt) || new Date().toISOString(),
     lastCheckedAt: asString(record.lastCheckedAt),
     lastImportedAt: asString(record.lastImportedAt),
     lastSeenPostId: asNumber(record.lastSeenPostId),
@@ -345,7 +367,7 @@ export async function saveSource(
     id,
     countryCode: input.countryCode,
     handle: normalizeHandle(input.handle),
-    title: input.title.trim(),
+    title: input.title.trim() || normalizeHandle(input.handle),
     avatarUrl:
       input.avatarUrl !== undefined
         ? input.avatarUrl
