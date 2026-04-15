@@ -10,7 +10,6 @@ import {
   Sparkles,
   Sun,
   Moon,
-  ArrowLeft,
   X,
 } from "lucide-react";
 import {
@@ -1200,19 +1199,7 @@ function ManifestModal({
           } backdrop-blur`}
         >
           <div className="mx-auto flex h-16 max-w-[570px] items-center justify-between px-4">
-            <button
-              type="button"
-              onClick={onClose}
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-full transition ${
-                isDark
-                  ? "text-white hover:bg-white/10"
-                  : "text-[#0f172a] hover:bg-[#eef2f7]"
-              }`}
-              aria-label={copy.manifestClose}
-              title={copy.manifestClose}
-            >
-              <ArrowLeft className="h-5 w-5" />
-            </button>
+            <div className="w-10" />
 
             <div className="text-center">
               <div className="text-lg font-semibold">{copy.manifestTitle}</div>
@@ -1260,7 +1247,7 @@ function ManifestModal({
               </div>
 
               <div
-                className={`space-y-5 text-[17px] leading-8 ${
+                className={`space-y-4 text-[17px] leading-7 ${
                   isDark ? "text-[#d5deea]" : "text-[#334155]"
                 }`}
               >
@@ -1469,7 +1456,7 @@ export function CreatorScreen({
           </div>
 
           {tab === "language" ? (
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div className="bg-surface rounded-[28px] border border-soft p-6">
                 <div className="text-primary mb-4 flex items-center gap-2 text-sm font-semibold">
                   <Globe className="h-4 w-4" />
