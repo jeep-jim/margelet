@@ -1221,24 +1221,26 @@ function ManifestModal({
           </div>
         </div>
 
-        <div className="mx-auto max-w-[570px] px-4 pb-10 pt-5">
+        <div className="mx-auto max-w-[570px] px-3 pb-10 pt-5 sm:px-4">
           <div
-            className={`overflow-hidden rounded-[30px] border ${
+            className={`overflow-hidden ${
+              isDark ? "bg-transparent" : "bg-transparent"
+            } sm:rounded-[30px] sm:border ${
               isDark
-                ? "border-[#2b3f53] bg-[#1b2937]"
-                : "border-[#e2e8f0] bg-white"
+                ? "sm:border-[#2b3f53] sm:bg-[#1b2937]"
+                : "sm:border-[#e2e8f0] sm:bg-white"
             }`}
-          >
-            <div className="px-5 pb-8 pt-5 sm:px-6">
+          >            
+            <div className="px-4 pb-8 pt-5 sm:px-6">
               <div
-                className={`mb-5 text-sm font-semibold ${
+                className={`mb-3 w-full overflow-hidden text-ellipsis whitespace-nowrap text-[14px] font-semibold leading-5 sm:text-[24px] sm:leading-8 ${
                   isDark ? "text-white" : "text-[#111827]"
                 }`}
               >
                 {copy.manifestSubtitle}
-              </div>
+              </div>                  
 
-              <div className="mb-6 overflow-hidden rounded-[28px]">
+              <div className="mb-0 overflow-hidden rounded-[28px]">
                 <img
                   src="/manifest-hero.webp"
                   alt={copy.manifestTitle}
@@ -1247,7 +1249,7 @@ function ManifestModal({
               </div>
 
               <div
-                className={`space-y-4 text-[17px] leading-7 ${
+                className={`space-y-4 text-[15px] leading-7 ${
                   isDark ? "text-[#d5deea]" : "text-[#334155]"
                 }`}
               >
@@ -1294,7 +1296,7 @@ function ManifestModal({
                 </div>
               </div>
 
-              <div className="mt-8 flex justify-center">
+              <div className="mt-8 flex justify-center sm:hidden">
                 <button
                   type="button"
                   onClick={onClose}
@@ -1306,9 +1308,23 @@ function ManifestModal({
                 >
                   {copy.manifestClose}
                 </button>
-              </div>
+              </div>              
             </div>
           </div>
+          <div className="mt-8 hidden justify-center sm:flex">
+            <button
+              type="button"
+              onClick={onClose}
+              className={`inline-flex min-h-[48px] items-center rounded-full px-6 py-3 text-sm font-medium transition ${
+                isDark
+                  ? "border border-[#7244d4] bg-gradient-to-r from-[#7c3aed] to-[#a855f7] text-white hover:opacity-95"
+                  : "border border-[#d8b4fe] bg-gradient-to-r from-[#8b5cf6] to-[#a855f7] text-white hover:opacity-95"
+              }`}
+            >
+              {copy.manifestClose}
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
