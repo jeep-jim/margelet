@@ -446,45 +446,13 @@ export default function App() {
   }, [syncPathState]);
 
   useEffect(() => {
-    const telegramUserId = currentTelegramUser?.id;
-
-    if (!telegramUserId) {
+    if (!currentTelegramUser) {
       setAccessInfo(null);
       return;
     }
 
-    let cancelled = false;
-
-    async function loadAccess() {
-      try {
-        const res = await fetch("/api/access", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            telegramUserId,
-          }),
-        });
-
-        const data = await res.json().catch(() => null);
-
-        if (!cancelled) {
-          setAccessInfo(data?.access || fallbackAccess(currentTelegramUser));
-        }
-      } catch {
-        if (!cancelled) {
-          setAccessInfo(fallbackAccess(currentTelegramUser));
-        }
-      }
-    }
-
-    void loadAccess();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [currentTelegramUser]);
+    setAccessInfo(fallbackAccess(currentTelegramUser));
+  }, [currentTelegramUser]);  
 
   const loadFeed = useCallback(async () => {
     setIsFeedLoading(true);
