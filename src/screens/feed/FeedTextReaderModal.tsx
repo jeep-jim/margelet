@@ -1,169 +1,1002 @@
+
 import { AnimatePresence, motion } from "framer-motion";
-import type { Locale, IngestedPost } from "../../types/app";
-import { ArrowLeft, Bell, ExternalLink, FileText, Music4, Volume2, VolumeX } from "lucide-react";
+import type { Locale } from "../../types/app";
+import {
+  ArrowLeft,
+  Bell,
+  ExternalLink,
+  FileText,
+  Heart,
+  Music4,
+  Pause,
+  Play,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
+import type { IngestedPost } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { FeedCarousel } from "./FeedCarousel";
-import { getAudioMedia, getFileMedia, normalizeMediaList } from "./feed.utils";
+import {
+  getAudioMedia,
+  getFileMedia,
+  normalizeMediaList,
+} from "./feed.utils";
 
 const SUB_KEY = "margelet_subscriptions";
 const FEED_MUTE_KEY = "margelet_feed_muted";
+const FEED_MUTE_EVENT = "margelet:feed-mute-change";
+const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+const TG_STORAGE_KEY = "margelet_tg_user";
+
+function readTelegramUserId() {
+  try {
+    const raw = localStorage.getItem(TG_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed?.id ? String(parsed.id) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function trackAction(params: {
+  action: "open" | "tg_click" | "like" | "subscribe";
+  postId: number;
+  sourceHandle: string;
+  telegramUserId?: string | null;
+}) {
+  try {
+    const res = await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": params.telegramUserId || "",
+      },
+      body: JSON.stringify({
+        action: params.action,
+        postId: params.postId,
+        sourceHandle: params.sourceHandle,
+        telegramUserId: params.telegramUserId || null,
+      }),
+    });
+
+    return await res.json().catch(() => null);
+  } catch {
+    return null;
+  }
+}
+
+const COPY = {
+  en: {
+    postFromTelegram: "Post from Telegram",
+    enableNotifications: "Enable notifications",
+    disableNotifications: "Disable notifications",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio from Telegram post",
+    fileFallback: "File",
+    fileFromTelegram: "Attachment from Telegram post",
+    openFile: "Open file",
+    musicAvailable: "Music is available in the original post",
+    musicAvailableText:
+      "We show the post card here. You can open the original track in Telegram.",
+    openInTelegram: "Open in Telegram",
+    play: "Play",
+    pause: "Pause",
+    mute: "Mute",
+    unmute: "Unmute",
+  },
+  ru: {
+    postFromTelegram: "Пост из Telegram",
+    enableNotifications: "Включить уведомления",
+    disableNotifications: "Отключить уведомления",
+    audioFallback: "Аудио",
+    audioFromTelegram: "Аудио из поста Telegram",
+    fileFallback: "Файл",
+    fileFromTelegram: "Вложение из поста Telegram",
+    openFile: "Открыть файл",
+    musicAvailable: "Музыка доступна в оригинальном посте",
+    musicAvailableText:
+      "Здесь показываем карточку поста. Оригинальный трек можно открыть в Telegram.",
+    openInTelegram: "Открыть в Telegram",
+    play: "Воспроизвести",
+    pause: "Пауза",
+    mute: "Выключить звук",
+    unmute: "Включить звук",
+  },
+  de: {
+    postFromTelegram: "Beitrag aus Telegram",
+    enableNotifications: "Benachrichtigungen aktivieren",
+    disableNotifications: "Benachrichtigungen deaktivieren",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio aus dem Telegram-Beitrag",
+    fileFallback: "Datei",
+    fileFromTelegram: "Anhang aus dem Telegram-Beitrag",
+    openFile: "Datei öffnen",
+    musicAvailable: "Musik ist im Originalbeitrag verfügbar",
+    musicAvailableText:
+      "Hier zeigen wir die Beitragskarte. Den Original-Track kannst du in Telegram öffnen.",
+    openInTelegram: "In Telegram öffnen",
+    play: "Abspielen",
+    pause: "Pause",
+    mute: "Ton aus",
+    unmute: "Ton an",
+  },
+  es: {
+    postFromTelegram: "Publicación de Telegram",
+    enableNotifications: "Activar notificaciones",
+    disableNotifications: "Desactivar notificaciones",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio de la publicación de Telegram",
+    fileFallback: "Archivo",
+    fileFromTelegram: "Adjunto de la publicación de Telegram",
+    openFile: "Abrir archivo",
+    musicAvailable: "La música está disponible en la publicación original",
+    musicAvailableText:
+      "Aquí mostramos la tarjeta de la publicación. Puedes abrir la pista original en Telegram.",
+    openInTelegram: "Abrir en Telegram",
+    play: "Reproducir",
+    pause: "Pausa",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
+  },
+  tr: {
+    postFromTelegram: "Telegram gönderisi",
+    enableNotifications: "Bildirimleri aç",
+    disableNotifications: "Bildirimleri kapat",
+    audioFallback: "Ses",
+    audioFromTelegram: "Telegram gönderisindeki ses",
+    fileFallback: "Dosya",
+    fileFromTelegram: "Telegram gönderisindeki ek",
+    openFile: "Dosyayı aç",
+    musicAvailable: "Müzik orijinal gönderide mevcut",
+    musicAvailableText:
+      "Burada gönderi kartını gösteriyoruz. Orijinal parçayı Telegram'da açabilirsin.",
+    openInTelegram: "Telegram'da aç",
+    play: "Oynat",
+    pause: "Duraklat",
+    mute: "Sesi kapat",
+    unmute: "Sesi aç",
+  },
+  fr: {
+    postFromTelegram: "Post Telegram",
+    enableNotifications: "Activer les notifications",
+    disableNotifications: "Désactiver les notifications",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio du post Telegram",
+    fileFallback: "Fichier",
+    fileFromTelegram: "Pièce jointe du post Telegram",
+    openFile: "Ouvrir le fichier",
+    musicAvailable: "La musique est disponible dans le post d’origine",
+    musicAvailableText:
+      "Nous affichons ici la carte du post. Tu peux ouvrir le morceau original dans Telegram.",
+    openInTelegram: "Ouvrir dans Telegram",
+    play: "Lire",
+    pause: "Pause",
+    mute: "Couper le son",
+    unmute: "Activer le son",
+  },
+  it: {
+    postFromTelegram: "Post da Telegram",
+    enableNotifications: "Attiva notifiche",
+    disableNotifications: "Disattiva notifiche",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio dal post Telegram",
+    fileFallback: "File",
+    fileFromTelegram: "Allegato dal post Telegram",
+    openFile: "Apri file",
+    musicAvailable: "La musica è disponibile nel post originale",
+    musicAvailableText:
+      "Qui mostriamo la scheda del post. Puoi aprire la traccia originale in Telegram.",
+    openInTelegram: "Apri in Telegram",
+    play: "Riproduci",
+    pause: "Pausa",
+    mute: "Disattiva audio",
+    unmute: "Attiva audio",
+  },
+  "pt-br": {
+    postFromTelegram: "Post do Telegram",
+    enableNotifications: "Ativar notificações",
+    disableNotifications: "Desativar notificações",
+    audioFallback: "Áudio",
+    audioFromTelegram: "Áudio do post do Telegram",
+    fileFallback: "Arquivo",
+    fileFromTelegram: "Anexo do post do Telegram",
+    openFile: "Abrir arquivo",
+    musicAvailable: "A música está disponível no post original",
+    musicAvailableText:
+      "Aqui mostramos o card do post. Você pode abrir a faixa original no Telegram.",
+    openInTelegram: "Abrir no Telegram",
+    play: "Reproduzir",
+    pause: "Pausar",
+    mute: "Silenciar",
+    unmute: "Ativar som",
+  },
+  id: {
+    postFromTelegram: "Postingan dari Telegram",
+    enableNotifications: "Aktifkan notifikasi",
+    disableNotifications: "Nonaktifkan notifikasi",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio dari post Telegram",
+    fileFallback: "File",
+    fileFromTelegram: "Lampiran dari post Telegram",
+    openFile: "Buka file",
+    musicAvailable: "Musik tersedia di post asli",
+    musicAvailableText:
+      "Di sini kami menampilkan kartu post. Trek asli bisa dibuka di Telegram.",
+    openInTelegram: "Buka di Telegram",
+    play: "Putar",
+    pause: "Jeda",
+    mute: "Matikan suara",
+    unmute: "Nyalakan suara",
+  },
+  pl: {
+    postFromTelegram: "Post z Telegrama",
+    enableNotifications: "Włącz powiadomienia",
+    disableNotifications: "Wyłącz powiadomienia",
+    audioFallback: "Audio",
+    audioFromTelegram: "Audio z posta Telegram",
+    fileFallback: "Plik",
+    fileFromTelegram: "Załącznik z posta Telegram",
+    openFile: "Otwórz plik",
+    musicAvailable: "Muzyka jest dostępna w oryginalnym poście",
+    musicAvailableText:
+      "Tutaj pokazujemy kartę posta. Oryginalny utwór możesz otworzyć w Telegramie.",
+    openInTelegram: "Otwórz w Telegramie",
+    play: "Odtwórz",
+    pause: "Pauza",
+    mute: "Wycisz",
+    unmute: "Włącz dźwięk",
+  },
+} as const;
+
+function readGlobalMuted() {
+  try {
+    return localStorage.getItem(FEED_MUTE_KEY) !== "0";
+  } catch {
+    return true;
+  }
+}
+
+function writeGlobalMuted(value: boolean) {
+  try {
+    localStorage.setItem(FEED_MUTE_KEY, value ? "1" : "0");
+  } catch {}
+
+  window.dispatchEvent(
+    new CustomEvent(FEED_MUTE_EVENT, {
+      detail: { muted: value },
+    })
+  );
+}
+
+function formatTime(seconds: number) {
+  const safe = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
+  const mins = Math.floor(safe / 60);
+  const secs = safe % 60;
+  return `${mins}:${secs.toString().padStart(2, "0")}`;
+}
 
 function getSubs(): string[] {
   try {
     const raw = localStorage.getItem(SUB_KEY);
-    const parsed = raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [];
-  } catch { return []; }
+  } catch {
+    return [];
+  }
 }
+
 function toggleSub(handle: string) {
   const current = getSubs();
   const exists = current.includes(handle);
-  const next = exists ? current.filter((h) => h !== handle) : [...current, handle];
+
+  const next = exists
+    ? current.filter((h) => h !== handle)
+    : [...current, handle];
+
   localStorage.setItem(SUB_KEY, JSON.stringify(next));
   return next;
 }
-function readMuted() {
-  try { return localStorage.getItem(FEED_MUTE_KEY) !== "0"; } catch { return false; }
+
+function linkifyText(text: string) {
+  const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
+  const parts = text.split(urlRegex);
+
+  return parts.map((part, index) => {
+    const isUrl = /^(https?:\/\/|www\.|t\.me\/)/i.test(part);
+
+    if (!isUrl) {
+      return <span key={index}>{part}</span>;
+    }
+
+    const href =
+      part.startsWith("http")
+        ? part
+        : part.startsWith("t.me/")
+          ? `https://${part}`
+          : `https://${part}`;
+
+    return (
+      <a
+        key={index}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className="break-all text-[#2563eb] underline underline-offset-2"
+        onClick={(event) => event.stopPropagation()}
+      >
+        {part}
+      </a>
+    );
+  });
 }
-function saveMuted(next: boolean) {
-  try { localStorage.setItem(FEED_MUTE_KEY, next ? "1" : "0"); } catch {}
-}
 
-export function FeedTextReaderModal({
-  locale,
-  post,
-  isMuted = false,
-  setIsMuted = () => undefined,
-  viewerMediaIndex = 0,
-  setViewerMediaIndex = () => undefined,
-  openSource = () => undefined,
-  onClose,
-}: {
-  locale: Locale;
-  post: IngestedPost | null;
-  liked?: boolean;
-  isMuted?: boolean;
-  setIsMuted?: React.Dispatch<React.SetStateAction<boolean>>;
-  onToggleSave?: (id: number) => void;
-  savedPostIds?: number[];
-  onHidePost?: (id: number) => void;
-  onDeletePost?: (id: number) => Promise<void>;
-  currentTelegramUserId?: string | null;
-  openSource?: (handle: string) => void;
-  onClose: () => void;
-  saved?: boolean;
-  viewerMediaIndex?: number;
-  setViewerMediaIndex?: React.Dispatch<React.SetStateAction<number>>;
-}) {
-  const copy = locale === "ru"
-    ? { open: "Открыть в Telegram", on: "Включить уведомления", off: "Отключить уведомления", mute: "Выключить звук", unmute: "Включить звук", file: "Открыть файл" }
-    : { open: "Open in Telegram", on: "Enable notifications", off: "Disable notifications", mute: "Mute", unmute: "Unmute", file: "Open file" };
-
-  const [subscribed, setSubscribed] = useState(false);
-  const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
-  const audio = useMemo(() => (post ? getAudioMedia(post) : []), [post]);
-  const files = useMemo(() => (post ? getFileMedia(post) : []), [post]);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => setIsMuted(readMuted()), [setIsMuted]);
-  useEffect(() => {
-    if (!post) return;
-    setSubscribed(getSubs().includes(post.source.handle));
-  }, [post]);
-
-  if (!post) return null;
+function RichTextBlock({ text }: { text: string }) {
+  const paragraphs = useMemo(() => {
+    return text
+      .replace(/\r/g, "")
+      .split(/\n{2,}/)
+      .map((part) => part.trim())
+      .filter(Boolean);
+  }, [text]);
 
   return (
-    <AnimatePresence>
-      <motion.div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-        <div className="mx-auto flex min-h-full max-w-[570px] flex-col bg-app text-primary">
-          <div className="flex items-center justify-between gap-3 px-4 pb-3 pt-4">
-            <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-soft">
-              <ArrowLeft className="h-5 w-5" />
-            </button>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  const next = toggleSub(post.source.handle);
-                  setSubscribed(next.includes(post.source.handle));
-                  window.dispatchEvent(new Event("storage"));
-                }}
-                className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-soft"
+    <div className="space-y-4 text-[16px] leading-7 text-primary">
+      {paragraphs.map((paragraph, index) => {
+        const lines = paragraph.split("\n");
+
+        return (
+          <p key={index} className="whitespace-pre-wrap break-words">
+            {lines.map((line, lineIndex) => (
+              <span key={lineIndex}>
+                {linkifyText(line)}
+                {lineIndex < lines.length - 1 ? <br /> : null}
+              </span>
+            ))}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+function hasMusicLikeTag(post: IngestedPost) {
+  const tag = String(post.tag || "").toLowerCase();
+  const title = String(post.source.title || "").toLowerCase();
+  const text = String(post.text || "").toLowerCase();
+
+  return (
+    tag === "music" ||
+    title.includes("музык") ||
+    title.includes("music") ||
+    text.includes("трек") ||
+    text.includes("track") ||
+    text.includes("песня") ||
+    text.includes("music")
+  );
+}
+
+function AudioList({
+  items,
+  locale,
+}: {
+  items: Array<{
+    id: string;
+    url: string;
+    fileName?: string | null;
+  }>;
+  locale: Locale;
+}) {
+  if (items.length === 0) return null;
+  const copy = COPY[locale] ?? COPY.en;
+
+  return (
+    <div className="mb-4 space-y-3">
+      {items.map((item, index) => (
+        <div
+          key={item.id || `${item.url}-${index}`}
+          className="rounded-3xl border border-soft bg-surface-soft p-4"
+        >
+          <div className="mb-3 flex items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-strong text-strong-foreground">
+              <Music4 className="h-5 w-5" />
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-semibold text-primary">
+                {item.fileName?.trim() || `${copy.audioFallback} ${index + 1}`}
+              </div>
+
+              <div className="mt-1 text-sm text-secondary">
+                {copy.audioFromTelegram}
+              </div>
+            </div>
+          </div>
+
+          <audio
+            src={item.url}
+            controls
+            preload="metadata"
+            className="w-full"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function FileList({
+  items,
+  locale,
+}: {
+  items: Array<{
+    id: string;
+    url: string;
+    fileName?: string | null;
+  }>;
+  locale: Locale;
+}) {
+  if (items.length === 0) return null;
+  const copy = COPY[locale] ?? COPY.en;
+
+  return (
+    <div className="mb-4 space-y-3">
+      {items.map((item, index) => (
+        <div
+          key={item.id || `${item.url}-${index}`}
+          className="rounded-3xl border border-soft bg-surface-soft p-4"
+        >
+          <div className="flex items-start gap-3">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-strong text-strong-foreground">
+              <FileText className="h-5 w-5" />
+            </div>
+
+            <div className="min-w-0 flex-1">
+              <div className="text-sm font-semibold text-primary">
+                {item.fileName?.trim() || `${copy.fileFallback} ${index + 1}`}
+              </div>
+
+              <div className="mt-1 text-sm text-secondary">
+                {copy.fileFromTelegram}
+              </div>
+
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary no-underline transition hover:bg-app"
               >
-                <Bell className={`h-5 w-5 ${subscribed ? "fill-current" : ""}`} />
-              </button>
-              <button type="button" onClick={() => { const next = !isMuted; setIsMuted(next); saveMuted(next); }} className="flex h-11 w-11 items-center justify-center rounded-full bg-surface-soft">
-                {isMuted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-              </button>
-            </div>
-          </div>
-
-          <div className="px-4">
-            <button type="button" onClick={() => openSource(post.source.handle)} className="flex min-w-0 items-center gap-3 text-left">
-              <FeedSourceAvatar post={post} />
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <div className="truncate text-[18px] font-semibold">{post.source.title}</div>
-                  {post.source.verified ? <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" /> : null}
-                </div>
-                <div className="text-sm text-secondary">@{post.source.handle}</div>
-              </div>
-            </button>
-          </div>
-
-          {media.length > 0 ? (
-            <div className="mt-4 px-4">
-              <FeedCarousel
-                items={media}
-                aspectClass="aspect-[4/5]"
-                activeIndex={viewerMediaIndex}
-                onChange={setViewerMediaIndex}
-                mediaActive
-                muted={isMuted}
-                videoRef={videoRef}
-                fit="contain"
-                nativeVideoControls
-              />
-            </div>
-          ) : null}
-
-          <div className="flex-1 overflow-y-auto px-4 pb-8 pt-4">
-            {post.text ? <div className="whitespace-pre-wrap text-[15px] leading-6 text-primary">{post.text}</div> : null}
-
-            {audio.length > 0 ? (
-              <div className="mt-4 rounded-2xl border border-soft bg-surface p-4 text-sm text-secondary">
-                <div className="mb-2 flex items-center gap-2 text-primary"><Music4 className="h-4 w-4" /> Audio</div>
-                <button type="button" onClick={() => window.open(post.postUrl, "_blank", "noopener,noreferrer")} className="inline-flex items-center gap-2 rounded-full bg-surface-soft px-4 py-2 text-primary">
-                  <ExternalLink className="h-4 w-4" /> {copy.open}
-                </button>
-              </div>
-            ) : null}
-
-            {files.length > 0 ? (
-              <div className="mt-4 space-y-2">
-                {files.map((file) => (
-                  <button key={file.id} type="button" onClick={() => window.open(file.url, "_blank", "noopener,noreferrer")} className="flex w-full items-center gap-3 rounded-2xl border border-soft bg-surface p-4 text-left text-primary">
-                    <FileText className="h-4 w-4" />
-                    <span className="truncate">{file.fileName || copy.file}</span>
-                  </button>
-                ))}
-              </div>
-            ) : null}
-
-            <div className="mt-4 flex items-center gap-3">
-              <button type="button" onClick={() => window.open(post.postUrl, "_blank", "noopener,noreferrer")} className="inline-flex items-center gap-2 rounded-full bg-surface-soft px-4 py-2 text-primary">
-                <ExternalLink className="h-4 w-4" /> {copy.open}
-              </button>
-              <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
-                {subscribed ? copy.off : copy.on}
-              </div>
+                <span>{copy.openFile}</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
             </div>
           </div>
         </div>
-      </motion.div>
+      ))}
+    </div>
+  );
+}
+
+function MusicFallback({
+  post,
+  locale,
+  onOpenOriginal,
+}: {
+  post: IngestedPost;
+  locale: Locale;
+  onOpenOriginal: () => void;
+}) {
+  if (!hasMusicLikeTag(post)) return null;
+  const copy = COPY[locale] ?? COPY.en;
+
+  return (
+    <div className="mb-4 rounded-3xl border border-soft bg-surface-soft p-4">
+      <div className="flex items-start gap-3">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-strong text-strong-foreground">
+          <Music4 className="h-5 w-5" />
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <div className="text-sm font-semibold text-primary">
+            {copy.musicAvailable}
+          </div>
+
+          <div className="mt-1 text-sm text-secondary">
+            {copy.musicAvailableText}
+          </div>
+
+          <button
+            type="button"
+            onClick={onOpenOriginal}
+            className="mt-3 inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-app"
+          >
+            <span>{copy.openInTelegram}</span>
+            <ExternalLink className="h-4 w-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function FeedTextReaderModal({
+  post,
+  locale,
+  liked,
+  onClose,
+  onToggleLike,
+  onToggleSave: _onToggleSave,
+}: {
+  post: IngestedPost | null;
+  locale: Locale;
+  liked: boolean;
+  saved: boolean;
+  onClose: () => void;
+  onToggleLike: (id: number) => void;
+  onToggleSave: (id: number) => void;
+}) {
+  const copy = COPY[locale] ?? COPY.en;
+  const text = post?.text || "";
+  const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
+  const [mediaIndex, setMediaIndex] = useState(0);
+  const [subscribed, setSubscribed] = useState(false);
+  const [localLiked, setLocalLiked] = useState(liked);
+  const [muted, setMuted] = useState(readGlobalMuted());
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const visualMedia = media.filter(
+    (item) => item.kind === "image" || item.kind === "video"
+  );
+
+  const activeVisualItem =
+    visualMedia[Math.min(mediaIndex, Math.max(visualMedia.length - 1, 0))] ||
+    null;
+  const activeIsVideo = activeVisualItem?.kind === "video";
+
+  const audioMedia = post ? getAudioMedia(post) : [];
+  const fileMedia = post ? getFileMedia(post) : [];
+
+  useEffect(() => {
+    setLocalLiked(liked);
+  }, [liked, post?.id]);
+
+  useEffect(() => {
+    if (!post) return;
+
+    setSubscribed(getSubs().includes(post.source.handle));
+
+    const telegramUserId = readTelegramUserId();
+
+    void trackAction({
+      action: "open",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+      if (typeof data?.subscribed === "boolean") {
+        setSubscribed(data.subscribed);
+      }
+    });
+  }, [post]);
+
+  useEffect(() => {
+    setMediaIndex(0);
+    setCurrentTime(0);
+    setDuration(0);
+    setIsVideoPlaying(true);
+  }, [post?.id]);
+
+  useEffect(() => {
+    if (!post) return;
+
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
+
+    return () => {
+      document.body.style.overflow = original;
+    };
+  }, [post]);
+
+  useEffect(() => {
+    const syncMuted = (event: Event) => {
+      const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
+      setMuted(
+        typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted()
+      );
+    };
+
+    window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+
+    return () => {
+      window.removeEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
+    };
+  }, []);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node || !activeIsVideo) {
+      setCurrentTime(0);
+      setDuration(0);
+      return;
+    }
+
+    const syncMeta = () => {
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const syncTime = () => {
+      setCurrentTime(node.currentTime || 0);
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+    };
+
+    const onPlay = () => setIsVideoPlaying(true);
+    const onPause = () => setIsVideoPlaying(false);
+
+    node.addEventListener("loadedmetadata", syncMeta);
+    node.addEventListener("timeupdate", syncTime);
+    node.addEventListener("play", onPlay);
+    node.addEventListener("pause", onPause);
+    node.addEventListener("ended", onPause);
+
+    syncMeta();
+    syncTime();
+    setIsVideoPlaying(!node.paused);
+
+    return () => {
+      node.removeEventListener("loadedmetadata", syncMeta);
+      node.removeEventListener("timeupdate", syncTime);
+      node.removeEventListener("play", onPlay);
+      node.removeEventListener("pause", onPause);
+      node.removeEventListener("ended", onPause);
+    };
+  }, [activeVisualItem?.id, activeIsVideo]);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node) return;
+    node.muted = muted;
+    writeGlobalMuted(muted);
+  }, [muted, mediaIndex, post?.id]);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node || !activeIsVideo) return;
+
+    if (isVideoPlaying) {
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+    } else {
+      node.pause();
+    }
+  }, [isVideoPlaying, activeVisualItem?.id, activeIsVideo]);
+
+  const togglePlay = () => {
+    const node = videoRef.current;
+    if (!node || !activeIsVideo) return;
+
+    if (node.paused) {
+      const promise = node.play();
+      if (promise && typeof promise.catch === "function") {
+        promise.catch(() => {});
+      }
+      setIsVideoPlaying(true);
+    } else {
+      node.pause();
+      setIsVideoPlaying(false);
+    }
+  };
+
+  const handleLikeClick = () => {
+    if (!post) return;
+
+    const telegramUserId = readTelegramUserId();
+
+    setLocalLiked((prev) => !prev);
+    onToggleLike(post.id);
+
+    if (!telegramUserId) return;
+
+    void trackAction({
+      action: "like",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.liked === "boolean") {
+        setLocalLiked(data.liked);
+      }
+    });
+  };
+
+  const handleSubscribeClick = () => {
+    if (!post) return;
+
+    const telegramUserId = readTelegramUserId();
+    const next = toggleSub(post.source.handle);
+
+    setSubscribed(next.includes(post.source.handle));
+    window.dispatchEvent(new Event("storage"));
+
+    if (!telegramUserId) return;
+
+    void trackAction({
+      action: "subscribe",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    }).then((data) => {
+      if (typeof data?.subscribed === "boolean") {
+        setSubscribed(data.subscribed);
+      }
+    });
+  };
+
+  const handleOpenTelegram = () => {
+    if (!post) return;
+
+    const telegramUserId = readTelegramUserId();
+
+    void trackAction({
+      action: "tg_click",
+      postId: post.id,
+      sourceHandle: post.source.handle,
+      telegramUserId,
+    });
+
+    window.open(post.postUrl, "_blank", "noopener,noreferrer");
+  };
+
+  return (
+    <AnimatePresence>
+      {post ? (
+        <motion.div
+          className="fixed inset-0 z-50 bg-black/45 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        >
+          <motion.div
+            className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-surface shadow-soft"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ type: "spring", stiffness: 260, damping: 28 }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-soft px-4 py-3">
+              <button
+                onClick={onClose}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
+                type="button"
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+
+              <div className="text-sm font-semibold text-primary">
+                {copy.postFromTelegram}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleSubscribeClick}
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
+                aria-label={
+                  subscribed
+                    ? copy.disableNotifications
+                    : copy.enableNotifications
+                }
+                title={
+                  subscribed
+                    ? copy.disableNotifications
+                    : copy.enableNotifications
+                }
+              >
+                <Bell
+                  className={`h-5 w-5 ${
+                    subscribed
+                      ? "fill-current text-primary"
+                      : "text-primary"
+                  }`}
+                />
+              </button>
+            </div>
+
+            <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
+              <button
+                type="button"
+                onClick={() => window.location.assign(`/${post.source.handle}`)}
+                className="mb-4 flex w-full min-w-0 items-start gap-3 text-left"
+              >
+                <div className="shrink-0">
+                  <FeedSourceAvatar post={post} />
+                </div>
+
+                <div className="min-w-0 flex-1 overflow-hidden">
+                  <div className="min-w-0 overflow-hidden">
+                    <div className="inline-flex max-w-full items-center gap-1 align-top">
+                      <span className="truncate text-[18px] font-semibold text-primary">
+                        {post.source.title}
+                      </span>
+
+                      {post.source.verified ? (
+                        <VerifiedBadge className="h-4 w-4 shrink-0 text-[#2AABEE]" />
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="truncate text-sm text-secondary">
+                    @{post.source.handle}
+                  </div>
+                </div>
+              </button>              
+
+              {visualMedia.length > 0 ? (
+                <div className="mb-4 overflow-hidden rounded-[24px]">
+                  <div className="relative">
+                    <FeedCarousel
+                      items={visualMedia}
+                      aspectClass="aspect-[4/5]"
+                      activeIndex={Math.min(
+                        mediaIndex,
+                        Math.max(visualMedia.length - 1, 0)
+                      )}
+                      onChange={setMediaIndex}
+                      controlsTone="dark"
+                      fit="contain"
+                      mode="adaptive"
+                      maxMediaHeightClass="max-h-[60vh]"
+                      backgroundClass="bg-transparent"
+                      mediaActive={activeIsVideo ? isVideoPlaying : true}
+                      muted={muted}
+                      videoRef={videoRef}
+                      enableFullscreen={!activeIsVideo}
+                      nativeVideoControls={false}
+                      blockVideoClickPropagation={false}
+                    />
+
+                    {activeIsVideo ? (
+                      <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+                        <button
+                          type="button"
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            togglePlay();
+                          }}
+                          className={`pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm transition-opacity duration-150 ${
+                            isVideoPlaying ? "opacity-0" : "opacity-100"
+                          }`}
+                          aria-label={isVideoPlaying ? copy.pause : copy.play}
+                        >
+                          {isVideoPlaying ? (
+                            <Pause className="h-6 w-6" />
+                          ) : (
+                            <Play className="ml-0.5 h-6 w-6" />
+                          )}
+                        </button>
+                      </div>
+                    ) : null}
+
+                    {activeIsVideo ? (
+                      <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+                        <div className="flex items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              togglePlay();
+                            }}
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                            aria-label={isVideoPlaying ? copy.pause : copy.play}
+                          >
+                            {isVideoPlaying ? (
+                              <Pause className="h-4 w-4" />
+                            ) : (
+                              <Play className="ml-0.5 h-4 w-4" />
+                            )}
+                          </button>
+
+                          <div className="min-w-[58px] text-[11px] font-medium text-white">
+                            {formatTime(currentTime)} / {formatTime(duration)}
+                          </div>
+
+                          <input
+                            type="range"
+                            min={0}
+                            max={duration || 0}
+                            step={0.1}
+                            value={Math.min(currentTime, duration || 0)}
+                            onChange={(event) => {
+                              event.stopPropagation();
+                              const node = videoRef.current;
+                              if (!node) return;
+                              const next = Number(event.target.value);
+                              node.currentTime = next;
+                              setCurrentTime(next);
+                            }}
+                            onClick={(event) => event.stopPropagation()}
+                            onMouseDown={(event) => event.stopPropagation()}
+                            onTouchStart={(event) => event.stopPropagation()}
+                            className="h-[3px] w-full accent-white"
+                          />
+
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setMuted((prev) => !prev);
+                            }}
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
+                            aria-label={muted ? copy.unmute : copy.mute}
+                          >
+                            {muted ? (
+                              <VolumeX className="h-4 w-4" />
+                            ) : (
+                              <Volume2 className="h-4 w-4" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
+
+              <AudioList items={audioMedia} locale={locale} />
+              <FileList items={fileMedia} locale={locale} />
+
+              {audioMedia.length === 0 &&
+              fileMedia.length === 0 &&
+              text &&
+              !visualMedia.length &&
+              hasMusicLikeTag(post) ? (
+                <MusicFallback
+                  post={post}
+                  locale={locale}
+                  onOpenOriginal={handleOpenTelegram}
+                />
+              ) : null}
+
+              {text ? <RichTextBlock text={text} /> : null}
+            </div>
+
+            <div className="sticky bottom-0 border-t border-soft bg-surface px-4 py-3">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-8 text-secondary">
+                  <button type="button" onClick={handleLikeClick}>
+                    <Heart
+                      className={`h-5 w-5 ${
+                        localLiked ? "fill-current text-primary" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+                
+                <button
+                  type="button"
+                  onClick={handleOpenTelegram}
+                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm font-medium text-primary transition hover:bg-app"
+                >
+                  <span>{copy.openInTelegram}</span>
+                  <ExternalLink className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      ) : null}
     </AnimatePresence>
   );
 }

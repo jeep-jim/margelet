@@ -3,7 +3,10 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
 
-type AnchorRect = { top: number; right: number };
+type AnchorRect = {
+  top: number;
+  right: number;
+};
 
 function getSubs(): string[] {
   try {
@@ -19,9 +22,47 @@ function getSubs(): string[] {
 function toggleSub(handle: string) {
   const current = getSubs();
   const exists = current.includes(handle);
-  const next = exists ? current.filter((h) => h !== handle) : [...current, handle];
+  const next = exists
+    ? current.filter((h) => h !== handle)
+    : [...current, handle];
+
   localStorage.setItem("margelet_subscriptions", JSON.stringify(next));
   return next;
+}
+
+function readTelegramUserId() {
+  try {
+    const raw = localStorage.getItem("margelet_tg_user");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return parsed?.id ? String(parsed.id) : null;
+  } catch {
+    return null;
+  }
+}
+
+async function trackSubscribe(params: {
+  postId: number;
+  sourceHandle: string;
+  telegramUserId?: string | null;
+}) {
+  try {
+    await fetch("/api/track", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-telegram-id": params.telegramUserId || "",
+      },
+      body: JSON.stringify({
+        action: "subscribe",
+        postId: params.postId,
+        sourceHandle: params.sourceHandle,
+        telegramUserId: params.telegramUserId || null,
+      }),
+    });
+  } catch {
+    //
+  }
 }
 
 export function FeedMoreMenu({
@@ -33,6 +74,7 @@ export function FeedMoreMenu({
   onOpenTelegram,
   onRequestClose,
   anchorRect,
+  postId,
   sourceHandle,
 }: {
   locale: Locale;
@@ -50,20 +92,32 @@ export function FeedMoreMenu({
   const [mounted, setMounted] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
 
-  useEffect(() => setMounted(true), []);
-  useEffect(() => setSubscribed(getSubs().includes(sourceHandle)), [sourceHandle]);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    setSubscribed(getSubs().includes(sourceHandle));
+  }, [sourceHandle]);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") onRequestClose();
+      if (event.key === "Escape") {
+        onRequestClose();
+      }
     }
+
     function handlePointerDown(event: MouseEvent | TouchEvent) {
       const target = event.target as Node | null;
-      if (target && !menuRef.current?.contains(target)) onRequestClose();
+      if (!target) return;
+      if (menuRef.current?.contains(target)) return;
+      onRequestClose();
     }
+
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("mousedown", handlePointerDown);
     document.addEventListener("touchstart", handlePointerDown, { passive: true });
+
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handlePointerDown);
@@ -71,74 +125,185 @@ export function FeedMoreMenu({
     };
   }, [onRequestClose]);
 
-  const copy = useMemo(() => {
-    const map = {
-      en: { tg: "Open in Telegram", hide: "Hide post", del: "Delete post", on: "Enable notifications", off: "Disable notifications" },
-      ru: { tg: "Открыть в Telegram", hide: "Скрыть пост", del: "Удалить пост", on: "Включить уведомления", off: "Отключить уведомления" },
-    } as const;
-    return map[locale as "en" | "ru"] ?? map.en;
-  }, [locale]);
+  const COPY = {
+    en: {
+      subscribeOn: "Enable notifications",
+      subscribeOff: "Disable notifications",
+      openTelegram: "Open in Telegram",
+      delete: "Delete post",
+      deleteAdmin: "Delete post (admin)",
+      hide: "Hide this post",
+    },
+    ru: {
+      subscribeOn: "Включить уведомления",
+      subscribeOff: "Отключить уведомления",
+      openTelegram: "Открыть в Telegram",
+      delete: "Удалить пост",
+      deleteAdmin: "Удалить пост (admin)",
+      hide: "Не показывать",
+    },
+    de: {
+      subscribeOn: "Benachrichtigungen aktivieren",
+      subscribeOff: "Benachrichtigungen deaktivieren",
+      openTelegram: "In Telegram öffnen",
+      delete: "Beitrag löschen",
+      deleteAdmin: "Beitrag löschen (admin)",
+      hide: "Diesen Beitrag ausblenden",
+    },
+    es: {
+      subscribeOn: "Activar notificaciones",
+      subscribeOff: "Desactivar notificaciones",
+      openTelegram: "Abrir en Telegram",
+      delete: "Eliminar publicación",
+      deleteAdmin: "Eliminar publicación (admin)",
+      hide: "Ocultar esta publicación",
+    },
+    tr: {
+      subscribeOn: "Bildirimleri aç",
+      subscribeOff: "Bildirimleri kapat",
+      openTelegram: "Telegram’da aç",
+      delete: "Gönderiyi sil",
+      deleteAdmin: "Gönderiyi sil (admin)",
+      hide: "Bu gönderiyi gizle",
+    },
+    fr: {
+      subscribeOn: "Activer les notifications",
+      subscribeOff: "Désactiver les notifications",
+      openTelegram: "Ouvrir dans Telegram",
+      delete: "Supprimer le post",
+      deleteAdmin: "Supprimer le post (admin)",
+      hide: "Masquer ce post",
+    },
+    it: {
+      subscribeOn: "Attiva notifiche",
+      subscribeOff: "Disattiva notifiche",
+      openTelegram: "Apri in Telegram",
+      delete: "Elimina post",
+      deleteAdmin: "Elimina post (admin)",
+      hide: "Nascondi questo post",
+    },
+    "pt-br": {
+      subscribeOn: "Ativar notificações",
+      subscribeOff: "Desativar notificações",
+      openTelegram: "Abrir no Telegram",
+      delete: "Excluir post",
+      deleteAdmin: "Excluir post (admin)",
+      hide: "Ocultar este post",
+    },
+    id: {
+      subscribeOn: "Aktifkan notifikasi",
+      subscribeOff: "Nonaktifkan notifikasi",
+      openTelegram: "Buka di Telegram",
+      delete: "Hapus postingan",
+      deleteAdmin: "Hapus postingan (admin)",
+      hide: "Sembunyikan postingan ini",
+    },
+    pl: {
+      subscribeOn: "Włącz powiadomienia",
+      subscribeOff: "Wyłącz powiadomienia",
+      openTelegram: "Otwórz w Telegramie",
+      delete: "Usuń post",
+      deleteAdmin: "Usuń post (admin)",
+      hide: "Ukryj ten post",
+    },
+  } as const;
 
-  if (!mounted || !anchorRect) return null;
+  const copy = COPY[locale] ?? COPY.en;
+
+  const position = useMemo(() => {
+    return {
+      top: Math.max(12, (anchorRect?.top ?? 72) + 8),
+      right: Math.max(12, anchorRect?.right ?? 12),
+      width: 286,
+    };
+  }, [anchorRect]);
+
+  if (!mounted) return null;
 
   return createPortal(
-    <div
-      ref={menuRef}
-      className="fixed z-[70] min-w-[220px] overflow-hidden rounded-[22px] border border-soft bg-surface shadow-2xl"
-      style={{ top: anchorRect.top + 8, right: anchorRect.right }}
-    >
-      <button
-        type="button"
-        onClick={() => {
-          const next = toggleSub(sourceHandle);
-          setSubscribed(next.includes(sourceHandle));
-          window.dispatchEvent(new Event("storage"));
-          onRequestClose();
-        }}
-        className="flex w-full items-center gap-3 px-4 py-3 text-left text-primary transition hover:bg-surface-soft"
-      >
-        {subscribed ? <BellOff className="h-4 w-4" /> : <Bell className="h-4 w-4" />}
-        <span>{subscribed ? copy.off : copy.on}</span>
-      </button>
+    <>
+      <div className="fixed inset-0 z-[99998]" onClick={onRequestClose} />
 
-      <button
-        type="button"
-        onClick={() => {
-          onOpenTelegram();
-          onRequestClose();
+      <div
+        ref={menuRef}
+        className="fixed z-[99999] min-w-[286px] rounded-[22px] border border-soft bg-surface p-2 shadow-soft"
+        style={{
+          top: position.top,
+          right: position.right,
+          width: position.width,
         }}
-        className="flex w-full items-center gap-3 px-4 py-3 text-left text-primary transition hover:bg-surface-soft"
       >
-        <Send className="h-4 w-4" />
-        <span>{copy.tg}</span>
-      </button>
+        <button
+          type="button"
+          onClick={async () => {
+            const telegramUserId = readTelegramUserId();
+            const next = toggleSub(sourceHandle);
+            const isNowSubscribed = next.includes(sourceHandle);
 
-      <button
-        type="button"
-        onClick={() => {
-          onHide();
-          onRequestClose();
-        }}
-        className="flex w-full items-center gap-3 px-4 py-3 text-left text-primary transition hover:bg-surface-soft"
-      >
-        <EyeOff className="h-4 w-4" />
-        <span>{copy.hide}</span>
-      </button>
+            setSubscribed(isNowSubscribed);
+            window.dispatchEvent(new Event("storage"));
 
-      {(isOwner || isAdmin) ? (
+            if (telegramUserId) {
+              await trackSubscribe({
+                postId,
+                sourceHandle,
+                telegramUserId,
+              });
+            }
+          }}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
+        >
+          {subscribed ? (
+            <BellOff className="h-4 w-4 text-primary" />
+          ) : (
+            <Bell className="h-4 w-4 text-secondary" />
+          )}          
+          <span>
+            {subscribed ? copy.subscribeOff : copy.subscribeOn}
+          </span>
+        </button>
+
         <button
           type="button"
           onClick={() => {
-            onDelete();
+            onOpenTelegram();
             onRequestClose();
           }}
-          className="flex w-full items-center gap-3 px-4 py-3 text-left text-red-400 transition hover:bg-surface-soft"
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
         >
-          <Trash2 className="h-4 w-4" />
-          <span>{copy.del}</span>
+          <Send className="h-4 w-4" />
+          <span>{copy.openTelegram}</span>
         </button>
-      ) : null}
-    </div>,
-    document.body,
+
+        <div className="my-2 h-px bg-[color:var(--border-soft)]/70" />
+
+        {isOwner || isAdmin ? (
+          <button
+            type="button"
+            onClick={() => {
+              onDelete();
+              onRequestClose();
+            }}
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-rose-400 transition hover:bg-surface-soft"
+          >
+            <Trash2 className="h-4 w-4" />
+            <span>{isAdmin && !isOwner ? copy.deleteAdmin : copy.delete}</span>
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={() => {
+              onHide();
+              onRequestClose();
+            }}
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
+          >
+            <EyeOff className="h-4 w-4" />
+            <span>{copy.hide}</span>
+          </button>
+        )}
+      </div>
+    </>,
+    document.body
   );
 }

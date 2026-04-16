@@ -11,6 +11,7 @@ import type { ContentTag, IngestedPost, Locale, TabId } from "./types/app";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
+const LIKES_STORAGE_KEY = "margelet_likes";
 const SAVES_STORAGE_KEY = "margelet_saves";
 const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 
@@ -197,6 +198,7 @@ export default function App() {
     typeof window === "undefined" ? "/" : normalizePathname(window.location.pathname)
   );
 
+  const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
 
@@ -374,8 +376,17 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const storedLikes = localStorage.getItem(LIKES_STORAGE_KEY);
     const storedSaves = localStorage.getItem(SAVES_STORAGE_KEY);
     const storedHidden = localStorage.getItem(HIDDEN_POSTS_STORAGE_KEY);
+
+    if (storedLikes) {
+      try {
+        setLikedPostIds(JSON.parse(storedLikes));
+      } catch {
+        localStorage.removeItem(LIKES_STORAGE_KEY);
+      }
+    }
 
     if (storedSaves) {
       try {
@@ -393,6 +404,10 @@ export default function App() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify(likedPostIds));
+  }, [likedPostIds]);
 
   useEffect(() => {
     localStorage.setItem(SAVES_STORAGE_KEY, JSON.stringify(savedPostIds));
@@ -481,6 +496,12 @@ export default function App() {
     replacePath("/");
   };
 
+  const handleToggleLike = (id: number) => {
+    setLikedPostIds((prev) =>
+      prev.includes(id) ? prev.filter((postId) => postId !== id) : [...prev, id]
+    );
+  };
+
   const handleToggleSave = (id: number) => {
     setSavedPostIds((prev) =>
       prev.includes(id) ? prev.filter((postId) => postId !== id) : [...prev, id]
@@ -516,6 +537,7 @@ export default function App() {
 
     setServerPosts((prev) => prev.filter((post) => post.id !== id));
     setHiddenPostIds((prev) => prev.filter((postId) => postId !== id));
+    setLikedPostIds((prev) => prev.filter((postId) => postId !== id));
     setSavedPostIds((prev) => prev.filter((postId) => postId !== id));
   };
 
@@ -584,7 +606,9 @@ export default function App() {
               locale={locale}
               posts={posts}
               isFeedLoading={isFeedLoading}
+              likedPostIds={likedPostIds}
               savedPostIds={savedPostIds}
+              onToggleLike={handleToggleLike}
               onToggleSave={handleToggleSave}
               onHidePost={handleHidePost}
               onDeletePost={handleDeletePost}
@@ -625,6 +649,8 @@ export default function App() {
                 setCurrent("source");
                 replacePath(`/${post.source.handle}/${postId}`);
               }}
+              likedPostIds={likedPostIds}
+              onToggleLike={handleToggleLike}
               onHidePost={handleHidePost}
               onDeletePost={handleDeletePost}
               currentTelegramUserId={currentTelegramUser?.id || null}
