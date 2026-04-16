@@ -29,6 +29,7 @@ async function readJsonFile<T>(pathname: string, fallback: T): Promise<T> {
   }
 
   const response = await fetch(blob.url, { cache: "no-store" });
+  
   if (!response.ok) {
     throw new Error(`Failed to read blob ${pathname}: ${response.status}`);
   }

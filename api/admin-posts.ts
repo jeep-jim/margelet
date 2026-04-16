@@ -1,49 +1,81 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { readFeedFile, readSourcesFile, writeSourcesFile } from "./lib/blob-store.js";
+import { readFeedFile, readSourcesFile, writeFeedFile, writeSourcesFile } from "./lib/blob-store";
+import type { IngestedPost, ContentTag } from "../src/types/app";
+import type { TrustedSource } from "../src/screens/admin/admin.types";
+import type { CountryCode } from "../src/screens/admin/admin.countries";
 
-type LiteSource = {
-  id: string;
-  handle: string;
-  title: string;
-  countryCode: string;
-  defaultTag: string;
-  status: "active" | "paused";
-  note?: string;
-  createdAt: string;
-};
+const ADMIN_TELEGRAM_ID = String(process.env.ADMIN_TELEGRAM_ID || "").trim();
+const ADMIN_TELEGRAM_USERNAME = String(
+  process.env.ADMIN_TELEGRAM_USERNAME || ""
+)
+  .trim()
+  .toLowerCase();
 
-function toStringSafe(value: unknown, fallback = "") {
+function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value.trim() : fallback;
 }
 
-function normalizeSource(input: unknown): LiteSource | null {
-  if (!input || typeof input !== "object") return null;
+function isOwner(body: Record<string, unknown>) {
+  const telegramId =
+    asString(body.telegramId) || asString(body.telegramUserId);
 
-  const raw = input as Record<string, unknown>;
-  const handle = toStringSafe(raw.handle).replace(/^@/, "");
+  const username = (
+    asString(body.username) ||
+    asString(body.telegramUsername)
+  ).toLowerCase();
+
+  const byId = ADMIN_TELEGRAM_ID && telegramId === ADMIN_TELEGRAM_ID;
+  const byUsername =
+    ADMIN_TELEGRAM_USERNAME && username === ADMIN_TELEGRAM_USERNAME;
+
+  return Boolean(byId || byUsername);
+}
+
+function normalizeCountryCode(value: unknown): CountryCode {
+  return (asString(value, "ru").toLowerCase() as CountryCode) || "ru";
+}
+
+function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
+  const tags = Array.isArray(value)
+    ? value
+        .map((item) => asString(item))
+        .filter(Boolean) as ContentTag[]
+    : [];
+
+  const unique = Array.from(new Set(tags));
+  return unique.length ? unique : [fallback];
+}
+
+function buildSource(body: Record<string, unknown>): TrustedSource | null {
+  const handle = asString(body.handle).replace(/^@/, "").toLowerCase();
   if (!handle) return null;
 
-  const id =
-    toStringSafe(raw.id) ||
-    `src_${handle.toLowerCase()}_${Date.now().toString(36)}`;
-
-  const title = toStringSafe(raw.title) || handle;
-  const countryCode = toStringSafe(raw.countryCode, "RU").toUpperCase();
-  const defaultTag = toStringSafe(raw.defaultTag, "other");
-  const status = toStringSafe(raw.status, "active") === "paused" ? "paused" : "active";
-  const note = toStringSafe(raw.note);
-  const createdAt = toStringSafe(raw.createdAt) || new Date().toISOString();
+  const countryCode = normalizeCountryCode(body.countryCode);
+  const defaultTag = (asString(body.defaultTag, "other") as ContentTag) || "other";
+  const now = new Date().toISOString();
 
   return {
-    id,
-    handle,
-    title,
+    id: asString(body.id) || `${countryCode}:${handle}`,
     countryCode,
+    handle,
+    title: asString(body.title) || handle,
+    avatarUrl: null,
     defaultTag,
-    status,
-    note: note || undefined,
-    createdAt,
+    tags: normalizeTags(body.tags, defaultTag),
+    status: asString(body.status) === "paused" ? "paused" : "active",
+    note: asString(body.note) || null,
+    createdAt: asString(body.createdAt) || now,
+    updatedAt: now,
+    lastCheckedAt: null,
+    lastImportedAt: null,
+    lastSeenPostId: null,
+    importedPostsCount: 0,
   };
+}
+
+function parseDateMs(value: string | null | undefined) {
+  const ms = Date.parse(String(value || ""));
+  return Number.isFinite(ms) ? ms : 0;
 }
 
 export default async function handler(
@@ -51,85 +83,137 @@ export default async function handler(
   res: VercelResponse
 ) {
   try {
-    if (req.method === "GET") {
-      const [sourcesFile, feedFile] = await Promise.all([
-        readSourcesFile<LiteSource>(),
-        readFeedFile<unknown>(),
-      ]);
-
-      return res.status(200).json({
-        ok: true,
-        sources: sourcesFile.sources,
-        posts: feedFile.posts,
-        updatedAt: feedFile.updatedAt,
-      });
-    }
-
-    if (req.method !== "POST") {
-      res.setHeader("Allow", "GET, POST");
-      return res.status(405).json({
-        ok: false,
-        error: "Method not allowed",
-      });
-    }
-
     const body =
       typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
 
-    const action = toStringSafe(body?.action);
-
-    if (action === "delete-source") {
-      const sourceId = toStringSafe(body?.sourceId);
-      const sourcesFile = await readSourcesFile<LiteSource>();
-      const nextSources = sourcesFile.sources.filter(
-        (item: LiteSource) => item.id !== sourceId
-      );
-
-      await writeSourcesFile(nextSources);
-
-      return res.status(200).json({
-        ok: true,
-        sources: nextSources,
+    if (!isOwner(body)) {
+      return res.status(403).json({
+        ok: false,
+        error: "Access denied",
       });
     }
 
-    if (action === "save-source") {
-      const normalized = normalizeSource(body?.source);
-      if (!normalized) {
+    if (req.method === "POST") {
+      const entity = asString(body.entity);
+      const countryCode = normalizeCountryCode(body.countryCode);
+
+      if (entity === "posts") {
+        const feedFile = await readFeedFile<IngestedPost>();
+        const posts = (Array.isArray(feedFile.posts) ? feedFile.posts : [])
+          .filter((post) => !post.sourceCountryCode || post.sourceCountryCode === countryCode)
+          .sort((a, b) => parseDateMs(b.createdAt) - parseDateMs(a.createdAt));
+
+        return res.status(200).json({
+          ok: true,
+          posts,
+        });
+      }
+
+      if (entity === "sources") {
+        const sourcesFile = await readSourcesFile<TrustedSource>();
+        const sources = (Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [])
+          .filter((source) => source.countryCode === countryCode)
+          .sort((a, b) => a.handle.localeCompare(b.handle));
+
+        return res.status(200).json({
+          ok: true,
+          sources,
+        });
+      }
+
+      return res.status(400).json({
+        ok: false,
+        error: "Unknown entity",
+      });
+    }
+
+    if (req.method === "PATCH") {
+      const entity = asString(body.entity);
+
+      if (entity !== "sources") {
+        return res.status(400).json({
+          ok: false,
+          error: "Unsupported entity",
+        });
+      }
+
+      const source = buildSource(body);
+      if (!source) {
         return res.status(400).json({
           ok: false,
           error: "Invalid source payload",
         });
       }
 
-      const sourcesFile = await readSourcesFile<LiteSource>();
-      const existingIndex = sourcesFile.sources.findIndex(
-        (item: LiteSource) =>
-          item.id === normalized.id || item.handle === normalized.handle
+      const sourcesFile = await readSourcesFile<TrustedSource>();
+      const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+
+      const existingIndex = current.findIndex(
+        (item) => item.id === source.id || item.handle === source.handle
       );
 
-      const nextSources = [...sourcesFile.sources];
+      const next = [...current];
 
       if (existingIndex >= 0) {
-        nextSources[existingIndex] = {
-          ...nextSources[existingIndex],
-          ...normalized,
+        next[existingIndex] = {
+          ...next[existingIndex],
+          ...source,
+          createdAt: next[existingIndex].createdAt || source.createdAt,
         };
       } else {
-        nextSources.unshift(normalized);
+        next.unshift(source);
       }
 
-      await writeSourcesFile(nextSources);
+      await writeSourcesFile(next);
 
       return res.status(200).json({
         ok: true,
-        sources: nextSources,
+        source,
+        sources: next,
       });
     }
 
-    return res.status(400).json({
+    if (req.method === "DELETE") {
+      const entity = asString(body.entity);
+
+      if (entity === "sources") {
+        const id = asString(body.id);
+        const sourcesFile = await readSourcesFile<TrustedSource>();
+        const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+        const next = current.filter((item) => item.id !== id);
+
+        await writeSourcesFile(next);
+
+        return res.status(200).json({
+          ok: true,
+          sources: next,
+        });
+      }
+
+      if (entity === "posts") {
+        const id = Number(body.id);
+        const feedFile = await readFeedFile<IngestedPost>();
+        const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
+        const next = current.filter((item) => item.id !== id);
+
+        await writeFeedFile(next);
+
+        return res.status(200).json({
+          ok: true,
+          posts: next,
+        });
+      }
+
+      return res.status(400).json({
+        ok: false,
+        error: "Unknown entity",
+      });
+    }
+
+    res.setHeader("Allow", "POST, PATCH, DELETE");
+    return res.status(405).json({
       ok: false,
-      error: "Unknown action",
+      error: "Method not allowed",
     });
   } catch (error) {
     console.error("admin-posts api error", error);
