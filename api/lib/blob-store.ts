@@ -16,10 +16,12 @@ export type SourcesFile<T = unknown> = {
 type BlobListItem = {
   pathname: string;
   url: string;
+  downloadUrl?: string;
 };
 
 async function readJsonFile<T>(pathname: string, fallback: T): Promise<T> {
   const result = await list({ prefix: pathname, limit: 10 });
+
   const blob =
     result.blobs.find((item: BlobListItem) => item.pathname === pathname) ??
     result.blobs[0];
@@ -28,8 +30,10 @@ async function readJsonFile<T>(pathname: string, fallback: T): Promise<T> {
     return fallback;
   }
 
-  const response = await fetch(blob.url, { cache: "no-store" });
-  
+  const response = await fetch(blob.downloadUrl || blob.url, {
+    cache: "no-store",
+  });
+
   if (!response.ok) {
     throw new Error(`Failed to read blob ${pathname}: ${response.status}`);
   }

@@ -57,15 +57,7 @@ export default async function handler(
       });
     }
 
-    if (req.method === "POST") {
-      return res.status(200).json({
-        ok: true,
-        isAdmin: true,
-        grants: [ownerGrant()],
-      });
-    }
-
-    if (req.method === "PATCH" || req.method === "DELETE") {
+    if (req.method === "POST" || req.method === "PATCH" || req.method === "DELETE") {
       return res.status(200).json({
         ok: true,
         isAdmin: true,

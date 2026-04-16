@@ -1,5 +1,10 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { readFeedFile, readSourcesFile, writeFeedFile, writeSourcesFile } from "./lib/blob-store";
+import {
+  readFeedFile,
+  readSourcesFile,
+  writeFeedFile,
+  writeSourcesFile,
+} from "./lib/blob-store";
 import type { IngestedPost, ContentTag } from "../src/types/app";
 import type { TrustedSource } from "../src/screens/admin/admin.types";
 import type { CountryCode } from "../src/screens/admin/admin.countries";
@@ -37,9 +42,9 @@ function normalizeCountryCode(value: unknown): CountryCode {
 
 function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
   const tags = Array.isArray(value)
-    ? value
+    ? (value
         .map((item) => asString(item))
-        .filter(Boolean) as ContentTag[]
+        .filter(Boolean) as ContentTag[])
     : [];
 
   const unique = Array.from(new Set(tags));
@@ -99,6 +104,7 @@ export default async function handler(
 
       if (entity === "posts") {
         const feedFile = await readFeedFile<IngestedPost>();
+
         const posts = (Array.isArray(feedFile.posts) ? feedFile.posts : [])
           .filter((post) => !post.sourceCountryCode || post.sourceCountryCode === countryCode)
           .sort((a, b) => parseDateMs(b.createdAt) - parseDateMs(a.createdAt));
@@ -111,6 +117,7 @@ export default async function handler(
 
       if (entity === "sources") {
         const sourcesFile = await readSourcesFile<TrustedSource>();
+
         const sources = (Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [])
           .filter((source) => source.countryCode === countryCode)
           .sort((a, b) => a.handle.localeCompare(b.handle));
@@ -138,6 +145,7 @@ export default async function handler(
       }
 
       const source = buildSource(body);
+
       if (!source) {
         return res.status(400).json({
           ok: false,
@@ -178,6 +186,7 @@ export default async function handler(
 
       if (entity === "sources") {
         const id = asString(body.id);
+
         const sourcesFile = await readSourcesFile<TrustedSource>();
         const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
         const next = current.filter((item) => item.id !== id);
@@ -192,6 +201,7 @@ export default async function handler(
 
       if (entity === "posts") {
         const id = Number(body.id);
+
         const feedFile = await readFeedFile<IngestedPost>();
         const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
         const next = current.filter((item) => item.id !== id);
