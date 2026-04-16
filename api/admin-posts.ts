@@ -4,10 +4,8 @@ import {
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
-} from "./lib/blob-store";
-import type { IngestedPost, ContentTag } from "../src/types/app";
-import type { TrustedSource } from "../src/screens/admin/admin.types";
-import type { CountryCode } from "../src/screens/admin/admin.countries";
+} from "./lib/blob-store.ts";
+import type { IngestedPost, ContentTag } from "../src/types/app.ts";
 
 const ADMIN_TELEGRAM_ID = String(process.env.ADMIN_TELEGRAM_ID || "").trim();
 const ADMIN_TELEGRAM_USERNAME = String(
@@ -15,6 +13,24 @@ const ADMIN_TELEGRAM_USERNAME = String(
 )
   .trim()
   .toLowerCase();
+
+type StoredSource = {
+  id: string;
+  countryCode: string;
+  handle: string;
+  title: string;
+  avatarUrl: string | null;
+  defaultTag: ContentTag;
+  tags: ContentTag[];
+  status: "active" | "paused";
+  note: string | null;
+  createdAt: string;
+  updatedAt: string;
+  lastCheckedAt: string | null;
+  lastImportedAt: string | null;
+  lastSeenPostId: string | null;
+  importedPostsCount: number;
+};
 
 function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value.trim() : fallback;
@@ -36,8 +52,8 @@ function isOwner(body: Record<string, unknown>) {
   return Boolean(byId || byUsername);
 }
 
-function normalizeCountryCode(value: unknown): CountryCode {
-  return (asString(value, "ru").toLowerCase() as CountryCode) || "ru";
+function normalizeCountryCode(value: unknown): string {
+  return asString(value, "ru").toLowerCase() || "ru";
 }
 
 function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
@@ -51,7 +67,7 @@ function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
   return unique.length ? unique : [fallback];
 }
 
-function buildSource(body: Record<string, unknown>): TrustedSource | null {
+function buildSource(body: Record<string, unknown>): StoredSource | null {
   const handle = asString(body.handle).replace(/^@/, "").toLowerCase();
   if (!handle) return null;
 
@@ -116,7 +132,7 @@ export default async function handler(
       }
 
       if (entity === "sources") {
-        const sourcesFile = await readSourcesFile<TrustedSource>();
+        const sourcesFile = await readSourcesFile<StoredSource>();
 
         const sources = (Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [])
           .filter((source) => source.countryCode === countryCode)
@@ -153,7 +169,7 @@ export default async function handler(
         });
       }
 
-      const sourcesFile = await readSourcesFile<TrustedSource>();
+      const sourcesFile = await readSourcesFile<StoredSource>();
       const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
 
       const existingIndex = current.findIndex(
@@ -187,7 +203,7 @@ export default async function handler(
       if (entity === "sources") {
         const id = asString(body.id);
 
-        const sourcesFile = await readSourcesFile<TrustedSource>();
+        const sourcesFile = await readSourcesFile<StoredSource>();
         const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
         const next = current.filter((item) => item.id !== id);
 
