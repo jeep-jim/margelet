@@ -1,6 +1,7 @@
-import { savePost, getPostByUrl, getFeedPosts } from "./lib/kv.js";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { parseTelegramPostUrl, ingestTelegramPost } from "../src/lib/telegram.js";
 import type { IngestedPost, ContentTag, Locale } from "../src/types/app";
+import { readFeedFile, writeFeedFile } from "./lib/blob-store.js";
 
 type UserRole = "user" | "channel_owner" | "admin";
 type PostStatus = "published" | "pending" | "blocked";
@@ -11,18 +12,6 @@ function asCleanString(value: unknown): string | null {
   if (typeof value !== "string") return null;
   const trimmed = value.trim();
   return trimmed || null;
-}
-
-function resolvePlan(plan: unknown): IngestedPost["billing"]["plan"] {
-  if (plan === "pro_1m") return "pro_1m";
-  if (plan === "pro_3m") return "pro_3m";
-  if (plan === "pro_12m") return "pro_12m";
-  return "free";
-}
-
-function resolveTTL(plan: IngestedPost["billing"]["plan"]): number {
-  if (plan === "pro_12m") return 48;
-  return 24;
 }
 
 function resolveRole(value: unknown): UserRole {
@@ -75,20 +64,67 @@ function getStartOfUtcDay() {
   return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
 }
 
+function parseDateMs(value: string | null | undefined) {
+  const ms = Date.parse(String(value || ""));
+  return Number.isFinite(ms) ? ms : null;
+}
+
+function makePostId(postUrl: string) {
+  let hash = 2166136261;
+
+  for (let i = 0; i < postUrl.length; i += 1) {
+    hash ^= postUrl.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return Math.abs(hash >>> 0);
+}
+
+async function getFeedPosts(): Promise<IngestedPost[]> {
+  const file = await readFeedFile<IngestedPost>();
+  const now = Date.now();
+
+  return (Array.isArray(file.posts) ? file.posts : []).filter((post) => {
+    const expiresAt = parseDateMs(post?.expiresAt);
+    return expiresAt === null || expiresAt > now;
+  });
+}
+
+async function saveFeedPosts(posts: IngestedPost[]) {
+  const now = Date.now();
+
+  const cleaned = posts
+    .filter(Boolean)
+    .filter((post) => {
+      const expiresAt = parseDateMs(post?.expiresAt);
+      return expiresAt === null || expiresAt > now;
+    })
+    .sort((a, b) => {
+      const aMs = parseDateMs(a?.createdAt) || 0;
+      const bMs = parseDateMs(b?.createdAt) || 0;
+      return bMs - aMs;
+    });
+
+  await writeFeedFile(cleaned);
+}
+
+async function getPostByUrl(postUrl: string): Promise<IngestedPost | null> {
+  const posts = await getFeedPosts();
+  return posts.find((post) => post.postUrl === postUrl) || null;
+}
+
 async function getUserPostsToday(telegramId: string | null, locale: Locale | null) {
   if (!telegramId) return 0;
 
-  const posts = await getFeedPosts(200, {
-    countryCode: locale,
-  });
-
+  const posts = await getFeedPosts();
   const dayStart = getStartOfUtcDay().getTime();
 
   return posts.filter((post) => {
+    if (post.sourceCountryCode !== locale) return false;
     if (post.addedBy?.telegramId !== telegramId) return false;
 
-    const createdAt = Date.parse(post.createdAt || "");
-    if (!Number.isFinite(createdAt)) return false;
+    const createdAt = parseDateMs(post.createdAt);
+    if (createdAt === null) return false;
 
     return createdAt >= dayStart;
   }).length;
@@ -123,8 +159,9 @@ function simpleModeration(text: string): PostStatus {
   return "published";
 }
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Method not allowed" });
   }
 
@@ -133,7 +170,6 @@ export default async function handler(req: any, res: any) {
       typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
 
     const url = asCleanString(body.url);
-    const plan = resolvePlan(body.plan);
     const role = resolveRole(body.role);
     const locale = resolveLocale(body.locale);
 
@@ -155,7 +191,6 @@ export default async function handler(req: any, res: any) {
     }
 
     const normalizedUrl = parsed.normalizedUrl;
-
     const existing = await getPostByUrl(normalizedUrl);
 
     if (existing) {
@@ -200,17 +235,13 @@ export default async function handler(req: any, res: any) {
 
     const status = simpleModeration(moderationText);
 
-    const ttlHours = resolveTTL(plan);
+    const ttlHours = 24;
     const now = new Date();
     const nowIso = now.toISOString();
     const expires = new Date(now.getTime() + ttlHours * 3600 * 1000);
 
-    const post: IngestedPost & {
-      status: PostStatus;
-      role?: UserRole;
-      mediaRefreshedAt?: string | null;
-    } = {
-      id: Date.now(),
+    const post: IngestedPost = {
+      id: makePostId(normalizedUrl),
 
       postUrl: normalizedUrl,
 
@@ -244,9 +275,8 @@ export default async function handler(req: any, res: any) {
       },
 
       billing: {
-        plan,
-        autopublishEnabled:
-          plan === "pro_3m" || plan === "pro_12m",
+        plan: "free",
+        autopublishEnabled: false,
       },
 
       sourceId: null,
@@ -254,13 +284,23 @@ export default async function handler(req: any, res: any) {
 
       status,
       role,
+
+      moderation: {
+        status,
+        reason: null,
+        reviewedAt: nowIso,
+      },
     };
 
-    const saved = await savePost(post);
+    const currentPosts = await getFeedPosts();
+    const nextPosts = [post, ...currentPosts.filter((item) => item.postUrl !== post.postUrl)];
+
+    await saveFeedPosts(nextPosts);
 
     return res.status(200).json({
-      post: saved,
-      status: saved.status,
+      post,
+      status: post.status,
+      duplicated: false,
     });
   } catch (error) {
     console.error("submit-post api error", error);
