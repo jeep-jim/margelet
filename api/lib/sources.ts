@@ -1,37 +1,19 @@
-import { getPostByUrl, savePost, redis } from "./kv.js";
 import type { ContentTag, IngestedPost } from "../../src/types/app.js";
 import type { CountryCode } from "../../src/screens/admin/admin.countries.js";
 import type { TrustedSource } from "../../src/screens/admin/admin.types.js";
-import { ingestTelegramPost, parseTelegramPostUrl } from "../../src/lib/telegram.js";
+import { ingestTelegramPost } from "../../src/lib/telegram.js";
+import {
+  readFeedFile,
+  readSourcesFile,
+  writeFeedFile,
+  writeSourcesFile,
+} from "./blob-store.js";
 
-const SOURCES_IDS_KEY = "margelet:sources:ids";
-const SOURCE_KEY_PREFIX = "margelet:source:";
-const SOURCES_REGISTRY_KEY = "margelet:sources:registry";
-
-const POLLER_LOCK_KEY = "margelet:sources:poller:lock";
-const POLLER_RUN_EVERY_MS = 30 * 1000;
-const POLLER_LOCK_TTL_SECONDS = 25;
-const SOURCES_PER_RUN = 40;
 const POSTS_PER_SOURCE_SCAN = 12;
 const MAX_NEW_POSTS_PER_SOURCE = 3;
-const SOURCE_CONCURRENCY = 6;
-const MAX_IMPORTED_POSTS_PER_RUN = 25;
-
-type ImportBudgetState = {
-  reserved: number;
-  imported: number;
-};
-
-type SourceMeta = {
-  title: string | null;
-  avatarUrl: string | null;
-};
-
-type SourcesRegistry = Record<string, TrustedSource>;
-
-function sourceKey(id: string) {
-  return `${SOURCE_KEY_PREFIX}${id}`;
-}
+const MAX_TOTAL_POSTS = 500;
+const POST_TTL_HOURS = 24;
+const MAX_SOURCES_PER_REBUILD = 200;
 
 function asString(value: unknown): string | null {
   if (typeof value !== "string") return null;
@@ -39,794 +21,338 @@ function asString(value: unknown): string | null {
   return trimmed || null;
 }
 
-function asNumber(value: unknown): number | null {
-  if (typeof value === "number" && Number.isFinite(value)) return value;
-  const n = Number(String(value ?? "").trim());
-  return Number.isFinite(n) ? n : null;
+function normalizeHandle(handle: string) {
+  return handle.replace(/^@/, "").trim().toLowerCase();
+}
+
+function normalizeCountryCode(value: string | null | undefined) {
+  const normalized = String(value || "").trim().toLowerCase();
+  return normalized || null;
+}
+
+function normalizeTags(
+  tags: unknown,
+  fallbackTag?: ContentTag | null
+): ContentTag[] {
+  const normalized = Array.isArray(tags)
+    ? tags
+        .map((item: unknown) => asString(item))
+        .filter((item): item is ContentTag => Boolean(item))
+    : [];
+
+  const unique = Array.from(new Set(normalized));
+  if (unique.length > 0) return unique;
+  return fallbackTag ? [fallbackTag] : ["other"];
+}
+
+export function makeSourceId(countryCode: CountryCode, handle: string) {
+  return `${countryCode}:${normalizeHandle(handle)}`;
 }
 
 function isStatus(value: unknown): value is TrustedSource["status"] {
   return value === "active" || value === "paused";
 }
 
-function normalizeHandle(handle: string) {
-  return handle.replace(/^@/, "").trim().toLowerCase();
-}
-
-function normalizeCountryCode(value: string | null | undefined) {
-  return String(value || "").trim().toLowerCase() || null;
-}
-
-function normalizeTags(tags: unknown, fallbackTag?: ContentTag | null): ContentTag[] {
-  const normalized = Array.isArray(tags)
-    ? tags
-        .map((item) => asString(item))
-        .filter((item): item is ContentTag => Boolean(item))
-    : [];
-
-  const unique = Array.from(new Set(normalized));
-
-  if (unique.length > 0) {
-    return unique;
+function buildSource(
+  input: Partial<TrustedSource> & {
+    countryCode: CountryCode;
+    handle: string;
+    defaultTag: ContentTag;
   }
-
-  return fallbackTag ? [fallbackTag] : [];
-}
-
-function buildSourceId(countryCode: CountryCode, handle: string) {
-  return `${countryCode}:${normalizeHandle(handle)}`;
-}
-
-function normalizeAssetUrl(value?: string | null) {
-  if (!value) return null;
-  const v = value.trim();
-  if (!v) return null;
-  if (v.startsWith("//")) return `https:${v}`;
-  if (v.startsWith("http://")) return `https://${v.slice(7)}`;
-  return v;
-}
-
-function decodeHtml(input: string) {
-  return input
-    .replace(/<br\s*\/?>/gi, "\n")
-    .replace(/<\/p>/gi, "\n\n")
-    .replace(/<[^>]+>/g, "")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&#x27;/g, "'")
-    .replace(/&#x2F;/g, "/")
-    .replace(/&#8211;/g, "–")
-    .replace(/&#8212;/g, "—")
-    .replace(/&#8230;/g, "…")
-    .trim();
-}
-
-function extract(html: string, re: RegExp) {
-  const match = html.match(re);
-  return match?.[1] || null;
-}
-
-async function fetchChannelMeta(handle: string): Promise<SourceMeta> {
-  try {
-    const normalizedHandle = normalizeHandle(handle);
-    const url = `https://t.me/s/${normalizedHandle}`;
-
-    const res = await fetch(url, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
-        Accept:
-          "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
-        Referer: "https://t.me/",
-        "Cache-Control": "no-cache",
-        Pragma: "no-cache",
-      },
-      redirect: "follow",
-    });
-
-    if (!res.ok) {
-      return { title: null, avatarUrl: null };
-    }
-
-    const html = await res.text();
-
-    const title =
-      extract(html, /<meta property="og:title" content="([^"]+)"/i) ||
-      extract(
-        html,
-        /<div class="tgme_channel_info_header_title"[^>]*>([\s\S]*?)<\/div>/i
-      ) ||
-      extract(html, /<div class="tgme_page_title"[^>]*>([\s\S]*?)<\/div>/i) ||
-      null;
-
-    const avatar =
-      extract(html, /<meta property="og:image" content="([^"]+)"/i) ||
-      extract(html, /<link rel="image_src" href="([^"]+)"/i) ||
-      extract(html, /class="tgme_page_photo_image"[^>]+src="([^"]+)"/i) ||
-      null;
-
-    return {
-      title: title ? decodeHtml(title) : null,
-      avatarUrl: normalizeAssetUrl(avatar),
-    };
-  } catch {
-    return { title: null, avatarUrl: null };
-  }
-}
-
-function normalizeSource(raw: unknown): TrustedSource | null {
-  if (!raw || typeof raw !== "object") return null;
-
-  const record = raw as Record<string, unknown>;
-
-  const rawHandle =
-    asString(record.handle) ||
-    asString(record.username) ||
-    asString(record.channelHandle);
-  const handle = rawHandle ? normalizeHandle(rawHandle) : null;
-
-  const countryCode = normalizeCountryCode(asString(record.countryCode)) as CountryCode | null;
-  const fallbackTag =
-    (asString(record.defaultTag) as ContentTag | null) ||
-    (asString(record.tag) as ContentTag | null) ||
-    (Array.isArray(record.tags)
-      ? ((record.tags
-          .map((item) => asString(item))
-          .find(Boolean) as ContentTag | null) || null)
-      : null) ||
-    "other";
-
-  const id =
-    asString(record.id) ||
-    (countryCode && handle ? buildSourceId(countryCode, handle) : null);
-
-  if (!id || !countryCode || !handle) {
-    return null;
-  }
-
-  const title =
-    asString(record.title) ||
-    asString(record.name) ||
-    asString(record.channelTitle) ||
-    handle;
-
-  const status = isStatus(record.status) ? record.status : "active";
+): TrustedSource {
+  const now = new Date().toISOString();
+  const normalizedHandle = normalizeHandle(input.handle);
+  const title = asString(input.title) || normalizedHandle;
+  const defaultTag = input.defaultTag;
+  const tags = normalizeTags(input.tags, defaultTag);
 
   return {
-    id,
-    countryCode,
-    handle,
-    title,
-    avatarUrl: normalizeAssetUrl(asString(record.avatarUrl) || asString(record.avatar) || asString(record.photoUrl)),
-    defaultTag: fallbackTag,
-    tags: normalizeTags(record.tags, fallbackTag),
-    status,
-    note: asString(record.note),
-    createdAt: asString(record.createdAt) || new Date().toISOString(),
-    updatedAt: asString(record.updatedAt) || asString(record.createdAt) || new Date().toISOString(),
-    lastCheckedAt: asString(record.lastCheckedAt),
-    lastImportedAt: asString(record.lastImportedAt),
-    lastSeenPostId: asNumber(record.lastSeenPostId),
-    importedPostsCount: asNumber(record.importedPostsCount) || 0,
-  };
-}
-
-async function readRegistry(): Promise<SourcesRegistry> {
-  const raw = await redis.get(SOURCES_REGISTRY_KEY);
-
-  if (!raw || typeof raw !== "object") {
-    return {};
-  }
-
-  const registryRaw = raw as Record<string, unknown>;
-  const result: SourcesRegistry = {};
-
-  for (const [id, value] of Object.entries(registryRaw)) {
-    const normalized = normalizeSource(value);
-    if (normalized) {
-      result[id] = normalized;
-    }
-  }
-
-  return result;
-}
-
-async function writeRegistry(registry: SourcesRegistry) {
-  await redis.set(SOURCES_REGISTRY_KEY, registry);
-}
-
-async function upsertRegistrySource(source: TrustedSource) {
-  const registry = await readRegistry();
-  registry[source.id] = source;
-  await writeRegistry(registry);
-}
-
-async function removeRegistrySource(id: string) {
-  const registry = await readRegistry();
-  if (id in registry) {
-    delete registry[id];
-    await writeRegistry(registry);
-  }
-}
-
-async function getAllSourceIds(): Promise<string[]> {
-  const ids = await redis.lrange<string>(SOURCES_IDS_KEY, 0, -1);
-  const registry = await readRegistry();
-
-  const merged = new Set<string>();
-
-  if (Array.isArray(ids)) {
-    for (const id of ids) {
-      if (typeof id === "string" && id.trim()) {
-        merged.add(id.trim());
-      }
-    }
-  }
-
-  for (const id of Object.keys(registry)) {
-    if (id.trim()) {
-      merged.add(id.trim());
-    }
-  }
-
-  return Array.from(merged);
-}
-
-async function getSourceFromStorage(id: string): Promise<TrustedSource | null> {
-  const raw = await redis.get(sourceKey(id));
-  const normalized = normalizeSource(raw);
-
-  if (normalized) {
-    return normalized;
-  }
-
-  const registry = await readRegistry();
-  return registry[id] || null;
-}
-
-async function repairSourceIndex(id: string) {
-  await redis.lrem(SOURCES_IDS_KEY, 0, id);
-  await redis.lpush(SOURCES_IDS_KEY, id);
-}
-
-export async function listSources(limit = 1000): Promise<TrustedSource[]> {
-  const ids = await getAllSourceIds();
-
-  if (ids.length === 0) {
-    return [];
-  }
-
-  const limitedIds = ids.slice(0, Math.max(0, limit));
-
-  const items = await Promise.all(
-    limitedIds.map(async (id) => {
-      const source = await getSourceFromStorage(id);
-
-      if (source) {
-        await repairSourceIndex(id);
-      }
-
-      return source;
-    })
-  );
-
-  return items
-    .filter((item): item is TrustedSource => !!item)
-    .sort((a, b) => {
-      if (a.countryCode !== b.countryCode) {
-        return a.countryCode.localeCompare(b.countryCode);
-      }
-      return a.handle.localeCompare(b.handle);
-    });
-}
-
-export async function listSourcesToPoll(limit = 5): Promise<TrustedSource[]> {
-  const all = await listSources(5000);
-
-  if (all.length === 0) {
-    return [];
-  }
-
-  return all
-    .filter((source) => source.status === "active")
-    .sort((a, b) => {
-      const aTs = Date.parse(a.lastCheckedAt || a.createdAt || "") || 0;
-      const bTs = Date.parse(b.lastCheckedAt || b.createdAt || "") || 0;
-      return aTs - bTs;
-    })
-    .slice(0, Math.max(0, limit));
-}
-
-export async function getSourceById(id: string): Promise<TrustedSource | null> {
-  const source = await getSourceFromStorage(id);
-
-  if (source) {
-    await repairSourceIndex(id);
-  }
-
-  return source;
-}
-
-export async function saveSource(
-  input: Omit<TrustedSource, "id" | "createdAt" | "updatedAt" | "tags"> & {
-    id?: string;
-    tags?: ContentTag[];
-    createdAt?: string;
-    updatedAt?: string;
-  }
-): Promise<TrustedSource> {
-  const id = input.id || buildSourceId(input.countryCode, input.handle);
-  const nowIso = new Date().toISOString();
-
-  const existing = await getSourceById(id);
-
-  const source: TrustedSource = {
-    id,
+    id: input.id || makeSourceId(input.countryCode, normalizedHandle),
     countryCode: input.countryCode,
-    handle: normalizeHandle(input.handle),
-    title: input.title.trim() || normalizeHandle(input.handle),
-    avatarUrl:
-      input.avatarUrl !== undefined
-        ? input.avatarUrl
-        : existing?.avatarUrl ?? null,
-    defaultTag: input.defaultTag,
-    tags:
-      normalizeTags(input.tags, input.defaultTag).length > 0
-        ? normalizeTags(input.tags, input.defaultTag)
-        : existing?.tags?.length
-          ? existing.tags
-          : [input.defaultTag],
-    status: input.status,
-    note: input.note || null,
-    createdAt: existing?.createdAt || input.createdAt || nowIso,
-    updatedAt: input.updatedAt || nowIso,
-    lastCheckedAt:
-      input.lastCheckedAt !== undefined
-        ? input.lastCheckedAt
-        : existing?.lastCheckedAt || null,
-    lastImportedAt:
-      input.lastImportedAt !== undefined
-        ? input.lastImportedAt
-        : existing?.lastImportedAt || null,
+    handle: normalizedHandle,
+    title,
+    avatarUrl: input.avatarUrl || null,
+    defaultTag,
+    tags,
+    status: isStatus(input.status) ? input.status : "active",
+    note: asString(input.note) || null,
+    createdAt: input.createdAt || now,
+    updatedAt: now,
+    lastCheckedAt: input.lastCheckedAt || null,
+    lastImportedAt: input.lastImportedAt || null,
     lastSeenPostId:
-      typeof input.lastSeenPostId === "number"
-        ? input.lastSeenPostId
-        : existing?.lastSeenPostId ?? null,
+      typeof input.lastSeenPostId === "number" ? input.lastSeenPostId : null,
     importedPostsCount:
       typeof input.importedPostsCount === "number"
         ? input.importedPostsCount
-        : existing?.importedPostsCount ?? 0,
+        : 0,
+  };
+}
+
+function normalizeSource(value: unknown): TrustedSource | null {
+  if (!value || typeof value !== "object") return null;
+
+  const raw = value as Partial<TrustedSource> & {
+    countryCode?: CountryCode;
+    handle?: string;
+    defaultTag?: ContentTag;
   };
 
-  await redis.set(sourceKey(id), source);
-  await upsertRegistrySource(source);
-  await repairSourceIndex(id);
+  const countryCode = normalizeCountryCode(raw.countryCode) as
+    | CountryCode
+    | null;
+  const handle = asString(raw.handle);
+  const defaultTag = asString(raw.defaultTag) as ContentTag | null;
 
-  return source;
+  if (!countryCode || !handle || !defaultTag) return null;
+  return buildSource({ ...raw, countryCode, handle, defaultTag });
+}
+
+export async function listSources(limit = 5000) {
+  const file = await readSourcesFile<unknown>();
+
+  return file.sources
+    .map((item: unknown) => normalizeSource(item))
+    .filter((item): item is TrustedSource => Boolean(item))
+    .slice(0, limit);
+}
+
+export async function getSourceById(id: string) {
+  const sources = await listSources(5000);
+  return sources.find((source: TrustedSource) => source.id === id) || null;
 }
 
 export async function upsertSourceWithMeta(
-  input: {
-    countryCode: CountryCode;
-    handle: string;
-    title?: string | null;
-    avatarUrl?: string | null;
-    defaultTag: ContentTag;
-    tags?: ContentTag[];
-    status: TrustedSource["status"];
-    note?: string | null;
-  } & {
-    id?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    lastCheckedAt?: string | null;
-    lastImportedAt?: string | null;
-    lastSeenPostId?: number | null;
-    importedPostsCount?: number;
-  }
-): Promise<TrustedSource> {
-  const sourceId = input.id || buildSourceId(input.countryCode, input.handle);
-  const existing = await getSourceById(sourceId);
-  const meta = await fetchChannelMeta(input.handle);
+  input: Pick<
+    TrustedSource,
+    "id" | "countryCode" | "handle" | "defaultTag" | "status"
+  > &
+    Partial<
+      Pick<
+        TrustedSource,
+        | "title"
+        | "note"
+        | "avatarUrl"
+        | "tags"
+        | "createdAt"
+        | "lastCheckedAt"
+        | "lastImportedAt"
+        | "lastSeenPostId"
+        | "importedPostsCount"
+      >
+    >
+) {
+  const sources = await listSources(5000);
+  const existing =
+    sources.find((source: TrustedSource) => source.id === input.id) || null;
 
-  const finalTitle =
-    (input.title || "").trim() ||
-    meta.title ||
-    existing?.title ||
-    normalizeHandle(input.handle);
-
-  const finalAvatarUrl =
-    input.avatarUrl !== undefined
-      ? input.avatarUrl
-      : meta.avatarUrl ?? existing?.avatarUrl ?? null;
-
-  return saveSource({
-    id: sourceId,
-    countryCode: input.countryCode,
-    handle: input.handle,
-    title: finalTitle,
-    avatarUrl: finalAvatarUrl,
-    defaultTag: input.defaultTag,
-    tags:
-      normalizeTags(input.tags, input.defaultTag).length > 0
-        ? normalizeTags(input.tags, input.defaultTag)
-        : existing?.tags?.length
-          ? existing.tags
-          : [input.defaultTag],
-    status: input.status,
-    note: input.note || null,
-    createdAt: input.createdAt,
-    updatedAt: input.updatedAt,
-    lastCheckedAt:
-      input.lastCheckedAt !== undefined
-        ? input.lastCheckedAt
-        : existing?.lastCheckedAt ?? null,
-    lastImportedAt:
-      input.lastImportedAt !== undefined
-        ? input.lastImportedAt
-        : existing?.lastImportedAt ?? null,
-    lastSeenPostId:
-      input.lastSeenPostId !== undefined
-        ? input.lastSeenPostId
-        : existing?.lastSeenPostId ?? null,
+  const next = buildSource({
+    ...(existing || {}),
+    ...input,
+    title: input.title ?? existing?.title ?? input.handle,
+    note: input.note ?? existing?.note ?? null,
+    avatarUrl: input.avatarUrl ?? existing?.avatarUrl ?? null,
+    tags: input.tags ?? existing?.tags ?? [input.defaultTag],
+    createdAt: existing?.createdAt || input.createdAt,
     importedPostsCount:
-      input.importedPostsCount !== undefined
+      typeof input.importedPostsCount === "number"
         ? input.importedPostsCount
-        : existing?.importedPostsCount ?? 0,
-  });
-}
-
-export async function touchSourceAfterPoll(
-  source: TrustedSource,
-  payload: {
-    lastCheckedAt: string;
-    lastImportedAt?: string | null;
-    lastSeenPostId?: number | null;
-    importedPostsCountDelta?: number;
-  }
-): Promise<TrustedSource> {
-  return saveSource({
-    id: source.id,
-    countryCode: source.countryCode,
-    handle: source.handle,
-    title: source.title,
-    avatarUrl: source.avatarUrl,
-    defaultTag: source.defaultTag,
-    tags: source.tags,
-    status: source.status,
-    note: source.note,
-    createdAt: source.createdAt,
-    updatedAt: new Date().toISOString(),
-    lastCheckedAt: payload.lastCheckedAt,
-    lastImportedAt:
-      payload.lastImportedAt !== undefined
-        ? payload.lastImportedAt
-        : source.lastImportedAt,
+        : existing?.importedPostsCount,
     lastSeenPostId:
-      payload.lastSeenPostId !== undefined
-        ? payload.lastSeenPostId
-        : source.lastSeenPostId,
-    importedPostsCount:
-      (source.importedPostsCount || 0) + (payload.importedPostsCountDelta || 0),
-  });
-}
-
-export async function deleteSourceById(id: string): Promise<boolean> {
-  const existing = await getSourceById(id);
-  if (!existing) return false;
-
-  await redis.del(sourceKey(id));
-  await removeRegistrySource(id);
-  await redis.lrem(SOURCES_IDS_KEY, 0, id);
-
-  return true;
-}
-
-export function makeSourceId(countryCode: CountryCode, handle: string) {
-  return buildSourceId(countryCode, handle);
-}
-
-function buildCanonicalPostUrl(handle: string, postId: number) {
-  return `https://t.me/${handle}/${postId}?single`;
-}
-
-function asArrayUniqueDesc(values: number[]) {
-  return Array.from(new Set(values)).sort((a, b) => b - a);
-}
-
-async function fetchChannelHtml(handle: string) {
-  const url = `https://t.me/s/${handle}`;
-
-  const res = await fetch(url, {
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
-      Accept:
-        "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-      "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
-      Referer: "https://t.me/",
-      "Cache-Control": "no-cache",
-      Pragma: "no-cache",
-    },
-    redirect: "follow",
+      typeof input.lastSeenPostId === "number"
+        ? input.lastSeenPostId
+        : existing?.lastSeenPostId,
+    lastCheckedAt: input.lastCheckedAt ?? existing?.lastCheckedAt,
+    lastImportedAt: input.lastImportedAt ?? existing?.lastImportedAt,
   });
 
-  if (!res.ok) {
-    throw new Error(`Failed to fetch channel ${handle}: ${res.status}`);
-  }
+  const without = sources.filter((source: TrustedSource) => source.id !== next.id);
+  const updated = [...without, next].sort((a: TrustedSource, b: TrustedSource) =>
+    a.handle.localeCompare(b.handle)
+  );
 
-  return res.text();
+  await writeSourcesFile(updated);
+  return next;
 }
 
-function extractLatestPostIds(handle: string, html: string): number[] {
-  const escapedHandle = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const regex = new RegExp(`data-post="${escapedHandle}\\/([0-9]+)"`, "gi");
-
-  const ids: number[] = [];
-  let match: RegExpExecArray | null = null;
-
-  while ((match = regex.exec(html))) {
-    const id = Number(match[1]);
-    if (Number.isFinite(id)) {
-      ids.push(id);
-    }
-  }
-
-  return asArrayUniqueDesc(ids).slice(0, POSTS_PER_SOURCE_SCAN);
+export async function deleteSourceById(id: string) {
+  const sources = await listSources(5000);
+  const updated = sources.filter((source: TrustedSource) => source.id !== id);
+  await writeSourcesFile(updated);
 }
 
-function buildAutoImportedPost(
-  source: TrustedSource,
-  ingest: NonNullable<Awaited<ReturnType<typeof ingestTelegramPost>>>,
-  normalizedUrl: string
-): IngestedPost {
-  const ttlHours = 24;
-  const now = new Date();
-  const nowIso = now.toISOString();
-  const expiresAt = new Date(now.getTime() + ttlHours * 3600 * 1000).toISOString();
+function getFeedWindowStart() {
+  return Date.now() - POST_TTL_HOURS * 60 * 60 * 1000;
+}
+
+function makePostId(postUrl: string) {
+  let hash = 2166136261;
+  for (let i = 0; i < postUrl.length; i += 1) {
+    hash ^= postUrl.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+  return Math.abs(hash >>> 0);
+}
+
+function buildPost(params: {
+  postUrl: string;
+  source: TrustedSource;
+  ingest: Awaited<ReturnType<typeof ingestTelegramPost>>;
+  createdAt: string;
+}): IngestedPost {
+  const { postUrl, source, ingest, createdAt } = params;
+  const expiresAt = new Date(
+    Date.parse(createdAt) + POST_TTL_HOURS * 60 * 60 * 1000
+  ).toISOString();
+  const primaryTag = source.defaultTag;
+  const tags = normalizeTags(source.tags, primaryTag);
 
   return {
-    id: Date.now() + Math.floor(Math.random() * 100000),
-    postUrl: normalizedUrl,
+    id: makePostId(postUrl),
+    postUrl,
     source: {
-      handle: ingest.source.handle,
-      title: ingest.source.title,
-      avatar: ingest.source.avatar,
-      verified: ingest.source.verified,
+      handle: ingest?.source.handle || source.handle,
+      title: ingest?.source.title || source.title,
+      avatar: ingest?.source.avatar || source.avatarUrl || null,
+      verified: ingest?.source.verified || false,
     },
-    text: ingest.text,
-    links: ingest.links,
-    contentType: ingest.contentType,
-    media: ingest.media,
-    hasMediaInOriginal: ingest.hasMediaInOriginal,
-    fallbackReason: ingest.fallbackReason,
-    createdAt: nowIso,
+    text: ingest?.text || "",
+    links: ingest?.links || [],
+    contentType: ingest?.contentType || "text",
+    media: ingest?.media || [],
+    hasMediaInOriginal: ingest?.hasMediaInOriginal || false,
+    fallbackReason: ingest?.fallbackReason || null,
+    createdAt,
     expiresAt,
-    ttlHours,
-    mediaRefreshedAt: nowIso,
-    tag: source.defaultTag,
-    tags: source.tags?.length ? source.tags : [source.defaultTag],
+    ttlHours: POST_TTL_HOURS,
+    mediaRefreshedAt: createdAt,
+    tag: primaryTag,
+    tags,
     addedBy: {
-      telegramId: "1372669404",
-      username: "admin",
+      telegramId: null,
+      username: null,
     },
     billing: {
       plan: "free",
       autopublishEnabled: false,
     },
     sourceId: source.id,
-    sourceCountryCode: normalizeCountryCode(source.countryCode),
+    sourceCountryCode: source.countryCode,
     status: "published",
     role: "admin",
+    moderation: {
+      status: "published",
+      reason: null,
+      reviewedAt: createdAt,
+    },
   };
 }
 
-function tryReserveImportSlot(state: ImportBudgetState) {
-  if (state.reserved >= MAX_IMPORTED_POSTS_PER_RUN) {
-    return false;
+async function ingestSourcePosts(source: TrustedSource) {
+  const found: IngestedPost[] = [];
+  let highestPostId: number | null = source.lastSeenPostId ?? null;
+  const start = Math.max(1, (source.lastSeenPostId || 0) + 1);
+  const end = start + POSTS_PER_SOURCE_SCAN - 1;
+
+  for (let postId = end; postId >= start; postId -= 1) {
+    const postUrl = `https://t.me/${source.handle}/${postId}?single`;
+    const ingest = await ingestTelegramPost(postUrl);
+    if (!ingest) continue;
+
+    const createdAt = new Date().toISOString();
+    found.push(buildPost({ postUrl, source, ingest, createdAt }));
+    highestPostId = Math.max(highestPostId || 0, postId);
+
+    if (found.length >= MAX_NEW_POSTS_PER_SOURCE) break;
   }
 
-  state.reserved += 1;
-  return true;
+  return { posts: found, highestPostId };
 }
 
-function releaseReservedImportSlot(state: ImportBudgetState, wasImported: boolean) {
-  if (wasImported) {
-    state.imported += 1;
-    return;
-  }
+export async function rebuildFeedFromSources(options?: {
+  countryCode?: CountryCode | null;
+}) {
+  const allSources = await listSources(5000);
+  const countryCode = options?.countryCode || null;
 
-  state.reserved = Math.max(0, state.reserved - 1);
-}
+  const activeSources = allSources
+    .filter((source: TrustedSource) => source.status === "active")
+    .filter((source: TrustedSource) =>
+      countryCode ? source.countryCode === countryCode : true
+    )
+    .slice(0, MAX_SOURCES_PER_REBUILD);
 
-async function importPostFromSource(
-  source: TrustedSource,
-  postId: number,
-  budget: ImportBudgetState
-) {
-  if (!tryReserveImportSlot(budget)) {
-    return { ok: false, budgetReached: true };
-  }
-
-  try {
-    const url = buildCanonicalPostUrl(source.handle, postId);
-    const parsed = parseTelegramPostUrl(url);
-
-    if (!parsed) {
-      releaseReservedImportSlot(budget, false);
-      return { ok: false, budgetReached: false };
-    }
-
-    const normalizedUrl = parsed.normalizedUrl;
-    const existing = await getPostByUrl(normalizedUrl);
-
-    if (existing) {
-      releaseReservedImportSlot(budget, false);
-      return { ok: false, budgetReached: false };
-    }
-
-    const ingest = await ingestTelegramPost(normalizedUrl);
-    if (!ingest) {
-      releaseReservedImportSlot(budget, false);
-      return { ok: false, budgetReached: false };
-    }
-
-    const post = buildAutoImportedPost(source, ingest, normalizedUrl);
-    const saved = await savePost(post);
-
-    const imported = saved.id === post.id;
-    releaseReservedImportSlot(budget, imported);
-
-    return { ok: imported, budgetReached: false };
-  } catch (error) {
-    releaseReservedImportSlot(budget, false);
-    console.error("importPostFromSource error", source.handle, postId, error);
-    return { ok: false, budgetReached: false };
-  }
-}
-
-async function pollOneSource(source: TrustedSource, budget: ImportBudgetState) {
-  const checkedAt = new Date().toISOString();
-
-  try {
-    const html = await fetchChannelHtml(source.handle);
-    const ids = extractLatestPostIds(source.handle, html);
-
-    if (ids.length === 0) {
-      await touchSourceAfterPoll(source, {
-        lastCheckedAt: checkedAt,
-      });
-      return;
-    }
-
-    const newestSeen = Math.max(...ids);
-    const lastSeen = source.lastSeenPostId || 0;
-
-    if (lastSeen <= 0) {
-      await touchSourceAfterPoll(source, {
-        lastCheckedAt: checkedAt,
-        lastSeenPostId: newestSeen,
-      });
-      return;
-    }
-
-    const newIds = ids
-      .filter((id) => id > lastSeen)
-      .sort((a, b) => a - b)
-      .slice(-MAX_NEW_POSTS_PER_SOURCE);
-
-    let imported = 0;
-    let lastImportedAt: string | null = null;
-
-    for (const postId of newIds) {
-      const result = await importPostFromSource(source, postId, budget);
-
-      if (result.budgetReached) {
-        break;
-      }
-
-      if (result.ok) {
-        imported += 1;
-        lastImportedAt = new Date().toISOString();
-      }
-    }
-
-    await touchSourceAfterPoll(source, {
-      lastCheckedAt: checkedAt,
-      lastImportedAt: lastImportedAt ?? source.lastImportedAt,
-      lastSeenPostId: Math.max(newestSeen, lastSeen),
-      importedPostsCountDelta: imported,
-    });
-  } catch (error) {
-    console.error("pollOneSource error", source.handle, error);
-
-    await touchSourceAfterPoll(source, {
-      lastCheckedAt: checkedAt,
-    });
-  }
-}
-
-async function runWithConcurrency<T>(
-  items: T[],
-  concurrency: number,
-  worker: (item: T) => Promise<void>
-) {
-  if (items.length === 0) return;
-
-  let currentIndex = 0;
-
-  const runners = Array.from(
-    { length: Math.min(concurrency, items.length) },
-    async () => {
-      while (true) {
-        const index = currentIndex;
-        currentIndex += 1;
-
-        if (index >= items.length) {
-          return;
-        }
-
-        await worker(items[index]);
-      }
-    }
-  );
-
-  await Promise.all(runners);
-}
-
-async function tryAcquirePollerLock() {
+  const existingFeed = await readFeedFile<IngestedPost>();
   const now = Date.now();
-  const lastRunRaw = await redis.get(POLLER_LOCK_KEY);
+  const freshWindowStart = getFeedWindowStart();
 
-  const lastRunMs =
-    typeof lastRunRaw === "number"
-      ? lastRunRaw
-      : typeof lastRunRaw === "string" && lastRunRaw.trim()
-        ? Number(lastRunRaw)
-        : 0;
-
-  if (Number.isFinite(lastRunMs) && lastRunMs > 0) {
-    if (now - lastRunMs < POLLER_RUN_EVERY_MS) {
-      return false;
-    }
-  }
-
-  await redis.set(POLLER_LOCK_KEY, String(now), {
-    ex: POLLER_LOCK_TTL_SECONDS,
+  const basePosts = existingFeed.posts.filter((post: IngestedPost) => {
+    const createdAt = Date.parse(post.createdAt || "");
+    if (!Number.isFinite(createdAt)) return false;
+    if (createdAt < freshWindowStart || createdAt > now + 60_000) return false;
+    if (countryCode && post.sourceCountryCode !== countryCode) return false;
+    return true;
   });
 
-  return true;
-}
+  const seenUrls = new Set(basePosts.map((post: IngestedPost) => post.postUrl));
+  const importedPosts: IngestedPost[] = [];
+  const updatedSources = [...allSources];
 
-export async function runTrustedSourcesPolling() {
-  try {
-    const acquired = await tryAcquirePollerLock();
-    if (!acquired) {
-      return;
+  for (const source of activeSources) {
+    const result = await ingestSourcePosts(source);
+    const importedNow = result.posts.filter(
+      (post: IngestedPost) => !seenUrls.has(post.postUrl)
+    );
+
+    for (const post of importedNow) {
+      seenUrls.add(post.postUrl);
+      importedPosts.push(post);
     }
 
-    const sources = await listSourcesToPoll(SOURCES_PER_RUN);
+    const sourceIndex = updatedSources.findIndex(
+      (item: TrustedSource) => item.id === source.id
+    );
 
-    if (!Array.isArray(sources) || sources.length === 0) {
-      return;
+    if (sourceIndex >= 0) {
+      updatedSources[sourceIndex] = buildSource({
+        ...updatedSources[sourceIndex],
+        title: importedNow[0]?.source.title || source.title,
+        avatarUrl: importedNow[0]?.source.avatar || source.avatarUrl,
+        countryCode: source.countryCode,
+        handle: source.handle,
+        defaultTag: source.defaultTag,
+        status: source.status,
+        note: source.note,
+        createdAt: source.createdAt,
+        importedPostsCount:
+          (source.importedPostsCount || 0) + importedNow.length,
+        lastImportedAt: importedNow.length
+          ? new Date().toISOString()
+          : source.lastImportedAt,
+        lastCheckedAt: new Date().toISOString(),
+        lastSeenPostId: result.highestPostId ?? source.lastSeenPostId,
+        tags: source.tags,
+      });
     }
-
-    const budget: ImportBudgetState = {
-      reserved: 0,
-      imported: 0,
-    };
-
-    await runWithConcurrency(sources, SOURCE_CONCURRENCY, async (source) => {
-      if (budget.reserved >= MAX_IMPORTED_POSTS_PER_RUN) {
-        return;
-      }
-
-      await pollOneSource(source, budget);
-    });
-  } catch (error) {
-    console.error("runTrustedSourcesPolling error", error);
   }
+
+  const mergedPosts = [...importedPosts, ...basePosts]
+    .sort((a: IngestedPost, b: IngestedPost) => {
+      const aTime = Date.parse(a.createdAt || "");
+      const bTime = Date.parse(b.createdAt || "");
+      return (Number.isFinite(bTime) ? bTime : 0) - (Number.isFinite(aTime) ? aTime : 0);
+    })
+    .slice(0, MAX_TOTAL_POSTS);
+
+  await Promise.all([
+    writeFeedFile(mergedPosts),
+    writeSourcesFile(updatedSources),
+  ]);
+
+  return {
+    updatedAt: new Date().toISOString(),
+    sourcesChecked: activeSources.length,
+    importedPosts: importedPosts.length,
+    posts: mergedPosts,
+  };
 }
