@@ -1,7 +1,6 @@
 import {
   ExternalLink,
   FileText,
-  Heart,
   ImageIcon,
   Music4,
   Play,
@@ -282,8 +281,6 @@ function AudioPreview({
 export function FeedTextCard({
   locale,
   post,
-  liked,
-  onToggleLike,
   onOpen,
 }: {
   locale: Locale;
@@ -347,21 +344,6 @@ export function FeedTextCard({
 
       <div className="mt-4 flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3 text-secondary">
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              onToggleLike();
-            }}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition hover:bg-surface-soft"
-          >
-            <Heart
-              className={`h-5 w-5 ${
-                liked ? "fill-current text-primary" : "text-secondary"
-              }`}
-            />
-          </button>
-
           <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
             {getTagLabel(getResolvedTag(post), locale)}
           </div>

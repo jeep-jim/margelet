@@ -6,7 +6,6 @@ import {
   Bell,
   ExternalLink,
   FileText,
-  Heart,
   Music4,
   Pause,
   Play,
@@ -28,45 +27,8 @@ const SUB_KEY = "margelet_subscriptions";
 const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_MUTE_EVENT = "margelet:feed-mute-change";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
-const TG_STORAGE_KEY = "margelet_tg_user";
 
-function readTelegramUserId() {
-  try {
-    const raw = localStorage.getItem(TG_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    return parsed?.id ? String(parsed.id) : null;
-  } catch {
-    return null;
-  }
-}
 
-async function trackAction(params: {
-  action: "open" | "tg_click" | "like" | "subscribe";
-  postId: number;
-  sourceHandle: string;
-  telegramUserId?: string | null;
-}) {
-  try {
-    const res = await fetch("/api/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-telegram-id": params.telegramUserId || "",
-      },
-      body: JSON.stringify({
-        action: params.action,
-        postId: params.postId,
-        sourceHandle: params.sourceHandle,
-        telegramUserId: params.telegramUserId || null,
-      }),
-    });
-
-    return await res.json().catch(() => null);
-  } catch {
-    return null;
-  }
-}
 
 const COPY = {
   en: {
@@ -525,17 +487,17 @@ function MusicFallback({
 export function FeedTextReaderModal({
   post,
   locale,
-  liked,
+  liked: _liked,
   onClose,
-  onToggleLike,
+  onToggleLike: _onToggleLike,
   onToggleSave: _onToggleSave,
 }: {
   post: IngestedPost | null;
   locale: Locale;
-  liked: boolean;
+  liked?: boolean;
   saved: boolean;
   onClose: () => void;
-  onToggleLike: (id: number) => void;
+  onToggleLike?: (id: number) => void;
   onToggleSave: (id: number) => void;
 }) {
   const copy = COPY[locale] ?? COPY.en;
@@ -543,7 +505,6 @@ export function FeedTextReaderModal({
   const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
   const [mediaIndex, setMediaIndex] = useState(0);
   const [subscribed, setSubscribed] = useState(false);
-  const [localLiked, setLocalLiked] = useState(liked);
   const [muted, setMuted] = useState(readGlobalMuted());
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
@@ -562,30 +523,12 @@ export function FeedTextReaderModal({
   const audioMedia = post ? getAudioMedia(post) : [];
   const fileMedia = post ? getFileMedia(post) : [];
 
-  useEffect(() => {
-    setLocalLiked(liked);
-  }, [liked, post?.id]);
 
   useEffect(() => {
     if (!post) return;
 
     setSubscribed(getSubs().includes(post.source.handle));
 
-    const telegramUserId = readTelegramUserId();
-
-    void trackAction({
-      action: "open",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-      if (typeof data?.subscribed === "boolean") {
-        setSubscribed(data.subscribed);
-      }
-    });
   }, [post]);
 
   useEffect(() => {
@@ -698,62 +641,19 @@ export function FeedTextReaderModal({
     }
   };
 
-  const handleLikeClick = () => {
-    if (!post) return;
-
-    const telegramUserId = readTelegramUserId();
-
-    setLocalLiked((prev) => !prev);
-    onToggleLike(post.id);
-
-    if (!telegramUserId) return;
-
-    void trackAction({
-      action: "like",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-  };
 
   const handleSubscribeClick = () => {
     if (!post) return;
 
-    const telegramUserId = readTelegramUserId();
     const next = toggleSub(post.source.handle);
 
     setSubscribed(next.includes(post.source.handle));
     window.dispatchEvent(new Event("storage"));
-
-    if (!telegramUserId) return;
-
-    void trackAction({
-      action: "subscribe",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.subscribed === "boolean") {
-        setSubscribed(data.subscribed);
-      }
-    });
   };
 
   const handleOpenTelegram = () => {
     if (!post) return;
 
-    const telegramUserId = readTelegramUserId();
-
-    void trackAction({
-      action: "tg_click",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    });
 
     window.open(post.postUrl, "_blank", "noopener,noreferrer");
   };
@@ -975,13 +875,6 @@ export function FeedTextReaderModal({
             <div className="sticky bottom-0 border-t border-soft bg-surface px-4 py-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-8 text-secondary">
-                  <button type="button" onClick={handleLikeClick}>
-                    <Heart
-                      className={`h-5 w-5 ${
-                        localLiked ? "fill-current text-primary" : ""
-                      }`}
-                    />
-                  </button>
                 </div>
                 
                 <button

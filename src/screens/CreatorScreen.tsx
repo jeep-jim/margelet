@@ -1,5 +1,4 @@
 import {
-  Heart,
   Info,
   LogOut,
   Globe,
@@ -26,7 +25,6 @@ import { getTheme, toggleTheme, type Theme } from "../lib/theme";
 
 const TELEGRAM_BOT_ID = "8298054487";
 const TG_STORAGE_KEY = "margelet_tg_user";
-const LIKES_STORAGE_KEY = "margelet_likes";
 const LANGUAGE_STORAGE_KEY = "margelet_locale";
 const INTRO_LANGUAGE_STORAGE_KEY = "margelet_intro_locale";
 const INTRO_SEEN_STORAGE_KEY = "margelet-intro-seen";
@@ -43,7 +41,7 @@ type Props = {
   openPost: (post: IngestedPost) => void;
 };
 
-type CabinetTab = "liked" | "channel" | "about" | "language";
+type CabinetTab = "channel" | "about" | "language";
 
 type TgUser = {
   id: string;
@@ -71,7 +69,6 @@ type ScreenCopy = {
   aboutText: string;
   emptyLiked: string;
   telegramUserFallback: string;
-  likedTabTitle: string;
   channelTabTitle: string;
   aboutTabTitle: string;
   languageTabTitle: string;
@@ -104,7 +101,7 @@ const COPY: Record<Locale, ScreenCopy> = {
   en: {
     authTitle: "Sign in with Telegram",
     authText:
-      "Authorize to manage your cabinet, view liked posts and submit a request to add your own channel.",
+      "Authorize to manage your cabinet, submit a request to add your own channel.",
     authButton: "Authorize",
     introButtonShort: "Intro",
     connectedToTelegram: "Connected to Telegram",
@@ -124,7 +121,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT is a distribution layer for current Telegram content. The source of every post always remains the original Telegram channel.",
     emptyLiked: "There is nothing here yet.",
     telegramUserFallback: "Telegram user",
-    likedTabTitle: "Liked",
     channelTabTitle: "Add channel",
     aboutTabTitle: "About",
     languageTabTitle: "Language",
@@ -187,7 +183,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT — это слой дистрибуции актуального Telegram-контента. Источником каждого поста всегда остаётся оригинальный Telegram-канал.",
     emptyLiked: "Здесь пока пусто.",
     telegramUserFallback: "Пользователь Telegram",
-    likedTabTitle: "Понравилось",
     channelTabTitle: "Добавить канал",
     aboutTabTitle: "О проекте",
     languageTabTitle: "Язык",
@@ -250,7 +245,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT ist eine Distributionsebene für aktuellen Telegram-Content. Die Quelle jedes Beitrags bleibt immer der originale Telegram-Kanal.",
     emptyLiked: "Hier ist noch nichts.",
     telegramUserFallback: "Telegram-Nutzer",
-    likedTabTitle: "Likes",
     channelTabTitle: "Kanal hinzufügen",
     aboutTabTitle: "Über",
     languageTabTitle: "Sprache",
@@ -313,7 +307,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT es una capa de distribución de contenido actual de Telegram. La fuente de cada publicación siempre sigue siendo el canal original.",
     emptyLiked: "Aquí todavía no hay nada.",
     telegramUserFallback: "Usuario de Telegram",
-    likedTabTitle: "Me gusta",
     channelTabTitle: "Añadir canal",
     aboutTabTitle: "Acerca de",
     languageTabTitle: "Idioma",
@@ -377,7 +370,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT, güncel Telegram içeriği için bir dağıtım katmanıdır. Her gönderinin kaynağı her zaman orijinal Telegram kanalı olarak kalır.",
     emptyLiked: "Burada henüz hiçbir şey yok.",
     telegramUserFallback: "Telegram kullanıcısı",
-    likedTabTitle: "Beğenilenler",
     channelTabTitle: "Kanal ekle",
     aboutTabTitle: "Hakkında",
     languageTabTitle: "Dil",
@@ -441,7 +433,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT est une couche de distribution pour le contenu Telegram actuel. La source de chaque publication reste toujours le canal Telegram d’origine.",
     emptyLiked: "Il n’y a encore rien ici.",
     telegramUserFallback: "Utilisateur Telegram",
-    likedTabTitle: "Aimés",
     channelTabTitle: "Ajouter un canal",
     aboutTabTitle: "À propos",
     languageTabTitle: "Langue",
@@ -506,7 +497,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT è un livello di distribuzione per i contenuti Telegram attuali. La fonte di ogni post resta sempre il canale Telegram originale.",
     emptyLiked: "Qui non c’è ancora nulla.",
     telegramUserFallback: "Utente Telegram",
-    likedTabTitle: "Piaciuti",
     channelTabTitle: "Aggiungi canale",
     aboutTabTitle: "Info",
     languageTabTitle: "Lingua",
@@ -571,7 +561,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT é uma camada de distribuição para conteúdo atual do Telegram. A fonte de cada post sempre permanece o canal original do Telegram.",
     emptyLiked: "Ainda não há nada aqui.",
     telegramUserFallback: "Usuário do Telegram",
-    likedTabTitle: "Curtidos",
     channelTabTitle: "Adicionar canal",
     aboutTabTitle: "Sobre",
     languageTabTitle: "Idioma",
@@ -636,7 +625,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT adalah lapisan distribusi untuk konten Telegram saat ini. Sumber setiap postingan selalu tetap kanal Telegram asli.",
     emptyLiked: "Belum ada apa pun di sini.",
     telegramUserFallback: "Pengguna Telegram",
-    likedTabTitle: "Disukai",
     channelTabTitle: "Tambah kanal",
     aboutTabTitle: "Tentang",
     languageTabTitle: "Bahasa",
@@ -701,7 +689,6 @@ const COPY: Record<Locale, ScreenCopy> = {
       "margeleT to warstwa dystrybucji aktualnych treści z Telegrama. Źródłem każdego posta zawsze pozostaje oryginalny kanał Telegram.",
     emptyLiked: "Na razie nic tu nie ma.",
     telegramUserFallback: "Użytkownik Telegrama",
-    likedTabTitle: "Polubione",
     channelTabTitle: "Dodaj kanał",
     aboutTabTitle: "O projekcie",
     languageTabTitle: "Język",
@@ -762,13 +749,6 @@ function getLocaleOption(locale: Locale) {
   return SITE_LOCALES.find((item) => item.code === locale);
 }
 
-function getPreview(post: IngestedPost) {
-  return (
-    post.media.find((item) => item.kind === "image")?.url ||
-    post.media.find((item) => item.kind === "video")?.poster ||
-    null
-  );
-}
 
 function readTelegramUserFromStorage(): TgUser | null {
   const raw = localStorage.getItem(TG_STORAGE_KEY);
@@ -782,21 +762,6 @@ function readTelegramUserFromStorage(): TgUser | null {
   }
 }
 
-function readNumberArrayFromStorage(key: string): number[] {
-  const raw = localStorage.getItem(key);
-  if (!raw) return [];
-
-  try {
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed
-      .map((value) => Number(value))
-      .filter((value) => Number.isFinite(value));
-  } catch {
-    localStorage.removeItem(key);
-    return [];
-  }
-}
 
 function readLocaleFromStorage(key: string, fallback: Locale): Locale {
   const raw = localStorage.getItem(key);
@@ -1069,80 +1034,6 @@ function ProfileBlock({
   );
 }
 
-function CabinetTile({
-  post,
-  onOpen,
-}: {
-  post: IngestedPost;
-  onOpen: () => void;
-}) {
-  const preview = getPreview(post);
-
-  return (
-    <button
-      onClick={onOpen}
-      className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-surface-soft text-left"
-      type="button"
-    >
-      {preview ? (
-        <img
-          src={preview}
-          alt={post.text || post.source.title}
-          className="absolute inset-0 h-full w-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-      ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-300 to-neutral-200 dark:from-[#1f1f2b] dark:to-[#171722]" />
-      )}
-
-      <div className="absolute inset-0 bg-black/10 transition group-hover:bg-black/5" />
-
-      <div className="absolute left-3 top-3 rounded-full bg-black/45 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-white backdrop-blur-sm">
-        {post.contentType}
-      </div>
-
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-3 text-white">
-        <div className="mb-2 flex items-center gap-2">
-          <div className="h-8 w-8 shrink-0 overflow-hidden rounded-full bg-white/90 text-[11px] font-bold text-black">
-            {post.source.avatar ? (
-              <img
-                src={post.source.avatar}
-                alt={post.source.title}
-                className="h-full w-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center">
-                {String(post.source.title || "TG").slice(0, 2).toUpperCase()}
-              </div>
-            )}
-          </div>
-
-          <div className="min-w-0">
-            <div className="truncate text-sm font-semibold">
-              {post.source.title}
-            </div>
-            <div className="truncate text-xs text-white/75">
-              @{post.source.handle}
-            </div>
-          </div>
-        </div>
-
-        <div className="line-clamp-2 text-xs leading-5 text-white/90">
-          {post.text || "Telegram post"}
-        </div>
-      </div>
-    </button>
-  );
-}
-
-function EmptyState({ text }: { text: string }) {
-  return (
-    <div className="bg-surface text-secondary rounded-[28px] border border-soft p-8 text-center text-sm">
-      {text}
-    </div>
-  );
-}
 
 function ManifestModal({
   copy,
@@ -1334,12 +1225,11 @@ function ManifestModal({
 export function CreatorScreen({
   locale,
   setLocale,
-  posts,
-  openPost,
+  posts: _posts,
+  openPost: _openPost,
 }: Props) {
   const [user, setUser] = useState<TgUser | null>(null);
   const [tab, setTab] = useState<CabinetTab>("language");
-  const [likedIds, setLikedIds] = useState<number[]>([]);
   const [channelUrl, setChannelUrl] = useState("");
   const [theme, setTheme] = useState<Theme>(() =>
     typeof window === "undefined" ? "light" : getTheme()
@@ -1354,7 +1244,6 @@ export function CreatorScreen({
   useEffect(() => {
     const sync = () => {
       setUser(readTelegramUserFromStorage());
-      setLikedIds(readNumberArrayFromStorage(LIKES_STORAGE_KEY));
       setIntroLocale(readLocaleFromStorage(INTRO_LANGUAGE_STORAGE_KEY, locale));
       setTheme(getTheme());
     };
@@ -1376,9 +1265,6 @@ export function CreatorScreen({
 
   const copy = COPY[locale] ?? COPY.en;
 
-  const likedPosts = useMemo(() => {
-    return posts.filter((post) => likedIds.includes(post.id));
-  }, [posts, likedIds]);
 
   const handleLogout = () => {
     localStorage.removeItem(TG_STORAGE_KEY);
@@ -1432,12 +1318,6 @@ export function CreatorScreen({
 
           <div className="flex items-center justify-between gap-3">
             <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1">
-              <TopIconButton
-                active={tab === "liked"}
-                onClick={() => setTab("liked")}
-                icon={Heart}
-                title={copy.likedTabTitle}
-              />
 
               <TopIconButton
                 active={tab === "channel"}
@@ -1494,22 +1374,6 @@ export function CreatorScreen({
                 {copy.manifestButton}
               </button>
             </div>
-          ) : null}
-
-          {tab === "liked" ? (
-            likedPosts.length === 0 ? (
-              <EmptyState text={copy.emptyLiked} />
-            ) : (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                {likedPosts.map((post) => (
-                  <CabinetTile
-                    key={post.id}
-                    post={post}
-                    onOpen={() => openPost(post)}
-                  />
-                ))}
-              </div>
-            )
           ) : null}
 
           {tab === "channel" ? (

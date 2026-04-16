@@ -1,4 +1,4 @@
-import { ExternalLink, Heart, MoreVertical } from "lucide-react";
+import { ExternalLink, MoreVertical } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import type { FeedCardProps } from "./feed.types";
 import { FeedMoreMenu } from "./FeedMoreMenu";
@@ -15,46 +15,6 @@ import {
 } from "./feed.utils";
 
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
-const TG_STORAGE_KEY = "margelet_tg_user";
-
-function readTelegramUserId() {
-  try {
-    const raw = localStorage.getItem(TG_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    return parsed?.id ? String(parsed.id) : null;
-  } catch {
-    return null;
-  }
-}
-
-async function trackAction(params: {
-  action: "view" | "open" | "like";
-  postId: number;
-  sourceHandle: string;
-  telegramUserId?: string | null;
-}) {
-  try {
-    const res = await fetch("/api/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-telegram-id": params.telegramUserId || "",
-      },
-      body: JSON.stringify({
-        action: params.action,
-        postId: params.postId,
-        sourceHandle: params.sourceHandle,
-        telegramUserId: params.telegramUserId || null,
-      }),
-    });
-
-    return await res.json().catch(() => null);
-  } catch {
-    return null;
-  }
-}
-
 export function FeedCard(props: FeedCardProps) {
   const {
     post,
@@ -67,8 +27,6 @@ export function FeedCard(props: FeedCardProps) {
     onHide,
     onOpen,
     onOpenCreator,
-    liked,
-    onToggleLike,
   } = props;
 
   const COPY = {
@@ -92,15 +50,10 @@ export function FeedCard(props: FeedCardProps) {
   const tagLabel = getTagLabel(getResolvedTag(post), locale);
 
   const cardRef = useRef<HTMLElement | null>(null);
-  const viewTrackedRef = useRef(false);
 
   const [isCardVisible, setIsCardVisible] = useState(false);
-  const [localLiked, setLocalLiked] = useState<boolean>(() => liked);
   const [menuAnchorRect, setMenuAnchorRect] = useState<{ top: number; right: number } | null>(null);
 
-  useEffect(() => {
-    setLocalLiked(liked);
-  }, [liked, post.id]);
 
   
   useEffect(() => {
@@ -118,60 +71,10 @@ export function FeedCard(props: FeedCardProps) {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    if (!isCardVisible || viewTrackedRef.current) return;
-    viewTrackedRef.current = true;
 
-    const telegramUserId = readTelegramUserId();
-
-    void trackAction({
-      action: "view",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-  }, [isCardVisible, post.id, post.source.handle]);
-
-  const handleLikeClick = () => {
-    const telegramUserId = readTelegramUserId();
-
-    setLocalLiked((prev) => !prev);
-    onToggleLike();
-
-    if (!telegramUserId) return;
-
-    void trackAction({
-      action: "like",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-  };
 
   const openPostSafely = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
-
-    const telegramUserId = readTelegramUserId();
-
-    void trackAction({
-      action: "open",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-
     onOpen();
   };
 
@@ -239,24 +142,6 @@ export function FeedCard(props: FeedCardProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <div className="relative z-10 flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleLikeClick();
-                        }}
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft active:scale-95"
-                        aria-label="Like post"
-                      >
-                        <Heart
-                          className={`h-5 w-5 ${
-                            localLiked
-                              ? "fill-current text-primary"
-                              : "text-secondary"                              
-                          }`}
-                        />
-                      </button>
-
                       <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
                         {tagLabel}
                       </div>
@@ -294,24 +179,6 @@ export function FeedCard(props: FeedCardProps) {
             <div className="px-4 py-3">
               <div className="flex items-center justify-between gap-3">
                 <div className="relative z-10 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleLikeClick();
-                    }}
-                    className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft active:scale-95"
-                    aria-label="Like post"
-                  >
-                    <Heart
-                      className={`h-5 w-5 ${
-                        localLiked
-                          ? "fill-current text-primary"
-                          : "text-secondary"                          
-                      }`}
-                    />
-                  </button>
-
                   <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
                     {tagLabel}
                   </div>
@@ -336,16 +203,16 @@ export function FeedCard(props: FeedCardProps) {
         <FeedTextCard
           locale={locale}
           post={post}
-          liked={localLiked}
-          onToggleLike={handleLikeClick}
+          liked={false}
+          onToggleLike={() => {}}
           onOpen={openPostSafely}
         />
       ) : (
         <FeedTextCard
           locale={locale}
           post={post}
-          liked={localLiked}
-          onToggleLike={handleLikeClick}
+          liked={false}
+          onToggleLike={() => {}}
           onOpen={openPostSafely}
         />
       )}

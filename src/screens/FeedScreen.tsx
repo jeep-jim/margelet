@@ -742,7 +742,7 @@ export function FeedScreen({
         setViewerMediaIndex={setViewerMediaIndex}
         likedPostIds={likedPostIds}
         savedPostIds={savedPostIds}
-        onToggleLike={onToggleLike}
+        onToggleLike={() => {}}
         onToggleSave={onToggleSave}
         onHidePost={onHidePost}
         onDeletePost={onDeletePost}
@@ -758,10 +758,10 @@ export function FeedScreen({
       <FeedTextReaderModal
         post={textReaderPost}
         locale={locale}
-        liked={!!textReaderPost && likedPostIds.includes(textReaderPost.id)}
+        liked={false}
         saved={!!textReaderPost && savedPostIds.includes(textReaderPost.id)}
         onClose={() => setTextReaderPost(null)}
-        onToggleLike={onToggleLike}
+        onToggleLike={() => {}}
         onToggleSave={onToggleSave}
       />
     </div>

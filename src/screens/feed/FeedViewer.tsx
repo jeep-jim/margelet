@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   Bell,
-  Heart,
   Pause,
   Play,
   Volume2,
@@ -19,7 +18,6 @@ const MAX_EXPANDED_TEXT_HEIGHT = 260;
 const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 const SUB_KEY = "margelet_subscriptions";
-const TG_STORAGE_KEY = "margelet_tg_user";
 
 const COPY = {
   en: {
@@ -84,43 +82,6 @@ const COPY = {
   },
 } as const;
 
-function readTelegramUserId() {
-  try {
-    const raw = localStorage.getItem(TG_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    return parsed?.id ? String(parsed.id) : null;
-  } catch {
-    return null;
-  }
-}
-
-async function trackAction(params: {
-  action: "open" | "like" | "subscribe";
-  postId: number;
-  sourceHandle: string;
-  telegramUserId?: string | null;
-}) {
-  try {
-    const res = await fetch("/api/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-telegram-id": params.telegramUserId || "",
-      },
-      body: JSON.stringify({
-        action: params.action,
-        postId: params.postId,
-        sourceHandle: params.sourceHandle,
-        telegramUserId: params.telegramUserId || null,
-      }),
-    });
-
-    return await res.json().catch(() => null);
-  } catch {
-    return null;
-  }
-}
 
 function readGlobalMuted() {
   try {
@@ -217,9 +178,9 @@ export function FeedViewer({
   videoProgress: _videoProgress,
   viewerMediaIndex,
   setViewerMediaIndex,
-  likedPostIds,
+  likedPostIds: _likedPostIds,
   savedPostIds: _savedPostIds,
-  onToggleLike,
+  onToggleLike: _onToggleLike,
   onToggleSave: _onToggleSave,
   onHidePost: _onHidePost,
   onDeletePost: _onDeletePost,
@@ -242,7 +203,6 @@ export function FeedViewer({
   const [expandedText, setExpandedText] = useState(false);
   const [showCenterControl, setShowCenterControl] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
-  const [localLiked, setLocalLiked] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
@@ -257,11 +217,6 @@ export function FeedViewer({
   useEffect(() => {
     autoplayWantedRef.current = isPlaying;
   }, [isPlaying]);
-
-    useEffect(() => {
-    if (!activePost) return;
-    setLocalLiked(likedPostIds.includes(activePost.id));
-  }, [activePost?.id, likedPostIds]);
 
   useEffect(() => {
     if (!activePost) return;
@@ -287,18 +242,6 @@ export function FeedViewer({
     setCurrentTime(0);
     setDuration(0);
 
-    const telegramUserId = readTelegramUserId();
-
-    void trackAction({
-      action: "open",
-      postId: activePost.id,
-      sourceHandle: activePost.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.subscribed === "boolean") {
-        setSubscribed(data.subscribed);
-      }
-    });
   }, [activePost?.id, activePost?.source.handle, viewerMediaIndex]);  
 
   useEffect(() => {
@@ -502,45 +445,12 @@ export function FeedViewer({
     }, 420);
   };
 
-  const handleLikeClick = () => {
-    const telegramUserId = readTelegramUserId();
-
-    setLocalLiked((prev) => !prev);
-    onToggleLike(activePost.id);
-
-    if (!telegramUserId) return;
-
-    void trackAction({
-      action: "like",
-      postId: activePost.id,
-      sourceHandle: activePost.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-  };
 
   const handleSubscribeClick = () => {
-    const telegramUserId = readTelegramUserId();
     const next = toggleSub(activePost.source.handle);
 
     setSubscribed(next.includes(activePost.source.handle));
     window.dispatchEvent(new Event("storage"));
-
-    if (!telegramUserId) return;
-
-    void trackAction({
-      action: "subscribe",
-      postId: activePost.id,
-      sourceHandle: activePost.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.subscribed === "boolean") {
-        setSubscribed(data.subscribed);
-      }
-    });
   };
 
   return (
@@ -666,17 +576,6 @@ export function FeedViewer({
                       @{activePost.source.handle}
                     </div>
                   </div>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleLikeClick();
-                  }}
-                  className="mb-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/12 text-white backdrop-blur-sm"
-                >
-                  <Heart className={`h-6 w-6 ${localLiked ? "fill-current" : ""}`} />
                 </button>
               </div>              
 

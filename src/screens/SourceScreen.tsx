@@ -57,7 +57,7 @@ export function SourceScreen({
   posts,
   sourceHandle,
   likedPostIds,
-  onToggleLike,
+  onToggleLike: _onToggleLike,
   onHidePost,
   onDeletePost,
   currentTelegramUserId,
@@ -413,8 +413,8 @@ export function SourceScreen({
                     [post.id]: Math.max(0, next),
                   }))
                 }
-                liked={likedPostIds.includes(post.id)}
-                onToggleLike={() => onToggleLike(post.id)}
+                liked={false}
+                onToggleLike={() => {}}
                 onShare={() => {}}
               />
             );
@@ -441,7 +441,7 @@ export function SourceScreen({
         setViewerMediaIndex={setViewerMediaIndex}
         likedPostIds={likedPostIds}
         savedPostIds={SAVED_POST_IDS_FALLBACK}
-        onToggleLike={onToggleLike}
+        onToggleLike={() => {}}
         onToggleSave={() => {}}
         onHidePost={onHidePost}
         onDeletePost={onDeletePost}
@@ -457,10 +457,10 @@ export function SourceScreen({
       <FeedTextReaderModal
         post={textReaderPost}
         locale={locale}
-        liked={!!textReaderPost && likedPostIds.includes(textReaderPost.id)}
+        liked={false}
         saved={false}
         onClose={closeOpenedPost}
-        onToggleLike={onToggleLike}
+        onToggleLike={() => {}}
         onToggleSave={() => {}}
       />
     </div>

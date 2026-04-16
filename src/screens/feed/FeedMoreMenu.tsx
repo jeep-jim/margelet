@@ -30,40 +30,6 @@ function toggleSub(handle: string) {
   return next;
 }
 
-function readTelegramUserId() {
-  try {
-    const raw = localStorage.getItem("margelet_tg_user");
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    return parsed?.id ? String(parsed.id) : null;
-  } catch {
-    return null;
-  }
-}
-
-async function trackSubscribe(params: {
-  postId: number;
-  sourceHandle: string;
-  telegramUserId?: string | null;
-}) {
-  try {
-    await fetch("/api/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-telegram-id": params.telegramUserId || "",
-      },
-      body: JSON.stringify({
-        action: "subscribe",
-        postId: params.postId,
-        sourceHandle: params.sourceHandle,
-        telegramUserId: params.telegramUserId || null,
-      }),
-    });
-  } catch {
-    //
-  }
-}
 
 export function FeedMoreMenu({
   locale,
@@ -74,7 +40,7 @@ export function FeedMoreMenu({
   onOpenTelegram,
   onRequestClose,
   anchorRect,
-  postId,
+  postId: _postId,
   sourceHandle,
 }: {
   locale: Locale;
@@ -235,21 +201,12 @@ export function FeedMoreMenu({
       >
         <button
           type="button"
-          onClick={async () => {
-            const telegramUserId = readTelegramUserId();
+          onClick={() => {
             const next = toggleSub(sourceHandle);
             const isNowSubscribed = next.includes(sourceHandle);
 
             setSubscribed(isNowSubscribed);
             window.dispatchEvent(new Event("storage"));
-
-            if (telegramUserId) {
-              await trackSubscribe({
-                postId,
-                sourceHandle,
-                telegramUserId,
-              });
-            }
           }}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
         >
