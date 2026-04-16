@@ -51,12 +51,7 @@ function normalizeTags(raw: unknown, fallback: ContentTag): ContentTag[] {
     : [];
 
   const unique = Array.from(new Set(tags));
-
-  if (unique.length > 0) {
-    return unique;
-  }
-
-  return [fallback];
+  return unique.length > 0 ? unique : [fallback];
 }
 
 function getStartOfUtcDay() {
@@ -245,7 +240,6 @@ export default async function handler(
 
     const post: IngestedPost = {
       id: makePostId(normalizedUrl),
-
       postUrl: normalizedUrl,
 
       source: {
