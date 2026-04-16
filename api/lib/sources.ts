@@ -9,11 +9,13 @@ import {
   writeSourcesFile,
 } from "./blob-store.js";
 
-const POSTS_PER_SOURCE_SCAN = 12;
 const MAX_NEW_POSTS_PER_SOURCE = 3;
 const MAX_TOTAL_POSTS = 500;
 const POST_TTL_HOURS = 24;
-const MAX_SOURCES_PER_REBUILD = 200;
+const MAX_SOURCES_PER_REBUILD = 500;
+const SOURCE_PAGE_TIMEOUT_MS = 15_000;
+const REBUILD_USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36";
 
 function asString(value: unknown): string | null {
   if (typeof value !== "string") return null;
@@ -53,6 +55,18 @@ function isStatus(value: unknown): value is TrustedSource["status"] {
   return value === "active" || value === "paused";
 }
 
+function parseNumericPostId(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (typeof value === "string" && /^\d+$/.test(value.trim())) {
+    return Number(value);
+  }
+
+  return null;
+}
+
 function buildSource(
   input: Partial<TrustedSource> & {
     countryCode: CountryCode;
@@ -80,8 +94,7 @@ function buildSource(
     updatedAt: now,
     lastCheckedAt: input.lastCheckedAt || null,
     lastImportedAt: input.lastImportedAt || null,
-    lastSeenPostId:
-      typeof input.lastSeenPostId === "number" ? input.lastSeenPostId : null,
+    lastSeenPostId: parseNumericPostId(input.lastSeenPostId),
     importedPostsCount:
       typeof input.importedPostsCount === "number"
         ? input.importedPostsCount
@@ -248,22 +261,76 @@ function buildPost(params: {
   };
 }
 
+async function fetchSourcePageHtml(handle: string) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), SOURCE_PAGE_TIMEOUT_MS);
+
+  try {
+    const response = await fetch(`https://t.me/s/${handle}`, {
+      headers: {
+        "User-Agent": REBUILD_USER_AGENT,
+        Accept: "text/html,application/xhtml+xml",
+        "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
+        Referer: "https://t.me/",
+      },
+      redirect: "follow",
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Source page fetch failed: ${response.status}`);
+    }
+
+    return await response.text();
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+function extractLatestPostIds(html: string, handle: string) {
+  const escapedHandle = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const regex = new RegExp(`href="/(?:s/)?${escapedHandle}/(\\d+)"`, "gi");
+  const ids = new Set<number>();
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(html))) {
+    const id = Number(match[1]);
+    if (Number.isFinite(id) && id > 0) {
+      ids.add(id);
+    }
+  }
+
+  return Array.from(ids).sort((a, b) => b - a);
+}
+
 async function ingestSourcePosts(source: TrustedSource) {
   const found: IngestedPost[] = [];
   let highestPostId: number | null = source.lastSeenPostId ?? null;
-  const start = Math.max(1, (source.lastSeenPostId || 0) + 1);
-  const end = start + POSTS_PER_SOURCE_SCAN - 1;
 
-  for (let postId = end; postId >= start; postId -= 1) {
-    const postUrl = `https://t.me/${source.handle}/${postId}?single`;
-    const ingest = await ingestTelegramPost(postUrl);
-    if (!ingest) continue;
+  try {
+    const html = await fetchSourcePageHtml(source.handle);
+    const ids = extractLatestPostIds(html, source.handle);
 
-    const createdAt = new Date().toISOString();
-    found.push(buildPost({ postUrl, source, ingest, createdAt }));
-    highestPostId = Math.max(highestPostId || 0, postId);
+    if (ids.length > 0) {
+      highestPostId = Math.max(highestPostId || 0, ids[0]);
+    }
 
-    if (found.length >= MAX_NEW_POSTS_PER_SOURCE) break;
+    const newIds = ids
+      .filter((id) => (source.lastSeenPostId || 0) === 0 || id > (source.lastSeenPostId || 0))
+      .slice(0, MAX_NEW_POSTS_PER_SOURCE)
+      .sort((a, b) => a - b);
+
+    for (const postId of newIds) {
+      const postUrl = `https://t.me/${source.handle}/${postId}?single`;
+      const ingest = await ingestTelegramPost(postUrl);
+      if (!ingest) continue;
+
+      const createdAt = new Date().toISOString();
+      found.push(buildPost({ postUrl, source, ingest, createdAt }));
+      highestPostId = Math.max(highestPostId || 0, postId);
+    }
+  } catch (error) {
+    console.error(`Failed to ingest source ${source.handle}`, error);
   }
 
   return { posts: found, highestPostId };
@@ -297,6 +364,7 @@ export async function rebuildFeedFromSources(options?: {
   const seenUrls = new Set(basePosts.map((post: IngestedPost) => post.postUrl));
   const importedPosts: IngestedPost[] = [];
   const updatedSources = [...allSources];
+  const checkedAt = new Date().toISOString();
 
   for (const source of activeSources) {
     const result = await ingestSourcePosts(source);
@@ -326,10 +394,8 @@ export async function rebuildFeedFromSources(options?: {
         createdAt: source.createdAt,
         importedPostsCount:
           (source.importedPostsCount || 0) + importedNow.length,
-        lastImportedAt: importedNow.length
-          ? new Date().toISOString()
-          : source.lastImportedAt,
-        lastCheckedAt: new Date().toISOString(),
+        lastImportedAt: importedNow.length ? checkedAt : source.lastImportedAt,
+        lastCheckedAt: checkedAt,
         lastSeenPostId: result.highestPostId ?? source.lastSeenPostId,
         tags: source.tags,
       });
@@ -350,7 +416,7 @@ export async function rebuildFeedFromSources(options?: {
   ]);
 
   return {
-    updatedAt: new Date().toISOString(),
+    updatedAt: checkedAt,
     sourcesChecked: activeSources.length,
     importedPosts: importedPosts.length,
     posts: mergedPosts,
