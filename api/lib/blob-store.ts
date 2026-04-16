@@ -26,29 +26,34 @@ async function readJsonFile<T>(pathname: string, fallback: T): Promise<T> {
     result.blobs.find((item: BlobListItem) => item.pathname === pathname) ??
     result.blobs[0];
 
-  if (!blob) {
-    return fallback;
-  }
+  if (!blob) return fallback;
 
   const response = await fetch(blob.downloadUrl || blob.url, {
     cache: "no-store",
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to read blob ${pathname}: ${response.status}`);
+    return fallback;
   }
 
-  return (await response.json()) as T;
+  try {
+    return (await response.json()) as T;
+  } catch {
+    return fallback;
+  }
 }
 
 async function writeJsonFile(pathname: string, value: unknown) {
   await del(pathname).catch(() => undefined);
 
-  await put(pathname, JSON.stringify(value, null, 2), {
-    access: "public",
+  const options = {
+    access: "private",
     addRandomSuffix: false,
     contentType: "application/json; charset=utf-8",
-  });
+    allowOverwrite: true,
+  } as any;
+
+  await put(pathname, JSON.stringify(value, null, 2), options);
 }
 
 export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {

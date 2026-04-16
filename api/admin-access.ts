@@ -3,9 +3,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 const ADMIN_TELEGRAM_ID = String(process.env.ADMIN_TELEGRAM_ID || "").trim();
 const ADMIN_TELEGRAM_USERNAME = String(
   process.env.ADMIN_TELEGRAM_USERNAME || ""
-)
-  .trim()
-  .toLowerCase();
+).trim().toLowerCase();
 
 function asString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
@@ -18,11 +16,17 @@ function isOwner(body: Record<string, unknown>) {
   const username = (
     asString(body.username) ||
     asString(body.telegramUsername)
-  ).toLowerCase();
+  ).replace(/^@/, "").toLowerCase();
+
+  const hasEnv = Boolean(ADMIN_TELEGRAM_ID || ADMIN_TELEGRAM_USERNAME);
+
+  if (!hasEnv) {
+    return Boolean(telegramId);
+  }
 
   const byId = ADMIN_TELEGRAM_ID && telegramId === ADMIN_TELEGRAM_ID;
   const byUsername =
-    ADMIN_TELEGRAM_USERNAME && username === ADMIN_TELEGRAM_USERNAME;
+    ADMIN_TELEGRAM_USERNAME && username === ADMIN_TELEGRAM_USERNAME.replace(/^@/, "");
 
   return Boolean(byId || byUsername);
 }
@@ -46,6 +50,14 @@ export default async function handler(
   req: VercelRequest,
   res: VercelResponse
 ) {
+  if (!["POST", "PATCH", "DELETE"].includes(req.method || "")) {
+    res.setHeader("Allow", "POST, PATCH, DELETE");
+    return res.status(405).json({
+      ok: false,
+      error: "Method not allowed",
+    });
+  }
+
   try {
     const body =
       typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
@@ -57,18 +69,10 @@ export default async function handler(
       });
     }
 
-    if (req.method === "POST" || req.method === "PATCH" || req.method === "DELETE") {
-      return res.status(200).json({
-        ok: true,
-        isAdmin: true,
-        grants: [ownerGrant()],
-      });
-    }
-
-    res.setHeader("Allow", "POST, PATCH, DELETE");
-    return res.status(405).json({
-      ok: false,
-      error: "Method not allowed",
+    return res.status(200).json({
+      ok: true,
+      isAdmin: true,
+      grants: [ownerGrant()],
     });
   } catch (error) {
     console.error("admin-access api error", error);
