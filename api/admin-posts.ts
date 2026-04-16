@@ -4,8 +4,8 @@ import {
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
-} from "./lib/blob-store.ts";
-import type { IngestedPost, ContentTag } from "../src/types/app.ts";
+} from "./lib/blob-store.js";
+import type { IngestedPost, ContentTag } from "../src/types/app.js";
 
 const ADMIN_TELEGRAM_ID = String(process.env.ADMIN_TELEGRAM_ID || "").trim();
 const ADMIN_TELEGRAM_USERNAME = String(
