@@ -172,15 +172,8 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-function buildFeedUrl(locale: Locale, limit?: number) {
-  const params = new URLSearchParams();
-  params.set("locale", locale);
-
-  if (typeof limit === "number" && Number.isFinite(limit) && limit > 0) {
-    params.set("limit", String(limit));
-  }
-
-  return `/api/feed?${params.toString()}`;
+function buildFeedUrl() {
+  return `/feed.json`;
 }
 
 export default function App() {
@@ -446,7 +439,7 @@ export default function App() {
     setServerPosts([]);
 
     try {
-      const res = await fetch(buildFeedUrl(locale), {
+      const res = await fetch(buildFeedUrl(), {
         cache: "no-store",
       });
 
@@ -455,7 +448,13 @@ export default function App() {
       }
 
       const data = await res.json();
-      setServerPosts(Array.isArray(data.posts) ? data.posts : []);
+      const nextPosts = Array.isArray(data.posts)
+        ? data.posts.filter((post: IngestedPost) => {
+            const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
+            return !countryCode || countryCode === locale;
+          })
+        : [];
+      setServerPosts(nextPosts);
     } catch (error) {
       console.error("Failed to load feed", error);
       setServerPosts([]);
