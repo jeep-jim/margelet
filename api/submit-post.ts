@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { parseTelegramPostUrl, ingestTelegramPost } from "../src/lib/telegram.js";
+import { parseTelegramPostUrl, ingestTelegramPost } from "../src/lib/telegram";
 import type { IngestedPost, ContentTag, Locale } from "../src/types/app";
-import { readFeedFile, writeFeedFile } from "./lib/blob-store.js";
+import { readFeedFile, writeFeedFile } from "./lib/blob-store";
 
 type UserRole = "user" | "channel_owner" | "admin";
 type PostStatus = "published" | "pending" | "blocked";
