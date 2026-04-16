@@ -10,9 +10,7 @@ export type FeedOption<T extends string> = {
 export type FeedScreenProps = {
   locale: Locale;
   posts: IngestedPost[];
-  likedPostIds: number[];
   savedPostIds: number[];
-  onToggleLike: (id: number) => void;
   onToggleSave: (id: number) => void;
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
@@ -33,12 +31,14 @@ export type FeedCardProps = {
   onOpenCreator: () => void;
   mediaIndex: number;
   onChangeMediaIndex: (next: number) => void;
-  liked: boolean;
-  onToggleLike: () => void;
   onShare: () => void;
 };
 
-export type FeedTextCardProps = FeedCardProps;
+export type FeedTextCardProps = {
+  locale: Locale;
+  post: IngestedPost;
+  onOpen: () => void;
+};
 
 export type FeedMediaCardProps = FeedCardProps & {
   displayText: string;
@@ -62,9 +62,7 @@ export type ViewerProps = {
   videoProgress: number;
   viewerMediaIndex: number;
   setViewerMediaIndex: React.Dispatch<React.SetStateAction<number>>;
-  likedPostIds: number[];
   savedPostIds: number[];
-  onToggleLike: (id: number) => void;
   onToggleSave: (id: number) => void;
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;

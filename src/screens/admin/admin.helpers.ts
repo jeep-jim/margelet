@@ -10,7 +10,6 @@ export function buildSearchText(post: IngestedPost) {
     post.addedBy.telegramId || "",
     post.tag || "",
     post.text || "",
-    post.billing.plan || "",
     post.status || "",
   ]
     .join(" ")
@@ -57,20 +56,6 @@ export function getStatusLabel(status?: string) {
   }
 }
 
-export function getPlanLabel(plan?: string) {
-  switch (plan) {
-    case "free":
-      return "Бесплатно";
-    case "pro_1m":
-      return "PRO 1 мес";
-    case "pro_3m":
-      return "PRO 3 мес";
-    case "pro_12m":
-      return "PRO 12 мес";
-    default:
-      return plan || "—";
-  }
-}
 
 export function getRoleLabel(role?: string) {
   switch (role) {

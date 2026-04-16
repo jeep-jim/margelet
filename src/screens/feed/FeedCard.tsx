@@ -1,5 +1,5 @@
-import { ExternalLink, Heart, MoreVertical } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ExternalLink, MoreVertical } from "lucide-react";
+import { useState } from "react";
 import type { FeedCardProps } from "./feed.types";
 import { FeedMoreMenu } from "./FeedMoreMenu";
 import { FeedMediaCard } from "./FeedMediaCard";
@@ -14,47 +14,6 @@ import {
   hasVisualMedia,
 } from "./feed.utils";
 
-const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
-const TG_STORAGE_KEY = "margelet_tg_user";
-
-function readTelegramUserId() {
-  try {
-    const raw = localStorage.getItem(TG_STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    return parsed?.id ? String(parsed.id) : null;
-  } catch {
-    return null;
-  }
-}
-
-async function trackAction(params: {
-  action: "view" | "open" | "like";
-  postId: number;
-  sourceHandle: string;
-  telegramUserId?: string | null;
-}) {
-  try {
-    const res = await fetch("/api/track", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-telegram-id": params.telegramUserId || "",
-      },
-      body: JSON.stringify({
-        action: params.action,
-        postId: params.postId,
-        sourceHandle: params.sourceHandle,
-        telegramUserId: params.telegramUserId || null,
-      }),
-    });
-
-    return await res.json().catch(() => null);
-  } catch {
-    return null;
-  }
-}
-
 export function FeedCard(props: FeedCardProps) {
   const {
     post,
@@ -67,119 +26,23 @@ export function FeedCard(props: FeedCardProps) {
     onHide,
     onOpen,
     onOpenCreator,
-    liked,
-    onToggleLike,
   } = props;
 
-  const COPY = {
+  const copy = {
     en: { read: "Read", more: "More", open: "Open" },
     ru: { read: "Читать", more: "Ещё", open: "Открыть" },
-    de: { read: "Lesen", more: "Mehr", open: "Öffnen" },
-    es: { read: "Leer", more: "Más", open: "Abrir" },
-    tr: { read: "Oku", more: "Daha fazla", open: "Aç" },
-    fr: { read: "Lire", more: "Plus", open: "Ouvrir" },
-    it: { read: "Leggi", more: "Altro", open: "Apri" },
-    "pt-br": { read: "Ler", more: "Mais", open: "Abrir" },
-    id: { read: "Baca", more: "Lainnya", open: "Buka" },
-    pl: { read: "Czytaj", more: "Więcej", open: "Otwórz" },
-  } as const;
-
-  const copy = COPY[locale] ?? COPY.en;
+  }[locale as "en" | "ru"] ?? { read: "Read", more: "More", open: "Open" };
 
   const displayText = getDisplayText(post);
   const showVisualMedia = hasVisualMedia(post);
   const hasAudioOrFiles = hasAudioLikeMedia(post);
   const tagLabel = getTagLabel(getResolvedTag(post), locale);
-
-  const cardRef = useRef<HTMLElement | null>(null);
-  const viewTrackedRef = useRef(false);
-
-  const [isCardVisible, setIsCardVisible] = useState(false);
-  const [localLiked, setLocalLiked] = useState<boolean>(() => liked);
   const [menuAnchorRect, setMenuAnchorRect] = useState<{ top: number; right: number } | null>(null);
 
-  useEffect(() => {
-    setLocalLiked(liked);
-  }, [liked, post.id]);
-
-  
-  useEffect(() => {
-    const node = cardRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsCardVisible(entry.isIntersecting && entry.intersectionRatio >= 0.6);
-      },
-      { threshold: [0, 0.6, 1] }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isCardVisible || viewTrackedRef.current) return;
-    viewTrackedRef.current = true;
-
-    const telegramUserId = readTelegramUserId();
-
-    void trackAction({
-      action: "view",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-  }, [isCardVisible, post.id, post.source.handle]);
-
-  const handleLikeClick = () => {
-    const telegramUserId = readTelegramUserId();
-
-    setLocalLiked((prev) => !prev);
-    onToggleLike();
-
-    if (!telegramUserId) return;
-
-    void trackAction({
-      action: "like",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-  };
-
-  const openPostSafely = () => {
-    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
-
-    const telegramUserId = readTelegramUserId();
-
-    void trackAction({
-      action: "open",
-      postId: post.id,
-      sourceHandle: post.source.handle,
-      telegramUserId,
-    }).then((data) => {
-      if (typeof data?.liked === "boolean") {
-        setLocalLiked(data.liked);
-      }
-    });
-
-    onOpen();
-  };
+  const openPostSafely = () => onOpen();
 
   return (
-    <article
-      ref={cardRef}
-      className="relative overflow-hidden border-b border-soft bg-surface"
-    >
+    <article className="relative overflow-hidden border-b border-soft bg-surface">
       <div className="px-4 pt-4 pr-12">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
       </div>
@@ -190,15 +53,10 @@ export function FeedCard(props: FeedCardProps) {
             className="flex h-9 w-9 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft"
             onClick={(event) => {
               event.stopPropagation();
-
               const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
-              setMenuAnchorRect({
-                top: rect.bottom,
-                right: window.innerWidth - rect.right,
-              });
-
+              setMenuAnchorRect({ top: rect.bottom, right: window.innerWidth - rect.right });
               onToggleMenu();
-            }}            
+            }}
             type="button"
           >
             <MoreVertical className="h-5 w-5" />
@@ -211,26 +69,20 @@ export function FeedCard(props: FeedCardProps) {
               isAdmin={isAdmin}
               onDelete={onDelete}
               onHide={onHide}
-              onOpenTelegram={() => {
-                window.open(post.postUrl, "_blank", "noopener,noreferrer");
-              }}
+              onOpenTelegram={() => window.open(post.postUrl, "_blank", "noopener,noreferrer")}
               onRequestClose={onToggleMenu}
               anchorRect={menuAnchorRect}
               postId={post.id}
               sourceHandle={post.source.handle}
             />
-          ) : null}             
+          ) : null}
         </div>
       </div>
 
       {showVisualMedia ? (
         <>
           <div className="relative mt-3">
-            <FeedMediaCard
-              {...props}
-              displayText={displayText}
-              isCardVisible={isCardVisible}
-            />
+            <FeedMediaCard {...props} displayText={displayText} />
           </div>
 
           {displayText ? (
@@ -239,116 +91,51 @@ export function FeedCard(props: FeedCardProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-center justify-between gap-3">
                     <div className="relative z-10 flex items-center gap-2">
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          handleLikeClick();
-                        }}
-                        className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft active:scale-95"
-                        aria-label="Like post"
-                      >
-                        <Heart
-                          className={`h-5 w-5 ${
-                            localLiked
-                              ? "fill-current text-primary"
-                              : "text-secondary"                              
-                          }`}
-                        />
-                      </button>
-
                       <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
                         {tagLabel}
                       </div>
                     </div>
 
-                    {expanded ? (
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          openPostSafely();
-                        }}
-                        className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
-                      >
-                        <span>{copy.read}</span>
-                        <ExternalLink className="h-4 w-4" />
-                      </button>
-                    ) : (
+                    {!expanded ? (
                       <button
                         type="button"
                         onClick={(event) => {
                           event.stopPropagation();
                           expand();
                         }}
-                        className="inline-flex items-center rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                        className="rounded-full bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary transition hover:bg-surface-hover"
                       >
-                        <span>{copy.more}</span>
+                        {copy.more}
                       </button>
-                    )}
+                    ) : null}
                   </div>
                 )}
               </ExpandableFeedText>
             </div>
           ) : (
-            <div className="px-4 py-3">
+            <div className="px-4 py-4">
               <div className="flex items-center justify-between gap-3">
-                <div className="relative z-10 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      handleLikeClick();
-                    }}
-                    className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft active:scale-95"
-                    aria-label="Like post"
-                  >
-                    <Heart
-                      className={`h-5 w-5 ${
-                        localLiked
-                          ? "fill-current text-primary"
-                          : "text-secondary"                          
-                      }`}
-                    />
-                  </button>
-
-                  <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
-                    {tagLabel}
-                  </div>
+                <div className="rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+                  {tagLabel}
                 </div>
 
                 <button
                   type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    openPostSafely();
-                  }}
-                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                  onClick={openPostSafely}
+                  className="inline-flex items-center gap-2 rounded-full bg-surface-soft px-3 py-2 text-[12px] font-medium text-primary transition hover:bg-surface-hover"
                 >
-                  <span>{copy.open}</span>
                   <ExternalLink className="h-4 w-4" />
+                  <span>{copy.open}</span>
                 </button>
               </div>
             </div>
           )}
         </>
-      ) : hasAudioOrFiles ? (
-        <FeedTextCard
-          locale={locale}
-          post={post}
-          liked={localLiked}
-          onToggleLike={handleLikeClick}
-          onOpen={openPostSafely}
-        />
       ) : (
-        <FeedTextCard
-          locale={locale}
-          post={post}
-          liked={localLiked}
-          onToggleLike={handleLikeClick}
-          onOpen={openPostSafely}
-        />
+        <FeedTextCard locale={locale} post={post} onOpen={openPostSafely} />
       )}
+
+      {hasAudioOrFiles && !showVisualMedia ? null : null}
     </article>
   );
 }

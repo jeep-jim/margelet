@@ -6,7 +6,6 @@ import {
   formatDate,
   formatRemaining,
   getContentTypeLabel,
-  getPlanLabel,
   getPreviewUrl,
   getRoleLabel,
   getStatusLabel,
@@ -170,7 +169,6 @@ export function AdminPostsSection({
                     </div>
                     <div>Тип: {getContentTypeLabel(post.contentType)}</div>
                     <div>Тег: {getTagLabel(post.tag)}</div>
-                    <div>Тариф: {getPlanLabel(post.billing.plan)}</div>
                     <div>Создан: {formatDate(post.createdAt)}</div>
                     <div>Истекает: {formatDate(post.expiresAt)}</div>
                     <div>Удалится через: {formatRemaining(post.expiresAt)}</div>
@@ -225,7 +223,6 @@ export function AdminPostsSection({
                     <div>ID: {post.id}</div>
                     <div>URL: {post.postUrl}</div>
                     <div>Статус: {getStatusLabel(status)}</div>
-                    <div>План: {getPlanLabel(post.billing.plan)}</div>
                     <div>Роль: {getRoleLabel(post.role)}</div>
                     <div>TTL: {post.ttlHours} ч</div>
                     <div>Media count: {post.media.length}</div>

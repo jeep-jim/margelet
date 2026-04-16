@@ -276,9 +276,7 @@ function SubscriptionsBar({
 export function FeedScreen({
   locale,
   posts,
-  likedPostIds,
   savedPostIds,
-  onToggleLike,
   onToggleSave,
   onHidePost,
   onDeletePost,
@@ -288,9 +286,7 @@ export function FeedScreen({
 }: {
   locale: Locale;
   posts: IngestedPost[];
-  likedPostIds: number[];
   savedPostIds: number[];
-  onToggleLike: (id: number) => void;
   onToggleSave: (id: number) => void;
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
@@ -713,8 +709,6 @@ export function FeedScreen({
               onChangeMediaIndex={(next: number) =>
                 setFeedCardMediaIndex(post.id, next)
               }
-              liked={likedPostIds.includes(post.id)}
-              onToggleLike={() => onToggleLike(post.id)}
               onShare={() => {
                 void handleShare(post);
               }}
@@ -740,9 +734,7 @@ export function FeedScreen({
         videoProgress={videoProgress}
         viewerMediaIndex={viewerMediaIndex}
         setViewerMediaIndex={setViewerMediaIndex}
-        likedPostIds={likedPostIds}
         savedPostIds={savedPostIds}
-        onToggleLike={onToggleLike}
         onToggleSave={onToggleSave}
         onHidePost={onHidePost}
         onDeletePost={onDeletePost}
@@ -758,10 +750,8 @@ export function FeedScreen({
       <FeedTextReaderModal
         post={textReaderPost}
         locale={locale}
-        liked={!!textReaderPost && likedPostIds.includes(textReaderPost.id)}
         saved={!!textReaderPost && savedPostIds.includes(textReaderPost.id)}
         onClose={() => setTextReaderPost(null)}
-        onToggleLike={onToggleLike}
         onToggleSave={onToggleSave}
       />
     </div>

@@ -1,14 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import type { IngestedPost, Locale } from "../types/app";
 import { COUNTRIES, type CountryCode } from "./admin/admin.countries";
-import { AdminAccessSection } from "./admin/AdminAccessSection";
-import { AdminAnalyticsSection } from "./admin/AdminAnalyticsSection";
 import { AdminBulkImportSection } from "./admin/AdminBulkImportSection";
 import { AdminCountriesSection } from "./admin/AdminCountriesSection";
 import { AdminPostsSection } from "./admin/AdminPostsSection";
 import { AdminSourcesSection } from "./admin/AdminSourcesSection";
 import type { TrustedSource } from "./admin/admin.types";
-import type { AnalyticsResponse } from "./admin/admin.analytics.types";
 
 type AdminScreenProps = {
   locale: Locale;
@@ -18,22 +15,6 @@ type AdminScreenProps = {
 };
 
 type LoadState = "idle" | "loading" | "ready" | "error";
-type AccessRole = "user" | "channel_owner" | "admin";
-type AccessPlan = "free" | "pro_1m" | "pro_3m" | "pro_12m";
-
-type AccessGrant = {
-  telegramUserId: string;
-  username: string | null;
-  role: AccessRole;
-  plan: AccessPlan;
-  note: string | null;
-  grantedBy: string | null;
-  createdAt: string;
-  updatedAt: string;
-  expiresAt: string | null;
-  isActive: boolean;
-};
-
 const ADMIN_TELEGRAM_ID = "1372669404";
 
 export function AdminScreen({
@@ -45,9 +26,6 @@ export function AdminScreen({
   const [posts, setPosts] = useState<IngestedPost[]>([]);
   const [state, setState] = useState<LoadState>("idle");
 
-  const [analytics, setAnalytics] = useState<AnalyticsResponse | null>(null);
-  const [grants, setGrants] = useState<AccessGrant[]>([]);
-  const [grantsLoading, setGrantsLoading] = useState(false);
   const [sources, setSources] = useState<TrustedSource[]>([]);
 
   const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
@@ -100,48 +78,7 @@ export function AdminScreen({
     }
   };  
 
-  const loadAnalytics = async () => {
-    if (!telegramUserId || !hasAdminAccess) return;
 
-    try {
-      const res = await fetch("/api/admin-analytics", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          telegramUserId,
-          countryCode: selectedCountryCode,
-        }),
-      });
-
-      const data = await res.json().catch(() => null);
-      setAnalytics(data || null);
-    } catch {
-      //
-    }
-  };  
-
-  const loadGrants = async () => {
-    if (!telegramUserId || !hasAdminAccess) return;
-
-    try {
-      setGrantsLoading(true);
-
-      const res = await fetch("/api/admin-access", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramUserId }),
-      });
-
-      const data = await res.json().catch(() => null);
-      setGrants(Array.isArray(data?.grants) ? data.grants : []);
-    } catch {
-      //
-    } finally {
-      setGrantsLoading(false);
-    }
-  };
 
   const loadSources = async () => {
     if (!telegramUserId || !hasAdminAccess) return;
@@ -171,17 +108,7 @@ export function AdminScreen({
     void loadSources();
   }, [telegramUserId, hasAdminAccess, selectedCountryCode]);
 
-  useEffect(() => {
-    if (!telegramUserId || !hasAdminAccess) return;
 
-    void loadAnalytics();
-  }, [telegramUserId, hasAdminAccess, selectedCountryCode]);
-
-  useEffect(() => {
-    if (!telegramUserId || !hasAdminAccess) return;
-
-    void loadGrants();
-  }, [telegramUserId, hasAdminAccess]);
 
   const stats = useMemo(() => {
     return {
@@ -234,7 +161,7 @@ export function AdminScreen({
           <div>
             <div className="text-[26px] font-semibold tracking-tight">Admin</div>
             <div className="text-sm text-white/45">
-              управление · аналитика · источники · доступы
+              управление · источники · посты
             </div>
           </div>
 
@@ -277,8 +204,6 @@ export function AdminScreen({
         </div>
 
         <div className="space-y-4">
-          <AdminAnalyticsSection analytics={analytics} />
-
           <AdminCountriesSection
             selectedCountryCode={selectedCountryCode}
             onSelectCountry={setSelectedCountryCode}
@@ -305,12 +230,6 @@ export function AdminScreen({
             telegramUserId={telegramUserId}
           />
 
-          <AdminAccessSection
-            telegramUserId={telegramUserId}
-            grants={grants}
-            grantsLoading={grantsLoading}
-            onGrantsReload={loadGrants}
-          />
         </div>
       </div>
     </div>

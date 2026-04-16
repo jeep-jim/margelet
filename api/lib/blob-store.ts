@@ -29,8 +29,6 @@ async function readJsonFile<T>(pathname: string, fallback: T): Promise<T> {
 }
 
 async function writeJsonFile(pathname: string, value: unknown) {
-  await del(pathname).catch(() => undefined);
-
   await put(pathname, JSON.stringify(value, null, 2), {
     access: "private",
     addRandomSuffix: false,
