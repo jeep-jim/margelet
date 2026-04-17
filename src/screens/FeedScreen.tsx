@@ -458,7 +458,6 @@ export function FeedScreen({
       });
     }
 
-    list.sort((a, b) => b.id - a.id);
     return list;
   }, [safePosts, selectedTags, searchQuery]);
 
