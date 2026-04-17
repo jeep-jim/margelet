@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      GITHUB_TOKEN: ${{ secrets.MARGELET_GITHUB_TOKEN }}
       GITHUB_OWNER: jeep-jim
       GITHUB_REPO: margelet
       GITHUB_BRANCH: main
       NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+      MARGELET_STORAGE_MODE: local
 
     steps:
       - name: Checkout
@@ -27,26 +27,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Show workflow version
-        run: echo "workflow version = npm-install-v2"
-
-      - name: Force npm registry
-        run: |
-          npm config set registry https://registry.npmjs.org/
+        run: echo "workflow version = github-lite-v1"
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Rebuild feed snapshot
-        run: npx tsx scripts/rebuild-feed.ts
+        run: npm run rebuild:feed
 
       - name: Commit rebuilt files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add data/feed.json public/feed.json data/sources.json
+          git add -A data/feed.json public/feed.json data/sources.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit"

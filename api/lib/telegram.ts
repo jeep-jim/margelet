@@ -1,4 +1,4 @@
-import type { IngestedPost } from "../types/app.js";
+import type { IngestedPost } from "./contracts.js";
 
 export type ParsedTelegramPostUrl = {
   originalUrl: string;
@@ -7,6 +7,21 @@ export type ParsedTelegramPostUrl = {
   sourceHandle: string;
   sourceUrl: string;
   postId: string;
+};
+
+export type TelegramIngest = {
+  source: {
+    handle: string;
+    title: string;
+    avatar: string | null;
+    verified: boolean;
+  };
+  text: string;
+  links: Array<{ label: string | null; url: string }>;
+  contentType: IngestedPost["contentType"];
+  media: IngestedPost["media"];
+  hasMediaInOriginal: boolean;
+  fallbackReason: IngestedPost["fallbackReason"];
 };
 
 const TELEGRAM_HOSTS = new Set([
@@ -25,16 +40,9 @@ function normalizeAssetUrl(value?: string | null) {
   if (!value) return null;
   const v = value.trim();
   if (!v) return null;
-
   if (v.startsWith("//")) return `https:${v}`;
   if (v.startsWith("http://")) return `https://${v.slice(7)}`;
   return v;
-}
-
-function toProxy(url?: string | null) {
-  const normalized = normalizeAssetUrl(url);
-  if (!normalized) return null;
-  return `/api/media-proxy?url=${encodeURIComponent(normalized)}`;
 }
 
 function pickPrimaryUrl(url?: string | null) {
@@ -46,14 +54,12 @@ function buildHybridMediaUrl(url?: string | null) {
   if (!directUrl) {
     return {
       directUrl: null,
-      proxyUrl: null,
       preferredUrl: null,
     };
   }
 
   return {
     directUrl,
-    proxyUrl: toProxy(directUrl),
     preferredUrl: directUrl,
   };
 }
@@ -110,21 +116,13 @@ function extractAll(html: string, re: RegExp) {
 
 function parseDurationText(value?: string | null) {
   if (!value) return undefined;
-
   const raw = value.trim();
   if (!raw) return undefined;
 
   const parts = raw.split(":").map((item) => Number(item.trim()));
   if (parts.some((item) => !Number.isFinite(item))) return undefined;
-
-  if (parts.length === 2) {
-    return parts[0] * 60 + parts[1];
-  }
-
-  if (parts.length === 3) {
-    return parts[0] * 3600 + parts[1] * 60 + parts[2];
-  }
-
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
   return undefined;
 }
 
@@ -155,7 +153,6 @@ function detectGifFromChunk(chunk: string, videoUrl: string | null) {
 
 export function normalizeTelegramUrl(raw: string): string {
   const trimmed = raw.trim();
-
   if (!trimmed) return "";
 
   const withProtocol =
@@ -172,7 +169,6 @@ export function normalizeTelegramUrl(raw: string): string {
   }
 
   const parts = url.pathname.split("/").filter(Boolean);
-
   if (parts.length !== 2) {
     return url.toString();
   }
@@ -188,9 +184,7 @@ export function normalizeTelegramUrl(raw: string): string {
   return `https://t.me/${sourceHandle}/${postId}?single`;
 }
 
-export function parseTelegramPostUrl(
-  raw: string
-): ParsedTelegramPostUrl | null {
+export function parseTelegramPostUrl(raw: string): ParsedTelegramPostUrl | null {
   if (!raw.trim()) return null;
 
   try {
@@ -200,11 +194,9 @@ export function parseTelegramPostUrl(
     if (!TELEGRAM_HOSTS.has(url.hostname)) return null;
 
     const parts = url.pathname.split("/").filter(Boolean);
-
     if (parts.length !== 2) return null;
 
     const [sourceHandle, postId] = parts;
-
     if (!/^[A-Za-z0-9_]{4,}$/.test(sourceHandle)) return null;
     if (!/^\d+$/.test(postId)) return null;
 
@@ -355,20 +347,13 @@ function buildOrderedMedia(html: string) {
     });
   });
 
-  const videoMatches = extractAll(
-    html,
-    /<(?:video|source)[^>]+src="([^"]+)"[^>]*>/gi
-  );
+  const videoMatches = extractAll(html, /<(?:video|source)[^>]+src="([^"]+)"[^>]*>/gi);
 
   videoMatches.forEach((match) => {
     const videoHybrid = buildHybridMediaUrl(match[1]);
     if (!videoHybrid.preferredUrl) return;
 
-    const chunk = html.slice(
-      Math.max(0, (match.index || 0) - 300),
-      (match.index || 0) + 900
-    );
-
+    const chunk = html.slice(Math.max(0, (match.index || 0) - 300), (match.index || 0) + 900);
     const posterHybrid = buildHybridMediaUrl(
       extract(chunk, /background-image:url\('([^']+)'\)/i) || null
     );
@@ -406,9 +391,7 @@ function buildOrderedMedia(html: string) {
   );
 
   audioMatches.forEach((match) => {
-    const hybrid = buildHybridMediaUrl(
-      match[1] || match[2] || match[3] || match[4] || ""
-    );
+    const hybrid = buildHybridMediaUrl(match[1] || match[2] || match[3] || match[4] || "");
     if (!hybrid.preferredUrl || !looksLikeAudioUrl(hybrid.preferredUrl)) return;
 
     const key = `audio:${hybrid.preferredUrl}`;
@@ -435,16 +418,11 @@ function buildOrderedMedia(html: string) {
     const hybrid = buildHybridMediaUrl(match[1]);
     if (!hybrid.preferredUrl) return;
 
-    const chunk = html.slice(
-      Math.max(0, (match.index || 0) - 200),
-      (match.index || 0) + 700
-    );
+    const chunk = html.slice(Math.max(0, (match.index || 0) - 200), (match.index || 0) + 700);
     const fileName =
       decodeHtml(
-        extract(
-          chunk,
-          /class="tgme_widget_message_document_name[^"]*"[^>]*>([\s\S]*?)<\/div>/i
-        ) || ""
+        extract(chunk, /class="tgme_widget_message_document_name[^"]*"[^>]*>([\s\S]*?)<\/div>/i) ||
+          ""
       ) || null;
 
     if (looksLikeAudioUrl(hybrid.preferredUrl) || looksLikeAudioUrl(fileName)) {
@@ -488,14 +466,11 @@ function buildOrderedMedia(html: string) {
   }));
 }
 
-function resolveContentType(
-  media: IngestedPost["media"]
-): IngestedPost["contentType"] {
+function resolveContentType(media: IngestedPost["media"]): IngestedPost["contentType"] {
   if (!media.length) return "text";
 
   if (media.length === 1) {
     const first = media[0];
-
     if (first.kind === "audio") return "audio";
     if (first.kind === "file") return "file";
     if (first.kind === "image") return "image";
@@ -505,46 +480,23 @@ function resolveContentType(
   }
 
   const normalizedKinds = media.map((item) =>
-    item.kind === "video" && item.mimeType?.includes("gif")
-      ? "gif"
-      : item.kind
+    item.kind === "video" && item.mimeType?.includes("gif") ? "gif" : item.kind
   );
 
   const uniqueKinds = new Set(normalizedKinds);
-
-  if (uniqueKinds.size === 1 && uniqueKinds.has("image")) {
-    return "gallery";
-  }
-
+  if (uniqueKinds.size === 1 && uniqueKinds.has("image")) return "gallery";
   return "mixed";
 }
 
-export async function ingestTelegramPost(
-  url: string
-): Promise<{
-  source: {
-    handle: string;
-    title: string;
-    avatar: string | null;
-    verified: boolean;
-  };
-  text: string;
-  links: Array<{ label: string | null; url: string }>;
-  contentType: IngestedPost["contentType"];
-  media: IngestedPost["media"];
-  hasMediaInOriginal: boolean;
-  fallbackReason: IngestedPost["fallbackReason"];
-} | null> {
+export async function ingestTelegramPost(url: string): Promise<TelegramIngest | null> {
   try {
     const parsed = parseTelegramPostUrl(url);
     if (!parsed) return null;
 
     const html = await fetchTelegramEmbedHtml(parsed);
-
     const rawTextHtml = extractTextHtml(html);
     const text = decodeHtml(rawTextHtml);
     const links = extractLinks(rawTextHtml);
-
     const sourceTitle = extractSourceTitle(html, parsed.sourceHandle);
     const sourceAvatar = extractSourceAvatar(html);
 

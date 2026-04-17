@@ -1,13 +1,16 @@
-import type { ContentTag, IngestedPost } from "../../src/types/app";
-import type { CountryCode } from "../../src/screens/admin/admin.countries";
-import type { TrustedSource } from "../../src/screens/admin/admin.types";
-import { ingestTelegramPost } from "../../src/lib/telegram";
+import {
+  type ContentTag,
+  type CountryCode,
+  type IngestedPost,
+  type TrustedSource,
+} from "./contracts.js";
+import { ingestTelegramPost } from "./telegram.js";
 import {
   readFeedFile,
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
-} from "./blob-store";
+} from "./github-store.js";
 
 const MAX_NEW_POSTS_PER_SOURCE = 3;
 const MAX_TOTAL_POSTS = 500;
@@ -32,10 +35,7 @@ function normalizeCountryCode(value: string | null | undefined) {
   return normalized || null;
 }
 
-function normalizeTags(
-  tags: unknown,
-  fallbackTag?: ContentTag | null
-): ContentTag[] {
+function normalizeTags(tags: unknown, fallbackTag?: ContentTag | null): ContentTag[] {
   const normalized = Array.isArray(tags)
     ? tags
         .map((item: unknown) => asString(item))
@@ -96,9 +96,7 @@ function buildSource(
     lastImportedAt: input.lastImportedAt || null,
     lastSeenPostId: parseNumericPostId(input.lastSeenPostId),
     importedPostsCount:
-      typeof input.importedPostsCount === "number"
-        ? input.importedPostsCount
-        : 0,
+      typeof input.importedPostsCount === "number" ? input.importedPostsCount : 0,
   };
 }
 
@@ -111,9 +109,7 @@ function normalizeSource(value: unknown): TrustedSource | null {
     defaultTag?: ContentTag;
   };
 
-  const countryCode = normalizeCountryCode(raw.countryCode) as
-    | CountryCode
-    | null;
+  const countryCode = normalizeCountryCode(raw.countryCode) as CountryCode | null;
   const handle = asString(raw.handle);
   const defaultTag = asString(raw.defaultTag) as ContentTag | null;
 
@@ -156,8 +152,7 @@ export async function upsertSourceWithMeta(
     >
 ) {
   const sources = await listSources(5000);
-  const existing =
-    sources.find((source: TrustedSource) => source.id === input.id) || null;
+  const existing = sources.find((source: TrustedSource) => source.id === input.id) || null;
 
   const next = buildSource({
     ...(existing || {}),
@@ -210,7 +205,7 @@ function makePostId(postUrl: string) {
 function buildPost(params: {
   postUrl: string;
   source: TrustedSource;
-  ingest: Awaited<ReturnType<typeof ingestTelegramPost>>;
+  ingest: NonNullable<Awaited<ReturnType<typeof ingestTelegramPost>>>;
   createdAt: string;
 }): IngestedPost {
   const { postUrl, source, ingest, createdAt } = params;
@@ -224,17 +219,19 @@ function buildPost(params: {
     id: makePostId(postUrl),
     postUrl,
     source: {
-      handle: ingest?.source.handle || source.handle,
-      title: ingest?.source.title || source.title,
-      avatar: ingest?.source.avatar || source.avatarUrl || null,
-      verified: ingest?.source.verified || false,
+      title: source.title,
+      handle: source.handle,
+      verified: ingest.source.verified,
+      avatar: source.avatarUrl || ingest.source.avatar || null,
     },
-    text: ingest?.text || "",
-    links: ingest?.links || [],
-    contentType: ingest?.contentType || "text",
-    media: ingest?.media || [],
-    hasMediaInOriginal: ingest?.hasMediaInOriginal || false,
-    fallbackReason: ingest?.fallbackReason || null,
+    sourceId: source.id,
+    sourceCountryCode: source.countryCode,
+    contentType: ingest.contentType,
+    media: ingest.media,
+    hasMediaInOriginal: ingest.hasMediaInOriginal,
+    fallbackReason: ingest.fallbackReason,
+    text: ingest.text,
+    links: ingest.links,
     createdAt,
     expiresAt,
     ttlHours: POST_TTL_HOURS,
@@ -242,17 +239,15 @@ function buildPost(params: {
     tag: primaryTag,
     tags,
     addedBy: {
-      telegramId: null,
-      username: null,
+      telegramId: "system",
+      username: "system",
     },
     billing: {
       plan: "free",
-      autopublishEnabled: false,
+      autopublishEnabled: true,
     },
-    sourceId: source.id,
-    sourceCountryCode: source.countryCode,
     status: "published",
-    role: "admin",
+    role: "channel_owner",
     moderation: {
       status: "published",
       reason: null,
@@ -261,24 +256,53 @@ function buildPost(params: {
   };
 }
 
-async function fetchSourcePageHtml(handle: string) {
+function getPostCreatedAt(post: IngestedPost) {
+  const ts = Date.parse(post.createdAt);
+  return Number.isFinite(ts) ? ts : 0;
+}
+
+function keepFreshPosts(posts: IngestedPost[]) {
+  const minTs = getFeedWindowStart();
+
+  return posts
+    .filter((post: IngestedPost) => {
+      const createdAt = getPostCreatedAt(post);
+      return createdAt >= minTs;
+    })
+    .sort((a: IngestedPost, b: IngestedPost) => getPostCreatedAt(b) - getPostCreatedAt(a))
+    .slice(0, MAX_TOTAL_POSTS);
+}
+
+function parsePostIdsFromChannelHtml(html: string): number[] {
+  const ids = new Set<number>();
+  const re = /data-post="[^/]+\/(\d+)"/g;
+  let match: RegExpExecArray | null;
+
+  while ((match = re.exec(html))) {
+    const id = Number(match[1]);
+    if (Number.isFinite(id)) {
+      ids.add(id);
+    }
+  }
+
+  return Array.from(ids).sort((a, b) => b - a);
+}
+
+async function fetchChannelHtml(handle: string) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), SOURCE_PAGE_TIMEOUT_MS);
 
   try {
     const response = await fetch(`https://t.me/s/${handle}`, {
       headers: {
-        "User-Agent": REBUILD_USER_AGENT,
-        Accept: "text/html,application/xhtml+xml",
-        "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
-        Referer: "https://t.me/",
+        "user-agent": REBUILD_USER_AGENT,
       },
-      redirect: "follow",
       signal: controller.signal,
+      cache: "no-store",
     });
 
     if (!response.ok) {
-      throw new Error(`Source page fetch failed: ${response.status}`);
+      throw new Error(`Failed to fetch channel page: ${response.status}`);
     }
 
     return await response.text();
@@ -287,138 +311,96 @@ async function fetchSourcePageHtml(handle: string) {
   }
 }
 
-function extractLatestPostIds(html: string, handle: string) {
-  const escapedHandle = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const regex = new RegExp(`href="/(?:s/)?${escapedHandle}/(\\d+)"`, "gi");
-  const ids = new Set<number>();
-  let match: RegExpExecArray | null;
+async function importFromSource(source: TrustedSource, existingPosts: IngestedPost[]) {
+  const html = await fetchChannelHtml(source.handle);
+  const postIds = parsePostIdsFromChannelHtml(html);
+  const knownUrls = new Set(existingPosts.map((post: IngestedPost) => post.postUrl));
+  const nowIso = new Date().toISOString();
 
-  while ((match = regex.exec(html))) {
-    const id = Number(match[1]);
-    if (Number.isFinite(id) && id > 0) {
-      ids.add(id);
+  const freshIds = postIds.filter((postId: number) => {
+    if (source.lastSeenPostId && postId <= source.lastSeenPostId) {
+      return false;
     }
+
+    const url = `https://t.me/${source.handle}/${postId}?single`;
+    return !knownUrls.has(url);
+  });
+
+  const nextIds = freshIds.slice(0, MAX_NEW_POSTS_PER_SOURCE).sort((a, b) => a - b);
+  const importedPosts: IngestedPost[] = [];
+
+  for (const postId of nextIds) {
+    const postUrl = `https://t.me/${source.handle}/${postId}?single`;
+    const ingest = await ingestTelegramPost(postUrl);
+    if (!ingest) {
+      continue;
+    }
+
+    importedPosts.push(
+      buildPost({
+        postUrl,
+        source,
+        ingest,
+        createdAt: nowIso,
+      })
+    );
   }
 
-  return Array.from(ids).sort((a, b) => b - a);
+  const highestSeenPostId =
+    postIds.length > 0 ? Math.max(...postIds) : source.lastSeenPostId || null;
+
+  const nextSource = await upsertSourceWithMeta({
+    ...source,
+    lastSeenPostId: highestSeenPostId || source.lastSeenPostId || null,
+    lastCheckedAt: nowIso,
+    lastImportedAt: importedPosts.length > 0 ? nowIso : source.lastImportedAt || null,
+    importedPostsCount: (source.importedPostsCount || 0) + importedPosts.length,
+  });
+
+  return {
+    source: nextSource,
+    importedPosts,
+  };
 }
 
-async function ingestSourcePosts(source: TrustedSource) {
-  const found: IngestedPost[] = [];
-  let highestPostId: number | null = source.lastSeenPostId ?? null;
+export async function rebuildFeedFromSources(options?: { countryCode?: CountryCode | null }) {
+  const normalizedCountry = normalizeCountryCode(options?.countryCode) as CountryCode | null;
 
-  try {
-    const html = await fetchSourcePageHtml(source.handle);
-    const ids = extractLatestPostIds(html, source.handle);
-
-    if (ids.length > 0) {
-      highestPostId = Math.max(highestPostId || 0, ids[0]);
-    }
-
-    const newIds = ids
-      .filter((id) => (source.lastSeenPostId || 0) === 0 || id > (source.lastSeenPostId || 0))
-      .slice(0, MAX_NEW_POSTS_PER_SOURCE)
-      .sort((a, b) => a - b);
-
-    for (const postId of newIds) {
-      const postUrl = `https://t.me/${source.handle}/${postId}?single`;
-      const ingest = await ingestTelegramPost(postUrl);
-      if (!ingest) continue;
-
-      const createdAt = new Date().toISOString();
-      found.push(buildPost({ postUrl, source, ingest, createdAt }));
-      highestPostId = Math.max(highestPostId || 0, postId);
-    }
-  } catch (error) {
-    console.error(`Failed to ingest source ${source.handle}`, error);
-  }
-
-  return { posts: found, highestPostId };
-}
-
-export async function rebuildFeedFromSources(options?: {
-  countryCode?: CountryCode | null;
-}) {
   const allSources = await listSources(5000);
-  const countryCode = options?.countryCode || null;
-
   const activeSources = allSources
     .filter((source: TrustedSource) => source.status === "active")
     .filter((source: TrustedSource) =>
-      countryCode ? source.countryCode === countryCode : true
+      normalizedCountry ? source.countryCode === normalizedCountry : true
     )
     .slice(0, MAX_SOURCES_PER_REBUILD);
 
-  const existingFeed = await readFeedFile<IngestedPost>();
-  const now = Date.now();
-  const freshWindowStart = getFeedWindowStart();
+  const feedFile = await readFeedFile<IngestedPost>();
+  let posts = keepFreshPosts(feedFile.posts || []);
 
-  const basePosts = existingFeed.posts.filter((post: IngestedPost) => {
-    const createdAt = Date.parse(post.createdAt || "");
-    if (!Number.isFinite(createdAt)) return false;
-    if (createdAt < freshWindowStart || createdAt > now + 60_000) return false;
-    if (countryCode && post.sourceCountryCode !== countryCode) return false;
-    return true;
-  });
-
-  const seenUrls = new Set(basePosts.map((post: IngestedPost) => post.postUrl));
-  const importedPosts: IngestedPost[] = [];
-  const updatedSources = [...allSources];
-  const checkedAt = new Date().toISOString();
+  let sourcesChecked = 0;
+  let importedPosts = 0;
 
   for (const source of activeSources) {
-    const result = await ingestSourcePosts(source);
-    const importedNow = result.posts.filter(
-      (post: IngestedPost) => !seenUrls.has(post.postUrl)
-    );
+    sourcesChecked += 1;
 
-    for (const post of importedNow) {
-      seenUrls.add(post.postUrl);
-      importedPosts.push(post);
-    }
-
-    const sourceIndex = updatedSources.findIndex(
-      (item: TrustedSource) => item.id === source.id
-    );
-
-    if (sourceIndex >= 0) {
-      updatedSources[sourceIndex] = buildSource({
-        ...updatedSources[sourceIndex],
-        title: importedNow[0]?.source.title || source.title,
-        avatarUrl: importedNow[0]?.source.avatar || source.avatarUrl,
-        countryCode: source.countryCode,
-        handle: source.handle,
-        defaultTag: source.defaultTag,
-        status: source.status,
-        note: source.note,
-        createdAt: source.createdAt,
-        importedPostsCount:
-          (source.importedPostsCount || 0) + importedNow.length,
-        lastImportedAt: importedNow.length ? checkedAt : source.lastImportedAt,
-        lastCheckedAt: checkedAt,
-        lastSeenPostId: result.highestPostId ?? source.lastSeenPostId,
-        tags: source.tags,
-      });
+    try {
+      const result = await importFromSource(source, posts);
+      if (result.importedPosts.length > 0) {
+        posts = keepFreshPosts([...result.importedPosts, ...posts]);
+        importedPosts += result.importedPosts.length;
+      }
+    } catch (error) {
+      console.error("rebuild source failed", source.handle, error);
     }
   }
 
-  const mergedPosts = [...importedPosts, ...basePosts]
-    .sort((a: IngestedPost, b: IngestedPost) => {
-      const aTime = Date.parse(a.createdAt || "");
-      const bTime = Date.parse(b.createdAt || "");
-      return (Number.isFinite(bTime) ? bTime : 0) - (Number.isFinite(aTime) ? aTime : 0);
-    })
-    .slice(0, MAX_TOTAL_POSTS);
-
-  await Promise.all([
-    writeFeedFile(mergedPosts),
-    writeSourcesFile(updatedSources),
-  ]);
+  posts = keepFreshPosts(posts);
+  await writeFeedFile(posts);
 
   return {
-    updatedAt: checkedAt,
-    sourcesChecked: activeSources.length,
-    importedPosts: importedPosts.length,
-    posts: mergedPosts,
+    updatedAt: new Date().toISOString(),
+    posts,
+    sourcesChecked,
+    importedPosts,
   };
 }

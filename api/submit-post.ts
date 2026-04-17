@@ -1,9 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { parseTelegramPostUrl, ingestTelegramPost } from "../src/lib/telegram.js";
-import type { IngestedPost, ContentTag, Locale } from "../src/types/app.js";
-import { readFeedFile, writeFeedFile } from "./lib/blob-store.js";
+import { parseTelegramPostUrl, ingestTelegramPost } from "./lib/telegram.js";
+import type { ContentTag, IngestedPost, Locale, UserRole } from "./lib/contracts.js";
+import { readFeedFile, writeFeedFile } from "./lib/github-store.js";
 
-type UserRole = "user" | "channel_owner" | "admin";
 type PostStatus = "published" | "pending" | "blocked";
 
 const DAILY_USER_LIMIT = 1;
@@ -154,18 +153,14 @@ function simpleModeration(text: string): PostStatus {
   return "published";
 }
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const body =
-      typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
+    const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
 
     const url = asCleanString(body.url);
     const role = resolveRole(body.role);
@@ -183,7 +178,6 @@ export default async function handler(
     }
 
     const parsed = parseTelegramPostUrl(url);
-
     if (!parsed) {
       return res.status(400).json({ error: "Invalid Telegram post URL" });
     }
@@ -219,7 +213,6 @@ export default async function handler(
     }
 
     const ingest = await ingestTelegramPost(normalizedUrl);
-
     if (!ingest) {
       return res.status(500).json({ error: "Failed to ingest Telegram post" });
     }
@@ -241,47 +234,36 @@ export default async function handler(
     const post: IngestedPost = {
       id: makePostId(normalizedUrl),
       postUrl: normalizedUrl,
-
       source: {
         handle: ingest.source.handle,
         title: ingest.source.title,
         avatar: ingest.source.avatar,
         verified: ingest.source.verified,
       },
-
       text: ingest.text,
       links: ingest.links,
-
       contentType: ingest.contentType,
       media: ingest.media,
-
       hasMediaInOriginal: ingest.hasMediaInOriginal,
       fallbackReason: ingest.fallbackReason,
-
       createdAt: nowIso,
       expiresAt: expires.toISOString(),
       ttlHours,
       mediaRefreshedAt: nowIso,
-
       tag: primaryTag,
       tags,
-
       addedBy: {
         telegramId: addedByTelegramId,
         username: addedByUsername,
       },
-
       billing: {
         plan: "free",
         autopublishEnabled: false,
       },
-
       sourceId: null,
       sourceCountryCode: locale,
-
       status,
       role,
-
       moderation: {
         status,
         reason: null,

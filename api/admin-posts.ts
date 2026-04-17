@@ -4,46 +4,29 @@ import {
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
-} from "./lib/blob-store.js";
-import type { IngestedPost, ContentTag } from "../src/types/app.js";
+} from "./lib/github-store.js";
+import type { ContentTag, IngestedPost, TrustedSource } from "./lib/contracts.js";
 
 const ADMIN_TELEGRAM_ID = String(process.env.ADMIN_TELEGRAM_ID || "").trim();
 const ADMIN_TELEGRAM_USERNAME = String(
   process.env.ADMIN_TELEGRAM_USERNAME || ""
-).trim().toLowerCase();
+)
+  .trim()
+  .toLowerCase();
 
-type StoredSource = {
-  id: string;
-  countryCode: string;
-  handle: string;
-  title: string;
-  avatarUrl: string | null;
-  defaultTag: ContentTag;
-  tags: ContentTag[];
-  status: "active" | "paused";
-  note: string | null;
-  createdAt: string;
-  updatedAt: string;
-  lastCheckedAt: string | null;
-  lastImportedAt: string | null;
-  lastSeenPostId: string | null;
-  importedPostsCount: number;
-};
+type StoredSource = TrustedSource;
 
 function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value.trim() : fallback;
 }
 
 function isOwner(body: Record<string, unknown>) {
-  const telegramId =
-    asString(body.telegramId) || asString(body.telegramUserId);
-
-  const username = (
-    asString(body.username) || asString(body.telegramUsername)
-  ).replace(/^@/, "").toLowerCase();
+  const telegramId = asString(body.telegramId) || asString(body.telegramUserId);
+  const username = (asString(body.username) || asString(body.telegramUsername))
+    .replace(/^@/, "")
+    .toLowerCase();
 
   const hasEnv = Boolean(ADMIN_TELEGRAM_ID || ADMIN_TELEGRAM_USERNAME);
-
   if (!hasEnv) {
     return Boolean(telegramId);
   }
@@ -72,7 +55,7 @@ function buildSource(body: Record<string, unknown>): StoredSource | null {
   const handle = asString(body.handle).replace(/^@/, "").toLowerCase();
   if (!handle) return null;
 
-  const countryCode = normalizeCountryCode(body.countryCode);
+  const countryCode = normalizeCountryCode(body.countryCode) as StoredSource["countryCode"];
   const defaultTag = (asString(body.defaultTag, "other") as ContentTag) || "other";
   const now = new Date().toISOString();
 
@@ -81,17 +64,23 @@ function buildSource(body: Record<string, unknown>): StoredSource | null {
     countryCode,
     handle,
     title: asString(body.title) || handle,
-    avatarUrl: null,
+    avatarUrl: asString(body.avatarUrl) || null,
     defaultTag,
     tags: normalizeTags(body.tags, defaultTag),
     status: asString(body.status) === "paused" ? "paused" : "active",
     note: asString(body.note) || null,
     createdAt: asString(body.createdAt) || now,
     updatedAt: now,
-    lastCheckedAt: null,
-    lastImportedAt: null,
-    lastSeenPostId: null,
-    importedPostsCount: 0,
+    lastCheckedAt: asString(body.lastCheckedAt) || null,
+    lastImportedAt: asString(body.lastImportedAt) || null,
+    lastSeenPostId:
+      typeof body.lastSeenPostId === "number"
+        ? body.lastSeenPostId
+        : /^\d+$/.test(asString(body.lastSeenPostId))
+          ? Number(asString(body.lastSeenPostId))
+          : null,
+    importedPostsCount:
+      typeof body.importedPostsCount === "number" ? body.importedPostsCount : 0,
   };
 }
 
@@ -100,13 +89,9 @@ function parseDateMs(value: string | null | undefined) {
   return Number.isFinite(ms) ? ms : 0;
 }
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    const body =
-      typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
 
     if (!isOwner(body)) {
       return res.status(403).json({

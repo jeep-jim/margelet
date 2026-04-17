@@ -1,4 +1,4 @@
-import { rebuildFeedFromSources } from "../api/lib/sources";
+import { rebuildFeedFromSources } from "../api/lib/sources.ts";
 
 type Args = {
   countryCode: string | null;
@@ -23,7 +23,7 @@ async function main() {
   const args = parseArgs(process.argv.slice(2));
 
   const result = await rebuildFeedFromSources({
-    countryCode: (args.countryCode as any) || null,
+    countryCode: (args.countryCode as never) || null,
   });
 
   console.log(
