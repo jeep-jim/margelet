@@ -71,27 +71,6 @@ async function main() {
 
   const index = await readFeedIndexFile();
 
-  console.log(
-    JSON.stringify(
-      {
-        ok: true,
-        mode: "rebuild",
-        updatedAt: result.updatedAt,
-        countryCode: args.countryCode,
-        sourcesChecked: result.sourcesChecked,
-        sourcesWithNewPosts: result.sourcesWithNewPosts,
-        importedPosts: result.importedPosts,
-        importBudgetUsed: result.importBudgetUsed,
-        importBudgetRemaining: result.importBudgetRemaining,
-        removedPosts: result.removedPosts,
-        existingFreshPostsCount: result.existingFreshPostsCount,
-        totalPosts: result.posts.length,
-        countries: Object.keys(index.countries).length,
-      },
-      null,
-      2
-    )
-  );
 }
 
 main().catch((error) => {
