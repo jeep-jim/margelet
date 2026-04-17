@@ -15,7 +15,9 @@ type AdminScreenProps = {
 };
 
 type LoadState = "idle" | "loading" | "ready" | "error";
+
 const ADMIN_TELEGRAM_ID = "1372669404";
+const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
 
 export function AdminScreen({
   locale: _locale,
@@ -28,8 +30,6 @@ export function AdminScreen({
   const [sources, setSources] = useState<TrustedSource[]>([]);
   const [rebuildLoading, setRebuildLoading] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
-
-  const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
 
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
     try {
@@ -108,18 +108,21 @@ export function AdminScreen({
     void refreshEverything();
   }, [telegramUserId, hasAdminAccess, selectedCountryCode]);
 
-  const stats = useMemo(() => {
-    const countrySources = sources.filter((source) => source.countryCode === selectedCountryCode);
+  const filteredSources = useMemo(
+    () => sources.filter((source) => source.countryCode === selectedCountryCode),
+    [sources, selectedCountryCode]
+  );
 
+  const stats = useMemo(() => {
     return {
       total: posts.length,
       pending: posts.filter((post) => (post.status || "published") === "pending").length,
       blocked: posts.filter((post) => (post.status || "published") === "blocked").length,
       published: posts.filter((post) => (post.status || "published") === "published").length,
-      sources: countrySources.length,
-      activeSources: countrySources.filter((source) => source.status === "active").length,
+      sources: filteredSources.length,
+      activeSources: filteredSources.filter((source) => source.status === "active").length,
     };
-  }, [posts, sources, selectedCountryCode]);
+  }, [posts, filteredSources]);
 
   const sourceCountsByCountry = useMemo(() => {
     const counts: Partial<Record<CountryCode, number>> = {};
@@ -153,13 +156,15 @@ export function AdminScreen({
       });
 
       const data = await res.json().catch(() => null);
+
       if (!res.ok) {
-        throw new Error(data?.error || "rebuild failed");
+        throw new Error(data?.error || "Не удалось обновить сейчас");
       }
 
       await refreshEverything();
+
       setRebuildMessage(
-        `Обновлено: +${data?.importedPosts || 0} постов · ${data?.sourcesChecked || 0} sources`
+        `Обновлено: +${data?.importedPosts || 0} постов · ${data?.sourcesChecked || 0} каналов`
       );
     } catch (error: any) {
       setRebuildMessage(error?.message || "Не удалось обновить сейчас");
@@ -179,8 +184,13 @@ export function AdminScreen({
   return (
     <div className="min-h-screen bg-[#0a0a0f] px-3 py-4 text-white sm:px-4 sm:py-5">
       <div className="mx-auto max-w-7xl">
-        {state === "loading" && <div className="mb-4 text-sm text-white/50">загрузка...</div>}
-        {state === "error" && <div className="mb-4 text-sm text-red-400">ошибка загрузки</div>}
+        {state === "loading" ? (
+          <div className="mb-4 text-sm text-white/50">загрузка...</div>
+        ) : null}
+
+        {state === "error" ? (
+          <div className="mb-4 text-sm text-red-400">ошибка загрузки</div>
+        ) : null}
 
         <div className="mb-4 flex flex-col gap-3 rounded-[30px] border border-white/10 bg-white/[0.045] p-4 sm:flex-row sm:items-start sm:justify-between sm:p-5">
           <div>
@@ -197,11 +207,13 @@ export function AdminScreen({
                 void handleRebuildNow();
               }}
               disabled={rebuildLoading}
-              className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black disabled:opacity-60"
+              className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition disabled:opacity-60"
             >
               {rebuildLoading ? "обновляю..." : "обновить сейчас"}
             </button>
+
             <button
+              type="button"
               onClick={onClose}
               className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
             >
@@ -222,12 +234,19 @@ export function AdminScreen({
             { label: "Опубликовано", value: stats.published },
             { label: "На проверке", value: stats.pending },
             { label: "Заблокировано", value: stats.blocked },
-            { label: "Channels", value: stats.sources },
-            { label: "Active", value: stats.activeSources },
+            { label: "Каналы", value: stats.sources },
+            { label: "Активные", value: stats.activeSources },
           ].map((item) => (
-            <div key={item.label} className="rounded-3xl border border-white/10 bg-white/[0.045] p-4">
-              <div className="text-[11px] uppercase tracking-[0.18em] text-white/35">{item.label}</div>
-              <div className="mt-2 text-2xl font-semibold tracking-tight text-white">{item.value}</div>
+            <div
+              key={item.label}
+              className="rounded-3xl border border-white/10 bg-white/[0.045] p-4"
+            >
+              <div className="text-[11px] uppercase tracking-[0.18em] text-white/35">
+                {item.label}
+              </div>
+              <div className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                {item.value}
+              </div>
             </div>
           ))}
         </div>
@@ -237,7 +256,6 @@ export function AdminScreen({
             selectedCountryCode={selectedCountryCode}
             onSelectCountry={setSelectedCountryCode}
             counts={sourceCountsByCountry}
-            postsCount={posts.length}
           />
 
           <AdminSourcesSection
@@ -250,7 +268,7 @@ export function AdminScreen({
           <AdminBulkImportSection
             telegramUserId={telegramUserId}
             countryCode={selectedCountryCode}
-            onImported={loadPosts}
+            onImported={refreshEverything}
           />
 
           <AdminPostsSection

@@ -1,31 +1,37 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import type { ContentTag } from "../../types/app";
-import type { CountryCode } from "./admin.countries";
-import { AdminSectionCard } from "./AdminSectionCard";
 import { ADMIN_TAG_OPTIONS } from "./admin.tag-options";
-
-type BulkResultItem = {
-  url: string;
-  status: "ok" | "error";
-  error?: string;
-};
+import { AdminSectionCard } from "./AdminSectionCard";
+import type { CountryCode } from "./admin.countries";
 
 type AdminBulkImportSectionProps = {
   telegramUserId: string | null;
   countryCode: CountryCode;
-  onImported?: () => Promise<void> | void;
+  onImported: () => Promise<void>;
 };
 
-function normalizeBulkError(message: string) {
-  const value = String(message || "").trim();
+type BulkSourceRow = {
+  id: string;
+  handle: string;
+  title: string;
+  note: string;
+  active: boolean;
+  tags: ContentTag[];
+};
 
-  if (!value) return "ошибка";
-  if (value === "Invalid Telegram post URL") return "невалидная ссылка";
-  if (value === "Failed to ingest Telegram post") return "не удалось забрать пост";
-  if (value === "Daily limit reached") return "дневной лимит";
-  if (value === "Missing locale") return "не передана страна импорта";
+function createRow(): BulkSourceRow {
+  return {
+    id: Math.random().toString(36).slice(2),
+    handle: "",
+    title: "",
+    note: "",
+    active: true,
+    tags: [],
+  };
+}
 
-  return value;
+function normalizeHandle(value: string) {
+  return value.trim().replace(/^@+/, "").toLowerCase();
 }
 
 export function AdminBulkImportSection({
@@ -33,146 +39,224 @@ export function AdminBulkImportSection({
   countryCode,
   onImported,
 }: AdminBulkImportSectionProps) {
-  const [bulkText, setBulkText] = useState("");
-  const [bulkTag, setBulkTag] = useState<ContentTag>("other");
-  const [bulkLoading, setBulkLoading] = useState(false);
-  const [bulkResult, setBulkResult] = useState<BulkResultItem[]>([]);
+  const [rows, setRows] = useState<BulkSourceRow[]>([createRow(), createRow(), createRow()]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
 
-  const handleBulkSubmit = async () => {
+  const validRows = useMemo(
+    () => rows.filter((row) => normalizeHandle(row.handle)),
+    [rows]
+  );
+
+  const updateRow = <K extends keyof BulkSourceRow>(
+    rowId: string,
+    key: K,
+    value: BulkSourceRow[K]
+  ) => {
+    setRows((prev) =>
+      prev.map((row) => (row.id === rowId ? { ...row, [key]: value } : row))
+    );
+  };
+
+  const toggleTag = (rowId: string, tag: ContentTag) => {
+    setRows((prev) =>
+      prev.map((row) => {
+        if (row.id !== rowId) return row;
+
+        const nextTags = row.tags.includes(tag)
+          ? row.tags.filter((item) => item !== tag)
+          : [...row.tags, tag];
+
+        return { ...row, tags: nextTags };
+      })
+    );
+  };
+
+  const addRow = () => {
+    setRows((prev) => [...prev, createRow()]);
+  };
+
+  const removeRow = (rowId: string) => {
+    setRows((prev) => {
+      const next = prev.filter((row) => row.id !== rowId);
+      return next.length > 0 ? next : [createRow()];
+    });
+  };
+
+  const submit = async () => {
     if (!telegramUserId) return;
 
-    const urls = bulkText
-      .split("\n")
-      .map((item) => item.trim())
-      .filter(Boolean);
+    const payload = validRows.map((row) => ({
+      handle: normalizeHandle(row.handle),
+      title: row.title.trim(),
+      note: row.note.trim(),
+      status: row.active ? "active" : "paused",
+      countryCode,
+      tags: row.tags,
+      defaultTag: row.tags[0] || "other",
+    }));
 
-    if (urls.length === 0) {
-      window.alert("Вставь хотя бы одну ссылку");
+    if (!payload.length) {
+      setMessage("Добавь хотя бы один валидный канал");
       return;
     }
 
     try {
-      setBulkLoading(true);
-      setBulkResult([]);
+      setIsSubmitting(true);
+      setMessage(null);
 
-      const results: BulkResultItem[] = [];
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          telegramUserId,
+          entity: "sources",
+          action: "bulk-create",
+          sources: payload,
+        }),
+      });
 
-      for (const url of urls) {
-        try {
-          const res = await fetch("/api/submit-post", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              url,
-              tag: bulkTag,
-              locale: countryCode,
-              role: "admin",
-              plan: "free",
-              addedByTelegramId: telegramUserId,
-              addedByUsername: "admin",
-            }),
-          });
+      const data = await response.json().catch(() => null);
 
-          const data = await res.json().catch(() => null);
-
-          if (!res.ok) {
-            results.push({
-              url,
-              status: "error",
-              error: normalizeBulkError(data?.error || "ошибка"),
-            });
-          } else {
-            results.push({
-              url,
-              status: "ok",
-            });
-          }
-        } catch (error: any) {
-          results.push({
-            url,
-            status: "error",
-            error: normalizeBulkError(error?.message || "ошибка сети"),
-          });
-        }
+      if (!response.ok) {
+        throw new Error(data?.error || "Не удалось загрузить пачку каналов");
       }
 
-      setBulkResult(results);
-
-      if (onImported) {
-        await onImported();
-      }
+      await onImported();
+      setMessage(`Загружено каналов: ${data?.created || payload.length}`);
+      setRows([createRow(), createRow(), createRow()]);
+    } catch (error: unknown) {
+      setMessage(
+        error instanceof Error ? error.message : "Не удалось загрузить пачку каналов"
+      );
     } finally {
-      setBulkLoading(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
     <AdminSectionCard
-      title="Ручной импорт"
-      subtitle="Быстрое добавление пачки ссылок в выбранную страну."
+      title="Пакетное добавление каналов"
+      subtitle="Добавляй сколько нужно строк, указывай теги сразу и загружай одной кнопкой."
       collapsible
       defaultCollapsed
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
-          {countryCode.toUpperCase()}
+          {validRows.length} готово к загрузке
         </div>
       }
     >
-      <textarea
-        value={bulkText}
-        onChange={(event) => setBulkText(event.target.value)}
-        placeholder={`https://t.me/channel_one/1
-https://t.me/channel_two/2
-https://t.me/channel_three/3`}
-        className="h-36 w-full rounded-2xl border border-white/10 bg-[#1a1b24] p-4 text-sm text-white outline-none placeholder:text-white/35"
-      />
+      <div className="space-y-4">
+        <div className="rounded-[28px] border border-white/10 bg-[#11121a] p-4 text-sm text-white/55">
+          Текущая страна: <span className="font-medium text-white">{countryCode.toUpperCase()}</span>
+        </div>
 
-      <div className="mt-3 flex flex-col gap-3 md:flex-row">
-        <select
-          value={bulkTag}
-          onChange={(event) => setBulkTag(event.target.value as ContentTag)}
-          className="rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
-        >
-          {ADMIN_TAG_OPTIONS.map((item) => (
-            <option key={item.value} value={item.value}>
-              {item.label}
-            </option>
-          ))}
-        </select>
-
-        <button
-          type="button"
-          onClick={() => {
-            void handleBulkSubmit();
-          }}
-          disabled={bulkLoading}
-          className="rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black disabled:opacity-60"
-        >
-          {bulkLoading ? "загружаю..." : "загрузить пачку"}
-        </button>
-      </div>
-
-      {bulkResult.length > 0 ? (
-        <div className="mt-4 space-y-2">
-          {bulkResult.map((item, index) => (
+        <div className="space-y-3">
+          {rows.map((row, index) => (
             <div
-              key={`${item.url}-${index}`}
-              className={`rounded-2xl px-3 py-2 text-sm ${
-                item.status === "ok"
-                  ? "bg-green-500/15 text-green-300"
-                  : "bg-red-500/15 text-red-300"
-              }`}
+              key={row.id}
+              className="rounded-[28px] border border-white/10 bg-[#101119] p-4"
             >
-              <div>
-                {item.status === "ok" ? "✅" : "❌"} {item.url}
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <div className="text-sm font-medium text-white">
+                  Канал #{index + 1}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => removeRow(row.id)}
+                  className="rounded-full bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-red-400"
+                >
+                  удалить
+                </button>
               </div>
-              {item.error ? <div className="mt-1 text-xs opacity-80">{item.error}</div> : null}
+
+              <div className="grid gap-3 md:grid-cols-2">
+                <input
+                  value={row.handle}
+                  onChange={(event) => updateRow(row.id, "handle", event.target.value)}
+                  placeholder="@channel_handle"
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                />
+
+                <input
+                  value={row.title}
+                  onChange={(event) => updateRow(row.id, "title", event.target.value)}
+                  placeholder="Название канала"
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                />
+              </div>
+
+              <div className="mt-3 grid gap-3 md:grid-cols-[1fr_180px]">
+                <input
+                  value={row.note}
+                  onChange={(event) => updateRow(row.id, "note", event.target.value)}
+                  placeholder="Заметка / комментарий"
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                />
+
+                <label className="flex items-center justify-between rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-sm text-white">
+                  <span>{row.active ? "активен" : "пауза"}</span>
+                  <input
+                    type="checkbox"
+                    checked={row.active}
+                    onChange={(event) => updateRow(row.id, "active", event.target.checked)}
+                    className="h-4 w-4 accent-white"
+                  />
+                </label>
+              </div>
+
+              <div className="mt-4">
+                <div className="mb-3 text-sm font-medium text-white">Теги</div>
+
+                <div className="flex flex-wrap gap-2">
+                  {ADMIN_TAG_OPTIONS.map((tagOption) => {
+                    const isActive = row.tags.includes(tagOption.value);
+
+                    return (
+                      <button
+                        key={tagOption.value}
+                        type="button"
+                        onClick={() => toggleTag(row.id, tagOption.value)}
+                        className={`rounded-full border px-3 py-2 text-sm transition ${
+                          isActive
+                            ? "border-white bg-white text-black"
+                            : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
+                        }`}
+                      >
+                        {tagOption.label}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           ))}
         </div>
-      ) : null}
+
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={addRow}
+            className="rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/85 transition hover:bg-white/10"
+          >
+            + добавить ещё
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              void submit();
+            }}
+            disabled={isSubmitting}
+            className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition disabled:opacity-60"
+          >
+            {isSubmitting ? "загружаю..." : "загрузить всё"}
+          </button>
+
+          {message ? <div className="text-sm text-white/65">{message}</div> : null}
+        </div>
+      </div>
     </AdminSectionCard>
   );
 }

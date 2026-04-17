@@ -20,6 +20,27 @@ function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value.trim() : fallback;
 }
 
+function asNumber(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string" && /^\d+$/.test(value.trim())) {
+    return Number(value.trim());
+  }
+  return null;
+}
+
+function normalizeHandle(value: unknown) {
+  return asString(value).replace(/^@+/, "").toLowerCase();
+}
+
+function normalizeCountryCode(value: unknown) {
+  return asString(value, "ru").toLowerCase() || "ru";
+}
+
+function parseDateMs(value: string | null | undefined) {
+  const ms = Date.parse(String(value || ""));
+  return Number.isFinite(ms) ? ms : 0;
+}
+
 function isOwner(body: Record<string, unknown>) {
   const telegramId = asString(body.telegramId) || asString(body.telegramUserId);
   const username = (asString(body.username) || asString(body.telegramUsername))
@@ -33,18 +54,17 @@ function isOwner(body: Record<string, unknown>) {
 
   const byId = ADMIN_TELEGRAM_ID && telegramId === ADMIN_TELEGRAM_ID;
   const byUsername =
-    ADMIN_TELEGRAM_USERNAME && username === ADMIN_TELEGRAM_USERNAME.replace(/^@/, "");
+    ADMIN_TELEGRAM_USERNAME &&
+    username === ADMIN_TELEGRAM_USERNAME.replace(/^@/, "");
 
   return Boolean(byId || byUsername);
 }
 
-function normalizeCountryCode(value: unknown) {
-  return asString(value, "ru").toLowerCase() || "ru";
-}
-
 function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
   const tags = Array.isArray(value)
-    ? (value.map((item) => asString(item)).filter(Boolean) as ContentTag[])
+    ? (value
+        .map((item: unknown) => asString(item))
+        .filter(Boolean) as ContentTag[])
     : [];
 
   const unique = Array.from(new Set(tags));
@@ -52,7 +72,7 @@ function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
 }
 
 function buildSource(body: Record<string, unknown>): StoredSource | null {
-  const handle = asString(body.handle).replace(/^@/, "").toLowerCase();
+  const handle = normalizeHandle(body.handle);
   if (!handle) return null;
 
   const countryCode = normalizeCountryCode(body.countryCode) as StoredSource["countryCode"];
@@ -74,135 +94,243 @@ function buildSource(body: Record<string, unknown>): StoredSource | null {
     updatedAt: now,
     lastCheckedAt: asString(body.lastCheckedAt) || null,
     lastImportedAt: asString(body.lastImportedAt) || null,
-    lastSeenPostId:
-      typeof body.lastSeenPostId === "number"
-        ? body.lastSeenPostId
-        : /^\d+$/.test(asString(body.lastSeenPostId))
-          ? Number(asString(body.lastSeenPostId))
-          : null,
+    lastSeenPostId: asNumber(body.lastSeenPostId),
     importedPostsCount:
       typeof body.importedPostsCount === "number" ? body.importedPostsCount : 0,
   };
 }
 
-function parseDateMs(value: string | null | undefined) {
-  const ms = Date.parse(String(value || ""));
-  return Number.isFinite(ms) ? ms : 0;
+function sortSources(items: StoredSource[]) {
+  return [...items].sort((a, b) => a.handle.localeCompare(b.handle));
+}
+
+function sortPosts(items: IngestedPost[]) {
+  return [...items].sort((a, b) => parseDateMs(b.createdAt) - parseDateMs(a.createdAt));
+}
+
+async function listPosts(requestedCountryCode: string) {
+  const feedFile = await readFeedFile<IngestedPost>();
+  const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
+
+  return sortPosts(
+    current.filter(
+      (post) =>
+        !requestedCountryCode ||
+        !post.sourceCountryCode ||
+        post.sourceCountryCode === requestedCountryCode
+    )
+  );
+}
+
+async function listSources(requestedCountryCode: string) {
+  const sourcesFile = await readSourcesFile<StoredSource>();
+  const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+
+  return sortSources(
+    current.filter(
+      (source) => !requestedCountryCode || source.countryCode === requestedCountryCode
+    )
+  );
+}
+
+async function upsertSingleSource(source: StoredSource) {
+  const sourcesFile = await readSourcesFile<StoredSource>();
+  const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+
+  const existingIndex = current.findIndex(
+    (item) =>
+      item.id === source.id ||
+      (item.handle === source.handle && item.countryCode === source.countryCode)
+  );
+
+  const next = [...current];
+
+  if (existingIndex >= 0) {
+    next[existingIndex] = {
+      ...next[existingIndex],
+      ...source,
+      createdAt: next[existingIndex].createdAt || source.createdAt,
+      updatedAt: new Date().toISOString(),
+    };
+  } else {
+    next.unshift(source);
+  }
+
+  await writeSourcesFile(sortSources(next));
+  return next;
+}
+
+async function bulkCreateSources(items: StoredSource[]) {
+  const sourcesFile = await readSourcesFile<StoredSource>();
+  const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+  const next = [...current];
+  let created = 0;
+  let updated = 0;
+
+  for (const source of items) {
+    const existingIndex = next.findIndex(
+      (item) =>
+        item.id === source.id ||
+        (item.handle === source.handle && item.countryCode === source.countryCode)
+    );
+
+    if (existingIndex >= 0) {
+      next[existingIndex] = {
+        ...next[existingIndex],
+        ...source,
+        createdAt: next[existingIndex].createdAt || source.createdAt,
+        updatedAt: new Date().toISOString(),
+      };
+      updated += 1;
+    } else {
+      next.unshift(source);
+      created += 1;
+    }
+  }
+
+  await writeSourcesFile(sortSources(next));
+  return { next, created, updated };
+}
+
+async function deleteSourceByIdentity(body: Record<string, unknown>) {
+  const id = asString(body.sourceId) || asString(body.id);
+  const handle = normalizeHandle(body.handle);
+  const countryCode = normalizeCountryCode(body.countryCode);
+
+  const sourcesFile = await readSourcesFile<StoredSource>();
+  const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+
+  const next = current.filter((item) => {
+    if (id && item.id === id) return false;
+    if (handle && item.handle.toLowerCase() === handle) {
+      if (!countryCode || item.countryCode === countryCode) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  await writeSourcesFile(sortSources(next));
+  return next;
+}
+
+async function deletePostById(body: Record<string, unknown>) {
+  const id = asNumber(body.id);
+  if (id === null) {
+    throw new Error("Invalid post id");
+  }
+
+  const feedFile = await readFeedFile<IngestedPost>();
+  const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
+  const next = current.filter((item) => item.id !== id);
+
+  await writeFeedFile(sortPosts(next));
+  return next;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const body =
+      typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
 
-    if (!isOwner(body)) {
+    if (!isOwner(body as Record<string, unknown>)) {
       return res.status(403).json({
         ok: false,
         error: "Access denied",
       });
     }
 
-    if (req.method === "POST") {
-      const entity = asString(body.entity);
-      const requestedCountryCode = asString(body.countryCode).toLowerCase();
+    if (req.method !== "POST" && req.method !== "DELETE") {
+      res.setHeader("Allow", "POST, DELETE");
+      return res.status(405).json({ ok: false, error: "Method not allowed" });
+    }
 
-      if (entity === "posts") {
-        const feedFile = await readFeedFile<IngestedPost>();
-        const posts = (Array.isArray(feedFile.posts) ? feedFile.posts : [])
-          .filter((post) => !requestedCountryCode || !post.sourceCountryCode || post.sourceCountryCode === requestedCountryCode)
-          .sort((a, b) => parseDateMs(b.createdAt) - parseDateMs(a.createdAt));
+    const payload = body as Record<string, unknown>;
+    const entity = asString(payload.entity);
+    const action = asString(payload.action);
+    const requestedCountryCode = asString(payload.countryCode).toLowerCase();
 
-        return res.status(200).json({ ok: true, posts });
-      }
-
+    if (req.method === "DELETE") {
       if (entity === "sources") {
-        const sourcesFile = await readSourcesFile<StoredSource>();
-        const sources = (Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [])
-          .filter((source) => !requestedCountryCode || source.countryCode === requestedCountryCode)
-          .sort((a, b) => a.handle.localeCompare(b.handle));
-
+        const sources = await deleteSourceByIdentity(payload);
         return res.status(200).json({ ok: true, sources });
       }
 
-      return res.status(400).json({ ok: false, error: "Unknown entity" });
-    }
-
-    if (req.method === "PATCH") {
-      if (asString(body.entity) !== "sources") {
-        return res.status(400).json({ ok: false, error: "Unsupported entity" });
-      }
-
-      const source = buildSource(body);
-      if (!source) {
-        return res.status(400).json({ ok: false, error: "Invalid source payload" });
-      }
-
-      const sourcesFile = await readSourcesFile<StoredSource>();
-      const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
-
-      const existingIndex = current.findIndex(
-        (item) =>
-          item.id === source.id ||
-          (item.handle === source.handle && item.countryCode === source.countryCode)
-      );
-
-      const next = [...current];
-
-      if (existingIndex >= 0) {
-        next[existingIndex] = {
-          ...next[existingIndex],
-          ...source,
-          createdAt: next[existingIndex].createdAt || source.createdAt,
-        };
-      } else {
-        next.unshift(source);
-      }
-
-      await writeSourcesFile(next);
-      return res.status(200).json({ ok: true, source, sources: next });
-    }
-
-    if (req.method === "DELETE") {
-      const entity = asString(body.entity);
-
-      if (entity === "sources") {
-        const id = asString(body.id);
-        const handle = asString(body.handle).replace(/^@/, "").toLowerCase();
-        const countryCode = asString(body.countryCode).toLowerCase();
-
-        const sourcesFile = await readSourcesFile<StoredSource>();
-        const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
-
-        const next = current.filter((item) => {
-          if (id && item.id === id) return false;
-          if (
-            handle &&
-            item.handle.toLowerCase() === handle &&
-            (!countryCode || item.countryCode === countryCode)
-          ) {
-            return false;
-          }
-          return true;
-        });
-
-        await writeSourcesFile(next);
-        return res.status(200).json({ ok: true, sources: next });
-      }
-
       if (entity === "posts") {
-        const id = Number(body.id);
-        const feedFile = await readFeedFile<IngestedPost>();
-        const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
-        const next = current.filter((item) => item.id !== id);
-
-        await writeFeedFile(next);
-        return res.status(200).json({ ok: true, posts: next });
+        const posts = await deletePostById(payload);
+        return res.status(200).json({ ok: true, posts });
       }
 
       return res.status(400).json({ ok: false, error: "Unknown entity" });
     }
 
-    res.setHeader("Allow", "POST, PATCH, DELETE");
-    return res.status(405).json({ ok: false, error: "Method not allowed" });
+    if (entity === "posts") {
+      if (!action || action === "list") {
+        const posts = await listPosts(requestedCountryCode);
+        return res.status(200).json({ ok: true, posts });
+      }
+
+      if (action === "delete") {
+        const posts = await deletePostById(payload);
+        return res.status(200).json({ ok: true, posts });
+      }
+
+      return res.status(400).json({ ok: false, error: "Unknown posts action" });
+    }
+
+    if (entity === "sources") {
+      if (!action || action === "list") {
+        const sources = await listSources(requestedCountryCode);
+        return res.status(200).json({ ok: true, sources });
+      }
+
+      if (action === "create" || action === "update") {
+        const sourcePayload =
+          payload.source && typeof payload.source === "object"
+            ? (payload.source as Record<string, unknown>)
+            : payload;
+
+        const source = buildSource(sourcePayload);
+        if (!source) {
+          return res.status(400).json({ ok: false, error: "Invalid source payload" });
+        }
+
+        const sources = await upsertSingleSource(source);
+        return res.status(200).json({ ok: true, source, sources });
+      }
+
+      if (action === "bulk-create") {
+        const rawSources = Array.isArray(payload.sources) ? payload.sources : [];
+        const prepared = rawSources
+          .map((item: unknown) =>
+            buildSource((item || {}) as Record<string, unknown>)
+          )
+          .filter((item): item is StoredSource => Boolean(item));
+
+        if (!prepared.length) {
+          return res
+            .status(400)
+            .json({ ok: false, error: "No valid sources to import" });
+        }
+
+        const result = await bulkCreateSources(prepared);
+        return res.status(200).json({
+          ok: true,
+          created: result.created,
+          updated: result.updated,
+          sources: result.next,
+        });
+      }
+
+      if (action === "delete") {
+        const sources = await deleteSourceByIdentity(payload);
+        return res.status(200).json({ ok: true, sources });
+      }
+
+      return res.status(400).json({ ok: false, error: "Unknown sources action" });
+    }
+
+    return res.status(400).json({ ok: false, error: "Unknown entity" });
   } catch (error) {
     console.error("admin-posts api error", error);
     return res.status(500).json({
