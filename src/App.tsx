@@ -172,8 +172,66 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-function buildFeedUrl() {
-  return `/feed.json`;
+type FeedChunkMeta = {
+  id: number;
+  path: string;
+  posts: number;
+};
+
+type FeedCountryResponse = {
+  mode?: "single" | "chunked";
+  items?: IngestedPost[];
+  chunks?: FeedChunkMeta[];
+};
+
+type FeedChunkResponse = {
+  items?: IngestedPost[];
+};
+
+function buildFeedUrl(countryCode: Locale) {
+  return `/feeds/${countryCode}.json`;
+}
+
+async function loadCountryFeed(countryCode: Locale): Promise<IngestedPost[]> {
+  const res = await fetch(buildFeedUrl(countryCode), {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    if (res.status === 404) {
+      return [];
+    }
+
+    throw new Error("feed request failed");
+  }
+
+  const data = (await res.json()) as FeedCountryResponse;
+
+  if (data.mode === "chunked") {
+    const chunks = Array.isArray(data.chunks) ? data.chunks : [];
+    if (chunks.length === 0) {
+      return [];
+    }
+
+    const chunkResponses = await Promise.all(
+      chunks.map(async (chunk) => {
+        const chunkRes = await fetch(chunk.path, {
+          cache: "no-store",
+        });
+
+        if (!chunkRes.ok) {
+          throw new Error(`chunk request failed: ${chunk.path}`);
+        }
+
+        const chunkData = (await chunkRes.json()) as FeedChunkResponse;
+        return Array.isArray(chunkData.items) ? chunkData.items : [];
+      })
+    );
+
+    return chunkResponses.flat();
+  }
+
+  return Array.isArray(data.items) ? data.items : [];
 }
 
 export default function App() {
@@ -439,22 +497,8 @@ export default function App() {
     setServerPosts([]);
 
     try {
-      const res = await fetch(buildFeedUrl(), {
-        cache: "no-store",
-      });
-
-      if (!res.ok) {
-        throw new Error("feed request failed");
-      }
-
-      const data = await res.json();
-      const nextPosts = Array.isArray(data.posts)
-        ? data.posts.filter((post: IngestedPost) => {
-            const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
-            return !countryCode || countryCode === locale;
-          })
-        : [];
-      setServerPosts(nextPosts);
+      const nextPosts = await loadCountryFeed(locale);
+      setServerPosts(Array.isArray(nextPosts) ? nextPosts : []);
     } catch (error) {
       console.error("Failed to load feed", error);
       setServerPosts([]);

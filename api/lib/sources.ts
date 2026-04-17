@@ -7,17 +7,13 @@ import {
 import { ingestTelegramPost } from "./telegram.js";
 import {
   readFeedFile,
+  readFeedIndexFile,
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
 } from "./github-store.js";
 
-const MAX_NEW_POSTS_PER_SOURCE = 3;
-const MAX_IMPORT_CANDIDATES_PER_SOURCE = 20;
-const MAX_TOTAL_NEW_POSTS_PER_REBUILD = 24;
-const MAX_TOTAL_POSTS = 500;
 const POST_TTL_HOURS = 24;
-const MAX_SOURCES_PER_REBUILD = 500;
 const SOURCE_PAGE_TIMEOUT_MS = 15_000;
 const REBUILD_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36";
@@ -126,6 +122,11 @@ function getSourceSortValue(source: TrustedSource) {
     return checkedAt;
   }
 
+  const importedAt = Date.parse(source.lastImportedAt || "");
+  if (Number.isFinite(importedAt) && importedAt > 0) {
+    return importedAt;
+  }
+
   const createdAt = Date.parse(source.createdAt || "");
   if (Number.isFinite(createdAt) && createdAt > 0) {
     return createdAt;
@@ -200,13 +201,11 @@ export async function upsertSourceWithMeta(
   });
 
   const without = sources.filter((source: TrustedSource) => source.id !== next.id);
-  const updated = without
-    .concat(next)
-    .sort((a: TrustedSource, b: TrustedSource) => {
-      const byCountry = a.countryCode.localeCompare(b.countryCode);
-      if (byCountry !== 0) return byCountry;
-      return a.handle.localeCompare(b.handle);
-    });
+  const updated = without.concat(next).sort((a: TrustedSource, b: TrustedSource) => {
+    const byCountry = a.countryCode.localeCompare(b.countryCode);
+    if (byCountry !== 0) return byCountry;
+    return a.handle.localeCompare(b.handle);
+  });
 
   await writeSourcesFile(updated);
   return next;
@@ -234,12 +233,32 @@ function getPostExpiresAt(post: IngestedPost) {
   return createdAt + ttlHours * 60 * 60 * 1000;
 }
 
+function getPostIdFromUrl(postUrl: string) {
+  const match = postUrl.match(/\/(\d+)\?single$/);
+  if (!match) return null;
+  const postId = Number(match[1]);
+  return Number.isFinite(postId) ? postId : null;
+}
+
+function comparePostsNewestFirst(a: IngestedPost, b: IngestedPost) {
+  const byCreatedAt = getPostCreatedAt(b) - getPostCreatedAt(a);
+  if (byCreatedAt !== 0) return byCreatedAt;
+
+  const aPostId = getPostIdFromUrl(a.postUrl) || 0;
+  const bPostId = getPostIdFromUrl(b.postUrl) || 0;
+  if (a.source.handle === b.source.handle && aPostId !== bPostId) {
+    return bPostId - aPostId;
+  }
+
+  return b.postUrl.localeCompare(a.postUrl);
+}
+
 function dedupePosts(posts: IngestedPost[]) {
   const byUrl = new Map<string, IngestedPost>();
 
   for (const post of posts) {
     const existing = byUrl.get(post.postUrl);
-    if (!existing || getPostCreatedAt(post) > getPostCreatedAt(existing)) {
+    if (!existing || comparePostsNewestFirst(post, existing) < 0) {
       byUrl.set(post.postUrl, post);
     }
   }
@@ -257,8 +276,7 @@ export function cleanupFeedPosts(posts: IngestedPost[]) {
       const expiresAt = getPostExpiresAt(post);
       return createdAt >= minCreatedAt && expiresAt > now;
     })
-    .sort((a: IngestedPost, b: IngestedPost) => getPostCreatedAt(b) - getPostCreatedAt(a))
-    .slice(0, MAX_TOTAL_POSTS);
+    .sort(comparePostsNewestFirst);
 }
 
 function parsePostIdsFromChannelHtml(html: string): number[] {
@@ -374,10 +392,6 @@ function makePostId(postUrl: string) {
   return Math.abs(hash >>> 0);
 }
 
-type ImportFromSourceOptions = {
-  remainingImportBudget: number;
-};
-
 type ImportFromSourceResult = {
   source: TrustedSource;
   importedPosts: IngestedPost[];
@@ -385,13 +399,6 @@ type ImportFromSourceResult = {
   newestChannelPostId: number | null;
   candidateIds: number[];
 };
-
-function getPostIdFromUrl(postUrl: string) {
-  const match = postUrl.match(/\/(\d+)\?single$/);
-  if (!match) return null;
-  const postId = Number(match[1]);
-  return Number.isFinite(postId) ? postId : null;
-}
 
 function findHighestContiguousSeenPostId(params: {
   orderedPostIds: number[];
@@ -421,8 +428,7 @@ function findHighestContiguousSeenPostId(params: {
 
 async function importFromSource(
   source: TrustedSource,
-  existingPosts: IngestedPost[],
-  options: ImportFromSourceOptions
+  existingPosts: IngestedPost[]
 ): Promise<ImportFromSourceResult> {
   const html = await fetchChannelHtml(source.handle);
   const postIds = parsePostIdsFromChannelHtml(html);
@@ -438,7 +444,7 @@ async function importFromSource(
     }
   }
 
-  const freshIds = postIds.filter((postId: number) => {
+  const candidateIds = postIds.filter((postId: number) => {
     if (source.lastSeenPostId && postId <= source.lastSeenPostId) {
       return false;
     }
@@ -446,22 +452,14 @@ async function importFromSource(
     return true;
   });
 
-  const candidateIds = freshIds.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE);
   const importedPosts: IngestedPost[] = [];
   let sourceTitle = source.title;
   let sourceAvatarUrl = source.avatarUrl;
   let sourceVerified = Boolean(source.verified);
-  const nowIso = new Date().toISOString();
+  const nowMs = Date.now();
 
-  for (const postId of candidateIds) {
-    if (importedPosts.length >= MAX_NEW_POSTS_PER_SOURCE) {
-      break;
-    }
-
-    if (importedPosts.length >= options.remainingImportBudget) {
-      break;
-    }
-
+  for (let index = 0; index < candidateIds.length; index += 1) {
+    const postId = candidateIds[index];
     const postUrl = `https://t.me/${source.handle}/${postId}?single`;
 
     if (knownUrls.has(postUrl)) {
@@ -478,6 +476,8 @@ async function importFromSource(
     sourceAvatarUrl = pickBestSourceAvatar(source, ingest.source.avatar);
     sourceVerified = pickBestSourceVerified(source, ingest.source.verified);
 
+    const createdAt = new Date(nowMs - index).toISOString();
+
     importedPosts.push(
       buildPost({
         postUrl,
@@ -488,7 +488,7 @@ async function importFromSource(
           verified: sourceVerified,
         },
         ingest,
-        createdAt: nowIso,
+        createdAt,
       })
     );
 
@@ -496,6 +496,7 @@ async function importFromSource(
     knownOrImportedPostIds.add(postId);
   }
 
+  const nowIso = new Date().toISOString();
   const highestContiguousSeenPostId = findHighestContiguousSeenPostId({
     orderedPostIds: candidateIds,
     lastSeenPostId: source.lastSeenPostId || null,
@@ -506,7 +507,7 @@ async function importFromSource(
     ...source,
     title: sourceTitle,
     avatarUrl: sourceAvatarUrl,
-    lastSeenPostId: highestContiguousSeenPostId || source.lastSeenPostId || null,
+    lastSeenPostId: highestContiguousSeenPostId || source.lastSeenPostId || newestChannelPostId || null,
     lastCheckedAt: nowIso,
     lastImportedAt: importedPosts.length > 0 ? nowIso : source.lastImportedAt || null,
     importedPostsCount: (source.importedPostsCount || 0) + importedPosts.length,
@@ -531,7 +532,6 @@ export async function rebuildFeedFromSources(options?: { countryCode?: CountryCo
       .filter((source: TrustedSource) =>
         normalizedCountry ? source.countryCode === normalizedCountry : true
       )
-      .slice(0, MAX_SOURCES_PER_REBUILD)
   );
 
   const feedFile = await readFeedFile<IngestedPost>();
@@ -541,24 +541,16 @@ export async function rebuildFeedFromSources(options?: { countryCode?: CountryCo
   let sourcesChecked = 0;
   let importedPosts = 0;
   let sourcesWithNewPosts = 0;
-  let importBudgetRemaining = MAX_TOTAL_NEW_POSTS_PER_REBUILD;
 
   for (const source of activeSources) {
-    if (importBudgetRemaining <= 0) {
-      break;
-    }
-
     sourcesChecked += 1;
 
     try {
-      const result = await importFromSource(source, posts, {
-        remainingImportBudget: importBudgetRemaining,
-      });
+      const result = await importFromSource(source, posts);
 
       if (result.importedPosts.length > 0) {
         posts = cleanupFeedPosts([...result.importedPosts, ...posts]);
         importedPosts += result.importedPosts.length;
-        importBudgetRemaining -= result.importedPosts.length;
         sourcesWithNewPosts += 1;
       }
     } catch (error) {
@@ -568,16 +560,16 @@ export async function rebuildFeedFromSources(options?: { countryCode?: CountryCo
 
   posts = cleanupFeedPosts(posts);
   await writeFeedFile(posts);
+  const snapshotIndex = await readFeedIndexFile();
 
   return {
     updatedAt: new Date().toISOString(),
     posts,
+    snapshotIndex,
     sourcesChecked,
     importedPosts,
     removedPosts: Math.max(0, (feedFile.posts || []).length - posts.length),
     existingFreshPostsCount,
     sourcesWithNewPosts,
-    importBudgetUsed: MAX_TOTAL_NEW_POSTS_PER_REBUILD - importBudgetRemaining,
-    importBudgetRemaining,
   };
 }
