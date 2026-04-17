@@ -17,6 +17,7 @@ jobs:
       GITHUB_OWNER: jeep-jim
       GITHUB_REPO: margelet
       GITHUB_BRANCH: main
+      NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
 
     steps:
       - name: Checkout
@@ -25,13 +26,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: npm
+          node-version: 22
 
-      - name: Install deps
-        run: npm ci
+      - name: Force npm registry
+        run: |
+          npm config set registry https://registry.npmjs.org/
+          npm config delete @openai:registry || true
+          npm config delete registry || true
+          npm config set registry https://registry.npmjs.org/
 
-      - name: Rebuild feed
+      - name: Install dependencies
+        run: npm install
+
+      - name: Rebuild feed snapshot
         run: node scripts/rebuild-feed.ts
 
       - name: Commit rebuilt files
