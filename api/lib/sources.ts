@@ -1,7 +1,7 @@
-import type { ContentTag, IngestedPost } from "../../src/types/app.js";
-import type { CountryCode } from "../../src/screens/admin/admin.countries.js";
-import type { TrustedSource } from "../../src/screens/admin/admin.types.js";
-import { ingestTelegramPost } from "../../src/lib/telegram.js";
+import type { ContentTag, IngestedPost } from "../../src/types/app.ts";
+import type { CountryCode } from "../../src/screens/admin/admin.countries.ts";
+import type { TrustedSource } from "../../src/screens/admin/admin.types.ts";
+import { ingestTelegramPost } from "../../src/lib/telegram.ts";
 import {
   readFeedFile,
   readSourcesFile,
