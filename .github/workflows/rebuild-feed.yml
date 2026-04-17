@@ -39,7 +39,7 @@ jobs:
         run: npm install
 
       - name: Rebuild feed snapshot
-        run: node scripts/rebuild-feed.ts
+        run: npx tsx scripts/rebuild-feed.ts
 
       - name: Commit rebuilt files
         run: |

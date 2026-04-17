@@ -1,4 +1,4 @@
-import { rebuildFeedFromSources } from "../api/lib/sources.ts";
+import { rebuildFeedFromSources } from "../api/lib/sources";
 
 type Args = {
   countryCode: string | null;

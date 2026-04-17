@@ -1,13 +1,13 @@
-import type { ContentTag, IngestedPost } from "../../src/types/app.ts";
-import type { CountryCode } from "../../src/screens/admin/admin.countries.ts";
-import type { TrustedSource } from "../../src/screens/admin/admin.types.ts";
-import { ingestTelegramPost } from "../../src/lib/telegram.ts";
+import type { ContentTag, IngestedPost } from "../../src/types/app";
+import type { CountryCode } from "../../src/screens/admin/admin.countries";
+import type { TrustedSource } from "../../src/screens/admin/admin.types";
+import { ingestTelegramPost } from "../../src/lib/telegram";
 import {
   readFeedFile,
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
-} from "./blob-store.js";
+} from "./blob-store";
 
 const MAX_NEW_POSTS_PER_SOURCE = 3;
 const MAX_TOTAL_POSTS = 500;
