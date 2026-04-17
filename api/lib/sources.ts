@@ -13,7 +13,8 @@ import {
 } from "./github-store.js";
 
 const MAX_NEW_POSTS_PER_SOURCE = 3;
-const MAX_IMPORT_CANDIDATES_PER_SOURCE = 12;
+const MAX_IMPORT_CANDIDATES_PER_SOURCE = 20;
+const MAX_TOTAL_NEW_POSTS_PER_REBUILD = 24;
 const MAX_TOTAL_POSTS = 500;
 const POST_TTL_HOURS = 24;
 const MAX_SOURCES_PER_REBUILD = 500;
@@ -368,32 +369,100 @@ function makePostId(postUrl: string) {
   return Math.abs(hash >>> 0);
 }
 
-async function importFromSource(source: TrustedSource, existingPosts: IngestedPost[]) {
+type ImportFromSourceOptions = {
+  remainingImportBudget: number;
+};
+
+type ImportFromSourceResult = {
+  source: TrustedSource;
+  importedPosts: IngestedPost[];
+  highestContiguousSeenPostId: number | null;
+  newestChannelPostId: number | null;
+  candidateIds: number[];
+};
+
+function getPostIdFromUrl(postUrl: string) {
+  const match = postUrl.match(/\/(\d+)\?single$/);
+  if (!match) return null;
+  const postId = Number(match[1]);
+  return Number.isFinite(postId) ? postId : null;
+}
+
+function findHighestContiguousSeenPostId(params: {
+  orderedPostIds: number[];
+  lastSeenPostId: number | null;
+  knownOrImportedPostIds: Set<number>;
+}) {
+  const { orderedPostIds, lastSeenPostId, knownOrImportedPostIds } = params;
+
+  let highestSeen = lastSeenPostId;
+
+  for (const postId of orderedPostIds) {
+    if (lastSeenPostId && postId <= lastSeenPostId) {
+      break;
+    }
+
+    if (!knownOrImportedPostIds.has(postId)) {
+      break;
+    }
+
+    if (!highestSeen || postId > highestSeen) {
+      highestSeen = postId;
+    }
+  }
+
+  return highestSeen || null;
+}
+
+async function importFromSource(
+  source: TrustedSource,
+  existingPosts: IngestedPost[],
+  options: ImportFromSourceOptions
+): Promise<ImportFromSourceResult> {
   const html = await fetchChannelHtml(source.handle);
   const postIds = parsePostIdsFromChannelHtml(html);
+  const newestChannelPostId = postIds.length > 0 ? Math.max(...postIds) : source.lastSeenPostId || null;
   const knownUrls = new Set(existingPosts.map((post: IngestedPost) => post.postUrl));
-  const nowIso = new Date().toISOString();
+  const knownOrImportedPostIds = new Set<number>();
+
+  for (const post of existingPosts) {
+    if (post.source.handle !== source.handle) continue;
+    const postId = getPostIdFromUrl(post.postUrl);
+    if (postId) {
+      knownOrImportedPostIds.add(postId);
+    }
+  }
 
   const freshIds = postIds.filter((postId: number) => {
     if (source.lastSeenPostId && postId <= source.lastSeenPostId) {
       return false;
     }
 
-    const url = `https://t.me/${source.handle}/${postId}?single`;
-    return !knownUrls.has(url);
+    return true;
   });
 
   const candidateIds = freshIds.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE);
   const importedPosts: IngestedPost[] = [];
   let sourceTitle = source.title;
   let sourceAvatarUrl = source.avatarUrl;
+  const nowIso = new Date().toISOString();
 
   for (const postId of candidateIds) {
     if (importedPosts.length >= MAX_NEW_POSTS_PER_SOURCE) {
       break;
     }
 
+    if (importedPosts.length >= options.remainingImportBudget) {
+      break;
+    }
+
     const postUrl = `https://t.me/${source.handle}/${postId}?single`;
+
+    if (knownUrls.has(postUrl)) {
+      knownOrImportedPostIds.add(postId);
+      continue;
+    }
+
     const ingest = await ingestTelegramPost(postUrl);
     if (!ingest) {
       continue;
@@ -414,16 +483,22 @@ async function importFromSource(source: TrustedSource, existingPosts: IngestedPo
         createdAt: nowIso,
       })
     );
+
+    knownUrls.add(postUrl);
+    knownOrImportedPostIds.add(postId);
   }
 
-  const highestSeenPostId =
-    postIds.length > 0 ? Math.max(...postIds) : source.lastSeenPostId || null;
+  const highestContiguousSeenPostId = findHighestContiguousSeenPostId({
+    orderedPostIds: candidateIds,
+    lastSeenPostId: source.lastSeenPostId || null,
+    knownOrImportedPostIds,
+  });
 
   const nextSource = await upsertSourceWithMeta({
     ...source,
     title: sourceTitle,
     avatarUrl: sourceAvatarUrl,
-    lastSeenPostId: highestSeenPostId || source.lastSeenPostId || null,
+    lastSeenPostId: highestContiguousSeenPostId || source.lastSeenPostId || null,
     lastCheckedAt: nowIso,
     lastImportedAt: importedPosts.length > 0 ? nowIso : source.lastImportedAt || null,
     importedPostsCount: (source.importedPostsCount || 0) + importedPosts.length,
@@ -432,6 +507,9 @@ async function importFromSource(source: TrustedSource, existingPosts: IngestedPo
   return {
     source: nextSource,
     importedPosts,
+    highestContiguousSeenPostId,
+    newestChannelPostId,
+    candidateIds,
   };
 }
 
@@ -454,15 +532,26 @@ export async function rebuildFeedFromSources(options?: { countryCode?: CountryCo
 
   let sourcesChecked = 0;
   let importedPosts = 0;
+  let sourcesWithNewPosts = 0;
+  let importBudgetRemaining = MAX_TOTAL_NEW_POSTS_PER_REBUILD;
 
   for (const source of activeSources) {
+    if (importBudgetRemaining <= 0) {
+      break;
+    }
+
     sourcesChecked += 1;
 
     try {
-      const result = await importFromSource(source, posts);
+      const result = await importFromSource(source, posts, {
+        remainingImportBudget: importBudgetRemaining,
+      });
+
       if (result.importedPosts.length > 0) {
         posts = cleanupFeedPosts([...result.importedPosts, ...posts]);
         importedPosts += result.importedPosts.length;
+        importBudgetRemaining -= result.importedPosts.length;
+        sourcesWithNewPosts += 1;
       }
     } catch (error) {
       console.error("rebuild source failed", source.handle, error);
@@ -479,5 +568,8 @@ export async function rebuildFeedFromSources(options?: { countryCode?: CountryCo
     importedPosts,
     removedPosts: Math.max(0, (feedFile.posts || []).length - posts.length),
     existingFreshPostsCount,
+    sourcesWithNewPosts,
+    importBudgetUsed: MAX_TOTAL_NEW_POSTS_PER_REBUILD - importBudgetRemaining,
+    importBudgetRemaining,
   };
 }
