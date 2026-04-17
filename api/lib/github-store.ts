@@ -266,11 +266,15 @@ async function commitFiles(files: CommitFile[], message: string) {
 }
 
 async function persistFiles(files: CommitFile[], message: string) {
-  if (isLocalFileMode() || !GITHUB_TOKEN) {
+  if (isLocalFileMode()) {
     for (const file of files) {
       await writeLocalJsonFile(file.path, JSON.parse(file.content));
     }
     return;
+  }
+
+  if (!GITHUB_TOKEN) {
+    throw new Error("Missing GITHUB_TOKEN for persistent writes");
   }
 
   await commitFiles(files, message);

@@ -40,7 +40,7 @@ jobs:
           cache: npm
 
       - name: Show workflow version
-        run: echo "workflow version = github-lite-v4-auto-import"
+        run: echo "workflow version = github-lite-v5-feeds-commit-fix"
 
       - name: Install dependencies
         run: npm ci
@@ -59,7 +59,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -A data/feed.json public/feed.json data/sources.json
+          git add -A \
+            data/feed.json \
+            public/feed.json \
+            data/sources.json \
+            data/feeds \
+            public/feeds
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
