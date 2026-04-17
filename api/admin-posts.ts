@@ -139,7 +139,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
 
       const existingIndex = current.findIndex(
-        (item) => item.id === source.id || item.handle === source.handle
+        (item) =>
+          item.id === source.id ||
+          (item.handle === source.handle && item.countryCode === source.countryCode)
       );
 
       const next = [...current];
@@ -164,13 +166,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (entity === "sources") {
         const id = asString(body.id);
         const handle = asString(body.handle).replace(/^@/, "").toLowerCase();
+        const countryCode = asString(body.countryCode).toLowerCase();
 
         const sourcesFile = await readSourcesFile<StoredSource>();
         const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
 
         const next = current.filter((item) => {
           if (id && item.id === id) return false;
-          if (handle && item.handle.toLowerCase() === handle) return false;
+          if (
+            handle &&
+            item.handle.toLowerCase() === handle &&
+            (!countryCode || item.countryCode === countryCode)
+          ) {
+            return false;
+          }
           return true;
         });
 

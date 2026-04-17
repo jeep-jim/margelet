@@ -2,15 +2,25 @@ name: Rebuild feed
 
 on:
   workflow_dispatch:
+    inputs:
+      country:
+        description: "Optional country code"
+        required: false
+        default: ""
   schedule:
-    - cron: "0 */8 * * *"
+    - cron: "17 */8 * * *"
 
 permissions:
   contents: write
 
+concurrency:
+  group: rebuild-feed-main
+  cancel-in-progress: false
+
 jobs:
   rebuild-feed:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     env:
       GITHUB_OWNER: jeep-jim
@@ -30,13 +40,19 @@ jobs:
           cache: npm
 
       - name: Show workflow version
-        run: echo "workflow version = github-lite-v1"
+        run: echo "workflow version = github-lite-v2"
 
       - name: Install dependencies
         run: npm ci
 
       - name: Rebuild feed snapshot
-        run: npm run rebuild:feed
+        run: |
+          COUNTRY="${{ github.event.inputs.country }}"
+          if [ -n "$COUNTRY" ]; then
+            npm run rebuild:feed -- --country="$COUNTRY"
+          else
+            npm run rebuild:feed
+          fi
 
       - name: Commit rebuilt files
         run: |
