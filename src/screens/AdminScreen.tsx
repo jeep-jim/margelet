@@ -108,22 +108,6 @@ export function AdminScreen({
     void refreshEverything();
   }, [telegramUserId, hasAdminAccess, selectedCountryCode]);
 
-  const filteredSources = useMemo(
-    () => sources.filter((source) => source.countryCode === selectedCountryCode),
-    [sources, selectedCountryCode]
-  );
-
-  const stats = useMemo(() => {
-    return {
-      total: posts.length,
-      pending: posts.filter((post) => (post.status || "published") === "pending").length,
-      blocked: posts.filter((post) => (post.status || "published") === "blocked").length,
-      published: posts.filter((post) => (post.status || "published") === "published").length,
-      sources: filteredSources.length,
-      activeSources: filteredSources.filter((source) => source.status === "active").length,
-    };
-  }, [posts, filteredSources]);
-
   const sourceCountsByCountry = useMemo(() => {
     const counts: Partial<Record<CountryCode, number>> = {};
 
@@ -166,8 +150,10 @@ export function AdminScreen({
       setRebuildMessage(
         `Обновлено: +${data?.importedPosts || 0} постов · ${data?.sourcesChecked || 0} каналов`
       );
-    } catch (error: any) {
-      setRebuildMessage(error?.message || "Не удалось обновить сейчас");
+    } catch (error: unknown) {
+      setRebuildMessage(
+        error instanceof Error ? error.message : "Не удалось обновить сейчас"
+      );
     } finally {
       setRebuildLoading(false);
     }
@@ -227,29 +213,6 @@ export function AdminScreen({
             {rebuildMessage}
           </div>
         ) : null}
-
-        <div className="mb-4 grid grid-cols-2 gap-3 xl:grid-cols-6">
-          {[
-            { label: "Посты", value: stats.total },
-            { label: "Опубликовано", value: stats.published },
-            { label: "На проверке", value: stats.pending },
-            { label: "Заблокировано", value: stats.blocked },
-            { label: "Каналы", value: stats.sources },
-            { label: "Активные", value: stats.activeSources },
-          ].map((item) => (
-            <div
-              key={item.label}
-              className="rounded-3xl border border-white/10 bg-white/[0.045] p-4"
-            >
-              <div className="text-[11px] uppercase tracking-[0.18em] text-white/35">
-                {item.label}
-              </div>
-              <div className="mt-2 text-2xl font-semibold tracking-tight text-white">
-                {item.value}
-              </div>
-            </div>
-          ))}
-        </div>
 
         <div className="space-y-4">
           <AdminCountriesSection

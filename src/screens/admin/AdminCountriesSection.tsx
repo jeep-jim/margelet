@@ -6,7 +6,6 @@ type AdminCountriesSectionProps = {
   selectedCountryCode: CountryCode;
   onSelectCountry: (code: CountryCode) => void;
   counts?: Partial<Record<CountryCode, number>>;
-  postsCount?: number;
 };
 
 export function AdminCountriesSection({
@@ -35,43 +34,28 @@ export function AdminCountriesSection({
         </div>
       }
     >
-      <div className="grid gap-3 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="rounded-3xl border border-white/10 bg-[#12131a] p-4">
-          <div className="text-xs uppercase tracking-[0.2em] text-white/35">
-            Текущая страна
-          </div>
-
-          <div className="mt-4">
-            <div className="text-2xl font-semibold tracking-tight text-white">
-              {currentCountry?.nativeLabel || selectedCountryCode.toUpperCase()}
-            </div>
-
-            <div className="mt-1 text-sm text-white/45">
-              {currentCountry?.label || selectedCountryCode.toUpperCase()}
-            </div>
-          </div>
+      <div className="rounded-3xl border border-white/10 bg-[#12131a] p-4">
+        <div className="text-xs uppercase tracking-[0.2em] text-white/35">
+          Сменить страну
         </div>
 
-        <div className="rounded-3xl border border-white/10 bg-[#12131a] p-4">
-          <div className="text-xs uppercase tracking-[0.2em] text-white/35">
-            Сменить страну
-          </div>
+        <select
+          value={selectedCountryCode}
+          onChange={(event) => onSelectCountry(event.target.value as CountryCode)}
+          className="mt-3 w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-base text-white outline-none"
+        >
+          {enabledCountries.map((country) => (
+            <option key={country.code} value={country.code}>
+              {country.nativeLabel} · {country.label}
+            </option>
+          ))}
+        </select>
 
-          <select
-            value={selectedCountryCode}
-            onChange={(event) => onSelectCountry(event.target.value as CountryCode)}
-            className="mt-3 w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-base text-white outline-none"
-          >
-            {enabledCountries.map((country) => (
-              <option key={country.code} value={country.code}>
-                {country.nativeLabel} · {country.label}
-              </option>
-            ))}
-          </select>
-
-          <div className="mt-3 text-sm text-white/45">
-            Меняется статистика, список каналов, постов и действия ниже.
-          </div>
+        <div className="mt-3 text-sm text-white/45">
+          Сейчас выбрана страна:{" "}
+          <span className="text-white">
+            {currentCountry?.nativeLabel || selectedCountryCode.toUpperCase()}
+          </span>
         </div>
       </div>
     </AdminSectionCard>
