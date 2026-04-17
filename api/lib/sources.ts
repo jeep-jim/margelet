@@ -12,10 +12,12 @@ import {
   writeSourcesFile,
 } from "./github-store.js";
 
+const MAX_IMPORT_CANDIDATES_PER_SOURCE = 20;
 const POST_TTL_HOURS = 24;
 const SOURCE_PAGE_TIMEOUT_MS = 15_000;
 const REBUILD_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36";
+const FUTURE_SKEW_MS = 5 * 60 * 1000;
 
 function asString(value: unknown): string | null {
   if (typeof value !== "string") return null;
@@ -213,14 +215,81 @@ export async function deleteSourceById(id: string) {
   await writeSourcesFile(updated);
 }
 
+function parseDateMs(value: unknown) {
+  if (typeof value !== "string") return 0;
+  const ts = Date.parse(value);
+  if (!Number.isFinite(ts) || ts <= 0) return 0;
+  return ts;
+}
+
+function clampFutureMs(value: number) {
+  if (!value) return 0;
+  const maxAllowed = Date.now() + FUTURE_SKEW_MS;
+  return value > maxAllowed ? maxAllowed : value;
+}
+
 function getPostCreatedAt(post: IngestedPost) {
-  const ts = Date.parse(post.createdAt);
-  return Number.isFinite(ts) ? ts : 0;
+  return clampFutureMs(parseDateMs(post.createdAt));
+}
+
+function getPostPublishedAt(post: IngestedPost) {
+  return clampFutureMs(
+    parseDateMs((post as IngestedPost & { publishedAt?: string | null }).publishedAt)
+  );
+}
+
+function getPostUpdatedAt(post: IngestedPost) {
+  return clampFutureMs(
+    parseDateMs((post as IngestedPost & { updatedAt?: string | null }).updatedAt)
+  );
+}
+
+function getPostMediaRefreshedAt(post: IngestedPost) {
+  return clampFutureMs(parseDateMs(post.mediaRefreshedAt || ""));
+}
+
+function getPostMessageId(post: IngestedPost) {
+  const match = post.postUrl.match(/\/(\d+)(?:\?|$)/);
+  if (!match) return 0;
+  const value = Number(match[1]);
+  return Number.isFinite(value) ? value : 0;
+}
+
+function getPostSortTimestamp(post: IngestedPost) {
+  return (
+    getPostPublishedAt(post) ||
+    getPostCreatedAt(post) ||
+    getPostUpdatedAt(post) ||
+    getPostMediaRefreshedAt(post) ||
+    0
+  );
+}
+
+function comparePostsNewestFirst(a: IngestedPost, b: IngestedPost) {
+  const byTimestamp = getPostSortTimestamp(b) - getPostSortTimestamp(a);
+  if (byTimestamp !== 0) return byTimestamp;
+
+  const byCreatedAt = getPostCreatedAt(b) - getPostCreatedAt(a);
+  if (byCreatedAt !== 0) return byCreatedAt;
+
+  const sameHandle = a.source.handle === b.source.handle;
+  if (sameHandle) {
+    const byMessageId = getPostMessageId(b) - getPostMessageId(a);
+    if (byMessageId !== 0) return byMessageId;
+  }
+
+  const byRefresh = getPostMediaRefreshedAt(b) - getPostMediaRefreshedAt(a);
+  if (byRefresh !== 0) return byRefresh;
+
+  const byHandle = a.source.handle.localeCompare(b.source.handle);
+  if (byHandle !== 0) return byHandle;
+
+  return a.postUrl.localeCompare(b.postUrl);
 }
 
 function getPostExpiresAt(post: IngestedPost) {
-  const explicit = Date.parse(post.expiresAt || "");
-  if (Number.isFinite(explicit) && explicit > 0) {
+  const explicit = parseDateMs(post.expiresAt || "");
+  if (explicit > 0) {
     return explicit;
   }
 
@@ -234,7 +303,7 @@ function dedupePosts(posts: IngestedPost[]) {
 
   for (const post of posts) {
     const existing = byUrl.get(post.postUrl);
-    if (!existing || getPostCreatedAt(post) > getPostCreatedAt(existing)) {
+    if (!existing || comparePostsNewestFirst(post, existing) < 0) {
       byUrl.set(post.postUrl, post);
     }
   }
@@ -252,8 +321,7 @@ export function cleanupFeedPosts(posts: IngestedPost[]) {
       const expiresAt = getPostExpiresAt(post);
       return createdAt >= minCreatedAt && expiresAt > now;
     })
-    .sort((a: IngestedPost, b: IngestedPost) => getPostCreatedAt(b) - getPostCreatedAt(a))
-    ;
+    .sort(comparePostsNewestFirst);
 }
 
 function parsePostIdsFromChannelHtml(html: string): number[] {
@@ -369,6 +437,10 @@ function makePostId(postUrl: string) {
   return Math.abs(hash >>> 0);
 }
 
+type ImportFromSourceOptions = {
+  remainingImportBudget: number;
+};
+
 type ImportFromSourceResult = {
   source: TrustedSource;
   importedPosts: IngestedPost[];
@@ -412,7 +484,8 @@ function findHighestContiguousSeenPostId(params: {
 
 async function importFromSource(
   source: TrustedSource,
-  existingPosts: IngestedPost[]
+  existingPosts: IngestedPost[],
+  options: ImportFromSourceOptions
 ): Promise<ImportFromSourceResult> {
   const html = await fetchChannelHtml(source.handle);
   const postIds = parsePostIdsFromChannelHtml(html);
@@ -436,7 +509,7 @@ async function importFromSource(
     return true;
   });
 
-  const candidateIds = freshIds;
+  const candidateIds = freshIds.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE);
   const importedPosts: IngestedPost[] = [];
   let sourceTitle = source.title;
   let sourceAvatarUrl = source.avatarUrl;
@@ -444,6 +517,10 @@ async function importFromSource(
   const nowIso = new Date().toISOString();
 
   for (const postId of candidateIds) {
+    if (importedPosts.length >= options.remainingImportBudget) {
+      break;
+    }
+
     const postUrl = `https://t.me/${source.handle}/${postId}?single`;
 
     if (knownUrls.has(postUrl)) {
@@ -527,7 +604,9 @@ export async function rebuildFeedFromSources(options?: { countryCode?: CountryCo
     sourcesChecked += 1;
 
     try {
-      const result = await importFromSource(source, posts);
+      const result = await importFromSource(source, posts, {
+        remainingImportBudget: Number.MAX_SAFE_INTEGER,
+      });
 
       if (result.importedPosts.length > 0) {
         posts = cleanupFeedPosts([...result.importedPosts, ...posts]);
@@ -551,6 +630,6 @@ export async function rebuildFeedFromSources(options?: { countryCode?: CountryCo
     existingFreshPostsCount,
     sourcesWithNewPosts,
     importBudgetUsed: importedPosts,
-    importBudgetRemaining: 0,
+    importBudgetRemaining: null,
   };
 }
