@@ -65,6 +65,7 @@ function buildSource(body: Record<string, unknown>): StoredSource | null {
     handle,
     title: asString(body.title) || handle,
     avatarUrl: asString(body.avatarUrl) || null,
+    verified: Boolean(body.verified),
     defaultTag,
     tags: normalizeTags(body.tags, defaultTag),
     status: asString(body.status) === "paused" ? "paused" : "active",
@@ -102,12 +103,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (req.method === "POST") {
       const entity = asString(body.entity);
-      const countryCode = normalizeCountryCode(body.countryCode);
+      const requestedCountryCode = asString(body.countryCode).toLowerCase();
 
       if (entity === "posts") {
         const feedFile = await readFeedFile<IngestedPost>();
         const posts = (Array.isArray(feedFile.posts) ? feedFile.posts : [])
-          .filter((post) => !post.sourceCountryCode || post.sourceCountryCode === countryCode)
+          .filter((post) => !requestedCountryCode || !post.sourceCountryCode || post.sourceCountryCode === requestedCountryCode)
           .sort((a, b) => parseDateMs(b.createdAt) - parseDateMs(a.createdAt));
 
         return res.status(200).json({ ok: true, posts });
@@ -116,7 +117,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (entity === "sources") {
         const sourcesFile = await readSourcesFile<StoredSource>();
         const sources = (Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [])
-          .filter((source) => source.countryCode === countryCode)
+          .filter((source) => !requestedCountryCode || source.countryCode === requestedCountryCode)
           .sort((a, b) => a.handle.localeCompare(b.handle));
 
         return res.status(200).json({ ok: true, sources });

@@ -110,8 +110,15 @@ export function AdminBulkImportSection({
 
   return (
     <AdminSectionCard
-      title="Массовый импорт постов"
-      subtitle="Ручное добавление пачки ссылок. По умолчанию посты живут 24 часа."
+      title="Ручной импорт"
+      subtitle="Быстрое добавление пачки ссылок в выбранную страну."
+      collapsible
+      defaultCollapsed
+      badge={
+        <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
+          {countryCode.toUpperCase()}
+        </div>
+      }
     >
       <textarea
         value={bulkText}
@@ -119,14 +126,14 @@ export function AdminBulkImportSection({
         placeholder={`https://t.me/channel_one/1
 https://t.me/channel_two/2
 https://t.me/channel_three/3`}
-        className="h-36 w-full rounded-xl border border-white/10 bg-[#1a1b24] p-4 text-sm text-white outline-none placeholder:text-white/35"
+        className="h-36 w-full rounded-2xl border border-white/10 bg-[#1a1b24] p-4 text-sm text-white outline-none placeholder:text-white/35"
       />
 
       <div className="mt-3 flex flex-col gap-3 md:flex-row">
         <select
           value={bulkTag}
           onChange={(event) => setBulkTag(event.target.value as ContentTag)}
-          className="rounded-xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+          className="rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
         >
           {ADMIN_TAG_OPTIONS.map((item) => (
             <option key={item.value} value={item.value}>
@@ -152,7 +159,7 @@ https://t.me/channel_three/3`}
           {bulkResult.map((item, index) => (
             <div
               key={`${item.url}-${index}`}
-              className={`rounded-xl px-3 py-2 text-sm ${
+              className={`rounded-2xl px-3 py-2 text-sm ${
                 item.status === "ok"
                   ? "bg-green-500/15 text-green-300"
                   : "bg-red-500/15 text-red-300"
@@ -161,9 +168,7 @@ https://t.me/channel_three/3`}
               <div>
                 {item.status === "ok" ? "✅" : "❌"} {item.url}
               </div>
-              {item.error ? (
-                <div className="mt-1 text-xs opacity-80">{item.error}</div>
-              ) : null}
+              {item.error ? <div className="mt-1 text-xs opacity-80">{item.error}</div> : null}
             </div>
           ))}
         </div>

@@ -16,6 +16,7 @@ export type TrustedSource = {
   handle: string;
   title: string;
   avatarUrl: string | null;
+  verified?: boolean;
 
   // legacy single-tag support
   defaultTag: ContentTag;

@@ -88,6 +88,7 @@ function buildSource(
     handle: normalizedHandle,
     title,
     avatarUrl: input.avatarUrl || null,
+    verified: Boolean(input.verified),
     defaultTag,
     tags,
     status: isStatus(input.status) ? input.status : "active",
@@ -306,6 +307,10 @@ function pickBestSourceAvatar(source: TrustedSource, ingestAvatar: string | null
   return asString(ingestAvatar) || source.avatarUrl || null;
 }
 
+function pickBestSourceVerified(source: TrustedSource, ingestVerified: boolean | null | undefined) {
+  return typeof ingestVerified === "boolean" ? ingestVerified : Boolean(source.verified);
+}
+
 function buildPost(params: {
   postUrl: string;
   source: TrustedSource;
@@ -445,6 +450,7 @@ async function importFromSource(
   const importedPosts: IngestedPost[] = [];
   let sourceTitle = source.title;
   let sourceAvatarUrl = source.avatarUrl;
+  let sourceVerified = Boolean(source.verified);
   const nowIso = new Date().toISOString();
 
   for (const postId of candidateIds) {
@@ -470,6 +476,7 @@ async function importFromSource(
 
     sourceTitle = pickBestSourceTitle(source, ingest.source.title);
     sourceAvatarUrl = pickBestSourceAvatar(source, ingest.source.avatar);
+    sourceVerified = pickBestSourceVerified(source, ingest.source.verified);
 
     importedPosts.push(
       buildPost({
@@ -478,6 +485,7 @@ async function importFromSource(
           ...source,
           title: sourceTitle,
           avatarUrl: sourceAvatarUrl,
+          verified: sourceVerified,
         },
         ingest,
         createdAt: nowIso,
