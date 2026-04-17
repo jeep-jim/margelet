@@ -1,5 +1,9 @@
 import { cleanupFeedPosts, rebuildFeedFromSources } from "../api/lib/sources.ts";
-import { readFeedFile, readFeedIndexFile, writeFeedFile } from "../api/lib/github-store.ts";
+import {
+  readFeedFile,
+  readFeedIndexFile,
+  writeFeedFile,
+} from "../api/lib/github-store.ts";
 import type { IngestedPost } from "../api/lib/contracts.ts";
 
 type Args = {
@@ -34,7 +38,8 @@ async function runCleanupOnly() {
   const cleanedPosts = cleanupFeedPosts(currentPosts);
 
   await writeFeedFile(cleanedPosts);
-  const snapshotIndex = await readFeedIndexFile();
+
+  const index = await readFeedIndexFile();
 
   console.log(
     JSON.stringify(
@@ -44,8 +49,7 @@ async function runCleanupOnly() {
         before: currentPosts.length,
         after: cleanedPosts.length,
         removed: Math.max(0, currentPosts.length - cleanedPosts.length),
-        countries: Object.keys(snapshotIndex.countries).length,
-        totalPosts: snapshotIndex.totalPosts,
+        countries: Object.keys(index.countries).length,
       },
       null,
       2
@@ -65,6 +69,8 @@ async function main() {
     countryCode: (args.countryCode as never) || null,
   });
 
+  const index = await readFeedIndexFile();
+
   console.log(
     JSON.stringify(
       {
@@ -75,11 +81,12 @@ async function main() {
         sourcesChecked: result.sourcesChecked,
         sourcesWithNewPosts: result.sourcesWithNewPosts,
         importedPosts: result.importedPosts,
+        importBudgetUsed: result.importBudgetUsed,
+        importBudgetRemaining: result.importBudgetRemaining,
         removedPosts: result.removedPosts,
         existingFreshPostsCount: result.existingFreshPostsCount,
         totalPosts: result.posts.length,
-        snapshotCountries: Object.keys(result.snapshotIndex?.countries || {}).length,
-        snapshotIndex: result.snapshotIndex,
+        countries: Object.keys(index.countries).length,
       },
       null,
       2

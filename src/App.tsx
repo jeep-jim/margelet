@@ -172,66 +172,67 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-type FeedChunkMeta = {
-  id: number;
-  path: string;
-  posts: number;
-};
-
-type FeedCountryResponse = {
-  mode?: "single" | "chunked";
-  items?: IngestedPost[];
-  chunks?: FeedChunkMeta[];
-};
-
-type FeedChunkResponse = {
-  items?: IngestedPost[];
-};
-
-function buildFeedUrl(countryCode: Locale) {
-  return `/feeds/${countryCode}.json`;
+function buildFeedUrl(locale: Locale) {
+  return `/feeds/${locale}.json`;
 }
 
-async function loadCountryFeed(countryCode: Locale): Promise<IngestedPost[]> {
-  const res = await fetch(buildFeedUrl(countryCode), {
+async function loadCountryFeed(locale: Locale): Promise<IngestedPost[]> {
+  const countryRes = await fetch(buildFeedUrl(locale), {
     cache: "no-store",
   });
 
-  if (!res.ok) {
-    if (res.status === 404) {
-      return [];
+  if (countryRes.ok) {
+    const countryData = await countryRes.json();
+
+    if (Array.isArray(countryData?.items)) {
+      return countryData.items as IngestedPost[];
     }
 
+    if (Array.isArray(countryData?.posts)) {
+      return countryData.posts as IngestedPost[];
+    }
+
+    if (Array.isArray(countryData?.chunks)) {
+      const chunks = await Promise.all(
+        countryData.chunks.map(async (chunk: { path?: string }) => {
+          const chunkPath = typeof chunk?.path === "string" ? chunk.path.trim() : "";
+          if (!chunkPath) {
+            return [];
+          }
+
+          const chunkRes = await fetch(chunkPath, {
+            cache: "no-store",
+          });
+
+          if (!chunkRes.ok) {
+            return [];
+          }
+
+          const chunkData = await chunkRes.json();
+          return Array.isArray(chunkData?.posts) ? (chunkData.posts as IngestedPost[]) : [];
+        })
+      );
+
+      return chunks.flat();
+    }
+  }
+
+  const legacyRes = await fetch(`/feed.json`, {
+    cache: "no-store",
+  });
+
+  if (!legacyRes.ok) {
     throw new Error("feed request failed");
   }
 
-  const data = (await res.json()) as FeedCountryResponse;
+  const legacyData = await legacyRes.json();
 
-  if (data.mode === "chunked") {
-    const chunks = Array.isArray(data.chunks) ? data.chunks : [];
-    if (chunks.length === 0) {
-      return [];
-    }
-
-    const chunkResponses = await Promise.all(
-      chunks.map(async (chunk) => {
-        const chunkRes = await fetch(chunk.path, {
-          cache: "no-store",
-        });
-
-        if (!chunkRes.ok) {
-          throw new Error(`chunk request failed: ${chunk.path}`);
-        }
-
-        const chunkData = (await chunkRes.json()) as FeedChunkResponse;
-        return Array.isArray(chunkData.items) ? chunkData.items : [];
+  return Array.isArray(legacyData?.posts)
+    ? legacyData.posts.filter((post: IngestedPost) => {
+        const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
+        return !countryCode || countryCode === locale;
       })
-    );
-
-    return chunkResponses.flat();
-  }
-
-  return Array.isArray(data.items) ? data.items : [];
+    : [];
 }
 
 export default function App() {
@@ -498,7 +499,7 @@ export default function App() {
 
     try {
       const nextPosts = await loadCountryFeed(locale);
-      setServerPosts(Array.isArray(nextPosts) ? nextPosts : []);
+      setServerPosts(nextPosts);
     } catch (error) {
       console.error("Failed to load feed", error);
       setServerPosts([]);
