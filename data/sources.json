@@ -1,20 +1,21 @@
 {
-  "updatedAt": "2026-04-17T08:45:58.330Z",
+  "updatedAt": "2026-04-17T08:57:32.099Z",
   "sources": [
     {
-      "id": "ru:n_no_f",
+      "id": "ru:media_apple",
       "countryCode": "ru",
-      "handle": "n_no_f",
-      "title": "Невероятно, но факт",
+      "handle": "media_apple",
+      "title": "Media Apple",
       "avatarUrl": null,
-      "defaultTag": "politics",
+      "verified": false,
+      "defaultTag": "technology",
       "tags": [
-        "politics"
+        "technology"
       ],
       "status": "active",
       "note": null,
-      "createdAt": "2026-04-17T08:45:58.198Z",
-      "updatedAt": "2026-04-17T08:45:58.198Z",
+      "createdAt": "2026-04-17T04:41:38.541Z",
+      "updatedAt": "2026-04-17T08:57:32.083Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -26,6 +27,7 @@
       "handle": "memachh",
       "title": "МЕМАЧ",
       "avatarUrl": null,
+      "verified": false,
       "defaultTag": "memes",
       "tags": [
         "memes"
@@ -33,45 +35,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-04-17T04:45:51.392Z",
-      "updatedAt": "2026-04-17T04:45:51.392Z",
-      "lastCheckedAt": null,
-      "lastImportedAt": null,
-      "lastSeenPostId": null,
-      "importedPostsCount": 0
-    },
-    {
-      "id": "ru:telegaru",
-      "countryCode": "ru",
-      "handle": "telegaru",
-      "title": "Telega",
-      "avatarUrl": null,
-      "defaultTag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-17T04:44:36.767Z",
-      "updatedAt": "2026-04-17T04:44:36.767Z",
-      "lastCheckedAt": null,
-      "lastImportedAt": null,
-      "lastSeenPostId": null,
-      "importedPostsCount": 0
-    },
-    {
-      "id": "ru:media_apple",
-      "countryCode": "ru",
-      "handle": "media_apple",
-      "title": "Media Apple",
-      "avatarUrl": null,
-      "defaultTag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-17T04:41:38.541Z",
-      "updatedAt": "2026-04-17T04:41:38.541Z",
+      "updatedAt": "2026-04-17T08:57:32.083Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -82,7 +46,8 @@
       "countryCode": "ru",
       "handle": "molyanov_blog",
       "title": "Молянов",
-      "avatarUrl": null,
+      "avatarUrl": "https://cdn4.telesco.pe/file/ilvOz876eHGcY9ZSJiVRTiv-UJ_QYqZu8W8LYNk8Ey81KMdc4tQj2_X3Af9EQ2yaVCLahpugU6-Nrsm3YrudJZxWEZcEDPCGYY29ldOFINIdBSyKD0ZgCx-AVadhlFgMiJZWGew-jzpvE6j5o0mMjEXWcgquh0GltLc5vAiWguqbI1BULddwGzgp9iX8N_iM058a5eWx5UWSATrwCt4Ew7w05OGZJv28LNt1e4EJOccP2RGlcRoxqu-EP31lNO8Vtsku-TFHAMoHehYfHqH4lpdA8upElPlt-PfOrqkSppuk4jHtMCzI05bQdHO5GYqVYw6jQY7Mv18HzqcNIASnyw.jpg",
+      "verified": false,
       "defaultTag": "people",
       "tags": [
         "people"
@@ -90,7 +55,27 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-04-16T16:06:33.364Z",
-      "updatedAt": "2026-04-17T04:39:32.670Z",
+      "updatedAt": "2026-04-17T08:57:32.084Z",
+      "lastCheckedAt": "2026-04-17T08:57:31.666Z",
+      "lastImportedAt": "2026-04-17T08:57:31.666Z",
+      "lastSeenPostId": 4524,
+      "importedPostsCount": 3
+    },
+    {
+      "id": "ru:n_no_f",
+      "countryCode": "ru",
+      "handle": "n_no_f",
+      "title": "Невероятно, но факт",
+      "avatarUrl": null,
+      "verified": false,
+      "defaultTag": "politics",
+      "tags": [
+        "politics"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-17T08:45:58.198Z",
+      "updatedAt": "2026-04-17T08:57:32.083Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -102,6 +87,7 @@
       "handle": "pikabu",
       "title": "Пикабу",
       "avatarUrl": null,
+      "verified": false,
       "defaultTag": "humor",
       "tags": [
         "humor"
@@ -109,7 +95,27 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-04-16T16:06:37.196Z",
-      "updatedAt": "2026-04-17T04:39:53.595Z",
+      "updatedAt": "2026-04-17T08:57:32.083Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0
+    },
+    {
+      "id": "ru:telegaru",
+      "countryCode": "ru",
+      "handle": "telegaru",
+      "title": "Telega",
+      "avatarUrl": null,
+      "verified": false,
+      "defaultTag": "telegram",
+      "tags": [
+        "telegram"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-17T04:44:36.767Z",
+      "updatedAt": "2026-04-17T08:57:32.083Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -121,6 +127,7 @@
       "handle": "video2",
       "title": "video2",
       "avatarUrl": null,
+      "verified": false,
       "defaultTag": "other",
       "tags": [
         "other"
@@ -128,7 +135,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-04-16T16:06:35.311Z",
-      "updatedAt": "2026-04-17T04:30:55.282Z",
+      "updatedAt": "2026-04-17T08:57:32.083Z",
       "lastCheckedAt": "2026-04-17T04:30:54.100Z",
       "lastImportedAt": "2026-04-17T04:30:54.100Z",
       "lastSeenPostId": 12272,
