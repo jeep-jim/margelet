@@ -42,7 +42,6 @@ export function FeedMediaCard({
   mediaIndex,
   onChangeMediaIndex,
   isCardVisible = false,
-  shouldLoadMedia = false,
 }: FeedMediaCardProps) {
   const COPY = {
     en: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
@@ -233,7 +232,6 @@ export function FeedMediaCard({
     const node = videoRef.current;
     if (!node) return;
     if (activeItem?.kind !== "video") return;
-    if (!shouldLoadMedia) return;
 
     if (isCardVisible && !forcedPaused) {
       const playPromise = node.play();
@@ -243,7 +241,7 @@ export function FeedMediaCard({
     } else {
       node.pause();
     }
-  }, [isCardVisible, forcedPaused, activeItem?.kind, mediaIndex, post.id, shouldLoadMedia]);
+  }, [isCardVisible, forcedPaused, activeItem?.kind, mediaIndex, post.id]);
 
   const handleOpen = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
@@ -267,18 +265,6 @@ export function FeedMediaCard({
       setIsVideoPlaying(false);
     }
   };
-
-  if (!media.length) {
-    return null;
-  }
-
-  if (!shouldLoadMedia) {
-    return (
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-soft">
-        <div className="absolute inset-0 animate-pulse bg-surface-soft" />
-      </div>
-    );
-  }
 
   return (
     <div className="relative">
