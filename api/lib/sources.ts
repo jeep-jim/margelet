@@ -18,6 +18,7 @@ const POST_TTL_HOURS = 24;
 const SOURCE_PAGE_TIMEOUT_MS = 15000;
 const REFRESH_INTERVAL_MS = 3 * 60 * 60 * 1000;
 const MIN_REMAINING_TTL_MS = 60 * 60 * 1000;
+const MIN_REBUILD_GAP_MS = 40 * 60 * 1000;
 const MIN_POST_AGE_BEFORE_REFRESH_MS = 10 * 60 * 1000;
 const REBUILD_INTERVAL_HOURS = 1;
 const SOURCE_CHECK_CYCLE_HOURS = 24;
@@ -737,6 +738,32 @@ export async function rebuildFeedFromSources(options?: {
     normalizedCountry && options?.forceFullCountryScan
   );
 
+  const feedFile = await readFeedFile<IngestedPost>();
+  const lastUpdatedMs = parseIsoMs(feedFile.updatedAt) ?? 0;
+
+  if (!forceFullCountryScan && lastUpdatedMs > 0) {
+    const nowMs = Date.now();
+    if (nowMs - lastUpdatedMs < MIN_REBUILD_GAP_MS) {
+      const posts = cleanupFeedPosts(feedFile.posts || []);
+      return {
+        updatedAt: feedFile.updatedAt,
+        posts,
+        countriesChecked: 0,
+        activeCountries: 0,
+        selectedSources: 0,
+        sourcesChecked: 0,
+        importedPosts: 0,
+        refreshedPosts: 0,
+        removedPosts: 0,
+        existingFreshPostsCount: posts.length,
+        sourcesWithNewPosts: 0,
+        sourcesWithRefreshedPosts: 0,
+        skipped: true,
+        skipReason: "recently_rebuilt",
+      };
+    }
+  }
+
   const allSources = await listSources();
   const activeSources = allSources.filter(
     (source) =>
@@ -763,7 +790,6 @@ export async function rebuildFeedFromSources(options?: {
       return pickSourcesForRun(countrySources);
     });
 
-  const feedFile = await readFeedFile<IngestedPost>();
   let currentPosts = cleanupFeedPosts(feedFile.posts || []);
 
   let countriesChecked = 0;
