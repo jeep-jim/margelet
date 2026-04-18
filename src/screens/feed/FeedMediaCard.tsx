@@ -35,6 +35,13 @@ function formatTime(seconds: number) {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
+function stopEvent(event: {
+  stopPropagation: () => void;
+  preventDefault?: () => void;
+}) {
+  event.stopPropagation();
+}
+
 export function FeedMediaCard({
   locale,
   post,
@@ -112,6 +119,7 @@ export function FeedMediaCard({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isSeeking, setIsSeeking] = useState(false);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
@@ -157,7 +165,9 @@ export function FeedMediaCard({
     };
 
     const syncTime = () => {
-      setCurrentTime(node.currentTime || 0);
+      if (!isSeeking) {
+        setCurrentTime(node.currentTime || 0);
+      }
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
     };
 
@@ -169,7 +179,14 @@ export function FeedMediaCard({
       setIsVideoPlaying(false);
     };
 
+    const onLoadedData = () => {
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+      setCurrentTime(node.currentTime || 0);
+    };
+
     node.addEventListener("loadedmetadata", syncMeta);
+    node.addEventListener("loadeddata", onLoadedData);
+    node.addEventListener("durationchange", syncMeta);
     node.addEventListener("timeupdate", syncTime);
     node.addEventListener("play", onPlay);
     node.addEventListener("pause", onPause);
@@ -181,12 +198,14 @@ export function FeedMediaCard({
 
     return () => {
       node.removeEventListener("loadedmetadata", syncMeta);
+      node.removeEventListener("loadeddata", onLoadedData);
+      node.removeEventListener("durationchange", syncMeta);
       node.removeEventListener("timeupdate", syncTime);
       node.removeEventListener("play", onPlay);
       node.removeEventListener("pause", onPause);
       node.removeEventListener("ended", onPause);
     };
-  }, [activeItem?.id, activeItem?.kind]);
+  }, [activeItem?.id, activeItem?.kind, isSeeking]);
 
   useEffect(() => {
     setForcedPaused(false);
@@ -248,6 +267,15 @@ export function FeedMediaCard({
     }
   };
 
+  const seekTo = (value: number) => {
+    const node = videoRef.current;
+    if (!node) return;
+
+    const next = Number.isFinite(value) ? value : 0;
+    node.currentTime = next;
+    setCurrentTime(next);
+  };
+
   if (!media.length) {
     return null;
   }
@@ -290,7 +318,17 @@ export function FeedMediaCard({
           />
 
           <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
-            <div className="flex items-center gap-3">
+            <div
+              className="pointer-events-auto flex items-center gap-3"
+              onClick={stopEvent}
+              onMouseDown={stopEvent}
+              onTouchStart={stopEvent}
+              onTouchMove={stopEvent}
+              onTouchEnd={stopEvent}
+              onPointerDown={stopEvent}
+              onPointerMove={stopEvent}
+              onPointerUp={stopEvent}
+            >
               <button
                 type="button"
                 onPointerDown={(event) => {
@@ -298,7 +336,7 @@ export function FeedMediaCard({
                   event.stopPropagation();
                   togglePlay();
                 }}
-                className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+                className="relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
                 aria-label={isVideoPlaying ? copy.pause : copy.play}
               >
                 {isVideoPlaying ? (
@@ -318,18 +356,39 @@ export function FeedMediaCard({
                 max={duration || 0}
                 step={0.1}
                 value={Math.min(currentTime, duration || 0)}
+                onInput={(event) => {
+                  event.stopPropagation();
+                  seekTo(Number((event.target as HTMLInputElement).value));
+                }}
                 onChange={(event) => {
                   event.stopPropagation();
-                  const node = videoRef.current;
-                  if (!node) return;
-                  const next = Number(event.target.value);
-                  node.currentTime = next;
-                  setCurrentTime(next);
+                  seekTo(Number(event.target.value));
                 }}
-                onPointerDown={(event) => {
+                onMouseDown={(event) => {
+                  setIsSeeking(true);
                   event.stopPropagation();
                 }}
-                className="pointer-events-auto relative z-50 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+                onMouseUp={(event) => {
+                  setIsSeeking(false);
+                  event.stopPropagation();
+                }}
+                onTouchStart={(event) => {
+                  setIsSeeking(true);
+                  event.stopPropagation();
+                }}
+                onTouchEnd={(event) => {
+                  setIsSeeking(false);
+                  event.stopPropagation();
+                }}
+                onPointerDown={(event) => {
+                  setIsSeeking(true);
+                  event.stopPropagation();
+                }}
+                onPointerUp={(event) => {
+                  setIsSeeking(false);
+                  event.stopPropagation();
+                }}
+                className="relative z-50 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
               />
 
               <button
@@ -341,7 +400,7 @@ export function FeedMediaCard({
                   setMuted(next);
                   writeGlobalMuted(next);
                 }}
-                className="pointer-events-auto relative z-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+                className="relative z-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
                 aria-label={muted ? copy.unmute : copy.mute}
               >
                 {muted ? (
