@@ -1,5 +1,5 @@
 import { Pause, Play, Volume2, VolumeX } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { FeedMediaCardProps } from "./feed.types";
 import { FeedCarousel } from "./FeedCarousel";
 import { normalizeMediaList } from "./feed.utils";
@@ -42,6 +42,7 @@ export function FeedMediaCard({
   mediaIndex,
   onChangeMediaIndex,
   isCardVisible = false,
+  shouldLoadMedia = false,
 }: FeedMediaCardProps) {
   const COPY = {
     en: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
@@ -102,9 +103,7 @@ export function FeedMediaCard({
   } as const;
 
   const copy = COPY[locale] ?? COPY.en;
-
-  const [media, setMedia] = useState(() => normalizeMediaList(post));
-  const [retryUsed, setRetryUsed] = useState(false);
+  const media = useMemo(() => normalizeMediaList(post), [post]);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -118,35 +117,6 @@ export function FeedMediaCard({
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
 
   const activeIsVideo = activeItem?.kind === "video";
-
-  const tryRefreshMedia = async () => {
-    if (retryUsed) return;
-    if (!post.postUrl) return;
-
-    setRetryUsed(true);
-
-    try {
-      const res = await fetch(
-        `/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`
-      );
-
-      if (!res.ok) return;
-
-      const data = await res.json();
-      if (!data) return;
-
-      const refreshed = normalizeMediaList({
-        ...post,
-        ...data,
-      });
-
-      if (refreshed?.length) {
-        setMedia(refreshed);
-      }
-    } catch {
-      //
-    }
-  };
 
   useEffect(() => {
     const syncMuted = (event: Event) => {
@@ -230,8 +200,13 @@ export function FeedMediaCard({
 
   useEffect(() => {
     const node = videoRef.current;
-    if (!node) return;
-    if (activeItem?.kind !== "video") return;
+    if (!node || activeItem?.kind !== "video") return;
+
+    if (!shouldLoadMedia) {
+      node.pause();
+      setIsVideoPlaying(false);
+      return;
+    }
 
     if (isCardVisible && !forcedPaused) {
       const playPromise = node.play();
@@ -241,7 +216,14 @@ export function FeedMediaCard({
     } else {
       node.pause();
     }
-  }, [isCardVisible, forcedPaused, activeItem?.kind, mediaIndex, post.id]);
+  }, [
+    isCardVisible,
+    forcedPaused,
+    activeItem?.kind,
+    mediaIndex,
+    post.id,
+    shouldLoadMedia,
+  ]);
 
   const handleOpen = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
@@ -266,6 +248,18 @@ export function FeedMediaCard({
     }
   };
 
+  if (!media.length) {
+    return null;
+  }
+
+  if (!shouldLoadMedia) {
+    return (
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-soft">
+        <div className="absolute inset-0 animate-pulse bg-surface-soft" />
+      </div>
+    );
+  }
+
   return (
     <div className="relative">
       <FeedCarousel
@@ -284,7 +278,6 @@ export function FeedMediaCard({
         enableFullscreen={!activeIsVideo}
         nativeVideoControls={false}
         blockVideoClickPropagation={false}
-        onMediaError={tryRefreshMedia}
       />
 
       {activeIsVideo ? (

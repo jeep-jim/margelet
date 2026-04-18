@@ -15,6 +15,7 @@ import {
 } from "./feed.utils";
 
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
+
 export function FeedCard(props: FeedCardProps) {
   const {
     post,
@@ -52,26 +53,41 @@ export function FeedCard(props: FeedCardProps) {
   const cardRef = useRef<HTMLElement | null>(null);
 
   const [isCardVisible, setIsCardVisible] = useState(false);
+  const [shouldLoadMedia, setShouldLoadMedia] = useState(false);
   const [menuAnchorRect, setMenuAnchorRect] = useState<{ top: number; right: number } | null>(null);
 
-
-  
   useEffect(() => {
     const node = cardRef.current;
     if (!node) return;
 
-    const observer = new IntersectionObserver(
+    const visibilityObserver = new IntersectionObserver(
       ([entry]) => {
         setIsCardVisible(entry.isIntersecting && entry.intersectionRatio >= 0.6);
       },
       { threshold: [0, 0.6, 1] }
     );
 
-    observer.observe(node);
-    return () => observer.disconnect();
+    const preloadObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoadMedia(true);
+          preloadObserver.disconnect();
+        }
+      },
+      {
+        rootMargin: "900px 0px",
+        threshold: 0,
+      }
+    );
+
+    visibilityObserver.observe(node);
+    preloadObserver.observe(node);
+
+    return () => {
+      visibilityObserver.disconnect();
+      preloadObserver.disconnect();
+    };
   }, []);
-
-
 
   const openPostSafely = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
@@ -101,7 +117,7 @@ export function FeedCard(props: FeedCardProps) {
               });
 
               onToggleMenu();
-            }}            
+            }}
             type="button"
           >
             <MoreVertical className="h-5 w-5" />
@@ -122,7 +138,7 @@ export function FeedCard(props: FeedCardProps) {
               postId={post.id}
               sourceHandle={post.source.handle}
             />
-          ) : null}             
+          ) : null}
         </div>
       </div>
 
@@ -133,6 +149,7 @@ export function FeedCard(props: FeedCardProps) {
               {...props}
               displayText={displayText}
               isCardVisible={isCardVisible}
+              shouldLoadMedia={shouldLoadMedia}
             />
           </div>
 

@@ -22,7 +22,6 @@ type HybridMediaProps = {
   maxMediaHeightClass: string;
   nativeVideoControls: boolean;
   blockVideoClickPropagation: boolean;
-  onMediaError?: () => void;
 };
 
 function HybridMedia({
@@ -34,7 +33,6 @@ function HybridMedia({
   maxMediaHeightClass,
   nativeVideoControls,
   blockVideoClickPropagation,
-  onMediaError,
 }: HybridMediaProps) {
   const mediaClass =
     mode === "adaptive"
@@ -60,7 +58,6 @@ function HybridMedia({
             ? (event) => event.stopPropagation()
             : undefined
         }
-        onError={onMediaError}
       />
     );
   }
@@ -73,7 +70,8 @@ function HybridMedia({
         alt=""
         className={mediaClass}
         referrerPolicy="no-referrer"
-        onError={onMediaError}
+        loading="lazy"
+        decoding="async"
       />
     );
   }
@@ -86,7 +84,6 @@ function HybridMedia({
           controls
           className="w-full max-w-[420px]"
           preload="metadata"
-          onError={onMediaError}
         />
       </div>
     );
@@ -161,7 +158,6 @@ export function FeedCarousel({
   backgroundClass = "bg-black",
   nativeVideoControls = false,
   blockVideoClickPropagation = true,
-  onMediaError,
 }: {
   items: CarouselItem[];
   displayText?: string;
@@ -179,7 +175,6 @@ export function FeedCarousel({
   backgroundClass?: string;
   nativeVideoControls?: boolean;
   blockVideoClickPropagation?: boolean;
-  onMediaError?: () => void;
 }) {
   const touchStartXRef = useRef<number | null>(null);
   const [fullscreenOpen, setFullscreenOpen] = useState(false);
@@ -272,7 +267,6 @@ export function FeedCarousel({
               maxMediaHeightClass={maxMediaHeightClass}
               nativeVideoControls={nativeVideoControls}
               blockVideoClickPropagation={blockVideoClickPropagation}
-              onMediaError={onMediaError}
             />
           ) : null}
         </div>
@@ -380,7 +374,6 @@ export function FeedCarousel({
               maxMediaHeightClass="max-h-[88vh]"
               nativeVideoControls={nativeVideoControls}
               blockVideoClickPropagation={blockVideoClickPropagation}
-              onMediaError={onMediaError}
             />
           </div>
 

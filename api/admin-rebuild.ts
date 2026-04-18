@@ -43,7 +43,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const countryCode = (asString(body.countryCode).toLowerCase() || null) as CountryCode | null;
-    const result = await rebuildFeedFromSources({ countryCode });
+    const result = await rebuildFeedFromSources({
+      countryCode,
+      forceFullCountryScan: Boolean(countryCode),
+    });
 
     return res.status(200).json({ ok: true, ...result });
   } catch (error) {

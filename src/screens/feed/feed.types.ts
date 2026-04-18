@@ -43,6 +43,7 @@ export type FeedTextCardProps = FeedCardProps;
 export type FeedMediaCardProps = FeedCardProps & {
   displayText: string;
   isCardVisible?: boolean;
+  shouldLoadMedia?: boolean;
 };
 
 export type ViewerProps = {

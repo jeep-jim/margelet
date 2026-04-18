@@ -31,6 +31,7 @@ type SourceSyncResult = {
   newPosts: IngestedPost[];
   refreshedPosts: IngestedPost[];
   refreshedCount: number;
+  sourceMetaTouched: boolean;
 };
 
 function asString(value: unknown): string | null {
@@ -262,7 +263,7 @@ function interleavePostsBySource(posts: IngestedPost[]) {
   return result;
 }
 
-function parsePostIdsFromChannelHtml(html: string): number[] {  
+function parsePostIdsFromChannelHtml(html: string): number[] {
   const ids = new Set<number>();
   const re = /data-post="[^/]+\/(\d+)"/g;
 
@@ -531,6 +532,38 @@ function pickSourcesForRun(sources: TrustedSource[]) {
     .slice(0, batchSize);
 }
 
+async function syncSourceMetaFromLatestPost(params: {
+  source: TrustedSource;
+  ids: number[];
+  title: string;
+  avatarUrl: string | null;
+  verified: boolean;
+}) {
+  const { source, ids, title, avatarUrl, verified } = params;
+
+  for (const postId of ids.slice(0, 3)) {
+    const postUrl = `https://t.me/${source.handle}/${postId}?single`;
+    const ingest = await ingestTelegramPost(postUrl);
+    if (!ingest) continue;
+
+    return {
+      title: ingest.source.title || title,
+      avatarUrl: ingest.source.avatar || avatarUrl,
+      verified: ingest.source.verified || verified,
+      touched: Boolean(
+        ingest.source.title || ingest.source.avatar || ingest.source.verified
+      ),
+    };
+  }
+
+  return {
+    title,
+    avatarUrl,
+    verified,
+    touched: false,
+  };
+}
+
 async function syncSourcePosts(
   source: TrustedSource,
   existingPosts: IngestedPost[]
@@ -540,7 +573,9 @@ async function syncSourcePosts(
   const nowIso = new Date().toISOString();
   const nowMs = Date.parse(nowIso);
 
-  const sourceExistingPosts = existingPosts.filter((post) => isPostFromSource(post, source));
+  const sourceExistingPosts = existingPosts.filter((post) =>
+    isPostFromSource(post, source)
+  );
   const knownUrls = new Set(existingPosts.map((post) => post.postUrl));
   const newPosts: IngestedPost[] = [];
   const refreshedPosts: IngestedPost[] = [];
@@ -548,17 +583,7 @@ async function syncSourcePosts(
   let sourceTitle = source.title;
   let sourceAvatarUrl = source.avatarUrl;
   let sourceVerified = Boolean(source.verified);
-
-  const refreshSourceMetaFromIngest = async (postUrl: string) => {
-    const ingest = await ingestTelegramPost(postUrl);
-    if (!ingest) return false;
-
-    sourceTitle = ingest.source.title || sourceTitle;
-    sourceAvatarUrl = ingest.source.avatar || sourceAvatarUrl;
-    sourceVerified = ingest.source.verified || sourceVerified;
-
-    return true;
-  };
+  let sourceMetaTouched = false;
 
   for (const postId of ids.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE)) {
     if (source.lastSeenPostId && postId <= source.lastSeenPostId) continue;
@@ -572,6 +597,7 @@ async function syncSourcePosts(
     sourceTitle = ingest.source.title || sourceTitle;
     sourceAvatarUrl = ingest.source.avatar || sourceAvatarUrl;
     sourceVerified = ingest.source.verified || sourceVerified;
+    sourceMetaTouched = true;
 
     newPosts.push(
       buildPost({
@@ -602,6 +628,7 @@ async function syncSourcePosts(
     sourceTitle = ingest.source.title || sourceTitle;
     sourceAvatarUrl = ingest.source.avatar || sourceAvatarUrl;
     sourceVerified = ingest.source.verified || sourceVerified;
+    sourceMetaTouched = true;
 
     refreshedPosts.push(
       buildRefreshedPost({
@@ -618,14 +645,19 @@ async function syncSourcePosts(
     );
   }
 
-  if (ids.length > 0 && newPosts.length === 0 && refreshedPosts.length === 0) {
-    const latestPostUrl = `https://t.me/${source.handle}/${ids[0]}?single`;
+  if (!sourceMetaTouched && ids.length > 0) {
+    const meta = await syncSourceMetaFromLatestPost({
+      source,
+      ids,
+      title: sourceTitle,
+      avatarUrl: sourceAvatarUrl,
+      verified: sourceVerified,
+    });
 
-    try {
-      await refreshSourceMetaFromIngest(latestPostUrl);
-    } catch (error) {
-      console.error("refresh source metadata failed", source.handle, error);
-    }
+    sourceTitle = meta.title;
+    sourceAvatarUrl = meta.avatarUrl;
+    sourceVerified = meta.verified;
+    sourceMetaTouched = meta.touched;
   }
 
   const highestSeen =
@@ -648,6 +680,7 @@ async function syncSourcePosts(
     newPosts,
     refreshedPosts,
     refreshedCount: refreshedPosts.length,
+    sourceMetaTouched,
   };
 }
 
@@ -659,7 +692,9 @@ function mergeSourcePosts(params: {
   refreshedPosts: IngestedPost[];
 }) {
   const { allPosts, source, nextSource, newPosts, refreshedPosts } = params;
-  const refreshedByUrl = new Map(refreshedPosts.map((post) => [post.postUrl, post]));
+  const refreshedByUrl = new Map(
+    refreshedPosts.map((post) => [post.postUrl, post])
+  );
 
   return cleanupFeedPosts([
     ...newPosts,
@@ -677,7 +712,7 @@ function mergeSourcePosts(params: {
         ...post,
         source: {
           ...post.source,
-          handle: nextSource.handle,
+          handle: nextSource.handle || post.source.handle,
           title: nextSource.title || post.source.title,
           avatar: nextSource.avatarUrl || post.source.avatar || null,
           verified: Boolean(nextSource.verified),
@@ -693,10 +728,14 @@ function mergeSourcePosts(params: {
 
 export async function rebuildFeedFromSources(options?: {
   countryCode?: CountryCode | null;
+  forceFullCountryScan?: boolean;
 }) {
   const normalizedCountry = normalizeCountryCode(
     options?.countryCode
   ) as CountryCode | null;
+  const forceFullCountryScan = Boolean(
+    normalizedCountry && options?.forceFullCountryScan
+  );
 
   const allSources = await listSources();
   const activeSources = allSources.filter(
@@ -716,7 +755,13 @@ export async function rebuildFeedFromSources(options?: {
 
   const selectedSources = Array.from(activeByCountry.entries())
     .sort((a, b) => a[0].localeCompare(b[0]))
-    .flatMap(([, countrySources]) => pickSourcesForRun(countrySources));
+    .flatMap(([, countrySources]) => {
+      if (forceFullCountryScan) {
+        return [...countrySources].sort((a, b) => a.handle.localeCompare(b.handle));
+      }
+
+      return pickSourcesForRun(countrySources);
+    });
 
   const feedFile = await readFeedFile<IngestedPost>();
   let currentPosts = cleanupFeedPosts(feedFile.posts || []);
@@ -729,7 +774,11 @@ export async function rebuildFeedFromSources(options?: {
   let sourcesWithRefreshedPosts = 0;
 
   for (const [, countrySources] of activeByCountry) {
-    if (pickSourcesForRun(countrySources).length > 0) {
+    const hasSelected = forceFullCountryScan
+      ? countrySources.length > 0
+      : pickSourcesForRun(countrySources).length > 0;
+
+    if (hasSelected) {
       countriesChecked += 1;
     }
   }
@@ -763,7 +812,7 @@ export async function rebuildFeedFromSources(options?: {
     }
   }
 
-    const posts = interleavePostsBySource(cleanupFeedPosts(currentPosts));
+  const posts = interleavePostsBySource(cleanupFeedPosts(currentPosts));
   await writeFeedFile(posts);
   await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
 
