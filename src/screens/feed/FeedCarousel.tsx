@@ -73,8 +73,6 @@ function HybridMedia({
         alt=""
         className={mediaClass}
         referrerPolicy="no-referrer"
-        loading="lazy"
-        decoding="async"
         onError={onMediaError}
       />
     );
@@ -260,6 +258,7 @@ export function FeedCarousel({
             if (!enableFullscreen) return;
             if (current?.kind === "video") return;
             event.stopPropagation();
+            setFullscreenIndex(activeIndex);
             setFullscreenOpen(true);
           }}
         >
@@ -278,52 +277,50 @@ export function FeedCarousel({
           ) : null}
         </div>
 
-        {items.length > 1 ? (
-          <>
-            <MediaDots
-              total={items.length}
-              activeIndex={activeIndex}
-              onSelect={(index) => onChange?.(index)}
-            />
-
-            {canPrev ? (
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onChange?.(activeIndex - 1);
-                }}
-                className={`absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full ${
-                  controlsTone === "dark"
-                    ? "bg-black/45 text-white"
-                    : "bg-white/80 text-black"
-                }`}
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-            ) : null}
-
-            {canNext ? (
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onChange?.(activeIndex + 1);
-                }}
-                className={`absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full ${
-                  controlsTone === "dark"
-                    ? "bg-black/45 text-white"
-                    : "bg-white/80 text-black"
-                }`}
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            ) : null}
-          </>
+        {canPrev ? (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onChange?.(activeIndex - 1);
+            }}
+            className={`absolute left-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
+              controlsTone === "light"
+                ? "bg-black/35 text-white"
+                : "bg-white/85 text-neutral-900"
+            }`}
+            aria-label="Предыдущее медиа"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
         ) : null}
+
+        {canNext ? (
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onChange?.(activeIndex + 1);
+            }}
+            className={`absolute right-3 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full backdrop-blur-sm ${
+              controlsTone === "light"
+                ? "bg-black/35 text-white"
+                : "bg-white/85 text-neutral-900"
+            }`}
+            aria-label="Следующее медиа"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        ) : null}
+
+        <MediaDots
+          total={items.length}
+          activeIndex={activeIndex}
+          onSelect={(index) => onChange?.(index)}
+        />
       </div>
 
-      {fullscreenOpen && fullscreenItem ? (
+      {enableFullscreen && fullscreenOpen && fullscreenItem ? (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4"
           onClick={() => setFullscreenOpen(false)}
@@ -334,25 +331,64 @@ export function FeedCarousel({
               event.stopPropagation();
               setFullscreenOpen(false);
             }}
-            className="absolute right-4 top-4 z-[110] flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur"
+            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
+            aria-label="Закрыть"
           >
             <X className="h-5 w-5" />
           </button>
 
+          {fullscreenIndex > 0 ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setFullscreenIndex((prev) => Math.max(0, prev - 1));
+              }}
+              className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
+              aria-label="Предыдущее медиа"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+          ) : null}
+
+          {fullscreenIndex < items.length - 1 ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setFullscreenIndex((prev) =>
+                  Math.min(items.length - 1, prev + 1)
+                );
+              }}
+              className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
+              aria-label="Следующее медиа"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
+          ) : null}
+
           <div
-            className="relative flex h-full w-full items-center justify-center overflow-hidden"
+            className="flex max-h-full max-w-full items-center justify-center"
             onClick={(event) => event.stopPropagation()}
           >
             <HybridMedia
               item={fullscreenItem}
               fit="contain"
               muted={muted}
+              videoRef={videoRef}
               mode="adaptive"
-              maxMediaHeightClass="max-h-[92vh]"
-              nativeVideoControls
-              blockVideoClickPropagation={false}
+              maxMediaHeightClass="max-h-[88vh]"
+              nativeVideoControls={nativeVideoControls}
+              blockVideoClickPropagation={blockVideoClickPropagation}
+              onMediaError={onMediaError}
             />
           </div>
+
+          <MediaDots
+            total={items.length}
+            activeIndex={fullscreenIndex}
+            onSelect={setFullscreenIndex}
+          />
         </div>
       ) : null}
     </>
