@@ -215,41 +215,43 @@ export function AdminScreen({
           <div className="mb-4 text-sm text-red-400">ошибка загрузки</div>
         ) : null}
 
-        <div className="mb-4 flex flex-col gap-3 rounded-[30px] border border-white/10 bg-white/[0.045] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
-          <div className="min-w-0">
-            <div className="text-[28px] font-semibold tracking-tight">Admin</div>
+        <div className="mb-4 rounded-[30px] border border-white/10 bg-white/[0.045] p-4 sm:p-5">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
+              <div className="text-[30px] font-semibold leading-none tracking-tight">
+                {posts.length} пост
+              </div>
 
-            <div className="mt-1 text-sm text-white/70">
-              {posts.length} пост / обновится в {nextRebuildTime}
+              <div className="mt-2 text-sm text-white/70">
+                обновится в {nextRebuildTime}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  void handleRebuildNow();
+                }}
+                disabled={rebuildLoading}
+                className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition disabled:opacity-60"
+              >
+                {rebuildLoading ? "обновляю..." : "обновить сейчас"}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  localStorage.removeItem("margelet_tg_user");
+                  window.location.reload();
+                }}
+                className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
+              >
+                выйти
+              </button>
             </div>
           </div>
-
-          <div className="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={() => {
-                void handleRebuildNow();
-              }}
-              disabled={rebuildLoading}
-              className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition disabled:opacity-60"
-            >
-              {rebuildLoading ? "обновляю..." : "обновить сейчас"}
-            </button>
-
-            <button
-              type="button"
-              onClick={() =>
-                window.open(
-                  "https://oauth.telegram.org/auth?bot_id=7716345760&origin=https%3A%2F%2Fwww.margelet.space&request_access=write",
-                  "_self"
-                )
-              }
-              className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
-            >
-              войти
-            </button>
-          </div>
-        </div>        
+        </div>              
 
         {rebuildMessage ? (
           <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75">
