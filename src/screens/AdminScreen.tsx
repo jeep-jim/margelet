@@ -19,7 +19,7 @@ type LoadState = "idle" | "loading" | "ready" | "error";
 const ADMIN_TELEGRAM_ID = "1372669404";
 const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
 const REBUILD_MINUTE = 17;
-const REBUILD_HOURS = [0, 3, 6, 9, 12, 15, 18, 21];
+const REBUILD_HOURS = Array.from({ length: 24 }, (_, index) => index);
 
 function getNextRebuildDate(now: Date) {
   for (const hour of REBUILD_HOURS) {
