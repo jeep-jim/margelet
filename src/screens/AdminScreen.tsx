@@ -18,13 +18,13 @@ type LoadState = "idle" | "loading" | "ready" | "error";
 
 const ADMIN_TELEGRAM_ID = "1372669404";
 const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
+const REBUILD_MINUTE = 17;
+const REBUILD_HOURS = [0, 3, 6, 9, 12, 15, 18, 21];
 
-function getNextRebuildTime(now: Date) {
-  const targets = [7, 15, 23];
-
-  for (const hour of targets) {
+function getNextRebuildDate(now: Date) {
+  for (const hour of REBUILD_HOURS) {
     const candidate = new Date(now);
-    candidate.setHours(hour, 17, 0, 0);
+    candidate.setHours(hour, REBUILD_MINUTE, 0, 0);
 
     if (candidate.getTime() > now.getTime()) {
       return candidate;
@@ -33,8 +33,7 @@ function getNextRebuildTime(now: Date) {
 
   const tomorrow = new Date(now);
   tomorrow.setDate(now.getDate() + 1);
-  tomorrow.setHours(7, 17, 0, 0);
-
+  tomorrow.setHours(REBUILD_HOURS[0], REBUILD_MINUTE, 0, 0);
   return tomorrow;
 }
 
@@ -43,6 +42,49 @@ function formatShortTime(date: Date) {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+function formatDateTime(date: Date) {
+  return date.toLocaleString([], {
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function formatCountdown(target: Date, now: Date) {
+  const diff = Math.max(0, target.getTime() - now.getTime());
+  const totalSeconds = Math.floor(diff / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return [hours, minutes, seconds]
+    .map((value) => String(value).padStart(2, "0"))
+    .join(":");
+}
+
+function parseIsoMs(value?: string | null) {
+  const ms = Date.parse(String(value || ""));
+  return Number.isFinite(ms) ? ms : null;
+}
+
+function getLatestSourceActivityByCountry(
+  sources: TrustedSource[],
+  countryCode: CountryCode
+) {
+  const countrySources = sources.filter((source) => source.countryCode === countryCode);
+
+  let latestMs = 0;
+
+  for (const source of countrySources) {
+    const checkedMs = parseIsoMs(source.lastCheckedAt) ?? 0;
+    const importedMs = parseIsoMs(source.lastImportedAt) ?? 0;
+    latestMs = Math.max(latestMs, checkedMs, importedMs);
+  }
+
+  return latestMs > 0 ? new Date(latestMs) : null;
 }
 
 export function AdminScreen({
@@ -55,10 +97,7 @@ export function AdminScreen({
   const [sources, setSources] = useState<TrustedSource[]>([]);
   const [rebuildLoading, setRebuildLoading] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
-
-  const [nextRebuildTime, setNextRebuildTime] = useState(() =>
-  formatShortTime(getNextRebuildTime(new Date()))
-);
+  const [clockNow, setClockNow] = useState(() => new Date());
 
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
     try {
@@ -83,12 +122,12 @@ export function AdminScreen({
   }, [selectedCountryCode]);
 
   useEffect(() => {
-  const timer = setInterval(() => {
-    setNextRebuildTime(formatShortTime(getNextRebuildTime(new Date())));
-  }, 30000);
+    const timer = setInterval(() => {
+      setClockNow(new Date());
+    }, 1000);
 
-  return () => clearInterval(timer);
-}, []);
+    return () => clearInterval(timer);
+  }, []);
 
   const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
 
@@ -155,6 +194,24 @@ export function AdminScreen({
     return counts;
   }, [sources]);
 
+  const nextRebuildDate = useMemo(() => getNextRebuildDate(clockNow), [clockNow]);
+  const nextRebuildLabel = useMemo(() => formatShortTime(nextRebuildDate), [nextRebuildDate]);
+  const nextRebuildDateTimeLabel = useMemo(() => formatDateTime(nextRebuildDate), [nextRebuildDate]);
+  const nextRebuildCountdown = useMemo(
+    () => formatCountdown(nextRebuildDate, clockNow),
+    [nextRebuildDate, clockNow]
+  );
+
+  const latestCountryActivity = useMemo(
+    () => getLatestSourceActivityByCountry(sources, selectedCountryCode),
+    [sources, selectedCountryCode]
+  );
+
+  const latestCountryActivityLabel = useMemo(
+    () => (latestCountryActivity ? formatDateTime(latestCountryActivity) : "—"),
+    [latestCountryActivity]
+  );
+
   const handleDeletePost = async (id: number) => {
     await onDeletePost(id);
     setPosts((prev) => prev.filter((post) => post.id !== id));
@@ -185,7 +242,7 @@ export function AdminScreen({
       await refreshEverything();
 
       setRebuildMessage(
-        `Обновлено: +${data?.importedPosts || 0} постов · ${data?.sourcesChecked || 0} каналов`
+        `Обновлено: +${data?.importedPosts || 0} постов · ${data?.sourcesChecked || 0} каналов · refresh ${data?.refreshedPosts || 0}`
       );
     } catch (error: unknown) {
       setRebuildMessage(
@@ -222,8 +279,16 @@ export function AdminScreen({
                 {posts.length} пост
               </div>
 
-              <div className="mt-2 text-sm text-white/70">
-                обновится в {nextRebuildTime}
+              <div className="mt-2 text-sm text-white/80">
+                обновится в {nextRebuildLabel}
+              </div>
+
+              <div className="mt-1 text-sm text-white/55">
+                через {nextRebuildCountdown} · {nextRebuildDateTimeLabel}
+              </div>
+
+              <div className="mt-1 text-xs text-white/40">
+                последнее авто-обновление страны: {latestCountryActivityLabel}
               </div>
             </div>
 
@@ -251,7 +316,7 @@ export function AdminScreen({
               </button>
             </div>
           </div>
-        </div>              
+        </div>
 
         {rebuildMessage ? (
           <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75">

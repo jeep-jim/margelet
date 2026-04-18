@@ -114,7 +114,7 @@ export type TrustedSource = {
   lastImportedAt: string | null;
   lastSeenPostId: number | null;
   importedPostsCount: number;
-  lastRefreshCursorPostId?: number | null;
+    lastRefreshCursorPostId?: number | null;
 };
 
 export type IngestedPost = {

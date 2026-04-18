@@ -549,6 +549,17 @@ async function syncSourcePosts(
   let sourceAvatarUrl = source.avatarUrl;
   let sourceVerified = Boolean(source.verified);
 
+  const refreshSourceMetaFromIngest = async (postUrl: string) => {
+    const ingest = await ingestTelegramPost(postUrl);
+    if (!ingest) return false;
+
+    sourceTitle = ingest.source.title || sourceTitle;
+    sourceAvatarUrl = ingest.source.avatar || sourceAvatarUrl;
+    sourceVerified = ingest.source.verified || sourceVerified;
+
+    return true;
+  };
+
   for (const postId of ids.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE)) {
     if (source.lastSeenPostId && postId <= source.lastSeenPostId) continue;
 
@@ -607,6 +618,16 @@ async function syncSourcePosts(
     );
   }
 
+  if (ids.length > 0 && newPosts.length === 0 && refreshedPosts.length === 0) {
+    const latestPostUrl = `https://t.me/${source.handle}/${ids[0]}?single`;
+
+    try {
+      await refreshSourceMetaFromIngest(latestPostUrl);
+    } catch (error) {
+      console.error("refresh source metadata failed", source.handle, error);
+    }
+  }
+
   const highestSeen =
     ids.length > 0 ? Math.max(...ids) : source.lastSeenPostId || null;
 
@@ -633,10 +654,11 @@ async function syncSourcePosts(
 function mergeSourcePosts(params: {
   allPosts: IngestedPost[];
   source: TrustedSource;
+  nextSource: TrustedSource;
   newPosts: IngestedPost[];
   refreshedPosts: IngestedPost[];
 }) {
-  const { allPosts, source, newPosts, refreshedPosts } = params;
+  const { allPosts, source, nextSource, newPosts, refreshedPosts } = params;
   const refreshedByUrl = new Map(refreshedPosts.map((post) => [post.postUrl, post]));
 
   return cleanupFeedPosts([
@@ -646,7 +668,25 @@ function mergeSourcePosts(params: {
         return post;
       }
 
-      return refreshedByUrl.get(post.postUrl) || post;
+      const refreshed = refreshedByUrl.get(post.postUrl);
+      if (refreshed) {
+        return refreshed;
+      }
+
+      return {
+        ...post,
+        source: {
+          ...post.source,
+          handle: nextSource.handle,
+          title: nextSource.title || post.source.title,
+          avatar: nextSource.avatarUrl || post.source.avatar || null,
+          verified: Boolean(nextSource.verified),
+        },
+        sourceId: nextSource.id,
+        sourceCountryCode: nextSource.countryCode,
+        tag: nextSource.defaultTag,
+        tags: normalizeTags(nextSource.tags, nextSource.defaultTag),
+      };
     }),
   ]);
 }
@@ -704,6 +744,7 @@ export async function rebuildFeedFromSources(options?: {
       currentPosts = mergeSourcePosts({
         allPosts: currentPosts,
         source,
+        nextSource: result.source,
         newPosts: result.newPosts,
         refreshedPosts: result.refreshedPosts,
       });
