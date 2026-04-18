@@ -105,6 +105,7 @@ function buildSource(
       typeof input.importedPostsCount === "number"
         ? input.importedPostsCount
         : 0,
+    lastRefreshCursorPostId: parseNumericPostId(input.lastRefreshCursorPostId),
   };
 }
 
@@ -261,6 +262,14 @@ function makePostId(postUrl: string) {
   return Math.abs(hash >>> 0);
 }
 
+function getPostIdFromUrl(postUrl: string) {
+  const match = postUrl.match(/\/(\d+)\?single$/);
+  if (!match) return null;
+
+  const id = Number(match[1]);
+  return Number.isFinite(id) ? id : null;
+}
+
 function buildPost(params: {
   postUrl: string;
   source: TrustedSource;
@@ -383,15 +392,61 @@ function shouldRefreshPost(post: IngestedPost, nowMs: number) {
   return lastRefreshMs <= nowMs - REFRESH_INTERVAL_MS;
 }
 
-function pickPostsToRefresh(posts: IngestedPost[], nowMs: number) {
-  return posts
+function pickPostsToRefresh(
+  posts: IngestedPost[],
+  nowMs: number,
+  lastRefreshCursorPostId: number | null | undefined
+) {
+  const eligible = posts
     .filter((post) => shouldRefreshPost(post, nowMs))
+    .map((post) => ({
+      post,
+      postId: getPostIdFromUrl(post.postUrl),
+      refreshedAtMs: parseIsoMs(post.mediaRefreshedAt) ?? parseIsoMs(post.createdAt) ?? 0,
+    }))
     .sort((a, b) => {
-      const aMs = parseIsoMs(a.mediaRefreshedAt) ?? parseIsoMs(a.createdAt) ?? 0;
-      const bMs = parseIsoMs(b.mediaRefreshedAt) ?? parseIsoMs(b.createdAt) ?? 0;
-      return aMs - bMs;
-    })
-    .slice(0, MAX_REFRESH_POSTS_PER_SOURCE);
+      if (a.refreshedAtMs !== b.refreshedAtMs) {
+        return a.refreshedAtMs - b.refreshedAtMs;
+      }
+
+      return (b.postId ?? 0) - (a.postId ?? 0);
+    });
+
+  if (!eligible.length) {
+    return {
+      posts: [] as IngestedPost[],
+      nextCursorPostId: lastRefreshCursorPostId ?? null,
+    };
+  }
+
+  let startIndex = 0;
+
+  if (lastRefreshCursorPostId) {
+    const cursorIndex = eligible.findIndex(
+      (entry) => entry.postId === lastRefreshCursorPostId
+    );
+
+    if (cursorIndex >= 0) {
+      startIndex = (cursorIndex + 1) % eligible.length;
+    }
+  }
+
+  const selected: IngestedPost[] = [];
+
+  for (let offset = 0; offset < Math.min(MAX_REFRESH_POSTS_PER_SOURCE, eligible.length); offset += 1) {
+    const entry = eligible[(startIndex + offset) % eligible.length];
+    selected.push(entry.post);
+  }
+
+  const lastSelected = selected[selected.length - 1];
+  const nextCursorPostId = lastSelected
+    ? getPostIdFromUrl(lastSelected.postUrl)
+    : lastRefreshCursorPostId ?? null;
+
+  return {
+    posts: selected,
+    nextCursorPostId,
+  };
 }
 
 async function syncSourcePosts(
@@ -441,9 +496,13 @@ async function syncSourcePosts(
     knownUrls.add(postUrl);
   }
 
-  const refreshCandidates = pickPostsToRefresh(sourceExistingPosts, nowMs);
+  const refreshSelection = pickPostsToRefresh(
+    sourceExistingPosts,
+    nowMs,
+    source.lastRefreshCursorPostId
+  );
 
-  for (const post of refreshCandidates) {
+  for (const post of refreshSelection.posts) {
     const ingest = await ingestTelegramPost(post.postUrl);
     if (!ingest) continue;
 
@@ -478,6 +537,7 @@ async function syncSourcePosts(
     lastCheckedAt: nowIso,
     lastImportedAt: newPosts.length > 0 ? nowIso : source.lastImportedAt || null,
     importedPostsCount: (source.importedPostsCount || 0) + newPosts.length,
+    lastRefreshCursorPostId: refreshSelection.nextCursorPostId,
   });
 
   return {
