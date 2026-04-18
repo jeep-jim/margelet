@@ -113,6 +113,7 @@ export function FeedMediaCard({
   const media = useMemo(() => normalizeMediaList(post), [post]);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const rafRef = useRef<number | null>(null);
 
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
@@ -173,10 +174,12 @@ export function FeedMediaCard({
 
     const onPlay = () => {
       setIsVideoPlaying(true);
+      syncTime();
     };
 
     const onPause = () => {
       setIsVideoPlaying(false);
+      syncTime();
     };
 
     const onLoadedData = () => {
@@ -230,7 +233,17 @@ export function FeedMediaCard({
     if (isCardVisible && !forcedPaused) {
       const playPromise = node.play();
       if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {});
+        playPromise
+          .then(() => {
+            setIsVideoPlaying(true);
+            setCurrentTime(node.currentTime || 0);
+            setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+          })
+          .catch(() => {});
+      } else {
+        setIsVideoPlaying(!node.paused);
+        setCurrentTime(node.currentTime || 0);
+        setDuration(Number.isFinite(node.duration) ? node.duration : 0);
       }
     } else {
       node.pause();
@@ -242,6 +255,50 @@ export function FeedMediaCard({
     mediaIndex,
     post.id,
     shouldLoadMedia,
+  ]);
+
+  useEffect(() => {
+    const node = videoRef.current;
+    if (!node || activeItem?.kind !== "video") return;
+
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+
+    const tick = () => {
+      if (!node) return;
+
+      if (!isSeeking) {
+        setCurrentTime(node.currentTime || 0);
+      }
+      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+      setIsVideoPlaying(!node.paused && !node.ended);
+
+      if (!node.paused && !node.ended) {
+        rafRef.current = requestAnimationFrame(tick);
+      } else {
+        rafRef.current = null;
+      }
+    };
+
+    if (shouldLoadMedia && isCardVisible && !forcedPaused) {
+      rafRef.current = requestAnimationFrame(tick);
+    }
+
+    return () => {
+      if (rafRef.current !== null) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+    };
+  }, [
+    activeItem?.id,
+    activeItem?.kind,
+    shouldLoadMedia,
+    isCardVisible,
+    forcedPaused,
+    isSeeking,
   ]);
 
   const handleOpen = () => {
@@ -256,10 +313,18 @@ export function FeedMediaCard({
     if (node.paused) {
       const playPromise = node.play();
       if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {});
+        playPromise
+          .then(() => {
+            setForcedPaused(false);
+            setIsVideoPlaying(true);
+            setCurrentTime(node.currentTime || 0);
+            setDuration(Number.isFinite(node.duration) ? node.duration : 0);
+          })
+          .catch(() => {});
+      } else {
+        setForcedPaused(false);
+        setIsVideoPlaying(true);
       }
-      setForcedPaused(false);
-      setIsVideoPlaying(true);
     } else {
       node.pause();
       setForcedPaused(true);
