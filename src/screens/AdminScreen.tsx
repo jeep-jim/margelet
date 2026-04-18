@@ -19,10 +19,35 @@ type LoadState = "idle" | "loading" | "ready" | "error";
 const ADMIN_TELEGRAM_ID = "1372669404";
 const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
 
+function getNextRebuildTime(now: Date) {
+  const targets = [7, 15, 23];
+
+  for (const hour of targets) {
+    const candidate = new Date(now);
+    candidate.setHours(hour, 17, 0, 0);
+
+    if (candidate.getTime() > now.getTime()) {
+      return candidate;
+    }
+  }
+
+  const tomorrow = new Date(now);
+  tomorrow.setDate(now.getDate() + 1);
+  tomorrow.setHours(7, 17, 0, 0);
+
+  return tomorrow;
+}
+
+function formatShortTime(date: Date) {
+  return date.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
 export function AdminScreen({
   locale: _locale,
   telegramUserId,
-  onClose,
   onDeletePost,
 }: AdminScreenProps) {
   const [posts, setPosts] = useState<IngestedPost[]>([]);
@@ -30,6 +55,10 @@ export function AdminScreen({
   const [sources, setSources] = useState<TrustedSource[]>([]);
   const [rebuildLoading, setRebuildLoading] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
+
+  const [nextRebuildTime, setNextRebuildTime] = useState(() =>
+  formatShortTime(getNextRebuildTime(new Date()))
+);
 
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
     try {
@@ -52,6 +81,14 @@ export function AdminScreen({
       //
     }
   }, [selectedCountryCode]);
+
+  useEffect(() => {
+  const timer = setInterval(() => {
+    setNextRebuildTime(formatShortTime(getNextRebuildTime(new Date())));
+  }, 30000);
+
+  return () => clearInterval(timer);
+}, []);
 
   const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
 
@@ -178,11 +215,12 @@ export function AdminScreen({
           <div className="mb-4 text-sm text-red-400">ошибка загрузки</div>
         ) : null}
 
-        <div className="mb-4 flex flex-col gap-3 rounded-[30px] border border-white/10 bg-white/[0.045] p-4 sm:flex-row sm:items-start sm:justify-between sm:p-5">
-          <div>
+        <div className="mb-4 flex flex-col gap-3 rounded-[30px] border border-white/10 bg-white/[0.045] p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
+          <div className="min-w-0">
             <div className="text-[28px] font-semibold tracking-tight">Admin</div>
-            <div className="mt-1 text-sm text-white/45">
-              country-first control center · каналы · посты · импорт
+
+            <div className="mt-1 text-sm text-white/70">
+              {posts.length} пост / обновится в {nextRebuildTime}
             </div>
           </div>
 
@@ -200,13 +238,18 @@ export function AdminScreen({
 
             <button
               type="button"
-              onClick={onClose}
+              onClick={() =>
+                window.open(
+                  "https://oauth.telegram.org/auth?bot_id=7716345760&origin=https%3A%2F%2Fwww.margelet.space&request_access=write",
+                  "_self"
+                )
+              }
               className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
             >
-              назад
+              войти
             </button>
           </div>
-        </div>
+        </div>        
 
         {rebuildMessage ? (
           <div className="mb-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75">
