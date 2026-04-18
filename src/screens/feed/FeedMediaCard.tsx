@@ -104,7 +104,8 @@ export function FeedMediaCard({
 
   const copy = COPY[locale] ?? COPY.en;
 
-  const [media] = useState(() => normalizeMediaList(post));
+  const [media, setMedia] = useState(() => normalizeMediaList(post));
+  const [retryUsed, setRetryUsed] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -118,6 +119,35 @@ export function FeedMediaCard({
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
 
   const activeIsVideo = activeItem?.kind === "video";
+
+  const tryRefreshMedia = async () => {
+    if (retryUsed) return;
+    if (!post.postUrl) return;
+
+    setRetryUsed(true);
+
+    try {
+      const res = await fetch(
+        `/api/telegram-preview?url=${encodeURIComponent(post.postUrl)}`
+      );
+
+      if (!res.ok) return;
+
+      const data = await res.json();
+      if (!data) return;
+
+      const refreshed = normalizeMediaList({
+        ...post,
+        ...data,
+      });
+
+      if (refreshed?.length) {
+        setMedia(refreshed);
+      }
+    } catch {
+      //
+    }
+  };
 
   useEffect(() => {
     const syncMuted = (event: Event) => {
@@ -203,8 +233,9 @@ export function FeedMediaCard({
     const node = videoRef.current;
     if (!node) return;
     if (activeItem?.kind !== "video") return;
+    if (!shouldLoadMedia) return;
 
-    if (isCardVisible && shouldLoadMedia && !forcedPaused) {
+    if (isCardVisible && !forcedPaused) {
       const playPromise = node.play();
       if (playPromise && typeof playPromise.catch === "function") {
         playPromise.catch(() => {});
@@ -212,30 +243,30 @@ export function FeedMediaCard({
     } else {
       node.pause();
     }
-  }, [activeItem?.id, activeItem?.kind, isCardVisible, shouldLoadMedia, forcedPaused]);
+  }, [isCardVisible, forcedPaused, activeItem?.kind, mediaIndex, post.id, shouldLoadMedia]);
 
-  const toggleMuted = () => {
-    writeGlobalMuted(!muted);
+  const handleOpen = () => {
+    window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
+    onOpen();
   };
 
   const togglePlay = () => {
     const node = videoRef.current;
-    if (!node) return;
+    if (!node || !activeIsVideo) return;
 
     if (node.paused) {
-      setForcedPaused(false);
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
+      const playPromise = node.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
       }
+      setForcedPaused(false);
+      setIsVideoPlaying(true);
     } else {
-      setForcedPaused(true);
       node.pause();
+      setForcedPaused(true);
+      setIsVideoPlaying(false);
     }
   };
-
-  const progress =
-    duration > 0 ? Math.max(0, Math.min(100, (currentTime / duration) * 100)) : 0;
 
   if (!media.length) {
     return null;
@@ -250,84 +281,96 @@ export function FeedMediaCard({
   }
 
   return (
-    <div
-      className="relative"
-      onClick={() => {
-        if (activeIsVideo) {
-          togglePlay();
-          return;
-        }
-
-        onOpen();
-      }}
-    >
+    <div className="relative">
       <FeedCarousel
         items={media}
+        aspectClass="aspect-[4/5]"
         activeIndex={mediaIndex}
         onChange={onChangeMediaIndex}
-        aspectClass="aspect-[4/5]"
+        controlsTone="light"
         mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
-        fit="cover"
-        enableFullscreen={false}
-        mode="fixed"
-        maxMediaHeightClass="max-h-[70vh]"
-        backgroundClass="bg-black"
+        fit={activeIsVideo ? "cover" : "contain"}
+        mode={activeIsVideo ? "fixed" : "adaptive"}
+        maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
+        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
+        enableFullscreen={!activeIsVideo}
         nativeVideoControls={false}
-        blockVideoClickPropagation
+        blockVideoClickPropagation={false}
+        onMediaError={tryRefreshMedia}
       />
 
       {activeIsVideo ? (
         <>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-16 bg-gradient-to-t from-black/40 to-transparent" />
+          <button
+            type="button"
+            onClick={handleOpen}
+            className="absolute inset-x-0 top-0 bottom-[58px] z-10"
+            aria-label="Open video post"
+          />
 
-          <div className="absolute inset-x-0 bottom-0 z-30 px-3 pb-3">
-            <div className="mb-3 h-1.5 w-full overflow-hidden rounded-full bg-white/25">
-              <div
-                className="h-full rounded-full bg-white"
-                style={{ width: `${progress}%` }}
-              />
-            </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-30 bg-gradient-to-t from-black/80 via-black/35 to-transparent px-3 pb-2 pt-8">
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  togglePlay();
+                }}
+                className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+                aria-label={isVideoPlaying ? copy.pause : copy.play}
+              >
+                {isVideoPlaying ? (
+                  <Pause className="h-5 w-5" />
+                ) : (
+                  <Play className="ml-0.5 h-5 w-5" />
+                )}
+              </button>
 
-            <div className="flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    togglePlay();
-                  }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur"
-                  aria-label={isVideoPlaying ? copy.pause : copy.play}
-                >
-                  {isVideoPlaying ? (
-                    <Pause className="h-4 w-4" />
-                  ) : (
-                    <Play className="h-4 w-4" />
-                  )}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    toggleMuted();
-                  }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur"
-                  aria-label={muted ? copy.unmute : copy.mute}
-                >
-                  {muted ? (
-                    <VolumeX className="h-4 w-4" />
-                  ) : (
-                    <Volume2 className="h-4 w-4" />
-                  )}
-                </button>
-              </div>
-
-              <div className="rounded-full bg-black/45 px-2.5 py-1 text-xs font-medium text-white backdrop-blur">
+              <div className="min-w-[72px] text-[12px] font-medium text-white">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </div>
+
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                step={0.1}
+                value={Math.min(currentTime, duration || 0)}
+                onChange={(event) => {
+                  event.stopPropagation();
+                  const node = videoRef.current;
+                  if (!node) return;
+                  const next = Number(event.target.value);
+                  node.currentTime = next;
+                  setCurrentTime(next);
+                }}
+                onPointerDown={(event) => {
+                  event.stopPropagation();
+                }}
+                className="pointer-events-auto relative z-50 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-white/30 accent-white"
+              />
+
+              <button
+                type="button"
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  const next = !muted;
+                  setMuted(next);
+                  writeGlobalMuted(next);
+                }}
+                className="pointer-events-auto relative z-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-sm touch-manipulation"
+                aria-label={muted ? copy.unmute : copy.mute}
+              >
+                {muted ? (
+                  <VolumeX className="h-5 w-5" />
+                ) : (
+                  <Volume2 className="h-5 w-5" />
+                )}
+              </button>
             </div>
           </div>
         </>
