@@ -1,4 +1,4 @@
-import type { Locale, IngestedPost, ContentTag } from "../../types/app";
+import type { Locale, IngestedPost, } from "../../types/app";
 
 export type ViewerDirection = "next" | "prev" | null;
 
@@ -43,6 +43,7 @@ export type FeedTextCardProps = FeedCardProps;
 export type FeedMediaCardProps = FeedCardProps & {
   displayText: string;
   isCardVisible?: boolean;
+  shouldLoadMedia?: boolean;
 };
 
 export type ViewerProps = {
@@ -75,15 +76,4 @@ export type ViewerProps = {
   prevViewer: () => void;
   handleShare: (post: IngestedPost) => Promise<void>;
   setActionError: React.Dispatch<React.SetStateAction<string>>;
-};
-
-export type FeedHeaderProps = {
-  locale: Locale;
-  selectedTags: ContentTag[];
-  toggleTag: (tag: ContentTag) => void;
-  clearTags: () => void;
-  searchQuery: string;
-  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
-  tagsOpen: boolean;
-  setTagsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };

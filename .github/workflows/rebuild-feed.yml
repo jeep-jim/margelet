@@ -40,7 +40,7 @@ jobs:
           cache: npm
 
       - name: Show workflow version
-        run: echo "workflow version = github-lite-v7-rebuild-refresh-rotation-3h"
+        run: echo "workflow version = github-lite-v8-batched-rebuild-refresh-3h"
 
       - name: Install dependencies
         run: npm ci

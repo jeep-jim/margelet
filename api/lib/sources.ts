@@ -19,6 +19,10 @@ const SOURCE_PAGE_TIMEOUT_MS = 15000;
 const REFRESH_INTERVAL_MS = 3 * 60 * 60 * 1000;
 const MIN_REMAINING_TTL_MS = 60 * 60 * 1000;
 const MIN_POST_AGE_BEFORE_REFRESH_MS = 10 * 60 * 1000;
+const REBUILD_INTERVAL_HOURS = 3;
+const SOURCE_CHECK_CYCLE_HOURS = 24;
+const MIN_SOURCES_PER_COUNTRY_PER_RUN = 10;
+const MAX_SOURCES_PER_COUNTRY_PER_RUN = 250;
 const REBUILD_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36";
 
@@ -75,6 +79,19 @@ function parseNumericPostId(value: unknown): number | null {
   return null;
 }
 
+function parseIsoMs(value: string | null | undefined) {
+  const ms = Date.parse(String(value || ""));
+  return Number.isFinite(ms) ? ms : null;
+}
+
+function sortSources(sources: TrustedSource[]) {
+  return [...sources].sort((a, b) => {
+    const byCountry = a.countryCode.localeCompare(b.countryCode);
+    if (byCountry !== 0) return byCountry;
+    return a.handle.localeCompare(b.handle);
+  });
+}
+
 function buildSource(
   input: Partial<TrustedSource> & {
     countryCode: CountryCode;
@@ -124,14 +141,6 @@ function normalizeSource(value: unknown): TrustedSource | null {
 
   if (!countryCode || !handle || !defaultTag) return null;
   return buildSource({ ...raw, countryCode, handle, defaultTag });
-}
-
-function sortSources(sources: TrustedSource[]) {
-  return [...sources].sort((a, b) => {
-    const byCountry = a.countryCode.localeCompare(b.countryCode);
-    if (byCountry !== 0) return byCountry;
-    return a.handle.localeCompare(b.handle);
-  });
 }
 
 export async function listSources(limit = 5000) {
@@ -191,11 +200,6 @@ function getExpiresAt(post: IngestedPost) {
   return created + ttl * 60 * 60 * 1000;
 }
 
-function parseIsoMs(value: string | null | undefined) {
-  const ms = Date.parse(String(value || ""));
-  return Number.isFinite(ms) ? ms : null;
-}
-
 function dedupePosts(posts: IngestedPost[]) {
   const map = new Map<string, IngestedPost>();
 
@@ -214,7 +218,51 @@ export function cleanupFeedPosts(posts: IngestedPost[]) {
   return dedupePosts(posts).filter((post) => getExpiresAt(post) > now);
 }
 
-function parsePostIdsFromChannelHtml(html: string): number[] {
+function getPostCreatedAtMs(post: IngestedPost) {
+  const ms = Date.parse(post.createdAt || "");
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+function getPostSourceKey(post: IngestedPost) {
+  const country = normalizeCountryCode(post.sourceCountryCode) || "xx";
+  const handle = normalizeHandle(post.source?.handle || "");
+  return `${country}:${handle}`;
+}
+
+function interleavePostsBySource(posts: IngestedPost[]) {
+  const grouped = new Map<string, IngestedPost[]>();
+
+  for (const post of [...posts].sort((a, b) => getPostCreatedAtMs(b) - getPostCreatedAtMs(a))) {
+    const key = getPostSourceKey(post);
+    const list = grouped.get(key) || [];
+    list.push(post);
+    grouped.set(key, list);
+  }
+
+  const groups = Array.from(grouped.values()).sort((a, b) => {
+    const aTop = a[0] ? getPostCreatedAtMs(a[0]) : 0;
+    const bTop = b[0] ? getPostCreatedAtMs(b[0]) : 0;
+    return bTop - aTop;
+  });
+
+  const result: IngestedPost[] = [];
+  let added = true;
+
+  while (added) {
+    added = false;
+
+    for (const group of groups) {
+      const next = group.shift();
+      if (!next) continue;
+      result.push(next);
+      added = true;
+    }
+  }
+
+  return result;
+}
+
+function parsePostIdsFromChannelHtml(html: string): number[] {  
   const ids = new Set<number>();
   const re = /data-post="[^/]+\/(\d+)"/g;
 
@@ -449,6 +497,40 @@ function pickPostsToRefresh(
   };
 }
 
+function getCountryBatchSize(totalSources: number) {
+  if (totalSources <= 0) return 0;
+
+  const runsPerCycle = Math.max(1, Math.ceil(SOURCE_CHECK_CYCLE_HOURS / REBUILD_INTERVAL_HOURS));
+  const dynamicSize = Math.ceil(totalSources / runsPerCycle);
+
+  return Math.max(
+    MIN_SOURCES_PER_COUNTRY_PER_RUN,
+    Math.min(MAX_SOURCES_PER_COUNTRY_PER_RUN, dynamicSize)
+  );
+}
+
+function pickSourcesForRun(sources: TrustedSource[]) {
+  const batchSize = getCountryBatchSize(sources.length);
+
+  return [...sources]
+    .sort((a, b) => {
+      const aChecked = parseIsoMs(a.lastCheckedAt) ?? 0;
+      const bChecked = parseIsoMs(b.lastCheckedAt) ?? 0;
+      if (aChecked !== bChecked) {
+        return aChecked - bChecked;
+      }
+
+      const aImported = a.importedPostsCount || 0;
+      const bImported = b.importedPostsCount || 0;
+      if (aImported !== bImported) {
+        return aImported - bImported;
+      }
+
+      return a.handle.localeCompare(b.handle);
+    })
+    .slice(0, batchSize);
+}
+
 async function syncSourcePosts(
   source: TrustedSource,
   existingPosts: IngestedPost[]
@@ -584,16 +666,35 @@ export async function rebuildFeedFromSources(options?: {
   );
 
   const sourcesById = new Map(allSources.map((source) => [source.id, source]));
+  const activeByCountry = new Map<CountryCode, TrustedSource[]>();
+
+  for (const source of activeSources) {
+    const list = activeByCountry.get(source.countryCode) || [];
+    list.push(source);
+    activeByCountry.set(source.countryCode, list);
+  }
+
+  const selectedSources = Array.from(activeByCountry.entries())
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .flatMap(([, countrySources]) => pickSourcesForRun(countrySources));
+
   const feedFile = await readFeedFile<IngestedPost>();
   let currentPosts = cleanupFeedPosts(feedFile.posts || []);
 
+  let countriesChecked = 0;
   let sourcesChecked = 0;
   let importedPosts = 0;
   let refreshedPosts = 0;
   let sourcesWithNewPosts = 0;
   let sourcesWithRefreshedPosts = 0;
 
-  for (const source of activeSources) {
+  for (const [, countrySources] of activeByCountry) {
+    if (pickSourcesForRun(countrySources).length > 0) {
+      countriesChecked += 1;
+    }
+  }
+
+  for (const source of selectedSources) {
     sourcesChecked += 1;
 
     try {
@@ -621,13 +722,16 @@ export async function rebuildFeedFromSources(options?: {
     }
   }
 
-  const posts = cleanupFeedPosts(currentPosts);
+    const posts = interleavePostsBySource(cleanupFeedPosts(currentPosts));
   await writeFeedFile(posts);
   await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
 
   return {
     updatedAt: new Date().toISOString(),
     posts,
+    countriesChecked,
+    activeCountries: activeByCountry.size,
+    selectedSources: selectedSources.length,
     sourcesChecked,
     importedPosts,
     refreshedPosts,
