@@ -127,6 +127,12 @@ export function FeedMediaCard({
 
   const activeIsVideo = activeItem?.kind === "video";
 
+  const activeIsWideVideo =
+  activeIsVideo &&
+  typeof activeItem?.width === "number" &&
+  typeof activeItem?.height === "number" &&
+  activeItem.width > activeItem.height;
+
   useEffect(() => {
     const syncMuted = (event: Event) => {
       const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
@@ -364,10 +370,10 @@ export function FeedMediaCard({
         mediaActive={isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
-        fit={activeIsVideo ? "cover" : "contain"}
+        fit={activeIsWideVideo ? "contain" : activeIsVideo ? "cover" : "contain"}
         mode={activeIsVideo ? "fixed" : "adaptive"}
         maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
-        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
+        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}        
         enableFullscreen={!activeIsVideo}
         nativeVideoControls={false}
         blockVideoClickPropagation={false}
