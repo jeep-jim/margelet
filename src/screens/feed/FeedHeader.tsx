@@ -170,7 +170,10 @@ export function FeedHeader({
   };
 
   return (
-    <div className="fixed inset-x-0 bottom-0 top-16 z-[80] isolate">
+    <div
+      className="fixed inset-x-0 bottom-0 z-[80] isolate"
+      style={{ top: "var(--app-header-offset)" }}
+    >
       <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-app md:border-x md:border-soft">
         <div className="flex h-full flex-col">
           <div className="shrink-0 border-b border-soft bg-app px-4 pb-4 pt-4">

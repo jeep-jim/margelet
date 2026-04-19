@@ -10,7 +10,7 @@ export function CreatorLanguagePanel({
   onOpenManifest,
   canShowInstallButton,
   onInstallApp,
-  showIosInstallHint,
+  installHintText,
 }: {
   copy: ScreenCopy;
   locale: Locale;
@@ -18,7 +18,7 @@ export function CreatorLanguagePanel({
   onOpenManifest: () => void;
   canShowInstallButton: boolean;
   onInstallApp: () => void;
-  showIosInstallHint: boolean;
+  installHintText: string;
 }) {
   return (
     <div className="space-y-3">
@@ -54,9 +54,9 @@ export function CreatorLanguagePanel({
         </button>
       ) : null}
 
-      {showIosInstallHint ? (
+      {installHintText ? (
         <div className="rounded-[20px] border border-soft bg-surface px-4 py-4 text-sm leading-6 text-secondary">
-          {copy.installIosHint}
+          {installHintText}
         </div>
       ) : null}
     </div>

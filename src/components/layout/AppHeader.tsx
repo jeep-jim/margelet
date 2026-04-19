@@ -87,7 +87,13 @@ export function AppHeader({ current, setCurrent }: Props) {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-soft bg-surface">
+    <header
+      className="fixed inset-x-0 top-0 z-40 border-b border-soft bg-surface"
+      style={{
+        paddingTop: "var(--safe-area-top)",
+        height: "var(--app-header-offset)",
+      }}
+    >
       <div className="mx-auto grid h-16 w-full max-w-[570px] grid-cols-3 items-center px-4">
         <div className="flex items-center justify-start">
           <button

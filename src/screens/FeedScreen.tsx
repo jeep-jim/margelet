@@ -596,7 +596,7 @@ export function FeedScreen({
   const hasBubbles = subscriptionBubbles.length > 0;
 
   return (
-    <div className="min-h-screen bg-app pt-16 text-primary">
+    <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
       <FeedHeader
         locale={locale}
         selectedTags={selectedTags}

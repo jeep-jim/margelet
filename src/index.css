@@ -23,6 +23,10 @@
 
   --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
 
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --app-header-row-height: 64px;
+  --app-header-offset: calc(var(--safe-area-top) + var(--app-header-row-height));
+
   font-family:
     Inter,
     ui-sans-serif,

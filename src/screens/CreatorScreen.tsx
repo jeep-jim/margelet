@@ -45,8 +45,8 @@ export function CreatorScreen({
   );
   const [manifestOpen, setManifestOpen] = useState(false);
 
-  const { canShowInstallButton, handleInstallApp, showIosInstallHint } =
-    useCreatorPwa();
+  const { canShowInstallButton, handleInstallApp, installHintText } =
+    useCreatorPwa(locale);
 
   useEffect(() => {
     const sync = () => {
@@ -114,7 +114,7 @@ export function CreatorScreen({
 
   return (
     <>
-      <div className="bg-app text-primary min-h-screen px-4 pb-10 pt-20">
+      <div className="bg-app text-primary min-h-screen px-4 pb-10 pt-20" style={{ paddingTop: "var(--app-header-offset)" }}>
         <div className="mx-auto max-w-[570px] space-y-6">
           {!user ? (
             <CreatorAuthBlock copy={copy} onReplayIntro={handleReplayIntro} />
@@ -168,7 +168,7 @@ export function CreatorScreen({
               onOpenManifest={() => setManifestOpen(true)}
               canShowInstallButton={canShowInstallButton}
               onInstallApp={handleInstallApp}
-              showIosInstallHint={showIosInstallHint}
+              installHintText={installHintText}
             />
           ) : null}
 
