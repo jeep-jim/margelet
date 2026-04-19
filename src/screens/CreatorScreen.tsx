@@ -114,7 +114,10 @@ export function CreatorScreen({
 
   return (
     <>
-      <div className="bg-app text-primary min-h-screen px-4 pb-10 pt-20" style={{ paddingTop: "var(--app-header-offset)" }}>
+      <div
+        className="bg-app text-primary min-h-screen px-4 pb-10"
+        style={{ paddingTop: 'calc(var(--app-header-offset) + 16px)' }}
+      >        
         <div className="mx-auto max-w-[570px] space-y-6">
           {!user ? (
             <CreatorAuthBlock copy={copy} onReplayIntro={handleReplayIntro} />
