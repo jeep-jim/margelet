@@ -49,6 +49,10 @@ export function CreatorManifestModal({
             ? "border-[#2a2355] bg-[#0d1020] text-[#f5f7ff]"
             : "border-[#e9dcff] bg-[#f8f5ff] text-[#3e3657]"
         }`}
+        style={{
+          paddingTop: "var(--safe-area-top)",
+          paddingBottom: "var(--safe-area-bottom)",
+        }}
         onClick={(event) => event.stopPropagation()}
       >
         <div

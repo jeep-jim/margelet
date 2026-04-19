@@ -86,6 +86,15 @@ export function AppHeader({ current, setCurrent }: Props) {
     setCurrent("feed");
   };
 
+  const handleTitleAction = () => {
+    if (current === "feed") {
+      window.location.reload();
+      return;
+    }
+
+    window.location.assign("/");
+  };
+
   return (
     <header
       className="fixed inset-x-0 top-0 z-40 border-b border-soft bg-surface"
@@ -119,10 +128,10 @@ export function AppHeader({ current, setCurrent }: Props) {
 
         <div className="flex items-center justify-center">
           <button
-            onClick={() => setCurrent("feed")}
+            onClick={handleTitleAction}
             className="text-center"
-            aria-label="Margelet"
-            title="Margelet"
+            aria-label="margeleT"
+            title="margeleT"
             type="button"
           >
             <div className="text-2xl font-extrabold tracking-[-0.03em] text-primary">

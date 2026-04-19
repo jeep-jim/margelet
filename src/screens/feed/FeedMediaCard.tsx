@@ -121,17 +121,13 @@ export function FeedMediaCard({
   const [duration, setDuration] = useState(0);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [isSeeking, setIsSeeking] = useState(false);
+  const [isWideVideo, setIsWideVideo] = useState(false);
 
   const activeItem =
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
 
   const activeIsVideo = activeItem?.kind === "video";
-
-  const activeIsWideVideo =
-  activeIsVideo &&
-  typeof activeItem?.width === "number" &&
-  typeof activeItem?.height === "number" &&
-  activeItem.width > activeItem.height;
+  const activeIsWideVideo = activeIsVideo && isWideVideo;  
 
   useEffect(() => {
     const syncMuted = (event: Event) => {
@@ -164,12 +160,18 @@ export function FeedMediaCard({
       setCurrentTime(0);
       setDuration(0);
       setIsVideoPlaying(false);
+      setIsWideVideo(false);
       return;
-    }
+    }    
 
     const syncMeta = () => {
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
-    };
+      setIsWideVideo(
+        Number(node.videoWidth) > 0 &&
+          Number(node.videoHeight) > 0 &&
+          node.videoWidth > node.videoHeight
+      );
+    };    
 
     const syncTime = () => {
       if (!isSeeking) {
