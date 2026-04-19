@@ -10,6 +10,7 @@ import {
   Sun,
   Moon,
   X,
+  Download,
 } from "lucide-react";
 import {
   useMemo,
@@ -28,6 +29,37 @@ const TG_STORAGE_KEY = "margelet_tg_user";
 const LANGUAGE_STORAGE_KEY = "margelet_locale";
 const INTRO_LANGUAGE_STORAGE_KEY = "margelet_intro_locale";
 const INTRO_SEEN_STORAGE_KEY = "margelet-intro-seen";
+
+type BeforeInstallPromptEvent = Event & {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
+};
+
+function isStandaloneMode() {
+  if (typeof window === "undefined") return false;
+
+  const byMedia = window.matchMedia("(display-mode: standalone)").matches;
+  const byNavigator = Boolean((window.navigator as Navigator & { standalone?: boolean }).standalone);
+
+  return byMedia || byNavigator;
+}
+
+function isIosDevice() {
+  if (typeof window === "undefined") return false;
+
+  const ua = window.navigator.userAgent.toLowerCase();
+  const platform = window.navigator.platform?.toLowerCase() || "";
+  const maxTouchPoints = window.navigator.maxTouchPoints || 0;
+
+  const classicIos =
+    /iphone|ipad|ipod/.test(ua) ||
+    /iphone|ipad|ipod/.test(platform);
+
+  const ipadOs =
+    platform === "macintel" && maxTouchPoints > 1;
+
+  return classicIos || ipadOs;
+}
 
 function getTelegramAuthUrl() {
   const origin = window.location.origin;
@@ -73,6 +105,9 @@ type ScreenCopy = {
   aboutTabTitle: string;
   languageTabTitle: string;
   manifestButton: string;
+  installButton: string;
+  installIosHint: string;
+  installOpened: string;
   manifestTitle: string;
   manifestSubtitle: string;
   manifestClose: string;
@@ -125,6 +160,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "About",
     languageTabTitle: "Language",
     manifestButton: "Manifesto",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT and the open Telegram ecosystem",
     manifestClose: "Close",
@@ -187,6 +225,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "О проекте",
     languageTabTitle: "Язык",
     manifestButton: "Манифест",
+    installButton: "Установить приложение",
+    installIosHint: "На iPhone: Поделиться → На экран «Домой»",
+    installOpened: "Уже установлено",
     manifestTitle: "Манифест",
     manifestSubtitle: "margeleT и открытая экосистема Telegram",
     manifestClose: "Закрыть",
@@ -249,6 +290,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "Über",
     languageTabTitle: "Sprache",
     manifestButton: "Manifest",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifest",
     manifestSubtitle: "margeleT und das offene Telegram-Ökosystem",
     manifestClose: "Schließen",
@@ -311,6 +355,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "Acerca de",
     languageTabTitle: "Idioma",
     manifestButton: "Manifiesto",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifiesto",
     manifestSubtitle: "margeleT y el ecosistema abierto de Telegram",
     manifestClose: "Cerrar",
@@ -374,6 +421,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "Hakkında",
     languageTabTitle: "Dil",
     manifestButton: "Manifesto",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT ve açık Telegram ekosistemi",
     manifestClose: "Kapat",
@@ -437,6 +487,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "À propos",
     languageTabTitle: "Langue",
     manifestButton: "Manifeste",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifeste",
     manifestSubtitle: "margeleT et l'écosystème ouvert de Telegram",
     manifestClose: "Fermer",
@@ -501,6 +554,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "Info",
     languageTabTitle: "Lingua",
     manifestButton: "Manifesto",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT e l'ecosistema aperto di Telegram",
     manifestClose: "Chiudi",
@@ -565,6 +621,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "Sobre",
     languageTabTitle: "Idioma",
     manifestButton: "Manifesto",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT e o ecossistema aberto do Telegram",
     manifestClose: "Fechar",
@@ -629,6 +688,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "Tentang",
     languageTabTitle: "Bahasa",
     manifestButton: "Manifesto",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT dan ekosistem Telegram terbuka",
     manifestClose: "Tutup",
@@ -693,6 +755,9 @@ const COPY: Record<Locale, ScreenCopy> = {
     aboutTabTitle: "O projekcie",
     languageTabTitle: "Język",
     manifestButton: "Manifest",
+    installButton: "Install app",
+    installIosHint: "On iPhone: Share → Add to Home Screen",
+    installOpened: "Already installed",
     manifestTitle: "Manifest",
     manifestSubtitle: "margeleT i otwarty ekosystem Telegrama",
     manifestClose: "Zamknij",
@@ -1241,6 +1306,14 @@ export function CreatorScreen({
   );
   const [manifestOpen, setManifestOpen] = useState(false);
 
+    const [deferredInstallPrompt, setDeferredInstallPrompt] =
+    useState<BeforeInstallPromptEvent | null>(null);
+    const [isStandalone, setIsStandalone] = useState(() =>
+      typeof window === "undefined" ? false : isStandaloneMode()
+    );
+    const [isInstallReady, setIsInstallReady] = useState(false);
+    const [showIosInstallHint, setShowIosInstallHint] = useState(false);
+
   useEffect(() => {
     const sync = () => {
       setUser(readTelegramUserFromStorage());
@@ -1263,7 +1336,58 @@ export function CreatorScreen({
     localStorage.setItem(INTRO_LANGUAGE_STORAGE_KEY, introLocale);
   }, [introLocale]);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const syncStandalone = () => {
+      setIsStandalone(isStandaloneMode());
+    };
+
+    const onBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+      const installEvent = event as BeforeInstallPromptEvent;
+      setDeferredInstallPrompt(installEvent);
+      setIsInstallReady(true);
+      setShowIosInstallHint(false);
+    };
+
+    const onAppInstalled = () => {
+      setDeferredInstallPrompt(null);
+      setIsInstallReady(false);
+      setShowIosInstallHint(false);
+      syncStandalone();
+    };
+
+    syncStandalone();
+
+    window.addEventListener("beforeinstallprompt", onBeforeInstallPrompt as EventListener);
+    window.addEventListener("appinstalled", onAppInstalled);
+
+    const media = window.matchMedia("(display-mode: standalone)");
+    const onDisplayModeChange = () => syncStandalone();
+
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", onDisplayModeChange);
+    } else if (typeof media.addListener === "function") {
+      media.addListener(onDisplayModeChange);
+    }
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", onBeforeInstallPrompt as EventListener);
+      window.removeEventListener("appinstalled", onAppInstalled);
+
+      if (typeof media.removeEventListener === "function") {
+        media.removeEventListener("change", onDisplayModeChange);
+      } else if (typeof media.removeListener === "function") {
+        media.removeListener(onDisplayModeChange);
+      }
+    };
+  }, []);
+
   const copy = COPY[locale] ?? COPY.en;
+
+  const isIos = isIosDevice();
+  const canShowInstallButton = !isStandalone && (isInstallReady || isIos);
 
 
   const handleLogout = () => {
@@ -1287,6 +1411,34 @@ export function CreatorScreen({
     setLocale(introLocale);
     localStorage.removeItem(INTRO_SEEN_STORAGE_KEY);
     window.location.reload();
+  };
+
+  const handleInstallApp = async () => {
+    if (isStandaloneMode()) {
+      setIsStandalone(true);
+      return;
+    }
+
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+
+      try {
+        const choice = await deferredInstallPrompt.userChoice;
+        if (choice.outcome === "accepted") {
+          setDeferredInstallPrompt(null);
+          setIsInstallReady(false);
+          setShowIosInstallHint(false);
+        }
+      } catch {
+        //
+      }
+
+      return;
+    }
+
+    if (isIos) {
+      setShowIosInstallHint(true);
+    }
   };
 
   const handleSubmitChannel = () => {
@@ -1373,6 +1525,22 @@ export function CreatorScreen({
               >
                 {copy.manifestButton}
               </button>
+                            {canShowInstallButton ? (
+                <button
+                  type="button"
+                  onClick={handleInstallApp}
+                  className="inline-flex min-h-[56px] w-full items-center justify-center gap-3 rounded-[20px] border border-soft bg-surface px-6 py-4 text-lg font-semibold text-primary transition hover:bg-surface-soft"
+                >
+                  <Download className="h-5 w-5" />
+                  {copy.installButton}
+                </button>
+              ) : null}
+
+              {showIosInstallHint ? (
+                <div className="rounded-[20px] border border-soft bg-surface px-4 py-4 text-sm leading-6 text-secondary">
+                  {copy.installIosHint}
+                </div>
+              ) : null}
             </div>
           ) : null}
 
