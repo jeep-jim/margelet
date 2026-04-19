@@ -9,7 +9,22 @@
       "destination": "/api/$1"
     },
     {
+      "source": "/jim/admin",
+      "destination": "/"
+    },
+    {
+      "source": "/jim/admin/(.*)",
+      "destination": "/"
+    },
+    {
       "source": "/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/html.*"
+        }
+      ],
       "destination": "/"
     }
   ],

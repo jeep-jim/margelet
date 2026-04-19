@@ -1,13 +1,19 @@
 {
+  "id": "/",
   "name": "margeleT",
   "short_name": "margeleT",
   "description": "Global feed of fresh Telegram content. Discover real posts from original channels worldwide.",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
   "background_color": "#0a0a0f",
   "theme_color": "#0a0a0f",
+  "categories": ["news", "social", "productivity"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/icon-192.png",
@@ -18,7 +24,7 @@
       "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
@@ -29,7 +35,22 @@
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/hero.webp",
+      "sizes": "1280x1280",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "margeleT home screen"
+    },
+    {
+      "src": "/manifest-hero.webp",
+      "sizes": "1280x1280",
+      "type": "image/webp",
+      "label": "margeleT manifesto"
     }
   ]
 }
