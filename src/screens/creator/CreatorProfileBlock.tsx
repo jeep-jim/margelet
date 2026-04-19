@@ -1,6 +1,46 @@
 import { LogOut } from "lucide-react";
-import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import type { ScreenCopy, TgUser } from "./creator.types";
+
+function CreatorUserBadge({ size = 14 }: { size?: number }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-flex items-center justify-center shrink-0"
+      style={{ width: size, height: size, flex: "0 0 auto" }}
+    >
+      <svg
+        width={size}
+        height={size}
+        viewBox="0 0 150 150"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <mask id="creator_user_badge_mask">
+            <rect width="150" height="150" fill="black" />
+            <path
+              d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z"
+              fill="white"
+            />
+          </mask>
+        </defs>
+
+        <rect
+          width="150"
+          height="150"
+          rx="0"
+          fill="#111827"
+          mask="url(#creator_user_badge_mask)"
+        />
+
+        <path
+          d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z"
+          fill="white"
+        />
+      </svg>
+    </span>
+  );
+}
 
 export function CreatorProfileBlock({
   user,
@@ -31,7 +71,7 @@ export function CreatorProfileBlock({
               <div className="truncate text-lg font-semibold">
                 {user.first_name}
               </div>
-              <VerifiedBadge className="shrink-0 text-[#2AABEE]" />
+              <CreatorUserBadge size={14} />
             </div>
 
             <div className="text-secondary truncate text-sm">
