@@ -172,11 +172,23 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-function buildFeedUrl(locale: Locale) {
-  return `/feeds/${locale}.json`;
+function buildFeedUrl(countryCode: string) {
+  return `/feeds/${countryCode}.json`;
 }
 
-async function loadCountryFeed(locale: Locale): Promise<IngestedPost[]> {
+async function loadFeedPosts(locale: Locale): Promise<IngestedPost[]> {
+  const globalRes = await fetch(`/feed.json`, {
+    cache: "no-store",
+  });
+
+  if (globalRes.ok) {
+    const globalData = await globalRes.json();
+
+    if (Array.isArray(globalData?.posts)) {
+      return globalData.posts as IngestedPost[];
+    }
+  }
+
   const countryRes = await fetch(buildFeedUrl(locale), {
     cache: "no-store",
   });
@@ -209,7 +221,9 @@ async function loadCountryFeed(locale: Locale): Promise<IngestedPost[]> {
           }
 
           const chunkData = await chunkRes.json();
-          return Array.isArray(chunkData?.posts) ? (chunkData.posts as IngestedPost[]) : [];
+          return Array.isArray(chunkData?.posts)
+            ? (chunkData.posts as IngestedPost[])
+            : [];
         })
       );
 
@@ -217,22 +231,7 @@ async function loadCountryFeed(locale: Locale): Promise<IngestedPost[]> {
     }
   }
 
-  const legacyRes = await fetch(`/feed.json`, {
-    cache: "no-store",
-  });
-
-  if (!legacyRes.ok) {
-    throw new Error("feed request failed");
-  }
-
-  const legacyData = await legacyRes.json();
-
-  return Array.isArray(legacyData?.posts)
-    ? legacyData.posts.filter((post: IngestedPost) => {
-        const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
-        return !countryCode || countryCode === locale;
-      })
-    : [];
+  throw new Error("feed request failed");
 }
 
 export default function App() {
@@ -498,7 +497,7 @@ export default function App() {
     setServerPosts([]);
 
     try {
-      const nextPosts = await loadCountryFeed(locale);
+      const nextPosts = await loadFeedPosts(locale);
       setServerPosts(nextPosts);
     } catch (error) {
       console.error("Failed to load feed", error);

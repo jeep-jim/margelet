@@ -727,18 +727,22 @@ export function FeedScreen({
           selectedCountries={feedSettings.countries}
           onToggleCountry={(country) =>
             setFeedSettings((prev) => {
-              const exists = prev.countries.includes(country);
+              const currentCountry = String(locale).toLowerCase();
 
-              const nextCountries = exists
-                ? prev.countries.filter((item) => item !== country)
-                : [...prev.countries, country];
+              if (country === currentCountry) {
+                return prev;
+              }
+
+              const exists = prev.countries.includes(country);
 
               return {
                 ...prev,
-                countries: nextCountries.length ? nextCountries : [country],
+                countries: exists
+                  ? prev.countries.filter((item) => item !== country)
+                  : [...prev.countries, country],
               };
             })
-          }
+          }          
         />
       ) : null}
 
