@@ -57,23 +57,6 @@ export function FeedCard(props: FeedCardProps) {
   const [menuAnchorRect, setMenuAnchorRect] = useState<{ top: number; right: number } | null>(null);
 
   useEffect(() => {
-    if (!menuOpen) return;
-
-    const closeMenu = () => {
-      setMenuAnchorRect(null);
-      onToggleMenu();
-    };
-
-    window.addEventListener("scroll", closeMenu, { passive: true });
-    window.addEventListener("resize", closeMenu);
-
-    return () => {
-      window.removeEventListener("scroll", closeMenu);
-      window.removeEventListener("resize", closeMenu);
-    };
-  }, [menuOpen, onToggleMenu]);
-
-  useEffect(() => {
     const node = cardRef.current;
     if (!node) return;
 
@@ -127,12 +110,6 @@ export function FeedCard(props: FeedCardProps) {
             onClick={(event) => {
               event.stopPropagation();
 
-              if (menuOpen) {
-                setMenuAnchorRect(null);
-                onToggleMenu();
-                return;
-              }
-
               const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
               setMenuAnchorRect({
                 top: rect.bottom,
@@ -140,7 +117,7 @@ export function FeedCard(props: FeedCardProps) {
               });
 
               onToggleMenu();
-            }}            
+            }}
             type="button"
           >
             <MoreVertical className="h-5 w-5" />
