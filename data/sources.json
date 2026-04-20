@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-19T23:52:36.135Z",
+  "updatedAt": "2026-04-20T00:17:28.034Z",
   "sources": [
     {
       "id": "ru:decenter",
@@ -322,20 +322,23 @@
       "countryCode": "ru",
       "handle": "rian_ru",
       "title": "РИА Новости",
-      "avatarUrl": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BPGRlZnM%2BPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHgyPSIwJSIgeTE9IjAlIiB5Mj0iMTAwJSI%2BPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmY2Q2YSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmYTg1YyIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxzdHlsZT50ZXh0e2ZvbnQ6NjAwIDQ0cHggLWFwcGxlLXN5c3RlbSxCbGlua01hY1N5c3RlbUZvbnQsJ1NlZ29lIFVJJyxSb2JvdG8sSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYsJ0FwcGxlIENvbG9yIEVtb2ppJywnU2Vnb2UgVUkgRW1vamknLCdTZWdvZSBVSSBTeW1ib2wnOy13ZWJraXQtdXNlci1zZWxlY3Q6bm9uZTt1c2VyLXNlbGVjdDpub25lfTwvc3R5bGU%2BPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI1MCIgeT0iNjYiIGZpbGw9IiNmZmYiPtCg0J08L3RleHQ%2BPC9zdmc%2B",
-      "verified": true,
+      "avatarUrl": null,
+      "verified": false,
       "defaultTag": "news",
       "tags": [
-        "news"
+        "news",
+        "politics",
+        "economy",
+        "war"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-19T23:52:30.385Z",
-      "lastCheckedAt": "2026-04-19T22:55:28.830Z",
-      "lastImportedAt": "2026-04-19T22:55:28.830Z",
-      "lastSeenPostId": 337230,
-      "importedPostsCount": 106,
+      "updatedAt": "2026-04-20T00:17:28.016Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": 337206
     },
     {
