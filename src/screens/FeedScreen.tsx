@@ -439,6 +439,8 @@ export function FeedScreen({
     };
   }, [tagsOpen]);  
 
+  {!tagsOpen && showFloatingSmartBar ? <div className="h-[74px]" /> : null}
+
   const safePosts = useMemo(() => {
     return posts.filter(
       (post) =>
