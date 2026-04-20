@@ -354,17 +354,22 @@ export function FeedScreen({
   }, [feedSettings]);
 
   useEffect(() => {
+    const localeCountry = String(locale).toLowerCase();
+
     setFeedSettings((prev) => {
-      const localeCountry = String(locale).toLowerCase();
-      if (prev.countries.includes(localeCountry)) return prev;
+      if (
+        prev.countries.length === 1 &&
+        prev.countries[0] === localeCountry
+      ) {
+        return prev;
+      }
+
       return {
         ...prev,
-        countries: [localeCountry, ...prev.countries].filter(
-          (value, index, list) => list.indexOf(value) === index
-        ),
+        countries: [localeCountry],
       };
     });
-  }, [locale]);
+  }, [locale]);  
 
   useEffect(() => {
     const handleToggle = () => {
