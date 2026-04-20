@@ -261,7 +261,7 @@ export function SmartFeedBar({
   visible = true,
   availableCountries,
   selectedCountries,
-  onToggleCountry,
+  onToggleCountry, 
 }: {
   copy: FeedScreenCopy;
   mediaMode: FeedMediaMode;
