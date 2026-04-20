@@ -9,6 +9,14 @@
       "destination": "/api/$1"
     },
     {
+      "source": "/feed.json",
+      "destination": "/feed.json"
+    },
+    {
+      "source": "/feeds/(.*)",
+      "destination": "/feeds/$1"
+    },
+    {
       "source": "/jim/admin",
       "destination": "/"
     },

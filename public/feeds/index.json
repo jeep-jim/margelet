@@ -1,14 +1,22 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-20T10:01:03.793Z",
+  "updatedAt": "2026-04-20T08:58:36.800Z",
   "countries": {
+    "en": {
+      "code": "en",
+      "posts": 1,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/en.json",
+      "updatedAt": "2026-04-20T08:58:36.800Z"
+    },
     "ru": {
       "code": "ru",
-      "posts": 240,
+      "posts": 191,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ru.json",
-      "updatedAt": "2026-04-20T10:01:03.793Z"
+      "updatedAt": "2026-04-20T08:58:36.800Z"
     }
   }
 }
