@@ -1,5 +1,11 @@
-import { Bell } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  Bell,
+  ChevronDown,
+  FileText,
+  Image as ImageIcon,
+  Play,
+} from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "../types/app";
 import type { ContentTag, IngestedPost } from "../types/app";
 import { FeedCard } from "./feed/FeedCard";
@@ -18,6 +24,15 @@ const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
+const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
+
+type FeedMediaMode = "all" | "text" | "photo" | "video";
+
+type FeedSettings = {
+  mediaMode: FeedMediaMode;
+  countries: string[];
+  demoteSeen: boolean;
+};
 
 type SubscriptionBubble = {
   handle: string;
@@ -32,6 +47,10 @@ type FeedScreenCopy = {
   emptyTitle: string;
   emptyText: string;
   clearAll: string;
+  modeAll: string;
+  modeText: string;
+  modePhoto: string;
+  modeVideo: string;
 };
 
 const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
@@ -41,6 +60,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyTitle: "Nothing found",
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
+    modeAll: "All",
+    modeText: "Text",
+    modePhoto: "Photo",
+    modeVideo: "Video",
   },
   ru: {
     subscriptionsHint:
@@ -48,6 +71,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyTitle: "Ничего не найдено",
     emptyText: "Попробуй снять часть тегов или очистить поиск.",
     clearAll: "Очистить всё",
+    modeAll: "Все",
+    modeText: "Текст",
+    modePhoto: "Фото",
+    modeVideo: "Видео",
   },
   de: {
     subscriptionsHint:
@@ -56,6 +83,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText:
       "Versuche, einige Tags zu entfernen oder die Suche zu löschen.",
     clearAll: "Alles löschen",
+    modeAll: "Alle",
+    modeText: "Text",
+    modePhoto: "Fotos",
+    modeVideo: "Video",
   },
   es: {
     subscriptionsHint:
@@ -64,6 +95,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText:
       "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
+    modeAll: "Todo",
+    modeText: "Texto",
+    modePhoto: "Foto",
+    modeVideo: "Vídeo",
   },
   tr: {
     subscriptionsHint:
@@ -71,6 +106,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyTitle: "Hiçbir şey bulunamadı",
     emptyText: "Bazı etiketleri kaldırmayı veya aramayı temizlemeyi dene.",
     clearAll: "Hepsini temizle",
+    modeAll: "Tümü",
+    modeText: "Metin",
+    modePhoto: "Foto",
+    modeVideo: "Video",
   },
   fr: {
     subscriptionsHint:
@@ -79,6 +118,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText:
       "Essaie de retirer certains tags ou d’effacer la recherche.",
     clearAll: "Tout effacer",
+    modeAll: "Tout",
+    modeText: "Texte",
+    modePhoto: "Photo",
+    modeVideo: "Vidéo",
   },
   it: {
     subscriptionsHint:
@@ -86,6 +129,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyTitle: "Nessun risultato",
     emptyText: "Prova a rimuovere alcuni tag o a cancellare la ricerca.",
     clearAll: "Cancella tutto",
+    modeAll: "Tutto",
+    modeText: "Testo",
+    modePhoto: "Foto",
+    modeVideo: "Video",
   },
   "pt-br": {
     subscriptionsHint:
@@ -93,6 +140,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyTitle: "Nada encontrado",
     emptyText: "Tente remover algumas tags ou limpar a busca.",
     clearAll: "Limpar tudo",
+    modeAll: "Tudo",
+    modeText: "Texto",
+    modePhoto: "Foto",
+    modeVideo: "Vídeo",
   },
   id: {
     subscriptionsHint:
@@ -100,6 +151,10 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyTitle: "Tidak ada yang ditemukan",
     emptyText: "Coba hapus beberapa tag atau bersihkan pencarian.",
     clearAll: "Bersihkan semua",
+    modeAll: "Semua",
+    modeText: "Teks",
+    modePhoto: "Foto",
+    modeVideo: "Video",
   },
   pl: {
     subscriptionsHint:
@@ -107,7 +162,38 @@ const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyTitle: "Nic nie znaleziono",
     emptyText: "Spróbuj usunąć część tagów albo wyczyścić wyszukiwanie.",
     clearAll: "Wyczyść wszystko",
+    modeAll: "Wszystko",
+    modeText: "Tekst",
+    modePhoto: "Zdjęcia",
+    modeVideo: "Wideo",
   },
+};
+
+const LOCALE_SHORT: Record<Locale, string> = {
+  en: "EN",
+  ru: "RU",
+  de: "DE",
+  es: "ES",
+  tr: "TR",
+  fr: "FR",
+  it: "IT",
+  "pt-br": "BR",
+  id: "ID",
+  pl: "PL",
+};
+
+const COUNTRY_LABELS: Record<string, { label: string; flag: string }> = {
+  ru: { label: "Русский", flag: "🇷🇺" },
+  en: { label: "English", flag: "🇬🇧" },
+  de: { label: "Deutsch", flag: "🇩🇪" },
+  es: { label: "Español", flag: "🇪🇸" },
+  tr: { label: "Türkçe", flag: "🇹🇷" },
+  fr: { label: "Français", flag: "🇫🇷" },
+  it: { label: "Italiano", flag: "🇮🇹" },
+  "pt-br": { label: "Português (Brasil)", flag: "🇧🇷" },
+  id: { label: "Bahasa Indonesia", flag: "🇮🇩" },
+  pl: { label: "Polski", flag: "🇵🇱" },
+  kz: { label: "KZ", flag: "🇰🇿" },
 };
 
 function isGifPost(post: IngestedPost) {
@@ -120,6 +206,30 @@ function isGifPost(post: IngestedPost) {
 function isVideoViewerPost(post: IngestedPost) {
   if (isGifPost(post)) return false;
   return post.contentType === "video";
+}
+
+function normalizeCountryCode(value: string | null | undefined, locale: Locale) {
+  const raw = String(value || "").trim().toLowerCase();
+  if (raw) return raw;
+  return String(locale).toLowerCase();
+}
+
+function detectPostMediaMode(
+  post: IngestedPost
+): Exclude<FeedMediaMode, "all"> | "mixed" {
+  const hasVideo =
+    post.media.some((item) => item.kind === "video") ||
+    post.contentType === "video";
+  const hasImage =
+    post.media.some((item) => item.kind === "image") ||
+    post.contentType === "image" ||
+    post.contentType === "gallery" ||
+    post.contentType === "gif";
+
+  if (hasVideo) return "video";
+  if (hasImage) return "photo";
+  if (post.contentType === "text" || post.media.length === 0) return "text";
+  return "mixed";
 }
 
 function readSelectedTagsFromStorage(): ContentTag[] {
@@ -189,6 +299,48 @@ function readSeenSubscriptionsFromStorage(): Record<string, number> {
   }
 }
 
+function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
+  const fallbackCountry = String(locale).toLowerCase();
+
+  try {
+    const raw = localStorage.getItem(FEED_SETTINGS_STORAGE_KEY);
+    if (!raw) {
+      return {
+        mediaMode: "all",
+        countries: [fallbackCountry],
+        demoteSeen: true,
+      };
+    }
+
+    const parsed = JSON.parse(raw) as Partial<FeedSettings>;
+    const mediaMode: FeedMediaMode =
+      parsed?.mediaMode === "text" ||
+      parsed?.mediaMode === "photo" ||
+      parsed?.mediaMode === "video"
+        ? parsed.mediaMode
+        : "all";
+
+    const countries = Array.isArray(parsed?.countries)
+      ? parsed.countries
+          .filter((item): item is string => typeof item === "string")
+          .map((item) => item.trim().toLowerCase())
+          .filter(Boolean)
+      : [fallbackCountry];
+
+    return {
+      mediaMode,
+      countries: countries.length ? countries : [fallbackCountry],
+      demoteSeen: parsed?.demoteSeen !== false,
+    };
+  } catch {
+    return {
+      mediaMode: "all",
+      countries: [fallbackCountry],
+      demoteSeen: true,
+    };
+  }
+}
+
 function writeSeenSubscriptionsToStorage(value: Record<string, number>) {
   try {
     localStorage.setItem(
@@ -196,6 +348,14 @@ function writeSeenSubscriptionsToStorage(value: Record<string, number>) {
       JSON.stringify(value)
     );
     window.dispatchEvent(new Event("storage"));
+  } catch {
+    //
+  }
+}
+
+function writeFeedSettingsToStorage(value: FeedSettings) {
+  try {
+    localStorage.setItem(FEED_SETTINGS_STORAGE_KEY, JSON.stringify(value));
   } catch {
     //
   }
@@ -273,6 +433,179 @@ function SubscriptionsBar({
   );
 }
 
+function SmartFeedBar({
+  copy,
+  mediaMode,
+  onChangeMediaMode,
+  locale,
+  floating = false,
+  availableCountries,
+  selectedCountries,
+  onToggleCountry,
+}: {
+  copy: FeedScreenCopy;
+  mediaMode: FeedMediaMode;
+  onChangeMediaMode: (next: FeedMediaMode) => void;
+  locale: Locale;
+  floating?: boolean;
+  availableCountries: string[];
+  selectedCountries: string[];
+  onToggleCountry: (country: string) => void;
+}) {
+  const [countriesOpen, setCountriesOpen] = useState(false);
+
+  const options: Array<{
+    value: FeedMediaMode;
+    label: string;
+    mobileLabel?: string;
+    icon?: React.ReactNode;
+  }> = [
+    { value: "all", label: copy.modeAll, mobileLabel: copy.modeAll },
+    {
+      value: "text",
+      label: copy.modeText,
+      icon: <FileText className="h-4 w-4" />,
+    },
+    {
+      value: "photo",
+      label: copy.modePhoto,
+      icon: <ImageIcon className="h-4 w-4" />,
+    },
+    {
+      value: "video",
+      label: copy.modeVideo,
+      icon: <Play className="h-4 w-4 fill-current" />,
+    },
+  ];
+
+  const baseCountry = String(locale).toLowerCase();
+  const extraCount = selectedCountries.filter((item) => item !== baseCountry).length;
+  const countryButtonLabel =
+    extraCount > 0
+      ? `${LOCALE_SHORT[locale] ?? String(locale).toUpperCase()} +${extraCount}`
+      : LOCALE_SHORT[locale] ?? String(locale).toUpperCase();
+
+  return (
+    <div
+      className={floating ? "fixed inset-x-0 z-[55]" : "relative z-[2]"}
+      style={floating ? { top: "var(--app-header-offset)" } : undefined}
+    >
+      <div className="mx-auto w-full max-w-[570px]">
+        <div className={`${floating ? "pt-0" : "pb-0"} relative`}>
+          <div
+            className="flex items-start justify-between gap-3 border-b border-[#22364f] px-4 py-3 text-white"
+            style={{ backgroundColor: "#08111d", color: "#ffffff" }}
+          >                     
+            <div className="flex min-w-0 flex-1 items-center gap-2">
+              {options.map((option) => {
+                const active = mediaMode === option.value;
+
+                return (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => onChangeMediaMode(option.value)}
+                    className={`inline-flex h-12 shrink-0 items-center justify-center rounded-full border-2 px-3 text-sm font-medium transition sm:h-12 sm:px-4 ${
+                      active
+                        ? "border-white bg-white text-[#162231]"
+                        : "border-[#23405d] bg-[#102033] text-white hover:bg-[#13263c]"
+                    } ${
+                      option.value === "all"
+                        ? "min-w-[66px] sm:min-w-[84px]"
+                        : "min-w-[50px] sm:min-w-[96px]"
+                    }`}
+                  >
+                    {option.value === "all" ? (
+                      <span className="truncate">{option.label}</span>
+                    ) : (
+                      <>
+                        <span className="sm:hidden">{option.icon}</span>
+                        <span className="hidden items-center gap-2 sm:inline-flex">
+                          {option.icon}
+                          <span>{option.label}</span>
+                        </span>
+                      </>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="shrink-0">
+              <button
+                type="button"
+                onClick={() => setCountriesOpen((prev) => !prev)}
+                className={`inline-flex h-12 min-w-[76px] items-center justify-center gap-2 rounded-full border-2 px-4 text-sm font-medium transition ${
+                  countriesOpen
+                    ? "border-white bg-white text-[#162231]"
+                    : "border-[#23405d] bg-[#102033] text-white hover:bg-[#13263c]"
+                }`}
+              >
+                <span>{countryButtonLabel}</span>
+                <ChevronDown
+                  className={`h-4 w-4 shrink-0 transition ${
+                    countriesOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+            </div>
+          </div>
+
+          {countriesOpen ? (
+            <div
+              className="rounded-b-[28px] border-b border-[#22364f] px-4 pb-5 pt-4 shadow-[0_16px_40px_rgba(0,0,0,0.28)]"
+              style={{ backgroundColor: "#132338", color: "#ffffff" }}
+            >              
+              <div className="mb-4 text-[15px] font-medium text-[#95a8bd]">
+                Показывать каналы авторов из других стран:
+              </div>
+
+              <div className="space-y-3">
+                {availableCountries.map((country) => {
+                  const checked = selectedCountries.includes(country);
+                  const meta = COUNTRY_LABELS[country] || {
+                    label: country.toUpperCase(),
+                    flag: "🌍",
+                  };
+
+                  return (
+                    <div
+                      key={country}
+                      className="flex items-center justify-between gap-3"
+                    >
+                      <div className="min-w-0 text-[15px] font-medium text-white">
+                        <span className="mr-3">{meta.flag}</span>
+                        <span>{meta.label}</span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() => onToggleCountry(country)}
+                        className={`relative inline-flex h-8 w-[50px] shrink-0 rounded-full border transition ${
+                          checked
+                            ? "border-[#5b7ea8] bg-[#314b69]"
+                            : "border-[#31455e] bg-[#1b2a3b]"
+                        }`}
+                        aria-pressed={checked}
+                      >
+                        <span
+                          className={`absolute top-1/2 h-6 w-6 -translate-y-1/2 rounded-full transition ${
+                            checked ? "left-[22px] bg-[#8eadd1]" : "left-[2px] bg-[#6f89a8]"
+                          }`}
+                        />
+                      </button>                      
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function FeedScreen({
   locale,
   posts,
@@ -311,6 +644,11 @@ export function FeedScreen({
   const [seenSubscriptionPosts, setSeenSubscriptionPosts] = useState<
     Record<string, number>
   >({});
+  const [feedSettings, setFeedSettings] = useState<FeedSettings>(() =>
+    readFeedSettingsFromStorage(locale)
+  );
+  const [showFloatingSmartBar, setShowFloatingSmartBar] = useState(false);
+  const lastScrollYRef = useRef(0);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
@@ -327,7 +665,8 @@ export function FeedScreen({
     setSearchQuery(readSearchQueryFromStorage());
     setSubscriptionHandles(readSubscriptionsFromStorage());
     setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
-  }, []);
+    setFeedSettings(readFeedSettingsFromStorage(locale));
+  }, [locale]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -339,6 +678,23 @@ export function FeedScreen({
   useEffect(() => {
     localStorage.setItem(FEED_SEARCH_STORAGE_KEY, searchQuery);
   }, [searchQuery]);
+
+  useEffect(() => {
+    writeFeedSettingsToStorage(feedSettings);
+  }, [feedSettings]);
+
+  useEffect(() => {
+    setFeedSettings((prev) => {
+      const localeCountry = String(locale).toLowerCase();
+      if (prev.countries.includes(localeCountry)) return prev;
+      return {
+        ...prev,
+        countries: [localeCountry, ...prev.countries].filter(
+          (value, index, list) => list.indexOf(value) === index
+        ),
+      };
+    });
+  }, [locale]);
 
   useEffect(() => {
     const handleToggle = () => {
@@ -375,6 +731,29 @@ export function FeedScreen({
     );
   }, [tagsOpen]);
 
+  useEffect(() => {
+    if (tagsOpen) {
+      setShowFloatingSmartBar(false);
+      return;
+    }
+
+    const handleScroll = () => {
+      const currentY = window.scrollY || 0;
+      const prevY = lastScrollYRef.current;
+      const scrollingUp = currentY < prevY;
+      const shouldShow = currentY > 200 && scrollingUp;
+      setShowFloatingSmartBar(shouldShow);
+      lastScrollYRef.current = currentY;
+    };
+
+    lastScrollYRef.current = window.scrollY || 0;
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [tagsOpen]);
+
   const safePosts = useMemo(() => {
     return posts.filter(
       (post) =>
@@ -386,6 +765,18 @@ export function FeedScreen({
         Array.isArray(post.media)
     );
   }, [posts]);
+
+  const availableCountryOptions = useMemo(() => {
+    const currentCountry = String(locale).toLowerCase();
+    const set = new Set<string>([currentCountry]);
+
+    for (const post of safePosts) {
+      const code = normalizeCountryCode(post.sourceCountryCode, locale);
+      if (code) set.add(code);
+    }
+
+    return Array.from(set);
+  }, [safePosts, locale]);
 
   const subscriptionBubbles = useMemo(() => {
     if (subscriptionHandles.length === 0) return [];
@@ -428,9 +819,28 @@ export function FeedScreen({
       return b.latestPostId - a.latestPostId;
     });
   }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
-  
+
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
+
+    const selectedCountries = feedSettings.countries.map((item) => item.toLowerCase());
+    if (selectedCountries.length > 0) {
+      list = list.filter((post) =>
+        selectedCountries.includes(
+          normalizeCountryCode(post.sourceCountryCode, locale)
+        )
+      );
+    }
+
+    if (feedSettings.mediaMode !== "all") {
+      list = list.filter((post) => {
+        const detectedMode = detectPostMediaMode(post);
+        if (feedSettings.mediaMode === "text") return detectedMode === "text";
+        if (feedSettings.mediaMode === "photo") return detectedMode === "photo";
+        if (feedSettings.mediaMode === "video") return detectedMode === "video";
+        return true;
+      });
+    }
 
     if (selectedTags.length > 0) {
       list = list.filter((post) => {
@@ -459,7 +869,7 @@ export function FeedScreen({
     }
 
     return list;
-  }, [safePosts, selectedTags, searchQuery]);
+  }, [safePosts, feedSettings, selectedTags, searchQuery, locale]);
 
   const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isVideoViewerPost(post));
@@ -609,6 +1019,37 @@ export function FeedScreen({
         resultsCount={visiblePosts.length}
       />
 
+      {!tagsOpen && showFloatingSmartBar ? (
+        <SmartFeedBar
+          copy={copy}
+          mediaMode={feedSettings.mediaMode}
+          onChangeMediaMode={(next) =>
+            setFeedSettings((prev) => ({
+              ...prev,
+              mediaMode: next,
+            }))
+          }
+          locale={locale}
+          floating
+          availableCountries={availableCountryOptions}
+          selectedCountries={feedSettings.countries}
+          onToggleCountry={(country) =>
+            setFeedSettings((prev) => {
+              const exists = prev.countries.includes(country);
+
+              const nextCountries = exists
+                ? prev.countries.filter((item) => item !== country)
+                : [...prev.countries, country];
+
+              return {
+                ...prev,
+                countries: nextCountries.length ? nextCountries : [country],
+              };
+            })
+          }          
+        />        
+      ) : null}
+
       {!tagsOpen && !hasSubscriptions ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
       ) : null}
@@ -633,6 +1074,40 @@ export function FeedScreen({
             openSource(handle);
           }}
         />
+      ) : null}
+
+      {!tagsOpen ? (
+        <SmartFeedBar
+          copy={copy}
+          mediaMode={feedSettings.mediaMode}
+          onChangeMediaMode={(next) =>
+            setFeedSettings((prev) => ({
+              ...prev,
+              mediaMode: next,
+            }))
+          }
+          locale={locale}
+          availableCountries={availableCountryOptions}
+          selectedCountries={feedSettings.countries}
+          onToggleCountry={(country) =>
+            setFeedSettings((prev) => {
+              const currentCountry = String(locale).toLowerCase();
+
+              if (country === currentCountry) {
+                return prev;
+              }
+
+              const exists = prev.countries.includes(country);
+
+              return {
+                ...prev,
+                countries: exists
+                  ? prev.countries.filter((item) => item !== country)
+                  : [...prev.countries, country],
+              };
+            })
+          }
+        />        
       ) : null}
 
       {!tagsOpen && hasSubscriptions && !hasBubbles ? (
@@ -670,6 +1145,10 @@ export function FeedScreen({
               onClick={() => {
                 setSearchQuery("");
                 clearTags();
+                setFeedSettings((prev) => ({
+                  ...prev,
+                  mediaMode: "all",
+                }));
               }}
               className="mt-6 inline-flex items-center justify-center rounded-full bg-strong px-6 py-3 text-sm font-medium text-strong-foreground bg-strong-hover"
             >
