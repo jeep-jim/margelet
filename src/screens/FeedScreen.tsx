@@ -1,10 +1,4 @@
-import {
-  Bell,
-  ChevronDown,
-  FileText,
-  Image as ImageIcon,
-  Play,
-} from "lucide-react";
+import { Bell } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "../types/app";
 import type { ContentTag, IngestedPost } from "../types/app";
@@ -12,6 +6,11 @@ import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
+import {
+  FEED_SCREEN_COPY,
+  SmartFeedBar,
+  type FeedMediaMode,
+} from "./feed/SmartFeedBar";
 import {
   ADMIN_TELEGRAM_IDS,
   FEED_FILTER_STATE_EVENT,
@@ -26,8 +25,6 @@ const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 
-type FeedMediaMode = "all" | "text" | "photo" | "video";
-
 type FeedSettings = {
   mediaMode: FeedMediaMode;
   countries: string[];
@@ -40,171 +37,6 @@ type SubscriptionBubble = {
   avatar: string | null;
   hasNew: boolean;
   latestPostId: number;
-};
-
-type FeedScreenCopy = {
-  subscriptionsHint: string;
-  emptyTitle: string;
-  emptyText: string;
-  clearAll: string;
-  modeAll: string;
-  modeText: string;
-  modePhoto: string;
-  modeVideo: string;
-  countriesTitle: string;
-};
-
-const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
-  en: {
-    subscriptionsHint:
-      "New posts from channels with notifications enabled will appear here",
-    emptyTitle: "Nothing found",
-    emptyText: "Try removing some tags or clearing the search.",
-    clearAll: "Clear all",
-    modeAll: "All",
-    modeText: "Text",
-    modePhoto: "Photo",
-    modeVideo: "Video",
-    countriesTitle: "Show channels from other countries:",
-  },
-  ru: {
-    subscriptionsHint:
-      "Тут будут новые посты каналов, в которых включено уведомление",
-    emptyTitle: "Ничего не найдено",
-    emptyText: "Попробуй снять часть тегов или очистить поиск.",
-    clearAll: "Очистить всё",
-    modeAll: "Все",
-    modeText: "Текст",
-    modePhoto: "Фото",
-    modeVideo: "Видео",
-    countriesTitle: "Показывать каналы авторов из других стран:",
-  },
-  de: {
-    subscriptionsHint:
-      "Hier erscheinen neue Beiträge von Kanälen mit aktivierten Benachrichtigungen",
-    emptyTitle: "Nichts gefunden",
-    emptyText:
-      "Versuche, einige Tags zu entfernen oder die Suche zu löschen.",
-    clearAll: "Alles löschen",
-    modeAll: "Alle",
-    modeText: "Text",
-    modePhoto: "Fotos",
-    modeVideo: "Video",
-    countriesTitle: "Kanäle aus anderen Ländern anzeigen:",
-  },
-  es: {
-    subscriptionsHint:
-      "Aquí aparecerán nuevas publicaciones de canales con notificaciones activadas",
-    emptyTitle: "No se encontró nada",
-    emptyText:
-      "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
-    clearAll: "Borrar todo",
-    modeAll: "Todo",
-    modeText: "Texto",
-    modePhoto: "Foto",
-    modeVideo: "Vídeo",
-    countriesTitle: "Mostrar canales de autores de otros países:",
-  },
-  tr: {
-    subscriptionsHint:
-      "Bildirimleri açık olan kanalların yeni gönderileri burada görünecek",
-    emptyTitle: "Hiçbir şey bulunamadı",
-    emptyText: "Bazı etiketleri kaldırmayı veya aramayı temizlemeyi dene.",
-    clearAll: "Hepsini temizle",
-    modeAll: "Tümü",
-    modeText: "Metin",
-    modePhoto: "Foto",
-    modeVideo: "Video",
-    countriesTitle: "Diğer ülkelerdeki kanalları göster:",
-  },
-  fr: {
-    subscriptionsHint:
-      "De nouvelles publications des chaînes avec notifications activées apparaîtront ici",
-    emptyTitle: "Rien trouvé",
-    emptyText:
-      "Essaie de retirer certains tags ou d’effacer la recherche.",
-    clearAll: "Tout effacer",
-    modeAll: "Tout",
-    modeText: "Texte",
-    modePhoto: "Photo",
-    modeVideo: "Vidéo",
-    countriesTitle: "Afficher les chaînes d’autres pays :",
-  },
-  it: {
-    subscriptionsHint:
-      "Qui appariranno nuovi post dai canali con notifiche attivate",
-    emptyTitle: "Nessun risultato",
-    emptyText: "Prova a rimuovere alcuni tag o a cancellare la ricerca.",
-    clearAll: "Cancella tutto",
-    modeAll: "Tutto",
-    modeText: "Testo",
-    modePhoto: "Foto",
-    modeVideo: "Video",
-    countriesTitle: "Mostra canali di altri paesi:",
-  },
-  "pt-br": {
-    subscriptionsHint:
-      "Novos posts dos canais com notificações ativadas aparecerão aqui",
-    emptyTitle: "Nada encontrado",
-    emptyText: "Tente remover algumas tags ou limpar a busca.",
-    clearAll: "Limpar tudo",
-    modeAll: "Tudo",
-    modeText: "Texto",
-    modePhoto: "Foto",
-    modeVideo: "Vídeo",
-    countriesTitle: "Mostrar canais de outros países:",
-  },
-  id: {
-    subscriptionsHint:
-      "Postingan baru dari channel dengan notifikasi aktif akan muncul di sini",
-    emptyTitle: "Tidak ada yang ditemukan",
-    emptyText: "Coba hapus beberapa tag atau bersihkan pencarian.",
-    clearAll: "Bersihkan semua",
-    modeAll: "Semua",
-    modeText: "Teks",
-    modePhoto: "Foto",
-    modeVideo: "Video",
-    countriesTitle: "Tampilkan channel dari negara lain:",
-  },
-  pl: {
-    subscriptionsHint:
-      "Nowe posty z kanałów z włączonymi powiadomieniami pojawią się tutaj",
-    emptyTitle: "Nic nie znaleziono",
-    emptyText: "Spróbuj usunąć część tagów albo wyczyścić wyszukiwanie.",
-    clearAll: "Wyczyść wszystko",
-    modeAll: "Wszystko",
-    modeText: "Tekst",
-    modePhoto: "Zdjęcia",
-    modeVideo: "Wideo",
-    countriesTitle: "Pokaż kanały z innych krajów:",
-  },
-};
-
-const LOCALE_SHORT: Record<Locale, string> = {
-  en: "EN",
-  ru: "RU",
-  de: "DE",
-  es: "ES",
-  tr: "TR",
-  fr: "FR",
-  it: "IT",
-  "pt-br": "BR",
-  id: "ID",
-  pl: "PL",
-};
-
-const COUNTRY_LABELS: Record<string, { label: string; flag: string }> = {
-  ru: { label: "Русский", flag: "🇷🇺" },
-  en: { label: "English", flag: "🇬🇧" },
-  de: { label: "Deutsch", flag: "🇩🇪" },
-  es: { label: "Español", flag: "🇪🇸" },
-  tr: { label: "Türkçe", flag: "🇹🇷" },
-  fr: { label: "Français", flag: "🇫🇷" },
-  it: { label: "Italiano", flag: "🇮🇹" },
-  "pt-br": { label: "Português (Brasil)", flag: "🇧🇷" },
-  id: { label: "Bahasa Indonesia", flag: "🇮🇩" },
-  pl: { label: "Polski", flag: "🇵🇱" },
-  kz: { label: "KZ", flag: "🇰🇿" },
 };
 
 function isGifPost(post: IngestedPost) {
@@ -444,222 +276,6 @@ function SubscriptionsBar({
   );
 }
 
-function SmartFeedBar({
-  copy,
-  mediaMode,
-  onChangeMediaMode,
-  locale,
-  floating = false,
-  visible = true,
-  availableCountries,
-  selectedCountries,
-  onToggleCountry,
-}: {
-  copy: FeedScreenCopy;
-  mediaMode: FeedMediaMode;
-  onChangeMediaMode: (next: FeedMediaMode) => void;
-  locale: Locale;
-  floating?: boolean;
-  visible?: boolean;
-  availableCountries: string[];
-  selectedCountries: string[];
-  onToggleCountry: (country: string) => void;
-}) {
-  const [countriesOpen, setCountriesOpen] = useState(false);
-
-  useEffect(() => {
-    if (!countriesOpen) return;
-
-    const closeDropdown = () => {
-      setCountriesOpen(false);
-    };
-
-    window.addEventListener("scroll", closeDropdown, { passive: true });
-    window.addEventListener("wheel", closeDropdown, { passive: true });
-    window.addEventListener("touchmove", closeDropdown, { passive: true });
-    window.addEventListener("resize", closeDropdown);
-
-    return () => {
-      window.removeEventListener("scroll", closeDropdown);
-      window.removeEventListener("wheel", closeDropdown);
-      window.removeEventListener("touchmove", closeDropdown);
-      window.removeEventListener("resize", closeDropdown);
-    };
-  }, [countriesOpen]);
-
-  useEffect(() => {
-    if (!visible && countriesOpen) {
-      setCountriesOpen(false);
-    }
-  }, [visible, countriesOpen]);
-
-  const options: Array<{
-    value: FeedMediaMode;
-    label: string;
-    mobileLabel?: string;
-    icon?: React.ReactNode;
-  }> = [
-    { value: "all", label: copy.modeAll, mobileLabel: copy.modeAll },
-    {
-      value: "text",
-      label: copy.modeText,
-      icon: <FileText className="h-4 w-4" />,
-    },
-    {
-      value: "photo",
-      label: copy.modePhoto,
-      icon: <ImageIcon className="h-4 w-4" />,
-    },
-    {
-      value: "video",
-      label: copy.modeVideo,
-      icon: <Play className="h-4 w-4 fill-current" />,
-    },
-  ];
-
-  const baseCountry = String(locale).toLowerCase();
-  const extraCount = selectedCountries.filter((item) => item !== baseCountry).length;
-  const countryButtonLabel =
-    extraCount > 0
-      ? `${LOCALE_SHORT[locale] ?? String(locale).toUpperCase()} +${extraCount}`
-      : LOCALE_SHORT[locale] ?? String(locale).toUpperCase();
-
-  return (
-    <div
-      className={
-        floating
-          ? `fixed inset-x-0 z-[55] transition-all duration-300 ease-out ${
-              visible
-                ? "translate-y-0 opacity-100"
-                : "pointer-events-none -translate-y-3 opacity-0"
-            }`
-          : "relative z-[2]"
-      }
-      style={floating ? { top: "var(--app-header-offset)" } : undefined}
-      aria-hidden={floating ? !visible : undefined}
-    >
-      <div className="mx-auto w-full max-w-[570px]">
-        <div className="relative">
-          <div className="border-b border-soft bg-surface text-primary transition-colors dark:border-[#22364f] dark:bg-[#08111d] dark:text-white">
-            <div className="flex items-center justify-between gap-2 px-4 py-3 sm:gap-3">
-              <div className="flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2">
-                {options.map((option) => {
-                  const active = mediaMode === option.value;
-
-                  return (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => onChangeMediaMode(option.value)}
-                      className={`inline-flex h-10 shrink-0 items-center justify-center rounded-full border px-3 text-sm font-medium transition sm:h-10 sm:px-3.5 ${
-                        active
-                          ? "border-transparent bg-[#111111] text-white dark:border-white dark:bg-white dark:text-[#162231]"
-                          : "border-soft bg-surface-soft text-secondary hover:bg-surface dark:border-[#23405d] dark:bg-[#102033] dark:text-white dark:hover:bg-[#13263c]"
-                      } ${
-                        option.value === "all"
-                          ? "min-w-[62px] sm:min-w-[72px]"
-                          : "min-w-[40px] sm:min-w-[88px]"
-                      }`}
-                      aria-pressed={active}
-                    >
-                      {option.value === "all" ? (
-                        <span className="truncate">{option.mobileLabel ?? option.label}</span>
-                      ) : (
-                        <>
-                          <span className="sm:hidden">{option.icon}</span>
-                          <span className="hidden items-center gap-2 sm:inline-flex">
-                            {option.icon}
-                            <span>{option.label}</span>
-                          </span>
-                        </>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setCountriesOpen((prev) => !prev)}
-                  className={`inline-flex h-10 min-w-[76px] items-center justify-center gap-2 rounded-full border px-3.5 text-sm font-medium transition ${
-                    countriesOpen
-                      ? "border-transparent bg-[#111111] text-white dark:border-white dark:bg-white dark:text-[#162231]"
-                      : "border-soft bg-surface-soft text-primary hover:bg-surface dark:border-[#23405d] dark:bg-[#102033] dark:text-white dark:hover:bg-[#13263c]"
-                  }`}
-                >
-                  <span>{countryButtonLabel}</span>
-                  <ChevronDown
-                    className={`h-4 w-4 shrink-0 transition ${
-                      countriesOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={`absolute left-0 right-0 top-full overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface text-primary shadow-soft transition-all duration-200 dark:border-[#22364f] dark:bg-[#132338] dark:text-white dark:shadow-[0_16px_40px_rgba(0,0,0,0.28)] ${
-              countriesOpen
-                ? "pointer-events-auto max-h-[420px] opacity-100"
-                : "pointer-events-none max-h-0 border-transparent opacity-0 shadow-none"
-            }`}
-          >
-            <div className="px-4 pb-4 pt-4 sm:px-4">
-              <div className="mb-3 text-sm font-medium text-secondary dark:text-[#95a8bd]">
-                {copy.countriesTitle}
-              </div>
-
-              <div className="space-y-2.5">
-                {availableCountries.map((country) => {
-                  const checked = selectedCountries.includes(country);
-                  const meta = COUNTRY_LABELS[country] || {
-                    label: country.toUpperCase(),
-                    flag: "🌍",
-                  };
-
-                  return (
-                    <div
-                      key={country}
-                      className="flex items-center justify-between gap-3 rounded-2xl px-1 py-1"
-                    >
-                      <div className="min-w-0 text-[15px] font-medium text-primary dark:text-white">
-                        <span className="mr-3">{meta.flag}</span>
-                        <span>{meta.label}</span>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => onToggleCountry(country)}
-                        className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${
-                          checked
-                            ? "border-transparent bg-[#111111] dark:border-white dark:bg-white"
-                            : "border-soft bg-surface-soft dark:border-[#31455e] dark:bg-[#1b2a3b]"
-                        }`}
-                        aria-pressed={checked}
-                        aria-label={`${meta.label} ${checked ? "enabled" : "disabled"}`}
-                      >
-                        <span
-                          className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${
-                            checked
-                              ? "left-[20px] bg-white dark:bg-[#1b2a3b]"
-                              : "left-[2px] bg-secondary/70 dark:bg-[#6f89a8]"
-                          }`}
-                        />
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export function FeedScreen({
   locale,
   posts,
@@ -741,7 +357,10 @@ export function FeedScreen({
     const localeCountry = String(locale).toLowerCase();
 
     setFeedSettings((prev) => {
-      if (prev.countries.length === 1 && prev.countries[0] === localeCountry) {
+      if (
+        prev.countries.length === 1 &&
+        prev.countries[0] === localeCountry
+      ) {
         return prev;
       }
 
@@ -750,7 +369,7 @@ export function FeedScreen({
         countries: [localeCountry],
       };
     });
-  }, [locale]);
+  }, [locale]);  
 
   useEffect(() => {
     const handleToggle = () => {
@@ -823,7 +442,9 @@ export function FeedScreen({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [tagsOpen]);
+  }, [tagsOpen]);  
+
+  {!tagsOpen && showFloatingSmartBar ? <div className="h-[74px]" /> : null}
 
   const safePosts = useMemo(() => {
     return posts.filter(
