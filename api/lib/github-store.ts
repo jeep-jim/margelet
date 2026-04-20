@@ -299,6 +299,82 @@ function getPostCountryCode(post: unknown) {
   return normalizeCountryCode(value);
 }
 
+function parseCreatedAtMs(value: unknown) {
+  const ms = Date.parse(String(value || ""));
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+function normalizeHandle(value: unknown) {
+  return String(value || "").trim().replace(/^@+/, "").toLowerCase();
+}
+
+function getFeedPostSourceKey(post: unknown) {
+  if (!post || typeof post !== "object") {
+    return "";
+  }
+
+  const record = post as {
+    sourceCountryCode?: unknown;
+    source?: { handle?: unknown } | null;
+  };
+
+  const country = normalizeCountryCode(record.sourceCountryCode) || "xx";
+  const handle = normalizeHandle(record.source?.handle || "");
+  if (!handle) {
+    return "";
+  }
+
+  return `${country}:${handle}`;
+}
+
+function normalizeFeedPostOrder<T>(posts: T[]) {
+  const grouped = new Map<string, T[]>();
+  let fallbackIndex = 0;
+
+  for (const post of [...posts].sort((a, b) => {
+    const aMs =
+      a && typeof a === "object" ? parseCreatedAtMs((a as { createdAt?: unknown }).createdAt) : 0;
+    const bMs =
+      b && typeof b === "object" ? parseCreatedAtMs((b as { createdAt?: unknown }).createdAt) : 0;
+    return bMs - aMs;
+  })) {
+    const key = getFeedPostSourceKey(post) || `__single__:${fallbackIndex++}`;
+
+    const list = grouped.get(key) || [];
+    list.push(post);
+    grouped.set(key, list);
+  }
+
+  const groups = Array.from(grouped.values()).sort((a, b) => {
+    const aTop =
+      a[0] && typeof a[0] === "object"
+        ? parseCreatedAtMs((a[0] as { createdAt?: unknown }).createdAt)
+        : 0;
+    const bTop =
+      b[0] && typeof b[0] === "object"
+        ? parseCreatedAtMs((b[0] as { createdAt?: unknown }).createdAt)
+        : 0;
+
+    return bTop - aTop;
+  });
+
+  const result: T[] = [];
+  let added = true;
+
+  while (added) {
+    added = false;
+
+    for (const group of groups) {
+      const next = group.shift();
+      if (!next) continue;
+      result.push(next);
+      added = true;
+    }
+  }
+
+  return result;
+}
+
 function buildCountryFeedFiles<T>(posts: T[], updatedAt: string) {
   const byCountry = new Map<string, T[]>();
 
@@ -505,12 +581,13 @@ export async function readFeedCountryPosts<T = unknown>(countryCode: string): Pr
 
 export async function writeFeedFile<T = unknown>(posts: T[]) {
   const updatedAt = new Date().toISOString();
+  const orderedPosts = normalizeFeedPostOrder(posts);
   const payload: FeedFile<T> = {
     updatedAt,
-    posts,
+    posts: orderedPosts,
   };
 
-  const snapshot = buildCountryFeedFiles(posts, updatedAt);
+  const snapshot = buildCountryFeedFiles(orderedPosts, updatedAt);
 
   await persistFiles(
     [
