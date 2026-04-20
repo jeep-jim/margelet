@@ -1,6 +1,27 @@
 {
-  "updatedAt": "2026-04-20T07:13:45.820Z",
+  "updatedAt": "2026-04-20T08:57:02.831Z",
   "sources": [
+    {
+      "id": "ru:decenter",
+      "countryCode": "ru",
+      "handle": "decenter",
+      "title": "DeCenter — блокчейн, биткоин, инвестиции",
+      "avatarUrl": "https://cdn4.telesco.pe/file/QvIOatRqIa9jwp1jpHlgWWLcW-nOo3WVqeqLRs5lwqzPWbzr3NPl4kbEImJylNjTKS65a8--NgInLenlaVudVTJk6nq9X7yvlMgV66KRkY0yAS6lh-EnDIn_4xGalwejuRZJSolakXXj4FlClK6Hzc2Uwp6ExGQrNkWqrPx0XctpOIelnD6rS-bU_e4Vlobedl5YvSkKJTwIMbO5vf17bBcxHC8ABE1oLTUZ2ygcATDjdIb6Ru3pkhxMEco26xF6HLjmjzneyRtSMd3VmJ7Llm2UxBYcmjnPHHiJmay2Wp5SWKl-BFrzmgACw23RntxjAmx1f9gA31HylmZjtwys0Q.jpg",
+      "verified": true,
+      "defaultTag": "crypto",
+      "tags": [
+        "crypto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-18T01:52:44.212Z",
+      "updatedAt": "2026-04-20T07:13:28.187Z",
+      "lastCheckedAt": "2026-04-20T07:13:28.076Z",
+      "lastImportedAt": "2026-04-20T07:13:28.076Z",
+      "lastSeenPostId": 24707,
+      "importedPostsCount": 28,
+      "lastRefreshCursorPostId": 24702
+    },
     {
       "id": "en:google_nws",
       "countryCode": "en",
@@ -22,27 +43,6 @@
       "lastSeenPostId": null,
       "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
-    },
-    {
-      "id": "ru:decenter",
-      "countryCode": "ru",
-      "handle": "decenter",
-      "title": "DeCenter — блокчейн, биткоин, инвестиции",
-      "avatarUrl": "https://cdn4.telesco.pe/file/QvIOatRqIa9jwp1jpHlgWWLcW-nOo3WVqeqLRs5lwqzPWbzr3NPl4kbEImJylNjTKS65a8--NgInLenlaVudVTJk6nq9X7yvlMgV66KRkY0yAS6lh-EnDIn_4xGalwejuRZJSolakXXj4FlClK6Hzc2Uwp6ExGQrNkWqrPx0XctpOIelnD6rS-bU_e4Vlobedl5YvSkKJTwIMbO5vf17bBcxHC8ABE1oLTUZ2ygcATDjdIb6Ru3pkhxMEco26xF6HLjmjzneyRtSMd3VmJ7Llm2UxBYcmjnPHHiJmay2Wp5SWKl-BFrzmgACw23RntxjAmx1f9gA31HylmZjtwys0Q.jpg",
-      "verified": true,
-      "defaultTag": "crypto",
-      "tags": [
-        "crypto"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-20T07:13:28.187Z",
-      "lastCheckedAt": "2026-04-20T07:13:28.076Z",
-      "lastImportedAt": "2026-04-20T07:13:28.076Z",
-      "lastSeenPostId": 24707,
-      "importedPostsCount": 28,
-      "lastRefreshCursorPostId": 24702
     },
     {
       "id": "ru:hiaimedia",
@@ -338,30 +338,6 @@
       "lastSeenPostId": 48019,
       "importedPostsCount": 72,
       "lastRefreshCursorPostId": 48009
-    },
-    {
-      "id": "ru:rian_ru",
-      "countryCode": "ru",
-      "handle": "rian_ru",
-      "title": "РИА Новости",
-      "avatarUrl": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BPGRlZnM%2BPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHgyPSIwJSIgeTE9IjAlIiB5Mj0iMTAwJSI%2BPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmY2Q2YSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmYTg1YyIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxzdHlsZT50ZXh0e2ZvbnQ6NjAwIDQ0cHggLWFwcGxlLXN5c3RlbSxCbGlua01hY1N5c3RlbUZvbnQsJ1NlZ29lIFVJJyxSb2JvdG8sSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYsJ0FwcGxlIENvbG9yIEVtb2ppJywnU2Vnb2UgVUkgRW1vamknLCdTZWdvZSBVSSBTeW1ib2wnOy13ZWJraXQtdXNlci1zZWxlY3Q6bm9uZTt1c2VyLXNlbGVjdDpub25lfTwvc3R5bGU%2BPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI1MCIgeT0iNjYiIGZpbGw9IiNmZmYiPtCg0J08L3RleHQ%2BPC9zdmc%2B",
-      "verified": true,
-      "defaultTag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "war"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-20T07:13:38.560Z",
-      "lastCheckedAt": "2026-04-20T07:13:37.889Z",
-      "lastImportedAt": "2026-04-20T07:13:37.889Z",
-      "lastSeenPostId": 337243,
-      "importedPostsCount": 10,
-      "lastRefreshCursorPostId": 337227
     },
     {
       "id": "ru:smi_rf_moskva",
