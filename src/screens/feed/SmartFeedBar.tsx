@@ -249,7 +249,7 @@ function getSwitchThumbClasses(isDark: boolean, checked: boolean) {
     return isDark ? "left-[20px] bg-[#162231]" : "left-[20px] bg-white";
   }
 
-  return isDark ? "left-[2px] bg-[#6f89a8]" : "left-[2px] bg-secondary/70";
+  return isDark ? "left-[2px] bg-[#6f89a8]" : "left-[2px] bg-[#9aa4b2]";
 }
 
 export function SmartFeedBar({
