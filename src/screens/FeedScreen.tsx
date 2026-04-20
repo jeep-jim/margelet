@@ -357,16 +357,15 @@ export function FeedScreen({
     const localeCountry = String(locale).toLowerCase();
 
     setFeedSettings((prev) => {
-      if (
-        prev.countries.length === 1 &&
-        prev.countries[0] === localeCountry
-      ) {
+      const normalized = prev.countries.map((item) => item.toLowerCase());
+
+      if (normalized.includes(localeCountry)) {
         return prev;
       }
 
       return {
         ...prev,
-        countries: [localeCountry],
+        countries: [localeCountry, ...normalized],
       };
     });
   }, [locale]);  
