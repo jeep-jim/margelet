@@ -407,22 +407,37 @@ export function FeedScreen({
       return;
     }
 
+    const TOP_HIDE_OFFSET = 140;
+    const DELTA = 6;
+
     const handleScroll = () => {
       const currentY = window.scrollY || 0;
       const prevY = lastScrollYRef.current;
-      const scrollingUp = currentY < prevY;
-      const shouldShow = currentY > 200 && scrollingUp;
-      setShowFloatingSmartBar(shouldShow);
+
+      if (currentY <= TOP_HIDE_OFFSET) {
+        setShowFloatingSmartBar(false);
+        lastScrollYRef.current = currentY;
+        return;
+      }
+
+      if (currentY < prevY - DELTA) {
+        setShowFloatingSmartBar(true);
+      } else if (currentY > prevY + DELTA) {
+        setShowFloatingSmartBar(false);
+      }
+
       lastScrollYRef.current = currentY;
     };
 
     lastScrollYRef.current = window.scrollY || 0;
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [tagsOpen]);
+  }, [tagsOpen]);  
 
   const safePosts = useMemo(() => {
     return posts.filter(

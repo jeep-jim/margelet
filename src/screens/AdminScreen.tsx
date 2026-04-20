@@ -3,6 +3,7 @@ import type { IngestedPost, Locale } from "../types/app";
 import { COUNTRIES, type CountryCode } from "./admin/admin.countries";
 import { AdminBulkImportSection } from "./admin/AdminBulkImportSection";
 import { AdminCountriesSection } from "./admin/AdminCountriesSection";
+import { AdminManualPostSection } from "./admin/AdminManualPostSection";
 import { AdminPostsSection } from "./admin/AdminPostsSection";
 import { AdminSourcesSection } from "./admin/AdminSourcesSection";
 import type { TrustedSource } from "./admin/admin.types";
@@ -336,6 +337,12 @@ export function AdminScreen({
             countryCode={selectedCountryCode}
             sources={sources}
             onSourcesReload={loadSources}
+          />
+
+          <AdminManualPostSection
+            telegramUserId={telegramUserId}
+            countryCode={selectedCountryCode}
+            onSubmitted={refreshEverything}
           />
 
           <AdminBulkImportSection
