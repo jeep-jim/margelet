@@ -114,7 +114,7 @@ export function FeedMoreMenu({
       openTelegram: "In Telegram öffnen",
       delete: "Beitrag löschen",
       deleteAdmin: "Beitrag löschen (admin)",
-      hide: "Interessiert mich nicht",
+      hide: "Nicht interessant",
     },
     es: {
       subscribeOn: "Activar notificaciones",
@@ -154,7 +154,7 @@ export function FeedMoreMenu({
       openTelegram: "Abrir no Telegram",
       delete: "Excluir post",
       deleteAdmin: "Excluir post (admin)",
-      hide: "Isso não me interessa",
+      hide: "Não me interessa",
     },
     id: {
       subscribeOn: "Aktifkan notifikasi",
