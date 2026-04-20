@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20T10:01:05.888Z",
+  "updatedAt": "2026-04-20T10:44:30.179Z",
   "sources": [
     {
       "id": "ru:decenter",
@@ -21,6 +21,26 @@
       "lastSeenPostId": 24708,
       "importedPostsCount": 29,
       "lastRefreshCursorPostId": 24702
+    },
+    {
+      "id": "en:google_nws",
+      "countryCode": "en",
+      "handle": "google_nws",
+      "title": "Google News | En",
+      "avatarUrl": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-20T10:44:29.911Z",
+      "updatedAt": "2026-04-20T10:44:29.911Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0
     },
     {
       "id": "ru:hiaimedia",
