@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-20T06:26:57.145Z",
+  "updatedAt": "2026-04-20T07:11:17.099Z",
   "sources": [
     {
       "id": "ru:decenter",
@@ -21,6 +21,27 @@
       "lastSeenPostId": 24706,
       "importedPostsCount": 27,
       "lastRefreshCursorPostId": 24702
+    },
+    {
+      "id": "en:google_nws",
+      "countryCode": "en",
+      "handle": "google_nws",
+      "title": "Google News",
+      "avatarUrl": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-20T07:11:16.992Z",
+      "updatedAt": "2026-04-20T07:11:16.992Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0
     },
     {
       "id": "ru:hiaimedia",
