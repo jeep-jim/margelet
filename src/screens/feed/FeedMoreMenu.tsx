@@ -1,4 +1,4 @@
-import { Bell, BellOff, EyeOff, Send, Trash2 } from "lucide-react";
+import { Bell, BellOff, Send, ThumbsDown, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
@@ -98,7 +98,7 @@ export function FeedMoreMenu({
       openTelegram: "Open in Telegram",
       delete: "Delete post",
       deleteAdmin: "Delete post (admin)",
-      hide: "Hide this post",
+      hide: "Not interested",
     },
     ru: {
       subscribeOn: "Включить уведомления",
@@ -106,7 +106,7 @@ export function FeedMoreMenu({
       openTelegram: "Открыть в Telegram",
       delete: "Удалить пост",
       deleteAdmin: "Удалить пост (admin)",
-      hide: "Не показывать",
+      hide: "Мне это не интересно!",
     },
     de: {
       subscribeOn: "Benachrichtigungen aktivieren",
@@ -114,7 +114,7 @@ export function FeedMoreMenu({
       openTelegram: "In Telegram öffnen",
       delete: "Beitrag löschen",
       deleteAdmin: "Beitrag löschen (admin)",
-      hide: "Diesen Beitrag ausblenden",
+      hide: "Interessiert mich nicht",
     },
     es: {
       subscribeOn: "Activar notificaciones",
@@ -122,7 +122,7 @@ export function FeedMoreMenu({
       openTelegram: "Abrir en Telegram",
       delete: "Eliminar publicación",
       deleteAdmin: "Eliminar publicación (admin)",
-      hide: "Ocultar esta publicación",
+      hide: "No me interesa",
     },
     tr: {
       subscribeOn: "Bildirimleri aç",
@@ -130,7 +130,7 @@ export function FeedMoreMenu({
       openTelegram: "Telegram’da aç",
       delete: "Gönderiyi sil",
       deleteAdmin: "Gönderiyi sil (admin)",
-      hide: "Bu gönderiyi gizle",
+      hide: "İlgimi çekmiyor",
     },
     fr: {
       subscribeOn: "Activer les notifications",
@@ -138,7 +138,7 @@ export function FeedMoreMenu({
       openTelegram: "Ouvrir dans Telegram",
       delete: "Supprimer le post",
       deleteAdmin: "Supprimer le post (admin)",
-      hide: "Masquer ce post",
+      hide: "Ça ne m’intéresse pas",
     },
     it: {
       subscribeOn: "Attiva notifiche",
@@ -146,7 +146,7 @@ export function FeedMoreMenu({
       openTelegram: "Apri in Telegram",
       delete: "Elimina post",
       deleteAdmin: "Elimina post (admin)",
-      hide: "Nascondi questo post",
+      hide: "Non mi interessa",
     },
     "pt-br": {
       subscribeOn: "Ativar notificações",
@@ -154,7 +154,7 @@ export function FeedMoreMenu({
       openTelegram: "Abrir no Telegram",
       delete: "Excluir post",
       deleteAdmin: "Excluir post (admin)",
-      hide: "Ocultar este post",
+      hide: "Isso não me interessa",
     },
     id: {
       subscribeOn: "Aktifkan notifikasi",
@@ -162,7 +162,7 @@ export function FeedMoreMenu({
       openTelegram: "Buka di Telegram",
       delete: "Hapus postingan",
       deleteAdmin: "Hapus postingan (admin)",
-      hide: "Sembunyikan postingan ini",
+      hide: "Saya tidak tertarik",
     },
     pl: {
       subscribeOn: "Włącz powiadomienia",
@@ -170,7 +170,7 @@ export function FeedMoreMenu({
       openTelegram: "Otwórz w Telegramie",
       delete: "Usuń post",
       deleteAdmin: "Usuń post (admin)",
-      hide: "Ukryj ten post",
+      hide: "To mnie nie interesuje",
     },
   } as const;
 
@@ -255,7 +255,7 @@ export function FeedMoreMenu({
             }}
             className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
           >
-            <EyeOff className="h-4 w-4" />
+            <ThumbsDown className="h-4 w-4" />
             <span>{copy.hide}</span>
           </button>
         )}

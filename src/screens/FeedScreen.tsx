@@ -357,10 +357,7 @@ export function FeedScreen({
     const localeCountry = String(locale).toLowerCase();
 
     setFeedSettings((prev) => {
-      if (
-        prev.countries.length === 1 &&
-        prev.countries[0] === localeCountry
-      ) {
+      if (prev.countries.length === 1 && prev.countries[0] === localeCountry) {
         return prev;
       }
 
@@ -369,7 +366,7 @@ export function FeedScreen({
         countries: [localeCountry],
       };
     });
-  }, [locale]);  
+  }, [locale]);
 
   useEffect(() => {
     const handleToggle = () => {
@@ -412,39 +409,22 @@ export function FeedScreen({
       return;
     }
 
-    const TOP_HIDE_OFFSET = 140;
-    const DELTA = 6;
-
     const handleScroll = () => {
       const currentY = window.scrollY || 0;
       const prevY = lastScrollYRef.current;
-
-      if (currentY <= TOP_HIDE_OFFSET) {
-        setShowFloatingSmartBar(false);
-        lastScrollYRef.current = currentY;
-        return;
-      }
-
-      if (currentY < prevY - DELTA) {
-        setShowFloatingSmartBar(true);
-      } else if (currentY > prevY + DELTA) {
-        setShowFloatingSmartBar(false);
-      }
-
+      const scrollingUp = currentY < prevY;
+      const shouldShow = currentY > 200 && scrollingUp;
+      setShowFloatingSmartBar(shouldShow);
       lastScrollYRef.current = currentY;
     };
 
     lastScrollYRef.current = window.scrollY || 0;
-    handleScroll();
-
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [tagsOpen]);  
-
-  {!tagsOpen && showFloatingSmartBar ? <div className="h-[74px]" /> : null}
+  }, [tagsOpen]);
 
   const safePosts = useMemo(() => {
     return posts.filter(
