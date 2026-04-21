@@ -1,27 +1,6 @@
 {
-  "updatedAt": "2026-04-21T12:48:52.131Z",
+  "updatedAt": "2026-04-21T13:47:39.718Z",
   "sources": [
-    {
-      "id": "en:google_nws",
-      "countryCode": "en",
-      "handle": "google_nws",
-      "title": "Google News | En",
-      "avatarUrl": "https://cdn4.telesco.pe/file/OZ5J1KKmQCjs4bytvB8xqQOuJVxLM5OhNdSvCJ2wQFv5_lCU9QajXxKarIljhAsIoSUe-f3KBI4ZQA1AsjFWpR4Vct1lFi74VyaOs91GkYKiE8x5kinOX4GFL0CXipSyGLBDFR54Jznpexzd7AUMaPxn6Ys4n0AFjOo8EInnG7Yfh7rObn9DrzDrBzNWcmd-a8I0fVk0-YuqTXTbRpM2YxbpT4gD-hgX1oHkWFZkWCL1QjIwHey_YLUytonJiAVrlsp_5UuhnXUuykQBlc2sGPiHxM55FUyJucw1IaYoRM9ENGBKzHrtl0TnNLp0sEFM1iJMKrRUUP-kNUBUSylRAw.jpg",
-      "verified": false,
-      "defaultTag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-20T10:44:29.911Z",
-      "updatedAt": "2026-04-21T12:48:45.127Z",
-      "lastCheckedAt": "2026-04-21T12:48:45.004Z",
-      "lastImportedAt": "2026-04-20T11:41:47.458Z",
-      "lastSeenPostId": 4348,
-      "importedPostsCount": 14,
-      "lastRefreshCursorPostId": 4346
-    },
     {
       "id": "ru:decenter",
       "countryCode": "ru",
@@ -42,6 +21,27 @@
       "lastSeenPostId": 24723,
       "importedPostsCount": 43,
       "lastRefreshCursorPostId": 24713
+    },
+    {
+      "id": "en:google_nws",
+      "countryCode": "en",
+      "handle": "google_nws",
+      "title": "Google News | En",
+      "avatarUrl": "https://cdn4.telesco.pe/file/OZ5J1KKmQCjs4bytvB8xqQOuJVxLM5OhNdSvCJ2wQFv5_lCU9QajXxKarIljhAsIoSUe-f3KBI4ZQA1AsjFWpR4Vct1lFi74VyaOs91GkYKiE8x5kinOX4GFL0CXipSyGLBDFR54Jznpexzd7AUMaPxn6Ys4n0AFjOo8EInnG7Yfh7rObn9DrzDrBzNWcmd-a8I0fVk0-YuqTXTbRpM2YxbpT4gD-hgX1oHkWFZkWCL1QjIwHey_YLUytonJiAVrlsp_5UuhnXUuykQBlc2sGPiHxM55FUyJucw1IaYoRM9ENGBKzHrtl0TnNLp0sEFM1iJMKrRUUP-kNUBUSylRAw.jpg",
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-20T10:44:29.911Z",
+      "updatedAt": "2026-04-21T12:48:45.127Z",
+      "lastCheckedAt": "2026-04-21T12:48:45.004Z",
+      "lastImportedAt": "2026-04-20T11:41:47.458Z",
+      "lastSeenPostId": 4348,
+      "importedPostsCount": 14,
+      "lastRefreshCursorPostId": 4346
     },
     {
       "id": "ru:hiaimedia",
@@ -112,20 +112,22 @@
       "countryCode": "ru",
       "handle": "maslennikovliga",
       "title": "Дима Масленников",
-      "avatarUrl": "https://cdn4.telesco.pe/file/jrwbaxLP2AdmiZudkgR2IJ8XoFIim2giBiWbX8mBNEz4GKeUZ4osPkikul-wYqMcuoSaGkjtAiZm3tGwWhMrBF2gLZt8H3CsESv1sx640HZgMMUZ9QIXO6XKz7cy3MobtpqhKHXoI3NWHdesY_L58_K4c5L9iOdz_FV4nFGeLU65VDF4MED_Q1uAtV9qmkLNN91zIl9tMkn4RaOeaYAPG5FOK-8IfCFXN0iPFvuM7K_wOsCAMiOP9bZSsGzKBD6M-VnQ_I-hv2obr4thB_20HFnnXiGKRLCosAU5SzDkZDdW7e4M8HK0Js6dap2Eao3tlY7HgrAt_dvAUeWGHsk2GA.jpg",
-      "verified": true,
+      "avatarUrl": null,
+      "verified": false,
       "defaultTag": "people",
       "tags": [
-        "people"
+        "people",
+        "people_blogs",
+        "celebrities"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-21T12:48:50.431Z",
-      "lastCheckedAt": "2026-04-21T12:48:50.318Z",
-      "lastImportedAt": "2026-04-19T19:52:52.850Z",
-      "lastSeenPostId": 2041,
-      "importedPostsCount": 19,
+      "updatedAt": "2026-04-21T13:47:39.687Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": 2040
     },
     {
