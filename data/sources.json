@@ -1,27 +1,6 @@
 {
-  "updatedAt": "2026-04-21T06:13:32.967Z",
+  "updatedAt": "2026-04-21T07:42:00.399Z",
   "sources": [
-    {
-      "id": "en:google_nws",
-      "countryCode": "en",
-      "handle": "google_nws",
-      "title": "Google News | En",
-      "avatarUrl": "https://cdn4.telesco.pe/file/OZ5J1KKmQCjs4bytvB8xqQOuJVxLM5OhNdSvCJ2wQFv5_lCU9QajXxKarIljhAsIoSUe-f3KBI4ZQA1AsjFWpR4Vct1lFi74VyaOs91GkYKiE8x5kinOX4GFL0CXipSyGLBDFR54Jznpexzd7AUMaPxn6Ys4n0AFjOo8EInnG7Yfh7rObn9DrzDrBzNWcmd-a8I0fVk0-YuqTXTbRpM2YxbpT4gD-hgX1oHkWFZkWCL1QjIwHey_YLUytonJiAVrlsp_5UuhnXUuykQBlc2sGPiHxM55FUyJucw1IaYoRM9ENGBKzHrtl0TnNLp0sEFM1iJMKrRUUP-kNUBUSylRAw.jpg",
-      "verified": false,
-      "defaultTag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-20T10:44:29.911Z",
-      "updatedAt": "2026-04-21T06:13:26.913Z",
-      "lastCheckedAt": "2026-04-21T06:13:26.519Z",
-      "lastImportedAt": "2026-04-20T11:41:47.458Z",
-      "lastSeenPostId": 4348,
-      "importedPostsCount": 14,
-      "lastRefreshCursorPostId": 4347
-    },
     {
       "id": "ru:decenter",
       "countryCode": "ru",
@@ -42,6 +21,27 @@
       "lastSeenPostId": 24711,
       "importedPostsCount": 32,
       "lastRefreshCursorPostId": 24705
+    },
+    {
+      "id": "en:google_nws",
+      "countryCode": "en",
+      "handle": "google_nws",
+      "title": "Google News | En",
+      "avatarUrl": "https://cdn4.telesco.pe/file/OZ5J1KKmQCjs4bytvB8xqQOuJVxLM5OhNdSvCJ2wQFv5_lCU9QajXxKarIljhAsIoSUe-f3KBI4ZQA1AsjFWpR4Vct1lFi74VyaOs91GkYKiE8x5kinOX4GFL0CXipSyGLBDFR54Jznpexzd7AUMaPxn6Ys4n0AFjOo8EInnG7Yfh7rObn9DrzDrBzNWcmd-a8I0fVk0-YuqTXTbRpM2YxbpT4gD-hgX1oHkWFZkWCL1QjIwHey_YLUytonJiAVrlsp_5UuhnXUuykQBlc2sGPiHxM55FUyJucw1IaYoRM9ENGBKzHrtl0TnNLp0sEFM1iJMKrRUUP-kNUBUSylRAw.jpg",
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-20T10:44:29.911Z",
+      "updatedAt": "2026-04-21T06:13:26.913Z",
+      "lastCheckedAt": "2026-04-21T06:13:26.519Z",
+      "lastImportedAt": "2026-04-20T11:41:47.458Z",
+      "lastSeenPostId": 4348,
+      "importedPostsCount": 14,
+      "lastRefreshCursorPostId": 4347
     },
     {
       "id": "ru:hiaimedia",
@@ -337,30 +337,6 @@
       "lastSeenPostId": 48054,
       "importedPostsCount": 98,
       "lastRefreshCursorPostId": 48037
-    },
-    {
-      "id": "ru:rian_ru",
-      "countryCode": "ru",
-      "handle": "rian_ru",
-      "title": "РИА Новости",
-      "avatarUrl": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwIiBoZWlnaHQ9IjE2MCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI%2BPGRlZnM%2BPGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCUiIHgyPSIwJSIgeTE9IjAlIiB5Mj0iMTAwJSI%2BPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmY2Q2YSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmYTg1YyIvPjwvbGluZWFyR3JhZGllbnQ%2BPC9kZWZzPjxzdHlsZT50ZXh0e2ZvbnQ6NjAwIDQ0cHggLWFwcGxlLXN5c3RlbSxCbGlua01hY1N5c3RlbUZvbnQsJ1NlZ29lIFVJJyxSb2JvdG8sSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYsJ0FwcGxlIENvbG9yIEVtb2ppJywnU2Vnb2UgVUkgRW1vamknLCdTZWdvZSBVSSBTeW1ib2wnOy13ZWJraXQtdXNlci1zZWxlY3Q6bm9uZTt1c2VyLXNlbGVjdDpub25lfTwvc3R5bGU%2BPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9InVybCgjZykiLz48dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSI1MCIgeT0iNjYiIGZpbGw9IiNmZmYiPtCg0J08L3RleHQ%2BPC9zdmc%2B",
-      "verified": true,
-      "defaultTag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "war"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-21T06:13:25.861Z",
-      "lastCheckedAt": "2026-04-21T04:36:38.965Z",
-      "lastImportedAt": "2026-04-21T04:36:38.965Z",
-      "lastSeenPostId": 337280,
-      "importedPostsCount": 46,
-      "lastRefreshCursorPostId": 337250
     },
     {
       "id": "ru:smi_rf_moskva",
