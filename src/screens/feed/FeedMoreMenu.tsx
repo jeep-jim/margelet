@@ -73,23 +73,12 @@ export function FeedMoreMenu({
       }
     }
 
-    function handlePointerDown(event: MouseEvent | TouchEvent) {
-      const target = event.target as Node | null;
-      if (!target) return;
-      if (menuRef.current?.contains(target)) return;
-      onRequestClose();
-    }
-
     document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("mousedown", handlePointerDown);
-    document.addEventListener("touchstart", handlePointerDown, { passive: true });
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handlePointerDown);
-      document.removeEventListener("touchstart", handlePointerDown);
     };
-  }, [onRequestClose]);
+  }, [onRequestClose]);  
 
   const COPY = {
     en: {

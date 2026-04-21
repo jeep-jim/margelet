@@ -363,6 +363,7 @@ export function FeedScreen({
     {}
   );
   const [seenPosts, setSeenPosts] = useState<Record<number, number>>({});
+  const [initialSeenPosts, setInitialSeenPosts] = useState<Record<number, number>>({});  
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   useEffect(() => {
@@ -371,8 +372,11 @@ export function FeedScreen({
     setSubscriptionHandles(readSubscriptionsFromStorage());
     setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
     setFeedSettings(readFeedSettingsFromStorage(locale));
-    setSeenPosts(readSeenPostsFromStorage());
-  }, [locale]);  
+
+    const storedSeenPosts = readSeenPostsFromStorage();
+    setSeenPosts(storedSeenPosts);
+    setInitialSeenPosts(storedSeenPosts);    
+  }, [locale]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -446,7 +450,9 @@ export function FeedScreen({
   }, [tagsOpen]);
 
   useEffect(() => {
-    if (tagsOpen) {
+    const postOverlayOpen = viewerIndex !== null || textReaderPost !== null;
+
+    if (tagsOpen || postOverlayOpen) {
       setShowFloatingSmartBar(false);
       return;
     }
@@ -481,7 +487,7 @@ export function FeedScreen({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [tagsOpen]);  
+  }, [tagsOpen, viewerIndex, textReaderPost]);  
 
   {!tagsOpen && showFloatingSmartBar ? <div className="h-[74px]" /> : null}
 
@@ -617,18 +623,24 @@ export function FeedScreen({
       const seen: IngestedPost[] = [];
 
       for (const post of list) {
-        if (seenPosts[post.id]) {
+        if (initialSeenPosts[post.id]) {
           seen.push(post);
         } else {
           unseen.push(post);
         }
       }
 
+      seen.sort((a, b) => {
+        const aSeenAt = initialSeenPosts[a.id] || 0;
+        const bSeenAt = initialSeenPosts[b.id] || 0;        
+        return aSeenAt - bSeenAt;
+      });
+
       list = [...unseen, ...seen];
-    }
+    }    
 
     return list;
-  }, [safePosts, feedSettings, selectedTags, searchQuery, locale, seenPosts]);  
+  }, [safePosts, feedSettings, selectedTags, searchQuery, locale, initialSeenPosts]);  
 
   const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isVideoViewerPost(post));
@@ -792,7 +804,11 @@ export function FeedScreen({
           }
           locale={locale}
           floating
-          visible={showFloatingSmartBar}
+          visible={
+            showFloatingSmartBar &&
+            viewerIndex === null &&
+            textReaderPost === null
+          }
           availableCountries={availableCountryOptions}
           selectedCountries={feedSettings.countries}
           onToggleCountry={(country) =>
@@ -953,7 +969,6 @@ export function FeedScreen({
               onHide={() => onHidePost(post.id)}
               onOpen={() => handleOpenPost(post)}
               onOpenCreator={() => openSource(post.source.handle)}
-              onSeen={() => markPostSeen(post.id)}
               mediaIndex={feedMediaIndexes[post.id] || 0}
               onChangeMediaIndex={(next: number) =>
                 setFeedCardMediaIndex(post.id, next)
