@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-21T07:45:38.967Z",
+  "updatedAt": "2026-04-21T07:50:25.260Z",
   "sources": [
     {
       "id": "ru:decenter",
@@ -337,6 +337,29 @@
       "lastSeenPostId": 48054,
       "importedPostsCount": 98,
       "lastRefreshCursorPostId": 48037
+    },
+    {
+      "id": "ru:rian_ru",
+      "countryCode": "ru",
+      "handle": "rian_ru",
+      "title": "РИА Новости",
+      "avatarUrl": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "war"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-21T07:50:25.142Z",
+      "updatedAt": "2026-04-21T07:50:25.142Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0
     },
     {
       "id": "ru:smi_rf_moskva",
