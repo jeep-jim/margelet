@@ -1,5 +1,5 @@
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useDragControls } from "framer-motion";
 import type { Locale } from "../../types/app";
 import {
   ArrowLeft,
@@ -510,6 +510,7 @@ export function FeedTextReaderModal({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
+    const dragControls = useDragControls();
 
   const visualMedia = media.filter(
     (item) => item.kind === "image" || item.kind === "video"
@@ -674,46 +675,72 @@ export function FeedTextReaderModal({
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", stiffness: 260, damping: 28 }}
+            drag="y"
+            dragControls={dragControls}
+            dragListener={false}
+            dragDirectionLock
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0, bottom: 0.22 }}
+            onDragEnd={(_, info) => {
+              if (info.offset.y > 120 || info.velocity.y > 700) {
+                onClose();
+              }
+            }}
             onClick={(event) => event.stopPropagation()}
-          >
-            <div className="flex items-center justify-between border-b border-soft px-4 py-3">
-              <button
-                onClick={onClose}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
-                type="button"
-              >
-                <ArrowLeft className="h-5 w-5" />
-              </button>
-
-              <div className="text-sm font-semibold text-primary">
-                {copy.postFromTelegram}
+          >            
+            <div
+              className="border-b border-soft px-4 py-3"
+              onPointerDown={(event) => {
+                const target = event.target as HTMLElement | null;
+                if (target?.closest("button, a, input, textarea, video")) {
+                  return;
+                }
+                dragControls.start(event);
+              }}
+            >
+              <div className="mb-3 flex justify-center">
+                <div className="h-1.5 w-12 rounded-full bg-secondary/25" />
               </div>
 
-              <button
-                type="button"
-                onClick={handleSubscribeClick}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
-                aria-label={
-                  subscribed
-                    ? copy.disableNotifications
-                    : copy.enableNotifications
-                }
-                title={
-                  subscribed
-                    ? copy.disableNotifications
-                    : copy.enableNotifications
-                }
-              >
-                <Bell
-                  className={`h-5 w-5 ${
-                    subscribed
-                      ? "fill-current text-primary"
-                      : "text-primary"
-                  }`}
-                />
-              </button>
-            </div>
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={onClose}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
+                  type="button"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                </button>
 
+                <div className="text-sm font-semibold text-primary">
+                  {copy.postFromTelegram}
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleSubscribeClick}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
+                  aria-label={
+                    subscribed
+                      ? copy.disableNotifications
+                      : copy.enableNotifications
+                  }
+                  title={
+                    subscribed
+                      ? copy.disableNotifications
+                      : copy.enableNotifications
+                  }
+                >
+                  <Bell
+                    className={`h-5 w-5 ${
+                      subscribed
+                        ? "fill-current text-primary"
+                        : "text-primary"
+                    }`}
+                  />
+                </button>
+              </div>
+            </div>
+            
             <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
               <button
                 type="button"

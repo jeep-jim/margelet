@@ -502,7 +502,10 @@ export function FeedViewer({
 
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/72" />
 
-          <div className="absolute left-4 top-4 z-30">
+          <div
+            className="absolute left-4 z-30"
+            style={{ top: "calc(env(safe-area-inset-top, 0px) + 16px)" }}
+          >
             <button
               onClick={closeViewer}
               className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white"
@@ -512,7 +515,10 @@ export function FeedViewer({
             </button>
           </div>
 
-          <div className="absolute right-4 top-4 z-30">
+          <div
+            className="absolute right-4 z-30"
+            style={{ top: "calc(env(safe-area-inset-top, 0px) + 16px)" }}
+          >
             <button
               type="button"
               onClick={handleSubscribeClick}
@@ -524,7 +530,7 @@ export function FeedViewer({
                 }`}
               />
             </button>
-          </div>
+          </div>          
 
           {showCenterControl ? (
             <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">

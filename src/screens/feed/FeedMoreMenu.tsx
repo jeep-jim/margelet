@@ -73,10 +73,20 @@ export function FeedMoreMenu({
       }
     }
 
+    function handleScrollClose() {
+      onRequestClose();
+    }
+
     document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("scroll", handleScrollClose, { passive: true });
+    window.addEventListener("wheel", handleScrollClose, { passive: true });
+    window.addEventListener("touchmove", handleScrollClose, { passive: true });
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("scroll", handleScrollClose);
+      window.removeEventListener("wheel", handleScrollClose);
+      window.removeEventListener("touchmove", handleScrollClose);
     };
   }, [onRequestClose]);  
 
