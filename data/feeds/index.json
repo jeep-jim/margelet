@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-21T14:57:38.491Z",
+  "updatedAt": "2026-04-21T14:57:56.346Z",
   "countries": {
     "en": {
       "code": "en",
@@ -8,7 +8,15 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/en.json",
-      "updatedAt": "2026-04-21T14:57:38.491Z"
+      "updatedAt": "2026-04-21T14:57:56.346Z"
+    },
+    "pt-br": {
+      "code": "pt-br",
+      "posts": 40,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/pt-br.json",
+      "updatedAt": "2026-04-21T14:57:56.346Z"
     },
     "ru": {
       "code": "ru",
@@ -16,7 +24,7 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ru.json",
-      "updatedAt": "2026-04-21T14:57:38.491Z"
+      "updatedAt": "2026-04-21T14:57:56.346Z"
     }
   }
 }
