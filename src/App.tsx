@@ -172,67 +172,18 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-function buildFeedUrl(countryCode: string) {
-  return `/feeds/${countryCode}.json`;
-}
+  async function loadServerFeed(): Promise<IngestedPost[]> {
+    const res = await fetch(`/api/feed`, {
+      cache: "no-store",
+    });
 
-async function loadFeedPosts(locale: Locale): Promise<IngestedPost[]> {
-  const globalRes = await fetch(`/feed.json`, {
-    cache: "no-store",
-  });
-
-  if (globalRes.ok) {
-    const globalData = await globalRes.json();
-
-    if (Array.isArray(globalData?.posts)) {
-      return globalData.posts as IngestedPost[];
+    if (!res.ok) {
+      throw new Error("feed request failed");
     }
+
+    const data = await res.json();
+    return Array.isArray(data?.posts) ? (data.posts as IngestedPost[]) : [];
   }
-
-  const countryRes = await fetch(buildFeedUrl(locale), {
-    cache: "no-store",
-  });
-
-  if (countryRes.ok) {
-    const countryData = await countryRes.json();
-
-    if (Array.isArray(countryData?.items)) {
-      return countryData.items as IngestedPost[];
-    }
-
-    if (Array.isArray(countryData?.posts)) {
-      return countryData.posts as IngestedPost[];
-    }
-
-    if (Array.isArray(countryData?.chunks)) {
-      const chunks = await Promise.all(
-        countryData.chunks.map(async (chunk: { path?: string }) => {
-          const chunkPath = typeof chunk?.path === "string" ? chunk.path.trim() : "";
-          if (!chunkPath) {
-            return [];
-          }
-
-          const chunkRes = await fetch(chunkPath, {
-            cache: "no-store",
-          });
-
-          if (!chunkRes.ok) {
-            return [];
-          }
-
-          const chunkData = await chunkRes.json();
-          return Array.isArray(chunkData?.posts)
-            ? (chunkData.posts as IngestedPost[])
-            : [];
-        })
-      );
-
-      return chunks.flat();
-    }
-  }
-
-  throw new Error("feed request failed");
-}
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());  
@@ -497,7 +448,7 @@ export default function App() {
     setServerPosts([]);
 
     try {
-      const nextPosts = await loadFeedPosts(locale);
+      const nextPosts = await loadServerFeed();
       setServerPosts(nextPosts);
     } catch (error) {
       console.error("Failed to load feed", error);
