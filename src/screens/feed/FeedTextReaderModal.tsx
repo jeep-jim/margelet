@@ -680,16 +680,16 @@ export function FeedTextReaderModal({
             dragListener={false}
             dragDirectionLock
             dragConstraints={{ top: 0, bottom: 0 }}
-            dragElastic={{ top: 0, bottom: 0.22 }}
+            dragElastic={{ top: 0, bottom: 0.28 }}
             onDragEnd={(_, info) => {
-              if (info.offset.y > 120 || info.velocity.y > 700) {
+              if (info.offset.y > 72 || info.velocity.y > 450) {
                 onClose();
               }
             }}
             onClick={(event) => event.stopPropagation()}
-          >            
+          >                
             <div
-              className="border-b border-soft px-4 py-3"
+              className="relative border-b border-soft px-4 py-3"
               onPointerDown={(event) => {
                 const target = event.target as HTMLElement | null;
                 if (target?.closest("button, a, input, textarea, video")) {
@@ -698,11 +698,11 @@ export function FeedTextReaderModal({
                 dragControls.start(event);
               }}
             >
-              <div className="mb-3 flex justify-center">
-                <div className="h-1.5 w-12 rounded-full bg-secondary/25" />
+              <div className="pointer-events-none absolute left-1/2 top-1.5 -translate-x-1/2">
+                <div className="h-1 w-10 rounded-full bg-secondary/25" />
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between pt-1">
                 <button
                   onClick={onClose}
                   className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-soft text-primary"
@@ -739,8 +739,8 @@ export function FeedTextReaderModal({
                   />
                 </button>
               </div>
-            </div>
-            
+            </div>            
+
             <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
               <button
                 type="button"
