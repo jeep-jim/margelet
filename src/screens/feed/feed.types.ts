@@ -31,6 +31,7 @@ export type FeedCardProps = {
   onHide: () => void;
   onOpen: () => void;
   onOpenCreator: () => void;
+  onSeen?: () => void;
   mediaIndex: number;
   onChangeMediaIndex: (next: number) => void;
   liked: boolean;

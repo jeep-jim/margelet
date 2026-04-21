@@ -172,18 +172,41 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-  async function loadServerFeed(): Promise<IngestedPost[]> {
-    const res = await fetch(`/api/feed`, {
+  async function loadServerFeed(locale: Locale): Promise<IngestedPost[]> {
+    try {
+      const res = await fetch(`/api/feed`, {
+        cache: "no-store",
+      });
+
+      const contentType = res.headers.get("content-type") || "";
+
+      if (res.ok && contentType.includes("application/json")) {
+        const data = await res.json();
+        if (Array.isArray(data?.posts)) {
+          return data.posts as IngestedPost[];
+        }
+      }
+    } catch {
+      //
+    }
+
+    const fallbackRes = await fetch(`/feed.json`, {
       cache: "no-store",
     });
 
-    if (!res.ok) {
+    if (!fallbackRes.ok) {
       throw new Error("feed request failed");
     }
 
-    const data = await res.json();
-    return Array.isArray(data?.posts) ? (data.posts as IngestedPost[]) : [];
-  }
+    const fallbackData = await fallbackRes.json();
+
+    return Array.isArray(fallbackData?.posts)
+      ? fallbackData.posts.filter((post: IngestedPost) => {
+          const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
+          return !countryCode || countryCode === String(locale).toLowerCase();
+        })
+      : [];
+  }  
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());  
@@ -448,7 +471,7 @@ export default function App() {
     setServerPosts([]);
 
     try {
-      const nextPosts = await loadServerFeed();
+      const nextPosts = await loadServerFeed(locale);
       setServerPosts(nextPosts);
     } catch (error) {
       console.error("Failed to load feed", error);

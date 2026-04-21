@@ -24,6 +24,7 @@ const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
+const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
 
 type FeedSettings = {
   mediaMode: FeedMediaMode;
@@ -204,6 +205,39 @@ function writeFeedSettingsToStorage(value: FeedSettings) {
   }
 }
 
+function readSeenPostsFromStorage(): Record<number, number> {
+  try {
+    const raw = localStorage.getItem(SEEN_POSTS_STORAGE_KEY);
+    if (!raw) return {};
+
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {};
+    }
+
+    const result: Record<number, number> = {};
+
+    for (const [key, value] of Object.entries(parsed)) {
+      const id = Number(key);
+      if (Number.isFinite(id) && typeof value === "number" && Number.isFinite(value)) {
+        result[id] = value;
+      }
+    }
+
+    return result;
+  } catch {
+    return {};
+  }
+}
+
+function writeSeenPostsToStorage(value: Record<number, number>) {
+  try {
+    localStorage.setItem(SEEN_POSTS_STORAGE_KEY, JSON.stringify(value));
+  } catch {
+    //
+  }
+}
+
 function SubscriptionsHint({ text }: { text: string }) {
   return (
     <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
@@ -328,6 +362,7 @@ export function FeedScreen({
   const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>(
     {}
   );
+  const [seenPosts, setSeenPosts] = useState<Record<number, number>>({});
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   useEffect(() => {
@@ -336,7 +371,8 @@ export function FeedScreen({
     setSubscriptionHandles(readSubscriptionsFromStorage());
     setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
     setFeedSettings(readFeedSettingsFromStorage(locale));
-  }, [locale]);
+    setSeenPosts(readSeenPostsFromStorage());
+  }, [locale]);  
 
   useEffect(() => {
     localStorage.setItem(
@@ -352,6 +388,10 @@ export function FeedScreen({
   useEffect(() => {
     writeFeedSettingsToStorage(feedSettings);
   }, [feedSettings]);
+
+  useEffect(() => {
+    writeSeenPostsToStorage(seenPosts);
+  }, [seenPosts]);
 
   useEffect(() => {
     const localeCountry = String(locale).toLowerCase();
@@ -511,6 +551,19 @@ export function FeedScreen({
     });
   }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
 
+  const markPostSeen = useCallback((postId: number) => {
+    setSeenPosts((prev) => {
+      if (prev[postId]) {
+        return prev;
+      }
+
+      return {
+        ...prev,
+        [postId]: Date.now(),
+      };
+    });
+  }, []);
+
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
 
@@ -559,8 +612,23 @@ export function FeedScreen({
       });
     }
 
+    if (feedSettings.demoteSeen) {
+      const unseen: IngestedPost[] = [];
+      const seen: IngestedPost[] = [];
+
+      for (const post of list) {
+        if (seenPosts[post.id]) {
+          seen.push(post);
+        } else {
+          unseen.push(post);
+        }
+      }
+
+      list = [...unseen, ...seen];
+    }
+
     return list;
-  }, [safePosts, feedSettings, selectedTags, searchQuery, locale]);
+  }, [safePosts, feedSettings, selectedTags, searchQuery, locale, seenPosts]);  
 
   const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isVideoViewerPost(post));
@@ -673,6 +741,8 @@ export function FeedScreen({
   };
 
   const handleOpenPost = (post: IngestedPost) => {
+    markPostSeen(post.id);
+
     if (isVideoViewerPost(post)) {
       openViewerByPost(post);
       return;
@@ -883,6 +953,7 @@ export function FeedScreen({
               onHide={() => onHidePost(post.id)}
               onOpen={() => handleOpenPost(post)}
               onOpenCreator={() => openSource(post.source.handle)}
+              onSeen={() => markPostSeen(post.id)}
               mediaIndex={feedMediaIndexes[post.id] || 0}
               onChangeMediaIndex={(next: number) =>
                 setFeedCardMediaIndex(post.id, next)
@@ -892,7 +963,7 @@ export function FeedScreen({
               onShare={() => {
                 void handleShare(post);
               }}
-            />
+            />            
           );
         })}
       </div>

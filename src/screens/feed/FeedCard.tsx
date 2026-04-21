@@ -28,6 +28,7 @@ export function FeedCard(props: FeedCardProps) {
     onHide,
     onOpen,
     onOpenCreator,
+    onSeen,
   } = props;
 
   const COPY = {
@@ -51,6 +52,8 @@ export function FeedCard(props: FeedCardProps) {
   const tagLabel = getTagLabel(getResolvedTag(post), locale);
 
   const cardRef = useRef<HTMLElement | null>(null);
+  const seenTimerRef = useRef<number | null>(null);
+  const seenReportedRef = useRef(false);
 
   const [isCardVisible, setIsCardVisible] = useState(false);
   const [shouldLoadMedia, setShouldLoadMedia] = useState(false);
@@ -88,6 +91,37 @@ export function FeedCard(props: FeedCardProps) {
       preloadObserver.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    seenReportedRef.current = false;
+    if (seenTimerRef.current) {
+      window.clearTimeout(seenTimerRef.current);
+      seenTimerRef.current = null;
+    }
+  }, [post.id]);
+
+  useEffect(() => {
+    if (!onSeen || seenReportedRef.current || !isCardVisible) {
+      if (seenTimerRef.current) {
+        window.clearTimeout(seenTimerRef.current);
+        seenTimerRef.current = null;
+      }
+      return;
+    }
+
+    seenTimerRef.current = window.setTimeout(() => {
+      seenReportedRef.current = true;
+      onSeen();
+      seenTimerRef.current = null;
+    }, 1200);
+
+    return () => {
+      if (seenTimerRef.current) {
+        window.clearTimeout(seenTimerRef.current);
+        seenTimerRef.current = null;
+      }
+    };
+  }, [isCardVisible, onSeen]);
 
   const openPostSafely = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
