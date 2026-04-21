@@ -1,27 +1,6 @@
 {
-  "updatedAt": "2026-04-21T14:07:58.747Z",
+  "updatedAt": "2026-04-21T14:09:17.709Z",
   "sources": [
-    {
-      "id": "en:google_nws",
-      "countryCode": "en",
-      "handle": "google_nws",
-      "title": "Google News | En",
-      "avatarUrl": "https://cdn4.telesco.pe/file/OZ5J1KKmQCjs4bytvB8xqQOuJVxLM5OhNdSvCJ2wQFv5_lCU9QajXxKarIljhAsIoSUe-f3KBI4ZQA1AsjFWpR4Vct1lFi74VyaOs91GkYKiE8x5kinOX4GFL0CXipSyGLBDFR54Jznpexzd7AUMaPxn6Ys4n0AFjOo8EInnG7Yfh7rObn9DrzDrBzNWcmd-a8I0fVk0-YuqTXTbRpM2YxbpT4gD-hgX1oHkWFZkWCL1QjIwHey_YLUytonJiAVrlsp_5UuhnXUuykQBlc2sGPiHxM55FUyJucw1IaYoRM9ENGBKzHrtl0TnNLp0sEFM1iJMKrRUUP-kNUBUSylRAw.jpg",
-      "verified": false,
-      "defaultTag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-20T10:44:29.911Z",
-      "updatedAt": "2026-04-21T14:07:45.691Z",
-      "lastCheckedAt": "2026-04-21T14:07:45.568Z",
-      "lastImportedAt": "2026-04-20T11:41:47.458Z",
-      "lastSeenPostId": 4348,
-      "importedPostsCount": 14,
-      "lastRefreshCursorPostId": 4346
-    },
     {
       "id": "ru:decenter",
       "countryCode": "ru",
@@ -42,6 +21,27 @@
       "lastSeenPostId": 24723,
       "importedPostsCount": 43,
       "lastRefreshCursorPostId": 24713
+    },
+    {
+      "id": "en:google_nws",
+      "countryCode": "en",
+      "handle": "google_nws",
+      "title": "Google News | En",
+      "avatarUrl": "https://cdn4.telesco.pe/file/OZ5J1KKmQCjs4bytvB8xqQOuJVxLM5OhNdSvCJ2wQFv5_lCU9QajXxKarIljhAsIoSUe-f3KBI4ZQA1AsjFWpR4Vct1lFi74VyaOs91GkYKiE8x5kinOX4GFL0CXipSyGLBDFR54Jznpexzd7AUMaPxn6Ys4n0AFjOo8EInnG7Yfh7rObn9DrzDrBzNWcmd-a8I0fVk0-YuqTXTbRpM2YxbpT4gD-hgX1oHkWFZkWCL1QjIwHey_YLUytonJiAVrlsp_5UuhnXUuykQBlc2sGPiHxM55FUyJucw1IaYoRM9ENGBKzHrtl0TnNLp0sEFM1iJMKrRUUP-kNUBUSylRAw.jpg",
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-20T10:44:29.911Z",
+      "updatedAt": "2026-04-21T14:07:45.691Z",
+      "lastCheckedAt": "2026-04-21T14:07:45.568Z",
+      "lastImportedAt": "2026-04-20T11:41:47.458Z",
+      "lastSeenPostId": 4348,
+      "importedPostsCount": 14,
+      "lastRefreshCursorPostId": 4346
     },
     {
       "id": "ru:hiaimedia",
@@ -303,20 +303,24 @@
       "countryCode": "ru",
       "handle": "novosty_trendy",
       "title": "Мир трендов",
-      "avatarUrl": "https://cdn1.telesco.pe/file/XSjW15S2i0ZtMQ7mopPt5kXgBmm3GyGiMdVTljb9o3Majlb9JPqLQwUO0bk9_H28UV5hkHFSvM-NuyNJ_k3yabDWIA4PuNuH-AS2K3faDq2Zf5J8hydL8RCtUM5OVt7o7Ttmsf7SAndFgUhChvQhe9UHto2X6Uels0HLt7fphOM55wPgoQYubvkoTi-unzG1oGFkcZhT_Rm13_uVdBx2wRxauFwLV43hh6DRYvjxDZHWUkKTPWFUDVkJzb78Nsi-JvHBnunAROU9n_0MLJs7-Sk4neQcVzHtRXsuiVBfd_pHx9SDDHjpAEQ-Hu3d2vj_7XqoYbspxDKN7Dyq9QjvJw.jpg",
+      "avatarUrl": null,
       "verified": false,
       "defaultTag": "technology",
       "tags": [
-        "technology"
+        "technology",
+        "gadgets",
+        "internet",
+        "technology_other",
+        "technology_web"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-21T14:07:55.843Z",
-      "lastCheckedAt": "2026-04-21T14:07:55.173Z",
-      "lastImportedAt": "2026-04-21T14:07:55.173Z",
-      "lastSeenPostId": 2811,
-      "importedPostsCount": 48,
+      "updatedAt": "2026-04-21T14:09:17.709Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": 2793
     },
     {
