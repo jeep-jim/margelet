@@ -71,6 +71,52 @@ async function fetchHtml(url: string) {
   return r.text();
 }
 
+function extractAvatar(html: string) {
+  const candidates = [
+    extract(
+      html,
+      /<div[^>]+class="tgme_widget_message_user"[\s\S]*?<img[^>]+src="([^"]+)"/i
+    ),
+    extract(
+      html,
+      /<div[^>]+class="tgme_widget_message_user"[\s\S]*?<img[^>]+srcset="([^"\s,]+)[^"]*"/i
+    ),
+    extract(
+      html,
+      /<i[^>]+class="[^"]*tgme_widget_message_user_photo[^"]*"[^>]+style="[^"]*background-image\s*:\s*url\(['"]?([^'")]+)['"]?\)/i
+    ),
+    extract(
+      html,
+      /<i[^>]+style="[^"]*background-image\s*:\s*url\(['"]?([^'")]+)['"]?\)[^"]*"[^>]+class="[^"]*tgme_widget_message_user_photo[^"]*"/i
+    ),
+    extract(
+      html,
+      /<img[^>]+class="tgme_page_photo_image"[^>]+src="([^"]+)"/i
+    ),
+    extract(
+      html,
+      /<img[^>]+class="tgme_channel_info_header_photo_image"[^>]+src="([^"]+)"/i
+    ),
+    extract(
+      html,
+      /<img[^>]+src="([^"]+)"[^>]+class="tgme_page_photo_image"/i
+    ),
+    extract(
+      html,
+      /<img[^>]+src="([^"]+)"[^>]+class="tgme_channel_info_header_photo_image"/i
+    ),
+  ];
+
+  for (const candidate of candidates) {
+    const normalized = normalizeUrl(candidate);
+    if (normalized) {
+      return normalized;
+    }
+  }
+
+  return null;
+}
+
 function parsePreview(html: string, fallbackTitle: string) {
   const textHtml =
     extract(html, /<div class="tgme_widget_message_text[^>]*>([\s\S]*?)<\/div>/i) ||
@@ -80,6 +126,7 @@ function parsePreview(html: string, fallbackTitle: string) {
   const title =
     extract(html, /<meta property="og:title" content="([^"]+)"/i) ||
     extract(html, /<meta name="twitter:title" content="([^"]+)"/i) ||
+    extract(html, /<div[^>]+class="tgme_widget_message_author[^"]*"[^>]*>([\s\S]*?)<\/div>/i) ||
     fallbackTitle;
 
   const image =
@@ -93,20 +140,15 @@ function parsePreview(html: string, fallbackTitle: string) {
     extract(html, /<meta name="twitter:player:stream" content="([^"]+)"/i) ||
     null;
 
-  const avatar =
-    extract(html, /<img[^>]+class="tgme_page_photo_image"[^>]+src="([^"]+)"/i) ||
-    extract(html, /<img[^>]+class="tgme_channel_info_header_photo_image"[^>]+src="([^"]+)"/i) ||
-    extract(html, /<img[^>]+src="([^"]+)"[^>]+class="tgme_page_photo_image"/i) ||
-    extract(html, /<img[^>]+src="([^"]+)"[^>]+class="tgme_channel_info_header_photo_image"/i) ||
-    null;
+  const avatar = extractAvatar(html);
 
   return {
-    title: clean(title),
+    title: stripTags(title) || clean(title),
     caption: stripTags(textHtml),
     image: normalizeUrl(image),
     video: normalizeUrl(video),
     poster: normalizeUrl(image),
-    avatar: normalizeUrl(avatar),
+    avatar,
   };
 }
 
@@ -127,7 +169,6 @@ export default async function handler(req: any, res: any) {
     const publicUrl = `https://t.me/s/${parsed.handle}/${parsed.postId}${parsed.isSingle ? "?single" : ""}`;
     const directUrl = canonical;
 
-    let html = "";
     let preview: {
       title: string | null;
       caption: string | null;
@@ -138,7 +179,7 @@ export default async function handler(req: any, res: any) {
     } | null = null;
 
     try {
-      html = await fetchHtml(publicUrl);
+      const html = await fetchHtml(publicUrl);
       preview = parsePreview(html, parsed.handle);
     } catch {
       preview = null;
