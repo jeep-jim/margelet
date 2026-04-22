@@ -7,38 +7,14 @@ import { FeedSourceHeader } from "./FeedSourceHeader";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
 import {
-  getDisplayTagMeta,
   getDisplayText,
+  getResolvedTag,
+  getTagLabel,
   hasAudioLikeMedia,
   hasVisualMedia,
 } from "./feed.utils";
 
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
-
-function TagChips({
-  primaryTag,
-  secondaryTags,
-}: {
-  primaryTag: string;
-  secondaryTags: string[];
-}) {
-  return (
-    <div className="relative z-10 flex flex-wrap items-center gap-2">
-      <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
-        {primaryTag}
-      </div>
-
-      {secondaryTags.map((tag) => (
-        <div
-          key={tag}
-          className="pointer-events-none rounded-full border border-soft bg-app px-3 py-1 text-[11px] font-medium text-secondary"
-        >
-          {tag}
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export function FeedCard(props: FeedCardProps) {
   const {
@@ -72,7 +48,7 @@ export function FeedCard(props: FeedCardProps) {
   const displayText = getDisplayText(post);
   const showVisualMedia = hasVisualMedia(post);
   const hasAudioOrFiles = hasAudioLikeMedia(post);
-  const { primary: primaryTag, secondary: secondaryTags } = getDisplayTagMeta(post, locale);
+  const tagLabel = getTagLabel(getResolvedTag(post), locale);
 
   const cardRef = useRef<HTMLElement | null>(null);
 
@@ -112,6 +88,7 @@ export function FeedCard(props: FeedCardProps) {
       preloadObserver.disconnect();
     };
   }, []);
+
 
   const openPostSafely = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
@@ -181,9 +158,11 @@ export function FeedCard(props: FeedCardProps) {
             <div className="px-4 py-3">
               <ExpandableFeedText text={displayText}>
                 {({ expanded, expand }) => (
-                  <div className="mt-4 flex items-start justify-between gap-3">
-                    <div className="min-w-0 flex-1">
-                      <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} />
+                  <div className="mt-4 flex items-center justify-between gap-3">
+                    <div className="relative z-10 flex items-center gap-2">
+                      <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+                        {tagLabel}
+                      </div>
                     </div>
 
                     {expanded ? (
@@ -193,7 +172,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           openPostSafely();
                         }}
-                        className="inline-flex shrink-0 items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                        className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.read}</span>
                         <ExternalLink className="h-4 w-4" />
@@ -205,7 +184,7 @@ export function FeedCard(props: FeedCardProps) {
                           event.stopPropagation();
                           expand();
                         }}
-                        className="inline-flex shrink-0 items-center rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                        className="inline-flex items-center rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                       >
                         <span>{copy.more}</span>
                       </button>
@@ -216,9 +195,11 @@ export function FeedCard(props: FeedCardProps) {
             </div>
           ) : (
             <div className="px-4 py-3">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} />
+              <div className="flex items-center justify-between gap-3">
+                <div className="relative z-10 flex items-center gap-2">
+                  <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+                    {tagLabel}
+                  </div>
                 </div>
 
                 <button
@@ -227,7 +208,7 @@ export function FeedCard(props: FeedCardProps) {
                     event.stopPropagation();
                     openPostSafely();
                   }}
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
+                  className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[14px] font-medium text-primary"
                 >
                   <span>{copy.open}</span>
                   <ExternalLink className="h-4 w-4" />

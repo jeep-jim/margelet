@@ -1,38 +1,22 @@
 import type { ContentTag, FeedTag, IngestedPost, Locale } from "../../types/app";
-import {
-  getPrimaryDisplayTag,
-  getSecondaryDisplayTags,
-  normalizeTagValues,
-} from "../../lib/tag-utils";
 import { findTagByValue, getTagLabel as getSiteTagLabel } from "../../lib/tags";
 
 export function getResolvedTags(post: IngestedPost): ContentTag[] {
-  const normalized = normalizeTagValues(
-    Array.isArray(post.tags) && post.tags.length > 0
-      ? post.tags
-      : post.tag
-        ? [post.tag]
-        : ["other"]
-  );
-
-  if (normalized.length > 0) {
-    return normalized as ContentTag[];
+  if (Array.isArray(post.tags) && post.tags.length > 0) {
+    return Array.from(
+      new Set(
+        post.tags.filter(
+          (tag): tag is ContentTag => typeof tag === "string" && !!tag.trim()
+        )
+      )
+    );
   }
 
-  return ["other"];
+  return [post.tag || "other"];
 }
 
 export function getResolvedTag(post: IngestedPost): ContentTag {
   return getResolvedTags(post)[0] || "other";
-}
-
-export function getDisplayTagMeta(post: IngestedPost, locale: Locale) {
-  const tags = getResolvedTags(post);
-
-  return {
-    primary: getPrimaryDisplayTag(tags, locale) || getTagLabel("other", locale),
-    secondary: getSecondaryDisplayTags(tags, locale),
-  };
 }
 
 export function getTagLabel(tag: FeedTag, locale: Locale) {

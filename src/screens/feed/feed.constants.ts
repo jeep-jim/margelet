@@ -6,27 +6,56 @@ export const TAG_OPTIONS: FeedOption<FeedTag>[] = [
 
   { value: "news" },
   { value: "politics" },
+  { value: "war" },
   { value: "economy" },
   { value: "business" },
   { value: "finance" },
+  { value: "crypto" },
 
   { value: "technology" },
+  { value: "ai" },
   { value: "science" },
+  { value: "space" },
+  { value: "gadgets" },
+  { value: "telegram" },
+
   { value: "education" },
+  { value: "history" },
   { value: "culture" },
+  { value: "books" },
 
+  { value: "art" },
+  { value: "design" },
+  { value: "photography" },
+
+  { value: "cinema" },
+  { value: "series" },
+  { value: "music" },
   { value: "gaming" },
-  { value: "humor" },
-  { value: "sports" },
 
+  { value: "memes" },
+  { value: "humor" },
+
+  { value: "sports" },
+  { value: "mma" },
+  { value: "fitness" },
   { value: "health" },
+
   { value: "travel" },
   { value: "food" },
+  { value: "recipes" },
+
   { value: "psychology" },
+  { value: "relationships" },
+  { value: "parenting" },
+
   { value: "fashion" },
+  { value: "beauty" },
 
   { value: "nature" },
+  { value: "animals" },
   { value: "people" },
+  { value: "celebrities" },
 
   { value: "marketing" },
   { value: "startups" },
@@ -34,8 +63,6 @@ export const TAG_OPTIONS: FeedOption<FeedTag>[] = [
   { value: "real_estate" },
   { value: "auto" },
 
-  { value: "telegram" },
-  { value: "creativity" },
   { value: "other" },
 ];
 

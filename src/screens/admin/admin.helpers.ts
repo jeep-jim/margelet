@@ -1,20 +1,7 @@
 import type { IngestedPost } from "../../types/app";
-import {
-  getPrimaryDisplayTag,
-  getSecondaryDisplayTags,
-  normalizeTagValues,
-  resolveTagLabel,
-} from "../../lib/tag-utils";
+import { ADMIN_TAG_OPTIONS } from "./admin.tag-options";
 
 export function buildSearchText(post: IngestedPost) {
-  const normalizedTags = normalizeTagValues(
-    Array.isArray(post.tags) && post.tags.length > 0
-      ? post.tags
-      : post.tag
-        ? [post.tag]
-        : []
-  );
-
   return [
     post.source.title,
     post.source.handle,
@@ -22,7 +9,6 @@ export function buildSearchText(post: IngestedPost) {
     post.addedBy.username || "",
     post.addedBy.telegramId || "",
     post.tag || "",
-    ...normalizedTags,
     post.text || "",
     post.status || "",
   ]
@@ -69,6 +55,7 @@ export function getStatusLabel(status?: string) {
       return "Опубликован";
   }
 }
+
 
 export function getRoleLabel(role?: string) {
   switch (role) {
@@ -118,14 +105,5 @@ export function getContentTypeLabel(type?: string) {
 }
 
 export function getTagLabel(tag?: string) {
-  if (!tag) return "—";
-  return resolveTagLabel(tag, "ru") || tag || "—";
-}
-
-export function getPrimaryTagLabel(tags?: string[]) {
-  return getPrimaryDisplayTag(tags, "ru") || "—";
-}
-
-export function getSecondaryTagLabels(tags?: string[]) {
-  return getSecondaryDisplayTags(tags, "ru");
+  return ADMIN_TAG_OPTIONS.find((item) => item.value === tag)?.label || tag || "—";
 }

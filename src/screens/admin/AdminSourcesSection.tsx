@@ -1,14 +1,6 @@
 import { useMemo, useState } from "react";
-import {
-  getParentTag,
-  getRelatedChildTags,
-  isChildTag,
-  isParentTag,
-  normalizeTagValues,
-  resolveTagLabel,
-} from "../../lib/tag-utils";
-import { SITE_TAG_GROUPS } from "../../lib/tags";
 import type { ContentTag } from "../../types/app";
+import { ADMIN_TAG_OPTIONS } from "./admin.tag-options";
 import { AdminSectionCard } from "./AdminSectionCard";
 import type { CountryCode } from "./admin.countries";
 import type { TrustedSource } from "./admin.types";
@@ -39,56 +31,9 @@ function formatDate(value?: string | null) {
 }
 
 function getSourceTags(source: TrustedSource): ContentTag[] {
-  const normalized = normalizeTagValues(
-    Array.isArray(source.tags) && source.tags.length > 0
-      ? source.tags
-      : source.defaultTag
-        ? [source.defaultTag]
-        : []
-  );
-
-  return normalized.length > 0 ? (normalized as ContentTag[]) : EMPTY_TAGS;
-}
-
-function getSelectedParentTag(tags: ContentTag[]): ContentTag | null {
-  for (const value of tags) {
-    if (isParentTag(value)) {
-      return value;
-    }
-  }
-
-  for (const value of tags) {
-    const parent = getParentTag(value);
-    if (parent) {
-      return parent.value as ContentTag;
-    }
-  }
-
-  return null;
-}
-
-function getSelectedChildTags(tags: ContentTag[], parentTag: ContentTag | null): ContentTag[] {
-  if (!parentTag) return EMPTY_TAGS;
-
-  return tags.filter((value): value is ContentTag => {
-    if (!isChildTag(value)) return false;
-    const parent = getParentTag(value);
-    return parent?.value === parentTag;
-  });
-}
-
-function buildTagPayload(parentTag: ContentTag | null, childTags: ContentTag[]) {
-  const nextValues = normalizeTagValues(parentTag ? [parentTag, ...childTags] : childTags);
-  return nextValues as ContentTag[];
-}
-
-function getTagSearchText(source: TrustedSource) {
-  const tags = getSourceTags(source);
-
-  return tags
-    .map((value) => [value, resolveTagLabel(value, "ru")].join(" "))
-    .join(" ")
-    .toLowerCase();
+  if (Array.isArray(source.tags) && source.tags.length > 0) return source.tags;
+  if (source.defaultTag) return [source.defaultTag];
+  return EMPTY_TAGS;
 }
 
 export function AdminSourcesSection({
@@ -108,21 +53,6 @@ export function AdminSourcesSection({
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
   const [message, setMessage] = useState<string | null>(null);
 
-  const selectedParentTag = useMemo(
-    () => getSelectedParentTag(selectedTags),
-    [selectedTags]
-  );
-
-  const selectedChildTags = useMemo(
-    () => getSelectedChildTags(selectedTags, selectedParentTag),
-    [selectedTags, selectedParentTag]
-  );
-
-  const availableChildTags = useMemo(() => {
-    if (!selectedParentTag) return EMPTY_TAGS;
-    return getRelatedChildTags(selectedParentTag).map((tag) => tag.value as ContentTag);
-  }, [selectedParentTag]);
-
   const filteredSources = useMemo(() => {
     const query = search.trim().toLowerCase();
 
@@ -136,7 +66,6 @@ export function AdminSourcesSection({
           source.handle || "",
           source.note || "",
           ...(source.tags || []),
-          getTagSearchText(source),
         ]
           .join(" ")
           .toLowerCase();
@@ -161,36 +90,10 @@ export function AdminSourcesSection({
     setSelectedTags([]);
   };
 
-  const selectParentTag = (parentTag: ContentTag) => {
-    setSelectedTags((prev) => {
-      const currentParent = getSelectedParentTag(prev);
-
-      if (currentParent === parentTag) {
-        return [];
-      }
-
-      const prevChildren = getSelectedChildTags(prev, parentTag);
-      return buildTagPayload(parentTag, prevChildren);
-    });
-  };
-
-  const toggleChildTag = (childTag: ContentTag) => {
-    setSelectedTags((prev) => {
-      const parent = getParentTag(childTag);
-      if (!parent) return prev;
-
-      const parentValue = parent.value as ContentTag;
-      const currentParent = getSelectedParentTag(prev);
-      const currentChildren = getSelectedChildTags(prev, parentValue);
-      const nextChildren = currentChildren.includes(childTag)
-        ? currentChildren.filter((value) => value !== childTag)
-        : [...currentChildren, childTag];
-
-      return buildTagPayload(
-        currentParent === parentValue ? currentParent : parentValue,
-        nextChildren
-      );
-    });
+  const toggleTag = (tag: ContentTag) => {
+    setSelectedTags((prev) =>
+      prev.includes(tag) ? prev.filter((item) => item !== tag) : [...prev, tag]
+    );
   };
 
   const startEdit = (source: TrustedSource) => {
@@ -207,15 +110,9 @@ export function AdminSourcesSection({
     if (!telegramUserId) return;
 
     const normalizedHandle = normalizeHandle(handle);
-    const normalizedTags = buildTagPayload(selectedParentTag, selectedChildTags);
 
     if (!normalizedHandle) {
       setMessage("Укажи handle канала");
-      return;
-    }
-
-    if (!selectedParentTag) {
-      setMessage("Выбери родительский тег");
       return;
     }
 
@@ -237,8 +134,8 @@ export function AdminSourcesSection({
             note: note.trim(),
             status,
             countryCode,
-            tags: normalizedTags,
-            defaultTag: selectedParentTag,
+            tags: selectedTags,
+            defaultTag: selectedTags[0] || "other",
           },
         }),
       });
@@ -300,7 +197,7 @@ export function AdminSourcesSection({
   return (
     <AdminSectionCard
       title="Каналы"
-      subtitle="Компактная сетка по выбранной стране. Здесь же редактирование, статусы и новая иерархия тегов."
+      subtitle="Компактная сетка по выбранной стране. Здесь же редактирование, теги и статусы."
       collapsible
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
@@ -361,101 +258,28 @@ export function AdminSourcesSection({
             </select>
           </div>
 
-          <div className="mt-4 rounded-[24px] border border-white/10 bg-[#151722] p-4">
-            <div className="mb-2 text-sm font-medium text-white">Родительский тег</div>
-            <div className="mb-4 text-xs text-white/45">
-              Сначала выбери основную тему канала, потом при желании уточни её подтегами.
-            </div>
+          <div className="mt-4">
+            <div className="mb-3 text-sm font-medium text-white">Теги канала</div>
 
-            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {SITE_TAG_GROUPS.map((group) => {
-                const isActive = selectedParentTag === group.value;
-                const childrenCount = selectedChildTags.filter((value) => {
-                  const parent = getParentTag(value);
-                  return parent?.value === group.value;
-                }).length;
+            <div className="flex flex-wrap gap-2">
+              {ADMIN_TAG_OPTIONS.map((tagOption) => {
+                const isActive = selectedTags.includes(tagOption.value);
 
                 return (
                   <button
-                    key={group.value}
+                    key={tagOption.value}
                     type="button"
-                    onClick={() => selectParentTag(group.value as ContentTag)}
-                    className={`rounded-2xl border px-3 py-3 text-left transition ${
+                    onClick={() => toggleTag(tagOption.value)}
+                    className={`rounded-full border px-3 py-2 text-sm transition ${
                       isActive
                         ? "border-white bg-white text-black"
                         : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-3">
-                      <span className="text-sm font-medium">
-                        {resolveTagLabel(group.value, "ru") || group.value}
-                      </span>
-                      {childrenCount > 0 ? (
-                        <span
-                          className={`rounded-full px-2 py-0.5 text-[11px] ${
-                            isActive ? "bg-black/10 text-black/70" : "bg-white/10 text-white/65"
-                          }`}
-                        >
-                          +{childrenCount}
-                        </span>
-                      ) : null}
-                    </div>
+                    {tagOption.label}
                   </button>
                 );
               })}
-            </div>
-
-            {selectedParentTag ? (
-              <div className="mt-4 rounded-[20px] border border-white/10 bg-[#10121a] p-4">
-                <div className="mb-2 text-sm font-medium text-white">
-                  Подтеги · {resolveTagLabel(selectedParentTag, "ru")}
-                </div>
-                <div className="mb-3 text-xs text-white/45">
-                  Можно выбрать несколько уточнений внутри одной родительской темы.
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  {availableChildTags.map((childTag) => {
-                    const isActive = selectedChildTags.includes(childTag);
-
-                    return (
-                      <button
-                        key={childTag}
-                        type="button"
-                        onClick={() => toggleChildTag(childTag)}
-                        className={`rounded-full border px-3 py-2 text-sm transition ${
-                          isActive
-                            ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
-                            : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
-                        }`}
-                      >
-                        {resolveTagLabel(childTag, "ru") || childTag}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            ) : null}
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {selectedParentTag ? (
-                <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm text-white">
-                  {resolveTagLabel(selectedParentTag, "ru")}
-                </div>
-              ) : (
-                <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-sm text-white/40">
-                  Родительский тег не выбран
-                </div>
-              )}
-
-              {selectedChildTags.map((tag) => (
-                <div
-                  key={tag}
-                  className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-sm text-[#d9f3ff]"
-                >
-                  {resolveTagLabel(tag, "ru")}
-                </div>
-              ))}
             </div>
           </div>
 
@@ -475,115 +299,142 @@ export function AdminSourcesSection({
           </div>
         </div>
 
-        <div className="rounded-[28px] border border-white/10 bg-[#11121a] p-4">
-          <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <div className="text-lg font-semibold text-white">Список каналов</div>
-              <div className="text-sm text-white/45">Поиск по названию, handle, заметкам и тегам.</div>
-            </div>
+        <div>
+          <input
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="Поиск по названию, handle, тегам, заметке..."
+            className="w-full rounded-2xl border border-white/10 bg-[#11121a] px-4 py-3 text-white outline-none placeholder:text-white/25"
+          />
+        </div>
 
-            <input
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="поиск по каналам"
-              className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25 sm:max-w-[320px]"
-            />
-          </div>
+        <div className="grid gap-3 xl:grid-cols-2">
+          {filteredSources.map((source) => {
+            const tags = getSourceTags(source);
 
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {filteredSources.map((source) => {
-              const tags = getSourceTags(source);
-              const sourceParentTag = getSelectedParentTag(tags);
-              const sourceChildTags = getSelectedChildTags(tags, sourceParentTag);
-
-              return (
-                <div
-                  key={source.id}
-                  className="rounded-[24px] border border-white/10 bg-[#151722] p-4"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="truncate text-base font-semibold text-white">
-                        {source.title || "Без названия"}
+            return (
+              <div
+                key={source.id}
+                className="rounded-[28px] border border-white/10 bg-[#101119] p-4"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-white/5">
+                    {source.avatarUrl ? (
+                      <img
+                        src={source.avatarUrl}
+                        alt={source.title || source.handle}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-lg font-semibold text-white/50">
+                        {(source.title || source.handle || "?").slice(0, 1).toUpperCase()}
                       </div>
-                      <div className="mt-1 truncate text-sm text-white/55">@{source.handle}</div>
-                    </div>
-
-                    <div
-                      className={`rounded-full px-3 py-1 text-xs ${
-                        source.status === "active"
-                          ? "bg-emerald-500/15 text-emerald-300"
-                          : "bg-white/10 text-white/55"
-                      }`}
-                    >
-                      {source.status === "active" ? "активен" : "пауза"}
-                    </div>
+                    )}
                   </div>
 
-                  {source.note ? (
-                    <div className="mt-3 text-sm leading-6 text-white/70">{source.note}</div>
-                  ) : null}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-2">
+                          <div className="truncate text-xl font-semibold text-white">
+                            {source.title || source.handle}
+                          </div>
+                          {source.verified ? (
+                            <span className="text-base leading-none text-sky-400">✔</span>
+                          ) : null}
+                        </div>
 
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {sourceParentTag ? (
-                      <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white">
-                        {resolveTagLabel(sourceParentTag, "ru")}
+                        <div className="truncate text-sm text-white/45">@{source.handle}</div>
                       </div>
-                    ) : null}
 
-                    {sourceChildTags.map((tag) => (
                       <div
-                        key={tag}
-                        className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1 text-xs text-[#d9f3ff]"
+                        className={`rounded-full px-3 py-1 text-xs ${
+                          source.status === "active"
+                            ? "bg-emerald-500/20 text-emerald-300"
+                            : "bg-white/10 text-white/65"
+                        }`}
                       >
-                        {resolveTagLabel(tag, "ru")}
+                        {source.status === "active" ? "active" : "пауза"}
                       </div>
-                    ))}
+                    </div>
 
-                    {!sourceParentTag && tags.length === 0 ? (
-                      <div className="rounded-full border border-dashed border-white/10 px-3 py-1 text-xs text-white/35">
-                        без тегов
+                    <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                      <div>
+                        <div className="text-[11px] uppercase tracking-[0.18em] text-white/28">
+                          Проверка
+                        </div>
+                        <div className="mt-1 text-white/72">
+                          {formatDate(source.lastCheckedAt)}
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="text-[11px] uppercase tracking-[0.18em] text-white/28">
+                          Импортировано
+                        </div>
+                        <div className="mt-1 text-white/72">
+                          {source.importedPostsCount || 0}
+                        </div>
+                      </div>
+                    </div>
+
+                    {tags.length ? (
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {tags.map((tag) => {
+                          const option = ADMIN_TAG_OPTIONS.find((item) => item.value === tag);
+
+                          return (
+                            <div
+                              key={tag}
+                              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/80"
+                            >
+                              {option?.label || tag}
+                            </div>
+                          );
+                        })}
                       </div>
                     ) : null}
-                  </div>
 
-                  <div className="mt-4 space-y-1 text-xs text-white/45">
-                    <div>Создан: {formatDate(source.createdAt)}</div>
-                    <div>Обновлён: {formatDate(source.updatedAt)}</div>
-                    <div>Проверка: {formatDate(source.lastCheckedAt)}</div>
-                    <div>Импорт: {formatDate(source.lastImportedAt)}</div>
-                    <div>Постов: {source.importedPostsCount || 0}</div>
-                  </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        onClick={() => startEdit(source)}
+                        className="rounded-full bg-white px-4 py-2 text-sm text-black transition"
+                      >
+                        редактировать
+                      </button>
 
-                  <div className="mt-4 flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => startEdit(source)}
-                      className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/85 transition hover:bg-white/10"
-                    >
-                      редактировать
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        void deleteSource(source);
-                      }}
-                      className="rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm text-red-200 transition hover:bg-red-500/15"
-                    >
-                      удалить
-                    </button>
+                      <a
+                        href={`https://t.me/${source.handle}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/85 transition hover:bg-white/15"
+                      >
+                        открыть
+                      </a>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          void deleteSource(source);
+                        }}
+                        className="rounded-full bg-red-500 px-4 py-2 text-sm text-white transition hover:bg-red-400"
+                      >
+                        удалить
+                      </button>
+                    </div>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-
-          {filteredSources.length === 0 ? (
-            <div className="rounded-[24px] border border-dashed border-white/10 bg-[#151722] px-4 py-8 text-center text-sm text-white/45">
-              Каналы по выбранной стране не найдены.
-            </div>
-          ) : null}
+              </div>
+            );
+          })}
         </div>
+
+        {filteredSources.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-white/10 bg-white/[0.025] px-4 py-8 text-center text-sm text-white/45">
+            По этой стране пока нет каналов
+          </div>
+        ) : null}
       </div>
     </AdminSectionCard>
   );
