@@ -22,21 +22,36 @@ function resolveRole(value: unknown): UserRole {
 function resolveLocale(value: unknown): Locale | null {
   if (
     value === "ru" ||
+    value === "uk" ||
     value === "en" ||
+    value === "in" ||
+    value === "fa" ||
     value === "de" ||
     value === "es" ||
     value === "tr" ||
     value === "fr" ||
     value === "it" ||
     value === "pt-br" ||
+    value === "kk" ||
+    value === "uz" ||
+    value === "ae" ||
+    value === "eg" ||
+    value === "pk" ||
     value === "id" ||
-    value === "pl"
+    value === "mx" ||
+    value === "sa" ||
+    value === "ar" ||
+    value === "co" ||
+    value === "za" ||
+    value === "ng" ||
+    value === "zh" ||
+    value === "ms"
   ) {
     return value;
-  }
+  }  
 
-  return null;
-}
+    return null;
+  }
 
 function resolveTag(value: unknown): ContentTag {
   return (asCleanString(value) as ContentTag) || "other";
