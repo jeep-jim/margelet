@@ -30,7 +30,6 @@ function toggleSub(handle: string) {
   return next;
 }
 
-
 export function FeedMoreMenu({
   locale,
   isOwner,
@@ -88,17 +87,9 @@ export function FeedMoreMenu({
       window.removeEventListener("wheel", handleScrollClose);
       window.removeEventListener("touchmove", handleScrollClose);
     };
-  }, [onRequestClose]);  
+  }, [onRequestClose]);
 
   const COPY = {
-    en: {
-      subscribeOn: "Enable notifications",
-      subscribeOff: "Disable notifications",
-      openTelegram: "Open in Telegram",
-      delete: "Delete post",
-      deleteAdmin: "Delete post (admin)",
-      hide: "Not interested",
-    },
     ru: {
       subscribeOn: "Включить уведомления",
       subscribeOff: "Отключить уведомления",
@@ -107,21 +98,37 @@ export function FeedMoreMenu({
       deleteAdmin: "Удалить пост (admin)",
       hide: "Мне это не интересно!",
     },
-    de: {
-      subscribeOn: "Benachrichtigungen aktivieren",
-      subscribeOff: "Benachrichtigungen deaktivieren",
-      openTelegram: "In Telegram öffnen",
-      delete: "Beitrag löschen",
-      deleteAdmin: "Beitrag löschen (admin)",
-      hide: "Nicht interessant",
+    uk: {
+      subscribeOn: "Увімкнути сповіщення",
+      subscribeOff: "Вимкнути сповіщення",
+      openTelegram: "Відкрити в Telegram",
+      delete: "Видалити пост",
+      deleteAdmin: "Видалити пост (admin)",
+      hide: "Мені це не цікаво",
     },
-    es: {
-      subscribeOn: "Activar notificaciones",
-      subscribeOff: "Desactivar notificaciones",
-      openTelegram: "Abrir en Telegram",
-      delete: "Eliminar publicación",
-      deleteAdmin: "Eliminar publicación (admin)",
-      hide: "No me interesa",
+    en: {
+      subscribeOn: "Enable notifications",
+      subscribeOff: "Disable notifications",
+      openTelegram: "Open in Telegram",
+      delete: "Delete post",
+      deleteAdmin: "Delete post (admin)",
+      hide: "Not interested",
+    },
+    in: {
+      subscribeOn: "Enable notifications",
+      subscribeOff: "Disable notifications",
+      openTelegram: "Open in Telegram",
+      delete: "Delete post",
+      deleteAdmin: "Delete post (admin)",
+      hide: "Not interested",
+    },
+    fa: {
+      subscribeOn: "فعال کردن اعلان‌ها",
+      subscribeOff: "غیرفعال کردن اعلان‌ها",
+      openTelegram: "باز کردن در تلگرام",
+      delete: "حذف پست",
+      deleteAdmin: "حذف پست (admin)",
+      hide: "علاقه‌ای ندارم",
     },
     tr: {
       subscribeOn: "Bildirimleri aç",
@@ -131,22 +138,6 @@ export function FeedMoreMenu({
       deleteAdmin: "Gönderiyi sil (admin)",
       hide: "İlgimi çekmiyor",
     },
-    fr: {
-      subscribeOn: "Activer les notifications",
-      subscribeOff: "Désactiver les notifications",
-      openTelegram: "Ouvrir dans Telegram",
-      delete: "Supprimer le post",
-      deleteAdmin: "Supprimer le post (admin)",
-      hide: "Ça ne m’intéresse pas",
-    },
-    it: {
-      subscribeOn: "Attiva notifiche",
-      subscribeOff: "Disattiva notifiche",
-      openTelegram: "Apri in Telegram",
-      delete: "Elimina post",
-      deleteAdmin: "Elimina post (admin)",
-      hide: "Non mi interessa",
-    },
     "pt-br": {
       subscribeOn: "Ativar notificações",
       subscribeOff: "Desativar notificações",
@@ -154,6 +145,46 @@ export function FeedMoreMenu({
       delete: "Excluir post",
       deleteAdmin: "Excluir post (admin)",
       hide: "Não me interessa",
+    },
+    kk: {
+      subscribeOn: "Хабарландыруларды қосу",
+      subscribeOff: "Хабарландыруларды өшіру",
+      openTelegram: "Telegram-да ашу",
+      delete: "Постты жою",
+      deleteAdmin: "Постты жою (admin)",
+      hide: "Маған қызық емес",
+    },
+    uz: {
+      subscribeOn: "Bildirishnomalarni yoqish",
+      subscribeOff: "Bildirishnomalarni o‘chirish",
+      openTelegram: "Telegram’da ochish",
+      delete: "Postni o‘chirish",
+      deleteAdmin: "Postni o‘chirish (admin)",
+      hide: "Menga qiziq emas",
+    },
+    ae: {
+      subscribeOn: "تفعيل الإشعارات",
+      subscribeOff: "إيقاف الإشعارات",
+      openTelegram: "فتح في Telegram",
+      delete: "حذف المنشور",
+      deleteAdmin: "حذف المنشور (admin)",
+      hide: "غير مهتم",
+    },
+    eg: {
+      subscribeOn: "تفعيل الإشعارات",
+      subscribeOff: "إيقاف الإشعارات",
+      openTelegram: "فتح في Telegram",
+      delete: "حذف المنشور",
+      deleteAdmin: "حذف المنشور (admin)",
+      hide: "غير مهتم",
+    },
+    pk: {
+      subscribeOn: "Enable notifications",
+      subscribeOff: "Disable notifications",
+      openTelegram: "Open in Telegram",
+      delete: "Delete post",
+      deleteAdmin: "Delete post (admin)",
+      hide: "Not interested",
     },
     id: {
       subscribeOn: "Aktifkan notifikasi",
@@ -163,13 +194,101 @@ export function FeedMoreMenu({
       deleteAdmin: "Hapus postingan (admin)",
       hide: "Saya tidak tertarik",
     },
-    pl: {
-      subscribeOn: "Włącz powiadomienia",
-      subscribeOff: "Wyłącz powiadomienia",
-      openTelegram: "Otwórz w Telegramie",
-      delete: "Usuń post",
-      deleteAdmin: "Usuń post (admin)",
-      hide: "To mnie nie interesuje",
+    mx: {
+      subscribeOn: "Activar notificaciones",
+      subscribeOff: "Desactivar notificaciones",
+      openTelegram: "Abrir en Telegram",
+      delete: "Eliminar publicación",
+      deleteAdmin: "Eliminar publicación (admin)",
+      hide: "No me interesa",
+    },
+    sa: {
+      subscribeOn: "تفعيل الإشعارات",
+      subscribeOff: "إيقاف الإشعارات",
+      openTelegram: "فتح في Telegram",
+      delete: "حذف المنشور",
+      deleteAdmin: "حذف المنشور (admin)",
+      hide: "غير مهتم",
+    },
+    es: {
+      subscribeOn: "Activar notificaciones",
+      subscribeOff: "Desactivar notificaciones",
+      openTelegram: "Abrir en Telegram",
+      delete: "Eliminar publicación",
+      deleteAdmin: "Eliminar publicación (admin)",
+      hide: "No me interesa",
+    },
+    it: {
+      subscribeOn: "Attiva notifiche",
+      subscribeOff: "Disattiva notifiche",
+      openTelegram: "Apri in Telegram",
+      delete: "Elimina post",
+      deleteAdmin: "Elimina post (admin)",
+      hide: "Non mi interessa",
+    },
+    fr: {
+      subscribeOn: "Activer les notifications",
+      subscribeOff: "Désactiver les notifications",
+      openTelegram: "Ouvrir dans Telegram",
+      delete: "Supprimer le post",
+      deleteAdmin: "Supprimer le post (admin)",
+      hide: "Ça ne m’intéresse pas",
+    },
+    de: {
+      subscribeOn: "Benachrichtigungen aktivieren",
+      subscribeOff: "Benachrichtigungen deaktivieren",
+      openTelegram: "In Telegram öffnen",
+      delete: "Beitrag löschen",
+      deleteAdmin: "Beitrag löschen (admin)",
+      hide: "Nicht interessant",
+    },
+    ar: {
+      subscribeOn: "Activar notificaciones",
+      subscribeOff: "Desactivar notificaciones",
+      openTelegram: "Abrir en Telegram",
+      delete: "Eliminar publicación",
+      deleteAdmin: "Eliminar publicación (admin)",
+      hide: "No me interesa",
+    },
+    co: {
+      subscribeOn: "Activar notificaciones",
+      subscribeOff: "Desactivar notificaciones",
+      openTelegram: "Abrir en Telegram",
+      delete: "Eliminar publicación",
+      deleteAdmin: "Eliminar publicación (admin)",
+      hide: "No me interesa",
+    },
+    za: {
+      subscribeOn: "Enable notifications",
+      subscribeOff: "Disable notifications",
+      openTelegram: "Open in Telegram",
+      delete: "Delete post",
+      deleteAdmin: "Delete post (admin)",
+      hide: "Not interested",
+    },
+    ng: {
+      subscribeOn: "Enable notifications",
+      subscribeOff: "Disable notifications",
+      openTelegram: "Open in Telegram",
+      delete: "Delete post",
+      deleteAdmin: "Delete post (admin)",
+      hide: "Not interested",
+    },
+    zh: {
+      subscribeOn: "开启通知",
+      subscribeOff: "关闭通知",
+      openTelegram: "在 Telegram 中打开",
+      delete: "删除帖子",
+      deleteAdmin: "删除帖子 (admin)",
+      hide: "我不感兴趣",
+    },
+    ms: {
+      subscribeOn: "Aktifkan notifikasi",
+      subscribeOff: "Nyahaktifkan notifikasi",
+      openTelegram: "Buka di Telegram",
+      delete: "Padam siaran",
+      deleteAdmin: "Padam siaran (admin)",
+      hide: "Saya tidak berminat",
     },
   } as const;
 
@@ -213,10 +332,8 @@ export function FeedMoreMenu({
             <BellOff className="h-4 w-4 text-primary" />
           ) : (
             <Bell className="h-4 w-4 text-secondary" />
-          )}          
-          <span>
-            {subscribed ? copy.subscribeOff : copy.subscribeOn}
-          </span>
+          )}
+          <span>{subscribed ? copy.subscribeOff : copy.subscribeOn}</span>
         </button>
 
         <button

@@ -88,4 +88,6 @@ export type FeedHeaderProps = {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
   tagsOpen: boolean;
   setTagsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  resultsCount: number;
+  tagStats: Partial<Record<ContentTag, number>>;
 };

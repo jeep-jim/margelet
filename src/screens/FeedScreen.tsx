@@ -1074,15 +1074,30 @@ export function FeedScreen({
               const FEED_END = {
                 en: "Refresh feed",
                 ru: "Обновить ленту",
+                uk: "Оновити стрічку",
+                in: "Refresh feed",
+                fa: "به‌روزرسانی فید",
                 de: "Feed aktualisieren",
                 es: "Actualizar feed",
                 tr: "Akışı yenile",
                 fr: "Actualiser le fil",
                 it: "Aggiorna feed",
                 "pt-br": "Atualizar feed",
+                kk: "Лентаны жаңарту",
+                uz: "Lentani yangilash",
+                ae: "تحديث الخلاصة",
+                eg: "تحديث الخلاصة",
+                pk: "Refresh feed",
                 id: "Muat ulang feed",
-                pl: "Odśwież feed",
-              } as const;
+                mx: "Actualizar feed",
+                sa: "تحديث الخلاصة",
+                ar: "Actualizar feed",
+                co: "Actualizar feed",
+                za: "Refresh feed",
+                ng: "Refresh feed",
+                zh: "刷新内容流",
+                ms: "Segarkan feed",
+              } as const;              
 
               return (FEED_END[locale] ?? FEED_END.en);
             })()}

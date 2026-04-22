@@ -1,31 +1,29 @@
 export type CountryCode =
   | "ru"
+  | "uk"
   | "en"
-  | "ar"
-  | "be"
-  | "ca"
-  | "hr"
-  | "cs"
-  | "nl"
-  | "fi"
+  | "in"
+  | "fa"
+  | "tr"
+  | "pt-br"
+  | "kk"
+  | "uz"
+  | "ae"
+  | "eg"
+  | "pk"
+  | "id"
+  | "mx"
+  | "sa"
+  | "es"
+  | "it"
   | "fr"
   | "de"
-  | "he"
-  | "hu"
-  | "id"
-  | "it"
-  | "kk"
-  | "ko"
-  | "ms"
-  | "no"
-  | "fa"
-  | "pl"
-  | "pt-br"
-  | "sr"
-  | "es"
-  | "tr"
-  | "uk"
-  | "uz";
+  | "ar"
+  | "co"
+  | "za"
+  | "ng"
+  | "zh"
+  | "ms";
 
 export type Country = {
   code: CountryCode;
@@ -35,33 +33,36 @@ export type Country = {
 };
 
 export const COUNTRIES: Country[] = [
+  // Tier 1
   { code: "ru", label: "Russia", nativeLabel: "Русский", enabled: true },
-  { code: "en", label: "English", nativeLabel: "English", enabled: true },
-  { code: "de", label: "Germany", nativeLabel: "Deutsch", enabled: true },
-  { code: "es", label: "Spain", nativeLabel: "Español", enabled: true },
+  { code: "uk", label: "Ukraine", nativeLabel: "Українська", enabled: true },
+  { code: "in", label: "India", nativeLabel: "हिन्दी", enabled: true },
+  { code: "fa", label: "Iran", nativeLabel: "فارسی", enabled: true },
   { code: "tr", label: "Turkey", nativeLabel: "Türkçe", enabled: true },
-  { code: "fr", label: "France", nativeLabel: "Français", enabled: true },
-  { code: "it", label: "Italy", nativeLabel: "Italiano", enabled: true },
   { code: "pt-br", label: "Brazil", nativeLabel: "Português (Brasil)", enabled: true },
-  { code: "id", label: "Indonesia", nativeLabel: "Bahasa Indonesia", enabled: true },
-  { code: "pl", label: "Poland", nativeLabel: "Polski", enabled: true },
+  { code: "en", label: "United States", nativeLabel: "English (US)", enabled: true },
 
-  // остальные пока выключены
-  { code: "ar", label: "Arabic", nativeLabel: "العربية", enabled: false },
-  { code: "be", label: "Belarus", nativeLabel: "Беларуская", enabled: false },
-  { code: "ca", label: "Catalan", nativeLabel: "Català", enabled: false },
-  { code: "hr", label: "Croatia", nativeLabel: "Hrvatski", enabled: false },
-  { code: "cs", label: "Czech", nativeLabel: "Čeština", enabled: false },
-  { code: "nl", label: "Netherlands", nativeLabel: "Nederlands", enabled: false },
-  { code: "fi", label: "Finland", nativeLabel: "Suomi", enabled: false },
-  { code: "he", label: "Israel", nativeLabel: "עברית", enabled: false },
-  { code: "hu", label: "Hungary", nativeLabel: "Magyar", enabled: false },
-  { code: "kk", label: "Kazakhstan", nativeLabel: "Қазақша", enabled: false },
-  { code: "ko", label: "Korea", nativeLabel: "한국어", enabled: false },
-  { code: "ms", label: "Malaysia", nativeLabel: "Bahasa Melayu", enabled: false },
-  { code: "no", label: "Norway", nativeLabel: "Norsk", enabled: false },
-  { code: "fa", label: "Iran", nativeLabel: "فارسی", enabled: false },
-  { code: "sr", label: "Serbia", nativeLabel: "Српски", enabled: false },
-  { code: "uk", label: "Ukraine", nativeLabel: "Українська", enabled: false },
-  { code: "uz", label: "Uzbekistan", nativeLabel: "Oʻzbek", enabled: false },
+  // Tier 2
+  { code: "kk", label: "Kazakhstan", nativeLabel: "Қазақша", enabled: true },
+  { code: "uz", label: "Uzbekistan", nativeLabel: "Oʻzbek", enabled: true },
+  { code: "ae", label: "United Arab Emirates", nativeLabel: "العربية", enabled: true },
+  { code: "eg", label: "Egypt", nativeLabel: "العربية", enabled: true },
+  { code: "pk", label: "Pakistan", nativeLabel: "اردو", enabled: true },
+  { code: "id", label: "Indonesia", nativeLabel: "Bahasa Indonesia", enabled: true },
+  { code: "mx", label: "Mexico", nativeLabel: "Español (México)", enabled: true },
+  { code: "sa", label: "Saudi Arabia", nativeLabel: "العربية", enabled: true },
+
+  // Tier 3
+  { code: "es", label: "Spain", nativeLabel: "Español", enabled: true },
+  { code: "it", label: "Italy", nativeLabel: "Italiano", enabled: true },
+  { code: "fr", label: "France", nativeLabel: "Français", enabled: true },
+  { code: "de", label: "Germany", nativeLabel: "Deutsch", enabled: true },
+  { code: "ar", label: "Argentina", nativeLabel: "Español (Argentina)", enabled: true },
+  { code: "co", label: "Colombia", nativeLabel: "Español (Colombia)", enabled: true },
+  { code: "za", label: "South Africa", nativeLabel: "English (South Africa)", enabled: true },
+  { code: "ng", label: "Nigeria", nativeLabel: "English (Nigeria)", enabled: true },
+
+  // Extra global expansion
+  { code: "zh", label: "China", nativeLabel: "中文", enabled: true },
+  { code: "ms", label: "Malaysia", nativeLabel: "Bahasa Melayu", enabled: true },
 ];

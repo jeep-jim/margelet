@@ -32,17 +32,23 @@ const COPY = {
     mute: "Выключить звук",
     unmute: "Включить звук",
   },
-  de: {
-    play: "Abspielen",
-    pause: "Pause",
-    mute: "Ton aus",
-    unmute: "Ton an",
+  uk: {
+    play: "Відтворити",
+    pause: "Пауза",
+    mute: "Вимкнути звук",
+    unmute: "Увімкнути звук",
   },
-  es: {
-    play: "Reproducir",
-    pause: "Pausa",
-    mute: "Silenciar",
-    unmute: "Activar sonido",
+  in: {
+    play: "Play",
+    pause: "Pause",
+    mute: "Mute",
+    unmute: "Unmute",
+  },
+  fa: {
+    play: "پخش",
+    pause: "توقف",
+    mute: "بی‌صدا",
+    unmute: "با صدا",
   },
   tr: {
     play: "Oynat",
@@ -50,23 +56,41 @@ const COPY = {
     mute: "Sesi kapat",
     unmute: "Sesi aç",
   },
-  fr: {
-    play: "Lire",
-    pause: "Pause",
-    mute: "Couper le son",
-    unmute: "Activer le son",
-  },
-  it: {
-    play: "Riproduci",
-    pause: "Pausa",
-    mute: "Disattiva audio",
-    unmute: "Attiva audio",
-  },
   "pt-br": {
     play: "Reproduzir",
     pause: "Pausar",
     mute: "Silenciar",
     unmute: "Ativar som",
+  },
+  kk: {
+    play: "Ойнату",
+    pause: "Пауза",
+    mute: "Дыбысты өшіру",
+    unmute: "Дыбысты қосу",
+  },
+  uz: {
+    play: "Ijro etish",
+    pause: "Pauza",
+    mute: "Ovozni o‘chirish",
+    unmute: "Ovozni yoqish",
+  },
+  ae: {
+    play: "تشغيل",
+    pause: "إيقاف",
+    mute: "كتم الصوت",
+    unmute: "تشغيل الصوت",
+  },
+  eg: {
+    play: "تشغيل",
+    pause: "إيقاف",
+    mute: "كتم الصوت",
+    unmute: "تشغيل الصوت",
+  },
+  pk: {
+    play: "Play",
+    pause: "Pause",
+    mute: "Mute",
+    unmute: "Unmute",
   },
   id: {
     play: "Putar",
@@ -74,14 +98,79 @@ const COPY = {
     mute: "Matikan suara",
     unmute: "Nyalakan suara",
   },
-  pl: {
-    play: "Odtwórz",
-    pause: "Pauza",
-    mute: "Wycisz",
-    unmute: "Włącz dźwięk",
+  mx: {
+    play: "Reproducir",
+    pause: "Pausa",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
+  },
+  sa: {
+    play: "تشغيل",
+    pause: "إيقاف",
+    mute: "كتم الصوت",
+    unmute: "تشغيل الصوت",
+  },
+  es: {
+    play: "Reproducir",
+    pause: "Pausa",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
+  },
+  it: {
+    play: "Riproduci",
+    pause: "Pausa",
+    mute: "Disattiva audio",
+    unmute: "Attiva audio",
+  },
+  fr: {
+    play: "Lire",
+    pause: "Pause",
+    mute: "Couper le son",
+    unmute: "Activer le son",
+  },
+  de: {
+    play: "Abspielen",
+    pause: "Pause",
+    mute: "Ton aus",
+    unmute: "Ton an",
+  },
+  ar: {
+    play: "Reproducir",
+    pause: "Pausa",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
+  },
+  co: {
+    play: "Reproducir",
+    pause: "Pausa",
+    mute: "Silenciar",
+    unmute: "Activar sonido",
+  },
+  za: {
+    play: "Play",
+    pause: "Pause",
+    mute: "Mute",
+    unmute: "Unmute",
+  },
+  ng: {
+    play: "Play",
+    pause: "Pause",
+    mute: "Mute",
+    unmute: "Unmute",
+  },
+  zh: {
+    play: "播放",
+    pause: "暂停",
+    mute: "静音",
+    unmute: "开启声音",
+  },
+  ms: {
+    play: "Main",
+    pause: "Jeda",
+    mute: "Bisu",
+    unmute: "Buka suara",
   },
 } as const;
-
 
 function readGlobalMuted() {
   try {
@@ -241,8 +330,7 @@ export function FeedViewer({
     setSubscribed(getSubs().includes(activePost.source.handle));
     setCurrentTime(0);
     setDuration(0);
-
-  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex]);  
+  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex]);
 
   useEffect(() => {
     setIsMuted(readGlobalMuted());
@@ -347,7 +435,7 @@ export function FeedViewer({
       node.removeEventListener("pause", onPause);
       node.removeEventListener("ended", onPause);
     };
-  }, [activePost?.id, viewerMediaIndex, activeItem?.id, activeItem?.kind, setIsPlaying]);  
+  }, [activePost?.id, viewerMediaIndex, activeItem?.id, activeItem?.kind, setIsPlaying]);
 
   useEffect(() => {
     const node = videoRef.current;
@@ -445,7 +533,6 @@ export function FeedViewer({
     }, 420);
   };
 
-
   const handleSubscribeClick = () => {
     const next = toggleSub(activePost.source.handle);
 
@@ -530,7 +617,7 @@ export function FeedViewer({
                 }`}
               />
             </button>
-          </div>          
+          </div>
 
           {showCenterControl ? (
             <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
@@ -552,7 +639,7 @@ export function FeedViewer({
             onTouchStart={(event) => event.stopPropagation()}
             onTouchMove={(event) => event.stopPropagation()}
             onTouchEnd={(event) => event.stopPropagation()}
-          >            
+          >
             <div className="w-full md:max-w-[380px]">
               <div className="flex items-end justify-between gap-3">
                 <button
@@ -562,7 +649,7 @@ export function FeedViewer({
                     if (activePost) {
                       _openSource(activePost.source.handle);
                       closeViewer();
-                    }                    
+                    }
                   }}
                   className="flex min-w-0 items-center gap-3 text-left"
                 >
@@ -584,7 +671,7 @@ export function FeedViewer({
                     </div>
                   </div>
                 </button>
-              </div>              
+              </div>
 
               {activePost.text ? (
                 <div className="mt-3">
@@ -685,7 +772,7 @@ export function FeedViewer({
                   )}
                 </button>
               </div>
-            ) : null}            
+            ) : null}
           </div>
         </div>
       </motion.div>

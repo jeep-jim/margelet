@@ -52,24 +52,25 @@ export function FeedMediaCard({
   shouldLoadMedia = false,
 }: FeedMediaCardProps) {
   const COPY = {
-    en: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
     ru: {
       mute: "Выключить звук",
       unmute: "Включить звук",
       play: "Воспроизвести",
       pause: "Пауза",
     },
-    de: {
-      mute: "Ton aus",
-      unmute: "Ton an",
-      play: "Abspielen",
-      pause: "Pause",
+    uk: {
+      mute: "Вимкнути звук",
+      unmute: "Увімкнути звук",
+      play: "Відтворити",
+      pause: "Пауза",
     },
-    es: {
-      mute: "Silenciar",
-      unmute: "Activar sonido",
-      play: "Reproducir",
-      pause: "Pausa",
+    en: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
+    in: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
+    fa: {
+      mute: "بی‌صدا",
+      unmute: "با صدا",
+      play: "پخش",
+      pause: "توقف",
     },
     tr: {
       mute: "Sesi kapat",
@@ -77,11 +78,60 @@ export function FeedMediaCard({
       play: "Oynat",
       pause: "Duraklat",
     },
-    fr: {
-      mute: "Couper le son",
-      unmute: "Activer le son",
-      play: "Lire",
-      pause: "Pause",
+    "pt-br": {
+      mute: "Silenciar",
+      unmute: "Ativar som",
+      play: "Reproduzir",
+      pause: "Pausar",
+    },
+    kk: {
+      mute: "Дыбысты өшіру",
+      unmute: "Дыбысты қосу",
+      play: "Ойнату",
+      pause: "Пауза",
+    },
+    uz: {
+      mute: "Ovozni o‘chirish",
+      unmute: "Ovozni yoqish",
+      play: "Ijro etish",
+      pause: "Pauza",
+    },
+    ae: {
+      mute: "كتم الصوت",
+      unmute: "تشغيل الصوت",
+      play: "تشغيل",
+      pause: "إيقاف",
+    },
+    eg: {
+      mute: "كتم الصوت",
+      unmute: "تشغيل الصوت",
+      play: "تشغيل",
+      pause: "إيقاف",
+    },
+    pk: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
+    id: {
+      mute: "Matikan suara",
+      unmute: "Nyalakan suara",
+      play: "Putar",
+      pause: "Jeda",
+    },
+    mx: {
+      mute: "Silenciar",
+      unmute: "Activar sonido",
+      play: "Reproducir",
+      pause: "Pausa",
+    },
+    sa: {
+      mute: "كتم الصوت",
+      unmute: "تشغيل الصوت",
+      play: "تشغيل",
+      pause: "إيقاف",
+    },
+    es: {
+      mute: "Silenciar",
+      unmute: "Activar sonido",
+      play: "Reproducir",
+      pause: "Pausa",
     },
     it: {
       mute: "Disattiva audio",
@@ -89,23 +139,43 @@ export function FeedMediaCard({
       play: "Riproduci",
       pause: "Pausa",
     },
-    "pt-br": {
+    fr: {
+      mute: "Couper le son",
+      unmute: "Activer le son",
+      play: "Lire",
+      pause: "Pause",
+    },
+    de: {
+      mute: "Ton aus",
+      unmute: "Ton an",
+      play: "Abspielen",
+      pause: "Pause",
+    },
+    ar: {
       mute: "Silenciar",
-      unmute: "Ativar som",
-      play: "Reproduzir",
-      pause: "Pausar",
+      unmute: "Activar sonido",
+      play: "Reproducir",
+      pause: "Pausa",
     },
-    id: {
-      mute: "Matikan suara",
-      unmute: "Nyalakan suara",
-      play: "Putar",
+    co: {
+      mute: "Silenciar",
+      unmute: "Activar sonido",
+      play: "Reproducir",
+      pause: "Pausa",
+    },
+    za: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
+    ng: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
+    zh: {
+      mute: "静音",
+      unmute: "开启声音",
+      play: "播放",
+      pause: "暂停",
+    },
+    ms: {
+      mute: "Bisu",
+      unmute: "Buka suara",
+      play: "Main",
       pause: "Jeda",
-    },
-    pl: {
-      mute: "Wycisz",
-      unmute: "Włącz dźwięk",
-      play: "Odtwórz",
-      pause: "Pauza",
     },
   } as const;
 
@@ -127,7 +197,7 @@ export function FeedMediaCard({
     media[Math.min(mediaIndex, Math.max(media.length - 1, 0))] || null;
 
   const activeIsVideo = activeItem?.kind === "video";
-  const activeIsWideVideo = activeIsVideo && isWideVideo;  
+  const activeIsWideVideo = activeIsVideo && isWideVideo;
 
   useEffect(() => {
     const syncMuted = (event: Event) => {
@@ -162,7 +232,7 @@ export function FeedMediaCard({
       setIsVideoPlaying(false);
       setIsWideVideo(false);
       return;
-    }    
+    }
 
     const syncMeta = () => {
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
@@ -171,7 +241,7 @@ export function FeedMediaCard({
           Number(node.videoHeight) > 0 &&
           node.videoWidth > node.videoHeight
       );
-    };    
+    };
 
     const syncTime = () => {
       if (!isSeeking) {
@@ -375,7 +445,7 @@ export function FeedMediaCard({
         fit={activeIsWideVideo ? "contain" : activeIsVideo ? "cover" : "contain"}
         mode={activeIsVideo ? "fixed" : "adaptive"}
         maxMediaHeightClass={activeIsVideo ? "max-h-[520px]" : "max-h-[460px]"}
-        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}        
+        backgroundClass={activeIsVideo ? "bg-black" : "bg-white"}
         enableFullscreen={!activeIsVideo}
         nativeVideoControls={false}
         blockVideoClickPropagation={false}

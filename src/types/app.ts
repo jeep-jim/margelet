@@ -1,6 +1,6 @@
-import type { ActiveLocale } from "../lib/locales";
+import type { SiteLocale } from "../lib/locales";
 
-export type Locale = ActiveLocale;
+export type Locale = SiteLocale;
 
 export type TabId = "intro" | "feed" | "add" | "creator" | "source" | "admin";
 

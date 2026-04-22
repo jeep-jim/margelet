@@ -1,14 +1,29 @@
 export type Locale =
   | "ru"
+  | "uk"
   | "en"
-  | "de"
-  | "es"
+  | "in"
+  | "fa"
   | "tr"
-  | "fr"
-  | "it"
   | "pt-br"
+  | "kk"
+  | "uz"
+  | "ae"
+  | "eg"
+  | "pk"
   | "id"
-  | "pl";
+  | "mx"
+  | "sa"
+  | "es"
+  | "it"
+  | "fr"
+  | "de"
+  | "ar"
+  | "co"
+  | "za"
+  | "ng"
+  | "zh"
+  | "ms";
 
 export type FeedTag =
   | "all"
@@ -68,32 +83,30 @@ export type UserRole = "user" | "channel_owner" | "admin";
 
 export type CountryCode =
   | "ru"
+  | "uk"
   | "en"
-  | "ar"
-  | "be"
-  | "ca"
-  | "hr"
-  | "cs"
-  | "nl"
-  | "fi"
+  | "in"
+  | "fa"
+  | "tr"
+  | "pt-br"
+  | "kk"
+  | "uz"
+  | "ae"
+  | "eg"
+  | "pk"
+  | "id"
+  | "mx"
+  | "sa"
+  | "es"
+  | "it"
   | "fr"
   | "de"
-  | "he"
-  | "hu"
-  | "id"
-  | "it"
-  | "kk"
-  | "ko"
-  | "ms"
-  | "no"
-  | "fa"
-  | "pl"
-  | "pt-br"
-  | "sr"
-  | "es"
-  | "tr"
-  | "uk"
-  | "uz";
+  | "ar"
+  | "co"
+  | "za"
+  | "ng"
+  | "zh"
+  | "ms";
 
 export type TrustedSourceStatus = "active" | "paused";
 
@@ -114,7 +127,7 @@ export type TrustedSource = {
   lastImportedAt: string | null;
   lastSeenPostId: number | null;
   importedPostsCount: number;
-    lastRefreshCursorPostId?: number | null;
+  lastRefreshCursorPostId?: number | null;
 };
 
 export type IngestedPost = {
@@ -169,7 +182,7 @@ export type IngestedPost = {
     autopublishEnabled: boolean;
   };
   sourceId?: string | null;
-  sourceCountryCode?: string | null;
+  sourceCountryCode?: CountryCode | null;
   status?: PostStatus;
   role?: UserRole;
   moderation?: {

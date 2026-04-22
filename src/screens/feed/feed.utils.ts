@@ -6,6 +6,44 @@ import {
 } from "../../lib/tag-utils";
 import { findTagByValue, getTagLabel as getSiteTagLabel } from "../../lib/tags";
 
+function getAllTopicsLabel(locale: Locale) {
+  if (locale === "ru" || locale === "uk" || locale === "kk" || locale === "uz") {
+    return "✨ Все темы";
+  }
+
+  if (locale === "mx" || locale === "es" || locale === "ar" || locale === "co") {
+    return "✨ Todos los temas";
+  }
+
+  if (locale === "pt-br") return "✨ Todos os tópicos";
+  if (locale === "tr") return "✨ Tüm konular";
+  if (locale === "fr") return "✨ Tous les thèmes";
+  if (locale === "it") return "✨ Tutti i temi";
+  if (locale === "de") return "✨ Alle Themen";
+  if (locale === "id") return "✨ Semua topik";
+
+  return "✨ All topics";
+}
+
+function getOtherLabel(locale: Locale) {
+  if (locale === "ru" || locale === "uk" || locale === "kk" || locale === "uz") {
+    return "☝️ Другое";
+  }
+
+  if (locale === "mx" || locale === "es" || locale === "ar" || locale === "co") {
+    return "☝️ Otro";
+  }
+
+  if (locale === "pt-br") return "☝️ Outro";
+  if (locale === "tr") return "☝️ Diğer";
+  if (locale === "fr") return "☝️ Autre";
+  if (locale === "it") return "☝️ Altro";
+  if (locale === "de") return "☝️ Sonstiges";
+  if (locale === "id") return "☝️ Lainnya";
+
+  return "☝️ Other";
+}
+
 export function getResolvedTags(post: IngestedPost): ContentTag[] {
   const normalized = normalizeTagValues(
     Array.isArray(post.tags) && post.tags.length > 0
@@ -37,20 +75,7 @@ export function getDisplayTagMeta(post: IngestedPost, locale: Locale) {
 
 export function getTagLabel(tag: FeedTag, locale: Locale) {
   if (tag === "all") {
-    const allLabels: Record<Locale, string> = {
-      ru: "✨ Все темы",
-      en: "✨ All topics",
-      de: "✨ Alle Themen",
-      es: "✨ Todos los temas",
-      tr: "✨ Tüm konular",
-      fr: "✨ Tous les thèmes",
-      it: "✨ Tutti i temi",
-      "pt-br": "✨ Todos os tópicos",
-      id: "✨ Semua topik",
-      pl: "✨ Wszystkie tematy",
-    };
-
-    return allLabels[locale] ?? allLabels.en;
+    return getAllTopicsLabel(locale);
   }
 
   const found = findTagByValue(tag);
@@ -58,20 +83,7 @@ export function getTagLabel(tag: FeedTag, locale: Locale) {
     return getSiteTagLabel(found, locale);
   }
 
-  const fallback: Record<Locale, string> = {
-    ru: "☝️ Другое",
-    en: "☝️ Other",
-    de: "☝️ Sonstiges",
-    es: "☝️ Otro",
-    tr: "☝️ Diğer",
-    fr: "☝️ Autre",
-    it: "☝️ Altro",
-    "pt-br": "☝️ Outro",
-    id: "☝️ Lainnya",
-    pl: "☝️ Inne",
-  };
-
-  return fallback[locale] ?? fallback.en;
+  return getOtherLabel(locale);
 }
 
 export function getDisplayText(post: IngestedPost) {
