@@ -153,15 +153,32 @@ export const SITE_TAG_GROUPS: SiteTagGroup[] = [
     ],
   },
   {
+    ...tag("marketplaces", "🌌", "Маркетплейсы и магазины", "Marketplaces & Shops"),
+    children: [],
+  },
+  {
     ...tag("finance", "💰", "Финансы", "Finance"),
     children: [
       tag("finance_all", "💰", "Все", "All"),
       tag("finance_banks", "🏦", "Банки", "Banks"),
+      tag("finance_payment_systems", "💱", "Платёжные системы", "Payment Systems"),
       tag("finance_investing", "📈", "Инвестиции", "Investing"),
       tag("finance_trading", "📉", "Трейдинг", "Trading"),
       tag("finance_personal", "💳", "Личные финансы", "Personal Finance"),
       tag("crypto", "₿", "Крипта", "Crypto"),
       tag("finance_other", "☝️", "Другое", "Other"),
+    ],
+  },
+  {
+    ...tag("electronics", "🔌", "Электроника", "Electronics"),
+    children: [
+      tag("electronics_home_appliances", "🏠", "Бытовая техника", "Home Appliances"),
+      tag("electronics_pc", "🖥️", "ПК и комплектующие", "PC & Components"),
+      tag("electronics_construction", "🛠️", "Строительная", "Construction Equipment"),
+      tag("electronics_trends", "✨", "Новинки и тренды", "New & Trending"),
+      tag("electronics_brands", "🏷️", "Магазины и бренды", "Shops & Brands"),
+      tag("electronics_delivery", "🚚", "Доставка", "Delivery"),
+      tag("electronics_reviews", "🧾", "Отзывы", "Reviews"),
     ],
   },
   {
@@ -284,9 +301,19 @@ export const SITE_TAG_GROUPS: SiteTagGroup[] = [
     children: [
       tag("food_all", "🍔", "Все", "All"),
       tag("recipes", "🍳", "Рецепты", "Recipes"),
-      tag("food_places", "🍽️", "Заведения", "Places"),
       tag("food_products", "🛒", "Продукты", "Products"),
       tag("food_other", "☝️", "Другое", "Other"),
+    ],
+  },
+  {
+    ...tag("food_service", "🍜", "Общепит", "Food Service"),
+    children: [
+      tag("food_service_places", "🍽️", "Рестораны / кафе / бары", "Restaurants / Cafes / Bars"),
+      tag("food_service_delivery", "🛵", "Доставка еды", "Food Delivery"),
+      tag("food_service_new", "✨", "Новинки", "New Arrivals"),
+      tag("food_service_jobs", "👨‍🍳", "Работа в общепите", "Food Service Jobs"),
+      tag("food_service_software", "💻", "Софт и продвижение", "Software & Marketing"),
+      tag("food_service_reviews", "🧾", "Отзывы", "Reviews"),
     ],
   },
   {

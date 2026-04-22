@@ -12,7 +12,9 @@ export type FeedTag =
   | "politics"
   | "economy"
   | "business"
+  | "marketplaces"
   | "finance"
+  | "electronics"
   | "technology"
   | "science"
   | "education"
@@ -24,6 +26,7 @@ export type FeedTag =
   | "health"
   | "travel"
   | "food"
+  | "food_service"
   | "psychology"
   | "fashion"
   | "nature"
@@ -75,14 +78,27 @@ export type FeedTag =
   | "business_cases"
   | "business_other"
 
+  // marketplaces
+  | "marketplaces"
+
   // finance
   | "finance_all"
   | "finance_banks"
+  | "finance_payment_systems"
   | "finance_investing"
   | "finance_trading"
   | "finance_personal"
   | "crypto"
   | "finance_other"
+
+  // electronics
+  | "electronics_home_appliances"
+  | "electronics_pc"
+  | "electronics_construction"
+  | "electronics_trends"
+  | "electronics_brands"
+  | "electronics_delivery"
+  | "electronics_reviews"
 
   // technology
   | "technology_all"
@@ -172,9 +188,17 @@ export type FeedTag =
   // food
   | "food_all"
   | "recipes"
-  | "food_places"
   | "food_products"
   | "food_other"
+
+  // food service
+  | "food_service_places"
+  | "food_service_delivery"
+  | "food_service_products"
+  | "food_service_new"
+  | "food_service_jobs"
+  | "food_service_software"
+  | "food_service_reviews"
 
   // psychology
   | "psychology_all"
@@ -238,6 +262,7 @@ export type FeedTag =
   | "real_estate_other"
 
   // transport
+  | "transport_auto"
   | "transport_moto"
   | "transport_other"
   | "transport_reviews"

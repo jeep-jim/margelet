@@ -195,21 +195,30 @@ export function FeedHeader({
 
   const groups = useMemo(
     () =>
-      SITE_TAG_GROUPS.map((group) => ({
-        value: group.value as ContentTag,
-        label: resolveTagLabel(group.value, locale),
-        count: tagStats[group.value as ContentTag] ?? 0,
-        selected: selectedTags.includes(group.value as ContentTag),
-        expanded: expandedParents.has(group.value as ContentTag),
-        children: group.children
+      SITE_TAG_GROUPS.map((group) => {
+        const children = group.children
           .filter((child) => !child.value.endsWith("_all"))
           .map((child) => ({
             value: child.value as ContentTag,
             label: resolveTagLabel(child.value, locale),
             count: tagStats[child.value as ContentTag] ?? 0,
             selected: selectedTags.includes(child.value as ContentTag),
-          })),
-      })),
+          }));
+
+        const parentValue = group.value as ContentTag;
+        const parentSelected =
+          selectedTags.includes(parentValue) ||
+          children.some((child) => child.selected);
+
+        return {
+          value: parentValue,
+          label: resolveTagLabel(group.value, locale),
+          count: tagStats[parentValue] ?? 0,
+          selected: parentSelected,
+          expanded: expandedParents.has(parentValue),
+          children,
+        };
+      }),
     [locale, tagStats, selectedTags, expandedParents]
   );
 
