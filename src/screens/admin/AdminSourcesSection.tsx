@@ -22,6 +22,11 @@ type AdminSourcesSectionProps = {
 
 type SourceStatus = "active" | "paused";
 
+type ParentGroupState = {
+  parentTag: ContentTag;
+  childTags: ContentTag[];
+};
+
 const EMPTY_TAGS: ContentTag[] = [];
 
 function normalizeHandle(value: string) {
@@ -50,26 +55,16 @@ function getSourceTags(source: TrustedSource): ContentTag[] {
   return normalized.length > 0 ? (normalized as ContentTag[]) : EMPTY_TAGS;
 }
 
-function getSelectedParentTag(tags: ContentTag[]): ContentTag | null {
-  for (const value of tags) {
-    if (isParentTag(value)) {
-      return value;
-    }
-  }
+function getParentTags(tags: ContentTag[]): ContentTag[] {
+  const directParents = tags.filter(isParentTag) as ContentTag[];
+  const parentsFromChildren = tags
+    .map((value) => getParentTag(value)?.value)
+    .filter(Boolean) as ContentTag[];
 
-  for (const value of tags) {
-    const parent = getParentTag(value);
-    if (parent) {
-      return parent.value as ContentTag;
-    }
-  }
-
-  return null;
+  return Array.from(new Set([...directParents, ...parentsFromChildren]));
 }
 
-function getSelectedChildTags(tags: ContentTag[], parentTag: ContentTag | null): ContentTag[] {
-  if (!parentTag) return EMPTY_TAGS;
-
+function getChildTagsForParent(tags: ContentTag[], parentTag: ContentTag): ContentTag[] {
   return tags.filter((value): value is ContentTag => {
     if (!isChildTag(value)) return false;
     const parent = getParentTag(value);
@@ -77,9 +72,16 @@ function getSelectedChildTags(tags: ContentTag[], parentTag: ContentTag | null):
   });
 }
 
-function buildTagPayload(parentTag: ContentTag | null, childTags: ContentTag[]) {
-  const nextValues = normalizeTagValues(parentTag ? [parentTag, ...childTags] : childTags);
-  return nextValues as ContentTag[];
+function getParentGroups(tags: ContentTag[]): ParentGroupState[] {
+  return getParentTags(tags).map((parentTag) => ({
+    parentTag,
+    childTags: getChildTagsForParent(tags, parentTag),
+  }));
+}
+
+function buildTagPayload(groups: ParentGroupState[]) {
+  const values = groups.flatMap((group) => [group.parentTag, ...group.childTags]);
+  return normalizeTagValues(values) as ContentTag[];
 }
 
 function getTagSearchText(source: TrustedSource) {
@@ -89,6 +91,11 @@ function getTagSearchText(source: TrustedSource) {
     .map((value) => [value, resolveTagLabel(value, "ru")].join(" "))
     .join(" ")
     .toLowerCase();
+}
+
+function getInitials(source: TrustedSource) {
+  const value = (source.title || source.handle || "?").trim();
+  return value.slice(0, 1).toUpperCase();
 }
 
 export function AdminSourcesSection({
@@ -108,20 +115,7 @@ export function AdminSourcesSection({
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
   const [message, setMessage] = useState<string | null>(null);
 
-  const selectedParentTag = useMemo(
-    () => getSelectedParentTag(selectedTags),
-    [selectedTags]
-  );
-
-  const selectedChildTags = useMemo(
-    () => getSelectedChildTags(selectedTags, selectedParentTag),
-    [selectedTags, selectedParentTag]
-  );
-
-  const availableChildTags = useMemo(() => {
-    if (!selectedParentTag) return EMPTY_TAGS;
-    return getRelatedChildTags(selectedParentTag).map((tag) => tag.value as ContentTag);
-  }, [selectedParentTag]);
+  const selectedParentGroups = useMemo(() => getParentGroups(selectedTags), [selectedTags]);
 
   const filteredSources = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -161,35 +155,49 @@ export function AdminSourcesSection({
     setSelectedTags([]);
   };
 
-  const selectParentTag = (parentTag: ContentTag) => {
+  const toggleParentTag = (parentTag: ContentTag) => {
     setSelectedTags((prev) => {
-      const currentParent = getSelectedParentTag(prev);
+      const groups = getParentGroups(prev);
+      const exists = groups.some((group) => group.parentTag === parentTag);
 
-      if (currentParent === parentTag) {
-        return [];
+      if (exists) {
+        return buildTagPayload(groups.filter((group) => group.parentTag !== parentTag));
       }
 
-      const prevChildren = getSelectedChildTags(prev, parentTag);
-      return buildTagPayload(parentTag, prevChildren);
+      return buildTagPayload([...groups, { parentTag, childTags: [] }]);
     });
   };
 
   const toggleChildTag = (childTag: ContentTag) => {
     setSelectedTags((prev) => {
-      const parent = getParentTag(childTag);
-      if (!parent) return prev;
+      const parentValue = getParentTag(childTag)?.value as ContentTag | undefined;
+      if (!parentValue) return prev;
 
-      const parentValue = parent.value as ContentTag;
-      const currentParent = getSelectedParentTag(prev);
-      const currentChildren = getSelectedChildTags(prev, parentValue);
-      const nextChildren = currentChildren.includes(childTag)
-        ? currentChildren.filter((value) => value !== childTag)
-        : [...currentChildren, childTag];
+      const groups = getParentGroups(prev);
+      const groupIndex = groups.findIndex((group) => group.parentTag === parentValue);
 
-      return buildTagPayload(
-        currentParent === parentValue ? currentParent : parentValue,
-        nextChildren
-      );
+      if (groupIndex === -1) {
+        return buildTagPayload([
+          ...groups,
+          {
+            parentTag: parentValue,
+            childTags: [childTag],
+          },
+        ]);
+      }
+
+      const nextGroups = [...groups];
+      const group = nextGroups[groupIndex];
+      const hasChild = group.childTags.includes(childTag);
+
+      nextGroups[groupIndex] = {
+        ...group,
+        childTags: hasChild
+          ? group.childTags.filter((value) => value !== childTag)
+          : [...group.childTags, childTag],
+      };
+
+      return buildTagPayload(nextGroups);
     });
   };
 
@@ -207,15 +215,16 @@ export function AdminSourcesSection({
     if (!telegramUserId) return;
 
     const normalizedHandle = normalizeHandle(handle);
-    const normalizedTags = buildTagPayload(selectedParentTag, selectedChildTags);
+    const normalizedTags = buildTagPayload(selectedParentGroups);
+    const parentTags = getParentTags(normalizedTags);
 
     if (!normalizedHandle) {
       setMessage("Укажи handle канала");
       return;
     }
 
-    if (!selectedParentTag) {
-      setMessage("Выбери родительский тег");
+    if (parentTags.length === 0) {
+      setMessage("Выбери хотя бы одну родительскую категорию");
       return;
     }
 
@@ -238,7 +247,7 @@ export function AdminSourcesSection({
             status,
             countryCode,
             tags: normalizedTags,
-            defaultTag: selectedParentTag,
+            defaultTag: parentTags[0],
           },
         }),
       });
@@ -300,7 +309,7 @@ export function AdminSourcesSection({
   return (
     <AdminSectionCard
       title="Каналы"
-      subtitle="Компактная сетка по выбранной стране. Здесь же редактирование, статусы и новая иерархия тегов."
+      subtitle="Здесь можно выбирать несколько родительских категорий сразу и при желании уточнять их подтегами."
       collapsible
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
@@ -362,24 +371,21 @@ export function AdminSourcesSection({
           </div>
 
           <div className="mt-4 rounded-[24px] border border-white/10 bg-[#151722] p-4">
-            <div className="mb-2 text-sm font-medium text-white">Родительский тег</div>
+            <div className="mb-2 text-sm font-medium text-white">Категории канала</div>
             <div className="mb-4 text-xs text-white/45">
-              Сначала выбери основную тему канала, потом при желании уточни её подтегами.
+              Здесь можно выбрать несколько родительских категорий сразу. Подтеги — это уже уточнения внутри каждой выбранной темы.
             </div>
 
             <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
               {SITE_TAG_GROUPS.map((group) => {
-                const isActive = selectedParentTag === group.value;
-                const childrenCount = selectedChildTags.filter((value) => {
-                  const parent = getParentTag(value);
-                  return parent?.value === group.value;
-                }).length;
+                const isActive = selectedParentGroups.some((item) => item.parentTag === group.value);
+                const childCount = selectedParentGroups.find((item) => item.parentTag === group.value)?.childTags.length || 0;
 
                 return (
                   <button
                     key={group.value}
                     type="button"
-                    onClick={() => selectParentTag(group.value as ContentTag)}
+                    onClick={() => toggleParentTag(group.value as ContentTag)}
                     className={`rounded-2xl border px-3 py-3 text-left transition ${
                       isActive
                         ? "border-white bg-white text-black"
@@ -390,13 +396,13 @@ export function AdminSourcesSection({
                       <span className="text-sm font-medium">
                         {resolveTagLabel(group.value, "ru") || group.value}
                       </span>
-                      {childrenCount > 0 ? (
+                      {childCount > 0 ? (
                         <span
                           className={`rounded-full px-2 py-0.5 text-[11px] ${
                             isActive ? "bg-black/10 text-black/70" : "bg-white/10 text-white/65"
                           }`}
                         >
-                          +{childrenCount}
+                          +{childCount}
                         </span>
                       ) : null}
                     </div>
@@ -405,57 +411,76 @@ export function AdminSourcesSection({
               })}
             </div>
 
-            {selectedParentTag ? (
-              <div className="mt-4 rounded-[20px] border border-white/10 bg-[#10121a] p-4">
-                <div className="mb-2 text-sm font-medium text-white">
-                  Подтеги · {resolveTagLabel(selectedParentTag, "ru")}
-                </div>
-                <div className="mb-3 text-xs text-white/45">
-                  Можно выбрать несколько уточнений внутри одной родительской темы.
-                </div>
+            {selectedParentGroups.length > 0 ? (
+              <div className="mt-4 space-y-3">
+                {selectedParentGroups.map((group) => {
+                  const childOptions = getRelatedChildTags(group.parentTag)
+                    .filter((tag) => !tag.value.endsWith("_all"))
+                    .map((tag) => tag.value as ContentTag);
 
-                <div className="flex flex-wrap gap-2">
-                  {availableChildTags.map((childTag) => {
-                    const isActive = selectedChildTags.includes(childTag);
+                  if (childOptions.length === 0) return null;
 
-                    return (
-                      <button
-                        key={childTag}
-                        type="button"
-                        onClick={() => toggleChildTag(childTag)}
-                        className={`rounded-full border px-3 py-2 text-sm transition ${
-                          isActive
-                            ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
-                            : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
-                        }`}
-                      >
-                        {resolveTagLabel(childTag, "ru") || childTag}
-                      </button>
-                    );
-                  })}
-                </div>
+                  return (
+                    <div
+                      key={group.parentTag}
+                      className="rounded-[20px] border border-white/10 bg-[#10121a] p-4"
+                    >
+                      <div className="mb-2 text-sm font-medium text-white">
+                        Подтеги · {resolveTagLabel(group.parentTag, "ru")}
+                      </div>
+                      <div className="mb-3 text-xs text-white/45">
+                        Здесь можно уточнить конкретно эту категорию. Кнопку «Все» убрал: выбранный родитель уже сам означает весь раздел.
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {childOptions.map((childTag) => {
+                          const isActive = group.childTags.includes(childTag);
+
+                          return (
+                            <button
+                              key={childTag}
+                              type="button"
+                              onClick={() => toggleChildTag(childTag)}
+                              className={`rounded-full border px-3 py-2 text-sm transition ${
+                                isActive
+                                  ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
+                                  : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
+                              }`}
+                            >
+                              {resolveTagLabel(childTag, "ru") || childTag}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             ) : null}
 
             <div className="mt-4 flex flex-wrap gap-2">
-              {selectedParentTag ? (
-                <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm text-white">
-                  {resolveTagLabel(selectedParentTag, "ru")}
-                </div>
+              {selectedParentGroups.length > 0 ? (
+                selectedParentGroups.flatMap((group) => [
+                  <div
+                    key={`parent-${group.parentTag}`}
+                    className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm text-white"
+                  >
+                    {resolveTagLabel(group.parentTag, "ru")}
+                  </div>,
+                  ...group.childTags.map((tag) => (
+                    <div
+                      key={tag}
+                      className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-sm text-[#d9f3ff]"
+                    >
+                      {resolveTagLabel(tag, "ru")}
+                    </div>
+                  )),
+                ])
               ) : (
                 <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-sm text-white/40">
-                  Родительский тег не выбран
+                  Категории ещё не выбраны
                 </div>
               )}
-
-              {selectedChildTags.map((tag) => (
-                <div
-                  key={tag}
-                  className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-sm text-[#d9f3ff]"
-                >
-                  {resolveTagLabel(tag, "ru")}
-                </div>
-              ))}
             </div>
           </div>
 
@@ -493,30 +518,46 @@ export function AdminSourcesSection({
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {filteredSources.map((source) => {
               const tags = getSourceTags(source);
-              const sourceParentTag = getSelectedParentTag(tags);
-              const sourceChildTags = getSelectedChildTags(tags, sourceParentTag);
+              const groups = getParentGroups(tags);
 
               return (
                 <div
                   key={source.id}
                   className="rounded-[24px] border border-white/10 bg-[#151722] p-4"
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="min-w-0">
-                      <div className="truncate text-base font-semibold text-white">
-                        {source.title || "Без названия"}
-                      </div>
-                      <div className="mt-1 truncate text-sm text-white/55">@{source.handle}</div>
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white">
+                      {source.avatarUrl ? (
+                        <img
+                          src={source.avatarUrl}
+                          alt={source.title || source.handle}
+                          className="h-full w-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <span>{getInitials(source)}</span>
+                      )}
                     </div>
 
-                    <div
-                      className={`rounded-full px-3 py-1 text-xs ${
-                        source.status === "active"
-                          ? "bg-emerald-500/15 text-emerald-300"
-                          : "bg-white/10 text-white/55"
-                      }`}
-                    >
-                      {source.status === "active" ? "активен" : "пауза"}
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <div className="truncate text-base font-semibold text-white">
+                            {source.title || "Без названия"}
+                          </div>
+                          <div className="mt-1 truncate text-sm text-white/55">@{source.handle}</div>
+                        </div>
+
+                        <div
+                          className={`rounded-full px-3 py-1 text-xs ${
+                            source.status === "active"
+                              ? "bg-emerald-500/15 text-emerald-300"
+                              : "bg-white/10 text-white/55"
+                          }`}
+                        >
+                          {source.status === "active" ? "активен" : "пауза"}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -525,22 +566,24 @@ export function AdminSourcesSection({
                   ) : null}
 
                   <div className="mt-3 flex flex-wrap gap-2">
-                    {sourceParentTag ? (
-                      <div className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white">
-                        {resolveTagLabel(sourceParentTag, "ru")}
-                      </div>
-                    ) : null}
-
-                    {sourceChildTags.map((tag) => (
+                    {groups.flatMap((group) => [
                       <div
-                        key={tag}
-                        className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1 text-xs text-[#d9f3ff]"
+                        key={`card-parent-${group.parentTag}`}
+                        className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white"
                       >
-                        {resolveTagLabel(tag, "ru")}
-                      </div>
-                    ))}
+                        {resolveTagLabel(group.parentTag, "ru")}
+                      </div>,
+                      ...group.childTags.map((tag) => (
+                        <div
+                          key={`card-child-${tag}`}
+                          className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1 text-xs text-[#d9f3ff]"
+                        >
+                          {resolveTagLabel(tag, "ru")}
+                        </div>
+                      )),
+                    ])}
 
-                    {!sourceParentTag && tags.length === 0 ? (
+                    {groups.length === 0 ? (
                       <div className="rounded-full border border-dashed border-white/10 px-3 py-1 text-xs text-white/35">
                         без тегов
                       </div>
