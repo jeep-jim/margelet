@@ -1,6 +1,47 @@
 {
-  "updatedAt": "2026-04-21T23:23:02.800Z",
+  "updatedAt": "2026-04-22T01:07:11.519Z",
   "posts": [
+    {
+      "id": 3026526327,
+      "postUrl": "https://t.me/molyanov_blog/4543?single",
+      "source": {
+        "title": "Молянов",
+        "handle": "molyanov_blog",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/M3dun1tvUZGSMLIlh1-fubwladNNFydLSwAIvP8rNjqBHC4KrW6KMKOn4iiPtqkciwn9I7FwibwSzAmWag47E6dbzEYxvxM6gVK1q4CHRYt5GtamNVDcRZ3A3YvYBZshP3DnjtG1cRIs0ALU4OTI_LYXiQgEeOh2JAwqyRWWOGNSSiRfwJKI_KFULqLM0eZyJw6hkhaLSQrMVa4cMXWMDtb7qft2z2GLUaTMUWvyHuQ4tor4HO4xnH0wiSp-xCABQoNQFV2s6zBy-KBlinRJas4QlMf3qfHsdTpo4zevx8UM1ulQDZfXcPDEAip0rvSTSabDBTwhmhl2bGdwZK183A.jpg"
+      },
+      "sourceId": "ru:molyanov_blog",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Блиц совет для тех, кто постоянно выходит за лимиты в Клоде, Кодексе и тд\n\nТокенизация английского в 1,5-2 раза эффективнее, чем русского. Иначе говоря, русский язык жрет в 1,5-2 раза больше контекста\n\nПоэтому в идеале общайтесь с агентом на английском.\n\nА если нет, то хотя бы всю внутреннюю документацию просите его на английском вести. Project knowledge, скиллы, claude md, memory, беклоги, планы, промты для сабагентов, комменты в коде и так далее\n\nУ меня прям первой строчкой в claude md написано, что не важно, на каком языке я пишу, документацию на инглише ведем железно\n\nИ гуглить его лучше гонять по англоязычным источникам, если применимо к вашим задачам",
+      "links": [],
+      "createdAt": "2026-04-22T01:07:11.191Z",
+      "expiresAt": "2026-04-23T01:07:11.191Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-22T01:07:11.191Z",
+      "tag": "people",
+      "tags": [
+        "people"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-22T01:07:11.191Z"
+      }
+    },
     {
       "id": 3385753873,
       "postUrl": "https://t.me/technomedia/11487?single",
@@ -396,7 +437,7 @@
       "createdAt": "2026-04-21T21:32:44.110Z",
       "expiresAt": "2026-04-22T21:32:44.110Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T21:32:44.110Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:05.889Z",
       "tag": "animals",
       "tags": [
         "animals",
@@ -684,7 +725,7 @@
       "createdAt": "2026-04-21T20:34:12.729Z",
       "expiresAt": "2026-04-22T20:34:12.729Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:12.729Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:10.473Z",
       "tag": "memes",
       "tags": [
         "memes"
@@ -712,7 +753,7 @@
         "title": "Apple Media",
         "handle": "media_apple",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/uYNGXCSvmKmzfnv4SIa33U54Kw1InAZc9xB_6F_Efb81i3foeyKmdwBIeEMvC0NLurfHON9Gc77tSbkppOa5tVsemOSXztyPUJFcKR0TcEX0ExcZKXmuKWqyXvaRWYy_UbUpuHYjSyM6z8vnvZPVlAuSEr1K2FZUWiMuUxjc9R2pJ0pGkj9lCR6cfAph431x1GTd1ul_2crBVufIVAZMYQWUSej1qXXoJ_I-_tSNlsRqhyot06o9koYwpSt1fuIeGok8Ae9kcV22NrrA4TWPVwSYFAX0tU0jSsCKUbdpwexwZR9buS9_JFaxCbrw5WsuBR2asRBkrIU5qPeaswaK6w.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Al5qdqnP1BAuVVXh1NZ3X8PdH4E3TOFYwlWLO1lSVwMd_hHtQraGBBBiqcjR3G08qtp2G6NYVZWfyLIekcRcNjXh-3J8QjA-SPPbmfqflBAVbJ9TgVqGDYqwDHFjGToW8-ghu5Ud4j3hd5pJm-5N68yXjTxB1zMm--6eIFtOCG2uSYYonlNaQqxRpxNKmc5mKKR98pUY70hexCCzMjvxaylHTisoInfZEOEseDwBUkDcRuXk9pdU68SQ9WL31fhHnvOM0l3iT5WDUC-QT4nK_fcciS0HXHAphokVPYO_74WrLPS9i7RJkLxdI-Jjwjo1kmNWmciCSwoffOCocZ3HQw.jpg"
       },
       "sourceId": "ru:media_apple",
       "sourceCountryCode": "ru",
@@ -736,7 +777,7 @@
       "createdAt": "2026-04-21T20:34:12.166Z",
       "expiresAt": "2026-04-22T20:34:12.166Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:12.166Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:09.691Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -1346,7 +1387,7 @@
       "createdAt": "2026-04-21T15:42:06.149Z",
       "expiresAt": "2026-04-22T15:42:06.149Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T19:37:28.058Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:07.922Z",
       "tag": "marketing",
       "tags": [
         "marketing",
@@ -1405,7 +1446,7 @@
       "createdAt": "2026-04-21T14:57:54.268Z",
       "expiresAt": "2026-04-22T14:57:54.268Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T18:47:36.394Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:05.083Z",
       "tag": "telegram",
       "tags": [
         "telegram"
@@ -1605,7 +1646,7 @@
       "createdAt": "2026-04-21T14:57:27.868Z",
       "expiresAt": "2026-04-22T14:57:27.868Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T18:47:32.136Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:01.370Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1624,6 +1665,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-21T14:57:27.868Z"
+      }
+    },
+    {
+      "id": 1346558078,
+      "postUrl": "https://t.me/molyanov_blog/4542?single",
+      "source": {
+        "title": "Молянов",
+        "handle": "molyanov_blog",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/M3dun1tvUZGSMLIlh1-fubwladNNFydLSwAIvP8rNjqBHC4KrW6KMKOn4iiPtqkciwn9I7FwibwSzAmWag47E6dbzEYxvxM6gVK1q4CHRYt5GtamNVDcRZ3A3YvYBZshP3DnjtG1cRIs0ALU4OTI_LYXiQgEeOh2JAwqyRWWOGNSSiRfwJKI_KFULqLM0eZyJw6hkhaLSQrMVa4cMXWMDtb7qft2z2GLUaTMUWvyHuQ4tor4HO4xnH0wiSp-xCABQoNQFV2s6zBy-KBlinRJas4QlMf3qfHsdTpo4zevx8UM1ulQDZfXcPDEAip0rvSTSabDBTwhmhl2bGdwZK183A.jpg"
+      },
+      "sourceId": "ru:molyanov_blog",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Однажды кто-то в интернете написал статью «лучшие смм-агентства» и включил в нее нас. Не знаю, зачем, мы вообще не про смм, но включил\n\nПо какой-то причине чатгпт считает эту счастью верхом объективности, и постоянно на нее ссылается\n\nКогда его просят посоветовать смм-агентство, он довольно часто советует нас со ссылкой на эту статью \n\nВ итоге мы каждый месяц получаем несколько лидов на смм, и все как один рассказывают историю с чатгпт и этой статьей\n\nКороче, хотите, чтобы нейронки вас рекомендовали — засрите все медиа статьями-подборками с собой любимыми.",
+      "links": [],
+      "createdAt": "2026-04-22T01:07:11.191Z",
+      "expiresAt": "2026-04-23T01:07:11.191Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-22T01:07:11.191Z",
+      "tag": "people",
+      "tags": [
+        "people"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-22T01:07:11.191Z"
       }
     },
     {
@@ -1975,7 +2057,7 @@
       "createdAt": "2026-04-21T19:37:25.737Z",
       "expiresAt": "2026-04-22T19:37:25.737Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T19:37:25.737Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:05.889Z",
       "tag": "animals",
       "tags": [
         "animals",
@@ -2293,7 +2375,7 @@
         "title": "Apple Media",
         "handle": "media_apple",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/uYNGXCSvmKmzfnv4SIa33U54Kw1InAZc9xB_6F_Efb81i3foeyKmdwBIeEMvC0NLurfHON9Gc77tSbkppOa5tVsemOSXztyPUJFcKR0TcEX0ExcZKXmuKWqyXvaRWYy_UbUpuHYjSyM6z8vnvZPVlAuSEr1K2FZUWiMuUxjc9R2pJ0pGkj9lCR6cfAph431x1GTd1ul_2crBVufIVAZMYQWUSej1qXXoJ_I-_tSNlsRqhyot06o9koYwpSt1fuIeGok8Ae9kcV22NrrA4TWPVwSYFAX0tU0jSsCKUbdpwexwZR9buS9_JFaxCbrw5WsuBR2asRBkrIU5qPeaswaK6w.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Al5qdqnP1BAuVVXh1NZ3X8PdH4E3TOFYwlWLO1lSVwMd_hHtQraGBBBiqcjR3G08qtp2G6NYVZWfyLIekcRcNjXh-3J8QjA-SPPbmfqflBAVbJ9TgVqGDYqwDHFjGToW8-ghu5Ud4j3hd5pJm-5N68yXjTxB1zMm--6eIFtOCG2uSYYonlNaQqxRpxNKmc5mKKR98pUY70hexCCzMjvxaylHTisoInfZEOEseDwBUkDcRuXk9pdU68SQ9WL31fhHnvOM0l3iT5WDUC-QT4nK_fcciS0HXHAphokVPYO_74WrLPS9i7RJkLxdI-Jjwjo1kmNWmciCSwoffOCocZ3HQw.jpg"
       },
       "sourceId": "ru:media_apple",
       "sourceCountryCode": "ru",
@@ -2317,7 +2399,7 @@
       "createdAt": "2026-04-21T20:34:12.166Z",
       "expiresAt": "2026-04-22T20:34:12.166Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:12.166Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:09.691Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -3523,7 +3605,7 @@
       "createdAt": "2026-04-21T14:48:11.590Z",
       "expiresAt": "2026-04-22T14:48:11.590Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:12.729Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:10.473Z",
       "tag": "memes",
       "tags": [
         "memes"
@@ -3551,7 +3633,7 @@
         "title": "Apple Media",
         "handle": "media_apple",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/uYNGXCSvmKmzfnv4SIa33U54Kw1InAZc9xB_6F_Efb81i3foeyKmdwBIeEMvC0NLurfHON9Gc77tSbkppOa5tVsemOSXztyPUJFcKR0TcEX0ExcZKXmuKWqyXvaRWYy_UbUpuHYjSyM6z8vnvZPVlAuSEr1K2FZUWiMuUxjc9R2pJ0pGkj9lCR6cfAph431x1GTd1ul_2crBVufIVAZMYQWUSej1qXXoJ_I-_tSNlsRqhyot06o9koYwpSt1fuIeGok8Ae9kcV22NrrA4TWPVwSYFAX0tU0jSsCKUbdpwexwZR9buS9_JFaxCbrw5WsuBR2asRBkrIU5qPeaswaK6w.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Al5qdqnP1BAuVVXh1NZ3X8PdH4E3TOFYwlWLO1lSVwMd_hHtQraGBBBiqcjR3G08qtp2G6NYVZWfyLIekcRcNjXh-3J8QjA-SPPbmfqflBAVbJ9TgVqGDYqwDHFjGToW8-ghu5Ud4j3hd5pJm-5N68yXjTxB1zMm--6eIFtOCG2uSYYonlNaQqxRpxNKmc5mKKR98pUY70hexCCzMjvxaylHTisoInfZEOEseDwBUkDcRuXk9pdU68SQ9WL31fhHnvOM0l3iT5WDUC-QT4nK_fcciS0HXHAphokVPYO_74WrLPS9i7RJkLxdI-Jjwjo1kmNWmciCSwoffOCocZ3HQw.jpg"
       },
       "sourceId": "ru:media_apple",
       "sourceCountryCode": "ru",
@@ -3715,7 +3797,7 @@
       "createdAt": "2026-04-21T16:41:44.640Z",
       "expiresAt": "2026-04-22T16:41:44.640Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T16:41:44.640Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:03.571Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4703,7 +4785,7 @@
         "title": "Apple Media",
         "handle": "media_apple",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/uYNGXCSvmKmzfnv4SIa33U54Kw1InAZc9xB_6F_Efb81i3foeyKmdwBIeEMvC0NLurfHON9Gc77tSbkppOa5tVsemOSXztyPUJFcKR0TcEX0ExcZKXmuKWqyXvaRWYy_UbUpuHYjSyM6z8vnvZPVlAuSEr1K2FZUWiMuUxjc9R2pJ0pGkj9lCR6cfAph431x1GTd1ul_2crBVufIVAZMYQWUSej1qXXoJ_I-_tSNlsRqhyot06o9koYwpSt1fuIeGok8Ae9kcV22NrrA4TWPVwSYFAX0tU0jSsCKUbdpwexwZR9buS9_JFaxCbrw5WsuBR2asRBkrIU5qPeaswaK6w.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Al5qdqnP1BAuVVXh1NZ3X8PdH4E3TOFYwlWLO1lSVwMd_hHtQraGBBBiqcjR3G08qtp2G6NYVZWfyLIekcRcNjXh-3J8QjA-SPPbmfqflBAVbJ9TgVqGDYqwDHFjGToW8-ghu5Ud4j3hd5pJm-5N68yXjTxB1zMm--6eIFtOCG2uSYYonlNaQqxRpxNKmc5mKKR98pUY70hexCCzMjvxaylHTisoInfZEOEseDwBUkDcRuXk9pdU68SQ9WL31fhHnvOM0l3iT5WDUC-QT4nK_fcciS0HXHAphokVPYO_74WrLPS9i7RJkLxdI-Jjwjo1kmNWmciCSwoffOCocZ3HQw.jpg"
       },
       "sourceId": "ru:media_apple",
       "sourceCountryCode": "ru",
@@ -4839,7 +4921,7 @@
       "createdAt": "2026-04-21T14:48:08.972Z",
       "expiresAt": "2026-04-22T14:48:08.972Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T19:37:26.760Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:06.926Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -5797,7 +5879,7 @@
         "title": "Apple Media",
         "handle": "media_apple",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/uYNGXCSvmKmzfnv4SIa33U54Kw1InAZc9xB_6F_Efb81i3foeyKmdwBIeEMvC0NLurfHON9Gc77tSbkppOa5tVsemOSXztyPUJFcKR0TcEX0ExcZKXmuKWqyXvaRWYy_UbUpuHYjSyM6z8vnvZPVlAuSEr1K2FZUWiMuUxjc9R2pJ0pGkj9lCR6cfAph431x1GTd1ul_2crBVufIVAZMYQWUSej1qXXoJ_I-_tSNlsRqhyot06o9koYwpSt1fuIeGok8Ae9kcV22NrrA4TWPVwSYFAX0tU0jSsCKUbdpwexwZR9buS9_JFaxCbrw5WsuBR2asRBkrIU5qPeaswaK6w.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Al5qdqnP1BAuVVXh1NZ3X8PdH4E3TOFYwlWLO1lSVwMd_hHtQraGBBBiqcjR3G08qtp2G6NYVZWfyLIekcRcNjXh-3J8QjA-SPPbmfqflBAVbJ9TgVqGDYqwDHFjGToW8-ghu5Ud4j3hd5pJm-5N68yXjTxB1zMm--6eIFtOCG2uSYYonlNaQqxRpxNKmc5mKKR98pUY70hexCCzMjvxaylHTisoInfZEOEseDwBUkDcRuXk9pdU68SQ9WL31fhHnvOM0l3iT5WDUC-QT4nK_fcciS0HXHAphokVPYO_74WrLPS9i7RJkLxdI-Jjwjo1kmNWmciCSwoffOCocZ3HQw.jpg"
       },
       "sourceId": "ru:media_apple",
       "sourceCountryCode": "ru",
@@ -5823,7 +5905,7 @@
       "createdAt": "2026-04-21T14:48:11.283Z",
       "expiresAt": "2026-04-22T14:48:11.283Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:12.166Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:09.691Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -5922,7 +6004,7 @@
       "createdAt": "2026-04-21T15:42:04.276Z",
       "expiresAt": "2026-04-22T15:42:04.276Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T15:42:04.276Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:03.571Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5979,7 +6061,7 @@
       "createdAt": "2026-04-21T17:44:10.553Z",
       "expiresAt": "2026-04-22T17:44:10.553Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T17:44:10.553Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:08.367Z",
       "tag": "news",
       "tags": [
         "news"
@@ -7948,7 +8030,7 @@
       "createdAt": "2026-04-21T14:57:34.140Z",
       "expiresAt": "2026-04-22T14:57:34.140Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:09.592Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:02.839Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -8862,7 +8944,7 @@
       "createdAt": "2026-04-21T14:57:34.140Z",
       "expiresAt": "2026-04-22T14:57:34.140Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:09.592Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:02.839Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -9512,7 +9594,7 @@
       "createdAt": "2026-04-21T14:48:10.288Z",
       "expiresAt": "2026-04-22T14:48:10.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T19:37:28.540Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:08.367Z",
       "tag": "news",
       "tags": [
         "news"
@@ -9712,7 +9794,7 @@
       "createdAt": "2026-04-21T14:57:34.140Z",
       "expiresAt": "2026-04-22T14:57:34.140Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:09.592Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:02.839Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -10931,7 +11013,7 @@
       "createdAt": "2026-04-21T14:57:31.491Z",
       "expiresAt": "2026-04-22T14:57:31.491Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T18:47:32.902Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:02.083Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -11041,7 +11123,7 @@
       "createdAt": "2026-04-21T14:48:10.288Z",
       "expiresAt": "2026-04-22T14:48:10.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T19:37:28.540Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:08.367Z",
       "tag": "news",
       "tags": [
         "news"
@@ -12009,7 +12091,7 @@
       "createdAt": "2026-04-21T14:57:31.491Z",
       "expiresAt": "2026-04-22T14:57:31.491Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T19:37:17.952Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:02.083Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -12439,7 +12521,7 @@
       "createdAt": "2026-04-21T14:57:31.491Z",
       "expiresAt": "2026-04-22T14:57:31.491Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T19:37:17.952Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:02.083Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -12660,7 +12742,7 @@
       "createdAt": "2026-04-21T14:57:51.915Z",
       "expiresAt": "2026-04-22T14:57:51.915Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:10.685Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:04.341Z",
       "tag": "politics",
       "tags": [
         "politics",
@@ -13036,7 +13118,7 @@
       "createdAt": "2026-04-21T14:57:51.915Z",
       "expiresAt": "2026-04-22T14:57:51.915Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:10.685Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:04.341Z",
       "tag": "politics",
       "tags": [
         "politics",
@@ -13417,7 +13499,7 @@
       "createdAt": "2026-04-21T14:57:51.915Z",
       "expiresAt": "2026-04-22T14:57:51.915Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T20:34:10.685Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:04.341Z",
       "tag": "politics",
       "tags": [
         "politics",
@@ -14508,7 +14590,7 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/7086200873.mp4?token=djwDb7PZ76vLwpc8tlQ97jdbU_rBHYkwnY0dROJIOwCkL4t2PEg_G2wT6hhF-f23qJ62BEvFKZTbl3DZqGh-BzOFpxhov-TQ9jGNoTUOk65YKrNAyzVRMqi_LhyfGDyo1M6j-4_Bp5crYUvg4buUDE6N2S0kB_3VI_kHgSsGb2nCpJu0NHmfLw_4xHqyUOiYhWodyiAQkckz8d_d8UYaHwPIV8ti6YKyYqUG0mQwW1VQqdF8vWbjsTyCvO8_Py6g6LbsAgw8_wkflvTkXL75-oe_v24ZkCX2UmJ8ZRpugXyzxXlWa6kum_Y36rB5SJG3ut1vebFRbmk6MgvQFrVVPw",
+          "url": "https://cdn1.telesco.pe/file/7086200873.mp4?token=V9-W3CkcmwgasP7gacntXmRvQ_x_ZW1diVfso4CnxZCOXXxXouKv4hoHiNW8bnzmqL4acVybtNhrAdhGkKQeXaQxShhfYtaFfywTF6aJbT2RdJBqm_JvphunCK_ayCy3nWT7lv4tDN06omb3KgUNXCplmGa96r3HQec_c1NVEqVAUhq6AQWUXFkHMG0tU-M_My6wmc5wCovsDJIxGW1-K25g_VCz8Op8xnRpBk7LmpW__KkjKqh9eeN1gY4UVk6m9NUt_NGsw-4UXNfGvsZJZwN2QHEMC6XbQENezEX6nI1Ah-tsiAyqdLWkL9PwQD93rcjUz8sbNh4ISQC-MK8umg",
           "poster": null,
           "mimeType": "video/mp4"
         }
@@ -14525,7 +14607,7 @@
       "createdAt": "2026-04-21T14:57:54.268Z",
       "expiresAt": "2026-04-22T14:57:54.268Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T14:57:54.268Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:05.083Z",
       "tag": "telegram",
       "tags": [
         "telegram"
@@ -14624,7 +14706,7 @@
       "createdAt": "2026-04-21T14:57:27.868Z",
       "expiresAt": "2026-04-22T14:57:27.868Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T14:57:27.868Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:01.370Z",
       "tag": "other",
       "tags": [
         "other"
@@ -14808,7 +14890,7 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/3dcb6709e7.mp4?token=m4pLVv9MfBbuDzjP04Fvr064FH1aodJqAS7djiAYcxECDCzy1eX9U-m_P4bk4zRDeBT53WVsGqdbMDp859CXypoH2odKSio3Z9kuGf16TiEOP14j92hg5vIBs8BqBHlK1JCDwDABMDxNK3i7jH55QQgjn2vH3DF2sTHMXwTlNN8bE3v4fqQDDeu3Cr-1dr0Pk4mkFeyliQ8cTlljdeU-fwk4sXng3Bo85MyxbMLfL_1B3b8feeRV6wiyputt__kAObq7fDEsNBKnZMYpMoP-FwFbsKI1qnAP4QNCkgrRwu69DDE1nxzMmdVbhe4DKEdU1fKtyfeOwkSVYpfetF7rFg",
+          "url": "https://cdn1.telesco.pe/file/3dcb6709e7.mp4?token=V2MUgnqcYmDNfm1m2CQZItjuPsr3q4lGv1nhhW8o_-thFXQRynzr2FJ3k0Vgdf-YumEcwpWUsMp4IfFHK7XBO4-R6Z0DYaF9nJM-o3khmxtFpa7O345E74QTl8vNr4YLEkxXHHEJXNQM0HtNSqzUpKdlWQVYbMgHSSLKKjA4u0f-meecFPGGqz9CiI-_FfyAOeiIA734geAhJQTC4bZ5IXw8DFC_CHCrs1UF_aBHSMmx_NllmGHRM3RHIVChgrKPqO_Ax2EuStTfgDaTKx7zEwek4nEkANVPz9IrAgphiMi5-g228eSnSEwNNjOnlVQ4vWh3adXuMuVGL7o3IH6DnQ",
           "poster": null,
           "mimeType": "video/mp4"
         }
@@ -14820,7 +14902,7 @@
       "createdAt": "2026-04-21T14:57:54.268Z",
       "expiresAt": "2026-04-22T14:57:54.268Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T14:57:54.268Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:05.083Z",
       "tag": "telegram",
       "tags": [
         "telegram"
@@ -14927,7 +15009,7 @@
       "createdAt": "2026-04-21T14:57:27.868Z",
       "expiresAt": "2026-04-22T14:57:27.868Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T14:57:27.868Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:01.370Z",
       "tag": "other",
       "tags": [
         "other"
@@ -15485,7 +15567,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/FBogHxzJwsYrKVGuUz1_13Otzi6JYRTmkBh2ol0Fz-u0iU7ckTU3utbqBFMWGwV_6hRUL-NUtOL5K-FaeI4kXAMFvgDtCvaZ3xnJmIFRzupAkS7vQGsOEJSnuEJT1pXUv5iOoENgY0kx4qEqG4-f1-Rs1AJa0YLAwx_4xo1WtX6MWSi0pBqEWF4T5o5fiMTHJTsb6cFdYkkpRmv_T8Cd-aAdJPf2g11QGO5MtVGMmZMjoZLih43RRRMaN9Xqq5AU4QUZhXO6tnH6CoV-J69dn5Q7Xd01nrj-CHIZ5_hDCdqVJoKv9jQ6TrrYoYh1T_tTW5k1t_U2hiki3Q7nFVn8fw.jpg"
+          "url": "https://cdn4.telesco.pe/file/uQqqW067mfX0kZaXPyBOYHMHoDbyN92Ic04m033sybI2dmR5qsJEYERq3d9UVlap900RSQhxailOOCoGk-7Cso0VtqcF5VrlwyqQRYPN7jEh7URBjQkMx99JLPnoHEztRhf9nvWlHle1h3SC3yDdvXnxot2fVC2N_Uy9BzwSxcnDByXVrqQrrvcpieclOGGkOfykoz3Rvm6Yx7THerjpwXfeG7EjQyd6RwkEcUem4dHkBfmDtzrY7ZbO5Qz95ee2GRw1TACCnkHbLGyvR9AAED8bzKGxMp1V_bJJORefLga5o9DZ8s4UXXQ_kOL_tnGvi87YBn1hLUtbM7CtMwfrNQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -15495,7 +15577,7 @@
       "createdAt": "2026-04-21T14:57:36.107Z",
       "expiresAt": "2026-04-22T14:57:36.107Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-21T14:57:36.107Z",
+      "mediaRefreshedAt": "2026-04-22T01:07:03.571Z",
       "tag": "other",
       "tags": [
         "other"
