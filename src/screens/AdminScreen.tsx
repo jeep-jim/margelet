@@ -230,7 +230,6 @@ export function AdminScreen({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           telegramUserId,
-          countryCode: selectedCountryCode,
         }),
       });
 

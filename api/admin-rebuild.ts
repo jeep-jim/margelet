@@ -42,11 +42,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(403).json({ ok: false, error: "Access denied" });
     }
 
-    const countryCode = (asString(body.countryCode).toLowerCase() || null) as CountryCode | null;
     const result = await rebuildFeedFromSources({
-      countryCode,
-      forceFullCountryScan: Boolean(countryCode),
-    });
+      countryCode: null,
+      forceFullCountryScan: false,
+    });    
 
     return res.status(200).json({ ok: true, ...result });
   } catch (error) {
