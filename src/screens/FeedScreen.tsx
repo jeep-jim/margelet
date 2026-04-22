@@ -2,6 +2,7 @@ import { Bell } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "../types/app";
 import type { ContentTag, IngestedPost } from "../types/app";
+import { getParentTag, isChildTag, isParentTag } from "../lib/tag-utils";
 import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
@@ -570,6 +571,80 @@ export function FeedScreen({
     });
   }, []);
 
+  const tagStats = useMemo(() => {
+    let list = [...safePosts];
+
+    const selectedCountries = feedSettings.countries.map((item) => item.toLowerCase());
+    if (selectedCountries.length > 0) {
+      list = list.filter((post) =>
+        selectedCountries.includes(
+          normalizeCountryCode(post.sourceCountryCode, locale)
+        )
+      );
+    }
+
+    if (feedSettings.mediaMode !== "all") {
+      list = list.filter((post) => {
+        const detectedMode = detectPostMediaMode(post);
+        if (feedSettings.mediaMode === "text") return detectedMode === "text";
+        if (feedSettings.mediaMode === "photo") return detectedMode === "photo";
+        if (feedSettings.mediaMode === "video") return detectedMode === "video";
+        return true;
+      });
+    }
+
+    const q = searchQuery.trim().toLowerCase();
+
+    if (q) {
+      list = list.filter((post) => {
+        const haystack = [
+          post.source.title,
+          post.source.handle,
+          post.text,
+          post.postUrl,
+          post.tag,
+          ...getResolvedTags(post),
+        ]
+          .join(" ")
+          .toLowerCase();
+
+        return haystack.includes(q);
+      });
+    }
+
+    const counts: Partial<Record<ContentTag, number>> = {};
+
+    for (const post of list) {
+      const postTags = getResolvedTags(post);
+      const seenParents = new Set<ContentTag>();
+      const seenChildren = new Set<ContentTag>();
+
+      for (const tag of postTags) {
+        if (isParentTag(tag)) {
+          seenParents.add(tag);
+        }
+
+        if (isChildTag(tag)) {
+          seenChildren.add(tag);
+          const parent = getParentTag(tag);
+          if (parent?.value) {
+            seenParents.add(parent.value as ContentTag);
+          }
+        }
+      }
+
+      for (const tag of seenParents) {
+        counts[tag] = (counts[tag] ?? 0) + 1;
+      }
+
+      for (const tag of seenChildren) {
+        counts[tag] = (counts[tag] ?? 0) + 1;
+      }
+    }
+
+    return counts;
+  }, [safePosts, feedSettings, searchQuery, locale]);
+
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
 
@@ -790,6 +865,7 @@ export function FeedScreen({
         tagsOpen={tagsOpen}
         setTagsOpen={setTagsOpen}
         resultsCount={visiblePosts.length}
+        tagStats={tagStats}
       />
 
       {!tagsOpen ? (

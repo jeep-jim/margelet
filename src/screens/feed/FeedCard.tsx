@@ -1,9 +1,10 @@
-import { ExternalLink, MoreVertical } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ChevronDown, ExternalLink, MoreVertical } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { FeedCardProps } from "./feed.types";
 import { FeedMoreMenu } from "./FeedMoreMenu";
 import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
+import { FeedTagMenu } from "./FeedTagMenu";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
 import {
@@ -22,21 +23,49 @@ function TagChips({
   primaryTag: string;
   secondaryTags: string[];
 }) {
-  return (
-    <div className="relative z-10 flex flex-wrap items-center gap-2">
-      <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
-        {primaryTag}
-      </div>
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [anchorRect, setAnchorRect] = useState<{ top: number; left: number; width: number } | null>(null);
 
-      {secondaryTags.map((tag) => (
-        <div
-          key={tag}
-          className="pointer-events-none rounded-full border border-soft bg-app px-3 py-1 text-[11px] font-medium text-secondary"
-        >
-          {tag}
-        </div>
-      ))}
-    </div>
+  const allTags = useMemo(() => [primaryTag, ...secondaryTags], [primaryTag, secondaryTags]);
+  const extraCount = Math.max(0, allTags.length - 1);
+
+  return (
+    <>
+      <button
+        ref={triggerRef}
+        type="button"
+        onClick={(event) => {
+          event.stopPropagation();
+
+          if (isOpen) {
+            setIsOpen(false);
+            return;
+          }
+
+          const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
+          setAnchorRect({
+            top: rect.bottom,
+            left: rect.left,
+            width: rect.width,
+          });
+          setIsOpen(true);
+        }}
+        className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[11px] font-medium text-primary transition hover:bg-app"
+      >
+        <span className="truncate">{primaryTag}</span>
+        {extraCount > 0 ? <span className="shrink-0 text-secondary">+{extraCount}</span> : null}
+        <ChevronDown className="h-3.5 w-3.5 shrink-0 text-secondary" />
+      </button>
+
+      {isOpen ? (
+        <FeedTagMenu
+          tags={allTags}
+          anchorRect={anchorRect}
+          onRequestClose={() => setIsOpen(false)}
+        />
+      ) : null}
+    </>
   );
 }
 

@@ -377,7 +377,7 @@ export const SITE_TAG_GROUPS: SiteTagGroup[] = [
   {
     ...tag("auto", "🚙", "Транспорт", "Transport"),
     children: [
-      tag("auto", "🚗", "Авто", "Auto"),
+      tag("transport_auto", "🚗", "Авто", "Auto"),
       tag("transport_moto", "🏍️", "Мото", "Moto"),
       tag("transport_other", "🚚", "Другой транспорт", "Other Transport"),
       tag("transport_reviews", "🧾", "Обзоры", "Reviews"),
