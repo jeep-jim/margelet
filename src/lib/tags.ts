@@ -37,62 +37,6 @@ function tag(value: string, emoji: string, ru: string, en?: string): SiteTag {
   };
 }
 
-/**
- * Текущий плоский список.
- * Его сохраняем совместимым, чтобы не ломать существующий UI прямо сейчас.
- * Позже UI переведём на SITE_TAG_GROUPS.
- */
-export const SITE_TAGS: SiteTag[] = [
-  tag("other", "☝️", "Другое", "Other"),
-  tag("news", "📰", "Новости", "News"),
-  tag("politics", "🏛️", "Политика", "Politics"),
-  tag("war", "🎖️", "Война", "War"),
-  tag("economy", "📈", "Экономика", "Economy"),
-  tag("business", "💼", "Бизнес", "Business"),
-  tag("finance", "💰", "Финансы", "Finance"),
-  tag("crypto", "₿", "Крипта", "Crypto"),
-  tag("technology", "💻", "Технологии", "Technology"),
-  tag("ai", "🤖", "AI", "AI"),
-  tag("science", "🔬", "Наука", "Science"),
-  tag("space", "🚀", "Космос", "Space"),
-  tag("education", "📚", "Образование", "Education"),
-  tag("history", "🏺", "История", "History"),
-  tag("culture", "🎭", "Культура", "Culture"),
-  tag("books", "📖", "Книги", "Books"),
-  tag("art", "🎨", "Арт", "Art"),
-  tag("design", "🧩", "Дизайн", "Design"),
-  tag("photography", "📷", "Фото", "Photography"),
-  tag("cinema", "🎬", "Кино", "Cinema"),
-  tag("series", "📺", "Сериалы", "Series"),
-  tag("music", "🎵", "Музыка", "Music"),
-  tag("gaming", "🎮", "Игры", "Gaming"),
-  tag("memes", "😂", "Мемы", "Memes"),
-  tag("humor", "🤣", "Юмор", "Humor"),
-  tag("sports", "⚽", "Спорт", "Sports"),
-  tag("mma", "🥊", "MMA", "MMA"),
-  tag("fitness", "🏋️", "Фитнес", "Fitness"),
-  tag("health", "🩺", "Здоровье", "Health"),
-  tag("travel", "🧳", "Путешествия", "Travel"),
-  tag("food", "🍔", "Еда", "Food"),
-  tag("recipes", "🍳", "Рецепты", "Recipes"),
-  tag("psychology", "🧠", "Психология", "Psychology"),
-  tag("relationships", "❤️", "Отношения", "Relationships"),
-  tag("parenting", "👨‍👩‍👦", "Родительство", "Parenting"),
-  tag("fashion", "👗", "Мода", "Fashion"),
-  tag("beauty", "💄", "Красота", "Beauty"),
-  tag("nature", "🌿", "Природа", "Nature"),
-  tag("animals", "🐾", "Животные", "Animals"),
-  tag("people", "🧑", "Люди", "People"),
-  tag("celebrities", "⭐", "Звёзды", "Celebrities"),
-  tag("marketing", "📣", "Маркетинг", "Marketing"),
-  tag("startups", "🧪", "Стартапы", "Startups"),
-  tag("jobs", "🛠️", "Работа", "Work"),
-  tag("real_estate", "🏠", "Недвижимость", "Real Estate"),
-  tag("auto", "🚙", "Авто", "Auto"),
-  tag("gadgets", "📱", "Гаджеты", "Gadgets"),
-  tag("telegram", "✈️", "Telegram", "Telegram"),
-  tag("creativity", "✨", "Творчество", "Creativity"),
-];
 
 /**
  * Новая структура taxonomy v2.
@@ -123,7 +67,7 @@ export const SITE_TAG_GROUPS: SiteTagGroup[] = [
       tag("politics_government", "🏢", "Власть", "Government"),
       tag("politics_elections", "🗳️", "Выборы", "Elections"),
       tag("politics_conflicts", "⚔️", "Конфликты", "Conflicts"),
-      tag("war", "🎖️", "Война", "War"),
+      tag("war", "🔥", "Война", "War"),
       tag("politics_opinion", "🧠", "Мнения", "Opinion"),
       tag("politics_other", "☝️", "Другое", "Other"),
     ],
@@ -441,10 +385,6 @@ export const SITE_TAG_GROUPS: SiteTagGroup[] = [
 ];
 
 const ALL_TAGS_MAP = new Map<string, SiteTag>();
-
-for (const current of SITE_TAGS) {
-  ALL_TAGS_MAP.set(current.value, current);
-}
 
 for (const group of SITE_TAG_GROUPS) {
   ALL_TAGS_MAP.set(group.value, {

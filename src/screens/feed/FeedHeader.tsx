@@ -86,7 +86,7 @@ export function FeedHeader({
     ru: {
       title: "Темы и поиск",
       subtitle: "Выбери темы, чтобы персонализировать ленту.",
-      searchPlaceholder: "Поиск по каналу, тексту, ссылке...",
+      searchPlaceholder: "Поиск по каналу, тексту, теме...",
       show: "Показать",
       found: "найдено",
       erase: "Стереть",
@@ -261,17 +261,9 @@ export function FeedHeader({
     >
       <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-app md:border-x md:border-soft">
         <div className="flex h-full flex-col">
-          <div className="shrink-0 border-b border-soft bg-app px-4 pb-4 pt-4">
-            <div className="text-base font-semibold leading-none text-primary">
-              {copy.title}
-            </div>
-
-            <div className="mt-2 text-sm leading-6 text-secondary">
-              {copy.subtitle}
-            </div>
-
+          <div className="shrink-0 border-b border-soft bg-app px-4 pb-3 pt-3">
             <form
-              className="relative mt-4"
+              className="relative"
               onSubmit={(event) => {
                 event.preventDefault();
                 applySearchAndClose();
@@ -311,7 +303,7 @@ export function FeedHeader({
             {selectedCount > 0 ? (
               <div className="mt-2 text-sm text-primary">{selectedSummary}</div>
             ) : null}
-          </div>
+          </div>          
 
           <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3 pb-6">
             <div className="divide-y divide-[color:var(--border-soft)]">
