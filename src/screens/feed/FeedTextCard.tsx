@@ -283,9 +283,11 @@ function AudioPreview({
 function TagChips({
   primaryTag,
   secondaryTags,
+  locale,
 }: {
   primaryTag: string;
   secondaryTags: string[];
+  locale: Locale;
 }) {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -293,6 +295,30 @@ function TagChips({
 
   const allTags = useMemo(() => [primaryTag, ...secondaryTags], [primaryTag, secondaryTags]);
   const extraCount = Math.max(0, allTags.length - 1);
+  const isExpandable = extraCount > 0;
+
+  const TITLE = {
+    en: "Channel tags",
+    ru: "Теги канала",
+    de: "Kanal-Tags",
+    es: "Etiquetas del canal",
+    tr: "Kanal etiketleri",
+    fr: "Tags de la chaîne",
+    it: "Tag del canale",
+    "pt-br": "Tags do canal",
+    id: "Tag channel",
+    pl: "Tagi kanału",
+  } as const;
+
+  const menuTitle = TITLE[locale] ?? TITLE.en;
+
+  if (!isExpandable) {
+    return (
+      <div className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[11px] font-medium text-primary">
+        <span className="truncate">{primaryTag}</span>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -309,7 +335,7 @@ function TagChips({
 
           const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
           setAnchorRect({
-            top: rect.bottom,
+            top: rect.top,
             left: rect.left,
             width: rect.width,
           });
@@ -318,7 +344,7 @@ function TagChips({
         className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[11px] font-medium text-primary transition hover:bg-app"
       >
         <span className="truncate">{primaryTag}</span>
-        {extraCount > 0 ? <span className="shrink-0 text-secondary">+{extraCount}</span> : null}
+        <span className="shrink-0 text-secondary">+{extraCount}</span>
         <ChevronDown className="h-3.5 w-3.5 shrink-0 text-secondary" />
       </button>
 
@@ -327,6 +353,7 @@ function TagChips({
           tags={allTags}
           anchorRect={anchorRect}
           onRequestClose={() => setIsOpen(false)}
+          title={menuTitle}
         />
       ) : null}
     </>
@@ -400,7 +427,7 @@ export function FeedTextCard({
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} />
+          <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} locale={locale} />
         </div>
 
         <button

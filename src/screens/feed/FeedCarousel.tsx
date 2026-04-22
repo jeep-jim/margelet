@@ -119,7 +119,7 @@ export function MediaDots({
   if (total <= 1) return null;
 
   return (
-    <div className="pointer-events-none absolute left-1/2 top-3 z-20 flex -translate-x-1/2 items-center gap-1.5">
+    <div className="pointer-events-none absolute left-1/2 top-3 z-1 flex -translate-x-1/2 items-center gap-1.5">
       {Array.from({ length: total }).map((_, index) => {
         const active = index === activeIndex;
 

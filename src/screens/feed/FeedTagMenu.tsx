@@ -12,7 +12,7 @@ export function FeedTagMenu({
   tags,
   anchorRect,
   onRequestClose,
-  title = "Tags",
+  title = "Теги канала",
 }: {
   tags: string[];
   anchorRect: AnchorRect | null;
@@ -53,17 +53,27 @@ export function FeedTagMenu({
 
   const position = useMemo(() => {
     const menuWidth = 264;
+    const rowHeight = 44;
+    const headerHeight = 34;
+    const verticalPadding = 16;
+    const estimatedHeight = headerHeight + verticalPadding + tags.length * rowHeight;
     const safeLeft = Math.max(
       12,
       Math.min(anchorRect?.left ?? 12, window.innerWidth - menuWidth - 12)
     );
 
+    let top = Math.max(12, (anchorRect?.top ?? 72) - estimatedHeight - 8);
+
+    if (top < 12) {
+      top = Math.max(12, (anchorRect?.top ?? 72) + 8);
+    }
+
     return {
-      top: Math.max(12, (anchorRect?.top ?? 72) + 8),
+      top,
       left: safeLeft,
       width: menuWidth,
     };
-  }, [anchorRect]);
+  }, [anchorRect, tags.length]);
 
   if (!mounted || tags.length === 0) {
     return null;

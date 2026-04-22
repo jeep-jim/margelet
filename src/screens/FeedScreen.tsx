@@ -344,6 +344,7 @@ export function FeedScreen({
   const [expandedCaption, setExpandedCaption] = useState(false);
   const [tagsOpen, setTagsOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
+  const [visibleLimit, setVisibleLimit] = useState(12);
   const [searchQuery, setSearchQuery] = useState("");
   const [subscriptionHandles, setSubscriptionHandles] = useState<string[]>([]);
   const [seenSubscriptionPosts, setSeenSubscriptionPosts] = useState<
@@ -378,6 +379,10 @@ export function FeedScreen({
     setSeenPosts(storedSeenPosts);
     setInitialSeenPosts(storedSeenPosts);    
   }, [locale]);
+
+  useEffect(() => {
+    setVisibleLimit(12);
+  }, [selectedTags, searchQuery, feedSettings.mediaMode, feedSettings.countries]);
 
   useEffect(() => {
     localStorage.setItem(
@@ -717,7 +722,10 @@ export function FeedScreen({
     return list;
   }, [safePosts, feedSettings, selectedTags, searchQuery, locale, initialSeenPosts]);  
 
-  const viewerPosts = useMemo(() => {
+    const renderedPosts = useMemo(() => visiblePosts.slice(0, visibleLimit), [visiblePosts, visibleLimit]);
+  const canShowMore = renderedPosts.length < visiblePosts.length;
+
+const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isVideoViewerPost(post));
   }, [visiblePosts]);
 
@@ -1017,7 +1025,7 @@ export function FeedScreen({
       ) : null}
 
       <div className="mx-auto w-full max-w-[570px]">
-        {visiblePosts.map((post) => {
+        {renderedPosts.map((post) => {
           const ownerTelegramId = post.addedBy?.telegramId ?? null;
 
           const isOwner =
@@ -1058,6 +1066,40 @@ export function FeedScreen({
           );
         })}
       </div>
+
+      {renderedPosts.length > 0 ? (
+        <div className="mx-auto w-full max-w-[570px] px-4 py-4">
+          <button
+            type="button"
+            onClick={() => {
+              if (!canShowMore) return;
+              setVisibleLimit((prev) => prev + 12);
+            }}
+            className={`w-full rounded-2xl border px-4 py-3 text-sm font-medium transition ${
+              canShowMore
+                ? "border-soft bg-surface-soft text-primary hover:bg-surface"
+                : "border-soft bg-surface text-secondary"
+            }`}
+          >
+            {(() => {
+              const COPY = {
+                en: { more: "Show more", done: "No more posts yet" },
+                ru: { more: "Показать ещё", done: "Больше постов пока нет" },
+                de: { more: "Mehr anzeigen", done: "Mehr Posts пока нет" },
+                es: { more: "Mostrar más", done: "Aún no hay más publicaciones" },
+                tr: { more: "Daha fazla göster", done: "Şimdilik başka gönderi yok" },
+                fr: { more: "Afficher encore", done: "Pas encore plus de posts" },
+                it: { more: "Mostra altro", done: "Per ora non ci sono altri post" },
+                "pt-br": { more: "Mostrar mais", done: "Ainda não há mais posts" },
+                id: { more: "Tampilkan lagi", done: "Belum ada post lagi" },
+                pl: { more: "Pokaż więcej", done: "Na razie nie ma więcej postów" },
+              } as const;
+              const item = COPY[locale] ?? COPY.en;
+              return canShowMore ? item.more : item.done;
+            })()}
+          </button>
+        </div>
+      ) : null}
 
       <FeedViewer
         locale={locale}
