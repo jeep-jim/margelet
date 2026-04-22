@@ -1,7 +1,7 @@
 import type { Locale } from "../../types/app";
 import type { ScreenCopy } from "./creator.types";
 
-const COPY: Record<Locale, ScreenCopy> = {
+const COPY_BASE = {
   en: {
     authTitle: "Sign in with Telegram",
     authText:
@@ -664,9 +664,30 @@ const COPY: Record<Locale, ScreenCopy> = {
       "Naszym celem nie jest odbieranie uwagi. Naszym celem jest pomóc uwadze znaleźć miejsce, do którego naprawdę należy.",
     manifestOutro9: "— margeleT",
   },
+
+
+} as const;
+
+export const CREATOR_COPY: Record<Locale, ScreenCopy> = {
+  ...COPY_BASE,
+  uk: COPY_BASE.ru,
+  in: COPY_BASE.en,
+  fa: COPY_BASE.en,
+  kk: COPY_BASE.ru,
+  uz: COPY_BASE.ru,
+  ae: COPY_BASE.en,
+  eg: COPY_BASE.en,
+  pk: COPY_BASE.en,
+  mx: COPY_BASE.es,
+  sa: COPY_BASE.en,
+  ar: COPY_BASE.es,
+  co: COPY_BASE.es,
+  za: COPY_BASE.en,
+  ng: COPY_BASE.en,
+  zh: COPY_BASE.en,
+  ms: COPY_BASE.en,
 };
 
-export const CREATOR_COPY = COPY;
 export function getCreatorCopy(locale: Locale): ScreenCopy {
   return CREATOR_COPY[locale] ?? CREATOR_COPY.en;
 }

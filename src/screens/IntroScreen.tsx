@@ -11,21 +11,19 @@ type Props = {
   onFinish: () => void;
 };
 
-type IntroSlide = {
-  title: string;
-  text: string;
-};
-
 type IntroCopy = {
-  slides: IntroSlide[];
+  chooseLanguage: string;
+  slides: readonly {
+    readonly title: string;
+    readonly text: string;
+  }[];
   next: string;
   enter: string;
-  chooseLanguage: string;
 };
 
 const LANGUAGE_STORAGE_KEY = "margelet_locale";
 
-const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
+const INTRO_COPY_BASE = {
   en: {
     chooseLanguage: "Choose language",
     slides: [
@@ -242,30 +240,28 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "Masuk",
   },
 
-  pl: {
-    chooseLanguage: "Wybierz język",
-    slides: [
-      {
-        title: "Witamy w margeleT",
-        text: "Globalny feed świeżych treści z Telegrama.",
-      },
-      {
-        title: "Tylko otwarte źródła",
-        text: "Każdy post jest dostępny w autorskim kanale Telegram.",
-      },
-      {
-        title: "Czysto i szybko",
-        text: "Otwieraj, oglądaj i przewijaj bez zbędnego szumu.",
-      },
-      {
-        title: "Wybierz swój język",
-        text: "Interfejs i treści automatycznie dostosowują się do wybranego kraju.",
-      },
-    ],
-    next: "Dalej",
-    enter: "Wejdź",
-  },
-};
+  } as const;
+
+  const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
+    ...INTRO_COPY_BASE,
+    uk: INTRO_COPY_BASE.ru,
+    in: INTRO_COPY_BASE.en,
+    fa: INTRO_COPY_BASE.en,
+    kk: INTRO_COPY_BASE.ru,
+    uz: INTRO_COPY_BASE.ru,
+    ae: INTRO_COPY_BASE.en,
+    eg: INTRO_COPY_BASE.en,
+    pk: INTRO_COPY_BASE.en,
+    mx: INTRO_COPY_BASE.es,
+    sa: INTRO_COPY_BASE.en,
+    ar: INTRO_COPY_BASE.es,
+    co: INTRO_COPY_BASE.es,
+    za: INTRO_COPY_BASE.en,
+    ng: INTRO_COPY_BASE.en,
+    zh: INTRO_COPY_BASE.en,
+    ms: INTRO_COPY_BASE.en,
+  };
+
 
 function getSortedLocales() {
   const sorted = [...SITE_LOCALES].sort((a, b) =>
@@ -283,6 +279,8 @@ function getSortedLocales() {
 
   return sorted;
 }
+
+
 
 export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
   const intro = INTRO_COPY[locale] ?? INTRO_COPY.en;
