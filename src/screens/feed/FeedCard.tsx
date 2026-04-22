@@ -156,7 +156,7 @@ export function FeedCard(props: FeedCardProps) {
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
       </div>
 
-      <div className="absolute right-1 top-4 z-20">
+      <div className="absolute right-1 top-4 z-1">
         <div className="relative">
           <button
             className="flex h-9 w-9 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft"

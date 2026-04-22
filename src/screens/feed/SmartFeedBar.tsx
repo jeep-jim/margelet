@@ -222,17 +222,25 @@ function getInactiveCountryClasses(isDark: boolean) {
 
 function getDropdownShellClasses(isDark: boolean, open: boolean) {
   const base = isDark
-    ? "overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200"
-    : "overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface text-primary shadow-none transition-all duration-200";
+    ? "absolute left-0 right-0 top-full z-[120] overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200"    
+    : "absolute left-0 right-0 top-full z-[120] overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface-soft text-primary shadow-[0_12px_30px_rgba(0,0,0,0.10)] transition-all duration-200";
 
   return `${base} ${
     open
-      ? "max-h-[420px] opacity-100"
-      : "pointer-events-none max-h-0 border-transparent opacity-0 shadow-none"
+      ? "max-h-[420px] translate-y-0 opacity-100"
+      : "pointer-events-none max-h-0 -translate-y-2 border-transparent opacity-0 shadow-none"
   }`;
 }
 
-function getSwitchTrackClasses(isDark: boolean, checked: boolean) {
+function getSwitchTrackClasses(
+  isDark: boolean,
+  checked: boolean,
+  primary: boolean
+) {
+  if (primary) {
+    return "border-[#2f6df6] bg-[#2f6df6]";
+  }
+
   if (checked) {
     return isDark
       ? "border-white bg-white"
@@ -244,7 +252,15 @@ function getSwitchTrackClasses(isDark: boolean, checked: boolean) {
     : "border-soft bg-surface-soft";
 }
 
-function getSwitchThumbClasses(isDark: boolean, checked: boolean) {
+function getSwitchThumbClasses(
+  isDark: boolean,
+  checked: boolean,
+  primary: boolean
+) {
+  if (primary) {
+    return "left-[20px] bg-white";
+  }
+
   if (checked) {
     return isDark ? "left-[20px] bg-[#162231]" : "left-[20px] bg-white";
   }
@@ -429,6 +445,8 @@ export function SmartFeedBar({
               <div className="space-y-2.5">
                 {availableCountries.map((country) => {
                   const checked = selectedCountries.includes(country);
+                  const isPrimary = country === baseCountry;
+
                   const meta = COUNTRY_LABELS[country] || {
                     label: country.toUpperCase(),
                     flag: "🌍",
@@ -446,25 +464,33 @@ export function SmartFeedBar({
                       >
                         <span className="mr-3">{meta.flag}</span>
                         <span>{meta.label}</span>
-                      </div>
+                        {isPrimary ? (
+                          <span className="ml-1 text-[#2f6df6]">(мой)</span>
+                        ) : null}
+                      </div>                      
 
                       <button
                         type="button"
-                        onClick={() => onToggleCountry(country)}
+                        onClick={() => {
+                          if (isPrimary) return;
+                          onToggleCountry(country);
+                        }}
                         className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getSwitchTrackClasses(
                           isDark,
-                          checked
-                        )}`}
+                          checked,
+                          isPrimary
+                        )} ${isPrimary ? "cursor-default" : ""}`}
                         aria-pressed={checked}
                         aria-label={`${meta.label} ${checked ? "enabled" : "disabled"}`}
                       >
                         <span
                           className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${getSwitchThumbClasses(
                             isDark,
-                            checked
+                            checked,
+                            isPrimary
                           )}`}
                         />
-                      </button>
+                      </button>                      
                     </div>
                   );
                 })}
