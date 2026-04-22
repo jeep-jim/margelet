@@ -8,9 +8,8 @@ import {
 import type { IngestedPost, Locale } from "../../types/app";
 import {
   getAudioMedia,
+  getDisplayTagMeta,
   getFileMedia,
-  getResolvedTag,
-  getTagLabel,
 } from "./feed.utils";
 
 function getMediaBadge(post: IngestedPost, locale: Locale) {
@@ -278,6 +277,31 @@ function AudioPreview({
   );
 }
 
+function TagChips({
+  primaryTag,
+  secondaryTags,
+}: {
+  primaryTag: string;
+  secondaryTags: string[];
+}) {
+  return (
+    <div className="flex min-w-0 flex-wrap items-center gap-2 text-secondary">
+      <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
+        {primaryTag}
+      </div>
+
+      {secondaryTags.map((tag) => (
+        <div
+          key={tag}
+          className="pointer-events-none rounded-full border border-soft bg-app px-3 py-1 text-[11px] font-medium text-secondary"
+        >
+          {tag}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function FeedTextCard({
   locale,
   post,
@@ -305,6 +329,7 @@ export function FeedTextCard({
   const copy = COPY[locale] ?? COPY.en;
   const displayText = (post.text || "").trim();
   const mediaBadge = getMediaBadge(post, locale);
+  const { primary: primaryTag, secondary: secondaryTags } = getDisplayTagMeta(post, locale);
 
   return (
     <div className="px-4 pb-4 pt-3">
@@ -342,11 +367,9 @@ export function FeedTextCard({
         </div>
       </div>
 
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <div className="flex min-w-0 items-center gap-3 text-secondary">
-          <div className="pointer-events-none rounded-full border border-soft bg-surface-soft px-3 py-1 text-[11px] font-medium text-primary">
-            {getTagLabel(getResolvedTag(post), locale)}
-          </div>
+      <div className="mt-4 flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} />
         </div>
 
         <button
@@ -355,7 +378,7 @@ export function FeedTextCard({
             event.stopPropagation();
             onOpen();
           }}
-          className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-app"
+          className="inline-flex shrink-0 items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-app"
         >
           <span>{copy.read}</span>
           <ExternalLink className="h-4 w-4" />

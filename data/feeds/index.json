@@ -1,22 +1,30 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-21T06:13:32.894Z",
+  "updatedAt": "2026-04-22T01:07:11.519Z",
   "countries": {
     "en": {
       "code": "en",
-      "posts": 15,
+      "posts": 84,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/en.json",
-      "updatedAt": "2026-04-21T06:13:32.894Z"
+      "updatedAt": "2026-04-22T01:07:11.519Z"
+    },
+    "pt-br": {
+      "code": "pt-br",
+      "posts": 40,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/pt-br.json",
+      "updatedAt": "2026-04-22T01:07:11.519Z"
     },
     "ru": {
       "code": "ru",
-      "posts": 291,
-      "chunks": 2,
-      "mode": "chunked",
+      "posts": 162,
+      "chunks": 1,
+      "mode": "single",
       "path": "/feeds/ru.json",
-      "updatedAt": "2026-04-21T06:13:32.894Z"
+      "updatedAt": "2026-04-22T01:07:11.519Z"
     }
   }
 }
