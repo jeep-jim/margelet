@@ -1,6 +1,27 @@
 {
-  "updatedAt": "2026-04-23T01:14:32.462Z",
+  "updatedAt": "2026-04-23T01:15:43.915Z",
   "sources": [
+    {
+      "id": "ru:decenter",
+      "countryCode": "ru",
+      "handle": "decenter",
+      "title": "DeCenter — блокчейн, биткоин, инвестиции",
+      "avatarUrl": "https://cdn4.telesco.pe/file/VwXqllG-rqg-VON44vbZwH6DZvPsRyY5IakY5v7R_rvFrA0nw7j9qmdLKjwzLobz_ZeGlTjkhyzb5qcqoShGNVbCFkv9MKHML1Y_fZrD7QH2uhjh58GtJZBsVJbzmo5Y_KIQ-O5aDUv3Bro3zUxj-kUyR9t9Ikuv32N8MtNQElMh_iXahb9HthEjARbpjX8zl1lQCa9wVD7iVCB-6qx96Fh_2BvSmZFL_iwd-QUI8j1JD411v2YyNE7mDZnb8wf-Ja0P5pV8AHIy2Cybj5FZP4jfI94BjjkVkZgzeSZEq9QjtwvsIYKT8CA0r_hIiRTBrrWD_OiMGzNjn4gUb29gZQ.jpg",
+      "verified": true,
+      "defaultTag": "crypto",
+      "tags": [
+        "crypto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-18T01:52:44.212Z",
+      "updatedAt": "2026-04-23T01:14:20.137Z",
+      "lastCheckedAt": "2026-04-23T00:00:24.650Z",
+      "lastImportedAt": "2026-04-22T20:36:58.157Z",
+      "lastSeenPostId": 24739,
+      "importedPostsCount": 59,
+      "lastRefreshCursorPostId": 24736
+    },
     {
       "id": "en:google_nws",
       "countryCode": "en",
@@ -23,6 +44,27 @@
       "lastRefreshCursorPostId": 4346
     },
     {
+      "id": "ru:hiaimedia",
+      "countryCode": "ru",
+      "handle": "hiaimedia",
+      "title": "Hi, AI • Новости технологий",
+      "avatarUrl": "https://cdn4.telesco.pe/file/XNDRZbL6xhG4T5D3y_G_ixiqCKS6j5olmmvYI7-9AuNDSjcWWFFd164tBUV6AmgbVzuIUKAKDY4vlqpOIssFNe2vDdUkj-7IyP4BlK-ZRt3GB-PzBwQXJbMkAO9U5XVUjq9YDsi7XTBn-Y5DJQeUfTz7OLYdq-UcB7RmK8gJ8r18AOZ6F5ertaNYH_Tl4jKX3fafUaNLvgJ-Bc9FNk_q1WoQXFE8nn4zSXQiEk0wWLWART-gGxlLMxucR4Y8ZrsYXuS98zUMwWYjQiKBG1R-FUkrJ8nC13Ebh9Z4au4Wb862fPmVrDzAe0ZIfuV9e0dvB8xmcbgCI4kCkkrRMotc-w.jpg",
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-18T01:52:44.212Z",
+      "updatedAt": "2026-04-23T01:14:20.137Z",
+      "lastCheckedAt": "2026-04-23T00:00:25.182Z",
+      "lastImportedAt": "2026-04-22T17:14:49.963Z",
+      "lastSeenPostId": 3149,
+      "importedPostsCount": 30,
+      "lastRefreshCursorPostId": 3148
+    },
+    {
       "id": "en:hrumfam",
       "countryCode": "en",
       "handle": "hrumfam",
@@ -42,112 +84,6 @@
       "lastSeenPostId": 1251,
       "importedPostsCount": 21,
       "lastRefreshCursorPostId": 1235
-    },
-    {
-      "id": "en:just",
-      "countryCode": "en",
-      "handle": "just",
-      "title": "Just News",
-      "avatarUrl": "https://cdn4.telesco.pe/file/YrLMkguPae5TZUe-Ta4AV3mBSjHTf2aizeIogzB70JJ74968-R3UYUlfJ-QyP_qkAO0MqqU5_0w-yozBTNUoELhnaEQfIyWO0TrtybMKuc3lagwfxcGIhBaTo5FVWXC5Rbqtx0hLgkHOadBM7X1Jzw78eIH6WlkBK9c3UMB3-xiQWBJToxbqI_B5tZTPe1X-X4Wzsz9NEnUIwTdoHDDP7MSfmEZxvKaF4rsjEf1rqLH3IMM_QSxuqfmH31PClFrpeFMm9WoanVFI9V2oL2m5QhcNPbeJxsOo5fylUKmPPWFpu-FXrN-IKOCIKwIWgCoBxWKg1HaWp7us7nQ3Zo_M5Q.jpg",
-      "verified": true,
-      "defaultTag": "crypto",
-      "tags": [
-        "crypto"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-21T14:57:03.595Z",
-      "updatedAt": "2026-04-23T01:14:21.906Z",
-      "lastCheckedAt": "2026-04-23T01:14:21.564Z",
-      "lastImportedAt": "2026-04-22T23:06:07.726Z",
-      "lastSeenPostId": 5381,
-      "importedPostsCount": 45,
-      "lastRefreshCursorPostId": 5370
-    },
-    {
-      "id": "en:perplexity",
-      "countryCode": "en",
-      "handle": "perplexity",
-      "title": "Discover • Tech News",
-      "avatarUrl": "https://cdn4.telesco.pe/file/QghkIu7TjsaCV3JrII7VW2jEdi-OxYMXhBGckSe4vWgqx4viPpsRR4xMjBhKMiEC26rXF0hpgJioFPvAuYsOpCNEXKtWWOueMG3wtTevqT5TV8Kja032Z2lU_NAYVIxfn9xVlshYFuQ_X9DLBULylpAfB9x_jTZ_jeGuzXRBtiz7d3dHqrAkG-dgpodO-3XJj5tMn_Qv4OVdYmVoWEUJTvZspS4OTf4ofn5C96zKJi6GjUsp4CvjUFeu-fKO8euH4WeTPe91ysfFVK4kCTqgwP4rmCVv36MDQnGb42hVYsnnS6vI-JWPfnadtYQtOP3YaJ07NTxPiBSfS_DYVUQoLA.jpg",
-      "verified": false,
-      "defaultTag": "technology",
-      "tags": [
-        "technology",
-        "gadgets"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-21T14:55:48.314Z",
-      "updatedAt": "2026-04-23T01:14:22.288Z",
-      "lastCheckedAt": "2026-04-23T01:14:22.168Z",
-      "lastImportedAt": "2026-04-22T12:48:09.197Z",
-      "lastSeenPostId": 947,
-      "importedPostsCount": 13,
-      "lastRefreshCursorPostId": 947
-    },
-    {
-      "id": "en:popcorn_today",
-      "countryCode": "en",
-      "handle": "popcorn_today",
-      "title": "Popcorn Today 🍿",
-      "avatarUrl": "https://cdn4.telesco.pe/file/dOWaIemdkQVs5oCFGDUQQuZ6ZOoH-d9wA1bGWbcwLS1Ri9plJ4akoLx39_ccpq3O42yS7OejVHWCsFvvtnvoj7NyKmjByH6U2cQn_ADjkNnomCQ4DWArOb1rqdMJBcP1t53AQc6Tm_aHfClo9XgIqPAycMcHcBNxTW271YbggWj4Oq0UlL96cqS9asKnXXbLuavcZDyqUTYlHBHTuJkCnKBnLOSel3FivYNGMP6VoY5ple98901pN_A85slphAjrqSqpKR0aeyKwjGsInjShGfRiwf_AuuZu9iuYpHsmhrcUILImJTqhErjA7yhezaBxnQVYiBeQcLUUYWPEq9h75Q.jpg",
-      "verified": false,
-      "defaultTag": "other",
-      "tags": [
-        "other"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-21T14:57:21.769Z",
-      "updatedAt": "2026-04-23T01:14:22.817Z",
-      "lastCheckedAt": "2026-04-23T01:14:22.473Z",
-      "lastImportedAt": "2026-04-22T18:49:49.334Z",
-      "lastSeenPostId": 9476,
-      "importedPostsCount": 44,
-      "lastRefreshCursorPostId": 9468
-    },
-    {
-      "id": "kk:tengrinews",
-      "countryCode": "kk",
-      "handle": "tengrinews",
-      "title": "Tengrinews.kz - Новости Казахстана",
-      "avatarUrl": "https://cdn4.telesco.pe/file/ZQqWvRAD2zr0FjegtxF59cD5BJcp4zhoPKi33f4IqeUxzblEZWjqy8CEtRc3sh69T4SaxPGUnSl1cSk10UpT4mLUhfEYJm-_zlBi577_r78uqAsomtvFHvg5eNkWkKOWkxznXXeKwOkXZi-RqQBZmfl5BujE1Zu2Hr9a0mTn1J0NtMXHiD0F15j3pP9-Km7Jg7HzRNjoCP6zsDI4EvDelUUk5lWPHG2hzvOjXu2rfgSA-s7y0rE80wMuJlP1hUKKdocNVPMn2-CMTNt6snjnJ7_3ZbsSMihY3PlXtWuZxdu-7DUike-sguxnEvkrILCsahcNO4irTUDwYQPPMsHYdg.jpg",
-      "verified": true,
-      "defaultTag": "news",
-      "tags": [
-        "news"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-23T01:11:26.644Z",
-      "updatedAt": "2026-04-23T01:14:25.122Z",
-      "lastCheckedAt": "2026-04-23T01:14:23.063Z",
-      "lastImportedAt": "2026-04-23T01:14:23.063Z",
-      "lastSeenPostId": 25956,
-      "importedPostsCount": 17,
-      "lastRefreshCursorPostId": null
-    },
-    {
-      "id": "kk:ztbnews",
-      "countryCode": "kk",
-      "handle": "ztbnews",
-      "title": "ZTB NEWS",
-      "avatarUrl": null,
-      "verified": false,
-      "defaultTag": "news",
-      "tags": [
-        "news"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-23T01:13:18.689Z",
-      "updatedAt": "2026-04-23T01:14:25.494Z",
-      "lastCheckedAt": "2026-04-23T01:14:25.493Z",
-      "lastImportedAt": null,
-      "lastSeenPostId": null,
-      "importedPostsCount": 0,
-      "lastRefreshCursorPostId": null
     },
     {
       "id": "pt-br:jairbolsonarobrasil",
@@ -172,32 +108,11 @@
       "lastRefreshCursorPostId": 7385
     },
     {
-      "id": "pt-br:telegramtipsbr",
-      "countryCode": "pt-br",
-      "handle": "telegramtipsbr",
-      "title": "Dicas do Telegram",
-      "avatarUrl": "https://cdn4.telesco.pe/file/tdKy-1wdDX3WM4Hbjg5i9mNAydYlWaTK8CWLxltYueQerqQuPfyq7QmQBnG-pGPSb207kAUFrAS1GvjL707ayL8v38_XKvz3yXPwSzFeQUt3XXCEzrH_KG8fKBbG_oqm7hwtN8m9rtjsFbKRhzvqKoBrhpfibGZqP6BrLgq-wht3m6HWjQzPZpu6kOVzN5NXnXQF0C5ecMR3HYGa1BChQ-WQ5xrLhgB_62dELrfSx-6KAv_eEKDOnibGjVMYFWZceq14qIEl2dhKjPdctuPH00HeRrTKCaugv2gLbo5bW_sXaVUe7aqnMsFPng3elCJ7SQFlxdzo2lxP7hDcWN9oHw.jpg",
-      "verified": true,
-      "defaultTag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-21T14:51:31.281Z",
-      "updatedAt": "2026-04-23T01:14:26.222Z",
-      "lastCheckedAt": "2026-04-23T01:14:26.109Z",
-      "lastImportedAt": "2026-04-21T14:57:54.268Z",
-      "lastSeenPostId": 428,
-      "importedPostsCount": 20,
-      "lastRefreshCursorPostId": 413
-    },
-    {
-      "id": "ru:decenter",
-      "countryCode": "ru",
-      "handle": "decenter",
-      "title": "DeCenter — блокчейн, биткоин, инвестиции",
-      "avatarUrl": "https://cdn4.telesco.pe/file/VwXqllG-rqg-VON44vbZwH6DZvPsRyY5IakY5v7R_rvFrA0nw7j9qmdLKjwzLobz_ZeGlTjkhyzb5qcqoShGNVbCFkv9MKHML1Y_fZrD7QH2uhjh58GtJZBsVJbzmo5Y_KIQ-O5aDUv3Bro3zUxj-kUyR9t9Ikuv32N8MtNQElMh_iXahb9HthEjARbpjX8zl1lQCa9wVD7iVCB-6qx96Fh_2BvSmZFL_iwd-QUI8j1JD411v2YyNE7mDZnb8wf-Ja0P5pV8AHIy2Cybj5FZP4jfI94BjjkVkZgzeSZEq9QjtwvsIYKT8CA0r_hIiRTBrrWD_OiMGzNjn4gUb29gZQ.jpg",
+      "id": "en:just",
+      "countryCode": "en",
+      "handle": "just",
+      "title": "Just News",
+      "avatarUrl": "https://cdn4.telesco.pe/file/YrLMkguPae5TZUe-Ta4AV3mBSjHTf2aizeIogzB70JJ74968-R3UYUlfJ-QyP_qkAO0MqqU5_0w-yozBTNUoELhnaEQfIyWO0TrtybMKuc3lagwfxcGIhBaTo5FVWXC5Rbqtx0hLgkHOadBM7X1Jzw78eIH6WlkBK9c3UMB3-xiQWBJToxbqI_B5tZTPe1X-X4Wzsz9NEnUIwTdoHDDP7MSfmEZxvKaF4rsjEf1rqLH3IMM_QSxuqfmH31PClFrpeFMm9WoanVFI9V2oL2m5QhcNPbeJxsOo5fylUKmPPWFpu-FXrN-IKOCIKwIWgCoBxWKg1HaWp7us7nQ3Zo_M5Q.jpg",
       "verified": true,
       "defaultTag": "crypto",
       "tags": [
@@ -205,34 +120,13 @@
       ],
       "status": "active",
       "note": null,
-      "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-23T01:14:20.137Z",
-      "lastCheckedAt": "2026-04-23T00:00:24.650Z",
-      "lastImportedAt": "2026-04-22T20:36:58.157Z",
-      "lastSeenPostId": 24739,
-      "importedPostsCount": 59,
-      "lastRefreshCursorPostId": 24736
-    },
-    {
-      "id": "ru:hiaimedia",
-      "countryCode": "ru",
-      "handle": "hiaimedia",
-      "title": "Hi, AI • Новости технологий",
-      "avatarUrl": "https://cdn4.telesco.pe/file/XNDRZbL6xhG4T5D3y_G_ixiqCKS6j5olmmvYI7-9AuNDSjcWWFFd164tBUV6AmgbVzuIUKAKDY4vlqpOIssFNe2vDdUkj-7IyP4BlK-ZRt3GB-PzBwQXJbMkAO9U5XVUjq9YDsi7XTBn-Y5DJQeUfTz7OLYdq-UcB7RmK8gJ8r18AOZ6F5ertaNYH_Tl4jKX3fafUaNLvgJ-Bc9FNk_q1WoQXFE8nn4zSXQiEk0wWLWART-gGxlLMxucR4Y8ZrsYXuS98zUMwWYjQiKBG1R-FUkrJ8nC13Ebh9Z4au4Wb862fPmVrDzAe0ZIfuV9e0dvB8xmcbgCI4kCkkrRMotc-w.jpg",
-      "verified": false,
-      "defaultTag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-18T01:52:44.212Z",
-      "updatedAt": "2026-04-23T01:14:20.137Z",
-      "lastCheckedAt": "2026-04-23T00:00:25.182Z",
-      "lastImportedAt": "2026-04-22T17:14:49.963Z",
-      "lastSeenPostId": 3149,
-      "importedPostsCount": 30,
-      "lastRefreshCursorPostId": 3148
+      "createdAt": "2026-04-21T14:57:03.595Z",
+      "updatedAt": "2026-04-23T01:14:21.906Z",
+      "lastCheckedAt": "2026-04-23T01:14:21.564Z",
+      "lastImportedAt": "2026-04-22T23:06:07.726Z",
+      "lastSeenPostId": 5381,
+      "importedPostsCount": 45,
+      "lastRefreshCursorPostId": 5370
     },
     {
       "id": "ru:maratyus",
@@ -494,6 +388,28 @@
       "lastRefreshCursorPostId": 2855
     },
     {
+      "id": "en:perplexity",
+      "countryCode": "en",
+      "handle": "perplexity",
+      "title": "Discover • Tech News",
+      "avatarUrl": "https://cdn4.telesco.pe/file/QghkIu7TjsaCV3JrII7VW2jEdi-OxYMXhBGckSe4vWgqx4viPpsRR4xMjBhKMiEC26rXF0hpgJioFPvAuYsOpCNEXKtWWOueMG3wtTevqT5TV8Kja032Z2lU_NAYVIxfn9xVlshYFuQ_X9DLBULylpAfB9x_jTZ_jeGuzXRBtiz7d3dHqrAkG-dgpodO-3XJj5tMn_Qv4OVdYmVoWEUJTvZspS4OTf4ofn5C96zKJi6GjUsp4CvjUFeu-fKO8euH4WeTPe91ysfFVK4kCTqgwP4rmCVv36MDQnGb42hVYsnnS6vI-JWPfnadtYQtOP3YaJ07NTxPiBSfS_DYVUQoLA.jpg",
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-21T14:55:48.314Z",
+      "updatedAt": "2026-04-23T01:14:22.288Z",
+      "lastCheckedAt": "2026-04-23T01:14:22.168Z",
+      "lastImportedAt": "2026-04-22T12:48:09.197Z",
+      "lastSeenPostId": 947,
+      "importedPostsCount": 13,
+      "lastRefreshCursorPostId": 947
+    },
+    {
       "id": "ru:pikabu",
       "countryCode": "ru",
       "handle": "pikabu",
@@ -513,6 +429,27 @@
       "lastSeenPostId": 48123,
       "importedPostsCount": 154,
       "lastRefreshCursorPostId": 48119
+    },
+    {
+      "id": "en:popcorn_today",
+      "countryCode": "en",
+      "handle": "popcorn_today",
+      "title": "Popcorn Today 🍿",
+      "avatarUrl": "https://cdn4.telesco.pe/file/dOWaIemdkQVs5oCFGDUQQuZ6ZOoH-d9wA1bGWbcwLS1Ri9plJ4akoLx39_ccpq3O42yS7OejVHWCsFvvtnvoj7NyKmjByH6U2cQn_ADjkNnomCQ4DWArOb1rqdMJBcP1t53AQc6Tm_aHfClo9XgIqPAycMcHcBNxTW271YbggWj4Oq0UlL96cqS9asKnXXbLuavcZDyqUTYlHBHTuJkCnKBnLOSel3FivYNGMP6VoY5ple98901pN_A85slphAjrqSqpKR0aeyKwjGsInjShGfRiwf_AuuZu9iuYpHsmhrcUILImJTqhErjA7yhezaBxnQVYiBeQcLUUYWPEq9h75Q.jpg",
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-21T14:57:21.769Z",
+      "updatedAt": "2026-04-23T01:14:22.817Z",
+      "lastCheckedAt": "2026-04-23T01:14:22.473Z",
+      "lastImportedAt": "2026-04-22T18:49:49.334Z",
+      "lastSeenPostId": 9476,
+      "importedPostsCount": 44,
+      "lastRefreshCursorPostId": 9468
     },
     {
       "id": "ru:reddit",
@@ -647,6 +584,83 @@
       "lastRefreshCursorPostId": 261
     },
     {
+      "id": "pt-br:telegramtipsbr",
+      "countryCode": "pt-br",
+      "handle": "telegramtipsbr",
+      "title": "Dicas do Telegram",
+      "avatarUrl": "https://cdn4.telesco.pe/file/tdKy-1wdDX3WM4Hbjg5i9mNAydYlWaTK8CWLxltYueQerqQuPfyq7QmQBnG-pGPSb207kAUFrAS1GvjL707ayL8v38_XKvz3yXPwSzFeQUt3XXCEzrH_KG8fKBbG_oqm7hwtN8m9rtjsFbKRhzvqKoBrhpfibGZqP6BrLgq-wht3m6HWjQzPZpu6kOVzN5NXnXQF0C5ecMR3HYGa1BChQ-WQ5xrLhgB_62dELrfSx-6KAv_eEKDOnibGjVMYFWZceq14qIEl2dhKjPdctuPH00HeRrTKCaugv2gLbo5bW_sXaVUe7aqnMsFPng3elCJ7SQFlxdzo2lxP7hDcWN9oHw.jpg",
+      "verified": true,
+      "defaultTag": "telegram",
+      "tags": [
+        "telegram"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-21T14:51:31.281Z",
+      "updatedAt": "2026-04-23T01:14:26.222Z",
+      "lastCheckedAt": "2026-04-23T01:14:26.109Z",
+      "lastImportedAt": "2026-04-21T14:57:54.268Z",
+      "lastSeenPostId": 428,
+      "importedPostsCount": 20,
+      "lastRefreshCursorPostId": 413
+    },
+    {
+      "id": "kk:tengrinews",
+      "countryCode": "kk",
+      "handle": "tengrinews",
+      "title": "Tengrinews.kz - Новости Казахстана",
+      "avatarUrl": "https://cdn4.telesco.pe/file/ZQqWvRAD2zr0FjegtxF59cD5BJcp4zhoPKi33f4IqeUxzblEZWjqy8CEtRc3sh69T4SaxPGUnSl1cSk10UpT4mLUhfEYJm-_zlBi577_r78uqAsomtvFHvg5eNkWkKOWkxznXXeKwOkXZi-RqQBZmfl5BujE1Zu2Hr9a0mTn1J0NtMXHiD0F15j3pP9-Km7Jg7HzRNjoCP6zsDI4EvDelUUk5lWPHG2hzvOjXu2rfgSA-s7y0rE80wMuJlP1hUKKdocNVPMn2-CMTNt6snjnJ7_3ZbsSMihY3PlXtWuZxdu-7DUike-sguxnEvkrILCsahcNO4irTUDwYQPPMsHYdg.jpg",
+      "verified": true,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-23T01:11:26.644Z",
+      "updatedAt": "2026-04-23T01:14:25.122Z",
+      "lastCheckedAt": "2026-04-23T01:14:23.063Z",
+      "lastImportedAt": "2026-04-23T01:14:23.063Z",
+      "lastSeenPostId": 25956,
+      "importedPostsCount": 17,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "kk:thetechkz",
+      "countryCode": "kk",
+      "handle": "thetechkz",
+      "title": "The Tech (KZ)",
+      "avatarUrl": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "business_entrepreneurship",
+        "business_ecommerce",
+        "business_management",
+        "business_cases",
+        "business_companies",
+        "startups",
+        "startups_cases",
+        "startups_founders",
+        "startups_invest",
+        "startups_other",
+        "finance",
+        "finance_investing",
+        "finance_personal",
+        "crypto",
+        "finance_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-23T01:15:43.797Z",
+      "updatedAt": "2026-04-23T01:15:43.797Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0
+    },
+    {
       "id": "ru:tiktokprime",
       "countryCode": "ru",
       "handle": "tiktokprime",
@@ -710,6 +724,27 @@
       "lastSeenPostId": 27636,
       "importedPostsCount": 39,
       "lastRefreshCursorPostId": 27625
+    },
+    {
+      "id": "kk:ztbnews",
+      "countryCode": "kk",
+      "handle": "ztbnews",
+      "title": "ZTB NEWS",
+      "avatarUrl": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-23T01:13:18.689Z",
+      "updatedAt": "2026-04-23T01:14:25.494Z",
+      "lastCheckedAt": "2026-04-23T01:14:25.493Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     }
   ]
 }
