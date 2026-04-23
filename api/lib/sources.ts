@@ -264,9 +264,14 @@ function interleavePostsBySource(posts: IngestedPost[]) {
   return result;
 }
 
-function parsePostIdsFromChannelHtml(html: string): number[] {
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function parsePostIdsFromChannelHtml(handle: string, html: string): number[] {
   const ids = new Set<number>();
-  const re = /data-post="[^/]+\/(\d+)"/g;
+  const escapedHandle = escapeRegExp(normalizeHandle(handle));
+  const re = new RegExp(`data-post="${escapedHandle}/(\\d+)"`, "gi");
 
   let match: RegExpExecArray | null;
 
@@ -570,7 +575,7 @@ async function syncSourcePosts(
   existingPosts: IngestedPost[]
 ): Promise<SourceSyncResult> {
   const html = await fetchChannelHtml(source.handle);
-  const ids = parsePostIdsFromChannelHtml(html);
+  const ids = parsePostIdsFromChannelHtml(source.handle, html);
   const nowIso = new Date().toISOString();
   const nowMs = Date.parse(nowIso);
 
@@ -586,8 +591,24 @@ async function syncSourcePosts(
   let sourceVerified = Boolean(source.verified);
   let sourceMetaTouched = false;
 
+  const visibleLatestPostId = ids.length > 0 ? ids[0] : null;
+  const existingTopPostId = sourceExistingPosts
+    .map((post) => getPostIdFromUrl(post.postUrl))
+    .filter((postId): postId is number => Number.isFinite(postId))
+    .sort((a, b) => b - a)[0] ?? null;
+
+  const hasCorruptedLastSeen = Boolean(
+    source.lastSeenPostId &&
+      visibleLatestPostId &&
+      source.lastSeenPostId > visibleLatestPostId
+  );
+
+  const effectiveLastSeenPostId = hasCorruptedLastSeen
+    ? existingTopPostId
+    : source.lastSeenPostId;
+
   for (const postId of ids.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE)) {
-    if (source.lastSeenPostId && postId <= source.lastSeenPostId) continue;
+    if (effectiveLastSeenPostId && postId <= effectiveLastSeenPostId) continue;
 
     const postUrl = `https://t.me/${source.handle}/${postId}?single`;
     if (knownUrls.has(postUrl)) continue;
@@ -662,7 +683,7 @@ async function syncSourcePosts(
   }
 
   const highestSeen =
-    ids.length > 0 ? Math.max(...ids) : source.lastSeenPostId || null;
+    visibleLatestPostId || existingTopPostId || source.lastSeenPostId || null;
 
   const nextSource = buildSource({
     ...source,
@@ -739,12 +760,13 @@ export async function rebuildFeedFromSources(options?: {
   );
 
   const feedFile = await readFeedFile<IngestedPost>();
+  const previousFreshPosts = cleanupFeedPosts(feedFile.posts || []);
   const lastUpdatedMs = parseIsoMs(feedFile.updatedAt) ?? 0;
 
   if (!forceFullCountryScan && lastUpdatedMs > 0) {
     const nowMs = Date.now();
     if (nowMs - lastUpdatedMs < MIN_REBUILD_GAP_MS) {
-      const posts = cleanupFeedPosts(feedFile.posts || []);
+      const posts = previousFreshPosts;
       return {
         updatedAt: feedFile.updatedAt,
         posts,
@@ -790,7 +812,7 @@ export async function rebuildFeedFromSources(options?: {
       return pickSourcesForRun(countrySources);
     });
 
-  let currentPosts = cleanupFeedPosts(feedFile.posts || []);
+  let currentPosts = previousFreshPosts;
 
   let countriesChecked = 0;
   let sourcesChecked = 0;
@@ -798,6 +820,8 @@ export async function rebuildFeedFromSources(options?: {
   let refreshedPosts = 0;
   let sourcesWithNewPosts = 0;
   let sourcesWithRefreshedPosts = 0;
+  let sourceFailures = 0;
+  let healedCorruptedSources = 0;
 
   for (const [, countrySources] of activeByCountry) {
     const hasSelected = forceFullCountryScan
@@ -814,6 +838,9 @@ export async function rebuildFeedFromSources(options?: {
 
     try {
       const result = await syncSourcePosts(source, currentPosts);
+      if (result.source.lastSeenPostId !== source.lastSeenPostId && (source.lastSeenPostId || 0) > (result.source.lastSeenPostId || 0)) {
+        healedCorruptedSources += 1;
+      }
       sourcesById.set(result.source.id, result.source);
 
       currentPosts = mergeSourcePosts({
@@ -834,26 +861,38 @@ export async function rebuildFeedFromSources(options?: {
         sourcesWithRefreshedPosts += 1;
       }
     } catch (error) {
+      sourceFailures += 1;
       console.error("rebuild source failed", source.handle, error);
     }
   }
 
   const posts = interleavePostsBySource(cleanupFeedPosts(currentPosts));
-  await writeFeedFile(posts);
+  const shouldKeepPreviousFeed =
+    posts.length === 0 &&
+    previousFreshPosts.length > 0 &&
+    activeSources.length > 0 &&
+    sourceFailures > 0;
+
+  const publishedPosts = shouldKeepPreviousFeed ? previousFreshPosts : posts;
+
+  await writeFeedFile(publishedPosts);
   await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
 
   return {
     updatedAt: new Date().toISOString(),
-    posts,
+    posts: publishedPosts,
     countriesChecked,
     activeCountries: activeByCountry.size,
     selectedSources: selectedSources.length,
     sourcesChecked,
     importedPosts,
     refreshedPosts,
-    removedPosts: Math.max(0, (feedFile.posts || []).length - posts.length),
-    existingFreshPostsCount: posts.length,
+    removedPosts: Math.max(0, previousFreshPosts.length - publishedPosts.length),
+    existingFreshPostsCount: publishedPosts.length,
     sourcesWithNewPosts,
     sourcesWithRefreshedPosts,
+    sourceFailures,
+    healedCorruptedSources,
+    keptPreviousFeed: shouldKeepPreviousFeed,
   };
 }

@@ -2,6 +2,7 @@ const CACHE_NAME = 'margelet-shell-v1';
 const CORE_ASSETS = [
   '/',
   '/manifest.webmanifest',
+  '/icon-192.png',
   '/icon-512.png',
   '/hero.webp',
   '/manifest-hero.webp',
