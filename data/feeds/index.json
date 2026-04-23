@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-23T00:00:28.297Z",
+  "updatedAt": "2026-04-23T01:14:32.404Z",
   "countries": {
     "en": {
       "code": "en",
@@ -8,15 +8,23 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/en.json",
-      "updatedAt": "2026-04-23T00:00:28.297Z"
+      "updatedAt": "2026-04-23T01:14:32.404Z"
+    },
+    "kk": {
+      "code": "kk",
+      "posts": 17,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/kk.json",
+      "updatedAt": "2026-04-23T01:14:32.404Z"
     },
     "ru": {
       "code": "ru",
-      "posts": 216,
+      "posts": 219,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ru.json",
-      "updatedAt": "2026-04-23T00:00:28.297Z"
+      "updatedAt": "2026-04-23T01:14:32.404Z"
     }
   }
 }
