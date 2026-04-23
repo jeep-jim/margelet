@@ -71,32 +71,40 @@ function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
   return unique.length ? unique : [fallback];
 }
 
-function buildSource(body: Record<string, unknown>): StoredSource | null {
-  const handle = normalizeHandle(body.handle);
+function buildSource(body: Record<string, unknown>, existing?: StoredSource | null): StoredSource | null {
+  const handle = normalizeHandle(body.handle ?? existing?.handle);
   if (!handle) return null;
 
-  const countryCode = normalizeCountryCode(body.countryCode) as StoredSource["countryCode"];
-  const defaultTag = (asString(body.defaultTag, "other") as ContentTag) || "other";
+  const countryCode = normalizeCountryCode(
+    body.countryCode ?? existing?.countryCode
+  ) as StoredSource["countryCode"];
+  const defaultTag =
+    (asString(body.defaultTag, existing?.defaultTag || "other") as ContentTag) || "other";
   const now = new Date().toISOString();
 
   return {
-    id: asString(body.id) || `${countryCode}:${handle}`,
+    id: asString(body.id) || existing?.id || `${countryCode}:${handle}`,
     countryCode,
     handle,
-    title: asString(body.title) || handle,
-    avatarUrl: asString(body.avatarUrl) || null,
-    verified: Boolean(body.verified),
+    title: asString(body.title) || existing?.title || handle,
+    avatarUrl: asString(body.avatarUrl) || existing?.avatarUrl || null,
+    verified:
+      typeof body.verified === "boolean" ? Boolean(body.verified) : Boolean(existing?.verified),
     defaultTag,
-    tags: normalizeTags(body.tags, defaultTag),
-    status: asString(body.status) === "paused" ? "paused" : "active",
-    note: asString(body.note) || null,
-    createdAt: asString(body.createdAt) || now,
+    tags: normalizeTags(body.tags ?? existing?.tags, defaultTag),
+    status: asString(body.status, existing?.status || "active") === "paused" ? "paused" : "active",
+    note: asString(body.note) || existing?.note || null,
+    createdAt: asString(body.createdAt) || existing?.createdAt || now,
     updatedAt: now,
-    lastCheckedAt: asString(body.lastCheckedAt) || null,
-    lastImportedAt: asString(body.lastImportedAt) || null,
-    lastSeenPostId: asNumber(body.lastSeenPostId),
+    lastCheckedAt: asString(body.lastCheckedAt) || existing?.lastCheckedAt || null,
+    lastImportedAt: asString(body.lastImportedAt) || existing?.lastImportedAt || null,
+    lastSeenPostId: asNumber(body.lastSeenPostId) ?? existing?.lastSeenPostId ?? null,
     importedPostsCount:
-      typeof body.importedPostsCount === "number" ? body.importedPostsCount : 0,
+      typeof body.importedPostsCount === "number"
+        ? body.importedPostsCount
+        : existing?.importedPostsCount || 0,
+    lastRefreshCursorPostId:
+      asNumber(body.lastRefreshCursorPostId) ?? existing?.lastRefreshCursorPostId ?? null,
   };
 }
 
@@ -133,54 +141,62 @@ async function listSources(requestedCountryCode: string) {
   );
 }
 
-async function upsertSingleSource(source: StoredSource) {
+async function upsertSingleSource(sourcePatch: Record<string, unknown>) {
   const sourcesFile = await readSourcesFile<StoredSource>();
   const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
 
+  const sourceId = asString(sourcePatch.id);
+  const sourceHandle = normalizeHandle(sourcePatch.handle);
+  const sourceCountryCode = normalizeCountryCode(sourcePatch.countryCode);
+
   const existingIndex = current.findIndex(
     (item) =>
-      item.id === source.id ||
-      (item.handle === source.handle && item.countryCode === source.countryCode)
+      (sourceId && item.id === sourceId) ||
+      (sourceHandle && item.handle === sourceHandle && item.countryCode === sourceCountryCode)
   );
+
+  const existing = existingIndex >= 0 ? current[existingIndex] : null;
+  const source = buildSource(sourcePatch, existing);
+  if (!source) {
+    throw new Error("Invalid source payload");
+  }
 
   const next = [...current];
 
   if (existingIndex >= 0) {
-    next[existingIndex] = {
-      ...next[existingIndex],
-      ...source,
-      createdAt: next[existingIndex].createdAt || source.createdAt,
-      updatedAt: new Date().toISOString(),
-    };
+    next[existingIndex] = source;
   } else {
     next.unshift(source);
   }
 
   await writeSourcesFile(sortSources(next));
-  return next;
+  return { source, next };
 }
 
-async function bulkCreateSources(items: StoredSource[]) {
+async function bulkCreateSources(items: Record<string, unknown>[]) {
   const sourcesFile = await readSourcesFile<StoredSource>();
   const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
   const next = [...current];
   let created = 0;
   let updated = 0;
 
-  for (const source of items) {
+  for (const patch of items) {
+    const sourceId = asString(patch.id);
+    const sourceHandle = normalizeHandle(patch.handle);
+    const sourceCountryCode = normalizeCountryCode(patch.countryCode);
+
     const existingIndex = next.findIndex(
       (item) =>
-        item.id === source.id ||
-        (item.handle === source.handle && item.countryCode === source.countryCode)
+        (sourceId && item.id === sourceId) ||
+        (sourceHandle && item.handle === sourceHandle && item.countryCode === sourceCountryCode)
     );
 
+    const existing = existingIndex >= 0 ? next[existingIndex] : null;
+    const source = buildSource(patch, existing);
+    if (!source) continue;
+
     if (existingIndex >= 0) {
-      next[existingIndex] = {
-        ...next[existingIndex],
-        ...source,
-        createdAt: next[existingIndex].createdAt || source.createdAt,
-        updatedAt: new Date().toISOString(),
-      };
+      next[existingIndex] = source;
       updated += 1;
     } else {
       next.unshift(source);
@@ -290,22 +306,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             ? (payload.source as Record<string, unknown>)
             : payload;
 
-        const source = buildSource(sourcePayload);
-        if (!source) {
-          return res.status(400).json({ ok: false, error: "Invalid source payload" });
-        }
-
-        const sources = await upsertSingleSource(source);
-        return res.status(200).json({ ok: true, source, sources });
+        const result = await upsertSingleSource(sourcePayload);
+        return res.status(200).json({ ok: true, source: result.source, sources: result.next });
       }
 
       if (action === "bulk-create") {
         const rawSources = Array.isArray(payload.sources) ? payload.sources : [];
-        const prepared = rawSources
-          .map((item: unknown) =>
-            buildSource((item || {}) as Record<string, unknown>)
-          )
-          .filter((item): item is StoredSource => Boolean(item));
+        const prepared = rawSources.filter(
+          (item): item is Record<string, unknown> => Boolean(item) && typeof item === "object"
+        );
 
         if (!prepared.length) {
           return res
