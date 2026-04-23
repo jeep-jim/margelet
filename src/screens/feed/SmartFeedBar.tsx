@@ -448,7 +448,7 @@ function getSwitchTrackClasses(
   checked: boolean,
   primary: boolean,
 ) {
-  if (primary) {
+  if (checked && primary) {
     return "border-[#2f6df6] bg-[#2f6df6]";
   }
 
@@ -468,7 +468,7 @@ function getSwitchThumbClasses(
   checked: boolean,
   primary: boolean,
 ) {
-  if (primary) {
+  if (checked && primary) {
     return "left-[20px] bg-white";
   }
 
@@ -514,10 +514,16 @@ export function SmartFeedBar({
     value: FeedMediaMode;
     label: string;
     mobileLabel?: string;
+    desktopLabel?: string;
     icon?: React.ReactNode;
-  }> = useMemo(
+  }> = useMemo(    
     () => [
-      { value: "all", label: copy.modeAll, mobileLabel: copy.modeAll },
+      {
+        value: "all",
+        label: copy.modeAll,
+        mobileLabel: "24",
+        desktopLabel: `24 ${copy.modeAll}`,
+      },      
       {
         value: "text",
         label: copy.modeText,
@@ -588,6 +594,7 @@ export function SmartFeedBar({
                         event.stopPropagation();
                         onChangeMediaMode(option.value);
                       }}
+                      
                       className={`inline-flex h-10 shrink-0 items-center justify-center rounded-full border px-3 text-sm font-medium transition sm:h-10 sm:px-3.5 ${
                         active ? activeClasses : inactivePillClasses
                       } ${
@@ -598,7 +605,10 @@ export function SmartFeedBar({
                       aria-pressed={active}
                     >
                       {option.value === "all" ? (
-                        <span className="truncate">{option.mobileLabel ?? option.label}</span>
+                        <>
+                          <span className="sm:hidden">{option.mobileLabel ?? option.label}</span>
+                          <span className="hidden sm:inline">{option.desktopLabel ?? option.label}</span>
+                        </>
                       ) : (
                         <>
                           <span className="sm:hidden">{option.icon}</span>
@@ -607,7 +617,7 @@ export function SmartFeedBar({
                             <span>{option.label}</span>
                           </span>
                         </>
-                      )}
+                      )}                      
                     </button>
                   );
                 })}
@@ -682,14 +692,13 @@ export function SmartFeedBar({
                         type="button"
                         onClick={(event) => {
                           event.stopPropagation();
-                          if (isPrimary) return;
                           onToggleCountry(country);
-                        }}
+                        }}                        
                         className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getSwitchTrackClasses(
                           isDark,
                           checked,
                           isPrimary,
-                        )} ${isPrimary ? "cursor-default" : ""}`}
+                        )}`}                        
                         aria-pressed={checked}
                         aria-label={`${meta.label} ${checked ? "enabled" : "disabled"}`}
                       >
