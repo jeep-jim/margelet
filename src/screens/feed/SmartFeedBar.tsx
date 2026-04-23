@@ -433,8 +433,8 @@ function getInactiveCountryClasses(isDark: boolean) {
 
 function getDropdownShellClasses(isDark: boolean, open: boolean) {
   const base = isDark
-    ? "absolute left-0 right-0 top-full z-[140] overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200"
-    : "absolute left-0 right-0 top-full z-[140] overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface-soft text-primary shadow-[0_12px_30px_rgba(0,0,0,0.10)] transition-all duration-200";
+    ? "absolute left-0 right-0 top-full z-[120] overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200"    
+    : "absolute left-0 right-0 top-full z-[120] overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface-soft text-primary shadow-[0_12px_30px_rgba(0,0,0,0.10)] transition-all duration-200";
 
   return `${base} ${
     open
@@ -446,9 +446,9 @@ function getDropdownShellClasses(isDark: boolean, open: boolean) {
 function getSwitchTrackClasses(
   isDark: boolean,
   checked: boolean,
-  primary: boolean,
+  primary: boolean
 ) {
-  if (checked && primary) {
+  if (primary) {
     return "border-[#2f6df6] bg-[#2f6df6]";
   }
 
@@ -466,9 +466,9 @@ function getSwitchTrackClasses(
 function getSwitchThumbClasses(
   isDark: boolean,
   checked: boolean,
-  primary: boolean,
+  primary: boolean
 ) {
-  if (checked && primary) {
+  if (primary) {
     return "left-[20px] bg-white";
   }
 
@@ -488,7 +488,7 @@ export function SmartFeedBar({
   visible = true,
   availableCountries,
   selectedCountries,
-  onToggleCountry,
+  onToggleCountry, 
 }: {
   copy: FeedScreenCopy;
   mediaMode: FeedMediaMode;
@@ -505,25 +505,37 @@ export function SmartFeedBar({
   const [countriesOpen, setCountriesOpen] = useState(false);
 
   useEffect(() => {
+    if (!countriesOpen) return;
+
+    const handleClose = () => {
+        setCountriesOpen(false);
+    };
+
+    window.addEventListener("scroll", handleClose, { passive: true });
+    window.addEventListener("touchmove", handleClose, { passive: true });
+    window.addEventListener("wheel", handleClose, { passive: true });
+
+    return () => {
+        window.removeEventListener("scroll", handleClose);
+        window.removeEventListener("touchmove", handleClose);
+        window.removeEventListener("wheel", handleClose);
+    };
+    }, [countriesOpen]);
+
+    useEffect(() => {
     if (!visible) {
-      setCountriesOpen(false);
+        setCountriesOpen(false);
     }
-  }, [visible]);
+    }, [visible]);
 
   const options: Array<{
     value: FeedMediaMode;
     label: string;
     mobileLabel?: string;
-    desktopLabel?: string;
     icon?: React.ReactNode;
-  }> = useMemo(    
+  }> = useMemo(
     () => [
-      {
-        value: "all",
-        label: copy.modeAll,
-        mobileLabel: "24",
-        desktopLabel: `24 ${copy.modeAll}`,
-      },      
+      { value: "all", label: copy.modeAll, mobileLabel: copy.modeAll },
       {
         value: "text",
         label: copy.modeText,
@@ -540,7 +552,7 @@ export function SmartFeedBar({
         icon: <Play className="h-4 w-4 fill-current" />,
       },
     ],
-    [copy.modeAll, copy.modePhoto, copy.modeText, copy.modeVideo],
+    [copy.modeAll, copy.modePhoto, copy.modeText, copy.modeVideo]
   );
 
   const baseCountry = String(locale).toLowerCase();
@@ -558,22 +570,18 @@ export function SmartFeedBar({
     <div
       className={
         floating
-          ? `fixed inset-x-0 isolate z-[80] transition-all duration-300 ease-out ${
+          ? `fixed inset-x-0 z-[55] transition-all duration-300 ease-out ${
               visible
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-3 opacity-0"
             }`
-          : "relative isolate z-[10]"
+          : "relative z-[2]"
       }
       style={floating ? { top: "var(--app-header-offset)" } : undefined}
       aria-hidden={floating ? !visible : undefined}
-      onClick={(event) => event.stopPropagation()}
-      onMouseDown={(event) => event.stopPropagation()}
-      onTouchStart={(event) => event.stopPropagation()}
-      onPointerDown={(event) => event.stopPropagation()}
     >
       <div className="mx-auto w-full max-w-[570px]">
-        <div className="relative z-[80]">
+        <div className="relative">
           <div
             className={`border-b transition-colors ${
               isDark
@@ -590,11 +598,7 @@ export function SmartFeedBar({
                     <button
                       key={option.value}
                       type="button"
-                      onClick={(event) => {
-                        event.stopPropagation();
-                        onChangeMediaMode(option.value);
-                      }}
-                      
+                      onClick={() => onChangeMediaMode(option.value)}
                       className={`inline-flex h-10 shrink-0 items-center justify-center rounded-full border px-3 text-sm font-medium transition sm:h-10 sm:px-3.5 ${
                         active ? activeClasses : inactivePillClasses
                       } ${
@@ -605,10 +609,7 @@ export function SmartFeedBar({
                       aria-pressed={active}
                     >
                       {option.value === "all" ? (
-                        <>
-                          <span className="sm:hidden">{option.mobileLabel ?? option.label}</span>
-                          <span className="hidden sm:inline">{option.desktopLabel ?? option.label}</span>
-                        </>
+                        <span className="truncate">{option.mobileLabel ?? option.label}</span>
                       ) : (
                         <>
                           <span className="sm:hidden">{option.icon}</span>
@@ -617,7 +618,7 @@ export function SmartFeedBar({
                             <span>{option.label}</span>
                           </span>
                         </>
-                      )}                      
+                      )}
                     </button>
                   );
                 })}
@@ -626,10 +627,7 @@ export function SmartFeedBar({
               <div className="shrink-0">
                 <button
                   type="button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    setCountriesOpen((prev) => !prev);
-                  }}
+                  onClick={() => setCountriesOpen((prev) => !prev)}
                   className={`inline-flex h-10 min-w-[76px] items-center justify-center gap-2 rounded-full border px-3.5 text-sm font-medium transition ${
                     countriesOpen ? activeClasses : inactiveCountryClasses
                   }`}
@@ -645,13 +643,7 @@ export function SmartFeedBar({
             </div>
           </div>
 
-          <div
-            className={getDropdownShellClasses(isDark, countriesOpen)}
-            onClick={(event) => event.stopPropagation()}
-            onMouseDown={(event) => event.stopPropagation()}
-            onTouchStart={(event) => event.stopPropagation()}
-            onPointerDown={(event) => event.stopPropagation()}
-          >
+          <div className={getDropdownShellClasses(isDark, countriesOpen)}>
             <div className="px-4 pb-4 pt-4 sm:px-4">
               <div
                 className={`mb-3 text-sm font-medium ${
@@ -686,19 +678,19 @@ export function SmartFeedBar({
                         {isPrimary ? (
                           <span className="ml-1 text-[#2f6df6]">(мой)</span>
                         ) : null}
-                      </div>
+                      </div>                      
 
                       <button
                         type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
+                        onClick={() => {
+                          if (isPrimary) return;
                           onToggleCountry(country);
-                        }}                        
+                        }}
                         className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getSwitchTrackClasses(
                           isDark,
                           checked,
-                          isPrimary,
-                        )}`}                        
+                          isPrimary
+                        )} ${isPrimary ? "cursor-default" : ""}`}
                         aria-pressed={checked}
                         aria-label={`${meta.label} ${checked ? "enabled" : "disabled"}`}
                       >
@@ -706,10 +698,10 @@ export function SmartFeedBar({
                           className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${getSwitchThumbClasses(
                             isDark,
                             checked,
-                            isPrimary,
+                            isPrimary
                           )}`}
                         />
-                      </button>
+                      </button>                      
                     </div>
                   );
                 })}
