@@ -1,9 +1,17 @@
-import { AlertCircle, CheckCircle2, ChevronDown, Plus } from "lucide-react";
+import { AlertCircle, CheckCircle2, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
+import {
+  getParentTag,
+  getRelatedChildTags,
+  isChildTag,
+  isParentTag,
+  normalizeTagValues,
+  resolveTagLabel,
+} from "../../lib/tag-utils";
+import { SITE_TAG_GROUPS } from "../../lib/tags";
 import { normalizeTelegramUrl } from "../../lib/telegram";
 import type { ContentTag } from "../../types/app";
 import type { CountryCode } from "./admin.countries";
-import { ADMIN_TAG_OPTIONS } from "./admin.tag-options";
 import { AdminSectionCard } from "./AdminSectionCard";
 
 type AdminManualPostSectionProps = {
@@ -17,6 +25,11 @@ type SubmitState = "idle" | "submitting" | "success" | "error";
 type ParsedTelegramPost = {
   channel: string;
   postId: string;
+};
+
+type ParentGroupState = {
+  parentTag: ContentTag;
+  childTags: ContentTag[];
 };
 
 function parseTelegramPostUrl(raw: string): ParsedTelegramPost | null {
@@ -65,18 +78,47 @@ function normalizeSubmitError(message: string) {
   return value;
 }
 
+function getParentTags(tags: ContentTag[]): ContentTag[] {
+  const directParents = tags.filter(isParentTag) as ContentTag[];
+  const parentsFromChildren = tags
+    .map((value) => getParentTag(value)?.value)
+    .filter(Boolean) as ContentTag[];
+
+  return Array.from(new Set([...directParents, ...parentsFromChildren]));
+}
+
+function getChildTagsForParent(tags: ContentTag[], parentTag: ContentTag): ContentTag[] {
+  return tags.filter((value): value is ContentTag => {
+    if (!isChildTag(value)) return false;
+    const parent = getParentTag(value);
+    return parent?.value === parentTag;
+  });
+}
+
+function getParentGroups(tags: ContentTag[]): ParentGroupState[] {
+  return getParentTags(tags).map((parentTag) => ({
+    parentTag,
+    childTags: getChildTagsForParent(tags, parentTag),
+  }));
+}
+
+function buildTagPayload(groups: ParentGroupState[]) {
+  const values = groups.flatMap((group) => [group.parentTag, ...group.childTags]);
+  return normalizeTagValues(values) as ContentTag[];
+}
+
 export function AdminManualPostSection({
   telegramUserId,
   countryCode,
   onSubmitted,
 }: AdminManualPostSectionProps) {
   const [url, setUrl] = useState("");
-  const [selectedTag, setSelectedTag] = useState<ContentTag>("other");
-  const [tagsOpen, setTagsOpen] = useState(false);
+  const [selectedTags, setSelectedTags] = useState<ContentTag[]>(["other"]);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [submitMessage, setSubmitMessage] = useState("");
 
   const parsedPost = useMemo(() => parseTelegramPostUrl(url), [url]);
+  const selectedParentGroups = useMemo(() => getParentGroups(selectedTags), [selectedTags]);
 
   const validationMessage = useMemo(() => {
     if (!url.trim()) return "";
@@ -84,8 +126,52 @@ export function AdminManualPostSection({
     return "Нужна публичная ссылка вида t.me/channel/123. Приватные и кривые ссылки сюда не подходят.";
   }, [parsedPost, url]);
 
-  const selectedTagLabel =
-    ADMIN_TAG_OPTIONS.find((item) => item.value === selectedTag)?.label || "☝️ Другое";
+  const toggleParentTag = (parentTag: ContentTag) => {
+    setSelectedTags((prev) => {
+      const groups = getParentGroups(prev);
+      const exists = groups.some((group) => group.parentTag === parentTag);
+
+      if (exists) {
+        const next = buildTagPayload(groups.filter((group) => group.parentTag !== parentTag));
+        return next.length > 0 ? next : (["other"] as ContentTag[]);
+      }
+
+      return buildTagPayload([...groups, { parentTag, childTags: [] }]);
+    });
+  };
+
+  const toggleChildTag = (childTag: ContentTag) => {
+    setSelectedTags((prev) => {
+      const parentValue = getParentTag(childTag)?.value as ContentTag | undefined;
+      if (!parentValue) return prev;
+
+      const groups = getParentGroups(prev);
+      const groupIndex = groups.findIndex((group) => group.parentTag === parentValue);
+
+      if (groupIndex === -1) {
+        return buildTagPayload([
+          ...groups,
+          {
+            parentTag: parentValue,
+            childTags: [childTag],
+          },
+        ]);
+      }
+
+      const nextGroups = [...groups];
+      const group = nextGroups[groupIndex];
+      const hasChild = group.childTags.includes(childTag);
+
+      nextGroups[groupIndex] = {
+        ...group,
+        childTags: hasChild
+          ? group.childTags.filter((value) => value !== childTag)
+          : [...group.childTags, childTag],
+      };
+
+      return buildTagPayload(nextGroups);
+    });
+  };
 
   const handleSubmit = async () => {
     const cleanUrl = url.trim();
@@ -118,6 +204,15 @@ export function AdminManualPostSection({
       return;
     }
 
+    const normalizedTags = buildTagPayload(selectedParentGroups);
+    const parentTags = getParentTags(normalizedTags);
+
+    if (parentTags.length === 0) {
+      setSubmitState("error");
+      setSubmitMessage("Выбери хотя бы одну родительскую категорию.");
+      return;
+    }
+
     try {
       setSubmitState("submitting");
 
@@ -126,8 +221,8 @@ export function AdminManualPostSection({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           url: normalized,
-          tag: selectedTag,
-          tags: [selectedTag],
+          tag: parentTags[0],
+          tags: normalizedTags,
           role: "admin",
           locale: countryCode,
           addedByTelegramId: telegramUserId,
@@ -150,7 +245,7 @@ export function AdminManualPostSection({
           : "Пост добавлен вручную в выбранную страну."
       );
       setUrl("");
-      setTagsOpen(false);
+      setSelectedTags(["other"]);
     } catch (error: unknown) {
       setSubmitState("error");
       setSubmitMessage(
@@ -205,44 +300,119 @@ export function AdminManualPostSection({
             ) : null}
           </div>
 
-          <div>
-            <div className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/35">
-              Тег
+          <div className="rounded-[24px] border border-white/10 bg-[#151722] p-4">
+            <div className="mb-2 text-sm font-medium text-white">Категории поста</div>
+            <div className="mb-4 text-xs text-white/45">
+              Выбирай новые родительские категории. При желании можно сразу уточнить их подтегами.
             </div>
-            <button
-              type="button"
-              onClick={() => setTagsOpen((prev) => !prev)}
-              className="flex h-12 w-full items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 text-left text-sm text-white transition hover:bg-white/[0.07]"
-            >
-              <span>{selectedTagLabel}</span>
-              <ChevronDown className={`h-4 w-4 transition ${tagsOpen ? "rotate-180" : ""}`} />
-            </button>
 
-            {tagsOpen ? (
-              <div className="mt-3 flex flex-wrap gap-2">
-                {ADMIN_TAG_OPTIONS.map((tag) => {
-                  const active = selectedTag === tag.value;
+            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+              {SITE_TAG_GROUPS.map((group) => {
+                const isActive = selectedParentGroups.some((item) => item.parentTag === group.value);
+                const childCount =
+                  selectedParentGroups.find((item) => item.parentTag === group.value)?.childTags.length || 0;
+
+                return (
+                  <button
+                    key={group.value}
+                    type="button"
+                    onClick={() => toggleParentTag(group.value as ContentTag)}
+                    className={`rounded-2xl border px-3 py-3 text-left transition ${
+                      isActive
+                        ? "border-white bg-white text-black"
+                        : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="text-sm font-medium">
+                        {resolveTagLabel(group.value, "ru") || group.value}
+                      </span>
+                      {childCount > 0 ? (
+                        <span
+                          className={`rounded-full px-2 py-0.5 text-[11px] ${
+                            isActive ? "bg-black/10 text-black/70" : "bg-white/10 text-white/65"
+                          }`}
+                        >
+                          +{childCount}
+                        </span>
+                      ) : null}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {selectedParentGroups.length > 0 ? (
+              <div className="mt-4 space-y-3">
+                {selectedParentGroups.map((group) => {
+                  const childOptions = getRelatedChildTags(group.parentTag)
+                    .filter((tag) => !tag.value.endsWith("_all"))
+                    .map((tag) => tag.value as ContentTag);
+
+                  if (childOptions.length === 0) return null;
 
                   return (
-                    <button
-                      key={tag.value}
-                      type="button"
-                      onClick={() => {
-                        setSelectedTag(tag.value);
-                        setTagsOpen(false);
-                      }}
-                      className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
-                        active
-                          ? "bg-white text-black"
-                          : "bg-white/8 text-white/78 hover:bg-white/12"
-                      }`}
+                    <div
+                      key={group.parentTag}
+                      className="rounded-[20px] border border-white/10 bg-[#10121a] p-4"
                     >
-                      {tag.label}
-                    </button>
+                      <div className="mb-2 text-sm font-medium text-white">
+                        Подтеги · {resolveTagLabel(group.parentTag, "ru")}
+                      </div>
+                      <div className="mb-3 text-xs text-white/45">
+                        Родитель уже означает весь раздел. Здесь только уточнение темы.
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {childOptions.map((childTag) => {
+                          const isActive = group.childTags.includes(childTag);
+
+                          return (
+                            <button
+                              key={childTag}
+                              type="button"
+                              onClick={() => toggleChildTag(childTag)}
+                              className={`rounded-full border px-3 py-2 text-sm transition ${
+                                isActive
+                                  ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
+                                  : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
+                              }`}
+                            >
+                              {resolveTagLabel(childTag, "ru") || childTag}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
                   );
                 })}
               </div>
             ) : null}
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              {selectedParentGroups.length > 0 ? (
+                selectedParentGroups.flatMap((group) => [
+                  <div
+                    key={`parent-${group.parentTag}`}
+                    className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm text-white"
+                  >
+                    {resolveTagLabel(group.parentTag, "ru")}
+                  </div>,
+                  ...group.childTags.map((tag) => (
+                    <div
+                      key={tag}
+                      className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-sm text-[#d9f3ff]"
+                    >
+                      {resolveTagLabel(tag, "ru")}
+                    </div>
+                  )),
+                ])
+              ) : (
+                <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-sm text-white/40">
+                  Категории ещё не выбраны
+                </div>
+              )}
+            </div>
           </div>
 
           {submitMessage ? (
@@ -259,26 +429,22 @@ export function AdminManualPostSection({
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" />
               ) : submitState === "error" ? (
                 <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
-              ) : (
-                <Plus className="mt-0.5 h-4 w-4 shrink-0" />
-              )}
+              ) : null}
               <span>{submitMessage}</span>
             </div>
           ) : null}
 
-          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
-            <div className="text-sm text-white/55">
-              Добавление идёт в страну <span className="font-semibold text-white">{countryCode.toUpperCase()}</span>
-            </div>
-
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
+            <div className="text-sm text-white/60">Добавление идёт в страну <span className="font-medium text-white">{countryCode.toUpperCase()}</span></div>
             <button
               type="button"
               onClick={() => {
                 void handleSubmit();
               }}
               disabled={submitState === "submitting"}
-              className="inline-flex h-11 items-center justify-center rounded-full bg-white px-5 text-sm font-semibold text-black transition hover:bg-white/90 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
+              <Plus className="h-4 w-4" />
               {submitState === "submitting" ? "добавляю..." : "добавить пост"}
             </button>
           </div>

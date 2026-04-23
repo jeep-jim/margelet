@@ -1,6 +1,14 @@
 import { useMemo, useState } from "react";
+import {
+  getParentTag,
+  getRelatedChildTags,
+  isChildTag,
+  isParentTag,
+  normalizeTagValues,
+  resolveTagLabel,
+} from "../../lib/tag-utils";
+import { SITE_TAG_GROUPS } from "../../lib/tags";
 import type { ContentTag } from "../../types/app";
-import { ADMIN_TAG_OPTIONS } from "./admin.tag-options";
 import { AdminSectionCard } from "./AdminSectionCard";
 import type { CountryCode } from "./admin.countries";
 
@@ -8,6 +16,11 @@ type AdminBulkImportSectionProps = {
   telegramUserId: string | null;
   countryCode: CountryCode;
   onImported: () => Promise<void>;
+};
+
+type ParentGroupState = {
+  parentTag: ContentTag;
+  childTags: ContentTag[];
 };
 
 type BulkSourceRow = {
@@ -19,6 +32,39 @@ type BulkSourceRow = {
   tags: ContentTag[];
 };
 
+function normalizeHandle(value: string) {
+  return value.trim().replace(/^@+/, "").toLowerCase();
+}
+
+function getParentTags(tags: ContentTag[]): ContentTag[] {
+  const directParents = tags.filter(isParentTag) as ContentTag[];
+  const parentsFromChildren = tags
+    .map((value) => getParentTag(value)?.value)
+    .filter(Boolean) as ContentTag[];
+
+  return Array.from(new Set([...directParents, ...parentsFromChildren]));
+}
+
+function getChildTagsForParent(tags: ContentTag[], parentTag: ContentTag): ContentTag[] {
+  return tags.filter((value): value is ContentTag => {
+    if (!isChildTag(value)) return false;
+    const parent = getParentTag(value);
+    return parent?.value === parentTag;
+  });
+}
+
+function getParentGroups(tags: ContentTag[]): ParentGroupState[] {
+  return getParentTags(tags).map((parentTag) => ({
+    parentTag,
+    childTags: getChildTagsForParent(tags, parentTag),
+  }));
+}
+
+function buildTagPayload(groups: ParentGroupState[]) {
+  const values = groups.flatMap((group) => [group.parentTag, ...group.childTags]);
+  return normalizeTagValues(values) as ContentTag[];
+}
+
 function createRow(): BulkSourceRow {
   return {
     id: Math.random().toString(36).slice(2),
@@ -26,12 +72,8 @@ function createRow(): BulkSourceRow {
     title: "",
     note: "",
     active: true,
-    tags: [],
+    tags: ["other"],
   };
-}
-
-function normalizeHandle(value: string) {
-  return value.trim().replace(/^@+/, "").toLowerCase();
 }
 
 export function AdminBulkImportSection({
@@ -39,35 +81,74 @@ export function AdminBulkImportSection({
   countryCode,
   onImported,
 }: AdminBulkImportSectionProps) {
-  const [rows, setRows] = useState<BulkSourceRow[]>([createRow(), createRow(), createRow()]);
+  const [rows, setRows] = useState<BulkSourceRow[]>([createRow(), createRow()]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
-  const validRows = useMemo(
-    () => rows.filter((row) => normalizeHandle(row.handle)),
-    [rows]
-  );
+  const validRows = useMemo(() => rows.filter((row) => normalizeHandle(row.handle)), [rows]);
 
   const updateRow = <K extends keyof BulkSourceRow>(
     rowId: string,
     key: K,
     value: BulkSourceRow[K]
   ) => {
-    setRows((prev) =>
-      prev.map((row) => (row.id === rowId ? { ...row, [key]: value } : row))
-    );
+    setRows((prev) => prev.map((row) => (row.id === rowId ? { ...row, [key]: value } : row)));
   };
 
-  const toggleTag = (rowId: string, tag: ContentTag) => {
+  const toggleParentTag = (rowId: string, parentTag: ContentTag) => {
     setRows((prev) =>
       prev.map((row) => {
         if (row.id !== rowId) return row;
 
-        const nextTags = row.tags.includes(tag)
-          ? row.tags.filter((item) => item !== tag)
-          : [...row.tags, tag];
+        const groups = getParentGroups(row.tags);
+        const exists = groups.some((group) => group.parentTag === parentTag);
 
-        return { ...row, tags: nextTags };
+        if (exists) {
+          const next = buildTagPayload(groups.filter((group) => group.parentTag !== parentTag));
+          return { ...row, tags: next.length > 0 ? next : (["other"] as ContentTag[]) };
+        }
+
+        return { ...row, tags: buildTagPayload([...groups, { parentTag, childTags: [] }]) };
+      })
+    );
+  };
+
+  const toggleChildTag = (rowId: string, childTag: ContentTag) => {
+    setRows((prev) =>
+      prev.map((row) => {
+        if (row.id !== rowId) return row;
+
+        const parentValue = getParentTag(childTag)?.value as ContentTag | undefined;
+        if (!parentValue) return row;
+
+        const groups = getParentGroups(row.tags);
+        const groupIndex = groups.findIndex((group) => group.parentTag === parentValue);
+
+        if (groupIndex === -1) {
+          return {
+            ...row,
+            tags: buildTagPayload([
+              ...groups,
+              {
+                parentTag: parentValue,
+                childTags: [childTag],
+              },
+            ]),
+          };
+        }
+
+        const nextGroups = [...groups];
+        const group = nextGroups[groupIndex];
+        const hasChild = group.childTags.includes(childTag);
+
+        nextGroups[groupIndex] = {
+          ...group,
+          childTags: hasChild
+            ? group.childTags.filter((value) => value !== childTag)
+            : [...group.childTags, childTag],
+        };
+
+        return { ...row, tags: buildTagPayload(nextGroups) };
       })
     );
   };
@@ -86,18 +167,28 @@ export function AdminBulkImportSection({
   const submit = async () => {
     if (!telegramUserId) return;
 
-    const payload = validRows.map((row) => ({
-      handle: normalizeHandle(row.handle),
-      title: row.title.trim(),
-      note: row.note.trim(),
-      status: row.active ? "active" : "paused",
-      countryCode,
-      tags: row.tags,
-      defaultTag: row.tags[0] || "other",
-    }));
+    const payload = validRows.map((row) => {
+      const normalizedTags = buildTagPayload(getParentGroups(row.tags));
+      const parentTags = getParentTags(normalizedTags);
+
+      return {
+        handle: normalizeHandle(row.handle),
+        title: row.title.trim(),
+        note: row.note.trim(),
+        status: row.active ? "active" : "paused",
+        countryCode,
+        tags: normalizedTags,
+        defaultTag: parentTags[0] || "other",
+      };
+    });
 
     if (!payload.length) {
       setMessage("Добавь хотя бы один валидный канал");
+      return;
+    }
+
+    if (payload.some((row) => !row.tags.length)) {
+      setMessage("В каждой строке выбери хотя бы одну родительскую категорию");
       return;
     }
 
@@ -124,11 +215,9 @@ export function AdminBulkImportSection({
 
       await onImported();
       setMessage(`Загружено каналов: ${data?.created || payload.length}`);
-      setRows([createRow(), createRow(), createRow()]);
+      setRows([createRow(), createRow()]);
     } catch (error: unknown) {
-      setMessage(
-        error instanceof Error ? error.message : "Не удалось загрузить пачку каналов"
-      );
+      setMessage(error instanceof Error ? error.message : "Не удалось загрузить пачку каналов");
     } finally {
       setIsSubmitting(false);
     }
@@ -137,7 +226,7 @@ export function AdminBulkImportSection({
   return (
     <AdminSectionCard
       title="Пакетное добавление каналов"
-      subtitle="Добавляй сколько нужно строк, указывай теги сразу и загружай одной кнопкой."
+      subtitle="Добавляй сколько нужно строк, указывай новые категории сразу и загружай одной кнопкой."
       collapsible
       defaultCollapsed
       badge={
@@ -152,86 +241,175 @@ export function AdminBulkImportSection({
         </div>
 
         <div className="space-y-3">
-          {rows.map((row, index) => (
-            <div
-              key={row.id}
-              className="rounded-[28px] border border-white/10 bg-[#101119] p-4"
-            >
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <div className="text-sm font-medium text-white">
-                  Канал #{index + 1}
+          {rows.map((row, index) => {
+            const selectedParentGroups = getParentGroups(row.tags);
+
+            return (
+              <div key={row.id} className="rounded-[28px] border border-white/10 bg-[#101119] p-4">
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <div className="text-sm font-medium text-white">Канал #{index + 1}</div>
+
+                  <button
+                    type="button"
+                    onClick={() => removeRow(row.id)}
+                    className="rounded-full bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-red-400"
+                  >
+                    удалить
+                  </button>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => removeRow(row.id)}
-                  className="rounded-full bg-red-500 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-red-400"
-                >
-                  удалить
-                </button>
-              </div>
-
-              <div className="grid gap-3 md:grid-cols-2">
-                <input
-                  value={row.handle}
-                  onChange={(event) => updateRow(row.id, "handle", event.target.value)}
-                  placeholder="@channel_handle"
-                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
-                />
-
-                <input
-                  value={row.title}
-                  onChange={(event) => updateRow(row.id, "title", event.target.value)}
-                  placeholder="Название канала"
-                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
-                />
-              </div>
-
-              <div className="mt-3 grid gap-3 md:grid-cols-[1fr_180px]">
-                <input
-                  value={row.note}
-                  onChange={(event) => updateRow(row.id, "note", event.target.value)}
-                  placeholder="Заметка / комментарий"
-                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
-                />
-
-                <label className="flex items-center justify-between rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-sm text-white">
-                  <span>{row.active ? "активен" : "пауза"}</span>
+                <div className="grid gap-3 md:grid-cols-2">
                   <input
-                    type="checkbox"
-                    checked={row.active}
-                    onChange={(event) => updateRow(row.id, "active", event.target.checked)}
-                    className="h-4 w-4 accent-white"
+                    value={row.handle}
+                    onChange={(event) => updateRow(row.id, "handle", event.target.value)}
+                    placeholder="@channel_handle"
+                    className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
                   />
-                </label>
-              </div>
 
-              <div className="mt-4">
-                <div className="mb-3 text-sm font-medium text-white">Теги</div>
+                  <input
+                    value={row.title}
+                    onChange={(event) => updateRow(row.id, "title", event.target.value)}
+                    placeholder="Название канала"
+                    className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                  />
+                </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {ADMIN_TAG_OPTIONS.map((tagOption) => {
-                    const isActive = row.tags.includes(tagOption.value);
+                <div className="mt-3 grid gap-3 md:grid-cols-[1fr_180px]">
+                  <input
+                    value={row.note}
+                    onChange={(event) => updateRow(row.id, "note", event.target.value)}
+                    placeholder="Заметка / комментарий"
+                    className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                  />
 
-                    return (
-                      <button
-                        key={tagOption.value}
-                        type="button"
-                        onClick={() => toggleTag(row.id, tagOption.value)}
-                        className={`rounded-full border px-3 py-2 text-sm transition ${
-                          isActive
-                            ? "border-white bg-white text-black"
-                            : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
-                        }`}
-                      >
-                        {tagOption.label}
-                      </button>
-                    );
-                  })}
+                  <label className="flex items-center justify-between rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-sm text-white">
+                    <span>{row.active ? "активен" : "пауза"}</span>
+                    <input
+                      type="checkbox"
+                      checked={row.active}
+                      onChange={(event) => updateRow(row.id, "active", event.target.checked)}
+                      className="h-4 w-4 accent-white"
+                    />
+                  </label>
+                </div>
+
+                <div className="mt-4 rounded-[24px] border border-white/10 bg-[#151722] p-4">
+                  <div className="mb-2 text-sm font-medium text-white">Категории канала</div>
+                  <div className="mb-4 text-xs text-white/45">
+                    Здесь уже новая логика: родительские категории плюс уточняющие подтеги.
+                  </div>
+
+                  <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                    {SITE_TAG_GROUPS.map((group) => {
+                      const isActive = selectedParentGroups.some((item) => item.parentTag === group.value);
+                      const childCount =
+                        selectedParentGroups.find((item) => item.parentTag === group.value)?.childTags.length || 0;
+
+                      return (
+                        <button
+                          key={group.value}
+                          type="button"
+                          onClick={() => toggleParentTag(row.id, group.value as ContentTag)}
+                          className={`rounded-2xl border px-3 py-3 text-left transition ${
+                            isActive
+                              ? "border-white bg-white text-black"
+                              : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="text-sm font-medium">
+                              {resolveTagLabel(group.value, "ru") || group.value}
+                            </span>
+                            {childCount > 0 ? (
+                              <span
+                                className={`rounded-full px-2 py-0.5 text-[11px] ${
+                                  isActive ? "bg-black/10 text-black/70" : "bg-white/10 text-white/65"
+                                }`}
+                              >
+                                +{childCount}
+                              </span>
+                            ) : null}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {selectedParentGroups.length > 0 ? (
+                    <div className="mt-4 space-y-3">
+                      {selectedParentGroups.map((group) => {
+                        const childOptions = getRelatedChildTags(group.parentTag)
+                          .filter((tag) => !tag.value.endsWith("_all"))
+                          .map((tag) => tag.value as ContentTag);
+
+                        if (childOptions.length === 0) return null;
+
+                        return (
+                          <div
+                            key={group.parentTag}
+                            className="rounded-[20px] border border-white/10 bg-[#10121a] p-4"
+                          >
+                            <div className="mb-2 text-sm font-medium text-white">
+                              Подтеги · {resolveTagLabel(group.parentTag, "ru")}
+                            </div>
+                            <div className="mb-3 text-xs text-white/45">
+                              Здесь можно уточнить только уже выбранную категорию.
+                            </div>
+
+                            <div className="flex flex-wrap gap-2">
+                              {childOptions.map((childTag) => {
+                                const isActive = group.childTags.includes(childTag);
+
+                                return (
+                                  <button
+                                    key={childTag}
+                                    type="button"
+                                    onClick={() => toggleChildTag(row.id, childTag)}
+                                    className={`rounded-full border px-3 py-2 text-sm transition ${
+                                      isActive
+                                        ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
+                                        : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
+                                    }`}
+                                  >
+                                    {resolveTagLabel(childTag, "ru") || childTag}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : null}
+
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {selectedParentGroups.length > 0 ? (
+                      selectedParentGroups.flatMap((group) => [
+                        <div
+                          key={`parent-${row.id}-${group.parentTag}`}
+                          className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm text-white"
+                        >
+                          {resolveTagLabel(group.parentTag, "ru")}
+                        </div>,
+                        ...group.childTags.map((tag) => (
+                          <div
+                            key={`${row.id}-${tag}`}
+                            className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-sm text-[#d9f3ff]"
+                          >
+                            {resolveTagLabel(tag, "ru")}
+                          </div>
+                        )),
+                      ])
+                    ) : (
+                      <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-sm text-white/40">
+                        Категории ещё не выбраны
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
