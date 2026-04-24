@@ -98,6 +98,31 @@ function getInitials(source: TrustedSource) {
   return value.slice(0, 1).toUpperCase();
 }
 
+function SourceAvatar({ source }: { source: TrustedSource }) {
+  const [imageFailed, setImageFailed] = useState(false);
+  const avatarUrl = source.avatarUrl?.startsWith("data:image/svg+xml")
+    ? null
+    : source.avatarUrl;
+  const showImage = Boolean(avatarUrl) && !imageFailed;
+
+  return (
+    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white">
+      {showImage && avatarUrl ? (
+        <img
+          src={avatarUrl}
+          alt={source.title || source.handle}
+          className="h-full w-full object-cover"
+          loading="lazy"
+          onError={() => setImageFailed(true)}
+        />
+      ) : (
+        <span>{getInitials(source)}</span>
+      )}
+    </div>
+  );
+}
+
+
 export function AdminSourcesSection({
   telegramUserId,
   countryCode,
@@ -526,18 +551,7 @@ export function AdminSourcesSection({
                   className="rounded-[24px] border border-white/10 bg-[#151722] p-4"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white">
-                      {source.avatarUrl ? (
-                        <img
-                          src={source.avatarUrl}
-                          alt={source.title || source.handle}
-                          className="h-full w-full object-cover"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <span>{getInitials(source)}</span>
-                      )}
-                    </div>
+                    <SourceAvatar source={source} />
 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-3">

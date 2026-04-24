@@ -37,17 +37,23 @@ export function FeedSourceAvatar({
 }) {
   const sizeClass = compact ? "h-10 w-10" : "h-12 w-12";
   const textClass = compact ? "text-sm" : "text-base";
+  const [imageFailed, setImageFailed] = useState(false);
+  const avatarUrl = post.source.avatar?.startsWith("data:image/svg+xml")
+    ? null
+    : post.source.avatar;
+  const showImage = Boolean(avatarUrl) && !imageFailed;
 
   return (
     <div
       className={`${sizeClass} overflow-hidden rounded-full bg-surface-soft ${textClass} font-bold text-primary`}
     >
-      {post.source.avatar ? (
+      {showImage && avatarUrl ? (
         <img
-          src={post.source.avatar}
+          src={avatarUrl}
           alt={post.source.title}
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
+          onError={() => setImageFailed(true)}
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center">

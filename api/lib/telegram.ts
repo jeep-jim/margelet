@@ -292,6 +292,67 @@ function extractSourceAvatar(html: string) {
   return normalizeAssetUrl(imgAvatar);
 }
 
+
+function isTelegramGeneratedDataAvatar(url?: string | null) {
+  const value = String(url || "").trim().toLowerCase();
+  return value.startsWith("data:image/svg+xml");
+}
+
+async function fetchTelegramSourceHtml(handle: string) {
+  const candidates = [`https://t.me/s/${handle}`, `https://t.me/${handle}`];
+  let lastError: unknown = null;
+
+  for (const url of candidates) {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36",
+          Accept: "text/html,application/xhtml+xml",
+          "Accept-Language": "en-US,en;q=0.9,ru;q=0.8",
+          Referer: "https://t.me/",
+        },
+        redirect: "follow",
+      });
+
+      if (!response.ok) {
+        lastError = new Error(`Telegram source fetch failed: ${response.status}`);
+        continue;
+      }
+
+      const html = await response.text();
+      if (html) return html;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  if (lastError) {
+    console.warn("fetchTelegramSourceHtml fallback failed", lastError);
+  }
+
+  return null;
+}
+
+async function resolveSourceAvatar(html: string, handle: string) {
+  const embedAvatar = extractSourceAvatar(html);
+  if (embedAvatar && !isTelegramGeneratedDataAvatar(embedAvatar)) {
+    return embedAvatar;
+  }
+
+  const sourceHtml = await fetchTelegramSourceHtml(handle);
+  if (!sourceHtml) {
+    return null;
+  }
+
+  const pageAvatar = extractSourceAvatar(sourceHtml);
+  if (pageAvatar && !isTelegramGeneratedDataAvatar(pageAvatar)) {
+    return pageAvatar;
+  }
+
+  return null;
+}
+
 function extractTextHtml(html: string) {
   return (
     extract(
@@ -498,7 +559,7 @@ export async function ingestTelegramPost(url: string): Promise<TelegramIngest | 
     const text = decodeHtml(rawTextHtml);
     const links = extractLinks(rawTextHtml);
     const sourceTitle = extractSourceTitle(html, parsed.sourceHandle);
-    const sourceAvatar = extractSourceAvatar(html);
+    const sourceAvatar = await resolveSourceAvatar(html, parsed.sourceHandle);
 
     const verified =
       /tgme_icon_verified/i.test(html) ||

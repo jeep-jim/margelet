@@ -117,6 +117,12 @@ function extractAvatar(html: string) {
   return null;
 }
 
+
+function isTelegramGeneratedDataAvatar(url?: string | null) {
+  const value = String(url || "").trim().toLowerCase();
+  return value.startsWith("data:image/svg+xml");
+}
+
 function parsePreview(html: string, fallbackTitle: string) {
   const textHtml =
     extract(html, /<div class="tgme_widget_message_text[^>]*>([\s\S]*?)<\/div>/i) ||
@@ -188,7 +194,7 @@ export default async function handler(req: any, res: any) {
     const needsFallback =
       !preview ||
       (!preview.image && !preview.video) ||
-      !preview.avatar;
+      !preview.avatar || isTelegramGeneratedDataAvatar(preview.avatar);
 
     if (needsFallback) {
       try {
@@ -201,7 +207,12 @@ export default async function handler(req: any, res: any) {
           image: fallbackPreview.image || preview?.image || null,
           video: fallbackPreview.video || preview?.video || null,
           poster: fallbackPreview.poster || preview?.poster || null,
-          avatar: fallbackPreview.avatar || preview?.avatar || null,
+          avatar:
+            fallbackPreview.avatar && !isTelegramGeneratedDataAvatar(fallbackPreview.avatar)
+              ? fallbackPreview.avatar
+              : preview?.avatar && !isTelegramGeneratedDataAvatar(preview.avatar)
+                ? preview.avatar
+                : null,              
         };
       } catch {
         if (!preview) {
@@ -224,7 +235,7 @@ export default async function handler(req: any, res: any) {
       image: preview?.image || null,
       video: preview?.video || null,
       poster: preview?.poster || null,
-      avatar: preview?.avatar || null,
+      avatar: !isTelegramGeneratedDataAvatar(preview?.avatar) ? preview?.avatar || null : null,
       verified: false,
       hasMediaInOriginal: !!(preview?.image || preview?.video),
       mediaKind: preview?.video ? "video" : preview?.image ? "image" : "none",
