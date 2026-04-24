@@ -71,6 +71,11 @@ type CommitFile = {
   content: string;
 };
 
+type WriteFeedFileOptions = {
+  allowEmpty?: boolean;
+  reason?: string;
+};
+
 function getRepoRoot() {
   return process.cwd();
 }
@@ -623,9 +628,23 @@ export async function readFeedCountryPosts<T = unknown>(countryCode: string): Pr
   return chunks.flatMap((chunk) => (chunk && Array.isArray(chunk.posts) ? chunk.posts : []));
 }
 
-export async function writeFeedFile<T = unknown>(posts: T[]) {
+export async function writeFeedFile<T = unknown>(
+  posts: T[],
+  options: WriteFeedFileOptions = {}
+) {
   const updatedAt = new Date().toISOString();
   const orderedPosts = normalizeFeedPostOrder(posts);
+
+  if (orderedPosts.length === 0 && !options.allowEmpty) {
+    const previous = await readFeedFile<T>();
+    const previousCount = Array.isArray(previous.posts) ? previous.posts.length : 0;
+
+    if (previousCount > 0 || process.env.GITHUB_ACTIONS === "true") {
+      throw new Error(
+        `Refusing to write empty feed snapshot. previousPosts=${previousCount}, reason=${options.reason || "not_provided"}`
+      );
+    }
+  }
 
   const payload: FeedFile<T> = {
     updatedAt,
@@ -645,7 +664,7 @@ export async function writeFeedFile<T = unknown>(posts: T[]) {
 }
 
 export async function clearFeedFile() {
-  await writeFeedFile([]);
+  await writeFeedFile([], { allowEmpty: true, reason: "clearFeedFile" });
 }
 
 export async function clearSourcesFile() {

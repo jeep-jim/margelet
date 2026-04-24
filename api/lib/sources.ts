@@ -760,7 +760,10 @@ export async function rebuildFeedFromSources(options?: {
   );
 
   const feedFile = await readFeedFile<IngestedPost>();
-  const previousFreshPosts = cleanupFeedPosts(feedFile.posts || []);
+  const previousAllPosts = dedupePosts(
+    Array.isArray(feedFile.posts) ? feedFile.posts : []
+  );
+  const previousFreshPosts = cleanupFeedPosts(previousAllPosts);
   const lastUpdatedMs = parseIsoMs(feedFile.updatedAt) ?? 0;
 
   if (!forceFullCountryScan && lastUpdatedMs > 0) {
@@ -867,13 +870,17 @@ export async function rebuildFeedFromSources(options?: {
   }
 
   const posts = interleavePostsBySource(cleanupFeedPosts(currentPosts));
-  const shouldKeepPreviousFeed =
-    posts.length === 0 &&
-    previousFreshPosts.length > 0 &&
-    activeSources.length > 0 &&
-    sourceFailures > 0;
 
-  const publishedPosts = shouldKeepPreviousFeed ? previousFreshPosts : posts;
+  const shouldKeepPreviousFeed =
+    posts.length === 0 && previousAllPosts.length > 0 && activeSources.length > 0;
+
+  const publishedPosts = shouldKeepPreviousFeed ? previousAllPosts : posts;
+
+  if (posts.length === 0 && activeSources.length > 0 && previousAllPosts.length === 0) {
+    throw new Error(
+      `Refusing to publish empty feed: activeSources=${activeSources.length}, selectedSources=${selectedSources.length}, sourcesChecked=${sourcesChecked}, sourceFailures=${sourceFailures}`
+    );
+  }
 
   await writeFeedFile(publishedPosts);
   await writeSourcesFile(sortSources(Array.from(sourcesById.values())));

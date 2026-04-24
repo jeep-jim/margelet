@@ -37,7 +37,10 @@ async function runCleanupOnly() {
   const currentPosts = Array.isArray(feedFile.posts) ? feedFile.posts : [];
   const cleanedPosts = cleanupFeedPosts(currentPosts);
 
-  await writeFeedFile(cleanedPosts);
+  await writeFeedFile(cleanedPosts, {
+    allowEmpty: currentPosts.length === 0,
+    reason: "cleanup-only",
+  });
 
   const index = await readFeedIndexFile();
 
@@ -71,6 +74,22 @@ async function main() {
 
   const index = await readFeedIndexFile();
 
+  console.log(
+    JSON.stringify(
+      {
+        ok: true,
+        mode: "rebuild",
+        result,
+        indexCountries: Object.keys(index.countries).length,
+      },
+      null,
+      2
+    )
+  );
+
+  if (!result.skipped && result.activeCountries > 0 && result.posts.length === 0) {
+    throw new Error("Safety stop: rebuild produced 0 posts with active countries");
+  }
 }
 
 main().catch((error) => {
