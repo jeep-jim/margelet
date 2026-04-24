@@ -3,6 +3,7 @@ import {
   readFeedCountryPosts,
   readFeedFile,
   readFeedIndexFile,
+  readFeedSnapshotByPath,
 } from "./lib/github-store.js";
 
 function asString(value: unknown) {
@@ -19,13 +20,28 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const countryCode = asString(req.query.countryCode).toLowerCase();
-    const index = await readFeedIndexFile();
+    const rawFeedPath = asString(req.query.rawFeedPath);
 
     res.setHeader(
       "Cache-Control",
-      "public, s-maxage=120, stale-while-revalidate=300"
+      "public, max-age=0, s-maxage=60, stale-while-revalidate=120"
     );
+
+    if (rawFeedPath) {
+      const snapshot = await readFeedSnapshotByPath(rawFeedPath);
+
+      if (!snapshot) {
+        return res.status(404).json({
+          ok: false,
+          error: "Feed snapshot not found",
+        });
+      }
+
+      return res.status(200).json(snapshot);
+    }
+
+    const countryCode = asString(req.query.countryCode).toLowerCase();
+    const index = await readFeedIndexFile();
 
     if (countryCode) {
       const posts = await readFeedCountryPosts(countryCode);

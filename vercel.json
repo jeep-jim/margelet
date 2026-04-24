@@ -10,11 +10,11 @@
     },
     {
       "source": "/feed.json",
-      "destination": "/feed.json"
+      "destination": "/api/feed?rawFeedPath=feed.json"
     },
     {
       "source": "/feeds/(.*)",
-      "destination": "/feeds/$1"
+      "destination": "/api/feed?rawFeedPath=$1"
     },
     {
       "source": "/jim/admin",

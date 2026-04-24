@@ -511,6 +511,45 @@ function buildCountryFeedFiles<T>(posts: T[], updatedAt: string) {
   };
 }
 
+
+function normalizeFeedSnapshotRelativePath(value: unknown) {
+  const raw = String(value || "")
+    .trim()
+    .replace(/^\/+/, "")
+    .replace(/\\/g, "/");
+
+  if (!raw || raw === "index.json") {
+    return FEEDS_INDEX_PATH;
+  }
+
+  if (raw === "feed.json") {
+    return FEED_PATH;
+  }
+
+  if (raw.includes("..")) {
+    return null;
+  }
+
+  if (/^[a-z0-9-]+\.json$/i.test(raw)) {
+    return `data/feeds/${raw.toLowerCase()}`;
+  }
+
+  if (/^[a-z0-9-]+\/[0-9]+\.json$/i.test(raw)) {
+    return `data/feeds/${raw.toLowerCase()}`;
+  }
+
+  return null;
+}
+
+export async function readFeedSnapshotByPath<T = unknown>(rawPath: string): Promise<T | null> {
+  const relativePath = normalizeFeedSnapshotRelativePath(rawPath);
+  if (!relativePath) {
+    return null;
+  }
+
+  return readRepoJsonFile<T | null>(relativePath, null);
+}
+
 export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
   return readRepoJsonFile<SourcesFile<T>>(SOURCES_PATH, {
     updatedAt: new Date(0).toISOString(),
