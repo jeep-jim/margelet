@@ -1,6 +1,65 @@
 {
-  "updatedAt": "2026-04-24T23:27:12.329Z",
+  "updatedAt": "2026-04-24T23:54:54.162Z",
   "posts": [
+    {
+      "id": 832001507,
+      "postUrl": "https://t.me/rian_ru/337496?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/hHmj1JXIae2AG3-J5a7DNk7uHg7z__SZUikccTnHMgmhG6ZsouDQ7_wXg_wpCfngXn6cqui_slm4iEC36G5nZ5Ymcro2OxzB253k0ungW_m19459zl56XRJPgojafeYXcNjbKH8XSZlKrcS6G_xvhayhTGAY3zxaCsxMN6TlnQHVovwSF9j62_sluqXeZ5b_CR_DiAAKTxTiq50kEQnQGitRKR-MFoidsbirxh_J22lGGBoi-IV0k0gjkEwRAgrv22FCLPzZLiGK7Nr3PEQ9-sAKfA-p3awWL-GHlNOG9J37koyDxpM_4fXDHy6P6prC4Scs-P12Kg7vmbNEPJ_RFA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Аферисты стали расклеивать на прокатных самокатах и велосипедах стикеры с поддельными QR-кодами.\n\nПри сканировании жертва попадает на фишинговую страницу, где вводит данные банковской карты для \"аренды\", после чего средства попадают мошенникам.\n\nЭксперты советуют использовать только официальные приложения для аренды электросамокатов, а не сторонние сайты по QR-коду, и перед сканированием проверять, не наклеен ли стикер поверх оригинального кода.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "расклеивать",
+          "url": "https://ria.ru/20260425/moshenniki-2088844420.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T23:54:49.966Z",
+      "expiresAt": "2026-04-25T23:54:49.966Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T23:54:49.966Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T23:54:49.966Z"
+      }
+    },
     {
       "id": 2210508266,
       "postUrl": "https://t.me/mash/73767?single",
@@ -122,65 +181,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T22:58:08.121Z"
-      }
-    },
-    {
-      "id": 1989727488,
-      "postUrl": "https://t.me/rian_ru/337495?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/VxAt1RUdBGd2NYJ6P2DaDDtb2DGiifgz4YUHIl9zPUbyzzar6Kg8zT8CVTA-1xjKBDzbEUBi_6Y5gKShJEN0uWK2jU4qhMZh12Z2_ykMXaxBl9IJaDW-Vj8ubzVtm2AISruhAEM4hmFOR1K6_yJGfFoQ3mn-iJ-WveSu1JHae9cp_N7jmThDhsz4mccKsXc7sa8CsW0kW6dBoHWi85yz8QBCIp9uiFnXp9vy6dVS94OJrvynXzNUHOFXytyiGf8JyaaU8p5BTOGubQkfrEXv3N0al0uWFLavNrVQ_jrvI_6kU2wV7F30XvfLAXGV-b8WtgttTYGhVieYVin6AC-G8g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Москву ждет солнце и до 10 градусов тепла в субботу.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "ждет",
-          "url": "https://ria.ru/20260424/pogoda-2088835360.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T22:58:04.133Z",
-      "expiresAt": "2026-04-25T22:58:04.133Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T22:58:04.133Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T22:58:04.133Z"
       }
     },
     {
@@ -642,7 +642,7 @@
       "createdAt": "2026-04-24T20:30:55.068Z",
       "expiresAt": "2026-04-25T20:30:55.068Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:55.068Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:53.811Z",
       "tag": "other",
       "tags": [
         "other",
@@ -695,7 +695,7 @@
       "createdAt": "2026-04-24T20:30:52.599Z",
       "expiresAt": "2026-04-25T20:30:52.599Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:52.599Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:51.606Z",
       "tag": "news",
       "tags": [
         "news"
@@ -747,7 +747,7 @@
       "createdAt": "2026-04-24T20:30:49.467Z",
       "expiresAt": "2026-04-25T20:30:49.467Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:49.467Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:48.837Z",
       "tag": "humor",
       "tags": [
         "humor"
@@ -799,7 +799,7 @@
       "createdAt": "2026-04-24T20:00:34.121Z",
       "expiresAt": "2026-04-25T20:00:34.121Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:00:34.121Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:48.498Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -1586,7 +1586,7 @@
       "createdAt": "2026-04-24T14:06:00.352Z",
       "expiresAt": "2026-04-25T14:06:00.352Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:47.233Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:45.550Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -1659,6 +1659,65 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T11:52:04.494Z"
+      }
+    },
+    {
+      "id": 1989727488,
+      "postUrl": "https://t.me/rian_ru/337495?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/VxAt1RUdBGd2NYJ6P2DaDDtb2DGiifgz4YUHIl9zPUbyzzar6Kg8zT8CVTA-1xjKBDzbEUBi_6Y5gKShJEN0uWK2jU4qhMZh12Z2_ykMXaxBl9IJaDW-Vj8ubzVtm2AISruhAEM4hmFOR1K6_yJGfFoQ3mn-iJ-WveSu1JHae9cp_N7jmThDhsz4mccKsXc7sa8CsW0kW6dBoHWi85yz8QBCIp9uiFnXp9vy6dVS94OJrvynXzNUHOFXytyiGf8JyaaU8p5BTOGubQkfrEXv3N0al0uWFLavNrVQ_jrvI_6kU2wV7F30XvfLAXGV-b8WtgttTYGhVieYVin6AC-G8g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Москву ждет солнце и до 10 градусов тепла в субботу.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "ждет",
+          "url": "https://ria.ru/20260424/pogoda-2088835360.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T22:58:04.133Z",
+      "expiresAt": "2026-04-25T22:58:04.133Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T22:58:04.133Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T22:58:04.133Z"
       }
     },
     {
@@ -1769,59 +1828,6 @@
       }
     },
     {
-      "id": 861483905,
-      "postUrl": "https://t.me/rian_ru/337494?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Белому дому из-за решения Верховного суда о незаконности пошлин придется вернуть $159 миллиардов сборов, признал Трамп.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "признал",
-          "url": "https://ria.ru/20260424/tramp-2088835631.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T21:34:40.987Z",
-      "expiresAt": "2026-04-25T21:34:40.987Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T21:34:40.987Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T21:34:40.987Z"
-      }
-    },
-    {
       "id": 2252890420,
       "postUrl": "https://t.me/mosguru/31573?single",
       "source": {
@@ -1910,7 +1916,7 @@
       "createdAt": "2026-04-24T20:30:53.331Z",
       "expiresAt": "2026-04-25T20:30:53.331Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:53.331Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:52.245Z",
       "tag": "auto",
       "tags": [
         "auto"
@@ -2736,7 +2742,7 @@
       "createdAt": "2026-04-24T17:12:59.533Z",
       "expiresAt": "2026-04-25T17:12:59.533Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:46.567Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:44.898Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2906,7 +2912,7 @@
       "createdAt": "2026-04-24T12:46:21.278Z",
       "expiresAt": "2026-04-25T12:46:21.278Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:47.233Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:45.550Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -2932,6 +2938,59 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T12:46:21.278Z"
+      }
+    },
+    {
+      "id": 861483905,
+      "postUrl": "https://t.me/rian_ru/337494?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Белому дому из-за решения Верховного суда о незаконности пошлин придется вернуть $159 миллиардов сборов, признал Трамп.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "признал",
+          "url": "https://ria.ru/20260424/tramp-2088835631.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T21:34:40.987Z",
+      "expiresAt": "2026-04-25T21:34:40.987Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T21:34:40.987Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T21:34:40.987Z"
       }
     },
     {
@@ -3061,67 +3120,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T19:40:04.963Z"
-      }
-    },
-    {
-      "id": 2609483846,
-      "postUrl": "https://t.me/rian_ru/337493?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/dbc42c8abb.mp4?token=ZW2wH9YGpD_DIYmhuvjpR59_k0O8J-9dQJKfCyo77pe9MRu2PMeNH_hQHSb2EcPnwXIVH0BgsQo1TnEA1Pl5LcwiGh5ODOY6eXpxcJe-D6m4fhACvfu9eO4sD3451oEUF4FYGbKog6QlyG17kYJfcFG-65HV_zZ1Wqz0GKV_NGPL3fL8ISDeRY5A3NnFG4Z8r1NAA3TXEyCAU434Q6pLWdYLjMrJ4VaPRSVBJK8cdik2M4fLTNYh0HyF3W_N6dvOaVPW9HMiCXcqPDr31dTVSe7Ps6mWHNYawwj-Za018_mHxvFZqRZdqx6b6grgGG_0ZORsDBEogI_VaBKNJX-b1yTr5GOcyp3MzdYVwp5_mXmObAOB-_wNyLYzNtl3paVzpsO4Arm-wRFNiA-9sXeHad6q2qTbPsHXJkRlaoq8LlAhz0OnUjJbKwgA05wshoNUg_dme-E5Z0J1q2q03P4zpPkMpLz1_6tT0rRtBO0biQcc6B4yuvJR2VtvBHFv5GVZ7XgewqpL4VeMkyhPfsI1lN04AoUsGlXVXMiQTL6M4PFGD0l4lUvtGogSQYRPVKyGV0qxDTbiuqpuq6hjk8ApOwlW7Zx12k2aYao8ed4yQs4I2ZTLIhz-RYNCUsWFrIH8kTTBCB5pA4E11m_rQFnNx8-4ps9qRDrlck8B83okx3Y",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "\"Просто бомба\"\n\nАстрономы восхитились красотой мощной вспышки на Солнце.\n\nВторая X-вспышка просто бомба, конечно. Очень красивая.\n\nУченые уточнили, что все выбросы от солнечных вспышек пройдут мимо Земли и не окажут на нее никакого воздействия.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "восхитились",
-          "url": "https://t.me/lpixras/2468"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T20:30:50.688Z",
-      "expiresAt": "2026-04-25T20:30:50.688Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.688Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T20:30:50.688Z"
       }
     },
     {
@@ -3264,7 +3262,7 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/25ab5d9b09.mp4?token=ZE0RFsIkpJ5d0NAFW9y9vJyg3N3-BR7uuczzFnuMw_joas8VQXje-cZgdsYZ9STZtlMTzH9iZAaBLI5RNI25_aIai8wrv0fquesUtWjLu_4g8U4najqAW8I_Ec5h4S3gzP7VEIEbTbzTqjNwsIW21zuowpf4pm_riUbZVdZMdHQWbDKbEzMjUsU2lh6gmdE2MKZnOwPk_sXk4PVfG4x1DVP8-NtJDD9b4nG6PA2gaWIBdPQyr1fHaCufqOODuJ9iCYpeStLLq_EsyscUA2DJIW_gi2olE6XvzH_34hXMPeoM7zJOSQsAB3u3SxIP0cc1wPEbjiuo2Y9BzfJPaaeY3w",
+          "url": "https://cdn4.telesco.pe/file/25ab5d9b09.mp4?token=Q1SFtmPnCUerb2dwz2WkfkdkoFlJi-6K_SV0kAVpaEym6aGqola_bFYCLbfPbFakMSJqgqNQX0L0VZL_t4fcoC-SxlshyMkYCN4bhbj2SK2GFT_2HmaS7TQTlHuaROT4mggFg42RvcFj_P8uyZgoObNMTWSKi6g2YAfQosK3Z8e1ZBV2z81USIhOb-OejLD8tScDrGBL83OUhcHKdBQBGRwD2K_YL70xzNOvr2RRMiQ_Tbbf5jz63zySPqNFn4Ghmq2eU6xixUVLuKfAbM7NZSNEuWzijDujoOEdHpB0FAZS5mt7szQ8BQvm20ceryh110PHu4ud1rLQjFl1dqYxMA",
           "poster": null,
           "mimeType": "video/mp4"
         }
@@ -3276,7 +3274,7 @@
       "createdAt": "2026-04-24T17:13:08.648Z",
       "expiresAt": "2026-04-25T17:13:08.648Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.122Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:49.398Z",
       "tag": "news",
       "tags": [
         "news",
@@ -3339,7 +3337,7 @@
       "createdAt": "2026-04-24T19:12:25.568Z",
       "expiresAt": "2026-04-25T19:12:25.568Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T19:12:25.568Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:47.880Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4001,7 +3999,7 @@
       "createdAt": "2026-04-24T17:12:59.533Z",
       "expiresAt": "2026-04-25T17:12:59.533Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:46.567Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:44.898Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4020,6 +4018,67 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T17:12:59.533Z"
+      }
+    },
+    {
+      "id": 2609483846,
+      "postUrl": "https://t.me/rian_ru/337493?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/dbc42c8abb.mp4?token=ZW2wH9YGpD_DIYmhuvjpR59_k0O8J-9dQJKfCyo77pe9MRu2PMeNH_hQHSb2EcPnwXIVH0BgsQo1TnEA1Pl5LcwiGh5ODOY6eXpxcJe-D6m4fhACvfu9eO4sD3451oEUF4FYGbKog6QlyG17kYJfcFG-65HV_zZ1Wqz0GKV_NGPL3fL8ISDeRY5A3NnFG4Z8r1NAA3TXEyCAU434Q6pLWdYLjMrJ4VaPRSVBJK8cdik2M4fLTNYh0HyF3W_N6dvOaVPW9HMiCXcqPDr31dTVSe7Ps6mWHNYawwj-Za018_mHxvFZqRZdqx6b6grgGG_0ZORsDBEogI_VaBKNJX-b1yTr5GOcyp3MzdYVwp5_mXmObAOB-_wNyLYzNtl3paVzpsO4Arm-wRFNiA-9sXeHad6q2qTbPsHXJkRlaoq8LlAhz0OnUjJbKwgA05wshoNUg_dme-E5Z0J1q2q03P4zpPkMpLz1_6tT0rRtBO0biQcc6B4yuvJR2VtvBHFv5GVZ7XgewqpL4VeMkyhPfsI1lN04AoUsGlXVXMiQTL6M4PFGD0l4lUvtGogSQYRPVKyGV0qxDTbiuqpuq6hjk8ApOwlW7Zx12k2aYao8ed4yQs4I2ZTLIhz-RYNCUsWFrIH8kTTBCB5pA4E11m_rQFnNx8-4ps9qRDrlck8B83okx3Y",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "\"Просто бомба\"\n\nАстрономы восхитились красотой мощной вспышки на Солнце.\n\nВторая X-вспышка просто бомба, конечно. Очень красивая.\n\nУченые уточнили, что все выбросы от солнечных вспышек пройдут мимо Земли и не окажут на нее никакого воздействия.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "восхитились",
+          "url": "https://t.me/lpixras/2468"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T20:30:50.688Z",
+      "expiresAt": "2026-04-25T20:30:50.688Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T23:54:49.966Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T20:30:50.688Z"
       }
     },
     {
@@ -4147,67 +4206,6 @@
       }
     },
     {
-      "id": 1281888671,
-      "postUrl": "https://t.me/rian_ru/337492?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/abecdf7982.mp4?token=KYxUkKQXdumAckwAh5zxTQBLgLtcGe1Qc0awflQKSyuIPUhournTluWQHZQ77zytB9QwzLGuYFdzvreKeP8XRy4B6qblB3duIMpPcvOvpUousHN6YdO5vnWSxslKy9bPLOvRIDWGonvXW-cyOecfC-dll4jjAfJsJdEpNv0d0Tv7TeAf9gz5er7Ak6AdM49stwbqQq-SMRrDfiDhDDc7YOW7gxxCmfffH77F1I2jkEV7xt1wDxSbVC9vMRmPtVscXRjVTrfu-wwaNfu6NMfrF5Xp_rlS1iNLWuH75SzQf7HjI4xQkDDqQae9J9CB2GKPo8mLJ27pO6v1Ed1_WRwvTA",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Автобус и фура столкнулись в Ленинградской области, один человек погиб, десять пострадали.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "столкнулись",
-          "url": "https://ria.ru/20260424/dtp-2088832911.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T20:30:50.688Z",
-      "expiresAt": "2026-04-25T20:30:50.688Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.688Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T20:30:50.688Z"
-      }
-    },
-    {
       "id": 1334171046,
       "postUrl": "https://t.me/mosguru/31566?single",
       "source": {
@@ -4305,7 +4303,7 @@
       "createdAt": "2026-04-24T17:13:15.230Z",
       "expiresAt": "2026-04-25T17:13:15.230Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:53.331Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:52.245Z",
       "tag": "auto",
       "tags": [
         "auto"
@@ -4354,7 +4352,7 @@
       "createdAt": "2026-04-24T17:13:08.648Z",
       "expiresAt": "2026-04-25T17:13:08.648Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.122Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:49.398Z",
       "tag": "news",
       "tags": [
         "news",
@@ -4695,7 +4693,7 @@
       "createdAt": "2026-04-24T17:13:13.824Z",
       "expiresAt": "2026-04-25T17:13:13.824Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:52.599Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:51.606Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4747,7 +4745,7 @@
       "createdAt": "2026-04-24T19:12:26.719Z",
       "expiresAt": "2026-04-25T19:12:26.719Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T19:12:26.719Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:48.837Z",
       "tag": "humor",
       "tags": [
         "humor"
@@ -5124,7 +5122,7 @@
       "createdAt": "2026-04-24T17:12:59.533Z",
       "expiresAt": "2026-04-25T17:12:59.533Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:46.567Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:44.898Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5143,6 +5141,67 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T17:12:59.533Z"
+      }
+    },
+    {
+      "id": 1281888671,
+      "postUrl": "https://t.me/rian_ru/337492?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/abecdf7982.mp4?token=KYxUkKQXdumAckwAh5zxTQBLgLtcGe1Qc0awflQKSyuIPUhournTluWQHZQ77zytB9QwzLGuYFdzvreKeP8XRy4B6qblB3duIMpPcvOvpUousHN6YdO5vnWSxslKy9bPLOvRIDWGonvXW-cyOecfC-dll4jjAfJsJdEpNv0d0Tv7TeAf9gz5er7Ak6AdM49stwbqQq-SMRrDfiDhDDc7YOW7gxxCmfffH77F1I2jkEV7xt1wDxSbVC9vMRmPtVscXRjVTrfu-wwaNfu6NMfrF5Xp_rlS1iNLWuH75SzQf7HjI4xQkDDqQae9J9CB2GKPo8mLJ27pO6v1Ed1_WRwvTA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Автобус и фура столкнулись в Ленинградской области, один человек погиб, десять пострадали.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "столкнулись",
+          "url": "https://ria.ru/20260424/dtp-2088832911.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T20:30:50.688Z",
+      "expiresAt": "2026-04-25T20:30:50.688Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T23:54:49.966Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T20:30:50.688Z"
       }
     },
     {
@@ -5234,7 +5293,7 @@
       "createdAt": "2026-04-24T17:13:16.480Z",
       "expiresAt": "2026-04-25T17:13:16.480Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:54.085Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:52.876Z",
       "tag": "gadgets",
       "tags": [
         "gadgets",
@@ -5254,59 +5313,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T17:13:16.480Z"
-      }
-    },
-    {
-      "id": 3739154252,
-      "postUrl": "https://t.me/rian_ru/337491?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Расстрел внесли в список способов казни в США.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "внесли",
-          "url": "https://ria.ru/20260424/ssha-2088803386.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T19:12:27.717Z",
-      "expiresAt": "2026-04-25T19:12:27.717Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T19:12:27.717Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T19:12:27.717Z"
       }
     },
     {
@@ -5394,7 +5400,7 @@
       "createdAt": "2026-04-24T17:13:15.230Z",
       "expiresAt": "2026-04-25T17:13:15.230Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:53.331Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:52.245Z",
       "tag": "auto",
       "tags": [
         "auto"
@@ -5443,7 +5449,7 @@
       "createdAt": "2026-04-24T12:46:32.367Z",
       "expiresAt": "2026-04-25T12:46:32.367Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.122Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:49.398Z",
       "tag": "news",
       "tags": [
         "news",
@@ -5653,7 +5659,7 @@
       "createdAt": "2026-04-24T17:13:18.298Z",
       "expiresAt": "2026-04-25T17:13:18.298Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:55.068Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:53.811Z",
       "tag": "other",
       "tags": [
         "other",
@@ -5708,7 +5714,7 @@
       "createdAt": "2026-04-24T17:13:13.824Z",
       "expiresAt": "2026-04-25T17:13:13.824Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:52.599Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:51.606Z",
       "tag": "news",
       "tags": [
         "news"
@@ -5760,7 +5766,7 @@
       "createdAt": "2026-04-24T17:13:06.645Z",
       "expiresAt": "2026-04-25T17:13:06.645Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:49.467Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:48.837Z",
       "tag": "humor",
       "tags": [
         "humor"
@@ -6146,6 +6152,59 @@
       }
     },
     {
+      "id": 3739154252,
+      "postUrl": "https://t.me/rian_ru/337491?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Расстрел внесли в список способов казни в США.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "внесли",
+          "url": "https://ria.ru/20260424/ssha-2088803386.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T19:12:27.717Z",
+      "expiresAt": "2026-04-25T19:12:27.717Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T19:12:27.717Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T19:12:27.717Z"
+      }
+    },
+    {
       "id": 583710381,
       "postUrl": "https://t.me/mash/73759?single",
       "source": {
@@ -6237,50 +6296,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T17:13:16.480Z"
-      }
-    },
-    {
-      "id": 3713887485,
-      "postUrl": "https://t.me/rian_ru/337490?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Омичка умерла через месяц после избиения и нападения бойцового пса.  В конце марта она гуляла с собаками во дворе, у нее завязалась перепалка с двумя нетрезвыми мужчинами. Один из них избил ее и натравил стаффордширского терьера.   После инцидента возбудили…",
-      "links": [],
-      "createdAt": "2026-04-24T19:12:27.717Z",
-      "expiresAt": "2026-04-25T19:12:27.717Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T19:12:27.717Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T19:12:27.717Z"
       }
     },
     {
@@ -6566,7 +6581,7 @@
       "createdAt": "2026-04-24T14:05:59.006Z",
       "expiresAt": "2026-04-25T14:05:59.006Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:45.922Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:44.260Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -7092,6 +7107,50 @@
       }
     },
     {
+      "id": 3713887485,
+      "postUrl": "https://t.me/rian_ru/337490?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Омичка умерла через месяц после избиения и нападения бойцового пса.  В конце марта она гуляла с собаками во дворе, у нее завязалась перепалка с двумя нетрезвыми мужчинами. Один из них избил ее и натравил стаффордширского терьера.   После инцидента возбудили…",
+      "links": [],
+      "createdAt": "2026-04-24T19:12:27.717Z",
+      "expiresAt": "2026-04-25T19:12:27.717Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T19:12:27.717Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T19:12:27.717Z"
+      }
+    },
+    {
       "id": 663367292,
       "postUrl": "https://t.me/mash/73758?single",
       "source": {
@@ -7198,50 +7257,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T17:13:16.480Z"
-      }
-    },
-    {
-      "id": 2226622263,
-      "postUrl": "https://t.me/rian_ru/337489?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Лавина накрыла четырех человек на горе Мунку-Сардык в Бурятии, спасатели отправились на место.   На этой неделе при спуске с этой же горы погибли трое туристов из Красноярска.    🔹 Подписаться на РИА Новости",
-      "links": [],
-      "createdAt": "2026-04-24T19:12:27.717Z",
-      "expiresAt": "2026-04-25T19:12:27.717Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T19:12:27.717Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T19:12:27.717Z"
       }
     },
     {
@@ -7553,7 +7568,7 @@
       "createdAt": "2026-04-24T17:13:18.298Z",
       "expiresAt": "2026-04-25T17:13:18.298Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:55.068Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:53.811Z",
       "tag": "other",
       "tags": [
         "other",
@@ -7920,6 +7935,50 @@
       }
     },
     {
+      "id": 2226622263,
+      "postUrl": "https://t.me/rian_ru/337489?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Лавина накрыла четырех человек на горе Мунку-Сардык в Бурятии, спасатели отправились на место.   На этой неделе при спуске с этой же горы погибли трое туристов из Красноярска.    🔹 Подписаться на РИА Новости",
+      "links": [],
+      "createdAt": "2026-04-24T19:12:27.717Z",
+      "expiresAt": "2026-04-25T19:12:27.717Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T19:12:27.717Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T19:12:27.717Z"
+      }
+    },
+    {
       "id": 1791713883,
       "postUrl": "https://t.me/mash/73757?single",
       "source": {
@@ -8034,65 +8093,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T14:06:07.098Z"
-      }
-    },
-    {
-      "id": 1288881470,
-      "postUrl": "https://t.me/rian_ru/337488?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/DSwg6yV0BI6dJBBv3-MI7tkH3fwlzjFUsHCRI9-BRvqupeC2vK8XpdU-Ilol2Lie97LBFcJshaVG7YVhJnqBjl8wyGOun1PTdAhgIWE3Z2nAoif5Q_kYypsmOyvHiIXM9lvrDbnLgtH45USJFFviibYT-2jn6qiCkqDCEBKyg07SIZ_z31Otxa5oljyOjr48dcMaWpsAdHGnT1saiHgN_lRGjjDVVokT9ux5kck43zWHq6780La2Cpm-9HiFwVtGsB3T02JC91enPq1VnFWM8JVC5aVvh6VSUnz9zTfoDJe1N9kitosRpg7yu3jKM5bOaKfddODMKyj0mhQ3nH2SOQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Спецоперация. Обстановка и главные события на 24 апреля:\n\n▪️Россия за неделю нанесла шесть групповых ударов в ответ на атаки Киева по гражданской инфраструктуре, говорится в сводке Минобороны.\n\n▪️Беспилотники и артиллерия российских группировок уничтожили две пусковые установки HIMARS, пять боевых машин РСЗО \"Ураган\", \"Град\" и RAK-SA-12.\n\n▪️ВСУ за неделю потеряли более 8225 военнослужащих.\n\n▪️Минобороны сообщило о возвращении из украинского плена 193 российских военнослужащих, взамен переданы 193 военнопленных ВСУ.\n\n▪️ФСБ сообщила, что украинские спецслужбы пытаются сорвать в России мероприятия по безопасности инфорпространства, в том числе блокировку Telegram, который противник массово использует для диверсионно-террористических и экстремистских преступлений.\n\n▪️Руководство и сотрудники Роскомнадзора получают угрозы физической расправы, подвергаются нападениям, против них готовятся теракты.\n\n▪️Предотвращен теракт против руководителей РКН, исполнители планировали подорвать автомобиль с помощью взрывного устройства, задержаны семь радикалов, их главарь оказал сопротивление и был нейтрализован.\n\n▪️Разговоры Запада о мире на Украине на самом деле просто скрывают желание передышки в интересах ВСУ, заявила Захарова.\n\n▪️Агентство Укринформ сообщило, что первые средства из одобренного ранее европейского кредита в 90 миллиардов евро пойдут на закупку дронов украинского производства.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "главные события",
-          "url": "https://ria.ru/20260424/spetsoperatsiya-2088823667.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T19:12:27.717Z",
-      "expiresAt": "2026-04-25T19:12:27.717Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T22:58:04.133Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T19:12:27.717Z"
       }
     },
     {
@@ -8685,6 +8685,65 @@
       }
     },
     {
+      "id": 1288881470,
+      "postUrl": "https://t.me/rian_ru/337488?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/DSwg6yV0BI6dJBBv3-MI7tkH3fwlzjFUsHCRI9-BRvqupeC2vK8XpdU-Ilol2Lie97LBFcJshaVG7YVhJnqBjl8wyGOun1PTdAhgIWE3Z2nAoif5Q_kYypsmOyvHiIXM9lvrDbnLgtH45USJFFviibYT-2jn6qiCkqDCEBKyg07SIZ_z31Otxa5oljyOjr48dcMaWpsAdHGnT1saiHgN_lRGjjDVVokT9ux5kck43zWHq6780La2Cpm-9HiFwVtGsB3T02JC91enPq1VnFWM8JVC5aVvh6VSUnz9zTfoDJe1N9kitosRpg7yu3jKM5bOaKfddODMKyj0mhQ3nH2SOQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Спецоперация. Обстановка и главные события на 24 апреля:\n\n▪️Россия за неделю нанесла шесть групповых ударов в ответ на атаки Киева по гражданской инфраструктуре, говорится в сводке Минобороны.\n\n▪️Беспилотники и артиллерия российских группировок уничтожили две пусковые установки HIMARS, пять боевых машин РСЗО \"Ураган\", \"Град\" и RAK-SA-12.\n\n▪️ВСУ за неделю потеряли более 8225 военнослужащих.\n\n▪️Минобороны сообщило о возвращении из украинского плена 193 российских военнослужащих, взамен переданы 193 военнопленных ВСУ.\n\n▪️ФСБ сообщила, что украинские спецслужбы пытаются сорвать в России мероприятия по безопасности инфорпространства, в том числе блокировку Telegram, который противник массово использует для диверсионно-террористических и экстремистских преступлений.\n\n▪️Руководство и сотрудники Роскомнадзора получают угрозы физической расправы, подвергаются нападениям, против них готовятся теракты.\n\n▪️Предотвращен теракт против руководителей РКН, исполнители планировали подорвать автомобиль с помощью взрывного устройства, задержаны семь радикалов, их главарь оказал сопротивление и был нейтрализован.\n\n▪️Разговоры Запада о мире на Украине на самом деле просто скрывают желание передышки в интересах ВСУ, заявила Захарова.\n\n▪️Агентство Укринформ сообщило, что первые средства из одобренного ранее европейского кредита в 90 миллиардов евро пойдут на закупку дронов украинского производства.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "главные события",
+          "url": "https://ria.ru/20260424/spetsoperatsiya-2088823667.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T19:12:27.717Z",
+      "expiresAt": "2026-04-25T19:12:27.717Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T22:58:04.133Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T19:12:27.717Z"
+      }
+    },
+    {
       "id": 853443298,
       "postUrl": "https://t.me/mash/73756?single",
       "source": {
@@ -8811,85 +8870,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T14:06:07.098Z"
-      }
-    },
-    {
-      "id": 84227373,
-      "postUrl": "https://t.me/rian_ru/337483?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/u5PtiFX9V-iPGVt3kwRUsO_tMT0GIhJowddMJf9XAuOhlfO-cv5b2WHGDrIW8XptrJSwQf7z3KYGHnXlMuXPgo0Z_1GEb-v2PMSzM4lDqKT4k6175STcZmyTlJmY_omIShfVF9KY4plZpOXi_HPKw8IMmhqjnVLq7sUMhrbxoruCmnMQMAbyM6cIFBiUeBWYF4mKbXyWAiDSp6NKkEzGwLXUomajttd73dvy7UvtGQPvNrtiJNm9EJN3AU-0rFYk7zBnMrrpaUIObOEZaEORKMsh8HP7B7K_Fe8e3FU956mex2htBYMZQd8RmhGg64YDsMVmlDeX6gWkfPG6nN_VFw.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Sw9HIC8NhmoRi6EUfH_7Ga8TcVkgGxb4O4lSinfD1Dwj4C1f1ZZ5zagpaGti0sQ_8Y_Kepc-7r26Q63zd6oUMQ5GTdBFogfqkH4HRdtSCI9aHrx6EJSYsgfTbfDCWtgogpwxMmvebLj0KSDO995TrkFPhMr8PAARQufCGrOQN1HzolJ0b2FfHdI8sm_wva7BzdAD8Plju64q-aA2MRHtTlKBwDSeSfn1KKPlJ873hdkpG-IdQy52sZYEfzOJfKSBd2J-X99hBJ6D8xfCUiOXcbyEKeAlzimoTIs7uh270pp9wKA3fHeQJBQOLz4yBquU9nPMmlRAfcB4ciKBLvHdWg.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/v0o1jC2UGYcSLOpe8bG4CVR0_NSzVccFApc6D34v3LWXKY1v5wj-zCX_Wvt62yOI85_CgL2r2jqrevY04xr5zrZCpNDxTxjhkpnkOVWTsxa3w9cabz7n_sz_ersnHtLAyHh76gJjPMnj0Qpp1D_7f5YS1bY0gM98knFvoyvnVA6d7EFfX_4pfqBbwQPkls-5dzE2qNWKDktc3ETIs-bakyWaoQlLVTP5AIgduHoqfg27vDVlF-EpQPoGMXEkbfn9IWK1zEywzPsC3_xcvZ_NpFZ-W_GsopVOIcAm7rhWhsEozk-0L_bzKEuN_UEXqhvkc4eDJTnB4mZ44eZq0Icx_A.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/YCnG_K2WnYRRy2N-VJwOBCDIR2C4_ndx5n9eoSJ4Z6lJVnfQUxSLtDNSVU0b1jr8OJ6fAg_VN3mIwM0iZ97N9bGk1dSKLTPAgpWWNPlJJSPIWA7kA9JfaO9xgjCJ4v3d-HtuB-fMlgWgCidqYr9eVGgfor-FHX4jXqauGvR-_mOzROT0FKOP-WjplKon4u95Ag2MU3LKXQ5klZYlFdV8_p9UBbayHRzVo6tTfd9SkGR774XRGQpN5LdSSmki_RFBxxBP3VoGUQShU-TZsnNMOirRNqD0Udt_XfI9hHQxngHn0zD8R5nARqtQ0QJ1oe7niMd3xmyzTq_ov1kzWj3wVg.jpg"
-        },
-        {
-          "id": "image-5",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/avuHHXd15y8honbdxlFxC_s04eOjv0boe4kctwdCuRTW6rtlRIqdRDaWr6dmHAv8IBXXEfu_c1n6xThMmezwhN7yw2w-S8xNFqJ63-nrjLm3DVJ91xozdlkyeQEWVKz1aCm67RdQjNTnDNlDVEsS_nj5nFTVVlXRtAUqr86aWA3S6oOmvr8DVdTbLOH2ZBnOqXux1lsBT_LrBnXn4s2Esz7q4t2EI_rwcPK6Zao69bB7HSj0RJo9ospTH7B3EllPEac0CccDpTbva7frwQHf92qYKEKS9C1D4YmGZ-rDNRg0_SDsQBLx_cEY1Q_bwVfTa72Smp5yDWikut0PgXD8jw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Кракены действительно существовали: ученые нашли останки гигантских осьминогов. \n\nИсследование опубликовали в журнале Science. Специалисты реконструировали облик огромных животных, которые населяли Мировой океан десятки миллионов лет назад. \n\nПо размерам они как раз соответствуют мифическим чудовищам из морских легенд. \n\n\"При расчетной общей длине от 7 до 19 метров эти осьминоги могут представлять собой самых крупных описанных беспозвоночных, соперничающих с современными им гигантскими морскими рептилиями\", - говорится в исследовании.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "нашли",
-          "url": "https://ria.ru/20260424/kraken-2088665914.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T19:12:27.717Z",
-      "expiresAt": "2026-04-25T19:12:27.717Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T22:58:04.133Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T19:12:27.717Z"
       }
     },
     {
@@ -9400,6 +9380,85 @@
       }
     },
     {
+      "id": 84227373,
+      "postUrl": "https://t.me/rian_ru/337483?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/u5PtiFX9V-iPGVt3kwRUsO_tMT0GIhJowddMJf9XAuOhlfO-cv5b2WHGDrIW8XptrJSwQf7z3KYGHnXlMuXPgo0Z_1GEb-v2PMSzM4lDqKT4k6175STcZmyTlJmY_omIShfVF9KY4plZpOXi_HPKw8IMmhqjnVLq7sUMhrbxoruCmnMQMAbyM6cIFBiUeBWYF4mKbXyWAiDSp6NKkEzGwLXUomajttd73dvy7UvtGQPvNrtiJNm9EJN3AU-0rFYk7zBnMrrpaUIObOEZaEORKMsh8HP7B7K_Fe8e3FU956mex2htBYMZQd8RmhGg64YDsMVmlDeX6gWkfPG6nN_VFw.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Sw9HIC8NhmoRi6EUfH_7Ga8TcVkgGxb4O4lSinfD1Dwj4C1f1ZZ5zagpaGti0sQ_8Y_Kepc-7r26Q63zd6oUMQ5GTdBFogfqkH4HRdtSCI9aHrx6EJSYsgfTbfDCWtgogpwxMmvebLj0KSDO995TrkFPhMr8PAARQufCGrOQN1HzolJ0b2FfHdI8sm_wva7BzdAD8Plju64q-aA2MRHtTlKBwDSeSfn1KKPlJ873hdkpG-IdQy52sZYEfzOJfKSBd2J-X99hBJ6D8xfCUiOXcbyEKeAlzimoTIs7uh270pp9wKA3fHeQJBQOLz4yBquU9nPMmlRAfcB4ciKBLvHdWg.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/v0o1jC2UGYcSLOpe8bG4CVR0_NSzVccFApc6D34v3LWXKY1v5wj-zCX_Wvt62yOI85_CgL2r2jqrevY04xr5zrZCpNDxTxjhkpnkOVWTsxa3w9cabz7n_sz_ersnHtLAyHh76gJjPMnj0Qpp1D_7f5YS1bY0gM98knFvoyvnVA6d7EFfX_4pfqBbwQPkls-5dzE2qNWKDktc3ETIs-bakyWaoQlLVTP5AIgduHoqfg27vDVlF-EpQPoGMXEkbfn9IWK1zEywzPsC3_xcvZ_NpFZ-W_GsopVOIcAm7rhWhsEozk-0L_bzKEuN_UEXqhvkc4eDJTnB4mZ44eZq0Icx_A.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/YCnG_K2WnYRRy2N-VJwOBCDIR2C4_ndx5n9eoSJ4Z6lJVnfQUxSLtDNSVU0b1jr8OJ6fAg_VN3mIwM0iZ97N9bGk1dSKLTPAgpWWNPlJJSPIWA7kA9JfaO9xgjCJ4v3d-HtuB-fMlgWgCidqYr9eVGgfor-FHX4jXqauGvR-_mOzROT0FKOP-WjplKon4u95Ag2MU3LKXQ5klZYlFdV8_p9UBbayHRzVo6tTfd9SkGR774XRGQpN5LdSSmki_RFBxxBP3VoGUQShU-TZsnNMOirRNqD0Udt_XfI9hHQxngHn0zD8R5nARqtQ0QJ1oe7niMd3xmyzTq_ov1kzWj3wVg.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/avuHHXd15y8honbdxlFxC_s04eOjv0boe4kctwdCuRTW6rtlRIqdRDaWr6dmHAv8IBXXEfu_c1n6xThMmezwhN7yw2w-S8xNFqJ63-nrjLm3DVJ91xozdlkyeQEWVKz1aCm67RdQjNTnDNlDVEsS_nj5nFTVVlXRtAUqr86aWA3S6oOmvr8DVdTbLOH2ZBnOqXux1lsBT_LrBnXn4s2Esz7q4t2EI_rwcPK6Zao69bB7HSj0RJo9ospTH7B3EllPEac0CccDpTbva7frwQHf92qYKEKS9C1D4YmGZ-rDNRg0_SDsQBLx_cEY1Q_bwVfTa72Smp5yDWikut0PgXD8jw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Кракены действительно существовали: ученые нашли останки гигантских осьминогов. \n\nИсследование опубликовали в журнале Science. Специалисты реконструировали облик огромных животных, которые населяли Мировой океан десятки миллионов лет назад. \n\nПо размерам они как раз соответствуют мифическим чудовищам из морских легенд. \n\n\"При расчетной общей длине от 7 до 19 метров эти осьминоги могут представлять собой самых крупных описанных беспозвоночных, соперничающих с современными им гигантскими морскими рептилиями\", - говорится в исследовании.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "нашли",
+          "url": "https://ria.ru/20260424/kraken-2088665914.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T19:12:27.717Z",
+      "expiresAt": "2026-04-25T19:12:27.717Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T22:58:04.133Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T19:12:27.717Z"
+      }
+    },
+    {
       "id": 2780938762,
       "postUrl": "https://t.me/mash/73749?single",
       "source": {
@@ -9534,59 +9593,6 @@
       }
     },
     {
-      "id": 163884284,
-      "postUrl": "https://t.me/rian_ru/337482?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Чечня, Ингушетия и Дагестан – самые трезвые регионы России, следует из данных Минздрава. \n\nКроме того, в топе по этому показателю – Кабардино-Балкария, Карачаево-Черкесия и Ставропольский край. \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "следует",
-          "url": "https://ria.ru/20260424/regiony-2088658697.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T17:13:09.392Z",
-      "expiresAt": "2026-04-25T17:13:09.392Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T17:13:09.392Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T17:13:09.392Z"
-      }
-    },
-    {
       "id": 1230208584,
       "postUrl": "https://t.me/mosguru/31551?single",
       "source": {
@@ -9667,7 +9673,7 @@
       "createdAt": "2026-04-24T12:46:30.332Z",
       "expiresAt": "2026-04-25T12:46:30.332Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T17:13:03.895Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:47.880Z",
       "tag": "news",
       "tags": [
         "news"
@@ -9999,6 +10005,59 @@
       }
     },
     {
+      "id": 163884284,
+      "postUrl": "https://t.me/rian_ru/337482?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Чечня, Ингушетия и Дагестан – самые трезвые регионы России, следует из данных Минздрава. \n\nКроме того, в топе по этому показателю – Кабардино-Балкария, Карачаево-Черкесия и Ставропольский край. \n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "следует",
+          "url": "https://ria.ru/20260424/regiony-2088658697.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T17:13:09.392Z",
+      "expiresAt": "2026-04-25T17:13:09.392Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T17:13:09.392Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T17:13:09.392Z"
+      }
+    },
+    {
       "id": 1331484515,
       "postUrl": "https://t.me/mash/73748?single",
       "source": {
@@ -10081,7 +10140,7 @@
       "createdAt": "2026-04-24T14:06:07.098Z",
       "expiresAt": "2026-04-25T14:06:07.098Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T19:40:04.963Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:52.876Z",
       "tag": "gadgets",
       "tags": [
         "gadgets",
@@ -10101,71 +10160,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T14:06:07.098Z"
-      }
-    },
-    {
-      "id": 4066680783,
-      "postUrl": "https://t.me/rian_ru/337481?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/946a746a94.mp4?token=cMBFQAMvjWhDYAKywMIjZ6bJrtg77eq8c09gYiwwuxsww4vJWcThDyW8-jmOYui6HurT9uwZfl4QSQtULDH55M2G7Dkxoa2DRTLWYmvO36DGPsz20xQpbD5YT1M2zdYfvHa1zpuuPo5Mnqn5GfakrZHdJsvCfKKLJCUXnOIi7Hp7ZZ5SNuz3ZHrkfX_Vs2U_Q7xMJgydl4G7VeuHUCBx54a6NWaIrBfT-yPG9fDKGIogS5lE5YuSOxaq-sFe7gRTvQFssL6Qks6jWEDnXjpJ8ihBTP4Wfi7WPxKCoy60Nd3iKwjfbBrsTm8dsMLKAAr7CcBeD7lrvTYTw5u34L1mJQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Омичка умерла через месяц после избиения и нападения бойцового пса.\n\nВ конце марта она гуляла с собаками во дворе, у нее завязалась перепалка с двумя нетрезвыми мужчинами. Один из них избил ее и натравил стаффордширского терьера. \n\nПосле инцидента возбудили дело о причинении легкого вреда здоровью. От госпитализации омичка отказалась, спустя какое-то время у нее начались осложнения, и она умерла.\n\nПодруга жертвы рассказала, что мужчина, натравивший пса, ранее уже нападал на женщин, а местные жители жаловались, что он натравливал своего стаффордширского терьера на бродячих собак.\n\nЕсли видео не грузится - смотрите его в нашем канале в \"Максе\". \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "рассказала",
-          "url": "https://ria.ru/20260424/muzhchina-2088781461.html"
-        },
-        {
-          "label": "нашем канале в \"Максе\".",
-          "url": "https://max.ru/ria/AZ2_wewQVHA"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T17:13:09.392Z",
-      "expiresAt": "2026-04-25T17:13:09.392Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.688Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T17:13:09.392Z"
       }
     },
     {
@@ -10258,7 +10252,7 @@
       "createdAt": "2026-04-24T12:46:30.332Z",
       "expiresAt": "2026-04-25T12:46:30.332Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T17:13:03.895Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:47.880Z",
       "tag": "news",
       "tags": [
         "news"
@@ -10535,6 +10529,71 @@
       }
     },
     {
+      "id": 4066680783,
+      "postUrl": "https://t.me/rian_ru/337481?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/946a746a94.mp4?token=cMBFQAMvjWhDYAKywMIjZ6bJrtg77eq8c09gYiwwuxsww4vJWcThDyW8-jmOYui6HurT9uwZfl4QSQtULDH55M2G7Dkxoa2DRTLWYmvO36DGPsz20xQpbD5YT1M2zdYfvHa1zpuuPo5Mnqn5GfakrZHdJsvCfKKLJCUXnOIi7Hp7ZZ5SNuz3ZHrkfX_Vs2U_Q7xMJgydl4G7VeuHUCBx54a6NWaIrBfT-yPG9fDKGIogS5lE5YuSOxaq-sFe7gRTvQFssL6Qks6jWEDnXjpJ8ihBTP4Wfi7WPxKCoy60Nd3iKwjfbBrsTm8dsMLKAAr7CcBeD7lrvTYTw5u34L1mJQ",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Омичка умерла через месяц после избиения и нападения бойцового пса.\n\nВ конце марта она гуляла с собаками во дворе, у нее завязалась перепалка с двумя нетрезвыми мужчинами. Один из них избил ее и натравил стаффордширского терьера. \n\nПосле инцидента возбудили дело о причинении легкого вреда здоровью. От госпитализации омичка отказалась, спустя какое-то время у нее начались осложнения, и она умерла.\n\nПодруга жертвы рассказала, что мужчина, натравивший пса, ранее уже нападал на женщин, а местные жители жаловались, что он натравливал своего стаффордширского терьера на бродячих собак.\n\nЕсли видео не грузится - смотрите его в нашем канале в \"Максе\". \n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "рассказала",
+          "url": "https://ria.ru/20260424/muzhchina-2088781461.html"
+        },
+        {
+          "label": "нашем канале в \"Максе\".",
+          "url": "https://max.ru/ria/AZ2_wewQVHA"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T17:13:09.392Z",
+      "expiresAt": "2026-04-25T17:13:09.392Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T23:54:49.966Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T17:13:09.392Z"
+      }
+    },
+    {
       "id": 454665588,
       "postUrl": "https://t.me/mash/73747?single",
       "source": {
@@ -10629,7 +10688,7 @@
       "createdAt": "2026-04-24T14:06:07.098Z",
       "expiresAt": "2026-04-25T14:06:07.098Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T19:40:04.963Z",
+      "mediaRefreshedAt": "2026-04-24T23:54:52.876Z",
       "tag": "gadgets",
       "tags": [
         "gadgets",
@@ -10649,93 +10708,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T14:06:07.098Z"
-      }
-    },
-    {
-      "id": 382302838,
-      "postUrl": "https://t.me/rian_ru/337480?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/XCnnAAqjBPzJsDqVqqAk7WPfx0azJA6k-L3bbATuS9QG2-xxdioZdZnpg5T3dho50l9J57JNztAj0ftNObxQExQhHZfN437Jn3hSO65hAmwl5XHxUEG6COxOIlL6qi0ZWD4aHNW6-nKW7A-siQaguT_hnUb2wc5UlDSJ7MVWDeqymRva5fdvOb_DkZKPNouxGFqDq0xIx1H8npW7ZQe7iHq4Jj30JZuTtwKDB8E5zPoJwTiwXAUHrdHYS-KHzO2-ybT4A1tsEjYlNhVBt0T62xNoY0doo4McihHNC1yhPrb-oYcZj-znxY6ii2V0-lsh_16IVWiXpHL86IJCpiq0rA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Главные новости дня:\n\n🔹Руководителей Роскомнадзора пытались убить, теракт предотвратили.\n\n🔹ЦБ снизил ключевую ставку до 14,5% с 15% годовых.\n\n🔹Россия вернула из украинского плена 193 военнослужащих, взамен переданы 193 военнопленных ВСУ\n\n🔹Приезд Путина на саммит G20 в Майами был бы очень полезным, заявил Трамп.\n\n🔹Лавина накрыла четырех человек на горе Мунку-Сардык в Бурятии. \n\n🔹Нефтепродукты частично попали из реки Туапсе в море.\n\n🔹Глава МИД Ирана начал серию визитов в Пакистан, Оман и Россию. Пакистанские СМИ утверждают, что в ближайшее время возможны переговоры Ирана с США. \n\n🔹Первую отечественную вакцину для профилактики коклюша, дифтерии и столбняка у взрослых зарегистрировали в России. \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "предотвратили",
-          "url": "https://t.me/rian_ru/337453"
-        },
-        {
-          "label": "снизил",
-          "url": "https://ria.ru/20260424/tsb-2088734647.html"
-        },
-        {
-          "label": "вернула",
-          "url": "https://ria.ru/20260424/mo-2088765068.html"
-        },
-        {
-          "label": "заявил",
-          "url": "https://ria.ru/20260424/tramp-2088653842.html"
-        },
-        {
-          "label": "накрыла",
-          "url": "https://t.me/rian_ru/337458"
-        },
-        {
-          "label": "попали",
-          "url": "https://t.me/rian_ru/337465"
-        },
-        {
-          "label": "утверждают",
-          "url": "https://ria.ru/20260424/ssha-2088746847.html"
-        },
-        {
-          "label": "зарегистрировали",
-          "url": "https://ria.ru/20260424/vaktsina-2088677149.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T17:13:09.392Z",
-      "expiresAt": "2026-04-25T17:13:09.392Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.688Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T17:13:09.392Z"
       }
     },
     {
@@ -11000,6 +10972,93 @@
       }
     },
     {
+      "id": 382302838,
+      "postUrl": "https://t.me/rian_ru/337480?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/XCnnAAqjBPzJsDqVqqAk7WPfx0azJA6k-L3bbATuS9QG2-xxdioZdZnpg5T3dho50l9J57JNztAj0ftNObxQExQhHZfN437Jn3hSO65hAmwl5XHxUEG6COxOIlL6qi0ZWD4aHNW6-nKW7A-siQaguT_hnUb2wc5UlDSJ7MVWDeqymRva5fdvOb_DkZKPNouxGFqDq0xIx1H8npW7ZQe7iHq4Jj30JZuTtwKDB8E5zPoJwTiwXAUHrdHYS-KHzO2-ybT4A1tsEjYlNhVBt0T62xNoY0doo4McihHNC1yhPrb-oYcZj-znxY6ii2V0-lsh_16IVWiXpHL86IJCpiq0rA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Главные новости дня:\n\n🔹Руководителей Роскомнадзора пытались убить, теракт предотвратили.\n\n🔹ЦБ снизил ключевую ставку до 14,5% с 15% годовых.\n\n🔹Россия вернула из украинского плена 193 военнослужащих, взамен переданы 193 военнопленных ВСУ\n\n🔹Приезд Путина на саммит G20 в Майами был бы очень полезным, заявил Трамп.\n\n🔹Лавина накрыла четырех человек на горе Мунку-Сардык в Бурятии. \n\n🔹Нефтепродукты частично попали из реки Туапсе в море.\n\n🔹Глава МИД Ирана начал серию визитов в Пакистан, Оман и Россию. Пакистанские СМИ утверждают, что в ближайшее время возможны переговоры Ирана с США. \n\n🔹Первую отечественную вакцину для профилактики коклюша, дифтерии и столбняка у взрослых зарегистрировали в России. \n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "предотвратили",
+          "url": "https://t.me/rian_ru/337453"
+        },
+        {
+          "label": "снизил",
+          "url": "https://ria.ru/20260424/tsb-2088734647.html"
+        },
+        {
+          "label": "вернула",
+          "url": "https://ria.ru/20260424/mo-2088765068.html"
+        },
+        {
+          "label": "заявил",
+          "url": "https://ria.ru/20260424/tramp-2088653842.html"
+        },
+        {
+          "label": "накрыла",
+          "url": "https://t.me/rian_ru/337458"
+        },
+        {
+          "label": "попали",
+          "url": "https://t.me/rian_ru/337465"
+        },
+        {
+          "label": "утверждают",
+          "url": "https://ria.ru/20260424/ssha-2088746847.html"
+        },
+        {
+          "label": "зарегистрировали",
+          "url": "https://ria.ru/20260424/vaktsina-2088677149.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T17:13:09.392Z",
+      "expiresAt": "2026-04-25T17:13:09.392Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T20:30:50.688Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T17:13:09.392Z"
+      }
+    },
+    {
       "id": 137685063,
       "postUrl": "https://t.me/mash/73744?single",
       "source": {
@@ -11061,50 +11120,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T11:52:09.082Z"
-      }
-    },
-    {
-      "id": 2050205006,
-      "postUrl": "https://t.me/rian_ru/337479?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Превышение вредных веществ в воздухе Туапсе из-за пожара в порту зафиксировал Роспотребнадзор.  Превышение в два-три раза допустимых концентраций бензола, ксилола и сажи в воздухе.  Из-за сильного пожара в атмосферу поступают продукты горения, которые 22 апреля…",
-      "links": [],
-      "createdAt": "2026-04-24T17:13:09.392Z",
-      "expiresAt": "2026-04-25T17:13:09.392Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T17:13:09.392Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T17:13:09.392Z"
       }
     },
     {
@@ -11255,6 +11270,50 @@
       }
     },
     {
+      "id": 2050205006,
+      "postUrl": "https://t.me/rian_ru/337479?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Превышение вредных веществ в воздухе Туапсе из-за пожара в порту зафиксировал Роспотребнадзор.  Превышение в два-три раза допустимых концентраций бензола, ксилола и сажи в воздухе.  Из-за сильного пожара в атмосферу поступают продукты горения, которые 22 апреля…",
+      "links": [],
+      "createdAt": "2026-04-24T17:13:09.392Z",
+      "expiresAt": "2026-04-25T17:13:09.392Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T17:13:09.392Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T17:13:09.392Z"
+      }
+    },
+    {
       "id": 4285740722,
       "postUrl": "https://t.me/mash/73741?single",
       "source": {
@@ -11316,65 +11375,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T11:52:09.082Z"
-      }
-    },
-    {
-      "id": 1072399623,
-      "postUrl": "https://t.me/rian_ru/337478?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/brwA-KG180AinlvFZVS00AY07idKNpGVByJvWDDY8AxoZ_CHdHscK19uAiPm66hTpfvq1jiqVMiZo2kh09G1FBEx-Tlkt7sJvPFZGY8BXAAA8SFMQrgbCmWKS0JoJlXe_zvk9QG9Fia2UFOyhgLUCw2TYU5daUtcj-Bd3TAUto4R3ywcx0DqU7drTTgr7uIGDSPXjuIvTdkx-YtFe2QQfrAentDvvvsmVr_YcG_MHNGgSEjCMor6aPhaiJHy0Sr-G21rMyYxJW7kEyeNrqI6VVpsUxdJbqNRPyZqeEgjfkAgQCh1d8T2boY4_zKxWBYIkGi2YP_mcs1Vadyc9NDh0g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Увлеченность лутбоксами в онлайн-играх формирует у детей поведение, которое грозит лудоманией – исследования это уже доказали, сообщило МВД. \n\nМеханика внутриигровых наборов во многом повторяет принципы азартных игр – и родителям рекомендуют ограничивать или контролировать такие покупки подростков, особенно привязку банковских карт. \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "сообщило",
-          "url": "https://ria.ru/20260424/mvd-2088685385.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-24T17:13:09.392Z",
-      "expiresAt": "2026-04-25T17:13:09.392Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T20:30:50.688Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T17:13:09.392Z"
       }
     },
     {
@@ -11507,6 +11507,65 @@
       }
     },
     {
+      "id": 1072399623,
+      "postUrl": "https://t.me/rian_ru/337478?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/brwA-KG180AinlvFZVS00AY07idKNpGVByJvWDDY8AxoZ_CHdHscK19uAiPm66hTpfvq1jiqVMiZo2kh09G1FBEx-Tlkt7sJvPFZGY8BXAAA8SFMQrgbCmWKS0JoJlXe_zvk9QG9Fia2UFOyhgLUCw2TYU5daUtcj-Bd3TAUto4R3ywcx0DqU7drTTgr7uIGDSPXjuIvTdkx-YtFe2QQfrAentDvvvsmVr_YcG_MHNGgSEjCMor6aPhaiJHy0Sr-G21rMyYxJW7kEyeNrqI6VVpsUxdJbqNRPyZqeEgjfkAgQCh1d8T2boY4_zKxWBYIkGi2YP_mcs1Vadyc9NDh0g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Увлеченность лутбоксами в онлайн-играх формирует у детей поведение, которое грозит лудоманией – исследования это уже доказали, сообщило МВД. \n\nМеханика внутриигровых наборов во многом повторяет принципы азартных игр – и родителям рекомендуют ограничивать или контролировать такие покупки подростков, особенно привязку банковских карт. \n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "сообщило",
+          "url": "https://ria.ru/20260424/mvd-2088685385.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-24T17:13:09.392Z",
+      "expiresAt": "2026-04-25T17:13:09.392Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T20:30:50.688Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T17:13:09.392Z"
+      }
+    },
+    {
       "id": 1365378859,
       "postUrl": "https://t.me/mash/73740?single",
       "source": {
@@ -11560,6 +11619,58 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T11:52:09.082Z"
+      }
+    },
+    {
+      "id": 1566749917,
+      "postUrl": "https://t.me/pikabu/48147?single",
+      "source": {
+        "title": "Пикабу",
+        "handle": "pikabu",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/dCB01KmwWTkMc1Jju2ZjvM44AL5-DSZqepcyqhwV-q5yx8k5kJ50hXeCDYfWTsQC3fYuB1g8MEeJw3s5CX32bhJ-Ki5A5hm6YjoD7GY1nrrvhubYGsWbAhF_aU5EFFSdCR6VEJuLIT2gNkKwxDZNmhXlyA0gk3zbwkZerzL37bxUq6Q8m3qFS9JN4ap_Gibv1DCmjdanKHNoEFsMf3F02X1jJHJvPqmxaigkH10M8p5-5ko0MNlU02BekBLhcPukbkA8d6Z5_2pVQ-4h39heACN2aWpHauyBR_BfaWQzQPCMTA1lOrBFUoWMehqNH3Tj4LyP9xCowHAW-QHTaa5cwQ.jpg"
+      },
+      "sourceId": "ru:pikabu",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/JOKpaVdhGnzYYg4Ci7ti4m956CW3y4ihI0hXwY2dCpyE6QBIio6uaw4pq92wjpanRZCL2PJgI8US8ywsywC8IJ_346ItkuF3uks2hOJ0GxnAfISJssYJ330-pn0uc7DSSovuwbbCyuh6yOmwekOoApts2by8O8dtZNIq8QFZwVg4I59Iqt3n8-aJ_2j6zGwDMHuISxHdE-OGg4eGNLQGNr_ih0pdJ3In_08bGwzqtxAjbFj4DGu6v6SxlIAdJ7mBxvml3OO9pqDCuqWZ9YzdEaog22zeQbuDvQQyqaM_8bPG9AOAL3w7Aip2eFWWV3xDAtPFc4T6FlJ8TZ3RqFkU2g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Не обманул\n\nКомментарии: pikabu.ru/link/8KbxVmZkrd",
+      "links": [
+        {
+          "label": "pikabu.ru/link/8KbxVmZkrd",
+          "url": "https://pikabu.ru/link/8KbxVmZkrd"
+        }
+      ],
+      "createdAt": "2026-04-24T12:46:31.470Z",
+      "expiresAt": "2026-04-25T12:46:31.470Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-24T22:27:43.411Z",
+      "tag": "humor",
+      "tags": [
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-24T12:46:31.470Z"
       }
     },
     {
@@ -11625,58 +11736,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T17:13:09.392Z"
-      }
-    },
-    {
-      "id": 1566749917,
-      "postUrl": "https://t.me/pikabu/48147?single",
-      "source": {
-        "title": "Пикабу",
-        "handle": "pikabu",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/dCB01KmwWTkMc1Jju2ZjvM44AL5-DSZqepcyqhwV-q5yx8k5kJ50hXeCDYfWTsQC3fYuB1g8MEeJw3s5CX32bhJ-Ki5A5hm6YjoD7GY1nrrvhubYGsWbAhF_aU5EFFSdCR6VEJuLIT2gNkKwxDZNmhXlyA0gk3zbwkZerzL37bxUq6Q8m3qFS9JN4ap_Gibv1DCmjdanKHNoEFsMf3F02X1jJHJvPqmxaigkH10M8p5-5ko0MNlU02BekBLhcPukbkA8d6Z5_2pVQ-4h39heACN2aWpHauyBR_BfaWQzQPCMTA1lOrBFUoWMehqNH3Tj4LyP9xCowHAW-QHTaa5cwQ.jpg"
-      },
-      "sourceId": "ru:pikabu",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/JOKpaVdhGnzYYg4Ci7ti4m956CW3y4ihI0hXwY2dCpyE6QBIio6uaw4pq92wjpanRZCL2PJgI8US8ywsywC8IJ_346ItkuF3uks2hOJ0GxnAfISJssYJ330-pn0uc7DSSovuwbbCyuh6yOmwekOoApts2by8O8dtZNIq8QFZwVg4I59Iqt3n8-aJ_2j6zGwDMHuISxHdE-OGg4eGNLQGNr_ih0pdJ3In_08bGwzqtxAjbFj4DGu6v6SxlIAdJ7mBxvml3OO9pqDCuqWZ9YzdEaog22zeQbuDvQQyqaM_8bPG9AOAL3w7Aip2eFWWV3xDAtPFc4T6FlJ8TZ3RqFkU2g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Не обманул\n\nКомментарии: pikabu.ru/link/8KbxVmZkrd",
-      "links": [
-        {
-          "label": "pikabu.ru/link/8KbxVmZkrd",
-          "url": "https://pikabu.ru/link/8KbxVmZkrd"
-        }
-      ],
-      "createdAt": "2026-04-24T12:46:31.470Z",
-      "expiresAt": "2026-04-25T12:46:31.470Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-24T22:27:43.411Z",
-      "tag": "humor",
-      "tags": [
-        "humor"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-24T12:46:31.470Z"
       }
     },
     {
