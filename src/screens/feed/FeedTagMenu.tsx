@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 
@@ -53,7 +52,7 @@ export function FeedTagMenu({
 
   const position = useMemo(() => {
     const menuWidth = 264;
-    const rowHeight = 44;
+    const rowHeight = 30;
     const headerHeight = 34;
     const verticalPadding = 16;
     const estimatedHeight = headerHeight + verticalPadding + tags.length * rowHeight;
@@ -95,17 +94,16 @@ export function FeedTagMenu({
           {title}
         </div>
 
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {tags.map((tag) => (
             <div
               key={tag}
-              className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-primary"
+              className="rounded-xl px-3 py-1.5 text-sm text-primary"
             >
-              <Check className="h-4 w-4 text-secondary" />
-              <span>{tag}</span>
+              {tag}
             </div>
           ))}
-        </div>
+        </div>        
       </div>
     </>,
     document.body
