@@ -110,6 +110,7 @@ function buildSource(
     handle: normalizedHandle,
     title: asString(input.title) || normalizedHandle,
     avatarUrl: input.avatarUrl || null,
+    avatarOverride: input.avatarOverride || null,
     verified: Boolean(input.verified),
     defaultTag: input.defaultTag,
     tags: normalizeTags(input.tags, input.defaultTag),
@@ -325,6 +326,10 @@ function getPostIdFromUrl(postUrl: string) {
   return Number.isFinite(id) ? id : null;
 }
 
+function getEffectiveSourceAvatar(source: TrustedSource, telegramAvatar?: string | null) {
+  return source.avatarOverride || telegramAvatar || source.avatarUrl || null;
+}
+
 function buildPost(params: {
   postUrl: string;
   source: TrustedSource;
@@ -344,7 +349,7 @@ function buildPost(params: {
       title: ingest.source.title || source.title,
       handle: source.handle,
       verified: ingest.source.verified,
-      avatar: ingest.source.avatar || source.avatarUrl || null,
+      avatar: getEffectiveSourceAvatar(source, ingest.source.avatar),
     },
     sourceId: source.id,
     sourceCountryCode: source.countryCode,
@@ -392,7 +397,7 @@ function buildRefreshedPost(params: {
       title: ingest.source.title || source.title || post.source.title,
       handle: source.handle,
       verified: ingest.source.verified,
-      avatar: ingest.source.avatar || source.avatarUrl || post.source.avatar || null,
+      avatar: getEffectiveSourceAvatar(source, ingest.source.avatar) || post.source.avatar || null,
     },
     sourceId: source.id,
     sourceCountryCode: source.countryCode,
@@ -736,7 +741,7 @@ function mergeSourcePosts(params: {
           ...post.source,
           handle: nextSource.handle || post.source.handle,
           title: nextSource.title || post.source.title,
-          avatar: nextSource.avatarUrl || post.source.avatar || null,
+          avatar: getEffectiveSourceAvatar(nextSource) || post.source.avatar || null,
           verified: Boolean(nextSource.verified),
         },
         sourceId: nextSource.id,

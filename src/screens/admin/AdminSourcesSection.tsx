@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Pencil } from "lucide-react";
 import { useMemo, useState } from "react";
 import {
   getParentTag,
@@ -101,9 +101,10 @@ function getInitials(source: TrustedSource) {
 
 function SourceAvatar({ source }: { source: TrustedSource }) {
   const [imageFailed, setImageFailed] = useState(false);
-  const avatarUrl = source.avatarUrl?.startsWith("data:image/svg+xml")
+  const effectiveAvatar = source.avatarOverride || source.avatarUrl;
+  const avatarUrl = effectiveAvatar?.startsWith("data:image/svg+xml")
     ? null
-    : source.avatarUrl;
+    : effectiveAvatar;
   const showImage = Boolean(avatarUrl) && !imageFailed;
 
   return (
@@ -332,6 +333,54 @@ export function AdminSourcesSection({
       setMessage("Канал удалён");
     } catch (error: unknown) {
       setMessage(error instanceof Error ? error.message : "Не удалось удалить канал");
+    }
+  };
+
+
+  const saveAvatarOverride = async (source: TrustedSource) => {
+    if (!telegramUserId) return;
+
+    const currentValue = source.avatarOverride || "";
+    const nextValue = window.prompt(
+      `Ссылка на аватарку для @${source.handle}.
+Оставь пустым и нажми OK, чтобы очистить ручную аватарку.`,
+      currentValue
+    );
+
+    if (nextValue === null) return;
+
+    const normalizedAvatarOverride = nextValue.trim();
+
+    try {
+      setMessage(null);
+
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          telegramUserId,
+          entity: "sources",
+          action: "update",
+          source: {
+            id: source.id,
+            countryCode: source.countryCode,
+            handle: source.handle,
+            avatarOverride: normalizedAvatarOverride,
+            avatarOverrideTouched: true,
+          },
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.error || "Не удалось сохранить аватарку");
+      }
+
+      await onSourcesReload();
+      setMessage(normalizedAvatarOverride ? "Аватарка обновлена" : "Ручная аватарка очищена");
+    } catch (error: unknown) {
+      setMessage(error instanceof Error ? error.message : "Не удалось сохранить аватарку");
     }
   };
 
@@ -566,7 +615,20 @@ export function AdminSourcesSection({
                   className="rounded-[22px] border border-white/10 bg-[#151722] p-3 sm:p-4"
                 >
                   <div className="flex items-start gap-3">
-                    <SourceAvatar source={source} />
+                    <div className="relative shrink-0">
+                      <SourceAvatar source={source} />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          void saveAvatarOverride(source);
+                        }}
+                        className="absolute -bottom-1 -right-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-[#202331] text-white/75 shadow-lg transition hover:bg-white hover:text-black"
+                        title="Заменить аватарку ссылкой"
+                        aria-label="Заменить аватарку ссылкой"
+                      >
+                        <Pencil className="h-3.5 w-3.5" />
+                      </button>
+                    </div>
 
                     <div className="min-w-0 flex-1">
                       <div className="flex items-start justify-between gap-3">
@@ -592,6 +654,12 @@ export function AdminSourcesSection({
 
                   {source.note ? (
                     <div className="mt-3 text-sm leading-6 text-white/70">{source.note}</div>
+                  ) : null}
+
+                  {source.avatarOverride ? (
+                    <div className="mt-3 inline-flex rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1 text-xs text-[#d9f3ff]">
+                      аватарка вручную
+                    </div>
                   ) : null}
 
                   <div className="mt-3 flex flex-wrap gap-2">

@@ -36,6 +36,18 @@ function normalizeCountryCode(value: unknown) {
   return asString(value, "ru").toLowerCase() || "ru";
 }
 
+function readNullableStringPatch(
+  body: Record<string, unknown>,
+  key: string,
+  fallback: string | null | undefined
+) {
+  if (Object.prototype.hasOwnProperty.call(body, key)) {
+    return asString(body[key]) || null;
+  }
+
+  return fallback || null;
+}
+
 function parseDateMs(value: string | null | undefined) {
   const ms = Date.parse(String(value || ""));
   return Number.isFinite(ms) ? ms : 0;
@@ -87,7 +99,8 @@ function buildSource(body: Record<string, unknown>, existing?: StoredSource | nu
     countryCode,
     handle,
     title: asString(body.title) || existing?.title || handle,
-    avatarUrl: asString(body.avatarUrl) || existing?.avatarUrl || null,
+    avatarUrl: readNullableStringPatch(body, "avatarUrl", existing?.avatarUrl),
+    avatarOverride: readNullableStringPatch(body, "avatarOverride", existing?.avatarOverride),
     verified:
       typeof body.verified === "boolean" ? Boolean(body.verified) : Boolean(existing?.verified),
     defaultTag,
@@ -141,6 +154,44 @@ async function listSources(requestedCountryCode: string) {
   );
 }
 
+function getSourceAvatarForPosts(source: StoredSource) {
+  return source.avatarOverride || source.avatarUrl || null;
+}
+
+function isPostFromSource(post: IngestedPost, source: StoredSource) {
+  if (post.sourceId && post.sourceId === source.id) return true;
+
+  return (
+    post.source?.handle?.toLowerCase?.() === source.handle.toLowerCase() &&
+    (!post.sourceCountryCode || post.sourceCountryCode === source.countryCode)
+  );
+}
+
+async function applySourceAvatarToFeed(source: StoredSource) {
+  const feedFile = await readFeedFile<IngestedPost>();
+  const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
+  const avatar = getSourceAvatarForPosts(source);
+  let changed = false;
+
+  const next = current.map((post) => {
+    if (!isPostFromSource(post, source)) return post;
+    if ((post.source.avatar || null) === avatar) return post;
+
+    changed = true;
+    return {
+      ...post,
+      source: {
+        ...post.source,
+        avatar,
+      },
+    };
+  });
+
+  if (changed) {
+    await writeFeedFile(sortPosts(next));
+  }
+}
+
 async function upsertSingleSource(sourcePatch: Record<string, unknown>) {
   const sourcesFile = await readSourcesFile<StoredSource>();
   const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
@@ -170,6 +221,11 @@ async function upsertSingleSource(sourcePatch: Record<string, unknown>) {
   }
 
   await writeSourcesFile(sortSources(next));
+
+  if (Object.prototype.hasOwnProperty.call(sourcePatch, "avatarOverride")) {
+    await applySourceAvatarToFeed(source);
+  }
+
   return { source, next };
 }
 

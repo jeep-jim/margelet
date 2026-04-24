@@ -116,6 +116,7 @@ export type TrustedSource = {
   handle: string;
   title: string;
   avatarUrl: string | null;
+  avatarOverride?: string | null;
   verified?: boolean;
   defaultTag: ContentTag;
   tags: ContentTag[];
