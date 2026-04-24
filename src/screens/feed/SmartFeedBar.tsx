@@ -433,12 +433,12 @@ function getInactiveCountryClasses(isDark: boolean) {
 
 function getDropdownShellClasses(isDark: boolean, open: boolean) {
   const base = isDark
-    ? "absolute left-0 right-0 top-full z-[140] overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_18px_46px_rgba(0,0,0,0.36)] transition-all duration-200"
-    : "absolute left-0 right-0 top-full z-[140] overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface-soft text-primary shadow-[0_14px_34px_rgba(0,0,0,0.12)] transition-all duration-200";
+    ? "absolute left-0 right-0 top-full z-[90] overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_18px_46px_rgba(0,0,0,0.36)] transition-all duration-200"
+    : "absolute left-0 right-0 top-full z-[90] overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface-soft text-primary shadow-[0_14px_34px_rgba(0,0,0,0.12)] transition-all duration-200";
 
   return `${base} ${
     open
-      ? "max-h-[calc(100vh-160px)] translate-y-0 opacity-100"
+      ? "max-h-[calc(100dvh-var(--app-header-offset)-86px)] translate-y-0 opacity-100"
       : "pointer-events-none max-h-0 -translate-y-2 border-transparent opacity-0 shadow-none"
   }`;
 }
@@ -533,6 +533,32 @@ export function SmartFeedBar({
   const [countriesOpen, setCountriesOpen] = useState(false);
   const [countryPickerOpen, setCountryPickerOpen] = useState(false);
 
+  useEffect(() => {
+    if (!countriesOpen) return;
+    if (typeof document === "undefined") return;
+
+    const closeFromOutside = (event: PointerEvent) => {
+      const target = event.target;
+      if (target instanceof Node && shellRef.current?.contains(target)) return;
+      setCountriesOpen(false);
+      setCountryPickerOpen(false);
+    };
+
+    const closeFromEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setCountriesOpen(false);
+      setCountryPickerOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeFromOutside, true);
+    document.addEventListener("keydown", closeFromEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeFromOutside, true);
+      document.removeEventListener("keydown", closeFromEscape);
+    };
+  }, [countriesOpen]);
+
   const baseCountry = String(locale).toLowerCase();
   const normalizedSelected = useMemo(() => {
     const next = normalizeCountryList(selectedCountries);
@@ -621,19 +647,18 @@ export function SmartFeedBar({
   return (
     <div
       ref={shellRef}
-      onClick={(event) => event.stopPropagation()}
-      onPointerDown={(event) => event.stopPropagation()}
-      onPointerMove={(event) => event.stopPropagation()}
-      onTouchMove={(event) => event.stopPropagation()}
+
       className={
         floating
-          ? `fixed inset-x-0 z-[200] transition-all duration-300 ease-out ${
+          ? `fixed inset-x-0 ${countriesOpen ? "z-[120]" : "z-[70]"} transition-all duration-300 ease-out ${
               visible
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-3 opacity-0"
             }`
-          : "relative z-[120]"
-      }
+          : countriesOpen
+            ? "relative z-[130]"
+            : "relative z-[20]"
+      }      
       style={floating ? { top: "var(--app-header-offset)" } : undefined}
       aria-hidden={floating ? !visible : undefined}
     >
@@ -709,11 +734,8 @@ export function SmartFeedBar({
 
           <div className={getDropdownShellClasses(isDark, countriesOpen)}>
             <div
-              className="max-h-[calc(100vh-var(--app-header-offset)-74px)] overflow-y-auto overscroll-contain px-4 pb-4 pt-4 sm:px-4"
-              onClick={(event) => event.stopPropagation()}
-              onPointerDown={(event) => event.stopPropagation()}
-              onPointerMove={(event) => event.stopPropagation()}
-              onTouchMove={(event) => event.stopPropagation()}
+              className="max-h-[calc(100dvh-var(--app-header-offset)-96px)] overflow-y-auto overscroll-contain px-4 pb-4 pt-4 sm:px-4"
+            style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-y" }}
             >
               <div
                 className={`mb-3 text-sm font-medium ${

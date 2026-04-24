@@ -429,6 +429,23 @@ export function FeedScreen({
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const previousScrollRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    setShowFloatingSmartBar(false);
+
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.history.scrollRestoration = previousScrollRestoration;
+    };
+  }, []);
+
+  useEffect(() => {
     setSelectedTags(readSelectedTagsFromStorage());
     setSearchQuery(readSearchQueryFromStorage());
     setSubscriptionHandles(readSubscriptionsFromStorage());
