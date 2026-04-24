@@ -99,6 +99,7 @@ export function AdminScreen({
   const [rebuildLoading, setRebuildLoading] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
   const [clockNow, setClockNow] = useState(() => new Date());
+  const [countryStatsOpen, setCountryStatsOpen] = useState(false);
 
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
     try {
@@ -195,6 +196,33 @@ export function AdminScreen({
     return counts;
   }, [sources]);
 
+  const countryFeedStats = useMemo(() => {
+    return COUNTRIES.filter((country) => country.enabled)
+      .map((country) => {
+        const countrySources = sources.filter((source) => source.countryCode === country.code);
+        const activeSources = countrySources.filter((source) => source.status === "active").length;
+        const postsCount = countrySources.reduce(
+          (sum, source) => sum + (source.importedPostsCount || 0),
+          0
+        );
+        const countryMeta = country as typeof country & {
+          label?: string;
+          name?: string;
+          title?: string;
+        };
+
+        return {
+          code: country.code,
+          label: countryMeta.label || countryMeta.name || countryMeta.title || country.code.toUpperCase(),
+          sourcesCount: countrySources.length,
+          activeSources,
+          postsCount,
+        };
+      })
+      .filter((item) => item.sourcesCount > 0 || item.postsCount > 0)
+      .sort((a, b) => b.postsCount - a.postsCount || b.sourcesCount - a.sourcesCount);
+  }, [sources]);
+
   const nextRebuildDate = useMemo(() => getNextRebuildDate(clockNow), [clockNow]);
   const nextRebuildLabel = useMemo(() => formatShortTime(nextRebuildDate), [nextRebuildDate]);
   const nextRebuildDateTimeLabel = useMemo(() => formatDateTime(nextRebuildDate), [nextRebuildDate]);
@@ -230,6 +258,7 @@ export function AdminScreen({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           telegramUserId,
+          countryCode: selectedCountryCode,
         }),
       });
 
@@ -324,7 +353,55 @@ export function AdminScreen({
           </div>
         ) : null}
 
-        <div className="space-y-4">
+        {countryFeedStats.length > 0 ? (
+          <div className="mb-4 rounded-[24px] border border-white/10 bg-white/[0.035] px-4 py-3">
+            <button
+              type="button"
+              onClick={() => setCountryStatsOpen((prev) => !prev)}
+              className="flex w-full items-center justify-between gap-3 text-left"
+            >
+              <div className="min-w-0">
+                <div className="text-sm font-semibold text-white">Посты по странам</div>
+                <div className="mt-1 text-xs text-white/45">
+                  Быстрая сводка. Не влияет на выбранную страну для добавления.
+                </div>
+              </div>
+              <div className="shrink-0 rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
+                {countryFeedStats.length} стран
+              </div>
+            </button>
+
+            <div className="mt-3 flex flex-wrap gap-2">
+              {(countryStatsOpen ? countryFeedStats : countryFeedStats.slice(0, 10)).map((item) => (
+                <button
+                  key={item.code}
+                  type="button"
+                  onClick={() => setSelectedCountryCode(item.code)}
+                  className={`rounded-full border px-3 py-1.5 text-xs transition ${
+                    item.code === selectedCountryCode
+                      ? "border-white bg-white text-black"
+                      : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+                  }`}
+                  title={`${item.label}: ${item.postsCount} постов · ${item.sourcesCount} каналов`}
+                >
+                  {item.code.toUpperCase()} · {item.postsCount}
+                </button>
+              ))}
+
+              {countryFeedStats.length > 10 ? (
+                <button
+                  type="button"
+                  onClick={() => setCountryStatsOpen((prev) => !prev)}
+                  className="rounded-full border border-white/10 bg-transparent px-3 py-1.5 text-xs text-white/55 transition hover:bg-white/10 hover:text-white"
+                >
+                  {countryStatsOpen ? "свернуть" : `ещё ${countryFeedStats.length - 10}`}
+                </button>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
+
+        <div className="space-y-3 sm:space-y-4">
           <AdminCountriesSection
             selectedCountryCode={selectedCountryCode}
             onSelectCountry={setSelectedCountryCode}

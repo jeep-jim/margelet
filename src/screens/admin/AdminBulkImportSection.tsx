@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import { useMemo, useState } from "react";
 import {
   getParentTag,
@@ -84,6 +85,7 @@ export function AdminBulkImportSection({
   const [rows, setRows] = useState<BulkSourceRow[]>([createRow(), createRow()]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [openTagRows, setOpenTagRows] = useState<Record<string, boolean>>({});
 
   const validRows = useMemo(() => rows.filter((row) => normalizeHandle(row.handle)), [rows]);
 
@@ -155,6 +157,10 @@ export function AdminBulkImportSection({
 
   const addRow = () => {
     setRows((prev) => [...prev, createRow()]);
+  };
+
+  const toggleRowTagsOpen = (rowId: string) => {
+    setOpenTagRows((prev) => ({ ...prev, [rowId]: !prev[rowId] }));
   };
 
   const removeRow = (rowId: string) => {
@@ -293,115 +299,126 @@ export function AdminBulkImportSection({
                   </label>
                 </div>
 
-                <div className="mt-4 rounded-[24px] border border-white/10 bg-[#151722] p-4">
-                  <div className="mb-2 text-sm font-medium text-white">Категории канала</div>
-                  <div className="mb-4 text-xs text-white/45">
-                    Здесь уже новая логика: родительские категории плюс уточняющие подтеги.
-                  </div>
+                <div className="mt-4 rounded-[22px] border border-white/10 bg-[#151722] px-4 py-3">
+                  <button
+                    type="button"
+                    onClick={() => toggleRowTagsOpen(row.id)}
+                    className="flex w-full items-center justify-between gap-3 text-left"
+                  >
+                    <div className="min-w-0">
+                      <div className="text-sm font-semibold text-white">Категории канала</div>
+                      <div className="mt-1 text-xs text-white/45">
+                        {selectedParentGroups.length > 0
+                          ? `Выбрано: ${selectedParentGroups.length}`
+                          : "Теги свёрнуты. Разверни только если нужно изменить категории."}
+                      </div>
+                    </div>
+                    <ChevronDown
+                      className={`h-5 w-5 shrink-0 text-white/70 transition ${openTagRows[row.id] ? "rotate-180" : ""}`}
+                    />
+                  </button>
 
-                  <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                    {SITE_TAG_GROUPS.map((group) => {
-                      const isActive = selectedParentGroups.some((item) => item.parentTag === group.value);
-                      const childCount =
-                        selectedParentGroups.find((item) => item.parentTag === group.value)?.childTags.length || 0;
+                  {openTagRows[row.id] ? (
+                    <div className="mt-3 border-t border-white/10 pt-3">
+                      <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                        {SITE_TAG_GROUPS.map((group) => {
+                          const isActive = selectedParentGroups.some((item) => item.parentTag === group.value);
+                          const childCount =
+                            selectedParentGroups.find((item) => item.parentTag === group.value)?.childTags.length || 0;
 
-                      return (
-                        <button
-                          key={group.value}
-                          type="button"
-                          onClick={() => toggleParentTag(row.id, group.value as ContentTag)}
-                          className={`rounded-2xl border px-3 py-3 text-left transition ${
-                            isActive
-                              ? "border-white bg-white text-black"
-                              : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
-                          }`}
-                        >
-                          <div className="flex items-center justify-between gap-3">
-                            <span className="text-sm font-medium">
-                              {resolveTagLabel(group.value, "ru") || group.value}
-                            </span>
-                            {childCount > 0 ? (
-                              <span
-                                className={`rounded-full px-2 py-0.5 text-[11px] ${
-                                  isActive ? "bg-black/10 text-black/70" : "bg-white/10 text-white/65"
-                                }`}
-                              >
-                                +{childCount}
-                              </span>
-                            ) : null}
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {selectedParentGroups.length > 0 ? (
-                    <div className="mt-4 space-y-3">
-                      {selectedParentGroups.map((group) => {
-                        const childOptions = getRelatedChildTags(group.parentTag)
-                          .filter((tag) => !tag.value.endsWith("_all"))
-                          .map((tag) => tag.value as ContentTag);
-
-                        if (childOptions.length === 0) return null;
-
-                        return (
-                          <div
-                            key={group.parentTag}
-                            className="rounded-[20px] border border-white/10 bg-[#10121a] p-4"
-                          >
-                            <div className="mb-2 text-sm font-medium text-white">
-                              Подтеги · {resolveTagLabel(group.parentTag, "ru")}
-                            </div>
-                            <div className="mb-3 text-xs text-white/45">
-                              Здесь можно уточнить только уже выбранную категорию.
-                            </div>
-
-                            <div className="flex flex-wrap gap-2">
-                              {childOptions.map((childTag) => {
-                                const isActive = group.childTags.includes(childTag);
-
-                                return (
-                                  <button
-                                    key={childTag}
-                                    type="button"
-                                    onClick={() => toggleChildTag(row.id, childTag)}
-                                    className={`rounded-full border px-3 py-2 text-sm transition ${
-                                      isActive
-                                        ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
-                                        : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
+                          return (
+                            <button
+                              key={group.value}
+                              type="button"
+                              onClick={() => toggleParentTag(row.id, group.value as ContentTag)}
+                              className={`rounded-2xl border px-3 py-2.5 text-left transition ${
+                                isActive
+                                  ? "border-white bg-white text-black"
+                                  : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
+                              }`}
+                            >
+                              <div className="flex items-center justify-between gap-3">
+                                <span className="text-sm font-medium">
+                                  {resolveTagLabel(group.value, "ru") || group.value}
+                                </span>
+                                {childCount > 0 ? (
+                                  <span
+                                    className={`rounded-full px-2 py-0.5 text-[11px] ${
+                                      isActive ? "bg-black/10 text-black/70" : "bg-white/10 text-white/65"
                                     }`}
                                   >
-                                    {resolveTagLabel(childTag, "ru") || childTag}
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        );
-                      })}
+                                    +{childCount}
+                                  </span>
+                                ) : null}
+                              </div>
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {selectedParentGroups.length > 0 ? (
+                        <div className="mt-3 space-y-2">
+                          {selectedParentGroups.map((group) => {
+                            const childOptions = getRelatedChildTags(group.parentTag)
+                              .filter((tag) => !tag.value.endsWith("_all"))
+                              .map((tag) => tag.value as ContentTag);
+
+                            if (childOptions.length === 0) return null;
+
+                            return (
+                              <div key={group.parentTag} className="rounded-[18px] border border-white/10 bg-[#10121a] p-3">
+                                <div className="mb-2 text-xs font-semibold text-white/70">
+                                  Подтеги · {resolveTagLabel(group.parentTag, "ru")}
+                                </div>
+
+                                <div className="flex flex-wrap gap-2">
+                                  {childOptions.map((childTag) => {
+                                    const isActive = group.childTags.includes(childTag);
+
+                                    return (
+                                      <button
+                                        key={childTag}
+                                        type="button"
+                                        onClick={() => toggleChildTag(row.id, childTag)}
+                                        className={`rounded-full border px-3 py-1.5 text-xs transition ${
+                                          isActive
+                                            ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
+                                            : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
+                                        }`}
+                                      >
+                                        {resolveTagLabel(childTag, "ru") || childTag}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ) : null}
                     </div>
                   ) : null}
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {selectedParentGroups.length > 0 ? (
                       selectedParentGroups.flatMap((group) => [
                         <div
                           key={`parent-${row.id}-${group.parentTag}`}
-                          className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-sm text-white"
+                          className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-white"
                         >
                           {resolveTagLabel(group.parentTag, "ru")}
                         </div>,
                         ...group.childTags.map((tag) => (
                           <div
                             key={`${row.id}-${tag}`}
-                            className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-sm text-[#d9f3ff]"
+                            className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-xs text-[#d9f3ff]"
                           >
                             {resolveTagLabel(tag, "ru")}
                           </div>
                         )),
                       ])
                     ) : (
-                      <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-sm text-white/40">
+                      <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-xs text-white/40">
                         Категории ещё не выбраны
                       </div>
                     )}
