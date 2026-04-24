@@ -1,5 +1,5 @@
 import { ChevronDown, FileText, Image as ImageIcon, Play } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { getTheme, type Theme } from "../../lib/theme";
 import type { Locale } from "../../types/app";
 
@@ -433,12 +433,12 @@ function getInactiveCountryClasses(isDark: boolean) {
 
 function getDropdownShellClasses(isDark: boolean, open: boolean) {
   const base = isDark
-    ? "absolute left-0 right-0 top-full z-[120] overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_16px_40px_rgba(0,0,0,0.28)] transition-all duration-200"    
-    : "absolute left-0 right-0 top-full z-[120] overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface-soft text-primary shadow-[0_12px_30px_rgba(0,0,0,0.10)] transition-all duration-200";
+    ? "absolute left-0 right-0 top-full z-[140] overflow-hidden rounded-b-[28px] border-x border-b border-[#22364f] bg-[#132338] text-white shadow-[0_18px_46px_rgba(0,0,0,0.36)] transition-all duration-200"
+    : "absolute left-0 right-0 top-full z-[140] overflow-hidden rounded-b-[28px] border-x border-b border-soft bg-surface-soft text-primary shadow-[0_14px_34px_rgba(0,0,0,0.12)] transition-all duration-200";
 
   return `${base} ${
     open
-      ? "max-h-[420px] translate-y-0 opacity-100"
+      ? "max-h-[calc(100vh-160px)] translate-y-0 opacity-100"
       : "pointer-events-none max-h-0 -translate-y-2 border-transparent opacity-0 shadow-none"
   }`;
 }
@@ -448,7 +448,7 @@ function getSwitchTrackClasses(
   checked: boolean,
   primary: boolean
 ) {
-  if (primary) {
+  if (primary && checked) {
     return "border-[#2f6df6] bg-[#2f6df6]";
   }
 
@@ -468,15 +468,38 @@ function getSwitchThumbClasses(
   checked: boolean,
   primary: boolean
 ) {
-  if (primary) {
-    return "left-[20px] bg-white";
-  }
-
   if (checked) {
+    if (primary) return "left-[20px] bg-white";
     return isDark ? "left-[20px] bg-[#162231]" : "left-[20px] bg-white";
   }
 
   return isDark ? "left-[2px] bg-[#6f89a8]" : "left-[2px] bg-[#9aa4b2]";
+}
+
+function normalizeCountryList(value: string[]) {
+  const result: string[] = [];
+
+  for (const item of value) {
+    const code = String(item || "").trim().toLowerCase();
+    if (code && !result.includes(code)) result.push(code);
+  }
+
+  return result;
+}
+
+function getCountryShort(code: string) {
+  const lower = code.toLowerCase();
+  const matchedLocale = lower as Locale;
+  return LOCALE_SHORT[matchedLocale] ?? lower.toUpperCase();
+}
+
+function getCountryMeta(code: string) {
+  return (
+    COUNTRY_LABELS[code] || {
+      label: code.toUpperCase(),
+      flag: "🌍",
+    }
+  );
 }
 
 export function SmartFeedBar({
@@ -488,7 +511,7 @@ export function SmartFeedBar({
   visible = true,
   availableCountries,
   selectedCountries,
-  onToggleCountry, 
+  onToggleCountry,
 }: {
   copy: FeedScreenCopy;
   mediaMode: FeedMediaMode;
@@ -502,13 +525,41 @@ export function SmartFeedBar({
 }) {
   const theme = useThemeMode();
   const isDark = theme === "dark";
+  const shellRef = useRef<HTMLDivElement | null>(null);
   const [countriesOpen, setCountriesOpen] = useState(false);
+  const [countryPickerOpen, setCountryPickerOpen] = useState(false);
+
+  const baseCountry = String(locale).toLowerCase();
+  const normalizedSelected = useMemo(() => {
+    const next = normalizeCountryList(selectedCountries);
+    return next.length ? next : [baseCountry];
+  }, [baseCountry, selectedCountries]);
+
+  const normalizedAvailable = useMemo(() => {
+    const knownCountries = Object.keys(COUNTRY_LABELS);
+    const fromFeed = normalizeCountryList(availableCountries);
+    const ordered = [baseCountry, ...fromFeed, ...knownCountries];
+    return normalizeCountryList(ordered);
+  }, [availableCountries, baseCountry]);
+
+  const selectedExtras = useMemo(() => {
+    return normalizedSelected.filter((country) => country !== baseCountry).slice(0, 4);
+  }, [baseCountry, normalizedSelected]);
+
+  const quickCountries = useMemo(() => {
+    return normalizeCountryList([baseCountry, ...selectedExtras]);
+  }, [baseCountry, selectedExtras]);
 
   useEffect(() => {
     if (!countriesOpen) return;
 
-    const handleClose = () => {
-        setCountriesOpen(false);
+    const handleClose = (event: Event) => {
+      const target = event.target;
+      if (target instanceof Node && shellRef.current?.contains(target)) {
+        return;
+      }
+
+      setCountriesOpen(false);
     };
 
     window.addEventListener("scroll", handleClose, { passive: true });
@@ -516,17 +567,18 @@ export function SmartFeedBar({
     window.addEventListener("wheel", handleClose, { passive: true });
 
     return () => {
-        window.removeEventListener("scroll", handleClose);
-        window.removeEventListener("touchmove", handleClose);
-        window.removeEventListener("wheel", handleClose);
+      window.removeEventListener("scroll", handleClose);
+      window.removeEventListener("touchmove", handleClose);
+      window.removeEventListener("wheel", handleClose);
     };
-    }, [countriesOpen]);
+  }, [countriesOpen]);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!visible) {
-        setCountriesOpen(false);
+      setCountriesOpen(false);
+      setCountryPickerOpen(false);
     }
-    }, [visible]);
+  }, [visible]);
 
   const options: Array<{
     value: FeedMediaMode;
@@ -535,7 +587,7 @@ export function SmartFeedBar({
     icon?: React.ReactNode;
   }> = useMemo(
     () => [
-      { value: "all", label: copy.modeAll, mobileLabel: copy.modeAll },
+      { value: "all", label: copy.modeAll, mobileLabel: "∞" },
       {
         value: "text",
         label: copy.modeText,
@@ -555,27 +607,35 @@ export function SmartFeedBar({
     [copy.modeAll, copy.modePhoto, copy.modeText, copy.modeVideo]
   );
 
-  const baseCountry = String(locale).toLowerCase();
-  const extraCount = selectedCountries.filter((item) => item !== baseCountry).length;
+  const extraCount = selectedExtras.length;
   const countryButtonLabel =
     extraCount > 0
-      ? `${LOCALE_SHORT[locale] ?? String(locale).toUpperCase()} +${extraCount}`
-      : LOCALE_SHORT[locale] ?? String(locale).toUpperCase();
+      ? `${getCountryShort(baseCountry)} +${extraCount}`
+      : getCountryShort(baseCountry);
 
   const activeClasses = getActiveClasses(isDark);
   const inactivePillClasses = getInactivePillClasses(isDark);
   const inactiveCountryClasses = getInactiveCountryClasses(isDark);
+  const selectedSet = new Set(normalizedSelected);
+  const favoriteSet = new Set([baseCountry, ...selectedExtras]);
+
+  const handleCountryClick = (country: string) => {
+    onToggleCountry(country);
+  };
 
   return (
     <div
+      ref={shellRef}
+      onClick={(event) => event.stopPropagation()}
+      onPointerDown={(event) => event.stopPropagation()}
       className={
         floating
-          ? `fixed inset-x-0 z-[55] transition-all duration-300 ease-out ${
+          ? `fixed inset-x-0 z-[80] transition-all duration-300 ease-out ${
               visible
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-3 opacity-0"
             }`
-          : "relative z-[2]"
+          : "relative z-[60]"
       }
       style={floating ? { top: "var(--app-header-offset)" } : undefined}
       aria-hidden={floating ? !visible : undefined}
@@ -599,17 +659,24 @@ export function SmartFeedBar({
                       key={option.value}
                       type="button"
                       onClick={() => onChangeMediaMode(option.value)}
-                      className={`inline-flex h-10 shrink-0 items-center justify-center rounded-full border px-3 text-sm font-medium transition sm:h-10 sm:px-3.5 ${
+                      className={`inline-flex h-10 shrink-0 items-center justify-center rounded-full border text-sm font-medium transition sm:h-10 ${
                         active ? activeClasses : inactivePillClasses
                       } ${
                         option.value === "all"
-                          ? "min-w-[62px] sm:min-w-[72px]"
-                          : "min-w-[40px] sm:min-w-[88px]"
+                          ? "min-w-[42px] px-3 sm:min-w-[86px] sm:px-3.5"
+                          : "min-w-[40px] px-3 sm:min-w-[88px] sm:px-3.5"
                       }`}
                       aria-pressed={active}
+                      aria-label={option.label}
                     >
                       {option.value === "all" ? (
-                        <span className="truncate">{option.mobileLabel ?? option.label}</span>
+                        <>
+                          <span className="text-[17px] leading-none sm:hidden">∞</span>
+                          <span className="hidden items-center gap-2 sm:inline-flex">
+                            <span className="text-[17px] leading-none">∞</span>
+                            <span>{option.label}</span>
+                          </span>
+                        </>
                       ) : (
                         <>
                           <span className="sm:hidden">{option.icon}</span>
@@ -628,7 +695,7 @@ export function SmartFeedBar({
                 <button
                   type="button"
                   onClick={() => setCountriesOpen((prev) => !prev)}
-                  className={`inline-flex h-10 min-w-[76px] items-center justify-center gap-2 rounded-full border px-3.5 text-sm font-medium transition ${
+                  className={`inline-flex h-10 min-w-[74px] items-center justify-center gap-2 rounded-full border px-3.5 text-sm font-medium transition ${
                     countriesOpen ? activeClasses : inactiveCountryClasses
                   }`}
                 >
@@ -654,14 +721,11 @@ export function SmartFeedBar({
               </div>
 
               <div className="space-y-2.5">
-                {availableCountries.map((country) => {
-                  const checked = selectedCountries.includes(country);
+                {quickCountries.map((country) => {
+                  const checked = selectedSet.has(country);
                   const isPrimary = country === baseCountry;
-
-                  const meta = COUNTRY_LABELS[country] || {
-                    label: country.toUpperCase(),
-                    flag: "🌍",
-                  };
+                  const canToggleOff = !checked || normalizedSelected.length > 1;
+                  const meta = getCountryMeta(country);
 
                   return (
                     <div
@@ -678,19 +742,19 @@ export function SmartFeedBar({
                         {isPrimary ? (
                           <span className="ml-1 text-[#2f6df6]">(мой)</span>
                         ) : null}
-                      </div>                      
+                      </div>
 
                       <button
                         type="button"
                         onClick={() => {
-                          if (isPrimary) return;
-                          onToggleCountry(country);
+                          if (!canToggleOff) return;
+                          handleCountryClick(country);
                         }}
                         className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getSwitchTrackClasses(
                           isDark,
                           checked,
                           isPrimary
-                        )} ${isPrimary ? "cursor-default" : ""}`}
+                        )} ${!canToggleOff ? "cursor-not-allowed opacity-70" : ""}`}
                         aria-pressed={checked}
                         aria-label={`${meta.label} ${checked ? "enabled" : "disabled"}`}
                       >
@@ -701,10 +765,70 @@ export function SmartFeedBar({
                             isPrimary
                           )}`}
                         />
-                      </button>                      
+                      </button>
                     </div>
                   );
                 })}
+              </div>
+
+              <div
+                className={`mt-4 border-t pt-3 ${
+                  isDark ? "border-[#22364f]" : "border-soft"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setCountryPickerOpen((prev) => !prev)}
+                  className="flex w-full items-center justify-between gap-3 text-left text-[13px] font-medium"
+                  aria-expanded={countryPickerOpen}
+                >
+                  <span className={isDark ? "text-[#95a8bd]" : "text-secondary"}>
+                    🌐 В ленту можно добавить до 5 стран
+                  </span>
+                  <ChevronDown
+                    className={`h-4 w-4 shrink-0 transition ${
+                      countryPickerOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {countryPickerOpen ? (
+                  <div className="mt-3 grid grid-cols-5 gap-2">
+                    {normalizedAvailable.map((country) => {
+                      const isPrimary = country === baseCountry;
+                      const checked = favoriteSet.has(country);
+                      const meta = getCountryMeta(country);
+                      const disabled = isPrimary || (!checked && selectedExtras.length >= 4);
+                      const primaryChipClasses = "border-[#2f6df6] bg-[#2f6df6] text-white";
+
+                      return (
+                        <button
+                          key={country}
+                          type="button"
+                          onClick={() => {
+                            if (isPrimary || disabled) return;
+                            handleCountryClick(country);
+                          }}
+                          className={`inline-flex h-8 items-center justify-center rounded-full border px-2 text-xs font-semibold uppercase transition ${
+                            isPrimary
+                              ? primaryChipClasses
+                              : checked
+                                ? activeClasses
+                                : disabled
+                                  ? isDark
+                                    ? "cursor-not-allowed border-[#203449] bg-[#102033] text-[#5f7288]"
+                                    : "cursor-not-allowed border-soft bg-surface-soft text-secondary/60"
+                                  : inactiveCountryClasses
+                          }`}
+                          title={meta.label}
+                          aria-pressed={checked}
+                        >
+                          {getCountryShort(country).toLowerCase()}
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

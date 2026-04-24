@@ -22,10 +22,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const rawFeedPath = asString(req.query.rawFeedPath);
 
-    res.setHeader(
-      "Cache-Control",
-      "public, max-age=0, s-maxage=60, stale-while-revalidate=120"
-    );
+    res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, proxy-revalidate");
+    res.setHeader("Pragma", "no-cache");
+    res.setHeader("Expires", "0");
 
     if (rawFeedPath) {
       const snapshot = await readFeedSnapshotByPath(rawFeedPath);

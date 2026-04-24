@@ -59,6 +59,28 @@ function normalizeCountryCode(value: string | null | undefined, locale: Locale) 
   return String(locale).toLowerCase();
 }
 
+
+function normalizeFeedCountries(countries: string[], fallbackCountry: string) {
+  const normalized = Array.from(
+    new Set(
+      countries
+        .map((item) => item.trim().toLowerCase())
+        .filter(Boolean)
+    )
+  );
+
+  const hasBaseCountry = normalized.includes(fallbackCountry);
+  const extraCountries = normalized
+    .filter((item) => item !== fallbackCountry)
+    .slice(0, 4);
+
+  if (hasBaseCountry) {
+    return [fallbackCountry, ...extraCountries];
+  }
+
+  return extraCountries.length ? extraCountries : [fallbackCountry];
+}
+
 function detectPostMediaMode(
   post: IngestedPost
 ): Exclude<FeedMediaMode, "all"> | "mixed" {
@@ -166,10 +188,10 @@ function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
         : "all";
 
     const countries = Array.isArray(parsed?.countries)
-      ? parsed.countries
-          .filter((item): item is string => typeof item === "string")
-          .map((item) => item.trim().toLowerCase())
-          .filter(Boolean)
+      ? normalizeFeedCountries(
+          parsed.countries.filter((item): item is string => typeof item === "string"),
+          fallbackCountry
+        )
       : [fallbackCountry];
 
     return {
@@ -402,15 +424,15 @@ export function FeedScreen({
     const localeCountry = String(locale).toLowerCase();
 
     setFeedSettings((prev) => {
-      const normalized = prev.countries.map((item) => item.toLowerCase());
+      const normalized = normalizeFeedCountries(prev.countries, localeCountry);
 
-      if (normalized.includes(localeCountry)) {
+      if (normalized.join("|") === prev.countries.join("|")) {
         return prev;
       }
 
       return {
         ...prev,
-        countries: [localeCountry, ...normalized],
+        countries: normalized,
       };
     });
   }, [locale]);  
@@ -854,6 +876,47 @@ export function FeedScreen({
   const hasSubscriptions = subscriptionHandles.length > 0;
   const hasBubbles = subscriptionBubbles.length > 0;
 
+  const toggleFeedCountry = useCallback(
+    (country: string) => {
+      const normalizedCountry = String(country || "").trim().toLowerCase();
+      if (!normalizedCountry) return;
+
+      setFeedSettings((prev) => {
+        const currentCountry = String(locale).toLowerCase();
+        const current = Array.from(
+          new Set(
+            (prev.countries.length ? prev.countries : [currentCountry])
+              .map((item) => item.trim().toLowerCase())
+              .filter(Boolean)
+          )
+        );
+
+        const exists = current.includes(normalizedCountry);
+
+        if (exists) {
+          if (current.length <= 1) return prev;
+
+          const nextCountries = current.filter((item) => item !== normalizedCountry);
+          return {
+            ...prev,
+            countries: nextCountries.length ? nextCountries : [currentCountry],
+          };
+        }
+
+        if (normalizedCountry !== currentCountry) {
+          const extraCountries = current.filter((item) => item !== currentCountry);
+          if (extraCountries.length >= 4) return prev;
+        }
+
+        return {
+          ...prev,
+          countries: [...current, normalizedCountry],
+        };
+      });
+    },
+    [locale]
+  );
+
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
       <FeedHeader
@@ -888,24 +951,7 @@ export function FeedScreen({
           }
           availableCountries={availableCountryOptions}
           selectedCountries={feedSettings.countries}
-          onToggleCountry={(country) =>
-            setFeedSettings((prev) => {
-              const currentCountry = String(locale).toLowerCase();
-
-              if (country === currentCountry) {
-                return prev;
-              }
-
-              const exists = prev.countries.includes(country);
-
-              return {
-                ...prev,
-                countries: exists
-                  ? prev.countries.filter((item) => item !== country)
-                  : [...prev.countries, country],
-              };
-            })
-          }          
+          onToggleCountry={toggleFeedCountry}          
         />
       ) : null}
 
@@ -948,24 +994,7 @@ export function FeedScreen({
           locale={locale}
           availableCountries={availableCountryOptions}
           selectedCountries={feedSettings.countries}
-          onToggleCountry={(country) =>
-            setFeedSettings((prev) => {
-              const currentCountry = String(locale).toLowerCase();
-
-              if (country === currentCountry) {
-                return prev;
-              }
-
-              const exists = prev.countries.includes(country);
-
-              return {
-                ...prev,
-                countries: exists
-                  ? prev.countries.filter((item) => item !== country)
-                  : [...prev.countries, country],
-              };
-            })
-          }
+          onToggleCountry={toggleFeedCountry}
         />        
       ) : null}
 

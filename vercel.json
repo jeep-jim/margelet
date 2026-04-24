@@ -1,63 +1,44 @@
 {
   "ignoreCommand": "bash scripts/vercel-ignore-build.sh",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/media-proxy",
-      "destination": "/api/media-proxy"
+      "src": "/feed\\.json",
+      "dest": "/api/feed?rawFeedPath=feed.json"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "src": "/feeds/(.*)",
+      "dest": "/api/feed?rawFeedPath=$1"
     },
     {
-      "source": "/feed.json",
-      "destination": "/api/feed?rawFeedPath=feed.json"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     },
     {
-      "source": "/feeds/(.*)",
-      "destination": "/api/feed?rawFeedPath=$1"
+      "src": "/jim/admin",
+      "headers": {
+        "X-Robots-Tag": "noindex, nofollow, noarchive, nosnippet",
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+      },
+      "dest": "/"
     },
     {
-      "source": "/jim/admin",
-      "destination": "/"
+      "src": "/jim/admin/(.*)",
+      "headers": {
+        "X-Robots-Tag": "noindex, nofollow, noarchive, nosnippet",
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+      },
+      "dest": "/"
     },
     {
-      "source": "/jim/admin/(.*)",
-      "destination": "/"
+      "handle": "filesystem"
     },
     {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": ".*text/html.*"
-        }
-      ],
-      "destination": "/"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/jim/admin",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow, noarchive, nosnippet"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-store, no-cache, must-revalidate, proxy-revalidate"
-        },
-        {
-          "key": "Pragma",
-          "value": "no-cache"
-        },
-        {
-          "key": "Expires",
-          "value": "0"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
