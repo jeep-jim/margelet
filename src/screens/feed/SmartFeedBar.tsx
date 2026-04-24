@@ -511,7 +511,9 @@ export function SmartFeedBar({
   visible = true,
   availableCountries,
   selectedCountries,
+  favoriteCountries,
   onToggleCountry,
+  onToggleFavoriteCountry,
 }: {
   copy: FeedScreenCopy;
   mediaMode: FeedMediaMode;
@@ -521,7 +523,9 @@ export function SmartFeedBar({
   visible?: boolean;
   availableCountries: string[];
   selectedCountries: string[];
+  favoriteCountries: string[];
   onToggleCountry: (country: string) => void;
+  onToggleFavoriteCountry: (country: string) => void;
 }) {
   const theme = useThemeMode();
   const isDark = theme === "dark";
@@ -535,6 +539,12 @@ export function SmartFeedBar({
     return next.length ? next : [baseCountry];
   }, [baseCountry, selectedCountries]);
 
+  const normalizedFavorites = useMemo(() => {
+    const next = normalizeCountryList([baseCountry, ...favoriteCountries]);
+    const extras = next.filter((country) => country !== baseCountry).slice(0, 4);
+    return [baseCountry, ...extras];
+  }, [baseCountry, favoriteCountries]);
+
   const normalizedAvailable = useMemo(() => {
     const knownCountries = Object.keys(COUNTRY_LABELS);
     const fromFeed = normalizeCountryList(availableCountries);
@@ -546,31 +556,16 @@ export function SmartFeedBar({
     return normalizedSelected.filter((country) => country !== baseCountry).slice(0, 4);
   }, [baseCountry, normalizedSelected]);
 
-  const quickCountries = useMemo(() => {
-    return normalizeCountryList([baseCountry, ...selectedExtras]);
-  }, [baseCountry, selectedExtras]);
+  const favoriteExtras = useMemo(() => {
+    return normalizedFavorites.filter((country) => country !== baseCountry).slice(0, 4);
+  }, [baseCountry, normalizedFavorites]);
+
+  const quickCountries = normalizedFavorites;
 
   useEffect(() => {
-    if (!countriesOpen) return;
-
-    const handleClose = (event: Event) => {
-      const target = event.target;
-      if (target instanceof Node && shellRef.current?.contains(target)) {
-        return;
-      }
-
-      setCountriesOpen(false);
-    };
-
-    window.addEventListener("scroll", handleClose, { passive: true });
-    window.addEventListener("touchmove", handleClose, { passive: true });
-    window.addEventListener("wheel", handleClose, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleClose);
-      window.removeEventListener("touchmove", handleClose);
-      window.removeEventListener("wheel", handleClose);
-    };
+    if (!countriesOpen) {
+      setCountryPickerOpen(false);
+    }
   }, [countriesOpen]);
 
   useEffect(() => {
@@ -617,7 +612,7 @@ export function SmartFeedBar({
   const inactivePillClasses = getInactivePillClasses(isDark);
   const inactiveCountryClasses = getInactiveCountryClasses(isDark);
   const selectedSet = new Set(normalizedSelected);
-  const favoriteSet = new Set([baseCountry, ...selectedExtras]);
+  const favoriteSet = new Set(normalizedFavorites);
 
   const handleCountryClick = (country: string) => {
     onToggleCountry(country);
@@ -628,14 +623,16 @@ export function SmartFeedBar({
       ref={shellRef}
       onClick={(event) => event.stopPropagation()}
       onPointerDown={(event) => event.stopPropagation()}
+      onPointerMove={(event) => event.stopPropagation()}
+      onTouchMove={(event) => event.stopPropagation()}
       className={
         floating
-          ? `fixed inset-x-0 z-[80] transition-all duration-300 ease-out ${
+          ? `fixed inset-x-0 z-[200] transition-all duration-300 ease-out ${
               visible
                 ? "translate-y-0 opacity-100"
                 : "pointer-events-none -translate-y-3 opacity-0"
             }`
-          : "relative z-[60]"
+          : "relative z-[120]"
       }
       style={floating ? { top: "var(--app-header-offset)" } : undefined}
       aria-hidden={floating ? !visible : undefined}
@@ -711,7 +708,13 @@ export function SmartFeedBar({
           </div>
 
           <div className={getDropdownShellClasses(isDark, countriesOpen)}>
-            <div className="px-4 pb-4 pt-4 sm:px-4">
+            <div
+              className="max-h-[calc(100vh-var(--app-header-offset)-74px)] overflow-y-auto overscroll-contain px-4 pb-4 pt-4 sm:px-4"
+              onClick={(event) => event.stopPropagation()}
+              onPointerDown={(event) => event.stopPropagation()}
+              onPointerMove={(event) => event.stopPropagation()}
+              onTouchMove={(event) => event.stopPropagation()}
+            >
               <div
                 className={`mb-3 text-sm font-medium ${
                   isDark ? "text-[#95a8bd]" : "text-secondary"
@@ -779,10 +782,10 @@ export function SmartFeedBar({
                 <button
                   type="button"
                   onClick={() => setCountryPickerOpen((prev) => !prev)}
-                  className="flex w-full items-center justify-between gap-3 text-left text-[13px] font-medium"
+                  className="flex w-full items-center justify-between gap-3 text-left text-sm font-medium"
                   aria-expanded={countryPickerOpen}
                 >
-                  <span className={isDark ? "text-[#95a8bd]" : "text-secondary"}>
+                  <span className={`text-[13px] ${isDark ? "text-[#95a8bd]" : "text-secondary"}`}>
                     🌐 В ленту можно добавить до 5 стран
                   </span>
                   <ChevronDown
@@ -793,12 +796,12 @@ export function SmartFeedBar({
                 </button>
 
                 {countryPickerOpen ? (
-                  <div className="mt-3 grid grid-cols-5 gap-2">
+                  <div className="mt-4 grid grid-cols-5 gap-2">
                     {normalizedAvailable.map((country) => {
                       const isPrimary = country === baseCountry;
                       const checked = favoriteSet.has(country);
                       const meta = getCountryMeta(country);
-                      const disabled = isPrimary || (!checked && selectedExtras.length >= 4);
+                      const disabled = isPrimary || (!checked && favoriteExtras.length >= 4);
                       const primaryChipClasses = "border-[#2f6df6] bg-[#2f6df6] text-white";
 
                       return (
@@ -807,7 +810,7 @@ export function SmartFeedBar({
                           type="button"
                           onClick={() => {
                             if (isPrimary || disabled) return;
-                            handleCountryClick(country);
+                            onToggleFavoriteCountry(country);
                           }}
                           className={`inline-flex h-8 items-center justify-center rounded-full border px-2 text-xs font-semibold uppercase transition ${
                             isPrimary
@@ -817,7 +820,7 @@ export function SmartFeedBar({
                                 : disabled
                                   ? isDark
                                     ? "cursor-not-allowed border-[#203449] bg-[#102033] text-[#5f7288]"
-                                    : "cursor-not-allowed border-soft bg-surface-soft text-secondary/60"
+                                    : "cursor-not-allowed border-[#d2d9e3] bg-[#eef2f7] text-[#9aa4b2] opacity-70"
                                   : inactiveCountryClasses
                           }`}
                           title={meta.label}

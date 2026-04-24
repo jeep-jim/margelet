@@ -30,6 +30,7 @@ const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
 type FeedSettings = {
   mediaMode: FeedMediaMode;
   countries: string[];
+  favoriteCountries: string[];
   demoteSeen: boolean;
 };
 
@@ -79,6 +80,22 @@ function normalizeFeedCountries(countries: string[], fallbackCountry: string) {
   }
 
   return extraCountries.length ? extraCountries : [fallbackCountry];
+}
+
+function normalizeFavoriteCountries(countries: string[], fallbackCountry: string) {
+  const normalized = Array.from(
+    new Set(
+      [fallbackCountry, ...countries]
+        .map((item) => item.trim().toLowerCase())
+        .filter(Boolean)
+    )
+  );
+
+  const extras = normalized
+    .filter((item) => item !== fallbackCountry)
+    .slice(0, 4);
+
+  return [fallbackCountry, ...extras];
 }
 
 function detectPostMediaMode(
@@ -175,6 +192,7 @@ function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
       return {
         mediaMode: "all",
         countries: [fallbackCountry],
+        favoriteCountries: [fallbackCountry],
         demoteSeen: true,
       };
     }
@@ -194,15 +212,36 @@ function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
         )
       : [fallbackCountry];
 
+    const normalizedCountries = normalizeFeedCountries(
+      countries.length ? countries : [fallbackCountry],
+      fallbackCountry
+    );
+
+    const rawFavorites = Array.isArray(parsed?.favoriteCountries)
+      ? parsed.favoriteCountries
+          .filter((item): item is string => typeof item === "string")
+          .map((item) => item.trim().toLowerCase())
+          .filter(Boolean)
+      : normalizedCountries;
+
+    const favoriteCountries = normalizeFavoriteCountries(rawFavorites, fallbackCountry);
+    const favoriteSet = new Set(favoriteCountries);
+    const safeCountries = normalizeFeedCountries(
+      normalizedCountries.filter((country) => country === fallbackCountry || favoriteSet.has(country)),
+      fallbackCountry
+    );
+
     return {
       mediaMode,
-      countries: countries.length ? countries : [fallbackCountry],
+      countries: safeCountries,
+      favoriteCountries,
       demoteSeen: parsed?.demoteSeen !== false,
     };
   } catch {
     return {
       mediaMode: "all",
       countries: [fallbackCountry],
+      favoriteCountries: [fallbackCountry],
       demoteSeen: true,
     };
   }
@@ -425,14 +464,27 @@ export function FeedScreen({
 
     setFeedSettings((prev) => {
       const normalized = normalizeFeedCountries(prev.countries, localeCountry);
+      const favoriteCountries = normalizeFavoriteCountries(
+        prev.favoriteCountries || normalized,
+        localeCountry
+      );
+      const favoriteSet = new Set(favoriteCountries);
+      const safeCountries = normalizeFeedCountries(
+        normalized.filter((country) => country === localeCountry || favoriteSet.has(country)),
+        localeCountry
+      );
 
-      if (normalized.join("|") === prev.countries.join("|")) {
+      if (
+        safeCountries.join("|") === prev.countries.join("|") &&
+        favoriteCountries.join("|") === (prev.favoriteCountries || []).join("|")
+      ) {
         return prev;
       }
 
       return {
         ...prev,
-        countries: normalized,
+        countries: safeCountries,
+        favoriteCountries,
       };
     });
   }, [locale]);  
@@ -883,14 +935,20 @@ export function FeedScreen({
 
       setFeedSettings((prev) => {
         const currentCountry = String(locale).toLowerCase();
-        const current = Array.from(
-          new Set(
-            (prev.countries.length ? prev.countries : [currentCountry])
-              .map((item) => item.trim().toLowerCase())
-              .filter(Boolean)
-          )
+        const favoriteCountries = normalizeFavoriteCountries(
+          prev.favoriteCountries || prev.countries || [currentCountry],
+          currentCountry
         );
+        const favoriteSet = new Set(favoriteCountries);
 
+        if (normalizedCountry !== currentCountry && !favoriteSet.has(normalizedCountry)) {
+          return prev;
+        }
+
+        const current = normalizeFeedCountries(
+          prev.countries.length ? prev.countries : [currentCountry],
+          currentCountry
+        );
         const exists = current.includes(normalizedCountry);
 
         if (exists) {
@@ -900,17 +958,64 @@ export function FeedScreen({
           return {
             ...prev,
             countries: nextCountries.length ? nextCountries : [currentCountry],
+            favoriteCountries,
           };
-        }
-
-        if (normalizedCountry !== currentCountry) {
-          const extraCountries = current.filter((item) => item !== currentCountry);
-          if (extraCountries.length >= 4) return prev;
         }
 
         return {
           ...prev,
-          countries: [...current, normalizedCountry],
+          countries: normalizeFeedCountries([...current, normalizedCountry], currentCountry),
+          favoriteCountries,
+        };
+      });
+    },
+    [locale]
+  );
+
+  const toggleFavoriteCountry = useCallback(
+    (country: string) => {
+      const normalizedCountry = String(country || "").trim().toLowerCase();
+      if (!normalizedCountry) return;
+
+      setFeedSettings((prev) => {
+        const currentCountry = String(locale).toLowerCase();
+        if (normalizedCountry === currentCountry) return prev;
+
+        const favoriteCountries = normalizeFavoriteCountries(
+          prev.favoriteCountries || prev.countries || [currentCountry],
+          currentCountry
+        );
+        const exists = favoriteCountries.includes(normalizedCountry);
+
+        if (exists) {
+          const nextFavorites = normalizeFavoriteCountries(
+            favoriteCountries.filter((item) => item !== normalizedCountry),
+            currentCountry
+          );
+          const nextCountries = normalizeFeedCountries(
+            prev.countries.filter((item) => item !== normalizedCountry),
+            currentCountry
+          );
+
+          return {
+            ...prev,
+            countries: nextCountries,
+            favoriteCountries: nextFavorites,
+          };
+        }
+
+        const extraFavorites = favoriteCountries.filter((item) => item !== currentCountry);
+        if (extraFavorites.length >= 4) return prev;
+
+        const nextFavorites = normalizeFavoriteCountries(
+          [...favoriteCountries, normalizedCountry],
+          currentCountry
+        );
+
+        return {
+          ...prev,
+          countries: normalizeFeedCountries([...prev.countries, normalizedCountry], currentCountry),
+          favoriteCountries: nextFavorites,
         };
       });
     },
@@ -951,7 +1056,9 @@ export function FeedScreen({
           }
           availableCountries={availableCountryOptions}
           selectedCountries={feedSettings.countries}
-          onToggleCountry={toggleFeedCountry}          
+          favoriteCountries={feedSettings.favoriteCountries}
+          onToggleCountry={toggleFeedCountry}
+          onToggleFavoriteCountry={toggleFavoriteCountry}          
         />
       ) : null}
 
@@ -994,7 +1101,9 @@ export function FeedScreen({
           locale={locale}
           availableCountries={availableCountryOptions}
           selectedCountries={feedSettings.countries}
+          favoriteCountries={feedSettings.favoriteCountries}
           onToggleCountry={toggleFeedCountry}
+          onToggleFavoriteCountry={toggleFavoriteCountry}
         />        
       ) : null}
 
