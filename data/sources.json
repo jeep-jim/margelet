@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T04:19:02.232Z",
+  "updatedAt": "2026-04-25T04:19:55.138Z",
   "sources": [
     {
       "id": "in:aninews",
@@ -947,6 +947,29 @@
       "lastRefreshCursorPostId": 10524
     },
     {
+      "id": "in:memesindia",
+      "countryCode": "in",
+      "handle": "memesindia",
+      "title": "Memes India",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "humor"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:19:55.138Z",
+      "updatedAt": "2026-04-25T04:19:55.138Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:molyanov_blog",
       "countryCode": "ru",
       "handle": "molyanov_blog",
@@ -1099,6 +1122,28 @@
       "lastSeenPostId": 18844,
       "importedPostsCount": 173,
       "lastRefreshCursorPostId": 18844
+    },
+    {
+      "id": "in:natgeoindia",
+      "countryCode": "in",
+      "handle": "natgeoindia",
+      "title": "National Geographic India",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:19:55.138Z",
+      "updatedAt": "2026-04-25T04:19:55.138Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:natgeoru",
@@ -1886,6 +1931,29 @@
       "note": null,
       "createdAt": "2026-04-25T04:06:54.605Z",
       "updatedAt": "2026-04-25T04:06:54.605Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "in:wildlifeindia",
+      "countryCode": "in",
+      "handle": "wildlifeindia",
+      "title": "Wildlife India",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:19:55.138Z",
+      "updatedAt": "2026-04-25T04:19:55.138Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
