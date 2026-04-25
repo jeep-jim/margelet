@@ -199,12 +199,19 @@ export function AdminScreen({
   const countryFeedStats = useMemo(() => {
     return COUNTRIES.filter((country) => country.enabled)
       .map((country) => {
-        const countrySources = sources.filter((source) => source.countryCode === country.code);
-        const activeSources = countrySources.filter((source) => source.status === "active").length;
-        const postsCount = countrySources.reduce(
-          (sum, source) => sum + (source.importedPostsCount || 0),
-          0
+        const countrySources = sources.filter(
+          (source) => source.countryCode === country.code
         );
+
+        const activeSources = countrySources.filter(
+          (source) => source.status === "active"
+        ).length;
+
+        const postsCount = posts.filter(
+          (post) =>
+            String(post.sourceCountryCode || "").toLowerCase() === country.code
+        ).length;
+
         const countryMeta = country as typeof country & {
           label?: string;
           name?: string;
@@ -213,15 +220,23 @@ export function AdminScreen({
 
         return {
           code: country.code,
-          label: countryMeta.label || countryMeta.name || countryMeta.title || country.code.toUpperCase(),
+          label:
+            countryMeta.label ||
+            countryMeta.name ||
+            countryMeta.title ||
+            country.code.toUpperCase(),
           sourcesCount: countrySources.length,
           activeSources,
           postsCount,
         };
       })
       .filter((item) => item.sourcesCount > 0 || item.postsCount > 0)
-      .sort((a, b) => b.postsCount - a.postsCount || b.sourcesCount - a.sourcesCount);
-  }, [sources]);
+      .sort(
+        (a, b) =>
+          b.postsCount - a.postsCount ||
+          b.sourcesCount - a.sourcesCount
+      );
+  }, [sources, posts]);  
 
   const nextRebuildDate = useMemo(() => getNextRebuildDate(clockNow), [clockNow]);
   const nextRebuildLabel = useMemo(() => formatShortTime(nextRebuildDate), [nextRebuildDate]);
