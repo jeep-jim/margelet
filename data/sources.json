@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T04:56:19.234Z",
+  "updatedAt": "2026-04-25T04:57:16.124Z",
   "sources": [
     {
       "id": "uk:ainua",
@@ -40,6 +40,29 @@
       "note": null,
       "createdAt": "2026-04-25T04:36:34.999Z",
       "updatedAt": "2026-04-25T04:36:34.999Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:animaisbrasil",
+      "countryCode": "pt-br",
+      "handle": "animaisbrasil",
+      "title": "Animais Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:57:16.124Z",
+      "updatedAt": "2026-04-25T04:57:16.124Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -1548,6 +1571,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "pt-br:memesbrasil",
+      "countryCode": "pt-br",
+      "handle": "memesbrasil",
+      "title": "Memes Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "humor",
+      "tags": [
+        "humor",
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:57:16.124Z",
+      "updatedAt": "2026-04-25T04:57:16.124Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "in:memesindia",
       "countryCode": "in",
       "handle": "memesindia",
@@ -1789,6 +1835,28 @@
       "lastSeenPostId": 18844,
       "importedPostsCount": 173,
       "lastRefreshCursorPostId": 18844
+    },
+    {
+      "id": "pt-br:natgeobrasil",
+      "countryCode": "pt-br",
+      "handle": "natgeobrasil",
+      "title": "National Geographic Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:57:16.123Z",
+      "updatedAt": "2026-04-25T04:57:16.123Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "in:natgeoindia",
