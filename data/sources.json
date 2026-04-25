@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T04:26:31.193Z",
+  "updatedAt": "2026-04-25T04:29:39.966Z",
   "sources": [
     {
       "id": "uk:ainua",
@@ -574,6 +574,29 @@
       "note": null,
       "createdAt": "2026-04-25T04:14:35.170Z",
       "updatedAt": "2026-04-25T04:14:35.170Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uk:gameinside",
+      "countryCode": "uk",
+      "handle": "gameinside",
+      "title": "GameInside",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming",
+        "gaming_esports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:29:39.965Z",
+      "updatedAt": "2026-04-25T04:29:39.965Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -1546,6 +1569,50 @@
       "lastSeenPostId": 48164,
       "importedPostsCount": 192,
       "lastRefreshCursorPostId": 48160
+    },
+    {
+      "id": "uk:playua",
+      "countryCode": "uk",
+      "handle": "playua",
+      "title": "playua",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:29:39.966Z",
+      "updatedAt": "2026-04-25T04:29:39.966Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uk:playua_net",
+      "countryCode": "uk",
+      "handle": "playua_net",
+      "title": "PlayUA",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:29:39.966Z",
+      "updatedAt": "2026-04-25T04:29:39.966Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "en:popcorn_today",
