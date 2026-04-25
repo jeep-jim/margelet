@@ -1,6 +1,30 @@
 {
-  "updatedAt": "2026-04-25T03:33:36.875Z",
+  "updatedAt": "2026-04-25T03:36:55.830Z",
   "sources": [
+    {
+      "id": "ru:autorunews",
+      "countryCode": "ru",
+      "handle": "autorunews",
+      "title": "Авто.ру",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto",
+        "other",
+        "other_misc"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:36:55.829Z",
+      "updatedAt": "2026-04-25T03:36:55.829Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
     {
       "id": "ru:bazabazon",
       "countryCode": "ru",
@@ -121,6 +145,30 @@
       "lastSeenPostId": 24766,
       "importedPostsCount": 86,
       "lastRefreshCursorPostId": 24763
+    },
+    {
+      "id": "ru:dromru",
+      "countryCode": "ru",
+      "handle": "dromru",
+      "title": "Дром",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "other_misc",
+        "auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:36:55.829Z",
+      "updatedAt": "2026-04-25T03:36:55.829Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "en:google_nws",
