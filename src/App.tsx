@@ -188,8 +188,78 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
 }
 
   async function loadServerFeed(locale: Locale): Promise<IngestedPost[]> {
+    const sortPosts = (posts: IngestedPost[]) => {
+      return [...posts].sort((a, b) => {
+        const aTime = Date.parse(String(a.createdAt || ""));
+        const bTime = Date.parse(String(b.createdAt || ""));
+
+        if (Number.isFinite(aTime) && Number.isFinite(bTime) && aTime !== bTime) {
+          return bTime - aTime;
+        }
+
+        return Number(b.id || 0) - Number(a.id || 0);
+      });
+    };
+
+    const readPostsFromSnapshot = (snapshot: unknown): IngestedPost[] => {
+      const data = snapshot as {
+        posts?: unknown;
+        items?: unknown;
+      };
+
+      if (Array.isArray(data?.posts)) return data.posts as IngestedPost[];
+      if (Array.isArray(data?.items)) return data.items as IngestedPost[];
+      return [];
+    };
+
     try {
-      const res = await fetch(`/api/feed`, {
+      const indexRes = await fetch(`/feeds/index.json?ts=${Date.now()}`, {
+        cache: "no-store",
+      });
+
+      if (indexRes.ok) {
+        const indexData = await indexRes.json();
+        const countries = Object.keys(indexData?.countries || {})
+          .map((item) => item.trim().toLowerCase())
+          .filter(Boolean);
+
+        if (countries.length > 0) {
+          const snapshots = await Promise.all(
+            countries.map(async (country) => {
+              try {
+                const res = await fetch(`/feeds/${country}.json?ts=${Date.now()}`, {
+                  cache: "no-store",
+                });
+
+                if (!res.ok) return [] as IngestedPost[];
+
+                const data = await res.json();
+                return readPostsFromSnapshot(data);
+              } catch {
+                return [] as IngestedPost[];
+              }
+            })
+          );
+
+          const seen = new Set<number | string>();
+          const merged = snapshots.flat().filter((post) => {
+            const key = post.id || post.postUrl;
+            if (!key || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+          });
+
+          if (merged.length > 0) {
+            return sortPosts(merged);
+          }
+        }
+      }
+    } catch {
+      // keep old single-feed fallback below
+    }
+
+    try {
+      const res = await fetch(`/api/feed?countryCode=${String(locale).toLowerCase()}&ts=${Date.now()}`, {
         cache: "no-store",
       });
 
@@ -197,15 +267,16 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
 
       if (res.ok && contentType.includes("application/json")) {
         const data = await res.json();
-        if (Array.isArray(data?.posts)) {
-          return data.posts as IngestedPost[];
+        const posts = readPostsFromSnapshot(data);
+        if (posts.length > 0) {
+          return sortPosts(posts);
         }
       }
     } catch {
-      //
+      // keep static fallback below
     }
 
-    const fallbackRes = await fetch(`/feed.json`, {
+    const fallbackRes = await fetch(`/feed.json?ts=${Date.now()}`, {
       cache: "no-store",
     });
 
@@ -214,13 +285,14 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
     }
 
     const fallbackData = await fallbackRes.json();
+    const fallbackPosts = readPostsFromSnapshot(fallbackData);
 
-    return Array.isArray(fallbackData?.posts)
-      ? fallbackData.posts.filter((post: IngestedPost) => {
-          const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
-          return !countryCode || countryCode === String(locale).toLowerCase();
-        })
-      : [];
+    return sortPosts(
+      fallbackPosts.filter((post: IngestedPost) => {
+        const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
+        return !countryCode || countryCode === String(locale).toLowerCase();
+      })
+    );
   }  
 
 export default function App() {

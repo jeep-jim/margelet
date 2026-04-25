@@ -37,54 +37,6 @@ function normalizeHandle(value: string) {
   return value.trim().replace(/^@+/, "").toLowerCase();
 }
 
-function extractTelegramHandle(value: string) {
-  const raw = value.trim();
-  if (!raw) return "";
-
-  const fromAt = raw.match(/@([A-Za-z0-9_]{4,})/);
-  if (fromAt?.[1]) return normalizeHandle(fromAt[1]);
-
-  const fromUrl = raw.match(/(?:https?:\/\/)?(?:www\.)?(?:t\.me|telegram\.me)\/([A-Za-z0-9_]{4,})(?:[/?#\s]|$)/i);
-  if (fromUrl?.[1]) return normalizeHandle(fromUrl[1]);
-
-  if (/^[A-Za-z0-9_]{4,}$/.test(raw)) return normalizeHandle(raw);
-  return "";
-}
-
-function parseBulkSourceInput(value: string): BulkSourceRow[] {
-  const seen = new Set<string>();
-
-  return value
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => {
-      const handle = extractTelegramHandle(line);
-      if (!handle || seen.has(handle)) return null;
-      seen.add(handle);
-
-      const parts = line
-        .split("|")
-        .map((part) => part.trim())
-        .filter(Boolean);
-
-      const titleCandidate = parts.find(
-        (part) =>
-          !part.includes("t.me/") &&
-          !part.includes("telegram.me/") &&
-          !part.startsWith("@") &&
-          part.toLowerCase() !== handle
-      );
-
-      return {
-        ...createRow(),
-        handle,
-        title: titleCandidate || "",
-      };
-    })
-    .filter((row): row is BulkSourceRow => !!row);
-}
-
 function getParentTags(tags: ContentTag[]): ContentTag[] {
   const directParents = tags.filter(isParentTag) as ContentTag[];
   const parentsFromChildren = tags
@@ -134,7 +86,6 @@ export function AdminBulkImportSection({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [openTagRows, setOpenTagRows] = useState<Record<string, boolean>>({});
-  const [bulkLinksText, setBulkLinksText] = useState("");
 
   const validRows = useMemo(() => rows.filter((row) => normalizeHandle(row.handle)), [rows]);
 
@@ -206,29 +157,6 @@ export function AdminBulkImportSection({
 
   const addRow = () => {
     setRows((prev) => [...prev, createRow()]);
-  };
-
-  const appendBulkLinks = () => {
-    const parsedRows = parseBulkSourceInput(bulkLinksText);
-
-    if (!parsedRows.length) {
-      setMessage("Не нашёл валидные Telegram-ссылки. Вставь строки вида https://t.me/channel или @channel.");
-      return;
-    }
-
-    setRows((prev) => {
-      const existingHandles = new Set(prev.map((row) => normalizeHandle(row.handle)).filter(Boolean));
-      const nextRows = parsedRows.filter((row) => !existingHandles.has(normalizeHandle(row.handle)));
-      const cleanedPrev = prev.filter(
-        (row) => normalizeHandle(row.handle) || row.title.trim() || row.note.trim()
-      );
-      const mergedRows = [...cleanedPrev, ...nextRows];
-
-      return mergedRows.length ? mergedRows : [createRow()];
-    });
-
-    setMessage(`Добавлено строк из текста: ${parsedRows.length}`);
-    setBulkLinksText("");
   };
 
   const toggleRowTagsOpen = (rowId: string) => {
@@ -316,31 +244,6 @@ export function AdminBulkImportSection({
       <div className="space-y-4">
         <div className="rounded-[28px] border border-white/10 bg-[#11121a] p-4 text-sm text-white/55">
           Текущая страна: <span className="font-medium text-white">{countryCode.toUpperCase()}</span>
-        </div>
-
-        <div className="rounded-[24px] border border-white/10 bg-[#0d1220] p-3 sm:p-4">
-          <div className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-white/35">
-            Много ссылок сразу
-          </div>
-          <textarea
-            value={bulkLinksText}
-            onChange={(event) => setBulkLinksText(event.target.value)}
-            placeholder={"https://t.me/channel_one\n@channel_two\nНазвание | @channel_three | https://t.me/channel_three"}
-            rows={5}
-            className="w-full resize-y rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-sm text-white outline-none placeholder:text-white/25"
-          />
-          <div className="mt-3 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={appendBulkLinks}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/85 transition hover:bg-white/10"
-            >
-              разобрать ссылки в строки
-            </button>
-            <div className="text-xs text-white/45">
-              Каждая ссылка станет отдельной строкой. Дальше можно проставить названия и категории.
-            </div>
-          </div>
         </div>
 
         <div className="space-y-3">
