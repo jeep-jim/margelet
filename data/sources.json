@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T04:54:13.203Z",
+  "updatedAt": "2026-04-25T04:55:01.231Z",
   "sources": [
     {
       "id": "uk:ainua",
@@ -666,6 +666,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "pt-br:exame",
+      "countryCode": "pt-br",
+      "handle": "exame",
+      "title": "Exame",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:55:01.231Z",
+      "updatedAt": "2026-04-25T04:55:01.231Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "en:forbes",
       "countryCode": "en",
       "handle": "forbes",
@@ -1067,6 +1089,50 @@
       "note": null,
       "createdAt": "2026-04-25T04:18:24.403Z",
       "updatedAt": "2026-04-25T04:18:24.403Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:infomoney",
+      "countryCode": "pt-br",
+      "handle": "infomoney",
+      "title": "InfoMoney",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:55:01.231Z",
+      "updatedAt": "2026-04-25T04:55:01.231Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:investingbrasil",
+      "countryCode": "pt-br",
+      "handle": "investingbrasil",
+      "title": "Investing Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:55:01.231Z",
+      "updatedAt": "2026-04-25T04:55:01.231Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
