@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import {
+  readFeedCountryPosts,
   readFeedFile,
   readSourcesFile,
   writeFeedFile,
@@ -130,17 +131,15 @@ function sortPosts(items: IngestedPost[]) {
 }
 
 async function listPosts(requestedCountryCode: string) {
+  if (requestedCountryCode) {
+    const countryPosts = await readFeedCountryPosts<IngestedPost>(requestedCountryCode);
+    return sortPosts(countryPosts);
+  }
+
   const feedFile = await readFeedFile<IngestedPost>();
   const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
 
-  return sortPosts(
-    current.filter(
-      (post) =>
-        !requestedCountryCode ||
-        !post.sourceCountryCode ||
-        post.sourceCountryCode === requestedCountryCode
-    )
-  );
+  return sortPosts(current);
 }
 
 async function listSources(requestedCountryCode: string) {

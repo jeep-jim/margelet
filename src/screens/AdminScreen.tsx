@@ -17,6 +17,21 @@ type AdminScreenProps = {
 
 type LoadState = "idle" | "loading" | "ready" | "error";
 
+type FeedIndexCountry = {
+  code: string;
+  posts: number;
+  chunks?: number;
+  mode?: "single" | "chunked";
+  path?: string;
+  updatedAt?: string;
+};
+
+type FeedIndexState = {
+  version?: number;
+  updatedAt?: string;
+  countries?: Record<string, FeedIndexCountry>;
+};
+
 const ADMIN_TELEGRAM_ID = "1372669404";
 const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
 const REBUILD_MINUTE = 17;
@@ -96,6 +111,7 @@ export function AdminScreen({
   const [posts, setPosts] = useState<IngestedPost[]>([]);
   const [state, setState] = useState<LoadState>("idle");
   const [sources, setSources] = useState<TrustedSource[]>([]);
+  const [feedIndex, setFeedIndex] = useState<FeedIndexState | null>(null);
   const [rebuildLoading, setRebuildLoading] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
   const [clockNow, setClockNow] = useState(() => new Date());
@@ -177,8 +193,22 @@ export function AdminScreen({
     }
   };
 
+
+  const loadFeedIndex = async () => {
+    try {
+      const res = await fetch(`/feeds/index.json?ts=${Date.now()}`, {
+        cache: "no-store",
+      });
+
+      const data = await res.json().catch(() => null);
+      setFeedIndex(data && typeof data === "object" ? (data as FeedIndexState) : null);
+    } catch {
+      setFeedIndex(null);
+    }
+  };
+
   const refreshEverything = async () => {
-    await Promise.all([loadPosts(), loadSources()]);
+    await Promise.all([loadPosts(), loadSources(), loadFeedIndex()]);
   };
 
   useEffect(() => {
@@ -201,10 +231,8 @@ export function AdminScreen({
       .map((country) => {
         const countrySources = sources.filter((source) => source.countryCode === country.code);
         const activeSources = countrySources.filter((source) => source.status === "active").length;
-        const postsCount = countrySources.reduce(
-          (sum, source) => sum + (source.importedPostsCount || 0),
-          0
-        );
+        const feedCountry = feedIndex?.countries?.[country.code];
+        const postsCount = typeof feedCountry?.posts === "number" ? feedCountry.posts : 0;
         const countryMeta = country as typeof country & {
           label?: string;
           name?: string;
@@ -221,7 +249,7 @@ export function AdminScreen({
       })
       .filter((item) => item.sourcesCount > 0 || item.postsCount > 0)
       .sort((a, b) => b.postsCount - a.postsCount || b.sourcesCount - a.sourcesCount);
-  }, [sources]);
+  }, [sources, feedIndex]);
 
   const nextRebuildDate = useMemo(() => getNextRebuildDate(clockNow), [clockNow]);
   const nextRebuildLabel = useMemo(() => formatShortTime(nextRebuildDate), [nextRebuildDate]);
@@ -231,10 +259,16 @@ export function AdminScreen({
     [nextRebuildDate, clockNow]
   );
 
-  const latestCountryActivity = useMemo(
-    () => getLatestSourceActivityByCountry(sources, selectedCountryCode),
-    [sources, selectedCountryCode]
-  );
+  const latestCountryActivity = useMemo(() => {
+    const feedUpdatedAt = feedIndex?.countries?.[selectedCountryCode]?.updatedAt || feedIndex?.updatedAt;
+    const feedUpdatedMs = parseIsoMs(feedUpdatedAt);
+
+    if (feedUpdatedMs) {
+      return new Date(feedUpdatedMs);
+    }
+
+    return getLatestSourceActivityByCountry(sources, selectedCountryCode);
+  }, [feedIndex, sources, selectedCountryCode]);
 
   const latestCountryActivityLabel = useMemo(
     () => (latestCountryActivity ? formatDateTime(latestCountryActivity) : "—"),
