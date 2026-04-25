@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T04:14:35.170Z",
+  "updatedAt": "2026-04-25T04:16:26.736Z",
   "sources": [
     {
       "id": "in:aninews",
@@ -321,6 +321,29 @@
       "note": null,
       "createdAt": "2026-04-25T03:36:55.829Z",
       "updatedAt": "2026-04-25T03:36:55.829Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "in:economictimes",
+      "countryCode": "in",
+      "handle": "economictimes",
+      "title": "Economic Times",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:16:26.736Z",
+      "updatedAt": "2026-04-25T04:16:26.736Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -811,6 +834,28 @@
       "lastSeenPostId": 4552,
       "importedPostsCount": 19,
       "lastRefreshCursorPostId": 4550
+    },
+    {
+      "id": "in:moneycontrolcom",
+      "countryCode": "in",
+      "handle": "moneycontrolcom",
+      "title": "Moneycontrol",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:16:26.736Z",
+      "updatedAt": "2026-04-25T04:16:26.736Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:moscowach",
@@ -1826,6 +1871,28 @@
       "lastSeenPostId": 27668,
       "importedPostsCount": 56,
       "lastRefreshCursorPostId": 27668
+    },
+    {
+      "id": "in:zerodhaonline",
+      "countryCode": "in",
+      "handle": "zerodhaonline",
+      "title": "Zerodha",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:16:26.736Z",
+      "updatedAt": "2026-04-25T04:16:26.736Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "kk:ztbnews",
