@@ -1,9 +1,103 @@
 {
   "countryCode": "en",
-  "updatedAt": "2026-04-25T03:26:43.190Z",
-  "totalPosts": 23,
+  "updatedAt": "2026-04-25T05:05:43.199Z",
+  "totalPosts": 45,
   "chunks": 1,
   "items": [
+    {
+      "id": 2070146313,
+      "postUrl": "https://t.me/foxnewschannel/3?single",
+      "source": {
+        "title": "Fox News",
+        "handle": "foxnewschannel",
+        "verified": true,
+        "avatar": "https://cdn1.telesco.pe/file/h3tj1cgQhR5e0SgKTignvGRoVGgUnFifWD2QpXgarOc-d_79NTIdmBmA1v7ZZ35xnJIde_OGFBFhuAZnNdaF4x86jijdeNWNM84yWylNAsBRgFyRZl51EkjwREFnYnkII_sAa0etBCaSdP9GDzjZSQuH8p0RcP1IdSCLvbQnlPKlVU0uryAT8e2xo8iuMGi4G5pvRrIgajfnuj5luxXQfSSa1znSKjSJ8x_FRSPFI1bzHEvS9F7pamTsBMi-xN3X3wU9rx_wGoIyYnlnuxf_Ds_3P4GJsn2E8QB4T-4TzroRJ7PW2I8b8BptTbywov-1aLcO1puoXToFh6XBHbpqLw.jpg"
+      },
+      "sourceId": "en:foxnewschannel",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-04-25T05:04:51.686Z",
+      "expiresAt": "2026-04-26T05:04:51.686Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:51.686Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:51.686Z"
+      }
+    },
+    {
+      "id": 2901245922,
+      "postUrl": "https://t.me/bloomberg/3218?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/CYuPWkMlunZGk58UwWQsv9Z1aqpWiSS_Cpn-pge7ROQm3tw8h9iOM-BfWyyGGD2ziEkylF6jsMUv90pmS6-hrz0KHUar8F0IRYm9RtICJq4B1goNnyujdNkkW_gTBbYD2RTKX4j3SREdaBMX43Lx87eDNS9sL0KUbjiH4B50ONlMJR4kAVP3ZPEmPA_wGGTFFIcBYOotrQJS-c3jj6fGe9fDixPRw9InQlVCaueFjvv2UiwCiK7a31oZuybH_5tRIzpS0Yn8ENHd5WHw7PD2VgDg_G8RkTfhY4B7S0oqyRiDVRVFe-7SXMzQXUqSeTZM3kbMxC14A7yxkC2Yw-JAdA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: Four-day work week and school closures - Asia is getting creative and drastic to conserve energy amid a severe fuel crunch. Is it enough to keep economies afloat? Bloomberg reporters answer your questions in a Live Q&A. https://bloom.bg/4bAw2NX",
+      "links": [
+        {
+          "label": "https://bloom.bg/4bAw2NX",
+          "url": "https://bloom.bg/4bAw2NX"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
     {
       "id": 1531546187,
       "postUrl": "https://t.me/just/5407?single",
@@ -196,6 +290,100 @@
       }
     },
     {
+      "id": 4206086987,
+      "postUrl": "https://t.me/foxnewschannel/1?single",
+      "source": {
+        "title": "Fox News",
+        "handle": "foxnewschannel",
+        "verified": true,
+        "avatar": "https://cdn1.telesco.pe/file/h3tj1cgQhR5e0SgKTignvGRoVGgUnFifWD2QpXgarOc-d_79NTIdmBmA1v7ZZ35xnJIde_OGFBFhuAZnNdaF4x86jijdeNWNM84yWylNAsBRgFyRZl51EkjwREFnYnkII_sAa0etBCaSdP9GDzjZSQuH8p0RcP1IdSCLvbQnlPKlVU0uryAT8e2xo8iuMGi4G5pvRrIgajfnuj5luxXQfSSa1znSKjSJ8x_FRSPFI1bzHEvS9F7pamTsBMi-xN3X3wU9rx_wGoIyYnlnuxf_Ds_3P4GJsn2E8QB4T-4TzroRJ7PW2I8b8BptTbywov-1aLcO1puoXToFh6XBHbpqLw.jpg"
+      },
+      "sourceId": "en:foxnewschannel",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-04-25T05:04:51.686Z",
+      "expiresAt": "2026-04-26T05:04:51.686Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:51.686Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:51.686Z"
+      }
+    },
+    {
+      "id": 2631513005,
+      "postUrl": "https://t.me/bloomberg/3217?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/DklCnK5QCZhCqOKukMD7T2-aLKYK8xPZdQ_kpFl5SwddNZsDc9lhvxCc2TWGWoRMJ-iqejySNoTocwWOOj4ePhMpUkV4VH75ByI-EFklzGyhYrCYETxz7K7t3QIwTtczfGehFk98VPNJMRkrw0MU1nRbQcQWgw59Iej77uDdD8D-8V2onkSOZNaC6ZS3mCD0mJpv_spWZ4tIUMQ8e1QDsXmSq_SlBUDcAXXoExt64rk-C1GzS8pU4Txx00Or9uMQ-acqWK6Egs4yPccfdn8djnRl9lX9GpDa0o8iWGJPIKuAwomwTqEIUzG2Kn-NNrH8AEgtdfAT_Nr9y4ia_CipQA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Many of Asia’s richest families are reconsidering their relocation plans and reducing billions in investments in Dubai as the Iran war rattles the city. https://bloom.bg/3NrOVtl\n\n📷: Walaa Alshaer/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/3NrOVtl",
+          "url": "https://bloom.bg/3NrOVtl"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
       "id": 2237099602,
       "postUrl": "https://t.me/just/5406?single",
       "source": {
@@ -301,6 +489,59 @@
       }
     },
     {
+      "id": 2711169916,
+      "postUrl": "https://t.me/bloomberg/3216?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/rQ_PzWACs4LfYNNV2lGo0rqIgWdyvNNIvL7C0cVQyE7NKtIS_j0eEfMF2fPlX7NCRe11OPSw8BqSIsxEG4pg4DC92IatQxQAmP8IGePEdBTYp2DfyNHQKJrxQfsb24x1M7srK0vx_uaQcQ-XRNVprBfM6rQj3lu1VTZ5hc6hq2Eg4yWhH_90FDZGapr86imNTqZoUW99O8rKFsgpFZ0YA2PYfxrwtp_1ZwjFdW0JtL2YZz47vpi1tgefVs8J1167_fRvYK8a3SwqlEifs7E5Yj16wkDfJr2AIVVlUTcNyZbuArcvmrNbh2hUqAqZIUiMfZyn2xZFtOZ-Ou-zN9R0hw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "AI demand is triggering a historic memory-chip shortage. Meeting exponential demand for chips will be expensive and maybe even impossible. Read Bloomberg's interactive explainer on how the chip squeeze affects you: https://bloom.bg/4ujFvRf\n\n📷: Google",
+      "links": [
+        {
+          "label": "https://bloom.bg/4ujFvRf",
+          "url": "https://bloom.bg/4ujFvRf"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
       "id": 3690572809,
       "postUrl": "https://t.me/just/5405?single",
       "source": {
@@ -388,6 +629,59 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T17:12:59.533Z"
+      }
+    },
+    {
+      "id": 2318999119,
+      "postUrl": "https://t.me/bloomberg/3215?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/bzxeM1WmTfnggmx9JiWRx1pIrDqO3TOvtfwd5fahmTcHTxQkNvE245vlYYowuolFnc4Bv2JYZc8X0G2VhBEUjsxJw8e_WtiC5hA2eoSTvRPmYAWF1K9oAGlhpmns8ZRF0M_W2wgrVTzUq5eietfU-KrkjelPpxBWxXumHD8C9wAJVvhLdtkiBV0URSrO4DMFpFK3nba-mRHa9Q8-ZNWPz6aZtFQGjVG35mk29FpjVJFf_GGndMZIAI8hSdvVWjyFf4K_ojcytsD8AnwvgLnPfjz-8nDCgt82bmlmAwaPSTH0_XzDNK8CtAT_xvtHCFThpehUybdHH5WMU7-tdFecnQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: The India AI Impact Summit has laid out an ambitious roadmap for 2026. But can Modi make the nation truly a global AI power? Bloomberg reporters answer your questions in a Live Q&A. https://bloom.bg/4ayNSk4",
+      "links": [
+        {
+          "label": "https://bloom.bg/4ayNSk4",
+          "url": "https://bloom.bg/4ayNSk4"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
       }
     },
     {
@@ -494,6 +788,59 @@
       }
     },
     {
+      "id": 2929588470,
+      "postUrl": "https://t.me/bloomberg/3214?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/JUatSVWcqDX0bDaOGIovZMkRm1mN_sh5FoxdLmKeGR4N9bqbz7xFtIXTJOT8TF68oaVQ2pAn4b_uRNvJeX8aLGXQ00GWdTLdpHBrrja7j9y3SKkpqYJHTsF-tM-Pg9Oa6OGXU8o7qi78zCmyIh3lPKLDkYCmUwqrGK5UvUUtGZYjb_ztbrMWyjjxzaC8xzFw2RQuiGxRmdeKyanUk-OJeOrfSUAqQC7ye7EhsqmJDLejpNrf2pZyc7RcJdJaV_l2Zw4qI9WKlqJYqtyetAntY5MXJgO-mQbhwcCadjT9KXuyVb0hvTGAxFTpklGIbfaOjUFBhOE-6hX-Ko7bl4n56A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "The saga of a contested gold mine shows how President Prabowo Subianto is putting Indonesia on a collision course with global markets. https://bloom.bg/4ryeO9a\n\n📷: Krisztian Bocsi/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/4ryeO9a",
+          "url": "https://bloom.bg/4ryeO9a"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
       "id": 2001130471,
       "postUrl": "https://t.me/just/5403?single",
       "source": {
@@ -588,6 +935,59 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T15:36:48.718Z"
+      }
+    },
+    {
+      "id": 1702325617,
+      "postUrl": "https://t.me/bloomberg/3213?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/lmoGoz94eWCwKvf52EOipkN3Pzc7umKZPzlYizsxKtcW01vB9B0c8IFqW32R7MKzWqPSr0_oAmtc2gson-b95wbu0iYw_E7mGffrgwOHveerlb_DNrcUnkMt2SO1pShNJxoUUOd_XvSsAaCpS7rIE5OhSergmFCVyrY8WLnzEACO2_1bl2tfrpfoZgGQtceDDTjpjOKAxLHOrmcZbAeF10HKl7OyLlkq6ZavJ5s7Etjidt4iRK6NZcWvgJgMpXab57eYUMPZXgMWt3fTXt3onlHljt6kwUHWYuM2Fm6WQvipb7KXFvX1mu4FJXy4_g3hl4sSrn5srUWBOJ9-VbYBVQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: Modi secured a surprise trade deal with Trump, boosting the rupee and offering relief to conglomerates. But did Indian refiners lose their access to Russian oil? Bloomberg's Laura Davison, Shruti Srivastava, Alex Gabriel Simon, Rakesh Sharma answer your questions in a Live Q&A on the winners and losers. https://bloom.bg/3NTBfY5",
+      "links": [
+        {
+          "label": "https://bloom.bg/3NTBfY5",
+          "url": "https://bloom.bg/3NTBfY5"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
       }
     },
     {
@@ -700,6 +1100,59 @@
       }
     },
     {
+      "id": 331254128,
+      "postUrl": "https://t.me/bloomberg/3212?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/d6XXTl1v0UfBbQVAz4P-pPt6COWPH8z5JaKFAOi06nbv8pYKroiI51zwxvgTOTz3x1Rj0I4nM696pHrXL8BarbGFaLguKHIWTDyWQIq_bIFCl0z2uDZ4tfOhawqdj4c9gbdNv6EJX0jVfmnn8YCqw0b_x8bbQf6vRcpDqrC9Zzz6Xv0-UKr-dCxYVsiwtBDPm-F_FW9UfnkmmhY6EV37iWZENjWPMNqCZzrz3AG4A7a38ypDP3qA5Nf0PJI5D5-kd1rg_IWEn8ei_BfSQ8kb6Jwf2Sgnf7qO-n_rHpiZghoMVdtkij01luP0L9wa_ipQYcWVDnQvRIqMnyujx-EL5Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "A new AI automation tool from Anthropic sparked a $285 billion rout in stocks across the software, financial services and asset management sectors on Tuesday as investors raced to dump shares with even the slightest exposure. https://bloom.bg/49UxtGo\n\n📷: Michael Nagle/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/49UxtGo",
+          "url": "https://bloom.bg/49UxtGo"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
       "id": 3832193893,
       "postUrl": "https://t.me/just/5401?single",
       "source": {
@@ -794,6 +1247,59 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T14:05:59.684Z"
+      }
+    },
+    {
+      "id": 715506771,
+      "postUrl": "https://t.me/bloomberg/3211?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Qvp3_ltGL81R-OA3ThoAH15TrOeQUHX2bZ2HVOhnQEX0fsS2LSv3_H1Yj7aAXTpqRlLA1Jh7I-UtpcIFQEyQtjbv2Pf8-npJxxP0RqVoLh1ARm_J2ui5QdAnXT5NpkcP1nE8PI4zPOuWiW7xs37fDJXknKjk4BbEwwddN06XyA6ig9pXs2hstOf4ke0m2Yq-yHAZHkC7YMt6yiU1VwD1JJW2PrdXFWQkV6z6EnRil0-KNN_vBA1R9-kbZAYmZgApVoMjz0BQaXWPH-_JY7YDgghu9hdZtouBFZ-N3x2gFfK5fU5TYgRn8f9w91tmjioTAwgb-Tyytk7KM3_u5RDbfQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: Modi's budget delivers a double shock: a shield against Trump's tariffs and a tax hike on India's booming F&O market. Bloomberg's Menaka Doshi, Shruti Srivastava, Chiranjivi Chakraborty and Subhadip Sircar analyze the impact in a Live Q&A. Join and ask your questions: https://bloom.bg/4kg2isC",
+      "links": [
+        {
+          "label": "https://bloom.bg/4kg2isC",
+          "url": "https://bloom.bg/4kg2isC"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
       }
     },
     {
@@ -893,6 +1399,53 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T14:05:59.684Z"
+      }
+    },
+    {
+      "id": 1067782714,
+      "postUrl": "https://t.me/bloomberg/3210?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ From sinking Treasuries to global selloffs, the turmoil in Japan’s bond market is being felt far beyond its borders.\n\nFind out how the crash is rattling international investors and why markets are still on tenterhooks on today’s Big Take Asia Podcast: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
       }
     },
     {
@@ -999,6 +1552,53 @@
       }
     },
     {
+      "id": 3538789288,
+      "postUrl": "https://t.me/bloomberg/3209?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ Trillions of dollars in Japanese assets are held by elderly citizens at risk of cognitive decline.\n\nOn the latest Big Take Asia podcast, K. Oanh Ha and Bloomberg’s Alice French discuss what this \"dementia money cliff\" means for the nation and the broader global economy: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
       "id": 125352133,
       "postUrl": "https://t.me/popcorn_today/9507?single",
       "source": {
@@ -1048,6 +1648,53 @@
       }
     },
     {
+      "id": 1261146217,
+      "postUrl": "https://t.me/bloomberg/3208?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ Amid Iran’s brutal crackdown on protesters, President Trump threatened to slap a 25% tariff on its trading partners.\n\nFind out why the move puts China and India firmly in his trade war crosshairs, yet again, on the Big Take Asia podcast with K. Oanh Ha and Daniel Ten Kate: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
       "id": 550448116,
       "postUrl": "https://t.me/popcorn_today/9506?single",
       "source": {
@@ -1092,6 +1739,59 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T12:46:20.532Z"
+      }
+    },
+    {
+      "id": 861802182,
+      "postUrl": "https://t.me/bloomberg/3207?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/CbK5qx8uX-9fQ_8SZJdqsKfAMFcZonshRGtEL8OPKDB1UlJEYbLahMCNzqB06ppUP-rXT4LbPhosVMaBreo3MU-uAAjktUPXlgebx-Xcu1GxPFRcfqobThCI7Ja5Md9pbPkJY3HW-fXg5WnbQeRduN8ZIqW-Y2zqJpgDm4CTL5IO57ZpZjO4NU1BnTE-U2wGD1O0ZK0N5PZIJ8fUvS5aHKqP76n8ZQhy1yqheH_AhdWwLhTyhhN4DvPbqpeUE-g169szThICTa3uYBSV5VsVNgA55EOalVWtR7im5slDjoEiSyNQFM2QHenwbqyVYg_0hvq86YrrIiFFYSJVvHxzQg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "As Indian investors nurse losses in high-momentum favorites, the focus is shifting back to good old earnings. The so-called quality factor — stocks with strong profitability and balance sheets — is set to regain favor after two years of underperformance, according to Bernstein’s quant team.\n\nOur new Markets Daily India newsletter explores what traders are looking at: https://bloom.bg/4pzl7bm",
+      "links": [
+        {
+          "label": "https://bloom.bg/4pzl7bm",
+          "url": "https://bloom.bg/4pzl7bm"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
       }
     },
     {
@@ -1144,6 +1844,59 @@
       }
     },
     {
+      "id": 3829174303,
+      "postUrl": "https://t.me/bloomberg/3206?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/S8LtERz-uSlGcXBac_xDuDnJS1omI0p2uXLxPbL9pS-DMMx4V--2ku6LgT6bbtv-V2j4S6s3UWVKUzVCoHJV4JgukxuI6Dcbf-eWJ6Q4yz_U0HxfAFK6_GIa3T86TMqV1qhfFlAh0w5RkMpaH0toXmMOcatVxiZPBYMPFRmvJScJPnzSKqsXUQZK-mw66UTW2l3fE1QbTnv3Cg3iz0jAJIn1w5wysAQBer2JhYpxuXjFWBeJHJ65dysptby31NAbHEDSxHXUuhEnujrOyFnR_mCJgvr363ayjhFtpriwJxl865v-jbHtNZCXGNNme3A_jpG_505q8pCU1HGf1S8t4A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "US Commerce Secretary Howard Lutnick says a trade deal with India did not materialize last year because Prime Minister Narendra Modi did not call President Donald Trump. https://bloom.bg/49ncFHr\n\n📷: Prakash Singh/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/49ncFHr",
+          "url": "https://bloom.bg/49ncFHr"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
       "id": 3634890254,
       "postUrl": "https://t.me/popcorn_today/9504?single",
       "source": {
@@ -1190,6 +1943,365 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-24T11:52:03.285Z"
+      }
+    },
+    {
+      "id": 1991472588,
+      "postUrl": "https://t.me/bloomberg/3205?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/sO18JBzoMSrjCFRNN3qh1coZN4Rj0RB7FcBkTc9WE9srORJkpFhh3TPCvCXbA7WpT3uM--ykv67n47edb9BUBI-c8Xh6ItTVNmx3hqUIkReIaOP8wZg7sHdEmbNCiMWZAA-1IOlgYO_W095Din_e_p8TWUidh9s78s7xpsJTdBVpzaiRVgRVxEwqXWLDoBG65NJFZRvG3urkKZeoTqVxr7OZD4yCENXPoBCu6uGjvMX04FKsTg1nycqr3ju-tVXyXmiwHwBscPYFD1XoWSZG9a_9sErrzWb8g9TDxRB2rrNdke7w1fimDLwxW4HNmKRRAQvlDj8J2kba6SR4jHZA7Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Chinese AI startup MiniMax spent its first three years largely on the sidelines of AI development. While rivals chased local ChatGPT clones, it was tackling a harder problem: building a single model capable of processing text, speech and video. Now, the $619 million IPO crystallizes a surge in wealth for its founder Yan Junjie. https://bloom.bg/3Z4mKmo\n\n📷️: Lam Yik/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/3Z4mKmo",
+          "url": "https://bloom.bg/3Z4mKmo"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
+      "id": 1966205821,
+      "postUrl": "https://t.me/bloomberg/3204?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ President Trump's tariff war with China sent US firms scrambling to find new manufacturing hubs. India looked ideal, until the White House changed course.\n\nOn today’s Big Take Asia podcast, how shifting trade policies are undermining India's push to become the world’s next factory: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
+      "id": 533774090,
+      "postUrl": "https://t.me/bloomberg/3203?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/G6-GMqJemxYnb4BPmbchhUOpEbqwpdGeH8WnL5WQCPc43K6sAXzxcevXM3gx8DojUwqCXRwMz1otRIxubutnyCxWkGDDF_Qnm1oZBj_j-KQZxWM7GtPClM-5ZH2r19D4Urf7AVjLStyfatu-9OfvBW8PbVFLfFIWD4SY4DOBzPiModWfxwnlUAU3-TmvjFbn8g3y4Uc-0SJr09CPWRzdUi-9rYjt8aVrMUfX-wFQLyiCeGpDC-I5HY4ccIodXTtuN48-mCsh7nG-UxJeJ-9vQ-TJOPIF2OlYb_VuMqugEafiITELmRpGwY_WaRoovyUPluf7KQSvh3zEF5AxYWBTQA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Illegal Bitcoin mining in Malaysia has become so prolific that authorities are deploying drones with thermal imaging to search for unusual power use. More here: https://bloom.bg/3Xz5HYZ\n\n📷: Deputy Minister of PETRA’s Office",
+      "links": [
+        {
+          "label": "https://bloom.bg/3Xz5HYZ",
+          "url": "https://bloom.bg/3Xz5HYZ"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
+      "id": 3379287139,
+      "postUrl": "https://t.me/bloomberg/3202?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/BCZag-Y6HHQxZF84F1rPSWB47aRoAf2w5FTP7tSuT6stiNvSv8H4IC7bcnNZDpELKFDdk04ZAun-Wl6mKE7smuIybEiZRgjLRMuh5if__D8eJLclACJBagKCftx0VmtQdWJXByrk6PGlPUbG2Dj9LWnJ6C4AiBLeTsSzjAgA-yUDFbka9HGZucg_83dE81PyVkNiWKOmcnvNAWy6_kgoRQ88KXVKmKhpPvTsF3MzQXU711Y8qzlCdngnSwEKzZHIgzcDk7sqZhsyqbq6Y5NjD5OxOUgsl3fk-IpCkc3TvQ6HkQgXnpsCqadwgj8kPWxirgvAZjbGjOQgWa6WWLqtBg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨LIVE NOW: Bloomberg reporters answer your questions in a Live Q&A about RBI's intervention to stabilize the Indian rupee after its biggest drop since 2022. https://bloom.bg/43VLQH7",
+      "links": [
+        {
+          "label": "https://bloom.bg/43VLQH7",
+          "url": "https://bloom.bg/43VLQH7"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
+      "id": 242045824,
+      "postUrl": "https://t.me/bloomberg/3201?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Hong Kong’s leader is holding a briefing as the city's deadliest fire in decades kills at least 55. Follow our live blog for the latest news and analysis: https://bloom.bg/43UuytR",
+      "links": [
+        {
+          "label": "https://bloom.bg/43UuytR",
+          "url": "https://bloom.bg/43UuytR"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
+      "id": 3408769537,
+      "postUrl": "https://t.me/bloomberg/3200?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/CqU8sxzJMlbDvRP8Glf494LMaLDs4bNrs8YHlkpq7s6gSASE4IdQRvlPtdEzEoPIFG2kqoZ4CgoXVxSbvw1dVTUyr2ghWT_qsVDPi_pHOsjm1Zba8LRgTtPLRm1Qz9esLsBRDTY2fCEeO6vXl2M6eLovVfFOJuMq-biflQ98Mw6cJV8iVge9BE0tk8ah4jp9O-0zIyU11Qs0rWPpDXkA6_vkKisi9LtapRnbL_QWaO6TdGrnHXfkmrzUbW4VKQKXCQLrOew_-1m6zcXU1IF1rt2HY7CeM8zXjPagvb4QwTwy2HRoFOGbuK-lFdLy63ROe7xjgZzYGG6qPG6Rkh8PSQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "An AI-enabled teddy bear sold by a Singapore-based company is back on the shelves after researchers discovered it chats unprompted about sexual fetishes and other unsuitable topics. https://bloom.bg/3M4UYmv\n\n📷: FoloToy",
+      "links": [
+        {
+          "label": "https://bloom.bg/3M4UYmv",
+          "url": "https://bloom.bg/3M4UYmv"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
+      }
+    },
+    {
+      "id": 1076607608,
+      "postUrl": "https://t.me/bloomberg/3199?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/QPnraq1Ykm0XOTP5_4SW-1i9RWo65rMYoa3a5fBPRw1RuiPto9czdhdThovqDxi-nP_DhuWiR9eoH5vIp6RUr8paHHF0tkfvm4Bwk4j0KtqOl82FSFnPC4TQD9y-MUT6FmpgIMp7fgf3D4qZvUTUZp4C7ySO-GIvQrHfQeQUSKjMqex9wj9P1fJDltppovK26wkO0D_eg0AyKzuk14Gms7AZXBpFDxUikDrbAdZOOIY8dLXQzjivCTTs4zeBeuf9Pg9B7oC9fadnoNVqmKMm0SUnij3PPPId7ah-OysEidIqewEj5VXiiKXnmsmWR57ydhu2-bpoZa9vUm5alSa2NA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/YD7aW-pA7IgxWbpwhYb4bux1b-OJeuP9Xob6Ky1V59XBDNriUC_vVvCcWU-qcEapOAn7hvnSY6VGPqRbrt8lRRd_bnX4JvraoZDoVEhBKOpdtQYgrzEfsXTssbMWLQLZGsgjhxN2lEWq0TFTnLDV_s-q5A5BVYZut8jZNl2REbIDSziKmxoLAIYp1saXz47prP-54uWFZ1bpxWCAz9VSZ1h3AYICNUe4DmYBrIHNkIoX9wozrV2YrwzbpFUoydERDnMzDF0YQ1ft8ixHnYcqKhd6AkF_bcHxMGiJh2geiv_ynOkIVlnVaPyBj1sEFFr_79J0SBb2kgln-KVqqU69BA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "US authorities have been probing Indian companies trading chemicals used to make fentanyl but with little success. https://bloom.bg/4pw0iOd\n\n📷: Johannes Eisele/AFP/Getty Images",
+      "links": [
+        {
+          "label": "https://bloom.bg/4pw0iOd",
+          "url": "https://bloom.bg/4pw0iOd"
+        }
+      ],
+      "createdAt": "2026-04-25T05:04:48.022Z",
+      "expiresAt": "2026-04-26T05:04:48.022Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-25T05:04:48.022Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-25T05:04:48.022Z"
       }
     }
   ]
