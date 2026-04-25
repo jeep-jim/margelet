@@ -187,41 +187,96 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-  async function loadServerFeed(locale: Locale): Promise<IngestedPost[]> {
-    try {
-      const res = await fetch(`/api/feed`, {
-        cache: "no-store",
-      });
+  function extractPostsFromFeedPayload(data: unknown): IngestedPost[] {
+  if (!data || typeof data !== "object") return [];
 
-      const contentType = res.headers.get("content-type") || "";
+  const payload = data as {
+    posts?: unknown;
+    items?: unknown;
+  };
 
-      if (res.ok && contentType.includes("application/json")) {
-        const data = await res.json();
-        if (Array.isArray(data?.posts)) {
-          return data.posts as IngestedPost[];
-        }
-      }
-    } catch {
-      //
-    }
+  if (Array.isArray(payload.posts)) {
+    return payload.posts as IngestedPost[];
+  }
 
-    const fallbackRes = await fetch(`/feed.json`, {
-      cache: "no-store",
-    });
+  if (Array.isArray(payload.items)) {
+    return payload.items as IngestedPost[];
+  }
 
-    if (!fallbackRes.ok) {
-      throw new Error("feed request failed");
-    }
+  return [];
+}
 
-    const fallbackData = await fallbackRes.json();
+async function fetchJsonNoStore(path: string) {
+  const separator = path.includes("?") ? "&" : "?";
+  const res = await fetch(`${path}${separator}_=${Date.now()}`, {
+    cache: "no-store",
+    headers: {
+      "Cache-Control": "no-cache",
+      Pragma: "no-cache",
+    },
+  });
 
-    return Array.isArray(fallbackData?.posts)
-      ? fallbackData.posts.filter((post: IngestedPost) => {
-          const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
-          return !countryCode || countryCode === String(locale).toLowerCase();
-        })
+  if (!res.ok) {
+    throw new Error(`request failed: ${path}`);
+  }
+
+  return res.json();
+}
+
+async function loadStaticCountryFeed(locale: Locale): Promise<IngestedPost[]> {
+  const countryCode = String(locale).toLowerCase();
+  const manifest = await fetchJsonNoStore(`/feeds/${countryCode}.json`);
+
+  const directPosts = extractPostsFromFeedPayload(manifest);
+  if (directPosts.length > 0) {
+    return directPosts;
+  }
+
+  const chunks =
+    manifest && typeof manifest === "object" && Array.isArray((manifest as { chunks?: unknown }).chunks)
+      ? ((manifest as { chunks: Array<{ path?: unknown }> }).chunks || [])
       : [];
-  }  
+
+  if (!chunks.length) {
+    return [];
+  }
+
+  const chunkPayloads = await Promise.all(
+    chunks
+      .map((chunk) => String(chunk.path || "").trim())
+      .filter(Boolean)
+      .map((path) => fetchJsonNoStore(path))
+  );
+
+  return chunkPayloads.flatMap((payload) => extractPostsFromFeedPayload(payload));
+}
+
+async function loadServerFeed(locale: Locale): Promise<IngestedPost[]> {
+  const countryCode = String(locale).toLowerCase();
+
+  try {
+    const data = await fetchJsonNoStore(`/api/feed?countryCode=${encodeURIComponent(countryCode)}`);
+    const posts = extractPostsFromFeedPayload(data);
+
+    if (posts.length > 0) {
+      return posts;
+    }
+  } catch {
+    // fallback ниже
+  }
+
+  try {
+    return await loadStaticCountryFeed(locale);
+  } catch {
+    // fallback ниже
+  }
+
+  const fallbackData = await fetchJsonNoStore(`/feed.json`);
+  return extractPostsFromFeedPayload(fallbackData).filter((post: IngestedPost) => {
+    const postCountryCode = String(post?.sourceCountryCode || "").toLowerCase();
+    return !postCountryCode || postCountryCode === countryCode;
+  });
+}
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());  
