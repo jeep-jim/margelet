@@ -172,8 +172,9 @@ async function readRepoJsonFile<T>(relativePath: string, fallback: T): Promise<T
     }
 
     return JSON.parse(decodeBase64Utf8(data.content)) as T;
-  } catch {
-    return fallback;
+  } catch (error) {
+    console.warn(`GitHub read failed for ${relativePath}; falling back to bundled local file`, error);
+    return readLocalJsonFile(relativePath, fallback);
   }
 }
 
