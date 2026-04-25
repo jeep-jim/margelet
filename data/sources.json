@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T04:19:55.138Z",
+  "updatedAt": "2026-04-25T04:22:11.705Z",
   "sources": [
     {
       "id": "in:aninews",
@@ -1224,6 +1224,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uk:news24ua",
+      "countryCode": "uk",
+      "handle": "news24ua",
+      "title": "24 Канал",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:22:11.705Z",
+      "updatedAt": "2026-04-25T04:22:11.705Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "en:ninegag",
       "countryCode": "en",
       "handle": "ninegag",
@@ -1388,6 +1410,28 @@
       "lastSeenPostId": 9516,
       "importedPostsCount": 83,
       "lastRefreshCursorPostId": 9508
+    },
+    {
+      "id": "uk:rbc_ua_news",
+      "countryCode": "uk",
+      "handle": "rbc_ua_news",
+      "title": "РБК-Україна",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:22:11.705Z",
+      "updatedAt": "2026-04-25T04:22:11.705Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:rbcinvest",
@@ -1843,6 +1887,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uk:tsnua",
+      "countryCode": "uk",
+      "handle": "tsnua",
+      "title": "ТСН",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:22:11.705Z",
+      "updatedAt": "2026-04-25T04:22:11.705Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:tutu_travel",
       "countryCode": "ru",
       "handle": "tutu_travel",
@@ -1863,6 +1929,50 @@
       "note": null,
       "createdAt": "2026-04-25T03:43:12.173Z",
       "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uk:u_now",
+      "countryCode": "uk",
+      "handle": "u_now",
+      "title": "Україна Сейчас",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:22:11.704Z",
+      "updatedAt": "2026-04-25T04:22:11.704Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uk:uniannet",
+      "countryCode": "uk",
+      "handle": "uniannet",
+      "title": "УНИАН",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T04:22:11.705Z",
+      "updatedAt": "2026-04-25T04:22:11.705Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
