@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-25T03:36:55.830Z",
+  "updatedAt": "2026-04-25T03:43:12.174Z",
   "sources": [
     {
       "id": "ru:autorunews",
@@ -237,6 +237,33 @@
       "lastRefreshCursorPostId": 1253
     },
     {
+      "id": "ru:igromania",
+      "countryCode": "ru",
+      "handle": "igromania",
+      "title": "Игромания",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming",
+        "gaming_mobile",
+        "gaming_pc",
+        "gaming_console",
+        "gaming_esports",
+        "gaming_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:43:12.173Z",
+      "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pt-br:jairbolsonarobrasil",
       "countryCode": "pt-br",
       "handle": "jairbolsonarobrasil",
@@ -283,6 +310,33 @@
       "lastSeenPostId": 5407,
       "importedPostsCount": 70,
       "lastRefreshCursorPostId": 5402
+    },
+    {
+      "id": "ru:kanobu",
+      "countryCode": "ru",
+      "handle": "kanobu",
+      "title": "Канобу",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming",
+        "gaming_mobile",
+        "gaming_pc",
+        "gaming_console",
+        "gaming_esports",
+        "gaming_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:43:12.173Z",
+      "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:maratyus",
@@ -508,6 +562,32 @@
       "lastRefreshCursorPostId": 18844
     },
     {
+      "id": "ru:natgeoru",
+      "countryCode": "ru",
+      "handle": "natgeoru",
+      "title": "National Geographic Россия",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals",
+        "nature_ecology",
+        "nature_plants",
+        "nature_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:43:12.173Z",
+      "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:novosti_efir",
       "countryCode": "ru",
       "handle": "novosti_efir",
@@ -554,6 +634,33 @@
       "lastSeenPostId": 2915,
       "importedPostsCount": 46,
       "lastRefreshCursorPostId": 2898
+    },
+    {
+      "id": "ru:onetwotrip",
+      "countryCode": "ru",
+      "handle": "onetwotrip",
+      "title": "OneTwoTrip",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel",
+        "travel_rest",
+        "travel_countries",
+        "travel_routes",
+        "travel_hotels",
+        "travel_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:43:12.173Z",
+      "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "en:perplexity",
@@ -621,6 +728,29 @@
       "lastSeenPostId": 9516,
       "importedPostsCount": 83,
       "lastRefreshCursorPostId": 9508
+    },
+    {
+      "id": "ru:rbcinvest",
+      "countryCode": "ru",
+      "handle": "rbcinvest",
+      "title": "РБК Инвестиции",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:43:12.173Z",
+      "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:readovkanews",
@@ -938,6 +1068,56 @@
       "lastSeenPostId": 2434,
       "importedPostsCount": 54,
       "lastRefreshCursorPostId": 2427
+    },
+    {
+      "id": "ru:tinkoffjournal",
+      "countryCode": "ru",
+      "handle": "tinkoffjournal",
+      "title": "Тинькофф Журнал",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance",
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:43:12.173Z",
+      "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:tutu_travel",
+      "countryCode": "ru",
+      "handle": "tutu_travel",
+      "title": "Туту",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel",
+        "travel_rest",
+        "travel_countries",
+        "travel_routes",
+        "travel_hotels",
+        "travel_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-25T03:43:12.173Z",
+      "updatedAt": "2026-04-25T03:43:12.173Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:video2",
