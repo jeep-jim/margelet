@@ -756,6 +756,7 @@ function mergeSourcePosts(params: {
 export async function rebuildFeedFromSources(options?: {
   countryCode?: CountryCode | null;
   forceFullCountryScan?: boolean;
+  persistSourceMeta?: boolean;
 }) {
   const normalizedCountry = normalizeCountryCode(
     options?.countryCode
@@ -763,6 +764,7 @@ export async function rebuildFeedFromSources(options?: {
   const forceFullCountryScan = Boolean(
     normalizedCountry && options?.forceFullCountryScan
   );
+  const persistSourceMeta = options?.persistSourceMeta !== false;
 
   const feedFile = await readFeedFile<IngestedPost>();
   const previousAllPosts = dedupePosts(
@@ -888,7 +890,10 @@ export async function rebuildFeedFromSources(options?: {
   }
 
   await writeFeedFile(publishedPosts);
-  await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
+
+  if (persistSourceMeta) {
+    await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
+  }
 
   return {
     updatedAt: new Date().toISOString(),
@@ -906,5 +911,6 @@ export async function rebuildFeedFromSources(options?: {
     sourceFailures,
     healedCorruptedSources,
     keptPreviousFeed: shouldKeepPreviousFeed,
+    sourcesMetaPersisted: persistSourceMeta,
   };
 }

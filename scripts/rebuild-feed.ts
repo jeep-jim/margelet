@@ -70,6 +70,7 @@ async function main() {
 
   const result = await rebuildFeedFromSources({
     countryCode: (args.countryCode as never) || null,
+    persistSourceMeta: false,
   });
 
   const index = await readFeedIndexFile();

@@ -45,9 +45,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const result = await rebuildFeedFromSources({
       countryCode: null,
       forceFullCountryScan: false,
-    });    
+      persistSourceMeta: false,
+    });
 
-    return res.status(200).json({ ok: true, ...result });
+return res.status(200).json({ ok: true, ...result });
   } catch (error) {
     console.error("admin-rebuild api error", error);
     return res.status(500).json({
