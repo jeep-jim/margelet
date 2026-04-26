@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-26T05:08:03.899Z",
+  "updatedAt": "2026-04-26T05:15:37.781Z",
   "sources": [
     {
       "id": "tr:anadoluagency",
@@ -18,6 +18,29 @@
       "createdAt": "2026-04-26T02:30:59.847Z",
       "updatedAt": "2026-04-26T04:47:31.704Z",
       "lastCheckedAt": "2026-04-26T04:47:31.704Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:animaisbrasil",
+      "countryCode": "pt-br",
+      "handle": "animaisbrasil",
+      "title": "Animais Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -119,6 +142,51 @@
       "lastRefreshCursorPostId": 16385
     },
     {
+      "id": "pt-br:canaltech",
+      "countryCode": "pt-br",
+      "handle": "canaltech",
+      "title": "Canaltech",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:cnnbrasil",
+      "countryCode": "pt-br",
+      "handle": "cnnbrasil",
+      "title": "CNN Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:decenter",
       "countryCode": "ru",
       "handle": "decenter",
@@ -180,6 +248,72 @@
       "note": null,
       "createdAt": "2026-04-26T05:02:47.036Z",
       "updatedAt": "2026-04-26T05:02:47.036Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:exame",
+      "countryCode": "pt-br",
+      "handle": "exame",
+      "title": "Exame",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:g1",
+      "countryCode": "pt-br",
+      "handle": "g1",
+      "title": "G1 Notícias",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:globonews",
+      "countryCode": "pt-br",
+      "handle": "globonews",
+      "title": "GloboNews",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -273,6 +407,50 @@
       "lastSeenPostId": 1254,
       "importedPostsCount": 24,
       "lastRefreshCursorPostId": 1254
+    },
+    {
+      "id": "pt-br:infomoney",
+      "countryCode": "pt-br",
+      "handle": "infomoney",
+      "title": "InfoMoney",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:investingbrasil",
+      "countryCode": "pt-br",
+      "handle": "investingbrasil",
+      "title": "Investing Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "en:just",
@@ -456,6 +634,29 @@
       "lastRefreshCursorPostId": 10535
     },
     {
+      "id": "pt-br:memesbrasil",
+      "countryCode": "pt-br",
+      "handle": "memesbrasil",
+      "title": "Memes Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "humor"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:molyanov_blog",
       "countryCode": "ru",
       "handle": "molyanov_blog",
@@ -608,6 +809,28 @@
       "lastSeenPostId": 18860,
       "importedPostsCount": 189,
       "lastRefreshCursorPostId": 18849
+    },
+    {
+      "id": "pt-br:natgeobrasil",
+      "countryCode": "pt-br",
+      "handle": "natgeobrasil",
+      "title": "National Geographic Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "tr:natgeoturkiye",
@@ -789,6 +1012,29 @@
       "lastSeenPostId": 48193,
       "importedPostsCount": 218,
       "lastRefreshCursorPostId": 48188
+    },
+    {
+      "id": "pt-br:poder360",
+      "countryCode": "pt-br",
+      "handle": "poder360",
+      "title": "Poder360",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "politics"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "en:popcorn_today",
@@ -974,6 +1220,50 @@
       "lastRefreshCursorPostId": 11570
     },
     {
+      "id": "pt-br:tecmundo",
+      "countryCode": "pt-br",
+      "handle": "tecmundo",
+      "title": "TecMundo",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "pt-br:tecnoblog",
+      "countryCode": "pt-br",
+      "handle": "tecnoblog",
+      "title": "Tecnoblog",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:telegaru",
       "countryCode": "ru",
       "handle": "telegaru",
@@ -1100,6 +1390,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "pt-br:viajarbrasil",
+      "countryCode": "pt-br",
+      "handle": "viajarbrasil",
+      "title": "Viajar Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:video2",
       "countryCode": "ru",
       "handle": "video2",
@@ -1121,6 +1433,28 @@
       "lastSeenPostId": 12293,
       "importedPostsCount": 29,
       "lastRefreshCursorPostId": 12291
+    },
+    {
+      "id": "pt-br:visitbrasil",
+      "countryCode": "pt-br",
+      "handle": "visitbrasil",
+      "title": "Visit Brasil",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-26T05:15:37.781Z",
+      "updatedAt": "2026-04-26T05:15:37.781Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "tr:visitturkey",
