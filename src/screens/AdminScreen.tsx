@@ -16,6 +16,7 @@ type AdminScreenProps = {
 };
 
 type LoadState = "idle" | "loading" | "ready" | "error";
+type FeedIndexCountryStats = Record<string, { posts?: number }>;
 
 const ADMIN_TELEGRAM_ID = "1372669404";
 const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
@@ -100,6 +101,7 @@ export function AdminScreen({
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
   const [clockNow, setClockNow] = useState(() => new Date());
   const [countryStatsOpen, setCountryStatsOpen] = useState(false);
+  const [feedIndexCountries, setFeedIndexCountries] = useState<FeedIndexCountryStats>({});
 
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
     try {
@@ -177,8 +179,23 @@ export function AdminScreen({
     }
   };
 
+  const loadFeedIndex = async () => {
+    try {
+      const res = await fetch(`/feeds/index.json?v=${Date.now()}`, {
+        cache: "no-store",
+      });
+
+      const data = await res.json().catch(() => null);
+      setFeedIndexCountries(
+        data?.countries && typeof data.countries === "object" ? data.countries : {}
+      );
+    } catch {
+      setFeedIndexCountries({});
+    }
+  };
+
   const refreshEverything = async () => {
-    await Promise.all([loadPosts(), loadSources()]);
+    await Promise.all([loadPosts(), loadSources(), loadFeedIndex()]);
   };
 
   useEffect(() => {
@@ -207,10 +224,7 @@ export function AdminScreen({
           (source) => source.status === "active"
         ).length;
 
-        const postsCount = posts.filter(
-          (post) =>
-            String(post.sourceCountryCode || "").toLowerCase() === country.code
-        ).length;
+        const postsCount = Number(feedIndexCountries[country.code]?.posts || 0);
 
         const countryMeta = country as typeof country & {
           label?: string;
@@ -236,7 +250,7 @@ export function AdminScreen({
           b.postsCount - a.postsCount ||
           b.sourcesCount - a.sourcesCount
       );
-  }, [sources, posts]);  
+  }, [sources, feedIndexCountries]);  
 
   const nextRebuildDate = useMemo(() => getNextRebuildDate(clockNow), [clockNow]);
   const nextRebuildLabel = useMemo(() => formatShortTime(nextRebuildDate), [nextRebuildDate]);
