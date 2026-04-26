@@ -138,21 +138,61 @@ export function AdminScreen({
   const loadPosts = async () => {
     if (!telegramUserId || !hasAdminAccess) return;
 
+    const readPosts = (payload: any): IngestedPost[] => {
+      if (Array.isArray(payload?.posts)) return payload.posts;
+      if (Array.isArray(payload?.items)) return payload.items;
+      return [];
+    };
+
     try {
       setState("loading");
 
-      const res = await fetch("/api/admin-posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          telegramUserId,
-          entity: "posts",
-          countryCode: selectedCountryCode,
-        }),
+      const indexRes = await fetch(`/feeds/index.json?v=${Date.now()}`, {
+        cache: "no-store",
       });
 
-      const data = await res.json().catch(() => null);
-      setPosts(Array.isArray(data?.posts) ? data.posts : []);
+      const indexData = await indexRes.json().catch(() => null);
+      const countryInfo = indexData?.countries?.[selectedCountryCode];
+
+      if (countryInfo?.path) {
+        const directRes = await fetch(`${countryInfo.path}?v=${Date.now()}`, {
+          cache: "no-store",
+        });
+
+        const directData = await directRes.json().catch(() => null);
+        let nextPosts = readPosts(directData);
+
+        if (countryInfo.mode === "chunked" && Number(countryInfo.chunks || 0) > 0) {
+          const chunkPosts = await Promise.all(
+            Array.from({ length: Number(countryInfo.chunks) }, async (_, index) => {
+              const chunkPath = `/feeds/${selectedCountryCode}/${index + 1}.json`;
+              const chunkRes = await fetch(`${chunkPath}?v=${Date.now()}`, {
+                cache: "no-store",
+              });
+
+              if (!chunkRes.ok) return [];
+
+              const chunkData = await chunkRes.json().catch(() => null);
+              return readPosts(chunkData);
+            })
+          );
+
+          nextPosts = chunkPosts.flat();
+        }
+
+        setPosts(
+          nextPosts.sort(
+            (a, b) =>
+              Date.parse(String(b.createdAt || "")) -
+              Date.parse(String(a.createdAt || ""))
+          )
+        );
+
+        setState("ready");
+        return;
+      }
+
+      setPosts([]);
       setState("ready");
     } catch {
       setState("error");
