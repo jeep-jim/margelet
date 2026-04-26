@@ -12,6 +12,7 @@ export function Card({ children, className = "", ...props }: Props) {
   );
 }
 
+
 export function CardContent({ children, className = "", ...props }: Props) {
   return (
     <div className={className} {...props}>
