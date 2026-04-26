@@ -187,41 +187,104 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-  async function loadServerFeed(locale: Locale): Promise<IngestedPost[]> {
-    try {
-      const res = await fetch(`/api/feed`, {
-        cache: "no-store",
-      });
+async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
+  const readPosts = (payload: any): IngestedPost[] => {
+    if (Array.isArray(payload?.posts)) return payload.posts;
+    if (Array.isArray(payload?.items)) return payload.items;
+    return [];
+  };
 
-      const contentType = res.headers.get("content-type") || "";
-
-      if (res.ok && contentType.includes("application/json")) {
-        const data = await res.json();
-        if (Array.isArray(data?.posts)) {
-          return data.posts as IngestedPost[];
-        }
-      }
-    } catch {
-      //
-    }
-
-    const fallbackRes = await fetch(`/feed.json`, {
+  try {
+    const indexRes = await fetch(`/feeds/index.json?v=${Date.now()}`, {
       cache: "no-store",
     });
 
-    if (!fallbackRes.ok) {
-      throw new Error("feed request failed");
-    }
+    if (indexRes.ok) {
+      const index = await indexRes.json();
+      const countries = Object.values(index?.countries || {}) as Array<{
+        path?: string;
+        mode?: "single" | "chunked";
+        chunks?: number;
+      }>;
 
-    const fallbackData = await fallbackRes.json();
+      const countryPosts = await Promise.all(
+        countries.map(async (country: any) => {
+          if (!country?.path) return [];
 
-    return Array.isArray(fallbackData?.posts)
-      ? fallbackData.posts.filter((post: IngestedPost) => {
-          const countryCode = String(post?.sourceCountryCode || "").toLowerCase();
-          return !countryCode || countryCode === String(locale).toLowerCase();
+          const countryRes = await fetch(`${country.path}?v=${Date.now()}`, {
+            cache: "no-store",
+          });
+
+          if (!countryRes.ok) return [];
+
+          const countryData = await countryRes.json();
+
+          const directPosts = readPosts(countryData);
+          if (directPosts.length > 0) return directPosts;
+
+          if (Array.isArray(countryData?.chunks)) {
+            const chunkPosts = await Promise.all(
+              countryData.chunks.map(async (chunk: any) => {
+                if (!chunk?.path) return [];
+
+                const chunkRes = await fetch(`${chunk.path}?v=${Date.now()}`, {
+                  cache: "no-store",
+                });
+
+                if (!chunkRes.ok) return [];
+
+                const chunkData = await chunkRes.json();
+                return readPosts(chunkData);
+              })
+            );
+
+            return chunkPosts.flat();
+          }
+
+          return [];
         })
-      : [];
-  }  
+      );
+
+      const posts = countryPosts.flat();
+
+      if (posts.length > 0) {
+        return posts.sort(
+          (a, b) =>
+            Date.parse(String(b.createdAt || "")) -
+            Date.parse(String(a.createdAt || ""))
+        );
+      }
+    }
+  } catch {
+    //
+  }
+
+  try {
+    const res = await fetch(`/api/feed`, {
+      cache: "no-store",
+    });
+
+    const contentType = res.headers.get("content-type") || "";
+
+    if (res.ok && contentType.includes("application/json")) {
+      const data = await res.json();
+      return readPosts(data);
+    }
+  } catch {
+    //
+  }
+
+  const fallbackRes = await fetch(`/feed.json?v=${Date.now()}`, {
+    cache: "no-store",
+  });
+
+  if (!fallbackRes.ok) {
+    throw new Error("feed request failed");
+  }
+
+  const fallbackData = await fallbackRes.json();
+  return readPosts(fallbackData);
+}  
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());  
