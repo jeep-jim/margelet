@@ -51,38 +51,213 @@ function extractTelegramHandle(value: string) {
   return "";
 }
 
+function normalizeTextKey(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/ё/g, "е")
+    .replace(/[\u{1F000}-\u{1FAFF}]/gu, " ")
+    .replace(/[^a-zа-я0-9]+/gi, " ")
+    .trim();
+}
+
+function buildTagAliasMap() {
+  const aliases = new Map<string, ContentTag>();
+
+  const addAlias = (label: string, value: string) => {
+    const key = normalizeTextKey(label);
+    if (key) aliases.set(key, value as ContentTag);
+  };
+
+  for (const group of SITE_TAG_GROUPS) {
+    addAlias(group.value, group.value);
+    addAlias(group.labels.ru, group.value);
+    addAlias(group.labels.en, group.value);
+
+    for (const child of group.children) {
+      addAlias(child.value, child.value);
+      addAlias(child.labels.ru, child.value);
+      addAlias(child.labels.en, child.value);
+    }
+  }
+
+  const manualAliases: Array<[string, ContentTag]> = [
+    ["новости", "news"],
+    ["сми", "news"],
+    ["медиа", "news"],
+    ["политика", "politics"],
+    ["власть", "politics_government"],
+    ["выборы", "politics_elections"],
+    ["война", "war"],
+    ["экономика", "economy"],
+    ["рынки", "economy_markets"],
+    ["бизнес", "business"],
+    ["финансы", "finance"],
+    ["крипта", "crypto"],
+    ["технологии", "technology"],
+    ["тех", "technology"],
+    ["интернет", "internet"],
+    ["гаджеты", "gadgets"],
+    ["ai", "ai"],
+    ["ии", "ai"],
+    ["наука", "science"],
+    ["образование", "education"],
+    ["культура", "culture"],
+    ["игры", "gaming"],
+    ["юмор", "humor"],
+    ["мемы", "memes"],
+    ["спорт", "sports"],
+    ["фитнес", "fitness"],
+    ["здоровье", "health"],
+    ["путешествия", "travel"],
+    ["еда", "food"],
+    ["психология", "psychology"],
+    ["мода", "fashion"],
+    ["красота", "beauty"],
+    ["природа", "nature"],
+    ["животные", "animals"],
+    ["люди", "people"],
+    ["блоги", "people_blogs"],
+    ["маркетинг", "marketing"],
+    ["стартапы", "startups"],
+    ["работа", "jobs"],
+    ["вакансии", "jobs_vacancies"],
+    ["недвижимость", "real_estate"],
+    ["транспорт", "auto"],
+    ["авто", "transport_auto"],
+    ["телеграм", "telegram"],
+    ["telegram", "telegram"],
+    ["ton", "telegram_ton"],
+    ["боты", "telegram_bots"],
+    ["каналы", "telegram_channels"],
+    ["другое", "other"],
+    ["прочее", "other"],
+  ];
+
+  for (const [label, value] of manualAliases) addAlias(label, value);
+  return aliases;
+}
+
+const TAG_ALIAS_MAP = buildTagAliasMap();
+
+function parseTagsFromText(value: string): ContentTag[] {
+  const raw = value
+    .replace(/^[-–—•\s]*/, "")
+    .replace(/^(теги|tags|категории|categories)\s*[:：-]?\s*/i, "");
+
+  const chunks = raw
+    .split(/[|/,;·•]+/)
+    .map((part) => normalizeTextKey(part))
+    .filter(Boolean);
+
+  const tags: ContentTag[] = [];
+
+  for (const chunk of chunks) {
+    const exact = TAG_ALIAS_MAP.get(chunk);
+    if (exact) {
+      tags.push(exact);
+      continue;
+    }
+
+    for (const [alias, value] of TAG_ALIAS_MAP.entries()) {
+      if (alias.length < 3) continue;
+      if (chunk === alias || chunk.includes(alias) || alias.includes(chunk)) {
+        tags.push(value);
+        break;
+      }
+    }
+  }
+
+  return normalizeTagValues(tags) as ContentTag[];
+}
+
+function isTagLine(value: string) {
+  const cleaned = value.trim().replace(/^[-–—•\s]*/, "");
+  if (/^(теги|tags|категории|categories)\s*[:：-]/i.test(cleaned)) return true;
+
+  const parsedTags = parseTagsFromText(cleaned);
+  const hasHandle = !!extractTelegramHandle(cleaned);
+  const hasLink = /(?:https?:\/\/)?(?:www\.)?(?:t\.me|telegram\.me)\//i.test(cleaned);
+
+  return !hasHandle && !hasLink && parsedTags.length > 0 && /[\/|,]/.test(cleaned);
+}
+
+function cleanTitleCandidate(value: string, handle: string) {
+  return value
+    .replace(/(?:https?:\/\/)?(?:www\.)?(?:t\.me|telegram\.me)\/[A-Za-z0-9_]{4,}(?:[/?#\S]*)?/gi, "")
+    .replace(new RegExp(`@?${handle}`, "ig"), "")
+    .replace(/^(название|name)\s*[:：-]?\s*/i, "")
+    .replace(/^(теги|tags|категории|categories)\s*[:：-].*$/i, "")
+    .replace(/[|]+/g, " ")
+    .trim();
+}
+
+function isIgnoredBulkLine(value: string) {
+  const cleaned = value.trim().toLowerCase();
+  return (
+    !cleaned ||
+    cleaned.startsWith("#") ||
+    cleaned.startsWith("формат") ||
+    cleaned.startsWith("format") ||
+    cleaned.includes("название |") ||
+    cleaned.includes("@handle") ||
+    cleaned.includes("ссылка") ||
+    cleaned.includes("каналов")
+  );
+}
+
 function parseBulkSourceInput(value: string): BulkSourceRow[] {
   const seen = new Set<string>();
+  const rows: BulkSourceRow[] = [];
+  let currentTags: ContentTag[] = ["other"];
+  let pendingTitle = "";
 
-  return value
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .map((line) => {
-      const handle = extractTelegramHandle(line);
-      if (!handle || seen.has(handle)) return null;
-      seen.add(handle);
+  for (const rawLine of value.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || isIgnoredBulkLine(line)) continue;
 
-      const parts = line
-        .split("|")
-        .map((part) => part.trim())
-        .filter(Boolean);
+    const inlineTags = parseTagsFromText(line);
+    if (isTagLine(line)) {
+      currentTags = inlineTags.length > 0 ? inlineTags : currentTags;
+      pendingTitle = "";
+      continue;
+    }
 
-      const titleCandidate = parts.find(
-        (part) =>
-          !part.includes("t.me/") &&
-          !part.includes("telegram.me/") &&
-          !part.startsWith("@") &&
-          part.toLowerCase() !== handle
-      );
+    const handle = extractTelegramHandle(line);
 
-      return {
-        ...createRow(),
-        handle,
-        title: titleCandidate || "",
-      };
-    })
-    .filter((row): row is BulkSourceRow => !!row);
+    if (!handle) {
+      const titleCandidate = line.replace(/^[-–—•\s]*/, "").trim();
+      if (titleCandidate && !parseTagsFromText(titleCandidate).length) {
+        pendingTitle = titleCandidate;
+      }
+      continue;
+    }
+
+    if (seen.has(handle)) continue;
+    seen.add(handle);
+
+    const parts = line
+      .split("|")
+      .map((part) => part.trim())
+      .filter(Boolean);
+
+    const titleFromParts = parts
+      .map((part) => cleanTitleCandidate(part, handle))
+      .find((part) => part && !parseTagsFromText(part).length);
+
+    const title = titleFromParts || cleanTitleCandidate(line, handle) || pendingTitle || "";
+    const tags = inlineTags.length > 0 ? inlineTags : currentTags;
+
+    rows.push({
+      ...createRow(),
+      handle,
+      title,
+      tags: tags.length > 0 ? tags : (["other"] as ContentTag[]),
+    });
+
+    pendingTitle = "";
+  }
+
+  return rows;
 }
 
 function getParentTags(tags: ContentTag[]): ContentTag[] {
