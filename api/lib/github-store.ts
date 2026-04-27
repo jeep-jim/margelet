@@ -402,10 +402,12 @@ function buildCountryFeedFiles<T>(posts: T[], updatedAt: string) {
   const countries: Record<string, FeedCountryIndexEntry> = {};
   const files: CommitFile[] = [];
 
-  for (const [countryCode, countryPosts] of Array.from(byCountry.entries()).sort((a, b) =>
+  for (const [countryCode, rawCountryPosts] of Array.from(byCountry.entries()).sort((a, b) =>
     a[0].localeCompare(b[0])
   )) {
-    if (countryPosts.length <= COUNTRY_CHUNK_SIZE) {
+    const countryPosts = normalizeFeedPostOrder(rawCountryPosts);
+
+    if (countryPosts.length <= COUNTRY_CHUNK_SIZE) {      
       const singlePayload: CountryFeedSingleFile<T> = {
         countryCode,
         updatedAt,
