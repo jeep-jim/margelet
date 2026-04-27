@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-27T03:09:49.766Z",
+  "updatedAt": "2026-04-27T03:27:24.945Z",
   "sources": [
     {
       "id": "uk:ainua",
@@ -114,6 +114,29 @@
       "lastRefreshCursorPostId": 5
     },
     {
+      "id": "en:arstechnica",
+      "countryCode": "en",
+      "handle": "arstechnica",
+      "title": "Ars Technica",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "internet"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "in:autocarindia",
       "countryCode": "in",
       "handle": "autocarindia",
@@ -225,6 +248,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:bloomberg",
+      "countryCode": "en",
+      "handle": "bloomberg",
+      "title": "Bloomberg",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.923Z",
+      "updatedAt": "2026-04-27T03:27:24.923Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:bloomberght",
       "countryCode": "tr",
       "handle": "bloomberght",
@@ -299,6 +345,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:caranddriver",
+      "countryCode": "en",
+      "handle": "caranddriver",
+      "title": "Car and Driver",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "in:cardekho",
       "countryCode": "in",
       "handle": "cardekho",
@@ -337,6 +405,28 @@
       "createdAt": "2026-04-26T05:20:23.885Z",
       "updatedAt": "2026-04-27T01:16:11.353Z",
       "lastCheckedAt": "2026-04-26T23:55:55.642Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:cnn",
+      "countryCode": "en",
+      "handle": "cnn",
+      "title": "CNN",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -448,6 +538,28 @@
       "createdAt": "2026-04-26T05:20:23.885Z",
       "updatedAt": "2026-04-27T01:16:11.353Z",
       "lastCheckedAt": "2026-04-26T23:55:55.971Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:discoverychannel",
+      "countryCode": "en",
+      "handle": "discoverychannel",
+      "title": "Discovery",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -566,6 +678,53 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:forbes",
+      "countryCode": "en",
+      "handle": "forbes",
+      "title": "Forbes",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "finance",
+        "people"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:foxnewschannel",
+      "countryCode": "en",
+      "handle": "foxnewschannel",
+      "title": "Fox News",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "politics"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pt-br:g1",
       "countryCode": "pt-br",
       "handle": "g1",
@@ -604,6 +763,28 @@
       "createdAt": "2026-04-26T05:20:23.885Z",
       "updatedAt": "2026-04-27T01:16:11.353Z",
       "lastCheckedAt": "2026-04-26T23:55:56.631Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:gamespot",
+      "countryCode": "en",
+      "handle": "gamespot",
+      "title": "GameSpot",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -762,6 +943,28 @@
       "lastSeenPostId": 1255,
       "importedPostsCount": 25,
       "lastRefreshCursorPostId": 1254
+    },
+    {
+      "id": "en:ign",
+      "countryCode": "en",
+      "handle": "ign",
+      "title": "IGN",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:igromania",
@@ -1012,6 +1215,33 @@
       "createdAt": "2026-04-26T05:08:03.899Z",
       "updatedAt": "2026-04-27T01:16:30.027Z",
       "lastCheckedAt": "2026-04-27T01:16:30.027Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:lonelyplanet",
+      "countryCode": "en",
+      "handle": "lonelyplanet",
+      "title": "Lonely Planet",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel",
+        "travel_rest",
+        "travel_countries",
+        "travel_routes",
+        "travel_hotels",
+        "travel_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -1308,6 +1538,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:motortrend",
+      "countryCode": "en",
+      "handle": "motortrend",
+      "title": "MotorTrend",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:mskint",
       "countryCode": "ru",
       "handle": "mskint",
@@ -1444,6 +1696,33 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:natgeotravel",
+      "countryCode": "en",
+      "handle": "natgeotravel",
+      "title": "National Geographic Travel",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel",
+        "nature",
+        "other",
+        "news",
+        "news_no_negative",
+        "news_regions"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:natgeoturkiye",
       "countryCode": "tr",
       "handle": "natgeoturkiye",
@@ -1486,6 +1765,29 @@
       "lastSeenPostId": 12,
       "importedPostsCount": 4,
       "lastRefreshCursorPostId": 4
+    },
+    {
+      "id": "en:ninegag",
+      "countryCode": "en",
+      "handle": "ninegag",
+      "title": "9gag",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "humor",
+      "tags": [
+        "humor",
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:novosti_efir",
@@ -1811,6 +2113,28 @@
       "lastRefreshCursorPostId": 48391
     },
     {
+      "id": "en:reuters",
+      "countryCode": "en",
+      "handle": "reuters",
+      "title": "Reuters",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.923Z",
+      "updatedAt": "2026-04-27T03:27:24.923Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:rian_ru",
       "countryCode": "ru",
       "handle": "rian_ru",
@@ -2010,6 +2334,40 @@
       "createdAt": "2026-04-26T05:20:23.885Z",
       "updatedAt": "2026-04-27T01:16:15.201Z",
       "lastCheckedAt": "2026-04-27T01:16:15.201Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:techcrunch",
+      "countryCode": "en",
+      "handle": "techcrunch",
+      "title": "TechCrunch",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_software",
+        "technology_dev",
+        "technology_web",
+        "internet",
+        "gadgets",
+        "ai",
+        "technology_other",
+        "startups",
+        "startups_cases",
+        "startups_founders",
+        "startups_invest",
+        "startups_other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -2293,6 +2651,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:verge",
+      "countryCode": "en",
+      "handle": "verge",
+      "title": "The Verge",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pt-br:viajarbrasil",
       "countryCode": "pt-br",
       "handle": "viajarbrasil",
@@ -2382,6 +2763,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:washingtonpost",
+      "countryCode": "en",
+      "handle": "washingtonpost",
+      "title": "The Washington Post",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:webrazzi",
       "countryCode": "tr",
       "handle": "webrazzi",
@@ -2427,6 +2830,51 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:wired",
+      "countryCode": "en",
+      "handle": "wired",
+      "title": "WIRED",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:wsj",
+      "countryCode": "en",
+      "handle": "wsj",
+      "title": "Wall Street Journal",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:wylsared",
       "countryCode": "ru",
       "handle": "wylsared",
@@ -2446,6 +2894,28 @@
       "note": null,
       "createdAt": "2026-04-27T03:09:49.729Z",
       "updatedAt": "2026-04-27T03:09:49.729Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:yahoofinance",
+      "countryCode": "en",
+      "handle": "yahoofinance",
+      "title": "Yahoo Finance",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T03:27:24.924Z",
+      "updatedAt": "2026-04-27T03:27:24.924Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
