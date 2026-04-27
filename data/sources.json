@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-27T06:42:13.264Z",
+  "updatedAt": "2026-04-27T06:49:32.537Z",
   "sources": [
     {
       "id": "ae:abudhabitravel",
@@ -47,6 +47,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "eg:alahram",
+      "countryCode": "eg",
+      "handle": "alahram",
+      "title": "Al Ahram",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:anadoluagency",
       "countryCode": "tr",
       "handle": "anadoluagency",
@@ -86,6 +108,29 @@
       "createdAt": "2026-04-26T05:15:37.781Z",
       "updatedAt": "2026-04-27T06:41:03.790Z",
       "lastCheckedAt": "2026-04-27T04:55:35.017Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:animalsegypt",
+      "countryCode": "eg",
+      "handle": "animalsegypt",
+      "title": "Animals Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -268,6 +313,29 @@
       "createdAt": "2026-04-26T05:20:23.885Z",
       "updatedAt": "2026-04-27T06:41:03.790Z",
       "lastCheckedAt": "2026-04-27T04:55:25.631Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:autoegypt",
+      "countryCode": "eg",
+      "handle": "autoegypt",
+      "title": "Auto Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -525,6 +593,94 @@
       "lastRefreshCursorPostId": 16385
     },
     {
+      "id": "eg:businessegypt",
+      "countryCode": "eg",
+      "handle": "businessegypt",
+      "title": "Business Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:cairo24",
+      "countryCode": "eg",
+      "handle": "cairo24",
+      "title": "Cairo 24",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:cairotech",
+      "countryCode": "eg",
+      "handle": "cairotech",
+      "title": "Cairo Tech",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:cairotravel",
+      "countryCode": "eg",
+      "handle": "cairotravel",
+      "title": "Cairo Travel",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pt-br:canaltech",
       "countryCode": "pt-br",
       "handle": "canaltech",
@@ -608,6 +764,28 @@
       "createdAt": "2026-04-26T05:20:23.885Z",
       "updatedAt": "2026-04-27T06:41:03.790Z",
       "lastCheckedAt": "2026-04-27T04:55:26.601Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:carsegypt",
+      "countryCode": "eg",
+      "handle": "carsegypt",
+      "title": "Cars Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -969,6 +1147,51 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "eg:economyegypt",
+      "countryCode": "eg",
+      "handle": "economyegypt",
+      "title": "Economy Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "economy",
+      "tags": [
+        "economy",
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:egypttodaymag",
+      "countryCode": "eg",
+      "handle": "egypttodaymag",
+      "title": "Egypt Today",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:ekonomimcom",
       "countryCode": "tr",
       "handle": "ekonomimcom",
@@ -1219,6 +1442,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "eg:gadgetsegypt",
+      "countryCode": "eg",
+      "handle": "gadgetsegypt",
+      "title": "Gadgets Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "kk:gadgetskz",
       "countryCode": "kk",
       "handle": "gadgetskz",
@@ -1303,6 +1549,28 @@
       "createdAt": "2026-04-27T03:27:24.924Z",
       "updatedAt": "2026-04-27T06:41:03.790Z",
       "lastCheckedAt": "2026-04-27T04:55:24.487Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:gamingegypt",
+      "countryCode": "eg",
+      "handle": "gamingegypt",
+      "title": "Gaming Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -1754,6 +2022,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "eg:investingegypt",
+      "countryCode": "eg",
+      "handle": "investingegypt",
+      "title": "Investing Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance",
+        "finance_investing"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "uk:itcua",
       "countryCode": "uk",
       "handle": "itcua",
@@ -2146,6 +2437,28 @@
       "lastRefreshCursorPostId": 2047
     },
     {
+      "id": "eg:masrawy",
+      "countryCode": "eg",
+      "handle": "masrawy",
+      "title": "Masrawy",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:media_apple",
       "countryCode": "ru",
       "handle": "media_apple",
@@ -2229,6 +2542,29 @@
       "note": null,
       "createdAt": "2026-04-27T06:42:13.240Z",
       "updatedAt": "2026-04-27T06:42:13.240Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:memesegypt",
+      "countryCode": "eg",
+      "handle": "memesegypt",
+      "title": "Memes Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "humor",
+      "tags": [
+        "humor",
+        "memes"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -2670,6 +3006,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "eg:natureegypt",
+      "countryCode": "eg",
+      "handle": "natureegypt",
+      "title": "Nature Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ae:natureuae",
       "countryCode": "ae",
       "handle": "natureuae",
@@ -3032,6 +3390,28 @@
       "lastSeenPostId": 9531,
       "importedPostsCount": 98,
       "lastRefreshCursorPostId": 9531
+    },
+    {
+      "id": "eg:pubgegypt",
+      "countryCode": "eg",
+      "handle": "pubgegypt",
+      "title": "PUBG Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "uz:pubguz",
@@ -3500,6 +3880,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "eg:techegypt",
+      "countryCode": "eg",
+      "handle": "techegypt",
+      "title": "Tech Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:technomedia",
       "countryCode": "ru",
       "handle": "technomedia",
@@ -3955,6 +4357,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "eg:visitegypt",
+      "countryCode": "eg",
+      "handle": "visitegypt",
+      "title": "Visit Egypt",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "kk:visitkazakhstan",
       "countryCode": "kk",
       "handle": "visitkazakhstan",
@@ -4198,6 +4623,28 @@
       "createdAt": "2026-04-27T03:27:24.924Z",
       "updatedAt": "2026-04-27T06:41:11.729Z",
       "lastCheckedAt": "2026-04-27T06:41:11.728Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "eg:youm7",
+      "countryCode": "eg",
+      "handle": "youm7",
+      "title": "Youm7",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T06:49:32.536Z",
+      "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
