@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-27T07:39:21.897Z",
+  "updatedAt": "2026-04-27T07:48:14.081Z",
   "sources": [
     {
       "id": "es:20m",
@@ -219,6 +219,29 @@
       "note": null,
       "createdAt": "2026-04-27T07:30:08.869Z",
       "updatedAt": "2026-04-27T07:30:08.869Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:animalsfrance",
+      "countryCode": "fr",
+      "handle": "animalsfrance",
+      "title": "Animals France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -769,6 +792,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:automoto",
+      "countryCode": "fr",
+      "handle": "automoto",
+      "title": "Auto Moto",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:autorunews",
       "countryCode": "ru",
       "handle": "autorunews",
@@ -878,6 +924,28 @@
       "lastImportedAt": "2026-04-27T04:55:42.020Z",
       "lastSeenPostId": 45597,
       "importedPostsCount": 8,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:bfmtv",
+      "countryCode": "fr",
+      "handle": "bfmtv",
+      "title": "BFMTV",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -1258,6 +1326,29 @@
       "note": null,
       "createdAt": "2026-04-27T06:49:32.536Z",
       "updatedAt": "2026-04-27T06:49:32.536Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:carsfrance",
+      "countryCode": "fr",
+      "handle": "carsfrance",
+      "title": "Cars France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -2245,6 +2336,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:financefrance",
+      "countryCode": "fr",
+      "handle": "financefrance",
+      "title": "Finance France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ae:financeuae",
       "countryCode": "ae",
       "handle": "financeuae",
@@ -2337,6 +2450,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:forbesfrance",
+      "countryCode": "fr",
+      "handle": "forbesfrance",
+      "title": "Forbes France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "finance",
+        "people"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "it:forbesitalia",
       "countryCode": "it",
       "handle": "forbesitalia",
@@ -2403,6 +2540,51 @@
       "lastImportedAt": "2026-04-27T04:55:23.815Z",
       "lastSeenPostId": 3,
       "importedPostsCount": 2,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:france24",
+      "countryCode": "fr",
+      "handle": "france24",
+      "title": "France 24",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:frandroid",
+      "countryCode": "fr",
+      "handle": "frandroid",
+      "title": "Frandroid",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -2693,6 +2875,28 @@
       "note": null,
       "createdAt": "2026-04-27T07:30:08.869Z",
       "updatedAt": "2026-04-27T07:30:08.869Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:gamingfrance",
+      "countryCode": "fr",
+      "handle": "gamingfrance",
+      "title": "Gaming France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -3457,6 +3661,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:jeuxvideocom",
+      "countryCode": "fr",
+      "handle": "jeuxvideocom",
+      "title": "Jeuxvideo.com",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "en:just",
       "countryCode": "en",
       "handle": "just",
@@ -3752,6 +3978,95 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:lefigaro",
+      "countryCode": "fr",
+      "handle": "lefigaro",
+      "title": "Le Figaro",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:lemondefr",
+      "countryCode": "fr",
+      "handle": "lemondefr",
+      "title": "Le Monde",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:lesechos",
+      "countryCode": "fr",
+      "handle": "lesechos",
+      "title": "Les Echos",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "finance"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:liberation",
+      "countryCode": "fr",
+      "handle": "liberation",
+      "title": "Libération",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "en:lonelyplanet",
       "countryCode": "en",
       "handle": "lonelyplanet",
@@ -4021,6 +4336,29 @@
       "note": null,
       "createdAt": "2026-04-27T07:30:08.869Z",
       "updatedAt": "2026-04-27T07:30:08.869Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:memesfrance",
+      "countryCode": "fr",
+      "handle": "memesfrance",
+      "title": "Memes France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "humor",
+      "tags": [
+        "humor",
+        "memes"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -4564,6 +4902,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:natgeofrance",
+      "countryCode": "fr",
+      "handle": "natgeofrance",
+      "title": "National Geographic France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "in:natgeoindia",
       "countryCode": "in",
       "handle": "natgeoindia",
@@ -4994,6 +5354,28 @@
       "createdAt": "2026-04-26T02:30:59.848Z",
       "updatedAt": "2026-04-27T06:41:03.790Z",
       "lastCheckedAt": "2026-04-27T04:56:03.737Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:numerama",
+      "countryCode": "fr",
+      "handle": "numerama",
+      "title": "Numerama",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -6070,6 +6452,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:techfrance",
+      "countryCode": "fr",
+      "handle": "techfrance",
+      "title": "Tech France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pk:techjuicepk",
       "countryCode": "pk",
       "handle": "techjuicepk",
@@ -6858,6 +7263,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "fr:visitfrance",
+      "countryCode": "fr",
+      "handle": "visitfrance",
+      "title": "Visit France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "it:visititaly",
       "countryCode": "it",
       "handle": "visititaly",
@@ -7027,6 +7454,28 @@
       "note": null,
       "createdAt": "2026-04-27T06:17:24.230Z",
       "updatedAt": "2026-04-27T06:41:03.790Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "fr:voyagefrance",
+      "countryCode": "fr",
+      "handle": "voyagefrance",
+      "title": "Voyage France",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T07:48:14.056Z",
+      "updatedAt": "2026-04-27T07:48:14.056Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
