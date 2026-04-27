@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-27T08:33:29.120Z",
+  "updatedAt": "2026-04-27T08:40:23.664Z",
   "sources": [
     {
       "id": "es:20m",
@@ -241,6 +241,29 @@
       "note": null,
       "createdAt": "2026-04-27T08:05:45.383Z",
       "updatedAt": "2026-04-27T08:05:45.383Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:animalschina",
+      "countryCode": "zh",
+      "handle": "animalschina",
+      "title": "Animals China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -1654,6 +1677,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:caixinnews",
+      "countryCode": "zh",
+      "handle": "caixinnews",
+      "title": "Caixin",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "economy",
+      "tags": [
+        "economy"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pt-br:canaltech",
       "countryCode": "pt-br",
       "handle": "canaltech",
@@ -1969,6 +2014,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:cgtnofficial",
+      "countryCode": "zh",
+      "handle": "cgtnofficial",
+      "title": "CGTN",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ng:channelstv",
       "countryCode": "ng",
       "handle": "channelstv",
@@ -1984,6 +2051,73 @@
       "note": null,
       "createdAt": "2026-04-27T08:21:04.794Z",
       "updatedAt": "2026-04-27T08:21:04.794Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:chinabusinessnews",
+      "countryCode": "zh",
+      "handle": "chinabusinessnews",
+      "title": "China Business",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:chinacars",
+      "countryCode": "zh",
+      "handle": "chinacars",
+      "title": "China Cars",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:chinadailynews",
+      "countryCode": "zh",
+      "handle": "chinadailynews",
+      "title": "China Daily",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.639Z",
+      "updatedAt": "2026-04-27T08:40:23.639Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -3012,6 +3146,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:esportschina",
+      "countryCode": "zh",
+      "handle": "esportschina",
+      "title": "Esports China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming",
+        "gaming_esports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "co:esportscolombia",
       "countryCode": "co",
       "handle": "esportscolombia",
@@ -3165,6 +3322,29 @@
       "note": null,
       "createdAt": "2026-04-27T08:33:29.100Z",
       "updatedAt": "2026-04-27T08:33:29.100Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:evchina",
+      "countryCode": "zh",
+      "handle": "evchina",
+      "title": "EV China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "auto",
+      "tags": [
+        "auto",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -4060,6 +4240,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:gamingchina",
+      "countryCode": "zh",
+      "handle": "gamingchina",
+      "title": "Gaming China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "co:gamingcolombia",
       "countryCode": "co",
       "handle": "gamingcolombia",
@@ -4475,6 +4677,28 @@
       "lastImportedAt": "2026-04-27T07:58:40.788Z",
       "lastSeenPostId": 8274,
       "importedPostsCount": 20,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:globaltimesnews",
+      "countryCode": "zh",
+      "handle": "globaltimesnews",
+      "title": "Global Times",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -5420,6 +5644,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:kr36news",
+      "countryCode": "zh",
+      "handle": "kr36news",
+      "title": "36Kr",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "uz:kunuz",
       "countryCode": "uz",
       "handle": "kunuz",
@@ -5848,6 +6094,29 @@
       "lastSeenPostId": 31,
       "importedPostsCount": 20,
       "lastRefreshCursorPostId": 13
+    },
+    {
+      "id": "zh:memeschina",
+      "countryCode": "zh",
+      "handle": "memeschina",
+      "title": "Memes China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "humor",
+      "tags": [
+        "humor",
+        "memes"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "co:memescolombia",
@@ -6870,6 +7139,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:naturechina",
+      "countryCode": "zh",
+      "handle": "naturechina",
+      "title": "Nature China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "co:naturecolombia",
       "countryCode": "co",
       "handle": "naturecolombia",
@@ -7467,6 +7758,50 @@
       "note": null,
       "createdAt": "2026-04-27T06:55:27.280Z",
       "updatedAt": "2026-04-27T07:56:59.058Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:pandaily",
+      "countryCode": "zh",
+      "handle": "pandaily",
+      "title": "Pandaily",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:peoplesdailynews",
+      "countryCode": "zh",
+      "handle": "peoplesdailynews",
+      "title": "People's Daily",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -8783,6 +9118,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:technodechina",
+      "countryCode": "zh",
+      "handle": "technodechina",
+      "title": "TechNode",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:technomedia",
       "countryCode": "ru",
       "handle": "technomedia",
@@ -9321,6 +9678,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:travelchina",
+      "countryCode": "zh",
+      "handle": "travelchina",
+      "title": "Travel China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "co:travelcolombia",
       "countryCode": "co",
       "handle": "travelcolombia",
@@ -9783,6 +10162,28 @@
       "note": null,
       "createdAt": "2026-04-27T08:16:26.121Z",
       "updatedAt": "2026-04-27T08:16:26.121Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:visitchina",
+      "countryCode": "zh",
+      "handle": "visitchina",
+      "title": "Visit China",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -10414,6 +10815,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "zh:xinhuanews",
+      "countryCode": "zh",
+      "handle": "xinhuanews",
+      "title": "Xinhua",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "en:yahoofinance",
       "countryCode": "en",
       "handle": "yahoofinance",
@@ -10430,6 +10853,28 @@
       "createdAt": "2026-04-27T03:27:24.924Z",
       "updatedAt": "2026-04-27T07:56:59.060Z",
       "lastCheckedAt": "2026-04-27T06:41:11.728Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "zh:yicaiglobal",
+      "countryCode": "zh",
+      "handle": "yicaiglobal",
+      "title": "Yicai",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "economy",
+      "tags": [
+        "economy"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-27T08:40:23.640Z",
+      "updatedAt": "2026-04-27T08:40:23.640Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
