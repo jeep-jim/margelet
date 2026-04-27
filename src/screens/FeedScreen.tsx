@@ -60,6 +60,44 @@ function normalizeCountryCode(value: string | null | undefined, locale: Locale) 
   return String(locale).toLowerCase();
 }
 
+function parsePostTime(post: IngestedPost) {
+  const ms = Date.parse(String(post.createdAt || ""));
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+function normalizeHandle(value: string | null | undefined) {
+  return String(value || "").trim().replace(/^@+/, "").toLowerCase();
+}
+
+function interleavePostsBySource(posts: IngestedPost[], locale: Locale) {
+  const groups = new Map<string, IngestedPost[]>();
+  let fallbackIndex = 0;
+
+  for (const post of [...posts].sort((a, b) => parsePostTime(b) - parsePostTime(a))) {
+    const country = normalizeCountryCode(post.sourceCountryCode, locale);
+    const handle = normalizeHandle(post.source?.handle);
+    const key = handle ? `${country}:${handle}` : `single:${fallbackIndex++}`;
+
+    const list = groups.get(key) || [];
+    list.push(post);
+    groups.set(key, list);
+  }
+
+  const queues = Array.from(groups.entries())
+    .map(([key, items]) => ({ key, items }))
+    .sort((a, b) => parsePostTime(b.items[0]) - parsePostTime(a.items[0]));
+
+  const result: IngestedPost[] = [];
+
+  while (queues.some((queue) => queue.items.length > 0)) {
+    for (const queue of queues) {
+      const next = queue.items.shift();
+      if (next) result.push(next);
+    }
+  }
+
+  return result;
+}
 
 function normalizeFeedCountries(countries: string[], fallbackCountry: string) {
   const normalized = Array.from(
@@ -784,6 +822,8 @@ export function FeedScreen({
       });
     }
 
+    list = interleavePostsBySource(list, locale);
+
     if (feedSettings.demoteSeen) {
       const unseen: IngestedPost[] = [];
       const seen: IngestedPost[] = [];
@@ -802,7 +842,10 @@ export function FeedScreen({
         return aSeenAt - bSeenAt;
       });
 
-      list = [...unseen, ...seen];
+      list = [
+        ...interleavePostsBySource(unseen, locale),
+        ...interleavePostsBySource(seen, locale),
+      ];
     }    
 
     return list;
