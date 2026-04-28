@@ -805,7 +805,7 @@ export function CreatorChannelPanel({
 
                 <div className="mt-3 flex gap-2">
                   <a
-                    href={item.channelUrl}
+                    href={`/${item.channelHandle.replace(/^@+/, "")}`}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
