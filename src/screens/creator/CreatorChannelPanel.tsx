@@ -1,9 +1,9 @@
-import { Check, ChevronDown, ChevronUp, ExternalLink, Gift, Lock, Send, Sparkles } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Clock3, ExternalLink, Gift, Lock, RotateCw, Send, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { SITE_LOCALES } from "../../lib/locales";
 import { SITE_TAG_GROUPS, type SiteTagGroup } from "../../lib/tags";
 import type { Locale } from "../../types/app";
-import { getCreatorPricing, formatDaysLeft } from "./creator.monetization";
+import { formatDaysLeft, getCreatorPricing } from "./creator.monetization";
 import type {
   CreatorChannelPlacement,
   CreatorChannelPlan,
@@ -64,6 +64,27 @@ function appendCreatorChannel(item: CreatorChannelPlacement) {
   writeCreatorChannels([item, ...parsed]);
 }
 
+function updateCreatorChannel(item: CreatorChannelPlacement) {
+  const raw = localStorage.getItem(CREATOR_CHANNELS_STORAGE_KEY);
+  const parsed = raw ? (JSON.parse(raw) as CreatorChannelPlacement[]) : [];
+
+  writeCreatorChannels(parsed.map((current) => (current.id === item.id ? item : current)));
+}
+
+function isValidTelegramDonateUrl(value: string) {
+  if (!value.trim()) return true;
+
+  try {
+    const url = new URL(value.trim());
+    const host = url.hostname.toLowerCase();
+
+    return ["t.me", "www.t.me", "telegram.me", "www.telegram.me"].includes(host) &&
+      url.searchParams.has("direct");
+  } catch {
+    return false;
+  }
+}
+
 function getTagLabel(group: SiteTagGroup, locale: Locale) {
   return `${group.emoji} ${group.labels[locale] ?? group.labels.en}`;
 }
@@ -110,6 +131,19 @@ function getUi(locale: Locale) {
         daysLeft: "Осталось",
         price: "Стоимость",
         donateOnlyPaid: "Donate-ссылка доступна только для платного размещения.",
+        donateLabel: "Telegram donate-ссылка",
+        donatePlaceholder: "https://t.me/your_channel?direct",
+        donateInvalid: "Нужна Telegram-ссылка с параметром ?direct",
+        donateSaved: "Donate-ссылка сохранена.",
+        saveDonate: "Сохранить",
+        openBot: "Открыть бота",
+        renew: "Продлить",
+        paidPlan: "оплата",
+        barterPlan: "бартер",
+        activeText: "активен",
+        expiredText: "истёк",
+        pausedText: "пауза",
+        waitingBotText: "ожидает бота",
         barterPost:
           "Текст для бартера: Хорошие новости, друзья! Теперь наш канал можно читать ещё и на margeleT.space",
         rulesBody: [
@@ -157,6 +191,19 @@ function getUi(locale: Locale) {
         daysLeft: "Left",
         price: "Cost",
         donateOnlyPaid: "Donate link is available only for paid placement.",
+        donateLabel: "Telegram donate link",
+        donatePlaceholder: "https://t.me/your_channel?direct",
+        donateInvalid: "Use a Telegram link with ?direct",
+        donateSaved: "Donate link saved.",
+        saveDonate: "Save",
+        openBot: "Open bot",
+        renew: "Renew",
+        paidPlan: "paid",
+        barterPlan: "barter",
+        activeText: "active",
+        expiredText: "expired",
+        pausedText: "paused",
+        waitingBotText: "waiting for bot",
         barterPost:
           "Barter text: Good news, friends! Now our channel is also available on margeleT.space",
         rulesBody: [
@@ -310,6 +357,38 @@ export function CreatorChannelPanel({
     setOpenTagGroups([]);
 
     window.open(buildBotUrl(item), "_blank", "noopener,noreferrer");
+  };
+
+  const saveDonateUrl = (item: CreatorChannelPlacement, value: string) => {
+    if (!isValidTelegramDonateUrl(value)) {
+      alert(ui.donateInvalid);
+      return;
+    }
+
+    const nextItem = { ...item, donateUrl: value.trim() || null };
+    updateCreatorChannel(nextItem);
+    setChannels((current) => current.map((channel) => (channel.id === item.id ? nextItem : channel)));
+    alert(ui.donateSaved);
+  };
+
+  const renewPlacement = (item: CreatorChannelPlacement) => {
+    const nextItem: CreatorChannelPlacement = {
+      ...item,
+      status: "pending",
+      startsAt: null,
+      endsAt: null,
+    };
+
+    updateCreatorChannel(nextItem);
+    setChannels((current) => current.map((channel) => (channel.id === item.id ? nextItem : channel)));
+    window.open(buildBotUrl(nextItem), "_blank", "noopener,noreferrer");
+  };
+
+  const getChannelCardText = (item: CreatorChannelPlacement) => {
+    if (item.status === "active") return ui.activeText;
+    if (item.status === "expired") return ui.expiredText;
+    if (item.status === "paused") return ui.pausedText;
+    return ui.waitingBotText;
   };
 
   return (
@@ -571,17 +650,89 @@ export function CreatorChannelPanel({
                     <div className="text-primary truncate text-sm font-semibold">@{item.channelHandle}</div>
                     <div className="text-secondary mt-1 text-xs">{item.pricingLabel}</div>
                   </div>
-                  <div className="rounded-full bg-surface px-3 py-1 text-xs text-secondary">
+                  <div
+                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                      item.status === "active"
+                        ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-300"
+                        : item.status === "expired" || item.status === "paused"
+                          ? "bg-amber-500/15 text-amber-700 dark:text-amber-300"
+                          : "bg-blue-500/15 text-blue-700 dark:text-blue-300"
+                    }`}
+                  >
                     {ui[item.status]}
                   </div>
                 </div>
 
-                <div className="mt-3 flex flex-wrap gap-2 text-xs text-secondary">
-                  <span className="rounded-full bg-surface px-3 py-1">{item.country.toUpperCase()}</span>
-                  <span className="rounded-full bg-surface px-3 py-1">{item.plan}</span>
-                  <span className="rounded-full bg-surface px-3 py-1">
-                    {ui.daysLeft}: {item.endsAt ? formatDaysLeft(item.endsAt) : "—"}
-                  </span>
+                <div className="text-secondary mt-3 flex items-start gap-2 rounded-[18px] bg-surface px-3 py-3 text-xs leading-5">
+                  <Clock3 className="mt-0.5 h-4 w-4 shrink-0" />
+                  <span>{getChannelCardText(item)}</span>
+                </div>
+
+                <div className="mt-3 grid grid-cols-3 gap-2 text-xs text-secondary">
+                  <div className="rounded-[16px] bg-surface px-3 py-2">
+                    <div className="uppercase tracking-[0.12em] opacity-60">страна</div>
+                    <div className="text-primary mt-1 font-semibold">{item.country.toUpperCase()}</div>
+                  </div>
+                  <div className="rounded-[16px] bg-surface px-3 py-2">
+                    <div className="uppercase tracking-[0.12em] opacity-60">тип</div>
+                    <div className="text-primary mt-1 font-semibold">{item.plan === "paid" ? ui.paidPlan : ui.barterPlan}</div>
+                  </div>
+                  <div className="rounded-[16px] bg-surface px-3 py-2">
+                    <div className="uppercase tracking-[0.12em] opacity-60">срок</div>
+                    <div className="text-primary mt-1 font-semibold">{formatDaysLeft(item.endsAt)}</div>
+                  </div>
+                </div>
+
+                {item.plan === "paid" ? (
+                  <div className="mt-3 rounded-[20px] border border-soft bg-surface p-3">
+                    <label className="text-secondary text-xs font-semibold uppercase tracking-[0.12em]">
+                      {ui.donateLabel}
+                    </label>
+                    <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+                      <input
+                        defaultValue={item.donateUrl || ""}
+                        placeholder={ui.donatePlaceholder}
+                        className="bg-surface-soft text-primary focus-border-strong min-w-0 flex-1 rounded-full border border-soft px-4 py-2.5 text-sm outline-none transition"
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter") {
+                            saveDonateUrl(item, event.currentTarget.value);
+                          }
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          const input = event.currentTarget.parentElement?.querySelector("input") as HTMLInputElement | null;
+                          saveDonateUrl(item, input?.value || "");
+                        }}
+                        className="rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground transition hover:opacity-90"
+                      >
+                        {ui.saveDonate}
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <a
+                    href={buildBotUrl(item)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground transition hover:opacity-90"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    {ui.openBot}
+                  </a>
+                  {item.status === "expired" || item.status === "paused" ? (
+                    <button
+                      type="button"
+                      onClick={() => renewPlacement(item)}
+                      className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-surface-hover"
+                    >
+                      <RotateCw className="h-4 w-4" />
+                      {ui.renew}
+                    </button>
+                  ) : null}
                 </div>
               </div>
             ))

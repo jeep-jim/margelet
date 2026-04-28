@@ -4,6 +4,7 @@ import { COUNTRIES, type CountryCode } from "./admin/admin.countries";
 import { AdminBulkImportSection } from "./admin/AdminBulkImportSection";
 import { AdminCountriesSection } from "./admin/AdminCountriesSection";
 import { AdminManualPostSection } from "./admin/AdminManualPostSection";
+import { AdminMonetizationSection } from "./admin/AdminMonetizationSection";
 import { AdminPostsSection } from "./admin/AdminPostsSection";
 import { AdminSourcesSection } from "./admin/AdminSourcesSection";
 import type { TrustedSource } from "./admin/admin.types";
@@ -476,6 +477,7 @@ export function AdminScreen({
             onSelectCountry={setSelectedCountryCode}
             counts={sourceCountsByCountry}
           />
+          <AdminMonetizationSection />
 
           <AdminSourcesSection
             telegramUserId={telegramUserId}

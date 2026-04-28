@@ -2,6 +2,8 @@ import type { Locale } from "../../types/app";
 
 export type CreatorPlan = "paid" | "barter";
 
+export const CREATOR_PLACEMENT_DAYS = 30;
+
 export type CreatorPricing = {
   country: Locale;
   stars: number;
@@ -21,7 +23,7 @@ const DEFAULT_PRICING: CreatorPricing = {
 };
 
 export const CREATOR_PRICING_BY_COUNTRY: Partial<Record<Locale, CreatorPricing>> = {
-  ru: { country: "ru", stars: 2400, label: starsLabel(2500), monthlyValueUsd: 33 },
+  ru: { country: "ru", stars: 2500, label: starsLabel(2500), monthlyValueUsd: 33 },
   uk: { country: "uk", stars: 2900, label: starsLabel(9900), monthlyValueUsd: 129 },
   en: { country: "en", stars: 4900, label: starsLabel(7900), monthlyValueUsd: 99 },
   in: { country: "in", stars: 1900, label: starsLabel(1900), monthlyValueUsd: 19 },
@@ -52,11 +54,34 @@ export function getCreatorPricing(country: Locale): CreatorPricing {
   return CREATOR_PRICING_BY_COUNTRY[country] ?? DEFAULT_PRICING;
 }
 
-export function formatDaysLeft(endsAt: string) {
+export function addPlacementDays(from: Date, days = CREATOR_PLACEMENT_DAYS) {
+  const next = new Date(from);
+  next.setDate(next.getDate() + days);
+  return next.toISOString();
+}
+
+export function getDaysLeft(endsAt: string | null) {
+  if (!endsAt) return null;
+
   const diff = Date.parse(endsAt) - Date.now();
-  if (!Number.isFinite(diff)) return "—";
-  const days = Math.ceil(diff / (24 * 60 * 60 * 1000));
-  if (days <= 0) return "expired";
-  if (days === 1) return "1 day";
-  return `${days} days`;
+  if (!Number.isFinite(diff)) return null;
+
+  return Math.ceil(diff / (24 * 60 * 60 * 1000));
+}
+
+export function formatDaysLeft(endsAt: string | null) {
+  const days = getDaysLeft(endsAt);
+  if (days === null) return "—";
+  if (days <= 0) return "истёк";
+  if (days === 1) return "1 день";
+  if (days >= 2 && days <= 4) return `${days} дня`;
+  return `${days} дней`;
+}
+
+export function getPlacementStatusLabel(status: string) {
+  if (status === "pending") return "ожидает";
+  if (status === "active") return "активен";
+  if (status === "paused") return "пауза";
+  if (status === "expired") return "истёк";
+  return "черновик";
 }
