@@ -1,4 +1,4 @@
-import type { Locale } from "../../types/app";
+import type { Locale } from "../../types/app.js";
 
 export type CreatorPlan = "paid" | "barter";
 
