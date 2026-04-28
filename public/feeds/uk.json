@@ -1,9 +1,769 @@
 {
   "countryCode": "uk",
-  "updatedAt": "2026-04-28T07:58:44.454Z",
-  "totalPosts": 49,
+  "updatedAt": "2026-04-28T09:35:44.712Z",
+  "totalPosts": 41,
   "chunks": 1,
   "items": [
+    {
+      "id": 253124822,
+      "postUrl": "https://t.me/itcua/59836?single",
+      "source": {
+        "title": "ITC.UA: IT-новини і технології 🇺🇦",
+        "handle": "itcua",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/v4If6WeFbEsAZTJChXVkvRCrq9m4-dg_7KBBgTN7QvxidyNTj6-wlEYQCIIg0paJRBUZTExAIxv-A8ki82ayARkk8Jsfpekp1cd3Il5hvlph9lOy819zdpJQX4DzWB3HZ7qJ5ySJrbulQ8X6Vo3HxOcU5ji3xmtIx4frcyd9_XfRs_TB3U2aT1kluz-ZOCnAEioFtH-lVFaSPJWlufhdJiWuok07614At-qdd-QCwKCmLNuTJsA_FbURwArIE1AskYtdFV8nBfMB_Lhk_Rwox33S0GAwv52yhaCNCSgwMXi8jYdrOHyf3gplzpdbiJI5Zj-mFywcPCCka8BxTBHuEw.jpg"
+      },
+      "sourceId": "uk:itcua",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/iRgrgNoupubV6a-cfEzGe4B1fG1qzrwhVyGt-Pb_Hpc9kLLXTnch4OFkCmMOSNi0mxYxRG-hXCdFnNLcjv4K2yoh65UZB5baZ69B0qQEDW9wL4GfYICtEsYomUIG3A5iXi6pg7XUOKuNz-jI9aJjFdUq3HAZ1nwpssy7omrdRvNp5kSOwOPRI4JQdYCj6tc-aSJS4hZWyBcyv0IK5jmXahFHei-xHLESfvd3cfiJ41SXU-MEEVObw1gyxU5TBtVbVyNYp1aY1cpmrfok5SxrtIzIB1yC9etVnImmK2skWInaBThsfa7my4PcEcuVsXD080Qsrc0Iac8iwEaqBCJNKA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Інструмент для кодингу на базі ШІ Claude за 9 секунд видалив всю виробничу базу даних компанії PocketOS  разом з резервними копіями. \n\nЗа словами керівника компанії Джера Крейна, ШІ-кодер — Cursor мав виконати звичайне завдання, однак зіткнувся з невідповідністю у базі даних. Він вирішив виправити цю невідповідність, видаливши том хмарного провайдера Railway, а разом з ним було видалено всю базу даних по роботі з клієнтами за останні 3 місяці. \n\nКоли Крейн запитав ШІ, нащо він це зробив, у відповідь почув: “NEVER F**KING GUESS!”. ШІ вважав видалення проміжного тому через API обмеженим лише цим томом. Він не перевірив, чи використовується ідентифікатор цього тому в решті середовищ. \n\nКрейн звинувачує хмарного провайдера Railway, оскільки резервні копії зберігаються там же де й вихідні дані, а форматування одного тому, видаляє всі резервні копії. \n\nМожна звинувачувати кого завгодно, але лайно трапляється, якщо замінювати реальних програмістів на ШІ.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
+      "links": [
+        {
+          "label": "за 9 секунд видалив всю виробничу базу даних компанії PocketOS",
+          "url": "https://itc.ua/ua/novini/shi-agent-na-bazi-claude-za-9-sekund-vydalyv-bazu-danyh-kompaniyi-pocketos/"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/itcua"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/ITC.UA"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/ITCUA"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@itcommunity/videos"
+        }
+      ],
+      "createdAt": "2026-04-28T09:35:30.843Z",
+      "expiresAt": "2026-04-29T09:35:30.843Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:30.843Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T09:35:30.843Z"
+      }
+    },
+    {
+      "id": 823295295,
+      "postUrl": "https://t.me/devukraine/45030?single",
+      "source": {
+        "title": "dev.ua | IT України",
+        "handle": "devukraine",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
+      },
+      "sourceId": "uk:devukraine",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/uLrlEVcjoAqy_Y0swtZyli3TM6LRnmxA_aeS7SxjECcSW-z50nuWYEEuEpRwGqhM81TLSntwHzT_jtxhgB_mAslHq8Pwzlksi6xNEOaVI3BPbBNXxvByHM1UA6BluJo49pAgWBKiYW4EW4Z-fa36Mwq71jSgRkvAtsUQLePsifkXhRWdkKD3Q7ueByPYZtEe1uVDv2Xeyb6UnUA95C8hr3RNuoDit16GqgCj7h3swlPNNHZDRBw3MbPUpm3Uxo6WoZdVCz4x3H9mBUWTg8ieqq0whu0aqS84PwdQsZcYVQdTenfL8Is4LXiWYRLFyESJb8nXgl9cI7hMvmD4KP7shQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "👤 «Найбільше масове вбивство ворога в історії людства відбувається в цій кімнаті». Роберт Бровді розповів, як дрони ліквідують піхоту рф\n\nБлизько третини всіх ударів українських безпілотників цілеспрямовано завдаються по особовому складу російських окупаційних військ. Головна мета таких дій полягає у стримуванні просування ворога та створенні шокового ефекту всередині росії.\n\nПро це в інтерв’ю виданню BBC розповів командувач Сил безпілотних систем Збройних Сил України Роберт Бровді, відомий під позивним «Мадяр». Деталі тут.\n\n@devukraine",
+      "links": [
+        {
+          "label": "Деталі тут.",
+          "url": "https://dev.ua/news/naibilshe-masove-vbyvstvo-voroha-v-istorii-liudstva-vidbuvaietsia-v-tsii-kimnati-robert-brovdi-rozpoviv-iak-drony-likviduiut-pikhotu-rf-1777367205"
+        },
+        {
+          "label": "@devukraine",
+          "url": "https://t.me/devukraine"
+        }
+      ],
+      "createdAt": "2026-04-28T09:35:29.427Z",
+      "expiresAt": "2026-04-29T09:35:29.427Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:29.427Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T09:35:29.427Z"
+      }
+    },
+    {
+      "id": 3483732452,
+      "postUrl": "https://t.me/rbc_ua_news/189621?single",
+      "source": {
+        "title": "РБК-Україна",
+        "handle": "rbc_ua_news",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
+      },
+      "sourceId": "uk:rbc_ua_news",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/sZ88vAdhIsRWOaVZ6gyC77omHd6UEe_ECfYBnts3GaS6GRxJX5mDOkpAqJ9KNNbN-d3GDxMOmRS663zMReDDWmUiIuvhZd5nhK7ybA7e2cgQMdaXSBGQQvV1omPV1By5JDlA5kwBcjq6o7bFsqN3rLyeOl-UfzFkYuasTai-RjGzpz9yS7ta5D4g46NLXZvnVvDWh5Rb2G8Ccxk40K-puA4dAOVhHMPBbvzgu7c9N74AZyujN3Pe-AKDL5MT1DWKmlbXKriK_ycda1rs9SK3saQr1kcXC7QEzRJhfPKZqByuNWnxLd-lGokJac7Vi7e_yMNxzbwzThilnvQH7YZb1w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🇵🇱Польща будує \"армаду дронів\" за українським зразком, - Туск\n\nПрем'єр-міністр Польщі Дональд Туск під час конференції в Жешуві, присвяченій відновленню України, заявив, що Варшава має намір \"побудувати армаду безпілотників\", взявши за основу технічний та практичний досвід України.",
+      "links": [
+        {
+          "label": "\"армаду дронів\"",
+          "url": "https://www.rbc.ua/rus/news/polshcha-budue-armadu-droniv-ukrayinskim-1777285906.html"
+        }
+      ],
+      "createdAt": "2026-04-27T10:51:16.341Z",
+      "expiresAt": "2026-04-28T10:51:16.341Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-27T10:51:16.341Z"
+      }
+    },
+    {
+      "id": 379609997,
+      "postUrl": "https://t.me/itcua/59835?single",
+      "source": {
+        "title": "ITC.UA: IT-новини і технології 🇺🇦",
+        "handle": "itcua",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/v4If6WeFbEsAZTJChXVkvRCrq9m4-dg_7KBBgTN7QvxidyNTj6-wlEYQCIIg0paJRBUZTExAIxv-A8ki82ayARkk8Jsfpekp1cd3Il5hvlph9lOy819zdpJQX4DzWB3HZ7qJ5ySJrbulQ8X6Vo3HxOcU5ji3xmtIx4frcyd9_XfRs_TB3U2aT1kluz-ZOCnAEioFtH-lVFaSPJWlufhdJiWuok07614At-qdd-QCwKCmLNuTJsA_FbURwArIE1AskYtdFV8nBfMB_Lhk_Rwox33S0GAwv52yhaCNCSgwMXi8jYdrOHyf3gplzpdbiJI5Zj-mFywcPCCka8BxTBHuEw.jpg"
+      },
+      "sourceId": "uk:itcua",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/dFQQ2GX-c1LlAWC5kOKZdjSLvKJkN_fYC9_3cqtw2lM7pVZWVACC-lpP9-Kd-nOwd0f2vJTYnO-IPtXTwsGv8HSv3Q8lkcT_SHchb6uHcktbnZzMdio2uugglvxSULxt0ZukC2x_SgJmFsMiR8zvdt7eQbpiGA3EHXljE2s-GjKwQOwRvLHPp8N3v5c8muNkd4W7iEqb4J7EGuHPkgVXq_S57QKT0NxaI9U2bRb7fGyjfqXNSUaG_ZgaPz4cIQatwYzC_izBluxIXQPcLx5iSHFyA9wJaToi4LIny1aocvfdvTavz8-PH0PGMlf_83vVKn02ud4kLSeSWSoursIiOQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Власники лінійки iPhone 17 та iPhone Air зіткнулися з неприємною особливістю — смартфони відмовляються вмикатися після повної розрядки і підключення до зарядного пристрою. Тимчасовим порятунком для перетворених на \"цеглини\" пристроїв стала бездротова зарядка MagSafe. Але і вона спрацьовує не завжди.\n\nОфіційного пояснення від Apple поки немає, тож власникам iPhone 17 можна порадити не доводити гаджети до 0% або заздалегідь купувати бездротову станцію. Схоже, майбутнє без дротів, про яке так мріяли в Купертіно, настало трохи раніше, ніж планувалося.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
+      "links": [
+        {
+          "label": "смартфони відмовляються вмикатися після повної розрядки і підключення до зарядного пристрою",
+          "url": "https://itc.ua/ua/novini/apple-iphone-ne-vmykayutsya-pislya-rozryadky/"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/itcua"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/ITC.UA"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/ITCUA"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@itcommunity/videos"
+        }
+      ],
+      "createdAt": "2026-04-28T09:35:30.843Z",
+      "expiresAt": "2026-04-29T09:35:30.843Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:30.843Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T09:35:30.843Z"
+      }
+    },
+    {
+      "id": 312653457,
+      "postUrl": "https://t.me/devukraine/45029?single",
+      "source": {
+        "title": "dev.ua | IT України",
+        "handle": "devukraine",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
+      },
+      "sourceId": "uk:devukraine",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/CDOct7xA8lE4dICTHrurfhEeL6QSnxDZWZE-TjZPt-gDhA99XWBGqDTkMoimA6c8yUiNOEMjx5fHu4zzcabXipJPpuvTZRvepRJTKIlsVwKH1MDyUBWBt3L09eNA1yAhUw61am63VMgcSXLfJAeptMxxDOrWT53brDAbyv4LtYrXGG2rGrWF_m40tDqA9hqD3hp5vQj2D8F-GDjG0gvcROZO5qvLaFWuoeCKUun9BK6LiSf4gZVQU63EhiKgLTUOiXfwknKaH8Aczk1bfPefB6UhlBbtG6wr9vgRRlJflvdS-pv4yp-_Ku4us-To3V-hTvR2z3ToCk9Nw3eon1M-Ew.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "📦Nova Post інтегрується в мережу поштоматів Австрії\n\nЛогістичний оператор Nova Post оголосив про початок стратегічного партнерства з австрійською мережею myflexbox. Співпраця дозволить українській компанії значно розширити мережу пунктів видачі, не обмежуючись лише власними відділеннями.\n\n@devukraine",
+      "links": [
+        {
+          "label": "Співпраця дозволить українській компанії значно розширити мережу пунктів видачі, не обмежуючись лише власними відділеннями.",
+          "url": "https://dev.ua/news/nova-post-intehruietsia-v-merezhu-poshtomativ-avstrii-1777364353"
+        },
+        {
+          "label": "@devukraine",
+          "url": "https://t.me/devukraine"
+        }
+      ],
+      "createdAt": "2026-04-28T09:35:29.427Z",
+      "expiresAt": "2026-04-29T09:35:29.427Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:29.427Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T09:35:29.427Z"
+      }
+    },
+    {
+      "id": 3145678005,
+      "postUrl": "https://t.me/rbc_ua_news/189620?single",
+      "source": {
+        "title": "РБК-Україна",
+        "handle": "rbc_ua_news",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
+      },
+      "sourceId": "uk:rbc_ua_news",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/JDYToV2yzJHOZmWS7XyDVAx3U6irBc8Pbda8zRoN2GL4DNY91T7bD4ZHpnTBvnewiBtb6Vi4K7PY4G7ywaN1MiYA_SwIWOD2C0vuDRyewlpPBxj3rDEf5dVWvkjEHC_yqSf3Q4SkRSeVWsOY5poop5gTwNbGPSCjpQ7pLJi0TccMLW0ldMPVk7b1s_UX2gvj_9lNH2HGF11JoWQr5DaKnqypZB1BCv04XtDqkWDDgU4QLHzdDJ3jF-kFCkJ8ul3OU_CmxhHzmcnpa4dPSWSxgwdoMRJ6WhmPX5IQ2AYmMBcRzVEmbqVqskSvN_bEiLBkiV5hSVBg7WTw0gtl2PJDkA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🇺🇦🇳🇴Україна та Норвегія спільно вироблятимуть дрони для ЗСУ з високою стійкістю до РЕБ\n\nМова йде про виготовлення кількох тисяч дронів типу mid-strike, призначені для ураження цілей у ближньому тилу противника на відстані 50-200 км. Їх вироблятимуть на території Норвегії, Сили оборони отримають безпілотники вже до літа цього року.\n\nЗагалом Норвегія планує цьогоріч спрямувати понад 1,5 млрд доларів на закупівлю озброєння українського виробництва для українського війська.",
+      "links": [
+        {
+          "label": "дрони для ЗСУ з високою стійкістю до РЕБ",
+          "url": "https://www.rbc.ua/rus/news/ukrayina-ta-norvegiya-spilno-viroblyatimut-1777282649.html"
+        }
+      ],
+      "createdAt": "2026-04-27T10:51:16.341Z",
+      "expiresAt": "2026-04-28T10:51:16.341Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-27T10:51:16.341Z"
+      }
+    },
+    {
+      "id": 1429053148,
+      "postUrl": "https://t.me/itcua/59834?single",
+      "source": {
+        "title": "ITC.UA: IT-новини і технології 🇺🇦",
+        "handle": "itcua",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/v4If6WeFbEsAZTJChXVkvRCrq9m4-dg_7KBBgTN7QvxidyNTj6-wlEYQCIIg0paJRBUZTExAIxv-A8ki82ayARkk8Jsfpekp1cd3Il5hvlph9lOy819zdpJQX4DzWB3HZ7qJ5ySJrbulQ8X6Vo3HxOcU5ji3xmtIx4frcyd9_XfRs_TB3U2aT1kluz-ZOCnAEioFtH-lVFaSPJWlufhdJiWuok07614At-qdd-QCwKCmLNuTJsA_FbURwArIE1AskYtdFV8nBfMB_Lhk_Rwox33S0GAwv52yhaCNCSgwMXi8jYdrOHyf3gplzpdbiJI5Zj-mFywcPCCka8BxTBHuEw.jpg"
+      },
+      "sourceId": "uk:itcua",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/df8U1fkjgaQnAa8kfsQ4izvoI-Q50h_LuwXkDVMHR6JUOasrplwMVRb8k-E776XW-8XdbXekF-wgVu8NhrTk2HED7ARvUXIiQvJmwEf1-hFWTGqpRNem0UfNhoTVwEUMUFIwbBtGZ2kehpfXAx1h016D4EqxYN9UdZntY5sLTPRkGfIRNnFZpVvh-imnlTyLaizex2LohTUz8wU6M9IdGD1H2V7K4--TayxvlFPhDXDbj-dP-91pktQVffHqwsYsI2bt8jtE2BzYyNuO36rysyUxwAMzRbBmAnDiv1uGwsESotNlKoXy5ydny27RsRL1_2nx9KUNLDD1bPqg_MyC-w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Улюблена доісторична компанія повертається на великі екрани: мультфільм \"Льодовиковий період: Точка кипіння\" офіційно отримав дату релізу. Нова частина вийде якраз до 25-річчя франшизи та стане першим фільмом серії, створеним без студії Blue Sky, що обіцяє глядачам оновлений стиль та свіжий погляд на пригоди Мані, Сіда й Дієго. \n\nСхоже, глобальне потепління у всесвіті мультфільму нарешті досягло піка, і тепер головне питання — чи повернеться Скрат в серію після попередніх спорів щодо авторських прав на цього кумедного персонажа.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
+      "links": [
+        {
+          "label": "мультфільм \"Льодовиковий період: Точка кипіння\" офіційно отримав дату релізу",
+          "url": "https://itc.ua/ua/novini/lodovykovyj-period-povertayetsya-novyj-film-vyjde/"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/itcua"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/ITC.UA"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/ITCUA"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@itcommunity/videos"
+        }
+      ],
+      "createdAt": "2026-04-28T09:35:30.843Z",
+      "expiresAt": "2026-04-29T09:35:30.843Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:30.843Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T09:35:30.843Z"
+      }
+    },
+    {
+      "id": 1819716880,
+      "postUrl": "https://t.me/devukraine/45028?single",
+      "source": {
+        "title": "dev.ua | IT України",
+        "handle": "devukraine",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
+      },
+      "sourceId": "uk:devukraine",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Vc6nXNeTR28zUsnkDqBH5vbFAHElD4gCU6Zv7Nm7phs_-dgR8RYJ_bM3xoK_QpMLyTXXZ2pt1oGkYawpjqv42xYBhShT-JQyc-MshmD7iTyiEKxlpzdZUlWbmStMaWvZ9jCZL4faEhn-KVb0K_n2yRSBRSH6B_HpszJ0XcgE6cizqDjJ0P-B1Qz4D4eECaP9ZOnDDK4DiKBt3LDUz-TxKiUvVi5EhEhBT5Oea3wA1MfPBJmJzKBsejIvuiwb5i-k17hGM-JLHdAl96_2TmsG6awyNU8_6t5n68pQnME7aj7p80gkyMXVfSb_SIYnCcDobUsVw-7W06T1VJScaElnUQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "💻70% нових клієнтів українських банків відкривають рахунки через «Дію»\n\nБільшість клієнтів українських фінансових установ відмовляються від паперових документів під час відкриття рахунків, віддаючи перевагу застосунку «Дія».\n\n@devukraine",
+      "links": [
+        {
+          "label": "віддаючи перевагу застосунку «Дія».",
+          "url": "https://dev.ua/news/70-novykh-kliientiv-ukrainskykh-bankiv-vidkryvaiut-rakhunky-cherez-diiu-1777362211"
+        },
+        {
+          "label": "@devukraine",
+          "url": "https://t.me/devukraine"
+        }
+      ],
+      "createdAt": "2026-04-28T09:35:29.427Z",
+      "expiresAt": "2026-04-29T09:35:29.427Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:29.427Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T09:35:29.427Z"
+      }
+    },
+    {
+      "id": 2400346229,
+      "postUrl": "https://t.me/rbc_ua_news/189619?single",
+      "source": {
+        "title": "РБК-Україна",
+        "handle": "rbc_ua_news",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
+      },
+      "sourceId": "uk:rbc_ua_news",
+      "sourceCountryCode": "uk",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "‼️МАГАТЕ заявило про смертельну атаку біля Запорізької АЕС\n\nПредставники Міжнародного агентства з атомної енергії повідомили з Запорізької АЕС, що удар дрона сьогодні вранці призвів до загибелі водія в транспортному цеху поблизу території станції.\n\n\"Удари по АЕС або поблизу них можуть загрожувати ядерній безпеці та не повинні відбуватися\", - заявив генеральний директор МАГАТЕ Рафаель Ґроссі.",
+      "links": [
+        {
+          "label": "смертельну атаку",
+          "url": "https://www.rbc.ua/rus/news/bilya-zaporizkoyi-aes-dron-vluchiv-budivlyu-1777282029.html"
+        }
+      ],
+      "createdAt": "2026-04-27T10:51:16.341Z",
+      "expiresAt": "2026-04-28T10:51:16.341Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-27T10:51:16.341Z"
+      }
+    },
+    {
+      "id": 2084069299,
+      "postUrl": "https://t.me/itcua/59833?single",
+      "source": {
+        "title": "ITC.UA: IT-новини і технології 🇺🇦",
+        "handle": "itcua",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/v4If6WeFbEsAZTJChXVkvRCrq9m4-dg_7KBBgTN7QvxidyNTj6-wlEYQCIIg0paJRBUZTExAIxv-A8ki82ayARkk8Jsfpekp1cd3Il5hvlph9lOy819zdpJQX4DzWB3HZ7qJ5ySJrbulQ8X6Vo3HxOcU5ji3xmtIx4frcyd9_XfRs_TB3U2aT1kluz-ZOCnAEioFtH-lVFaSPJWlufhdJiWuok07614At-qdd-QCwKCmLNuTJsA_FbURwArIE1AskYtdFV8nBfMB_Lhk_Rwox33S0GAwv52yhaCNCSgwMXi8jYdrOHyf3gplzpdbiJI5Zj-mFywcPCCka8BxTBHuEw.jpg"
+      },
+      "sourceId": "uk:itcua",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/csoqq1QgC7xUKWU4ADxoZnJfLanNylie57tSpwNpfxneJIrdfvQZGef7Ijv1XBguMqhd1WDT-75sdCiTvlES9oID1jiNgNNpMuB1azkebauQkRr7fYX6tpcZTQUuTAWhN5-eS-7X51q3k_jiqTU0tiN6OJWJTAiHgo-QDmppXQpze1usIHcT08aF2QW8G3WpEOdyiplUL_BGt3C4ZYnKxumJXWfp2nYoZr1MN_bFxk6QjSNhqTKo4eASV2M9a7GvS6j6JiAn2QCZihLKMQXQBXhBzaN_PtR1UUL5taEo7CwE-pv4DrtPid-xcHqgx9CmlLimO6qPToPXQdJc8GJcbA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Британська компанія Vertical Aerospace стала першою в Європі, хто виконав повний пілотований перехідний політ електричного (eVTOL) аеротаксі: апарат злетів вертикально, перейшов у крейсерський режим як звичайний літак — і повернувся назад.\n\nТепер компанія готується підняти в повітря третій прототип, принципово відмінний від попередніх. На аеродромі Cotswold у Глостерширі головний льотчик-випробувач Саймон Девіс підняв прототип VX4 у вертикальний зліт, потім нахилив чотири передніх гвинти вперед — і апарат перейшов у горизонтальний крейсерський режим на крилах.\n\nПісля цього послідовність повторилася у зворотному порядку: апарат знову завис і вертикально приземлився на той самий майданчик. Цей маневр — так зване двостороннє переміщення — вважається найскладнішим технічним викликом у розробці eVTOL. У світі його до цього вдалося виконати лише американській Joby Aviation, і жодного разу — за межами США.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
+      "links": [
+        {
+          "label": "виконав повний пілотований перехідний політ",
+          "url": "https://itc.ua/ua/novini/vpershe-v-yevropi-brytanske-evtol-taksi-vx4-osvoyilo-najskladnishyj-manevr-vsi-testy-projdeno/"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/itcua"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/ITC.UA"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/ITCUA"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@itcommunity/videos"
+        }
+      ],
+      "createdAt": "2026-04-27T18:20:57.009Z",
+      "expiresAt": "2026-04-28T18:20:57.009Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:30.843Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-27T18:20:57.009Z"
+      }
+    },
+    {
+      "id": 2641905111,
+      "postUrl": "https://t.me/devukraine/45027?single",
+      "source": {
+        "title": "dev.ua | IT України",
+        "handle": "devukraine",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
+      },
+      "sourceId": "uk:devukraine",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/BYx5JuZLYCOEyK9mUvjNPR1Y3_IzetbSdJEAr5lbKGgrq6H1N2T75HENH6Q9IaGAnbdIk27sPG1m74aQuIhOWtCTQAMXFtzE1bTUrXPOVi-R1WWISzvNafdjyyWvhsBJzwJbAgdzfYAioF-rSxH47EcCHC4PKzJFDBpBLqeY9AVv8CDkPUC997NfgYsDl-QHSxGJG3QE_sWB2tYtnyP-cmoA2f8ROZoq1K1tvMGul_7o1nMrNyT24urmmS5EPT0YzhUJmH5foezIKSQcJvEOdF1u9y-ad-YZQA97lXfLqeFMyt9Dj1OaLMkvRP4be96dpmcKV9CwbNEEWc--bzsA3g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "👀 На monoбазарі запрацювали аукціони для дистанційного продажу товарів за найвищою ставкою\n\nУкраїнський необанк monobank розширив можливості свого маркетплейсу monобазар, інтегрувавши функціонал дистанційних аукціонів. Тепер користувачі можуть не просто продавати товари за фіксованою ціною, а виставляти лоти на триденні торги, де переможця визначає найвища ставка.\n\n@devukraine",
+      "links": [
+        {
+          "label": "Тепер користувачі можуть не просто продавати товари за фіксованою ціною, а виставляти лоти на триденні торги, де переможця визначає найвища ставка.",
+          "url": "https://dev.ua/news/auktsion-mono-1777360211"
+        },
+        {
+          "label": "@devukraine",
+          "url": "https://t.me/devukraine"
+        }
+      ],
+      "createdAt": "2026-04-28T09:35:29.427Z",
+      "expiresAt": "2026-04-29T09:35:29.427Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:29.427Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T09:35:29.427Z"
+      }
+    },
+    {
+      "id": 1720543652,
+      "postUrl": "https://t.me/rbc_ua_news/189618?single",
+      "source": {
+        "title": "РБК-Україна",
+        "handle": "rbc_ua_news",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
+      },
+      "sourceId": "uk:rbc_ua_news",
+      "sourceCountryCode": "uk",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚀Зеленський: українська ППО демонструє дуже високий відсоток збиття дронів - понад 90%\n\nПрезидент нагадав, що впродовж минулого тижня РФ випустила по Україні близько 1900 ударних дронів, майже 1400 керованих авіаційних бомб і близько 60 ракет різних типів. \n\nБільше новин тут 👉 rbc.ua",
+      "links": [
+        {
+          "label": "rbc.ua",
+          "url": "https://rbc.ua/"
+        }
+      ],
+      "createdAt": "2026-04-27T10:51:16.341Z",
+      "expiresAt": "2026-04-28T10:51:16.341Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-27T10:51:16.341Z"
+      }
+    },
+    {
+      "id": 1944058906,
+      "postUrl": "https://t.me/itcua/59832?single",
+      "source": {
+        "title": "ITC.UA: IT-новини і технології 🇺🇦",
+        "handle": "itcua",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/v4If6WeFbEsAZTJChXVkvRCrq9m4-dg_7KBBgTN7QvxidyNTj6-wlEYQCIIg0paJRBUZTExAIxv-A8ki82ayARkk8Jsfpekp1cd3Il5hvlph9lOy819zdpJQX4DzWB3HZ7qJ5ySJrbulQ8X6Vo3HxOcU5ji3xmtIx4frcyd9_XfRs_TB3U2aT1kluz-ZOCnAEioFtH-lVFaSPJWlufhdJiWuok07614At-qdd-QCwKCmLNuTJsA_FbURwArIE1AskYtdFV8nBfMB_Lhk_Rwox33S0GAwv52yhaCNCSgwMXi8jYdrOHyf3gplzpdbiJI5Zj-mFywcPCCka8BxTBHuEw.jpg"
+      },
+      "sourceId": "uk:itcua",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/AJBv1VTcvcJOUVPPG8oNSNiS0bq2mn62OJeyGhiOIlcai0lv5g-DxiNQbA--rhJ76mFs3Ak1r7n5kOeelZWmGJo1fPlj3WPQrCFYmY9CmU52YSKStr1qlYf6ZDVw1iae3jTktNIMEjSxXyviSY-y9t9VWNBZMSXc5eX9MXPKP_jVhWGgv1fH1WblvXC-lYpiY1KTgjFjjIWYq8cShlGXCr5X0Csso3ggRPMeJrJOnkcJIypEBP0IoU7OIct9U6Ayp3p8s_Ktfh0eYsVDfsTeudhosGNtYQCwyIGztCj0a-9VoF4M0T64Pu3gZGrhcmzHlM0LvDQpjcpAQcG0iH5HNg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Французька поліція розслідує маніпуляцію з метеодатчиком у паризькому аеропорту Шарль-де-Голль: якийсь хитрун фізично нагрів сенсор, щоб зафіксувати потрібну температуру для виграшу ставки на криптоплатформі Polymarket. Він провернув схему двічі.\n\nТрейдер під нікнеймом xX25Xx поставив трохи більше $119 на те, що максимальна температура в Парижі одного квітневого дня перевищить 18°C. Ринок у той момент оцінював цей результат як майже неможливий — із вірогідністю лише 1%. Але ввечері датчик у Шарль-де-Голль показав стрибок, і трейдер отримав понад $21 000 прибутку.\n\nЦе сталося двічі, і кінцевий прибуток склав більш ніж $34 000: це виграш у 285 разів. Особливо підозрілим виглядав момент стрибка: о 21:30 температура за 12 хвилин злетіла з 16,9°C до 21,9°C — паралельно з різким падінням вологості. Подібна динаміка в природних умовах майже неможлива. Жодна інша метеостанція в паризькій агломерації не зафіксувала нічого схожого.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
+      "links": [
+        {
+          "label": "маніпуляцію з метеодатчиком у паризькому аеропорту",
+          "url": "https://itc.ua/ua/novini/najgaryachisha-stavka-nevidomyj-dotepnyk-vykorystav-fen-ta-termometr-v-aeroportu-shhob-peretvoryty-100-na-34-000/"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/itcua"
+        },
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/ITC.UA"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/ITCUA"
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@itcommunity/videos"
+        }
+      ],
+      "createdAt": "2026-04-27T18:20:57.009Z",
+      "expiresAt": "2026-04-28T18:20:57.009Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T09:35:30.843Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-27T18:20:57.009Z"
+      }
+    },
     {
       "id": 2430503518,
       "postUrl": "https://t.me/devukraine/45026?single",
@@ -61,13 +821,13 @@
       }
     },
     {
-      "id": 2084069299,
-      "postUrl": "https://t.me/itcua/59833?single",
+      "id": 1878514769,
+      "postUrl": "https://t.me/itcua/59831?single",
       "source": {
         "title": "ITC.UA: IT-новини і технології 🇺🇦",
         "handle": "itcua",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DsPCvXKP0zRCBwodctXcfEQl9xs-WIMNrytmJgltRwo1aPakjBt-F2xzP4EB3PphfVS2UzqSzAUTb6Hoq6oW66MpgXkX90c-70mzVGYUMTaSG1-rjxc4b-5RT8z04E4aBJaLaGMDeWRrbfRpYDeGrWhXOoH5mhb3Y7Y8pWjaMY1VIC7EWrpuNrjDONo_j2En54ZgVuRhMiVl3NDN2aLrwfAHd3WxvEQCYTuw2UrbOiChVYZgrl19SSMPAsYKybOqqVURcuFFSleLkYoLcAVdKTLiwGpDZtw2Q_uRYpYQtz-jH3C66YRNm7Jw4hvGzG46LdCRzNO9K3mlp3fu-Yeczg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/v4If6WeFbEsAZTJChXVkvRCrq9m4-dg_7KBBgTN7QvxidyNTj6-wlEYQCIIg0paJRBUZTExAIxv-A8ki82ayARkk8Jsfpekp1cd3Il5hvlph9lOy819zdpJQX4DzWB3HZ7qJ5ySJrbulQ8X6Vo3HxOcU5ji3xmtIx4frcyd9_XfRs_TB3U2aT1kluz-ZOCnAEioFtH-lVFaSPJWlufhdJiWuok07614At-qdd-QCwKCmLNuTJsA_FbURwArIE1AskYtdFV8nBfMB_Lhk_Rwox33S0GAwv52yhaCNCSgwMXi8jYdrOHyf3gplzpdbiJI5Zj-mFywcPCCka8BxTBHuEw.jpg"
       },
       "sourceId": "uk:itcua",
       "sourceCountryCode": "uk",
@@ -76,16 +836,16 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/csoqq1QgC7xUKWU4ADxoZnJfLanNylie57tSpwNpfxneJIrdfvQZGef7Ijv1XBguMqhd1WDT-75sdCiTvlES9oID1jiNgNNpMuB1azkebauQkRr7fYX6tpcZTQUuTAWhN5-eS-7X51q3k_jiqTU0tiN6OJWJTAiHgo-QDmppXQpze1usIHcT08aF2QW8G3WpEOdyiplUL_BGt3C4ZYnKxumJXWfp2nYoZr1MN_bFxk6QjSNhqTKo4eASV2M9a7GvS6j6JiAn2QCZihLKMQXQBXhBzaN_PtR1UUL5taEo7CwE-pv4DrtPid-xcHqgx9CmlLimO6qPToPXQdJc8GJcbA.jpg"
+          "url": "https://cdn4.telesco.pe/file/chmQ2PDI5-LWY8uqFl8g1TVgQLRkKVI75uY8muYLhtA5hsVf31THh4zHnzBkTIR1fsNjBhXgjEgpNUQ_9r0WGTrxLdpCvcFuGfNrvNWqj-iE52_2hYr4pptiuAd1gHYWTQoZqVK87kB6iq6Bz6UZGiQOz-sPOtiEtjjWZ8qk-m0X_D-lefUo0U2QAm7H_n1HPRY9UHulAeDXZKpS5rmPhTCiTX0x7pZcO2XzppBu1-vBiJBcr2WccQ5mbK16LUneQp6HMewGjp2vM48sRw95pRkd2nwY8rmN0iABokzuCoPkbRq-ZlSXM3fEp2TFeBp_BXdH00-38ZcvxjDHxCZaUQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Британська компанія Vertical Aerospace стала першою в Європі, хто виконав повний пілотований перехідний політ електричного (eVTOL) аеротаксі: апарат злетів вертикально, перейшов у крейсерський режим як звичайний літак — і повернувся назад.\n\nТепер компанія готується підняти в повітря третій прототип, принципово відмінний від попередніх. На аеродромі Cotswold у Глостерширі головний льотчик-випробувач Саймон Девіс підняв прототип VX4 у вертикальний зліт, потім нахилив чотири передніх гвинти вперед — і апарат перейшов у горизонтальний крейсерський режим на крилах.\n\nПісля цього послідовність повторилася у зворотному порядку: апарат знову завис і вертикально приземлився на той самий майданчик. Цей маневр — так зване двостороннє переміщення — вважається найскладнішим технічним викликом у розробці eVTOL. У світі його до цього вдалося виконати лише американській Joby Aviation, і жодного разу — за межами США.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
+      "text": "Microsoft зараз працює над ініціативою “K2”, яка визначає, як компанія планує покращити продуктивність Windows 11. Компанія нарешті випускає давно запитувані функції — зокрема, зміни до Windows Update, а також можливість видалити не надто популярні компоненти на кшталт Copilot.\n\nПокращення включають покращення Start, Settings і File Explorer, і компанія обіцяє швидше завантаження та плавнішу навігацію в цих ключових компонентах. За словами Microsoft, деякі з цих оновлень мають вийти в широкий доступ дуже-дуже скоро.\n\nЗгідно з новим звітом, в основі цього поштовху лежить нова ініціатива “K2”, яка значною мірою спиратиметься на WinUI 3 — найновіший власний фреймворк Microsoft у стилі Fluent Design для створення Windows-застосунків.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
       "links": [
         {
-          "label": "виконав повний пілотований перехідний політ",
-          "url": "https://itc.ua/ua/novini/vpershe-v-yevropi-brytanske-evtol-taksi-vx4-osvoyilo-najskladnishyj-manevr-vsi-testy-projdeno/"
+          "label": "покращити продуктивність Windows 11",
+          "url": "https://itc.ua/ua/novini/vytik-sekretnogo-planu-k2-vid-microsoft-nareshti-windows-11-stane-os-yakoyu-vona-mala-buty-z-pochatku/"
         },
         {
           "label": "Telegram",
@@ -107,7 +867,7 @@
       "createdAt": "2026-04-27T18:20:57.009Z",
       "expiresAt": "2026-04-28T18:20:57.009Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T05:04:02.354Z",
+      "mediaRefreshedAt": "2026-04-28T09:35:30.843Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -126,58 +886,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-27T18:20:57.009Z"
-      }
-    },
-    {
-      "id": 3483732452,
-      "postUrl": "https://t.me/rbc_ua_news/189621?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/sZ88vAdhIsRWOaVZ6gyC77omHd6UEe_ECfYBnts3GaS6GRxJX5mDOkpAqJ9KNNbN-d3GDxMOmRS663zMReDDWmUiIuvhZd5nhK7ybA7e2cgQMdaXSBGQQvV1omPV1By5JDlA5kwBcjq6o7bFsqN3rLyeOl-UfzFkYuasTai-RjGzpz9yS7ta5D4g46NLXZvnVvDWh5Rb2G8Ccxk40K-puA4dAOVhHMPBbvzgu7c9N74AZyujN3Pe-AKDL5MT1DWKmlbXKriK_ycda1rs9SK3saQr1kcXC7QEzRJhfPKZqByuNWnxLd-lGokJac7Vi7e_yMNxzbwzThilnvQH7YZb1w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🇵🇱Польща будує \"армаду дронів\" за українським зразком, - Туск\n\nПрем'єр-міністр Польщі Дональд Туск під час конференції в Жешуві, присвяченій відновленню України, заявив, що Варшава має намір \"побудувати армаду безпілотників\", взявши за основу технічний та практичний досвід України.",
-      "links": [
-        {
-          "label": "\"армаду дронів\"",
-          "url": "https://www.rbc.ua/rus/news/polshcha-budue-armadu-droniv-ukrayinskim-1777285906.html"
-        }
-      ],
-      "createdAt": "2026-04-27T10:51:16.341Z",
-      "expiresAt": "2026-04-28T10:51:16.341Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T10:51:16.341Z"
       }
     },
     {
@@ -237,355 +945,13 @@
       }
     },
     {
-      "id": 1944058906,
-      "postUrl": "https://t.me/itcua/59832?single",
-      "source": {
-        "title": "ITC.UA: IT-новини і технології 🇺🇦",
-        "handle": "itcua",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DsPCvXKP0zRCBwodctXcfEQl9xs-WIMNrytmJgltRwo1aPakjBt-F2xzP4EB3PphfVS2UzqSzAUTb6Hoq6oW66MpgXkX90c-70mzVGYUMTaSG1-rjxc4b-5RT8z04E4aBJaLaGMDeWRrbfRpYDeGrWhXOoH5mhb3Y7Y8pWjaMY1VIC7EWrpuNrjDONo_j2En54ZgVuRhMiVl3NDN2aLrwfAHd3WxvEQCYTuw2UrbOiChVYZgrl19SSMPAsYKybOqqVURcuFFSleLkYoLcAVdKTLiwGpDZtw2Q_uRYpYQtz-jH3C66YRNm7Jw4hvGzG46LdCRzNO9K3mlp3fu-Yeczg.jpg"
-      },
-      "sourceId": "uk:itcua",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/AJBv1VTcvcJOUVPPG8oNSNiS0bq2mn62OJeyGhiOIlcai0lv5g-DxiNQbA--rhJ76mFs3Ak1r7n5kOeelZWmGJo1fPlj3WPQrCFYmY9CmU52YSKStr1qlYf6ZDVw1iae3jTktNIMEjSxXyviSY-y9t9VWNBZMSXc5eX9MXPKP_jVhWGgv1fH1WblvXC-lYpiY1KTgjFjjIWYq8cShlGXCr5X0Csso3ggRPMeJrJOnkcJIypEBP0IoU7OIct9U6Ayp3p8s_Ktfh0eYsVDfsTeudhosGNtYQCwyIGztCj0a-9VoF4M0T64Pu3gZGrhcmzHlM0LvDQpjcpAQcG0iH5HNg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Французька поліція розслідує маніпуляцію з метеодатчиком у паризькому аеропорту Шарль-де-Голль: якийсь хитрун фізично нагрів сенсор, щоб зафіксувати потрібну температуру для виграшу ставки на криптоплатформі Polymarket. Він провернув схему двічі.\n\nТрейдер під нікнеймом xX25Xx поставив трохи більше $119 на те, що максимальна температура в Парижі одного квітневого дня перевищить 18°C. Ринок у той момент оцінював цей результат як майже неможливий — із вірогідністю лише 1%. Але ввечері датчик у Шарль-де-Голль показав стрибок, і трейдер отримав понад $21 000 прибутку.\n\nЦе сталося двічі, і кінцевий прибуток склав більш ніж $34 000: це виграш у 285 разів. Особливо підозрілим виглядав момент стрибка: о 21:30 температура за 12 хвилин злетіла з 16,9°C до 21,9°C — паралельно з різким падінням вологості. Подібна динаміка в природних умовах майже неможлива. Жодна інша метеостанція в паризькій агломерації не зафіксувала нічого схожого.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
-      "links": [
-        {
-          "label": "маніпуляцію з метеодатчиком у паризькому аеропорту",
-          "url": "https://itc.ua/ua/novini/najgaryachisha-stavka-nevidomyj-dotepnyk-vykorystav-fen-ta-termometr-v-aeroportu-shhob-peretvoryty-100-na-34-000/"
-        },
-        {
-          "label": "Telegram",
-          "url": "https://t.me/itcua"
-        },
-        {
-          "label": "Facebook",
-          "url": "https://www.facebook.com/ITC.UA"
-        },
-        {
-          "label": "X",
-          "url": "https://x.com/ITCUA"
-        },
-        {
-          "label": "YouTube",
-          "url": "https://www.youtube.com/@itcommunity/videos"
-        }
-      ],
-      "createdAt": "2026-04-27T18:20:57.009Z",
-      "expiresAt": "2026-04-28T18:20:57.009Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T05:04:02.354Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T18:20:57.009Z"
-      }
-    },
-    {
-      "id": 3145678005,
-      "postUrl": "https://t.me/rbc_ua_news/189620?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/JDYToV2yzJHOZmWS7XyDVAx3U6irBc8Pbda8zRoN2GL4DNY91T7bD4ZHpnTBvnewiBtb6Vi4K7PY4G7ywaN1MiYA_SwIWOD2C0vuDRyewlpPBxj3rDEf5dVWvkjEHC_yqSf3Q4SkRSeVWsOY5poop5gTwNbGPSCjpQ7pLJi0TccMLW0ldMPVk7b1s_UX2gvj_9lNH2HGF11JoWQr5DaKnqypZB1BCv04XtDqkWDDgU4QLHzdDJ3jF-kFCkJ8ul3OU_CmxhHzmcnpa4dPSWSxgwdoMRJ6WhmPX5IQ2AYmMBcRzVEmbqVqskSvN_bEiLBkiV5hSVBg7WTw0gtl2PJDkA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🇺🇦🇳🇴Україна та Норвегія спільно вироблятимуть дрони для ЗСУ з високою стійкістю до РЕБ\n\nМова йде про виготовлення кількох тисяч дронів типу mid-strike, призначені для ураження цілей у ближньому тилу противника на відстані 50-200 км. Їх вироблятимуть на території Норвегії, Сили оборони отримають безпілотники вже до літа цього року.\n\nЗагалом Норвегія планує цьогоріч спрямувати понад 1,5 млрд доларів на закупівлю озброєння українського виробництва для українського війська.",
-      "links": [
-        {
-          "label": "дрони для ЗСУ з високою стійкістю до РЕБ",
-          "url": "https://www.rbc.ua/rus/news/ukrayina-ta-norvegiya-spilno-viroblyatimut-1777282649.html"
-        }
-      ],
-      "createdAt": "2026-04-27T10:51:16.341Z",
-      "expiresAt": "2026-04-28T10:51:16.341Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T10:51:16.341Z"
-      }
-    },
-    {
-      "id": 2712852036,
-      "postUrl": "https://t.me/devukraine/45024?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/d4Op6K9qAOZU6nmfVpEZpKy0B9ZnJWMBKIRm_Y2DI7qTbp2VTdG0cbrMqKbtpM4SYXjETPUAu7rkQ10rGyG7NGtGkj_-uxGr4VXvwrFLQZqwqHGxrdv-rNRHTx0vnVfXtk9B9aQAj3OPm_Yv8169VeO3SJ-DVusNT_z9aQexNQsxJakcCh_z2XFABGi9lLVsTc5PeAr9hUgIz2x7MIOCuaZzDRQ8I2ZaOJyy6SERBs0F3q7dH0-QfQHyGEjr_MsxPL9-qIulciuLMrZ2IaQ4zCyQr_52BpVyXKlc5LwOtHodRqqoPQxeIeA7O9NpqrBxeoGIvxOKFzrucZ-gQHJWUA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Навіщо айтівцю міжнародна освіта у 2026 році? Три реальні історії студентів American University Kyiv, які доводять, що сучасні знання якісно впливають на розвиток кар’єри\n\nAmerican University Kyiv (AUK) — університет із партнерством з Arizona State University, де навчаються і свіжі бакалаври, і досвідчені інженери, які вирішили додати до практики системну освіту. Ми попросили трьох студентів розповісти свою історію — від сумнівів перед вступом до реального впливу на кар'єру.\n\n*партнерський матеріал",
-      "links": [
-        {
-          "label": "Ми попросили трьох студентів розповісти свою історію — від сумнівів перед вступом до реального впливу на кар'єру.",
-          "url": "https://dev.ua/news/auk-1777028251"
-        }
-      ],
-      "createdAt": "2026-04-28T07:58:28.138Z",
-      "expiresAt": "2026-04-29T07:58:28.138Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T07:58:28.138Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-28T07:58:28.138Z"
-      }
-    },
-    {
-      "id": 1878514769,
-      "postUrl": "https://t.me/itcua/59831?single",
-      "source": {
-        "title": "ITC.UA: IT-новини і технології 🇺🇦",
-        "handle": "itcua",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DsPCvXKP0zRCBwodctXcfEQl9xs-WIMNrytmJgltRwo1aPakjBt-F2xzP4EB3PphfVS2UzqSzAUTb6Hoq6oW66MpgXkX90c-70mzVGYUMTaSG1-rjxc4b-5RT8z04E4aBJaLaGMDeWRrbfRpYDeGrWhXOoH5mhb3Y7Y8pWjaMY1VIC7EWrpuNrjDONo_j2En54ZgVuRhMiVl3NDN2aLrwfAHd3WxvEQCYTuw2UrbOiChVYZgrl19SSMPAsYKybOqqVURcuFFSleLkYoLcAVdKTLiwGpDZtw2Q_uRYpYQtz-jH3C66YRNm7Jw4hvGzG46LdCRzNO9K3mlp3fu-Yeczg.jpg"
-      },
-      "sourceId": "uk:itcua",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/chmQ2PDI5-LWY8uqFl8g1TVgQLRkKVI75uY8muYLhtA5hsVf31THh4zHnzBkTIR1fsNjBhXgjEgpNUQ_9r0WGTrxLdpCvcFuGfNrvNWqj-iE52_2hYr4pptiuAd1gHYWTQoZqVK87kB6iq6Bz6UZGiQOz-sPOtiEtjjWZ8qk-m0X_D-lefUo0U2QAm7H_n1HPRY9UHulAeDXZKpS5rmPhTCiTX0x7pZcO2XzppBu1-vBiJBcr2WccQ5mbK16LUneQp6HMewGjp2vM48sRw95pRkd2nwY8rmN0iABokzuCoPkbRq-ZlSXM3fEp2TFeBp_BXdH00-38ZcvxjDHxCZaUQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Microsoft зараз працює над ініціативою “K2”, яка визначає, як компанія планує покращити продуктивність Windows 11. Компанія нарешті випускає давно запитувані функції — зокрема, зміни до Windows Update, а також можливість видалити не надто популярні компоненти на кшталт Copilot.\n\nПокращення включають покращення Start, Settings і File Explorer, і компанія обіцяє швидше завантаження та плавнішу навігацію в цих ключових компонентах. За словами Microsoft, деякі з цих оновлень мають вийти в широкий доступ дуже-дуже скоро.\n\nЗгідно з новим звітом, в основі цього поштовху лежить нова ініціатива “K2”, яка значною мірою спиратиметься на WinUI 3 — найновіший власний фреймворк Microsoft у стилі Fluent Design для створення Windows-застосунків.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
-      "links": [
-        {
-          "label": "покращити продуктивність Windows 11",
-          "url": "https://itc.ua/ua/novini/vytik-sekretnogo-planu-k2-vid-microsoft-nareshti-windows-11-stane-os-yakoyu-vona-mala-buty-z-pochatku/"
-        },
-        {
-          "label": "Telegram",
-          "url": "https://t.me/itcua"
-        },
-        {
-          "label": "Facebook",
-          "url": "https://www.facebook.com/ITC.UA"
-        },
-        {
-          "label": "X",
-          "url": "https://x.com/ITCUA"
-        },
-        {
-          "label": "YouTube",
-          "url": "https://www.youtube.com/@itcommunity/videos"
-        }
-      ],
-      "createdAt": "2026-04-27T18:20:57.009Z",
-      "expiresAt": "2026-04-28T18:20:57.009Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T05:04:02.354Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T18:20:57.009Z"
-      }
-    },
-    {
-      "id": 2400346229,
-      "postUrl": "https://t.me/rbc_ua_news/189619?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "‼️МАГАТЕ заявило про смертельну атаку біля Запорізької АЕС\n\nПредставники Міжнародного агентства з атомної енергії повідомили з Запорізької АЕС, що удар дрона сьогодні вранці призвів до загибелі водія в транспортному цеху поблизу території станції.\n\n\"Удари по АЕС або поблизу них можуть загрожувати ядерній безпеці та не повинні відбуватися\", - заявив генеральний директор МАГАТЕ Рафаель Ґроссі.",
-      "links": [
-        {
-          "label": "смертельну атаку",
-          "url": "https://www.rbc.ua/rus/news/bilya-zaporizkoyi-aes-dron-vluchiv-budivlyu-1777282029.html"
-        }
-      ],
-      "createdAt": "2026-04-27T10:51:16.341Z",
-      "expiresAt": "2026-04-28T10:51:16.341Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T10:51:16.341Z"
-      }
-    },
-    {
-      "id": 1749193595,
-      "postUrl": "https://t.me/devukraine/45023?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/WSHHfcTaSt3gmjixFadHDjZ5dDhTgYrGTcCR-Cl8RNtZ8-TnmgNVg67HY9BQxjYHGWiYn9QFTV4SbZFJ6ouozK2F_glcp_R3AQN6pw8mgcPMjvEvwn-l0xnKI35Wdo1qXWnUz0xeOkvp7GkkUiIOJoi6EanpCbBmJ7aeyYYpEh-3gPe0_tbsm2t_ISoX-IhY4PmLlU38tiBZCvBmLfxtAPZN7KAWtTp9fpLkyFhWAMZCVjEefFbafj-CIkYFQViPTKp1pQUbcBaK3hapeK3-6w79Ofc9tFz3WAQUG1a33TlZkh06_uQsAYfcmeM0GuHDTdfu9rmuPFg4zS5lQQzwCw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "👉«Машину мили годинами, а вона все одно фонила». 40 років трагедії на ЧАЕС очима водія-ліквідатора\n\n40 років тому на ЧАЕС сталася найбільша техногенна аварія світу. Десятки тисяч людей стало до лав ліквідаторів, щоб стримати ріст смертельного радіаційного забруднення. Сьогоднішня історія про Сергія Миколайовича, який віддав Зоні відчуження майже три роки, працюючи водієм-ліквідатором. Він бачив перших біженців із Прип’яті, незрівнянну природу Зони, ховав радіоактивну техніку під тоннами бетону і грав музику на роялі для товаришів ліквідаторів. \n\nНаш журналіст поспілкувався зі своїм батьком ліквідатором, який попри свій вік, є затятим геймером, а його найулюбленішою грою є культова серія S.T.A.L.K.E.R., де він знову і знову повертається до добре знайомих пейзажів.\n\n@devukraine",
-      "links": [
-        {
-          "label": "Наш журналіст поспілкувався зі своїм батьком ліквідатором, який попри свій вік, є затятим геймером, а його найулюбленішою грою є культова серія S.T.A.L.K.E.R., де він знову і знову повертається до добре знайомих пейзажів.",
-          "url": "https://dev.ua/news/chornobyl-stories"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-04-28T06:44:41.257Z",
-      "expiresAt": "2026-04-29T06:44:41.257Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T06:44:41.257Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-28T06:44:41.257Z"
-      }
-    },
-    {
       "id": 1699816656,
       "postUrl": "https://t.me/itcua/59830?single",
       "source": {
         "title": "ITC.UA: IT-новини і технології 🇺🇦",
         "handle": "itcua",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DsPCvXKP0zRCBwodctXcfEQl9xs-WIMNrytmJgltRwo1aPakjBt-F2xzP4EB3PphfVS2UzqSzAUTb6Hoq6oW66MpgXkX90c-70mzVGYUMTaSG1-rjxc4b-5RT8z04E4aBJaLaGMDeWRrbfRpYDeGrWhXOoH5mhb3Y7Y8pWjaMY1VIC7EWrpuNrjDONo_j2En54ZgVuRhMiVl3NDN2aLrwfAHd3WxvEQCYTuw2UrbOiChVYZgrl19SSMPAsYKybOqqVURcuFFSleLkYoLcAVdKTLiwGpDZtw2Q_uRYpYQtz-jH3C66YRNm7Jw4hvGzG46LdCRzNO9K3mlp3fu-Yeczg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/v4If6WeFbEsAZTJChXVkvRCrq9m4-dg_7KBBgTN7QvxidyNTj6-wlEYQCIIg0paJRBUZTExAIxv-A8ki82ayARkk8Jsfpekp1cd3Il5hvlph9lOy819zdpJQX4DzWB3HZ7qJ5ySJrbulQ8X6Vo3HxOcU5ji3xmtIx4frcyd9_XfRs_TB3U2aT1kluz-ZOCnAEioFtH-lVFaSPJWlufhdJiWuok07614At-qdd-QCwKCmLNuTJsA_FbURwArIE1AskYtdFV8nBfMB_Lhk_Rwox33S0GAwv52yhaCNCSgwMXi8jYdrOHyf3gplzpdbiJI5Zj-mFywcPCCka8BxTBHuEw.jpg"
       },
       "sourceId": "uk:itcua",
       "sourceCountryCode": "uk",
@@ -651,34 +1017,40 @@
       }
     },
     {
-      "id": 1720543652,
-      "postUrl": "https://t.me/rbc_ua_news/189618?single",
+      "id": 2712852036,
+      "postUrl": "https://t.me/devukraine/45024?single",
       "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
+        "title": "dev.ua | IT України",
+        "handle": "devukraine",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
       },
-      "sourceId": "uk:rbc_ua_news",
+      "sourceId": "uk:devukraine",
       "sourceCountryCode": "uk",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🚀Зеленський: українська ППО демонструє дуже високий відсоток збиття дронів - понад 90%\n\nПрезидент нагадав, що впродовж минулого тижня РФ випустила по Україні близько 1900 ударних дронів, майже 1400 керованих авіаційних бомб і близько 60 ракет різних типів. \n\nБільше новин тут 👉 rbc.ua",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "rbc.ua",
-          "url": "https://rbc.ua/"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/d4Op6K9qAOZU6nmfVpEZpKy0B9ZnJWMBKIRm_Y2DI7qTbp2VTdG0cbrMqKbtpM4SYXjETPUAu7rkQ10rGyG7NGtGkj_-uxGr4VXvwrFLQZqwqHGxrdv-rNRHTx0vnVfXtk9B9aQAj3OPm_Yv8169VeO3SJ-DVusNT_z9aQexNQsxJakcCh_z2XFABGi9lLVsTc5PeAr9hUgIz2x7MIOCuaZzDRQ8I2ZaOJyy6SERBs0F3q7dH0-QfQHyGEjr_MsxPL9-qIulciuLMrZ2IaQ4zCyQr_52BpVyXKlc5LwOtHodRqqoPQxeIeA7O9NpqrBxeoGIvxOKFzrucZ-gQHJWUA.jpg"
         }
       ],
-      "createdAt": "2026-04-27T10:51:16.341Z",
-      "expiresAt": "2026-04-28T10:51:16.341Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Навіщо айтівцю міжнародна освіта у 2026 році? Три реальні історії студентів American University Kyiv, які доводять, що сучасні знання якісно впливають на розвиток кар’єри\n\nAmerican University Kyiv (AUK) — університет із партнерством з Arizona State University, де навчаються і свіжі бакалаври, і досвідчені інженери, які вирішили додати до практики системну освіту. Ми попросили трьох студентів розповісти свою історію — від сумнівів перед вступом до реального впливу на кар'єру.\n\n*партнерський матеріал",
+      "links": [
+        {
+          "label": "Ми попросили трьох студентів розповісти свою історію — від сумнівів перед вступом до реального впливу на кар'єру.",
+          "url": "https://dev.ua/news/auk-1777028251"
+        }
+      ],
+      "createdAt": "2026-04-28T07:58:28.138Z",
+      "expiresAt": "2026-04-29T07:58:28.138Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T10:51:16.341Z",
-      "tag": "news",
+      "mediaRefreshedAt": "2026-04-28T07:58:28.138Z",
+      "tag": "technology",
       "tags": [
-        "news"
+        "technology"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -693,7 +1065,63 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-04-27T10:51:16.341Z"
+        "reviewedAt": "2026-04-28T07:58:28.138Z"
+      }
+    },
+    {
+      "id": 1749193595,
+      "postUrl": "https://t.me/devukraine/45023?single",
+      "source": {
+        "title": "dev.ua | IT України",
+        "handle": "devukraine",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
+      },
+      "sourceId": "uk:devukraine",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WSHHfcTaSt3gmjixFadHDjZ5dDhTgYrGTcCR-Cl8RNtZ8-TnmgNVg67HY9BQxjYHGWiYn9QFTV4SbZFJ6ouozK2F_glcp_R3AQN6pw8mgcPMjvEvwn-l0xnKI35Wdo1qXWnUz0xeOkvp7GkkUiIOJoi6EanpCbBmJ7aeyYYpEh-3gPe0_tbsm2t_ISoX-IhY4PmLlU38tiBZCvBmLfxtAPZN7KAWtTp9fpLkyFhWAMZCVjEefFbafj-CIkYFQViPTKp1pQUbcBaK3hapeK3-6w79Ofc9tFz3WAQUG1a33TlZkh06_uQsAYfcmeM0GuHDTdfu9rmuPFg4zS5lQQzwCw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "👉«Машину мили годинами, а вона все одно фонила». 40 років трагедії на ЧАЕС очима водія-ліквідатора\n\n40 років тому на ЧАЕС сталася найбільша техногенна аварія світу. Десятки тисяч людей стало до лав ліквідаторів, щоб стримати ріст смертельного радіаційного забруднення. Сьогоднішня історія про Сергія Миколайовича, який віддав Зоні відчуження майже три роки, працюючи водієм-ліквідатором. Він бачив перших біженців із Прип’яті, незрівнянну природу Зони, ховав радіоактивну техніку під тоннами бетону і грав музику на роялі для товаришів ліквідаторів. \n\nНаш журналіст поспілкувався зі своїм батьком ліквідатором, який попри свій вік, є затятим геймером, а його найулюбленішою грою є культова серія S.T.A.L.K.E.R., де він знову і знову повертається до добре знайомих пейзажів.\n\n@devukraine",
+      "links": [
+        {
+          "label": "Наш журналіст поспілкувався зі своїм батьком ліквідатором, який попри свій вік, є затятим геймером, а його найулюбленішою грою є культова серія S.T.A.L.K.E.R., де він знову і знову повертається до добре знайомих пейзажів.",
+          "url": "https://dev.ua/news/chornobyl-stories"
+        },
+        {
+          "label": "@devukraine",
+          "url": "https://t.me/devukraine"
+        }
+      ],
+      "createdAt": "2026-04-28T06:44:41.257Z",
+      "expiresAt": "2026-04-29T06:44:41.257Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-28T06:44:41.257Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-28T06:44:41.257Z"
       }
     },
     {
@@ -753,151 +1181,6 @@
       }
     },
     {
-      "id": 160992566,
-      "postUrl": "https://t.me/itcua/59829?single",
-      "source": {
-        "title": "ITC.UA: IT-новини і технології 🇺🇦",
-        "handle": "itcua",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/DsPCvXKP0zRCBwodctXcfEQl9xs-WIMNrytmJgltRwo1aPakjBt-F2xzP4EB3PphfVS2UzqSzAUTb6Hoq6oW66MpgXkX90c-70mzVGYUMTaSG1-rjxc4b-5RT8z04E4aBJaLaGMDeWRrbfRpYDeGrWhXOoH5mhb3Y7Y8pWjaMY1VIC7EWrpuNrjDONo_j2En54ZgVuRhMiVl3NDN2aLrwfAHd3WxvEQCYTuw2UrbOiChVYZgrl19SSMPAsYKybOqqVURcuFFSleLkYoLcAVdKTLiwGpDZtw2Q_uRYpYQtz-jH3C66YRNm7Jw4hvGzG46LdCRzNO9K3mlp3fu-Yeczg.jpg"
-      },
-      "sourceId": "uk:itcua",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ZRjytCEFAJJqepXF6bHzTagBSDu_QnF6IYomFV9rtkWvTv5Zt-0fnVLhFzEtEYqyXwskmdrl36Dd8JrYSEtTh-5r8h6NV6RjA5kLwc6aJ7edC9M1oC2k4uGoyQAkr2SVnQ4ex8gyogKEzYp7MY2wi5AshOWA31Y6CM3FSC2APnobqlJbrDB9fe-BNRVkoa4FWEPkRDOqgg8JLFyTyWmwFrff2Qhf2bMcRaEUTzBmey4TgXXophb_Cujqm_OlO9Sq9sdIHCPJsTh-9kz44Nwwdp3hq2b3ANkRSsJfi0nPj-JyPcunh8Roo1cmXnggTP0fypLmhvYfTyG43_ckWp34gg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Новий ноутбук Samsung Galaxy Book 6 Edge засвітився у мережі, вразивши обіцянкою працювати до 22 годин без підзарядки завдяки новому ARM-процесору Snapdragon X2 Elite. Пристрій отримав 16-дюймовий AMOLED-екран у надтонкому корпусі вагою всього 1,55 кг, що робить його ідеальним інструментом для тих, хто звик працювати в дорозі, а не біля розетки. \n\nПроте за таку автономність доведеться викласти від €2199, а топові конфігурації через здорожчання пам’яті коштуватимуть як непогане вживане авто. Схоже, Samsung вирішили, що якщо ваш лептоп може \"жити\" майже добу, то він цілком має право коштувати так, ніби він ще й самостійно заробляє вам на каву під час цієї роботи.\n\n💻 Більше ITC: Telegram • Facebook • X • YouTube",
-      "links": [
-        {
-          "label": "Samsung Galaxy Book 6 Edge засвітився у мережі",
-          "url": "https://itc.ua/ua/novini/samsung-galaxy-book-6-edge-z-chypom-snapdragon-x2/"
-        },
-        {
-          "label": "Telegram",
-          "url": "https://t.me/itcua"
-        },
-        {
-          "label": "Facebook",
-          "url": "https://www.facebook.com/ITC.UA"
-        },
-        {
-          "label": "X",
-          "url": "https://x.com/ITCUA"
-        },
-        {
-          "label": "YouTube",
-          "url": "https://www.youtube.com/@itcommunity/videos"
-        }
-      ],
-      "createdAt": "2026-04-27T09:30:59.580Z",
-      "expiresAt": "2026-04-28T09:30:59.580Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T07:58:29.528Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:30:59.580Z"
-      }
-    },
-    {
-      "id": 2611775350,
-      "postUrl": "https://t.me/rbc_ua_news/189612?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/UzFwfB1iwVXAH93BCdnKiuDa9lZzx1hvNChGaokvchTHsXb6Ecma1ifHXKZ3tbUBTQfc9v5_JVqfctQxPIH0n0n8jozxsjiT-hdLt0bIUR5JcdY11Y2orNw1QFX8TPNlXACLVWgmnmqbhlUSDS-gdMoLC94N2Cw3ZsCvsZwwx2HFTIOU25g7YKt6FOExq7XQOUr2hfLLsyCyHY3quDskc1zGQJ12M69eyRtKmciOHHBWwmT5v_GzZWMH5Bqo70FM1YopHsX4dZH5zc-bUj3CjFZVRcUYulaKIHenCiczez3jy1_A7KJGPfpf85C3bQ_YW5SvREWq8YnOo_iKf0hM9Q.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/USMUGylPBWlUgr-KY206r3OA0WcDGxYv4NX3m-E_N1YZbOBae6W_Qp0EplKqWxyCKYjlTQAMgARE0K7ecOido8UP8zw3MVer6PhOaeI9a4-wNuXKDOLw4fp9NJOsAjel6mtt8e6QfX6v0l01P7ijE6_0AA2xDhydJXbk6x4PM11uZQIAhRBlfkn83RYXSfNWXKjmtUxTkRBbuGYyidsIyAltYAvq2YZSDNiCGTA-rOH5zNbDueKhuu4a5AoN-y1cIiKShc8fOm2dTKgMUbZX7Puf99fxdaN_4Uo0JBXEQiY_XzZL6ZsiT_nI8e0M5UKmy-5CwnUe1y309NjF3-nXxg.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ItHhz_TSoVWJvfe1CTU5JJmO1gqHzth3UsohmEcrtq_HnfX77_BFS4Sjf3p40uQVxtZkh75VLBFX4XvzJqMtdLtOqjwV3lpCAp5MazNe-4ogv_5crQuZaKdGz5JEDVZokk7PJx7LI04BSX6hZ9NOpdLfG-rWbmCul7spwSwQzxs1BZi5wFzh7YwmN7JOad-HJ8f07vMWJyOfSNpKJlvkQni8wyT1o8ANYmbQSON78RQXRoN3Dau2cb6bDbCHL9ytla7TF5yaHKdPQcNuYpPkh5D6zYlPnxClkK7Fke4oHzwNrKvRdarhzeapHowYB9_X20qE01u13PYZ7h6df9DgHA.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/DvY9v13QvwKBUM6iX3FnEGygK6xplrXqkls8fHY4ianiH-UqOin5fphMuNQ5XJeqsHLQUrBWhdIam8pA_rez34_v-t9sMwr32pEvi7XBNlw1_CFCHDxaQyjAUZJwVjNuSS4H6qAT-sdU_go9_h4Ong1q-6zqyeeK1EV8wEmRIqFWxJ8iapbfC0wUYZEuR-9NV6TEG7-BA_QNLsqGFB8aVW6pMvFssAomQ8AZvleMlMY9LV9_aTfAKo2fwAR6r7C0U0EQ7gd5f3VgPrzgYp4xG5WALxNj6Y1uvXOI1Qo_LRo-TMqmWpQ7j0Y1BOW77_bbCWv19zwKzKO4GWvmpHegJg.jpg"
-        },
-        {
-          "id": "image-5",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/IC-m5Fli6neMgqpXHDxt_Ruu0zCHGU1Y-9KbpCq55MwPoYhtEaPOaM8jyfAX6Q9nKLq1QFzUmRyGE226vAFSSIFa2NcnqEZK3gyuL5IRkDi4a-xn4g6p6Mms96mLd-M152YSUJvOqDg6z_y6SUharEj4p7tOB66valaFTNQRODxD4JBe553qgbZ0IXVr7cvG71ONCcKlAT355VhkHfv8YTBJ13ZX7PULq2YDDOrSPMZbKomLdvRaUnqGS73_JnAqWVKY7J6E2Ot3EH82KE0J2_9RFsSecRsy_hfdBBH3Jnh6pP36VYqXPAGfXGLJJkrtg_10S7h7WApx3hhejGG8iw.jpg"
-        },
-        {
-          "id": "image-6",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/BTmOtQNh6vh0T39e4L8E7L-feE5RDbdNHUUKzLffbUs2-TzlOT8FtP6BiP3ws8rktc5Qu2I2zaJJnynOGmpzgGkJS28URlxS_s9b2GsxAvekOYfcWB7q58Vt5hOWXrTQGyKflH-l56gU8FjJ6FDBsPpZEOxhbTdmDJ0bvM1n9mEgs1BhMyP3Ks6e10QkeKn-qa9dx7HKzEas0DwrlneEd3UYiNzyWreY9XuBfsk5S89PXzRT6KjY-NDddprPu-yfWUEsskWyI6Xp0q0y6ChdYqt4oUX2kzXu_kYFQaSZyHfjBKX0zuny_5fQu7NxutszvrbCTaRv-u3EfCMEOrVLWg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "😢Зросла кількість загиблих через масштабну негоду в Україні\n\nТри людини згинули, а ще 7 - постраждали через негоду в Україні за останню добу. Рятувальники продовжують ліквідовувати наслідки шквального вітру. Відновлювальні роботи тривають у 5 областях.\n\nЗа даними Укргідрометцентру, сьогодні на Лівобережжі України прогнозуються пориви північно-західного вітру 15-20 м/с.",
-      "links": [
-        {
-          "label": "Зросла кількість загиблих",
-          "url": "https://www.rbc.ua/rus/news/zrosla-kilkist-zagiblih-cherez-masshtabnu-1777281308.html"
-        }
-      ],
-      "createdAt": "2026-04-27T09:31:00.489Z",
-      "expiresAt": "2026-04-28T09:31:00.489Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T09:31:00.489Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:31:00.489Z"
-      }
-    },
-    {
       "id": 2677744441,
       "postUrl": "https://t.me/devukraine/45021?single",
       "source": {
@@ -954,73 +1237,6 @@
       }
     },
     {
-      "id": 3095368363,
-      "postUrl": "https://t.me/rbc_ua_news/189608?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/LpSjAEiBs3hfp-CnanRAFOYC_IVopnwxNUWS71tN8QV1JZYEsEQ75Y-ft6WSCiuFrjmbvgKdIZ_ZYA72aM7JaAvK6cFlxhB-S-V7yjHR29lu58U1ZEjbiimZfJhdyNX42qD6mKiCBPwRGnIfqRnH0ud952_KfUOLdBUuSUwWnpwplFDgX4bIKGCFPF3woTDTKOP8--Nco_ODtnFjy_hYg_HWdX6OV_h5P5N6_Obs-gF3YY7zVgOar-ovzBFKdQZiK4sV7k3KFDB4lYq3xFeddb0btkWOteNh4AzQOxb70BpaaFy-6WKPacoPZn8YaZZjp2ouGEelIcIMwV8KV_tWGg.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/VghW1Z7nSArhR-w3cugPCvV-JL8iSJCCu82UQQ7HWASnV2rkajVsHmlsWFB6iqaA8-6VQmjcCW4nIHZGCS-BySfjXqXeeJq89aIDajktF4njZkc0Tl8ojgY1EDzyZthCHBiL-E5QOfxAMymWKUTKl8aC2NZHs1MzQMqkySIbgb-bekzkFrfxPvWj3k9H1S9BsfqT06h3PWJK3cO-uLEEU9IDY2iYfE6tlOsuZ-3HOnX7oiscyOVCtuAMcJvNuBgKSTME5V-GwUCuikmYFVMVIH2b7oMEqYp3nIv-JG3jPewtPirKko2uPUjS4O_ed4oA6ylWT1Y2itZTCbneLS6iqg.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/n7cld3MYFDoAfLc8cGaJ53QURbuxT3Lct5q0yf1D5iKhQzu3T5Q_BX6HzGjlcc6XftpvgcaDZM66YUjf5Dz-9mTLYOM1p8dmFHqZw4iq8zPOh15xP-6wKwrvL7ezP-1DKb0n8p8C1G3z3jCXNmnrRZB6na6Q-IOzi88gfxhZ3xFy0VayLq2h11rHGSWCTJOjj9daJq1f09m1l5UFCt_8b1eI3uPgYHkArltolVOTqWpuzaMxIyA0L0RCoSNoezSqBB9werlX7w5NHIVq9GWUMgb5B4lHgI5ZFZd1b4UilpuC1wMm2UyT6mflF2a75umKm_6tascDgIsCLMxkXpReBw.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/MeahGwILavvKsMHqwfr3brRC8spnmmgXeCiPtdBmIoC2h-DupmEqTzFIZMdYQphk42Nu8mdZ-FOjY9E1VP8PA98uy6rpZuXxgbiOu_lNUnxBGupshtCdY1kPTY1eq8xMDgtKKvMkTizW9P3WB1OpRUQhr3AmC_OnvaUg11HWG1u0-8x8CzSUo-xjcylmFscLi2yPdD_xf9g22HycyhL0YoZXIL-iQZPvCVtP1EikHPZAglcCCeIXl28vUY2lBcgaL35PQcCdeMk2lKCFD64P7CWb-W0Ayu5qvC7fWZOnN_UlQ5Q4GohUJZHZroUxFeGGIha3dS3re58Sdo2sMcm-HQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "😨Через удари РФ у порту Одещини вилились тисячі тонн олії, у морі - величезна пляма\n\nПід час нічного обстрілу росіяни атакували порт Чорноморська, під час пожежі зруйновано резервуар із соняшниковою олією об’ємом 6 тисяч тонн.\n\nФахівці кажуть, що забруднення ґрунтів не зафіксовано, оскільки ділянка має бетонне покриття. Водночас встановлено витік олії в акваторію порту. На поверхні води утворилася пляма орієнтовним розміром 400 на 200 метрів. Для її стримування розгорнуті бонові загородження.",
-      "links": [
-        {
-          "label": "у морі - величезна пляма",
-          "url": "https://www.rbc.ua/rus/news/cherez-udari-rf-portu-odeshchini-vililis-1777279468.html"
-        }
-      ],
-      "createdAt": "2026-04-27T09:31:00.489Z",
-      "expiresAt": "2026-04-28T09:31:00.489Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T09:31:00.489Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:31:00.489Z"
-      }
-    },
-    {
       "id": 4098437688,
       "postUrl": "https://t.me/devukraine/45020?single",
       "source": {
@@ -1074,58 +1290,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-28T06:44:41.257Z"
-      }
-    },
-    {
-      "id": 1673659468,
-      "postUrl": "https://t.me/rbc_ua_news/189607?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/JPf26VrS_60qN49qkijQ_lW_nIbshkgNRFfCol-TILSZyoeW1McEDlgK3bMO2QGZqRrMnNPutQ1idbN-qj9M4HcHOYMs3QeloD_R3QYCRXXpnCFgrght0rkeUbJuY7iYY8mj9Dr6byLC-VlY6gnXWlrHh4qdDYAR95vkf1xroB2D9eGmnnSXQkTQ0FmLzyXyhaFaCOIKPL3kYKt0sCuH9cxtC_EPLf6uBl1pK0QcG6gSogNOReS5nv32yH1RfW-CQXZj0SCC8UHgUNat34e1O7_NejWZe6ac9e_oNQBLjmxu24p0Zdr6KRdwqk35YpG4bWkQikveu7-RHfbmplTGLQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🪖Решетилова пропонує обмежити терміни перебування військових на передовій\n\n\"Попередньо бачимо, що після 40 днів людині стає байдуже, виживе вона, чи ні - у неї настає повна апатія. Кожен командир має прийняти цю інформацію до відома. Усе, що понад 40 днів, не може бути ефективним\", - заявила військовий омбудсмен Ольга Решетилова.\n\nВона нагадала, що, згідно з наказом головкома Олександра Сирського, максимальне перебування військових на позиції становить 15 днів.",
-      "links": [
-        {
-          "label": "терміни перебування військових на передовій",
-          "url": "https://www.rbc.ua/rus/news/reshetilova-proponue-obmezhiti-termini-perebuvannya-1777279132.html"
-        }
-      ],
-      "createdAt": "2026-04-27T09:31:00.489Z",
-      "expiresAt": "2026-04-28T09:31:00.489Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T09:31:00.489Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:31:00.489Z"
       }
     },
     {
@@ -1217,58 +1381,6 @@
       }
     },
     {
-      "id": 1648392701,
-      "postUrl": "https://t.me/rbc_ua_news/189606?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/c6TdjP-YjRSugTZTU1EY9UUOhxSi7ahyoASszrDF2REvAmBF0q5tFrlrjM6uYEsTcOjVZeioNvHeUiq1j6qafLlpt9EiO5P7r49Ki3VGLRRm51WE0IAfE1qy09GD2RMi6A5inZhJjngFFRm_JxUUix99WKSemVpSyT9zhEJzaKOsSSPjUzriSv_1sv99dL11wLp-a2342Of5pvLpSnzt6EIr3MDt7DrPKNqdBiARRWHRZCe4THFpieMCcc81xTmXWD7Agu2K-BgdkD4F046cZ-VaTeYes3hIMKUxSS6zFlKLVi4ZlpMmMB9ew1OfellY-1kd7srWkK0E946wNaob_A.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🧐⛽️Скільки коштує бензин, дизель, газ та де вигідніше: огляд цін на АЗС 27 квітня\n\nЦіни на стандартний А-95 у великих мережах застигли на позначці 75,90-75,99 грн. На \"Укрнафті, попри здорожчання, заправлятися все одно дешевше.\n\nЗа літр стандартного дизпалива просять у середньому 89,90 грн, а за преміальні сорти доведеться віддати майже 93 гривні.\n\nЦіна на автогаз коливається в межах 49 гривень. Найдешевший варіант, як і раніше, пропонує \"Укрнафта\" (на 1 гривню менше за конкурентів).",
-      "links": [
-        {
-          "label": "огляд цін на АЗС 27 квітня",
-          "url": "https://www.rbc.ua/rus/news/skilki-koshtue-benzin-dizel-gaz-ta-de-vigidnishe-1777277709.html"
-        }
-      ],
-      "createdAt": "2026-04-27T09:31:00.489Z",
-      "expiresAt": "2026-04-28T09:31:00.489Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T09:31:00.489Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:31:00.489Z"
-      }
-    },
-    {
       "id": 2029878726,
       "postUrl": "https://t.me/devukraine/45017?single",
       "source": {
@@ -1329,52 +1441,6 @@
       }
     },
     {
-      "id": 543989062,
-      "postUrl": "https://t.me/rbc_ua_news/189605?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔫📃Підозрюваний у стрілянині на вечері з Трампом залишив записку про \"сюрприз\", - ЗМІ\n\nЯк передає Sky News, 31-річний Коул Аллен заздалегідь написав звернення до батьків, колег та сторонніх людей, у якому висловив вибачення за свої майбутні дії.\n\n\"Я прошу вибачення перед усіма... хто постраждав до того, як я зміг спробувати це зробити, перед усіма, хто може постраждати після цього, незалежно від мого успіху чи невдачі\", - йдеться у записці.\n\nВін написав, що, можливо, \"багатьом людям сьогодні зробив сюрприз\", і хоча він Дональда Трампа прямо не згадував, у своїх заявах він критикував його та адміністрацію, передають журналісти.",
-      "links": [
-        {
-          "label": "залишив записку про \"сюрприз\",",
-          "url": "https://www.rbc.ua/rus/news/strilets-zalishiv-zapisku-rodini-pered-napadom-1777275033.html"
-        }
-      ],
-      "createdAt": "2026-04-27T07:59:27.679Z",
-      "expiresAt": "2026-04-28T07:59:27.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T07:59:27.679Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T07:59:27.679Z"
-      }
-    },
-    {
       "id": 702283551,
       "postUrl": "https://t.me/devukraine/45016?single",
       "source": {
@@ -1424,58 +1490,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-27T18:20:55.941Z"
-      }
-    },
-    {
-      "id": 3511361183,
-      "postUrl": "https://t.me/rbc_ua_news/189604?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Rd4-47E5X6ALXbTpct-PgPOM6-0F-xc0V_63DoxPPaZiJ7J3aTx1jYyqCPdqwYU8tI_CHD5MhpjTVtXMu7jfZigK3b3xix2SVf4RnpMBP0h3v4x9vJMxAbBbp9pM9EMhtusqRtd6iB-5UzsE6CtZDfWMWhF5lfnYazRKiETm1o_a90lNdEJ7ToFvSQ7_ZsFu8mHuTbJU6kaiXt_ZxXiHF_O5mG_gWwyEnE7s6_itAyRDeUcPu7T1kt4Z0u3if573gx3bkhlTJ3gh3SoxmoqHwbws6LPam_GNFJjIWFVboiBU0L8jVrCTICna7aDmplb-39Csy3EcPLOX9ED-ZBdTYA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "⚡️🪖Зеленський запропонував продовжити дію воєнного стану та мобілізації ще на 3 місяці\n\nПрезидент Володимир Зеленський вніс до Верховної Ради відповідні законопроєкти про затвердження його указів щодо продовження в Україні строку дії воєнного стану та проведення загальної мобілізації ще на 90 діб.\n\nБільше новин тут 👉 rbc.ua",
-      "links": [
-        {
-          "label": "rbc.ua",
-          "url": "https://rbc.ua/"
-        }
-      ],
-      "createdAt": "2026-04-27T07:59:27.679Z",
-      "expiresAt": "2026-04-28T07:59:27.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T07:59:27.679Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T07:59:27.679Z"
       }
     },
     {
@@ -1535,58 +1549,6 @@
       }
     },
     {
-      "id": 4219200000,
-      "postUrl": "https://t.me/rbc_ua_news/189603?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/X7vIgUIjOWa6HZvEw68ugqZO67c1O87hkxsNzNb0bygDX027x9hkYIdJMEu1aLP5HRfyJ8IQWDAqMEtifUTOHe-bE3ke7jo_ulcjfrBfJulWBv9ZpYC-UZMne9KAuLI6fOdbWN4vast5DbAnIvauU_sl3Ka5eMk6yL919wu2lyTfNnUnMqYiqtxvnYlzpQhEreEygKHQbrXthU46zDbdI0d69iK3fVLWAUBIZRt2xVb9eQSZFgmkV1tZ0IXDXYOU25K9pS5cF10lBsFuTtLBgvOJ6Hnx5wgWQAKEiZXSzNZxveSoLgrVvK5agEwa5ssOI5WBNtOmLB85fybFthf0DQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💡Масштабна негода ледь не в усіх областях України призвела до відключень світла\n\nЗа даними \"Укренерго\", через сильні пориви вітру, грози знеструмлені понад 700 населених пунктів у 19 областях.\n\nКрім того, внаслідок російських дронових атак - на ранок є знеструмлені споживачі у Донецькій, Дніпропетровській, Запорізькій, Харківській, Сумській, Чернігівській і Херсонській областях. Скрізь, де це наразі  дозволяють безпекові умови, вже почались аварійно-відновлювальні роботи. \n\nБільше новин тут 👉 rbc.ua",
-      "links": [
-        {
-          "label": "rbc.ua",
-          "url": "https://rbc.ua/"
-        }
-      ],
-      "createdAt": "2026-04-27T07:59:27.679Z",
-      "expiresAt": "2026-04-28T07:59:27.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T07:59:27.679Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T07:59:27.679Z"
-      }
-    },
-    {
       "id": 3134282365,
       "postUrl": "https://t.me/devukraine/45014?single",
       "source": {
@@ -1621,7 +1583,7 @@
       "createdAt": "2026-04-27T16:57:29.289Z",
       "expiresAt": "2026-04-28T16:57:29.289Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T23:39:31.557Z",
+      "mediaRefreshedAt": "2026-04-28T09:35:29.427Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -1640,58 +1602,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-27T16:57:29.289Z"
-      }
-    },
-    {
-      "id": 3090956417,
-      "postUrl": "https://t.me/rbc_ua_news/189602?single",
-      "source": {
-        "title": "РБК-Україна",
-        "handle": "rbc_ua_news",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/gIeKzabOKcQB9ot64ZKgy1i6fY0lYo_n1e4SbdL8Ggb5A2hiNXm1bl6yLUU8eVGnYVWgo0Y_Oq7tcEQF_JsHgrQ0LCpTR9TQe3DX5_zYbv3fNfIq_BN4l7sMKncsQ9FH9SV8enWo5c0q3ukd1jSZa_g94I9qz3QNV58pcSpwdpCWBV8qpDb-Meb59J6cSn70AA10x7byNAjjmoNw7yeIrma9uEJ8H3tOTLxUAC1pVAq5qlMKVtg2o_mAgFLU8ptqCChkTg86xzPDRQSfYwLOx-JFDywzXWF6q3J6CG-AwMEJ8R5c5ZBKDDnnSO_7mK3Ox9PwHaqjJtq9Gap9QXRzcQ.jpg"
-      },
-      "sourceId": "uk:rbc_ua_news",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Ner5scTDy7Vpj00ZS6-5qEq502Wq8oMdlCbk66WZk_ZVIitmm5z4G5blh6Qf0NgLTY7JQMWkYkG2wdxV2RZQyB5ys9dH3CMdw_RTylsz8HNQLgtRUVPBO53vMOSmrl826l8FMRMvjOvmAMA1ueml_kd9UIUvAobx5iGZ-WxmXts2y7JKk2PLxKH-f4UWVyMJCdIgMLJigqKUnQJtDNKBsdyll8UV0ylzu4wy98cLKU49UjyWEYYPuH3fsKrU3Aw-H3s2c3uZrTk8ypoGAKSpVZt3dP1jyPGTu_Fzq8xM-QADETZmfV6y1AqihGg7iylEkYsTEwMooGEWJVUDdapl-g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💵💶Курс валют на 27 квітня: як обмінники та банки переписали \"цінники\" після вихідних\n\nДолар в обмінниках тримається на позиціях п’ятниці. При цьому євро подорожчало на 10 копійок (51,70 грн).\n\nВодночас у банках долар в банках сьогодні можна купити за середнім курсом у 44,20 (+4 копійки) гривні, а здати - по 43,70 (+3 копійки) гривні. Євро ж коштує в середньому 51,90 (+5 копійок) гривню при покупці та 51,20 (без змін) гривню - при здачі валюти.",
-      "links": [
-        {
-          "label": "як обмінники та банки переписали \"цінники\" після вихідних",
-          "url": "https://www.rbc.ua/rus/news/kurs-valyut-27-kvitnya-k-obminniki-ta-banki-1777270666.html"
-        }
-      ],
-      "createdAt": "2026-04-27T07:59:27.679Z",
-      "expiresAt": "2026-04-28T07:59:27.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T07:59:27.679Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T07:59:27.679Z"
       }
     },
     {
@@ -1729,7 +1639,7 @@
       "createdAt": "2026-04-27T15:29:13.514Z",
       "expiresAt": "2026-04-28T15:29:13.514Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T22:36:43.667Z",
+      "mediaRefreshedAt": "2026-04-28T09:35:29.427Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -1953,7 +1863,7 @@
       "createdAt": "2026-04-27T14:27:51.902Z",
       "expiresAt": "2026-04-28T14:27:51.902Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T22:08:19.346Z",
+      "mediaRefreshedAt": "2026-04-28T09:35:29.427Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -2468,342 +2378,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-27T10:51:13.962Z"
-      }
-    },
-    {
-      "id": 2158163878,
-      "postUrl": "https://t.me/devukraine/44999?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/IJpMiAMdXNbAw0pXb_iOi1V9C0qjJt_uaAomfwKLryaNf46kxsKAvNBbQ6xHXAZLDQDlxtK2olycMtC7lKoB_J8P5ze-jjKtJlH-hd_89H39-JfuWFRgzHGPc-huE_WrvoudRIaVRBDXJkcqzrt5Lx92daCmuy-wQoJzZI6FbBcYV4Wyj3PLyH7GUSicpj2XMF_E2RH--n83NbAVLFYwv6zGB6q-8tVRPijER9eDEEg_seFVf0uVYx-oEEsrsrNX7YUD-Hl2c2_1lYcYzMm2NJbp11Mj6poshjsT51CW_8tiXBOH8-Ags6im0Ty6qKBUAD0AzIfyZ9AZkgRlXgBJ5g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "👤«Індивідуальність не потребується. І чим вас більше, тим самотніше». Щоденник мобілізації від айтівця з Threads — про БЗВП, «губні НАТівські постріли» та «гру в штурмовиків»\n\nЦе — друга частина зізнань та відкриттів айтівця, яку ми публікуємо з його дозволу. Тут автор розповідає про БЗВП, підготовку до служби штурмовиком та піхотинцем, настрої в навчальному центрі та неможливість усамітнення ні на хвилину. \n\n@devukraine",
-      "links": [
-        {
-          "label": "розповідає про БЗВП, підготовку до служби штурмовиком та піхотинцем, настрої в навчальному центрі та неможливість усамітнення ні на хвилину.",
-          "url": "https://dev.ua/news/bzvp-1777274082"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-04-27T09:30:58.650Z",
-      "expiresAt": "2026-04-28T09:30:58.650Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T23:39:31.557Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:30:58.650Z"
-      }
-    },
-    {
-      "id": 3668000127,
-      "postUrl": "https://t.me/devukraine/44998?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/hIUpZwdERhu9RLP4Ycn5zSfaObwn-UMMHrm2_va9-Djjy7zFFM61sE2Pi48epxIzA0pbt4ioiRMdd1jYIg5tO01q5aEYAnjUsubWVKoNri0XPQDK4ZaIfjBnXzyoO0aBjYNL8z9lYu6mnj7_d_3qYYxTWxFL5gQbaZx6D6rVU2p27yHYa6vm9c0NY4UV3-OKDYWE5lHg0X4hhiLhc9WiBlOAjnj8MGSMO_PKUC5d5T_Cjxzyxzdojvll8Ul5JWzPRa3WWqMJjK-oGFSiKxaf3IDsHc_zmhAFY8jSVRingGyGuzsHWhw0uhPPjgNstXLHRB83zPtCy2H4tz_5lA_eOw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "✋Cуд призупинив анулювання ліцензії Cosmolot на проведення азартних ігор, яке анонсували в PlayCity\n\nКиївський окружний адміністративний суд призупинив дію рішення про анулювання ліцензії ТОВ «Спейсикс» (бренд Cosmolot) до остаточного розв’язання спору по суті. Право компанії на проведення азартних ігор в інтернеті залишається чинним, попри нещодавні санкції з боку державної агенції PlayCity.\n\n@devukraine",
-      "links": [
-        {
-          "label": "залишається чинним, попри нещодавні санкції з боку державної агенції PlayCity.",
-          "url": "https://dev.ua/news/sud-pryzupynyv-anuliuvannia-litsenzii-cosmolot-1777278653"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-04-27T09:30:58.650Z",
-      "expiresAt": "2026-04-28T09:30:58.650Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T01:24:22.366Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:30:58.650Z"
-      }
-    },
-    {
-      "id": 566539016,
-      "postUrl": "https://t.me/devukraine/44997?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/FYZEdSbRsDIKPujwzHwikROZRv7Gp67Ewbdap4ytQBv94wut3__CwQzP72-jKVaceh7oz_quYk-qcf4mHyaf-UD0-IEXXvm8lSPWY2FDp11ueu0kQfwVA9YxOK7tWCQzU_Vw9-fp5CiVTi8DtsoGf_dz0rwgw-fZW_7oLTve3V5yEW7emFNUmbEtNTJwjryPW60L2fLQKhcX9QwFjJAmxrfbmo3leUg9ouEpyG-CSY4MDaIB9xhNNSUMfe4FDmE5Jqf1ZwoJs7SOAiM_5LdWlj-6zYkltJi7totIhKS2BNLSxngHD2LFUbjOg6wh6asXs55GHaNngbvFDzGCuiNRgg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Twitch заблокував акаунти російських стримерів, які транслювали турнір Alabuga Polytech Cup\n\nАмериканський стримінговий сервіс Twitch заблокував десятки російських творців контенту, які транслювали кіберспортивний турнір Alabuga Polytech Cup з Counter-Strike 2.\n\n@devukraine",
-      "links": [
-        {
-          "label": "заблокував десятки російських творців контенту, які транслювали кіберспортивний турнір Alabuga Polytech Cup з Counter-Strike 2.",
-          "url": "https://dev.ua/news/twitch-zabanyv-alabuhu-1777274961"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-04-27T09:30:58.650Z",
-      "expiresAt": "2026-04-28T09:30:58.650Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T04:05:56.956Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T09:30:58.650Z"
-      }
-    },
-    {
-      "id": 451866953,
-      "postUrl": "https://t.me/devukraine/44996?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/fLltuNzQi4um8driz3LjRU1MMwAdF_zMt6NsJWHwt90hGljh5Wft5jZt9cmOoxZDUXHe3veKtspT3fVFcWAZNOfP1-xvFVKNUfqMDibeprZFqmb8kuJvl3XdGHxtAYwoWLShtRHKxp99eyH7g7eAhLor3y4u97LpkiEwN2UadXr5NLDOhwxn0aDfoW21lFl98rCHPdgPKJx-CBA0eoEpcC-1eehcu9GlT4i63_HE36OqYUKr3iJq7ylDmqjwuJHTGChUexV6frFtsyt_aoPWp8lFLGSCFE0-olzekCwgc605I2MsVM-BeIX75wbWbAjPONSIffJoeek91Ih1BGkkHA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💻«Це потрібно одиницям, але я вирішив свою проблему». Офіцер ЗСУ зробив веб-аналог minicom який дозволяє підключатися до пристроїв прямо з браузера — без встановлення програм\n\nУкраїнський військовий та колишній айтівець Андрій Кондратьєв створив вебзастосунок для роботи з серійними портами — і зробив це за допомогою AI.\n\n@devukraine",
-      "links": [
-        {
-          "label": "створив вебзастосунок для роботи з серійними портами — і зробив це за допомогою AI.",
-          "url": "https://dev.ua/news/vibe-coding-1777268131"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-04-27T07:59:25.326Z",
-      "expiresAt": "2026-04-28T07:59:25.326Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T23:11:14.415Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T07:59:25.326Z"
-      }
-    },
-    {
-      "id": 2635057042,
-      "postUrl": "https://t.me/devukraine/44995?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/k4CsvoT7NEgAa51tV94HfBDgaFgkf90ZRxvvI5HwgxdIdnuDZqiblbawc7DjN03NyCotAY5QjTHdeqPgu4YTMNeSghfSXKBEQvlpiVCIMRWjNvmyJNyKTA4K10nu5NKGTnsaqD5WbaUvDjCxtrN9Dt0wNcNdBfsDPXjIgEagIR_eCY7fBJ7B5pBIk2P2LuzKjq_mEpWzlsqhtkkGP0DPU0y4ps7OT7CL2aCabyZKYBopLDAZQ5Dbf190UHfSI4DTyk-fqw7sOi1I51nTgpuMz6oLBAVJYXdxpFi_gx7U6sa18DUCI4lFwBP1gmPn1KU2RZCLlIWAtpZeh9WckNCDTQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Майбутнє цифрових продуктів: AI-native Architecture\n\nУ блозі про те, як влаштована архітектура з вбудованими можливостями штучного інтелекту та в яких випадках до неї органічно вписуються блокчейн і криптовалюта.\n\n@devukraine",
-      "links": [
-        {
-          "label": "та в яких випадках до неї органічно вписуються блокчейн і криптовалюта.",
-          "url": "https://dev.ua/blogs/posts/zhytomyrska-1777272647"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-04-27T07:59:25.326Z",
-      "expiresAt": "2026-04-28T07:59:25.326Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-27T23:39:31.557Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T07:59:25.326Z"
-      }
-    },
-    {
-      "id": 1887823755,
-      "postUrl": "https://t.me/devukraine/44994?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ma4NTPkfLEXXD171Iio_gJSq5fKD_6neLRrD2WISguQ_KZxIaDwhmguog-BrANrk7lc01ipnDQ_cDfr248aI4Wi5RDjT-OwmDqNuSg_CSVSIQY-_3UbcpoCyo6a_qR0JVP6xI8L9wMEbsBYHhbl4nf0UIli7jKAcjja5UCWu8CpAo4gVktKdgacW9hcqvFjVfBOdFiHXEdajfuUTGHv_LYjCGslYdVc82uchKoTRn3dB4IepGB_61B97J1tvO-CeA15IaLzwiqcdK1OiEFgAtGGeckscXi4qJL5xlbxDixLdFCS8-oVbIdy3F3N8-FGvPwuqmJcdY5l9Fhnwhj2NGg.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/si9ohXfKHZg9TOrwI0EE-BritALMHkSLUgz5Pz7BcImId1Sp0QZBNeMc812zDDBV8rOIPnQVg3DqhJ1leiWT2cIiAeXFbqZGrTCxha63uHr9zOWDK6-4szgFM2eTDCi2qTVpUZ6NppMZ4Ua3AKjU-5QqwZqaFv_Cnp1ZT1DSayL4dzdSDJAK87z_ijmlsPbY6pzETY9yiRCsaP_Ligq5FFFKK28APDb7DgxWPpHlXUB6VvYp2lHxLG40iAzJvRXXIiack257nBXU-vyTui9LysnDTu2L_rVQJJB2ePTj754-LQOfBlrvGu67Fzx3hw_Av_lBy9WJuWdi0Po3BLZYQg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💰«Ми хочемо, щоб ви могли жити всередині X». Ілон Маск запускає X Money - платіжний сервіс всередині X. Перші користувачі вже його тестують \n\nX Corp. готується запустити фінансовий сервіс X Money — платіжну платформу прямо всередині соцмережі X. За словами Ілона Маска, продукт може стати ключовим елементом трансформації платформи в так званий «everything app».\n\n@devukraine",
-      "links": [
-        {
-          "label": "продукт може стати ключовим елементом трансформації платформи в так званий «everything app».",
-          "url": "https://dev.ua/news/xmoney-1777269254"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-04-27T07:59:25.326Z",
-      "expiresAt": "2026-04-28T07:59:25.326Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-28T00:06:28.201Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-27T07:59:25.326Z"
       }
     }
   ]
