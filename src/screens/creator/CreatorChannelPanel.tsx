@@ -279,11 +279,11 @@ export function CreatorChannelPanel({
 
         if (!alive || !data?.ok || !Array.isArray(data.items)) return;
 
-        setChannels((current) =>
-          current.map((local) => {
+        setChannels((current) => {
+          const next = current.map((local) => {
             const remote = data.items.find(
               (item: any) =>
-                item.channelHandle === local.channelHandle &&
+                String(item.channelHandle).toLowerCase() === String(local.channelHandle).toLowerCase() &&
                 String(item.country).toLowerCase() === String(local.country).toLowerCase()
             );
 
@@ -297,13 +297,17 @@ export function CreatorChannelPanel({
               endsAt: remote.endsAt ?? local.endsAt,
               pricingLabel: remote.pricingLabel ?? local.pricingLabel,
               donateUrl: remote.donateUrl ?? local.donateUrl,
-            };            
-          })
-        );
+            };
+          });
+
+          writeCreatorChannels(next);
+          return next;
+        });        
       } catch {
         // silent sync fail
       }
     };
+    
 
     syncPlacements();
     const timer = window.setInterval(syncPlacements, 15000);

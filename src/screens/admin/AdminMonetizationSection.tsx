@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CreditCard, Gift, PauseCircle, TimerReset } from "lucide-react";
 import { formatDaysLeft } from "../creator/creator.monetization";
 import type { CreatorChannelPlacement } from "../creator/creator.types";
@@ -34,6 +34,23 @@ export function AdminMonetizationSection() {
   const [items, setItems] = useState<CreatorChannelPlacement[]>(() => readPlacements());
   const [filter, setFilter] = useState<MonetizationFilter>("all");
   const [open, setOpen] = useState(true);
+
+  const loadRemotePlacements = async () => {
+    try {
+      const response = await fetch("/api/telegram-webhook");
+      const data = await response.json();
+
+      if (data?.ok && Array.isArray(data.items)) {
+        setItems(data.items);
+      }
+    } catch {
+      setItems(readPlacements());
+    }
+  };
+
+  useEffect(() => {
+    loadRemotePlacements();
+  }, []);
 
   const stats = useMemo(() => {
     const paid = items.filter((item) => item.plan === "paid");
@@ -130,7 +147,7 @@ export function AdminMonetizationSection() {
             ))}
             <button
               type="button"
-              onClick={() => setItems(readPlacements())}
+             onClick={loadRemotePlacements}
               className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70 transition hover:bg-white/10"
             >
               обновить
