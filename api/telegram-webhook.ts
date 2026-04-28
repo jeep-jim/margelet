@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/creator/creator.monetization";
-import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo";
+import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/creator/creator.monetization.js";
+import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo.js";
 
 type PlacementPlan = "paid" | "barter";
 type PlacementStatus = "pending" | "active" | "paused" | "expired";
@@ -79,8 +79,9 @@ function parseStartPayload(text: string) {
   if (!raw.startsWith("add_channel_")) return null;
 
   const parts = raw.split("_");
-  const plan = parts.at(-1) as PlacementPlan | undefined;
-  const country = parts.at(-2);
+  const plan = parts[parts.length - 1] as PlacementPlan | undefined;
+  const country = parts[parts.length - 2];
+
   if (plan !== "paid" && plan !== "barter") return null;
   if (!country) return null;
 

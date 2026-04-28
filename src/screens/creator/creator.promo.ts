@@ -1,4 +1,4 @@
-import type { Locale } from "../../types/app";
+import type { Locale } from "../../types/app.js";
 
 type PromoPack = {
   intro: string;
