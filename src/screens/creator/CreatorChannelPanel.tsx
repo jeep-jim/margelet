@@ -10,7 +10,7 @@ import {
   Send,
   Sparkles
 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SITE_LOCALES } from "../../lib/locales";
 import { SITE_TAG_GROUPS, type SiteTagGroup } from "../../lib/tags";
 import type { Locale } from "../../types/app";
@@ -263,6 +263,55 @@ export function CreatorChannelPanel({
 
   const pricing = getCreatorPricing(country);
   const tagGroups = useMemo(() => SITE_TAG_GROUPS, []);
+
+  useEffect(() => {
+    if (!user) return;
+
+    let alive = true;
+
+    const syncPlacements = async () => {
+      try {
+        const response = await fetch(
+          `/api/telegram-webhook?ownerTelegramId=${encodeURIComponent(user.id)}`
+        );
+
+        const data = await response.json();
+
+        if (!alive || !data?.ok || !Array.isArray(data.items)) return;
+
+        setChannels((current) =>
+          current.map((local) => {
+            const remote = data.items.find(
+              (item: any) =>
+                item.channelHandle === local.channelHandle &&
+                item.country === local.country
+            );
+
+            if (!remote) return local;
+
+            return {
+              ...local,
+              status: remote.status ?? local.status,
+              startsAt: remote.startAt ?? local.startsAt,
+              endsAt: remote.endsAt ?? local.endsAt,
+              pricingLabel: remote.pricingLabel ?? local.pricingLabel,
+              donateUrl: remote.donateUrl ?? local.donateUrl,
+            };
+          })
+        );
+      } catch {
+        // silent sync fail
+      }
+    };
+
+    syncPlacements();
+    const timer = window.setInterval(syncPlacements, 15000);
+
+    return () => {
+      alive = false;
+      window.clearInterval(timer);
+    };
+  }, [user]);
 
   const selectedParentTags = tags.filter((value) => SITE_TAG_GROUPS.some((group) => group.value === value));
 
@@ -702,8 +751,8 @@ export function CreatorChannelPanel({
 
                 <div className="mt-3 rounded-[18px] bg-surface px-3 py-3 text-xs text-secondary leading-5">
                   {item.status === "active"
-                    ? "Следующий пост автоматически попадёт в margeleT."
-                    : getChannelCardText(item)}
+                    ? "Канал добавлен. Следующий пост автоматически появится на margeleT после обновления ленты."
+                    : getChannelCardText(item)}                    
                 </div>
 
                 {item.plan === "paid" && item.status === "active" ? (

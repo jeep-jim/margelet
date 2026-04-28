@@ -352,6 +352,20 @@ async function handleSuccessfulPayment(update: TelegramUpdate) {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (req.method === "GET") {
+    const ownerTelegramId = String(req.query.ownerTelegramId || "").trim();
+
+    if (!ownerTelegramId) {
+      return res.status(400).json({ ok: false, error: "ownerTelegramId required" });
+    }
+
+    const { items } = await readPlacements();
+    return res.status(200).json({
+      ok: true,
+      items: items.filter((item) => item.ownerTelegramId === ownerTelegramId),
+    });
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
