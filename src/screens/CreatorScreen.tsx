@@ -36,7 +36,6 @@ export function CreatorScreen({
 }: CreatorScreenProps) {
   const [user, setUser] = useState<TgUser | null>(null);
   const [tab, setTab] = useState<CabinetTab>("language");
-  const [channelUrl, setChannelUrl] = useState("");
   const [theme, setTheme] = useState<Theme>(() =>
     typeof window === "undefined" ? "light" : getTheme()
   );
@@ -95,22 +94,6 @@ export function CreatorScreen({
     window.location.reload();
   };
 
-  const handleSubmitChannel = () => {
-    const value = channelUrl.trim();
-
-    if (!value) {
-      alert(copy.channelEmptyError);
-      return;
-    }
-
-    if (!/^https?:\/\/t\.me\/[A-Za-z0-9_]+\/?$/.test(value)) {
-      alert(copy.channelInvalidError);
-      return;
-    }
-
-    alert(copy.channelSuccess);
-    setChannelUrl("");
-  };
 
   return (
     <>
@@ -176,12 +159,7 @@ export function CreatorScreen({
           ) : null}
 
           {tab === "channel" ? (
-            <CreatorChannelPanel
-              copy={copy}
-              channelUrl={channelUrl}
-              onChangeChannelUrl={setChannelUrl}
-              onSubmitChannel={handleSubmitChannel}
-            />
+            <CreatorChannelPanel copy={copy} locale={locale} user={user} />
           ) : null}
 
           {tab === "about" ? <CreatorAboutPanel copy={copy} /> : null}

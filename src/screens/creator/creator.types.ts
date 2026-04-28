@@ -14,6 +14,26 @@ export type CreatorScreenProps = {
 
 export type CabinetTab = "channel" | "about" | "language";
 
+export type CreatorChannelStatus = "draft" | "pending" | "active" | "paused" | "expired";
+
+export type CreatorChannelPlan = "paid" | "barter";
+
+export type CreatorChannelPlacement = {
+  id: string;
+  ownerTelegramId: string;
+  channelUrl: string;
+  channelHandle: string;
+  country: Locale;
+  tags: string[];
+  plan: CreatorChannelPlan;
+  status: CreatorChannelStatus;
+  createdAt: string;
+  startsAt: string | null;
+  endsAt: string | null;
+  pricingLabel: string;
+  donateUrl: string | null;
+};
+
 export type TgUser = {
   id: string;
   first_name: string;

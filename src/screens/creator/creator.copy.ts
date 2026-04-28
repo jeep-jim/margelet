@@ -5,7 +5,7 @@ const COPY_BASE = {
   en: {
     authTitle: "Sign in with Telegram",
     authText:
-      "Authorize to manage your cabinet, submit a request to add your own channel.",
+      "Authorize to manage your cabinet.",
     authButton: "Authorize",
     introButtonShort: "Intro",
     connectedToTelegram: "Connected to Telegram",
@@ -70,7 +70,7 @@ const COPY_BASE = {
   ru: {
     authTitle: "Войти через Telegram",
     authText:
-      "Авторизуйся, чтобы управлять своим кабинетом, смотреть понравившиеся публикации и отправлять заявку на добавление собственного канала.",
+      "Авторизуйся, чтобы управлять своим кабинетом.",
     authButton: "Авторизоваться",
     introButtonShort: "Intro",
     connectedToTelegram: "Подключено к Telegram",
