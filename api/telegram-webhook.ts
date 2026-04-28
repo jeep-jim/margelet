@@ -76,27 +76,23 @@ function buildChannelUrl(slug: string) {
 
 function parseStartPayload(text: string) {
   const raw = text.replace(/^\/start(@\w+)?\s*/i, "").trim();
-  if (!raw.startsWith("add_channel_")) return null;
+
+  if (!raw.startsWith("m_")) return null;
 
   const parts = raw.split("_");
-  const plan = parts[parts.length - 1] as PlacementPlan | undefined;
+  const shortPlan = parts[parts.length - 1];
   const country = parts[parts.length - 2];
+  const ownerTelegramId = parts[1];
+  const channelHandle = parts.slice(2, -2).join("_");
 
-  if (plan !== "paid" && plan !== "barter") return null;
-  if (!country) return null;
+  const plan: PlacementPlan | null =
+    shortPlan === "p" ? "paid" : shortPlan === "b" ? "barter" : null;
 
-  const ownerTelegramId = parts[2];
-  const nonceIndex = parts.findIndex((item, index) => index > 2 && /^\d{8,}$/.test(item));
-  if (!ownerTelegramId || nonceIndex < 0) return null;
-
-  const channelSlug = parts.slice(3, nonceIndex).join("_");
-  const channelHandle = parts.slice(nonceIndex + 1, -2).join("_");
-
-  if (!channelSlug || !channelHandle) return null;
+  if (!ownerTelegramId || !channelHandle || !country || !plan) return null;
 
   return {
     ownerTelegramId,
-    channelSlug: normalizeHandle(channelSlug),
+    channelSlug: normalizeHandle(channelHandle),
     channelHandle: normalizeHandle(channelHandle),
     country: country.toLowerCase(),
     plan,

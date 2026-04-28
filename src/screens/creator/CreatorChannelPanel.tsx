@@ -216,12 +216,13 @@ function getUi(locale: Locale) {
 }
 
 function buildBotUrl(item: CreatorChannelPlacement) {
+  const plan = item.plan === "paid" ? "p" : "b";
   const payload = [
-    "add_channel",
-    item.id,
-    item.channelHandle,
+    "m",
+    item.ownerTelegramId,
+    item.channelHandle.replace(/^@+/, ""),
     item.country,
-    item.plan,
+    plan,
   ].join("_");
 
   return `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${encodeURIComponent(payload)}`;
