@@ -1,4 +1,15 @@
-import { Check, ChevronDown, ChevronUp, Clock3, ExternalLink, Gift, Lock, RotateCw, Send, Sparkles } from "lucide-react";
+import {
+  BadgeCheck,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  ExternalLink,
+  Gift,
+  Lock,
+  RotateCw,
+  Send,
+  Sparkles
+} from "lucide-react";
 import { useMemo, useState } from "react";
 import { SITE_LOCALES } from "../../lib/locales";
 import { SITE_TAG_GROUPS, type SiteTagGroup } from "../../lib/tags";
@@ -645,68 +656,74 @@ export function CreatorChannelPanel({
         <div className="mt-4 space-y-3">
           {channels.length ? (
             channels.map((item) => (
-              <div key={item.id} className="rounded-[24px] border border-soft bg-surface-soft p-4">
-                <div className="flex items-start justify-between gap-3">
-                  <div className="min-w-0">
-                    <div className="text-primary truncate text-sm font-semibold">@{item.channelHandle}</div>
-                    <div className="text-secondary mt-1 text-xs">{item.pricingLabel}</div>
+              <div
+                key={item.id}
+                className="rounded-[26px] border border-soft bg-surface-soft p-4"
+              >
+                <div className="flex items-start gap-3">
+                  <img
+                    src={`https://t.me/i/userpic/320/${item.channelHandle}.jpg`}
+                    alt=""
+                    className="h-14 w-14 rounded-full object-cover border border-soft bg-surface"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        "https://www.gravatar.com/avatar/?d=mp&s=200";
+                    }}
+                  />
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1">
+                      <div className="truncate text-primary text-sm font-semibold">
+                        @{item.channelHandle}
+                      </div>
+
+                      {item.status === "active" ? (
+                        <BadgeCheck className="h-4 w-4 text-blue-500 shrink-0" />
+                      ) : null}
+                    </div>
+
+                    <div className="text-secondary text-xs mt-1">
+                      {item.pricingLabel}
+                    </div>
                   </div>
+
                   <div
                     className={`rounded-full px-3 py-1 text-xs font-semibold ${
                       item.status === "active"
-                        ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-300"
-                        : item.status === "expired" || item.status === "paused"
-                          ? "bg-amber-500/15 text-amber-700 dark:text-amber-300"
-                          : "bg-blue-500/15 text-blue-700 dark:text-blue-300"
+                        ? "bg-emerald-500/15 text-emerald-500"
+                        : item.status === "pending"
+                        ? "bg-blue-500/15 text-blue-500"
+                        : "bg-amber-500/15 text-amber-500"
                     }`}
                   >
                     {ui[item.status]}
                   </div>
                 </div>
 
-                <div className="text-secondary mt-3 flex items-start gap-2 rounded-[18px] bg-surface px-3 py-3 text-xs leading-5">
-                  <Clock3 className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span>{getChannelCardText(item)}</span>
+                <div className="mt-3 rounded-[18px] bg-surface px-3 py-3 text-xs text-secondary leading-5">
+                  {item.status === "active"
+                    ? "Следующий пост автоматически попадёт в margeleT."
+                    : getChannelCardText(item)}
                 </div>
 
-                <div className="mt-3 grid grid-cols-3 gap-2 text-xs text-secondary">
-                  <div className="rounded-[16px] bg-surface px-3 py-2">
-                    <div className="uppercase tracking-[0.12em] opacity-60">страна</div>
-                    <div className="text-primary mt-1 font-semibold">{item.country.toUpperCase()}</div>
-                  </div>
-                  <div className="rounded-[16px] bg-surface px-3 py-2">
-                    <div className="uppercase tracking-[0.12em] opacity-60">тип</div>
-                    <div className="text-primary mt-1 font-semibold">{item.plan === "paid" ? ui.paidPlan : ui.barterPlan}</div>
-                  </div>
-                  <div className="rounded-[16px] bg-surface px-3 py-2">
-                    <div className="uppercase tracking-[0.12em] opacity-60">срок</div>
-                    <div className="text-primary mt-1 font-semibold">{formatDaysLeft(item.endsAt)}</div>
-                  </div>
-                </div>
-
-                {item.plan === "paid" ? (
-                  <div className="mt-3 rounded-[20px] border border-soft bg-surface p-3">
-                    <label className="text-secondary text-xs font-semibold uppercase tracking-[0.12em]">
+                {item.plan === "paid" && item.status === "active" ? (
+                  <div className="mt-3 rounded-[18px] bg-surface px-3 py-3">
+                    <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
                       {ui.donateLabel}
-                    </label>
-                    <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+                    </div>
+
+                    <div className="flex gap-2">
                       <input
-                        defaultValue={item.donateUrl || ""}
+                        value={item.donateUrl || ""}
+                        onChange={(event) => saveDonateUrl(item, event.target.value)}
                         placeholder={ui.donatePlaceholder}
-                        className="bg-surface-soft text-primary focus-border-strong min-w-0 flex-1 rounded-full border border-soft px-4 py-2.5 text-sm outline-none transition"
-                        onKeyDown={(event) => {
-                          if (event.key === "Enter") {
-                            saveDonateUrl(item, event.currentTarget.value);
-                          }
-                        }}
+                        className="min-w-0 flex-1 rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm text-primary outline-none"
                       />
+
                       <button
                         type="button"
-                        onClick={(event) => {
-                          const input = event.currentTarget.parentElement?.querySelector("input") as HTMLInputElement | null;
-                          saveDonateUrl(item, input?.value || "");
-                        }}
-                        className="rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground transition hover:opacity-90"
+                        onClick={() => saveDonateUrl(item, item.donateUrl || "")}
+                        className="rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
                       >
                         {ui.saveDonate}
                       </button>
@@ -714,21 +731,45 @@ export function CreatorChannelPanel({
                   </div>
                 ) : null}
 
-                <div className="mt-3 flex flex-wrap gap-2">
+                <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
+                  <div className="rounded-[14px] bg-surface px-3 py-2">
+                    <div className="text-secondary uppercase opacity-60">страна</div>
+                    <div className="text-primary mt-1 font-semibold">
+                      {item.country.toUpperCase()}
+                    </div>
+                  </div>
+
+                  <div className="rounded-[14px] bg-surface px-3 py-2">
+                    <div className="text-secondary uppercase opacity-60">тип</div>
+                    <div className="text-primary mt-1 font-semibold">
+                      {item.plan === "paid" ? ui.paidPlan : ui.barterPlan}
+                    </div>
+                  </div>
+
+                  <div className="rounded-[14px] bg-surface px-3 py-2">
+                    <div className="text-secondary uppercase opacity-60">срок</div>
+                    <div className="text-primary mt-1 font-semibold">
+                      {formatDaysLeft(item.endsAt)}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-3 flex gap-2">
                   <a
-                    href={buildBotUrl(item)}
+                    href={item.channelUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground transition hover:opacity-90"
+                    className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
                   >
                     <ExternalLink className="h-4 w-4" />
-                    {ui.openBot}
+                    В канал
                   </a>
+
                   {item.status === "expired" || item.status === "paused" ? (
                     <button
                       type="button"
                       onClick={() => renewPlacement(item)}
-                      className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-surface-hover"
+                      className="inline-flex items-center gap-2 rounded-full border border-soft px-4 py-2.5 text-sm font-semibold text-primary"
                     >
                       <RotateCw className="h-4 w-4" />
                       {ui.renew}
@@ -736,7 +777,7 @@ export function CreatorChannelPanel({
                   ) : null}
                 </div>
               </div>
-            ))
+            ))            
           ) : (
             <div className="text-secondary rounded-[24px] bg-surface-soft px-4 py-4 text-sm">
               {ui.noChannels}

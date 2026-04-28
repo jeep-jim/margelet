@@ -1,4 +1,4 @@
-import { Info, Moon, Plus, Sun } from "lucide-react";
+import { Moon, Plus, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getTheme, toggleTheme, type Theme } from "../lib/theme";
 import { CreatorAboutPanel } from "./creator/CreatorAboutPanel";
@@ -114,20 +114,19 @@ export function CreatorScreen({
 
           <div className="flex items-center justify-between gap-3">
             <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1">
-              <CreatorTopIconButton
-                active={tab === "channel"}
+              <button
+                type="button"
                 onClick={() => setTab("channel")}
-                icon={Plus}
-                title={copy.channelTabTitle}
-              />
-
-              <CreatorTopIconButton
-                active={tab === "about"}
-                onClick={() => setTab("about")}
-                icon={Info}
-                title={copy.aboutTabTitle}
-              />
-            </div>
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition ${
+                  tab === "channel"
+                    ? "bg-strong text-strong-foreground"
+                    : "border border-soft bg-surface text-primary"
+                }`}
+              >
+                <Plus className="h-4 w-4" />
+                Добавить канал
+              </button>
+            </div>            
 
             <div className="flex shrink-0 items-center gap-2">
               <CreatorTopIconButton
