@@ -284,19 +284,20 @@ export function CreatorChannelPanel({
             const remote = data.items.find(
               (item: any) =>
                 item.channelHandle === local.channelHandle &&
-                item.country === local.country
+                String(item.country).toLowerCase() === String(local.country).toLowerCase()
             );
 
             if (!remote) return local;
 
             return {
               ...local,
+              country: remote.country ?? local.country,
               status: remote.status ?? local.status,
               startsAt: remote.startAt ?? local.startsAt,
               endsAt: remote.endsAt ?? local.endsAt,
               pricingLabel: remote.pricingLabel ?? local.pricingLabel,
               donateUrl: remote.donateUrl ?? local.donateUrl,
-            };
+            };            
           })
         );
       } catch {
