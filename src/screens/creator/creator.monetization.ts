@@ -15,7 +15,7 @@ function starsLabel(stars: number) {
   return `${new Intl.NumberFormat("ru-RU").format(stars)} Stars ⭐ / 1 месяц`;
 }
 
-const DEFAULT_PRICING: CreatorPricing = {
+export const DEFAULT_PRICING: CreatorPricing = {
   country: "en",
   stars: 4900,
   label: starsLabel(4900),
