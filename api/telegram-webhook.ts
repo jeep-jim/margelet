@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/creator/creator.monetization.js";
+import { getBotCopy, BOT_COMMAND_LOCALES } from "../src/lib/i18n/bot.js";
 import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo.js";
 
 type PlacementPlan = "paid" | "barter";
@@ -174,16 +175,38 @@ async function answerCallbackQuery(id: string, text?: string) {
   });
 }
 
-async function sendInvoice(chatId: number, placement: Placement) {
+async function sendInvoice(chatId: number, placement: Placement, languageCode?: string | null) {
+  const copy = getBotCopy(languageCode, placement.country);
+
   await telegram("sendInvoice", {
     chat_id: chatId,
-    title: "margeleT channel placement",
-    description: "1 month channel placement on margeleT",
+    title: copy.invoiceTitle,
+    description: copy.invoiceDescription,
     payload: placement.id,
     currency: "XTR",
     provider_token: "",
     prices: [{ label: placement.pricingLabel, amount: placement.stars }],
   });
+}
+
+async function setupBotCommands() {
+  const defaultCopy = getBotCopy("en");
+  const toCommands = (copy: ReturnType<typeof getBotCopy>) => [
+    { command: "start", description: copy.commands.start },
+    { command: "help", description: copy.commands.help },
+    { command: "status", description: copy.commands.status },
+    { command: "add", description: copy.commands.add },
+  ];
+
+  await telegram("setMyCommands", { commands: toCommands(defaultCopy) });
+
+  for (const item of BOT_COMMAND_LOCALES) {
+    const copy = getBotCopy(null, item.locale);
+    await telegram("setMyCommands", {
+      language_code: item.telegramLanguageCode,
+      commands: toCommands(copy),
+    });
+  }
 }
 
 function githubHeaders() {
@@ -476,11 +499,12 @@ async function handleStart(update: TelegramUpdate) {
   const message = update.message;
   const chatId = message?.chat?.id;
   const text = asString(message?.text);
+  const languageCode = message?.from?.language_code || null;
   if (!chatId || !text) return;
 
   const payload = parseStartPayload(text);
   if (!payload) {
-    await sendMessage(chatId, "Привет! Добавление канала запускается из кабинета margeleT.");
+    await sendMessage(chatId, getBotCopy(languageCode).start);
     return;
   }
 
@@ -491,7 +515,7 @@ async function handleStart(update: TelegramUpdate) {
     placement = items.find((item) => item.id === payload.placementId) || null;
 
     if (!placement) {
-      await sendMessage(chatId, "Заявка не найдена. Вернитесь в кабинет margeleT и нажмите кнопку ещё раз.");
+      await sendMessage(chatId, getBotCopy(languageCode).placementNotFound);
       return;
     }
 
@@ -520,9 +544,11 @@ async function handleStart(update: TelegramUpdate) {
     placement = result.placement;
   }
 
+  const copy = getBotCopy(languageCode, placement.country);
+
   if (placement.plan === "paid") {
-    await sendMessage(chatId, `Заявка создана: @${placement.channelHandle}\nСейчас открою оплату в Stars.`);
-    await sendInvoice(chatId, placement);
+    await sendMessage(chatId, copy.paidCreated(placement.channelHandle));
+    await sendInvoice(chatId, placement, languageCode);
     return;
   }
 
@@ -537,21 +563,22 @@ async function handleStart(update: TelegramUpdate) {
     ],
   });
 }
-
 async function handleCallback(update: TelegramUpdate) {
   const query = update.callback_query;
   const data = asString(query?.data);
   const chatId = query?.message?.chat?.id;
+  const languageCode = query?.from?.language_code || null;
   if (!query?.id || !chatId || !data.startsWith("verify:")) return;
-
-  await answerCallbackQuery(query.id, "Проверяю пост…");
 
   const id = data.slice("verify:".length);
   const { items } = await readPlacements();
   const placement = items.find((item) => item.id === id);
+  const copy = getBotCopy(languageCode, placement?.country);
+
+  await answerCallbackQuery(query.id, copy.checkAlert);
 
   if (!placement) {
-    await sendMessage(chatId, "Заявка не найдена. Открой добавление канала заново из кабинета.");
+    await sendMessage(chatId, copy.placementNotFound);
     return;
   }
 
@@ -559,14 +586,13 @@ async function handleCallback(update: TelegramUpdate) {
 
   if (!ok) {
     await updatePlacement(placement.id, { lastCheckAt: new Date().toISOString() });
-    await sendMessage(chatId, "Пока не вижу пост. Опубликуйте текст в канале и нажмите “Проверить пост” ещё раз.");
+    await sendMessage(chatId, copy.barterMissing);
     return;
   }
 
   await activatePlacement(placement.id, { lastCheckAt: new Date().toISOString() });
-  await sendMessage(chatId, `Готово! Канал @${placement.channelHandle} активирован на 30 дней 🎉`);
+  await sendMessage(chatId, copy.barterSuccess(placement.channelHandle));
 }
-
 async function handlePreCheckout(update: TelegramUpdate) {
   const query = update.pre_checkout_query;
   if (!query?.id) return;
@@ -580,18 +606,71 @@ async function handlePreCheckout(update: TelegramUpdate) {
 async function handleSuccessfulPayment(update: TelegramUpdate) {
   const payment = update.message?.successful_payment;
   const chatId = update.message?.chat?.id;
+  const languageCode = update.message?.from?.language_code || null;
   const id = payment?.invoice_payload;
   if (!chatId || !id) return;
 
-  await activatePlacement(id, {
+  const placement = await activatePlacement(id, {
     telegramPaymentChargeId: payment.telegram_payment_charge_id || null,
   });
 
-  await sendMessage(chatId, "Оплата прошла! Канал активирован на 30 дней 🎉");
+  const copy = getBotCopy(languageCode, placement?.country);
+  await sendMessage(chatId, copy.paidSuccess(placement?.channelHandle || "channel"));
 }
 
+async function handleHelp(update: TelegramUpdate) {
+  const chatId = update.message?.chat?.id;
+  if (!chatId) return;
+  await sendMessage(chatId, getBotCopy(update.message?.from?.language_code || null).help);
+}
+
+async function handleAdd(update: TelegramUpdate) {
+  const chatId = update.message?.chat?.id;
+  if (!chatId) return;
+  await sendMessage(chatId, getBotCopy(update.message?.from?.language_code || null).add);
+}
+
+function localizeStatus(copy: ReturnType<typeof getBotCopy>, status: PlacementStatus) {
+  if (status === "active") return copy.statusActive;
+  if (status === "paused") return copy.statusPaused;
+  if (status === "expired") return copy.statusExpired;
+  if (status === "canceled") return copy.statusCanceled;
+  return copy.statusPending;
+}
+
+async function handleStatus(update: TelegramUpdate) {
+  const chatId = update.message?.chat?.id;
+  const ownerTelegramId = update.message?.from?.id;
+  const languageCode = update.message?.from?.language_code || null;
+  const copy = getBotCopy(languageCode);
+  if (!chatId || !ownerTelegramId) return;
+
+  const { items } = await readPlacements();
+  const ownItems = items.filter((item) => item.ownerTelegramId === String(ownerTelegramId) && item.status !== "canceled");
+
+  if (!ownItems.length) {
+    await sendMessage(chatId, copy.statusEmpty);
+    return;
+  }
+
+  const lines = ownItems.slice(0, 10).map((item) => {
+    const itemCopy = getBotCopy(languageCode, item.country);
+    return itemCopy.statusLine(
+      item.channelHandle,
+      localizeStatus(itemCopy, item.status),
+      item.plan === "paid" ? itemCopy.planPaid : itemCopy.planBarter
+    );
+  });
+
+  await sendMessage(chatId, `${copy.statusTitle}\n${lines.join("\n")}`);
+}
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === "GET") {
+    if (String(req.query.setupCommands || "") === "1") {
+      await setupBotCommands();
+      return res.status(200).json({ ok: true });
+    }
+
     const ownerTelegramId = String(req.query.ownerTelegramId || "").trim();
     const { items } = await readPlacements();
 
@@ -625,6 +704,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       await handleCallback(update);
     } else if (update.message?.text?.startsWith("/start")) {
       await handleStart(update);
+    } else if (update.message?.text?.startsWith("/help")) {
+      await handleHelp(update);
+    } else if (update.message?.text?.startsWith("/status")) {
+      await handleStatus(update);
+    } else if (update.message?.text?.startsWith("/add")) {
+      await handleAdd(update);
     }
 
     return res.status(200).json({ ok: true });
