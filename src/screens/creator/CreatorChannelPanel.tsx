@@ -69,10 +69,38 @@ function writeCreatorChannels(items: CreatorChannelPlacement[]) {
   localStorage.setItem(CREATOR_CHANNELS_STORAGE_KEY, JSON.stringify(items));
 }
 
+function getChannelKey(item: Pick<CreatorChannelPlacement, "ownerTelegramId" | "channelHandle" | "country">) {
+  return [
+    item.ownerTelegramId,
+    String(item.channelHandle || "").replace(/^@+/, "").toLowerCase(),
+    String(item.country || "").toLowerCase(),
+  ].join(":");
+}
+
+function dedupeCreatorChannels(items: CreatorChannelPlacement[]) {
+  const map = new Map<string, CreatorChannelPlacement>();
+
+  for (const item of items) {
+    const key = getChannelKey(item);
+    const current = map.get(key);
+
+    if (!current) {
+      map.set(key, item);
+      continue;
+    }
+
+    const currentScore = current.status === "active" ? 3 : current.status === "pending" ? 2 : 1;
+    const itemScore = item.status === "active" ? 3 : item.status === "pending" ? 2 : 1;
+    map.set(key, itemScore >= currentScore ? { ...current, ...item } : { ...item, ...current });
+  }
+
+  return Array.from(map.values()).sort((a, b) => Date.parse(b.createdAt || "") - Date.parse(a.createdAt || ""));
+}
+
 function appendCreatorChannel(item: CreatorChannelPlacement) {
   const raw = localStorage.getItem(CREATOR_CHANNELS_STORAGE_KEY);
   const parsed = raw ? (JSON.parse(raw) as CreatorChannelPlacement[]) : [];
-  writeCreatorChannels([item, ...parsed]);
+  writeCreatorChannels(dedupeCreatorChannels([item, ...parsed]));
 }
 
 function updateCreatorChannel(item: CreatorChannelPlacement) {
@@ -109,11 +137,14 @@ function getUi(locale: Locale) {
         formTitle: "Добавить канал",
         formText:
           "Заполни данные канала. После отправки мы откроем Telegram-бота — там можно оплатить размещение или выбрать бартер.",
+        nameLabel: "Название канала",
+        namePlaceholder: "Например: margeleT space",
+        nameError: "Введи название канала.",
         urlLabel: "Ссылка на Telegram-канал",
         countryLabel: "Страна канала",
         tagsLabel: "Теги",
         planLabel: "Способ размещения",
-        paidTitle: "Оплатить",
+        paidTitle: "Stars",
         paidText: "1 месяц размещения + возможность добавить Telegram-donate ссылку.",
         barterTitle: "Бартер",
         barterText: "1 месяц бесплатно за нативный пост о margeleT в вашем канале.",
@@ -140,7 +171,7 @@ function getUi(locale: Locale) {
         paused: "пауза",
         expired: "истёк",
         daysLeft: "Осталось",
-        price: "Стоимость",
+        price: "Тариф",
         donateOnlyPaid: "Donate-ссылка доступна только для платного размещения.",
         donateLabel: "Telegram donate-ссылка",
         donatePlaceholder: "https://t.me/your_channel?direct",
@@ -169,11 +200,14 @@ function getUi(locale: Locale) {
         formTitle: "Add channel",
         formText:
           "Fill in the channel details. After submitting, we open the Telegram bot where you can pay or choose barter.",
+        nameLabel: "Channel name",
+        namePlaceholder: "For example: margeleT space",
+        nameError: "Enter the channel name.",
         urlLabel: "Telegram channel link",
         countryLabel: "Channel country",
         tagsLabel: "Tags",
         planLabel: "Placement method",
-        paidTitle: "Paid",
+        paidTitle: "Stars",
         paidText: "1 month placement + Telegram donate link option.",
         barterTitle: "Barter",
         barterText: "1 month free for a native post about margeleT in your channel.",
@@ -200,7 +234,7 @@ function getUi(locale: Locale) {
         paused: "paused",
         expired: "expired",
         daysLeft: "Left",
-        price: "Cost",
+        price: "Plan",
         donateOnlyPaid: "Donate link is available only for paid placement.",
         donateLabel: "Telegram donate link",
         donatePlaceholder: "https://t.me/your_channel?direct",
@@ -227,16 +261,7 @@ function getUi(locale: Locale) {
 }
 
 function buildBotUrl(item: CreatorChannelPlacement) {
-  const plan = item.plan === "paid" ? "p" : "b";
-  const payload = [
-    "m",
-    item.ownerTelegramId,
-    item.channelHandle.replace(/^@+/, ""),
-    item.country,
-    plan,
-  ].join("_");
-
-  return `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${encodeURIComponent(payload)}`;
+  return `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${encodeURIComponent(`p_${item.id}`)}`;
 }
 
 export function CreatorChannelPanel({
@@ -249,6 +274,7 @@ export function CreatorChannelPanel({
   user: TgUser | null;
 }) {
   const ui = getUi(locale);
+  const [channelTitle, setChannelTitle] = useState("");
   const [channelUrl, setChannelUrl] = useState("");
   const [country, setCountry] = useState<Locale>(locale);
   const [tags, setTags] = useState<string[]>([]);
@@ -258,7 +284,7 @@ export function CreatorChannelPanel({
   const [tagPickerOpen, setTagPickerOpen] = useState(false);
   const [openTagGroups, setOpenTagGroups] = useState<string[]>([]);
   const [channels, setChannels] = useState<CreatorChannelPlacement[]>(() =>
-    user ? readCreatorChannels(user.id) : []
+    user ? dedupeCreatorChannels(readCreatorChannels(user.id)) : []
   );
 
   const pricing = getCreatorPricing(country);
@@ -280,29 +306,29 @@ export function CreatorChannelPanel({
         if (!alive || !data?.ok || !Array.isArray(data.items)) return;
 
         setChannels((current) => {
-          const next = current.map((local) => {
-            const remote = data.items.find(
-              (item: any) =>
-                String(item.channelHandle).toLowerCase() === String(local.channelHandle).toLowerCase() &&
-                String(item.country).toLowerCase() === String(local.country).toLowerCase()
-            );
+          const remoteItems = data.items.map((remote: any) => ({
+            id: String(remote.id || [remote.ownerTelegramId, remote.channelHandle, remote.country].join("_")),
+            ownerTelegramId: String(remote.ownerTelegramId || user.id),
+            channelUrl: "https://t.me/" + String(remote.channelHandle || "").replace(/^@+/, ""),
+            channelHandle: String(remote.channelHandle || "").replace(/^@+/, ""),
+            channelTitle: remote.channelTitle,
+            channelAvatarUrl: remote.channelAvatarUrl ?? null,
+            verified: Boolean(remote.verified),
+            country: String(remote.country || locale).toLowerCase() as Locale,
+            tags: Array.isArray(remote.tags) ? remote.tags : [],
+            plan: remote.plan === "barter" ? "barter" : "paid",
+            status: remote.status || "pending",
+            createdAt: remote.createdAt || new Date().toISOString(),
+            startsAt: remote.startAt ?? remote.startsAt ?? null,
+            endsAt: remote.endsAt ?? null,
+            pricingLabel: remote.pricingLabel || "",
+            donateUrl: remote.donateUrl ?? null,
+          }));
 
-            if (!remote) return local;
-
-            return {
-              ...local,
-              country: remote.country ?? local.country,
-              status: remote.status ?? local.status,
-              startsAt: remote.startAt ?? local.startsAt,
-              endsAt: remote.endsAt ?? local.endsAt,
-              pricingLabel: remote.pricingLabel ?? local.pricingLabel,
-              donateUrl: remote.donateUrl ?? local.donateUrl,
-            };
-          });
-
+          const next = dedupeCreatorChannels([...remoteItems, ...current]);
           writeCreatorChannels(next);
           return next;
-        });        
+        });
       } catch {
         // silent sync fail
       }
@@ -371,9 +397,15 @@ export function CreatorChannelPanel({
     setTags((current) => [...current, childValue]);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!user) {
       alert(ui.authRequired);
+      return;
+    }
+
+    const cleanChannelTitle = channelTitle.trim();
+    if (!cleanChannelTitle) {
+      alert(ui.nameError);
       return;
     }
 
@@ -398,12 +430,26 @@ export function CreatorChannelPanel({
       return;
     }
 
+    const duplicate = channels.find(
+      (item) =>
+        String(item.channelHandle).replace(/^@+/, "").toLowerCase() === normalized.handle.toLowerCase() &&
+        String(item.country).toLowerCase() === String(country).toLowerCase()
+    );
+
+    if (duplicate) {
+      alert("Этот канал уже добавлен. Откройте существующую карточку или продлите размещение.");
+      return;
+    }
+
     const now = new Date().toISOString();
     const item: CreatorChannelPlacement = {
-      id: `${user.id}_${normalized.handle}_${Date.now()}`,
+      id: `${user.id}_${normalized.handle.toLowerCase()}_${String(country).toLowerCase()}`,
       ownerTelegramId: user.id,
       channelUrl: normalized.url,
       channelHandle: normalized.handle,
+      channelTitle: cleanChannelTitle,
+      channelAvatarUrl: null,
+      verified: false,
       country,
       tags,
       plan,
@@ -415,8 +461,26 @@ export function CreatorChannelPanel({
       donateUrl: null,
     };
 
+    try {
+      const response = await fetch("/api/telegram-webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "site", action: "upsert_placement", placement: item }),
+      });
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || !data?.ok) {
+        alert("Не получилось создать заявку. Попробуйте ещё раз.");
+        return;
+      }
+    } catch {
+      alert("Не получилось создать заявку. Проверьте интернет и попробуйте ещё раз.");
+      return;
+    }
+
     appendCreatorChannel(item);
-    setChannels((current) => [item, ...current]);
+    setChannels((current) => dedupeCreatorChannels([item, ...current]));
+    setChannelTitle("");
     setChannelUrl("");
     setTags([]);
     setRulesAccepted(false);
@@ -450,12 +514,6 @@ export function CreatorChannelPanel({
     window.open(buildBotUrl(nextItem), "_blank", "noopener,noreferrer");
   };
 
-  const getChannelCardText = (item: CreatorChannelPlacement) => {
-    if (item.status === "active") return ui.activeText;
-    if (item.status === "expired") return ui.expiredText;
-    if (item.status === "paused") return ui.pausedText;
-    return ui.waitingBotText;
-  };
 
   return (
     <div className="space-y-4">
@@ -472,6 +530,16 @@ export function CreatorChannelPanel({
         ) : null}
 
         <div className="text-secondary text-sm leading-6">{ui.formText}</div>
+
+        <label className="text-secondary mt-5 block text-xs font-semibold uppercase tracking-[0.14em]">
+          {ui.nameLabel}
+        </label>
+        <input
+          value={channelTitle}
+          onChange={(event) => setChannelTitle(event.target.value)}
+          placeholder={ui.namePlaceholder}
+          className="bg-surface text-primary focus-border-strong mt-2 w-full rounded-full border border-soft px-4 py-3 text-sm outline-none transition"
+        />
 
         <label className="text-secondary mt-5 block text-xs font-semibold uppercase tracking-[0.14em]">
           {ui.urlLabel}
@@ -501,10 +569,6 @@ export function CreatorChannelPanel({
           <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
         </div>
 
-        <div className="mt-4 rounded-3xl bg-surface-soft px-4 py-3">
-          <div className="text-secondary text-xs uppercase tracking-[0.14em]">{ui.price}</div>
-          <div className="text-primary mt-1 text-lg font-semibold">{pricing.label}</div>
-        </div>
 
         <div className="mt-5 flex items-end justify-between gap-3">
           <label className="text-secondary block text-xs font-semibold uppercase tracking-[0.14em]">
@@ -648,17 +712,19 @@ export function CreatorChannelPanel({
           </button>
         </div>
 
+        {plan === "paid" ? (
+          <div className="mt-3 rounded-3xl bg-surface-soft px-4 py-3">
+            <div className="text-secondary text-xs uppercase tracking-[0.14em]">{ui.price}</div>
+            <div className="text-primary mt-1 text-lg font-semibold">{pricing.label}</div>
+          </div>
+        ) : null}
+
         {plan === "barter" ? (
           <div className="text-secondary mt-3 rounded-3xl bg-surface-soft px-4 py-3 text-xs leading-5">
             {ui.barterPost}
           </div>
         ) : null}
 
-        {plan === "paid" ? (
-          <div className="text-secondary mt-3 rounded-3xl bg-surface-soft px-4 py-3 text-xs leading-5">
-            {ui.donateOnlyPaid}
-          </div>
-        ) : null}
 
         <div className="mt-5 rounded-3xl border border-soft bg-surface-soft p-4">
           <div className="flex items-start gap-3">
@@ -709,129 +775,129 @@ export function CreatorChannelPanel({
         <div className="text-primary text-sm font-semibold">{ui.myChannels}</div>
         <div className="mt-4 space-y-3">
           {channels.length ? (
-            channels.map((item) => (
-              <div
-                key={item.id}
-                className="rounded-[26px] border border-soft bg-surface-soft p-4"
-              >
-                <div className="flex items-start gap-3">
-                  <img
-                    src={`https://t.me/i/userpic/320/${item.channelHandle}.jpg`}
-                    alt=""
-                    className="h-14 w-14 rounded-full object-cover border border-soft bg-surface"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        "https://www.gravatar.com/avatar/?d=mp&s=200";
-                    }}
-                  />
+            channels.map((item) => {
+              const cleanHandle = item.channelHandle.replace(/^@+/, "");
+              const title = item.channelTitle?.trim() || cleanHandle;
+              const avatarUrl = item.channelAvatarUrl || `https://t.me/i/userpic/320/${cleanHandle}.jpg`;
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center gap-1">
-                      <div className="truncate text-primary text-sm font-semibold">
-                        @{item.channelHandle}
+              return (
+                <div
+                  key={item.id}
+                  className="rounded-[26px] border border-soft bg-surface-soft p-4"
+                >
+                  <div className="flex items-start gap-3">
+                    <img
+                      src={avatarUrl}
+                      alt=""
+                      className="h-14 w-14 rounded-full object-cover border border-soft bg-surface"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src =
+                          "https://www.gravatar.com/avatar/?d=mp&s=200";
+                      }}
+                    />
+
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1">
+                        <div className="truncate text-primary text-sm font-semibold">
+                          {title}
+                        </div>
+
+                        {item.verified ? (
+                          <BadgeCheck className="h-4 w-4 text-blue-500 shrink-0" />
+                        ) : null}
                       </div>
 
-                      {item.status === "active" ? (
-                        <BadgeCheck className="h-4 w-4 text-blue-500 shrink-0" />
-                      ) : null}
+                      <div className="text-secondary text-xs mt-1">
+                        @{cleanHandle}
+                      </div>
                     </div>
 
-                    <div className="text-secondary text-xs mt-1">
-                      {item.pricingLabel}
+                    <div
+                      className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                        item.status === "active"
+                          ? "bg-emerald-500/15 text-emerald-500"
+                          : item.status === "pending"
+                          ? "bg-blue-500/15 text-blue-500"
+                          : "bg-amber-500/15 text-amber-500"
+                      }`}
+                    >
+                      {ui[item.status]}
                     </div>
                   </div>
 
-                  <div
-                    className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                      item.status === "active"
-                        ? "bg-emerald-500/15 text-emerald-500"
-                        : item.status === "pending"
-                        ? "bg-blue-500/15 text-blue-500"
-                        : "bg-amber-500/15 text-amber-500"
-                    }`}
-                  >
-                    {ui[item.status]}
-                  </div>
-                </div>
+                  {item.plan === "paid" && item.status === "active" ? (
+                    <div className="mt-3 rounded-[18px] bg-surface px-3 py-3">
+                      <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
+                        {ui.donateLabel}
+                      </div>
 
-                <div className="mt-3 rounded-[18px] bg-surface px-3 py-3 text-xs text-secondary leading-5">
-                  {item.status === "active"
-                    ? "Канал добавлен. Следующий пост автоматически появится на margeleT после обновления ленты."
-                    : getChannelCardText(item)}                    
-                </div>
+                      <div className="flex gap-2">
+                        <input
+                          value={item.donateUrl || ""}
+                          onChange={(event) => saveDonateUrl(item, event.target.value)}
+                          placeholder={ui.donatePlaceholder}
+                          className="min-w-0 flex-1 rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm text-primary outline-none"
+                        />
 
-                {item.plan === "paid" && item.status === "active" ? (
-                  <div className="mt-3 rounded-[18px] bg-surface px-3 py-3">
-                    <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-secondary">
-                      {ui.donateLabel}
+                        <button
+                          type="button"
+                          onClick={() => saveDonateUrl(item, item.donateUrl || "")}
+                          className="rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
+                        >
+                          {ui.saveDonate}
+                        </button>
+                      </div>
+                    </div>
+                  ) : null}
+
+                  <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
+                    <div className="rounded-[14px] bg-surface px-3 py-2">
+                      <div className="text-secondary uppercase opacity-60">страна</div>
+                      <div className="text-primary mt-1 font-semibold">
+                        {item.country.toUpperCase()}
+                      </div>
                     </div>
 
-                    <div className="flex gap-2">
-                      <input
-                        value={item.donateUrl || ""}
-                        onChange={(event) => saveDonateUrl(item, event.target.value)}
-                        placeholder={ui.donatePlaceholder}
-                        className="min-w-0 flex-1 rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm text-primary outline-none"
-                      />
+                    <div className="rounded-[14px] bg-surface px-3 py-2">
+                      <div className="text-secondary uppercase opacity-60">тип</div>
+                      <div className="text-primary mt-1 font-semibold">
+                        {item.plan === "paid" ? ui.paidPlan : ui.barterPlan}
+                      </div>
+                    </div>
 
+                    <div className="rounded-[14px] bg-surface px-3 py-2">
+                      <div className="text-secondary uppercase opacity-60">срок</div>
+                      <div className="text-primary mt-1 font-semibold">
+                        {formatDaysLeft(item.endsAt)}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex gap-2">
+                    <a
+                      href={`/${cleanHandle}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      В канал
+                    </a>
+
+                    {item.status === "expired" || item.status === "paused" ? (
                       <button
                         type="button"
-                        onClick={() => saveDonateUrl(item, item.donateUrl || "")}
-                        className="rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
+                        onClick={() => renewPlacement(item)}
+                        className="inline-flex items-center gap-2 rounded-full border border-soft px-4 py-2.5 text-sm font-semibold text-primary"
                       >
-                        {ui.saveDonate}
+                        <RotateCw className="h-4 w-4" />
+                        {ui.renew}
                       </button>
-                    </div>
-                  </div>
-                ) : null}
-
-                <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
-                  <div className="rounded-[14px] bg-surface px-3 py-2">
-                    <div className="text-secondary uppercase opacity-60">страна</div>
-                    <div className="text-primary mt-1 font-semibold">
-                      {item.country.toUpperCase()}
-                    </div>
-                  </div>
-
-                  <div className="rounded-[14px] bg-surface px-3 py-2">
-                    <div className="text-secondary uppercase opacity-60">тип</div>
-                    <div className="text-primary mt-1 font-semibold">
-                      {item.plan === "paid" ? ui.paidPlan : ui.barterPlan}
-                    </div>
-                  </div>
-
-                  <div className="rounded-[14px] bg-surface px-3 py-2">
-                    <div className="text-secondary uppercase opacity-60">срок</div>
-                    <div className="text-primary mt-1 font-semibold">
-                      {formatDaysLeft(item.endsAt)}
-                    </div>
+                    ) : null}
                   </div>
                 </div>
-
-                <div className="mt-3 flex gap-2">
-                  <a
-                    href={`/${item.channelHandle.replace(/^@+/, "")}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    В канал
-                  </a>
-
-                  {item.status === "expired" || item.status === "paused" ? (
-                    <button
-                      type="button"
-                      onClick={() => renewPlacement(item)}
-                      className="inline-flex items-center gap-2 rounded-full border border-soft px-4 py-2.5 text-sm font-semibold text-primary"
-                    >
-                      <RotateCw className="h-4 w-4" />
-                      {ui.renew}
-                    </button>
-                  ) : null}
-                </div>
-              </div>
-            ))            
+              );
+            })
           ) : (
             <div className="text-secondary rounded-[24px] bg-surface-soft px-4 py-4 text-sm">
               {ui.noChannels}

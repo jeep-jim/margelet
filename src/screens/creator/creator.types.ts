@@ -23,6 +23,9 @@ export type CreatorChannelPlacement = {
   ownerTelegramId: string;
   channelUrl: string;
   channelHandle: string;
+  channelTitle?: string;
+  channelAvatarUrl?: string | null;
+  verified?: boolean;
   country: Locale;
   tags: string[];
   plan: CreatorChannelPlan;

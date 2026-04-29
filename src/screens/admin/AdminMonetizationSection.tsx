@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { CreditCard, Gift, PauseCircle, TimerReset } from "lucide-react";
+import { BadgeCheck, CreditCard, Gift, PauseCircle, TimerReset } from "lucide-react";
 import { formatDaysLeft } from "../creator/creator.monetization";
 import type { CreatorChannelPlacement } from "../creator/creator.types";
 
@@ -156,26 +156,48 @@ export function AdminMonetizationSection() {
 
           <div className="space-y-2">
             {filteredItems.length ? (
-              filteredItems.map((item) => (
-                <div key={item.id} className="rounded-[22px] border border-white/10 bg-black/20 p-4">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="min-w-0">
-                      <div className="truncate text-sm font-semibold text-white">@{item.channelHandle}</div>
-                      <div className="mt-1 text-xs text-white/45">
-                        владелец TG: {item.ownerTelegramId} · {item.country.toUpperCase()}
+              filteredItems.map((item) => {
+                const cleanHandle = item.channelHandle.replace(/^@+/, "");
+                const title = item.channelTitle?.trim() || cleanHandle;
+                const avatarUrl = item.channelAvatarUrl || `https://t.me/i/userpic/320/${cleanHandle}.jpg`;
+
+                return (
+                  <div key={item.id} className="rounded-[22px] border border-white/10 bg-black/20 p-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex min-w-0 items-center gap-3">
+                        <img
+                          src={avatarUrl}
+                          alt=""
+                          className="h-12 w-12 shrink-0 rounded-full border border-white/10 bg-white/10 object-cover"
+                          onError={(event) => {
+                            (event.currentTarget as HTMLImageElement).src =
+                              "https://www.gravatar.com/avatar/?d=mp&s=200";
+                          }}
+                        />
+
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-1">
+                            <div className="truncate text-sm font-semibold text-white">{title}</div>
+                            {item.verified ? <BadgeCheck className="h-4 w-4 shrink-0 text-blue-300" /> : null}
+                          </div>
+                          <div className="mt-1 truncate text-xs text-white/45">
+                            @{cleanHandle} · владелец TG: {item.ownerTelegramId} · {item.country.toUpperCase()}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-2 text-xs">
+                        <span className="rounded-full bg-white/10 px-3 py-1 text-white/70">{planLabel(item.plan)}</span>
+                        <span className="rounded-full bg-white/10 px-3 py-1 text-white/70">{statusLabel(item.status)}</span>
+                        <span className="rounded-full bg-white/10 px-3 py-1 text-white/70">{formatDaysLeft(item.endsAt)}</span>
                       </div>
                     </div>
-                    <div className="flex flex-wrap gap-2 text-xs">
-                      <span className="rounded-full bg-white/10 px-3 py-1 text-white/70">{planLabel(item.plan)}</span>
-                      <span className="rounded-full bg-white/10 px-3 py-1 text-white/70">{statusLabel(item.status)}</span>
-                      <span className="rounded-full bg-white/10 px-3 py-1 text-white/70">{formatDaysLeft(item.endsAt)}</span>
+                    <div className="mt-3 text-xs text-white/45">
+                      {item.pricingLabel} · {item.donateUrl ? "donate-ссылка есть" : "donate-ссылки нет"}
                     </div>
                   </div>
-                  <div className="mt-3 text-xs text-white/45">
-                    {item.pricingLabel} · {item.donateUrl ? "donate-ссылка есть" : "donate-ссылки нет"}
-                  </div>
-                </div>
-              ))
+                );
+              })
             ) : (
               <div className="rounded-[22px] bg-black/20 px-4 py-4 text-sm text-white/45">
                 Пока нет заявок в этом браузере. После webhook здесь будут реальные данные из хранилища.
