@@ -775,8 +775,8 @@ export function CreatorChannelPanel({
         </button>
       </div>
 
-      <div className="bg-surface rounded-[28px] border border-soft p-6">
-        <div className="text-primary text-sm font-semibold">{ui.myChannels}</div>
+      <div>
+        <div className="text-primary text-sm font-semibold px-1">{ui.myChannels}</div>
         <div className="mt-4 space-y-3">
           {channels.length ? (
             channels.map((item) => {
@@ -835,18 +835,18 @@ export function CreatorChannelPanel({
                         {ui.donateLabel}
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="space-y-2">
                         <input
                           value={item.donateUrl || ""}
                           onChange={(event) => saveDonateUrl(item, event.target.value)}
                           placeholder={ui.donatePlaceholder}
-                          className="min-w-0 flex-1 rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm text-primary outline-none"
+                          className="w-full rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm text-primary outline-none"
                         />
 
                         <button
                           type="button"
                           onClick={() => saveDonateUrl(item, item.donateUrl || "")}
-                          className="rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
+                          className="w-full rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
                         >
                           {ui.saveDonate}
                         </button>

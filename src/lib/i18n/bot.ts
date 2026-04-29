@@ -351,7 +351,7 @@ export const BOT_COMMAND_LOCALES: Array<{ locale: SiteLocale; telegramLanguageCo
   { locale: "in", telegramLanguageCode: "hi" },
   { locale: "fa", telegramLanguageCode: "fa" },
   { locale: "tr", telegramLanguageCode: "tr" },
-  { locale: "pt-br", telegramLanguageCode: "pt-br" },
+  { locale: "pt-br", telegramLanguageCode: "pt" },
   { locale: "kk", telegramLanguageCode: "kk" },
   { locale: "uz", telegramLanguageCode: "uz" },
   { locale: "ae", telegramLanguageCode: "ar" },

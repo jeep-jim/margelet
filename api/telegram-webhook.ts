@@ -198,15 +198,35 @@ async function setupBotCommands() {
     { command: "add", description: copy.commands.add },
   ];
 
+  const results: Array<{ languageCode: string; ok: boolean; error?: string }> = [];
+
   await telegram("setMyCommands", { commands: toCommands(defaultCopy) });
+  results.push({ languageCode: "default", ok: true });
+
+  const usedLanguageCodes = new Set<string>();
 
   for (const item of BOT_COMMAND_LOCALES) {
+    const languageCode = String(item.telegramLanguageCode || "").trim().toLowerCase();
+
+    if (!languageCode || usedLanguageCodes.has(languageCode)) continue;
+    usedLanguageCodes.add(languageCode);
+
     const copy = getBotCopy(null, item.locale);
-    await telegram("setMyCommands", {
-      language_code: item.telegramLanguageCode,
-      commands: toCommands(copy),
-    });
+
+    try {
+      await telegram("setMyCommands", {
+        language_code: languageCode,
+        commands: toCommands(copy),
+      });
+      results.push({ languageCode, ok: true });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.warn(`Telegram setMyCommands skipped for ${languageCode}: ${message}`);
+      results.push({ languageCode, ok: false, error: message });
+    }
   }
+
+  return results;
 }
 
 function githubHeaders() {
@@ -667,8 +687,8 @@ async function handleStatus(update: TelegramUpdate) {
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === "GET") {
     if (String(req.query.setupCommands || "") === "1") {
-      await setupBotCommands();
-      return res.status(200).json({ ok: true });
+      const commands = await setupBotCommands();
+      return res.status(200).json({ ok: true, commands });
     }
 
     const ownerTelegramId = String(req.query.ownerTelegramId || "").trim();
