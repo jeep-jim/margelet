@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import {
+  readAllCountryFeedPosts,
   readFeedFile,
   readSourcesFile,
   writeFeedFile,
@@ -292,11 +293,24 @@ async function deletePostById(body: Record<string, unknown>) {
     throw new Error("Invalid post id");
   }
 
+  const countryPosts = await readAllCountryFeedPosts<IngestedPost>();
   const feedFile = await readFeedFile<IngestedPost>();
-  const current = Array.isArray(feedFile.posts) ? feedFile.posts : [];
-  const next = current.filter((item) => item.id !== id);
+  const legacyPosts = Array.isArray(feedFile.posts) ? feedFile.posts : [];
+  const current = countryPosts.length > 0 ? countryPosts : legacyPosts;
 
-  await writeFeedFile(sortPosts(next));
+  if (!current.length) {
+    throw new Error(
+      "Delete blocked: feed index has no country posts. Run rebuild first; refusing to overwrite feed with an empty snapshot."
+    );
+  }
+
+  const next = current.filter((item) => Number(item.id) !== id);
+
+  if (next.length === current.length) {
+    throw new Error("Post not found in feed snapshot");
+  }
+
+  await writeFeedFile(sortPosts(next), { reason: `deletePostById:${id}` });
   return next;
 }
 

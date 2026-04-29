@@ -630,6 +630,23 @@ export async function readFeedCountryPosts<T = unknown>(countryCode: string): Pr
   return chunks.flatMap((chunk) => (chunk && Array.isArray(chunk.posts) ? chunk.posts : []));
 }
 
+export async function readAllCountryFeedPosts<T = unknown>(): Promise<T[]> {
+  const index = await readFeedIndexFile();
+  const countryCodes = Object.keys(index.countries || {})
+    .map((code) => normalizeCountryCode(code))
+    .filter(Boolean);
+
+  if (!countryCodes.length) {
+    return [];
+  }
+
+  const countryPosts = await Promise.all(
+    countryCodes.map((countryCode) => readFeedCountryPosts<T>(countryCode))
+  );
+
+  return countryPosts.flat();
+}
+
 export async function writeFeedFile<T = unknown>(
   posts: T[],
   options: WriteFeedFileOptions = {}
@@ -654,6 +671,12 @@ export async function writeFeedFile<T = unknown>(
   };
 
   const snapshot = buildCountryFeedFiles(orderedPosts, updatedAt);
+
+  if (orderedPosts.length > 0 && Object.keys(snapshot.index.countries || {}).length === 0) {
+    throw new Error(
+      `Refusing to write feed index with zero countries. posts=${orderedPosts.length}, reason=${options.reason || "not_provided"}`
+    );
+  }
 
   await persistFiles(
     [
