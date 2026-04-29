@@ -1,5 +1,5 @@
-import { Check, ChevronDown } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Check, ChevronDown, X } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import type { Locale } from "../../types/app";
 import { buildAlphabeticalLocales, getLocaleOption } from "./creator.utils";
 
@@ -13,18 +13,12 @@ export function CreatorLocaleDropdown({
   onChange: (locale: Locale) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement | null>(null);
 
   const options = useMemo(() => buildAlphabeticalLocales(), []);
   const selected = getLocaleOption(value);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!rootRef.current) return;
-      if (!rootRef.current.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    };
+    if (!open) return;
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -32,61 +26,82 @@ export function CreatorLocaleDropdown({
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     document.addEventListener("keydown", handleEscape);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleEscape);
     };
-  }, []);
+  }, [open]);
 
   return (
-    <div ref={rootRef} className="relative">
-      <div className="text-secondary mb-2 text-xs font-medium uppercase tracking-[0.08em]">
-        {label}
-      </div>
+    <div>
+      {label ? (
+        <div className="text-secondary mb-2 text-xs font-medium uppercase tracking-[0.08em]">
+          {label}
+        </div>
+      ) : null}
 
       <button
         type="button"
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => setOpen(true)}
         className="bg-surface text-primary bg-surface-hover flex min-h-[52px] w-full items-center justify-between rounded-full border border-soft px-4 py-3 text-left transition"
       >
         <span className="text-primary truncate pr-4 text-sm font-medium">
           {selected?.nativeLabel ?? value}
         </span>
 
-        <ChevronDown
-          className={`text-secondary h-4 w-4 shrink-0 transition ${
-            open ? "rotate-180" : ""
-          }`}
-        />
+        <ChevronDown className="text-secondary h-4 w-4 shrink-0" />
       </button>
 
       {open ? (
-        <div className="theme-scrollbar bg-surface shadow-soft absolute bottom-[calc(100%+8px)] left-0 right-0 z-30 max-h-80 overflow-y-auto rounded-[24px] border border-soft p-2">
-          {options.map((item) => {
-            const isActive = item.code === value;
+        <div className="fixed inset-0 z-[100] bg-page/95 backdrop-blur-xl">
+          <div className="mx-auto flex h-full w-full max-w-[720px] flex-col px-4 pb-5 pt-[max(18px,env(safe-area-inset-top))] sm:px-6">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <div className="text-primary text-lg font-semibold">🌎</div>
+                <div className="text-secondary mt-1 truncate text-sm">
+                  {selected?.nativeLabel ?? value}
+                </div>
+              </div>
 
-            return (
               <button
-                key={item.code}
                 type="button"
-                onClick={() => {
-                  onChange(item.code as Locale);
-                  setOpen(false);
-                }}
-                className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm transition ${
-                  isActive
-                    ? "bg-strong text-strong-foreground"
-                    : "text-secondary bg-surface-hover"
-                }`}
+                onClick={() => setOpen(false)}
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-soft bg-surface text-primary transition hover:bg-surface-soft"
+                aria-label="Close"
               >
-                <span className="truncate pr-4">{item.nativeLabel}</span>
-                {isActive ? <Check className="h-4 w-4 shrink-0" /> : null}
+                <X className="h-5 w-5" />
               </button>
-            );
-          })}
+            </div>
+
+            <div className="theme-scrollbar min-h-0 flex-1 overflow-y-auto rounded-[28px] border border-soft bg-surface p-2 shadow-soft">
+              {options.map((item) => {
+                const isActive = item.code === value;
+
+                return (
+                  <button
+                    key={item.code}
+                    type="button"
+                    onClick={() => {
+                      onChange(item.code as Locale);
+                      setOpen(false);
+                    }}
+                    className={`flex w-full items-center justify-between rounded-2xl px-4 py-4 text-left text-base transition ${
+                      isActive
+                        ? "bg-strong text-strong-foreground"
+                        : "text-secondary hover:bg-surface-soft"
+                    }`}
+                  >
+                    <span className="truncate pr-4">{item.nativeLabel}</span>
+                    {isActive ? <Check className="h-5 w-5 shrink-0" /> : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       ) : null}
     </div>

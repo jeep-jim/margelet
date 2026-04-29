@@ -110,17 +110,26 @@ function updateCreatorChannel(item: CreatorChannelPlacement) {
   writeCreatorChannels(parsed.map((current) => (current.id === item.id ? item : current)));
 }
 
-function isValidTelegramDonateUrl(value: string) {
-  if (!value.trim()) return true;
+function normalizeTelegramDonateUrl(value: string) {
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+
+  const withProtocol = trimmed.startsWith("http://") || trimmed.startsWith("https://")
+    ? trimmed
+    : `https://${trimmed}`;
 
   try {
-    const url = new URL(value.trim());
+    const url = new URL(withProtocol);
     const host = url.hostname.toLowerCase();
+    const [handle] = url.pathname.split("/").filter(Boolean);
 
-    return ["t.me", "www.t.me", "telegram.me", "www.telegram.me"].includes(host) &&
-      url.searchParams.has("direct");
+    if (!["t.me", "www.t.me"].includes(host)) return null;
+    if (!handle || !/^[A-Za-z0-9_]{4,}$/.test(handle)) return null;
+    if (url.search !== "?direct") return null;
+
+    return `https://t.me/${handle}?direct`;
   } catch {
-    return false;
+    return null;
   }
 }
 
@@ -137,13 +146,13 @@ function getUi(locale: Locale) {
         formTitle: "Добавить канал",
         formText:
           "Заполни данные канала. После отправки мы откроем Telegram-бота — там можно оплатить размещение или выбрать бартер.",
-        nameLabel: "Название канала",
+        nameLabel: "1️⃣ Название канала как в Telegram",
         namePlaceholder: "Например: margeleT space",
         nameError: "Введи название канала.",
-        urlLabel: "Ссылка на Telegram-канал",
-        countryLabel: "Страна канала",
-        tagsLabel: "Теги",
-        planLabel: "Способ размещения",
+        urlLabel: "2️⃣ Ссылка на Telegram-канал",
+        countryLabel: "3️⃣ Страна канала",
+        tagsLabel: "4️⃣ Теги",
+        planLabel: "5️⃣ Способ размещения",
         paidTitle: "Stars",
         paidText: "1 месяц размещения + возможность добавить Telegram-donate ссылку.",
         barterTitle: "Бартер",
@@ -288,6 +297,7 @@ export function CreatorChannelPanel({
   const [channels, setChannels] = useState<CreatorChannelPlacement[]>(() =>
     user ? dedupeCreatorChannels(readCreatorChannels(user.id)) : []
   );
+  const [donateDrafts, setDonateDrafts] = useState<Record<string, string>>({});
 
   const pricing = getCreatorPricing(country);
   const tagGroups = useMemo(() => SITE_TAG_GROUPS, []);
@@ -494,14 +504,17 @@ export function CreatorChannelPanel({
   };
 
   const saveDonateUrl = (item: CreatorChannelPlacement, value: string) => {
-    if (!isValidTelegramDonateUrl(value)) {
+    const normalizedDonateUrl = normalizeTelegramDonateUrl(value);
+
+    if (normalizedDonateUrl === null) {
       alert(ui.donateInvalid);
       return;
     }
 
-    const nextItem = { ...item, donateUrl: value.trim() || null };
+    const nextItem = { ...item, donateUrl: normalizedDonateUrl || null };
     updateCreatorChannel(nextItem);
     setChannels((current) => current.map((channel) => (channel.id === item.id ? nextItem : channel)));
+    setDonateDrafts((current) => ({ ...current, [item.id]: normalizedDonateUrl }));
     alert(ui.donateSaved);
   };
 
@@ -521,7 +534,7 @@ export function CreatorChannelPanel({
 
   return (
     <div className="space-y-4">
-      <div className="bg-surface rounded-[28px] border border-soft p-6">
+      <div className="px-1">
         <div className="text-primary mb-3 flex items-center gap-2 text-sm font-semibold">
           <Send className="h-4 w-4" />
           {ui.formTitle}
@@ -542,7 +555,7 @@ export function CreatorChannelPanel({
           value={channelTitle}
           onChange={(event) => setChannelTitle(event.target.value)}
           placeholder={ui.namePlaceholder}
-          className="bg-surface text-primary focus-border-strong mt-2 w-full rounded-full border border-soft px-4 py-3 text-sm outline-none transition"
+          className="mt-2 w-full rounded-full border border-soft bg-white/80 px-4 py-3 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
         />
 
         <label className="text-secondary mt-5 block text-xs font-semibold uppercase tracking-[0.14em]">
@@ -552,7 +565,7 @@ export function CreatorChannelPanel({
           value={channelUrl}
           onChange={(event) => setChannelUrl(event.target.value)}
           placeholder={copy.channelPlaceholder}
-          className="bg-surface text-primary focus-border-strong mt-2 w-full rounded-full border border-soft px-4 py-3 text-sm outline-none transition"
+          className="mt-2 w-full rounded-full border border-soft bg-white/80 px-4 py-3 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
         />
 
         <label className="text-secondary mt-5 block text-xs font-semibold uppercase tracking-[0.14em]">
@@ -562,7 +575,7 @@ export function CreatorChannelPanel({
           <select
             value={country}
             onChange={(event) => setCountry(event.target.value as Locale)}
-            className="bg-surface text-primary focus-border-strong w-full appearance-none rounded-full border border-soft px-4 py-3 pr-11 text-sm outline-none transition"
+            className="w-full appearance-none rounded-full border border-soft bg-white/80 px-4 py-3 pr-11 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
           >
             {SITE_LOCALES.map((item) => (
               <option key={item.code} value={item.code}>
@@ -587,7 +600,7 @@ export function CreatorChannelPanel({
           <button
             type="button"
             onClick={() => setTagPickerOpen((value) => !value)}
-            className="flex w-full items-center justify-between gap-3 rounded-[18px] bg-surface px-4 py-3 text-left transition hover:bg-surface-hover"
+            className="flex w-full items-center justify-between gap-3 rounded-[18px] border border-soft bg-white/70 px-4 py-3 text-left shadow-inner transition hover:bg-white/90 dark:bg-white/10 dark:hover:bg-white/15"
           >
             <div className="min-w-0 flex-1">
               {selectedParentLabels.length ? (
@@ -837,16 +850,18 @@ export function CreatorChannelPanel({
 
                       <div className="space-y-2">
                         <input
-                          value={item.donateUrl || ""}
-                          onChange={(event) => saveDonateUrl(item, event.target.value)}
+                          value={donateDrafts[item.id] ?? item.donateUrl ?? ""}
+                          onChange={(event) =>
+                            setDonateDrafts((current) => ({ ...current, [item.id]: event.target.value }))
+                          }
                           placeholder={ui.donatePlaceholder}
-                          className="w-full rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm text-primary outline-none"
+                          className="w-full rounded-full border border-soft bg-white/80 px-4 py-2.5 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
                         />
 
                         <button
                           type="button"
-                          onClick={() => saveDonateUrl(item, item.donateUrl || "")}
-                          className="w-full rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground"
+                          onClick={() => saveDonateUrl(item, donateDrafts[item.id] ?? item.donateUrl ?? "")}
+                          className="w-full rounded-full bg-strong px-4 py-2.5 text-sm font-semibold text-strong-foreground transition bg-strong-hover"
                         >
                           {ui.saveDonate}
                         </button>

@@ -1,4 +1,4 @@
-import { Download, Globe } from "lucide-react";
+import { Download } from "lucide-react";
 import type { Locale } from "../../types/app";
 import { CreatorLocaleDropdown } from "./CreatorLocaleDropdown";
 import type { ScreenCopy } from "./creator.types";
@@ -22,14 +22,13 @@ export function CreatorLanguagePanel({
 }) {
   return (
     <div className="space-y-3">
-      <div className="bg-surface rounded-[28px] border border-soft p-6">
-        <div className="text-primary mb-4 flex items-center gap-2 text-sm font-semibold">
-          <Globe className="h-4 w-4" />
+      <div className="space-y-3">
+        <div className="text-primary flex items-center gap-2 text-sm font-semibold">
           {copy.languageTitle}
         </div>
 
         <CreatorLocaleDropdown
-          label={copy.languageDropdownLabel}
+          label=""
           value={locale}
           onChange={onChangeLocale}
         />
