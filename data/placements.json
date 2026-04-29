@@ -50,23 +50,26 @@
   {
     "id": "1372669404_margelet_space_ru",
     "ownerTelegramId": "1372669404",
-    "ownerUsername": "NStasS",
+    "ownerUsername": null,
     "channelSlug": "margelet_space",
     "channelHandle": "margelet_space",
-    "channelTitle": "margelet_space",
+    "channelTitle": "margeleT space",
     "channelAvatarUrl": null,
     "verified": false,
     "country": "ru",
-    "tags": [],
-    "plan": "barter",
-    "status": "canceled",
-    "createdAt": "2026-04-28T14:03:27.891Z",
-    "startAt": "2026-04-28T15:45:25.767Z",
-    "endsAt": "2026-05-28T15:45:25.767Z",
+    "tags": [
+      "telegram",
+      "other"
+    ],
+    "plan": "paid",
+    "status": "pending",
+    "createdAt": "2026-04-29T03:01:15.469Z",
+    "startAt": null,
+    "endsAt": null,
     "pricingLabel": "2 500 Stars ⭐ / 1 месяц",
     "stars": 2500,
     "donateUrl": null,
     "telegramPaymentChargeId": null,
-    "lastCheckAt": "2026-04-28T15:45:25.767Z"
+    "lastCheckAt": null
   }
 ]
