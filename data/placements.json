@@ -37,7 +37,7 @@
       "telegram"
     ],
     "plan": "barter",
-    "status": "active",
+    "status": "paused",
     "createdAt": "2026-04-29T01:12:48.157Z",
     "startAt": "2026-04-29T01:13:39.325Z",
     "endsAt": "2026-05-29T01:13:39.325Z",
@@ -45,7 +45,10 @@
     "stars": 4900,
     "donateUrl": null,
     "telegramPaymentChargeId": null,
-    "lastCheckAt": "2026-04-29T01:13:39.325Z"
+    "lastCheckAt": "2026-04-29T04:01:52.517Z",
+    "barterViolationAt": "2026-04-29T04:01:52.517Z",
+    "barterViolationReason": "required_barter_post_missing",
+    "barterViolationNotifiedAt": null
   },
   {
     "id": "1372669404_margelet_space_ru",
