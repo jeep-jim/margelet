@@ -29,6 +29,7 @@ jobs:
       GITHUB_BRANCH: main
       NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
       MARGELET_STORAGE_MODE: local
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     steps:
       - name: Checkout
@@ -64,6 +65,7 @@ jobs:
             data/feed.json \
             public/feed.json \
             data/sources.json \
+            data/placements.json \
             data/feeds \
             public/feeds
 

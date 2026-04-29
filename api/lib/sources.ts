@@ -801,6 +801,16 @@ export async function rebuildFeedFromSources(options?: {
       (normalizedCountry ? source.countryCode === normalizedCountry : true)
   );
 
+  const activeSourceKeys = new Set(
+    activeSources.map((source) => `${source.countryCode}:${normalizeHandle(source.handle)}`)
+  );
+  const visiblePreviousFreshPosts = normalizedCountry
+    ? previousFreshPosts.filter((post) => {
+        const country = normalizeCountryCode(post.sourceCountryCode);
+        return country !== normalizedCountry || activeSourceKeys.has(getPostSourceKey(post));
+      })
+    : previousFreshPosts.filter((post) => activeSourceKeys.has(getPostSourceKey(post)));
+
   const sourcesById = new Map(allSources.map((source) => [source.id, source]));
   const activeByCountry = new Map<CountryCode, TrustedSource[]>();
 
@@ -820,7 +830,7 @@ export async function rebuildFeedFromSources(options?: {
       return pickSourcesForRun(countrySources);
     });
 
-  let currentPosts = previousFreshPosts;
+  let currentPosts = visiblePreviousFreshPosts;
 
   let countriesChecked = 0;
   let sourcesChecked = 0;
