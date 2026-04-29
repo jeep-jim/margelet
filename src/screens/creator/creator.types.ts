@@ -14,7 +14,7 @@ export type CreatorScreenProps = {
 
 export type CabinetTab = "channel" | "about" | "language";
 
-export type CreatorChannelStatus = "draft" | "pending" | "active" | "paused" | "expired";
+export type CreatorChannelStatus = "draft" | "pending" | "active" | "paused" | "expired" | "canceled";
 
 export type CreatorChannelPlan = "paid" | "barter";
 

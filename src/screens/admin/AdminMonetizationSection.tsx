@@ -5,7 +5,7 @@ import type { CreatorChannelPlacement } from "../creator/creator.types";
 
 const CREATOR_CHANNELS_STORAGE_KEY = "margelet_creator_channels_v1";
 
-type MonetizationFilter = "all" | "paid" | "barter" | "pending" | "active" | "expired" | "paused";
+type MonetizationFilter = "all" | "paid" | "barter" | "pending" | "active" | "expired" | "paused" | "canceled";
 
 function readPlacements() {
   if (typeof window === "undefined") return [];
@@ -23,6 +23,7 @@ function statusLabel(status: CreatorChannelPlacement["status"]) {
   if (status === "active") return "активен";
   if (status === "paused") return "пауза";
   if (status === "expired") return "истёк";
+  if (status === "canceled") return "удалён";
   return "черновик";
 }
 
@@ -37,7 +38,7 @@ export function AdminMonetizationSection() {
 
   const loadRemotePlacements = async () => {
     try {
-      const response = await fetch("/api/telegram-webhook");
+      const response = await fetch("/api/telegram-webhook?includeCanceled=1");
       const data = await response.json();
 
       if (data?.ok && Array.isArray(data.items)) {
@@ -52,20 +53,47 @@ export function AdminMonetizationSection() {
     loadRemotePlacements();
   }, []);
 
+  const updatePlacementStatus = async (placementId: string, status: CreatorChannelPlacement["status"]) => {
+    try {
+      const response = await fetch("/api/telegram-webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "site",
+          action: "update_placement_status",
+          placementId,
+          status,
+          removeSource: status === "paused" || status === "canceled",
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!response.ok || !data?.ok) {
+        alert("Не получилось обновить заявку");
+        return;
+      }
+
+      await loadRemotePlacements();
+    } catch {
+      alert("Не получилось обновить заявку");
+    }
+  };
+
   const stats = useMemo(() => {
     const paid = items.filter((item) => item.plan === "paid");
     const barter = items.filter((item) => item.plan === "barter");
     const active = items.filter((item) => item.status === "active");
     const pending = items.filter((item) => item.status === "pending");
     const expired = items.filter((item) => item.status === "expired" || item.status === "paused");
+    const canceled = items.filter((item) => item.status === "canceled");
 
-    return { paid, barter, active, pending, expired };
+    return { paid, barter, active, pending, expired, canceled };
   }, [items]);
 
   const filteredItems = useMemo(() => {
     return items
       .filter((item) => {
-        if (filter === "all") return true;
+        if (filter === "all") return item.status !== "canceled";
         if (filter === "paid" || filter === "barter") return item.plan === filter;
         return item.status === filter;
       })
@@ -80,6 +108,7 @@ export function AdminMonetizationSection() {
     { value: "active", label: "активные" },
     { value: "expired", label: "истекли" },
     { value: "paused", label: "пауза" },
+    { value: "canceled", label: "удалённые" },
   ];
 
   return (
@@ -192,8 +221,46 @@ export function AdminMonetizationSection() {
                         <span className="rounded-full bg-white/10 px-3 py-1 text-white/70">{formatDaysLeft(item.endsAt)}</span>
                       </div>
                     </div>
-                    <div className="mt-3 text-xs text-white/45">
-                      {item.pricingLabel} · {item.donateUrl ? "donate-ссылка есть" : "donate-ссылки нет"}
+                    <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="text-xs text-white/45">
+                        {item.pricingLabel} · {item.donateUrl ? "donate-ссылка есть" : "donate-ссылки нет"}
+                      </div>
+
+                      <div className="flex flex-wrap gap-2">
+                        {item.status === "active" ? (
+                          <button
+                            type="button"
+                            onClick={() => updatePlacementStatus(item.id, "paused")}
+                            className="rounded-full border border-amber-400/25 bg-amber-400/10 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:bg-amber-400/15"
+                          >
+                            пауза
+                          </button>
+                        ) : null}
+
+                        {item.status === "paused" || item.status === "pending" || item.status === "expired" ? (
+                          <button
+                            type="button"
+                            onClick={() => updatePlacementStatus(item.id, "active")}
+                            className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-400/15"
+                          >
+                            активировать
+                          </button>
+                        ) : null}
+
+                        {item.status !== "canceled" ? (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              if (confirm("Удалить заявку и убрать канал из ленты?")) {
+                                updatePlacementStatus(item.id, "canceled");
+                              }
+                            }}
+                            className="rounded-full border border-red-400/25 bg-red-400/10 px-3 py-1.5 text-xs font-semibold text-red-200 transition hover:bg-red-400/15"
+                          >
+                            удалить заявку
+                          </button>
+                        ) : null}
+                      </div>
                     </div>
                   </div>
                 );

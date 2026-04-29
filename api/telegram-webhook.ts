@@ -3,7 +3,7 @@ import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/crea
 import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo.js";
 
 type PlacementPlan = "paid" | "barter";
-type PlacementStatus = "pending" | "active" | "paused" | "expired";
+type PlacementStatus = "pending" | "active" | "paused" | "expired" | "canceled";
 
 type Placement = {
   id: string;
@@ -377,6 +377,21 @@ async function upsertSourceFromPlacement(placement: Placement) {
   await writeSources(data, sha, `Add creator source ${handle}`);
 }
 
+async function removeSourceFromPlacement(placement: Placement) {
+  const country = normalizeCountry(placement.country);
+  const handle = normalizeHandle(placement.channelHandle);
+  const { data, sha } = await readSources();
+  const nextSources = data.sources.filter(
+    (source) => !(normalizeCountry(source.countryCode) === country && normalizeHandle(source.handle) === handle)
+  );
+
+  if (nextSources.length === data.sources.length) return;
+
+  data.updatedAt = new Date().toISOString();
+  data.sources = nextSources;
+  await writeSources(data, sha, `Remove creator source ${handle}`);
+}
+
 async function activatePlacement(id: string, patch: Partial<Placement>) {
   const placement = await updatePlacement(id, {
     ...patch,
@@ -410,17 +425,51 @@ async function verifyBarterPost(handle: string, expectedSlug: string) {
 }
 
 async function handleSiteAction(body: any, res: VercelResponse) {
-  if (body?.action !== "upsert_placement") {
-    return res.status(400).json({ ok: false, error: "Unknown site action" });
+  if (body?.action === "upsert_placement") {
+    const placement = normalizePlacement(body.placement || {});
+    if (!placement.ownerTelegramId || !placement.channelHandle || !placement.country) {
+      return res.status(400).json({ ok: false, error: "Invalid placement" });
+    }
+
+    const result = await upsertPlacement(placement);
+    return res.status(200).json({ ok: true, placement: result.placement, existed: result.existed });
   }
 
-  const placement = normalizePlacement(body.placement || {});
-  if (!placement.ownerTelegramId || !placement.channelHandle || !placement.country) {
-    return res.status(400).json({ ok: false, error: "Invalid placement" });
+  if (body?.action === "update_placement_status") {
+    const placementId = asString(body.placementId);
+    const status = asString(body.status) as PlacementStatus;
+    const allowed: PlacementStatus[] = ["pending", "active", "paused", "expired", "canceled"];
+
+    if (!placementId || !allowed.includes(status)) {
+      return res.status(400).json({ ok: false, error: "Invalid placement status update" });
+    }
+
+    const { items } = await readPlacements();
+    const current = items.find((item) => item.id === placementId);
+
+    if (!current) {
+      return res.status(404).json({ ok: false, error: "Placement not found" });
+    }
+
+    let next: Placement | null = null;
+
+    if (status === "active") {
+      next = await activatePlacement(placementId, {
+        status: "active",
+        startAt: current.startAt || new Date().toISOString(),
+        endsAt: current.endsAt || addDays(30),
+      });
+    } else {
+      next = await updatePlacement(placementId, { status });
+      if (next && (status === "paused" || status === "canceled" || Boolean(body.removeSource))) {
+        await removeSourceFromPlacement(next);
+      }
+    }
+
+    return res.status(200).json({ ok: true, placement: next });
   }
 
-  const result = await upsertPlacement(placement);
-  return res.status(200).json({ ok: true, placement: result.placement, existed: result.existed });
+  return res.status(400).json({ ok: false, error: "Unknown site action" });
 }
 
 async function handleStart(update: TelegramUpdate) {
@@ -546,11 +595,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const ownerTelegramId = String(req.query.ownerTelegramId || "").trim();
     const { items } = await readPlacements();
 
+    const includeCanceled = String(req.query.includeCanceled || "") === "1";
+    const visibleItems = includeCanceled ? items : items.filter((item) => item.status !== "canceled");
+
     return res.status(200).json({
       ok: true,
       items: ownerTelegramId
-        ? items.filter((item) => item.ownerTelegramId === ownerTelegramId)
-        : items,
+        ? visibleItems.filter((item) => item.ownerTelegramId === ownerTelegramId)
+        : visibleItems,
     });
   }
 

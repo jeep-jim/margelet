@@ -170,6 +170,7 @@ function getUi(locale: Locale) {
         active: "активен",
         paused: "пауза",
         expired: "истёк",
+        canceled: "удалён",
         daysLeft: "Осталось",
         price: "Тариф",
         donateOnlyPaid: "Donate-ссылка доступна только для платного размещения.",
@@ -233,6 +234,7 @@ function getUi(locale: Locale) {
         active: "active",
         paused: "paused",
         expired: "expired",
+        canceled: "removed",
         daysLeft: "Left",
         price: "Plan",
         donateOnlyPaid: "Donate link is available only for paid placement.",
@@ -305,27 +307,29 @@ export function CreatorChannelPanel({
 
         if (!alive || !data?.ok || !Array.isArray(data.items)) return;
 
-        setChannels((current) => {
-          const remoteItems = data.items.map((remote: any) => ({
-            id: String(remote.id || [remote.ownerTelegramId, remote.channelHandle, remote.country].join("_")),
-            ownerTelegramId: String(remote.ownerTelegramId || user.id),
-            channelUrl: "https://t.me/" + String(remote.channelHandle || "").replace(/^@+/, ""),
-            channelHandle: String(remote.channelHandle || "").replace(/^@+/, ""),
-            channelTitle: remote.channelTitle,
-            channelAvatarUrl: remote.channelAvatarUrl ?? null,
-            verified: Boolean(remote.verified),
-            country: String(remote.country || locale).toLowerCase() as Locale,
-            tags: Array.isArray(remote.tags) ? remote.tags : [],
-            plan: remote.plan === "barter" ? "barter" : "paid",
-            status: remote.status || "pending",
-            createdAt: remote.createdAt || new Date().toISOString(),
-            startsAt: remote.startAt ?? remote.startsAt ?? null,
-            endsAt: remote.endsAt ?? null,
-            pricingLabel: remote.pricingLabel || "",
-            donateUrl: remote.donateUrl ?? null,
-          }));
+        setChannels(() => {
+          const remoteItems = data.items
+            .filter((remote: any) => remote?.status !== "canceled")
+            .map((remote: any) => ({
+              id: String(remote.id || [remote.ownerTelegramId, remote.channelHandle, remote.country].join("_")),
+              ownerTelegramId: String(remote.ownerTelegramId || user.id),
+              channelUrl: "https://t.me/" + String(remote.channelHandle || "").replace(/^@+/, ""),
+              channelHandle: String(remote.channelHandle || "").replace(/^@+/, ""),
+              channelTitle: remote.channelTitle,
+              channelAvatarUrl: remote.channelAvatarUrl ?? null,
+              verified: Boolean(remote.verified),
+              country: String(remote.country || locale).toLowerCase() as Locale,
+              tags: Array.isArray(remote.tags) ? remote.tags : [],
+              plan: remote.plan === "barter" ? "barter" : "paid",
+              status: remote.status || "pending",
+              createdAt: remote.createdAt || new Date().toISOString(),
+              startsAt: remote.startAt ?? remote.startsAt ?? null,
+              endsAt: remote.endsAt ?? null,
+              pricingLabel: remote.pricingLabel || "",
+              donateUrl: remote.donateUrl ?? null,
+            }));
 
-          const next = dedupeCreatorChannels([...remoteItems, ...current]);
+          const next = dedupeCreatorChannels(remoteItems);
           writeCreatorChannels(next);
           return next;
         });
