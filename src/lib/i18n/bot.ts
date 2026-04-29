@@ -1,4 +1,4 @@
-import type { SiteLocale } from "../locales";
+import type { SiteLocale } from "../locales.js";
 
 export type BotCopy = {
   start: string;
