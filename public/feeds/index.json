@@ -1,5 +1,102 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-29T09:36:18.132Z",
-  "countries": {}
+  "updatedAt": "2026-04-29T10:20:48.302Z",
+  "countries": {
+    "ar": {
+      "code": "ar",
+      "posts": 1,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/ar.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "en": {
+      "code": "en",
+      "posts": 1,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/en.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "es": {
+      "code": "es",
+      "posts": 2,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/es.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "fa": {
+      "code": "fa",
+      "posts": 60,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/fa.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "in": {
+      "code": "in",
+      "posts": 2,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/in.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "it": {
+      "code": "it",
+      "posts": 1,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/it.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "kk": {
+      "code": "kk",
+      "posts": 15,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/kk.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "pt-br": {
+      "code": "pt-br",
+      "posts": 7,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/pt-br.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "ru": {
+      "code": "ru",
+      "posts": 44,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/ru.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "sa": {
+      "code": "sa",
+      "posts": 13,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/sa.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "uk": {
+      "code": "uk",
+      "posts": 2,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/uk.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    },
+    "uz": {
+      "code": "uz",
+      "posts": 17,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/uz.json",
+      "updatedAt": "2026-04-29T10:20:48.302Z"
+    }
+  }
 }
