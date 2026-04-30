@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-30T19:40:47.612Z",
+  "updatedAt": "2026-04-30T19:42:42.392Z",
   "sources": [
     {
       "id": "es:20m",
@@ -2791,6 +2791,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:https://t.me/durov_russia",
+      "countryCode": "ru",
+      "handle": "durov_russia",
+      "title": "Павел Дуров",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "telegram",
+      "tags": [
+        "telegram",
+        "people"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-04-30T09:33:32.320Z",
+      "updatedAt": "2026-04-30T19:42:42.372Z",
+      "lastCheckedAt": "2026-04-30T16:47:00.843Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "de:dw_deutsch",
       "countryCode": "de",
       "handle": "dw_deutsch",
@@ -5076,29 +5099,6 @@
       "lastSeenPostId": 1260,
       "importedPostsCount": 49,
       "lastRefreshCursorPostId": 1253
-    },
-    {
-      "id": "ru:https://t.me/durov_russia",
-      "countryCode": "ru",
-      "handle": "https://t.me/durov_russia",
-      "title": "Павел Дуров",
-      "avatarUrl": null,
-      "avatarOverride": null,
-      "verified": false,
-      "defaultTag": "telegram",
-      "tags": [
-        "telegram",
-        "people"
-      ],
-      "status": "active",
-      "note": null,
-      "createdAt": "2026-04-30T09:33:32.320Z",
-      "updatedAt": "2026-04-30T18:44:18.782Z",
-      "lastCheckedAt": "2026-04-30T16:47:00.843Z",
-      "lastImportedAt": null,
-      "lastSeenPostId": null,
-      "importedPostsCount": 0,
-      "lastRefreshCursorPostId": null
     },
     {
       "id": "en:ign",
