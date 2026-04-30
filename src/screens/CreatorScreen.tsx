@@ -124,7 +124,7 @@ export function CreatorScreen({
                 }`}
               >
                 <Plus className="h-4 w-4" />
-                Добавить канал
+                {copy.channelTabTitle}
               </button>
             </div>            
 

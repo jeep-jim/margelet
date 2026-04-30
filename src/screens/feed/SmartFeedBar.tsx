@@ -325,6 +325,47 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
   },
 };
 
+function getMyCountryLabel(locale: Locale) {
+  const labels: Record<Locale, string> = {
+    ru: "мой", uk: "мій", en: "mine", in: "मेरा", fa: "من", tr: "benim", "pt-br": "meu",
+    kk: "менің", uz: "meniki", ae: "لي", eg: "لي", pk: "میرا", id: "milikku", mx: "mío",
+    sa: "لي", es: "mío", it: "mio", fr: "mien", de: "mein", ar: "mío", co: "mío",
+    za: "mine", ng: "mine", zh: "我的", ms: "milik saya",
+  };
+  return labels[locale] ?? labels.en;
+}
+
+function getMaxCountriesHint(locale: Locale) {
+  const labels: Record<Locale, string> = {
+    ru: "🌐 В ленту можно добавить до 5 стран",
+    uk: "🌐 У стрічку можна додати до 5 країн",
+    en: "🌐 You can add up to 5 countries to the feed",
+    in: "🌐 फ़ीड में 5 देशों तक जोड़े जा सकते हैं",
+    fa: "🌐 می‌توانید تا ۵ کشور به فید اضافه کنید",
+    tr: "🌐 Akışa en fazla 5 ülke ekleyebilirsin",
+    "pt-br": "🌐 Você pode adicionar até 5 países ao feed",
+    kk: "🌐 Лентаға 5 елге дейін қосуға болады",
+    uz: "🌐 Lentaga 5 tagacha mamlakat qo‘shish mumkin",
+    ae: "🌐 يمكنك إضافة ما يصل إلى 5 دول إلى الخلاصة",
+    eg: "🌐 يمكنك إضافة ما يصل إلى 5 دول إلى الخلاصة",
+    pk: "🌐 فیڈ میں 5 ممالک تک شامل کیے جا سکتے ہیں",
+    id: "🌐 Kamu bisa menambahkan hingga 5 negara ke feed",
+    mx: "🌐 Puedes añadir hasta 5 países al feed",
+    sa: "🌐 يمكنك إضافة ما يصل إلى 5 دول إلى الخلاصة",
+    es: "🌐 Puedes añadir hasta 5 países al feed",
+    it: "🌐 Puoi aggiungere fino a 5 paesi al feed",
+    fr: "🌐 Tu peux ajouter jusqu’à 5 pays au flux",
+    de: "🌐 Du kannst bis zu 5 Länder zum Feed hinzufügen",
+    ar: "🌐 Puedes añadir hasta 5 países al feed",
+    co: "🌐 Puedes añadir hasta 5 países al feed",
+    za: "🌐 You can add up to 5 countries to the feed",
+    ng: "🌐 You can add up to 5 countries to the feed",
+    zh: "🌐 最多可向信息流添加 5 个国家",
+    ms: "🌐 Anda boleh menambah sehingga 5 negara ke suapan",
+  };
+  return labels[locale] ?? labels.en;
+}
+
 const LOCALE_SHORT: Record<Locale, string> = {
   ru: "RU",
   uk: "UA",
@@ -765,7 +806,7 @@ export function SmartFeedBar({
                         <span className="mr-3">{meta.flag}</span>
                         <span>{meta.label}</span>
                         {isPrimary ? (
-                          <span className="ml-1 text-[#2f6df6]">(мой)</span>
+                          <span className="ml-1 text-[#2f6df6]">({getMyCountryLabel(locale)})</span>
                         ) : null}
                       </div>
 
@@ -808,7 +849,7 @@ export function SmartFeedBar({
                   aria-expanded={countryPickerOpen}
                 >
                   <span className={`text-[13px] ${isDark ? "text-[#95a8bd]" : "text-secondary"}`}>
-                    🌐 В ленту можно добавить до 5 стран
+                    {getMaxCountriesHint(locale)}
                   </span>
                   <ChevronDown
                     className={`h-4 w-4 shrink-0 transition ${
