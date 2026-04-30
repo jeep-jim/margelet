@@ -607,10 +607,16 @@ async function syncSourcePosts(
       visibleLatestPostId &&
       source.lastSeenPostId > visibleLatestPostId
   );
+  // Recovery rule: if this source currently has no fresh posts in our feed,
+  // do not trust lastSeenPostId as a hard cursor. A broken empty snapshot can
+  // advance lastSeenPostId without publishing posts, which would block backfill forever.
+  const shouldBackfillEmptySource = sourceExistingPosts.length === 0;
 
-  const effectiveLastSeenPostId = hasCorruptedLastSeen
-    ? existingTopPostId
-    : source.lastSeenPostId;
+  const effectiveLastSeenPostId = shouldBackfillEmptySource
+    ? null
+    : hasCorruptedLastSeen
+      ? existingTopPostId
+      : source.lastSeenPostId;
 
   for (const postId of ids.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE)) {
     if (effectiveLastSeenPostId && postId <= effectiveLastSeenPostId) continue;
@@ -687,9 +693,13 @@ async function syncSourcePosts(
     sourceMetaTouched = meta.touched;
   }
 
-  const highestSeen =
-    visibleLatestPostId || existingTopPostId || source.lastSeenPostId || null;
+  const importedTopPostId = newPosts
+    .map((post) => getPostIdFromUrl(post.postUrl))
+    .filter((postId): postId is number => Number.isFinite(postId))
+    .sort((a, b) => b - a)[0] ?? null;
 
+  const highestSeen =
+    importedTopPostId || existingTopPostId || source.lastSeenPostId || null;
   const nextSource = buildSource({
     ...source,
     title: sourceTitle,
