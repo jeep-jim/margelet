@@ -1,9 +1,51 @@
 {
   "countryCode": "en",
-  "updatedAt": "2026-04-30T05:05:17.259Z",
-  "totalPosts": 124,
+  "updatedAt": "2026-04-30T06:42:52.746Z",
+  "totalPosts": 126,
   "chunks": 1,
   "items": [
+    {
+      "id": 2070146313,
+      "postUrl": "https://t.me/foxnewschannel/3?single",
+      "source": {
+        "title": "Fox News",
+        "handle": "foxnewschannel",
+        "verified": true,
+        "avatar": "https://cdn1.telesco.pe/file/UnIj3Ok9ZjerSE5JBde8qJ1TR1sYcoIlTa0iXCYyHTChBenxKN7aQCGhF7up44Zh1vwQym3XvNovO527pF-C0xVT0FgLVsA8HERHRwzZvw_hzXHlNzwPDKlbT_bhSvelE-XILTpw1R0aJmscn6NaudLZoXvhiFEEBDCKLZMEdja6z_LpSzHi2Dpd31DY0QimhKejCSDPqMx9kEbsFrpkEP9XYh12Bmqa1TioHFJTxgPkvNICAqNWpZTDq0pWveDlzIKlCbcBVru6mnx0YewdVGGikNg26gVjT6fxZWjfA_TAqwwgKhY3r54BdO5JIFVHjoLtSBLDti7PMmHdxQWxsg.jpg"
+      },
+      "sourceId": "en:foxnewschannel",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-04-30T06:41:14.501Z",
+      "expiresAt": "2026-05-01T06:41:14.501Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T06:41:14.501Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T06:41:14.501Z"
+      }
+    },
     {
       "id": 2901245922,
       "postUrl": "https://t.me/bloomberg/3218?single",
@@ -540,6 +582,48 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-29T10:19:45.518Z"
+      }
+    },
+    {
+      "id": 4206086987,
+      "postUrl": "https://t.me/foxnewschannel/1?single",
+      "source": {
+        "title": "Fox News",
+        "handle": "foxnewschannel",
+        "verified": true,
+        "avatar": "https://cdn1.telesco.pe/file/UnIj3Ok9ZjerSE5JBde8qJ1TR1sYcoIlTa0iXCYyHTChBenxKN7aQCGhF7up44Zh1vwQym3XvNovO527pF-C0xVT0FgLVsA8HERHRwzZvw_hzXHlNzwPDKlbT_bhSvelE-XILTpw1R0aJmscn6NaudLZoXvhiFEEBDCKLZMEdja6z_LpSzHi2Dpd31DY0QimhKejCSDPqMx9kEbsFrpkEP9XYh12Bmqa1TioHFJTxgPkvNICAqNWpZTDq0pWveDlzIKlCbcBVru6mnx0YewdVGGikNg26gVjT6fxZWjfA_TAqwwgKhY3r54BdO5JIFVHjoLtSBLDti7PMmHdxQWxsg.jpg"
+      },
+      "sourceId": "en:foxnewschannel",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-04-30T06:41:14.501Z",
+      "expiresAt": "2026-05-01T06:41:14.501Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T06:41:14.501Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T06:41:14.501Z"
       }
     },
     {
