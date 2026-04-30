@@ -108,7 +108,7 @@ export function CreatorManifestModal({
             </div>
 
             <div
-              className={`mt-6 space-y-5 text-[15px] leading-7 ${
+              className={`mt-5 space-y-3 text-[15px] leading-6 ${
                 isDark ? "text-[#d7ddf4]" : "text-[#4b5563]"
               }`}
             >
@@ -117,7 +117,7 @@ export function CreatorManifestModal({
               <p>{copy.manifestIntro3}</p>
               <p>{copy.manifestIntro4}</p>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <p
                   className={`text-[18px] font-semibold ${
                     isDark ? "text-white" : "text-[#111827]"
@@ -126,7 +126,7 @@ export function CreatorManifestModal({
                   {copy.manifestBulletsTitle}
                 </p>
 
-                <ul className="space-y-2 pl-5">
+                <ul className="list-disc space-y-1.5 pl-5 marker:text-[#a855f7]">
                   <li>{copy.manifestBullet1}</li>
                   <li>{copy.manifestBullet2}</li>
                   <li>{copy.manifestBullet3}</li>
@@ -135,7 +135,7 @@ export function CreatorManifestModal({
                 </ul>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <p>{copy.manifestOutro1}</p>
                 <p>{copy.manifestOutro2}</p>
                 <p>{copy.manifestOutro3}</p>

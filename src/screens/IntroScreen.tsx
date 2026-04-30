@@ -23,33 +23,9 @@ type IntroCopy = {
 
 const LANGUAGE_STORAGE_KEY = "margelet_locale";
 
-const INTRO_COPY_BASE = {
-  en: {
-    chooseLanguage: "Choose language",
-    slides: [
-      {
-        title: "Welcome to margeleT",
-        text: "A global feed of fresh content from Telegram.",
-      },
-      {
-        title: "Only original sources",
-        text: "Each post is available in the original Telegram channel.",
-      },
-      {
-        title: "Clean and fast",
-        text: "Open, watch and scroll without extra noise.",
-      },
-      {
-        title: "Choose your language",
-        text: "The interface and content automatically adapt to your selected country.",
-      },
-    ],
-    next: "Next",
-    enter: "Enter",
-  },
-
+const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
   ru: {
-    chooseLanguage: "Выбрать язык",
+    chooseLanguage: "🌎 Язык",
     slides: [
       {
         title: "Добро пожаловать в margeleT",
@@ -57,7 +33,7 @@ const INTRO_COPY_BASE = {
       },
       {
         title: "Только открытые источники",
-        text: "Каждый пост доступен в авторском Telegram-канале.",
+        text: "Каждый пост ведёт в оригинальный Telegram-канал.",
       },
       {
         title: "Чисто и быстро",
@@ -65,167 +41,287 @@ const INTRO_COPY_BASE = {
       },
       {
         title: "Выбирай свой язык",
-        text: "Интерфейс и контент автоматически подстраиваются под выбранную страну.",
+        text: "Интерфейс и контент подстраиваются под выбранную страну.",
       },
     ],
     next: "Далее",
     enter: "Войти",
   },
 
-  de: {
-    chooseLanguage: "Sprache wählen",
+  uk: {
+    chooseLanguage: "🌎 Мова",
     slides: [
       {
-        title: "Willkommen bei margeleT",
-        text: "Ein globaler Feed mit frischen Inhalten aus Telegram.",
+        title: "Ласкаво просимо до margeleT",
+        text: "Глобальна стрічка свіжого контенту з Telegram.",
       },
       {
-        title: "Nur offene Quellen",
-        text: "Jeder Beitrag ist im ursprünglichen Telegram-Kanal verfügbar.",
+        title: "Тільки відкриті джерела",
+        text: "Кожен пост веде до оригінального Telegram-каналу.",
       },
       {
-        title: "Sauber und schnell",
-        text: "Öffnen, ansehen und scrollen — ohne unnötigen Lärm.",
+        title: "Чисто і швидко",
+        text: "Відкривай, дивись і гортай без зайвого шуму.",
       },
       {
-        title: "Wähle deine Sprache",
-        text: "Interface und Inhalte passen sich automatisch deinem ausgewählten Land an.",
+        title: "Обирай свою мову",
+        text: "Інтерфейс і контент адаптуються до вибраної країни.",
       },
     ],
-    next: "Weiter",
-    enter: "Betreten",
+    next: "Далі",
+    enter: "Увійти",
   },
 
-  es: {
-    chooseLanguage: "Elegir idioma",
+  en: {
+    chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "Bienvenido a margeleT",
-        text: "Un feed global de contenido reciente de Telegram.",
+        title: "Welcome to margeleT",
+        text: "A global feed of fresh content from Telegram.",
       },
       {
-        title: "Solo fuentes abiertas",
-        text: "Cada publicación está disponible en su canal original de Telegram.",
+        title: "Only original sources",
+        text: "Every post leads to the original Telegram channel.",
       },
       {
-        title: "Limpio y rápido",
-        text: "Abre, mira y desliza sin ruido extra.",
+        title: "Clean and fast",
+        text: "Open, watch and scroll without extra noise.",
       },
       {
-        title: "Elige tu idioma",
-        text: "La interfaz y el contenido se adaptan automáticamente a tu país seleccionado.",
+        title: "Choose your language",
+        text: "The interface and content adapt to your selected country.",
       },
     ],
-    next: "Siguiente",
-    enter: "Entrar",
+    next: "Next",
+    enter: "Enter",
+  },
+
+  in: {
+    chooseLanguage: "🌎 भाषा",
+    slides: [
+      {
+        title: "margeleT में आपका स्वागत है",
+        text: "Telegram के ताज़ा कंटेंट की ग्लोबल फ़ीड।",
+      },
+      {
+        title: "सिर्फ मूल स्रोत",
+        text: "हर पोस्ट अपने मूल Telegram चैनल तक ले जाती है।",
+      },
+      {
+        title: "साफ़ और तेज़",
+        text: "खोलें, देखें और बिना शोर के स्क्रोल करें।",
+      },
+      {
+        title: "अपनी भाषा चुनें",
+        text: "इंटरफ़ेस और कंटेंट चुने हुए देश के अनुसार बदलते हैं।",
+      },
+    ],
+    next: "आगे",
+    enter: "प्रवेश",
+  },
+
+  fa: {
+    chooseLanguage: "🌎 زبان",
+    slides: [
+      {
+        title: "به margeleT خوش آمدید",
+        text: "فید جهانی محتوای تازه از Telegram.",
+      },
+      {
+        title: "فقط منابع اصلی",
+        text: "هر پست به کانال اصلی Telegram می‌رسد.",
+      },
+      {
+        title: "تمیز و سریع",
+        text: "باز کن، ببین و بدون شلوغی اسکرول کن.",
+      },
+      {
+        title: "زبانت را انتخاب کن",
+        text: "رابط و محتوا با کشور انتخابی هماهنگ می‌شوند.",
+      },
+    ],
+    next: "بعدی",
+    enter: "ورود",
   },
 
   tr: {
-    chooseLanguage: "Dil seç",
+    chooseLanguage: "🌎 Dil",
     slides: [
       {
         title: "margeleT'e hoş geldin",
         text: "Telegram'dan taze içeriklerin küresel akışı.",
       },
       {
-        title: "Sadece açık kaynaklar",
-        text: "Her gönderi, orijinal Telegram kanalında erişilebilir durumda.",
+        title: "Sadece orijinal kaynaklar",
+        text: "Her gönderi orijinal Telegram kanalına götürür.",
       },
       {
         title: "Temiz ve hızlı",
-        text: "Ekstra gürültü olmadan aç, izle ve kaydır.",
+        text: "Aç, izle ve ekstra gürültü olmadan kaydır.",
       },
       {
         title: "Dilini seç",
-        text: "Arayüz ve içerik seçtiğin ülkeye otomatik olarak uyum sağlar.",
+        text: "Arayüz ve içerik seçtiğin ülkeye uyum sağlar.",
       },
     ],
     next: "İleri",
     enter: "Giriş",
   },
 
-  fr: {
-    chooseLanguage: "Choisir la langue",
-    slides: [
-      {
-        title: "Bienvenue dans margeleT",
-        text: "Un flux mondial de contenu récent provenant de Telegram.",
-      },
-      {
-        title: "Uniquement des sources ouvertes",
-        text: "Chaque publication est disponible dans son canal Telegram d’origine.",
-      },
-      {
-        title: "Propre et rapide",
-        text: "Ouvre, regarde et fais défiler sans bruit inutile.",
-      },
-      {
-        title: "Choisis ta langue",
-        text: "L’interface et le contenu s’adaptent automatiquement au pays sélectionné.",
-      },
-    ],
-    next: "Suivant",
-    enter: "Entrer",
-  },
-
-  it: {
-    chooseLanguage: "Scegli lingua",
-    slides: [
-      {
-        title: "Benvenuto in margeleT",
-        text: "Un feed globale di contenuti freschi da Telegram.",
-      },
-      {
-        title: "Solo fonti aperte",
-        text: "Ogni post è disponibile nel canale Telegram originale dell’autore.",
-      },
-      {
-        title: "Pulito e veloce",
-        text: "Apri, guarda e scorri senza rumore inutile.",
-      },
-      {
-        title: "Scegli la tua lingua",
-        text: "L’interfaccia e i contenuti si adattano automaticamente al paese selezionato.",
-      },
-    ],
-    next: "Avanti",
-    enter: "Entra",
-  },
-
   "pt-br": {
-    chooseLanguage: "Escolher idioma",
+    chooseLanguage: "🌎 Idioma",
     slides: [
       {
         title: "Bem-vindo ao margeleT",
         text: "Um feed global de conteúdo novo do Telegram.",
       },
       {
-        title: "Somente fontes abertas",
-        text: "Cada post está disponível no canal original do Telegram.",
+        title: "Só fontes originais",
+        text: "Cada post leva ao canal original no Telegram.",
       },
       {
         title: "Limpo e rápido",
-        text: "Abra, assista e deslize sem ruído extra.",
+        text: "Abra, assista e role sem ruído extra.",
       },
       {
         title: "Escolha seu idioma",
-        text: "A interface e o conteúdo se adaptam automaticamente ao país selecionado.",
+        text: "Interface e conteúdo se adaptam ao país escolhido.",
       },
     ],
     next: "Próximo",
     enter: "Entrar",
   },
 
+  kk: {
+    chooseLanguage: "🌎 Тіл",
+    slides: [
+      {
+        title: "margeleT-ке қош келдіңіз",
+        text: "Telegram-дағы жаңа контенттің жаһандық лентасы.",
+      },
+      {
+        title: "Тек түпнұсқа дереккөздер",
+        text: "Әр пост түпнұсқа Telegram-каналға апарады.",
+      },
+      {
+        title: "Таза әрі жылдам",
+        text: "Аш, көр және артық шуылсыз айналдыр.",
+      },
+      {
+        title: "Тіліңізді таңдаңыз",
+        text: "Интерфейс пен контент таңдалған елге бейімделеді.",
+      },
+    ],
+    next: "Әрі қарай",
+    enter: "Кіру",
+  },
+
+  uz: {
+    chooseLanguage: "🌎 Til",
+    slides: [
+      {
+        title: "margeleT’ga xush kelibsiz",
+        text: "Telegram’dan yangi kontentning global lentasi.",
+      },
+      {
+        title: "Faqat asl manbalar",
+        text: "Har bir post asl Telegram-kanalga olib boradi.",
+      },
+      {
+        title: "Toza va tez",
+        text: "Och, ko‘r va ortiqcha shovqinsiz varaqlang.",
+      },
+      {
+        title: "Tilingizni tanlang",
+        text: "Interfeys va kontent tanlangan mamlakatga moslashadi.",
+      },
+    ],
+    next: "Keyingi",
+    enter: "Kirish",
+  },
+
+  ae: {
+    chooseLanguage: "🌎 اللغة",
+    slides: [
+      {
+        title: "مرحباً بك في margeleT",
+        text: "خلاصة عالمية لمحتوى جديد من Telegram.",
+      },
+      {
+        title: "مصادر أصلية فقط",
+        text: "كل منشور يقود إلى قناة Telegram الأصلية.",
+      },
+      {
+        title: "نظيف وسريع",
+        text: "افتح وشاهد وتصفح بلا ضوضاء زائدة.",
+      },
+      {
+        title: "اختر لغتك",
+        text: "الواجهة والمحتوى يتكيفان مع البلد المختار.",
+      },
+    ],
+    next: "التالي",
+    enter: "دخول",
+  },
+
+  eg: {
+    chooseLanguage: "🌎 اللغة",
+    slides: [
+      {
+        title: "أهلاً بك في margeleT",
+        text: "خلاصة عالمية لمحتوى جديد من Telegram.",
+      },
+      {
+        title: "مصادر أصلية فقط",
+        text: "كل منشور يوصلك لقناة Telegram الأصلية.",
+      },
+      {
+        title: "بسيط وسريع",
+        text: "افتح وشاهد وتصفح من غير زحمة.",
+      },
+      {
+        title: "اختر لغتك",
+        text: "الواجهة والمحتوى يتغيران حسب البلد المختار.",
+      },
+    ],
+    next: "التالي",
+    enter: "دخول",
+  },
+
+  pk: {
+    chooseLanguage: "🌎 زبان",
+    slides: [
+      {
+        title: "margeleT میں خوش آمدید",
+        text: "Telegram کے تازہ مواد کی عالمی فیڈ۔",
+      },
+      {
+        title: "صرف اصل ذرائع",
+        text: "ہر پوسٹ اصل Telegram چینل تک لے جاتی ہے۔",
+      },
+      {
+        title: "صاف اور تیز",
+        text: "کھولیں، دیکھیں اور بغیر شور کے اسکرول کریں۔",
+      },
+      {
+        title: "اپنی زبان چنیں",
+        text: "انٹرفیس اور مواد منتخب ملک کے مطابق بدلتے ہیں۔",
+      },
+    ],
+    next: "آگے",
+    enter: "داخل ہوں",
+  },
+
   id: {
-    chooseLanguage: "Pilih bahasa",
+    chooseLanguage: "🌎 Bahasa",
     slides: [
       {
         title: "Selamat datang di margeleT",
-        text: "Feed global dari konten segar dari Telegram.",
+        text: "Feed global konten segar dari Telegram.",
       },
       {
-        title: "Hanya sumber terbuka",
-        text: "Setiap posting tersedia di channel Telegram asli penulisnya.",
+        title: "Hanya sumber asli",
+        text: "Setiap posting mengarah ke channel Telegram asli.",
       },
       {
         title: "Bersih dan cepat",
@@ -233,35 +329,301 @@ const INTRO_COPY_BASE = {
       },
       {
         title: "Pilih bahasamu",
-        text: "Antarmuka dan konten otomatis menyesuaikan dengan negara yang kamu pilih.",
+        text: "Antarmuka dan konten menyesuaikan negara pilihanmu.",
       },
     ],
     next: "Lanjut",
     enter: "Masuk",
   },
 
-  } as const;
+  mx: {
+    chooseLanguage: "🌎 Idioma",
+    slides: [
+      {
+        title: "Bienvenido a margeleT",
+        text: "Un feed global de contenido fresco de Telegram.",
+      },
+      {
+        title: "Solo fuentes originales",
+        text: "Cada publicación lleva al canal original de Telegram.",
+      },
+      {
+        title: "Limpio y rápido",
+        text: "Abre, mira y desliza sin ruido extra.",
+      },
+      {
+        title: "Elige tu idioma",
+        text: "La interfaz y el contenido se adaptan al país elegido.",
+      },
+    ],
+    next: "Siguiente",
+    enter: "Entrar",
+  },
 
-  const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
-    ...INTRO_COPY_BASE,
-    uk: INTRO_COPY_BASE.ru,
-    in: INTRO_COPY_BASE.en,
-    fa: INTRO_COPY_BASE.en,
-    kk: INTRO_COPY_BASE.ru,
-    uz: INTRO_COPY_BASE.ru,
-    ae: INTRO_COPY_BASE.en,
-    eg: INTRO_COPY_BASE.en,
-    pk: INTRO_COPY_BASE.en,
-    mx: INTRO_COPY_BASE.es,
-    sa: INTRO_COPY_BASE.en,
-    ar: INTRO_COPY_BASE.es,
-    co: INTRO_COPY_BASE.es,
-    za: INTRO_COPY_BASE.en,
-    ng: INTRO_COPY_BASE.en,
-    zh: INTRO_COPY_BASE.en,
-    ms: INTRO_COPY_BASE.en,
-  };
+  sa: {
+    chooseLanguage: "🌎 اللغة",
+    slides: [
+      {
+        title: "مرحباً بك في margeleT",
+        text: "خلاصة عالمية لمحتوى جديد من Telegram.",
+      },
+      {
+        title: "مصادر أصلية فقط",
+        text: "كل منشور يقود إلى قناة Telegram الأصلية.",
+      },
+      {
+        title: "نظيف وسريع",
+        text: "افتح وشاهد وتصفح بلا ضوضاء زائدة.",
+      },
+      {
+        title: "اختر لغتك",
+        text: "الواجهة والمحتوى يتكيفان مع البلد المختار.",
+      },
+    ],
+    next: "التالي",
+    enter: "دخول",
+  },
 
+  es: {
+    chooseLanguage: "🌎 Idioma",
+    slides: [
+      {
+        title: "Bienvenido a margeleT",
+        text: "Un feed global de contenido fresco de Telegram.",
+      },
+      {
+        title: "Solo fuentes originales",
+        text: "Cada publicación lleva al canal original de Telegram.",
+      },
+      {
+        title: "Limpio y rápido",
+        text: "Abre, mira y desliza sin ruido extra.",
+      },
+      {
+        title: "Elige tu idioma",
+        text: "La interfaz y el contenido se adaptan al país elegido.",
+      },
+    ],
+    next: "Siguiente",
+    enter: "Entrar",
+  },
+
+  it: {
+    chooseLanguage: "🌎 Lingua",
+    slides: [
+      {
+        title: "Benvenuto su margeleT",
+        text: "Un feed globale di contenuti freschi da Telegram.",
+      },
+      {
+        title: "Solo fonti originali",
+        text: "Ogni post porta al canale Telegram originale.",
+      },
+      {
+        title: "Pulito e veloce",
+        text: "Apri, guarda e scorri senza rumore inutile.",
+      },
+      {
+        title: "Scegli la tua lingua",
+        text: "Interfaccia e contenuti si adattano al paese scelto.",
+      },
+    ],
+    next: "Avanti",
+    enter: "Entra",
+  },
+
+  fr: {
+    chooseLanguage: "🌎 Langue",
+    slides: [
+      {
+        title: "Bienvenue sur margeleT",
+        text: "Un flux mondial de contenu frais depuis Telegram.",
+      },
+      {
+        title: "Sources originales seulement",
+        text: "Chaque post mène au canal Telegram d’origine.",
+      },
+      {
+        title: "Clair et rapide",
+        text: "Ouvre, regarde et fais défiler sans bruit inutile.",
+      },
+      {
+        title: "Choisis ta langue",
+        text: "L’interface et le contenu s’adaptent au pays choisi.",
+      },
+    ],
+    next: "Suivant",
+    enter: "Entrer",
+  },
+
+  de: {
+    chooseLanguage: "🌎 Sprache",
+    slides: [
+      {
+        title: "Willkommen bei margeleT",
+        text: "Ein globaler Feed mit frischen Inhalten aus Telegram.",
+      },
+      {
+        title: "Nur Originalquellen",
+        text: "Jeder Beitrag führt zum ursprünglichen Telegram-Kanal.",
+      },
+      {
+        title: "Sauber und schnell",
+        text: "Öffnen, ansehen und ohne unnötigen Lärm scrollen.",
+      },
+      {
+        title: "Wähle deine Sprache",
+        text: "Interface und Inhalte passen sich dem gewählten Land an.",
+      },
+    ],
+    next: "Weiter",
+    enter: "Starten",
+  },
+
+  ar: {
+    chooseLanguage: "🌎 Idioma",
+    slides: [
+      {
+        title: "Bienvenido a margeleT",
+        text: "Un feed global de contenido fresco de Telegram.",
+      },
+      {
+        title: "Solo fuentes originales",
+        text: "Cada publicación lleva al canal original de Telegram.",
+      },
+      {
+        title: "Limpio y rápido",
+        text: "Abre, mira y desliza sin ruido extra.",
+      },
+      {
+        title: "Elige tu idioma",
+        text: "La interfaz y el contenido se adaptan al país elegido.",
+      },
+    ],
+    next: "Siguiente",
+    enter: "Entrar",
+  },
+
+  co: {
+    chooseLanguage: "🌎 Idioma",
+    slides: [
+      {
+        title: "Bienvenido a margeleT",
+        text: "Un feed global de contenido fresco de Telegram.",
+      },
+      {
+        title: "Solo fuentes originales",
+        text: "Cada publicación lleva al canal original de Telegram.",
+      },
+      {
+        title: "Limpio y rápido",
+        text: "Abre, mira y desliza sin ruido extra.",
+      },
+      {
+        title: "Elige tu idioma",
+        text: "La interfaz y el contenido se adaptan al país elegido.",
+      },
+    ],
+    next: "Siguiente",
+    enter: "Entrar",
+  },
+
+  za: {
+    chooseLanguage: "🌎 Language",
+    slides: [
+      {
+        title: "Welcome to margeleT",
+        text: "A global feed of fresh content from Telegram.",
+      },
+      {
+        title: "Only original sources",
+        text: "Every post leads to the original Telegram channel.",
+      },
+      {
+        title: "Clean and fast",
+        text: "Open, watch and scroll without extra noise.",
+      },
+      {
+        title: "Choose your language",
+        text: "The interface and content adapt to your selected country.",
+      },
+    ],
+    next: "Next",
+    enter: "Enter",
+  },
+
+  ng: {
+    chooseLanguage: "🌎 Language",
+    slides: [
+      {
+        title: "Welcome to margeleT",
+        text: "A global feed of fresh content from Telegram.",
+      },
+      {
+        title: "Only original sources",
+        text: "Every post leads to the original Telegram channel.",
+      },
+      {
+        title: "Clean and fast",
+        text: "Open, watch and scroll without extra noise.",
+      },
+      {
+        title: "Choose your language",
+        text: "The interface and content adapt to your selected country.",
+      },
+    ],
+    next: "Next",
+    enter: "Enter",
+  },
+
+  zh: {
+    chooseLanguage: "🌎 语言",
+    slides: [
+      {
+        title: "欢迎来到 margeleT",
+        text: "来自 Telegram 的全球新鲜内容流。",
+      },
+      {
+        title: "只保留原始来源",
+        text: "每条内容都会指向原始 Telegram 频道。",
+      },
+      {
+        title: "简洁快速",
+        text: "打开、观看、滑动，没有多余干扰。",
+      },
+      {
+        title: "选择你的语言",
+        text: "界面和内容会适配你选择的国家。",
+      },
+    ],
+    next: "下一步",
+    enter: "进入",
+  },
+
+  ms: {
+    chooseLanguage: "🌎 Bahasa",
+    slides: [
+      {
+        title: "Selamat datang ke margeleT",
+        text: "Suapan global kandungan segar daripada Telegram.",
+      },
+      {
+        title: "Hanya sumber asal",
+        text: "Setiap siaran membawa ke saluran Telegram asal.",
+      },
+      {
+        title: "Bersih dan pantas",
+        text: "Buka, tonton dan tatal tanpa gangguan berlebihan.",
+      },
+      {
+        title: "Pilih bahasa anda",
+        text: "Antara muka dan kandungan menyesuaikan negara pilihan anda.",
+      },
+    ],
+    next: "Seterusnya",
+    enter: "Masuk",
+  },
+};
 
 function getSortedLocales() {
   const sorted = [...SITE_LOCALES].sort((a, b) =>
@@ -279,8 +641,6 @@ function getSortedLocales() {
 
   return sorted;
 }
-
-
 
 export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
   const intro = INTRO_COPY[locale] ?? INTRO_COPY.en;
@@ -302,12 +662,12 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
           </div>
 
           <div className="mb-5">
-            <div className="flex items-center justify-between rounded-full border border-[#2b3f53] bg-[#1f2c3a] py-2 pl-5 pr-3">
-              <span className="truncate pr-4 text-sm font-medium text-white/90">
+            <div className="grid grid-cols-[minmax(84px,0.75fr)_minmax(0,1.25fr)] items-center gap-3 rounded-full border border-[#2b3f53] bg-[#1f2c3a] p-2 pl-5">
+              <span className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold text-white/90">
                 {intro.chooseLanguage}
               </span>
 
-              <div className="relative shrink-0">
+              <div className="relative min-w-0">
                 <select
                   value={locale}
                   onChange={(event) => {
@@ -315,7 +675,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                     onChangeLocale(nextLocale);
                     localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLocale);
                   }}
-                  className="appearance-none rounded-full border border-[#2b3f53] bg-[#223244] px-4 py-2 pr-10 text-sm font-medium text-white outline-none"
+                  className="w-full appearance-none rounded-full border border-[#2b3f53] bg-[#223244] px-4 py-2 pr-10 text-sm font-semibold text-white outline-none"
                 >
                   {localeOptions.map((item) => (
                     <option
@@ -345,7 +705,7 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
                     transition={{ duration: 0.22, ease: "easeOut" }}
                     className="w-full"
                   >
-                    <div className="mb-3 text-[clamp(2rem,5vw,3rem)] font-bold leading-tight text-white">
+                    <div className="mb-3 text-[clamp(1.9rem,8vw,3rem)] font-bold leading-tight text-white">
                       {pages[index].title}
                     </div>
 
@@ -388,4 +748,4 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
       </div>
     </div>
   );
-}  
+}
