@@ -1,9 +1,55 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-04-30T10:32:12.577Z",
-  "totalPosts": 70,
+  "updatedAt": "2026-04-30T11:55:18.305Z",
+  "totalPosts": 73,
   "chunks": 1,
   "items": [
+    {
+      "id": 1491147152,
+      "postUrl": "https://t.me/tagesschau/43664?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/sf7lCi1dtwa96MZkvC1zQqkzh8h-tQMQATgM1VIV4yoq5zqpN3hjl4CqhNUsg849_euB5eMZp34WhA6krXBUvS01GgPre38H5RQXdd-lR-9917Y_Hdhwyz99LZvDZF1jzHRfML6E7BfRB7v3CyIAUNh1ulz-Xgba-jP6LkJlWRCUxM39iDlsp2x3DTZIs8mLbPUy_jyJWWEGvLQvrfNyCU76fmzneE8_KyAj2E3GU1dGmBJM0QrFFX2YSO0Cqt4XDYsFUfOxEWgWs5d9rbigrBcUvsUpb9T3yvsnY89CNSgfkRDnYFhgCtrHeDGEk1lGaBvtQ5UOid434T2TDAU3tw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Zehntausende Preiserhöhungen - Tankstellen missachten 12-Uhr-Regel\nhttps://www.tagesschau.de/investigativ/tankstellen-hohe-spritpreise-100.html\n\nTausende Tankstellen erhöhen seit April offenbar ihre Preise außerhalb der 12-Uhr-Regel. Das zeigt eine SWR-Datenanalyse. Die Taskforce der Regierung fordert Strafen - doch die Zuständigkeiten sind ungeklärt.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/investigativ/tankstellen-hohe-spritpreise-100.html",
+          "url": "https://www.tagesschau.de/investigativ/tankstellen-hohe-spritpreise-100.html"
+        }
+      ],
+      "createdAt": "2026-04-30T11:53:40.030Z",
+      "expiresAt": "2026-05-01T11:53:40.030Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T11:53:40.030Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:53:40.030Z"
+      }
+    },
     {
       "id": 260444845,
       "postUrl": "https://t.me/heiseonline/12082?single",
@@ -209,8 +255,8 @@
       }
     },
     {
-      "id": 3829589404,
-      "postUrl": "https://t.me/tagesschau/43660?single",
+      "id": 3770513135,
+      "postUrl": "https://t.me/tagesschau/43663?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -223,17 +269,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "USA erwägen laut Trump Truppenreduzierung in Deutschland\nhttps://www.tagesschau.de/ausland/amerika/trump-usa-truppen-deutschland-abzug-100.html\n\nDie Stimmung zwischen Bundeskanzler Merz und US-Präsident Trump ist seit Tagen angespannt. Jetzt erwägt Trump, die US-Truppenpräsenz in Deutschland zu reduzieren. Eine Entscheidung solle \"in Kürze\" getroffen werden.",
+      "text": "Scheidender Fed-Chef Powell will im Vorstand der US-Notenbank bleiben\nhttps://www.tagesschau.de/wirtschaft/weltwirtschaft/fed-us-notenbank-leitzins-powell-100.html\n\nEnergiekrise und Inflationssorgen belasten auch die US-Wirtschaft, die Notenbank Federal Reserve lässt den Leitzins daher unangetastet. Trotzdem hielt die Sitzung der Währungshüter zwei große Überraschungen bereit.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/amerika/trump-usa-truppen-deutschland-abzug-100.html",
-          "url": "https://www.tagesschau.de/ausland/amerika/trump-usa-truppen-deutschland-abzug-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/weltwirtschaft/fed-us-notenbank-leitzins-powell-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/weltwirtschaft/fed-us-notenbank-leitzins-powell-100.html"
         }
       ],
-      "createdAt": "2026-04-30T04:03:15.960Z",
-      "expiresAt": "2026-05-01T04:03:15.960Z",
+      "createdAt": "2026-04-30T11:53:40.030Z",
+      "expiresAt": "2026-05-01T11:53:40.030Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T04:03:15.960Z",
+      "mediaRefreshedAt": "2026-04-30T11:53:40.030Z",
       "tag": "news",
       "tags": [
         "news"
@@ -251,7 +297,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-04-30T04:03:15.960Z"
+        "reviewedAt": "2026-04-30T11:53:40.030Z"
       }
     },
     {
@@ -446,8 +492,8 @@
       }
     },
     {
-      "id": 4150463708,
-      "postUrl": "https://t.me/tagesschau/43659?single",
+      "id": 786889110,
+      "postUrl": "https://t.me/tagesschau/43662?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -460,17 +506,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "\"Diplomatische Wunderwaffe\": Briten nach US-Rede von Charles III. begeistert\nhttps://www.tagesschau.de/ausland/europa/charles-rede-reaktionen-100.html\n\nIm Vorfeld hatte es in Großbritannien Befürchtungen gegeben: Zu groß sei die Gefahr, dass König Charles III. bei seinem US-Besuch von Trump düpiert werde. Doch nach seiner Rede vor dem Kongress ist die Begeisterung groß. Von G. Biesinger.",
+      "text": "Pentagon gibt Hilfsgelder für Ukraine frei\nhttps://www.tagesschau.de/ausland/amerika/usa-ukraine-hilfsgelder-krieg-russland-100.html\n\nÜber Monate hatte sich die Auszahlung verzögert, jetzt haben die USA Hunderte Millionen Hilfsgelder für die Ukraine freigegeben. Doch eine schnelle Überweisung der Gelder ist an Bedingungen geknüpft.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/charles-rede-reaktionen-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/charles-rede-reaktionen-100.html"
+          "label": "https://www.tagesschau.de/ausland/amerika/usa-ukraine-hilfsgelder-krieg-russland-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/usa-ukraine-hilfsgelder-krieg-russland-100.html"
         }
       ],
-      "createdAt": "2026-04-29T18:46:48.301Z",
-      "expiresAt": "2026-04-30T18:46:48.301Z",
+      "createdAt": "2026-04-30T11:53:40.030Z",
+      "expiresAt": "2026-05-01T11:53:40.030Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-29T18:46:48.301Z",
+      "mediaRefreshedAt": "2026-04-30T11:53:40.030Z",
       "tag": "news",
       "tags": [
         "news"
@@ -488,7 +534,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-04-29T18:46:48.301Z"
+        "reviewedAt": "2026-04-30T11:53:40.030Z"
       }
     },
     {
@@ -679,8 +725,8 @@
       }
     },
     {
-      "id": 3101020557,
-      "postUrl": "https://t.me/tagesschau/43658?single",
+      "id": 2355585613,
+      "postUrl": "https://t.me/tagesschau/43661?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -693,17 +739,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Kommentar zur Gesundheitsreform: Warken hält Kurs - trotz Gegenwinds\nhttps://www.tagesschau.de/kommentar/kommentar-warken-gesundheitsreform-100.html\n\nTrotz der großen Empörung über die geplante Gesundheitsreform bleibt Ministerin Warken standhaft und pocht auf die notwendigen Einsparungen, um Beitragssteigerungen zu verhindern. Das ist gut so, findet Jan Zimmermann.",
+      "text": "EZB-Ratssitzung: Währungshüter in der Zwickmühle\nhttps://www.tagesschau.de/wirtschaft/finanzen/ezb-ratssitzung-inflation-leitzinsen-100.html\n\nDie Europäische Zentralbank steckt in der Klemme: Erhöht sie die Leitzinsen, um die Inflation einzudämmen? Dann riskiert sie, die ohnehin schwache Konjunktur abzuwürgen. Was also tun? Von Ingo Nathusius.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/kommentar/kommentar-warken-gesundheitsreform-100.html",
-          "url": "https://www.tagesschau.de/kommentar/kommentar-warken-gesundheitsreform-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/finanzen/ezb-ratssitzung-inflation-leitzinsen-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/finanzen/ezb-ratssitzung-inflation-leitzinsen-100.html"
         }
       ],
-      "createdAt": "2026-04-29T18:46:48.301Z",
-      "expiresAt": "2026-04-30T18:46:48.301Z",
+      "createdAt": "2026-04-30T11:53:40.030Z",
+      "expiresAt": "2026-05-01T11:53:40.030Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-29T18:46:48.301Z",
+      "mediaRefreshedAt": "2026-04-30T11:53:40.030Z",
       "tag": "news",
       "tags": [
         "news"
@@ -721,7 +767,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-04-29T18:46:48.301Z"
+        "reviewedAt": "2026-04-30T11:53:40.030Z"
       }
     },
     {
@@ -875,8 +921,8 @@
       }
     },
     {
-      "id": 45572418,
-      "postUrl": "https://t.me/tagesschau/43657?single",
+      "id": 3829589404,
+      "postUrl": "https://t.me/tagesschau/43660?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -889,17 +935,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Klingbeil zum Haushalt 2027: \"Wir wissen jetzt, wie das Geld eingespart wird\"\nhttps://www.tagesschau.de/inland/interview-klingbeil-102.html\n\nHöhere Ausgaben, mehr Schulden: Vizekanzler Klingbeil hat die Eckwerte für den Haushalt 2027 in den tagesthemen verteidigt. Zugleich räumte er ein, in der Koalition gebe es zu viel öffentlichen Streit - wichtig seien aber Beschlüsse.",
+      "text": "USA erwägen laut Trump Truppenreduzierung in Deutschland\nhttps://www.tagesschau.de/ausland/amerika/trump-usa-truppen-deutschland-abzug-100.html\n\nDie Stimmung zwischen Bundeskanzler Merz und US-Präsident Trump ist seit Tagen angespannt. Jetzt erwägt Trump, die US-Truppenpräsenz in Deutschland zu reduzieren. Eine Entscheidung solle \"in Kürze\" getroffen werden.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/interview-klingbeil-102.html",
-          "url": "https://www.tagesschau.de/inland/interview-klingbeil-102.html"
+          "label": "https://www.tagesschau.de/ausland/amerika/trump-usa-truppen-deutschland-abzug-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/trump-usa-truppen-deutschland-abzug-100.html"
         }
       ],
-      "createdAt": "2026-04-29T18:46:48.301Z",
-      "expiresAt": "2026-04-30T18:46:48.301Z",
+      "createdAt": "2026-04-30T04:03:15.960Z",
+      "expiresAt": "2026-05-01T04:03:15.960Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-29T18:46:48.301Z",
+      "mediaRefreshedAt": "2026-04-30T04:03:15.960Z",
       "tag": "news",
       "tags": [
         "news"
@@ -917,7 +963,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-04-29T18:46:48.301Z"
+        "reviewedAt": "2026-04-30T04:03:15.960Z"
       }
     },
     {
@@ -1063,8 +1109,8 @@
       }
     },
     {
-      "id": 2483828795,
-      "postUrl": "https://t.me/tagesschau/43656?single",
+      "id": 4150463708,
+      "postUrl": "https://t.me/tagesschau/43659?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1077,11 +1123,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Kampf gegen Steueroasen - Razzia wegen mutmaßlicher Briefkastenfirmen\nhttps://www.tagesschau.de/investigativ/wdr/briefkastenfirmen-steueroasen-deutschland-100.html\n\nDie Steuerfahndung hat nach WDR-Informationen mit mehr als einhundert Beamten Gebäude an zwei Standorten in Nordrhein-Westfalen und Bayern durchsucht. Der Verdacht: Ein Dienstleister soll mehr als 100 Unternehmen Scheinsitze ermöglicht haben.",
+      "text": "\"Diplomatische Wunderwaffe\": Briten nach US-Rede von Charles III. begeistert\nhttps://www.tagesschau.de/ausland/europa/charles-rede-reaktionen-100.html\n\nIm Vorfeld hatte es in Großbritannien Befürchtungen gegeben: Zu groß sei die Gefahr, dass König Charles III. bei seinem US-Besuch von Trump düpiert werde. Doch nach seiner Rede vor dem Kongress ist die Begeisterung groß. Von G. Biesinger.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/investigativ/wdr/briefkastenfirmen-steueroasen-deutschland-100.html",
-          "url": "https://www.tagesschau.de/investigativ/wdr/briefkastenfirmen-steueroasen-deutschland-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/charles-rede-reaktionen-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/charles-rede-reaktionen-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -1106,56 +1152,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-29T18:46:48.301Z"
-      }
-    },
-    {
-      "id": 57713249,
-      "postUrl": "https://t.me/heiseonline/12077?single",
-      "source": {
-        "title": "heise online",
-        "handle": "heiseonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/guIqs0W0Kv3PO7jrtSZ2jHzjaw7JWMvMeRi3RBKt4KslqXnNWZI_xEytoTIhmiqOm9TgJOaZxjmZJJ2e7DmnTFzmL74iMQKSzB65SiENIBmabzduxhZHkiIMXqw3zo31YA3AP19KKhwUSAe-fVl_-xy6WU2G73l0JCn4KukliFLdRoGIzTQKzqE2NUBr3fQk3wV9P_MJ2YAahrJZwrFkO04z1LkLU-2DryAY7LcP56d8kAI-JYkEvUYwLZCezs06pN2D81avT_BmA4ZZpWjf0LZNxPknj_FPO4N7ycrbGHGzU0HNyeajYXUPTNVMCubM2xoBjmik4Adne5ElGZ2wsQ.jpg"
-      },
-      "sourceId": "de:heiseonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "PowerToys 0.99: „Greifen und Verschieben“ – verbessertes Fensterhandling\n\n zum Artikel...\n\nDas Neueste über Telegram, kommende Features und mehr findest Du hier: @nachrichten",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/PowerToys-0-99-Greifen-und-Verschieben-verbessertes-Fensterhandling-11276323.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
-        },
-        {
-          "label": "@nachrichten",
-          "url": "https://t.me/nachrichten"
-        }
-      ],
-      "createdAt": "2026-04-29T11:54:51.175Z",
-      "expiresAt": "2026-04-30T11:54:51.175Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-29T11:54:51.175Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-29T11:54:51.175Z"
       }
     },
     {
@@ -1261,8 +1257,8 @@
       }
     },
     {
-      "id": 962563064,
-      "postUrl": "https://t.me/tagesschau/43655?single",
+      "id": 3101020557,
+      "postUrl": "https://t.me/tagesschau/43658?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1275,11 +1271,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Miete, Netzausbau, digitaler Check-In: Was das Bundeskabinett noch beschlossen hat\nhttps://www.tagesschau.de/inland/innenpolitik/kabinett-mieten-rente-reisen-100.html\n\nNeben Haushalt und Gesundheitsreform hat das Kabinett weitere Gesetzespläne auf den Weg gebracht. So sollen Mieterhöhungen gebremst, der Netzausbau beschleunigt und ein digitaler Check-In ermöglicht werden.",
+      "text": "Kommentar zur Gesundheitsreform: Warken hält Kurs - trotz Gegenwinds\nhttps://www.tagesschau.de/kommentar/kommentar-warken-gesundheitsreform-100.html\n\nTrotz der großen Empörung über die geplante Gesundheitsreform bleibt Ministerin Warken standhaft und pocht auf die notwendigen Einsparungen, um Beitragssteigerungen zu verhindern. Das ist gut so, findet Jan Zimmermann.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/kabinett-mieten-rente-reisen-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/kabinett-mieten-rente-reisen-100.html"
+          "label": "https://www.tagesschau.de/kommentar/kommentar-warken-gesundheitsreform-100.html",
+          "url": "https://www.tagesschau.de/kommentar/kommentar-warken-gesundheitsreform-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -1403,8 +1399,8 @@
       }
     },
     {
-      "id": 241956857,
-      "postUrl": "https://t.me/tagesschau/43654?single",
+      "id": 45572418,
+      "postUrl": "https://t.me/tagesschau/43657?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1417,11 +1413,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Wie hart steigende Inflation die Tafeln in Deutschland trifft\nhttps://www.tagesschau.de/wirtschaft/verbraucher/preisschock-tafeln-inflation-100.html\n\nDie Kosten für Sprit sind stark gestiegen, auch Lebensmittel werden teurer - der Iran-Krieg treibt die Inflation nach oben. Damit wird es auch für die Tafeln immer schwerer, den Schwächsten der Gesellschaft zu helfen. Von Axel John.",
+      "text": "Klingbeil zum Haushalt 2027: \"Wir wissen jetzt, wie das Geld eingespart wird\"\nhttps://www.tagesschau.de/inland/interview-klingbeil-102.html\n\nHöhere Ausgaben, mehr Schulden: Vizekanzler Klingbeil hat die Eckwerte für den Haushalt 2027 in den tagesthemen verteidigt. Zugleich räumte er ein, in der Koalition gebe es zu viel öffentlichen Streit - wichtig seien aber Beschlüsse.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/preisschock-tafeln-inflation-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/preisschock-tafeln-inflation-100.html"
+          "label": "https://www.tagesschau.de/inland/interview-klingbeil-102.html",
+          "url": "https://www.tagesschau.de/inland/interview-klingbeil-102.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -1551,8 +1547,8 @@
       }
     },
     {
-      "id": 2888842270,
-      "postUrl": "https://t.me/tagesschau/43653?single",
+      "id": 2483828795,
+      "postUrl": "https://t.me/tagesschau/43656?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1565,11 +1561,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Russland zeigt bei diesjähriger Siegesparade keine Militärtechnik\nhttps://www.tagesschau.de/ausland/europa/siegesparade-moskau-9mai-100.html\n\nJedes Jahr am 9. Mai feiert Russland seinen Sieg über Nazi-Deutschland mit einer großen Militärparade in Moskau. Panzer und Raketen werden diesmal nicht zu sehen sein - offenbar aus Furcht vor ukrainischen Drohnenangriffen.",
+      "text": "Kampf gegen Steueroasen - Razzia wegen mutmaßlicher Briefkastenfirmen\nhttps://www.tagesschau.de/investigativ/wdr/briefkastenfirmen-steueroasen-deutschland-100.html\n\nDie Steuerfahndung hat nach WDR-Informationen mit mehr als einhundert Beamten Gebäude an zwei Standorten in Nordrhein-Westfalen und Bayern durchsucht. Der Verdacht: Ein Dienstleister soll mehr als 100 Unternehmen Scheinsitze ermöglicht haben.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/siegesparade-moskau-9mai-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/siegesparade-moskau-9mai-100.html"
+          "label": "https://www.tagesschau.de/investigativ/wdr/briefkastenfirmen-steueroasen-deutschland-100.html",
+          "url": "https://www.tagesschau.de/investigativ/wdr/briefkastenfirmen-steueroasen-deutschland-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -1701,8 +1697,8 @@
       }
     },
     {
-      "id": 565567383,
-      "postUrl": "https://t.me/tagesschau/43652?single",
+      "id": 962563064,
+      "postUrl": "https://t.me/tagesschau/43655?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1715,11 +1711,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Wegen des Iran-Kriegs steigt Inflation im April auf 2,9 Prozent\nhttps://www.tagesschau.de/wirtschaft/inflation-steigt-april-iran-krieg-100.html\n\nDer Iran-Krieg hat das Leben in Deutschland stark verteuert. Jüngste Daten zeigen: Der Preisschock ist noch nicht ausgestanden. Im April lag die Inflationsrate bei 2,9 Prozent.",
+      "text": "Miete, Netzausbau, digitaler Check-In: Was das Bundeskabinett noch beschlossen hat\nhttps://www.tagesschau.de/inland/innenpolitik/kabinett-mieten-rente-reisen-100.html\n\nNeben Haushalt und Gesundheitsreform hat das Kabinett weitere Gesetzespläne auf den Weg gebracht. So sollen Mieterhöhungen gebremst, der Netzausbau beschleunigt und ein digitaler Check-In ermöglicht werden.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/inflation-steigt-april-iran-krieg-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/inflation-steigt-april-iran-krieg-100.html"
+          "label": "https://www.tagesschau.de/inland/innenpolitik/kabinett-mieten-rente-reisen-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/kabinett-mieten-rente-reisen-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -1859,8 +1855,8 @@
       }
     },
     {
-      "id": 1382652932,
-      "postUrl": "https://t.me/tagesschau/43651?single",
+      "id": 241956857,
+      "postUrl": "https://t.me/tagesschau/43654?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1873,11 +1869,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Indie-Macher verleihen der deutschen Games-Branche frischen Wind\nhttps://www.tagesschau.de/kultur/deutscher-computerspielpreis-blick-auf-branche-100.html\n\nDie Games-Branche in Deutschland wächst und verändert sich rasant. Zwischen Blockbustern, Indie-Projekten und neuen Plattformen stellt sich die Frage: Was bieten die neuen Spiele? Von Florian Schmidt.",
+      "text": "Wie hart steigende Inflation die Tafeln in Deutschland trifft\nhttps://www.tagesschau.de/wirtschaft/verbraucher/preisschock-tafeln-inflation-100.html\n\nDie Kosten für Sprit sind stark gestiegen, auch Lebensmittel werden teurer - der Iran-Krieg treibt die Inflation nach oben. Damit wird es auch für die Tafeln immer schwerer, den Schwächsten der Gesellschaft zu helfen. Von Axel John.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/kultur/deutscher-computerspielpreis-blick-auf-branche-100.html",
-          "url": "https://www.tagesschau.de/kultur/deutscher-computerspielpreis-blick-auf-branche-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/preisschock-tafeln-inflation-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/preisschock-tafeln-inflation-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -2007,8 +2003,8 @@
       }
     },
     {
-      "id": 1770834517,
-      "postUrl": "https://t.me/tagesschau/43650?single",
+      "id": 2888842270,
+      "postUrl": "https://t.me/tagesschau/43653?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2021,11 +2017,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Anleger haben wieder mehr Zutrauen in den Erfolg von Adidas\nhttps://www.tagesschau.de/wirtschaft/finanzen/adidas-zahlen-marktbericht-aktie-100.html\n\nDer Sportartikel-Hersteller Adidas konnte zu Jahresbeginn wieder mehr Schuhe und Sportkleidung verkaufen - trotz widriger Umstände. Die Strategie der Marke mit den drei Streifen scheint aufzugehen.",
+      "text": "Russland zeigt bei diesjähriger Siegesparade keine Militärtechnik\nhttps://www.tagesschau.de/ausland/europa/siegesparade-moskau-9mai-100.html\n\nJedes Jahr am 9. Mai feiert Russland seinen Sieg über Nazi-Deutschland mit einer großen Militärparade in Moskau. Panzer und Raketen werden diesmal nicht zu sehen sein - offenbar aus Furcht vor ukrainischen Drohnenangriffen.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/finanzen/adidas-zahlen-marktbericht-aktie-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/finanzen/adidas-zahlen-marktbericht-aktie-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/siegesparade-moskau-9mai-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/siegesparade-moskau-9mai-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -2149,8 +2145,8 @@
       }
     },
     {
-      "id": 1230314783,
-      "postUrl": "https://t.me/tagesschau/43649?single",
+      "id": 565567383,
+      "postUrl": "https://t.me/tagesschau/43652?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2163,11 +2159,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Bundeskabinett beschließt Eckpunkte für Haushalt 2027\nhttps://www.tagesschau.de/inland/innenpolitik/bundeskabinett-haushaltsentwurf-2027-beschlossen-100.html\n\nDie Bundesregierung hat ihren Haushaltsentwurf für 2027 und die Finanzplanung bis 2030 verabschiedet. Trotz geplanter Einsparungen und Reformen steigt die Neuverschuldung demnach drastisch an.",
+      "text": "Wegen des Iran-Kriegs steigt Inflation im April auf 2,9 Prozent\nhttps://www.tagesschau.de/wirtschaft/inflation-steigt-april-iran-krieg-100.html\n\nDer Iran-Krieg hat das Leben in Deutschland stark verteuert. Jüngste Daten zeigen: Der Preisschock ist noch nicht ausgestanden. Im April lag die Inflationsrate bei 2,9 Prozent.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/bundeskabinett-haushaltsentwurf-2027-beschlossen-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/bundeskabinett-haushaltsentwurf-2027-beschlossen-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/inflation-steigt-april-iran-krieg-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/inflation-steigt-april-iran-krieg-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -2291,8 +2287,8 @@
       }
     },
     {
-      "id": 2557909958,
-      "postUrl": "https://t.me/tagesschau/43648?single",
+      "id": 1382652932,
+      "postUrl": "https://t.me/tagesschau/43651?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2305,11 +2301,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Was sich mit dem Gesundheits-Sparpaket für gesetzlich Versicherte ändern soll\nhttps://www.tagesschau.de/inland/innenpolitik/gesundheitsreform-krankenversicherung-neu-100.html\n\nHöhere Zuzahlung für Medikamente, Einschnitte bei der Familienversicherung, Teilkrankschreibung - das Gesundheits-Sparpaket hat konkrete Auswirkungen für gesetzlich Versicherte. Was ist genau geplant?",
+      "text": "Indie-Macher verleihen der deutschen Games-Branche frischen Wind\nhttps://www.tagesschau.de/kultur/deutscher-computerspielpreis-blick-auf-branche-100.html\n\nDie Games-Branche in Deutschland wächst und verändert sich rasant. Zwischen Blockbustern, Indie-Projekten und neuen Plattformen stellt sich die Frage: Was bieten die neuen Spiele? Von Florian Schmidt.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/gesundheitsreform-krankenversicherung-neu-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/gesundheitsreform-krankenversicherung-neu-100.html"
+          "label": "https://www.tagesschau.de/kultur/deutscher-computerspielpreis-blick-auf-branche-100.html",
+          "url": "https://www.tagesschau.de/kultur/deutscher-computerspielpreis-blick-auf-branche-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -2433,8 +2429,8 @@
       }
     },
     {
-      "id": 2957253993,
-      "postUrl": "https://t.me/tagesschau/43647?single",
+      "id": 1770834517,
+      "postUrl": "https://t.me/tagesschau/43650?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2447,11 +2443,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Mangelnder Schutz Minderjähriger: EU-Kommission nimmt Meta ins Visier\nhttps://www.tagesschau.de/ausland/europa/eu-kommission-meta-102.html\n\nMeta, der Konzern hinter Facebook und Instagram, tut aus Sicht der EU-Kommission zu wenig dafür, Minderjährige zu schützen. Deshalb plant EU-Kommissionsvizepräsidentin Virkkunen eine App zur Alterskontrolle. Von A. Meyer-Feist.",
+      "text": "Anleger haben wieder mehr Zutrauen in den Erfolg von Adidas\nhttps://www.tagesschau.de/wirtschaft/finanzen/adidas-zahlen-marktbericht-aktie-100.html\n\nDer Sportartikel-Hersteller Adidas konnte zu Jahresbeginn wieder mehr Schuhe und Sportkleidung verkaufen - trotz widriger Umstände. Die Strategie der Marke mit den drei Streifen scheint aufzugehen.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/eu-kommission-meta-102.html",
-          "url": "https://www.tagesschau.de/ausland/europa/eu-kommission-meta-102.html"
+          "label": "https://www.tagesschau.de/wirtschaft/finanzen/adidas-zahlen-marktbericht-aktie-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/finanzen/adidas-zahlen-marktbericht-aktie-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -2599,8 +2595,8 @@
       }
     },
     {
-      "id": 939929768,
-      "postUrl": "https://t.me/tagesschau/43646?single",
+      "id": 1230314783,
+      "postUrl": "https://t.me/tagesschau/43649?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2613,11 +2609,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Wer von negativen Strompreisen profitieren kann\nhttps://www.tagesschau.de/wirtschaft/verbraucher/negative-strompreise-erneuerbare-energien-100.html\n\nWährend die Öl- und Spritpreise wieder gestiegen sind, ist Strom zuletzt extrem günstig geworden. Im Großhandel ist der Preis sogar zeitweise ins Minus gefallen. Wie Verbraucher davon profitieren können. Von Till Bücker.",
+      "text": "Bundeskabinett beschließt Eckpunkte für Haushalt 2027\nhttps://www.tagesschau.de/inland/innenpolitik/bundeskabinett-haushaltsentwurf-2027-beschlossen-100.html\n\nDie Bundesregierung hat ihren Haushaltsentwurf für 2027 und die Finanzplanung bis 2030 verabschiedet. Trotz geplanter Einsparungen und Reformen steigt die Neuverschuldung demnach drastisch an.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/negative-strompreise-erneuerbare-energien-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/negative-strompreise-erneuerbare-energien-100.html"
+          "label": "https://www.tagesschau.de/inland/innenpolitik/bundeskabinett-haushaltsentwurf-2027-beschlossen-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/bundeskabinett-haushaltsentwurf-2027-beschlossen-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -2773,8 +2769,8 @@
       }
     },
     {
-      "id": 814321963,
-      "postUrl": "https://t.me/tagesschau/43645?single",
+      "id": 2557909958,
+      "postUrl": "https://t.me/tagesschau/43648?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2787,11 +2783,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Europa erwärmt sich schneller als alle anderen Kontinente\nhttps://www.tagesschau.de/wissen/klima/negativ-rekord-klima-zustand-100.html\n\nEuropa ist der Kontinent, der sich am schnellsten erwärmt. Das zeigt der aktuelle Klimazustandsbericht der Weltorganisation für Meteorologie und des EU-Klimadienstes Copernicus. Von M.-C. Werner.",
+      "text": "Was sich mit dem Gesundheits-Sparpaket für gesetzlich Versicherte ändern soll\nhttps://www.tagesschau.de/inland/innenpolitik/gesundheitsreform-krankenversicherung-neu-100.html\n\nHöhere Zuzahlung für Medikamente, Einschnitte bei der Familienversicherung, Teilkrankschreibung - das Gesundheits-Sparpaket hat konkrete Auswirkungen für gesetzlich Versicherte. Was ist genau geplant?",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wissen/klima/negativ-rekord-klima-zustand-100.html",
-          "url": "https://www.tagesschau.de/wissen/klima/negativ-rekord-klima-zustand-100.html"
+          "label": "https://www.tagesschau.de/inland/innenpolitik/gesundheitsreform-krankenversicherung-neu-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/gesundheitsreform-krankenversicherung-neu-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -2939,8 +2935,8 @@
       }
     },
     {
-      "id": 3734683826,
-      "postUrl": "https://t.me/tagesschau/43644?single",
+      "id": 2957253993,
+      "postUrl": "https://t.me/tagesschau/43647?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2953,11 +2949,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Regierung einigt sich auf Gesundheitsreform\nhttps://www.tagesschau.de/inland/innenpolitik/eilmeldung-gesundheitsreform-kabinett-100.html\n\nDas Bundeskabinett hat ein Sparpaket für Milliarden-Entlastungen der gesetzlichen Krankenkassen auf den Weg gebracht. Die Gesetzespläne von Gesundheitsministerin Warken sollen Beitragserhöhungen verhindern.",
+      "text": "Mangelnder Schutz Minderjähriger: EU-Kommission nimmt Meta ins Visier\nhttps://www.tagesschau.de/ausland/europa/eu-kommission-meta-102.html\n\nMeta, der Konzern hinter Facebook und Instagram, tut aus Sicht der EU-Kommission zu wenig dafür, Minderjährige zu schützen. Deshalb plant EU-Kommissionsvizepräsidentin Virkkunen eine App zur Alterskontrolle. Von A. Meyer-Feist.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/eilmeldung-gesundheitsreform-kabinett-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/eilmeldung-gesundheitsreform-kabinett-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/eu-kommission-meta-102.html",
+          "url": "https://www.tagesschau.de/ausland/europa/eu-kommission-meta-102.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -3105,8 +3101,8 @@
       }
     },
     {
-      "id": 3773480005,
-      "postUrl": "https://t.me/tagesschau/43643?single",
+      "id": 939929768,
+      "postUrl": "https://t.me/tagesschau/43646?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -3119,11 +3115,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "EU sieht Kinder bei Instagram und Co. nicht ausreichend geschützt\nhttps://www.tagesschau.de/ausland/europa/eu-facebook-instagram-100.html\n\nFacebook und Instagram schützen Kinder nach vorläufigen Ermittlungen der EU-Kommission nicht genug vor den Gefahren ihrer Angebote. Der Mutterkonzern Meta müsse bei der Alterskontrolle nachbessern, sonst droht ein Bußgeld.",
+      "text": "Wer von negativen Strompreisen profitieren kann\nhttps://www.tagesschau.de/wirtschaft/verbraucher/negative-strompreise-erneuerbare-energien-100.html\n\nWährend die Öl- und Spritpreise wieder gestiegen sind, ist Strom zuletzt extrem günstig geworden. Im Großhandel ist der Preis sogar zeitweise ins Minus gefallen. Wie Verbraucher davon profitieren können. Von Till Bücker.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/eu-facebook-instagram-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/eu-facebook-instagram-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/negative-strompreise-erneuerbare-energien-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/negative-strompreise-erneuerbare-energien-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -3275,8 +3271,8 @@
       }
     },
     {
-      "id": 4198575988,
-      "postUrl": "https://t.me/tagesschau/43642?single",
+      "id": 814321963,
+      "postUrl": "https://t.me/tagesschau/43645?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -3289,11 +3285,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Zahlreiche Bilanzen: DAX rutscht unter 24.000 Punkte\nhttps://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-134.html\n\nNach positivem Start ist der DAX unter die Marke von 24.000 Punkten gerutscht. Nicht alle Quartalszahlen kommen heute gut an. Der Tag hat aber noch einige wichtige Termine zu bieten.",
+      "text": "Europa erwärmt sich schneller als alle anderen Kontinente\nhttps://www.tagesschau.de/wissen/klima/negativ-rekord-klima-zustand-100.html\n\nEuropa ist der Kontinent, der sich am schnellsten erwärmt. Das zeigt der aktuelle Klimazustandsbericht der Weltorganisation für Meteorologie und des EU-Klimadienstes Copernicus. Von M.-C. Werner.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-134.html",
-          "url": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-134.html"
+          "label": "https://www.tagesschau.de/wissen/klima/negativ-rekord-klima-zustand-100.html",
+          "url": "https://www.tagesschau.de/wissen/klima/negativ-rekord-klima-zustand-100.html"
         }
       ],
       "createdAt": "2026-04-29T18:46:48.301Z",
@@ -3438,6 +3434,144 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T05:03:29.080Z"
+      }
+    },
+    {
+      "id": 3734683826,
+      "postUrl": "https://t.me/tagesschau/43644?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/sf7lCi1dtwa96MZkvC1zQqkzh8h-tQMQATgM1VIV4yoq5zqpN3hjl4CqhNUsg849_euB5eMZp34WhA6krXBUvS01GgPre38H5RQXdd-lR-9917Y_Hdhwyz99LZvDZF1jzHRfML6E7BfRB7v3CyIAUNh1ulz-Xgba-jP6LkJlWRCUxM39iDlsp2x3DTZIs8mLbPUy_jyJWWEGvLQvrfNyCU76fmzneE8_KyAj2E3GU1dGmBJM0QrFFX2YSO0Cqt4XDYsFUfOxEWgWs5d9rbigrBcUvsUpb9T3yvsnY89CNSgfkRDnYFhgCtrHeDGEk1lGaBvtQ5UOid434T2TDAU3tw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Regierung einigt sich auf Gesundheitsreform\nhttps://www.tagesschau.de/inland/innenpolitik/eilmeldung-gesundheitsreform-kabinett-100.html\n\nDas Bundeskabinett hat ein Sparpaket für Milliarden-Entlastungen der gesetzlichen Krankenkassen auf den Weg gebracht. Die Gesetzespläne von Gesundheitsministerin Warken sollen Beitragserhöhungen verhindern.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/innenpolitik/eilmeldung-gesundheitsreform-kabinett-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/eilmeldung-gesundheitsreform-kabinett-100.html"
+        }
+      ],
+      "createdAt": "2026-04-29T18:46:48.301Z",
+      "expiresAt": "2026-04-30T18:46:48.301Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-29T18:46:48.301Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-29T18:46:48.301Z"
+      }
+    },
+    {
+      "id": 3773480005,
+      "postUrl": "https://t.me/tagesschau/43643?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/sf7lCi1dtwa96MZkvC1zQqkzh8h-tQMQATgM1VIV4yoq5zqpN3hjl4CqhNUsg849_euB5eMZp34WhA6krXBUvS01GgPre38H5RQXdd-lR-9917Y_Hdhwyz99LZvDZF1jzHRfML6E7BfRB7v3CyIAUNh1ulz-Xgba-jP6LkJlWRCUxM39iDlsp2x3DTZIs8mLbPUy_jyJWWEGvLQvrfNyCU76fmzneE8_KyAj2E3GU1dGmBJM0QrFFX2YSO0Cqt4XDYsFUfOxEWgWs5d9rbigrBcUvsUpb9T3yvsnY89CNSgfkRDnYFhgCtrHeDGEk1lGaBvtQ5UOid434T2TDAU3tw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "EU sieht Kinder bei Instagram und Co. nicht ausreichend geschützt\nhttps://www.tagesschau.de/ausland/europa/eu-facebook-instagram-100.html\n\nFacebook und Instagram schützen Kinder nach vorläufigen Ermittlungen der EU-Kommission nicht genug vor den Gefahren ihrer Angebote. Der Mutterkonzern Meta müsse bei der Alterskontrolle nachbessern, sonst droht ein Bußgeld.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/europa/eu-facebook-instagram-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/eu-facebook-instagram-100.html"
+        }
+      ],
+      "createdAt": "2026-04-29T18:46:48.301Z",
+      "expiresAt": "2026-04-30T18:46:48.301Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-29T18:46:48.301Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-29T18:46:48.301Z"
+      }
+    },
+    {
+      "id": 4198575988,
+      "postUrl": "https://t.me/tagesschau/43642?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/sf7lCi1dtwa96MZkvC1zQqkzh8h-tQMQATgM1VIV4yoq5zqpN3hjl4CqhNUsg849_euB5eMZp34WhA6krXBUvS01GgPre38H5RQXdd-lR-9917Y_Hdhwyz99LZvDZF1jzHRfML6E7BfRB7v3CyIAUNh1ulz-Xgba-jP6LkJlWRCUxM39iDlsp2x3DTZIs8mLbPUy_jyJWWEGvLQvrfNyCU76fmzneE8_KyAj2E3GU1dGmBJM0QrFFX2YSO0Cqt4XDYsFUfOxEWgWs5d9rbigrBcUvsUpb9T3yvsnY89CNSgfkRDnYFhgCtrHeDGEk1lGaBvtQ5UOid434T2TDAU3tw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Zahlreiche Bilanzen: DAX rutscht unter 24.000 Punkte\nhttps://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-134.html\n\nNach positivem Start ist der DAX unter die Marke von 24.000 Punkten gerutscht. Nicht alle Quartalszahlen kommen heute gut an. Der Tag hat aber noch einige wichtige Termine zu bieten.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-134.html",
+          "url": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-134.html"
+        }
+      ],
+      "createdAt": "2026-04-29T18:46:48.301Z",
+      "expiresAt": "2026-04-30T18:46:48.301Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-29T18:46:48.301Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-29T18:46:48.301Z"
       }
     },
     {
