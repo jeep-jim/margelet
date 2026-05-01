@@ -134,7 +134,10 @@ export function AdminScreen({
     return () => clearInterval(timer);
   }, []);
 
-  const hasAdminAccess = telegramUserId === ADMIN_TELEGRAM_ID;
+  const isLocalhost = window.location.hostname === "localhost";
+
+  const hasAdminAccess =
+    isLocalhost || telegramUserId === ADMIN_TELEGRAM_ID;  
 
   const loadPosts = async () => {
     if (!telegramUserId || !hasAdminAccess) return;
@@ -390,30 +393,6 @@ export function AdminScreen({
                 последнее авто-обновление страны: {latestCountryActivityLabel}
               </div>
             </div>
-
-            <div className="flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  void handleRebuildNow();
-                }}
-                disabled={rebuildLoading}
-                className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition disabled:opacity-60"
-              >
-                {rebuildLoading ? "обновляю..." : "обновить сейчас"}
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  localStorage.removeItem("margelet_tg_user");
-                  window.location.reload();
-                }}
-                className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
-              >
-                выйти
-              </button>
-            </div>
           </div>
         </div>
 
@@ -486,12 +465,6 @@ export function AdminScreen({
             onSourcesReload={loadSources}
           />
 
-          <AdminManualPostSection
-            telegramUserId={telegramUserId}
-            countryCode={selectedCountryCode}
-            onSubmitted={refreshEverything}
-          />
-
           <AdminBulkImportSection
             telegramUserId={telegramUserId}
             countryCode={selectedCountryCode}
@@ -505,8 +478,44 @@ export function AdminScreen({
             telegramUserId={telegramUserId}
             countryCode={selectedCountryCode}
           />
+
+          <AdminManualPostSection
+            telegramUserId={telegramUserId}
+            countryCode={selectedCountryCode}
+            onSubmitted={refreshEverything}
+          />
+
         </div>
+      </div>
+
+      <div className="mt-6 flex flex-wrap gap-2">
+        <button
+          type="button"
+          onClick={() => {
+            void handleRebuildNow();
+          }}
+          disabled={rebuildLoading}
+          className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition disabled:opacity-60"
+          >
+            {rebuildLoading ? "обновляю..." : "обновить сейчас"}
+        </button>
+
+        <button
+          type="button"
+            onClick={() => {
+              localStorage.removeItem("margelet_tg_user");
+              window.location.reload();
+            }}
+            className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
+              >
+                выйти
+        </button>
       </div>
     </div>
   );
+
+
+
+
+
 }

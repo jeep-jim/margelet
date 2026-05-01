@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { COUNTRIES, type CountryCode } from "./admin.countries";
-import { AdminSectionCard } from "./AdminSectionCard";
 
 type AdminCountriesSectionProps = {
   selectedCountryCode: CountryCode;
@@ -19,30 +18,23 @@ export function AdminCountriesSection({
   );
 
   const currentCountry =
-    enabledCountries.find((country) => country.code === selectedCountryCode) ||
+    enabledCountries.find((c) => c.code === selectedCountryCode) ||
     enabledCountries[0];
 
-  const currentCount = counts[currentCountry?.code || selectedCountryCode] || 0;
+  const currentCount =
+    counts[currentCountry?.code || selectedCountryCode] || 0;
 
   return (
-    <AdminSectionCard
-      title="Страна"
-      subtitle="Главный контекст управления. Ниже всё перестраивается только под выбранную страну."
-      badge={
-        <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
-          {currentCount} каналов
-        </div>
-      }
-    >
-      <div className="rounded-3xl border border-white/10 bg-[#12131a] p-4">
-        <div className="text-xs uppercase tracking-[0.2em] text-white/35">
-          Сменить страну
-        </div>
+    <div className="flex items-center gap-3">
 
+      {/* select + кастомная стрелка */}
+      <div className="relative min-w-0 flex-1">
         <select
           value={selectedCountryCode}
-          onChange={(event) => onSelectCountry(event.target.value as CountryCode)}
-          className="mt-3 w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-base text-white outline-none"
+          onChange={(e) =>
+            onSelectCountry(e.target.value as CountryCode)
+          }
+          className="w-full appearance-none rounded-xl border border-white/10 bg-[#1a1b24] px-3 py-2 pr-10 text-sm text-white outline-none"
         >
           {enabledCountries.map((country) => (
             <option key={country.code} value={country.code}>
@@ -51,13 +43,17 @@ export function AdminCountriesSection({
           ))}
         </select>
 
-        <div className="mt-3 text-sm text-white/45">
-          Сейчас выбрана страна:{" "}
-          <span className="text-white">
-            {currentCountry?.nativeLabel || selectedCountryCode.toUpperCase()}
-          </span>
-        </div>
+        {/* стрелка (контролируемая) */}
+        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/60 text-sm">
+          ▾
+        </span>
       </div>
-    </AdminSectionCard>
+
+      {/* каналов */}
+      <div className="flex h-[38px] items-center rounded-xl border border-white/10 bg-[#1a1b24] px-3 text-sm text-white/80 whitespace-nowrap">
+        {currentCount} каналов
+      </div>
+
+    </div>
   );
 }

@@ -119,10 +119,8 @@ export function AdminMonetizationSection() {
         className="flex w-full items-start justify-between gap-3 text-left"
       >
         <div>
-          <div className="text-lg font-semibold text-white">Монетизация и размещения</div>
-          <div className="mt-1 text-sm text-white/45">
-            Черновой центр заявок: оплата, бартер, статусы и сроки.
-          </div>
+          <div className="text-lg font-semibold text-white">🔥💰💸 Заявки</div>
+          
         </div>
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
           {items.length} заявок
@@ -157,8 +155,8 @@ export function AdminMonetizationSection() {
               <div className="mt-3 text-2xl font-semibold">{stats.expired.length}</div>
               <div className="text-xs text-white/45">истекли / пауза</div>
             </div>
-          </div>
-
+          </div>          
+          
           <div className="flex flex-wrap gap-2">
             {filters.map((item) => (
               <button

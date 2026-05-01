@@ -386,8 +386,8 @@ export function AdminSourcesSection({
 
   return (
     <AdminSectionCard
-      title="Каналы"
-      subtitle="Здесь можно выбирать несколько родительских категорий сразу и при желании уточнять их подтегами."
+      title="🌎 Каналы"
+      subtitle="Категории и подтеги."
       collapsible
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">

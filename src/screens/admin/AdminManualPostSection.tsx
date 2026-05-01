@@ -358,8 +358,8 @@ export function AdminManualPostSection({
 
   return (
     <AdminSectionCard
-      title="Ручное добавление поста"
-      subtitle="Быстрое ручное добавление одного Telegram-поста прямо в выбранную страну."
+      title="Добавление пост"
+      subtitle="Ручное добавление поста."
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">
           {countryCode.toUpperCase()}

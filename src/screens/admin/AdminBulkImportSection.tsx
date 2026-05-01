@@ -478,8 +478,8 @@ export function AdminBulkImportSection({
 
   return (
     <AdminSectionCard
-      title="Пакетное добавление каналов"
-      subtitle="Добавляй сколько нужно строк, указывай новые категории сразу и загружай одной кнопкой."
+      title="🌌 Добавить каналы"
+      subtitle="Проверь страну добавления!"
       collapsible
       defaultCollapsed
       badge={
