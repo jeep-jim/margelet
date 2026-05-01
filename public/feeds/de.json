@@ -1,9 +1,55 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-01T05:31:07.893Z",
-  "totalPosts": 64,
+  "updatedAt": "2026-05-01T06:47:33.124Z",
+  "totalPosts": 63,
   "chunks": 1,
   "items": [
+    {
+      "id": 861674732,
+      "postUrl": "https://t.me/tagesschau/43677?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/MST5zT6d27tAr8JqqkscwLefSfYyCI7SAMn8gVqBQEfylR4G5zfCBCnyqbErbLQJVDQW8N1YtANB-T2Yqx_QomTOJfjYilH51zm3YOE28ox2SlZ9UB3QWZOVJC5vnACp5eYqnj4l0vdRuMW6RQXUshMaB4wghcIEddTvPxfncLCrWw_z37buXwhxX1MrPza73PbfzwoDQBh9T-saaU3-QBaQZQ7uD6rgfAI2bPxkas9BYkI7ZbdvsgqGQCvEZbNv2s4iF1Z5AfpV3LuEWqjm9QjGaWuVg-3ArmliUBtbvrIC6BGSlH9mqWlh_d5c4sy3cKnt3jbvsmIgom0djFdNTQ.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Nahost-Liveblog: ++ US-Regierung will Kongressabstimmung umgehen ++\nhttps://www.tagesschau.de/newsticker/liveblog-iran-freitag-114.html\n\nOffenbar um eine gesetzlich vorgegebene Abstimmung im Kongress zu vermeiden, betrachtet die US-Regierung den Iran-Krieg als beendet. Die USA drängen auf direkte Gespräche zwischen Israel und Libanon.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/newsticker/liveblog-iran-freitag-114.html",
+          "url": "https://www.tagesschau.de/newsticker/liveblog-iran-freitag-114.html"
+        }
+      ],
+      "createdAt": "2026-05-01T06:45:37.380Z",
+      "expiresAt": "2026-05-02T06:45:37.380Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T06:45:37.380Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T06:45:37.380Z"
+      }
+    },
     {
       "id": 587181056,
       "postUrl": "https://t.me/forbesgermany/3?single",
@@ -163,52 +209,6 @@
       }
     },
     {
-      "id": 365692573,
-      "postUrl": "https://t.me/tagesschau/43676?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/MST5zT6d27tAr8JqqkscwLefSfYyCI7SAMn8gVqBQEfylR4G5zfCBCnyqbErbLQJVDQW8N1YtANB-T2Yqx_QomTOJfjYilH51zm3YOE28ox2SlZ9UB3QWZOVJC5vnACp5eYqnj4l0vdRuMW6RQXUshMaB4wghcIEddTvPxfncLCrWw_z37buXwhxX1MrPza73PbfzwoDQBh9T-saaU3-QBaQZQ7uD6rgfAI2bPxkas9BYkI7ZbdvsgqGQCvEZbNv2s4iF1Z5AfpV3LuEWqjm9QjGaWuVg-3ArmliUBtbvrIC6BGSlH9mqWlh_d5c4sy3cKnt3jbvsmIgom0djFdNTQ.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "100 Jahre Route 66: Die Mutter aller Highways feiert Geburtstag\nhttps://www.tagesschau.de/ausland/amerika/100-jahre-route-66-100.html\n\n4.000 Kilometer von den großen Seen im Norden der USA, quer durch den Mittleren Westen an die Küste Kaliforniens: Die legendäre Route 66 steht für den Roadtrip wie kein anderer Ort. Jetzt wird die \"Mother Road\" 100 Jahre alt. Von T. Börgers.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/ausland/amerika/100-jahre-route-66-100.html",
-          "url": "https://www.tagesschau.de/ausland/amerika/100-jahre-route-66-100.html"
-        }
-      ],
-      "createdAt": "2026-05-01T04:16:03.807Z",
-      "expiresAt": "2026-05-02T04:16:03.807Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T04:16:03.807Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T04:16:03.807Z"
-      }
-    },
-    {
       "id": 340101756,
       "postUrl": "https://t.me/heiseonline/12083?single",
       "source": {
@@ -252,6 +252,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T22:08:48.726Z"
+      }
+    },
+    {
+      "id": 365692573,
+      "postUrl": "https://t.me/tagesschau/43676?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/MST5zT6d27tAr8JqqkscwLefSfYyCI7SAMn8gVqBQEfylR4G5zfCBCnyqbErbLQJVDQW8N1YtANB-T2Yqx_QomTOJfjYilH51zm3YOE28ox2SlZ9UB3QWZOVJC5vnACp5eYqnj4l0vdRuMW6RQXUshMaB4wghcIEddTvPxfncLCrWw_z37buXwhxX1MrPza73PbfzwoDQBh9T-saaU3-QBaQZQ7uD6rgfAI2bPxkas9BYkI7ZbdvsgqGQCvEZbNv2s4iF1Z5AfpV3LuEWqjm9QjGaWuVg-3ArmliUBtbvrIC6BGSlH9mqWlh_d5c4sy3cKnt3jbvsmIgom0djFdNTQ.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "100 Jahre Route 66: Die Mutter aller Highways feiert Geburtstag\nhttps://www.tagesschau.de/ausland/amerika/100-jahre-route-66-100.html\n\n4.000 Kilometer von den großen Seen im Norden der USA, quer durch den Mittleren Westen an die Küste Kaliforniens: Die legendäre Route 66 steht für den Roadtrip wie kein anderer Ort. Jetzt wird die \"Mother Road\" 100 Jahre alt. Von T. Börgers.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/amerika/100-jahre-route-66-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/100-jahre-route-66-100.html"
+        }
+      ],
+      "createdAt": "2026-05-01T04:16:03.807Z",
+      "expiresAt": "2026-05-02T04:16:03.807Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T04:16:03.807Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T04:16:03.807Z"
       }
     },
     {
@@ -400,52 +446,6 @@
       }
     },
     {
-      "id": 2113941734,
-      "postUrl": "https://t.me/tagesschau/43675?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/MST5zT6d27tAr8JqqkscwLefSfYyCI7SAMn8gVqBQEfylR4G5zfCBCnyqbErbLQJVDQW8N1YtANB-T2Yqx_QomTOJfjYilH51zm3YOE28ox2SlZ9UB3QWZOVJC5vnACp5eYqnj4l0vdRuMW6RQXUshMaB4wghcIEddTvPxfncLCrWw_z37buXwhxX1MrPza73PbfzwoDQBh9T-saaU3-QBaQZQ7uD6rgfAI2bPxkas9BYkI7ZbdvsgqGQCvEZbNv2s4iF1Z5AfpV3LuEWqjm9QjGaWuVg-3ArmliUBtbvrIC6BGSlH9mqWlh_d5c4sy3cKnt3jbvsmIgom0djFdNTQ.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Oxfam-Berechnungen: Einkommensschere wächst weiter\nhttps://www.tagesschau.de/inland/oxfam-einkommensverteilung-100.html\n\nDie Einkommen von Konzernchefs und Beschäftigten gehen nach Berechnungen der Organisation Oxfam immer weiter auseinander. Spitzengehälter sind demnach stark gestiegen - die Reallöhne vieler Angestellter liegen hingegen unter dem Niveau von 2019.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/inland/oxfam-einkommensverteilung-100.html",
-          "url": "https://www.tagesschau.de/inland/oxfam-einkommensverteilung-100.html"
-        }
-      ],
-      "createdAt": "2026-05-01T04:16:03.807Z",
-      "expiresAt": "2026-05-02T04:16:03.807Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T04:16:03.807Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T04:16:03.807Z"
-      }
-    },
-    {
       "id": 260444845,
       "postUrl": "https://t.me/heiseonline/12082?single",
       "source": {
@@ -489,6 +489,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T09:24:28.811Z"
+      }
+    },
+    {
+      "id": 2113941734,
+      "postUrl": "https://t.me/tagesschau/43675?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/MST5zT6d27tAr8JqqkscwLefSfYyCI7SAMn8gVqBQEfylR4G5zfCBCnyqbErbLQJVDQW8N1YtANB-T2Yqx_QomTOJfjYilH51zm3YOE28ox2SlZ9UB3QWZOVJC5vnACp5eYqnj4l0vdRuMW6RQXUshMaB4wghcIEddTvPxfncLCrWw_z37buXwhxX1MrPza73PbfzwoDQBh9T-saaU3-QBaQZQ7uD6rgfAI2bPxkas9BYkI7ZbdvsgqGQCvEZbNv2s4iF1Z5AfpV3LuEWqjm9QjGaWuVg-3ArmliUBtbvrIC6BGSlH9mqWlh_d5c4sy3cKnt3jbvsmIgom0djFdNTQ.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Oxfam-Berechnungen: Einkommensschere wächst weiter\nhttps://www.tagesschau.de/inland/oxfam-einkommensverteilung-100.html\n\nDie Einkommen von Konzernchefs und Beschäftigten gehen nach Berechnungen der Organisation Oxfam immer weiter auseinander. Spitzengehälter sind demnach stark gestiegen - die Reallöhne vieler Angestellter liegen hingegen unter dem Niveau von 2019.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/oxfam-einkommensverteilung-100.html",
+          "url": "https://www.tagesschau.de/inland/oxfam-einkommensverteilung-100.html"
+        }
+      ],
+      "createdAt": "2026-05-01T04:16:03.807Z",
+      "expiresAt": "2026-05-02T04:16:03.807Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T04:16:03.807Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T04:16:03.807Z"
       }
     },
     {
@@ -633,52 +679,6 @@
       }
     },
     {
-      "id": 494725567,
-      "postUrl": "https://t.me/tagesschau/43674?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/MST5zT6d27tAr8JqqkscwLefSfYyCI7SAMn8gVqBQEfylR4G5zfCBCnyqbErbLQJVDQW8N1YtANB-T2Yqx_QomTOJfjYilH51zm3YOE28ox2SlZ9UB3QWZOVJC5vnACp5eYqnj4l0vdRuMW6RQXUshMaB4wghcIEddTvPxfncLCrWw_z37buXwhxX1MrPza73PbfzwoDQBh9T-saaU3-QBaQZQ7uD6rgfAI2bPxkas9BYkI7ZbdvsgqGQCvEZbNv2s4iF1Z5AfpV3LuEWqjm9QjGaWuVg-3ArmliUBtbvrIC6BGSlH9mqWlh_d5c4sy3cKnt3jbvsmIgom0djFdNTQ.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Maler und Bildhauer Georg Baselitz gestorben\nhttps://www.tagesschau.de/kultur/georg-baselitz-gestorben-102.html\n\nDer Maler und Bildhauer Georg Baselitz ist im Alter von 88 Jahren gestorben. Er zählte zu den bedeutendsten zeitgenössischen Künstlern Deutschlands. Seine monumentalen Bilder hängen in den wichtigsten Museen der Welt.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/kultur/georg-baselitz-gestorben-102.html",
-          "url": "https://www.tagesschau.de/kultur/georg-baselitz-gestorben-102.html"
-        }
-      ],
-      "createdAt": "2026-04-30T22:08:49.470Z",
-      "expiresAt": "2026-05-01T22:08:49.470Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T22:08:49.470Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T22:08:49.470Z"
-      }
-    },
-    {
       "id": 558520310,
       "postUrl": "https://t.me/heiseonline/12081?single",
       "source": {
@@ -722,6 +722,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T09:24:28.811Z"
+      }
+    },
+    {
+      "id": 494725567,
+      "postUrl": "https://t.me/tagesschau/43674?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/MST5zT6d27tAr8JqqkscwLefSfYyCI7SAMn8gVqBQEfylR4G5zfCBCnyqbErbLQJVDQW8N1YtANB-T2Yqx_QomTOJfjYilH51zm3YOE28ox2SlZ9UB3QWZOVJC5vnACp5eYqnj4l0vdRuMW6RQXUshMaB4wghcIEddTvPxfncLCrWw_z37buXwhxX1MrPza73PbfzwoDQBh9T-saaU3-QBaQZQ7uD6rgfAI2bPxkas9BYkI7ZbdvsgqGQCvEZbNv2s4iF1Z5AfpV3LuEWqjm9QjGaWuVg-3ArmliUBtbvrIC6BGSlH9mqWlh_d5c4sy3cKnt3jbvsmIgom0djFdNTQ.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Maler und Bildhauer Georg Baselitz gestorben\nhttps://www.tagesschau.de/kultur/georg-baselitz-gestorben-102.html\n\nDer Maler und Bildhauer Georg Baselitz ist im Alter von 88 Jahren gestorben. Er zählte zu den bedeutendsten zeitgenössischen Künstlern Deutschlands. Seine monumentalen Bilder hängen in den wichtigsten Museen der Welt.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/kultur/georg-baselitz-gestorben-102.html",
+          "url": "https://www.tagesschau.de/kultur/georg-baselitz-gestorben-102.html"
+        }
+      ],
+      "createdAt": "2026-04-30T22:08:49.470Z",
+      "expiresAt": "2026-05-01T22:08:49.470Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T22:08:49.470Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T22:08:49.470Z"
       }
     },
     {
@@ -875,52 +921,6 @@
       }
     },
     {
-      "id": 4242898255,
-      "postUrl": "https://t.me/heiseonline/12080?single",
-      "source": {
-        "title": "heise online",
-        "handle": "heiseonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/KV9tC_AtwNAP24_LV9qgOQ2eJcYOLFU4EfX6cMwO1d8qeQ5Q3-9OOVzsRrsMYVSeuFwT5o5oigVUiiHY_PZeEekbcvOHE63MLpKHTF3IZ1b6atGQiVRuKLIaFHJdGRn6f9nDrbTI8DyXvfqArZzzvO0EGUpe3TzUPk-3rCFZdo3GkPK2K3pDA0lmd8b3g5mxUJEmzxSSBIHQLHI_pxaISCHmodboOBQJfm5QCMxFu29fHeNm3ubW6pQF9Ppji9A_SBYHu-5UTvCXI9_6jKKdyPS5xWZXxLxUI3j0ptscGyptrHimpwJ9PljUmk1mgs1pan0WHgrwjXsDHzvIwu7HoQ.jpg"
-      },
-      "sourceId": "de:heiseonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "KI-Wettrüsten: Tech-Riesen investieren hunderte Milliarden\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/KI-Wettruesten-Tech-Riesen-investieren-hunderte-Milliarden-11277500.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
-        }
-      ],
-      "createdAt": "2026-04-30T06:41:07.868Z",
-      "expiresAt": "2026-05-01T06:41:07.868Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T06:41:07.868Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T06:41:07.868Z"
-      }
-    },
-    {
       "id": 276310225,
       "postUrl": "https://t.me/dw_deutsch/891?single",
       "source": {
@@ -1060,52 +1060,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T18:44:28.584Z"
-      }
-    },
-    {
-      "id": 276642727,
-      "postUrl": "https://t.me/heiseonline/12079?single",
-      "source": {
-        "title": "heise online",
-        "handle": "heiseonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/KV9tC_AtwNAP24_LV9qgOQ2eJcYOLFU4EfX6cMwO1d8qeQ5Q3-9OOVzsRrsMYVSeuFwT5o5oigVUiiHY_PZeEekbcvOHE63MLpKHTF3IZ1b6atGQiVRuKLIaFHJdGRn6f9nDrbTI8DyXvfqArZzzvO0EGUpe3TzUPk-3rCFZdo3GkPK2K3pDA0lmd8b3g5mxUJEmzxSSBIHQLHI_pxaISCHmodboOBQJfm5QCMxFu29fHeNm3ubW6pQF9Ppji9A_SBYHu-5UTvCXI9_6jKKdyPS5xWZXxLxUI3j0ptscGyptrHimpwJ9PljUmk1mgs1pan0WHgrwjXsDHzvIwu7HoQ.jpg"
-      },
-      "sourceId": "de:heiseonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Linux für Gamer: Bazzite 44 basiert auf Fedora 44\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Linux-fuer-Gamer-Bazzite-44-basiert-auf-Fedora-44-11277452.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
-        }
-      ],
-      "createdAt": "2026-04-30T06:41:07.868Z",
-      "expiresAt": "2026-05-01T06:41:07.868Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T06:41:07.868Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T06:41:07.868Z"
       }
     },
     {
