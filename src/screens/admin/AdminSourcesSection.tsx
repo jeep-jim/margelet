@@ -99,7 +99,13 @@ function getInitials(source: TrustedSource) {
   return value.slice(0, 1).toUpperCase();
 }
 
-function SourceAvatar({ source }: { source: TrustedSource }) {
+function SourceAvatar({
+  source,
+  onAvatarClick,
+}: {
+  source: TrustedSource;
+  onAvatarClick?: () => void;
+}) {
   const [imageFailed, setImageFailed] = useState(false);
   const effectiveAvatar = source.avatarOverride || source.avatarUrl;
   const avatarUrl = effectiveAvatar?.startsWith("data:image/svg+xml")
@@ -108,7 +114,7 @@ function SourceAvatar({ source }: { source: TrustedSource }) {
   const showImage = Boolean(avatarUrl) && !imageFailed;
 
   return (
-    <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white">
+    <div className="relative flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/10 text-sm font-semibold text-white">
       {showImage && avatarUrl ? (
         <img
           src={avatarUrl}
@@ -120,10 +126,22 @@ function SourceAvatar({ source }: { source: TrustedSource }) {
       ) : (
         <span>{getInitials(source)}</span>
       )}
+
+      {onAvatarClick ? (
+        <button
+          type="button"
+          onClick={(event) => {
+            event.stopPropagation();
+            onAvatarClick();
+          }}
+          className="absolute bottom-0 right-0 flex h-5 w-5 items-center justify-center rounded-full border border-white/20 bg-black/70 text-white"
+        >
+          <Pencil className="h-3 w-3" />
+        </button>
+      ) : null}
     </div>
   );
 }
-
 
 export function AdminSourcesSection({
   telegramUserId,
@@ -134,6 +152,7 @@ export function AdminSourcesSection({
   const [search, setSearch] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [expandedSourceId, setExpandedSourceId] = useState<string | null>(null);
 
   const [handle, setHandle] = useState("");
   const [title, setTitle] = useState("");
@@ -548,6 +567,7 @@ export function AdminSourcesSection({
             ) : null}
 
             <div className="mt-3 flex flex-wrap gap-2">
+              
               {selectedParentGroups.length > 0 ? (
                 selectedParentGroups.flatMap((group) => [
                   <div
@@ -604,119 +624,123 @@ export function AdminSourcesSection({
             />
           </div>
 
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+          <div className="space-y-2">
             {filteredSources.map((source) => {
               const tags = getSourceTags(source);
               const groups = getParentGroups(tags);
+              const isExpanded = expandedSourceId === source.id;
 
               return (
                 <div
                   key={source.id}
-                  className="rounded-[22px] border border-white/10 bg-[#151722] p-3 sm:p-4"
+                  className="w-full overflow-hidden rounded-[18px] border border-white/10 bg-[#151722] px-3 py-2"
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="relative shrink-0">
-                      <SourceAvatar source={source} />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          void saveAvatarOverride(source);
-                        }}
-                        className="absolute -bottom-1 -right-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/10 bg-[#202331] text-white/75 shadow-lg transition hover:bg-white hover:text-black"
-                        title="Заменить аватарку ссылкой"
-                        aria-label="Заменить аватарку ссылкой"
-                      >
-                        <Pencil className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="min-w-0">
-                          <div className="truncate text-base font-semibold text-white">
-                            {source.title || "Без названия"}
-                          </div>
-                          <div className="mt-1 truncate text-sm text-white/55">@{source.handle}</div>
-                        </div>
-
-                        <div
-                          className={`rounded-full px-3 py-1 text-xs ${
-                            source.status === "active"
-                              ? "bg-emerald-500/15 text-emerald-300"
-                              : "bg-white/10 text-white/55"
-                          }`}
-                        >
-                          {source.status === "active" ? "активен" : "пауза"}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {source.note ? (
-                    <div className="mt-3 text-sm leading-6 text-white/70">{source.note}</div>
-                  ) : null}
-
-                  {source.avatarOverride ? (
-                    <div className="mt-3 inline-flex rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1 text-xs text-[#d9f3ff]">
-                      аватарка вручную
-                    </div>
-                  ) : null}
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {groups.flatMap((group) => [
-                      <div
-                        key={`card-parent-${group.parentTag}`}
-                        className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs text-white"
-                      >
-                        {resolveTagLabel(group.parentTag, "ru")}
-                      </div>,
-                      ...group.childTags.map((tag) => (
-                        <div
-                          key={`card-child-${tag}`}
-                          className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1 text-xs text-[#d9f3ff]"
-                        >
-                          {resolveTagLabel(tag, "ru")}
-                        </div>
-                      )),
-                    ])}
-
-                    {groups.length === 0 ? (
-                      <div className="rounded-full border border-dashed border-white/10 px-3 py-1 text-xs text-white/35">
-                        без тегов
-                      </div>
-                    ) : null}
-                  </div>
-
-                  <div className="mt-4 space-y-1 text-xs text-white/45">
-                    <div>Создан: {formatDate(source.createdAt)}</div>
-                    <div>Обновлён: {formatDate(source.updatedAt)}</div>
-                    <div>Проверка: {formatDate(source.lastCheckedAt)}</div>
-                    <div>Импорт: {formatDate(source.lastImportedAt)}</div>
-                    <div>Постов: {source.importedPostsCount || 0}</div>
-                  </div>
-
-                  <div className="mt-4 flex gap-2">
-                    <button
-                      type="button"
-                      onClick={() => startEdit(source)}
-                      className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/85 transition hover:bg-white/10"
-                    >
-                      редактировать
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        void deleteSource(source);
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpandedSourceId((current) =>
+                        current === source.id ? null : source.id
+                      )
+                    }
+                    className="flex w-full min-w-0 items-center justify-between gap-2 text-left"
+                  >
+                    <SourceAvatar
+                      source={source}
+                      onAvatarClick={() => {
+                        void saveAvatarOverride(source);
                       }}
-                      className="rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm text-red-200 transition hover:bg-red-500/15"
+                    />
+
+                    <div className="min-w-0 flex-1 overflow-hidden">
+                      <div className="truncate text-sm font-semibold text-white">
+                        {source.title || "Без названия"}
+                      </div>
+                      <div className="truncate text-xs text-white/55">
+                        @{source.handle}
+                      </div>
+                    </div>
+
+                    <div
+                      className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] ${
+                        source.status === "active"
+                          ? "bg-emerald-500/15 text-emerald-300"
+                          : "bg-white/10 text-white/55"
+                      }`}
                     >
-                      удалить
-                    </button>
-                  </div>
+                      {source.status === "active" ? "активен" : "пауза"}
+                    </div>
+
+                    <div className="ml-1 flex items-center">
+                      <ChevronDown
+                    
+
+                        className={`h-4 w-4 shrink-0 text-white/60 transition ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                  </button>
+
+                  {isExpanded ? (
+                    <div className="mt-3 border-t border-white/10 pt-3">
+                      <div className="flex max-w-full flex-wrap gap-1.5 overflow-hidden">
+                        {groups.flatMap((group) => [
+                          <div
+                            key={`card-parent-${group.parentTag}`}
+                            className="max-w-full truncate rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-white"
+                          >
+                            {resolveTagLabel(group.parentTag, "ru")}
+                          </div>,
+                          ...group.childTags.map((tag) => (
+                            <div
+                              key={`card-child-${tag}`}
+                              className="max-w-full truncate rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-2.5 py-1 text-xs text-[#d9f3ff]"
+                            >
+                              {resolveTagLabel(tag, "ru")}
+                            </div>
+                          )),
+                        ])}
+
+                        {groups.length === 0 ? (
+                          <div className="rounded-full border border-dashed border-white/10 px-2.5 py-1 text-xs text-white/35">
+                            без тегов
+                          </div>
+                        ) : null}
+                      </div>
+
+                      <div className="mt-3 space-y-1 text-xs text-white/45">
+                        <div>Создан: {formatDate(source.createdAt)}</div>
+                        <div>Обновлён: {formatDate(source.updatedAt)}</div>
+                        <div>Проверка: {formatDate(source.lastCheckedAt)}</div>
+                        <div>Импорт: {formatDate(source.lastImportedAt)}</div>
+                        <div>Постов: {source.importedPostsCount || 0}</div>
+                      </div>
+
+                      <div className="mt-3 flex gap-2">
+                        <button
+                          type="button"
+                          onClick={() => startEdit(source)}
+                          className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/85 transition hover:bg-white/10"
+                        >
+                          редактировать
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            void deleteSource(source);
+                          }}
+                          className="rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm text-red-200 transition hover:bg-red-500/15"
+                        >
+                          удалить
+                        </button>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               );
             })}
-          </div>
+          </div>          
 
           {filteredSources.length === 0 ? (
             <div className="rounded-[24px] border border-dashed border-white/10 bg-[#151722] px-4 py-8 text-center text-sm text-white/45">

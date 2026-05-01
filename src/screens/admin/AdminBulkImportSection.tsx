@@ -479,7 +479,7 @@ export function AdminBulkImportSection({
   return (
     <AdminSectionCard
       title="🌌 Добавить каналы"
-      subtitle="Проверь страну добавления!"
+      subtitle="И проверь страну!"
       collapsible
       defaultCollapsed
       badge={

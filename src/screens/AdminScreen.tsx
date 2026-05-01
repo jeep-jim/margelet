@@ -364,7 +364,7 @@ export function AdminScreen({
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] px-3 py-4 text-white sm:px-4 sm:py-5">
+    <div className="min-h-screen bg-[#0a0a0f] px-3 py-4 text-white sm:px-4 sm:py-5 pb-28">
       <div className="mx-auto max-w-7xl">
         {state === "loading" ? (
           <div className="mb-4 text-sm text-white/50">загрузка...</div>
@@ -393,6 +393,42 @@ export function AdminScreen({
                 последнее авто-обновление страны: {latestCountryActivityLabel}
               </div>
             </div>
+
+            <details className="absolute right-6 top-6 z-20">
+              <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full bg-red-500/30 text-lg shadow-lg shadow-red-500/20 transition hover:scale-105 [&::-webkit-details-marker]:hidden">
+                💥
+              </summary>
+
+              <div className="absolute right-0 mt-3 w-[260px] rounded-3xl border border-red-500/25 bg-[#171016] p-4 shadow-2xl">
+                <div className="mb-3 text-sm font-semibold text-red-100">
+                  Экстренное управление
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      void handleRebuildNow();
+                    }}
+                    disabled={rebuildLoading}
+                    className="rounded-full bg-red-500 px-4 py-2 text-sm font-medium text-white transition disabled:opacity-60"
+                  >
+                    {rebuildLoading ? "обновляю..." : "обновить сейчас"}
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      localStorage.removeItem("margelet_tg_user");
+                      window.location.reload();
+                    }}
+                    className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
+                  >
+                    выйти
+                  </button>
+                </div>
+              </div>
+            </details>                    
           </div>
         </div>
 
@@ -420,7 +456,13 @@ export function AdminScreen({
               </div>
             </button>
 
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div
+              className={`mt-3 gap-2 ${
+                countryStatsOpen
+                  ? "flex flex-wrap"
+                  : "flex max-h-[36px] flex-nowrap overflow-hidden"
+              }`}
+            >              
               {(countryStatsOpen ? countryFeedStats : countryFeedStats.slice(0, 10)).map((item) => (
                 <button
                   key={item.code}
@@ -456,66 +498,72 @@ export function AdminScreen({
             onSelectCountry={setSelectedCountryCode}
             counts={sourceCountsByCountry}
           />
-          <AdminMonetizationSection />
 
-          <AdminSourcesSection
-            telegramUserId={telegramUserId}
-            countryCode={selectedCountryCode}
-            sources={sources}
-            onSourcesReload={loadSources}
-          />
+          <div id="admin-requests">
+            <AdminMonetizationSection />
+          </div>
 
-          <AdminBulkImportSection
-            telegramUserId={telegramUserId}
-            countryCode={selectedCountryCode}
-            onImported={refreshEverything}
-          />
+          <div id="admin-channels">
+            <AdminSourcesSection
+              telegramUserId={telegramUserId}
+              countryCode={selectedCountryCode}
+              sources={sources}
+              onSourcesReload={loadSources}
+            />
+          </div>
 
-          <AdminPostsSection
-            posts={posts}
-            state={state}
-            onDeletePost={handleDeletePost}
-            telegramUserId={telegramUserId}
-            countryCode={selectedCountryCode}
-          />
+          <div id="admin-bulk">
+            <AdminBulkImportSection
+              telegramUserId={telegramUserId}
+              countryCode={selectedCountryCode}
+              onImported={refreshEverything}
+            />
+          </div>
 
-          <AdminManualPostSection
-            telegramUserId={telegramUserId}
-            countryCode={selectedCountryCode}
-            onSubmitted={refreshEverything}
-          />
+          <div id="admin-posts">
+            <AdminPostsSection
+              posts={posts}
+              state={state}
+              onDeletePost={handleDeletePost}
+              telegramUserId={telegramUserId}
+              countryCode={selectedCountryCode}
+            />
+          </div>
 
+          <div id="admin-manual-post">
+            <AdminManualPostSection
+              telegramUserId={telegramUserId}
+              countryCode={selectedCountryCode}
+              onSubmitted={refreshEverything}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="mt-6 flex flex-wrap gap-2">
-        <button
-          type="button"
-          onClick={() => {
-            void handleRebuildNow();
-          }}
-          disabled={rebuildLoading}
-          className="rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition disabled:opacity-60"
-          >
-            {rebuildLoading ? "обновляю..." : "обновить сейчас"}
-        </button>
-
-        <button
-          type="button"
+      {/* 🔥 ЛИПКАЯ НАВИГАЦИЯ */}
+      <div className="fixed bottom-4 left-3 right-3 z-50 flex items-center justify-between rounded-full border border-white/10 bg-black/75 px-3 py-2 shadow-2xl backdrop-blur sm:left-1/2 sm:right-auto sm:w-[360px] sm:-translate-x-1/2">
+        {[
+          ["💰", "admin-requests"],
+          ["🌍", "admin-channels"],
+          ["🌌", "admin-bulk"],
+          ["🎈", "admin-posts"],
+          ["✍️", "admin-manual-post"],
+        ].map(([label, id]) => (
+          <button
+            key={id}
+            type="button"
             onClick={() => {
-              localStorage.removeItem("margelet_tg_user");
-              window.location.reload();
+              document.getElementById(id)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
             }}
-            className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/15"
-              >
-                выйти
-        </button>
-      </div>
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-base transition hover:bg-white/20 active:scale-95"
+          >
+            {label}
+          </button>
+        ))}
+      </div>      
     </div>
   );
-
-
-
-
-
 }
