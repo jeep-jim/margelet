@@ -157,7 +157,7 @@ const CHANNEL_UI = {
     rulesOpen: "Открыть правила",
     rulesClose: "Скрыть правила",
     rulesAgree: "Я прочитал правила и понимаю, что канал проходит модерацию.",
-    submit: "Перейти в Telegram-бот",
+    submit: "Подтвердить в Telegram-бот",
     emptyError: "Вставь ссылку на Telegram-канал.",
     invalidError: "Нужна ссылка вида https://t.me/channel_name",
     rulesError: "Сначала нужно принять правила.",
@@ -1058,7 +1058,7 @@ export function CreatorChannelPanel({
           value={channelTitle}
           onChange={(event) => setChannelTitle(event.target.value)}
           placeholder={ui.namePlaceholder}
-          className="mt-2 w-full rounded-full border border-soft bg-white/80 px-4 py-3 text-sm text-primary placeholder:text-secondary shadow-inner outline-none transition focus-border-strong dark:bg-white/10 dark:text-white dark:placeholder:text-slate-400"        
+          className="mt-2 w-full rounded-full border border-soft bg-surface-soft px-4 py-3 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
         />
 
         <label className="text-secondary mt-5 block text-xs font-semibold uppercase tracking-[0.14em]">
@@ -1068,7 +1068,7 @@ export function CreatorChannelPanel({
           value={channelUrl}
           onChange={(event) => setChannelUrl(event.target.value)}
           placeholder={copy.channelPlaceholder}
-          className="mt-2 w-full rounded-full border border-soft bg-white/80 px-4 py-3 text-sm text-primary placeholder:text-secondary shadow-inner outline-none transition focus-border-strong dark:bg-white/10 dark:text-white dark:placeholder:text-slate-400"        
+          className="mt-2 w-full rounded-full border border-soft bg-surface-soft px-4 py-3 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
         />
 
         <label className="text-secondary mt-5 block text-xs font-semibold uppercase tracking-[0.14em]">
@@ -1078,7 +1078,7 @@ export function CreatorChannelPanel({
           <select
             value={country}
             onChange={(event) => setCountry(event.target.value as Locale)}
-            className="w-full appearance-none rounded-full border border-soft bg-white/80 px-4 py-3 pr-11 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10 dark:text-white"          
+            className="w-full appearance-none rounded-full border border-soft bg-surface-soft px-4 py-3 pr-11 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
           >
             {SITE_LOCALES.map((item) => (
               <option
@@ -1107,7 +1107,7 @@ export function CreatorChannelPanel({
           <button
             type="button"
             onClick={() => setTagPickerOpen((value) => !value)}
-            className="flex w-full items-center justify-between gap-3 rounded-[18px] border border-soft bg-white/70 px-4 py-3 text-left shadow-inner transition hover:bg-white/90 dark:bg-white/10 dark:hover:bg-white/15 dark:text-white"          
+            className="flex w-full items-center justify-between gap-3 rounded-[18px] border border-soft bg-surface-soft px-4 py-3 text-left shadow-inner transition hover:bg-white/90 dark:bg-white/10 dark:hover:bg-white/15"
           >
             <div className="min-w-0 flex-1">
               {selectedParentLabels.length ? (
@@ -1362,7 +1362,7 @@ export function CreatorChannelPanel({
                             setDonateDrafts((current) => ({ ...current, [item.id]: event.target.value }))
                           }
                           placeholder={ui.donatePlaceholder}
-                          className="w-full rounded-full border border-soft bg-white/80 px-4 py-2.5 text-sm text-primary placeholder:text-secondary shadow-inner outline-none transition focus-border-strong dark:bg-white/10 dark:text-white dark:placeholder:text-slate-400"                        
+                          className="w-full rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm text-primary shadow-inner outline-none transition focus-border-strong dark:bg-white/10"
                         />
 
                         <button
