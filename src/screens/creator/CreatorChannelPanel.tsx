@@ -1084,7 +1084,7 @@ export function CreatorChannelPanel({
               <option
                 key={item.code}
                 value={item.code}
-                className="bg-[#142434] text-white dark:bg-[#142434] dark:text-white"
+                className="bg-surface-soft text-primary"
               >
                 {item.label} · {item.nativeLabel}
               </option>

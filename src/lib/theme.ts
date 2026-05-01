@@ -2,6 +2,21 @@ const THEME_KEY = "margelet_theme";
 
 export type Theme = "light" | "dark";
 
+function setThemeMeta(theme: Theme) {
+  if (typeof document === "undefined") return;
+
+  const color = theme === "dark" ? "#17212b" : "#f5f7fb";
+
+  let meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.name = "theme-color";
+    document.head.appendChild(meta);
+  }
+
+  meta.content = color;
+}
+
 export function getTheme(): Theme {
   if (typeof window === "undefined") return "light";
 
@@ -18,6 +33,7 @@ export function applyTheme(theme: Theme) {
 
   document.documentElement.setAttribute("data-theme", theme);
   localStorage.setItem(THEME_KEY, theme);
+  setThemeMeta(theme);
 }
 
 export function initTheme() {
