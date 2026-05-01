@@ -1,9 +1,62 @@
 {
-  "updatedAt": "2026-05-01T06:47:33.124Z",
+  "updatedAt": "2026-05-01T07:55:01.788Z",
   "posts": [
     {
-      "id": 3560943802,
-      "postUrl": "https://t.me/tass_agency/373788?single",
+      "id": 1148223040,
+      "postUrl": "https://t.me/rian_ru/337802?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Путин не приглашал Трампа на парад 9 мая в Москву, сообщил Песков. \n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "сообщил",
+          "url": "https://ria.ru/20260430/peskov-2089865034.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-30T11:54:46.208Z",
+      "expiresAt": "2026-05-01T11:54:46.208Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:54:46.208Z"
+      }
+    },
+    {
+      "id": 2037710299,
+      "postUrl": "https://t.me/tass_agency/373781?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -16,12 +69,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Госдолг США может превысить 120% ВВП к 2027 году, сообщает международное рейтинговое агентство Fitch Ratings.",
+      "text": "США рассматривают возможность сокращения воинского контингента в ФРГ. Это решение будет принято в ближайшем будущем, заявил Трамп.",
       "links": [],
-      "createdAt": "2026-04-30T23:10:24.583Z",
-      "expiresAt": "2026-05-01T23:10:24.583Z",
+      "createdAt": "2026-04-30T20:45:33.414Z",
+      "expiresAt": "2026-05-01T20:45:33.414Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T23:10:24.583Z",
+      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
       "tag": "news",
       "tags": [
         "news"
@@ -39,7 +92,104 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-04-30T23:10:24.583Z"
+        "reviewedAt": "2026-04-30T20:45:33.414Z"
+      }
+    },
+    {
+      "id": 4285361187,
+      "postUrl": "https://t.me/rian_ru/337801?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/oFMju7A_hsptWzPo-jr5ohhATobaVNEltqaKNi-HNu5FrooNkGGJ-pNb9t0TWFQw3OKxj9O7hkWdUtauGXmoDPRX7AePCpJfah8D_LRHfJ-51Q_czJtHAfOmrUV1sbsfKhN_-fb3v-GuNAla5YLUA6ddRradJYSWSjoouwKDU2e1IGJ4YSnQqB6MfIilnYbpYqQGbzKwJs_nQMZjo8FZG3biE4E1gPjwRC3Q6m1Mzq7ETh8pKfUwLIr-sMEiwI1BPhRRuRoQMUmKL-5s5GNGKjAQakHAHL6IOFL20eaTF2TKImkk6niJSt4gL__4jrcwvrH50DYV7zUOzLuaSY5FWA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Камеры на дорогах готовы к снижению нештрафуемого порога превышения скорости - с 20 км/ч до 2-3 км/ч.  Гендиректор ЦОДД заявил, что уже сейчас технические возможности позволяют фиксировать минимальное превышение скорости с погрешностью 1 км/ч.   При этом он…",
+      "links": [],
+      "createdAt": "2026-04-30T11:54:46.208Z",
+      "expiresAt": "2026-05-01T11:54:46.208Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:54:46.208Z"
+      }
+    },
+    {
+      "id": 1099439714,
+      "postUrl": "https://t.me/tass_agency/373780?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/vivzU7VCCPtT3aHNgnicygfuXZrnnu1gE-ODMuCzLDisy7_JdaLHsQ1FCIOG6DIFGjDvuO6grRgUlhiiYaaj1B-TIHfubt3HfqA8rNX-HFR0SfDK-d2cZBFMb2Zn_Ukm3tSG0-SSc2f18rprskz676G-bq8iR9vinItfaloFoL4FrSNpTiXAa8uKZ4oJv2RDRW5nChhBrIU1tGRm3Eo94btRevKe9MuikSQp8VkHj07EBHVU5OaaLdITJ6L1-dNNti8IkZ3Sbditxdw6F7mnEW7GzaDrpAwdF2i9gHubBs1VGfNpbAIByK6TXiY59Sm1-jj8cZN7iZsA8BgA1c_eow.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Трамп заявил, что не уверен в необходимости возобновления ударов по Ирану.\n\nПо версии американского лидера, Иран \"жаждет заключения сделки\".",
+      "links": [],
+      "createdAt": "2026-04-30T20:45:33.414Z",
+      "expiresAt": "2026-05-01T20:45:33.414Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T20:45:33.414Z"
       }
     },
     {
@@ -77,7 +227,7 @@
       "createdAt": "2026-04-30T11:54:46.208Z",
       "expiresAt": "2026-05-01T11:54:46.208Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
       "tag": "news",
       "tags": [
         "news",
@@ -102,60 +252,8 @@
       }
     },
     {
-      "id": 1671841110,
-      "postUrl": "https://t.me/readovkanews/109827?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/aUEj8uruZ118SWnwC0n-jw1AB4BnNIW5DsXx8bt1g60LpWLHfW-2gikfVBMGvBZiK-eVU_BTRB_PaIt13Ks93qLbthwMLAstlK-bE-dBbKN2qSAywb9E3tQhlQXtDHv1A2A7YsfJ8d3Z-TN-NW6eUbDnLwVHoQN2QjvZNbB-efCczUyoqgGQ6Bhb9JqHkHL8eGNKEzeVoRE7ulXW3uV3B5zZsHDnTszZ7K8hHWBGjGVwg6tvalPIqHZ3fDLk69uz6gbBiHMwxJWVr8H_fnDYc34WAsOAPD5tFiX91LX9rbrz6lVEiX7gTqfzF9yluA2RIUbQdPOWVZ4HlynEh_Lu_g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "У экс-замминистра транспорта РФ изъяли имущество на ₽6 млрд\n\nСуд по коррупционному иску прокуратуры обратил в доход государства доли в уставных капиталах, ценные бумаги, недвижимость и земельные участки Алексея Семенова в разных регионах страны. Кроме этого, у него изъяли автомобили, мотоцикл Harley-Davidson, ювелирные украшения, премиальные часы, более ₽258 млн наличными. С него также взыскали госпошлину в размере ₽900 тыс. \n\nВ иске говорится, что экс-замминистра транспорта незаконно наладил собственный бизнес через подведомственное ему ФГУП «ЗащитаИнфоТранс», которое работало в сфере системы информобеспечения безопасности населения на транспорте (СИОБНТ). Госконтракты на сотни миллионов получали подконтрольные Семенову и его доверенным лицам фирмы, а доходы и купленную на них недвижимость оформляли на членов его семьи. Ущерб от его действий оценили в ₽240 млн.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-04-30T14:54:36.562Z",
-      "expiresAt": "2026-05-01T14:54:36.562Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T14:54:36.562Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T14:54:36.562Z"
-      }
-    },
-    {
-      "id": 916353141,
-      "postUrl": "https://t.me/tass_agency/373787?single",
+      "id": 2810613138,
+      "postUrl": "https://t.me/tass_agency/373779?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -169,13 +267,18 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/El-htV1yszPMbIDcn4_HOoVBHvnXELzP9OM5AHqiOj-xUL7f9GOj3UBL8i0RCdAFoxkVpaSwnURC9JYlO8807_ah31l8zeXkBsZvczwAiOkshSnuP0QZ_9B8y_2xNuknNs9DFPAL-205TnEHEN-1pacgZFOUm3bwTM_JgX7cN9-ToaFmXoH691RNiIQ-eVopuwv9R5pSByOIr0yweNiTz-ht1Tpk4ncjck9ZkzxINHm_KTqB3LYLamTK4qcoM3tsSJn1bOwEPnDjiRTXdr4MTzmbz2mm0IYKpt81t5sxWvH1uYmfEg9zjMV-VOEPENKf0cyysr9YONoHE6K1lwT6QA.jpg"
+          "url": "https://cdn4.telesco.pe/file/Uw-yPwOs-94P65HwCqc_Qm9Ko43uNIQ_prt8WUb2qIcO9ktTLbcVaPjvC5ftb-RYSIGS0cdwh0AABYSv3G_Ho4h7W0CtMEtR_mBIp7MDIL8hVxkPMgkkYaKP9Ydmst0xqs3crTFDa3SznkiV7_ca2EcQVbOjBRrZaPP1YcZ3EGpZuP7ImiZ6DlS8Lm6zxK6oM30iy3-6DibTixJ7Y0k4nndd7_69sRhbf8sSvG9osBKBWXDSy2dCTh32DBmyeCtVjGTgOrp1L_cZhQQUlJ9vWXSZYzbhqft43oiGq6Mc82QEXgQ22p4PXv0MpsA8n3aNhRQTHUbLhrhsP69NOS-eeQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Трамп объяснил нежелание носить бронежилет после покушения тем, что он его толстит. \n\n\"Не знаю, смогу ли я выдержать то, что буду выглядеть на 20 фунтов тяжелее\", — сказал он.",
-      "links": [],
+      "text": "📃 Дроны-перехватчики и лазерное оружие включили в дежурные силы по охране госграницы России в воздушном пространстве, говорится в постановлении правительства РФ.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
       "ttlHours": 24,
@@ -254,54 +357,8 @@
       }
     },
     {
-      "id": 1102931631,
-      "postUrl": "https://t.me/readovkanews/109826?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "ЦОДД Москвы заявил о готовности камер фиксировать превышение скорости с 2-3 км/ч\n\nМосковские камеры фото- и видеофиксации технически готовы к снижению нештрафуемого порога превышения скорости с 20 км/ч до 2-3 км/ч. Погрешность устройств составляет всего 1 км/ч, заявил РБК гендиректор Центра организации дорожного движения Михаил Кизлык. Окончательное решение об ужесточении должны принять правительство России и МВД. Важно учитывать, что наша страна не ограничивается лишь МКАДом — в регионах используются разные комплексы фото- и видеофиксации, и условия их работы могут отличаться.\n\nПри этом, согласно ГОСТ, допустимая основная погрешность показаний спидометров с приводом от гибкого вала и электроприводом при скорости 60 км/ч составляет до 4 км/ч. То есть при фактической скорости 60 км/ч спидометр может показывать 64 км/ч. \n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-04-30T14:54:36.562Z",
-      "expiresAt": "2026-05-01T14:54:36.562Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T14:54:36.562Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T14:54:36.562Z"
-      }
-    },
-    {
-      "id": 236550564,
-      "postUrl": "https://t.me/tass_agency/373786?single",
+      "id": 2063379851,
+      "postUrl": "https://t.me/tass_agency/373778?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -314,13 +371,8 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Участники \"Бессмертного полка\" пройдут в Петербурге 9 мая по Невскому проспекту, сообщил губернатор Беглов в эфире телеканала \"78\".\n\nВход на парад на Дворцовой площади в День Победы будет только по приглашениям, заявил он.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
+      "text": "🚨 Обрушение рудника произошло в Магаданской области, под завалами могут находиться 8 человек, сообщили в МЧС РФ.  Спасатели направлены к месту обрушения рудника.  ✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
       "ttlHours": 24,
@@ -380,7 +432,7 @@
       "createdAt": "2026-04-30T11:54:46.208Z",
       "expiresAt": "2026-05-01T11:54:46.208Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
       "tag": "news",
       "tags": [
         "news",
@@ -405,49 +457,8 @@
       }
     },
     {
-      "id": 2847769436,
-      "postUrl": "https://t.me/readovkanews/109825?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Парад 9 мая в Москве пройдет без военной техники и курсантов некоторых военных училищ  В связи с текущей оперативной обстановкой в этом году на Параде Победы не будут участвовать воспитанники суворовского и нахимовского училищ, кадетских корпусов, а также…",
-      "links": [],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T07:54:48.521Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 2972101687,
-      "postUrl": "https://t.me/tass_agency/373785?single",
+      "id": 4251978924,
+      "postUrl": "https://t.me/tass_agency/373777?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -456,18 +467,17 @@
       },
       "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Каллас следовало бы стать клоуном, а не дипломатом, заявил финский политик Армандо Мема:\n\n\"Европа и так унижена тем, что такие люди, как она, руководят нашей дипломатией\".\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/VIbEcCMmOiBVx6IL1qfGmCPpyE8yrv7-RjF0wgAbxdQNr6d0CpiAZ45cvV0yFCmYbMWLM2cFs_UKWDku4KrA3SUqnwLboos_R4zczwgIVqzeyK5sP-uMo4xQqzcfRkmi79bCsuAl90VesBUkNQTs80fuT5XAtP6FW-Cy2fk0uO36pS6Gyxim4U8vVQ3XNAXm2aew9lm_G7aQzlJRGpG9QYM5R0X7yL25PxD32pOoFVvxwyq3eBYvH828rmZ-Yqu8O1_gCJGpkZUEQqccMTDvne1POpEj-mtMx6BR5m60z-Bzgr0CKMe2K5uCzWZWK8K8H9Dtc_LKlAz8njxX3aS97A.jpg"
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Трамп заявил, что не согласится на предоставление Ирану обогащенного урана для медицинских и энергетических целей.",
-      "links": [],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
       "ttlHours": 24,
@@ -543,57 +553,8 @@
       }
     },
     {
-      "id": 1798326285,
-      "postUrl": "https://t.me/readovkanews/109824?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/b935925489.mp4?token=m-cLGKBSd11KeZReVPjmjFrS2buzrAEIc-mMjhg5auqcrD0EnlZxCHS6_D0jsTTs0acPfCwF36G14sRZEyEvgzPPPi0MwahL4HCEcMgYEEGBcEZEL5Mk9LNPw_2BNNIk4bP1RLmgt1KfTSxZvGF_tpfdSppMT9QNQpVLWn1NzPk2cEzfpiryg-Cy6BZAkJClSgW_O4mPZzQmbpGQ9YU9XoqVWKi15Dz_Fvci8qiq2kJb7rVrcLzpvzUzaCChw4hELkKh1Q_n_hb8WyFcv5KU6WUWN1rOomGNvK4wglFOgsMaSft9_lsxvywN7-52NNUVqSF22rFBZEDqC-kF3gnylmGpn4TTnDmyevbUXXbwhZiwvICZ_IhKWS--UNBjGNBLgOGF3MWm8WNldZvB6MmU1ERV08g6WMM9V1HIdyLCyNqvpzLI-mm0L4AvnXHEEiAlNUsD5khVwgvVh2-Uqp62VcADuPaXL9Ouv9MZ08l1PZyZwfVEsRrpSvx432XuW04xkglQ2BjeODw2eMB-LW5Vn7U_44jD7TxwIoNof32L_lL08UQcn-bLslMpVntXSXPAvEzJpAIzLaL6u9V0a1K6eZE4tEyC2LYHxe80-tITm24fcKgavf5wMcWeoARbbWWXGifCy-LHVOlarydqL9qEkd4IXjvh-iDH75i1DSPfJ_A",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Мэр Уфы Ратмир Мавлиев проходит по делу о взятке и превышении полномочий  Мавлиева подозревают в получении взятки в особо крупном размере и превышении должностных полномочий. По версии следствия, в 2025 году мэр Уфы организовал схему отчуждения участка площадью…",
-      "links": [],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:29.605Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 2034360894,
-      "postUrl": "https://t.me/tass_agency/373784?single",
+      "id": 3438226781,
+      "postUrl": "https://t.me/tass_agency/373776?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -606,7 +567,7 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "ОАЭ запретили своим гражданам поездки в Иран, Ирак и Ливан, говорится в заявлении на сайте МИД ОАЭ.",
+      "text": "Задержаны 5 подозреваемых по делу о пожаре в новостройке в Москве, в том числе гендиректор компании-застройщика, сообщили в СК РФ.",
       "links": [],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
@@ -692,49 +653,8 @@
       }
     },
     {
-      "id": 3362775194,
-      "postUrl": "https://t.me/readovkanews/109823?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Утечка горящей нефти в Туапсе остановлена — МЧС   Из Туапсе вывезли 8 тыс кб м загрязненного нефтью грунта. Утечка горящих нефтепродуктов остановлена, сообщил глава МЧС во время заседания оперштаба Краснодарского края. Обстановка в городе сейчас «сложная,…",
-      "links": [],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T07:54:48.521Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 2981688857,
-      "postUrl": "https://t.me/tass_agency/373783?single",
+      "id": 2333719974,
+      "postUrl": "https://t.me/tass_agency/373775?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -747,7 +667,7 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❗️ Еврокомиссия официально подтвердила решение лишить Венецианскую биеннале гранта в €2 млн за приглашение России.",
+      "text": "🚀 Ракета-носитель \"Союз-5\" была запущена с космодрома Байконур, сообщает Роскосмос.  ✔️ Подпишись на ТАСС в \"Максе\"",
       "links": [],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
@@ -829,60 +749,8 @@
       }
     },
     {
-      "id": 3502785587,
-      "postUrl": "https://t.me/readovkanews/109822?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/QXRQ4A28HJ6W7QxM6ZW_rRAHcprPA4WHrkBTmdfZCzguKTV-I-5LWqDWhYh_7I3TBk7gnuwsFnjW36PwEP7xouGP1RPcAKGBrTjIRAQh7wbMNpGKVOEUOneePIB1aPSpayPPrt86Expv4t0fk5LVSLPZLe6NR3qqi_qwWNNlHb5U7PmiE69G1IQJkQAVU1Tzx1Y-lUOMmJfiTn-a76mU9-mIH4LW0RF4TTlD_4ObqCUNAY6rpcz2OBuZOmfEeBgyn_Zf60nKw7tSmgUQn_ODbToag6P8GBb4uGsMMCX2KA6fA3BfXl8l2yw6EW8IGrvjutD1l2U_YP12D5ZnTx4aNw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Экспертный совет по оценке исторического контента появится в России \n\nЕго планируют создать на базе МПГУ, следует из «Концепции исторического просвещения в образовательных организациях» — документ одобрили на коллегии Министерства просвещения. Основной задачей станет фильтрация недостоверных и научно необоснованных исторических сведений, а также контента, который противоречит духовно-нравственным ценностям и подрывает основы гражданской идентичности. Концепция подразумевает разработку мер господдержки для развития мультимедийных отраслевых проектов. \n\nВ состав совета планируют включить ученых и популярных просветителей из ведущих вузов и институтов РАН. Новая концепция исторического просвещения сосредоточена на отстаивании мировоззренческого суверенитета России, подчеркнула депутат Ольга Занко. Она призвана укрепить знания подростков о героях Отечества, включая участников СВО и Великой Отечественной войны, а также защитить историческую память от внешних фальсификаций, уточнила депутат.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:29.605Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 4126752536,
-      "postUrl": "https://t.me/tass_agency/373782?single",
+      "id": 3843556223,
+      "postUrl": "https://t.me/tass_agency/373774?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -895,8 +763,13 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Спецпредставитель генсека ООН Ванесса Фрезье посетила Белгородскую область, сообщает МИД РФ.\n\nВ ведомстве отметили, что визит спецпредставителя позволил наглядно продемонстрировать террористический характер действий Киева.",
-      "links": [],
+      "text": "📃 Правительство РФ ограничило ввоз средств приема и передачи сигнала от иностранных спутников, в том числе двойного назначения.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
       "ttlHours": 24,
@@ -983,54 +856,8 @@
       }
     },
     {
-      "id": 3118532944,
-      "postUrl": "https://t.me/readovkanews/109821?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "До 8 человек могут находиться под завалами рудника в Магаданской области\n\nВ МЧС сообщили о сходе горной массы на угольном разрезе «Кадыкчанский» в Сусуманском городском округе. На место выехали спасатели, к вылету готовится вертолет Ми-8 МЧС России.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T07:54:48.521Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 2037710299,
-      "postUrl": "https://t.me/tass_agency/373781?single",
+      "id": 2138524256,
+      "postUrl": "https://t.me/tass_agency/373773?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -1043,7 +870,7 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "США рассматривают возможность сокращения воинского контингента в ФРГ. Это решение будет принято в ближайшем будущем, заявил Трамп.",
+      "text": "Жена главы Минобороны Украины купила яхту за €26 млн, сообщили ТАСС в российских силовых структурах.\n\nПо данным собеседника агентства, яхта длиной почти 50 метров зарегистрирована под французским флагом.",
       "links": [],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
@@ -1129,64 +956,8 @@
       }
     },
     {
-      "id": 3297231057,
-      "postUrl": "https://t.me/readovkanews/109820?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ezCoKzKrOj9P3Fk0Uwr52OMJ8QCLPNC61RotcRsUQ3Mg7ipggLY5ChK8Sq3mN3k65XxSAyb0onWLfFUQhk29wOFZKpmfZCx-qMfLES_WCC0VOUaeP2reFsba0IWhN8Wbjs4Wcrs-A7H-FqMsT8cY8F3g46QmoD6WPjc35q-pVHK4KVJ2XqqKJdtK7Jce6fvNUVLgrZttYVBToYuvPvuGNqDKAMKb6kzxtzKT3EkVEBXFKu8_1384oVKqLTB4uQDkMwyrVAU_5tTYwrhkMmNx660adHUuBtH6YZWwnA4ngpjYBekISN8Z5XY45r1JQX8lFHbOZlLBrxNQdiNz1c5-SQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Жители Перми сообщают о взрывах и «дымовом грибе»\n\nГромкие взрывы прозвучали в Перми, сообщают местные жители. После них в городе заметили белый столб дыма. Горожане также заявили о работе ПВО на протяжении нескольких часов. Официальная информация пока неизвестна.\n\nВчера украинский беспилотник уже атаковал промышленную площадку в регионе. Тогда работников загоревшегося предприятия эвакуировали, обошлось без пострадавших. Глава региона Дмитрий Махонин подтвердил факт удара по объекту.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "атаковал",
-          "url": "https://t.me/readovkanews/109791"
-        },
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:29.605Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 1099439714,
-      "postUrl": "https://t.me/tass_agency/373780?single",
+      "id": 4180806625,
+      "postUrl": "https://t.me/tass_agency/373772?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -1195,18 +966,17 @@
       },
       "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚀 Ракета-носитель \"Союз-5\" была запущена с космодрома Байконур, сообщает Роскосмос.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/vivzU7VCCPtT3aHNgnicygfuXZrnnu1gE-ODMuCzLDisy7_JdaLHsQ1FCIOG6DIFGjDvuO6grRgUlhiiYaaj1B-TIHfubt3HfqA8rNX-HFR0SfDK-d2cZBFMb2Zn_Ukm3tSG0-SSc2f18rprskz676G-bq8iR9vinItfaloFoL4FrSNpTiXAa8uKZ4oJv2RDRW5nChhBrIU1tGRm3Eo94btRevKe9MuikSQp8VkHj07EBHVU5OaaLdITJ6L1-dNNti8IkZ3Sbditxdw6F7mnEW7GzaDrpAwdF2i9gHubBs1VGfNpbAIByK6TXiY59Sm1-jj8cZN7iZsA8BgA1c_eow.jpg"
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Трамп заявил, что не уверен в необходимости возобновления ударов по Ирану.\n\nПо версии американского лидера, Иран \"жаждет заключения сделки\".",
-      "links": [],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
       "ttlHours": 24,
@@ -1285,68 +1055,8 @@
       }
     },
     {
-      "id": 1408420897,
-      "postUrl": "https://t.me/readovkanews/109819?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/YixGA8J3DQdHE-nraO6W_AirR3cxu1GevtcQ2_YtRRrWIlfaaw3oyRyKbNq70lDC5EBphfIZPWtHoK0Z0_PVLUd_Zeqyje3azNCKOc7TOpznBk68OeNIKHVRuIRrmcliofIlSWUJ4cJ8cKm5ieZ8s8U14rHM1ZmmCLvCqMPhTounSlFKiHwSTtQe-U4RrjIraFSO6EmBcBM_XMMUcdKG311Jf4Mc7szfa3_nK2nhieRHtR4GVMSvQgKj6ER8zoclVqyUUsJw97EelADoTFWDQF96a4rOEK6QHSlQzsgFovig6iM_4QePOQCWsAuruarvGF9icPRT5E2Z8H5LmmHp4Q.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Досматривать школьников перед сдачей ЕГЭ и ОГЭ запретил Рособрнадзор\n\nПеред началом ГИА-2026 организаторы и охрана не должны прикасаться к сдающим. Если металлоискатель сработал, то участнику экзамена предложат сдать вещь сопровождающему или положить к другим личным вещам. В случае отказа это сделать сдающего не допустят к экзамену. Повторно сдать ЕГЭ и ОГЭ школьники смогут в резервные сроки только по решению председателя Государственной экзаменационной комиссии, пояснили в Роспотребнадзоре.\n\nВ прошлом году из-за тщательных досмотров перед ЕГЭ в школе Черкесска скопилась огромная очередь, которая привела к давке из сдающих. Сперва экзамен по русскому языку перенесли на 2 часа, но потом совсем отменили. С особым пристрастием досматривали и воронежских школьниц на ОГЭ в 2024 году. Тогда охранники заставили девятиклассниц поднимать кофты и снимать нижнее белье, потому что металлоискатель реагировал на «косточки» от бюстгальтера.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "скопилась",
-          "url": "https://t.me/readovkanews/97714"
-        },
-        {
-          "label": "заставили",
-          "url": "https://t.me/readovkanews/80773"
-        },
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T04:17:41.617Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 2810613138,
-      "postUrl": "https://t.me/tass_agency/373779?single",
+      "id": 2456504682,
+      "postUrl": "https://t.me/tass_agency/373771?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -1355,23 +1065,12 @@
       },
       "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Uw-yPwOs-94P65HwCqc_Qm9Ko43uNIQ_prt8WUb2qIcO9ktTLbcVaPjvC5ftb-RYSIGS0cdwh0AABYSv3G_Ho4h7W0CtMEtR_mBIp7MDIL8hVxkPMgkkYaKP9Ydmst0xqs3crTFDa3SznkiV7_ca2EcQVbOjBRrZaPP1YcZ3EGpZuP7ImiZ6DlS8Lm6zxK6oM30iy3-6DibTixJ7Y0k4nndd7_69sRhbf8sSvG9osBKBWXDSy2dCTh32DBmyeCtVjGTgOrp1L_cZhQQUlJ9vWXSZYzbhqft43oiGq6Mc82QEXgQ22p4PXv0MpsA8n3aNhRQTHUbLhrhsP69NOS-eeQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "📃 Дроны-перехватчики и лазерное оружие включили в дежурные силы по охране госграницы России в воздушном пространстве, говорится в постановлении правительства РФ.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
+      "text": "Администрация США уменьшит сумму запроса в Конгрессе на дополнительное финансирование операции в Иране с $200 млрд до $80-100 млрд, сообщает газета The Washington Post со ссылкой на источники.  ✔ Подпишись на ТАСС в Max",
+      "links": [],
       "createdAt": "2026-04-30T20:45:33.414Z",
       "expiresAt": "2026-05-01T20:45:33.414Z",
       "ttlHours": 24,
@@ -1453,656 +1152,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T11:54:46.208Z"
-      }
-    },
-    {
-      "id": 1472652704,
-      "postUrl": "https://t.me/readovkanews/109818?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/b71ac0867e.mp4?token=vmCUzlTWuFtRYpPU2HO0Osj5siVppy6Q0yq-uAEHDarWi17kBqDqNHR31_yxQb42KXTPu_COtZbkEs35Dzztht3P4a-_TzNG9O2WUIHiCq7qP66c8SvntjrMKIdUyPVSQ2nNi2IBqTF0Q_4Hrduu1ZSTdK7GUe3PEgat7ySz9wnrY5Lerl6S-2K84e72eaxCkPknvoxQoVhgiJKTuzm7r1p1bgG1ILtt6BiQXF_SQ1sVS5QuVDJ5zp6w-yKfWPSiPr95te-QFJMnmGJqKSOCHJhV_uQe_awbQpyJSZAWBgE8i8hqzfjnhK5tdARQ1fJKOkhurga4HiK7PC0LmxBLTw",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Путин призвал регионы брать пример с Чечни по рождаемости\n\nПрезидент накануне провел рабочую встречу с главой ЧР Рамзаном Кадыровым. Путин отметил демографические показатели республики и заявил, что другим субъектам РФ стоит брать с Чечни пример в вопросах рождаемости. Кроме того, он выразил надежду, что жители республики поддержат Кадырова на предстоящих выборах главы.\n\nКадыров доложил о социально-экономической ситуации — уровень безработицы в Чечне составил рекордно низкие 3,1%. Также он сообщил, что республика подготовила и направила в зону СВО более 71 тыс бойцов, свыше 12 тыс из них награждены. Путин поблагодарил чеченцев за участие в спецоперации и назвал их «настоящими воинами».\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-04-30T07:54:48.521Z",
-      "expiresAt": "2026-05-01T07:54:48.521Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T04:17:41.617Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T07:54:48.521Z"
-      }
-    },
-    {
-      "id": 2063379851,
-      "postUrl": "https://t.me/tass_agency/373778?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🚨 Обрушение рудника произошло в Магаданской области, под завалами могут находиться 8 человек, сообщили в МЧС РФ.  Спасатели направлены к месту обрушения рудника.  ✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
-      }
-    },
-    {
-      "id": 3107705566,
-      "postUrl": "https://t.me/rian_ru/337790?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Беспилотник атаковал промплощадку в Пермском крае -  пострадавших и значимых разрушений нет, сообщил губернатор Махонин.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "сообщил",
-          "url": "https://ria.ru/20260430/bespilotnik-2089785563.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-30T11:54:46.208Z",
-      "expiresAt": "2026-05-01T11:54:46.208Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T11:54:46.208Z"
-      }
-    },
-    {
-      "id": 4251978924,
-      "postUrl": "https://t.me/tass_agency/373777?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Каллас следовало бы стать клоуном, а не дипломатом, заявил финский политик Армандо Мема:\n\n\"Европа и так унижена тем, что такие люди, как она, руководят нашей дипломатией\".\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
-      }
-    },
-    {
-      "id": 1867446508,
-      "postUrl": "https://t.me/rian_ru/337789?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ZSR6xwQZefZXYw_R8BGfQCOwQZBa7keT8U5lqAhnk8HN4cRCbGPL0sDbsN-DYF8NgBk9UW_1B8N8N4BmK19_cND0xEcyx20wbonR1oNNr72KGNKIpdbaqqNzxmYu9hN-7UWI8C-NMisiJshhSlUEjNk-cs3e4EmCZHTSOf_sUJEstzkiExYpLr_x9e4bJi-oqOu_8Qi842-vExfNV5IubOYphXkiwv3kAeRdb_e-__3wYrrBpAyom9NsUJ1-NgnzdiVRtFPC1z5naNqMRc3WQSfOp0OcP3CEsonFpCzR3xBuz_s3ljwhl3w5n_dG2_uyyBkv5e8HjZ1TG7zSN-2Xlw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "\"Цветочную\" и \"голубую\" луну можно будет увидеть на небе в мае.\n\nУченые ИКИ РАН рассказали о двух полнолуниях, которые будут видны на территории России. \n\nЦветочное полнолуние состоится в ночь с 1-2 мая, его название связано с началом сезона цветения. \"Голубая\" луна 31 мая не имеет отношения к цвету - это адаптация английской идиомы \"когда луна станет голубой\", аналогичной русской \"после дождичка в четверг\". Это полнолуние видно крайне редко, в следующий раз случай представится только в декабре 2028.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "рассказали",
-          "url": "https://ria.ru/20260430/luna-2089791451.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-30T11:54:46.208Z",
-      "expiresAt": "2026-05-01T11:54:46.208Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T11:54:46.208Z"
-      }
-    },
-    {
-      "id": 3438226781,
-      "postUrl": "https://t.me/tass_agency/373776?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Задержаны 5 подозреваемых по делу о пожаре в новостройке в Москве, в том числе гендиректор компании-застройщика, сообщили в СК РФ.",
-      "links": [],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
-      }
-    },
-    {
-      "id": 1371464349,
-      "postUrl": "https://t.me/rian_ru/337788?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Задержан мэр Уфы Мавлиев – его подозревают в получении взятки в особо крупном размере, сообщили в СК.   Дело связано с незаконным отчуждением земельного участка площадью более 1300 \"квадратов\", расположенного на территории санатория.   Если видео не грузится…",
-      "links": [],
-      "createdAt": "2026-04-30T11:54:46.208Z",
-      "expiresAt": "2026-05-01T11:54:46.208Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T11:54:46.208Z"
-      }
-    },
-    {
-      "id": 2333719974,
-      "postUrl": "https://t.me/tass_agency/373775?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🚀 Ракета-носитель \"Союз-5\" была запущена с космодрома Байконур, сообщает Роскосмос.  ✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
-      }
-    },
-    {
-      "id": 425977554,
-      "postUrl": "https://t.me/rian_ru/337787?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Возгорание на туапсинском НПЗ локализовано, сообщает оперштаб Краснодарского края.  🔹 Подписаться на РИА Новости",
-      "links": [],
-      "createdAt": "2026-04-30T11:54:46.208Z",
-      "expiresAt": "2026-05-01T11:54:46.208Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T11:54:46.208Z"
-      }
-    },
-    {
-      "id": 3843556223,
-      "postUrl": "https://t.me/tass_agency/373774?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "📃 Правительство РФ ограничило ввоз средств приема и передачи сигнала от иностранных спутников, в том числе двойного назначения.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
-      }
-    },
-    {
-      "id": 4015391435,
-      "postUrl": "https://t.me/rian_ru/337786?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "ФСБ задержала жителя Краснодара за госизмену.\n\nОн сам связался с СБУ и передавал координаты и фото предприятий ТЭК и планы размещения военной техники, обеспечивающей безопасность воздушного пространства в Краснодарском и Ставропольском крае.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "задержала",
-          "url": "https://ria.ru/20260430/fsb-2089785026.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-04-30T11:54:46.208Z",
-      "expiresAt": "2026-05-01T11:54:46.208Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T11:54:46.208Z"
-      }
-    },
-    {
-      "id": 2138524256,
-      "postUrl": "https://t.me/tass_agency/373773?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Жена главы Минобороны Украины купила яхту за €26 млн, сообщили ТАСС в российских силовых структурах.\n\nПо данным собеседника агентства, яхта длиной почти 50 метров зарегистрирована под французским флагом.",
-      "links": [],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
-      }
-    },
-    {
-      "id": 4180806625,
-      "postUrl": "https://t.me/tass_agency/373772?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🚀 Ракета-носитель \"Союз-5\" была запущена с космодрома Байконур, сообщает Роскосмос.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
-      }
-    },
-    {
-      "id": 2456504682,
-      "postUrl": "https://t.me/tass_agency/373771?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/YC3O11Oaum5WFU_-x7ci4XIBDmAVBHFo4_J8DPR54b4x9MdB8kGbK_ZHZ1NJy6MCNZ8CH__MP3PcHF4DvMncXoSzXcc1OmQ5tGqodF-39mbCKqQVvh9TgpoRZAQhirP2fhyhHRwZLeWm1GFGTG3ggQCPYdhUJklKHSPzrN2QdDHCX98wr7Zr3Vaaq0-OzCud86tfxYXMRS1ogFtIzREaWd6cKrtmHnuvYFfenc7nfRoa9A8R_aI-SXDKhJboFjZt07dSbuc9LTfOx29-8xRH3yaV5NY8CfnBBByIiROVPF941gAvRf9Itv0TZiSGvlzSXJkGlITnHe61ZKjGvSe5CQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Администрация США уменьшит сумму запроса в Конгрессе на дополнительное финансирование операции в Иране с $200 млрд до $80-100 млрд, сообщает газета The Washington Post со ссылкой на источники.  ✔ Подпишись на ТАСС в Max",
-      "links": [],
-      "createdAt": "2026-04-30T20:45:33.414Z",
-      "expiresAt": "2026-05-01T20:45:33.414Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-04-30T20:45:33.414Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-04-30T20:45:33.414Z"
       }
     },
     {
@@ -2190,6 +1239,59 @@
       }
     },
     {
+      "id": 3107705566,
+      "postUrl": "https://t.me/rian_ru/337790?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Беспилотник атаковал промплощадку в Пермском крае -  пострадавших и значимых разрушений нет, сообщил губернатор Махонин.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "сообщил",
+          "url": "https://ria.ru/20260430/bespilotnik-2089785563.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-30T11:54:46.208Z",
+      "expiresAt": "2026-05-01T11:54:46.208Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:54:46.208Z"
+      }
+    },
+    {
       "id": 2567887829,
       "postUrl": "https://t.me/tass_agency/373769?single",
       "source": {
@@ -2228,6 +1330,65 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T20:45:33.414Z"
+      }
+    },
+    {
+      "id": 1867446508,
+      "postUrl": "https://t.me/rian_ru/337789?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ZSR6xwQZefZXYw_R8BGfQCOwQZBa7keT8U5lqAhnk8HN4cRCbGPL0sDbsN-DYF8NgBk9UW_1B8N8N4BmK19_cND0xEcyx20wbonR1oNNr72KGNKIpdbaqqNzxmYu9hN-7UWI8C-NMisiJshhSlUEjNk-cs3e4EmCZHTSOf_sUJEstzkiExYpLr_x9e4bJi-oqOu_8Qi842-vExfNV5IubOYphXkiwv3kAeRdb_e-__3wYrrBpAyom9NsUJ1-NgnzdiVRtFPC1z5naNqMRc3WQSfOp0OcP3CEsonFpCzR3xBuz_s3ljwhl3w5n_dG2_uyyBkv5e8HjZ1TG7zSN-2Xlw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "\"Цветочную\" и \"голубую\" луну можно будет увидеть на небе в мае.\n\nУченые ИКИ РАН рассказали о двух полнолуниях, которые будут видны на территории России. \n\nЦветочное полнолуние состоится в ночь с 1-2 мая, его название связано с началом сезона цветения. \"Голубая\" луна 31 мая не имеет отношения к цвету - это адаптация английской идиомы \"когда луна станет голубой\", аналогичной русской \"после дождичка в четверг\". Это полнолуние видно крайне редко, в следующий раз случай представится только в декабре 2028.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "рассказали",
+          "url": "https://ria.ru/20260430/luna-2089791451.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-30T11:54:46.208Z",
+      "expiresAt": "2026-05-01T11:54:46.208Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:54:46.208Z"
       }
     },
     {
@@ -2277,6 +1438,50 @@
       }
     },
     {
+      "id": 1371464349,
+      "postUrl": "https://t.me/rian_ru/337788?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Задержан мэр Уфы Мавлиев – его подозревают в получении взятки в особо крупном размере, сообщили в СК.   Дело связано с незаконным отчуждением земельного участка площадью более 1300 \"квадратов\", расположенного на территории санатория.   Если видео не грузится…",
+      "links": [],
+      "createdAt": "2026-04-30T11:54:46.208Z",
+      "expiresAt": "2026-05-01T11:54:46.208Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:54:46.208Z"
+      }
+    },
+    {
       "id": 3515030495,
       "postUrl": "https://t.me/tass_agency/373749?single",
       "source": {
@@ -2315,6 +1520,50 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T14:54:42.476Z"
+      }
+    },
+    {
+      "id": 425977554,
+      "postUrl": "https://t.me/rian_ru/337787?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Возгорание на туапсинском НПЗ локализовано, сообщает оперштаб Краснодарского края.  🔹 Подписаться на РИА Новости",
+      "links": [],
+      "createdAt": "2026-04-30T11:54:46.208Z",
+      "expiresAt": "2026-05-01T11:54:46.208Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:54:46.208Z"
       }
     },
     {
@@ -2362,6 +1611,59 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-04-30T14:54:42.476Z"
+      }
+    },
+    {
+      "id": 4015391435,
+      "postUrl": "https://t.me/rian_ru/337786?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "ФСБ задержала жителя Краснодара за госизмену.\n\nОн сам связался с СБУ и передавал координаты и фото предприятий ТЭК и планы размещения военной техники, обеспечивающей безопасность воздушного пространства в Краснодарском и Ставропольском крае.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "задержала",
+          "url": "https://ria.ru/20260430/fsb-2089785026.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-04-30T11:54:46.208Z",
+      "expiresAt": "2026-05-01T11:54:46.208Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-04-30T11:54:46.208Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-04-30T11:54:46.208Z"
       }
     },
     {
