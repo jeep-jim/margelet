@@ -478,7 +478,7 @@ export function AdminBulkImportSection({
 
   return (
     <AdminSectionCard
-      title="🌌 Добавить каналы"
+      title="🌌 Добавить"
       subtitle="И проверь страну!"
       collapsible
       defaultCollapsed

@@ -161,6 +161,7 @@ export function AdminSourcesSection({
   const [selectedTags, setSelectedTags] = useState<ContentTag[]>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [tagsOpen, setTagsOpen] = useState(false);
+  const [sourceFormOpen, setSourceFormOpen] = useState(false);
 
   const selectedParentGroups = useMemo(() => getParentGroups(selectedTags), [selectedTags]);
 
@@ -250,6 +251,7 @@ export function AdminSourcesSection({
   };
 
   const startEdit = (source: TrustedSource) => {
+    setSourceFormOpen(true);
     setEditingId(source.id);
     setHandle(source.handle || "");
     setTitle(source.title || "");
@@ -258,6 +260,13 @@ export function AdminSourcesSection({
     setSelectedTags(getSourceTags(source));
     setTagsOpen(false);
     setMessage(null);
+
+    window.setTimeout(() => {
+      document.getElementById("admin-source-form")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 50);
   };
 
   const saveSource = async () => {
@@ -406,7 +415,6 @@ export function AdminSourcesSection({
   return (
     <AdminSectionCard
       title="🌎 Каналы"
-      subtitle="Категории и подтеги."
       collapsible
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
@@ -415,205 +423,237 @@ export function AdminSourcesSection({
       }
     >
       <div className="space-y-4">
-        <div className="rounded-[24px] border border-white/10 bg-[#11121a] p-3 sm:p-4">
-          <div className="mb-3 flex items-center justify-between gap-3">
+        <div
+          id="admin-source-form"
+          className="rounded-[24px] border border-white/10 bg-[#11121a] p-3 sm:p-4"
+        >
+          <button
+            type="button"
+            onClick={() => setSourceFormOpen((v) => !v)}
+            className="flex w-full items-center justify-between gap-3 text-left"
+          >
             <div>
               <div className="text-lg font-semibold text-white">
                 {editingId ? "Редактировать канал" : "Добавить канал"}
               </div>
-              <div className="text-sm text-white/45">Страна: {countryCode.toUpperCase()}</div>
+              <div className="text-sm text-white/45">
+                Страна: {countryCode.toUpperCase()}
+              </div>
             </div>
 
-            {editingId ? (
-              <button
-                type="button"
-                onClick={resetForm}
-                className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
-              >
-                отменить
-              </button>
-            ) : null}
-          </div>
-
-          <div className="grid gap-3 md:grid-cols-2">
-            <input
-              value={handle}
-              onChange={(event) => setHandle(event.target.value)}
-              placeholder="@channel_handle"
-              className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+            <ChevronDown
+              className={`h-5 w-5 shrink-0 text-white/70 transition ${
+                sourceFormOpen ? "rotate-180" : ""
+              }`}
             />
-            <input
-              value={title}
-              onChange={(event) => setTitle(event.target.value)}
-              placeholder="Название канала"
-              className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
-            />
-          </div>
+          </button>
 
-          <div className="mt-3 grid gap-3 md:grid-cols-[1fr_180px]">
-            <input
-              value={note}
-              onChange={(event) => setNote(event.target.value)}
-              placeholder="Короткая заметка / комментарий"
-              className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
-            />
-            <select
-              value={status}
-              onChange={(event) => setStatus(event.target.value as SourceStatus)}
-              className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
-            >
-              <option value="active">активен</option>
-              <option value="paused">пауза</option>
-            </select>
-          </div>
+          {sourceFormOpen ? (
+            <>
+              {editingId ? (
+                <button
+                  type="button"
+                  onClick={resetForm}
+                  className="mt-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+                >
+                  отменить
+                </button>
+              ) : null}
 
-          <div className="mt-4 rounded-[22px] border border-white/10 bg-[#151722] px-4 py-3">
-            <button
-              type="button"
-              onClick={() => setTagsOpen((prev) => !prev)}
-              className="flex w-full items-center justify-between gap-3 text-left"
-            >
-              <div className="min-w-0">
-                <div className="text-sm font-semibold text-white">Категории канала</div>
-                <div className="mt-1 text-xs text-white/45">
-                  {selectedParentGroups.length > 0
-                    ? `Выбрано: ${selectedParentGroups.length}`
-                    : "Теги свёрнуты. Разверни только если нужно изменить категории."}
-                </div>
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                <input
+                  value={handle}
+                  onChange={(event) => setHandle(event.target.value)}
+                  placeholder="@channel_handle"
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                />
+                <input
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                  placeholder="Название канала"
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                />
               </div>
-              <ChevronDown
-                className={`h-5 w-5 shrink-0 text-white/70 transition ${tagsOpen ? "rotate-180" : ""}`}
-              />
-            </button>
 
-            {tagsOpen ? (
-              <div className="mt-3 border-t border-white/10 pt-3">
-                <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                  {SITE_TAG_GROUPS.map((group) => {
-                    const isActive = selectedParentGroups.some((item) => item.parentTag === group.value);
-                    const childCount = selectedParentGroups.find((item) => item.parentTag === group.value)?.childTags.length || 0;
+              <div className="mt-3 grid gap-3 md:grid-cols-[1fr_180px]">
+                <input
+                  value={note}
+                  onChange={(event) => setNote(event.target.value)}
+                  placeholder="Короткая заметка / комментарий"
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
+                />
+                <select
+                  value={status}
+                  onChange={(event) => setStatus(event.target.value as SourceStatus)}
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+                >
+                  <option value="active">активен</option>
+                  <option value="paused">пауза</option>
+                </select>
+              </div>
 
-                    return (
-                      <button
-                        key={group.value}
-                        type="button"
-                        onClick={() => toggleParentTag(group.value as ContentTag)}
-                        className={`rounded-2xl border px-3 py-2.5 text-left transition ${
-                          isActive
-                            ? "border-white bg-white text-black"
-                            : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="text-sm font-medium">
-                            {resolveTagLabel(group.value, "ru") || group.value}
-                          </span>
-                          {childCount > 0 ? (
-                            <span
-                              className={`rounded-full px-2 py-0.5 text-[11px] ${
-                                isActive ? "bg-black/10 text-black/70" : "bg-white/10 text-white/65"
-                              }`}
-                            >
-                              +{childCount}
-                            </span>
-                          ) : null}
-                        </div>
-                      </button>
-                    );
-                  })}
-                </div>
+              <div className="mt-4 rounded-[22px] border border-white/10 bg-[#151722] px-4 py-3">
+                <button
+                  type="button"
+                  onClick={() => setTagsOpen((prev) => !prev)}
+                  className="flex w-full items-center justify-between gap-3 text-left"
+                >
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold text-white">Категории канала</div>
+                    <div className="mt-1 text-xs text-white/45">
+                      {selectedParentGroups.length > 0
+                        ? `Выбрано: ${selectedParentGroups.length}`
+                        : "Теги свёрнуты."}
+                    </div>
+                  </div>
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 text-white/70 transition ${
+                      tagsOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
 
-                {selectedParentGroups.length > 0 ? (
-                  <div className="mt-3 space-y-2">
-                    {selectedParentGroups.map((group) => {
-                      const childOptions = getRelatedChildTags(group.parentTag)
-                        .filter((tag) => !tag.value.endsWith("_all"))
-                        .map((tag) => tag.value as ContentTag);
+                {tagsOpen ? (
+                  <div className="mt-3 border-t border-white/10 pt-3">
+                    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                      {SITE_TAG_GROUPS.map((group) => {
+                        const isActive = selectedParentGroups.some(
+                          (item) => item.parentTag === group.value
+                        );
+                        const childCount =
+                          selectedParentGroups.find(
+                            (item) => item.parentTag === group.value
+                          )?.childTags.length || 0;
 
-                      if (childOptions.length === 0) return null;
-
-                      return (
-                        <div key={group.parentTag} className="rounded-[18px] border border-white/10 bg-[#10121a] p-3">
-                          <div className="mb-2 text-xs font-semibold text-white/70">
-                            Подтеги · {resolveTagLabel(group.parentTag, "ru")}
-                          </div>
-
-                          <div className="flex flex-wrap gap-2">
-                            {childOptions.map((childTag) => {
-                              const isActive = group.childTags.includes(childTag);
-
-                              return (
-                                <button
-                                  key={childTag}
-                                  type="button"
-                                  onClick={() => toggleChildTag(childTag)}
-                                  className={`rounded-full border px-3 py-1.5 text-xs transition ${
+                        return (
+                          <button
+                            key={group.value}
+                            type="button"
+                            onClick={() => toggleParentTag(group.value as ContentTag)}
+                            className={`rounded-2xl border px-3 py-2.5 text-left transition ${
+                              isActive
+                                ? "border-white bg-white text-black"
+                                : "border-white/10 bg-white/5 text-white/85 hover:bg-white/10"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-3">
+                              <span className="text-sm font-medium">
+                                {resolveTagLabel(group.value, "ru") || group.value}
+                              </span>
+                              {childCount > 0 ? (
+                                <span
+                                  className={`rounded-full px-2 py-0.5 text-[11px] ${
                                     isActive
-                                      ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
-                                      : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
+                                      ? "bg-black/10 text-black/70"
+                                      : "bg-white/10 text-white/65"
                                   }`}
                                 >
-                                  {resolveTagLabel(childTag, "ru") || childTag}
-                                </button>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      );
-                    })}
+                                  +{childCount}
+                                </span>
+                              ) : null}
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {selectedParentGroups.length > 0 ? (
+                      <div className="mt-3 space-y-2">
+                        {selectedParentGroups.map((group) => {
+                          const childOptions = getRelatedChildTags(group.parentTag)
+                            .filter((tag) => !tag.value.endsWith("_all"))
+                            .map((tag) => tag.value as ContentTag);
+
+                          if (childOptions.length === 0) return null;
+
+                          return (
+                            <div
+                              key={group.parentTag}
+                              className="rounded-[18px] border border-white/10 bg-[#10121a] p-3"
+                            >
+                              <div className="mb-2 text-xs font-semibold text-white/70">
+                                Подтеги · {resolveTagLabel(group.parentTag, "ru")}
+                              </div>
+
+                              <div className="flex flex-wrap gap-2">
+                                {childOptions.map((childTag) => {
+                                  const isActive = group.childTags.includes(childTag);
+
+                                  return (
+                                    <button
+                                      key={childTag}
+                                      type="button"
+                                      onClick={() => toggleChildTag(childTag)}
+                                      className={`rounded-full border px-3 py-1.5 text-xs transition ${
+                                        isActive
+                                          ? "border-[#7dd3fc] bg-[#7dd3fc]/15 text-[#d9f3ff]"
+                                          : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10"
+                                      }`}
+                                    >
+                                      {resolveTagLabel(childTag, "ru") || childTag}
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : null}
                   </div>
                 ) : null}
-              </div>
-            ) : null}
 
-            <div className="mt-3 flex flex-wrap gap-2">
-              
-              {selectedParentGroups.length > 0 ? (
-                selectedParentGroups.flatMap((group) => [
-                  <div
-                    key={`parent-${group.parentTag}`}
-                    className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-white"
-                  >
-                    {resolveTagLabel(group.parentTag, "ru")}
-                  </div>,
-                  ...group.childTags.map((tag) => (
-                    <div
-                      key={tag}
-                      className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-xs text-[#d9f3ff]"
-                    >
-                      {resolveTagLabel(tag, "ru")}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {selectedParentGroups.length > 0 ? (
+                    selectedParentGroups.flatMap((group) => [
+                      <div
+                        key={`parent-${group.parentTag}`}
+                        className="rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs text-white"
+                      >
+                        {resolveTagLabel(group.parentTag, "ru")}
+                      </div>,
+                      ...group.childTags.map((tag) => (
+                        <div
+                          key={tag}
+                          className="rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-3 py-1.5 text-xs text-[#d9f3ff]"
+                        >
+                          {resolveTagLabel(tag, "ru")}
+                        </div>
+                      )),
+                    ])
+                  ) : (
+                    <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-xs text-white/40">
+                      Категории ещё не выбраны
                     </div>
-                  )),
-                ])
-              ) : (
-                <div className="rounded-full border border-dashed border-white/10 px-3 py-1.5 text-xs text-white/40">
-                  Категории ещё не выбраны
+                  )}
                 </div>
-              )}
-            </div>
-          </div>
+              </div>
 
-          <div className="mt-4 flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={() => {
-                void saveSource();
-              }}
-              disabled={isSaving}
-              className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition disabled:opacity-60"
-            >
-              {isSaving ? "сохраняю..." : editingId ? "сохранить" : "добавить канал"}
-            </button>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    void saveSource();
+                  }}
+                  disabled={isSaving}
+                  className="rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition disabled:opacity-60"
+                >
+                  {isSaving ? "сохраняю..." : editingId ? "сохранить" : "добавить канал"}
+                </button>
 
-            {message ? <div className="text-sm text-white/65">{message}</div> : null}
-          </div>
+                {message ? <div className="text-sm text-white/65">{message}</div> : null}
+              </div>
+            </>
+          ) : null}
         </div>
 
         <div className="rounded-[24px] border border-white/10 bg-[#11121a] p-3 sm:p-4">
           <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <div className="text-lg font-semibold text-white">Список каналов</div>
-              <div className="text-sm text-white/45">Поиск по названию, handle, заметкам и тегам.</div>
+              <div className="text-sm text-white/45">
+                Поиск по названию, handle, заметкам и тегам.
+              </div>
             </div>
 
             <input
@@ -655,9 +695,7 @@ export function AdminSourcesSection({
                       <div className="truncate text-sm font-semibold text-white">
                         {source.title || "Без названия"}
                       </div>
-                      <div className="truncate text-xs text-white/55">
-                        @{source.handle}
-                      </div>
+                      <div className="truncate text-xs text-white/55">@{source.handle}</div>
                     </div>
 
                     <div
@@ -672,8 +710,6 @@ export function AdminSourcesSection({
 
                     <div className="ml-1 flex items-center">
                       <ChevronDown
-                    
-
                         className={`h-4 w-4 shrink-0 text-white/60 transition ${
                           isExpanded ? "rotate-180" : ""
                         }`}
@@ -740,7 +776,7 @@ export function AdminSourcesSection({
                 </div>
               );
             })}
-          </div>          
+          </div>
 
           {filteredSources.length === 0 ? (
             <div className="rounded-[24px] border border-dashed border-white/10 bg-[#151722] px-4 py-8 text-center text-sm text-white/45">

@@ -111,7 +111,9 @@ export function AdminPostsSection({
           <button
             key={item.value}
             onClick={() =>
-              setStatusFilter(item.value as "all" | "published" | "pending" | "blocked")
+              setStatusFilter(
+                item.value as "all" | "published" | "pending" | "blocked"
+              )
             }
             className={`rounded-full px-4 py-2 text-sm transition ${
               statusFilter === item.value
@@ -131,7 +133,7 @@ export function AdminPostsSection({
         className="mb-4 w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
       />
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="space-y-2">
         {filteredPosts.map((post) => {
           const status = post.status || "published";
           const isExpanded = expandedPostIds.includes(post.id);
@@ -140,10 +142,14 @@ export function AdminPostsSection({
           return (
             <div
               key={post.id}
-              className="rounded-3xl border border-white/10 bg-[#12131a] p-3"
+              className="w-full overflow-hidden rounded-[18px] border border-white/10 bg-[#151722] px-3 py-2"
             >
-              <div className="flex gap-3">
-                <div className="h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-black/30">
+              <button
+                type="button"
+                onClick={() => toggleExpanded(post.id)}
+                className="flex w-full min-w-0 items-center justify-between gap-2 text-left"
+              >
+                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-2xl bg-black/30">
                   {preview ? (
                     <img
                       src={preview}
@@ -153,103 +159,117 @@ export function AdminPostsSection({
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center text-[10px] text-white/25">
-                      no preview
+                      no
                     </div>
                   )}
                 </div>
 
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0">
-                      <div className="truncate text-sm font-semibold text-white">
-                        {post.source.title}
-                      </div>
-                      <div className="truncate text-xs text-white/45">@{post.source.handle}</div>
-                    </div>
-
-                    <div className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
-                      {getStatusLabel(status)}
-                    </div>
+                <div className="min-w-0 flex-1 overflow-hidden">
+                  <div className="truncate text-sm font-semibold text-white">
+                    {post.source.title}
                   </div>
+                  <div className="truncate text-xs text-white/55">
+                    @{post.source.handle}
+                  </div>
+                </div>
 
-                  <div className="mt-2 flex flex-wrap gap-1.5">
+                <div className="shrink-0 rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
+                  {getStatusLabel(status)}
+                </div>
+
+                <div
+                  className={`ml-1 shrink-0 text-white/60 transition ${
+                    isExpanded ? "rotate-180" : ""
+                  }`}
+                >
+                  ▾
+                </div>
+              </button>
+
+              {isExpanded ? (
+                <div className="mt-3 border-t border-white/10 pt-3">
+                  <div className="flex flex-wrap gap-1.5">
                     <div className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
                       {getContentTypeLabel(post.contentType)}
                     </div>
                     <div className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
                       {getTagLabel(post.tag)}
                     </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-white/45">
-                <div>
-                  <div className="uppercase tracking-[0.16em] text-white/30">Created</div>
-                  <div className="mt-1 text-white/75">{formatDate(post.createdAt)}</div>
-                </div>
-                <div>
-                  <div className="uppercase tracking-[0.16em] text-white/30">TTL</div>
-                  <div className="mt-1 text-white/75">{formatRemaining(post.expiresAt)}</div>
-                </div>
-              </div>
-
-              <div className="mt-3 flex flex-wrap gap-2">
-                <button
-                  onClick={() => {
-                    void handleDelete(post.id);
-                  }}
-                  className="rounded-full bg-red-500/90 px-3 py-1.5 text-xs text-white"
-                >
-                  delete
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    void handleDeleteChannel(post.source.handle);
-                  }}
-                  className="rounded-full bg-orange-500/90 px-3 py-1.5 text-xs text-white"
-                >
-                  delete channel
-                </button>
-
-                <a
-                  href={post.postUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white"
-                >
-                  open
-                </a>
-
-                <button
-                  type="button"
-                  onClick={() => toggleExpanded(post.id)}
-                  className="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white"
-                >
-                  {isExpanded ? "hide" : "details"}
-                </button>
-              </div>
-
-              {isExpanded ? (
-                <div className="mt-3 rounded-2xl border border-white/10 bg-black/20 p-3">
-                  <div className="grid gap-2 text-xs text-white/75 md:grid-cols-2">
-                    <div>ID: {post.id}</div>
-                    <div>URL: {post.postUrl}</div>
-                    <div>Статус: {getStatusLabel(status)}</div>
-                    <div>Роль: {getRoleLabel(post.role)}</div>
-                    <div>TTL: {post.ttlHours} ч</div>
-                    <div>Media count: {post.media.length}</div>
-                    <div>Fallback: {post.fallbackReason || "—"}</div>
-                    <div>Updated: {formatDate(post.mediaRefreshedAt || post.createdAt)}</div>
-                  </div>
-
-                  {post.text ? (
-                    <div className="mt-3 line-clamp-6 whitespace-pre-wrap break-words text-sm leading-6 text-white/75">
-                      {post.text}
+                    <div className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
+                      TTL {formatRemaining(post.expiresAt)}
                     </div>
-                  ) : null}
+                  </div>
+
+                  <div className="mt-3 grid grid-cols-2 gap-2 text-[11px] text-white/45">
+                    <div>
+                      <div className="uppercase tracking-[0.16em] text-white/30">
+                        Created
+                      </div>
+                      <div className="mt-1 text-white/75">
+                        {formatDate(post.createdAt)}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="uppercase tracking-[0.16em] text-white/30">
+                        TTL
+                      </div>
+                      <div className="mt-1 text-white/75">
+                        {formatRemaining(post.expiresAt)}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    <button
+                      onClick={() => {
+                        void handleDelete(post.id);
+                      }}
+                      className="rounded-full bg-red-500/90 px-3 py-1.5 text-xs text-white"
+                    >
+                      delete
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        void handleDeleteChannel(post.source.handle);
+                      }}
+                      className="rounded-full bg-orange-500/90 px-3 py-1.5 text-xs text-white"
+                    >
+                      delete channel
+                    </button>
+
+                    <a
+                      href={post.postUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white"
+                    >
+                      open
+                    </a>
+                  </div>
+
+                  <div className="mt-3 rounded-2xl border border-white/10 bg-black/20 p-3">
+                    <div className="grid gap-2 text-xs text-white/75 md:grid-cols-2">
+                      <div>ID: {post.id}</div>
+                      <div className="break-all">URL: {post.postUrl}</div>
+                      <div>Статус: {getStatusLabel(status)}</div>
+                      <div>Роль: {getRoleLabel(post.role)}</div>
+                      <div>TTL: {post.ttlHours} ч</div>
+                      <div>Media count: {post.media.length}</div>
+                      <div>Fallback: {post.fallbackReason || "—"}</div>
+                      <div>
+                        Updated:{" "}
+                        {formatDate(post.mediaRefreshedAt || post.createdAt)}
+                      </div>
+                    </div>
+
+                    {post.text ? (
+                      <div className="mt-3 line-clamp-6 whitespace-pre-wrap break-words text-sm leading-6 text-white/75">
+                        {post.text}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -257,7 +277,7 @@ export function AdminPostsSection({
         })}
 
         {filteredPosts.length === 0 && state === "ready" ? (
-          <div className="col-span-full rounded-3xl border border-dashed border-white/10 p-6 text-center text-sm text-white/35">
+          <div className="rounded-3xl border border-dashed border-white/10 p-6 text-center text-sm text-white/35">
             ничего не найдено
           </div>
         ) : null}
