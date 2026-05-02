@@ -1,108 +1,6 @@
 {
-  "updatedAt": "2026-05-02T10:11:21.908Z",
+  "updatedAt": "2026-05-02T10:36:54.539Z",
   "posts": [
-    {
-      "id": 1891955261,
-      "postUrl": "https://t.me/tass_agency/373945?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "В Финляндии начались учения Northern Strike 26, проходящие в 70 км от границы с Россией, сообщили финские сухопутные силы. Военные будут отрабатывать артиллерийские, минометные и тактические боевые стрельбы.\n\nРанее военный эксперт РАНХиГС Степанов заявил ТАСС, что эти учения свидетельствуют о подготовке к возможному открытию Карельского фронта и наступательных амбициях НАТО.",
-      "links": [],
-      "createdAt": "2026-05-02T10:10:54.695Z",
-      "expiresAt": "2026-05-03T10:10:54.695Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T10:10:54.695Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-02T10:10:54.695Z"
-      }
-    },
-    {
-      "id": 3639647698,
-      "postUrl": "https://t.me/readovkanews/109885?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "mixed",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/ea2b23115a.mp4?token=DSp9hsvejHqXzdN8zWI7CtTwxNO6y902_ZRkjoqXRcbHYbyOOLzrCfISUUuaYFaVV8wg8uRh-OVb9KK_9WRNKiR4GQw6J1-WHvW2GYw72rXGFm_v_7Cy8kEibNiYTvIyyxJ2LVa5_8WohtpudhCualMy-qJW9vy6HAtzRLQkBhnkx1TW5cOyKnxS85GMfViyjUVdNbLpCrHB87ObVk0bgBCoTQK8O37VvAaSrU56SEMQV6lVP0cd5QaDW4gLov6bs1iIOOe1oHQg2jpwG8GrKx2YYDqSvakA_Qo3Jyr3XaWaFRJTERCNOgFQ3DEV5ONUjdOCZ5gwQERL15Is_ZQSXA",
-          "poster": null,
-          "mimeType": "video/mp4"
-        },
-        {
-          "id": "video-2",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/f394505e7c.mp4?token=QfFLwk_W2ZlYd3qcAc6K3KA1fEk_qeNw9jS-PQnAjaipYIxrnVrZ2R_cY_Jg0wnm778OFycUPccwfosTYh2prFnRw4V6DktRBbWXabzTmt1CllqciNjCznKbHfgWGqknatUz41SwthuA7JUaBs_bAaxEJ9pVcHmq83BhTElpqsA7xkiO1JrwyBY5q00k1wWIuV5xI3XVcjAqQCUnNg0xbmBPmDt5JDBA9yzBhO4qgZRsbRfpeQWqGc2RsQ6UOjTOR48FJ6c1WTTJGG3YP6aDCn_tFknFqNBosyEYAlSMVmskFqD1F5WDMEf5gbjJAFzS67GSniX0Tey0H2XnpPBn4A",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Торговый центр под Новосибирском сгорел дотла — площадь пожара составила 5 тыс кв м\n\nВ Искитиме Новосибирской области ночью полностью сгорел ТЦ «Апельсин». Пожару присвоили четвертый ранг сложности. На месте работали 87 спасателей и 27 единиц техники, для бесперебойной подачи воды был задействован пожарный поезд. Открытое горение ликвидировали, пострадавших нет, сообщает региональное МЧС.\n\nПрокуратура начала проверку соблюдения должностными лицами ТЦ правил пожарной безопасности на момент ЧП и ранее.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-02T04:48:39.787Z",
-      "expiresAt": "2026-05-03T04:48:39.787Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T04:48:39.787Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-02T04:48:39.787Z"
-      }
-    },
     {
       "id": 471746570,
       "postUrl": "https://t.me/onetwotrip/6233?single",
@@ -546,156 +444,6 @@
       }
     },
     {
-      "id": 2691802925,
-      "postUrl": "https://t.me/mosguru/31752?single",
-      "source": {
-        "title": "Первый Московский",
-        "handle": "mosguru",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/p6_3VKxk00vfbr5fWRQEunhbKJq5uZrY5Hb4WxU07rITMGGg1hU8cHaAeFUJjZFZd7W4HN_gFMPn64SZhdTxGWC_E4EFg9IdOKRGpTe_aKFZS-daml8tkHAmP4BBdh1GXclWRjxtBt0BEpBUi4td22nskq_THqVKc2H_z_gfaIEAvKoVKdaarLyEkLz4i28AvFTdXfTquIPpfnJrZZ5noCmzTjKN4oU0stg6lAwavj7-h8o46sgEv9B5m_RTRvVQpBpfwRHMLLj7p3iMPWZyjiVGnPhQBxsZmMZMCfAYnnjQJeo_k6-ZcGyqLf8E4FmqKsiesCwCwreZWlWy_vYqHQ.jpg"
-      },
-      "sourceId": "ru:mosguru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "👨‍🎓 Общегородской выпускной в Москве проведут 26 июня на ВДНХ — Собянин. \n\nНа время мероприятия центральная часть парка будет открыта только для его гостей. \n\n⚡️ Первый Московский",
-      "links": [
-        {
-          "label": "Первый Московский",
-          "url": "https://t.me/+qJNFoJeX614zOTli"
-        }
-      ],
-      "createdAt": "2026-05-01T10:43:24.173Z",
-      "expiresAt": "2026-05-02T10:43:24.173Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T10:43:24.173Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:43:24.173Z"
-      }
-    },
-    {
-      "id": 2744382842,
-      "postUrl": "https://t.me/moscowach/39650?single",
-      "source": {
-        "title": "Москвач • Новости Москвы",
-        "handle": "moscowach",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
-      },
-      "sourceId": "ru:moscowach",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🥳 В России у пациента с меланомой зафиксировали улучшения после введения вакцины от рака. \n\nУкол получил 60-летний мужчина. Врачи сообщают, что потребуется еще не менее 10 введений вакцины, однако положительные сдвиги уже есть. \n\n🔹 Не грузятся фото/видео? Мы в Max",
-      "links": [
-        {
-          "label": "зафиксировали",
-          "url": "https://www.rbc.ru/society/01/05/2026/69f444539a794725396ee202?utm_referrer=https%3A%2F%2Fwww.google.com%2F"
-        },
-        {
-          "label": "Мы в Max",
-          "url": "https://max.ru/moscowach"
-        }
-      ],
-      "createdAt": "2026-05-01T15:16:41.662Z",
-      "expiresAt": "2026-05-02T15:16:41.662Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T15:16:41.662Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T15:16:41.662Z"
-      }
-    },
-    {
-      "id": 3002077943,
-      "postUrl": "https://t.me/mash/73951?single",
-      "source": {
-        "title": "Mash",
-        "handle": "mash",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/FnPqSyijtACxQpGfEoeTMsUfYutOIE2wnZh68KnRgdMDWt4NJQbKxtdLB1KyPBBDpsJdCcZ_VQq-nA4RToTDfFYARBgYRufmC8aettPRr7EN-OR7IayD_Wbd2ALp2yjui9K9mwVWZmf9FhJoBhhiN8RDp9zT9ZnS9jCUsohzSGOw_cQ1N1OlIW2V7M8A5qyhy23dWRebYJ7ntM1ZIaIku_9ocjeM-MPJwGHopQSnA5n1q62FHBA1-N1rHBzxckY2AY_GpUyvKbG93M5qeDOdfhY2OGJdyvEaLvdp4r-6X4iAfq1LJSwjm-QB6cTFP_UXix3xbFaO0Pr-Zx8rvxD6Yg.jpg"
-      },
-      "sourceId": "ru:mash",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/4fbecc1ead.mp4?token=IMvF-AXJ1ybiUyTXTCIt3j3oORGAC_0Bwbt4--9tZrEEoR44c3m-5pVu1pXfo8E1SIVfjaK1sUeGdyfZVBcSX3jsiymTHBAQcT0lWuNEv0-QeUr1OkQwc4jXnYnyTshIx0X03BOg7tq7_ui01F3mwKtkJiohCGF-yY3V4fs4uTKazwfjg0K8IckCCsPbOIvZ3bQbIGI6Eg7-TqLoD-XIXeoHD_VhRUYntVqVJixXwRuKg1wHTJQVL2fJWznkJPN4KbqVqHLn3gt_JkoOVaeaTTh4e7bE7C0AZeBI-q1Puv_EenkR7xUuXMBn3WGUrHO5U2mbWteV8Bci-LNWbFgxt1PKs-hoC5pAVoSIv7H8bl70hd7l3_66ZHcKTbsv6B_yj7hiJSDQ_Y5AOz1MbA5vDxdT7-OX4Ta9uJ0Bo1ok6AYepcW8l548TRu9BADKZ1wVWZG6s3CEJYzsYRQDgiA8KeRK-arU560D3O3f0lIKd3mSc-BBAA1bKJ3KwjOULos7FoHNiEomaVvRoTHDHhGILNGdjNNrhnxcDau2Fjeke7n8zFuab87ZeHJShuKZRkEOvt7Az64g6vC6fYaS1cn6u8zB9QhaPEPmISXYxh-QHJM-d-znCmETCHoHUCf8dywLVhUYZp8fjlgdR71mxKbdPY6nUuKfcoV_b14--US-g80",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Один из лучших марафонцев Британии Рассел Кук (1,1 млн подписчиков в запретграмме) не смог установить новый рекорд из-за того, что обосрался во время лондонского марафона.\n\nИзначально бородач хотел пробежать дистанцию в 42 километра быстрее, чем за два часа и 35 минут. Анонсировал это в соцсетях — мол, я ща покажу, какой я крутой и всё такое. Но преодолел эту дистанцию за два часа и 46 минут.\n\nПодписчики начали насмехаться над ним, как в своё время угорали нашенькие над Давидычем, но Рассел выложил пруфы — видео из своих очков с камерой, на которых видно, как он застревает на 10 минут в туалета в самом начале марафона. Дальше написал: \"Когда я стартовал, я почувствовал, что вот-вот обделаюсь и не смог не забежать в кабинку\".\n\nпросрал шанс\n\n❗️ Mash на спорте теперь в MAX",
-      "links": [
-        {
-          "label": "Mash на спорте теперь в MAX",
-          "url": "https://max.ru/mashnasporte"
-        }
-      ],
-      "createdAt": "2026-05-01T10:12:44.500Z",
-      "expiresAt": "2026-05-02T10:12:44.500Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T00:05:22.534Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:12:44.500Z"
-      }
-    },
-    {
       "id": 4046192401,
       "postUrl": "https://t.me/maslennikovliga/2042?single",
       "source": {
@@ -1019,89 +767,34 @@
       }
     },
     {
-      "id": 4090564388,
-      "postUrl": "https://t.me/decenter/24838?single",
+      "id": 2771459836,
+      "postUrl": "https://t.me/mosguru/31753?single",
       "source": {
-        "title": "DeCenter — блокчейн, биткоин, инвестиции",
-        "handle": "decenter",
+        "title": "Первый Московский",
+        "handle": "mosguru",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/tiAWjRLzBgQBYKcpnfjnZjTRvoEzOAV_T55eQoxdUGDl_Kcne4D6BluMrU7Dx9BUMzHRtrFvLLxSvPbN2VBMgDUfhOAmTwvtvKEcq7p-1Qy8xvMs2OlNs8d6M5-Nsay8iTN4ou0mKzmiQH5ziCNUQmUCyIe3PRRd_AUpcRrTi4Y8WodZ4qF0L748e0iX3JteAMBC3ezU4rLspuIehWrvh8A9_9D9yJLYcu34fe6Yss9jxUVwE3mjj_5mioTzWFmLw5wGuTLCn7KJKad8lgy1fhxN9s3EVWPwGGK2py9Za_QzfEcAap6heprjQwf67m69Z8tYUULQdbdWvP4PMfkAMw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/g5F7rDDvohIk8qqRXFPG08JHgnw4E4u5izAmBkRVwg0YL6l-HrWG32oToR16ALDWSNTiRJLrcuavzlDa8-hfDd987vTk06T8HKBNVGLOcWjlOeDHQtAEFeT939N3la_ONIMKUY52hYS9krk6ow9Y-GwI3XtgV4621SZYDH_LtzH1Es3c6pyuEojt8_v0MqODXMdHL3_YAyU4-PmniItFIzpV6LvvYopE7iMy5jxQJYsBHEV7wjtYsF_yV8yxgVdQwoq6KNjKvNAmJoi6KHDXG9rtvHbSV_iUQD69uHzrcfk7BI0r5VCUvH3DFnfpFrDUDhWEOWbE693sBCD0TSJsnQ.jpg"
       },
-      "sourceId": "ru:decenter",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/grKtKSJME3Qi0JInaL4KHXmgjI0qg5eRH4_5D1fSDvB2CTgKIK9dYNt5_sKxJl6MqTXAnqYml3LYe9e5PyoOS3bCLrwTI-r7w6OKmdUtcI2PanyTBNQjSiUWKOhkMWnLYX1a_F2iVG4sC1rMJPBjIiCofgs38hA1017U7vVd00Zo3ERqaZARnMvvWI8TUMeoUNSUgCq6MXZaXPS4M4j5FxCf-sxw4mFVJduYn06MFVwq1fHAWx4uzMN274r4i1yaHZmUiLLzrstaolF6PkhOj_PLMd3xt6KkgWaIch9Upm1ZjmjHCFfeqdVUvUjygKWhFrRkCAj2F60TEW0wjnbAXQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-01T10:12:41.637Z",
-      "expiresAt": "2026-05-02T10:12:41.637Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:19.196Z",
-      "tag": "crypto",
-      "tags": [
-        "crypto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:12:41.637Z"
-      }
-    },
-    {
-      "id": 2199094730,
-      "postUrl": "https://t.me/wylsared/32708?single",
-      "source": {
-        "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
-        "handle": "wylsared",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
-      },
-      "sourceId": "ru:wylsared",
+      "sourceId": "ru:mosguru",
       "sourceCountryCode": "ru",
       "contentType": "text",
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Почти год с Samsung Galaxy S25 Ultra — жить можно! \n \nЕсли совсем коротко, то Samsung Galaxy S25 Ultra я полюбил за матовый экран. Друзья, это просто восторг. Ну а про все другие нюансы рассказал как мог в классическом опыте эксплуатации, минимум технических подробностей, максимум эмоций! \n \nПриятного чтения: https://wylsa.com/samsung-galaxy-s25-ultra-year \n \nАвтор: Сергей Кузьмин \n \n• Канал Wylsacom в MAX",
+      "text": "🐼 Бесплатные утренние прогулки будут организованы в зоопарке Москвы с 1 по 31 мая.\n\nТакой входной билет выдается только в офлайн-формате.\n\n⚡️ Первый Московский",
       "links": [
         {
-          "label": "https://wylsa.com/samsung-galaxy-s25-ultra-year",
-          "url": "https://wylsa.com/samsung-galaxy-s25-ultra-year"
-        },
-        {
-          "label": "Канал Wylsacom в MAX",
-          "url": "https://max.ru/wylsacomred"
+          "label": "Первый Московский",
+          "url": "https://t.me/+qJNFoJeX614zOTli"
         }
       ],
-      "createdAt": "2026-05-01T10:12:40.447Z",
-      "expiresAt": "2026-05-02T10:12:40.447Z",
+      "createdAt": "2026-05-01T15:16:42.680Z",
+      "expiresAt": "2026-05-02T15:16:42.680Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T10:12:40.447Z",
-      "tag": "electronics",
+      "mediaRefreshedAt": "2026-05-01T15:16:42.680Z",
+      "tag": "news",
       "tags": [
-        "electronics",
-        "electronics_brands",
-        "technology",
-        "gadgets",
-        "internet"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1116,7 +809,99 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T10:12:40.447Z"
+        "reviewedAt": "2026-05-01T15:16:42.680Z"
+      }
+    },
+    {
+      "id": 752293779,
+      "postUrl": "https://t.me/moscowach/39651?single",
+      "source": {
+        "title": "Москвач • Новости Москвы",
+        "handle": "moscowach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
+      },
+      "sourceId": "ru:moscowach",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "💰 Размер пособия для беременных студенток увеличился в четыре раза до 96 тысяч рублей — Правительство РФ.",
+      "links": [
+        {
+          "label": "увеличился в",
+          "url": "https://ria.ru/20260501/golikova-2090085313.html"
+        }
+      ],
+      "createdAt": "2026-05-01T17:14:20.656Z",
+      "expiresAt": "2026-05-02T17:14:20.656Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T17:14:20.656Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T17:14:20.656Z"
+      }
+    },
+    {
+      "id": 3015074869,
+      "postUrl": "https://t.me/mash/73953?single",
+      "source": {
+        "title": "Mash",
+        "handle": "mash",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/FnPqSyijtACxQpGfEoeTMsUfYutOIE2wnZh68KnRgdMDWt4NJQbKxtdLB1KyPBBDpsJdCcZ_VQq-nA4RToTDfFYARBgYRufmC8aettPRr7EN-OR7IayD_Wbd2ALp2yjui9K9mwVWZmf9FhJoBhhiN8RDp9zT9ZnS9jCUsohzSGOw_cQ1N1OlIW2V7M8A5qyhy23dWRebYJ7ntM1ZIaIku_9ocjeM-MPJwGHopQSnA5n1q62FHBA1-N1rHBzxckY2AY_GpUyvKbG93M5qeDOdfhY2OGJdyvEaLvdp4r-6X4iAfq1LJSwjm-QB6cTFP_UXix3xbFaO0Pr-Zx8rvxD6Yg.jpg"
+      },
+      "sourceId": "ru:mash",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Скуфы, алярм! Шашлычок под коньячок на майских может закончиться для вас отёком простаты, заявили Mash врачи. Важное условие: если вы плохи в области, так сказать, sex. Рассказываем.\n\nСо слов специалистов, ваша больная точка может стать действительно больной при таком раскладе: если вы обожрётесь жареным мясом с острым пряным соусом, шлифанёте его горячительным, а потом окажетесь в позиции Степашки и не сможете выполнить супружеский долг, так как королэва не в настроении. \n\nПричины: к вашему казан-кебабу прильёт чересчур много крови, нарушится лимфообращение и возникнет отёк органов малого таза — отечёт простата и обострится геморрой (если он был). Поэтому единственный выход — больничка. Куда вас по-любому увезут при подобных диагнозах. Короче говоря, ешьте и пейте в меру, любите друг друга с вашими принцессами (девочки, от вас многое зависит), и вообще: с праздниками, ёлки-палки! \n\n❗ Не грузятся фото и видео? Читайте нас в MAX.",
+      "links": [
+        {
+          "label": "Не грузятся фото и видео? Читайте нас в MAX.",
+          "url": "https://max.ru/mash"
+        }
+      ],
+      "createdAt": "2026-05-01T13:55:28.917Z",
+      "expiresAt": "2026-05-02T13:55:28.917Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:28.917Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:28.917Z"
       }
     },
     {
@@ -1681,156 +1466,6 @@
       }
     },
     {
-      "id": 2989878390,
-      "postUrl": "https://t.me/mosguru/31751?single",
-      "source": {
-        "title": "Первый Московский",
-        "handle": "mosguru",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/p6_3VKxk00vfbr5fWRQEunhbKJq5uZrY5Hb4WxU07rITMGGg1hU8cHaAeFUJjZFZd7W4HN_gFMPn64SZhdTxGWC_E4EFg9IdOKRGpTe_aKFZS-daml8tkHAmP4BBdh1GXclWRjxtBt0BEpBUi4td22nskq_THqVKc2H_z_gfaIEAvKoVKdaarLyEkLz4i28AvFTdXfTquIPpfnJrZZ5noCmzTjKN4oU0stg6lAwavj7-h8o46sgEv9B5m_RTRvVQpBpfwRHMLLj7p3iMPWZyjiVGnPhQBxsZmMZMCfAYnnjQJeo_k6-ZcGyqLf8E4FmqKsiesCwCwreZWlWy_vYqHQ.jpg"
-      },
-      "sourceId": "ru:mosguru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "☀️ Метеорологическое лето наступит в Москве 4 мая — воздух прогреется до +24 градусов.\n\n⚡️ Первый Московский",
-      "links": [
-        {
-          "label": "Первый Московский",
-          "url": "https://t.me/+qJNFoJeX614zOTli"
-        }
-      ],
-      "createdAt": "2026-05-01T10:43:24.173Z",
-      "expiresAt": "2026-05-02T10:43:24.173Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T10:43:24.173Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:43:24.173Z"
-      }
-    },
-    {
-      "id": 1662752744,
-      "postUrl": "https://t.me/moscowach/39649?single",
-      "source": {
-        "title": "Москвач • Новости Москвы",
-        "handle": "moscowach",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
-      },
-      "sourceId": "ru:moscowach",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/I_qvTZ8LtVq56nkpxE3r2yVWJvQsYWuEmGDJc5kD5AjNK0MIhHWObkwHmvO_bt81hc3K6teoMSH_5itYRuzFPmEXrg0Ptt2_qSB78pLBbaFuBQp490EE2lUWsKk1roB1_dDno8Wh3wtjekWffZzED5chOcPgwDjRvZvjz_YCYilew6DQUM17IgD5xQPOBNqjmv-5cKpqNgTqAkclDyV03EjRX9REa0l_jYMergSg7hiNwKEAncFIxw-SYNavR1_HBbLBolUGoGcLuEylBF3dr5_nAXjGW7RP8GJcAeCyyMQxP8y2M_Ke3uSaJH0Cgv9qfOI9OcQ57Xvm0LoLvok6fQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💙 Бесплатные утренние прогулки будут проводить в Московском зоопарке с 1 по 31 мая.\n\nБилеты оформляются только офлайн — с 07:30 до 09:00, вход по ним возможен до 09:00.\n\n🔹 Не грузятся фото/видео? Мы в Max",
-      "links": [
-        {
-          "label": "Мы в Max",
-          "url": "https://max.ru/moscowach"
-        }
-      ],
-      "createdAt": "2026-05-01T15:16:41.662Z",
-      "expiresAt": "2026-05-02T15:16:41.662Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T19:39:09.733Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T15:16:41.662Z"
-      }
-    },
-    {
-      "id": 1322109694,
-      "postUrl": "https://t.me/mash/73950?single",
-      "source": {
-        "title": "Mash",
-        "handle": "mash",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/FnPqSyijtACxQpGfEoeTMsUfYutOIE2wnZh68KnRgdMDWt4NJQbKxtdLB1KyPBBDpsJdCcZ_VQq-nA4RToTDfFYARBgYRufmC8aettPRr7EN-OR7IayD_Wbd2ALp2yjui9K9mwVWZmf9FhJoBhhiN8RDp9zT9ZnS9jCUsohzSGOw_cQ1N1OlIW2V7M8A5qyhy23dWRebYJ7ntM1ZIaIku_9ocjeM-MPJwGHopQSnA5n1q62FHBA1-N1rHBzxckY2AY_GpUyvKbG93M5qeDOdfhY2OGJdyvEaLvdp4r-6X4iAfq1LJSwjm-QB6cTFP_UXix3xbFaO0Pr-Zx8rvxD6Yg.jpg"
-      },
-      "sourceId": "ru:mash",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/tnpvniq9pHbVbYLDDbdBbDtNjAr0l0vkhi-bFJaMLKr0hHkGsA3TFV8gnR3L7cuQvoTIeLyzKn9lv7FQRMF1XLr9MGAQOjXJkLAnpepm7ab3Un5x_tal4ptCeu-bcMGFTBSZ05jOo2DIYLIh8m4iMgTgLf-XhkTfZvUvHzvONjWX4IPS3JRTYc0TgmjkaeQym11a-Tva3-rJAOSEQODcO9cYX80gwuvoKcg6KDo-RzPB4aSUoEZFZXaU23HJQO7KiY-oWveZ0-_Z4YknWNt1PePZDxnOns2j1C4LB5kghYDTYu3lQtKLCLqNYE422BKtE6Q_tUCsAtnOY1z7r0NgOQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Актёр Дмитрий Назаров а.к.а шеф из \"Кухни\" планирует вернуться в Россию после трёх лет в эмиграции во Франции. Причина — финансовые проблемы, из-за которых уже пришлось продать одну из квартир в Каннах.\n\nПо нашей информации, 68-летний артист и его 59-летняя супруга Ольга Васильева едва собирают половину залов со своей концертной программой. Денег не хватает, накопления у звёздной пары заканчиваются, рассказывают знакомые семьи. \n\nВ начале года Назаров продал квартиру в 60 м² в Каннах за 495к евро с учетом комиссии риэлтора. В собственности у актёра остаются апартаменты на 150 м² на улице rue d’Antibes.\n\nСам Дмитрий находит, чем себя развлекать: помимо написания антироссийских стихов, вечерит с женой в украинском ресторане Cave Croisette и ездит на матчи местного футбольного клуба, где играет его приятель. Цвета клуба напоминают актёру о московском \"Спартаке\" — его главной фанатской любви.\n\nНазаров и Васильева покинули Россию в январе 2023 года после увольнения из МХАТа — тогда они распродали практически всё имущество.\n\n❗ Не грузятся фото и видео? Читайте нас в MAX.",
-      "links": [
-        {
-          "label": "Не грузятся фото и видео? Читайте нас в MAX.",
-          "url": "https://max.ru/mash"
-        }
-      ],
-      "createdAt": "2026-05-01T10:12:44.500Z",
-      "expiresAt": "2026-05-02T10:12:44.500Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T06:21:39.703Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:12:44.500Z"
-      }
-    },
-    {
       "id": 4111736538,
       "postUrl": "https://t.me/maslennikovliga/2041?single",
       "source": {
@@ -2160,69 +1795,34 @@
       }
     },
     {
-      "id": 3789486132,
-      "postUrl": "https://t.me/wylsared/32706?single",
+      "id": 2691802925,
+      "postUrl": "https://t.me/mosguru/31752?single",
       "source": {
-        "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
-        "handle": "wylsared",
+        "title": "Первый Московский",
+        "handle": "mosguru",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/g5F7rDDvohIk8qqRXFPG08JHgnw4E4u5izAmBkRVwg0YL6l-HrWG32oToR16ALDWSNTiRJLrcuavzlDa8-hfDd987vTk06T8HKBNVGLOcWjlOeDHQtAEFeT939N3la_ONIMKUY52hYS9krk6ow9Y-GwI3XtgV4621SZYDH_LtzH1Es3c6pyuEojt8_v0MqODXMdHL3_YAyU4-PmniItFIzpV6LvvYopE7iMy5jxQJYsBHEV7wjtYsF_yV8yxgVdQwoq6KNjKvNAmJoi6KHDXG9rtvHbSV_iUQD69uHzrcfk7BI0r5VCUvH3DFnfpFrDUDhWEOWbE693sBCD0TSJsnQ.jpg"
       },
-      "sourceId": "ru:wylsared",
+      "sourceId": "ru:mosguru",
       "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/WRFibMT1n40yFzApyOEymvMitciZWqZ9uYFB5glvvYtJKefLeRHVyRrN47AhHTu5wJPKjRQn0B6i9LbnHcZAQIrmBy8dVDGo23p8Z1ThG5Lo2ysW8Z3MuR6cG5CaPKMk3Hve3m5B5O0omFl9CJJW5AszvSN0R7LDqyndistxqV059pliN9855JKKxvzuHVTeWpEo88K4dA-CZoRWU0-fdcXZFKGOITSKxyU0iE-_7ao_55JOeZBZo1RqAlbugiLV4js_7AG4n_jxpYCnatG51PPtjInc0KX-W1WbFQZHwRi2qi8pDs97EL4I0v2hZ-g-BVnsYcCuAzfHmdDBi3DWeg.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Os9FBboz28klmm4AwPR6WcYCNsMIPA8UC5qwuid0-kA_PqnXPto6eV-p8Ew1FixW81vkSUsKY5C9XKYD3eVFnQzybKSR-hEVZnmS5tov1-Hsfjp5PIaCXHvBcLk7-E2X-OVBZShlfdsd11nwJPV6WuJILOtJHFLLQpzMNTEwAz5AkvLifmmbqjBMT3UcDHFbIlXaaKJxhE6OhxBBkQ_gZppNHg6oaxHk86p10sWzB_9Iayucl9orfqqbHxMDN6nD9hog-QsQQII92_Mpt8eI1O_GmKCxqr9n0RC_BkejAxdYiBodefDJjBgXD-p7X1cyFjOtlPH3jpiLKHYDpjmWlg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Apple заработала безумные $111 млрд за второй финансовый квартал \n \nВторой фискальный квартал редко бывает настолько жирным — новогодние праздники уже позади, а новые устройства ещё не подоспели. Для сравнения: в прошлом и позапрошлом году выручка компании за аналогичный период висела в районе $90−95 млрд.\n\nОднако в этот раз Тим Кук ультанул великолепным MacBook Neo и бюджетным iPhone 17e. Результат не заставил себя ждать: выручка выросла на 16,6 %, а чистая прибыль и вовсе скакнула на 19,3 % и достигла отметки в $29,6 млрд. И это несмотря растущую себестоимость всей электроники из-за кризиса памяти! \n\nНаибольший рост показали именно айфоны: их выручка подскочила на 21,6 %, с $46,8 до $56,9 млрд, обеспечив 51 % всей квартальной выручки. Сервисы тоже не отстают: они подросли на 16 % и принесли компании $30,9 млрд.\n\nБлагодаря рекордному первому кварталу и мощному второму, Apple уже заработала за финансовое полугодие $254,6 млрд — на $35,2 млрд больше, чем в прошлом году.\n\nУже через пять месяцев Тим Кук окончательно уйдёт с поста CEO Apple, передав бразды правления Джону Тернусу, а значит, следующий финансовый отчёт станет для него последним.\n\nТернус унаследует компанию в невероятно здоровой финансовой форме, а вместе с ней по наследству получит и кресло одного из самых влиятельных CEO в мире. \n \nАвтор: Павел Урлапов \n \n• Канал Wylsacom в MAX",
+      "text": "👨‍🎓 Общегородской выпускной в Москве проведут 26 июня на ВДНХ — Собянин. \n\nНа время мероприятия центральная часть парка будет открыта только для его гостей. \n\n⚡️ Первый Московский",
       "links": [
         {
-          "label": "MacBook Neo",
-          "url": "https://wylsa.com/macbook-neo-2026-review/"
-        },
-        {
-          "label": "выросла",
-          "url": "https://www.apple.com/newsroom/2026/04/apple-reports-second-quarter-results/"
-        },
-        {
-          "label": "уйдёт",
-          "url": "https://wylsa.com/pismo-soobshhestvu-ot-tima-chto-napisal-tim-kuk-kogda-obyavil-ob-uhode-s-posta-glavy-apple/"
-        },
-        {
-          "label": "Джону Тернусу",
-          "url": "https://wylsa.com/pismo-soobshhestvu-ot-tima-chto-napisal-tim-kuk-kogda-obyavil-ob-uhode-s-posta-glavy-apple/"
-        },
-        {
-          "label": "последним",
-          "url": "https://wylsa.com/15-years-of-tim-cook/"
-        },
-        {
-          "label": "Канал Wylsacom в MAX",
-          "url": "https://max.ru/wylsacomred"
+          "label": "Первый Московский",
+          "url": "https://t.me/+qJNFoJeX614zOTli"
         }
       ],
-      "createdAt": "2026-05-01T10:12:40.447Z",
-      "expiresAt": "2026-05-02T10:12:40.447Z",
+      "createdAt": "2026-05-01T10:43:24.173Z",
+      "expiresAt": "2026-05-02T10:43:24.173Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T04:48:45.414Z",
-      "tag": "electronics",
+      "mediaRefreshedAt": "2026-05-01T10:43:24.173Z",
+      "tag": "news",
       "tags": [
-        "electronics",
-        "electronics_brands",
-        "technology",
-        "gadgets",
-        "internet"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2237,7 +1837,57 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T10:12:40.447Z"
+        "reviewedAt": "2026-05-01T10:43:24.173Z"
+      }
+    },
+    {
+      "id": 2744382842,
+      "postUrl": "https://t.me/moscowach/39650?single",
+      "source": {
+        "title": "Москвач • Новости Москвы",
+        "handle": "moscowach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
+      },
+      "sourceId": "ru:moscowach",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🥳 В России у пациента с меланомой зафиксировали улучшения после введения вакцины от рака. \n\nУкол получил 60-летний мужчина. Врачи сообщают, что потребуется еще не менее 10 введений вакцины, однако положительные сдвиги уже есть. \n\n🔹 Не грузятся фото/видео? Мы в Max",
+      "links": [
+        {
+          "label": "зафиксировали",
+          "url": "https://www.rbc.ru/society/01/05/2026/69f444539a794725396ee202?utm_referrer=https%3A%2F%2Fwww.google.com%2F"
+        },
+        {
+          "label": "Мы в Max",
+          "url": "https://max.ru/moscowach"
+        }
+      ],
+      "createdAt": "2026-05-01T15:16:41.662Z",
+      "expiresAt": "2026-05-02T15:16:41.662Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T15:16:41.662Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T15:16:41.662Z"
       }
     },
     {
@@ -2711,104 +2361,6 @@
       }
     },
     {
-      "id": 873578921,
-      "postUrl": "https://t.me/moscowach/39648?single",
-      "source": {
-        "title": "Москвач • Новости Москвы",
-        "handle": "moscowach",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
-      },
-      "sourceId": "ru:moscowach",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ULtxtsch4c8HaMwEaFrI1xFgoircx1lIpWPlloD4BjhxbsQlxuuWM7qOj2wfS5VPASr39orYjhtoKomcMros7WQbvXkJbNmY2qrDfBjH2ZRggWlcmnS9W-DOM9FB5HOvwpDA2fQ21hTIpjykTm9IJfYQZpn0RpfdvPXYSlcs-acKWDA6hHTF-NDnQHbzfEwrZ5VEPaISgs1OgMGWWwrGerHN04Lce9Cd7LrcXHpVQDI1XokYAlkadkYPTgBLeXrpLlAJI81XZeJmn1noC265aq2WD9AJfOnYx9xxrxcKT_3MCyJCa93cxRd6aP_w4MBfq-3QW37xDpfzQjuIfgbWkA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🎓 Традиционный городской выпускной пройдет 26 июня на ВДНХ. \n\nНа время проведения центральную часть парка закроют для посетителей — доступ будет только у гостей, сообщил мэр Сергей Собянин. Ожидается, что праздник посетят около 40 тысяч человек.\n\n🔹 Не грузятся фото/видео? Мы в Max",
-      "links": [
-        {
-          "label": "Мы в Max",
-          "url": "https://max.ru/moscowach"
-        }
-      ],
-      "createdAt": "2026-05-01T15:16:41.662Z",
-      "expiresAt": "2026-05-02T15:16:41.662Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T19:39:09.733Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T15:16:41.662Z"
-      }
-    },
-    {
-      "id": 3394079756,
-      "postUrl": "https://t.me/mash/73949?single",
-      "source": {
-        "title": "Mash",
-        "handle": "mash",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/FnPqSyijtACxQpGfEoeTMsUfYutOIE2wnZh68KnRgdMDWt4NJQbKxtdLB1KyPBBDpsJdCcZ_VQq-nA4RToTDfFYARBgYRufmC8aettPRr7EN-OR7IayD_Wbd2ALp2yjui9K9mwVWZmf9FhJoBhhiN8RDp9zT9ZnS9jCUsohzSGOw_cQ1N1OlIW2V7M8A5qyhy23dWRebYJ7ntM1ZIaIku_9ocjeM-MPJwGHopQSnA5n1q62FHBA1-N1rHBzxckY2AY_GpUyvKbG93M5qeDOdfhY2OGJdyvEaLvdp4r-6X4iAfq1LJSwjm-QB6cTFP_UXix3xbFaO0Pr-Zx8rvxD6Yg.jpg"
-      },
-      "sourceId": "ru:mash",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Джанни Инфантино попытался помирить Израиль и Палестину на конгрессе ФИФА. Он призвал глав футбольных федераций этих стран пожать друг другу руки, но палестинец отказался.\n\nСказал, что не будет жать руку тому, кто \"представляет фашистское правительство, совершающее геноцид\". Добавил: палестинская сторона обратится в CAS (Спортивный арбитражный суд) из-за неотстранения/допуска сборной Израиля и его клубов к международным соревнованиям.\n\n❗️ Mash на спорте теперь в MAX",
-      "links": [
-        {
-          "label": "Mash на спорте теперь в MAX",
-          "url": "https://max.ru/mashnasporte"
-        }
-      ],
-      "createdAt": "2026-05-01T10:12:44.500Z",
-      "expiresAt": "2026-05-02T10:12:44.500Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T10:12:44.500Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:12:44.500Z"
-      }
-    },
-    {
       "id": 1600964467,
       "postUrl": "https://t.me/maslennikovliga/2040?single",
       "source": {
@@ -3128,6 +2680,104 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T11:46:09.223Z"
+      }
+    },
+    {
+      "id": 2989878390,
+      "postUrl": "https://t.me/mosguru/31751?single",
+      "source": {
+        "title": "Первый Московский",
+        "handle": "mosguru",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/g5F7rDDvohIk8qqRXFPG08JHgnw4E4u5izAmBkRVwg0YL6l-HrWG32oToR16ALDWSNTiRJLrcuavzlDa8-hfDd987vTk06T8HKBNVGLOcWjlOeDHQtAEFeT939N3la_ONIMKUY52hYS9krk6ow9Y-GwI3XtgV4621SZYDH_LtzH1Es3c6pyuEojt8_v0MqODXMdHL3_YAyU4-PmniItFIzpV6LvvYopE7iMy5jxQJYsBHEV7wjtYsF_yV8yxgVdQwoq6KNjKvNAmJoi6KHDXG9rtvHbSV_iUQD69uHzrcfk7BI0r5VCUvH3DFnfpFrDUDhWEOWbE693sBCD0TSJsnQ.jpg"
+      },
+      "sourceId": "ru:mosguru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "☀️ Метеорологическое лето наступит в Москве 4 мая — воздух прогреется до +24 градусов.\n\n⚡️ Первый Московский",
+      "links": [
+        {
+          "label": "Первый Московский",
+          "url": "https://t.me/+qJNFoJeX614zOTli"
+        }
+      ],
+      "createdAt": "2026-05-01T10:43:24.173Z",
+      "expiresAt": "2026-05-02T10:43:24.173Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T10:43:24.173Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T10:43:24.173Z"
+      }
+    },
+    {
+      "id": 1662752744,
+      "postUrl": "https://t.me/moscowach/39649?single",
+      "source": {
+        "title": "Москвач • Новости Москвы",
+        "handle": "moscowach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
+      },
+      "sourceId": "ru:moscowach",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/I_qvTZ8LtVq56nkpxE3r2yVWJvQsYWuEmGDJc5kD5AjNK0MIhHWObkwHmvO_bt81hc3K6teoMSH_5itYRuzFPmEXrg0Ptt2_qSB78pLBbaFuBQp490EE2lUWsKk1roB1_dDno8Wh3wtjekWffZzED5chOcPgwDjRvZvjz_YCYilew6DQUM17IgD5xQPOBNqjmv-5cKpqNgTqAkclDyV03EjRX9REa0l_jYMergSg7hiNwKEAncFIxw-SYNavR1_HBbLBolUGoGcLuEylBF3dr5_nAXjGW7RP8GJcAeCyyMQxP8y2M_Ke3uSaJH0Cgv9qfOI9OcQ57Xvm0LoLvok6fQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "💙 Бесплатные утренние прогулки будут проводить в Московском зоопарке с 1 по 31 мая.\n\nБилеты оформляются только офлайн — с 07:30 до 09:00, вход по ним возможен до 09:00.\n\n🔹 Не грузятся фото/видео? Мы в Max",
+      "links": [
+        {
+          "label": "Мы в Max",
+          "url": "https://max.ru/moscowach"
+        }
+      ],
+      "createdAt": "2026-05-01T15:16:41.662Z",
+      "expiresAt": "2026-05-02T15:16:41.662Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T10:36:38.039Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T15:16:41.662Z"
       }
     },
     {
@@ -3587,112 +3237,6 @@
       }
     },
     {
-      "id": 1137561350,
-      "postUrl": "https://t.me/moscowach/39647?single",
-      "source": {
-        "title": "Москвач • Новости Москвы",
-        "handle": "moscowach",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
-      },
-      "sourceId": "ru:moscowach",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/VV7Y6r4fvlQxYwRjMuwh8hvppmv427Of_mMXBCWqQlffRibhE3HfsmQwgP3UQsBlRaFVtnPiQOadUaFfXqxT-hAMw5nGmFGYBP83z974hYgItgpZQhLzWrw32qgPqG2_otfdiA8jVMuMNGHFdlCerXKMHhtZ2e4oueAkQNG3SwKfKHfi91tcILbqOd_OMFtXwRYVEiZmFOskIrP25zvoYyc_WpR_x5mkFGq4FPCkSWrVjRe2eFWH2J2NAtIUxTWsL7b2tmlfONW7MPu1ynv01qSTG9qngdJXO4QT51mPIDg9t8K-Oc6NPpv2IpoPc_-2fhau5a6dxSHP_mfPQkdQgw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🌡️ Летняя жара до +26 °C накроет Москву уже на следующей неделе, сообщают синоптики.\n\n4 мая в столице наступит метеорологическое лето, ожидаются новые температурные рекорды.\n\n🔹 Не грузятся фото/видео? Мы в Max",
-      "links": [
-        {
-          "label": "Мы в Max",
-          "url": "https://max.ru/moscowach"
-        }
-      ],
-      "createdAt": "2026-05-01T10:43:23.153Z",
-      "expiresAt": "2026-05-02T10:43:23.153Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T06:21:44.285Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:43:23.153Z"
-      }
-    },
-    {
-      "id": 3281081533,
-      "postUrl": "https://t.me/mash/73948?single",
-      "source": {
-        "title": "Mash",
-        "handle": "mash",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/FnPqSyijtACxQpGfEoeTMsUfYutOIE2wnZh68KnRgdMDWt4NJQbKxtdLB1KyPBBDpsJdCcZ_VQq-nA4RToTDfFYARBgYRufmC8aettPRr7EN-OR7IayD_Wbd2ALp2yjui9K9mwVWZmf9FhJoBhhiN8RDp9zT9ZnS9jCUsohzSGOw_cQ1N1OlIW2V7M8A5qyhy23dWRebYJ7ntM1ZIaIku_9ocjeM-MPJwGHopQSnA5n1q62FHBA1-N1rHBzxckY2AY_GpUyvKbG93M5qeDOdfhY2OGJdyvEaLvdp4r-6X4iAfq1LJSwjm-QB6cTFP_UXix3xbFaO0Pr-Zx8rvxD6Yg.jpg"
-      },
-      "sourceId": "ru:mash",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/fb9eca810a.mp4?token=YBzSfP2GzEVfSVZNsdMy77B8rWv5HZo5Fb6HOWzTSVq2aPVJP8rl3AZOgUgsD8Ua0vdPC7JjEX-lgJF0Ex8luHQ74y7iyGzTuROfKonr8M-YC3dMYnbKpFtlrOjrf9CNELO3bnO0q9YvdS_EjCAwU-niNuy4xvbY-XR6EaCJT3zaTlQEd__QsseICUSsB-sJb9HGZ4_G0oz9-9wH1F_cZql6GmIWOlsYszdxbXia4fj4cAOAQ2HAFqNdwcRyES_5EZ7BQdFwS6CABhWVoL-CYR8LMc5BzeyYAfE54-SWgq3Vo4mfKzJWCzTquE5Sj4mwub5qU97uFv4F5J28cOLqow",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Самый большой в мире мангал построили в Омске. Сейчас там раздувают угли. Невероятно жарко — в городе +31, все ходят в футболках и майках.\n\nа у вас как?\n\n❗ Не грузятся фото и видео? Читайте нас в MAX.",
-      "links": [
-        {
-          "label": "Не грузятся фото и видео? Читайте нас в MAX.",
-          "url": "https://max.ru/mash"
-        }
-      ],
-      "createdAt": "2026-05-01T10:12:44.500Z",
-      "expiresAt": "2026-05-02T10:12:44.500Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T06:21:39.703Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:12:44.500Z"
-      }
-    },
-    {
       "id": 513751579,
       "postUrl": "https://t.me/maslennikovliga/2039?single",
       "source": {
@@ -3956,6 +3500,58 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T11:46:09.223Z"
+      }
+    },
+    {
+      "id": 873578921,
+      "postUrl": "https://t.me/moscowach/39648?single",
+      "source": {
+        "title": "Москвач • Новости Москвы",
+        "handle": "moscowach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
+      },
+      "sourceId": "ru:moscowach",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/YeHAoq6z-usqE-4WXdv9VQWuC9UYFXJ-XmqU7t1ACHqK1BRzXImuwvE7FrjrN94n3c-LCFE7BY89234QhK4jUBS8HjeSzur-HFznN-GA4IyMIrLc_Hp0SGZ3U8mpT0Neyo9ibceCcLs_a4Wh5ytG4cBcdReUjXfk16468881VkfJVz0r0Ucw9uu3nRGK9bHGowSite883W4EsKQj-xDSxUTbnd4SVbq_joAK8gTGMvR68Kihx4q2x6aBsbU7KRV_3B9fuA4MuVj4W_wEEPwoZgcqqjvTavaR6gLSxxp0kgK5QLMWPpwSio_P5kU5qP_DqHfR-EP0guSjZGZeb9cC_A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🎓 Традиционный городской выпускной пройдет 26 июня на ВДНХ. \n\nНа время проведения центральную часть парка закроют для посетителей — доступ будет только у гостей, сообщил мэр Сергей Собянин. Ожидается, что праздник посетят около 40 тысяч человек.\n\n🔹 Не грузятся фото/видео? Мы в Max",
+      "links": [
+        {
+          "label": "Мы в Max",
+          "url": "https://max.ru/moscowach"
+        }
+      ],
+      "createdAt": "2026-05-01T15:16:41.662Z",
+      "expiresAt": "2026-05-02T15:16:41.662Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T10:36:38.039Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T15:16:41.662Z"
       }
     },
     {
@@ -4389,109 +3985,6 @@
       }
     },
     {
-      "id": 935177567,
-      "postUrl": "https://t.me/moscowach/39646?single",
-      "source": {
-        "title": "Москвач • Новости Москвы",
-        "handle": "moscowach",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
-      },
-      "sourceId": "ru:moscowach",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/b87fd592e5.mp4?token=UDzWff4F8EO0olJhQsUNL2_FtdcGvMSx9sAIIKVCvmLGw_Ow4bTcsy0I6N8U6_J9GTubVl1Ic3H6AORYeIEPE1JpdmBG0OqLNKfdOurG68z3rULjZVEEdezf3blrF3emyesB4dzKNp6NXgCTKjqvDM8UgV_T0z1NrZkUmCe4Yiny2R1COLxVUITrEZ6ThDdFzfES_jdXjxFz2paI4w0EOx2h_jko-Xs7n0_Eqh0pabAb5a91s4-FxqR22lTrZZNCN5Qk2zGzJ4183jJlMM6GjEFlin0mDmzmQdiW3ekjBYpUnP8ASEzVUwBu6iPekT3WJKGGjHJarht2C8SVmDgXxQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "♥️ Сразу две хорошие новости: сегодня май и сегодня пятница. Видео: callmessveta\n\nОтдыхаем!",
-      "links": [],
-      "createdAt": "2026-05-01T10:43:23.153Z",
-      "expiresAt": "2026-05-02T10:43:23.153Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T06:21:44.285Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:43:23.153Z"
-      }
-    },
-    {
-      "id": 3119398898,
-      "postUrl": "https://t.me/mash/73947?single",
-      "source": {
-        "title": "Mash",
-        "handle": "mash",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/FnPqSyijtACxQpGfEoeTMsUfYutOIE2wnZh68KnRgdMDWt4NJQbKxtdLB1KyPBBDpsJdCcZ_VQq-nA4RToTDfFYARBgYRufmC8aettPRr7EN-OR7IayD_Wbd2ALp2yjui9K9mwVWZmf9FhJoBhhiN8RDp9zT9ZnS9jCUsohzSGOw_cQ1N1OlIW2V7M8A5qyhy23dWRebYJ7ntM1ZIaIku_9ocjeM-MPJwGHopQSnA5n1q62FHBA1-N1rHBzxckY2AY_GpUyvKbG93M5qeDOdfhY2OGJdyvEaLvdp4r-6X4iAfq1LJSwjm-QB6cTFP_UXix3xbFaO0Pr-Zx8rvxD6Yg.jpg"
-      },
-      "sourceId": "ru:mash",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/d5b208dad1.mp4?token=DWJjeKOHqJrL43CQynSfVwXvY-crVkKe8PecWWSsHBYCHCdtzeXDR1KKJHSzD2gv0zO0wKWRvO4lQcoiTwVdT_dZgOpKcm-vq0eCyC0F934SJrKiYxwxvd4jGcf7ZtFp7mnSWHRX1GIJGoGVCn1puxsaJ8br2EEBWePq96oIPawp41cEbxDXRBYtjTOqyCc5uM8BFfHxznoFflc6pO4E-G4D43ZebTeyiwe2AeNHxbFclc0qvYp3v5IaCsP140vBas4-klAAz_hX4BaIOg4Ibjs6i3dKPM6X4v-KC4z5WXarpjofv6IfpQFzegGW9GbfQ1va4pClha9nSndKxmCv1g",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "На свердловского губернатора пытались напасть в Екатеринбурге. \n\nПаслер фоткался с горожанами у \"Екатеринбург Арены\", и на него понёсся мужчина в спортивках. Охрана скрутила его в метре от губера.\n\n❤️ Если не загружаются видео и фото, наши новости есть в MAX",
-      "links": [
-        {
-          "label": "Если не загружаются видео и фото, наши новости есть в MAX",
-          "url": "https://max.ru/id9715338740_bot?startapp=2d73e9ebe18a"
-        }
-      ],
-      "createdAt": "2026-05-01T10:12:44.500Z",
-      "expiresAt": "2026-05-02T10:12:44.500Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T22:06:03.994Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:12:44.500Z"
-      }
-    },
-    {
       "id": 4253225890,
       "postUrl": "https://t.me/maslennikovliga/2038?single",
       "source": {
@@ -4752,6 +4245,58 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T11:46:09.223Z"
+      }
+    },
+    {
+      "id": 1137561350,
+      "postUrl": "https://t.me/moscowach/39647?single",
+      "source": {
+        "title": "Москвач • Новости Москвы",
+        "handle": "moscowach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
+      },
+      "sourceId": "ru:moscowach",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/VV7Y6r4fvlQxYwRjMuwh8hvppmv427Of_mMXBCWqQlffRibhE3HfsmQwgP3UQsBlRaFVtnPiQOadUaFfXqxT-hAMw5nGmFGYBP83z974hYgItgpZQhLzWrw32qgPqG2_otfdiA8jVMuMNGHFdlCerXKMHhtZ2e4oueAkQNG3SwKfKHfi91tcILbqOd_OMFtXwRYVEiZmFOskIrP25zvoYyc_WpR_x5mkFGq4FPCkSWrVjRe2eFWH2J2NAtIUxTWsL7b2tmlfONW7MPu1ynv01qSTG9qngdJXO4QT51mPIDg9t8K-Oc6NPpv2IpoPc_-2fhau5a6dxSHP_mfPQkdQgw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🌡️ Летняя жара до +26 °C накроет Москву уже на следующей неделе, сообщают синоптики.\n\n4 мая в столице наступит метеорологическое лето, ожидаются новые температурные рекорды.\n\n🔹 Не грузятся фото/видео? Мы в Max",
+      "links": [
+        {
+          "label": "Мы в Max",
+          "url": "https://max.ru/moscowach"
+        }
+      ],
+      "createdAt": "2026-05-01T10:43:23.153Z",
+      "expiresAt": "2026-05-02T10:43:23.153Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T06:21:44.285Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T10:43:23.153Z"
       }
     },
     {
@@ -5049,52 +4594,6 @@
       }
     },
     {
-      "id": 3088347243,
-      "postUrl": "https://t.me/mash/73946?single",
-      "source": {
-        "title": "Mash",
-        "handle": "mash",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/FnPqSyijtACxQpGfEoeTMsUfYutOIE2wnZh68KnRgdMDWt4NJQbKxtdLB1KyPBBDpsJdCcZ_VQq-nA4RToTDfFYARBgYRufmC8aettPRr7EN-OR7IayD_Wbd2ALp2yjui9K9mwVWZmf9FhJoBhhiN8RDp9zT9ZnS9jCUsohzSGOw_cQ1N1OlIW2V7M8A5qyhy23dWRebYJ7ntM1ZIaIku_9ocjeM-MPJwGHopQSnA5n1q62FHBA1-N1rHBzxckY2AY_GpUyvKbG93M5qeDOdfhY2OGJdyvEaLvdp4r-6X4iAfq1LJSwjm-QB6cTFP_UXix3xbFaO0Pr-Zx8rvxD6Yg.jpg"
-      },
-      "sourceId": "ru:mash",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Новенькие iPhone, Google Pixel, Samsung и другие телефоны со спутниковой связью без сертификата Ростеста (РСТ) запретят ввозить в Россию. Правительство РФ выпустило постановление, которое блокирует поставки в страну таких товаров. Если вы решите завезти новый смартфон из заграницы, рискуете получить реальный срок. Разбираемся.\n\nНа днях вышел документ № 488. В нём говорится, что в Необъятную больше нельзя привозить радиоэлектронные средства для связи со спутниками иностранных государств без разрешения на то отечественной комиссии по радиочастотам. Это значит, что если вы (условно) покупаете за бугром терминал Starlink, яблофон, топовый ведроид, спутниковый телефон или GPS-трекер, который не соответствует новым правилам, то таможня может за вас серьёзно взяться.\n\nФормально, конечно, для физлица ничего не изменилось — раньше за это могли дать штраф или просто конфисковать ифончик, но теперь вашу стильную покупочку от 100к рублей могут признать стратегически важной штукой, а значит: привет, статья 226.1 УК РФ (контрабанда).\n\nТо есть вы не можете привозить технику, только те, у кого есть специальное разрешение и кто готов работать с отечественными частотами. Также могут быть проблемы с уже купленной ранее техникой со спутниковой связью от 100к рублей. Об этом всём Mash рассказал специалист по цифровой безопасности Станислав Селезнёв.\n\n❗ Не грузятся фото и видео? Читайте нас в MAX.",
-      "links": [
-        {
-          "label": "Не грузятся фото и видео? Читайте нас в MAX.",
-          "url": "https://max.ru/mash"
-        }
-      ],
-      "createdAt": "2026-05-01T10:12:44.500Z",
-      "expiresAt": "2026-05-02T10:12:44.500Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T10:12:44.500Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:12:44.500Z"
-      }
-    },
-    {
       "id": 3361743213,
       "postUrl": "https://t.me/maslennikovliga/2037?single",
       "source": {
@@ -5272,6 +4771,55 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T11:46:09.223Z"
+      }
+    },
+    {
+      "id": 935177567,
+      "postUrl": "https://t.me/moscowach/39646?single",
+      "source": {
+        "title": "Москвач • Новости Москвы",
+        "handle": "moscowach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Bc69soEVhVj4yUUr_fEuWsVmG_s1t_V0fnuuMFyXLQMcjrEX7NXmFiMbiTH0ABuEg7H7SO5xnOmlUgk7xew-AF4yWOpLQnPLwsZ36fhxGmogDIRO-c_aAiEGq1xlAlR4kkdlZm4GD_NzA7_P6hSxDQBAuAqMkpYKks9rmix5pKem5yWopACnfiCOR2U0FaiGEZe7-kz8Kr_VJL5eewdRDNxK4uDG6qv6pY1Rk2PqS8TSKZkqSivuDEQBokvcdeBMyKZOVKfthZO8wkH2OicU7ivldyGfAL3s-9FrZxE7LOM2mbLaLyrsmS9LzophGL8W6q8E6HgPEUuQYQjoDHh4ow.jpg"
+      },
+      "sourceId": "ru:moscowach",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/b87fd592e5.mp4?token=UDzWff4F8EO0olJhQsUNL2_FtdcGvMSx9sAIIKVCvmLGw_Ow4bTcsy0I6N8U6_J9GTubVl1Ic3H6AORYeIEPE1JpdmBG0OqLNKfdOurG68z3rULjZVEEdezf3blrF3emyesB4dzKNp6NXgCTKjqvDM8UgV_T0z1NrZkUmCe4Yiny2R1COLxVUITrEZ6ThDdFzfES_jdXjxFz2paI4w0EOx2h_jko-Xs7n0_Eqh0pabAb5a91s4-FxqR22lTrZZNCN5Qk2zGzJ4183jJlMM6GjEFlin0mDmzmQdiW3ekjBYpUnP8ASEzVUwBu6iPekT3WJKGGjHJarht2C8SVmDgXxQ",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "♥️ Сразу две хорошие новости: сегодня май и сегодня пятница. Видео: callmessveta\n\nОтдыхаем!",
+      "links": [],
+      "createdAt": "2026-05-01T10:43:23.153Z",
+      "expiresAt": "2026-05-02T10:43:23.153Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T06:21:44.285Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T10:43:23.153Z"
       }
     },
     {
@@ -12854,6 +12402,350 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T16:40:43.272Z"
+      }
+    },
+    {
+      "id": 624569142,
+      "postUrl": "https://t.me/tass_agency/373869?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "⚖️ Суд Москвы арестовал на 13 суток женщину, разместившую нацистскую символику в анкете для знакомств в интернете. Об этом говорится в судебных документах, с которыми ознакомился ТАСС.\n\nВ начале апреля ее анкету обнаружили на сайте по оказанию платных интим-услуг. На некоторых фото и видео была нацистская символика и атрибутика.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-01T16:40:43.272Z",
+      "expiresAt": "2026-05-02T16:40:43.272Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T16:40:43.272Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T16:40:43.272Z"
+      }
+    },
+    {
+      "id": 55556495,
+      "postUrl": "https://t.me/tass_agency/373868?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "❗️Число пострадавших при жесткой посадке вертолета Ми-8 в Усинске выросло до 10, сообщили в МЧС.",
+      "links": [],
+      "createdAt": "2026-05-01T16:40:43.272Z",
+      "expiresAt": "2026-05-02T16:40:43.272Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T16:40:43.272Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T16:40:43.272Z"
+      }
+    },
+    {
+      "id": 2835157208,
+      "postUrl": "https://t.me/tass_agency/373867?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Средства ПВО за 9 часов сбили 100 украинских беспилотных летательных аппаратов самолетного типа над регионами РФ, сообщили в Минобороны.",
+      "links": [],
+      "createdAt": "2026-05-01T16:40:43.272Z",
+      "expiresAt": "2026-05-02T16:40:43.272Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T16:40:43.272Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T16:40:43.272Z"
+      }
+    },
+    {
+      "id": 2856881625,
+      "postUrl": "https://t.me/tass_agency/373866?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/BlR-lZ2uwmSAKPqBe0wwtwF2YK21iknd6zPo2iZLT2KQg-Q3F2j5IIXqk9DkUl_qO0tVtnWU72dWkFytjYmbnNdxcHP1q_4Tw1lfXt0eo0AgatRkX4hvSHqV_d0Ju6Ev5RUA3yGv8_S5WORBma9kewqT_KD50uDPp7JD80S0VUeu1c2yy0SxANyw-csRqHkKjsZFdBeAHg1hbo4XgVUyYE-mUtpsJr3hoQRMnklOoKurlJ8Bp6A87NemNC5FZwd09h6opRap59mcbZ1clh3l_lwu4aOQ8wBxFw9VfyIShiZl1_DVHBUmsXqyNHzhMxAcjAog0uERJUXkUeK56IgHtw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Самочувствие телеведущего Николая Дроздова в норме. Карьеру он завершил давно, сообщила ТАСС его супруга.\n\nРанее в СМИ писали, что зоолог якобы завершил телевизионную карьеру из-за верминофобии (навязчивый страх заражения инфекциями, — прим. ТАСС) на фоне онкологии.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-01T16:40:43.272Z",
+      "expiresAt": "2026-05-02T16:40:43.272Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T16:40:43.272Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T16:40:43.272Z"
+      }
+    },
+    {
+      "id": 3084851490,
+      "postUrl": "https://t.me/tass_agency/373865?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Частный пассажирский вертолет МИ-8Т завалился на бок при взлете в Усинске в Коми, уточнили в ГУ МЧС.  ✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [],
+      "createdAt": "2026-05-01T16:40:43.272Z",
+      "expiresAt": "2026-05-02T16:40:43.272Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T16:40:43.272Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T16:40:43.272Z"
+      }
+    },
+    {
+      "id": 3640344475,
+      "postUrl": "https://t.me/tass_agency/373864?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "❗️Восемь человек пострадали при жесткой посадке вертолета в Усинске в Коми, сообщили в ГУ МЧС.",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 3239819364,
+      "postUrl": "https://t.me/tass_agency/373863?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Пассажирский вертолет вахтовиков совершил жесткую посадку в Усинске в Коми, сообщили в ГУ МЧС.",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 2901764917,
+      "postUrl": "https://t.me/tass_agency/373862?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Пассажирский вертолет вахтовиков совершил жесткую посадку в Усинске в Коми, сообщили в ГУ МЧС.",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
       }
     }
   ]
