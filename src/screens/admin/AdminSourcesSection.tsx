@@ -664,7 +664,7 @@ export function AdminSourcesSection({
             />
           </div>
 
-          <div className="space-y-2">
+          <div className="grid gap-2 lg:grid-cols-2">
             {filteredSources.map((source) => {
               const tags = getSourceTags(source);
               const groups = getParentGroups(tags);
@@ -705,7 +705,7 @@ export function AdminSourcesSection({
                           : "bg-white/10 text-white/55"
                       }`}
                     >
-                      {source.status === "active" ? "активен" : "пауза"}
+                      {source.status === "active" ? "✔" : "Ⅱ"}
                     </div>
 
                     <div className="ml-1 flex items-center">

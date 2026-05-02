@@ -133,7 +133,7 @@ export function AdminPostsSection({
         className="mb-4 w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
       />
 
-      <div className="space-y-2">
+      <div className="grid gap-2 lg:grid-cols-2">
         {filteredPosts.map((post) => {
           const status = post.status || "published";
           const isExpanded = expandedPostIds.includes(post.id);
@@ -174,7 +174,7 @@ export function AdminPostsSection({
                 </div>
 
                 <div className="shrink-0 rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
-                  {getStatusLabel(status)}
+                  {status === "published" ? "✔" : getStatusLabel(status)}
                 </div>
 
                 <div

@@ -193,6 +193,10 @@ const CHANNEL_UI = {
     paidPlan: "оплата",
     barterPlan: "бартер",
     barterPricing: "бартер / 1 месяц",
+    claimTitle: "Подтвердить",
+    claimText: "Если канал уже есть на margeleT, подтвердите владение через Telegram.",
+    claimPlan: "подтверждение",
+    claimPricing: "подтверждение владения",
     duplicateError: "Этот канал уже добавлен. Открой существующую карточку или продли размещение.",
     submitError: "Не получилось создать заявку. Попробуй ещё раз.",
     networkError: "Не получилось создать заявку. Проверь интернет и попробуй ещё раз.",
@@ -264,6 +268,10 @@ const CHANNEL_UI = {
     paidPlan: "paid",
     barterPlan: "barter",
     barterPricing: "barter / 1 month",
+    claimTitle: "Claim",
+    claimText: "If the channel is already on margeleT, confirm ownership via Telegram.",
+    claimPlan: "claim",
+    claimPricing: "ownership claim",
     duplicateError: "This channel has already been added. Open the existing card or renew the placement.",
     submitError: "Could not create the request. Try again.",
     networkError: "Could not create the request. Check your internet and try again.",
@@ -334,6 +342,10 @@ const CHANNEL_UI = {
     paidPlan: "付费",
     barterPlan: "置换",
     barterPricing: "置换 / 1 个月",
+    claimTitle: "确认",
+    claimText: "如果频道已在 margeleT 上，请通过 Telegram 确认所有权。",
+    claimPlan: "确认",
+    claimPricing: "所有权确认",
     duplicateError: "该频道已添加。请打开现有卡片或续期放置。",
     submitError: "无法创建申请。请再试一次。",
     networkError: "无法创建申请。请检查网络后再试。",
@@ -770,12 +782,181 @@ Object.entries(RULES_BODY_BY_LOCALE).forEach(([key, rulesBody]) => {
   }
 });
 
+const CLAIM_UI_BY_LOCALE: Partial<
+  Record<
+    Locale,
+    Pick<ChannelUi, "claimTitle" | "claimText" | "claimPlan" | "claimPricing">
+  >
+> = {
+  ru: {
+    claimTitle: "Подтвердить",
+    claimText: "Если канал уже есть на margeleT, подтвердите владение через Telegram.",
+    claimPlan: "подтверждение",
+    claimPricing: "подтверждение владения",
+  },
+  uk: {
+    claimTitle: "Підтвердити",
+    claimText: "Якщо канал уже є на margeleT, підтвердьте право власності через Telegram.",
+    claimPlan: "підтвердження",
+    claimPricing: "підтвердження власності",
+  },
+  en: {
+    claimTitle: "Claim",
+    claimText: "If the channel is already on margeleT, confirm ownership via Telegram.",
+    claimPlan: "claim",
+    claimPricing: "ownership claim",
+  },
+  in: {
+    claimTitle: "Claim",
+    claimText: "अगर चैनल पहले से margeleT पर है, तो Telegram के ज़रिए ownership confirm करें।",
+    claimPlan: "claim",
+    claimPricing: "ownership claim",
+  },
+  fa: {
+    claimTitle: "تأیید مالکیت",
+    claimText: "اگر کانال از قبل در margeleT هست، مالکیت را از طریق Telegram تأیید کنید.",
+    claimPlan: "تأیید مالکیت",
+    claimPricing: "تأیید مالکیت",
+  },
+  tr: {
+    claimTitle: "Sahipliği onayla",
+    claimText: "Kanal zaten margeleT’te varsa sahipliği Telegram üzerinden onaylayın.",
+    claimPlan: "sahiplik onayı",
+    claimPricing: "sahiplik onayı",
+  },
+  "pt-br": {
+    claimTitle: "Confirmar",
+    claimText: "Se o canal já está no margeleT, confirme a propriedade pelo Telegram.",
+    claimPlan: "confirmação",
+    claimPricing: "confirmação de propriedade",
+  },
+  kk: {
+    claimTitle: "Растау",
+    claimText: "Арна margeleT ішінде бұрыннан бар болса, иелікті Telegram арқылы растаңыз.",
+    claimPlan: "растау",
+    claimPricing: "иелікті растау",
+  },
+  uz: {
+    claimTitle: "Tasdiqlash",
+    claimText: "Kanal margeleT’da allaqachon mavjud bo‘lsa, egalikni Telegram orqali tasdiqlang.",
+    claimPlan: "tasdiqlash",
+    claimPricing: "egalikni tasdiqlash",
+  },
+  ae: {
+    claimTitle: "تأكيد الملكية",
+    claimText: "إذا كانت القناة موجودة بالفعل على margeleT، أكّد الملكية عبر Telegram.",
+    claimPlan: "تأكيد الملكية",
+    claimPricing: "تأكيد الملكية",
+  },
+  eg: {
+    claimTitle: "تأكيد الملكية",
+    claimText: "لو القناة موجودة بالفعل على margeleT، أكّد الملكية عبر Telegram.",
+    claimPlan: "تأكيد الملكية",
+    claimPricing: "تأكيد الملكية",
+  },
+  pk: {
+    claimTitle: "ملکیت کی تصدیق",
+    claimText: "اگر چینل پہلے سے margeleT پر ہے تو Telegram کے ذریعے ملکیت کی تصدیق کریں۔",
+    claimPlan: "ملکیت کی تصدیق",
+    claimPricing: "ملکیت کی تصدیق",
+  },
+  id: {
+    claimTitle: "Klaim",
+    claimText: "Jika channel sudah ada di margeleT, konfirmasi kepemilikan lewat Telegram.",
+    claimPlan: "klaim",
+    claimPricing: "klaim kepemilikan",
+  },
+  mx: {
+    claimTitle: "Confirmar",
+    claimText: "Si el canal ya está en margeleT, confirma la propiedad por Telegram.",
+    claimPlan: "confirmación",
+    claimPricing: "confirmación de propiedad",
+  },
+  sa: {
+    claimTitle: "تأكيد الملكية",
+    claimText: "إذا كانت القناة موجودة بالفعل على margeleT، أكّد الملكية عبر Telegram.",
+    claimPlan: "تأكيد الملكية",
+    claimPricing: "تأكيد الملكية",
+  },
+  es: {
+    claimTitle: "Confirmar",
+    claimText: "Si el canal ya está en margeleT, confirma la propiedad por Telegram.",
+    claimPlan: "confirmación",
+    claimPricing: "confirmación de propiedad",
+  },
+  it: {
+    claimTitle: "Conferma",
+    claimText: "Se il canale è già su margeleT, conferma la proprietà tramite Telegram.",
+    claimPlan: "conferma",
+    claimPricing: "conferma proprietà",
+  },
+  fr: {
+    claimTitle: "Confirmer",
+    claimText: "Si la chaîne est déjà sur margeleT, confirmez la propriété via Telegram.",
+    claimPlan: "confirmation",
+    claimPricing: "confirmation de propriété",
+  },
+  de: {
+    claimTitle: "Bestätigen",
+    claimText: "Wenn der Kanal bereits auf margeleT ist, bestätige die Inhaberschaft über Telegram.",
+    claimPlan: "Bestätigung",
+    claimPricing: "Inhaberschaft bestätigen",
+  },
+  ar: {
+    claimTitle: "Confirmar",
+    claimText: "Si el canal ya está en margeleT, confirma la propiedad por Telegram.",
+    claimPlan: "confirmación",
+    claimPricing: "confirmación de propiedad",
+  },
+  co: {
+    claimTitle: "Confirmar",
+    claimText: "Si el canal ya está en margeleT, confirma la propiedad por Telegram.",
+    claimPlan: "confirmación",
+    claimPricing: "confirmación de propiedad",
+  },
+  za: {
+    claimTitle: "Claim",
+    claimText: "If the channel is already on margeleT, confirm ownership via Telegram.",
+    claimPlan: "claim",
+    claimPricing: "ownership claim",
+  },
+  ng: {
+    claimTitle: "Claim",
+    claimText: "If the channel is already on margeleT, confirm ownership via Telegram.",
+    claimPlan: "claim",
+    claimPricing: "ownership claim",
+  },
+  zh: {
+    claimTitle: "确认",
+    claimText: "如果频道已在 margeleT 上，请通过 Telegram 确认所有权。",
+    claimPlan: "确认",
+    claimPricing: "所有权确认",
+  },
+  ms: {
+    claimTitle: "Sahkan",
+    claimText: "Jika saluran sudah ada di margeleT, sahkan pemilikan melalui Telegram.",
+    claimPlan: "pengesahan",
+    claimPricing: "pengesahan pemilikan",
+  },
+};
+
+Object.entries(CLAIM_UI_BY_LOCALE).forEach(([key, claimCopy]) => {
+  const localeKey = key as Locale;
+  const current = CHANNEL_UI_BY_LOCALE[localeKey];
+  if (current && claimCopy) {
+    CHANNEL_UI_BY_LOCALE[localeKey] = { ...current, ...claimCopy };
+  }
+});
+
 function getUi(locale: Locale): ChannelUi {
   return CHANNEL_UI_BY_LOCALE[locale] ?? CHANNEL_UI.en;
 }
 
 function buildBotUrl(item: CreatorChannelPlacement) {
-  return `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${encodeURIComponent(`p_${item.id}`)}`;
+  const shortPlan = item.plan === "paid" ? "p" : item.plan === "barter" ? "b" : "c";
+  return `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${encodeURIComponent(
+    `m_${item.ownerTelegramId}_${item.channelHandle}_${item.country}_${shortPlan}`
+  )}`;
 }
 
 export function CreatorChannelPanel({
@@ -833,7 +1014,7 @@ export function CreatorChannelPanel({
               verified: Boolean(remote.verified),
               country: String(remote.country || locale).toLowerCase() as Locale,
               tags: Array.isArray(remote.tags) ? remote.tags : [],
-              plan: remote.plan === "barter" ? "barter" : "paid",
+              plan: remote.plan === "barter" ? "barter" : remote.plan === "claim" ? "claim" : "paid",
               status: remote.status || "pending",
               createdAt: remote.createdAt || new Date().toISOString(),
               startsAt: remote.startAt ?? remote.startsAt ?? null,
@@ -974,7 +1155,12 @@ export function CreatorChannelPanel({
       createdAt: now,
       startsAt: null,
       endsAt: null,
-      pricingLabel: plan === "paid" ? pricing.label : ui.barterPricing,
+      pricingLabel:
+        plan === "paid"
+          ? pricing.label
+          : plan === "barter"
+            ? ui.barterPricing
+            : ui.claimPricing,
       donateUrl: null,
     };
 
@@ -1206,7 +1392,7 @@ export function CreatorChannelPanel({
         <label className="text-secondary mt-5 block text-xs font-semibold uppercase tracking-[0.14em]">
           {ui.planLabel}
         </label>
-        <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-3">
           <button
             type="button"
             onClick={() => setPlan("paid")}
@@ -1234,6 +1420,23 @@ export function CreatorChannelPanel({
             </div>
             <div className="mt-2 text-xs opacity-80">{ui.barterText}</div>
           </button>
+
+          <button
+            type="button"
+            onClick={() => setPlan("claim")}
+            className={`rounded-[24px] border p-4 text-left transition ${
+              plan === "claim"
+                ? "border-strong bg-strong text-strong-foreground"
+                : "border-soft bg-surface-hover text-primary"
+            }`}
+          >
+            <div className="flex items-center gap-2 font-semibold">
+              <BadgeCheck className="h-4 w-4" />
+              {ui.claimTitle}
+            </div>
+            <div className="mt-2 text-xs opacity-80">{ui.claimText}</div>
+          </button>
+
         </div>
 
         {plan === "paid" ? (
@@ -1387,7 +1590,7 @@ export function CreatorChannelPanel({
                     <div className="rounded-[14px] bg-surface px-3 py-2">
                       <div className="text-secondary uppercase opacity-60">{ui.typeStat}</div>
                       <div className="text-primary mt-1 font-semibold">
-                        {item.plan === "paid" ? ui.paidPlan : ui.barterPlan}
+                        {item.plan === "paid" ? ui.paidPlan : item.plan === "barter" ? ui.barterPlan : ui.claimPlan}
                       </div>
                     </div>
 

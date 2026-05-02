@@ -28,7 +28,9 @@ function statusLabel(status: CreatorChannelPlacement["status"]) {
 }
 
 function planLabel(plan: CreatorChannelPlacement["plan"]) {
-  return plan === "paid" ? "оплата" : "бартер";
+  if (plan === "paid") return "оплата";
+  if (plan === "barter") return "бартер";
+  return "подтверждение";
 }
 
 export function AdminMonetizationSection() {
@@ -129,33 +131,47 @@ export function AdminMonetizationSection() {
 
       {open ? (
         <div className="mt-4 space-y-4">
-          <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
-            <div className="rounded-[22px] bg-black/20 p-4">
-              <CreditCard className="h-4 w-4 text-emerald-300" />
-              <div className="mt-3 text-2xl font-semibold">{stats.paid.length}</div>
-              <div className="text-xs text-white/45">платных</div>
+          <div className="grid gap-2 lg:grid-cols-5">
+            <div className="flex items-center justify-between rounded-[18px] bg-black/20 px-4 py-3 lg:min-h-[74px] lg:flex-col lg:items-start lg:gap-2">
+              <div className="flex min-w-0 items-center gap-3">
+                <CreditCard className="h-4 w-4 shrink-0 text-emerald-300" />
+                <div className="truncate text-xs text-white/45">платных</div>
+              </div>
+              <div className="shrink-0 text-lg font-semibold text-white">{stats.paid.length}</div>
             </div>
-            <div className="rounded-[22px] bg-black/20 p-4">
-              <Gift className="h-4 w-4 text-sky-300" />
-              <div className="mt-3 text-2xl font-semibold">{stats.barter.length}</div>
-              <div className="text-xs text-white/45">бартер</div>
+
+            <div className="flex items-center justify-between rounded-[18px] bg-black/20 px-4 py-3 lg:min-h-[74px] lg:flex-col lg:items-start lg:gap-2">
+              <div className="flex min-w-0 items-center gap-3">
+                <Gift className="h-4 w-4 shrink-0 text-sky-300" />
+                <div className="truncate text-xs text-white/45">бартер</div>
+              </div>
+              <div className="shrink-0 text-lg font-semibold text-white">{stats.barter.length}</div>
             </div>
-            <div className="rounded-[22px] bg-black/20 p-4">
-              <TimerReset className="h-4 w-4 text-blue-300" />
-              <div className="mt-3 text-2xl font-semibold">{stats.pending.length}</div>
-              <div className="text-xs text-white/45">ожидают</div>
+
+            <div className="flex items-center justify-between rounded-[18px] bg-black/20 px-4 py-3 lg:min-h-[74px] lg:flex-col lg:items-start lg:gap-2">
+              <div className="flex min-w-0 items-center gap-3">
+                <TimerReset className="h-4 w-4 shrink-0 text-blue-300" />
+                <div className="truncate text-xs text-white/45">ожидают</div>
+              </div>
+              <div className="shrink-0 text-lg font-semibold text-white">{stats.pending.length}</div>
             </div>
-            <div className="rounded-[22px] bg-black/20 p-4">
-              <div className="h-4 w-4 rounded-full bg-emerald-400" />
-              <div className="mt-3 text-2xl font-semibold">{stats.active.length}</div>
-              <div className="text-xs text-white/45">активные</div>
+
+            <div className="flex items-center justify-between rounded-[18px] bg-black/20 px-4 py-3 lg:min-h-[74px] lg:flex-col lg:items-start lg:gap-2">
+              <div className="flex min-w-0 items-center gap-3">
+                <div className="h-4 w-4 shrink-0 rounded-full bg-emerald-400" />
+                <div className="truncate text-xs text-white/45">активные</div>
+              </div>
+              <div className="shrink-0 text-lg font-semibold text-white">{stats.active.length}</div>
             </div>
-            <div className="rounded-[22px] bg-black/20 p-4">
-              <PauseCircle className="h-4 w-4 text-amber-300" />
-              <div className="mt-3 text-2xl font-semibold">{stats.expired.length}</div>
-              <div className="text-xs text-white/45">истекли / пауза</div>
+
+            <div className="flex items-center justify-between rounded-[18px] bg-black/20 px-4 py-3 lg:min-h-[74px] lg:flex-col lg:items-start lg:gap-2">
+              <div className="flex min-w-0 items-center gap-3">
+                <PauseCircle className="h-4 w-4 shrink-0 text-amber-300" />
+                <div className="truncate text-xs text-white/45">истекли / пауза</div>
+              </div>
+              <div className="shrink-0 text-lg font-semibold text-white">{stats.expired.length}</div>
             </div>
-          </div>          
+          </div>
           
           <div className="flex flex-wrap gap-2">
             {filters.map((item) => (

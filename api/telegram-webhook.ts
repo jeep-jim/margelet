@@ -3,7 +3,7 @@ import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/crea
 import { getBotCopy, BOT_COMMAND_LOCALES } from "../src/lib/i18n/bot.js";
 import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo.js";
 
-type PlacementPlan = "paid" | "barter";
+type PlacementPlan = "paid" | "barter" | "claim";
 type PlacementStatus = "pending" | "active" | "paused" | "expired" | "canceled";
 
 type Placement = {
@@ -111,6 +111,99 @@ function getPlacementId(ownerTelegramId: string, handle: string, country: string
   return `${ownerTelegramId}_${normalizeHandle(handle)}_${normalizeCountry(country)}`;
 }
 
+
+const CLAIM_PRICING_LABEL_BY_LOCALE: Record<string, string> = {
+  ru: "подтверждение владения",
+  uk: "підтвердження власності",
+  en: "ownership claim",
+  in: "ownership claim",
+  fa: "تأیید مالکیت",
+  tr: "sahiplik onayı",
+  "pt-br": "confirmação de propriedade",
+  kk: "иелікті растау",
+  uz: "egalikni tasdiqlash",
+  ae: "تأكيد الملكية",
+  eg: "تأكيد الملكية",
+  pk: "ملکیت کی تصدیق",
+  id: "klaim kepemilikan",
+  mx: "confirmación de propiedad",
+  sa: "تأكيد الملكية",
+  es: "confirmación de propiedad",
+  it: "conferma proprietà",
+  fr: "confirmation de propriété",
+  de: "Inhaberschaft bestätigen",
+  ar: "confirmación de propiedad",
+  co: "confirmación de propiedad",
+  za: "ownership claim",
+  ng: "ownership claim",
+  zh: "所有权确认",
+  ms: "pengesahan pemilikan",
+};
+
+const CLAIM_CREATED_BY_LOCALE: Record<string, (handle: string) => string> = {
+  ru: (handle) => `Заявка на подтверждение канала @${handle} создана.\n\nАдмин проверит владение и привяжет канал к вашему Telegram.`,
+  uk: (handle) => `Заявку на підтвердження каналу @${handle} створено.\n\nАдмін перевірить право власності й прив’яже канал до вашого Telegram.`,
+  en: (handle) => `Ownership claim for @${handle} has been created.\n\nAdmin will review it and link the channel to your Telegram account.`,
+  in: (handle) => `@${handle} के लिए ownership claim बन गया है।\n\nAdmin इसे check करेगा और channel को आपके Telegram से link करेगा।`,
+  fa: (handle) => `درخواست تأیید مالکیت برای @${handle} ساخته شد.\n\nادمین آن را بررسی می‌کند و کانال را به Telegram شما وصل می‌کند.`,
+  tr: (handle) => `@${handle} için sahiplik onayı oluşturuldu.\n\nAdmin kontrol edip kanalı Telegram hesabınıza bağlayacak.`,
+  "pt-br": (handle) => `A confirmação de propriedade de @${handle} foi criada.\n\nO admin vai revisar e vincular o canal ao seu Telegram.`,
+  kk: (handle) => `@${handle} арнасына иелікті растау өтінімі жасалды.\n\nАдмин тексеріп, арнаны Telegram аккаунтыңызға байланыстырады.`,
+  uz: (handle) => `@${handle} kanali uchun egalikni tasdiqlash so‘rovi yaratildi.\n\nAdmin tekshiradi va kanalni Telegram akkauntingizga bog‘laydi.`,
+  ae: (handle) => `تم إنشاء طلب تأكيد ملكية القناة @${handle}.\n\nسيراجعه الأدمن ويربط القناة بحساب Telegram الخاص بك.`,
+  eg: (handle) => `تم إنشاء طلب تأكيد ملكية القناة @${handle}.\n\nالأدمن هيراجعه ويربط القناة بحساب Telegram الخاص بك.`,
+  pk: (handle) => `@${handle} کے لیے ملکیت کی تصدیق کی درخواست بن گئی ہے۔\n\nایڈمن اسے چیک کرے گا اور چینل کو آپ کے Telegram سے لنک کرے گا۔`,
+  id: (handle) => `Klaim kepemilikan untuk @${handle} sudah dibuat.\n\nAdmin akan memeriksa dan menautkan channel ke Telegram Anda.`,
+  mx: (handle) => `Se creó la confirmación de propiedad para @${handle}.\n\nEl admin la revisará y vinculará el canal a tu Telegram.`,
+  sa: (handle) => `تم إنشاء طلب تأكيد ملكية القناة @${handle}.\n\nسيراجعه الأدمن ويربط القناة بحساب Telegram الخاص بك.`,
+  es: (handle) => `Se creó la confirmación de propiedad para @${handle}.\n\nEl admin la revisará y vinculará el canal a tu Telegram.`,
+  it: (handle) => `La richiesta di conferma proprietà per @${handle} è stata creata.\n\nL’admin la controllerà e collegherà il canale al tuo Telegram.`,
+  fr: (handle) => `La confirmation de propriété pour @${handle} a été créée.\n\nL’admin la vérifiera et liera la chaîne à votre Telegram.`,
+  de: (handle) => `Die Inhaberschaftsbestätigung für @${handle} wurde erstellt.\n\nDer Admin prüft sie und verknüpft den Kanal mit deinem Telegram.`,
+  ar: (handle) => `Se creó la confirmación de propiedad para @${handle}.\n\nEl admin la revisará y vinculará el canal a tu Telegram.`,
+  co: (handle) => `Se creó la confirmación de propiedad para @${handle}.\n\nEl admin la revisará y vinculará el canal a tu Telegram.`,
+  za: (handle) => `Ownership claim for @${handle} has been created.\n\nAdmin will review it and link the channel to your Telegram account.`,
+  ng: (handle) => `Ownership claim for @${handle} has been created.\n\nAdmin will review it and link the channel to your Telegram account.`,
+  zh: (handle) => `@${handle} 的所有权确认申请已创建。\n\n管理员会审核并将频道绑定到你的 Telegram。`,
+  ms: (handle) => `Pengesahan pemilikan untuk @${handle} telah dibuat.\n\nAdmin akan menyemak dan memautkan saluran ke Telegram anda.`,
+};
+
+function resolveClaimLocale(languageCode?: string | null, country?: string | null) {
+  const byCountry = normalizeCountry(String(country || ""));
+  if (CLAIM_CREATED_BY_LOCALE[byCountry]) return byCountry;
+
+  const lang = String(languageCode || "").toLowerCase();
+  if (lang.startsWith("pt")) return "pt-br";
+  if (lang.startsWith("ru")) return "ru";
+  if (lang.startsWith("uk")) return "uk";
+  if (lang.startsWith("de")) return "de";
+  if (lang.startsWith("es")) return "es";
+  if (lang.startsWith("tr")) return "tr";
+  if (lang.startsWith("fr")) return "fr";
+  if (lang.startsWith("it")) return "it";
+  if (lang.startsWith("id")) return "id";
+  if (lang.startsWith("fa")) return "fa";
+  if (lang.startsWith("ar")) return "ae";
+  if (lang.startsWith("ur")) return "pk";
+  if (lang.startsWith("hi")) return "in";
+  if (lang.startsWith("kk")) return "kk";
+  if (lang.startsWith("uz")) return "uz";
+  if (lang.startsWith("ms")) return "ms";
+  if (lang.startsWith("zh")) return "zh";
+  return "en";
+}
+
+function getClaimPricingLabel(country?: string | null) {
+  const locale = resolveClaimLocale(null, country);
+  return CLAIM_PRICING_LABEL_BY_LOCALE[locale] || CLAIM_PRICING_LABEL_BY_LOCALE.en;
+}
+
+function getClaimCreatedText(languageCode: string | null | undefined, country: string | null | undefined, handle: string) {
+  const locale = resolveClaimLocale(languageCode, country);
+  const builder = CLAIM_CREATED_BY_LOCALE[locale] || CLAIM_CREATED_BY_LOCALE.en;
+  return builder(normalizeHandle(handle));
+}
+
 function parseStartPayload(text: string) {
   const raw = text.replace(/^\/start(@\w+)?\s*/i, "").trim();
 
@@ -128,7 +221,14 @@ function parseStartPayload(text: string) {
   const channelHandle = parts.slice(2, -2).join("_");
 
   const plan: PlacementPlan | null =
-    shortPlan === "p" ? "paid" : shortPlan === "b" ? "barter" : null;
+  shortPlan === "p"
+    ? "paid"
+    : shortPlan === "b"
+      ? "barter"
+      : shortPlan === "c"
+        ? "claim"
+        : null;
+
 
   if (!ownerTelegramId || !channelHandle || !country || !plan) return null;
 
@@ -299,7 +399,8 @@ function normalizePlacement(raw: Partial<Placement>): Placement {
   const country = normalizeCountry(String(raw.country || "ru"));
   const channelHandle = normalizeHandle(String(raw.channelHandle || raw.channelSlug || ""));
   const ownerTelegramId = String(raw.ownerTelegramId || "").trim();
-  const plan: PlacementPlan = raw.plan === "barter" ? "barter" : "paid";
+  const plan: PlacementPlan =
+  raw.plan === "barter" ? "barter" : raw.plan === "claim" ? "claim" : "paid";
   const pricing = CREATOR_PRICING_BY_COUNTRY[country as keyof typeof CREATOR_PRICING_BY_COUNTRY] ?? DEFAULT_PRICING;
 
   return {
@@ -318,8 +419,14 @@ function normalizePlacement(raw: Partial<Placement>): Placement {
     createdAt: raw.createdAt || new Date().toISOString(),
     startAt: raw.startAt || null,
     endsAt: raw.endsAt || null,
-    pricingLabel: raw.pricingLabel || (plan === "paid" ? pricing.label : "barter / 1 month"),
-    stars: Number(raw.stars || pricing.stars || 0),
+    pricingLabel:
+      raw.pricingLabel ||
+      (plan === "paid"
+        ? pricing.label
+        : plan === "barter"
+          ? "barter / 1 month"
+          : getClaimPricingLabel(country)),
+    stars: plan === "paid" ? Number(raw.stars || pricing.stars || 0) : 0,
     donateUrl: raw.donateUrl || null,
     telegramPaymentChargeId: raw.telegramPaymentChargeId || null,
     lastCheckAt: raw.lastCheckAt || null,
@@ -557,8 +664,13 @@ async function handleStart(update: TelegramUpdate) {
       createdAt: new Date().toISOString(),
       startAt: null,
       endsAt: null,
-      pricingLabel: payload.plan === "paid" ? pricing.label : "barter / 1 month",
-      stars: pricing.stars,
+      pricingLabel:
+        payload.plan === "paid"
+          ? pricing.label
+          : payload.plan === "barter"
+            ? "barter / 1 month"
+            : getClaimPricingLabel(payload.country),
+      stars: payload.plan === "paid" ? pricing.stars : 0,
       donateUrl: null,
     });
     placement = result.placement;
@@ -569,6 +681,14 @@ async function handleStart(update: TelegramUpdate) {
   if (placement.plan === "paid") {
     await sendMessage(chatId, copy.paidCreated(placement.channelHandle));
     await sendInvoice(chatId, placement, languageCode);
+    return;
+  }
+
+  if (placement.plan === "claim") {
+    await sendMessage(
+      chatId,
+      getClaimCreatedText(languageCode, placement.country, placement.channelHandle)
+    );
     return;
   }
 

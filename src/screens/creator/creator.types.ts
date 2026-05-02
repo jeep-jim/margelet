@@ -16,7 +16,7 @@ export type CabinetTab = "channel" | "about" | "language";
 
 export type CreatorChannelStatus = "draft" | "pending" | "active" | "paused" | "expired" | "canceled";
 
-export type CreatorChannelPlan = "paid" | "barter";
+export type CreatorChannelPlan = "paid" | "barter" | "claim";
 
 export type CreatorChannelPlacement = {
   id: string;
