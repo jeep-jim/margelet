@@ -1,6 +1,57 @@
 {
-  "updatedAt": "2026-05-02T07:17:59.429Z",
+  "updatedAt": "2026-05-02T08:45:10.372Z",
   "posts": [
+    {
+      "id": 1195632239,
+      "postUrl": "https://t.me/reddit/48459?single",
+      "source": {
+        "title": "Reddit",
+        "handle": "reddit",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/dKy7ufIGa-hC8EXhB4zLwaZueM0dZrdpei8pHxMVG3uVQ2sttityKoNUKBhHhlqGaQA87urSyCDMWRVrPT6OFYjjS2NdFEy0HD5BJI-_zzclT2sCr1EPKuEvalN5CoitvpU_VqE2lx5arQRXvwr9O4eoR7emyd0ZmVU2fW4iA90MYJPPz6mIrpi0yJa-qhN6eHJRzYMRUxeEvuM6xuRa51CQaYdEVL0cFWLgea168E-ltDrfvRFvPkt81RmTqe7UngONbDs7M2zCzn9NYhEgrmEWutjBoFniCTHNURt8zgGAnGEOh_4cbuTXbOi1o2WbgIOcoK4rjrJ6rzZeFatDKA.jpg"
+      },
+      "sourceId": "ru:reddit",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/d35371c845.mp4?token=sMbUZbAQCBKr5J7J6uViF7xmxqngXv3m7ZuQdJ4XytUiYNfpILsM8Ep1XrWIWK3g1oe8B7MYAIuC_xvMUC2JdJvnjyPYq1SM0QbBIPNCeH0nwNN-4CohD9hj74snC6rBKvr3a_B-Q0Rru0FQ1Unb-Dte92_ShFDxtpDJLp5bEHaHBJm_LhxXIyFK8zd69awQwohcE_Mvu_cuJnjB33upQCuB2v1TKXj12qal-SyixGCSdLRuY1_a4PNZGp13-WXB7lZmu2JiCiDPKFrs_7QtPxQcNkzMikgjRUNAlKkW75FCkAQte_ESAMz9P3wj3dW14vU0z_wyFg5-txGyR2zuxA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "r/ #unexpected\nВ домах Шотландии делают специальные кирпичи-гнёзда для стрижей\n\nСогласно закону, такие должны быть во все новостройках, где это «технически возможно». Так пытаются восстановить популяцию, которая из-за нехватки мест гнездования сократилась на 60% за 30 лет.",
+      "links": [],
+      "createdAt": "2026-05-01T15:43:13.554Z",
+      "expiresAt": "2026-05-02T15:43:13.554Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T22:37:25.319Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "humor",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T15:43:13.554Z"
+      }
+    },
     {
       "id": 663541303,
       "postUrl": "https://t.me/pikabu/48350?single",
@@ -667,115 +718,6 @@
       }
     },
     {
-      "id": 3573144953,
-      "postUrl": "https://t.me/igromania/84726?single",
-      "source": {
-        "title": "Игромания",
-        "handle": "igromania",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/F__12TcnXYIHNgKgdGzOOjpdma5ETw6o_o3QXbbKl95F0a3cqRteehWBOK7urSMxbx96owE-OkQu_vDUIN-6llq83oX6nbk8QWiEv5d2StNw434gXL45q5AJ-mMYycqrvnusSKXbn4xrFSRi3qzFzwoNclDbEK1OHQFAtsU5gHTnOjVaczjyqW2Ja8ACNodMEWm9g0HuyMzPUtyn-d3K3Rc1rTJIn7QiKOVEvoCgIpEcNOKagV7ItCzfVEppPDT_nJhXnMIc2KyrOnUTHpNyuDEaR9Wfa7Jj2Gdw5nitH_5HtZCDj63rGt8An82U_100-jbA2g6ISu88NQupdYn3vw.jpg"
-      },
-      "sourceId": "ru:igromania",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/XZDwIpJhT6Kl35rn3BnMgjaj3RzTdq-w-omJNfQbNYAiowOxhVFWeQIVvqKAuu4EEqyYmsI9W_BYlwGDhSLzmPAEzpT2g1VDupdaIUYIDQx4oM5r4aze-xIeSEYBjD9HNSCeL0aJan2TCx834OtNi4IjWbkONVts-AlFD2P1iLa_aeN6PTjWFLt-r27GtDXOuGYxpJv4F8A8JHrs2jSioG5E3EAqYmRxwC0MTgSLASBtOVx7HngRHFQS77i1NnUw95PUfZiOl20NBYZddMx4RCyxJbDTJfZryfGMz553OEcv4KGaSr4ueH6D4ljQA8c9KUisGHvwDZuGlV08g4Coaw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🎮 Оригинальная Warcraft 3 вернулась в Battle net\n\nЭто не ошибка — в Blizzard подтвердили информацию официально. Спустя 6 лет, компания почему-то изменила решение и версия 1.29 снова появилась в официальном лаунчере.",
-      "links": [
-        {
-          "label": "снова появилась",
-          "url": "https://www.igromania.ru/news/166029/originalnaya-warcraft-3-vernulas-v-battlenet/"
-        }
-      ],
-      "createdAt": "2026-05-01T09:07:53.908Z",
-      "expiresAt": "2026-05-02T09:07:53.908Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:07:49.636Z",
-      "tag": "gaming",
-      "tags": [
-        "gaming",
-        "gaming_mobile",
-        "gaming_pc",
-        "gaming_console",
-        "gaming_esports",
-        "gaming_other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T09:07:53.908Z"
-      }
-    },
-    {
-      "id": 1863908678,
-      "postUrl": "https://t.me/yurasumy/27740?single",
-      "source": {
-        "title": "Мир сегодня с \"Юрий Подоляка\"",
-        "handle": "yurasumy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/jI8rGabG8AsT0h9TI7WA7G9scAkMA0QM_0POFPqtEmA9pLRF6_ufacsTZPw12k8dyhc9cuS9eFqENxfaMX3yT9ecRIpMjpvf7zc4F1Md1ZpF73oi6dgjT6ewgr1KWznAMs85kBd79VhjKp-c_Ldi16aeLDENrC29Pw2WSPwfHKSfuXilU7rq6OX2OGr13Jksw4wOwzd_othvsCT9PKNAwFgQSIiJJd1_i3uJN91umNzTCJYTfvAWv-2VMGX7AuU2JUKy9RGM7-xEBS6LLBc8wB6xFQePSfdn-j4eS75vhKnkMADklHPglG4rjQRmGfZIrJDC4KF29P6kWAeFfFcORQ.jpg"
-      },
-      "sourceId": "ru:yurasumy",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/W0RbD5Cp21XthrV8aZfkPkgnV-wnGi2Loc7GHPe-vpMSiB6Nr7LuX1h4AQpUltkYYQjqgJTHT0pCAQdi_oHSxapMfsNr0_3J_MUTC-HDPYj4l6ILAyTzWw0wddZGUVC62M7i9CFFNJcsSEKZgcDszPX5pBOAhNUgmDdTMVlOp5vXMA6NNJi7GDcy1gJjG2m9xU50qrFos6wJq-RTSmkoqaokCFhWVbMBGCY9Z94Rf0RY68LMOxO1fTBelhl8wIFpU6TxdbO2gBlHYjtJJzEfpFmF9sYzeG-Zlht8Q1nIX0Tk5SRX11fT0yiMyzFv2Cxgl24k9Mnh11nWMaHLPrTUHQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Две Франции - мигранты берут власть в свои руки\n\nСегодня уже можно сказать с уверенностью что две Франции образовались уже на политическом уровне. Да, эти две части страны такие разные были лишь на улице, но на тот момент не было у них политической силы. Теперь это в прошлом и они требуют больше прав для них самих и им наплевать что будет с другой Францией. \n\n22 марта 2026 - эта дата войдёт в историю как конец той Франции которую мы знали по советским фильмам и учебникам. В этот день по результатам муниципальных выборов стали мэрами городов сразу   11 выходцев из семей мигрантов. 8 городов пригорода Парижа перешли под контроль \"новых властей\" имеющих не совсем те же ценности что государство.\n\nНа выборы мигранты шли с предельно чёткими задачами - отстаивать права своих в гетто где живут в подавляющем большинстве мигранты. В одном из интервью на тот момент кандидат в мэры города Ля Курнёв Али Диуара сказал буквально следующее: Моя тема — это наши, местные. И когда я говорю «наши, местные», я имею в виду черных и арабов, которые не ходят на выборы. А ещё что французские колонизаторы сами виноваты в том что сегодня мигранты живут в их стране.\n\nСразу после выборов мэры выходцы из миграции (так их называют во Франции) к тому же состоящие в партии меланшонистов объявили о постепенном разоружении муниципальной полиции. Первым будет запрещён полицейский травмат, сейчас уже запрещено носить с собой. Так же будет урезано финансирование полиции, деньги пойдут на бесплатный проезд школьников и социалку в целом. \n\nКак только стало понятно что мэром города Сен-Дени будет выходец из миграции Али Багайоко, начальник муниципальной полиции города подал в отставку. За ним последовали его заместители и более 60 полицейских, по некоторым данным СМИ до 90 человек подали рапорта на перевод в другие города. Для понятия штат муниципальной полиции 120 человек, то есть как минимум половина полицейского состава города решила перевестись в города с политикой которой он согласен.\n\nПолицейские профсоюзы призывают в буквальном смысле бежать из левых городов где к власти пришли выходцы из миграции, партии меланшонистов. Моментально правые и лепенисты в том числе позвали желающих полицейских, перевестись к себе, чем многие уже воспользовались. \n\nМеланшонисты решили отстаивать права мигрантов а если быть точным арабов и чернокожих абсолютно наплевав на права коренных французов. По сути раскол внутри французского общества образовался уже официально. И ни к чему хорошему это не приведёт страну. \n\nПодписывайтесь на мой канал Франция без фильтров",
-      "links": [
-        {
-          "label": "Франция без фильтров",
-          "url": "https://t.me/drugayafrance"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:34.692Z",
-      "expiresAt": "2026-05-02T07:54:34.692Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:07:46.608Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:34.692Z"
-      }
-    },
-    {
       "id": 3861540762,
       "postUrl": "https://t.me/smi_rf_moskva/39692?single",
       "source": {
@@ -880,60 +822,13 @@
       }
     },
     {
-      "id": 339131424,
-      "postUrl": "https://t.me/bazabazon/45714?single",
-      "source": {
-        "title": "Baza",
-        "handle": "bazabazon",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
-      },
-      "sourceId": "ru:bazabazon",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Подросток погиб от мощного удара током в Татарстане — его удочка задела контактную сеть железной дороги.\n\nУтром трое детей отправились на рыбалку в посёлке Васильево. Когда они переходили пути, снасть коснулась проводов сверху, и в этот момент ребёнка поразил разряд напряжением 27,5 тысяч вольт.\n\nПодросток скончался на месте — спасти его не удалось.\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
-      "links": [
-        {
-          "label": "https://max.ru/baza",
-          "url": "https://max.ru/baza"
-        }
-      ],
-      "createdAt": "2026-05-01T12:44:20.407Z",
-      "expiresAt": "2026-05-02T12:44:20.407Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T12:44:20.407Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_incidents"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T12:44:20.407Z"
-      }
-    },
-    {
       "id": 1506672415,
       "postUrl": "https://t.me/autorunews/504?single",
       "source": {
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -979,45 +874,45 @@
       }
     },
     {
-      "id": 3817015473,
-      "postUrl": "https://t.me/technomedia/11685?single",
+      "id": 3573144953,
+      "postUrl": "https://t.me/igromania/84726?single",
       "source": {
-        "title": "Техночат",
-        "handle": "technomedia",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/W9U8DxMltoqozjLO7CrI3Oj1eX6Hvkpffix5qAB-NO3yBF6nNGPWD5_yUtiOXNLXbxVs0M558G7H6UnRrV4AlxstuHbbdxdDMAZOb0IExwisNDSEN5hBZ0OdtYyJNz5p2kd4otbJbwDtSwSnCTlPn5o2Cu30eVzmZ_YsnUHnT33RQkFVy3gBxg_IMk7etD9rBdPAErEPl5-dcOGc_UMB6h5KpLGcmSQlDiNsw7xeqht7PW_TNt5aw6l9LKyNt8mBcI9GbxCaz5e8bKtD6UtEkCqCSZ-KCagX4BzTfdMPHh5XNVCEgtOVJTJHgcJxZjU2nvOAx7bSFWLM7ClCLKuY1Q.jpg"
+        "title": "Игромания",
+        "handle": "igromania",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/F__12TcnXYIHNgKgdGzOOjpdma5ETw6o_o3QXbbKl95F0a3cqRteehWBOK7urSMxbx96owE-OkQu_vDUIN-6llq83oX6nbk8QWiEv5d2StNw434gXL45q5AJ-mMYycqrvnusSKXbn4xrFSRi3qzFzwoNclDbEK1OHQFAtsU5gHTnOjVaczjyqW2Ja8ACNodMEWm9g0HuyMzPUtyn-d3K3Rc1rTJIn7QiKOVEvoCgIpEcNOKagV7ItCzfVEppPDT_nJhXnMIc2KyrOnUTHpNyuDEaR9Wfa7Jj2Gdw5nitH_5HtZCDj63rGt8An82U_100-jbA2g6ISu88NQupdYn3vw.jpg"
       },
-      "sourceId": "ru:technomedia",
+      "sourceId": "ru:igromania",
       "sourceCountryCode": "ru",
       "contentType": "image",
       "media": [
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/qdaZ_DT-r0PFSPfj9ab5UnGAT9ejwTw56eGlEHVzVLLFW1zOmMznN7lPCBph_5YeGVWvElXeaXue5S6FDQebNEeR2Fak82z04CXVNuef0bsUiMTmh12LaqWAl4BHlP_zqrLbRmyR13Aw5nsFBN4T1Bhaa8a4_Yeimy-_Z0LR3SoSeBwW-WkD6i6kIxGagQtKC9YbScNtQJ5rBavVtFxJFsa1lBg_zqKTQKsgaxNG5VfVROFJL_kqr7Qif3L47Du5EvshEdc0_vssHam7ZqJmVOv9kc1wfUOCu8Krmph6pfgQozR8hNEnwrTXJ0n1lIBtTEeKYlzehiWf0B0owg7qXA.jpg"
+          "url": "https://cdn4.telesco.pe/file/XZDwIpJhT6Kl35rn3BnMgjaj3RzTdq-w-omJNfQbNYAiowOxhVFWeQIVvqKAuu4EEqyYmsI9W_BYlwGDhSLzmPAEzpT2g1VDupdaIUYIDQx4oM5r4aze-xIeSEYBjD9HNSCeL0aJan2TCx834OtNi4IjWbkONVts-AlFD2P1iLa_aeN6PTjWFLt-r27GtDXOuGYxpJv4F8A8JHrs2jSioG5E3EAqYmRxwC0MTgSLASBtOVx7HngRHFQS77i1NnUw95PUfZiOl20NBYZddMx4RCyxJbDTJfZryfGMz553OEcv4KGaSr4ueH6D4ljQA8c9KUisGHvwDZuGlV08g4Coaw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Windows 11 официально превратят в ИГРОВУЮ ОС — Microsoft ориентируется на уровень SteamOS, сообщают инсайдеры.\n\nВ рамках проекта K2 собираются масштабно переработать систему и сделать её максимально удобной для игр:\n\n🔴 Ориентир — оптимизация на уровне SteamOS или выше.\n🔴 Снизят нагрузку на оперативную память — система станет в разы легче.\n🔴 Удалят часть «мусора» и лишние ИИ-фичи.\n🔴 Обновят меню «Пуск», ускорят «Проводник» и оптимизируют фоновые процессы.\n\nЭксперты говорят, изменения связаны с подготовкой к выходу нового Xbox, у которого будет совместимость с ПК.\n\nВиндоводы ликуют!\n\n@tehnochat",
+      "text": "🎮 Оригинальная Warcraft 3 вернулась в Battle net\n\nЭто не ошибка — в Blizzard подтвердили информацию официально. Спустя 6 лет, компания почему-то изменила решение и версия 1.29 снова появилась в официальном лаунчере.",
       "links": [
         {
-          "label": "сообщают",
-          "url": "https://wccftech.com/microsoft-wants-to-bring-steamos-level-of-gaming-performance-to-windows-11-cutting-back-ai-bloat-k2-project/"
-        },
-        {
-          "label": "@tehnochat",
-          "url": "https://t.me/tehnochat"
+          "label": "снова появилась",
+          "url": "https://www.igromania.ru/news/166029/originalnaya-warcraft-3-vernulas-v-battlenet/"
         }
       ],
-      "createdAt": "2026-05-01T07:54:29.651Z",
-      "expiresAt": "2026-05-02T07:54:29.651Z",
+      "createdAt": "2026-05-01T09:07:53.908Z",
+      "expiresAt": "2026-05-02T09:07:53.908Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T22:37:30.834Z",
-      "tag": "gadgets",
+      "mediaRefreshedAt": "2026-05-01T23:07:49.636Z",
+      "tag": "gaming",
       "tags": [
-        "gadgets",
-        "technology"
+        "gaming",
+        "gaming_mobile",
+        "gaming_pc",
+        "gaming_console",
+        "gaming_esports",
+        "gaming_other"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1032,7 +927,54 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T07:54:29.651Z"
+        "reviewedAt": "2026-05-01T09:07:53.908Z"
+      }
+    },
+    {
+      "id": 657111850,
+      "postUrl": "https://t.me/bazabazon/45716?single",
+      "source": {
+        "title": "Baza",
+        "handle": "bazabazon",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
+      },
+      "sourceId": "ru:bazabazon",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Российские производители делают чипсы со вкусом сметаны с луком и краба, в то время как «паприку» везут из-за границы. Рассказываем, что нужно знать о снеках к майским праздникам.\n\nГод назад в России ввели обязательную маркировку снеков, что позволило отследить реальный спрос. Их ассортимент вырос почти вдвое: с 2,9 до 5,7 тысячи, следует из отчёта «Честного знака». Всего же в обороте находится 517 тысяч тонн снеков, из которых 240 тысяч приходится на картофельные чипсы и ещё 107 тысяч на сухарики.\n\nПо данным «Базы», отечественные заводы делают ставку на узнаваемые вкусы вроде сметаны с луком, краба или сладких кукурузных палочек. Из-за границы к нам поступают чипсы с паприкой, западные вариации той же сметаны и лука, а на фоне всеобщего ажиотажа вокруг всего азиатского всё активнее завозят восточные снеки.\n\nСреди 567 компаний 80% составляет малый и средний бизнес. Больше всего чипсов и прочих лакомств производят в Московской области, которая выпустила 287 тысяч тонн товара. Следом идут Воронежская и Новосибирская области.\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
+      "links": [
+        {
+          "label": "https://max.ru/baza",
+          "url": "https://max.ru/baza"
+        }
+      ],
+      "createdAt": "2026-05-01T12:44:20.407Z",
+      "expiresAt": "2026-05-02T12:44:20.407Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T12:44:20.407Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_incidents"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T12:44:20.407Z"
       }
     },
     {
@@ -1861,68 +1803,13 @@
       }
     },
     {
-      "id": 534327142,
-      "postUrl": "https://t.me/bazabazon/45712?single",
-      "source": {
-        "title": "Baza",
-        "handle": "bazabazon",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
-      },
-      "sourceId": "ru:bazabazon",
-      "sourceCountryCode": "ru",
-      "contentType": "mixed",
-      "media": [
-        {
-          "id": "video-2",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/6b62924ef0.mp4?token=UtcNRybbMqi15_HxBl3zFgYyXYV4b8DaysX0ZYjntakQwX33GO3eq3BkiFWpvTyXmecq-4w5P1vEDCi3fg2GCsaYTQdJR5Ctl46S1oNEzTx1wmCXOzC4HoyPWzIgNxVddH1SbfPxfhdUozrTAv1TtpMYp3LjdkrsP1pjbugARmgQlLUQVNXB2k-XSHyyl-HhkfeCaG87mu0dmC1cmC9-TA0ORTWUiw1HHodHEiwseLSkGePN1sjlihbJnHOg9r7hrog9Np8YAHbSGNCXIxmyKVqqs3lLHkoSbKmldEHdoHOWiEeymPa1jsCnsX2DeDJXHnJlEZloZJW2A2kB_8wjnA",
-          "poster": null,
-          "mimeType": "video/mp4"
-        },
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/exSZkc2zHnDiiyGNRKWjTsKa93ESmZBjI6NfHo86FgrhU2QKFO3QdHKCqrESbY1KDpOR_OhSt3V6cSdxVMh0A9RxGgZC2Sz1EOtoFLfdE2gUorOyBxQMhs3yqqkjjE5LE7G84kdlUZmpScaFSJoUFCjRnKZq8TcM7X2ajpRt-0_QdXyuovlktJWcW3TG4NzusaVphhFFOOqH-x1TLbF6cDtZhvF8JjIebuLPD7cSphen0ZQTmuXbFldwSfJ53oCmOh0dMehnSrPehbmy7Hy3zvTHd0lkeDb01tMaZM9SAYjta7W6mOBICXumjx8_-bfk5NZEqJZyL_OH1pqCVnQIEA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Россиян ждёт дефицит авиабилетов в Турцию и рост цен на туры из-за резкого сокращения рейсов Turkish Airlines.  По данным «Базы», ключевой авиаперевозчик на турецком направлении уже отменил более 300 рейсов на май и июнь по маршрутам в Россию, а также поэтапно…",
-      "links": [],
-      "createdAt": "2026-05-01T12:44:20.407Z",
-      "expiresAt": "2026-05-02T12:44:20.407Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T03:51:05.395Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_incidents"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T12:44:20.407Z"
-      }
-    },
-    {
       "id": 1086267649,
       "postUrl": "https://t.me/autorunews/502?single",
       "source": {
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -1972,49 +1859,41 @@
       }
     },
     {
-      "id": 999051440,
-      "postUrl": "https://t.me/technomedia/11684?single",
+      "id": 274899617,
+      "postUrl": "https://t.me/bazabazon/45715?single",
       "source": {
-        "title": "Техночат",
-        "handle": "technomedia",
+        "title": "Baza",
+        "handle": "bazabazon",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/W9U8DxMltoqozjLO7CrI3Oj1eX6Hvkpffix5qAB-NO3yBF6nNGPWD5_yUtiOXNLXbxVs0M558G7H6UnRrV4AlxstuHbbdxdDMAZOb0IExwisNDSEN5hBZ0OdtYyJNz5p2kd4otbJbwDtSwSnCTlPn5o2Cu30eVzmZ_YsnUHnT33RQkFVy3gBxg_IMk7etD9rBdPAErEPl5-dcOGc_UMB6h5KpLGcmSQlDiNsw7xeqht7PW_TNt5aw6l9LKyNt8mBcI9GbxCaz5e8bKtD6UtEkCqCSZ-KCagX4BzTfdMPHh5XNVCEgtOVJTJHgcJxZjU2nvOAx7bSFWLM7ClCLKuY1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
       },
-      "sourceId": "ru:technomedia",
+      "sourceId": "ru:bazabazon",
       "sourceCountryCode": "ru",
       "contentType": "image",
       "media": [
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/MF54dNyeJue-8YHRhJnl3H_LNrFLKWlHzW4NTYZPIYrM471ML880sxNP64Af9s99gMZ-T49NkjMeuEPEQcFMTEcw-6IZ1AHw08_E1R7peQw2CgvyFRypNC0vqjCFS1JEp7NQ-nenMB3kSQk6TqzxZyFjBIrL6yXviYMfth1d6KHMpELjAaeRp1FvTSCmlwhUo5fmOFEZLdqk1pP4A4RL9UeA1-lBCumcG9jlpg-U80AmxxbAdIOHLg2jh_h8qQOm3blAkhPDaerTj-dvBQ1ig6SK1BOKC-ZdgfqFJQpNwH0jllHJDVWY1gAtU1hJcbR8G-M1bAdmdpHHhQuJ5LZqUA.jpg"
+          "url": "https://cdn4.telesco.pe/file/fzGSPzTGtUblSZhjLNz9Iht1_xi1J9NR0hqQyoMI-boOqWb_IQco5oBs-uO0TTtsQigfQZeCMPnvENj8sIjvsj9GjOPGcO93JJMTnDjbStA00BMuqVL-tATopU6vPPwab_yqKjO9vQZUMWPLgsNYgPU1HmfFjH9rO5LZqUHl_5DruZAXTnwYXXKmSsNHXApmW7Uy6tOJwFeTh1LktxWwquh1b9ys--Js-17vkIf5rIwI8br-S405784rmp6VIHvUd9nk-NadDnDlWN3ohmgSCgtFAHy25L8RfFI1STHV4FTGvQpiaC-zQlKLP1z0WJR1ZYvvFVfxXE3Zof7ojkxEVA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Новые iPhone, Google Pixel, Samsung и другие смартфоны со спутниковой связью без сертификата Ростеста якобы могут запретить ввозить в Россию — за их импорт теперь конфискация и даже тюрьма, утверждает Mash.\n\n🔴 Причина — недавнее постановление правительства №488, которое ограничивает ввоз устройств, работающих со спутниковыми системами иностранных стран, без разрешения Госкомиссии по радиочастотам. \n🔴 Под запрет якобы попадают смартфоны с такой функцией, спутниковые телефоны и GPS-трекеры, говорят эксперты.\n🔴 Портал пишет, что в отдельных случаях технику могут признать стратегически важной, что грозит уголовным делом по статье о контрабанде.\n\nНо, если прочитать документ внимательно, в нём указан закрытый перечень кодов ТН ВЭД, который относится к спутниковым терминалам (вроде Starlink и OneWeb), а не к смартфонам. Телефоны под эти ограничения не подпадают.\n\nВыдыхаем?\n\n@tehnochat",
+      "text": "В Краснодаре помощь животным превратилась в войну: одна зоозащитница кошмарит другую в отместку за обвинения в мошенничестве.\n\n1,5 года назад Светлана из Краснодара проснулась «звездой» сайтов проституток — кто-то выложил анкету с её фото и номером телефона, после чего женщине буквально оборвали телефон с предложениями интим-услуг. Затем в чатах по всей стране о Светлане начали распускать слухи о том, что она педофилка-сутенёрша и у себя дома развела притон детской проституции. За это ей пришлось объясняться перед следователями и показывать им свою квартиру — кто-то написал на неё заявление. Дело возбуждать не стали за отсутствием доказательств, но неизвестный слил в сеть фейк, что женщину всё-таки осудили за «вовлечение детей в проституцию».\n\nПотом Светлану и вовсе «похоронили» — очередные левые аккаунты опубликовали информацию, что она умерла. Новость настолько сильно разошлась, что попалась на глаза её родным — от них она и узнала о своей смерти.\n\nСветлана уверена, что травля — дело рук волонтёра Дарьи. Они обе занимаются помощью животным, но, по мнению женщины, Дарья делает это недобросовестно, якобы собирает деньги на благотворительность и оставляет их себе. После этих заявлений и начался затяжной конфликт, который, как рассказывает Светлана, перерос в сталкинг. Некоторые действия Дарья и не пытается скрывать, например, призналась, что именно она написала заявление в СК о детской проституции. \n\nТакже, по словам женщины, она не единственная, кто пострадал от Дарьи. Недавно та поссорилась с зоозащитницей из Дагестана Аидой. Оскорбляла её и обвиняла в мошенничестве с благотворительными деньгами. За Аиду попыталась вступиться несовершеннолетняя дочь. В ответ девочка получила от Дарьи гневное голосовое сообщение, в котором та назвала её «жертвой пьяной акушерки».\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
       "links": [
         {
-          "label": "утверждает",
-          "url": "https://t.me/mash/73946"
-        },
-        {
-          "label": "ограничивает",
-          "url": "https://t.me/technomedia/11677"
-        },
-        {
-          "label": "@tehnochat",
-          "url": "https://t.me/tehnochat"
+          "label": "https://max.ru/baza",
+          "url": "https://max.ru/baza"
         }
       ],
-      "createdAt": "2026-05-01T07:54:29.651Z",
-      "expiresAt": "2026-05-02T07:54:29.651Z",
+      "createdAt": "2026-05-01T12:44:20.407Z",
+      "expiresAt": "2026-05-02T12:44:20.407Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T01:20:07.116Z",
-      "tag": "gadgets",
+      "mediaRefreshedAt": "2026-05-02T03:51:05.395Z",
+      "tag": "news",
       "tags": [
-        "gadgets",
-        "technology"
+        "news",
+        "news_incidents"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2029,7 +1908,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T07:54:29.651Z"
+        "reviewedAt": "2026-05-01T12:44:20.407Z"
       }
     },
     {
@@ -2820,68 +2699,13 @@
       }
     },
     {
-      "id": 3081045277,
-      "postUrl": "https://t.me/bazabazon/45711?single",
-      "source": {
-        "title": "Baza",
-        "handle": "bazabazon",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
-      },
-      "sourceId": "ru:bazabazon",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/ea49c53350.mp4?token=XD2p0U18Zqkccmqa4utlq9ZFuC_ESHnCndjXCiZz6F-iMPZfJwp0aT-oUqQbUzr_js3bOBTUVXmG2c-TiI5POjwokSHhUilN9eWlhYRnHIwhq481-Z0VcHyXJSC6mchmPBmIKY8eXmhjNi7GPXS-oNzSKPyaVUiUFmAkmtJtwIyEuoSLyUr-uXsZ_yOB6Q5VaEZ4mczhrJO2mHGzBQODQOXRDrDo3Bj7YYesp1q6zWnwb11LulTylKMCFthO48Y-fwu8bqStpZ-MAWsy6T9uTQAMZC1v1gAkZJFTqoH8SygnwRQ2OlKzewZ694XvyU05lG_H1ejj9Y6IzD11pKDR-g",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Нападение на губернатора Свердловской области — охрана успела скрутить злоумышленника.\n\nДенис Паслер проводил фотосессию с горожанами у «Екатеринбург Арены» перед началом первомайского митинга. В этот момент к нему бросился агрессивный человек в синем спортивном костюме, но охрана мгновенно вмешалась и схватила нападавшего.\n\nСейчас мужчину уже передали правоохранителям.\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
-      "links": [
-        {
-          "label": "https://max.ru/baza",
-          "url": "https://max.ru/baza"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:36.321Z",
-      "expiresAt": "2026-05-02T07:54:36.321Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:07:47.862Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_incidents"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:36.321Z"
-      }
-    },
-    {
       "id": 2506239498,
       "postUrl": "https://t.me/autorunews/501?single",
       "source": {
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -2924,6 +2748,53 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T11:46:09.223Z"
+      }
+    },
+    {
+      "id": 339131424,
+      "postUrl": "https://t.me/bazabazon/45714?single",
+      "source": {
+        "title": "Baza",
+        "handle": "bazabazon",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
+      },
+      "sourceId": "ru:bazabazon",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Подросток погиб от мощного удара током в Татарстане — его удочка задела контактную сеть железной дороги.\n\nУтром трое детей отправились на рыбалку в посёлке Васильево. Когда они переходили пути, снасть коснулась проводов сверху, и в этот момент ребёнка поразил разряд напряжением 27,5 тысяч вольт.\n\nПодросток скончался на месте — спасти его не удалось.\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
+      "links": [
+        {
+          "label": "https://max.ru/baza",
+          "url": "https://max.ru/baza"
+        }
+      ],
+      "createdAt": "2026-05-01T12:44:20.407Z",
+      "expiresAt": "2026-05-02T12:44:20.407Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T12:44:20.407Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_incidents"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T12:44:20.407Z"
       }
     },
     {
@@ -3648,133 +3519,13 @@
       }
     },
     {
-      "id": 2087730223,
-      "postUrl": "https://t.me/smi_rf_moskva/39679?single",
-      "source": {
-        "title": "СМИ Россия не Москва",
-        "handle": "smi_rf_moskva",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/nFYG8AQsh_GcFz2muKBJTU5qVZknMX1Y801t8x7gekUCvPhuCn_QiXXEdUDyF1EsDWXVZt696XlMK0_g9nhrGPNec9U0m_keqqaWWunuSkj8tZRFO3qj6FjNW-Mdfr0wYYYxPnwV1IYdNEgqqP-ht-ztPu5qLIEJ9GBf6pWA7wBgGuCO_5h9xvDwHSU-INCs-I_hiWe-dzdHRO7ThRKzSlKkbrCHPjgqZGWmGJFHSSfWN7BAyk7NIIxkdICmFiaqAAmnh0k30OAOwl-ybmiWFfs3QSzfE5SkvTGTSHOkVBECyWsBWNi7W6cAe7OXzRJoLNv3WZK_CdvS06nrNIvW7A.jpg"
-      },
-      "sourceId": "ru:smi_rf_moskva",
-      "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/HXQWAHZiP-FozyH7I7hrdUBPTXH-nTk3OctmXK9BkU2kKZXJ2jG3nMe-xKWOlPSqXTZF8QXNPYuiPPGtBeitaySX_MLYGKgjUsSGLHLbV0WaMrbp2V4Z3eMsF2b4G6IffEuoG3LKRH1Ywv6Gp8o3FTRRsXUtu7lD2kG1uKN1e5XGGrUZEdQsXau53lZ2PEhria1wHHX015I6XzFjefapelnCntydLDOAJK2L46lMRjLmVGkEKfy6Qs5B8Gsm7vceqkd8pxtTZBsFibNUHus1vrGRDMpWZNRiWCqbSfjUFcIV-TfQVYuQowfziJcE5ssTRgzXqOSKib9eqMtlr3v2Gw.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Tx0QDkNQH041bm7rCfrQ3alk5F4el5Odlc1hTZyvhSfJqMYRG_uFH97FV-TJ31ktEejGMgeoSI9Il6c7UgWmkaTrnTcWi4gDXsRjtU4L1U_x693hv17JeNYtI3SFq9CAxWBgxTdvuPLRfTNS-_EkfBPXb4xI2Tfno1_73SREqDYxTjpTlrMRIdqaPejgQg85CSkmcL732yNJMc12mZD7U5icCrLmfA8rJ665bv21P19PFhJR6sZuZyL7IWMntViXh5pdvx2MeXFCCikOuQVW2X19LdT_tAjr0Bmu1RkRMZzt54BiQRon_qr6R4tinK_FlpS2EXRLMxbpx73Y9Ewrcw.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/uwAo9RTyXOOkPgBb3S5ITbtxV6jl_UkLjpLlzLPZNuI-S8K8ZqDPhTac2bs5-cCDNhcy440FjznIQ4ipxrfDrcACLDv_11m5Bd1GicPbgsiREw8IHJhUOgEnpGosbiZ3f4OjN_zxL2Y_5sjJn5RLuEDQrwJELjrYll9idGyaaHB2TEingvvSdqpMjzY-nJ8H8ECbg3xkzbn3s0chvKsSWuTbubt-nt_4aSVkTHrIhC_SnfH0vlOHDgKLKx4rv0NyqYtqTzO-6N1CPR2CxprYNhDoOkufM_XtB7-yzrGeI3923lHpp660lUQCMl3GDMUjOej4j0zkPDbOsEsv5kq9JQ.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/On1Q8TX9bW1sndk9J1tVyczweFnv8fWGGCpmmVvcPm4NshUJ7R9HRY8_khTPm4MjEpnVVDlG3mkunTZ__x62--1d7a86uf_R9S_1xiRXjmTAXmcKcqDMa0ZnxQpQNo3kqTAtEW-lDtDSog5e2z5IIPVC7maEVRFnk90XGKiE4__xBZMh9xaa5mF7IvswFK8MH68iuq9B9xHxclGBxBLhcqYL3r6Ga37Em3ouZb40CFuGmJgNaxDQ6ZgJg2MxYaN_4QeGyydlMLufPHwyHPGibUKtVIVXT6k1Oay_Rs1spQ1GRt65ka2uDQ-wmD-y9DoNK9c6GXLoRnQEAi6gVJYdsw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "👀Авокадо за 1800 и огручки по 715 килограмм: по сети разлетаются фото адских ценников в магазинах чукотского Анадыря.\n\nИнтересно, овощи и фрукты там только мультимиллионеры едят?\n\nМы в МАХ",
-      "links": [
-        {
-          "label": "Мы в МАХ",
-          "url": "https://max.ru/smi_rf_moskva"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:27.364Z",
-      "expiresAt": "2026-05-02T07:54:27.364Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T17:45:01.918Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:27.364Z"
-      }
-    },
-    {
-      "id": 3577027436,
-      "postUrl": "https://t.me/bazabazon/45710?single",
-      "source": {
-        "title": "Baza",
-        "handle": "bazabazon",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
-      },
-      "sourceId": "ru:bazabazon",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/XtLVfiNPx1QD-t3TntnXbhoejpA25n3CCbW_p9mxkLLABMYZKXXd5tsHONNrSPg5f8k_b_VyhjiFgKsaxXqsXeNlIUv0u6LzDnuQsaAWtZ7KdkPon8vTsLhyCFyhUFO82ccyVyTlWkQbZA9OYbPbjOFRPI3ednh6tyHNA4UzdQKQ6vxzSNp17hNiE8VyeK47-tYBTYNyCL-nwgk7P5woX83G1-A879PXDtsKu0ONJEedgIYKsh92jIuKaQcmeEtI_UH0dhRRzsqvXpXN-CKaGrJzjQSdUi9MA4Z-q4gW4Gfhv_XJp4BfVALw_U6wX2nSfycRsQxbxye8vn8XwJ3h-Q.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Самый долгий и противоречивый развод в России подошёл к концу. Бывший топ‑менеджер «Лукойла» доказал, что расторг брак с экс‑супругой 26 лет назад — теперь она должна вернуть ему разделённое имущество.\n\nБывший нефтяник Валентин Иванов и его первая жена Елена развелись в 2000 году через консульство РФ в Сингапуре. По крайней мере, так считал сам бизнесмен. Но спустя 14 лет, когда Иванов уже встречался с другой женщиной, Елена неожиданно напомнила о себе. Бывшая заявила, что всё это время не знала о расторжении брака и предоставила доказательства. В частности, утверждала, что в те даты ни она, ни Иванов не были в Сингапуре.\n\nВалентин удивился «амнезии» экс‑супруги и напомнил, что после развода она собственноручно подписала заявление об установлении отцовства в отношении их дочери как лицо, не состоящее в браке. Но это ему не помогло и начались длительные судебные разборки. В итоге суд признал «сингапурский» развод недействительным, и Елена смогла претендовать на активы, которые Иванов заработал за 14 лет. Ей досталось элитное жильё в Москве и за рубежом, а также яхта и «Бентли».\n\nВалентин долгие годы безуспешно пытался обжаловать решение и взыскать моральный ущерб с российского посольства в Сингапуре, которое, как он считал, допустило фатальную ошибку при оформлении документов. И, по данным «Базы», в этом году олигарх всё‑таки добился своего: суд признал развод начала 2000‑х законным, и теперь Елене придётся вернуть активы.\n\nЗа это время Иванов успел прославиться и другими скандальными отношениями. Он женился на уральской модели Алёне Финиковой, моложе его на 31 год. Затем вступил в брак с 17‑летней моделью Лизой Адаменко, которая после развода обвинила миллионера в тирании и преследованиях. Сейчас Иванов практически не афиширует свою жизнь и, по данным «Базы», пытается обанкротиться.\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
-      "links": [
-        {
-          "label": "https://max.ru/baza",
-          "url": "https://max.ru/baza"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:36.321Z",
-      "expiresAt": "2026-05-02T07:54:36.321Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:07:47.862Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_incidents"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:36.321Z"
-      }
-    },
-    {
       "id": 3726583432,
       "postUrl": "https://t.me/autorunews/499?single",
       "source": {
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -3825,6 +3576,61 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T11:46:09.223Z"
+      }
+    },
+    {
+      "id": 534327142,
+      "postUrl": "https://t.me/bazabazon/45712?single",
+      "source": {
+        "title": "Baza",
+        "handle": "bazabazon",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/XK6Ou572RzmvjgNfK38s7RSLmdL4JK4PckbusAujHcvXfZu-flsYHCLunIW7ik4ilFLSuwheuV8_KtDYGA_9bWwPdRjUS8VCsfbZnR-1xY7KKuAbYTndjrVf7rOT8TQE3CugZTggtClkmirRboMzC_xlMHcDaGB0WWPGASbS1VDlea5N3mhgBIcDSZ0AeGFDq40YGTFWHMvPHUaHq6S1cCGpEVHLTo7GsfIpDfGsAcu7FNIMZ7Wtyv-6SAqCQNev8FN4rwwwuknFWWTEcW2jdGG-SCHpr7pMFLLAzKSO56KT7-_v5Qm1KTqv1TUlp-UHE0WpGkG99k7SGtwk_KUYBw.jpg"
+      },
+      "sourceId": "ru:bazabazon",
+      "sourceCountryCode": "ru",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "video-2",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/6b62924ef0.mp4?token=UtcNRybbMqi15_HxBl3zFgYyXYV4b8DaysX0ZYjntakQwX33GO3eq3BkiFWpvTyXmecq-4w5P1vEDCi3fg2GCsaYTQdJR5Ctl46S1oNEzTx1wmCXOzC4HoyPWzIgNxVddH1SbfPxfhdUozrTAv1TtpMYp3LjdkrsP1pjbugARmgQlLUQVNXB2k-XSHyyl-HhkfeCaG87mu0dmC1cmC9-TA0ORTWUiw1HHodHEiwseLSkGePN1sjlihbJnHOg9r7hrog9Np8YAHbSGNCXIxmyKVqqs3lLHkoSbKmldEHdoHOWiEeymPa1jsCnsX2DeDJXHnJlEZloZJW2A2kB_8wjnA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        },
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/exSZkc2zHnDiiyGNRKWjTsKa93ESmZBjI6NfHo86FgrhU2QKFO3QdHKCqrESbY1KDpOR_OhSt3V6cSdxVMh0A9RxGgZC2Sz1EOtoFLfdE2gUorOyBxQMhs3yqqkjjE5LE7G84kdlUZmpScaFSJoUFCjRnKZq8TcM7X2ajpRt-0_QdXyuovlktJWcW3TG4NzusaVphhFFOOqH-x1TLbF6cDtZhvF8JjIebuLPD7cSphen0ZQTmuXbFldwSfJ53oCmOh0dMehnSrPehbmy7Hy3zvTHd0lkeDb01tMaZM9SAYjta7W6mOBICXumjx8_-bfk5NZEqJZyL_OH1pqCVnQIEA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Россиян ждёт дефицит авиабилетов в Турцию и рост цен на туры из-за резкого сокращения рейсов Turkish Airlines.  По данным «Базы», ключевой авиаперевозчик на турецком направлении уже отменил более 300 рейсов на май и июнь по маршрутам в Россию, а также поэтапно…",
+      "links": [],
+      "createdAt": "2026-05-01T12:44:20.407Z",
+      "expiresAt": "2026-05-02T12:44:20.407Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T03:51:05.395Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_incidents"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T12:44:20.407Z"
       }
     },
     {
@@ -4533,7 +4339,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -5071,7 +4877,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -5567,7 +5373,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -5591,7 +5397,7 @@
       "createdAt": "2026-05-01T11:46:09.223Z",
       "expiresAt": "2026-05-02T11:46:09.223Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T16:10:43.030Z",
+      "mediaRefreshedAt": "2026-05-02T08:44:51.501Z",
       "tag": "auto",
       "tags": [
         "auto"
@@ -6051,7 +5857,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -6070,7 +5876,7 @@
       "createdAt": "2026-05-01T11:46:09.223Z",
       "expiresAt": "2026-05-02T11:46:09.223Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T16:10:43.030Z",
+      "mediaRefreshedAt": "2026-05-02T08:44:51.501Z",
       "tag": "auto",
       "tags": [
         "auto"
@@ -6495,7 +6301,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -6519,7 +6325,7 @@
       "createdAt": "2026-05-01T11:46:09.223Z",
       "expiresAt": "2026-05-02T11:46:09.223Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T16:10:43.030Z",
+      "mediaRefreshedAt": "2026-05-02T08:44:51.501Z",
       "tag": "auto",
       "tags": [
         "auto"
@@ -6942,7 +6748,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -7353,7 +7159,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -7707,7 +7513,7 @@
         "title": "Новости Авто.ру для дилеров",
         "handle": "autorunews",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/F0oXpWJwNIqM_ZWOmoAlJhaAbs346E64-QQM9oDFaZOb1PMSODX33v4yPXzmXBRUB64xBKU2ksedmz9lA5-zMyxfUPdb9ieCKDkAlAGwZoWJYDEtp82P3iB6wLuR6BanMMvRfjmIlX62_QcjIfOnpuZh7AZFcgzvFAxmPPKr9m7NUGhBAKFxyo9Jbmg9GZiB9X7PeLWiqksJknrt-x6kB-qmLC7UumDLYE7LmvWfnSlr-UajozDujwCYV5wu-f5TLm2gPM2ZQmAb3o2Ar4O1V-cbK0QtlzNVzXT1HXC9PJkBxh7sgzYL6eE_AiHMbXZgOxphHSCe-AywRqG7_nuL1Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/OWU2AemZXgWM97-Lqf4Q7GfsyMnq0wwwvr0BdkqIh06XWE9g5qSrvX83dyniXaogtmZlwB_6yHppLpaQaDKHMDWMK-LLV0D33txnqSbdq0Eu0WTJZFBw8DAd__Juq6Rr601VSjQSkWq7GyREHl3CkZPhhzoeCMNtt1QUFMjTL__lStzE6vob26-iOSsSAPhD8RcVXms_Bbl8ANhIuWqBeZ9r4zlAHLlv4QyAtde-8GlNxu3jaEvm3HRof6Eue2IltH4ZSosLDqdxXCJb5EB6S1gUAcmaXJPPgeyNF7D_2T9qR1ZIY9yJxrvYz_OPXdv3Zxnvs9nXTp_rkexxEcS48A.jpg"
       },
       "sourceId": "ru:autorunews",
       "sourceCountryCode": "ru",
@@ -11546,59 +11352,6 @@
       }
     },
     {
-      "id": 1889691518,
-      "postUrl": "https://t.me/rian_ru/337839?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Жюри Венецианской биеннале подало в отставку на фоне разногласий из-за участия России. \n\nНеделю назад Еврокомиссия сообщила организаторам, что приостанавливают финансирование в 2 миллиона евро из-за появления на выставке российского павильона. \n\nБиеннале в ответ заявила, что \"отвергает любые формы исключения или цензуры культуры и искусства\".\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "подало в отставку",
-          "url": "https://ria.ru/20260501/zhyuri--2090029494.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
-      }
-    },
-    {
       "id": 843186573,
       "postUrl": "https://t.me/tass_agency/373875?single",
       "source": {
@@ -11648,59 +11401,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T16:40:43.272Z"
-      }
-    },
-    {
-      "id": 3569659767,
-      "postUrl": "https://t.me/rian_ru/337838?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Напасть на губернатора Свердловской области Паслера пытался мужчина на первомайском митинге в Екатеринбурге, передают местные СМИ. \n\nВласти региона сообщили, что нападавшего задержали и передали правоохранительным органам, никто не пострадал. \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "сообщили",
-          "url": "https://ria.ru/20260501/ekaterinburg-2090036772.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
       }
     },
     {
@@ -11756,65 +11456,6 @@
       }
     },
     {
-      "id": 1979658800,
-      "postUrl": "https://t.me/rian_ru/337837?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/SbrsjrMHwf9GGvbzDNs3pL423TXWpv3GuzHgUl-FpOyc2ym_vXYJg3oHnOTeZwom-5PA0yzeuJEWJFKGJtDQ50nlkBVNK9S0fcUPwrU47kuAARred2_K_-7GZ50Gs7MjZelkKk-vQwspLOPr6nq78ZrSUNF4aTRHZMNfRGfjhUvIYbVSYIrH8Pl7IfjNdOcqQcZIy22AYNXe0OcQJqVrJK__T5C4mdiz1ec8IOc01L7_dmYfGmxc-lHosKEG51qOTssMXXXh_mHbpfdmPC0KOCL0CQzzi_eL4fsIBOubrEMIzYpq0kKGiuSoygU_V-VZYIRsEOm6mM_B3AjMt_z26A.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Премьер Словакии Фицо раскритиковал лицемерие европейских политиков за вопросы о его встречах с Путиным. \n\nЯ встречаюсь с Путиным, и все критикуют меня, а когда я возвращаюсь после встречи с ним, то все в туалетах в Брюсселе спрашивают меня, что он сказал\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "раскритиковал",
-          "url": "https://ria.ru/20260501/fitso-2090030539.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T20:36:28.566Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
-      }
-    },
-    {
       "id": 2547645875,
       "postUrl": "https://t.me/tass_agency/373873?single",
       "source": {
@@ -11867,50 +11508,6 @@
       }
     },
     {
-      "id": 502655537,
-      "postUrl": "https://t.me/rian_ru/337836?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️Первый пациент, получивший вакцину от меланомы, чувствует себя хорошо, лечение этим препаратом продолжат, сказал Мурашко.  🔹 Подписаться на РИА Новости",
-      "links": [],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
-      }
-    },
-    {
       "id": 2407635482,
       "postUrl": "https://t.me/tass_agency/373872?single",
       "source": {
@@ -11960,59 +11557,6 @@
       }
     },
     {
-      "id": 2950240250,
-      "postUrl": "https://t.me/rian_ru/337835?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "ПВО за ночь сбила 141 украинский беспилотник над российскими регионами и над акваториями Черного и Азовского морей, сообщили в Минобороны.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "сбила",
-          "url": "https://ria.ru/20260501/pvo-2090024646.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
-      }
-    },
-    {
       "id": 2342091345,
       "postUrl": "https://t.me/tass_agency/373871?single",
       "source": {
@@ -12051,59 +11595,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T16:40:43.272Z"
-      }
-    },
-    {
-      "id": 958151187,
-      "postUrl": "https://t.me/rian_ru/337834?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Секрет активного долголетия раскрыл Онищенко.\n\nАктивное долголетие предполагает работу. Человек должен быть уверен, что кому-то приносит пользу. \n\nИ это прежде всего работа, творчество, какие-то другие возможности, познавание мира, выполнение какой-то другой полезной общественной деятельности.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "раскрыл",
-          "url": "https://ria.ru/20260501/onischenko-2090007453.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
       }
     },
     {
@@ -12154,50 +11645,6 @@
       }
     },
     {
-      "id": 3151312956,
-      "postUrl": "https://t.me/rian_ru/337833?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Трое туристов из Красноярска погибли в Бурятии при спуске с горы Мунку-Сардык, которая расположена на высоте 3492 м на границе с Монголией.   Группа должна была вернуться обратно завтра к полудню. Но сегодня ночью несколько туристов вышли к дороге у подножия…",
-      "links": [],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T07:54:21.464Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
-      }
-    },
-    {
       "id": 624569142,
       "postUrl": "https://t.me/tass_agency/373869?single",
       "source": {
@@ -12244,65 +11691,6 @@
       }
     },
     {
-      "id": 2874260589,
-      "postUrl": "https://t.me/rian_ru/337832?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/jgpicVxzJTwuA00skKWsazzeVg-pjJ3Wf3yIFJq9xn_VWOvK_R4VKTcGcwwqf3Jza0lQf8ldA0I4Ow8yqenFAlwf8wT9OHUEQKAqI4PsjFEwbWAQOMPXHNXtduuuA91PTnUO6qR5qZRb4Umma4CxpCR1HDezW75Dw2dOrvPE_fT5ao2Klev-zDDvwH0AhNX3LFMfZ_Kz42dUNlma5HoIae0EI_TI4wtL1XNPYKM69PIWozMlGUgJynmLDK8bfkU7Zc1kuPSW9t70SDLtx7TflovAggSslAup0zrjKkD6cTELIE7Jiemc1Ut1cbzPnFCUnAA2DR6-3pPF76MglR-5GQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Жена Зеленского может фигурировать на секретных записях, сделанных Бюро по борьбе с коррупцией Украины.\n\n\"Депутат парламента собирается публично зачитать еще больше этих записей\", - сообщила бывшая пресс-секретарь Зеленского Юлия Мендель.\n\nОна также рассказала, что сам Зеленский, который фигурирует на записях под кличкой \"Вова\", упоминается в них как владелец одного из четырех огромных роскошных особняков, строящихся в пригороде Киева.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "сообщила",
-          "url": "https://ria.ru/20260501/ukraina-2090008885.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T20:36:28.566Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
-      }
-    },
-    {
       "id": 55556495,
       "postUrl": "https://t.me/tass_agency/373868?single",
       "source": {
@@ -12341,65 +11729,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T16:40:43.272Z"
-      }
-    },
-    {
-      "id": 1305460918,
-      "postUrl": "https://t.me/rian_ru/337831?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/sqD50vcsYWKSTycCYYBQHJh_aUOpSLt3G28PLsBqTYYU3oWyAJn078pRTZd2LjF_3nqrkifxPwJMyet0IO58vW5BZsJKzB57X6DEqFq-tlY9EN56PBEANMKNfAnqzQ6Ls0-kiZf7Q5plAwPkGxXkQAgROC1iCb7tITwP83fUK-Nec_d-VrH6apuzVtODkwWdAMvilq_zEiUYVpQkQYZyljHJz6D8JE81vGdGpw19-OK_xs3peEJfWyirLUJWHvOb4Uy3q6UAD59msoixxDcX9M7eszNFPxktXFaPq481pD6FTk6nS6YIwmhzt06WbkcBwUBwV8Sf2j867rfOklp2Xw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Аферисты начали пугать россиян штрафами за борщевик.\n\nРассылают владельцам участков сообщения от лица \"Земельного надзора\" или администрации, предупреждая, что на участке обнаружены очаги опасного сорняка.\n\n\"Жертве грозит штраф от 50 000 рублей, но \"в порядке досудебного урегулирования\" предлагают оплатить \"скидку\" или \"услуги инспектора\" по ссылке, ведущей на сайт-клон \"Госуслуг\".\n\nЭксперты советуют не переходить по ссылкам на оплату штрафов из непроверенных сообщений.\n\nРеальный штраф выписывается только после выездной проверки с составлением акта, а не по смс. \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "сообщения",
-          "url": "https://ria.ru/20260501/moshenniki-2090005024.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-01T07:54:21.464Z",
-      "expiresAt": "2026-05-02T07:54:21.464Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T20:36:28.566Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:54:21.464Z"
       }
     },
     {
@@ -12838,6 +12167,532 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 238387077,
+      "postUrl": "https://t.me/tass_agency/373857?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Международное жюри биеннале искусства в Венеции подало в отставку в полном составе, сообщила дирекция.  Причины решения официально не разъясняются.  ✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 197552052,
+      "postUrl": "https://t.me/tass_agency/373856?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Иран передал Пакистану, выступающему посредником на переговорах Тегерана и Вашингтона, текст нового предложения для обсуждения долгосрочного перемирия, сообщило агентство IRNA.",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 3428526983,
+      "postUrl": "https://t.me/tass_agency/373855?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/c2J1gGdWgZOk3lt_xXLGMFho-zNMOx972p1ayMJ5uM0MIAt5WzcYAdRtaj88hbCFXuVpcu5qr05aqK7_Tn4VXSrRFkIVHrtCsw4KdYCFHCOueYBnacfCcj1nSMRxPIh9vNtow1c-8xuMGajuuQvM2t8gqLE6oJ8vcCrmJBr1qVvBtQASBwXmub0IuuqJRRIjYJnNJY8Ryl_GgGI1lH7Rt5INVFYHU1mF4Z3KabFRtxuW8Di94CQbad9v0u31BVJP3yf-vJ5NTSMHF8SmoqxG8N4hYMwZB3TMNTVttvifEeLQEsmHngsQAUJrIoVzEmZ3pQ53sFj6xRouahug5F91aA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Россия передала Канаде исчерпывающие доказательства причастности нациста Гуньки к военным преступлениям, сообщил посол в Оттаве.",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 111365070,
+      "postUrl": "https://t.me/tass_agency/373854?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/3e1ac4cc0a.mp4?token=SR4GaV3UrR6QcK3LSJ28MCDhMqtF4yI7QIfx-FEJym7jJG4cIgmsthgg-trwSOgZD2ToJJf2QJazzgghGsdagg9uzdAHZYkGV5AJRLeqZ93KeHdEGdaQqMxM5gkHAXXWQPMyM4gb3fYVxBHJlVTBdkOdf6nrZfo8s945wqzWPsDaucVRH-lbkxk3vtsOggqgTOOSThHYmPWGzP7DrM5Pe7bX43bEJ_Fs3sNqxfSmuGob8k7rs2stwDL8bmhQzyyp-3Bha74gSp-zuo4sAGV83av3Nn2aYhXvuRX4FeTgHOdtXHD16O5Apl6ubiJoQrPGWb59A7n676h3UP7AoU4A8wtYeWXPM14fAvlpvgXc1162WLYKFpQMRLxCR1GsWf5ODdMNUJdCTbBOeA6CZP6Ry3-UpBTa--yK9C3y70fFfBTkCUn2QF2I3uesNSx-kTRMXQgaos4tfbwP3kVhrIn0Ubh45mlroBqP2Qkuu5ZULAaMI_BwRaiZHaTPmPl7vEefgGxMpbS1u7ca71QO1YdjhqrPm8mepdB3SVf9MFzmNtDrRiVqkSTJKLepUblIpm7dIg8EFxfGy834B5oEOKhKTLTjAffPMbha9ajkO_-ba_zEhLxrSde-YY56QEDqEXoaBTHFMvgMgBz4zhIdnsRWUgMY32WPQoD16K3D7nqDVDI",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "▶️ Семь человек, в том числе двое детей, пострадали при пожаре в многоэтажном доме в Ижевске, сообщает МЧС. \n\nПричины пожара устанавливаются.\n\nВидео: Официальный канал ГУ МЧС России по Удмуртской Республике в \"Максе\"/ТАСС\n\n✔️ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 398544553,
+      "postUrl": "https://t.me/tass_agency/373853?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Трое детей пострадали при атаке БПЛА ВСУ на границе Херсонской и Запорожской областей, сообщают власти.",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 1187718376,
+      "postUrl": "https://t.me/tass_agency/373852?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Бастрыкин поручил возбудить дело после осквернения советского воинского захоронения в Вене, сообщили ТАСС в СК. \n\nПо информации российского дипломатического учреждения, на кладбище Герстхоф вандалы испортили краской памятник воинам СССР, погибшим за освобождение Австрии.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 2975037291,
+      "postUrl": "https://t.me/tass_agency/373851?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "▶️ В Стамбуле полиция задержала 350 участников незаконных акций на Первомай, которые пытались проникнуть к центральной площади Таксим, сообщает Halk TV.\n\nВидео: ТАСС/Reuters\n\n✔️ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 3006088946,
+      "postUrl": "https://t.me/tass_agency/373850?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "❕Поставки военной продукции на Украину из Сербии и Боснии и Герцеговины через третьи страны продолжаются, сообщил ТАСС источник.\n\nОтсутствие наказания за поставки военной продукции на Украину приводит компании Сербии к выводу о формальности запрета.",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 4014313488,
+      "postUrl": "https://t.me/tass_agency/373849?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "ЕС не поддержал ускоренное вступление Украины, но обсуждает альтернативные форматы постепенного сближения с Киевом, сообщает Politico со ссылкой на дипломатов.  Речь идет, в частности, о расширении доступа к рынкам и более глубоком участии в европейских программах…",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 2507250065,
+      "postUrl": "https://t.me/tass_agency/373848?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "💲Состояние богатейших россиян с начала года увеличилось на $16,1 млрд, пишет Bloomberg: \n\n▪️Сооснователь компаний \"Еврохим\" и СУЭК Андрей Мельниченко с начала года заработал $5,8 млрд, его состояние достигло $24,7 млрд;\n\n▪️Состояние главы \"Новатэка\" Леонида Михельсона возросло на $4,94 млрд, до $28,6 млрд;\n\n▪️Геннадий Тимченко заработал $3,4 млрд, его состояние увеличилось до $17,7 млрд;\n\n▪️Основатель Уральской горно-металлургической компании Искандер Махмудов заработал $1,22 млрд, его состояние достигло $9,09 млрд;\n\n▪️Состояние основателя \"Северстали\" Алексея Мордашова выросло на $2,92 млрд, до $29,2 млрд.\n\nВ то же время состояние сооснователя Telegram Дурова сократилось на $2,08 млрд, до $12,3 млрд, а бизнесмена Алишера Усманова — на $1,03 млрд, до $18,2 млрд.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 330132830,
+      "postUrl": "https://t.me/tass_agency/373847?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "США потратили на войну с Ираном около $25 млрд, большая часть этих средств была израсходована на боеприпасы, сообщает Пентагон.  ✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [],
+      "createdAt": "2026-05-01T13:55:18.718Z",
+      "expiresAt": "2026-05-02T13:55:18.718Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:55:18.718Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:55:18.718Z"
+      }
+    },
+    {
+      "id": 541534423,
+      "postUrl": "https://t.me/tass_agency/373846?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "❗️Группировка войск \"Север\" установила контроль над населенным пунктом Покаляное в Харьковской области, сообщили в МО РФ.",
+      "links": [],
+      "createdAt": "2026-05-01T10:12:36.411Z",
+      "expiresAt": "2026-05-02T10:12:36.411Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T10:12:36.411Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T10:12:36.411Z"
       }
     }
   ]
