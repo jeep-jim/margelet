@@ -1,9 +1,107 @@
 {
   "countryCode": "es",
-  "updatedAt": "2026-05-02T06:22:07.948Z",
-  "totalPosts": 68,
+  "updatedAt": "2026-05-02T07:17:59.429Z",
+  "totalPosts": 89,
   "chunks": 1,
   "items": [
+    {
+      "id": 937873419,
+      "postUrl": "https://t.me/elpais/9726?single",
+      "source": {
+        "title": "ELPAÍS",
+        "handle": "elpais",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
+      },
+      "sourceId": "es:elpais",
+      "sourceCountryCode": "es",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/e-V2xo931PR48HabOuy6a7vD7dXfeiJC7rfTSzqv-YId5zEBZ4MX5wqHGcdw9xEGgMLO-_5X0XoB8KxDwdnOpTf4k6vQdnUgYYXHeEawT0CjNbtXLnySzyHVGiEEUV7d8UUYvaTQSqhlVBVMmVfbXa5tU5a2s9TpSPOT6kLJlPDSHgu_6Ir2FrseKylS9T4Q8iBi0EbAvYcBqB3BmuH-biu4h4DyZOwxC7bMUH2gJhCH_Q88W0Agn1U5JuGWFa9_PWZhH81CDuH9crzlj4mirfN7J46CRRmYBB--ZAzG-NzslJNyjnt6H5btSheDiW6NtGunS10lVD5yweLwv_PAxw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🕒 EXPRÉS | ¿Tienes seis minutos? Los 7 temas del día: de la guerra en Irán a los aranceles de Trump y los cadáveres donados al CEU \nhttps://social.elpais.com/e7qbnxd",
+      "links": [
+        {
+          "label": "https://social.elpais.com/e7qbnxd",
+          "url": "https://social.elpais.com/e7qbnxd"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:42.909Z",
+      "expiresAt": "2026-05-03T07:15:42.909Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:42.909Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:42.909Z"
+      }
+    },
+    {
+      "id": 972379547,
+      "postUrl": "https://t.me/elmundoes/5030?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🔴 Kate Middleton revela que está en tratamiento por un cáncer detectado tras su operación https://dozz.es/0ckoh4",
+      "links": [
+        {
+          "label": "https://dozz.es/0ckoh4",
+          "url": "https://dozz.es/0ckoh4"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
     {
       "id": 1448586841,
       "postUrl": "https://t.me/genbeta/20040?single",
@@ -54,52 +152,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T06:20:38.383Z"
-      }
-    },
-    {
-      "id": 3911555976,
-      "postUrl": "https://t.me/elpais/9725?single",
-      "source": {
-        "title": "ELPAÍS",
-        "handle": "elpais",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
-      },
-      "sourceId": "es:elpais",
-      "sourceCountryCode": "es",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🌖 Para leer esta noche 🌖 \n \n \n \n \nGrande-Marlaska y Rosa Montero, 20 años después de su entrevista en el EPS: “¿Por qué las mujeres y los homosexuales no podemos vivir tranquilos?”. En julio de 2005 entró en vigor la ley del matrimonio igualitario en España. Ese octubre, el entonces juez se casó con su novio. Meses después lo contó en El País Semanal. “Me costó mucho porque era una exposición tremenda”, recuerda  https://social.elpais.com/rd7r_s",
-      "links": [
-        {
-          "label": "https://social.elpais.com/rd7r_s",
-          "url": "https://social.elpais.com/rd7r_s"
-        }
-      ],
-      "createdAt": "2026-05-01T20:35:30.425Z",
-      "expiresAt": "2026-05-02T20:35:30.425Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T20:35:30.425Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T20:35:30.425Z"
       }
     },
     {
@@ -205,6 +257,98 @@
       }
     },
     {
+      "id": 3911555976,
+      "postUrl": "https://t.me/elpais/9725?single",
+      "source": {
+        "title": "ELPAÍS",
+        "handle": "elpais",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
+      },
+      "sourceId": "es:elpais",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🌖 Para leer esta noche 🌖 \n \n \n \n \nGrande-Marlaska y Rosa Montero, 20 años después de su entrevista en el EPS: “¿Por qué las mujeres y los homosexuales no podemos vivir tranquilos?”. En julio de 2005 entró en vigor la ley del matrimonio igualitario en España. Ese octubre, el entonces juez se casó con su novio. Meses después lo contó en El País Semanal. “Me costó mucho porque era una exposición tremenda”, recuerda  https://social.elpais.com/rd7r_s",
+      "links": [
+        {
+          "label": "https://social.elpais.com/rd7r_s",
+          "url": "https://social.elpais.com/rd7r_s"
+        }
+      ],
+      "createdAt": "2026-05-01T20:35:30.425Z",
+      "expiresAt": "2026-05-02T20:35:30.425Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T20:35:30.425Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T20:35:30.425Z"
+      }
+    },
+    {
+      "id": 2866942813,
+      "postUrl": "https://t.me/elmundoes/5029?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "El motivo por el que hay alergias que no se 'curan' http://tinyurl.com/mryezwh2",
+      "links": [
+        {
+          "label": "http://tinyurl.com/mryezwh2",
+          "url": "https://tinyurl.com/mryezwh2"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 1155641965,
       "postUrl": "https://t.me/genbeta/20039?single",
       "source": {
@@ -254,52 +398,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T06:20:38.383Z"
-      }
-    },
-    {
-      "id": 3796883913,
-      "postUrl": "https://t.me/elpais/9724?single",
-      "source": {
-        "title": "ELPAÍS",
-        "handle": "elpais",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
-      },
-      "sourceId": "es:elpais",
-      "sourceCountryCode": "es",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "☕ Para comentar en la pausa del café ☕ \nQuevedo: “Me encanta ser rico, pero a la vez es una condena”. El joven más escuchado de España, catapultado a leyenda internacional a los 20 años con su ‘Quédate’ junto a Bizarrap, reflexiona sobre la “depresión de caballo” por la que pasó, el reguetón o la fama \n https://social.elpais.com/poljkv",
-      "links": [
-        {
-          "label": "https://social.elpais.com/poljkv",
-          "url": "https://social.elpais.com/poljkv"
-        }
-      ],
-      "createdAt": "2026-05-01T13:54:09.359Z",
-      "expiresAt": "2026-05-02T13:54:09.359Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T13:54:09.359Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T13:54:09.359Z"
       }
     },
     {
@@ -405,6 +503,98 @@
       }
     },
     {
+      "id": 3796883913,
+      "postUrl": "https://t.me/elpais/9724?single",
+      "source": {
+        "title": "ELPAÍS",
+        "handle": "elpais",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
+      },
+      "sourceId": "es:elpais",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "☕ Para comentar en la pausa del café ☕ \nQuevedo: “Me encanta ser rico, pero a la vez es una condena”. El joven más escuchado de España, catapultado a leyenda internacional a los 20 años con su ‘Quédate’ junto a Bizarrap, reflexiona sobre la “depresión de caballo” por la que pasó, el reguetón o la fama \n https://social.elpais.com/poljkv",
+      "links": [
+        {
+          "label": "https://social.elpais.com/poljkv",
+          "url": "https://social.elpais.com/poljkv"
+        }
+      ],
+      "createdAt": "2026-05-01T13:54:09.359Z",
+      "expiresAt": "2026-05-02T13:54:09.359Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T13:54:09.359Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T13:54:09.359Z"
+      }
+    },
+    {
+      "id": 3680694956,
+      "postUrl": "https://t.me/elmundoes/5028?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🔴 Carlos III anuncia que tiene cáncer https://dozz.es/i5kat1",
+      "links": [
+        {
+          "label": "https://dozz.es/i5kat1",
+          "url": "https://dozz.es/i5kat1"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 1432694332,
       "postUrl": "https://t.me/genbeta/20038?single",
       "source": {
@@ -454,58 +644,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T06:20:38.383Z"
-      }
-    },
-    {
-      "id": 3126823662,
-      "postUrl": "https://t.me/elpais/9723?single",
-      "source": {
-        "title": "ELPAÍS",
-        "handle": "elpais",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
-      },
-      "sourceId": "es:elpais",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/qAz58IFoenELq5hAhowkQWyIbvAqcLznjNfdF0EMW1gnXTRWkdSrgSSoHzbjN959l1QnphJY6UjcZE5uq9d07UV0VxSwPrpgAEspJp4i8TJvncTZpU1CC85A7dDbvEyPz-fK-30-NKJwO1YGr-_HtliYnk-5d9hxXGlMMIpdJ8fS8id6Lf-ar3MgSFqrppG9jpZAFoe7-rZSFdUfPIMjLw39P2AqNA-zOGesg7ns0IZ5eZUhvqIhAAoilzv5MAR71rT6NytZn586OxEMzTKo5UApluubG4G63BvbBWs60t3IbB1j6JtwI6SJLBaT8OvXxpf2bAkJnIL9tOzEZszDnQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Los 50 personajes más influyentes de los últimos 50 años. El mundo sería diferente si estos hombres y mujeres no hubieran nacido. Los nombres imprescindibles en campos como la política, la ciencia, la cultura, el deporte y los derechos humanos https://social.elpais.com/j5rfsu",
-      "links": [
-        {
-          "label": "https://social.elpais.com/j5rfsu",
-          "url": "https://social.elpais.com/j5rfsu"
-        }
-      ],
-      "createdAt": "2026-05-01T10:11:56.139Z",
-      "expiresAt": "2026-05-02T10:11:56.139Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T04:48:00.255Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T10:11:56.139Z"
       }
     },
     {
@@ -611,6 +749,99 @@
       }
     },
     {
+      "id": 3126823662,
+      "postUrl": "https://t.me/elpais/9723?single",
+      "source": {
+        "title": "ELPAÍS",
+        "handle": "elpais",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
+      },
+      "sourceId": "es:elpais",
+      "sourceCountryCode": "es",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/qAz58IFoenELq5hAhowkQWyIbvAqcLznjNfdF0EMW1gnXTRWkdSrgSSoHzbjN959l1QnphJY6UjcZE5uq9d07UV0VxSwPrpgAEspJp4i8TJvncTZpU1CC85A7dDbvEyPz-fK-30-NKJwO1YGr-_HtliYnk-5d9hxXGlMMIpdJ8fS8id6Lf-ar3MgSFqrppG9jpZAFoe7-rZSFdUfPIMjLw39P2AqNA-zOGesg7ns0IZ5eZUhvqIhAAoilzv5MAR71rT6NytZn586OxEMzTKo5UApluubG4G63BvbBWs60t3IbB1j6JtwI6SJLBaT8OvXxpf2bAkJnIL9tOzEZszDnQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Los 50 personajes más influyentes de los últimos 50 años. El mundo sería diferente si estos hombres y mujeres no hubieran nacido. Los nombres imprescindibles en campos como la política, la ciencia, la cultura, el deporte y los derechos humanos https://social.elpais.com/j5rfsu",
+      "links": [
+        {
+          "label": "https://social.elpais.com/j5rfsu",
+          "url": "https://social.elpais.com/j5rfsu"
+        }
+      ],
+      "createdAt": "2026-05-01T10:11:56.139Z",
+      "expiresAt": "2026-05-02T10:11:56.139Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:00.255Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T10:11:56.139Z"
+      }
+    },
+    {
+      "id": 1492095883,
+      "postUrl": "https://t.me/elmundoes/5027?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 2602617627,
       "postUrl": "https://t.me/genbeta/20037?single",
       "source": {
@@ -660,58 +891,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T06:20:38.383Z"
-      }
-    },
-    {
-      "id": 3274229671,
-      "postUrl": "https://t.me/elpais/9722?single",
-      "source": {
-        "title": "ELPAÍS",
-        "handle": "elpais",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
-      },
-      "sourceId": "es:elpais",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/vyJ2Gc-oL3sYBiNHTt5a68HKm03H38qT-8cTCP2lAA7ELA_lpC77C9y8S2TJt1DVU1vq-CtAlqCEW0ufS-m6kqVi1M89VEVYEvbZ2SLzZGeQ5IB_EOe8G7o1TmjG_RYTdVW98eBLWqVxfYwD-Ox8u5Nuqw-rPMSLAF9dovm4GqYRDS8msPOlSwvqyy7v3HG80nn6y1buv6yVlI9FxrlSnrzaMBtjsf8o0d0ywwH0QlbQOQred8yfkLl1uZ4GHdWrNvn3NF_IUUaBXHxiYslorx4RrhY3yOahRrUpJKIFJs1m06nbmH8_o552NQZe-mwFYjnmwDTtt-Ddbm4ITdrniw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "⏱ EL PAÍS Exprés | Los ocho temas del día en siete minutos: el CNIO, el ‘caso Koldo’ y las lecturas del mes\n👉🏽  https://social.elpais.com/sielsry",
-      "links": [
-        {
-          "label": "https://social.elpais.com/sielsry",
-          "url": "https://social.elpais.com/sielsry"
-        }
-      ],
-      "createdAt": "2026-05-01T07:53:24.547Z",
-      "expiresAt": "2026-05-02T07:53:24.547Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T04:48:00.255Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T07:53:24.547Z"
       }
     },
     {
@@ -814,6 +993,104 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 3274229671,
+      "postUrl": "https://t.me/elpais/9722?single",
+      "source": {
+        "title": "ELPAÍS",
+        "handle": "elpais",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OadY3GQH71hDL_OSyMFvPZ3qqeuhNmbVxsIT1QD4_r4EDt54ridrJL-iFpaNLlG6gXGQzOyvJb4GoIIi6fI-73AkFrwb49K3UzDq7LmLCe7YQZR5MrKmqEjb_cjyTnGt5f1tGHL0kEF9KkN6P-IyommEnhcKXkg769kg0D6xulJcUDYmcSiinwclFvL7PP4272jjdn3D8X3EQtQdLUXtMeYmEPfFSUD9lOl8A9nAHR33VrWm7L82Uf7zBXqamFd5F8zCwsCdJit0EF-zcD7ZUNWIh0xVmKU6a01bjnv2JqK5PynYIjIDObH5gHAHeAslO0qwALrOA6YTBP7c7GmXLw.jpg"
+      },
+      "sourceId": "es:elpais",
+      "sourceCountryCode": "es",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/vyJ2Gc-oL3sYBiNHTt5a68HKm03H38qT-8cTCP2lAA7ELA_lpC77C9y8S2TJt1DVU1vq-CtAlqCEW0ufS-m6kqVi1M89VEVYEvbZ2SLzZGeQ5IB_EOe8G7o1TmjG_RYTdVW98eBLWqVxfYwD-Ox8u5Nuqw-rPMSLAF9dovm4GqYRDS8msPOlSwvqyy7v3HG80nn6y1buv6yVlI9FxrlSnrzaMBtjsf8o0d0ywwH0QlbQOQred8yfkLl1uZ4GHdWrNvn3NF_IUUaBXHxiYslorx4RrhY3yOahRrUpJKIFJs1m06nbmH8_o552NQZe-mwFYjnmwDTtt-Ddbm4ITdrniw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "⏱ EL PAÍS Exprés | Los ocho temas del día en siete minutos: el CNIO, el ‘caso Koldo’ y las lecturas del mes\n👉🏽  https://social.elpais.com/sielsry",
+      "links": [
+        {
+          "label": "https://social.elpais.com/sielsry",
+          "url": "https://social.elpais.com/sielsry"
+        }
+      ],
+      "createdAt": "2026-05-01T07:53:24.547Z",
+      "expiresAt": "2026-05-02T07:53:24.547Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:00.255Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T07:53:24.547Z"
+      }
+    },
+    {
+      "id": 2239329170,
+      "postUrl": "https://t.me/elmundoes/5026?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Tres de cada 10 españoles no lee un libro nunca. Este es uno de los preocupantes datos que ha desvelado el Barómetro de la Biblioteca Nacional. El principal motivo, \"la falta de tiempo\". http://tinyurl.com/4h97rupd",
+      "links": [
+        {
+          "label": "http://tinyurl.com/4h97rupd",
+          "url": "https://tinyurl.com/4h97rupd"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
@@ -971,6 +1248,52 @@
       }
     },
     {
+      "id": 56139081,
+      "postUrl": "https://t.me/elmundoes/5025?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Cómo activar la protección de fotos y cuentas bancarias en tu iPhone https://dozz.es/fttrg7",
+      "links": [
+        {
+          "label": "https://dozz.es/fttrg7",
+          "url": "https://dozz.es/fttrg7"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 1819154777,
       "postUrl": "https://t.me/genbeta/20035?single",
       "source": {
@@ -1122,6 +1445,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 170811144,
+      "postUrl": "https://t.me/elmundoes/5024?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Fue reportero en la época dorada de José María García, salió con Terelu Campos, estuvo en programas como Supervivientes o Sálvame y vio cosas \"sin sentido\" en las fiestas de cumpleaños de futbolistas como Ronaldo Nazario. Es Pipi Estrada, \"diablo de noche y ángel de día\" http://tinyurl.com/msp6ydbt",
+      "links": [
+        {
+          "label": "http://tinyurl.com/msp6ydbt",
+          "url": "https://tinyurl.com/msp6ydbt"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
@@ -1279,6 +1648,52 @@
       }
     },
     {
+      "id": 3828452135,
+      "postUrl": "https://t.me/elmundoes/5023?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🔴 Detenido en Leipzig El Pastilla, el preso fugado de la cárcel de Alcalá Meco https://dozz.es/thhon3",
+      "links": [
+        {
+          "label": "https://dozz.es/thhon3",
+          "url": "https://dozz.es/thhon3"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 1851041143,
       "postUrl": "https://t.me/genbeta/20033?single",
       "source": {
@@ -1430,6 +1845,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 3681046126,
+      "postUrl": "https://t.me/elmundoes/5022?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "La policía traza el perfil del asesino de los hermanos de Morata: http://tinyurl.com/5n6nrhec",
+      "links": [
+        {
+          "label": "http://tinyurl.com/5n6nrhec",
+          "url": "https://tinyurl.com/5n6nrhec"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
@@ -1587,6 +2048,52 @@
       }
     },
     {
+      "id": 197863333,
+      "postUrl": "https://t.me/elmundoes/5021?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Así puedes evitar los molestos y dolorosos sabañones https://dozz.es/efi9j5",
+      "links": [
+        {
+          "label": "https://dozz.es/efi9j5",
+          "url": "https://dozz.es/efi9j5"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 1864038069,
       "postUrl": "https://t.me/genbeta/20031?single",
       "source": {
@@ -1738,6 +2245,60 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 581382612,
+      "postUrl": "https://t.me/elmundoes/5020?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Un susto, una historia increíble y un enclave único, en las tres noticias del día\n\n🩺 \"¿Hay un médico en la sala? El presidente del Gobierno tuvo que interrumpir su discurso durante un acto del PSOE para pedir un doctor que atendiera a un militante que estaba sufriendo un ataque epiléptico. Puedes ver el vídeo completo en nuestro perfil de Instagram http://tinyurl.com/5t4j8cpy\n\n👦 Un niño de 9 años ha vivido sólo durante más de 700 días. Nadie se dio cuenta que sus padres le habían abandonado. Se alimentaba de latas y tomates robados a un vecino. http://tinyurl.com/5dm9sb64\n\n💶 Este es el lujoso hotel donde Jordi Évole ha entrevistado a C. Tangana. Un exclusivo alojamiento al alcance de pocos bolsillos http://tinyurl.com/5936xy7v",
+      "links": [
+        {
+          "label": "http://tinyurl.com/5t4j8cpy",
+          "url": "https://tinyurl.com/5t4j8cpy"
+        },
+        {
+          "label": "http://tinyurl.com/5dm9sb64",
+          "url": "https://tinyurl.com/5dm9sb64"
+        },
+        {
+          "label": "http://tinyurl.com/5936xy7v",
+          "url": "https://tinyurl.com/5936xy7v"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
@@ -1895,6 +2456,52 @@
       }
     },
     {
+      "id": 2239483716,
+      "postUrl": "https://t.me/elmundoes/5019?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Sometemos a Dabiz Muñoz al test de La Lectura. ¿Sabes qué canción le gustaría que sonara en su funeral? http://tinyurl.com/33nxdeha",
+      "links": [
+        {
+          "label": "http://tinyurl.com/33nxdeha",
+          "url": "https://tinyurl.com/33nxdeha"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 1864401098,
       "postUrl": "https://t.me/genbeta/20029?single",
       "source": {
@@ -2046,6 +2653,60 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 2203207829,
+      "postUrl": "https://t.me/elmundoes/5018?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "El hombre más fuerte de España, una mítica discoteca que reabre sus puertas y una nueva polémica política. Estas son las tres noticias que destacamos hoy\n\n🔈 La ministra de Hacienda y vicepresidenta del Gobierno ha levantado una fuerte polémica al referirse al portavoz del PP en el Congreso como \"el que no tiene pelo\". Tellado y Feijóo no han dudado en contestar a Montero http://tinyurl.com/4a95fzha\n\n💪🏻 El hombre más fuerte de España es capaz de arrastrar pesados camiones. Para ello lleva un estricto entrenamiento y una pantagruélica dieta de más de 8.000 calorías http://tinyurl.com/3rwckz7d\n\n🕺🏻¿Estuviste alguna vez en la mítica Gabana? Ahora vas a poder volver a pasar alguna noche en la discoteca que frecuentaba lo más granado de la sociedad madrileña. La sala reabre tras varios años cerrada http://tinyurl.com/3v8byu33",
+      "links": [
+        {
+          "label": "http://tinyurl.com/4a95fzha",
+          "url": "https://tinyurl.com/4a95fzha"
+        },
+        {
+          "label": "http://tinyurl.com/3rwckz7d",
+          "url": "https://tinyurl.com/3rwckz7d"
+        },
+        {
+          "label": "http://tinyurl.com/3v8byu33",
+          "url": "https://tinyurl.com/3v8byu33"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
@@ -2203,6 +2864,52 @@
       }
     },
     {
+      "id": 4199796570,
+      "postUrl": "https://t.me/elmundoes/5017?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Un avión de carga aterriza en llamas tras sufrir un problema con uno de sus motores. Ha sucedido en Miami y ha dejado estas impactantes imágenes http://tinyurl.com/chb34ct7",
+      "links": [
+        {
+          "label": "http://tinyurl.com/chb34ct7",
+          "url": "https://tinyurl.com/chb34ct7"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 3454792500,
       "postUrl": "https://t.me/genbeta/20027?single",
       "source": {
@@ -2354,6 +3061,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 1689024499,
+      "postUrl": "https://t.me/elmundoes/5016?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "La Guardia Civil investiga si los hermanos de Morata de Tajuña fueron asesinados a martillazos tras contraer una cuantiosa deuda para pagar a un supuesto novio virtual que decía ser militar del ejército de EEUU http://tinyurl.com/y3tc9h35",
+      "links": [
+        {
+          "label": "http://tinyurl.com/y3tc9h35",
+          "url": "https://tinyurl.com/y3tc9h35"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
@@ -2511,6 +3264,60 @@
       }
     },
     {
+      "id": 1346348560,
+      "postUrl": "https://t.me/elmundoes/5015?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "La jornada deja varias noticias estremecedoras: \n\n😔 Muere de hambre un niño de 2 años tras pasar varios días junto al cadáver de su padre http://tinyurl.com/3x4j3v7w\n\n🦠 Un estudio arroja luz sobre la hidroxicloroquina: el fármaco que nunca debió usarse masivamente contra el Covid. Podría haber causado miles de muertes \nhttp://tinyurl.com/2jjppyvt\n\n🧃 Y atención a esto: asocian el aumento de peso con el consumo de zumos 100% de frutas, especialmente en menores de 8 años http://tinyurl.com/75y7nw7d",
+      "links": [
+        {
+          "label": "http://tinyurl.com/3x4j3v7w",
+          "url": "https://tinyurl.com/3x4j3v7w"
+        },
+        {
+          "label": "http://tinyurl.com/2jjppyvt",
+          "url": "https://tinyurl.com/2jjppyvt"
+        },
+        {
+          "label": "http://tinyurl.com/75y7nw7d",
+          "url": "https://tinyurl.com/75y7nw7d"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 3368605518,
       "postUrl": "https://t.me/genbeta/20025?single",
       "source": {
@@ -2662,6 +3469,60 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 4134252433,
+      "postUrl": "https://t.me/elmundoes/5014?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🗞️ Te contamos tres noticias que nos ha dejado este martes \n\n🔞 El Gobierno quiere poner coto a uno de los grandes males que afectan a nuestros menores: el acceso al ingente contenido pornográfico que hay en Internet. Te contamos cómo quiere hacerlo. http://tinyurl.com/3cmjr6tk\n\n🤝 PP y PSOE por fin se han puesto de acuerdo en algo. Van a cambiar la Constitución para que no aparezca el término disminuido. Será sustituido por discapacitado. http://tinyurl.com/6jrwb6zv\n\n🥛 ¿Estás seguro que ese yogur que te tomas después de comer es un yogur de verdad? Te damos las claves para distinguir este delicioso lácteo http://tinyurl.com/9drhy5cn",
+      "links": [
+        {
+          "label": "http://tinyurl.com/3cmjr6tk",
+          "url": "https://tinyurl.com/3cmjr6tk"
+        },
+        {
+          "label": "http://tinyurl.com/6jrwb6zv",
+          "url": "https://tinyurl.com/6jrwb6zv"
+        },
+        {
+          "label": "http://tinyurl.com/9drhy5cn",
+          "url": "https://tinyurl.com/9drhy5cn"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
@@ -2819,6 +3680,52 @@
       }
     },
     {
+      "id": 642090518,
+      "postUrl": "https://t.me/elmundoes/5013?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Sí, las navidades envejecen... pero hay trucos para devolver a tu piel el aspecto que tenía antes de los excesos https://dozz.es/f8nch4",
+      "links": [
+        {
+          "label": "https://dozz.es/f8nch4",
+          "url": "https://dozz.es/f8nch4"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 149991528,
       "postUrl": "https://t.me/genbeta/20023?single",
       "source": {
@@ -2968,6 +3875,52 @@
       }
     },
     {
+      "id": 3625714543,
+      "postUrl": "https://t.me/elmundoes/5012?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🔴 El Gobierno subirá el Salario Mínimo en 2024 hasta los 1.134 euros http://tinyurl.com/3pm3uc6u",
+      "links": [
+        {
+          "label": "http://tinyurl.com/3pm3uc6u",
+          "url": "https://tinyurl.com/3pm3uc6u"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
+      }
+    },
+    {
       "id": 3655785001,
       "postUrl": "https://t.me/genbeta/20022?single",
       "source": {
@@ -3114,6 +4067,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T07:53:25.936Z"
+      }
+    },
+    {
+      "id": 3684790812,
+      "postUrl": "https://t.me/elmundoes/5011?single",
+      "source": {
+        "title": "EL MUNDO",
+        "handle": "elmundoes",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Thuda7DwJ2obw3Mc0vUN3A0g7lXTtX9wS1SHkvpUwryo4AkdjlSPkx4P9XtRwTn-pRPuhTreBJ7gV2k-xLztuyg9Q0vgaMNZShNdm6V5VbBWAnA0TyS5Y1nu7cLS4JQm1xWS18F7BKLQzCnmffxWYJ4r9mnafrXRqOCkzALT2AbfTruE8hc-Yqf7xsZuEech4WpNtbRQ6dhJRPCo2rXlzRigJF3EDXcIL_e_fMBAkBAw74CfbXza-7mnApoTrktafPUdo6VVIaeiNAsYv9bw9xbmVXKV0vtkzNePO1rxLWvGhZtQGK5X7gbqAiCOIRrYmJEmkr1ROt_dBMIRhOfOuQ.jpg"
+      },
+      "sourceId": "es:elmundoes",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "¿Nostalgia de los bollos de los 80 y 90? Esta mantequería de Madrid los tiene y los vende en apenas unas horas gracias a las redes sociales http://tinyurl.com/bdebb43k",
+      "links": [
+        {
+          "label": "http://tinyurl.com/bdebb43k",
+          "url": "https://tinyurl.com/bdebb43k"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:38.588Z",
+      "expiresAt": "2026-05-03T07:15:38.588Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:38.588Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:38.588Z"
       }
     },
     {
