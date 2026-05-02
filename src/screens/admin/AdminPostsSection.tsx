@@ -106,7 +106,7 @@ export function AdminPostsSection({
           { value: "all", label: "Все" },
           { value: "published", label: "Опубликованные" },
           { value: "pending", label: "На проверке" },
-          { value: "blocked", label: "Заблокированные" },
+          { value: "blocked", label: "Заблочен" },
         ].map((item) => (
           <button
             key={item.value}

@@ -35,6 +35,8 @@ export type CreatorChannelPlacement = {
   endsAt: string | null;
   pricingLabel: string;
   donateUrl: string | null;
+  sourceId?: string | null;
+  sourceWasExisting?: boolean;
 };
 
 export type TgUser = {

@@ -647,143 +647,141 @@ export function AdminSourcesSection({
           ) : null}
         </div>
 
-        <div className="rounded-[24px] border border-white/10 bg-[#11121a] p-3 sm:p-4">
-          <div className="mb-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <div className="text-lg font-semibold text-white">Список каналов</div>
-              <div className="text-sm text-white/45">
-                Поиск по названию, handle, заметкам и тегам.
-              </div>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="text-lg font-semibold text-white">Список каналов</div>
+            <div className="text-sm text-white/45">
+              Поиск по названию, handle, заметкам и тегам.
             </div>
-
-            <input
-              value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="поиск по каналам"
-              className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25 sm:max-w-[320px]"
-            />
           </div>
 
-          <div className="grid gap-2 lg:grid-cols-2">
-            {filteredSources.map((source) => {
-              const tags = getSourceTags(source);
-              const groups = getParentGroups(tags);
-              const isExpanded = expandedSourceId === source.id;
-
-              return (
-                <div
-                  key={source.id}
-                  className="w-full overflow-hidden rounded-[18px] border border-white/10 bg-[#151722] px-3 py-2"
-                >
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setExpandedSourceId((current) =>
-                        current === source.id ? null : source.id
-                      )
-                    }
-                    className="flex w-full min-w-0 items-center justify-between gap-2 text-left"
-                  >
-                    <SourceAvatar
-                      source={source}
-                      onAvatarClick={() => {
-                        void saveAvatarOverride(source);
-                      }}
-                    />
-
-                    <div className="min-w-0 flex-1 overflow-hidden">
-                      <div className="truncate text-sm font-semibold text-white">
-                        {source.title || "Без названия"}
-                      </div>
-                      <div className="truncate text-xs text-white/55">@{source.handle}</div>
-                    </div>
-
-                    <div
-                      className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] ${
-                        source.status === "active"
-                          ? "bg-emerald-500/15 text-emerald-300"
-                          : "bg-white/10 text-white/55"
-                      }`}
-                    >
-                      {source.status === "active" ? "✔" : "Ⅱ"}
-                    </div>
-
-                    <div className="ml-1 flex items-center">
-                      <ChevronDown
-                        className={`h-4 w-4 shrink-0 text-white/60 transition ${
-                          isExpanded ? "rotate-180" : ""
-                        }`}
-                      />
-                    </div>
-                  </button>
-
-                  {isExpanded ? (
-                    <div className="mt-3 border-t border-white/10 pt-3">
-                      <div className="flex max-w-full flex-wrap gap-1.5 overflow-hidden">
-                        {groups.flatMap((group) => [
-                          <div
-                            key={`card-parent-${group.parentTag}`}
-                            className="max-w-full truncate rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-white"
-                          >
-                            {resolveTagLabel(group.parentTag, "ru")}
-                          </div>,
-                          ...group.childTags.map((tag) => (
-                            <div
-                              key={`card-child-${tag}`}
-                              className="max-w-full truncate rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-2.5 py-1 text-xs text-[#d9f3ff]"
-                            >
-                              {resolveTagLabel(tag, "ru")}
-                            </div>
-                          )),
-                        ])}
-
-                        {groups.length === 0 ? (
-                          <div className="rounded-full border border-dashed border-white/10 px-2.5 py-1 text-xs text-white/35">
-                            без тегов
-                          </div>
-                        ) : null}
-                      </div>
-
-                      <div className="mt-3 space-y-1 text-xs text-white/45">
-                        <div>Создан: {formatDate(source.createdAt)}</div>
-                        <div>Обновлён: {formatDate(source.updatedAt)}</div>
-                        <div>Проверка: {formatDate(source.lastCheckedAt)}</div>
-                        <div>Импорт: {formatDate(source.lastImportedAt)}</div>
-                        <div>Постов: {source.importedPostsCount || 0}</div>
-                      </div>
-
-                      <div className="mt-3 flex gap-2">
-                        <button
-                          type="button"
-                          onClick={() => startEdit(source)}
-                          className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/85 transition hover:bg-white/10"
-                        >
-                          редактировать
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={() => {
-                            void deleteSource(source);
-                          }}
-                          className="rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm text-red-200 transition hover:bg-red-500/15"
-                        >
-                          удалить
-                        </button>
-                      </div>
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
-          </div>
-
-          {filteredSources.length === 0 ? (
-            <div className="rounded-[24px] border border-dashed border-white/10 bg-[#151722] px-4 py-8 text-center text-sm text-white/45">
-              Каналы по выбранной стране не найдены.
-            </div>
-          ) : null}
+          <input
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
+            placeholder="поиск по каналам"
+            className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25 sm:max-w-[320px]"
+          />
         </div>
+
+        <div className="grid gap-2 lg:grid-cols-2">
+          {filteredSources.map((source) => {
+            const tags = getSourceTags(source);
+            const groups = getParentGroups(tags);
+            const isExpanded = expandedSourceId === source.id;
+
+            return (
+              <div
+                key={source.id}
+                className="w-full overflow-hidden rounded-[18px] border border-white/10 bg-[#151722] px-3 py-2"
+              >
+                <button
+                  type="button"
+                  onClick={() =>
+                    setExpandedSourceId((current) =>
+                      current === source.id ? null : source.id
+                    )
+                  }
+                  className="flex w-full min-w-0 items-center justify-between gap-2 text-left"
+                >
+                  <SourceAvatar
+                    source={source}
+                    onAvatarClick={() => {
+                      void saveAvatarOverride(source);
+                    }}
+                  />
+
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <div className="truncate text-sm font-semibold text-white">
+                      {source.title || "Без названия"}
+                    </div>
+                    <div className="truncate text-xs text-white/55">@{source.handle}</div>
+                  </div>
+
+                  <div
+                    className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] ${
+                      source.status === "active"
+                        ? "bg-emerald-500/15 text-emerald-300"
+                        : "bg-white/10 text-white/55"
+                    }`}
+                  >
+                    {source.status === "active" ? "✔" : "Ⅱ"}
+                  </div>
+
+                  <div className="ml-1 flex items-center">
+                    <ChevronDown
+                      className={`h-4 w-4 shrink-0 text-white/60 transition ${
+                        isExpanded ? "rotate-180" : ""
+                      }`}
+                    />
+                  </div>
+                </button>
+
+                {isExpanded ? (
+                  <div className="mt-3 border-t border-white/10 pt-3">
+                    <div className="flex max-w-full flex-wrap gap-1.5 overflow-hidden">
+                      {groups.flatMap((group) => [
+                        <div
+                          key={`card-parent-${group.parentTag}`}
+                          className="max-w-full truncate rounded-full border border-white/10 bg-white/10 px-2.5 py-1 text-xs text-white"
+                        >
+                          {resolveTagLabel(group.parentTag, "ru")}
+                        </div>,
+                        ...group.childTags.map((tag) => (
+                          <div
+                            key={`card-child-${tag}`}
+                            className="max-w-full truncate rounded-full border border-[#7dd3fc]/20 bg-[#7dd3fc]/10 px-2.5 py-1 text-xs text-[#d9f3ff]"
+                          >
+                            {resolveTagLabel(tag, "ru")}
+                          </div>
+                        )),
+                      ])}
+
+                      {groups.length === 0 ? (
+                        <div className="rounded-full border border-dashed border-white/10 px-2.5 py-1 text-xs text-white/35">
+                          без тегов
+                        </div>
+                      ) : null}
+                    </div>
+
+                    <div className="mt-3 space-y-1 text-xs text-white/45">
+                      <div>Создан: {formatDate(source.createdAt)}</div>
+                      <div>Обновлён: {formatDate(source.updatedAt)}</div>
+                      <div>Проверка: {formatDate(source.lastCheckedAt)}</div>
+                      <div>Импорт: {formatDate(source.lastImportedAt)}</div>
+                      <div>Постов: {source.importedPostsCount || 0}</div>
+                    </div>
+
+                    <div className="mt-3 flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => startEdit(source)}
+                        className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/85 transition hover:bg-white/10"
+                      >
+                        редактировать
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          void deleteSource(source);
+                        }}
+                        className="rounded-full border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm text-red-200 transition hover:bg-red-500/15"
+                      >
+                        удалить
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            );
+          })}
+        </div>
+
+        {filteredSources.length === 0 ? (
+          <div className="rounded-[24px] border border-dashed border-white/10 bg-[#151722] px-4 py-8 text-center text-sm text-white/45">
+            Каналы по выбранной стране не найдены.
+          </div>
+        ) : null}        
       </div>
     </AdminSectionCard>
   );

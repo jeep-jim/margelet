@@ -5,7 +5,7 @@ import type { CreatorChannelPlacement } from "../creator/creator.types";
 
 const CREATOR_CHANNELS_STORAGE_KEY = "margelet_creator_channels_v1";
 
-type MonetizationFilter = "all" | "paid" | "barter" | "pending" | "active" | "expired" | "paused" | "canceled";
+type MonetizationFilter = "all" | "paid" | "barter" | "claim" | "pending" | "active" | "expired" | "paused" | "canceled";
 
 function readPlacements() {
   if (typeof window === "undefined") return [];
@@ -65,7 +65,6 @@ export function AdminMonetizationSection() {
           action: "update_placement_status",
           placementId,
           status,
-          removeSource: status === "paused" || status === "canceled",
         }),
       });
 
@@ -81,22 +80,48 @@ export function AdminMonetizationSection() {
     }
   };
 
+  const extendPlacement = async (placementId: string) => {
+    try {
+      const response = await fetch("/api/telegram-webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          source: "site",
+          action: "extend_placement",
+          placementId,
+          days: 30,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!response.ok || !data?.ok) {
+        alert("Не получилось продлить заявку");
+        return;
+      }
+
+      await loadRemotePlacements();
+    } catch {
+      alert("Не получилось продлить заявку");
+    }
+  };
+
   const stats = useMemo(() => {
     const paid = items.filter((item) => item.plan === "paid");
     const barter = items.filter((item) => item.plan === "barter");
+    const claim = items.filter((item) => item.plan === "claim");
     const active = items.filter((item) => item.status === "active");
     const pending = items.filter((item) => item.status === "pending");
     const expired = items.filter((item) => item.status === "expired" || item.status === "paused");
     const canceled = items.filter((item) => item.status === "canceled");
 
-    return { paid, barter, active, pending, expired, canceled };
+    return { paid, barter, claim, active, pending, expired, canceled };
   }, [items]);
 
   const filteredItems = useMemo(() => {
     return items
       .filter((item) => {
         if (filter === "all") return item.status !== "canceled";
-        if (filter === "paid" || filter === "barter") return item.plan === filter;
+        if (filter === "paid" || filter === "barter" || filter === "claim") return item.plan === filter;
         return item.status === filter;
       })
       .sort((a, b) => Date.parse(b.createdAt || "") - Date.parse(a.createdAt || ""));
@@ -106,6 +131,7 @@ export function AdminMonetizationSection() {
     { value: "all", label: "все" },
     { value: "paid", label: "оплата" },
     { value: "barter", label: "бартер" },
+    { value: "claim", label: "подтверждение" },
     { value: "pending", label: "ожидают" },
     { value: "active", label: "активные" },
     { value: "expired", label: "истекли" },
@@ -257,7 +283,17 @@ export function AdminMonetizationSection() {
                             onClick={() => updatePlacementStatus(item.id, "active")}
                             className="rounded-full border border-emerald-400/25 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-200 transition hover:bg-emerald-400/15"
                           >
-                            активировать
+                            Пуск
+                          </button>
+                        ) : null}
+
+                        {item.status === "active" || item.status === "paused" || item.status === "expired" ? (
+                          <button
+                            type="button"
+                            onClick={() => extendPlacement(item.id)}
+                            className="rounded-full border border-sky-400/25 bg-sky-400/10 px-3 py-1.5 text-xs font-semibold text-sky-200 transition hover:bg-sky-400/15"
+                          >
+                            30д
                           </button>
                         ) : null}
 
@@ -265,13 +301,13 @@ export function AdminMonetizationSection() {
                           <button
                             type="button"
                             onClick={() => {
-                              if (confirm("Удалить заявку и убрать канал из ленты?")) {
+                              if (confirm("Удалить заявку? Если канал был создан этой заявкой, он уйдёт из ленты. Если канал существовал раньше, он останется и будет поставлен на паузу.")) {
                                 updatePlacementStatus(item.id, "canceled");
                               }
                             }}
                             className="rounded-full border border-red-400/25 bg-red-400/10 px-3 py-1.5 text-xs font-semibold text-red-200 transition hover:bg-red-400/15"
                           >
-                            удалить заявку
+                            удалить
                           </button>
                         ) : null}
                       </div>

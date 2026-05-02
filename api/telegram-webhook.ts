@@ -27,6 +27,8 @@ type Placement = {
   donateUrl: string | null;
   telegramPaymentChargeId?: string | null;
   lastCheckAt?: string | null;
+  sourceId?: string | null;
+  sourceWasExisting?: boolean;
 };
 
 type SourceRecord = {
@@ -48,6 +50,13 @@ type SourceRecord = {
   lastSeenPostId: string | null;
   importedPostsCount: number;
   lastRefreshCursorPostId: string | null;
+  ownerTelegramId?: string | null;
+  ownerUsername?: string | null;
+  placementId?: string | null;
+  placementPlan?: PlacementPlan | null;
+  placementStatus?: PlacementStatus | null;
+  placementEndsAt?: string | null;
+  sourceCreatedByPlacement?: boolean;
 };
 
 type SourcesFile = {
@@ -430,11 +439,36 @@ function normalizePlacement(raw: Partial<Placement>): Placement {
     donateUrl: raw.donateUrl || null,
     telegramPaymentChargeId: raw.telegramPaymentChargeId || null,
     lastCheckAt: raw.lastCheckAt || null,
+    sourceId: raw.sourceId || null,
+    sourceWasExisting: Boolean(raw.sourceWasExisting),
+  };
+}
+
+function findSourceForPlacement(sources: SourceRecord[], placement: Pick<Placement, "country" | "channelHandle" | "sourceId">) {
+  const country = normalizeCountry(placement.country);
+  const handle = normalizeHandle(placement.channelHandle);
+
+  return sources.find(
+    (source) =>
+      (placement.sourceId && source.id === placement.sourceId) ||
+      (normalizeCountry(source.countryCode) === country && normalizeHandle(source.handle) === handle)
+  );
+}
+
+async function withSourceLink(raw: Partial<Placement>) {
+  const next = normalizePlacement(raw);
+  const { data } = await readSources();
+  const existingSource = findSourceForPlacement(data.sources, next);
+
+  return {
+    ...next,
+    sourceId: next.sourceId || existingSource?.id || null,
+    sourceWasExisting: typeof raw.sourceWasExisting === "boolean" ? raw.sourceWasExisting : Boolean(existingSource),
   };
 }
 
 async function upsertPlacement(nextRaw: Partial<Placement>) {
-  const next = normalizePlacement(nextRaw);
+  const next = await withSourceLink(nextRaw);
   const { items } = await readPlacements();
   const index = items.findIndex(
     (item) => item.id === next.id ||
@@ -443,7 +477,20 @@ async function upsertPlacement(nextRaw: Partial<Placement>) {
         normalizeCountry(item.country) === normalizeCountry(next.country))
   );
 
-  const updated = index >= 0 ? items.map((item, itemIndex) => (itemIndex === index ? { ...item, ...next } : item)) : [next, ...items];
+  const updated =
+    index >= 0
+      ? items.map((item, itemIndex) =>
+          itemIndex === index
+            ? {
+                ...item,
+                ...next,
+                sourceId: next.sourceId || item.sourceId || null,
+                sourceWasExisting: item.sourceWasExisting || next.sourceWasExisting,
+              }
+            : item
+        )
+      : [next, ...items];
+
   await writePlacements(updated, `Update placement ${next.channelHandle}`);
   return index >= 0 ? { placement: updated[index], existed: true } : { placement: next, existed: false };
 }
@@ -496,20 +543,21 @@ async function upsertSourceFromPlacement(placement: Placement) {
   const meta = await fetchTelegramMeta(handle);
   const tags = placement.tags?.length ? placement.tags : ["news"];
   const { data, sha } = await readSources();
-  const existing = data.sources.find((source) => source.id === id || (source.countryCode === country && normalizeHandle(source.handle) === handle));
+  const existing = findSourceForPlacement(data.sources, placement);
+  const sourceWasExisting = Boolean(existing || placement.sourceWasExisting);
 
   const next: SourceRecord = {
-    id,
+    id: existing?.id || placement.sourceId || id,
     countryCode: country,
     handle,
     title: placement.channelTitle?.trim() || meta?.title || existing?.title || handle,
     avatarUrl: placement.channelAvatarUrl || meta?.avatarUrl || existing?.avatarUrl || null,
     avatarOverride: existing?.avatarOverride ?? null,
     verified: Boolean(placement.verified || meta?.verified || existing?.verified),
-    defaultTag: tags[0] || "news",
-    tags,
+    defaultTag: existing?.defaultTag || tags[0] || "news",
+    tags: tags.length ? tags : existing?.tags || ["news"],
     status: "active",
-    note: existing?.note ?? `creator:${placement.plan}`,
+    note: typeof existing?.note === "string" ? existing.note : null,
     createdAt: existing?.createdAt || now,
     updatedAt: now,
     lastCheckedAt: existing?.lastCheckedAt ?? null,
@@ -517,6 +565,13 @@ async function upsertSourceFromPlacement(placement: Placement) {
     lastSeenPostId: existing?.lastSeenPostId ?? null,
     importedPostsCount: existing?.importedPostsCount ?? 0,
     lastRefreshCursorPostId: existing?.lastRefreshCursorPostId ?? null,
+    ownerTelegramId: placement.ownerTelegramId || existing?.ownerTelegramId || null,
+    ownerUsername: placement.ownerUsername || existing?.ownerUsername || null,
+    placementId: placement.id,
+    placementPlan: placement.plan,
+    placementStatus: placement.status,
+    placementEndsAt: placement.endsAt || null,
+    sourceCreatedByPlacement: existing?.sourceCreatedByPlacement ?? !sourceWasExisting,
   };
 
   data.updatedAt = now;
@@ -524,34 +579,95 @@ async function upsertSourceFromPlacement(placement: Placement) {
     ? data.sources.map((source) => (source.id === existing.id ? { ...existing, ...next } : source))
     : [next, ...data.sources];
 
-  await writeSources(data, sha, `Add creator source ${handle}`);
+  await writeSources(data, sha, `Upsert placement source ${handle}`);
+
+  await updatePlacement(placement.id, {
+    sourceId: next.id,
+    sourceWasExisting,
+  });
 }
 
-async function removeSourceFromPlacement(placement: Placement) {
-  const country = normalizeCountry(placement.country);
-  const handle = normalizeHandle(placement.channelHandle);
+async function deactivateSourceFromPlacement(placement: Placement, nextStatus: PlacementStatus) {
   const { data, sha } = await readSources();
-  const nextSources = data.sources.filter(
-    (source) => !(normalizeCountry(source.countryCode) === country && normalizeHandle(source.handle) === handle)
-  );
+  const existing = findSourceForPlacement(data.sources, placement);
 
-  if (nextSources.length === data.sources.length) return;
+  if (!existing) return;
+
+  const shouldRemove = Boolean(existing.sourceCreatedByPlacement && !placement.sourceWasExisting && nextStatus === "canceled");
 
   data.updatedAt = new Date().toISOString();
-  data.sources = nextSources;
-  await writeSources(data, sha, `Remove creator source ${handle}`);
+  data.sources = shouldRemove
+    ? data.sources.filter((source) => source.id !== existing.id)
+    : data.sources.map((source) =>
+        source.id === existing.id
+          ? {
+              ...source,
+              status: nextStatus === "active" ? "active" : "paused",
+              placementStatus: nextStatus,
+              placementEndsAt: placement.endsAt || source.placementEndsAt || null,
+              updatedAt: data.updatedAt!,
+            }
+          : source
+      );
+
+  await writeSources(data, sha, shouldRemove ? `Remove placement source ${placement.channelHandle}` : `Update placement source ${placement.channelHandle}`);
 }
 
 async function activatePlacement(id: string, patch: Partial<Placement>) {
+  const previous = (await readPlacements()).items.find((item) => item.id === id);
   const placement = await updatePlacement(id, {
     ...patch,
     status: "active",
-    startAt: new Date().toISOString(),
-    endsAt: addDays(30),
+    startAt: patch.startAt || previous?.startAt || new Date().toISOString(),
+    endsAt: patch.endsAt || previous?.endsAt || addDays(30),
   });
 
   if (placement) await upsertSourceFromPlacement(placement);
   return placement;
+}
+
+async function extendPlacement(id: string, days = 30) {
+  const { items } = await readPlacements();
+  const current = items.find((item) => item.id === id);
+
+  if (!current) return null;
+
+  const now = Date.now();
+  const base = current.endsAt && Date.parse(current.endsAt) > now ? Date.parse(current.endsAt) : now;
+  const endsAt = new Date(base + days * 24 * 60 * 60 * 1000).toISOString();
+  const next = await updatePlacement(id, {
+    status: "active",
+    startAt: current.startAt || new Date().toISOString(),
+    endsAt,
+  });
+
+  if (next) await upsertSourceFromPlacement(next);
+  return next;
+}
+
+async function expireOverduePlacements() {
+  const { items } = await readPlacements();
+  const now = Date.now();
+  const expired = items.filter(
+    (item) => item.status === "active" && item.endsAt && Date.parse(item.endsAt) <= now
+  );
+
+  if (!expired.length) return items;
+
+  const expiredIds = new Set(expired.map((item) => item.id));
+  const updated = items.map((item) =>
+    expiredIds.has(item.id) ? normalizePlacement({ ...item, status: "expired" }) : item
+  );
+
+  await writePlacements(updated, "Expire placements");
+
+  for (const item of updated) {
+    if (expiredIds.has(item.id)) {
+      await deactivateSourceFromPlacement(item, "expired");
+    }
+  }
+
+  return updated;
 }
 
 async function verifyBarterPost(handle: string, expectedSlug: string) {
@@ -575,6 +691,8 @@ async function verifyBarterPost(handle: string, expectedSlug: string) {
 }
 
 async function handleSiteAction(body: any, res: VercelResponse) {
+  await expireOverduePlacements();
+
   if (body?.action === "upsert_placement") {
     const placement = normalizePlacement(body.placement || {});
     if (!placement.ownerTelegramId || !placement.channelHandle || !placement.country) {
@@ -583,6 +701,23 @@ async function handleSiteAction(body: any, res: VercelResponse) {
 
     const result = await upsertPlacement(placement);
     return res.status(200).json({ ok: true, placement: result.placement, existed: result.existed });
+  }
+
+  if (body?.action === "extend_placement") {
+    const placementId = asString(body.placementId);
+    const days = Number(body.days || 30);
+
+    if (!placementId) {
+      return res.status(400).json({ ok: false, error: "Invalid placement extend" });
+    }
+
+    const next = await extendPlacement(placementId, Number.isFinite(days) && days > 0 ? days : 30);
+
+    if (!next) {
+      return res.status(404).json({ ok: false, error: "Placement not found" });
+    }
+
+    return res.status(200).json({ ok: true, placement: next });
   }
 
   if (body?.action === "update_placement_status") {
@@ -611,8 +746,8 @@ async function handleSiteAction(body: any, res: VercelResponse) {
       });
     } else {
       next = await updatePlacement(placementId, { status });
-      if (next && (status === "paused" || status === "canceled" || Boolean(body.removeSource))) {
-        await removeSourceFromPlacement(next);
+      if (next && (status === "paused" || status === "expired" || status === "canceled" || Boolean(body.removeSource))) {
+        await deactivateSourceFromPlacement(next, status);
       }
     }
 
@@ -798,7 +933,7 @@ async function handleStatus(update: TelegramUpdate) {
     return itemCopy.statusLine(
       item.channelHandle,
       localizeStatus(itemCopy, item.status),
-      item.plan === "paid" ? itemCopy.planPaid : itemCopy.planBarter
+      item.plan === "paid" ? itemCopy.planPaid : item.plan === "barter" ? itemCopy.planBarter : getClaimPricingLabel(item.country)
     );
   });
 
@@ -812,7 +947,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const ownerTelegramId = String(req.query.ownerTelegramId || "").trim();
-    const { items } = await readPlacements();
+    const items = await expireOverduePlacements();
 
     const includeCanceled = String(req.query.includeCanceled || "") === "1";
     const visibleItems = includeCanceled ? items : items.filter((item) => item.status !== "canceled");
