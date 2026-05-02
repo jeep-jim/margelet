@@ -1,6 +1,113 @@
 {
-  "updatedAt": "2026-05-02T03:51:29.080Z",
+  "updatedAt": "2026-05-02T04:49:05.122Z",
   "posts": [
+    {
+      "id": 778227438,
+      "postUrl": "https://t.me/tass_agency/373928?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "▶️ Мобилизация на Украине сопровождается стукачеством и карательными мероприятиями, заявил в беседе с ТАСС Николай Азаров.\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 3639647698,
+      "postUrl": "https://t.me/readovkanews/109885?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/ea2b23115a.mp4?token=DSp9hsvejHqXzdN8zWI7CtTwxNO6y902_ZRkjoqXRcbHYbyOOLzrCfISUUuaYFaVV8wg8uRh-OVb9KK_9WRNKiR4GQw6J1-WHvW2GYw72rXGFm_v_7Cy8kEibNiYTvIyyxJ2LVa5_8WohtpudhCualMy-qJW9vy6HAtzRLQkBhnkx1TW5cOyKnxS85GMfViyjUVdNbLpCrHB87ObVk0bgBCoTQK8O37VvAaSrU56SEMQV6lVP0cd5QaDW4gLov6bs1iIOOe1oHQg2jpwG8GrKx2YYDqSvakA_Qo3Jyr3XaWaFRJTERCNOgFQ3DEV5ONUjdOCZ5gwQERL15Is_ZQSXA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        },
+        {
+          "id": "video-2",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/f394505e7c.mp4?token=QfFLwk_W2ZlYd3qcAc6K3KA1fEk_qeNw9jS-PQnAjaipYIxrnVrZ2R_cY_Jg0wnm778OFycUPccwfosTYh2prFnRw4V6DktRBbWXabzTmt1CllqciNjCznKbHfgWGqknatUz41SwthuA7JUaBs_bAaxEJ9pVcHmq83BhTElpqsA7xkiO1JrwyBY5q00k1wWIuV5xI3XVcjAqQCUnNg0xbmBPmDt5JDBA9yzBhO4qgZRsbRfpeQWqGc2RsQ6UOjTOR48FJ6c1WTTJGG3YP6aDCn_tFknFqNBosyEYAlSMVmskFqD1F5WDMEf5gbjJAFzS67GSniX0Tey0H2XnpPBn4A",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Торговый центр под Новосибирском сгорел дотла — площадь пожара составила 5 тыс кв м\n\nВ Искитиме Новосибирской области ночью полностью сгорел ТЦ «Апельсин». Пожару присвоили четвертый ранг сложности. На месте работали 87 спасателей и 27 единиц техники, для бесперебойной подачи воды был задействован пожарный поезд. Открытое горение ликвидировали, пострадавших нет, сообщает региональное МЧС.\n\nПрокуратура начала проверку соблюдения должностными лицами ТЦ правил пожарной безопасности на момент ЧП и ранее.\n\n🎉 Подписывайся на Readovka в МАКС",
+      "links": [
+        {
+          "label": "Подписывайся на Readovka в МАКС",
+          "url": "https://max.ru/readovkanews"
+        }
+      ],
+      "createdAt": "2026-05-02T04:48:39.787Z",
+      "expiresAt": "2026-05-03T04:48:39.787Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:39.787Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:39.787Z"
+      }
+    },
     {
       "id": 1393600486,
       "postUrl": "https://t.me/rian_ru/337875?single",
@@ -52,47 +159,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T01:20:03.721Z"
-      }
-    },
-    {
-      "id": 311001486,
-      "postUrl": "https://t.me/tass_agency/373902?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Один БПЛА уничтожен над Истрой в Московской области, сообщила глава муниципального округа.",
-      "links": [],
-      "createdAt": "2026-05-01T23:39:14.951Z",
-      "expiresAt": "2026-05-02T23:39:14.951Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:14.951Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T23:39:14.951Z"
       }
     },
     {
@@ -629,69 +695,13 @@
       }
     },
     {
-      "id": 2934094283,
-      "postUrl": "https://t.me/readovkanews/109884?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/eL_wSU6kr8vrn4Hy5diRSH8YMsu60vfQz28WvnJpzdMtQUirwVRfSuNBPqiKmhMU244gXDFnwxOJKdpRQ-EwwOurdmX9XooeokJ3o_-7f-8p6xJp1LgCVmY1x2exChb1ygbHA-BkAxNjA4hz3lpSYQ-diaAMM2UYfpKcTIK6qaLcj3peg-VKDkOUNVZQqHz0zyRQ4P1Pp_dOPfSZQHDllurE8qxJbxxQxKAgVJnbP890H05dXcHXgEWBsPiB3l6qBjbbvOI3n-mX_g-wC_QtYTJ1sFcxrElpsoxktjKd2QGRZ02GZzALnty-6TU613ArroNYTDQw27gfH_Fggya74w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "ВС РФ открыли возможность прорыва к лесам у Сум — итоговая сводка Readovka за 1 мая\n\nРусские войска развивают наступление к северу от Сум и открыли возможность прорыва в крупный лесной массив, прикрывающий город. После взятия Корчаковки перед подразделениями появляется шанс выйти к трассе Н-07 — ключевой артерии снабжения украинских гарнизонов в этом районе. Даже частичный огневой контроль над дорогой способен существенно осложнить логистику ВСУ и вынудить их искать обходные маршруты через ограниченную сеть. \n\nНа фоне неоднородной обороны противника и роста числа вооруженных инцидентов внутри страны ситуация начинает складываться не в его пользу. Сумеют ли ВСУ удержать оборону при угрозе срыва снабжения своих гарнизонов — в итоговой сводке Readovka.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "сводке",
-          "url": "https://readovka.news/news/242171/"
-        },
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-01T21:40:35.282Z",
-      "expiresAt": "2026-05-02T21:40:35.282Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:35.282Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T21:40:35.282Z"
-      }
-    },
-    {
       "id": 1382636122,
       "postUrl": "https://t.me/rbcinvest/10237?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -1536,7 +1546,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -1897,7 +1907,7 @@
       "createdAt": "2026-05-01T09:07:56.429Z",
       "expiresAt": "2026-05-02T09:07:56.429Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:08:02.732Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:38.729Z",
       "tag": "travel",
       "tags": [
         "travel",
@@ -2110,6 +2120,103 @@
       }
     },
     {
+      "id": 706703969,
+      "postUrl": "https://t.me/tass_agency/373927?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "В Калужской области ночью уничтожены восемь украинских беспилотников, сообщил губернатор.",
+      "links": [],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 2934094283,
+      "postUrl": "https://t.me/readovkanews/109884?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/eL_wSU6kr8vrn4Hy5diRSH8YMsu60vfQz28WvnJpzdMtQUirwVRfSuNBPqiKmhMU244gXDFnwxOJKdpRQ-EwwOurdmX9XooeokJ3o_-7f-8p6xJp1LgCVmY1x2exChb1ygbHA-BkAxNjA4hz3lpSYQ-diaAMM2UYfpKcTIK6qaLcj3peg-VKDkOUNVZQqHz0zyRQ4P1Pp_dOPfSZQHDllurE8qxJbxxQxKAgVJnbP890H05dXcHXgEWBsPiB3l6qBjbbvOI3n-mX_g-wC_QtYTJ1sFcxrElpsoxktjKd2QGRZ02GZzALnty-6TU613ArroNYTDQw27gfH_Fggya74w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "ВС РФ открыли возможность прорыва к лесам у Сум — итоговая сводка Readovka за 1 мая\n\nРусские войска развивают наступление к северу от Сум и открыли возможность прорыва в крупный лесной массив, прикрывающий город. После взятия Корчаковки перед подразделениями появляется шанс выйти к трассе Н-07 — ключевой артерии снабжения украинских гарнизонов в этом районе. Даже частичный огневой контроль над дорогой способен существенно осложнить логистику ВСУ и вынудить их искать обходные маршруты через ограниченную сеть. \n\nНа фоне неоднородной обороны противника и роста числа вооруженных инцидентов внутри страны ситуация начинает складываться не в его пользу. Сумеют ли ВСУ удержать оборону при угрозе срыва снабжения своих гарнизонов — в итоговой сводке Readovka.\n\n🎉 Подписывайся на Readovka в МАКС",
+      "links": [
+        {
+          "label": "сводке",
+          "url": "https://readovka.news/news/242171/"
+        },
+        {
+          "label": "Подписывайся на Readovka в МАКС",
+          "url": "https://max.ru/readovkanews"
+        }
+      ],
+      "createdAt": "2026-05-01T21:40:35.282Z",
+      "expiresAt": "2026-05-02T21:40:35.282Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T21:40:35.282Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T21:40:35.282Z"
+      }
+    },
+    {
       "id": 4069351615,
       "postUrl": "https://t.me/rian_ru/337874?single",
       "source": {
@@ -2166,52 +2273,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T01:20:03.721Z"
-      }
-    },
-    {
-      "id": 1096430661,
-      "postUrl": "https://t.me/tass_agency/373901?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🚨 В Дагестане пресечена деятельность экстремистской группировки, контролировавшей село Губден. Об этом сообщили в СУ СК по республике.\n\nПо версии следствия, с 2015 года группа лиц объединилась в устойчивое экстремистское сообщество. Установлено, что они организовали блокпост, на котором принимали решения о въезде и выезде транспортных средств. К лицам, образ жизни которых не соответствовал их убеждениям, они применяли физическое и психологическое воздействие.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-01T23:39:14.951Z",
-      "expiresAt": "2026-05-02T23:39:14.951Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:14.951Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T23:39:14.951Z"
       }
     },
     {
@@ -2741,7 +2802,7 @@
       "createdAt": "2026-05-01T16:40:42.325Z",
       "expiresAt": "2026-05-02T16:40:42.325Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:36.516Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:40.633Z",
       "tag": "electronics",
       "tags": [
         "electronics",
@@ -2765,65 +2826,13 @@
       }
     },
     {
-      "id": 898836500,
-      "postUrl": "https://t.me/readovkanews/109883?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/YGHKl1Ht4L-OxV9ueCrR4VpizhrUaJkO2qtupQ8zvmzdmYxHamjl13yUIvT1hGDO0MRxYyoQBvI4kPdeWHeNjNRGMmyHp77NPAXSk7_gFHEm0lkfdbgyjWtq0LCfaQRgBT-Craw_nJKQTYroBg1wj8YYXe8-aJI6O62dKsgQFn4DlPITOwNKPiEO-QjhroCrQN3IkZKEQwvyI5sD15gagGklrBdZNVAac0_FhN105KoHIib8EFdfww13r8WRPQ42W6wh6OIYulOT0IZ8hIVocaP1A-GITsmoFcjBprGZDMZ0Jry9pLXNarEqBmE0ztWXzoayQ0tDFtsMKpPZRh56IQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Дания более месяца не может сформировать новое правительство из-за внутренних разногласий\n\nПосле выборов, прошедших в конце марта, партии так и не смогли договориться о создании устойчивой коалиции. Несмотря на победу социал-демократов, ни одна политическая сила не получила большинства, сообщают датские СМИ. Переговоры продолжаются уже более 30 дней, и главным камнем преткновения остаются экономические вопросы. Явка на выборах составила 84% — это самый низкий показатель с 1990 года. Для Дании, где традиционно фиксируется высокая электоральная активность, это заметное снижение.\n\nДля сравнения, после выборов 2022 года формирование правительства заняло 45 дней — тогда это стало рекордом. Предыдущий максимум держался с 1975 года, когда переговоры продолжались 36 дней. Премьер-министр Метте Фредериксен, ушедшая в отставку после выборов, заявила, что в парламент прошли 12 партий, каждая из которых стремится попасть в правительство, но не готова идти на компромиссы с другими. \n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-01T18:48:53.192Z",
-      "expiresAt": "2026-05-02T18:48:53.192Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T18:48:53.192Z"
-      }
-    },
-    {
       "id": 3166831347,
       "postUrl": "https://t.me/rbcinvest/10236?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -2847,7 +2856,7 @@
       "createdAt": "2026-05-01T21:40:30.709Z",
       "expiresAt": "2026-05-02T21:40:30.709Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:30.709Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:39.088Z",
       "tag": "finance",
       "tags": [
         "finance",
@@ -3591,7 +3600,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -4002,6 +4011,99 @@
       }
     },
     {
+      "id": 2959388896,
+      "postUrl": "https://t.me/tass_agency/373926?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "✈️ Аэропорт Пулково принимает и отправляет рейсы по согласованию в связи с временными ограничениями на использование воздушного пространства, сообщили в Росавиации.",
+      "links": [],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 898836500,
+      "postUrl": "https://t.me/readovkanews/109883?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/YGHKl1Ht4L-OxV9ueCrR4VpizhrUaJkO2qtupQ8zvmzdmYxHamjl13yUIvT1hGDO0MRxYyoQBvI4kPdeWHeNjNRGMmyHp77NPAXSk7_gFHEm0lkfdbgyjWtq0LCfaQRgBT-Craw_nJKQTYroBg1wj8YYXe8-aJI6O62dKsgQFn4DlPITOwNKPiEO-QjhroCrQN3IkZKEQwvyI5sD15gagGklrBdZNVAac0_FhN105KoHIib8EFdfww13r8WRPQ42W6wh6OIYulOT0IZ8hIVocaP1A-GITsmoFcjBprGZDMZ0Jry9pLXNarEqBmE0ztWXzoayQ0tDFtsMKpPZRh56IQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Дания более месяца не может сформировать новое правительство из-за внутренних разногласий\n\nПосле выборов, прошедших в конце марта, партии так и не смогли договориться о создании устойчивой коалиции. Несмотря на победу социал-демократов, ни одна политическая сила не получила большинства, сообщают датские СМИ. Переговоры продолжаются уже более 30 дней, и главным камнем преткновения остаются экономические вопросы. Явка на выборах составила 84% — это самый низкий показатель с 1990 года. Для Дании, где традиционно фиксируется высокая электоральная активность, это заметное снижение.\n\nДля сравнения, после выборов 2022 года формирование правительства заняло 45 дней — тогда это стало рекордом. Предыдущий максимум держался с 1975 года, когда переговоры продолжались 36 дней. Премьер-министр Метте Фредериксен, ушедшая в отставку после выборов, заявила, что в парламент прошли 12 партий, каждая из которых стремится попасть в правительство, но не готова идти на компромиссы с другими. \n\n🎉 Подписывайся на Readovka в МАКС",
+      "links": [
+        {
+          "label": "Подписывайся на Readovka в МАКС",
+          "url": "https://max.ru/readovkanews"
+        }
+      ],
+      "createdAt": "2026-05-01T18:48:53.192Z",
+      "expiresAt": "2026-05-02T18:48:53.192Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T18:48:53.192Z"
+      }
+    },
+    {
       "id": 1198404768,
       "postUrl": "https://t.me/rian_ru/337873?single",
       "source": {
@@ -4052,47 +4154,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T22:37:26.028Z"
-      }
-    },
-    {
-      "id": 1521526644,
-      "postUrl": "https://t.me/tass_agency/373900?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🚨 Силами ПВО Минобороны уничтожен БПЛА, летевший на Москву, сообщил Собянин.",
-      "links": [],
-      "createdAt": "2026-05-01T23:39:14.951Z",
-      "expiresAt": "2026-05-02T23:39:14.951Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:14.951Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T23:39:14.951Z"
       }
     },
     {
@@ -4581,7 +4642,7 @@
       "createdAt": "2026-05-01T16:40:42.325Z",
       "expiresAt": "2026-05-02T16:40:42.325Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:36.516Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:40.633Z",
       "tag": "electronics",
       "tags": [
         "electronics",
@@ -4605,54 +4666,13 @@
       }
     },
     {
-      "id": 939774693,
-      "postUrl": "https://t.me/readovkanews/109882?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️Белый дом уведомил Конгресс США о том, что считает войну с Ираном законченной, пишет Associated Press",
-      "links": [],
-      "createdAt": "2026-05-01T18:48:53.192Z",
-      "expiresAt": "2026-05-02T18:48:53.192Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T18:48:53.192Z"
-      }
-    },
-    {
       "id": 2824155408,
       "postUrl": "https://t.me/rbcinvest/10235?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -4676,7 +4696,7 @@
       "createdAt": "2026-05-01T21:40:30.709Z",
       "expiresAt": "2026-05-02T21:40:30.709Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:30.709Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:39.088Z",
       "tag": "finance",
       "tags": [
         "finance",
@@ -5249,7 +5269,7 @@
       "createdAt": "2026-05-01T13:55:26.179Z",
       "expiresAt": "2026-05-02T13:55:26.179Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:58.862Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:46.142Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -5330,7 +5350,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -5701,6 +5721,93 @@
       }
     },
     {
+      "id": 1403354435,
+      "postUrl": "https://t.me/tass_agency/373925?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "▶️ Прилепин рассказал ТАСС, что подразделение, в котором служит его сын, показывает отличные результаты.\n\nВидео: Илья Беликов/ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 939774693,
+      "postUrl": "https://t.me/readovkanews/109882?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "❗️Белый дом уведомил Конгресс США о том, что считает войну с Ираном законченной, пишет Associated Press",
+      "links": [],
+      "createdAt": "2026-05-01T18:48:53.192Z",
+      "expiresAt": "2026-05-02T18:48:53.192Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T18:48:53.192Z"
+      }
+    },
+    {
       "id": 1134172961,
       "postUrl": "https://t.me/rian_ru/337872?single",
       "source": {
@@ -5751,47 +5858,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T22:37:26.028Z"
-      }
-    },
-    {
-      "id": 633824943,
-      "postUrl": "https://t.me/tass_agency/373899?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Самым коротким по времени проведения экзаменом ЕГЭ будет устный китайский — 14 минут. Другие иностранные языки — английский, испанский, немецкий, французский — займут 17 минут, следует из методических рекомендаций, с которыми ознакомился ТАСС.",
-      "links": [],
-      "createdAt": "2026-05-01T23:39:14.951Z",
-      "expiresAt": "2026-05-02T23:39:14.951Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:14.951Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T23:39:14.951Z"
       }
     },
     {
@@ -6302,62 +6368,13 @@
       }
     },
     {
-      "id": 1528831150,
-      "postUrl": "https://t.me/readovkanews/109881?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/c3028a922a.mp4?token=svb7FrWfdtKCsxW7HJCntPWn7drZKkr0enK-FYL3vwzcyYzzhfbdYhR9eLm785GlfhT7i93C99AWEX0SAfnkmDVlmAkRFZNdRV8H1cUUv-qTvB4sX_P08_XkqATlIwrjpdJcns_eqe3LGjA5G4kwNUPbFtDz8ulWBTk8YvXXO_sCHjjv1CIgh4Rcfw7teoskKBjsYG2XPbtvW1wp3hCqv7L06rB96pHuBV8VR_0wH4w15vsrYjRPcHL2hCFypRLrcrE28tEmxF6Gtzxz7FG3_TsEyrwtgj_yeYJALsh22Zj1QD_6eLOv3nZ8U8gQcB0IhU_yt7pfmJW0CxAzdOfjxA",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Самый быстрый серийный автомобиль в мире продали австралийскому миллиардеру за ¥20 млн  Китайский ультралюксовый суббренд BYD Yangwang начал продажи лимитированного электросуперкара U9 Xtreme. Первый экземпляр ушел более чем за ¥20 млн (около ₽219 млн) в день…",
-      "links": [],
-      "createdAt": "2026-05-01T18:48:53.192Z",
-      "expiresAt": "2026-05-02T18:48:53.192Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T18:48:53.192Z"
-      }
-    },
-    {
       "id": 1317091985,
       "postUrl": "https://t.me/rbcinvest/10234?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -6381,7 +6398,7 @@
       "createdAt": "2026-05-01T21:40:30.709Z",
       "expiresAt": "2026-05-02T21:40:30.709Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:30.709Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:39.088Z",
       "tag": "finance",
       "tags": [
         "finance",
@@ -6991,7 +7008,7 @@
       "createdAt": "2026-05-01T10:12:41.637Z",
       "expiresAt": "2026-05-02T10:12:41.637Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:42.311Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:46.142Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -7067,7 +7084,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -7125,7 +7142,7 @@
       "createdAt": "2026-05-01T13:55:24.518Z",
       "expiresAt": "2026-05-02T13:55:24.518Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:41.389Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:45.414Z",
       "tag": "electronics",
       "tags": [
         "electronics",
@@ -7364,6 +7381,96 @@
       }
     },
     {
+      "id": 3277369322,
+      "postUrl": "https://t.me/tass_agency/373924?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Семья из семи человек, в том числе четверо детей, погибла в пожаре в поселке Высокий в ХМАО, сообщил губернатор Югры.",
+      "links": [],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 1528831150,
+      "postUrl": "https://t.me/readovkanews/109881?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/c3028a922a.mp4?token=svb7FrWfdtKCsxW7HJCntPWn7drZKkr0enK-FYL3vwzcyYzzhfbdYhR9eLm785GlfhT7i93C99AWEX0SAfnkmDVlmAkRFZNdRV8H1cUUv-qTvB4sX_P08_XkqATlIwrjpdJcns_eqe3LGjA5G4kwNUPbFtDz8ulWBTk8YvXXO_sCHjjv1CIgh4Rcfw7teoskKBjsYG2XPbtvW1wp3hCqv7L06rB96pHuBV8VR_0wH4w15vsrYjRPcHL2hCFypRLrcrE28tEmxF6Gtzxz7FG3_TsEyrwtgj_yeYJALsh22Zj1QD_6eLOv3nZ8U8gQcB0IhU_yt7pfmJW0CxAzdOfjxA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Самый быстрый серийный автомобиль в мире продали австралийскому миллиардеру за ¥20 млн  Китайский ультралюксовый суббренд BYD Yangwang начал продажи лимитированного электросуперкара U9 Xtreme. Первый экземпляр ушел более чем за ¥20 млн (около ₽219 млн) в день…",
+      "links": [],
+      "createdAt": "2026-05-01T18:48:53.192Z",
+      "expiresAt": "2026-05-02T18:48:53.192Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T18:48:53.192Z"
+      }
+    },
+    {
       "id": 1516385194,
       "postUrl": "https://t.me/rian_ru/337871?single",
       "source": {
@@ -7420,53 +7527,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T22:37:26.028Z"
-      }
-    },
-    {
-      "id": 1202734422,
-      "postUrl": "https://t.me/tass_agency/373898?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Wcs3J19eXQJIdIeMkg-0JQPsZeqzWctKL64pjj-qAx1uyq3opOpQSIp9NGqSPHfUSU27B1ZERF0CL0uF2hKIEWJH8qjCP33GUme9QlV7VhP0PXXA1DNwSUfJz8tz78vXVXj7Kwny9Rjcx7LNXJlI-RGY63TA1EkwF5WY_8PWa5oLfLdrklZVkcTIxjdxE0uE5g_MI8SrmlXQtKgSlzYzptqG6KFniUxvyUb-pK8A-2u2k-1qPh8IVxq1s-_L0Tf9p0_u4kiYM9mpglbUQlAmjCoD1Zqn_XVJ5SrXJly2rmrmY-owgUwms3c2SyLOObYHJHUhRjea3vr4AnOEBaHx0w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Цены на вторичное жилье в России в целом ряде случаев сейчас снижаются, заявил ТАСС Сергей Степашин.  Кроме того, продолжил он, остается надежда на снижение ключевой ставки. По мнению экс-премьера РФ, она вполне может быть снижена до 10%, если в течение года…",
-      "links": [],
-      "createdAt": "2026-05-01T23:39:14.951Z",
-      "expiresAt": "2026-05-02T23:39:14.951Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:14.951Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T23:39:14.951Z"
       }
     },
     {
@@ -7953,7 +8013,7 @@
       "createdAt": "2026-05-01T09:07:59.044Z",
       "expiresAt": "2026-05-02T09:07:59.044Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:36.516Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:40.633Z",
       "tag": "electronics",
       "tags": [
         "electronics",
@@ -7977,59 +8037,13 @@
       }
     },
     {
-      "id": 3403678567,
-      "postUrl": "https://t.me/readovkanews/109880?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "По инициативе Единой России приняли более 160 законов в поддержку участников СВО\n\nОсобое внимание этому направлению уделили в обновленной народной программе партии. По словам председателя «Единой России» Дмитрия Медведева, за время спецоперации при участии партии приняли более 160 федеральных законов, направленных на поддержку бойцов и их семей. Он подчеркнул, что законодательные решения разрабатываются прямо в ходе боевых действий — с учетом текущих задач.\n\nРаботу в этом направлении продолжат и дальше. В частности, внедряется единый стандарт региональных мер поддержки: он включает 20 обязательных видов помощи и должен обеспечить одинаковые условия для семей участников СВО по всей стране. \n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-01T18:48:53.192Z",
-      "expiresAt": "2026-05-02T18:48:53.192Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T18:48:53.192Z"
-      }
-    },
-    {
       "id": 2119897366,
       "postUrl": "https://t.me/rbcinvest/10233?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -8631,7 +8645,7 @@
       "createdAt": "2026-05-01T10:12:41.637Z",
       "expiresAt": "2026-05-02T10:12:41.637Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:42.311Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:46.142Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -8706,7 +8720,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -8738,7 +8752,7 @@
       "createdAt": "2026-05-01T10:12:40.447Z",
       "expiresAt": "2026-05-02T10:12:40.447Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:41.389Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:45.414Z",
       "tag": "electronics",
       "tags": [
         "electronics",
@@ -8979,6 +8993,93 @@
       }
     },
     {
+      "id": 4259091421,
+      "postUrl": "https://t.me/tass_agency/373923?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Над Тульской областью уничтожены семь украинских БПЛА, пострадавших нет, сообщил губернатор.",
+      "links": [],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 3403678567,
+      "postUrl": "https://t.me/readovkanews/109880?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "По инициативе Единой России приняли более 160 законов в поддержку участников СВО\n\nОсобое внимание этому направлению уделили в обновленной народной программе партии. По словам председателя «Единой России» Дмитрия Медведева, за время спецоперации при участии партии приняли более 160 федеральных законов, направленных на поддержку бойцов и их семей. Он подчеркнул, что законодательные решения разрабатываются прямо в ходе боевых действий — с учетом текущих задач.\n\nРаботу в этом направлении продолжат и дальше. В частности, внедряется единый стандарт региональных мер поддержки: он включает 20 обязательных видов помощи и должен обеспечить одинаковые условия для семей участников СВО по всей стране. \n\n🎉 Подписывайся на Readovka в МАКС",
+      "links": [
+        {
+          "label": "Подписывайся на Readovka в МАКС",
+          "url": "https://max.ru/readovkanews"
+        }
+      ],
+      "createdAt": "2026-05-01T18:48:53.192Z",
+      "expiresAt": "2026-05-02T18:48:53.192Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T18:48:53.192Z"
+      }
+    },
+    {
       "id": 854543107,
       "postUrl": "https://t.me/rian_ru/337870?single",
       "source": {
@@ -9029,47 +9130,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T22:37:26.028Z"
-      }
-    },
-    {
-      "id": 2765123193,
-      "postUrl": "https://t.me/tass_agency/373897?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Топ-менеджера банка JPMorgan Лорну Хайдини обвинили в домогательствах, сообщила New York Post со ссылкой на источники.\n\nПо их информации, истец, выдвинувший обвинения под псевдонимом Джон Доу, утверждает, что топ-менеджер якобы подмешивала ему в напитки силденафил и снотворное, угрожала, а также давила на него, пользуясь служебным положением.\n\nПредставители банка заявили, что не считают обвинения обоснованными.",
-      "links": [],
-      "createdAt": "2026-05-01T23:39:14.951Z",
-      "expiresAt": "2026-05-02T23:39:14.951Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:14.951Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T23:39:14.951Z"
       }
     },
     {
@@ -9525,59 +9585,13 @@
       }
     },
     {
-      "id": 1785850847,
-      "postUrl": "https://t.me/readovkanews/109879?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Роспотребнадзор рассказал, как безопасно отдохнуть на майских\n\nВ ведомстве советуют внимательно следить за свежестью и качеством продуктов, личной гигиеной и позаботиться о защите от укусов клещей. Для отдыха на природе нужно выбирать светлую одежду и заправлять брюки в носки или обувь, сообщили РИА «Новости» в Роспотребнадзоре. Также стоит использовать репелленты — аэрозоли для отпугивания насекомых и осматривать себя каждые 15–20 минут.\n\nДля стола на пикнике ведомство советует отказаться от скоропортящихся продуктов: молочных изделий, копченостей, яиц и кондитерских изделий с кремом. Перевозить еду рекомендуется в сумках-холодильниках, разделяя сырые и готовые продукты. Для шашлыка лучше выбирать нежирное мясо и тщательно прожаривать его. В качестве гарнира подойдут свежие овощи и зелень. Продукты и посуду не следует мыть в водоемах — для этого нужно использовать только кипяченую или бутилированную воду.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-01T18:48:53.192Z",
-      "expiresAt": "2026-05-02T18:48:53.192Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T18:48:53.192Z"
-      }
-    },
-    {
       "id": 808554095,
       "postUrl": "https://t.me/rbcinvest/10232?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -10254,7 +10268,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -10296,69 +10310,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T10:12:40.447Z"
-      }
-    },
-    {
-      "id": 2294919833,
-      "postUrl": "https://t.me/drom/34966?single",
-      "source": {
-        "title": "Дром: Объявы, отзывы, видео",
-        "handle": "drom",
-        "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/JK5wPPRyFGtc3jW6z10S5twx80MNUk0ghfFwc7kBjkDjXpOXqIBpyE_FaDXn0TmOjE7nbDSW1_TJyYyLQhkMHVNxlq4aq_czV6DQT850jF99ouXRZ1oCC5J-Io9EE0jNniegNZAOyoUBepKPFQMNxYISg1qAZn-1PzR3IGs7q0Gv031LS8NGMwrZMGMoSN4NYncr1n73Gds514R0UEQsbdoOmv89HfUQT79ROWed9QYFofD704g_Nx9Ve0ANrmNWsnu7KScEtmctkKAH16Vr-Q2rpi-ffWut7OkkZVzSqqe--oiGDhLrzTGDTxkZF5wJJJIPUwu-XfERmDCKCZ_0Pw.jpg"
-      },
-      "sourceId": "ru:dromru",
-      "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/u6rK9O9L1-JXR0gFda6e2Y00r75fQac44S0D9iGFg2B7LaTaNJATclYo2uOIxh-G0qVaMFtLlym9U44AVAfaNRFtTKDQztMSIZ07IA8qG_Z5BdpuWw0-aPb_I_BIMfhQMEMZA8oJd1OKVzaiaPBxTpy29khAP8fgR_UFg2_uwpSaTBXH2Jai26VvI0AI4YRhwfuRCYuAzZQYv0qOjc6-XDikCemyhdo6sRaBmPi_W9WLddKzJ9EOEx42uF_tg12B_scJzZ5-dEay7L9uEjDW_T4eBkaDGro-k5nSDk3p0y0673sfIPWMSMmkbz0bZcnuNYMJuRq5vu2lbecvZb_5AA.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/YlOXYw0WHXm2pQQe8s8mx2dQ-ouSUZSDnjPHqk7evWmXy1W2xvlC-RlCwq8k5-HC4zY2qBer5m2ZssRfD_Cy-E2WroRBh0yAnn2_Nt02fEczUkP30fQ1e2DFFJ66mWYYqdtlHVI7f85ZY76K_3a9kS1-vzlv1PGsY_qHcd1cyDMst-_3x53A7EEtJnCmHK3fKbHBSZ7h5Wi-mUdUySDmOhIZvoltOPqeBnNgw8ehpjyxq6aIGo7FJxWNSRJJ1j7Txxi16ZFiG7hVmh7hrtrFxz77mNSJ0LGNGXYUosL0AdkU9wwnn1oaoUwAcsobEIZNhVG7DfCRN2hJsiQVhXxBkQ.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/l0yb2nAzkj1nHvvzvCGDlF7EBSri6_u5X1L9HD6SB2xaUVO3NlswQRFQ-_Z-u8yKZQV9KMvC67X2Wlr9lpsn0d6gMGMLjovL3s3s8Y9b25D60lHbrukZp84L2x-EH9Bmy6hutv8nEObahZ8iGBdpF8LWSmvNA5k0WzSAeFWKX_NsMRJjbD9gSCq4cSq573oRt0gVXxhXReU3PMbGsDUhaJdl5d467cv6ZL4pDZExJc3lfukKpj_n5Td9OQRkTjBOOhPQsZoK5b9rnFJJFF4CqGvoNRArhczkq-ySiFR15Sr0Tod3vSktB8SNb5odGd-FIgT-Dyt0o6CyScGV5CkRqA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "❗️Бывший шеф-дизайнер Rolls-Royce похвалил стиль Lada Azimut. А ещё у отечественного кроссовера в топе будет панорама с люком. Надо брать? 😎\n\n«АвтоВАЗ» рассказал о новом роботизированном оборудовании для установки панорамной крыши. Эта опция будет устанавливаться на самые дорогие версии кроссовера вместе со сдвижным люком. Лада рассчитывает, что такими будут примерно 40% экземпляров Азимута.\n\nМонтаж организован в стороне от основного конвейера. Там крыша устанавливается и центрируется с помощью манипулятора, затем гайковёрты затягивают винты по периметру — всё это выполняется в автоматическом режиме.\n\nМежду тем на проходящем в Пекине автосалоне журналисты спросили у Джайлса Тейлора, главного дизайнера Hongqi, который раньше отвечал за Rolls Royce, как ему Азимут. Эксперт назвал кроссовер удачным примером.\n\nА вам нравится стиль новой Лады? 😉",
-      "links": [
-        {
-          "label": "рассказал",
-          "url": "https://drom.ru/s/8iS"
-        }
-      ],
-      "createdAt": "2026-05-01T04:17:36.781Z",
-      "expiresAt": "2026-05-02T04:17:36.781Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:11:10.146Z",
-      "tag": "auto",
-      "tags": [
-        "auto",
-        "transport_reviews"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T04:17:36.781Z"
       }
     },
     {
@@ -10495,6 +10446,98 @@
       }
     },
     {
+      "id": 777876268,
+      "postUrl": "https://t.me/tass_agency/373922?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "▶️ АТОР обратилась в визовый центр Японии из-за проблем с приемом документов россиян, сообщила в интервью ТАСС исполнительный директор ассоциации Майя Ломидзе.\n\nВидео: ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 1785850847,
+      "postUrl": "https://t.me/readovkanews/109879?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Роспотребнадзор рассказал, как безопасно отдохнуть на майских\n\nВ ведомстве советуют внимательно следить за свежестью и качеством продуктов, личной гигиеной и позаботиться о защите от укусов клещей. Для отдыха на природе нужно выбирать светлую одежду и заправлять брюки в носки или обувь, сообщили РИА «Новости» в Роспотребнадзоре. Также стоит использовать репелленты — аэрозоли для отпугивания насекомых и осматривать себя каждые 15–20 минут.\n\nДля стола на пикнике ведомство советует отказаться от скоропортящихся продуктов: молочных изделий, копченостей, яиц и кондитерских изделий с кремом. Перевозить еду рекомендуется в сумках-холодильниках, разделяя сырые и готовые продукты. Для шашлыка лучше выбирать нежирное мясо и тщательно прожаривать его. В качестве гарнира подойдут свежие овощи и зелень. Продукты и посуду не следует мыть в водоемах — для этого нужно использовать только кипяченую или бутилированную воду.\n\n🎉 Подписывайся на Readovka в МАКС",
+      "links": [
+        {
+          "label": "Подписывайся на Readovka в МАКС",
+          "url": "https://max.ru/readovkanews"
+        }
+      ],
+      "createdAt": "2026-05-01T18:48:53.192Z",
+      "expiresAt": "2026-05-02T18:48:53.192Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T18:48:53.192Z"
+      }
+    },
+    {
       "id": 1627665173,
       "postUrl": "https://t.me/rian_ru/337869?single",
       "source": {
@@ -10545,47 +10588,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T20:36:28.566Z"
-      }
-    },
-    {
-      "id": 3485729400,
-      "postUrl": "https://t.me/tass_agency/373896?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Посол по особым поручениям МИД РФ Андрей Белоусов заявил:\n\n▪️Западная ядерная тройка без оглядки на ДНЯО осуществляет расширение и неограниченное наращивание своих ядерных потенциалов;\n\n▪️По инициативе Франции реализуется концепция, призванная укрепить ядерный кулак, обращенный против России;\n\n▪️Ряд неядерных государств Европы заигрывает с идеей обзавестись ядерным оружием;\n\n▪️В результате действий Запада произошла глубокая деградация в отношениях между постоянными членами СБ ООН;\n\n▪️Путь к надежному урегулированию конфликта на Украине лежит через отказ НАТО от стремления нанести России стратегическое поражение.",
-      "links": [],
-      "createdAt": "2026-05-01T23:39:14.951Z",
-      "expiresAt": "2026-05-02T23:39:14.951Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:14.951Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T23:39:14.951Z"
       }
     },
     {
@@ -10891,65 +10893,13 @@
       }
     },
     {
-      "id": 1988234630,
-      "postUrl": "https://t.me/readovkanews/109878?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/khYA0gJbSvMNSlB0MSXTHS6vckCVb8eN9CoiveQSnduMPsU2_0Q4agnZZxQw0YZB_LTw4sIWFl4bUDfm_oaatrSVtMcae_V519sNXZtwlEJT5AuY5vdzI2Ba5PuOfQvG4pZaPhkcc5mRIpYgdb1m4rO1R1cREFrZiS-TYDSnKpX7-1bcjDlL4BioRdA6K9y04Y99Jea7aGFOEkAGfYgL2bIS36_a-EsA9MivRfc-IfYRHMCvDXCxE4v4GRaiBVk8_m1aI2UFYwQEr-3MMdWovlHA573SgfmD5LmV8Y93qDbmtxvS9aS61Nx4Y5ZFvzVjM7hAsw-3u6gTyDxtrnyIgw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Девять личных вещей Майкла Джексона продадут на аукционе в США\n\nАукционный дом GWS Auctions в Южной Калифорнии выставит на торги предметы из частной коллекции принца Лоренцо де Медичи — среди них есть и вещи, связанные с Майклом Джексоном. Всего на аукционе представлено 734 лота. Среди них — черные лоферы Florsheim Imperial с автографом музыканта. Стартовая цена пары составит $7,5 тыс. Обувь отправили Джексону для подписи, после чего он вернул ее владельцу. Именно в этих лоферах поп-артист впервые исполнил «лунную походку» во время телешоу Motown 25 в 1983 году.\n\nСамыми дорогими лотами станут трое золотых часов премиальных брендов A. Lange & Sohne, Patek Philippe и Richard Mille — их стартовая стоимость составит $60–70 тыс.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-01T18:48:53.192Z",
-      "expiresAt": "2026-05-02T18:48:53.192Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T18:48:53.192Z"
-      }
-    },
-    {
       "id": 3688593869,
       "postUrl": "https://t.me/rbcinvest/10230?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -11630,7 +11580,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -11675,69 +11625,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T10:12:40.447Z"
-      }
-    },
-    {
-      "id": 3844748836,
-      "postUrl": "https://t.me/drom/34963?single",
-      "source": {
-        "title": "Дром: Объявы, отзывы, видео",
-        "handle": "drom",
-        "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/JK5wPPRyFGtc3jW6z10S5twx80MNUk0ghfFwc7kBjkDjXpOXqIBpyE_FaDXn0TmOjE7nbDSW1_TJyYyLQhkMHVNxlq4aq_czV6DQT850jF99ouXRZ1oCC5J-Io9EE0jNniegNZAOyoUBepKPFQMNxYISg1qAZn-1PzR3IGs7q0Gv031LS8NGMwrZMGMoSN4NYncr1n73Gds514R0UEQsbdoOmv89HfUQT79ROWed9QYFofD704g_Nx9Ve0ANrmNWsnu7KScEtmctkKAH16Vr-Q2rpi-ffWut7OkkZVzSqqe--oiGDhLrzTGDTxkZF5wJJJIPUwu-XfERmDCKCZ_0Pw.jpg"
-      },
-      "sourceId": "ru:dromru",
-      "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/PBMdXPnqCeQ1_i5_bnAVHgiTLilEdqG0_bFKronWABwm5xj4r0qWdiSCn_TsghpwU6WLntJfc8VUQpoKrORSTJdHHfg6i_U1RlLmMD9urtrc72ve92yIUs-npCArRfnREm2V3MSAMsVtK9l-tfKX0NUdYtxGSGaGbixjlIlppwf-8rOiKnc9lASkX6wCxC2LlHf-flPYVqrfV7GRqp9cn2nSOpXPTS6GCBpK9sOBLLdeFOclE8OGyLlPuVSDM8y7MKhZwmhn_jjWd2ABqF9TlrrlzyXlnQMb9SJJWk8OTvTFkmu312ypjAOE44egso-ShYIl21bNph2t6k3qyCHl-Q.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/kVDh2RMhLz5uEwv8NP3sT8vRkYs7bD0FB60TOx6dL3aft0VlB_5hzXCSDyVLoppcxUiLZywbBv41nleKYPz3GSrRPipKqyAU9vJkumVpFDseM9riRVMVJiFJVTJMoiO8MPrOKnOIM1T6r8noRJGkxhJRAbraFR2w4ezggd74fIN2kFtULX1YsWh7wYe5C_FAWl1OGcQ9oXxfPGaYJKEiTKb2prNNVe4q9E2hTp4TVFwxpGoDc0tddqNrZJTblGJkWul5J4LGPFwBMuNXtrzv_ai3vE2uqdiq2Yc9Fe8mWmROA17OoA2kj-CgxzkGnQpA0oPki8NfhgTw7OD2XGlzsw.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/qGMls_szT2OF3Ppg98iZ-Bpsuw9MxXeJkTJ_5Y2PN57q6IN0gh-gBfSGSnqOjXm5n8bDXS7J2KzNq8KjBuGtzyUe3z8Z_Y53-uzNITBmtJ2iuGKFs35kz1jAovFT5_9PirxQys23E-iqM0hxDwn16hzQ50M4iZmVG09ybJOoEEWr7Tis4rlsTDhS-sNmF_0CWQ_rl5JbAO5KXm-vU9T3PD1h75dTxsBD9EiQd8Vt82aNHpkKTrREKDNwIFywtwdKBGcKDIvyiJPODJcwlQQJK2T9xVM6GVYJmJN5-URlhD71i48_csd78xohHyNmjeScwFnd7s1aSRYs1kuubnBsxg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "❗️Исторический момент: BMW поколения E90 переходят в ранг коллекционной ценности — кто-то отдал более $200 000 за такой M3 без пробега 😎\n\nНа аукцион в США попал экземпляр BMW M3 Competition 2011 года с пробегом всего 1 160 км. Это купе с 4-литровым V8 на 420 л.с. (400 Нм), 6-ступенчатой механикой и разгоном до сотни за 4,8 сек.\n\nЗа спортивное купе в идеальном состоянии разыгралась настоящая битва ставок. В итоге победил участник, отдавший за «немца» $205 000, или около 15 400 000 ₽. По его словам, это уже не первый BMW того поколения в его коллекции и он специально вкладывается в них.\n \nКак думаете, у нас тоже будут расти спрос и цены на эти машины? 🤔",
-      "links": [
-        {
-          "label": "попал",
-          "url": "https://www.carscoops.com/2026/04/bmw-e92-m3-record-sale/"
-        }
-      ],
-      "createdAt": "2026-05-01T04:17:36.781Z",
-      "expiresAt": "2026-05-02T04:17:36.781Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:11:10.146Z",
-      "tag": "auto",
-      "tags": [
-        "auto",
-        "transport_reviews"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T04:17:36.781Z"
       }
     },
     {
@@ -11945,6 +11832,99 @@
       }
     },
     {
+      "id": 369453567,
+      "postUrl": "https://t.me/tass_agency/373921?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Силы ПВО уничтожили два БПЛА в Ленинградской области, боевая работа продолжается, сообщил губернатор.",
+      "links": [],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 1988234630,
+      "postUrl": "https://t.me/readovkanews/109878?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/khYA0gJbSvMNSlB0MSXTHS6vckCVb8eN9CoiveQSnduMPsU2_0Q4agnZZxQw0YZB_LTw4sIWFl4bUDfm_oaatrSVtMcae_V519sNXZtwlEJT5AuY5vdzI2Ba5PuOfQvG4pZaPhkcc5mRIpYgdb1m4rO1R1cREFrZiS-TYDSnKpX7-1bcjDlL4BioRdA6K9y04Y99Jea7aGFOEkAGfYgL2bIS36_a-EsA9MivRfc-IfYRHMCvDXCxE4v4GRaiBVk8_m1aI2UFYwQEr-3MMdWovlHA573SgfmD5LmV8Y93qDbmtxvS9aS61Nx4Y5ZFvzVjM7hAsw-3u6gTyDxtrnyIgw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Девять личных вещей Майкла Джексона продадут на аукционе в США\n\nАукционный дом GWS Auctions в Южной Калифорнии выставит на торги предметы из частной коллекции принца Лоренцо де Медичи — среди них есть и вещи, связанные с Майклом Джексоном. Всего на аукционе представлено 734 лота. Среди них — черные лоферы Florsheim Imperial с автографом музыканта. Стартовая цена пары составит $7,5 тыс. Обувь отправили Джексону для подписи, после чего он вернул ее владельцу. Именно в этих лоферах поп-артист впервые исполнил «лунную походку» во время телешоу Motown 25 в 1983 году.\n\nСамыми дорогими лотами станут трое золотых часов премиальных брендов A. Lange & Sohne, Patek Philippe и Richard Mille — их стартовая стоимость составит $60–70 тыс.\n\n🎉 Подписывайся на Readovka в МАКС",
+      "links": [
+        {
+          "label": "Подписывайся на Readovka в МАКС",
+          "url": "https://max.ru/readovkanews"
+        }
+      ],
+      "createdAt": "2026-05-01T18:48:53.192Z",
+      "expiresAt": "2026-05-02T18:48:53.192Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T18:48:53.192Z"
+      }
+    },
+    {
       "id": 1663941060,
       "postUrl": "https://t.me/rian_ru/337868?single",
       "source": {
@@ -12005,47 +11985,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T20:36:28.566Z"
-      }
-    },
-    {
-      "id": 712027835,
-      "postUrl": "https://t.me/tass_agency/373895?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️Пентагон распорядился вывести 5 тыс. военных США из ФРГ в течение 6-12 месяцев. Об этом сообщило Reuters со ссылкой на помощника военного министра США по связям с общественностью Шона Парнелла.",
-      "links": [],
-      "createdAt": "2026-05-01T21:40:38.141Z",
-      "expiresAt": "2026-05-02T21:40:38.141Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:40:38.141Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T21:40:38.141Z"
       }
     },
     {
@@ -12358,54 +12297,13 @@
       }
     },
     {
-      "id": 1724252201,
-      "postUrl": "https://t.me/readovkanews/109877?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Uk3R2KvK7mybR-L2owQjzLruGcWn2uek0Qobv-EUOVyvj6XSnQAmgTPWTBiD1xRG707a5IE1KV2gDsdyr7wzFmQ8ySSKM37VxWCaG3lgUGz57ILk5RC8XUSvNwtopQAq8D6lxgPCwto2QauL2WNqWlq-wAEnKytSRomUIQkfeg76OO2YETHPJrf-jvmeldhpV8HFvrDac7XeVoKQtOQid1GY02UKD-duhvumEuuf1YfwfjrcRxndjOk_u7-BisS7Z50paAAuMUJCuhGf06f5iQEhWiSVWacaD0RkOCUh2D4noLGQnEHjnmI__pKxKA9koD7rtjjvPGwRrA4CYLeeXQ.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Жители Архангельской области оказались в заложниках у реки: перебраться на другой берег можно только за деньги  В глубинке Архангельской области в далеком 2013 году из реестра дорог области удалили участок земли с рекой — он не числится в документах региона.…",
-      "links": [],
-      "createdAt": "2026-05-01T18:48:53.192Z",
-      "expiresAt": "2026-05-02T18:48:53.192Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T18:48:53.192Z"
-      }
-    },
-    {
       "id": 2238368903,
       "postUrl": "https://t.me/rbcinvest/10229?single",
       "source": {
         "title": "РБК Инвестиции",
         "handle": "rbcinvest",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/r_jIKbeEvcBC56l4WNtKdRQnIscWfkRED_4xlhxrldvk45m7qmLEDmN2-XE98VUf7G5l8fI2z7yb1jv2GwU0nDNr9BtBUnBrb5Y2D0sVbKLUdcU6Eqz2KhxM_E1TvGzE24r9H1c4Ru7kNgdkrQrYsYGPVPWHdNOu5evbF0yZ6AOUESoXLUwPwYBQrYp2Du9MOH4PTMbuw_tFTZtxXdI2_y2lp6UdIvUONMzU7uEFAoIh38kjL0BFQNtHVbKTrbfvnVm3Zy9MY9UNF6rZfFr_naPCCr9H5kBc9_5Vh1J23MEX0bGPdAAEysBFN_RvwU4u0wOiHTP-aOel2MQlNGhUOw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/JVWOA-uc2xKaj18PZbSgjso_2hO5INGwgExY8ECaEDBXwOSpNmXv8LcHlaa62P7kVKs6bFtlg0ysEW34YLYhdvMfIvY4T4Ri5YJLPSbfz0SgVROxJqGMN0qq8Do9QuG5taX9ymaVOJ7urHzPuoZXDBZLGp5Lvly8PS25v0K3PzW_CYKfAZxLGyUuT92J7XeSDvsqPPVqxrUR_T3C4ek2BsVAaTnFdHDBa8n11m2ZsM2TKircQaGkIFx-tAXWakmnxt4yY-hXGWkd8Nizefj-pBAe1i-rJrMHnyZYEijoI4heDdlmMXVF60tGl_ZgsMVo0bLQV95seN0p3F2Vo_33tw.jpg"
       },
       "sourceId": "ru:rbcinvest",
       "sourceCountryCode": "ru",
@@ -13072,7 +12970,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/XHnTDSKiih4oT_0Qz5V_fh1J98uoND8t-KIwmGw9wP7tvdvGRTyG0a5ILsNSkKdd63t-WM1otdKZ3p9vaLPTErFlVzIUhP7OIII-u4rRbOs1TpTq5fzL73Oa8ZJgzk-tNZD0VsZq_2soVAEsxNVe-LO7S5co4F32G_gA-LcPoi0nfMMkACwbb5pf6AjCf7TFHbgCEF2kekDpe4obnxLVXg74Wg7OjbhgAj1o7gWeb7pIPcIKu56lXzkH09HFrJ1t-tcpio1CB8akz-wMyCShh7UH_xTtS9kATaU8Yb-T_M-2gEJznViQoeg6mkZK8UkqXpnE1IZ-DjYbXiZqERDbow.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/CVnHjgcpUpQkagy8kvVDJr2MmzAYMZkEIsvRguXEGXYRtMZOIfDFp4Uxh0dCVDJBdZ4gcqjjlxNkR5l80AzG2YcktsnDih3W_-CR5xAdOfeJHOrLr9EkAOGumjw7tdB9G92GLB9RDnFeQ2qi6SmY2mPedIp-KAY2oem-uWo-Cw5_ZxNs4q06uLeOoCaRP2WBtXOCUCoQsE8xnA3oJDQkdX39F76v8oIfgh8u9vTfq4H137Ozh-HjaElz_vctg2sU_xTyDjZ-Qo5JCHHpg6PM6cE2SHQ3ZobK3W0MQ_wgBvUrmhNvhTLOVvVJQEqbONjDftMIcxHAISwVm2j2jDTIgg.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -13121,7 +13019,7 @@
       "createdAt": "2026-05-01T10:12:40.447Z",
       "expiresAt": "2026-05-02T10:12:40.447Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T23:39:18.190Z",
+      "mediaRefreshedAt": "2026-05-02T04:48:45.414Z",
       "tag": "electronics",
       "tags": [
         "electronics",
@@ -13144,69 +13042,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T10:12:40.447Z"
-      }
-    },
-    {
-      "id": 2285332663,
-      "postUrl": "https://t.me/drom/34960?single",
-      "source": {
-        "title": "Дром: Объявы, отзывы, видео",
-        "handle": "drom",
-        "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/JK5wPPRyFGtc3jW6z10S5twx80MNUk0ghfFwc7kBjkDjXpOXqIBpyE_FaDXn0TmOjE7nbDSW1_TJyYyLQhkMHVNxlq4aq_czV6DQT850jF99ouXRZ1oCC5J-Io9EE0jNniegNZAOyoUBepKPFQMNxYISg1qAZn-1PzR3IGs7q0Gv031LS8NGMwrZMGMoSN4NYncr1n73Gds514R0UEQsbdoOmv89HfUQT79ROWed9QYFofD704g_Nx9Ve0ANrmNWsnu7KScEtmctkKAH16Vr-Q2rpi-ffWut7OkkZVzSqqe--oiGDhLrzTGDTxkZF5wJJJIPUwu-XfERmDCKCZ_0Pw.jpg"
-      },
-      "sourceId": "ru:dromru",
-      "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ThpG2ff5EFEzbZN3k0RBslo6feH1X4EZKUvVlhYAqgs9Vx2UihpxWCNP98sjEDwKT5zuStJPInRyJFClM3iiZ8aQsOTEeUNgEQ9zH0Jw-DlzAmVR2zlkb_bdNbVoi8EP9EJyhSOYQv1pAZqRMa-OURJR9GWAchjaC-oLhvnD8CVUxsLffeab_zqge_wsyUFJ1dmoau_dLeRC9ZN6OgqLl3eXySCpcPkLgqm9lPXstyRHaU_o21PVHGey4wD6yCYWY_Gt949QfzRzlOO7QFTWrK1f0MOYNhbydmK_PdB6TcxWikCfWK7s3czly6A2bVJQFdwKZYxfdrwixUvV_3_wkA.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/XnwhzIdq1AM7Z7G5aMWM78stS65nZLgEJl8C4kpZo-PNlhnYd6zBOD3p5ChYRtwD7QbkCTEdnPN5NPMyx4dIOuEcMt62e1JBA2oMqLbajBEZWJiMsx544Ntj8Hxn54_bzohvoJJm9w79ykPyYhMFycEwk4TxiNnQA9XeNuLPDIaGIwqNHP96Fds-3GHmJXGtFd0JxnYevmFkWJJkL7VBP1M178kLd_TzfBjPUj8feAxJy-UWJ9zuxcy76gizb5wlNWwLDYkLFrZZPGVM7ID5D2LDai7CtYJC2U5Hh3---u-LkOcCDbxOfhx6j1p8NPO6nCf7ZQ_MgPI2B6XhdIWmqA.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/gaIWBeWIhRE5NVH5ubEPeyP4FmYX_qlHbiIUGP7ro_GjY2Z95_fsDPGfqk3VD-U1s6qD8zP3LQne_fzSOZJhKznRMYOnBB8vyfQwqDg62pATusJ9Ez6owTauOH_FPnPID2CNqsFEBujKJvb-Jqmit0WbT7pe2EoCRhNtjeyg94HMLHEDENY1Gr3hPvb_Jty8x435MeaHRssdbir_I_j7Ub6ltJqfzcuv5wzlh3XIVDPiwPJ_XLNyBK_mx9ygpHkFnLvEfDr9ZJF-wqJTD03s_IUds77Ck4YfxvIi6juhtKpgvM4Sqn1rNeSU8R-b__XVMIgp6zVTIZvQklcwwfZBEQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "❗️Что-то на богатом: представлен самый роскошный Land Rover — это Range Rover SV Ultra. У него аудиофильская музыкальная система, даже кресла и пол тут пульсируют в такт 😎\n\nСнаружи:\n→ Особый серебряный оттенок с частицами алюминия.\n→ Акценты в платиновом цвете Satin Atlas.\n→ Колёсные диски 23”.\n\nВнутри:\n→ Светлая отделка с премиальным кожзамом, лазерным тиснением, белой керамикой и натуральной древесиной.\n→ Аудиосистема с 21 электростатическим звукоизлучателем, которые намного легче и эффективнее обычных. Также есть пять сабвуферов и вибрирующие элементы в спинках кресел и под полом для пульсации в такт музыке.\n\nТехника:\n→ SV Ultra P550e — гибрид с битурбо 3,0 л и электромотором на 550 л.с. \n→ SV Ultra P615 — V8 4,4 л от BMW на 615 л.с.\n\nЦена на Range Rover SV Ultra не раскрыта. Это будет мелкосерийный автомобиль, эксклюзивно доступный только избранным клиентам.\n\nДостойный ответ премиальным китайским новинкам или уже отстают? 🤔",
-      "links": [
-        {
-          "label": "представлен",
-          "url": "https://www.topgear.com/car-news/suvs/range-rover-sv-ultra-most-range-rovery-modern-range-rover"
-        }
-      ],
-      "createdAt": "2026-05-01T04:17:36.781Z",
-      "expiresAt": "2026-05-02T04:17:36.781Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:08:00.488Z",
-      "tag": "auto",
-      "tags": [
-        "auto",
-        "transport_reviews"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T04:17:36.781Z"
       }
     },
     {
@@ -13259,6 +13094,142 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-01T11:46:09.223Z"
+      }
+    },
+    {
+      "id": 1146093615,
+      "postUrl": "https://t.me/telegaru/261?single",
+      "source": {
+        "title": "Telega",
+        "handle": "telegaru",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZUCMeIW5PpdxAkL1IuwcvOfnKp6uF1Kk9s-k2CIHuuL054qo2DFCZj193Pi6wYblO70YWhbPZMO-x3MoJc3aqhINpUyStXdxq4UnQTrpUgoCpaJY7Cvc5xjUqxlAD5kHhNRRM2mGJTGjjZuO5_M5qf_-Pl688i45s6-B9FhTcKDTpZEwCB48s3dG67GEC7PbbY20KikdZOd9R5zYXXklcNHRfz_tntt069Ubl85Gd2qlnPUmtDKdAVF8crfrOMOqf0aOCmgShHTSh7jVnpzpm69AGJEEGsnZ8YBI5BY-l40BgzCPWA6Ea8DZy3XYHK_k_It3gy4XwkpccTy5J7hC8g.jpg"
+      },
+      "sourceId": "ru:telegaru",
+      "sourceCountryCode": "ru",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/d0df2dc28a.mp4?token=dM7PxC7pICIF_wwbR3E7eqF9Yx6qKQQ4gpDu4O-NGgp_cTVACX6B1hOt3Qie_be9ia6f3PI3elkIylJhd98UvGZGxpWpteiHPnqf0wHD9LbQpFEHLOFf11iyM0jCcSygN-iM1n-5m4UzkzGBOOtk716j4zjlYLzF7DIXDir5cf3C4uhwQpdC6VZjpuv3rltU3A-9hkCMVq2giTksB6nfYWJV-v_UOtuYMGgqB8bn9BeJKi0PFfdgxW5okHsJarX0GOToR3iOyHcgz1TNXF_2uIZOIVdzyHQQGiNeVu-UWq5bKH80TDZUs3wG_BZUH2WNgFTU4OHiVVZbfPIhoa-AXA",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-01T07:54:30.967Z",
+      "expiresAt": "2026-05-02T07:54:30.967Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T03:51:02.050Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T07:54:30.967Z"
+      }
+    },
+    {
+      "id": 3154584614,
+      "postUrl": "https://t.me/tass_agency/373920?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/OWbr71urGnQU6o20Mq4jZ-HCAUsVZpHOnrZa-8Fu5VQow5TZCQMg_ddV3BGxhY2Yp0swrVKco5dB97A_bMcS-LiXtaTDKmIHAGsbS08AAjSSPMFkOB76aIhlC7nBmpdYRVk5kH3FKDUWUG2tr_8F0a1gC5tFyFjyaI9Fmu5pMApSoqRb-hHeoUODqHY8YhUDqveR8V6R7waR4ODmGW35j_79HJkPiCfgfT22Wm0QXe97XGCT3V2V9g-YEztRzw1XYHvzwuAgQKm_WrBc6RZTNa1NwdP9rdLoQHqr51wemPTxQR44Co6JfiD1DPPDIjit8Dh8YkAFh7pQ6F_YNsDlDQ.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "▶️ Украинское политическое пространство стало \"выжженным полем\", потому что режим ликвидировал способных ему противостоять. Об этом заявил Денис Пушилин в интервью ТАСС.\n\nВидео: Игорь Романенков/ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-02T04:48:41.458Z",
+      "expiresAt": "2026-05-03T04:48:41.458Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T04:48:41.458Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T04:48:41.458Z"
+      }
+    },
+    {
+      "id": 1724252201,
+      "postUrl": "https://t.me/readovkanews/109877?single",
+      "source": {
+        "title": "Readovka",
+        "handle": "readovkanews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ql__tx-FEy4bfMT5rcyP5WIFl8nyYtUOsa1NuSO_9nCuacOsUv4cig8dfsbaIwhar1jXVUiFIwOFEmCH79wvdAsIRagUUQZ0ROMz-8tvTaHekOKhiiS0gK1IauX6UXUpqR4ZDAsTDe7c-lSqs02rjbftL7RT4HrBjm4pO0V-dmRHQ7FPXUsJ7qEy_7LrXtjUO0y3sad6sY2T8Qe_C3sN5zIpckLKUmzS5yKmOVitG8uEBoriuQHadSayPS5CRfyvRPRy9MMapYu2GH4jjTXBoF_WAFT_JsmVd0tWCE1hA-Q_b1CjJvqys5wCDFR3XDbf9Z0Dsvfbx0PwWW4oLiPH2w.jpg"
+      },
+      "sourceId": "ru:readovkanews",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Жители Архангельской области оказались в заложниках у реки: перебраться на другой берег можно только за деньги  В глубинке Архангельской области в далеком 2013 году из реестра дорог области удалили участок земли с рекой — он не числится в документах региона.…",
+      "links": [],
+      "createdAt": "2026-05-01T18:48:53.192Z",
+      "expiresAt": "2026-05-02T18:48:53.192Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-01T18:48:53.192Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-01T18:48:53.192Z"
       }
     }
   ]
