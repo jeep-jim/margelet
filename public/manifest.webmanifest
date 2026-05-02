@@ -19,22 +19,27 @@
       "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
-    }    
-  ],  
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
   "screenshots": [
     {
       "src": "/hero.webp",
       "sizes": "1280x1280",
       "type": "image/webp",
-      "form_factor": "wide",
-      "label": "margeleT home screen"
+      "form_factor": "wide"
     },
     {
       "src": "/manifest-hero.webp",
