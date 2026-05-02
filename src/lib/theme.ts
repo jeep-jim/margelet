@@ -15,6 +15,15 @@ function setThemeMeta(theme: Theme) {
   }
 
   meta.content = color;
+
+  let colorSchemeMeta = document.querySelector<HTMLMetaElement>('meta[name="color-scheme"]');
+  if (!colorSchemeMeta) {
+    colorSchemeMeta = document.createElement("meta");
+    colorSchemeMeta.name = "color-scheme";
+    document.head.appendChild(colorSchemeMeta);
+  }
+
+  colorSchemeMeta.content = theme;
   document.documentElement.style.backgroundColor = color;
   document.body.style.backgroundColor = color;
   document.documentElement.style.colorScheme = theme;

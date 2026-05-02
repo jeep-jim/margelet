@@ -8,11 +8,18 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "portrait",
   "background_color": "#17212b",
   "theme_color": "#17212b",
-  "categories": ["news", "social", "productivity"],
+  "categories": [
+    "news",
+    "social",
+    "productivity"
+  ],
   "prefer_related_applications": false,
   "icons": [
     {
@@ -21,7 +28,7 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],  
+  ],
   "screenshots": [
     {
       "src": "/hero.webp",
