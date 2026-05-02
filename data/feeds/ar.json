@@ -1,9 +1,61 @@
 {
   "countryCode": "ar",
-  "updatedAt": "2026-05-02T21:00:44.386Z",
+  "updatedAt": "2026-05-02T21:27:41.104Z",
   "totalPosts": 113,
   "chunks": 1,
   "items": [
+    {
+      "id": 1953190361,
+      "postUrl": "https://t.me/clarincom/3289?single",
+      "source": {
+        "title": "Clarín",
+        "handle": "clarincom",
+        "verified": true,
+        "avatar": "https://cdn1.telesco.pe/file/AEniO5yPW3ZDjDcEFAJJGlgV8RbU0ojw_9vW4FXFkUQ_eraCmAWtpEdLSW-0ubWUyaP5869KBUzDXQXaimDb3ggA0RC9aE8d3L6SH_mEujC_pMrJXLxT8KeSKk6Rf_8VB9AlgZykG1pnaU0SwN88DslXsd1sIsY--iukCz-AIxyzDVFdUWJxDJTr8oNum5aJ5yayGjQ0_6CcGnlNhbk-2ubuHUEipRvGFLI95jL8DIUaPjWYhx1yMIIHwhgw9Jl92XlsfdRpViL5AFC1KzhBKd38w9PXtohGKppWr0bx4iaOWzwv_N1H6O3WuMyHIZFznTY9TKOpdqYWcmzgUGw_Wg.jpg"
+      },
+      "sourceId": "ar:clarincom",
+      "sourceCountryCode": "ar",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/uOtsRa-yxDZqhrsjQltFgu9Ky7F9f8Lb2OXH9DUN3mIgKrYrPT0fnDYgqJ_N12TzMnqJLE_M9VVkQotcPO5MMPOjjG13sGzsrhrWXToVTxym7hfaVihrCuNHKFAe6gNjDhFSR1K4EQaQ66qjuCGiuCdeQsyQz3g_vcnRMO8YrixHe57uxSABtEVtZ9EcxRf5TmFzDtni32CqNn9PTYvX8q5GlNCsCkOQns3eatyZVbRHs1cp7gxtTxhFLSAvAHnJcoU7mJXtHk66wvmEZE3G2N_toixJ1xi6jaOlc4xwbnbOpTJtHfyBAXTwyiYxJ2cmmI3v5-9usy5uxGSPHqcN6w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Manuel Adorni se defendió en el Congreso",
+      "links": [
+        {
+          "label": "se defendió",
+          "url": "https://www.clarin.com/politica/manuel-adorni-congreso-vivo-hora-informe-gestion-jefe-gabinete-apoyo-javier-milei-verlo_0_XDjVJ2VRvc.html"
+        }
+      ],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
+      }
+    },
     {
       "id": 4268872113,
       "postUrl": "https://t.me/pagina12/15117?single",
@@ -414,8 +466,8 @@
       }
     },
     {
-      "id": 1953190361,
-      "postUrl": "https://t.me/clarincom/3289?single",
+      "id": 1931465944,
+      "postUrl": "https://t.me/clarincom/3288?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -424,27 +476,21 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/uOtsRa-yxDZqhrsjQltFgu9Ky7F9f8Lb2OXH9DUN3mIgKrYrPT0fnDYgqJ_N12TzMnqJLE_M9VVkQotcPO5MMPOjjG13sGzsrhrWXToVTxym7hfaVihrCuNHKFAe6gNjDhFSR1K4EQaQ66qjuCGiuCdeQsyQz3g_vcnRMO8YrixHe57uxSABtEVtZ9EcxRf5TmFzDtni32CqNn9PTYvX8q5GlNCsCkOQns3eatyZVbRHs1cp7gxtTxhFLSAvAHnJcoU7mJXtHk66wvmEZE3G2N_toixJ1xi6jaOlc4xwbnbOpTJtHfyBAXTwyiYxJ2cmmI3v5-9usy5uxGSPHqcN6w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Manuel Adorni se defendió en el Congreso",
+      "text": "La intimidad de Milei en la Fundación Libertad",
       "links": [
         {
-          "label": "se defendió",
-          "url": "https://www.clarin.com/politica/manuel-adorni-congreso-vivo-hora-informe-gestion-jefe-gabinete-apoyo-javier-milei-verlo_0_XDjVJ2VRvc.html"
+          "label": "Fundación Libertad",
+          "url": "https://www.clarin.com/politica/milei-defendio-rumbo-economico-aseguro-tarde-temprano-inflacion-va-ceder_0_VKos5opbNV.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T16:00:33.965Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -462,7 +508,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -850,8 +896,8 @@
       }
     },
     {
-      "id": 1931465944,
-      "postUrl": "https://t.me/clarincom/3288?single",
+      "id": 3446832527,
+      "postUrl": "https://t.me/clarincom/3287?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -864,17 +910,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "La intimidad de Milei en la Fundación Libertad",
-      "links": [
-        {
-          "label": "Fundación Libertad",
-          "url": "https://www.clarin.com/politica/milei-defendio-rumbo-economico-aseguro-tarde-temprano-inflacion-va-ceder_0_VKos5opbNV.html"
-        }
-      ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "text": "🔴 AHORA | Renunció Carlos Frugoni, el funcionario de Economía que no declaró departamentos que compró en Estados Unidos",
+      "links": [],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -892,7 +933,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -1189,8 +1230,8 @@
       }
     },
     {
-      "id": 3446832527,
-      "postUrl": "https://t.me/clarincom/3287?single",
+      "id": 4015845174,
+      "postUrl": "https://t.me/clarincom/3286?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -1199,16 +1240,27 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/jHOu2AiCEJggRn1X4LCxpczDpX7dDzJYaobOk1_Ujg2SaQoWwkFZmcETzA3suHprV7jxQ7qUqzA7aam5uhyUCmLDbzO_lj3HKRjrtXB4sL5fi_VerTBlLPc9MqFcOXU4__Y8cllD7W4hH3RRpoI1DDU_tjaXmvR7ceRikuge0mDGoPjPZqH8J4JNm5cXoy6gSN2XtliFCMRJP1xxbFEzs08n3CBO9x89gl87FmIobxQ1OL-Guo1HUmBEpszyWHFoWB0Kkqy1bloc3OHJbYQp3g2Gg4gAroUXV1YlJF0bGFH4u6q0enoygYNFFFefKE3lPdtFjqpx3W5a4uoY_f_Q_g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔴 AHORA | Renunció Carlos Frugoni, el funcionario de Economía que no declaró departamentos que compró en Estados Unidos",
-      "links": [],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "text": "🗞️ La tapa de este domingo 26 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
+      "links": [
+        {
+          "label": "https://t.me/TapasClarinBot",
+          "url": "https://t.me/TapasClarinBot"
+        }
+      ],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1226,7 +1278,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -1560,8 +1612,8 @@
       }
     },
     {
-      "id": 4015845174,
-      "postUrl": "https://t.me/clarincom/3286?single",
+      "id": 1289677549,
+      "postUrl": "https://t.me/clarincom/3285?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -1570,27 +1622,21 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/jHOu2AiCEJggRn1X4LCxpczDpX7dDzJYaobOk1_Ujg2SaQoWwkFZmcETzA3suHprV7jxQ7qUqzA7aam5uhyUCmLDbzO_lj3HKRjrtXB4sL5fi_VerTBlLPc9MqFcOXU4__Y8cllD7W4hH3RRpoI1DDU_tjaXmvR7ceRikuge0mDGoPjPZqH8J4JNm5cXoy6gSN2XtliFCMRJP1xxbFEzs08n3CBO9x89gl87FmIobxQ1OL-Guo1HUmBEpszyWHFoWB0Kkqy1bloc3OHJbYQp3g2Gg4gAroUXV1YlJF0bGFH4u6q0enoygYNFFFefKE3lPdtFjqpx3W5a4uoY_f_Q_g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🗞️ La tapa de este domingo 26 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
+      "text": "⭕ AHORA | La Justicia cerró la causa por el viaje de la esposa de Manuel  Adorni en el avión oficial a Nueva York",
       "links": [
         {
-          "label": "https://t.me/TapasClarinBot",
-          "url": "https://t.me/TapasClarinBot"
+          "label": "el viaje de la esposa",
+          "url": "https://www.clarin.com/politica/justicia-cerro-causa-viaje-esposa-manuel-adorni-avion-oficial-nueva-york_0_8QZpY8d28h.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T19:16:38.268Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1608,7 +1654,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -1921,8 +1967,8 @@
       }
     },
     {
-      "id": 1289677549,
-      "postUrl": "https://t.me/clarincom/3285?single",
+      "id": 1566729916,
+      "postUrl": "https://t.me/clarincom/3284?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -1935,17 +1981,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⭕ AHORA | La Justicia cerró la causa por el viaje de la esposa de Manuel  Adorni en el avión oficial a Nueva York",
+      "text": "🌴 Revelan que un funcionario del Gobierno tiene 7 propiedades sin declarar en Miami: “Me equivoqué”",
       "links": [
         {
-          "label": "el viaje de la esposa",
-          "url": "https://www.clarin.com/politica/justicia-cerro-causa-viaje-esposa-manuel-adorni-avion-oficial-nueva-york_0_8QZpY8d28h.html"
+          "label": "7 propiedades sin declarar en Miam",
+          "url": "https://www.clarin.com/politica/funcionario-gobierno-7-propiedades-declarar-miami-equivoque_0_QslkE5TErl.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1963,7 +2009,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -2246,7 +2292,7 @@
       "createdAt": "2026-05-02T06:20:07.354Z",
       "expiresAt": "2026-05-03T06:20:07.354Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T17:05:38.101Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:54.129Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2268,8 +2314,8 @@
       }
     },
     {
-      "id": 1566729916,
-      "postUrl": "https://t.me/clarincom/3284?single",
+      "id": 3668535443,
+      "postUrl": "https://t.me/clarincom/3283?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -2282,17 +2328,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🌴 Revelan que un funcionario del Gobierno tiene 7 propiedades sin declarar en Miami: “Me equivoqué”",
+      "text": "La intimidad de la cena de Paolo Rocca y un ex presidente.",
       "links": [
         {
-          "label": "7 propiedades sin declarar en Miam",
-          "url": "https://www.clarin.com/politica/funcionario-gobierno-7-propiedades-declarar-miami-equivoque_0_QslkE5TErl.html"
+          "label": "Paolo Rocca",
+          "url": "https://www.clarin.com/politica/intimidad-visita-mauricio-macri-paolo-rocca-casa-charla-economia-politica-blancos-furia-javier-milei_0_a3x7MPtLu9.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2310,7 +2356,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -2500,7 +2546,7 @@
       "createdAt": "2026-05-02T06:20:11.953Z",
       "expiresAt": "2026-05-03T06:20:11.953Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T17:05:40.169Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.119Z",
       "tag": "auto",
       "tags": [
         "auto",
@@ -2569,8 +2615,8 @@
       }
     },
     {
-      "id": 3668535443,
-      "postUrl": "https://t.me/clarincom/3283?single",
+      "id": 1365657210,
+      "postUrl": "https://t.me/clarincom/3282?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -2583,17 +2629,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "La intimidad de la cena de Paolo Rocca y un ex presidente.",
+      "text": "👉 Lo último: el Gobierno enviará al Congreso la Reforma Electoral con Ficha Limpia y la eliminación de las PASO",
       "links": [
         {
-          "label": "Paolo Rocca",
-          "url": "https://www.clarin.com/politica/intimidad-visita-mauricio-macri-paolo-rocca-casa-charla-economia-politica-blancos-furia-javier-milei_0_a3x7MPtLu9.html"
+          "label": "Reforma Electoral",
+          "url": "https://www.clarin.com/politica/javier-milei-medidas-vivo-presidente-visita-hoy-muro-lamentos-final-viaje-israel-medio-guerra-medio-oriente_0_G8XeaDtiX6.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2611,7 +2657,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -2800,8 +2846,8 @@
       }
     },
     {
-      "id": 1365657210,
-      "postUrl": "https://t.me/clarincom/3282?single",
+      "id": 3213039793,
+      "postUrl": "https://t.me/clarincom/3281?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -2814,17 +2860,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "👉 Lo último: el Gobierno enviará al Congreso la Reforma Electoral con Ficha Limpia y la eliminación de las PASO",
+      "text": "⭕ AHORA | REVÉS JUDICIAL PARA ALBERTO FERNÁNDEZ\n\nQuedó a un paso de ir a juicio oral por violencia de género contra Fabiola Yañez.",
       "links": [
         {
-          "label": "Reforma Electoral",
-          "url": "https://www.clarin.com/politica/javier-milei-medidas-vivo-presidente-visita-hoy-muro-lamentos-final-viaje-israel-medio-guerra-medio-oriente_0_G8XeaDtiX6.html"
+          "label": "violencia de género",
+          "url": "https://www.clarin.com/politica/reves-judicial-alberto-fernandez-quedo-paso-ir-juicio-oral-violencia-genero-fabiola-yanez_0_P4GDGAcNJT.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2842,7 +2888,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -3025,8 +3071,8 @@
       }
     },
     {
-      "id": 3213039793,
-      "postUrl": "https://t.me/clarincom/3281?single",
+      "id": 395075760,
+      "postUrl": "https://t.me/clarincom/3280?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -3035,21 +3081,27 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "⭕ AHORA | REVÉS JUDICIAL PARA ALBERTO FERNÁNDEZ\n\nQuedó a un paso de ir a juicio oral por violencia de género contra Fabiola Yañez.",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "violencia de género",
-          "url": "https://www.clarin.com/politica/reves-judicial-alberto-fernandez-quedo-paso-ir-juicio-oral-violencia-genero-fabiola-yanez_0_P4GDGAcNJT.html"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/awAxKXYMHsq2Pg8ks6_I99_sDSIuhg2mYfPAMyH3M3gb6qG5KbIb6K8NEOyRigYsLEnq7Qc_Ia2LgsXmzKpAoNzt-fk1NfsuB9L25WJZNDeOzmV0yXT2BxbZwYmT3RRHl7MCDhwzdX1VFRAMyQcKIPFxJlkHsjYWyooUKwSvaX1YBTxebT6_GBx-rDipSZZS9MMnXfLrAwH7kRY3NAFDxKOsqo8cANdJzbKq0wCbsEsbuM4o8IFCke3O312hPVAu4Wz9sQDhaOwJUJVrtUv3argOwQ_-hGSCSHvaov6AvmudPtmshnNBZxE93azhKkM2gayeSDGejbdUDf0U8CuOLg.jpg"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🗞️ La tapa de este domingo 19 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
+      "links": [
+        {
+          "label": "https://t.me/TapasClarinBot",
+          "url": "https://t.me/TapasClarinBot"
+        }
+      ],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -3067,7 +3119,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -3258,8 +3310,8 @@
       }
     },
     {
-      "id": 395075760,
-      "postUrl": "https://t.me/clarincom/3280?single",
+      "id": 2863111564,
+      "postUrl": "https://t.me/clarincom/3279?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -3268,27 +3320,21 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/awAxKXYMHsq2Pg8ks6_I99_sDSIuhg2mYfPAMyH3M3gb6qG5KbIb6K8NEOyRigYsLEnq7Qc_Ia2LgsXmzKpAoNzt-fk1NfsuB9L25WJZNDeOzmV0yXT2BxbZwYmT3RRHl7MCDhwzdX1VFRAMyQcKIPFxJlkHsjYWyooUKwSvaX1YBTxebT6_GBx-rDipSZZS9MMnXfLrAwH7kRY3NAFDxKOsqo8cANdJzbKq0wCbsEsbuM4o8IFCke3O312hPVAu4Wz9sQDhaOwJUJVrtUv3argOwQ_-hGSCSHvaov6AvmudPtmshnNBZxE93azhKkM2gayeSDGejbdUDf0U8CuOLg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🗞️ La tapa de este domingo 19 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
+      "text": "👉 Karina Milei insiste con el operativo para blindar a Manuel Adorni y reúne a la mesa política",
       "links": [
         {
-          "label": "https://t.me/TapasClarinBot",
-          "url": "https://t.me/TapasClarinBot"
+          "label": "reúne a la mesa política",
+          "url": "https://www.clarin.com/politica/karina-milei-insiste-operativo-blindar-manuel-adorni-reune-mesa-politica_0_5iVW0t2rei.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T19:16:38.268Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -3306,7 +3352,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -3468,7 +3514,7 @@
       "createdAt": "2026-05-02T06:20:07.354Z",
       "expiresAt": "2026-05-03T06:20:07.354Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T17:05:38.101Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:54.129Z",
       "tag": "news",
       "tags": [
         "news"
@@ -3490,8 +3536,8 @@
       }
     },
     {
-      "id": 2863111564,
-      "postUrl": "https://t.me/clarincom/3279?single",
+      "id": 2750113341,
+      "postUrl": "https://t.me/clarincom/3278?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -3504,17 +3550,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "👉 Karina Milei insiste con el operativo para blindar a Manuel Adorni y reúne a la mesa política",
+      "text": "⭕ EXCLUSIVO | Antes de asumir, Adorni recibió dinero de la productora de Marcelo Grandio durante casi un año",
       "links": [
         {
-          "label": "reúne a la mesa política",
-          "url": "https://www.clarin.com/politica/karina-milei-insiste-operativo-blindar-manuel-adorni-reune-mesa-politica_0_5iVW0t2rei.html"
+          "label": "recibió dinero de la productora de Marcelo Grandio",
+          "url": "https://www.clarin.com/politica/ano-adorni-recibio-dinero-productora-marcelo-grandio_0_HQWCzaa8DP.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -3532,7 +3578,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -3653,7 +3699,7 @@
       "createdAt": "2026-05-02T06:20:07.354Z",
       "expiresAt": "2026-05-03T06:20:07.354Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T17:05:38.101Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:54.129Z",
       "tag": "news",
       "tags": [
         "news"
@@ -3675,8 +3721,8 @@
       }
     },
     {
-      "id": 2750113341,
-      "postUrl": "https://t.me/clarincom/3278?single",
+      "id": 2588430706,
+      "postUrl": "https://t.me/clarincom/3277?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -3689,17 +3735,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⭕ EXCLUSIVO | Antes de asumir, Adorni recibió dinero de la productora de Marcelo Grandio durante casi un año",
-      "links": [
-        {
-          "label": "recibió dinero de la productora de Marcelo Grandio",
-          "url": "https://www.clarin.com/politica/ano-adorni-recibio-dinero-productora-marcelo-grandio_0_HQWCzaa8DP.html"
-        }
-      ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "text": "👉 AHORA | La inflación de marzo fue de 3,4% según el INDEC.",
+      "links": [],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -3717,7 +3758,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -3854,8 +3895,8 @@
       }
     },
     {
-      "id": 2588430706,
-      "postUrl": "https://t.me/clarincom/3277?single",
+      "id": 2557379051,
+      "postUrl": "https://t.me/clarincom/3276?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -3868,12 +3909,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "👉 AHORA | La inflación de marzo fue de 3,4% según el INDEC.",
-      "links": [],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "text": "🔴 AHORA | Otro paso a favor de la Argentina en el juicio por YPF",
+      "links": [
+        {
+          "label": "juicio por YPF",
+          "url": "https://www.clarin.com/economia/paso-favor-argentina-juicio-ypf-justicia-estadounidense-suspendio-todas-apelaciones-caso_0_t2sRks9tLH.html"
+        }
+      ],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -3891,7 +3937,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -4040,8 +4086,8 @@
       }
     },
     {
-      "id": 2557379051,
-      "postUrl": "https://t.me/clarincom/3276?single",
+      "id": 770060136,
+      "postUrl": "https://t.me/clarincom/3275?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -4050,21 +4096,27 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🔴 AHORA | Otro paso a favor de la Argentina en el juicio por YPF",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "juicio por YPF",
-          "url": "https://www.clarin.com/economia/paso-favor-argentina-juicio-ypf-justicia-estadounidense-suspendio-todas-apelaciones-caso_0_t2sRks9tLH.html"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/uOTbe97MPVs3HJpumQsQYCUOQgjq-3IIpXs-VCBRJwqVOlCGYHcfuWhca9no4sA0A2LbXZAeQLAX5wm2OxEwNB6ieUB6Qwf42Qjq427nU_eZ7jWL0hywIFD5ka2Ko4R5APEpQJWjy0nZ1a6APelztlnL-LlE_dnJfk485KzZGW4kYI2BJxjHfeA1UjZXv5Dgfo4bs21lr62S-6zL9-tH-xtxz2PbVyE5NF8jbnzU99KrxalInIwC4Io1byhpLrJnxcamsP2K7gdmxpGmQTjYCSJjIauTPYQaSbWSDoh--WNrvTUdpD__xknTY_0IOFK00y7gysLWm6CmzI0IeIugNw.jpg"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🗞️ La tapa de este domingo 12 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
+      "links": [
+        {
+          "label": "https://t.me/TapasClarinBot",
+          "url": "https://t.me/TapasClarinBot"
+        }
+      ],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4082,7 +4134,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -4231,8 +4283,8 @@
       }
     },
     {
-      "id": 770060136,
-      "postUrl": "https://t.me/clarincom/3275?single",
+      "id": 4275853609,
+      "postUrl": "https://t.me/clarincom/3274?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -4241,27 +4293,21 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/uOTbe97MPVs3HJpumQsQYCUOQgjq-3IIpXs-VCBRJwqVOlCGYHcfuWhca9no4sA0A2LbXZAeQLAX5wm2OxEwNB6ieUB6Qwf42Qjq427nU_eZ7jWL0hywIFD5ka2Ko4R5APEpQJWjy0nZ1a6APelztlnL-LlE_dnJfk485KzZGW4kYI2BJxjHfeA1UjZXv5Dgfo4bs21lr62S-6zL9-tH-xtxz2PbVyE5NF8jbnzU99KrxalInIwC4Io1byhpLrJnxcamsP2K7gdmxpGmQTjYCSJjIauTPYQaSbWSDoh--WNrvTUdpD__xknTY_0IOFK00y7gysLWm6CmzI0IeIugNw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🗞️ La tapa de este domingo 12 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
+      "text": "“NO HICIMOS NADA ILEGAL NI INMORAL” \n\n👉 Hablaron los funcionarios del Ministerio de Economía que tomaron créditos hipotecarios del Banco Nación",
       "links": [
         {
-          "label": "https://t.me/TapasClarinBot",
-          "url": "https://t.me/TapasClarinBot"
+          "label": "créditos hipotecarios del Banco Nación",
+          "url": "https://www.clarin.com/politica/hicimos-ilegal-inmoral-hablaron-funcionarios-ministerio-economia-tomaron-creditos-hipotecarios-banco-nacion_0_mpcUjQntwO.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T16:00:33.965Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4279,7 +4325,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -4428,8 +4474,8 @@
       }
     },
     {
-      "id": 4275853609,
-      "postUrl": "https://t.me/clarincom/3274?single",
+      "id": 3988674126,
+      "postUrl": "https://t.me/clarincom/3273?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -4438,21 +4484,27 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "“NO HICIMOS NADA ILEGAL NI INMORAL” \n\n👉 Hablaron los funcionarios del Ministerio de Economía que tomaron créditos hipotecarios del Banco Nación",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "créditos hipotecarios del Banco Nación",
-          "url": "https://www.clarin.com/politica/hicimos-ilegal-inmoral-hablaron-funcionarios-ministerio-economia-tomaron-creditos-hipotecarios-banco-nacion_0_mpcUjQntwO.html"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/RS9aXENru32Tt6L3spRfeoWpI3os8v7JZgw39EHbVzHNLVhmQttUTxly0-6gRmx5-aLXhkKHRW4v43vFBKkBBLTnkSgP-1FxGUk6lRogEd75bCkpLkAEHiTxOKMXTOZkXyCyUQlCJnw9_q_JbtSfxXstEMfNfUToMl061ylHxZ8_ZKhwNdXx06CuFUYl0mksFr_TRlAZNvV_aaamZz_irV-BE0_z3KlJ1RHjqeLLuStlixksicjKqoD74M07Zbk6gjRhMcYkeTkAtz-dbUJDg-DE37ESajmIurQz8WYqgTrpmudxfm4bJVegyL5FBPFzVWpb871Sb8vOjWhgtKmV8A.jpg"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Revelan más detalles del viaje a Nueva York de Adorni con su esposa",
+      "links": [
+        {
+          "label": "Adorni con su esposa",
+          "url": "https://www.clarin.com/politica/nueva-informacion-fiscalia-adorni-esposa-pagaron-10000-dolares-primera-clase-volar-nueva-york_0_FN73sdloSj.html"
+        }
+      ],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4470,7 +4522,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -4618,8 +4670,8 @@
       }
     },
     {
-      "id": 3988674126,
-      "postUrl": "https://t.me/clarincom/3273?single",
+      "id": 3010868743,
+      "postUrl": "https://t.me/clarincom/3272?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -4628,27 +4680,21 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/RS9aXENru32Tt6L3spRfeoWpI3os8v7JZgw39EHbVzHNLVhmQttUTxly0-6gRmx5-aLXhkKHRW4v43vFBKkBBLTnkSgP-1FxGUk6lRogEd75bCkpLkAEHiTxOKMXTOZkXyCyUQlCJnw9_q_JbtSfxXstEMfNfUToMl061ylHxZ8_ZKhwNdXx06CuFUYl0mksFr_TRlAZNvV_aaamZz_irV-BE0_z3KlJ1RHjqeLLuStlixksicjKqoD74M07Zbk6gjRhMcYkeTkAtz-dbUJDg-DE37ESajmIurQz8WYqgTrpmudxfm4bJVegyL5FBPFzVWpb871Sb8vOjWhgtKmV8A.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Revelan más detalles del viaje a Nueva York de Adorni con su esposa",
+      "text": "🏡 Investigan otra hipoteca privada para Adorni, por US$ 100.000, y citan a declarar a las cuatro prestamistas",
       "links": [
         {
-          "label": "Adorni con su esposa",
-          "url": "https://www.clarin.com/politica/nueva-informacion-fiscalia-adorni-esposa-pagaron-10000-dolares-primera-clase-volar-nueva-york_0_FN73sdloSj.html"
+          "label": "citan a declarar a las cuatro prestamistas",
+          "url": "https://www.clarin.com/politica/investigan-hipoteca-privada-adorni-us-100000-citan-declarar-prestamistas_0_PDQIxQs3Os.html"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T16:00:33.965Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4666,7 +4712,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -4814,8 +4860,8 @@
       }
     },
     {
-      "id": 3010868743,
-      "postUrl": "https://t.me/clarincom/3272?single",
+      "id": 4074861108,
+      "postUrl": "https://t.me/clarincom/3271?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -4824,21 +4870,22 @@
       },
       "sourceId": "ar:clarincom",
       "sourceCountryCode": "ar",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🏡 Investigan otra hipoteca privada para Adorni, por US$ 100.000, y citan a declarar a las cuatro prestamistas",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "citan a declarar a las cuatro prestamistas",
-          "url": "https://www.clarin.com/politica/investigan-hipoteca-privada-adorni-us-100000-citan-declarar-prestamistas_0_PDQIxQs3Os.html"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/Fdni7TZGHZwq1uKHzM8lVvz7ir_0kBNaXFhagN4UpeBD3CEJyt-JLPqxCxzYsdoHUqZuxQkVuPXsS4ixBRLGEhR_mNAQdubEAJPrgMAbHt7FiOzW025i2_ADx8s8SuH0BVyMNIbmWpnYnCcm_ZoJFkxCMtjPqVYKHRblrpQze81oWVOUYzfqDfFKsDwy5mmiIsRi9v3IH6ZKiHbRpOalMMz2myp4A648XbIfj77NoxvnTwzGQzEx2Wp5SRJLYgiJm5kV6UyKLJnvnjb4XXR5sP_EikRO1BlrRwZwJfZQW0QxCNw8L1LxVyrJU8KtrjRSJlX06G4ZgO5K8Zr3dIHfVA.jpg"
         }
       ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "AHORA | Milei encabezó la reunión de Gabinete, con Adorni a su lado, en otro fuerte gesto de apoyo en medio de los escándalos.",
+      "links": [],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T21:07:07.957Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4856,7 +4903,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -5012,8 +5059,8 @@
       }
     },
     {
-      "id": 4074861108,
-      "postUrl": "https://t.me/clarincom/3271?single",
+      "id": 4115696133,
+      "postUrl": "https://t.me/clarincom/3270?single",
       "source": {
         "title": "Clarín",
         "handle": "clarincom",
@@ -5027,17 +5074,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/Fdni7TZGHZwq1uKHzM8lVvz7ir_0kBNaXFhagN4UpeBD3CEJyt-JLPqxCxzYsdoHUqZuxQkVuPXsS4ixBRLGEhR_mNAQdubEAJPrgMAbHt7FiOzW025i2_ADx8s8SuH0BVyMNIbmWpnYnCcm_ZoJFkxCMtjPqVYKHRblrpQze81oWVOUYzfqDfFKsDwy5mmiIsRi9v3IH6ZKiHbRpOalMMz2myp4A648XbIfj77NoxvnTwzGQzEx2Wp5SRJLYgiJm5kV6UyKLJnvnjb4XXR5sP_EikRO1BlrRwZwJfZQW0QxCNw8L1LxVyrJU8KtrjRSJlX06G4ZgO5K8Zr3dIHfVA.jpg"
+          "url": "https://cdn4.telesco.pe/file/jg0jT_z7NLTP_gwUkrxLYBmCE359UMtv-z23_bSSlcxbpObCJyC4kE_C4Q6UNIFLwA6s_atzFUmSLKL-cYYxMdWYC1rPvqMJbcgXynj-jHjJyad2XQC66ERPnjpd2kSnBAMvDJi_d9ZwXfjgVkNg-vJm4cEm42Z2tz4XFmCWgmlWJqK9gNJe4ybYyLEUNdjf49oN3yqfIyHua13Mv6LTQsjv22j5Xc5VycgbtiDSSCyez1Kcx3b5rjin1YpuL1BgLRkMEYMFj4824Y_lnVgpUjY2DkLoMiKRN8L9oUSe6Yj1O1aY-xZre970AmVkT8wF8RQqTLS3TNfaCZgoWS9BLw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "AHORA | Milei encabezó la reunión de Gabinete, con Adorni a su lado, en otro fuerte gesto de apoyo en medio de los escándalos.",
-      "links": [],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
+      "text": "🗞️ La tapa de este domingo 5 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
+      "links": [
+        {
+          "label": "https://t.me/TapasClarinBot",
+          "url": "https://t.me/TapasClarinBot"
+        }
+      ],
+      "createdAt": "2026-05-02T21:25:56.597Z",
+      "expiresAt": "2026-05-03T21:25:56.597Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T17:05:40.746Z",
+      "mediaRefreshedAt": "2026-05-02T21:25:56.597Z",
       "tag": "news",
       "tags": [
         "news"
@@ -5055,7 +5107,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
+        "reviewedAt": "2026-05-02T21:25:56.597Z"
       }
     },
     {
@@ -5200,58 +5252,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T06:20:07.354Z"
-      }
-    },
-    {
-      "id": 4115696133,
-      "postUrl": "https://t.me/clarincom/3270?single",
-      "source": {
-        "title": "Clarín",
-        "handle": "clarincom",
-        "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/AEniO5yPW3ZDjDcEFAJJGlgV8RbU0ojw_9vW4FXFkUQ_eraCmAWtpEdLSW-0ubWUyaP5869KBUzDXQXaimDb3ggA0RC9aE8d3L6SH_mEujC_pMrJXLxT8KeSKk6Rf_8VB9AlgZykG1pnaU0SwN88DslXsd1sIsY--iukCz-AIxyzDVFdUWJxDJTr8oNum5aJ5yayGjQ0_6CcGnlNhbk-2ubuHUEipRvGFLI95jL8DIUaPjWYhx1yMIIHwhgw9Jl92XlsfdRpViL5AFC1KzhBKd38w9PXtohGKppWr0bx4iaOWzwv_N1H6O3WuMyHIZFznTY9TKOpdqYWcmzgUGw_Wg.jpg"
-      },
-      "sourceId": "ar:clarincom",
-      "sourceCountryCode": "ar",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/jg0jT_z7NLTP_gwUkrxLYBmCE359UMtv-z23_bSSlcxbpObCJyC4kE_C4Q6UNIFLwA6s_atzFUmSLKL-cYYxMdWYC1rPvqMJbcgXynj-jHjJyad2XQC66ERPnjpd2kSnBAMvDJi_d9ZwXfjgVkNg-vJm4cEm42Z2tz4XFmCWgmlWJqK9gNJe4ybYyLEUNdjf49oN3yqfIyHua13Mv6LTQsjv22j5Xc5VycgbtiDSSCyez1Kcx3b5rjin1YpuL1BgLRkMEYMFj4824Y_lnVgpUjY2DkLoMiKRN8L9oUSe6Yj1O1aY-xZre970AmVkT8wF8RQqTLS3TNfaCZgoWS9BLw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🗞️ La tapa de este domingo 5 de abril con los temas más importantes del día. Y si querés consultar otra fecha, escribí un mensaje a 👉 https://t.me/TapasClarinBot.",
-      "links": [
-        {
-          "label": "https://t.me/TapasClarinBot",
-          "url": "https://t.me/TapasClarinBot"
-        }
-      ],
-      "createdAt": "2026-05-01T21:07:07.957Z",
-      "expiresAt": "2026-05-02T21:07:07.957Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T19:16:38.268Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T21:07:07.957Z"
       }
     },
     {
