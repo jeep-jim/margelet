@@ -5,27 +5,26 @@
   "description": "Global feed of fresh Telegram content. Discover real posts from original channels worldwide.",
   "lang": "en",
   "dir": "ltr",
-
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
-
-  "background_color": "#17212b",
-  "theme_color": "#17212b",
-
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "categories": ["news", "social", "productivity"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-maskable-512.png",
@@ -34,12 +33,7 @@
       "purpose": "maskable"
     }
   ],
-
-  "display_override": ["standalone", "minimal-ui"],
-
-  "categories": ["news", "social", "productivity"],
-  "prefer_related_applications": false,
-
+  
   "screenshots": [
     {
       "src": "/hero.webp",
