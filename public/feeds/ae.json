@@ -1,9 +1,50 @@
 {
   "countryCode": "ae",
-  "updatedAt": "2026-05-02T04:49:05.122Z",
+  "updatedAt": "2026-05-02T06:22:07.948Z",
   "totalPosts": 28,
   "chunks": 1,
   "items": [
+    {
+      "id": 76951701,
+      "postUrl": "https://t.me/financeuae/1?single",
+      "source": {
+        "title": "financeuae",
+        "handle": "financeuae",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "ae:financeuae",
+      "sourceCountryCode": "ae",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-02T06:20:05.826Z",
+      "expiresAt": "2026-05-03T06:20:05.826Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T06:20:05.826Z",
+      "tag": "finance",
+      "tags": [
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T06:20:05.826Z"
+      }
+    },
     {
       "id": 3180311595,
       "postUrl": "https://t.me/supercarsuae/1?single",
@@ -189,47 +230,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T04:47:39.128Z"
-      }
-    },
-    {
-      "id": 76951701,
-      "postUrl": "https://t.me/financeuae/1?single",
-      "source": {
-        "title": "financeuae",
-        "handle": "financeuae",
-        "verified": false,
-        "avatar": null
-      },
-      "sourceId": "ae:financeuae",
-      "sourceCountryCode": "ae",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-01T05:28:45.349Z",
-      "expiresAt": "2026-05-02T05:28:45.349Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-01T05:28:45.349Z",
-      "tag": "finance",
-      "tags": [
-        "finance"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-01T05:28:45.349Z"
       }
     },
     {
