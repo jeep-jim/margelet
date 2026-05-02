@@ -17,6 +17,8 @@ function setThemeMeta(theme: Theme) {
   meta.content = color;
   document.documentElement.style.backgroundColor = color;
   document.body.style.backgroundColor = color;
+  document.documentElement.style.colorScheme = theme;
+  document.body.style.colorScheme = theme;
 }
 
 export function getTheme(): Theme {

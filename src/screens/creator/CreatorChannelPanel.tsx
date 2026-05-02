@@ -1596,12 +1596,16 @@ export function CreatorChannelPanel({
                       </div>
                     </div>
 
-                    <div className="rounded-[14px] bg-surface px-3 py-2">
+                    <div className="min-w-0 rounded-[14px] bg-surface px-3 py-2">
                       <div className="text-secondary uppercase opacity-60">{ui.typeStat}</div>
-                      <div className="text-primary mt-1 font-semibold">
-                        {item.plan === "paid" ? ui.paidPlan : item.plan === "barter" ? ui.barterPlan : ui.claimPlan}
+                      <div className="mt-1 break-words text-xs font-semibold leading-tight text-primary">
+                        {item.plan === "paid"
+                          ? ui.paidPlan
+                          : item.plan === "barter"
+                            ? ui.barterPlan
+                            : ui.claimPlan}
                       </div>
-                    </div>
+                    </div>                    
 
                     <div className="rounded-[14px] bg-surface px-3 py-2">
                       <div className="text-secondary uppercase opacity-60">{ui.termStat}</div>
