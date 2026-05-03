@@ -1,9 +1,101 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-03T09:00:18.782Z",
-  "totalPosts": 70,
+  "updatedAt": "2026-05-03T10:17:17.212Z",
+  "totalPosts": 74,
   "chunks": 1,
   "items": [
+    {
+      "id": 1347272546,
+      "postUrl": "https://t.me/tagesschau/43701?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "UN-Menschenrechtskommissar: Presse ist \"Sauerstoff\"“ für eine Gesellschaft\nhttps://www.tagesschau.de/ausland/europa/pressefreiheit-un-100.html\n\nEntführungen, Angriffe, Tote: Journalismus sei teils zu einem gefährlichen Beruf geworden, beklagt UN-Menschenrechtskommissar Türk zum Internationalen Tag der Pressefreiheit. Er forderte mehr Maßnahmen zum Schutz.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/europa/pressefreiheit-un-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/pressefreiheit-un-100.html"
+        }
+      ],
+      "createdAt": "2026-05-03T10:15:39.980Z",
+      "expiresAt": "2026-05-04T10:15:39.980Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T10:15:39.980Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T10:15:39.980Z"
+      }
+    },
+    {
+      "id": 2991681850,
+      "postUrl": "https://t.me/heiseonline/12085?single",
+      "source": {
+        "title": "heise online",
+        "handle": "heiseonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Am8Hs1KZGOrGG-mhZDW_HPeuLqs-ivhMC4OMEokG95tfAimDPsR-I1wOc1cKAqZtpbSgXxOzCS4HxzAoaLwU-A9hr3ZBwpxfONCUyqDJmw9IEKcrnNINd5tYDfG1nJ2zDr0PZK2Y0cBBbJeNtXtj2Q-lbZMQ7lD4zatzHcaALbnlBfrsry-BTYasg84IZ6Q7_H7ipPNdvDaYqZzzccKDDh1L21iu4Fd0cVn9qw0QbVKmEi3tFADhzCbPh7NIAmLskzIYYK-PlZ32ERy8aTRGGJS2lExVNkTzcb7Kp4dDMNZz4jsQp6zkskhdGygx3jUxgh7UEWdlZvcdwoNiNsySVA.jpg"
+      },
+      "sourceId": "de:heiseonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "NASA testet Lithium-Thruster: Meilenstein für bemannte Marsflüge?\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.heise.de/news/NASA-testet-Lithium-Thruster-Meilenstein-fuer-bemannte-Marsfluege-11279497.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+        }
+      ],
+      "createdAt": "2026-05-03T10:15:39.004Z",
+      "expiresAt": "2026-05-04T10:15:39.004Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T10:15:39.004Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T10:15:39.004Z"
+      }
+    },
     {
       "id": 587181056,
       "postUrl": "https://t.me/forbesgermany/3?single",
@@ -163,8 +255,8 @@
       }
     },
     {
-      "id": 1387185089,
-      "postUrl": "https://t.me/tagesschau/43698?single",
+      "id": 2285543131,
+      "postUrl": "https://t.me/tagesschau/43700?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -177,17 +269,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Tunesien: Die Auslandspresse muss draußen bleiben\nhttps://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html\n\nTunesien ist in der Rangliste der Pressefreiheit in nur vier Jahren um 43 Plätze abgerutscht. Für lokale Journalisten sind die Spielräume der freien Presse drastisch eingeschränkt worden. Journalisten aus dem Ausland dürfen nicht mehr einreisen. Von S. Ehlert.",
+      "text": "Ein Traum mit Preisschild: Lohnt sich das Ferienhaus wirklich?\nhttps://www.tagesschau.de/wirtschaft/verbraucher/investment-ferienhaus-100.html\n\nEin Ferienhaus als Rückzugsort, das vermietet auch noch Rendite abwirft: Das klingt verlockend. Doch es kann finanziell schnell zu einer Herausforderung werden. Von L.-M. Hiltscher und C. Dörr.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html",
-          "url": "https://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/investment-ferienhaus-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/investment-ferienhaus-100.html"
         }
       ],
-      "createdAt": "2026-05-03T05:04:12.620Z",
-      "expiresAt": "2026-05-04T05:04:12.620Z",
+      "createdAt": "2026-05-03T10:15:39.980Z",
+      "expiresAt": "2026-05-04T10:15:39.980Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
+      "mediaRefreshedAt": "2026-05-03T10:15:39.980Z",
       "tag": "news",
       "tags": [
         "news"
@@ -205,7 +297,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-03T05:04:12.620Z"
+        "reviewedAt": "2026-05-03T10:15:39.980Z"
       }
     },
     {
@@ -400,8 +492,8 @@
       }
     },
     {
-      "id": 1883166030,
-      "postUrl": "https://t.me/tagesschau/43697?single",
+      "id": 2239132224,
+      "postUrl": "https://t.me/tagesschau/43699?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -414,17 +506,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Vulkan Mayon auf Philippinen stößt Asche aus\nhttps://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html\n\nAuf den Philippinen stößt der Vulkan Mayon große Aschewolken aus. Mehrere Dutzend Dörfer werden von der Asche bedeckt. Seit Beginn des Jahres zeigt der aktivste Vulkan des Inselstaats erhöhte Aktivität.",
+      "text": "Grundwasser an vielen Küsten sinkt - ist das Trinkwasser bedroht?\nhttps://www.tagesschau.de/wissen/forschung/versalzenes-grundwasser-100.html\n\nEtwa ein Drittel der Weltbevölkerung lebt in Küstenregionen. Doch gibt es dort immer weniger Trinkwasser: Während der Meeresspiegel steigt, sinkt der Grundwasserspiegel. Von Sedir Dabbass.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html",
-          "url": "https://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html"
+          "label": "https://www.tagesschau.de/wissen/forschung/versalzenes-grundwasser-100.html",
+          "url": "https://www.tagesschau.de/wissen/forschung/versalzenes-grundwasser-100.html"
         }
       ],
-      "createdAt": "2026-05-03T05:04:12.620Z",
-      "expiresAt": "2026-05-04T05:04:12.620Z",
+      "createdAt": "2026-05-03T10:15:39.980Z",
+      "expiresAt": "2026-05-04T10:15:39.980Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
+      "mediaRefreshedAt": "2026-05-03T10:15:39.980Z",
       "tag": "news",
       "tags": [
         "news"
@@ -442,7 +534,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-03T05:04:12.620Z"
+        "reviewedAt": "2026-05-03T10:15:39.980Z"
       }
     },
     {
@@ -633,8 +725,8 @@
       }
     },
     {
-      "id": 905360647,
-      "postUrl": "https://t.me/tagesschau/43696?single",
+      "id": 1387185089,
+      "postUrl": "https://t.me/tagesschau/43698?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -647,11 +739,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Trump will deutlich mehr als 5.000 US-Soldaten aus Deutschland abziehen\nhttps://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html\n\nUS-Präsident Trump will deutlich mehr als 5.000 Soldaten aus Deutschland abziehen. Kritik an der bisherigen Ankündigung kommt aus dem Kongress: Republikaner sprachen von einem möglichen falschen Signal an Russlands Präsidenten Putin.",
+      "text": "Tunesien: Die Auslandspresse muss draußen bleiben\nhttps://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html\n\nTunesien ist in der Rangliste der Pressefreiheit in nur vier Jahren um 43 Plätze abgerutscht. Für lokale Journalisten sind die Spielräume der freien Presse drastisch eingeschränkt worden. Journalisten aus dem Ausland dürfen nicht mehr einreisen. Von S. Ehlert.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html",
-          "url": "https://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html"
+          "label": "https://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html",
+          "url": "https://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html"
         }
       ],
       "createdAt": "2026-05-03T05:04:12.620Z",
@@ -829,8 +921,8 @@
       }
     },
     {
-      "id": 1969353012,
-      "postUrl": "https://t.me/tagesschau/43695?single",
+      "id": 1883166030,
+      "postUrl": "https://t.me/tagesschau/43697?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -843,11 +935,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Trump verweigert offenbar \"Tomahawk\"-Stationierung in Deutschland\nhttps://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html\n\nDen Abzug von US-Soldaten aus Deutschland sehen Experten als das kleinere Problem. \"Viel dramatischer\" sei, dass Trump - laut Medienberichten - auch die geplante Stationierung von \"Tomahawk\"-Marschflugkörpern abgesagt hat. Die sollten Russland abschrecken.",
+      "text": "Vulkan Mayon auf Philippinen stößt Asche aus\nhttps://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html\n\nAuf den Philippinen stößt der Vulkan Mayon große Aschewolken aus. Mehrere Dutzend Dörfer werden von der Asche bedeckt. Seit Beginn des Jahres zeigt der aktivste Vulkan des Inselstaats erhöhte Aktivität.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html"
+          "label": "https://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html",
+          "url": "https://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html"
         }
       ],
       "createdAt": "2026-05-03T05:04:12.620Z",
@@ -1017,8 +1109,8 @@
       }
     },
     {
-      "id": 2010188037,
-      "postUrl": "https://t.me/tagesschau/43694?single",
+      "id": 905360647,
+      "postUrl": "https://t.me/tagesschau/43696?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1031,17 +1123,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Finnlands Mine gegen Europas Abhängigkeit von Lithium-Importen\nhttps://www.tagesschau.de/ausland/europa/finnland-lithium-100.html\n\nEuropa ist beim Lithium von Importen abhängig. Zwar gibt es in Deutschland große Vorkommen - der Abbau ist aber erst in der Vorbereitung. Finnland ist da weiter: Eine erste Mine hat die Arbeit aufgenommen. Von Christian Blenker.",
+      "text": "Trump will deutlich mehr als 5.000 US-Soldaten aus Deutschland abziehen\nhttps://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html\n\nUS-Präsident Trump will deutlich mehr als 5.000 Soldaten aus Deutschland abziehen. Kritik an der bisherigen Ankündigung kommt aus dem Kongress: Republikaner sprachen von einem möglichen falschen Signal an Russlands Präsidenten Putin.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html"
+          "label": "https://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html"
         }
       ],
-      "createdAt": "2026-05-02T12:36:48.572Z",
-      "expiresAt": "2026-05-03T12:36:48.572Z",
+      "createdAt": "2026-05-03T05:04:12.620Z",
+      "expiresAt": "2026-05-04T05:04:12.620Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
+      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1059,7 +1151,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-02T12:36:48.572Z"
+        "reviewedAt": "2026-05-03T05:04:12.620Z"
       }
     },
     {
@@ -1211,8 +1303,8 @@
       }
     },
     {
-      "id": 482922610,
-      "postUrl": "https://t.me/tagesschau/43693?single",
+      "id": 1969353012,
+      "postUrl": "https://t.me/tagesschau/43695?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1225,17 +1317,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Maidemos von linken Gruppen laut Polizei meist friedlich\nhttps://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html\n\nDer 1. Mai ist in Berlin nach Polizeiangaben friedlich verlaufen. Bei einer Demonstration von Linken gab es einzelne Festnahmen. Etwa 10.000 Demonstrierende waren es in Berlin, 13.500 in Hamburg.",
+      "text": "Trump verweigert offenbar \"Tomahawk\"-Stationierung in Deutschland\nhttps://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html\n\nDen Abzug von US-Soldaten aus Deutschland sehen Experten als das kleinere Problem. \"Viel dramatischer\" sei, dass Trump - laut Medienberichten - auch die geplante Stationierung von \"Tomahawk\"-Marschflugkörpern abgesagt hat. Die sollten Russland abschrecken.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html",
-          "url": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html"
+          "label": "https://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html"
         }
       ],
-      "createdAt": "2026-05-02T12:36:48.572Z",
-      "expiresAt": "2026-05-03T12:36:48.572Z",
+      "createdAt": "2026-05-03T05:04:12.620Z",
+      "expiresAt": "2026-05-04T05:04:12.620Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
+      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1253,7 +1345,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-02T12:36:48.572Z"
+        "reviewedAt": "2026-05-03T05:04:12.620Z"
       }
     },
     {
@@ -1399,8 +1491,8 @@
       }
     },
     {
-      "id": 451870955,
-      "postUrl": "https://t.me/tagesschau/43692?single",
+      "id": 2010188037,
+      "postUrl": "https://t.me/tagesschau/43694?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1413,11 +1505,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Was die Übernahme von Tegut für Kunden und Erzeuger bedeutet\nhttps://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html\n\nDer Schweizer Konzern Migros hat beschlossen, den deutschen Markt zu verlassen. Das Fuldaer Lebensmittelunternehmen Tegut soll verkauft werden. Für viele Handelspartner beginnt damit eine Phase der Unsicherheit. Von Anke Heinhaus.",
+      "text": "Finnlands Mine gegen Europas Abhängigkeit von Lithium-Importen\nhttps://www.tagesschau.de/ausland/europa/finnland-lithium-100.html\n\nEuropa ist beim Lithium von Importen abhängig. Zwar gibt es in Deutschland große Vorkommen - der Abbau ist aber erst in der Vorbereitung. Finnland ist da weiter: Eine erste Mine hat die Arbeit aufgenommen. Von Christian Blenker.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html"
         }
       ],
       "createdAt": "2026-05-02T12:36:48.572Z",
@@ -1593,6 +1685,52 @@
       }
     },
     {
+      "id": 482922610,
+      "postUrl": "https://t.me/tagesschau/43693?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Maidemos von linken Gruppen laut Polizei meist friedlich\nhttps://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html\n\nDer 1. Mai ist in Berlin nach Polizeiangaben friedlich verlaufen. Bei einer Demonstration von Linken gab es einzelne Festnahmen. Etwa 10.000 Demonstrierende waren es in Berlin, 13.500 in Hamburg.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html",
+          "url": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html"
+        }
+      ],
+      "createdAt": "2026-05-02T12:36:48.572Z",
+      "expiresAt": "2026-05-03T12:36:48.572Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T12:36:48.572Z"
+      }
+    },
+    {
       "id": 57713249,
       "postUrl": "https://t.me/heiseonline/12077?single",
       "source": {
@@ -1744,6 +1882,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-03T08:57:18.890Z"
+      }
+    },
+    {
+      "id": 451870955,
+      "postUrl": "https://t.me/tagesschau/43692?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Was die Übernahme von Tegut für Kunden und Erzeuger bedeutet\nhttps://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html\n\nDer Schweizer Konzern Migros hat beschlossen, den deutschen Markt zu verlassen. Das Fuldaer Lebensmittelunternehmen Tegut soll verkauft werden. Für viele Handelspartner beginnt damit eine Phase der Unsicherheit. Von Anke Heinhaus.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html"
+        }
+      ],
+      "createdAt": "2026-05-02T12:36:48.572Z",
+      "expiresAt": "2026-05-03T12:36:48.572Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T12:36:48.572Z"
       }
     },
     {
