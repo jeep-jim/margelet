@@ -1,9 +1,55 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-03T04:12:02.562Z",
-  "totalPosts": 67,
+  "updatedAt": "2026-05-03T05:05:41.094Z",
+  "totalPosts": 71,
   "chunks": 1,
   "items": [
+    {
+      "id": 1387185089,
+      "postUrl": "https://t.me/tagesschau/43698?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Tunesien: Die Auslandspresse muss draußen bleiben\nhttps://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html\n\nTunesien ist in der Rangliste der Pressefreiheit in nur vier Jahren um 43 Plätze abgerutscht. Für lokale Journalisten sind die Spielräume der freien Presse drastisch eingeschränkt worden. Journalisten aus dem Ausland dürfen nicht mehr einreisen. Von S. Ehlert.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html",
+          "url": "https://www.tagesschau.de/ausland/afrika/pressefreiheit-tunesien-100.html"
+        }
+      ],
+      "createdAt": "2026-05-03T05:04:12.620Z",
+      "expiresAt": "2026-05-04T05:04:12.620Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T05:04:12.620Z"
+      }
+    },
     {
       "id": 2639405907,
       "postUrl": "https://t.me/heiseonline/12084?single",
@@ -48,52 +94,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T16:00:40.579Z"
-      }
-    },
-    {
-      "id": 2010188037,
-      "postUrl": "https://t.me/tagesschau/43694?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Finnlands Mine gegen Europas Abhängigkeit von Lithium-Importen\nhttps://www.tagesschau.de/ausland/europa/finnland-lithium-100.html\n\nEuropa ist beim Lithium von Importen abhängig. Zwar gibt es in Deutschland große Vorkommen - der Abbau ist aber erst in der Vorbereitung. Finnland ist da weiter: Eine erste Mine hat die Arbeit aufgenommen. Von Christian Blenker.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html"
-        }
-      ],
-      "createdAt": "2026-05-02T12:36:48.572Z",
-      "expiresAt": "2026-05-03T12:36:48.572Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-02T12:36:48.572Z"
       }
     },
     {
@@ -255,6 +255,52 @@
       }
     },
     {
+      "id": 1883166030,
+      "postUrl": "https://t.me/tagesschau/43697?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Vulkan Mayon auf Philippinen stößt Asche aus\nhttps://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html\n\nAuf den Philippinen stößt der Vulkan Mayon große Aschewolken aus. Mehrere Dutzend Dörfer werden von der Asche bedeckt. Seit Beginn des Jahres zeigt der aktivste Vulkan des Inselstaats erhöhte Aktivität.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html",
+          "url": "https://www.tagesschau.de/ausland/asien/vulkan-mayon-philippinen-100.html"
+        }
+      ],
+      "createdAt": "2026-05-03T05:04:12.620Z",
+      "expiresAt": "2026-05-04T05:04:12.620Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T05:04:12.620Z"
+      }
+    },
+    {
       "id": 340101756,
       "postUrl": "https://t.me/heiseonline/12083?single",
       "source": {
@@ -298,52 +344,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T16:00:40.579Z"
-      }
-    },
-    {
-      "id": 482922610,
-      "postUrl": "https://t.me/tagesschau/43693?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Maidemos von linken Gruppen laut Polizei meist friedlich\nhttps://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html\n\nDer 1. Mai ist in Berlin nach Polizeiangaben friedlich verlaufen. Bei einer Demonstration von Linken gab es einzelne Festnahmen. Etwa 10.000 Demonstrierende waren es in Berlin, 13.500 in Hamburg.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html",
-          "url": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html"
-        }
-      ],
-      "createdAt": "2026-05-02T12:36:48.572Z",
-      "expiresAt": "2026-05-03T12:36:48.572Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-02T12:36:48.572Z"
       }
     },
     {
@@ -492,6 +492,52 @@
       }
     },
     {
+      "id": 905360647,
+      "postUrl": "https://t.me/tagesschau/43696?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Trump will deutlich mehr als 5.000 US-Soldaten aus Deutschland abziehen\nhttps://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html\n\nUS-Präsident Trump will deutlich mehr als 5.000 Soldaten aus Deutschland abziehen. Kritik an der bisherigen Ankündigung kommt aus dem Kongress: Republikaner sprachen von einem möglichen falschen Signal an Russlands Präsidenten Putin.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/kritik-us-truppenabzug-republikaner-100.html"
+        }
+      ],
+      "createdAt": "2026-05-03T05:04:12.620Z",
+      "expiresAt": "2026-05-04T05:04:12.620Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T05:04:12.620Z"
+      }
+    },
+    {
       "id": 260444845,
       "postUrl": "https://t.me/heiseonline/12082?single",
       "source": {
@@ -535,52 +581,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T16:00:40.579Z"
-      }
-    },
-    {
-      "id": 451870955,
-      "postUrl": "https://t.me/tagesschau/43692?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Was die Übernahme von Tegut für Kunden und Erzeuger bedeutet\nhttps://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html\n\nDer Schweizer Konzern Migros hat beschlossen, den deutschen Markt zu verlassen. Das Fuldaer Lebensmittelunternehmen Tegut soll verkauft werden. Für viele Handelspartner beginnt damit eine Phase der Unsicherheit. Von Anke Heinhaus.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html"
-        }
-      ],
-      "createdAt": "2026-05-02T12:36:48.572Z",
-      "expiresAt": "2026-05-03T12:36:48.572Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-02T12:36:48.572Z"
       }
     },
     {
@@ -725,6 +725,52 @@
       }
     },
     {
+      "id": 1969353012,
+      "postUrl": "https://t.me/tagesschau/43695?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Trump verweigert offenbar \"Tomahawk\"-Stationierung in Deutschland\nhttps://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html\n\nDen Abzug von US-Soldaten aus Deutschland sehen Experten als das kleinere Problem. \"Viel dramatischer\" sei, dass Trump - laut Medienberichten - auch die geplante Stationierung von \"Tomahawk\"-Marschflugkörpern abgesagt hat. Die sollten Russland abschrecken.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/usa-trump-tomahawk-100.html"
+        }
+      ],
+      "createdAt": "2026-05-03T05:04:12.620Z",
+      "expiresAt": "2026-05-04T05:04:12.620Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T05:04:12.620Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T05:04:12.620Z"
+      }
+    },
+    {
       "id": 558520310,
       "postUrl": "https://t.me/heiseonline/12081?single",
       "source": {
@@ -768,52 +814,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T16:00:40.579Z"
-      }
-    },
-    {
-      "id": 2959519336,
-      "postUrl": "https://t.me/tagesschau/43691?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Finanzminister Klingbeil treibt Steuerreform voran\nhttps://www.tagesschau.de/inland/innenpolitik/klingbeil-steuerreform-100.html\n\nFinanzminister Klingbeil macht bei der geplanten Steuerreform Tempo: Schon bald will er ein Konzept vorlegen. Ziel sind Erleichterungen für kleine und mittlere Einkommen - dafür will Klingbeil Spitzenverdiener in die Pflicht nehmen.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/klingbeil-steuerreform-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/klingbeil-steuerreform-100.html"
-        }
-      ],
-      "createdAt": "2026-05-02T08:44:00.585Z",
-      "expiresAt": "2026-05-03T08:44:00.585Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-02T08:44:00.585Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-02T08:44:00.585Z"
       }
     },
     {
@@ -918,6 +918,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T07:14:59.697Z"
+      }
+    },
+    {
+      "id": 2010188037,
+      "postUrl": "https://t.me/tagesschau/43694?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Finnlands Mine gegen Europas Abhängigkeit von Lithium-Importen\nhttps://www.tagesschau.de/ausland/europa/finnland-lithium-100.html\n\nEuropa ist beim Lithium von Importen abhängig. Zwar gibt es in Deutschland große Vorkommen - der Abbau ist aber erst in der Vorbereitung. Finnland ist da weiter: Eine erste Mine hat die Arbeit aufgenommen. Von Christian Blenker.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/finnland-lithium-100.html"
+        }
+      ],
+      "createdAt": "2026-05-02T12:36:48.572Z",
+      "expiresAt": "2026-05-03T12:36:48.572Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T12:36:48.572Z"
       }
     },
     {
@@ -1060,6 +1106,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T07:14:59.697Z"
+      }
+    },
+    {
+      "id": 482922610,
+      "postUrl": "https://t.me/tagesschau/43693?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Maidemos von linken Gruppen laut Polizei meist friedlich\nhttps://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html\n\nDer 1. Mai ist in Berlin nach Polizeiangaben friedlich verlaufen. Bei einer Demonstration von Linken gab es einzelne Festnahmen. Etwa 10.000 Demonstrierende waren es in Berlin, 13.500 in Hamburg.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html",
+          "url": "https://www.tagesschau.de/inland/gesellschaft/maidemo-bilanz-berlin-hamburg-100.html"
+        }
+      ],
+      "createdAt": "2026-05-02T12:36:48.572Z",
+      "expiresAt": "2026-05-03T12:36:48.572Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T12:36:48.572Z"
       }
     },
     {
@@ -1211,6 +1303,52 @@
       }
     },
     {
+      "id": 451870955,
+      "postUrl": "https://t.me/tagesschau/43692?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Was die Übernahme von Tegut für Kunden und Erzeuger bedeutet\nhttps://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html\n\nDer Schweizer Konzern Migros hat beschlossen, den deutschen Markt zu verlassen. Das Fuldaer Lebensmittelunternehmen Tegut soll verkauft werden. Für viele Handelspartner beginnt damit eine Phase der Unsicherheit. Von Anke Heinhaus.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/tegut-lebensmittel-uebernahme-100.html"
+        }
+      ],
+      "createdAt": "2026-05-02T12:36:48.572Z",
+      "expiresAt": "2026-05-03T12:36:48.572Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T12:36:48.572Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T12:36:48.572Z"
+      }
+    },
+    {
       "id": 129236718,
       "postUrl": "https://t.me/heiseonline/12078?single",
       "source": {
@@ -1350,6 +1488,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-02T07:14:59.697Z"
+      }
+    },
+    {
+      "id": 2959519336,
+      "postUrl": "https://t.me/tagesschau/43691?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Bc52fAKbPzVMznjW4L2laqyOeNF4Fy72jFUN_fa8U6arDkArYkV5e7VbKDrprLSyrIuJBrHdXVLXAafou0ORVq_fih1vuQ0ksa5XbcDG1-9CSbkTDvSdTR0RM5WGWmKGYo_SJilvyFP01A3mjPpLrax1WGkbZ6cT3ttC3dmaqR79fVqnqT4qbIwPrgzYhaylDLavT_z9KKr5Qh3b6_qgxvZxtjMt0C3mwiLcPBHUU0DzxJm65YpItKyO2j_ybAjkUjHBar7nV1DdHr7HHpHYHgH6AJqfJDEUmqKPlEQrVj1Gt-k6SRiJhMzQ1q16chxVrf52ecfA7Ak5MPSbHpWtJA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Finanzminister Klingbeil treibt Steuerreform voran\nhttps://www.tagesschau.de/inland/innenpolitik/klingbeil-steuerreform-100.html\n\nFinanzminister Klingbeil macht bei der geplanten Steuerreform Tempo: Schon bald will er ein Konzept vorlegen. Ziel sind Erleichterungen für kleine und mittlere Einkommen - dafür will Klingbeil Spitzenverdiener in die Pflicht nehmen.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/innenpolitik/klingbeil-steuerreform-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/klingbeil-steuerreform-100.html"
+        }
+      ],
+      "createdAt": "2026-05-02T08:44:00.585Z",
+      "expiresAt": "2026-05-03T08:44:00.585Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T08:44:00.585Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T08:44:00.585Z"
       }
     },
     {
