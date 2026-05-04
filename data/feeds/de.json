@@ -1,12 +1,58 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-04T12:56:38.925Z",
-  "totalPosts": 61,
+  "updatedAt": "2026-05-04T15:21:29.902Z",
+  "totalPosts": 64,
   "chunks": 1,
   "items": [
     {
-      "id": 2031063496,
-      "postUrl": "https://t.me/heiseonline/12090?single",
+      "id": 1321692882,
+      "postUrl": "https://t.me/tagesschau/43716?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/J4rep8ld0qgaArTiSDzoMieVpejq2js9S0p8zhQeRiM8W32bxXHjCBUPk3asREDVKpLdEpJQ-HCRYN7HfeAxEOuXS-n2ZLlNtlSW1mXL7PTwo41BaHyCIGAvWlYOPD7VVjeQ2SZhfQUlN_h0NG7Uga4neTdREVon74lxatVDgwpuprVjOji_jpIcaBD-ojEHtLue1TTIw7Z6f3R_xavpxfLBInVa7NZZckVCinlcNPBJdoc5uNdnkwNrClZRWnZWpaXCtH0XzNvILx39uOlsLBSMpA8WXdB-55K9ZhOCwH5-qRO2xfersXKDov2FbDPrR67t0vUH0H4euWfIsau-JA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "US-Armee zieht 5.000 Soldaten aus der Oberpfalz ab\nhttps://www.tagesschau.de/inland/gesellschaft/us-armee-abzug-bayern-100.html\n\nDie US-Armee zieht 5.000 Soldaten aus der Oberpfalz ab. Nach BR-Informationen handelt es sich dabei um die sogenannte Stryker-Brigade aus Vilseck.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/gesellschaft/us-armee-abzug-bayern-100.html",
+          "url": "https://www.tagesschau.de/inland/gesellschaft/us-armee-abzug-bayern-100.html"
+        }
+      ],
+      "createdAt": "2026-05-04T15:20:07.329Z",
+      "expiresAt": "2026-05-05T15:20:07.329Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-04T15:20:07.329Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:07.329Z"
+      }
+    },
+    {
+      "id": 1958071305,
+      "postUrl": "https://t.me/heiseonline/12091?single",
       "source": {
         "title": "heise online",
         "handle": "heiseonline",
@@ -19,17 +65,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Windows-Update-Vorschau: Haptisches Feedback und Xbox-Spielemodus\n\n zum Artikel...",
+      "text": "Trellix: Angreifer erlangten Zugriff auf Quellcode\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Windows-Update-Vorschau-Haptisches-Feedback-und-Xbox-Spielemodus-11280316.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+          "url": "https://www.heise.de/news/Trellix-Angreifer-erlangten-Zugriff-auf-Quellcode-11280743.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
         }
       ],
-      "createdAt": "2026-05-04T10:50:18.456Z",
-      "expiresAt": "2026-05-05T10:50:18.456Z",
+      "createdAt": "2026-05-04T15:20:06.681Z",
+      "expiresAt": "2026-05-05T15:20:06.681Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T10:50:18.456Z",
+      "mediaRefreshedAt": "2026-05-04T15:20:06.681Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -47,7 +93,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-04T10:50:18.456Z"
+        "reviewedAt": "2026-05-04T15:20:06.681Z"
       }
     },
     {
@@ -209,8 +255,8 @@
       }
     },
     {
-      "id": 2848158280,
-      "postUrl": "https://t.me/tagesschau/43714?single",
+      "id": 2775166089,
+      "postUrl": "https://t.me/tagesschau/43715?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -223,17 +269,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Iran-Liveblog: ++ Minenjagdboot \"Fulda\" startet Richtung Mittelmeer ++\nhttps://www.tagesschau.de/newsticker/liveblog-iran-montag-120.html\n\nDas deutsche Minenjagdboot \"Fulda\" soll am Mittag den Marinestützpunkt Kiel in Richtung Mittelmeer verlassen - für einen möglichen Einsatz in der Straße von Hormus. Dort ist nach britischen Angaben erneut ein Schiff angegriffen worden.",
+      "text": "ADAC-Analyse: Tankrabatt noch nicht vollständig weitergegeben\nhttps://www.tagesschau.de/wirtschaft/verbraucher/spritpreise-tankrabatt-steuersenkung-100.html\n\nDie Autofahrer profitieren nach Einschätzung des ADAC bislang nicht in voller Höhe vom Tankrabatt. Demnach sind die Spritpreise nach wie vor zu hoch. Das Kartellamt hat bei der Überprüfung derweil einen Rückschlag erlitten.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/newsticker/liveblog-iran-montag-120.html",
-          "url": "https://www.tagesschau.de/newsticker/liveblog-iran-montag-120.html"
+          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/spritpreise-tankrabatt-steuersenkung-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/spritpreise-tankrabatt-steuersenkung-100.html"
         }
       ],
-      "createdAt": "2026-05-04T05:04:44.074Z",
-      "expiresAt": "2026-05-05T05:04:44.074Z",
+      "createdAt": "2026-05-04T15:20:07.329Z",
+      "expiresAt": "2026-05-05T15:20:07.329Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T05:04:44.074Z",
+      "mediaRefreshedAt": "2026-05-04T15:20:07.329Z",
       "tag": "news",
       "tags": [
         "news"
@@ -251,12 +297,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-04T05:04:44.074Z"
+        "reviewedAt": "2026-05-04T15:20:07.329Z"
       }
     },
     {
-      "id": 1465098942,
-      "postUrl": "https://t.me/heiseonline/12089?single",
+      "id": 2031063496,
+      "postUrl": "https://t.me/heiseonline/12090?single",
       "source": {
         "title": "heise online",
         "handle": "heiseonline",
@@ -269,11 +315,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Tails 7.7.1: Notfallupdate für anonymisierendes Linux stopft Firefox-Lecks\n\n zum Artikel...",
+      "text": "Windows-Update-Vorschau: Haptisches Feedback und Xbox-Spielemodus\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Tails-7-7-1-Notfallupdate-fuer-anonymisierendes-Linux-stopft-Firefox-Lecks-11280198.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+          "url": "https://www.heise.de/news/Windows-Update-Vorschau-Haptisches-Feedback-und-Xbox-Spielemodus-11280316.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
         }
       ],
       "createdAt": "2026-05-04T10:50:18.456Z",
@@ -446,8 +492,8 @@
       }
     },
     {
-      "id": 1085723751,
-      "postUrl": "https://t.me/tagesschau/43713?single",
+      "id": 2848158280,
+      "postUrl": "https://t.me/tagesschau/43714?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -460,17 +506,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Finanznot der New Yorker Metropolitan Opera wird größer\nhttps://www.tagesschau.de/ausland/amerika/opera-new-york-finanznot-100.html\n\nDie Metropolitan Opera in New York steckt in akuter Geldnot: Ein 200-Millionen-Euro-Deal mit Saudi-Arabien ist geplatzt. Jetzt erwägt der Intendant, Kunstwerke und Namensrechte zu verkaufen. Von Martin Ganslmeier.",
+      "text": "Iran-Liveblog: ++ Minenjagdboot \"Fulda\" startet Richtung Mittelmeer ++\nhttps://www.tagesschau.de/newsticker/liveblog-iran-montag-120.html\n\nDas deutsche Minenjagdboot \"Fulda\" soll am Mittag den Marinestützpunkt Kiel in Richtung Mittelmeer verlassen - für einen möglichen Einsatz in der Straße von Hormus. Dort ist nach britischen Angaben erneut ein Schiff angegriffen worden.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/amerika/opera-new-york-finanznot-100.html",
-          "url": "https://www.tagesschau.de/ausland/amerika/opera-new-york-finanznot-100.html"
+          "label": "https://www.tagesschau.de/newsticker/liveblog-iran-montag-120.html",
+          "url": "https://www.tagesschau.de/newsticker/liveblog-iran-montag-120.html"
         }
       ],
-      "createdAt": "2026-05-04T01:21:38.044Z",
-      "expiresAt": "2026-05-05T01:21:38.044Z",
+      "createdAt": "2026-05-04T05:04:44.074Z",
+      "expiresAt": "2026-05-05T05:04:44.074Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T01:21:38.044Z",
+      "mediaRefreshedAt": "2026-05-04T05:04:44.074Z",
       "tag": "news",
       "tags": [
         "news"
@@ -488,12 +534,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-04T01:21:38.044Z"
+        "reviewedAt": "2026-05-04T05:04:44.074Z"
       }
     },
     {
-      "id": 2402839735,
-      "postUrl": "https://t.me/heiseonline/12088?single",
+      "id": 1465098942,
+      "postUrl": "https://t.me/heiseonline/12089?single",
       "source": {
         "title": "heise online",
         "handle": "heiseonline",
@@ -506,17 +552,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Android Auto: Instabile Verbindungen seit Android-16-Updates\n\n zum Artikel...",
+      "text": "Tails 7.7.1: Notfallupdate für anonymisierendes Linux stopft Firefox-Lecks\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Android-Auto-Instabile-Verbindungen-seit-Android-16-Updates-11279931.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+          "url": "https://www.heise.de/news/Tails-7-7-1-Notfallupdate-fuer-anonymisierendes-Linux-stopft-Firefox-Lecks-11280198.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
         }
       ],
-      "createdAt": "2026-05-04T08:09:12.221Z",
-      "expiresAt": "2026-05-05T08:09:12.221Z",
+      "createdAt": "2026-05-04T10:50:18.456Z",
+      "expiresAt": "2026-05-05T10:50:18.456Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T08:09:12.221Z",
+      "mediaRefreshedAt": "2026-05-04T10:50:18.456Z",
       "tag": "technology",
       "tags": [
         "technology"
@@ -534,7 +580,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-04T08:09:12.221Z"
+        "reviewedAt": "2026-05-04T10:50:18.456Z"
       }
     },
     {
@@ -679,8 +725,8 @@
       }
     },
     {
-      "id": 3505843630,
-      "postUrl": "https://t.me/tagesschau/43712?single",
+      "id": 1085723751,
+      "postUrl": "https://t.me/tagesschau/43713?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -693,11 +739,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "USA wollen Schiffe durch Straße von Hormus geleiten\nhttps://www.tagesschau.de/ausland/trump-strasse-von-hormus-hilfe-100.html\n\nLaut US-Präsident Trump sollen die USA am Morgen mit der Befreiung von Schiffen in der Straße von Hormus beginnen. Geholfen werde Schiffen aus Ländern, die nicht in den Krieg verwickelt seien. Für Teheran wäre das ein Verstoß gegen die Waffenruhe.",
+      "text": "Finanznot der New Yorker Metropolitan Opera wird größer\nhttps://www.tagesschau.de/ausland/amerika/opera-new-york-finanznot-100.html\n\nDie Metropolitan Opera in New York steckt in akuter Geldnot: Ein 200-Millionen-Euro-Deal mit Saudi-Arabien ist geplatzt. Jetzt erwägt der Intendant, Kunstwerke und Namensrechte zu verkaufen. Von Martin Ganslmeier.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-hilfe-100.html",
-          "url": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-hilfe-100.html"
+          "label": "https://www.tagesschau.de/ausland/amerika/opera-new-york-finanznot-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/opera-new-york-finanznot-100.html"
         }
       ],
       "createdAt": "2026-05-04T01:21:38.044Z",
@@ -725,8 +771,8 @@
       }
     },
     {
-      "id": 2255153264,
-      "postUrl": "https://t.me/heiseonline/12087?single",
+      "id": 2402839735,
+      "postUrl": "https://t.me/heiseonline/12088?single",
       "source": {
         "title": "heise online",
         "handle": "heiseonline",
@@ -739,11 +785,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Linux-Lücke „Copy Fail“ wird bereits angegriffen\n\n zum Artikel...",
+      "text": "Android Auto: Instabile Verbindungen seit Android-16-Updates\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Linux-Luecke-Copy-Fail-wird-bereits-angegriffen-11279850.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+          "url": "https://www.heise.de/news/Android-Auto-Instabile-Verbindungen-seit-Android-16-Updates-11279931.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
         }
       ],
       "createdAt": "2026-05-04T08:09:12.221Z",
@@ -875,8 +921,8 @@
       }
     },
     {
-      "id": 2916787173,
-      "postUrl": "https://t.me/tagesschau/43711?single",
+      "id": 3505843630,
+      "postUrl": "https://t.me/tagesschau/43712?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -889,11 +935,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Hantavirus-Ausbruch: Drei Tote auf Kreuzfahrtschiff im Atlantik\nhttps://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-tote-100.html\n\nNach einem Hantavirus-Ausbruch auf einem Kreuzfahrtschiff von Argentinien nach Kap Verde hat es drei Tote gegeben. Laut WHO sind mindestens drei weitere Passagiere erkrankt. Sie untersucht den Vorfall.",
+      "text": "USA wollen Schiffe durch Straße von Hormus geleiten\nhttps://www.tagesschau.de/ausland/trump-strasse-von-hormus-hilfe-100.html\n\nLaut US-Präsident Trump sollen die USA am Morgen mit der Befreiung von Schiffen in der Straße von Hormus beginnen. Geholfen werde Schiffen aus Ländern, die nicht in den Krieg verwickelt seien. Für Teheran wäre das ein Verstoß gegen die Waffenruhe.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-tote-100.html",
-          "url": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-tote-100.html"
+          "label": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-hilfe-100.html",
+          "url": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-hilfe-100.html"
         }
       ],
       "createdAt": "2026-05-04T01:21:38.044Z",
@@ -921,8 +967,8 @@
       }
     },
     {
-      "id": 3626224753,
-      "postUrl": "https://t.me/heiseonline/12086?single",
+      "id": 2255153264,
+      "postUrl": "https://t.me/heiseonline/12087?single",
       "source": {
         "title": "heise online",
         "handle": "heiseonline",
@@ -935,11 +981,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Für 56 Milliarden US-Dollar: GameStop will eBay übernehmen\n\n zum Artikel...",
+      "text": "Linux-Lücke „Copy Fail“ wird bereits angegriffen\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Fuer-56-Milliarden-US-Dollar-GameStop-will-eBay-uebernehmen-11279741.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+          "url": "https://www.heise.de/news/Linux-Luecke-Copy-Fail-wird-bereits-angegriffen-11279850.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
         }
       ],
       "createdAt": "2026-05-04T08:09:12.221Z",
@@ -1063,8 +1109,8 @@
       }
     },
     {
-      "id": 2875848980,
-      "postUrl": "https://t.me/tagesschau/43710?single",
+      "id": 2916787173,
+      "postUrl": "https://t.me/tagesschau/43711?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1077,17 +1123,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Iran-Liveblog: ++ Iran prüft US-Antwort auf 14-Punkte-Plan ++\nhttps://www.tagesschau.de/newsticker/liveblog-nahost-sonntag-290.html\n\nLaut iranischen Medien haben die USA auf den 14-Punkte-Vorschlag des Iran geantwortet. Kanzler Merz hat einen direkten Zusammenhang zwischen dem US-Abzug und seinem Streit mit Trump über die Iran-Strategie verneint.",
+      "text": "Hantavirus-Ausbruch: Drei Tote auf Kreuzfahrtschiff im Atlantik\nhttps://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-tote-100.html\n\nNach einem Hantavirus-Ausbruch auf einem Kreuzfahrtschiff von Argentinien nach Kap Verde hat es drei Tote gegeben. Laut WHO sind mindestens drei weitere Passagiere erkrankt. Sie untersucht den Vorfall.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/newsticker/liveblog-nahost-sonntag-290.html",
-          "url": "https://www.tagesschau.de/newsticker/liveblog-nahost-sonntag-290.html"
+          "label": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-tote-100.html",
+          "url": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-tote-100.html"
         }
       ],
-      "createdAt": "2026-05-03T20:26:56.838Z",
-      "expiresAt": "2026-05-04T20:26:56.838Z",
+      "createdAt": "2026-05-04T01:21:38.044Z",
+      "expiresAt": "2026-05-05T01:21:38.044Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T20:26:56.838Z",
+      "mediaRefreshedAt": "2026-05-04T01:21:38.044Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1105,7 +1151,53 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-03T20:26:56.838Z"
+        "reviewedAt": "2026-05-04T01:21:38.044Z"
+      }
+    },
+    {
+      "id": 3626224753,
+      "postUrl": "https://t.me/heiseonline/12086?single",
+      "source": {
+        "title": "heise online",
+        "handle": "heiseonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/BCkbcbszGvW1775qSZ_KZWlJMRAEgfbMhapS3EUK7v-HJob3uJiKu9a0vSwzzEv2lqzcRpOk0Vw12Bv_od0syO1eaUqek8t-J1AnkEmqkOGN_kIn5sb34y6vhbk64Lv6LkHHkLoD_whwH0amB8VylRKKfdGUjwdXhObmYDnDus15IA-KPc1rIWYaJXvTOWCjnsNj0v6EaawNdHZEkbmXhwbrY_8uBaGB9yGKGCygRmh-CT01sbzL3sJQu7qTB5bkpz6W7V9SyozunUAfWQ1CEQUnKH1kkNcLzvUS4eovNq4xsq-42_EZlt6_CrW4cqmLngOBmtnH_K1V_57wigPEYA.jpg"
+      },
+      "sourceId": "de:heiseonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Für 56 Milliarden US-Dollar: GameStop will eBay übernehmen\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.heise.de/news/Fuer-56-Milliarden-US-Dollar-GameStop-will-eBay-uebernehmen-11279741.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+        }
+      ],
+      "createdAt": "2026-05-04T08:09:12.221Z",
+      "expiresAt": "2026-05-05T08:09:12.221Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-04T08:09:12.221Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T08:09:12.221Z"
       }
     },
     {
@@ -1211,8 +1303,8 @@
       }
     },
     {
-      "id": 3808776634,
-      "postUrl": "https://t.me/tagesschau/43709?single",
+      "id": 2875848980,
+      "postUrl": "https://t.me/tagesschau/43710?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1225,11 +1317,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Reporter ohne Grenzen zum Pressefreiheit-Ranking: \"Ein dramatischer Befund\"\nhttps://www.tagesschau.de/ausland/europa/pressefreiheit-mihr-100.html\n\nDass Deutschland im Ranking der Pressefreiheit zurückgefallen ist, liege vor allem an Anfeindungen aus rechtsextremen Milieus, sagt Christian Mihr, Geschäftsführer von Reporter ohne Grenzen. Die Entwicklungen in den USA sollten eine Mahnung sein.",
+      "text": "Iran-Liveblog: ++ Iran prüft US-Antwort auf 14-Punkte-Plan ++\nhttps://www.tagesschau.de/newsticker/liveblog-nahost-sonntag-290.html\n\nLaut iranischen Medien haben die USA auf den 14-Punkte-Vorschlag des Iran geantwortet. Kanzler Merz hat einen direkten Zusammenhang zwischen dem US-Abzug und seinem Streit mit Trump über die Iran-Strategie verneint.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/pressefreiheit-mihr-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/pressefreiheit-mihr-100.html"
+          "label": "https://www.tagesschau.de/newsticker/liveblog-nahost-sonntag-290.html",
+          "url": "https://www.tagesschau.de/newsticker/liveblog-nahost-sonntag-290.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -1353,8 +1445,8 @@
       }
     },
     {
-      "id": 3456500691,
-      "postUrl": "https://t.me/tagesschau/43708?single",
+      "id": 3808776634,
+      "postUrl": "https://t.me/tagesschau/43709?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1367,11 +1459,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Italien: Bespitzelt von \"Graphite\" - aber von wem beauftragt?\nhttps://www.tagesschau.de/ausland/europa/italien-pressefreiheit-spyware-100.html\n\n2025 erfuhr der italienische Journalist Cancellato, dass sein Handy mit einer Spionage-Software gehackt worden war. Der Fall ist immer noch nicht aufgeklärt - und verweist auf ein grundsätzliches Defizit in der EU. Von O. Chladkova.",
+      "text": "Reporter ohne Grenzen zum Pressefreiheit-Ranking: \"Ein dramatischer Befund\"\nhttps://www.tagesschau.de/ausland/europa/pressefreiheit-mihr-100.html\n\nDass Deutschland im Ranking der Pressefreiheit zurückgefallen ist, liege vor allem an Anfeindungen aus rechtsextremen Milieus, sagt Christian Mihr, Geschäftsführer von Reporter ohne Grenzen. Die Entwicklungen in den USA sollten eine Mahnung sein.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/italien-pressefreiheit-spyware-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/italien-pressefreiheit-spyware-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/pressefreiheit-mihr-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/pressefreiheit-mihr-100.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -1501,8 +1593,8 @@
       }
     },
     {
-      "id": 484383396,
-      "postUrl": "https://t.me/tagesschau/43707?single",
+      "id": 3456500691,
+      "postUrl": "https://t.me/tagesschau/43708?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1515,11 +1607,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Umsatz mit Bio-Lebensmitteln im ersten Quartal weiter gestiegen\nhttps://www.tagesschau.de/inland/verbraucher-bio-lebensmittel-100.html\n\nBio-Lebensmittel bleiben in Deutschland beliebt - trotz schwierige Wirtschaftslage. Laut Branche nahm der Umsatz damit weiter zu. Den stärksten Zuwachs gab es bei Drogeriemärkten. Die meisten Bio-Produkte werden aber im Discounter gekauft.",
+      "text": "Italien: Bespitzelt von \"Graphite\" - aber von wem beauftragt?\nhttps://www.tagesschau.de/ausland/europa/italien-pressefreiheit-spyware-100.html\n\n2025 erfuhr der italienische Journalist Cancellato, dass sein Handy mit einer Spionage-Software gehackt worden war. Der Fall ist immer noch nicht aufgeklärt - und verweist auf ein grundsätzliches Defizit in der EU. Von O. Chladkova.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/verbraucher-bio-lebensmittel-100.html",
-          "url": "https://www.tagesschau.de/inland/verbraucher-bio-lebensmittel-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/italien-pressefreiheit-spyware-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/italien-pressefreiheit-spyware-100.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -1651,8 +1743,8 @@
       }
     },
     {
-      "id": 1164185973,
-      "postUrl": "https://t.me/tagesschau/43706?single",
+      "id": 484383396,
+      "postUrl": "https://t.me/tagesschau/43707?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1665,11 +1757,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Shakira gibt kostenloses Konzert für zwei Millionen Fans in Rio\nhttps://www.tagesschau.de/ausland/amerika/brasilien-rio-shakira-riesenkonzert-100.html\n\nDie Copacabana sei für sie ein \"magischer Ort\", sagt Shakira: Nun hat die Popsängerin an dem weltberühmten Strand das wohl größte Konzert ihrer Karriere gegeben. Geschätzt zwei Millionen Fans feierten ihre größten Hits.",
+      "text": "Umsatz mit Bio-Lebensmitteln im ersten Quartal weiter gestiegen\nhttps://www.tagesschau.de/inland/verbraucher-bio-lebensmittel-100.html\n\nBio-Lebensmittel bleiben in Deutschland beliebt - trotz schwierige Wirtschaftslage. Laut Branche nahm der Umsatz damit weiter zu. Den stärksten Zuwachs gab es bei Drogeriemärkten. Die meisten Bio-Produkte werden aber im Discounter gekauft.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/amerika/brasilien-rio-shakira-riesenkonzert-100.html",
-          "url": "https://www.tagesschau.de/ausland/amerika/brasilien-rio-shakira-riesenkonzert-100.html"
+          "label": "https://www.tagesschau.de/inland/verbraucher-bio-lebensmittel-100.html",
+          "url": "https://www.tagesschau.de/inland/verbraucher-bio-lebensmittel-100.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -1809,8 +1901,8 @@
       }
     },
     {
-      "id": 2282193726,
-      "postUrl": "https://t.me/tagesschau/43705?single",
+      "id": 1164185973,
+      "postUrl": "https://t.me/tagesschau/43706?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1823,11 +1915,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Krieg gegen die Ukraine: Ein Toter bei russischen Angriffen\nhttps://www.tagesschau.de/ausland/europa/ukraine-krieg-angriffe-cherson-100.html\n\nBei russischen Drohnenangriffen hat es in der Ukraine erneut mehrere Opfer gegeben. Die Ukraine griff nach eigenen Angaben wiederum die russische Schattenflotte an. Russland meldete einen Brand im Ostseehafen Primorsk.",
+      "text": "Shakira gibt kostenloses Konzert für zwei Millionen Fans in Rio\nhttps://www.tagesschau.de/ausland/amerika/brasilien-rio-shakira-riesenkonzert-100.html\n\nDie Copacabana sei für sie ein \"magischer Ort\", sagt Shakira: Nun hat die Popsängerin an dem weltberühmten Strand das wohl größte Konzert ihrer Karriere gegeben. Geschätzt zwei Millionen Fans feierten ihre größten Hits.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/ukraine-krieg-angriffe-cherson-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/ukraine-krieg-angriffe-cherson-100.html"
+          "label": "https://www.tagesschau.de/ausland/amerika/brasilien-rio-shakira-riesenkonzert-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/brasilien-rio-shakira-riesenkonzert-100.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -1957,8 +2049,8 @@
       }
     },
     {
-      "id": 3219934519,
-      "postUrl": "https://t.me/tagesschau/43704?single",
+      "id": 2282193726,
+      "postUrl": "https://t.me/tagesschau/43705?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1971,11 +2063,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Bundesagrarminister Rainer will Steuerbefreiung für Biokraftstoff\nhttps://www.tagesschau.de/inland/innenpolitik/rainer-biokraftstoffe-landwirtschaftsminister-100.html\n\nBundesagrarminister Rainer schlägt vor, Biokraftstoffe künftig komplett von der Steuer zu befreien. Damit sollen sie attraktiver werden und die heimische Produktion ankurbeln.",
+      "text": "Krieg gegen die Ukraine: Ein Toter bei russischen Angriffen\nhttps://www.tagesschau.de/ausland/europa/ukraine-krieg-angriffe-cherson-100.html\n\nBei russischen Drohnenangriffen hat es in der Ukraine erneut mehrere Opfer gegeben. Die Ukraine griff nach eigenen Angaben wiederum die russische Schattenflotte an. Russland meldete einen Brand im Ostseehafen Primorsk.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/rainer-biokraftstoffe-landwirtschaftsminister-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/rainer-biokraftstoffe-landwirtschaftsminister-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/ukraine-krieg-angriffe-cherson-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/ukraine-krieg-angriffe-cherson-100.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -2099,8 +2191,8 @@
       }
     },
     {
-      "id": 79618072,
-      "postUrl": "https://t.me/tagesschau/43703?single",
+      "id": 3219934519,
+      "postUrl": "https://t.me/tagesschau/43704?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2113,11 +2205,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Internet-Blockaden in Russland: Ein Eiserner Vorhang - dieses Mal digital\nhttps://www.tagesschau.de/ausland/europa/russland-internet-blockade-bevoelkerung-100.html\n\nDie Abtrennung Russlands vom globalen Internet scheint im vollen Gange zu sein. Russland schränkt den Zugang immer weiter ein und sperrt auch immer mehr VPNs. So entsteht ein digitaler Eiserner Vorhang zum Ausland. Von S. Diettrich.",
+      "text": "Bundesagrarminister Rainer will Steuerbefreiung für Biokraftstoff\nhttps://www.tagesschau.de/inland/innenpolitik/rainer-biokraftstoffe-landwirtschaftsminister-100.html\n\nBundesagrarminister Rainer schlägt vor, Biokraftstoffe künftig komplett von der Steuer zu befreien. Damit sollen sie attraktiver werden und die heimische Produktion ankurbeln.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/russland-internet-blockade-bevoelkerung-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/russland-internet-blockade-bevoelkerung-100.html"
+          "label": "https://www.tagesschau.de/inland/innenpolitik/rainer-biokraftstoffe-landwirtschaftsminister-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/rainer-biokraftstoffe-landwirtschaftsminister-100.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -2241,8 +2333,8 @@
       }
     },
     {
-      "id": 3229521689,
-      "postUrl": "https://t.me/tagesschau/43702?single",
+      "id": 79618072,
+      "postUrl": "https://t.me/tagesschau/43703?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2255,11 +2347,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Kubas Präsident weist Trumps Übernahme-Drohungen zurück\nhttps://www.tagesschau.de/ausland/amerika/kuba-usa-uebernahme-drohung-trump-zurueckgewiesen-100.html\n\nTrump redet erneut über eine Übernahme - Kubas Präsident Díaz-Canel hält dagegen und versucht, die internationale Gemeinschaft zu mobilisieren. Zuvor protestierten in Havanna Hunderttausende gegen die Drohungen und Sanktionen der USA.",
+      "text": "Internet-Blockaden in Russland: Ein Eiserner Vorhang - dieses Mal digital\nhttps://www.tagesschau.de/ausland/europa/russland-internet-blockade-bevoelkerung-100.html\n\nDie Abtrennung Russlands vom globalen Internet scheint im vollen Gange zu sein. Russland schränkt den Zugang immer weiter ein und sperrt auch immer mehr VPNs. So entsteht ein digitaler Eiserner Vorhang zum Ausland. Von S. Diettrich.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/amerika/kuba-usa-uebernahme-drohung-trump-zurueckgewiesen-100.html",
-          "url": "https://www.tagesschau.de/ausland/amerika/kuba-usa-uebernahme-drohung-trump-zurueckgewiesen-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/russland-internet-blockade-bevoelkerung-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/russland-internet-blockade-bevoelkerung-100.html"
         }
       ],
       "createdAt": "2026-05-03T20:26:56.838Z",
@@ -2380,6 +2472,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T10:24:34.212Z"
+      }
+    },
+    {
+      "id": 3229521689,
+      "postUrl": "https://t.me/tagesschau/43702?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/J4rep8ld0qgaArTiSDzoMieVpejq2js9S0p8zhQeRiM8W32bxXHjCBUPk3asREDVKpLdEpJQ-HCRYN7HfeAxEOuXS-n2ZLlNtlSW1mXL7PTwo41BaHyCIGAvWlYOPD7VVjeQ2SZhfQUlN_h0NG7Uga4neTdREVon74lxatVDgwpuprVjOji_jpIcaBD-ojEHtLue1TTIw7Z6f3R_xavpxfLBInVa7NZZckVCinlcNPBJdoc5uNdnkwNrClZRWnZWpaXCtH0XzNvILx39uOlsLBSMpA8WXdB-55K9ZhOCwH5-qRO2xfersXKDov2FbDPrR67t0vUH0H4euWfIsau-JA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Kubas Präsident weist Trumps Übernahme-Drohungen zurück\nhttps://www.tagesschau.de/ausland/amerika/kuba-usa-uebernahme-drohung-trump-zurueckgewiesen-100.html\n\nTrump redet erneut über eine Übernahme - Kubas Präsident Díaz-Canel hält dagegen und versucht, die internationale Gemeinschaft zu mobilisieren. Zuvor protestierten in Havanna Hunderttausende gegen die Drohungen und Sanktionen der USA.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/amerika/kuba-usa-uebernahme-drohung-trump-zurueckgewiesen-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/kuba-usa-uebernahme-drohung-trump-zurueckgewiesen-100.html"
+        }
+      ],
+      "createdAt": "2026-05-03T20:26:56.838Z",
+      "expiresAt": "2026-05-04T20:26:56.838Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T20:26:56.838Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T20:26:56.838Z"
       }
     },
     {

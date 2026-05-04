@@ -1,6 +1,811 @@
 {
-  "updatedAt": "2026-05-04T12:56:38.925Z",
+  "updatedAt": "2026-05-04T15:21:29.902Z",
   "posts": [
+    {
+      "id": 4095760954,
+      "postUrl": "https://t.me/tass_agency/374095?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "ОАЭ с 1 мая вышли из Организации арабских стран — экспортеров нефти, говорится в заявлении ОАПЕК.",
+      "links": [],
+      "createdAt": "2026-05-03T21:03:16.320Z",
+      "expiresAt": "2026-05-04T21:03:16.320Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T21:03:16.320Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T21:03:16.320Z"
+      }
+    },
+    {
+      "id": 1293500530,
+      "postUrl": "https://t.me/rian_ru/337945?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Двое военных США пропали в Марокко во время учений \"Африканский лев\", сообщило командование AFRICOM. \n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "пропали",
+          "url": "https://ria.ru/20260503/voennye-2090288280.html?in=l"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-03T15:34:24.090Z",
+      "expiresAt": "2026-05-04T15:34:24.090Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T15:34:24.090Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T15:34:24.090Z"
+      }
+    },
+    {
+      "id": 3743485011,
+      "postUrl": "https://t.me/tass_agency/374094?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Трамп заявил, что ознакомился с новым предложением Тегерана по мирному урегулированию и счел его неприемлемым.  ✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [],
+      "createdAt": "2026-05-03T21:03:16.320Z",
+      "expiresAt": "2026-05-04T21:03:16.320Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T21:03:16.320Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T21:03:16.320Z"
+      }
+    },
+    {
+      "id": 1262448875,
+      "postUrl": "https://t.me/rian_ru/337944?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Дрон ВСУ атаковал Запорожскую АЭС – целью стала лаборатория внешнего радиационного контроля.\n\nОбошлось без пострадавших и критических повреждений оборудования, сообщили на станции.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "сообщили",
+          "url": "https://ria.ru/20260503/vsu-2090287719.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-03T15:34:24.090Z",
+      "expiresAt": "2026-05-04T15:34:24.090Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T15:34:24.090Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T15:34:24.090Z"
+      }
+    },
+    {
+      "id": 1444180860,
+      "postUrl": "https://t.me/tass_agency/374093?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/klFHB3MYSnZ5Zv0M9P0oLeCUof7N2xHabaRgx8ddeU-GwnBSGuCmxC57GxysJKdAlkMxSrqNyiXREtRKGWGAuQ5-VFTSShNvlmOMQ-j3CoWJTxnZoXF4FsF5vqBzbMSqvUZh8GWmMYswCIcbjeEKFosY5ny74qErNBumLIcdjXG6Eo1pYc19qO79-p04UC6Nm4PEBsR4csewhbLJJo7-ec-bUlLQVmXysh0kRdKMMH9zTlmA-Orm7dXQL6B1HyeCejB12SRtR98b5lutunjXRITUs-4E9VpnztcXDLQTB302BDNuHdGlgqJHlZfNEeRH0gqae-jLg3xswm9gPxliDA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Иран передал США через Пакистан \"дорожную карту\" для достижения соглашения. С таким утверждением выступило Fars.  Иранское предложение об окончательном прекращении боевых действий состоит из 14 пунктов, отметило агентство.",
+      "links": [],
+      "createdAt": "2026-05-03T21:03:16.320Z",
+      "expiresAt": "2026-05-04T21:03:16.320Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T21:03:16.320Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T21:03:16.320Z"
+      }
+    },
+    {
+      "id": 1364523949,
+      "postUrl": "https://t.me/tass_agency/374092?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "США хотят отменить решение о размещении в Германии ракет Tomahawk, пишет Financial Time со ссылкой на источник в Пентагоне.  Директор берлинского аналитического центра Edina Кристиан Мёллинг, комментируя возможный отказ от размещения ракет, назвал этот шаг…",
+      "links": [],
+      "createdAt": "2026-05-03T18:37:27.938Z",
+      "expiresAt": "2026-05-04T18:37:27.938Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T18:37:27.938Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T18:37:27.938Z"
+      }
+    },
+    {
+      "id": 1662599414,
+      "postUrl": "https://t.me/tass_agency/374091?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Две лодки с 13 людьми, включая 7 детей, столкнулись у подмосковного Красногорска, всех людей доставили на берег, пострадавших нет. Об этом ТАСС сообщили в оперативных службах.\n\n✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-03T18:37:27.938Z",
+      "expiresAt": "2026-05-04T18:37:27.938Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T18:37:27.938Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T18:37:27.938Z"
+      }
+    },
+    {
+      "id": 1052010063,
+      "postUrl": "https://t.me/tass_agency/374090?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Швеция запустила на орбиту свой первый военный спутник, который, помимо других задач, будет использоваться для наблюдения за Россией, сообщает телеканал SVT.",
+      "links": [],
+      "createdAt": "2026-05-03T18:37:27.938Z",
+      "expiresAt": "2026-05-04T18:37:27.938Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T18:37:27.938Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T18:37:27.938Z"
+      }
+    },
+    {
+      "id": 4042985633,
+      "postUrl": "https://t.me/tass_agency/374089?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ZioD6l73dg_O451a0MRi2basRbO_l1NdEFZkWinBMRq10cm23P59QoUUzOIKVoxAN92315DsJRQjyF0sqQJo8GZ_g6SBiqpFD-L3IrBltZOobsc7H8pX0FZFLmKNpEWSWYtOslLnCaZbzLBofEcYQDSnXcZSrwDgW-fyg4BQEgbzFuPIBqm3MvHzjHOmmawx7JMNNTEzGapegQo2Lr2Rs7DOXQ3Mfb_CmEx0zyldUAK773uzYrIEa2OWycRKPX-mMiAcKFaOzBU8MvOFmxiqzMprjyhoyOl4SRsWMCGPjltpII40gUHxEDDwBO4LoQhaTKk8g4gU_JTwn_jgaMn1lg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Словакия не будет участвовать в дальнейших кредитах для Украины, заявил Фицо.\n\nОн напомнил, что отказался поддержать выделение Евросоюзом €90 млрд Украине.\n\n✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-03T18:37:27.938Z",
+      "expiresAt": "2026-05-04T18:37:27.938Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T18:37:27.938Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T18:37:27.938Z"
+      }
+    },
+    {
+      "id": 4107217440,
+      "postUrl": "https://t.me/tass_agency/374088?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "✈ Ространснадзор контролирует ситуацию с задержками выдачи багажа в аэропорту Шереметьево.\n\nВ пресс-службе авиагавани сообщили, что длительное прохождение формальностей в Шереметьеве связано со 100% досмотром на прилете. Информация о том, что скопления пассажиров связаны с введением сигнала \"Ковер\", не соответствует действительности.",
+      "links": [],
+      "createdAt": "2026-05-03T18:37:27.938Z",
+      "expiresAt": "2026-05-04T18:37:27.938Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T18:37:27.938Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T18:37:27.938Z"
+      }
+    },
+    {
+      "id": 1372708071,
+      "postUrl": "https://t.me/tass_agency/374087?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/nSiB7sHwP5Plkq9zAMLmMLyaAorP4lh2vSe3fOiUaN9fEX9CvDD7FQp_xw7opUpD7QrhCwHxPacu4b2tV4TZ_AJqDLr6gM4UznpoSThh3gq6ykMqKa3zPL7nlHAihjMSNNizfg6W8XSDegMVg1JP5LgGqWjwu9RCvnMSXOJ-vaUpup89ol5kfshY3MPDTk02GX9cEDIyiUfPdf_eYzrwCr_ya647bbcupRyYIAloi0M94L9MZTRpjELeVJ1b1N2YBhranBzeu0KeEdeurvgjTniOpgk96Uz9ccwY8jrt_lAyzscmqXF6_6ty2GMMSdGAj7ZZwBS-jDWWU8D3uSlgwA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Главные новости к этому часу:\n\n▪На угольном разрезе в Магаданской области нашли тела четырех погибших.\n\n▪Выступление Путина 9 мая ждет весь мир, и это оправдано, заявил Песков журналисту \"Вестей\" Зарубину.\n\n▪Пожар в селе Кучерово уничтожил 14 домов. Главное о пожаре в Красноярском крае — в материале ТАСС.\n\n▪Бюджет дополнительно получит 200 млрд рублей из-за подорожания нефти, заявил Силуанов журналисту \"Вестей\" Зарубину.\n\n▪\"Семерка\" ОПЕК+ нарастит добычу нефти в июне на 188 тыс. б/с.\n\n▪Сборная России по синхронному плаванию заняла второе место в медальном зачете Кубка мира в Китае.\n\n▪Звездопад Майские Аквариды будет виден ночью 3 мая.\n\n✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "нашли",
+          "url": "https://tass.ru/proisshestviya/27294825"
+        },
+        {
+          "label": "заявил",
+          "url": "https://tass.ru/politika/27293617"
+        },
+        {
+          "label": "материале",
+          "url": "https://tass.ru/proisshestviya/27293809"
+        },
+        {
+          "label": "заявил",
+          "url": "https://tass.ru/ekonomika/27294153"
+        },
+        {
+          "label": "нарастит",
+          "url": "https://tass.ru/ekonomika/27294135"
+        },
+        {
+          "label": "заняла",
+          "url": "https://tass.ru/sport/27294193"
+        },
+        {
+          "label": "будет виден",
+          "url": "https://tass.ru/kosmos/27294793"
+        },
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-03T18:37:27.938Z",
+      "expiresAt": "2026-05-04T18:37:27.938Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T18:37:27.938Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T18:37:27.938Z"
+      }
+    },
+    {
+      "id": 3792827950,
+      "postUrl": "https://t.me/tass_agency/374086?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Три поезда, осуществляющие маршруты между Калининградом и другими российскими городами, задерживаются по причине схода грузового поезда на Литовской железной дороге, рассказали в ФПК.  Ранеее сообщалось, что из-за аварии в Литве остановлено движение поездов…",
+      "links": [],
+      "createdAt": "2026-05-03T18:37:27.938Z",
+      "expiresAt": "2026-05-04T18:37:27.938Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T18:37:27.938Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T18:37:27.938Z"
+      }
+    },
+    {
+      "id": 3203771493,
+      "postUrl": "https://t.me/tass_agency/374085?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Q0WRvV4NrHi0IOvkzFXVRUO7OXEqJN-T4Kt9Mu1J66zYmtEzvCCWRM6cyBbQZsKLVH857BOfQuhbQUuKLk3-ttoXvd06bGBELRIsx6nDEmjYWQNBBRcRukDlFWmlJlQP5N445EeqwjYyqCDjJs5c5Jp-B7D6S2y1o3wMMW0hdCxDdpjBHi4BxMITYAh33B231qTR-xfuAB_DmlkeOer93LKNLTkl6rhnhoEwQalXnMyXkC9RXadDpoPhXfh8hMqPZhOM4hlydSzfTlW9KUGJY2s7i2jX5G-Fm3DoPwA7vgTHZeHSFiIBUtgQOKiyDuliEsXV1QpBoXvCD_iY_ukGhg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Иран из-за быстрого заполнения нефтехранилищ вследствие американской морской блокады может уже на следующей неделе приступить к консервации своих буровых скважин, заявил министр финансов США Скотт Бессент.",
+      "links": [],
+      "createdAt": "2026-05-03T16:32:42.127Z",
+      "expiresAt": "2026-05-04T16:32:42.127Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T16:32:42.127Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T16:32:42.127Z"
+      }
+    },
+    {
+      "id": 3162833300,
+      "postUrl": "https://t.me/tass_agency/374084?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Власти Ирландии начнут в августе сворачивать программу размещения украинских беженцев и не исключают, что некоторые из них останутся бездомными, сообщает The Times со ссылкой на заместителя министра юстиции, внутренних дел и миграции Колма Брофи.\n\nБрофи считает, что в целом граждане Украины смогут найти жилье, но не исключил \"один-два\" случая, когда это окажется невозможным.",
+      "links": [],
+      "createdAt": "2026-05-03T16:32:42.127Z",
+      "expiresAt": "2026-05-04T16:32:42.127Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T16:32:42.127Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T16:32:42.127Z"
+      }
+    },
+    {
+      "id": 903123787,
+      "postUrl": "https://t.me/tass_agency/374083?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/R0SM_N_V5p2RZgDOlQ-A-UpaY9ogRoWW-cWBhshsvB17bNd967DmnkMTYVkGy-Ug26qY_xVJ2eBCltJ8wdASXU8IQXvmTtdn2o6O4dZSEiJ8dQudvqfMEKm3SGbocm1jBPfPZ08dlQR5wHiHspudFW_9FsRquXz7q_hAJ7SRP3AudwFO3KFyukuWoCpJuJGKXirUYcDi4FaGbLh2eZxf1M8epmBJywb67UVC4XNZLqm66FjFCiKdfmNJd461FfSevydRKZKXirXfDQCTcm9ivlSFSnlZ8ErHVKGvbZdRHPseMo_yJ2tEskAiHdy9tdxBkaLXhkQHDonZO8RS3AOljg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Мерц резко ответил больной раком женщине, спросившей про реформу в здравоохранении, пишет Bild.\n\nВо время встречи канцлера с гражданами она заявила, что не может позволить оплату собственных похорон. При этом правительство ФРГ планирует сокращения в сфере здравоохранения, пытаясь повысить зарплаты министрам. В ответ на это Мерц поморщился и пять раз повторил \"никогда\", заявив, что повышение окладов никем не рассматривается.\n\nРанее в ФРГ предложили законопроект, повышающий зарплату чиновникам на €40 тыс. В случае его принятия зарплата Мерца выросла бы на €65 тыс.",
+      "links": [],
+      "createdAt": "2026-05-03T16:32:42.127Z",
+      "expiresAt": "2026-05-04T16:32:42.127Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T16:32:42.127Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T16:32:42.127Z"
+      }
+    },
+    {
+      "id": 1608677202,
+      "postUrl": "https://t.me/tass_agency/374082?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/af5GIrJ7qmuw5qyo4DO4BNlhwDds8tCNlHgliSdgO_iPFV1HQBD8RbIvFKb_WGKtiPr4kJPdVcsud4MOqK-rSsIie3Y21vnpTBnJS8Q56IWAusKbVRQoHRK-7DETpSEh-TOL7pknbCQ1D8eQLY54plLVWFNe-qMiF9bo-sPFkMLQY8WuIbdF56Njpe3G6SujObFDdKjVEpDwXZ1kzztygWyfq6EobnSuyqDsxvoVeRN6hxvQ0D0wxixfq4QEBEp9kWq34b-ubzju90YUKmkFpDt58Nhrbnzl2fH-P8M2R1vgtTpION40vRubkChT2zwWa91PpVWYpoeFN-9DiAkRPg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Трамп не намерен вновь переносить дату своего визита в Китай, заявил Бессент в интервью Fox News.\n\nИзначально поездка лидера США была запланирована на конец марта, однако он перенес ее на середину мая из-за войны против Ирана.\n\n✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-03T16:32:42.127Z",
+      "expiresAt": "2026-05-04T16:32:42.127Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T16:32:42.127Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T16:32:42.127Z"
+      }
+    },
+    {
+      "id": 3062150409,
+      "postUrl": "https://t.me/tass_agency/374081?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Трамп не намерен отказываться от участия в публичных мероприятиях после неудавшегося покушения на него, сообщил телеканал NBC News.  График публичных выступлений Трампа не претерпит изменений.  ✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [],
+      "createdAt": "2026-05-03T16:32:42.127Z",
+      "expiresAt": "2026-05-04T16:32:42.127Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T16:32:42.127Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T16:32:42.127Z"
+      }
+    },
     {
       "id": 3135142600,
       "postUrl": "https://t.me/tass_agency/374080?single",
@@ -319,595 +1124,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-03T16:32:42.127Z"
-      }
-    },
-    {
-      "id": 4098808502,
-      "postUrl": "https://t.me/tass_agency/374073?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "В Туапсе после ликвидации пожаров все пробы водопроводной воды и атмосферного воздуха соответствуют норме, сообщает Роспотребнадзор.",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 3529795855,
-      "postUrl": "https://t.me/tass_agency/374072?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Vs5ijQyIQQG75Ybe6pdmwGMp-hvxgw4Kml_ipcn_2EYXV3-AAB-ByYIXUmz5UlTGLuoKZ3o991UCZEyd_lm3-ruMPUI19HybyxsPvIg-gipds79TprHIVvVNigOFLgY_1Nj9fkjwb5CAJlm3Sfwb0x2gPwH5_XJnpTPotW8G90AnacY1w30lbNUmb5hrc9k0rDmGs7wrJURS9ieVRJeUdzWvM0Eug7-r1uA9_rMAZvwo2zTJI3esDW7CHBEiA6U7phNPXtuJqPoEVvtmdAOigLF_UNRWlC69SCpjhCTZUWOW1s3JI5qGjaN0g2Rk0LtG1Q5nKx28Zh9Aw9d_-13G9Q.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Бюджет РФ дополнительно получит 200 млрд рублей из-за подорожания нефти, заявил Силуанов журналисту \"Вестей\" Павлу Зарубину.\n\n✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T10:26:54.423Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 1649693244,
-      "postUrl": "https://t.me/tass_agency/374071?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Минобороны ФРГ не смогло объяснить, как были потрачены €111 млрд, выделяемые на нужды ВС с 2022 года, сообщает BZ.\n\nОтвечая на вопрос журналиста, пресс-секретарь ведомства Натали Йеннинг не смогла предоставить информацию о количестве военной техники, принятой на вооружение и готовой к эксплуатации к 1 апреля 2026 года. Ведение подобного учета она назвала бессмысленным действием.\n\n✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 1372640877,
-      "postUrl": "https://t.me/tass_agency/374070?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/jcNtmS0M-pM-hshlD8X8RgZJzHtXATDM5HDN9rGfKmrEOV1aOab9pfIon8ccxXRFXu7PFJ_ZmCcfAgECjOMLwZ8Uts-y6HpU622pBAoJ8Qe9iCr7ghvR0mfQgcgHtR9R4vFBp4pdDVPFhF1EC11qDMnXB8pw3B-o-JL0HipEMaUZFkCtuA9Yq2yERuMjbxKV4EIL5S-U0HzI-brltv6fi9zVM9n4ZkSLsXl2CFYg2MFrp0nOZCQhTT2QMklaye3-MFFrj0YtEkVQ3Xq7_Yjt_SGCtwWuTVTNqf6F3U6pJk7BlnlHiEPX6gRaUvXSFXYEm7bzE8LMWMRQZ6jQnUpYBA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "☁️ Облачная погода с небольшим дождем ожидается в Москве на День Победы, сообщили ТАСС в Гидрометцентре.\n\nПри этом температура воздуха составит от 14 до 19 градусов выше нуля",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T10:26:54.423Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 1380721831,
-      "postUrl": "https://t.me/tass_agency/374069?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Трамп заявил, что вряд ли согласится на ответ Ирана на американские предложения, поскольку Тегеран заплатил \"недостаточно высокую цену\".  ✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 1233315822,
-      "postUrl": "https://t.me/tass_agency/374068?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "США хотят отменить решение о размещении в Германии ракет Tomahawk, пишет Financial Time со ссылкой на источник в Пентагоне.  Директор берлинского аналитического центра Edina Кристиан Мёллинг, комментируя возможный отказ от размещения ракет, назвал этот шаг…",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 1161792353,
-      "postUrl": "https://t.me/tass_agency/374067?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Японский депутат Судзуки отправился в Россию для налаживания отношений двух стран. Об этом он рассказал ТАСС.\n\nЗаконодатель намерен передать точку зрения премьер-министра Такаити по поводу важности отношений с РФ, а также обсудить вопросы энергетического сотрудничества и гуманитарного характера.\n\nВ своем блоге Судзуки написал, что сделает все возможное для возвращения ориентированных на будущее отношений между Россией и Японией.\n\n✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 3414477280,
-      "postUrl": "https://t.me/tass_agency/374066?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/n18WoqPaQhMN8h1JMHsCAtxOh8-kXBZSK470hmlUG4jhCGGRGM3eLIMOiSclZQNqZjaUSn_ROzcQIWERnUGsGKqIFJsw7ODH-oFBuK87eugC7Jr4GWQt5IbCJee9tRaWxP3nokEXTzweKsZaD8UnmiRnVSFQTNEdvhG3bI4rW2suRyk6fhcVRMyqrfvwRfUwn8wNKR8kNi-yctqQspFGb5OQZsawZmDf-qer25hgBqMVDES3s0I4TUAg-boQupBZCt4v4q7H-JjEiicTUkorw_p6in-LxYwHZPSrWzhoDF-Crznx-wUbd-AFNwptxWkRXcjtxoYgiYPRD8kgnI8RlA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Помочь уличному животному адаптироваться в новом доме можно, исключив контакт с ним до момента, пока питомец сам не пойдет на сближение. Об этом ТАСС рассказала руководитель движения \"Дай лапу\" Александра Нуриева.\n\nПо ее словам, хозяин должен минимизировать количество новых раздражителей. Также стоит попросить домочадцев не кричать и не тянуть к животному руки, так как любое прикосновение незнакомца для него является потенциальной угрозой.",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T10:26:54.423Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 1858442819,
-      "postUrl": "https://t.me/tass_agency/374065?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❕ВСУ атаковали при помощи БПЛА лабораторию внешнего радиационного контроля ЗАЭС, это создает угрозу ядерной безопасности и системе контроля радиационной обстановки, заявили на станции.\n\nПострадавших и критических повреждений нет, МАГАТЭ уже уведомили об атаке.",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 3732457706,
-      "postUrl": "https://t.me/tass_agency/374064?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/fEAhAE6RfQH2xQq5BQGw7UYs53Mhq_qCP_yOgKVF6OWxBE_plWzkAPzJWqtONeBVoQGoYazSzKrLx1MiTsUXK3NRjZd4oJoO_SNpVLeqrN6d4XO99QmLnGOB9EAsLIo6X08ELMfxg6R8SFoqpQAcaesrPWkAGF4WvFt_648hA1Mnk7N8In1VNr04jp7EXQjQ6fk9CGY7yhSFsvKF0lR4H2HQcN4uKRu606ZtSFxGNARpWWNwmdliqI0gc7vPhz_yt2X6NHOahAc6V20Qy-0-98OxinnOHizx1aJYFeJV_kebYsz6OA77HaXyldIZvYZOrqioNF_3q288WqhzpAqfmQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "▶️ Путин посетил ФЦМК в Москве. Ему представили образец бронированной машины скорой помощи, разработанной для работы в приграничных регионах РФ.  Видео: ТАСС/Ruptly  ✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 419212509,
-      "postUrl": "https://t.me/tass_agency/374063?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/TloFhqDlqR6GGzhkwFabdDrMvHv5VKn_zwzJjrC1qTLuNvIWBRuKZn-bjx79bkYu2rk40nFm9OUPkDCAv3Qr6SAQPZRpji18SQ5D6incIf2qRY_dUdgjWifyJzr1-n4-VdAb5YH-gDbHDvYJc3TIQs3YYv0lhqNyUvHskulhKh5WDXZlvv0RnvdtlUdNmssC8sjYqa4bH3UHNjLWhVs5PkiC_EQTedkn4tHcNaIem-foxGqF2cZzqWyfemRSxBc_-XAv57-Xcox6g0PMWwgRYlaEP-H2eRmZ7hycykT_hSRIndl9dZE2F1ZXUyryaGVHeTGwdA_nthhaQ6PHJ7T__A.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "В США команда по пиклболу разбилась в авиакатастрофе, сообщает Fox News.\n\nИгроки клуба \"Амарилло\" направлялись на турнир в Техас. Незадолго до крушения авиадиспетчер заметил, что судно совершало необычные маневры. В результате авиакатастрофы погибли четыре пассажира и пилот.\n\nФото: The Times Of India/X\n\n✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 1232964652,
-      "postUrl": "https://t.me/tass_agency/374062?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "ОАЭ, объявившие о выходе из ОПЕК, возможно не будут участвовать в сегодняшней встрече стран ОПЕК+, придерживающихся добровольных сокращений добычи нефти. Об этом сообщил ТАСС источник в одной из делегаций.  Он также отметил, что решение по добыче нефти на…",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
-      }
-    },
-    {
-      "id": 824541951,
-      "postUrl": "https://t.me/tass_agency/374061?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/kDmqTG-cjCPl6ARaY4PMurbO-u1oVY35SkO_t9gyeuIjF8to0w1H7JN3nzDdOVcKpSrEwSP4w9qWdkE11m58Dv8Yix5FX3NGHul-ZdTtf8IaudxmuIHj3pGYYF1fVw_6B9w42_vccxgkkV5zpzyTVh0vd4gjf866zJFwRsugCcAz1kdKdgkHdfMwiaU9Nfw9Y-NRKdsx1Rs5AoT1u7L3vy8oE9dVcaVs6eqhryceND2t4FxC80vvqPB-GxEqARMshYv_y-dEZTUEPLdz2SGvUw8oXwbnT3o5jiFrvEOtgsZF4hhAcrFgK1Q-Fb0uPVcLMPM2jaoceCLN0BCFDkOLYg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/QJDgoLdJ2cLAH8CDCeG8F9VaXHnoB6s0NaE0eu373VI0NsYqcKukncg6ADcHtZMQg6wbb2O-GnmVxCVTCNhOT-4IW02NMlJmoQiMQulQaU_WVgpaNtVnlt_o5yEehbH1DZieSZlT8Fvfb-2xCm_vo2c_I6q6I_xVd2pdtIrlJw2ivRYMR2zn_-P7j_2x3VsMvuXjqXMLrxQJLorN62LNtSLMDYZLXeuVKba9wtOwbGL3bUN6MB75etf8T8cYJmm-9Mmrem8Z2m7dCHC9KMitxbqXYGazZmuVRz8UUhbKicLQlNCaTuYvQEHK7nxniqgtuuRdjI4Ha8_oviDJxnqNXg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "3 мая стало самым теплым днем в Москве с начала года. Температура воздуха прогрелась до плюс 18,8 градуса, рассказал синоптик Михаил Леус.",
-      "links": [],
-      "createdAt": "2026-05-03T13:48:52.715Z",
-      "expiresAt": "2026-05-04T13:48:52.715Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T13:48:52.715Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T13:48:52.715Z"
       }
     }
   ]
