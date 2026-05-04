@@ -1,6 +1,110 @@
 {
-  "updatedAt": "2026-05-04T04:09:15.251Z",
+  "updatedAt": "2026-05-04T05:06:19.104Z",
   "posts": [
+    {
+      "id": 1014890327,
+      "postUrl": "https://t.me/pikabu/48422?single",
+      "source": {
+        "title": "Пикабу",
+        "handle": "pikabu",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/v-ogxktHYAQjGE_RaoysN17gIyu69FoeLZ5UPpyccmlBl_qEGch-Ic67QhQ3o7CIW7UExbcyQgTm_0cwSFZ0Fvoh8N6adngWHSX9thRfA3wb_OAdGVyb9nAbu1letDe2-wIcqDflkNdSmT-71lEHq03BDSmE9BG9okTzlE5oFlfUh7bbTUSjg4aEq7PB81pMPhtKGSkdKtZRyn58z9ZWzEyjvUyPpO1BCuoOj1sm7-GDlf-xorPiNfR2cxoc3oiQvCct7kdKTr8CqXw5svV8UyuEfBFMisEvTrzPac7DDbgb46hTy47uUNjfsYayp85ct3VcrhYICJJORCm9VHvCrw.jpg"
+      },
+      "sourceId": "ru:pikabu",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/55bde89bb2.mp4?token=YUMwAQ1mtNyODhWo4Z_m1LlNBfVzLiZ4ZRxsVpW3-HHvlY9sdkDT3eK3qX3OsQ2d6sKbLWiQS2WROFnEmzfmrAonFop4UF4h-wsxJnhlHcfJhBijQqh6QauQAiZ2a0QOeP24_PkKB2E3HHa-QHkK5vwKUWr5pDUR_yPJ0VPEuxdjcY-7dCSeP1betLaLwxH4fCsnsPAfG6sPzI1iAFjd-65US7EREZA3Ng7eoa3ua50mm_8qiGLEB3o6TSTMnmVz7hBEaYkf3S2oFeP62hJgspbMCWVXKegSFRVhD2xkR3fb4vOL-Kpl9U1KX7idTOOysfIjKo4O7XVKJl-dpBPfSw",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Wildberries\n\nКомментарии: pikabu.ru/link/qLUszgnTY9\n\nПикабу в MAX",
+      "links": [
+        {
+          "label": "pikabu.ru/link/qLUszgnTY9",
+          "url": "https://pikabu.ru/link/qLUszgnTY9"
+        },
+        {
+          "label": "Пикабу в MAX",
+          "url": "https://max.ru/pikabu"
+        }
+      ],
+      "createdAt": "2026-05-03T17:34:58.658Z",
+      "expiresAt": "2026-05-04T17:34:58.658Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T17:34:58.658Z",
+      "tag": "humor",
+      "tags": [
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T17:34:58.658Z"
+      }
+    },
+    {
+      "id": 2092032504,
+      "postUrl": "https://t.me/novosti_efir/85340?single",
+      "source": {
+        "title": "Прямой Эфир • Новости",
+        "handle": "novosti_efir",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Ur_dVWW-zM2WgVkRh5ApXtfbZunaw5jqCIfDY-yHkDN4t2Y24sZuZtLhdz9gOw9u9dol3hpSjAyMvGCevExYWP3XhipyKmmBztrYdi-YPcLXAPrM3825gw98ZtjVJlXCH59B3z17CRuDlSUyympcmZsUg0-Svm0MyfDI_AxRRIThcHeQA6VGSqy4UQMerBg_gEfsyC04p9YfJ65eK87BWDCKAtW7pz7_Cn0aeu7-PLdTaWp8P3agI1gdZL3sDiMiVMrJwsDKI2_Kjoh3LLd1a0e0VnZpwM3pFE1oPeshfVlvXx8_e2HD6_wFR1A_0-9Q1PwJP0LTC_4dm_MhAIyOqw.jpg"
+      },
+      "sourceId": "ru:novosti_efir",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Москва и область под атакой дронов. Сбито уже 17 беспилотников — Собянин\n\n📢 Прямой эфир",
+      "links": [
+        {
+          "label": "Прямой эфир",
+          "url": "https://t.me/+Z3t2Nc0di5kyNzE6"
+        }
+      ],
+      "createdAt": "2026-05-03T15:34:18.343Z",
+      "expiresAt": "2026-05-04T15:34:18.343Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T15:34:18.343Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T15:34:18.343Z"
+      }
+    },
     {
       "id": 1111935158,
       "postUrl": "https://t.me/n_no_f/19121?single",
@@ -46,52 +150,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-03T17:34:55.203Z"
-      }
-    },
-    {
-      "id": 3029651610,
-      "postUrl": "https://t.me/mosguru/31773?single",
-      "source": {
-        "title": "Первый Московский",
-        "handle": "mosguru",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/u5P5hhdcF1RBJuo9H_y8_b3bcfHxVhAo-Xnn-PWmaoxuputTAOZNnXKtQacAJ8B2jaWKsZ5jB2CENyS8bwlHtP2uucwIPjNvsJOtW6DL5Zvt7AIZEw14a8ZoUZuZz7b4dMgQlRoXMSE0FBdQ7L555fLb4ksi089X5smwolxHeN4weYBRYXn1Jxjn9tu6BlXhJuoSx3FlkEOEGH-7Vh8IAsPl5STgp-qiue0e-4eQDMVf7mKXXpwQRROXpPJSXbmNf_1tGXzhVqXsKugdlijrRggHNVUYEbKy-AEgQ2YpuD9-3HO2N-7HJ-bo7EzQ9cpuB90_Di86xopCcMSj0eaCKg.jpg"
-      },
-      "sourceId": "ru:mosguru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🥵 До +23°С может быть в Москве сегодня, — синоптики.\n\n⚡️ Первый Московский",
-      "links": [
-        {
-          "label": "Первый Московский",
-          "url": "https://t.me/+qJNFoJeX614zOTli"
-        }
-      ],
-      "createdAt": "2026-05-03T07:34:28.600Z",
-      "expiresAt": "2026-05-04T07:34:28.600Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T07:34:28.600Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T07:34:28.600Z"
       }
     },
     {
@@ -316,6 +374,52 @@
       }
     },
     {
+      "id": 3029651610,
+      "postUrl": "https://t.me/mosguru/31773?single",
+      "source": {
+        "title": "Первый Московский",
+        "handle": "mosguru",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/u5P5hhdcF1RBJuo9H_y8_b3bcfHxVhAo-Xnn-PWmaoxuputTAOZNnXKtQacAJ8B2jaWKsZ5jB2CENyS8bwlHtP2uucwIPjNvsJOtW6DL5Zvt7AIZEw14a8ZoUZuZz7b4dMgQlRoXMSE0FBdQ7L555fLb4ksi089X5smwolxHeN4weYBRYXn1Jxjn9tu6BlXhJuoSx3FlkEOEGH-7Vh8IAsPl5STgp-qiue0e-4eQDMVf7mKXXpwQRROXpPJSXbmNf_1tGXzhVqXsKugdlijrRggHNVUYEbKy-AEgQ2YpuD9-3HO2N-7HJ-bo7EzQ9cpuB90_Di86xopCcMSj0eaCKg.jpg"
+      },
+      "sourceId": "ru:mosguru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🥵 До +23°С может быть в Москве сегодня, — синоптики.\n\n⚡️ Первый Московский",
+      "links": [
+        {
+          "label": "Первый Московский",
+          "url": "https://t.me/+qJNFoJeX614zOTli"
+        }
+      ],
+      "createdAt": "2026-05-03T07:34:28.600Z",
+      "expiresAt": "2026-05-04T07:34:28.600Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-03T07:34:28.600Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-03T07:34:28.600Z"
+      }
+    },
+    {
       "id": 566453454,
       "postUrl": "https://t.me/tass_agency/374114?single",
       "source": {
@@ -514,7 +618,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -663,7 +767,7 @@
         "title": "👨🏻‍💻/ Марат Юсупов",
         "handle": "maratyus",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/OtC_REjxDf8F1J-dlp3GtEsjMOskYBqw8d6tgFbWonLmjMcoronGHHBy8owqmJevdnVJHuJrUb9MBUzAdVSupEtxoCShpDOniYXY_ZSTul0xk5hqsSqFJjYyI8BjKQ0xaPaqUNHDWaXC2YfxoCYDgk0Hn_RSQJ54EQpzT2-62nAVNH58KOkzMXVe32ocLMo5LzMRBl_d0XsA1CP3xseiZm1ygO_8Kf0pSZmXwfj9sfFuxAM0temZuWv4sF1hyZ3UWsLx6F3-Wv-XajoiXgqYrVr_gzTnPgv7D3AbeR0QOQ9sXY4_f_5qPbrprjTbwontBpkXcAq8djRCDUveQ54HZg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ZRP-lVUOZfeiqTPIKoX-Fothe1K-cniinLEQ5dAw_O-5o6BiLF6Jq4G1akTPxXIAGqlyVBpk8Ctq7XGWjuegmfriwgc3-wcO82B2iIZDpk7npv6x103WK5OJluGDDVg8vG1Z9DK9tTa9UHoNh4H_7eOy1t3S9hlBiIgbXPzuuY95J0aUbCjDW_8r13oqGSAoW9a0QpXdS3QaAmZ_0nInWuaxpu-IJJR8yTeQWLYWvRzUMpQax-O8aheqlSpD14DjW5GH8cE2NXppi2nJjD7t5oFx1SkBQLFyBdxnw47urUcP2XTpq0mkv96Ajfp-FWcenjfr1rp0HVihnr7Cuwb4GQ.jpg"
       },
       "sourceId": "ru:maratyus",
       "sourceCountryCode": "ru",
@@ -687,7 +791,7 @@
       "createdAt": "2026-05-03T23:30:21.160Z",
       "expiresAt": "2026-05-04T23:30:21.160Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T23:30:21.160Z",
+      "mediaRefreshedAt": "2026-05-04T05:05:51.101Z",
       "tag": "marketing",
       "tags": [
         "marketing",
@@ -1392,7 +1496,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -1450,7 +1554,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/BP1DAl399Pym9HyEp5tJu0YEBvgWysLzwTVKIqKAKcdw6SUpQbdO1hYSUe7gc1_EejKe1dveXerwdExGjxJaxHlf_iIa5zN4gFQn-80NoGU8h1hXyUf7DlU8pzkfJS1WtBuAaxWg_aX60T-RGq-vTSFrAtNHetthJ4OMKCi_KPdfD3rHy_WsQzIzTGXa4DneFx7Lnwm9Cf1bhsfB_6AIvx2U7AsF9HY9aNtLFRMXtIJ54GQBzKDgWnJJENpoamcRX96CtnMa97WNKaeWzLQoAblpUJbYO8bzBGUzev9r68STK6_HOJQpRb0GKfGITtAhOwkasuhfAtbxXtMsgB2-Rg.jpg"
+          "url": "https://cdn4.telesco.pe/file/DMYmR5T515KDH_FLexEZKEoaboIbMiZPgj9IYe9dcDkHar7Pfvdy5Qau6WMW13-KWyXMvJJopL5mzonu1cLnU8HWHVrn0kNjhHzCWDJNzq6UllqS1GLLCV79n1wO2IOQZMOh9Tq2quL2018z78SiGIx-OgvIhCmJkUEUgbwSZehHPhg7WyHwu9o-XsS12c3fX5EKMRhh8v_fxxXCE3zswx6tiMsFuhALShG-vWYBwzKXQXqPMYGz2nJTB0o0ZGguvOqfxqQ-Gvd5SuTXexm9BuOmmFK8e20fMNYs3DiFwy7TVE4_Ex43hrNlCir61K37IBcJ1TbFYbBVAwN30IE1dg.jpg"
         },
         {
           "id": "image-2",
@@ -1465,7 +1569,7 @@
       "createdAt": "2026-05-03T23:30:24.276Z",
       "expiresAt": "2026-05-04T23:30:24.276Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T23:30:24.276Z",
+      "mediaRefreshedAt": "2026-05-04T05:05:52.745Z",
       "tag": "telegram",
       "tags": [
         "telegram",
@@ -1573,7 +1677,7 @@
         "title": "👨🏻‍💻/ Марат Юсупов",
         "handle": "maratyus",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/OtC_REjxDf8F1J-dlp3GtEsjMOskYBqw8d6tgFbWonLmjMcoronGHHBy8owqmJevdnVJHuJrUb9MBUzAdVSupEtxoCShpDOniYXY_ZSTul0xk5hqsSqFJjYyI8BjKQ0xaPaqUNHDWaXC2YfxoCYDgk0Hn_RSQJ54EQpzT2-62nAVNH58KOkzMXVe32ocLMo5LzMRBl_d0XsA1CP3xseiZm1ygO_8Kf0pSZmXwfj9sfFuxAM0temZuWv4sF1hyZ3UWsLx6F3-Wv-XajoiXgqYrVr_gzTnPgv7D3AbeR0QOQ9sXY4_f_5qPbrprjTbwontBpkXcAq8djRCDUveQ54HZg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ZRP-lVUOZfeiqTPIKoX-Fothe1K-cniinLEQ5dAw_O-5o6BiLF6Jq4G1akTPxXIAGqlyVBpk8Ctq7XGWjuegmfriwgc3-wcO82B2iIZDpk7npv6x103WK5OJluGDDVg8vG1Z9DK9tTa9UHoNh4H_7eOy1t3S9hlBiIgbXPzuuY95J0aUbCjDW_8r13oqGSAoW9a0QpXdS3QaAmZ_0nInWuaxpu-IJJR8yTeQWLYWvRzUMpQax-O8aheqlSpD14DjW5GH8cE2NXppi2nJjD7t5oFx1SkBQLFyBdxnw47urUcP2XTpq0mkv96Ajfp-FWcenjfr1rp0HVihnr7Cuwb4GQ.jpg"
       },
       "sourceId": "ru:maratyus",
       "sourceCountryCode": "ru",
@@ -2277,7 +2381,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -2329,7 +2433,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/TDK-eC0c6v-7clO-JxwB0mYe3jZb7v8fAS6unbvZqWkgVRyGW_6PTMgdsL9aOllMH1GilqbTccX2u_Z1ofyMsWipNAAYBLFnHl8ahPusFj_-2w2sLZskfzyqlci4NAZ7RDD-goPItjllUO0jvU3ij31bFSvFyth_jMhGTANp0t6p0OHfB0RxyD4NkWgbqKVqQoqS3oErOl40BEQrJwrzbrkBifJ6K2QBsRERWkJAxzoVdiqHJgjBgQ2UHTCHkLsn-pfhPd7b7Vbfj6iUBvM_a9ci1ibiokDHTt-6XFuGbyFaB78wCEjHsIspZC5Mpp_IF062wCORtP0FyWrkulVgVQ.jpg"
+          "url": "https://cdn4.telesco.pe/file/OnH2YmFrDjd8uorGZVx6LNSSLFBS-7GPqCT2B2GO8Sihvq_zd4Z2LZ-pjW9HkGDRb4-mZ6VENpT38yhtVaUqpbyq6G_pWQ2i6tXpzevB5jkSyqruJtsbFeSw2fz0hY-JdiGhXM3eV7UJJzM62FMik5qQTeSsIeBt5KtV26ddxv5mjn8d5-Tre4bTx5jCNFrzaTYvlMoUMh5UFQhwrA7-DHD5MtgTvLgZHNhp2d2KWIpT8E771oPVsejkL_FyQvGVVwuRJWHYQR_Mh7vy2uvrAFX5cdvnDCukif88OVDgZVxRldJH0uPirgx8C2OMkp7JrX_F1zau8aBZ0u8TwNNaNQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -2339,7 +2443,7 @@
       "createdAt": "2026-05-03T23:30:24.276Z",
       "expiresAt": "2026-05-04T23:30:24.276Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T23:30:24.276Z",
+      "mediaRefreshedAt": "2026-05-04T05:05:52.745Z",
       "tag": "telegram",
       "tags": [
         "telegram",
@@ -2414,7 +2518,7 @@
         "title": "👨🏻‍💻/ Марат Юсупов",
         "handle": "maratyus",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/OtC_REjxDf8F1J-dlp3GtEsjMOskYBqw8d6tgFbWonLmjMcoronGHHBy8owqmJevdnVJHuJrUb9MBUzAdVSupEtxoCShpDOniYXY_ZSTul0xk5hqsSqFJjYyI8BjKQ0xaPaqUNHDWaXC2YfxoCYDgk0Hn_RSQJ54EQpzT2-62nAVNH58KOkzMXVe32ocLMo5LzMRBl_d0XsA1CP3xseiZm1ygO_8Kf0pSZmXwfj9sfFuxAM0temZuWv4sF1hyZ3UWsLx6F3-Wv-XajoiXgqYrVr_gzTnPgv7D3AbeR0QOQ9sXY4_f_5qPbrprjTbwontBpkXcAq8djRCDUveQ54HZg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ZRP-lVUOZfeiqTPIKoX-Fothe1K-cniinLEQ5dAw_O-5o6BiLF6Jq4G1akTPxXIAGqlyVBpk8Ctq7XGWjuegmfriwgc3-wcO82B2iIZDpk7npv6x103WK5OJluGDDVg8vG1Z9DK9tTa9UHoNh4H_7eOy1t3S9hlBiIgbXPzuuY95J0aUbCjDW_8r13oqGSAoW9a0QpXdS3QaAmZ_0nInWuaxpu-IJJR8yTeQWLYWvRzUMpQax-O8aheqlSpD14DjW5GH8cE2NXppi2nJjD7t5oFx1SkBQLFyBdxnw47urUcP2XTpq0mkv96Ajfp-FWcenjfr1rp0HVihnr7Cuwb4GQ.jpg"
       },
       "sourceId": "ru:maratyus",
       "sourceCountryCode": "ru",
@@ -2976,7 +3080,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -3148,7 +3252,7 @@
         "title": "👨🏻‍💻/ Марат Юсупов",
         "handle": "maratyus",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/OtC_REjxDf8F1J-dlp3GtEsjMOskYBqw8d6tgFbWonLmjMcoronGHHBy8owqmJevdnVJHuJrUb9MBUzAdVSupEtxoCShpDOniYXY_ZSTul0xk5hqsSqFJjYyI8BjKQ0xaPaqUNHDWaXC2YfxoCYDgk0Hn_RSQJ54EQpzT2-62nAVNH58KOkzMXVe32ocLMo5LzMRBl_d0XsA1CP3xseiZm1ygO_8Kf0pSZmXwfj9sfFuxAM0temZuWv4sF1hyZ3UWsLx6F3-Wv-XajoiXgqYrVr_gzTnPgv7D3AbeR0QOQ9sXY4_f_5qPbrprjTbwontBpkXcAq8djRCDUveQ54HZg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ZRP-lVUOZfeiqTPIKoX-Fothe1K-cniinLEQ5dAw_O-5o6BiLF6Jq4G1akTPxXIAGqlyVBpk8Ctq7XGWjuegmfriwgc3-wcO82B2iIZDpk7npv6x103WK5OJluGDDVg8vG1Z9DK9tTa9UHoNh4H_7eOy1t3S9hlBiIgbXPzuuY95J0aUbCjDW_8r13oqGSAoW9a0QpXdS3QaAmZ_0nInWuaxpu-IJJR8yTeQWLYWvRzUMpQax-O8aheqlSpD14DjW5GH8cE2NXppi2nJjD7t5oFx1SkBQLFyBdxnw47urUcP2XTpq0mkv96Ajfp-FWcenjfr1rp0HVihnr7Cuwb4GQ.jpg"
       },
       "sourceId": "ru:maratyus",
       "sourceCountryCode": "ru",
@@ -3652,7 +3756,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -3763,7 +3867,7 @@
       "createdAt": "2026-05-03T11:08:52.400Z",
       "expiresAt": "2026-05-04T11:08:52.400Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T23:30:23.301Z",
+      "mediaRefreshedAt": "2026-05-04T05:05:51.958Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4179,7 +4283,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -4296,7 +4400,7 @@
       "createdAt": "2026-05-03T11:08:52.400Z",
       "expiresAt": "2026-05-04T11:08:52.400Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T23:30:23.301Z",
+      "mediaRefreshedAt": "2026-05-04T05:05:51.958Z",
       "tag": "news",
       "tags": [
         "news"
@@ -4687,7 +4791,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -5200,7 +5304,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -5673,7 +5777,7 @@
         "title": "Дима Масленников",
         "handle": "maslennikovliga",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LfyV_z4dFL5WP-UFErTtMOUJtRt1t8Q3xnayqhTktEjKbugJihUwmjvULDsFpTXDp0lrpVjWNSbkjPnOJO5lCOzvGJlzHbt1uzuACl-2YD6-B32LVpmP2HKELBlpHduBsVKhokrNENYAfEj8Qea4KSz93AHUubzLnU3ZsXJQdLY3uY9pOkbmF2DbWx9qSucTo__ksbwjN2J0yMSUsdGGQvGsn_5dfm4tv32-yEiwRjjBd4K0iLNKu-NHOOMldKevrL4-SMbzIS3s8zu2qJpcMMPX_z_gxY5jyEHcFErm-g5fHEciAeTPtKyMX498DCdgqfTseNRyQ73KhE-shEiBIg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/eOSlrU1ZEybhlSTWFCRTYq6MOlwEi7k1Y1Xkzz6SCwmFFEAnMfOdBOubzAn6ZARPuLhW89OzzEyW5-kH5v4wW2YNY4r_rO4q_jndKGEYtuT6Kgmem9UYCtZG_-j6_vIbioSTo54WoZEDgQwOJdsirSclaRRUt8tdCbUBiMAAXOrgR4FHHClwu8ia8_1Xnq3P0kZCzerq-o-joxb32DUT26vy2_rf1E2KWuSc2ehOICM9bhZQhTRISWFg5FSvPuJW2FdSugoh7Phen86BkQsusVn7FWjhb5WjPhu7he3oAvELVhfP9TBhD4Ms6OaK8VZFyK9dIQFgrHUmfcyAvilG2w.jpg"
       },
       "sourceId": "ru:maslennikovliga",
       "sourceCountryCode": "ru",
@@ -6823,53 +6927,6 @@
       }
     },
     {
-      "id": 2486078191,
-      "postUrl": "https://t.me/n_no_f/19106?single",
-      "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/WAmIMzQ6eoTfBJ1KT-lyfrzQdprD6Kn9nJIaZfA6ClfHFPPFs7UmrEpNUKfTaFQeXAQxYRpSr7yT9TbYHpqVxyFDW0AnBcdN39nIgoHd_cnlDrC68wotuooSArRF5J7B3XfU4U-O5TBoC7X4P7KG3in0qywzLvejcOzX3fwzUEKLRqNF3G7lHeMNVVcSKQ19_eEtlcGpkZQYsNPW8rNjcAmfmqCYSSGvKTWeY2oXybAJW3zpr5VRCN0bbkLhgI97ei7mzgKp5COEdR-QWpYvUi-Yk1cz2-p6ENWD0OwXEUOW7nL5pGlI_kLBVWQLZdds4ob3ujpRbdeL2c06zfVhyg.jpg"
-      },
-      "sourceId": "ru:n_no_f",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/k4b_xdBGNG3gbH2HROWfMtLQ3xLjahSvhO2RRgT5yY5G4UTTgfTvnh0Cpg3B6OkFxA9jA4gbxIzI2SyPR3ZfMOeLXcvS-nx2nWxDJ6zHSh4066sYI8gyhESDhpuJOrznL9BxctgucyTb5l8AVxKNOb57skNSQBEYudCmZynhssgqGxpVHXPGtUT3UHsLPGwIXXCYOeGfOVIa5-hfovPKTRRO2pA5oMogIPCgper13xruLiYKTXpElOA7cC8qaJCKhryeJrxA_rEcvT50PRIxC4HcWr5wE_He1hBt5-W-uh9QnTGrkEqwrN30s0J-D5fRdnOLC5pf3YIgdevh94EV4w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Мелатонин и магний не помогут вам заснуть. На самом деле их эффект почти отсутствует, — исследование.\n\nМелатонин — таблетки с ним вызывают лишь небольшую сонливость, потому что в составе препаратов его мало. Человек может заснуть раньше максимум на пару минут, и даже этот эффект работает не для всех.\n\nМагний — помогает только тем людям, которые страдают от мышечных спазмов и напряжения. В других случаях на сон он почти не влияет.\n\nГлавная причина плохого сна — стресс и нарушенный режим\n\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-03T04:11:32.342Z",
-      "expiresAt": "2026-05-04T04:11:32.342Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T19:43:28.494Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:32.342Z"
-      }
-    },
-    {
       "id": 103911291,
       "postUrl": "https://t.me/tass_agency/374102?single",
       "source": {
@@ -7030,58 +7087,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-03T11:58:41.516Z"
-      }
-    },
-    {
-      "id": 2545154460,
-      "postUrl": "https://t.me/n_no_f/19105?single",
-      "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/WAmIMzQ6eoTfBJ1KT-lyfrzQdprD6Kn9nJIaZfA6ClfHFPPFs7UmrEpNUKfTaFQeXAQxYRpSr7yT9TbYHpqVxyFDW0AnBcdN39nIgoHd_cnlDrC68wotuooSArRF5J7B3XfU4U-O5TBoC7X4P7KG3in0qywzLvejcOzX3fwzUEKLRqNF3G7lHeMNVVcSKQ19_eEtlcGpkZQYsNPW8rNjcAmfmqCYSSGvKTWeY2oXybAJW3zpr5VRCN0bbkLhgI97ei7mzgKp5COEdR-QWpYvUi-Yk1cz2-p6ENWD0OwXEUOW7nL5pGlI_kLBVWQLZdds4ob3ujpRbdeL2c06zfVhyg.jpg"
-      },
-      "sourceId": "ru:n_no_f",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Xp1HDyjFoLlVmwKAkP9palsZQXYPaR1Ly7BgNI9nQSaF2HR4qOUzvTJ-zyb6aCx4HNw_HjKTCJYkRDNXTVzZMWhhIfUYcIaa8elFBFn2DSXc0f1bMStykMA9QCgjGik_lwNVOmT9YpmKVbz0NgrsFn941cj4mugr3c7u5NJsOvkellKD_YGYPDKGGX8EXCDpKIYXoLXPcdQY3vcjqBHxibThIXcozpyLE3JGsuJoli9B-d3M04_Boac62p8-ykmjOV8N768tyl1DElFb3WVkkLIbHyMOtrkRW644yTxiDzO5iapSZCzzVz3SOfqqWdD8DMXvNFRjeIyfP3V9agfItA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Евроинтеграция Украины зависла между требованиями ЕС и отсутствием сроков вступления\n\nУкраина уже третий год остаётся кандидатом в ЕС, но реального движения вперёд нет. В 2023 году формально открыли переговорный процесс, провели проверку законодательства, получили список из 135 требований и разбили их на шесть кластеров реформ. Но ни один из этих кластеров до сих пор не открыт. Переговоры так и не начались, сообщает Главком\n\nПри этом страна уже работает «на опережение» — принимает законы, подгоняет нормы под ЕС, выполняет требования программы Ukraine Facility на 50 млрд евро. Но результата это не даёт. Владимир Зеленский прямо сказал: парламент голосует за нужные законы, а в ответ нет ни открытия переговоров, ни доступа к дополнительным деньгам, о которых говорили в ЕС.\n\nНа этом фоне европейцы начали продвигать идею промежуточного статуса — участие в институтах ЕС без права голоса и без доступа к бюджету. Сроков такого «переходного этапа» никто не называет.\n\nПозиция ключевых стран тоже стала прямой. Канцлер Германии Фридрих Мерц открыто заявил, что вступление невозможно, пока идёт война, и даже 2027 или 2028 год — нереалистичные даты. После ослабления Орбана в ЕС уже не осталось удобной фигуры, на которую можно было списывать блокировку. Теперь эту позицию озвучивают напрямую.\n\nВ Киеве это сразу ударило по парламенту. Темпы принятия законов падают. С начала года Рада приняла всего четыре закона, которые требовали доноры, и ещё три — только в первом чтении. За весь прошлый год — около 12 полноценных евроинтеграционных законов, хотя нужны сотни. В 2026 году приняли несколько — №12426, №14005, №12221, №12087-д, но это точечные решения на фоне общего объёма.\n\nДаже законы, от которых зависят деньги, идут тяжело. Провалили закон о публичных закупках, зависло налогообложение посылок — от него зависят транши МВФ и Еврокомиссии. По программе Ukraine Facility уже просрочены 18 законопроектов. Закон о цифровых платформах должен был быть принят до 31 марта 2026 года, но в него внесли больше 3500 правок, и он застрял.\n\nПроблема не только в объёме работы. В парламенте давно нет стабильных 226 голосов. Монобольшинство распалось на группы, и каждое решение приходится собирать вручную. Любые непопулярные вещи — налоги, расширение полномочий НАБУ, требования по экологии — вызывают сопротивление.\n\nДепутаты говорят об этом прямо. Без понятной даты вступления никто не хочет брать на себя политические риски. Логика простая: если ЕС сам не говорит, когда примет Украину, зачем голосовать за решения, которые бьют по рейтингу и вызывают недовольство внутри страны.\n\nЕсть и конкретные болезненные темы. Например, пожизненный статус политически значимых лиц (PEP), из-за которого усиливается финансовый контроль. Или требования открыть доступ правоохранителям к банковским реестрам. Эти решения напрямую затрагивают самих депутатов и бизнес, поэтому проходят с большим сопротивлением.\n\nПри этом сами европейцы не дают чёткого списка «сделайте это — получите членство». Даже выполнение всех критериев не гарантирует вступления — в итоге всё упирается в политическое решение внутри ЕС, которого пока нет.\n\nВ итоге процесс застрял. ЕС требует реформы, но не даёт сроков. Рада тормозит реформы, потому что не видит результата. Чем дольше это продолжается, тем слабее становится мотивация двигаться дальше. И всё это постепенно бьёт не только по срокам вступления, но и по поддержке самой идеи евроинтеграции внутри страны.\n\nНевероятно, но факт....",
-      "links": [
-        {
-          "label": "Главком",
-          "url": "https://glavcom.ua/publications/popeljushka-jaku-ne-puskajut-na-bal-jevrointehratsija-ukrajini-mozhe-stati-na-pauzu-1116611.html"
-        }
-      ],
-      "createdAt": "2026-05-03T04:11:32.342Z",
-      "expiresAt": "2026-05-04T04:11:32.342Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T19:43:28.494Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:32.342Z"
       }
     },
     {
@@ -9280,63 +9285,6 @@
       }
     },
     {
-      "id": 450804816,
-      "postUrl": "https://t.me/rian_ru/337925?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/7b58b3528a.mp4?token=CSChlquqrR7q9AvPWfF7uTsyElN6EygyYb8UKNLM_moelLxrHiaJ4RHn1opW83PM6kIRD7Ku665wOueTP1lqGZle5xlvSzXWUgIU9wzq1iAhHFvFz3g-N0W8FUhOWe11uIpsck4hrMU7OlN-w_vtmRZXx7D9tMSe8Bu7cOFOEqYMfgXGEVArijOSKHncSgAnpN4eiR1hasQ-niabAOQm8oTkOig63pwQ4-bYUZRKXGwELxmgseyDXGWdkNuIR4kcSUcDXbFGBTAygp1pI6dBgLSIWp_wM7Nfg9zEjVFT1t8BL500dkPDDKTIBQ_AHfg_Ccp08CTpkZRf83UmnCGMhg",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Включить послеродовую реабилитацию женщин в систему ОМС предложил глава комитета ГД по охране здоровья Сергей Леонов.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-03T04:11:36.580Z",
-      "expiresAt": "2026-05-04T04:11:36.580Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T22:00:28.928Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:36.580Z"
-      }
-    },
-    {
       "id": 1608677202,
       "postUrl": "https://t.me/tass_agency/374082?single",
       "source": {
@@ -9389,50 +9337,6 @@
       }
     },
     {
-      "id": 629502929,
-      "postUrl": "https://t.me/rian_ru/337924?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Силами ПВО уничтожено 35 БПЛА в Ленинградской области, сообщил губернатор.  UPD: Уничтожено 43 БПЛА.   🔹 Подписаться на РИА Новости",
-      "links": [],
-      "createdAt": "2026-05-03T04:11:36.580Z",
-      "expiresAt": "2026-05-04T04:11:36.580Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T04:11:36.580Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:36.580Z"
-      }
-    },
-    {
       "id": 3062150409,
       "postUrl": "https://t.me/tass_agency/374081?single",
       "source": {
@@ -9471,55 +9375,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-03T16:32:42.127Z"
-      }
-    },
-    {
-      "id": 3299080278,
-      "postUrl": "https://t.me/rian_ru/337923?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "США пересмотрят решение о размещении в Германии своего батальона с дальнобойным оружием, ранее принятое Байденом, сообщает издание Financial Times со ссылкой на источник в Пентагоне.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-03T04:11:36.580Z",
-      "expiresAt": "2026-05-04T04:11:36.580Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T04:11:36.580Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:36.580Z"
       }
     },
     {
@@ -9567,55 +9422,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-03T16:32:42.127Z"
-      }
-    },
-    {
-      "id": 2730170799,
-      "postUrl": "https://t.me/rian_ru/337922?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Операторы дронов \"Востока\" сорвали массированный удар беспилотников ВСУ по передовой и путям снабжения, сообщили в Минобороны РФ.\nОператоры дронов \"Востока\" сорвали массированный удар беспилотников ВСУ по передовой и путям снабжения, сообщили в Минобороны РФ.\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-03T04:11:36.580Z",
-      "expiresAt": "2026-05-04T04:11:36.580Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T04:11:36.580Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:36.580Z"
       }
     },
     {
@@ -9671,59 +9477,6 @@
       }
     },
     {
-      "id": 180041308,
-      "postUrl": "https://t.me/rian_ru/337921?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Силами ПВО уничтожено 35 БПЛА в Ленинградской области, сообщил губернатор.\n\nUPD: Уничтожено 43 БПЛА. \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "уничтожено",
-          "url": "https://ria.ru/20260503/bespilotniki-2090242430.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-03T04:11:36.580Z",
-      "expiresAt": "2026-05-04T04:11:36.580Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T04:11:36.580Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:36.580Z"
-      }
-    },
-    {
       "id": 2081036981,
       "postUrl": "https://t.me/tass_agency/374078?single",
       "source": {
@@ -9762,59 +9515,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-03T16:32:42.127Z"
-      }
-    },
-    {
-      "id": 3425565453,
-      "postUrl": "https://t.me/rian_ru/337920?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Все государственные вузы России перешли на цифровые студенческие билеты, сообщил РИА Новости замминистра науки и высшего образования Андрей Омельчук.\n\nТеперь каждый университет, по сути, обязан передавать сведения в государственную информационную систему… У нас на едином портале государственных услуг уже почти 5 миллионов студенческих сформировано... Все государственные вузы уже там.\n\nОн отметил, что при желании студент еще может получить и бумажный студенческий, но \"в горизонте двух-трех лет все поймут, что цифровой студенческий это удобней, практичней и эффективней\".\n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "сообщил",
-          "url": "https://ria.ru/20260503/bilet-2090239492.html"
-        },
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-03T04:11:36.580Z",
-      "expiresAt": "2026-05-04T04:11:36.580Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-03T04:11:36.580Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-03T04:11:36.580Z"
       }
     },
     {
