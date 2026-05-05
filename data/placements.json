@@ -11,7 +11,7 @@
     "country": "ru",
     "tags": [],
     "plan": "claim",
-    "status": "pending",
+    "status": "canceled",
     "createdAt": "2026-05-02T01:59:52.939Z",
     "startAt": null,
     "endsAt": null,
@@ -19,7 +19,9 @@
     "stars": 0,
     "donateUrl": null,
     "telegramPaymentChargeId": null,
-    "lastCheckAt": null
+    "lastCheckAt": null,
+    "sourceId": null,
+    "sourceWasExisting": false
   },
   {
     "id": "1372669404_anchora_space_ru",
