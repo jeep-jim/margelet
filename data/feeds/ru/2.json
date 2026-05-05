@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-05T23:12:20.740Z",
+  "updatedAt": "2026-05-05T23:36:41.758Z",
   "posts": [
     {
       "id": 3762492809,
@@ -643,7 +643,7 @@
       "createdAt": "2026-05-05T11:08:50.298Z",
       "expiresAt": "2026-05-06T11:08:50.298Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:54.143Z",
+      "mediaRefreshedAt": "2026-05-05T23:36:25.416Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -671,7 +671,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/MxhkfmTJVqYeQWGxvWhMiwNoq3qW82_kkkJk6PHWKa0V_KyjQJyHJizZkEFIWuSTf3lBYHFM1iA4wAVQ93PyMQl3ccy4RKEd9e41WcVIWGSrgsoRcwaWPffojMqeZ6O70jr1eU-yVkebW4v2kDXwivNkNcM-9-VKvnMLXS3RjsFfALCAbAH2fzivkb_JKF9fgdb7uQPSp3tqgPPbjLyjIZbsmJKJV4gSJ1_jfzada_hNwRBOI8aVsvBskLCgL5mKSNfIv00HIFCeAcZ6gIwOVt8sG1Dmw_T6O2ZWzypk6VlE835DlfnhZ2MSFWuuROtlnDbDZKFLFJ-DS2iRkhvGlQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/jAHRboUjLId0JxtpvLulSLoPEY3yCX6XX1E10dohBh_8hNaGklIol2wSV6-I9AKdJlkmeYzHsjUJRZv9Ke_gV-5hvSxL2Xw5EbowBcamYKbG0tAzCrzzGSO9dHZPr191jjDMHe3ekQucwKFDENpZ5rWnTsw0tUIw-cyR1BFXIkFmJe-jEITGfGEKrW76UcoN2F3DsSCYLvP_m8IhsInmcacGEWikkR-DQHjZi3GXJ1OGra-wrFoY6FDeVo8wJLnNVgFwZvHf5RIuF3-bvaYw4QiWDzDO600mJeNrbjC5InITIARR5VN16CrywZPlXen5MUstHg0fCajdGHe7MZn7dw.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -1000,6 +1000,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 4140180203,
+      "postUrl": "https://t.me/tass_agency/374436?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Из горящего многоэтажного дома в Хасавюрте эвакуированы 30 человек, сообщили ТАСС в мэрии.",
+      "links": [],
+      "createdAt": "2026-05-05T23:36:21.715Z",
+      "expiresAt": "2026-05-06T23:36:21.715Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T23:36:21.715Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T23:36:21.715Z"
       }
     },
     {
@@ -1447,47 +1488,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T20:18:28.616Z"
-      }
-    },
-    {
-      "id": 510520091,
-      "postUrl": "https://t.me/tass_agency/374425?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "США имеют рычаги воздействия, включая вторичные санкции, на китайские компании, которые игнорируют ограничительные меры против Ирана, заявил Рубио.",
-      "links": [],
-      "createdAt": "2026-05-05T21:46:34.989Z",
-      "expiresAt": "2026-05-06T21:46:34.989Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -2168,7 +2168,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/MxhkfmTJVqYeQWGxvWhMiwNoq3qW82_kkkJk6PHWKa0V_KyjQJyHJizZkEFIWuSTf3lBYHFM1iA4wAVQ93PyMQl3ccy4RKEd9e41WcVIWGSrgsoRcwaWPffojMqeZ6O70jr1eU-yVkebW4v2kDXwivNkNcM-9-VKvnMLXS3RjsFfALCAbAH2fzivkb_JKF9fgdb7uQPSp3tqgPPbjLyjIZbsmJKJV4gSJ1_jfzada_hNwRBOI8aVsvBskLCgL5mKSNfIv00HIFCeAcZ6gIwOVt8sG1Dmw_T6O2ZWzypk6VlE835DlfnhZ2MSFWuuROtlnDbDZKFLFJ-DS2iRkhvGlQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/jAHRboUjLId0JxtpvLulSLoPEY3yCX6XX1E10dohBh_8hNaGklIol2wSV6-I9AKdJlkmeYzHsjUJRZv9Ke_gV-5hvSxL2Xw5EbowBcamYKbG0tAzCrzzGSO9dHZPr191jjDMHe3ekQucwKFDENpZ5rWnTsw0tUIw-cyR1BFXIkFmJe-jEITGfGEKrW76UcoN2F3DsSCYLvP_m8IhsInmcacGEWikkR-DQHjZi3GXJ1OGra-wrFoY6FDeVo8wJLnNVgFwZvHf5RIuF3-bvaYw4QiWDzDO600mJeNrbjC5InITIARR5VN16CrywZPlXen5MUstHg0fCajdGHe7MZn7dw.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -2329,6 +2329,58 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 1563687465,
+      "postUrl": "https://t.me/tass_agency/374434?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/TMV05RrZ4-YOBsYaZKs0c1Jz_3QTAH8thALEmU9513UnxCr_U25GGSW4TVrAkLaKb1GFdg8QB_Y_Mt3N4YPlvgW7WrwJIjSqSN2Lwjq5Qqbxyn4_E5kwT5Mw53eBvnB1r4ro4WzKt5aEvbtsDYm5NDTV8BsDpBSQFkdomdN_d-BQfR9uSkJ-QFrOi_51SQ0c4s__M8omjBTubjmw4gKlBh0gXn5lP6R-oIlE29_EhP13UWjQjSxhhAKXC4LJy2iIAJg38ym9koUPXx-D5WwKHUnaudqznnA0w2K6x8vd7Q_kir1shm8dbUqX55L-qXX5V-Z4cOjZFXsuTSp2q0gUSA.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/UTH-XSNDs0v4tKGQk6gGcNmAiVTfmG6yWmoJ6YqW5tyqS42uwO4fne2wIpKsz_uMeXSZhfKk8QTCJ0WNOBxTn-U2eG8xYzMnCt5vtkxa0TnTOLe-7_HbhtSNofQBkK9ZruJtuQaEjG4jEJO-ovift-p6kc6NPXyX79DBHsHT7kDKScR0FArQEYvMK491axkVOnNYyCttdXovDwn4ci5U4k8hRO9MgnoVRVGpG8HdL98TQx8Z5vWJvKFpWqGRQgdX611OWU5tmDRZKCqFmSP5vGPAcAFOGjUvr-ZrrkBEQuBXPRf3Z-xKlKON0mDcuwm2qSL4DKcRi3537fbBWeF6zw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Россияне чтят ветеранов Великой Отечественной войны и восхищаются героизмом бойцов СВО. Об этом заявил Мишустин в поздравлении по случаю предстоящего Дня Победы, открытки за его подписью поступили журналистам ТАСС.",
+      "links": [],
+      "createdAt": "2026-05-05T23:36:21.715Z",
+      "expiresAt": "2026-05-06T23:36:21.715Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T23:36:21.715Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T23:36:21.715Z"
       }
     },
     {
@@ -2773,53 +2825,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T20:18:28.616Z"
-      }
-    },
-    {
-      "id": 4249994402,
-      "postUrl": "https://t.me/tass_agency/374424?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/nSgpRnazv9qGzW8PZzJz4YMys_1l0-kmrsWXThwRsBfcIdgrZIIvs86MQ5CPYYDKjO-xc2jaTVZPWgPKJC-NcKXjpdlHYfMbaax_D3qAQIsgwTyc1CnjPxm2dHFeJnUV5GDHQK27rRroMtwBUDttp598Vo0pmfY1ADTaLLgW3ahjvmRbE2M5qF6_CETuaFYWLdTKpX1GF11LVUfFO7v-y1INr4Gj289mH96XVcYhPEkv4bdMLFukFiVUyFgFF5IgtdZLvyj04tgsLOTLxp1QwNpNbuMQGziz7CFXX7oixATEURRaIECxVEbxNcI4Qi-DOtKjgbJiTzn_xITz-e5lWA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Рубио утверждает, что операция США в Ормузском проливе является оборонительной, а не наступательной.",
-      "links": [],
-      "createdAt": "2026-05-05T21:46:34.989Z",
-      "expiresAt": "2026-05-06T21:46:34.989Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -3514,7 +3519,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/MxhkfmTJVqYeQWGxvWhMiwNoq3qW82_kkkJk6PHWKa0V_KyjQJyHJizZkEFIWuSTf3lBYHFM1iA4wAVQ93PyMQl3ccy4RKEd9e41WcVIWGSrgsoRcwaWPffojMqeZ6O70jr1eU-yVkebW4v2kDXwivNkNcM-9-VKvnMLXS3RjsFfALCAbAH2fzivkb_JKF9fgdb7uQPSp3tqgPPbjLyjIZbsmJKJV4gSJ1_jfzada_hNwRBOI8aVsvBskLCgL5mKSNfIv00HIFCeAcZ6gIwOVt8sG1Dmw_T6O2ZWzypk6VlE835DlfnhZ2MSFWuuROtlnDbDZKFLFJ-DS2iRkhvGlQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/jAHRboUjLId0JxtpvLulSLoPEY3yCX6XX1E10dohBh_8hNaGklIol2wSV6-I9AKdJlkmeYzHsjUJRZv9Ke_gV-5hvSxL2Xw5EbowBcamYKbG0tAzCrzzGSO9dHZPr191jjDMHe3ekQucwKFDENpZ5rWnTsw0tUIw-cyR1BFXIkFmJe-jEITGfGEKrW76UcoN2F3DsSCYLvP_m8IhsInmcacGEWikkR-DQHjZi3GXJ1OGra-wrFoY6FDeVo8wJLnNVgFwZvHf5RIuF3-bvaYw4QiWDzDO600mJeNrbjC5InITIARR5VN16CrywZPlXen5MUstHg0fCajdGHe7MZn7dw.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -3654,6 +3659,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 1276507982,
+      "postUrl": "https://t.me/tass_agency/374433?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Прокуратура Дагестана начала проверку по факту пожара на мансардном этаже многоквартирного дома в Хасавюрте.  Площадь пожара составляет 700 кв. метров. По предварительным данным, пострадавших нет.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -4095,52 +4141,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T20:18:28.616Z"
-      }
-    },
-    {
-      "id": 4066907829,
-      "postUrl": "https://t.me/tass_agency/374423?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "▶️ ВС РФ в преддверии Дня Победы дроном возложили цветы к Могиле Неизвестного солдата в подконтрольной ВСУ части Херсонской области, передает корреспондент ТАСС.\n\nВидео: Даниил Михайлов/ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-05T21:46:34.989Z",
-      "expiresAt": "2026-05-06T21:46:34.989Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -4786,7 +4786,7 @@
         "title": "ВИЛСАКОМ РЕД / WYLSACOM RED",
         "handle": "wylsared",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/MxhkfmTJVqYeQWGxvWhMiwNoq3qW82_kkkJk6PHWKa0V_KyjQJyHJizZkEFIWuSTf3lBYHFM1iA4wAVQ93PyMQl3ccy4RKEd9e41WcVIWGSrgsoRcwaWPffojMqeZ6O70jr1eU-yVkebW4v2kDXwivNkNcM-9-VKvnMLXS3RjsFfALCAbAH2fzivkb_JKF9fgdb7uQPSp3tqgPPbjLyjIZbsmJKJV4gSJ1_jfzada_hNwRBOI8aVsvBskLCgL5mKSNfIv00HIFCeAcZ6gIwOVt8sG1Dmw_T6O2ZWzypk6VlE835DlfnhZ2MSFWuuROtlnDbDZKFLFJ-DS2iRkhvGlQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/jAHRboUjLId0JxtpvLulSLoPEY3yCX6XX1E10dohBh_8hNaGklIol2wSV6-I9AKdJlkmeYzHsjUJRZv9Ke_gV-5hvSxL2Xw5EbowBcamYKbG0tAzCrzzGSO9dHZPr191jjDMHe3ekQucwKFDENpZ5rWnTsw0tUIw-cyR1BFXIkFmJe-jEITGfGEKrW76UcoN2F3DsSCYLvP_m8IhsInmcacGEWikkR-DQHjZi3GXJ1OGra-wrFoY6FDeVo8wJLnNVgFwZvHf5RIuF3-bvaYw4QiWDzDO600mJeNrbjC5InITIARR5VN16CrywZPlXen5MUstHg0fCajdGHe7MZn7dw.jpg"
       },
       "sourceId": "ru:wylsared",
       "sourceCountryCode": "ru",
@@ -4891,6 +4891,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 298702599,
+      "postUrl": "https://t.me/tass_agency/374432?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "📞  Лавров и Рубио провели телефонный разговор, сообщает МИД РФ.  Главы внешнеполитических ведомств провели \"сверку часов\" по текущей ситуации в международных делах и российско-американских отношениях.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -5290,47 +5331,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T20:18:28.616Z"
-      }
-    },
-    {
-      "id": 109994980,
-      "postUrl": "https://t.me/tass_agency/374422?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Корпус МГУ им. Ломоносова перевели в дистанционный формат обучения из-за случая кори, сообщает Роспотребнадзор.\n\nКорь выявили у сотрудника факультета вычислительной математики и кибернетики.",
-      "links": [],
-      "createdAt": "2026-05-05T21:46:34.989Z",
-      "expiresAt": "2026-05-06T21:46:34.989Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -5960,6 +5960,47 @@
       }
     },
     {
+      "id": 1362694964,
+      "postUrl": "https://t.me/tass_agency/374431?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Прокуратура Дагестана начала проверку по факту пожара на мансардном этаже многоквартирного дома в Хасавюрте.\n\nПлощадь пожара составляет 700 кв. метров. По предварительным данным, пострадавших нет.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
+      }
+    },
+    {
       "id": 2326941601,
       "postUrl": "https://t.me/bazabazon/45812?single",
       "source": {
@@ -6368,52 +6409,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T20:18:28.616Z"
-      }
-    },
-    {
-      "id": 4053910903,
-      "postUrl": "https://t.me/tass_agency/374421?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Иран объявил о новом механизме прохода судов через Ормузский пролив, сообщает гостелевидение исламской республики.\n\nТеперь суда должны уведомлять иранские власти и получать от них электронное письмо с правилами движения. Приняв эти правила, суда могут получить разрешение на проход.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
       }
     },
     {
@@ -6937,6 +6932,47 @@
       }
     },
     {
+      "id": 1403529989,
+      "postUrl": "https://t.me/tass_agency/374430?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Пять человек погибли в крымском Джанкое из-за атаки ВСУ, сообщил Аксенов.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
+      }
+    },
+    {
       "id": 2047311747,
       "postUrl": "https://t.me/bazabazon/45810?single",
       "source": {
@@ -7364,55 +7400,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T20:18:28.616Z"
-      }
-    },
-    {
-      "id": 2373942654,
-      "postUrl": "https://t.me/tass_agency/374420?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/7fea374ee4.mp4?token=bay8Gi07wBkrK0dRNYcqVfqgheIKV4UDSYdkYoXVH6B4-OArXoXSaK7gQ1LdX8DFufMa-bkwt_2ko_M4zE2_DnPS46jtonZdo_qrkGShRsCTGFLBkgfeXcjY6GUHEFCSr9QjWWfi7e2bXju7zqVUIzQy8ZnKgWiNL23FwjGaPWQS0OYpjlcrMmgW7elSTZ45CfAUSsdQoJ4dYTl8tfdGK0vGwEZlvHmCymwwdNxRh2nM0gVsVJICfKbPaAmi0b0p1lEKa15S9osWgVAI4kOd880mkEYptsm7Q8gm0XuJjor-onfyFLpM3I_APz-zqnzfzpfNQiSiVAH67_RGOfZB4A",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "В центре Москвы рэпер Navai попал в ДТП на черном Ferrari без номеров, сообщили ТАСС правоохранители.  Пострадавших нет. Автомобиль получил значительные повреждения.  ✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
       }
     },
     {
@@ -7858,6 +7845,47 @@
       }
     },
     {
+      "id": 1220699407,
+      "postUrl": "https://t.me/tass_agency/374429?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Иран не проводил никаких военных операций против ОАЭ в последние дни, заявило командование.  Отмечается, что в случае агрессии со стороны ОАЭ исламская республика \"даст сокрушительный ответ\".",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
+      }
+    },
+    {
       "id": 2820433813,
       "postUrl": "https://t.me/bazabazon/45809?single",
       "source": {
@@ -8296,47 +8324,6 @@
       }
     },
     {
-      "id": 3247848642,
-      "postUrl": "https://t.me/tass_agency/374419?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "ОАЭ не допустят посягательств на свою безопасность и сохраняют за собой законное право ответить на атаку Ирана, сообщили в МИД.  ОАЭ возлагают на Иран полную ответственность за последствия атак и требуют их немедленного прекращения.  ✔ Подпишись на ТАСС в…",
-      "links": [],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 3240267379,
       "postUrl": "https://t.me/readovkanews/109985?single",
       "source": {
@@ -8726,6 +8713,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 1789712054,
+      "postUrl": "https://t.me/tass_agency/374428?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "ВМС Британии сообщили о том, что торговое судно в Ормузском проливе подверглось удару.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -9142,47 +9170,6 @@
       }
     },
     {
-      "id": 1391137723,
-      "postUrl": "https://t.me/tass_agency/374418?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🚨 Средства ПВО за 7 часов сбили 93 украинских БПЛА над регионами РФ и акваториями Черного и Азовского морей, сообщает Минобороны.",
-      "links": [],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 1456072154,
       "postUrl": "https://t.me/readovkanews/109984?single",
       "source": {
@@ -9468,6 +9455,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 4022024537,
+      "postUrl": "https://t.me/tass_agency/374427?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "📞 Лавров обсудил по телефону с премьер-министром Катара ситуацию в Персидском заливе, сообщили в МИД РФ.\n\nСобеседники подчеркнули необходимость отказа от попыток силового решения кризиса.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -9803,98 +9831,6 @@
       }
     },
     {
-      "id": 3057772636,
-      "postUrl": "https://t.me/tass_agency/374417?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/f_2MBdPV2K57DmHjeYPNzdwNpcmEAnnaWWYzZZsvayH_ah6_f1qocU9mrKzhP4N3127KjZuEO8Da2fNfw0CTVzuR_pA-gnGALzm2UgAOeL7no4uM0mLt_9aeO7bzrPo3WECVurcMilLgwJe6jXR5PFL70DZsjUhzq_v3ArYXMNOmmUFIEXl7r8lRaKzfJ-AzXF5b1_oKxouotbBsFFg3qG0ATdYdVg1wTFh_K2cPZNmW9_Mbb-dBYmNeCJxNtlL5R-AoyTh7NYdKvWZSUJh-CwBJk3pOrN6cmvceCEBsMWxcGKTbjKi_wlyBRbkcs3KVr683djaZHSbuuB2J0Z_vDg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Главные новости к этому часу:\n\n▪️Число пострадавших в Чебоксарах выросло до 34. Подробнее о последствиях атаки БПЛА — в материале ТАСС.\n\n▪️Лавров и Рубио провели телефонный разговор.\n\n▪️Трамп может на неделе возобновить операцию против Ирана, сообщил Axios.\n\n▪️На западе Москвы в ДТП погибла фотограф Ксения Добромилова.\n\n▪️Погибшая 11-летняя девочка в Химках, предположительно, покончила с собой, сообщили ТАСС в правоохранительных органах.\n\n▪️Суд обратил в доход государства изъятую в ходе обыска у Мошковича валюту на более чем 29 млн рублей.\n\n▪️В Тверской области в водоеме нашли тело подростка.\n\n▪️В центре Москвы рэпер Navai попал в ДТП на Ferrari без номеров, сообщили ТАСС в правоохранительных органах.\n\n▪️В РФ создадут кибердружины для профилактики негативных соцявлений среди молодежи.\n\n▪️В ГД предложили обязать авиакомпании выплачивать компенсации за овербукинг.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "материале",
-          "url": "https://tass.ru/proisshestviya/27314977"
-        },
-        {
-          "label": "провели",
-          "url": "https://tass.ru/politika/27316793"
-        },
-        {
-          "label": "может",
-          "url": "https://tass.ru/mezhdunarodnaya-panorama/27315593"
-        },
-        {
-          "label": "погибла",
-          "url": "https://tass.ru/proisshestviya/27316219"
-        },
-        {
-          "label": "сообщили",
-          "url": "https://tass.ru/proisshestviya/27315209"
-        },
-        {
-          "label": "обратил",
-          "url": "https://tass.ru/proisshestviya/27315325"
-        },
-        {
-          "label": "нашли",
-          "url": "https://tass.ru/proisshestviya/27315641"
-        },
-        {
-          "label": "сообщили",
-          "url": "https://tass.ru/proisshestviya/27316867"
-        },
-        {
-          "label": "создадут",
-          "url": "https://tass.ru/ekonomika/27315297"
-        },
-        {
-          "label": "предложили",
-          "url": "https://tass.ru/ekonomika/27315243"
-        },
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 3762029901,
       "postUrl": "https://t.me/readovkanews/109983?single",
       "source": {
@@ -10130,6 +10066,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 4000300120,
+      "postUrl": "https://t.me/tass_agency/374426?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 Ребенок выпал из окна в Гусеве Калининградской области. Мальчик госпитализирован с травмами. Об этом сообщили в ГУ МЧС по региону.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -10444,47 +10426,6 @@
       }
     },
     {
-      "id": 2008329485,
-      "postUrl": "https://t.me/tass_agency/374416?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Британия расширила санкции в отношении России, включив в список 8 компаний и 10 физических лиц. Об этом говорится в документе МИД Великобритании.  ✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 941066396,
       "postUrl": "https://t.me/readovkanews/109982?single",
       "source": {
@@ -10720,6 +10661,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 510520091,
+      "postUrl": "https://t.me/tass_agency/374425?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "США имеют рычаги воздействия, включая вторичные санкции, на китайские компании, которые игнорируют ограничительные меры против Ирана, заявил Рубио.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -11023,47 +11005,6 @@
       }
     },
     {
-      "id": 1881844310,
-      "postUrl": "https://t.me/tass_agency/374415?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Водитель мотоцикла, сбивший актрису и фотографа Ксению Добромилову в Москве, будет направлен на медосвидетельствование, сообщили ТАСС правоохранители.  Фото: \"Кино-театр. Ру\"",
-      "links": [],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 881990127,
       "postUrl": "https://t.me/readovkanews/109981?single",
       "source": {
@@ -11261,6 +11202,53 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T00:08:19.085Z"
+      }
+    },
+    {
+      "id": 4249994402,
+      "postUrl": "https://t.me/tass_agency/374424?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/nSgpRnazv9qGzW8PZzJz4YMys_1l0-kmrsWXThwRsBfcIdgrZIIvs86MQ5CPYYDKjO-xc2jaTVZPWgPKJC-NcKXjpdlHYfMbaax_D3qAQIsgwTyc1CnjPxm2dHFeJnUV5GDHQK27rRroMtwBUDttp598Vo0pmfY1ADTaLLgW3ahjvmRbE2M5qF6_CETuaFYWLdTKpX1GF11LVUfFO7v-y1INr4Gj289mH96XVcYhPEkv4bdMLFukFiVUyFgFF5IgtdZLvyj04tgsLOTLxp1QwNpNbuMQGziz7CFXX7oixATEURRaIECxVEbxNcI4Qi-DOtKjgbJiTzn_xITz-e5lWA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Рубио утверждает, что операция США в Ормузском проливе является оборонительной, а не наступательной.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -11557,58 +11545,6 @@
       }
     },
     {
-      "id": 1312934831,
-      "postUrl": "https://t.me/tass_agency/374414?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/dLnLkbZ8pOvINKNrEFSXnNsAb-zFllBCE_18BzKCUsPyJW5vCc6aUayX4u3fOqcCPitnPdOltm43vqnQIwWC0jahKewniffPjWnUJERNK9ORHbROk7Czm-7g_EwCyIZ_eF-RbB1EyZ9v7cgp81LzHjJvI6oZGNV6OWA_LLi1GTx2aMprNPdH6Xva6QIP4oBAilrs8CQklsE-nXJ_7zvf7O9Fw0lAcRP7RTg3IHuJVYtEAi7hV6II0AFZyDDwQkkZEgRL3CXMB99ovicoZ9bak9hbbRIH_IJFll-9ANoNktdVVEvO8Ew-yq0U4Q-BdZK-hx7DOQKzOrzPp56QFVKu-A.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "В центре Москвы рэпер Navai попал в ДТП на черном Ferrari без номеров, сообщили ТАСС правоохранители.\n\nПострадавших нет. Автомобиль получил значительные повреждения.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 2193333398,
       "postUrl": "https://t.me/readovkanews/109980?single",
       "source": {
@@ -11756,6 +11692,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T11:40:12.356Z"
+      }
+    },
+    {
+      "id": 4066907829,
+      "postUrl": "https://t.me/tass_agency/374423?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "▶️ ВС РФ в преддверии Дня Победы дроном возложили цветы к Могиле Неизвестного солдата в подконтрольной ВСУ части Херсонской области, передает корреспондент ТАСС.\n\nВидео: Даниил Михайлов/ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -12000,47 +11982,6 @@
       }
     },
     {
-      "id": 3328536144,
-      "postUrl": "https://t.me/tass_agency/374413?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "📞  Лавров и Рубио провели телефонный разговор, сообщает МИД РФ.\n\nГлавы внешнеполитических ведомств провели \"сверку часов\" по текущей ситуации в международных делах и российско-американских отношениях.",
-      "links": [],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 196185838,
       "postUrl": "https://t.me/readovkanews/109979?single",
       "source": {
@@ -12144,6 +12085,47 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T11:40:12.356Z"
+      }
+    },
+    {
+      "id": 109994980,
+      "postUrl": "https://t.me/tass_agency/374422?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Корпус МГУ им. Ломоносова перевели в дистанционный формат обучения из-за случая кори, сообщает Роспотребнадзор.\n\nКорь выявили у сотрудника факультета вычислительной математики и кибернетики.",
+      "links": [],
+      "createdAt": "2026-05-05T21:46:34.989Z",
+      "expiresAt": "2026-05-06T21:46:34.989Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T21:46:34.989Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T21:46:34.989Z"
       }
     },
     {
@@ -12376,52 +12358,6 @@
       }
     },
     {
-      "id": 3507234257,
-      "postUrl": "https://t.me/tass_agency/374412?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Избитый военный ВСУ оказался экс-чемпионом Украины по карате Сергеем Маленко, рассказали ТАСС в российских силовых ведомствах. Избивший его оператор БПЛА позже самовольно покинул часть. \n\nРанее издание \"Страна\" опубликовало кадры, на которых пострадавшему со связанными руками наносит удары ногами по голове на глазах у построения старший по званию.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 2377347296,
       "postUrl": "https://t.me/readovkanews/109977?single",
       "source": {
@@ -12514,6 +12450,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T11:40:12.356Z"
+      }
+    },
+    {
+      "id": 4053910903,
+      "postUrl": "https://t.me/tass_agency/374421?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Иран объявил о новом механизме прохода судов через Ормузский пролив, сообщает гостелевидение исламской республики.\n\nТеперь суда должны уведомлять иранские власти и получать от них электронное письмо с правилами движения. Приняв эти правила, суда могут получить разрешение на проход.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-05T18:46:48.949Z",
+      "expiresAt": "2026-05-06T18:46:48.949Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T18:46:48.949Z"
       }
     },
     {
@@ -12760,53 +12742,6 @@
       }
     },
     {
-      "id": 3572778394,
-      "postUrl": "https://t.me/tass_agency/374411?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/j-eL-sXfMirjcBnSI0CfdIGekXL0eOTEpzE3dK8m4BNmIwMaYoQGs5BmjvCg3C5jqKTJnmU5ciEVBmX4sfyp2OGWjzDJGeVsBYGlWom75JPfvgZuntuJ26Ky5kuJEURRhx4Pf6ywmN0QG8dgf7yXZxhwJ6n5xSdi1bq6B-gUKgMWUKe4IPLbbQdvegC4S3yOrCJgNKVgR4tBbpYy599XVHz8FM4-I_Eumy_Nw2cqpEpuJmznpT0pMMSNs6fxKLJwWy9-I4FVCWDucW89o7y22r3mJ3M9FIsIQsiK2QoJY8ajtrgZwBmY1cN8kYbLgKATyAZOVmEzsSfIynLtxs47Lw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "В Москве погибла фотограф и актриса Ксения Добромилова в результате наезда мотоцикла, сообщили ТАСС в оперативных службах.   По словам собеседника агентства, она делала фотографии на дороге.",
-      "links": [],
-      "createdAt": "2026-05-05T18:46:48.949Z",
-      "expiresAt": "2026-05-06T18:46:48.949Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T18:46:48.949Z"
-      }
-    },
-    {
       "id": 124662369,
       "postUrl": "https://t.me/readovkanews/109976?single",
       "source": {
@@ -12894,36 +12829,37 @@
       }
     },
     {
-      "id": 7049500,
-      "postUrl": "https://t.me/bazabazon/45800?single",
+      "id": 2373942654,
+      "postUrl": "https://t.me/tass_agency/374420?single",
       "source": {
-        "title": "Baza",
-        "handle": "bazabazon",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/K7yL6IqC8UHrXFdcp4OMSDhUKzYlsuk_CAJbdOQFS7fmHGSoPknAOV2rTCeA6_RyCHlt9rABG-8fjkEY7XN8YsUeeCD3Ub5Cn8LeQpVdLRvCRa3x7V_ksFQ1CkykdzWU2HKBVWWVcsaAsFoEKkXJ0-rdvUTISdLlvL-xhDGCSbDUwsPoOsJqhuYdj65OlIP0njtzAVYuLT21uHXMucSA5DBNLYfCmnY7bdWwN2_Z99J0e_uF74yIMjEHstkVHT9xUtm0yH3RQ7fNSm4Nvc9gktrI5Bnau_AkrymqzTdcpM6LpBS0dhgs9QX4bHxJjDndZ1A-Ef4wsnLRuo2g3X-l5g.jpg"
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/G72hE3eDB1nJWY5hCZRdWahKLWsCO5xn_jgwfVtKWFAJCwN3_1hFnIWFiz7EevjeRGs1FNI3PXuItn6vvejF5NPBEHSzt4jB_uB87QE9NDZwqGKlj48MY9m3nPfnelw5PklM-3fQlPgKwMBg54awySnoOUaGNGTKl3YVdNNpkBBb5IpEh0hXqbP8XdfyEGsABRg_I_EaQql56c0FoDx6IWthyseh_KE1W1M4R3qTa5Zg6gLPype32rx3mjJM8u1kMOdcHzVtXhMSfdWRiDoA1JKXZuRrt6OuuRnrsKKF57irj08Me2lyjMM3OMQAU7gE-BWrRtZb0S64E4X1oEnpEg.jpg"
       },
-      "sourceId": "ru:bazabazon",
+      "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "image",
+      "contentType": "video",
       "media": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/R8OoFmkwAw_94W9Qa5yGiw9_HgjyEW0Qec7NloB_YAhzXK6rfHMG3x2m-f15U3YoBfxQK1kdka_ZxHys9rweyxV5Ye7Ghf6ANY9m890zzy-Rbq2WbbhrEFbKEEz0OkkpO8nt82RKGBAq-ISAYAXz7TQh6m2A_98QJgGMrqyWcQ4yOe4sSkaHI32Ayj6baynQuVWMdwDO868iFzw_gdBBbPXsJ0B6yClmNRQyDyEH9No6GQN89XEFkToJrv1kc6CfrhHwOkuzMdma32TWA4etLKIilI9BW5Qtf7C28NsSBGjsriyHMf_RKSdnfqWh3NWkOamXvf6e-H04i56rodfh4A.jpg"
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/7fea374ee4.mp4?token=bay8Gi07wBkrK0dRNYcqVfqgheIKV4UDSYdkYoXVH6B4-OArXoXSaK7gQ1LdX8DFufMa-bkwt_2ko_M4zE2_DnPS46jtonZdo_qrkGShRsCTGFLBkgfeXcjY6GUHEFCSr9QjWWfi7e2bXju7zqVUIzQy8ZnKgWiNL23FwjGaPWQS0OYpjlcrMmgW7elSTZ45CfAUSsdQoJ4dYTl8tfdGK0vGwEZlvHmCymwwdNxRh2nM0gVsVJICfKbPaAmi0b0p1lEKa15S9osWgVAI4kOd880mkEYptsm7Q8gm0XuJjor-onfyFLpM3I_APz-zqnzfzpfNQiSiVAH67_RGOfZB4A",
+          "poster": null,
+          "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Повторные удары по зданиям в Чебоксарах — атака на Чувашию продолжается.  Над городом снова слышны взрывы. Перед этим включались сирены, в одном из районов виден дым.  Глава республики Олег Николаев призвал население по возможности оставаться в безопасных…",
+      "text": "В центре Москвы рэпер Navai попал в ДТП на черном Ferrari без номеров, сообщили ТАСС правоохранители.  Пострадавших нет. Автомобиль получил значительные повреждения.  ✔️ Подпишись на ТАСС в \"Максе\"",
       "links": [],
-      "createdAt": "2026-05-05T09:21:14.350Z",
-      "expiresAt": "2026-05-06T09:21:14.350Z",
+      "createdAt": "2026-05-05T18:46:48.949Z",
+      "expiresAt": "2026-05-06T18:46:48.949Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T23:12:02.348Z",
+      "mediaRefreshedAt": "2026-05-05T18:46:48.949Z",
       "tag": "news",
       "tags": [
-        "news",
-        "news_incidents"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -12938,7 +12874,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-05T09:21:14.350Z"
+        "reviewedAt": "2026-05-05T18:46:48.949Z"
       }
     }
   ]
