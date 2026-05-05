@@ -1,9 +1,153 @@
 {
   "countryCode": "en",
-  "updatedAt": "2026-05-05T11:09:18.636Z",
-  "totalPosts": 122,
+  "updatedAt": "2026-05-05T11:40:40.877Z",
+  "totalPosts": 150,
   "chunks": 1,
   "items": [
+    {
+      "id": 2070146313,
+      "postUrl": "https://t.me/foxnewschannel/3?single",
+      "source": {
+        "title": "Fox News",
+        "handle": "foxnewschannel",
+        "verified": true,
+        "avatar": "https://cdn1.telesco.pe/file/J-bjWGBW9t6-fwfrdKDFL5wmHBAIAOU_c4CaTF8UhTEPg4gNCgWFa1o1dslUhuTCyfBrlBWIGOoza2YLiNM2a4nQFfOsXHPccXjauXkdM_QKIfczzI7DCk9hgPyokHJo1lk43jVokn4mC1Ncl_ZL-qMOGtGCigBj_o-oemDRSLPJhsb1bqWrVQM42PtQJj6Jx4773cerUQ5WOTIDfUGYTQMkfrD15x__3eFlwWQwzSYKLLsRu6cA7gyZQH7wQ4Qmq6OT_5i72-oSRbB2iE5SST0w3SUY7UAmfqHvMPlfUdY3WnGviBFckE-anowmxjsIpl0N5TASuDpGESn4jqQ1hw.jpg"
+      },
+      "sourceId": "en:foxnewschannel",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:40.349Z",
+      "expiresAt": "2026-05-06T11:38:40.349Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:40.349Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:40.349Z"
+      }
+    },
+    {
+      "id": 2901245922,
+      "postUrl": "https://t.me/bloomberg/3218?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/qcjf4FqVFYIyM3YO1B8y0ky1hOEn0MrosRs7JmCr9lmW67sHfizaq55iYCw39RpBpFmu98DKR52DXXLH0tvVVW7VDxyYUeAxAaVWxzTllr_Pr9OC55yVJQztalfmciFTZvchrj4hayu2DH9ShVa82YxRjHHYTXUyNsrV-Zrgywk5xBgfmzucNxVN2LseiKJEG-5z3KajjAqzOgdeaYtVIA273vAnyAimjP086PZVJXkl3UKJfauw-pxCWB11CKer6l_pLQ8HxtIAFDm4NKD31KRz8GmqfuMQpYPIIj7wf05aV4I-OIF9_8z6ZEo3Ij7K7qRWjxEOIPNIdaAP1mXLtQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: Four-day work week and school closures - Asia is getting creative and drastic to conserve energy amid a severe fuel crunch. Is it enough to keep economies afloat? Bloomberg reporters answer your questions in a Live Q&A. https://bloom.bg/4bAw2NX",
+      "links": [
+        {
+          "label": "https://bloom.bg/4bAw2NX",
+          "url": "https://bloom.bg/4bAw2NX"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3294229382,
+      "postUrl": "https://t.me/popcorn_today/9658?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/3706d57f9e.mp4?token=gtpclPYpJ5XJEjYSJCLvSgNiWxNV-LaeyXLpZAyklwm8sQCNqnRzaKwFkaxQQu_xVoXo_dMTQwP8CxQ4e_zktJPkxWiKf5VcB05EnndjkcY0uLwTjTd0bQ7oRBr_ANUayPitKCrAtREkssawJ3RYGEHKIX0DEOYrwUQSpODzjy9DdfPCSXgzG9c_eHBPpfMjCETVIG8ElHo-Nlhm7E1gk0iUzudW0YtwoxqyYdtV_Xs_sucpPbEYMtcKxvectuNjo5mv05-_kBfiG5wvk9Vz4j19cnwT980tyAP0YcPUqcomiAQpzANgenlREfxPqRhrhuTefy3yqPUPisg4vN3Kdw",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🪙 Tether bought 6 tonnes of gold in Q1 and now holds 132 tonnes total\n\nLargest gold holder outside banks and governments - alongside US bonds and Bitcoin in reserves\n\nUSDT printer is also a gold hoarder 🙂",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:31.973Z",
+      "expiresAt": "2026-05-06T11:38:31.973Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:31.973Z"
+      }
+    },
     {
       "id": 824307918,
       "postUrl": "https://t.me/just/5525?single",
@@ -217,53 +361,6 @@
       }
     },
     {
-      "id": 1765262087,
-      "postUrl": "https://t.me/popcorn_today/9651?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/sGqOjYMKhR5ZST8jnOxy8esFBF1pLCTDOnWqTxfz5x9Ih6GwNCGMxA8erAjocvC3p3oQKNCtTmogq2WYaEtZWpaG1ZZzcIqCeu9L_sk4G6SLAsYx9a4eYYAWyVmwkFoVRC1V1CzQpgBVxw-sL3DEL467xU-FTTU-QfjNBxX6XndzqCRW5xitfKVEz_Qe8s_NccYOhG_zjVTAjIk_Qy8uHMo5VmMoqOBtnhyOv3J-zIcQk3onGWv0nfmIgE2IIMOarGSPm7WjW5t1o8gh392iMivFpWht_HLjvA6DpOPQCeNE2863CJCZzAbj4s8l8CABiy7V7xME8Ntk8ySdtTeq4w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🏫 GM Frens!",
-      "links": [],
-      "createdAt": "2026-05-05T07:34:40.428Z",
-      "expiresAt": "2026-05-06T07:34:40.428Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-05T07:34:40.428Z"
-      }
-    },
-    {
       "id": 1151176445,
       "postUrl": "https://t.me/hrumfam/1265?single",
       "source": {
@@ -412,6 +509,148 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T17:17:37.597Z"
+      }
+    },
+    {
+      "id": 4206086987,
+      "postUrl": "https://t.me/foxnewschannel/1?single",
+      "source": {
+        "title": "Fox News",
+        "handle": "foxnewschannel",
+        "verified": true,
+        "avatar": "https://cdn1.telesco.pe/file/J-bjWGBW9t6-fwfrdKDFL5wmHBAIAOU_c4CaTF8UhTEPg4gNCgWFa1o1dslUhuTCyfBrlBWIGOoza2YLiNM2a4nQFfOsXHPccXjauXkdM_QKIfczzI7DCk9hgPyokHJo1lk43jVokn4mC1Ncl_ZL-qMOGtGCigBj_o-oemDRSLPJhsb1bqWrVQM42PtQJj6Jx4773cerUQ5WOTIDfUGYTQMkfrD15x__3eFlwWQwzSYKLLsRu6cA7gyZQH7wQ4Qmq6OT_5i72-oSRbB2iE5SST0w3SUY7UAmfqHvMPlfUdY3WnGviBFckE-anowmxjsIpl0N5TASuDpGESn4jqQ1hw.jpg"
+      },
+      "sourceId": "en:foxnewschannel",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:40.349Z",
+      "expiresAt": "2026-05-06T11:38:40.349Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:40.349Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:40.349Z"
+      }
+    },
+    {
+      "id": 2631513005,
+      "postUrl": "https://t.me/bloomberg/3217?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/W_gM22CjyGczOM4MpxJbiL8ihb8aUDb0w2pnhn-FGzkp4QfmX65rPSKkkk4oZrs-X1xBJUnN5ZkmvamDk2II46s07msBTN2SeL1MsxuPMga4KqUVs9CsjchLsFqQeStWkbiRySnlEXZYejZMEPsvA38EeIq8tD4dImE3dIv_qThTWecvQhhEr3cQaB1aInVdORXTtBxI8bRqfknR8c9wa7403nZZcC1_dx5Ql7SIMHFVDYu-4RDyaC7XxrfxExXqu_HHqHTtVk6g3iIlEZlY3kLUZTpN8jyU3hlxT6Nshg5RAhH4GziSVqivufARxUjYSOBR1Zev4cjYLJbGoLysXA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Many of Asia’s richest families are reconsidering their relocation plans and reducing billions in investments in Dubai as the Iran war rattles the city. https://bloom.bg/3NrOVtl\n\n📷: Walaa Alshaer/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/3NrOVtl",
+          "url": "https://bloom.bg/3NrOVtl"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3030246953,
+      "postUrl": "https://t.me/popcorn_today/9657?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/livqYaP-e_pEVsvvwFo1ae_jVL0H0CXzhHJFquJmJLEXGvRTqJQnATDak29NXE0UJRnfewM5gTR6-9TL4h3pkyzt-680nJt7Pe5JY6R1-czMavNXc1qCfEneIRgvM3Edi7dosRu4T2aP0-OSE9Ce0X-cAFVKz4zaGkCOURwHvmHRsIwDXrnx2KH4ngqvrTi2agS_MXyWWrLDu_eV9oJKGVCURoxbYjV6ltmp-aqxQBSZfvwVqSRj6unH68z1Taw0c4QJe4xEmMToSpRuVS4i91WcMG6yHr12PDQ5LJPFmg-YrH456hYxfPjWcsKptmHKZaXv5DPzC3x44XoYXvRhug.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "😫 The White House posted \"I have all the cards\" holding UNO wild cards\n\nIran's official account replied \"Yes, we have less cards\" - holding four +4 cards\n\nGeopolitics in 2026 is just two countries doing UNO memes at 1am 😂",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:31.973Z",
+      "expiresAt": "2026-05-06T11:38:31.973Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:31.973Z"
       }
     },
     {
@@ -636,55 +875,6 @@
       }
     },
     {
-      "id": 2743067470,
-      "postUrl": "https://t.me/popcorn_today/9650?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/e3a1689a09.mp4?token=aOMoLBW7rUxjLTldFc0XmCY8BexdPlqeMX1ZYFvxIJFON45RSYFL0-kzFUeZ6fOJsM8XM8gnSnwvdc_J3nwutvIJcbznTVSlPLQJQR_N9EhWLNlI1VmOv14N9Dv3si9SdaFbdxX8Cnm5KMeCPB3x0vW6AQEm8b1O6JHHaBheOqd74k4XjHe2n1Erp8WJmxosE-YQE9ku9xfUoVk5zdnvQoniYda6CNX2we2XJiKg4CM-8bOj-jj5xgoOEV_ZL4IV21iWssZxlNwvnDTP6IHyVkrSTJYXaQyUgoudYGg5ohyEyryfiiZy3qRgylAFXm_xyxUG7zBzLsD9xhqacxfgzQ",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💨 Solana just crossed 10 billion transactions in a single quarter for the first time\n\nGhost transactions or not - that's a lot of numbers 👀",
-      "links": [],
-      "createdAt": "2026-05-04T19:07:33.448Z",
-      "expiresAt": "2026-05-05T19:07:33.448Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T04:49:17.269Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T19:07:33.448Z"
-      }
-    },
-    {
       "id": 1176443212,
       "postUrl": "https://t.me/hrumfam/1264?single",
       "source": {
@@ -856,6 +1046,108 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T17:17:37.597Z"
+      }
+    },
+    {
+      "id": 2711169916,
+      "postUrl": "https://t.me/bloomberg/3216?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/DzaQ1diWls8ItEgD4FJmc_VP2oWNaKAm01vl8W1nYKoUQnxlJUdHE689ZeEqlLylu6RIOXzE0bSFYuCGIbGfmrpfTeghduuU6BHC5v8bz7Y3IXapqGKP8A-lxWc4lbsE5sGGTSqKv_CGGm4k7u3-pi36rG48VyjIOKhcgtXqtns6UAD0pLueftenGbt9eIiYoeREJ5uRhNmalJ5SPnTqYaT6oQo-zNGECs9buuZzVhMXXpgEIaTXXwktle7rGaGsRku4I8ihLlkx0TL_edrJIvAkoj77EA4lAEK5RyBUGNBiEXWIXO0GIYjV1wKNquz23PiFjjjAPrlX1wZWKM3VnQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "AI demand is triggering a historic memory-chip shortage. Meeting exponential demand for chips will be expensive and maybe even impossible. Read Bloomberg's interactive explainer on how the chip squeeze affects you: https://bloom.bg/4ujFvRf\n\n📷: Google",
+      "links": [
+        {
+          "label": "https://bloom.bg/4ujFvRf",
+          "url": "https://bloom.bg/4ujFvRf"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3819420776,
+      "postUrl": "https://t.me/popcorn_today/9656?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/b31085e54a.mp4?token=Nnza2rmebr2O3vmPWH9EowhIFTs7ueNXmbMtu0IA7n5P5mzv8bZVoR4ThWzE0aiqEjj_U-buAaJ66xECxXOBC_ze_Nt1py8PetDsseCGy4wx-fNehknhPaNxIJXAh_EndimqomvcyPA4A6WIcC3InObcxO-mz3whQ27B_dqvOeLrZ_bUz1_XNX3WRxgAWr8AayquyZcEDriRZxFwtMThec9JUIwnHTgMt2uRpRUYPK8N_HyeIT8Pef6h6NejAlhI7sRNN1KU5Iy_RypoVSnuRPB2sfQ2blqra8wgl0B3ERLVGQdM6Cwlq35KA9ymIY4czeWO1Q6hJ2lWu3ZtOlyCpA",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚶‍♀️ Tether printed another $1,000,000,000 USDT\n\nAgain 🪓",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:31.973Z",
+      "expiresAt": "2026-05-06T11:38:31.973Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:31.973Z"
       }
     },
     {
@@ -1072,55 +1364,6 @@
       }
     },
     {
-      "id": 394523548,
-      "postUrl": "https://t.me/popcorn_today/9649?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/d9b3056677.mp4?token=FA55GAeWD6G5J2SJjhL5DhCE-7b2TBW66eECRAD9aTwfKB3TCZ2WAy2YLQNpo4Q7DSdnCWmKucdewqgeY0hjQFAnf7uUKTF8z9Nnp_C1kWbfAwZ18l61z-YLC_O6RhkZ2SegiAOZf3SNQzxyad4arKTDiFJos2P7dFOmH6yH1oLx2MlNZY_d3YqcU_hMeD-i54_Agli6wDT_pnf5mGnRiSMv4pXi1n2mo0sYmgfcsJwyxqvkbYs2G7KnEsQGgKvyl8a4sPLtYS8d0Mqlw2jTDA8BVN3TCSiqNBYjpyDgKZEuThIv9BK_3Q9VTZMMwpLp1lBXqkmFYk8U71saK3MEaA",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💰 Elon Musk says his goal is a $10 trillion net worth\n\nCurrent net worth $400B - only $9.6T to go, easy 😁",
-      "links": [],
-      "createdAt": "2026-05-04T19:07:33.448Z",
-      "expiresAt": "2026-05-05T19:07:33.448Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T04:49:17.269Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T19:07:33.448Z"
-      }
-    },
-    {
       "id": 2564257763,
       "postUrl": "https://t.me/hrumfam/1263?single",
       "source": {
@@ -1286,6 +1529,106 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T17:17:37.597Z"
+      }
+    },
+    {
+      "id": 2318999119,
+      "postUrl": "https://t.me/bloomberg/3215?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/UHgat3bqugFD5vZPz61hyxe26ZozQUVUEi5VxSdH8qv6cxo7mYzeGQ5NrHEHtkTcb4SJQQVSliZLBske5fm_ihDk0aYp1h3QguHPrwU-MNZwpbyQEokv79wwTH0xkXs2yfiholBaZEcqSR2nSsPsQq-Y6xsVXIaTFMiSLWWkNVLprpGN8y6FKTMTxQBXuvzmgkcG8jWX9kJ_BpqK7YM-jhbXE5AK1QSdq2ovtOGE4ueoDBQ8XevX00V2ulaZDChoYU1CS2y_HhKvPSKXi6jk_LooeGOHPBbBaekvJNBpuulVkElJrbwsnBkD1Z4hu2imFSxpeuos3mxpos1s9uo0FA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: The India AI Impact Summit has laid out an ambitious roadmap for 2026. But can Modi make the nation truly a global AI power? Bloomberg reporters answer your questions in a Live Q&A. https://bloom.bg/4ayNSk4",
+      "links": [
+        {
+          "label": "https://bloom.bg/4ayNSk4",
+          "url": "https://bloom.bg/4ayNSk4"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 1342824050,
+      "postUrl": "https://t.me/popcorn_today/9654?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ld5XJFULsL_x6wgHHuuF8ju3omjMMXY7f3Xe4SBeFOlMleCa0ZNvrn1Ba-kxUmpYmNbQm9p6I8ZFJwOJvo2wAQh3sRlXiHa2bMNgdyuGH8u7ldzRyAZ8b0MbNjeBN-fHt8sZt_L0STexgnfeDDWYPAjudC7uVIl9O6XgJzhieTV21p0WRrzi7MPWVP2f3fRgnYGUhZ3K9wdOskVPQBNrhrVSR3vHsKgaE1xDyLAqdUQLF9vU4EdoUSR9Q3NzcUjKUIF-Gmb_jTKHs6obRKiCL7iPwP_K6STGd44hFVcYi-kgBs7f7I4UdLQi3zBpvhyrxgDHcfNRfb39kNOlXaepXA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🗑 Trump called Fed Chair Powell \"Too Late\" again and demanded lower interest rates\n\nMan earned $45B for the US and still can't get a rate cut 🕺",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:31.973Z",
+      "expiresAt": "2026-05-06T11:38:31.973Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:31.973Z"
       }
     },
     {
@@ -1508,53 +1851,6 @@
       }
     },
     {
-      "id": 3215487053,
-      "postUrl": "https://t.me/popcorn_today/9648?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Hcj0JS8d-a0VlSOcIF0HCSTB_oHIy0Hgit3gDod6LrYK1zilqmfO9Cb3OeKi1JiG9hCzMcP9kFAtPunxSEpaVke1B3HRaCcMXzG5YOeeG3giNWdvSpOvjjU0CaHToAucurh2lyDMsmFeO9o3Z0Y91c3ZIQsppYGfw9G76hwObmhB8SUo0E4KdlIRDrBex8bkevKXYn64Rub6lRgyxkgz1HCs0724aHkSq5Ya7sGB3Ys8Qwhg3QzWm2p867nEpx6YjY2vIGyxKOnJAfV3Y9dDtUzzBLqGYXjeDdYNGiZeVkLP1Dfndq_2AN5DqklqVOakb-jvRZ3sD06HrlUjnJ7wfA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-04T19:07:33.448Z",
-      "expiresAt": "2026-05-05T19:07:33.448Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T19:07:33.448Z"
-      }
-    },
-    {
       "id": 4013712010,
       "postUrl": "https://t.me/hrumfam/1262?single",
       "source": {
@@ -1748,6 +2044,106 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T17:17:37.597Z"
+      }
+    },
+    {
+      "id": 2929588470,
+      "postUrl": "https://t.me/bloomberg/3214?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/EtXseAVV5ZEdlJQYfh9n_9zLoVYsKVh0jr0AN-Z5ScuWXk17Y-L351tjHxxguloSsBfuH8qKsf7uIBtbn_Zlt38Tb3FXpxBpAO0vUlCqN9dtH_m1rmTmd3vrp2f6vHWVDxjVPSoGv013hTF9kXyUT-1eLjE3nvbDiJsHYJDVHUYdPgihUkTHx8MNm26ss_NA3ILd2i2zhTgtZowoJkeAf1k6dI4sAoFl0ImgmVnmu-sVsPlJClnXgn1poD8sC1fH55JrE7yadeX4TOta-e_oy1UmRVQ1RIbrZLxUy9INDRS37STQDHhTzOraRNMrLFJtJAT4faf4MxeGnlEm4QVVXg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "The saga of a contested gold mine shows how President Prabowo Subianto is putting Indonesia on a collision course with global markets. https://bloom.bg/4ryeO9a\n\n📷: Krisztian Bocsi/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/4ryeO9a",
+          "url": "https://bloom.bg/4ryeO9a"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 2870089477,
+      "postUrl": "https://t.me/popcorn_today/9653?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/fWvneDPwmz7E9SmZKLioFnk_iuQf-oAFWpZUSCIC43VSAzadkEYH7fZgDoT6-eHvvF9OplrEM0S8J0uSRo3AvwHOVS679m9xkrhqYH3ccQfN40KzfOBJ62Fj5HqAv3iWrINQB3O68POt_VHpZWq4rvZzisBhEm5AtxbM5zruLOvhfGEN_h7oS-dO6lP_ipR94IEacoswPOsfFsFkNiRh2lWZae7kH7HWEXbt_9_Vl_38GFaJZvhcODriP2fjHzE9pf-tkD694AFS3LYykjniBXjDuBkxeypKcbSsX5TsUOHxP-nffKb2rf0cH-0uGiM9TXTxtw_H3xIaire2d7q5Dw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🍷 Corporate Bitcoin holdings hit a record 1.15 million BTC in Q1 2026\n\nPortfolios dropped in dollar value but companies kept buying anyway\n\nPrice goes down, they buy more - different breed 🥸",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:31.973Z",
+      "expiresAt": "2026-05-06T11:38:31.973Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:31.973Z"
       }
     },
     {
@@ -1976,55 +2372,6 @@
       }
     },
     {
-      "id": 584496386,
-      "postUrl": "https://t.me/popcorn_today/9647?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/99e8950e2b.mp4?token=lBeEiaq9pQDEHOkbm39-KtfbdRVAPpGpO6hszmccRFuMUrJtoaeBndoREHi9LHz6GmtG4BItRQIkP1dq7Tj2JKoetRmtJwTUHQPpYJadKQj08iJGKMxUNr5zAOVFUQMTh2Vv1Pq4YVYz-5Uo-bCgS7ePucVUyi5pd1rU1rIdNYTl396BxZqLYiNLA8k_8-g_1CozRUYK4fo-cwz7dolR0D7U693cEQR-StLC6azrTBcBXRlTXJHZ7A6HVoicKX9SDDNu1Pz-W3eNsDM5RE2EgP5UWsO2ow6Ms80V11EGWy7Gjh455oKpDah2riXTSLSYWuvUzvhofwekQepPaajmFg",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🎲 Former Pump Fun employee admitted on stream that the team ran bots to dump coins before exchange listings\n\nRegular users buying while insiders already cashed out - some claim it still happens\n\nPlatform called Pump Fun was actually just Fun for them 😂",
-      "links": [],
-      "createdAt": "2026-05-04T19:07:33.448Z",
-      "expiresAt": "2026-05-05T19:07:33.448Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T19:07:33.448Z"
-      }
-    },
-    {
       "id": 2593740161,
       "postUrl": "https://t.me/hrumfam/1261?single",
       "source": {
@@ -2172,6 +2519,106 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T17:17:37.597Z"
+      }
+    },
+    {
+      "id": 1702325617,
+      "postUrl": "https://t.me/bloomberg/3213?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Ns3rJ-uQZJHUMjIfsjeay3iZqLHMdaDXebZQoxmmjZU0EZhHWQEUWlZAVyjQ-q4eK6bphANdhLodzow0-Q0si2K8ru02QLHCD_PdIh3JWZnfEfIW7aFJPeZ0iFG_QJpERiJQD4XWpC1AYM3ul7Tq5Yb6k1ELM1f33fnOiDLmcHWuN51UR2QN6nx7J8LHw3pcEpFmYmOe9uCmRVHLkzae7bJEzedpnmJ-KgG9WhwslsEeE9rwTasTcP4x2wmPGj6GZNa7AXeL30JgQ8fEwKUOlqkL6najY5kv6C93JfrSEsbwfizo9dqOQTAlN5hP2ltW07hjEj8gO_nV65fd-UcrPg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: Modi secured a surprise trade deal with Trump, boosting the rupee and offering relief to conglomerates. But did Indian refiners lose their access to Russian oil? Bloomberg's Laura Davison, Shruti Srivastava, Alex Gabriel Simon, Rakesh Sharma answer your questions in a Live Q&A on the winners and losers. https://bloom.bg/3NTBfY5",
+      "links": [
+        {
+          "label": "https://bloom.bg/3NTBfY5",
+          "url": "https://bloom.bg/3NTBfY5"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 2829254452,
+      "postUrl": "https://t.me/popcorn_today/9652?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/V--Rj775Cf_q7t983szZaZQ7CdwtCMJRhU03HpzrwRvStoAMIb_jA2bg_YqF5EJ7MuwwV7ExVQJV54q7JAYzdOuUoc7LV3mBTeZEiDEWV5GjEEhP_HssQRPsLA0C_ZR5xU7SVIt0TsZL4B6v19iUXL7UdZmX9Fld2JabXEWmMJ9LXxJ4RGB3GylCXyYLcYZYylFLltqd8eYgWv2gmQ1rxGJl6xuIO0vZCRYTqSAumaRyyG077G11U00PmSgLeCiIwi-z7RBzeE4Mu3RSFrpNAS57vZWvgAEm-Xyi9rbWaY8hjnJw90MigSbwAlJqYEF9LwVPUq25WqZ9I_hx2K3v4A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "✏️ Right in the middle, Neutral 50 for today",
+      "links": [],
+      "createdAt": "2026-05-05T11:38:31.973Z",
+      "expiresAt": "2026-05-06T11:38:31.973Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:31.973Z"
       }
     },
     {
@@ -2390,53 +2837,6 @@
       }
     },
     {
-      "id": 2280525307,
-      "postUrl": "https://t.me/popcorn_today/9646?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/pzUp81XSWflrdP5n7uwbV0epmMf4pgj2rrocpSpGiKjIetQs65zzG7hVCwiinS9yGOBSyQSIktCuZ5PBY_VCicVsutJmKn6HLxZy36Zemby-urmPc443uGovc-iiUD0BKGiKyzjKFwsEJhliw7qmJP4pgt-ycG6HBHkY8K5fugj04RLHgSgXfiQvwYVoO9gOo-JEXl1ftIE1c2LRBfUfATU4-xGNl9cuNw-T9sN9lnafCoFCGh0N8i1VSOQNdHHBdGtg0c-B9uBAxzbt_WVGJrQQD_lQ9llfcMRmrjHN1x9h6C3qW7lWfrk-h50i5G85mSArSDWbUMbL2vLItS_kMA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 3721983744,
       "postUrl": "https://t.me/hrumfam/1260?single",
       "source": {
@@ -2534,6 +2934,106 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 331254128,
+      "postUrl": "https://t.me/bloomberg/3212?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/pyl1-wuKiISVKk6uPd9TU5TEbNdve_daDe_oMOOROAoe8ANgDP6S4WZv5UWjgKimihdt2QPxDVwrK4i8tAqxgRyq6KNuOzejKCPmy-sIOcyMrwuwL43LjefW16XvVbKXGL6DVHrFZ8enqVGFO_kDmvWEYvBM0qNpxGhfPafUgVRp1ctbsoHsUtajnQZo2_azUmSANRrFOcVa90AUHHGDNNh2n7hsQ1QnlRPznFG5u8GyDjAjGCikvhaa5-gLVetF5Kulb11DQgJmSf5TsSuv6y7V2f4EU99wQ4I_AT925pO3n4B9Z_cLtDQYc5rgtduaZ0153-pcgaoTlWoCwMxxOQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "A new AI automation tool from Anthropic sparked a $285 billion rout in stocks across the software, financial services and asset management sectors on Tuesday as investors raced to dump shares with even the slightest exposure. https://bloom.bg/49UxtGo\n\n📷: Michael Nagle/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/49UxtGo",
+          "url": "https://bloom.bg/49UxtGo"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 1765262087,
+      "postUrl": "https://t.me/popcorn_today/9651?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/sGqOjYMKhR5ZST8jnOxy8esFBF1pLCTDOnWqTxfz5x9Ih6GwNCGMxA8erAjocvC3p3oQKNCtTmogq2WYaEtZWpaG1ZZzcIqCeu9L_sk4G6SLAsYx9a4eYYAWyVmwkFoVRC1V1CzQpgBVxw-sL3DEL467xU-FTTU-QfjNBxX6XndzqCRW5xitfKVEz_Qe8s_NccYOhG_zjVTAjIk_Qy8uHMo5VmMoqOBtnhyOv3J-zIcQk3onGWv0nfmIgE2IIMOarGSPm7WjW5t1o8gh392iMivFpWht_HLjvA6DpOPQCeNE2863CJCZzAbj4s8l8CABiy7V7xME8Ntk8ySdtTeq4w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🏫 GM Frens!",
+      "links": [],
+      "createdAt": "2026-05-05T07:34:40.428Z",
+      "expiresAt": "2026-05-06T07:34:40.428Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T07:34:40.428Z"
       }
     },
     {
@@ -2750,55 +3250,6 @@
       }
     },
     {
-      "id": 334802104,
-      "postUrl": "https://t.me/popcorn_today/9645?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/a2d412f8ce.mp4?token=rrdmghXWIYUzvsInnFSl0i9hqVqqBoo9aFEyZ2By4x2DIb5vMpb-Gc7XTm4LiMK127Qw95AwdLbPNVZko7DfrEZ_INNS-6Scrfe-uqX7uFaGQH3OPCeklA-3sCj2CSCeozmtgUk1Cd3CVd6voeBBkqMrD7tn9erol-oGaDwAkkR0E5Ixd3XcYY8vEyXK5qkrNpD-EzJm7aN_WFTCIbGkqT4WWTfzi2Az4OaFtr2vMHMgqvLCfxVQM8-mY8nOQW3Ve6thfhlUspWBn3a-m1so675j7mIHEn_qBdqPIPNheR3OoXkKkYGi2wf9LHaefzdX_ZDSGUFDOZFg-9tNG90HXg",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🦈 WSJ: prediction markets are shark tanks where pro algo traders take everything from retail\n\nYou are not the shark 😢",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T20:52:15.337Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 214028096,
       "postUrl": "https://t.me/hrumfam/1259?single",
       "source": {
@@ -2903,6 +3354,108 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 715506771,
+      "postUrl": "https://t.me/bloomberg/3211?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/UVFNXcTQNM94qpMhyv1e4tfUMJuH85BuEtgWzBtedxlMD3LQ7mUMGonQ7skuSvO51APxcZgHcuQ5YsDQVSEFx4fzEtW3h4ofkCbaOhCyP6aBJj5C242f3CMF6IjIlK7RKEByzFuQDTonJ6N1UE0kulHUgaecYnCDs5q885kmOxYdURioIiG-zHKR6WQDon7Va9ONpTlKiM5kLqgT7qwOb6EUpq_qRR6jxWEghMOqfRM4BrABYNnN7Z2-7Pce6nkkH16uWT4-RQhKy3LaCxqko9uS1sj1bzg3lsrYvkUoQupK63DWfvtKmsqy7m1z0gA3Uq9qE66fPqzpvXVFbvY2_A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 LIVE NOW: Modi's budget delivers a double shock: a shield against Trump's tariffs and a tax hike on India's booming F&O market. Bloomberg's Menaka Doshi, Shruti Srivastava, Chiranjivi Chakraborty and Subhadip Sircar analyze the impact in a Live Q&A. Join and ask your questions: https://bloom.bg/4kg2isC",
+      "links": [
+        {
+          "label": "https://bloom.bg/4kg2isC",
+          "url": "https://bloom.bg/4kg2isC"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 2743067470,
+      "postUrl": "https://t.me/popcorn_today/9650?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/e3a1689a09.mp4?token=aOMoLBW7rUxjLTldFc0XmCY8BexdPlqeMX1ZYFvxIJFON45RSYFL0-kzFUeZ6fOJsM8XM8gnSnwvdc_J3nwutvIJcbznTVSlPLQJQR_N9EhWLNlI1VmOv14N9Dv3si9SdaFbdxX8Cnm5KMeCPB3x0vW6AQEm8b1O6JHHaBheOqd74k4XjHe2n1Erp8WJmxosE-YQE9ku9xfUoVk5zdnvQoniYda6CNX2we2XJiKg4CM-8bOj-jj5xgoOEV_ZL4IV21iWssZxlNwvnDTP6IHyVkrSTJYXaQyUgoudYGg5ohyEyryfiiZy3qRgylAFXm_xyxUG7zBzLsD9xhqacxfgzQ",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "💨 Solana just crossed 10 billion transactions in a single quarter for the first time\n\nGhost transactions or not - that's a lot of numbers 👀",
+      "links": [],
+      "createdAt": "2026-05-04T19:07:33.448Z",
+      "expiresAt": "2026-05-05T19:07:33.448Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T04:49:17.269Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T19:07:33.448Z"
       }
     },
     {
@@ -3124,53 +3677,6 @@
       }
     },
     {
-      "id": 3209076153,
-      "postUrl": "https://t.me/popcorn_today/9644?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/JQO-0-oslZsb4v8IPslJfnZ-Jm_01_KZAq2ilfwDhpFRp3_83kSRKVfAUNDCEtf6Ke87gbPOP4VER-Ccas_NQJF2-6Xa2uxDhl1Nc643X_SQsAxy_9h-tjiyjFKexcKHL15h4EABdUDPsv2GZM2zIX1B5wmS6mqD0WIy2mY_GMeD31ig-i421zpUdxzKICPPUOxaiZUvvG7199jY05iEXwB2XLiZN2T_FEM2lt3WYumko7uezlgeth38K5e7wmaoY9MEcP6EZSotfiaU2ouFhNOQeBvWJyJeJbXhdgho-rR_tGEg-o8C5w9qvyy5eszKrD6yM4bsY17_gejg9Ota9g.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T20:52:15.337Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 3657048257,
       "postUrl": "https://t.me/hrumfam/1258?single",
       "source": {
@@ -3273,6 +3779,102 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 1067782714,
+      "postUrl": "https://t.me/bloomberg/3210?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ From sinking Treasuries to global selloffs, the turmoil in Japan’s bond market is being felt far beyond its borders.\n\nFind out how the crash is rattling international investors and why markets are still on tenterhooks on today’s Big Take Asia Podcast: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 394523548,
+      "postUrl": "https://t.me/popcorn_today/9649?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/d9b3056677.mp4?token=FA55GAeWD6G5J2SJjhL5DhCE-7b2TBW66eECRAD9aTwfKB3TCZ2WAy2YLQNpo4Q7DSdnCWmKucdewqgeY0hjQFAnf7uUKTF8z9Nnp_C1kWbfAwZ18l61z-YLC_O6RhkZ2SegiAOZf3SNQzxyad4arKTDiFJos2P7dFOmH6yH1oLx2MlNZY_d3YqcU_hMeD-i54_Agli6wDT_pnf5mGnRiSMv4pXi1n2mo0sYmgfcsJwyxqvkbYs2G7KnEsQGgKvyl8a4sPLtYS8d0Mqlw2jTDA8BVN3TCSiqNBYjpyDgKZEuThIv9BK_3Q9VTZMMwpLp1lBXqkmFYk8U71saK3MEaA",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "💰 Elon Musk says his goal is a $10 trillion net worth\n\nCurrent net worth $400B - only $9.6T to go, easy 😁",
+      "links": [],
+      "createdAt": "2026-05-04T19:07:33.448Z",
+      "expiresAt": "2026-05-05T19:07:33.448Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T04:49:17.269Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T19:07:33.448Z"
       }
     },
     {
@@ -3490,47 +4092,6 @@
       }
     },
     {
-      "id": 2961835230,
-      "postUrl": "https://t.me/popcorn_today/9643?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T15:20:15.679Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 4153029198,
       "postUrl": "https://t.me/hrumfam/1257?single",
       "source": {
@@ -3635,6 +4196,100 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 3538789288,
+      "postUrl": "https://t.me/bloomberg/3209?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ Trillions of dollars in Japanese assets are held by elderly citizens at risk of cognitive decline.\n\nOn the latest Big Take Asia podcast, K. Oanh Ha and Bloomberg’s Alice French discuss what this \"dementia money cliff\" means for the nation and the broader global economy: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3215487053,
+      "postUrl": "https://t.me/popcorn_today/9648?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Hcj0JS8d-a0VlSOcIF0HCSTB_oHIy0Hgit3gDod6LrYK1zilqmfO9Cb3OeKi1JiG9hCzMcP9kFAtPunxSEpaVke1B3HRaCcMXzG5YOeeG3giNWdvSpOvjjU0CaHToAucurh2lyDMsmFeO9o3Z0Y91c3ZIQsppYGfw9G76hwObmhB8SUo0E4KdlIRDrBex8bkevKXYn64Rub6lRgyxkgz1HCs0724aHkSq5Ya7sGB3Ys8Qwhg3QzWm2p867nEpx6YjY2vIGyxKOnJAfV3Y9dDtUzzBLqGYXjeDdYNGiZeVkLP1Dfndq_2AN5DqklqVOakb-jvRZ3sD06HrlUjnJ7wfA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-04T19:07:33.448Z",
+      "expiresAt": "2026-05-05T19:07:33.448Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T19:07:33.448Z"
       }
     },
     {
@@ -3859,55 +4514,6 @@
       }
     },
     {
-      "id": 3173236823,
-      "postUrl": "https://t.me/popcorn_today/9642?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/2729b99d96.mp4?token=j2Gr9-iY91XQKqVQX9UZ9tAs75OJcwhrNeD6a0_LVFYClVJMW7suOQsBfPmPpc2dAJAll6kNzi1IiKDGr0wmNbuCNYs0J6OXWCpkawzZIP6Vvh8qAH0hM0ABByyDDXGWxYGbFOxgfm_-JpNT0Aa8reBSRIP0tN0rAPTrTkr33Ag4nYDHEh-GjerCrgwW4IN0KcYYN_a-8yLZvV9t83P2AET9xjLuLlJjv641F8EBddegHtPQ07okO6PSY1vJiBB1uVlYu8pDz0jYlUbA7VM4WgZ-z-SkM2yqIpk-yQfGvUjyWAey86vewEyqi5Hb52DuNfKaXJfFlhx4lNb5lXDB7w",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🪙 Solana founder says AI is now finding vulnerabilities in post-quantum algorithms faster than developers can fix them\n\nThe algorithms themselves are poorly understood - unknown implementation bugs and math weaknesses everywhere. Ethereum L2s are not quantum-ready at all.\n\nWe built quantum protection that AI is already breaking 😊",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T20:52:15.337Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 4239216180,
       "postUrl": "https://t.me/hrumfam/1255?single",
       "source": {
@@ -4010,6 +4616,102 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 1261146217,
+      "postUrl": "https://t.me/bloomberg/3208?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ Amid Iran’s brutal crackdown on protesters, President Trump threatened to slap a 25% tariff on its trading partners.\n\nFind out why the move puts China and India firmly in his trade war crosshairs, yet again, on the Big Take Asia podcast with K. Oanh Ha and Daniel Ten Kate: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 584496386,
+      "postUrl": "https://t.me/popcorn_today/9647?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/99e8950e2b.mp4?token=lBeEiaq9pQDEHOkbm39-KtfbdRVAPpGpO6hszmccRFuMUrJtoaeBndoREHi9LHz6GmtG4BItRQIkP1dq7Tj2JKoetRmtJwTUHQPpYJadKQj08iJGKMxUNr5zAOVFUQMTh2Vv1Pq4YVYz-5Uo-bCgS7ePucVUyi5pd1rU1rIdNYTl396BxZqLYiNLA8k_8-g_1CozRUYK4fo-cwz7dolR0D7U693cEQR-StLC6azrTBcBXRlTXJHZ7A6HVoicKX9SDDNu1Pz-W3eNsDM5RE2EgP5UWsO2ow6Ms80V11EGWy7Gjh455oKpDah2riXTSLSYWuvUzvhofwekQepPaajmFg",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🎲 Former Pump Fun employee admitted on stream that the team ran bots to dump coins before exchange listings\n\nRegular users buying while insiders already cashed out - some claim it still happens\n\nPlatform called Pump Fun was actually just Fun for them 😂",
+      "links": [],
+      "createdAt": "2026-05-04T19:07:33.448Z",
+      "expiresAt": "2026-05-05T19:07:33.448Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T19:07:33.448Z"
       }
     },
     {
@@ -4240,55 +4942,6 @@
       }
     },
     {
-      "id": 3244183748,
-      "postUrl": "https://t.me/popcorn_today/9641?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/2984739cf3.mp4?token=MyAtlYia1etvkSCrxD0Rofh7chZ2PrYqXsNwcO76ark2BRq4A1kAv0h3-uXgkCHAUHkowhE6Qj0CgWbkaarD-eH6pyW3uyC2Bg63xADEcTXKmnVppHzHKtYIoW35RC8W2ce69bAUMsdBW_WW6P8jNpyu0mBOQKqD8NeUtuLw0VBhDedVElnKgb2JpDssl0U68vZ0wUdx8QI99RUTe8i5PFiENMu0Vm_Hpt5SkbBvZ3FogHNVhvKiaSfYhg1Js543BI5kdY_bEm7BL_vvEod_nIVb79_gFaOM1xpxsarrXLFej8Y_vQJG14hGySbpCvOSSDXFrG32kIUFtR8ml-G0gw",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💊 Hacking Satoshi's wallets with quantum computers would cost more than you'd steal\n\n22,000 separate addresses means you need insane computing resources to crack even a fraction of them\n\nThe best Bitcoin security is just spreading it everywhere 😂",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T23:09:43.400Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 4280051205,
       "postUrl": "https://t.me/hrumfam/1254?single",
       "source": {
@@ -4395,6 +5048,106 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 861802182,
+      "postUrl": "https://t.me/bloomberg/3207?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/UM_v7W1YZLfJBP1kXHnogBC4xMLAFkSmZHGw7tfm6YmHdryV0uYmErjIHuM6Mp8NvXzBY1r2alqmAwiOXMPXOhBET9pRwLWCMg9zug84E9mN-X1BQAK4GBBhmGKj3OXM0v7KUfaZ5mupuL2xJdY0rCbHsg_MB319gP5rdqOY_ZA3JsUuY5HemhHC7lDEFSNFSe9Oky5p1qiXen1mQ7Ho27W6HspXpniKqbJXkkDZ16uoKyXGuyM2Ki4Ds_m4Rof09u7Zwmabg8HG91W3LGaan79IsEmcKeVcFC9GHPOkQCZ1_YPbnSqxjE5nzjd9LXs0M-Z623G-eWbqUHldX7C2tg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "As Indian investors nurse losses in high-momentum favorites, the focus is shifting back to good old earnings. The so-called quality factor — stocks with strong profitability and balance sheets — is set to regain favor after two years of underperformance, according to Bernstein’s quant team.\n\nOur new Markets Daily India newsletter explores what traders are looking at: https://bloom.bg/4pzl7bm",
+      "links": [
+        {
+          "label": "https://bloom.bg/4pzl7bm",
+          "url": "https://bloom.bg/4pzl7bm"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 2280525307,
+      "postUrl": "https://t.me/popcorn_today/9646?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/pzUp81XSWflrdP5n7uwbV0epmMf4pgj2rrocpSpGiKjIetQs65zzG7hVCwiinS9yGOBSyQSIktCuZ5PBY_VCicVsutJmKn6HLxZy36Zemby-urmPc443uGovc-iiUD0BKGiKyzjKFwsEJhliw7qmJP4pgt-ycG6HBHkY8K5fugj04RLHgSgXfiQvwYVoO9gOo-JEXl1ftIE1c2LRBfUfATU4-xGNl9cuNw-T9sN9lnafCoFCGh0N8i1VSOQNdHHBdGtg0c-B9uBAxzbt_WVGJrQQD_lQ9llfcMRmrjHN1x9h6C3qW7lWfrk-h50i5G85mSArSDWbUMbL2vLItS_kMA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T07:34:40.428Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
       }
     },
     {
@@ -4600,55 +5353,6 @@
       }
     },
     {
-      "id": 3207907861,
-      "postUrl": "https://t.me/popcorn_today/9640?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/aed3514809.mp4?token=A2oMu31jo1CpCq8UFD06nmiAzHbxd7fR_gSUD0ZPJG23zAHXhyqeE3jJYcXUSXZ36SR9EoZinGlHS596xvaPvvyqOGJREBYG_cDA4WCyH_TJGwSmrbmr8AH1lex2p81syTtQV14-AQnWFQKNxnONzfqg7MEN7jP-EH-S-GoMTFmGP5WQX0FVYZBFx087WdQg1h94s1d08Ga7OmzGLj5aG2aIXYpQn4fOSQU16nOiv_O_jsiFKHl40i_FywxQRHLSXgtE2qi9SXKNq7bQFKBLaAX8ukL-tdDkOyW9Kj3oWNFKpvI7GXJHhB1P5jugvRgySNi_-wKJAYX4hisNeU35Lg",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "💸 Saylor is about to buy $2-3 billion in Bitcoin over the next two weeks through STRC\n\nRetail sold the bottom, no sellers left to push it lower, purchases expected to accelerate by May 14\n\nSold at $78k and watching Saylor buy at $80k 👧",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T23:09:43.400Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 2752785778,
       "postUrl": "https://t.me/hrumfam/1253?single",
       "source": {
@@ -4745,6 +5449,108 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 3829174303,
+      "postUrl": "https://t.me/bloomberg/3206?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/byWjDffFjcQKslYG8VTgPhL3QkWfW6pR1eudyoN2evnouzYDjF1Ir6EyYaDwvW_nFpX8Pcz1FxGL3O389Ujv_LbSL3Fb_cW6AJWMATDmTc7rXOXOf3E_IwrXkOZAOe0PXwA1iZpWGA0YQZLJ7LyfiOXw15HffcNQrgTCzdCQ7wS88URbfoWZKnKahrPFLpyD3M_2kLl6-d-uXmWZFc0E1lphqi8fK3dNxXH0vawK-gGAje6VaE3Ccyum9nia7D5O5XpcOBntCL_7XqrnJMd6LjzgO6TLFYEL8BE-DRU8juRCgMjLLlvWv3FpTRa3DXH4daKSDoUGnJe6ETg0WkTmrA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "US Commerce Secretary Howard Lutnick says a trade deal with India did not materialize last year because Prime Minister Narendra Modi did not call President Donald Trump. https://bloom.bg/49ncFHr\n\n📷: Prakash Singh/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/49ncFHr",
+          "url": "https://bloom.bg/49ncFHr"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 334802104,
+      "postUrl": "https://t.me/popcorn_today/9645?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/a2d412f8ce.mp4?token=rrdmghXWIYUzvsInnFSl0i9hqVqqBoo9aFEyZ2By4x2DIb5vMpb-Gc7XTm4LiMK127Qw95AwdLbPNVZko7DfrEZ_INNS-6Scrfe-uqX7uFaGQH3OPCeklA-3sCj2CSCeozmtgUk1Cd3CVd6voeBBkqMrD7tn9erol-oGaDwAkkR0E5Ixd3XcYY8vEyXK5qkrNpD-EzJm7aN_WFTCIbGkqT4WWTfzi2Az4OaFtr2vMHMgqvLCfxVQM8-mY8nOQW3Ve6thfhlUspWBn3a-m1so675j7mIHEn_qBdqPIPNheR3OoXkKkYGi2wf9LHaefzdX_ZDSGUFDOZFg-9tNG90HXg",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🦈 WSJ: prediction markets are shark tanks where pro algo traders take everything from retail\n\nYou are not the shark 😢",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
       }
     },
     {
@@ -5001,53 +5807,6 @@
       }
     },
     {
-      "id": 2714415649,
-      "postUrl": "https://t.me/popcorn_today/9639?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/UjeZ3p3-0-fNhSqf5ng9ySpzdoR07_oA8m7a1PkzTRcFZSuF9LjgT77ErYbHgJ1WGrC428FHzmUbIkb9i7eXFPXjDR05i1qi7Shh7LhQDnTNhQQlB5gK7nxAHJazylh8WoeJ01ErwJFGoibqHg3oeJnaTccHtlLl3tY3AVfrsdcnTW1XG14X-Arf5ltjIN6y3zqufrQWfxiYv6a6Cqc-yKzLDzSjrSljhp9RDnd2a8u4dZhupA2s40mDvnOU_UR_2tykWKybmOqRp8iJmN3G6sh31xTsYIqiWZckfBsXt_ytFo6ykC7EFwf6PMxAvY-8mL28xznRjbGuE23rmGy_Vg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-04T23:09:43.400Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 2721734123,
       "postUrl": "https://t.me/hrumfam/1252?single",
       "source": {
@@ -5147,6 +5906,106 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 1991472588,
+      "postUrl": "https://t.me/bloomberg/3205?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/MGGIYeEFxitq46slPBUv-1VLimoTJMRlbzrGG7znOgL5EXjbU6h593e_kHRmXPSj2DUMHY78FrfHR8GNfb6ndxIUfnQXZMM70W-PC_4GbXIrF7rPv_0n8gHdANXEZTtl-PIWSNjuArIye3FTNExrqgOs42uJ3C96la3n5br9LiI0A8hiE71ggbvqpDdGRGo22NqPismwYXoWQZpEER17l7lPk9w6jidGFt9plAyvmevnaCJAEaGxIJO3H2zN2rd0crkpaUhOlL2p7yyCeiUL9GtJpnbdceqL3pw_JOdQ9ouSjbhTywgC7fbIm5RuGBugaQfm5up152NZg_f9IGKv6w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Chinese AI startup MiniMax spent its first three years largely on the sidelines of AI development. While rivals chased local ChatGPT clones, it was tackling a harder problem: building a single model capable of processing text, speech and video. Now, the $619 million IPO crystallizes a surge in wealth for its founder Yan Junjie. https://bloom.bg/3Z4mKmo\n\n📷️: Lam Yik/Bloomberg",
+      "links": [
+        {
+          "label": "https://bloom.bg/3Z4mKmo",
+          "url": "https://bloom.bg/3Z4mKmo"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3209076153,
+      "postUrl": "https://t.me/popcorn_today/9644?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/JQO-0-oslZsb4v8IPslJfnZ-Jm_01_KZAq2ilfwDhpFRp3_83kSRKVfAUNDCEtf6Ke87gbPOP4VER-Ccas_NQJF2-6Xa2uxDhl1Nc643X_SQsAxy_9h-tjiyjFKexcKHL15h4EABdUDPsv2GZM2zIX1B5wmS6mqD0WIy2mY_GMeD31ig-i421zpUdxzKICPPUOxaiZUvvG7199jY05iEXwB2XLiZN2T_FEM2lt3WYumko7uezlgeth38K5e7wmaoY9MEcP6EZSotfiaU2ouFhNOQeBvWJyJeJbXhdgho-rR_tGEg-o8C5w9qvyy5eszKrD6yM4bsY17_gejg9Ota9g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
       }
     },
     {
@@ -5360,55 +6219,6 @@
       }
     },
     {
-      "id": 2778647456,
-      "postUrl": "https://t.me/popcorn_today/9638?single",
-      "source": {
-        "title": "Popcorn Today 🍿",
-        "handle": "popcorn_today",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
-      },
-      "sourceId": "en:popcorn_today",
-      "sourceCountryCode": "en",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/5ecd26d5c9.mp4?token=Z8WYXRr3uOF6eW3TxukH_f35xn8qCfhAjfOkais0Rlann6dU_4yLL2_V61Cod4h08pzUs5Na2ZqGY0QC5mxYr7g_2jg-e-2mihxxJ1kJfsAG7NfFRBzYFJNBXxKq5Y-tq_fPMHH_bjw-o_QGWhLLLP48JNCVtMnsKq27ZxfYhGFPmmoBZqyVhA4YGWY0t_bWQpIGUglmef0RP9MyDchWQB4POeSZNro4nWu0rDxb8soZ8e8tAIdhbOLx5TGhq2C9Lizd9i-9drfsttqWxm50oaW4mNwvxECc9YyO2Sinb4aIvk6wA8Kz1ZwJy96X_awNxUBtZn05cQxe4C9jTjXErw",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "😨 Saylor skipped buying Bitcoin this week\n\nStill attached the purchase chart anyway\n\nOne week without buying and he needs to explain himself 🥸",
-      "links": [],
-      "createdAt": "2026-05-04T15:20:15.679Z",
-      "expiresAt": "2026-05-05T15:20:15.679Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T00:07:24.133Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-04T15:20:15.679Z"
-      }
-    },
-    {
       "id": 934415208,
       "postUrl": "https://t.me/hrumfam/1251?single",
       "source": {
@@ -5557,6 +6367,94 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-04T15:20:13.944Z"
+      }
+    },
+    {
+      "id": 1966205821,
+      "postUrl": "https://t.me/bloomberg/3204?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🎙️ President Trump's tariff war with China sent US firms scrambling to find new manufacturing hubs. India looked ideal, until the White House changed course.\n\nOn today’s Big Take Asia podcast, how shifting trade policies are undermining India's push to become the world’s next factory: https://link.podtrac.com/jxfy2rhy",
+      "links": [
+        {
+          "label": "https://link.podtrac.com/jxfy2rhy",
+          "url": "https://link.podtrac.com/jxfy2rhy"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 2961835230,
+      "postUrl": "https://t.me/popcorn_today/9643?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-04T15:20:15.679Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
       }
     },
     {
@@ -5768,6 +6666,108 @@
       }
     },
     {
+      "id": 533774090,
+      "postUrl": "https://t.me/bloomberg/3203?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/KAKBcx6hdFs-BC-z5V_zr_yA2TiYPTPBjKFxQJslHzoPI4Pxhc02A9rQCZ_DBCtJMlFxpfrBrI1CC2MVc7I2ALPHJs-c-2ZCTGAy2C22Nw3GPJ5b2MoWXQPDilAG34pZmP2jDSqMPqUgXHUsH_iXWNup2_bKXMbOJ5S7SrjuI1oTWOjj_2oEcXtUUuqBQzj7lafkQ8IlUwESeYMt54ZHGdZdQtDq5xOyAVWgrlTOBkUT-4qOThe5oZINFR0gO5XZnCtZM23uibNkTo87UxjlPmh7byJqfggvgIlI0fYlxJvF6ICPGyg3lclodBwK4Dj674-V-IN_ZkjAVr9w47dhwg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Illegal Bitcoin mining in Malaysia has become so prolific that authorities are deploying drones with thermal imaging to search for unusual power use. More here: https://bloom.bg/3Xz5HYZ\n\n📷: Deputy Minister of PETRA’s Office",
+      "links": [
+        {
+          "label": "https://bloom.bg/3Xz5HYZ",
+          "url": "https://bloom.bg/3Xz5HYZ"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3173236823,
+      "postUrl": "https://t.me/popcorn_today/9642?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/2729b99d96.mp4?token=j2Gr9-iY91XQKqVQX9UZ9tAs75OJcwhrNeD6a0_LVFYClVJMW7suOQsBfPmPpc2dAJAll6kNzi1IiKDGr0wmNbuCNYs0J6OXWCpkawzZIP6Vvh8qAH0hM0ABByyDDXGWxYGbFOxgfm_-JpNT0Aa8reBSRIP0tN0rAPTrTkr33Ag4nYDHEh-GjerCrgwW4IN0KcYYN_a-8yLZvV9t83P2AET9xjLuLlJjv641F8EBddegHtPQ07okO6PSY1vJiBB1uVlYu8pDz0jYlUbA7VM4WgZ-z-SkM2yqIpk-yQfGvUjyWAey86vewEyqi5Hb52DuNfKaXJfFlhx4lNb5lXDB7w",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🪙 Solana founder says AI is now finding vulnerabilities in post-quantum algorithms faster than developers can fix them\n\nThe algorithms themselves are poorly understood - unknown implementation bugs and math weaknesses everywhere. Ethereum L2s are not quantum-ready at all.\n\nWe built quantum protection that AI is already breaking 😊",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:31.973Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
+      }
+    },
+    {
       "id": 1789910135,
       "postUrl": "https://t.me/washingtonpost/3960?single",
       "source": {
@@ -5928,6 +6928,108 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T07:34:36.369Z"
+      }
+    },
+    {
+      "id": 3379287139,
+      "postUrl": "https://t.me/bloomberg/3202?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/B2Z1QGHeoAtJu7qn12doyWx-jsonhcPSnC-I-_X0erI3_vWpN0-YdX7pPGxe_8srhKlLiPUnlL3iIXq59cyHDi57AtBgRUao_YoH1tOMDstaPcyzFYQCTkLned8h3efzNjemJCkWghTCprK56Wx_adxrnJUVHK6NbFK0jhoWbq4-dN0ycBICuxCBsJ7_C-aWHlROb-qw_r2lyYfU4xVryValIbazvc857o8xlhA83EgHNiEIqsL_MsSTdkhrN1pHc9Mv99wXMj8EuO5ZQ5xvYz9j2l1ELJQx4trvxBWmGZ6JjXn8zSuElK8PWYxq5Lkp1BvrrdSBunecjlrq5DSCmQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨LIVE NOW: Bloomberg reporters answer your questions in a Live Q&A about RBI's intervention to stabilize the Indian rupee after its biggest drop since 2022. https://bloom.bg/43VLQH7",
+      "links": [
+        {
+          "label": "https://bloom.bg/43VLQH7",
+          "url": "https://bloom.bg/43VLQH7"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3244183748,
+      "postUrl": "https://t.me/popcorn_today/9641?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/2984739cf3.mp4?token=MyAtlYia1etvkSCrxD0Rofh7chZ2PrYqXsNwcO76ark2BRq4A1kAv0h3-uXgkCHAUHkowhE6Qj0CgWbkaarD-eH6pyW3uyC2Bg63xADEcTXKmnVppHzHKtYIoW35RC8W2ce69bAUMsdBW_WW6P8jNpyu0mBOQKqD8NeUtuLw0VBhDedVElnKgb2JpDssl0U68vZ0wUdx8QI99RUTe8i5PFiENMu0Vm_Hpt5SkbBvZ3FogHNVhvKiaSfYhg1Js543BI5kdY_bEm7BL_vvEod_nIVb79_gFaOM1xpxsarrXLFej8Y_vQJG14hGySbpCvOSSDXFrG32kIUFtR8ml-G0gw",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "💊 Hacking Satoshi's wallets with quantum computers would cost more than you'd steal\n\n22,000 separate addresses means you need insane computing resources to crack even a fraction of them\n\nThe best Bitcoin security is just spreading it everywhere 😂",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-04T23:09:43.400Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
       }
     },
     {
@@ -6092,6 +7194,102 @@
       }
     },
     {
+      "id": 242045824,
+      "postUrl": "https://t.me/bloomberg/3201?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Hong Kong’s leader is holding a briefing as the city's deadliest fire in decades kills at least 55. Follow our live blog for the latest news and analysis: https://bloom.bg/43UuytR",
+      "links": [
+        {
+          "label": "https://bloom.bg/43UuytR",
+          "url": "https://bloom.bg/43UuytR"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 3207907861,
+      "postUrl": "https://t.me/popcorn_today/9640?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/aed3514809.mp4?token=A2oMu31jo1CpCq8UFD06nmiAzHbxd7fR_gSUD0ZPJG23zAHXhyqeE3jJYcXUSXZ36SR9EoZinGlHS596xvaPvvyqOGJREBYG_cDA4WCyH_TJGwSmrbmr8AH1lex2p81syTtQV14-AQnWFQKNxnONzfqg7MEN7jP-EH-S-GoMTFmGP5WQX0FVYZBFx087WdQg1h94s1d08Ga7OmzGLj5aG2aIXYpQn4fOSQU16nOiv_O_jsiFKHl40i_FywxQRHLSXgtE2qi9SXKNq7bQFKBLaAX8ukL-tdDkOyW9Kj3oWNFKpvI7GXJHhB1P5jugvRgySNi_-wKJAYX4hisNeU35Lg",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "💸 Saylor is about to buy $2-3 billion in Bitcoin over the next two weeks through STRC\n\nRetail sold the bottom, no sellers left to push it lower, purchases expected to accelerate by May 14\n\nSold at $78k and watching Saylor buy at $80k 👧",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-04T23:09:43.400Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
+      }
+    },
+    {
       "id": 1803270090,
       "postUrl": "https://t.me/washingtonpost/3958?single",
       "source": {
@@ -6247,6 +7445,106 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T07:34:36.369Z"
+      }
+    },
+    {
+      "id": 3408769537,
+      "postUrl": "https://t.me/bloomberg/3200?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/e5xvglniloSV6l56SAw8tjbDvRLGj9JONUfP0-N9cC6yN7OoStkbDO84YfUm22EgKpqaxaWEgTACplenNAFvT9RCidXqVIbwRkmN8U3IR-_bJbb3FzqgQ9FBLVhvTlBey3zYSuf-fLvYfsPmNn-5qo2c_vJxBHghoYdbn-3Yn7RrYMev_572-QW2zyZYy9ILoWs5e31yp412rMfE1hmIKeZnpMEAk7ZfLst0VQ1YZcL2ByW25xjth_2NT-uGoc-TsSBok8UGT9Cim4eIa098Dv-noaAI6DyWATjznOyGapTrzeqiP-9LBk8ZZ8SaR-lU7gzoP2CZ0t1g_siXPe6pPQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "An AI-enabled teddy bear sold by a Singapore-based company is back on the shelves after researchers discovered it chats unprompted about sexual fetishes and other unsuitable topics. https://bloom.bg/3M4UYmv\n\n📷: FoloToy",
+      "links": [
+        {
+          "label": "https://bloom.bg/3M4UYmv",
+          "url": "https://bloom.bg/3M4UYmv"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 2714415649,
+      "postUrl": "https://t.me/popcorn_today/9639?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/UjeZ3p3-0-fNhSqf5ng9ySpzdoR07_oA8m7a1PkzTRcFZSuF9LjgT77ErYbHgJ1WGrC428FHzmUbIkb9i7eXFPXjDR05i1qi7Shh7LhQDnTNhQQlB5gK7nxAHJazylh8WoeJ01ErwJFGoibqHg3oeJnaTccHtlLl3tY3AVfrsdcnTW1XG14X-Arf5ltjIN6y3zqufrQWfxiYv6a6Cqc-yKzLDzSjrSljhp9RDnd2a8u4dZhupA2s40mDvnOU_UR_2tykWKybmOqRp8iJmN3G6sh31xTsYIqiWZckfBsXt_ytFo6ykC7EFwf6PMxAvY-8mL28xznRjbGuE23rmGy_Vg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-04T23:09:43.400Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
       }
     },
     {
@@ -6410,6 +7708,108 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-05T07:34:36.369Z"
+      }
+    },
+    {
+      "id": 1076607608,
+      "postUrl": "https://t.me/bloomberg/3199?single",
+      "source": {
+        "title": "Bloomberg",
+        "handle": "bloomberg",
+        "verified": true,
+        "avatar": "https://cdn5.telesco.pe/file/nUw2TASy-vcVS4JCZNJwbgu5o8YaPMcSzOFJvOxtcAktKUPdJ-ABoYMmZugrLyeXssnxnVF1F6sF7CsPfMdhNFTjbFh3DvG1keCqHzHxdlioBVLIBQ1Q0BpGl3VcFcz5OkZRF4bI5XdRyeE1yeKlaiGuoJ7lipem-BGgGASZORbUg_9YvcHt4BPyMM0fm-Q2NRkctmQWvcgZdLetYgsqfrGxb44-jgFcHsUj5fVcSnUUVLCWOYtaIQW_Vba3pFYPPDqzauhygf-BOMEqEPzbKjD4Ak9UO58EDdxIpGQJ5FE7euiD6jVzZHLKUWxXSG0HSFw00xLoNRAyv8wz3sLusA.jpg"
+      },
+      "sourceId": "en:bloomberg",
+      "sourceCountryCode": "en",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/JyM3Qc0RtyjUJ1poG8-C4l3pKRsv_ry21JHdlFGHNdN-80r_x8TKzfX71A1X1kJLpP8xRkDpV_mPyesMzw1aTEfk2lrZdPR8gKy17UEbqn-jYOvG8j6k9QydvXiRD0K7B28JC61sjL_qATLO1dOQ8c7QgD-JPhAv-I8ydRmJd05NBjvl8Z91JQv8mkbn3t3EXupY9KyAvM5eoZAFyfJrVdwD36w3gRAZOI5V3IW5Pw6PVRVp_3gNUZhaFMCr4gvVloW5zct3J8p3yyJr8muEaw7GtBMFZslUOebD9eK_Ogaylzwq8f8cmGZsxhKpx9VJDBP7OFBwBuswyNdCpOtxOg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "US authorities have been probing Indian companies trading chemicals used to make fentanyl but with little success. https://bloom.bg/4pw0iOd\n\n📷: Johannes Eisele/AFP/Getty Images",
+      "links": [
+        {
+          "label": "https://bloom.bg/4pw0iOd",
+          "url": "https://bloom.bg/4pw0iOd"
+        }
+      ],
+      "createdAt": "2026-05-05T11:38:34.132Z",
+      "expiresAt": "2026-05-06T11:38:34.132Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T11:38:34.132Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T11:38:34.132Z"
+      }
+    },
+    {
+      "id": 2778647456,
+      "postUrl": "https://t.me/popcorn_today/9638?single",
+      "source": {
+        "title": "Popcorn Today 🍿",
+        "handle": "popcorn_today",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tLdTwBWXgzve2kj63AK8kD_T3s50YLiuQpDf54vq-0qqDCHrbSl9w5cy3F8UZxJ7De-VoY4hXVWmtfhwwcY_VbiRd15hlvHaMskoMdIXZf7_lm5hYkyeq2qb96rb8nZh0wDxuHgV5wh30gEt2vfBHsZYN01d-ljZhQ76VuvdTXtsSVXo8v9ufSMOwkgFTKa9zuJu-NPcaNVJKcjBjL6X8r05GB9dGMXhYlDPB7KPLmerkndfzvJUVirq-wPm5bphwBTuTIBbX46hYHO4cyYarz42XlHeH-zqRGtz2E77ZV59FtJwSvL0TXw-Ig9WC_C1uqz_-s9FviDHcIGFheVGoQ.jpg"
+      },
+      "sourceId": "en:popcorn_today",
+      "sourceCountryCode": "en",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/5ecd26d5c9.mp4?token=Z8WYXRr3uOF6eW3TxukH_f35xn8qCfhAjfOkais0Rlann6dU_4yLL2_V61Cod4h08pzUs5Na2ZqGY0QC5mxYr7g_2jg-e-2mihxxJ1kJfsAG7NfFRBzYFJNBXxKq5Y-tq_fPMHH_bjw-o_QGWhLLLP48JNCVtMnsKq27ZxfYhGFPmmoBZqyVhA4YGWY0t_bWQpIGUglmef0RP9MyDchWQB4POeSZNro4nWu0rDxb8soZ8e8tAIdhbOLx5TGhq2C9Lizd9i-9drfsttqWxm50oaW4mNwvxECc9YyO2Sinb4aIvk6wA8Kz1ZwJy96X_awNxUBtZn05cQxe4C9jTjXErw",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "😨 Saylor skipped buying Bitcoin this week\n\nStill attached the purchase chart anyway\n\nOne week without buying and he needs to explain himself 🥸",
+      "links": [],
+      "createdAt": "2026-05-04T15:20:15.679Z",
+      "expiresAt": "2026-05-05T15:20:15.679Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T00:07:24.133Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-04T15:20:15.679Z"
       }
     },
     {
