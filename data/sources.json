@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-05T13:00:57.628Z",
+  "updatedAt": "2026-05-05T15:35:42.603Z",
   "sources": [
     {
       "id": "ae:abudhabitravel",
@@ -8807,15 +8807,17 @@
       "tags": [
         "humor"
       ],
-      "status": "active",
+      "status": "paused",
       "note": null,
       "createdAt": "2026-04-16T16:06:37.196Z",
-      "updatedAt": "2026-05-05T12:59:56.078Z",
+      "updatedAt": "2026-05-05T15:35:42.603Z",
       "lastCheckedAt": "2026-05-05T12:59:54.064Z",
       "lastImportedAt": "2026-05-05T12:59:54.064Z",
       "lastSeenPostId": 48468,
       "importedPostsCount": 470,
-      "lastRefreshCursorPostId": 48452
+      "lastRefreshCursorPostId": 48452,
+      "placementStatus": "canceled",
+      "placementEndsAt": null
     },
     {
       "id": "ru:rbcinvest",
