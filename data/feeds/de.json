@@ -1,9 +1,101 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-06T13:22:31.681Z",
-  "totalPosts": 65,
+  "updatedAt": "2026-05-06T14:48:23.872Z",
+  "totalPosts": 73,
   "chunks": 1,
   "items": [
+    {
+      "id": 2404598153,
+      "postUrl": "https://t.me/tagesschau/43760?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/E8yhNWpKLBLpB02Uzmjb64sgrycXGB9GYSG-o9VU_USEXR4Z-d3JzFgxwygPSZhmDpEOVwnd_jkoI_h_Pm8B8eCELVWRHshhefgbLDk9iT8NGOcKavFd6R5armxgZHMA1SAIzvwKnfZ4DzJDAmod5cySZeWlkNujFlMKq9nhXi3KwvuUTYNem4mhYkYBIhJhIPFap8fa0BS71vdRk6VkOPb-i-l6wdUSiLvYDE6Mmezw8cE5X69udJTAvnv9aYwuSxyIBCqer9kKWBSLHAOYJS17C1kfx4fhIwQK_JbULs4aThE4PI0jf_nMIzEXFBPcAtkHDSwS4ib9-BeI1tkunA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Ein Jahr Schwarz-Rot: Der Rollenwechsel des Friedrich Merz\nhttps://www.tagesschau.de/inland/innenpolitik/merz-bundeskanzler-ein-jahr-schwarz-rot-100.html\n\nVom scharfzüngigen Oppositionsführer zum Kanzler, der den Laden zusammenhalten muss: Friedrich Merz musste die Rolle wechseln. Seine Wortwahl erinnert aber zuweilen an einen Politiker ohne Regierungsverantwortung, analysiert Dagmar Pepping.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/innenpolitik/merz-bundeskanzler-ein-jahr-schwarz-rot-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/merz-bundeskanzler-ein-jahr-schwarz-rot-100.html"
+        }
+      ],
+      "createdAt": "2026-05-06T14:46:18.288Z",
+      "expiresAt": "2026-05-07T14:46:18.288Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-06T14:46:18.288Z"
+      }
+    },
+    {
+      "id": 2986557786,
+      "postUrl": "https://t.me/heiseonline/12104?single",
+      "source": {
+        "title": "heise online",
+        "handle": "heiseonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/sSd89MlMxDyM2nROcojcBmdG4PYSo07586fzilf7KgA50HxbHA663JNOuPm0XLGyoSeP--XggRJK--XLTQ8wiOHfVkGqVMu_Jcz-qCNL1h3lxCrG0XdyFT7zoeSKOPNMBsgwNF0u_8eUkHwtOhniyJ2_GZs5qiDEYasV-yfFDY-EPbtvC2sxv4p8yDyIu1g05TV64iGzJx2ndBBlJaSk78IVDHHQL1SoTAx0CYjU5Q8bkawgOM2WQDTOLBCJYigNQbovmYpYkYum30wTsqrKpWwBqsy8pMKpkjvw_Zlodt83T_sYlgYGeHkuNZrqmbYMj3nxnGYxStA3c3zVv8onbQ.jpg"
+      },
+      "sourceId": "de:heiseonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Apache HTTP Server: Hochriskante Lücken ermöglichen Einschleusen von Schadcode\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.heise.de/news/Apache-HTTP-Server-Hochriskante-Luecken-ermoeglichen-Einschleusen-von-Schadcode-11284090.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+        }
+      ],
+      "createdAt": "2026-05-06T14:46:17.340Z",
+      "expiresAt": "2026-05-07T14:46:17.340Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-06T14:46:17.340Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-06T14:46:17.340Z"
+      }
+    },
     {
       "id": 587181056,
       "postUrl": "https://t.me/forbesgermany/3?single",
@@ -163,8 +255,8 @@
       }
     },
     {
-      "id": 830322627,
-      "postUrl": "https://t.me/tagesschau/43753?single",
+      "id": 875255881,
+      "postUrl": "https://t.me/tagesschau/43759?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -177,17 +269,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Zoll kontrolliert bundesweit Paketbranche wegen Schwarzarbeit\nhttps://www.tagesschau.de/inland/zoll-kontrolle-paketdienste-arbeitsrecht-100.html\n\nDer Zoll kontrolliert seit dem Morgen Paketzusteller-Firmen im ganzen Bundesgebiet. Tausende Beamte sind in den Verteilzentren großer Dienstleister im Einsatz. Dabei geht es vor allem um Schwarzarbeit und illegale Beschäftigung.",
+      "text": "Marktbericht: Lufthansa trotz des Iran-Kriegs im Aufwind\nhttps://www.tagesschau.de/wirtschaft/finanzen/lufthansa-mb-100.html\n\nDie Lufthansa hat trotz des Iran-Kriegs im ersten Quartal überraschend gut abgeschnitten. Gleichzeitig will der Konzern im Gesamtjahr deutlich mehr verdienen als im Vorjahr. Die Anleger hören das gerne.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/zoll-kontrolle-paketdienste-arbeitsrecht-100.html",
-          "url": "https://www.tagesschau.de/inland/zoll-kontrolle-paketdienste-arbeitsrecht-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/finanzen/lufthansa-mb-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/finanzen/lufthansa-mb-100.html"
         }
       ],
-      "createdAt": "2026-05-06T11:20:09.847Z",
-      "expiresAt": "2026-05-07T11:20:09.847Z",
+      "createdAt": "2026-05-06T14:46:18.288Z",
+      "expiresAt": "2026-05-07T14:46:18.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
+      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
       "tag": "news",
       "tags": [
         "news"
@@ -205,7 +297,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T11:20:09.847Z"
+        "reviewedAt": "2026-05-06T14:46:18.288Z"
       }
     },
     {
@@ -400,8 +492,8 @@
       }
     },
     {
-      "id": 2704337514,
-      "postUrl": "https://t.me/tagesschau/43752?single",
+      "id": 989927944,
+      "postUrl": "https://t.me/tagesschau/43758?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -414,17 +506,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Kritik am BioNTech-Rückzug aus Deutschland\nhttps://www.tagesschau.de/wirtschaft/unternehmen/biontech-produktion-impfstoffe-curevac-100.html\n\nNach der verkündeten Schließung der Produktionsstätten von BioNTech in Deutschland wird vor möglichen Engpässen gewarnt. Scharfe Kritik kommt auch vom CureVac-Gründer und der Gewerkschaft.",
+      "text": "Ausbruch auf Kreuzfahrtschiff: Andes-Typ des Hantavirus nachgewiesen\nhttps://www.tagesschau.de/ausland/europa/kreuzfahrtschiff-hantavirus-100.html\n\nBei zwei Passagieren der \"Hondius\" wurde ein von Mensch zu Mensch übertragbarer Typ des Hantavirus festgestellt. Spanien hatte dem Schiff zuvor erlaubt, die Kanaren anzusteuern - dort regt sich aber Widerstand.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/biontech-produktion-impfstoffe-curevac-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/biontech-produktion-impfstoffe-curevac-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/kreuzfahrtschiff-hantavirus-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/kreuzfahrtschiff-hantavirus-100.html"
         }
       ],
-      "createdAt": "2026-05-06T11:20:09.847Z",
-      "expiresAt": "2026-05-07T11:20:09.847Z",
+      "createdAt": "2026-05-06T14:46:18.288Z",
+      "expiresAt": "2026-05-07T14:46:18.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
+      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
       "tag": "news",
       "tags": [
         "news"
@@ -442,7 +534,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T11:20:09.847Z"
+        "reviewedAt": "2026-05-06T14:46:18.288Z"
       }
     },
     {
@@ -633,8 +725,8 @@
       }
     },
     {
-      "id": 133672161,
-      "postUrl": "https://t.me/tagesschau/43751?single",
+      "id": 4091389055,
+      "postUrl": "https://t.me/tagesschau/43757?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -647,17 +739,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Marktbericht: Zuversicht bei Anlegern lässt DAX steigen\nhttps://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-138.html\n\nNeue Hoffnungen auf Lösungen im Konflikt zwischen den USA und Iran sorgen für kräftige Kursgewinne an den Börsen. Die Euphorie um Künstliche Intelligenz und gute Quartalsbilanzen stützt zusätzlich.",
+      "text": "Vor Trumps China-Besuch: Iranischer Außenminister in Peking\nhttps://www.tagesschau.de/ausland/asien/iran-aussenminister-china-100.html\n\nIrans Außenminister Araghtschi ist zu Gesprächen nach China gereist - kommende Woche wird Trump dort erwartet. Bei beiden Besuchen wird der Krieg gegen Iran und die Straße von Hormus Thema sein. Von B. Eyssel.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-138.html",
-          "url": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-138.html"
+          "label": "https://www.tagesschau.de/ausland/asien/iran-aussenminister-china-100.html",
+          "url": "https://www.tagesschau.de/ausland/asien/iran-aussenminister-china-100.html"
         }
       ],
-      "createdAt": "2026-05-06T11:20:09.847Z",
-      "expiresAt": "2026-05-07T11:20:09.847Z",
+      "createdAt": "2026-05-06T14:46:18.288Z",
+      "expiresAt": "2026-05-07T14:46:18.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
+      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
       "tag": "news",
       "tags": [
         "news"
@@ -675,7 +767,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T11:20:09.847Z"
+        "reviewedAt": "2026-05-06T14:46:18.288Z"
       }
     },
     {
@@ -829,8 +921,8 @@
       }
     },
     {
-      "id": 2386357088,
-      "postUrl": "https://t.me/tagesschau/43750?single",
+      "id": 2581552806,
+      "postUrl": "https://t.me/tagesschau/43756?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -843,17 +935,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Iran-Liveblog: ++ Israels Armee ruft zur Evakuierung im Südlibanon auf ++\nhttps://www.tagesschau.de/newsticker/liveblog-iran-mittwoch-118.html\n\nDie israelische Armee ruft zur Evakuierung von zwölf Dörfern im Süden des Libanon auf. Iran kündigt Genehmigungsverfahren zur Nutzung der Straße von Hormus an.",
+      "text": "Straße von Malakka: Sorge um die weltweit wichtigste Meerenge\nhttps://www.tagesschau.de/ausland/asien/strasse-von-malakka-102.html\n\nDie Straße von Malakka zwischen Indonesien und Malaysia ist die meistbefahrene Meerenge der Welt. Käme es hier - wie in Hormus - zu einer Blockade, wäre nicht nur China betroffen, sondern die gesamte Weltwirtschaft. Von J. Johnston und C. Justus.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/newsticker/liveblog-iran-mittwoch-118.html",
-          "url": "https://www.tagesschau.de/newsticker/liveblog-iran-mittwoch-118.html"
+          "label": "https://www.tagesschau.de/ausland/asien/strasse-von-malakka-102.html",
+          "url": "https://www.tagesschau.de/ausland/asien/strasse-von-malakka-102.html"
         }
       ],
-      "createdAt": "2026-05-06T11:20:09.847Z",
-      "expiresAt": "2026-05-07T11:20:09.847Z",
+      "createdAt": "2026-05-06T14:46:18.288Z",
+      "expiresAt": "2026-05-07T14:46:18.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
+      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
       "tag": "news",
       "tags": [
         "news"
@@ -871,7 +963,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T11:20:09.847Z"
+        "reviewedAt": "2026-05-06T14:46:18.288Z"
       }
     },
     {
@@ -1017,8 +1109,8 @@
       }
     },
     {
-      "id": 3965247110,
-      "postUrl": "https://t.me/tagesschau/43749?single",
+      "id": 3686059613,
+      "postUrl": "https://t.me/tagesschau/43755?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1031,17 +1123,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Quartalsbilanz: Maschinenbau steckt in Strukturkrise fest\nhttps://www.tagesschau.de/wirtschaft/unternehmen/maschinenbau-quartalsbilanz-100.html\n\nFirmen bauen weiter Jobs ab und verlagern sie ins Ausland. Auch der Maschinenbau ist betroffen.Trotz positiven ersten Quartals sieht der Branchenverband keine grundsätzliche Besserung. Von Axel John.",
+      "text": "Getöteter Polizist: Lange Haftstrafe wegen illegalem Autorennen mit Todesfolge\nhttps://www.tagesschau.de/inland/gesellschaft/urteil-getoeteter-polizist-autorennen-dresden-100.html\n\nNach dem Tod eines Polizisten bei einer Verfolgungsjagd ist der Angeklagte zu einer Freiheitsstrafe von mehr als zehn Jahren verurteilt worden. Das Landgericht in Cottbus befand ihn eines verbotenen Autorennens mit Todesfolge für schuldig.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/maschinenbau-quartalsbilanz-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/maschinenbau-quartalsbilanz-100.html"
+          "label": "https://www.tagesschau.de/inland/gesellschaft/urteil-getoeteter-polizist-autorennen-dresden-100.html",
+          "url": "https://www.tagesschau.de/inland/gesellschaft/urteil-getoeteter-polizist-autorennen-dresden-100.html"
         }
       ],
-      "createdAt": "2026-05-06T11:20:09.847Z",
-      "expiresAt": "2026-05-07T11:20:09.847Z",
+      "createdAt": "2026-05-06T14:46:18.288Z",
+      "expiresAt": "2026-05-07T14:46:18.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
+      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1059,7 +1151,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T11:20:09.847Z"
+        "reviewedAt": "2026-05-06T14:46:18.288Z"
       }
     },
     {
@@ -1211,8 +1303,8 @@
       }
     },
     {
-      "id": 3762863327,
-      "postUrl": "https://t.me/tagesschau/43748?single",
+      "id": 204844460,
+      "postUrl": "https://t.me/tagesschau/43754?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1225,17 +1317,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Wie Brüssel auf ein Jahr Bundeskanzler Merz blickt\nhttps://www.tagesschau.de/ausland/europa/bruessel-koalition-merz-100.html\n\nIn Brüssel waren die Erwartungen an Merz hoch: mehr Führung, mehr Europa. Doch der deutsche Kanzler muss den Spagat schaffen zwischen nationalen und europäischen Interessen - und irgendwas kommt immer zu kurz. Von Sabrina Fritz.",
+      "text": "Kampf gegen Deepfakes: Meloni verurteilt KI-Bild als politischen Angriff\nhttps://www.tagesschau.de/ausland/europa/meloni-ki-deepfakes-100.html\n\nImmer wieder tauchen KI-Bilder mit Italiens Ministerpräsidentin Meloni im Internet auf. Jetzt teilt sie selbst eins dieser Bilder - und warnt davor, alles zu glauben, was man im Internet sehe.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/bruessel-koalition-merz-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/bruessel-koalition-merz-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/meloni-ki-deepfakes-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/meloni-ki-deepfakes-100.html"
         }
       ],
-      "createdAt": "2026-05-06T11:20:09.847Z",
-      "expiresAt": "2026-05-07T11:20:09.847Z",
+      "createdAt": "2026-05-06T14:46:18.288Z",
+      "expiresAt": "2026-05-07T14:46:18.288Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
+      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1253,7 +1345,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T11:20:09.847Z"
+        "reviewedAt": "2026-05-06T14:46:18.288Z"
       }
     },
     {
@@ -1399,8 +1491,8 @@
       }
     },
     {
-      "id": 195471208,
-      "postUrl": "https://t.me/tagesschau/43747?single",
+      "id": 830322627,
+      "postUrl": "https://t.me/tagesschau/43753?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1413,11 +1505,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Schwarz-rote Koalition: Die großen Brocken kommen noch\nhttps://www.tagesschau.de/inland/innenpolitik/koalition-ein-jahr-100.html\n\nProbleme abarbeiten und weniger Konflikte - mit diesen Versprechen war die schwarz-rote Koalition gestartet. Doch zum Jahrestag wirkt das Bündnis nervös. Und die großen Reformen kommen erst noch. Von Gabriele Intemann.",
+      "text": "Zoll kontrolliert bundesweit Paketbranche wegen Schwarzarbeit\nhttps://www.tagesschau.de/inland/zoll-kontrolle-paketdienste-arbeitsrecht-100.html\n\nDer Zoll kontrolliert seit dem Morgen Paketzusteller-Firmen im ganzen Bundesgebiet. Tausende Beamte sind in den Verteilzentren großer Dienstleister im Einsatz. Dabei geht es vor allem um Schwarzarbeit und illegale Beschäftigung.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/koalition-ein-jahr-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/koalition-ein-jahr-100.html"
+          "label": "https://www.tagesschau.de/inland/zoll-kontrolle-paketdienste-arbeitsrecht-100.html",
+          "url": "https://www.tagesschau.de/inland/zoll-kontrolle-paketdienste-arbeitsrecht-100.html"
         }
       ],
       "createdAt": "2026-05-06T11:20:09.847Z",
@@ -1547,8 +1639,8 @@
       }
     },
     {
-      "id": 3701264681,
-      "postUrl": "https://t.me/tagesschau/43746?single",
+      "id": 2704337514,
+      "postUrl": "https://t.me/tagesschau/43752?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1561,17 +1653,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Krieg in der Ukraine: \"Ich warne vor Überschwänglichkeit\"\nhttps://www.tagesschau.de/ukraine-kriegsverlauf-gady-100.html\n\nDie Ukraine habe seine Drohnen-Fähigkeiten deutlich verbessert, sagt Militärexperte Franz-Stefan Gady im Interview. Doch er warnt davor, in zu großen Optimismus zu verfallen.",
+      "text": "Kritik am BioNTech-Rückzug aus Deutschland\nhttps://www.tagesschau.de/wirtschaft/unternehmen/biontech-produktion-impfstoffe-curevac-100.html\n\nNach der verkündeten Schließung der Produktionsstätten von BioNTech in Deutschland wird vor möglichen Engpässen gewarnt. Scharfe Kritik kommt auch vom CureVac-Gründer und der Gewerkschaft.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ukraine-kriegsverlauf-gady-100.html",
-          "url": "https://www.tagesschau.de/ukraine-kriegsverlauf-gady-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/biontech-produktion-impfstoffe-curevac-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/biontech-produktion-impfstoffe-curevac-100.html"
         }
       ],
-      "createdAt": "2026-05-06T06:44:20.692Z",
-      "expiresAt": "2026-05-07T06:44:20.692Z",
+      "createdAt": "2026-05-06T11:20:09.847Z",
+      "expiresAt": "2026-05-07T11:20:09.847Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T06:44:20.692Z",
+      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1589,7 +1681,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T06:44:20.692Z"
+        "reviewedAt": "2026-05-06T11:20:09.847Z"
       }
     },
     {
@@ -1697,8 +1789,8 @@
       }
     },
     {
-      "id": 2013841778,
-      "postUrl": "https://t.me/tagesschau/43745?single",
+      "id": 133672161,
+      "postUrl": "https://t.me/tagesschau/43751?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1711,17 +1803,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Trump pausiert US-Hilfe für Schiffe in der Straße von Hormus\nhttps://www.tagesschau.de/ausland/trump-strasse-von-hormus-102.html\n\nNach nur einem Tag will US-Präsident Trump die Begleitung von Schiffen durch die Straße von Hormus kurzzeitig aussetzen. In dieser Zeit solle geprüft werden, ob ein Abkommen mit Iran geschlossen werden könne.",
+      "text": "Marktbericht: Zuversicht bei Anlegern lässt DAX steigen\nhttps://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-138.html\n\nNeue Hoffnungen auf Lösungen im Konflikt zwischen den USA und Iran sorgen für kräftige Kursgewinne an den Börsen. Die Euphorie um Künstliche Intelligenz und gute Quartalsbilanzen stützt zusätzlich.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-102.html",
-          "url": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-102.html"
+          "label": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-138.html",
+          "url": "https://www.tagesschau.de/wirtschaft/finanzen/marktberichte/marktbericht-138.html"
         }
       ],
-      "createdAt": "2026-05-06T04:03:14.998Z",
-      "expiresAt": "2026-05-07T04:03:14.998Z",
+      "createdAt": "2026-05-06T11:20:09.847Z",
+      "expiresAt": "2026-05-07T11:20:09.847Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T04:03:14.998Z",
+      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1739,7 +1831,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T04:03:14.998Z"
+        "reviewedAt": "2026-05-06T11:20:09.847Z"
       }
     },
     {
@@ -1855,8 +1947,8 @@
       }
     },
     {
-      "id": 1982790123,
-      "postUrl": "https://t.me/tagesschau/43744?single",
+      "id": 2386357088,
+      "postUrl": "https://t.me/tagesschau/43750?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1869,17 +1961,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Hantavirus-Ausbruch: Kreuzfahrtschiff darf nach Spanien\nhttps://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-spanien-100.html\n\nWegen mehrerer Infektionen mit dem Hantavirus hatte Kap Verde einem Kreuzfahrtschiff das Anlegen verweigert. Nun darf die \"Hondius\" nach Spanien. An Bord des Schiffs waren drei Passagiere gestorben.",
+      "text": "Iran-Liveblog: ++ Israels Armee ruft zur Evakuierung im Südlibanon auf ++\nhttps://www.tagesschau.de/newsticker/liveblog-iran-mittwoch-118.html\n\nDie israelische Armee ruft zur Evakuierung von zwölf Dörfern im Süden des Libanon auf. Iran kündigt Genehmigungsverfahren zur Nutzung der Straße von Hormus an.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-spanien-100.html",
-          "url": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-spanien-100.html"
+          "label": "https://www.tagesschau.de/newsticker/liveblog-iran-mittwoch-118.html",
+          "url": "https://www.tagesschau.de/newsticker/liveblog-iran-mittwoch-118.html"
         }
       ],
-      "createdAt": "2026-05-06T04:03:14.998Z",
-      "expiresAt": "2026-05-07T04:03:14.998Z",
+      "createdAt": "2026-05-06T11:20:09.847Z",
+      "expiresAt": "2026-05-07T11:20:09.847Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T04:03:14.998Z",
+      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1897,7 +1989,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-06T04:03:14.998Z"
+        "reviewedAt": "2026-05-06T11:20:09.847Z"
       }
     },
     {
@@ -2003,8 +2095,8 @@
       }
     },
     {
-      "id": 3500272180,
-      "postUrl": "https://t.me/tagesschau/43743?single",
+      "id": 3965247110,
+      "postUrl": "https://t.me/tagesschau/43749?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2017,17 +2109,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Kreuzfahrtschiff: Hantavirus wohl von Mensch zu Mensch übertragen\nhttps://www.tagesschau.de/ausland/afrika/hantavirus-kreuzfahrtschiff-100.html\n\nNach dem Hantavirus-Ausbruch auf einem Kreuzfahrtschiff im Atlantik hat sich die Zahl der Infizierten weiter erhöht. Die WHO geht von einer Mensch-zu-Mensch-Übertragung aus. Offenbar will Spanien das Schiff anlegen lassen.",
+      "text": "Quartalsbilanz: Maschinenbau steckt in Strukturkrise fest\nhttps://www.tagesschau.de/wirtschaft/unternehmen/maschinenbau-quartalsbilanz-100.html\n\nFirmen bauen weiter Jobs ab und verlagern sie ins Ausland. Auch der Maschinenbau ist betroffen.Trotz positiven ersten Quartals sieht der Branchenverband keine grundsätzliche Besserung. Von Axel John.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/afrika/hantavirus-kreuzfahrtschiff-100.html",
-          "url": "https://www.tagesschau.de/ausland/afrika/hantavirus-kreuzfahrtschiff-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/unternehmen/maschinenbau-quartalsbilanz-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/unternehmen/maschinenbau-quartalsbilanz-100.html"
         }
       ],
-      "createdAt": "2026-05-05T22:13:29.565Z",
-      "expiresAt": "2026-05-06T22:13:29.565Z",
+      "createdAt": "2026-05-06T11:20:09.847Z",
+      "expiresAt": "2026-05-07T11:20:09.847Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T22:13:29.565Z",
+      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2045,7 +2137,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-05T22:13:29.565Z"
+        "reviewedAt": "2026-05-06T11:20:09.847Z"
       }
     },
     {
@@ -2145,8 +2237,8 @@
       }
     },
     {
-      "id": 3541107205,
-      "postUrl": "https://t.me/tagesschau/43742?single",
+      "id": 3762863327,
+      "postUrl": "https://t.me/tagesschau/43748?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2159,17 +2251,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Viele Tote durch russische Bombenangriffe auf die Ukraine\nhttps://www.tagesschau.de/ausland/europa/ukraine-angriffe-tote-112.html\n\nKurz vor dem Beginn einer möglichen Feuerpause fallen russische Bomben auf mehrere Städte in der Ukraine. Es gibt viele Tote und Verletzte. Präsident Selenskyj wirft Russland \"blanken Zynismus\" vor.",
+      "text": "Wie Brüssel auf ein Jahr Bundeskanzler Merz blickt\nhttps://www.tagesschau.de/ausland/europa/bruessel-koalition-merz-100.html\n\nIn Brüssel waren die Erwartungen an Merz hoch: mehr Führung, mehr Europa. Doch der deutsche Kanzler muss den Spagat schaffen zwischen nationalen und europäischen Interessen - und irgendwas kommt immer zu kurz. Von Sabrina Fritz.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/ukraine-angriffe-tote-112.html",
-          "url": "https://www.tagesschau.de/ausland/europa/ukraine-angriffe-tote-112.html"
+          "label": "https://www.tagesschau.de/ausland/europa/bruessel-koalition-merz-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/bruessel-koalition-merz-100.html"
         }
       ],
-      "createdAt": "2026-05-05T22:13:29.565Z",
-      "expiresAt": "2026-05-06T22:13:29.565Z",
+      "createdAt": "2026-05-06T11:20:09.847Z",
+      "expiresAt": "2026-05-07T11:20:09.847Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T22:13:29.565Z",
+      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2187,7 +2279,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-05T22:13:29.565Z"
+        "reviewedAt": "2026-05-06T11:20:09.847Z"
       }
     },
     {
@@ -2287,8 +2379,8 @@
       }
     },
     {
-      "id": 3414085198,
-      "postUrl": "https://t.me/tagesschau/43741?single",
+      "id": 195471208,
+      "postUrl": "https://t.me/tagesschau/43747?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2301,17 +2393,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Wie sich Jens Spahn an der Fraktionsspitze behauptet\nhttps://www.tagesschau.de/inland/innenpolitik/spahn-union-fraktionschef-wiederwahl-100.html\n\nDie Amtszeit des Unionsfraktionschefs Spahn begann holprig. Es gab Kritik an seiner Führung und seine Maskendeals wirken bis heute nach. Aber Spahn bleibt - und will wohl noch weiter nach oben. Von Philip Kuntschner.",
+      "text": "Schwarz-rote Koalition: Die großen Brocken kommen noch\nhttps://www.tagesschau.de/inland/innenpolitik/koalition-ein-jahr-100.html\n\nProbleme abarbeiten und weniger Konflikte - mit diesen Versprechen war die schwarz-rote Koalition gestartet. Doch zum Jahrestag wirkt das Bündnis nervös. Und die großen Reformen kommen erst noch. Von Gabriele Intemann.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/spahn-union-fraktionschef-wiederwahl-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/spahn-union-fraktionschef-wiederwahl-100.html"
+          "label": "https://www.tagesschau.de/inland/innenpolitik/koalition-ein-jahr-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/koalition-ein-jahr-100.html"
         }
       ],
-      "createdAt": "2026-05-05T20:17:27.843Z",
-      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "createdAt": "2026-05-06T11:20:09.847Z",
+      "expiresAt": "2026-05-07T11:20:09.847Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "mediaRefreshedAt": "2026-05-06T11:20:09.847Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2329,7 +2421,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-05T20:17:27.843Z"
+        "reviewedAt": "2026-05-06T11:20:09.847Z"
       }
     },
     {
@@ -2429,8 +2521,8 @@
       }
     },
     {
-      "id": 2436279815,
-      "postUrl": "https://t.me/tagesschau/43740?single",
+      "id": 3701264681,
+      "postUrl": "https://t.me/tagesschau/43746?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2443,17 +2535,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Entwurf für Gebäudemodernisierungsgesetz: Klimaneutralität auf wackligem Boden\nhttps://www.tagesschau.de/inland/innenpolitik/entwurf-gebaeudemodernisierungsgesetz-kritik-100.html\n\nBislang gab es nur grobe Eckpunkte - nun einen konkreten Entwurf zum Gebäudemodernisierungsgesetz. Das Papier zeigt, welche Regeln beim Heizen gelten sollen. Scharfe Kritik folgt direkt. Von A. Mellmann und J. Pentz.",
+      "text": "Krieg in der Ukraine: \"Ich warne vor Überschwänglichkeit\"\nhttps://www.tagesschau.de/ukraine-kriegsverlauf-gady-100.html\n\nDie Ukraine habe seine Drohnen-Fähigkeiten deutlich verbessert, sagt Militärexperte Franz-Stefan Gady im Interview. Doch er warnt davor, in zu großen Optimismus zu verfallen.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/entwurf-gebaeudemodernisierungsgesetz-kritik-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/entwurf-gebaeudemodernisierungsgesetz-kritik-100.html"
+          "label": "https://www.tagesschau.de/ukraine-kriegsverlauf-gady-100.html",
+          "url": "https://www.tagesschau.de/ukraine-kriegsverlauf-gady-100.html"
         }
       ],
-      "createdAt": "2026-05-05T20:17:27.843Z",
-      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "createdAt": "2026-05-06T06:44:20.692Z",
+      "expiresAt": "2026-05-07T06:44:20.692Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "mediaRefreshedAt": "2026-05-06T06:44:20.692Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2471,7 +2563,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-05T20:17:27.843Z"
+        "reviewedAt": "2026-05-06T06:44:20.692Z"
       }
     },
     {
@@ -2595,8 +2687,8 @@
       }
     },
     {
-      "id": 631514311,
-      "postUrl": "https://t.me/tagesschau/43739?single",
+      "id": 2013841778,
+      "postUrl": "https://t.me/tagesschau/43745?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2609,17 +2701,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Leipzig: Amokfahrer kommt in die Psychiatrie\nhttps://www.tagesschau.de/inland/regional/sachsen/liveblog-leipzig-100.html\n\nNach der Amokfahrt in Leipzig mit zwei Toten und mehreren Verletzten wird der Täter in die Psychiatrie eingewiesen. In der Stadt gedachten Menschen am Folgetag bei Gedenkveranstaltungen der Opfer.",
+      "text": "Trump pausiert US-Hilfe für Schiffe in der Straße von Hormus\nhttps://www.tagesschau.de/ausland/trump-strasse-von-hormus-102.html\n\nNach nur einem Tag will US-Präsident Trump die Begleitung von Schiffen durch die Straße von Hormus kurzzeitig aussetzen. In dieser Zeit solle geprüft werden, ob ein Abkommen mit Iran geschlossen werden könne.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/regional/sachsen/liveblog-leipzig-100.html",
-          "url": "https://www.tagesschau.de/inland/regional/sachsen/liveblog-leipzig-100.html"
+          "label": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-102.html",
+          "url": "https://www.tagesschau.de/ausland/trump-strasse-von-hormus-102.html"
         }
       ],
-      "createdAt": "2026-05-05T20:17:27.843Z",
-      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "createdAt": "2026-05-06T04:03:14.998Z",
+      "expiresAt": "2026-05-07T04:03:14.998Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "mediaRefreshedAt": "2026-05-06T04:03:14.998Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2637,7 +2729,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-05T20:17:27.843Z"
+        "reviewedAt": "2026-05-06T04:03:14.998Z"
       }
     },
     {
@@ -2769,8 +2861,8 @@
       }
     },
     {
-      "id": 4032936974,
-      "postUrl": "https://t.me/tagesschau/43738?single",
+      "id": 1982790123,
+      "postUrl": "https://t.me/tagesschau/43744?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -2783,17 +2875,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Jens Spahn als Fraktionschef von CDU und CSU wiedergewählt\nhttps://www.tagesschau.de/inland/spahn-fraktionschef-union-100.html\n\nZwischenzeitlich galt sein Job als gefährdet, doch nun ist Jens Spahn als Fraktionsvorsitzender bestätigt worden. Sein Wahlergebnis in der Union im Bundestag verschlechterte sich allerdings.",
+      "text": "Hantavirus-Ausbruch: Kreuzfahrtschiff darf nach Spanien\nhttps://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-spanien-100.html\n\nWegen mehrerer Infektionen mit dem Hantavirus hatte Kap Verde einem Kreuzfahrtschiff das Anlegen verweigert. Nun darf die \"Hondius\" nach Spanien. An Bord des Schiffs waren drei Passagiere gestorben.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/spahn-fraktionschef-union-100.html",
-          "url": "https://www.tagesschau.de/inland/spahn-fraktionschef-union-100.html"
+          "label": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-spanien-100.html",
+          "url": "https://www.tagesschau.de/ausland/hantavirus-kreuzfahrtschiff-spanien-100.html"
         }
       ],
-      "createdAt": "2026-05-05T20:17:27.843Z",
-      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "createdAt": "2026-05-06T04:03:14.998Z",
+      "expiresAt": "2026-05-07T04:03:14.998Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "mediaRefreshedAt": "2026-05-06T04:03:14.998Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2811,7 +2903,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-05T20:17:27.843Z"
+        "reviewedAt": "2026-05-06T04:03:14.998Z"
       }
     },
     {
@@ -2935,6 +3027,52 @@
       }
     },
     {
+      "id": 3500272180,
+      "postUrl": "https://t.me/tagesschau/43743?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/E8yhNWpKLBLpB02Uzmjb64sgrycXGB9GYSG-o9VU_USEXR4Z-d3JzFgxwygPSZhmDpEOVwnd_jkoI_h_Pm8B8eCELVWRHshhefgbLDk9iT8NGOcKavFd6R5armxgZHMA1SAIzvwKnfZ4DzJDAmod5cySZeWlkNujFlMKq9nhXi3KwvuUTYNem4mhYkYBIhJhIPFap8fa0BS71vdRk6VkOPb-i-l6wdUSiLvYDE6Mmezw8cE5X69udJTAvnv9aYwuSxyIBCqer9kKWBSLHAOYJS17C1kfx4fhIwQK_JbULs4aThE4PI0jf_nMIzEXFBPcAtkHDSwS4ib9-BeI1tkunA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Kreuzfahrtschiff: Hantavirus wohl von Mensch zu Mensch übertragen\nhttps://www.tagesschau.de/ausland/afrika/hantavirus-kreuzfahrtschiff-100.html\n\nNach dem Hantavirus-Ausbruch auf einem Kreuzfahrtschiff im Atlantik hat sich die Zahl der Infizierten weiter erhöht. Die WHO geht von einer Mensch-zu-Mensch-Übertragung aus. Offenbar will Spanien das Schiff anlegen lassen.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/afrika/hantavirus-kreuzfahrtschiff-100.html",
+          "url": "https://www.tagesschau.de/ausland/afrika/hantavirus-kreuzfahrtschiff-100.html"
+        }
+      ],
+      "createdAt": "2026-05-05T22:13:29.565Z",
+      "expiresAt": "2026-05-06T22:13:29.565Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T22:13:29.565Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T22:13:29.565Z"
+      }
+    },
+    {
       "id": 502957634,
       "postUrl": "https://t.me/dw_deutsch/874?single",
       "source": {
@@ -3052,6 +3190,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-06T13:20:42.952Z"
+      }
+    },
+    {
+      "id": 3541107205,
+      "postUrl": "https://t.me/tagesschau/43742?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/E8yhNWpKLBLpB02Uzmjb64sgrycXGB9GYSG-o9VU_USEXR4Z-d3JzFgxwygPSZhmDpEOVwnd_jkoI_h_Pm8B8eCELVWRHshhefgbLDk9iT8NGOcKavFd6R5armxgZHMA1SAIzvwKnfZ4DzJDAmod5cySZeWlkNujFlMKq9nhXi3KwvuUTYNem4mhYkYBIhJhIPFap8fa0BS71vdRk6VkOPb-i-l6wdUSiLvYDE6Mmezw8cE5X69udJTAvnv9aYwuSxyIBCqer9kKWBSLHAOYJS17C1kfx4fhIwQK_JbULs4aThE4PI0jf_nMIzEXFBPcAtkHDSwS4ib9-BeI1tkunA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Viele Tote durch russische Bombenangriffe auf die Ukraine\nhttps://www.tagesschau.de/ausland/europa/ukraine-angriffe-tote-112.html\n\nKurz vor dem Beginn einer möglichen Feuerpause fallen russische Bomben auf mehrere Städte in der Ukraine. Es gibt viele Tote und Verletzte. Präsident Selenskyj wirft Russland \"blanken Zynismus\" vor.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/europa/ukraine-angriffe-tote-112.html",
+          "url": "https://www.tagesschau.de/ausland/europa/ukraine-angriffe-tote-112.html"
+        }
+      ],
+      "createdAt": "2026-05-05T22:13:29.565Z",
+      "expiresAt": "2026-05-06T22:13:29.565Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T22:13:29.565Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T22:13:29.565Z"
       }
     },
     {
@@ -3179,6 +3363,52 @@
       }
     },
     {
+      "id": 3414085198,
+      "postUrl": "https://t.me/tagesschau/43741?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/E8yhNWpKLBLpB02Uzmjb64sgrycXGB9GYSG-o9VU_USEXR4Z-d3JzFgxwygPSZhmDpEOVwnd_jkoI_h_Pm8B8eCELVWRHshhefgbLDk9iT8NGOcKavFd6R5armxgZHMA1SAIzvwKnfZ4DzJDAmod5cySZeWlkNujFlMKq9nhXi3KwvuUTYNem4mhYkYBIhJhIPFap8fa0BS71vdRk6VkOPb-i-l6wdUSiLvYDE6Mmezw8cE5X69udJTAvnv9aYwuSxyIBCqer9kKWBSLHAOYJS17C1kfx4fhIwQK_JbULs4aThE4PI0jf_nMIzEXFBPcAtkHDSwS4ib9-BeI1tkunA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Wie sich Jens Spahn an der Fraktionsspitze behauptet\nhttps://www.tagesschau.de/inland/innenpolitik/spahn-union-fraktionschef-wiederwahl-100.html\n\nDie Amtszeit des Unionsfraktionschefs Spahn begann holprig. Es gab Kritik an seiner Führung und seine Maskendeals wirken bis heute nach. Aber Spahn bleibt - und will wohl noch weiter nach oben. Von Philip Kuntschner.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/innenpolitik/spahn-union-fraktionschef-wiederwahl-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/spahn-union-fraktionschef-wiederwahl-100.html"
+        }
+      ],
+      "createdAt": "2026-05-05T20:17:27.843Z",
+      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T20:17:27.843Z"
+      }
+    },
+    {
       "id": 1840038148,
       "postUrl": "https://t.me/dw_deutsch/872?single",
       "source": {
@@ -3296,6 +3526,144 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-06T13:20:42.952Z"
+      }
+    },
+    {
+      "id": 2436279815,
+      "postUrl": "https://t.me/tagesschau/43740?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/E8yhNWpKLBLpB02Uzmjb64sgrycXGB9GYSG-o9VU_USEXR4Z-d3JzFgxwygPSZhmDpEOVwnd_jkoI_h_Pm8B8eCELVWRHshhefgbLDk9iT8NGOcKavFd6R5armxgZHMA1SAIzvwKnfZ4DzJDAmod5cySZeWlkNujFlMKq9nhXi3KwvuUTYNem4mhYkYBIhJhIPFap8fa0BS71vdRk6VkOPb-i-l6wdUSiLvYDE6Mmezw8cE5X69udJTAvnv9aYwuSxyIBCqer9kKWBSLHAOYJS17C1kfx4fhIwQK_JbULs4aThE4PI0jf_nMIzEXFBPcAtkHDSwS4ib9-BeI1tkunA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Entwurf für Gebäudemodernisierungsgesetz: Klimaneutralität auf wackligem Boden\nhttps://www.tagesschau.de/inland/innenpolitik/entwurf-gebaeudemodernisierungsgesetz-kritik-100.html\n\nBislang gab es nur grobe Eckpunkte - nun einen konkreten Entwurf zum Gebäudemodernisierungsgesetz. Das Papier zeigt, welche Regeln beim Heizen gelten sollen. Scharfe Kritik folgt direkt. Von A. Mellmann und J. Pentz.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/innenpolitik/entwurf-gebaeudemodernisierungsgesetz-kritik-100.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/entwurf-gebaeudemodernisierungsgesetz-kritik-100.html"
+        }
+      ],
+      "createdAt": "2026-05-05T20:17:27.843Z",
+      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T20:17:27.843Z"
+      }
+    },
+    {
+      "id": 631514311,
+      "postUrl": "https://t.me/tagesschau/43739?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/E8yhNWpKLBLpB02Uzmjb64sgrycXGB9GYSG-o9VU_USEXR4Z-d3JzFgxwygPSZhmDpEOVwnd_jkoI_h_Pm8B8eCELVWRHshhefgbLDk9iT8NGOcKavFd6R5armxgZHMA1SAIzvwKnfZ4DzJDAmod5cySZeWlkNujFlMKq9nhXi3KwvuUTYNem4mhYkYBIhJhIPFap8fa0BS71vdRk6VkOPb-i-l6wdUSiLvYDE6Mmezw8cE5X69udJTAvnv9aYwuSxyIBCqer9kKWBSLHAOYJS17C1kfx4fhIwQK_JbULs4aThE4PI0jf_nMIzEXFBPcAtkHDSwS4ib9-BeI1tkunA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Leipzig: Amokfahrer kommt in die Psychiatrie\nhttps://www.tagesschau.de/inland/regional/sachsen/liveblog-leipzig-100.html\n\nNach der Amokfahrt in Leipzig mit zwei Toten und mehreren Verletzten wird der Täter in die Psychiatrie eingewiesen. In der Stadt gedachten Menschen am Folgetag bei Gedenkveranstaltungen der Opfer.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/regional/sachsen/liveblog-leipzig-100.html",
+          "url": "https://www.tagesschau.de/inland/regional/sachsen/liveblog-leipzig-100.html"
+        }
+      ],
+      "createdAt": "2026-05-05T20:17:27.843Z",
+      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T20:17:27.843Z"
+      }
+    },
+    {
+      "id": 4032936974,
+      "postUrl": "https://t.me/tagesschau/43738?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/E8yhNWpKLBLpB02Uzmjb64sgrycXGB9GYSG-o9VU_USEXR4Z-d3JzFgxwygPSZhmDpEOVwnd_jkoI_h_Pm8B8eCELVWRHshhefgbLDk9iT8NGOcKavFd6R5armxgZHMA1SAIzvwKnfZ4DzJDAmod5cySZeWlkNujFlMKq9nhXi3KwvuUTYNem4mhYkYBIhJhIPFap8fa0BS71vdRk6VkOPb-i-l6wdUSiLvYDE6Mmezw8cE5X69udJTAvnv9aYwuSxyIBCqer9kKWBSLHAOYJS17C1kfx4fhIwQK_JbULs4aThE4PI0jf_nMIzEXFBPcAtkHDSwS4ib9-BeI1tkunA.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Jens Spahn als Fraktionschef von CDU und CSU wiedergewählt\nhttps://www.tagesschau.de/inland/spahn-fraktionschef-union-100.html\n\nZwischenzeitlich galt sein Job als gefährdet, doch nun ist Jens Spahn als Fraktionsvorsitzender bestätigt worden. Sein Wahlergebnis in der Union im Bundestag verschlechterte sich allerdings.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/spahn-fraktionschef-union-100.html",
+          "url": "https://www.tagesschau.de/inland/spahn-fraktionschef-union-100.html"
+        }
+      ],
+      "createdAt": "2026-05-05T20:17:27.843Z",
+      "expiresAt": "2026-05-06T20:17:27.843Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-05T20:17:27.843Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-05T20:17:27.843Z"
       }
     }
   ]
