@@ -571,6 +571,7 @@ export function SmartFeedBar({
   const theme = useThemeMode();
   const isDark = theme === "dark";
   const shellRef = useRef<HTMLDivElement | null>(null);
+  const countrySwitchingRef = useRef(false);
   const [countriesOpen, setCountriesOpen] = useState(false);
   const [countryPickerOpen, setCountryPickerOpen] = useState(false);
 
@@ -619,14 +620,11 @@ export function SmartFeedBar({
     return normalizeCountryList(ordered);
   }, [availableCountries, baseCountry]);
 
-  const selectedExtras = useMemo(() => {
-    return normalizedSelected.filter((country) => country !== baseCountry).slice(0, 4);
-  }, [baseCountry, normalizedSelected]);
-
   const favoriteExtras = useMemo(() => {
     return normalizedFavorites.filter((country) => country !== baseCountry).slice(0, 4);
   }, [baseCountry, normalizedFavorites]);
 
+  const activeCountry = normalizedSelected[normalizedSelected.length - 1] ?? baseCountry;
   const quickCountries = normalizedFavorites;
 
   useEffect(() => {
@@ -669,20 +667,33 @@ export function SmartFeedBar({
     [copy.modeAll, copy.modePhoto, copy.modeText, copy.modeVideo]
   );
 
-  const extraCount = selectedExtras.length;
-  const countryButtonLabel =
-    extraCount > 0
-      ? `${getCountryShort(baseCountry)} +${extraCount}`
-      : getCountryShort(baseCountry);
+  const countryButtonLabel = getCountryShort(activeCountry);
 
   const activeClasses = getActiveClasses(isDark);
   const inactivePillClasses = getInactivePillClasses(isDark);
   const inactiveCountryClasses = getInactiveCountryClasses(isDark);
-  const selectedSet = new Set(normalizedSelected);
+  const selectedSet = new Set([activeCountry]);
   const favoriteSet = new Set(normalizedFavorites);
 
   const handleCountryClick = (country: string) => {
-    onToggleCountry(country);
+    if (countrySwitchingRef.current) return;
+    if (country === activeCountry) return;
+
+    countrySwitchingRef.current = true;
+
+    if (!normalizedSelected.includes(country)) {
+      onToggleCountry(country);
+    }
+
+    for (const selectedCountry of normalizedSelected) {
+      if (selectedCountry !== country) {
+        onToggleCountry(selectedCountry);
+      }
+    }
+
+    window.setTimeout(() => {
+      countrySwitchingRef.current = false;
+    }, 0);
   };
 
   return (
@@ -790,7 +801,6 @@ export function SmartFeedBar({
                 {quickCountries.map((country) => {
                   const checked = selectedSet.has(country);
                   const isPrimary = country === baseCountry;
-                  const canToggleOff = !checked || normalizedSelected.length > 1;
                   const meta = getCountryMeta(country);
 
                   return (
@@ -812,15 +822,12 @@ export function SmartFeedBar({
 
                       <button
                         type="button"
-                        onClick={() => {
-                          if (!canToggleOff) return;
-                          handleCountryClick(country);
-                        }}
+                        onClick={() => handleCountryClick(country)}
                         className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getSwitchTrackClasses(
                           isDark,
                           checked,
                           isPrimary
-                        )} ${!canToggleOff ? "cursor-not-allowed opacity-70" : ""}`}
+                        )}`}
                         aria-pressed={checked}
                         aria-label={`${meta.label} ${checked ? "enabled" : "disabled"}`}
                       >
@@ -903,3 +910,4 @@ export function SmartFeedBar({
     </div>
   );
 }
+
