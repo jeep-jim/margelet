@@ -293,6 +293,13 @@ function buildPageHtml(page: SeoPage, siblingLinks: string[]) {
 
   const keywordsHtml = page.keywords.map((keyword) => `<li>${escapeHtml(keyword.value)}</li>`).join("\n");
   const linksHtml = siblingLinks.map((href) => `<a href="${escapeHtml(href)}">${escapeHtml(href.replace(/^\/country\//, ""))}</a>`).join("\n");
+  const hreflangLinks = [
+    ...SITE_LOCALES.map((locale) => {
+      const localizedUrlPath = page.urlPath.replace(/^\/country\/[^/]+/, `/country/${locale.code}`);
+      return `<link rel="alternate" hreflang="${escapeHtml(locale.code)}" href="${escapeHtml(SITE_ORIGIN + localizedUrlPath)}" />`;
+    }),
+    `<link rel="alternate" hreflang="x-default" href="${escapeHtml(SITE_ORIGIN + "/")}" />`,
+  ].join("\n");  
 
   return `<!doctype html>
 <html lang="en">
@@ -302,6 +309,7 @@ function buildPageHtml(page: SeoPage, siblingLinks: string[]) {
   <title>${escapeHtml(page.title)}</title>
   <meta name="description" content="${escapeHtml(page.description)}" />
   <link rel="canonical" href="${escapeHtml(canonical)}" />
+  ${hreflangLinks}
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
   <script type="application/ld+json">${escapeHtml(JSON.stringify(jsonLd))}</script>
   <style>
