@@ -358,8 +358,8 @@ export function AdminManualPostSection({
 
   return (
     <AdminSectionCard
-      title="Добавление пост"
-      subtitle="Ручное добавление поста."
+      title="✍️ Новый пост"
+      subtitle=""
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/70">
           {countryCode.toUpperCase()}

@@ -91,8 +91,8 @@ export function AdminPostsSection({
 
   return (
     <AdminSectionCard
-      title="🎈 Посты"
-      subtitle="Список постов по стране."
+      title="🎈 Все посты"
+      subtitle=""
       collapsible
       defaultCollapsed
       badge={

@@ -571,7 +571,6 @@ export function SmartFeedBar({
   const theme = useThemeMode();
   const isDark = theme === "dark";
   const shellRef = useRef<HTMLDivElement | null>(null);
-  const countrySwitchingRef = useRef(false);
   const [countriesOpen, setCountriesOpen] = useState(false);
   const [countryPickerOpen, setCountryPickerOpen] = useState(false);
 
@@ -676,14 +675,7 @@ export function SmartFeedBar({
   const favoriteSet = new Set(normalizedFavorites);
 
   const handleCountryClick = (country: string) => {
-    if (countrySwitchingRef.current) return;
-    if (country === activeCountry) return;
-
-    countrySwitchingRef.current = true;
-
-    if (!normalizedSelected.includes(country)) {
-      onToggleCountry(country);
-    }
+    if (country === activeCountry && normalizedSelected.length === 1) return;
 
     for (const selectedCountry of normalizedSelected) {
       if (selectedCountry !== country) {
@@ -691,9 +683,9 @@ export function SmartFeedBar({
       }
     }
 
-    window.setTimeout(() => {
-      countrySwitchingRef.current = false;
-    }, 0);
+    if (!normalizedSelected.includes(country)) {
+      onToggleCountry(country);
+    }
   };
 
   return (
@@ -910,4 +902,3 @@ export function SmartFeedBar({
     </div>
   );
 }
-

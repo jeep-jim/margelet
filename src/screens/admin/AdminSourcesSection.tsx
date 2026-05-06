@@ -414,7 +414,7 @@ export function AdminSourcesSection({
 
   return (
     <AdminSectionCard
-      title="🌎 Каналы"
+      title="🌎 Все каналы"
       collapsible
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">

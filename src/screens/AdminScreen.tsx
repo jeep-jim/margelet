@@ -545,7 +545,7 @@ export function AdminScreen({
         {[
           ["💰", "admin-requests"],
           ["🌍", "admin-channels"],
-          ["🌌", "admin-bulk"],
+          ["➕", "admin-bulk"],
           ["🎈", "admin-posts"],
           ["✍️", "admin-manual-post"],
         ].map(([label, id]) => (
