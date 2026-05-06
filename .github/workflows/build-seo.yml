@@ -1,0 +1,62 @@
+name: Build SEO
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Once per day. UTC time.
+    - cron: "23 2 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-seo-main
+  cancel-in-progress: false
+
+jobs:
+  build-seo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    env:
+      NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Show workflow version
+        run: echo "workflow version = seo-daily-v1"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build SEO snapshot
+        run: npm run build:seo
+
+      - name: Commit SEO files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A \
+            public/country \
+            public/seo \
+            public/sitemap.xml \
+            public/sitemaps \
+            public/robots.txt
+
+          if git diff --cached --quiet; then
+            echo "No SEO changes to commit"
+            exit 0
+          fi
+
+          git commit -m "rebuild seo"
+          git pull --rebase origin main || true
+          git push

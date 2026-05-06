@@ -1,0 +1,826 @@
+{
+  "country": "mx",
+  "countryName": "Mexico",
+  "kind": "parent-tag",
+  "urlPath": "/country/mx/tag/news",
+  "filePath": "C:\\margelet\\public\\country\\mx\\tag\\news\\index.html",
+  "title": "Noticias Telegram trends in Mexico | margeleT",
+  "description": "Fresh Noticias Telegram posts, channels, keywords and sources from Mexico. Updated automatically by margeleT.",
+  "h1": "Noticias Telegram trends in Mexico",
+  "updatedAt": "2026-05-02T07:16:53.409Z",
+  "parentTag": {
+    "value": "news",
+    "emoji": "📰",
+    "labels": {
+      "ru": "Новости",
+      "uk": "Новини",
+      "en": "News",
+      "in": "खबरें",
+      "fa": "اخبار",
+      "tr": "Haberler",
+      "pt-br": "Notícias",
+      "kk": "Жаңалықтар",
+      "uz": "Yangiliklar",
+      "ae": "أخبار",
+      "eg": "أخبار",
+      "pk": "خبریں",
+      "id": "Berita",
+      "mx": "Noticias",
+      "sa": "أخبار",
+      "es": "Noticias",
+      "it": "Notizie",
+      "fr": "Actualités",
+      "de": "Nachrichten",
+      "ar": "Noticias",
+      "co": "Noticias",
+      "za": "News",
+      "ng": "News",
+      "zh": "新闻",
+      "ms": "Berita"
+    },
+    "children": [
+      {
+        "value": "news_all",
+        "emoji": "📰",
+        "labels": {
+          "ru": "Все",
+          "uk": "Усе",
+          "en": "All",
+          "in": "सभी",
+          "fa": "همه",
+          "tr": "Tümü",
+          "pt-br": "Tudo",
+          "kk": "Барлығы",
+          "uz": "Hammasi",
+          "ae": "الكل",
+          "eg": "الكل",
+          "pk": "سب",
+          "id": "Semua",
+          "mx": "Todo",
+          "sa": "الكل",
+          "es": "Todo",
+          "it": "Tutto",
+          "fr": "Tout",
+          "de": "Alle",
+          "ar": "Todo",
+          "co": "Todo",
+          "za": "All",
+          "ng": "All",
+          "zh": "全部",
+          "ms": "Semua"
+        }
+      },
+      {
+        "value": "news_world",
+        "emoji": "🌍",
+        "labels": {
+          "ru": "Мир",
+          "uk": "Світ",
+          "en": "World",
+          "in": "दुनिया",
+          "fa": "جهان",
+          "tr": "Dünya",
+          "pt-br": "Mundo",
+          "kk": "Әлем",
+          "uz": "Dunyo",
+          "ae": "العالم",
+          "eg": "العالم",
+          "pk": "دنیا",
+          "id": "Dunia",
+          "mx": "Mundo",
+          "sa": "العالم",
+          "es": "Mundo",
+          "it": "Mondo",
+          "fr": "Monde",
+          "de": "Welt",
+          "ar": "Mundo",
+          "co": "Mundo",
+          "za": "World",
+          "ng": "World",
+          "zh": "世界",
+          "ms": "Dunia"
+        }
+      },
+      {
+        "value": "news_breaking",
+        "emoji": "⚡",
+        "labels": {
+          "ru": "Срочно",
+          "uk": "Терміново",
+          "en": "Breaking",
+          "in": "ताज़ा",
+          "fa": "فوری",
+          "tr": "Acil",
+          "pt-br": "Urgente",
+          "kk": "Шұғыл",
+          "uz": "Shoshilinch",
+          "ae": "عاجل",
+          "eg": "عاجل",
+          "pk": "فوری",
+          "id": "Mendesak",
+          "mx": "Urgente",
+          "sa": "عاجل",
+          "es": "Urgente",
+          "it": "Urgente",
+          "fr": "Urgent",
+          "de": "Eilmeldung",
+          "ar": "Urgente",
+          "co": "Urgente",
+          "za": "Breaking",
+          "ng": "Breaking",
+          "zh": "突发",
+          "ms": "Mendesak"
+        }
+      },
+      {
+        "value": "news_regions",
+        "emoji": "🗺️",
+        "labels": {
+          "ru": "Регионы и страны",
+          "uk": "Регіони і країни",
+          "en": "Regions & Countries",
+          "in": "क्षेत्र और देश",
+          "fa": "مناطق و کشورها",
+          "tr": "Bölgeler ve ülkeler",
+          "pt-br": "Regiões e países",
+          "kk": "Аймақтар мен елдер",
+          "uz": "Hududlar va mamlakatlar",
+          "ae": "مناطق ودول",
+          "eg": "مناطق ودول",
+          "pk": "علاقے اور ممالک",
+          "id": "Wilayah & negara",
+          "mx": "Regiones y países",
+          "sa": "مناطق ودول",
+          "es": "Regiones y países",
+          "it": "Regioni e paesi",
+          "fr": "Régions et pays",
+          "de": "Regionen & Länder",
+          "ar": "Regiones y países",
+          "co": "Regiones y países",
+          "za": "Regions & Countries",
+          "ng": "Regions & Countries",
+          "zh": "地区与国家",
+          "ms": "Wilayah & negara"
+        }
+      },
+      {
+        "value": "news_incidents",
+        "emoji": "🚨",
+        "labels": {
+          "ru": "Происшествия",
+          "uk": "Події",
+          "en": "Incidents",
+          "in": "घटनाएँ",
+          "fa": "حوادث",
+          "tr": "Olaylar",
+          "pt-br": "Incidentes",
+          "kk": "Оқиғалар",
+          "uz": "Hodisalar",
+          "ae": "حوادث",
+          "eg": "حوادث",
+          "pk": "واقعات",
+          "id": "Insiden",
+          "mx": "Incidentes",
+          "sa": "حوادث",
+          "es": "Incidentes",
+          "it": "Incidenti",
+          "fr": "Incidents",
+          "de": "Vorfälle",
+          "ar": "Incidentes",
+          "co": "Incidentes",
+          "za": "Incidents",
+          "ng": "Incidents",
+          "zh": "事件",
+          "ms": "Insiden"
+        }
+      },
+      {
+        "value": "news_investigations",
+        "emoji": "🕵️",
+        "labels": {
+          "ru": "Расследования",
+          "uk": "Розслідування",
+          "en": "Investigations",
+          "in": "जांच",
+          "fa": "تحقیقات",
+          "tr": "Araştırmalar",
+          "pt-br": "Investigações",
+          "kk": "Зерттеулер",
+          "uz": "Surishtiruvlar",
+          "ae": "تحقيقات",
+          "eg": "تحقيقات",
+          "pk": "تحقیقات",
+          "id": "Investigasi",
+          "mx": "Investigaciones",
+          "sa": "تحقيقات",
+          "es": "Investigaciones",
+          "it": "Inchieste",
+          "fr": "Enquêtes",
+          "de": "Recherchen",
+          "ar": "Investigaciones",
+          "co": "Investigaciones",
+          "za": "Investigations",
+          "ng": "Investigations",
+          "zh": "调查",
+          "ms": "Siasatan"
+        }
+      },
+      {
+        "value": "news_good",
+        "emoji": "💛",
+        "labels": {
+          "ru": "Добрые",
+          "uk": "Добрі новини",
+          "en": "Good News",
+          "in": "अच्छी खबरें",
+          "fa": "خبرهای خوب",
+          "tr": "İyi haberler",
+          "pt-br": "Boas notícias",
+          "kk": "Жақсы жаңалықтар",
+          "uz": "Yaxshi yangiliklar",
+          "ae": "أخبار جيدة",
+          "eg": "أخبار جيدة",
+          "pk": "اچھی خبریں",
+          "id": "Kabar baik",
+          "mx": "Buenas noticias",
+          "sa": "أخبار جيدة",
+          "es": "Buenas noticias",
+          "it": "Buone notizie",
+          "fr": "Bonnes nouvelles",
+          "de": "Gute Nachrichten",
+          "ar": "Buenas noticias",
+          "co": "Buenas noticias",
+          "za": "Good News",
+          "ng": "Good News",
+          "zh": "好消息",
+          "ms": "Berita baik"
+        }
+      },
+      {
+        "value": "news_no_negative",
+        "emoji": "🕊️",
+        "labels": {
+          "ru": "Без негатива",
+          "uk": "Без негативу",
+          "en": "No Negative",
+          "in": "नकारात्मक नहीं",
+          "fa": "بدون منفی",
+          "tr": "Negatif yok",
+          "pt-br": "Sem negatividade",
+          "kk": "Негативсіз",
+          "uz": "Negativsiz",
+          "ae": "بدون سلبية",
+          "eg": "بدون سلبية",
+          "pk": "منفی نہیں",
+          "id": "Tanpa negatif",
+          "mx": "Sin negatividad",
+          "sa": "بدون سلبية",
+          "es": "Sin negatividad",
+          "it": "Senza negatività",
+          "fr": "Sans négatif",
+          "de": "Ohne Negatives",
+          "ar": "Sin negatividad",
+          "co": "Sin negatividad",
+          "za": "No Negative",
+          "ng": "No Negative",
+          "zh": "无负面",
+          "ms": "Tanpa negatif"
+        }
+      }
+    ]
+  },
+  "posts": [
+    {
+      "id": 3650477110,
+      "postUrl": "https://t.me/excelsior/21?single",
+      "source": {
+        "title": "Excelsior",
+        "handle": "excelsior",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "mx:excelsior",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "User is being sold for 50$",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:53.409Z",
+      "expiresAt": "2026-05-03T07:16:53.409Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:53.409Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:53.409Z"
+      }
+    },
+    {
+      "id": 1737029618,
+      "postUrl": "https://t.me/excelsior/18?single",
+      "source": {
+        "title": "Excelsior",
+        "handle": "excelsior",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "mx:excelsior",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "@LLIakh",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:53.409Z",
+      "expiresAt": "2026-05-03T07:16:53.409Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:53.409Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:53.409Z"
+      }
+    },
+    {
+      "id": 1633068618,
+      "postUrl": "https://t.me/excelsior/10?single",
+      "source": {
+        "title": "Excelsior",
+        "handle": "excelsior",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "mx:excelsior",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "@LLIakh",
+      "links": [
+        {
+          "label": "@LLIakh",
+          "url": "https://t.me/LLIakh"
+        }
+      ],
+      "createdAt": "2026-05-02T07:16:53.409Z",
+      "expiresAt": "2026-05-03T07:16:53.409Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:53.409Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:53.409Z"
+      }
+    },
+    {
+      "id": 3120615520,
+      "postUrl": "https://t.me/excelsior/1?single",
+      "source": {
+        "title": "Excelsior",
+        "handle": "excelsior",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "mx:excelsior",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:53.409Z",
+      "expiresAt": "2026-05-03T07:16:53.409Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:53.409Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:53.409Z"
+      }
+    },
+    {
+      "id": 3010761049,
+      "postUrl": "https://t.me/aristeguinoticias/12?single",
+      "source": {
+        "title": "Aristegui noticias",
+        "handle": "aristeguinoticias",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SrxVzSECol8y-0Bzxookpre_datVPhMkE_yjoIHxXxLSZrvwjax3SkEy66KtjALN8OsMKDtXCxxehhYTw5WNBOun11iwNzFBJBJxNpqhkzetKm1G5PTBQfp7Lnr4LpmkGsMDUSiDYtqBaGEv5t3Ivx8m8EjjrEiMp-4W3ZZdfZEFlAmzDwUakt2rTzviQKkRdreGNTpwQROrE9EMtX7SM-CSSjvAI5RWDKmrV-J87YZKcNWZtpmxh3OCXcc_ZJIPmCQ8VZyjHGczaEl3vSIgM9oEdpIWy-XCEn8kixiNwKZp0yKWI_PXsDy9R_wAndubvxiJUFBOr30MH1QWHVhiGw.jpg"
+      },
+      "sourceId": "mx:aristeguinoticias",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Hi",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:50.468Z",
+      "expiresAt": "2026-05-03T07:16:50.468Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:50.468Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:50.468Z"
+      }
+    },
+    {
+      "id": 3238730914,
+      "postUrl": "https://t.me/aristeguinoticias/11?single",
+      "source": {
+        "title": "Aristegui noticias",
+        "handle": "aristeguinoticias",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SrxVzSECol8y-0Bzxookpre_datVPhMkE_yjoIHxXxLSZrvwjax3SkEy66KtjALN8OsMKDtXCxxehhYTw5WNBOun11iwNzFBJBJxNpqhkzetKm1G5PTBQfp7Lnr4LpmkGsMDUSiDYtqBaGEv5t3Ivx8m8EjjrEiMp-4W3ZZdfZEFlAmzDwUakt2rTzviQKkRdreGNTpwQROrE9EMtX7SM-CSSjvAI5RWDKmrV-J87YZKcNWZtpmxh3OCXcc_ZJIPmCQ8VZyjHGczaEl3vSIgM9oEdpIWy-XCEn8kixiNwKZp0yKWI_PXsDy9R_wAndubvxiJUFBOr30MH1QWHVhiGw.jpg"
+      },
+      "sourceId": "mx:aristeguinoticias",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": ".",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:50.468Z",
+      "expiresAt": "2026-05-03T07:16:50.468Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:50.468Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:50.468Z"
+      }
+    },
+    {
+      "id": 3794223899,
+      "postUrl": "https://t.me/aristeguinoticias/10?single",
+      "source": {
+        "title": "Aristegui noticias",
+        "handle": "aristeguinoticias",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SrxVzSECol8y-0Bzxookpre_datVPhMkE_yjoIHxXxLSZrvwjax3SkEy66KtjALN8OsMKDtXCxxehhYTw5WNBOun11iwNzFBJBJxNpqhkzetKm1G5PTBQfp7Lnr4LpmkGsMDUSiDYtqBaGEv5t3Ivx8m8EjjrEiMp-4W3ZZdfZEFlAmzDwUakt2rTzviQKkRdreGNTpwQROrE9EMtX7SM-CSSjvAI5RWDKmrV-J87YZKcNWZtpmxh3OCXcc_ZJIPmCQ8VZyjHGczaEl3vSIgM9oEdpIWy-XCEn8kixiNwKZp0yKWI_PXsDy9R_wAndubvxiJUFBOr30MH1QWHVhiGw.jpg"
+      },
+      "sourceId": "mx:aristeguinoticias",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Hi",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:50.468Z",
+      "expiresAt": "2026-05-03T07:16:50.468Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:50.468Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:50.468Z"
+      }
+    },
+    {
+      "id": 2524944233,
+      "postUrl": "https://t.me/aristeguinoticias/7?single",
+      "source": {
+        "title": "Aristegui noticias",
+        "handle": "aristeguinoticias",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SrxVzSECol8y-0Bzxookpre_datVPhMkE_yjoIHxXxLSZrvwjax3SkEy66KtjALN8OsMKDtXCxxehhYTw5WNBOun11iwNzFBJBJxNpqhkzetKm1G5PTBQfp7Lnr4LpmkGsMDUSiDYtqBaGEv5t3Ivx8m8EjjrEiMp-4W3ZZdfZEFlAmzDwUakt2rTzviQKkRdreGNTpwQROrE9EMtX7SM-CSSjvAI5RWDKmrV-J87YZKcNWZtpmxh3OCXcc_ZJIPmCQ8VZyjHGczaEl3vSIgM9oEdpIWy-XCEn8kixiNwKZp0yKWI_PXsDy9R_wAndubvxiJUFBOr30MH1QWHVhiGw.jpg"
+      },
+      "sourceId": "mx:aristeguinoticias",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "OR\n\nContact me 👇\n\n@Dr_connectionbot\n\n\nchannel👉 @BRANDusernames",
+      "links": [
+        {
+          "label": "@Dr_connectionbot",
+          "url": "https://t.me/Dr_connectionbot"
+        },
+        {
+          "label": "@BRANDusernames",
+          "url": "https://t.me/BRANDusernames"
+        }
+      ],
+      "createdAt": "2026-05-02T07:16:50.468Z",
+      "expiresAt": "2026-05-03T07:16:50.468Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:50.468Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:50.468Z"
+      }
+    },
+    {
+      "id": 507620008,
+      "postUrl": "https://t.me/aristeguinoticias/6?single",
+      "source": {
+        "title": "Aristegui noticias",
+        "handle": "aristeguinoticias",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SrxVzSECol8y-0Bzxookpre_datVPhMkE_yjoIHxXxLSZrvwjax3SkEy66KtjALN8OsMKDtXCxxehhYTw5WNBOun11iwNzFBJBJxNpqhkzetKm1G5PTBQfp7Lnr4LpmkGsMDUSiDYtqBaGEv5t3Ivx8m8EjjrEiMp-4W3ZZdfZEFlAmzDwUakt2rTzviQKkRdreGNTpwQROrE9EMtX7SM-CSSjvAI5RWDKmrV-J87YZKcNWZtpmxh3OCXcc_ZJIPmCQ8VZyjHGczaEl3vSIgM9oEdpIWy-XCEn8kixiNwKZp0yKWI_PXsDy9R_wAndubvxiJUFBOr30MH1QWHVhiGw.jpg"
+      },
+      "sourceId": "mx:aristeguinoticias",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:50.468Z",
+      "expiresAt": "2026-05-03T07:16:50.468Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:50.468Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:50.468Z"
+      }
+    },
+    {
+      "id": 3341170245,
+      "postUrl": "https://t.me/aristeguinoticias/3?single",
+      "source": {
+        "title": "Aristegui noticias",
+        "handle": "aristeguinoticias",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SrxVzSECol8y-0Bzxookpre_datVPhMkE_yjoIHxXxLSZrvwjax3SkEy66KtjALN8OsMKDtXCxxehhYTw5WNBOun11iwNzFBJBJxNpqhkzetKm1G5PTBQfp7Lnr4LpmkGsMDUSiDYtqBaGEv5t3Ivx8m8EjjrEiMp-4W3ZZdfZEFlAmzDwUakt2rTzviQKkRdreGNTpwQROrE9EMtX7SM-CSSjvAI5RWDKmrV-J87YZKcNWZtpmxh3OCXcc_ZJIPmCQ8VZyjHGczaEl3vSIgM9oEdpIWy-XCEn8kixiNwKZp0yKWI_PXsDy9R_wAndubvxiJUFBOr30MH1QWHVhiGw.jpg"
+      },
+      "sourceId": "mx:aristeguinoticias",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Username for sale \n\nThis username will be auctioned on fragment.com",
+      "links": [
+        {
+          "label": "fragment.com",
+          "url": "https://fragment.com/"
+        }
+      ],
+      "createdAt": "2026-05-02T07:16:50.468Z",
+      "expiresAt": "2026-05-03T07:16:50.468Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:50.468Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:50.468Z"
+      }
+    },
+    {
+      "id": 3449285703,
+      "postUrl": "https://t.me/aristeguinoticias/1?single",
+      "source": {
+        "title": "Aristegui noticias",
+        "handle": "aristeguinoticias",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SrxVzSECol8y-0Bzxookpre_datVPhMkE_yjoIHxXxLSZrvwjax3SkEy66KtjALN8OsMKDtXCxxehhYTw5WNBOun11iwNzFBJBJxNpqhkzetKm1G5PTBQfp7Lnr4LpmkGsMDUSiDYtqBaGEv5t3Ivx8m8EjjrEiMp-4W3ZZdfZEFlAmzDwUakt2rTzviQKkRdreGNTpwQROrE9EMtX7SM-CSSjvAI5RWDKmrV-J87YZKcNWZtpmxh3OCXcc_ZJIPmCQ8VZyjHGczaEl3vSIgM9oEdpIWy-XCEn8kixiNwKZp0yKWI_PXsDy9R_wAndubvxiJUFBOr30MH1QWHVhiGw.jpg"
+      },
+      "sourceId": "mx:aristeguinoticias",
+      "sourceCountryCode": "mx",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-02T07:16:50.468Z",
+      "expiresAt": "2026-05-03T07:16:50.468Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:16:50.468Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:16:50.468Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "Aristegui noticias",
+      "handle": "aristeguinoticias",
+      "count": 7
+    },
+    {
+      "title": "Excelsior",
+      "handle": "excelsior",
+      "count": 4
+    }
+  ],
+  "keywords": [
+    {
+      "value": "lliakh",
+      "count": 2
+    },
+    {
+      "value": "username",
+      "count": 2
+    },
+    {
+      "value": "auctioned",
+      "count": 1
+    },
+    {
+      "value": "being",
+      "count": 1
+    },
+    {
+      "value": "brandusernames",
+      "count": 1
+    },
+    {
+      "value": "channel",
+      "count": 1
+    },
+    {
+      "value": "connectionbot",
+      "count": 1
+    },
+    {
+      "value": "contact",
+      "count": 1
+    },
+    {
+      "value": "fragment",
+      "count": 1
+    },
+    {
+      "value": "sale",
+      "count": 1
+    },
+    {
+      "value": "sold",
+      "count": 1
+    },
+    {
+      "value": "user",
+      "count": 1
+    }
+  ]
+}

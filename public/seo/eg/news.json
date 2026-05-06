@@ -1,0 +1,614 @@
+{
+  "country": "eg",
+  "countryName": "Egypt",
+  "kind": "parent-tag",
+  "urlPath": "/country/eg/tag/news",
+  "filePath": "C:\\margelet\\public\\country\\eg\\tag\\news\\index.html",
+  "title": "أخبار Telegram trends in Egypt | margeleT",
+  "description": "Fresh أخبار Telegram posts, channels, keywords and sources from Egypt. Updated automatically by margeleT.",
+  "h1": "أخبار Telegram trends in Egypt",
+  "updatedAt": "2026-05-02T07:15:18.826Z",
+  "parentTag": {
+    "value": "news",
+    "emoji": "📰",
+    "labels": {
+      "ru": "Новости",
+      "uk": "Новини",
+      "en": "News",
+      "in": "खबरें",
+      "fa": "اخبار",
+      "tr": "Haberler",
+      "pt-br": "Notícias",
+      "kk": "Жаңалықтар",
+      "uz": "Yangiliklar",
+      "ae": "أخبار",
+      "eg": "أخبار",
+      "pk": "خبریں",
+      "id": "Berita",
+      "mx": "Noticias",
+      "sa": "أخبار",
+      "es": "Noticias",
+      "it": "Notizie",
+      "fr": "Actualités",
+      "de": "Nachrichten",
+      "ar": "Noticias",
+      "co": "Noticias",
+      "za": "News",
+      "ng": "News",
+      "zh": "新闻",
+      "ms": "Berita"
+    },
+    "children": [
+      {
+        "value": "news_all",
+        "emoji": "📰",
+        "labels": {
+          "ru": "Все",
+          "uk": "Усе",
+          "en": "All",
+          "in": "सभी",
+          "fa": "همه",
+          "tr": "Tümü",
+          "pt-br": "Tudo",
+          "kk": "Барлығы",
+          "uz": "Hammasi",
+          "ae": "الكل",
+          "eg": "الكل",
+          "pk": "سب",
+          "id": "Semua",
+          "mx": "Todo",
+          "sa": "الكل",
+          "es": "Todo",
+          "it": "Tutto",
+          "fr": "Tout",
+          "de": "Alle",
+          "ar": "Todo",
+          "co": "Todo",
+          "za": "All",
+          "ng": "All",
+          "zh": "全部",
+          "ms": "Semua"
+        }
+      },
+      {
+        "value": "news_world",
+        "emoji": "🌍",
+        "labels": {
+          "ru": "Мир",
+          "uk": "Світ",
+          "en": "World",
+          "in": "दुनिया",
+          "fa": "جهان",
+          "tr": "Dünya",
+          "pt-br": "Mundo",
+          "kk": "Әлем",
+          "uz": "Dunyo",
+          "ae": "العالم",
+          "eg": "العالم",
+          "pk": "دنیا",
+          "id": "Dunia",
+          "mx": "Mundo",
+          "sa": "العالم",
+          "es": "Mundo",
+          "it": "Mondo",
+          "fr": "Monde",
+          "de": "Welt",
+          "ar": "Mundo",
+          "co": "Mundo",
+          "za": "World",
+          "ng": "World",
+          "zh": "世界",
+          "ms": "Dunia"
+        }
+      },
+      {
+        "value": "news_breaking",
+        "emoji": "⚡",
+        "labels": {
+          "ru": "Срочно",
+          "uk": "Терміново",
+          "en": "Breaking",
+          "in": "ताज़ा",
+          "fa": "فوری",
+          "tr": "Acil",
+          "pt-br": "Urgente",
+          "kk": "Шұғыл",
+          "uz": "Shoshilinch",
+          "ae": "عاجل",
+          "eg": "عاجل",
+          "pk": "فوری",
+          "id": "Mendesak",
+          "mx": "Urgente",
+          "sa": "عاجل",
+          "es": "Urgente",
+          "it": "Urgente",
+          "fr": "Urgent",
+          "de": "Eilmeldung",
+          "ar": "Urgente",
+          "co": "Urgente",
+          "za": "Breaking",
+          "ng": "Breaking",
+          "zh": "突发",
+          "ms": "Mendesak"
+        }
+      },
+      {
+        "value": "news_regions",
+        "emoji": "🗺️",
+        "labels": {
+          "ru": "Регионы и страны",
+          "uk": "Регіони і країни",
+          "en": "Regions & Countries",
+          "in": "क्षेत्र और देश",
+          "fa": "مناطق و کشورها",
+          "tr": "Bölgeler ve ülkeler",
+          "pt-br": "Regiões e países",
+          "kk": "Аймақтар мен елдер",
+          "uz": "Hududlar va mamlakatlar",
+          "ae": "مناطق ودول",
+          "eg": "مناطق ودول",
+          "pk": "علاقے اور ممالک",
+          "id": "Wilayah & negara",
+          "mx": "Regiones y países",
+          "sa": "مناطق ودول",
+          "es": "Regiones y países",
+          "it": "Regioni e paesi",
+          "fr": "Régions et pays",
+          "de": "Regionen & Länder",
+          "ar": "Regiones y países",
+          "co": "Regiones y países",
+          "za": "Regions & Countries",
+          "ng": "Regions & Countries",
+          "zh": "地区与国家",
+          "ms": "Wilayah & negara"
+        }
+      },
+      {
+        "value": "news_incidents",
+        "emoji": "🚨",
+        "labels": {
+          "ru": "Происшествия",
+          "uk": "Події",
+          "en": "Incidents",
+          "in": "घटनाएँ",
+          "fa": "حوادث",
+          "tr": "Olaylar",
+          "pt-br": "Incidentes",
+          "kk": "Оқиғалар",
+          "uz": "Hodisalar",
+          "ae": "حوادث",
+          "eg": "حوادث",
+          "pk": "واقعات",
+          "id": "Insiden",
+          "mx": "Incidentes",
+          "sa": "حوادث",
+          "es": "Incidentes",
+          "it": "Incidenti",
+          "fr": "Incidents",
+          "de": "Vorfälle",
+          "ar": "Incidentes",
+          "co": "Incidentes",
+          "za": "Incidents",
+          "ng": "Incidents",
+          "zh": "事件",
+          "ms": "Insiden"
+        }
+      },
+      {
+        "value": "news_investigations",
+        "emoji": "🕵️",
+        "labels": {
+          "ru": "Расследования",
+          "uk": "Розслідування",
+          "en": "Investigations",
+          "in": "जांच",
+          "fa": "تحقیقات",
+          "tr": "Araştırmalar",
+          "pt-br": "Investigações",
+          "kk": "Зерттеулер",
+          "uz": "Surishtiruvlar",
+          "ae": "تحقيقات",
+          "eg": "تحقيقات",
+          "pk": "تحقیقات",
+          "id": "Investigasi",
+          "mx": "Investigaciones",
+          "sa": "تحقيقات",
+          "es": "Investigaciones",
+          "it": "Inchieste",
+          "fr": "Enquêtes",
+          "de": "Recherchen",
+          "ar": "Investigaciones",
+          "co": "Investigaciones",
+          "za": "Investigations",
+          "ng": "Investigations",
+          "zh": "调查",
+          "ms": "Siasatan"
+        }
+      },
+      {
+        "value": "news_good",
+        "emoji": "💛",
+        "labels": {
+          "ru": "Добрые",
+          "uk": "Добрі новини",
+          "en": "Good News",
+          "in": "अच्छी खबरें",
+          "fa": "خبرهای خوب",
+          "tr": "İyi haberler",
+          "pt-br": "Boas notícias",
+          "kk": "Жақсы жаңалықтар",
+          "uz": "Yaxshi yangiliklar",
+          "ae": "أخبار جيدة",
+          "eg": "أخبار جيدة",
+          "pk": "اچھی خبریں",
+          "id": "Kabar baik",
+          "mx": "Buenas noticias",
+          "sa": "أخبار جيدة",
+          "es": "Buenas noticias",
+          "it": "Buone notizie",
+          "fr": "Bonnes nouvelles",
+          "de": "Gute Nachrichten",
+          "ar": "Buenas noticias",
+          "co": "Buenas noticias",
+          "za": "Good News",
+          "ng": "Good News",
+          "zh": "好消息",
+          "ms": "Berita baik"
+        }
+      },
+      {
+        "value": "news_no_negative",
+        "emoji": "🕊️",
+        "labels": {
+          "ru": "Без негатива",
+          "uk": "Без негативу",
+          "en": "No Negative",
+          "in": "नकारात्मक नहीं",
+          "fa": "بدون منفی",
+          "tr": "Negatif yok",
+          "pt-br": "Sem negatividade",
+          "kk": "Негативсіз",
+          "uz": "Negativsiz",
+          "ae": "بدون سلبية",
+          "eg": "بدون سلبية",
+          "pk": "منفی نہیں",
+          "id": "Tanpa negatif",
+          "mx": "Sin negatividad",
+          "sa": "بدون سلبية",
+          "es": "Sin negatividad",
+          "it": "Senza negatività",
+          "fr": "Sans négatif",
+          "de": "Ohne Negatives",
+          "ar": "Sin negatividad",
+          "co": "Sin negatividad",
+          "za": "No Negative",
+          "ng": "No Negative",
+          "zh": "无负面",
+          "ms": "Tanpa negatif"
+        }
+      }
+    ]
+  },
+  "posts": [
+    {
+      "id": 2345747711,
+      "postUrl": "https://t.me/cairo24/6?single",
+      "source": {
+        "title": "Cairo24",
+        "handle": "cairo24",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/V4VaNPmZkO9GquSc0Dl8RVtc-ylOcEAyL-TGm3QC8XmS8MsktEL6cs7uZM97EkcZv3Iufw6f1WZjMUm_W1tBOWqkhteVPdPCiKQK5PhWbj1lYuFHCRPCn16zRcN1lowGu3bwG-XYFDolLK74WvilNfPeyK-mBFFudEDQcdqX_-4nKT9b2y0TN0boXaD0pTnE_iHLjUoe-pcJ4coxdXg1KcTruUlrSVWGq4D32YzpSabP66rZjEul0aHl7KR9r0j5eYOfnvfgSw9ZFWgo7IPXM3jKfLRK2SMe6iIv92jrDCoZNdmdK0ER37pwxZcJD10wR3WuD0o3Z44t7gUMeHS8tw.jpg"
+      },
+      "sourceId": "eg:cairo24",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/IKzKYMjVMmAKpAS4JBiSVDV9xHFtKDC5K151V4psD-mJw9tQI3SF8GYNgvPZh-8IAsYfOtLA_UiuG71-iPu8Vj9cBMf7g7ZQtdGJlNJ2TeV8OzklgM49fafniG_J1cQd4IxW-RQF_DbFoYgiElacUdQmjiAmb-zHzEugMUyuQfInxBMDUWRdStwvVeNFwayqtQ_TfUNuKFyHbZiH98pvOzk1-2hCEyMNdfeqSyo5Z-f-Sm-nqycEdhaqOffyeAnpU4D42U0-hWksEo1WG5ZBL8GWaU9IvsCp0DBr58yi9bogmyBtni6fmdqy_EEu5psm3tfnqTdAftneg_u9qF8S3Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "fragment.com/username/cairo24",
+      "links": [
+        {
+          "label": "fragment.com/username/cairo24",
+          "url": "https://fragment.com/username/cairo24"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:18.826Z",
+      "expiresAt": "2026-05-03T07:15:18.826Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T11:06:47.945Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:18.826Z"
+      }
+    },
+    {
+      "id": 2754170412,
+      "postUrl": "https://t.me/cairo24/5?single",
+      "source": {
+        "title": "Cairo24",
+        "handle": "cairo24",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/V4VaNPmZkO9GquSc0Dl8RVtc-ylOcEAyL-TGm3QC8XmS8MsktEL6cs7uZM97EkcZv3Iufw6f1WZjMUm_W1tBOWqkhteVPdPCiKQK5PhWbj1lYuFHCRPCn16zRcN1lowGu3bwG-XYFDolLK74WvilNfPeyK-mBFFudEDQcdqX_-4nKT9b2y0TN0boXaD0pTnE_iHLjUoe-pcJ4coxdXg1KcTruUlrSVWGq4D32YzpSabP66rZjEul0aHl7KR9r0j5eYOfnvfgSw9ZFWgo7IPXM3jKfLRK2SMe6iIv92jrDCoZNdmdK0ER37pwxZcJD10wR3WuD0o3Z44t7gUMeHS8tw.jpg"
+      },
+      "sourceId": "eg:cairo24",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "fragment.com/username/cairo24",
+      "links": [
+        {
+          "label": "fragment.com/username/cairo24",
+          "url": "https://fragment.com/username/cairo24"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:18.826Z",
+      "expiresAt": "2026-05-03T07:15:18.826Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:18.826Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:18.826Z"
+      }
+    },
+    {
+      "id": 1940418269,
+      "postUrl": "https://t.me/cairo24/4?single",
+      "source": {
+        "title": "Cairo24",
+        "handle": "cairo24",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/V4VaNPmZkO9GquSc0Dl8RVtc-ylOcEAyL-TGm3QC8XmS8MsktEL6cs7uZM97EkcZv3Iufw6f1WZjMUm_W1tBOWqkhteVPdPCiKQK5PhWbj1lYuFHCRPCn16zRcN1lowGu3bwG-XYFDolLK74WvilNfPeyK-mBFFudEDQcdqX_-4nKT9b2y0TN0boXaD0pTnE_iHLjUoe-pcJ4coxdXg1KcTruUlrSVWGq4D32YzpSabP66rZjEul0aHl7KR9r0j5eYOfnvfgSw9ZFWgo7IPXM3jKfLRK2SMe6iIv92jrDCoZNdmdK0ER37pwxZcJD10wR3WuD0o3Z44t7gUMeHS8tw.jpg"
+      },
+      "sourceId": "eg:cairo24",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "This channel's ID is exclusively sold on Fragment.com and isn't affiliated with any individuals, groups, or business sharing the same name.\n\n---\n\nFor more information and to purchase this channel's ID, visit @kepenos or @skysword on Telegram and send a message.",
+      "links": [
+        {
+          "label": "Fragment.com",
+          "url": "https://Fragment.com/"
+        },
+        {
+          "label": "@kepenos",
+          "url": "https://t.me/kepenos"
+        },
+        {
+          "label": "@skysword",
+          "url": "https://t.me/skysword"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:18.826Z",
+      "expiresAt": "2026-05-03T07:15:18.826Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:18.826Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:18.826Z"
+      }
+    },
+    {
+      "id": 3379648579,
+      "postUrl": "https://t.me/cairo24/2?single",
+      "source": {
+        "title": "Cairo24",
+        "handle": "cairo24",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/V4VaNPmZkO9GquSc0Dl8RVtc-ylOcEAyL-TGm3QC8XmS8MsktEL6cs7uZM97EkcZv3Iufw6f1WZjMUm_W1tBOWqkhteVPdPCiKQK5PhWbj1lYuFHCRPCn16zRcN1lowGu3bwG-XYFDolLK74WvilNfPeyK-mBFFudEDQcdqX_-4nKT9b2y0TN0boXaD0pTnE_iHLjUoe-pcJ4coxdXg1KcTruUlrSVWGq4D32YzpSabP66rZjEul0aHl7KR9r0j5eYOfnvfgSw9ZFWgo7IPXM3jKfLRK2SMe6iIv92jrDCoZNdmdK0ER37pwxZcJD10wR3WuD0o3Z44t7gUMeHS8tw.jpg"
+      },
+      "sourceId": "eg:cairo24",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "The ID of this channel is only for sale on the Fragment.com site and has no connection with the persons, groups and companies of the same name.",
+      "links": [
+        {
+          "label": "Fragment.com",
+          "url": "https://Fragment.com/"
+        }
+      ],
+      "createdAt": "2026-05-02T07:15:18.826Z",
+      "expiresAt": "2026-05-03T07:15:18.826Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:18.826Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:18.826Z"
+      }
+    },
+    {
+      "id": 640715744,
+      "postUrl": "https://t.me/cairo24/1?single",
+      "source": {
+        "title": "Cairo24",
+        "handle": "cairo24",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/V4VaNPmZkO9GquSc0Dl8RVtc-ylOcEAyL-TGm3QC8XmS8MsktEL6cs7uZM97EkcZv3Iufw6f1WZjMUm_W1tBOWqkhteVPdPCiKQK5PhWbj1lYuFHCRPCn16zRcN1lowGu3bwG-XYFDolLK74WvilNfPeyK-mBFFudEDQcdqX_-4nKT9b2y0TN0boXaD0pTnE_iHLjUoe-pcJ4coxdXg1KcTruUlrSVWGq4D32YzpSabP66rZjEul0aHl7KR9r0j5eYOfnvfgSw9ZFWgo7IPXM3jKfLRK2SMe6iIv92jrDCoZNdmdK0ER37pwxZcJD10wR3WuD0o3Z44t7gUMeHS8tw.jpg"
+      },
+      "sourceId": "eg:cairo24",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-02T07:15:18.826Z",
+      "expiresAt": "2026-05-03T07:15:18.826Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-02T07:15:18.826Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-02T07:15:18.826Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "Cairo24",
+      "handle": "cairo24",
+      "count": 5
+    }
+  ],
+  "keywords": [
+    {
+      "value": "fragment",
+      "count": 4
+    },
+    {
+      "value": "channel",
+      "count": 3
+    },
+    {
+      "value": "cairo24",
+      "count": 2
+    },
+    {
+      "value": "groups",
+      "count": 2
+    },
+    {
+      "value": "name",
+      "count": 2
+    },
+    {
+      "value": "same",
+      "count": 2
+    },
+    {
+      "value": "username",
+      "count": 2
+    },
+    {
+      "value": "affiliated",
+      "count": 1
+    },
+    {
+      "value": "business",
+      "count": 1
+    },
+    {
+      "value": "companies",
+      "count": 1
+    },
+    {
+      "value": "connection",
+      "count": 1
+    },
+    {
+      "value": "exclusively",
+      "count": 1
+    },
+    {
+      "value": "individuals",
+      "count": 1
+    },
+    {
+      "value": "information",
+      "count": 1
+    },
+    {
+      "value": "kepenos",
+      "count": 1
+    },
+    {
+      "value": "message",
+      "count": 1
+    },
+    {
+      "value": "more",
+      "count": 1
+    },
+    {
+      "value": "only",
+      "count": 1
+    }
+  ]
+}
