@@ -219,26 +219,21 @@ async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
   };
 
   try {
-    const indexRes = await fetch(`/feeds/index.json?v=${Date.now()}`, {
-      cache: "no-store",
-    });
+    const indexRes = await fetch(`/feeds/index.json`);
 
     if (indexRes.ok) {
       const index = await indexRes.json();
       const countries = Object.values(index?.countries || {}) as Array<{
         path?: string;
         mode?: "single" | "chunked";
-        chunks?: number;
+        chunks?: Array<{ path?: string }> | number;
       }>;
 
       const countryPosts = await Promise.all(
         countries.map(async (country: any) => {
           if (!country?.path) return [];
 
-          const countryRes = await fetch(`${country.path}?v=${Date.now()}`, {
-            cache: "no-store",
-          });
-
+          const countryRes = await fetch(country.path);
           if (!countryRes.ok) return [];
 
           const countryData = await countryRes.json();
@@ -251,10 +246,7 @@ async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
               countryData.chunks.map(async (chunk: any) => {
                 if (!chunk?.path) return [];
 
-                const chunkRes = await fetch(`${chunk.path}?v=${Date.now()}`, {
-                  cache: "no-store",
-                });
-
+                const chunkRes = await fetch(chunk.path);
                 if (!chunkRes.ok) return [];
 
                 const chunkData = await chunkRes.json();
@@ -284,9 +276,7 @@ async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
   }
 
   try {
-    const res = await fetch(`/api/feed`, {
-      cache: "no-store",
-    });
+    const res = await fetch(`/api/feed`);
 
     const contentType = res.headers.get("content-type") || "";
 
@@ -298,9 +288,7 @@ async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
     //
   }
 
-  const fallbackRes = await fetch(`/feed.json?v=${Date.now()}`, {
-    cache: "no-store",
-  });
+  const fallbackRes = await fetch(`/feed.json`);
 
   if (!fallbackRes.ok) {
     throw new Error("feed request failed");
@@ -308,7 +296,7 @@ async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
 
   const fallbackData = await fallbackRes.json();
   return readPosts(fallbackData);
-}  
+}
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());  
