@@ -17,6 +17,30 @@ const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 const ADMIN_HIDDEN_PATH = "/jim/admin";
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
+const SITE_ORIGIN = "https://www.margelet.space";
+
+function ensureCanonicalLink(href: string) {
+  let element = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+
+  if (!element) {
+    element = document.createElement("link");
+    element.setAttribute("rel", "canonical");
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("href", href);
+}
+
+function getCanonicalHref(pathname: string) {
+  const clean = normalizePathname(pathname);
+
+  if (isAdminHiddenPath(clean) || clean.startsWith("/jim/") || clean.startsWith("/admin")) {
+    return `${SITE_ORIGIN}/`;
+  }
+
+  return `${SITE_ORIGIN}${clean === "/" ? "" : clean}`;
+}
+
 const FEED_LOADING_COPY: Record<Locale, string> = {
   en: "Loading feed...",
   ru: "Загрузка ленты...",
@@ -564,12 +588,15 @@ export default function App() {
   }, [loadFeed]);
 
   useEffect(() => {
-    ensureRobotsMeta("robots", current === "admin" ? "noindex,nofollow" : "index,follow");
-    ensureRobotsMeta(
-      "googlebot",
-      current === "admin" ? "noindex,nofollow" : "index,follow"
-    );
-  }, [current]);
+    const isPrivateScreen = current === "admin";
+    const robotsContent = isPrivateScreen
+      ? "noindex,nofollow,noarchive,nosnippet"
+      : "index,follow,max-snippet:-1,max-image-preview:large";
+
+    ensureRobotsMeta("robots", robotsContent);
+    ensureRobotsMeta("googlebot", robotsContent);
+    ensureCanonicalLink(getCanonicalHref(locationPath));
+  }, [current, locationPath]);
 
   const handleFinishIntro = () => {
     localStorage.setItem("margelet-intro-seen", "1");

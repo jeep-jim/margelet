@@ -1,6 +1,11 @@
 User-agent: *
+Allow: /
+
 Disallow: /jim/
 Disallow: /admin/
 Disallow: /api/
+Disallow: /feeds/
+Disallow: /feed.json
+Disallow: /seo/
 
 Sitemap: https://www.margelet.space/sitemap.xml
