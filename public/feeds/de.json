@@ -1,9 +1,101 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-07T13:23:00.002Z",
-  "totalPosts": 30,
+  "updatedAt": "2026-05-07T14:51:28.832Z",
+  "totalPosts": 24,
   "chunks": 1,
   "items": [
+    {
+      "id": 3915201476,
+      "postUrl": "https://t.me/tagesschau/43776?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Klingbeil: Deutlich weniger Einnahmen für den Staat als erwartet\nhttps://www.tagesschau.de/inland/innenpolitik/steuerschaetzung-184.html\n\nDrei Tage lang haben Experten des Arbeitskreises Steuerschätzung gerechnet. Jetzt ist klar: Die Steuereinnahmen werden in den kommenden fünf Jahren sinken. Das setzt Finanzminister Klingbeil unter Druck. Von Nicole Kohnert.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/innenpolitik/steuerschaetzung-184.html",
+          "url": "https://www.tagesschau.de/inland/innenpolitik/steuerschaetzung-184.html"
+        }
+      ],
+      "createdAt": "2026-05-07T14:50:01.949Z",
+      "expiresAt": "2026-05-08T14:50:01.949Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T14:50:01.949Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T14:50:01.949Z"
+      }
+    },
+    {
+      "id": 3431655487,
+      "postUrl": "https://t.me/heiseonline/12112?single",
+      "source": {
+        "title": "heise online",
+        "handle": "heiseonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/kUzmjUkjMjT5_swojbWZg-aIbmYQkvobaN_HshVjF0gpFt0seOGX-nv8-V-hFh5AeAuQk67hFEwx-gCVBD3dn7HmCGcsVjOXh9toVYNJ_rL-Fbr_Ldj4QKUhRU6Ya3SmERIzZAxXGYcaZJm0-6oOFDHSZHQjV1LPpjqa84MuQb6d9zDcK2qvG854MlcanNZoox_3XmB3d_wubGXu0BOdkbJq6O_8J-gtxTLJGXM3kPmdu5f_k5iPYxEbx3dSG7DYBJEDIB4GG3ydkaQ-MiyqdSgi6k7gWHwtT9a3BQ7ZQaIsKs07zvf1cJcX6tAHTMPsYoJMNiCfQlJprSUnuSVSbg.jpg"
+      },
+      "sourceId": "de:heiseonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "„CallPhantom“: Betrügerische Android-Apps zocken Neugierige ab\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.heise.de/news/CallPhantom-Betruegerische-Android-Apps-zocken-Neugierige-ab-11285846.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
+        }
+      ],
+      "createdAt": "2026-05-07T14:50:01.198Z",
+      "expiresAt": "2026-05-08T14:50:01.198Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T14:50:01.198Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T14:50:01.198Z"
+      }
+    },
     {
       "id": 3844254551,
       "postUrl": "https://t.me/tagesschau/43775?single",
@@ -695,52 +787,6 @@
       }
     },
     {
-      "id": 2986557786,
-      "postUrl": "https://t.me/heiseonline/12104?single",
-      "source": {
-        "title": "heise online",
-        "handle": "heiseonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/kUzmjUkjMjT5_swojbWZg-aIbmYQkvobaN_HshVjF0gpFt0seOGX-nv8-V-hFh5AeAuQk67hFEwx-gCVBD3dn7HmCGcsVjOXh9toVYNJ_rL-Fbr_Ldj4QKUhRU6Ya3SmERIzZAxXGYcaZJm0-6oOFDHSZHQjV1LPpjqa84MuQb6d9zDcK2qvG854MlcanNZoox_3XmB3d_wubGXu0BOdkbJq6O_8J-gtxTLJGXM3kPmdu5f_k5iPYxEbx3dSG7DYBJEDIB4GG3ydkaQ-MiyqdSgi6k7gWHwtT9a3BQ7ZQaIsKs07zvf1cJcX6tAHTMPsYoJMNiCfQlJprSUnuSVSbg.jpg"
-      },
-      "sourceId": "de:heiseonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Apache HTTP Server: Hochriskante Lücken ermöglichen Einschleusen von Schadcode\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Apache-HTTP-Server-Hochriskante-Luecken-ermoeglichen-Einschleusen-von-Schadcode-11284090.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:17.340Z",
-      "expiresAt": "2026-05-07T14:46:17.340Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:17.340Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:17.340Z"
-      }
-    },
-    {
       "id": 3135275694,
       "postUrl": "https://t.me/tagesschau/43767?single",
       "source": {
@@ -1060,328 +1106,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-07T04:04:12.873Z"
-      }
-    },
-    {
-      "id": 2404598153,
-      "postUrl": "https://t.me/tagesschau/43760?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Ein Jahr Schwarz-Rot: Der Rollenwechsel des Friedrich Merz\nhttps://www.tagesschau.de/inland/innenpolitik/merz-bundeskanzler-ein-jahr-schwarz-rot-100.html\n\nVom scharfzüngigen Oppositionsführer zum Kanzler, der den Laden zusammenhalten muss: Friedrich Merz musste die Rolle wechseln. Seine Wortwahl erinnert aber zuweilen an einen Politiker ohne Regierungsverantwortung, analysiert Dagmar Pepping.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/inland/innenpolitik/merz-bundeskanzler-ein-jahr-schwarz-rot-100.html",
-          "url": "https://www.tagesschau.de/inland/innenpolitik/merz-bundeskanzler-ein-jahr-schwarz-rot-100.html"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:18.288Z",
-      "expiresAt": "2026-05-07T14:46:18.288Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:18.288Z"
-      }
-    },
-    {
-      "id": 875255881,
-      "postUrl": "https://t.me/tagesschau/43759?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Marktbericht: Lufthansa trotz des Iran-Kriegs im Aufwind\nhttps://www.tagesschau.de/wirtschaft/finanzen/lufthansa-mb-100.html\n\nDie Lufthansa hat trotz des Iran-Kriegs im ersten Quartal überraschend gut abgeschnitten. Gleichzeitig will der Konzern im Gesamtjahr deutlich mehr verdienen als im Vorjahr. Die Anleger hören das gerne.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/wirtschaft/finanzen/lufthansa-mb-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/finanzen/lufthansa-mb-100.html"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:18.288Z",
-      "expiresAt": "2026-05-07T14:46:18.288Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:18.288Z"
-      }
-    },
-    {
-      "id": 989927944,
-      "postUrl": "https://t.me/tagesschau/43758?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Ausbruch auf Kreuzfahrtschiff: Andes-Typ des Hantavirus nachgewiesen\nhttps://www.tagesschau.de/ausland/europa/kreuzfahrtschiff-hantavirus-100.html\n\nBei zwei Passagieren der \"Hondius\" wurde ein von Mensch zu Mensch übertragbarer Typ des Hantavirus festgestellt. Spanien hatte dem Schiff zuvor erlaubt, die Kanaren anzusteuern - dort regt sich aber Widerstand.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/ausland/europa/kreuzfahrtschiff-hantavirus-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/kreuzfahrtschiff-hantavirus-100.html"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:18.288Z",
-      "expiresAt": "2026-05-07T14:46:18.288Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:18.288Z"
-      }
-    },
-    {
-      "id": 4091389055,
-      "postUrl": "https://t.me/tagesschau/43757?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Vor Trumps China-Besuch: Iranischer Außenminister in Peking\nhttps://www.tagesschau.de/ausland/asien/iran-aussenminister-china-100.html\n\nIrans Außenminister Araghtschi ist zu Gesprächen nach China gereist - kommende Woche wird Trump dort erwartet. Bei beiden Besuchen wird der Krieg gegen Iran und die Straße von Hormus Thema sein. Von B. Eyssel.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/ausland/asien/iran-aussenminister-china-100.html",
-          "url": "https://www.tagesschau.de/ausland/asien/iran-aussenminister-china-100.html"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:18.288Z",
-      "expiresAt": "2026-05-07T14:46:18.288Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:18.288Z"
-      }
-    },
-    {
-      "id": 2581552806,
-      "postUrl": "https://t.me/tagesschau/43756?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Straße von Malakka: Sorge um die weltweit wichtigste Meerenge\nhttps://www.tagesschau.de/ausland/asien/strasse-von-malakka-102.html\n\nDie Straße von Malakka zwischen Indonesien und Malaysia ist die meistbefahrene Meerenge der Welt. Käme es hier - wie in Hormus - zu einer Blockade, wäre nicht nur China betroffen, sondern die gesamte Weltwirtschaft. Von J. Johnston und C. Justus.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/ausland/asien/strasse-von-malakka-102.html",
-          "url": "https://www.tagesschau.de/ausland/asien/strasse-von-malakka-102.html"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:18.288Z",
-      "expiresAt": "2026-05-07T14:46:18.288Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:18.288Z"
-      }
-    },
-    {
-      "id": 3686059613,
-      "postUrl": "https://t.me/tagesschau/43755?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Getöteter Polizist: Lange Haftstrafe wegen illegalem Autorennen mit Todesfolge\nhttps://www.tagesschau.de/inland/gesellschaft/urteil-getoeteter-polizist-autorennen-dresden-100.html\n\nNach dem Tod eines Polizisten bei einer Verfolgungsjagd ist der Angeklagte zu einer Freiheitsstrafe von mehr als zehn Jahren verurteilt worden. Das Landgericht in Cottbus befand ihn eines verbotenen Autorennens mit Todesfolge für schuldig.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/inland/gesellschaft/urteil-getoeteter-polizist-autorennen-dresden-100.html",
-          "url": "https://www.tagesschau.de/inland/gesellschaft/urteil-getoeteter-polizist-autorennen-dresden-100.html"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:18.288Z",
-      "expiresAt": "2026-05-07T14:46:18.288Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:18.288Z"
-      }
-    },
-    {
-      "id": 204844460,
-      "postUrl": "https://t.me/tagesschau/43754?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/StIDqcwntfegm4XTrtCayOB_SPK3odd0Z7gzgY_Oqr-oD8MAfiu2aDn8dNNuLB5Y8_tLyFCpK9fpUQIZTukCwoD4a7WpORlMqfwuoIJ1ppPnWPXxkfrYU-m2hK5V1PMsorJbLRuuTtRggkyy5cY4qtABx3ONNQWD3eP7FC0xJhH3yDv6tOtkBJgEXhPRC0iystazKhOFjxdaA55JtiR2nqiR5uGTuoOmZFBCDZwHgVCsKToRTaWOFNcQThxx4wPqRNhI94RKMTkOniw7hiMaGO8rG7z0flw1xbSHrhtakeyHPLhUjy-n-XwOVtX5gxzgaA8AAQuEkHxypMqY5yIU6A.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Kampf gegen Deepfakes: Meloni verurteilt KI-Bild als politischen Angriff\nhttps://www.tagesschau.de/ausland/europa/meloni-ki-deepfakes-100.html\n\nImmer wieder tauchen KI-Bilder mit Italiens Ministerpräsidentin Meloni im Internet auf. Jetzt teilt sie selbst eins dieser Bilder - und warnt davor, alles zu glauben, was man im Internet sehe.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/ausland/europa/meloni-ki-deepfakes-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/meloni-ki-deepfakes-100.html"
-        }
-      ],
-      "createdAt": "2026-05-06T14:46:18.288Z",
-      "expiresAt": "2026-05-07T14:46:18.288Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T14:46:18.288Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T14:46:18.288Z"
       }
     }
   ]
