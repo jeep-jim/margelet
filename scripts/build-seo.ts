@@ -65,6 +65,38 @@ const MAX_POSTS_PER_PAGE = 50;
 const MAX_KEYWORDS = 18;
 const MAX_TOP_SOURCES = 12;
 
+const SEO_LOCALE_META: Record<SiteLocale, { htmlLang: string; hreflang: string; countryCode: string }> = {
+  ru: { htmlLang: "ru", hreflang: "ru-RU", countryCode: "RU" },
+  uk: { htmlLang: "uk", hreflang: "uk-UA", countryCode: "UA" },
+  en: { htmlLang: "en", hreflang: "en-US", countryCode: "US" },
+  in: { htmlLang: "hi", hreflang: "hi-IN", countryCode: "IN" },
+  fa: { htmlLang: "fa", hreflang: "fa-IR", countryCode: "IR" },
+  tr: { htmlLang: "tr", hreflang: "tr-TR", countryCode: "TR" },
+  "pt-br": { htmlLang: "pt-BR", hreflang: "pt-BR", countryCode: "BR" },
+  kk: { htmlLang: "kk", hreflang: "kk-KZ", countryCode: "KZ" },
+  uz: { htmlLang: "uz", hreflang: "uz-UZ", countryCode: "UZ" },
+  ae: { htmlLang: "ar", hreflang: "ar-AE", countryCode: "AE" },
+  eg: { htmlLang: "ar", hreflang: "ar-EG", countryCode: "EG" },
+  pk: { htmlLang: "ur", hreflang: "ur-PK", countryCode: "PK" },
+  id: { htmlLang: "id", hreflang: "id-ID", countryCode: "ID" },
+  mx: { htmlLang: "es", hreflang: "es-MX", countryCode: "MX" },
+  sa: { htmlLang: "ar", hreflang: "ar-SA", countryCode: "SA" },
+  es: { htmlLang: "es", hreflang: "es-ES", countryCode: "ES" },
+  it: { htmlLang: "it", hreflang: "it-IT", countryCode: "IT" },
+  fr: { htmlLang: "fr", hreflang: "fr-FR", countryCode: "FR" },
+  de: { htmlLang: "de", hreflang: "de-DE", countryCode: "DE" },
+  ar: { htmlLang: "es", hreflang: "es-AR", countryCode: "AR" },
+  co: { htmlLang: "es", hreflang: "es-CO", countryCode: "CO" },
+  za: { htmlLang: "en", hreflang: "en-ZA", countryCode: "ZA" },
+  ng: { htmlLang: "en", hreflang: "en-NG", countryCode: "NG" },
+  zh: { htmlLang: "zh", hreflang: "zh-CN", countryCode: "CN" },
+  ms: { htmlLang: "ms", hreflang: "ms-MY", countryCode: "MY" },
+};
+
+function getSeoLocaleMeta(locale: SiteLocale) {
+  return SEO_LOCALE_META[locale] ?? { htmlLang: locale, hreflang: locale, countryCode: locale.toUpperCase() };
+}
+
 const WORD_STOPLIST = new Set([
   "the", "and", "for", "from", "with", "this", "that", "you", "your", "are", "was", "were", "will", "have", "has", "had",
   "или", "это", "как", "что", "для", "при", "над", "под", "его", "она", "они", "уже", "ещё", "еще", "будет", "можно", "после", "сейчас", "если", "чтобы",
@@ -296,13 +328,16 @@ function buildPageHtml(page: SeoPage, siblingLinks: string[]) {
   const hreflangLinks = [
     ...SITE_LOCALES.map((locale) => {
       const localizedUrlPath = page.urlPath.replace(/^\/country\/[^/]+/, `/country/${locale.code}`);
-      return `<link rel="alternate" hreflang="${escapeHtml(locale.code)}" href="${escapeHtml(SITE_ORIGIN + localizedUrlPath)}" />`;
+      const meta = getSeoLocaleMeta(locale.code);
+      return `<link rel="alternate" hreflang="${escapeHtml(meta.hreflang)}" href="${escapeHtml(SITE_ORIGIN + localizedUrlPath)}" />`;
     }),
-    `<link rel="alternate" hreflang="x-default" href="${escapeHtml(SITE_ORIGIN + "/")}" />`,
-  ].join("\n");  
+    `<link rel="alternate" hreflang="x-default" href="${escapeHtml(SITE_ORIGIN + "/country/en")}" />`,
+  ].join("\n");
+  const localeMeta = getSeoLocaleMeta(page.country);
+  const ogImage = `${SITE_ORIGIN}/hero.webp`;
 
   return `<!doctype html>
-<html lang="en">
+<html lang="${escapeHtml(localeMeta.htmlLang)}">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -311,6 +346,17 @@ function buildPageHtml(page: SeoPage, siblingLinks: string[]) {
   <link rel="canonical" href="${escapeHtml(canonical)}" />
   ${hreflangLinks}
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="${escapeHtml(page.title)}" />
+  <meta property="og:description" content="${escapeHtml(page.description)}" />
+  <meta property="og:url" content="${escapeHtml(canonical)}" />
+  <meta property="og:image" content="${escapeHtml(ogImage)}" />
+  <meta property="og:locale" content="${escapeHtml(localeMeta.hreflang.replace("-", "_"))}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${escapeHtml(page.title)}" />
+  <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+  <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
   <script type="application/ld+json">${escapeHtml(JSON.stringify(jsonLd))}</script>
   <style>
     body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{max-width:920px;margin:0 auto;padding:32px 18px 56px}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0}h1{font-size:34px;line-height:1.15;margin:0 0 12px}h2{margin-top:30px}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;margin-top:14px;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}
@@ -471,8 +517,8 @@ function main() {
     allUrls.push(...countryUrls);
   }
 
-  writeFileSync(path.join(PUBLIC_DIR, "sitemap.xml"), sitemapIndexXml(sitemapFiles), "utf8");
   writeFileSync(path.join(SITEMAPS_DIR, "countries.xml"), sitemapXml(allUrls.filter((url) => /^\/country\/[^/]+$/.test(url.loc))), "utf8");
+  writeFileSync(path.join(PUBLIC_DIR, "sitemap.xml"), sitemapIndexXml(["/sitemaps/countries.xml", ...sitemapFiles]), "utf8");
 
   console.log(`SEO built: ${allUrls.length} stable pages for ${countryFeedEntries.length} countries`);
 }
