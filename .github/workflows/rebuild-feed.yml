@@ -7,9 +7,9 @@ on:
         description: "Optional country code"
         required: false
         default: ""
+
   schedule:
     - cron: "17 * * * *"
-    - cron: "47 * * * *"
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -42,7 +42,7 @@ jobs:
           cache: npm
 
       - name: Show workflow version
-        run: echo "workflow version = github-lite-v5-feeds-only"
+        run: echo "workflow version = github-lite-v6-cloudflare-purge"
 
       - name: Install dependencies
         run: npm ci
@@ -50,6 +50,7 @@ jobs:
       - name: Rebuild feed snapshot
         run: |
           COUNTRY="${{ github.event.inputs.country }}"
+
           if [ -n "$COUNTRY" ]; then
             npm run rebuild:feed -- --country="$COUNTRY"
           else
@@ -77,3 +78,10 @@ jobs:
           git commit -m "rebuild feed"
           git pull --rebase origin main || true
           git push
+
+      - name: Purge Cloudflare cache
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'

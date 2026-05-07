@@ -448,7 +448,6 @@ export function AdminScreen({
               <div className="min-w-0">
                 <div className="text-sm font-semibold text-white">Посты по странам</div>
                 <div className="mt-1 text-xs text-white/45">
-                  Быстрая сводка. Не влияет на выбранную страну для добавления.
                 </div>
               </div>
               <div className="shrink-0 rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
