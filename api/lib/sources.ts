@@ -607,16 +607,14 @@ async function syncSourcePosts(
       visibleLatestPostId &&
       source.lastSeenPostId > visibleLatestPostId
   );
-  // Recovery rule: if this source currently has no fresh posts in our feed,
-  // do not trust lastSeenPostId as a hard cursor. A broken empty snapshot can
-  // advance lastSeenPostId without publishing posts, which would block backfill forever.
-  const shouldBackfillEmptySource = sourceExistingPosts.length === 0;
-
-  const effectiveLastSeenPostId = shouldBackfillEmptySource
-    ? null
-    : hasCorruptedLastSeen
-      ? existingTopPostId
-      : source.lastSeenPostId;
+  // Anti-zombie rule: if a source has already imported a Telegram post,
+  // do not re-import the same old post after our 24h feed TTL expires.
+  // New sources still backfill normally because lastSeenPostId is null.
+  // If the cursor is obviously corrupted and points above the latest visible
+  // Telegram post, we fall back to the latest post still present in our feed.
+  const effectiveLastSeenPostId = hasCorruptedLastSeen
+    ? existingTopPostId
+    : source.lastSeenPostId;
 
   for (const postId of ids.slice(0, MAX_IMPORT_CANDIDATES_PER_SOURCE)) {
     if (effectiveLastSeenPostId && postId <= effectiveLastSeenPostId) continue;
