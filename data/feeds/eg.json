@@ -1,9 +1,51 @@
 {
   "countryCode": "eg",
-  "updatedAt": "2026-05-08T09:53:30.666Z",
-  "totalPosts": 83,
+  "updatedAt": "2026-05-08T11:47:07.671Z",
+  "totalPosts": 85,
   "chunks": 1,
   "items": [
+    {
+      "id": 1659793652,
+      "postUrl": "https://t.me/visitcairo/2?single",
+      "source": {
+        "title": "Visitcairo",
+        "handle": "visitcairo",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:visitcairo",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T11:45:37.522Z",
+      "expiresAt": "2026-05-09T11:45:37.522Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:45:37.522Z",
+      "tag": "travel",
+      "tags": [
+        "travel",
+        "culture"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:45:37.522Z"
+      }
+    },
     {
       "id": 1328444519,
       "postUrl": "https://t.me/pythonarabic/79?single",
@@ -274,6 +316,48 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T07:57:32.983Z"
+      }
+    },
+    {
+      "id": 1342813127,
+      "postUrl": "https://t.me/visitcairo/1?single",
+      "source": {
+        "title": "Visitcairo",
+        "handle": "visitcairo",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:visitcairo",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T11:45:37.522Z",
+      "expiresAt": "2026-05-09T11:45:37.522Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:45:37.522Z",
+      "tag": "travel",
+      "tags": [
+        "travel",
+        "culture"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:45:37.522Z"
       }
     },
     {
