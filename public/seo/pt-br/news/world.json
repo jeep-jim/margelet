@@ -7,7 +7,7 @@
   "title": "Mundo Telegram trends in Brazil | margeleT",
   "description": "Fresh Mundo Telegram posts, sources and keywords from Brazil. Updated automatically by margeleT trend snapshots.",
   "h1": "Mundo Telegram trends in Brazil",
-  "updatedAt": "2026-05-08T11:46:20.140Z",
+  "updatedAt": "2026-05-08T17:45:18.158Z",
   "parentTag": {
     "value": "news",
     "emoji": "📰",
@@ -322,6 +322,49 @@
   },
   "posts": [
     {
+      "id": 362304509,
+      "postUrl": "https://t.me/cursodev/1?single",
+      "source": {
+        "title": "Curso.dev",
+        "handle": "cursodev",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "pt-br:cursodev",
+      "sourceCountryCode": "pt-br",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T17:45:18.158Z",
+      "expiresAt": "2026-05-09T17:45:18.158Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T17:45:18.158Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T17:45:18.158Z"
+      }
+    },
+    {
       "id": 1843516852,
       "postUrl": "https://t.me/rocketseat/2?single",
       "source": {
@@ -413,6 +456,11 @@
       "title": "Rocketseat",
       "handle": "rocketseat",
       "count": 2
+    },
+    {
+      "title": "Curso.dev",
+      "handle": "cursodev",
+      "count": 1
     }
   ],
   "keywords": []

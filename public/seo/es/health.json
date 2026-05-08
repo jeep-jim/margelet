@@ -7,7 +7,7 @@
   "title": "Salud Telegram trends in Spain | margeleT",
   "description": "Fresh Salud Telegram posts, channels, keywords and sources from Spain. Updated automatically by margeleT.",
   "h1": "Salud Telegram trends in Spain",
-  "updatedAt": "2026-05-08T14:00:03.879Z",
+  "updatedAt": "2026-05-08T15:53:43.044Z",
   "parentTag": {
     "value": "health",
     "emoji": "🩺",
@@ -227,7 +227,57 @@
       }
     ]
   },
-  "posts": [],
-  "topSources": [],
+  "posts": [
+    {
+      "id": 2474917130,
+      "postUrl": "https://t.me/beautyespana/1?single",
+      "source": {
+        "title": "Beauty España",
+        "handle": "beautyespana",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "es:beautyespana",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T15:53:43.044Z",
+      "expiresAt": "2026-05-09T15:53:43.044Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:53:43.044Z",
+      "tag": "health",
+      "tags": [
+        "health",
+        "fashion",
+        "beauty"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:53:43.044Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "Beauty España",
+      "handle": "beautyespana",
+      "count": 1
+    }
+  ],
   "keywords": []
 }
