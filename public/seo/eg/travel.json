@@ -7,7 +7,7 @@
   "title": "سفر Telegram trends in Egypt | margeleT",
   "description": "Fresh سفر Telegram posts, channels, keywords and sources from Egypt. Updated automatically by margeleT.",
   "h1": "سفر Telegram trends in Egypt",
-  "updatedAt": "2026-05-08T07:47:46.526Z",
+  "updatedAt": "2026-05-08T11:45:37.522Z",
   "parentTag": {
     "value": "travel",
     "emoji": "🧳",
@@ -227,7 +227,98 @@
       }
     ]
   },
-  "posts": [],
-  "topSources": [],
+  "posts": [
+    {
+      "id": 1659793652,
+      "postUrl": "https://t.me/visitcairo/2?single",
+      "source": {
+        "title": "Visitcairo",
+        "handle": "visitcairo",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:visitcairo",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T11:45:37.522Z",
+      "expiresAt": "2026-05-09T11:45:37.522Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:45:37.522Z",
+      "tag": "travel",
+      "tags": [
+        "travel",
+        "culture"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:45:37.522Z"
+      }
+    },
+    {
+      "id": 1342813127,
+      "postUrl": "https://t.me/visitcairo/1?single",
+      "source": {
+        "title": "Visitcairo",
+        "handle": "visitcairo",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:visitcairo",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T11:45:37.522Z",
+      "expiresAt": "2026-05-09T11:45:37.522Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:45:37.522Z",
+      "tag": "travel",
+      "tags": [
+        "travel",
+        "culture"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:45:37.522Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "Visitcairo",
+      "handle": "visitcairo",
+      "count": 2
+    }
+  ],
   "keywords": []
 }

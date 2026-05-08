@@ -7,7 +7,7 @@
   "title": "Cuisine Telegram trends in France | margeleT",
   "description": "Fresh Cuisine Telegram posts, channels, keywords and sources from France. Updated automatically by margeleT.",
   "h1": "Cuisine Telegram trends in France",
-  "updatedAt": "2026-05-08T07:47:47.169Z",
+  "updatedAt": "2026-05-08T07:58:13.051Z",
   "parentTag": {
     "value": "food",
     "emoji": "🍕",
@@ -165,7 +165,55 @@
       }
     ]
   },
-  "posts": [],
-  "topSources": [],
+  "posts": [
+    {
+      "id": 4013805256,
+      "postUrl": "https://t.me/cuisinefrancaise/1?single",
+      "source": {
+        "title": "Test10",
+        "handle": "cuisinefrancaise",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "fr:cuisinefrancaise",
+      "sourceCountryCode": "fr",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T07:58:13.051Z",
+      "expiresAt": "2026-05-09T07:58:13.051Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T07:58:13.051Z",
+      "tag": "food",
+      "tags": [
+        "food"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T07:58:13.051Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "Test10",
+      "handle": "cuisinefrancaise",
+      "count": 1
+    }
+  ],
   "keywords": []
 }
