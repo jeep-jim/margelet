@@ -651,7 +651,10 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
 
   return (
     <div className="min-h-screen bg-[#17212b] px-4 text-white">
-      <div className="flex min-h-screen items-start justify-center pt-4 pb-6 sm:pt-6">
+      <div
+        className="flex min-h-screen items-start justify-center pt-4 sm:pt-6"
+        style={{ paddingBottom: "calc(24px + env(safe-area-inset-bottom, 0px))" }}
+      >
         <div className="w-full max-w-md">
           <div className="mb-4 flex justify-center">
             <img

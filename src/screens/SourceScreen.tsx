@@ -222,7 +222,7 @@ export function SourceScreen({
 
   if (!source) {
     return (
-      <div className="min-h-screen bg-app pt-[76px] text-primary">
+      <div className="min-h-screen bg-app text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
         <div className="mx-auto max-w-[570px] px-4 pb-10">
           <div className="text-lg font-semibold">{t.source.notFound}</div>
         </div>
@@ -240,7 +240,7 @@ export function SourceScreen({
   };
 
   return (
-    <div className="min-h-screen bg-app pt-[76px] text-primary">
+    <div className="min-h-screen bg-app text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
       <div className="mx-auto max-w-[570px] px-4 pb-10">
         <section className="mb-6 overflow-hidden rounded-[28px] border border-soft bg-surface p-5">
           <button
