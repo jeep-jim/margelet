@@ -1,6 +1,1855 @@
 {
-  "updatedAt": "2026-05-08T17:46:39.573Z",
+  "updatedAt": "2026-05-08T19:46:22.669Z",
   "posts": [
+    {
+      "id": 1670566241,
+      "postUrl": "https://t.me/vcnews/61261?single",
+      "source": {
+        "title": "vc.ru",
+        "handle": "vcnews",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/HQ7pCFGZtmUTYnBNE58sjhyD_SewDSF11xtm60MLDv50usKK1H2EiBQWJ9iZwSsNbmmoJaoao_w49LhhnA7lBF0LxyXGNF6ZVb2R_HOYCJiFB_bZ7e0U4D-k5nPG23yZEO0jM83U1NyymBXe82lvqLnKt_wUzyYRRZlOT3TqWLqerNwLnHtmxDKAUTH-Ryh4hQi1Pf8oGncVssgedRhr9g0v480bfRijrJICiej2ZAziP2OxW_rYz7sBuX5G0WqrgUa9lgeNh3Pa-dD4_eaIRzm-byMgMZsPsUKpQp3ayCZLLEpovEsFiLkhcKl9rmy281ld4QvVup2APS5GBVyzHw.jpg"
+      },
+      "sourceId": "ru:vcnews",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/cf2d2947e1.mp4?token=UGeYLAL0j46i_UMt8Mu4GOG6GV_OD2X0DZlW42qMcPE9MeKdk_JXju97LqWY0_Vp8ftrnip66DUfyMiPzvqKzcemLpk5fbGDj86p4aV-oumI0mh2Ov1QIVju01-wRVIySr016FobQRFmRYYuxZI9hExt-f9gDVWdNfvUb_n-QdIk_eNIhU3R-WmVL5TZxVt0_81lON8iUlyuamhQjNwhH3nLVQpIfrtU-1Yp-CxhAkppva5Bk1rC72PnAjdu7MBP8g43J2jTEa-gCeFCI5aCDTWvW5RrTLSj39__we0jk2k5PrAViODxUDjcQr0LMnQjUGB7Sj4tHxSy5oE2UWiO5Q",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "OpenAI представила три аудиомодели для ИИ-агентов. Одна умеет «рассуждать» на уровне GPT‑5 и лучше предшественницы удерживает контекст — контекстное окно увеличили до 128 тысяч токенов.\n\nДругие две предназначены для синхронных переводов и расшифровок. Все три доступны в Realtime API\n\nvc.ru/ai/2915334\n\nНа видео — пример, как работает модель для перевода",
+      "links": [
+        {
+          "label": "vc.ru/ai/2915334",
+          "url": "https://vc.ru/ai/2915334"
+        }
+      ],
+      "createdAt": "2026-05-08T15:54:31.275Z",
+      "expiresAt": "2026-05-09T15:54:31.275Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:54:31.275Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "business",
+        "startups",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:31.275Z"
+      }
+    },
+    {
+      "id": 3863414856,
+      "postUrl": "https://t.me/tproger/14461?single",
+      "source": {
+        "title": "Типичный программист",
+        "handle": "tproger",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/QOvyjsVrgewBDOj3ov7SHwG3eEJN1NsTVa-Lq29Val9bHc0uyylf9OZUmO5Ckp2DVsANWaB0I_aw2A1hMpSIaYQlaMyBQWftt4SgCsrfQrsYTNZ0bXfPwmNOMIEBVEhTQSLgStpLaUkS1T5vWPo6G0kf1OcCOBqmoA63XKXW4FGGYIqfeaff0uV4g_4kLSLiOtTLco54wjrJXpx5drzNLmE73qky-1bKqMw54Op52buRHg0YaMnZ8oxnFLGGYL-6-DT13TPci6Ka4gBMgdll_ZcUSyur47f-6zuUOPx_B47f3UqXEvLKmpeKhX1JLBWZzAIyjZTwkr-X6ekJU4c0qw.jpg"
+      },
+      "sourceId": "ru:tproger",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/GzYX7tRRLD0PrFcGeDEUHxCMh3S_lIK9zHcUOnWqH5nRXmuLoXwZRXxG5e-QzM_7SWDlWC_UH8SpjJ7ufn0sCPzN6MG_WiMQLbHaprVLWYr-dT10aMCBEsGijDM6XVrvzj_Qq87G8Ztut4rDusngQofwXsKP12qVF6Fikec-mjVTHmDLY8PTd1Ur8xW11aG-9WnpSkq-KJtmUylS-ghu5iq0gsmVogiMLCT5RX6-vsR9KoyjxOcUBNjCEbTHy3B18PC0xCHdkI62Fwmw1I1z1rYnSz2htTp_CQjnuUHazzXDA8--DuW7X4PZlYU0JFasTV9IOx4XAKhFI6pBA-SBKg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "IT больше не золотая жила? Разбираемся, что происходит в 2026-м\n\nСейчас компании режут бюджеты, закрывают проекты и ищут, как сделать то же самое, но дешевле. Зарплаты формально растут, но из-за инфляции мы этого не чувствуем.\n\nВ этой напряженной обстановке неожиданно хорошо себя чувствуют разработчики 1С. Благодаря импортозамещению за этих специалистов держатся очень крепко, платят им хорошо, надбавки они тоже получают.\n\nСокращают при этом тех, чьи проекты хоть и интересные, но не обязательные для компании. \n\nРынок нормализуется, но обезопасить себя можно уже сейчас.\n\nЧитать дальше: https://tprg.ru/Ks91\n\n@tproger\nЧитайте также в VK, Max и Дзен",
+      "links": [
+        {
+          "label": "https://tprg.ru/Ks91",
+          "url": "https://tprg.ru/Ks91"
+        },
+        {
+          "label": "@tproger",
+          "url": "https://t.me/+QGYQ7Cs9ttcwNDc6"
+        },
+        {
+          "label": "VK",
+          "url": "https://tprg.ru/vnl9"
+        },
+        {
+          "label": "Max",
+          "url": "https://tprg.ru/1Z3N"
+        },
+        {
+          "label": "Дзен",
+          "url": "https://tprg.ru/RWQM"
+        }
+      ],
+      "createdAt": "2026-05-08T15:54:25.820Z",
+      "expiresAt": "2026-05-09T15:54:25.820Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:54:25.820Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "education",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:25.820Z"
+      }
+    },
+    {
+      "id": 3883398627,
+      "postUrl": "https://t.me/tjournal/58345?single",
+      "source": {
+        "title": "TJ",
+        "handle": "tjournal",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/vX874UIYs51xRsxdISonL5RAk0OFW0vPyBAgE0Vy8zwfV1-1YFCIN6NNgkqBYz841PJt-sC_tmBXyJ0Wp1WmHDChcczV7RCaDEi7tITyRgXxX42bfMNbOZesBxW-u9gAFotEgTIytBBoi3EUgwK4K7K8IlGgVTS9rFxsse_jyr62zHgdWLrsQv2uGzVj9guhDnyH1SSaVzxLVIEuetYwaR31uO2GuxUfky-8ss_5237veaTtM7sGsBr_1fMZZV1maQm57ReIGNWh0oGtLG4T_cvdDNPeZI13nHhhsepjtwS9_t2-SlvfpUI3iLNK2Ocbv0nlDovhgld5SuM6HpKimg.jpg"
+      },
+      "sourceId": "ru:tjournal",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/UYgyAS_g6NrHM58oqW2IbO0cVWBjkDvDeCFl1OqCCqyCVv9p0nUrL35oLEn8OxCvmJhuM5vQGEhK4wVkVbcER9C89_RxgE74Hin4dT9BHQBjSUESCdh7xtSL8NHdkBGrXgCp_pRT3IJBEL2vQW4h6I-Gr-QcXnKySagVvN-TsAHsnZKCtIQN7AXMiKRqAwzLpmC2zjmRSHFUhl8UXsxdjJ5spr9wI84hpw_r5_gOfARgiud8_S7cdlyjmzDkYeGTmpXY5lBAb4Lxvf-w_uuzjjzQ5Zdj_u31hF0pbnWa-G95I9lOf2OX0k-FVVv4kdZ6bqSi69YtJKFvbfsJbRfIFw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "⚡️Гид по технологиям от TJ\n\nКак издание не только про интернет, но и про технологии, вспоминаем наши лучшие тексты о нейросетях, смартфонах и криптовалютах. В списке:\n\n— Как обходить блокировки;\n— Зачем нужны NFT;\n— Что такое блокчейн;\n— Как удалить упоминания о себе из интернета.\n\nЧитайте и сохраняйте, вдруг пригодится.\n\nhttps://tjournal.ru/tech/728493",
+      "links": [
+        {
+          "label": "https://tjournal.ru/tech/728493",
+          "url": "https://tjournal.ru/tech/728493"
+        }
+      ],
+      "createdAt": "2026-05-08T15:54:21.219Z",
+      "expiresAt": "2026-05-09T15:54:21.219Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:54:21.219Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "news",
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:21.219Z"
+      }
+    },
+    {
+      "id": 2442503824,
+      "postUrl": "https://t.me/thevyshka/7591?single",
+      "source": {
+        "title": "The Vyshka",
+        "handle": "thevyshka",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/feaKFPN_a43MU9ISFmMKN7Vnyv2lH1nTeMmGBixjiZdywB4Vq2T-qYNqRkULqxJvC9nipxVg_PM_87sV61AO601fXsiyc-XQAYrgRpEsHdKbprIBgmpYqIEjpY3W37--76XUE7yYuuno8A9QPucxeTe04GgRmsAu5fe5Qc61fd83v2eAyTC9WLE-sBBPlEi4Nn7jS_5tiyx7xNJ6io79wC4NCTa8Zu5RYp_AXZ3WE-dyGXM-7jrw_L-91T9gd19NPeZzdURvqctUEvYQQgkVtBLtRpeNjMCAY5jQSJIuxTKm0DnvQ5zlyZFHWUtvWWTkPh6t7Q_sIpLcY1JVEXSiJw.jpg"
+      },
+      "sourceId": "ru:thevyshka",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "​​Всем привет!   \nМы возвращаемся с нашим авторским подкастом «Далеко и надолго» и официально начинаем второй сезон!  В этом выпуске мы поговорим о стране, которая уже была в одном из наших выпусков (обязательно послушайте его), и мы решили еще глубже разобраться в тонкостях учебы и поступления в эту страну, а именно в Германию! 🇩🇪    \n \nВ гостях у нас Валентина Васильева — эксперт по переезду, адаптации и жизни в Германии. Сама Валентина живет в Германии уже около 8 лет, прошла путь от студента до предпринимателя, и видит своей целью помогать студентам исполнить их мечту о немецкой жизни!    \n \nИщите наш подкаст в ВК, Яндексе, Apple Подкастах и на других платформах.    \n \nТакже подписывайтесь на Валентину в ее социальных сетях: \nTelegram, Instagram*, YouTube и сайт Nemusli Consult. \n \nЗа помощь в записи этого подкаста мы хотим поблагодарить студию записи «1984»  \n \n*«Meta», которой принадлежит Instagram, признана экстремисткой организацией и запрещена на территории РФ",
+      "links": [
+        {
+          "label": "​​",
+          "url": "https://telegra.ph/file/d48dac53beeefdf9aba7d.jpg"
+        },
+        {
+          "label": "этом выпуске",
+          "url": "https://dalekoinadolgo.mave.digital/ep-5"
+        },
+        {
+          "label": "выпусков",
+          "url": "https://dalekoinadolgo.mave.digital/ep-3"
+        },
+        {
+          "label": "ВК",
+          "url": "https://vk.com/din_podcast"
+        },
+        {
+          "label": "Яндексе",
+          "url": "https://music.yandex.ru/album/24548495?dir=desc&amp;amp;activeTab=about"
+        },
+        {
+          "label": "Apple Подкастах",
+          "url": "https://podcasts.apple.com/us/podcast/%D0%B4%D0%B0%D0%BB%D0%B5%D0%BA%D0%BE-%D0%B8-%D0%BD%D0%B0%D0%B4%D0%BE%D0%BB%D0%B3%D0%BE/id1662522673"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/nemusli"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://instagram.com/nemusli?igshid=MmVlMjlkMTBhMg=="
+        },
+        {
+          "label": "YouTube",
+          "url": "https://www.youtube.com/@nemusli"
+        },
+        {
+          "label": "Nemusli Consult",
+          "url": "https://nemusli-consult.ru/"
+        },
+        {
+          "label": "студию записи «1984»",
+          "url": "https://instagram.com/1984_moscow?igshid=NzZlODBkYWE4Ng=="
+        }
+      ],
+      "createdAt": "2026-05-08T14:18:03.942Z",
+      "expiresAt": "2026-05-09T14:18:03.942Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T14:18:03.942Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "science"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T14:18:03.942Z"
+      }
+    },
+    {
+      "id": 834236358,
+      "postUrl": "https://t.me/themarfa/12361?single",
+      "source": {
+        "title": "All-in-One Person | Технологии, софт и все такое",
+        "handle": "themarfa",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZAaUzjzDDrIpKJlYrO9o2nBM50bw0d_6wu1bpSfUou6mZTagNj-p23NCo-G8IMHbSyGsvSrBkyHLZdooz-SBQQfdwrBzdhYtbMyHCyw88muAXgsbpEBVNZJAfuazr4tBPmyIfh6ozSeaHJu8cI0nNoidZPxC8NduuVXxOLOTnamIkO6UqtmsxhVb3stKfK9WlQYHOzNxONhqtrEh-DbBqBuVPH10moHLoPtNz7P5uEGTEU00AUxSk3fE11vgEfBggSWSH90HlbT1pQfhV8SABQ1DIanzjkc3peB0mawaj-7DdyWmeXpRPf5FONEzIi2aO3dric-gTdcPKqiJwNEEpQ.jpg"
+      },
+      "sourceId": "ru:themarfa",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WUJRNXq46_NNzpZuEfuQu5uJMA5xxWHp9CMZB9hwKPSN_EiN0GhDrPmgpjD7Ao2UUq93zPsGpesGqdTJGaIxl0R7bi33tn_xeEW1m0QRxYbVJ-t24RR9Q_niXxHeyHf4FT36ChfqXz-C3T6qwySdzmX5e73SLvJ45NllmxNcutduxR-uVhrMjRuZdVvHQWOqOlQkLk_05J17m3sMUrM_9uZsti0ytyZD5aO9KN4_rV03BfrQSFj6ERSMYMiMLNtZP8QL-A5-fMtTPXE_AkYxjpKgJq5MuRvBYcgAAyionQBSR5mZvYZiSw5hcn_wMw4dllXcmRUuZPeAJb8L5qKaBQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "#Android #система\n\nAnubis для Android автоматически выгружает приложения из памяти и загружает их обратно в зависимости от текущего статуса VPN.\n\nДля корректной работы необходимо установить Shizuku и предоставить права на отладку через ADB. Это не требует root-прав и делается за пару нажатий.\n\nПолная инструкция здесь | Скачать здесь",
+      "links": [
+        {
+          "label": "Полная инструкция здесь",
+          "url": "https://github.com/sogonov/anubis/blob/main/docs/SETUP.md"
+        },
+        {
+          "label": "Скачать здесь",
+          "url": "https://github.com/sogonov/anubis"
+        }
+      ],
+      "createdAt": "2026-05-08T14:18:00.309Z",
+      "expiresAt": "2026-05-09T14:18:00.309Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T14:18:00.309Z",
+      "tag": "business",
+      "tags": [
+        "business",
+        "culture",
+        "art",
+        "real_estate",
+        "real_estate_invest"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T14:18:00.309Z"
+      }
+    },
+    {
+      "id": 4265993547,
+      "postUrl": "https://t.me/sportsru/123952?single",
+      "source": {
+        "title": "Спортс“",
+        "handle": "sportsru",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/HQ8XCyyKhOUTFPieV2mG6nfKqeX6kC9JJNUVe5IANSVMkX1VMBwYFdsIPm776BxBGIn6Uz_d44NNLSuh2anQHVUW5aPJhPLFMly876bMknprI9H5V-YamyZmsEFQVsF90dgXJsGJBDzWyA4RTIaHwbn0grIwUFnT-gaT3qkCiihCdbXEDXBye76LYI3ralEbHQDoqNPh-wBCDPnMyPLL4035Qbuy3JRx7Stht_EDGAd2eB_xM-XueUM-DewPswn_EeqCgi0ZWjiZa8QEPLnh1b4Gyx0NvRCAlgbJnSdzgdHWUshlaGhfZxHPRH5algJNLu6egYrhotHJH5X9SfmwKQ.jpg"
+      },
+      "sourceId": "ru:sportsru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Y7jTYYJfOa8RvZmE2EGgLF3x8Cy2-DgAHkBxywpon5dgchx0tqbkwSqsx2fVRttnQU-5Od5-tXPFdvoV9fTw_UaJOuanZo-Ve4wuT4k_YDIPJmm8NYw_9MEnNgMDO2yL9DQ4r2vXWLasqL_2Ww8-E9YxHsnoh1Wu_DabRKBOMzEebvICcPHhUHSbNeXkNRi5_stKqSj2FYnuFMaYERInGXRILDALmzpX10XIIpJfMNb3eVdDxwyzFJcm_jNTwclrfGpXKLYfrkKZS5RPmDADJnnVlgc51a1yCXY3w30v_9ISY-VOWwinG0z0Vb7Zyzf21uJohDG03O44jQ4x2gIPjw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🇬🇧 🇪🇺 «Астон Вилла» Эмери в финале Лиги Европы − там англичане сыграют с «Фрайбургом»\n\n❤️ − любимый трофей так близко!\n\n⚽️ Все рекорды сезона – в приложении ГОЛ",
+      "links": [
+        {
+          "label": "Все рекорды сезона – в приложении ГОЛ",
+          "url": "https://ggol.ru/EW8Cs2"
+        }
+      ],
+      "createdAt": "2026-05-08T14:17:53.660Z",
+      "expiresAt": "2026-05-09T14:17:53.660Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T14:17:53.660Z",
+      "tag": "sports",
+      "tags": [
+        "sports"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T14:17:53.660Z"
+      }
+    },
+    {
+      "id": 1632899730,
+      "postUrl": "https://t.me/rbc_news/148863?single",
+      "source": {
+        "title": "РБК. Новости. Главное",
+        "handle": "rbc_news",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/VOccBaj3p-7e7SlL9caOmkbSlqKItaetX3UmnFEAcx0wByPN4eSw9UTNEHUfaLar-QDNN3_b20mIZ18wUcOR33Y-FDe33Yh7DzZYzuth1ZBc-I9szAwSk05js5IIygdFylKMD0_BMgYk0RJu1tijL7dTtI55RjkTtqt3NDuVKgXhe5DIhOKGxGrPc6HkfApCwN2F5BgrSmOjjHx_lY5At8jrNSpMpFgcUhJJBSuw_4jhueqJ1iN0e_nlv0skF-L0-rFLksBeg0dVawqF7Pp93bXI35KOKyDEbqzkKIwLC02OVZIJu3MWqz5Jt55cIAawOQLYv5VpMgP9L5U3UuvAWg.jpg"
+      },
+      "sourceId": "ru:rbc_news",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Суд Москвы запретил в России один из старейших развлекательных порталов «ЯПлакалъ». Решение было вынесено 23 апреля. Оно вступит в силу 28 мая.  Истцом выступил межрайонный прокурор. Прокуратура попросила признать публикуемую на портале информацию запрещенной…",
+      "links": [],
+      "createdAt": "2026-05-08T14:17:45.630Z",
+      "expiresAt": "2026-05-09T14:17:45.630Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T14:17:45.630Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "economy"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T14:17:45.630Z"
+      }
+    },
+    {
+      "id": 1695028264,
+      "postUrl": "https://t.me/oldlentach/93382?single",
+      "source": {
+        "title": "Лентач",
+        "handle": "oldlentach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/D8tDo1KUNUKm9PYGqtoNWc8UzWv0jnc7cUhR4M35DuY_duiNJepnrWXS_1NQ2zbI3NsXBsb5MVe7wdqrkyjQGYbK5wJiOXdzdkTpLfrAUBqKGxHuAWkjZ5gw5BnJICzTuR6yvN1pCDg7QDwrdbpZW1ebvOCUBnBXnPyOeCJ6GjN0vSkMaRWvoVbQyJGWft2pyj4I0G4BQQHyF-_6zZt7xwiDqwpqSpuzD7yibSl4Itkc5xk44G3lY7r3uNxybdACnFGDgyYIAQ_WEZIaa1ZwrxPT91MhNRoDZx190s6hrGGNuW5QyFyCAMTqMSB50AOQXui_2T7nnq-N7HaTLmo3NQ.jpg"
+      },
+      "sourceId": "ru:oldlentach",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Z39d0u4n8n2rKobZBc-oHDFhCcl7NCzllaA03jDfvJcoEqzis_QJ3IlQfFkl33K-dFmBk-DOO6IV9HJaBcfVQjynufi5F9pVaswD3RTFCpxOwUzovQai3kzDkkzGSYTrQXnDqDIFceuRaUU__bKdNgam5f8WZaBxgRjcSs8WfGLYWv55iphiMwQr_jJ_I4XtpX_bMg76wP8Sym6PA0uIXXzPBtSyEhJjUTigQhxaXGWFJ2VBxUm3yPF0raSYIHyFAHM-zLbrJvCSkbU5V1ReKMRUeP1uALXIRwHURmCkI6IKR8Xg6bQY5W65LtousZ_dhFpmlgJRX7wLPt1G_fT44A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Тиктокер собрался выкупить авиакомпанию и сделать её «народной» — с правом голоса для всех, кто скинулся.\n\nSpirit Airlines обанкротилась 2 мая, сообщает Independent. тогда актёр озвучки Хантер Петерсон в шутку предложил выкупить её вместе со зрителями.\n\nИдея в следующем: минимальный взнос для участия $45, при этом каждый скинувшийся, вне зависимости от суммы, будет иметь равное право голоса в компании. Прибыль же будет распределяться пропорционально вложениям. \n\nНа сайте Хантера Петерсона указано, что они собрали уже $132 миллиона, но есть нюанс: все скинутые деньги — это просто обещания «акционеров» по электронной почте. \n\nАвтор идеи сейчас разбирается с юристами, как грамотно подать заявку на покупку, но критики утверждают, что даже если он действительно соберёт деньги, то столкнётся с другими трудностями — Министерство транспорта США требует от владельцев авиакомпании не только финансы, но и подтверждённые компетенции в  управлении\n\nА что ещё случилось?",
+      "links": [
+        {
+          "label": "А что ещё случилось?",
+          "url": "https://t.me/+gJwAnySOgyhkNTZi"
+        }
+      ],
+      "createdAt": "2026-05-08T11:46:35.972Z",
+      "expiresAt": "2026-05-09T11:46:35.972Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:46:35.972Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:46:35.972Z"
+      }
+    },
+    {
+      "id": 3736661735,
+      "postUrl": "https://t.me/nplusone/30854?single",
+      "source": {
+        "title": "N + 1",
+        "handle": "nplusone",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/WXbiRzMz0V0UN4WBZ8yA9GSgbndonsBkKlAEK5pyYU8CERwlcQQvGtx-njjV6axmWLkvZFuKl2ZttoUwh9n0zdLryvTrf3J2eNPMN_wyzY1Y6BZ3MmWI9iM1_SMF3ioGMmb66XwuUPceVnqyWUfY82_Hq4CKAcvQ8zSfn77Y3Hvehcshv1KzPrv73qFb8ntf_nf9K6Dy-HBd2RvOPd6SLNAlAc58MXMrDoRRTziRcQOXToTvurhjIe9ywhuaaqrLS3pYYPaQN02lr8Or04cKIaEQWgCiTQofnwowUPMAKCzeEMnS3z15sqxO4DwN3SaQ37j5dB_WLO12g-v8onfBlQ.jpg"
+      },
+      "sourceId": "ru:nplusone",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/BVWRE7l9g8hAYTRTs7gzKidFDfo8721ERcdnqGabQshlH8RzVmYQi51MXS2kVodp8BI4GBR9eINu8akFr9rCpuj0kPNCage1ueidNzmSbT56NuZ_ckv1dDtgRW6B9T_9Y273CI4Q5m-Og6-nmiPkyTJ9L7fTwUAdNtyRsg-ngFPH-lkxkBmPKWeUgBf2cISjw6kCRNf1tLB5htiAoMbGuDyqKyetlFkKN4YCPeYBvYmy9g63vnkK6TWhC8zccg1LUum-r2RQWPH0fANe5_N_DfpDO8BdrwfCmCCGi-e9bq_GiaKos2hGpc4IPtMxAGDeSjMNLNM4CI1EeBv2c3nZvA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Литературные новинки апреля напоминают: нам этот мир никогда не будет абсолютно понятен. Маршалл Салинз демонстрирует, что множество людей живут не в привычном нам «рациональном мире», а регулярно соприкасаются со сверхъестественным. Ему вторит Бенджамин Фридман, который объясняет, как религиозные взгляды сформировали современную экономику. С неожиданной стороны на нее предлагает взглянуть и Ран Шпиглер: для него экономическая теория — союз искусства и науки, где успех модели зачастую определяет эстетическая составляющая.\n\nТолько окинув заколдованный мир взглядом с орбиты, человечество тут же превратило космос в инструмент конкуренции — об этом книга Эмилио Коцци. По его мнению, мы находимся в шаге от превращения в «межпланетную цивилизацию». И если так, то неплохо бы научиться этичному сосуществованию — хотя бы в пределах одной планеты и хотя бы с котами. Такая задача людям вполне под силу, уверена биолог и научный журналист Наталья Резник. Подробнее в нашем материале рассказывает журналист и автор канала @knigi_and_sigi Виктория Мирошниченко\n\n#книжная_полка | *2.4\n\n🙄 Подпишитесь на N + 1",
+      "links": [
+        {
+          "label": "рассказывает",
+          "url": "https://nplus1.ru/blog/2026/05/05/book-digest-15"
+        },
+        {
+          "label": "@knigi_and_sigi",
+          "url": "https://t.me/knigi_and_sigi"
+        },
+        {
+          "label": "Подпишитесь на N + 1",
+          "url": "https://t.me/nplusone"
+        }
+      ],
+      "createdAt": "2026-05-08T11:46:33.369Z",
+      "expiresAt": "2026-05-09T11:46:33.369Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:46:33.369Z",
+      "tag": "science",
+      "tags": [
+        "science",
+        "technology",
+        "education"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:46:33.369Z"
+      }
+    },
+    {
+      "id": 1239436928,
+      "postUrl": "https://t.me/nakedscience/24147?single",
+      "source": {
+        "title": "Naked Science – все новости",
+        "handle": "nakedscience",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/iZzrMaDx1oGJsqSdaQa1bIIhv4AqUYhW2XPcMjqknYp9qAkAoijAXxuCkGNjnzeAsqVuFENe8lFEL8emTArl_RSTeNe6NYYCc4B1cRNcxcO-7bA8rNCVEuUPg-JURfLxUGjglSykTXWi_UdkFnfEEN5ShGoIrJZGkmK9meHpGhmoMB3d0Dg0c0DyxikcQ2OPKjJVf0SKwiOXiRf2j61-AHVSAxiyZXLPE1aLGgG2PV454Xhm6gWN41JzWQsvVA2TdG3M2V7AN2YSbDjw79Hs6H1KlK-McGXvy_x0wdA6uKCxdDFAfEATOSPvVODtEEy2fe5reAwgMdOWHG5-wiZRNA.jpg"
+      },
+      "sourceId": "ru:nakedscience",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/TzeCpP_QHKytMJ9UDXkiJXEav7rW6fZ1Zr-9XO4IGfVqBePm2h2UlWXM0VwfltEMWYsnF_Lox-VGGFvd1nQhbZxzxldUPSbITfyrLrAVMhcMQIcz0pLGvaGcWD8xvBJuES-3esBXjYK4Eszv8V--fO4cE3edKe-pVoNmqIs6scVk0m0o3-Di5k7ju0XvNKjHYIzvfsHgDuL2GnOfXFmK_hmEHP3C_jZ8rl5vwtCX1i8GaZ02UVPzNVF9r-dSBQTHTvkBNRbQdmxOXFZHvPaw2VM9P6EC7gKCc33C1xJo3qG7nuBm3K25NL-nCoQIk12fl4zw7dIDNqk3tBzZgwNLJw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Предки многоножек стали «сухопутными» до выхода на сушу \n\nhttps://naked-science.ru/article/paleontology/predki-mnogonozhek-stali",
+      "links": [
+        {
+          "label": "https://naked-science.ru/article/paleontology/predki-mnogonozhek-stali",
+          "url": "https://naked-science.ru/article/paleontology/predki-mnogonozhek-stali"
+        }
+      ],
+      "createdAt": "2026-05-08T11:46:29.916Z",
+      "expiresAt": "2026-05-09T11:46:29.916Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:46:29.916Z",
+      "tag": "science",
+      "tags": [
+        "science",
+        "space",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:46:29.916Z"
+      }
+    },
+    {
+      "id": 582282746,
+      "postUrl": "https://t.me/meduzalive/142017?single",
+      "source": {
+        "title": "Медуза — LIVE",
+        "handle": "meduzalive",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/qMgnOCIG2IRvIoO4ymNSnueirLC-6ecyfxaiIAD3mtH7E9et6ITAuOgr9WhS5rkl7ZJYXDmSdUsn0tDuNDIoN5SvOi0diOimX1m-tLre2tYtVR6Vuy-HYgATD8xUogUe1DHrgxbMgQ4PZjUWpwsEiFrYFkUWLt6BdycgwFtC58-zO4E-0vUuVwWbpIS1a0uZFhXWlIXsB6PCFhS1IyN0eCEnsDIiQVAkuSnuJT-PirUE7ILOcI9zgaDjEdAlXwopCf1hJ9OFcMCXIz5lWuU2eakDK3sqKJBUPMPzxjwp71L5279ZkEGqXEy-xM8iv7F_EwdpUgW3uKvj2TMjtyzGlg.jpg"
+      },
+      "sourceId": "ru:meduzalive",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "США после 4 июля поднимут пошлины на европейские товары, если Евросоюз не выполнит свои обязательства по торговому соглашению и по отмене пошлин на американскую продукцию, сообщил президент Соединенных Штатов Дональд Трамп\n\n@meduza_news\nОткрыть сайт | зеркало | телеграм ↓",
+      "links": [
+        {
+          "label": "@meduza_news",
+          "url": "https://t.me/meduza_news"
+        },
+        {
+          "label": "сайт",
+          "url": "https://meduza.io/news/2026/05/07/tramp-prigrozil-povysit-poshliny-na-evropeyskie-tovary-esli-es-ne-snizit-svoi-tarify-do-nulya-k-4-iyulya"
+        },
+        {
+          "label": "зеркало",
+          "url": "https://bit.ly/meduzamirror#news/2026/05/07/tramp-prigrozil-povysit-poshliny-na-evropeyskie-tovary-esli-es-ne-snizit-svoi-tarify-do-nulya-k-4-iyulya"
+        }
+      ],
+      "createdAt": "2026-05-08T11:46:27.370Z",
+      "expiresAt": "2026-05-09T11:46:27.370Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:46:27.370Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "culture"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:46:27.370Z"
+      }
+    },
+    {
+      "id": 1753431573,
+      "postUrl": "https://t.me/dtfbest/92342?single",
+      "source": {
+        "title": "DTF",
+        "handle": "dtfbest",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/rszVjyopb0KOC2TQb6lvTAEe2MufI0T-sSv-Ppq5OiWPyxaSF4I1OPYLyOTkhdoejLgyobTaztLkIpKzgQKLWKKrMHSjr6b4e_1-nodnksDn5jxJrrv7L7Da_J0zwPS-UOP-Y5wgFIysOuhICXvN8Yes8nGKWw7iQ4gsRqmWB1glQm1p_LkqtnJXF1QQGIWkUhlj1LZMXecBazzH1LWozHFkQXj6ZzBaiFBvTjw4PKhKQ62kPcgIF94A7cxi5eVvDGi4mwXBjJa9TjBnhrnpajqHsxj-Bzn7o_0HCmuuTJL_QGKTkZg1ooPWMWnt6eEMxOJYP-ky2wTaio-Rrr-uaA.jpg"
+      },
+      "sourceId": "ru:dtfbest",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/G-nBQR_nKwZ284vG_MzALChAh4hgn1W6WeiFk2-vQ6qXC7Sim8mCLYc_wBhLliCZT_61e7Uo_2Yd6KjV3O-1Vb8o5mTmIk-n7MouYB_GAK5STsq9UwFz1ZSDMtJxTz4cUAmmM2gKn6kS_-g9cJqyW0K4q2wk50MwdtiRz_M_aQr5PQDghGj-VRlqoBNB5jyohIBeKM208hwqVwhkhlxiRXVfQkhR2RUWjmfBLRutG1PVJ40S8hGMLu1Kg6brAVmi7Aw32A4CugEteDiTFBYo_BOFG3vT6B8qaTdUkEjuCMX_d7hmuCjk2bj_y10TVn3REIQI9BXmQs1jOF_YGSd_TQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Музыканты из Papa Roach представили песню «See U in Hell», которая войдёт в саундтрек второго сезона Devil May Cry.\n\nВ записи четырёхминутной композиции также принял участие исполнитель Hanumankind.\n\nhttps://dtf.ru/music/5042751",
+      "links": [
+        {
+          "label": "https://dtf.ru/music/5042751",
+          "url": "https://dtf.ru/music/5042751"
+        }
+      ],
+      "createdAt": "2026-05-08T09:52:42.263Z",
+      "expiresAt": "2026-05-09T09:52:42.263Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T09:52:42.263Z",
+      "tag": "gaming",
+      "tags": [
+        "gaming",
+        "technology",
+        "culture"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T09:52:42.263Z"
+      }
+    },
+    {
+      "id": 3128827141,
+      "postUrl": "https://t.me/cinemacritique/13265?single",
+      "source": {
+        "title": "Cinema Critique",
+        "handle": "cinemacritique",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/RUi84aMGJAl5nrlfIAImRPG8NkOWbBLH6_-geZ9uS0-oidFyk0AomyPU6o0x6ECAKaxsus7HxTpu-VbQxhI1XjoPkVwVUGtYyz3NjBjITuhgpHfH9RlY6hhmBTkPHnkXf8Q2zpibZ34agch7r6gqmjctmsdK3r8LbFd1d1xrKEYTr4f2zqXUgs0bS004GqQgOnLKy9ERKq9QDcnJfpIrXKw2iu8dX1CjaGqcY-bXQgGoGTC8mdhokK8f5b6e_rOxiSUzYYQd5RPVKNL7R8fpwszLq95pma-fbEkhrZvioaj6yWh6v-TqJJUFOvpHdttjFHF1e58gE58W7-v37JlY0Q.jpg"
+      },
+      "sourceId": "ru:cinemacritique",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T07:59:32.061Z",
+      "expiresAt": "2026-05-09T07:59:32.061Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T07:59:32.061Z",
+      "tag": "culture",
+      "tags": [
+        "culture",
+        "cinema"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T07:59:32.061Z"
+      }
+    },
+    {
+      "id": 1227809966,
+      "postUrl": "https://t.me/championat/83336?single",
+      "source": {
+        "title": "Чемпионат",
+        "handle": "championat",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/gtWyV0jueRjbdwMmjoZ48JdTWbQRbudCtMHVQWTyWMnTzgz19m_jR8LGmKiNE-Qme_As7YvCj4LGBmOCY491XBq05WY093nIEWhxvkw3nv67w6VLER7nqwBCm0DWPzYnti7bcJb9xIhYBSSUBoMUKBgnRiEZTAFEgb3mK40-58CSi2pE13w3gSGCcjNGpYKUaK_EN59mLRAdiQ4Io8wEyaGiGBzAeXOfOE4ihCk4IjIAOnz3rEF9IZYx45rDXlmeSPHd-GsLgurkW3iLW-GpZZ3rVULud9sZQ8uLMVMjcv3UTKNQrz1R4uL7Cnt3EkiMtC83nPbW11cWEyNfF3B_cA.jpg"
+      },
+      "sourceId": "ru:championat",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/F1z6Vd598w6p_BzOX_hVH_bRW4EC3-7vBuxHDGKZhDSTBknWuiNJfa0CY1XzinOyJnpity2uJM4i7tyBvV3-zax1eqOzGVUCQsTM02vB_6x30NlfG6kDJRTOoHHqSV9vg7OHwe_SOfoxMF1t-WXPgcgdmb67iAO99sc5L71InTt3S_uaTvULOaS16mnbGR-oEEjA1qA_bTqvq1SHOY9byB3O1WvMh5RB8bShMMSA8gwsvGDZqjoeqW3gwCyBbCBleKBQ71Y9gjpCWxwlhS8Y0L3LxPAHmF1JDVWO0-h9E7Xo-JaXUWkyn-_Mg09Rx-Up5Axnhuzn5MQ9jkEy4eHO_Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Испанские тренеры рулят в ЛЧ — причём как в мужской, так и женской 🇪🇸\n\nВсеми четырьмя финалистами обоих турниров руководят испанцы: женскими «Лионом» и «Барсой», мужскими «ПСЖ» и «Арсеналом»\n\n🤯 При этом в финале ЛЕ тоже может получиться испанское тренерское противостояние, если туда пройдут «Астон Вилла» (Эмери) и «Брага» (Висенс)\n\nВот такая dominación\n\n😍 Чемпионат: Telegram | MAX",
+      "links": [
+        {
+          "label": "Telegram",
+          "url": "https://t.me/championat"
+        },
+        {
+          "label": "MAX",
+          "url": "https://max.ru/championat"
+        }
+      ],
+      "createdAt": "2026-05-08T07:59:28.258Z",
+      "expiresAt": "2026-05-09T07:59:28.258Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T07:59:28.258Z",
+      "tag": "sports",
+      "tags": [
+        "sports",
+        "sports_championships"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T07:59:28.258Z"
+      }
+    },
+    {
+      "id": 2905666780,
+      "postUrl": "https://t.me/bitcoin/19292?single",
+      "source": {
+        "title": "Bitcoin",
+        "handle": "bitcoin",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/HayXpqz5FRJpyxF8IXf-ezIeFolEV1S78sJsUqm1vG8zZVT0i9D-xfWTtfhlQ9als7cXtvY7P8uF9I7q8paNYWOCSbPm9ZxKw7-7frpZLY0Ot-RBdB4Qn21PkDjvkQzp7cXmnVdoJ_bak4VPwpL2NlSiId7RkhuG9jWQqtFD-erVQ25MyGUf7stUcNFypx5KNSyylua7X6Fq1ImW3jMSqMygI_w_ZzJGq_ANP4yCH00bc5DWHkQRRAAbg7FXBST7HrE84oHjTa3W85ZTMmHR-FVdtb4dLKSVVDyjSJ_di667I79F_JbJqie8v4Q-A9CxT4BUPohy0Vh_VZmLdWLzMg.jpg"
+      },
+      "sourceId": "ru:bitcoin",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn1.telesco.pe/file/nvf02i9aVWX-G1x3XvyNSu989kl4UeAqDtokUmmoD1Dk3-AJTj5grjGfIQA51XKbSwFicxwvVKNwkIzQ7yAif5UcCVCV3RN4dq6R52Qp36YLAETybqdteENkZjjmbTZ5uFWvy1zz3_d2RqApjbROAKwnowk_XBIRe9x2A2pz3Za4586NAsQHTQQ6Ud7Tc-ELMFkz5nUIt_xF7AbMrSXdyCfj8e2jyCY2SUGWY5MteWPzslcPmJmJq4QGUnO9evWzSCvRQXLOMIyvYdixsy3UJ0xrOZ7d5Ir7UPWZpvNTsYzOtI8m-9-xx9JRQpk4Gwy5NWcMYmCYE6PeKQ3n8y96sA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "JUST IN: 🟠 Investment bank BTIG has assigned buy rating on #Bitcoin treasury company Strategy $MSTR with a price target of $350.\n\nThey know what's coming 👀🔥\n\nSource: https://x.com/BTCtreasuries/status/2052003638781022667?s=20",
+      "links": [
+        {
+          "label": "https://x.com/BTCtreasuries/status/2052003638781022667?s=20",
+          "url": "https://x.com/BTCtreasuries/status/2052003638781022667?s=20"
+        }
+      ],
+      "createdAt": "2026-05-08T07:59:23.849Z",
+      "expiresAt": "2026-05-09T07:59:23.849Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T07:59:23.849Z",
+      "tag": "finance",
+      "tags": [
+        "finance",
+        "crypto",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T07:59:23.849Z"
+      }
+    },
+    {
+      "id": 3505706359,
+      "postUrl": "https://t.me/banksta/93417?single",
+      "source": {
+        "title": "Банкста",
+        "handle": "banksta",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/hG8x9xAZHflTtmG0xQSCopEAD4fkMvhzBYohWp1MqXN7YT83RMIZh5eUXTz_0TvaXwdwZc9rrvNU4zrUqw5za857piu3rnlNxntEZC74Jl0CQHd9Zr3OQoR6wz5w-vz8UcLjFZT5ygd19tjyNuimZHrnwS0zRKp7yqFS3dGKlg7Oz05NBH82dIkjhH3EPuT5UCCW1MqRIOqQQ8dGt-EfDt8ocOk4qbuvh8Kt_7LtRTQlDvJaPCryJQY17xtmfs3N1JumVdGTRF9UWHwdmgFtIIV2rfdGMX23UEBH-crikROm_NfZ1hTJUP7K5F2yU88kx8WXix4ktNS-5FlQjCqqOg.jpg"
+      },
+      "sourceId": "ru:banksta",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Миллиардер Марк Цукерберг построил огромный центр обработки данных в Джорджии всего в нескольких сотнях метров от жилых домов. Теперь в трубах упал напор воды, туалеты не наполняются водой, дома постоянно трясутся, а отключения электроэнергии стали обычным явлением. @banksta",
+      "links": [
+        {
+          "label": "@banksta",
+          "url": "https://t.me/banksta"
+        }
+      ],
+      "createdAt": "2026-05-08T07:59:20.272Z",
+      "expiresAt": "2026-05-09T07:59:20.272Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T07:59:20.272Z",
+      "tag": "economy",
+      "tags": [
+        "economy",
+        "finance",
+        "finance_banks",
+        "business"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T07:59:20.272Z"
+      }
+    },
+    {
+      "id": 774128867,
+      "postUrl": "https://t.me/arzamaslive/7594?single",
+      "source": {
+        "title": "Arzamas",
+        "handle": "arzamaslive",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/GI8kVSLoQzmLKLDvmRcwWItZj9lOYVjdjaRDFuuvl_ydW-aIcUp-dsjW3bmFZD2dv5OjreUq4pS89bomwoI3--AlOhttE5k4CaJlMImDBcKgthJnS-k23wzbvO3nvuCRYckWhHMHYbQAXfO7t6-5-aS1WEVkj_c-aXWXzucnwCRKbgKBP8qMVIYzgWViEYKtoGmE4-8hglx1Voq6AX7X99CqXnIkafy9hlDasqmiTb9-0uajgpKfrSniQk6Vb8TQ3gUVwJMPfFlCY5kFB7s-Btu0v2rshIU3mOuNVJQA9sd-6H1xgcA-K-6oLFmjDlmo0OFSjIfBRcvUt5o9dYXNjQ.jpg"
+      },
+      "sourceId": "ru:arzamaslive",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/DwKB_kyx9IHIEil2NfDFFrCswzkIhPUNj3lbUFVnD5U3j8iTUB_EgYSo0iJ7vSD10Inw0584j07IL8tfU8iQhE09uPAACUCzP5PAXgyozd5jKAzB5n9sry4NYncIEq9yVMgb0i-5tIYbq6Py6lv_O36SYouyLVwjlAZQcdszvVBQ-p74dTNdAHh4qqQU5utiUI-Ru5jLaKdtAwslu7f2r0Or88NkrQI4MJfUpdMkpUhs4370DN0juAR5pG-THL9VCRLNS7Euok5Oh874i1lWa2qx6AMGQYCvSNSlit2orJzL9v7ApoYStzlFD_wFgKIAn6tiDfiLaihMAuA5vvaz2w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Упрямый неудачник. Так можно перевести имя Сосэки, которое взял себе японский классик Сосэки Нацумэ. Какая история стоит за этим псевдонимом?\n\nСогласно преданию, которое приводит один из биографов Сосэки, в Древнем Китае жил поэт по имени Сунь Чу, который однажды неверно процитировал строчку из стихотворения. Она звучала примерно так: «Камень вместо подушки, полоскать рот водой». Речь в этом стихотворении была о простой жизни и простоте, о гармонии с природой. Но поэт перепутал строки, и вместо «чинсеки сосуи» у него получилось «сосэки чинъю» («полоскать рот камнями и спать на реке»). \n\nКогда критики стали указывать Сунь Чу на ошибку, он упрямо отказался ее признавать, утверждая, что полоскать рот камнями полезно для зубов, а использовать реку в качестве подушки хорошо для чистоты ушей. После этого выражение «сосэки чинъю» стало означать что-то вроде упрямого неудачника, то есть человека, который отчаянно отказывается признать собственную ошибку.\n\nВзяв такой псевдоним, Сосэки Нацумэ одновременно отдал дань своему интересу к классической китайской поэзии и признал, что он человек упрямый.\n\nВ новом выпуске «Острова сокровищ» филолог Петр Будрин рассказывает про японскую литературную звезду Сосэки Нацумэ и его роман «Врата».\n\n📫 Подписаться на Arzamas 📫\nTelegram | ВКонтакте | Рассылка",
+      "links": [
+        {
+          "label": "новом выпуске «Острова сокровищ»",
+          "url": "https://open.arzamas.academy/a/2149/15451?utm_source=telegram&amp;amp;utm_medium=post&amp;amp;utm_campaign=arzamas_channel"
+        },
+        {
+          "label": "Telegram",
+          "url": "https://t.me/+tTXsLhiuDyYzNzQy"
+        },
+        {
+          "label": "ВКонтакте",
+          "url": "https://vk.com/arzamas.academy"
+        },
+        {
+          "label": "Рассылка",
+          "url": "https://arzamas.academy/#signup"
+        }
+      ],
+      "createdAt": "2026-05-08T07:59:13.767Z",
+      "expiresAt": "2026-05-09T07:59:13.767Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T07:59:13.767Z",
+      "tag": "culture",
+      "tags": [
+        "culture",
+        "education",
+        "history"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T07:59:13.767Z"
+      }
+    },
+    {
+      "id": 396105478,
+      "postUrl": "https://t.me/addmeto/6186?single",
+      "source": {
+        "title": "addmeto",
+        "handle": "addmeto",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ufbgbuttGGTvK2Iu4LCw62tEi6BJUqJ7DIkuUmBAaeii4V5krXdVUgO5wydSZ0BY-qvpGeAEy7HQPMbWT5YnFv5ZB7ymH60KeM2f_KGeXFBvUh4c9FuLm3Sgn4Ld8soNANM-xwLIy2PypbDh3OvN5pNb9kB3vHQnpSlsVeebNxbIpd9l-L7Pw9aPKG_RBChmZGByN5wxey2IWuM9PMbwVk1VXuBu9BbG_OaWIqjb1OEbiPB1t3TMCU8buL6304n1JuUxU0EksSDXPSYVHB_FWGtsNAx5ld9NJ89pRHwUoWwUoaFX1t9hFY47Cd3hFIvif9MkdGa_qMTu3hNz5AnZ_A.jpg"
+      },
+      "sourceId": "ru:addmeto",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Пользовались Replicate для рантайма ваших (или чужих) нейронок? Теперь это Cloudflare! Покупка очень разумная, интересно, как изменятся цены и вообще предложение компании со временем. Раньше цены были не блестящими, однако с учетом удобства даже я несколько раз пользовался.\n\nhttps://blog.cloudflare.com/replicate-joins-cloudflare/",
+      "links": [
+        {
+          "label": "https://blog.cloudflare.com/replicate-joins-cloudflare/",
+          "url": "https://blog.cloudflare.com/replicate-joins-cloudflare/"
+        }
+      ],
+      "createdAt": "2026-05-08T07:59:09.117Z",
+      "expiresAt": "2026-05-09T07:59:09.117Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T07:59:09.117Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "telegram"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T07:59:09.117Z"
+      }
+    },
+    {
+      "id": 1536828864,
+      "postUrl": "https://t.me/tass_agency/374817?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/WUV41J_ybJBY7LV9kp_rVxUwvRuSflE88hJ9y2aIyPhaE2nEa__3zQ-6YPOeh1wi710NJPM6mKrBC9AX1dO7p1D53xgmZeF91dRfvBGXxGYOc2GeOoInZ8aIG-MvHiBT74lq8WL65a-aRtZKvIt39rMmGSbS2gMJ3_B8GKIujQyJvJa_Pjec5cQTIrMpalKHW3K_rtoayhueZ_u_q7PXx4KZi0pWtpMu91VdGwKkht6v9CAUDkGVC-i4J6caPrlH78eDlyxkKNT9t2_UoCUdOk5hqcwsBaz0XcUYxb6P_JdfWVsEjbKnkl8hZ4mIOrwhkWaxd7GWJSACGIgC0YWtZg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "В РФ средний размер пенсии вырос в два раза за 10 лет, выяснил ТАСС, проанализировав данные Росстата.\n\nВ марте 2026 года показатель составлял около 25,3 тыс. руб., а в марте 2016 года — 12,4 тыс. руб.",
+      "links": [],
+      "createdAt": "2026-05-07T22:16:25.783Z",
+      "expiresAt": "2026-05-08T22:16:25.783Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T22:16:25.783Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T22:16:25.783Z"
+      }
+    },
+    {
+      "id": 321477915,
+      "postUrl": "https://t.me/technomedia/11795?single",
+      "source": {
+        "title": "Техночат",
+        "handle": "technomedia",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ArPmi-MTSutAmWwsajNvX1lPhlP56OvyoFSIShlxLYQC2KDaWekYjN8PUCaG3ChDK7H5tLlNgEKZeZn5flc_U_d60RmHD7IxcoT2sjD14bLa5KRm9lSECGgU1m2toEjQDcKbnDY56SnyDLQUovp4FKng_hyxm5he8F2jW-9YN2fySioh45jW_riSoL6gTaHsGTZF8TwtNWwi2i1c8FGWsEGc5F72usvbX4O-BEqD4gGT2EGdzMpVnUCTGfHulu7ki18JpRIBuaWKnFGOb6w2zJJSAcbU4rmF7e2-oz7y6To-6UxNOEcMPPbOxLLVDGm1mOPlcDXRGWiZrDWXGKV_Aw.jpg"
+      },
+      "sourceId": "ru:technomedia",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/tMZa2wvyVZ0jwulQCdJ8Nn6FkoHJDpKfbrIZym4Q5rXhhCj4nAX4vn4p6VyHToZPk6Ot2l7Ifihf62G234Ip2pJK0W_th-gBa0-8OLwDJrPBoadJwTK7aEZl9iW4hC6gOctnCAAscrTaiukYDxUu_J_GO1Oe2tdCelbM7qLb742XKWWwP2s7Uf73zPH2K12Xk1oPY2SiyYYPk0Rs8d6nali8f1KMWNvri2d1HiIK3zCl4Tygv9Hb2XXOxJtQIa6jbU4hVmzqRGHDGWNbk4W3AEak-9qIVGhFjZl3xJXQE0BLaAKm3KN8zfEZL8RSR-vUvMcJKUKp24VwnD2y69qVGQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Вы можете уставать из-за… ЗАПОРА — учёные находят всё больше подтверждений связи между проблемами с пищеварением и когнитивным состоянием. \n\nВздутие и запоры, часто сопровождаются «мозговым туманом», усталостью и ощущением ментальной тяжести. Дело в том, что бактерии в кишечнике производят нейромедиаторы (серотонин, дофамин, ГАМК). \n\nОни же влияют на области мозга, отвечающие за обучение, память и принятие решений. Дисбаланс микрофлоры из-за стресса, диеты или инфекций может привести к затуманиванию сознания.\n\nЗапоминаем, как поддержать ясность ума через кишечник:\n🔴 Клетчатка: Овощи, бобовые, орехи и цельные злаки являются основным топливом для полезных микробов.\n🔴 Ферментированные продукты: Йогурт, кефир, квашеная капуста и кимчи поддерживают разнообразие микробиома.\n🔴 Образ жизни: Улучшить состояние помогают качественный сон, умеренные физические нагрузки и ограничение алкоголя и ультрапереработанных продуктов.\n\nВы знаете, как убить стресс 🧠\n\n@tehnochat",
+      "links": [
+        {
+          "label": "находят",
+          "url": "https://www.nytimes.com/2026/05/04/well/mind/gut-brain-fog-health.html"
+        },
+        {
+          "label": "@tehnochat",
+          "url": "https://t.me/tehnochat"
+        }
+      ],
+      "createdAt": "2026-05-08T00:07:37.760Z",
+      "expiresAt": "2026-05-09T00:07:37.760Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:57.469Z",
+      "tag": "gadgets",
+      "tags": [
+        "gadgets",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T00:07:37.760Z"
+      }
+    },
+    {
+      "id": 314479081,
+      "postUrl": "https://t.me/rian_ru/338213?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Уничтожены три БПЛА, летевших на Москву.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "летевших",
+          "url": "https://t.me/mos_sobyanin/19707"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-08T00:07:28.557Z",
+      "expiresAt": "2026-05-09T00:07:28.557Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T00:07:28.557Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T00:07:28.557Z"
+      }
+    },
+    {
+      "id": 2959718447,
+      "postUrl": "https://t.me/pikabu/48538?single",
+      "source": {
+        "title": "Пикабу",
+        "handle": "pikabu",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/tg_btA1V3Z6xeXnCs7WBqoMO6RUdGN0oMYydUrRhOP-g8Z6aiSlcv30NVI_hI3zZYGCnn_p-lgAmJXe5jk-TjE15A455vzpRkHPO_gdPKexDD8JmszMpRLsSPcJrP9RN5J-mV2NzyrbAmocJH5mQPNN9JZavxD7lxE5sPKaqlqy9lqMpUWbAIMG84-jS7_YgVMrEvMvp10h2Z-nXOsVIl-yIAvmeONt6GjL4Nodzuh0bqPqx1L0-pliNAJ2StFY2MMGbmdqFf85bkej406MSn6v1gE7Ovorzv5YIPSKbFmA6YIaURr8GZe1ZjLWK9ic_894RMqLmlE06diP-ycKSbQ.jpg"
+      },
+      "sourceId": "ru:pikabu",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Одна из самых крутых техник живописи, которые я когда-либо видел\n\nКомментарии: pikabu.ru/link/SkBcoeY32Z\n\nПикабу в MAX",
+      "links": [
+        {
+          "label": "pikabu.ru/link/SkBcoeY32Z",
+          "url": "https://pikabu.ru/link/SkBcoeY32Z"
+        },
+        {
+          "label": "Пикабу в MAX",
+          "url": "https://max.ru/pikabu"
+        }
+      ],
+      "createdAt": "2026-05-08T19:45:44.353Z",
+      "expiresAt": "2026-05-09T19:45:44.353Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:44.353Z",
+      "tag": "humor",
+      "tags": [
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:44.353Z"
+      }
+    },
+    {
+      "id": 1430980934,
+      "postUrl": "https://t.me/n_no_f/19253?single",
+      "source": {
+        "title": "Невероятно, но факт…",
+        "handle": "n_no_f",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
+      },
+      "sourceId": "ru:n_no_f",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ACuFNxHivzMnaUbeRpidpmIbkNhaqP3adA56mvfenU-YIETQfwrhqniQDbPgfCfXcTyOuLt0ibtMKnVzREk3_VanLoZaXAmYOZiSlOdekwq0dUUnLWpDJLuh6V2TprNEeVDfBuSSneQSirvllzJzDDXsE5UngXG5YMpZEJt6XquY6f6IZjgAPqZfylBx60R4OwxNEf7XZbVB6Ld052OE6atOWS5vCSWZmqGTWR0m_f48GrmOG8xIAIjWaAVl0kcODR2braD3JBdjcB93wrx6agr8mpCVkq1DVPC4vTpYlhlGb9tjhmseH7DSwfMsqyENx-ndxb7znpVKaSdaVUAJVg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "В Израиле зафиксирован первый случай хантавируса у пациента, посещавшего Восточную Европу, - The Jerusalem Post\n\nОднако у 34-летнего мужчины обнаружили не такой опасный - европейский - штамм. Он имеет смертность до 1%.\n\nСообщается, что мужчина уже выздоравливает.\n\nНевероятно, но факт…",
+      "links": [],
+      "createdAt": "2026-05-08T00:07:20.529Z",
+      "expiresAt": "2026-05-09T00:07:20.529Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T00:07:20.529Z",
+      "tag": "politics",
+      "tags": [
+        "politics"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T00:07:20.529Z"
+      }
+    },
+    {
+      "id": 3090936251,
+      "postUrl": "https://t.me/mosguru/31879?single",
+      "source": {
+        "title": "Первый Московский",
+        "handle": "mosguru",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/dwsM_iG5-Zdl6CZXGXZHrO5Vqs76i-lnMHAcvTfGfJWOP1BwXYBxnQlGIyvmpQjKw4D6685v7kMr_8s7pcBhTUhmtLHrd-G8g9z39ZdKnDXKci0DPCzjhHECNAvmUVUN641ZUG2e-8v9SY65F9S32lu_6gfMGOY-jwYprjrC4JRZ-Om6ZlOoiANHqDgVJAk0bSvWJBdVsv5m9yudOLvmkeAdxZpeyYVBCs6ytPENqrwtE7gKv-6P3oZQI8lVKpU1JGA2Hk9iKUVjHQdb5CNlZcZ_Us1jbsuWblmgVTBoRLpzec7jPg8D3LQlIZyof3sjL9G1gaCBVqryU5eLduNwdg.jpg"
+      },
+      "sourceId": "ru:mosguru",
+      "sourceCountryCode": "ru",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "video-2",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/764391fda6.mp4?token=PpBiUZtYw-t_wJgh95n5kZA4ZDX1eNo5ZMeO14B0lp9id15jDz78BKPugmDkHbtJzZL7EXOJSfLxOpxPpFzD1YdMalIW_KU0BByJ9UGb2apMIQo1rflgfXHKqZFjO3qaljgfuWdQqnsS9Uw_PgjcZHtZFZ_5ObZ2q4h7Ldx10KkuMUspgdlb9i9GFhGuPts9UKlT9gssK0spYut5FLd4jADqM1qf5lB3ADSM35oBahql2fufapKU2uGliAzILvyoOSOCzHUtGw-cHw7aajkz5PCuF8Q0R0omNTbrKxgghpJ_uQ8AzR793w6QDK472ZegSIIYcEyqASbaVO7_LAGSIQ",
+          "poster": null,
+          "mimeType": "video/mp4"
+        },
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/LGdsBrZyWRHZqJ49rl3fgYwErnYRE4lrQmk9Wj1UXz_QVdcRYbRxzLtmwB4cOx6Nlqgy0ypcgQCILxh7Wu25gzffh9c_A3JflXEO6EORQluJ0apEip70glfDwQcbkWH6VoAs-G15y45Mrs6qwAksFnU5zEDPGzI9vQrj0uK_DG4St5DVP5Cm8UaoNZ8Rz2FrAPUFAktXxt4uJ2pSLpZ3BbJElSyA6gzB9qOcUSLpgKrC10QI-IAtsyM42ccXgKyxBNhXzk4OEDua6LkHCuty4yv5osFxehrFCQOuWYigRdcNHcOzK4PVe2ROc3DxnPknN9r4RCwAdZU0R7SEp7uaQA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "😇 Красавца-сома выловили из Москвы-реки, он весит аж 25 килограмм.\n\n⚡️ Первый Московский",
+      "links": [
+        {
+          "label": "Первый Московский",
+          "url": "https://t.me/+qJNFoJeX614zOTli"
+        }
+      ],
+      "createdAt": "2026-05-07T23:12:56.961Z",
+      "expiresAt": "2026-05-08T23:12:56.961Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T17:45:38.601Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T23:12:56.961Z"
+      }
+    },
+    {
+      "id": 3685813789,
+      "postUrl": "https://t.me/moscowach/39789?single",
+      "source": {
+        "title": "Москвач • Новости Москвы",
+        "handle": "moscowach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/i3GfXAbS3RLa6fBSpNuuU45y7-52SDojm6PGg8QUuX7f34Uwvgj0DSQj6LDjS4KD48f3MUWb4YcZM-t8VJ09sqNZFi_0S7l5Ka-fg1VjIPpMquEc5LUpq5dKCD-R-w_8ERjQ7LXFMa9XmHMgVRHcKdBdSWPZ8rrXH3Mon0RDhVXaHva4qHBCvaEVRcosluWNsqAVinJt_4_8ynCDpEyPJovpLt-rM-8Ep5sTeW37x4TSReHM98tCu-X2M_-1uNmzpHJ4iCY-Jt8ZFv1F6yHnCqpCOjL4bHNxJCsFDZFh7TB-ipVWoIDjUqevjbXAXkfOn80rsukSOAqkkNkwAGn2FA.jpg"
+      },
+      "sourceId": "ru:moscowach",
+      "sourceCountryCode": "ru",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/sf_eXX8uuGS8wq_oq83yeAGUH__dVvXOoBYxurN1TbBk1DTBx239Usg044lIfZKkXXiLRXup6Tz1BcN3idOq33UkHobiZHIWXHtMsPWqCq0syWGBB9XoE-NkXKS40o49G5zOB-8Z7JBjn_Ew_CuwVOUKh998BJoieXm6KCeW4h1f4AQFAJv0Rw-6_XhbhsLo-wX63XAJ1R9Wp9tmmbNU36DrrBlXQrZGF397jd716v7jp0b9oBhfLsfqoPKiHUvLCfGmXOEN2trPe9tSoAy-5onyiE32KobLWaxN15Qc1zk7l25cnJIFP0yIamXKq_BWwQVoUwHIEaUtidZpz5g9-A.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/tb8fgr3996nsWTEj3AJT4G93Q-kq7I_nn7uEXPo3jDYJLEChK-my5SAs8MHpYoBGsg_b47IXrccvjR6H-WrbrdS28CKX-ZAGytbZPF0QZ-cn-oT6GR1Dgoy5SdhCJPt4cKOZM3N7XuAbF5JcsyZ2CX4sdqNgBrWwphp_DJwjcyGX8IxuY0PkPGnSyR32zkE4CYUXRlJBNi5UoqtaWOZlKTsp1RJMSIRYY-2jn-gYFsrIFeLJVpkpf1QyCOZBPzlnkhSOeA-odjy0bNY26zpeWMWxjVRshN2CurZuDvnSmNBgo-D68WB1JaOcmQmgx4yOiN-UgpAo2aimRHCdPa_qiA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "📍Москвичи составили антирейтинг районов.\n\nЧаще всего среди районов, куда люди не готовы переезжать даже бесплатно, называли Капотню, Текстильщики и Рассказовку.\n\nВ комментариях начинаем защищать свой район",
+      "links": [],
+      "createdAt": "2026-05-07T23:12:55.461Z",
+      "expiresAt": "2026-05-08T23:12:55.461Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T17:45:34.249Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T23:12:55.461Z"
+      }
+    },
+    {
+      "id": 3237559885,
+      "postUrl": "https://t.me/mash/74116?single",
+      "source": {
+        "title": "Mash",
+        "handle": "mash",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/WhSU2KRzwgazn83XZTEnhYKvA4IRfwRXYM_nqvYZsUhX3UmeRH0eJmwgNJwYp0QxJptOkIshSNHhWro5q3ZGbiTWoPx3POzgctFTvGk32YNoat1qyN2NMgosmUSQqNsNMKbeOwv5RcAdaqsPjT5m82RpS0sYIII6of1wUE_bd_0iTti-qBxW-u65bNBwynYazv-QEpT6E8hhOudkhsOqgTdjDBENqBcuxFY4Kh6xm2PjUASTu37UB8yL6liBgAj6TjpaIdnwLmpeicj4Q1umu-hDP4J9haTgguIl-T_-RUJZOvMDHp01WKAMoeRBZguOwkBxcO0aV0Hy0KdWf6ldgw.jpg"
+      },
+      "sourceId": "ru:mash",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/lCN7236J9yvn3KbcS4Smqb6ZsIzvPkOkfZ06i-y5JtSKfBYa7x-JhfAdIDzy44xjPs_HtaM6Sgjs4M_vZSaZEpjQp5rJnH4bx4XrfUezk_v_FVc1HuF4FlWs4XAuAItQaKRSAv1LvsnpdpDtnjIdVj2pW7s49Ij1n7Ak7fAk1_kfkjAiKvIZsKF7PfoJHi3a6NDCNrYgIU59KPVQ2vXDfQwyil9ggJpMB4fTUAGPCi2yE5WM1dAWA6N7mw_SbgzTPGYrfUSExs3Xmzc7sEhCfVzJmzWh1VWAVhJp0f5TN83wKv-o291YBy6OTlbkgonA0sxY4CR9LMa9tuQ_I23rDw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "С днём радио, дорогие! Раньше мы слушали утренние и вечерние новости по дороге на работу, сегодня можем их ещё и почитать. Кстати, вот они: \n\n— ВСУ атаковали беспилотниками Пермь, один из них влетел в крышу жилого дома на улице Новосибирской. Учеников ближайших школ эвакуировали в подвалы, кроме того, пострадал нейрохирургический корпус больницы.\n\n— Украинские БПЛА типа ФП-1 атаковали пассажирский поезд в Латвии. А ещё — разрушили резервуар-пустышку на НПЗ. История успеха креативщиков ВСУ — тут.\n\n— На Парад 9 Мая в Москву приедут лидеры иностранных государств, среди них: президент Белоруссии Александр Лукашенко, верховный правитель Малайзии султан Ибрагим, премьер Словакии Роберт Фицо, президент Абхазии Бадра Гунба, президент Лаоса Тхонглун Сисулит, президент Южной Осетии Алан Гаглоев и президент Республики Сербской Синиша Каран.\n\n— Никол Пашинян не приедет на Парад 9 Мая в Москву. Официальная отмазка — начало избирательной кампании. Ещё одно заявление фаната Земфиры (иноагент) — Армения не союзник России в украинском вопросе.\n\n— Еврокомиссия не готова разблокировать Венгрии все замороженные средства, смена Виктора Орбана на Петера Мадьяра не помогла, — Politico. Речь идёт о выделении Будапешту €10,4 млрд из Фонда восстановления ЕС после пандемии, деньги заблокировали из-за протестов бывшего премьера.\n\n— Два бывших министра обороны Китая приговорены к смертной казни за коррупцию. Генерал-полковников Ли Шанфу и Вэй Фэнхэ лишили всех титулов и выгнали из компартии. Первый возглавлял Минобороны в марте – октябре 2023 года, второй — с марта 2018 года по март 2023 года.\n\n— Илон Маск заплатил $10 млрд налогов в США. Предприниматель назвал эту сумму рекордной в истории.\n\n— Чемпиона России по функциональному многоборью Дмитрия Исаева застрелили в Калуге. Основная версия причины убийства — ревность к бывшей девушке.\n\n— Мобильный интернет не будут ограничивать и отключать 7 и 8 мая. Об этом заявили в Минцифры. Но на всякий случай сделайте важные дела с вайфая.\n\n— Арестован адвокат Александр Карабанов — защитник Умара Джабраилова и семьи Жанны Фриске. Адвокат обещал за 7 миллионов рублей \"решить вопрос\" с уголовным делом о хищении продукции АО \"Концерн \"Калашников\", где был замешан победитель шоу \"Танцы со звёздами\" Алексей Леденёв.\n\n— 22 котика погибли в котокафе в Калининграде — питомцы были закрыты на ночь в помещении, произошла коммунальная авария и по трубам хлынул кипяток. Малыши сварились заживо.\n\n— Запретграм стал чистить ботов в подписках — посчитали, сколько потеряли главные ру-звёзды, тут.\n\n— Никогда ещё мечта о Мальдивах не была так близка — туроператоры говорят, что отели скидывают до 70 % этим летом. Минус номер один — юго-западный муссон и дожди, минус номер два — нестабильная обстановка на Ближнем Востоке.\n\n— Розжиг для шашлыка вызывает онкологию — при жарке жир с мяса капает на угли, образуются бензопирены, человек дышит вредными веществами, а они потом накапливаются в организме. Только бумага и сухая трава, друзья.\n\n— Если подсматривать в чужой телефон, то можно получить уголовку. Наказание будет только сталкерам, если задуматься и смотреть просто так — это ок.\n\n— И подсказываем вам идею на вечер — сегодня отмечается всемирный день мастурбации.\n\n❗ Не грузятся фото и видео? Читайте нас в MAX.",
+      "links": [
+        {
+          "label": "атаковали",
+          "url": "https://t.me/mash/74086"
+        },
+        {
+          "label": "тут",
+          "url": "https://t.me/mash/74079"
+        },
+        {
+          "label": "застрелили",
+          "url": "https://t.me/mashnasporte/40721"
+        },
+        {
+          "label": "ревность",
+          "url": "https://t.me/mashnasporte/40722"
+        },
+        {
+          "label": "погибли",
+          "url": "https://t.me/amber_mash/10435"
+        },
+        {
+          "label": "тут",
+          "url": "https://t.me/mash/74112"
+        },
+        {
+          "label": "Не грузятся фото и видео? Читайте нас в MAX.",
+          "url": "https://max.ru/mash"
+        }
+      ],
+      "createdAt": "2026-05-07T23:12:50.945Z",
+      "expiresAt": "2026-05-08T23:12:50.945Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T17:45:24.453Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T23:12:50.945Z"
+      }
+    },
+    {
+      "id": 991092499,
+      "postUrl": "https://t.me/whalesgohigh/5838?single",
+      "source": {
+        "title": "Киты плывут на вписку с ЛСД",
+        "handle": "whalesgohigh",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/uXQuZCti8fbX2Ja0nHttmMbfWjUMXKGZf2PYhWLFqXS1J7BB5g8A_pqdFzW45f7gBEKhv9Nd_WxHoF441gwUhb72mrmAOL6ZxCF2lMN2UEJPupyJSMfMTlIUu4u8l3bXIRnUA3pACx3O4b8Db0MXjSsXJWlXmavmBIaQX1oN8ooIZpEoo89yXtKSz4I7XMAaCEWwAQvhioSztk0lar8ECQpw9J5l_I0RWuv3KkrKAhKb4G81ZPpoQcFiu4sCeAC-XttJsA4NYFi3reJWyiE6Xc7FzMcOiyAhXQabmliE4DX5XqFN50bD10wjS0GA0NT0DulNtTq3c0Oz11HJgGIPbQ.jpg"
+      },
+      "sourceId": "ru:whalesgohigh",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "У англоязычных правых на ютубе очень популярен стоицизм. Куча каналов, где суровые бородатые каменные мужчины с юзерпиков басовитыми голосами объясняют как быть стоиком. Смирять свои страсти, экономить деньги, избегать вредных баб, не дрочить. Все как Марк Аврелий завещал. Теперь еще ютуб предлагает мне смотреть ИИшниные мультики в шортсах со смешными названиями типа \"стоик Даня\". Стоик Даня показывает пример для подражания: он не транжирит деньги в отличие от безответственного соседа-эпикурейца (мимоходом намекают, что либералы выпили всю ипотеку), стоик Даня думает о будущем, усердно работает, ходит в качалку и лихо ставит на место вредную бабу, которая посмела предъявлять ему претензии. Будь как стоик Даня! При этом цели и задачи такого стоицизма проговариваются прямо: дескать, считай деньги, планируй наперед, ходи в качалку и тогда... через десяток лет у тебя все будет. Будешь упакованный, богатый и накачанный. И вредные бабы будут все твои, они-то с возрастом, в отличие от стоика, теряют свою \"рыночную стоимость\".\n\nИсторические стоики бы, пожалуй, очень удивились. У них кажется было что-то про эвдемонию и атараксию — то есть, достижение внутренних благ А тут стоицизм подают просто как путь к успешному успеху. В свою очередь современным адептам успешного успеха едва ли понравился бы настоящий исторический стоицизм с его детерминистской картиной мира. Если судьба быть хромым рабом, то им и будешь. Это рушит весь маркетинговый подход формата \"сделай правильное и заживешь\". В общем, тут просто стоицизм поставленный с ног на голову. Очередные курсы личностного роста в элегантной классической упаковке.\n\nНу ладно стоицизм, штука мертвая, пинай ее как хочешь. Но вот интересно, что симпатии к христианству у западных правых похоже во многом такого же характера. Религия им вообще не слишком-то интересна. Просто по нраву те социальные порядки, которые царили в западных странах, когда те были сплошь религиозными. Что главное для настоящего верующего? Спасение бессмертной души (примерно как для стоика эвдемония с атараксией). Поэтому для верующих исторически могли быть важны всякие не слишком понятные нам сегодня штуки, вроде догмата о филиокве или того, что там происходит при причастии, транссубстанация или консубстанция. В рай захочешь — не так заморочишься. Но для нынешнего правого любителя христианства это все не важно, там спасение души просто убрано из уравнения. Правому всего-то нравится, что в христианские времена европейские общества плодились как кролики, были сильные-могучие и давали пизды всяким иноверцам с другим цветом кожи и разрезом глаз. Ну, еще бабы ходили в кирху и нянчили киндеров на кюхе, вместо феминизма поганого. \n\nВ общем, тут как в случае с правым бро-стоицизмом все поставлено с ног на голову. Внутреннее содержание тщательно выпотрошено и заменено вполне себе модерновой начинкой. Стоиком нужно быть ради толстого банковского счета и плотной бицухи, а не ради эвдемонии с атараксией. Христианами надо быть ради демографии и государственного могущества, а не ради спасения души. Если добавить к христианству приставку \"политическое\", как делают некоторые, то становится вообще удобно. Можно даже в Бога не верить, с чистой совестью гонять на остров Эпштейна и что там еще принято нынче у правых базовых слонов. Этакий модернистский культ Левиафана и языческой богини Демографии. Многовековые традиционные ценности, придуманные этак лет 200 тому назад.",
+      "links": [],
+      "createdAt": "2026-05-08T15:54:35.979Z",
+      "expiresAt": "2026-05-09T15:54:35.979Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:54:35.979Z",
+      "tag": "finance",
+      "tags": [
+        "finance",
+        "crypto"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:35.979Z"
+      }
+    },
+    {
+      "id": 3923251168,
+      "postUrl": "https://t.me/vcnews/61260?single",
+      "source": {
+        "title": "vc.ru",
+        "handle": "vcnews",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/HQ7pCFGZtmUTYnBNE58sjhyD_SewDSF11xtm60MLDv50usKK1H2EiBQWJ9iZwSsNbmmoJaoao_w49LhhnA7lBF0LxyXGNF6ZVb2R_HOYCJiFB_bZ7e0U4D-k5nPG23yZEO0jM83U1NyymBXe82lvqLnKt_wUzyYRRZlOT3TqWLqerNwLnHtmxDKAUTH-Ryh4hQi1Pf8oGncVssgedRhr9g0v480bfRijrJICiej2ZAziP2OxW_rYz7sBuX5G0WqrgUa9lgeNh3Pa-dD4_eaIRzm-byMgMZsPsUKpQp3ayCZLLEpovEsFiLkhcKl9rmy281ld4QvVup2APS5GBVyzHw.jpg"
+      },
+      "sourceId": "ru:vcnews",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/h_W4-N9OoQjfmCVRrCdPz51SFFrhclVUrbUnLmsi0w0bvesRujzaYIDlaK2QttI0SEvqlZCTKBId3X2dOa-wxrPAR4ekrMMWiTlMCL6-AN3Qu7QejYG9DTNjvKsavheBorLRkF6dOmYA01mh31zRq1wDfCX_OMYdKy7WcYrnChYPAaKj6bkXsDEuMUheb70-BkyHEXWtCVUane2kFHOHm8GbSUQS1PDODf0raeJtK015jHCA2MSogFEcfC7AYO6yt99ggmVBIzgtp9EK5uxlcB7VemV2rOSDwkeRlrsQgDSENtTBUVJSANka0hlXpNeAsv1G8vXxPH04w6BI8GrSug.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Неофициальный Telegram-клиент «Телега» запустил подписку для доступа в мессенджер «без ожидания». Она стоит 99 рублей в месяц или 199 рублей за три месяца.\n\nСервис столкнулся с большим наплывом желающих и ищет способы масштабироваться, рассказала команда «Коммерсанту». В начале апреля 2026 года «Телегу» удалили из App Store\n\nvc.ru/services/2915165",
+      "links": [
+        {
+          "label": "vc.ru/services/2915165",
+          "url": "https://vc.ru/services/2915165"
+        }
+      ],
+      "createdAt": "2026-05-08T15:54:31.275Z",
+      "expiresAt": "2026-05-09T15:54:31.275Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:54:31.275Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "business",
+        "startups",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:31.275Z"
+      }
+    },
+    {
+      "id": 3790422665,
+      "postUrl": "https://t.me/tproger/14460?single",
+      "source": {
+        "title": "Типичный программист",
+        "handle": "tproger",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/QOvyjsVrgewBDOj3ov7SHwG3eEJN1NsTVa-Lq29Val9bHc0uyylf9OZUmO5Ckp2DVsANWaB0I_aw2A1hMpSIaYQlaMyBQWftt4SgCsrfQrsYTNZ0bXfPwmNOMIEBVEhTQSLgStpLaUkS1T5vWPo6G0kf1OcCOBqmoA63XKXW4FGGYIqfeaff0uV4g_4kLSLiOtTLco54wjrJXpx5drzNLmE73qky-1bKqMw54Op52buRHg0YaMnZ8oxnFLGGYL-6-DT13TPci6Ka4gBMgdll_ZcUSyur47f-6zuUOPx_B47f3UqXEvLKmpeKhX1JLBWZzAIyjZTwkr-X6ekJU4c0qw.jpg"
+      },
+      "sourceId": "ru:tproger",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/jw-1KaOIMC-YIo5fAIQIFm0hgUJS4yb2Ty0fekUMN2wtRa_48DjQUe_AdHecliFPo7uML4n9fs-zXvmat7lAbkNo6k-MsJgMM2o143_9fTE2ukky8iLeoDo2GrFZmVlcJbXYI0nOD62R-b6T0ByZN4yfrwAezUUm4C_8oC6YFd4pOLILidVwNCpoqc25kWfPY-_fvgSlfw5J4-U_2vV4CYwTeueHbEMC1PyxEzmNevcydHibM-27nSftmhsTAAzvtKQ2lgc3khDCr_gPiSHoyHDLhMuNN746NzBgm-FgI0Zt2rl2VnO2TrEDSid33deOXUTySaCm8jovq7lUAfm6wg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "свой среди чужих, чужой среди своих\n\n@tproger\nЧитайте также в VK, Max и Дзен",
+      "links": [
+        {
+          "label": "@tproger",
+          "url": "https://t.me/+QGYQ7Cs9ttcwNDc6"
+        },
+        {
+          "label": "VK",
+          "url": "https://tprg.ru/vnl9"
+        },
+        {
+          "label": "Max",
+          "url": "https://tprg.ru/1Z3N"
+        },
+        {
+          "label": "Дзен",
+          "url": "https://tprg.ru/RWQM"
+        }
+      ],
+      "createdAt": "2026-05-08T15:54:25.820Z",
+      "expiresAt": "2026-05-09T15:54:25.820Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:54:25.820Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "education",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:25.820Z"
+      }
+    },
+    {
+      "id": 935440401,
+      "postUrl": "https://t.me/thevyshka/7590?single",
+      "source": {
+        "title": "The Vyshka",
+        "handle": "thevyshka",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/feaKFPN_a43MU9ISFmMKN7Vnyv2lH1nTeMmGBixjiZdywB4Vq2T-qYNqRkULqxJvC9nipxVg_PM_87sV61AO601fXsiyc-XQAYrgRpEsHdKbprIBgmpYqIEjpY3W37--76XUE7yYuuno8A9QPucxeTe04GgRmsAu5fe5Qc61fd83v2eAyTC9WLE-sBBPlEi4Nn7jS_5tiyx7xNJ6io79wC4NCTa8Zu5RYp_AXZ3WE-dyGXM-7jrw_L-91T9gd19NPeZzdURvqctUEvYQQgkVtBLtRpeNjMCAY5jQSJIuxTKm0DnvQ5zlyZFHWUtvWWTkPh6t7Q_sIpLcY1JVEXSiJw.jpg"
+      },
+      "sourceId": "ru:thevyshka",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/L0Bg4OLtq7isSnBVsSpvYHEcGFL4X8UrNqI6LeuFlawoL2lJ66B_WT7YoHHBE-GWjtPJBN9d496nktNst-w5zhEbFj-ygCKvy1CQMlzwBD50_7xEnMVpSwYqOb4GjkYhZo5rp04kp3QwzxpLVdlGgJncjnxxMNSLF79nu4DgEajp0VT7C7Nw1puZLCZF-CsDsktx2w0BX_RvxtDho6umN-eKhsYd-G7NT7riFDzabG3uwE5B_4nHpVyylOz46SWlxAEow5M_1-2GQtakdUaNmrVKpNtE9mQn7m_8vOMp2IGaKcMpUh_-pW6hTVsmDcQZ6hnV-kXtX6jbfaN3geFv7Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Ссылка вечера — XIII поток PR-акселератора от Rassvet.digital\n\nЭто карьерный проект для новичков и опытных специалистов в PR, где можно улучшить свои навыки, пополнить портфолио и найти работу. Выпускники прошлых потоков работают в Иннополисе, Яндексе, Лукойл, REDKEDS и других крупных компаниях.\n\nПрограмма включает в себя:\n◽️10 недель работы с хэдами Rassvet.digital на проектах МегаМаркет, Крошка Картошка, СберСпасибо, red_mad_robot, Solar Staff, FITKIT;\n◽️Доступ к образовательной программе Rassvet.school и закрытым лекциям от менеджеров агентства;\n◽️ Личный питчинг и персональная прожарка текстов от ведущих редакторов;\n◽️ Дружное комьюнити Rassvet.family в офисе и удаленно. \n\nДедлайн подачи заявок — 31 января. Поток стартует 5 февраля.",
+      "links": [
+        {
+          "label": "Ссылка",
+          "url": "https://praccelerator.ru/"
+        },
+        {
+          "label": "Rassvet.digital",
+          "url": "https://Rassvet.digital/"
+        },
+        {
+          "label": "Rassvet.digital",
+          "url": "https://Rassvet.digital/"
+        },
+        {
+          "label": "Rassvet.school",
+          "url": "https://Rassvet.school/"
+        },
+        {
+          "label": "Rassvet.family",
+          "url": "https://Rassvet.family/"
+        }
+      ],
+      "createdAt": "2026-05-08T14:18:03.942Z",
+      "expiresAt": "2026-05-09T14:18:03.942Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T14:18:03.942Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "science"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T14:18:03.942Z"
+      }
+    },
+    {
+      "id": 3801608479,
+      "postUrl": "https://t.me/themarfa/12360?single",
+      "source": {
+        "title": "All-in-One Person | Технологии, софт и все такое",
+        "handle": "themarfa",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZAaUzjzDDrIpKJlYrO9o2nBM50bw0d_6wu1bpSfUou6mZTagNj-p23NCo-G8IMHbSyGsvSrBkyHLZdooz-SBQQfdwrBzdhYtbMyHCyw88muAXgsbpEBVNZJAfuazr4tBPmyIfh6ozSeaHJu8cI0nNoidZPxC8NduuVXxOLOTnamIkO6UqtmsxhVb3stKfK9WlQYHOzNxONhqtrEh-DbBqBuVPH10moHLoPtNz7P5uEGTEU00AUxSk3fE11vgEfBggSWSH90HlbT1pQfhV8SABQ1DIanzjkc3peB0mawaj-7DdyWmeXpRPf5FONEzIi2aO3dric-gTdcPKqiJwNEEpQ.jpg"
+      },
+      "sourceId": "ru:themarfa",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/dxNADOreQn-IXdq_Q5QISwhkmG36gInGg4ufgdbrPX0mw5pSeqWmDT7cWCtmdFSuxdP6cPaLmU-jQaTObRZTUsp88xVjOhLhcKf9M8D6YbLq08t3hBdhji_I4BNGsZ260P4LRpXuVaJEUCpTG4WZccExoNzV6WTbInHzhglYMLCu4g3GgU7vFqwZlN0xvYRZk2EY0WzNv4oC-O_k49OjOxMBUvvjlZgJUr8jgLD01e4oHqPrJnIclbzA7-VBkuV-1qNb5a-FMgcx9L4NTb2XUiB_zYNmfrCG_IknuvxdTVaynYZ0NMm1MkIp98USbGoySboUJh0jr0i0yBmqTOPzfA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "#Mac #система \n\nHyperkey позволяет превратить Caps Lock или любую клавишу-модификатор в Hyper-клавишу. Теперь её можно будет использовать как дополнительный модификатор или просто переназначить Caps Lock на что-то другое.\n\nПопробовать",
+      "links": [
+        {
+          "label": "Попробовать",
+          "url": "https://hyperkey.app/"
+        }
+      ],
+      "createdAt": "2026-05-08T14:18:00.309Z",
+      "expiresAt": "2026-05-09T14:18:00.309Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T14:18:00.309Z",
+      "tag": "business",
+      "tags": [
+        "business",
+        "culture",
+        "art",
+        "real_estate",
+        "real_estate_invest"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T14:18:00.309Z"
+      }
+    },
+    {
+      "id": 2203045064,
+      "postUrl": "https://t.me/sportsru/123951?single",
+      "source": {
+        "title": "Спортс“",
+        "handle": "sportsru",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/HQ8XCyyKhOUTFPieV2mG6nfKqeX6kC9JJNUVe5IANSVMkX1VMBwYFdsIPm776BxBGIn6Uz_d44NNLSuh2anQHVUW5aPJhPLFMly876bMknprI9H5V-YamyZmsEFQVsF90dgXJsGJBDzWyA4RTIaHwbn0grIwUFnT-gaT3qkCiihCdbXEDXBye76LYI3ralEbHQDoqNPh-wBCDPnMyPLL4035Qbuy3JRx7Stht_EDGAd2eB_xM-XueUM-DewPswn_EeqCgi0ZWjiZa8QEPLnh1b4Gyx0NvRCAlgbJnSdzgdHWUshlaGhfZxHPRH5algJNLu6egYrhotHJH5X9SfmwKQ.jpg"
+      },
+      "sourceId": "ru:sportsru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Ip-WR6DjShdt_5lZXfFZC5IGED1JGWJNZP_DtjRUuMWbIgKKTNasWun0ru54AC_lke27xomdZ0UKpRCmr-gheBaCA4bBI29MH0eI72Lg_62_sNc4L9Z4Ny9tO6M4QwykT0U3Lnj3tCixuFHdf84e-02rhgGZAfGMYzGFRAzhSg8M_kZve4M96nxVtojhgHNl5Cj61xZNYFS1DRgOrbbVvCUmxE6o5K68nLj3-85n8a-57Eh04FNWkI9bZGIZCpAoFKGuJ0rt4NiNUlGQCwovyC5JW26MCR1k0_6cyjzbQrcNExQ62u2g7oCUOuO25AL6_Js901u3eNqFlWlBC6NIfw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "⚡️⚡️⚡️⚡️ Вальверде выпустил заявление, в котором заявил, что Тчуамени его не бил:\n\n− Мой товарищ по команде не трогал меня, и я его тоже. Хотя я понимаю, что вам проще поверить, будто мы сцепились, но этого не было. Во время спора я случайно ударился об стол, что вызвало небольшую царапину на лбу, потребовавшую рутинного визита в больницу 🙄\n\n⚽️ Дублируем все посты в Max, если у вас не грузит телеграм",
+      "links": [
+        {
+          "label": "Дублируем все посты в Max, если у вас не грузит телеграм",
+          "url": "https://max.ru/sportsru"
+        }
+      ],
+      "createdAt": "2026-05-08T14:17:53.660Z",
+      "expiresAt": "2026-05-09T14:17:53.660Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T14:17:53.660Z",
+      "tag": "sports",
+      "tags": [
+        "sports"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T14:17:53.660Z"
+      }
+    },
+    {
+      "id": 1569420459,
+      "postUrl": "https://t.me/oldlentach/93381?single",
+      "source": {
+        "title": "Лентач",
+        "handle": "oldlentach",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/D8tDo1KUNUKm9PYGqtoNWc8UzWv0jnc7cUhR4M35DuY_duiNJepnrWXS_1NQ2zbI3NsXBsb5MVe7wdqrkyjQGYbK5wJiOXdzdkTpLfrAUBqKGxHuAWkjZ5gw5BnJICzTuR6yvN1pCDg7QDwrdbpZW1ebvOCUBnBXnPyOeCJ6GjN0vSkMaRWvoVbQyJGWft2pyj4I0G4BQQHyF-_6zZt7xwiDqwpqSpuzD7yibSl4Itkc5xk44G3lY7r3uNxybdACnFGDgyYIAQ_WEZIaa1ZwrxPT91MhNRoDZx190s6hrGGNuW5QyFyCAMTqMSB50AOQXui_2T7nnq-N7HaTLmo3NQ.jpg"
+      },
+      "sourceId": "ru:oldlentach",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ZcXOWvfxWe4HeQTGXX9QwHSqybncGufw7AAgWoSRvOkcPMUK24omMYEFzBgXZNYC4dx0-Qb4SCnJTI3bTId9i8KANKRrCQJKfMhoClnmpgNc6XnhceEOA0Ypof3LHc56Y0BsFCojrKGto9CsM0nOir0WxHYEdCjlWJmfIU6YHNdF5nV1yJ31hyUeUQaTnrN0KBvIu7oj7Xo6bquSBFpYMqWuS1lDTb5ed2m4in1OSE46LYqN5D5RgahQTS0ECF207ueYF9MMfCgSfec7w1ZFbci1RwXWLdgdpL75HnUBObGtD8Y3bze6faqVomPDKaLz3sY10iZFd2YIPIkv9lKhmw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Спрос на туры во Вьетнам вырос на 777% в 2026 году, пишут Ведомости.\n\nЗа четыре месяца этого года бронирования туров во Вьетнам увеличились в 8,8 раза относительно такого же периода 2025 года. Кроме того, более чем вдвое вырос спрос на Китай (+118%), Индонезию (+121%) и Мальдивы (+136%)\n\nА что ещё случилось?",
+      "links": [
+        {
+          "label": "пишут",
+          "url": "https://www.vedomosti.ru/business/news/2026/05/04/1195034-spros-na-vetnam"
+        },
+        {
+          "label": "А что ещё случилось?",
+          "url": "https://t.me/+gJwAnySOgyhkNTZi"
+        }
+      ],
+      "createdAt": "2026-05-08T11:46:35.972Z",
+      "expiresAt": "2026-05-09T11:46:35.972Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T11:46:35.972Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T11:46:35.972Z"
+      }
+    },
     {
       "id": 1204128968,
       "postUrl": "https://t.me/nplusone/30853?single",
@@ -543,8 +2392,8 @@
       }
     },
     {
-      "id": 3771994334,
-      "postUrl": "https://t.me/rian_ru/338197?single",
+      "id": 2592122152,
+      "postUrl": "https://t.me/rian_ru/338212?single",
       "source": {
         "title": "РИА Новости",
         "handle": "rian_ru",
@@ -557,27 +2406,24 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❗️Все группировки российских войск в зоне СВО с 8 до 10 мая прекратят боевые действия в связи с перемирием, сообщило Минобороны. \n\n🔹 На время перемирия прекратятся удары по местам дислокации ВСУ и объектам, связанным с ВПК и вооруженными силами в глубине территории Украины.\n\n🔹Если ВСУ нарушат перемирие в зоне СВО или попытаются нанести удары по населенным пунктам и объектам, то Россия даст адекватный ответ. \n\n🔹 Подписаться на РИА Новости",
+      "text": "Тегеран обвинил США в атаках на ряд районов Ирана и нарушении перемирия.\n\n🔹 Подписаться на РИА Новости",
       "links": [
         {
-          "label": "перемирием",
-          "url": "https://ria.ru/20260507/peremirie-2091156110.html"
+          "label": "обвинил",
+          "url": "https://ria.ru/20260508/iran-2091198950.html"
         },
         {
           "label": "Подписаться на РИА Новости",
           "url": "https://t.me/rian_ru"
         }
       ],
-      "createdAt": "2026-05-07T18:59:32.531Z",
-      "expiresAt": "2026-05-08T18:59:32.531Z",
+      "createdAt": "2026-05-08T00:07:28.557Z",
+      "expiresAt": "2026-05-09T00:07:28.557Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:32.531Z",
+      "mediaRefreshedAt": "2026-05-08T00:07:28.557Z",
       "tag": "news",
       "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -592,7 +2438,57 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T18:59:32.531Z"
+        "reviewedAt": "2026-05-08T00:07:28.557Z"
+      }
+    },
+    {
+      "id": 1516655608,
+      "postUrl": "https://t.me/pikabu/48537?single",
+      "source": {
+        "title": "Пикабу",
+        "handle": "pikabu",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/tg_btA1V3Z6xeXnCs7WBqoMO6RUdGN0oMYydUrRhOP-g8Z6aiSlcv30NVI_hI3zZYGCnn_p-lgAmJXe5jk-TjE15A455vzpRkHPO_gdPKexDD8JmszMpRLsSPcJrP9RN5J-mV2NzyrbAmocJH5mQPNN9JZavxD7lxE5sPKaqlqy9lqMpUWbAIMG84-jS7_YgVMrEvMvp10h2Z-nXOsVIl-yIAvmeONt6GjL4Nodzuh0bqPqx1L0-pliNAJ2StFY2MMGbmdqFf85bkej406MSn6v1gE7Ovorzv5YIPSKbFmA6YIaURr8GZe1ZjLWK9ic_894RMqLmlE06diP-ycKSbQ.jpg"
+      },
+      "sourceId": "ru:pikabu",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Почему вы буквально бежали с первого свидания\n\n«Прихожу, а там сидит её семья в полном составе: мама, папа, младший брат и бабушка» — А вот в это верю безоговорочно. \n\nУ самого был случай, ещё во времена когда общались по аське. Тоже познакомился в сети, поболтали пару недель, обменялись фотками, решили встретится. Договорились в субботу, днем, в кафешке, в центре Новосибирска.\n\nПришел чуть раньше, сел за столик, заказал какой то сок, сижу жду. Заходит она, машет рукой идёт к моему столику, мило улыбается. Следом за ней заходит какая то тётка, лет на 25 старше. Обе идут к моему столику и садятся. Здороваюсь, вопросительно смотрю, на тетку?\n\nДевушка: — А это моя мама, она хочет посмотреть как будет проходить у нас свидание, ей просто интересно, не обращай внимание.\n\n0_о\n\nИзвиняюсь, говорю что я на такое не подписывался и до знакомства с родителями ещё рановато. Расплачиваюсь и ухожу.\n\nНа следующий день, эта же девушка уже сама мне пишет, извиняется за то что случилось, предлагает снова встретится теперь точно-точно вдвоём. Ну я, подумав, соглашаюсь. Уже не в кафешке, в Первомайском сквере. Ок. Приходит, нарядная, одна. Гуляем, мило болтаем, все дела. Покупаю мороженку, садимся на лавочку, едим. И тут замечаю люди проходящие мимо как то странно косятся на кусты напротив нас, приглядываюсь и вижу что из за кустов с другой стороны площадки, с биноклем (!) выглядывает её мамаша. Обращаю внимание девушки на это. Она краснеет, извиняется, убегает и больше я её не видел. Она инициативу не проявляла, а я чот как то побоялся связываться с такой семейкой, кто знает что у них там в голове.\n\nАвтор на Пикабу: Vekna\nКомментарии: pikabu.ru/link/dttcn0avup\n\nПикабу в MAX",
+      "links": [
+        {
+          "label": "pikabu.ru/link/dttcn0avup",
+          "url": "https://pikabu.ru/link/dttcn0avup"
+        },
+        {
+          "label": "Пикабу в MAX",
+          "url": "https://max.ru/pikabu"
+        }
+      ],
+      "createdAt": "2026-05-08T19:45:44.353Z",
+      "expiresAt": "2026-05-09T19:45:44.353Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:44.353Z",
+      "tag": "humor",
+      "tags": [
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:44.353Z"
       }
     },
     {
@@ -1550,8 +3446,8 @@
       }
     },
     {
-      "id": 3983395927,
-      "postUrl": "https://t.me/rian_ru/338196?single",
+      "id": 2466514347,
+      "postUrl": "https://t.me/rian_ru/338211?single",
       "source": {
         "title": "РИА Новости",
         "handle": "rian_ru",
@@ -1560,37 +3456,24 @@
       },
       "sourceId": "ru:rian_ru",
       "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/R-OqGK3mdol61irXU3xDyIITKJJgn66KPmBa10xd8Xet21uV5STdeUM602XKk0FwpWVq-npjqTHtTlO-rdxqIkkLLBCEdPa-eLl0j6J9XkMop-q1oBWz_8Xg2-1R7zpLVyQb1oYboi4wU0TljfMTFS4PZ1WudpDifMsVSIk2GOBDZDnUe4iRproylj6sYkwt2fISrS_CF4afJIZa9RkRxIb1tX8j7N46qAEF83yluAW7w5RpMbZy-_WUFbMCz5Qkor2ekItgyHdoE8HTeBtPRDF4G7HwwTVrdjuKzghHoc4hYBAqd5TsQ_J410q9AYMzCgRUtQtTEFCEt6HSM9E_Hw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Создать на \"Госуслугах\" карту мест, где можно жарить шашлык, предложили в Госдуме. \n\n🔹 Подписаться на РИА Новости",
+      "text": "Началось перемирие, объявленное Путиным в честь Дня Победы.\n\n🔹 Подписаться на РИА Новости",
       "links": [
-        {
-          "label": "предложили",
-          "url": "https://ria.ru/20260507/shashlyk-2091104485.html"
-        },
         {
           "label": "Подписаться на РИА Новости",
           "url": "https://t.me/rian_ru"
         }
       ],
-      "createdAt": "2026-05-07T18:59:32.531Z",
-      "expiresAt": "2026-05-08T18:59:32.531Z",
+      "createdAt": "2026-05-08T00:07:28.557Z",
+      "expiresAt": "2026-05-09T00:07:28.557Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:32.531Z",
+      "mediaRefreshedAt": "2026-05-08T00:07:28.557Z",
       "tag": "news",
       "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1605,7 +3488,63 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T18:59:32.531Z"
+        "reviewedAt": "2026-05-08T00:07:28.557Z"
+      }
+    },
+    {
+      "id": 2461382074,
+      "postUrl": "https://t.me/pikabu/48522?single",
+      "source": {
+        "title": "Пикабу",
+        "handle": "pikabu",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/tg_btA1V3Z6xeXnCs7WBqoMO6RUdGN0oMYydUrRhOP-g8Z6aiSlcv30NVI_hI3zZYGCnn_p-lgAmJXe5jk-TjE15A455vzpRkHPO_gdPKexDD8JmszMpRLsSPcJrP9RN5J-mV2NzyrbAmocJH5mQPNN9JZavxD7lxE5sPKaqlqy9lqMpUWbAIMG84-jS7_YgVMrEvMvp10h2Z-nXOsVIl-yIAvmeONt6GjL4Nodzuh0bqPqx1L0-pliNAJ2StFY2MMGbmdqFf85bkej406MSn6v1gE7Ovorzv5YIPSKbFmA6YIaURr8GZe1ZjLWK9ic_894RMqLmlE06diP-ycKSbQ.jpg"
+      },
+      "sourceId": "ru:pikabu",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/lm81eBeSDDCXnkVUqkl98X1PZC2M3qWT4Qebaoe0ZWFGoYPfpFxSVgIpRivEdUFcdYWfgj8swvUDXwaZXDMsLhuwnMfyfMkFfpcBBs8LAzEO8qdkVupTEk0fCyt4PR8nvIBa_QSeKTTixnOqj-uoKuu1XJj0TkIl8HEDJnRu_ubRrjAMc3H-Qu91R7t7zwykYLdlde0_HBtw_cOcQDqzDrr2m75AZE3DbE5-8ffkS1cFBz_mavvericWZ--F1nRt0vzxgNaEk9l3-c9MaTsRo07zS6HLgUKucgkclIsjt--sqhBFVs-9oUMG8j3ImLiN5ijy-MumKPUPNCXKYgdqPg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Когда Сергей Соловьёв искал исполнителя Чудика для фильма «Чужая белая и рябой», ему нужен был человек, который не будет изображать странность, а живёт в ней естественно. И нервный студент ВГИКа по имени Александр Баширов идеально подошел на роль.\n\nПочему этот актер не похож ни на кого — читайте в посте от BigBigWall: https://pikabu.ru/link/ufRt343g-i\n\nПикабу в MAX",
+      "links": [
+        {
+          "label": "https://pikabu.ru/link/ufRt343g-i",
+          "url": "https://pikabu.ru/link/ufRt343g-i"
+        },
+        {
+          "label": "Пикабу в MAX",
+          "url": "https://max.ru/pikabu"
+        }
+      ],
+      "createdAt": "2026-05-08T00:07:25.623Z",
+      "expiresAt": "2026-05-09T00:07:25.623Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:44.353Z",
+      "tag": "humor",
+      "tags": [
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T00:07:25.623Z"
       }
     },
     {
@@ -1753,8 +3692,8 @@
       }
     },
     {
-      "id": 4054342852,
-      "postUrl": "https://t.me/rian_ru/338195?single",
+      "id": 1091908914,
+      "postUrl": "https://t.me/rian_ru/338210?single",
       "source": {
         "title": "РИА Новости",
         "handle": "rian_ru",
@@ -1763,37 +3702,28 @@
       },
       "sourceId": "ru:rian_ru",
       "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/DcbOsNGzfFPqlGdK2NdK1L7yllwWs8VaCnriIfwBjNZpBAvtA57uSkFMSoRgrmTUg6LbF83QgAY-KMbp-E6Nwfn8_oD9P2GTulYunwCLBnfDfcRHQIfdN_N9H0I7hHhMBvef2_QHw8Qsx61_zEm2pwJnv4uXRGI33eEQSdYhTjbvc3S9pfyEm1tkQXtFLU8nxOxsZOQe1Y1vBEQE67dHAqMnGSX6DVfBk2AnbXcnMtMUk2YJcvDtyy4vRq9sfpN9dZVKbNRbDKdBQOEIn_TtmRpYdXKebhXgS1e-2XVMiHIYlLQYey85un7c8vIMdE6D8KxT-OhK7VPY0ISTMTS4Gg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Лучшие отечественные оранжевые вина назвали в Роскачестве:\n\n🔹\"Шато Тамань Натюр Оранж\" и \"Шато Тамань Селект Оранж\";\n \n🔹\"Траминер розовый\";\n\n🔹\"Мускат Амбер Оранж\";\n\n🔹\"Оранжевое из белого\". \n\nСамое недорогое положительно оцененное вино произвели в Дагестане, оно стоило 450 рублей. Ценовой лидер - работа винодела Никиты Абалихина, 3,3 тысячи рублей за бутылку.\n\n🔹 Подписаться на РИА Новости",
+      "text": "Иран обстрелял ракетами силы США, атаковавшие танкер исламской республики, передает гостелерадиокомпания Ирана.\n\nАмериканский Fox же утверждает, что США нанесли удары по иранскому порту Кешм и городу Бендер-Аббас.\n\n🔹 Подписаться на РИА Новости",
       "links": [
         {
-          "label": "назвали",
-          "url": "https://ria.ru/20260507/vino-2090960008.html"
+          "label": "передает",
+          "url": "https://ria.ru/20260507/iran-2091195608.html"
         },
         {
           "label": "Подписаться на РИА Новости",
           "url": "https://t.me/rian_ru"
         }
       ],
-      "createdAt": "2026-05-07T18:59:32.531Z",
-      "expiresAt": "2026-05-08T18:59:32.531Z",
+      "createdAt": "2026-05-08T00:07:28.557Z",
+      "expiresAt": "2026-05-09T00:07:28.557Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:32.531Z",
+      "mediaRefreshedAt": "2026-05-08T00:07:28.557Z",
       "tag": "news",
       "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1808,7 +3738,73 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T18:59:32.531Z"
+        "reviewedAt": "2026-05-08T00:07:28.557Z"
+      }
+    },
+    {
+      "id": 3254092592,
+      "postUrl": "https://t.me/pikabu/48519?single",
+      "source": {
+        "title": "Пикабу",
+        "handle": "pikabu",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/tg_btA1V3Z6xeXnCs7WBqoMO6RUdGN0oMYydUrRhOP-g8Z6aiSlcv30NVI_hI3zZYGCnn_p-lgAmJXe5jk-TjE15A455vzpRkHPO_gdPKexDD8JmszMpRLsSPcJrP9RN5J-mV2NzyrbAmocJH5mQPNN9JZavxD7lxE5sPKaqlqy9lqMpUWbAIMG84-jS7_YgVMrEvMvp10h2Z-nXOsVIl-yIAvmeONt6GjL4Nodzuh0bqPqx1L0-pliNAJ2StFY2MMGbmdqFf85bkej406MSn6v1gE7Ovorzv5YIPSKbFmA6YIaURr8GZe1ZjLWK9ic_894RMqLmlE06diP-ycKSbQ.jpg"
+      },
+      "sourceId": "ru:pikabu",
+      "sourceCountryCode": "ru",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Bp6DqxAXZdp2TxEAHOdi2OMQwZI5BNx0O0LULKNxUvZgWCCOhZAYvNARskqgR2xZO-B7-vKFiUAwT7Y67hnb5krz_e4Z1FFG0OwIVNRtorva9zcWLv9cTsNIrdxHK-LSTgfJoa4I68wK_eQ6QGPJRE8Y_L6co9QaOX_iGX_-e91eRsLN3sjP80RalMIk4aizw7Zq6pRbiVdZ3ChwOyLRFsUksU2aBKlT9pglh0S-qctfq0rS9s6D_Wrp-ws8hq1NmdO2gPg_zB6dwjIpOeqjTfbxl6B-1G65YIWbYgSh4r_PpunLNLTujDVlFGQC1RBs73glg0uGSZx4Vc-LoWhh5Q.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Qe1iau9Kq8pTs-mu-F_9xlfAYp-BxDaIengAOawKgzb6xSj_rKqmPJO2sMTaZ6cY7QH5ay33o1VO_6gaWJ8qoiF5JGuohor1K-2O_bijPVK0yt8xuahfDuuLESh_WGBTAq2c9OLV9MZqXho-SlPXYpvlBGJW07d6OlTYMJjy55-myZTQbkJ3bBMniwsO6dy9XZR3B6duEU-lB2LX1ANN1aRNRTAJ6m65Xp2GLigcZakfUW0anhdxOXbG_DdBahztYSkhtWwHUgAI3eHu_QCHcIqecp7axfMelg5ACIVf4kMjgO_HxztS9bVUoNtnpqm1OeKx1wymqV9BIpUfTvjIbw.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/uBoUmEnxSr1eapCB_I_AWsongYMvidxLpKvsmKp2Kn5czy4qtKYoApmHuD7VklK_1DU76rQekWtf9LdzmSBYUFGPEPiIdV0F5E1VKD70r3TnTOOQXesGRdUDRKlUfgpPVGq3WfWSUXmCTI_citIVoscAcKFXXtXGUbFvPkEALxjp1pvCJPNzHH2YWRySCxzDTycteqKTPRNvkst_3nyGPo84i7Uy0jn7AHl5Vacs9AJLNuVcamezxLORy9d_m34V6dBbX-YfuRlqM-LjSILRrln0somVMR98xBPnwY-D9PvNfSpq-JCyoQNv9RG8qNQfc0WmRYx-4LMs9Q579HNwng.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Что удивило мужчин, когда они съехались с партнершей⁠\n\nЕще больше вариантов: https://pikabu.ru/link/rrEjkM0WQW\n\nПикабу в MAX",
+      "links": [
+        {
+          "label": "https://pikabu.ru/link/rrEjkM0WQW",
+          "url": "https://pikabu.ru/link/rrEjkM0WQW"
+        },
+        {
+          "label": "Пикабу в MAX",
+          "url": "https://max.ru/pikabu"
+        }
+      ],
+      "createdAt": "2026-05-08T00:07:25.623Z",
+      "expiresAt": "2026-05-09T00:07:25.623Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:44.353Z",
+      "tag": "humor",
+      "tags": [
+        "humor"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T00:07:25.623Z"
       }
     },
     {
@@ -1900,8 +3896,8 @@
       }
     },
     {
-      "id": 4018066965,
-      "postUrl": "https://t.me/rian_ru/338194?single",
+      "id": 1778452304,
+      "postUrl": "https://t.me/rian_ru/338209?single",
       "source": {
         "title": "РИА Новости",
         "handle": "rian_ru",
@@ -1910,31 +3906,36 @@
       },
       "sourceId": "ru:rian_ru",
       "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/daddfb7ea7.mp4?token=DjVNXrwR9vu7q2OlUjaIwiFTKHi_M4R9k-3J9o-Pmv3i4IfhfhGSBX19pG0nDreNRIA5gSiL7WWrDOlWOtwwPfUJmMbxv41mDS4pr4ClvayieU2Y4q-y7KgwsoTbjFXLVo1zO3_o5H-T9sa1mB7VAz8BPdut6EKhQ4YNZxfnJW8jXS7UyilLblCtKHgtYxvkXp-wNpLKczJQZWH9ZAUr1XhuEe0aakJT52EwgrLj6a_InB6UywMBajkaWMz5TrLv5-78zqBNRa2lD95VZZhvD8o7Azk0-Zr-WXqqyBnR5ieNlmW28SyUgAzk0y58UFBErvqjdtEGnKk5aFAsF7XX8g",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Лишиться трески боятся скандинавы из-за прекращения сотрудничества с Россией.\n\nКак отмечает Financial Times, в Европе все чаще звучат возражения по поводу альянса Норвегии и России в области вылова трески, поскольку такое сотрудничество якобы повышает риски для безопасности континента. \n\n\"Если Норвегия разорвет отношения, через несколько лет мы останемся совсем без трески\", - приводит издания слова высокопоставленного дипломата скандинавских стран.\n\n🔹 Подписаться на РИА Новости",
+      "text": "В Волгограде прошел показ акции \"Свет Великой Победы\".\n\n🔹 Подписаться на РИА Новости",
       "links": [
         {
-          "label": "Как отмечает Financial Times",
-          "url": "https://ria.ru/20260507/ft-2091001715.html"
+          "label": "прошел",
+          "url": "https://ria.ru/20260507/volgograd-2091189424.html"
         },
         {
           "label": "Подписаться на РИА Новости",
           "url": "https://t.me/rian_ru"
         }
       ],
-      "createdAt": "2026-05-07T18:59:32.531Z",
-      "expiresAt": "2026-05-08T18:59:32.531Z",
+      "createdAt": "2026-05-08T00:07:28.557Z",
+      "expiresAt": "2026-05-09T00:07:28.557Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:32.531Z",
+      "mediaRefreshedAt": "2026-05-08T19:45:48.317Z",
       "tag": "news",
       "tags": [
-        "news",
-        "politics",
-        "economy",
-        "other"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1949,39 +3950,42 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T18:59:32.531Z"
+        "reviewedAt": "2026-05-08T00:07:28.557Z"
       }
     },
     {
-      "id": 1048119351,
-      "postUrl": "https://t.me/n_no_f/19249?single",
+      "id": 1777089329,
+      "postUrl": "https://t.me/pikabu/48518?single",
       "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
+        "title": "Пикабу",
+        "handle": "pikabu",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/tg_btA1V3Z6xeXnCs7WBqoMO6RUdGN0oMYydUrRhOP-g8Z6aiSlcv30NVI_hI3zZYGCnn_p-lgAmJXe5jk-TjE15A455vzpRkHPO_gdPKexDD8JmszMpRLsSPcJrP9RN5J-mV2NzyrbAmocJH5mQPNN9JZavxD7lxE5sPKaqlqy9lqMpUWbAIMG84-jS7_YgVMrEvMvp10h2Z-nXOsVIl-yIAvmeONt6GjL4Nodzuh0bqPqx1L0-pliNAJ2StFY2MMGbmdqFf85bkej406MSn6v1gE7Ovorzv5YIPSKbFmA6YIaURr8GZe1ZjLWK9ic_894RMqLmlE06diP-ycKSbQ.jpg"
       },
-      "sourceId": "ru:n_no_f",
+      "sourceId": "ru:pikabu",
       "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Физручка\n\nУчился я в 90-х, в параллели был Е-класс.\nКлассным у них с 5-го класса был алкаш-трудовик, естественно, класс жил сам по себе. К 9-му там была пара человек с судимостями, на учёте стояли почти все (девчонок там не было, класса с 7-го). Состав: отбитая гопота, менее отбитая гопота и просто затупки.\n\nИ вот в школу пришла новая физручка, только после института, и ей спихнули классное руководство этим классом. Физручка была стройной небольшой девушкой и уважения к себе у учеников с первого взгляда не вызвала. Собрала она 9Е на классный час в спортзале. Припёрлись все — тупо поржать и на место телку поставить. А физручка подошла к перекладине и за один подход сделала то ли 20, то ли 30 подъёмов переворотом. Класс обалдел. Она сказала: кто повторить сможет, тот и будет жить как хочет. А кто не сможет — будет меня слушать. Не смог никто.\n\nВ итоге класс её дико зауважал. Однажды двое оттуда избили двоих одиннадцатиклассников, услышав, как те обсуждают фигуру физручки и что с ней можно было бы сделать в койке. Ну и посещаемость у них выросла, они даже в школьной самодеятельности участвовать начали, удивив всю школу.\n\nКомментарии: https://pikabu.ru/link/L0KIkO9HRh\n\nПикабу в MAX",
+      "links": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/r6_jur5sScijYBg1pFBV8ryXqVI7p3Q8--eZx-JiSBeQM9YoSrttSZix61WVn7KQIwDz_rezcoGhfcUjJzUzuIyWsrXhheB-Ioj-IhTOsq0tOr7HARpOUadYf956SHThLaJkEoRZmvuVBwPJMXN1wSi03y7JY04dvEYYyaTsMBJRFNeXWZjlXbz3yOU2rtW_rHoFQlPqao21JE11CxMGT6yNjE2ynHo5b13-Pc76nRQnQ1Qd1GUTdJNS93qWgGcYHh6Oqkh5rOx-vFn0MRMSglm0SBNiMyDP-PQrZ7PvEo9U4wzKvn7ZfafY6bKyXdikM4bFpq9BQshgWz7Qk5lfTg.jpg"
+          "label": "https://pikabu.ru/link/L0KIkO9HRh",
+          "url": "https://pikabu.ru/link/L0KIkO9HRh"
+        },
+        {
+          "label": "Пикабу в MAX",
+          "url": "https://max.ru/pikabu"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "ЕС готовится к возможным переговорам с путиным — FT\n\nЕвропейский союз начал подготовку к возможным переговорам с путиным по вопросу завершения войны против Украины. Об этом сообщает Financial Times со ссылкой на заявления европейских чиновников.\n\nПрезидент Евросовета Антониу Кошта подчеркнул, что ЕС продолжает поддерживать Украину и готов сыграть свою роль в достижении справедливого мира. По его словам, любые дипломатические усилия должны проходить при участии Киева и с учетом украинских интересов.\n\nВ Брюсселе признают, что на фоне затяжной войны и растущего международного давления тема возможных переговоров все чаще обсуждается на европейском уровне. При этом официальная позиция ЕС остается неизменной: мирное урегулирование невозможно без согласия Украины.\n\nОднако последние заявления помощника президента РФ Юрия Ушакова свидетельствуют о том, что Москва пока не демонстрирует готовности к реальному переговорному процессу. В Кремле продолжают придерживаться жесткой риторики и не сигнализируют о готовности к компромиссам.\n\nНа этом фоне европейские дипломаты отмечают, что подготовка к потенциальным контактам с Россией не означает начала переговоров в ближайшее время, а скорее является попыткой ЕС выработать единую стратегию на случай изменения политической ситуации.\n\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-07T18:59:25.990Z",
-      "expiresAt": "2026-05-08T18:59:25.990Z",
+      "createdAt": "2026-05-08T00:07:25.623Z",
+      "expiresAt": "2026-05-09T00:07:25.623Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T17:45:44.628Z",
-      "tag": "politics",
+      "mediaRefreshedAt": "2026-05-08T00:07:25.623Z",
+      "tag": "humor",
       "tags": [
-        "politics"
+        "humor"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1996,7 +4000,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T18:59:25.990Z"
+        "reviewedAt": "2026-05-08T00:07:25.623Z"
       }
     },
     {
@@ -2041,35 +4045,46 @@
       }
     },
     {
-      "id": 110378558,
-      "postUrl": "https://t.me/n_no_f/19248?single",
+      "id": 1957150417,
+      "postUrl": "https://t.me/rian_ru/338208?single",
       "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
       },
-      "sourceId": "ru:n_no_f",
+      "sourceId": "ru:rian_ru",
       "sourceCountryCode": "ru",
-      "contentType": "image",
+      "contentType": "video",
       "media": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/mrN5sHaM83LFXMkVQYqbnTmCGEL42AaUTJa52iA_NBbLjYPafesYMeuC_oIbS-9g2RAOjkSkl9o-bhGzyhhkEbCYiVSBkUsdJebzrCTWnx5d3ZBc38fYADSE221deI7mq1MLc5qE3Su1y9-Je1K7hXUljjNhGmpQDJ40qefwWMZl-ovpfOvsSccHvp08r2mGVCj2mZ61jPDQ4tU5Id1us_4hgHy7dtRrlgZvtJZxESFT-yaKgVoYH5Cpn9oRf90gjjM7KxGT6VTTcw92wk-aDXsc3HAvxyjgxh8c58mARoVdXqr72zRvK6B_cbqanl0GT-_dZerGMjd_jRgwvPL4Hw.jpg"
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/f1750f04ed.mp4?token=cOlD3n6hPekTkJQleXfddVWue-cPPZsQlRIrsu5IKUCqztpO6BIVXFB1S2hSj57iFBybcXDV9ctMmY-DnKwMEqmw-2ephz_-34Mu_kEBW3be_yi5KWWKEVhA8iW6eugwu6DrO3kvlsMi811hIy1lEXJt3DOLIpefmoRZJ7w0MfV3jHK6LLyqS82nQPBNlYgmCcgt9h6fylijMifMiBZAxMIRRq0TE45Tm_NZf_JqxekqIK_x5JG-58YkbOPfCERI9fJN8MTnxh8cHXVyjWTFqrSu0IogNW75fER_POpHs6AONYOdJbK9gpKP2IznFcRy5pvbdnyTsknCzTay9dMGlWmoL_vrnOjYqPINF6SYOQVBEMVHQVmdifaazB2grWlIbE2_26aPI-i77NFTGmcg5EXsGwqv4yWpfbsFQy2zYy0RnXi0fpFRywwzHx09a489m7MkubN0vLEjkC-Bz8FrDxUqDtFvQ6Q17Z4IM3Zmo_argQs1k5QCwajP2zd2NhKSQsfqN0J0ugQW0Tkq6iVaGNTzPp6Dru_3ExSlfOtVLDZyF3nefotmMX6ke8NUhxCh5ezG-lWJfz2zPTlvg9Z1aJ42MLO6-3AHcFmkMt0wO2rcpBheO6M3nEBJ4tBDf5z9bpQD8_A-bYaG7W9PEIbCZe6zq6bGzailCMXovq_OfNg",
+          "poster": null,
+          "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "\"Общая преданность миру\": Рубио в Ватикане встретился с Папой Римским в Ватикане\n\nГоссекретарь США Марко Рубио в четверг, 7 мая провел встречу с Папой Римским Львом XIV. Он заверил понтифика, что Вашингтон имеет прочные отношения с Ватиканом, и обе стороны разделяют общую приверженность миру,\n\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-07T18:59:25.990Z",
-      "expiresAt": "2026-05-08T18:59:25.990Z",
+      "text": "Мощная вспышка с эффектным взрывом произошла на Солнце, сообщили астрономы.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "сообщили",
+          "url": "https://t.me/lpixras/2502"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-08T00:07:28.557Z",
+      "expiresAt": "2026-05-09T00:07:28.557Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T17:45:44.628Z",
-      "tag": "politics",
+      "mediaRefreshedAt": "2026-05-08T19:45:48.317Z",
+      "tag": "news",
       "tags": [
-        "politics"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2084,7 +4099,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T18:59:25.990Z"
+        "reviewedAt": "2026-05-08T00:07:28.557Z"
       }
     },
     {
@@ -2135,47 +4150,6 @@
       }
     },
     {
-      "id": 2271504369,
-      "postUrl": "https://t.me/n_no_f/19247?single",
-      "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
-      },
-      "sourceId": "ru:n_no_f",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Украина не рекомендует представителям иностранных стран быть в Москве 9 мая, - Зеленский \n\n\"Есть обращение от некоторых государств, близких к России, чьи представители собираются быть в Москве. Странное желание... в эти дни. Мы не рекомендуем\", - заявил президент.\n\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-07T18:59:25.990Z",
-      "expiresAt": "2026-05-08T18:59:25.990Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:25.990Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T18:59:25.990Z"
-      }
-    },
-    {
       "id": 1529640799,
       "postUrl": "https://t.me/tass_agency/374810?single",
       "source": {
@@ -2214,47 +4188,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-07T22:16:25.783Z"
-      }
-    },
-    {
-      "id": 900432880,
-      "postUrl": "https://t.me/n_no_f/19246?single",
-      "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
-      },
-      "sourceId": "ru:n_no_f",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Хмельницкий массово заполонили мигранты из Индии - как отмечают местные СМИ, они уже полгода легально работают в Украине\nㅤ\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-07T18:59:25.990Z",
-      "expiresAt": "2026-05-08T18:59:25.990Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:25.990Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T18:59:25.990Z"
       }
     },
     {
@@ -2299,53 +4232,6 @@
       }
     },
     {
-      "id": 3280348668,
-      "postUrl": "https://t.me/n_no_f/19242?single",
-      "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
-      },
-      "sourceId": "ru:n_no_f",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Ju8wgMMV00D1p-XlImU9W0MUbkFcniOQDZR4BKH7k8vwMYu3Ihun0pprvdug7wGwNqwTD1uMo9nPoCsMb5GdaezHKnTQM-eWudv4T16QDjDBJ9q6HWQ7GXGzC_VQiChmeFyvsVyX4nbnuCzyStnzL9uCHmZTslR1I8Vh_TBPky1M4w-1ThGVaKcv7kq8ILwGO9lgdWINQwBNDvLHRTIcjfx7Lk9FAVXiL69UGtMyBH45pnkzskb6rSfM3ED8OC0n6R_3Ohu2aSlRZ-AGS64yI2Ef90qsJ71PEIzWahQ6X5kqnjYCVzTXAWJgppOv1CeteqFfWQoybsYxEVRO-33d6A.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "С 00:00 8 мая до 10 мая, российская сторона объявляет перемирие - Минобороны рф.\n\n\"В указанный период все группировки российских войск в зоне (так называемой - ред.) специальной военной операции полностью прекратят боевые действия.\n\nОдновременно прекращаются удары ракетными войсками и артиллерией, высокоточным оружием большой дальности морского и воздушного базирования, ударными беспилотными летательными аппаратами по (якобы - ред.) местам дислокации ВСУ и объектам инфраструктуры, связанными с ВПК и вооруженными силами в глубине территории Украины.\n\nПризываем украинскую сторону последовать этому примеру. При нарушении ВСУ перемирия в зоне проведения \"СВО\", а также попытках нанесения ударов по населенным пунктам и объектам на территории российских регионов, ВС рф будет дан адекватный ответ.\n\nТакже напоминаем, что в случае попыток киевского режима сорвать празднование 81-й годовщины Победы в Великой Отечественной войне в Москве, ВС рф нанесут массированный ракетный удар по центру Киева.\n\nЕще раз предупреждаем гражданское население Киева и сотрудников иностранных дипломатических представительств о необходимости своевременно покинуть город\".\n\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-07T18:59:25.990Z",
-      "expiresAt": "2026-05-08T18:59:25.990Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T17:45:44.628Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T18:59:25.990Z"
-      }
-    },
-    {
       "id": 2368264624,
       "postUrl": "https://t.me/tass_agency/374808?single",
       "source": {
@@ -2384,53 +4270,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-07T22:16:25.783Z"
-      }
-    },
-    {
-      "id": 2888177871,
-      "postUrl": "https://t.me/n_no_f/19241?single",
-      "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
-      },
-      "sourceId": "ru:n_no_f",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/thBXdXGoWtwVOsmaGNBnln_ettMfM8uQ0hz4yBIthcxoy6kuLdipuXdoukZn_p8I5kdX39C68vDXT6coI8eiwouRUpKVyzmGT8N4gsTG8Z0CDSCCgiPW3hJ6UmrOmupCwbj4-umwwZWW2eH7vA5sViV0yWG3_aBCA3zRnsJlCHsiKPOv3XE6RoPij1zdAuXGvKyUcwssNwr3GhX7ZJTJE_aFfkmujJwH6YhcqecUV8984QZFRDjqt1Hc_oKEqGVR9gK3788OCB7JER3P9tQSw5uZU1hOMnrVsP-91jz4Trn6BrlhPOPdEMOWkP3Dnh3jcRDyPO7xuR27DXSJHszSsQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Минюст США снял ограничения на импорт украинского оружия\n\nОб этом пишет Forbes Ukraine со ссылкой на посла Украины в США Стефанишину.\n\nТеперь заявки на импорт украинского оружия больше не будут автоматически отклоняться. \n\nИх начнет индивидуально рассматривать Федеральное агентство США по контролю за оборотом оружия, взрывчатки, алкоголя и табака (ATF).\n\nАмериканские компании смогут на постоянной основе импортировать некоторые категории украинского оружия, боеприпасов и комплектующих. \n\nДля украинских DefenseTech-компаний это открывает путь на рынок США.\n\nОграничения действовали с 1997 года в рамках соглашения США и рф о добровольном ограничении импорта оружия из ряда бывших советских республик. \n\nПосле изменений Россия останется единственной страной в этом списке.\n\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-07T18:59:25.990Z",
-      "expiresAt": "2026-05-08T18:59:25.990Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:25.990Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T18:59:25.990Z"
       }
     },
     {
@@ -2477,55 +4316,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-07T22:16:25.783Z"
-      }
-    },
-    {
-      "id": 3498767222,
-      "postUrl": "https://t.me/n_no_f/19240?single",
-      "source": {
-        "title": "Невероятно, но факт…",
-        "handle": "n_no_f",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z2cnQzJ-AFbk3QFbMZpQM7Vx-P8eemYLsxE-shOpMm6be35qEfiu8m8c3BCkbLNfNxSVxouMtw6Ddw576XBRJhR_teJGJtmReL3KukXJPximEeZ46oGKZLmqaDTYohQr7M7GRMG88y6km6PV5W9c0XT5S3a-N_9CxME1Uhy3RfsX3iOBDv6biw4oTXX1dE2dKNyYekvA6T6eCfpxWft80Vrb0kemMDMgmYLavoUNpzXRwcy2nZta_cCtkDrqoVubDDq0950YXgDnfQrwq8hUhHP40EB1jJMIQF3yDk1JSTYXKCoUPxFeRhto60O-v0uK1nhMpvlIwS2ZsfDrz87pZw.jpg"
-      },
-      "sourceId": "ru:n_no_f",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/5e6bc786b9.mp4?token=keo_nRRgWlo1yB6QlIpcHJkfhXbHn4B_BnlfEuv-AoaYtOrWW5uN4mw1AOIfYORaQa-57KsNxtY_4xarffmYrwuCpZYaQ4bNrasPUHYkZaza0Iuk-USBfZhB-5zRh3tx2mJSSGtPWS2v6pzpjK5fv2OCPNYK8srN8poNGd4C8z5bsHorX56xuLpXFt-8gKQoRpB09dWDNiCFfoSOCEJ8Q1KEkaQELVqYdGp84UdBIdd4eyPXn0CmzWPpBBFULFFSrwjsSutkTyBG3v79dWkBPDts5EFkie-XT1dgybjmpGOuQeZrmMRP8NXJ0Acr9TF-wf-iqnwm96yTNtZm7aW3ZQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "В Виннице разгорается скандал вокруг действий сотрудников ТЦК. \n\nПо словам очевидцев, мужчину мобилизовали прямо после возвращения с рынка, куда он ходил вместе со своим 17-летним сыном.\n\nВо время конфликта подросток попал под «горячую руку» людей в форме. В результате парень получил перелом руки и сотрясение мозга. Что произошло с его отцом после задержания — на данный момент неизвестно.\n\nИнцидент вызвал волну обсуждений и резкую реакцию в соцсетях.\n\nНевероятно, но факт…",
-      "links": [],
-      "createdAt": "2026-05-07T18:59:25.990Z",
-      "expiresAt": "2026-05-08T18:59:25.990Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T18:59:25.990Z",
-      "tag": "politics",
-      "tags": [
-        "politics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T18:59:25.990Z"
       }
     },
     {

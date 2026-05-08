@@ -1,9 +1,98 @@
 {
   "countryCode": "fr",
-  "updatedAt": "2026-05-08T17:46:39.573Z",
-  "totalPosts": 50,
+  "updatedAt": "2026-05-08T19:46:22.669Z",
+  "totalPosts": 53,
   "chunks": 1,
   "items": [
+    {
+      "id": 2462257379,
+      "postUrl": "https://t.me/startupfrance/2?single",
+      "source": {
+        "title": "Start",
+        "handle": "startupfrance",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "fr:startupfrance",
+      "sourceCountryCode": "fr",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Name for sale\n@kuaoa",
+      "links": [
+        {
+          "label": "@kuaoa",
+          "url": "https://t.me/kuaoa"
+        }
+      ],
+      "createdAt": "2026-05-08T19:45:16.780Z",
+      "expiresAt": "2026-05-09T19:45:16.780Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:16.780Z",
+      "tag": "startups",
+      "tags": [
+        "startups",
+        "business"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:16.780Z"
+      }
+    },
+    {
+      "id": 3829815433,
+      "postUrl": "https://t.me/sciencefrance/1?single",
+      "source": {
+        "title": "Science",
+        "handle": "sciencefrance",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "fr:sciencefrance",
+      "sourceCountryCode": "fr",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T19:45:16.238Z",
+      "expiresAt": "2026-05-09T19:45:16.238Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:16.238Z",
+      "tag": "science",
+      "tags": [
+        "science",
+        "education"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:16.238Z"
+      }
+    },
     {
       "id": 1777902469,
       "postUrl": "https://t.me/marketingfrance/12?single",
@@ -174,6 +263,48 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T07:58:13.051Z"
+      }
+    },
+    {
+      "id": 3619983360,
+      "postUrl": "https://t.me/startupfrance/1?single",
+      "source": {
+        "title": "Start",
+        "handle": "startupfrance",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "fr:startupfrance",
+      "sourceCountryCode": "fr",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T19:45:16.780Z",
+      "expiresAt": "2026-05-09T19:45:16.780Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:16.780Z",
+      "tag": "startups",
+      "tags": [
+        "startups",
+        "business"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:16.780Z"
       }
     },
     {
