@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-08T06:32:19.151Z",
+  "updatedAt": "2026-05-08T06:33:14.542Z",
   "sources": [
     {
       "id": "es:20m",
@@ -3452,10 +3452,56 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:dizigundemi",
+      "countryCode": "tr",
+      "handle": "dizigundemi",
+      "title": "Dizi Gündemi",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "series"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:dogaseverler",
+      "countryCode": "tr",
+      "handle": "dogaseverler",
+      "title": "Doğa Severler",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:donanimhaber",
       "countryCode": "tr",
       "handle": "donanimhaber",
-      "title": "Donanım Haber",
+      "title": "DonanımHaber",
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
@@ -3467,7 +3513,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-04-26T05:01:45.504Z",
-      "updatedAt": "2026-05-08T06:08:19.253Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
       "lastCheckedAt": "2026-05-08T03:54:35.701Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -3925,6 +3971,28 @@
       "lastSeenPostId": 344637,
       "importedPostsCount": 918,
       "lastRefreshCursorPostId": 344530
+    },
+    {
+      "id": "tr:egitimturkiye",
+      "countryCode": "tr",
+      "handle": "egitimturkiye",
+      "title": "Eğitim Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "eg:egypttodaymag",
@@ -4624,6 +4692,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:fitnessturkiye",
+      "countryCode": "tr",
+      "handle": "fitnessturkiye",
+      "title": "Fitness Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "fitness",
+      "tags": [
+        "fitness",
+        "health"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "in:foodtalkindia",
       "countryCode": "in",
       "handle": "foodtalkindia",
@@ -5062,6 +5153,28 @@
       "lastSeenPostId": 11008,
       "importedPostsCount": 84,
       "lastRefreshCursorPostId": 10986
+    },
+    {
+      "id": "tr:futbolarena",
+      "countryCode": "tr",
+      "handle": "futbolarena",
+      "title": "Futbol Arena",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "sports",
+      "tags": [
+        "sports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.542Z",
+      "updatedAt": "2026-05-08T06:33:14.542Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "pt-br:g1",
@@ -6006,6 +6119,51 @@
       "lastRefreshCursorPostId": 8273
     },
     {
+      "id": "tr:geziturkiye",
+      "countryCode": "tr",
+      "handle": "geziturkiye",
+      "title": "Gezi Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:girisimturkiye",
+      "countryCode": "tr",
+      "handle": "girisimturkiye",
+      "title": "Girişim Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "startups",
+      "tags": [
+        "startups",
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "zh:globaltimesnews",
       "countryCode": "zh",
       "handle": "globaltimesnews",
@@ -6116,6 +6274,30 @@
       "lastRefreshCursorPostId": 6
     },
     {
+      "id": "tr:guzellikrehberi",
+      "countryCode": "tr",
+      "handle": "guzellikrehberi",
+      "title": "Güzellik Rehberi",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "health",
+      "tags": [
+        "health",
+        "fashion",
+        "beauty"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:haberglobal",
       "countryCode": "tr",
       "handle": "haberglobal",
@@ -6177,6 +6359,29 @@
       "createdAt": "2026-04-27T07:54:20.179Z",
       "updatedAt": "2026-05-08T06:08:19.250Z",
       "lastCheckedAt": "2026-05-08T03:53:14.255Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:hayvandostlari",
+      "countryCode": "tr",
+      "handle": "hayvandostlari",
+      "title": "Hayvan Dostları",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -7083,6 +7288,29 @@
       "lastRefreshCursorPostId": 5552
     },
     {
+      "id": "tr:kahvekulturu",
+      "countryCode": "tr",
+      "handle": "kahvekulturu",
+      "title": "Kahve Kültürü",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "food",
+      "tags": [
+        "food",
+        "culture"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:kanobu",
       "countryCode": "ru",
       "handle": "kanobu",
@@ -7238,6 +7466,30 @@
       "note": null,
       "createdAt": "2026-05-08T06:26:16.643Z",
       "updatedAt": "2026-05-08T06:26:16.643Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:kodluyoruz",
+      "countryCode": "tr",
+      "handle": "kodluyoruz",
+      "title": "Kodluyoruz",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -8585,6 +8837,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:modaturkiye",
+      "countryCode": "tr",
+      "handle": "modaturkiye",
+      "title": "Moda Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "fashion",
+      "tags": [
+        "fashion",
+        "beauty"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:molyanov_blog",
       "countryCode": "ru",
       "handle": "molyanov_blog",
@@ -8868,6 +9143,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:32:19.151Z",
       "updatedAt": "2026-05-08T06:32:19.151Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:muzikturkiye",
+      "countryCode": "tr",
+      "handle": "muzikturkiye",
+      "title": "Müzik Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "music"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -10006,6 +10304,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:oyundunyasi",
+      "countryCode": "tr",
+      "handle": "oyundunyasi",
+      "title": "Oyun Dünyası",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.542Z",
+      "updatedAt": "2026-05-08T06:33:14.542Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:oyungezer",
       "countryCode": "tr",
       "handle": "oyungezer",
@@ -10111,6 +10431,29 @@
       "createdAt": "2026-04-27T08:43:03.585Z",
       "updatedAt": "2026-05-08T06:09:17.579Z",
       "lastCheckedAt": "2026-05-08T06:09:17.578Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:pazarlamaturkiye",
+      "countryCode": "tr",
+      "handle": "pazarlamaturkiye",
+      "title": "Pazarlama Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "marketing",
+      "tags": [
+        "marketing",
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.542Z",
+      "updatedAt": "2026-05-08T06:33:14.542Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -10474,6 +10817,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:26:16.642Z",
       "updatedAt": "2026-05-08T06:26:16.642Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:psikolojiturkiye",
+      "countryCode": "tr",
+      "handle": "psikolojiturkiye",
+      "title": "Psikoloji Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "psychology",
+      "tags": [
+        "psychology",
+        "health"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -11043,6 +11409,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:saglikyasam",
+      "countryCode": "tr",
+      "handle": "saglikyasam",
+      "title": "Sağlıklı Yaşam",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "health",
+      "tags": [
+        "health",
+        "fitness"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pk:samaatv",
       "countryCode": "pk",
       "handle": "samaatv",
@@ -11222,6 +11611,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:shiftdelete",
+      "countryCode": "tr",
+      "handle": "shiftdelete",
+      "title": "ShiftDelete.Net",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "electronics"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:shiftdeletenet",
       "countryCode": "tr",
       "handle": "shiftdeletenet",
@@ -11239,6 +11651,29 @@
       "createdAt": "2026-04-26T05:01:45.504Z",
       "updatedAt": "2026-05-08T06:09:52.367Z",
       "lastCheckedAt": "2026-05-08T06:09:52.366Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:sinematurk",
+      "countryCode": "tr",
+      "handle": "sinematurk",
+      "title": "SinemaTürk",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "cinema"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -11447,6 +11882,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:sporx",
+      "countryCode": "tr",
+      "handle": "sporx",
+      "title": "Sporx",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "sports",
+      "tags": [
+        "sports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "uz:spotuz",
       "countryCode": "uz",
       "handle": "spotuz",
@@ -11486,6 +11943,29 @@
       "createdAt": "2026-04-27T07:25:25.714Z",
       "updatedAt": "2026-05-08T06:08:19.253Z",
       "lastCheckedAt": "2026-05-08T03:54:32.330Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:startupteknoloji",
+      "countryCode": "tr",
+      "handle": "startupteknoloji",
+      "title": "Startup Teknoloji",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "startups",
+      "tags": [
+        "startups",
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -11579,6 +12059,30 @@
       "lastImportedAt": "2026-05-07T23:12:03.117Z",
       "lastSeenPostId": 43781,
       "importedPostsCount": 209,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:tasarimkulubu",
+      "countryCode": "tr",
+      "handle": "tasarimkulubu",
+      "title": "Tasarım Kulübü",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "creativity",
+      "tags": [
+        "creativity",
+        "culture",
+        "design"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.542Z",
+      "updatedAt": "2026-05-08T06:33:14.542Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -12241,6 +12745,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:teknolojivebilim",
+      "countryCode": "tr",
+      "handle": "teknolojivebilim",
+      "title": "Teknoloji ve Bilim",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "science",
+      "tags": [
+        "science",
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:telegaru",
       "countryCode": "ru",
       "handle": "telegaru",
@@ -12279,6 +12806,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:32:19.151Z",
       "updatedAt": "2026-05-08T06:32:19.151Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:telegramturkiye",
+      "countryCode": "tr",
+      "handle": "telegramturkiye",
+      "title": "Telegram Türkiye",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "telegram",
+      "tags": [
+        "telegram",
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.542Z",
+      "updatedAt": "2026-05-08T06:33:14.542Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -13103,6 +13653,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:turkiyeai",
+      "countryCode": "tr",
+      "handle": "turkiyeai",
+      "title": "Türkiye AI",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:tutu_travel",
       "countryCode": "ru",
       "handle": "tutu_travel",
@@ -13215,6 +13788,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:31:06.308Z",
       "updatedAt": "2026-05-08T06:31:06.308Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:uzayhaberleri",
+      "countryCode": "tr",
+      "handle": "uzayhaberleri",
+      "title": "Uzay Haberleri",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "science",
+      "tags": [
+        "science",
+        "space"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -13981,6 +14577,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "tr:webtekno",
+      "countryCode": "tr",
+      "handle": "webtekno",
+      "title": "Webtekno",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:whackdoor",
       "countryCode": "ru",
       "handle": "whackdoor",
@@ -14270,6 +14889,53 @@
       "createdAt": "2026-04-27T03:27:24.924Z",
       "updatedAt": "2026-05-08T06:08:19.251Z",
       "lastCheckedAt": "2026-05-08T00:06:23.216Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:yazilimdunyasi",
+      "countryCode": "tr",
+      "handle": "yazilimdunyasi",
+      "title": "Yazılım Dünyası",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "news",
+        "news_world"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "tr:yemektarifleri",
+      "countryCode": "tr",
+      "handle": "yemektarifleri",
+      "title": "Yemek Tarifleri",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "food",
+      "tags": [
+        "food",
+        "culture"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:33:14.541Z",
+      "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
