@@ -7,7 +7,7 @@
   "title": "Telegram Telegram trends in Russia | margeleT",
   "description": "Fresh Telegram Telegram posts, channels, keywords and sources from Russia. Updated automatically by margeleT.",
   "h1": "Telegram Telegram trends in Russia",
-  "updatedAt": "2026-05-07T14:51:01.946Z",
+  "updatedAt": "2026-05-07T20:39:36.038Z",
   "parentTag": {
     "value": "telegram",
     "emoji": "✈️",
@@ -229,13 +229,71 @@
   },
   "posts": [
     {
+      "id": 1203939221,
+      "postUrl": "https://t.me/telegaru/285?single",
+      "source": {
+        "title": "Телега",
+        "handle": "telegaru",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/lBygL-99g7IIEpWdM565dqMXBncjJrLuKWQkVNGlMapjGdLjJIqSLUcUDqbBRg7q21MTZwv686DLRJd4jOz5Nu3tvzakahPBatdjLw1Oozi39Q2bDGXALCwYoXPeGayAjJHWAvMPCYUqofkzWotAyNKLaNsbdqDeqy5Ni94ZXGsoRGmsx8Ey3PO5_qKtQBnIBlaabSup7nsfaf1QxSEjziR_vcz0eaLYbe9LEikCFadrglEADd9lP5YnX_t87Fqnusv21tTiO9BodDiJDXH96RIMz5F2mHJnOvyGqsIpsQusPROkRIfAJ-rYigTxbnFZVGTaIAbPu2NCkhYNNxWNOA.jpg"
+      },
+      "sourceId": "ru:telegaru",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/4c2d605a11.mp4?token=vhPGOCf6a3JqE9fI_HrYU24jhdhdBwCziZL_JcGskOKitRptVW81jQgTpI8pPa2gpPz1NLJhYKw6KbUe954PHoM5oyBYXX4UXdEsYBmJIVAOuL-gXv-Z1Qt7tsqsuqkSxXxMJlVUrvsHxYq2WVNr1HQ9Sa_K-IHIJNZ1adiFJBirAAP5tH1dZ0sPnMRypx42wf7ceyva3mcU0UL6fVBrqEJi7feKGJsbphZBgOm2OFVNSJGBJxcXCOVKodQd_BCrUSKUBuLi_NE1rsO9X-5OODc_V-XQmOdSkgwj82Si7oyYqCjRpgzfB1-n328YgtC-b8jEKOQW49DUrM9_VzuZjJjU-9Y57UvDJl5c2IZZKIKehKlwf1qfNCQab_E7owtHH1Xdg9cBztuvk6GYFuW_a5C7TPT1-CUb4o5XHI_TmVyb1AVYoWKY0YipORYBVKFxrMZuelRdvVxO9rpc_qaVh1c3EcF9UP6IvMvy_yFgEIORpYjIevU5M9gaCp3jsjQYAqxpVvK4FB93TRJe5dxjQA72SCmSNP2FFjNiUy52NZ50VYyUp9ZdgH7yfD00PvMfhsljqi4_6Nt-g2IkNE4kr3d7N93KB68uB1ckQTZ2SJEYoGhbMs_PkWsIvtJ_kJNi3igKUQxr6om6YlLmw9weDzrYm47KEyrDcuvgQxzovzc",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Начинаем тестировать Телегу Плюс\n\nТелега — независимый проект. Уже год мы развиваем ее без рекламы и платных услуг.\n\nГлавная статья наших расходов — оборудование для прокси-серверов — серьезно выросла в цене на фоне глобального спроса со стороны ИИ-компаний и сложностей с поставками. Это поставило нас в трудное положение.\n\nДля дальнейшего развития нам нужно финансирование, поэтому мы запускаем тестовую подписку «Телега Плюс». В первый день доступ к подписке получит 1 миллион пользователей Android из списка ожидания.\n\nОбладатели подписки смогут обойти список ожидания и начать пользоваться Телегой уже сейчас, а в будущем получат доступ к родительскому контролю и другим новым функциям.\n\nСтоимость:\n🟣 первый месяц — 1 ₽, чтобы спокойно протестировать сервис, далее — 99 ₽/месяц\n🟣 или 199 ₽ за 3 месяца\n\nСейчас пользователи, зарегистрированные в Телеге до 25 марта, а также обладатели Telegram Premium сохраняют доступ к Телеге без подписки.\n\nОформить подписку можно в боте Телеги Плюс.\nПодробности — на сайте.",
+      "links": [
+        {
+          "label": "боте Телеги Плюс.",
+          "url": "https://t.me/telegaru_plus_bot?start=subscribe_app_access"
+        },
+        {
+          "label": "на сайте.",
+          "url": "https://telega.me/plus"
+        }
+      ],
+      "createdAt": "2026-05-07T20:39:36.038Z",
+      "expiresAt": "2026-05-08T20:39:36.038Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T20:39:36.038Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T20:39:36.038Z"
+      }
+    },
+    {
       "id": 2875495042,
       "postUrl": "https://t.me/telegaru/282?single",
       "source": {
-        "title": "Telega",
+        "title": "Телега",
         "handle": "telegaru",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/lBygL-99g7IIEpWdM565dqMXBncjJrLuKWQkVNGlMapjGdLjJIqSLUcUDqbBRg7q21MTZwv686DLRJd4jOz5Nu3tvzakahPBatdjLw1Oozi39Q2bDGXALCwYoXPeGayAjJHWAvMPCYUqofkzWotAyNKLaNsbdqDeqy5Ni94ZXGsoRGmsx8Ey3PO5_qKtQBnIBlaabSup7nsfaf1QxSEjziR_vcz0eaLYbe9LEikCFadrglEADd9lP5YnX_t87Fqnusv21tTiO9BodDiJDXH96RIMz5F2mHJnOvyGqsIpsQusPROkRIfAJ-rYigTxbnFZVGTaIAbPu2NCkhYNNxWNOA.jpg"
       },
       "sourceId": "ru:telegaru",
       "sourceCountryCode": "ru",
@@ -264,7 +322,7 @@
       "createdAt": "2026-05-07T14:51:01.946Z",
       "expiresAt": "2026-05-08T14:51:01.946Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:51:01.946Z",
+      "mediaRefreshedAt": "2026-05-07T20:39:36.038Z",
       "tag": "telegram",
       "tags": [
         "telegram"
@@ -292,7 +350,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -341,7 +399,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -390,7 +448,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -439,7 +497,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -481,7 +539,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -528,7 +586,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -579,7 +637,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -638,7 +696,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -685,7 +743,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -727,7 +785,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -774,7 +832,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -827,7 +885,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -875,7 +933,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -884,7 +942,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/v23UzusHINrRRUJc1pQ1pYlrbcOH4dNXBL3EV7O8Z5cRw8kSRsoP6mlpzVVCvT062TTEfWY4DFYLD5rH6-qA7mjBB9fbId9dp7WGKApODwBQ2dj3QoYGU4zwxAruvZda-zLnZreGmO9BiGR8CEVyG2oyoOIes0FncW0j886gj-wkxm2uNnjIx2_yWNnQ-mZQamg3VACi1eku3kWnbTY1Z_kc5aEYZy7s0HkuZBodUX_y0fY6gWWNBGa2VuxSGdTQhTX0MhXlDsk6nXGnJDTX2JlDgBxKNcJx6vFhpcuxH8qbkEgZTITkaVkPH2IVJqdcT4dHXx3khrsOSouTi3Jerw.jpg"
+          "url": "https://cdn1.telesco.pe/file/VtmtnCHY4KV27FpewEYtK_jfp5zx1ZQi2IKdmzeqqBHsDmb7SIMh-6Jy6hM-ckLD-qFz1kOaOAvGBxU4eJhWV14T5v5XZsaR4AtjJcw_gfHtvZ7g1UvXxoVq7A7ZucHhU_SEZYX3nWUw4l2QcCg6rziAUpukaXjb4sx9Ugn6ol5O8KwjLGLPiAF87LJHAoTo0-B6QiAq5MFsFKSB8pmB8GAQ1gDCUIzhZ29nJm__wbE6TxNvw3_TznE1RpP0z6YJYMYiVlxvCfeRJW8SuPEggH-aE0Yt_tCvmeuC56nz4xyMyN35eKKzAkAZ_5AvzH9gcb5W6Vxrk6a98qrIead2Lw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -894,7 +952,7 @@
       "createdAt": "2026-05-07T06:53:36.488Z",
       "expiresAt": "2026-05-08T06:53:36.488Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T06:53:36.488Z",
+      "mediaRefreshedAt": "2026-05-07T23:12:52.033Z",
       "tag": "telegram",
       "tags": [
         "telegram",
@@ -923,7 +981,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -965,7 +1023,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -1007,7 +1065,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -1016,7 +1074,7 @@
         {
           "id": "gif-1",
           "kind": "video",
-          "url": "https://cdn1.telesco.pe/file/cfc097793f.mp4?token=kAqSAW3YFx0_TKv3kWBvkGAhQ3BHSxCjhESjtoJv_irN9SsRpIeMaygdyx3i49wikL6ZOSRdKkvZpM5M5gr7Y8W5wLDS105xNuUpAwflakOuYu1YqXp8u8jhsnLUwz1vJli4lZ5n9GHfJ2lhOIbhmsqtr9DZwR9rD4vaY-43nSHiE2vGKa2ZkT2dNZLxrj8K9FPx3bJZXGw0rUc7QSKFp-siJPlCYHmWUpKjLAanBetr9CfzWRxK51ubwlPB12tlvIAXzWBBiT5hFQoY-bhxruiSLIxox3Qmh2D_H0GH7MmdJMjS33_wvi7e_EwY1oOJTBvavr0nrIDthroHboyDQA",
+          "url": "https://cdn1.telesco.pe/file/cfc097793f.mp4?token=VujB2KiKImSQMPkHMvDU0pTNLuawSztcf4OP7HIKBxMQfP-Xim6tSIfbH7vfdNB3IVbQbftqin3qilbQ3FQ3JteadJYa0o0YKhQe_d65F2Ys3IJDRi9Hbi02P5UZuTkIT2_STLW04irQnRerj5iKlcmFP7IRquNc-Tvx8w6to4cXgOYf49LR3e4Pk81vHiskiXC26FjSHa3x5Yzkoj4MdFmQOAA72Xm5xcgxdky0OY2ELc6-kh8OegkEBxD_v4k70FZcAbs4gduIBqYaSsKM6a7ZGGXtrNWXgkoKpnF5NCAgqj5fxAjbLEYhaSmKCCu1b6N1eJMQjpuK_snv0XVTew",
           "poster": null,
           "mimeType": "image/gif"
         }
@@ -1041,7 +1099,7 @@
       "createdAt": "2026-05-07T06:53:36.488Z",
       "expiresAt": "2026-05-08T06:53:36.488Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T06:53:36.488Z",
+      "mediaRefreshedAt": "2026-05-07T23:12:52.033Z",
       "tag": "telegram",
       "tags": [
         "telegram",
@@ -1070,7 +1128,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -1112,7 +1170,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -1154,7 +1212,7 @@
         "title": "Павел Дуров",
         "handle": "durov_russia",
         "verified": true,
-        "avatar": "https://cdn1.telesco.pe/file/ewbIf7rodJMIyp3LhSJzuZ2qao44v_3XBuWPQChR6ScJ7u31I_f0kXNx2krlpFmuKEmyU40uL7HjvoFhhBJf9-g7hQaHANvQIKNjPNvzcXNLW3M1ZjqpCp4ZOeDtcm_OVtWDyTGwQg_Mwh3Nntk0TuzUt55einEA25H2znZ2wc0lZHJg5SayCHZ_PY-rdrNaxTILEHdMlrt9zX5fOPOu8OY_KaYUn35s-v7E2wqXJuZq6Zn81Kjy7Xez763G4sNDrEOntW5_InkjK_532NunNEUWZjwWCxC3cfalNNkOLl8DAN--F0kn153lQrw_LNF3gyZCyAMU_DuprNLLytA1kg.jpg"
+        "avatar": "https://cdn1.telesco.pe/file/qUe8wg3hFhMN914iH76TRmGTozucuPKaq-BhsV_yIteBrL_agc6X31pNyISBLmXkX5wvtUWLUIBqbb0Sdpktcw_hSxjNNXB1scsp_ChrfUxYGdKVrzYyfBXV8mLmI5eeY8QVSLU6wdhMqd6h1SNX3h9A6IfHQ4OIUTAO7pzmejnthDzJgtJWrpVnE5b2vSVu9xNsB15LSYKfzH6UeLH6WSfGLiPA9-csSLDYrV_d77FByGVy39TbKp7qttOjInNB1CZaH6CKk5F2TiiCZvtLW08yyU1Gm1fxCOgIWQsX2-Y8L_8TWHT-cYKAkmp9e0LXE1wIRREbzp6jmrz7NSMxAQ.jpg"
       },
       "sourceId": "ru:https://t.me/durov_russia",
       "sourceCountryCode": "ru",
@@ -1163,12 +1221,12 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/WCIqCNUDBFTG-G_k5IooVPvrTlwaHaAcqI7DZg7PBCYp2UvFjdM99IdyaxNgzq6RUMzMps8GEeyCa9VPhnMZAq6w7aqL9Buh0c0irlMomkJvfTZGGm0jyHlpTlDu4RLw4XJ-QJipDPG3bL-pxKw7yGds4017lV439pPF-ixDEKgiC2AXIoFmTPZ_UKovtvhDjKo-5sqJ2n1OrfPoIZG5bxaHFexqOwrAjVtyvTeI0wDXNDbspEU2L3O_5NZOxMj556i5A7ZyvTnRQtyOiTka4yDzsI2DY8nY-jAAojDEC6jh1CJa8bQeBp23rlC5i0n4pBTVEhSML0Zq3Z1FZWbIqg.jpg"
+          "url": "https://cdn1.telesco.pe/file/DQPE1vzJ3dw1NGMUMHivD7d2cPmKH4UrbjV3UUhfQHo3lx6h7hK7ssekTuY6vRA9PWxc6pmBn9j2LeTqwP9MJul8pRAaX2L-dax3MZeObCmzuV4B03C6_X9V-QTVZMghSTzA2nvbwXwt-lDoxVeDO9acQuXYLEAYaALSwBFejMl1nrQr4ZQa26pF4awJpU4wR4as6EVK2xhupkxm4qI7eq-A1CRXQYRUrqimIK29kBITHve7hOIHMTAmafU_e1EfnyC6qL0mbXLzoBEnSHXCrtpu7kSlPJ4gkWvkRR0Gv4EhEsGaNVRyabXoBcs0n8XVLUhRjDUE6XAvP5HdM9RxUg.jpg"
         },
         {
           "id": "image-2",
           "kind": "image",
-          "url": "https://cdn1.telesco.pe/file/PZrY40t-cu5aiqGISN0BbmlGfEKgNhv-XTO08KaZYJoJ5M26tYqtphm5Hlo3F0kTvYaCYLiCwGtfmLhktz_F6634dU3BEcermXsPQWIcrqAB9hCZMsMKrKYT5kSg7PlKqybCtM6Qtyo1O4lnct3PboihiBuZPZCZR3mQpGmaz1OL-7DHgKd1PsErMOBJdCrq1RjxznMtjErPOIan_FZ6N47zYrbd5x0Kyze4ClIDjMS98vu_Wo6xp6W-zu3JhHAVN_aN2j7kZdTbp9uOcjDGy0SkMKURw49XzitrW2QKJi-zGcRJQWTwR5uPy27iMPrgGfojnAIOcL9ZO_U2cNKtbQ.jpg"
+          "url": "https://cdn1.telesco.pe/file/SIxG6NiD5p2wGiQ1y38zIah4nuVwPCHy1ehidcz0PKgyZEjZxi89vyTDXnrvrQCVIz_BfyRixvBWxZbWzxUbAnlHsZY5yajPOCriOIrbrXVfhcLF-JjHAqr5XCq7hqJQmfLbflbFJB8YLBHkQNn7pWmNppTTJfj_NkLGXoSDTQJuiACna-F5UPpg1YvQ98vuAWw46q4XNkHbKUnyoOuZ-Htpe_lZt2n76Us2IdQ6W4tM_t1tTNRGm1co34zbiNZyAEdxDInndGf7d3l78v8uElfJUhC3tR3pA0vQTaGybikGV1twE3SvVSDezdocYSNR-WeWyXqPzS4-1uawY1H1-w.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -1178,7 +1236,7 @@
       "createdAt": "2026-05-07T06:53:36.488Z",
       "expiresAt": "2026-05-08T06:53:36.488Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T06:53:36.488Z",
+      "mediaRefreshedAt": "2026-05-07T23:12:52.033Z",
       "tag": "telegram",
       "tags": [
         "telegram",
@@ -1199,428 +1257,6 @@
         "reason": null,
         "reviewedAt": "2026-05-07T06:53:36.488Z"
       }
-    },
-    {
-      "id": 2820871491,
-      "postUrl": "https://t.me/telegaru/276?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/OAY_CGRpArxlAutDCHelTSERdSHSkV6SGE6WrGJWTbIvQ_LoW_cBgZjsxl31GHp18M2tzvpvi6Us4sR04x6bn_r_I82ZQyk2_K82dqj_BSxZPiFQaJspuXpq9Pli6yu9rTOuaMkbllTPh-DvtTd5rdpw9Kd3y6hCkagVYHmQO__rqDpAPkKjRByz1Al1D851HkqFy4DsIkJp4OhwTZCIdegjWI2vsaUfvksEZt9pFHx-sUMNOXUBRdtvtuOJaCIWhanyvMqOiwWuHqJ_itqELFU0oJWjGaSvW3NLIrVWH_yrh04F7Kyx6w_u41Rl74xswRJndR5beGaDaMOX0ZpE5g.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/t68AI2milwx_09K-ZmDYNj9itFCvD6_5SbRy931SlXY5kUIpZ4CWT5D7VkD0vDzXA6yCIAYr1e-3Ktf9ya3eLoZ6-seVCfn8svwLU9ABG3qzbpjo795wWnuvHmpBLjBIUOAdU5OV2ht0rHs3Q6px3padiSri_gVM1Lg-lRo6xFdiPQRh2Nic53EMECFooUZzFzP6-qk-zcezNoSr_UuMuCsmj3aqlMtfSapW3VydOqyOtrWT2E3Q3J3_Za17aIsvXz6PnomSYEIvS_RGsR1l65yZ5d0pVmmCQd1BjYu7EA-CEfFCDG06gH748zmlLbr8z78w1dQf6uyj43VbEii4Gw.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/HVVwpoZeDRj88_F3LuxOeH_eXC67nvLw4eLnJ-tM99LvwnInK_WFva1pL2AWbccwEd4IYxCQOsIB_2M5ZfP6OSa06nZMnqjV6wq53TDQEB9QbFho4JhstGCegDE97tRpOXnWKYk-iCPlFJp4GLAmC0k9AoRwyAV8EghUQXiBOe0Qadf8PcZaOjRiTECLuZ_bVqKxYha6sar4KPrA5drIyAuuZfKnR8IaSbuOIhVj_n9QtZuVhqJNlB0HgOIRqEy6uTk5NITtvND-VsHat0jdqFiRj2V-UOTEnUUkWDAuaQwmSE1RcLNGRztrR_iY8uI4p9O6TAoDNM4YGDlWafX9zw.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/eN9AVyd8SexkoYEJqCFbcXBwqJJirzYbGtrRgFfxhnbqGEEf7d1yNCi1M2F4d7AtTmaYyvDYYvR-QqY0n_kP5ycHMWWwCBhNYyGWu8yoxWLQdtnfdcz0Nv3_tQHdnCPWKxMUAjnl9vhBZZ91GK2pqYgRclVgzy-WVgDerE69PocEhEncEAp8Omh0vlfghaB_kFK9Fh6TOsDv_UzNXQSYhUBGhWHybXOzWZDrVjeN--00lMeTOtvO4-yxhWHkdCc3DaTNX06aCOUMbV1WILmCKjLcwylI172uH9LyH2qVUo2TaNG8vIXiOvCznYxTyubdE6UO21Y9u_QKxV88qFNI-g.jpg"
-        },
-        {
-          "id": "image-5",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/hDzL_JbKUx5gtFooZUvjrmBSechyUoKTn6ijW0zDSzafJ7H0i_4qELUqKkOJVqjI05e00UaW0IJWX_ovJo82QYJ4XXhsiX0tlWSVxcLIvZyfZ3AxwG1zaPhrScly-XqYl_ZG1j8aWmLdfVxTmSSdnydiOkROlqOrVqRUqIJ_6ke-pOtPpWHtWurcvUry5IwrM5KE7IGdaUmluQGGunq0F7scxM5rO7irKlFJedSYtFRJPLUS1Jvslpoqw0-CKlqFwKJpR5taBHzI3wH2ts3cGu4TbPfPGx0GV7TL7n5EzmwFMMh5ZWEKu_DHyliHQrGN5XXVSEKDAGjp4qOzGttFaQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "В нашем канале уже более 6 миллионов подписчиков! Хороший повод вновь рассказать о Телеге и ее функциях в серии карточек.  Главное о приложении:  🟣Телега — клиент на базе открытого кода Telegram. 🟣Аккаунт Телеги = аккаунт Telegram. 🟣Данные защищены шифрованием…",
-      "links": [],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:51:01.946Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
-    },
-    {
-      "id": 81938656,
-      "postUrl": "https://t.me/telegaru/275?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Телега подала заявление в ФАС на действия Apple\n\nМы столкнулись с ситуацией, в которой приложение удалено из App Store, аккаунт разработчика — заблокирован, а запуск уже установленных приложений на iOS — ограничен. За прошедшие 2 недели мы не получили от Apple конкретных причин или технических заключений. Вместо диалога — репутационный удар и формальные «отписки».\n\nМы обратились в ФАС с просьбой оценить действия Apple. Мы считаем, что наше приложение должно быть возвращено в App Store, а процедуры Apple должны измениться так, чтобы другие разработчики не столкнулись с таким произволом.\n\n«Мы считаем, что Apple обязана при появлении подозрения давать конкретные технические претензии и предоставлять срок на их устранение. Если по мнению Apple мы что-то нарушаем, то мы имеем право знать что именно и должны иметь возможность внести нужные изменения. Мы могли бы прояснить свою позицию, но нам просто не дают никакой конкретики. Это произвол со стороны монополиста платформы».\n\nМы продолжаем работать над ситуацией и защищать интересы пользователей и проекта. Для этих целей мы также рассматриваем подачу исков к СМИ и блогерам, распространяющим недостоверную информацию, порочащую нашу репутацию, но ключевой приоритет сейчас на восстановлении нашего приложения и аккаунта разработчика.",
-      "links": [
-        {
-          "label": "обратились в ФАС",
-          "url": "https://telega.me/news/telega-podala-v-fas-zhalobu-na-apple"
-        }
-      ],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T20:46:28.398Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
-    },
-    {
-      "id": 2124221025,
-      "postUrl": "https://t.me/telegaru/274?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Apple выпустила обновление iOS 26.4.1. \n\nПри попытке установки у некоторых пользователей iPhone возникли проблемы: телефоны уходят в бесконечную загрузку и блокируются. \n\nЭто не связано с наличием Телеги на устройстве. На официальном сайте Apple есть статья на эту тему — по ссылке:\n\n«Все приложения помещаются в песочницы, что ограничивает их доступ к файлам, хранящимся в других приложениях, и не позволяет вносить изменения в работу устройства.\n\nСистемные файлы и ресурсы также отделены от приложений пользователей. Весь раздел операционной системы подключен только для чтения. API не позволяют приложениям расширять свои полномочия для изменения других приложений или самой системы iOS».\n\nP.S. Мы делаем всё, чтобы и дальше предоставлять нашим пользователям доступ к Telegram. И делаем это на фоне неоднократных PR-атак и бот-кампаний. Пожалуйста, проверяйте информацию. \n\nВаша команда Телеги 🥳",
-      "links": [
-        {
-          "label": "ссылке",
-          "url": "https://support.apple.com/ru-ru/guide/security/sec15bfe098e/web"
-        },
-        {
-          "label": ":",
-          "url": "https://support.apple.com/ru-ru/guide/security/sec15bfe098e/web"
-        }
-      ],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T20:46:28.398Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
-    },
-    {
-      "id": 277134374,
-      "postUrl": "https://t.me/telegaru/273?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T20:46:28.398Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
-    },
-    {
-      "id": 1786970623,
-      "postUrl": "https://t.me/telegaru/272?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T20:46:28.398Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
-    },
-    {
-      "id": 2195393324,
-      "postUrl": "https://t.me/telegaru/271?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-06T20:46:28.398Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
-    },
-    {
-      "id": 2890931420,
-      "postUrl": "https://t.me/telegaru/262?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/OnRsdnpIhA20lVZPbjhzPopVv_h1RBKEAu4SNdt6IIED1NRMmD0aaCv5d3fG5iqg4X6d2-SMrjheVdU08OzBc0wNIqxe3tjTeMCLp-FlodbgVy4Wm-DZmHNEnQUtMXZKrWjIw8MpAHUO7xw4npRQOOCA8ImMzNYHB9OXNkswbV1a6-X6EZHe6bpoIk5-eA_yhCU_mR1S3w4AX8XjYLjtCmGhlvIB9l9aN2luiUD6Z__0UoOVfVoY-6eZJS009U2td9TYtUSPkmJHIoUIOcnVWJuGDc7Hc13a6zgF7JU--uW_rt5sX5iYu_H5etomjcHZqhzlfeGSe_NlFrEXzadGPw.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/DxEs_5Jv8Z62gFmoPeBvhlnIZ_3bZahkO_9D5I7np2xUM--wrdXSgZk2S1a5phtwRRcSSzcgnqVcFQYcGE8ReJjjEUPY-4T73N4q9XeZ0acs1Q5bY33WxRX9I0IinvNhbBZ9u2AQ-FgnF61K0f7UMQiTk5HFkO4xmLRLkuKHrKKJsOpyEivfo1C84KyGwIIg41h1gvbCs2A4bHqqO4HyuFv-NqISIvtXGs8yoILCVhg208tTN2Xzt6uu2PGEKZEOgWZGJFw8cP5UBxdWEsc2Uw_3l43K3bXRwC-izbNmgGkKq51CMAJzt0MYfsl3ZIfSGtyWgJVMSYjqMhb69YwyUQ.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/dr2DjvFsrP1xzKTS_VwCkhkvUZUt8Gn1ZlaRdualFX_2sezC87chJjjedXCyamugY3ks_jAEJC5bpzTrN9fDkHOSdcQ4hw0y6Pzo8nJXH8ulxbGk9v1lZcfeN4_8Hfzpmh7UAF9pNflaFdUR9oU56qbYMjqu3WDjsqelFPBSvi6vTc1yAPu4mVYpeE-ktVp-MZBE10JPubxZiN9OEOfTg20vtNEc68B0SXijh-_9keTsMfihVmyW2pTSGEGhBJsjZlHvX9C8cPr-RSTZf2z98h5Dd_BPS-Kzt3T1wPHTveaI_euKJQqEufqM8wZ1ZcWdCcShCxOKFqHhwN9_el0hgg.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/g-FXPTKiTmnQFgPJXl4qj43YSQFSjP8jeu-s6XmpvKN-fIlraHF07euO6gxhRcSlWIBIlpaWLuhQJCAdM-frDUHRwd0CwdenlZuO6_uBvtA-XTgA95hVbyxNi26fMNFBVu93DQ_sUFDjxZ4ijDvcgk7moSvT3YJjUjU3YhB9wxKSnefpDqqQlT_T5wmN4PvkujIVM9KuOT-PByVZ1-BRQmw-Fs6Bzl33I5kTpcBGHiOdCyBK5BoZJGOKTc9OJ0l2DuZ1vWSM9EuKbup0-UYvS67lcu3ixartQOQK4J3hDdRHbekqSemvBJDtrRFCPbT5wY-IHAqtJ0APpv-EWaRgDA.jpg"
-        },
-        {
-          "id": "image-5",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/B0XHATPcnnDQ706lC4T_sw-WKaUFH9R-JLh0laddHLlgl8eTQHSqLt9vWL1QVrzyIJp0PUOIQuPG-0N-X2XzJTgtp3onF4eC8FNZP3DmF8iXWuQbg1rljgI9WrQ1A4Ngg5UGxYbVHMGH79iD3ERwwmi9b6NUOYIq-zWaqokSVRiMooDaKp_YM9bHfR5GVm6Dm4jh4FtQzpG7KytkbLeRe06kF3QmS9l2J8bJ6EvfgGSQMe8tRbVPNREJKRP_t-18UeK13dhYADdpT8C-sJrrqXLSs5xknrjNRBfkJKqTHnAcfLvw0dnWXJ1fWGIrO70ZjwaTHE2YCtZXaE13vJqJ1g.jpg"
-        },
-        {
-          "id": "image-6",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/h8CIwBDXKWZx-Zd5QpHW175Td6y-iubD93dsyTMBTNM9f_j9xIBdvUHgPoIFfakEHQSuPaAqGBJ3u3CXpMRkYiQ5uhjDo0V1KR5ZV3AnKqaPS5tlxCQpv2QHqtLwzt2y8_fphh-H2P6nkqVSrGK0o96l9fCkcTuvpoeuB2eV9_0qJ9jEFTleCZQr2k-D3vmbCjO5dfFhnv9UAzzI3CDfLOCirxYBTKZ0nbM34CFSxzVg9T5F6aqg_-8c-dRArw1U5HiZtGPf_Hqv3Ik4bNYlQrSXKCYxBE_w5U37LPdxqzyrcwLfMO55oclDy6U4VNtJjA_ou2_OHF-tPUDVyZV9QQ.jpg"
-        },
-        {
-          "id": "image-7",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/TetNfhiNIOuTiejt71vgZdt3hZHFR-EflTzU25g4DpFuLeXGfRnrRzruyNY6GSC3Sykq5dfaDGKhGoeJs4zxzF0L-a4GwCoSRLvKv-Mao7bMIYWMkidzjBeDBGi2wB7tiZ-abP2Bc9Lv5vbVnEXFoY4Q7kuQYCmSkg4n7fgwJcJX6dgIHOXjEoguQbMMx1fOBM9F2EvuAFJBZSh-_x08EEobtoQQxcZWV-D3J-4iZOZpi-vYeqGDdby7ETBLzWNCdHnnimed3V8O1wbSspP_EOGkdUBo65UjzFu6RHj2MICdebZvvLAxn6gn8wmosAYmvz8CMBhZTiMj9oCkr2gIww.jpg"
-        },
-        {
-          "id": "image-8",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/HFwXNnvNZ1UiKQQ6rb49Do0yiCWf6DP3NgM_cAHcUswF7qv9nV28DP9ZR4QGVCgVdyw_eyHmttGv8-M42ptjX3dYMj_tHp_6RmpIaQL0yqDzfsOrZvD64n7flyd-1f65lDkxLQCtApOnyzC2YgHagnhurNlF6qxx4sLpMOkNpDTUSFM3Z8UyaMcu1EZe6JMB-4XAvzoXt6YPOxkNBSw3d_VLzk2s6bsRw9BHFfV5nQRC9FLFyQcPii8GKvWwJAAmsnfgDa-uVeT9BO2byoVH6OD6FhbfzvbyPs9VVGbeJzvdZqME7fJJMA4eoU1qR65PpkYd_mz-qMu0u5PDKNgqEw.jpg"
-        },
-        {
-          "id": "image-9",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/OXX32K0jtoaFaRbo1WUG1QmeirpLkdnENZcIWi91J_apa0l_oDNwZlMpuHuPI_JOetKF9fJQQ8gAf9btnPTEcCOTcMR7aUAOZMdi5eCj_qJcXRXosTM9vvc-urosjGIb7KHPSON-bweA_zTe_4sL40YkTqXXTdJduuTEtSbEAuce7mx4SF8KyEXwNCwx9v9rDTnweMZHCBqs3lXHpz3Uo03-cFcsn01Pj8WyuQaNN2U0OLWr96d_HXWAGAhPorQb4eJGYKJ7bgolIkIEHfy1Zco_XbKw6cvZH8xFHUXnbGSaCJNEH153gMS-2v1oHfW0ZOqPWpcaAbQs48suX4U0MA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🥳 Телега отмечает свой первый день рождения! \n\nЗа этот год мы прошли большой путь вместе с вами — спасибо за доверие, поддержку и ценные идеи 🔥\n\nВ честь праздника хотим разыграть 5 термокружек 10 годовых подписок Telegram Premium среди подписчиков канала! \n\nА пока давайте посмотрим, каким получился этот год ⬇️",
-      "links": [],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:51:01.946Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
-    },
-    {
-      "id": 1146093615,
-      "postUrl": "https://t.me/telegaru/261?single",
-      "source": {
-        "title": "Telega",
-        "handle": "telegaru",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/RrGr7nyMA8Xu-DI_bgSKE8n1qNDjcCwYHn3iGco6TSzljDWnNHOIO-89ylN3fcfbbQDH2vrM5kOScl6EaD2x_rMYRWIH_3Wag-eplHH11megwp7WlL4f4H00L0WlNsxYULKP83sZveyG0vIZ6kcBiWWotj_rWOVoP05L0lHZwCrV4Bu70B1emmNp0zyaYN3po5RM4R05whfaWIOsGLLm9xVV-UTNFWaJERFl0iibRVjArc0AZ_tVYpucRtA13uqU4G1lFkD3FVX78ql0F4w97ucTIH04jcCRjYWEZQCPgwSlIhr9OcsSekvEBfIn06DJCVSxE2EKo3FIKWbjPuXC-Q.jpg"
-      },
-      "sourceId": "ru:telegaru",
-      "sourceCountryCode": "ru",
-      "contentType": "gif",
-      "media": [
-        {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/d0df2dc28a.mp4?token=TathYXWVnBU7EAuzqis6YuvO_08jRkhZXIiqvEg2QWPksPX9LvJ_05g-rilKQvfrdV0Gt9NEqqoFtwe80C5zihiHjkRzFPNInvn4FW1WUiPhz7Xmqdi7aQh__QO_aQMZZZDZAc-zLHL1K0-mzgMIMNUOROJfJyPPn0AqIxXOfQogl8QlWz_caunKZtuAU5ipkGL8E_93PXjKQFeyomllRdHlfahb6Vcv1MZ5Eo6cyZRkhLnfxv56TaElJ5_-CvY7Nrp5Ao_NgtMW2lDhUixHwkVF80r7CSF5Ym71D13HHlaWSK43mtYchVDD6ST1fppWXSzKvkd_aNxx9s5-kQaOqQ",
-          "poster": null,
-          "mimeType": "image/gif"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-06T20:46:28.398Z",
-      "expiresAt": "2026-05-07T20:46:28.398Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:51:01.946Z",
-      "tag": "telegram",
-      "tags": [
-        "telegram"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-06T20:46:28.398Z"
-      }
     }
   ],
   "topSources": [
@@ -1630,38 +1266,22 @@
       "count": 19
     },
     {
-      "title": "Telega",
+      "title": "Телега",
       "handle": "telegaru",
-      "count": 9
+      "count": 2
     }
   ],
   "keywords": [
     {
-      "value": "apple",
-      "count": 9
+      "value": "доступ",
+      "count": 5
     },
     {
       "value": "более",
-      "count": 5
-    },
-    {
-      "value": "пользователей",
-      "count": 5
-    },
-    {
-      "value": "свои",
-      "count": 5
-    },
-    {
-      "value": "также",
-      "count": 5
-    },
-    {
-      "value": "были",
       "count": 4
     },
     {
-      "value": "доступ",
+      "value": "были",
       "count": 4
     },
     {
@@ -1673,11 +1293,15 @@
       "count": 4
     },
     {
+      "value": "свои",
+      "count": 4
+    },
+    {
       "value": "сообщения",
       "count": 4
     },
     {
-      "value": "среди",
+      "value": "также",
       "count": 4
     },
     {
@@ -1697,15 +1321,27 @@
       "count": 3
     },
     {
-      "value": "аккаунт",
-      "count": 3
-    },
-    {
-      "value": "аккаунта",
-      "count": 3
-    },
-    {
       "value": "вроде",
+      "count": 3
+    },
+    {
+      "value": "лишь",
+      "count": 3
+    },
+    {
+      "value": "место",
+      "count": 3
+    },
+    {
+      "value": "месяц",
+      "count": 3
+    },
+    {
+      "value": "несколько",
+      "count": 3
+    },
+    {
+      "value": "плюс",
       "count": 3
     }
   ]
