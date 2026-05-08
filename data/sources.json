@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-08T06:51:36.566Z",
+  "updatedAt": "2026-05-08T06:53:00.907Z",
   "sources": [
     {
       "id": "es:20m",
@@ -912,7 +912,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T06:17:24.230Z",
-      "updatedAt": "2026-05-08T06:08:19.253Z",
+      "updatedAt": "2026-05-08T06:53:00.876Z",
       "lastCheckedAt": "2026-05-08T03:54:39.219Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -1758,6 +1758,30 @@
       "note": null,
       "createdAt": "2026-05-08T06:51:36.565Z",
       "updatedAt": "2026-05-08T06:51:36.565Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:beautyuz",
+      "countryCode": "uz",
+      "handle": "beautyuz",
+      "title": "Beauty UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "health",
+      "tags": [
+        "health",
+        "fashion",
+        "beauty"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.876Z",
+      "updatedAt": "2026-05-08T06:53:00.876Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -3058,6 +3082,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:cinemauz",
+      "countryCode": "uz",
+      "handle": "cinemauz",
+      "title": "Cinema UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "cinema"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ar:clarincom",
       "countryCode": "ar",
       "handle": "clarincom",
@@ -3536,6 +3583,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:daryo",
+      "countryCode": "uz",
+      "handle": "daryo",
+      "title": "Daryo",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "people"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "uz:daryo_live",
       "countryCode": "uz",
       "handle": "daryo_live",
@@ -3687,6 +3757,30 @@
       "note": null,
       "createdAt": "2026-05-08T06:51:36.565Z",
       "updatedAt": "2026-05-08T06:51:36.565Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:devsuz",
+      "countryCode": "uz",
+      "handle": "devsuz",
+      "title": "Devs UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "news",
+        "news_world"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -4372,6 +4466,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:eduuz",
+      "countryCode": "uz",
+      "handle": "eduuz",
+      "title": "Edu UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "fa:eghtesadonline",
       "countryCode": "fa",
       "handle": "eghtesadonline",
@@ -5048,6 +5164,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:fashionuz",
+      "countryCode": "uz",
+      "handle": "fashionuz",
+      "title": "Fashion UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "fashion",
+      "tags": [
+        "fashion",
+        "beauty"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.876Z",
+      "updatedAt": "2026-05-08T06:53:00.876Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "kk:ffin_kz",
       "countryCode": "kk",
       "handle": "ffin_kz",
@@ -5152,6 +5291,29 @@
       "createdAt": "2026-04-27T07:06:23.829Z",
       "updatedAt": "2026-05-08T06:09:00.975Z",
       "lastCheckedAt": "2026-05-08T06:09:00.974Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:finansuz",
+      "countryCode": "uz",
+      "handle": "finansuz",
+      "title": "Finans UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance",
+        "economy"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -5266,6 +5428,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:33:14.541Z",
       "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:fitnessuz",
+      "countryCode": "uz",
+      "handle": "fitnessuz",
+      "title": "Fitness UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "fitness",
+      "tags": [
+        "fitness",
+        "health"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -5402,6 +5587,28 @@
       "note": null,
       "createdAt": "2026-05-08T06:28:23.461Z",
       "updatedAt": "2026-05-08T06:28:23.461Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:footballuz",
+      "countryCode": "uz",
+      "handle": "footballuz",
+      "title": "Football UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "sports",
+      "tags": [
+        "sports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.884Z",
+      "updatedAt": "2026-05-08T06:53:00.884Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -6235,6 +6442,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:gamesuz",
+      "countryCode": "uz",
+      "handle": "gamesuz",
+      "title": "Games UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "gaming",
+      "tags": [
+        "gaming"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.884Z",
+      "updatedAt": "2026-05-08T06:53:00.884Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ar:gamingargentina",
       "countryCode": "ar",
       "handle": "gamingargentina",
@@ -6679,18 +6908,19 @@
       "id": "uz:gazetauz",
       "countryCode": "uz",
       "handle": "gazetauz",
-      "title": "Gazeta.uz - Новости Узбекистана",
+      "title": "Gazeta.uz",
       "avatarUrl": "https://cdn4.telesco.pe/file/AJWMnHPrJi02K3Jd1PSeLNHwZY9Kc-XrahFJx4Jx4jSCGkmcnCR9KIrNOLcSOHPHkdUovNoCYVKppgXDt3_qd797MTkhlRz3xrbbBl5pI2t24hjYSWME4xvcRpELAufoBg-33qUdi53UpnZfGW4OI8z90t6JBuZMURT1cV1ttEcNrPdW46L-AH86EqvTT7u-7TRDeXQRxnH7CxP9PnhW8Wuo_vwAZFFBIdcsocTPhDXR3IP5lfkeum6tFVXcPsLMMoNygi_FLeKQqMDTdFoO0v1UUTfcbXdCdb7lrjVPYZV0uZDxBS7wnsejRX1cxqz69MHL4AklwlC-2lrZ5RuxUg.jpg",
       "avatarOverride": null,
       "verified": true,
       "defaultTag": "news",
       "tags": [
-        "news"
+        "news",
+        "economy"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T06:17:24.229Z",
-      "updatedAt": "2026-05-08T06:08:19.253Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": "2026-05-08T03:54:42.328Z",
       "lastImportedAt": "2026-05-08T03:54:42.328Z",
       "lastSeenPostId": 61268,
@@ -7190,6 +7420,28 @@
       "note": null,
       "createdAt": "2026-05-08T06:32:19.151Z",
       "updatedAt": "2026-05-08T06:32:19.151Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:healthuz",
+      "countryCode": "uz",
+      "handle": "healthuz",
+      "title": "Health UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "health",
+      "tags": [
+        "health"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -8065,12 +8317,12 @@
       "defaultTag": "technology",
       "tags": [
         "technology",
-        "internet"
+        "startups"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T06:17:24.229Z",
-      "updatedAt": "2026-05-08T06:08:19.253Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": "2026-05-08T03:54:43.335Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -8487,6 +8739,28 @@
       "lastSeenPostId": 96935,
       "importedPostsCount": 246,
       "lastRefreshCursorPostId": 96923
+    },
+    {
+      "id": "uz:kunuzofficial",
+      "countryCode": "uz",
+      "handle": "kunuzofficial",
+      "title": "Kun.uz",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.873Z",
+      "updatedAt": "2026-05-08T06:53:00.873Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "kk:kursiv_media",
@@ -9001,6 +9275,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:31:06.308Z",
       "updatedAt": "2026-05-08T06:31:06.308Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:marketinguz",
+      "countryCode": "uz",
+      "handle": "marketinguz",
+      "title": "Marketing UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "marketing",
+      "tags": [
+        "marketing",
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.884Z",
+      "updatedAt": "2026-05-08T06:53:00.884Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -9806,6 +10103,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:mitcuz",
+      "countryCode": "uz",
+      "handle": "mitcuz",
+      "title": "MITC Uzbekistan",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "id:mobilelegendsid",
       "countryCode": "id",
       "handle": "mobilelegendsid",
@@ -10179,6 +10499,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:51:36.565Z",
       "updatedAt": "2026-05-08T06:51:36.565Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:musicuz",
+      "countryCode": "uz",
+      "handle": "musicuz",
+      "title": "Music UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "music"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -10940,7 +11283,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T06:17:24.230Z",
-      "updatedAt": "2026-05-08T06:09:58.590Z",
+      "updatedAt": "2026-05-08T06:53:00.876Z",
       "lastCheckedAt": "2026-05-08T06:09:58.589Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -12245,6 +12588,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:pythonuz",
+      "countryCode": "uz",
+      "handle": "pythonuz",
+      "title": "Python Uzbekistan",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "uz:qalampiruz",
       "countryCode": "uz",
       "handle": "qalampiruz",
@@ -12487,6 +12854,29 @@
       "createdAt": "2026-04-27T03:27:24.923Z",
       "updatedAt": "2026-05-08T06:08:38.075Z",
       "lastCheckedAt": "2026-05-08T06:08:38.075Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:reviewuz",
+      "countryCode": "uz",
+      "handle": "reviewuz",
+      "title": "Review.uz",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "economy"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -12923,6 +13313,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:scienceuz",
+      "countryCode": "uz",
+      "handle": "scienceuz",
+      "title": "Science UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "science",
+      "tags": [
+        "science",
+        "education"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "co:semana",
       "countryCode": "co",
       "handle": "semana",
@@ -13217,6 +13630,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:spaceuz",
+      "countryCode": "uz",
+      "handle": "spaceuz",
+      "title": "Space UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "science",
+      "tags": [
+        "science",
+        "space"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "in:sportskeeda",
       "countryCode": "in",
       "handle": "sportskeeda",
@@ -13276,6 +13712,28 @@
       "note": null,
       "createdAt": "2026-05-08T06:26:16.643Z",
       "updatedAt": "2026-05-08T06:26:16.643Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:sportsuz",
+      "countryCode": "uz",
+      "handle": "sportsuz",
+      "title": "Sports UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "sports",
+      "tags": [
+        "sports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.884Z",
+      "updatedAt": "2026-05-08T06:53:00.884Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -13354,19 +13812,19 @@
       "id": "uz:spotuz",
       "countryCode": "uz",
       "handle": "spotuz",
-      "title": "Spot.uz – бизнес и технологии",
+      "title": "Spot",
       "avatarUrl": "https://cdn4.telesco.pe/file/MC5R5i95yMftuf7wqifEMjEQE4pvLlTE1ANm_J7SBvA7VSizbE8FuAmLXKKWjjAGD_aLtJVqaY97zJ9W61MofLbnO1zgq139FE8mSbE2XPWtor4XfjAg2QXNEkXeatIgLFcouDCySoynq2LOgLO8Le_RYuMEOkoeHjA_hsgd5l7mBeJ_aHSScUpsj5JRcQPec0LOoVt69I_ysqHqeRDGkugAsPwRz6GMrCvw8ND9wTrWb_qmp5yedFpNzq-Wo7iQVGfob4YZRnXaHsNz58y78FSkwhpRtep073MLeF5Qh71xxu7AbSUYPKJsLwmNHxrRj2AHwS6vDgJh6ebp1Nsh3g.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "finance",
+      "defaultTag": "business",
       "tags": [
-        "finance",
-        "business"
+        "business",
+        "startups"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T06:17:24.229Z",
-      "updatedAt": "2026-05-08T06:10:03.028Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": "2026-05-08T06:10:01.853Z",
       "lastImportedAt": "2026-05-08T06:10:01.853Z",
       "lastSeenPostId": 37756,
@@ -13465,6 +13923,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:startupuz",
+      "countryCode": "uz",
+      "handle": "startupuz",
+      "title": "Startup UZ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "startups",
+      "tags": [
+        "startups",
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ae:supercarsuae",
       "countryCode": "ae",
       "handle": "supercarsuae",
@@ -13549,6 +14030,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:33:14.542Z",
       "updatedAt": "2026-05-08T06:33:14.542Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:tashkentlife",
+      "countryCode": "uz",
+      "handle": "tashkentlife",
+      "title": "Tashkent Life",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "people",
+      "tags": [
+        "people",
+        "culture"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -15190,6 +15694,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "uz:traveluz",
+      "countryCode": "uz",
+      "handle": "traveluz",
+      "title": "Travel Uzbekistan",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "travel",
+      "tags": [
+        "travel"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "id:tribunnews",
       "countryCode": "id",
       "handle": "tribunnews",
@@ -15414,6 +15940,51 @@
       "note": null,
       "createdAt": "2026-05-08T06:33:14.541Z",
       "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:uzfood",
+      "countryCode": "uz",
+      "handle": "uzfood",
+      "title": "Uzbek Food",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "food",
+      "tags": [
+        "food",
+        "culture"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "uz:uznews",
+      "countryCode": "uz",
+      "handle": "uznews",
+      "title": "UzNews",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:53:00.874Z",
+      "updatedAt": "2026-05-08T06:53:00.874Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
