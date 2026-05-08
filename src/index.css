@@ -248,3 +248,11 @@ a {
     transform: translate(55px, 25px) rotate(30deg) scaleX(0.62);
   }
 }
+
+@media (display-mode: standalone) {
+  @supports (padding-top: env(safe-area-inset-top)) {
+    body {
+      padding-top: env(safe-area-inset-top);
+    }
+  }
+}
