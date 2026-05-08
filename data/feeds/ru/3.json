@@ -1,9 +1,62 @@
 {
-  "updatedAt": "2026-05-08T03:54:49.686Z",
+  "updatedAt": "2026-05-08T06:10:09.780Z",
   "posts": [
     {
-      "id": 2372239178,
-      "postUrl": "https://t.me/tass_agency/374648?single",
+      "id": 3784002278,
+      "postUrl": "https://t.me/rian_ru/338162?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Адвокат Карабанов задержан в Москве по делу о мошенничестве.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "задержан",
+          "url": "https://ria.ru/20260507/advokat-2090980696.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-07T08:08:20.564Z",
+      "expiresAt": "2026-05-08T08:08:20.564Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T08:08:20.564Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T08:08:20.564Z"
+      }
+    },
+    {
+      "id": 3644735596,
+      "postUrl": "https://t.me/tass_agency/374714?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -12,16 +65,22 @@
       },
       "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/CJpT2p0WCGGnekkPt_ibF7iLf5XCWYHmnmbT3LRChYJFW4GbmDM8DVLwUGekxvAl-5wbu9aqcnXCVtNy1emKwLr9G_SUvRLriw-M61EqWPSex5fGXia6cCPFBPHVO4lRvTM8FdQRJqQUe7Mma6Aj4xYm6gJTfP7DxVvjLajxpcW6zmLNVELmLEwCE_PMfuX1DD2KoiiCn482VmgjQCY952osGZDqJ4nOybep5im875JoUPGNsbFMyUhzaBnQBBW2GRvuWvznNUzS51Veo6pJyWEHwJX8OydSHGi5d5z_cly33wgfpnei4XLKXtWhxO24u5fG8M_AiLG2jGFYxjjqcg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨 Что известно об эвакуация работников шахты \"Алардинская\" в Кемеровской области:  ▪️На шахте зафиксировано превышение уровня угарного газа;  ▪️В шахте находились 132 горняка, их всех эвакуировали по запасным выходам;  ▪️Произошло возгорание кабельной продукции…",
+      "text": "Гараж, переделанный под таунхаус, сдают в Сочи за 50 тыс. рублей в месяц, следует из сообщений на \"Авито\".\n\nПри этом рынок жилых гаражей остается серой зоной. У многих объектов нет полноценного оформления собственности, коммуникации подключены через кооператив, а земельные вопросы остаются нерешенными, сказала ТАСС генеральный директор агентства недвижимости \"Городской риелторский центр\" Юлия Усачева.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-08T06:09:38.508Z",
       "tag": "news",
       "tags": [
         "news"
@@ -39,7 +98,207 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
+      }
+    },
+    {
+      "id": 2035753117,
+      "postUrl": "https://t.me/rian_ru/338161?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/bcb4cc3f43.mp4?token=bUEKAWTjDW9qDIsWctGmJuaI7Z7Q4msOU7mUFOUWT-dKkEX64GbvEu--BET1T8E6XjThOTasGUxzA5zxRANN-Ifh0zbE5-gTRlkU7jqYyzD8fzlfibArkYjHNVZVurO2bftLWYtlEz0AmjEUTlnu0ZOurIL3dw70Gk_OTWjVLidi_9N6YuD-GAGPkyGk9xWtA1NhRzBc-MOGYWlDgnY1Kb3Bw7Yfwj65LK5IIGu3u7Zq6iNEWAQSnhz9zWYWMvTbz_gC_R8sbyr-lsZZTLiENLd5nuheRPcAumQE6dTblG-sPT-0ZiNHNe2XqnAxUr2hdTl3VlIju1uDhQlPreZnFg",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "\"Не растерялся\"\n\nЖитель Запорожской области шапкой сбил украинский дрон.\n\nЕсли видео не грузится - смотрите его в нашем канале в \"Максе\".   \n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "сбил",
+          "url": "https://ria.ru/20260507/shapka-2090966451.html"
+        },
+        {
+          "label": "в нашем канале в \"Максе\".",
+          "url": "https://max.ru/ria/AZ4A1UGVE_c"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-07T08:08:20.564Z",
+      "expiresAt": "2026-05-08T08:08:20.564Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T08:08:20.564Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T08:08:20.564Z"
+      }
+    },
+    {
+      "id": 62977923,
+      "postUrl": "https://t.me/tass_agency/374713?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/WUV41J_ybJBY7LV9kp_rVxUwvRuSflE88hJ9y2aIyPhaE2nEa__3zQ-6YPOeh1wi710NJPM6mKrBC9AX1dO7p1D53xgmZeF91dRfvBGXxGYOc2GeOoInZ8aIG-MvHiBT74lq8WL65a-aRtZKvIt39rMmGSbS2gMJ3_B8GKIujQyJvJa_Pjec5cQTIrMpalKHW3K_rtoayhueZ_u_q7PXx4KZi0pWtpMu91VdGwKkht6v9CAUDkGVC-i4J6caPrlH78eDlyxkKNT9t2_UoCUdOk5hqcwsBaz0XcUYxb6P_JdfWVsEjbKnkl8hZ4mIOrwhkWaxd7GWJSACGIgC0YWtZg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "В России зафиксировали рекордный интерес к бумажным картам на фоне ограничений в работе интернета, сообщили в пресс-службе издательства \"Аст нонфикшн\". Продажи возросли на 55% в сравнении с прошлым годом.",
+      "links": [],
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
+      }
+    },
+    {
+      "id": 2531735276,
+      "postUrl": "https://t.me/rian_ru/338160?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Силы ПВО сбили за ночь 347 украинских БПЛА, сообщили в Минобороны России.\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "сообщили",
+          "url": "https://ria.ru/20260507/pvo-2090975496.html"
+        },
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-07T08:08:20.564Z",
+      "expiresAt": "2026-05-08T08:08:20.564Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T08:08:20.564Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "politics",
+        "economy",
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T08:08:20.564Z"
+      }
+    },
+    {
+      "id": 724820010,
+      "postUrl": "https://t.me/tass_agency/374712?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/WUV41J_ybJBY7LV9kp_rVxUwvRuSflE88hJ9y2aIyPhaE2nEa__3zQ-6YPOeh1wi710NJPM6mKrBC9AX1dO7p1D53xgmZeF91dRfvBGXxGYOc2GeOoInZ8aIG-MvHiBT74lq8WL65a-aRtZKvIt39rMmGSbS2gMJ3_B8GKIujQyJvJa_Pjec5cQTIrMpalKHW3K_rtoayhueZ_u_q7PXx4KZi0pWtpMu91VdGwKkht6v9CAUDkGVC-i4J6caPrlH78eDlyxkKNT9t2_UoCUdOk5hqcwsBaz0XcUYxb6P_JdfWVsEjbKnkl8hZ4mIOrwhkWaxd7GWJSACGIgC0YWtZg.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Под завалами обнаружены тела всех 8 рабочих, погибших на угольном разрезе в Магаданской области, поисковые работы завершены, сообщили в МЧС.",
+      "links": [],
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -102,8 +361,8 @@
       }
     },
     {
-      "id": 4003465605,
-      "postUrl": "https://t.me/tass_agency/374647?single",
+      "id": 342607777,
+      "postUrl": "https://t.me/tass_agency/374711?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -116,17 +375,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "▶️ Армия России лидирует над ВСУ по количеству применяемых БПЛА, заявил ТАСС герой России Рустам Сайфуллин.\n\nВидео: ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "text": "▶️ Обещавшего ударить по Москве 9 мая Зеленского никто не одернул в Ереване во время саммита Армения — ЕС, заявила Мария Захарова. \n\nВидео: ТАСС/Ruptly\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
       "links": [
         {
           "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
           "url": "https://max.ru/tass_agency"
         }
       ],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -144,7 +403,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -197,8 +456,8 @@
       }
     },
     {
-      "id": 3962630580,
-      "postUrl": "https://t.me/tass_agency/374646?single",
+      "id": 406839584,
+      "postUrl": "https://t.me/tass_agency/374710?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -211,12 +470,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❗️За ночь над регионами РФ сбиты 347 украинских БПЛА, сообщили в Минобороны.",
+      "text": "За четыре часа над регионами РФ и акваториями Азовского и Черного морей сбиты 127 БПЛА, сообщили в Минобороны России.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -234,7 +493,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -291,8 +550,8 @@
       }
     },
     {
-      "id": 2898638215,
-      "postUrl": "https://t.me/tass_agency/374645?single",
+      "id": 1046003526,
+      "postUrl": "https://t.me/tass_agency/374709?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -305,12 +564,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❗️40 многоквартирных домов, школы, детсады и колледж были повреждены в Чебоксарах после атаки украинских БПЛА, сообщает глава Чувашии.",
+      "text": "🚨 Ученица школы в Ростовской области пострадала из-за взрыва, по предварительным данным, страйкбольной гранаты. У девочки незначительные ожоги рук, сообщили в ГУ МВД по Ростовской области.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -328,7 +587,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -385,8 +644,8 @@
       }
     },
     {
-      "id": 3876443598,
-      "postUrl": "https://t.me/tass_agency/374644?single",
+      "id": 4013375647,
+      "postUrl": "https://t.me/tass_agency/374708?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -399,12 +658,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "В России создают дронопорты для размещения, обслуживания и автоматизации запуска БПЛА-перехватчиков. Об этом сообщил в интервью ТАСС замглавы \"Алмаз-Антей\" Савицкий.",
+      "text": "Президент Лаоса посетит Россию для участия в торжествах по случаю Дня Победы, сообщает газета Vientiane Times.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -422,7 +681,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -483,8 +742,8 @@
       }
     },
     {
-      "id": 4163623081,
-      "postUrl": "https://t.me/tass_agency/374643?single",
+      "id": 3722990632,
+      "postUrl": "https://t.me/tass_agency/374707?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -493,16 +752,27 @@
       },
       "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/fcDFeqMoiGM2SGZByCOfL5GOlIU_tcrh8PVoQyrcC5-9C86dqNIH-waKOuBseEkEzwYx_LJjCuscl-PnOo8GG27TgpKhYR53uSrDPad5vDYYX5iY4zFt6TgmFaBuTvusHXIZn3Gy-BAiwtaNEhW3SA1L54pY2vX1NPCWh5EkM70HkI92CZStslvq6s3cFbrSNyDBh-Q7wdSMzGUHxNLAbwBCiEyv967YTcdc5wUaRL3aMfxgPOvU-8bFo2DYE8Z-stIzu6wk6bFIUlgnpbPzJ5Ywx4_DLEkiAUP8TZX-UxKFhCBocckrw0TEDIf6X84kJJGEFDPRh2pSyOEyhLVN7w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🚨 Над Тульской областью уничтожили 14 украинских БПЛА, сообщил губернатор региона.",
-      "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "text": "Отели на Мальдивах предлагают скидки на предстоящее лето до 70% в связи с сезонным и геополитическим факторами, сообщает АТОР.\n\nМай и июнь на Мальдивах — время юго-западного муссона. Как поясняют в Coral Travel, кратковременные дожди всегда охлаждали спрос. В АТОР также объяснили снижение цен, в том числе оттоком с курорта граждан ЕС и нестабильной ситуацией на Ближнем Востоке.\n\n✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-08T06:09:38.508Z",
       "tag": "news",
       "tags": [
         "news"
@@ -520,7 +790,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -577,8 +847,8 @@
       }
     },
     {
-      "id": 657829608,
-      "postUrl": "https://t.me/tass_agency/374642?single",
+      "id": 1445347561,
+      "postUrl": "https://t.me/tass_agency/374706?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -591,12 +861,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❗️Все работники шахты \"Алардинская\" в Кузбассе вышли на поверхность, сообщили ТАСС в правительстве региона.",
-      "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "text": "Главное из нового брифинга Минобороны России:\n\n▪️ВС РФ поразили в течение суток объекты транспортной инфраструктуры, используемые ВСУ;\n\n▪️Средства ПВО РФ сбили за сутки 570 беспилотников ВСУ самолетного типа;\n\n▪️ВСУ за сутки потеряли более 1,2 тыс. военных на всех участках СВО.\n\n✔ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -614,7 +889,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -675,8 +950,8 @@
       }
     },
     {
-      "id": 2445148523,
-      "postUrl": "https://t.me/tass_agency/374641?single",
+      "id": 2222777394,
+      "postUrl": "https://t.me/tass_agency/374705?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -689,12 +964,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🚨 Более 30 БПЛА уничтожены в 12 районах Ростовской области, сообщил губернатор.",
+      "text": "❗️Адвокат Карабанов был задержан после получения 2 млн рублей, сообщили в СК.  Дело адвоката связано с гендиректором компании, поставлявшей продукции для нужд концерна \"Калашников\".",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -712,7 +987,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
@@ -769,8 +1044,8 @@
       }
     },
     {
-      "id": 2476200178,
-      "postUrl": "https://t.me/tass_agency/374640?single",
+      "id": 3597382827,
+      "postUrl": "https://t.me/tass_agency/374704?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -783,12 +1058,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "✈️ Введены временные ограничения в периметре воздушного пространства аэропорта Шереметьево в связи с действием сигнала \"Ковер\", сообщили в авиагавани.",
+      "text": "🚨 Беспилотник атаковал одно из предприятий в Пермском крае, жертв и пострадавших нет, сообщил губернатор.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -806,12 +1081,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
-      "id": 305604650,
-      "postUrl": "https://t.me/tass_agency/374639?single",
+      "id": 2686669556,
+      "postUrl": "https://t.me/tass_agency/374703?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -824,58 +1099,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "▶️ Военные поздравили с Днем Победы почетного гражданина Воронежа.\n\nВидео: Пресс-служба Московского военного округа/ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
-      }
-    },
-    {
-      "id": 3938729859,
-      "postUrl": "https://t.me/tass_agency/374638?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/WUV41J_ybJBY7LV9kp_rVxUwvRuSflE88hJ9y2aIyPhaE2nEa__3zQ-6YPOeh1wi710NJPM6mKrBC9AX1dO7p1D53xgmZeF91dRfvBGXxGYOc2GeOoInZ8aIG-MvHiBT74lq8WL65a-aRtZKvIt39rMmGSbS2gMJ3_B8GKIujQyJvJa_Pjec5cQTIrMpalKHW3K_rtoayhueZ_u_q7PXx4KZi0pWtpMu91VdGwKkht6v9CAUDkGVC-i4J6caPrlH78eDlyxkKNT9t2_UoCUdOk5hqcwsBaz0XcUYxb6P_JdfWVsEjbKnkl8hZ4mIOrwhkWaxd7GWJSACGIgC0YWtZg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Добровольцы на СВО получат особые льготы при расчете военной пенсии. Соответствующие поправки к положениям о расчете выслуги лет приняло правительство. ТАСС ознакомился с документом.\n\nВ частности, для участников боевых действий каждый день службы в добровольческих формированиях будет засчитываться за три. При этом время, проведенное в госпитале, также будет считаться за боевую выслугу.",
+      "text": "❕Бессмертный полк в РФ в этом году пройдет в электронном формате, в очном формате он будет в ряде стран, где проявляют к нему интерес, сообщил Песков.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -893,12 +1122,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
-      "id": 3338207380,
-      "postUrl": "https://t.me/tass_agency/374637?single",
+      "id": 2261573573,
+      "postUrl": "https://t.me/tass_agency/374702?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -911,12 +1140,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🚨 Несколько домов повреждены во Ржеве Тверской области из-за атаки ВСУ, пострадавших нет, сообщили власти.  ✔ Подпишись на ТАСС в \"Максе\"",
+      "text": "❗️Парад в Москве 9 Мая будет, о том, в каком формате он пройдет, ранее детально сообщили в Минобороны России, заявил Песков.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -934,12 +1163,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
-      "id": 3379145573,
-      "postUrl": "https://t.me/tass_agency/374636?single",
+      "id": 1476144398,
+      "postUrl": "https://t.me/tass_agency/374701?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -952,58 +1181,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🚨 Несколько домов повреждены во Ржеве Тверской области из-за атаки ВСУ, пострадавших нет, сообщили власти.\n\n✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
-      }
-    },
-    {
-      "id": 3968202030,
-      "postUrl": "https://t.me/tass_agency/374635?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/WUV41J_ybJBY7LV9kp_rVxUwvRuSflE88hJ9y2aIyPhaE2nEa__3zQ-6YPOeh1wi710NJPM6mKrBC9AX1dO7p1D53xgmZeF91dRfvBGXxGYOc2GeOoInZ8aIG-MvHiBT74lq8WL65a-aRtZKvIt39rMmGSbS2gMJ3_B8GKIujQyJvJa_Pjec5cQTIrMpalKHW3K_rtoayhueZ_u_q7PXx4KZi0pWtpMu91VdGwKkht6v9CAUDkGVC-i4J6caPrlH78eDlyxkKNT9t2_UoCUdOk5hqcwsBaz0XcUYxb6P_JdfWVsEjbKnkl8hZ4mIOrwhkWaxd7GWJSACGIgC0YWtZg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️106 работников шахты \"Алардинская\" в Кузбассе вышли на поверхность, сообщили ТАСС в правительстве региона.",
+      "text": "Власти РФ не рассматривают меры поддержки и компенсаций для бизнеса в связи с отключением мобильной связи, заявил Песков.",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1021,12 +1204,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     },
     {
-      "id": 1548082151,
-      "postUrl": "https://t.me/tass_agency/374634?single",
+      "id": 2369689031,
+      "postUrl": "https://t.me/tass_agency/374700?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -1039,12 +1222,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❗️106 работников шахты \"Алардинская\" в Кузбассе вышли на поверхность, сообщили ТАСС в правительстве региона.",
+      "text": "❗️Минобороны РФ рассказало о параде 9 мая в Москве:  ▪️В составе пешей колонны в параде на Красной площади примут участие военнослужащие из вузов всех видов и отдельных родов войск ВС РФ;  ▪️Колонна военной техники участвовать в параде 9 Мая в Москве не будет;…",
       "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
+      "createdAt": "2026-05-07T10:55:24.886Z",
+      "expiresAt": "2026-05-08T10:55:24.886Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
+      "mediaRefreshedAt": "2026-05-07T10:55:24.886Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1062,94 +1245,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
-      }
-    },
-    {
-      "id": 3310516680,
-      "postUrl": "https://t.me/tass_agency/374633?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/WUV41J_ybJBY7LV9kp_rVxUwvRuSflE88hJ9y2aIyPhaE2nEa__3zQ-6YPOeh1wi710NJPM6mKrBC9AX1dO7p1D53xgmZeF91dRfvBGXxGYOc2GeOoInZ8aIG-MvHiBT74lq8WL65a-aRtZKvIt39rMmGSbS2gMJ3_B8GKIujQyJvJa_Pjec5cQTIrMpalKHW3K_rtoayhueZ_u_q7PXx4KZi0pWtpMu91VdGwKkht6v9CAUDkGVC-i4J6caPrlH78eDlyxkKNT9t2_UoCUdOk5hqcwsBaz0XcUYxb6P_JdfWVsEjbKnkl8hZ4mIOrwhkWaxd7GWJSACGIgC0YWtZg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "▶️ Киев пытается вернуть внимание Украине на фоне конфликта на Ближнем Востоке, заявил в интервью ТАСС Денис Пушилин.\n\nВидео: Игорь Романенков/ТАСС\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
-      }
-    },
-    {
-      "id": 3237524489,
-      "postUrl": "https://t.me/tass_agency/374632?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/WUV41J_ybJBY7LV9kp_rVxUwvRuSflE88hJ9y2aIyPhaE2nEa__3zQ-6YPOeh1wi710NJPM6mKrBC9AX1dO7p1D53xgmZeF91dRfvBGXxGYOc2GeOoInZ8aIG-MvHiBT74lq8WL65a-aRtZKvIt39rMmGSbS2gMJ3_B8GKIujQyJvJa_Pjec5cQTIrMpalKHW3K_rtoayhueZ_u_q7PXx4KZi0pWtpMu91VdGwKkht6v9CAUDkGVC-i4J6caPrlH78eDlyxkKNT9t2_UoCUdOk5hqcwsBaz0XcUYxb6P_JdfWVsEjbKnkl8hZ4mIOrwhkWaxd7GWJSACGIgC0YWtZg.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Эвакуацию работников шахты \"Алардинская\" в Кузбассе проводят в штатном режиме, сообщили ТАСС в правительстве региона.",
-      "links": [],
-      "createdAt": "2026-05-07T05:04:34.940Z",
-      "expiresAt": "2026-05-08T05:04:34.940Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T05:04:34.940Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T05:04:34.940Z"
+        "reviewedAt": "2026-05-07T10:55:24.886Z"
       }
     }
   ]
