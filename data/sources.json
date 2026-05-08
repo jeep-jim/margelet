@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-08T06:34:44.470Z",
+  "updatedAt": "2026-05-08T06:35:19.543Z",
   "sources": [
     {
       "id": "es:20m",
@@ -272,6 +272,30 @@
       "lastImportedAt": "2026-05-08T06:09:44.780Z",
       "lastSeenPostId": 156318,
       "importedPostsCount": 747,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:allure",
+      "countryCode": "en",
+      "handle": "allure",
+      "title": "Allure",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "health",
+      "tags": [
+        "health",
+        "fashion",
+        "beauty"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -1928,15 +1952,15 @@
       "avatarUrl": "https://cdn5.telesco.pe/file/ENZBqkt_9aC08RJhuo6reivSm7A6BV8OlsLi5QboZ7Xjhi9_0PNYnh3mAtvZhjkQj2Rs6C2XEkj6qFaQrGqAelzKQqWUwTRf4RCR8M_epqdJoNKzQHQEJySuFlSv7ajGXb3iHg2pxrBVy2CYzYAu1cfKtTro5oA5ZUEnL2aSxSgSVN6S3mDpr4O2NzSaOHI_9IJ5F5r2klMPJm9Wr5qd-l_iOypizh-F0GMz6l0pYSUGADtur_GMMJuGif8pzrAxWTwG8LoCV6arV9xwTeahscxTfZNGbn3vU07DvHwusUOBjxjX-Va8lUaORTIYGOQZWPuNa93aG4L-AUJzB3-xSw.jpg",
       "avatarOverride": null,
       "verified": true,
-      "defaultTag": "news",
+      "defaultTag": "finance",
       "tags": [
-        "news",
-        "finance"
+        "finance",
+        "economy"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T03:27:24.923Z",
-      "updatedAt": "2026-05-08T06:08:19.250Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
       "lastCheckedAt": "2026-05-08T03:53:22.441Z",
       "lastImportedAt": "2026-05-06T14:46:26.907Z",
       "lastSeenPostId": 3218,
@@ -2105,6 +2129,29 @@
       "lastSeenPostId": 15,
       "importedPostsCount": 96,
       "lastRefreshCursorPostId": 11
+    },
+    {
+      "id": "en:businessinsider",
+      "countryCode": "en",
+      "handle": "businessinsider",
+      "title": "Business Insider",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "economy"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.542Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ms:businessmalaysia",
@@ -3051,6 +3098,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:codecademy",
+      "countryCode": "en",
+      "handle": "codecademy",
+      "title": "Codecademy",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:codeseven",
       "countryCode": "ru",
       "handle": "codeseven",
@@ -3092,6 +3163,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:31:06.308Z",
       "updatedAt": "2026-05-08T06:31:06.308Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:cointelegraph",
+      "countryCode": "en",
+      "handle": "cointelegraph",
+      "title": "Cointelegraph",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance",
+        "crypto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.542Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -3601,14 +3695,15 @@
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "nature",
+      "defaultTag": "science",
       "tags": [
+        "science",
         "nature"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T03:27:24.924Z",
-      "updatedAt": "2026-05-08T06:08:19.250Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
       "lastCheckedAt": "2026-05-08T03:53:24.054Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -4336,6 +4431,51 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:engadget",
+      "countryCode": "en",
+      "handle": "engadget",
+      "title": "Engadget",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "electronics"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.542Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:espn",
+      "countryCode": "en",
+      "handle": "espn",
+      "title": "ESPN",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "sports",
+      "tags": [
+        "sports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pt-br:esportesbr",
       "countryCode": "pt-br",
       "handle": "esportesbr",
@@ -4925,6 +5065,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:foodnetwork",
+      "countryCode": "en",
+      "handle": "foodnetwork",
+      "title": "Food Network",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "food",
+      "tags": [
+        "food",
+        "culture"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "in:foodtalkindia",
       "countryCode": "in",
       "handle": "foodtalkindia",
@@ -5337,6 +5500,30 @@
       "createdAt": "2026-04-27T07:48:14.056Z",
       "updatedAt": "2026-05-08T06:08:57.712Z",
       "lastCheckedAt": "2026-05-08T06:08:57.712Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:freecodecamp",
+      "countryCode": "en",
+      "handle": "freecodecamp",
+      "title": "freeCodeCamp",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -6396,6 +6583,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:githubofficial",
+      "countryCode": "en",
+      "handle": "githubofficial",
+      "title": "GitHub",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "news",
+        "news_world"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "zh:globaltimesnews",
       "countryCode": "zh",
       "handle": "globaltimesnews",
@@ -6482,6 +6693,30 @@
       "lastSeenPostId": 4348,
       "importedPostsCount": 119,
       "lastRefreshCursorPostId": 4335
+    },
+    {
+      "id": "en:googleai",
+      "countryCode": "en",
+      "handle": "googleai",
+      "title": "Google AI",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "science",
+      "tags": [
+        "science",
+        "technology",
+        "ai"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "pt-br:greenmebrasil",
@@ -6822,6 +7057,29 @@
       "lastRefreshCursorPostId": 1267
     },
     {
+      "id": "en:hubspot",
+      "countryCode": "en",
+      "handle": "hubspot",
+      "title": "HubSpot",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "marketing",
+      "tags": [
+        "marketing",
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "en:ign",
       "countryCode": "en",
       "handle": "ign",
@@ -6910,6 +7168,29 @@
       "lastSeenPostId": 9,
       "importedPostsCount": 32,
       "lastRefreshCursorPostId": 2
+    },
+    {
+      "id": "en:imdb",
+      "countryCode": "en",
+      "handle": "imdb",
+      "title": "IMDb",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "cinema"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "in:inc42",
@@ -8144,17 +8425,12 @@
       "verified": false,
       "defaultTag": "travel",
       "tags": [
-        "travel",
-        "travel_rest",
-        "travel_countries",
-        "travel_routes",
-        "travel_hotels",
-        "travel_other"
+        "travel"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T03:27:24.924Z",
-      "updatedAt": "2026-05-08T06:08:36.836Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
       "lastCheckedAt": "2026-05-08T06:08:36.835Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -9096,6 +9372,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:menshealth",
+      "countryCode": "en",
+      "handle": "menshealth",
+      "title": "Men's Health",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "health",
+      "tags": [
+        "health",
+        "fitness"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "es:meristation",
       "countryCode": "es",
       "handle": "meristation",
@@ -9841,23 +10140,19 @@
       "id": "en:natgeotravel",
       "countryCode": "en",
       "handle": "natgeotravel",
-      "title": "NATGEO TRAVEL",
+      "title": "NatGeo Travel",
       "avatarUrl": "https://cdn4.telesco.pe/file/Ok7YDWTdrXmq-8b2I6nNsXeEZg8X0owEsKngN6UQZqO4RG5mp7ffVu0ZiS7kuoUdn2OphbmTFP1H7rGxoew1l_3eU5k9ucON35z7kTyU9UFgHidO0My6K3H1W5gNuR65C0kgQk2OHb7qRcbyLqKC_7SVovRqdID2o4bzxxFqf29pcQigHy50Bwp-Duk4reXAxRpTiIcjt_RhAoOiZookSS2Pna5xVONwQLvBgZZYuePXzyM-XMXAU5Y1LlDm81_d7gXfinRmDxGDdnpWwEs4XrEZPVO-tX_v1lssOekFZjlBg_lvGsBCclTtQh5Y9VpMvB40yE3NUavLsqYYSEdCfg.jpg",
       "avatarOverride": null,
       "verified": false,
       "defaultTag": "travel",
       "tags": [
         "travel",
-        "nature",
-        "other",
-        "news",
-        "news_no_negative",
-        "news_regions"
+        "nature"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T03:27:24.924Z",
-      "updatedAt": "2026-05-08T06:08:37.491Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
       "lastCheckedAt": "2026-05-08T06:08:37.323Z",
       "lastImportedAt": "2026-05-06T20:45:46.999Z",
       "lastSeenPostId": 14,
@@ -9881,6 +10176,29 @@
       "createdAt": "2026-04-26T05:08:03.899Z",
       "updatedAt": "2026-05-08T06:09:51.468Z",
       "lastCheckedAt": "2026-05-08T06:09:51.467Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:nationalgeographic",
+      "countryCode": "en",
+      "handle": "nationalgeographic",
+      "title": "National Geographic",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -10308,6 +10626,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:netflix",
+      "countryCode": "en",
+      "handle": "netflix",
+      "title": "Netflix",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "cinema",
+        "series"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:netologyru",
       "countryCode": "ru",
       "handle": "netologyru",
@@ -10347,6 +10689,29 @@
       "createdAt": "2026-04-27T08:16:26.120Z",
       "updatedAt": "2026-05-08T06:10:05.015Z",
       "lastCheckedAt": "2026-05-08T06:10:05.014Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:nike",
+      "countryCode": "en",
+      "handle": "nike",
+      "title": "Nike",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "fitness",
+      "tags": [
+        "fitness",
+        "sports"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -10654,6 +11019,29 @@
       "lastSeenPostId": 6270,
       "importedPostsCount": 52,
       "lastRefreshCursorPostId": 6252
+    },
+    {
+      "id": "en:openai",
+      "countryCode": "en",
+      "handle": "openai",
+      "title": "OpenAI",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.542Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "kk:orda_kz",
@@ -12413,6 +12801,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:spotify",
+      "countryCode": "en",
+      "handle": "spotify",
+      "title": "Spotify",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "music"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "pt-br:spotifybrasil",
       "countryCode": "pt-br",
       "handle": "spotifybrasil",
@@ -12685,6 +13096,28 @@
       "lastRefreshCursorPostId": 374769
     },
     {
+      "id": "en:tasty",
+      "countryCode": "en",
+      "handle": "tasty",
+      "title": "Tasty",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "food",
+      "tags": [
+        "food"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "uk:taxikilometer",
       "countryCode": "uk",
       "handle": "taxikilometer",
@@ -12829,23 +13262,12 @@
       "defaultTag": "technology",
       "tags": [
         "technology",
-        "technology_software",
-        "technology_dev",
-        "technology_web",
-        "internet",
-        "gadgets",
-        "ai",
-        "technology_other",
-        "startups",
-        "startups_cases",
-        "startups_founders",
-        "startups_invest",
-        "startups_other"
+        "startups"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T03:27:24.924Z",
-      "updatedAt": "2026-05-08T06:08:39.093Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
       "lastCheckedAt": "2026-05-08T06:08:39.092Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -13545,6 +13967,29 @@
       "createdAt": "2026-04-27T06:42:13.239Z",
       "updatedAt": "2026-05-08T06:08:22.946Z",
       "lastCheckedAt": "2026-05-08T06:08:22.945Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:thenextweb",
+      "countryCode": "en",
+      "handle": "thenextweb",
+      "title": "The Next Web",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "startups",
+      "tags": [
+        "startups",
+        "technology"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.542Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -14545,12 +14990,12 @@
       "defaultTag": "technology",
       "tags": [
         "technology",
-        "gadgets"
+        "news"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T03:27:24.924Z",
-      "updatedAt": "2026-05-08T06:08:39.530Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
       "lastCheckedAt": "2026-05-08T06:08:39.370Z",
       "lastImportedAt": "2026-05-06T13:20:56.331Z",
       "lastSeenPostId": 195,
@@ -15110,6 +15555,29 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "en:vogue",
+      "countryCode": "en",
+      "handle": "vogue",
+      "title": "Vogue",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "fashion",
+      "tags": [
+        "fashion",
+        "beauty"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.543Z",
+      "updatedAt": "2026-05-08T06:35:19.543Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "fr:voyagefrance",
       "countryCode": "fr",
       "handle": "voyagefrance",
@@ -15301,12 +15769,13 @@
       "verified": false,
       "defaultTag": "technology",
       "tags": [
-        "technology"
+        "technology",
+        "science"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-04-27T03:27:24.924Z",
-      "updatedAt": "2026-05-08T06:08:40.246Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
       "lastCheckedAt": "2026-05-08T06:08:40.245Z",
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -15534,6 +16003,29 @@
       "note": null,
       "createdAt": "2026-05-08T06:33:14.541Z",
       "updatedAt": "2026-05-08T06:33:14.541Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "en:ycombinator",
+      "countryCode": "en",
+      "handle": "ycombinator",
+      "title": "Y Combinator",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "startups",
+      "tags": [
+        "startups",
+        "business"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-05-08T06:35:19.542Z",
+      "updatedAt": "2026-05-08T06:35:19.542Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
