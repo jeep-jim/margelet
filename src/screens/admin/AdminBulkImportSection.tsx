@@ -170,91 +170,52 @@ function parseTagsFromText(value: string): ContentTag[] {
   return normalizeTagValues(tags) as ContentTag[];
 }
 
-function isTagLine(value: string) {
-  const cleaned = value.trim().replace(/^[-–—•\s]*/, "");
-  if (/^(теги|tags|категории|categories)\s*[:：-]/i.test(cleaned)) return true;
-
-  const parsedTags = parseTagsFromText(cleaned);
-  const hasHandle = !!extractTelegramHandle(cleaned);
-  const hasLink = /(?:https?:\/\/)?(?:www\.)?(?:t\.me|telegram\.me)\//i.test(cleaned);
-
-  return !hasHandle && !hasLink && parsedTags.length > 0 && /[\/|,]/.test(cleaned);
-}
-
-function cleanTitleCandidate(value: string, handle: string) {
-  return value
-    .replace(/(?:https?:\/\/)?(?:www\.)?(?:t\.me|telegram\.me)\/[A-Za-z0-9_]{4,}(?:[/?#\S]*)?/gi, "")
-    .replace(new RegExp(`@?${handle}`, "ig"), "")
-    .replace(/^(название|name)\s*[:：-]?\s*/i, "")
-    .replace(/^(теги|tags|категории|categories)\s*[:：-].*$/i, "")
-    .replace(/[|]+/g, " ")
-    .trim();
-}
-
-function isIgnoredBulkLine(value: string) {
-  const cleaned = value.trim().toLowerCase();
-  return (
-    !cleaned ||
-    cleaned.startsWith("#") ||
-    cleaned.startsWith("формат") ||
-    cleaned.startsWith("format") ||
-    cleaned.includes("название |") ||
-    cleaned.includes("@handle") ||
-    cleaned.includes("ссылка") ||
-    cleaned.includes("каналов")
-  );
-}
-
 function parseBulkSourceInput(value: string): BulkSourceRow[] {
-  const seen = new Set<string>();
   const rows: BulkSourceRow[] = [];
-  let currentTags: ContentTag[] = ["other"];
-  let pendingTitle = "";
+  const seen = new Set<string>();
 
   for (const rawLine of value.split(/\r?\n/)) {
     const line = rawLine.trim();
-    if (!line || isIgnoredBulkLine(line)) continue;
 
-    const inlineTags = parseTagsFromText(line);
-    if (isTagLine(line)) {
-      currentTags = inlineTags.length > 0 ? inlineTags : currentTags;
-      pendingTitle = "";
-      continue;
-    }
-
-    const handle = extractTelegramHandle(line);
-
-    if (!handle) {
-      const titleCandidate = line.replace(/^[-–—•\s]*/, "").trim();
-      if (titleCandidate && !parseTagsFromText(titleCandidate).length) {
-        pendingTitle = titleCandidate;
-      }
-      continue;
-    }
-
-    if (seen.has(handle)) continue;
-    seen.add(handle);
+    if (!line) continue;
 
     const parts = line
       .split("|")
-      .map((part) => part.trim())
+      .map((p) => p.trim())
       .filter(Boolean);
 
-    const titleFromParts = parts
-      .map((part) => cleanTitleCandidate(part, handle))
-      .find((part) => part && !parseTagsFromText(part).length);
+    if (parts.length < 2) continue;
 
-    const title = titleFromParts || cleanTitleCandidate(line, handle) || pendingTitle || "";
-    const tags = inlineTags.length > 0 ? inlineTags : currentTags;
+    const link = parts[0];
+    const title = parts[1];
+
+    const handle = extractTelegramHandle(link);
+
+    if (!handle) continue;
+    if (seen.has(handle)) continue;
+
+    seen.add(handle);
+
+    let tags: ContentTag[] = ["other"];
+
+    const tagPart = parts.find((part) =>
+      /^теги\s*:/i.test(part)
+    );
+
+    if (tagPart) {
+      const parsedTags = parseTagsFromText(tagPart);
+
+      if (parsedTags.length > 0) {
+        tags = parsedTags;
+      }
+    }
 
     rows.push({
       ...createRow(),
       handle,
-      title,
-      tags: tags.length > 0 ? tags : (["other"] as ContentTag[]),
+      title: title.trim(),
+      tags,
     });
-
-    pendingTitle = "";
   }
 
   return rows;
