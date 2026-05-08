@@ -42,6 +42,11 @@ type SubscriptionBubble = {
   latestPostId: number;
 };
 
+function getTelegramUserpicUrl(handle?: string | null) {
+  const clean = String(handle || "").replace(/^@/, "").trim();
+  return clean ? `https://t.me/i/userpic/320/${clean}.jpg` : null;
+}
+
 function isGifPost(post: IngestedPost) {
   return (
     post.contentType === "gif" ||
@@ -383,12 +388,22 @@ function SubscriptionsBar({
                   }`}
                 >
                   <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-surface">
-                    {item.avatar ? (
+                    {item.avatar || getTelegramUserpicUrl(item.handle) ? (
                       <img
-                        src={item.avatar}
+                        src={item.avatar || getTelegramUserpicUrl(item.handle) || ""}
                         alt={item.title}
                         className="h-full w-full object-cover"
                         referrerPolicy="no-referrer"
+                        onError={(event) => {
+                          const fallback = getTelegramUserpicUrl(item.handle);
+
+                          if (fallback && event.currentTarget.src !== fallback) {
+                            event.currentTarget.src = fallback;
+                            return;
+                          }
+
+                          event.currentTarget.style.display = "none";
+                        }}
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-surface-soft text-xs font-bold text-primary">

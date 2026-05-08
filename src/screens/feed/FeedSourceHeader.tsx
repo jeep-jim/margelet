@@ -28,6 +28,11 @@ function toggleSub(handle: string) {
   return next;
 }
 
+function getTelegramUserpicUrl(handle?: string | null) {
+  const clean = String(handle || "").replace(/^@/, "").trim();
+  return clean ? `https://t.me/i/userpic/320/${clean}.jpg` : null;
+}
+
 export function FeedSourceAvatar({
   post,
   compact = false,
@@ -37,23 +42,39 @@ export function FeedSourceAvatar({
 }) {
   const sizeClass = compact ? "h-10 w-10" : "h-12 w-12";
   const textClass = compact ? "text-sm" : "text-base";
-  const [imageFailed, setImageFailed] = useState(false);
-  const avatarUrl = post.source.avatar?.startsWith("data:image/svg+xml")
+  const fallbackAvatar = getTelegramUserpicUrl(post.source.handle);
+  const savedAvatar = post.source.avatar?.startsWith("data:image/svg+xml")
     ? null
     : post.source.avatar;
-  const showImage = Boolean(avatarUrl) && !imageFailed;
+
+  const [avatarSrc, setAvatarSrc] = useState(savedAvatar || fallbackAvatar);
+  const [imageFailed, setImageFailed] = useState(false);
+
+  useEffect(() => {
+    setAvatarSrc(savedAvatar || fallbackAvatar);
+    setImageFailed(false);
+  }, [savedAvatar, fallbackAvatar]);
+
+  const showImage = Boolean(avatarSrc) && !imageFailed;
 
   return (
     <div
       className={`${sizeClass} overflow-hidden rounded-full bg-surface-soft ${textClass} font-bold text-primary`}
     >
-      {showImage && avatarUrl ? (
+      {showImage && avatarSrc ? (
         <img
-          src={avatarUrl}
+          src={avatarSrc}
           alt={post.source.title}
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
-          onError={() => setImageFailed(true)}
+          onError={() => {
+            if (fallbackAvatar && avatarSrc !== fallbackAvatar) {
+              setAvatarSrc(fallbackAvatar);
+              return;
+            }
+
+            setImageFailed(true);
+          }}
         />
       ) : (
         <div className="flex h-full w-full items-center justify-center">

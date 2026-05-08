@@ -325,7 +325,7 @@ export function FeedCarousel({
               event.stopPropagation();
               setFullscreenOpen(false);
             }}
-            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
+            className="absolute right-4 top-[calc(env(safe-area-inset-top,0px)+16px)] z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm"
             aria-label="Закрыть"
           >
             <X className="h-5 w-5" />
