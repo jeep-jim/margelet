@@ -1,9 +1,104 @@
 {
   "countryCode": "es",
-  "updatedAt": "2026-05-08T14:18:51.394Z",
-  "totalPosts": 58,
+  "updatedAt": "2026-05-08T15:55:02.174Z",
+  "totalPosts": 50,
   "chunks": 1,
   "items": [
+    {
+      "id": 2474917130,
+      "postUrl": "https://t.me/beautyespana/1?single",
+      "source": {
+        "title": "Beauty España",
+        "handle": "beautyespana",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "es:beautyespana",
+      "sourceCountryCode": "es",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T15:53:43.044Z",
+      "expiresAt": "2026-05-09T15:53:43.044Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:53:43.044Z",
+      "tag": "health",
+      "tags": [
+        "health",
+        "fashion",
+        "beauty"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:53:43.044Z"
+      }
+    },
+    {
+      "id": 1184144974,
+      "postUrl": "https://t.me/elpais/9749?single",
+      "source": {
+        "title": "ELPAÍS",
+        "handle": "elpais",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/ps3-HYAXVucmdu1UY8oC2bFgW7ETkKbbwYU-xb-E5xSeiT38mLSqfud9G1pMsFF0aWVVlI3hPfRsqzbK5zKjsXgp_gfL2ZvqRvssctw2ULpraVFlV8gK5ZFcIKFcvNYL4UiiZgLzwjISW3JmsAf2xTaVFBx0kTTWGzFUUdOFe1ZQkT8PhVwa_pjILKoLFJ2lgRWeE-IC0LF5rCiFFu4cioFGLANR1QURpLVCq9kRBxOJbEFAkuXIwo8EivO6QmlBz7oxQPaSamvckxLbXlugBt1tllbvsH92R3ZPqulX6JsA5ofGXsKCjEYI2aqWo5Z3pl2aOBsahR4e1MTwSeYFxg.jpg"
+      },
+      "sourceId": "es:elpais",
+      "sourceCountryCode": "es",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Y7GSOGn-A8_-90L2Besz_2Dwo2D7bPXFq6pJSgLIVlXnhDRK3qEnD5NopTNe04KvqOr_XJfEAXvbb-6ZicjWNFaruRB6ZG5FQoywN8QHDHlAFtOFfbp99krtOAVbLu02ozpwkABQemMjxmmjQw9h-CuZv5YBs7yRWotqF5JnBK2KjkJShSz0-do75we1mdiT9bT4Cak6Z95NKbSKpV2bLQeiOj15XISn9CopqxRTGf7KIYMj-Wtiv8XHtH0fPplLaZariGDGMkBqdxzPRqX-sfiyN7OyqbSgNkhpAWHNHosXEnmsn2XQIgtPIqLniqpt6C1VasnrbBu23sy8JKVGnQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "☕ Para comentar en la pausa del café ☕ \n \nEl hantavirus despierta viejos bulos y teorías conspiranoicas: ni es una nueva pandemia, ni un virus desconocido, ni se cura con zinc. La desinformación alrededor de la crisis sanitaria en el crucero ‘MV Hondius’ vuelve a copar las redes y desata el pánico a una epidemia similar a la de 2020 https://social.elpais.com/sw6gml",
+      "links": [
+        {
+          "label": "https://social.elpais.com/sw6gml",
+          "url": "https://social.elpais.com/sw6gml"
+        }
+      ],
+      "createdAt": "2026-05-08T15:53:41.428Z",
+      "expiresAt": "2026-05-09T15:53:41.428Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:53:41.428Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:53:41.428Z"
+      }
+    },
     {
       "id": 1641666229,
       "postUrl": "https://t.me/xataka/48093?single",
@@ -121,7 +216,7 @@
         "title": "Испанский с AI",
         "handle": "aiespana",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/b7NKluldW7t9vCwoBOEa2VvzYF6obGlEzDPFSot9zZ2njgcNaMOZKlmhEcYhrCGCrJXWmZ_3t91Tq1Aex_7NKQsRDGhzuWCju3wwoa2i8MSpl2qzyEv2wZzGN3NPG_cs6PJuEp60_nfo6KJ4AqPBEyZU9LAdnFxMfHMDAspz9zqfMV3Iq_7BBp2bhSmljRYtfkfYpRD69mCYROgr3boLuv9BmleeSCXS99-A-XGCSJdjzpa2G6-JbWGG5fWMIfp3pnTznoqw7yqPfex7xq7gUgaWMB3-f8n1wqZaQORnXl4H30KPWuW6DxWOsIznfZUiBqhHMfC-GTUmU-Ub7f8ikg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/WcOxOFjHx27XX4xDQWG9_CB3a319K6bJBM8Uon_O9KXpjw0yxZkx8rbgPP1s8TSysJsTR48swMpb0EhiA9J7SLyH71caCG1ClTaxRAeCqbehO3BZRY7bYPQw35Nt0oZVISQF5ngZjOCkEucNrlYHrR9vTX1SLd6UMKmpFUY0UjH4pX4jTubXQeSlPVwFpN-C3IxBNc0scxUgjl8LzEzfQzGOB51UGWgkURYt7MUt9AiD3gGBgxarN6pD_qMqwnDvj-FRj4WltYTIdRJqHRQNRPFF271Tc4gcf6w_bsYJxhINmDVeFOiXWlTA746yVtqXEtc9MG-KSZqweuI-TNTiqQ.jpg"
       },
       "sourceId": "es:aiespana",
       "sourceCountryCode": "es",
@@ -163,7 +258,7 @@
         "title": "ELPAÍS",
         "handle": "elpais",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/Off5GNA8oe72Pax9muFZvdO3P3QgZmQUxXmZK7iQDDJttlneqrzUFt5P69kOHY_VialwrApuC7iEBR932ex_j_D4SVm12NzxMh3vv_siY2HMTDI3PcOup0Dwp7c1t9btvvUUXTQqHUFggvJDRi4xwR-4jBVXhuwUOT2HMrNnH7kY_ByH-DlNJ8QXvc2ZgWjSuHq_P05UFczdU7BTb_gTQP5mbV-rmtMizl5fAusBWihvFAO7QnaiicRPrjc4ozVnZspUEWcXN5fRJxydUSQ-WkIwcBU3am8gpYOhi2rL6DcgkQ_Ngvnwc_yus1ofNCfZxC76VJ4j6NbezSHXhxZs5g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ps3-HYAXVucmdu1UY8oC2bFgW7ETkKbbwYU-xb-E5xSeiT38mLSqfud9G1pMsFF0aWVVlI3hPfRsqzbK5zKjsXgp_gfL2ZvqRvssctw2ULpraVFlV8gK5ZFcIKFcvNYL4UiiZgLzwjISW3JmsAf2xTaVFBx0kTTWGzFUUdOFe1ZQkT8PhVwa_pjILKoLFJ2lgRWeE-IC0LF5rCiFFu4cioFGLANR1QURpLVCq9kRBxOJbEFAkuXIwo8EivO6QmlBz7oxQPaSamvckxLbXlugBt1tllbvsH92R3ZPqulX6JsA5ofGXsKCjEYI2aqWo5Z3pl2aOBsahR4e1MTwSeYFxg.jpg"
       },
       "sourceId": "es:elpais",
       "sourceCountryCode": "es",
@@ -187,7 +282,7 @@
       "createdAt": "2026-05-08T06:08:42.657Z",
       "expiresAt": "2026-05-09T06:08:42.657Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T06:08:42.657Z",
+      "mediaRefreshedAt": "2026-05-08T15:53:41.428Z",
       "tag": "news",
       "tags": [
         "news"
@@ -325,7 +420,7 @@
         "title": "Испанский с AI",
         "handle": "aiespana",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/b7NKluldW7t9vCwoBOEa2VvzYF6obGlEzDPFSot9zZ2njgcNaMOZKlmhEcYhrCGCrJXWmZ_3t91Tq1Aex_7NKQsRDGhzuWCju3wwoa2i8MSpl2qzyEv2wZzGN3NPG_cs6PJuEp60_nfo6KJ4AqPBEyZU9LAdnFxMfHMDAspz9zqfMV3Iq_7BBp2bhSmljRYtfkfYpRD69mCYROgr3boLuv9BmleeSCXS99-A-XGCSJdjzpa2G6-JbWGG5fWMIfp3pnTznoqw7yqPfex7xq7gUgaWMB3-f8n1wqZaQORnXl4H30KPWuW6DxWOsIznfZUiBqhHMfC-GTUmU-Ub7f8ikg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/WcOxOFjHx27XX4xDQWG9_CB3a319K6bJBM8Uon_O9KXpjw0yxZkx8rbgPP1s8TSysJsTR48swMpb0EhiA9J7SLyH71caCG1ClTaxRAeCqbehO3BZRY7bYPQw35Nt0oZVISQF5ngZjOCkEucNrlYHrR9vTX1SLd6UMKmpFUY0UjH4pX4jTubXQeSlPVwFpN-C3IxBNc0scxUgjl8LzEzfQzGOB51UGWgkURYt7MUt9AiD3gGBgxarN6pD_qMqwnDvj-FRj4WltYTIdRJqHRQNRPFF271Tc4gcf6w_bsYJxhINmDVeFOiXWlTA746yVtqXEtc9MG-KSZqweuI-TNTiqQ.jpg"
       },
       "sourceId": "es:aiespana",
       "sourceCountryCode": "es",
@@ -367,7 +462,7 @@
         "title": "ELPAÍS",
         "handle": "elpais",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/Off5GNA8oe72Pax9muFZvdO3P3QgZmQUxXmZK7iQDDJttlneqrzUFt5P69kOHY_VialwrApuC7iEBR932ex_j_D4SVm12NzxMh3vv_siY2HMTDI3PcOup0Dwp7c1t9btvvUUXTQqHUFggvJDRi4xwR-4jBVXhuwUOT2HMrNnH7kY_ByH-DlNJ8QXvc2ZgWjSuHq_P05UFczdU7BTb_gTQP5mbV-rmtMizl5fAusBWihvFAO7QnaiicRPrjc4ozVnZspUEWcXN5fRJxydUSQ-WkIwcBU3am8gpYOhi2rL6DcgkQ_Ngvnwc_yus1ofNCfZxC76VJ4j6NbezSHXhxZs5g.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/ps3-HYAXVucmdu1UY8oC2bFgW7ETkKbbwYU-xb-E5xSeiT38mLSqfud9G1pMsFF0aWVVlI3hPfRsqzbK5zKjsXgp_gfL2ZvqRvssctw2ULpraVFlV8gK5ZFcIKFcvNYL4UiiZgLzwjISW3JmsAf2xTaVFBx0kTTWGzFUUdOFe1ZQkT8PhVwa_pjILKoLFJ2lgRWeE-IC0LF5rCiFFu4cioFGLANR1QURpLVCq9kRBxOJbEFAkuXIwo8EivO6QmlBz7oxQPaSamvckxLbXlugBt1tllbvsH92R3ZPqulX6JsA5ofGXsKCjEYI2aqWo5Z3pl2aOBsahR4e1MTwSeYFxg.jpg"
       },
       "sourceId": "es:elpais",
       "sourceCountryCode": "es",
@@ -523,7 +618,7 @@
         "title": "Испанский с AI",
         "handle": "aiespana",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/b7NKluldW7t9vCwoBOEa2VvzYF6obGlEzDPFSot9zZ2njgcNaMOZKlmhEcYhrCGCrJXWmZ_3t91Tq1Aex_7NKQsRDGhzuWCju3wwoa2i8MSpl2qzyEv2wZzGN3NPG_cs6PJuEp60_nfo6KJ4AqPBEyZU9LAdnFxMfHMDAspz9zqfMV3Iq_7BBp2bhSmljRYtfkfYpRD69mCYROgr3boLuv9BmleeSCXS99-A-XGCSJdjzpa2G6-JbWGG5fWMIfp3pnTznoqw7yqPfex7xq7gUgaWMB3-f8n1wqZaQORnXl4H30KPWuW6DxWOsIznfZUiBqhHMfC-GTUmU-Ub7f8ikg.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/WcOxOFjHx27XX4xDQWG9_CB3a319K6bJBM8Uon_O9KXpjw0yxZkx8rbgPP1s8TSysJsTR48swMpb0EhiA9J7SLyH71caCG1ClTaxRAeCqbehO3BZRY7bYPQw35Nt0oZVISQF5ngZjOCkEucNrlYHrR9vTX1SLd6UMKmpFUY0UjH4pX4jTubXQeSlPVwFpN-C3IxBNc0scxUgjl8LzEzfQzGOB51UGWgkURYt7MUt9AiD3gGBgxarN6pD_qMqwnDvj-FRj4WltYTIdRJqHRQNRPFF271Tc4gcf6w_bsYJxhINmDVeFOiXWlTA746yVtqXEtc9MG-KSZqweuI-TNTiqQ.jpg"
       },
       "sourceId": "es:aiespana",
       "sourceCountryCode": "es",
@@ -2590,576 +2685,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-07T17:04:15.918Z"
-      }
-    },
-    {
-      "id": 3237992110,
-      "postUrl": "https://t.me/xataka/48054?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/qHuvZspgzr76PC1cC7nmNWCaEDObYEDsQqavTZ0MQRjVDNn-YbmjZx1gkONOJfLuJVwPVpQq8KdOZII2aAVgMyN0st-5IaujJ8rEpo37-US3R_SWxYqW0kv4Pq5IQB5S0SRBY0VBI8G2FtEmy5EgU3VFVbpCir7D7XI5P3QuvchMAeZ--mWRp6IibTPRwr6iFmiEbnsZfCcmJdP7yAEswbVttXZYnxqLsfW1srQFmjU6Ol4znq3DpTOpXLXtvK8TPQI-O211QF0oPJ2or9jwVH3WgGm1CM_LYnd80gLPr8OjbfWAMpnm6IIrluzzFfJ9V8x3vVjRbBj8tQJZ_M24uA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 Gibraltar no ha tenido nunca planta de tratamiento de aguas residuales. Así que llevan décadas echándolas al mar ⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/ecologia-y-naturaleza/gibraltar-no-ha-tenido-nunca-planta-tratamiento-aguas-residuales-asi-que-llevan-decadas-echandolas-al-mar⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/ecologia-y-naturaleza/gibraltar-no-ha-tenido-nunca-planta-tratamiento-aguas-residuales-asi-que-llevan-decadas-echandolas-al-mar",
-          "url": "https://www.xataka.com/ecologia-y-naturaleza/gibraltar-no-ha-tenido-nunca-planta-tratamiento-aguas-residuales-asi-que-llevan-decadas-echandolas-al-mar"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 2507314569,
-      "postUrl": "https://t.me/xataka/48053?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/JlVnaSw-ZERDEQj9WdIyhiIf8zZwuG8z3tV5yTjhtrn7hGgup6Xh5c4M8YEAaYNWjXErytLXdwG2dT5IcOkdVol4Jht9_cMsOvb8sDzQB9hPrf_AlCb63YsA-nP_-ZltUzUrTbjnO9OcE1WUffYYXgIQ_sg0klkV4NyTHSK4EoUm9R6L5PngpWjwQVv3Cr_bZ7kNcru8t6QIcqAgUssDNH7KFOl_CIF_ra3syCtkXJjLzM-Yo07GoqE_Qi-FvqQ4eybHfddaVoNVbPN1yOzy6l6r1RSqrudDpU9hKYmXOmUoevKqoO1puAGLD7jptkEQ6ey6R3qbD86RhHaGnnmdyQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 Lorca quiere mejorar su aspecto. Así que multará con hasta 1.500 euros a quienes tiendan ropa en los balcones⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/magnet/lorca-quiere-mejorar-su-aspecto-asi-que-multara-1-500-euros-a-quienes-tiendan-ropa-balcones⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/magnet/lorca-quiere-mejorar-su-aspecto-asi-que-multara-1-500-euros-a-quienes-tiendan-ropa-balcones",
-          "url": "https://www.xataka.com/magnet/lorca-quiere-mejorar-su-aspecto-asi-que-multara-1-500-euros-a-quienes-tiendan-ropa-balcones"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 2580306760,
-      "postUrl": "https://t.me/xataka/48052?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/BRZSXwg9wPoeBWsZsfiVGhk9mojq5-B99nM9_H7HPkndGXRDBJVmtktYpnMUdOVxcO9xlKaZyKdBWg3EGhxs3D10uinxSZXqqnS6mR9l5pSssqv9usmvkpeKGSaRbCZLf2JePVTl5BM-pGQqpktLF478d1jM05fL108_IHa-8ss5JyaDYWqKcBPjjDYAl06L8lNIrUMThVUew0zogFpgooNXdaspAhFtzI0tiGWpFtF09cGLlSszs-ZMF6w7vtKsQCNh1ErO_heURfXFkfxA2kn5ZwzE0xIvMM6yPlgU6TBZHNhNAj7rY5Hyecrj_TOw_d_nR6dFsWGD68UCfp-A8w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 Samsung Galaxy Book6 Ultra, análisis: Samsung por fin ha construido el portátil Windows que Apple nunca creó⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/analisis/samsung-galaxy-book6-ultra-analisis-caracteristicas-precio-especificaciones⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/analisis/samsung-galaxy-book6-ultra-analisis-caracteristicas-precio-especificaciones",
-          "url": "https://www.xataka.com/analisis/samsung-galaxy-book6-ultra-analisis-caracteristicas-precio-especificaciones"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 348287947,
-      "postUrl": "https://t.me/xataka/48051?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/E_LB551wLcgguiavnDof7tXLYKfuRWFb0ZHgRR-qn_hx6vH7hhEM7b9HIHuNuLixl3f3Cjkq18kMIScquYkFqzkohPCb-P_7LS8yNYZJMZkM1Sob4qnhp8ssaAsFXMcouJ_EYBXwqfpOpF2HW1TX0ORoIaQnbijN_xzVMb-92Iw1CG1AZPAV-hY27NOVaZERL1OUquC2-kn5bntuCL5tDIShli0tiXRJryehjBToxlftWy5nn4WmvoLJYEq1SbyuSD040KhzBp75-VpfowhbFVN8oV18gB4XBHVywgkJcOfoIJuMQ7zONUv8OeOB0IC6Cv7hEf13fXMnTSOVSAJvLQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 Siempre pensé que un Stream Deck era solo cosa de streamers. Resulta ser un gadget que te ahorra un montón de tiempo a diario ⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/seleccion/siempre-pense-que-stream-deck-era-solo-cosa-streamers-resulta-ser-gadget-que-te-ahorra-monton-tiempo-a-diario⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/seleccion/siempre-pense-que-stream-deck-era-solo-cosa-streamers-resulta-ser-gadget-que-te-ahorra-monton-tiempo-a-diario",
-          "url": "https://www.xataka.com/seleccion/siempre-pense-que-stream-deck-era-solo-cosa-streamers-resulta-ser-gadget-que-te-ahorra-monton-tiempo-a-diario"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 1053841362,
-      "postUrl": "https://t.me/xataka/48050?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/qaH_kSqFDCy_E2Fw4xcierHq88SpeH9eQgSDtsgYbWP4u7O4tV0CEKxzVjweliFD97XX_9iFmJVZmi1UPmFelDfbkiAA1D-uz1qILUlWbG0qbYrVIPbdAUNqEjD4He-wNgSaQ9QLy57ZMrxrqgWv9EQ0K6vhvoyOVCDI-sLBnAZ3wHm0_GvvUa-OWSHj4EBbz-VwO9PasShp4Yh-Y95_YHhKtjnM8EQSqBtzwnCd8f9icYZLo__AgSLbZjmDvtzyQdxp3h8Rrr2RcqaTzNVq6USdqMJjMroYELDEdZXHBepwXoU1fz9u8DY4XiYGUcC6NjQosq9XiLn5xzr5ZO0CbA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 En Noruega se han preguntado cuáles son los mejores coches eléctricos a -30ºC. Y la respuesta es clara: los coches chinos ⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/movilidad/noruega-se-han-preguntado-cuales-mejores-coches-electricos-a-30oc-respuesta-clara-coches-chinos⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/movilidad/noruega-se-han-preguntado-cuales-mejores-coches-electricos-a-30oc-respuesta-clara-coches-chinos",
-          "url": "https://www.xataka.com/movilidad/noruega-se-han-preguntado-cuales-mejores-coches-electricos-a-30oc-respuesta-clara-coches-chinos"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 2804396528,
-      "postUrl": "https://t.me/xataka/48049?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/NHMIdAohWDC02BDy9v2xKRfDNp3l4HMBE3EaeJQgs9rPFP19dKG_44ff-VlEAYB64uB7vTitW25C-7bI2tXjPm4WJuVJC7agVopgzmVq33t13TDxirCAQJ9cjT-e7hFjj4WLl0mGX7UMzG1heFmK10xIP-MP_tH7Z3NOti7PVSJ1J-DLGwhkL6ELVGtAuvMaMrS2Qnu-bFTALTd6hjTiyOD7wxX3HU9zyqEyPbJCWt_DGlkMP6KedArjt232J-G3duXNk6jbf3xD6EguFsA1nNycfyzVBs5qh-FWOKC5hxy8UMfZUjtaSbNqfw-859BlWLaJXvIcZBZh2v1saJrtYg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 Para lograr el hito de levantar la mayor industria de drones sin China, Ucrania ha encontrado un aliado explosivo: Taiwán ⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/magnet/para-lograr-hito-levantar-mayor-industria-drones-china-ucrania-ha-encontrado-aliado-explosivo-taiwan⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/magnet/para-lograr-hito-levantar-mayor-industria-drones-china-ucrania-ha-encontrado-aliado-explosivo-taiwan",
-          "url": "https://www.xataka.com/magnet/para-lograr-hito-levantar-mayor-industria-drones-china-ucrania-ha-encontrado-aliado-explosivo-taiwan"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 4175468017,
-      "postUrl": "https://t.me/xataka/48048?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/fBNDcr5yxEqRfTN9U6ENVPg4WG1Ox3Zdo4jUAuMXKNAeOURLOMh7qH4aSxQ3LXyFvU3Vq3YmhEC7GWUMsABKiKB78ged8aPMqOKghlVVev8zjjuc35ZEuAe8u37RoGwgAHZ-ww_U9XRLazaeRSuqs7O2lOSEU7QWwEwib5tNqH5Inn_0dqzgopKqaBBKBUVTQg3qnWbr1ZJ7ayM4H4jC73UqvBHFkfkvVOGJGodMUUCd-QS1V9m5U06Z7nBbMiT_yvUa-pj0UcUurK5EnngfoB9_weibIBr1TbXH6M4nyFk5JL5xNJXP3vXTS-4nBHry4q8NQ5bI1VuIshNuU7dBNw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 China solo quiere electrodomésticos chinos. Así que Samsung ha tenido que cambiar de estrategia ⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/empresas-y-economia/china-solo-quiere-electrodomesticos-chinos-asi-que-samsung-ha-tenido-que-cambiar-estrategia⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/empresas-y-economia/china-solo-quiere-electrodomesticos-chinos-asi-que-samsung-ha-tenido-que-cambiar-estrategia",
-          "url": "https://www.xataka.com/empresas-y-economia/china-solo-quiere-electrodomesticos-chinos-asi-que-samsung-ha-tenido-que-cambiar-estrategia"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 2014342206,
-      "postUrl": "https://t.me/xataka/48047?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/TdYGaCNRrBF3UBGGVaOVD_CioNG1yNUQw5j_9Ee46KogeZM3XJartxgk5eQj_0jeKc1W1HDVMKSIMR0VP1B8SKgqw1KYllz8W7qiYOYLZt9xhpAutCAKp1eE9rXev_4S2uSA7Q8SpfkrQO6ptGHy6EcUpmORR7QHNMqI5Xoxi4TwYE6PvpUqchiX9xf-Bw1ARfvV7rN-2Q_9CFo6CvjeUE_oj5MwTXGTW1MIhmTwNF9Mki251oYqc6yANPYj8HQXq-jFpoeFlPNn8lSzf9e4Zj4Ny2IvinfVmi5ivjoQs6DXt-VPDBwjYeZMJARhEzLsIHLecoy3bm7V0JwRUoxoMA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 Hay un límite físico para lo que puede hacer la cámara de un móvil. OPPO está empujando ese límite más lejos que nadie ⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/moviles/hay-limite-fisico-puede-hacer-camara-movil-oppo-esta-empujando-ese-limite-lejos-que-nadie⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/moviles/hay-limite-fisico-puede-hacer-camara-movil-oppo-esta-empujando-ese-limite-lejos-que-nadie",
-          "url": "https://www.xataka.com/moviles/hay-limite-fisico-puede-hacer-camara-movil-oppo-esta-empujando-ese-limite-lejos-que-nadie"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 2952082999,
-      "postUrl": "https://t.me/xataka/48046?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/R1V1CXnntBFOo2jGQHRPlHhUbXLAy2Cf8Vle9VcvyqCWxAfoV8q7fyvzr06ItQYnKm47-Ke49H07_dluEm2c-toSuL2gb1dx9ss1Sxn0wLm72sP_uJqu0OrXVI0ttDpxWlFqE5pMGEAOkmzqFpzrbKI9Y15jx_H841Gxo6ca0Z-W4B7AOuyGjsnwrCbqWf7yyha53HT3JXjCW20m-htBd39xFB2rPuZr7AJJwJwS2YNOJ5szZ4ywG8H1N3uIr6VNcCos_v-xmcZWxLEM3ZsncVO7Vf3hNtaMg9XnYV9YFdzBbyMR2kzckc_iqfSbZHEV0yDHNaKDowptSs-205walw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 Samsung se une al club del billón de dólares. La IA lo ha hecho posible, pero también la ha convertido en su enemigo ⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/empresas-y-economia/samsung-se-une-al-club-billon-dolares-ia-ha-hecho-posible-tambien-ha-convertido-su-enemigo⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/empresas-y-economia/samsung-se-une-al-club-billon-dolares-ia-ha-hecho-posible-tambien-ha-convertido-su-enemigo",
-          "url": "https://www.xataka.com/empresas-y-economia/samsung-se-une-al-club-billon-dolares-ia-ha-hecho-posible-tambien-ha-convertido-su-enemigo"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
-      }
-    },
-    {
-      "id": 216531876,
-      "postUrl": "https://t.me/xataka/48045?single",
-      "source": {
-        "title": "Xataka",
-        "handle": "xataka",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/t2ioEk3rZG9JrfbqLoxbqFeUXkxGiAMGNSzeYiZdfZegHJHdirK-DMyl5OqfYQRk93HJ5RIxn2zQ5f_LxpqXLfBLGHV-gyqrMW2uGrt4gLpmmARYt68hD3ud7pwUNFOCS7ZzfkOmNcxWIfKLMnXr19kiKyqOX3QjcYIbUjlZvBizIzwlblrEe-AeQGOc-KDyUvnWYlPNOD471a_NZsYwuD8c5La_x4fk-FrjdEncq8xWyLAfIoDojfGGvFWEHJzICB2TUmTlgWTBafmZQ5QRO51Mu27D8BlxOGRZq359hMavvf-zLgALOyAC1FvYl87N_uXE90b1oXhG9MhDH72fsg.jpg"
-      },
-      "sourceId": "es:xataka",
-      "sourceCountryCode": "es",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/I--WlDcxGiVAI70_oWIWq-d0SXkaHPLFr312kXjf95q7u-RJ2UgbXJgfve38WNuMwgSFVoErI9WThYKKPuGhou_HSRcweZvQ640_odVINLJRvTwsFqdWHRt04Zq7lV24_9Ynz7T8HjbvJZI9B3LdguVrKOFzEmpMg9to72E3kkwFqDony4d9jY7nm1aYLNwXkrrpufBVedv22l9hG4pNKgjzeaLGkRLIIzfmihq5w_pSSlAaZGlY_ekpGREFFEndzd8caVww-bUPa7bdNdp_yj9gM1XfTHMryTc-8EG-J5Sz4tyt3VFIewh68UtErFHmmMz5rPjzuF-qL3b0K_qUyg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🆕 En dos años la carne de cerdo se abarató un 29% en las granjas y se encareció un 7% en los súper. La pregunta es obvia⁣⁣⁣⁣\n⁣⁣⁣⁣\n⁣⁣\n➡ https://www.xataka.com/magnet/dos-anos-carne-cerdo-paso-a-valer-29-granjas-7-super-pregunta-obvia⁣\n⁣\n⁣\n✅ Síguenos 👉 @xataka",
-      "links": [
-        {
-          "label": "https://www.xataka.com/magnet/dos-anos-carne-cerdo-paso-a-valer-29-granjas-7-super-pregunta-obvia",
-          "url": "https://www.xataka.com/magnet/dos-anos-carne-cerdo-paso-a-valer-29-granjas-7-super-pregunta-obvia"
-        },
-        {
-          "label": "@xataka",
-          "url": "https://t.me/xataka"
-        }
-      ],
-      "createdAt": "2026-05-07T14:50:13.727Z",
-      "expiresAt": "2026-05-08T14:50:13.727Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-07T14:50:13.727Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-07T14:50:13.727Z"
       }
     }
   ]
