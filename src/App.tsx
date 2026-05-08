@@ -8,6 +8,7 @@ import { CreatorScreen } from "./screens/CreatorScreen";
 import { SourceScreen } from "./screens/SourceScreen";
 import { AdminScreen } from "./screens/AdminScreen";
 import type { ContentTag, IngestedPost, Locale, TabId } from "./types/app";
+import { SplashLoader } from "./components/shared/SplashLoader";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
@@ -765,6 +766,7 @@ export default function App() {
           {FEED_LOADING_COPY[locale] ?? FEED_LOADING_COPY.en}
         </div>
       ) : null}
+      {isFeedLoading && current === "feed" && !shouldShowIntro ? <SplashLoader /> : null}
     </div>
   );
 }
