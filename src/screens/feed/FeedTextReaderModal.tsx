@@ -1,6 +1,10 @@
-
 import { AnimatePresence, motion, useDragControls } from "framer-motion";
-import { getAutotranslit, setAutotranslit } from "../../lib/autotranslit";
+import {
+  getAutotranslit,
+  getCountryLanguage,
+  setAutotranslit,
+  setTranslateUrlMode,
+} from "../../lib/autotranslit";
 import type { Locale } from "../../types/app";
 import {
   ArrowLeft,
@@ -18,11 +22,7 @@ import type { IngestedPost } from "../../types/app";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { FeedCarousel } from "./FeedCarousel";
-import {
-  getAudioMedia,
-  getFileMedia,
-  normalizeMediaList,
-} from "./feed.utils";
+import { getAudioMedia, getFileMedia, normalizeMediaList } from "./feed.utils";
 
 const SUB_KEY = "margelet_subscriptions";
 const FEED_MUTE_KEY = "margelet_feed_muted";
@@ -454,8 +454,7 @@ const COPY = {
     fileFromTelegram: "来自 Telegram 帖子的附件",
     openFile: "打开文件",
     musicAvailable: "原帖中有音乐",
-    musicAvailableText:
-      "这里显示帖子卡片。你可以在 Telegram 中打开原始音轨。",
+    musicAvailableText: "这里显示帖子卡片。你可以在 Telegram 中打开原始音轨。",
     openInTelegram: "在 Telegram 中打开",
     play: "播放",
     pause: "暂停",
@@ -498,7 +497,7 @@ function writeGlobalMuted(value: boolean) {
   window.dispatchEvent(
     new CustomEvent(FEED_MUTE_EVENT, {
       detail: { muted: value },
-    })
+    }),
   );
 }
 
@@ -557,12 +556,11 @@ function linkifyText(text: string) {
       return <span key={index}>{part}</span>;
     }
 
-    const href =
-      part.startsWith("http")
-        ? part
-        : part.startsWith("t.me/")
-          ? `https://${part}`
-          : `https://${part}`;
+    const href = part.startsWith("http")
+      ? part
+      : part.startsWith("t.me/")
+        ? `https://${part}`
+        : `https://${part}`;
 
     return (
       <a
@@ -579,7 +577,15 @@ function linkifyText(text: string) {
   });
 }
 
-function RichTextBlock({ text }: { text: string }) {
+function RichTextBlock({
+  text,
+  sourceLang,
+  autotranslitEnabled,
+}: {
+  text: string;
+  sourceLang: string;
+  autotranslitEnabled: boolean;
+}) {
   const paragraphs = useMemo(() => {
     return text
       .replace(/\r/g, "")
@@ -589,7 +595,12 @@ function RichTextBlock({ text }: { text: string }) {
   }, [text]);
 
   return (
-    <div className="space-y-4 text-[16px] leading-7 text-primary">
+    <div
+      className="space-y-4 text-[16px] leading-7 text-primary"
+      lang={sourceLang}
+      translate={autotranslitEnabled ? "yes" : "no"}
+      data-margelet-translate-zone={autotranslitEnabled ? "post" : undefined}
+    >
       {paragraphs.map((paragraph, index) => {
         const lines = paragraph.split("\n");
 
@@ -796,10 +807,10 @@ export function FeedTextReaderModal({
     getAutotranslit(),
   );
   const videoRef = useRef<HTMLVideoElement | null>(null);
-    const dragControls = useDragControls();
+  const dragControls = useDragControls();
 
   const visualMedia = media.filter(
-    (item) => item.kind === "image" || item.kind === "video"
+    (item) => item.kind === "image" || item.kind === "video",
   );
 
   const activeVisualItem =
@@ -809,6 +820,8 @@ export function FeedTextReaderModal({
 
   const audioMedia = post ? getAudioMedia(post) : [];
   const fileMedia = post ? getFileMedia(post) : [];
+  const sourceLang = getCountryLanguage(post?.sourceCountryCode || locale);
+  const targetLang = getCountryLanguage(locale);
 
   useEffect(() => {
     const sync = () => setAutotranslitEnabled(getAutotranslit());
@@ -822,6 +835,49 @@ export function FeedTextReaderModal({
     };
   }, []);
 
+  useEffect(() => {
+    if (!post) return;
+
+    const previousHtmlLang = document.documentElement.lang;
+    const previousHtmlTranslate =
+      document.documentElement.getAttribute("translate");
+    const previousBodyTranslate = document.body.getAttribute("translate");
+
+    if (autotranslitEnabled) {
+      document.documentElement.lang = sourceLang;
+      document.documentElement.setAttribute("translate", "yes");
+      document.body.setAttribute("translate", "no");
+      document.body.classList.add("margelet-translate-mode");
+      setTranslateUrlMode(true, sourceLang, targetLang);
+    } else {
+      document.documentElement.lang = targetLang;
+      document.documentElement.setAttribute("translate", "no");
+      document.body.classList.remove("margelet-translate-mode");
+      setTranslateUrlMode(false);
+    }
+
+    return () => {
+      document.documentElement.lang = previousHtmlLang || targetLang;
+
+      if (previousHtmlTranslate === null) {
+        document.documentElement.removeAttribute("translate");
+      } else {
+        document.documentElement.setAttribute(
+          "translate",
+          previousHtmlTranslate,
+        );
+      }
+
+      if (previousBodyTranslate === null) {
+        document.body.removeAttribute("translate");
+      } else {
+        document.body.setAttribute("translate", previousBodyTranslate);
+      }
+
+      document.body.classList.remove("margelet-translate-mode");
+    };
+  }, [autotranslitEnabled, post, sourceLang, targetLang]);
+
   const toggleAutotranslit = () => {
     const next = !autotranslitEnabled;
     setAutotranslit(next);
@@ -832,7 +888,6 @@ export function FeedTextReaderModal({
     if (!post) return;
 
     setSubscribed(getSubs().includes(post.source.handle));
-
   }, [post]);
 
   useEffect(() => {
@@ -858,7 +913,7 @@ export function FeedTextReaderModal({
     const syncMuted = (event: Event) => {
       const detail = (event as CustomEvent<{ muted?: boolean }>).detail;
       setMuted(
-        typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted()
+        typeof detail?.muted === "boolean" ? detail.muted : readGlobalMuted(),
       );
     };
 
@@ -945,7 +1000,6 @@ export function FeedTextReaderModal({
     }
   };
 
-
   const handleSubscribeClick = () => {
     if (!post) return;
 
@@ -957,7 +1011,6 @@ export function FeedTextReaderModal({
 
   const handleOpenTelegram = () => {
     if (!post) return;
-
 
     window.open(post.postUrl, "_blank", "noopener,noreferrer");
   };
@@ -990,7 +1043,8 @@ export function FeedTextReaderModal({
               }
             }}
             onClick={(event) => event.stopPropagation()}
-          >                
+            translate="no"
+          >
             <div
               className="relative border-b border-soft px-4 py-3"
               onPointerDown={(event) => {
@@ -1035,14 +1089,12 @@ export function FeedTextReaderModal({
                 >
                   <Bell
                     className={`h-5 w-5 ${
-                      subscribed
-                        ? "fill-current text-primary"
-                        : "text-primary"
+                      subscribed ? "fill-current text-primary" : "text-primary"
                     }`}
                   />
                 </button>
               </div>
-            </div>              
+            </div>
 
             <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
               <button
@@ -1071,7 +1123,7 @@ export function FeedTextReaderModal({
                     @{post.source.handle}
                   </div>
                 </div>
-              </button>              
+              </button>
 
               {visualMedia.length > 0 ? (
                 <div className="mb-4 overflow-hidden rounded-[24px]">
@@ -1081,7 +1133,7 @@ export function FeedTextReaderModal({
                       aspectClass="aspect-[4/5]"
                       activeIndex={Math.min(
                         mediaIndex,
-                        Math.max(visualMedia.length - 1, 0)
+                        Math.max(visualMedia.length - 1, 0),
                       )}
                       onChange={setMediaIndex}
                       controlsTone="dark"
@@ -1199,7 +1251,13 @@ export function FeedTextReaderModal({
                 />
               ) : null}
 
-              {text ? <RichTextBlock text={text} /> : null}
+              {text ? (
+                <RichTextBlock
+                  text={text}
+                  sourceLang={sourceLang}
+                  autotranslitEnabled={autotranslitEnabled}
+                />
+              ) : null}
             </div>
 
             <div className="sticky bottom-0 border-t border-soft bg-surface px-4 py-3">
@@ -1223,11 +1281,15 @@ export function FeedTextReaderModal({
                     />
                   </span>
 
-                  <span className={autotranslitEnabled ? "text-primary" : "text-secondary"}>
+                  <span
+                    className={
+                      autotranslitEnabled ? "text-primary" : "text-secondary"
+                    }
+                  >
                     {getAutotranslitLabel(locale)}
                   </span>
                 </button>
-             
+
                 <button
                   type="button"
                   onClick={handleOpenTelegram}
