@@ -2,7 +2,12 @@ import { ChevronDown, FileText, Image as ImageIcon, Play } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getTheme, type Theme } from "../../lib/theme";
 import type { Locale } from "../../types/app";
-import { getAutotranslit, setAutotranslit } from "../../lib/autotranslit";
+import {
+  clearGTranslate,
+  getAutotranslit,
+  requestGTranslate,
+  setAutotranslit,
+} from "../../lib/autotranslit";
 
 export type FeedMediaMode = "all" | "text" | "photo" | "video";
 
@@ -606,11 +611,26 @@ export function SmartFeedBar({
     };
   }, []);
 
+
   const toggleAutotranslit = () => {
     const next = !autotranslitEnabled;
+
+    // Сохраняем состояние в localStorage
     setAutotranslit(next);
     setAutotranslitEnabled(next);
-  };
+
+    // Включаем перевод всей ленты
+    if (next) {
+      window.setTimeout(() => {
+        requestGTranslate(locale);
+      }, 80);
+      return;
+    }
+
+    // Выключаем перевод и возвращаем оригинальный текст.
+    // Для глобального перевода выполняем мягкую перезагрузку страницы.
+    clearGTranslate({ reload: true });
+  };  
 
   useEffect(() => {
     if (!countriesOpen) return;
@@ -761,7 +781,8 @@ export function SmartFeedBar({
     <div
       ref={shellRef}
       className={
-        floating
+        `notranslate margelet-ui ${
+          floating
           ? `fixed inset-x-0 ${countriesOpen ? "z-[120]" : "z-[70]"} transition-all duration-300 ease-out ${
               visible
                 ? "translate-y-0 opacity-100"
@@ -770,7 +791,9 @@ export function SmartFeedBar({
           : countriesOpen
             ? "relative z-[130]"
             : "relative z-[20]"
+        }`
       }
+      translate="no"
       style={floating ? { top: "var(--app-header-offset)" } : undefined}
       aria-hidden={floating ? !visible : undefined}
     >
@@ -926,8 +949,11 @@ export function SmartFeedBar({
                     <span className="text-[#2f6df6]">
                       {getCountryShort(baseCountry)}
                     </span>
-                    <span className={isDark ? "text-[#95a8bd]" : "text-secondary"}>
-                      {" "}→ Autotranslit Telegram channels
+                    <span
+                      className={isDark ? "text-[#95a8bd]" : "text-secondary"}
+                    >
+                      {" "}
+                      → Autotranslit Telegram channels
                     </span>
                   </div>
 

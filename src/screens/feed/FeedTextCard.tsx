@@ -658,7 +658,10 @@ export function FeedTextCard({
 
         <div className="text-[15px] leading-6 text-primary">
           {displayText ? (
-            <div className="line-clamp-5 whitespace-pre-wrap break-words">
+            <div
+              className="margelet-telegram-content line-clamp-5 whitespace-pre-wrap break-words"
+              translate="yes"
+            >
               {linkifyText(displayText)}
             </div>
           ) : null}

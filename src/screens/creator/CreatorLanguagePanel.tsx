@@ -22,7 +22,9 @@ export function CreatorLanguagePanel({
   onInstallApp: () => void;
   installHintText: string;
 }) {
-  const [autotranslit, setAutotranslitState] = useState(() => getAutotranslit());
+  const [autotranslit, setAutotranslitState] = useState(() =>
+    getAutotranslit(),
+  );
 
   useEffect(() => {
     const sync = () => setAutotranslitState(getAutotranslit());
@@ -36,6 +38,7 @@ export function CreatorLanguagePanel({
     };
   }, []);
 
+
   const handleToggleAutotranslit = () => {
     const next = !autotranslit;
     setAutotranslit(next);
@@ -43,7 +46,7 @@ export function CreatorLanguagePanel({
   };
 
   return (
-    <div className="space-y-3">
+    <div className="notranslate margelet-ui space-y-3" translate="no">
       <div className="space-y-3">
         <div className="flex items-center gap-2 text-sm font-semibold text-primary">
           {copy.languageTitle}
@@ -83,7 +86,7 @@ export function CreatorLanguagePanel({
                   : "left-[2px] bg-[#9aa4b2] dark:bg-[#6f89a8]"
               }`}
             />
-          </span>          
+          </span>
         </button>
       </div>
 

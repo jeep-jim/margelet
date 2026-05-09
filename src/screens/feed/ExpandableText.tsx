@@ -61,7 +61,8 @@ function ExpandableTextBase({
       <div className={textClassName}>
         <div
           ref={measureRef}
-          className={`${clampClass} whitespace-pre-wrap break-words`}
+          className={`margelet-telegram-content ${clampClass} whitespace-pre-wrap break-words`}
+          translate="yes"
         >
           {text}
         </div>

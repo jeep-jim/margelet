@@ -1,9 +1,10 @@
 import { AnimatePresence, motion, useDragControls } from "framer-motion";
 import {
+  clearGTranslate,
   getAutotranslit,
   getCountryLanguage,
-  setAutotranslit,
-  setTranslateUrlMode,
+  requestGTranslate,
+  sameTranslateLanguage,
 } from "../../lib/autotranslit";
 import type { Locale } from "../../types/app";
 import {
@@ -505,6 +506,20 @@ function getAutotranslitLabel(locale: Locale) {
   return String(locale).toUpperCase();
 }
 
+function getPostCountryCode(post: IngestedPost | null) {
+  const record = (post || {}) as Record<string, unknown>;
+  const source = (record.source || {}) as Record<string, unknown>;
+
+  return String(
+    record.countryCode ||
+      record.sourceCountryCode ||
+      record.country ||
+      source.countryCode ||
+      source.country ||
+      "",
+  );
+}
+
 function getAutotranslitTrackClasses(checked: boolean) {
   return checked
     ? "border-[#2f6df6] bg-[#2f6df6]"
@@ -577,15 +592,7 @@ function linkifyText(text: string) {
   });
 }
 
-function RichTextBlock({
-  text,
-  sourceLang,
-  autotranslitEnabled,
-}: {
-  text: string;
-  sourceLang: string;
-  autotranslitEnabled: boolean;
-}) {
+function RichTextBlock({ text }: { text: string }) {
   const paragraphs = useMemo(() => {
     return text
       .replace(/\r/g, "")
@@ -595,12 +602,7 @@ function RichTextBlock({
   }, [text]);
 
   return (
-    <div
-      className="space-y-4 text-[16px] leading-7 text-primary"
-      lang={sourceLang}
-      translate={autotranslitEnabled ? "yes" : "no"}
-      data-margelet-translate-zone={autotranslitEnabled ? "post" : undefined}
-    >
+    <div className="space-y-4 text-[16px] leading-7 text-primary">
       {paragraphs.map((paragraph, index) => {
         const lines = paragraph.split("\n");
 
@@ -778,6 +780,47 @@ function MusicFallback({
   );
 }
 
+function lockGTranslateToModal(modalRoot: HTMLElement | null) {
+  if (typeof document === "undefined" || !modalRoot) return () => {};
+
+  const locked: Array<{
+    element: HTMLElement;
+    hadNoTranslate: boolean;
+    prevTranslate: string | null;
+  }> = [];
+
+  document.querySelectorAll<HTMLElement>("body *").forEach((element) => {
+    if (
+      element === modalRoot ||
+      modalRoot.contains(element) ||
+      element.contains(modalRoot)
+    ) {
+      return;
+    }
+
+    locked.push({
+      element,
+      hadNoTranslate: element.classList.contains("notranslate"),
+      prevTranslate: element.getAttribute("translate"),
+    });
+
+    element.classList.add("notranslate");
+    element.setAttribute("translate", "no");
+  });
+
+  return () => {
+    locked.forEach(({ element, hadNoTranslate, prevTranslate }) => {
+      if (!hadNoTranslate) element.classList.remove("notranslate");
+
+      if (prevTranslate === null) {
+        element.removeAttribute("translate");
+      } else {
+        element.setAttribute("translate", prevTranslate);
+      }
+    });
+  };
+}
+
 export function FeedTextReaderModal({
   post,
   locale,
@@ -806,8 +849,12 @@ export function FeedTextReaderModal({
   const [autotranslitEnabled, setAutotranslitEnabled] = useState(() =>
     getAutotranslit(),
   );
+  const [contentResetVersion, setContentResetVersion] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const dragControls = useDragControls();
+
+  const modalRootRef = useRef<HTMLDivElement | null>(null);
+  const modalTranslateCleanupRef = useRef<(() => void) | null>(null);
 
   const visualMedia = media.filter(
     (item) => item.kind === "image" || item.kind === "video",
@@ -820,8 +867,10 @@ export function FeedTextReaderModal({
 
   const audioMedia = post ? getAudioMedia(post) : [];
   const fileMedia = post ? getFileMedia(post) : [];
-  const sourceLang = getCountryLanguage(post?.sourceCountryCode || locale);
-  const targetLang = getCountryLanguage(locale);
+  const postLanguage = getCountryLanguage(getPostCountryCode(post));
+  const canShowAutotranslit = post
+    ? !sameTranslateLanguage(postLanguage, locale)
+    : false;
 
   useEffect(() => {
     const sync = () => setAutotranslitEnabled(getAutotranslit());
@@ -835,54 +884,25 @@ export function FeedTextReaderModal({
     };
   }, []);
 
-  useEffect(() => {
-    if (!post) return;
-
-    const previousHtmlLang = document.documentElement.lang;
-    const previousHtmlTranslate =
-      document.documentElement.getAttribute("translate");
-    const previousBodyTranslate = document.body.getAttribute("translate");
-
-    if (autotranslitEnabled) {
-      document.documentElement.lang = sourceLang;
-      document.documentElement.setAttribute("translate", "yes");
-      document.body.setAttribute("translate", "no");
-      document.body.classList.add("margelet-translate-mode");
-      setTranslateUrlMode(true, sourceLang, targetLang);
-    } else {
-      document.documentElement.lang = targetLang;
-      document.documentElement.setAttribute("translate", "no");
-      document.body.classList.remove("margelet-translate-mode");
-      setTranslateUrlMode(false);
-    }
-
-    return () => {
-      document.documentElement.lang = previousHtmlLang || targetLang;
-
-      if (previousHtmlTranslate === null) {
-        document.documentElement.removeAttribute("translate");
-      } else {
-        document.documentElement.setAttribute(
-          "translate",
-          previousHtmlTranslate,
-        );
-      }
-
-      if (previousBodyTranslate === null) {
-        document.body.removeAttribute("translate");
-      } else {
-        document.body.setAttribute("translate", previousBodyTranslate);
-      }
-
-      document.body.classList.remove("margelet-translate-mode");
-    };
-  }, [autotranslitEnabled, post, sourceLang, targetLang]);
-
   const toggleAutotranslit = () => {
     const next = !autotranslitEnabled;
-    setAutotranslit(next);
+
     setAutotranslitEnabled(next);
-  };
+
+    if (next) {
+      modalTranslateCleanupRef.current?.();
+      modalTranslateCleanupRef.current = lockGTranslateToModal(modalRootRef.current);
+
+      window.setTimeout(() => requestGTranslate(locale), 80);
+      return;
+    }
+
+    modalTranslateCleanupRef.current?.();
+    modalTranslateCleanupRef.current = null;
+
+    clearGTranslate({ reload: false });
+    setContentResetVersion((value) => value + 1);
+  };  
 
   useEffect(() => {
     if (!post) return;
@@ -891,10 +911,16 @@ export function FeedTextReaderModal({
   }, [post]);
 
   useEffect(() => {
+    if (!post || !autotranslitEnabled || !canShowAutotranslit) return;
+    requestGTranslate(locale);
+  }, [post?.id, locale, autotranslitEnabled, canShowAutotranslit]);
+
+  useEffect(() => {
     setMediaIndex(0);
     setCurrentTime(0);
     setDuration(0);
     setIsVideoPlaying(true);
+    setContentResetVersion((value) => value + 1);
   }, [post?.id]);
 
   useEffect(() => {
@@ -1026,6 +1052,7 @@ export function FeedTextReaderModal({
           onClick={onClose}
         >
           <motion.div
+            ref={modalRootRef}
             className="absolute inset-x-0 bottom-0 mx-auto flex max-h-[92vh] w-full max-w-[570px] flex-col overflow-hidden rounded-t-[32px] bg-surface shadow-soft"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
@@ -1043,10 +1070,9 @@ export function FeedTextReaderModal({
               }
             }}
             onClick={(event) => event.stopPropagation()}
-            translate="no"
           >
             <div
-              className="relative border-b border-soft px-4 py-3"
+              className="notranslate relative border-b border-soft px-4 py-3"
               onPointerDown={(event) => {
                 const target = event.target as HTMLElement | null;
                 if (target?.closest("button, a, input, textarea, video")) {
@@ -1100,7 +1126,7 @@ export function FeedTextReaderModal({
               <button
                 type="button"
                 onClick={() => window.location.assign(`/${post.source.handle}`)}
-                className="mb-4 flex w-full min-w-0 items-start gap-3 text-left"
+                className="notranslate mb-4 flex w-full min-w-0 items-start gap-3 text-left"
               >
                 <div className="shrink-0">
                   <FeedSourceAvatar post={post} />
@@ -1252,43 +1278,50 @@ export function FeedTextReaderModal({
               ) : null}
 
               {text ? (
-                <RichTextBlock
-                  text={text}
-                  sourceLang={sourceLang}
-                  autotranslitEnabled={autotranslitEnabled}
-                />
+                <div
+                  key={`${post.id}-${contentResetVersion}`}
+                  className="margelet-translatable"
+                  lang={postLanguage}
+                  translate="yes"
+                >
+                  <RichTextBlock text={text} />
+                </div>
               ) : null}
             </div>
 
-            <div className="sticky bottom-0 border-t border-soft bg-surface px-4 py-3">
+            <div className="notranslate sticky bottom-0 border-t border-soft bg-surface px-4 py-3">
               <div className="flex items-center justify-between gap-3">
-                <button
-                  type="button"
-                  onClick={toggleAutotranslit}
-                  className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold"
-                  aria-pressed={autotranslitEnabled}
-                  aria-label="Toggle browser translation"
-                >
-                  <span
-                    className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getAutotranslitTrackClasses(
-                      autotranslitEnabled,
-                    )}`}
+                {canShowAutotranslit ? (
+                  <button
+                    type="button"
+                    onClick={toggleAutotranslit}
+                    className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold"
+                    aria-pressed={autotranslitEnabled}
+                    aria-label="Toggle browser translation"
                   >
                     <span
-                      className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${getAutotranslitThumbClasses(
+                      className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getAutotranslitTrackClasses(
                         autotranslitEnabled,
                       )}`}
-                    />
-                  </span>
+                    >
+                      <span
+                        className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${getAutotranslitThumbClasses(
+                          autotranslitEnabled,
+                        )}`}
+                      />
+                    </span>
 
-                  <span
-                    className={
-                      autotranslitEnabled ? "text-primary" : "text-secondary"
-                    }
-                  >
-                    {getAutotranslitLabel(locale)}
-                  </span>
-                </button>
+                    <span
+                      className={
+                        autotranslitEnabled ? "text-primary" : "text-secondary"
+                      }
+                    >
+                      {getAutotranslitLabel(locale)}
+                    </span>
+                  </button>
+                ) : (
+                  <div />
+                )}
 
                 <button
                   type="button"

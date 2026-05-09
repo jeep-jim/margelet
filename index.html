@@ -58,5 +58,140 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <div class="gtranslate_wrapper" aria-hidden="true"></div>
+
+    <style>
+      .gtranslate_wrapper {
+        position: fixed !important;
+        left: -10000px !important;
+        bottom: 0 !important;
+        z-index: -1 !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        clip: rect(0 0 0 0) !important;
+        clip-path: inset(50%) !important;
+      }
+
+      .gtranslate_wrapper select {
+        display: block !important;
+        width: 1px !important;
+        height: 1px !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      .gt_float_switcher,
+      .gt_switcher,
+      .gt_container,
+      .gt_options,
+      .skiptranslate,
+      iframe.skiptranslate,
+      .goog-te-banner-frame {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      body {
+        top: 0 !important;
+      }
+    </style>
+
+    <script>
+      (function () {
+        function protectNode(node) {
+          node.classList.add('notranslate');
+          node.setAttribute('translate', 'no');
+        }
+
+        function protectMargeletUi(root) {
+          if (!root || !root.querySelectorAll) return;
+
+          var selectors = [
+            'header',
+            'nav',
+            'button',
+            'select',
+            'input',
+            'textarea',
+            '[role="button"]',
+            '[aria-label]',
+            '.margelet-ui',
+            '.notranslate'
+          ];
+
+          root.querySelectorAll(selectors.join(',')).forEach(protectNode);
+
+          root.querySelectorAll('*').forEach(function (node) {
+            if (node.closest && node.closest('.margelet-translatable')) return;
+            if (node.querySelector && node.querySelector('.margelet-translatable')) return;
+
+            var text = (node.textContent || '').trim();
+            if (text === 'margeleT' || text === 'маргелеТ' || text === 'МаргелеТ') {
+              protectNode(node);
+            }
+          });
+        }
+
+        window.__MARGELET_PROTECT_TRANSLATE_UI__ = protectMargeletUi;
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function () {
+            protectMargeletUi(document);
+          });
+        } else {
+          protectMargeletUi(document);
+        }
+
+        var protectScheduled = false;
+        var observer = new MutationObserver(function () {
+          if (protectScheduled) return;
+          protectScheduled = true;
+
+          window.requestAnimationFrame(function () {
+            protectScheduled = false;
+            protectMargeletUi(document);
+          });
+        });
+
+        observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true
+        });
+      })();
+    </script>
+
+    <script>
+      window.gtranslateSettings = {
+        default_language: "auto",
+        native_language_names: true,
+        languages: [
+          "en",
+          "ru",
+          "uk",
+          "hi",
+          "fa",
+          "tr",
+          "pt",
+          "kk",
+          "uz",
+          "ar",
+          "ur",
+          "id",
+          "es",
+          "it",
+          "fr",
+          "de",
+          "zh-CN",
+          "ms"
+        ],
+        wrapper_selector: ".gtranslate_wrapper"
+      };
+    </script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
   </body>
 </html>
