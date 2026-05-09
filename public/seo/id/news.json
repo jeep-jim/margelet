@@ -7,7 +7,7 @@
   "title": "Berita Telegram trends in Indonesia | margeleT",
   "description": "Fresh Berita Telegram posts, channels, keywords and sources from Indonesia. Updated automatically by margeleT.",
   "h1": "Berita Telegram trends in Indonesia",
-  "updatedAt": "2026-05-09T08:01:52.204Z",
+  "updatedAt": "2026-05-09T08:15:53.119Z",
   "parentTag": {
     "value": "news",
     "emoji": "📰",
@@ -289,7 +289,100 @@
       }
     ]
   },
-  "posts": [],
-  "topSources": [],
+  "posts": [
+    {
+      "id": 1140745159,
+      "postUrl": "https://t.me/pythonindo/2?single",
+      "source": {
+        "title": "Python Indo",
+        "handle": "pythonindo",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "id:pythonindo",
+      "sourceCountryCode": "id",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-09T08:15:53.119Z",
+      "expiresAt": "2026-05-10T08:15:53.119Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:15:53.119Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:15:53.119Z"
+      }
+    },
+    {
+      "id": 1457725684,
+      "postUrl": "https://t.me/pythonindo/1?single",
+      "source": {
+        "title": "Python Indo",
+        "handle": "pythonindo",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "id:pythonindo",
+      "sourceCountryCode": "id",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-09T08:15:53.119Z",
+      "expiresAt": "2026-05-10T08:15:53.119Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:15:53.119Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:15:53.119Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "Python Indo",
+      "handle": "pythonindo",
+      "count": 2
+    }
+  ],
   "keywords": []
 }
