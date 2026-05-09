@@ -357,7 +357,7 @@ function buildPageHtml(page: SeoPage, siblingLinks: string[]) {
   <meta name="twitter:title" content="${escapeHtml(page.title)}" />
   <meta name="twitter:description" content="${escapeHtml(page.description)}" />
   <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
-  <script type="application/ld+json">${escapeHtml(JSON.stringify(jsonLd))}</script>
+  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
   <style>
     body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{max-width:920px;margin:0 auto;padding:32px 18px 56px}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0}h1{font-size:34px;line-height:1.15;margin:0 0 12px}h2{margin-top:30px}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;margin-top:14px;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}
   </style>
