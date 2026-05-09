@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-08T23:11:20.632Z",
+  "updatedAt": "2026-05-09T00:11:35.333Z",
   "countries": {
     "ae": {
       "code": "ae",
@@ -8,15 +8,15 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ae.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "ar": {
       "code": "ar",
-      "posts": 40,
+      "posts": 41,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ar.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "co": {
       "code": "co",
@@ -24,15 +24,15 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/co.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "de": {
       "code": "de",
-      "posts": 112,
+      "posts": 111,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/de.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "eg": {
       "code": "eg",
@@ -40,7 +40,7 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/eg.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "en": {
       "code": "en",
@@ -48,7 +48,7 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/en.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "es": {
       "code": "es",
@@ -56,15 +56,15 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/es.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "fa": {
       "code": "fa",
-      "posts": 361,
+      "posts": 305,
       "chunks": 2,
       "mode": "chunked",
       "path": "/feeds/fa.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "fr": {
       "code": "fr",
@@ -72,31 +72,31 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/fr.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "id": {
       "code": "id",
-      "posts": 48,
+      "posts": 59,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/id.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "in": {
       "code": "in",
-      "posts": 79,
+      "posts": 81,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/in.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "it": {
       "code": "it",
-      "posts": 94,
+      "posts": 91,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/it.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "kk": {
       "code": "kk",
@@ -104,7 +104,7 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/kk.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "ms": {
       "code": "ms",
@@ -112,47 +112,55 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ms.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "mx": {
       "code": "mx",
-      "posts": 69,
+      "posts": 63,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/mx.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "ng": {
       "code": "ng",
-      "posts": 1,
+      "posts": 11,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ng.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
+    },
+    "pk": {
+      "code": "pk",
+      "posts": 2,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/pk.json",
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "pt-br": {
       "code": "pt-br",
-      "posts": 273,
+      "posts": 251,
       "chunks": 2,
       "mode": "chunked",
       "path": "/feeds/pt-br.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "ru": {
       "code": "ru",
-      "posts": 944,
+      "posts": 952,
       "chunks": 4,
       "mode": "chunked",
       "path": "/feeds/ru.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "sa": {
       "code": "sa",
-      "posts": 100,
+      "posts": 92,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/sa.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "tr": {
       "code": "tr",
@@ -160,7 +168,7 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/tr.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "uk": {
       "code": "uk",
@@ -168,7 +176,7 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/uk.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "uz": {
       "code": "uz",
@@ -176,7 +184,7 @@
       "chunks": 2,
       "mode": "chunked",
       "path": "/feeds/uz.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "za": {
       "code": "za",
@@ -184,15 +192,15 @@
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/za.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     },
     "zh": {
       "code": "zh",
-      "posts": 62,
+      "posts": 68,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/zh.json",
-      "updatedAt": "2026-05-08T23:11:20.632Z"
+      "updatedAt": "2026-05-09T00:11:35.333Z"
     }
   }
 }
