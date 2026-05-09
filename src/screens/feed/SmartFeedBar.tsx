@@ -2,6 +2,7 @@ import { ChevronDown, FileText, Image as ImageIcon, Play } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getTheme, type Theme } from "../../lib/theme";
 import type { Locale } from "../../types/app";
+import { getAutotranslit, setAutotranslit } from "../../lib/autotranslit";
 
 export type FeedMediaMode = "all" | "text" | "photo" | "video";
 
@@ -589,6 +590,28 @@ export function SmartFeedBar({
   const [countriesOpen, setCountriesOpen] = useState(false);
   const [countryPickerOpen, setCountryPickerOpen] = useState(false);
 
+  const [autotranslitEnabled, setAutotranslitEnabled] = useState(() =>
+    getAutotranslit(),
+  );
+
+  useEffect(() => {
+    const sync = () => setAutotranslitEnabled(getAutotranslit());
+
+    window.addEventListener("margelet-autotranslit-change", sync);
+    window.addEventListener("storage", sync);
+
+    return () => {
+      window.removeEventListener("margelet-autotranslit-change", sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  const toggleAutotranslit = () => {
+    const next = !autotranslitEnabled;
+    setAutotranslit(next);
+    setAutotranslitEnabled(next);
+  };
+
   useEffect(() => {
     if (!countriesOpen) return;
     if (typeof document === "undefined") return;
@@ -887,6 +910,47 @@ export function SmartFeedBar({
                     </div>
                   );
                 })}
+              </div>
+
+              <div
+                className={`mt-4 border-t pt-3 ${
+                  isDark ? "border-[#22364f]" : "border-soft"
+                }`}
+              >
+                <div className="pr-1 flex items-center justify-between gap-3">
+                  <div
+                    className={`min-w-0 text-[15px] font-medium ${
+                      isDark ? "text-white" : "text-primary"
+                    }`}
+                  >
+                    <span className="text-[#2f6df6]">
+                      {getCountryShort(baseCountry)}
+                    </span>
+                    <span className={isDark ? "text-[#95a8bd]" : "text-secondary"}>
+                      {" "}→ Autotranslit Telegram channels
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={toggleAutotranslit}
+                    className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getSwitchTrackClasses(
+                      isDark,
+                      autotranslitEnabled,
+                      true,
+                    )}`}
+                    aria-pressed={autotranslitEnabled}
+                    aria-label="Toggle browser translation"
+                  >
+                    <span
+                      className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${getSwitchThumbClasses(
+                        isDark,
+                        autotranslitEnabled,
+                        true,
+                      )}`}
+                    />
+                  </button>
+                </div>
               </div>
 
               <div

@@ -1,5 +1,6 @@
 
 import { AnimatePresence, motion, useDragControls } from "framer-motion";
+import { getAutotranslit, setAutotranslit } from "../../lib/autotranslit";
 import type { Locale } from "../../types/app";
 import {
   ArrowLeft,
@@ -501,6 +502,20 @@ function writeGlobalMuted(value: boolean) {
   );
 }
 
+function getAutotranslitLabel(locale: Locale) {
+  return String(locale).toUpperCase();
+}
+
+function getAutotranslitTrackClasses(checked: boolean) {
+  return checked
+    ? "border-[#2f6df6] bg-[#2f6df6]"
+    : "border-soft bg-surface-soft";
+}
+
+function getAutotranslitThumbClasses(checked: boolean) {
+  return checked ? "left-[20px] bg-white" : "left-[2px] bg-[#9aa4b2]";
+}
+
 function formatTime(seconds: number) {
   const safe = Number.isFinite(seconds) ? Math.max(0, Math.floor(seconds)) : 0;
   const mins = Math.floor(safe / 60);
@@ -777,6 +792,9 @@ export function FeedTextReaderModal({
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [autotranslitEnabled, setAutotranslitEnabled] = useState(() =>
+    getAutotranslit(),
+  );
   const videoRef = useRef<HTMLVideoElement | null>(null);
     const dragControls = useDragControls();
 
@@ -792,6 +810,23 @@ export function FeedTextReaderModal({
   const audioMedia = post ? getAudioMedia(post) : [];
   const fileMedia = post ? getFileMedia(post) : [];
 
+  useEffect(() => {
+    const sync = () => setAutotranslitEnabled(getAutotranslit());
+
+    window.addEventListener("margelet-autotranslit-change", sync);
+    window.addEventListener("storage", sync);
+
+    return () => {
+      window.removeEventListener("margelet-autotranslit-change", sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  const toggleAutotranslit = () => {
+    const next = !autotranslitEnabled;
+    setAutotranslit(next);
+    setAutotranslitEnabled(next);
+  };
 
   useEffect(() => {
     if (!post) return;
@@ -1169,9 +1204,30 @@ export function FeedTextReaderModal({
 
             <div className="sticky bottom-0 border-t border-soft bg-surface px-4 py-3">
               <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-8 text-secondary">
-                </div>
-                
+                <button
+                  type="button"
+                  onClick={toggleAutotranslit}
+                  className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold"
+                  aria-pressed={autotranslitEnabled}
+                  aria-label="Toggle browser translation"
+                >
+                  <span
+                    className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${getAutotranslitTrackClasses(
+                      autotranslitEnabled,
+                    )}`}
+                  >
+                    <span
+                      className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${getAutotranslitThumbClasses(
+                        autotranslitEnabled,
+                      )}`}
+                    />
+                  </span>
+
+                  <span className={autotranslitEnabled ? "text-primary" : "text-secondary"}>
+                    {getAutotranslitLabel(locale)}
+                  </span>
+                </button>
+             
                 <button
                   type="button"
                   onClick={handleOpenTelegram}
