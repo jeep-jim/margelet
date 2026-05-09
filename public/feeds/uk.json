@@ -1,9 +1,64 @@
 {
   "countryCode": "uk",
-  "updatedAt": "2026-05-09T12:01:07.599Z",
-  "totalPosts": 81,
+  "updatedAt": "2026-05-09T12:43:00.907Z",
+  "totalPosts": 83,
   "chunks": 1,
   "items": [
+    {
+      "id": 1001489758,
+      "postUrl": "https://t.me/doucommunity/16450?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WFzUSWHdffkTbCSQ2DXDZ_MFo1tQKZSyxdpVqby6ItPnRGStGf0mx8FeCMmfzcdbESKPlywIoYTUSzhhRPmVziRfT_n9DTBgWQsJzauRA2pv5Yzqzqca75DNG6GswgkCPIatbI8GngGoSUJckMxOqITPhE1ntnu1l-_7sTOeYBzMR7UKWWpiCQlDE78oteu6IgPxsjJPdeuIfrLrcT0ikzdLu00Yya3j0qFaPhfvbitcgq0Ujbtn5HdBeJxCP7XBmyEflTLcwPujpuU6nA05moo4U_VKXAG2WegjCvT9rPqXPl22qzgsJF2lbr5yNCfEj3_QCzB9m4BG3IHdXV4klg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Усі навколо говорять про AI-агентів, але мало хто дійсно розуміє, що саме ховається під їхнім капотом. Юрій Гуц вирішив відкинути магію популярних фреймворків на кшталт LangGraph чи CrewAI та показати справжню анатомію агентів, написавши власного з повного нуля на чистому Python.\n\nЩоб теорія не була нудною, автор розбирає весь агентний цикл на практичному прикладі — створює утиліту ordnung, яка через локальну LLM самостійно аналізує хаос із файлів на робочому столі та акуратно сортує їх по папках. \n\n👉 https://dou.ua/goto/B9eN",
+      "links": [
+        {
+          "label": "https://dou.ua/goto/B9eN",
+          "url": "https://dou.ua/goto/B9eN"
+        }
+      ],
+      "createdAt": "2026-05-09T12:42:40.619Z",
+      "expiresAt": "2026-05-10T12:42:40.619Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T12:42:40.619Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T12:42:40.619Z"
+      }
+    },
     {
       "id": 4152289325,
       "postUrl": "https://t.me/devukraine/45335?single",
@@ -146,65 +201,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T10:37:00.004Z"
-      }
-    },
-    {
-      "id": 4141194440,
-      "postUrl": "https://t.me/doucommunity/16445?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Q7hCPEUSV26XoqKx4L0bM1lfw1bKdqKapLLD_iaZR-Q4VWadVq5jqKVwvprKQPNg_NJKKOFuF0Zc7FpUECvNkCyDbM9_nynx94gkDNxhDa1EvEfun3b0n1ouE3HCQfXetKgt_Fxbdx3a65XgQbKafS-WfGFlBz3JadPwz2YShPYvkULlXPxf6ixG92vu8zn_RBOsNbNlaMQUGfiH93Y-c5BXrXAXkrWpg0Bz1nl05IoDH9CYh3gFRaOWD9hN5nLH5MI7Ph3qkdBIiiYDNmdlUJt8abHSezh9nZ9TpZL2FpVX-SXa7piKDOZ525jqYwrJ1e4M4bHejC9g2ImdM9okPA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Серед зумерів тільки 18% сподіваються на штучний інтелект та лише 22% в захваті від нього. А як щодо іншої частини?\n\nЄ теорія з певними аргументами, що покоління Z починає ненавидіти та відмовлятись від ШІ. Як ви думаєте, це відповідає дійсності?\n\n👉 https://dou.ua/goto/4cPE \n\n🎉 ІТ-спільнота, офлайн, ТУТ, на DOU Day",
-      "links": [
-        {
-          "label": "https://dou.ua/goto/4cPE",
-          "url": "https://dou.ua/goto/4cPE"
-        },
-        {
-          "label": "DOU Day",
-          "url": "https://dou.ua/goto/6jZw"
-        }
-      ],
-      "createdAt": "2026-05-09T08:21:28.917Z",
-      "expiresAt": "2026-05-10T08:21:28.917Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:21:28.917Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:21:28.917Z"
       }
     },
     {
@@ -529,6 +525,65 @@
       }
     },
     {
+      "id": 4056197996,
+      "postUrl": "https://t.me/doucommunity/16449?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/TY1LfUVclnUoYVgBF9DRbEXreUPIfbdjjCNwRSZhTBXEXQBgJ5sOMdvMQO270v-SozDHfzPTCc_LEY8FXVwUmxUdCvM30tCaJZeXTv9oW96txLS_qEOYCLl0KhDmKSkFuLzg_kp0N62nQAcxWvfDZC5m8AFilqtgvjboA7N3AEl5DlqoMRMPHdiJ45KCDDazC4W3tp7wfEPgtIexhJ-e0c-2rg-x8ExF75ymLGPuYSsKYaj3HdBM1xqzg8q7NiAv-LaX61CjuW-YE1K8HH9DNO2P4Cjh7HGJQ4xJwlPT9326_g-a0MpKYygoWMUMPAyEiO0KGaftWSK9QP_t96JO5Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Ваш ноутбук працює нормально, аж поки Chrome не вирішує мовчки підкинути вам 4 ГБ локальної ШІ-моделі, про яку ви не просили 😅\n\nОбговорюємо чи можна вважати таку нахабну поведінку корпорацій нормою:\n\n👉https://dou.ua/goto/sI5H\n\n\n 💬 Приходь нетворкати з ІТ-спільнотою на DOU Day",
+      "links": [
+        {
+          "label": "https://dou.ua/goto/sI5H",
+          "url": "https://dou.ua/goto/sI5H"
+        },
+        {
+          "label": "DOU Day",
+          "url": "https://dou.ua/goto/6jZw"
+        }
+      ],
+      "createdAt": "2026-05-09T12:42:40.619Z",
+      "expiresAt": "2026-05-10T12:42:40.619Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T12:42:40.619Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T12:42:40.619Z"
+      }
+    },
+    {
       "id": 4231946236,
       "postUrl": "https://t.me/devukraine/45334?single",
       "source": {
@@ -582,56 +637,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T12:00:54.063Z"
-      }
-    },
-    {
-      "id": 4068202249,
-      "postUrl": "https://t.me/doucommunity/16444?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/f1CHo5cultS5b-QgR1ywz711GyVDKKaJcoSYWeJt3_anEHrC8ry_I_agvwX9c-x9fIVcYIb2KAbqD7iV1J2xhYo-BuaVMztkBt0Glgg6SuYXtOBTGk172lKgPpeJsnvBLoJQq-RXAcemDU_5ArATj7Gq6Sw5TfH6MTDT33kzJ2xzwLv6UAs0Y3pXmRKc8wFY8hTqPIzVyftzgei1YcqkN6DRaL5-PZ9Dh39lzD0K4STGDqiWqxgU7Q-oF3GuhT-iF6jPo615Llbv0PgGlLLSi7zYS3qsQVi1xnGgzyIjZFPOPlQ5yUq9HZVK7UQyLnq42kQZEFm_WmjOlriGQKuuCw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Євген Діденко родом із Запоріжжя. З відзнакою закінчив Харківський національний університет імені В. Н. Каразіна за фахом «Комп'ютерні технології», де залишився працювати викладачем факультету комп’ютерних наук. Був одним із засновників компанії IT DEV GROUP. \n\nЗ першого дня повномасштабного вторгнення став на захист країни. Діяв у складі спецпідрозділу KRAKEN ГУР МО. Отримав орден «За мужність» ІІІ ступеня за життя та орден «За мужність» ІІ ступеня посмертно.\n\nЄвген загинув під час виконання бойового завдання в селі Іванівка Куп'янського району Харківської області. Вічна пам'ять 🕯️",
-      "links": [],
-      "createdAt": "2026-05-09T08:21:28.917Z",
-      "expiresAt": "2026-05-10T08:21:28.917Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:21:28.917Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:21:28.917Z"
       }
     },
     {
@@ -966,6 +971,65 @@
       }
     },
     {
+      "id": 4141194440,
+      "postUrl": "https://t.me/doucommunity/16445?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Q7hCPEUSV26XoqKx4L0bM1lfw1bKdqKapLLD_iaZR-Q4VWadVq5jqKVwvprKQPNg_NJKKOFuF0Zc7FpUECvNkCyDbM9_nynx94gkDNxhDa1EvEfun3b0n1ouE3HCQfXetKgt_Fxbdx3a65XgQbKafS-WfGFlBz3JadPwz2YShPYvkULlXPxf6ixG92vu8zn_RBOsNbNlaMQUGfiH93Y-c5BXrXAXkrWpg0Bz1nl05IoDH9CYh3gFRaOWD9hN5nLH5MI7Ph3qkdBIiiYDNmdlUJt8abHSezh9nZ9TpZL2FpVX-SXa7piKDOZ525jqYwrJ1e4M4bHejC9g2ImdM9okPA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Серед зумерів тільки 18% сподіваються на штучний інтелект та лише 22% в захваті від нього. А як щодо іншої частини?\n\nЄ теорія з певними аргументами, що покоління Z починає ненавидіти та відмовлятись від ШІ. Як ви думаєте, це відповідає дійсності?\n\n👉 https://dou.ua/goto/4cPE \n\n🎉 ІТ-спільнота, офлайн, ТУТ, на DOU Day",
+      "links": [
+        {
+          "label": "https://dou.ua/goto/4cPE",
+          "url": "https://dou.ua/goto/4cPE"
+        },
+        {
+          "label": "DOU Day",
+          "url": "https://dou.ua/goto/6jZw"
+        }
+      ],
+      "createdAt": "2026-05-09T08:21:28.917Z",
+      "expiresAt": "2026-05-10T08:21:28.917Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:21:28.917Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:21:28.917Z"
+      }
+    },
+    {
       "id": 2236283091,
       "postUrl": "https://t.me/devukraine/45333?single",
       "source": {
@@ -1019,56 +1083,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T12:00:54.063Z"
-      }
-    },
-    {
-      "id": 503912494,
-      "postUrl": "https://t.me/doucommunity/16443?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/m5yN-MolNwMHrhiWMoklY_VJmULdCPEBevQbDe1Plgfm1WP0gaM39SlAvlbzZ3sCBuYNciGVcpI_wRqkzhQBE316GYnfbklS4kAXFMKIcK3WtdiQaD7BzMVSK4CVK6DGEnQHwvCKVrxRFVFh6-ypMqaKYHpkNRF0ZKWhx3dZMP7Lpvu_AmpP-M8GnJZxVbU5LYf_UwUIcg2ZrrSauG9qN4_lYhH_1DVkTZwWQuWYTUsTroTNQwqQpOy6c-8RznyHaYSUqnBr6OubpvAHRp7kC0QdPNwbvEAVGzcWJvfKSkktTOWWDP7yvcmOgvm_9tA_o8klDmXrsMhZdBz5toXVQQ.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Усім не вгодиш :)",
-      "links": [],
-      "createdAt": "2026-05-08T21:17:13.472Z",
-      "expiresAt": "2026-05-09T21:17:13.472Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-08T21:17:13.472Z"
       }
     },
     {
@@ -1399,6 +1413,56 @@
       }
     },
     {
+      "id": 4068202249,
+      "postUrl": "https://t.me/doucommunity/16444?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/f1CHo5cultS5b-QgR1ywz711GyVDKKaJcoSYWeJt3_anEHrC8ry_I_agvwX9c-x9fIVcYIb2KAbqD7iV1J2xhYo-BuaVMztkBt0Glgg6SuYXtOBTGk172lKgPpeJsnvBLoJQq-RXAcemDU_5ArATj7Gq6Sw5TfH6MTDT33kzJ2xzwLv6UAs0Y3pXmRKc8wFY8hTqPIzVyftzgei1YcqkN6DRaL5-PZ9Dh39lzD0K4STGDqiWqxgU7Q-oF3GuhT-iF6jPo615Llbv0PgGlLLSi7zYS3qsQVi1xnGgzyIjZFPOPlQ5yUq9HZVK7UQyLnq42kQZEFm_WmjOlriGQKuuCw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Євген Діденко родом із Запоріжжя. З відзнакою закінчив Харківський національний університет імені В. Н. Каразіна за фахом «Комп'ютерні технології», де залишився працювати викладачем факультету комп’ютерних наук. Був одним із засновників компанії IT DEV GROUP. \n\nЗ першого дня повномасштабного вторгнення став на захист країни. Діяв у складі спецпідрозділу KRAKEN ГУР МО. Отримав орден «За мужність» ІІІ ступеня за життя та орден «За мужність» ІІ ступеня посмертно.\n\nЄвген загинув під час виконання бойового завдання в селі Іванівка Куп'янського району Харківської області. Вічна пам'ять 🕯️",
+      "links": [],
+      "createdAt": "2026-05-09T08:21:28.917Z",
+      "expiresAt": "2026-05-10T08:21:28.917Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:21:28.917Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:21:28.917Z"
+      }
+    },
+    {
       "id": 2588559034,
       "postUrl": "https://t.me/devukraine/45332?single",
       "source": {
@@ -1452,56 +1516,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T12:00:54.063Z"
-      }
-    },
-    {
-      "id": 2378759911,
-      "postUrl": "https://t.me/doucommunity/16442?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/sEN5AyJVwia1oB9_qWmOyJS1_aPvfiheJ4jAQW0PjSvxPsuZ1OcswcQ0d9rxMFlz3uGwPMnNzKVbBWf9AgEoBlus79-UP2ezuEvyGQ0aj3BjJVj1PWGoPWm4cRi961pDAFMCf1frQtRwE7O1Y1mlGtmd4RvAKi9AIs5b4RrTZ2IYZe-QJPBZr7Dex6tr-JYriajAbwtq1bVrJopPJeaAyLS0qCKhrBWJ72LzMp_ajuNQtqv2Jlecu1KkE6hFEZkr4A71xO_Kmxq1mtmNAAiFfbD9R1G4M9gon7c5vcf0KmmKzLthvBjspY3uKQNP5Y_mj7QjdAq7HjoXqiCBDCWlIA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Дякуємо Vyriy за партнерство на DOU Day 2026! 💜 \n\nКомпанія стала генеральним партнером найбільшої технічної конференції для українських айтівців, яку спільнота DOU організовує в Києві.\n\nVyriy — українська інноваційна компанія у сфері Military Tech, яка створює технології, що наближають перемогу. За роки війни команда пройшла шлях від невеликого кола однодумців до компанії, здатної швидко масштабувати робочі рішення та оперативно реагувати на виклики на полі бою.\n\nDOU Day — це платформа для розвитку IT-спільноти, обміну досвідом і нетворкінгу. І ми цінуємо партнерів, які не лише розвивають технології, а й роблять внесок у майбутнє України.\n\nДякуємо Vyriy за підтримку та спільні цінності! 🇺🇦",
-      "links": [],
-      "createdAt": "2026-05-08T21:17:13.472Z",
-      "expiresAt": "2026-05-09T21:17:13.472Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-08T21:17:13.472Z"
       }
     },
     {
@@ -1624,7 +1638,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/u7vJbKyOxG52Ttl3Ry29EDnKLHRcmXKmEgvYhnUU13uTn_nNZBhBrUcTOk6Di9B0k0sA9FbRISDkZ9DHDrxM-hwHiv_TsjQxdW-JsTTaEd25-Z1RJ8iCd3XonvLKT6MszVzIb3eJpoOowuaW1O71OjLzKn8-ayVoCcEjxQQSXN-dXBX0Y0Yt11B2O2TUmanTMU3_-opdQa8NiIaW4DF_GU62t7_HwPZ8HjiaHTCXvaVaBW1mW_DJ1NJ24XtnMY-ATpiPivWWENxp_FjYjYpU3fkdiNtWlkl1IRc-wH4X0cD53URMyLVpOefJD6wGODIIfPYRkM-SODeuf8AIZbpMRA.jpg"
+          "url": "https://cdn4.telesco.pe/file/TQ-02URNXBb3kgAOVNHNw75mHlJ7KOzWXpkbcCVMfTPlza-DqmbBfGayBPbtDpBBA_c2lfjOxlsJcT41s4ZjUrChnqsMZiu5Pqsqrw6wX9pAH5a42s4G01n7Qvk45sC8kgziuxJad-y5NkETJ9Wg0LzcSEDMQXRUJkTCo7wLcstG0YhzQacuVKfcTO0-9nTTzTwlpS34y9thrNzpV3GxO6bUuChr9LdaAmb8WUt1cMaKLwy9h9LwbOLIehjhzSN5rOx8zkES9sS4Gi7uHNi5gp8Q8ivljiqFeA9eAeQ_avur-mJzCNCHPcb0NF2M8B1Mpq-q9KBf1BVFkz6nffBikQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -1659,7 +1673,7 @@
       "createdAt": "2026-05-08T15:54:47.715Z",
       "expiresAt": "2026-05-09T15:54:47.715Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T15:54:47.715Z",
+      "mediaRefreshedAt": "2026-05-09T12:42:43.012Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -1680,6 +1694,56 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T15:54:47.715Z"
+      }
+    },
+    {
+      "id": 503912494,
+      "postUrl": "https://t.me/doucommunity/16443?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/m5yN-MolNwMHrhiWMoklY_VJmULdCPEBevQbDe1Plgfm1WP0gaM39SlAvlbzZ3sCBuYNciGVcpI_wRqkzhQBE316GYnfbklS4kAXFMKIcK3WtdiQaD7BzMVSK4CVK6DGEnQHwvCKVrxRFVFh6-ypMqaKYHpkNRF0ZKWhx3dZMP7Lpvu_AmpP-M8GnJZxVbU5LYf_UwUIcg2ZrrSauG9qN4_lYhH_1DVkTZwWQuWYTUsTroTNQwqQpOy6c-8RznyHaYSUqnBr6OubpvAHRp7kC0QdPNwbvEAVGzcWJvfKSkktTOWWDP7yvcmOgvm_9tA_o8klDmXrsMhZdBz5toXVQQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Усім не вгодиш :)",
+      "links": [],
+      "createdAt": "2026-05-08T21:17:13.472Z",
+      "expiresAt": "2026-05-09T21:17:13.472Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T21:17:13.472Z"
       }
     },
     {
@@ -1744,65 +1808,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T12:00:54.063Z"
-      }
-    },
-    {
-      "id": 4168885140,
-      "postUrl": "https://t.me/doucommunity/16441?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/I-_KJ-S9o4WOlxP0tAyOkctc8b4mcH6ZlPdu2CNndrGCuK2JKaFWJOr9A0jp39pRQVGSge6Uk-nxaBI2wwKMx7PBfS2PrmqxZ8H2VjrAN-1qYoq6BLDjSiDLsazMrLcJuhU460JmFeLKEiujt1j6Sfr4x97z_jS7B8iaRmxZaZGB2i3tnrRRKJ58E6Z3avJqwwnA1bt8QR_kEFAhiBGRNYtMclYumAzjqbe2z7vNEVzLwIl7upKOZfbhI89ya1fx80rFL1wprBLs8d2mQxwwBYhocA0IRT6dtKJKhZDVM6eGmENj-d4tCpd-D1ajNoHFJ131_-yc-MkYtW8fNXKbzg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Цього тижня розбираємо в рубриці фундаментальну базу знань для вивчення C++. \n\nЦей онлайн-підручник допоможе послідовно розібратися зі складними концепціями, об'єктноорієнтованим програмуванням та роботою з пам'яттю, уникаючи типових помилок.\n\n👉 https://dou.ua/goto/bc1E\n\nА ще чекаємо на ваші рекомендації! Не тримайте корисне в секреті — діліться через форму — і наступний матеріал може бути саме від вас",
-      "links": [
-        {
-          "label": "https://dou.ua/goto/bc1E",
-          "url": "https://dou.ua/goto/bc1E"
-        },
-        {
-          "label": "форму",
-          "url": "https://dou.ua/goto/848g"
-        }
-      ],
-      "createdAt": "2026-05-08T21:17:13.472Z",
-      "expiresAt": "2026-05-09T21:17:13.472Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-08T21:17:13.472Z"
       }
     },
     {
@@ -1906,6 +1911,56 @@
       }
     },
     {
+      "id": 2378759911,
+      "postUrl": "https://t.me/doucommunity/16442?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/sEN5AyJVwia1oB9_qWmOyJS1_aPvfiheJ4jAQW0PjSvxPsuZ1OcswcQ0d9rxMFlz3uGwPMnNzKVbBWf9AgEoBlus79-UP2ezuEvyGQ0aj3BjJVj1PWGoPWm4cRi961pDAFMCf1frQtRwE7O1Y1mlGtmd4RvAKi9AIs5b4RrTZ2IYZe-QJPBZr7Dex6tr-JYriajAbwtq1bVrJopPJeaAyLS0qCKhrBWJ72LzMp_ajuNQtqv2Jlecu1KkE6hFEZkr4A71xO_Kmxq1mtmNAAiFfbD9R1G4M9gon7c5vcf0KmmKzLthvBjspY3uKQNP5Y_mj7QjdAq7HjoXqiCBDCWlIA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Дякуємо Vyriy за партнерство на DOU Day 2026! 💜 \n\nКомпанія стала генеральним партнером найбільшої технічної конференції для українських айтівців, яку спільнота DOU організовує в Києві.\n\nVyriy — українська інноваційна компанія у сфері Military Tech, яка створює технології, що наближають перемогу. За роки війни команда пройшла шлях від невеликого кола однодумців до компанії, здатної швидко масштабувати робочі рішення та оперативно реагувати на виклики на полі бою.\n\nDOU Day — це платформа для розвитку IT-спільноти, обміну досвідом і нетворкінгу. І ми цінуємо партнерів, які не лише розвивають технології, а й роблять внесок у майбутнє України.\n\nДякуємо Vyriy за підтримку та спільні цінності! 🇺🇦",
+      "links": [],
+      "createdAt": "2026-05-08T21:17:13.472Z",
+      "expiresAt": "2026-05-09T21:17:13.472Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T21:17:13.472Z"
+      }
+    },
+    {
       "id": 1852030448,
       "postUrl": "https://t.me/devukraine/45330?single",
       "source": {
@@ -1962,61 +2017,6 @@
       }
     },
     {
-      "id": 4209823333,
-      "postUrl": "https://t.me/doucommunity/16440?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/Fh8w-RbIxxa_L-4M17l5s84RikEixxM37MFNrv_FWRwGNbm1YH7XNtbECwe3XoJ0jY0UbgVNcEju5gv0B-wWkpGS-YeY4cyQoENF_XgQDGocqplcQqS5NZt7cCj0fAvGBzXYFEwDlQGjb06zTWU8-w9XZRpyAaRj-Sv0GNSz7ZRyaTzAChudLAVVQZ4-XOlc_PhDhSJe2sQISmu4YNb8ZxoK0EzZCj6DBEahJlgaiK260t5mBTCo1GJHfEuT20441QCbyfcKGsHnr2zc7gw-MFXSDWc_7thN3O__c_GTQX4EzpTXDv6F7ICxtCtteeEdrFsUG5tdkQPz5lr-h-Dwhg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "«Толік тримається. Він витримав понад 20 „ланцетів“», — так артилеристи писали про фанерний макет гаубиці M777, який «Реактивна Пошта» передала на фронт.\n\nМи поговорили із засновником організації Павлом Нарожним про те, як макети рятують реальну артилерію, навіщо бригадам мобільні ремонтні майстерні та чому навіть артилеристам потрібні айтівці.\n\n👉https://dou.ua/goto/a0T8",
-      "links": [
-        {
-          "label": "https://dou.ua/goto/a0T8",
-          "url": "https://dou.ua/goto/a0T8"
-        }
-      ],
-      "createdAt": "2026-05-08T21:17:13.472Z",
-      "expiresAt": "2026-05-09T21:17:13.472Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-08T21:17:13.472Z"
-      }
-    },
-    {
       "id": 910308865,
       "postUrl": "https://t.me/setanta_sports/6?single",
       "source": {
@@ -2066,6 +2066,65 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T17:45:57.730Z"
+      }
+    },
+    {
+      "id": 4168885140,
+      "postUrl": "https://t.me/doucommunity/16441?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/I-_KJ-S9o4WOlxP0tAyOkctc8b4mcH6ZlPdu2CNndrGCuK2JKaFWJOr9A0jp39pRQVGSge6Uk-nxaBI2wwKMx7PBfS2PrmqxZ8H2VjrAN-1qYoq6BLDjSiDLsazMrLcJuhU460JmFeLKEiujt1j6Sfr4x97z_jS7B8iaRmxZaZGB2i3tnrRRKJ58E6Z3avJqwwnA1bt8QR_kEFAhiBGRNYtMclYumAzjqbe2z7vNEVzLwIl7upKOZfbhI89ya1fx80rFL1wprBLs8d2mQxwwBYhocA0IRT6dtKJKhZDVM6eGmENj-d4tCpd-D1ajNoHFJ131_-yc-MkYtW8fNXKbzg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Цього тижня розбираємо в рубриці фундаментальну базу знань для вивчення C++. \n\nЦей онлайн-підручник допоможе послідовно розібратися зі складними концепціями, об'єктноорієнтованим програмуванням та роботою з пам'яттю, уникаючи типових помилок.\n\n👉 https://dou.ua/goto/bc1E\n\nА ще чекаємо на ваші рекомендації! Не тримайте корисне в секреті — діліться через форму — і наступний матеріал може бути саме від вас",
+      "links": [
+        {
+          "label": "https://dou.ua/goto/bc1E",
+          "url": "https://dou.ua/goto/bc1E"
+        },
+        {
+          "label": "форму",
+          "url": "https://dou.ua/goto/848g"
+        }
+      ],
+      "createdAt": "2026-05-08T21:17:13.472Z",
+      "expiresAt": "2026-05-09T21:17:13.472Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T21:17:13.472Z"
       }
     },
     {
@@ -2137,61 +2196,6 @@
       }
     },
     {
-      "id": 1441388401,
-      "postUrl": "https://t.me/doucommunity/16439?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ka9B885iqf96cZzMe55vJeXJpp7wzVqdCfL7Ep0pi27Ph0odX7Y8PURn6vO5HsIFkI4DzgoAZpSLyi0lYktogfUxbz21HIQGVBuYqDmZ2gSPaZXZaKW4bPaBOJ56kfBcLPV1Bd73OKtqUUouhJeK6DZnNQaIwk5r1AX0TB-4ZJyXKKaNdg45rMYNl6adNM59vMclxJ9FBJDvwZSqEEx-G4Cq-Yx7Q-i0dk5AM4fl1mQ3B1WQKPOB-jn7LnyhWo-F5gFEKKOjJReQvGcPB7MgxMHeMs0WrQIWM1DI2ss46n4_B4BahbOrxZZ5on8g8U_hs_j8WMoL1XEwf5eRfM5qyw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Ви просили — ми зробили! 👀\n\nДодали на DOU нову функцію блокування коментарів. У дописі розповідаємо, як вона працює, та чекаємо на ваш фідбек 🙌\n\n👉 https://dou.ua/goto/KvLc",
-      "links": [
-        {
-          "label": "https://dou.ua/goto/KvLc",
-          "url": "https://dou.ua/goto/KvLc"
-        }
-      ],
-      "createdAt": "2026-05-08T21:17:13.472Z",
-      "expiresAt": "2026-05-09T21:17:13.472Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-08T21:17:13.472Z"
-      }
-    },
-    {
       "id": 2658308806,
       "postUrl": "https://t.me/setanta_sports/1?single",
       "source": {
@@ -2230,6 +2234,61 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T17:45:57.730Z"
+      }
+    },
+    {
+      "id": 4209823333,
+      "postUrl": "https://t.me/doucommunity/16440?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Fh8w-RbIxxa_L-4M17l5s84RikEixxM37MFNrv_FWRwGNbm1YH7XNtbECwe3XoJ0jY0UbgVNcEju5gv0B-wWkpGS-YeY4cyQoENF_XgQDGocqplcQqS5NZt7cCj0fAvGBzXYFEwDlQGjb06zTWU8-w9XZRpyAaRj-Sv0GNSz7ZRyaTzAChudLAVVQZ4-XOlc_PhDhSJe2sQISmu4YNb8ZxoK0EzZCj6DBEahJlgaiK260t5mBTCo1GJHfEuT20441QCbyfcKGsHnr2zc7gw-MFXSDWc_7thN3O__c_GTQX4EzpTXDv6F7ICxtCtteeEdrFsUG5tdkQPz5lr-h-Dwhg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "«Толік тримається. Він витримав понад 20 „ланцетів“», — так артилеристи писали про фанерний макет гаубиці M777, який «Реактивна Пошта» передала на фронт.\n\nМи поговорили із засновником організації Павлом Нарожним про те, як макети рятують реальну артилерію, навіщо бригадам мобільні ремонтні майстерні та чому навіть артилеристам потрібні айтівці.\n\n👉https://dou.ua/goto/a0T8",
+      "links": [
+        {
+          "label": "https://dou.ua/goto/a0T8",
+          "url": "https://dou.ua/goto/a0T8"
+        }
+      ],
+      "createdAt": "2026-05-08T21:17:13.472Z",
+      "expiresAt": "2026-05-09T21:17:13.472Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T21:17:13.472Z"
       }
     },
     {
@@ -2289,8 +2348,8 @@
       }
     },
     {
-      "id": 70316912,
-      "postUrl": "https://t.me/doucommunity/16438?single",
+      "id": 1441388401,
+      "postUrl": "https://t.me/doucommunity/16439?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -2304,26 +2363,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ODfFTtIUWZrcjicIvihv4wFQFI1Dms17Eq5wbT5YS4dw3hvdiTTsNO9uh0bi_g-7A669oXmHbu31dXq6GTutCJXShCWThArqvHm6IdcQddGN0SU9N0txEU31Of_lJ_hEUnMrOd3H7z7NqHup8frvsJyvWnqScnZ4XEGpwy5JxGgkESbKOWGzRw1zFn2hX5CmJEHnZ3mq4W1hjDOIv9PVeDsEnzWLmNQKc8Ucb7sjU5buuYd36jNwUpGaP9sZqaUK_KQRszJXnv7d6RkuPrRh_7CgWwTsOHxnaau93k-Q3lC57fVxH7mLMnufkEr8W1YgKFiHtxIEnlA_mXO5EqcCtA.jpg"
+          "url": "https://cdn4.telesco.pe/file/ka9B885iqf96cZzMe55vJeXJpp7wzVqdCfL7Ep0pi27Ph0odX7Y8PURn6vO5HsIFkI4DzgoAZpSLyi0lYktogfUxbz21HIQGVBuYqDmZ2gSPaZXZaKW4bPaBOJ56kfBcLPV1Bd73OKtqUUouhJeK6DZnNQaIwk5r1AX0TB-4ZJyXKKaNdg45rMYNl6adNM59vMclxJ9FBJDvwZSqEEx-G4Cq-Yx7Q-i0dk5AM4fl1mQ3B1WQKPOB-jn7LnyhWo-F5gFEKKOjJReQvGcPB7MgxMHeMs0WrQIWM1DI2ss46n4_B4BahbOrxZZ5on8g8U_hs_j8WMoL1XEwf5eRfM5qyw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "За прайсом GPT-5.5 удвічі дорожчий за попередню модель, але залежно від довжини запиту можна витрачати менше грошей.\n\nАналітики підрахували, на скільки фактично піднялась ціна на нову модель та як довгі запити частково компенсують подорожчання: https://dou.ua/goto/UPzJ \n\n💬 Приходь нетворкати з ІТ-спільнотою на DOU Day",
+      "text": "Ви просили — ми зробили! 👀\n\nДодали на DOU нову функцію блокування коментарів. У дописі розповідаємо, як вона працює, та чекаємо на ваш фідбек 🙌\n\n👉 https://dou.ua/goto/KvLc",
       "links": [
         {
-          "label": "https://dou.ua/goto/UPzJ",
-          "url": "https://dou.ua/goto/UPzJ"
-        },
-        {
-          "label": "DOU Day",
-          "url": "https://dou.ua/goto/6jZw"
+          "label": "https://dou.ua/goto/KvLc",
+          "url": "https://dou.ua/goto/KvLc"
         }
       ],
-      "createdAt": "2026-05-08T15:54:44.830Z",
-      "expiresAt": "2026-05-09T15:54:44.830Z",
+      "createdAt": "2026-05-08T21:17:13.472Z",
+      "expiresAt": "2026-05-09T21:17:13.472Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:21:28.917Z",
+      "mediaRefreshedAt": "2026-05-08T21:17:13.472Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -2344,7 +2399,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-08T15:54:44.830Z"
+        "reviewedAt": "2026-05-08T21:17:13.472Z"
       }
     },
     {
@@ -2400,8 +2455,8 @@
       }
     },
     {
-      "id": 218003383,
-      "postUrl": "https://t.me/doucommunity/16437?single",
+      "id": 70316912,
+      "postUrl": "https://t.me/doucommunity/16438?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -2415,16 +2470,20 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/MW21hKAnN0vPtR6Ier2eG0SMlLYg62JUTUOZaw5B-lIvJLAsffBsHu466PuIWUPdQV-f9kR0kU6D7FOVh-wU8ZhBusWPL_paNrkVY9vXR-YRGS5g0LpICPU5dc-1XqXqS1OxxNdUU9RNKQEjmwgXPflKBYvTIJXyTttK-UZey4zJS2PTTmX_jSCQ8jsgBZDtDJs9m1MfUbd3cVyK7mDrkH7UkikMA2gLbJjMliqU12Fy_oOwIWKhQz7s3coBb8SGlWBgEEaWrpzOAV5GTbsH7Az9gVis1kD5LHrSQdzONC1N7OObpSo-FQ1gDg7hOnd3-cbpc5RFJ15jEbhjouNC-Q.jpg"
+          "url": "https://cdn4.telesco.pe/file/ODfFTtIUWZrcjicIvihv4wFQFI1Dms17Eq5wbT5YS4dw3hvdiTTsNO9uh0bi_g-7A669oXmHbu31dXq6GTutCJXShCWThArqvHm6IdcQddGN0SU9N0txEU31Of_lJ_hEUnMrOd3H7z7NqHup8frvsJyvWnqScnZ4XEGpwy5JxGgkESbKOWGzRw1zFn2hX5CmJEHnZ3mq4W1hjDOIv9PVeDsEnzWLmNQKc8Ucb7sjU5buuYd36jNwUpGaP9sZqaUK_KQRszJXnv7d6RkuPrRh_7CgWwTsOHxnaau93k-Q3lC57fVxH7mLMnufkEr8W1YgKFiHtxIEnlA_mXO5EqcCtA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "У бюджеті 2026 року планують збільшити видатки на зарплати військовослужбовців\n\n👉 https://dou.ua/goto/kYUj\n\nУряд планує збільшити витрати на оборону у бюджеті-2026, зокрема підвищити виплати військовим. На оборонний сектор додатково передбачили 1,56 трлн грн.",
+      "text": "За прайсом GPT-5.5 удвічі дорожчий за попередню модель, але залежно від довжини запиту можна витрачати менше грошей.\n\nАналітики підрахували, на скільки фактично піднялась ціна на нову модель та як довгі запити частково компенсують подорожчання: https://dou.ua/goto/UPzJ \n\n💬 Приходь нетворкати з ІТ-спільнотою на DOU Day",
       "links": [
         {
-          "label": "https://dou.ua/goto/kYUj",
-          "url": "https://dou.ua/goto/kYUj"
+          "label": "https://dou.ua/goto/UPzJ",
+          "url": "https://dou.ua/goto/UPzJ"
+        },
+        {
+          "label": "DOU Day",
+          "url": "https://dou.ua/goto/6jZw"
         }
       ],
       "createdAt": "2026-05-08T15:54:44.830Z",
@@ -2515,8 +2574,8 @@
       }
     },
     {
-      "id": 3575229886,
-      "postUrl": "https://t.me/doucommunity/16436?single",
+      "id": 218003383,
+      "postUrl": "https://t.me/doucommunity/16437?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -2530,20 +2589,16 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/V2WssnmOc_18hEXH44B-NAqExJkKIeGFj4JpTKq1mGaiuX_zBvS5nUEmAgivaXWax0v3MosSn_HGlVWkAb5nFpQDzlHrIf8nGxZ5-pK1y5IkoMOrBMgnkOBSmlLaPz9P7T9RjMbsOf0r3eV8ttNZQiJPRvN_qbsf6o4kkCIVljtNYrXHEykathRD77o2WqdcCRvUTDIhv0S7tgQ2CElrZy7wHtM-vN0K7VitFXvw0UJT5Sdoo0eNrGnQ6rEQobnHPU7EybqymU4HA0-OsnWU94ZibeKRSSbPjnnTgVe1HSkZM662YO7l_RAB6T1QjZrS8-7DqwwSISxVd6N30UtStw.jpg"
+          "url": "https://cdn4.telesco.pe/file/MW21hKAnN0vPtR6Ier2eG0SMlLYg62JUTUOZaw5B-lIvJLAsffBsHu466PuIWUPdQV-f9kR0kU6D7FOVh-wU8ZhBusWPL_paNrkVY9vXR-YRGS5g0LpICPU5dc-1XqXqS1OxxNdUU9RNKQEjmwgXPflKBYvTIJXyTttK-UZey4zJS2PTTmX_jSCQ8jsgBZDtDJs9m1MfUbd3cVyK7mDrkH7UkikMA2gLbJjMliqU12Fy_oOwIWKhQz7s3coBb8SGlWBgEEaWrpzOAV5GTbsH7Az9gVis1kD5LHrSQdzONC1N7OObpSo-FQ1gDg7hOnd3-cbpc5RFJ15jEbhjouNC-Q.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Коли на одну вакансію летять сотні відгуків, доводиться шукати способи виділитися.\n\nЯк ви гадаєте, чи варто заморочуватися із сертифікацією, щоб хоч якось привернути увагу до своєї анкети?\n\n👉https://dou.ua/goto/h360\n\n\n💬 Приходь нетворкати з ІТ-спільнотою на DOU Day",
+      "text": "У бюджеті 2026 року планують збільшити видатки на зарплати військовослужбовців\n\n👉 https://dou.ua/goto/kYUj\n\nУряд планує збільшити витрати на оборону у бюджеті-2026, зокрема підвищити виплати військовим. На оборонний сектор додатково передбачили 1,56 трлн грн.",
       "links": [
         {
-          "label": "https://dou.ua/goto/h360",
-          "url": "https://dou.ua/goto/h360"
-        },
-        {
-          "label": "DOU Day",
-          "url": "https://dou.ua/goto/6jZw"
+          "label": "https://dou.ua/goto/kYUj",
+          "url": "https://dou.ua/goto/kYUj"
         }
       ],
       "createdAt": "2026-05-08T15:54:44.830Z",
@@ -2630,8 +2685,8 @@
       }
     },
     {
-      "id": 2457222133,
-      "postUrl": "https://t.me/doucommunity/16435?single",
+      "id": 3575229886,
+      "postUrl": "https://t.me/doucommunity/16436?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -2645,22 +2700,26 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/EttAuls-AYB5HIkQI1TXKsRwUG-GjJBTb3eGVf4jH6xt6GAV9NSftuL1xdY-igCNOR_E2E9GJBDkogVEgdBbL097ES-Q62nsyxzxCCpv6dWDhno94WiCD1PmAVN4kICzJJo3uuTLzgxW5U4e8Y9DX1rXY5RKwicniKphfxccLeEk-OXKRQzFdKK5gDdvbJ1cw50RTdZvd8J72zBsMt6DapQJBuT4XxFrkaNNMaoQmI7vK_4_PtaQNs6fcGBPYhsMlCra1LoBsKo1gGdK7lkldFWiFQwP4aapktsOe7jtEGkOLB4E5jQmqh3Lej_Vd7nKeRsnhu4RS4R2iO93SKIj6A.jpg"
+          "url": "https://cdn4.telesco.pe/file/V2WssnmOc_18hEXH44B-NAqExJkKIeGFj4JpTKq1mGaiuX_zBvS5nUEmAgivaXWax0v3MosSn_HGlVWkAb5nFpQDzlHrIf8nGxZ5-pK1y5IkoMOrBMgnkOBSmlLaPz9P7T9RjMbsOf0r3eV8ttNZQiJPRvN_qbsf6o4kkCIVljtNYrXHEykathRD77o2WqdcCRvUTDIhv0S7tgQ2CElrZy7wHtM-vN0K7VitFXvw0UJT5Sdoo0eNrGnQ6rEQobnHPU7EybqymU4HA0-OsnWU94ZibeKRSSbPjnnTgVe1HSkZM662YO7l_RAB6T1QjZrS8-7DqwwSISxVd6N30UtStw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "AI вже впевнено генерує код за макетом, але його якість залежить від того, як дизайнер задокументував компоненти. \n\nМарина, UI/UX Designer в S-PRO, у своїй статті розібрала, що \"бачить\" агент через Figma MCP та як готувати компоненти на трьох рівнях вкладеності для консистентності з дизайн-системою.\n\n👉 https://dou.ua/goto/k5Xv",
+      "text": "Коли на одну вакансію летять сотні відгуків, доводиться шукати способи виділитися.\n\nЯк ви гадаєте, чи варто заморочуватися із сертифікацією, щоб хоч якось привернути увагу до своєї анкети?\n\n👉https://dou.ua/goto/h360\n\n\n💬 Приходь нетворкати з ІТ-спільнотою на DOU Day",
       "links": [
         {
-          "label": "https://dou.ua/goto/k5Xv",
-          "url": "https://dou.ua/goto/k5Xv"
+          "label": "https://dou.ua/goto/h360",
+          "url": "https://dou.ua/goto/h360"
+        },
+        {
+          "label": "DOU Day",
+          "url": "https://dou.ua/goto/6jZw"
         }
       ],
       "createdAt": "2026-05-08T15:54:44.830Z",
       "expiresAt": "2026-05-09T15:54:44.830Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T15:54:44.830Z",
+      "mediaRefreshedAt": "2026-05-09T08:21:28.917Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -2737,8 +2796,8 @@
       }
     },
     {
-      "id": 1777419556,
-      "postUrl": "https://t.me/doucommunity/16434?single",
+      "id": 2457222133,
+      "postUrl": "https://t.me/doucommunity/16435?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -2752,26 +2811,22 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/V__yK6DKX7tTOnR-et9EG6jT3ixeWEupd-K5rsJ4ddPbJwGDwGcH4OnH6HCV5KbPJv8IL1Ea5SUGC1v0SQjUuGMkgejv5CoARDCWFSmKf5PnnhbZ7Yn6RK635S5D7k3anEgko3TLVEPRjGzkZXhseUi_mVCjvjfEFFi7Pob70AMCS4wufp_ATW8VMS-MZ1BhzRyY6jYrMJ3YpKvJ-4YCWJkVIaCtDWfzJam9LgW-QBuFsQNY_YrxFq3NbjU53g5oNJ_WFVwDi8bPQscBnoxQNWn1tVPPqDo-jgHAegsPnxt-q37k52aUX0BpeIWSLBxExwoDviCrsas9F6hawMlrRQ.jpg"
+          "url": "https://cdn4.telesco.pe/file/EttAuls-AYB5HIkQI1TXKsRwUG-GjJBTb3eGVf4jH6xt6GAV9NSftuL1xdY-igCNOR_E2E9GJBDkogVEgdBbL097ES-Q62nsyxzxCCpv6dWDhno94WiCD1PmAVN4kICzJJo3uuTLzgxW5U4e8Y9DX1rXY5RKwicniKphfxccLeEk-OXKRQzFdKK5gDdvbJ1cw50RTdZvd8J72zBsMt6DapQJBuT4XxFrkaNNMaoQmI7vK_4_PtaQNs6fcGBPYhsMlCra1LoBsKo1gGdK7lkldFWiFQwP4aapktsOe7jtEGkOLB4E5jQmqh3Lej_Vd7nKeRsnhu4RS4R2iO93SKIj6A.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Всі варті подарунків на день народження, а особливо «Повернись живим» ❤️\n\n10 травня фонду виповнюється 12 років, і найкращим подарунком для них стане щомісячна підписка на адмінку.\n\nВони принципово не беруть відсоток із донатів, водночас допомога війську можлива завдяки роботі сотень людей та купи робочих інструментів - тобто завдяки адмінці.\n\nДавайте об'єднаймося та привітаємо фонд підпискою!\n\nА тут можна дізнатись, як саме ваша допомога адмінці конвертується у допомогу Силам Оборони: https://dou.ua/goto/H34C",
+      "text": "AI вже впевнено генерує код за макетом, але його якість залежить від того, як дизайнер задокументував компоненти. \n\nМарина, UI/UX Designer в S-PRO, у своїй статті розібрала, що \"бачить\" агент через Figma MCP та як готувати компоненти на трьох рівнях вкладеності для консистентності з дизайн-системою.\n\n👉 https://dou.ua/goto/k5Xv",
       "links": [
         {
-          "label": "підпискою",
-          "url": "https://base.monobank.ua/cba#subscriptions"
-        },
-        {
-          "label": "https://dou.ua/goto/H34C",
-          "url": "https://dou.ua/goto/H34C"
+          "label": "https://dou.ua/goto/k5Xv",
+          "url": "https://dou.ua/goto/k5Xv"
         }
       ],
       "createdAt": "2026-05-08T15:54:44.830Z",
       "expiresAt": "2026-05-09T15:54:44.830Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T15:54:44.830Z",
+      "mediaRefreshedAt": "2026-05-09T12:42:40.619Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -2852,8 +2907,8 @@
       }
     },
     {
-      "id": 3578579291,
-      "postUrl": "https://t.me/doucommunity/16433?single",
+      "id": 1777419556,
+      "postUrl": "https://t.me/doucommunity/16434?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -2862,21 +2917,31 @@
       },
       "sourceId": "uk:doucommunity",
       "sourceCountryCode": "uk",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/PONkZXf6bnUuwMgKDzlRJ3gUchjOyz-uDioB-xv71AlEQOMvUjh8E6xBuuxCIL0lku5YQz9prZAahC1qzC2f1pY0EMLAGd3wB3jN-Saj76zh29a_O9FL7MzNdFXrrCRANJmfk87KWxTi549zJl5DrCvpfLepovFNfCcgxHYUUvP_Pyr50-zDyJ0zGN3R5QrD6AWsTgC-NiuLP_QU-qxz-MiCysGOZrt0tv9bxTGQZIXK8D0EITSGgN_nKJJrKZ29GJG--xeTu3fu_Z2h-29k9xhZudugC0_MLDVpf0b2_3A9COGvZltyu6yAq04oXAGGwKCrTizRzA7dB0vJB5OcaQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Вже 15 травня на DOU Day Олесь Петрів - CTO & Co-founder Reface проведе воркшоп: Створення мультиагентних LLM-симуляцій, або як запустити свою кишенькову «Матрицю».\n\nБуде цікаво, приєднуйтеся!\n\nЗ промокодом PETRIV10 10% знижка🔥\n\nКвитки та детальна програма на сайті.\n\nПобачимося на DOU Day!👾",
+      "text": "Всі варті подарунків на день народження, а особливо «Повернись живим» ❤️\n\n10 травня фонду виповнюється 12 років, і найкращим подарунком для них стане щомісячна підписка на адмінку.\n\nВони принципово не беруть відсоток із донатів, водночас допомога війську можлива завдяки роботі сотень людей та купи робочих інструментів - тобто завдяки адмінці.\n\nДавайте об'єднаймося та привітаємо фонд підпискою!\n\nА тут можна дізнатись, як саме ваша допомога адмінці конвертується у допомогу Силам Оборони: https://dou.ua/goto/H34C",
       "links": [
         {
-          "label": "на сайті.",
-          "url": "https://dou.ua/dou-day-2026/"
+          "label": "підпискою",
+          "url": "https://base.monobank.ua/cba#subscriptions"
+        },
+        {
+          "label": "https://dou.ua/goto/H34C",
+          "url": "https://dou.ua/goto/H34C"
         }
       ],
       "createdAt": "2026-05-08T15:54:44.830Z",
       "expiresAt": "2026-05-09T15:54:44.830Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T15:54:44.830Z",
+      "mediaRefreshedAt": "2026-05-09T12:42:40.619Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -2957,8 +3022,8 @@
       }
     },
     {
-      "id": 2640308706,
-      "postUrl": "https://t.me/doucommunity/16432?single",
+      "id": 3578579291,
+      "postUrl": "https://t.me/doucommunity/16433?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -2967,20 +3032,17 @@
       },
       "sourceId": "uk:doucommunity",
       "sourceCountryCode": "uk",
-      "contentType": "gif",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Вже 15 травня на DOU Day Олесь Петрів - CTO & Co-founder Reface проведе воркшоп: Створення мультиагентних LLM-симуляцій, або як запустити свою кишенькову «Матрицю».\n\nБуде цікаво, приєднуйтеся!\n\nЗ промокодом PETRIV10 10% знижка🔥\n\nКвитки та детальна програма на сайті.\n\nПобачимося на DOU Day!👾",
+      "links": [
         {
-          "id": "gif-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/a7dd7578ad.mp4?token=MwCqccn2DziIU2yBSN8SQQU0Ibwhb-OnCQfkFU2NO55WMKUdt2aFeIuySYzoMVUPt6WK-3FwqgzxnoEvh8C8u12x6TXnkNORXIo7rl1O3Am6fzseYHy0Cpgn8ySBBmtEjoIHPjYhYP8JkmDs8vNm2MdWSQ-u0q0wIFU6EGFKLMLQAIMdLLE3lfBGr3AAtfN--GjJCdDgj3BLTr9aPnrY5D2m2dzvvWT4ECsqBziiJh5EHCbOxw9gXFYL4sbJIxdxvdz5EW3s9T23s-EK24GrsTJ4Ds6l9s25xjAlkDlNJszkJUdELvewf0wkCaxuCzsL49hMQPwkawyTNeBtXJYeUw",
-          "poster": null,
-          "mimeType": "image/gif"
+          "label": "на сайті.",
+          "url": "https://dou.ua/dou-day-2026/"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "",
-      "links": [],
       "createdAt": "2026-05-08T15:54:44.830Z",
       "expiresAt": "2026-05-09T15:54:44.830Z",
       "ttlHours": 24,
@@ -3034,6 +3096,114 @@
         {
           "label": "Проєкт зосередиться на вивченні взаємодії ШІ з середовищем, що керується діями тисяч реальних гравців.",
           "url": "https://dev.ua/news/google-deepmind-trenuvatyme-shtuchnyi-intelekt-u-vsesviti-eve-online-1778252284"
+        },
+        {
+          "label": "@devukraine",
+          "url": "https://t.me/devukraine"
+        }
+      ],
+      "createdAt": "2026-05-08T19:46:06.561Z",
+      "expiresAt": "2026-05-09T19:46:06.561Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:46:06.561Z",
+      "tag": "technology",
+      "tags": [
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:46:06.561Z"
+      }
+    },
+    {
+      "id": 2640308706,
+      "postUrl": "https://t.me/doucommunity/16432?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "gif",
+      "media": [
+        {
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/a7dd7578ad.mp4?token=vRlBHGP2F-qE1bLM5MJWuWkpkwus42MOd48X875T2se-1coTHqxOydbfbN12cnGV_cH63bYrW7tBn39O_mlMajnsTl8BmOVjDRdW-jzNRFbZktnysRiF32uYbg0hZgrlvThi9JY_E7a0Ud5dUsw9uq1WTsgJzYYWZktAye-guBLG6U2OcpYpKHP08PS3Pp6ZwWactVTglN5ng44wTJaADgPxIvaZGaI3UO4Ia326Q8qW5c1RpqlQujQQptVnC3PuSV0s8cFuMnldYRV8CzUQikF06t1vu_dB7zwktHSY_Hlg2XxvchRF5HKhSgnaJJLheZiBOvweNmaZKVuHBLKd4A",
+          "poster": null,
+          "mimeType": "image/gif"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-08T15:54:44.830Z",
+      "expiresAt": "2026-05-09T15:54:44.830Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T12:42:40.619Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:44.830Z"
+      }
+    },
+    {
+      "id": 1246836887,
+      "postUrl": "https://t.me/devukraine/45320?single",
+      "source": {
+        "title": "dev.ua | IT України",
+        "handle": "devukraine",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/CwFbJaPQLM_sxMYKeAC6gLtJsWoEdssIOaRgk1atB875lh9e49Zockj7GVMuozv1TcujVkJGGSK7lxxVbw1hJz5GbjvLnI-VfncS6Esd37ILAEVLCP2KJe1HKHYtzkEeMm2M_UK7oeG2_NFHYyVILz4SohTqGBcQR7e6xnpNgoWevG7Jj2uPH_Df4BJ3V11uXtxxNKDCj1VRKKu0pcvNXJ-OTPSnWY0XSz5jFmK4qxC56TLsYeCL-VOo5sRztj3ztedwGav2JpDhw1VtFcUmBJZt7lZQXgqJo5BIZB0o2q8tnbp0dC6N5Rq7MkWTCxTnKDSi5Jxax0WM649Inp9eKA.jpg"
+      },
+      "sourceId": "uk:devukraine",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/nWug2FHcUSbwfHYPB6dzY7dH-KCYylGHPXH79G5D8fYMITXaTL51RAoBsOJOiapjGwXvXW1xiHTbw2Ld19i6LlPOQOivbAeW7kI6oDBWuC4oYszsgkfkl6KvfWyoZ_GBkHVCkarF3Vz-IsRIaWpzP12LwXaEDroWLRVq4d33lLnk5dR51U7niomftGV_KEP4dNvQUe30lDUl79Mo59ihFfOQWLkrZAp7T0fxhEjirxweeDocH14ZUk9OODSKobP7t_FbKB17T3W2w25QEj6V1-996jqzlAb0LamE-uUN42Px2ypFja3E5EkqCt4Gdza2wJS6YfYoc66uRqtl4kthZg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "👉 Nova Post довірила ШІ проводити первинні співбесіди у 16 країнах ЄС\n\nГрупа Nova (материнська компанія «Нової пошти») впроваджує стратегію AI First, згідно з якою перед запуском будь-якого нового процесу або розширенням штату компанія аналізує можливість використання ШІ-агентів замість людського ресурсу. Головна мета трансформації — повна автоматизація рутини.\n\n@devukraine",
+      "links": [
+        {
+          "label": "Головна мета трансформації — повна автоматизація рутини.",
+          "url": "https://dev.ua/news/shi-100-rutyny-1778250356"
         },
         {
           "label": "@devukraine",
@@ -3120,8 +3290,8 @@
       }
     },
     {
-      "id": 1246836887,
-      "postUrl": "https://t.me/devukraine/45320?single",
+      "id": 466705987,
+      "postUrl": "https://t.me/devukraine/45319?single",
       "source": {
         "title": "dev.ua | IT України",
         "handle": "devukraine",
@@ -3135,16 +3305,16 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/nWug2FHcUSbwfHYPB6dzY7dH-KCYylGHPXH79G5D8fYMITXaTL51RAoBsOJOiapjGwXvXW1xiHTbw2Ld19i6LlPOQOivbAeW7kI6oDBWuC4oYszsgkfkl6KvfWyoZ_GBkHVCkarF3Vz-IsRIaWpzP12LwXaEDroWLRVq4d33lLnk5dR51U7niomftGV_KEP4dNvQUe30lDUl79Mo59ihFfOQWLkrZAp7T0fxhEjirxweeDocH14ZUk9OODSKobP7t_FbKB17T3W2w25QEj6V1-996jqzlAb0LamE-uUN42Px2ypFja3E5EkqCt4Gdza2wJS6YfYoc66uRqtl4kthZg.jpg"
+          "url": "https://cdn4.telesco.pe/file/bM3EaFCC_3KZJcNERHFPU8WaICZUIa7t4YH8mkczs3BuYsFKandVFz4MZogbIHkYaSBltnJ9OcodmzNydusa5KA9Ep5LtECAHisJkiSf5LLr92X8B7Jyqt769TqG-3-LaMttQmjRFIVyel6rcsteEuRtzVSZE1goxTt40fwTT0mLyUavSJqiUatADz0TWP1wxxQiMCmFt9CE-DvSKO0tVTCTTBo_eOQxW_n8-p0cYXlgBq3-i422ssrFn7grZ0Ywuwg_e1WlpxESfFv4bJNEpxdPeJyX5-F3LnJ6rWMar2WZARt5Pn7kPreOpcpwD3mOiAfxdfIgpPpW6VlYJK0Rlw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "👉 Nova Post довірила ШІ проводити первинні співбесіди у 16 країнах ЄС\n\nГрупа Nova (материнська компанія «Нової пошти») впроваджує стратегію AI First, згідно з якою перед запуском будь-якого нового процесу або розширенням штату компанія аналізує можливість використання ШІ-агентів замість людського ресурсу. Головна мета трансформації — повна автоматизація рутини.\n\n@devukraine",
+      "text": "Google планує дозволити ІТ-спеціалістам використовувати ШІ-помічників на співбесідах\n\nGoogle тестує новий формат співбесід для розробників, який дозволить кандидатам використовувати ШІ-помічників. Такі оновлення впроваджують, аби «краще відповідати сучасним реаліям інженерної сфери».\n\n@devukraine",
       "links": [
         {
-          "label": "Головна мета трансформації — повна автоматизація рутини.",
-          "url": "https://dev.ua/news/shi-100-rutyny-1778250356"
+          "label": "Такі оновлення впроваджують, аби «краще відповідати сучасним реаліям інженерної сфери».",
+          "url": "https://dev.ua/news/google-planuie-dozvolyty-it-spetsialistam-vykorystovuvaty-shi-pomichnykiv-na-spivbesidakh-1778248127"
         },
         {
           "label": "@devukraine",
@@ -3231,117 +3401,6 @@
       }
     },
     {
-      "id": 466705987,
-      "postUrl": "https://t.me/devukraine/45319?single",
-      "source": {
-        "title": "dev.ua | IT України",
-        "handle": "devukraine",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/CwFbJaPQLM_sxMYKeAC6gLtJsWoEdssIOaRgk1atB875lh9e49Zockj7GVMuozv1TcujVkJGGSK7lxxVbw1hJz5GbjvLnI-VfncS6Esd37ILAEVLCP2KJe1HKHYtzkEeMm2M_UK7oeG2_NFHYyVILz4SohTqGBcQR7e6xnpNgoWevG7Jj2uPH_Df4BJ3V11uXtxxNKDCj1VRKKu0pcvNXJ-OTPSnWY0XSz5jFmK4qxC56TLsYeCL-VOo5sRztj3ztedwGav2JpDhw1VtFcUmBJZt7lZQXgqJo5BIZB0o2q8tnbp0dC6N5Rq7MkWTCxTnKDSi5Jxax0WM649Inp9eKA.jpg"
-      },
-      "sourceId": "uk:devukraine",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/bM3EaFCC_3KZJcNERHFPU8WaICZUIa7t4YH8mkczs3BuYsFKandVFz4MZogbIHkYaSBltnJ9OcodmzNydusa5KA9Ep5LtECAHisJkiSf5LLr92X8B7Jyqt769TqG-3-LaMttQmjRFIVyel6rcsteEuRtzVSZE1goxTt40fwTT0mLyUavSJqiUatADz0TWP1wxxQiMCmFt9CE-DvSKO0tVTCTTBo_eOQxW_n8-p0cYXlgBq3-i422ssrFn7grZ0Ywuwg_e1WlpxESfFv4bJNEpxdPeJyX5-F3LnJ6rWMar2WZARt5Pn7kPreOpcpwD3mOiAfxdfIgpPpW6VlYJK0Rlw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Google планує дозволити ІТ-спеціалістам використовувати ШІ-помічників на співбесідах\n\nGoogle тестує новий формат співбесід для розробників, який дозволить кандидатам використовувати ШІ-помічників. Такі оновлення впроваджують, аби «краще відповідати сучасним реаліям інженерної сфери».\n\n@devukraine",
-      "links": [
-        {
-          "label": "Такі оновлення впроваджують, аби «краще відповідати сучасним реаліям інженерної сфери».",
-          "url": "https://dev.ua/news/google-planuie-dozvolyty-it-spetsialistam-vykorystovuvaty-shi-pomichnykiv-na-spivbesidakh-1778248127"
-        },
-        {
-          "label": "@devukraine",
-          "url": "https://t.me/devukraine"
-        }
-      ],
-      "createdAt": "2026-05-08T19:46:06.561Z",
-      "expiresAt": "2026-05-09T19:46:06.561Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T19:46:06.561Z",
-      "tag": "technology",
-      "tags": [
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-08T19:46:06.561Z"
-      }
-    },
-    {
-      "id": 1031005838,
-      "postUrl": "https://t.me/doucommunity/16429?single",
-      "source": {
-        "title": "DOU",
-        "handle": "doucommunity",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
-      },
-      "sourceId": "uk:doucommunity",
-      "sourceCountryCode": "uk",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/hHbOlfc4f4iR_ENV4JPtvwym-ea9vz0tY-JewTVRfrWdac613CIjA-NdtfNxv7s3UsVkgCxEHPTGtbCJ5hdXlILTFjinSJoI7XHA3EcQa_gMqZxKC2DBbYNB1CwUeNe2Dlz1Wdm0gPtknAem7lPuu7gI7pc2hzWFGIG2kl-mDUyqYm4rTJKW-RZvPuDrkM32xDd603NBJhu1SQOTGPc4ZyvCbtersvvmlAcTdCz7p8MvmXRdDVzXffKfC2og6J6qLr-pZPWcj7YlbO5jniJe_eeU6iccirjz1xo465eAv3EcpA3ysg5sSJ_zxxean7gEkmKLc6MyMbpV4kZBmvcExw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Чому айтівці самі йшли з компаній у 2026 році\n\nНайчастіше — через кращі умови на новому місці. 44% тих, хто залишав компанію з власної ініціативи, назвали саме перехід на кращі умови.\n\nЩе 41% пішли через відсутність кар’єрних перспектив на поточному місці.\n\nЦікаво, що порівняно з 2025 роком перехід на кращі умови став більш поширеною причиною. А от вигоряння, відсутність професійного розвитку чи підвищення зарплати згадували рідше.\n\nНавіть на складному ринку айтівці все ще шукають не просто роботу, а кращі можливості.\n\nБільше — у новій статті DOU 👉🏻 https://dou.ua/goto/oj4q",
-      "links": [
-        {
-          "label": "https://dou.ua/goto/oj4q",
-          "url": "https://dou.ua/goto/oj4q"
-        }
-      ],
-      "createdAt": "2026-05-08T15:54:44.830Z",
-      "expiresAt": "2026-05-09T15:54:44.830Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T15:54:44.830Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "startups",
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-08T15:54:44.830Z"
-      }
-    },
-    {
       "id": 2340720874,
       "postUrl": "https://t.me/devukraine/45318?single",
       "source": {
@@ -3398,8 +3457,8 @@
       }
     },
     {
-      "id": 1924550471,
-      "postUrl": "https://t.me/doucommunity/16428?single",
+      "id": 1031005838,
+      "postUrl": "https://t.me/doucommunity/16429?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -3413,20 +3472,16 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/qpP0ZpBgZVdaVAdQbkYZn-OYtb8M2vxSjYEKEZQlr6sI-hnKvlBxLypUpg4Y4CWXogbQxwJsmsE2rCEMStN-xGHfDFgNBj3RsAI7Ia0BQZg_BgZa8MlVYX_Srur5b4_mxN9Rxovp8vNRnoGnFhwpHKSdpQgpLrVMc6QkjR1iv_k9gl5C8ip3TyxajYeRS3R0_GAUW921JRY3KxvX0bdYdyzkC_uKD3KfhYjHaBuM_jJB3CzfT272JI4lO6uIgmWFYvR2UcgQbYFMZqpU37PQuU59HrZPmI-nLvPPJgrNoUvH0rbk762P5z0MrD_-5-QcmFUTLCl2sSNuUHO_jQpjQA.jpg"
+          "url": "https://cdn4.telesco.pe/file/hHbOlfc4f4iR_ENV4JPtvwym-ea9vz0tY-JewTVRfrWdac613CIjA-NdtfNxv7s3UsVkgCxEHPTGtbCJ5hdXlILTFjinSJoI7XHA3EcQa_gMqZxKC2DBbYNB1CwUeNe2Dlz1Wdm0gPtknAem7lPuu7gI7pc2hzWFGIG2kl-mDUyqYm4rTJKW-RZvPuDrkM32xDd603NBJhu1SQOTGPc4ZyvCbtersvvmlAcTdCz7p8MvmXRdDVzXffKfC2og6J6qLr-pZPWcj7YlbO5jniJe_eeU6iccirjz1xo465eAv3EcpA3ysg5sSJ_zxxean7gEkmKLc6MyMbpV4kZBmvcExw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "GitHub вже не той?\n\n“Коміт 1: Нова функція. Коміт 2: Виправити. Коміт 3: Виправити. Коміт 4: Дійсно виправити. Коміт 5: Будь ласка. Коміт 6, створений о 23:47 у четвер: asdfasdf”, - у розробника Мета Даггана дійсно є причини так вважати 😅\n\nЙому не подобається процес схвалення змін, запізнілі перевірки та купа зайвих інструментів. А чим вас не влаштовує сервіс?\n\nРозповідайте тут: https://dou.ua/goto/wOIb \n\n💬 Приходь нетворкати з ІТ-спільнотою на DOU Day",
+      "text": "Чому айтівці самі йшли з компаній у 2026 році\n\nНайчастіше — через кращі умови на новому місці. 44% тих, хто залишав компанію з власної ініціативи, назвали саме перехід на кращі умови.\n\nЩе 41% пішли через відсутність кар’єрних перспектив на поточному місці.\n\nЦікаво, що порівняно з 2025 роком перехід на кращі умови став більш поширеною причиною. А от вигоряння, відсутність професійного розвитку чи підвищення зарплати згадували рідше.\n\nНавіть на складному ринку айтівці все ще шукають не просто роботу, а кращі можливості.\n\nБільше — у новій статті DOU 👉🏻 https://dou.ua/goto/oj4q",
       "links": [
         {
-          "label": "https://dou.ua/goto/wOIb",
-          "url": "https://dou.ua/goto/wOIb"
-        },
-        {
-          "label": "DOU Day",
-          "url": "https://dou.ua/goto/6jZw"
+          "label": "https://dou.ua/goto/oj4q",
+          "url": "https://dou.ua/goto/oj4q"
         }
       ],
       "createdAt": "2026-05-08T15:54:44.830Z",
@@ -3521,8 +3576,8 @@
       }
     },
     {
-      "id": 4276075904,
-      "postUrl": "https://t.me/doucommunity/16427?single",
+      "id": 1924550471,
+      "postUrl": "https://t.me/doucommunity/16428?single",
       "source": {
         "title": "DOU",
         "handle": "doucommunity",
@@ -3536,16 +3591,20 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/LupHKq2tp2zZoB3WRw8r5IE3luseFBh2t6CGK5aA_42QHpcvQvgyJpUS4jeraeydRPbHO9bZO4A03D-fZ5aOVPckcgXcLwuNq_8TrN5iQidfNutx4sDCIPzp4pRpezyQmbPJ28UJvF-F0mnNYk542fODNZBPiUbiXL_tZiwuLV7JMJyYo-XJGZBboTkvwfMGwoWUgzIvp_d582icauzjY6L8DrWYr45lvTyyjG7RGGw0sZS5vvDecHeNHYeyJmU9arA6k7JD8XGQ2K2j5fTNxaVmVD9X9sLTj_P3jQNwyOHZKR6AkPhhTmww02DL0dmDBB8NUjdxACUrFsEd5PgqJw.jpg"
+          "url": "https://cdn4.telesco.pe/file/qpP0ZpBgZVdaVAdQbkYZn-OYtb8M2vxSjYEKEZQlr6sI-hnKvlBxLypUpg4Y4CWXogbQxwJsmsE2rCEMStN-xGHfDFgNBj3RsAI7Ia0BQZg_BgZa8MlVYX_Srur5b4_mxN9Rxovp8vNRnoGnFhwpHKSdpQgpLrVMc6QkjR1iv_k9gl5C8ip3TyxajYeRS3R0_GAUW921JRY3KxvX0bdYdyzkC_uKD3KfhYjHaBuM_jJB3CzfT272JI4lO6uIgmWFYvR2UcgQbYFMZqpU37PQuU59HrZPmI-nLvPPJgrNoUvH0rbk762P5z0MrD_-5-QcmFUTLCl2sSNuUHO_jQpjQA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Штучний інтелект продовжує перекроювати ринок праці. Компанія Cloudflare оголосила про скорочення 20% штату, що становить понад 1100 фахівців. \n\nЗасновники компанії зазначають, що причина не в кризі, а в переході на нову модель роботи в «епоху агентного ШІ». Щоб пом’якшити удар, звільненим збережуть зарплату аж до кінця 2026 року, але акції компанії все одно обвалилися на 19%.\n\nДетальніше про це читайте на форумі DOU.",
+      "text": "GitHub вже не той?\n\n“Коміт 1: Нова функція. Коміт 2: Виправити. Коміт 3: Виправити. Коміт 4: Дійсно виправити. Коміт 5: Будь ласка. Коміт 6, створений о 23:47 у четвер: asdfasdf”, - у розробника Мета Даггана дійсно є причини так вважати 😅\n\nЙому не подобається процес схвалення змін, запізнілі перевірки та купа зайвих інструментів. А чим вас не влаштовує сервіс?\n\nРозповідайте тут: https://dou.ua/goto/wOIb \n\n💬 Приходь нетворкати з ІТ-спільнотою на DOU Day",
       "links": [
         {
-          "label": "читайте на форумі DOU",
-          "url": "https://dou.ua/goto/buTf"
+          "label": "https://dou.ua/goto/wOIb",
+          "url": "https://dou.ua/goto/wOIb"
+        },
+        {
+          "label": "DOU Day",
+          "url": "https://dou.ua/goto/6jZw"
         }
       ],
       "createdAt": "2026-05-08T15:54:44.830Z",
@@ -3629,6 +3688,61 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T14:18:22.379Z"
+      }
+    },
+    {
+      "id": 4276075904,
+      "postUrl": "https://t.me/doucommunity/16427?single",
+      "source": {
+        "title": "DOU",
+        "handle": "doucommunity",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/o331XmrRtjptyDPskbZcNoT-ckMNhhSwOVyJxqBIdQvfkTp-eb917AcZEqyBBXNOcLOShJ5A6kuFkplMHROUNE9U2DJfhUeyP6xU3RrjqPQW6NJ2lY2XIBphddKwXLQvwKsQH7eydFMr_S7Pkdw3MnxLBtb2ab3VcAfiyANDVedKzuScFSpxo16OpeDPLPsa94OPxwAuXisGveYbeU4qB35LxB3IMU8cTIs65L1bJUlvG5MjQiHrQ7WCf0uTMrCgngbDoVIwYe0xZtAPOgJMGwGy0r05_agkPUm0wBh0oDOU9KAYZx-_vEkgRsn1T9dEELVnRXnNAzXz90smsW-Xmg.jpg"
+      },
+      "sourceId": "uk:doucommunity",
+      "sourceCountryCode": "uk",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/LupHKq2tp2zZoB3WRw8r5IE3luseFBh2t6CGK5aA_42QHpcvQvgyJpUS4jeraeydRPbHO9bZO4A03D-fZ5aOVPckcgXcLwuNq_8TrN5iQidfNutx4sDCIPzp4pRpezyQmbPJ28UJvF-F0mnNYk542fODNZBPiUbiXL_tZiwuLV7JMJyYo-XJGZBboTkvwfMGwoWUgzIvp_d582icauzjY6L8DrWYr45lvTyyjG7RGGw0sZS5vvDecHeNHYeyJmU9arA6k7JD8XGQ2K2j5fTNxaVmVD9X9sLTj_P3jQNwyOHZKR6AkPhhTmww02DL0dmDBB8NUjdxACUrFsEd5PgqJw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Штучний інтелект продовжує перекроювати ринок праці. Компанія Cloudflare оголосила про скорочення 20% штату, що становить понад 1100 фахівців. \n\nЗасновники компанії зазначають, що причина не в кризі, а в переході на нову модель роботи в «епоху агентного ШІ». Щоб пом’якшити удар, звільненим збережуть зарплату аж до кінця 2026 року, але акції компанії все одно обвалилися на 19%.\n\nДетальніше про це читайте на форумі DOU.",
+      "links": [
+        {
+          "label": "читайте на форумі DOU",
+          "url": "https://dou.ua/goto/buTf"
+        }
+      ],
+      "createdAt": "2026-05-08T15:54:44.830Z",
+      "expiresAt": "2026-05-09T15:54:44.830Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T15:54:44.830Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T15:54:44.830Z"
       }
     },
     {
