@@ -1,9 +1,55 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-09T22:01:38.518Z",
-  "totalPosts": 72,
+  "updatedAt": "2026-05-09T22:26:26.335Z",
+  "totalPosts": 76,
   "chunks": 1,
   "items": [
+    {
+      "id": 1578468108,
+      "postUrl": "https://t.me/tagesschau/43808?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Z8sX98BmBJmq3PZwKRswh5OY3ajiE7Dodzyu877OxEde4C_COl6fM1M9gx24y0OyUUaByOv9AaAzf1u1Le9vLS1rzlX2CYvyRt5Let_aausfZKakWbHAg-syaFAYAosVm2v8g_yzyhJ7KyznS3SOOTumJiwgBKW2Drgc-_hU4JNLkvmePi74ICFskICem9Uo7u7DYNKGhFq6E8pf34H9e9spIWgQSyoy9QD6v_KBpFhJ4-lwchpF1qAQPm9mF7-SyShczc9Y3yCsItB6ppRcynZ8s4-daoxKs3pXuhfuoCPOPSQbli0uvQApha6zUn8HmSVyY0BsUod6jQGz2KUKGw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Iran-Liveblog: ++ Großbritannien entsendet Zerstörer ++\nhttps://www.tagesschau.de/newsticker/liveblog-iran-samstag-118.html\n\nGroßbritannien schickt einen Zerstörer für einen möglichen Einsatz zum Schutz von Handelsschiffen in die Straße von Hormus. Die Regierung in Washington wartet auf eine Antwort Irans auf einen US-Vorschlag für ein Ende des Kriegs.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/newsticker/liveblog-iran-samstag-118.html",
+          "url": "https://www.tagesschau.de/newsticker/liveblog-iran-samstag-118.html"
+        }
+      ],
+      "createdAt": "2026-05-09T22:25:30.606Z",
+      "expiresAt": "2026-05-10T22:25:30.606Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T22:25:30.606Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T22:25:30.606Z"
+      }
+    },
     {
       "id": 3265340248,
       "postUrl": "https://t.me/spiegelonline/235786?single",
@@ -48,52 +94,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T22:00:20.732Z"
-      }
-    },
-    {
-      "id": 3780383976,
-      "postUrl": "https://t.me/tagesschau/43804?single",
-      "source": {
-        "title": "Tagesschau",
-        "handle": "tagesschau",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Z8sX98BmBJmq3PZwKRswh5OY3ajiE7Dodzyu877OxEde4C_COl6fM1M9gx24y0OyUUaByOv9AaAzf1u1Le9vLS1rzlX2CYvyRt5Let_aausfZKakWbHAg-syaFAYAosVm2v8g_yzyhJ7KyznS3SOOTumJiwgBKW2Drgc-_hU4JNLkvmePi74ICFskICem9Uo7u7DYNKGhFq6E8pf34H9e9spIWgQSyoy9QD6v_KBpFhJ4-lwchpF1qAQPm9mF7-SyShczc9Y3yCsItB6ppRcynZ8s4-daoxKs3pXuhfuoCPOPSQbli0uvQApha6zUn8HmSVyY0BsUod6jQGz2KUKGw.jpg"
-      },
-      "sourceId": "de:tagesschau",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Hantavirus auf Kreuzfahrtschiff: Mehrere Staaten schicken Flugzeuge zur Evakuierung\nhttps://www.tagesschau.de/ausland/europa/hantavirus-flugzeuge-evakuierung-100.html\n\nAm frühen Sonntag wird die \"Hondius\" auf Teneriffa erwartet. Nach Gesundheitschecks an Bord sollen die Menschen mit Evakuierungsflügen in ihre Heimatländer gebracht werden. Die WHO hält das Ansteckungsrisiko weltweit weiter für gering.",
-      "links": [
-        {
-          "label": "https://www.tagesschau.de/ausland/europa/hantavirus-flugzeuge-evakuierung-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/hantavirus-flugzeuge-evakuierung-100.html"
-        }
-      ],
-      "createdAt": "2026-05-09T20:26:14.423Z",
-      "expiresAt": "2026-05-10T20:26:14.423Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T20:26:14.423Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T20:26:14.423Z"
       }
     },
     {
@@ -144,6 +144,52 @@
       }
     },
     {
+      "id": 1272735595,
+      "postUrl": "https://t.me/tagesschau/43807?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Z8sX98BmBJmq3PZwKRswh5OY3ajiE7Dodzyu877OxEde4C_COl6fM1M9gx24y0OyUUaByOv9AaAzf1u1Le9vLS1rzlX2CYvyRt5Let_aausfZKakWbHAg-syaFAYAosVm2v8g_yzyhJ7KyznS3SOOTumJiwgBKW2Drgc-_hU4JNLkvmePi74ICFskICem9Uo7u7DYNKGhFq6E8pf34H9e9spIWgQSyoy9QD6v_KBpFhJ4-lwchpF1qAQPm9mF7-SyShczc9Y3yCsItB6ppRcynZ8s4-daoxKs3pXuhfuoCPOPSQbli0uvQApha6zUn8HmSVyY0BsUod6jQGz2KUKGw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Neubauprojekt des Bundestags vor dem Aus?\nhttps://www.tagesschau.de/inland/bundestag-bauprojekt-stopp-100.html\n\nBundestagspräsidentin Klöckner und ihr Vize Nouripour wollen ein wichtiges Bauprojekt des Parlaments stoppen: Angesichts knapper Kassen dürften keine teuren Erweiterungen vorangetrieben. Mindestens 600 Millionen Euro sollen so eingespart werden.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/inland/bundestag-bauprojekt-stopp-100.html",
+          "url": "https://www.tagesschau.de/inland/bundestag-bauprojekt-stopp-100.html"
+        }
+      ],
+      "createdAt": "2026-05-09T22:25:30.606Z",
+      "expiresAt": "2026-05-10T22:25:30.606Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T22:25:30.606Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T22:25:30.606Z"
+      }
+    },
+    {
       "id": 4070527515,
       "postUrl": "https://t.me/spiegelonline/235785?single",
       "source": {
@@ -190,8 +236,8 @@
       }
     },
     {
-      "id": 1726225287,
-      "postUrl": "https://t.me/tagesschau/43803?single",
+      "id": 1303787250,
+      "postUrl": "https://t.me/tagesschau/43806?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -204,17 +250,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Zu wenige Unterschriften: Volksbegehren \"Berlin autofrei\" gescheitert\nhttps://www.tagesschau.de/inland/regional/berlin/volksbegehren-berlin-autofrei-100.html\n\nDie Initiative \"Berlin autofrei\" ist mit ihrem Volksbegehren gescheitert. Für einen Volksentscheid fehlten der Initiative etwa 35.000 Unterschriften. Auch das Volksbegehren \"Berlin werbefrei\" dürfte scheitern.",
+      "text": "Russland und Ukraine melden Verstöße gegen Waffenruhe\nhttps://www.tagesschau.de/ausland/asien/ukraine-russland-212.html\n\nDie Ukraine und Russland werfen sich trotz der vereinbarten dreitägigen Feuerpause neue Angriffe vor. Die Militärparade in Moskau zum Weltkriegsgedenken ging aber ohne Störungen über die Bühne.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/inland/regional/berlin/volksbegehren-berlin-autofrei-100.html",
-          "url": "https://www.tagesschau.de/inland/regional/berlin/volksbegehren-berlin-autofrei-100.html"
+          "label": "https://www.tagesschau.de/ausland/asien/ukraine-russland-212.html",
+          "url": "https://www.tagesschau.de/ausland/asien/ukraine-russland-212.html"
         }
       ],
-      "createdAt": "2026-05-09T20:26:14.423Z",
-      "expiresAt": "2026-05-10T20:26:14.423Z",
+      "createdAt": "2026-05-09T22:25:30.606Z",
+      "expiresAt": "2026-05-10T22:25:30.606Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T20:26:14.423Z",
+      "mediaRefreshedAt": "2026-05-09T22:25:30.606Z",
       "tag": "news",
       "tags": [
         "news"
@@ -232,7 +278,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T20:26:14.423Z"
+        "reviewedAt": "2026-05-09T22:25:30.606Z"
       }
     },
     {
@@ -282,8 +328,8 @@
       }
     },
     {
-      "id": 2704030670,
-      "postUrl": "https://t.me/tagesschau/43802?single",
+      "id": 2991210153,
+      "postUrl": "https://t.me/tagesschau/43805?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -296,17 +342,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Eröffnung der Biennale in Venedig: Kunstschau im Krisenmodus\nhttps://www.tagesschau.de/kultur/eroeffnung-biennale-venedig-100.html\n\nNach den Streitigkeiten über die Teilnahme Russlands und Israels an der 61. Biennale eröffnet die Kunstschau ohne Feier und ohne Jury. Der Auftakt ist geprägt von Protesten und politischen Konflikten.",
+      "text": "Gouverneur in Kalifornien: Folgt auf Newsom ein Republikaner?\nhttps://www.tagesschau.de/ausland/amerika/newsom-gouverneur-kalifornien-nachfolge-100.html\n\nGouverneur Newsom will wohl ins Weiße Haus - doch wer tritt seine Nachfolge in Kalifornien an? Das Rennen ist in vollem Gange. Ausgerechnet den Demokraten droht dort jetzt eine Enttäuschung. Von Reinhard Spiegelhauer.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/kultur/eroeffnung-biennale-venedig-100.html",
-          "url": "https://www.tagesschau.de/kultur/eroeffnung-biennale-venedig-100.html"
+          "label": "https://www.tagesschau.de/ausland/amerika/newsom-gouverneur-kalifornien-nachfolge-100.html",
+          "url": "https://www.tagesschau.de/ausland/amerika/newsom-gouverneur-kalifornien-nachfolge-100.html"
         }
       ],
-      "createdAt": "2026-05-09T15:12:37.063Z",
-      "expiresAt": "2026-05-10T15:12:37.063Z",
+      "createdAt": "2026-05-09T22:25:30.606Z",
+      "expiresAt": "2026-05-10T22:25:30.606Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T15:12:37.063Z",
+      "mediaRefreshedAt": "2026-05-09T22:25:30.606Z",
       "tag": "news",
       "tags": [
         "news"
@@ -324,7 +370,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T15:12:37.063Z"
+        "reviewedAt": "2026-05-09T22:25:30.606Z"
       }
     },
     {
@@ -374,8 +420,8 @@
       }
     },
     {
-      "id": 2831052677,
-      "postUrl": "https://t.me/tagesschau/43801?single",
+      "id": 3780383976,
+      "postUrl": "https://t.me/tagesschau/43804?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -388,17 +434,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Fallen die \"Fesseln der Einstimmigkeit\" in der EU?\nhttps://www.tagesschau.de/ausland/europa/eu-einstimmigkeitsprinzip-100.html\n\nHeute, am Europatag, feiert die EU die europäische Einigung. Doch den 27 Mitgliedstaaten fehlt es an Beschlussfähigkeit. Immer lauter wird der Ruf nach einem Ende des Prinzips der Einstimmigkeit. Wie steht es darum? Von Jean-Marie Magro.",
+      "text": "Hantavirus auf Kreuzfahrtschiff: Mehrere Staaten schicken Flugzeuge zur Evakuierung\nhttps://www.tagesschau.de/ausland/europa/hantavirus-flugzeuge-evakuierung-100.html\n\nAm frühen Sonntag wird die \"Hondius\" auf Teneriffa erwartet. Nach Gesundheitschecks an Bord sollen die Menschen mit Evakuierungsflügen in ihre Heimatländer gebracht werden. Die WHO hält das Ansteckungsrisiko weltweit weiter für gering.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/eu-einstimmigkeitsprinzip-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/eu-einstimmigkeitsprinzip-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/hantavirus-flugzeuge-evakuierung-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/hantavirus-flugzeuge-evakuierung-100.html"
         }
       ],
-      "createdAt": "2026-05-09T15:12:37.063Z",
-      "expiresAt": "2026-05-10T15:12:37.063Z",
+      "createdAt": "2026-05-09T20:26:14.423Z",
+      "expiresAt": "2026-05-10T20:26:14.423Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T15:12:37.063Z",
+      "mediaRefreshedAt": "2026-05-09T20:26:14.423Z",
       "tag": "news",
       "tags": [
         "news"
@@ -416,7 +462,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T15:12:37.063Z"
+        "reviewedAt": "2026-05-09T20:26:14.423Z"
       }
     },
     {
@@ -466,8 +512,8 @@
       }
     },
     {
-      "id": 2790217652,
-      "postUrl": "https://t.me/tagesschau/43800?single",
+      "id": 1726225287,
+      "postUrl": "https://t.me/tagesschau/43803?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -480,17 +526,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Rechtsliberaler Poulsen soll Regierung in Dänemark bilden\nhttps://www.tagesschau.de/ausland/europa/daenemark-regierungsbildung-100.html\n\nDänemarks Ministerpräsidentin Frederiksen ist es nicht gelungen, eine mehrheitsfähige Koalition zu bilden. Jetzt wurde ihr bisheriger Bündnispartner Poulsen mit der Regierungsbildung beauftragt.",
+      "text": "Zu wenige Unterschriften: Volksbegehren \"Berlin autofrei\" gescheitert\nhttps://www.tagesschau.de/inland/regional/berlin/volksbegehren-berlin-autofrei-100.html\n\nDie Initiative \"Berlin autofrei\" ist mit ihrem Volksbegehren gescheitert. Für einen Volksentscheid fehlten der Initiative etwa 35.000 Unterschriften. Auch das Volksbegehren \"Berlin werbefrei\" dürfte scheitern.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/daenemark-regierungsbildung-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/daenemark-regierungsbildung-100.html"
+          "label": "https://www.tagesschau.de/inland/regional/berlin/volksbegehren-berlin-autofrei-100.html",
+          "url": "https://www.tagesschau.de/inland/regional/berlin/volksbegehren-berlin-autofrei-100.html"
         }
       ],
-      "createdAt": "2026-05-09T15:12:37.063Z",
-      "expiresAt": "2026-05-10T15:12:37.063Z",
+      "createdAt": "2026-05-09T20:26:14.423Z",
+      "expiresAt": "2026-05-10T20:26:14.423Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T15:12:37.063Z",
+      "mediaRefreshedAt": "2026-05-09T20:26:14.423Z",
       "tag": "news",
       "tags": [
         "news"
@@ -508,7 +554,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T15:12:37.063Z"
+        "reviewedAt": "2026-05-09T20:26:14.423Z"
       }
     },
     {
@@ -558,8 +604,8 @@
       }
     },
     {
-      "id": 793618037,
-      "postUrl": "https://t.me/tagesschau/43799?single",
+      "id": 2704030670,
+      "postUrl": "https://t.me/tagesschau/43802?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -572,11 +618,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Vereidigung von Peter Magyar: Machtwechsel in Ungarn am Europatag\nhttps://www.tagesschau.de/ausland/europa/ungarn-magyar-vereidigung-100.html\n\nPeter Magyar übernimmt heute das Amt von Viktor Orban - und die Europaflagge wird dabei eine große Rolle spielen. In Ungarn soll vieles anders werden, was sich auch an Magyars Ministerwahl zeigt. Von Sarah Beham.",
+      "text": "Eröffnung der Biennale in Venedig: Kunstschau im Krisenmodus\nhttps://www.tagesschau.de/kultur/eroeffnung-biennale-venedig-100.html\n\nNach den Streitigkeiten über die Teilnahme Russlands und Israels an der 61. Biennale eröffnet die Kunstschau ohne Feier und ohne Jury. Der Auftakt ist geprägt von Protesten und politischen Konflikten.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/ungarn-magyar-vereidigung-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/ungarn-magyar-vereidigung-100.html"
+          "label": "https://www.tagesschau.de/kultur/eroeffnung-biennale-venedig-100.html",
+          "url": "https://www.tagesschau.de/kultur/eroeffnung-biennale-venedig-100.html"
         }
       ],
       "createdAt": "2026-05-09T15:12:37.063Z",
@@ -650,8 +696,8 @@
       }
     },
     {
-      "id": 113815460,
-      "postUrl": "https://t.me/tagesschau/43798?single",
+      "id": 2831052677,
+      "postUrl": "https://t.me/tagesschau/43801?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -664,11 +710,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Was es für Familien bedeutet, wenn der Bauträger pleite geht\nhttps://www.tagesschau.de/wirtschaft/verbraucher/bautraeger-pleite-immobilie-100.html\n\nWenn ein Bauträger pleite geht, kann der Traum vom Eigenheim schnell zum Albtraum werden. Für viele Bauherren sind Schulden, Unsicherheit und das Leben auf einer Baustelle die Folge. Von Anke Heinhaus.",
+      "text": "Fallen die \"Fesseln der Einstimmigkeit\" in der EU?\nhttps://www.tagesschau.de/ausland/europa/eu-einstimmigkeitsprinzip-100.html\n\nHeute, am Europatag, feiert die EU die europäische Einigung. Doch den 27 Mitgliedstaaten fehlt es an Beschlussfähigkeit. Immer lauter wird der Ruf nach einem Ende des Prinzips der Einstimmigkeit. Wie steht es darum? Von Jean-Marie Magro.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/bautraeger-pleite-immobilie-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/bautraeger-pleite-immobilie-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/eu-einstimmigkeitsprinzip-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/eu-einstimmigkeitsprinzip-100.html"
         }
       ],
       "createdAt": "2026-05-09T15:12:37.063Z",
@@ -742,8 +788,8 @@
       }
     },
     {
-      "id": 3085932755,
-      "postUrl": "https://t.me/tagesschau/43797?single",
+      "id": 2790217652,
+      "postUrl": "https://t.me/tagesschau/43800?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -756,11 +802,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Nach Kommunalwahl in Großbritannien: Das Ende von Labour?\nhttps://www.tagesschau.de/ausland/europa/grossbritannien-kommunalwahl-labour-100.html\n\nDie britische Regierungspartei Labour hat bei den Kommunalwahlen in Großbritannien massive Verluste erlitten. Manche sehen gar das Ende der Partei gekommen. In Wales und Schottland siegten Unabhängigkeitsparteien. Von F. Hoppen.",
+      "text": "Rechtsliberaler Poulsen soll Regierung in Dänemark bilden\nhttps://www.tagesschau.de/ausland/europa/daenemark-regierungsbildung-100.html\n\nDänemarks Ministerpräsidentin Frederiksen ist es nicht gelungen, eine mehrheitsfähige Koalition zu bilden. Jetzt wurde ihr bisheriger Bündnispartner Poulsen mit der Regierungsbildung beauftragt.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/grossbritannien-kommunalwahl-labour-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/grossbritannien-kommunalwahl-labour-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/daenemark-regierungsbildung-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/daenemark-regierungsbildung-100.html"
         }
       ],
       "createdAt": "2026-05-09T15:12:37.063Z",
@@ -834,8 +880,8 @@
       }
     },
     {
-      "id": 3438208698,
-      "postUrl": "https://t.me/tagesschau/43796?single",
+      "id": 793618037,
+      "postUrl": "https://t.me/tagesschau/43799?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -848,11 +894,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Abwehrkrieg gegen Russland: Neuer \"Diskurs der Stärke\" in der Ukraine\nhttps://www.tagesschau.de/ausland/europa/ukraine-diskurs-staerke-100.html\n\nIm fünften Kriegsjahr zeichnet sich ein neues Selbstbewusstsein in der Ukraine ab. Zwar ist das Land erschöpft von Russlands Angriffen - doch immer offener sprechen Intellektuelle von einem möglichen Sieg. Von G. Dornblüth.",
+      "text": "Vereidigung von Peter Magyar: Machtwechsel in Ungarn am Europatag\nhttps://www.tagesschau.de/ausland/europa/ungarn-magyar-vereidigung-100.html\n\nPeter Magyar übernimmt heute das Amt von Viktor Orban - und die Europaflagge wird dabei eine große Rolle spielen. In Ungarn soll vieles anders werden, was sich auch an Magyars Ministerwahl zeigt. Von Sarah Beham.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/ausland/europa/ukraine-diskurs-staerke-100.html",
-          "url": "https://www.tagesschau.de/ausland/europa/ukraine-diskurs-staerke-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/ungarn-magyar-vereidigung-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/ungarn-magyar-vereidigung-100.html"
         }
       ],
       "createdAt": "2026-05-09T15:12:37.063Z",
@@ -926,8 +972,8 @@
       }
     },
     {
-      "id": 4072751601,
-      "postUrl": "https://t.me/tagesschau/43795?single",
+      "id": 113815460,
+      "postUrl": "https://t.me/tagesschau/43798?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -940,11 +986,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Flughafenverband rechnet mit Flugstreichungen wegen hoher Kerosinpreise\nhttps://www.tagesschau.de/wirtschaft/flughafenverband-streichungen-kerosin-100.html\n\nWegen des Iran-Kriegs sind die Preise für Kerosin stark gestiegen. Die deutschen Flughäfen rechnen daher mit Flugstreichungen im Sommer: Mehr als 20 Millionen Passagiere könnten im schlimmsten Fall betroffen sein.",
+      "text": "Was es für Familien bedeutet, wenn der Bauträger pleite geht\nhttps://www.tagesschau.de/wirtschaft/verbraucher/bautraeger-pleite-immobilie-100.html\n\nWenn ein Bauträger pleite geht, kann der Traum vom Eigenheim schnell zum Albtraum werden. Für viele Bauherren sind Schulden, Unsicherheit und das Leben auf einer Baustelle die Folge. Von Anke Heinhaus.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wirtschaft/flughafenverband-streichungen-kerosin-100.html",
-          "url": "https://www.tagesschau.de/wirtschaft/flughafenverband-streichungen-kerosin-100.html"
+          "label": "https://www.tagesschau.de/wirtschaft/verbraucher/bautraeger-pleite-immobilie-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/verbraucher/bautraeger-pleite-immobilie-100.html"
         }
       ],
       "createdAt": "2026-05-09T15:12:37.063Z",
@@ -1018,8 +1064,8 @@
       }
     },
     {
-      "id": 2701680112,
-      "postUrl": "https://t.me/tagesschau/43794?single",
+      "id": 3085932755,
+      "postUrl": "https://t.me/tagesschau/43797?single",
       "source": {
         "title": "Tagesschau",
         "handle": "tagesschau",
@@ -1032,11 +1078,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Wissenschaftsbetrieb: Junge Forschende sind innovativer\nhttps://www.tagesschau.de/wissen/forschung/forschende-alter-innovativ-100.html\n\nDas Alter beeinflusst offenbar, wie wahrscheinlich Forschende bahnbrechende Innovationen hervorbringen. Das zeigt eine Studie, die Daten von 12,5 Millionen Forschenden untersucht hat. Von A. Braun.",
+      "text": "Nach Kommunalwahl in Großbritannien: Das Ende von Labour?\nhttps://www.tagesschau.de/ausland/europa/grossbritannien-kommunalwahl-labour-100.html\n\nDie britische Regierungspartei Labour hat bei den Kommunalwahlen in Großbritannien massive Verluste erlitten. Manche sehen gar das Ende der Partei gekommen. In Wales und Schottland siegten Unabhängigkeitsparteien. Von F. Hoppen.",
       "links": [
         {
-          "label": "https://www.tagesschau.de/wissen/forschung/forschende-alter-innovativ-100.html",
-          "url": "https://www.tagesschau.de/wissen/forschung/forschende-alter-innovativ-100.html"
+          "label": "https://www.tagesschau.de/ausland/europa/grossbritannien-kommunalwahl-labour-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/grossbritannien-kommunalwahl-labour-100.html"
         }
       ],
       "createdAt": "2026-05-09T15:12:37.063Z",
@@ -1110,6 +1156,52 @@
       }
     },
     {
+      "id": 3438208698,
+      "postUrl": "https://t.me/tagesschau/43796?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Z8sX98BmBJmq3PZwKRswh5OY3ajiE7Dodzyu877OxEde4C_COl6fM1M9gx24y0OyUUaByOv9AaAzf1u1Le9vLS1rzlX2CYvyRt5Let_aausfZKakWbHAg-syaFAYAosVm2v8g_yzyhJ7KyznS3SOOTumJiwgBKW2Drgc-_hU4JNLkvmePi74ICFskICem9Uo7u7DYNKGhFq6E8pf34H9e9spIWgQSyoy9QD6v_KBpFhJ4-lwchpF1qAQPm9mF7-SyShczc9Y3yCsItB6ppRcynZ8s4-daoxKs3pXuhfuoCPOPSQbli0uvQApha6zUn8HmSVyY0BsUod6jQGz2KUKGw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Abwehrkrieg gegen Russland: Neuer \"Diskurs der Stärke\" in der Ukraine\nhttps://www.tagesschau.de/ausland/europa/ukraine-diskurs-staerke-100.html\n\nIm fünften Kriegsjahr zeichnet sich ein neues Selbstbewusstsein in der Ukraine ab. Zwar ist das Land erschöpft von Russlands Angriffen - doch immer offener sprechen Intellektuelle von einem möglichen Sieg. Von G. Dornblüth.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/europa/ukraine-diskurs-staerke-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/ukraine-diskurs-staerke-100.html"
+        }
+      ],
+      "createdAt": "2026-05-09T15:12:37.063Z",
+      "expiresAt": "2026-05-10T15:12:37.063Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T15:12:37.063Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T15:12:37.063Z"
+      }
+    },
+    {
       "id": 449573883,
       "postUrl": "https://t.me/spiegelonline/235774?single",
       "source": {
@@ -1156,6 +1248,52 @@
       }
     },
     {
+      "id": 4072751601,
+      "postUrl": "https://t.me/tagesschau/43795?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Z8sX98BmBJmq3PZwKRswh5OY3ajiE7Dodzyu877OxEde4C_COl6fM1M9gx24y0OyUUaByOv9AaAzf1u1Le9vLS1rzlX2CYvyRt5Let_aausfZKakWbHAg-syaFAYAosVm2v8g_yzyhJ7KyznS3SOOTumJiwgBKW2Drgc-_hU4JNLkvmePi74ICFskICem9Uo7u7DYNKGhFq6E8pf34H9e9spIWgQSyoy9QD6v_KBpFhJ4-lwchpF1qAQPm9mF7-SyShczc9Y3yCsItB6ppRcynZ8s4-daoxKs3pXuhfuoCPOPSQbli0uvQApha6zUn8HmSVyY0BsUod6jQGz2KUKGw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Flughafenverband rechnet mit Flugstreichungen wegen hoher Kerosinpreise\nhttps://www.tagesschau.de/wirtschaft/flughafenverband-streichungen-kerosin-100.html\n\nWegen des Iran-Kriegs sind die Preise für Kerosin stark gestiegen. Die deutschen Flughäfen rechnen daher mit Flugstreichungen im Sommer: Mehr als 20 Millionen Passagiere könnten im schlimmsten Fall betroffen sein.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/wirtschaft/flughafenverband-streichungen-kerosin-100.html",
+          "url": "https://www.tagesschau.de/wirtschaft/flughafenverband-streichungen-kerosin-100.html"
+        }
+      ],
+      "createdAt": "2026-05-09T15:12:37.063Z",
+      "expiresAt": "2026-05-10T15:12:37.063Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T15:12:37.063Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T15:12:37.063Z"
+      }
+    },
+    {
       "id": 1413232324,
       "postUrl": "https://t.me/spiegelonline/235773?single",
       "source": {
@@ -1199,6 +1337,52 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T17:11:39.842Z"
+      }
+    },
+    {
+      "id": 2701680112,
+      "postUrl": "https://t.me/tagesschau/43794?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Z8sX98BmBJmq3PZwKRswh5OY3ajiE7Dodzyu877OxEde4C_COl6fM1M9gx24y0OyUUaByOv9AaAzf1u1Le9vLS1rzlX2CYvyRt5Let_aausfZKakWbHAg-syaFAYAosVm2v8g_yzyhJ7KyznS3SOOTumJiwgBKW2Drgc-_hU4JNLkvmePi74ICFskICem9Uo7u7DYNKGhFq6E8pf34H9e9spIWgQSyoy9QD6v_KBpFhJ4-lwchpF1qAQPm9mF7-SyShczc9Y3yCsItB6ppRcynZ8s4-daoxKs3pXuhfuoCPOPSQbli0uvQApha6zUn8HmSVyY0BsUod6jQGz2KUKGw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Wissenschaftsbetrieb: Junge Forschende sind innovativer\nhttps://www.tagesschau.de/wissen/forschung/forschende-alter-innovativ-100.html\n\nDas Alter beeinflusst offenbar, wie wahrscheinlich Forschende bahnbrechende Innovationen hervorbringen. Das zeigt eine Studie, die Daten von 12,5 Millionen Forschenden untersucht hat. Von A. Braun.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/wissen/forschung/forschende-alter-innovativ-100.html",
+          "url": "https://www.tagesschau.de/wissen/forschung/forschende-alter-innovativ-100.html"
+        }
+      ],
+      "createdAt": "2026-05-09T15:12:37.063Z",
+      "expiresAt": "2026-05-10T15:12:37.063Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T15:12:37.063Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T15:12:37.063Z"
       }
     },
     {
