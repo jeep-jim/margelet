@@ -1,9 +1,55 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-09T08:22:39.613Z",
-  "totalPosts": 99,
+  "updatedAt": "2026-05-09T10:37:09.613Z",
+  "totalPosts": 105,
   "chunks": 1,
   "items": [
+    {
+      "id": 356984601,
+      "postUrl": "https://t.me/spiegelonline/235750?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Bundestag: Julia Klöckner und Omid Nouripour wollen Megaprojekt stoppen\n#Politik #Deutschland\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/politik/deutschland/bundestag-julia-kloeckner-und-omid-nouripour-wollen-megaprojekt-stoppen-a-d270e86b-f38b-459f-b589-5c0802de2dc4#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
+      }
+    },
     {
       "id": 3315528501,
       "postUrl": "https://t.me/heiseonline/12121?single",
@@ -49,52 +95,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T08:13:38.349Z"
-      }
-    },
-    {
-      "id": 4270588488,
-      "postUrl": "https://t.me/spiegelonline/235742?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Erdüberlastungstag: Am Sonntag sind die Ressourcen für 2026 in Deutschland aufgebraucht\n#Wissenschaft #Natur\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/wissenschaft/natur/erdueberlastungstag-am-sonntag-sind-die-ressourcen-fuer-2026-in-deutschland-aufgebraucht-a-519e7595-e60b-47ed-8a76-a4f646f38a22#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -228,35 +228,34 @@
       }
     },
     {
-      "id": 3349382951,
-      "postUrl": "https://t.me/marketingde/5?single",
+      "id": 603834371,
+      "postUrl": "https://t.me/spiegelonline/235749?single",
       "source": {
-        "title": "Sawdager | Marketing",
-        "handle": "marketingde",
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/K8uJkYHdc11E99tTREOYFUT3M4u4D4XHtbemQQLL4NZNlM9bXXIFqd8iE1bAS7cMOvt5h8b_IVamKHROw6J9phniam9So8EFrW3Vm3yPqxp-o0hov2LHE9l1XT2z2WVK8XGpbB11LkjrwLxABZ9FVfQgU9nHyrRixKjeHREQ6mPfxpmHpTO5rex7Ta2bWrUuD5Qy8c-w684lSF49yRyTpWy6wBUXYq9WH_7qvoPXhzxoZiuKLt3WOb2nTbLRxQF6jWXwc7E-tLURAB83yV0_hZGwLBV4R1Ur8zHVXtA6bnAswfz48b1wwX1vf9G45ZYO-qLN8R86K3Cl3S02b2VALw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
       },
-      "sourceId": "de:marketingde",
+      "sourceId": "de:spiegelonline",
       "sourceCountryCode": "de",
       "contentType": "text",
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "https://t.me/menin_portfoliom",
+      "text": "Künstliche Intelligenz: Was die KI mit unserem Gehirn anrichtet\n#Wissenschaft \n\n zum Artikel...",
       "links": [
         {
-          "label": "https://t.me/menin_portfoliom",
-          "url": "https://t.me/menin_portfoliom"
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/wissenschaft/man-fuehlt-sich-dann-son-bisschen-bloed-a-688913b0-3ef0-4868-83b6-e88937dc983b#ref=rss"
         }
       ],
-      "createdAt": "2026-05-08T09:51:53.120Z",
-      "expiresAt": "2026-05-09T09:51:53.120Z",
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T09:51:53.120Z",
-      "tag": "marketing",
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
       "tags": [
-        "marketing",
-        "business"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -271,7 +270,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-08T09:51:53.120Z"
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
       }
     },
     {
@@ -319,52 +318,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T21:15:48.019Z"
-      }
-    },
-    {
-      "id": 2038569675,
-      "postUrl": "https://t.me/spiegelonline/235741?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Hobbygärtner: Warum vor allem Männer beim Düngen umdenken sollen\n#Wirtschaft \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/wirtschaft/hobbygaertner-warum-vor-allem-maenner-beim-duengen-umdenken-sollen-a-539ddba6-28f2-4928-9815-06e9cb1db6a0#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -469,30 +422,34 @@
       }
     },
     {
-      "id": 1013026699,
-      "postUrl": "https://t.me/marketingde/1?single",
+      "id": 1265676458,
+      "postUrl": "https://t.me/spiegelonline/235748?single",
       "source": {
-        "title": "Sawdager | Marketing",
-        "handle": "marketingde",
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/K8uJkYHdc11E99tTREOYFUT3M4u4D4XHtbemQQLL4NZNlM9bXXIFqd8iE1bAS7cMOvt5h8b_IVamKHROw6J9phniam9So8EFrW3Vm3yPqxp-o0hov2LHE9l1XT2z2WVK8XGpbB11LkjrwLxABZ9FVfQgU9nHyrRixKjeHREQ6mPfxpmHpTO5rex7Ta2bWrUuD5Qy8c-w684lSF49yRyTpWy6wBUXYq9WH_7qvoPXhzxoZiuKLt3WOb2nTbLRxQF6jWXwc7E-tLURAB83yV0_hZGwLBV4R1Ur8zHVXtA6bnAswfz48b1wwX1vf9G45ZYO-qLN8R86K3Cl3S02b2VALw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
       },
-      "sourceId": "de:marketingde",
+      "sourceId": "de:spiegelonline",
       "sourceCountryCode": "de",
       "contentType": "text",
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-05-08T09:51:53.120Z",
-      "expiresAt": "2026-05-09T09:51:53.120Z",
+      "text": "Denver: Flugzeug bricht Start nach Kollision mit Person ab\n#Panorama \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/denver-flugzeug-bricht-start-nach-kollision-mit-person-ab-a-d036c326-72f9-44b6-a16b-01043c98193d#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T09:51:53.120Z",
-      "tag": "marketing",
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
       "tags": [
-        "marketing",
-        "business"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -507,7 +464,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-08T09:51:53.120Z"
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
       }
     },
     {
@@ -555,52 +512,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T11:45:35.153Z"
-      }
-    },
-    {
-      "id": 2744123090,
-      "postUrl": "https://t.me/spiegelonline/235740?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Donald Trump: US-Geistlicher verteidigt Segnung goldener Statue des IS-Präsidenten\n#Ausland \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/donald-trump-us-geistlicher-verteidigt-segnung-goldener-statue-des-is-praesidenten-a-1fe3db21-9cfa-4ab8-86f6-4e65f25bd733#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -701,6 +612,52 @@
       }
     },
     {
+      "id": 44250085,
+      "postUrl": "https://t.me/spiegelonline/235747?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Fußball-WM 2026: Uli Hoeneß kritisiert hohe Ticketpreise scharf\n#Sport #Fussball\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/fussball/fussball-wm-2026-uli-hoeness-kritisiert-hohe-ticketpreise-scharf-a-3fcaa233-bb4f-450c-adc9-dad523304387#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
+      }
+    },
+    {
       "id": 3952229989,
       "postUrl": "https://t.me/heiseonline/12118?single",
       "source": {
@@ -745,52 +702,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T11:45:35.153Z"
-      }
-    },
-    {
-      "id": 772798858,
-      "postUrl": "https://t.me/spiegelonline/235739?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Kerosin-Mangel durch Iran-Krieg: Flughafenverband erwartet Millionen Flugstreichungen\n#Reise \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/reise/kerosin-mangel-durch-iran-krieg-flughafenverband-erwartet-millionen-flugstreichungen-a-ca86d36e-ec06-48b3-8c61-60274b6fe344#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -887,6 +798,52 @@
       }
     },
     {
+      "id": 3311892,
+      "postUrl": "https://t.me/spiegelonline/235746?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Biontech: Curevac-Gründer warnt vor gefährlichem Know-how-Verlust\n#Wirtschaft \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/wirtschaft/biontech-curevac-gruender-warnt-vor-gefaehrlichem-know-how-verlust-a-074af8f4-c2b7-4e16-9404-f0f25f7c690d#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
+      }
+    },
+    {
       "id": 878689066,
       "postUrl": "https://t.me/heiseonline/12117?single",
       "source": {
@@ -931,52 +888,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T11:45:35.153Z"
-      }
-    },
-    {
-      "id": 3618311907,
-      "postUrl": "https://t.me/spiegelonline/235738?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Donald Trump erwägt Verlegung von US-Truppen aus Deutschland nach Polen\n#Ausland \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/donald-trump-erwaegt-verlegung-von-us-truppen-aus-deutschland-nach-polen-a-f3a77c7b-14a1-473d-a7ee-bea673cd9a6d#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -1081,6 +992,52 @@
       }
     },
     {
+      "id": 2508153959,
+      "postUrl": "https://t.me/spiegelonline/235745?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Russland: Wladimir Putin feiert abgespeckte Militärparade zum 9. Mai\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/russland-wladimir-putin-feiert-abgespeckte-militaerparade-zum-9-mai-a-22b510ef-867d-4961-9520-3261cfbb909d#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
+      }
+    },
+    {
       "id": 216846979,
       "postUrl": "https://t.me/heiseonline/12116?single",
       "source": {
@@ -1125,52 +1082,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T11:45:35.153Z"
-      }
-    },
-    {
-      "id": 2741492980,
-      "postUrl": "https://t.me/spiegelonline/235737?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "AfD und Vetternwirtschaft: Zu krank zum Unterrichten, aber fit genug für die Fraktion\n#Politik #Deutschland\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/politik/deutschland/afd-und-vetternwirtschaft-zu-krank-zum-unterrichten-aber-fit-genug-fuer-die-fraktion-a-e75805cd-765f-480c-bc46-2dfba6eeb2ef#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -1275,6 +1186,52 @@
       }
     },
     {
+      "id": 633306542,
+      "postUrl": "https://t.me/spiegelonline/235744?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Weltmeisterschaft 2026: Lionel Messi nennt seine Favoriten auf den Titel\n#Sport \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/weltmeisterschaft-2026-lionel-messi-nennt-seine-favoriten-auf-den-titel-a-da88597e-8c83-446b-a97a-8140671b12c7#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
+      }
+    },
+    {
       "id": 560708640,
       "postUrl": "https://t.me/heiseonline/12115?single",
       "source": {
@@ -1319,52 +1276,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T11:45:35.153Z"
-      }
-    },
-    {
-      "id": 2316396997,
-      "postUrl": "https://t.me/spiegelonline/235736?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Künstliche Intelligenz im Studium: Wie KI-Agenten Prüfungen für Studierende bestehen können\n#Start \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/start/kuenstliche-intelligenz-im-studium-wie-ki-agenten-pruefungen-fuer-studierende-bestehen-koennen-a-ea1a22ee-ede5-44d7-9b5f-dd27a2abb339#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -1477,6 +1388,52 @@
       }
     },
     {
+      "id": 4197596297,
+      "postUrl": "https://t.me/spiegelonline/235743?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Pflegeversicherung: Nina Warken korrigiert Defizit und plant Mehrbelastungen\n#Politik \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/politik/pflegeversicherung-nina-warken-korrigiert-defizit-und-plant-mehrbelastungen-a-66d9188c-c3e8-4dc6-b135-7c72cf17e986#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T10:36:06.282Z",
+      "expiresAt": "2026-05-10T10:36:06.282Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T10:36:06.282Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T10:36:06.282Z"
+      }
+    },
+    {
       "id": 496476833,
       "postUrl": "https://t.me/heiseonline/12114?single",
       "source": {
@@ -1521,52 +1478,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T11:45:35.153Z"
-      }
-    },
-    {
-      "id": 1530967822,
-      "postUrl": "https://t.me/spiegelonline/235735?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Jens Spahn stellt sich gegen Zusammenarbeit mit »dieser AfD«\n#Politik #Deutschland\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/politik/deutschland/jens-spahn-stellt-sich-gegen-zusammenarbeit-mit-dieser-afd-a-4a5e76d6-b7ee-49fe-bebd-978bb01d00ba#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -1663,8 +1574,8 @@
       }
     },
     {
-      "id": 2424512455,
-      "postUrl": "https://t.me/spiegelonline/235734?single",
+      "id": 4270588488,
+      "postUrl": "https://t.me/spiegelonline/235742?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1677,11 +1588,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "News: Wladimir Putin, Wolodymyr Selenskyj, Péter Magyar, Viktor Orbán, Nigel Farage, Keir Starmer\n#Ausland \n\n zum Artikel...",
+      "text": "Erdüberlastungstag: Am Sonntag sind die Ressourcen für 2026 in Deutschland aufgebraucht\n#Wissenschaft #Natur\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/news-wladimir-putin-wolodymyr-selenskyj-peter-magyar-viktor-orban-nigel-farage-keir-starmer-a-66ce29f8-8d67-4f6d-9745-7576797e63e7#ref=rss"
+          "url": "https://www.spiegel.de/wissenschaft/natur/erdueberlastungstag-am-sonntag-sind-die-ressourcen-fuer-2026-in-deutschland-aufgebraucht-a-519e7595-e60b-47ed-8a76-a4f646f38a22#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -1806,8 +1717,8 @@
       }
     },
     {
-      "id": 3777814056,
-      "postUrl": "https://t.me/spiegelonline/235733?single",
+      "id": 2038569675,
+      "postUrl": "https://t.me/spiegelonline/235741?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1820,15 +1731,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Mount Everest: Rekordansturm spült Millionen in Nepals Staatskasse\n#Panorama \n\n zum Artikel...\n\nDas Neueste über Telegram, kommende Features und mehr findest Du hier: @nachrichten",
+      "text": "Hobbygärtner: Warum vor allem Männer beim Düngen umdenken sollen\n#Wirtschaft \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/mount-everest-rekordansturm-spuelt-millionen-in-nepals-staatskasse-a-bcffdb5b-8549-407a-ae93-a27bc300aaef#ref=rss"
-        },
-        {
-          "label": "@nachrichten",
-          "url": "https://t.me/nachrichten"
+          "url": "https://www.spiegel.de/wirtschaft/hobbygaertner-warum-vor-allem-maenner-beim-duengen-umdenken-sollen-a-539ddba6-28f2-4928-9815-06e9cb1db6a0#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -1949,8 +1856,8 @@
       }
     },
     {
-      "id": 1500170985,
-      "postUrl": "https://t.me/spiegelonline/235732?single",
+      "id": 2744123090,
+      "postUrl": "https://t.me/spiegelonline/235740?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1963,11 +1870,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Iran: Katars Regierungschef wirbt bei JD Vance für neue Friedensgespräche\n#Ausland \n\n zum Artikel...",
+      "text": "Donald Trump: US-Geistlicher verteidigt Segnung goldener Statue des IS-Präsidenten\n#Ausland \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/iran-katars-regierungschef-wirbt-bei-jd-vance-fuer-neue-friedensgespraeche-a-c93936c5-2777-4543-8d2d-b50b055f139e#ref=rss"
+          "url": "https://www.spiegel.de/ausland/donald-trump-us-geistlicher-verteidigt-segnung-goldener-statue-des-is-praesidenten-a-1fe3db21-9cfa-4ab8-86f6-4e65f25bd733#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -2088,8 +1995,8 @@
       }
     },
     {
-      "id": 2277600818,
-      "postUrl": "https://t.me/spiegelonline/235731?single",
+      "id": 772798858,
+      "postUrl": "https://t.me/spiegelonline/235739?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2102,11 +2009,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Hantavirus auf der MV »Hondius«: Teneriffa stellt sich auf Ankunft des Schiffs ein\n#Panorama \n\n zum Artikel...",
+      "text": "Kerosin-Mangel durch Iran-Krieg: Flughafenverband erwartet Millionen Flugstreichungen\n#Reise \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/hantavirus-auf-der-mv-hondius-teneriffa-stellt-sich-auf-ankunft-des-schiffs-ein-a-376741c1-cc2a-4245-a555-c2826f5a930d#ref=rss"
+          "url": "https://www.spiegel.de/reise/kerosin-mangel-durch-iran-krieg-flughafenverband-erwartet-millionen-flugstreichungen-a-ca86d36e-ec06-48b3-8c61-60274b6fe344#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -2227,8 +2134,8 @@
       }
     },
     {
-      "id": 3652206251,
-      "postUrl": "https://t.me/spiegelonline/235730?single",
+      "id": 3618311907,
+      "postUrl": "https://t.me/spiegelonline/235738?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2241,11 +2148,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Helmut Metzner: Homophober Angriff auf FDP-Politiker und Partner in Berlin\n#Panorama \n\n zum Artikel...",
+      "text": "Donald Trump erwägt Verlegung von US-Truppen aus Deutschland nach Polen\n#Ausland \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/helmut-metzner-homophober-angriff-auf-fdp-politiker-und-partner-in-berlin-a-9b5bc336-5397-41ed-b455-de3227265726#ref=rss"
+          "url": "https://www.spiegel.de/ausland/donald-trump-erwaegt-verlegung-von-us-truppen-aus-deutschland-nach-polen-a-f3a77c7b-14a1-473d-a7ee-bea673cd9a6d#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -2320,8 +2227,8 @@
       }
     },
     {
-      "id": 2870537773,
-      "postUrl": "https://t.me/spiegelonline/235729?single",
+      "id": 2741492980,
+      "postUrl": "https://t.me/spiegelonline/235737?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2334,11 +2241,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "TU Berlin schließt marodes Hauptgebäude wegen Baumängel\n#Panorama #Bildung\n\n zum Artikel...",
+      "text": "AfD und Vetternwirtschaft: Zu krank zum Unterrichten, aber fit genug für die Fraktion\n#Politik #Deutschland\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/bildung/tu-berlin-schliesst-marodes-hauptgebaeude-wegen-baumaengel-a-fc327fde-ba6c-46ab-9aff-8084823e0640#ref=rss"
+          "url": "https://www.spiegel.de/politik/deutschland/afd-und-vetternwirtschaft-zu-krank-zum-unterrichten-aber-fit-genug-fuer-die-fraktion-a-e75805cd-765f-480c-bc46-2dfba6eeb2ef#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -2413,8 +2320,8 @@
       }
     },
     {
-      "id": 2950194684,
-      "postUrl": "https://t.me/spiegelonline/235728?single",
+      "id": 2316396997,
+      "postUrl": "https://t.me/spiegelonline/235736?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2427,11 +2334,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Katy Perry hat ICE kritisiert. Nun eröffnet sie die WM in den USA\n#Panorama #Leute\n\n zum Artikel...",
+      "text": "Künstliche Intelligenz im Studium: Wie KI-Agenten Prüfungen für Studierende bestehen können\n#Start \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/leute/katy-perry-hat-ice-kritisiert-nun-eroeffnet-sie-die-wm-in-den-usa-a-c2262cbb-a22f-4648-b9b5-6f411ab65365#ref=rss"
+          "url": "https://www.spiegel.de/start/kuenstliche-intelligenz-im-studium-wie-ki-agenten-pruefungen-fuer-studierende-bestehen-koennen-a-ea1a22ee-ede5-44d7-9b5f-dd27a2abb339#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -2501,8 +2408,8 @@
       }
     },
     {
-      "id": 4078541275,
-      "postUrl": "https://t.me/spiegelonline/235727?single",
+      "id": 1530967822,
+      "postUrl": "https://t.me/spiegelonline/235735?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2515,11 +2422,11 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Dortmund besiegt Frankfurt und holt sich die Vizemeisterschaft\n#Sport \n\n zum Artikel...",
+      "text": "Jens Spahn stellt sich gegen Zusammenarbeit mit »dieser AfD«\n#Politik #Deutschland\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/sport/dortmund-besiegt-frankfurt-und-holt-vizemeisterschaft-a-be4e9736-1565-4e24-8c07-17013890b86b#ref=rss"
+          "url": "https://www.spiegel.de/politik/deutschland/jens-spahn-stellt-sich-gegen-zusammenarbeit-mit-dieser-afd-a-4a5e76d6-b7ee-49fe-bebd-978bb01d00ba#ref=rss"
         }
       ],
       "createdAt": "2026-05-09T08:13:32.248Z",
@@ -2598,8 +2505,8 @@
       }
     },
     {
-      "id": 3140270690,
-      "postUrl": "https://t.me/spiegelonline/235726?single",
+      "id": 2424512455,
+      "postUrl": "https://t.me/spiegelonline/235734?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2612,17 +2519,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Giro d'Italia: Paul Magnier gewinnt Auftakt-Etappe\n#Sport #Radsport\n\n zum Artikel...",
+      "text": "News: Wladimir Putin, Wolodymyr Selenskyj, Péter Magyar, Viktor Orbán, Nigel Farage, Keir Starmer\n#Ausland \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/sport/radsport/giro-ditalia-paul-magnier-gewinnt-auftakt-etappe-a-baa19879-8792-41fc-b8b1-880b8f9930d0#ref=rss"
+          "url": "https://www.spiegel.de/ausland/news-wladimir-putin-wolodymyr-selenskyj-peter-magyar-viktor-orban-nigel-farage-keir-starmer-a-66ce29f8-8d67-4f6d-9745-7576797e63e7#ref=rss"
         }
       ],
-      "createdAt": "2026-05-08T19:45:00.665Z",
-      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2640,7 +2547,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-08T19:45:00.665Z"
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -2699,8 +2606,8 @@
       }
     },
     {
-      "id": 727552537,
-      "postUrl": "https://t.me/spiegelonline/235725?single",
+      "id": 3777814056,
+      "postUrl": "https://t.me/spiegelonline/235733?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2713,17 +2620,21 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Real Madrid: Federico Valverde und Aurélien Tchouameni müssen 500.000 Euro zahlen\n#Sport #Fussball\n\n zum Artikel...",
+      "text": "Mount Everest: Rekordansturm spült Millionen in Nepals Staatskasse\n#Panorama \n\n zum Artikel...\n\nDas Neueste über Telegram, kommende Features und mehr findest Du hier: @nachrichten",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/sport/fussball/real-madrid-federico-valverde-und-aurelien-tchouameni-muessen-500-000-euro-zahlen-a-7444dc03-c564-48aa-b412-84d75debaa7c#ref=rss"
+          "url": "https://www.spiegel.de/panorama/mount-everest-rekordansturm-spuelt-millionen-in-nepals-staatskasse-a-bcffdb5b-8549-407a-ae93-a27bc300aaef#ref=rss"
+        },
+        {
+          "label": "@nachrichten",
+          "url": "https://t.me/nachrichten"
         }
       ],
-      "createdAt": "2026-05-08T19:45:00.665Z",
-      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2741,7 +2652,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-08T19:45:00.665Z"
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -2787,8 +2698,8 @@
       }
     },
     {
-      "id": 1872616216,
-      "postUrl": "https://t.me/spiegelonline/235724?single",
+      "id": 1500170985,
+      "postUrl": "https://t.me/spiegelonline/235732?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2801,17 +2712,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Papst Leo XIV.: Warum er mit seinem MAGA-Bruder Louis nicht über Politik spricht\n#Ausland \n\n zum Artikel...",
+      "text": "Iran: Katars Regierungschef wirbt bei JD Vance für neue Friedensgespräche\n#Ausland \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/papst-leo-xiv-warum-er-mit-seinem-maga-bruder-louis-nicht-ueber-politik-spricht-a-f742beb3-6bcc-4b08-b599-5d6e269fe2fc#ref=rss"
+          "url": "https://www.spiegel.de/ausland/iran-katars-regierungschef-wirbt-bei-jd-vance-fuer-neue-friedensgespraeche-a-c93936c5-2777-4543-8d2d-b50b055f139e#ref=rss"
         }
       ],
-      "createdAt": "2026-05-08T19:45:00.665Z",
-      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2829,7 +2740,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-08T19:45:00.665Z"
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -2880,8 +2791,8 @@
       }
     },
     {
-      "id": 717965367,
-      "postUrl": "https://t.me/spiegelonline/235723?single",
+      "id": 2277600818,
+      "postUrl": "https://t.me/spiegelonline/235731?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -2894,17 +2805,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Donald Trump erwartet Jumbojet aus Katar zum Geburtstag der USA\n#Ausland \n\n zum Artikel...",
+      "text": "Hantavirus auf der MV »Hondius«: Teneriffa stellt sich auf Ankunft des Schiffs ein\n#Panorama \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/donald-trump-erwartet-jumbojet-aus-katar-zum-geburtstag-der-usa-a-68ad1542-83c1-4fd5-ba79-03c3cd9020d0#ref=rss"
+          "url": "https://www.spiegel.de/panorama/hantavirus-auf-der-mv-hondius-teneriffa-stellt-sich-auf-ankunft-des-schiffs-ein-a-376741c1-cc2a-4245-a555-c2826f5a930d#ref=rss"
         }
       ],
-      "createdAt": "2026-05-08T19:45:00.665Z",
-      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
       "tag": "news",
       "tags": [
         "news"
@@ -2922,7 +2833,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-08T19:45:00.665Z"
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     },
     {
@@ -2971,6 +2882,374 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-08T11:45:31.981Z"
+      }
+    },
+    {
+      "id": 3652206251,
+      "postUrl": "https://t.me/spiegelonline/235730?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Helmut Metzner: Homophober Angriff auf FDP-Politiker und Partner in Berlin\n#Panorama \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/helmut-metzner-homophober-angriff-auf-fdp-politiker-und-partner-in-berlin-a-9b5bc336-5397-41ed-b455-de3227265726#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
+      }
+    },
+    {
+      "id": 2870537773,
+      "postUrl": "https://t.me/spiegelonline/235729?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "TU Berlin schließt marodes Hauptgebäude wegen Baumängel\n#Panorama #Bildung\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/bildung/tu-berlin-schliesst-marodes-hauptgebaeude-wegen-baumaengel-a-fc327fde-ba6c-46ab-9aff-8084823e0640#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
+      }
+    },
+    {
+      "id": 2950194684,
+      "postUrl": "https://t.me/spiegelonline/235728?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Katy Perry hat ICE kritisiert. Nun eröffnet sie die WM in den USA\n#Panorama #Leute\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/leute/katy-perry-hat-ice-kritisiert-nun-eroeffnet-sie-die-wm-in-den-usa-a-c2262cbb-a22f-4648-b9b5-6f411ab65365#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
+      }
+    },
+    {
+      "id": 4078541275,
+      "postUrl": "https://t.me/spiegelonline/235727?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Dortmund besiegt Frankfurt und holt sich die Vizemeisterschaft\n#Sport \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/dortmund-besiegt-frankfurt-und-holt-vizemeisterschaft-a-be4e9736-1565-4e24-8c07-17013890b86b#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T08:13:32.248Z",
+      "expiresAt": "2026-05-10T08:13:32.248Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T08:13:32.248Z"
+      }
+    },
+    {
+      "id": 3140270690,
+      "postUrl": "https://t.me/spiegelonline/235726?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Giro d'Italia: Paul Magnier gewinnt Auftakt-Etappe\n#Sport #Radsport\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/radsport/giro-ditalia-paul-magnier-gewinnt-auftakt-etappe-a-baa19879-8792-41fc-b8b1-880b8f9930d0#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-08T19:45:00.665Z",
+      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:00.665Z"
+      }
+    },
+    {
+      "id": 727552537,
+      "postUrl": "https://t.me/spiegelonline/235725?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Real Madrid: Federico Valverde und Aurélien Tchouameni müssen 500.000 Euro zahlen\n#Sport #Fussball\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/fussball/real-madrid-federico-valverde-und-aurelien-tchouameni-muessen-500-000-euro-zahlen-a-7444dc03-c564-48aa-b412-84d75debaa7c#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-08T19:45:00.665Z",
+      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:00.665Z"
+      }
+    },
+    {
+      "id": 1872616216,
+      "postUrl": "https://t.me/spiegelonline/235724?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Papst Leo XIV.: Warum er mit seinem MAGA-Bruder Louis nicht über Politik spricht\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/papst-leo-xiv-warum-er-mit-seinem-maga-bruder-louis-nicht-ueber-politik-spricht-a-f742beb3-6bcc-4b08-b599-5d6e269fe2fc#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-08T19:45:00.665Z",
+      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:00.665Z"
+      }
+    },
+    {
+      "id": 717965367,
+      "postUrl": "https://t.me/spiegelonline/235723?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fxWriKlEw-1E2aTh8uTeGuSd9mrj2T9nY4VWIH3bizvZj1IKMHgnlMd5MrLxXQgMPeQd8pPtKKdghdUCkJYxqzZ_MI6xhYy2hc4uh71K3BJHjUc-dr2n5E9FQ7_Bn4jjn1LKr5nceLRbOzq4aATb7SmMgFBjPUy1NccgEZYrFeqMivbuUZEXkORoogCnwM3QD4KRV8-Uzok1IDgarvW9RRCP00coxPtXg5wJeqB_aqvqnS11-O-jrW0AWq4kQ8CfVVDDZq_Ror3mrQgLVlhejLRWnoqDWmVh7sEgOEM2xGEUq58_esNcmBoTyODCP1ZgD1BarNfQ-5OBl60JuxpXDw.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Donald Trump erwartet Jumbojet aus Katar zum Geburtstag der USA\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/donald-trump-erwartet-jumbojet-aus-katar-zum-geburtstag-der-usa-a-68ad1542-83c1-4fd5-ba79-03c3cd9020d0#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-08T19:45:00.665Z",
+      "expiresAt": "2026-05-09T19:45:00.665Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-08T19:45:00.665Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-08T19:45:00.665Z"
       }
     },
     {
