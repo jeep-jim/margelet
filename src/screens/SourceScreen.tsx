@@ -25,6 +25,142 @@ type Props = {
 const SUB_KEY = "margelet_subscriptions";
 const SAVED_POST_IDS_FALLBACK: number[] = [];
 
+const SOURCE_SCREEN_COPY: Record<
+  Locale,
+  {
+    supportChannel: string;
+    info: string;
+    donateSoon: string;
+  }
+> = {
+  ru: {
+    supportChannel: "Поддержать канал",
+    info: "В ленте показываются последние посты канала за 24 часа. Полная информация доступна в Telegram. Нажмите кнопку «Открыть канал», чтобы перейти в источник.",
+    donateSoon: "Скоро здесь появится возможность поддержать канал донатом.",
+  },
+  uk: {
+    supportChannel: "Підтримати канал",
+    info: "У стрічці показуються останні пости каналу за 24 години. Повна інформація доступна в Telegram. Натисніть кнопку «Відкрити канал», щоб перейти до джерела.",
+    donateSoon: "Незабаром тут зʼявиться можливість підтримати канал донатом.",
+  },
+  en: {
+    supportChannel: "Support channel",
+    info: "The feed shows the latest posts from this channel from the last 24 hours. Full information is available in Telegram. Click the “Open channel” button to go to the source.",
+    donateSoon: "Soon you will be able to support this channel with a donation.",
+  },
+  in: {
+    supportChannel: "चैनल का समर्थन करें",
+    info: "फ़ीड में इस चैनल के पिछले 24 घंटों के नवीनतम पोस्ट दिखाए जाते हैं। पूरी जानकारी Telegram में उपलब्ध है। स्रोत पर जाने के लिए “Open channel” बटन दबाएँ।",
+    donateSoon: "जल्द ही आप दान के माध्यम से इस चैनल का समर्थन कर सकेंगे।",
+  },
+  fa: {
+    supportChannel: "حمایت از کانال",
+    info: "در فید، جدیدترین پست‌های این کانال در ۲۴ ساعت گذشته نمایش داده می‌شود. اطلاعات کامل در Telegram در دسترس است. برای رفتن به منبع، روی دکمه «Open channel» بزنید.",
+    donateSoon: "به‌زودی امکان حمایت مالی از این کانال فراهم می‌شود.",
+  },
+  tr: {
+    supportChannel: "Kanalı destekle",
+    info: "Akışta bu kanalın son 24 saatteki en yeni gönderileri gösterilir. Tüm bilgiler Telegram’da mevcuttur. Kaynağa gitmek için “Open channel” düğmesine tıklayın.",
+    donateSoon: "Yakında bu kanalı bağışla destekleyebileceksiniz.",
+  },
+  "pt-br": {
+    supportChannel: "Apoiar canal",
+    info: "O feed mostra as publicações mais recentes deste canal nas últimas 24 horas. As informações completas estão disponíveis no Telegram. Clique em “Open channel” para abrir a fonte.",
+    donateSoon: "Em breve você poderá apoiar este canal com uma doação.",
+  },
+  kk: {
+    supportChannel: "Арнаны қолдау",
+    info: "Лентада осы арнаның соңғы 24 сағаттағы жаңа жазбалары көрсетіледі. Толық ақпарат Telegram-да қолжетімді. Дереккөзге өту үшін «Open channel» түймесін басыңыз.",
+    donateSoon: "Жақында бұл арнаны донат арқылы қолдау мүмкіндігі пайда болады.",
+  },
+  uz: {
+    supportChannel: "Kanalni qo‘llab-quvvatlash",
+    info: "Lentada ushbu kanalning so‘nggi 24 soatdagi eng yangi postlari ko‘rsatiladi. To‘liq ma’lumot Telegram’da mavjud. Manbaga o‘tish uchun “Open channel” tugmasini bosing.",
+    donateSoon: "Tez orada ushbu kanalni donat orqali qo‘llab-quvvatlash mumkin bo‘ladi.",
+  },
+  ae: {
+    supportChannel: "دعم القناة",
+    info: "يعرض هذا القسم أحدث منشورات هذه القناة خلال آخر 24 ساعة. المعلومات الكاملة متاحة في Telegram. اضغط على زر «Open channel» للانتقال إلى المصدر.",
+    donateSoon: "قريبًا ستتمكن من دعم هذه القناة من خلال التبرع.",
+  },
+  eg: {
+    supportChannel: "دعم القناة",
+    info: "يعرض هذا القسم أحدث منشورات هذه القناة خلال آخر 24 ساعة. المعلومات الكاملة متاحة في Telegram. اضغط على زر «Open channel» للانتقال إلى المصدر.",
+    donateSoon: "قريبًا ستقدر تدعم هذه القناة من خلال التبرع.",
+  },
+  pk: {
+    supportChannel: "چینل کو سپورٹ کریں",
+    info: "فیڈ میں اس چینل کی گزشتہ 24 گھنٹوں کی تازہ ترین پوسٹس دکھائی جاتی ہیں۔ مکمل معلومات Telegram میں دستیاب ہیں۔ ماخذ پر جانے کے لیے “Open channel” بٹن دبائیں۔",
+    donateSoon: "جلد ہی آپ عطیہ کے ذریعے اس چینل کو سپورٹ کر سکیں گے۔",
+  },
+  id: {
+    supportChannel: "Dukung channel",
+    info: "Feed menampilkan posting terbaru dari channel ini selama 24 jam terakhir. Informasi lengkap tersedia di Telegram. Klik tombol “Open channel” untuk membuka sumber.",
+    donateSoon: "Segera Anda dapat mendukung channel ini melalui donasi.",
+  },
+  mx: {
+    supportChannel: "Apoyar canal",
+    info: "El feed muestra las publicaciones más recientes de este canal en las últimas 24 horas. La información completa está disponible en Telegram. Haz clic en “Open channel” para abrir la fuente.",
+    donateSoon: "Pronto podrás apoyar este canal con una donación.",
+  },
+  sa: {
+    supportChannel: "دعم القناة",
+    info: "يعرض هذا القسم أحدث منشورات هذه القناة خلال آخر 24 ساعة. المعلومات الكاملة متاحة في Telegram. اضغط على زر «Open channel» للانتقال إلى المصدر.",
+    donateSoon: "قريبًا ستتمكن من دعم هذه القناة من خلال التبرع.",
+  },
+  es: {
+    supportChannel: "Apoyar canal",
+    info: "El feed muestra las publicaciones más recientes de este canal en las últimas 24 horas. La información completa está disponible en Telegram. Haz clic en “Open channel” para abrir la fuente.",
+    donateSoon: "Pronto podrás apoyar este canal con una donación.",
+  },
+  it: {
+    supportChannel: "Supporta il canale",
+    info: "Il feed mostra i post più recenti di questo canale nelle ultime 24 ore. Le informazioni complete sono disponibili su Telegram. Fai clic su “Open channel” per aprire la fonte.",
+    donateSoon: "Presto potrai supportare questo canale con una donazione.",
+  },
+  fr: {
+    supportChannel: "Soutenir la chaîne",
+    info: "Le flux affiche les publications les plus récentes de cette chaîne au cours des dernières 24 heures. Toutes les informations sont disponibles sur Telegram. Cliquez sur « Open channel » pour ouvrir la source.",
+    donateSoon: "Bientôt, vous pourrez soutenir cette chaîne avec un don.",
+  },
+  de: {
+    supportChannel: "Kanal unterstützen",
+    info: "Der Feed zeigt die neuesten Beiträge dieses Kanals aus den letzten 24 Stunden. Vollständige Informationen sind in Telegram verfügbar. Klicken Sie auf „Open channel“, um zur Quelle zu gelangen.",
+    donateSoon: "Bald können Sie diesen Kanal mit einer Spende unterstützen.",
+  },
+  ar: {
+    supportChannel: "Apoyar canal",
+    info: "El feed muestra las publicaciones más recientes de este canal en las últimas 24 horas. La información completa está disponible en Telegram. Haz clic en “Open channel” para abrir la fuente.",
+    donateSoon: "Pronto podrás apoyar este canal con una donación.",
+  },
+  co: {
+    supportChannel: "Apoyar canal",
+    info: "El feed muestra las publicaciones más recientes de este canal en las últimas 24 horas. La información completa está disponible en Telegram. Haz clic en “Open channel” para abrir la fuente.",
+    donateSoon: "Pronto podrás apoyar este canal con una donación.",
+  },
+  za: {
+    supportChannel: "Support channel",
+    info: "The feed shows the latest posts from this channel from the last 24 hours. Full information is available in Telegram. Click the “Open channel” button to go to the source.",
+    donateSoon: "Soon you will be able to support this channel with a donation.",
+  },
+  ng: {
+    supportChannel: "Support channel",
+    info: "The feed shows the latest posts from this channel from the last 24 hours. Full information is available in Telegram. Click the “Open channel” button to go to the source.",
+    donateSoon: "Soon you will be able to support this channel with a donation.",
+  },
+  zh: {
+    supportChannel: "支持频道",
+    info: "这里显示该频道过去 24 小时内的最新帖子。完整信息可在 Telegram 中查看。点击“Open channel”按钮前往原始来源。",
+    donateSoon: "很快你将可以通过捐赠来支持这个频道。",
+  },
+  ms: {
+    supportChannel: "Sokong saluran",
+    info: "Feed memaparkan kiriman terkini daripada saluran ini dalam tempoh 24 jam terakhir. Maklumat penuh tersedia di Telegram. Klik butang “Open channel” untuk membuka sumber.",
+    donateSoon: "Tidak lama lagi anda akan dapat menyokong saluran ini melalui sumbangan.",
+  },
+};
+
+
 function getSubs(): string[] {
   try {
     const raw = localStorage.getItem(SUB_KEY);
@@ -64,6 +200,7 @@ export function SourceScreen({
   openSource,
 }: Props) {
   const t = getMessages(locale);
+  const sourceCopy = SOURCE_SCREEN_COPY[locale] ?? SOURCE_SCREEN_COPY.en;
 
   const sourcePosts = useMemo(() => {
     return posts
@@ -319,8 +456,8 @@ export function SourceScreen({
                 type="button"
                 onClick={() => setDonateOpen((prev) => !prev)}
                 className={`flex h-10 w-10 items-center justify-center rounded-full border transition ${donateOpen ? "border-transparent bg-accent text-accent-foreground" : "border-soft bg-surface-soft text-primary hover:bg-app"}`}
-                aria-label="Поддержать канал"
-                title="Поддержать канал"
+                aria-label={sourceCopy.supportChannel}
+                title={sourceCopy.supportChannel}
               >
                 <Star
                   className={`h-5 w-5 ${donateOpen ? "fill-current" : ""}`}
@@ -355,16 +492,11 @@ export function SourceScreen({
 
           {infoOpen ? (
             <div className="mt-4 text-sm leading-7 text-secondary">
-              <div className="max-w-none">
-                В ленте показываются последние посты канала за 24 часа. Полная
-                информация доступна в Telegram. Нажмите кнопку «Открыть канал»,
-                чтобы перейти в источник.
-              </div>
+              <div className="max-w-none">{sourceCopy.info}</div>
 
               <button
                 onClick={openTelegramSource}
-                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-soft bg-surface-soft px-4 text-[13px] font-medium leading-none text-primary transition hover:bg-app sm:text-sm"
-                type="button"
+                className="mt-4 inline-flex h-10 items-center justify-center whitespace-nowrap rounded-full border border-transparent bg-accent px-4 text-[13px] font-medium leading-none text-accent-foreground"                type="button"
               >
                 <span>{t.feed.openChannel}</span>
               </button>
@@ -373,7 +505,7 @@ export function SourceScreen({
 
           {donateOpen ? (
             <div className="mt-4 rounded-2xl bg-surface-soft px-4 py-3 text-sm leading-6 text-secondary">
-              Скоро здесь появится возможность поддержать канал донатом.
+              {sourceCopy.donateSoon}
             </div>
           ) : null}
         </section>
