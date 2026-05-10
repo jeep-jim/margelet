@@ -499,8 +499,13 @@ export function FeedScreen({
   const [feedMediaIndexes, setFeedMediaIndexes] = useState<Record<number, number>>(
     {}
   );
-  const [seenPosts, setSeenPosts] = useState<Record<number, number>>({});
-  const [initialSeenPosts, setInitialSeenPosts] = useState<Record<number, number>>({});
+  const [seenPosts, setSeenPosts] = useState<Record<number, number>>(() =>
+    typeof window === "undefined" ? {} : readSeenPostsFromStorage()
+  );
+  const [initialSeenPosts, setInitialSeenPosts] = useState<Record<number, number>>(() =>
+    typeof window === "undefined" ? {} : readSeenPostsFromStorage()
+  );
+  const seenPostsHydratedRef = useRef(false);
   const currentSessionSeenPostIdsRef = useRef<Set<number>>(new Set());
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
   const safePostsRef = useRef<IngestedPost[]>([]);
@@ -532,8 +537,9 @@ export function FeedScreen({
 
     const storedSeenPosts = readSeenPostsFromStorage();
     currentSessionSeenPostIdsRef.current = new Set();
+    seenPostsHydratedRef.current = true;
     setSeenPosts(storedSeenPosts);
-    setInitialSeenPosts(storedSeenPosts);    
+    setInitialSeenPosts(storedSeenPosts);
   }, [locale]);
 
   useEffect(() => {
@@ -552,6 +558,7 @@ export function FeedScreen({
   }, [feedSettings]);
 
   useEffect(() => {
+    if (!seenPostsHydratedRef.current) return;
     writeSeenPostsToStorage(seenPosts);
   }, [seenPosts]);
 
@@ -680,10 +687,14 @@ export function FeedScreen({
   }, [safePosts]);
 
   useEffect(() => {
+    if (safePosts.length === 0) return;
+
     setSeenPosts((prev) => {
       const next = pruneSeenPostsForCurrentFeed(prev, safePosts);
       return Object.keys(next).length === Object.keys(prev).length ? prev : next;
     });
+
+    setInitialSeenPosts((prev) => pruneSeenPostsForCurrentFeed(prev, safePosts));
   }, [safePosts]);
 
   const availableCountryOptions = useMemo(() => {
@@ -741,28 +752,43 @@ export function FeedScreen({
   }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
 
   const markPostSeen = useCallback((postId: number) => {
-    if (!Number.isFinite(postId) || currentSessionSeenPostIdsRef.current.has(postId)) {
+    if (!Number.isFinite(postId)) return;
+
+    if (currentSessionSeenPostIdsRef.current.has(postId)) {
       return;
     }
 
-    const seenAt = Date.now();
     currentSessionSeenPostIdsRef.current.add(postId);
+    const now = Date.now();
 
     setSeenPosts((prev) => {
-      const next = pruneSeenPostsForCurrentFeed(
-        {
-          ...prev,
-          [postId]: seenAt,
-        },
-        safePostsRef.current
-      );
+      if (prev[postId]) return prev;
 
-      // Пишем сразу, не ждём useEffect: если пользователь быстро обновит страницу,
-      // пост уже точно будет сохранён как просмотренный.
+      const next = {
+        ...prev,
+        [postId]: now,
+      };
+
       writeSeenPostsToStorage(next);
       return next;
     });
-  }, []);
+  }, []);  
+
+  useEffect(() => {
+    const handleSeen = (event: Event) => {
+      const detail = (event as CustomEvent<{ id?: number }>).detail;
+      const id = Number(detail?.id);
+
+      if (!Number.isFinite(id)) return;
+      markPostSeen(id);
+    };
+
+    window.addEventListener("margelet-feed-post-seen", handleSeen);
+
+    return () => {
+      window.removeEventListener("margelet-feed-post-seen", handleSeen);
+    };
+  }, [markPostSeen]);
 
   const isFeedCardVisibleEnough = useCallback((node: HTMLElement) => {
     const rect = node.getBoundingClientRect();
@@ -1420,6 +1446,7 @@ export function FeedScreen({
               onHide={() => onHidePost(post.id)}
               onOpen={() => handleOpenPost(post)}
               onOpenCreator={() => openSource(post.source.handle)}
+              onSeen={() => markPostSeen(post.id)}
               mediaIndex={feedMediaIndexes[post.id] || 0}
               onChangeMediaIndex={(next: number) =>
                 setFeedCardMediaIndex(post.id, next)

@@ -162,6 +162,7 @@ export function FeedCard(props: FeedCardProps) {
   const { primary: primaryTag, secondary: secondaryTags } = getDisplayTagMeta(post, locale);
 
   const cardRef = useRef<HTMLElement | null>(null);
+  const seenReportedRef = useRef(false);
 
   const [isCardVisible, setIsCardVisible] = useState(false);
   const [shouldLoadMedia, setShouldLoadMedia] = useState(false);
@@ -171,17 +172,20 @@ export function FeedCard(props: FeedCardProps) {
     const node = cardRef.current;
     if (!node) return;
 
-    let seenReported = false;
-
     const visibilityObserver = new IntersectionObserver(
       ([entry]) => {
-        const visibleEnough = entry.isIntersecting && entry.intersectionRatio >= 0.5;
-        setIsCardVisible(visibleEnough);
+        const visible = entry.isIntersecting && entry.intersectionRatio >= 0.55;
+        setIsCardVisible(visible);
 
-        if (visibleEnough && !seenReported) {
-          seenReported = true;
-          onSeen?.();
-        }
+        if (visible && !seenReportedRef.current) {
+          seenReportedRef.current = true;
+
+          window.dispatchEvent(
+            new CustomEvent("margelet-feed-post-seen", {
+              detail: { id: post.id },
+            }),
+          );
+        }        
       },
       { threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
