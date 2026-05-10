@@ -26,6 +26,7 @@ const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
+const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
 
 type FeedSettings = {
   mediaMode: FeedMediaMode;
@@ -343,6 +344,27 @@ function writeSeenPostsToStorage(value: Record<number, number>) {
   }
 }
 
+function pruneSeenPostsForCurrentFeed(
+  value: Record<number, number>,
+  posts: IngestedPost[]
+) {
+  const currentIds = new Set(posts.map((post) => post.id));
+
+  const entries = Object.entries(value)
+    .map(([id, seenAt]) => [Number(id), seenAt] as const)
+    .filter(
+      ([id, seenAt]) =>
+        currentIds.has(id) && Number.isFinite(id) && Number.isFinite(seenAt)
+    )
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, MAX_SEEN_POSTS_STORAGE_ITEMS);
+
+  return entries.reduce<Record<number, number>>((acc, [id, seenAt]) => {
+    acc[id] = seenAt;
+    return acc;
+  }, {});
+}
+
 function SubscriptionsHint({ text }: { text: string }) {
   return (
     <div className="mx-auto mb-4 mt-4 w-full max-w-[570px] px-4">
@@ -478,7 +500,10 @@ export function FeedScreen({
     {}
   );
   const [seenPosts, setSeenPosts] = useState<Record<number, number>>({});
-  const [initialSeenPosts, setInitialSeenPosts] = useState<Record<number, number>>({});  
+  const [initialSeenPosts, setInitialSeenPosts] = useState<Record<number, number>>({});
+  const currentSessionSeenPostIdsRef = useRef<Set<number>>(new Set());
+  const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
+  const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
 
   useEffect(() => {
@@ -506,6 +531,7 @@ export function FeedScreen({
     setFeedSettings(readFeedSettingsFromStorage(locale));
 
     const storedSeenPosts = readSeenPostsFromStorage();
+    currentSessionSeenPostIdsRef.current = new Set();
     setSeenPosts(storedSeenPosts);
     setInitialSeenPosts(storedSeenPosts);    
   }, [locale]);
@@ -528,6 +554,7 @@ export function FeedScreen({
   useEffect(() => {
     writeSeenPostsToStorage(seenPosts);
   }, [seenPosts]);
+
 
   useEffect(() => {
     const localeCountry = String(locale).toLowerCase();
@@ -648,6 +675,17 @@ export function FeedScreen({
     );
   }, [posts]);
 
+  useEffect(() => {
+    safePostsRef.current = safePosts;
+  }, [safePosts]);
+
+  useEffect(() => {
+    setSeenPosts((prev) => {
+      const next = pruneSeenPostsForCurrentFeed(prev, safePosts);
+      return Object.keys(next).length === Object.keys(prev).length ? prev : next;
+    });
+  }, [safePosts]);
+
   const availableCountryOptions = useMemo(() => {
     const currentCountry = String(locale).toLowerCase();
     const set = new Set<string>([currentCountry]);
@@ -703,17 +741,77 @@ export function FeedScreen({
   }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
 
   const markPostSeen = useCallback((postId: number) => {
-    setSeenPosts((prev) => {
-      if (prev[postId]) {
-        return prev;
-      }
+    if (!Number.isFinite(postId) || currentSessionSeenPostIdsRef.current.has(postId)) {
+      return;
+    }
 
-      return {
-        ...prev,
-        [postId]: Date.now(),
-      };
+    const seenAt = Date.now();
+    currentSessionSeenPostIdsRef.current.add(postId);
+
+    setSeenPosts((prev) => {
+      const next = pruneSeenPostsForCurrentFeed(
+        {
+          ...prev,
+          [postId]: seenAt,
+        },
+        safePostsRef.current
+      );
+
+      // Пишем сразу, не ждём useEffect: если пользователь быстро обновит страницу,
+      // пост уже точно будет сохранён как просмотренный.
+      writeSeenPostsToStorage(next);
+      return next;
     });
   }, []);
+
+  const isFeedCardVisibleEnough = useCallback((node: HTMLElement) => {
+    const rect = node.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+    if (!viewportHeight || rect.height <= 0) return false;
+
+    const visibleTop = Math.max(rect.top, 0);
+    const visibleBottom = Math.min(rect.bottom, viewportHeight);
+    const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+    // Работает и для маленьких текстовых карточек, и для больших видео-карточек:
+    // либо видна существенная часть карточки, либо центр карточки попал в экран.
+    const visibleRatio = visibleHeight / Math.min(rect.height, viewportHeight);
+    const cardCenter = rect.top + rect.height / 2;
+    const centerInsideViewport = cardCenter >= 0 && cardCenter <= viewportHeight;
+    const crossesReadingZone = rect.top <= viewportHeight * 0.72 && rect.bottom >= viewportHeight * 0.18;
+
+    return visibleRatio >= 0.18 || centerInsideViewport || crossesReadingZone;
+  }, []);
+
+  const scanVisibleFeedCards = useCallback(() => {
+    if (typeof window === "undefined") return;
+    if (tagsOpen || viewerIndex !== null || textReaderPost !== null) return;
+
+    feedCardNodesRef.current.forEach((node, postId) => {
+      if (currentSessionSeenPostIdsRef.current.has(postId)) return;
+      if (isFeedCardVisibleEnough(node)) {
+        markPostSeen(postId);
+      }
+    });
+  }, [isFeedCardVisibleEnough, markPostSeen, tagsOpen, viewerIndex, textReaderPost]);
+
+  const registerFeedCardNode = useCallback(
+    (postId: number, node: HTMLDivElement | null) => {
+      if (!Number.isFinite(postId)) return;
+
+      if (node) {
+        feedCardNodesRef.current.set(postId, node);
+        window.requestAnimationFrame(() => {
+          if (!currentSessionSeenPostIdsRef.current.has(postId) && isFeedCardVisibleEnough(node)) {
+            markPostSeen(postId);
+          }
+        });
+      } else {
+        feedCardNodesRef.current.delete(postId);
+      }
+    },
+    [isFeedCardVisibleEnough, markPostSeen]
+  );
 
   const tagStats = useMemo(() => {
     let list = [...safePosts];
@@ -859,13 +957,72 @@ export function FeedScreen({
 
       list = [
         ...interleavePostsBySource(unseen, locale),
-        ...interleavePostsBySource(seen, locale),
+        ...seen,
       ];
     }    
 
     return list;
-  }, [safePosts, feedSettings, selectedTags, searchQuery, locale, initialSeenPosts]);  
+  }, [safePosts, feedSettings, selectedTags, searchQuery, locale, initialSeenPosts]);
 
+  useEffect(() => {
+    if (typeof window === "undefined" || tagsOpen || viewerIndex !== null || textReaderPost !== null) {
+      return;
+    }
+
+    let scrollFrame = 0;
+
+    const scheduleScan = () => {
+      if (scrollFrame) return;
+
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollFrame = 0;
+        scanVisibleFeedCards();
+      });
+    };
+
+    let observer: IntersectionObserver | null = null;
+
+    if ("IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+
+            const node = entry.target as HTMLElement;
+            const postId = Number(node.dataset.feedPostId);
+            if (!Number.isFinite(postId)) continue;
+
+            if (isFeedCardVisibleEnough(node)) {
+              markPostSeen(postId);
+            }
+          }
+        },
+        {
+          threshold: [0, 0.01, 0.1, 0.25],
+          rootMargin: "0px 0px 0px 0px",
+        }
+      );
+
+      feedCardNodesRef.current.forEach((node, postId) => {
+        if (!currentSessionSeenPostIdsRef.current.has(postId)) {
+          observer?.observe(node);
+        }
+      });
+    }
+
+    scheduleScan();
+    window.addEventListener("scroll", scheduleScan, { passive: true });
+    window.addEventListener("resize", scheduleScan);
+    window.addEventListener("orientationchange", scheduleScan);
+
+    return () => {
+      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+      observer?.disconnect();
+      window.removeEventListener("scroll", scheduleScan);
+      window.removeEventListener("resize", scheduleScan);
+      window.removeEventListener("orientationchange", scheduleScan);
+    };
+  }, [visiblePosts, scanVisibleFeedCards, isFeedCardVisibleEnough, markPostSeen, tagsOpen, viewerIndex, textReaderPost]);
 
   const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isVideoViewerPost(post));
@@ -1243,11 +1400,15 @@ export function FeedScreen({
             !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
           return (
-            <FeedCard
+            <div
               key={post.id}
-              post={post}
-              locale={locale}
-              isOwner={isOwner}
+              ref={(node) => registerFeedCardNode(post.id, node)}
+              data-feed-post-id={post.id}
+            >
+              <FeedCard
+                post={post}
+                locale={locale}
+                isOwner={isOwner}
               isAdmin={isAdmin}
               menuOpen={menuPostId === post.id}
               onToggleMenu={() =>
@@ -1265,10 +1426,11 @@ export function FeedScreen({
               }
               liked={likedPostIds.includes(post.id)}
               onToggleLike={() => onToggleLike(post.id)}
-              onShare={() => {
-                void handleShare(post);
-              }}
-            />            
+                  onShare={() => {
+                  void handleShare(post);
+                }}
+              />
+            </div>
           );
         })}
       </div>

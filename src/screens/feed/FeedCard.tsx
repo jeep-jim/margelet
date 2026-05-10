@@ -123,6 +123,7 @@ export function FeedCard(props: FeedCardProps) {
     onHide,
     onOpen,
     onOpenCreator,
+    onSeen,
   } = props;
 
   const COPY = {
@@ -170,11 +171,19 @@ export function FeedCard(props: FeedCardProps) {
     const node = cardRef.current;
     if (!node) return;
 
+    let seenReported = false;
+
     const visibilityObserver = new IntersectionObserver(
       ([entry]) => {
-        setIsCardVisible(entry.isIntersecting && entry.intersectionRatio >= 0.6);
+        const visibleEnough = entry.isIntersecting && entry.intersectionRatio >= 0.5;
+        setIsCardVisible(visibleEnough);
+
+        if (visibleEnough && !seenReported) {
+          seenReported = true;
+          onSeen?.();
+        }
       },
-      { threshold: [0, 0.6, 1] }
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
 
     const preloadObserver = new IntersectionObserver(
@@ -197,7 +206,7 @@ export function FeedCard(props: FeedCardProps) {
       visibilityObserver.disconnect();
       preloadObserver.disconnect();
     };
-  }, []);
+  }, [onSeen]);
 
   const openPostSafely = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
