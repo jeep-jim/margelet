@@ -10,7 +10,6 @@ import type { Locale } from "../../types/app";
 import {
   ArrowLeft,
   Bell,
-  ExternalLink,
   FileText,
   Music4,
   Pause,
@@ -729,7 +728,6 @@ function FileList({
                 className="mt-3 inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary no-underline transition hover:bg-app"
               >
                 <span>{copy.openFile}</span>
-                <ExternalLink className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -773,7 +771,6 @@ function MusicFallback({
             className="mt-3 inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2 text-sm font-medium text-primary transition hover:bg-app"
           >
             <span>{copy.openInTelegram}</span>
-            <ExternalLink className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -1417,7 +1414,6 @@ export function FeedTextReaderModal({
                   className="inline-flex items-center gap-2 rounded-full border border-soft bg-surface-soft px-4 py-2.5 text-sm font-medium text-primary transition hover:bg-app"
                 >
                   <span>{copy.openInTelegram}</span>
-                  <ExternalLink className="h-4 w-4" />
                 </button>
               </div>
             </div>

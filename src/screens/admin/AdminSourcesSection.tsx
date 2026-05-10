@@ -10,6 +10,7 @@ import {
 } from "../../lib/tag-utils";
 import { SITE_TAG_GROUPS } from "../../lib/tags";
 import type { ContentTag } from "../../types/app";
+import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { AdminSectionCard } from "./AdminSectionCard";
 import type { CountryCode } from "./admin.countries";
 import type { TrustedSource } from "./admin.types";
@@ -852,9 +853,15 @@ export function AdminSourcesSection({
                     />
 
                     <div className="min-w-0 flex-1 overflow-hidden">
-                      <div className="truncate text-sm font-semibold text-white">
-                        {source.title || "Без названия"}
-                      </div>
+                      <div className="flex min-w-0 items-center gap-1.5">
+                        <div className="truncate text-sm font-semibold text-white">
+                          {source.title || "Без названия"}
+                        </div>
+
+                        {source.verified ? (
+                          <VerifiedBadge className="text-[#2AABEE]" size={14} title="Verified" />
+                        ) : null}
+                      </div>                      
                       <div className="truncate text-xs text-white/55">@{source.handle}</div>
                     </div>
 
