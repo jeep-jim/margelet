@@ -1,9 +1,101 @@
 {
   "countryCode": "de",
-  "updatedAt": "2026-05-10T06:45:04.384Z",
-  "totalPosts": 80,
+  "updatedAt": "2026-05-10T09:57:34.026Z",
+  "totalPosts": 84,
   "chunks": 1,
   "items": [
+    {
+      "id": 545459586,
+      "postUrl": "https://t.me/tagesschau/43811?single",
+      "source": {
+        "title": "Tagesschau",
+        "handle": "tagesschau",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Z8sX98BmBJmq3PZwKRswh5OY3ajiE7Dodzyu877OxEde4C_COl6fM1M9gx24y0OyUUaByOv9AaAzf1u1Le9vLS1rzlX2CYvyRt5Let_aausfZKakWbHAg-syaFAYAosVm2v8g_yzyhJ7KyznS3SOOTumJiwgBKW2Drgc-_hU4JNLkvmePi74ICFskICem9Uo7u7DYNKGhFq6E8pf34H9e9spIWgQSyoy9QD6v_KBpFhJ4-lwchpF1qAQPm9mF7-SyShczc9Y3yCsItB6ppRcynZ8s4-daoxKs3pXuhfuoCPOPSQbli0uvQApha6zUn8HmSVyY0BsUod6jQGz2KUKGw.jpg"
+      },
+      "sourceId": "de:tagesschau",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Putin bringt Schröder als Vermittler ins Gespräch\nhttps://www.tagesschau.de/ausland/europa/russland-ukraine-putin-schroeder-100.html\n\nRusslands Präsident Putin und Altkanzler Schröder gelten als Freunde. Nun hat der Kremlchef ihn als bevorzugten europäischen Vermittler benannt. Den Ukraine-Krieg sieht Putin \"dem Ende zugehen\", wie er selbst sagt.",
+      "links": [
+        {
+          "label": "https://www.tagesschau.de/ausland/europa/russland-ukraine-putin-schroeder-100.html",
+          "url": "https://www.tagesschau.de/ausland/europa/russland-ukraine-putin-schroeder-100.html"
+        }
+      ],
+      "createdAt": "2026-05-10T09:50:42.976Z",
+      "expiresAt": "2026-05-11T09:50:42.976Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T09:50:42.976Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T09:50:42.976Z"
+      }
+    },
+    {
+      "id": 528897984,
+      "postUrl": "https://t.me/spiegelonline/235812?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "MV Hondius auf Teneriffa: »Die Behörden gehen besonders vorsichtig vor«\n#Panorama \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/mv-hondius-auf-teneriffa-die-behoerden-gehen-besonders-vorsichtig-vor-a-4a24832f-7374-485b-9044-3f9b57365280#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
+      }
+    },
     {
       "id": 2241488507,
       "postUrl": "https://t.me/tagesschau/43810?single",
@@ -51,8 +143,8 @@
       }
     },
     {
-      "id": 1054752182,
-      "postUrl": "https://t.me/spiegelonline/235788?single",
+      "id": 3666036131,
+      "postUrl": "https://t.me/spiegelonline/235811?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -65,17 +157,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "NBA: Dennis Schröder gewinnt mit Cleveland Cavaliers in den Playoffs gegen Detroit\n#Sport #Basketball\n\n zum Artikel...",
+      "text": "Karl-May-Verleger über seinen Abschied: »Kulturell wurden die Indianer ein zweites Mal ausgerottet«\n#Kultur \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/sport/basketball/nba-dennis-schroeder-gewinnt-mit-cleveland-cavaliers-in-den-playoffs-gegen-detroit-a-685222ff-5f51-44db-bae0-bcda6011a7f9#ref=rss"
+          "url": "https://www.spiegel.de/kultur/karl-may-verleger-ueber-seinen-abschied-kulturell-wurden-die-indianer-ein-zweites-mal-ausgerottet-a-e0a683da-5be3-4bcb-ac6c-a1ec8dd23544#ref=rss"
         }
       ],
-      "createdAt": "2026-05-10T01:25:31.495Z",
-      "expiresAt": "2026-05-11T01:25:31.495Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T01:25:31.495Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -93,54 +185,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-10T01:25:31.495Z"
-      }
-    },
-    {
-      "id": 3315528501,
-      "postUrl": "https://t.me/heiseonline/12121?single",
-      "source": {
-        "title": "heise online",
-        "handle": "heiseonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/lGSesIpqcpWmNIe2JQ3UhQ8tb4LHQSKBNzp4R4W9ENUrewlkbeJCpOjuA0gHXRwEVs0PCwD947KHf3BWYnPPrCwptU6fzECB9pPHYfGtQz4RlDaOlkmfC9HqiMkR5YPG6WQvug9jKgbwGtI9HyHXmRRSieYTYIi-npcEhQERV_ztBiIf8AvNeDjdcOzLw3xMS1SVRh7z52zhUwhSMxfx6JAwGMo53bK2AFb-zyhafAMFQZWBUgTXb3pw_0Rc2NQ1Pvs3NGUUp6M57KMu3rqSernX54yFR0oqEvCMNH4xmEOnZ7FQMjiKwDxQn7rYuXkTfIzbrknpqaaO8dKpL1xSIg.jpg"
-      },
-      "sourceId": "de:heiseonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Krach aus Kleingeld: Auf der Superbooth lärmen Weltpremieren gegen Langeweile\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.heise.de/news/Krach-aus-Kleingeld-Auf-der-Superbooth-laermen-Weltpremieren-gegen-Langeweile-11288101.html?wt_mc=rss.red.ho.top-news.atom.beitrag.beitrag"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:38.349Z",
-      "expiresAt": "2026-05-10T08:13:38.349Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:38.349Z",
-      "tag": "technology",
-      "tags": [
-        "technology",
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:38.349Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -190,8 +235,8 @@
       }
     },
     {
-      "id": 3287064665,
-      "postUrl": "https://t.me/spiegelonline/235787?single",
+      "id": 2963694666,
+      "postUrl": "https://t.me/spiegelonline/235810?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -204,17 +249,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Tschernobyl: Waldbrand tobt in Sperrzone um Atomkraftwerk in der Ukraine – Drohnen als Ursache\n#Panorama \n\n zum Artikel...",
+      "text": "Tschechien: Slavia-Prag-Fans stürmen Platz und verhindern Meisterfeier\n#Sport #Fussball\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/tschernobyl-waldbrand-tobt-in-sperrzone-um-atomkraftwerk-in-der-ukraine-drohnen-als-ursache-a-a5e4b746-494d-40e2-b32d-66f9aa31e3b2#ref=rss"
+          "url": "https://www.spiegel.de/sport/fussball/tschechien-slavia-prag-fans-stuermen-platz-und-verhindern-meisterfeier-a-e91c4d54-8ef8-44c3-b038-99c8f8cf0f1b#ref=rss"
         }
       ],
-      "createdAt": "2026-05-10T01:25:31.495Z",
-      "expiresAt": "2026-05-11T01:25:31.495Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T01:25:31.495Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -232,7 +277,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-10T01:25:31.495Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -282,8 +327,8 @@
       }
     },
     {
-      "id": 3265340248,
-      "postUrl": "https://t.me/spiegelonline/235786?single",
+      "id": 2059633720,
+      "postUrl": "https://t.me/spiegelonline/235809?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -296,17 +341,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Ukraine: Wladimir Putin wünscht sich Gerhard Schröder als Vermittler im Krieg\n#Ausland \n\n zum Artikel...",
+      "text": "Lauterbach sieht derzeit keine Pandemie-Gefahr durch Hantavirus\n#Panorama \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/ukraine-wladimir-putin-wuenscht-sich-gerhard-schroeder-als-vermittler-im-krieg-a-d52673ab-6c41-4852-9436-af42d61d7e22#ref=rss"
+          "url": "https://www.spiegel.de/panorama/lauterbach-sieht-derzeit-keine-pandemie-gefahr-durch-hantavirus-a-d559cf72-1b12-4b99-829c-cbbc147657e5#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T22:00:20.732Z",
-      "expiresAt": "2026-05-10T22:00:20.732Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T22:00:20.732Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -324,7 +369,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T22:00:20.732Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -374,8 +419,8 @@
       }
     },
     {
-      "id": 4070527515,
-      "postUrl": "https://t.me/spiegelonline/235785?single",
+      "id": 638940473,
+      "postUrl": "https://t.me/spiegelonline/235808?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -388,17 +433,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Lady Bitch Ray: Ihr Weg vom Skandalrap zur Professorin\n#Panorama #Leute\n\n zum Artikel...",
+      "text": "Sexualisierte Gewalt: Die Psychotherapeuten und Podcaster Cécile Loetz und Jakob Müller über das schwierige Gespräch zwischen Männern und Frauen\n#Wirtschaft \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/leute/lady-bitch-ray-ihr-weg-vom-skandalrap-zur-professorin-a-36615d8f-7346-4354-80e4-fbca4587acb3#ref=rss"
+          "url": "https://www.spiegel.de/wirtschaft/sexualisierte-gewalt-die-psychotherapeuten-und-podcaster-cecile-loetz-und-jakob-mueller-ueber-das-schwierige-gespraech-zwischen-maennern-und-frauen-a-94fc4112-4212-411a-aef5-a2bb0e5e07c0#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T22:00:20.732Z",
-      "expiresAt": "2026-05-10T22:00:20.732Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T22:00:20.732Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -416,7 +461,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T22:00:20.732Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -466,8 +511,8 @@
       }
     },
     {
-      "id": 3515034530,
-      "postUrl": "https://t.me/spiegelonline/235784?single",
+      "id": 3371622166,
+      "postUrl": "https://t.me/spiegelonline/235807?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -480,17 +525,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Spannungen mit Donald Trump: Friedrich Merz sieht Stärke der Nato nicht allein von Truppenzahl abhängig\n#Ausland \n\n zum Artikel...",
+      "text": "Muttertag: Was genau feiern wir eigentlich?\n#Psychologie \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/spannungen-mit-donald-trump-friedrich-merz-sieht-staerke-der-nato-nicht-allein-von-truppenzahl-abhaengig-a-332e9a5e-bc4d-411f-b85c-6dbe4791a981#ref=rss"
+          "url": "https://www.spiegel.de/psychologie/muttertag-was-genau-feiern-wir-eigentlich-a-904a2730-08c1-4695-b12f-c7c097ac5d8e#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T22:00:20.732Z",
-      "expiresAt": "2026-05-10T22:00:20.732Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T22:00:20.732Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -508,7 +553,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T22:00:20.732Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -558,8 +603,8 @@
       }
     },
     {
-      "id": 3331947957,
-      "postUrl": "https://t.me/spiegelonline/235783?single",
+      "id": 2060278895,
+      "postUrl": "https://t.me/spiegelonline/235806?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -572,17 +617,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Bundesliga: Traumtor von Olise sichert FC Bayern Sieg beim VfL Wolfsburg\n#Sport #Fussball\n\n zum Artikel...",
+      "text": "Geburten in der Geschichte: »Da war bereits viel Übergriffigkeit im Spiel«\n#Geschichte \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/sport/fussball/bundesliga-traumtor-von-olise-sichert-fc-bayern-sieg-beim-vfl-wolfsburg-a-28a95d91-2130-4242-97f8-578ecbd6f360#ref=rss"
+          "url": "https://www.spiegel.de/geschichte/gewalt-im-kreisssaal-in-gebaerhaeusern-ging-es-zu-wie-in-einer-autowerkstatt-a-8ec0805b-6015-4ab2-a417-6acb8e74c060#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -600,7 +645,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -650,8 +695,8 @@
       }
     },
     {
-      "id": 3670002404,
-      "postUrl": "https://t.me/spiegelonline/235782?single",
+      "id": 2119355164,
+      "postUrl": "https://t.me/spiegelonline/235805?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -664,17 +709,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Geblitzt im Einsatz: Schneller als das Ordnungsamt erlaubt - SPIEGEL TV\n#Panorama \n\n zum Artikel...",
+      "text": "Wolfgang Grupp: Trigema-Patriarch mahnt unternehmerische Eigenverantwortung an\n#Wirtschaft #Unternehmen\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/geblitzt-im-einsatz-schneller-als-das-ordnungsamt-erlaubt-spiegel-tv-a-2b1311ab-4459-44b8-87e7-72a6e623fd5e#ref=rss"
+          "url": "https://www.spiegel.de/wirtschaft/unternehmen/wolfgang-grupp-trigema-patriarch-mahnt-unternehmerische-eigenverantwortung-an-a-3800d084-dede-4261-a35e-1445fcf0007f#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -692,7 +737,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -742,8 +787,8 @@
       }
     },
     {
-      "id": 3318951031,
-      "postUrl": "https://t.me/spiegelonline/235781?single",
+      "id": 645351373,
+      "postUrl": "https://t.me/spiegelonline/235804?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -756,17 +801,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Sigmund Freud: Das Bild der hysterischen Frau – Podcast\n#Ausland \n\n zum Artikel...",
+      "text": "News: NSDAP-Mitgliedskartei, Wladimir Putins Spione in Deutschland, SPIEGEL-Cover\n#Politik #Deutschland\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/sigmund-freud-das-bild-der-hysterischen-frau-podcast-a-d215ce0a-2373-4c1f-b934-88b2862e9bd5#ref=rss"
+          "url": "https://www.spiegel.de/politik/deutschland/news-nsdap-mitgliedskartei-wladimir-putins-spione-in-deutschland-spiegel-cover-a-820a75dc-bee9-4102-9a91-4e6b7bd4c1fb#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -784,7 +829,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -834,8 +879,8 @@
       }
     },
     {
-      "id": 1638982782,
-      "postUrl": "https://t.me/spiegelonline/235780?single",
+      "id": 2634360922,
+      "postUrl": "https://t.me/spiegelonline/235803?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -848,17 +893,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Geht Österreich jetzt schärfer gegen Wladimir Putins Spione vor?\n#Ausland \n\n zum Artikel...",
+      "text": "Israel hat offenbar geheime Militärbasis im Irak aufgebaut – und verteidigt\n#Ausland \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/geht-oesterreich-jetzt-schaerfer-gegen-wladimir-putins-spione-vor-a-fe74ff5d-4883-42f4-ae55-d2ee0ef290b3#ref=rss"
+          "url": "https://www.spiegel.de/ausland/israel-hat-offenbar-geheime-militaerbasis-im-irak-aufgebaut-und-verteidigt-a-48f3c1ca-9c50-4691-91cd-ba38d04060fe#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -876,7 +921,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -926,8 +971,8 @@
       }
     },
     {
-      "id": 4110806422,
-      "postUrl": "https://t.me/spiegelonline/235779?single",
+      "id": 123588851,
+      "postUrl": "https://t.me/spiegelonline/235802?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -940,17 +985,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Ungarn: Peter Magyar löst Viktor Orbán als Ministerpräsident ab - das Land hofft nun auf den guten Populisten\n#Ausland \n\n zum Artikel...",
+      "text": "Abschiebungen nach Afghanistan: Wie die Bundesregierung die Taliban ins Land ließ\n#Politik \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/ungarn-peter-magyar-loest-viktor-orban-als-ministerpraesident-ab-das-land-hofft-nun-auf-den-guten-populisten-a-4769a28f-1514-44ae-b369-5787d62192d1#ref=rss"
+          "url": "https://www.spiegel.de/politik/abschiebungen-nach-afghanistan-wie-die-bundesregierung-den-deal-mit-den-taliban-schloss-a-7e4b7ed0-8775-421e-83e1-8382b385a3a6#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -968,7 +1013,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -1018,8 +1063,8 @@
       }
     },
     {
-      "id": 2799463151,
-      "postUrl": "https://t.me/spiegelonline/235778?single",
+      "id": 4075880208,
+      "postUrl": "https://t.me/spiegelonline/235801?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1032,17 +1077,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Hantavirus-Ausbruch: Argentinische Behörden verneinen Ursprung in Feuerland\n#Panorama \n\n zum Artikel...",
+      "text": "Phoenix: Wie der Sender im Reichstag Demokratie erlebbar macht\n#Panorama \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/hantavirus-ausbruch-argentinische-behoerden-verneinen-ursprung-in-feuerland-a-35244a4e-47c5-4359-b109-74153a460a40#ref=rss"
+          "url": "https://www.spiegel.de/panorama/phoenix-wie-der-sender-im-reichstag-demokratie-erlebbar-macht-a-3318b92a-3da1-42d4-ac67-5a7b118eec44#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1060,7 +1105,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -1110,8 +1155,8 @@
       }
     },
     {
-      "id": 2798817976,
-      "postUrl": "https://t.me/spiegelonline/235777?single",
+      "id": 2568816785,
+      "postUrl": "https://t.me/spiegelonline/235800?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1124,17 +1169,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Leben mit Downsyndrom: Wie Rituale meiner Tochter Sicherheit geben\n#Familie \n\n zum Artikel...",
+      "text": "Ukraine-Krieg: Zoodirektor kämpft in Mykolajiw um seine Tiere\n#Ausland \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/familie/leben-mit-downsyndrom-wie-rituale-meiner-tochter-sicherheit-geben-a-c61d3d89-d29e-48a1-82a3-38d017bb712d#ref=rss"
+          "url": "https://www.spiegel.de/ausland/ukraine-krieg-zoodirektor-kaempft-in-mykolajiw-um-seine-tiere-a-0cb0f6ae-7828-4f4b-9683-6b2da4e840ac#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1152,7 +1197,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -1202,8 +1247,8 @@
       }
     },
     {
-      "id": 1378124729,
-      "postUrl": "https://t.me/spiegelonline/235776?single",
+      "id": 3710952844,
+      "postUrl": "https://t.me/spiegelonline/235799?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1216,17 +1261,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Giro d'Italia: Massensturz auf zweiter Etappe überschattet Rennen\n#Sport #Radsport\n\n zum Artikel...",
+      "text": "Nordsee: Mythos Rungholt – warum Mönche, Forscher und Politiker eine Trauerfeier im Watt halten\n#Panorama \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/sport/radsport/giro-ditalia-massensturz-auf-zweiter-etappe-ueberschattet-rennen-a-d1738840-0c29-4bbf-9148-c771f144ba7a#ref=rss"
+          "url": "https://www.spiegel.de/panorama/nordsee-mythos-rungholt-warum-moenche-forscher-und-politiker-eine-trauerfeier-im-watt-halten-a-cc314604-c092-4ef6-a62a-8655b58a1057#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T19:44:41.334Z",
-      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1244,7 +1289,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T19:44:41.334Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -1294,8 +1339,8 @@
       }
     },
     {
-      "id": 3048512258,
-      "postUrl": "https://t.me/spiegelonline/235775?single",
+      "id": 3597954621,
+      "postUrl": "https://t.me/spiegelonline/235798?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1308,17 +1353,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Flughafen bestätigt: Person starb durch Kollision mit Flugzeug-Triebwerk\n#Panorama \n\n zum Artikel...",
+      "text": "12.000 Meter über dem Atlantik erfährt Lars Klingbeil von der nächsten Schlappe\n#Politik #Deutschland\n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/flughafen-bestaetigt-person-starb-durch-kollision-mit-flugzeug-triebwerk-a-5acf2eb8-36be-443f-8914-26f95ec54839#ref=rss"
+          "url": "https://www.spiegel.de/politik/deutschland/12-000-meter-ueber-dem-atlantik-erfaehrt-lars-klingbeil-von-der-naechsten-schlappe-a-290ed09c-060a-4ba1-8655-11a6807b3f77#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T17:11:39.842Z",
-      "expiresAt": "2026-05-10T17:11:39.842Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T17:11:39.842Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1336,7 +1381,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T17:11:39.842Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -1386,8 +1431,8 @@
       }
     },
     {
-      "id": 449573883,
-      "postUrl": "https://t.me/spiegelonline/235774?single",
+      "id": 3436271986,
+      "postUrl": "https://t.me/spiegelonline/235797?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1400,17 +1445,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Donald Trump und die USA: Wie verunsicherte Investoren umworben werden\n#Wirtschaft \n\n zum Artikel...",
+      "text": "Fahrrad-Packtaschen im Test: Ortlieb, Vaude, Otinga, SKS, Thule, Topeak und Brooks\n#Tests \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/wirtschaft/donald-trump-und-die-usa-wie-verunsicherte-investoren-umworben-werden-a-e931e9d2-01b8-4ec8-a919-1d3e7b665972#ref=rss"
+          "url": "https://www.spiegel.de/tests/fahrrad-zubehoer/fahrrad-packtaschen-im-test-ortlieb-vaude-otinga-sks-thule-topeak-und-brooks-a-41b38cd7-5138-413a-8308-0eb17c082858#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T17:11:39.842Z",
-      "expiresAt": "2026-05-10T17:11:39.842Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T17:11:39.842Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1428,7 +1473,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T17:11:39.842Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -1478,8 +1523,8 @@
       }
     },
     {
-      "id": 1413232324,
-      "postUrl": "https://t.me/spiegelonline/235773?single",
+      "id": 3405220331,
+      "postUrl": "https://t.me/spiegelonline/235796?single",
       "source": {
         "title": "DER SPIEGEL",
         "handle": "spiegelonline",
@@ -1492,17 +1537,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Russland: Fico trifft Putin im Kreml zum Weltkriegsgedenken\n#Ausland \n\n zum Artikel...",
+      "text": "Medienanwalt Ralf Höcker: Uni erkennt Professorentitel ab\n#Panorama \n\n zum Artikel...",
       "links": [
         {
           "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/russland-fico-trifft-putin-im-kreml-zum-weltkriegsgedenken-a-60489c5d-e4dc-49a7-a918-99ea15719926#ref=rss"
+          "url": "https://www.spiegel.de/panorama/medienanwalt-ralf-hoecker-uni-erkennt-professorentitel-ab-a-03b72b72-5293-4b52-a692-c49383bd9928#ref=rss"
         }
       ],
-      "createdAt": "2026-05-09T17:11:39.842Z",
-      "expiresAt": "2026-05-10T17:11:39.842Z",
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T17:11:39.842Z",
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1520,7 +1565,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T17:11:39.842Z"
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
       }
     },
     {
@@ -1567,6 +1612,880 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T15:12:37.063Z"
+      }
+    },
+    {
+      "id": 1617901416,
+      "postUrl": "https://t.me/spiegelonline/235795?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Mount Everest: Wie eine Tragödie den Alpinismus am höchsten Berg der Erde veränderte\n#Sport \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/mount-everest-wie-eine-tragoedie-den-alpinismus-am-hoechsten-berg-der-erde-veraenderte-a-55f54af7-bab5-4563-8455-edf2bf90012d#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
+      }
+    },
+    {
+      "id": 828727593,
+      "postUrl": "https://t.me/spiegelonline/235794?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Mütter: Ich will keine Kinder. Ist etwas falsch mit mir?\n#Familie \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/familie/kinderwunsch-die-frage-meines-lebens-essay-a-5df19506-6454-489d-a6c9-e5e1763a63fa#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
+      }
+    },
+    {
+      "id": 541548110,
+      "postUrl": "https://t.me/spiegelonline/235793?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Buchladen voller Liebe, Ukrainer kämpft um seinen Zoo - die guten Nachrichten der Woche\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/buchladen-voller-liebe-ukrainer-kaempft-um-seinen-zoo-die-guten-nachrichten-der-woche-a-545efbfa-17b5-4b52-a389-78d32de91aaa#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-10T09:50:36.650Z",
+      "expiresAt": "2026-05-11T09:50:36.650Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T09:50:36.650Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T09:50:36.650Z"
+      }
+    },
+    {
+      "id": 1054752182,
+      "postUrl": "https://t.me/spiegelonline/235788?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "NBA: Dennis Schröder gewinnt mit Cleveland Cavaliers in den Playoffs gegen Detroit\n#Sport #Basketball\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/basketball/nba-dennis-schroeder-gewinnt-mit-cleveland-cavaliers-in-den-playoffs-gegen-detroit-a-685222ff-5f51-44db-bae0-bcda6011a7f9#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-10T01:25:31.495Z",
+      "expiresAt": "2026-05-11T01:25:31.495Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T01:25:31.495Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T01:25:31.495Z"
+      }
+    },
+    {
+      "id": 3287064665,
+      "postUrl": "https://t.me/spiegelonline/235787?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Tschernobyl: Waldbrand tobt in Sperrzone um Atomkraftwerk in der Ukraine – Drohnen als Ursache\n#Panorama \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/tschernobyl-waldbrand-tobt-in-sperrzone-um-atomkraftwerk-in-der-ukraine-drohnen-als-ursache-a-a5e4b746-494d-40e2-b32d-66f9aa31e3b2#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-10T01:25:31.495Z",
+      "expiresAt": "2026-05-11T01:25:31.495Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T01:25:31.495Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T01:25:31.495Z"
+      }
+    },
+    {
+      "id": 3265340248,
+      "postUrl": "https://t.me/spiegelonline/235786?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Ukraine: Wladimir Putin wünscht sich Gerhard Schröder als Vermittler im Krieg\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/ukraine-wladimir-putin-wuenscht-sich-gerhard-schroeder-als-vermittler-im-krieg-a-d52673ab-6c41-4852-9436-af42d61d7e22#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T22:00:20.732Z",
+      "expiresAt": "2026-05-10T22:00:20.732Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T22:00:20.732Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T22:00:20.732Z"
+      }
+    },
+    {
+      "id": 4070527515,
+      "postUrl": "https://t.me/spiegelonline/235785?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Lady Bitch Ray: Ihr Weg vom Skandalrap zur Professorin\n#Panorama #Leute\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/leute/lady-bitch-ray-ihr-weg-vom-skandalrap-zur-professorin-a-36615d8f-7346-4354-80e4-fbca4587acb3#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T22:00:20.732Z",
+      "expiresAt": "2026-05-10T22:00:20.732Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T22:00:20.732Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T22:00:20.732Z"
+      }
+    },
+    {
+      "id": 3515034530,
+      "postUrl": "https://t.me/spiegelonline/235784?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Spannungen mit Donald Trump: Friedrich Merz sieht Stärke der Nato nicht allein von Truppenzahl abhängig\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/spannungen-mit-donald-trump-friedrich-merz-sieht-staerke-der-nato-nicht-allein-von-truppenzahl-abhaengig-a-332e9a5e-bc4d-411f-b85c-6dbe4791a981#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T22:00:20.732Z",
+      "expiresAt": "2026-05-10T22:00:20.732Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T22:00:20.732Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T22:00:20.732Z"
+      }
+    },
+    {
+      "id": 3331947957,
+      "postUrl": "https://t.me/spiegelonline/235783?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Bundesliga: Traumtor von Olise sichert FC Bayern Sieg beim VfL Wolfsburg\n#Sport #Fussball\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/fussball/bundesliga-traumtor-von-olise-sichert-fc-bayern-sieg-beim-vfl-wolfsburg-a-28a95d91-2130-4242-97f8-578ecbd6f360#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 3670002404,
+      "postUrl": "https://t.me/spiegelonline/235782?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Geblitzt im Einsatz: Schneller als das Ordnungsamt erlaubt - SPIEGEL TV\n#Panorama \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/geblitzt-im-einsatz-schneller-als-das-ordnungsamt-erlaubt-spiegel-tv-a-2b1311ab-4459-44b8-87e7-72a6e623fd5e#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 3318951031,
+      "postUrl": "https://t.me/spiegelonline/235781?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Sigmund Freud: Das Bild der hysterischen Frau – Podcast\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/sigmund-freud-das-bild-der-hysterischen-frau-podcast-a-d215ce0a-2373-4c1f-b934-88b2862e9bd5#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 1638982782,
+      "postUrl": "https://t.me/spiegelonline/235780?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Geht Österreich jetzt schärfer gegen Wladimir Putins Spione vor?\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/geht-oesterreich-jetzt-schaerfer-gegen-wladimir-putins-spione-vor-a-fe74ff5d-4883-42f4-ae55-d2ee0ef290b3#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 4110806422,
+      "postUrl": "https://t.me/spiegelonline/235779?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Ungarn: Peter Magyar löst Viktor Orbán als Ministerpräsident ab - das Land hofft nun auf den guten Populisten\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/ungarn-peter-magyar-loest-viktor-orban-als-ministerpraesident-ab-das-land-hofft-nun-auf-den-guten-populisten-a-4769a28f-1514-44ae-b369-5787d62192d1#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 2799463151,
+      "postUrl": "https://t.me/spiegelonline/235778?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Hantavirus-Ausbruch: Argentinische Behörden verneinen Ursprung in Feuerland\n#Panorama \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/hantavirus-ausbruch-argentinische-behoerden-verneinen-ursprung-in-feuerland-a-35244a4e-47c5-4359-b109-74153a460a40#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 2798817976,
+      "postUrl": "https://t.me/spiegelonline/235777?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Leben mit Downsyndrom: Wie Rituale meiner Tochter Sicherheit geben\n#Familie \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/familie/leben-mit-downsyndrom-wie-rituale-meiner-tochter-sicherheit-geben-a-c61d3d89-d29e-48a1-82a3-38d017bb712d#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 1378124729,
+      "postUrl": "https://t.me/spiegelonline/235776?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Giro d'Italia: Massensturz auf zweiter Etappe überschattet Rennen\n#Sport #Radsport\n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/sport/radsport/giro-ditalia-massensturz-auf-zweiter-etappe-ueberschattet-rennen-a-d1738840-0c29-4bbf-9148-c771f144ba7a#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T19:44:41.334Z",
+      "expiresAt": "2026-05-10T19:44:41.334Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T19:44:41.334Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T19:44:41.334Z"
+      }
+    },
+    {
+      "id": 3048512258,
+      "postUrl": "https://t.me/spiegelonline/235775?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Flughafen bestätigt: Person starb durch Kollision mit Flugzeug-Triebwerk\n#Panorama \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/panorama/flughafen-bestaetigt-person-starb-durch-kollision-mit-flugzeug-triebwerk-a-5acf2eb8-36be-443f-8914-26f95ec54839#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T17:11:39.842Z",
+      "expiresAt": "2026-05-10T17:11:39.842Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T17:11:39.842Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T17:11:39.842Z"
+      }
+    },
+    {
+      "id": 449573883,
+      "postUrl": "https://t.me/spiegelonline/235774?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Donald Trump und die USA: Wie verunsicherte Investoren umworben werden\n#Wirtschaft \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/wirtschaft/donald-trump-und-die-usa-wie-verunsicherte-investoren-umworben-werden-a-e931e9d2-01b8-4ec8-a919-1d3e7b665972#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T17:11:39.842Z",
+      "expiresAt": "2026-05-10T17:11:39.842Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T17:11:39.842Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T17:11:39.842Z"
+      }
+    },
+    {
+      "id": 1413232324,
+      "postUrl": "https://t.me/spiegelonline/235773?single",
+      "source": {
+        "title": "DER SPIEGEL",
+        "handle": "spiegelonline",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
+      },
+      "sourceId": "de:spiegelonline",
+      "sourceCountryCode": "de",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Russland: Fico trifft Putin im Kreml zum Weltkriegsgedenken\n#Ausland \n\n zum Artikel...",
+      "links": [
+        {
+          "label": "zum Artikel...",
+          "url": "https://www.spiegel.de/ausland/russland-fico-trifft-putin-im-kreml-zum-weltkriegsgedenken-a-60489c5d-e4dc-49a7-a918-99ea15719926#ref=rss"
+        }
+      ],
+      "createdAt": "2026-05-09T17:11:39.842Z",
+      "expiresAt": "2026-05-10T17:11:39.842Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T17:11:39.842Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T17:11:39.842Z"
       }
     },
     {
@@ -2951,746 +3870,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T10:36:06.282Z"
-      }
-    },
-    {
-      "id": 4270588488,
-      "postUrl": "https://t.me/spiegelonline/235742?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Erdüberlastungstag: Am Sonntag sind die Ressourcen für 2026 in Deutschland aufgebraucht\n#Wissenschaft #Natur\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/wissenschaft/natur/erdueberlastungstag-am-sonntag-sind-die-ressourcen-fuer-2026-in-deutschland-aufgebraucht-a-519e7595-e60b-47ed-8a76-a4f646f38a22#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2038569675,
-      "postUrl": "https://t.me/spiegelonline/235741?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Hobbygärtner: Warum vor allem Männer beim Düngen umdenken sollen\n#Wirtschaft \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/wirtschaft/hobbygaertner-warum-vor-allem-maenner-beim-duengen-umdenken-sollen-a-539ddba6-28f2-4928-9815-06e9cb1db6a0#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2744123090,
-      "postUrl": "https://t.me/spiegelonline/235740?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Donald Trump: US-Geistlicher verteidigt Segnung goldener Statue des IS-Präsidenten\n#Ausland \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/donald-trump-us-geistlicher-verteidigt-segnung-goldener-statue-des-is-praesidenten-a-1fe3db21-9cfa-4ab8-86f6-4e65f25bd733#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 772798858,
-      "postUrl": "https://t.me/spiegelonline/235739?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Kerosin-Mangel durch Iran-Krieg: Flughafenverband erwartet Millionen Flugstreichungen\n#Reise \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/reise/kerosin-mangel-durch-iran-krieg-flughafenverband-erwartet-millionen-flugstreichungen-a-ca86d36e-ec06-48b3-8c61-60274b6fe344#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 3618311907,
-      "postUrl": "https://t.me/spiegelonline/235738?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Donald Trump erwägt Verlegung von US-Truppen aus Deutschland nach Polen\n#Ausland \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/donald-trump-erwaegt-verlegung-von-us-truppen-aus-deutschland-nach-polen-a-f3a77c7b-14a1-473d-a7ee-bea673cd9a6d#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2741492980,
-      "postUrl": "https://t.me/spiegelonline/235737?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "AfD und Vetternwirtschaft: Zu krank zum Unterrichten, aber fit genug für die Fraktion\n#Politik #Deutschland\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/politik/deutschland/afd-und-vetternwirtschaft-zu-krank-zum-unterrichten-aber-fit-genug-fuer-die-fraktion-a-e75805cd-765f-480c-bc46-2dfba6eeb2ef#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2316396997,
-      "postUrl": "https://t.me/spiegelonline/235736?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Künstliche Intelligenz im Studium: Wie KI-Agenten Prüfungen für Studierende bestehen können\n#Start \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/start/kuenstliche-intelligenz-im-studium-wie-ki-agenten-pruefungen-fuer-studierende-bestehen-koennen-a-ea1a22ee-ede5-44d7-9b5f-dd27a2abb339#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 1530967822,
-      "postUrl": "https://t.me/spiegelonline/235735?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Jens Spahn stellt sich gegen Zusammenarbeit mit »dieser AfD«\n#Politik #Deutschland\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/politik/deutschland/jens-spahn-stellt-sich-gegen-zusammenarbeit-mit-dieser-afd-a-4a5e76d6-b7ee-49fe-bebd-978bb01d00ba#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2424512455,
-      "postUrl": "https://t.me/spiegelonline/235734?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "News: Wladimir Putin, Wolodymyr Selenskyj, Péter Magyar, Viktor Orbán, Nigel Farage, Keir Starmer\n#Ausland \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/news-wladimir-putin-wolodymyr-selenskyj-peter-magyar-viktor-orban-nigel-farage-keir-starmer-a-66ce29f8-8d67-4f6d-9745-7576797e63e7#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 3777814056,
-      "postUrl": "https://t.me/spiegelonline/235733?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Mount Everest: Rekordansturm spült Millionen in Nepals Staatskasse\n#Panorama \n\n zum Artikel...\n\nDas Neueste über Telegram, kommende Features und mehr findest Du hier: @nachrichten",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/mount-everest-rekordansturm-spuelt-millionen-in-nepals-staatskasse-a-bcffdb5b-8549-407a-ae93-a27bc300aaef#ref=rss"
-        },
-        {
-          "label": "@nachrichten",
-          "url": "https://t.me/nachrichten"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 1500170985,
-      "postUrl": "https://t.me/spiegelonline/235732?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Iran: Katars Regierungschef wirbt bei JD Vance für neue Friedensgespräche\n#Ausland \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/ausland/iran-katars-regierungschef-wirbt-bei-jd-vance-fuer-neue-friedensgespraeche-a-c93936c5-2777-4543-8d2d-b50b055f139e#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2277600818,
-      "postUrl": "https://t.me/spiegelonline/235731?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Hantavirus auf der MV »Hondius«: Teneriffa stellt sich auf Ankunft des Schiffs ein\n#Panorama \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/hantavirus-auf-der-mv-hondius-teneriffa-stellt-sich-auf-ankunft-des-schiffs-ein-a-376741c1-cc2a-4245-a555-c2826f5a930d#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 3652206251,
-      "postUrl": "https://t.me/spiegelonline/235730?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Helmut Metzner: Homophober Angriff auf FDP-Politiker und Partner in Berlin\n#Panorama \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/helmut-metzner-homophober-angriff-auf-fdp-politiker-und-partner-in-berlin-a-9b5bc336-5397-41ed-b455-de3227265726#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2870537773,
-      "postUrl": "https://t.me/spiegelonline/235729?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "TU Berlin schließt marodes Hauptgebäude wegen Baumängel\n#Panorama #Bildung\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/bildung/tu-berlin-schliesst-marodes-hauptgebaeude-wegen-baumaengel-a-fc327fde-ba6c-46ab-9aff-8084823e0640#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 2950194684,
-      "postUrl": "https://t.me/spiegelonline/235728?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Katy Perry hat ICE kritisiert. Nun eröffnet sie die WM in den USA\n#Panorama #Leute\n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/panorama/leute/katy-perry-hat-ice-kritisiert-nun-eroeffnet-sie-die-wm-in-den-usa-a-c2262cbb-a22f-4648-b9b5-6f411ab65365#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
-      }
-    },
-    {
-      "id": 4078541275,
-      "postUrl": "https://t.me/spiegelonline/235727?single",
-      "source": {
-        "title": "DER SPIEGEL",
-        "handle": "spiegelonline",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/tVXxspNiY4iUjccfNKzQ2qk4RJ-binJJtBJm9PkUaHIxutOybG5RPqp8-leWTkA4ui3htNJ_1EVMXz0dEwgZ3p0FidcGuNSnwUtGEnY3HYLehzuYANHgwA0nVOqh1EwZij7wlI2XpZwni9H9zoV6kHChikL0Io4DPUMqBUkCcGGz2QZZl3wy_mkWv6Jc6-Kgg9_SWUWODQzO6JGJaY2ATp-6HLiDNFTx-ituIdpvTE7hPpCUTWVyphBLIMR38Capk7XAGIKDqyaaC_5efKYD7ZlfZlXe52WjXxXL60TCTFbD727TE1DCseF0jgbIisqjx4HJwy1yu-qIcg1zeT9NUA.jpg"
-      },
-      "sourceId": "de:spiegelonline",
-      "sourceCountryCode": "de",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Dortmund besiegt Frankfurt und holt sich die Vizemeisterschaft\n#Sport \n\n zum Artikel...",
-      "links": [
-        {
-          "label": "zum Artikel...",
-          "url": "https://www.spiegel.de/sport/dortmund-besiegt-frankfurt-und-holt-vizemeisterschaft-a-be4e9736-1565-4e24-8c07-17013890b86b#ref=rss"
-        }
-      ],
-      "createdAt": "2026-05-09T08:13:32.248Z",
-      "expiresAt": "2026-05-10T08:13:32.248Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T08:13:32.248Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T08:13:32.248Z"
       }
     }
   ]
