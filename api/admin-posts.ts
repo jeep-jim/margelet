@@ -95,8 +95,16 @@ function buildSource(body: Record<string, unknown>, existing?: StoredSource | nu
     (asString(body.defaultTag, existing?.defaultTag || "other") as ContentTag) || "other";
   const now = new Date().toISOString();
 
+  const idFromBody = asString(body.id);
+  const shouldRekey =
+    existing &&
+    (existing.countryCode !== countryCode || existing.handle.toLowerCase() !== handle);
+  const id = shouldRekey
+    ? `${countryCode}:${handle}`
+    : idFromBody || existing?.id || `${countryCode}:${handle}`;
+
   return {
-    id: asString(body.id) || existing?.id || `${countryCode}:${handle}`,
+    id,
     countryCode,
     handle,
     title: asString(body.title) || existing?.title || handle,
@@ -287,6 +295,32 @@ async function deleteSourceByIdentity(body: Record<string, unknown>) {
   return next;
 }
 
+async function bulkDeleteSources(body: Record<string, unknown>) {
+  const rawIds = Array.isArray(body.sourceIds) ? body.sourceIds : [];
+  const ids = new Set(rawIds.map((item) => asString(item)).filter(Boolean));
+  const countryCode = normalizeCountryCode(body.countryCode);
+
+  if (ids.size === 0) {
+    throw new Error("No sources selected");
+  }
+
+  const sourcesFile = await readSourcesFile<StoredSource>();
+  const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+
+  const next = current.filter((item) => {
+    if (!ids.has(item.id)) return true;
+    if (countryCode && item.countryCode !== countryCode) return true;
+    return false;
+  });
+
+  if (next.length === current.length) {
+    throw new Error("Selected sources were not found");
+  }
+
+  await writeSourcesFile(sortSources(next));
+  return next;
+}
+
 async function deletePostById(body: Record<string, unknown>) {
   const id = asNumber(body.id);
   if (id === null) {
@@ -403,6 +437,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       if (action === "delete") {
         const sources = await deleteSourceByIdentity(payload);
+        return res.status(200).json({ ok: true, sources });
+      }
+
+      if (action === "bulk-delete") {
+        const sources = await bulkDeleteSources(payload);
         return res.status(200).json({ ok: true, sources });
       }
 

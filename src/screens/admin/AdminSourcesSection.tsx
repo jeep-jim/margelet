@@ -1,5 +1,5 @@
 import { ChevronDown, Pencil } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   getParentTag,
   getRelatedChildTags,
@@ -162,6 +162,9 @@ export function AdminSourcesSection({
   const [message, setMessage] = useState<string | null>(null);
   const [tagsOpen, setTagsOpen] = useState(false);
   const [sourceFormOpen, setSourceFormOpen] = useState(false);
+  const [formCountryCode, setFormCountryCode] = useState<CountryCode>(countryCode);
+  const [selectedSourceIds, setSelectedSourceIds] = useState<string[]>([]);
+  const [isBulkDeleting, setIsBulkDeleting] = useState(false);
 
   const selectedParentGroups = useMemo(() => getParentGroups(selectedTags), [selectedTags]);
 
@@ -193,6 +196,33 @@ export function AdminSourcesSection({
   }, [sources, countryCode, search]);
 
   const activeCount = filteredSources.filter((source) => source.status === "active").length;
+  const selectedVisibleSourceIds = filteredSources
+    .filter((source) => selectedSourceIds.includes(source.id))
+    .map((source) => source.id);
+  const selectedVisibleCount = selectedVisibleSourceIds.length;
+  const allVisibleSelected =
+    filteredSources.length > 0 && selectedVisibleCount === filteredSources.length;
+
+  const countryOptions = useMemo(() => {
+    const codes = new Set<string>([countryCode]);
+
+    sources.forEach((source) => {
+      if (source.countryCode) codes.add(String(source.countryCode).toLowerCase());
+    });
+
+    return Array.from(codes).sort((a, b) => a.localeCompare(b));
+  }, [countryCode, sources]);
+
+  useEffect(() => {
+    if (!editingId) {
+      setFormCountryCode(countryCode);
+    }
+  }, [countryCode, editingId]);
+
+  useEffect(() => {
+    const availableIds = new Set(filteredSources.map((source) => source.id));
+    setSelectedSourceIds((prev) => prev.filter((id) => availableIds.has(id)));
+  }, [filteredSources]);
 
   const resetForm = () => {
     setEditingId(null);
@@ -202,6 +232,7 @@ export function AdminSourcesSection({
     setStatus("active");
     setSelectedTags([]);
     setTagsOpen(false);
+    setFormCountryCode(countryCode);
   };
 
   const toggleParentTag = (parentTag: ContentTag) => {
@@ -257,6 +288,7 @@ export function AdminSourcesSection({
     setTitle(source.title || "");
     setNote(source.note || "");
     setStatus((source.status as SourceStatus) || "active");
+    setFormCountryCode(source.countryCode as CountryCode);
     setSelectedTags(getSourceTags(source));
     setTagsOpen(false);
     setMessage(null);
@@ -303,7 +335,7 @@ export function AdminSourcesSection({
             title: title.trim(),
             note: note.trim(),
             status,
-            countryCode,
+            countryCode: formCountryCode,
             tags: normalizedTags,
             defaultTag: parentTags[0],
           },
@@ -353,6 +385,7 @@ export function AdminSourcesSection({
       }
 
       await onSourcesReload();
+      setSelectedSourceIds((prev) => prev.filter((id) => id !== source.id));
 
       if (editingId === source.id) {
         resetForm();
@@ -364,6 +397,79 @@ export function AdminSourcesSection({
     }
   };
 
+
+  const toggleSourceSelection = (sourceId: string) => {
+    setSelectedSourceIds((prev) =>
+      prev.includes(sourceId)
+        ? prev.filter((id) => id !== sourceId)
+        : [...prev, sourceId]
+    );
+  };
+
+  const toggleAllVisibleSources = () => {
+    if (allVisibleSelected) {
+      setSelectedSourceIds((prev) =>
+        prev.filter((id) => !filteredSources.some((source) => source.id === id))
+      );
+      return;
+    }
+
+    setSelectedSourceIds((prev) =>
+      Array.from(new Set([...prev, ...filteredSources.map((source) => source.id)]))
+    );
+  };
+
+  const bulkDeleteSelectedSources = async () => {
+    if (!telegramUserId || selectedVisibleCount === 0) return;
+
+    if (
+      !window.confirm(
+        `Удалить выбранные каналы (${selectedVisibleCount}) из страны ${countryCode.toUpperCase()}?`
+      )
+    ) {
+      return;
+    }
+
+    try {
+      setIsBulkDeleting(true);
+      setMessage(null);
+
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          telegramUserId,
+          entity: "sources",
+          action: "bulk-delete",
+          countryCode,
+          sourceIds: selectedVisibleSourceIds,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(data?.error || "Не удалось удалить выбранные каналы");
+      }
+
+      await onSourcesReload();
+      setSelectedSourceIds((prev) =>
+        prev.filter((id) => !selectedVisibleSourceIds.includes(id))
+      );
+
+      if (editingId && selectedVisibleSourceIds.includes(editingId)) {
+        resetForm();
+      }
+
+      setMessage(`Удалено каналов: ${selectedVisibleCount}`);
+    } catch (error: unknown) {
+      setMessage(
+        error instanceof Error ? error.message : "Не удалось удалить выбранные каналы"
+      );
+    } finally {
+      setIsBulkDeleting(false);
+    }
+  };
 
   const saveAvatarOverride = async (source: TrustedSource) => {
     if (!telegramUserId) return;
@@ -475,13 +581,25 @@ export function AdminSourcesSection({
                 />
               </div>
 
-              <div className="mt-3 grid gap-3 md:grid-cols-[1fr_180px]">
+              <div className="mt-3 grid gap-3 md:grid-cols-[1fr_220px_180px]">
                 <input
                   value={note}
                   onChange={(event) => setNote(event.target.value)}
                   placeholder="Короткая заметка / комментарий"
                   className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/25"
                 />
+                <select
+                  value={formCountryCode}
+                  onChange={(event) => setFormCountryCode(event.target.value as CountryCode)}
+                  className="w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none"
+                  title="Переместить канал в другую страну"
+                >
+                  {countryOptions.map((code) => (
+                    <option key={code} value={code}>
+                      {code.toUpperCase()} · переместить
+                    </option>
+                  ))}
+                </select>
                 <select
                   value={status}
                   onChange={(event) => setStatus(event.target.value as SourceStatus)}
@@ -663,58 +781,102 @@ export function AdminSourcesSection({
           />
         </div>
 
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-[20px] border border-white/10 bg-[#11121a] px-3 py-3">
+          <button
+            type="button"
+            onClick={toggleAllVisibleSources}
+            disabled={filteredSources.length === 0}
+            className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white/85 transition hover:bg-white/10 disabled:opacity-40"
+          >
+            {allVisibleSelected ? "снять выделение" : "выделить все"}
+          </button>
+
+          <div className="text-sm text-white/55">
+            выбрано: <span className="text-white">{selectedVisibleCount}</span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              void bulkDeleteSelectedSources();
+            }}
+            disabled={selectedVisibleCount === 0 || isBulkDeleting}
+            className="rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2.5 text-sm font-medium text-red-200 transition hover:bg-red-500/15 disabled:opacity-40"
+          >
+            {isBulkDeleting ? "удаляю..." : `удалить выбранные${selectedVisibleCount ? ` · ${selectedVisibleCount}` : ""}`}
+          </button>
+        </div>
+
         <div className="grid gap-2 lg:grid-cols-2">
           {filteredSources.map((source) => {
             const tags = getSourceTags(source);
             const groups = getParentGroups(tags);
             const isExpanded = expandedSourceId === source.id;
+            const isSelected = selectedSourceIds.includes(source.id);
 
             return (
               <div
                 key={source.id}
                 className="w-full overflow-hidden rounded-[18px] border border-white/10 bg-[#151722] px-3 py-2"
               >
-                <button
-                  type="button"
-                  onClick={() =>
-                    setExpandedSourceId((current) =>
-                      current === source.id ? null : source.id
-                    )
-                  }
-                  className="flex w-full min-w-0 items-center justify-between gap-2 text-left"
-                >
-                  <SourceAvatar
-                    source={source}
-                    onAvatarClick={() => {
-                      void saveAvatarOverride(source);
-                    }}
-                  />
-
-                  <div className="min-w-0 flex-1 overflow-hidden">
-                    <div className="truncate text-sm font-semibold text-white">
-                      {source.title || "Без названия"}
-                    </div>
-                    <div className="truncate text-xs text-white/55">@{source.handle}</div>
-                  </div>
-
-                  <div
-                    className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] ${
-                      source.status === "active"
-                        ? "bg-emerald-500/15 text-emerald-300"
-                        : "bg-white/10 text-white/55"
+                <div className="flex w-full min-w-0 items-center justify-between gap-2">
+                  <button
+                    type="button"
+                    onClick={() => toggleSourceSelection(source.id)}
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border text-sm transition ${
+                      isSelected
+                        ? "border-[#7dd3fc] bg-[#7dd3fc]/20 text-[#d9f3ff]"
+                        : "border-white/10 bg-white/5 text-white/45 hover:bg-white/10"
                     }`}
+                    aria-pressed={isSelected}
+                    aria-label={`Выбрать @${source.handle}`}
+                    title="Выбрать для массового удаления"
                   >
-                    {source.status === "active" ? "✔" : "Ⅱ"}
-                  </div>
+                    {isSelected ? "✓" : ""}
+                  </button>
 
-                  <div className="ml-1 flex items-center">
-                    <ChevronDown
-                      className={`h-4 w-4 shrink-0 text-white/60 transition ${
-                        isExpanded ? "rotate-180" : ""
-                      }`}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setExpandedSourceId((current) =>
+                        current === source.id ? null : source.id
+                      )
+                    }
+                    className="flex min-w-0 flex-1 items-center justify-between gap-2 text-left"
+                  >
+                    <SourceAvatar
+                      source={source}
+                      onAvatarClick={() => {
+                        void saveAvatarOverride(source);
+                      }}
                     />
-                  </div>
-                </button>
+
+                    <div className="min-w-0 flex-1 overflow-hidden">
+                      <div className="truncate text-sm font-semibold text-white">
+                        {source.title || "Без названия"}
+                      </div>
+                      <div className="truncate text-xs text-white/55">@{source.handle}</div>
+                    </div>
+
+                    <div
+                      className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] ${
+                        source.status === "active"
+                          ? "bg-emerald-500/15 text-emerald-300"
+                          : "bg-white/10 text-white/55"
+                      }`}
+                    >
+                      {source.status === "active" ? "✔" : "Ⅱ"}
+                    </div>
+
+                    <div className="ml-1 flex items-center">
+                      <ChevronDown
+                        className={`h-4 w-4 shrink-0 text-white/60 transition ${
+                          isExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                  </button>
+                </div>
 
                 {isExpanded ? (
                   <div className="mt-3 border-t border-white/10 pt-3">
