@@ -15,6 +15,7 @@ import {
   Music4,
   Pause,
   Play,
+  Square,
   Volume2,
   VolumeX,
 } from "lucide-react";
@@ -850,6 +851,7 @@ export function FeedTextReaderModal({
     getAutotranslit(),
   );
   const [contentResetVersion, setContentResetVersion] = useState(0);
+  const [isSpeaking, setIsSpeaking] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const dragControls = useDragControls();
 
@@ -909,6 +911,14 @@ export function FeedTextReaderModal({
 
     setSubscribed(getSubs().includes(post.source.handle));
   }, [post]);
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (!post || !autotranslitEnabled || !canShowAutotranslit) return;
@@ -1039,6 +1049,70 @@ export function FeedTextReaderModal({
     if (!post) return;
 
     window.open(post.postUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const toggleSpeech = () => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      return;
+    }
+
+    // Если уже говорит — останавливаем
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    // Берём уже отображённый на экране текст (после перевода)
+    const container = modalRootRef.current?.querySelector(
+      ".margelet-translatable"
+    ) as HTMLElement | null;
+
+    const content = container?.innerText?.trim();
+
+    if (!content) return;
+
+    const utterance = new SpeechSynthesisUtterance(content);
+
+    // Пытаемся использовать язык интерфейса
+    const langMap: Record<string, string> = {
+      ru: "ru-RU",
+      en: "en-US",
+      zh: "zh-CN",
+      ar: "ar-SA",
+      fa: "fa-IR",
+      tr: "tr-TR",
+      de: "de-DE",
+      fr: "fr-FR",
+      it: "it-IT",
+      es: "es-ES",
+      pt: "pt-BR",
+      "pt-br": "pt-BR",
+      hi: "hi-IN",
+      id: "id-ID",
+      uk: "uk-UA",
+      kk: "kk-KZ",
+      uz: "uz-UZ",
+    };
+
+    utterance.lang = langMap[locale] || "en-US";
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    utterance.onstart = () => {
+      setIsSpeaking(true);
+    };
+
+    utterance.onend = () => {
+      setIsSpeaking(false);
+    };
+
+    utterance.onerror = () => {
+      setIsSpeaking(false);
+    };
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
   };
 
   return (
@@ -1322,6 +1396,20 @@ export function FeedTextReaderModal({
                 ) : (
                   <div />
                 )}
+
+                <button
+                  type="button"
+                  onClick={toggleSpeech}
+                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-soft bg-surface-soft text-primary transition hover:bg-app"
+                  aria-label={isSpeaking ? "Stop reading" : "Read aloud"}
+                  title={isSpeaking ? "Stop reading" : "Read aloud"}
+                >
+                  {isSpeaking ? (
+                    <Square className="h-4 w-4 fill-current" />
+                  ) : (
+                    <Volume2 className="h-5 w-5" />
+                  )}
+                </button>
 
                 <button
                   type="button"
