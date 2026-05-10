@@ -7,7 +7,7 @@
   "title": "Образование Telegram trends in Russia | margeleT",
   "description": "Fresh Образование Telegram posts, channels, keywords and sources from Russia. Updated automatically by margeleT.",
   "h1": "Образование Telegram trends in Russia",
-  "updatedAt": "2026-05-10T09:55:42.733Z",
+  "updatedAt": "2026-05-10T17:19:33.371Z",
   "parentTag": {
     "value": "education",
     "emoji": "📚",
@@ -260,6 +260,275 @@
   },
   "posts": [
     {
+      "id": 1427489021,
+      "postUrl": "https://t.me/tproger/14486?single",
+      "source": {
+        "title": "Типичный программист",
+        "handle": "tproger",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Zx8tJkxPFkFYXjfeo7q6JiQ0ikqPWsECfvzlXTMpr4EeHzdZvbHNk0njKN1NdOB8Tag6eEPU6VIXz6GBJ5CvhWeGcWHCiU-XyS05E6XREoVIy8IoQ0qNbreSt263cI39lAgzOU6b1f4PSkb2ZnexyuwTdj0vpM8bC5DA4V0pRLbBH1foZNeHaAYjxbkPAA8qAkEvo057R5oHgLL1a0G327napF2iBQsjhzfuOqlYq-6AM6Pe4ycHMdPKQX6lCU-cbwqYdzdcSapAg8c0WBSzX4aMQPrsKP8rlGMAx2ECE7TwUUtwP1fGlyLTrHJL07T1fE-EhqMGGWpuXhPmGJoeuA.jpg"
+      },
+      "sourceId": "ru:tproger",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Стандартный ИИ-агент помнит только текущий разговор. Закрыл терминал и всё: твои предпочтения, прошлые решения, контекст проекта испарились. Следующий запуск начинается с нуля. Это как если бы программист каждое утро забывал, в какой он команде и на каком языке пишет.\n\nЕсть, конечно, системы запоминаний, по сути просто записывание в файл, когда модель считает, что эту инфу важно не потерять. Но это всё полумеры, тем более что есть прям целые отдельные системы памяти. Расскажу про основные.\n\niai-mcp — локальный сервер памяти для Claude Code. Работает на локальной машине, шифрует данные, не лезет в облако. Память устроена как граф. Свежий проект, буквально пару дней от релиза, но автор заявляет, что по бенчмаркам обгоняет топовый mempalace.\n\nMemPalace — память по принципу античной техники локусов. Иерархия: крылья (проекты), комнаты (темы), залы (типы связей), ящики (дословные записи). Сохраняет текст целиком, не перефразирует. Гибридный поиск: BM25 + косинус + граф знаний. 96,6% на LongMemEval.\n\nMem0 — проект, который показался мне самым зрелым, куча звёзд и разработчиков и даже $24M инвестиций. Векторный поиск + граф знаний + key-value. Dual-deployment: open-source (Apache 2.0, Docker) или облако. Но графовая память за paywall. Эксклюзивный провайдер памяти для AWS Agent SDK.\n\nSupermemory — лидер по бенчмаркам. Впрочем, каждый проект про себя так заявляет, а единой методики нет, все чуть под себя подстривают. 81,6–85,2% на LongMemEval. Гибридный RAG: память + документы в одном запросе. Есть коннекторы к Google Drive, Gmail, Notion, GitHub. Но ядро закрытое, self-hosting только по enterprise-контракту.\n\nZep — временные графы знаний. Каждый факт хранит 4 временные метки: когда узнали, когда стало актуально, когда перестало. Можно спросить «а где Алиса работала в марте 2025?» и получить правильный ответ, даже если она уже уволилась. Ядро Graphiti open-source.\n\nHindsight — память, построенная как человеческая. Четыре сети: факты о мире, собственный опыт, синтезированные наблюдения, развивающиеся убеждения. Четыре параллельные стратегии поиска + reranking. Рекорд на LongMemEval — 91,4%. MIT, нет paywall, всё открыто.\n\nMastra — фреймворк для агентов, где память встроена изначально. Для тех, кто строит агентов с нуля и не хочет склеивать десяток библиотек. Open-source.\n\nЧто-то одно посоветовать не могу, сам не планирую сравнивать, но думаю начать с iai-mcp, по описанию понравился.\n\n@neuro_channel (теперь ещё в VK и Max)",
+      "links": [
+        {
+          "label": "iai-mcp",
+          "url": "https://github.com/CodeAbra/iai-mcp"
+        },
+        {
+          "label": "MemPalace",
+          "url": "https://github.com/mempalace/mempalace"
+        },
+        {
+          "label": "Mem0",
+          "url": "https://github.com/mem0ai/mem0"
+        },
+        {
+          "label": "Supermemory",
+          "url": "https://github.com/supermemoryai/supermemory"
+        },
+        {
+          "label": "Zep",
+          "url": "https://github.com/getzep"
+        },
+        {
+          "label": "Hindsight",
+          "url": "https://github.com/vectorize-io/hindsight"
+        },
+        {
+          "label": "Mastra",
+          "url": "https://github.com/mastra-ai/mastra"
+        },
+        {
+          "label": "@neuro_channel",
+          "url": "https://t.me/+oq3pqEBuZcVjMTNi"
+        },
+        {
+          "label": "VK",
+          "url": "https://tprg.ru/0zr5"
+        },
+        {
+          "label": "Max",
+          "url": "https://tprg.ru/bfu0"
+        }
+      ],
+      "createdAt": "2026-05-10T17:19:33.371Z",
+      "expiresAt": "2026-05-11T17:19:33.371Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T17:19:33.371Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "education",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T17:19:33.371Z"
+      }
+    },
+    {
+      "id": 3359766396,
+      "postUrl": "https://t.me/toplesofficial/8056?single",
+      "source": {
+        "title": "ТОПЛЕС",
+        "handle": "toplesofficial",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/TFiNyrVIxniOl6moaaqo0_dv-d_gvtz10tPeQQK2zCiVpffINBfI21mizx61XeW3N6zG-tcKp9cRuKquqzObFGoOuPca_E-WKQ125enYsjTUUE3kb5U9HsJDBHHM-5ZuqOEkpA9cQ2dJeWxrU8XVtbf0ZJPjViIqsJWtqYQvung9k2ogetlaffqdux-UIQYyNkGdMFY2Z5FuhoqRMQNRWzsY8icdaZrKH1y3soGZuhcRQYhjnFcDlcY8feNvmACKl-pzVMNvhkEbEkwAJCOBFOAkp9lPpH9Ve291zndlCc0q4cVFkrN0qCyHLUqfT-EPeTSPQWvO3jA2dW2TEywc0Q.jpg"
+      },
+      "sourceId": "ru:toplesofficial",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/nBJt0VvQuK6tV2hJwu0u6oMug4znrK7gwxfdMkiGhBEqejNgF9D754OZVj7xfNZLWSOYZG-KvihSAcSu15FMKhHvTzxJzQtwaaiiGQVVZNzR3eIh5XUO4yqyhyMuve4_a8RaD9KeJB-XWQJ-93r2ftURQ6znvW9z2teXnXqHUkCc-mzj3D5TLdtbCqpQKkvRYBCxEZWQ8JvHkNnwdG_Q0qNxvUn4iFP6xuwSWclygSrLpobbT7RUawja1d65-xHmrPpUBey4Yy6OJHAwohP7rAKXJVE-t1IkZPD4VkBd6NCyd71DfmQ78zJaV7jOZjgmqUHzM2Rgz41u7RhxZn70cA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Есть такой известный телеведущий и натуралист — Дэвид Аттенборо. Даже если вы никогда не слышали это имя, вы наверняка могли слышать его голос во множестве потрясающих документальных фильмов. И 8 мая ему исполнилось 100 лет!\n\nВ честь такого события LEGO изменили свою классическую возрастную маркировку с «4-99» на «4-100+». Теперь можно не переживать, что делать со своими наборами в старости. Поздравляем легенду!",
+      "links": [],
+      "createdAt": "2026-05-10T17:19:32.900Z",
+      "expiresAt": "2026-05-11T17:19:32.900Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T17:19:32.900Z",
+      "tag": "science",
+      "tags": [
+        "science",
+        "technology",
+        "education"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T17:19:32.900Z"
+      }
+    },
+    {
+      "id": 2486886257,
+      "postUrl": "https://t.me/arzamaslive/7624?single",
+      "source": {
+        "title": "Arzamas",
+        "handle": "arzamaslive",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/R1goK-UebhdjLAzZJMFtRMp0LkKaMObvIJfIFy_u-3POs0hn7IR41kr2v5LKxawLp4nXydVdj0JPpl-ChcMOmzg0lu2pKE-bMHYw0cAALbHt87JmTWL9ptzU67YYsX1hO9zS-YDCcJB6RnmilL4_aTyNz1U1hx8VvvpmigfxZWc3VLFh0PkyCrVWnw-Zt7bvcQqEhMV8nPLaVghkYiU8jz9yKSOv8hN4XhxGYDDw92w-ARSZFiGVcEtJDgrKHw0IHqsDp-FmAPQ84X0fQe5_gvr2CSLprtEGdwdxquJLW12r4ep5dLk4WHq5FT75xRLfko40hjptY6IYzTgFPfCUfA.jpg"
+      },
+      "sourceId": "ru:arzamaslive",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/hqCnmRdZrN36rFSomBgruODs1P7Ac_-VgCXvsc4fkMdfs6I2-TlYs1_PONarmOFYVm7SA46ju2NEK5NiJpTE-CG-i03YWj_6gGMheh7X-0kqg-2Eqxjj0QIRJ6MvjJ6UvqziuzxyrMHMBhBhcDC-2r5C3iO2DPufeUZr3h89-ezx5tGwQck8KVIV1wd6amfVGRUbUAnxd5-FgZhB2UlNxBB9cv81wqmJsFS80qBNT_RP-XCQqgGNzUPI5mjDCqKs9PAf67MtAULOWo9wetXtIjxryZxAZgU1A6BKSsDJSxOVYsEvTHsquudMyRF3PbaEDyWFaJNuU0EtlsgOArTKVQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Дела сердечные и книги на все случаи жизни — подборка из детского аудиоприложения «Гусьгусь»: \n\n🫀 Чем обморок отличается от эпилептического припадка? Зачем всем нужно ходить на курсы первой помощи? И почему сердце бьется чаще, когда мы волнуемся? Все эти вопросы обсуждают в новом выпуске подкаста о медицинских мифах «Не слипнется!» педиатр Сергей Бутрий и школьник Лева Гаррос. \n\n🔮 Пока подкаст про чтение «Экспекто патронум» на каникулах, мы подготовили чек-лист со всеми книгами за восемь сезонов — скачивайте файл в хорошем качестве по ссылке, чтобы распечатать или сохранить в телефоне, отмечать все прочитанное и всегда иметь полезные рекомендации под рукой. Он подходит как для детей, так и для взрослых! А чтение можно дополнить прослушиванием выпусков.",
+      "links": [
+        {
+          "label": "«Гусьгусь»",
+          "url": "https://t.me/saygoosegoose"
+        },
+        {
+          "label": "«Не слипнется!»",
+          "url": "https://open.goosegoose.academy/radio?az_action=navigate&amp;amp;az_id=65&amp;amp;az_screen=Album&amp;amp;az_type=podcasts&amp;amp;gg=1&amp;amp;utm_source=telegram&amp;amp;utm_medium=arz_goosedigest&amp;amp;utm_campaign=podcast"
+        },
+        {
+          "label": "чек-лист со всеми книгами за восемь сезонов",
+          "url": "https://disk.360.yandex.ru/i/bXP3awW_2JGnMg"
+        }
+      ],
+      "createdAt": "2026-05-10T14:04:58.881Z",
+      "expiresAt": "2026-05-11T14:04:58.881Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T17:20:11.928Z",
+      "tag": "culture",
+      "tags": [
+        "culture",
+        "education",
+        "history"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T14:04:58.881Z"
+      }
+    },
+    {
+      "id": 323085382,
+      "postUrl": "https://t.me/tproger/14485?single",
+      "source": {
+        "title": "Типичный программист",
+        "handle": "tproger",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Zx8tJkxPFkFYXjfeo7q6JiQ0ikqPWsECfvzlXTMpr4EeHzdZvbHNk0njKN1NdOB8Tag6eEPU6VIXz6GBJ5CvhWeGcWHCiU-XyS05E6XREoVIy8IoQ0qNbreSt263cI39lAgzOU6b1f4PSkb2ZnexyuwTdj0vpM8bC5DA4V0pRLbBH1foZNeHaAYjxbkPAA8qAkEvo057R5oHgLL1a0G327napF2iBQsjhzfuOqlYq-6AM6Pe4ycHMdPKQX6lCU-cbwqYdzdcSapAg8c0WBSzX4aMQPrsKP8rlGMAx2ECE7TwUUtwP1fGlyLTrHJL07T1fE-EhqMGGWpuXhPmGJoeuA.jpg"
+      },
+      "sourceId": "ru:tproger",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WDOJaqeHYRiOWT4CkJkDxXMNUIuVnARmQWpKyP67V9WLi7QJ1UyAjYZRloRVN-dkt272aqa1ekxEmn5usatqBEx43OIqtaEB6gmVthcljG9FBeN1YeaoEAqIOWXm_Y3oZpE2j29M2Hjks5La9t8GV2yikLnskxdFqwmLBkfenq3mCdwT9Nv-Xv717d0QOIo3MYNA2QTPHaBEsE29jLmF-GK91dnZ879FwwuJarCG91j2ORO3-Nbm_cDZekYq7lHyQQu-WwmdFFIx8PxXrSHo399kyTKKcwD0_zjEpR6-uV5Uc3AMO5ANLEXh3rkWZcItuiHfQpAJxk1k6rXhSgAEcg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "fff — самый быстрый поиск файлов для ИИ-агентов, Neovim, Rust и Node.js\n\nПоиск файлов звучит как нерешённая задача уровня «найди папку Downloads». Но у кодинг-агентов это один из самых проблемных примитивов: прежде чем что-то изменить в репозитории, агент должен найти нужный файл — и чем хуже работает этот шаг, тем больше ошибок дальше по цепочке.\n\nfff решает именно это: нативные привязки для Rust, C и Node.js, готовая интеграция с Neovim и отдельная оптимизация под сценарии ИИ-агентов. Авторы позиционируют его как самый быстрый и точный файловый поиск — и почти 6 тысяч звёзд на GitHub говорят, что в это охотно верят.\n\nКак устроен тулкит — в репозитории на GitHub.\n\n@tproger\nЧитайте также в VK, Max и Дзен",
+      "links": [
+        {
+          "label": "в репозитории на GitHub",
+          "url": "https://github.com/dmtrKovalenko/fff.nvim"
+        },
+        {
+          "label": "@tproger",
+          "url": "https://t.me/+QGYQ7Cs9ttcwNDc6"
+        },
+        {
+          "label": "VK",
+          "url": "https://tprg.ru/vnl9"
+        },
+        {
+          "label": "Max",
+          "url": "https://tprg.ru/1Z3N"
+        },
+        {
+          "label": "Дзен",
+          "url": "https://tprg.ru/RWQM"
+        }
+      ],
+      "createdAt": "2026-05-10T14:04:03.757Z",
+      "expiresAt": "2026-05-11T14:04:03.757Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T17:19:33.371Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "education",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T14:04:03.757Z"
+      }
+    },
+    {
       "id": 3714149110,
       "postUrl": "https://t.me/arzamaslive/7623?single",
       "source": {
@@ -302,7 +571,7 @@
       "createdAt": "2026-05-10T09:55:42.733Z",
       "expiresAt": "2026-05-11T09:55:42.733Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:55:42.733Z",
+      "mediaRefreshedAt": "2026-05-10T17:20:11.928Z",
       "tag": "culture",
       "tags": [
         "culture",
@@ -351,7 +620,7 @@
       "createdAt": "2026-05-10T09:54:48.088Z",
       "expiresAt": "2026-05-11T09:54:48.088Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:54:48.088Z",
+      "mediaRefreshedAt": "2026-05-10T17:19:33.371Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -519,161 +788,23 @@
         "reason": null,
         "reviewedAt": "2026-05-10T06:44:45.328Z"
       }
-    },
-    {
-      "id": 3103559759,
-      "postUrl": "https://t.me/arzamaslive/7622?single",
-      "source": {
-        "title": "Arzamas",
-        "handle": "arzamaslive",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/R1goK-UebhdjLAzZJMFtRMp0LkKaMObvIJfIFy_u-3POs0hn7IR41kr2v5LKxawLp4nXydVdj0JPpl-ChcMOmzg0lu2pKE-bMHYw0cAALbHt87JmTWL9ptzU67YYsX1hO9zS-YDCcJB6RnmilL4_aTyNz1U1hx8VvvpmigfxZWc3VLFh0PkyCrVWnw-Zt7bvcQqEhMV8nPLaVghkYiU8jz9yKSOv8hN4XhxGYDDw92w-ARSZFiGVcEtJDgrKHw0IHqsDp-FmAPQ84X0fQe5_gvr2CSLprtEGdwdxquJLW12r4ep5dLk4WHq5FT75xRLfko40hjptY6IYzTgFPfCUfA.jpg"
-      },
-      "sourceId": "ru:arzamaslive",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/OGSF_CulzI1CNuwqbJMTioOJVoUnaB1a27qG9-dP2J09lLfWncIj0cp5GAZAwfmBKrUB9HzOj6C0wFAxijIWO2w82PKbAq07em7FR_MoB9pIeRiczOKneAR7u9SrUnRQP2Rr0gl9gltTHPXKWBbRUSNDqZJbpHGotwIfLNockUN-mtbhjydJFajtMTsUR_cv2Y3edy15jVIz2nlhBXy1zEbPUah8vkfr7N5Qvrs9_I8aK353KRkqYVcS99mS-D_1THvIuk6QAtq7MtrIZyp0R3S6nHMyKPEz7lV5fL8LaC1-KKWukH12J0bH3tycdEEZc696lsmV6gZAJnUXMa6YIg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Что вышло на Arzamas за неделю?\n\n● Мы обновили главную страницу сайта! Теперь в одной ленте вы найдете свежие релизы, тематические подборки, тексты и игры «Журнала», видеоликбезы и мерч из нашего магазина. Надеемся, вам понравится, и ждем отзывы! \n\n● Аудиоверсия «Слов культур» о Гонконге! Разбираемся в значении неспешных чаепитий, счастливых случайностей, жареных чертях и поклонах рукой. \n\n● В свежем выпуске «Радио „Сарафан“» японовед Анна Дулина рассказывает о любовных знаках в японской культуре — как нужно махать рукавом, чтобы обозначить отказ, и что гейша может выразить с помощью танца. \n \n● Новый фактчек! Почему Сократ недолюбливал демократию, выбрал яд вместо побега и перед смертью попросил принести в жертву петуха? Рассказываем, что мы точно знаем о философе. \n\n● Почему в книгах нельзя было писать о том, что у животных есть душа? В новой «Неловкой паузе» фактчекер Алексей Бороненко рассказывает, как в Российской империи запретили книгу основателя психологии. \n\n📌 Сократ у Аспасии. Литография Оноре Домье. 1842 год\nBoston Public Library \n\n📫 Подписаться на Arzamas 📫\nTelegram | ВКонтакте | Рассылка",
-      "links": [
-        {
-          "label": "Аудиоверсия «Слов культур»",
-          "url": "https://open.arzamas.academy/a/2032/15463?utm_source=telegram&amp;amp;utm_medium=post&amp;amp;utm_campaign=arzamas_channel"
-        },
-        {
-          "label": "свежем выпуске «Радио „Сарафан“»",
-          "url": "https://open.arzamas.academy/a/2039/15452?utm_source=telegram&amp;amp;utm_medium=post&amp;amp;utm_campaign=arzamas_channel"
-        },
-        {
-          "label": "Рассказываем, что мы точно знаем о философе",
-          "url": "https://arzamas.academy/mag/1401-socrates?utm_source=telegram&amp;amp;utm_medium=post&amp;amp;utm_campaign=arzamas_channel"
-        },
-        {
-          "label": "новой «Неловкой паузе»",
-          "url": "https://open.arzamas.academy/a/2073/15462?utm_source=telegram&amp;amp;utm_medium=post&amp;amp;utm_campaign=arzamas_channel"
-        },
-        {
-          "label": "Telegram",
-          "url": "https://t.me/+tTXsLhiuDyYzNzQy"
-        },
-        {
-          "label": "ВКонтакте",
-          "url": "https://vk.com/arzamas.academy"
-        },
-        {
-          "label": "Рассылка",
-          "url": "https://arzamas.academy/#signup"
-        }
-      ],
-      "createdAt": "2026-05-09T17:12:24.827Z",
-      "expiresAt": "2026-05-10T17:12:24.827Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:55:42.733Z",
-      "tag": "culture",
-      "tags": [
-        "culture",
-        "education",
-        "history"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T17:12:24.827Z"
-      }
-    },
-    {
-      "id": 3495730556,
-      "postUrl": "https://t.me/arzamaslive/7621?single",
-      "source": {
-        "title": "Arzamas",
-        "handle": "arzamaslive",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/R1goK-UebhdjLAzZJMFtRMp0LkKaMObvIJfIFy_u-3POs0hn7IR41kr2v5LKxawLp4nXydVdj0JPpl-ChcMOmzg0lu2pKE-bMHYw0cAALbHt87JmTWL9ptzU67YYsX1hO9zS-YDCcJB6RnmilL4_aTyNz1U1hx8VvvpmigfxZWc3VLFh0PkyCrVWnw-Zt7bvcQqEhMV8nPLaVghkYiU8jz9yKSOv8hN4XhxGYDDw92w-ARSZFiGVcEtJDgrKHw0IHqsDp-FmAPQ84X0fQe5_gvr2CSLprtEGdwdxquJLW12r4ep5dLk4WHq5FT75xRLfko40hjptY6IYzTgFPfCUfA.jpg"
-      },
-      "sourceId": "ru:arzamaslive",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "«Ночью приехал отец и отвез нас на Казанский вокзал. Там мгла и кишащее море людей. А у сестры перед этим был день рождения, и ей подарили духи „Красная Москва“, тогда очень модные. Она взяла их, но в сутолоке на вокзале они выпали и разбились. И вот представляете, среди этой мглы, мрака — острый запах роскошных духов».\n\nВспоминаем наш архивный материал, в котором Тамара Милешина, Юрий Манн, Константин Федермессер и другие дети 1940-х рассказывают о том, как они встретили войну.\n\n📫 Подписаться на Arzamas 📫\nTelegram | ВКонтакте | Рассылка",
-      "links": [
-        {
-          "label": "архивный материал",
-          "url": "https://arzamas.academy/mag/306-22june?utm_source=telegram&amp;amp;utm_medium=post&amp;amp;utm_campaign=arzamas_channel"
-        },
-        {
-          "label": "Telegram",
-          "url": "https://t.me/+tTXsLhiuDyYzNzQy"
-        },
-        {
-          "label": "ВКонтакте",
-          "url": "https://vk.com/arzamas.academy"
-        },
-        {
-          "label": "Рассылка",
-          "url": "https://arzamas.academy/#signup"
-        }
-      ],
-      "createdAt": "2026-05-09T11:12:19.225Z",
-      "expiresAt": "2026-05-10T11:12:19.225Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:19.225Z",
-      "tag": "culture",
-      "tags": [
-        "culture",
-        "education",
-        "history"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:19.225Z"
-      }
     }
   ],
   "topSources": [
     {
-      "title": "Arzamas",
-      "handle": "arzamaslive",
-      "count": 3
-    },
-    {
       "title": "Типичный программист",
       "handle": "tproger",
-      "count": 1
+      "count": 3
     },
     {
       "title": "ТОПЛЕС",
       "handle": "toplesofficial",
-      "count": 1
+      "count": 2
+    },
+    {
+      "title": "Arzamas",
+      "handle": "arzamaslive",
+      "count": 2
     },
     {
       "title": "N + 1",
@@ -683,19 +814,31 @@
   ],
   "keywords": [
     {
-      "value": "форман",
+      "value": "когда",
+      "count": 7
+    },
+    {
+      "value": "память",
+      "count": 6
+    },
+    {
+      "value": "поиск",
       "count": 5
     },
     {
-      "value": "arzamas",
-      "count": 4
+      "value": "форман",
+      "count": 5
     },
     {
       "value": "амадей",
       "count": 4
     },
     {
-      "value": "очень",
+      "value": "даже",
+      "count": 4
+    },
+    {
+      "value": "есть",
       "count": 4
     },
     {
@@ -703,11 +846,31 @@
       "count": 4
     },
     {
-      "value": "было",
+      "value": "github",
       "count": 3
     },
     {
-      "value": "вконтакте",
+      "value": "longmemeval",
+      "count": 3
+    },
+    {
+      "value": "open-source",
+      "count": 3
+    },
+    {
+      "value": "всегда",
+      "count": 3
+    },
+    {
+      "value": "граф",
+      "count": 3
+    },
+    {
+      "value": "жизни",
+      "count": 3
+    },
+    {
+      "value": "знаний",
       "count": 3
     },
     {
@@ -719,40 +882,8 @@
       "count": 3
     },
     {
-      "value": "новый",
+      "value": "начать",
       "count": 3
-    },
-    {
-      "value": "подписаться",
-      "count": 3
-    },
-    {
-      "value": "почему",
-      "count": 3
-    },
-    {
-      "value": "рассказывает",
-      "count": 3
-    },
-    {
-      "value": "рассылка",
-      "count": 3
-    },
-    {
-      "value": "быстро",
-      "count": 2
-    },
-    {
-      "value": "всегда",
-      "count": 2
-    },
-    {
-      "value": "выяснили",
-      "count": 2
-    },
-    {
-      "value": "женщины",
-      "count": 2
     }
   ]
 }

@@ -7,7 +7,7 @@
   "title": "Мир Telegram trends in Russia | margeleT",
   "description": "Fresh Мир Telegram posts, sources and keywords from Russia. Updated automatically by margeleT trend snapshots.",
   "h1": "Мир Telegram trends in Russia",
-  "updatedAt": "2026-05-10T09:55:25.107Z",
+  "updatedAt": "2026-05-10T17:19:33.371Z",
   "parentTag": {
     "value": "news",
     "emoji": "📰",
@@ -322,13 +322,218 @@
   },
   "posts": [
     {
+      "id": 1427489021,
+      "postUrl": "https://t.me/tproger/14486?single",
+      "source": {
+        "title": "Типичный программист",
+        "handle": "tproger",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Zx8tJkxPFkFYXjfeo7q6JiQ0ikqPWsECfvzlXTMpr4EeHzdZvbHNk0njKN1NdOB8Tag6eEPU6VIXz6GBJ5CvhWeGcWHCiU-XyS05E6XREoVIy8IoQ0qNbreSt263cI39lAgzOU6b1f4PSkb2ZnexyuwTdj0vpM8bC5DA4V0pRLbBH1foZNeHaAYjxbkPAA8qAkEvo057R5oHgLL1a0G327napF2iBQsjhzfuOqlYq-6AM6Pe4ycHMdPKQX6lCU-cbwqYdzdcSapAg8c0WBSzX4aMQPrsKP8rlGMAx2ECE7TwUUtwP1fGlyLTrHJL07T1fE-EhqMGGWpuXhPmGJoeuA.jpg"
+      },
+      "sourceId": "ru:tproger",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Стандартный ИИ-агент помнит только текущий разговор. Закрыл терминал и всё: твои предпочтения, прошлые решения, контекст проекта испарились. Следующий запуск начинается с нуля. Это как если бы программист каждое утро забывал, в какой он команде и на каком языке пишет.\n\nЕсть, конечно, системы запоминаний, по сути просто записывание в файл, когда модель считает, что эту инфу важно не потерять. Но это всё полумеры, тем более что есть прям целые отдельные системы памяти. Расскажу про основные.\n\niai-mcp — локальный сервер памяти для Claude Code. Работает на локальной машине, шифрует данные, не лезет в облако. Память устроена как граф. Свежий проект, буквально пару дней от релиза, но автор заявляет, что по бенчмаркам обгоняет топовый mempalace.\n\nMemPalace — память по принципу античной техники локусов. Иерархия: крылья (проекты), комнаты (темы), залы (типы связей), ящики (дословные записи). Сохраняет текст целиком, не перефразирует. Гибридный поиск: BM25 + косинус + граф знаний. 96,6% на LongMemEval.\n\nMem0 — проект, который показался мне самым зрелым, куча звёзд и разработчиков и даже $24M инвестиций. Векторный поиск + граф знаний + key-value. Dual-deployment: open-source (Apache 2.0, Docker) или облако. Но графовая память за paywall. Эксклюзивный провайдер памяти для AWS Agent SDK.\n\nSupermemory — лидер по бенчмаркам. Впрочем, каждый проект про себя так заявляет, а единой методики нет, все чуть под себя подстривают. 81,6–85,2% на LongMemEval. Гибридный RAG: память + документы в одном запросе. Есть коннекторы к Google Drive, Gmail, Notion, GitHub. Но ядро закрытое, self-hosting только по enterprise-контракту.\n\nZep — временные графы знаний. Каждый факт хранит 4 временные метки: когда узнали, когда стало актуально, когда перестало. Можно спросить «а где Алиса работала в марте 2025?» и получить правильный ответ, даже если она уже уволилась. Ядро Graphiti open-source.\n\nHindsight — память, построенная как человеческая. Четыре сети: факты о мире, собственный опыт, синтезированные наблюдения, развивающиеся убеждения. Четыре параллельные стратегии поиска + reranking. Рекорд на LongMemEval — 91,4%. MIT, нет paywall, всё открыто.\n\nMastra — фреймворк для агентов, где память встроена изначально. Для тех, кто строит агентов с нуля и не хочет склеивать десяток библиотек. Open-source.\n\nЧто-то одно посоветовать не могу, сам не планирую сравнивать, но думаю начать с iai-mcp, по описанию понравился.\n\n@neuro_channel (теперь ещё в VK и Max)",
+      "links": [
+        {
+          "label": "iai-mcp",
+          "url": "https://github.com/CodeAbra/iai-mcp"
+        },
+        {
+          "label": "MemPalace",
+          "url": "https://github.com/mempalace/mempalace"
+        },
+        {
+          "label": "Mem0",
+          "url": "https://github.com/mem0ai/mem0"
+        },
+        {
+          "label": "Supermemory",
+          "url": "https://github.com/supermemoryai/supermemory"
+        },
+        {
+          "label": "Zep",
+          "url": "https://github.com/getzep"
+        },
+        {
+          "label": "Hindsight",
+          "url": "https://github.com/vectorize-io/hindsight"
+        },
+        {
+          "label": "Mastra",
+          "url": "https://github.com/mastra-ai/mastra"
+        },
+        {
+          "label": "@neuro_channel",
+          "url": "https://t.me/+oq3pqEBuZcVjMTNi"
+        },
+        {
+          "label": "VK",
+          "url": "https://tprg.ru/0zr5"
+        },
+        {
+          "label": "Max",
+          "url": "https://tprg.ru/bfu0"
+        }
+      ],
+      "createdAt": "2026-05-10T17:19:33.371Z",
+      "expiresAt": "2026-05-11T17:19:33.371Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T17:19:33.371Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "education",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T17:19:33.371Z"
+      }
+    },
+    {
+      "id": 3179332304,
+      "postUrl": "https://t.me/yurasumy/27823?single",
+      "source": {
+        "title": "Мир сегодня с \"Юрий Подоляка\"",
+        "handle": "yurasumy",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/AdHtTgWIua56bZDy2N2DQd44m9pJdrG0FbPO0jwWvjISpV7TljDIu9X-YsMMhzyo-QpSV4Ip48IGh_kmMFDObEABq62cFLx5EeWxgG9rrbGqHbyuA2CBNgkaFD0WfXXtIr7PoPHcVhDaftKviuaEDrgoO4EFSpdFcs2d8nQoiu3nMIBhmXROxSCZjJOtI9b8nERDkhPai_mlUPi30JvXzTwpHvPPrYLBDN2W_n8iYeAXp_Qgraw_RoOTtjyf2uERxYBQMeEjmpVMAKQYQc2PlyztJMP7E93_ZV1v9A9p5gORX6jqLWZAJmT60DRjMY2Eo-S7yO2RJJNMGcOPT4b-5g.jpg"
+      },
+      "sourceId": "ru:yurasumy",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Об «исторической памяти»: или почему нам надо защищать свою историю...\n\nСегодня,  многие спрашивают зачем надо защищать свою историю? Ведь она уже написана и ее изменить невозможно. А потому не так и важно каждый год проводить парад и всем напоминать (и в первую очередь себе самим) о подвиге наших дедов-прадедов, который они совершили более 80 лет назад. \n\nВ том то и дело, что сегодня фальсифицировать можно БУКВАЛЬНО ВСЕ!!! Причем прямо на глазах публики. И для этого только надо контролировать информационный поток и не давать в нем некоторое время появляться «альтернативной» (вернее НАСТОЯЩЕЙ) истории.\n\nПричем, фальсифицируют явно, несмотря на наличие огромного количества доказательств в прямом информационном доступе. Да, что там доступе – живые свидетели и те еще есть. И их можно обо всем расспросить. Но не расспрашивают… \n\nОдин из наглядных примеров, внесенный в список «Чудес света» и всемирное наследие ЮНЕСКО (с 1986 года) знаменитый Стоунжендж в Великобритании. Который, большинство из Вас (даже те, кто считает себя знатоком истории, и я уже молчу о молодом поколении) считает древнейшим памятником с многотысячелетней историей. Между тем документально подтверждено, что его строительство было начато в 1953, а закончено в 1958 году. То есть всего 68 лет назад. А уже через 28 лет (когда многие из его строителей были еще живы и даже не ушли на пенсию), этот бетонный набор «камней» постройки второй половины ХХ века, был объявлен многотысячелетним «достоянием человечества»:\n\nПредлагаю Вашему вниманию фильм Юрия Елхова «Афера. Стоунхендж».\n\nИ, повторю, это было сделано (сфальсифицировано) в эпоху, когда большинство людей читало книги и старалось мыслить логически. И когда в мире было, как минимум два разных политических мнения. Представляете, что можно сделать с нашей Великой Победой, если дать вот таким фальсификаторам всего 10 лет. Кстати, это тоже уже можно увидеть на примере Украины… \n\nПодписывайтесь на мой канал в МАКС...",
+      "links": [
+        {
+          "label": "Подписывайтесь на мой канал в МАКС...",
+          "url": "https://max.ru/yurasumy"
+        }
+      ],
+      "createdAt": "2026-05-10T14:04:40.616Z",
+      "expiresAt": "2026-05-11T14:04:40.616Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T14:04:40.616Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T14:04:40.616Z"
+      }
+    },
+    {
+      "id": 323085382,
+      "postUrl": "https://t.me/tproger/14485?single",
+      "source": {
+        "title": "Типичный программист",
+        "handle": "tproger",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Zx8tJkxPFkFYXjfeo7q6JiQ0ikqPWsECfvzlXTMpr4EeHzdZvbHNk0njKN1NdOB8Tag6eEPU6VIXz6GBJ5CvhWeGcWHCiU-XyS05E6XREoVIy8IoQ0qNbreSt263cI39lAgzOU6b1f4PSkb2ZnexyuwTdj0vpM8bC5DA4V0pRLbBH1foZNeHaAYjxbkPAA8qAkEvo057R5oHgLL1a0G327napF2iBQsjhzfuOqlYq-6AM6Pe4ycHMdPKQX6lCU-cbwqYdzdcSapAg8c0WBSzX4aMQPrsKP8rlGMAx2ECE7TwUUtwP1fGlyLTrHJL07T1fE-EhqMGGWpuXhPmGJoeuA.jpg"
+      },
+      "sourceId": "ru:tproger",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WDOJaqeHYRiOWT4CkJkDxXMNUIuVnARmQWpKyP67V9WLi7QJ1UyAjYZRloRVN-dkt272aqa1ekxEmn5usatqBEx43OIqtaEB6gmVthcljG9FBeN1YeaoEAqIOWXm_Y3oZpE2j29M2Hjks5La9t8GV2yikLnskxdFqwmLBkfenq3mCdwT9Nv-Xv717d0QOIo3MYNA2QTPHaBEsE29jLmF-GK91dnZ879FwwuJarCG91j2ORO3-Nbm_cDZekYq7lHyQQu-WwmdFFIx8PxXrSHo399kyTKKcwD0_zjEpR6-uV5Uc3AMO5ANLEXh3rkWZcItuiHfQpAJxk1k6rXhSgAEcg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "fff — самый быстрый поиск файлов для ИИ-агентов, Neovim, Rust и Node.js\n\nПоиск файлов звучит как нерешённая задача уровня «найди папку Downloads». Но у кодинг-агентов это один из самых проблемных примитивов: прежде чем что-то изменить в репозитории, агент должен найти нужный файл — и чем хуже работает этот шаг, тем больше ошибок дальше по цепочке.\n\nfff решает именно это: нативные привязки для Rust, C и Node.js, готовая интеграция с Neovim и отдельная оптимизация под сценарии ИИ-агентов. Авторы позиционируют его как самый быстрый и точный файловый поиск — и почти 6 тысяч звёзд на GitHub говорят, что в это охотно верят.\n\nКак устроен тулкит — в репозитории на GitHub.\n\n@tproger\nЧитайте также в VK, Max и Дзен",
+      "links": [
+        {
+          "label": "в репозитории на GitHub",
+          "url": "https://github.com/dmtrKovalenko/fff.nvim"
+        },
+        {
+          "label": "@tproger",
+          "url": "https://t.me/+QGYQ7Cs9ttcwNDc6"
+        },
+        {
+          "label": "VK",
+          "url": "https://tprg.ru/vnl9"
+        },
+        {
+          "label": "Max",
+          "url": "https://tprg.ru/1Z3N"
+        },
+        {
+          "label": "Дзен",
+          "url": "https://tprg.ru/RWQM"
+        }
+      ],
+      "createdAt": "2026-05-10T14:04:03.757Z",
+      "expiresAt": "2026-05-11T14:04:03.757Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-10T17:19:33.371Z",
+      "tag": "technology",
+      "tags": [
+        "technology",
+        "education",
+        "startups",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-10T14:04:03.757Z"
+      }
+    },
+    {
       "id": 3358030417,
       "postUrl": "https://t.me/yurasumy/27822?single",
       "source": {
         "title": "Мир сегодня с \"Юрий Подоляка\"",
         "handle": "yurasumy",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/SyVV9Ca1ZvxlrcvShQ3f_oKQ9GPYVRPrqdpwDLP5swUl6HtU_8eGJ95xSq_Rp7DunFpbPBVs6dtrGp4SQPpN08HwmLvGKSVPET2TXcpwUrwfpNk41YEiRoJgXJ6ihjZ9RPcUjAPGKTZTCKV25YqbQLWVLaFpWrIzuGSZWWT__LHZUK_XcwjiYHM9-BTBa8Lx9WTMRL-Hqlx3_NEjpkdwc4LmJK6tMrU1J61A7mDTCVuJgAJWRyDwAroGqr5KhONjA_5b2PJiVqldfvBMMzoTp102cvwjZzMIH1vKVePNv9VmDpgNpIUSmvYAoGPhmaRGXbYzl49uNsMcleVH9O5SwA.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/AdHtTgWIua56bZDy2N2DQd44m9pJdrG0FbPO0jwWvjISpV7TljDIu9X-YsMMhzyo-QpSV4Ip48IGh_kmMFDObEABq62cFLx5EeWxgG9rrbGqHbyuA2CBNgkaFD0WfXXtIr7PoPHcVhDaftKviuaEDrgoO4EFSpdFcs2d8nQoiu3nMIBhmXROxSCZjJOtI9b8nERDkhPai_mlUPi30JvXzTwpHvPPrYLBDN2W_n8iYeAXp_Qgraw_RoOTtjyf2uERxYBQMeEjmpVMAKQYQc2PlyztJMP7E93_ZV1v9A9p5gORX6jqLWZAJmT60DRjMY2Eo-S7yO2RJJNMGcOPT4b-5g.jpg"
       },
       "sourceId": "ru:yurasumy",
       "sourceCountryCode": "ru",
@@ -394,7 +599,7 @@
       "createdAt": "2026-05-10T09:54:48.088Z",
       "expiresAt": "2026-05-11T09:54:48.088Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:54:48.088Z",
+      "mediaRefreshedAt": "2026-05-10T17:19:33.371Z",
       "tag": "technology",
       "tags": [
         "technology",
@@ -418,384 +623,71 @@
         "reason": null,
         "reviewedAt": "2026-05-10T09:54:48.088Z"
       }
-    },
-    {
-      "id": 3423574554,
-      "postUrl": "https://t.me/yurasumy/27821?single",
-      "source": {
-        "title": "Мир сегодня с \"Юрий Подоляка\"",
-        "handle": "yurasumy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/SyVV9Ca1ZvxlrcvShQ3f_oKQ9GPYVRPrqdpwDLP5swUl6HtU_8eGJ95xSq_Rp7DunFpbPBVs6dtrGp4SQPpN08HwmLvGKSVPET2TXcpwUrwfpNk41YEiRoJgXJ6ihjZ9RPcUjAPGKTZTCKV25YqbQLWVLaFpWrIzuGSZWWT__LHZUK_XcwjiYHM9-BTBa8Lx9WTMRL-Hqlx3_NEjpkdwc4LmJK6tMrU1J61A7mDTCVuJgAJWRyDwAroGqr5KhONjA_5b2PJiVqldfvBMMzoTp102cvwjZzMIH1vKVePNv9VmDpgNpIUSmvYAoGPhmaRGXbYzl49uNsMcleVH9O5SwA.jpg"
-      },
-      "sourceId": "ru:yurasumy",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/T9CLecIdQq9cdDeH8pzN07limBiuANE8vpg0aHFpPEAIpOuDrTiOCwSIZc01vhD7XEIEpE9Pt5m33d0j_neUC3rTRH7xiCPFeE_mmZv8fp8Xe0TYeMRWo-O3iXRJtVX4t2-JaQdcBZU9iP59ECcKyanPiVG4qKiAH25YPejz_KxLoqN--IFqo9UdLbqWKmg6aREEdCXSZbqCp19mgsQpL5REYiQd1Ijzsr-bSaINQogQk3F1p6nlRmDKqefwu8hVJ2iBLLimXBCAP7GL4nVU7cQeTMhptc4cT-YpJANfEN353eRvcQyjdz0WHSIFgEOfPOE1MecCi-_5yncJR2_6Zg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Управление экономикой - один из залогов Победы в Великой Отечественной Войне.\n\n1941 год - из-за вторжения Германии и потери огромных территорий, бюджет закрылся с дефицитом в 14,4 миллиарда рублей. Были введены новые налоги, выдачу вкладов в сберкассах ограничили лимитом в 200 рублей в месяц.\n\n1942 год - бюджет закрылся с дефицитом в 17,8 миллиарда рублей. временные надбавки заменили единым сбором — военным налогом, который дифференцировался в зависимости от дохода и категории граждан и затрагивал всех, кто не участвовал непосредственно в боевых действиях. Чтобы держать ситуацию с ценами под контролем, была введена карточная система.\n\n1943 год - перелом в войне и сокращение дефицита до 5,6 миллиардов. На полную мощность заработали эвакуированные заводы, СССР начал отбивать территории.\n\n1944 год - победа профицита, 4,8 миллиарда рублей. Бюджет помимо военных нужд начал обращать внимание и на социальные - была повышена госпомощь беременным, многодетным и одиноким матерям, тогда же появилось почетное звание «Мать-героиня». Траты на народное хозяйство и на социально-культурные мероприятия подскочили в полтора раза и в сумме составили более 100 млрд рублей.\n\n1945 год - профицит 3,4 миллиарда рублей. За годы войны, объемы бюджета выросли в 1,5 раза. Расходы бюджета 1945 года на народное хозяйство выросли в полтора раза до 74,5 млрд рублей. А военные траты впервые за годы войны снизились, хоть и незначительно — до 128,2 млрд рублей.\n\nПолноценная денежная реформа была проведена лишь через полтора года, в конце 1947-го: тогда деньги были в десять раз деноминированы, но карточная система отменялась.",
-      "links": [],
-      "createdAt": "2026-05-09T16:08:59.110Z",
-      "expiresAt": "2026-05-10T16:08:59.110Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:55:25.107Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T16:08:59.110Z"
-      }
-    },
-    {
-      "id": 3563584947,
-      "postUrl": "https://t.me/yurasumy/27820?single",
-      "source": {
-        "title": "Мир сегодня с \"Юрий Подоляка\"",
-        "handle": "yurasumy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/SyVV9Ca1ZvxlrcvShQ3f_oKQ9GPYVRPrqdpwDLP5swUl6HtU_8eGJ95xSq_Rp7DunFpbPBVs6dtrGp4SQPpN08HwmLvGKSVPET2TXcpwUrwfpNk41YEiRoJgXJ6ihjZ9RPcUjAPGKTZTCKV25YqbQLWVLaFpWrIzuGSZWWT__LHZUK_XcwjiYHM9-BTBa8Lx9WTMRL-Hqlx3_NEjpkdwc4LmJK6tMrU1J61A7mDTCVuJgAJWRyDwAroGqr5KhONjA_5b2PJiVqldfvBMMzoTp102cvwjZzMIH1vKVePNv9VmDpgNpIUSmvYAoGPhmaRGXbYzl49uNsMcleVH9O5SwA.jpg"
-      },
-      "sourceId": "ru:yurasumy",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "​​Дезинтеграция британской политической системы. Итогом местных выборов стало резкое укрепление всех несистемных партий, которые стремительно отъедают электорат у лейбористов и консерваторов. Найджел Фарадж получил под полторы тысячи мест муниципальных депутатов.\n\nБолее 500 позиций взяли зелёные, двигающие антиизраильскую и антитрамповскую повестку. Вновь выстрелили и независимые пропалестинские кандидаты, идущие на исламистской платформе. Очень показательный результат образовался в Бирмингеме - втором по населению городе Британии, который не так давно объявил о банкротстве.\n\nЛейбористы потеряли контроль над Бирмингемом, местный совет теперь поделён на воюющие фракции правых из партии Фараджа и ультралевых вкупе с исламистами. На родине лейбористов - в Уэльсе - они впервые в истории потеряли контроль над местным парламентом. Им сейчас придётся войти в коалиции с уэльскими националистами на правах младших партнёров.\n\nНа фоне электорального разгрома активизировалось левое крыло лейбористов, которое требует от Стармера представить дорожную карту своей отставки. Уже в ближайшие месяцы его могут выкинуть с Даунинг-Стрит. Хоть смена коней на переправе вряд ли поможет рейтингам лейбористов.\n\nБританская политика стремительно фрагментируется. Проявляется и полнейшая балканизация - правые и крайне левые усиливаются, мусульманская улица всё больше о себе заявляет, а вот центристы проседают. Выборы 2024 года добили консерваторов. Сейчас происходит коллапс лейбористской партии. Системный кризис, в котором нынче завязла Британия, разваливает старый политический класс страны, который вперёд ногами выносят на выборах.",
-      "links": [
-        {
-          "label": "​​",
-          "url": "https://telegraph.controller.bot/files/1043487974/AgACAgIAAxkBAAEDVXJp_sn1xcjjPhfm2iy1jO76SSOC2wACiRJrG_eD-UuYB6p3LG3PFAEAAwIAA3kAAzsE"
-        },
-        {
-          "label": "не так давно объявил о банкротстве",
-          "url": "https://t.me/malekdudakov/6691"
-        },
-        {
-          "label": "выкинуть",
-          "url": "https://www.dailymail.com/news/article-15803071/Sir-Keir-Starmer-MPs-resignation-Labour-local-elections.html"
-        }
-      ],
-      "createdAt": "2026-05-09T16:08:59.110Z",
-      "expiresAt": "2026-05-10T16:08:59.110Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T16:08:59.110Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T16:08:59.110Z"
-      }
-    },
-    {
-      "id": 1071495567,
-      "postUrl": "https://t.me/yurasumy/27819?single",
-      "source": {
-        "title": "Мир сегодня с \"Юрий Подоляка\"",
-        "handle": "yurasumy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/SyVV9Ca1ZvxlrcvShQ3f_oKQ9GPYVRPrqdpwDLP5swUl6HtU_8eGJ95xSq_Rp7DunFpbPBVs6dtrGp4SQPpN08HwmLvGKSVPET2TXcpwUrwfpNk41YEiRoJgXJ6ihjZ9RPcUjAPGKTZTCKV25YqbQLWVLaFpWrIzuGSZWWT__LHZUK_XcwjiYHM9-BTBa8Lx9WTMRL-Hqlx3_NEjpkdwc4LmJK6tMrU1J61A7mDTCVuJgAJWRyDwAroGqr5KhONjA_5b2PJiVqldfvBMMzoTp102cvwjZzMIH1vKVePNv9VmDpgNpIUSmvYAoGPhmaRGXbYzl49uNsMcleVH9O5SwA.jpg"
-      },
-      "sourceId": "ru:yurasumy",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/fvo4DhgJaXHH_fMwVJFHxcOzM4vSSNd-98ODnSs55atIou_fgOpbHTCxVtytJAE_0Xm7QEBVz2XUAVukfEx_LWmPoljzXSiuid0IgHMSLmzyrkM9CtW7ZkjPWVxtNlrB0zVs0JlZj7YFtqcj8XNvUitB0B_vJkdcGR0LS4tyF2-jKvDnw6oGHNS5csdqhGPWCodCXDNyYAGggkkcU6DI4ZjE9GMCtXuO6hGNUOqyNvY9uymAr0ApxHba0xC2Rus_wT7ktZwCNLOykw0NuapbK6SMhVNpYVdnPdE6d07NniBed7zmUxyoN84vW27UU_HPKCicgsNWZrl9elISMrtx4w.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Парад в Москве - триумф России и траур украинских инфопомоек...\n\nГлядя на парад в Москве и в других городах России, все украинские инфопомойки (дружно) как воды в рот набрали. Хотя явное скрежетание их зубов я и через провода Интернета слышу. \n\nРазительный контраст вчерашним их ожиданиям. Они явно ожидали сегодня своего триумфа и нашего полного информационного поражения. \n\nА получилось все с точностью до наоборот. Отсюда и реакция. \n\nСильный информационный эффект получился. Абсолютно было правильное решение Верховного самому лично присутствовать на параде все время его проведения. \n\nПричем он там был бы даже если бы Зеленский в последний момент не струхнул и не пообещал бы Москву не атаковать. Насколько я знаю, все были готовы к любому развитию ситуации. И Верховный тоже.\n\nПодписывайтесь на мой канал в МАКС...",
-      "links": [
-        {
-          "label": "Подписывайтесь на мой канал в МАКС...",
-          "url": "https://max.ru/yurasumy"
-        }
-      ],
-      "createdAt": "2026-05-09T16:08:59.110Z",
-      "expiresAt": "2026-05-10T16:08:59.110Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:55:25.107Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T16:08:59.110Z"
-      }
-    },
-    {
-      "id": 361316251,
-      "postUrl": "https://t.me/yurasumy/27815?single",
-      "source": {
-        "title": "Мир сегодня с \"Юрий Подоляка\"",
-        "handle": "yurasumy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/SyVV9Ca1ZvxlrcvShQ3f_oKQ9GPYVRPrqdpwDLP5swUl6HtU_8eGJ95xSq_Rp7DunFpbPBVs6dtrGp4SQPpN08HwmLvGKSVPET2TXcpwUrwfpNk41YEiRoJgXJ6ihjZ9RPcUjAPGKTZTCKV25YqbQLWVLaFpWrIzuGSZWWT__LHZUK_XcwjiYHM9-BTBa8Lx9WTMRL-Hqlx3_NEjpkdwc4LmJK6tMrU1J61A7mDTCVuJgAJWRyDwAroGqr5KhONjA_5b2PJiVqldfvBMMzoTp102cvwjZzMIH1vKVePNv9VmDpgNpIUSmvYAoGPhmaRGXbYzl49uNsMcleVH9O5SwA.jpg"
-      },
-      "sourceId": "ru:yurasumy",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/cb2a0e4034.mp4?token=V5cGcdH9zqKHB7wzmoHZte66yNbEQIvlaGiAG_14f8IQx4GUGAyjVccn_b5Dr2AwGo32Ch6KKb_l_IDzLZRpf9gS0nZ9KAXFDP1ue3ReqhUtLki3vjVWYSE-AirFfVr-jl1GUvU2dyVw2IuYLR7gbdRQ3FkiP53JnkFxtyvhcS5DGQISuNeqaajpNBC2yfaCruWYaL0hwVX-rfBg2ZiAZ7K8Y2-KbAcRulAo2_0-ibYQG76I91UcidioGoQqDj3X8xe9PL6PfwjjlrpZSQKtIOiRuqjjDs1fXPAPolZqLcP9Rhfy_JB0hiLsTHHzUzY9EADYdbGqyDnUDLwfw8VRwIi-rc8JTn60jg3WQw8tSra5FJxajnlRbgTcvWPed9A7hoA88mFEYCu96vjiXAEZIAWkQueE-1qfgrnZIiKZoOLSGAUdxqESUh_wv6CWr27chfsCsgVoKSxYSAmHOwd9qM7iqlPdgl1WkxUyV4FV1b61Q8iTvryYmw13wykAZmAL84M8Ol7JirvcyAAKeOKp5D_ZEhqwoY_cuXrmIQkPFgzhCGz6UMwuTUnj_s4PDZe4dZ6NOvNp-dJRftmQqnzb8PDbBsTnn49KDphInnbCV3xZTrl6vLoFMz2QYxq3AZWfks8FtguR1kxPhFOt7Z_JSDXnBAlnUdZaDVx7DBCB7MQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Мощные и красивые кадры – в нескольких городах России уже прошли парады в честь Дня Победы. \n\nНа видео – Новосибирск, Владивосток, Кемерово и Улан-Удэ. \n\nСегодня также пройдет торжественный парад на Красной площади в Москве, он стартует в 10 утра. Прямую трансляцию смотрите в нашем канале. \n\n🔹 Подписаться на РИА Новости",
-      "links": [
-        {
-          "label": "Подписаться на РИА Новости",
-          "url": "https://t.me/rian_ru"
-        }
-      ],
-      "createdAt": "2026-05-09T16:08:59.110Z",
-      "expiresAt": "2026-05-10T16:08:59.110Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:55:25.107Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T16:08:59.110Z"
-      }
-    },
-    {
-      "id": 4100790562,
-      "postUrl": "https://t.me/yurasumy/27814?single",
-      "source": {
-        "title": "Мир сегодня с \"Юрий Подоляка\"",
-        "handle": "yurasumy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/SyVV9Ca1ZvxlrcvShQ3f_oKQ9GPYVRPrqdpwDLP5swUl6HtU_8eGJ95xSq_Rp7DunFpbPBVs6dtrGp4SQPpN08HwmLvGKSVPET2TXcpwUrwfpNk41YEiRoJgXJ6ihjZ9RPcUjAPGKTZTCKV25YqbQLWVLaFpWrIzuGSZWWT__LHZUK_XcwjiYHM9-BTBa8Lx9WTMRL-Hqlx3_NEjpkdwc4LmJK6tMrU1J61A7mDTCVuJgAJWRyDwAroGqr5KhONjA_5b2PJiVqldfvBMMzoTp102cvwjZzMIH1vKVePNv9VmDpgNpIUSmvYAoGPhmaRGXbYzl49uNsMcleVH9O5SwA.jpg"
-      },
-      "sourceId": "ru:yurasumy",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "▶️ В Новосибирске шествие \"Бессмертного полка\" собрало 75 тыс. человек, сообщает правительство региона.\n\nВидео: Наталья Еговкина/ТАСС\n\n✔️ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-09T16:08:59.110Z",
-      "expiresAt": "2026-05-10T16:08:59.110Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T16:08:59.110Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T16:08:59.110Z"
-      }
-    },
-    {
-      "id": 3917703989,
-      "postUrl": "https://t.me/yurasumy/27813?single",
-      "source": {
-        "title": "Мир сегодня с \"Юрий Подоляка\"",
-        "handle": "yurasumy",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/SyVV9Ca1ZvxlrcvShQ3f_oKQ9GPYVRPrqdpwDLP5swUl6HtU_8eGJ95xSq_Rp7DunFpbPBVs6dtrGp4SQPpN08HwmLvGKSVPET2TXcpwUrwfpNk41YEiRoJgXJ6ihjZ9RPcUjAPGKTZTCKV25YqbQLWVLaFpWrIzuGSZWWT__LHZUK_XcwjiYHM9-BTBa8Lx9WTMRL-Hqlx3_NEjpkdwc4LmJK6tMrU1J61A7mDTCVuJgAJWRyDwAroGqr5KhONjA_5b2PJiVqldfvBMMzoTp102cvwjZzMIH1vKVePNv9VmDpgNpIUSmvYAoGPhmaRGXbYzl49uNsMcleVH9O5SwA.jpg"
-      },
-      "sourceId": "ru:yurasumy",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "«ВЗГЛЯД МАКСА» публикует полную запись торжественного Парада Победы на Красной площади в Москве.\n\nСегодня страна отметила 81-ю годовщину Победы в Великой Отечественной войне. Главный парад России прошёл в самом сердце столицы — с участием парадных расчётов, военнослужащих, участников специальной военной операции, гостей из зарубежных государств и руководства страны.\n\nБольшое спасибо всем, кто был с нами во время прямого эфира, следил за трансляцией и прожил эти минуты вместе с нами.\n\nНадеюсь, ваши ожидания были оправданы. Для тех, кто не успел посмотреть прямую трансляцию, публикую полную запись Парада Победы — от первых минут на Красной площади до завершения торжественной части.\n\n🟪Читай в Max | 🚀Читай в Telegram | 🥰Смотри на RUTUBE",
-      "links": [
-        {
-          "label": "Читай в Max",
-          "url": "https://max.ru/makslifeoff"
-        },
-        {
-          "label": "Читай в Telegram",
-          "url": "https://t.me/MaksLifeOff"
-        },
-        {
-          "label": "Смотри на RUTUBE",
-          "url": "https://rutube.ru/channel/23505120/"
-        }
-      ],
-      "createdAt": "2026-05-09T16:08:59.110Z",
-      "expiresAt": "2026-05-10T16:08:59.110Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T16:08:59.110Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_world"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T16:08:59.110Z"
-      }
     }
   ],
   "topSources": [
     {
-      "title": "Мир сегодня с \"Юрий Подоляка\"",
-      "handle": "yurasumy",
-      "count": 7
-    },
-    {
       "title": "Типичный программист",
       "handle": "tproger",
-      "count": 1
+      "count": 3
+    },
+    {
+      "title": "Мир сегодня с \"Юрий Подоляка\"",
+      "handle": "yurasumy",
+      "count": 2
     }
   ],
   "keywords": [
     {
-      "value": "рублей",
-      "count": 8
+      "value": "когда",
+      "count": 7
     },
     {
-      "value": "победы",
+      "value": "память",
+      "count": 6
+    },
+    {
+      "value": "есть",
       "count": 5
     },
     {
-      "value": "россии",
+      "value": "поиск",
       "count": 5
     },
     {
-      "value": "были",
+      "value": "даже",
       "count": 4
     },
     {
-      "value": "лейбористов",
+      "value": "памяти",
       "count": 4
     },
     {
-      "value": "миллиарда",
-      "count": 4
-    },
-    {
-      "value": "москве",
-      "count": 4
-    },
-    {
-      "value": "парад",
-      "count": 4
-    },
-    {
-      "value": "была",
+      "value": "github",
       "count": 3
     },
     {
-      "value": "бюджет",
+      "value": "longmemeval",
       "count": 3
     },
     {
-      "value": "видео",
+      "value": "open-source",
       "count": 3
     },
     {
-      "value": "войне",
+      "value": "было",
       "count": 3
     },
     {
-      "value": "года",
+      "value": "граф",
+      "count": 3
+    },
+    {
+      "value": "знаний",
+      "count": 3
+    },
+    {
+      "value": "каждый",
       "count": 3
     },
     {
@@ -803,19 +695,19 @@
       "count": 3
     },
     {
-      "value": "красной",
+      "value": "надо",
       "count": 3
     },
     {
-      "value": "млрд",
+      "value": "проект",
       "count": 3
     },
     {
-      "value": "площади",
+      "value": "себя",
       "count": 3
     },
     {
-      "value": "полную",
+      "value": "считает",
       "count": 3
     }
   ]
