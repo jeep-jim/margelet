@@ -1,6 +1,98 @@
 {
-  "updatedAt": "2026-05-10T09:57:34.026Z",
+  "updatedAt": "2026-05-10T14:07:15.639Z",
   "posts": [
+    {
+      "id": 3202330036,
+      "postUrl": "https://t.me/rian_ru/338340?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "От Вашингтона до Токио: тысячи людей по всему миру прошли в колоннах \"Бессмертного полка\".\n\n🔹 Подписаться на РИА Новости",
+      "links": [
+        {
+          "label": "Подписаться на РИА Новости",
+          "url": "https://t.me/rian_ru"
+        }
+      ],
+      "createdAt": "2026-05-09T16:08:40.353Z",
+      "expiresAt": "2026-05-10T16:08:40.353Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T16:08:40.353Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T16:08:40.353Z"
+      }
+    },
+    {
+      "id": 3803013573,
+      "postUrl": "https://t.me/tass_agency/375226?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Главное из заявлений Путина о странах Запада:\n\n▪️Чем сильнее будет Россия, тем быстрее будут сходить на нет попытки принизить вклад СССР в победу над нацизмом;\n\n▪️Путин назвал переписывание в Европе истории Второй мировой войны глупостью, которая может довести до нищеты;\n\n▪️Запад рассчитывал на крах России в течение шести месяцев в 2022 году;\n\n▪️На Западе рассчитывали \"что-то оттяпать\" у России;\n\n▪️Финляндия присоединилась к НАТО в надежде что-то получить от России в случае ее развала;\n\n▪️Путин заявил, что из культурных соображений воздержится от определенных жестов в ответ на попытки Финляндии что-то оттяпать у России;\n\n▪️Путин выразил уверенность, что Россия восстановит отношения со многими западными странами.\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-09T21:29:42.960Z",
+      "expiresAt": "2026-05-10T21:29:42.960Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T21:29:42.960Z"
+      }
+    },
     {
       "id": 3101541312,
       "postUrl": "https://t.me/rian_ru/338339?single",
@@ -52,55 +144,8 @@
       }
     },
     {
-      "id": 2343549046,
-      "postUrl": "https://t.me/rbc_news/148931?single",
-      "source": {
-        "title": "РБК. Новости. Главное",
-        "handle": "rbc_news",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LThGaFqFVoHFAUXOvjajvzEbMU46ogWK4T0ZF1sE3Z1qhayC5hoqDVHxhWcPVQz1rOLaQ4VzYeWmPBRvmQW9vmiMJXZPnq8iQhBlMHlmFCjsBOjvSkXteez-Jj3lqIszJYOKKO4lihpFyxs5HPboAGy-C8nfPHGnb3UxHTs0E8e_crGZ-RTHuDL1SuUb9zUI47lIiS43YR0ghJvn9TAw1nVWh1U8qT8A8peTJsnlqBW8G03IzeGB_Q8hnE2OoZHq9YRok8ecetMU1CXMzGz7Q5uEmTxPEdFbYZVdMygMwEN9rk6alGwIj3oI_NoKCCF1KYrv-JtxQkPBlagO0EphXw.jpg"
-      },
-      "sourceId": "ru:rbc_news",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "◻️◻️◻️ Формирующийся многополярный мир должен опираться на нормы устава ООН и учитывать права народов планеты самим определять свою судьбу, заявил Владимир Путин на торжественном приеме для глав делегаций иностранных государств. \n\n«Убежден, формирующаяся сегодня более справедливая многополярная архитектура должна опираться на нормы устава Организации Объединенных Наций во всей их совокупности и полноте, исходить из принципа равной и неделимой безопасности, учитывать культурно-цивилизационное разнообразие народов планеты и их право самими определять свою судьбу, следовать традициям и заветам своих предков»\n\n🐚 Если у вас не загружается видео, его можно посмотреть в «Максе».",
-      "links": [
-        {
-          "label": "Максе",
-          "url": "https://max.ru/rbc"
-        }
-      ],
-      "createdAt": "2026-05-09T13:52:16.196Z",
-      "expiresAt": "2026-05-10T13:52:16.196Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T13:52:16.196Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "economy"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T13:52:16.196Z"
-      }
-    },
-    {
-      "id": 843855531,
-      "postUrl": "https://t.me/tass_agency/375220?single",
+      "id": 3017584398,
+      "postUrl": "https://t.me/tass_agency/375225?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -109,18 +154,17 @@
       },
       "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Главное из заявлений Путина о конфликте на Украине:\n\n▪️Путин считает, что дело идет к завершению украинского конфликта;\n\n▪️События на Украине начались после попыток ассоциации Киева с ЕС;\n\n▪️Путин заявил, что не предлагает, но и не отказывается от встречи с Зеленским;\n\n▪️Президент РФ готов встретиться с Зеленским не только в Москве, но и в третьей стране, но только уже для подписания договора;\n\n▪️США искренне стремятся к урегулированию, но это прежде всего дело России и Украины;\n\n▪️С Россией руками украинцев воюет \"глобалистское направление западных элит\";\n\n▪️Политики на Западе всех обманывали, начиная с обещания не расширять НАТО на восток, это все вкупе спровоцировало конфликт на Украине;\n\n▪️Путин рассказал, как Макрон в 2022 году говорил ему, что Киев не должен подписывать мирный договор \"с пистолетом у виска\";\n\n▪️Европа играет на повышение в украинском конфликте, но понимает, что \"эта игра может дорого стоить\";\n\n▪️Европа помогает Украине с технологиями, частично собирает у себя эту технику, прокомментировал Путин удары украинских БПЛА по РФ;\n\n▪️России нужно сделать так, чтобы ей никто не угрожал, заявил Путин о глубине \"зоны безопасности\".\n\nВидео: ТАСС/Ruptly\n\n✔ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+      "links": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/WGQN4wqgg0VZ4DKUxZThp2_lk-at8K6cAo40tpQO8TGgRK4mo2XjvuLekSPWdL2ihb5_Ggl4OgSxZD2Z6UJ_o6TvhLyoYb5E3W5CRoWhyWOy2RP8RknIFrLHwb9Ymkl7hLHxO9YXyz8JGLsnSug3MvlAEUAzrNQecU9XrBBiYuPICCJSOmkiexVSjOIKQrLSYZJBL4r6y3XCJ3aFGjwpSVbqQUui_DIljDnmBOV10zF81R5Fym61YCtrM6eckrQ6qC0sFthHpqGgFO71smJ6iCHWCuXgqbtfOuCVAUsRXeO6rgdSonRiOkQzlhM8NItjVkeIartxu5b3f2jaq0AJvQ.jpg"
+          "label": "Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Взаимодействие России и Китая является важнейшим фактором в стабилизации международных отношений, заявил Путин.",
-      "links": [],
       "createdAt": "2026-05-09T21:29:42.960Z",
       "expiresAt": "2026-05-10T21:29:42.960Z",
       "ttlHours": 24,
@@ -143,52 +187,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T21:29:42.960Z"
-      }
-    },
-    {
-      "id": 3881307016,
-      "postUrl": "https://t.me/readovkanews/110166?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Cs7Zcwc87cT8Ukd0hkckhiYHioqjwSIQpqh3YMhwCvctrY1-agVV2kNDEa9aR61Th0iVT0lgmIyf_LB1C0HcEmrqSYIKZnuW_qYy-s8mPRvpLQ4Tmsvx0qOhjH-fWNkaKLyRACOuBZFCaDTR2-JH93-3yL3dCIXIF9nkNsE-kacpU5oL5oMPDWYmeuMfL6qArrMVR5x0n8zjwfQ6XssSz33kX84W0g3aL7b7yY2hKafYaRUY5aY8ztrpBXMwXYrChe4R-_tv3UQ6xhncfdOr4AC6t7T9w0XRNDMUasExtELTU_e8kZ_nU13TSAXG7xVu6fdGrwuJGUJA9nN-BSSHfw.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️Парад Победы завершен\n\nИсполняется «Прощание славянки». Оркестр покидает Красную площадь.\n\nВладимир Путин пообщался с ветеранами и также покинул Красную площадь.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-09T10:36:49.801Z",
-      "expiresAt": "2026-05-10T10:36:49.801Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T10:36:49.801Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T10:36:49.801Z"
       }
     },
     {
@@ -253,67 +251,8 @@
       }
     },
     {
-      "id": 1732959695,
-      "postUrl": "https://t.me/rbc_news/148930?single",
-      "source": {
-        "title": "РБК. Новости. Главное",
-        "handle": "rbc_news",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LThGaFqFVoHFAUXOvjajvzEbMU46ogWK4T0ZF1sE3Z1qhayC5hoqDVHxhWcPVQz1rOLaQ4VzYeWmPBRvmQW9vmiMJXZPnq8iQhBlMHlmFCjsBOjvSkXteez-Jj3lqIszJYOKKO4lihpFyxs5HPboAGy-C8nfPHGnb3UxHTs0E8e_crGZ-RTHuDL1SuUb9zUI47lIiS43YR0ghJvn9TAw1nVWh1U8qT8A8peTJsnlqBW8G03IzeGB_Q8hnE2OoZHq9YRok8ecetMU1CXMzGz7Q5uEmTxPEdFbYZVdMygMwEN9rk6alGwIj3oI_NoKCCF1KYrv-JtxQkPBlagO0EphXw.jpg"
-      },
-      "sourceId": "ru:rbc_news",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Владимир Путин проводит в Кремле торжественный прием для глав делегаций иностранных государств и почетных гостей, которые прибыли в Москву на мероприятия, посвященные  81-й годовщине победы в Великой Отечественной войне.\n\nСмотрите трансляцию торжественного приема. \n\n▪️Канал РБК в «Максе»\n▪️Приложение РБК для iOS и Android",
-      "links": [
-        {
-          "label": "трансляцию",
-          "url": "https://www.rbc.ru/politics/09/05/2026/69feeea39a79470647748c58?from=short_news"
-        },
-        {
-          "label": "Максе",
-          "url": "https://max.ru/rbc"
-        },
-        {
-          "label": "iOS",
-          "url": "https://249860.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=245880726195607142&amp;amp;referrer=reattribution%3D1"
-        },
-        {
-          "label": "Android",
-          "url": "https://313810.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=894399083073073441&amp;amp;referrer=reattribution%3D1"
-        }
-      ],
-      "createdAt": "2026-05-09T13:52:16.196Z",
-      "expiresAt": "2026-05-10T13:52:16.196Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T13:52:16.196Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "economy"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T13:52:16.196Z"
-      }
-    },
-    {
-      "id": 595100951,
-      "postUrl": "https://t.me/tass_agency/375219?single",
+      "id": 3911129031,
+      "postUrl": "https://t.me/tass_agency/375224?single",
       "source": {
         "title": "ТАСС",
         "handle": "tass_agency",
@@ -326,8 +265,13 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "❗️России нужно сделать так, чтобы ей никто не угрожал, прокомментировал Путин глубину \"зоны безопасности\".",
-      "links": [],
+      "text": "Главное из заявлений Путина о параде Победы:\n\n▪️Минобороны пока не докладывало о каких-либо провокациях на День Победы;\n\n▪️Путин заявил, что после встреч по случаю 9 Мая получит и доклад от Минобороны по обстановке;\n\n▪️Техники на параде Победы не было не только по соображениям безопасности, но и чтобы сосредоточить внимание на СВО;\n\n▪️Путин напомнил, что в случае попыток срыва празднования 9 Мая Россия нанесла бы ответные удары по центру Киева;\n\n▪️Россия обсуждала с КНР, Индией, США и другими странами последствия возможных атак Киева на 9 Мая и ответных ударов РФ;\n\n▪️Иностранные лидеры, приехавшие на 9 Мая в Москву, проявили определенное мужество.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
       "createdAt": "2026-05-09T21:29:42.960Z",
       "expiresAt": "2026-05-10T21:29:42.960Z",
       "ttlHours": 24,
@@ -350,60 +294,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T21:29:42.960Z"
-      }
-    },
-    {
-      "id": 907624459,
-      "postUrl": "https://t.me/readovkanews/110165?single",
-      "source": {
-        "title": "Readovka",
-        "handle": "readovkanews",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/Cs7Zcwc87cT8Ukd0hkckhiYHioqjwSIQpqh3YMhwCvctrY1-agVV2kNDEa9aR61Th0iVT0lgmIyf_LB1C0HcEmrqSYIKZnuW_qYy-s8mPRvpLQ4Tmsvx0qOhjH-fWNkaKLyRACOuBZFCaDTR2-JH93-3yL3dCIXIF9nkNsE-kacpU5oL5oMPDWYmeuMfL6qArrMVR5x0n8zjwfQ6XssSz33kX84W0g3aL7b7yY2hKafYaRUY5aY8ztrpBXMwXYrChe4R-_tv3UQ6xhncfdOr4AC6t7T9w0XRNDMUasExtELTU_e8kZ_nU13TSAXG7xVu6fdGrwuJGUJA9nN-BSSHfw.jpg"
-      },
-      "sourceId": "ru:readovkanews",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/ef18eb8ba5.mp4?token=m3KPr_smX7MeaNhJBDVwpaaj6oEHrCLHDifNXPDKmU8HpXL7d5mQftK1IQC4V25yrCgsb--ZdnZYjI-79xu5WYo9I4hyXi9R5AqMKTFQ_ptoScMpb2iN3aWySFAqTBgZIr6LMMPTp71zNLYQEehHriZnkJDqHT3FTL-diHadElAzt907KGBuFVALqEzSjE_6hpzG0kM4mCXqLWtgFc8K7Avi7Gm7g0ZMwSUgnxsRQesJ2DSbpcMIXTY4OJ81c4TDdI0KXmf6w2A9kuMP07-5DzACyVmzZEV1PYADzHpsWfm6wGcgFTM-9ZLsjUxJOJdGRD4UWEwmEQqDifwRXdz7KQV6cFYmgJ91yFboikgWSpB79xesinLbGQdnpdAdEvn5exLSjj1ojPl13Y_l96bwpfIEgXOU0YrywphKRQN7EG7LBmcGAlW_bW9XdXem4TtVRShViNuB8QFeG_37bYlCN30AGhLR_vF79wJP4B28L_q-wiyRAF3kqLToFSB8lhae6PIDiI13--zcjqW1l3W1tNNY3PRZKxZRc80lRlbJrBgz50cPyg7xZmcIJRWXXxWpRC4EWgRZzn7m_cMd8wP3BZCaMh32iYAgVyL2dz0gK0B0QGYxTo2RNkBrX9h5_zqvAZDbvYolSU2ddG8jzolLYQkhFmIAjw4DSLm7GX2hvg0",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "❗️Небо над столицей окрасилось в русский триколор\n\nВ небе боевые самолеты ВКС РФ — группы «Русские витязи» и «Стрижи». Над Москвой пролетают Су-30, МиГ-29. Возглавляет группу полковник Андрей Алексеев.\n\n🎉 Подписывайся на Readovka в МАКС",
-      "links": [
-        {
-          "label": "Подписывайся на Readovka в МАКС",
-          "url": "https://max.ru/readovkanews"
-        }
-      ],
-      "createdAt": "2026-05-09T10:36:49.801Z",
-      "expiresAt": "2026-05-10T10:36:49.801Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T10:36:49.801Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T10:36:49.801Z"
       }
     },
     {
@@ -457,47 +347,35 @@
       }
     },
     {
-      "id": 428967969,
-      "postUrl": "https://t.me/rbc_news/148929?single",
+      "id": 969463336,
+      "postUrl": "https://t.me/tass_agency/375223?single",
       "source": {
-        "title": "РБК. Новости. Главное",
-        "handle": "rbc_news",
+        "title": "ТАСС",
+        "handle": "tass_agency",
         "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/LThGaFqFVoHFAUXOvjajvzEbMU46ogWK4T0ZF1sE3Z1qhayC5hoqDVHxhWcPVQz1rOLaQ4VzYeWmPBRvmQW9vmiMJXZPnq8iQhBlMHlmFCjsBOjvSkXteez-Jj3lqIszJYOKKO4lihpFyxs5HPboAGy-C8nfPHGnb3UxHTs0E8e_crGZ-RTHuDL1SuUb9zUI47lIiS43YR0ghJvn9TAw1nVWh1U8qT8A8peTJsnlqBW8G03IzeGB_Q8hnE2OoZHq9YRok8ecetMU1CXMzGz7Q5uEmTxPEdFbYZVdMygMwEN9rk6alGwIj3oI_NoKCCF1KYrv-JtxQkPBlagO0EphXw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
       },
-      "sourceId": "ru:rbc_news",
+      "sourceId": "ru:tass_agency",
       "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Попыток срыва празднования Дня Победы не было, сообщил журналистам пресс-секретарь президента России Дмитрий Песков.\n\n«Ничего не пытались, все хорошо», — сказал он (цитата по «Интерфаксу»), отвечая на вопрос, пытались ли ВСУ сорвать празднование.\n\nПесков говорил до этого, что на фоне сообщений об угрозах со стороны Украины сорвать парад Победы принимаются дополнительные меры по обеспечению безопасности президента.\n\n▪️Канал РБК в «Максе»\n▪️Приложение РБК для iOS и Android",
-      "links": [
+      "contentType": "image",
+      "media": [
         {
-          "label": "сообщил",
-          "url": "https://www.rbc.ru/politics/09/05/2026/69fee1139a79474299b97f38?from=short_news?utm_source=telegram&amp;amp;utm_medium=messenger&amp;amp;utm_campaign=rbc_news&amp;amp;utm_content=6911b3669a79476edca32bb5%D0%B5"
-        },
-        {
-          "label": "Максе",
-          "url": "https://max.ru/rbc"
-        },
-        {
-          "label": "iOS",
-          "url": "https://249860.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=245880726195607142&amp;amp;referrer=reattribution%3D1"
-        },
-        {
-          "label": "Android",
-          "url": "https://313810.redirect.appmetrica.yandex.com/?appmetrica_tracking_id=894399083073073441&amp;amp;referrer=reattribution%3D1"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/hwQQ8I2xyAnbxyF-nK0sCHZpSHmVQobwUi4_ZKLb7UF2PJWqTbwDv_OSK5gBnzHU9uxY8b1TM3cJUCCTSEE67U81mQtKtZlCi5HuEyHdiHTDwTdM1FXLVJ0RSGgwGDaEDSKDRgs1nN2PT-8F1cs2zKda53XozfSa2GPgZQIyEIhjofmZUDdWVuXXiEvoPPcTsx7-7yWJN32WN6DvGbmrvYAoG0AeXV_ariN_-4Hc-UltJshVc-GqdU6xGj8obENNyyuSrpWjPYTk5kGW79F8lAW73zfS46P0jK7FiFPi_pqUz3FXIvqnIe4KBg01yTuJmm3ZjiVx-ftkg7o2SGc01Q.jpg"
         }
       ],
-      "createdAt": "2026-05-09T13:52:16.196Z",
-      "expiresAt": "2026-05-10T13:52:16.196Z",
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Путин выразил уверенность, что Россия восстановит отношения со многими западными странами.",
+      "links": [],
+      "createdAt": "2026-05-09T21:29:42.960Z",
+      "expiresAt": "2026-05-10T21:29:42.960Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T13:52:16.196Z",
+      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
       "tag": "news",
       "tags": [
-        "news",
-        "economy"
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -512,7 +390,229 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-05-09T13:52:16.196Z"
+        "reviewedAt": "2026-05-09T21:29:42.960Z"
+      }
+    },
+    {
+      "id": 2831762100,
+      "postUrl": "https://t.me/rian_ru/338335?single",
+      "source": {
+        "title": "РИА Новости",
+        "handle": "rian_ru",
+        "verified": true,
+        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
+      },
+      "sourceId": "ru:rian_ru",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/dNH1GmRtb_uuZtacZHUnKcBV2kJet2q9MEMXENrnQWJX4oOYOwJd3EFQmKMm4yBLddNqIk6cTyH9RiApUpnE4owDpk-bNxIZWGgSpw5wDIrpzlf28_tWQHaTMZtZoy6IN-_luEEdWOG9rVfPW88PZeThsASpxMZc6bl6C_6jJs9mKyczdmZz8MrwkRpeA0rR4h1tt3NxWEz6nL-S0FZ8pYZxqfNajqKuJGtny_qXSKQfM6PsrNp3R_Iez_XCEkju139gEprcOHPmPGE0pym0VP_LBO4wfwa2MyEllaw0YzQ3-n2sev9BTSJrWm2eihNkPQkTSOqgL27sM41AgkI_Pw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "❗️ВС России в зоне СВО продолжали строго соблюдать режим прекращения огня и оставаться на ранее занятых позициях, сообщило Минобороны.   За время перемирия ВСУ совершили 1173 обстрела позиций российских войск. ВС России отвечали зеркально.  🔹 Подписаться на…",
+      "links": [],
+      "createdAt": "2026-05-09T16:08:40.353Z",
+      "expiresAt": "2026-05-10T16:08:40.353Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T16:08:40.353Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T16:08:40.353Z"
+      }
+    },
+    {
+      "id": 2986787561,
+      "postUrl": "https://t.me/tass_agency/375222?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Запад рассчитывал на крах России в течение шести месяцев в 2022 году, заявил Путин.",
+      "links": [],
+      "createdAt": "2026-05-09T21:29:42.960Z",
+      "expiresAt": "2026-05-10T21:29:42.960Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T21:29:42.960Z"
+      }
+    },
+    {
+      "id": 3764217394,
+      "postUrl": "https://t.me/tass_agency/375221?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "❕Чем сильнее будет Россия, тем быстрее будут сходить на нет попытки принизить вклад СССР в победу над нацизмом, заявил Путин.\n\n✔️ Подпишись на ТАСС в \"Максе\"",
+      "links": [
+        {
+          "label": "Подпишись на ТАСС в \"Максе\"",
+          "url": "https://max.ru/tass_agency"
+        }
+      ],
+      "createdAt": "2026-05-09T21:29:42.960Z",
+      "expiresAt": "2026-05-10T21:29:42.960Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T21:29:42.960Z"
+      }
+    },
+    {
+      "id": 843855531,
+      "postUrl": "https://t.me/tass_agency/375220?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WGQN4wqgg0VZ4DKUxZThp2_lk-at8K6cAo40tpQO8TGgRK4mo2XjvuLekSPWdL2ihb5_Ggl4OgSxZD2Z6UJ_o6TvhLyoYb5E3W5CRoWhyWOy2RP8RknIFrLHwb9Ymkl7hLHxO9YXyz8JGLsnSug3MvlAEUAzrNQecU9XrBBiYuPICCJSOmkiexVSjOIKQrLSYZJBL4r6y3XCJ3aFGjwpSVbqQUui_DIljDnmBOV10zF81R5Fym61YCtrM6eckrQ6qC0sFthHpqGgFO71smJ6iCHWCuXgqbtfOuCVAUsRXeO6rgdSonRiOkQzlhM8NItjVkeIartxu5b3f2jaq0AJvQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Взаимодействие России и Китая является важнейшим фактором в стабилизации международных отношений, заявил Путин.",
+      "links": [],
+      "createdAt": "2026-05-09T21:29:42.960Z",
+      "expiresAt": "2026-05-10T21:29:42.960Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T21:29:42.960Z"
+      }
+    },
+    {
+      "id": 595100951,
+      "postUrl": "https://t.me/tass_agency/375219?single",
+      "source": {
+        "title": "ТАСС",
+        "handle": "tass_agency",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
+      },
+      "sourceId": "ru:tass_agency",
+      "sourceCountryCode": "ru",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "❗️России нужно сделать так, чтобы ей никто не угрожал, прокомментировал Путин глубину \"зоны безопасности\".",
+      "links": [],
+      "createdAt": "2026-05-09T21:29:42.960Z",
+      "expiresAt": "2026-05-10T21:29:42.960Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-09T21:29:42.960Z"
       }
     },
     {
@@ -593,53 +693,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T17:12:18.992Z"
-      }
-    },
-    {
-      "id": 2831762100,
-      "postUrl": "https://t.me/rian_ru/338335?single",
-      "source": {
-        "title": "РИА Новости",
-        "handle": "rian_ru",
-        "verified": true,
-        "avatar": "https://logowik.com/content/uploads/images/ria-novosti3114.logowik.com.webp"
-      },
-      "sourceId": "ru:rian_ru",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/dNH1GmRtb_uuZtacZHUnKcBV2kJet2q9MEMXENrnQWJX4oOYOwJd3EFQmKMm4yBLddNqIk6cTyH9RiApUpnE4owDpk-bNxIZWGgSpw5wDIrpzlf28_tWQHaTMZtZoy6IN-_luEEdWOG9rVfPW88PZeThsASpxMZc6bl6C_6jJs9mKyczdmZz8MrwkRpeA0rR4h1tt3NxWEz6nL-S0FZ8pYZxqfNajqKuJGtny_qXSKQfM6PsrNp3R_Iez_XCEkju139gEprcOHPmPGE0pym0VP_LBO4wfwa2MyEllaw0YzQ3-n2sev9BTSJrWm2eihNkPQkTSOqgL27sM41AgkI_Pw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "❗️ВС России в зоне СВО продолжали строго соблюдать режим прекращения огня и оставаться на ранее занятых позициях, сообщило Минобороны.   За время перемирия ВСУ совершили 1173 обстрела позиций российских войск. ВС России отвечали зеркально.  🔹 Подписаться на…",
-      "links": [],
-      "createdAt": "2026-05-09T16:08:40.353Z",
-      "expiresAt": "2026-05-10T16:08:40.353Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T16:08:40.353Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T16:08:40.353Z"
       }
     },
     {
@@ -890,7 +943,7 @@
       "createdAt": "2026-05-09T17:12:18.992Z",
       "expiresAt": "2026-05-10T17:12:18.992Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:55:35.839Z",
+      "mediaRefreshedAt": "2026-05-10T14:04:51.834Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1188,7 +1241,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/dgOz6l4C-hYWqfhLyY4B_koON1r430xy7heAlrYvQE6S2PdM8bn-Oonmqgr9djDIh6Pxl3_1NErrcc4VkotO0lQd6cKYd4i3r5Hh8O2uxlqH_eV2D4CprnQgwVXdnlcYdvEWbyc7-KG-oOCjdftIZIPOheD-eeZcnaessqilfBiu3n0JUYu9dReOLfAVzye9z1QZecFL5_JTrjT5BbpjhtIFHueimgpTcuzUWy1EVj-U4p_AUB7jVPPoJrQODoSVusYTBrnHosrd31v0gLIA6DLozijXfCaVXmzX_YL3muR-bHW8SAh-jETQZcsW3q1a7iTey6zptW7omOvyxCzIpA.jpg"
+          "url": "https://cdn4.telesco.pe/file/kkYugf4CHu8dSCJeGoshyWOUY63FrzLhs6dyd1H4q-8IDwsEVWjTZuNx8l46UgPzNkdeZ34unHw2vSD6l4l-Y1JXiGo8uCHDlSM3_LLW6L9RKJQKpsQs8NKZZNXBRwJ32u8zy-Tkl3h269wGMI5LrIfpBw3j-T2_8s0XCIo9PAvDkoVaH1VAIuork8s2qhk-kD5Su2zYJgcAwf5VsFvom9fQ-SRlUzwJqUzuE_2KOHrFMeQwXdkav3hZ_197NwjxFcUJhQBWxygKkGkIeCi9OtBlleOrODXcvjQ-2nxU7uAEYEnVvCkIpGy4ixn3HZFWPicFYov4Et-M0GkEee8Dfw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -1198,7 +1251,7 @@
       "createdAt": "2026-05-09T17:12:18.992Z",
       "expiresAt": "2026-05-10T17:12:18.992Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T09:55:35.839Z",
+      "mediaRefreshedAt": "2026-05-10T14:04:51.834Z",
       "tag": "news",
       "tags": [
         "news"
@@ -1386,854 +1439,6 @@
         "status": "published",
         "reason": null,
         "reviewedAt": "2026-05-09T17:12:18.992Z"
-      }
-    },
-    {
-      "id": 1545398080,
-      "postUrl": "https://t.me/tass_agency/375151?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️Ударов по Красной площади 9 мая не было, естественно, не было и массированного ответного ракетного удара по Киеву, заявил Ушаков.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 693450945,
-      "postUrl": "https://t.me/tass_agency/375150?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️Киев может быть подвергнут массированному ракетному удару в случае попыток реализовать угрозы Зеленского на 9 мая, заявила Мария Захарова.  ✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 423443995,
-      "postUrl": "https://t.me/tass_agency/375149?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ffDT0Xcb2y337HvUALnFSbjY5eGoAv0arIcc0BHXPjrAqeXcYeKRP3N0LYMExwgjtk8XGZBCrSys0vht7hmqgG1cbI9-flvUmsgRytqxor1kDpjKx_-jRC3AZYy75oJ0Yyd3XA5tPRwpPLOOdFpsjgjuJj2BMLnRCOHC5Iq_UXx8kMVL0rw-XNE7Ej85O3sYWqoqMqF7S2NK2_lnOxdIJNq2g6Kyuyqc1P_azd2GgwpS3v9iUQFFy0b6keVrM2jdAkPvk5eHJNKa43GS2EOET536myCmlyNsFW8CW4TnwWEW77XGyxN-8Kcc1slVhi4A77MhGDRpfPZgc1exHZ3MCA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Горе тому, кто пытается шутить над Днем Победы, заявил Песков, комментируя указ Зеленского.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 4162918306,
-      "postUrl": "https://t.me/tass_agency/375148?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Путин и Фицо продолжили общение в Кремле — теперь с участием делегаций, передает корреспондент ТАСС.  В российскую делегацию на переговорах вошли Лихачев, Новак,Ушаков, Фальков и Лавров.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 3271435629,
-      "postUrl": "https://t.me/tass_agency/375147?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️В трехсторонних переговорах по Украине взята пауза, о следующем раунде договоренностей не достигнуто, заявил Ушаков.  ✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 3548487996,
-      "postUrl": "https://t.me/tass_agency/375146?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/fmgFl8IIMX9XJfyrPzUqrIRj59_kXAkrQtP4-MjWVxjSBhZlQphNiiWv21kH5GMFXqf4Y46ZQiQJzpx1S_bsFv3YvVf7KopVOLnzojvpgK4oR_5iojh2DhYRRMD1oxRWCBMHE0pb4LvJb787U8M9olblxKiUcFMhrLDEYDB1sWOCklKkusVHtp_qs9GMRrBKXSOfPvcSgqYtKP845OGBLW6wXXyy1KBVDSM1oZiHoDZzAGk1q1qusqdBx6126GIjBeSwpQfZ4hgUf3PLmxJuFcX7mWThbXPSmJpnwi8uJIqK2rPBNpmNq_alnpulmufDVuyn-Jg-Rl1ahwbk2Hj6qg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "❗️В трехсторонних переговорах по Украине взята пауза, о следующем раунде договоренностей не достигнуто, заявил Ушаков.\n\n✔ Подпишись на ТАСС в \"Максе\"",
-      "links": [
-        {
-          "label": "Подпишись на ТАСС в \"Максе\"",
-          "url": "https://max.ru/tass_agency"
-        }
-      ],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 1133623311,
-      "postUrl": "https://t.me/tass_agency/375145?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Путин начал встречу с премьером Словакии Фицо в Кремле. Путин кратко пообщался с Фицо тет-а-тет до начала официальных переговоров, передает корреспондент ТАСС.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 1702635958,
-      "postUrl": "https://t.me/tass_agency/375144?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️ВС РФ не наносили удары авиацией, артиллерией и ударными БПЛА во время перемирия по позициям ВСУ, сообщило Минобороны.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 899830577,
-      "postUrl": "https://t.me/tass_agency/375143?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️ВСУ наносили удары с использованием БПЛА и артиллерии по позициям ВС РФ, а также по гражданским объектам, сообщили в МО РФ.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 2376833840,
-      "postUrl": "https://t.me/tass_agency/375142?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️ВС РФ в условиях нарушений перемирия со стороны ВСУ реагировали зеркально, наносили ответные удары, сообщило Минобороны.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 1355326227,
-      "postUrl": "https://t.me/tass_agency/375141?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "▶️ Владимир Путин проводит переговоры с мировыми лидерами в 81-ю годовщину Дня Победы. Присоединяйтесь к нашей трансляции.\n\nВидео: ТАСС/Ruptly",
-      "links": [
-        {
-          "label": "трансляции",
-          "url": "https://t.me/tass_live?livestream"
-        }
-      ],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 3347415290,
-      "postUrl": "https://t.me/tass_agency/375140?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️За время перемирия украинскими войсками предприняты 12 атак позиций российских подразделений, сообщили в МО РФ.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 3696396034,
-      "postUrl": "https://t.me/tass_agency/375139?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️Всего в зоне специальной военной операции зафиксировано 8 970 нарушений режима прекращения огня со стороны ВСУ, сообщили в МО РФ.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 1097457659,
-      "postUrl": "https://t.me/tass_agency/375138?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️С 00:00 мск 8 мая все группировки ВС РФ в зоне СВО продолжают строго соблюдать режим прекращения огня, сообщили в МО РФ.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 3506423196,
-      "postUrl": "https://t.me/tass_agency/375137?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️За время перемирия ВСУ совершили 1 173 обстрела позиций российских войск, нанесли 7 151 удар с использованием БПЛА, сообщили в МО РФ.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 2032419405,
-      "postUrl": "https://t.me/tass_agency/375136?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "❗️За время перемирия ВСУ совершили 1 173 обстрела позиций российских войск, нанесли 7 151 удар с использованием БПЛА, сообщили в МО РФ.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 463722902,
-      "postUrl": "https://t.me/tass_agency/375135?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "Путин начал встречу с премьером Словакии Фицо в Кремле. Путин кратко пообщался с Фицо тет-а-тет до начала официальных переговоров, передает корреспондент ТАСС.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 3447346927,
-      "postUrl": "https://t.me/tass_agency/375134?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "▶️ Премьер Словакии Фицо прибыл в Кремль на торжества в честь 9 Мая.  Видео: ТАСС/Ruptly  ✔️ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 1167980944,
-      "postUrl": "https://t.me/tass_agency/375133?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "▶️ В Петербурге Парад Победы открыл парадный расчет участников СВО.  Видео: Юлия Стрелец/ТАСС  ✔️ Если не загружается видео — смотрите его в ТАСС в \"Максе\"",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T11:12:09.365Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
-      }
-    },
-    {
-      "id": 3955884817,
-      "postUrl": "https://t.me/tass_agency/375132?single",
-      "source": {
-        "title": "ТАСС",
-        "handle": "tass_agency",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/RUHdE_SPsnawgQJjfRgFvEL0m8psb5ijP8YScGy6Kf43Xx_kSUZTHQlWP2edD8dRJgKX9S2RNml7iQtzGrGVRkfeaeKl5Cmse_DP6t-9SMqWfFbinybwPCreyawncup80HLRm-g4vgY2youqezgL5kuMD-JeSDjU_Kr9pkUJkonfsIShhME9GLU7-G8s6aKGBDJgzTLWgnA-mG8fZ2dYZZUAc0GD6QOgF4F2VJdcKhR9rGnA3gp9e5FItHpXlySf9Rwn-g8MkNA2775r9svp9u2fcufDP0DxWklYLBBvlR-_Un-BuLY41nIyFhmFnsBb4_HoBdyz-H4mFEyorWR70g.jpg"
-      },
-      "sourceId": "ru:tass_agency",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/mh9X5u1Ew4zmbAhRsTm26msxKLGanNgt96vBHrjN3zyCYIRuDi1KqLstfPDz7s9eAxFbhS8b9av-PARb79e5F1D_pxH_Fa9YLD9HTTpj7j73D45WQ0cBRiNGesxnPe72aHtN4Qt8TjgrZ0rI2NW9nwJXdERD3fY8phNx1ETPzG32J3vsAso2-JeoBble5YaL3XinvjFCwZiZEeoYG6Ud_rk9Egx63s9uV5RoWrFN3E6t29j6cpB8gGVIUzF_waiC-MyviCWUM10k4GcTOsWuYIgdCJEyeG6nEz6grrPTmaoNJ2YPVv4tIfkcx_Gf5ING3SiugGlJC_5mlTNqRv4Hiw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Король Бахрейна Хамад бен Иса Аль Халифа поздравил Путина с Днем Победы, передает Бахрейнское информационное агентство.\n\nКороль Бахрейна выразил российскому лидеру \"искренние поздравления и наилучшие пожелания крепкого здоровья и счастья\", а дружественному народу РФ — дальнейшего прогресса, процветания и развития.",
-      "links": [],
-      "createdAt": "2026-05-09T11:12:09.365Z",
-      "expiresAt": "2026-05-10T11:12:09.365Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-09T21:29:42.960Z",
-      "tag": "news",
-      "tags": [
-        "news"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T11:12:09.365Z"
       }
     }
   ]
