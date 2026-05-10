@@ -650,7 +650,10 @@ export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
   const localeOptions = React.useMemo(() => getSortedLocales(), []);
 
   return (
-    <div className="min-h-screen bg-[#17212b] px-4 text-white">
+    <div
+      className="notranslate min-h-screen bg-[#17212b] px-4 text-white"
+      translate="no"
+    >
       <div
         className="flex min-h-screen items-start justify-center pt-4 sm:pt-6"
         style={{ paddingBottom: "calc(24px + env(safe-area-inset-bottom, 0px))" }}

@@ -87,9 +87,24 @@
       .gt_switcher,
       .gt_container,
       .gt_options,
-      .skiptranslate,
+      .goog-te-gadget,
+      .goog-te-gadget *,
+      .goog-te-banner-frame,
+      .goog-te-balloon-frame,
+      .goog-tooltip,
+      .goog-tooltip *,
+      #goog-gt-tt,
+      iframe.goog-te-banner-frame,
       iframe.skiptranslate,
-      .goog-te-banner-frame {
+      .skiptranslate:not(.goog-te-combo),
+      .VIpgJd-ZVi9od-aZ2wEe,
+      .VIpgJd-ZVi9od-aZ2wEe *,
+      .VIpgJd-yAWNEb-L7lbkb,
+      .VIpgJd-yAWNEb-L7lbkb *,
+      .VIpgJd-ZVi9od-ORHb-OEVmcd,
+      .VIpgJd-ZVi9od-ORHb-OEVmcd *,
+      .VIpgJd-ZVi9od-xl07Ob-OEVmcd,
+      .VIpgJd-ZVi9od-xl07Ob-OEVmcd * {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
@@ -137,14 +152,70 @@
           });
         }
 
-        window.__MARGELET_PROTECT_TRANSLATE_UI__ = protectMargeletUi;
+        function hideGTranslateChrome(root) {
+          var scope = root && root.querySelectorAll ? root : document;
+          var selectors = [
+            '.gtranslate_wrapper',
+            '.gt_float_switcher',
+            '.gt_switcher',
+            '.gt_container',
+            '.gt_options',
+            '.goog-te-gadget',
+            '.goog-te-banner-frame',
+            '.goog-te-balloon-frame',
+            '.goog-tooltip',
+            '#goog-gt-tt',
+            'iframe.goog-te-banner-frame',
+            'iframe.skiptranslate',
+            '.VIpgJd-ZVi9od-aZ2wEe',
+            '.VIpgJd-yAWNEb-L7lbkb',
+            '.VIpgJd-ZVi9od-ORHb-OEVmcd',
+            '.VIpgJd-ZVi9od-xl07Ob-OEVmcd'
+          ];
+
+          scope.querySelectorAll(selectors.join(',')).forEach(function (node) {
+            node.setAttribute('aria-hidden', 'true');
+            node.style.setProperty('display', 'none', 'important');
+            node.style.setProperty('visibility', 'hidden', 'important');
+            node.style.setProperty('opacity', '0', 'important');
+            node.style.setProperty('pointer-events', 'none', 'important');
+            node.style.setProperty('left', '-10000px', 'important');
+            node.style.setProperty('top', 'auto', 'important');
+            node.style.setProperty('bottom', '0', 'important');
+            node.style.setProperty('z-index', '-1', 'important');
+          });
+
+          scope.querySelectorAll('img, svg, div').forEach(function (node) {
+            var text = (node.textContent || '').trim();
+            var src = node.getAttribute && (node.getAttribute('src') || '');
+            var cls = node.className ? String(node.className) : '';
+
+            if (
+              src.indexOf('translate') !== -1 ||
+              src.indexOf('gtranslate') !== -1 ||
+              cls.indexOf('VIpgJd') !== -1 ||
+              text === 'Google Translate'
+            ) {
+              node.style.setProperty('display', 'none', 'important');
+              node.style.setProperty('visibility', 'hidden', 'important');
+              node.style.setProperty('opacity', '0', 'important');
+              node.style.setProperty('pointer-events', 'none', 'important');
+            }
+          });
+        }
+
+        window.__MARGELET_HIDE_GTRANSLATE_CHROME__ = hideGTranslateChrome;
+        window.__MARGELET_PROTECT_TRANSLATE_UI__ = function (root) {
+          protectMargeletUi(root);
+          hideGTranslateChrome(document);
+        };
 
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', function () {
-            protectMargeletUi(document);
+            window.__MARGELET_PROTECT_TRANSLATE_UI__?.(document);
           });
         } else {
-          protectMargeletUi(document);
+          window.__MARGELET_PROTECT_TRANSLATE_UI__?.(document);
         }
 
         var protectScheduled = false;
@@ -154,7 +225,7 @@
 
           window.requestAnimationFrame(function () {
             protectScheduled = false;
-            protectMargeletUi(document);
+            window.__MARGELET_PROTECT_TRANSLATE_UI__?.(document);
           });
         });
 
@@ -162,6 +233,10 @@
           childList: true,
           subtree: true
         });
+
+        window.setInterval(function () {
+          window.__MARGELET_HIDE_GTRANSLATE_CHROME__?.(document);
+        }, 700);
       })();
     </script>
 

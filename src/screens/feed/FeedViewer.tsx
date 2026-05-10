@@ -13,6 +13,7 @@ import { FeedCarousel } from "./FeedCarousel";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { normalizeMediaList } from "./feed.utils";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
+import { getAutotranslit, getCountryLanguage, requestGTranslate } from "../../lib/autotranslit";
 
 const MAX_EXPANDED_TEXT_HEIGHT = 260;
 const FEED_MUTE_KEY = "margelet_feed_muted";
@@ -250,6 +251,59 @@ function formatTime(seconds: number) {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
+function unlockTranslatePath(target: HTMLElement | null) {
+  if (typeof document === "undefined" || !target) return () => {};
+
+  const touched: Array<{
+    element: HTMLElement;
+    hadNoTranslate: boolean;
+    prevTranslate: string | null;
+  }> = [];
+
+  const remember = (element: HTMLElement) => {
+    if (touched.some((item) => item.element === element)) return;
+    touched.push({
+      element,
+      hadNoTranslate: element.classList.contains("notranslate"),
+      prevTranslate: element.getAttribute("translate"),
+    });
+  };
+
+  let node: HTMLElement | null = target;
+
+  while (node && node !== document.body && node !== document.documentElement) {
+    remember(node);
+    node.classList.remove("notranslate");
+    node.setAttribute("translate", "yes");
+    node = node.parentElement;
+  }
+
+  target.querySelectorAll<HTMLElement>("*").forEach((element) => {
+    remember(element);
+    element.classList.remove("notranslate");
+    element.setAttribute("translate", "yes");
+  });
+
+  target.classList.add("margelet-translatable");
+  target.setAttribute("translate", "yes");
+
+  return () => {
+    touched.forEach(({ element, hadNoTranslate, prevTranslate }) => {
+      if (hadNoTranslate) {
+        element.classList.add("notranslate");
+      } else {
+        element.classList.remove("notranslate");
+      }
+
+      if (prevTranslate === null) {
+        element.removeAttribute("translate");
+      } else {
+        element.setAttribute("translate", prevTranslate);
+      }
+    });
+  };
+}
+
 export function FeedViewer({
   locale,
   activePost,
@@ -284,6 +338,8 @@ export function FeedViewer({
   const copy = COPY[locale] ?? COPY.en;
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const captionRef = useRef<HTMLDivElement | null>(null);
+  const captionTranslateCleanupRef = useRef<(() => void) | null>(null);
   const wheelLockRef = useRef(false);
   const touchStartYRef = useRef<number | null>(null);
   const centerTimerRef = useRef<number | null>(null);
@@ -304,6 +360,32 @@ export function FeedViewer({
   const activeIsVideo = activeItem?.kind === "video";
 
   useEffect(() => {
+    captionTranslateCleanupRef.current?.();
+    captionTranslateCleanupRef.current = null;
+
+    if (!activePost || !getAutotranslit()) return;
+
+    captionTranslateCleanupRef.current = unlockTranslatePath(captionRef.current);
+
+    const timers = [160, 520, 1100, 1800].map((delay) =>
+      window.setTimeout(() => {
+        captionTranslateCleanupRef.current?.();
+        captionTranslateCleanupRef.current = unlockTranslatePath(captionRef.current);
+        (window as any).__MARGELET_PROTECT_TRANSLATE_UI__?.(document);
+        captionTranslateCleanupRef.current?.();
+        captionTranslateCleanupRef.current = unlockTranslatePath(captionRef.current);
+        requestGTranslate(locale);
+      }, delay),
+    );
+
+    return () => {
+      timers.forEach((timer) => window.clearTimeout(timer));
+      captionTranslateCleanupRef.current?.();
+      captionTranslateCleanupRef.current = null;
+    };
+  }, [activePost?.id, activePost?.text, locale, viewerMediaIndex]);
+
+  useEffect(() => {
     autoplayWantedRef.current = isPlaying;
   }, [isPlaying]);
 
@@ -314,6 +396,8 @@ export function FeedViewer({
     document.body.style.overflow = "hidden";
 
     return () => {
+      captionTranslateCleanupRef.current?.();
+      captionTranslateCleanupRef.current = null;
       document.body.style.overflow = original;
     };
   }, [activePost]);
@@ -590,7 +674,7 @@ export function FeedViewer({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/72" />
 
           <div
-            className="absolute left-4 z-30"
+            className="notranslate absolute left-4 z-30"
             style={{ top: "calc(env(safe-area-inset-top, 0px) + 16px)" }}
           >
             <button
@@ -603,7 +687,7 @@ export function FeedViewer({
           </div>
 
           <div
-            className="absolute right-4 z-30"
+            className="notranslate absolute right-4 z-30"
             style={{ top: "calc(env(safe-area-inset-top, 0px) + 16px)" }}
           >
             <button
@@ -620,7 +704,7 @@ export function FeedViewer({
           </div>
 
           {showCenterControl ? (
-            <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+            <div className="notranslate pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm">
                 {isPlaying ? (
                   <Pause className="h-8 w-8" />
@@ -651,7 +735,7 @@ export function FeedViewer({
                       closeViewer();
                     }
                   }}
-                  className="flex min-w-0 items-center gap-3 text-left"
+                  className="notranslate flex min-w-0 items-center gap-3 text-left"
                 >
                   <FeedSourceAvatar post={activePost} />
 
@@ -676,11 +760,15 @@ export function FeedViewer({
               {activePost.text ? (
                 <div className="mt-3">
                   <div
+                    ref={captionRef}
+                    key={`${activePost.id}-${locale}-${viewerMediaIndex}`}
                     role={canToggleText ? "button" : undefined}
                     tabIndex={canToggleText ? 0 : undefined}
-                    className={`text-[15px] leading-6 text-white ${
+                    className={`margelet-translatable text-[15px] leading-6 text-white ${
                       expandedText ? "overflow-y-auto" : "line-clamp-1"
                     } ${canToggleText ? "cursor-pointer" : ""}`}
+                    lang={getCountryLanguage(activePost.sourceCountryCode)}
+                    translate="yes"
                     style={
                       expandedText
                         ? { maxHeight: `${MAX_EXPANDED_TEXT_HEIGHT}px` }
@@ -710,7 +798,7 @@ export function FeedViewer({
             </div>
 
             {activeIsVideo ? (
-              <div className="mt-3 flex items-center gap-3">
+              <div className="notranslate mt-3 flex items-center gap-3">
                 <button
                   type="button"
                   onPointerDown={(event) => {
