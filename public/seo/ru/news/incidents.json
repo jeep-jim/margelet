@@ -459,7 +459,7 @@
       "createdAt": "2026-05-10T14:04:42.226Z",
       "expiresAt": "2026-05-11T14:04:42.226Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T14:04:42.226Z",
+      "mediaRefreshedAt": "2026-05-10T21:12:27.596Z",
       "tag": "news",
       "tags": [
         "news",
@@ -587,7 +587,7 @@
       "createdAt": "2026-05-10T09:55:26.512Z",
       "expiresAt": "2026-05-11T09:55:26.512Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T17:20:00.635Z",
+      "mediaRefreshedAt": "2026-05-10T21:12:27.596Z",
       "tag": "news",
       "tags": [
         "news",
@@ -640,7 +640,7 @@
       "createdAt": "2026-05-10T09:55:26.512Z",
       "expiresAt": "2026-05-11T09:55:26.512Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T17:20:00.635Z",
+      "mediaRefreshedAt": "2026-05-10T21:12:27.596Z",
       "tag": "news",
       "tags": [
         "news",
@@ -661,160 +661,30 @@
         "reason": null,
         "reviewedAt": "2026-05-10T09:55:26.512Z"
       }
-    },
-    {
-      "id": 1223144376,
-      "postUrl": "https://t.me/bazabazon/45916?single",
-      "source": {
-        "title": "Baza",
-        "handle": "bazabazon",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/g_ytEi1fZe5iAOAcmyDr339kfdV9C8yXgbAHJq-vgmxiArc5ztPmjUByWrX_u-rYLCmMxLM0d1YNV35vGg4Qm9pAgt1OhBZ-SpFcmb4XXfoBP9N9FiqfiD0n7gqH-AObp_inJXc7gSYvIR-0uZJzDlzbLuwQf_owTTPKCBbKPZpKNJE4IWiTlDLrcc9lIoLgMaEf_OaLM-ohTpjTCXPBZWTs5YKOld3jQbX_PjKNSt_F9hHQMBeToUUe18qf3s-0tq8JjxwORsx42TIXNqqpoevGkE0funMpZnOMzMXdakcHdKUcp05ovY7LM4C_UL9Zu5XuLiAifwvhw4eSTMJLpA.jpg"
-      },
-      "sourceId": "ru:bazabazon",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/f54934756e.mp4?token=X03RV6_OaJJ8h4Z2Uivk3o5oOYoznK_GXN93s-rDKW7pItnOIfpXcZwcsdobqUL8PXc5weHnnr_baOXkd8tUXxxmork9JcnpiP3sXNafbNM0jErb-o4PTci2FEwAoXYDyWrHlGoEZBkzLIO_Eww8y02sB8mCKTQ47uMfe8Sir1krDGtZOZonDPPrhuT6NTucdR1wLVrxhEsl3BRxrU3h4JypNsqh-6IOHO6MbcqJSqNXpSgaQ0oxZ17EmiqWWgw5d_0UU_z7ST_m3XClgskgtn-0Zk7GEvbWxB5z-86iOWzrGuUcdHmWaY7vTr8qzMHVHLU5mYOn_ghk1Hb0gzPwRwzCyOkh350k4x_TMi24hq6WV_SSwHBOGVDPcZWiWKnpczU5qhJnC-YYNyBItUuI2bDp1XHwDyjtemAzhwM5UkHT9-nRHUlZjtvXIphCwj_97GFPSu6LPG9aee7RJ3vPCiXuOK3piKSFKaojFFtlo1uQM6ucN0S8OeiSl1YD4JwV8EDzEpf0sMXDr4WrM3mMy03YIfiIUzdAai5J4RVVtBG4yv-aDrWMIFB_-s2enEcbx0zIhqGKFIdWNlEaJEMp_u0CVSVgaMbMNww0Ggexs6thulaW9ypwzeT5sLVmxC2K-SfjBMUktul16Xc96WEi6hkOLlYLD6iD3n7scFMnRio",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Праздничный салют в честь 81-й годовщины Победы в Великой Отечественной войне прошел в Санкт-Петербурге.\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
-      "links": [
-        {
-          "label": "https://max.ru/baza",
-          "url": "https://max.ru/baza"
-        }
-      ],
-      "createdAt": "2026-05-09T21:03:12.153Z",
-      "expiresAt": "2026-05-10T21:03:12.153Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T14:04:42.226Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_incidents"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T21:03:12.153Z"
-      }
-    },
-    {
-      "id": 3168867579,
-      "postUrl": "https://t.me/bazabazon/45915?single",
-      "source": {
-        "title": "Baza",
-        "handle": "bazabazon",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/g_ytEi1fZe5iAOAcmyDr339kfdV9C8yXgbAHJq-vgmxiArc5ztPmjUByWrX_u-rYLCmMxLM0d1YNV35vGg4Qm9pAgt1OhBZ-SpFcmb4XXfoBP9N9FiqfiD0n7gqH-AObp_inJXc7gSYvIR-0uZJzDlzbLuwQf_owTTPKCBbKPZpKNJE4IWiTlDLrcc9lIoLgMaEf_OaLM-ohTpjTCXPBZWTs5YKOld3jQbX_PjKNSt_F9hHQMBeToUUe18qf3s-0tq8JjxwORsx42TIXNqqpoevGkE0funMpZnOMzMXdakcHdKUcp05ovY7LM4C_UL9Zu5XuLiAifwvhw4eSTMJLpA.jpg"
-      },
-      "sourceId": "ru:bazabazon",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/40fdd4cdbb.mp4?token=r1lUuPyYG9Ve7cnv9QET4zFPV9V46oMlBvcIjDs6mCqNPxtrrQK05eSDj1vjFCxR2hZ4t96rNumr5YiWey7x2t3Din88HiyyRCMwbP9ALbx0sMOIOWW-y_2IXRHTbI7JMND9di2VvZXBHAVa030oFYIb7RIjgCY3VaB9vGEC3rJorT6wr5bK3ATkcTDT8-J-bPBQqhLlbT2vA6rAryN1srcIUw2lWwbVjFjylc-etLC5Vl2BO5tSrIMDZ0d8YiOCeHzFWo8NUWvIYOhcTY_zbJAjx3sXzJZLKTByWvXW-lNL8qB0-fEDFakGOv-_es8GRiO8m0xvRKRqHLOHVa-Dag",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Путин заявил, что украинский конфликт движется к завершению. Главное из заявлений президента после международных встреч:\n\n— Россия ещё до инициативы Трампа предлагала Украине обмен пленными, но ответа от Киева так и не получила.\n\n— Военной техники на параде Победы не было не только из соображений безопасности — сейчас внимание сосредоточено на СВО.\n\n— Путин заявил, что готов встретиться с Зеленским в любой третьей стране, но только для подписания итоговых документов.\n\n— По словам президента, Роберт Фицо не передавал ему никаких «особых посланий» от Владимира Зеленского.\n\n— Планы Армении по вступлению в ЕС требуют «особого рассмотрения». По словам Путина, Еревану стоит быстрее определиться между ЕС и ЕАЭС.\n\n— Путин отметил, что Москва поддержит всё, что выгодно армянскому народу, но напомнил, что ситуация на Украине тоже начиналась с евроинтеграции.\n\n— Президент отдельно поблагодарил Роберта Фицо и Александра Вучича, которые приехали в Москву на 9 Мая, несмотря на давление.\n\n— По словам Путина, США действительно хотят урегулирования конфликта, но ключевые решения зависят от Москвы и Киева.\n\n— Трамп, как рассказал президент, поддержал идею перемирия на День Победы, однако Украина на инициативу не отреагировала.\n\n— Путин назвал Эммануэля Макрона одним из инициаторов срыва мирных переговоров между Россией и Украиной в 2022 году.\n\n— Бывшего канцлера Германии Герхарда Шрёдера президент назвал предпочтительным кандидатом для переговоров России с Европой.\n\n— Россия, по словам Путина, по-прежнему готова вывезти иранский обогащённый уран и выступает за дипломатическое урегулирование ситуации вокруг Ирана.\n\nЕсли у вас плохо прогружаются файлы, все новости BAZA также доступны в нашем канале в MAX: https://max.ru/baza",
-      "links": [
-        {
-          "label": "https://max.ru/baza",
-          "url": "https://max.ru/baza"
-        }
-      ],
-      "createdAt": "2026-05-09T21:03:12.153Z",
-      "expiresAt": "2026-05-10T21:03:12.153Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T14:04:42.226Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "news_incidents"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T21:03:12.153Z"
-      }
     }
   ],
   "topSources": [
     {
       "title": "Baza",
       "handle": "bazabazon",
-      "count": 8
+      "count": 6
     }
   ],
   "keywords": [
     {
       "value": "также",
-      "count": 8
+      "count": 6
     },
     {
       "value": "baza",
-      "count": 6
-    },
-    {
-      "value": "доступны",
-      "count": 6
-    },
-    {
-      "value": "нашем",
-      "count": 6
-    },
-    {
-      "value": "плохо",
-      "count": 6
-    },
-    {
-      "value": "прогружаются",
-      "count": 6
-    },
-    {
-      "value": "словам",
-      "count": 6
-    },
-    {
-      "value": "файлы",
-      "count": 6
+      "count": 4
     },
     {
       "value": "воды",
+      "count": 4
+    },
+    {
+      "value": "доступны",
       "count": 4
     },
     {
@@ -822,11 +692,23 @@
       "count": 4
     },
     {
-      "value": "путин",
+      "value": "нашем",
+      "count": 4
+    },
+    {
+      "value": "плохо",
+      "count": 4
+    },
+    {
+      "value": "прогружаются",
       "count": 4
     },
     {
       "value": "рублей",
+      "count": 4
+    },
+    {
+      "value": "файлы",
       "count": 4
     },
     {
@@ -851,6 +733,14 @@
     },
     {
       "value": "детей",
+      "count": 3
+    },
+    {
+      "value": "ирина",
+      "count": 3
+    },
+    {
+      "value": "налогов",
       "count": 3
     }
   ]
