@@ -7,7 +7,7 @@
   "title": "电子产品 Telegram trends in China | margeleT",
   "description": "Fresh 电子产品 Telegram posts, channels, keywords and sources from China. Updated automatically by margeleT.",
   "h1": "电子产品 Telegram trends in China",
-  "updatedAt": "2026-05-11T09:49:31.361Z",
+  "updatedAt": "2026-05-11T11:47:06.635Z",
   "parentTag": {
     "value": "electronics",
     "emoji": "🔌",
@@ -258,7 +258,647 @@
       }
     ]
   },
-  "posts": [],
-  "topSources": [],
-  "keywords": []
+  "posts": [
+    {
+      "id": 1144030630,
+      "postUrl": "https://t.me/nagram_channel/2973?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2973?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2974?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, fix: show in chat on small tablets (#64)",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 3062289580,
+      "postUrl": "https://t.me/nagram_channel/2971?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2971?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2972?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, feat: Add JSON editor for custom URL inline bot rules (#62)\n\n- 新增 InlineBotRulesRepository 作为统一规则仓库，管理远程（只读）和本地（可编辑）规则\n- 新增 InlineBotRulesSettingActivity 规则设置页面，支持远程规则开关和本地规则 CRUD\n- 新增 InlineBotRulesEditActivity 规则编辑页面\n- 在 NekoExperimentalSettingsActivity 中整合相关设置项，形成独立的功能模块\n\nCo-authored-by: BraveSail &lt;49320262+BraveSail@users.noreply.github.com&gt;\nCo-Authored-By: Claude Opus 4.7 (1M context)",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 172931351,
+      "postUrl": "https://t.me/nagram_channel/2969?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2969?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2970?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, fix: local emoji font load",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 4207289297,
+      "postUrl": "https://t.me/nagram_channel/2967?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2967?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2968?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, refa: Message Details Activity\n\n- 重构消息详情界面，使用 MessageDetailItem 类管理列表项\n- 添加 JsonTextSettingsCell 用于显示高亮格式的 JSON 数据\n- 优化列表项点击和长按事件处理\n\nCo-Authored-By: MiniMax-M2.7-highspeed",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 117876531,
+      "postUrl": "https://t.me/nagram_channel/2965?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2965?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2966?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, feat: support network logs\n\n- 新增网络请求日志记录功能，包括请求和响应信息\n- 实现日志查看界面，支持搜索和筛选\n- 添加日志详情页面展示完整请求和响应数据\n- 替换原有HTTP请求实现为统一网络请求工具\n- 更新相关翻译文本和UI界面\n\nCo-Authored-By: MiniMax-M2.7-highspeed",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 2708384525,
+      "postUrl": "https://t.me/nagram_channel/2963?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2963?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2964?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, fix(FileLoadOperation): load image file do not gen cache",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 2012989871,
+      "postUrl": "https://t.me/nagram_channel/2961?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2961?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2962?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, fix: long click chat floatingDate crash",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 1837245834,
+      "postUrl": "https://t.me/nagram_channel/2959?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2959?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2960?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, feat(chat-menu): add compact icon bar w/ 3-state toggle\n\nLong context menu now supports per-option HIDE / TEXT / ICON modes via segmented control in chat settings. Icon mode renders options as a horizontal GridLayout (≤4 cols) at popup bottom.\n\n- store compact + hidden sets as CSV in SharedPreferences\n- migrate stale compactBarPosition int from earlier draft\n- Translate stays HIDE/TEXT only — compact would lose swipeback + lang detection wiring\n- Delete works in icon mode (TTL subtext lost; confirm dialog still fires)\n- order in dialog mirrors fillMessageMenu sequence\n\nCo-authored-by: Next Alone &lt;12210746+NextAlone@users.noreply.github.com&gt;\nCo-authored-by: MiniMax-M2.7-highspeed",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 3805939956,
+      "postUrl": "https://t.me/nagram_channel/2957?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2957?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2958?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, feat: Sidebar Show Settings Activity\n\n- 实现了可配置的主页负一屏显示设置\n- 重构了标签页索引计算逻辑以支持动态配置\n- 添加了 NaConfig 配置项控制开关\n- 在通用设置界面添加了开关选项\n- 更新了字符串资源文件添加相关提示文字\n- 优化了标签页初始化和可见性控制逻辑\n\nCo-authored-by: MiniMax-M2.7-highspeed",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    },
+    {
+      "id": 2595414798,
+      "postUrl": "https://t.me/nagram_channel/2955?single",
+      "source": {
+        "title": "Nagram",
+        "handle": "nagram_channel",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/cProlJV2XIwJzeK1TPuOkCP98y0TyZpgxOWkzaEkzA2Dbr6P6WrUQ8JC8pj984DScchGb4RDb5ZNXiaFSxxnn_kplUN0UAyXfqBUu6uhWodSmVmoI972-7f6pcuiyDFNMK_pkumfwUcEXP9WANj7Xep2bOkVXyzODnVemVlcm_jTiWUbACXpb7u-MEM5_3gewlPBAJIktqny1xfhvzMmkKzIbiYe_LhQzILHX7AojVa60Tt2JIpDnTHh7xVH-DpOv45bxsr5V57No8KINx4SsG8TWRx65SZJTN0i_WdqUfxqz0lXLrF6NAxrZpEYZq_ZZvK-oV5TSlieHR6gdHvc3w.jpg"
+      },
+      "sourceId": "zh:nagram_channel",
+      "sourceCountryCode": "zh",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2955?single",
+          "fileName": null
+        },
+        {
+          "id": "file-2",
+          "kind": "file",
+          "url": "https://t.me/nagram_channel/2956?single",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Test version, fix: the calculation of the id text view position on the ProfileActivity\n\n- 将 idTextViewXEnd 的计算方式改为复用 onlineTextViewXEnd\n- 调整 idTextViewYEnd 计算中的偏移量，将 -dpf2(3f) 改为 +dpf2(5)\n- 修正了文本视图在动画过程中的位置定位逻辑\n\nCo-authored-by: MiniMax-M2.7-highspeed",
+      "links": [],
+      "createdAt": "2026-05-11T11:47:06.635Z",
+      "expiresAt": "2026-05-12T11:47:06.635Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:47:06.635Z",
+      "tag": "telegram",
+      "tags": [
+        "telegram",
+        "electronics",
+        "electronics_home_appliances"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:47:06.635Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "Nagram",
+      "handle": "nagram_channel",
+      "count": 10
+    }
+  ],
+  "keywords": [
+    {
+      "value": "test",
+      "count": 10
+    },
+    {
+      "value": "version",
+      "count": 10
+    },
+    {
+      "value": "co-authored-by",
+      "count": 8
+    },
+    {
+      "value": "7-highspeed",
+      "count": 5
+    },
+    {
+      "value": "minimax-m2",
+      "count": 5
+    },
+    {
+      "value": "feat",
+      "count": 4
+    },
+    {
+      "value": "icon",
+      "count": 4
+    },
+    {
+      "value": "chat",
+      "count": 3
+    },
+    {
+      "value": "compact",
+      "count": 3
+    },
+    {
+      "value": "text",
+      "count": 3
+    },
+    {
+      "value": "activity",
+      "count": 2
+    },
+    {
+      "value": "bravesail",
+      "count": 2
+    },
+    {
+      "value": "context",
+      "count": 2
+    },
+    {
+      "value": "dialog",
+      "count": 2
+    },
+    {
+      "value": "dpf2",
+      "count": 2
+    },
+    {
+      "value": "github",
+      "count": 2
+    },
+    {
+      "value": "hide",
+      "count": 2
+    },
+    {
+      "value": "json",
+      "count": 2
+    }
+  ]
 }

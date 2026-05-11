@@ -7,7 +7,7 @@
   "title": "Music Telegram trends in United States | margeleT",
   "description": "Fresh Music Telegram posts, sources and keywords from United States. Updated automatically by margeleT trend snapshots.",
   "h1": "Music Telegram trends in United States",
-  "updatedAt": "2026-05-11T09:49:29.857Z",
+  "updatedAt": "2026-05-11T11:39:29.165Z",
   "parentTag": {
     "value": "culture",
     "emoji": "🎭",
@@ -320,7 +320,78 @@
       "ms": "Muzik"
     }
   },
-  "posts": [],
-  "topSources": [],
-  "keywords": []
+  "posts": [
+    {
+      "id": 2313896642,
+      "postUrl": "https://t.me/spotify/14?single",
+      "source": {
+        "title": "@Spotify",
+        "handle": "spotify",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/O212J2e_5ck6bsuoK5a88W_11zsvLhD9ZoWyRwA0y3DA559yidZIqUgZpfrSgjRyzjIq1Lq-GDnq3Wi2n00R_TCjc3jFMyqVs45KPAdfytR2mDSr6Iq-e5kniCR2f-XU5ayx2KJ0Gb5pxZfkPSXOcaRXGOozhk-4H0otLUWbGgEn2qY17ZteHRUkWfYSJeeoBZVZgV_YhjWqUqrpVITEuMUgHLRTCWRAuK3fD4cXtKYBxiOnCCOk9skFj3anvKpq9MUV9EzaVOIK1UgYGoNoxo_qyMtHO27pyYn3CRpekX3aIqmSj2CrVB7SJhE4EYZugISYoMcW2kz7DH-0ndu52Q.jpg"
+      },
+      "sourceId": "en:spotify",
+      "sourceCountryCode": "en",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "join @unofficial for daily news",
+      "links": [
+        {
+          "label": "@unofficial",
+          "url": "https://t.me/unofficial"
+        }
+      ],
+      "createdAt": "2026-05-11T11:39:29.165Z",
+      "expiresAt": "2026-05-12T11:39:29.165Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T11:39:29.165Z",
+      "tag": "culture",
+      "tags": [
+        "culture",
+        "music"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T11:39:29.165Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "@Spotify",
+      "handle": "spotify",
+      "count": 1
+    }
+  ],
+  "keywords": [
+    {
+      "value": "daily",
+      "count": 1
+    },
+    {
+      "value": "join",
+      "count": 1
+    },
+    {
+      "value": "news",
+      "count": 1
+    },
+    {
+      "value": "unofficial",
+      "count": 1
+    }
+  ]
 }
