@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Once per day. UTC time.
-    - cron: "0 */6 * * *"
+    - cron: "0 3 * * *"
 
 permissions:
   contents: write

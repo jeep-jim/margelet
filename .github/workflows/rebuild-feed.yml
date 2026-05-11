@@ -9,7 +9,7 @@ on:
         default: ""
 
   schedule:
-    - cron: "17 */4 * * *"
+    - cron: "17 0,12 * * *"
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ concurrency:
 jobs:
   rebuild-feed:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 60
 
     env:
       GITHUB_OWNER: jeep-jim
