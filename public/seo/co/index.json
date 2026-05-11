@@ -7,8 +7,99 @@
   "title": "Fresh Telegram trends in Colombia | margeleT",
   "description": "Fresh Telegram posts, sources, channels and live topics from Colombia. Updated automatically by margeleT trend snapshots.",
   "h1": "Fresh Telegram trends in Colombia",
-  "updatedAt": "2026-05-10T13:58:34.639Z",
+  "updatedAt": "2026-05-11T04:39:54.602Z",
   "posts": [
+    {
+      "id": 2431132831,
+      "postUrl": "https://t.me/forbescolombia/9?single",
+      "source": {
+        "title": "Forbes Colombia (@forbescolombia)",
+        "handle": "forbescolombia",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "co:forbescolombia",
+      "sourceCountryCode": "co",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "This USERNAME is on auction on https://fragment.com/username/forbescolombia",
+      "links": [
+        {
+          "label": "https://fragment.com/username/forbescolombia",
+          "url": "https://fragment.com/username/forbescolombia"
+        }
+      ],
+      "createdAt": "2026-05-11T04:39:54.602Z",
+      "expiresAt": "2026-05-12T04:39:54.602Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T04:39:54.602Z",
+      "tag": "finance",
+      "tags": [
+        "finance",
+        "business",
+        "people"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T04:39:54.602Z"
+      }
+    },
+    {
+      "id": 787446215,
+      "postUrl": "https://t.me/forbescolombia/1?single",
+      "source": {
+        "title": "Forbes Colombia (@forbescolombia)",
+        "handle": "forbescolombia",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "co:forbescolombia",
+      "sourceCountryCode": "co",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-11T04:39:54.602Z",
+      "expiresAt": "2026-05-12T04:39:54.602Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-11T04:39:54.602Z",
+      "tag": "finance",
+      "tags": [
+        "finance",
+        "business",
+        "people"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-11T04:39:54.602Z"
+      }
+    },
     {
       "id": 1096541996,
       "postUrl": "https://t.me/bluradio/35791?single",
@@ -284,11 +375,20 @@
       "title": "Semana Telegram",
       "handle": "semana",
       "count": 3
+    },
+    {
+      "title": "Forbes Colombia (@forbescolombia)",
+      "handle": "forbescolombia",
+      "count": 2
     }
   ],
   "keywords": [
     {
       "value": "algunos",
+      "count": 1
+    },
+    {
+      "value": "auction",
       "count": 1
     },
     {
@@ -353,10 +453,6 @@
     },
     {
       "value": "fuego",
-      "count": 1
-    },
-    {
-      "value": "grupos",
       "count": 1
     }
   ]

@@ -225,7 +225,7 @@
       "createdAt": "2026-05-10T21:12:26.270Z",
       "expiresAt": "2026-05-11T21:12:26.270Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:26.270Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:22.330Z",
       "tag": "animals",
       "tags": [
         "animals",
@@ -275,7 +275,7 @@
       "createdAt": "2026-05-10T09:55:24.437Z",
       "expiresAt": "2026-05-11T09:55:24.437Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:26.270Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:22.330Z",
       "tag": "animals",
       "tags": [
         "animals",
@@ -296,76 +296,18 @@
         "reason": null,
         "reviewedAt": "2026-05-10T09:55:24.437Z"
       }
-    },
-    {
-      "id": 3486916786,
-      "postUrl": "https://t.me/video2/12324?single",
-      "source": {
-        "title": "Мир и Животные",
-        "handle": "video2",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/I_lD-ceyWHo354mJcV5OQASBmHDI-SODnB8xpcS6p20gdYhRaRs_ABUhXHfHFD2sNCdJJAgr9whOHHTnhmAbp8_lZCFHtVvQ5c67Ef8fYVDnMOlZfgcv4R3LM16PNUq4C5tUHnIptmv7GuA5HPnFE1LXhw0q8tTtYAolfK5tXjouPQq_TjjwOPnvJg-MyVwvnSeewM7955puBpzXZs936kmjxbGanakFZJLpDovSE4TM-1owhOOoXuSKQER9KcMrbz_dZgTm2K-Z6v2ulpTTwaF_UVtL86FxiHWm-iWhBfkuMRCMU8Ptkrct90mZCjLIsVs7HD_rd3p6G-zfP3DeXQ.jpg"
-      },
-      "sourceId": "ru:video2",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/c13f267106.mp4?token=WkAvVz4j6WzdTgkUoSs2aTZh3fYCR2ktbey5AGmHE4GAaWYcWfCVb4eopV6SRnXJ127UZVL2z4yG9VcH7feUBHCKiq1Yt5k6wZ5_XIktW6tLNO3Tq4ZRSeSxY5YQSPdyEu2DD9YLJqRkkxU6u09icKHjoW73XDjqyk6K3jttPHlkHvfHmDonS9Zq7RfhBF47Sm8S8CBD-7wqfM-9M8aJhirn6yD3wxThYLIB9faPGQqVqUPWPXq05toHcZJddA3g3dxDrneCvEpA6iUAvvey0AerJQ1i6KoIFKa_5qHnu0LEJIoiHGuVMo5V1AfRF_4s9V6NMRTuKyhzp_azHgw3Bg",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Когда на улице наступила жара",
-      "links": [],
-      "createdAt": "2026-05-10T01:26:36.482Z",
-      "expiresAt": "2026-05-11T01:26:36.482Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:26.270Z",
-      "tag": "animals",
-      "tags": [
-        "animals",
-        "nature"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-10T01:26:36.482Z"
-      }
     }
   ],
   "topSources": [
     {
       "title": "Мир и Животные",
       "handle": "video2",
-      "count": 3
+      "count": 2
     }
   ],
   "keywords": [
     {
-      "value": "когда",
-      "count": 2
-    },
-    {
       "value": "гиперактивный",
-      "count": 1
-    },
-    {
-      "value": "жара",
       "count": 1
     },
     {
@@ -373,7 +315,7 @@
       "count": 1
     },
     {
-      "value": "наступила",
+      "value": "когда",
       "count": 1
     },
     {
@@ -382,10 +324,6 @@
     },
     {
       "value": "поругаться",
-      "count": 1
-    },
-    {
-      "value": "улице",
       "count": 1
     }
   ]

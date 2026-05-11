@@ -356,7 +356,7 @@
       "createdAt": "2026-05-10T21:12:35.281Z",
       "expiresAt": "2026-05-11T21:12:35.281Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:35.281Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:32.543Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -444,7 +444,7 @@
       "createdAt": "2026-05-10T09:55:40.763Z",
       "expiresAt": "2026-05-11T09:55:40.763Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:35.281Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:32.543Z",
       "tag": "crypto",
       "tags": [
         "crypto"
@@ -464,94 +464,22 @@
         "reason": null,
         "reviewedAt": "2026-05-10T09:55:40.763Z"
       }
-    },
-    {
-      "id": 2524851294,
-      "postUrl": "https://t.me/decenter/24920?single",
-      "source": {
-        "title": "DeCenter — блокчейн, биткоин, инвестиции",
-        "handle": "decenter",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/BaICBid_6LQXjz_5RzWePNxRVxE4WOovABMqujAPQV-O-7aKKU4H3-G0D6cWr_k5Q8qsziYBW0Z0tkjYCI5f01wNUwunl18nCdKh_UgIKbbVpmerNRnU07rOXEtMqqusfNPQR-_Qp2uJ-fQr6OJNYMCQcPZvxHbdikbvdA4trZIVD5iKJP5qhP8PARUoLuKKg4aEdqAMr0yUJACBBgt4aQl7HDmxRpnRfOCnV9D8G7gPW7leWNoBP8Q1G3ZfWSnCuNCcPyjRXQ3aygmyV5Avr6gAfPF_ZR6JrPbmmUFwY-lXjlz7MsBvmwHsIsWt6RmByFeodK_iNbTDdCgce7rQ5Q.jpg"
-      },
-      "sourceId": "ru:decenter",
-      "sourceCountryCode": "ru",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/sk9m_f3oUKThWlPqqSQmojB_z0kve_LRPjbq013an4jRecaWimizuruJbkS8fEH1xIGFwjsjH9DRFdjsJtKtO3SYLaXuhvHRT6XKOWUTHnrRdXxsP_cxyL31lIeLwHpfMe4VBebjCHaBn7mW5W3ULKZIa3XSHSzkuKXcyaG9FgLUF41WER7Wcj44Nvqiqs0I5uTs8EtZED8vmL6-f63qzEQ0eJ8eWSj92VxV73E9PNjH2WcSz1MCw9GO2avMBYxJJO0DWlNhcPOWssGc5uG8icaIQscH_CDBgMd6qJ3-HqBLRl8P5CS4EgAfRPQ4-9eDDdINHtWzMfvDB-VAUVlseA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🪙 Доля Ethereum в DeFi с начала года снизилась с 63.5% до примерно 54% — конкуренты пока сильно меньше, но постепенно забирают свои ниши.\n\nBNB Chain растёт за счёт экосистемы Binance, Tron — стейблкоин-расчётов, а Solana — быстрых торговых операций.\n\n@DeCenter",
-      "links": [
-        {
-          "label": "@DeCenter",
-          "url": "https://t.me/DeCenter"
-        }
-      ],
-      "createdAt": "2026-05-09T21:29:48.314Z",
-      "expiresAt": "2026-05-10T21:29:48.314Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T17:20:10.598Z",
-      "tag": "crypto",
-      "tags": [
-        "crypto"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T21:29:48.314Z"
-      }
     }
   ],
   "topSources": [
     {
       "title": "DeCenter — блокчейн, биткоин, инвестиции",
       "handle": "decenter",
-      "count": 4
+      "count": 3
     }
   ],
   "keywords": [
     {
       "value": "decenter",
-      "count": 3
-    },
-    {
-      "value": "примерно",
       "count": 2
     },
     {
       "value": "2013",
-      "count": 1
-    },
-    {
-      "value": "binance",
-      "count": 1
-    },
-    {
-      "value": "chain",
-      "count": 1
-    },
-    {
-      "value": "defi",
-      "count": 1
-    },
-    {
-      "value": "ethereum",
       "count": 1
     },
     {
@@ -563,19 +491,7 @@
       "count": 1
     },
     {
-      "value": "solana",
-      "count": 1
-    },
-    {
-      "value": "tron",
-      "count": 1
-    },
-    {
       "value": "адрес",
-      "count": 1
-    },
-    {
-      "value": "быстрых",
       "count": 1
     },
     {
@@ -587,15 +503,47 @@
       "count": 1
     },
     {
-      "value": "года",
-      "count": 1
-    },
-    {
       "value": "году",
       "count": 1
     },
     {
-      "value": "доля",
+      "value": "другой",
+      "count": 1
+    },
+    {
+      "value": "инцидент",
+      "count": 1
+    },
+    {
+      "value": "команда",
+      "count": 1
+    },
+    {
+      "value": "кошелёк",
+      "count": 1
+    },
+    {
+      "value": "монеты",
+      "count": 1
+    },
+    {
+      "value": "мост",
+      "count": 1
+    },
+    {
+      "value": "около",
+      "count": 1
+    },
+    {
+      "value": "перевели",
+      "count": 1
+    },
+    {
+      "value": "примерно",
+      "count": 1
+    },
+    {
+      "value": "проснулся",
       "count": 1
     }
   ]

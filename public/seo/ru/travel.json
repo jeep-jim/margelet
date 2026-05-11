@@ -259,7 +259,7 @@
       "createdAt": "2026-05-10T17:19:45.510Z",
       "expiresAt": "2026-05-11T17:19:45.510Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:13.953Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:11.291Z",
       "tag": "travel",
       "tags": [
         "travel"
@@ -349,7 +349,7 @@
       "createdAt": "2026-05-10T17:19:34.478Z",
       "expiresAt": "2026-05-11T17:19:34.478Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T17:19:34.478Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:03.243Z",
       "tag": "news",
       "tags": [
         "news",
@@ -398,7 +398,7 @@
       "createdAt": "2026-05-10T17:19:34.478Z",
       "expiresAt": "2026-05-11T17:19:34.478Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T17:19:34.478Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:03.243Z",
       "tag": "news",
       "tags": [
         "news",
@@ -458,7 +458,7 @@
       "createdAt": "2026-05-10T17:19:34.478Z",
       "expiresAt": "2026-05-11T17:19:34.478Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T17:19:34.478Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:03.243Z",
       "tag": "news",
       "tags": [
         "news",
@@ -711,7 +711,7 @@
       "createdAt": "2026-05-10T09:55:39.821Z",
       "expiresAt": "2026-05-11T09:55:39.821Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:34.511Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:31.831Z",
       "tag": "travel",
       "tags": [
         "travel",
@@ -808,7 +808,7 @@
       "createdAt": "2026-05-10T09:55:31.425Z",
       "expiresAt": "2026-05-11T09:55:31.425Z",
       "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:30.432Z",
+      "mediaRefreshedAt": "2026-05-11T04:43:26.594Z",
       "tag": "travel",
       "tags": [
         "travel",
@@ -1025,125 +1025,18 @@
         "reason": null,
         "reviewedAt": "2026-05-10T09:54:49.105Z"
       }
-    },
-    {
-      "id": 210242474,
-      "postUrl": "https://t.me/mskint/15546?single",
-      "source": {
-        "title": "Москва - это интересно",
-        "handle": "mskint",
-        "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/KRpPBVuahifcPlt3ElyOfOsOdda6TSgJy_o5y1wuFQO-L0GTMlXV8CMGCk197NP14FKtNVPoHKnPeI1kv-IkEzumN2nwylWUZvpDuwKDGJ5rQVHwpe93nlw2b4L63BNlvv5AywNh5zzILunfhTJX25AkzAiYvQL5k_41Dtv4ITV0idvc6vP6F5VPpmt66EqEXXvU-FEyN0mZ_4wt7v0HMndSyTSbOJv_Wk9DnYAsJMbnsg_uHqc1xiv-GhF0REqLHpdVUY2sQz54CEJ9_EY_qVib6a1VMJHpuGXTWnuuILEyTcMYzS0Smq4PmzEFneADizKVlyTNAvhkSclQfvtYGw.jpg"
-      },
-      "sourceId": "ru:mskint",
-      "sourceCountryCode": "ru",
-      "contentType": "video",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/e580598cd7.mp4?token=nd7FJpf-b2zkqewTMMMFb8MJIaHvoGL3-oCosnO67aqrwNci9Otz_HPl62wYNdeuoeAblOT7DUBTxvLtNCkegkKzjAvDoDm0YjzqpSnykDodFJ8zpCpdqkW7FXyUkpFP_e-rBWZx8z5N8U8AjOehGTKHyHe4br_3Nl1oapTwJ3hhv0Rfr7obSa_GdN688ZSNVstm7PjrM7y9F7-pP4PHl-tIWfR99eNgVu1KAT_u8WQEBigib-6eTfkF3sUaCDUhNKLUnB1qTh_3hPZM9Px8tX_0-JVEUpR9WE0_elJLmE3RIOHq3bmcBnZ1rpK2JLymxMhqUtPnV0df-v-tcvYSxw",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "🎆 Салют состоялся в Подмосковье у Главного храма Вооруженных сил России",
-      "links": [],
-      "createdAt": "2026-05-10T00:03:44.310Z",
-      "expiresAt": "2026-05-11T00:03:44.310Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:13.953Z",
-      "tag": "travel",
-      "tags": [
-        "travel"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-10T00:03:44.310Z"
-      }
-    },
-    {
-      "id": 1328221110,
-      "postUrl": "https://t.me/varlamov_news/70729?single",
-      "source": {
-        "title": "Varlamov News",
-        "handle": "varlamov_news",
-        "verified": true,
-        "avatar": "https://cdn4.telesco.pe/file/tvUhALBemmHOt4h_IovFWzmfrpiPd_qgdwvYqaWMOdMu07sCr2k-MKIml5zdPIGKU-pZR1BQEYBzaLltDTa6dRvApfHfoBj8-Xak4D9z5FwxuRv7_kxlqYbqf6PJLWkl-ylIe681haI_1Bhqr02f9be1JDcGT2iKeEu3Xeqthy-5-gQI7FX1xRfuETRpl-_Dc21M-lJrMF2oqLJTbIY0_KB9ookF9te0EbcxUntkO5dqqIlaQDPsqG9zkjAZABu7OHc-0pCUOmiFNX9Zpo0i9vncvbZH1A-Qh_wR8ORiLwButY2fRynkyVrly7uoKwEczLzZp1lvBk6KGReV_XSu6g.jpg"
-      },
-      "sourceId": "ru:varlamov_news",
-      "sourceCountryCode": "ru",
-      "contentType": "mixed",
-      "media": [
-        {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/70daba2d2e.mp4?token=iVkXHjqhUXAQRdsv-QN2B8n1MHxBwyR0OoSbmGf-_wvAbgMtjkjDzOF9CqxYSw2-CpwGZjntUd8Z8xFLsgtzWLDSftsTP7o0Ll3FCw-lGdb0XWquXSLq6IcJ3QY4nCfMzPtSCznYPoJIM3VYxK_qr70KHYN9bxwIWciEz2NdYoNmYF75HjIbR3v7d4VlwebhOX_3fYGi8N1spHzs5cNULGeGFi9NWGitQu7sqKzTbfVwpnVv5hIXONhq8y9JgSe-6frIczP9-dJ1BoL1Xgi00tJdFHc0Mlx-5HHKwzfGK_dSWZo73iw9pfl0O5bV_baSfvRBdj7xE3gf0Gf7ogVjog",
-          "poster": null,
-          "mimeType": "video/mp4"
-        },
-        {
-          "id": "video-2",
-          "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/6ecc168c60.mp4?token=QHIEb_wv65Q5RbL0UoNGMndN0nTDH2z5354_-hxGaEIU9ZXooKPhQmzlA3zPxfICQ8P0KmwebAGTUkMxTXqu4LU4dEKUz_04mje1hgX6inq1HNaAQX95pSYFlM7JTFU00ejaCPhU2uLqSczFzL31QqG0WWRuO-W8Ag3ERLfGucUoO_GnL05x3Xfijc_ALKE0NP8SmSFtYL62zqzcXveeWC4ezxzI6Gw6PdabxK-fPFDHa5GMF9WDm1mwAUgsAbMJHZBh8jleiCo7uztG1eCde0HUMA5Hpjh2PYM0F194azLV00m7WMmTQphoMsnETmJu3cgR3NDu2PbA8B7uHxaIdQ",
-          "poster": null,
-          "mimeType": "video/mp4"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Салют в честь Дня Победы отменен по всей Москве, сообщает MSK1.",
-      "links": [],
-      "createdAt": "2026-05-09T23:31:15.937Z",
-      "expiresAt": "2026-05-10T23:31:15.937Z",
-      "ttlHours": 24,
-      "mediaRefreshedAt": "2026-05-10T21:12:05.273Z",
-      "tag": "news",
-      "tags": [
-        "news",
-        "travel",
-        "people"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-05-09T23:31:15.937Z"
-      }
     }
   ],
   "topSources": [
     {
       "title": "Varlamov News",
       "handle": "varlamov_news",
-      "count": 10
+      "count": 9
     },
     {
       "title": "Москва - это интересно",
       "handle": "mskint",
-      "count": 4
+      "count": 3
     },
     {
       "title": "Туту",
@@ -1174,10 +1067,6 @@
       "count": 5
     },
     {
-      "value": "вооруженных",
-      "count": 4
-    },
-    {
       "value": "спрудс",
       "count": 4
     },
@@ -1195,6 +1084,10 @@
     },
     {
       "value": "волков",
+      "count": 3
+    },
+    {
+      "value": "вооруженных",
       "count": 3
     },
     {
