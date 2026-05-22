@@ -349,6 +349,15 @@ async function deletePostById(body: Record<string, unknown>) {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  console.log("ENV CHECK:", {
+    storageMode: process.env.MARGELET_STORAGE_MODE,
+    hasGitHubToken: !!process.env.GITHUB_TOKEN,
+    owner: process.env.GITHUB_OWNER,
+    repo: process.env.GITHUB_REPO,
+    method: req.method,
+    bodyKeys: req.body ? Object.keys(req.body) : null,
+  });  
+
   try {
     const body =
       typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};

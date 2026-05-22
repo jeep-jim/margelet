@@ -226,6 +226,14 @@ async function getCommitTreeSha(commitSha: string) {
 }
 
 async function commitFiles(files: CommitFile[], message: string) {
+  console.log("🔥 COMMIT FILES CALLED", {
+    files: files.map(f => f.path),
+    message,
+    owner: GITHUB_OWNER,
+    repo: GITHUB_REPO,
+    branch: GITHUB_BRANCH,
+    hasToken: !!GITHUB_TOKEN,
+  });
   const headSha = await getBranchHead();
   const baseTreeSha = await getCommitTreeSha(headSha);
 

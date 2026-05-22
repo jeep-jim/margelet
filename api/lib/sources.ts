@@ -145,6 +145,7 @@ function normalizeSource(value: unknown): TrustedSource | null {
   const countryCode = normalizeCountryCode(
     raw.countryCode,
   ) as CountryCode | null;
+  
   const handle = asString(raw.handle);
   const defaultTag = asString(raw.defaultTag) as ContentTag | null;
 
