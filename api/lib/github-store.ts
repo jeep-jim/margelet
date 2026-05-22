@@ -2,9 +2,9 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const GITHUB_TOKEN = String(
-  process.env.MARGELET_GITHUB_TOKEN || 
-  process.env.GITHUB_TOKEN || 
-  process.env.GH_TOKEN || 
+  process.env.GITHUB_TOKEN ||
+  process.env.GH_TOKEN ||
+  process.env.MARGELET_GITHUB_TOKEN ||
   ""
 ).trim();
 
