@@ -85,7 +85,9 @@ function getAbsolutePath(relativePath: string) {
 }
 
 function isLocalFileMode() {
-  return process.env.MARGELET_STORAGE_MODE !== "github";
+  // Если переменная установлена в "local" — используем локальные файлы
+  // Во всех остальных случаях (включая "github" или пустое значение) — используем GitHub API
+  return process.env.MARGELET_STORAGE_MODE === "local";
 }
 
 function getApiUrl(apiPath: string) {
