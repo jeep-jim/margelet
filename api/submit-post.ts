@@ -1,6 +1,12 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { parseTelegramPostUrl, ingestTelegramPost } from "./lib/telegram.js";
-import type { ContentTag, IngestedPost, Locale, UserRole } from "./lib/contracts.js";
+import {
+  normalizeCountryCode,
+  type ContentTag,
+  type IngestedPost,
+  type Locale,
+  type UserRole,
+} from "./lib/contracts.js";
 import { readFeedFile, writeFeedFile } from "./lib/github-store.js";
 
 type PostStatus = "published" | "pending" | "blocked";
@@ -129,7 +135,13 @@ async function getUserPostsToday(telegramId: string | null, locale: Locale | nul
   const dayStart = getStartOfUtcDay().getTime();
 
   return posts.filter((post) => {
-    if (post.sourceCountryCode !== locale) return false;
+    if (
+      normalizeCountryCode(post.sourceCountryCode) !==
+      normalizeCountryCode(locale)
+    ) {
+      return false;
+    }
+
     if (post.addedBy?.telegramId !== telegramId) return false;
 
     const createdAt = parseDateMs(post.createdAt);

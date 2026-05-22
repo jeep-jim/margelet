@@ -55,56 +55,15 @@ export const SEO_LOCALE_META = {
   zh: { htmlLang: "zh", hreflang: "zh-CN", countryCode: "zh" },
   ms: { htmlLang: "ms", hreflang: "ms-MY", countryCode: "ms" },
 } as const;
-
-/**
- * 🚨 КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ:
- * KK (админка) → kk (логика системы)
- * но теперь система считает это одним countryCode
- */
 export type CountryCode = keyof typeof SEO_LOCALE_META;
-
-/**
- * 🔥 НОРМАЛИЗАЦИЯ ВСЕГО ЧТО ПРИХОДИТ ИЗ АДМИНКИ
- * RU / KK / ZH / mixed → всегда приводится к lowercase ключу системы
- */
-export function normalizeCountryCode(input: unknown): CountryCode {
-  const v = String(input || "").trim().toLowerCase();
-
-  const map: Record<string, CountryCode> = {
-    ru: "ru",
-    uk: "uk",
-    en: "en",
-    in: "in",
-    fa: "fa",
-    tr: "tr",
-    "pt-br": "pt-br",
-
-    // 🇰🇿 Казахстан (ВАЖНО: KK = KZ логически, но хранение единое)
-    kk: "kk",
-    kz: "kk",
-
-    uz: "uz",
-    ae: "ae",
-    eg: "eg",
-    pk: "pk",
-    id: "id",
-    mx: "mx",
-    sa: "sa",
-    es: "es",
-    it: "it",
-    fr: "fr",
-    de: "de",
-    ar: "ar",
-    co: "co",
-    za: "za",
-    ng: "ng",
-    zh: "zh",
-    cn: "zh",
-    ms: "ms",
-  };
-
-  return map[v] || (v as CountryCode);
+export function normalizeCountryCode(
+  value: string | null | undefined
+): string {
+  return String(value || "")
+    .trim()
+    .toLowerCase();
 }
+
 
 /* =========================
    TAGS / POSTS / USERS
@@ -258,3 +217,4 @@ export type IngestedPost = {
     reviewedAt: string | null;
   };
 };
+
