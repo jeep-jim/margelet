@@ -1,7 +1,14 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const GITHUB_TOKEN = String(process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "").trim();
+const GITHUB_TOKEN = String(
+  process.env.MARGELET_GITHUB_TOKEN || 
+  process.env.GITHUB_TOKEN || 
+  process.env.GH_TOKEN || 
+  ""
+).trim();
+
+console.log("[github-store] TOKEN loaded:", !!GITHUB_TOKEN);
 const GITHUB_OWNER = String(process.env.GITHUB_OWNER || "jeep-jim").trim();
 const GITHUB_REPO = String(process.env.GITHUB_REPO || "margelet").trim();
 const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || "main").trim();
