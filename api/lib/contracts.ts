@@ -25,6 +25,38 @@ export type Locale =
   | "zh"
   | "ms";
 
+/**
+ * 🔥 ЕДИНЫЙ СЛОЙ ПРАВИЛ ДЛЯ SEO + COUNTRY MAPPING
+ * Это теперь источник правды для всех countryCode преобразований
+ */
+export const SEO_LOCALE_META = {
+  ru: { htmlLang: "ru", hreflang: "ru-RU", countryCode: "ru" },
+  uk: { htmlLang: "uk", hreflang: "uk-UA", countryCode: "uk" },
+  en: { htmlLang: "en", hreflang: "en-US", countryCode: "en" },
+  in: { htmlLang: "hi", hreflang: "hi-IN", countryCode: "in" },
+  fa: { htmlLang: "fa", hreflang: "fa-IR", countryCode: "fa" },
+  tr: { htmlLang: "tr", hreflang: "tr-TR", countryCode: "tr" },
+  "pt-br": { htmlLang: "pt-BR", hreflang: "pt-BR", countryCode: "pt-br" },
+  kk: { htmlLang: "kk", hreflang: "kk-KZ", countryCode: "kk" },
+  uz: { htmlLang: "uz", hreflang: "uz-UZ", countryCode: "uz" },
+  ae: { htmlLang: "ar", hreflang: "ar-AE", countryCode: "ae" },
+  eg: { htmlLang: "ar", hreflang: "ar-EG", countryCode: "eg" },
+  pk: { htmlLang: "ur", hreflang: "ur-PK", countryCode: "pk" },
+  id: { htmlLang: "id", hreflang: "id-ID", countryCode: "id" },
+  mx: { htmlLang: "es", hreflang: "es-MX", countryCode: "mx" },
+  sa: { htmlLang: "ar", hreflang: "ar-SA", countryCode: "sa" },
+  es: { htmlLang: "es", hreflang: "es-ES", countryCode: "es" },
+  it: { htmlLang: "it", hreflang: "it-IT", countryCode: "it" },
+  fr: { htmlLang: "fr", hreflang: "fr-FR", countryCode: "fr" },
+  de: { htmlLang: "de", hreflang: "de-DE", countryCode: "de" },
+  ar: { htmlLang: "es", hreflang: "es-AR", countryCode: "ar" },
+  co: { htmlLang: "es", hreflang: "es-CO", countryCode: "co" },
+  za: { htmlLang: "en", hreflang: "en-ZA", countryCode: "za" },
+  ng: { htmlLang: "en", hreflang: "en-NG", countryCode: "ng" },
+  zh: { htmlLang: "zh", hreflang: "zh-CN", countryCode: "zh" },
+  ms: { htmlLang: "ms", hreflang: "ms-MY", countryCode: "ms" },
+} as const;
+
 export type FeedTag =
   | "all"
   | "news"
@@ -81,32 +113,11 @@ export type ContentTag = Exclude<FeedTag, "all">;
 export type PostStatus = "published" | "pending" | "blocked";
 export type UserRole = "user" | "channel_owner" | "admin";
 
-export type CountryCode =
-  | "ru"
-  | "uk"
-  | "en"
-  | "in"
-  | "fa"
-  | "tr"
-  | "pt-br"
-  | "kk"
-  | "uz"
-  | "ae"
-  | "eg"
-  | "pk"
-  | "id"
-  | "mx"
-  | "sa"
-  | "es"
-  | "it"
-  | "fr"
-  | "de"
-  | "ar"
-  | "co"
-  | "za"
-  | "ng"
-  | "zh"
-  | "ms";
+/**
+ * 🔥 ЕДИНЫЙ СТАНДАРТ COUNTRY CODE
+ * ВСЕГДА lowercase — это теперь правило системы
+ */
+export type CountryCode = keyof typeof SEO_LOCALE_META;
 
 export type TrustedSourceStatus = "active" | "paused";
 
