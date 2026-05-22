@@ -28,9 +28,10 @@ jobs:
       GITHUB_REPO: margelet
       GITHUB_BRANCH: main
       NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-      MARGELET_STORAGE_MODE: local
+      MARGELET_STORAGE_MODE: github
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-
+      MARGELET_GITHUB_TOKEN: ${{ secrets.MARGELET_GITHUB_TOKEN }}
+  
     steps:
       - name: Checkout
         uses: actions/checkout@v5
