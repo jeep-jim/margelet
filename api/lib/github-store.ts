@@ -565,31 +565,26 @@ export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
 }
 
 export async function writeSourcesFile(data: any) {
-  const updatedAt = new Date().toISOString();
+  const absolutePath = getAbsolutePath(SOURCES_PATH);
 
-  const sourcesArray = Array.isArray(data)
-    ? data
-    : Array.isArray(data?.sources)
-      ? data.sources
-      : [];
+  const safeData =
+    data && Array.isArray(data) ? data : null;
 
-  if (sourcesArray.length === 0) {
+  if (!safeData) {
     console.error("[writeSourcesFile] BLOCKED empty overwrite");
     return;
   }
 
-  const payload = {
-    updatedAt,
-    sources: sourcesArray,
-  };
-
+  await mkdir(path.dirname(absolutePath), { recursive: true });
   await writeFile(
-    "data/sources.json",
-    JSON.stringify(payload, null, 2),
+    absolutePath,
+    stringify({
+      updatedAt: new Date().toISOString(),
+      sources: safeData,
+    }),
     "utf8"
   );
 }
-
 
 export async function readFeedFile<T = unknown>(): Promise<FeedFile<T>> {
   return readRepoJsonFile<FeedFile<T>>(FEED_PATH, {
