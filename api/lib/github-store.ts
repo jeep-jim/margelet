@@ -85,10 +85,7 @@ function getAbsolutePath(relativePath: string) {
 }
 
 function isLocalFileMode() {
-  return (
-    process.env.MARGELET_STORAGE_MODE === "local" ||
-    process.env.GITHUB_ACTIONS === "true"
-  );
+  return process.env.MARGELET_STORAGE_MODE !== "github";
 }
 
 function getApiUrl(apiPath: string) {
@@ -565,24 +562,24 @@ export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
 }
 
 export async function writeSourcesFile(data: any) {
-  const absolutePath = getAbsolutePath(SOURCES_PATH);
-
-  const safeData =
-    data && Array.isArray(data) ? data : null;
-
-  if (!safeData) {
-    console.error("[writeSourcesFile] BLOCKED empty overwrite");
+  if (!Array.isArray(data)) {
+    console.error("[writeSourcesFile] invalid data");
     return;
   }
 
-  await mkdir(path.dirname(absolutePath), { recursive: true });
-  await writeFile(
-    absolutePath,
-    stringify({
-      updatedAt: new Date().toISOString(),
-      sources: safeData,
-    }),
-    "utf8"
+  const payload = {
+    updatedAt: new Date().toISOString(),
+    sources: data,
+  };
+
+  await commitFiles(
+    [
+      {
+        path: SOURCES_PATH,
+        content: stringify(payload),
+      },
+    ],
+    "update sources"
   );
 }
 
