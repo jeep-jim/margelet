@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { parseTelegramPostUrl, ingestTelegramPost } from "./lib/telegram";
-import type { ContentTag, IngestedPost, Locale, UserRole } from "./lib/contracts";
-import { readFeedFile, writeFeedFile } from "./lib/github-store";
+import { parseTelegramPostUrl, ingestTelegramPost } from "./lib/telegram.js";
+import type { ContentTag, IngestedPost, Locale, UserRole } from "./lib/contracts.js";
+import { readFeedFile, writeFeedFile } from "./lib/github-store.js";
 
 type PostStatus = "published" | "pending" | "blocked";
 

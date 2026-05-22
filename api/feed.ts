@@ -4,7 +4,7 @@ import {
   readFeedFile,
   readFeedIndexFile,
   readFeedSnapshotByPath,
-} from "./lib/github-store";
+} from "./lib/github-store.js";
 
 function asString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
