@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { rebuildFeedFromSources } from "./lib/sources.js";
-import type { CountryCode } from "./lib/contracts.js";
+import { rebuildFeedFromSources } from "./lib/sources";
+import type { CountryCode } from "./lib/contracts";
 
 const ADMIN_TELEGRAM_ID = String(process.env.ADMIN_TELEGRAM_ID || "").trim();
 const ADMIN_TELEGRAM_USERNAME = String(process.env.ADMIN_TELEGRAM_USERNAME || "")

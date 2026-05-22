@@ -5,8 +5,8 @@ import {
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
-} from "./lib/github-store.js";
-import type { ContentTag, IngestedPost, TrustedSource } from "./lib/contracts.js";
+} from "./lib/github-store";
+import type { ContentTag, IngestedPost, TrustedSource } from "./lib/contracts";
 
 const ADMIN_TELEGRAM_ID = String(process.env.ADMIN_TELEGRAM_ID || "").trim();
 const ADMIN_TELEGRAM_USERNAME = String(

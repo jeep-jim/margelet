@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/creator/creator.monetization.js";
-import { getBotCopy, BOT_COMMAND_LOCALES } from "../src/lib/i18n/bot.js";
-import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo.js";
+import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/creator/creator.monetization";
+import { getBotCopy, BOT_COMMAND_LOCALES } from "../src/lib/i18n/bot";
+import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo";
 
 type PlacementPlan = "paid" | "barter" | "claim";
 type PlacementStatus = "pending" | "active" | "paused" | "expired" | "canceled";

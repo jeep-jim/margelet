@@ -1,4 +1,4 @@
-import type { IngestedPost } from "./contracts.js";
+import type { IngestedPost } from "./contracts";
 
 export type ParsedTelegramPostUrl = {
   originalUrl: string;

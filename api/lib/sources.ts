@@ -3,14 +3,14 @@ import {
   type CountryCode,
   type IngestedPost,
   type TrustedSource,
-} from "./contracts.js";
-import { ingestTelegramPost } from "./telegram.js";
+} from "./contracts";
+import { ingestTelegramPost } from "./telegram";
 import {
   readFeedFile,
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
-} from "./github-store.js";
+} from "./github-store";
 
 const MAX_IMPORT_CANDIDATES_PER_SOURCE = 10;
 const MAX_REFRESH_POSTS_PER_SOURCE = 3;
