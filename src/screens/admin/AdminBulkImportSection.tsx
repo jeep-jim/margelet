@@ -390,7 +390,7 @@ export function AdminBulkImportSection({
         title: row.title.trim(),
         note: row.note.trim(),
         status: row.active ? "active" : "paused",
-        countryCode,
+        countryCode: countryCode.toLowerCase() as CountryCode,
         tags: normalizedTags,
         defaultTag: parentTags[0] || "other",
       };

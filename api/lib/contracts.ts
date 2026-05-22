@@ -27,7 +27,6 @@ export type Locale =
 
 /**
  * 🔥 ЕДИНЫЙ СЛОЙ ПРАВИЛ ДЛЯ SEO + COUNTRY MAPPING
- * Это теперь источник правды для всех countryCode преобразований
  */
 export const SEO_LOCALE_META = {
   ru: { htmlLang: "ru", hreflang: "ru-RU", countryCode: "ru" },
@@ -49,13 +48,67 @@ export const SEO_LOCALE_META = {
   it: { htmlLang: "it", hreflang: "it-IT", countryCode: "it" },
   fr: { htmlLang: "fr", hreflang: "fr-FR", countryCode: "fr" },
   de: { htmlLang: "de", hreflang: "de-DE", countryCode: "de" },
-  ar: { htmlLang: "es", hreflang: "es-AR", countryCode: "ar" },
+  ar: { htmlLang: "ar", hreflang: "es-AR", countryCode: "ar" },
   co: { htmlLang: "es", hreflang: "es-CO", countryCode: "co" },
   za: { htmlLang: "en", hreflang: "en-ZA", countryCode: "za" },
   ng: { htmlLang: "en", hreflang: "en-NG", countryCode: "ng" },
   zh: { htmlLang: "zh", hreflang: "zh-CN", countryCode: "zh" },
   ms: { htmlLang: "ms", hreflang: "ms-MY", countryCode: "ms" },
 } as const;
+
+/**
+ * 🚨 КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ:
+ * KK (админка) → kk (логика системы)
+ * но теперь система считает это одним countryCode
+ */
+export type CountryCode = keyof typeof SEO_LOCALE_META;
+
+/**
+ * 🔥 НОРМАЛИЗАЦИЯ ВСЕГО ЧТО ПРИХОДИТ ИЗ АДМИНКИ
+ * RU / KK / ZH / mixed → всегда приводится к lowercase ключу системы
+ */
+export function normalizeCountryCode(input: unknown): CountryCode {
+  const v = String(input || "").trim().toLowerCase();
+
+  const map: Record<string, CountryCode> = {
+    ru: "ru",
+    uk: "uk",
+    en: "en",
+    in: "in",
+    fa: "fa",
+    tr: "tr",
+    "pt-br": "pt-br",
+
+    // 🇰🇿 Казахстан (ВАЖНО: KK = KZ логически, но хранение единое)
+    kk: "kk",
+    kz: "kk",
+
+    uz: "uz",
+    ae: "ae",
+    eg: "eg",
+    pk: "pk",
+    id: "id",
+    mx: "mx",
+    sa: "sa",
+    es: "es",
+    it: "it",
+    fr: "fr",
+    de: "de",
+    ar: "ar",
+    co: "co",
+    za: "za",
+    ng: "ng",
+    zh: "zh",
+    cn: "zh",
+    ms: "ms",
+  };
+
+  return map[v] || (v as CountryCode);
+}
+
+/* =========================
+   TAGS / POSTS / USERS
+========================= */
 
 export type FeedTag =
   | "all"
@@ -113,11 +166,9 @@ export type ContentTag = Exclude<FeedTag, "all">;
 export type PostStatus = "published" | "pending" | "blocked";
 export type UserRole = "user" | "channel_owner" | "admin";
 
-/**
- * 🔥 ЕДИНЫЙ СТАНДАРТ COUNTRY CODE
- * ВСЕГДА lowercase — это теперь правило системы
- */
-export type CountryCode = keyof typeof SEO_LOCALE_META;
+/* =========================
+   TRUSTED SOURCES
+========================= */
 
 export type TrustedSourceStatus = "active" | "paused";
 
@@ -141,6 +192,10 @@ export type TrustedSource = {
   importedPostsCount: number;
   lastRefreshCursorPostId?: number | null;
 };
+
+/* =========================
+   POSTS
+========================= */
 
 export type IngestedPost = {
   id: number;
