@@ -18,7 +18,36 @@ const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 const ADMIN_HIDDEN_PATH = "/jim/admin";
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
+
 const SITE_ORIGIN = "https://www.margelet.space";
+
+const COUNTRY_CODES = new Set([
+  "ru",
+  "uk",
+  "en",
+  "in",
+  "fa",
+  "de",
+  "es",
+  "tr",
+  "fr",
+  "it",
+  "pt-br",
+  "kk",
+  "uz",
+  "ae",
+  "eg",
+  "pk",
+  "id",
+  "mx",
+  "sa",
+  "ar",
+  "co",
+  "za",
+  "ng",
+  "zh",
+  "ms",
+]);
 
 function ensureCanonicalLink(href: string) {
   let element = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -186,6 +215,12 @@ function parseSourcePath(pathname: string) {
   const [handle] = parts;
 
   if (!handle || handle === "jim") {
+    return null;
+  }
+
+  // IMPORTANT:
+  // country routes are NOT source handles
+  if (COUNTRY_CODES.has(handle.toLowerCase())) {
     return null;
   }
 
@@ -436,6 +471,16 @@ export default function App() {
       return;
     }
 
+    const countryPath = normalizePathname(window.location.pathname)
+      .split("/")
+      .filter(Boolean)[0];
+
+    if (countryPath && COUNTRY_CODES.has(countryPath.toLowerCase())) {
+      setLocale(countryPath.toLowerCase() as Locale);
+      setCurrent("feed");
+      return;
+    }
+
     setCurrent("feed");
   }, []);
 
@@ -461,6 +506,17 @@ export default function App() {
       if (currentSource) {
         setSelectedSourceHandle(currentSource);
         setCurrent("source");
+        return;
+      }
+
+      const countryPath = pathname
+        .split("/")
+        .filter(Boolean)[0];
+
+      if (countryPath && COUNTRY_CODES.has(countryPath.toLowerCase())) {
+        setLocale(countryPath.toLowerCase() as Locale);
+        setSelectedSourceHandle(null);
+        setCurrent("feed");
         return;
       }
 
@@ -679,11 +735,13 @@ export default function App() {
 
       {shouldShowIntro ? (
         <IntroScreen
+          compact
           locale={locale}
           onChangeLocale={setLocale}
           onFinish={handleFinishIntro}
         />
       ) : (
+
         <>
           {current === "intro" ? (
             <IntroScreen

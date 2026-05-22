@@ -510,6 +510,7 @@ export function FeedScreen({
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
+  const [renderCount, setRenderCount] = useState(120);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -769,7 +770,6 @@ export function FeedScreen({
         [postId]: now,
       };
 
-      writeSeenPostsToStorage(next);
       return next;
     });
   }, []);  
@@ -808,18 +808,6 @@ export function FeedScreen({
 
     return visibleRatio >= 0.18 || centerInsideViewport || crossesReadingZone;
   }, []);
-
-  const scanVisibleFeedCards = useCallback(() => {
-    if (typeof window === "undefined") return;
-    if (tagsOpen || viewerIndex !== null || textReaderPost !== null) return;
-
-    feedCardNodesRef.current.forEach((node, postId) => {
-      if (currentSessionSeenPostIdsRef.current.has(postId)) return;
-      if (isFeedCardVisibleEnough(node)) {
-        markPostSeen(postId);
-      }
-    });
-  }, [isFeedCardVisibleEnough, markPostSeen, tagsOpen, viewerIndex, textReaderPost]);
 
   const registerFeedCardNode = useCallback(
     (postId: number, node: HTMLDivElement | null) => {
@@ -916,7 +904,10 @@ export function FeedScreen({
   const visiblePosts = useMemo(() => {
     let list = [...safePosts];
 
-    const selectedCountries = feedSettings.countries.map((item) => item.toLowerCase());
+    const selectedCountries = feedSettings.countries.map((item) =>
+      item.toLowerCase()
+    );
+
     if (selectedCountries.length > 0) {
       list = list.filter((post) =>
         selectedCountries.includes(
@@ -928,9 +919,19 @@ export function FeedScreen({
     if (feedSettings.mediaMode !== "all") {
       list = list.filter((post) => {
         const detectedMode = detectPostMediaMode(post);
-        if (feedSettings.mediaMode === "text") return detectedMode === "text";
-        if (feedSettings.mediaMode === "photo") return detectedMode === "photo";
-        if (feedSettings.mediaMode === "video") return detectedMode === "video";
+
+        if (feedSettings.mediaMode === "text") {
+          return detectedMode === "text";
+        }
+
+        if (feedSettings.mediaMode === "photo") {
+          return detectedMode === "photo";
+        }
+
+        if (feedSettings.mediaMode === "video") {
+          return detectedMode === "video";
+        }
+
         return true;
       });
     }
@@ -938,6 +939,7 @@ export function FeedScreen({
     if (selectedTags.length > 0) {
       list = list.filter((post) => {
         const postTags = getResolvedTags(post);
+
         return postTags.some((tag) => selectedTags.includes(tag));
       });
     }
@@ -977,7 +979,8 @@ export function FeedScreen({
 
       seen.sort((a, b) => {
         const aSeenAt = initialSeenPosts[a.id] || 0;
-        const bSeenAt = initialSeenPosts[b.id] || 0;        
+        const bSeenAt = initialSeenPosts[b.id] || 0;
+
         return aSeenAt - bSeenAt;
       });
 
@@ -985,70 +988,44 @@ export function FeedScreen({
         ...interleavePostsBySource(unseen, locale),
         ...seen,
       ];
-    }    
+    }
 
     return list;
-  }, [safePosts, feedSettings, selectedTags, searchQuery, locale, initialSeenPosts]);
+  }, [
+    safePosts,
+    feedSettings,
+    selectedTags,
+    searchQuery,
+    locale,
+    initialSeenPosts,
+  ]);
 
   useEffect(() => {
-    if (typeof window === "undefined" || tagsOpen || viewerIndex !== null || textReaderPost !== null) {
-      return;
-    }
+      setRenderCount(120);
+    }, [selectedTags, searchQuery, feedSettings, locale]);
 
-    let scrollFrame = 0;
+    useEffect(() => {
+    const handleLoadMore = () => {
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
 
-    const scheduleScan = () => {
-      if (scrollFrame) return;
+      const distanceFromBottom = fullHeight - (scrollTop + viewportHeight);
 
-      scrollFrame = window.requestAnimationFrame(() => {
-        scrollFrame = 0;
-        scanVisibleFeedCards();
-      });
+      if (distanceFromBottom < 1200) {
+        setRenderCount((prev) => {
+          if (prev >= visiblePosts.length) return prev;
+          return Math.min(prev + 60, visiblePosts.length);
+        });
+      }
     };
 
-    let observer: IntersectionObserver | null = null;
-
-    if ("IntersectionObserver" in window) {
-      observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (!entry.isIntersecting) continue;
-
-            const node = entry.target as HTMLElement;
-            const postId = Number(node.dataset.feedPostId);
-            if (!Number.isFinite(postId)) continue;
-
-            if (isFeedCardVisibleEnough(node)) {
-              markPostSeen(postId);
-            }
-          }
-        },
-        {
-          threshold: [0, 0.01, 0.1, 0.25],
-          rootMargin: "0px 0px 0px 0px",
-        }
-      );
-
-      feedCardNodesRef.current.forEach((node, postId) => {
-        if (!currentSessionSeenPostIdsRef.current.has(postId)) {
-          observer?.observe(node);
-        }
-      });
-    }
-
-    scheduleScan();
-    window.addEventListener("scroll", scheduleScan, { passive: true });
-    window.addEventListener("resize", scheduleScan);
-    window.addEventListener("orientationchange", scheduleScan);
+    window.addEventListener("scroll", handleLoadMore, { passive: true });
 
     return () => {
-      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
-      observer?.disconnect();
-      window.removeEventListener("scroll", scheduleScan);
-      window.removeEventListener("resize", scheduleScan);
-      window.removeEventListener("orientationchange", scheduleScan);
+      window.removeEventListener("scroll", handleLoadMore);
     };
-  }, [visiblePosts, scanVisibleFeedCards, isFeedCardVisibleEnough, markPostSeen, tagsOpen, viewerIndex, textReaderPost]);
+  }, [visiblePosts.length]);
 
   const viewerPosts = useMemo(() => {
     return visiblePosts.filter((post) => isVideoViewerPost(post));
@@ -1414,7 +1391,7 @@ export function FeedScreen({
       ) : null}
 
       <div className="mx-auto w-full max-w-[570px]">
-        {visiblePosts.map((post) => {
+        {visiblePosts.slice(0, renderCount).map((post) => {
           const ownerTelegramId = post.addedBy?.telegramId ?? null;
 
           const isOwner =
