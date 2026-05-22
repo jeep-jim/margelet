@@ -330,7 +330,7 @@ async function deletePostById(body: Record<string, unknown>) {
   const countryPosts = await readAllCountryFeedPosts<IngestedPost>();
   const feedFile = await readFeedFile<IngestedPost>();
   const legacyPosts = Array.isArray(feedFile.posts) ? feedFile.posts : [];
-  const current = countryPosts.length > 0 ? countryPosts : legacyPosts;
+  const current = countryPosts;
 
   if (!current.length) {
     throw new Error(

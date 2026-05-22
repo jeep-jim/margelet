@@ -290,6 +290,20 @@ async function commitFiles(files: CommitFile[], message: string) {
   }
 }
 
+async function safeCommit(files: CommitFile[], message: string) {
+  if (!files.length) {
+    console.error("❌ safeCommit blocked empty files");
+    return;
+  }
+
+  try {
+    await commitFiles(files, message);
+  } catch (err) {
+    console.error("❌ GitHub commit failed:", err);
+    throw err;
+  }
+}
+
 async function persistFiles(files: CommitFile[], message: string) {
   if (isLocalFileMode()) {
     for (const file of files) {
@@ -302,7 +316,7 @@ async function persistFiles(files: CommitFile[], message: string) {
     throw new Error("Missing GITHUB_TOKEN for persistent writes");
   }
 
-  await commitFiles(files, message);
+  await safeCommit(files, message);
 }
 
 function chunkItems<T>(items: T[], size: number) {
@@ -409,10 +423,7 @@ function buildCountryFeedFiles<T>(posts: T[], updatedAt: string) {
   const byCountry = new Map<string, T[]>();
 
   for (const post of posts) {
-    const countryCode = getPostCountryCode(post);
-    if (!countryCode) {
-      continue;
-    }
+    const countryCode = getPostCountryCode(post) || "xx";
 
     const existing = byCountry.get(countryCode) || [];
     existing.push(post);
@@ -651,11 +662,15 @@ export async function readFeedCountryPosts<T = unknown>(countryCode: string): Pr
     return [];
   }
 
-  const chunks = await Promise.all(
+  const chunksRaw = await Promise.allSettled(
     manifest.chunks.map((chunk) =>
       readRepoJsonFile<FeedFile<T> | null>(`data${chunk.path}`, null)
     )
   );
+
+  const chunks = chunksRaw
+    .filter((r) => r.status === "fulfilled")
+    .map((r) => (r as PromiseFulfilledResult<FeedFile<T> | null>).value);  
 
   return chunks.flatMap((chunk) => (chunk && Array.isArray(chunk.posts) ? chunk.posts : []));
 }
@@ -708,7 +723,7 @@ export async function writeFeedFile<T = unknown>(
     );
   }
 
-  await persistFiles(
+  await safeCommit(
     [
       { path: FEED_PATH, content: stringify(payload) },
       { path: PUBLIC_FEED_PATH, content: stringify(payload) },
