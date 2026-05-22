@@ -16,6 +16,7 @@ type AdminPostsSectionProps = {
   posts: IngestedPost[];
   state: "idle" | "loading" | "ready" | "error";
   onDeletePost: (id: number) => Promise<void>;
+  onDeleteMultiplePosts?: (ids: number[]) => Promise<void>;
   telegramUserId: string | null;
   countryCode: string;
 };
@@ -24,6 +25,7 @@ export function AdminPostsSection({
   posts,
   state,
   onDeletePost,
+  onDeleteMultiplePosts,
   telegramUserId,
   countryCode,
 }: AdminPostsSectionProps) {
@@ -33,6 +35,7 @@ export function AdminPostsSection({
     "all" | "published" | "pending" | "blocked"
   >("all");
   const [expandedPostIds, setExpandedPostIds] = useState<number[]>([]);
+  const [selectedPostIds, setSelectedPostIds] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -62,9 +65,48 @@ export function AdminPostsSection({
     );
   };
 
+  const toggleSelect = (id: number) => {
+    setSelectedPostIds((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedPostIds.size === filteredPosts.length) {
+      setSelectedPostIds(new Set());
+    } else {
+      setSelectedPostIds(new Set(filteredPosts.map((p) => p.id)));
+    }
+  };
+
+  const handleDeleteSelected = async () => {
+    if (selectedPostIds.size === 0) return;
+    if (!window.confirm(`Удалить ${selectedPostIds.size} постов?`)) return;
+
+    if (onDeleteMultiplePosts) {
+      await onDeleteMultiplePosts(Array.from(selectedPostIds));
+    } else {
+      for (const id of selectedPostIds) {
+        await onDeletePost(id);
+      }
+    }
+    setSelectedPostIds(new Set());
+  };
+
   const handleDelete = async (id: number) => {
     if (!window.confirm("Удалить пост?")) return;
     await onDeletePost(id);
+    setSelectedPostIds((prev) => {
+      const newSet = new Set(prev);
+      newSet.delete(id);
+      return newSet;
+    });
   };
 
   const handleDeleteChannel = async (handle: string) => {
@@ -83,11 +125,14 @@ export function AdminPostsSection({
     });
 
     const channelPosts = posts.filter((post) => post.source.handle === handle);
-
     for (const post of channelPosts) {
       await onDeletePost(post.id);
     }
+    setSelectedPostIds(new Set());
   };
+
+  const isAllSelected = filteredPosts.length > 0 && selectedPostIds.size === filteredPosts.length;
+  const isSomeSelected = selectedPostIds.size > 0;
 
   return (
     <AdminSectionCard
@@ -99,6 +144,16 @@ export function AdminPostsSection({
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
           {filteredPosts.length} posts
         </div>
+      }
+      right={
+        isSomeSelected ? (
+          <button
+            onClick={handleDeleteSelected}
+            className="rounded-full bg-red-500/90 px-3 py-1.5 text-xs text-white transition hover:bg-red-600"
+          >
+            🗑️ Удалить выбранные ({selectedPostIds.size})
+          </button>
+        ) : null
       }
     >
       <div className="mb-3 flex flex-wrap gap-2">
@@ -126,68 +181,93 @@ export function AdminPostsSection({
         ))}
       </div>
 
-      <input
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Поиск по каналу, ссылке, пользователю, тексту..."
-        className="mb-4 w-full rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
-      />
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Поиск по каналу, ссылке, пользователю, тексту..."
+          className="flex-1 rounded-2xl border border-white/10 bg-[#1a1b24] px-4 py-3 text-white outline-none placeholder:text-white/35"
+        />
+        
+        {filteredPosts.length > 0 && (
+          <button
+            onClick={toggleSelectAll}
+            className="rounded-full bg-white/10 px-4 py-3 text-sm text-white transition hover:bg-white/15"
+          >
+            {isAllSelected ? "Снять все" : "Выделить все"}
+          </button>
+        )}
+      </div>
 
       <div className="grid gap-2 lg:grid-cols-2">
         {filteredPosts.map((post) => {
           const status = post.status || "published";
           const isExpanded = expandedPostIds.includes(post.id);
+          const isSelected = selectedPostIds.has(post.id);
           const preview = getPreviewUrl(post);
 
           return (
             <div
               key={post.id}
-              className="w-full overflow-hidden rounded-[18px] border border-white/10 bg-[#151722] px-3 py-2"
+              className={`w-full overflow-hidden rounded-[18px] border px-3 py-2 transition ${
+                isSelected
+                  ? "border-blue-500 bg-blue-500/10"
+                  : "border-white/10 bg-[#151722]"
+              }`}
             >
-              <button
-                type="button"
-                onClick={() => toggleExpanded(post.id)}
-                className="flex w-full min-w-0 items-center justify-between gap-2 text-left"
-              >
-                <div className="h-12 w-12 shrink-0 overflow-hidden rounded-2xl bg-black/30">
-                  {preview ? (
-                    <img
-                      src={preview}
-                      alt={post.source.title}
-                      className="h-full w-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center text-[10px] text-white/25">
-                      no
-                    </div>
-                  )}
-                </div>
-
-                <div className="min-w-0 flex-1 overflow-hidden">
-                  <div className="truncate text-sm font-semibold text-white">
-                    {post.source.title}
-                  </div>
-                  <div className="truncate text-xs text-white/55">
-                    @{post.source.handle}
-                  </div>
-                </div>
-
-                <div className="shrink-0 rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
-                  {status === "published" ? "✔" : getStatusLabel(status)}
-                </div>
-
-                <div
-                  className={`ml-1 shrink-0 text-white/60 transition ${
-                    isExpanded ? "rotate-180" : ""
-                  }`}
+              <div className="flex items-start gap-2">
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={() => toggleSelect(post.id)}
+                  className="mt-3 h-4 w-4 shrink-0 rounded border-white/30 bg-transparent accent-blue-500"
+                />
+                
+                <button
+                  type="button"
+                  onClick={() => toggleExpanded(post.id)}
+                  className="flex flex-1 min-w-0 items-center justify-between gap-2 text-left"
                 >
-                  ▾
-                </div>
-              </button>
+                  <div className="h-12 w-12 shrink-0 overflow-hidden rounded-2xl bg-black/30">
+                    {preview ? (
+                      <img
+                        src={preview}
+                        alt={post.source.title}
+                        className="h-full w-full object-cover"
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center text-[10px] text-white/25">
+                        no
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <div className="truncate text-sm font-semibold text-white">
+                      {post.source.title}
+                    </div>
+                    <div className="truncate text-xs text-white/55">
+                      @{post.source.handle}
+                    </div>
+                  </div>
+
+                  <div className="shrink-0 rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
+                    {status === "published" ? "✔" : getStatusLabel(status)}
+                  </div>
+
+                  <div
+                    className={`ml-1 shrink-0 text-white/60 transition ${
+                      isExpanded ? "rotate-180" : ""
+                    }`}
+                  >
+                    ▾
+                  </div>
+                </button>
+              </div>
 
               {isExpanded ? (
-                <div className="mt-3 border-t border-white/10 pt-3">
+                <div className="mt-3 border-t border-white/10 pl-6 pt-3">
                   <div className="flex flex-wrap gap-1.5">
                     <div className="rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
                       {getContentTypeLabel(post.contentType)}

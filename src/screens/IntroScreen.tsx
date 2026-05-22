@@ -9,6 +9,7 @@ type Props = {
   locale: SiteLocale;
   onChangeLocale: (locale: SiteLocale) => void;
   onFinish: () => void;
+  compact?: boolean;
 };
 
 type IntroCopy = {
@@ -642,9 +643,17 @@ function getSortedLocales() {
   return sorted;
 }
 
-export function IntroScreen({ locale, onChangeLocale, onFinish }: Props) {
+export function IntroScreen({
+  locale,
+  onChangeLocale,
+  onFinish,
+  compact = false,
+}: Props) {
+
   const intro = INTRO_COPY[locale] ?? INTRO_COPY.en;
-  const pages = intro.slides;
+  const pages = compact
+    ? [intro.slides[0]]
+    : intro.slides;
   const [index, setIndex] = React.useState(0);
   const isLast = index === pages.length - 1;
   const localeOptions = React.useMemo(() => getSortedLocales(), []);

@@ -11,7 +11,7 @@ const FEED_PATH = "data/feed.json";
 const PUBLIC_FEED_PATH = "public/feed.json";
 const FEEDS_INDEX_PATH = "data/feeds/index.json";
 const PUBLIC_FEEDS_INDEX_PATH = "public/feeds/index.json";
-const COUNTRY_CHUNK_SIZE = 250;
+const COUNTRY_CHUNK_SIZE = 2000;
 
 export type FeedFile<T = unknown> = {
   updatedAt: string;
@@ -564,17 +564,32 @@ export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
   });
 }
 
-export async function writeSourcesFile<T = unknown>(sources: T[]) {
-  const payload = {
-    updatedAt: new Date().toISOString(),
-    sources,
-  } satisfies SourcesFile<T>;
+export async function writeSourcesFile(data: any) {
+  const updatedAt = new Date().toISOString();
 
-  await persistFiles(
-    [{ path: SOURCES_PATH, content: stringify(payload) }],
-    `Update sources.json (${sources.length})`
+  const sourcesArray = Array.isArray(data)
+    ? data
+    : Array.isArray(data?.sources)
+      ? data.sources
+      : [];
+
+  if (sourcesArray.length === 0) {
+    console.error("[writeSourcesFile] BLOCKED empty overwrite");
+    return;
+  }
+
+  const payload = {
+    updatedAt,
+    sources: sourcesArray,
+  };
+
+  await writeFile(
+    "data/sources.json",
+    JSON.stringify(payload, null, 2),
+    "utf8"
   );
 }
+
 
 export async function readFeedFile<T = unknown>(): Promise<FeedFile<T>> {
   return readRepoJsonFile<FeedFile<T>>(FEED_PATH, {
