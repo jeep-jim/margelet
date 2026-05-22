@@ -8,7 +8,13 @@ const GITHUB_TOKEN = String(
   ""
 ).trim();
 
-console.log("[github-store] TOKEN loaded:", !!GITHUB_TOKEN);
+console.log("[github-store] TOKEN loaded from env:", {
+  hasMargeletGitHubToken: !!process.env.MARGELET_GITHUB_TOKEN,
+  hasGitHubToken: !!process.env.GITHUB_TOKEN,
+  hasGH_TOKEN: !!process.env.GH_TOKEN,
+  finalTokenLoaded: !!GITHUB_TOKEN
+});
+
 const GITHUB_OWNER = String(process.env.GITHUB_OWNER || "jeep-jim").trim();
 const GITHUB_REPO = String(process.env.GITHUB_REPO || "margelet").trim();
 const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || "main").trim();
