@@ -123,13 +123,13 @@ function getPlacementId(ownerTelegramId: string, handle: string, country: string
 
 const CLAIM_PRICING_LABEL_BY_LOCALE: Record<string, string> = {
   ru: "подтверждение владения",
-  uk: "підтвердження власності",
-  en: "ownership claim",
+  ua: "підтвердження власності",
+  us: "ownership claim",
   in: "ownership claim",
-  fa: "تأیید مالکیت",
+  ir: "تأیید مالکیت",
   tr: "sahiplik onayı",
-  "pt-br": "confirmação de propriedade",
-  kk: "иелікті растау",
+  br: "confirmação de propriedade",
+  kz: "иелікті растау",
   uz: "egalikni tasdiqlash",
   ae: "تأكيد الملكية",
   eg: "تأكيد الملكية",
@@ -145,19 +145,19 @@ const CLAIM_PRICING_LABEL_BY_LOCALE: Record<string, string> = {
   co: "confirmación de propiedad",
   za: "ownership claim",
   ng: "ownership claim",
-  zh: "所有权确认",
-  ms: "pengesahan pemilikan",
+  cn: "所有权确认",
+  my: "pengesahan pemilikan",
 };
 
 const CLAIM_CREATED_BY_LOCALE: Record<string, (handle: string) => string> = {
   ru: (handle) => `Заявка на подтверждение канала @${handle} создана.\n\nАдмин проверит владение и привяжет канал к вашему Telegram.`,
-  uk: (handle) => `Заявку на підтвердження каналу @${handle} створено.\n\nАдмін перевірить право власності й прив’яже канал до вашого Telegram.`,
-  en: (handle) => `Ownership claim for @${handle} has been created.\n\nAdmin will review it and link the channel to your Telegram account.`,
+  ua: (handle) => `Заявку на підтвердження каналу @${handle} створено.\n\nАдмін перевірить право власності й прив’яже канал до вашого Telegram.`,
+  us: (handle) => `Ownership claim for @${handle} has been created.\n\nAdmin will review it and link the channel to your Telegram account.`,
   in: (handle) => `@${handle} के लिए ownership claim बन गया है।\n\nAdmin इसे check करेगा और channel को आपके Telegram से link करेगा।`,
-  fa: (handle) => `درخواست تأیید مالکیت برای @${handle} ساخته شد.\n\nادمین آن را بررسی می‌کند و کانال را به Telegram شما وصل می‌کند.`,
+  ir: (handle) => `درخواست تأیید مالکیت برای @${handle} ساخته شد.\n\nادمین آن را بررسی می‌کند و کانال را به Telegram شما وصل می‌کند.`,
   tr: (handle) => `@${handle} için sahiplik onayı oluşturuldu.\n\nAdmin kontrol edip kanalı Telegram hesabınıza bağlayacak.`,
-  "pt-br": (handle) => `A confirmação de propriedade de @${handle} foi criada.\n\nO admin vai revisar e vincular o canal ao seu Telegram.`,
-  kk: (handle) => `@${handle} арнасына иелікті растау өтінімі жасалды.\n\nАдмин тексеріп, арнаны Telegram аккаунтыңызға байланыстырады.`,
+  br: (handle) => `A confirmação de propriedade de @${handle} foi criada.\n\nO admin vai revisar e vincular o canal ao seu Telegram.`,
+  kz: (handle) => `@${handle} арнасына иелікті растау өтінімі жасалды.\n\nАдмин тексеріп, арнаны Telegram аккаунтыңызға байланыстырады.`,
   uz: (handle) => `@${handle} kanali uchun egalikni tasdiqlash so‘rovi yaratildi.\n\nAdmin tekshiradi va kanalni Telegram akkauntingizga bog‘laydi.`,
   ae: (handle) => `تم إنشاء طلب تأكيد ملكية القناة @${handle}.\n\nسيراجعه الأدمن ويربط القناة بحساب Telegram الخاص بك.`,
   eg: (handle) => `تم إنشاء طلب تأكيد ملكية القناة @${handle}.\n\nالأدمن هيراجعه ويربط القناة بحساب Telegram الخاص بك.`,
@@ -173,8 +173,8 @@ const CLAIM_CREATED_BY_LOCALE: Record<string, (handle: string) => string> = {
   co: (handle) => `Se creó la confirmación de propiedad para @${handle}.\n\nEl admin la revisará y vinculará el canal a tu Telegram.`,
   za: (handle) => `Ownership claim for @${handle} has been created.\n\nAdmin will review it and link the channel to your Telegram account.`,
   ng: (handle) => `Ownership claim for @${handle} has been created.\n\nAdmin will review it and link the channel to your Telegram account.`,
-  zh: (handle) => `@${handle} 的所有权确认申请已创建。\n\n管理员会审核并将频道绑定到你的 Telegram。`,
-  ms: (handle) => `Pengesahan pemilikan untuk @${handle} telah dibuat.\n\nAdmin akan menyemak dan memautkan saluran ke Telegram anda.`,
+  cn: (handle) => `@${handle} 的所有权确认申请已创建。\n\n管理员会审核并将频道绑定到你的 Telegram。`,
+  my: (handle) => `Pengesahan pemilikan untuk @${handle} telah dibuat.\n\nAdmin akan menyemak dan memautkan saluran ke Telegram anda.`,
 };
 
 function resolveClaimLocale(languageCode?: string | null, country?: string | null) {
@@ -182,24 +182,24 @@ function resolveClaimLocale(languageCode?: string | null, country?: string | nul
   if (CLAIM_CREATED_BY_LOCALE[byCountry]) return byCountry;
 
   const lang = String(languageCode || "").toLowerCase();
-  if (lang.startsWith("pt")) return "pt-br";
+  if (lang.startsWith("pt")) return "br";
   if (lang.startsWith("ru")) return "ru";
-  if (lang.startsWith("uk")) return "uk";
+  if (lang.startsWith("uk")) return "ua";
   if (lang.startsWith("de")) return "de";
   if (lang.startsWith("es")) return "es";
   if (lang.startsWith("tr")) return "tr";
   if (lang.startsWith("fr")) return "fr";
   if (lang.startsWith("it")) return "it";
   if (lang.startsWith("id")) return "id";
-  if (lang.startsWith("fa")) return "fa";
+  if (lang.startsWith("fa")) return "ir";
   if (lang.startsWith("ar")) return "ae";
   if (lang.startsWith("ur")) return "pk";
   if (lang.startsWith("hi")) return "in";
-  if (lang.startsWith("kk")) return "kk";
+  if (lang.startsWith("kk")) return "kz";
   if (lang.startsWith("uz")) return "uz";
-  if (lang.startsWith("ms")) return "ms";
-  if (lang.startsWith("zh")) return "zh";
-  return "en";
+  if (lang.startsWith("ms")) return "my";
+  if (lang.startsWith("zh")) return "cn";
+  return "us";
 }
 
 function getClaimPricingLabel(country?: string | null) {

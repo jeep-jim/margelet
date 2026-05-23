@@ -417,13 +417,13 @@ const LOCALE_SHORT: Record<Locale, string> = {
 
 const COUNTRY_LABELS: Record<string, { label: string; flag: string }> = {
   ru: { label: "Русский", flag: "🇷🇺" },
-  uk: { label: "Українська", flag: "🇺🇦" },
-  en: { label: "English", flag: "🇺🇸" },
+  ua: { label: "Українська", flag: "🇺🇦" },
+  us: { label: "English", flag: "🇺🇸" },
   in: { label: "हिन्दी (Hindi)", flag: "🇮🇳" },
-  fa: { label: "فارسی (Persian)", flag: "🇮🇷" },
+  ir: { label: "فارسی (Persian)", flag: "🇮🇷" },
   tr: { label: "Türkçe", flag: "🇹🇷" },
-  "pt-br": { label: "Português (Brasil)", flag: "🇧🇷" },
-  kk: { label: "Қазақша", flag: "🇰🇿" },
+  br: { label: "Português (Brasil)", flag: "🇧🇷" },
+  kz: { label: "Қазақша", flag: "🇰🇿" },
   uz: { label: "Oʻzbek", flag: "🇺🇿" },
   ae: { label: "العربية (UAE)", flag: "🇦🇪" },
   eg: { label: "العربية (Egypt)", flag: "🇪🇬" },
@@ -439,8 +439,8 @@ const COUNTRY_LABELS: Record<string, { label: string; flag: string }> = {
   co: { label: "Español (Colombia)", flag: "🇨🇴" },
   za: { label: "English (South Africa)", flag: "🇿🇦" },
   ng: { label: "English (Nigeria)", flag: "🇳🇬" },
-  zh: { label: "中文 (Chinese)", flag: "🇨🇳" },
-  ms: { label: "Bahasa Melayu", flag: "🇲🇾" },
+  cn: { label: "中文 (Chinese)", flag: "🇨🇳" },
+  my: { label: "Bahasa Melayu", flag: "🇲🇾" },
 };
 
 function useThemeMode(): Theme {

@@ -731,17 +731,6 @@ export function IntroScreen({
                 </AnimatePresence>
               </div>
 
-              <div className="flex justify-center gap-2">
-                {pages.map((_, i: number) => (
-                  <div
-                    key={i}
-                    className={`h-2 w-2 rounded-full ${
-                      i === index ? "bg-white" : "bg-[#516679]"
-                    }`}
-                  />
-                ))}
-              </div>
-
               <div className="flex justify-center">
                 <Button
                   className="min-w-[132px] rounded-2xl px-8 py-3 text-base"
