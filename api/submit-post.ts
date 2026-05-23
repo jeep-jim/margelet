@@ -3,8 +3,8 @@ import { parseTelegramPostUrl, ingestTelegramPost } from "./lib/telegram.js";
 import {
   normalizeCountryCode,
   type ContentTag,
+  type CountryCode,
   type IngestedPost,
-  type Locale,
   type UserRole,
 } from "./lib/contracts.js";
 import { readFeedFile, writeFeedFile } from "./lib/github-store.js";
@@ -25,39 +25,6 @@ function resolveRole(value: unknown): UserRole {
   return "user";
 }
 
-function resolveLocale(value: unknown): Locale | null {
-  if (
-    value === "ru" ||
-    value === "uk" ||
-    value === "en" ||
-    value === "in" ||
-    value === "fa" ||
-    value === "de" ||
-    value === "es" ||
-    value === "tr" ||
-    value === "fr" ||
-    value === "it" ||
-    value === "pt-br" ||
-    value === "kk" ||
-    value === "uz" ||
-    value === "ae" ||
-    value === "eg" ||
-    value === "pk" ||
-    value === "id" ||
-    value === "mx" ||
-    value === "sa" ||
-    value === "ar" ||
-    value === "co" ||
-    value === "za" ||
-    value === "ng" ||
-    value === "zh" ||
-    value === "ms"
-  ) {
-    return value;
-  }  
-
-    return null;
-  }
 
 function resolveTag(value: unknown): ContentTag {
   return (asCleanString(value) as ContentTag) || "other";
@@ -128,7 +95,10 @@ async function getPostByUrl(postUrl: string): Promise<IngestedPost | null> {
   return posts.find((post) => post.postUrl === postUrl) || null;
 }
 
-async function getUserPostsToday(telegramId: string | null, locale: Locale | null) {
+async function getUserPostsToday(
+  telegramId: string | null,
+  locale: CountryCode | null,
+) {
   if (!telegramId) return 0;
 
   const posts = await getFeedPosts();
@@ -191,7 +161,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const url = asCleanString(body.url);
     const role = resolveRole(body.role);
-    const locale = resolveLocale(body.locale);
+    const locale = normalizeCountryCode(
+      asCleanString(body.locale) || "RU",
+    ) as CountryCode;
 
     const addedByTelegramId = asCleanString(body.addedByTelegramId);
     const addedByUsername = asCleanString(body.addedByUsername);

@@ -1,29 +1,4 @@
-export type CountryCode =
-  | "ru"
-  | "uk"
-  | "en"
-  | "in"
-  | "fa"
-  | "tr"
-  | "pt-br"
-  | "kk"
-  | "uz"
-  | "ae"
-  | "eg"
-  | "pk"
-  | "id"
-  | "mx"
-  | "sa"
-  | "es"
-  | "it"
-  | "fr"
-  | "de"
-  | "ar"
-  | "co"
-  | "za"
-  | "ng"
-  | "zh"
-  | "ms";
+import type { CountryCode } from "../../../api/lib/contracts";
 
 export type Country = {
   code: CountryCode;
@@ -35,15 +10,15 @@ export type Country = {
 export const COUNTRIES: Country[] = [
   // Tier 1
   { code: "ru", label: "Russia", nativeLabel: "Русский", enabled: true },
-  { code: "uk", label: "Ukraine", nativeLabel: "Українська", enabled: true },
+  { code: "ua", label: "Ukraine", nativeLabel: "Українська", enabled: true },
   { code: "in", label: "India", nativeLabel: "हिन्दी", enabled: true },
-  { code: "fa", label: "Iran", nativeLabel: "فارسی", enabled: true },
+  { code: "ir", label: "Iran", nativeLabel: "فارسی", enabled: true },
   { code: "tr", label: "Turkey", nativeLabel: "Türkçe", enabled: true },
-  { code: "pt-br", label: "Brazil", nativeLabel: "Português (Brasil)", enabled: true },
-  { code: "en", label: "United States", nativeLabel: "English (US)", enabled: true },
+  { code: "br", label: "Brazil", nativeLabel: "Português (Brasil)", enabled: true },
+  { code: "us", label: "United States", nativeLabel: "English (US)", enabled: true },
 
   // Tier 2
-  { code: "kk", label: "Kazakhstan", nativeLabel: "Қазақша", enabled: true },
+  { code: "kz", label: "Kazakhstan", nativeLabel: "Қазақша", enabled: true },
   { code: "uz", label: "Uzbekistan", nativeLabel: "Oʻzbek", enabled: true },
   { code: "ae", label: "United Arab Emirates", nativeLabel: "العربية", enabled: true },
   { code: "eg", label: "Egypt", nativeLabel: "العربية", enabled: true },
@@ -63,6 +38,6 @@ export const COUNTRIES: Country[] = [
   { code: "ng", label: "Nigeria", nativeLabel: "English (Nigeria)", enabled: true },
 
   // Extra global expansion
-  { code: "zh", label: "China", nativeLabel: "中文", enabled: true },
-  { code: "ms", label: "Malaysia", nativeLabel: "Bahasa Melayu", enabled: true },
+  { code: "cn", label: "China", nativeLabel: "中文", enabled: true },
+  { code: "my", label: "Malaysia", nativeLabel: "Bahasa Melayu", enabled: true },
 ];

@@ -1,12 +1,12 @@
-export type Locale =
+export type CountryCode =
   | "ru"
-  | "uk"
-  | "en"
+  | "ua"
+  | "us"
   | "in"
-  | "fa"
+  | "ir"
   | "tr"
-  | "pt-br"
-  | "kk"
+  | "br"
+  | "kz"
   | "uz"
   | "ae"
   | "eg"
@@ -22,48 +22,270 @@ export type Locale =
   | "co"
   | "za"
   | "ng"
-  | "zh"
-  | "ms";
+  | "cn"
+  | "my";
 
 /**
- * 🔥 ЕДИНЫЙ СЛОЙ ПРАВИЛ ДЛЯ SEO + COUNTRY MAPPING
+ * 🔥 ЕДИНАЯ SEO + COUNTRY CONFIG СИСТЕМА
+ * ВСЯ СИСТЕМА ИСПОЛЬЗУЕТ ТОЛЬКО ЭТИ COUNTRY CODES
  */
-export const SEO_LOCALE_META = {
-  ru: { htmlLang: "ru", hreflang: "ru-RU", countryCode: "ru" },
-  uk: { htmlLang: "uk", hreflang: "uk-UA", countryCode: "uk" },
-  en: { htmlLang: "en", hreflang: "en-US", countryCode: "en" },
-  in: { htmlLang: "hi", hreflang: "hi-IN", countryCode: "in" },
-  fa: { htmlLang: "fa", hreflang: "fa-IR", countryCode: "fa" },
-  tr: { htmlLang: "tr", hreflang: "tr-TR", countryCode: "tr" },
-  "pt-br": { htmlLang: "pt-BR", hreflang: "pt-BR", countryCode: "pt-br" },
-  kk: { htmlLang: "kk", hreflang: "kk-KZ", countryCode: "kk" },
-  uz: { htmlLang: "uz", hreflang: "uz-UZ", countryCode: "uz" },
-  ae: { htmlLang: "ar", hreflang: "ar-AE", countryCode: "ae" },
-  eg: { htmlLang: "ar", hreflang: "ar-EG", countryCode: "eg" },
-  pk: { htmlLang: "ur", hreflang: "ur-PK", countryCode: "pk" },
-  id: { htmlLang: "id", hreflang: "id-ID", countryCode: "id" },
-  mx: { htmlLang: "es", hreflang: "es-MX", countryCode: "mx" },
-  sa: { htmlLang: "ar", hreflang: "ar-SA", countryCode: "sa" },
-  es: { htmlLang: "es", hreflang: "es-ES", countryCode: "es" },
-  it: { htmlLang: "it", hreflang: "it-IT", countryCode: "it" },
-  fr: { htmlLang: "fr", hreflang: "fr-FR", countryCode: "fr" },
-  de: { htmlLang: "de", hreflang: "de-DE", countryCode: "de" },
-  ar: { htmlLang: "ar", hreflang: "es-AR", countryCode: "ar" },
-  co: { htmlLang: "es", hreflang: "es-CO", countryCode: "co" },
-  za: { htmlLang: "en", hreflang: "en-ZA", countryCode: "za" },
-  ng: { htmlLang: "en", hreflang: "en-NG", countryCode: "ng" },
-  zh: { htmlLang: "zh", hreflang: "zh-CN", countryCode: "zh" },
-  ms: { htmlLang: "ms", hreflang: "ms-MY", countryCode: "ms" },
-} as const;
-export type CountryCode = keyof typeof SEO_LOCALE_META;
+export const SEO_LOCALE_META: Record<
+  CountryCode,
+  {
+    label: string;
+    htmlLang: string;
+    hreflang: string;
+    countryCode: CountryCode;
+  }
+> = {
+  ru: {
+    label: "RU",
+    htmlLang: "ru",
+    hreflang: "ru-RU",
+    countryCode: "ru",
+  },
+
+  ua: {
+    label: "UA",
+    htmlLang: "uk",
+    hreflang: "uk-UA",
+    countryCode: "ua",
+  },
+
+  us: {
+    label: "US",
+    htmlLang: "en",
+    hreflang: "en-US",
+    countryCode: "us",
+  },
+
+  in: {
+    label: "IN",
+    htmlLang: "hi",
+    hreflang: "hi-IN",
+    countryCode: "in",
+  },
+
+  ir: {
+    label: "IR",
+    htmlLang: "fa",
+    hreflang: "fa-IR",
+    countryCode: "ir",
+  },
+
+  tr: {
+    label: "TR",
+    htmlLang: "tr",
+    hreflang: "tr-TR",
+    countryCode: "tr",
+  },
+
+  br: {
+    label: "BR",
+    htmlLang: "pt-BR",
+    hreflang: "pt-BR",
+    countryCode: "br",
+  },
+
+  kz: {
+    label: "KZ",
+    htmlLang: "kk",
+    hreflang: "kk-KZ",
+    countryCode: "kz",
+  },
+
+  uz: {
+    label: "UZ",
+    htmlLang: "uz",
+    hreflang: "uz-UZ",
+    countryCode: "uz",
+  },
+
+  ae: {
+    label: "AE",
+    htmlLang: "ar",
+    hreflang: "ar-AE",
+    countryCode: "ae",
+  },
+
+  eg: {
+    label: "EG",
+    htmlLang: "ar",
+    hreflang: "ar-EG",
+    countryCode: "eg",
+  },
+
+  pk: {
+    label: "PK",
+    htmlLang: "ur",
+    hreflang: "ur-PK",
+    countryCode: "pk",
+  },
+
+  id: {
+    label: "ID",
+    htmlLang: "id",
+    hreflang: "id-ID",
+    countryCode: "id",
+  },
+
+  mx: {
+    label: "MX",
+    htmlLang: "es",
+    hreflang: "es-MX",
+    countryCode: "mx",
+  },
+
+  sa: {
+    label: "SA",
+    htmlLang: "ar",
+    hreflang: "ar-SA",
+    countryCode: "sa",
+  },
+
+  es: {
+    label: "ES",
+    htmlLang: "es",
+    hreflang: "es-ES",
+    countryCode: "es",
+  },
+
+  it: {
+    label: "IT",
+    htmlLang: "it",
+    hreflang: "it-IT",
+    countryCode: "it",
+  },
+
+  fr: {
+    label: "FR",
+    htmlLang: "fr",
+    hreflang: "fr-FR",
+    countryCode: "fr",
+  },
+
+  de: {
+    label: "DE",
+    htmlLang: "de",
+    hreflang: "de-DE",
+    countryCode: "de",
+  },
+
+  ar: {
+    label: "AR",
+    htmlLang: "es",
+    hreflang: "es-AR",
+    countryCode: "ar",
+  },
+
+  co: {
+    label: "CO",
+    htmlLang: "es",
+    hreflang: "es-CO",
+    countryCode: "co",
+  },
+
+  za: {
+    label: "ZA",
+    htmlLang: "en",
+    hreflang: "en-ZA",
+    countryCode: "za",
+  },
+
+  ng: {
+    label: "NG",
+    htmlLang: "en",
+    hreflang: "en-NG",
+    countryCode: "ng",
+  },
+
+  cn: {
+    label: "CN",
+    htmlLang: "zh",
+    hreflang: "zh-CN",
+    countryCode: "cn",
+  },
+
+  my: {
+    label: "MY",
+    htmlLang: "ms",
+    hreflang: "ms-MY",
+    countryCode: "my",
+  },
+};
+
+/**
+ * 🔥 ЕДИНАЯ НОРМАЛИЗАЦИЯ COUNTRY CODE
+ * ВСЯ СИСТЕМА ДОЛЖНА ИСПОЛЬЗОВАТЬ ТОЛЬКО ЕЁ
+ */
+const COUNTRY_CODE_MAP: Record<string, CountryCode> = {
+  ru: "ru",
+
+  ua: "ua",
+  uk: "ua",
+
+  us: "us",
+  en: "us",
+
+  in: "in",
+
+  ir: "ir",
+  fa: "ir",
+
+  tr: "tr",
+
+  br: "br",
+  "pt-br": "br",
+
+  kz: "kz",
+  kk: "kz",
+
+  uz: "uz",
+
+  ae: "ae",
+
+  eg: "eg",
+
+  pk: "pk",
+
+  id: "id",
+
+  mx: "mx",
+
+  sa: "sa",
+
+  es: "es",
+
+  it: "it",
+
+  fr: "fr",
+
+  de: "de",
+
+  ar: "ar",
+
+  co: "co",
+
+  za: "za",
+
+  ng: "ng",
+
+  cn: "cn",
+  zh: "cn",
+
+  my: "my",
+  ms: "my",
+};
+
 export function normalizeCountryCode(
-  value: string | null | undefined
-): string {
-  return String(value || "")
+  value: string | null | undefined,
+): CountryCode {
+  const normalized = String(value || "")
     .trim()
     .toLowerCase();
-}
 
+  return COUNTRY_CODE_MAP[normalized] || "ru";
+}
 
 /* =========================
    TAGS / POSTS / USERS

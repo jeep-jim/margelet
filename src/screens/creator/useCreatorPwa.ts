@@ -5,13 +5,13 @@ import { isIosDevice, isStandaloneMode } from "./creator.utils";
 
 const ANDROID_INSTALL_HINT: Record<Locale, string> = {
   ru: "На Android: открой меню браузера и нажми «Установить приложение» или «Добавить на главный экран».",
-  uk: "На Android: відкрий меню браузера та натисни «Встановити застосунок» або «Додати на головний екран».",
-  en: "On Android: open the browser menu and tap Install app or Add to Home screen.",
+  ua: "На Android: відкрий меню браузера та натисни «Встановити застосунок» або «Додати на головний екран».",
+  us: "On Android: open the browser menu and tap Install app or Add to Home screen.",
   in: "Android पर: ब्राउज़र मेन्यू खोलें और Install app या Add to Home screen दबाएँ.",
-  fa: "در Android: منوی مرورگر را باز کنید و روی «نصب برنامه» یا «افزودن به صفحه اصلی» بزنید.",
+  ir: "در Android: منوی مرورگر را باز کنید و روی «نصب برنامه» یا «افزودن به صفحه اصلی» بزنید.",
   tr: "Android'de: tarayıcı menüsünü açın ve Uygulamayı yükle ya da Ana ekrana ekle seçeneğine dokunun.",
-  "pt-br": "No Android: abra o menu do navegador e toque em Instalar app ou Adicionar à tela inicial.",
-  kk: "Android-та: браузер мәзірін ашып, «Қолданбаны орнату» немесе «Басты экранға қосу» түймесін басыңыз.",
+  br: "No Android: abra o menu do navegador e toque em Instalar app ou Adicionar à tela inicial.",
+  kz: "Android-та: браузер мәзірін ашып, «Қолданбаны орнату» немесе «Басты экранға қосу» түймесін басыңыз.",
   uz: "Android’da: brauzer menyusini ochib, Ilovani o‘rnatish yoki Bosh ekranga qo‘shish tugmasini bosing.",
   ae: "على Android: افتح قائمة المتصفح واضغط «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».",
   eg: "على Android: افتح قائمة المتصفح واضغط «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».",
@@ -27,19 +27,19 @@ const ANDROID_INSTALL_HINT: Record<Locale, string> = {
   co: "En Android: abre el menú del navegador y pulsa Instalar app o Agregar a la pantalla de inicio.",
   za: "On Android: open the browser menu and tap Install app or Add to Home screen.",
   ng: "On Android: open the browser menu and tap Install app or Add to Home screen.",
-  zh: "在 Android 上：打开浏览器菜单，然后点击“安装应用”或“添加到主屏幕”。",
-  ms: "Pada Android: buka menu pelayar dan tekan Pasang aplikasi atau Tambah ke skrin utama.",
+  cn: "在 Android 上：打开浏览器菜单，然后点击“安装应用”或“添加到主屏幕”。",
+  my: "Pada Android: buka menu pelayar dan tekan Pasang aplikasi atau Tambah ke skrin utama.",
 };
 
 const IOS_INSTALL_HINT: Record<Locale, string> = {
   ru: "На iPhone: Поделиться → На экран «Домой».",
-  uk: "На iPhone: Поділитися → На екран «Додому».",
-  en: "On iPhone: Share → Add to Home Screen.",
+  ua: "На iPhone: Поділитися → На екран «Додому».",
+  us: "On iPhone: Share → Add to Home Screen.",
   in: "iPhone पर: Share → Add to Home Screen.",
-  fa: "در iPhone: Share → Add to Home Screen.",
+  ir: "در iPhone: Share → Add to Home Screen.",
   tr: "iPhone’da: Paylaş → Ana Ekrana Ekle.",
-  "pt-br": "No iPhone: Compartilhar → Adicionar à Tela de Início.",
-  kk: "iPhone-да: Бөлісу → Басты экранға қосу.",
+  br: "No iPhone: Compartilhar → Adicionar à Tela de Início.",
+  kz: "iPhone-да: Бөлісу → Басты экранға қосу.",
   uz: "iPhone’da: Ulashish → Bosh ekranga qo‘shish.",
   ae: "على iPhone: مشاركة → إضافة إلى الشاشة الرئيسية.",
   eg: "على iPhone: مشاركة → إضافة إلى الشاشة الرئيسية.",
@@ -55,8 +55,8 @@ const IOS_INSTALL_HINT: Record<Locale, string> = {
   co: "En iPhone: Compartir → Agregar a pantalla de inicio.",
   za: "On iPhone: Share → Add to Home Screen.",
   ng: "On iPhone: Share → Add to Home Screen.",
-  zh: "在 iPhone 上：分享 → 添加到主屏幕。",
-  ms: "Pada iPhone: Kongsi → Tambah ke Skrin Utama.",
+  cn: "在 iPhone 上：分享 → 添加到主屏幕。",
+  my: "Pada iPhone: Kongsi → Tambah ke Skrin Utama.",
 };
 
 function isAndroidDevice() {
@@ -161,12 +161,12 @@ export function useCreatorPwa(locale: Locale) {
     }
 
     if (isIos) {
-      setInstallHintText(IOS_INSTALL_HINT[locale] || IOS_INSTALL_HINT.en);
+      setInstallHintText(IOS_INSTALL_HINT[locale] || IOS_INSTALL_HINT.us);
       return;
     }
 
     if (isAndroid) {
-      setInstallHintText(ANDROID_INSTALL_HINT[locale] || ANDROID_INSTALL_HINT.en);
+      setInstallHintText(ANDROID_INSTALL_HINT[locale] || ANDROID_INSTALL_HINT.us);
     }
   };
 

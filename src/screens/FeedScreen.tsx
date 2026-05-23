@@ -472,7 +472,7 @@ export function FeedScreen({
   openSource: (handle: string) => void;
   isFeedLoading: boolean;
 }) {
-  const copy = FEED_SCREEN_COPY[locale] ?? FEED_SCREEN_COPY.en;
+  const copy = FEED_SCREEN_COPY[locale] ?? FEED_SCREEN_COPY.us;
 
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
   const [textReaderPost, setTextReaderPost] = useState<IngestedPost | null>(null);
@@ -1451,18 +1451,18 @@ export function FeedScreen({
           >
             {(() => {
               const FEED_END = {
-                en: "Refresh feed",
+                us: "Refresh feed",
                 ru: "Обновить ленту",
-                uk: "Оновити стрічку",
+                ua: "Оновити стрічку",
                 in: "Refresh feed",
-                fa: "به‌روزرسانی فید",
+                ir: "به‌روزرسانی فید",
                 de: "Feed aktualisieren",
                 es: "Actualizar feed",
                 tr: "Akışı yenile",
                 fr: "Actualiser le fil",
                 it: "Aggiorna feed",
-                "pt-br": "Atualizar feed",
-                kk: "Лентаны жаңарту",
+                br: "Atualizar feed",
+                kz: "Лентаны жаңарту",
                 uz: "Lentani yangilash",
                 ae: "تحديث الخلاصة",
                 eg: "تحديث الخلاصة",
@@ -1474,11 +1474,11 @@ export function FeedScreen({
                 co: "Actualizar feed",
                 za: "Refresh feed",
                 ng: "Refresh feed",
-                zh: "刷新内容流",
-                ms: "Segarkan feed",
+                cn: "刷新内容流",
+                my: "Segarkan feed",
               } as const;              
 
-              return (FEED_END[locale] ?? FEED_END.en);
+              return (FEED_END[locale] ?? FEED_END.us);
             })()}
           </button>
         </div>

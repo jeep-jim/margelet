@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { COUNTRIES, type CountryCode } from "./admin.countries";
+import { COUNTRIES } from "./admin.countries";
+import type { CountryCode } from "../../../api/lib/contracts";
 
 type AdminCountriesSectionProps = {
   selectedCountryCode: CountryCode;

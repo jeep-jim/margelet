@@ -58,15 +58,15 @@ export function FeedMediaCard({
       play: "Воспроизвести",
       pause: "Пауза",
     },
-    uk: {
+    ua: {
       mute: "Вимкнути звук",
       unmute: "Увімкнути звук",
       play: "Відтворити",
       pause: "Пауза",
     },
-    en: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
+    us: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
     in: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
-    fa: {
+    ir: {
       mute: "بی‌صدا",
       unmute: "با صدا",
       play: "پخش",
@@ -78,13 +78,13 @@ export function FeedMediaCard({
       play: "Oynat",
       pause: "Duraklat",
     },
-    "pt-br": {
+    br: {
       mute: "Silenciar",
       unmute: "Ativar som",
       play: "Reproduzir",
       pause: "Pausar",
     },
-    kk: {
+    kz: {
       mute: "Дыбысты өшіру",
       unmute: "Дыбысты қосу",
       play: "Ойнату",
@@ -165,13 +165,13 @@ export function FeedMediaCard({
     },
     za: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
     ng: { mute: "Mute", unmute: "Unmute", play: "Play", pause: "Pause" },
-    zh: {
+    cn: {
       mute: "静音",
       unmute: "开启声音",
       play: "播放",
       pause: "暂停",
     },
-    ms: {
+    my: {
       mute: "Bisu",
       unmute: "Buka suara",
       play: "Main",
@@ -179,7 +179,7 @@ export function FeedMediaCard({
     },
   } as const;
 
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
   const media = useMemo(() => normalizeMediaList(post), [post]);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);

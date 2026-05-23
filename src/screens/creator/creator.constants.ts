@@ -1,4 +1,4 @@
-import type { Locale } from "../../types/app";
+import type { CountryCode } from "../../../api/lib/contracts";
 
 export const TELEGRAM_BOT_ID = "8298054487";
 export const TG_STORAGE_KEY = "margelet_tg_user";
@@ -6,19 +6,15 @@ export const LANGUAGE_STORAGE_KEY = "margelet_locale";
 export const INTRO_LANGUAGE_STORAGE_KEY = "margelet_intro_locale";
 export const INTRO_SEEN_STORAGE_KEY = "margelet-intro-seen";
 
-export const LOCALE_SHORT: Record<Locale, string> = {
-  en: "EN",
+export const LOCALE_SHORT: Record<CountryCode, string> = {
   ru: "RU",
-  uk: "UA",
+  ua: "UA",
+  us: "US",
   in: "IN",
-  fa: "IR",
-  de: "DE",
-  es: "ES",
+  ir: "IR",
   tr: "TR",
-  fr: "FR",
-  it: "IT",
-  "pt-br": "BR",
-  kk: "KZ",
+  br: "BR",
+  kz: "KZ",
   uz: "UZ",
   ae: "AE",
   eg: "EG",
@@ -26,10 +22,14 @@ export const LOCALE_SHORT: Record<Locale, string> = {
   id: "ID",
   mx: "MX",
   sa: "SA",
+  es: "ES",
+  it: "IT",
+  fr: "FR",
+  de: "DE",
   ar: "AR",
   co: "CO",
   za: "ZA",
   ng: "NG",
-  zh: "CN",
-  ms: "MY",
+  cn: "CN",
+  my: "MY",
 };

@@ -24,7 +24,7 @@ export type FeedScreenCopy = {
 };
 
 export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
-  en: {
+  us: {
     subscriptionsHint:
       "New posts from channels with notifications enabled will appear here",
     emptyTitle: "Nothing found",
@@ -48,7 +48,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     modeVideo: "Видео",
     countriesTitle: "Показывать каналы авторов из других стран:",
   },
-  uk: {
+  ua: {
     subscriptionsHint:
       "Тут будуть нові пости каналів, у яких увімкнено сповіщення",
     emptyTitle: "Нічого не знайдено",
@@ -72,7 +72,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
-  fa: {
+  ir: {
     subscriptionsHint:
       "پست‌های جدید کانال‌هایی که اعلانشان روشن است اینجا ظاهر می‌شوند",
     emptyTitle: "چیزی پیدا نشد",
@@ -144,7 +144,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     modeVideo: "Video",
     countriesTitle: "Mostra canali di altri paesi:",
   },
-  "pt-br": {
+  br: {
     subscriptionsHint:
       "Novos posts dos canais com notificações ativadas aparecerão aqui",
     emptyTitle: "Nada encontrado",
@@ -156,7 +156,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canais de outros países:",
   },
-  kk: {
+  kz: {
     subscriptionsHint:
       "Хабарландыру қосылған арналардың жаңа посттары осында шығады",
     emptyTitle: "Ештеңе табылмады",
@@ -300,7 +300,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
-  zh: {
+  cn: {
     subscriptionsHint: "已开启通知的频道新帖子会出现在这里",
     emptyTitle: "未找到内容",
     emptyText: "试着移除一些标签或清空搜索。",
@@ -311,7 +311,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     modeVideo: "视频",
     countriesTitle: "显示来自其他国家的频道：",
   },
-  ms: {
+  my: {
     subscriptionsHint:
       "Post baharu daripada saluran dengan notifikasi aktif akan muncul di sini",
     emptyTitle: "Tiada apa ditemui",
@@ -328,13 +328,13 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
 function getMyCountryLabel(locale: Locale) {
   const labels: Record<Locale, string> = {
     ru: "мой",
-    uk: "мій",
-    en: "mine",
+    ua: "мій",
+    us: "mine",
     in: "मेरा",
-    fa: "من",
+    ir: "من",
     tr: "benim",
-    "pt-br": "meu",
-    kk: "менің",
+    br: "meu",
+    kz: "менің",
     uz: "meniki",
     ae: "لي",
     eg: "لي",
@@ -350,22 +350,22 @@ function getMyCountryLabel(locale: Locale) {
     co: "mío",
     za: "mine",
     ng: "mine",
-    zh: "我的",
-    ms: "milik saya",
+    cn: "我的",
+    my: "milik saya",
   };
-  return labels[locale] ?? labels.en;
+  return labels[locale] ?? labels.us;
 }
 
 function getMaxCountriesHint(locale: Locale) {
   const labels: Record<Locale, string> = {
     ru: "🌐 В ленту можно добавить до 5 стран",
-    uk: "🌐 У стрічку можна додати до 5 країн",
-    en: "🌐 You can add up to 5 countries to the feed",
+    ua: "🌐 У стрічку можна додати до 5 країн",
+    us: "🌐 You can add up to 5 countries to the feed",
     in: "🌐 फ़ीड में 5 देशों तक जोड़े जा सकते हैं",
-    fa: "🌐 می‌توانید تا ۵ کشور به فید اضافه کنید",
+    ir: "🌐 می‌توانید تا ۵ کشور به فید اضافه کنید",
     tr: "🌐 Akışa en fazla 5 ülke ekleyebilirsin",
-    "pt-br": "🌐 Você pode adicionar até 5 países ao feed",
-    kk: "🌐 Лентаға 5 елге дейін қосуға болады",
+    br: "🌐 Você pode adicionar até 5 países ao feed",
+    kz: "🌐 Лентаға 5 елге дейін қосуға болады",
     uz: "🌐 Lentaga 5 tagacha mamlakat qo‘shish mumkin",
     ae: "🌐 يمكنك إضافة ما يصل إلى 5 دول إلى الخلاصة",
     eg: "🌐 يمكنك إضافة ما يصل إلى 5 دول إلى الخلاصة",
@@ -381,21 +381,21 @@ function getMaxCountriesHint(locale: Locale) {
     co: "🌐 Puedes añadir hasta 5 países al feed",
     za: "🌐 You can add up to 5 countries to the feed",
     ng: "🌐 You can add up to 5 countries to the feed",
-    zh: "🌐 最多可向信息流添加 5 个国家",
-    ms: "🌐 Anda boleh menambah sehingga 5 negara ke suapan",
+    cn: "🌐 最多可向信息流添加 5 个国家",
+    my: "🌐 Anda boleh menambah sehingga 5 negara ke suapan",
   };
-  return labels[locale] ?? labels.en;
+  return labels[locale] ?? labels.us;
 }
 
 const LOCALE_SHORT: Record<Locale, string> = {
   ru: "RU",
-  uk: "UA",
-  en: "US",
+  ua: "UA",
+  us: "US",
   in: "IN",
-  fa: "IR",
+  ir: "IR",
   tr: "TR",
-  "pt-br": "BR",
-  kk: "KZ",
+  br: "BR",
+  kz: "KZ",
   uz: "UZ",
   ae: "AE",
   eg: "EG",
@@ -411,8 +411,8 @@ const LOCALE_SHORT: Record<Locale, string> = {
   co: "CO",
   za: "ZA",
   ng: "NG",
-  zh: "CN",
-  ms: "MY",
+  cn: "CN",
+  my: "MY",
 };
 
 const COUNTRY_LABELS: Record<string, { label: string; flag: string }> = {

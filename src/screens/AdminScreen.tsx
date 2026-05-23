@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import type { IngestedPost, Locale } from "../types/app";
-import { COUNTRIES, type CountryCode } from "./admin/admin.countries";
+import type { CountryCode } from "../../api/lib/contracts";
+
 import { AdminBulkImportSection } from "./admin/AdminBulkImportSection";
 import { AdminCountriesSection } from "./admin/AdminCountriesSection";
 import { AdminManualPostSection } from "./admin/AdminManualPostSection";
@@ -106,17 +107,14 @@ export function AdminScreen({
 
   const [selectedCountryCode, setSelectedCountryCode] = useState<CountryCode>(() => {
     try {
-      const saved = localStorage.getItem(ADMIN_COUNTRY_STORAGE_KEY) as CountryCode | null;
-      if (saved && COUNTRIES.some((item) => item.code === saved && item.enabled)) {
-        return saved;
-      }
+      const saved = localStorage.getItem(ADMIN_COUNTRY_STORAGE_KEY);
+      if (saved) return saved as CountryCode;
     } catch {
       //
     }
 
-    const firstEnabled = COUNTRIES.find((item) => item.enabled);
-    return firstEnabled?.code || "ru";
-  });
+    return "ru";
+  });  
 
   useEffect(() => {
     try {
@@ -251,38 +249,36 @@ export function AdminScreen({
     const counts: Partial<Record<CountryCode, number>> = {};
 
     for (const source of sources) {
-      counts[source.countryCode] = (counts[source.countryCode] || 0) + 1;
+      const code = source.countryCode as CountryCode;
+      counts[code] = (counts[code] || 0) + 1;
     }
 
     return counts;
   }, [sources]);
 
   const countryFeedStats = useMemo(() => {
-    return COUNTRIES.filter((country) => country.enabled)
-      .map((country) => {
+    const countryCodes = Array.from(
+      new Set([
+        ...sources.map((s) => s.countryCode),
+        ...Object.keys(feedIndexCountries),
+      ])
+    ) as CountryCode[];
+
+    return countryCodes
+      .map((code) => {
         const countrySources = sources.filter(
-          (source) => source.countryCode === country.code
+          (source) => source.countryCode === code
         );
 
         const activeSources = countrySources.filter(
           (source) => source.status === "active"
         ).length;
 
-        const postsCount = Number(feedIndexCountries[country.code]?.posts || 0);
-
-        const countryMeta = country as typeof country & {
-          label?: string;
-          name?: string;
-          title?: string;
-        };
+        const postsCount = Number(feedIndexCountries[code]?.posts || 0);
 
         return {
-          code: country.code,
-          label:
-            countryMeta.label ||
-            countryMeta.name ||
-            countryMeta.title ||
-            country.code.toUpperCase(),
+          code,
+          label: code.toUpperCase(),
           sourcesCount: countrySources.length,
           activeSources,
           postsCount,

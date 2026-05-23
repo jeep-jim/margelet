@@ -80,7 +80,7 @@ const ru: BotCopy = {
   commands: { start: "Начать", help: "Помощь", status: "Статус заявок", add: "Добавить канал" },
 };
 
-const uk: BotCopy = {
+const ua: BotCopy = {
   ...ru,
   start: "Привіт! Додавання каналу запускається з кабінету margeleT.\n\n/add — відкрити кабінет\n/status — статус заявок\n/help — допомога",
   placementNotFound: "Заявку не знайдено. Поверніться в кабінет margeleT і натисніть кнопку ще раз.",
@@ -103,6 +103,8 @@ const uk: BotCopy = {
   invoiceDescription: "Розміщення каналу на margeleT на 1 місяць",
   commands: { start: "Почати", help: "Допомога", status: "Статус заявок", add: "Додати канал" },
 };
+
+const us: BotCopy = { ...en };
 
 const es: BotCopy = {
   ...en,
@@ -199,7 +201,7 @@ const tr: BotCopy = {
   commands: { start: "Başlat", help: "Yardım", status: "Durum", add: "Kanal ekle" },
 };
 
-const ptBr: BotCopy = {
+const br: BotCopy = {
   ...en,
   start: "Olá! A inclusão do canal começa no seu painel margeleT.\n\n/add — abrir painel\n/status — status das inclusões\n/help — ajuda",
   placementNotFound: "A solicitação não foi encontrada. Volte ao painel margeleT e pressione o botão novamente.",
@@ -233,7 +235,7 @@ const hi: BotCopy = {
   commands: { start: "शुरू करें", help: "सहायता", status: "स्थिति", add: "चैनल जोड़ें" },
 };
 
-const fa: BotCopy = {
+const ir: BotCopy = {
   ...en,
   start: "سلام! افزودن کانال از کابین margeleT شروع می‌شود.\n\n/add — باز کردن کابین\n/status — وضعیت درخواست‌ها\n/help — راهنما",
   paidCreated: (handle) => `درخواست ساخته شد: @${handle}\nاکنون پرداخت Stars را باز می‌کنم.`,
@@ -244,7 +246,7 @@ const fa: BotCopy = {
   commands: { start: "شروع", help: "راهنما", status: "وضعیت", add: "افزودن کانال" },
 };
 
-const kk: BotCopy = {
+const kz: BotCopy = {
   ...ru,
   start: "Сәлем! Арнаны қосу margeleT кабинетінде басталады.\n\n/add — кабинетті ашу\n/status — өтінім күйі\n/help — көмек",
   paidCreated: (handle) => `Өтінім жасалды: @${handle}\nҚазір Stars төлемін ашамын.`,
@@ -274,7 +276,7 @@ const ur: BotCopy = {
   commands: { start: "شروع", help: "مدد", status: "اسٹیٹس", add: "چینل شامل کریں" },
 };
 
-const zh: BotCopy = {
+const cn: BotCopy = {
   ...en,
   start: "你好！频道添加从你的 margeleT 控制台开始。\n\n/add — 打开控制台\n/status — 查看状态\n/help — 帮助",
   paidCreated: (handle) => `申请已创建：@${handle}\n现在打开 Stars 支付。`,
@@ -284,7 +286,7 @@ const zh: BotCopy = {
   commands: { start: "开始", help: "帮助", status: "状态", add: "添加频道" },
 };
 
-const ms: BotCopy = {
+const my: BotCopy = {
   ...en,
   start: "Hai! Penambahan saluran bermula dari kabinet margeleT anda.\n\n/add — buka kabinet\n/status — status penempatan\n/help — bantuan",
   paidCreated: (handle) => `Permohonan dibuat: @${handle}\nSaya akan buka bayaran Stars sekarang.`,
@@ -296,13 +298,13 @@ const ms: BotCopy = {
 
 export const BOT_COPY_BY_LOCALE: Record<SiteLocale, BotCopy> = {
   ru,
-  uk,
-  en,
+  ua,
+  us,
   in: hi,
-  fa,
+  ir,
   tr,
-  "pt-br": ptBr,
-  kk,
+  br,
+  kz,
   uz,
   ae: ar,
   eg: ar,
@@ -318,20 +320,20 @@ export const BOT_COPY_BY_LOCALE: Record<SiteLocale, BotCopy> = {
   co: es,
   za: en,
   ng: en,
-  zh,
-  ms,
+  cn,
+  my,
 };
 
 const LOCALE_BY_LANGUAGE_CODE: Record<string, SiteLocale> = {
   ru: "ru",
-  uk: "uk",
-  en: "en",
+  uk: "ua",
+  en: "us",
   hi: "in",
-  fa: "fa",
+  fa: "ir",
   tr: "tr",
-  pt: "pt-br",
-  "pt-br": "pt-br",
-  kk: "kk",
+  pt: "br",
+  "pt-br": "br",
+  kk: "kz",
   uz: "uz",
   ar: "ae",
   ur: "pk",
@@ -340,19 +342,19 @@ const LOCALE_BY_LANGUAGE_CODE: Record<string, SiteLocale> = {
   it: "it",
   fr: "fr",
   de: "de",
-  zh: "zh",
-  ms: "ms",
+  zh: "cn",
+  ms: "my",
 };
 
 export const BOT_COMMAND_LOCALES: Array<{ locale: SiteLocale; telegramLanguageCode: string }> = [
-  { locale: "en", telegramLanguageCode: "en" },
+  { locale: "us", telegramLanguageCode: "en" },
   { locale: "ru", telegramLanguageCode: "ru" },
-  { locale: "uk", telegramLanguageCode: "uk" },
+  { locale: "ua", telegramLanguageCode: "uk" },
   { locale: "in", telegramLanguageCode: "hi" },
-  { locale: "fa", telegramLanguageCode: "fa" },
+  { locale: "ir", telegramLanguageCode: "fa" },
   { locale: "tr", telegramLanguageCode: "tr" },
-  { locale: "pt-br", telegramLanguageCode: "pt" },
-  { locale: "kk", telegramLanguageCode: "kk" },
+  { locale: "br", telegramLanguageCode: "pt" },
+  { locale: "kz", telegramLanguageCode: "kk" },
   { locale: "uz", telegramLanguageCode: "uz" },
   { locale: "ae", telegramLanguageCode: "ar" },
   { locale: "pk", telegramLanguageCode: "ur" },
@@ -361,8 +363,8 @@ export const BOT_COMMAND_LOCALES: Array<{ locale: SiteLocale; telegramLanguageCo
   { locale: "it", telegramLanguageCode: "it" },
   { locale: "fr", telegramLanguageCode: "fr" },
   { locale: "de", telegramLanguageCode: "de" },
-  { locale: "zh", telegramLanguageCode: "zh" },
-  { locale: "ms", telegramLanguageCode: "ms" },
+  { locale: "cn", telegramLanguageCode: "zh" },
+  { locale: "my", telegramLanguageCode: "ms" },
 ];
 
 export function getBotLocale(languageCode?: string | null, countryCode?: string | null): SiteLocale {
@@ -375,9 +377,9 @@ export function getBotLocale(languageCode?: string | null, countryCode?: string 
   const short = raw.split("-")[0];
   if (short in LOCALE_BY_LANGUAGE_CODE) return LOCALE_BY_LANGUAGE_CODE[short];
 
-  return "en";
+  return "us";
 }
 
 export function getBotCopy(languageCode?: string | null, countryCode?: string | null): BotCopy {
-  return BOT_COPY_BY_LOCALE[getBotLocale(languageCode, countryCode)] || BOT_COPY_BY_LOCALE.en;
+  return BOT_COPY_BY_LOCALE[getBotLocale(languageCode, countryCode)] || BOT_COPY_BY_LOCALE.us;
 }

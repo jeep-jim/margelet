@@ -13,7 +13,7 @@ export type SiteTagGroup = SiteTag & {
 };
 
 const TAG_LABEL_TRANSLATIONS: Partial<Record<SiteLocale, Record<string, string>>> = {
-  "uk": {
+  "ua": {
     "AI": "AI",
     "Advertising": "Реклама",
     "Advice": "Поради",
@@ -167,7 +167,7 @@ const TAG_LABEL_TRANSLATIONS: Partial<Record<SiteLocale, Record<string, string>>
     "World": "Світ",
     "World Politics": "Світова політика"
   },
-  "zh": {
+  "cn": {
     "AI": "AI",
     "Advertising": "广告",
     "Advice": "建议",
@@ -937,7 +937,7 @@ const TAG_LABEL_TRANSLATIONS: Partial<Record<SiteLocale, Record<string, string>>
     "World": "Mondo",
     "World Politics": "Politica mondiale"
   },
-  "pt-br": {
+  "br": {
     "AI": "IA",
     "Advertising": "Publicidade",
     "Advice": "Conselhos",
@@ -1399,7 +1399,7 @@ const TAG_LABEL_TRANSLATIONS: Partial<Record<SiteLocale, Record<string, string>>
     "World": "Dunia",
     "World Politics": "Politik dunia"
   },
-  "ms": {
+  "my": {
     "AI": "AI",
     "Advertising": "Iklan",
     "Advice": "Saran",
@@ -1861,7 +1861,7 @@ const TAG_LABEL_TRANSLATIONS: Partial<Record<SiteLocale, Record<string, string>>
     "World": "دنیا",
     "World Politics": "عالمی سیاست"
   },
-  "fa": {
+  "ir": {
     "AI": "هوش مصنوعی",
     "Advertising": "تبلیغات",
     "Advice": "نکات",
@@ -2169,7 +2169,7 @@ const TAG_LABEL_TRANSLATIONS: Partial<Record<SiteLocale, Record<string, string>>
     "World": "العالم",
     "World Politics": "سياسة عالمية"
   },
-  "kk": {
+  "kz": {
     "AI": "AI",
     "Advertising": "Жарнама",
     "Advice": "Кеңестер",
@@ -2486,8 +2486,8 @@ const TAG_LABEL_LOCALE_SOURCE: Partial<Record<SiteLocale, SiteLocale>> = {
   ae: "ae",
   eg: "ae",
   sa: "ae",
-  za: "en",
-  ng: "en",
+  za: "us",
+  ng: "us",
 };
 
 function translatedLabel(locale: SiteLocale, fallback: string) {
@@ -2500,13 +2500,13 @@ function labels(ru: string, en?: string): TagLabelMap {
 
   return {
     ru,
-    uk: translatedLabel("uk", fallback),
-    en: fallback,
+    ua: translatedLabel("ua", fallback),
+    us: fallback,
     in: translatedLabel("in", fallback),
-    fa: translatedLabel("fa", fallback),
+    ir: translatedLabel("ir", fallback),
     tr: translatedLabel("tr", fallback),
-    "pt-br": translatedLabel("pt-br", fallback),
-    kk: translatedLabel("kk", fallback),
+    br: translatedLabel("br", fallback),
+    kz: translatedLabel("kz", fallback),
     uz: translatedLabel("uz", fallback),
     ae: translatedLabel("ae", fallback),
     eg: translatedLabel("eg", fallback),
@@ -2522,8 +2522,8 @@ function labels(ru: string, en?: string): TagLabelMap {
     co: translatedLabel("co", fallback),
     za: fallback,
     ng: fallback,
-    zh: translatedLabel("zh", fallback),
-    ms: translatedLabel("ms", fallback),
+    cn: translatedLabel("cn", fallback),
+    my: translatedLabel("my", fallback),
   };
 }
 
@@ -2903,7 +2903,7 @@ export const ALL_SITE_TAGS: SiteTag[] = Array.from(ALL_TAGS_MAP.values());
 export const SITE_TAG_VALUES = ALL_SITE_TAGS.map((tag) => tag.value);
 
 export function getTagLabel(tag: SiteTag, locale: SiteLocale) {
-  return `${tag.emoji} ${tag.labels[locale] ?? tag.labels.en}`;
+  return `${tag.emoji} ${tag.labels[locale] ?? tag.labels.us}`;
 }
 
 export function findTagByValue(value: string) {

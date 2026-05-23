@@ -67,13 +67,13 @@ const MAX_TOP_SOURCES = 12;
 
 const SEO_LOCALE_META: Record<SiteLocale, { htmlLang: string; hreflang: string; countryCode: string }> = {
   ru: { htmlLang: "ru", hreflang: "ru-RU", countryCode: "RU" },
-  uk: { htmlLang: "uk", hreflang: "uk-UA", countryCode: "UA" },
-  en: { htmlLang: "en", hreflang: "en-US", countryCode: "US" },
+  ua: { htmlLang: "uk", hreflang: "uk-UA", countryCode: "UA" },
+  us: { htmlLang: "en", hreflang: "en-US", countryCode: "US" },
   in: { htmlLang: "hi", hreflang: "hi-IN", countryCode: "IN" },
-  fa: { htmlLang: "fa", hreflang: "fa-IR", countryCode: "IR" },
+  ir: { htmlLang: "fa", hreflang: "fa-IR", countryCode: "IR" },
   tr: { htmlLang: "tr", hreflang: "tr-TR", countryCode: "TR" },
-  "pt-br": { htmlLang: "pt-BR", hreflang: "pt-BR", countryCode: "BR" },
-  kk: { htmlLang: "kk", hreflang: "kk-KZ", countryCode: "KZ" },
+  br: { htmlLang: "pt-BR", hreflang: "pt-BR", countryCode: "BR" },
+  kz: { htmlLang: "kk", hreflang: "kk-KZ", countryCode: "KZ" },
   uz: { htmlLang: "uz", hreflang: "uz-UZ", countryCode: "UZ" },
   ae: { htmlLang: "ar", hreflang: "ar-AE", countryCode: "AE" },
   eg: { htmlLang: "ar", hreflang: "ar-EG", countryCode: "EG" },
@@ -89,8 +89,8 @@ const SEO_LOCALE_META: Record<SiteLocale, { htmlLang: string; hreflang: string; 
   co: { htmlLang: "es", hreflang: "es-CO", countryCode: "CO" },
   za: { htmlLang: "en", hreflang: "en-ZA", countryCode: "ZA" },
   ng: { htmlLang: "en", hreflang: "en-NG", countryCode: "NG" },
-  zh: { htmlLang: "zh", hreflang: "zh-CN", countryCode: "CN" },
-  ms: { htmlLang: "ms", hreflang: "ms-MY", countryCode: "MY" },
+  cn: { htmlLang: "zh", hreflang: "zh-CN", countryCode: "CN" },
+  my: { htmlLang: "ms", hreflang: "ms-MY", countryCode: "MY" },
 };
 
 function getSeoLocaleMeta(locale: SiteLocale) {
@@ -135,8 +135,8 @@ function stripEmoji(label: string) {
   return label.replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, "").trim();
 }
 
-function getTagName(tag: SiteTag, locale: SiteLocale = "en") {
-  return stripEmoji(tag.labels[locale] ?? tag.labels.en ?? tag.value);
+function getTagName(tag: SiteTag, locale: SiteLocale = "us") {
+  return stripEmoji(tag.labels[locale] ?? tag.labels.us ?? tag.value);
 }
 
 function getCountryName(locale: SiteLocale) {

@@ -9,6 +9,9 @@ import { SourceScreen } from "./screens/SourceScreen";
 import { AdminScreen } from "./screens/AdminScreen";
 import type { ContentTag, IngestedPost, Locale, TabId } from "./types/app";
 import { SplashLoader } from "./components/shared/SplashLoader";
+// 🔥 Импортируем единую систему country-кодов
+import type { CountryCode } from "../api/lib/contracts";
+import { normalizeCountryCode, SEO_LOCALE_META } from "../api/lib/contracts";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
@@ -18,36 +21,10 @@ const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
 const ADMIN_HIDDEN_PATH = "/jim/admin";
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
-
 const SITE_ORIGIN = "https://www.margelet.space";
 
-const COUNTRY_CODES = new Set([
-  "ru",
-  "uk",
-  "en",
-  "in",
-  "fa",
-  "de",
-  "es",
-  "tr",
-  "fr",
-  "it",
-  "pt-br",
-  "kk",
-  "uz",
-  "ae",
-  "eg",
-  "pk",
-  "id",
-  "mx",
-  "sa",
-  "ar",
-  "co",
-  "za",
-  "ng",
-  "zh",
-  "ms",
-]);
+// 🔥 Генерируем список стран из единого SEO_LOCALE_META
+const COUNTRY_CODES = new Set<CountryCode>(Object.keys(SEO_LOCALE_META) as CountryCode[]);
 
 function ensureCanonicalLink(href: string) {
   let element = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -71,19 +48,18 @@ function getCanonicalHref(pathname: string) {
   return `${SITE_ORIGIN}${clean === "/" ? "" : clean}`;
 }
 
-const FEED_LOADING_COPY: Record<Locale, string> = {
-  en: "Loading feed...",
+// 🔥 FEED_LOADING_COPY теперь использует CountryCode из SEO_LOCALE_META
+type FeedLoadingCopy = Partial<Record<CountryCode, string>>;
+
+const FEED_LOADING_COPY: FeedLoadingCopy = {
   ru: "Загрузка ленты...",
-  uk: "Завантаження стрічки...",
+  ua: "Завантаження стрічки...",
+  us: "Loading feed...",
   in: "Loading feed...",
-  fa: "در حال بارگذاری فید...",
-  de: "Feed wird geladen...",
-  es: "Cargando feed...",
+  ir: "در حال بارگذاری فید...",
   tr: "Akış yükleniyor...",
-  fr: "Chargement du flux...",
-  it: "Caricamento del feed...",
-  "pt-br": "Carregando feed...",
-  kk: "Лента жүктелуде...",
+  br: "Carregando feed...",
+  kz: "Лента жүктелуде...",
   uz: "Lenta yuklanmoqda...",
   ae: "جاري تحميل الخلاصة...",
   eg: "جاري تحميل الخلاصة...",
@@ -91,12 +67,16 @@ const FEED_LOADING_COPY: Record<Locale, string> = {
   id: "Memuat feed...",
   mx: "Cargando feed...",
   sa: "جاري تحميل الخلاصة...",
+  es: "Cargando feed...",
+  it: "Caricamento del feed...",
+  fr: "Chargement du flux...",
+  de: "Feed wird geladen...",
   ar: "Cargando feed...",
   co: "Cargando feed...",
   za: "Loading feed...",
   ng: "Loading feed...",
-  zh: "正在加载内容流...",
-  ms: "Memuat feed...",
+  cn: "正在加载内容流...",
+  my: "Memuat feed...",
 };
 
 type TgUser = {
@@ -218,9 +198,8 @@ function parseSourcePath(pathname: string) {
     return null;
   }
 
-  // IMPORTANT:
-  // country routes are NOT source handles
-  if (COUNTRY_CODES.has(handle.toLowerCase())) {
+  // 🔥 Теперь проверяем country коды через normalizeCountryCode
+  if (COUNTRY_CODES.has(normalizeCountryCode(handle))) {
     return null;
   }
 
@@ -475,8 +454,8 @@ export default function App() {
       .split("/")
       .filter(Boolean)[0];
 
-    if (countryPath && COUNTRY_CODES.has(countryPath.toLowerCase())) {
-      setLocale(countryPath.toLowerCase() as Locale);
+    if (countryPath && COUNTRY_CODES.has(normalizeCountryCode(countryPath))) {
+      setLocale(normalizeCountryCode(countryPath) as Locale);
       setCurrent("feed");
       return;
     }
@@ -513,8 +492,8 @@ export default function App() {
         .split("/")
         .filter(Boolean)[0];
 
-      if (countryPath && COUNTRY_CODES.has(countryPath.toLowerCase())) {
-        setLocale(countryPath.toLowerCase() as Locale);
+      if (countryPath && COUNTRY_CODES.has(normalizeCountryCode(countryPath))) {
+        setLocale(normalizeCountryCode(countryPath) as Locale);
         setSelectedSourceHandle(null);
         setCurrent("feed");
         return;
@@ -821,7 +800,7 @@ export default function App() {
 
       {isFeedLoading && showFeedLoadingHint && current === "feed" && !shouldShowIntro ? (
         <div className="pointer-events-none fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm text-white backdrop-blur">
-          {FEED_LOADING_COPY[locale] ?? FEED_LOADING_COPY.en}
+          {FEED_LOADING_COPY[normalizeCountryCode(locale)] ?? FEED_LOADING_COPY.us}
         </div>
       ) : null}
       {isFeedLoading && current === "feed" && !shouldShowIntro ? <SplashLoader /> : null}

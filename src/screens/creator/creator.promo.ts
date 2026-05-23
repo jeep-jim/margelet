@@ -16,14 +16,14 @@ const PROMO_BY_LOCALE: Partial<Record<Locale, PromoPack>> = {
     after: "После публикации нажмите “Проверить пост”.",
     verify: "Проверить пост",
   },
-  uk: {
+  ua: {
     intro: "Розмістіть допис у своєму каналі:",
     news: "Гарні новини, друзі!",
     nowOn: "Тепер наш канал можна читати ще й на margeleT:",
     after: "Після публікації натисніть “Перевірити допис”.",
     verify: "Перевірити допис",
   },
-  en: {
+  us: {
     intro: "Post this message in your channel:",
     news: "Good news, friends!",
     nowOn: "Now our channel can also be read on margeleT:",
@@ -37,7 +37,7 @@ const PROMO_BY_LOCALE: Partial<Record<Locale, PromoPack>> = {
     after: "प्रकाशित करने के बाद “पोस्ट सत्यापित करें” दबाएँ।",
     verify: "पोस्ट सत्यापित करें",
   },
-  fa: {
+  ir: {
     intro: "این پیام را در کانال خود منتشر کنید:",
     news: "خبر خوب، دوستان!",
     nowOn: "اکنون کانال ما در margeleT هم قابل خواندن است:",
@@ -51,14 +51,14 @@ const PROMO_BY_LOCALE: Partial<Record<Locale, PromoPack>> = {
     after: "Paylaştıktan sonra “Gönderiyi doğrula” düğmesine basın.",
     verify: "Gönderiyi doğrula",
   },
-  "pt-br": {
+  br: {
     intro: "Publique esta mensagem no seu canal:",
     news: "Boas notícias, amigos!",
     nowOn: "Agora nosso canal também pode ser lido no margeleT:",
     after: "Depois de publicar, toque em “Verificar publicação”.",
     verify: "Verificar publicação",
   },
-  kk: {
+  kz: {
     intro: "Бұл жазбаны өз арнаңызда жариялаңыз:",
     news: "Жақсы жаңалық, достар!",
     nowOn: "Енді біздің арнаны margeleT арқылы да оқуға болады:",
@@ -170,14 +170,14 @@ const PROMO_BY_LOCALE: Partial<Record<Locale, PromoPack>> = {
     after: "After publishing, press “Verify post”.",
     verify: "Verify post",
   },
-  zh: {
+  cn: {
     intro: "请在你的频道中发布这条消息：",
     news: "朋友们，好消息！",
     nowOn: "现在我们的频道也可以在 margeleT 上阅读：",
     after: "发布后点击“验证帖子”。",
     verify: "验证帖子",
   },
-  ms: {
+  my: {
     intro: "Terbitkan mesej ini di saluran anda:",
     news: "Berita baik, kawan-kawan!",
     nowOn: "Kini saluran kami juga boleh dibaca di margeleT:",
@@ -187,7 +187,7 @@ const PROMO_BY_LOCALE: Partial<Record<Locale, PromoPack>> = {
 };
 
 function getPack(locale: Locale): PromoPack {
-  return PROMO_BY_LOCALE[locale] ?? PROMO_BY_LOCALE.en!;
+  return PROMO_BY_LOCALE[locale] ?? PROMO_BY_LOCALE.us!;
 }
 
 export function buildPromoUrl(slug: string) {

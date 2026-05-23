@@ -7,7 +7,7 @@ import {
 import { findTagByValue, getTagLabel as getSiteTagLabel } from "../../lib/tags";
 
 function getAllTopicsLabel(locale: Locale) {
-  if (locale === "ru" || locale === "uk" || locale === "kk" || locale === "uz") {
+  if (locale === "ru" || locale === "ua" || locale === "kz" || locale === "uz") {
     return "✨ Все темы";
   }
 
@@ -15,7 +15,7 @@ function getAllTopicsLabel(locale: Locale) {
     return "✨ Todos los temas";
   }
 
-  if (locale === "pt-br") return "✨ Todos os tópicos";
+  if (locale === "br") return "✨ Todos os tópicos";
   if (locale === "tr") return "✨ Tüm konular";
   if (locale === "fr") return "✨ Tous les thèmes";
   if (locale === "it") return "✨ Tutti i temi";
@@ -26,7 +26,7 @@ function getAllTopicsLabel(locale: Locale) {
 }
 
 function getOtherLabel(locale: Locale) {
-  if (locale === "ru" || locale === "uk" || locale === "kk" || locale === "uz") {
+  if (locale === "ru" || locale === "ua" || locale === "kz" || locale === "uz") {
     return "☝️ Другое";
   }
 
@@ -34,7 +34,7 @@ function getOtherLabel(locale: Locale) {
     return "☝️ Otro";
   }
 
-  if (locale === "pt-br") return "☝️ Outro";
+  if (locale === "br") return "☝️ Outro";
   if (locale === "tr") return "☝️ Diğer";
   if (locale === "fr") return "☝️ Autre";
   if (locale === "it") return "☝️ Altro";

@@ -49,7 +49,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "Войти",
   },
 
-  uk: {
+  ua: {
     chooseLanguage: "🌎 Мова",
     slides: [
       {
@@ -73,7 +73,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "Увійти",
   },
 
-  en: {
+  us: {
     chooseLanguage: "🌎 Language",
     slides: [
       {
@@ -121,7 +121,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "प्रवेश",
   },
 
-  fa: {
+  ir: {
     chooseLanguage: "🌎 زبان",
     slides: [
       {
@@ -169,7 +169,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "Giriş",
   },
 
-  "pt-br": {
+  "br": {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
@@ -193,7 +193,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "Entrar",
   },
 
-  kk: {
+  kz: {
     chooseLanguage: "🌎 Тіл",
     slides: [
       {
@@ -577,7 +577,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "Enter",
   },
 
-  zh: {
+  cn: {
     chooseLanguage: "🌎 语言",
     slides: [
       {
@@ -601,7 +601,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     enter: "进入",
   },
 
-  ms: {
+  my: {
     chooseLanguage: "🌎 Bahasa",
     slides: [
       {
@@ -650,7 +650,7 @@ export function IntroScreen({
   compact = false,
 }: Props) {
 
-  const intro = INTRO_COPY[locale] ?? INTRO_COPY.en;
+  const intro = INTRO_COPY[locale] ?? INTRO_COPY.us;
   const pages = compact
     ? [intro.slides[0]]
     : intro.slides;

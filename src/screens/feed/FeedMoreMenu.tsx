@@ -98,7 +98,7 @@ export function FeedMoreMenu({
       deleteAdmin: "Удалить пост (admin)",
       hide: "Мне это не интересно!",
     },
-    uk: {
+    ua: {
       subscribeOn: "Увімкнути сповіщення",
       subscribeOff: "Вимкнути сповіщення",
       openTelegram: "Відкрити в Telegram",
@@ -106,7 +106,7 @@ export function FeedMoreMenu({
       deleteAdmin: "Видалити пост (admin)",
       hide: "Мені це не цікаво",
     },
-    en: {
+    us: {
       subscribeOn: "Enable notifications",
       subscribeOff: "Disable notifications",
       openTelegram: "Open in Telegram",
@@ -122,7 +122,7 @@ export function FeedMoreMenu({
       deleteAdmin: "Delete post (admin)",
       hide: "Not interested",
     },
-    fa: {
+    ir: {
       subscribeOn: "فعال کردن اعلان‌ها",
       subscribeOff: "غیرفعال کردن اعلان‌ها",
       openTelegram: "باز کردن در تلگرام",
@@ -138,7 +138,7 @@ export function FeedMoreMenu({
       deleteAdmin: "Gönderiyi sil (admin)",
       hide: "İlgimi çekmiyor",
     },
-    "pt-br": {
+    br: {
       subscribeOn: "Ativar notificações",
       subscribeOff: "Desativar notificações",
       openTelegram: "Abrir no Telegram",
@@ -146,7 +146,7 @@ export function FeedMoreMenu({
       deleteAdmin: "Excluir post (admin)",
       hide: "Não me interessa",
     },
-    kk: {
+    kz: {
       subscribeOn: "Хабарландыруларды қосу",
       subscribeOff: "Хабарландыруларды өшіру",
       openTelegram: "Telegram-да ашу",
@@ -274,7 +274,7 @@ export function FeedMoreMenu({
       deleteAdmin: "Delete post (admin)",
       hide: "Not interested",
     },
-    zh: {
+    cn: {
       subscribeOn: "开启通知",
       subscribeOff: "关闭通知",
       openTelegram: "在 Telegram 中打开",
@@ -282,7 +282,7 @@ export function FeedMoreMenu({
       deleteAdmin: "删除帖子 (admin)",
       hide: "我不感兴趣",
     },
-    ms: {
+    my: {
       subscribeOn: "Aktifkan notifikasi",
       subscribeOff: "Nyahaktifkan notifikasi",
       openTelegram: "Buka di Telegram",
@@ -292,7 +292,7 @@ export function FeedMoreMenu({
     },
   } as const;
 
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
 
   const position = useMemo(() => {
     return {

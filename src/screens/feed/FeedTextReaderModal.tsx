@@ -31,7 +31,7 @@ const FEED_MUTE_EVENT = "margelet:feed-mute-change";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 
 const COPY = {
-  en: {
+  us: {
     postFromTelegram: "Post from Telegram",
     enableNotifications: "Enable notifications",
     disableNotifications: "Disable notifications",
@@ -67,7 +67,7 @@ const COPY = {
     mute: "Выключить звук",
     unmute: "Включить звук",
   },
-  uk: {
+  ua: {
     postFromTelegram: "Пост із Telegram",
     enableNotifications: "Увімкнути сповіщення",
     disableNotifications: "Вимкнути сповіщення",
@@ -103,7 +103,7 @@ const COPY = {
     mute: "Mute",
     unmute: "Unmute",
   },
-  fa: {
+  ir: {
     postFromTelegram: "پست از Telegram",
     enableNotifications: "فعال کردن اعلان‌ها",
     disableNotifications: "غیرفعال کردن اعلان‌ها",
@@ -139,7 +139,7 @@ const COPY = {
     mute: "Sesi kapat",
     unmute: "Sesi aç",
   },
-  "pt-br": {
+  br: {
     postFromTelegram: "Post do Telegram",
     enableNotifications: "Ativar notificações",
     disableNotifications: "Desativar notificações",
@@ -157,7 +157,7 @@ const COPY = {
     mute: "Silenciar",
     unmute: "Ativar som",
   },
-  kk: {
+  kz: {
     postFromTelegram: "Telegram посты",
     enableNotifications: "Хабарландыруларды қосу",
     disableNotifications: "Хабарландыруларды өшіру",
@@ -445,7 +445,7 @@ const COPY = {
     mute: "Mute",
     unmute: "Unmute",
   },
-  zh: {
+  cn: {
     postFromTelegram: "来自 Telegram 的帖子",
     enableNotifications: "开启通知",
     disableNotifications: "关闭通知",
@@ -462,7 +462,7 @@ const COPY = {
     mute: "静音",
     unmute: "开启声音",
   },
-  ms: {
+  my: {
     postFromTelegram: "Post dari Telegram",
     enableNotifications: "Aktifkan notifikasi",
     disableNotifications: "Nyahaktifkan notifikasi",
@@ -649,7 +649,7 @@ function AudioList({
   locale: Locale;
 }) {
   if (items.length === 0) return null;
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
 
   return (
     <div className="mb-4 space-y-3">
@@ -698,7 +698,7 @@ function FileList({
   locale: Locale;
 }) {
   if (items.length === 0) return null;
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
 
   return (
     <div className="mb-4 space-y-3">
@@ -747,7 +747,7 @@ function MusicFallback({
   onOpenOriginal: () => void;
 }) {
   if (!hasMusicLikeTag(post)) return null;
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
 
   return (
     <div className="mb-4 rounded-3xl border border-soft bg-surface-soft p-4">
@@ -835,7 +835,7 @@ export function FeedTextReaderModal({
   onToggleLike?: (id: number) => void;
   onToggleSave: (id: number) => void;
 }) {
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
   const text = post?.text || "";
   const media = useMemo(() => (post ? normalizeMediaList(post) : []), [post]);
   const [mediaIndex, setMediaIndex] = useState(0);

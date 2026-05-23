@@ -17,7 +17,7 @@ import { FeedTagMenu } from "./FeedTagMenu";
 
 function getMediaBadge(post: IngestedPost, locale: Locale) {
   const COPY = {
-    en: {
+    us: {
       audio: "Audio",
       file: "File",
       media: "Media",
@@ -29,7 +29,7 @@ function getMediaBadge(post: IngestedPost, locale: Locale) {
       media: "Медиа",
       hasMedia: "Есть медиа",
     },
-    uk: {
+    ua: {
       audio: "Аудіо",
       file: "Файл",
       media: "Медіа",
@@ -41,7 +41,7 @@ function getMediaBadge(post: IngestedPost, locale: Locale) {
       media: "Media",
       hasMedia: "Has media",
     },
-    fa: {
+    ir: {
       audio: "صوت",
       file: "فایل",
       media: "رسانه",
@@ -53,13 +53,13 @@ function getMediaBadge(post: IngestedPost, locale: Locale) {
       media: "Medya",
       hasMedia: "Medya var",
     },
-    "pt-br": {
+    br: {
       audio: "Áudio",
       file: "Arquivo",
       media: "Mídia",
       hasMedia: "Tem mídia",
     },
-    kk: {
+    kz: {
       audio: "Аудио",
       file: "Файл",
       media: "Медиа",
@@ -155,13 +155,13 @@ function getMediaBadge(post: IngestedPost, locale: Locale) {
       media: "Media",
       hasMedia: "Has media",
     },
-    zh: {
+    cn: {
       audio: "音频",
       file: "文件",
       media: "媒体",
       hasMedia: "有媒体",
     },
-    ms: {
+    my: {
       audio: "Audio",
       file: "Fail",
       media: "Media",
@@ -169,7 +169,7 @@ function getMediaBadge(post: IngestedPost, locale: Locale) {
     },
   } as const;
 
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
 
   if (post.contentType === "audio") {
     return { icon: <Music4 className="h-3.5 w-3.5" />, label: copy.audio };
@@ -240,7 +240,7 @@ function AudioPreview({
   }
 
   const COPY = {
-    en: {
+    us: {
       telegramAudio: "Audio from Telegram",
       telegramFile: "File from Telegram",
       audioSingle: "1 audio",
@@ -256,7 +256,7 @@ function AudioPreview({
       fileSingle: "1 файл",
       fileMany: "файлов",
     },
-    uk: {
+    ua: {
       telegramAudio: "Аудіо з Telegram",
       telegramFile: "Файл із Telegram",
       audioSingle: "1 аудіо",
@@ -272,7 +272,7 @@ function AudioPreview({
       fileSingle: "1 file",
       fileMany: "files",
     },
-    fa: {
+    ir: {
       telegramAudio: "صدا از Telegram",
       telegramFile: "فایل از Telegram",
       audioSingle: "1 صدا",
@@ -304,7 +304,7 @@ function AudioPreview({
       fileSingle: "1 file",
       fileMany: "file",
     },
-    "pt-br": {
+    br: {
       telegramAudio: "Áudio do Telegram",
       telegramFile: "Arquivo do Telegram",
       audioSingle: "1 áudio",
@@ -312,7 +312,7 @@ function AudioPreview({
       fileSingle: "1 arquivo",
       fileMany: "arquivos",
     },
-    kk: {
+    kz: {
       telegramAudio: "Telegram-нан аудио",
       telegramFile: "Telegram-нан файл",
       audioSingle: "1 аудио",
@@ -424,7 +424,7 @@ function AudioPreview({
       fileSingle: "1 file",
       fileMany: "files",
     },
-    zh: {
+    cn: {
       telegramAudio: "来自 Telegram 的音频",
       telegramFile: "来自 Telegram 的文件",
       audioSingle: "1 个音频",
@@ -432,7 +432,7 @@ function AudioPreview({
       fileSingle: "1 个文件",
       fileMany: "个文件",
     },
-    ms: {
+    my: {
       telegramAudio: "Audio dari Telegram",
       telegramFile: "Fail dari Telegram",
       audioSingle: "1 audio",
@@ -442,7 +442,7 @@ function AudioPreview({
     },
   } as const;
 
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
   const total = hasPlayableAudio ? audioMedia.length : fileMedia.length;
   const title = hasPlayableAudio ? copy.telegramAudio : copy.telegramFile;
   const subtitle = hasPlayableAudio
@@ -508,14 +508,14 @@ function TagChips({
   const isExpandable = extraCount > 0;
 
   const TITLE = {
-    en: "Channel tags",
+    us: "Channel tags",
     ru: "Теги канала",
-    uk: "Теги каналу",
+    ua: "Теги каналу",
     in: "Channel tags",
-    fa: "برچسب‌های کانال",
+    ir: "برچسب‌های کانال",
     tr: "Kanal etiketleri",
-    "pt-br": "Tags do canal",
-    kk: "Арна тегтері",
+    br: "Tags do canal",
+    kz: "Арна тегтері",
     uz: "Kanal teglari",
     ae: "وسوم القناة",
     eg: "وسوم القناة",
@@ -531,11 +531,11 @@ function TagChips({
     co: "Etiquetas del canal",
     za: "Channel tags",
     ng: "Channel tags",
-    zh: "频道标签",
-    ms: "Tag saluran",
+    cn: "频道标签",
+    my: "Tag saluran",
   } as const;
 
-  const menuTitle = TITLE[locale] ?? TITLE.en;
+  const menuTitle = TITLE[locale] ?? TITLE.us;
 
   if (!isExpandable) {
     return (
@@ -597,14 +597,14 @@ export function FeedTextCard({
   onOpen: () => void;
 }) {
   const COPY = {
-    en: { read: "Read" },
+    us: { read: "Read" },
     ru: { read: "Читать" },
-    uk: { read: "Читати" },
+    ua: { read: "Читати" },
     in: { read: "पढ़ें" },
-    fa: { read: "خواندن" },
+    ir: { read: "خواندن" },
     tr: { read: "Oku" },
-    "pt-br": { read: "Ler" },
-    kk: { read: "Оқу" },
+    br: { read: "Ler" },
+    kz: { read: "Оқу" },
     uz: { read: "O‘qish" },
     ae: { read: "قراءة" },
     eg: { read: "قراءة" },
@@ -620,11 +620,11 @@ export function FeedTextCard({
     co: { read: "Leer" },
     za: { read: "Read" },
     ng: { read: "Read" },
-    zh: { read: "阅读" },
-    ms: { read: "Baca" },
+    cn: { read: "阅读" },
+    my: { read: "Baca" },
   } as const;
 
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
   const displayText = (post.text || "").trim();
   const mediaBadge = getMediaBadge(post, locale);
   const { primary: primaryTag, secondary: secondaryTags } = getDisplayTagMeta(post, locale);

@@ -2,7 +2,7 @@ import type { Locale } from "../../types/app";
 import type { ScreenCopy } from "./creator.types";
 
 const COPY_BASE = {
-  en: {
+  us: {
     authTitle: "Sign in with Telegram",
     authText:
       "Authorize to manage your cabinet.",
@@ -463,7 +463,7 @@ const COPY_BASE = {
       "Il nostro obiettivo non è sottrarre attenzione. Il nostro obiettivo è aiutare l'attenzione a trovare il luogo a cui appartiene davvero.",
     manifestOutro9: "— margeleT",
   },
-  "pt-br": {
+  br: {
     authTitle: "Entrar com Telegram",
     authText:
       "Entre para gerenciar seu cabinet, ver posts curtidos e enviar seu canal para moderação.",
@@ -698,7 +698,7 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
     manifestOutro8: "Наша цель — не забирать внимание себе. Наша цель — помочь вниманию найти того, кому оно действительно принадлежит.",
     manifestOutro9: "— margeleT",
   },
-  "uk": {
+  "ua": {
     manifestTitle: "Маніфест",
     manifestSubtitle: "margeleT і відкрита екосистема Telegram",
     manifestClose: "Закрити",
@@ -722,7 +722,7 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
     manifestOutro8: "Наша мета — не забирати увагу собі. Наша мета — допомогти увазі знайти того, кому вона справді належить.",
     manifestOutro9: "— margeleT",
   },
-  "en": {
+  "us": {
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT and the open Telegram ecosystem",
     manifestClose: "Close",
@@ -770,7 +770,7 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
     manifestOutro8: "हमारा लक्ष्य ध्यान को अपने लिए लेना नहीं है. हमारा लक्ष्य ध्यान को उसके वास्तविक मालिक तक पहुँचाने में मदद करना है.",
     manifestOutro9: "— margeleT",
   },
-  "fa": {
+  "ir": {
     manifestTitle: "مانیفست",
     manifestSubtitle: "margeleT و اکوسیستم باز تلگرام",
     manifestClose: "بستن",
@@ -818,7 +818,7 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
     manifestOutro8: "Amacımız dikkati kendimize almak değil. Amacımız, dikkatin gerçekten ait olduğu kişiyi bulmasına yardım etmektir.",
     manifestOutro9: "— margeleT",
   },
-  "pt-br": {
+  "br": {
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT e o ecossistema aberto do Telegram",
     manifestClose: "Fechar",
@@ -842,7 +842,7 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
     manifestOutro8: "Nosso objetivo não é tomar atenção para nós. Nosso objetivo é ajudar a atenção a encontrar quem realmente pertence a ela.",
     manifestOutro9: "— margeleT",
   },
-  "kk": {
+  "kz": {
     manifestTitle: "Манифест",
     manifestSubtitle: "margeleT және ашық Telegram экожүйесі",
     manifestClose: "Жабу",
@@ -1226,7 +1226,7 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
     manifestOutro8: "Our goal is not to take attention for ourselves. Our goal is to help attention find the place where it truly belongs.",
     manifestOutro9: "— margeleT",
   },
-  "zh": {
+  "cn": {
     manifestTitle: "宣言",
     manifestSubtitle: "margeleT 与开放的 Telegram 生态",
     manifestClose: "关闭",
@@ -1250,7 +1250,7 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
     manifestOutro8: "我们的目标不是把注意力据为己有。我们的目标是帮助注意力找到真正属于它的人。",
     manifestOutro9: "— margeleT",
   },
-  "ms": {
+  "my": {
     manifestTitle: "Manifesto",
     manifestSubtitle: "margeleT dan ekosistem Telegram terbuka",
     manifestClose: "Tutup",
@@ -1280,13 +1280,13 @@ const MANIFEST_COPY_BY_LOCALE: Record<Locale, Pick<ScreenCopy,
 
 const UI_COPY_BY_LOCALE: Partial<Record<Locale, Partial<ScreenCopy>>> = {
   ru: { authTitle: "Войти через Telegram", authText: "Авторизуйся, чтобы управлять своим кабинетом.", authButton: "Авторизоваться", introButtonShort: "Intro", connectedToTelegram: "Подключено к Telegram", logout: "Выйти", channelTitle: "Добавить канал", channelText: "Заполни данные канала. После отправки мы откроем Telegram-бота — там можно оплатить размещение или выбрать бартер.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Перейти в Telegram-бот", channelEmptyError: "Вставь ссылку на Telegram-канал.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Заявка создана. Продолжи в Telegram-боте.", aboutText: "margeleT — это лёгкий слой поиска и дистрибуции вокруг открытого Telegram-контента.", emptyLiked: "Здесь пока пусто.", telegramUserFallback: "Пользователь Telegram", channelTabTitle: "Добавить канал", aboutTabTitle: "О проекте", languageTabTitle: "Язык", manifestButton: "Манифест", installButton: "Установить приложение", installIosHint: "На iPhone: Поделиться → На экран «Домой»", installOpened: "Уже установлено" },
-  uk: { authTitle: "Увійти через Telegram", authText: "Авторизуйся, щоб керувати своїм кабінетом.", authButton: "Авторизуватися", introButtonShort: "Intro", connectedToTelegram: "Підключено до Telegram", logout: "Вийти", channelTitle: "Додати канал", channelText: "Заповни дані каналу. Після відправлення ми відкриємо Telegram-бота — там можна оплатити розміщення або вибрати бартер.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Перейти в Telegram-бот", channelEmptyError: "Встав посилання на Telegram-канал.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Заявку створено. Продовж у Telegram-боті.", aboutText: "margeleT — це легкий шар пошуку й дистрибуції навколо відкритого Telegram-контенту.", emptyLiked: "Тут поки порожньо.", telegramUserFallback: "Користувач Telegram", channelTabTitle: "Додати канал", aboutTabTitle: "Про проєкт", languageTabTitle: "Мова", manifestButton: "Маніфест", installButton: "Встановити застосунок", installIosHint: "На iPhone: Поділитися → На екран «Додому»", installOpened: "Уже встановлено" },
-  en: { authTitle: "Sign in with Telegram", authText: "Authorize to manage your cabinet.", authButton: "Authorize", introButtonShort: "Intro", connectedToTelegram: "Connected to Telegram", logout: "Log out", channelTitle: "Add channel", channelText: "Fill in your channel details. After submitting, we will open the Telegram bot — there you can pay for placement or choose barter.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Go to Telegram bot", channelEmptyError: "Paste a Telegram channel link.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Request created. Continue in the Telegram bot.", aboutText: "margeleT is a lightweight discovery and distribution layer around open Telegram content.", emptyLiked: "Nothing here yet.", telegramUserFallback: "Telegram user", channelTabTitle: "Add channel", aboutTabTitle: "About", languageTabTitle: "Language", manifestButton: "Manifesto", installButton: "Install app", installIosHint: "On iPhone: Share → Add to Home Screen", installOpened: "Already installed" },
+  ua: { authTitle: "Увійти через Telegram", authText: "Авторизуйся, щоб керувати своїм кабінетом.", authButton: "Авторизуватися", introButtonShort: "Intro", connectedToTelegram: "Підключено до Telegram", logout: "Вийти", channelTitle: "Додати канал", channelText: "Заповни дані каналу. Після відправлення ми відкриємо Telegram-бота — там можна оплатити розміщення або вибрати бартер.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Перейти в Telegram-бот", channelEmptyError: "Встав посилання на Telegram-канал.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Заявку створено. Продовж у Telegram-боті.", aboutText: "margeleT — це легкий шар пошуку й дистрибуції навколо відкритого Telegram-контенту.", emptyLiked: "Тут поки порожньо.", telegramUserFallback: "Користувач Telegram", channelTabTitle: "Додати канал", aboutTabTitle: "Про проєкт", languageTabTitle: "Мова", manifestButton: "Маніфест", installButton: "Встановити застосунок", installIosHint: "На iPhone: Поділитися → На екран «Додому»", installOpened: "Уже встановлено" },
+  us: { authTitle: "Sign in with Telegram", authText: "Authorize to manage your cabinet.", authButton: "Authorize", introButtonShort: "Intro", connectedToTelegram: "Connected to Telegram", logout: "Log out", channelTitle: "Add channel", channelText: "Fill in your channel details. After submitting, we will open the Telegram bot — there you can pay for placement or choose barter.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Go to Telegram bot", channelEmptyError: "Paste a Telegram channel link.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Request created. Continue in the Telegram bot.", aboutText: "margeleT is a lightweight discovery and distribution layer around open Telegram content.", emptyLiked: "Nothing here yet.", telegramUserFallback: "Telegram user", channelTabTitle: "Add channel", aboutTabTitle: "About", languageTabTitle: "Language", manifestButton: "Manifesto", installButton: "Install app", installIosHint: "On iPhone: Share → Add to Home Screen", installOpened: "Already installed" },
   in: { authTitle: "Telegram से साइन इन करें", authText: "अपना कैबिनेट प्रबंधित करने के लिए अधिकृत करें।", authButton: "अधिकृत करें", introButtonShort: "Intro", connectedToTelegram: "Telegram से जुड़ा", logout: "लॉग आउट", channelTitle: "चैनल जोड़ें", channelText: "चैनल की जानकारी भरें। भेजने के बाद हम Telegram bot खोलेंगे — वहाँ आप placement का भुगतान कर सकते हैं या barter चुन सकते हैं।", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Telegram bot पर जाएँ", channelEmptyError: "Telegram चैनल लिंक डालें।", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "अनुरोध बन गया। Telegram bot में जारी रखें।", aboutText: "margeleT खुले Telegram कंटेंट के लिए हल्की खोज और वितरण परत है।", emptyLiked: "यहाँ अभी कुछ नहीं है।", telegramUserFallback: "Telegram उपयोगकर्ता", channelTabTitle: "चैनल जोड़ें", aboutTabTitle: "परियोजना", languageTabTitle: "भाषा", manifestButton: "घोषणापत्र", installButton: "ऐप इंस्टॉल करें", installIosHint: "iPhone पर: Share → Add to Home Screen", installOpened: "पहले से इंस्टॉल है" },
-  fa: { authTitle: "ورود با Telegram", authText: "برای مدیریت کابینت خود وارد شوید.", authButton: "ورود", introButtonShort: "Intro", connectedToTelegram: "متصل به Telegram", logout: "خروج", channelTitle: "افزودن کانال", channelText: "اطلاعات کانال را وارد کنید. بعد از ارسال، ربات Telegram باز می‌شود — آنجا می‌توانید هزینه جایگاه را بپردازید یا تهاتر را انتخاب کنید.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "رفتن به ربات Telegram", channelEmptyError: "لینک کانال Telegram را وارد کنید.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "درخواست ساخته شد. در ربات Telegram ادامه دهید.", aboutText: "margeleT لایه‌ای سبک برای جستجو و توزیع محتوای باز Telegram است.", emptyLiked: "اینجا هنوز چیزی نیست.", telegramUserFallback: "کاربر Telegram", channelTabTitle: "افزودن کانال", aboutTabTitle: "درباره", languageTabTitle: "زبان", manifestButton: "بیانیه", installButton: "نصب برنامه", installIosHint: "در iPhone: Share → Add to Home Screen", installOpened: "قبلاً نصب شده است" },
+  ir: { authTitle: "ورود با Telegram", authText: "برای مدیریت کابینت خود وارد شوید.", authButton: "ورود", introButtonShort: "Intro", connectedToTelegram: "متصل به Telegram", logout: "خروج", channelTitle: "افزودن کانال", channelText: "اطلاعات کانال را وارد کنید. بعد از ارسال، ربات Telegram باز می‌شود — آنجا می‌توانید هزینه جایگاه را بپردازید یا تهاتر را انتخاب کنید.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "رفتن به ربات Telegram", channelEmptyError: "لینک کانال Telegram را وارد کنید.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "درخواست ساخته شد. در ربات Telegram ادامه دهید.", aboutText: "margeleT لایه‌ای سبک برای جستجو و توزیع محتوای باز Telegram است.", emptyLiked: "اینجا هنوز چیزی نیست.", telegramUserFallback: "کاربر Telegram", channelTabTitle: "افزودن کانال", aboutTabTitle: "درباره", languageTabTitle: "زبان", manifestButton: "بیانیه", installButton: "نصب برنامه", installIosHint: "در iPhone: Share → Add to Home Screen", installOpened: "قبلاً نصب شده است" },
   tr: { authTitle: "Telegram ile giriş yap", authText: "Kabinetini yönetmek için yetkilendir.", authButton: "Yetkilendir", introButtonShort: "Intro", connectedToTelegram: "Telegram’a bağlı", logout: "Çıkış", channelTitle: "Kanal ekle", channelText: "Kanal bilgilerini doldur. Gönderdikten sonra Telegram botu açılacak — orada yerleşim için ödeme yapabilir veya barter seçebilirsin.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Telegram botuna git", channelEmptyError: "Telegram kanal bağlantısını ekle.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Başvuru oluşturuldu. Telegram botunda devam et.", aboutText: "margeleT, açık Telegram içeriği etrafında hafif bir keşif ve dağıtım katmanıdır.", emptyLiked: "Burada henüz bir şey yok.", telegramUserFallback: "Telegram kullanıcısı", channelTabTitle: "Kanal ekle", aboutTabTitle: "Hakkında", languageTabTitle: "Dil", manifestButton: "Manifesto", installButton: "Uygulamayı yükle", installIosHint: "iPhone’da: Paylaş → Ana ekrana ekle", installOpened: "Zaten yüklü" },
-  "pt-br": { authTitle: "Entrar com Telegram", authText: "Autorize para gerenciar seu gabinete.", authButton: "Autorizar", introButtonShort: "Intro", connectedToTelegram: "Conectado ao Telegram", logout: "Sair", channelTitle: "Adicionar canal", channelText: "Preencha os dados do canal. Depois do envio, abriremos o bot do Telegram — lá você poderá pagar pela veiculação ou escolher barter.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Ir para o bot do Telegram", channelEmptyError: "Cole o link do canal no Telegram.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Solicitação criada. Continue no bot do Telegram.", aboutText: "margeleT é uma camada leve de descoberta e distribuição em torno de conteúdo aberto do Telegram.", emptyLiked: "Ainda não há nada aqui.", telegramUserFallback: "Usuário do Telegram", channelTabTitle: "Adicionar canal", aboutTabTitle: "Sobre", languageTabTitle: "Idioma", manifestButton: "Manifesto", installButton: "Instalar app", installIosHint: "No iPhone: Compartilhar → Adicionar à Tela de Início", installOpened: "Já instalado" },
-  kk: { authTitle: "Telegram арқылы кіру", authText: "Кабинетіңді басқару үшін авторизациядан өт.", authButton: "Авторизация", introButtonShort: "Intro", connectedToTelegram: "Telegram қосылған", logout: "Шығу", channelTitle: "Арна қосу", channelText: "Арна деректерін толтыр. Жібергеннен кейін Telegram-бот ашылады — сонда орналастыруды төлеуге немесе barter таңдауға болады.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Telegram-ботқа өту", channelEmptyError: "Telegram арнасының сілтемесін енгіз.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Өтінім жасалды. Telegram-ботта жалғастыр.", aboutText: "margeleT — ашық Telegram контентін іздеу және таратуға арналған жеңіл қабат.", emptyLiked: "Әзірге мұнда ештеңе жоқ.", telegramUserFallback: "Telegram пайдаланушысы", channelTabTitle: "Арна қосу", aboutTabTitle: "Жоба туралы", languageTabTitle: "Тіл", manifestButton: "Манифест", installButton: "Қолданбаны орнату", installIosHint: "iPhone: Бөлісу → Басты экранға қосу", installOpened: "Орнатылған" },
+  br: { authTitle: "Entrar com Telegram", authText: "Autorize para gerenciar seu gabinete.", authButton: "Autorizar", introButtonShort: "Intro", connectedToTelegram: "Conectado ao Telegram", logout: "Sair", channelTitle: "Adicionar canal", channelText: "Preencha os dados do canal. Depois do envio, abriremos o bot do Telegram — lá você poderá pagar pela veiculação ou escolher barter.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Ir para o bot do Telegram", channelEmptyError: "Cole o link do canal no Telegram.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Solicitação criada. Continue no bot do Telegram.", aboutText: "margeleT é uma camada leve de descoberta e distribuição em torno de conteúdo aberto do Telegram.", emptyLiked: "Ainda não há nada aqui.", telegramUserFallback: "Usuário do Telegram", channelTabTitle: "Adicionar canal", aboutTabTitle: "Sobre", languageTabTitle: "Idioma", manifestButton: "Manifesto", installButton: "Instalar app", installIosHint: "No iPhone: Compartilhar → Adicionar à Tela de Início", installOpened: "Já instalado" },
+  kz: { authTitle: "Telegram арқылы кіру", authText: "Кабинетіңді басқару үшін авторизациядан өт.", authButton: "Авторизация", introButtonShort: "Intro", connectedToTelegram: "Telegram қосылған", logout: "Шығу", channelTitle: "Арна қосу", channelText: "Арна деректерін толтыр. Жібергеннен кейін Telegram-бот ашылады — сонда орналастыруды төлеуге немесе barter таңдауға болады.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Telegram-ботқа өту", channelEmptyError: "Telegram арнасының сілтемесін енгіз.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Өтінім жасалды. Telegram-ботта жалғастыр.", aboutText: "margeleT — ашық Telegram контентін іздеу және таратуға арналған жеңіл қабат.", emptyLiked: "Әзірге мұнда ештеңе жоқ.", telegramUserFallback: "Telegram пайдаланушысы", channelTabTitle: "Арна қосу", aboutTabTitle: "Жоба туралы", languageTabTitle: "Тіл", manifestButton: "Манифест", installButton: "Қолданбаны орнату", installIosHint: "iPhone: Бөлісу → Басты экранға қосу", installOpened: "Орнатылған" },
   uz: { authTitle: "Telegram orqali kirish", authText: "Kabinetni boshqarish uchun avtorizatsiyadan o‘ting.", authButton: "Avtorizatsiya", introButtonShort: "Intro", connectedToTelegram: "Telegram ulangan", logout: "Chiqish", channelTitle: "Kanal qo‘shish", channelText: "Kanal ma’lumotlarini to‘ldiring. Yuborgandan so‘ng Telegram bot ochiladi — u yerda joylashtirish uchun to‘lov qilish yoki barter tanlash mumkin.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Telegram botga o‘tish", channelEmptyError: "Telegram kanal havolasini kiriting.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Ariza yaratildi. Telegram botda davom eting.", aboutText: "margeleT — ochiq Telegram kontenti atrofidagi yengil qidiruv va tarqatish qatlami.", emptyLiked: "Bu yer hozircha bo‘sh.", telegramUserFallback: "Telegram foydalanuvchisi", channelTabTitle: "Kanal qo‘shish", aboutTabTitle: "Loyiha haqida", languageTabTitle: "Til", manifestButton: "Manifest", installButton: "Ilovani o‘rnatish", installIosHint: "iPhone’da: Share → Add to Home Screen", installOpened: "Allaqachon o‘rnatilgan" },
   ae: { authTitle: "تسجيل الدخول عبر Telegram", authText: "سجّل الدخول لإدارة حسابك.", authButton: "تسجيل الدخول", introButtonShort: "Intro", connectedToTelegram: "متصل بـ Telegram", logout: "تسجيل الخروج", channelTitle: "إضافة قناة", channelText: "املأ بيانات القناة. بعد الإرسال سنفتح بوت Telegram — هناك يمكنك الدفع مقابل الظهور أو اختيار التبادل.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "الانتقال إلى بوت Telegram", channelEmptyError: "أدخل رابط قناة Telegram.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "تم إنشاء الطلب. تابع في بوت Telegram.", aboutText: "margeleT طبقة خفيفة للبحث والتوزيع حول محتوى Telegram المفتوح.", emptyLiked: "لا يوجد شيء هنا بعد.", telegramUserFallback: "مستخدم Telegram", channelTabTitle: "إضافة قناة", aboutTabTitle: "عن المشروع", languageTabTitle: "اللغة", manifestButton: "البيان", installButton: "تثبيت التطبيق", installIosHint: "على iPhone: مشاركة → إضافة إلى الشاشة الرئيسية", installOpened: "مثبّت بالفعل" },
   eg: {}, sa: {},
@@ -1298,22 +1298,22 @@ const UI_COPY_BY_LOCALE: Partial<Record<Locale, Partial<ScreenCopy>>> = {
   fr: { authTitle: "Se connecter avec Telegram", authText: "Autorise l’accès pour gérer ton cabinet.", authButton: "Autoriser", introButtonShort: "Intro", connectedToTelegram: "Connecté à Telegram", logout: "Se déconnecter", channelTitle: "Ajouter une chaîne", channelText: "Remplis les données de la chaîne. Après l’envoi, nous ouvrirons le bot Telegram — tu pourras y payer le placement ou choisir le barter.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Aller au bot Telegram", channelEmptyError: "Colle le lien de la chaîne Telegram.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Demande créée. Continue dans le bot Telegram.", aboutText: "margeleT est une couche légère de découverte et de distribution autour du contenu Telegram ouvert.", emptyLiked: "Il n’y a encore rien ici.", telegramUserFallback: "Utilisateur Telegram", channelTabTitle: "Ajouter une chaîne", aboutTabTitle: "À propos", languageTabTitle: "Langue", manifestButton: "Manifeste", installButton: "Installer l’app", installIosHint: "Sur iPhone : Partager → Ajouter à l’écran d’accueil", installOpened: "Déjà installée" },
   de: { authTitle: "Mit Telegram anmelden", authText: "Autorisiere dich, um dein Cabinet zu verwalten.", authButton: "Autorisieren", introButtonShort: "Intro", connectedToTelegram: "Mit Telegram verbunden", logout: "Abmelden", channelTitle: "Kanal hinzufügen", channelText: "Fülle die Kanaldaten aus. Nach dem Senden öffnen wir den Telegram-Bot — dort kannst du die Platzierung bezahlen oder Barter wählen.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Zum Telegram-Bot", channelEmptyError: "Füge den Telegram-Kanallink ein.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Anfrage erstellt. Weiter im Telegram-Bot.", aboutText: "margeleT ist eine leichte Entdeckungs- und Distributionsebene rund um offene Telegram-Inhalte.", emptyLiked: "Hier ist noch nichts.", telegramUserFallback: "Telegram-Nutzer", channelTabTitle: "Kanal hinzufügen", aboutTabTitle: "Über", languageTabTitle: "Sprache", manifestButton: "Manifest", installButton: "App installieren", installIosHint: "Auf iPhone: Teilen → Zum Home-Bildschirm", installOpened: "Bereits installiert" },
   za: {}, ng: {},
-  zh: { authTitle: "通过 Telegram 登录", authText: "授权以管理你的个人柜台。", authButton: "授权", introButtonShort: "Intro", connectedToTelegram: "已连接 Telegram", logout: "退出", channelTitle: "添加频道", channelText: "填写频道信息。提交后我们会打开 Telegram 机器人——你可以在那里支付展示费用或选择互换。", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "前往 Telegram 机器人", channelEmptyError: "请粘贴 Telegram 频道链接。", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "申请已创建。请在 Telegram 机器人中继续。", aboutText: "margeleT 是围绕开放 Telegram 内容的轻量搜索与分发层。", emptyLiked: "这里暂时没有内容。", telegramUserFallback: "Telegram 用户", channelTabTitle: "添加频道", aboutTabTitle: "关于项目", languageTabTitle: "语言", manifestButton: "宣言", installButton: "安装应用", installIosHint: "iPhone：分享 → 添加到主屏幕", installOpened: "已安装" },
-  ms: { authTitle: "Log masuk dengan Telegram", authText: "Benarkan akses untuk mengurus kabinet anda.", authButton: "Benarkan", introButtonShort: "Intro", connectedToTelegram: "Disambungkan ke Telegram", logout: "Log keluar", channelTitle: "Tambah saluran", channelText: "Isi maklumat saluran. Selepas dihantar, bot Telegram akan dibuka — di sana anda boleh bayar penempatan atau pilih barter.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Pergi ke bot Telegram", channelEmptyError: "Tampal pautan saluran Telegram.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Permintaan dibuat. Teruskan dalam bot Telegram.", aboutText: "margeleT ialah lapisan ringan untuk penemuan dan pengedaran kandungan Telegram terbuka.", emptyLiked: "Belum ada apa-apa di sini.", telegramUserFallback: "Pengguna Telegram", channelTabTitle: "Tambah saluran", aboutTabTitle: "Tentang", languageTabTitle: "Bahasa", manifestButton: "Manifesto", installButton: "Pasang aplikasi", installIosHint: "Pada iPhone: Kongsi → Tambah ke Skrin Utama", installOpened: "Sudah dipasang" },
+  cn: { authTitle: "通过 Telegram 登录", authText: "授权以管理你的个人柜台。", authButton: "授权", introButtonShort: "Intro", connectedToTelegram: "已连接 Telegram", logout: "退出", channelTitle: "添加频道", channelText: "填写频道信息。提交后我们会打开 Telegram 机器人——你可以在那里支付展示费用或选择互换。", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "前往 Telegram 机器人", channelEmptyError: "请粘贴 Telegram 频道链接。", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "申请已创建。请在 Telegram 机器人中继续。", aboutText: "margeleT 是围绕开放 Telegram 内容的轻量搜索与分发层。", emptyLiked: "这里暂时没有内容。", telegramUserFallback: "Telegram 用户", channelTabTitle: "添加频道", aboutTabTitle: "关于项目", languageTabTitle: "语言", manifestButton: "宣言", installButton: "安装应用", installIosHint: "iPhone：分享 → 添加到主屏幕", installOpened: "已安装" },
+  my: { authTitle: "Log masuk dengan Telegram", authText: "Benarkan akses untuk mengurus kabinet anda.", authButton: "Benarkan", introButtonShort: "Intro", connectedToTelegram: "Disambungkan ke Telegram", logout: "Log keluar", channelTitle: "Tambah saluran", channelText: "Isi maklumat saluran. Selepas dihantar, bot Telegram akan dibuka — di sana anda boleh bayar penempatan atau pilih barter.", channelPlaceholder: "https://t.me/your_channel / @channel / channel", channelButton: "Pergi ke bot Telegram", channelEmptyError: "Tampal pautan saluran Telegram.", channelInvalidError: "Use https://t.me/channel_name, @channel_name or channel_name", channelSuccess: "Permintaan dibuat. Teruskan dalam bot Telegram.", aboutText: "margeleT ialah lapisan ringan untuk penemuan dan pengedaran kandungan Telegram terbuka.", emptyLiked: "Belum ada apa-apa di sini.", telegramUserFallback: "Pengguna Telegram", channelTabTitle: "Tambah saluran", aboutTabTitle: "Tentang", languageTabTitle: "Bahasa", manifestButton: "Manifesto", installButton: "Pasang aplikasi", installIosHint: "Pada iPhone: Kongsi → Tambah ke Skrin Utama", installOpened: "Sudah dipasang" },
 };
 UI_COPY_BY_LOCALE.eg = UI_COPY_BY_LOCALE.ae; UI_COPY_BY_LOCALE.sa = UI_COPY_BY_LOCALE.ae;
 UI_COPY_BY_LOCALE.es = UI_COPY_BY_LOCALE.mx; UI_COPY_BY_LOCALE.ar = UI_COPY_BY_LOCALE.mx; UI_COPY_BY_LOCALE.co = UI_COPY_BY_LOCALE.mx;
-UI_COPY_BY_LOCALE.za = UI_COPY_BY_LOCALE.en; UI_COPY_BY_LOCALE.ng = UI_COPY_BY_LOCALE.en;
+UI_COPY_BY_LOCALE.za = UI_COPY_BY_LOCALE.us; UI_COPY_BY_LOCALE.ng = UI_COPY_BY_LOCALE.us;
 
 const LANGUAGE_TITLE_BY_LOCALE: Record<Locale, string> = {
   ru: "🌎 Мой язык интерфейса",
-  uk: "🌎 Моя мова інтерфейсу",
-  en: "🌎 My interface language",
+  ua: "🌎 Моя мова інтерфейсу",
+  us: "🌎 My interface language",
   in: "🌎 मेरी इंटरफ़ेस भाषा",
-  fa: "🌎 زبان رابط کاربری من",
+  ir: "🌎 زبان رابط کاربری من",
   tr: "🌎 Arayüz dilim",
-  "pt-br": "🌎 Meu idioma da interface",
-  kk: "🌎 Менің интерфейс тілім",
+  br: "🌎 Meu idioma da interface",
+  kz: "🌎 Менің интерфейс тілім",
   uz: "🌎 Mening interfeys tilim",
   ae: "🌎 لغة الواجهة الخاصة بي",
   eg: "🌎 لغة الواجهة الخاصة بي",
@@ -1329,8 +1329,8 @@ const LANGUAGE_TITLE_BY_LOCALE: Record<Locale, string> = {
   co: "🌎 Mi idioma de interfaz",
   za: "🌎 My interface language",
   ng: "🌎 My interface language",
-  zh: "🌎 我的界面语言",
-  ms: "🌎 Bahasa antara muka saya",
+  cn: "🌎 我的界面语言",
+  my: "🌎 Bahasa antara muka saya",
 };
 
 function withLocaleCopy(locale: Locale, copy: ScreenCopy): ScreenCopy {
@@ -1338,39 +1338,38 @@ function withLocaleCopy(locale: Locale, copy: ScreenCopy): ScreenCopy {
     ...copy,
     ...(UI_COPY_BY_LOCALE[locale] ?? {}),
     ...MANIFEST_COPY_BY_LOCALE[locale],
-    languageTitle: LANGUAGE_TITLE_BY_LOCALE[locale] ?? LANGUAGE_TITLE_BY_LOCALE.en,
+    languageTitle: LANGUAGE_TITLE_BY_LOCALE[locale] ?? LANGUAGE_TITLE_BY_LOCALE.us,
     languageDropdownLabel: "",
   };
 }
 
 export const CREATOR_COPY: Record<Locale, ScreenCopy> = {
   ru: withLocaleCopy("ru", COPY_BASE.ru),
-  uk: withLocaleCopy("uk", COPY_BASE.ru),
-  en: withLocaleCopy("en", COPY_BASE.en),
-  in: withLocaleCopy("in", COPY_BASE.en),
-  fa: withLocaleCopy("fa", COPY_BASE.en),
+  ua: withLocaleCopy("ua", COPY_BASE.ru),
+  us: withLocaleCopy("us", COPY_BASE.us),
+  in: withLocaleCopy("in", COPY_BASE.us),
+  ir: withLocaleCopy("ir", COPY_BASE.us),
   tr: withLocaleCopy("tr", COPY_BASE.tr),
-  "pt-br": withLocaleCopy("pt-br", COPY_BASE["pt-br"]),
-  kk: withLocaleCopy("kk", COPY_BASE.ru),
+  br: withLocaleCopy("br", COPY_BASE.br),
+  kz: withLocaleCopy("kz", COPY_BASE.ru),
   uz: withLocaleCopy("uz", COPY_BASE.ru),
-  ae: withLocaleCopy("ae", COPY_BASE.en),
-  eg: withLocaleCopy("eg", COPY_BASE.en),
-  pk: withLocaleCopy("pk", COPY_BASE.en),
+  ae: withLocaleCopy("ae", COPY_BASE.us),
+  eg: withLocaleCopy("eg", COPY_BASE.us),
+  pk: withLocaleCopy("pk", COPY_BASE.us),
   id: withLocaleCopy("id", COPY_BASE.id),
   mx: withLocaleCopy("mx", COPY_BASE.es),
-  sa: withLocaleCopy("sa", COPY_BASE.en),
+  sa: withLocaleCopy("sa", COPY_BASE.us),
   es: withLocaleCopy("es", COPY_BASE.es),
   it: withLocaleCopy("it", COPY_BASE.it),
   fr: withLocaleCopy("fr", COPY_BASE.fr),
   de: withLocaleCopy("de", COPY_BASE.de),
   ar: withLocaleCopy("ar", COPY_BASE.es),
   co: withLocaleCopy("co", COPY_BASE.es),
-  za: withLocaleCopy("za", COPY_BASE.en),
-  ng: withLocaleCopy("ng", COPY_BASE.en),
-  zh: withLocaleCopy("zh", COPY_BASE.en),
-  ms: withLocaleCopy("ms", COPY_BASE.en),
+  za: withLocaleCopy("za", COPY_BASE.us),
+  ng: withLocaleCopy("ng", COPY_BASE.us),
+  cn: withLocaleCopy("cn", COPY_BASE.us),
+  my: withLocaleCopy("my", COPY_BASE.us),
 };
-
 export function getCreatorCopy(locale: Locale): ScreenCopy {
-  return CREATOR_COPY[locale] ?? CREATOR_COPY.en;
+  return CREATOR_COPY[locale] ?? CREATOR_COPY.us;
 }

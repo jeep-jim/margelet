@@ -7,6 +7,13 @@ import {
 } from "./creator.constants";
 import type { TgUser } from "./creator.types";
 
+import type { CountryCode } from "../../../api/lib/contracts";
+import { normalizeCountryCode } from "../../../api/lib/contracts";
+
+export const getCreatorCountry = (input: string | null | undefined): CountryCode => {
+  return normalizeCountryCode(input);
+};
+
 export function isStandaloneMode() {
   if (typeof window === "undefined") return false;
 

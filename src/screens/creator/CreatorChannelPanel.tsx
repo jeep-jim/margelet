@@ -143,7 +143,7 @@ function normalizeTelegramDonateUrl(value: string) {
 }
 
 function getTagLabel(group: SiteTagGroup, locale: Locale) {
-  return `${group.emoji} ${group.labels[locale] ?? group.labels.en}`;
+  return `${group.emoji} ${group.labels[locale] ?? group.labels.us}`;
 }
 
 const CHANNEL_UI = {
@@ -378,14 +378,14 @@ type ChannelUi = {
 
 const CHANNEL_UI_BY_LOCALE: Record<Locale, ChannelUi> = {
   ru: CHANNEL_UI.ru,
-  uk: {
+  ua: {
     ...CHANNEL_UI.ru,
     authRequired: "Авторизуйтеся, щоб додавати канали.", formTitle: "Додати канал", formText: "Заповни дані каналу. Після надсилання ми відкриємо Telegram-бота — там можна оплатити розміщення або вибрати бартер.", nameLabel: "1️⃣ Назва каналу як у Telegram", nameError: "Введи назву каналу.", urlLabel: "2️⃣ Посилання на Telegram-канал", countryLabel: "3️⃣ Країна каналу", tagsLabel: "4️⃣ Теги", planLabel: "5️⃣ Спосіб розміщення", paidText: "1 місяць розміщення + можливість додати Telegram-donate посилання.", barterTitle: "Бартер", barterText: "1 місяць безкоштовно за нативний пост про margeleT у вашому каналі.", rulesOpen: "Відкрити правила", rulesClose: "Сховати правила", rulesAgree: "Я прочитав правила і розумію, що канал проходить модерацію.", submit: "Перейти в Telegram-бот", emptyError: "Встав посилання на Telegram-канал.", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "Спочатку потрібно прийняти правила.", tagsError: "Обери хоча б один батьківський тег.", maxTagsError: "Можна вибрати максимум 3 батьківські теги.", showAllTags: "Вибрати теги", hideTags: "Згорнути теги", applyTags: "Застосувати теги", tagsPlaceholder: "Натисни, щоб вибрати до 3 тем", childrenHint: "Можна уточнити підтеги всередині вибраної теми.", myChannels: "Мої канали", noChannels: "Тут з’являться твої заявки й активні розміщення.", pending: "очікує бота", active: "активний", paused: "пауза", expired: "минув", canceled: "видалено", price: "Тариф", donateInvalid: "Потрібне Telegram-посилання з параметром ?direct", donateSaved: "Donate-посилання збережено.", saveDonate: "Зберегти", openChannel: "У канал", renew: "Продовжити", countryStat: "країна", typeStat: "тип", termStat: "строк", paidPlan: "оплата", barterPlan: "бартер", barterPricing: "бартер / 1 місяць", duplicateError: "Цей канал уже додано. Відкрий існуючу картку або продовж розміщення.", submitError: "Не вдалося створити заявку. Спробуй ще раз.", networkError: "Не вдалося створити заявку. Перевір інтернет і спробуй ще раз.", barterPost: "Текст для бартеру: Гарні новини, друзі! Тепер наш канал можна читати ще й на margeleT.space",
   },
-  en: CHANNEL_UI.en,
+  us: CHANNEL_UI.en,
   za: { ...CHANNEL_UI.en, authRequired: "Sign in to add channels.", myChannels: "My channels" },
   ng: { ...CHANNEL_UI.en, authRequired: "Sign in to add channels.", myChannels: "My channels" },
-  zh: CHANNEL_UI.zh,
+  cn: CHANNEL_UI.zh,
   de: {
     ...CHANNEL_UI.en,
     authRequired: "Melde dich an, um Kanäle hinzuzufügen.", formTitle: "Kanal hinzufügen", formText: "Fülle die Kanaldaten aus. Danach öffnen wir den Telegram-Bot — dort kannst du bezahlen oder Barter wählen.", nameLabel: "1️⃣ Kanalname wie in Telegram", namePlaceholder: "Zum Beispiel: margeleT space", nameError: "Gib den Kanalnamen ein.", urlLabel: "2️⃣ Telegram-Kanallink", countryLabel: "3️⃣ Kanalland", tagsLabel: "4️⃣ Tags", planLabel: "5️⃣ Platzierungsmethode", paidText: "1 Monat Platzierung + Telegram-Donate-Link möglich.", barterTitle: "Barter", barterText: "1 Monat kostenlos für einen nativen Post über margeleT in deinem Kanal.", rulesOpen: "Regeln öffnen", rulesClose: "Regeln ausblenden", rulesAgree: "Ich habe die Regeln gelesen und verstehe, dass der Kanal moderiert wird.", submit: "Telegram-Bot öffnen", emptyError: "Füge zuerst einen Telegram-Kanallink ein.", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "Akzeptiere zuerst die Regeln.", tagsError: "Wähle mindestens einen Haupttag.", maxTagsError: "Du kannst bis zu 3 Haupttags wählen.", showAllTags: "Tags wählen", hideTags: "Tags einklappen", applyTags: "Tags anwenden", tagsPlaceholder: "Tippe, um bis zu 3 Themen zu wählen", childrenHint: "Du kannst Untertags innerhalb des gewählten Themas verfeinern.", myChannels: "Meine Kanäle", noChannels: "Deine Anfragen und aktiven Platzierungen erscheinen hier.", pending: "wartet auf Bot", active: "aktiv", paused: "Pause", expired: "abgelaufen", canceled: "entfernt", price: "Tarif", donateInvalid: "Nutze einen Telegram-Link mit ?direct", donateSaved: "Donate-Link gespeichert.", saveDonate: "Speichern", openChannel: "Zum Kanal", renew: "Verlängern", countryStat: "Land", typeStat: "Typ", termStat: "Laufzeit", paidPlan: "bezahlt", barterPlan: "Barter", barterPricing: "Barter / 1 Monat", duplicateError: "Dieser Kanal wurde bereits hinzugefügt. Öffne die vorhandene Karte oder verlängere die Platzierung.", submitError: "Anfrage konnte nicht erstellt werden. Versuche es erneut.", networkError: "Anfrage konnte nicht erstellt werden. Prüfe das Internet und versuche es erneut.", barterPost: "Barter-Text: Gute Nachrichten, Freunde! Jetzt ist unser Kanal auch auf margeleT.space verfügbar",
@@ -405,7 +405,7 @@ const CHANNEL_UI_BY_LOCALE: Record<Locale, ChannelUi> = {
     ...CHANNEL_UI.en,
     authRequired: "Accedi per aggiungere canali.", formTitle: "Aggiungi canale", formText: "Compila i dati del canale. Dopo l’invio apriremo il bot Telegram, dove potrai pagare o scegliere il barter.", nameLabel: "1️⃣ Nome del canale come su Telegram", nameError: "Inserisci il nome del canale.", urlLabel: "2️⃣ Link del canale Telegram", countryLabel: "3️⃣ Paese del canale", tagsLabel: "4️⃣ Tag", planLabel: "5️⃣ Metodo di pubblicazione", paidText: "1 mese di pubblicazione + opzione link donate Telegram.", barterTitle: "Barter", barterText: "1 mese gratis per un post nativo su margeleT nel tuo canale.", rulesOpen: "Apri regole", rulesClose: "Nascondi regole", rulesAgree: "Ho letto le regole e capisco che il canale passa la moderazione.", submit: "Apri bot Telegram", emptyError: "Incolla prima il link del canale Telegram.", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "Accetta prima le regole.", tagsError: "Scegli almeno un tag principale.", maxTagsError: "Puoi scegliere fino a 3 tag principali.", showAllTags: "Scegli tag", hideTags: "Comprimi tag", applyTags: "Applica tag", tagsPlaceholder: "Tocca per scegliere fino a 3 temi", childrenHint: "Puoi specificare i sotto-tag nel tema scelto.", myChannels: "I miei canali", noChannels: "Le tue richieste e pubblicazioni attive appariranno qui.", pending: "in attesa del bot", active: "attivo", paused: "pausa", expired: "scaduto", canceled: "rimosso", price: "Piano", donateInvalid: "Usa un link Telegram con ?direct", donateSaved: "Link donate salvato.", saveDonate: "Salva", openChannel: "Al canale", renew: "Rinnova", countryStat: "paese", typeStat: "tipo", termStat: "durata", paidPlan: "pagato", barterPlan: "barter", barterPricing: "barter / 1 mese", duplicateError: "Questo canale è già stato aggiunto. Apri la scheda esistente o rinnova la pubblicazione.", submitError: "Impossibile creare la richiesta. Riprova.", networkError: "Impossibile creare la richiesta. Controlla internet e riprova.", barterPost: "Testo barter: Buone notizie, amici! Ora il nostro canale è disponibile anche su margeleT.space",
   },
-  "pt-br": {
+  br: {
     ...CHANNEL_UI.en,
     authRequired: "Entre para adicionar canais.", formTitle: "Adicionar canal", formText: "Preencha os dados do canal. Depois abriremos o bot do Telegram, onde você pode pagar ou escolher barter.", nameLabel: "1️⃣ Nome do canal como no Telegram", nameError: "Digite o nome do canal.", urlLabel: "2️⃣ Link do canal do Telegram", countryLabel: "3️⃣ País do canal", tagsLabel: "4️⃣ Tags", planLabel: "5️⃣ Método de colocação", paidText: "1 mês de colocação + opção de link donate do Telegram.", barterTitle: "Barter", barterText: "1 mês grátis por um post nativo sobre margeleT no seu canal.", rulesOpen: "Abrir regras", rulesClose: "Ocultar regras", rulesAgree: "Li as regras e entendo que o canal passa por moderação.", submit: "Abrir bot do Telegram", emptyError: "Cole primeiro o link do canal do Telegram.", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "Aceite as regras primeiro.", tagsError: "Escolha pelo menos uma tag principal.", maxTagsError: "Você pode escolher até 3 tags principais.", showAllTags: "Escolher tags", hideTags: "Recolher tags", applyTags: "Aplicar tags", tagsPlaceholder: "Toque para escolher até 3 temas", childrenHint: "Você pode refinar subtags dentro do tema escolhido.", myChannels: "Meus canais", noChannels: "Suas solicitações e colocações ativas aparecerão aqui.", pending: "aguardando bot", active: "ativo", paused: "pausa", expired: "expirado", canceled: "removido", price: "Plano", donateInvalid: "Use um link do Telegram com ?direct", donateSaved: "Link donate salvo.", saveDonate: "Salvar", openChannel: "Ir ao canal", renew: "Renovar", countryStat: "país", typeStat: "tipo", termStat: "prazo", paidPlan: "pago", barterPlan: "barter", barterPricing: "barter / 1 mês", duplicateError: "Este canal já foi adicionado. Abra o cartão existente ou renove a colocação.", submitError: "Não foi possível criar a solicitação. Tente novamente.", networkError: "Não foi possível criar a solicitação. Verifique a internet e tente novamente.", barterPost: "Texto barter: Boas notícias, amigos! Agora nosso canal também está disponível no margeleT.space",
   },
@@ -417,7 +417,7 @@ const CHANNEL_UI_BY_LOCALE: Record<Locale, ChannelUi> = {
     ...CHANNEL_UI.en,
     authRequired: "Masuk untuk menambahkan channel.", formTitle: "Tambah channel", formText: "Isi detail channel. Setelah dikirim, kami akan membuka bot Telegram untuk pembayaran atau barter.", nameLabel: "1️⃣ Nama channel seperti di Telegram", nameError: "Masukkan nama channel.", urlLabel: "2️⃣ Link channel Telegram", countryLabel: "3️⃣ Negara channel", tagsLabel: "4️⃣ Tag", planLabel: "5️⃣ Metode penempatan", paidText: "Penempatan 1 bulan + opsi link donate Telegram.", barterTitle: "Barter", barterText: "Gratis 1 bulan untuk post native tentang margeleT di channel kamu.", rulesOpen: "Buka aturan", rulesClose: "Tutup aturan", rulesAgree: "Saya telah membaca aturan dan memahami bahwa channel akan dimoderasi.", submit: "Buka bot Telegram", emptyError: "Tempel link channel Telegram dulu.", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "Terima aturan dulu.", tagsError: "Pilih setidaknya satu tag utama.", maxTagsError: "Kamu bisa memilih maksimal 3 tag utama.", showAllTags: "Pilih tag", hideTags: "Tutup tag", applyTags: "Terapkan tag", tagsPlaceholder: "Ketuk untuk memilih hingga 3 topik", childrenHint: "Kamu bisa memperjelas subtag di dalam topik terpilih.", myChannels: "Channel saya", noChannels: "Permintaan dan penempatan aktif akan muncul di sini.", pending: "menunggu bot", active: "aktif", paused: "jeda", expired: "kedaluwarsa", canceled: "dihapus", price: "Paket", donateInvalid: "Gunakan link Telegram dengan ?direct", donateSaved: "Link donate disimpan.", saveDonate: "Simpan", openChannel: "Ke channel", renew: "Perpanjang", countryStat: "negara", typeStat: "tipe", termStat: "masa", paidPlan: "bayar", barterPlan: "barter", barterPricing: "barter / 1 bulan", duplicateError: "Channel ini sudah ditambahkan. Buka kartu yang ada atau perpanjang penempatan.", submitError: "Gagal membuat permintaan. Coba lagi.", networkError: "Gagal membuat permintaan. Periksa internet lalu coba lagi.", barterPost: "Teks barter: Kabar baik! Sekarang channel kami juga bisa dibaca di margeleT.space",
   },
-  ms: {
+  my: {
     ...CHANNEL_UI.en,
     authRequired: "Log masuk untuk menambah saluran.", formTitle: "Tambah saluran", formText: "Isi butiran saluran. Selepas dihantar, kami akan membuka bot Telegram untuk bayaran atau barter.", nameLabel: "1️⃣ Nama saluran seperti di Telegram", nameError: "Masukkan nama saluran.", urlLabel: "2️⃣ Pautan saluran Telegram", countryLabel: "3️⃣ Negara saluran", tagsLabel: "4️⃣ Tag", planLabel: "5️⃣ Kaedah penempatan", paidText: "Penempatan 1 bulan + pilihan pautan donate Telegram.", barterTitle: "Barter", barterText: "Percuma 1 bulan untuk post native tentang margeleT dalam saluran anda.", rulesOpen: "Buka peraturan", rulesClose: "Sembunyikan peraturan", rulesAgree: "Saya telah membaca peraturan dan faham saluran akan dimoderasi.", submit: "Buka bot Telegram", emptyError: "Tampal pautan saluran Telegram dahulu.", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "Terima peraturan dahulu.", tagsError: "Pilih sekurang-kurangnya satu tag utama.", maxTagsError: "Anda boleh memilih maksimum 3 tag utama.", showAllTags: "Pilih tag", hideTags: "Tutup tag", applyTags: "Guna tag", tagsPlaceholder: "Ketik untuk pilih hingga 3 topik", childrenHint: "Anda boleh memperincikan subtag dalam topik dipilih.", myChannels: "Saluran saya", noChannels: "Permintaan dan penempatan aktif anda akan muncul di sini.", pending: "menunggu bot", active: "aktif", paused: "jeda", expired: "tamat", canceled: "dipadam", price: "Pelan", donateInvalid: "Gunakan pautan Telegram dengan ?direct", donateSaved: "Pautan donate disimpan.", saveDonate: "Simpan", openChannel: "Ke saluran", renew: "Sambung", countryStat: "negara", typeStat: "jenis", termStat: "tempoh", paidPlan: "bayar", barterPlan: "barter", barterPricing: "barter / 1 bulan", duplicateError: "Saluran ini sudah ditambah. Buka kad sedia ada atau sambung penempatan.", submitError: "Tidak dapat mencipta permintaan. Cuba lagi.", networkError: "Tidak dapat mencipta permintaan. Semak internet dan cuba lagi.", barterPost: "Teks barter: Berita baik! Kini saluran kami juga boleh dibaca di margeleT.space",
   },
@@ -429,7 +429,7 @@ const CHANNEL_UI_BY_LOCALE: Record<Locale, ChannelUi> = {
     ...CHANNEL_UI.en,
     authRequired: "چینل شامل کرنے کے لیے سائن اِن کریں۔", formTitle: "چینل شامل کریں", formText: "چینل کی تفصیلات بھریں۔ جمع کرانے کے بعد ہم Telegram bot کھولیں گے، جہاں آپ ادائیگی یا barter منتخب کر سکتے ہیں۔", nameLabel: "1️⃣ Telegram میں چینل کا نام", nameError: "چینل کا نام درج کریں۔", urlLabel: "2️⃣ Telegram چینل لنک", countryLabel: "3️⃣ چینل کا ملک", tagsLabel: "4️⃣ ٹیگز", planLabel: "5️⃣ placement کا طریقہ", paidText: "1 ماہ placement + Telegram donate link کا اختیار۔", barterTitle: "Barter", barterText: "اپنے چینل میں margeleT پر native post کے بدلے 1 ماہ مفت۔", rulesOpen: "قواعد کھولیں", rulesClose: "قواعد چھپائیں", rulesAgree: "میں نے قواعد پڑھ لیے ہیں اور سمجھتا ہوں کہ چینل moderation سے گزرے گا۔", submit: "Telegram bot کھولیں", emptyError: "پہلے Telegram چینل لنک پیسٹ کریں۔", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "پہلے قواعد قبول کریں۔", tagsError: "کم از کم ایک parent tag منتخب کریں۔", maxTagsError: "آپ زیادہ سے زیادہ 3 parent tags منتخب کر سکتے ہیں۔", showAllTags: "ٹیگز منتخب کریں", hideTags: "ٹیگز بند کریں", applyTags: "ٹیگز لگائیں", tagsPlaceholder: "3 topics تک منتخب کرنے کے لیے tap کریں", childrenHint: "منتخب topic کے اندر child tags refine کر سکتے ہیں۔", myChannels: "میرے چینلز", noChannels: "آپ کی requests اور active placements یہاں نظر آئیں گی۔", pending: "bot کا انتظار", active: "active", paused: "pause", expired: "expired", canceled: "removed", price: "Plan", donateInvalid: "?direct والا Telegram link چاہیے", donateSaved: "Donate link saved.", saveDonate: "Save", openChannel: "چینل کھولیں", renew: "Renew", countryStat: "ملک", typeStat: "قسم", termStat: "مدت", paidPlan: "paid", barterPlan: "barter", barterPricing: "barter / 1 month", duplicateError: "یہ چینل پہلے ہی شامل ہے۔ موجودہ card کھولیں یا placement renew کریں۔", submitError: "Request نہیں بن سکی۔ دوبارہ کوشش کریں۔", networkError: "Request نہیں بن سکی۔ انٹرنیٹ چیک کریں اور دوبارہ کوشش کریں۔", barterPost: "Barter text: اچھی خبر! اب ہمارا چینل margeleT.space پر بھی پڑھا جا سکتا ہے",
   },
-  fa: {
+  ir: {
     ...CHANNEL_UI.en,
     authRequired: "برای افزودن کانال وارد شوید.", formTitle: "افزودن کانال", formText: "اطلاعات کانال را وارد کنید. پس از ارسال، ربات Telegram را باز می‌کنیم تا پرداخت کنید یا barter را انتخاب کنید.", nameLabel: "1️⃣ نام کانال مثل Telegram", nameError: "نام کانال را وارد کنید.", urlLabel: "2️⃣ لینک کانال Telegram", countryLabel: "3️⃣ کشور کانال", tagsLabel: "4️⃣ تگ‌ها", planLabel: "5️⃣ روش قرارگیری", paidText: "۱ ماه قرارگیری + امکان افزودن لینک donate تلگرام.", barterTitle: "Barter", barterText: "۱ ماه رایگان در برابر یک پست طبیعی درباره margeleT در کانال شما.", rulesOpen: "نمایش قوانین", rulesClose: "پنهان کردن قوانین", rulesAgree: "قوانین را خوانده‌ام و می‌دانم کانال بررسی می‌شود.", submit: "رفتن به ربات Telegram", emptyError: "ابتدا لینک کانال Telegram را وارد کنید.", invalidError: "Use https://t.me/channel_name, @channel_name or channel_name", rulesError: "ابتدا قوانین را بپذیرید.", tagsError: "حداقل یک تگ اصلی انتخاب کنید.", maxTagsError: "حداکثر ۳ تگ اصلی می‌توانید انتخاب کنید.", showAllTags: "انتخاب تگ‌ها", hideTags: "بستن تگ‌ها", applyTags: "اعمال تگ‌ها", tagsPlaceholder: "برای انتخاب حداکثر ۳ موضوع بزنید", childrenHint: "می‌توانید زیرتگ‌های موضوع انتخاب‌شده را دقیق‌تر کنید.", myChannels: "کانال‌های من", noChannels: "درخواست‌ها و قرارگیری‌های فعال شما اینجا نمایش داده می‌شود.", pending: "در انتظار ربات", active: "فعال", paused: "مکث", expired: "منقضی", canceled: "حذف‌شده", price: "پلن", donateInvalid: "لینک Telegram با ?direct لازم است", donateSaved: "لینک donate ذخیره شد.", saveDonate: "ذخیره", openChannel: "رفتن به کانال", renew: "تمدید", countryStat: "کشور", typeStat: "نوع", termStat: "مدت", paidPlan: "پرداخت", barterPlan: "barter", barterPricing: "barter / ۱ ماه", duplicateError: "این کانال قبلاً اضافه شده است. کارت موجود را باز کنید یا قرارگیری را تمدید کنید.", submitError: "درخواست ساخته نشد. دوباره تلاش کنید.", networkError: "درخواست ساخته نشد. اینترنت را بررسی کنید و دوباره تلاش کنید.", barterPost: "متن barter: خبر خوب دوستان! اکنون کانال ما در margeleT.space هم قابل خواندن است",
   },
@@ -445,7 +445,7 @@ const CHANNEL_UI_BY_LOCALE: Record<Locale, ChannelUi> = {
   },
   eg: undefined as any,
   sa: undefined as any,
-  kk: {
+  kz: {
     ...CHANNEL_UI.ru,
     authRequired: "Арналар қосу үшін авторизациядан өтіңіз.", formTitle: "Арна қосу", formText: "Арна деректерін толтырыңыз. Жібергеннен кейін Telegram-бот ашылады — онда төлеуге немесе бартер таңдауға болады.", nameLabel: "1️⃣ Telegram-дағы арна атауы", nameError: "Арна атауын енгізіңіз.", urlLabel: "2️⃣ Telegram арна сілтемесі", countryLabel: "3️⃣ Арна елі", tagsLabel: "4️⃣ Тегтер", planLabel: "5️⃣ Орналастыру тәсілі", barterText: "margeleT туралы нативті пост үшін 1 ай тегін.", submit: "Telegram-ботқа өту", myChannels: "Менің арналарым", pending: "ботты күтуде", active: "белсенді", paused: "пауза", expired: "аяқталды", canceled: "өшірілді", saveDonate: "Сақтау", openChannel: "Арнаға", renew: "Ұзарту", countryStat: "ел", typeStat: "түрі", termStat: "мерзім", paidPlan: "төлем", barterPlan: "бартер", barterPricing: "бартер / 1 ай",
   },
@@ -461,7 +461,7 @@ CHANNEL_UI_BY_LOCALE.co = CHANNEL_UI_BY_LOCALE.es;
 CHANNEL_UI_BY_LOCALE.eg = CHANNEL_UI_BY_LOCALE.ae;
 CHANNEL_UI_BY_LOCALE.sa = CHANNEL_UI_BY_LOCALE.ae;
 
-Object.assign(CHANNEL_UI_BY_LOCALE.kk, {
+Object.assign(CHANNEL_UI_BY_LOCALE.kz, {
   authRequired: "Арналар қосу үшін кіріңіз.",
   formTitle: "Арна қосу",
   formText: "Арна деректерін толтырыңыз. Жібергеннен кейін Telegram-бот ашылады — онда төлеуге немесе бартер таңдауға болады.",
@@ -613,14 +613,14 @@ const RULES_BODY_BY_LOCALE: Partial<Record<Locale, readonly string[]>> = {
     "margeleT не переписывает авторский контент и всегда ведёт пользователя обратно к оригинальному каналу.",
     "Посты появляются и живут в ленте margeleT ровно 24 часа после того как вы опубликовали любой свежий пост в канале Telegram.",
   ],
-  uk: [
+  ua: [
     "Канал має бути відкритим Telegram-каналом із нормальним регулярним контентом.",
     "✋ СУВОРО ЗАБОРОНЕНО; скам, шахрайство, наркотики, зброя, екстремізм, порнографія, шок-контент і прямі порушення закону.",
     "У разі порушення правила *✋ Суворо заборонено* модерація може відхилити канал без автоматичної публікації, при цьому Stars не повертаються.",
     "margeleT не переписує авторський контент і завжди веде користувача назад до оригінального каналу.",
     "Пости з’являються і живуть у стрічці margeleT рівно 24 години після того, як ви опублікували будь-який свіжий пост у Telegram-каналі.",
   ],
-  en: [
+  us: [
     "The channel must be an open Telegram channel with normal regular content.",
     "✋ STRICTLY PROHIBITED; scams, fraud, drugs, weapons, extremism, pornography, shock content and direct violations of the law.",
     "If the *✋ Strictly prohibited* rule is violated, moderation may reject the channel without automatic publication, and Stars are not refunded.",
@@ -641,7 +641,7 @@ const RULES_BODY_BY_LOCALE: Partial<Record<Locale, readonly string[]>> = {
     "margeleT does not rewrite creator content and always sends users back to the original channel.",
     "Posts appear and live in the margeleT feed for exactly 24 hours after you publish any fresh post in your Telegram channel.",
   ],
-  zh: [
+  cn: [
     "频道必须是开放的 Telegram 频道，并有正常、定期的内容。",
     "✋ 严格禁止；诈骗、欺诈、毒品、武器、极端主义、色情、冲击性内容以及直接违法行为。",
     "如果违反 *✋ 严格禁止* 规则，审核可以拒绝频道且不会自动发布，同时 Stars 不会退还。",
@@ -697,7 +697,7 @@ const RULES_BODY_BY_LOCALE: Partial<Record<Locale, readonly string[]>> = {
     "margeleT non riscrive i contenuti degli autori e riporta sempre l’utente al canale originale.",
     "I post appaiono e restano nel feed margeleT per esattamente 24 ore dopo la pubblicazione di qualsiasi nuovo post nel canale Telegram.",
   ],
-  "pt-br": [
+  br: [
     "O canal deve ser um canal aberto do Telegram com conteúdo normal e regular.",
     "✋ ESTRITAMENTE PROIBIDO; golpes, fraudes, drogas, armas, extremismo, pornografia, conteúdo chocante e violações diretas da lei.",
     "Se a regra *✋ Estritamente proibido* for violada, a moderação pode rejeitar o canal sem publicação automática, e os Stars não são reembolsados.",
@@ -718,7 +718,7 @@ const RULES_BODY_BY_LOCALE: Partial<Record<Locale, readonly string[]>> = {
     "margeleT tidak menulis ulang konten kreator dan selalu mengarahkan pengguna kembali ke channel asli.",
     "Post muncul dan hidup di feed margeleT tepat 24 jam setelah kamu menerbitkan post baru di channel Telegram.",
   ],
-  ms: [
+  my: [
     "Saluran mestilah saluran Telegram terbuka dengan kandungan normal dan berkala.",
     "✋ DILARANG SAMA SEKALI; scam, penipuan, dadah, senjata, ekstremisme, pornografi, kandungan mengejutkan dan pelanggaran undang-undang secara langsung.",
     "Jika peraturan *✋ Dilarang sama sekali* dilanggar, moderasi boleh menolak saluran tanpa penerbitan automatik, dan Stars tidak dipulangkan.",
@@ -739,7 +739,7 @@ const RULES_BODY_BY_LOCALE: Partial<Record<Locale, readonly string[]>> = {
     "margeleT مصنف کا مواد دوبارہ نہیں لکھتا اور ہمیشہ صارف کو اصل چینل پر واپس لے جاتا ہے۔",
     "Telegram چینل میں کوئی بھی نیا post شائع کرنے کے بعد posts margeleT feed میں بالکل 24 گھنٹے تک دکھائی دیتے اور رہتے ہیں۔",
   ],
-  fa: [
+  ir: [
     "کانال باید یک کانال باز Telegram با محتوای عادی و منظم باشد.",
     "✋ به‌شدت ممنوع است؛ اسکم، کلاهبرداری، مواد مخدر، سلاح، افراط‌گرایی، پورنوگرافی، محتوای شوک‌آور و نقض مستقیم قانون.",
     "در صورت نقض قانون *✋ به‌شدت ممنوع است*، moderation می‌تواند کانال را بدون انتشار خودکار رد کند و Stars بازگردانده نمی‌شود.",
@@ -767,7 +767,7 @@ const RULES_BODY_BY_LOCALE: Partial<Record<Locale, readonly string[]>> = {
     "margeleT لا يعيد كتابة محتوى المؤلفين ويعيد المستخدم دائمًا إلى القناة الأصلية.",
     "تظهر المنشورات وتبقى في موجز margeleT لمدة 24 ساعة بالضبط بعد نشر أي منشور جديد في قناة Telegram.",
   ],
-  kk: [
+  kz: [
     "Арна қалыпты әрі тұрақты контенті бар ашық Telegram-арна болуы керек.",
     "✋ ҚАТАҢ ТЫЙЫМ САЛЫНАДЫ; скам, алаяқтық, есірткі, қару, экстремизм, порнография, шок-контент және заңды тікелей бұзу.",
     "*✋ Қатаң тыйым салынады* ережесі бұзылса, модерация арнаны автоматты жариялаусыз қабылдамауы мүмкін, бұл жағдайда Stars қайтарылмайды.",
@@ -803,13 +803,13 @@ const CLAIM_UI_BY_LOCALE: Partial<
     claimPlan: "подтверждение",
     claimPricing: "подтверждение владения",
   },
-  uk: {
+  ua: {
     claimTitle: "Підтвердити",
     claimText: "Якщо канал уже є на margeleT, підтвердьте право власності через Telegram.",
     claimPlan: "підтвердження",
     claimPricing: "підтвердження власності",
   },
-  en: {
+  us: {
     claimTitle: "Claim",
     claimText: "If the channel is already on margeleT, confirm ownership via Telegram.",
     claimPlan: "claim",
@@ -821,7 +821,7 @@ const CLAIM_UI_BY_LOCALE: Partial<
     claimPlan: "claim",
     claimPricing: "ownership claim",
   },
-  fa: {
+  ir: {
     claimTitle: "تأیید مالکیت",
     claimText: "اگر کانال از قبل در margeleT هست، مالکیت را از طریق Telegram تأیید کنید.",
     claimPlan: "تأیید مالکیت",
@@ -833,13 +833,13 @@ const CLAIM_UI_BY_LOCALE: Partial<
     claimPlan: "sahiplik onayı",
     claimPricing: "sahiplik onayı",
   },
-  "pt-br": {
+  br: {
     claimTitle: "Confirmar",
     claimText: "Se o canal já está no margeleT, confirme a propriedade pelo Telegram.",
     claimPlan: "confirmação",
     claimPricing: "confirmação de propriedade",
   },
-  kk: {
+  kz: {
     claimTitle: "Растау",
     claimText: "Арна margeleT ішінде бұрыннан бар болса, иелікті Telegram арқылы растаңыз.",
     claimPlan: "растау",
@@ -935,13 +935,13 @@ const CLAIM_UI_BY_LOCALE: Partial<
     claimPlan: "claim",
     claimPricing: "ownership claim",
   },
-  zh: {
+  cn: {
     claimTitle: "确认",
     claimText: "如果频道已在 margeleT 上，请通过 Telegram 确认所有权。",
     claimPlan: "确认",
     claimPricing: "所有权确认",
   },
-  ms: {
+  my: {
     claimTitle: "Sahkan",
     claimText: "Jika saluran sudah ada di margeleT, sahkan pemilikan melalui Telegram.",
     claimPlan: "pengesahan",
@@ -1372,7 +1372,7 @@ export function CreatorChannelPanel({
                                   : "border-soft bg-surface text-secondary"
                               }`}
                             >
-                              {child.emoji} {child.labels[locale] ?? child.labels.en}
+                              {child.emoji} {child.labels[locale] ?? child.labels.us}
                             </button>
                           );
                         })}

@@ -1,6 +1,8 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import type { ContentTag, IngestedPost, TrustedSource } from "../lib/contracts.js";
+
 const GITHUB_TOKEN = String(
   process.env.GITHUB_TOKEN ||
   process.env.GH_TOKEN ||

@@ -21,7 +21,7 @@ const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 const SUB_KEY = "margelet_subscriptions";
 
 const COPY = {
-  en: {
+  us: {
     play: "Play",
     pause: "Pause",
     mute: "Mute",
@@ -33,7 +33,7 @@ const COPY = {
     mute: "Выключить звук",
     unmute: "Включить звук",
   },
-  uk: {
+  ua: {
     play: "Відтворити",
     pause: "Пауза",
     mute: "Вимкнути звук",
@@ -45,7 +45,7 @@ const COPY = {
     mute: "Mute",
     unmute: "Unmute",
   },
-  fa: {
+  ir: {
     play: "پخش",
     pause: "توقف",
     mute: "بی‌صدا",
@@ -57,13 +57,13 @@ const COPY = {
     mute: "Sesi kapat",
     unmute: "Sesi aç",
   },
-  "pt-br": {
+  br: {
     play: "Reproduzir",
     pause: "Pausar",
     mute: "Silenciar",
     unmute: "Ativar som",
   },
-  kk: {
+  kz: {
     play: "Ойнату",
     pause: "Пауза",
     mute: "Дыбысты өшіру",
@@ -159,13 +159,13 @@ const COPY = {
     mute: "Mute",
     unmute: "Unmute",
   },
-  zh: {
+  cn: {
     play: "播放",
     pause: "暂停",
     mute: "静音",
     unmute: "开启声音",
   },
-  ms: {
+  my: {
     play: "Main",
     pause: "Jeda",
     mute: "Bisu",
@@ -335,7 +335,7 @@ export function FeedViewer({
   handleShare: _handleShare,
   setActionError: _setActionError,
 }: ViewerProps) {
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const captionRef = useRef<HTMLDivElement | null>(null);

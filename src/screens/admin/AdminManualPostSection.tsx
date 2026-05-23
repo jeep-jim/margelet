@@ -11,7 +11,7 @@ import {
 import { SITE_TAG_GROUPS } from "../../lib/tags";
 import { normalizeTelegramUrl } from "../../lib/telegram";
 import type { ContentTag } from "../../types/app";
-import type { CountryCode } from "./admin.countries";
+import type { CountryCode } from "../../../api/lib/contracts";
 import { AdminSectionCard } from "./AdminSectionCard";
 
 type AdminManualPostSectionProps = {

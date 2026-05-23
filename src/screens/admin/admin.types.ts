@@ -1,5 +1,5 @@
 import type { ContentTag } from "../../types/app";
-import type { CountryCode } from "./admin.countries";
+import type { CountryCode } from "../../../api/lib/contracts";
 
 export type AdminTabId =
   | "posts"

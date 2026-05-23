@@ -35,13 +35,13 @@ function TagChips({
 
   const TITLE = {
     ru: "Теги канала",
-    uk: "Теги каналу",
-    en: "Channel tags",
+    ua: "Теги каналу",
+    us: "Channel tags",
     in: "Channel tags",
-    fa: "برچسب‌های کانال",
+    ir: "برچسب‌های کانال",
     tr: "Kanal etiketleri",
-    "pt-br": "Tags do canal",
-    kk: "Арна тегтері",
+    br: "Tags do canal",
+    kz: "Арна тегтері",
     uz: "Kanal teglari",
     ae: "وسوم القناة",
     eg: "وسوم القناة",
@@ -57,11 +57,11 @@ function TagChips({
     co: "Etiquetas del canal",
     za: "Channel tags",
     ng: "Channel tags",
-    zh: "频道标签",
-    ms: "Tag saluran",
+    cn: "频道标签",
+    my: "Tag saluran",
   } as const;
 
-  const menuTitle = TITLE[locale] ?? TITLE.en;
+  const menuTitle = TITLE[locale] ?? TITLE.us;
 
   if (!isExpandable) {
     return (
@@ -128,13 +128,13 @@ export function FeedCard(props: FeedCardProps) {
 
   const COPY = {
     ru: { read: "Читать", more: "Ещё", open: "Открыть" },
-    uk: { read: "Читати", more: "Ще", open: "Відкрити" },
-    en: { read: "Read", more: "More", open: "Open" },
+    ua: { read: "Читати", more: "Ще", open: "Відкрити" },
+    us: { read: "Read", more: "More", open: "Open" },
     in: { read: "पढ़ें", more: "और", open: "खोलें" },
-    fa: { read: "خواندن", more: "بیشتر", open: "باز کردن" },
+    ir: { read: "خواندن", more: "بیشتر", open: "باز کردن" },
     tr: { read: "Oku", more: "Daha fazla", open: "Aç" },
-    "pt-br": { read: "Ler", more: "Mais", open: "Abrir" },
-    kk: { read: "Оқу", more: "Тағы", open: "Ашу" },
+    br: { read: "Ler", more: "Mais", open: "Abrir" },
+    kz: { read: "Оқу", more: "Тағы", open: "Ашу" },
     uz: { read: "O‘qish", more: "Yana", open: "Ochish" },
     ae: { read: "قراءة", more: "المزيد", open: "فتح" },
     eg: { read: "قراءة", more: "المزيد", open: "فتح" },
@@ -150,11 +150,11 @@ export function FeedCard(props: FeedCardProps) {
     co: { read: "Leer", more: "Más", open: "Abrir" },
     za: { read: "Read", more: "More", open: "Open" },
     ng: { read: "Read", more: "More", open: "Open" },
-    zh: { read: "阅读", more: "更多", open: "打开" },
-    ms: { read: "Baca", more: "Lagi", open: "Buka" },
+    cn: { read: "阅读", more: "更多", open: "打开" },
+    my: { read: "Baca", more: "Lagi", open: "Buka" },
   } as const;
 
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
 
   const displayText = getDisplayText(post);
   const showVisualMedia = hasVisualMedia(post);

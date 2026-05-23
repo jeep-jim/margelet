@@ -83,7 +83,7 @@ export function FeedHeader({
       selectedTopics: "Выбрано",
       emptyTagState: "Темы не выбраны",
     },
-    uk: {
+    ua: {
       title: "Теми та пошук",
       subtitle: "Обери теми, щоб персоналізувати стрічку.",
       searchPlaceholder: "Пошук за каналом, текстом, темою...",
@@ -93,7 +93,7 @@ export function FeedHeader({
       selectedTopics: "Обрано",
       emptyTagState: "Теми не вибрані",
     },
-    en: {
+    us: {
       title: "Topics & search",
       subtitle: "Choose topics to personalize your feed.",
       searchPlaceholder: "Search by channel, text, link...",
@@ -113,7 +113,7 @@ export function FeedHeader({
       selectedTopics: "चयनित",
       emptyTagState: "कोई विषय चयनित नहीं",
     },
-    fa: {
+    ir: {
       title: "موضوعات و جستجو",
       subtitle: "برای شخصی‌سازی فید، موضوعات را انتخاب کنید.",
       searchPlaceholder: "جستجو بر اساس کانال، متن، لینک...",
@@ -133,7 +133,7 @@ export function FeedHeader({
       selectedTopics: "Seçildi",
       emptyTagState: "Konu seçilmedi",
     },
-    "pt-br": {
+    br: {
       title: "Tópicos e busca",
       subtitle: "Escolha tópicos para personalizar seu feed.",
       searchPlaceholder: "Buscar por canal, texto, link...",
@@ -143,7 +143,7 @@ export function FeedHeader({
       selectedTopics: "Selecionados",
       emptyTagState: "Nenhum tópico selecionado",
     },
-    kk: {
+    kz: {
       title: "Тақырыптар мен іздеу",
       subtitle: "Лентаңды бейімдеу үшін тақырыптарды таңда.",
       searchPlaceholder: "Арна, мәтін, сілтеме бойынша іздеу...",
@@ -303,7 +303,7 @@ export function FeedHeader({
       selectedTopics: "Selected",
       emptyTagState: "No topics selected",
     },
-    zh: {
+    cn: {
       title: "主题与搜索",
       subtitle: "选择主题以个性化你的内容流。",
       searchPlaceholder: "按频道、文本、链接搜索...",
@@ -313,7 +313,7 @@ export function FeedHeader({
       selectedTopics: "已选择",
       emptyTagState: "未选择主题",
     },
-    ms: {
+    my: {
       title: "Topik & carian",
       subtitle: "Pilih topik untuk memperibadikan feed anda.",
       searchPlaceholder: "Cari mengikut saluran, teks, pautan...",
@@ -325,7 +325,7 @@ export function FeedHeader({
     },
   } as const;
 
-  const copy = COPY[locale] ?? COPY.en;
+  const copy = COPY[locale] ?? COPY.us;
   const selectedCount = selectedTags.length;
   const hasSearchDraft = draftQuery.trim().length > 0;
   const canErase = selectedCount > 0 || hasSearchDraft || searchQuery.trim().length > 0;

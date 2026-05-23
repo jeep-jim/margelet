@@ -11,7 +11,7 @@ import {
 import { SITE_TAG_GROUPS } from "../../lib/tags";
 import type { ContentTag } from "../../types/app";
 import { AdminSectionCard } from "./AdminSectionCard";
-import type { CountryCode } from "./admin.countries";
+import type { CountryCode } from "../../../api/lib/contracts";
 
 type AdminBulkImportSectionProps = {
   telegramUserId: string | null;
@@ -71,12 +71,12 @@ function buildTagAliasMap() {
   for (const group of SITE_TAG_GROUPS) {
     addAlias(group.value, group.value);
     addAlias(group.labels.ru, group.value);
-    addAlias(group.labels.en, group.value);
+    addAlias(group.labels.us, group.value);
 
     for (const child of group.children) {
       addAlias(child.value, child.value);
       addAlias(child.labels.ru, child.value);
-      addAlias(child.labels.en, child.value);
+      addAlias(child.labels.us, child.value);
     }
   }
 

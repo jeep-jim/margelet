@@ -1,6 +1,20 @@
 import type { FeedTag } from "../../types/app";
 import type { FeedOption } from "./feed.types";
 
+import type { CountryCode } from "../../../api/lib/contracts";
+import { SEO_LOCALE_META } from "../../../api/lib/contracts";
+
+export const FEED_COUNTRIES: CountryCode[] = [
+  "ru", "ua", "us", "in", "ir", "tr", "br",
+  "kz", "uz", "ae", "eg", "pk", "id", "mx", "sa",
+  "es", "it", "fr", "de", "ar", "co", "za", "ng",
+  "cn", "my"
+];
+
+export const getCountryLabel = (code: CountryCode): string => {
+  return SEO_LOCALE_META[code]?.label || code.toUpperCase();
+};
+
 export const TAG_OPTIONS: FeedOption<FeedTag>[] = [
   { value: "all" },
 

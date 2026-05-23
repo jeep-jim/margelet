@@ -12,7 +12,8 @@ import { SITE_TAG_GROUPS } from "../../lib/tags";
 import type { ContentTag } from "../../types/app";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { AdminSectionCard } from "./AdminSectionCard";
-import type { CountryCode } from "./admin.countries";
+import type { CountryCode } from "../../../api/lib/contracts";
+
 import type { TrustedSource } from "./admin.types";
 
 type AdminSourcesSectionProps = {

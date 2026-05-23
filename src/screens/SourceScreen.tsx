@@ -38,12 +38,12 @@ const SOURCE_SCREEN_COPY: Record<
     info: "В ленте показываются последние посты канала за 24 часа. Полная информация доступна в Telegram. Нажмите кнопку «Открыть канал», чтобы перейти в источник.",
     donateSoon: "Скоро здесь появится возможность поддержать канал донатом.",
   },
-  uk: {
+  ua: {
     supportChannel: "Підтримати канал",
     info: "У стрічці показуються останні пости каналу за 24 години. Повна інформація доступна в Telegram. Натисніть кнопку «Відкрити канал», щоб перейти до джерела.",
     donateSoon: "Незабаром тут зʼявиться можливість підтримати канал донатом.",
   },
-  en: {
+  us: {
     supportChannel: "Support channel",
     info: "The feed shows the latest posts from this channel from the last 24 hours. Full information is available in Telegram. Click the “Open channel” button to go to the source.",
     donateSoon: "Soon you will be able to support this channel with a donation.",
@@ -53,7 +53,7 @@ const SOURCE_SCREEN_COPY: Record<
     info: "फ़ीड में इस चैनल के पिछले 24 घंटों के नवीनतम पोस्ट दिखाए जाते हैं। पूरी जानकारी Telegram में उपलब्ध है। स्रोत पर जाने के लिए “Open channel” बटन दबाएँ।",
     donateSoon: "जल्द ही आप दान के माध्यम से इस चैनल का समर्थन कर सकेंगे।",
   },
-  fa: {
+  ir: {
     supportChannel: "حمایت از کانال",
     info: "در فید، جدیدترین پست‌های این کانال در ۲۴ ساعت گذشته نمایش داده می‌شود. اطلاعات کامل در Telegram در دسترس است. برای رفتن به منبع، روی دکمه «Open channel» بزنید.",
     donateSoon: "به‌زودی امکان حمایت مالی از این کانال فراهم می‌شود.",
@@ -63,12 +63,12 @@ const SOURCE_SCREEN_COPY: Record<
     info: "Akışta bu kanalın son 24 saatteki en yeni gönderileri gösterilir. Tüm bilgiler Telegram’da mevcuttur. Kaynağa gitmek için “Open channel” düğmesine tıklayın.",
     donateSoon: "Yakında bu kanalı bağışla destekleyebileceksiniz.",
   },
-  "pt-br": {
+  br: {
     supportChannel: "Apoiar canal",
     info: "O feed mostra as publicações mais recentes deste canal nas últimas 24 horas. As informações completas estão disponíveis no Telegram. Clique em “Open channel” para abrir a fonte.",
     donateSoon: "Em breve você poderá apoiar este canal com uma doação.",
   },
-  kk: {
+  kz: {
     supportChannel: "Арнаны қолдау",
     info: "Лентада осы арнаның соңғы 24 сағаттағы жаңа жазбалары көрсетіледі. Толық ақпарат Telegram-да қолжетімді. Дереккөзге өту үшін «Open channel» түймесін басыңыз.",
     donateSoon: "Жақында бұл арнаны донат арқылы қолдау мүмкіндігі пайда болады.",
@@ -148,12 +148,12 @@ const SOURCE_SCREEN_COPY: Record<
     info: "The feed shows the latest posts from this channel from the last 24 hours. Full information is available in Telegram. Click the “Open channel” button to go to the source.",
     donateSoon: "Soon you will be able to support this channel with a donation.",
   },
-  zh: {
+  cn: {
     supportChannel: "支持频道",
     info: "这里显示该频道过去 24 小时内的最新帖子。完整信息可在 Telegram 中查看。点击“Open channel”按钮前往原始来源。",
     donateSoon: "很快你将可以通过捐赠来支持这个频道。",
   },
-  ms: {
+  my: {
     supportChannel: "Sokong saluran",
     info: "Feed memaparkan kiriman terkini daripada saluran ini dalam tempoh 24 jam terakhir. Maklumat penuh tersedia di Telegram. Klik butang “Open channel” untuk membuka sumber.",
     donateSoon: "Tidak lama lagi anda akan dapat menyokong saluran ini melalui sumbangan.",
@@ -200,7 +200,7 @@ export function SourceScreen({
   openSource,
 }: Props) {
   const t = getMessages(locale);
-  const sourceCopy = SOURCE_SCREEN_COPY[locale] ?? SOURCE_SCREEN_COPY.en;
+  const sourceCopy = SOURCE_SCREEN_COPY[locale] ?? SOURCE_SCREEN_COPY.us;
 
   const sourcePosts = useMemo(() => {
     return posts
