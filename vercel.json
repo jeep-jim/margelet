@@ -5,11 +5,7 @@
     {
       "src": "/feed\\.json",
       "dest": "/api/feed?rawFeedPath=feed.json"
-    },
-    {
-      "src": "/feeds/(.*)",
-      "dest": "/api/feed?rawFeedPath=$1"
-    },
+    },    
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
