@@ -1,5 +1,5 @@
 // 🔥 Импортируем единый тип CountryCode
-import type { CountryCode } from "../../../api/lib/contracts";
+import type { CountryCode } from "../../../api/lib/contracts.js";
 
 export type CreatorPlan = "paid" | "barter";
 
