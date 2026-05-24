@@ -1,4 +1,4 @@
-import { Bell, BellOff, Send, ThumbsDown, Trash2 } from "lucide-react";
+import { Bell, BellOff, Send, ThumbsDown, Trash2, Share2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
@@ -39,7 +39,7 @@ export function FeedMoreMenu({
   onOpenTelegram,
   onRequestClose,
   anchorRect,
-  postId: _postId,
+  postId,
   sourceHandle,
 }: {
   locale: Locale;
@@ -97,6 +97,7 @@ export function FeedMoreMenu({
       delete: "Удалить пост",
       deleteAdmin: "Удалить пост (admin)",
       hide: "Мне это не интересно!",
+      share: "Поделиться",
     },
     ua: {
       subscribeOn: "Увімкнути сповіщення",
@@ -105,6 +106,7 @@ export function FeedMoreMenu({
       delete: "Видалити пост",
       deleteAdmin: "Видалити пост (admin)",
       hide: "Мені це не цікаво",
+      share: "Поділитися",
     },
     us: {
       subscribeOn: "Enable notifications",
@@ -113,6 +115,7 @@ export function FeedMoreMenu({
       delete: "Delete post",
       deleteAdmin: "Delete post (admin)",
       hide: "Not interested",
+      share: "Share",
     },
     in: {
       subscribeOn: "Enable notifications",
@@ -121,6 +124,7 @@ export function FeedMoreMenu({
       delete: "Delete post",
       deleteAdmin: "Delete post (admin)",
       hide: "Not interested",
+      share: "Share",
     },
     ir: {
       subscribeOn: "فعال کردن اعلان‌ها",
@@ -129,6 +133,7 @@ export function FeedMoreMenu({
       delete: "حذف پست",
       deleteAdmin: "حذف پست (admin)",
       hide: "علاقه‌ای ندارم",
+      share: "اشتراک‌گذاری",
     },
     tr: {
       subscribeOn: "Bildirimleri aç",
@@ -137,6 +142,7 @@ export function FeedMoreMenu({
       delete: "Gönderiyi sil",
       deleteAdmin: "Gönderiyi sil (admin)",
       hide: "İlgimi çekmiyor",
+      share: "Paylaş",
     },
     br: {
       subscribeOn: "Ativar notificações",
@@ -145,6 +151,7 @@ export function FeedMoreMenu({
       delete: "Excluir post",
       deleteAdmin: "Excluir post (admin)",
       hide: "Não me interessa",
+      share: "Compartilhar",
     },
     kz: {
       subscribeOn: "Хабарландыруларды қосу",
@@ -153,6 +160,7 @@ export function FeedMoreMenu({
       delete: "Постты жою",
       deleteAdmin: "Постты жою (admin)",
       hide: "Маған қызық емес",
+      share: "Бөлісу",
     },
     uz: {
       subscribeOn: "Bildirishnomalarni yoqish",
@@ -161,6 +169,7 @@ export function FeedMoreMenu({
       delete: "Postni o‘chirish",
       deleteAdmin: "Postni o‘chirish (admin)",
       hide: "Menga qiziq emas",
+      share: "Ulashish",
     },
     ae: {
       subscribeOn: "تفعيل الإشعارات",
@@ -169,6 +178,7 @@ export function FeedMoreMenu({
       delete: "حذف المنشور",
       deleteAdmin: "حذف المنشور (admin)",
       hide: "غير مهتم",
+      share: "مشاركة",
     },
     eg: {
       subscribeOn: "تفعيل الإشعارات",
@@ -177,6 +187,7 @@ export function FeedMoreMenu({
       delete: "حذف المنشور",
       deleteAdmin: "حذف المنشور (admin)",
       hide: "غير مهتم",
+      share: "مشاركة",
     },
     pk: {
       subscribeOn: "Enable notifications",
@@ -185,6 +196,7 @@ export function FeedMoreMenu({
       delete: "Delete post",
       deleteAdmin: "Delete post (admin)",
       hide: "Not interested",
+      share: "Share",
     },
     id: {
       subscribeOn: "Aktifkan notifikasi",
@@ -193,6 +205,7 @@ export function FeedMoreMenu({
       delete: "Hapus postingan",
       deleteAdmin: "Hapus postingan (admin)",
       hide: "Saya tidak tertarik",
+      share: "Bagikan",
     },
     mx: {
       subscribeOn: "Activar notificaciones",
@@ -201,6 +214,7 @@ export function FeedMoreMenu({
       delete: "Eliminar publicación",
       deleteAdmin: "Eliminar publicación (admin)",
       hide: "No me interesa",
+      share: "Compartir",
     },
     sa: {
       subscribeOn: "تفعيل الإشعارات",
@@ -209,6 +223,7 @@ export function FeedMoreMenu({
       delete: "حذف المنشور",
       deleteAdmin: "حذف المنشور (admin)",
       hide: "غير مهتم",
+      share: "مشاركة",
     },
     es: {
       subscribeOn: "Activar notificaciones",
@@ -217,6 +232,7 @@ export function FeedMoreMenu({
       delete: "Eliminar publicación",
       deleteAdmin: "Eliminar publicación (admin)",
       hide: "No me interesa",
+      share: "Compartir",
     },
     it: {
       subscribeOn: "Attiva notifiche",
@@ -225,6 +241,7 @@ export function FeedMoreMenu({
       delete: "Elimina post",
       deleteAdmin: "Elimina post (admin)",
       hide: "Non mi interessa",
+      share: "Condividi",
     },
     fr: {
       subscribeOn: "Activer les notifications",
@@ -233,6 +250,7 @@ export function FeedMoreMenu({
       delete: "Supprimer le post",
       deleteAdmin: "Supprimer le post (admin)",
       hide: "Ça ne m’intéresse pas",
+      share: "Partager",
     },
     de: {
       subscribeOn: "Benachrichtigungen aktivieren",
@@ -241,6 +259,7 @@ export function FeedMoreMenu({
       delete: "Beitrag löschen",
       deleteAdmin: "Beitrag löschen (admin)",
       hide: "Nicht interessant",
+      share: "Teilen",
     },
     ar: {
       subscribeOn: "Activar notificaciones",
@@ -249,6 +268,7 @@ export function FeedMoreMenu({
       delete: "Eliminar publicación",
       deleteAdmin: "Eliminar publicación (admin)",
       hide: "No me interesa",
+      share: "Compartir",
     },
     co: {
       subscribeOn: "Activar notificaciones",
@@ -257,6 +277,7 @@ export function FeedMoreMenu({
       delete: "Eliminar publicación",
       deleteAdmin: "Eliminar publicación (admin)",
       hide: "No me interesa",
+      share: "Compartir",
     },
     za: {
       subscribeOn: "Enable notifications",
@@ -265,6 +286,7 @@ export function FeedMoreMenu({
       delete: "Delete post",
       deleteAdmin: "Delete post (admin)",
       hide: "Not interested",
+      share: "Share",
     },
     ng: {
       subscribeOn: "Enable notifications",
@@ -273,6 +295,7 @@ export function FeedMoreMenu({
       delete: "Delete post",
       deleteAdmin: "Delete post (admin)",
       hide: "Not interested",
+      share: "Share",
     },
     cn: {
       subscribeOn: "开启通知",
@@ -281,6 +304,7 @@ export function FeedMoreMenu({
       delete: "删除帖子",
       deleteAdmin: "删除帖子 (admin)",
       hide: "我不感兴趣",
+      share: "分享",
     },
     my: {
       subscribeOn: "Aktifkan notifikasi",
@@ -289,10 +313,29 @@ export function FeedMoreMenu({
       delete: "Padam siaran",
       deleteAdmin: "Padam siaran (admin)",
       hide: "Saya tidak berminat",
+      share: "Kongsi",
     },
   } as const;
 
   const copy = COPY[locale] ?? COPY.us;
+
+  const handleShare = () => {
+    const shareUrl = `${window.location.origin}/${postId}?single`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: "margeleT",
+        text: "Посмотрите этот пост в margeleT",
+        url: shareUrl,
+      }).catch(() => {
+        navigator.clipboard.writeText(shareUrl);
+        alert(copy.share + " — ссылка скопирована");
+      });
+    } else {
+      navigator.clipboard.writeText(shareUrl);
+      alert(copy.share + " — ссылка скопирована");
+    }
+  };
 
   const position = useMemo(() => {
     return {
@@ -346,6 +389,19 @@ export function FeedMoreMenu({
         >
           <Send className="h-4 w-4" />
           <span>{copy.openTelegram}</span>
+        </button>
+
+        {/* 🔥 НОВАЯ КНОПКА ПОДЕЛИТЬСЯ */}
+        <button
+          type="button"
+          onClick={() => {
+            handleShare();
+            onRequestClose();
+          }}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
+        >
+          <Share2 className="h-4 w-4" />
+          <span>{copy.share}</span>
         </button>
 
         <div className="my-2 h-px bg-[color:var(--border-soft)]/70" />
