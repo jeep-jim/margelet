@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-24T05:03:01.650Z",
+  "updatedAt": "2026-05-24T05:18:23.745Z",
   "countries": {
     "ru": {
       "code": "ru",
@@ -17,6 +17,14 @@
       "mode": "single",
       "path": "/feeds/ir.json",
       "updatedAt": "2026-05-24T05:03:01.650Z"
+    },
+    "us": {
+      "code": "us",
+      "posts": 941,
+      "chunks": 1,
+      "mode": "single",
+      "path": "/feeds/us.json",
+      "updatedAt": "2026-05-24T05:18:23.745Z"
     }
   }
 }
