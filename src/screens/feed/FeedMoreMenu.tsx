@@ -320,7 +320,7 @@ export function FeedMoreMenu({
   const copy = COPY[locale] ?? COPY.us;
 
   const handleShare = () => {
-    const shareUrl = `${window.location.origin}/${postId}?single`;
+    const shareUrl = `${window.location.origin}/${sourceHandle}/${postId}`;
     
     if (navigator.share) {
       navigator.share({
