@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { IngestedPost, Locale } from "../types/app";
-import type { CountryCode } from "../../api/lib/contracts";
+import { type CountryCode, SEO_LOCALE_META } from "../../api/lib/contracts";
 
 import { AdminBulkImportSection } from "./admin/AdminBulkImportSection";
 import { AdminCountriesSection } from "./admin/AdminCountriesSection";
@@ -9,6 +9,7 @@ import { AdminMonetizationSection } from "./admin/AdminMonetizationSection";
 import { AdminPostsSection } from "./admin/AdminPostsSection";
 import { AdminSourcesSection } from "./admin/AdminSourcesSection";
 import type { TrustedSource } from "./admin/admin.types";
+
 
 type AdminScreenProps = {
   locale: Locale;
@@ -256,41 +257,25 @@ export function AdminScreen({
     return counts;
   }, [sources]);
 
+  // Создаём фиксированный список стран из contracts.ts
   const countryFeedStats = useMemo(() => {
-    const countryCodes = Array.from(
-      new Set([
-        ...sources.map((s) => s.countryCode),
-        ...Object.keys(feedIndexCountries),
-      ])
-    ) as CountryCode[];
-
-    return countryCodes
-      .map((code) => {
-        const countrySources = sources.filter(
-          (source) => source.countryCode === code
-        );
-
-        const activeSources = countrySources.filter(
-          (source) => source.status === "active"
-        ).length;
-
-        const postsCount = Number(feedIndexCountries[code]?.posts || 0);
-
-        return {
-          code,
-          label: code.toUpperCase(),
-          sourcesCount: countrySources.length,
-          activeSources,
-          postsCount,
-        };
-      })
-      .filter((item) => item.sourcesCount > 0 || item.postsCount > 0)
-      .sort(
-        (a, b) =>
-          b.postsCount - a.postsCount ||
-          b.sourcesCount - a.sourcesCount
-      );
-  }, [sources, feedIndexCountries]);  
+    // Берём все страны из SEO_LOCALE_META (это наш единый источник)
+    const allCountryCodes = Object.keys(SEO_LOCALE_META) as CountryCode[];
+    
+    return allCountryCodes.map((code) => {
+      const countrySources = sources.filter((source) => source.countryCode === code);
+      const activeSources = countrySources.filter((source) => source.status === "active").length;
+      const postsCount = Number(feedIndexCountries[code]?.posts || 0);
+      
+      return {
+        code,
+        label: code.toUpperCase(),
+        sourcesCount: countrySources.length,
+        activeSources,
+        postsCount,
+      };
+    }).sort((a, b) => b.postsCount - a.postsCount || b.sourcesCount - a.sourcesCount);
+  }, [sources, feedIndexCountries]); 
 
   const nextRebuildDate = useMemo(() => getNextRebuildDate(clockNow), [clockNow]);
   const nextRebuildLabel = useMemo(() => formatShortTime(nextRebuildDate), [nextRebuildDate]);
