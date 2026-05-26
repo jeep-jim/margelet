@@ -1106,7 +1106,12 @@ export async function rebuildFeedFromSources(options?: {
   }
 
   await writeFeedFile(publishedPosts, { reason: normalizedCountry ? `country:${normalizedCountry}` : undefined });
-  await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
+
+  // 🔥 ГЛАВНОЕ ИСПРАВЛЕНИЕ: сохраняем ВСЕ источники, а не только те, что обработали
+  const finalSources = allSources.map(source => 
+    sourcesById.get(source.id) || source
+  );
+  await writeSourcesFile(sortSources(finalSources));
 
   return {
     updatedAt: new Date().toISOString(),
