@@ -82,13 +82,13 @@ const REBUILD_USER_AGENT =
 
 const BARTER_REMOVED_POST_TEXT: Record<string, string> = {
   ru: "Вы удалили обязательный пост по бартеру. Размещение поставлено на паузу. Повторное размещение этого канала теперь доступно только через Stars.",
-  uk: "Ви видалили обов’язковий бартерний допис. Розміщення поставлено на паузу. Повторне розміщення цього каналу тепер доступне лише через Stars.",
-  en: "You removed the required barter post. The placement has been paused. This channel can now be placed again only through Stars.",
+  ua: "Ви видалили обов’язковий бартерний допис. Розміщення поставлено на паузу. Повторне розміщення цього каналу тепер доступне лише через Stars.",
+  us: "You removed the required barter post. The placement has been paused. This channel can now be placed again only through Stars.",
   in: "आपने आवश्यक बार्टर पोस्ट हटा दी है। प्लेसमेंट रोक दिया गया है। अब इस चैनल को दोबारा केवल Stars के माध्यम से जोड़ा जा सकता है।",
-  fa: "شما پست الزامیِ تهاتر را حذف کرده‌اید. جایگاه متوقف شد. ثبت دوباره این کانال فقط از طریق Stars امکان‌پذیر است.",
+  ir: "شما پست الزامیِ تهاتر را حذف کرده‌اید. جایگاه متوقف شد. ثبت دوباره این کانال فقط از طریق Stars امکان‌پذیر است.",
   tr: "Zorunlu barter gönderisini sildiniz. Yerleşim duraklatıldı. Bu kanal artık yalnızca Stars ile tekrar eklenebilir.",
-  "pt-br": "Você removeu a publicação obrigatória de permuta. A veiculação foi pausada. Este canal agora só pode ser publicado novamente via Stars.",
-  kk: "Сіз бартер бойынша міндетті постты өшірдіңіз. Орналастыру уақытша тоқтатылды. Бұл арнаны қайта қосу енді тек Stars арқылы мүмкін.",
+  br: "Você removeu a publicação obrigatória de permuta. A veiculação foi pausada. Este canal agora só pode ser publicado novamente via Stars.",
+  kz: "Сіз бартер бойынша міндетті постты өшірдіңіз. Орналастыру уақытша тоқтатылды. Бұл арнаны қайта қосу енді тек Stars арқылы мүмкін.",
   uz: "Siz barter uchun majburiy postni o‘chirdingiz. Joylashtirish pauzaga qo‘yildi. Bu kanalni qayta joylashtirish endi faqat Stars orqali mumkin.",
   ae: "لقد حذفت منشور المقايضة الإلزامي. تم إيقاف الظهور مؤقتاً. لا يمكن إعادة نشر هذا القناة الآن إلا عبر Stars.",
   eg: "لقد حذفت منشور البارتر المطلوب. تم إيقاف الظهور مؤقتاً. إعادة نشر القناة متاحة الآن فقط عبر Stars.",
@@ -104,8 +104,8 @@ const BARTER_REMOVED_POST_TEXT: Record<string, string> = {
   co: "Eliminaste la publicación obligatoria de barter. La colocación se pausó. Ahora este canal solo puede volver a publicarse mediante Stars.",
   za: "You removed the required barter post. The placement has been paused. This channel can now be placed again only through Stars.",
   ng: "You removed the required barter post. The placement has been paused. This channel can now be placed again only through Stars.",
-  zh: "你删除了必需的 barter 帖子。展示已暂停。该频道现在只能通过 Stars 重新投放。",
-  ms: "Anda telah memadam siaran barter wajib. Penempatan telah dijeda. Saluran ini kini hanya boleh diletakkan semula melalui Stars.",
+  cn: "你删除了必需的 barter 帖子。展示已暂停。该频道现在只能通过 Stars 重新投放。",
+  my: "Anda telah memadam siaran barter wajib. Penempatan telah dijeda. Saluran ini kini hanya boleh diletakkan semula melalui Stars.",
 };
 
 function normalizeHandle(value: string | null | undefined) {
@@ -163,7 +163,7 @@ async function checkRequiredBarterPost(placement: Placement): Promise<"ok" | "mi
 }
 
 function getViolationText(country: string, handle: string) {
-  const text = BARTER_REMOVED_POST_TEXT[normalizeCountry(country)] || BARTER_REMOVED_POST_TEXT.en;
+  const text = BARTER_REMOVED_POST_TEXT[normalizeCountry(country)] || BARTER_REMOVED_POST_TEXT.us;
   return `@${handle}\n\n${text}`;
 }
 
@@ -316,6 +316,13 @@ async function main() {
 
   const index = await readFeedIndexFile();
 
+  // 🔥 ПОСЛЕ РЕБУЛДА: пишем фид с указанием страны
+  if (result.posts.length > 0 || result.activeCountries === 0) {
+    await writeFeedFile(result.posts, {
+      reason: args.countryCode ? `country:${args.countryCode}` : "full-rebuild",
+    });
+  }
+
   console.log(
     JSON.stringify(
       {
@@ -338,4 +345,3 @@ main().catch((error) => {
   console.error(error);
   process.exit(1);
 });
-
