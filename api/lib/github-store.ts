@@ -1,22 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import type { ContentTag, IngestedPost, TrustedSource } from "../lib/contracts.js";
-
-const GITHUB_TOKEN = String(
-  process.env.GITHUB_TOKEN ||
-  process.env.GH_TOKEN ||
-  process.env.MARGELET_GITHUB_TOKEN ||
-  ""
-).trim();
-
-console.log("[github-store] TOKEN loaded from env:", {
-  hasMargeletGitHubToken: !!process.env.MARGELET_GITHUB_TOKEN,
-  hasGitHubToken: !!process.env.GITHUB_TOKEN,
-  hasGH_TOKEN: !!process.env.GH_TOKEN,
-  finalTokenLoaded: !!GITHUB_TOKEN
-});
-
+const GITHUB_TOKEN = String(process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "").trim();
 const GITHUB_OWNER = String(process.env.GITHUB_OWNER || "jeep-jim").trim();
 const GITHUB_REPO = String(process.env.GITHUB_REPO || "margelet").trim();
 const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || "main").trim();
@@ -26,7 +11,7 @@ const FEED_PATH = "data/feed.json";
 const PUBLIC_FEED_PATH = "public/feed.json";
 const FEEDS_INDEX_PATH = "data/feeds/index.json";
 const PUBLIC_FEEDS_INDEX_PATH = "public/feeds/index.json";
-const COUNTRY_CHUNK_SIZE = 2000;
+const COUNTRY_CHUNK_SIZE = 250;
 
 export type FeedFile<T = unknown> = {
   updatedAt: string;
@@ -100,9 +85,10 @@ function getAbsolutePath(relativePath: string) {
 }
 
 function isLocalFileMode() {
-  // Если переменная установлена в "local" — используем локальные файлы
-  // Во всех остальных случаях (включая "github" или пустое значение) — используем GitHub API
-  return process.env.MARGELET_STORAGE_MODE === "local";
+  return (
+    process.env.MARGELET_STORAGE_MODE === "local" ||
+    process.env.GITHUB_ACTIONS === "true"
+  );
 }
 
 function getApiUrl(apiPath: string) {
@@ -228,14 +214,6 @@ async function getCommitTreeSha(commitSha: string) {
 }
 
 async function commitFiles(files: CommitFile[], message: string) {
-  console.log("🔥 COMMIT FILES CALLED", {
-    files: files.map(f => f.path),
-    message,
-    owner: GITHUB_OWNER,
-    repo: GITHUB_REPO,
-    branch: GITHUB_BRANCH,
-    hasToken: !!GITHUB_TOKEN,
-  });
   const headSha = await getBranchHead();
   const baseTreeSha = await getCommitTreeSha(headSha);
 
@@ -292,20 +270,6 @@ async function commitFiles(files: CommitFile[], message: string) {
   }
 }
 
-async function safeCommit(files: CommitFile[], message: string) {
-  if (!files.length) {
-    console.error("❌ safeCommit blocked empty files");
-    return;
-  }
-
-  try {
-    await commitFiles(files, message);
-  } catch (err) {
-    console.error("❌ GitHub commit failed:", err);
-    throw err;
-  }
-}
-
 async function persistFiles(files: CommitFile[], message: string) {
   if (isLocalFileMode()) {
     for (const file of files) {
@@ -318,7 +282,7 @@ async function persistFiles(files: CommitFile[], message: string) {
     throw new Error("Missing GITHUB_TOKEN for persistent writes");
   }
 
-  await safeCommit(files, message);
+  await commitFiles(files, message);
 }
 
 function chunkItems<T>(items: T[], size: number) {
@@ -421,151 +385,139 @@ function normalizeFeedPostOrder<T>(posts: T[]) {
   return result;
 }
 
-// 🔥 НОВАЯ ВЕРСИЯ: обновляет index.json, а не перезаписывает
-async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCountryCode?: string | null) {
-  // 1. Загружаем текущий index.json (если есть)
-  let existingIndex: FeedIndexFile = {
-    version: 1,
-    updatedAt: new Date(0).toISOString(),
-    countries: {},
-  };
-  
-  try {
-    const existing = await readFeedIndexFile();
-    if (existing && existing.countries) {
-      existingIndex = existing;
-    }
-  } catch (error) {
-    console.log("No existing index.json, will create new one");
-  }
-
-  // 2. Группируем НОВЫЕ посты по странам
+function buildCountryFeedFiles<T>(posts: T[], updatedAt: string) {
   const byCountry = new Map<string, T[]>();
+
   for (const post of posts) {
-    const countryCode = getPostCountryCode(post) || "xx";
+    const countryCode = getPostCountryCode(post);
+    if (!countryCode) {
+      continue;
+    }
+
     const existing = byCountry.get(countryCode) || [];
     existing.push(post);
     byCountry.set(countryCode, existing);
   }
 
-  // 3. 🔥 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: определяем, какие страны обрабатываем
-  let countriesToProcess: string[];
-
-  if (targetCountryCode && targetCountryCode !== "xx") {
-    // Если обновляем конкретную страну — берём ВСЕ существующие страны + эту
-    const existingCountries = Object.keys(existingIndex.countries || {});
-    countriesToProcess = Array.from(new Set([targetCountryCode, ...existingCountries]));
-  } else {
-    // Иначе — только те страны, для которых есть новые посты
-    countriesToProcess = Array.from(byCountry.keys());
-  }
-
+  const countries: Record<string, FeedCountryIndexEntry> = {};
   const files: CommitFile[] = [];
-  const updatedCountries = { ...existingIndex.countries };
 
-  // 4. 🔥 Для каждой страны — сохраняем или старые посты, или новые
-  for (const countryCode of countriesToProcess) {
-    // Берём новые посты для этой страны (если есть)
-    const newCountryPosts = byCountry.get(countryCode) || [];
-    
-    let finalCountryPosts: T[] = [];
+  for (const [countryCode, rawCountryPosts] of Array.from(byCountry.entries()).sort((a, b) =>
+    a[0].localeCompare(b[0])
+  )) {
+    const countryPosts = normalizeFeedPostOrder(rawCountryPosts);
 
-    if (newCountryPosts.length > 0) {
-      // Если есть новые посты — используем их (уже отфильтрованные и отсортированные)
-      finalCountryPosts = normalizeFeedPostOrder(newCountryPosts);
-    } else if (existingIndex.countries[countryCode]) {
-      // Если новых нет, но страна уже существовала — загружаем старые посты
-      const oldPosts = await readFeedCountryPosts<T>(countryCode);
-      finalCountryPosts = normalizeFeedPostOrder(oldPosts);
-    }
-    // Если страна новая и постов нет — пропускаем (не создаём пустой файл)
-
-    if (finalCountryPosts.length === 0) {
-      // Если после всех попыток постов нет — удаляем страну из индекса
-      delete updatedCountries[countryCode];
-      continue;
-    }
-
-    // Сохраняем файлы для страны (как было)
-    if (finalCountryPosts.length <= COUNTRY_CHUNK_SIZE) {
+    if (countryPosts.length <= COUNTRY_CHUNK_SIZE) {      
       const singlePayload: CountryFeedSingleFile<T> = {
         countryCode,
         updatedAt,
-        totalPosts: finalCountryPosts.length,
+        totalPosts: countryPosts.length,
         chunks: 1,
-        items: finalCountryPosts,
+        items: countryPosts,
       };
 
       files.push(
-        { path: `data/feeds/${countryCode}.json`, content: stringify(singlePayload) },
-        { path: `public/feeds/${countryCode}.json`, content: stringify(singlePayload) }
+        {
+          path: `data/feeds/${countryCode}.json`,
+          content: stringify(singlePayload),
+        },
+        {
+          path: `public/feeds/${countryCode}.json`,
+          content: stringify(singlePayload),
+        }
       );
 
-      updatedCountries[countryCode] = {
+      countries[countryCode] = {
         code: countryCode,
-        posts: finalCountryPosts.length,
+        posts: countryPosts.length,
         chunks: 1,
         mode: "single",
         path: `/feeds/${countryCode}.json`,
         updatedAt,
       };
-    } else {
-      const countryChunks = chunkItems(finalCountryPosts, COUNTRY_CHUNK_SIZE);
-      const refs: FeedChunkRef[] = [];
 
-      countryChunks.forEach((chunkPosts, index) => {
-        const chunkId = index + 1;
-        const chunkPayload: FeedFile<T> = { updatedAt, posts: chunkPosts };
+      continue;
+    }
 
-        refs.push({
-          id: chunkId,
-          path: `/feeds/${countryCode}/${chunkId}.json`,
-          posts: chunkPosts.length,
-        });
+    const countryChunks = chunkItems(countryPosts, COUNTRY_CHUNK_SIZE);
+    const refs: FeedChunkRef[] = [];
 
-        files.push(
-          { path: `data/feeds/${countryCode}/${chunkId}.json`, content: stringify(chunkPayload) },
-          { path: `public/feeds/${countryCode}/${chunkId}.json`, content: stringify(chunkPayload) }
-        );
+    countryChunks.forEach((chunkPosts, index) => {
+      const chunkId = index + 1;
+      const chunkPayload: FeedFile<T> = {
+        updatedAt,
+        posts: chunkPosts,
+      };
+
+      refs.push({
+        id: chunkId,
+        path: `/feeds/${countryCode}/${chunkId}.json`,
+        posts: chunkPosts.length,
       });
 
-      const manifest: CountryFeedChunkedFile = {
-        countryCode,
-        updatedAt,
-        totalPosts: finalCountryPosts.length,
-        chunks: refs,
-      };
-
       files.push(
-        { path: `data/feeds/${countryCode}.json`, content: stringify(manifest) },
-        { path: `public/feeds/${countryCode}.json`, content: stringify(manifest) }
+        {
+          path: `data/feeds/${countryCode}/${chunkId}.json`,
+          content: stringify(chunkPayload),
+        },
+        {
+          path: `public/feeds/${countryCode}/${chunkId}.json`,
+          content: stringify(chunkPayload),
+        }
       );
+    });
 
-      updatedCountries[countryCode] = {
-        code: countryCode,
-        posts: finalCountryPosts.length,
-        chunks: refs.length,
-        mode: "chunked",
-        path: `/feeds/${countryCode}.json`,
-        updatedAt,
-      };
-    }
+    const manifest: CountryFeedChunkedFile = {
+      countryCode,
+      updatedAt,
+      totalPosts: countryPosts.length,
+      chunks: refs,
+    };
+
+    files.push(
+      {
+        path: `data/feeds/${countryCode}.json`,
+        content: stringify(manifest),
+      },
+      {
+        path: `public/feeds/${countryCode}.json`,
+        content: stringify(manifest),
+      }
+    );
+
+    countries[countryCode] = {
+      code: countryCode,
+      posts: countryPosts.length,
+      chunks: refs.length,
+      mode: "chunked",
+      path: `/feeds/${countryCode}.json`,
+      updatedAt,
+    };
   }
 
-  // 5. Обновляем index.json
-  const newIndexPayload: FeedIndexFile = {
+  const indexPayload: FeedIndexFile = {
     version: 1,
     updatedAt,
-    countries: updatedCountries,
+    countries,
   };
 
   files.push(
-    { path: FEEDS_INDEX_PATH, content: stringify(newIndexPayload) },
-    { path: PUBLIC_FEEDS_INDEX_PATH, content: stringify(newIndexPayload) }
+    {
+      path: FEEDS_INDEX_PATH,
+      content: stringify(indexPayload),
+    },
+    {
+      path: PUBLIC_FEEDS_INDEX_PATH,
+      content: stringify(indexPayload),
+    }
   );
 
-  return { index: newIndexPayload, files };
+  return {
+    index: indexPayload,
+    files,
+  };
 }
+
 
 function normalizeFeedSnapshotRelativePath(value: unknown) {
   const raw = String(value || "")
@@ -612,25 +564,15 @@ export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
   });
 }
 
-export async function writeSourcesFile(data: any) {
-  if (!Array.isArray(data)) {
-    console.error("[writeSourcesFile] invalid data");
-    return;
-  }
-
+export async function writeSourcesFile<T = unknown>(sources: T[]) {
   const payload = {
     updatedAt: new Date().toISOString(),
-    sources: data,
-  };
+    sources,
+  } satisfies SourcesFile<T>;
 
-  await commitFiles(
-    [
-      {
-        path: SOURCES_PATH,
-        content: stringify(payload),
-      },
-    ],
-    "update sources"
+  await persistFiles(
+    [{ path: SOURCES_PATH, content: stringify(payload) }],
+    `Update sources.json (${sources.length})`
   );
 }
 
@@ -679,15 +621,11 @@ export async function readFeedCountryPosts<T = unknown>(countryCode: string): Pr
     return [];
   }
 
-  const chunksRaw = await Promise.allSettled(
+  const chunks = await Promise.all(
     manifest.chunks.map((chunk) =>
       readRepoJsonFile<FeedFile<T> | null>(`data${chunk.path}`, null)
     )
   );
-
-  const chunks = chunksRaw
-    .filter((r) => r.status === "fulfilled")
-    .map((r) => (r as PromiseFulfilledResult<FeedFile<T> | null>).value);  
 
   return chunks.flatMap((chunk) => (chunk && Array.isArray(chunk.posts) ? chunk.posts : []));
 }
@@ -732,13 +670,7 @@ export async function writeFeedFile<T = unknown>(
     posts: orderedPosts,
   };
 
-  // 🔥 ИСПРАВЛЕНО: извлекаем country code из options.reason
-  let targetCountry: string | null = null;
-  if (options.reason && options.reason.startsWith("country:")) {
-    targetCountry = options.reason.split(":")[1];
-  }
-  
-  const snapshot = await updateCountryFeedFiles(orderedPosts, updatedAt, targetCountry);
+  const snapshot = buildCountryFeedFiles(orderedPosts, updatedAt);
 
   if (orderedPosts.length > 0 && Object.keys(snapshot.index.countries || {}).length === 0) {
     throw new Error(
@@ -746,7 +678,7 @@ export async function writeFeedFile<T = unknown>(
     );
   }
 
-  await safeCommit(
+  await persistFiles(
     [
       { path: FEED_PATH, content: stringify(payload) },
       { path: PUBLIC_FEED_PATH, content: stringify(payload) },
