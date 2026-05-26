@@ -1039,7 +1039,9 @@ export async function rebuildFeedFromSources(options?: {
     );
   }
 
-  await writeFeedFile(publishedPosts);
+  await writeFeedFile(publishedPosts, {
+    reason: normalizedCountry ? `country:${normalizedCountry}` : undefined,
+  });
   await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
 
   return {

@@ -705,15 +705,13 @@ export async function writeFeedFile<T = unknown>(
     posts: orderedPosts,
   };
 
-  // 🔥 Используем новую функцию, которая не перезаписывает index.json
-  const snapshot = await updateCountryFeedFiles(orderedPosts, updatedAt, options.reason?.split(":")[1]);
-  
-  // Если нет указания на конкретную страницу — обновляем все
-  const hasCountryFilter = options.reason?.startsWith("deletePostById:") || false;
-  if (!hasCountryFilter && options.reason !== "clearFeedFile") {
-    // Для обычного обновления нужно получить все страны
-    // Просто используем snapshot как есть
+  // 🔥 ИСПРАВЛЕНО: извлекаем country code из options.reason
+  let targetCountry: string | null = null;
+  if (options.reason && options.reason.startsWith("country:")) {
+    targetCountry = options.reason.split(":")[1];
   }
+  
+  const snapshot = await updateCountryFeedFiles(orderedPosts, updatedAt, targetCountry);
 
   if (orderedPosts.length > 0 && Object.keys(snapshot.index.countries || {}).length === 0) {
     throw new Error(
