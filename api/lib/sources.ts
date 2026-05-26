@@ -640,11 +640,7 @@ async function syncSourcePosts(
     visibleLatestPostId &&
     source.lastSeenPostId > visibleLatestPostId,
   );
-  // Anti-zombie rule: if a source has already imported a Telegram post,
-  // do not re-import the same old post after our 24h feed TTL expires.
-  // New sources still backfill normally because lastSeenPostId is null.
-  // If the cursor is obviously corrupted and points above the latest visible
-  // Telegram post, we fall back to the latest post still present in our feed.
+
   const effectiveLastSeenPostId = hasCorruptedLastSeen
     ? existingTopPostId
     : source.lastSeenPostId;
@@ -1027,6 +1023,73 @@ export async function rebuildFeedFromSources(options?: {
     previousAllPosts.length > 0 &&
     activeSources.length > 0;
 
+  // 🔥 НОВАЯ ЛОГИКА: если нет постов, но есть активные источники — НЕ УБИВАЕМ ФИД
+  if (posts.length === 0 && activeSources.length > 0 && previousAllPosts.length === 0) {
+    console.warn(
+      `⚠️ SKIPPING empty feed write for ${normalizedCountry || 'all'}: activeSources=${activeSources.length}, no posts yet. Keeping previous feed.`
+    );
+    
+    // Сохраняем старый фид, если он был
+    if (previousAllPosts.length > 0) {
+      await writeFeedFile(previousAllPosts, { reason: normalizedCountry ? `country:${normalizedCountry}-skipped` : undefined });
+      return {
+        updatedAt: new Date().toISOString(),
+        posts: previousAllPosts,
+        countriesChecked,
+        activeCountries: activeByCountry.size,
+        selectedSources: selectedSources.length,
+        sourcesChecked,
+        importedPosts,
+        refreshedPosts,
+        removedPosts: 0,
+        existingFreshPostsCount: previousAllPosts.length,
+        sourcesWithNewPosts,
+        sourcesWithRefreshedPosts,
+        sourceFailures,
+        healedCorruptedSources,
+        rescueBackfillSources,
+        rescueCountries: Array.from(rescueCountries).sort(),
+        countrySummary: Object.fromEntries(
+          Array.from(countryStats.entries())
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([countryCode, stats]) => [countryCode, stats]),
+        ),
+        keptPreviousFeed: true,
+        skipped: true,
+        skipReason: "no_posts_yet_keeping_previous",
+      };
+    }
+    
+    // Если фид был пустой и остался пустой
+    await writeFeedFile([], { allowEmpty: true, reason: normalizedCountry ? `country:${normalizedCountry}-empty` : undefined });
+    return {
+      updatedAt: new Date().toISOString(),
+      posts: [],
+      countriesChecked,
+      activeCountries: activeByCountry.size,
+      selectedSources: selectedSources.length,
+      sourcesChecked,
+      importedPosts,
+      refreshedPosts,
+      removedPosts: 0,
+      existingFreshPostsCount: 0,
+      sourcesWithNewPosts,
+      sourcesWithRefreshedPosts,
+      sourceFailures,
+      healedCorruptedSources,
+      rescueBackfillSources,
+      rescueCountries: Array.from(rescueCountries).sort(),
+      countrySummary: Object.fromEntries(
+        Array.from(countryStats.entries())
+          .sort((a, b) => a[0].localeCompare(b[0]))
+          .map(([countryCode, stats]) => [countryCode, stats]),
+      ),
+      keptPreviousFeed: false,
+      skipped: true,
+      skipReason: "no_posts_and_no_previous_feed",
+    };
+  }
+
   const publishedPosts = shouldKeepPreviousFeed ? previousAllPosts : posts;
 
   if (
@@ -1034,14 +1097,15 @@ export async function rebuildFeedFromSources(options?: {
     activeSources.length > 0 &&
     previousAllPosts.length === 0
   ) {
+    console.error(
+      `Refusing to publish empty feed: activeSources=${activeSources.length}, selectedSources=${selectedSources.length}, sourcesChecked=${sourcesChecked}, sourceFailures=${sourceFailures}`,
+    );
     throw new Error(
       `Refusing to publish empty feed: activeSources=${activeSources.length}, selectedSources=${selectedSources.length}, sourcesChecked=${sourcesChecked}, sourceFailures=${sourceFailures}`,
     );
   }
 
-  await writeFeedFile(publishedPosts, {
-    reason: normalizedCountry ? `country:${normalizedCountry}` : undefined,
-  });
+  await writeFeedFile(publishedPosts, { reason: normalizedCountry ? `country:${normalizedCountry}` : undefined });
   await writeSourcesFile(sortSources(Array.from(sourcesById.values())));
 
   return {
