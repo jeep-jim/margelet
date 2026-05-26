@@ -307,8 +307,10 @@ async function main() {
     return;
   }
 
-  const integrity = await enforceBarterIntegrity();
-  console.log("barter integrity", JSON.stringify(integrity));
+  // 🔥 ВРЕМЕННО ОТКЛЮЧЕНО ДЛЯ ДИАГНОСТИКИ
+  // const integrity = await enforceBarterIntegrity();
+  const integrity = { checked: 0, paused: 0, notified: 0, changedPlacements: false, changedSources: false };
+  console.log("barter integrity (disabled)", JSON.stringify(integrity));
 
   const result = await rebuildFeedFromSources({
     countryCode: (args.countryCode as never) || null,
