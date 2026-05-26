@@ -439,7 +439,7 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
     console.log("No existing index.json, will create new one");
   }
 
-  // 2. Группируем посты по странам
+  // 2. Группируем НОВЫЕ посты по странам
   const byCountry = new Map<string, T[]>();
   for (const post of posts) {
     const countryCode = getPostCountryCode(post) || "xx";
@@ -448,25 +448,52 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
     byCountry.set(countryCode, existing);
   }
 
+  // 3. 🔥 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: определяем, какие страны обрабатываем
+  let countriesToProcess: string[];
+
+  if (targetCountryCode && targetCountryCode !== "xx") {
+    // Если обновляем конкретную страну — берём ВСЕ существующие страны + эту
+    const existingCountries = Object.keys(existingIndex.countries || {});
+    countriesToProcess = Array.from(new Set([targetCountryCode, ...existingCountries]));
+  } else {
+    // Иначе — только те страны, для которых есть новые посты
+    countriesToProcess = Array.from(byCountry.keys());
+  }
+
   const files: CommitFile[] = [];
   const updatedCountries = { ...existingIndex.countries };
 
-  // 3. Если указан targetCountryCode — обновляем только его
-  const countriesToProcess = targetCountryCode && targetCountryCode !== "xx"
-    ? [targetCountryCode]
-    : Array.from(byCountry.keys());
-
+  // 4. 🔥 Для каждой страны — сохраняем или старые посты, или новые
   for (const countryCode of countriesToProcess) {
-    const rawCountryPosts = byCountry.get(countryCode) || [];
-    const countryPosts = normalizeFeedPostOrder(rawCountryPosts);
+    // Берём новые посты для этой страны (если есть)
+    const newCountryPosts = byCountry.get(countryCode) || [];
+    
+    let finalCountryPosts: T[] = [];
 
-    if (countryPosts.length <= COUNTRY_CHUNK_SIZE) {
+    if (newCountryPosts.length > 0) {
+      // Если есть новые посты — используем их (уже отфильтрованные и отсортированные)
+      finalCountryPosts = normalizeFeedPostOrder(newCountryPosts);
+    } else if (existingIndex.countries[countryCode]) {
+      // Если новых нет, но страна уже существовала — загружаем старые посты
+      const oldPosts = await readFeedCountryPosts<T>(countryCode);
+      finalCountryPosts = normalizeFeedPostOrder(oldPosts);
+    }
+    // Если страна новая и постов нет — пропускаем (не создаём пустой файл)
+
+    if (finalCountryPosts.length === 0) {
+      // Если после всех попыток постов нет — удаляем страну из индекса
+      delete updatedCountries[countryCode];
+      continue;
+    }
+
+    // Сохраняем файлы для страны (как было)
+    if (finalCountryPosts.length <= COUNTRY_CHUNK_SIZE) {
       const singlePayload: CountryFeedSingleFile<T> = {
         countryCode,
         updatedAt,
-        totalPosts: countryPosts.length,
+        totalPosts: finalCountryPosts.length,
         chunks: 1,
-        items: countryPosts,
+        items: finalCountryPosts,
       };
 
       files.push(
@@ -476,14 +503,14 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
 
       updatedCountries[countryCode] = {
         code: countryCode,
-        posts: countryPosts.length,
+        posts: finalCountryPosts.length,
         chunks: 1,
         mode: "single",
         path: `/feeds/${countryCode}.json`,
         updatedAt,
       };
     } else {
-      const countryChunks = chunkItems(countryPosts, COUNTRY_CHUNK_SIZE);
+      const countryChunks = chunkItems(finalCountryPosts, COUNTRY_CHUNK_SIZE);
       const refs: FeedChunkRef[] = [];
 
       countryChunks.forEach((chunkPosts, index) => {
@@ -505,7 +532,7 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
       const manifest: CountryFeedChunkedFile = {
         countryCode,
         updatedAt,
-        totalPosts: countryPosts.length,
+        totalPosts: finalCountryPosts.length,
         chunks: refs,
       };
 
@@ -516,7 +543,7 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
 
       updatedCountries[countryCode] = {
         code: countryCode,
-        posts: countryPosts.length,
+        posts: finalCountryPosts.length,
         chunks: refs.length,
         mode: "chunked",
         path: `/feeds/${countryCode}.json`,
@@ -525,7 +552,7 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
     }
   }
 
-  // 4. Обновляем index.json с сохранением всех существующих стран
+  // 5. Обновляем index.json
   const newIndexPayload: FeedIndexFile = {
     version: 1,
     updatedAt,
