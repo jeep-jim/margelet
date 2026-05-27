@@ -28,10 +28,9 @@ jobs:
       GITHUB_REPO: margelet
       GITHUB_BRANCH: main
       NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-      MARGELET_STORAGE_MODE: github
+      MARGELET_STORAGE_MODE: local
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      MARGELET_GITHUB_TOKEN: ${{ secrets.MARGELET_GITHUB_TOKEN }}
-  
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -43,7 +42,7 @@ jobs:
           cache: npm
 
       - name: Show workflow version
-        run: echo "workflow version = github-lite-v7-cloudflare-purge-fixed"
+        run: echo "workflow version = github-lite-v7-local-mode"
 
       - name: Install dependencies
         run: npm ci
@@ -83,21 +82,12 @@ jobs:
           git pull --rebase origin main || true
           git push
 
-      - name: Purge Cloudflare cache (all feeds + sources)
+      - name: Purge Cloudflare cache
         run: |
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -H "Content-Type: application/json" \
-            --data '{
-              "files": [
-                "https://margelet.space/feeds/index.json",
-                "https://margelet.space/data/sources.json",
-                "https://margelet.space/data/feed.json",
-                "https://www.margelet.space/feeds/index.json",
-                "https://www.margelet.space/data/sources.json",
-                "https://www.margelet.space/data/feed.json"
-              ]
-            }'
+            --data '{"prefixes":["www.margelet.space/feeds","margelet.space/feeds"]}'
 
       - name: Warm Cloudflare feed cache
         run: |

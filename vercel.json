@@ -1,5 +1,4 @@
 {
-  "public": true,
   "ignoreCommand": "bash scripts/vercel-ignore-build.sh",
   "routes": [
     {
@@ -7,13 +6,12 @@
       "dest": "/api/feed?rawFeedPath=feed.json"
     },
     {
+      "src": "/feeds/(.*)",
+      "dest": "/api/feed?rawFeedPath=$1"
+    },
+    {
       "src": "/api/(.*)",
-      "dest": "/api/$1",
-      "headers": {
-        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
-        "Pragma": "no-cache",
-        "Expires": "0"
-      }
+      "dest": "/api/$1"
     },
     {
       "src": "/jim/admin",
