@@ -307,6 +307,8 @@ async function safeCommit(files: CommitFile[], message: string) {
 }
 
 async function persistFiles(files: CommitFile[], message: string) {
+    // 👇 СЮДА ВСТАВЬ ЭТУ СТРОКУ
+    console.log("[DEBUG] isLocalFileMode:", isLocalFileMode(), "MARGELET_STORAGE_MODE:", process.env.MARGELET_STORAGE_MODE);
   if (isLocalFileMode()) {
     for (const file of files) {
       await writeLocalJsonFile(file.path, JSON.parse(file.content));
