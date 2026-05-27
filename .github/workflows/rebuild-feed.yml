@@ -63,6 +63,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          mkdir -p data/feeds
+          mkdir -p public/feeds
+
           git add -A \
             data/feed.json \
             public/feed.json \
