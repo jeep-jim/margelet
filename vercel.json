@@ -5,10 +5,15 @@
     {
       "src": "/feed\\.json",
       "dest": "/api/feed?rawFeedPath=feed.json"
-    },    
+    },
     {
       "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "dest": "/api/$1",
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+      }
     },
     {
       "src": "/jim/admin",

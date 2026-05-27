@@ -43,7 +43,7 @@ jobs:
           cache: npm
 
       - name: Show workflow version
-        run: echo "workflow version = github-lite-v6-cloudflare-purge"
+        run: echo "workflow version = github-lite-v7-cloudflare-purge-fixed"
 
       - name: Install dependencies
         run: npm ci
@@ -83,12 +83,21 @@ jobs:
           git pull --rebase origin main || true
           git push
 
-      - name: Purge Cloudflare cache
+      - name: Purge Cloudflare cache (all feeds + sources)
         run: |
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -H "Content-Type: application/json" \
-            --data '{"prefixes":["www.margelet.space/feeds","margelet.space/feeds"]}'
+            --data '{
+              "files": [
+                "https://margelet.space/feeds/index.json",
+                "https://margelet.space/data/sources.json",
+                "https://margelet.space/data/feed.json",
+                "https://www.margelet.space/feeds/index.json",
+                "https://www.margelet.space/data/sources.json",
+                "https://www.margelet.space/data/feed.json"
+              ]
+            }'
 
       - name: Warm Cloudflare feed cache
         run: |
