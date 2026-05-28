@@ -1,4 +1,5 @@
 {
+  "public": true,
   "ignoreCommand": "bash scripts/vercel-ignore-build.sh",
   "routes": [
     {
@@ -6,12 +7,31 @@
       "dest": "/api/feed?rawFeedPath=feed.json"
     },
     {
-      "src": "/feeds/(.*)",
-      "dest": "/api/feed?rawFeedPath=$1"
+      "src": "/data/sources\\.json",
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+        "Access-Control-Allow-Origin": "*"
+      },
+      "dest": "/data/sources.json"
+    },
+    {
+      "src": "/data/feeds/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/feeds/$1"
     },
     {
       "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "dest": "/api/$1",
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+      }
     },
     {
       "src": "/jim/admin",
