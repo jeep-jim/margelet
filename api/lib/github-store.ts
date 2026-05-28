@@ -100,8 +100,6 @@ function getAbsolutePath(relativePath: string) {
 }
 
 function isLocalFileMode() {
-  // Если переменная установлена в "local" — используем локальные файлы
-  // Во всех остальных случаях (включая "github" или пустое значение) — используем GitHub API
   return process.env.MARGELET_STORAGE_MODE === "local";
 }
 
@@ -307,8 +305,6 @@ async function safeCommit(files: CommitFile[], message: string) {
 }
 
 async function persistFiles(files: CommitFile[], message: string) {
-    // 👇 СЮДА ВСТАВЬ ЭТУ СТРОКУ
-    console.log("[DEBUG] isLocalFileMode:", isLocalFileMode(), "MARGELET_STORAGE_MODE:", process.env.MARGELET_STORAGE_MODE);
   if (isLocalFileMode()) {
     for (const file of files) {
       await writeLocalJsonFile(file.path, JSON.parse(file.content));
@@ -423,9 +419,7 @@ function normalizeFeedPostOrder<T>(posts: T[]) {
   return result;
 }
 
-// 🔥 НОВАЯ ВЕРСИЯ: обновляет index.json, а не перезаписывает
 async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCountryCode?: string | null) {
-  // 1. Загружаем текущий index.json (если есть)
   let existingIndex: FeedIndexFile = {
     version: 1,
     updatedAt: new Date(0).toISOString(),
@@ -441,7 +435,6 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
     console.log("No existing index.json, will create new one");
   }
 
-  // 2. Группируем НОВЫЕ посты по странам
   const byCountry = new Map<string, T[]>();
   for (const post of posts) {
     const countryCode = getPostCountryCode(post) || "xx";
@@ -450,45 +443,35 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
     byCountry.set(countryCode, existing);
   }
 
-  // 3. 🔥 КЛЮЧЕВОЕ ИЗМЕНЕНИЕ: определяем, какие страны обрабатываем
   let countriesToProcess: string[];
 
   if (targetCountryCode && targetCountryCode !== "xx") {
-    // Если обновляем конкретную страну — берём ВСЕ существующие страны + эту
     const existingCountries = Object.keys(existingIndex.countries || {});
     countriesToProcess = Array.from(new Set([targetCountryCode, ...existingCountries]));
   } else {
-    // Иначе — только те страны, для которых есть новые посты
     countriesToProcess = Array.from(byCountry.keys());
   }
 
   const files: CommitFile[] = [];
   const updatedCountries = { ...existingIndex.countries };
 
-  // 4. 🔥 Для каждой страны — сохраняем или старые посты, или новые
   for (const countryCode of countriesToProcess) {
-    // Берём новые посты для этой страны (если есть)
     const newCountryPosts = byCountry.get(countryCode) || [];
     
     let finalCountryPosts: T[] = [];
 
     if (newCountryPosts.length > 0) {
-      // Если есть новые посты — используем их (уже отфильтрованные и отсортированные)
       finalCountryPosts = normalizeFeedPostOrder(newCountryPosts);
     } else if (existingIndex.countries[countryCode]) {
-      // Если новых нет, но страна уже существовала — загружаем старые посты
       const oldPosts = await readFeedCountryPosts<T>(countryCode);
       finalCountryPosts = normalizeFeedPostOrder(oldPosts);
     }
-    // Если страна новая и постов нет — пропускаем (не создаём пустой файл)
 
     if (finalCountryPosts.length === 0) {
-      // Если после всех попыток постов нет — удаляем страну из индекса
       delete updatedCountries[countryCode];
       continue;
     }
 
-    // Сохраняем файлы для страны (как было)
     if (finalCountryPosts.length <= COUNTRY_CHUNK_SIZE) {
       const singlePayload: CountryFeedSingleFile<T> = {
         countryCode,
@@ -554,7 +537,6 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
     }
   }
 
-  // 5. Обновляем index.json
   const newIndexPayload: FeedIndexFile = {
     version: 1,
     updatedAt,
@@ -614,25 +596,15 @@ export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
   });
 }
 
-export async function writeSourcesFile(data: any) {
-  if (!Array.isArray(data)) {
-    console.error("[writeSourcesFile] invalid data");
-    return;
-  }
-
+export async function writeSourcesFile<T = unknown>(sources: T[]) {
   const payload = {
     updatedAt: new Date().toISOString(),
-    sources: data,
-  };
+    sources,
+  } satisfies SourcesFile<T>;
 
-  await commitFiles(
-    [
-      {
-        path: SOURCES_PATH,
-        content: stringify(payload),
-      },
-    ],
-    "update sources"
+  await persistFiles(
+    [{ path: SOURCES_PATH, content: stringify(payload) }],
+    `Update sources.json (${sources.length})`
   );
 }
 
@@ -734,7 +706,6 @@ export async function writeFeedFile<T = unknown>(
     posts: orderedPosts,
   };
 
-  // 🔥 ИСПРАВЛЕНО: извлекаем country code из options.reason
   let targetCountry: string | null = null;
   if (options.reason && options.reason.startsWith("country:")) {
     targetCountry = options.reason.split(":")[1];
@@ -748,7 +719,7 @@ export async function writeFeedFile<T = unknown>(
     );
   }
 
-  await safeCommit(
+  await persistFiles(
     [
       { path: FEED_PATH, content: stringify(payload) },
       { path: PUBLIC_FEED_PATH, content: stringify(payload) },
