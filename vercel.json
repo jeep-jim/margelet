@@ -1,6 +1,11 @@
 {
   "public": true,
   "ignoreCommand": "bash scripts/vercel-ignore-build.sh",
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 10
+    }
+  },
   "routes": [
     {
       "src": "/feed\\.json",
@@ -17,12 +22,28 @@
       "dest": "/data/sources.json"
     },
     {
-      "src": "/data/feeds/(.*)",
+      "src": "/data/feeds/index\\.json",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Cache-Control": "public, max-age=3600"
       },
-      "dest": "/data/feeds/$1"
+      "dest": "/data/feeds/index.json"
+    },
+    {
+      "src": "/data/feeds/(.*)\\.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/feeds/$1.json"
+    },
+    {
+      "src": "/data/feeds/([^/]+)/([0-9]+)\\.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/feeds/$1/$2.json"
     },
     {
       "src": "/api/(.*)",
