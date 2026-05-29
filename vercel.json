@@ -1,11 +1,6 @@
 {
   "public": true,
   "ignoreCommand": "bash scripts/vercel-ignore-build.sh",
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 10
-    }
-  },
   "routes": [
     {
       "src": "/feed\\.json",
