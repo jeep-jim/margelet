@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import type { ContentTag, IngestedPost, TrustedSource } from "../lib/contracts.js";
+import { readAllFeedPosts, writeFeedPosts, readFeedChunkIndex } from "./feed-chunks.js";
 
 const GITHUB_TOKEN = String(
   process.env.GITHUB_TOKEN ||
@@ -609,6 +610,17 @@ export async function writeSourcesFile<T = unknown>(sources: T[]) {
 }
 
 export async function readFeedFile<T = unknown>(): Promise<FeedFile<T>> {
+  // Пробуем читать из чанков
+  const chunkIndex = await readFeedChunkIndex().catch(() => null);
+  if (chunkIndex && chunkIndex.totalPosts > 0) {
+    const posts = await readAllFeedPosts() as T[];
+    return {
+      updatedAt: chunkIndex.updatedAt,
+      posts,
+    };
+  }
+  
+  // Фолбек на старый файл
   return readRepoJsonFile<FeedFile<T>>(FEED_PATH, {
     updatedAt: new Date(0).toISOString(),
     posts: [],
@@ -688,43 +700,47 @@ export async function writeFeedFile<T = unknown>(
   options: WriteFeedFileOptions = {}
 ) {
   const updatedAt = new Date().toISOString();
-  const orderedPosts = normalizeFeedPostOrder(posts);
-
+  const orderedPosts = normalizeFeedPostOrder(posts as IngestedPost[]);
+  
   if (orderedPosts.length === 0 && !options.allowEmpty) {
     const previous = await readFeedFile<T>();
     const previousCount = Array.isArray(previous.posts) ? previous.posts.length : 0;
-
+    
     if (previousCount > 0 || process.env.GITHUB_ACTIONS === "true") {
       throw new Error(
         `Refusing to write empty feed snapshot. previousPosts=${previousCount}, reason=${options.reason || "not_provided"}`
       );
     }
   }
-
+  
+  // Пишем в чанки
+  await writeFeedPosts(orderedPosts as IngestedPost[], updatedAt);
+  
+  // Всё ещё пишем старый файл для обратной совместимости (временно)
   const payload: FeedFile<T> = {
     updatedAt,
-    posts: orderedPosts,
+    posts: orderedPosts as T[],
   };
-
+  
   let targetCountry: string | null = null;
   if (options.reason && options.reason.startsWith("country:")) {
     targetCountry = options.reason.split(":")[1];
   }
   
-  const snapshot = await updateCountryFeedFiles(orderedPosts, updatedAt, targetCountry);
-
+  const snapshot = await updateCountryFeedFiles(orderedPosts as IngestedPost[], updatedAt, targetCountry);
+  
   if (orderedPosts.length > 0 && Object.keys(snapshot.index.countries || {}).length === 0) {
     throw new Error(
       `Refusing to write feed index with zero countries. posts=${orderedPosts.length}, reason=${options.reason || "not_provided"}`
     );
   }
-
+  
   await persistFiles(
     [
       { path: FEED_PATH, content: stringify(payload) },
       { path: PUBLIC_FEED_PATH, content: stringify(payload) },
       ...snapshot.files,
-    ],    
+    ],
     `Update feed snapshots (${posts.length})`
   );
 }
