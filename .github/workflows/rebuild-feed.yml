@@ -72,7 +72,8 @@ jobs:
             data/sources.json \
             data/placements.json \
             data/feeds \
-            public/feeds
+            public/feeds \
+            data/trends  
 
           echo "Deploy triggered at $(date)" > force-deploy.txt
           git add force-deploy.txt
