@@ -88,13 +88,6 @@ jobs:
           git pull --rebase origin main || true
           git push
 
-      - name: Touch vercel.json to force deployment
-        run: |
-          touch vercel.json
-          git add vercel.json
-          git commit -m "chore: trigger vercel deploy" || true
-          git push
-
       - name: Purge Cloudflare cache
         run: |
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
