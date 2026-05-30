@@ -63,6 +63,7 @@ jobs:
 
       - name: Commit rebuilt files
         run: |
+          # 1. Коммитим данные от имени бота
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -80,6 +81,15 @@ jobs:
           fi
 
           git commit -m "rebuild feed"
+
+          # 2. Переключаемся на твои данные
+          git config user.name "jeep-jim"
+          git config user.email "ваша-почта@example.com"
+
+          # 3. Делаем пустой коммит от твоего имени (триггер для Vercel)
+          git commit --allow-empty -m "chore: trigger vercel deploy"
+
+          # 4. Пушим оба коммита
           git pull --rebase origin main || true
           git push
 
