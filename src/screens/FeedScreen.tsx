@@ -7,6 +7,7 @@ import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
+import { TrendsView } from "./feed/TrendsView";
 import {
   FEED_SCREEN_COPY,
   SmartFeedBar,
@@ -144,7 +145,7 @@ function normalizeFavoriteCountries(countries: string[], fallbackCountry: string
 
 function detectPostMediaMode(
   post: IngestedPost
-): Exclude<FeedMediaMode, "all"> | "mixed" {
+): "text" | "photo" | "video" | "mixed" {
   const hasVideo =
     post.media.some((item) => item.kind === "video") ||
     post.contentType === "video";
@@ -242,12 +243,12 @@ function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
     }
 
     const parsed = JSON.parse(raw) as Partial<FeedSettings>;
-    const mediaMode: FeedMediaMode =
-      parsed?.mediaMode === "text" ||
-      parsed?.mediaMode === "photo" ||
-      parsed?.mediaMode === "video"
-        ? parsed.mediaMode
-        : "all";
+    let mediaMode: FeedMediaMode = "all";
+    if (parsed?.mediaMode === "text") mediaMode = "text";
+    else if (parsed?.mediaMode === "photo") mediaMode = "photo";
+    else if (parsed?.mediaMode === "video") mediaMode = "video";
+    else if (parsed?.mediaMode === "trends") mediaMode = "trends";
+    else mediaMode = "all";
 
     const countries = Array.isArray(parsed?.countries)
       ? normalizeFeedCountries(
@@ -839,14 +840,12 @@ export function FeedScreen({
       );
     }
 
-    if (feedSettings.mediaMode !== "all") {
-      list = list.filter((post) => {
-        const detectedMode = detectPostMediaMode(post);
-        if (feedSettings.mediaMode === "text") return detectedMode === "text";
-        if (feedSettings.mediaMode === "photo") return detectedMode === "photo";
-        if (feedSettings.mediaMode === "video") return detectedMode === "video";
-        return true;
-      });
+    if (feedSettings.mediaMode === "text") {
+      list = list.filter((post) => detectPostMediaMode(post) === "text");
+    } else if (feedSettings.mediaMode === "photo") {
+      list = list.filter((post) => detectPostMediaMode(post) === "photo");
+    } else if (feedSettings.mediaMode === "video") {
+      list = list.filter((post) => detectPostMediaMode(post) === "video");
     }
 
     const q = searchQuery.trim().toLowerCase();
@@ -916,24 +915,12 @@ export function FeedScreen({
       );
     }
 
-    if (feedSettings.mediaMode !== "all") {
-      list = list.filter((post) => {
-        const detectedMode = detectPostMediaMode(post);
-
-        if (feedSettings.mediaMode === "text") {
-          return detectedMode === "text";
-        }
-
-        if (feedSettings.mediaMode === "photo") {
-          return detectedMode === "photo";
-        }
-
-        if (feedSettings.mediaMode === "video") {
-          return detectedMode === "video";
-        }
-
-        return true;
-      });
+    if (feedSettings.mediaMode === "text") {
+      list = list.filter((post) => detectPostMediaMode(post) === "text");
+    } else if (feedSettings.mediaMode === "photo") {
+      list = list.filter((post) => detectPostMediaMode(post) === "photo");
+    } else if (feedSettings.mediaMode === "video") {
+      list = list.filter((post) => detectPostMediaMode(post) === "video");
     }
 
     if (selectedTags.length > 0) {
@@ -1391,52 +1378,56 @@ export function FeedScreen({
       ) : null}
 
       <div className="mx-auto w-full max-w-[570px]">
-        {visiblePosts.slice(0, renderCount).map((post) => {
-          const ownerTelegramId = post.addedBy?.telegramId ?? null;
+        {feedSettings.mediaMode === 'trends' ? (
+          <TrendsView countryCode={feedSettings.countries[0] || locale} />
+        ) : (
+          visiblePosts.slice(0, renderCount).map((post) => {
+            const ownerTelegramId = post.addedBy?.telegramId ?? null;
 
-          const isOwner =
-            !!currentTelegramUserId &&
-            !!ownerTelegramId &&
-            currentTelegramUserId === ownerTelegramId;
+            const isOwner =
+              !!currentTelegramUserId &&
+              !!ownerTelegramId &&
+              currentTelegramUserId === ownerTelegramId;
 
-          const isAdmin =
-            !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
+            const isAdmin =
+              !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
-          return (
-            <div
-              key={post.id}
-              ref={(node) => registerFeedCardNode(post.id, node)}
-              data-feed-post-id={post.id}
-            >
-              <FeedCard
-                post={post}
-                locale={locale}
-                isOwner={isOwner}
-              isAdmin={isAdmin}
-              menuOpen={menuPostId === post.id}
-              onToggleMenu={() =>
-                setMenuPostId((prev) => (prev === post.id ? null : post.id))
-              }
-              onDelete={() => {
-                void onDeletePost(post.id);
-              }}
-              onHide={() => onHidePost(post.id)}
-              onOpen={() => handleOpenPost(post)}
-              onOpenCreator={() => openSource(post.source.handle)}
-              onSeen={() => markPostSeen(post.id)}
-              mediaIndex={feedMediaIndexes[post.id] || 0}
-              onChangeMediaIndex={(next: number) =>
-                setFeedCardMediaIndex(post.id, next)
-              }
-              liked={likedPostIds.includes(post.id)}
-              onToggleLike={() => onToggleLike(post.id)}
+            return (
+              <div
+                key={post.id}
+                ref={(node) => registerFeedCardNode(post.id, node)}
+                data-feed-post-id={post.id}
+              >
+                <FeedCard
+                  post={post}
+                  locale={locale}
+                  isOwner={isOwner}
+                  isAdmin={isAdmin}
+                  menuOpen={menuPostId === post.id}
+                  onToggleMenu={() =>
+                    setMenuPostId((prev) => (prev === post.id ? null : post.id))
+                  }
+                  onDelete={() => {
+                    void onDeletePost(post.id);
+                  }}
+                  onHide={() => onHidePost(post.id)}
+                  onOpen={() => handleOpenPost(post)}
+                  onOpenCreator={() => openSource(post.source.handle)}
+                  onSeen={() => markPostSeen(post.id)}
+                  mediaIndex={feedMediaIndexes[post.id] || 0}
+                  onChangeMediaIndex={(next: number) =>
+                    setFeedCardMediaIndex(post.id, next)
+                  }
+                  liked={likedPostIds.includes(post.id)}
+                  onToggleLike={() => onToggleLike(post.id)}
                   onShare={() => {
-                  void handleShare(post);
-                }}
-              />
-            </div>
-          );
-        })}
+                    void handleShare(post);
+                  }}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
 
       {!tagsOpen && visiblePosts.length > 0 ? (

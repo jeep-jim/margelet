@@ -6,6 +6,7 @@ import {
   readFeedIndexFile,
   writeFeedFile,
 } from "../api/lib/github-store.ts";
+import { updateTrends } from "../api/lib/trends.ts";
 import type { IngestedPost } from "../api/lib/contracts.ts";
 
 type Args = {
@@ -323,6 +324,26 @@ async function main() {
     await writeFeedFile(result.posts, {
       reason: args.countryCode ? `country:${args.countryCode}` : "full-rebuild",
     });
+  }
+
+  // 🔥 НОВОЕ: обновляем тренды для всех стран
+  // Группируем посты по странам
+  const postsByCountryTemp: Record<string, IngestedPost[]> = {};
+  for (const post of result.posts) {
+    const countryCode = (post as any).sourceCountryCode || (post as any).countryCode || 'ru';
+    if (!postsByCountryTemp[countryCode]) {
+      postsByCountryTemp[countryCode] = [];
+    }
+    postsByCountryTemp[countryCode].push(post);
+  }
+  
+  if (Object.keys(postsByCountryTemp).length > 0) {
+    console.log("📊 Updating trends for countries...");
+    for (const [countryCode, countryPosts] of Object.entries(postsByCountryTemp)) {
+      if (countryPosts && countryPosts.length > 0) {
+        await updateTrends(countryPosts, countryCode);
+      }
+    }
   }
 
   console.log(
