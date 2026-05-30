@@ -795,15 +795,20 @@ export function SmartFeedBar({
                     >
                       {option.value === "all" ? (
                         <>
-                          <span className="text-[17px] leading-none sm:hidden">
-                            ∞
-                          </span>
+                          <span className="text-[17px] leading-none sm:hidden">∞</span>
                           <span className="hidden items-center gap-2 sm:inline-flex">
                             <span className="text-[17px] leading-none">∞</span>
                             <span>{option.label}</span>
                           </span>
                         </>
+                      ) : option.value === "trends" ? (
+                        // Trends: всегда показываем иконку + текст, даже на мобилке
+                        <span className="inline-flex items-center gap-2">
+                          {option.icon}
+                          <span>{option.label}</span>
+                        </span>
                       ) : (
+                        // Video: на мобилке только иконка, на десктопе иконка + текст
                         <>
                           <span className="sm:hidden">{option.icon}</span>
                           <span className="hidden items-center gap-2 sm:inline-flex">
