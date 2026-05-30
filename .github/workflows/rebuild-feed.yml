@@ -84,16 +84,8 @@ jobs:
 
           git commit -m "rebuild feed"
 
-          # Stash any local changes before rebase
-          git stash --include-untracked || true
-
-          git fetch origin main
-          git rebase origin/main || true
-
-          # Apply stash if exists
-          git stash pop || true
-
-          git push origin HEAD:main
+          # Просто пушим, без rebase
+          git push origin HEAD:main --force-with-lease
 
       - name: Purge Cloudflare cache
         run: |
