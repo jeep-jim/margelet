@@ -1,5 +1,6 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile, readdir, unlink } from "node:fs/promises";
 import path from "node:path";
+import { existsSync } from "node:fs";
 
 import type { ContentTag, IngestedPost, TrustedSource } from "../lib/contracts.js";
 import { readAllFeedPosts, writeFeedPosts, readFeedChunkIndex } from "./feed-chunks.js";
@@ -27,7 +28,8 @@ const FEED_PATH = "data/feed.json";
 const PUBLIC_FEED_PATH = "public/feed.json";
 const FEEDS_INDEX_PATH = "data/feeds/index.json";
 const PUBLIC_FEEDS_INDEX_PATH = "public/feeds/index.json";
-const COUNTRY_CHUNK_SIZE = 2000;
+const COUNTRY_CHUNK_SIZE = 500;
+const COUNTRY_CHUNK_MAX_AGE_DAYS = 30;
 
 export type FeedFile<T = unknown> = {
   updatedAt: string;
@@ -420,6 +422,26 @@ function normalizeFeedPostOrder<T>(posts: T[]) {
   return result;
 }
 
+// Функция очистки старых чанков для стран
+async function cleanupOldCountryChunks(countryCode: string, currentChunkIds: number[]): Promise<void> {
+  const countryDir = path.join(process.cwd(), `data/feeds/${countryCode}`);
+  if (!existsSync(countryDir)) return;
+  
+  const files = await readdir(countryDir);
+  for (const file of files) {
+    if (file.endsWith('.json') && file !== 'index.json') {
+      const chunkId = parseInt(file.replace('.json', ''), 10);
+      if (isNaN(chunkId)) continue;
+      
+      if (!currentChunkIds.includes(chunkId)) {
+        const chunkPath = path.join(countryDir, file);
+        await unlink(chunkPath);
+        console.log(`  🗑️ Deleted orphan country chunk: ${countryCode}/${file}`);
+      }
+    }
+  }
+}
+
 async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCountryCode?: string | null) {
   let existingIndex: FeedIndexFile = {
     version: 1,
@@ -515,6 +537,9 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
         );
       });
 
+      // Очищаем старые чанки этой страны
+      await cleanupOldCountryChunks(countryCode, refs.map(r => r.id));
+
       const manifest: CountryFeedChunkedFile = {
         countryCode,
         updatedAt,
@@ -537,6 +562,7 @@ async function updateCountryFeedFiles<T>(posts: T[], updatedAt: string, targetCo
       };
     }
   }
+  
 
   const newIndexPayload: FeedIndexFile = {
     version: 1,

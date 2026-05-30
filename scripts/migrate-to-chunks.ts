@@ -1,27 +1,88 @@
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir, unlink } from "node:fs/promises";
 import { existsSync } from "node:fs";
 
-const POSTS_PER_CHUNK = 2000;
+interface Post {
+  id?: number;
+  expiresAt?: string;
+  [key: string]: unknown;
+}
+
+interface FeedFile {
+  updatedAt: string;
+  posts: Post[];
+}
+
+interface Source {
+  id: string;
+  countryCode: string;
+  handle: string;
+  [key: string]: unknown;
+}
+
+interface SourcesFile {
+  updatedAt: string;
+  sources: Source[];
+}
+
+const POSTS_PER_CHUNK = 500;
 const FEED_PATH = "data/feed.json";
 const SOURCES_PATH = "data/sources.json";
 const FEED_CHUNKS_DIR = "data/feed/chunks";
 const SOURCES_CHUNKS_DIR = "data/sources/chunks";
 
-async function ensureDir(dir: string) {
+async function ensureDir(dir: string): Promise<void> {
   if (!existsSync(dir)) {
     await mkdir(dir, { recursive: true });
   }
 }
 
-async function migrateFeed() {
+async function cleanOldChunks(dir: string): Promise<void> {
+  if (!existsSync(dir)) return;
+  
+  const files = await readdir(dir);
+  for (const file of files) {
+    if (file.endsWith('.json')) {
+      await unlink(`${dir}/${file}`);
+      console.log(`  🗑️ Deleted old chunk: ${file}`);
+    }
+  }
+}
+
+function isExpiredPost(post: Post): boolean {
+  if (!post.expiresAt) return false;
+  const now = new Date();
+  const expiresAt = new Date(post.expiresAt);
+  return expiresAt < now;
+}
+
+async function migrateFeed(): Promise<void> {
+  if (!existsSync(FEED_PATH)) {
+    console.log("⚠️ feed.json not found, skipping feed migration");
+    return;
+  }
+
   console.log("📖 Reading feed.json...");
   const feedRaw = await readFile(FEED_PATH, "utf-8");
-  const feed = JSON.parse(feedRaw);
-  const posts = feed.posts || [];
+  const feed = JSON.parse(feedRaw) as FeedFile;
+  let posts = feed.posts || [];
   
-  console.log(`📊 Total posts: ${posts.length}`);
+  const originalCount = posts.length;
   
-  const chunks: typeof posts[] = [];
+  // Фильтруем устаревшие посты
+  posts = posts.filter((post: Post) => !isExpiredPost(post));
+  const expiredCount = originalCount - posts.length;
+  
+  console.log(`📊 Total posts: ${originalCount}, expired: ${expiredCount}, valid: ${posts.length}`);
+  
+  // Очищаем старые чанки
+  await cleanOldChunks(FEED_CHUNKS_DIR);
+  
+  if (posts.length === 0) {
+    console.log("⚠️ No valid posts found, skipping chunk creation");
+    return;
+  }
+  
+  const chunks: Post[][] = [];
   for (let i = 0; i < posts.length; i += POSTS_PER_CHUNK) {
     chunks.push(posts.slice(i, i + POSTS_PER_CHUNK));
   }
@@ -34,20 +95,20 @@ async function migrateFeed() {
     const chunkNumber = (i + 1).toString().padStart(4, "0");
     const chunkPath = `${FEED_CHUNKS_DIR}/${chunkNumber}.json`;
     await writeFile(chunkPath, JSON.stringify(chunks[i], null, 2));
-    console.log(`  ✅ Written ${chunkPath}`);
+    console.log(`  ✅ Written ${chunkPath} (${chunks[i].length} posts)`);
   }
   
   // Создаём индекс
   const index = {
     version: 1,
-    updatedAt: feed.updatedAt,
+    updatedAt: new Date().toISOString(),
     totalPosts: posts.length,
     chunkSize: POSTS_PER_CHUNK,
     chunks: chunks.length,
-    chunksList: chunks.map((_, i) => ({
+    chunksList: chunks.map((chunk, i) => ({
       number: i + 1,
       path: `/data/feed/chunks/${(i + 1).toString().padStart(4, "0")}.json`,
-      postsCount: _.length
+      postsCount: chunk.length
     }))
   };
   
@@ -55,15 +116,22 @@ async function migrateFeed() {
   console.log("  ✅ Written data/feed/index.json");
 }
 
-async function migrateSources() {
+async function migrateSources(): Promise<void> {
+  if (!existsSync(SOURCES_PATH)) {
+    console.log("⚠️ sources.json not found, skipping sources migration");
+    return;
+  }
+
   console.log("\n📖 Reading sources.json...");
   const sourcesRaw = await readFile(SOURCES_PATH, "utf-8");
-  const sourcesData = JSON.parse(sourcesRaw);
+  const sourcesData = JSON.parse(sourcesRaw) as SourcesFile;
   const sources = sourcesData.sources || [];
   
   console.log(`📊 Total sources: ${sources.length}`);
   
-  // Источники — в один чанк (их обычно мало, тысячи)
+  // Очищаем старые чанки
+  await cleanOldChunks(SOURCES_CHUNKS_DIR);
+  
   await ensureDir(SOURCES_CHUNKS_DIR);
   
   const chunkPath = `${SOURCES_CHUNKS_DIR}/0001.json`;
@@ -75,7 +143,7 @@ async function migrateSources() {
     version: 1,
     updatedAt: sourcesData.updatedAt,
     totalSources: sources.length,
-    chunkSize: sources.length,
+    chunkSize: POSTS_PER_CHUNK,
     chunks: 1,
     chunksList: [
       {
@@ -90,7 +158,7 @@ async function migrateSources() {
   console.log("  ✅ Written data/sources/index.json");
 }
 
-async function main() {
+async function main(): Promise<void> {
   try {
     await migrateFeed();
     await migrateSources();
