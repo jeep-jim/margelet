@@ -1,5 +1,9 @@
 {
+  "public": true,
   "ignoreCommand": "bash scripts/vercel-ignore-build.sh",
+  "buildCommand": "npm run build",
+  "installCommand": "npm ci",
+  "outputDirectory": "dist",
   "routes": [
     {
       "src": "/feed\\.json",
@@ -7,15 +11,62 @@
     },
     {
       "src": "/data/sources\\.json",
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+        "Access-Control-Allow-Origin": "*"
+      },
       "dest": "/data/sources.json"
     },
     {
-      "src": "/data/feeds/(.*)",
-      "dest": "/data/feeds/$1"
+      "src": "/data/feeds/index\\.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/feeds/index.json"
+    },
+    {
+      "src": "/data/feeds/(.*)\\.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/feeds/$1.json"
+    },
+    {
+      "src": "/data/feeds/([^/]+)/([0-9]+)\\.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/feeds/$1/$2.json"
+    },
+    {
+      "src": "/data/feed/chunks/([0-9]+)\\.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/feed/chunks/$1.json"
+    },
+    {
+      "src": "/data/sources/chunks/([0-9]+)\\.json",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/data/sources/chunks/$1.json"
     },
     {
       "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "dest": "/api/$1",
+      "headers": {
+        "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0"
+      }
     },
     {
       "src": "/jim/admin",
@@ -45,4 +96,4 @@
       "dest": "/"
     }
   ]
-} 
+}
