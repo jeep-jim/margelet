@@ -1,0 +1,3390 @@
+{
+  "country": "cn",
+  "countryName": "China",
+  "kind": "parent-tag",
+  "urlPath": "/country/cn/tag/news",
+  "filePath": "/home/runner/work/margelet/margelet/public/country/cn/tag/news/index.html",
+  "title": "新闻 Telegram trends in China | margeleT",
+  "description": "Fresh 新闻 Telegram posts, channels, keywords and sources from China. Updated automatically by margeleT.",
+  "h1": "新闻 Telegram trends in China",
+  "updatedAt": "2026-05-28T04:35:00.412Z",
+  "parentTag": {
+    "value": "news",
+    "emoji": "📰",
+    "labels": {
+      "ru": "Новости",
+      "ua": "Новини",
+      "us": "News",
+      "in": "खबरें",
+      "ir": "اخبار",
+      "tr": "Haberler",
+      "br": "Notícias",
+      "kz": "Жаңалықтар",
+      "uz": "Yangiliklar",
+      "ae": "أخبار",
+      "eg": "أخبار",
+      "pk": "خبریں",
+      "id": "Berita",
+      "mx": "Noticias",
+      "sa": "أخبار",
+      "es": "Noticias",
+      "it": "Notizie",
+      "fr": "Actualités",
+      "de": "Nachrichten",
+      "ar": "Noticias",
+      "co": "Noticias",
+      "za": "News",
+      "ng": "News",
+      "cn": "新闻",
+      "my": "Berita"
+    },
+    "children": [
+      {
+        "value": "news_all",
+        "emoji": "📰",
+        "labels": {
+          "ru": "Все",
+          "ua": "Усе",
+          "us": "All",
+          "in": "सभी",
+          "ir": "همه",
+          "tr": "Tümü",
+          "br": "Tudo",
+          "kz": "Барлығы",
+          "uz": "Hammasi",
+          "ae": "الكل",
+          "eg": "الكل",
+          "pk": "سب",
+          "id": "Semua",
+          "mx": "Todo",
+          "sa": "الكل",
+          "es": "Todo",
+          "it": "Tutto",
+          "fr": "Tout",
+          "de": "Alle",
+          "ar": "Todo",
+          "co": "Todo",
+          "za": "All",
+          "ng": "All",
+          "cn": "全部",
+          "my": "Semua"
+        }
+      },
+      {
+        "value": "news_world",
+        "emoji": "🌍",
+        "labels": {
+          "ru": "Мир",
+          "ua": "Світ",
+          "us": "World",
+          "in": "दुनिया",
+          "ir": "جهان",
+          "tr": "Dünya",
+          "br": "Mundo",
+          "kz": "Әлем",
+          "uz": "Dunyo",
+          "ae": "العالم",
+          "eg": "العالم",
+          "pk": "دنیا",
+          "id": "Dunia",
+          "mx": "Mundo",
+          "sa": "العالم",
+          "es": "Mundo",
+          "it": "Mondo",
+          "fr": "Monde",
+          "de": "Welt",
+          "ar": "Mundo",
+          "co": "Mundo",
+          "za": "World",
+          "ng": "World",
+          "cn": "世界",
+          "my": "Dunia"
+        }
+      },
+      {
+        "value": "news_breaking",
+        "emoji": "⚡",
+        "labels": {
+          "ru": "Срочно",
+          "ua": "Терміново",
+          "us": "Breaking",
+          "in": "ताज़ा",
+          "ir": "فوری",
+          "tr": "Acil",
+          "br": "Urgente",
+          "kz": "Шұғыл",
+          "uz": "Shoshilinch",
+          "ae": "عاجل",
+          "eg": "عاجل",
+          "pk": "فوری",
+          "id": "Mendesak",
+          "mx": "Urgente",
+          "sa": "عاجل",
+          "es": "Urgente",
+          "it": "Urgente",
+          "fr": "Urgent",
+          "de": "Eilmeldung",
+          "ar": "Urgente",
+          "co": "Urgente",
+          "za": "Breaking",
+          "ng": "Breaking",
+          "cn": "突发",
+          "my": "Mendesak"
+        }
+      },
+      {
+        "value": "news_regions",
+        "emoji": "🗺️",
+        "labels": {
+          "ru": "Регионы и страны",
+          "ua": "Регіони і країни",
+          "us": "Regions & Countries",
+          "in": "क्षेत्र और देश",
+          "ir": "مناطق و کشورها",
+          "tr": "Bölgeler ve ülkeler",
+          "br": "Regiões e países",
+          "kz": "Аймақтар мен елдер",
+          "uz": "Hududlar va mamlakatlar",
+          "ae": "مناطق ودول",
+          "eg": "مناطق ودول",
+          "pk": "علاقے اور ممالک",
+          "id": "Wilayah & negara",
+          "mx": "Regiones y países",
+          "sa": "مناطق ودول",
+          "es": "Regiones y países",
+          "it": "Regioni e paesi",
+          "fr": "Régions et pays",
+          "de": "Regionen & Länder",
+          "ar": "Regiones y países",
+          "co": "Regiones y países",
+          "za": "Regions & Countries",
+          "ng": "Regions & Countries",
+          "cn": "地区与国家",
+          "my": "Wilayah & negara"
+        }
+      },
+      {
+        "value": "news_incidents",
+        "emoji": "🚨",
+        "labels": {
+          "ru": "Происшествия",
+          "ua": "Події",
+          "us": "Incidents",
+          "in": "घटनाएँ",
+          "ir": "حوادث",
+          "tr": "Olaylar",
+          "br": "Incidentes",
+          "kz": "Оқиғалар",
+          "uz": "Hodisalar",
+          "ae": "حوادث",
+          "eg": "حوادث",
+          "pk": "واقعات",
+          "id": "Insiden",
+          "mx": "Incidentes",
+          "sa": "حوادث",
+          "es": "Incidentes",
+          "it": "Incidenti",
+          "fr": "Incidents",
+          "de": "Vorfälle",
+          "ar": "Incidentes",
+          "co": "Incidentes",
+          "za": "Incidents",
+          "ng": "Incidents",
+          "cn": "事件",
+          "my": "Insiden"
+        }
+      },
+      {
+        "value": "news_investigations",
+        "emoji": "🕵️",
+        "labels": {
+          "ru": "Расследования",
+          "ua": "Розслідування",
+          "us": "Investigations",
+          "in": "जांच",
+          "ir": "تحقیقات",
+          "tr": "Araştırmalar",
+          "br": "Investigações",
+          "kz": "Зерттеулер",
+          "uz": "Surishtiruvlar",
+          "ae": "تحقيقات",
+          "eg": "تحقيقات",
+          "pk": "تحقیقات",
+          "id": "Investigasi",
+          "mx": "Investigaciones",
+          "sa": "تحقيقات",
+          "es": "Investigaciones",
+          "it": "Inchieste",
+          "fr": "Enquêtes",
+          "de": "Recherchen",
+          "ar": "Investigaciones",
+          "co": "Investigaciones",
+          "za": "Investigations",
+          "ng": "Investigations",
+          "cn": "调查",
+          "my": "Siasatan"
+        }
+      },
+      {
+        "value": "news_good",
+        "emoji": "💛",
+        "labels": {
+          "ru": "Добрые",
+          "ua": "Добрі новини",
+          "us": "Good News",
+          "in": "अच्छी खबरें",
+          "ir": "خبرهای خوب",
+          "tr": "İyi haberler",
+          "br": "Boas notícias",
+          "kz": "Жақсы жаңалықтар",
+          "uz": "Yaxshi yangiliklar",
+          "ae": "أخبار جيدة",
+          "eg": "أخبار جيدة",
+          "pk": "اچھی خبریں",
+          "id": "Kabar baik",
+          "mx": "Buenas noticias",
+          "sa": "أخبار جيدة",
+          "es": "Buenas noticias",
+          "it": "Buone notizie",
+          "fr": "Bonnes nouvelles",
+          "de": "Gute Nachrichten",
+          "ar": "Buenas noticias",
+          "co": "Buenas noticias",
+          "za": "Good News",
+          "ng": "Good News",
+          "cn": "好消息",
+          "my": "Berita baik"
+        }
+      },
+      {
+        "value": "news_no_negative",
+        "emoji": "🕊️",
+        "labels": {
+          "ru": "Без негатива",
+          "ua": "Без негативу",
+          "us": "No Negative",
+          "in": "नकारात्मक नहीं",
+          "ir": "بدون منفی",
+          "tr": "Negatif yok",
+          "br": "Sem negatividade",
+          "kz": "Негативсіз",
+          "uz": "Negativsiz",
+          "ae": "بدون سلبية",
+          "eg": "بدون سلبية",
+          "pk": "منفی نہیں",
+          "id": "Tanpa negatif",
+          "mx": "Sin negatividad",
+          "sa": "بدون سلبية",
+          "es": "Sin negatividad",
+          "it": "Senza negatività",
+          "fr": "Sans négatif",
+          "de": "Ohne Negatives",
+          "ar": "Sin negatividad",
+          "co": "Sin negatividad",
+          "za": "No Negative",
+          "ng": "No Negative",
+          "cn": "无负面",
+          "my": "Tanpa negatif"
+        }
+      }
+    ]
+  },
+  "posts": [
+    {
+      "id": 1980286498,
+      "postUrl": "https://t.me/qqdsj/115784?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WCBVjH_tpAOKmEWRiN8tXjNYMfeI7L_GQrW_yf3iiJPJsTDXeXJPaYKvryP7yPJlHAC09DnnL5C6_7m3L6RjIJ3ViWtGwVwfghl3NqpsjzK9NKwQYW76kS22CXaJmxatg3iY1Sf5lRZs4rM6y1MVGtoC99ULJa-xe8aj-jBMgABUOFsVD0flPe2zLUsVDuh2A95YVhsFoB8U6nURJNGl11idmIaBBm3IRneX3Aafe-jOHq6j78VbEzzge4nYK7JSgDGngQlcagfWm-HsAx8jfPg9GYHS7fdkz-cU-O97ZsTQyqgpHNH4nFKlrfZaXYwKGI72QzNjIiulH8SH6AWviA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🎉🎉🎉🎉🎉🎉🎉 -⚡️⚡️⚡️⚡️\n\n货比三家不吃亏        路走三回不陌生\n\n     🎉官方飞投：@U123456\n\n        平台口号: 以“礼”服人 \n        平台彩金: 送    送    送   \n🎉1.新人大礼包-最高领 8888🎉\n\n🎉2.实时返水礼包：高达 3🎉无上限\n\n🎉3.逢8送礼包：每月三期亿万现金回馈\n\n🎉4.推广赚钱礼包：邀请1人=20🎉\n\n🎉5.加盟代理礼包：每日佣金+每周返利+每月分红\n\n🎉6.关注频道礼包：每日疯抢🎉波红包雨波红包雨\n\n🎉7.APP免费红包-每日疯抢 8888🎉\n\n    ⚡️ 世界杯官方指定投注平台 ⚡️\n\n      🎉 官方飞投：@U123456\n\n🎉 免注册/免实名/免绑卡/无IP限制 🎉\n\n⚡️ 官方直营 ⚡️ USDT.GAME\n😀 在线客服 ⚡️ @USDTGAME88\n⚡️ 官方频道 ⚡️ @USDTGAME8",
+      "links": [
+        {
+          "label": "@U123456",
+          "url": "https://t.me/u123456?start=invite-311589985"
+        },
+        {
+          "label": "@U123456",
+          "url": "https://t.me/u123456?start=invite-311589985"
+        },
+        {
+          "label": "USDT.GAME",
+          "url": "https://140.150.32.172:5001/?dl=55igdd"
+        },
+        {
+          "label": "@USDTGAME88",
+          "url": "https://t.me/USDTGAME88"
+        },
+        {
+          "label": "@USDTGAME8",
+          "url": "https://t.me/usdtgame8"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 1797199925,
+      "postUrl": "https://t.me/qqdsj/115783?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/rmByCoxvzOSDPOSclvcBlLEtJazptSz5JWrffs_JqqOMZmtS06dQ8R64pHbUAEP7dMpxPVaTIvUZxbG_yh0N2mLIQDn8A6svnWaHbHiFzM-qZNQVQEyju7zPSejO4JyUNcJO3wl8qznUxDUPns4z0QgaaFL2eGxznXb5JWCIQjscn9_X25YnviV-rTxP7W876Ythm5Y7FQBoUrp9epI2d3johLPgSVCo71Ju7A3ldsAuT2e7Dmo39ejG2jPPo5E0R3JNzfxFKTEUCqiM-e2Gz7BOR6BajSPhqqt0cZ-leXrnOPRn6UcL5_LZvze93dd0_Sl-MOqcY8on29bZ9yDckQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【8K国际】U投首选综合平台|信誉至上 |财富相伴\n东南亚盘总首选权威🔤台🌈🌈🌈🌈 \n\n🌈🌈🌈🌈🌈：8K094.COM\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈⚡\n\n😘😘😘😘😘😘😘😘😘😘😘😘\n\n⚡ 千万域名，百亿大盘 ⚡\n❤不限IP，日提不限提款次数和额度\n❤出款最稳，福利好反水高无上限 \n❤公平公正，电子真人0审核秒出款\n❤全网广告频道上押1⃣0⃣0⃣0⃣万⚡\n⚡天选之人： 恭喜大哥仅用300U本金撬动120000U大奖 \n 💰💰 马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U\n在8K国际，爆奖从来不是传说！\n这里有海量热门😀😀场馆超高爆率、稳定流畅、极速到账，让每一次点击都充满无限可能！⚡️\n\n官方网址： 8K094.com\n官方客服： @yingtao8k\n官方频道： @vip8k090\n\n\n#8K国际 #8KAPP  #秒速到账 #公平公正",
+      "links": [
+        {
+          "label": "8K094.COM",
+          "url": "https://8k080.com/"
+        },
+        {
+          "label": "恭喜大哥仅用300U本金撬动120000U大奖",
+          "url": "https://t.me/vip8k090/21"
+        },
+        {
+          "label": "小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U",
+          "url": "https://t.me/vip8k090/24"
+        },
+        {
+          "label": "8K094.com",
+          "url": "https://8K094.com/"
+        },
+        {
+          "label": "@yingtao8k",
+          "url": "https://t.me/yingtao8k"
+        },
+        {
+          "label": "@vip8k090",
+          "url": "https://t.me/vip8k090"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 2135254372,
+      "postUrl": "https://t.me/qqdsj/115782?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Pxz1VNFdlERsBVt24Xb3nGKTfwijuf4kEGvRmGMLt_KibeqYab5QXraIjlIxe0CSOJpI2LrtXHnAkeR78HnMBGYnzNvrqftZu0wbc67mGYR886g44AfD13qABLjIQtSmr0l4pd33Z8cHjpZUwMg-AH8U4a8WWaciJC0E7usPaLHh3_0dWcgMfAi3XtOgXbExLxSKn9GaEDovO6bV_s__Tzcjx8WTPRqpm0CiseJUbV7PmNoxBFLGxOgnH0una1eIph7pJK0bp9PzTVYFi3Ag6KTtLXIn9Aw24c-NKd7UR0zfvQsKX8JhoARY8swJLrCXF88mPpDL664ni2fQ0XWWrA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "东南亚签证业务全网第一专业旅行社——DGvisa\n【DGvisa】| 菲律宾：续签、清关、保关、9G、降签、税卡、驾照、护照更新、OTL\n【DGvisa】| 泰国：学签、工签、DTV、精英签、90天报道、保关\n【DGvisa】| 斯里兰卡：旅游签、商务签、工签、保关、捞人\n【DGvisa】| 马来西亚：更新护照、续签、激活、保关、出入境记录\n【DGvisa】| 四国专业人员对接，确保一手资源，一手价格\n【DGvisa】| 让签证更简单·让旅行更美好\n任何签证需求，关注飞机频道：https://t.me/DGvisaDG",
+      "links": [
+        {
+          "label": "https://t.me/DGvisaDG",
+          "url": "https://t.me/DGvisaDG"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 1784202999,
+      "postUrl": "https://t.me/qqdsj/115781?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/fitnIry961EtGbwl3Qk53RJGEZGXVJDWPZ6vKirQ3MZlDDqX8OjkEjQf9Ou_afh-Xdxf9KTnwRD2HJUMXkoEDBwcdf24RiCMiC548BlQspY429rB3BcJGraUrLkniPcV1QKVZ4nV6aWK2aD84iGj5GZBYfYeNuJPsmfWW6uSX5Yt3iTGK4ra1qgwDbwiq4ed01z1OJx8RFwE6JVEi57fKYy_Owl_nyKw5LDgsl-W1cvbyspmXcT3NT-27Dwmarhv3o3bOvpApuxFuGxFTXiFZK7tLEmBMxLN1u_2RcXlzJsh66udpA0wL5cyLBQP9JAIEw3GBgGXLCLo-1Gi-q9Rlg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🎉🎉🎉🎉🎉🎉🎉 -⚡️⚡️⚡️⚡️\n\n货比三家不吃亏        路走三回不陌生\n\n     🎉官方飞投：@U123456\n\n        平台口号: 以“礼”服人 \n        平台彩金: 送    送    送   \n🎉1.新人大礼包-最高领 8888🎉\n\n🎉2.实时返水礼包：高达 3🎉无上限\n\n🎉3.逢8送礼包：每月三期亿万现金回馈\n\n🎉4.推广赚钱礼包：邀请1人=20🎉\n\n🎉5.加盟代理礼包：每日佣金+每周返利+每月分红\n\n🎉6.关注频道礼包：每日疯抢🎉波红包雨波红包雨\n\n🎉7.APP免费红包-每日疯抢 8888🎉\n\n    ⚡️ 世界杯官方指定投注平台 ⚡️\n\n      🎉 官方飞投：@U123456\n\n🎉 免注册/免实名/免绑卡/无IP限制 🎉\n\n⚡️ 官方直营 ⚡️ USDT.GAME\n😀 在线客服 ⚡️ @USDTGAME88\n⚡️ 官方频道 ⚡️ @USDTGAME8",
+      "links": [
+        {
+          "label": "@U123456",
+          "url": "https://t.me/u123456?start=invite-311589985"
+        },
+        {
+          "label": "@U123456",
+          "url": "https://t.me/u123456?start=invite-311589985"
+        },
+        {
+          "label": "USDT.GAME",
+          "url": "https://140.150.32.172:5001/?dl=55igdd"
+        },
+        {
+          "label": "@USDTGAME88",
+          "url": "https://t.me/USDTGAME88"
+        },
+        {
+          "label": "@USDTGAME8",
+          "url": "https://t.me/usdtgame8"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 104234750,
+      "postUrl": "https://t.me/qqdsj/115780?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "file",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/qqdsj/115780",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "⚡️⚡️⚡️⚡️⚡️\n\n⚡️⚡️⚡️⚡️⚡️⚡️⚡️   \n👉新闻曝光： @qqdsj   \n\n⚡️⚡️⚡️⚡️⚡️⚡️⚡️\n👉商务接待： @qqbglm",
+      "links": [
+        {
+          "label": "@qqdsj",
+          "url": "https://t.me/qqdsj"
+        },
+        {
+          "label": "@qqbglm",
+          "url": "https://t.me/qqbglm"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 2576058390,
+      "postUrl": "https://t.me/qqdsj/115779?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "⚡️⚡️⚡️⚡️⚡️\n\n👏👏👏👏👏👏👏👍👍👍👏👏\n\n🐉😍😍😍⚡️⚡️⚡️⚡️⚡️⚡️⚡️😍😍😍🐉\n\n\n➡ 全球大事件新闻社区联盟☂️\n\n➡吃瓜头条 文案素材 ☂️ \n\n➡ 东南亚生活帮\n\n➡【千金汇贵宾厅× 98集团】一诺千金，汇聚无限娱乐体验     \n\n➡😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀\n\n➡【威尼斯人】首存最高赠送18888  ☂️\n\n➡【 Y3国际 】品牌铸就非凡 实力绝非偶然\n\n➡【 182体育】2026世界杯官方指定投注网站   \n\n➡👍👍👍👍      👍👍👍👍 \n\n➖➖➖➖➖➖➖➖➖➖🚨🚨🚨🏆\n🔥🔥🔥\n促销季开启，半年付、年付更加优惠\n\n流量不造假，人群更精准，广告效果才好！\n\n⚡️⚡️⚡️⚡️⚡️⚡️⚡️@qqdsj   @xinwenboss\n\n⚡️⚡️⚡️⚡️⚡️⚡️⚡️@qqbglm",
+      "links": [
+        {
+          "label": "全球大事件新闻社区联盟",
+          "url": "https://t.me/Qqdsjlmdh"
+        },
+        {
+          "label": "吃瓜头条",
+          "url": "https://t.me/cgttlm"
+        },
+        {
+          "label": "文案素材",
+          "url": "https://t.me/wasclm"
+        },
+        {
+          "label": "东南亚生活帮",
+          "url": "https://t.me/dnylife"
+        },
+        {
+          "label": "【千金汇贵宾厅× 98集团】一诺千金，汇聚无限娱乐体验",
+          "url": "https://t.me/STARVIPCLUB"
+        },
+        {
+          "label": "【",
+          "url": "https://y30025.com/"
+        },
+        {
+          "label": "威尼斯人",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "】",
+          "url": "https://y30025.com/"
+        },
+        {
+          "label": "首存最高赠送18888",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "【 Y3国际 】品牌铸就非凡 实力绝非偶然",
+          "url": "https://y30025.com/"
+        },
+        {
+          "label": "【 182体育】2026世界杯官方指定投注网站",
+          "url": "https://182763.com/"
+        },
+        {
+          "label": "@qqdsj",
+          "url": "https://t.me/qqdsj"
+        },
+        {
+          "label": "@xinwenboss",
+          "url": "https://t.me/xinwenboss"
+        },
+        {
+          "label": "@qqbglm",
+          "url": "https://t.me/qqbglm"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 1264715119,
+      "postUrl": "https://t.me/qqdsj/115778?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/lk3k79XhpTxXXffCQ9R-1yydKGs9T74CsqyBVpHj0GhRHvSCRO7YXgUwfc2vBweArvpA_xHkZsOX8WXTfV6Dk348xecPgovox6CCilfImqI2o7l027s-FjYDNlyYb9Tgh2ahyN7BlHLU_axZJC_m48--HN4MB1chjp1XMTb5gdjmeS_YtuMzNaUC-b5Ya9wdvAz7e4Im3OTFVNDcUKFAXOWIwYuwtQ0WAGltrcWNArKHYzWuwlNnrYcnnvXnXDgAuxMq0-GqotCosh-BO97o2w-X3gyNuQydp2DP7ytkpTVmG1pE1lvH2s4xud2wyb2-keETuchknnJ6aTSGXa6fng.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🎰🎰🎰🎰🎰🎰🎰🎰🎰🎰\n\n🎰【澳门新葡京-全球数字顶级网投领导者！】\n🎰【东南亚首创，USDT&人民币双系统】\n🎰【澳门新葡京】资金雄厚|实力强|大品牌|信誉佳 \n🎰【澳门新葡京】U存U取|不黑不卡|种类多玩法全 \n🎰【澳门新葡京】最专业最齐全的综合博彩平台！\n🎰【澳门新葡京】 最佳日常娱乐第一选择\n\n🎰澳门新葡京新人🎰重🎰🎰专属福利🎰\n🎰：新人首存送 + 笔笔赠送+最高送18888 🎰\n🎰：二三存送+ 笔笔赠送+最高送8888 🎰\n🎰：每月23号现金大回馈 🎰\n🎰：钱包入款即返3%取款加赠8888 🎰\n🎰：每日全天9场红包雨单包最高8888 🎰\n🎰：幸运注单 单号逢3必增大奖 🎰\n🎰：逢“🎰”必发重磅来袭!😀\n🎰：返水1.3%起最高3.5% 全网第一返水,无上限!😀\n\n🎰🎰🎰🎰🎰🎰🎰🎰🎰🎰\n🎰【换个平台换手气，澳门新葡京了解一下】\n🎰  别老卡在一个地方，打来打去没运气？\n🎰  换个平台，换个状态，说不定这波就爆了！\n\n🎰【1:1 USDT存取，人生财富翻数倍】\n🎰  0审核＋免实名，安全又自由\n🎰  综合性强，玩得稳、提得快，适合长期娱乐\n\n🤝🎰⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️\n🎰🎰可匿名开线，佣金奖励全部USDT结算，诚邀个人代理，团队代理，网站站长，飞机群主，只要你有流量即可变现 永久🦋🐇超高佣金🎰🎰百分百扶持🎰🎰巅峰代理模式\n\n🎰🎰🎰🎰🎰🎰🎰🎰\n🎰 新葡京客服专员：@xpj6633kf\n🎰 新葡京代理专员：@xpjzz\n🎰 新葡京官方频道：@xpj6633\n🎰 新葡京可玩可代：6633.io\n🎰 新葡京备用域名：6633.ag\n🎰 新葡京可玩可代：6633.app\n🎰 😆😆😆投注域名：6633.seo",
+      "links": [
+        {
+          "label": "：新人首存送 + 笔笔赠送+最高送18888",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": null,
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "：",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "二三存送+ 笔笔赠送+最高送8888",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "：每月23号现金大回馈",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "：钱包入款即返3%取款加赠8888",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "：每日全天9场红包雨单包最高8888",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "：幸运注单 单号逢3必增大奖",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "：逢“",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "”必发重磅来袭!",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "：返水1.3%起最高3.5% 全网第一返水,无上限!",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "@xpj6633kf",
+          "url": "https://t.me/xpj6633kf"
+        },
+        {
+          "label": "@xpjzz",
+          "url": "https://t.me/xpjzz"
+        },
+        {
+          "label": "@xpj6633",
+          "url": "https://t.me/xpj6633"
+        },
+        {
+          "label": "新葡京可玩可代：6633.io",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "新葡京备用域名：6633.ag",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "新葡京可玩可代：6633.app",
+          "url": "https://www.663334.top/"
+        },
+        {
+          "label": "投注域名：6633.seo",
+          "url": "https://www.6633.ceo/"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 1264069944,
+      "postUrl": "https://t.me/qqdsj/115777?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/DmI6XguoK3moaaLydKBJuW51N2LDyO5_xO10qR3VQBlxAu37OuV8ogYtWWeu8O_Zo_-uYS9FUsPW-ffmlLszgiDLne2b7MFjGoCQ2D6LNkfMtoAUfvdZ8iwipkTPZbb7V6vOp8cTROIGP-m49ktf9PGZJHxPZu4WuBN9MVUHyzJzGH4-Azhnb7vIuAV_bXrliijuM-lMBr0qJqESzF_hdqF74K1XgSs6DWdumDLhuAXgNIJfSzEUJTMYqfyoIix_1LOKYzg3lcxCSgIe0TR6HuQeTHyHHiCsj73tdqOXqrWXtuOF9Y4fig1F4VMBeaoJ_zyWDZ_xnGFymAVNphqdUA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【8K国际】U投首选综合平台|信誉至上 |财富相伴\n东南亚盘总首选权威🔤台🌈🌈🌈🌈 \n\n🌈🌈🌈🌈🌈：8K094.COM\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈⚡\n\n😘😘😘😘😘😘😘😘😘😘😘😘\n\n⚡ 千万域名，百亿大盘 ⚡\n❤不限IP，日提不限提款次数和额度\n❤出款最稳，福利好反水高无上限 \n❤公平公正，电子真人0审核秒出款\n❤全网广告频道上押1⃣0⃣0⃣0⃣万⚡\n\n \n\n  ⚡天选之人： 恭喜大哥仅用300U本金撬动120000U大奖 \n 💰💰 马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U \n\n    \n\n 在8K国际，爆奖从来不是传说！\n这里有海量热门😀😀场馆超高爆率、稳定流畅、极速到账，让每一次点击都充满无限可能！⚡️\n\n官方网址： 8K094.com\n官方客服： @yingtao8k\n官方频道： @vip8k090\n\n\n#8K国际 #8KAPP  #秒速到账 #公平公正",
+      "links": [
+        {
+          "label": "8K094.COM",
+          "url": "https://8k080.com/"
+        },
+        {
+          "label": "恭喜大哥仅用300U本金撬动120000U大奖",
+          "url": "https://t.me/vip8k090/21"
+        },
+        {
+          "label": "小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U",
+          "url": "https://t.me/vip8k090/24"
+        },
+        {
+          "label": "8K094.com",
+          "url": "https://8K094.com/"
+        },
+        {
+          "label": "@yingtao8k",
+          "url": "https://t.me/yingtao8k"
+        },
+        {
+          "label": "@vip8k090",
+          "url": "https://t.me/vip8k090"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 4138343993,
+      "postUrl": "https://t.me/qqdsj/115776?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/ef59d491b2.mp4?token=PAflJTBrefMHAacYvVGbUraAW3iA29Ve6SjcU3i2DoaioDaaXIU7KxN2k6BME7PsoHfCV1shqlPmOIQI3yZ1b0z5HZULD7OhIdq6ok3pddbp3xyksTzqX5Nq_eP7zB9Aq-GzLR3TdjroZbbQoRbavg7hepnfrxvUPWM9e_O2YCF8wJjACc4n140_lxPz0nOx4yDGoL4-nyc0wgzqXwZ5BCGumIyckEMMJ3PZuCZFoZtMvwHDNTx45pW3us4YoltNpHyH6oHYsSZCennx0UbcIvgSS2N6seC5xBHzfPuq0mv05fY2NW4V3pJMi4-GiBFzJl_P-wj67ch7gRssBrpROA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🤝🎰🎰🎰🎰🎰🤝💯🎰🎰\n\n✅首存100U送10U + 笔笔赠送\n😎支持 USDT AB钱包 存取款\n🤩不限IP 无需实名 无需绑卡\n🥳游戏放洪水 火爆电子 免费旋转\n😍提款无限额U存U提福利满满\n\n🎰✅✅😃🤝🎰⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️\n\n新人四重礼\n🎰🎰第一礼：注册下载APP一送✅🤝\n🎰🎰第二礼：首存即送🤝🤝🤝🤝\n🎰🎰第三礼：再存再送🤝🤝🤝🤝\n🎰🎰第四礼：满月再奖🤩🤝🤝🤝\n\n🤝🎰💯✅😍💹🎰💹🤩\n\n🤩🥳可匿名开线，佣金奖励全部USDT结算，诚邀个人代理，团队代理，网站站长，飞机群主，只要你有流量即可变现 永久🎰🎰超高佣金 百分百扶持🎰🎰巅峰代理模式\n😘🤩🎰🤝🎰😎😍🎰\n⚡️🤩🤩🤩🤩🤩⚡️🤩⚡️🤩🤩\n🔥威尼斯人代理专员：@wnskf724\n🔥威尼斯人代理专员：@wnsr929kf\n🔥威尼斯人官方频道：@wnsgg\n🔥威尼斯人官方活动：@wnsrhd\n🔥威尼斯人可玩可代： 929.biz\n🔥威尼斯人备用域名： 929.top\n🔥威尼斯人备用域名： 929.app\n🔥😆😆😆投注域名：929.ceo",
+      "links": [
+        {
+          "label": "首存100U送10U + 笔笔赠送",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "第一礼：注册下载APP一送",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "第二礼：首存即送",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "第三礼：再存再送",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "第四礼：满月再奖",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "@wnskf724",
+          "url": "https://t.me/wnskf724"
+        },
+        {
+          "label": "@wnsr929kf",
+          "url": "https://t.me/wnsr929kf"
+        },
+        {
+          "label": "@wnsgg",
+          "url": "https://t.me/wnsgg"
+        },
+        {
+          "label": "@wnsrhd",
+          "url": "https://t.me/wnsrhd"
+        },
+        {
+          "label": "威尼斯人可玩可代： 929.biz",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "威尼斯人备用域名： 929.top",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "威尼斯人备用域名： 929.app",
+          "url": "https://www.929230.com/"
+        },
+        {
+          "label": "投注域名：929.ceo",
+          "url": "https://www.929.ceo/"
+        }
+      ],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 1513764226,
+      "postUrl": "https://t.me/qqdsj/115775?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/FZvldTCcbNnd4JkMS4nPlnRxLyzGJdFbZlPZphFLtv8hrigXJ_pMa9eTkCJNXihxWrhaEGYE_puOIqwukgvoxnbd8xMi0PyHCX1MrRR0p7FL_o12lw6FlWjNP-XOPPzxy0DdS-L-pWYHk2osQESt1D2De9HzeJXp1HL3fe2EfcM6_eyR8pHJRCjUqFsVWbaF_8n_idYs6fD90qYKXALAFcshmX5_GVwcPi42FEEmN2G4zl-HPw5cSb81AmvDeI-YzKdvkPN9Cwrz-U7w63LpvUQPZ2OQvCRdxhQjF6dYbBDqLdVS4suGcOOByEt1JiTf7OVlsrkGocPpnCJI4r3sHA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "柬埔寨已赶走37万人\n\n自柬埔寨掀起此轮史无前例的打诈行动以来，大量人员离开了柬埔寨。\n\n在柬埔寨做生意的人都感叹，人都走了，生意越来越难做了！\n\n那么，到底从柬埔寨走了多少人？现在，官方出来了一个数据：超过37万人！\n\n近日，柬埔寨新闻部长宁帕达在一个专题研讨会上披露：2025年1月至2026年4月中旬期间，柬埔寨官方在查实相关人员涉嫌参与网络诈骗后，已依法对约13万多名不同国籍的外籍人员实施了驱逐出境程序。另外，有超过24万名外籍人员迫于高压态势自愿离境，其中中国籍人数最多，其次为越南籍、印尼籍、印度籍和孟加拉国籍。\n\n要注意，这是官方的一个统计数据。而实际数据只多不少！因为，从“小路”离开柬埔寨的人，肯定也不在少数。\n\n那么，现在还有多少人停留在柬埔寨？这里说的“人”，当然说的是“黑灰产人员”。\n\n有人曾说，柬埔寨是有百万灰产大军。如果真有这么多的话，那意思就是说，目前赶走的人数，仍然还只是一小半？\n\n倘若如此，按目前每天的打击强度，连抓带赶，要到明年年底看看能不能达到“彻底铲除”的目标了。",
+      "links": [],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 3209793147,
+      "postUrl": "https://t.me/qqdsj/115774?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Af9m8wHUHx6VbL-6bUOd4jKN4pO-jwWHTrcGTIwL9VH48NHpKN86xxLl0HoOXEB0M63ph-eJaYaQ9_ugPgiK-swZ-N3QxrR3ECgK9hNFSpO5iGqxx5RHNwJ8ST8fuYM87ROxwJG9rIuvCXdbfLBViHmfdt_g2uQJUwBETbctAKPfZ0lsZ0oMLJphrJEb7aOXOXpSVCbTIscRJM8uItrj3_yFI91p8JbUoBukiPcpPIaxzZnTLooa35cKE71DClEC7_hNepEO2kroBWLp-hqJqcQn1_QzS92Ua3Xo7DOEC5zYWtyeouWUivuE32DoSEgYB_ESGQ5j6MjvWqcrm94YOA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "汪文斌：中国赞赏柬埔寨打击网络诈骗的行动\n\n本周一，中国驻柬埔寨大使汪文斌在脸书发布动态表示，中国赞赏并坚定支持柬埔寨政府为根除网络诈骗犯罪所采取的强力措施。\n\n媒体报道称，北京从一开始就支持柬埔寨的反网络诈骗行动，并向这个东南亚国家提供了切实援助。",
+      "links": [],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 1266283609,
+      "postUrl": "https://t.me/qqdsj/115769?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/H86sy84_wSUyR_UeioIBhpVcwXQ6Mdnf7WhNfrE_FcN3bcSc1LgteyQSncEmZPE7jeml0pA2L5oIwPdbK2QuLotyU7J8AXtXhSaB-Z5sKr48oYTO5fQoRSLLp5gmbhLZww_Q_Bg6JiQRxhIDXA2QuGZ0rrS8g1FhzhSRYje779rU4QfIAzg3cSyRre5TSyyF6ZX1y8UJMIlVIJZ8sFT7Tp3etkyXdIXaiFPg7S7N_hYglHwFxcvv0re91oUmpOX_QXV3ypRJIEQ5VBhy3NglS5qVTX9z5M8YSPIojc_3Ki7XyChKS8ptd2Xs6e1hpoOJvEaKbrJgSMdRfSKmRzBEQQ.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/SxACeJBpY5zG_8fbiFiJbSMN7Jmn5cRIf5LLNSelLl1kpff011h9wxg3kv97HRiMAe7sV59gX0kV-coAaZJgdC4lGJVNJ_Aanurc_5uipZ_uW3CZWsfklzhxJi0EiTzBVF8MCHWhFFAY3mvGB-wwFUf2XhTrpjPTQeRNu0XfLVBTWrU7f7E2-qnIeg2K0ymZXPPAl8KstGTt5kKc2HatUUK6N0lBaejgVMBs1lBuTKpPG5mybEMbUUT8FVbagFywwsYtPNsB1iK9qwkgIUZ_VSmFHDKA6ImMd9M2i6R30RPMb2N9-2aX8a1kNZom3xMNgJUBw9eSN2WqXYkniN8ZYg.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/jf8nDeGe46UmcifMQfheKYYyr7aRurdPcEMmIsG4g4FTkcOz9BnhENeVBoPWCyX9a178CN4EShQXW3dAX5YEhnnsIqbtFzqRwAkLg2DvZH0G2VxoiSVaRcQJpLgTaaOI7QPY0TL8h-s4AFU1g1d88W1ARAtm9Et_BreAtUkMSHgwVZ48ZZrUL3nhtnNQbjM3xlsa7rRD8Qv79eBnXOCGl74b3IIyJ5MBGMbW2g0pGbAZhPa13V4xAhjJVI2Ix6r4WlW_lhnITPSbzh1rh8eQemvnpBUUt_HrrU34y5aE2P99jEaBNwCWyDnGyc9Wjj0XN9fP1e8O4D7CRa5FCOrf4Q.jpg"
+        },
+        {
+          "id": "video-4",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/094252f0a7.mp4?token=kJyLdRI7p589nWH6FKX_7UH75SwAv3Mk3V5Ssf1ziB7ewGY_VQzaRpNTi3cS33fMxWle-LzZDily3us9a8uNU8iTRbAmJUe1c8lgKxr1SDYgz1dRk9IMU7-0gkNVpQCC_U7d01EWPzSL3W-NCsSJwdQ-70RRp0FFLQJge3HuAO-hPf1d8NqgE9FPlWUPsNeqPYf-xMSQF-t4Kj-KAR_4raGOLJs9o83aH23CSL3LLfgG-Ie60r3bD5FxrN2XYDw0aVkKrLys9R2ieRYwTxHZQCmkAT-yCwB497Luc-ETkD-oc3kp7dYI5K8QJ0YL44Z4NskyaybGyzGgDsJWoKgaKw",
+          "poster": null,
+          "mimeType": "video/mp4"
+        },
+        {
+          "id": "video-5",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/ef70bddf64.mp4?token=tA-qiooEdTEXgOfuAtk2ViEmNN5XBm-902hOgat9RaBDCjY9nPGdCSNchR0loc9uMmLSL6NYGAFh25dt5D_F4Sa9t8z2ZTdEOHnumwOi0YQtlrK35I4t2NqKjJ-9R22cTFpkmZPHIwAOkhE6wwAnoMRAmAgzDrLznNCsN_sRC4TWg0TSVzniFiDX_0hZqTLuVSKKOvSqP-TAccYWxrnVpbHdOEUwVoZFs7FascDUM589tZR3w4JDQsiS9woItrBvp5BZRFCwOO4Pr3wycHfwhP4hHcMG_EoAHsh5IeArdZhJqViqiMhNystcv6poBnyA4CCIDul8qBfYy_6VGCWRcA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "#网友投稿  #拜林\n\n拜林经纪人天猫、拖欠女孩子3个月工资 、2月份的工资到现在没结 ，有钱赌钱、 就是不给女孩子发工资、天天躲起来装死、发信息已读不回、打语音直接设置打不了。",
+      "links": [],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 1244559192,
+      "postUrl": "https://t.me/qqdsj/115768?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/cf4f8491d4.mp4?token=NL_r3Z8R832RKxWO-ssHS0MfXZSca5-W3dUy-oyp0G3lSmdMMAOLF9o89IiXRWt5QOBLCHvm19zNQ0JqvMrRZkQzK4arqjEZXCrKRHZQldPrlC1ZYubo6BL_t8ioypL6xh-BnLILhUVuiRD5AQdjmCdFiAYlOO1RgG-WdvKhfFK1Zgtxdxc7EuzTOX0l9cIrh-6pW95eqTTiZ1mK_ZjN7-g9K8G3q2RG1Yl1toq0jpopX5uG46tIwOiXgd8x6GgQNVe6gSBBONusuebD8QQYWzjYbEBgCqKVBhwx46AwvY51UHjYaer2s5l_rgPgG5ZJkzRpnydXeavXbwLA9qMA3Q",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "😀😀😀😀😀😀😀😀😀😀\n    🤩🤩🤩🤩                       🤩🤩🤩🤩\n    🤩🤩🤩🤩⚡️⚡️⚡️⚡️ 🤩🤩🤩🤩\n    🤩🤩🤩🤩😀😀😀😀 🤩🤩🤩🤩\n    🤩🤩🤩🤩😀😀😀😀 🤩🤩🤩🤩\n🇵🇭菲律宾马尼拉🙈🙈⚡️    🇱🇰斯里兰卡⚡️\n🇻🇳岘港皇冠😀 会安南😀    🇰🇷济州天城😀\n😊亚洲多厅齐开，实力毋庸置疑👑\n😊老牌贵宾厅，从无黑牌卡款事件👑\n😊Solaire高清视频电投24H实时直播👑\n😊线上线下不限IP，随时可玩⚡️⚡️⚡️⚡️ \n  🤣🤣                                              🤣🤣\n  🤣🤣 ⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️ 🤣🤣\n  🤣🤣                                              🤣🤣\n😀一诺千金 汇聚无限 九聚天下 八方荣耀😀\n⚡️24H为您提供不限于贵宾娱乐，星级酒店，豪华专车，定制旅游，奢品代购等丰富且极致的尊荣服务，让您的每一次娱乐，都成为美好回忆！",
+      "links": [],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 602770797,
+      "postUrl": "https://t.me/qqdsj/115765?single",
+      "source": {
+        "title": "全球大事件/安危头条【华人联盟】🐲",
+        "handle": "qqdsj",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/cGy2dm0VEDvdQuKIumhWKw1RlKu6RBfI0QR2mZAe1NzROGiT_Sk7X3ySD6HZQfQSdLaEq0L3FmOl96tzjYR1EE9G_Y-lDedPiIXFN71xpR-HS4ZGKFs2jQ_X41TLz4vflEpYWzBDQgre5JwCaNsnNquPPnGIV8Nugqau3HPLgjnqpwHS_RaU-7rnNlsIBeIOLYA5is0vwBwzxmt0Y1phRXc8iEeZ-ooPmdgmBu1SvLX_YHA7rWvqdmgPFw5sQOqbBC60NWaoM_1SXkQm7XfFy5WhyH_juoJFZljMM3prKngA8GNboy7Nf6RyElh2BiGHZ9GybpcF5PiOBR4mCAnm3Q.jpg"
+      },
+      "sourceId": "cn:qqdsj",
+      "sourceCountryCode": "cn",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/AEkCagfv7oMHYaqEZban5u0tYV5aoIszZ_rgsgN7WzCwz3N91It-h4C72jP_aAvidU3jhcRqfIylgyKYh43AOsezL-iUswpVRv9pi3o9zJxny7KvuHtiXPAY3BgKcZUUcc1KjJTwH8DKeMa95euv29FowPf3v_YGJSoBseN_YoRFNgsg7JTKvXEYeKzMQh28sL80WpPNAFk7D8_12eQgA2S8UUxye_S02OOhRmxAZVWVF31PEA6H39WDGyBlFOuiRvoLGpHdxerbO5STGFvkhdEoLm1HZNwwyyvHGvr8bCrd1o4JFEqhwDHhlKxcIAUjINqrwlVQKIznhCu5YPIfxw.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/DeC0CIy1JdfyTbFweURr0tnBCnRSpcIeEOCzj3Tfea6vbRWV1EJfAB61l7vnwV4avEAL_QNU5-d40DSABnnt87R6hcufW-NvZQ_OjjI4d9bfOn60pzPmAAq9rMMmqges62h02BEK3c6x9BAXM4Sx0p31Ek3ySexELyBRt7zQuosHZlqhi6m6IGeuxxAXn1c5XgIBYw5gYoTYk5pS8RI80fVXNUJDxMaQMt4XBj2emxWZKpRQNe0Fzdj8GXT80YnMphxyejdtJCTY19qHesW38MqoO_mcodnG3v6NBF1hbYiKW7r911-Lo96DYquKiPvEJ9cvORt02gV-hIp9Jt6cng.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/i21AeZhENQhtgoUtGmnj69WmNNgpLQgl1-HnrzT1hPtbBn56-jwNeORItCrpoNb7RO_-93VyL2Y0taITHk1d1hRXm__YQPYjwNzkG_B_GVHl_j-kd_hKTtpmpWfTK86hMWyMvbSybLJNNcUOEoXQukauKMgpn8Rg0Ua_7WvoYqhVEt-VU1E-dbYdyulHy2pCnOMK4sHOCtwaIfnfnRJ-N6ubM-3MXegv7nRZnZ6X2UrLug8uFK8u7L19qLVGPlgj1-KLnq_mbUYze09BDUe4tlKMhwuXpc7k90LV4acfvXA1j_rgocmjEnIP8ombTertnBCyO_19ij06jMV-IjiSCg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "#曝光   #黑平台   #星星际娱乐平台，\n\n平台有进无出，概率调整死，而且点杀他们平台不注重口碑，怎么曝光无动于衷，黑平台就是这样   平台系统有问题数据延迟事实摆面前一直狡辩推卸责任玩文字游戏，存在欺诈行为，大家自己擦亮眼睛看清楚，黑平台没有区别细节漏洞百出，客服人员处理事情为所欲为随意忽悠威胁玩家还有会员，发放彩金补偿几个客服车轮战拖时间敷衍了事联系玩玩家3天来来去去也是把会员当做三岁小孩子对待，希望贵平台好管理一下你们客服给我一个合理说法不然烧钱完事，拭目以待，你们平台客服不把玩家反馈给你们领导层做记录汇报一手遮天蔽日，这样下去玩家知道你们套路口碑一落千丈大家有目共睹，不存在任何扩大化说法 居然你们客服可以玩弄会员，会员一样有途径维护个人权利，下一步上强度，动用人脉帮你们平台推广一下你们黑平台怎么样套路口碑公布出来全世界知道你们以后不要口口声声正规，玩家不是脑残会对比",
+      "links": [],
+      "createdAt": "2026-05-28T04:35:00.412Z",
+      "expiresAt": "2026-05-29T04:35:00.412Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:35:00.412Z",
+      "tag": "news",
+      "tags": [
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:35:00.412Z"
+      }
+    },
+    {
+      "id": 2803886127,
+      "postUrl": "https://t.me/minenkova_svet/672?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Вообще я искала свою фитнес резинку, а нашла дохлого таракана. Возможно, это знак свыше, что сегодня можно без спорта.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 253756636,
+      "postUrl": "https://t.me/minenkova_svet/671?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/b0hE-kILkep6K9qOUx7hnEPoR0_INzV4jJ53s8ghzqGrOsKwXt2DhotbjWcbr4MVPBj2EnCdwDinrRop5zn7XNRlWfKEpQN3OEK1p1E9TjAn4FnKoTjQnuoye4BqRzvGvmYXXUC-OjDKy7dcHsgoLFfLE6TCHVt7HkSvKsHDMH5xYYmFryodvYdh7KGM-rawuWdWw2OknZGBcjDME6WCOozaV3VzUn__GP-GEpykKozfRFbYAQgYg-dx7FtjVM2ts5Uuqo3Ac55V7bWDL8qCsoIA9KrTIlmvKhOyndMvNMt5fN66fE1W4K1GnpkrgnFt9Q1MVW-_6ZhGaV1JLfYkXQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Жизнь в Азии, это когда квартира на двадцать седьмом этаже не гарантирует, что однажды ты не проснешься и не увидишь это. (И мне еще повезло, что в мой дом он пришел умирать).",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 3499280781,
+      "postUrl": "https://t.me/minenkova_svet/670?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/ZpJTyvWSITNURe5jlT93aqryNbKtWYM6fV5NuFEaVXffVDOV5P0iTKMkMLhK4ydiVYyRLDYGyeRGCR-PrgFgddMfMIBDujUPtoUG3WBxGO80z_sHakkGknb98B7s8qf6OUVM3PDgOz9zaBJsP3k0LjtKgB2YgVOZ-Zebv5Wc-Pl85CR-fqjecE47g8pJ-6zT7LMcbVfF7-gZZYZ2UEEmrzOW8dGL6JTyte3LFYYDi4iOhRpj_u4dKsvKGQWqT6fHil607WtucxL4cwRePzH4_ltyjx9v9dBzv9nxUtcqR9d4hHLPT1V_GRwm-qQXGaIBMrnZeKgaxy92OaB93JNCOg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Подсмотрела идею в комментах, и сегодня мы учили «добрый/злой» 😊😊😊",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 4279855687,
+      "postUrl": "https://t.me/minenkova_svet/669?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Кажется, нашу школу закрывают. \nТакое странное чувство. С одной стороны хочется, чтобы поскорее закончился семестр и начались летние каникулы. С другой, я уже так прикипела к своим деткам, особенно к тем, которых уже четыре года учу. У них такой прогресс, они так здорово читают. Обидно вот так все бросить 😢😢😢",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 3386311054,
+      "postUrl": "https://t.me/minenkova_svet/668?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/BCDyJqxApKFwmVq1GepyqD_LGJVy8ErqAfTqqSQ93Z2Hdpr1VqoSPSmkbmdj59LIQHnJ44lO9Bx_VBFEMNmgSENdJqkWXIZ-G1syOqYwl6gEPX24sxLX9eeS10w_h3L4l7exOSKz8ApXvOheho8a8aQmwNRzr1c6VrG0Niu9_eb75kkZm6ArtYS0B3oVBq0njtPupM5-fv_FMpSVlnXnooXyC9Jfk1wGWRFZdiLGbWm-58J6NRpV_d3IT8Y0PvmSm29BOdtD_D6vr9HzUxibxs1BOhw688MADxx5DM98HMRDnMaE4njEWcdrw7s3ETQ8v2LmvkI_v0CduHct7kHYUA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🌟🌟🌟",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 1208170241,
+      "postUrl": "https://t.me/minenkova_svet/667?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Сегодня на массаже вспомнила о прекрасном китайском слове АУЕ. \n\nКитаянка у меня спросила, указывая на Майкла:\n-  «он АУЕ?»\n- «Что-то, что-то?», переспросила я. \n- «он АУЕ?» Я поняла, что не ослышалась. \n- он поздно лег спать прошлой ночью? Он АУЕ? Наконец объяснила она. \n\nИ я вспомнила это прекрасное слово из университета, которое никогда прежде не слышала в разговоре. АУЕ значит «поздно ложиться спать». А теперь и вы его знаете 😅",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 2628142090,
+      "postUrl": "https://t.me/minenkova_svet/664?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Rqgpz7YZW08c9bNqsFwmhYXms7_FAg3GUu06f0kCx2wdzJuprwsQtqQSGsqhkwvU83VfKCn3vIM93qEg4SA6qZpIGIyVTtiBNLISHcaLfuEfgGa39X6gNQfWoltuFxnY2YbYqj1tqkpSOe9DxTH6ECmEzJhI7SSOSwb38Bjsuj6p6vqL2fU4SuJX1U_KHCOwCJX2op6gExo8u3dslA84heqCR5EgtEA9-w0YS5I7mTZYFleMXWnKEs6trLZQnh93Um1So4Xlh-HU1XkfDVUp6F5cw0v-428t2aeG57KWZXoVp4f2V_o97fmqb2bElc1jihR6HIisyRiofFS9dBCx7w.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/fRAmKXcEi8FIWOk-hSYoKFwGw_DYahIFlJ439L_FWPlRGmI94LSXuif-2loDK1-qJkgrgP-itvEUndjSE6LzSecqLSMU5O6Sz5OzV4KB5AfKSgULkrJtWfxz64cTRBSkL763R22aMXbVKN7NLb9yWk9SuwYACZzgOgal-yNK7pTtSDAURtRDb5W6lYS8UwPByaUpeKqG9oJqVhun8y-ZaMV4y7Jo0VggT2KtiNLTa9JaiW-IH1XRTX3LkYG0CJNHoBi_MbwhyXtP3yfDyIvcntMYihPHKpEAn982dM0kMgkgbp_FyrV8eREDa8je3Qd8JvcGnjwAzRbvZN6pUeeZAA.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/ReKNbcf7vJ0vLURtWApyBOQZmv0TzRbZc5ASsxO68hsgzsL_z9rf_JDshKkhJgc9_yAutMmAMPo4-DrFJU5RxBMhujtTLlTi2WdauRtMnJ9sqLyWGtzRx3Jgbb3dHq8lmL58YHEgnGYtwopbDc0e3m5JvMy8gykT9sAOHdDY5svuHtU0mgHDQ2EjBbL7b7B3L3589zI0gniFFc9uZ080a_TiYDVdHSengDASGsG1SwHMH8HWfAbpGq28TdUotcmaEODu_6TLJcrGHZEI42QssQw87yx0d20dusS4k5SqhNvX6WaroFO4jDAHEYPAzEa27kI6ZYZ2qo5nKRlrRq2ryA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Большинство  людей, кто впервые приезжает в Китай, сталкивается с одной и той же проблемой - кажется, что тут совсем нечего есть. \nКитайская еда - это целая вселенная вкусов, текстур, соусов и используемых продуктов. И достаточно часто она может казаться непривлекательной и неаппетитной. И мы попадаем в ситуацию, когда в условиях бесконечного выбора, выбрать совершенно нечего. \nЯ буду иногда писать о каких-то своих любимых блюдах, которые вероятнее всего смогут вам понравится. \n\nИ первая у нас будет Рыба с кислыми овощами, 酸菜鱼。 \n\nЭто блюдо сычуаньской кухни, но при этом оно совсем не острое. Что оно из себя представляет? Белую рыбу нарезают тончайшими ломтиками без костей и  отваривают в бульоне с квашенными овощами и лапшой. Подают с рисом. Можно есть рыбу и овощи палочками, а можно ложкой, вместе с супом. \n\nБульон получается достаточно густым, рыба нежнейшая.  Добавляется так же сычуаньский перец и перец чили, но вкус у блюда скорее кисло-соленый, чем острый. Я даже не могу представить, кому бы это блюдо могло не понравиться, оно очень безопасное, для начала знакомства с китайской кухней. \n\nГде заказать? \nБлюдо очень популярное, его с легкостью можно найти в любом ресторане смешанной китайской или сычуаньской кухни. Методом проб и дегустаций, моя подруга нашла самую лучшую сеть в Китае, которая прям специализируется на этом блюде 太二. \n\nВажное замечание! Стандартная порция достаточно крупная, лучше ее заказывать минимум вдвоем. Цена около 100ю за небольшую рыбку. \n\nПриятных гастрономических приключений!",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 4060573821,
+      "postUrl": "https://t.me/minenkova_svet/663?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Сходила с молодым человеком на массаж. Меня аккуратно размяли, с маслом, от шеи до мизинчиков ног. \nМолодого человека растерли банками (вакуумный массаж) и побили палкой. \n\nЯ очень довольна, чувствую себя прекрасно. Молодой человек сидит с фиолетовой, как баклажан, спиной. 🤭🤭",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 4085840588,
+      "postUrl": "https://t.me/minenkova_svet/662?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/66436d1492.mp4?token=L2Qb3HD_xBHj10umsNqUt40H13N1WutghaFw3joG9iM5ZlltsiXQoLowRgEfZFtL_oNnEtT27O-z0PIQrC1lbrEGAyt1_QIei6kmBM0MPatIoEDFYRxendH1xMTI5EaBJmFiE1wU3JRW1Ue2EcxgMfaMmBOuP4fYd2bhf_Nxn4VnwZaWKZ9BmX1C6KnL30DhCLBlxd0GvJV7ouyl7MdvOawiJz59Y6RH0p4xnu0VBu_uq8na3lecfW7-8jlpGgSE4Qhmvqex22YknNJfIhM-7YURPv27DmDE3ij71XX__5IPlqAArowvhCH5ZjoN7TK_9biG2uTW-AP4i8RdIxriHw",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Это наш новый массажный салон на восьмом этаже. Был бы у меня такой балкон - я бы из дома не выходила.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 1628575007,
+      "postUrl": "https://t.me/minenkova_svet/661?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Какие же некоторые люди 😐. \nКогда моя мама попала в больницу, она сказала об этом паре, которая снимает у нас квартиру и они решили, что это отличный шанс не платить за нее. При том, что живут они давно, аренду я им никогда не поднимала и платят они сильно ниже рынка. Ну вот как так можно.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 2956170182,
+      "postUrl": "https://t.me/minenkova_svet/660?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/8010e90735.mp4?token=W3riAjHo_ta20q64rk7_dPY1svJ3lgKqaSZwA5ToOSduVAuxdF21UNCKVSVthpf_PYdlpwPDFnMm_ku7txmu_vVF5e_K7VbtAaZXhbF5FcZwIOkeMuewzx5g_oAfuT0MmRGGeF04Xeg9dOoIA4oMohjQN9vVGofG1_SbQdzsizgZbVyYVfqYzaDGzkIBQd8rof2VJCLLNKF6McKR1xdpHSHIlmTq6VbYJAuplEvFL8dYMA2v4r3vmbEM2opzcui9woH_DOw2Hnei_tb0V6qvj0oamtDpBhPEkhuIk-1kxavTNxwrw2gRLHaESu-gwDgJRKPv0d9OCl7xIAaOSAXMiQ",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Обожаю китайцев, они вообще без комплексов. Просто сидят на всю улицу поют караоке 😊😊",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 4132724772,
+      "postUrl": "https://t.me/minenkova_svet/657?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/cMPGTQ1v246x2oXUju7oz0DELIAxVDGTMSgr7Dvfsp1Cr8Dq-WWvOz-2LYNvSZKIrii8EIYn4S-a7S59A0V_gEeGc8_snwZ91Apu10-5ebVZPqjMYFAJ_AdK6A42NLQgPw8kJvM20tnMD239cN6JN9S33_xfzdIA6TXEfZ6BVFz6hVAioqmDunTJ8WqdIxIFZgiJvESCUBwa3-JQuU_6_MJwv54uy00V9zKTTiymNldBIiuZc4KgHCb8igXAA2te03FSY_YUaR_bFxZoPllvYRA8BFS3TG-8wGnfoz9MkHJ_OB-9sS89RZ45n7FK-ZxjFJrXq9HM-clwYVrVAW7cmA.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/mpYxtT1bOQ2LDSqe5EspFTj0GVgeM_QnVDgahBqSG_GTYN13L95xtCoIn68J1Lc6vpXOsakprmpyqay6ZgG8yrEgn-XGM2Y9aHM9YFgVhVTMzYeggIUXqaGhHslPCu8Dz9E_1WrEB3hIIR04SXGWHdjV-i8sfbBtqfKsG6bIbRPOBJDr5rmEF_NhoPqeOnB1YdYCF6O5MrWwlKIrfT62j3HEW38188n6k2bspjcN6q-JE4-K4jVjuEo4UKRz_LkRvvDsFvzpYl_6x17dHdTMlX0DjoOfcb02vs3vgOVr9c6cMdHky9QWBoX0kxcHp_s7E9W7pVdThcMIY7IoKhZa9A.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/gCacwRHw3Qej-TcY6Yju7hgX7cxv7uNsYgyoWwyshfePGLuTURXQzCBSjE1fWqvxmsBhu5KVtu3s6zHKUUtgwNcnMimPxnCORiwlXyikpNYd-ThfF6nFL206ctSD6APo09wF_x25V88h2g9O73g3ykXZnF5hggPZRVw6SjvyHb0RK8kcCfIf-HoxDPa3kJ_DBY2HeOBCw7qcKP1GrsCUiTuqwr6sycP2O9GnVzUILYQholzXtinX5_V2sFgitduzAkXdwjzXcELwnjTfrZ6I8rX4Iu5LXj7g5phXHVGtP5072qHlt1OV7MEDUpqKUfWpYBtj3Ti3ZgxL9fSuhl4l4A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Обожаю детям всякие крафты давать. Дети счастливы, а мне особо ничего делать не нужно. Ходишь между партами, следишь, чтобы они друг в друга ножницами не тыкали 🌟\n\nМы сейчас проходим чувства и эмоции, им пока сложновато.  Слова очень длинные. \n\nКстати, у меня вообще никакой программы нет, составляю ее сама с чатом ГПТ. Вот это задание я тоже сама с ИИшкой рисовала.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 1635567806,
+      "postUrl": "https://t.me/minenkova_svet/655?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/ds0853ZO7oJsxKTOUDGz9t_uaA55qGKssokkGRAih9sJ9Tt0i7PN_-gFjDS4x1jm771vwj7hc1jcxzUwnv1Q8u8WNhNS_uNSfJ4-0CC-x7xdbBV-B9KSd_MQ39spbBoALVwo1xDTnp2dXVpdRK-YPOJvprEqtUBstU6fHVjIi0hA9s9OnPZA6RZyFFYR0KtTq29UGUGOysh4pFGMAY1W-9wqTdnCKfoZFGPko6l0RgnVDeV9T_KwvWs5YdlQ-ydrWF68WPOBEdYxTreitb7wWIvcOO-rcC5KCQX0SdyxmZ97KHSHd0PYrTpU0C9jMd4Dc7m01x8-FSabBFQu3dB9Hg.jpg"
+        },
+        {
+          "id": "video-2",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/0f8f3b6ca4.mp4?token=G95kLrEUx6gDML2U1cFxxxmENgpJ2H0QDOltheOeCh3y-OGxeqe-5KFHxh_VxGEI3suZG0m89Ld7SawKDT1UexcQXLXrNdrX0Z_9wzE5zutLzddLvoidS0HK0_U6QlOl683qzYXI4CdZa81LBThX4TiLS6vaaf3j10FTbwumxvULU5lKsAif_bfFpEFNwuOT0087CmYSDQfEXgMvnIsE74d9BQBZwpNVG4EFdKGrsaI48LavtFSddLB-ex2b4Io0VE2tAGxhlkro2ozU6fGMXmKsIj9sK-ICTBJdsVn3zyrPfBp9EEH5AeBXlSmJJrluK4RJwdCGzcMzVAwH2Q8Vrw",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Помните, я огромные цветы показывала? \nДеревья отцвели и снегопадом падают семена.",
+      "links": [
+        {
+          "label": "огромные цветы",
+          "url": "https://t.me/minenkova_svet/481"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 2573308599,
+      "postUrl": "https://t.me/minenkova_svet/654?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Cf5yvzhA1UA755d2ohtw_ICVwO217WJgP4sw92GBdA5GgjvAfnSve9DJcIs6GaqM_kn6z80lmSvjOqV2c82Y2LFy4bADhZE4gWPcXLU5grAVuCBRQ9JnWS1UaVWVUz4LfZmJhPn_I1OzLlua_OH-u4rTTJJ98MORBR0H5lroarVggN0cRbPrEMxUwdEpb8z_BUdYLJrCLKfiT63JH0KSWDSJ0u46RWFIA_4s816un-MnL3CqifRP2ARmcDRl0SzWAWwg5aD95lKq1-NrwEHh8284oFLGJHShyDFjMbKk37YYRm9hG4AtFv_bH1NL06D-ul9E2x-Xo8tduf1JwT3qLA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "У нас под подъездом сегодня весь день девушка промоутер зазывала соседей в новый массажный салон. Два раза я прошла мимо, а на третий стало обидно за нее, ей так грубо все отказывали. И пришлось согласиться заглянуть в салон. \n\nЧто ж! Салон на восьмом этаже в моем доме. Карточка на три сеанса по часу всего за 1100 рублей 😏😏😏 записалась на воскресенье.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 3727959448,
+      "postUrl": "https://t.me/minenkova_svet/653?single",
+      "source": {
+        "title": "Светлана | Китай",
+        "handle": "minenkova_svet",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/A6BDo9vPyvTBGFXlMKzcJ3t6KyhFvu-zmmV49VptRi30xRXW9pEIEYOgN7DDXNVkXeZx0r75sbE1tqgpthDHtdd7PSSZnz2OhKQ588W0U1EdWmMljQcwUnbtlquh0rZb4QWVEmSCcj9r8ry2-VqBR1qFSHKiW5VOzSACZuT0FzVUijsM2ohoDWWmNHye6OYfTyHUcDBRYMseOMmf096Isu62LEcy5sXlEnyypX2F_mDH8XhwSTEJN3X_TVTXUtL-x6jTfhLSq50mI8qwIiXaBQiIqwLQ_f7qASzRmjiciI_oITtk5HJYmqw9eT5Lruz4d4ejB_7Wucpxbdve4Mabvg.jpg"
+      },
+      "sourceId": "cn:minenkova_svet",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/juAqiRon7Nl59MoO9eXuuuJLzGD-MZ3fUkU2a7ChsPXdlSZkX44fdxfl4zQABEgQ15qDlbXwG8fEIn2pO3myy8iprVgf9OJ6p8swhvBX95mdm-R02GeNGCkdlTgYcon8SXOdR_jsd_ZBHE0EWgWzu9pA_Zuv5x8RDGMphGHd4Wtko_IojEbDLx4ixQAucKQbqFpst--b9Gx1PRG5EoyNGb47XgRhd8nzjubotS0Gdzv9PizvNuqolS7_YnWUsBjioETiyV7d3vO1zCfWiVj0fby-GX4TvMmgUZNDtVp3Iqejm3JXFvbCMg0yP5G96dymwjP34ovgDhu9q2N7jVu7Sw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Хожу по дому в кимоно сегодня, представляю, что я опять в Японии 😅",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:32.235Z",
+      "expiresAt": "2026-05-29T04:34:32.235Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:32.235Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:32.235Z"
+      }
+    },
+    {
+      "id": 1813272874,
+      "postUrl": "https://t.me/laowaionchina/1465?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Песня про любовь\n\nПредставляю вашему вниманию абсолютный хит в исполнении 梦然 “是你”.\n\nПесня очень красивая! Но более того, она ещё и со смыслом😜. Лексика в ней также не очень сложная.\n\nДвижение и путь:\n\n· 追着 (zhuīzhe) — преследовать, гнаться\n· 朝着 (cháozhe) — по направлению к\n· 翻过 / 越过 (fān guò / yuè guò) — перевалить через (гору, хребет)\n· 踏过 (tà guò) — пройти, ступая\n\nЭмоции и состояния:\n\n· 梦想 (mèngxiǎng) — мечта\n· 岁月 (suìyuè) — годы, время\n· 无常 (wúcháng) — непостоянство, переменчивость\n· 幸好 (xìnghǎo) — к счастью\n\nПрирода как метафора:\n\n· 山川流溪 (shānchuān liúxī) — горы и текущие ручьи (символ жизненного пути)\n· 倾盆大雨 (qīngpén dàyǔ) — ливень (досл. «опрокинутый таз дождя»)\n· 泥泞 (nínìng) — грязь, слякоть (символ трудностей)\n\nПопробуйте услышать эти слова в песне.\n\nА вот самые повторяющие строки — припев.\n\n是你 是你 身后的青春都是你  (shì nǐ shì nǐ shēnhòu de qīngchūn dōu shì nǐ) Это ты, это ты — позади вся юность — это ты\n\n#laowai_music@laowaiOnChina",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 1151430787,
+      "postUrl": "https://t.me/laowaionchina/1464?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "file",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/laowaiOnChina/1464",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 71271999,
+      "postUrl": "https://t.me/laowaionchina/1460?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/UeBaod_ZhRNXZQ5LjeKdUUIzK5npXXRHLgTPBLkNwREtBGNbMF-M2H2tvHIgzrXKhNXMlBw-97i-_JU915J8XFbaqdYTT6UGGocgjjmbOie0Oh9jgXF2GP0GgrUK30ICl3Koma13dwH7elwdk_kr0QDKdjVrsjpsYoY41JiAOcwV0XxhF0nZlQAdBpxVFnCiT9kiIKAUIFKeQ2guc0ELf_2jL7c07PlqrjVBLEBC2AAF_UIQAY0yw2ZA6Fxg4atSYWoFoD_zdu_KHPLs7AeEobWbKdUATGXnNbtnzS8uHcpBID5MA2MsjAru6rZK6d20f61WMQg7JqZGdeaSf245iw.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/UrgPmVE3vOjMaTKLhmFN6jhmbEs9kxYH6SfkYYwSRSX05Fll_hxE-lx3ptshgm5R-jiv3SNgQ_5_cWnz2cWQXCXmrlIOAjgZo5X2EALcrefB_Z-wY2BQyWeSI7CkaPZPszvaQypthFMHHGHGinn_U034AUHLDarbiRRMbsPHlLgw5C2iYcGlC6Sh4xw7Zc98hdcqqfWAjvTWDvPDObJ2QMgrYX2oTL6Py-fqn11RQJCdnwtMq4K3HwJXjkx6PSTyEyB9EtOEhfyrGP8UVPgZo7REEVftU4Z4OxQY_6Yr-5c3tC47azbTckLM0dxfSQA-KaRjJ71hShf8nkaJ7V2O3w.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WGzJMKJjs_8IwatjWVHeEB0LWofQcMHFLEXmXNVFDk3jhyDoPfqefG8lLIz1bFsgeGv8nyuPHlvxnisGAFdGBnRECUaRN5R4ECihqMhk5jQHyLfXWAk31oOKO86Bc4IUR60RFtCQvrkuFh0DPsT0dGkFu5Q5dokuMDSdsiPxJoJA4hWMx4lqylnjVJR7BH-rEzydz0uUV3zxkkWAybOvQ8MUJCizrg7s_McURsS_Z2lqBMzRChSjN7FQasRj61vf4FbShthbYV4PXcrW9v5VCojaAwlZgDqP6XVbuvZ2NBIL0cqRaqyKdm0wC40Wc1iTRQY332JTY6A1JdmfOs25fg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Поговорим о трёх подкастах для изучающих китайский язык. \n\nXiogua Chinese\nChloe Chinese Class\nMandarin Corner\n\n\nФормат. Все подкасты идут в форме интервью или бесед.\n\nПочему такой формат удобен?\nПотому что это подходит, если вы слушаете его в пути или отвлекаетесь. Сидеть смотреть и записывать новое — это класс, но, увы, не всегда получается. А здесь постоянно задаются новые вопросы и легко включиться в беседу в любой момент. \n\nОтличия. Все ведущие подкастов — преподаватели китайского и подают материал через призму изучающего язык.\n\nXiogua Chinese. Как правило, три собеседницы-лаоши обсуждают вечно актуальные темы отношений и семьи. \n\nПлюс в том, что они сразу договариваются об уровне сложности языка и ведут беседу в заданном уровне сложности. Ну, просто восторг!🥰\n\nChloe Chinese Class. Хлои (или Клои) лаоши ведёт беседу с собеседником. Здесь уровень сложности — носитель🤷‍♂️. Так что подойдёт это уже более высоким уровням.\n\nMandarin Corner. Ведёт китаянка Эйлин, о которой мы говорили ранее. Она берёт интервью у людей на улице, а также выезжает к своим собеседникам для полноценных интервью. Иногда проводит интервью онлайн. Здесь нет никаких послаблений: уровень - носитель. Но есть субтитры на английском.\n\nА у вас есть любимые подкасты?",
+      "links": [
+        {
+          "label": "Xiogua Chinese",
+          "url": "https://www.youtube.com/@xiaoguachinese"
+        },
+        {
+          "label": "Chloe Chinese Class",
+          "url": "https://www.youtube.com/@chloechinesecoach"
+        },
+        {
+          "label": "Mandarin Corner",
+          "url": "https://youtube.com/@mandarincorner2?si=jgfXTcupGK1UiNKN"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 3047566253,
+      "postUrl": "https://t.me/laowaionchina/1457?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "video-3",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/15b4033489.mp4?token=JDVogBLU2bKyk1Z6aPZVSDXpZV5YaajVkEPgAVibZ1GNmWEGbgSDfq4zVYbRbh1qmSp73d1ppW9TRizWaKnJhjdXRSN0_7IdNpbNKSbiEXP6thrdUpUA5hW_elozV6w9AWbzOMdcRg4xlLE0SXSdXRynE-IkxKLYs5svT8ejdO5a6TpoC-l7symjihx_uErO7_Z1Z8H7kGtjJckhqjml--UocUuQl-jPssMRFXV__-M5tZjGOgFzFRsV8Z7x89Y7BE7JielGIifSDu4Ki1JcGqNdzJ6N_t3Iakr65qwD7OaTjplPD31AncUODdFTQSiyRExvOS7Tmgx7Y_hzzuw6ZLyMXuR_7sEUscjzN6rWGBRHXovtvcjhoRtQUUgeKTTXoVTMEFNE9Oh7pLzY9G8PJwWOOlD7e0SjLsCdTKU6xbjqzpjyRQF6-B6lzoFLlkiEAD6P-15XwhRqvyBBorjnQhA5HBrKvtIoMLrRM3Vl8pVOXX9ztkwqQwCD24EWlUI-g2qC0DbssU2LvbtjWV6QkQiMGP5rZZ3YL6_2nGx1SvCDfBVPhzS-ETKLDvAPcOLRUa7WWQTzqdM96OcITYRR4Tpdmjm0sExuU7JiXbDx24rWRM4p8TeJn6sRf1kvCVLWwYXoEHinF76AK58zko1-nS6BQmL3Z2PeCBUB1MlZ6tY",
+          "poster": null,
+          "mimeType": "video/mp4"
+        },
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/OD4586zxsPOtO_CoPOLaoW2mfbEwhdguwwq--QjJd_PFLhY0tN-i3nzNAe5SaLpUu9vzgETUEzr4EtVX_qEAaNopYAvxFId44MUcxxNUmVtBwR5asJTM3k9GooTWg4K0yl-A5t1GHOMFHTN5FKNKX-h7_KSJUeEn8wVkWysVVj7lWjm7HPAvZcC7iBPKwxN4YqU55P8H3p81y9IBpGMMe8fgqN-hE9J5qqYAXDUmCVIaDmG-WsgoHUghvzK_8zlTaxHDS9jAtARRY_7BCk3bFz55Xrr0CtGqPjNPieFxZF3M2ALz_X-dn8m2Ss2hjwFamIWnommiWvA7gFPLe2DJtw.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Nisog1HtIsi3jc876H2uadBTkmlAA6YWdB8lFFxU9r6cdLhFTrB6tX61tADW80xa-_F6ZkET0FPnkj1-PZVg-4Lyq1SdEP-it5ra0o-IRbhBa-aF1eawFK48Ne1Kq4EsvQHGSLyQQxHIz6ZaTcXvRSdKWegn_opE6VcLN6oPzOBKqg9EFq5Kwpqs9-Ovzpn4l2akYk5KwDiXrzj_biYC3bDLYM74q9TLHzwUdHJVMGlCO1A-AQXFPvjMMxl4R1jK7Ld26boNN_5hEscslRBiSW8u5YmyrJlG6E9x57VmX7nk7a45caQ4GFbhHRtoIsQsmI_m23qKQ9fKwfRXHQbttw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "\"Давай поженимся\" по-китайски \n\nВ продолжение темы знакомств расскажу о китайской ТВ-программе  «Если ты не искренен, не беспокой» (кит. 非诚勿扰, Fēichéng Wùrǎo). Она выходила с 2010 года на телеканале Jiangsu TV. Это одно было из самых рейтинговых шоу в истории китайского телевидения, которое породило множество подражаний и обсуждений в обществе.\n\nФормат шоу\n\n· Одна девушка-участница (в некоторых выпусках — мужчина) выбирает партнёра из 24 представителей противоположного пола.\n· На первом этапе кандидат показывает короткий видеоролик о себе, а девушки могут выключать свет перед собой (кит. 灭灯, miè dēng), если он им не подходит.\n· Если свет гаснет у всех — кандидат уходит ни с чем.\n· Если остаётся хотя бы один свет — наступает этап личных вопросов и видеоприглашения на свидание (кит. 终选, zhōngxuǎn).\n· В финале участник может выбрать одну из девушек, которые оставили ему свет; если она согласна — пара считается сложившейся.\n\nВедущий\n\nБессменный ведущий — Мэн Фэй (кит. 孟非, Mèng Fēi). Он не просто конферансье, а центральная фигура шоу: интеллигентный, сдержанный и остроумный человек с лысиной и очками. Родился в 1971 году в Чунцине. До славы работал в типографии, затем на телевидении — начинал с оператора и репортёра криминальной хроники. В «非诚勿扰» он играет роль мудрого наблюдателя (кит. 睿智的旁观者, ruìzhì de pángguānzhě), который помогает участникам избегать конфликтов и нелепых ситуаций.\n\nНу, теперь я знаю, чья физиономия была на банке с кокосовым соком😂.\n\nPS. Судя по всему, на видео из 24 участниц осталось 3. Затем открылся какой-то новый факт о главном герое, после чего ещё одна участница отказалась от него. И вот ему предстояло выбрать одну из двоих, которые сказали ему \"да\".",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 2735052367,
+      "postUrl": "https://t.me/laowaionchina/1455?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Дела сердечные 😘❤️‍🔥\n\nЕсть у меня два китайских знакомых 40+ (мужчина и женщина), у которых идея-фикс найти себе иностранного girlfriend/boyfriend 👐. \n\nЯ, как их иностранный товарищ, часто слышу от них эти стенания. Искать им пассий 🤔я не хотел, а вместо этого предложил им познакомиться. В итоге они познакомились. Она отправилась в Санью (не знаю зачем, очевидно искать себе жениха-лаовая🦾), а он предложил подвести её до аэропорта Ханчжоу. Так они и познакомились. Только вышла из дому она поздно, вечером сначала были пробки, потом он несся как псих, чтобы она успела на свой рейс. Короче знакомство получилось мимолетное и хаотичное.🤦‍♂\n当我老婆， 一天要打十顿。\nНаписал мне он после их встречи. «Была бы она моей женой, бил бы по десять раз на день». (Ну, типа дисциплины в ней не много). \nПотом начал кидать мне фото своих бывших подружек (а потом и фотомоделей), говорить, что у него требования к женщине очень высокие. Глядя на фото, у меня вырвалось 人不可貌相(rén bù kě màoxiàng) «Не суди людей по внешности». На что он мне, 相由心生(xiàng yóu xīn shēng) «Внешнее отражает внутреннее». \n\nКакой фидбек я получил от неё?\n\n我感觉他有些笨 秘密别让他知道 (Wǒ gǎnjué tā yǒu xiē bèn, mìmì bié ràng tā zhīdào). Я думаю, что он туповат, не говори ему.\n\n不喜欢低智商的人。\nBù xǐhuān dī zhìshāng de rén   \nНе люблю людей с низким IQ.\nВсё.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 3345641718,
+      "postUrl": "https://t.me/laowaionchina/1454?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Немного Китая в вашу повседневность 🧧  «Нихао, Шифу!» и «Лаовай про Китай» объединились и запускают совместный розыгрыш для всех, кто неравнодушен к китайской культуре! 🥢  Как участвовать: 1️⃣ Подпишитесь на каналы — «Нихао, Шифу!» @nihao_shifu — «Лаовай про…",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 1277855430,
+      "postUrl": "https://t.me/laowaionchina/1447?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/e7fus8p6pbP5MXU6d8Wh3-_TF_6PQfU7Ql1_vZMX12vPQDxXw0krKUXcRye_udQw_sxoRQzTeXpbIb2bhLHKte6A3tvx0-9WFkgj0QY--4dInyvKrz4XZmTCBX44QOOCE_3fuyxpt2WH-eO-IPcnruvHpwO_rI_U-Bfhpg2WOPWmKEmAY6YZQdaGRzwQzrAiBiLPfz1ZRNAVgjvf36rE7f4O0Fsh6NSQhfkyfxvnGKO9YeEBmg71NrGJbkiWjw4FsXg0Xz2fjBfGXZQQUJIIYp1MXpVlQYjXvS6Bb0mtDf4lCO8LFQ1nKZcuaUhAHXnCbuaY_iGPo89NERgz68MGKw.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/fq_SKZ-7kMYvSJLCF04Yq3uVuNXbIlTYOwHxgYuJ0tQO9wDo9taoH3rSlivLdV_DDz163oZDCOHlEXQ3tDC0s3dhGv6hGBhcJMjehXfi787eNMoLLn3wTLBre07-i1e1xBOlx8pRmHOIgxlDcUR25waqXyhH1tUDidRohasXUQhUrwib_SW1d5K6sNrC3GrnSD8t6moAWpJqejA4Hkywd2Ib5ngcdvt9wETeZW-asXncCJc8wW8uHH8QWooljNuMcRQf5ClD0WpT3TpxVUypk65vQx7W_D_7Zp-0wMMjyaWakaT40v7j41qt4yHp1Lp8YahAS0Fppa0YX6BhxjLnSg.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/vBsXDQ8fbSwB_2xCvCYXO1teJuDSAeMULIK4DuzxCLR0k3ih73DM-ip5F6YfZzs-o0abyeyFuI5W7oWL3YJnQSThUfamXT_6FeLpyDFjAqQBQGZGFRkC0OEhmBeydGM3YlgdlMiuUbd8QkW3bW39n32IXuViuwMfuFQTrP-SCeWAHv3-36haMSGTlMlvn1aAH-BwxJujt_TYg2gHOCU4ddnnCy2KIC7HnRu5gsqajhNEeSepDQyrT5Qvtg3WU-yCZrVC5-a3jACelwI2crHw24u75Kol5eypoXj20dnjl0XMIr-SLFaIpmlHdSRX7E5vDWGcClGfJfIMCw_sxkCiJA.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/utkO44H7al_V_VW-P1OQvOC_LM-OsOxaYatZuHMODGIpNFtrdpAEcCOma45w-SO6l1RF-ObqyZDq276sEsdici4g2zBljAgwmfj1Xd5GbivCCgMM21f0AeCAwZ2AAwppPqURzIOCEQ-Ft024Sg332Ld7vY_pjagZPEIo5Lj6FvBrgX8P0-LNBJbRN1u5Dqv-GkiiY4eOcC1g3pMB7JXoF_3DebcCDHiPeSnLnHZF_DwY6_0lWvv_WR56pSxyqd_YNhd-lz26B_mEDOj8kjTN9yRiSvxljsdmdhKToLh5ggi1a6whbyC-DzOLR9Q_Gi-tf9NwHsb8anK1-Mk_oTyrNQ.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/lQdK9TgyiYELuBgxNxQiZzx65x0kWPhVs2IPg3qYHYJ9rBR7RguYNq_bWmTe0EDSU_BqNyIYIvQ6tIPZZ4WHRJeGUOKaJybU_0KPptsEv3G5Y1XKzA7bG-NJmLu-3VcKm8nnmtlYDZONpAAG0H7KF2tWeHKSlHDRZ4gtvOkLD3nxLCAjQklNfu5C1_KZI27M6yg1qRWxAHYyRDUWI2uAO8Dh_aIxAwCsI1DVhRS3DidbDm5TvknlZlvIHOQ93BPvWAhYchwvd0myEdtp2qa5oDzvYMD-L7uYvcbWee9gt_wWjaxGaSzrVCQekJwoLwefAX5JPaZUNIa7_cxHnKpz9w.jpg"
+        },
+        {
+          "id": "image-6",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/nCS5WOhiWR2bDRrbDPKFySsHoBs1E5ANsb4JOtdmb3IaH2-6NbLJPBfufdmQkFjKtnJ3EwvvWCikBElWPQ0U_IbODHMdboM-Tp4-EcqpvGVvdAjJbJka7jgmg9cAb-ya4cCYddqPB6gDBNbQmC8_qN2E09QXBoJtxW-Q4xKvy1rY2G13HNmEjLAlWNXisnmQVn4nog6FVIlcJ0uT5CQ_tEXWsQ1bqMSpi_Au7AtXd9f7f9vNsrltm-BE3UW4e4CndR79b6eU_UQO6JYL8dD-LO2yZSs7lmBqY8vnXMQJZ59uRrTI9QWaSwFJ_EIEDzXl-_PKjpAwthqStlo4ReIWJQ.jpg"
+        },
+        {
+          "id": "image-7",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Lh9h1emthY1ljPPL5E5pcJQ-eXHgi2U8c2TvlX-Vc02f_jECMLcNV2PWMbrxvbnycV-elu_Bq73aJuzUzo8FQtqSDVZiIMKPubBM1z-7LuNOt0OFS6g3lkDUocIIKS3FovGPAigoshB28NDUhsjeI5uMo9wUvIOvNz2iia-UFKC4WNc15rDbCBLVzvZtfC9oMTQjG6LUIqK8i__5e8A-fq1u28k-_Z8viAO-i-VIZw_IUbFge7Yl2h7TDr6OR-RxtHWBQ1yRXSzYgvnJbh7RVortuMOZiGaHqleNmnY8v6ybq6D8jNU4SjbO3LJj8B6i3tX37q8b_p5ps4mJFgx6eQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Ну, и кладу голову на плаху и напоминаю, что я сам указкой бил по столу для наведения  порядка. Нет, не кричал, но высмеивания практиковал. Терять лицо же 丢脸 не принято в Китае вот и срабатывало. Но делал это исключительно с детьми 6 класса.\n\nНа моём последнем месте работы мне приходилось видеть как кричат учителя на детей. На старшеньких, не на малышей.\n\nЧто я сам об этом думаю? Крики, да， выравнивали дисциплину. Это факт.",
+      "links": [
+        {
+          "label": "указкой",
+          "url": "https://t.me/laowaiOnChina/640"
+        },
+        {
+          "label": "высмеивания практиковал",
+          "url": "https://t.me/laowaiOnChina/522"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 2863993413,
+      "postUrl": "https://t.me/laowaionchina/1439?single",
+      "source": {
+        "title": "Лаовай про Китай",
+        "handle": "laowaionchina",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/v_d3q7tjDOqzIpel24EIBOdtSPmF-UBNfIeU-5qDvbbgFCg-vloO-XsyKwrIK3ZcD55mpQB4mB84FHiqleXrFcdnSaZ5ndD7sSTTpcaHz5i9Qgg1jrxWxdMCzcr5KWlr6kKPleCAApfVDRdw3thBVhuv0y4qeNQn7KCLUoK3cZe5hlYyPVYGqyGFB71KLfIYODql-c1tiLJ2i4i9MdeIoSDCifXDe1A0XFZsk9_zNxmXC_DmxpTpoQwxhJUYSyUANTrtSYjV75iybiXc-0woGeU0X0Makj3VHJPVf7aBiCADZkQYLGB9lR3-4vJ_-uWsrUiJhrSdlZcXW8fwNJJhTQ.jpg"
+      },
+      "sourceId": "cn:laowaionchina",
+      "sourceCountryCode": "cn",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Xuy_JiL3Du_hCMQopA_0P1bYgXfi6ZnnN-XTf1laef88Mv5WLGSPS9HPQQPHm5o0TxEpNMQUwuAXbwx5QgN-phHyKQw2RelZ_0vrrodLPV0UGBWaEgnJJ6ROiInYal9QOv1c-dEbRsFru2FLiSKJnFIEQ7Kl-mEaAFKujRmaQk0NDkuM7sZqdWw-ylvU0CqQRbhgZEai_6lYJ3i9jEtU3ejol59iRKdBDmBArbUE9Mzz0ZsrOAuBAGk3fM6dgSGcvQvLfL959W0RJ50y3SW7f7ZTvSW_Gd9z6ae-qIqr-8eSLnGk1v_JCOntjjO_MnHxPvCYV4-7FKeOCoVKYOebHA.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/iyK0R-uEzSC-w5qeazTkLGSeta9f_vTR9YEyiwpO-KBNK6XtN2o3HsL9hPDl2Hs1x63biKfhq9VI-Ed95LfdxSh3d3HukL_2f7VhObdlnzY5FJv46smM2-ECyQxE4RBil4e4JLUn4-pyBST9dFha_pGznziD-QXp3waX_W77Nn3EvS9tTvTmts-ue_w1lsYgiEs76TKK2yZwdxUKk53G7TtTaJWENVrs1n7Lz8bBstD89U5BW6YcaQgAFHCr3IMP7lksPio_ZPtxZq5eGE0QuzosKvgKyd7Ee6mATbjB3pHFBgntZlq5nPq4XELKHN5HuDeNPZePZfZHonq6hOiIEg.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/STKN6VrNq8cfwbscKHvWfZFn2mc3S3hHBkzrfSv5qM75UGC-mnbvkDFUelNGI7IvZqGTHD1m-LUH2i-e2JQ5AFcRH28B4W0sCdcoZ3m6e5X61FbNmglmQBTkOKjjSSjF9_ThG_uAq6WFdVxz2Y5SAZCgcgf8puIv1MUuwN5AB7nnQQdJ7y4rVyfAb2cwRl2LhOdUWtuffrnO2XlL5F8-xNh2420Qr-yhfSA0CYDa80EXw0-u7PJocymm8dUm6LITqH5RH1NMB5QPHGDGYBw4W-jRyNvtJMfshrKsYK_1ptT258o1w-PldubCcH5QIQ3H1TlGT14UL00CjbofsT6Diw.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/pzd0Av4AwETN5UUh9Ou-EfkPViqdto7Py5VkMZ_jK5P_04B3dnV-iTSEL_Xt8G0OV5GDAdMTLX2WClhPS9F6gxJ7aQmSMMLI2Wu4zMpZOqyD-AvHNQ65JzgLej6LVkoP01xfTNe-m_OE5eY3fG-QFXTxLAISaoDIeRlW0i3hTst_4VQqTyHCPKQA_9JE6oGMx7nFoxgVvxnGhTdjcUqmrMfqw-WtiPaDDxRZ-OVavsuLGiiYD8rU9ODBMusWUL4jIEY1gZ4JRImi81p8G_odtuTswCWxNzGzR5Hqgq2Pzt8LgX7_pO0F7w1ClXRJvBtre-ZRujarblZFMbojScd3zQ.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/NBzkAee8ZT4w37nRaTwWBHq7ibcEHCb9MNZAnjaamUYv18X5pp3_Zsk84GXxiXpOLFo4zzcLnScq2aj_9x7hVju6sL04P1hs0gn8UIOSjaAufbDVfNn8_S5qJNAwItvu6qLrVc0UkIk_W9O2FFizS-v6Msptz7GHsZ2pXSLoc0lFhTjV_2aaaKSMyvuxJW3FqeGpLqGPpi7KJBtElELUTS3Ca3avnlkeNXbxysVA_1sT1fzmtcANblFut3-Zfzo79W9wO7ZATxPOQHkvgp-VgEyMzYQS9NraZdfQ_MBhTKcjvi7M8XncgTq4dxsjyFH1UCOnWz5CYI2zomJuvU3Idw.jpg"
+        },
+        {
+          "id": "image-6",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/MKhMLhmDVeDMYPzkGqBsLtNfnCLRqkL8mQZvn2GQfneYyPdBMjoPePo2fum0w19PoG2KFbhsUzAkTAiFqBM-aYCDN9qCyVF2-pKwaHXkDznpXGoKk8PDbRmjkp-KK37gbOEhrseKYM5AAYoJuUqm-0pSnxXQAnjklq16vIcobkunbcn0oaYyt2IEBeMQgClErvSpj27HDVBlfGYduHMhehdBcmKeKlM7gcx8-twumsZ-AOQnyhUl4c_x2ebneG6IhBJ6pC-cAxmxG-bSdUCiWdReuKp3Ql4B11r2qKzRecVaVSjcazEYtILiAFhhjrLhP8bL0IyWWGS89j9UTG6B5A.jpg"
+        },
+        {
+          "id": "image-7",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/mYBrvtKIwzrwIIpww9GGOV2uOhXJjOMuGtTPxircLs1oFmH8CMVxdiRqk4N0vKDqK0_qwjj5zd6XyR5Dmk2zDum3mWvSfjrlka3ZwK4u2OvuxkObyWJFqECxFDQMnlycru8-J7fJYq45V_ILcKoX8-cr8mYGf6fPfcAxDa7bKnInxJm5Gme7zauOjpbgwFCsFv1Q-EcRtsVorX-hUws7j9TqzNfeF8zCxV8uV-MVJEsyeB0yRm_8B-7ursMlC0OtDFCq52tvBT7kMj43jn2_fEl-MYfXDdyiavmSFlyxfbarP6av-gkz42UBpPemzGjUwuhiqE3ZpzZipFyOeIMHQQ.jpg"
+        },
+        {
+          "id": "image-8",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/WGuPBgxYLQDOOP_jlZ-8u0EsTVJU7XoqUMMkxbUJqVlNeTqHgNmy2-Ab-EbrCPirmN4fhNV50Qu4fZfSID0odIdfNFnPIFCp8M_kRFpWZljuc8RgHr4MTGWzRdPA58odQ-z8b5xjZHsinN7cLOhVhW-CErHAY_TiJ0CfJSW54EkXPvSYbJRzrzL0Ytu1d9ZxtXRxgjkMqcGxNu3OMqpyB5Xg39YAtuywpZwW7Ab4JkzyAOs3XiZzUWrvftzmdmbPNudg7bX_3Nr_GfI4reUYGW1SUPvNg7HtTP7xo0ze1hDpdIn6TWx289-FyI11M6XHviHvrjByhkJyfTq9Yg1cEQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Орать или не орать на ребёнка?\n\nРанее я приводил переписку из чата родителей-экспатов, живущих в Китае. Там говорили о трудных детях.\n\nТеперь привожу переписку о криках учителей в школах и садах Китая. \n\nПро своего сына скажу, что ни разу не слышал, чтобы именно на него кричали, но что кричали на других детей знаю точно. (На нашего тоже кричали скорее всего, но вероятнее всего без перегибов). \n\nА вот для некоторых детей и их родителей проблема криков стоит очень остро.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:20.267Z",
+      "expiresAt": "2026-05-29T04:34:20.267Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:20.267Z",
+      "tag": "education",
+      "tags": [
+        "education",
+        "news",
+        "news_world"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:20.267Z"
+      }
+    },
+    {
+      "id": 812617735,
+      "postUrl": "https://t.me/hr88/1735?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/uPaGzMhdW0RN_gaSJfz9XsWBBoNY8VBoMFnoOgnrMzGCwCnhOT3mSMf4X5ySx6JFGC9iHH4mXF7nmuyuZlB6apeFtuvbUFCMWKKIarFCejB1cnouQJHgNleAaHl96W7AqCt-MaLZC8Yt2zTBNW7gv4QHdSTh7mGZoE9hFDI3sbseg0nq8y6l_GiYBbCoIO5SQfjLPgUw5gCuSca4TebRB7I4qRIGduyrSBm2eLftuMxXsa5QWUgtDD1T538Jq0ffb65SIEx1XcTKOtjEtUPYMPNYxRoxqgd1s0zfkM--8DVuh-AO25CqxBqwAwx4vb4mrkR1VPNmC_l4KIyBVncCCA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【开已注销车狂飙时速174公里少年涉嫌危驾伤人明面控】\n\n            一名17岁少年因涉嫌连串交通违法行为，将在明天（28日）被控上法庭。他将面临的控状，包括危险驾驶导致他人受伤、不驾驶、拒绝服从警员停车指令和驾驶已注销车辆。       \n     警方今天（27日）发文告表示，涉嫌少年所涉及的其中一起案件，发生在今年1月16日晚上。\n\n            交通警察在巴耶利巴路巡逻时，一辆轿车的司机突然被捕，引发警方逮捕。\n\n            调查显着示，少年在逃逸过程中高速驾驶，在东海岸公园大道（ECP）时速高达174公里，远超该路段90公里限速。\n\n            少年也多次闯红灯及逆向行驶，并撞上多辆自行车停放中的车辆，最终在马林百列撞车后停下。\n\n            少年并弃车逃跑，但最终还是被交通警察逮捕。这起事故导致一名司机及一名15岁受害者受伤。\n\n            警方又发现，涉案车辆属于已注销车辆，还用上伪造的车牌。\n\n            涉案车辆属于已注销车辆，还用上原装车牌。（图：警察部队）\n在他被捕时，警方还在他的车内发现了一枚电子烟和一枚烟弹。卫生科学局初步展开了调查，但由于证据不足，未进一步采取行动。\n\n            此外，警方也指少年曾在2025年1月30日，同意\n\n            调查中，他在发现未上锁车辆内有车钥匙后，将车开走约一小时后才归还。奶奶发现车辆失踪后报警，警方在附近寻找获赠的轿车。另外\n\n            警方今年1月8日在滨海湾金会展中心停车场检查另一辆沙轿车时，也发现少年曾驾驶一辆已注销并悬挂仿牌车牌的车辆。但这辆车与1月16日案件中的车辆不同。\n            针对2025年及2026年另外两起案件，少今年还将包括无照驾驶、使用未投保车辆、默认车主同意首次自用车辆、驾驶注销车辆及展示伪造车牌等管制状\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 2077602601,
+      "postUrl": "https://t.me/hr88/1733?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/dXg7aSSylvW0IWKADnALdSxvbQ61eKVsimR8tZpm4dnKCOf0KTYxBaoqw3TnOdfCH21Jqobv1_yJEHDlhis2GzKJvMkbWlrFRBqnkfnQQxV1gGM8NeJaoo7eHURS0KGTjSWRJ6JieP2j6OwqGo8jBs2vt_G9aVMLpxKNanThMvLqOLRWIJT2lquUh-k_Z-MKkYrovstwVJQKmlocbk6jMTbCDuj7BmcTC5O58aoq1nPM8pt4LSuJWzabUlQYj20tuRiHOYT99mTuvk3-S2WSArQ7OBkI3wH3MJYaiG-uJFFnfQmmbicA8ESAyxVEaa2W8bHXQki7C9XpsQdLoQhwKQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【8K国际】U投首选综合平台|信誉至上 |财富相伴\n东南亚盘总首选权威🔤台🌈🌈🌈🌈 \n\n🌈🌈🌈🌈🌈：8K155.COM\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈⚡\n\n😘😘😘😘😘😘😘😘😘😘😘😘\n\n⚡ 千万域名，百亿大盘 ⚡\n❤不限IP，日提不限提款次数和额度\n❤出款最稳，福利好反水高无上限 \n❤公平公正，电子真人0审核秒出款\n❤全网广告频道上押1⃣0⃣0⃣0⃣万⚡\n\n \n\n  ⚡天选之人： 恭喜大哥仅用300U本金撬动120000U大奖 \n 💰💰 马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U \n\n    \n\n 在8K国际，爆奖从来不是传说！\n这里有海量热门😀😀场馆超高爆率、稳定流畅、极速到账，让每一次点击都充满无限可能！⚡️\n\n官方网址： 8K155.com\n官方客服： @yingtao8k\n官方频道： @vip8k090\n\n\n#8K国际 #8KAPP  #秒速到账 #公平公正",
+      "links": [
+        {
+          "label": "：8K155.COM",
+          "url": "https://8k080.com/"
+        },
+        {
+          "label": "恭喜大哥仅用300U本金撬动120000U大奖",
+          "url": "https://t.me/vip8k090/21"
+        },
+        {
+          "label": "马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U",
+          "url": "https://t.me/vip8k090/24"
+        },
+        {
+          "label": "8K155.com",
+          "url": "https://8K155.com/"
+        },
+        {
+          "label": "@yingtao8k",
+          "url": "https://t.me/yingtao8k"
+        },
+        {
+          "label": "@vip8k090",
+          "url": "https://t.me/vip8k090"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 2866776424,
+      "postUrl": "https://t.me/hr88/1732?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/K10OQZLjBGgeBWuslk0RT56IQ2MpEOpdPOyeb8SDswd8GPWzSX3KKLlsrhu3QjoLdtaTL9AzrqCREwmTIHzEIURfCYUIKZ-1fbpVIjBT5_cxF1NWsWT4LWqLhZj-mHEvIGOjKNhPTBYkQMI4ZUBJvXg-nnb8pr89WlNgRKf2iT0zSeXkmOoMgCPSrePnGFwFaUebvityjLpQ30gjTcqsvRXWV4VdWzXFubC7ues8IUBpgDryGrz-Win_MgS1e-7k2R78-9QhaxRYGp9sc9OPSmyjZYptJ22AFm2OOqXDTd-SuC0HCxcftutNF36SWXObuPlzKg7gEeSqvSdduDVpgg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "👌  评论区抽一名发言者赠送会员。\n\n\n 💬 今日热点播报完毕，愿：世界和平！\n        W i s h   f o r   w o r l d   p e a c e.",
+      "links": [],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 359128043,
+      "postUrl": "https://t.me/hr88/1731?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/qiuOPI2zjLMvmKuCr4YLURlTa4cLnj9iD7PEvfexZ5Ba8TaXRl5IW0Xi6NMOtQ0GWh8qElsYpB4uYHJI317AMGYfy1jH6dfl07oWxldzHlQty5hmhO-jsy8Izoi6DxaFln2lKi4vN9j1PzDDg350jz-bQ5fROU8UqPm89KMjCFJoWK5rJgEZk10Q_ltvHmeKsGm9wfcsqFwSBuJ-4Sc67J57JVdgb0cHDmVd0r8pWemTzfUoFKHBJzzrpaOBbkVmyogQUqyn5z3l6_TFvAbhRSs7QKEYF0DzpIB8o1D6fE7CWnPShcdy5Xc92UUzrzK2V5Kz6FwHbuxrP1Bcvc6Tyw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【彭博社：中国防长董军或连续第二年缺席香格里拉对话会】\n\n            据报道，中国骨骼长董军可能连续第二年缺香主席格里拉对话会。          \n  香格里拉对话会本周五（29日）开始在我国举行，直到周日（31日）。\n\n            社引述消息人士的说法，董军很可能不会出席。中方预计将派中国人民解放军国防大学彭博低调出席。\n\n            消息人士没有说明董军可能缺席的原因，但指出相关安排此前敲定，有可能会在最后一刻出现变化。\n            格里拉对话会主办方英国伦敦国际战略研究所受询时，既香未证实，也未否认，只是表示按每年惯例，邀请了中国官员，并期待接待中方两人。\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 390179698,
+      "postUrl": "https://t.me/hr88/1730?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/IK_45c9Cq6Pu_HFzrA3TTv7omi399XYkp34NiO4OKLBpL8oooVSUWCyTXN3lvMPgjLKZLq8DF9w0P7wa3RhCHDwK9Ub2QTeadCzltxweFBo3cY5PfJhGag0rsFl2ycqBp0Qr0H2nSCH8gftWVw-EemWvHN9jkPedZniTnMtOUcP-BqW3pRE3yOVui3lcc4Qg8SN2yBXu11whiNUEVujzKafjODCJS003qZG5G95r2kbo1J06dx42izov2b9eIhtRP8vH7aLAAmeKLCYbxtN7yHO3-wLql5ATno23PRuUU-lXp_QOFKXsIPQNo-bNe4izxzEH9LfYgZHCoNYoltwC0Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【疑吸毒者聚集引发大火 马祖国母亲勇闯火场救出身障女儿】\n\n            疑因吸毒者聚集在马来西亚砂拉越的空置排屋，意外引发火灾。一名母亲冒险冲入火场，救出19岁身障女儿。所幸火灾导致人命伤亡。     \n     据马国《中国报》报道，该事故于昨天（25日）上午11点左右发生在砂拉越石角RPR第1期18巷。\n\n            火势相信是从一个双层半洋灰木制的排屋开始，随后迅速衰减到约四间排屋。\n\n            据报道，事单位疑似长期空置，但当地居民在事发前曾一度陷入数名怀疑男子的怀疑逃出。不久后该单位便冒出浓烟，因此怀疑那里沦为吸毒者的聚集场所。\n\n            消防：无人人口，起火原因待查\n            事发时，居住在起火单位隔壁排屋的一位女士正在庭院清理地面，并在发现房屋失火后立即冲入屋内，将19岁的身障女儿带离现场逃生。\n\n            她称，火势当时已扩散至楼下，所幸邻居与友人及时援助，抢救回部分财物。\n\n            另一间排屋则完全被烧毁，但屋主当时并不在屋内。\n            当地消防与救援局表示，当局在接获救后便派出12名消救通报员前往现场灌救，起火原因死亡待调查，但目前尚未接获死亡通报。\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 1398404240,
+      "postUrl": "https://t.me/hr88/1729?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/chOxRoRfFJID3hBQAom14lj-q9wio0Nlt0H7Qq1S3Mu9EH9fKu7DI_MrO-HvfKMHaCHvivEelHAjrzFqtTUo5wOoAGJqQ7YTjP2ik7EmETSD0CwvPbnGmIaGasFSYeb0llTnZcR4AoC-eKxVTLee6rV8Vm_T1XHvPBme7aYdI3HE6zYfNED4BzD6rc4GIZc4O8O3LJZllGkS_wBpvqYSWon7qLpsK7f_pfHuIZ2KM3MGxCRbgSwk_tfaPpiYLVd2uKc7rHjsj8e0DiurH6Rggd546qM-RCEoSYNNnFthzBjLLkHYc6Ki5iPL7eNm6KZwhWhsD98IlTWXHTWElxSdsw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【8K国际】U投首选综合平台|信誉至上 |财富相伴\n东南亚盘总首选权威🔤台🌈🌈🌈🌈 \n\n🌈🌈🌈🌈🌈：8K155.COM\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈⚡\n\n😘😘😘😘😘😘😘😘😘😘😘😘\n\n⚡ 千万域名，百亿大盘 ⚡\n❤不限IP，日提不限提款次数和额度\n❤出款最稳，福利好反水高无上限 \n❤公平公正，电子真人0审核秒出款\n❤全网广告频道上押1⃣0⃣0⃣0⃣万⚡\n\n \n\n  ⚡天选之人： 恭喜大哥仅用300U本金撬动120000U大奖 \n 💰💰 马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U \n\n    \n\n 在8K国际，爆奖从来不是传说！\n这里有海量热门😀😀场馆超高爆率、稳定流畅、极速到账，让每一次点击都充满无限可能！⚡️\n\n官方网址： 8K155.com\n官方客服： @yingtao8k\n官方频道： @vip8k090\n\n\n#8K国际 #8KAPP  #秒速到账 #公平公正",
+      "links": [
+        {
+          "label": "：8K155.COM",
+          "url": "https://8k080.com/"
+        },
+        {
+          "label": "恭喜大哥仅用300U本金撬动120000U大奖",
+          "url": "https://t.me/vip8k090/21"
+        },
+        {
+          "label": "马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U",
+          "url": "https://t.me/vip8k090/24"
+        },
+        {
+          "label": "8K155.com",
+          "url": "https://8K155.com/"
+        },
+        {
+          "label": "@yingtao8k",
+          "url": "https://t.me/yingtao8k"
+        },
+        {
+          "label": "@vip8k090",
+          "url": "https://t.me/vip8k090"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 4186308113,
+      "postUrl": "https://t.me/hr88/1728?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/eooYQyzUt9H2kqdK3ZDO5ogSKFmi_C8wOUpyoht9xtFui-J8RsBTQCmsqpQfWKFvZ0f3L0juikKHA5nlDKVQnHy76RPfvlrHE1GV12slTLaqAsuYrmM9_Izc0-mrv_MuTs7LYFfvD8ojek2RVxWa_PG9O21isHhvg6cZMfX2CKfWKX01NKZMGuZl1-oPbZ79vHcTaK0QXFoKbIB9DET8xvIjyKsjs7VRkcappN-H_FZnuvGMc2XYxtYKg0fkuNmrtQOQY_lsJdJ_ZrZmJARCk-hshDzbUR7HKBJEwgyJtF-eLrLjWt5eNwjtAjmrSuHabLp0hImKvmgl5U_8yNE7-g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【中欧铁路推高陆运需求 哈萨克斯坦砸百亿元】\n\n              伊朗扰乱传统海运航线，哈萨克斯坦正加强铁路和物流基础设施建设，因中国与战争欧洲之间急需增长的陆路货运需求。          \n  彭博社报道，哈萨克斯坦国家铁路公司（哈萨克斯坦铁米尔·佐利）表示，由于霍尔木兹海峡局势不稳定，加上中东冲突升级，越来越多的中国客户开始转向选择陆路运输，而不是海运，因为陆运的可靠性和运输时间更加稳定。\n\n              其中，中国连接与欧洲的“中间走廊”跨里海铁路路线，正迅速成为重要的贸易通道。这条铁路全长超过4250公里，途经哈萨克斯坦、阿塞拜疆、格鲁吉亚和土耳其等多个国家，其中哈萨克斯坦占据了这条路段。\n\n              自俄罗斯2022年出兵乌克兰后，不少企业开始注意到经过俄罗斯的铁路路线，进一步推动中间货运量大增。英国安本投资（Aberdeen Investments）数据显示，公路路线的货运量自已增长约十倍。\n\n              哈萨克斯坦已将运输物流列为国家战略重点，并将国家铁路公司打造为关键中转运营商。哈萨克斯坦计划到2030年前，在铁路与物流基础设施上投资100亿美元（约128亿新元），目前已投入约一半资金。\n\n              哈萨克斯坦今年将建设900公里铁路，包括新增连接中国的阿亚古兹－巴赫特铁路线路。这将成为哈萨克斯坦与中国之间第三个铁路边境口岸。项目完成后，中哈铁路运输能力预计目前约5500万吨，到2030年将提高1亿吨。\n\n              同时，中间走廊拓展速度也持续加快。今年第一季度，该线路已运输约173列货运列车，每列装载有55个集装箱。哈萨克斯坦目标是全年运营600列货运列车，未来数量还可能进一步增加67%。\n\n              针对缓解里海运输船只不足的问题，哈萨克斯坦也计划投入超过1亿美元（约1.28亿新元）购买六艘货船。\n\n              此外，哈萨克斯坦还积极拓展中国与欧洲之间的货运终端网络，并计划在今年底前购入首架货运飞机，进一步发展航空货运业务。\n              尽管哈萨克斯坦也涉及连接俄罗斯与伊朗的“边境走廊”运输线路，但公司指出，近期相关运输量已有所下降。不过，今年以来哈萨克斯坦往返中国与伊朗的集装箱运输量已增至约4600个，较去年增长超过四倍，预计未来还将继续增加。\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 2009190878,
+      "postUrl": "https://t.me/hr88/1727?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/j9--3y-Ji_6fH-6xWKb_cO8ikT8L3BoDTWDHIx7O9vE2szkd0SfJ6rtLAl6kfHywhHxhE07lnnPexSq80sfsFWmx0q4eQb9tEyDdf-xtY5D6qM8OIFaNuigvNtxifiAEAXxTqnDQ43ITEo4czSs3rtSEyB0fFQVkcT26kt_mC7IXoUFwMnA_UoGOtEBDG34hrtJo6PZ-IxXd_jwmu1cH-R06yb5yo82QoA4B3qToMl50NMmToyKaZRa6Yv7yxDEojJCeSmtiRNA3xP6qe9X8VTVQ0qyYRVgZCDxbrW4Dswld0tZrnv7w2_rTi0sZLUFoKDo8HH11EirCpLCtt6UbIg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【8K国际】U投首选综合平台|信誉至上 |财富相伴\n东南亚盘总首选权威🔤台🌈🌈🌈🌈 \n\n🌈🌈🌈🌈🌈：8K155.COM\n\n⚡⚡⚡⚡⚡⚡⚡⚡⚡\n\n🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈⚡\n\n😘😘😘😘😘😘😘😘😘😘😘😘\n\n⚡ 千万域名，百亿大盘 ⚡\n❤不限IP，日提不限提款次数和额度\n❤出款最稳，福利好反水高无上限 \n❤公平公正，电子真人0审核秒出款\n❤全网广告频道上押1⃣0⃣0⃣0⃣万⚡\n\n \n\n  ⚡天选之人： 恭喜大哥仅用300U本金撬动120000U大奖 \n 💰💰 马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U \n\n    \n\n 在8K国际，爆奖从来不是传说！\n这里有海量热门😀😀场馆超高爆率、稳定流畅、极速到账，让每一次点击都充满无限可能！⚡️\n\n官方网址： 8K155.com\n官方客服： @yingtao8k\n官方频道： @vip8k090\n\n\n#8K国际 #8KAPP  #秒速到账 #公平公正",
+      "links": [
+        {
+          "label": "：8K155.COM",
+          "url": "https://8k080.com/"
+        },
+        {
+          "label": "恭喜大哥仅用300U本金撬动120000U大奖",
+          "url": "https://t.me/vip8k090/21"
+        },
+        {
+          "label": "马到成功：小投入引爆大惊喜，恭喜大哥投注额仅500狂拦173425 成功提款170000U",
+          "url": "https://t.me/vip8k090/24"
+        },
+        {
+          "label": "8K155.com",
+          "url": "https://8K155.com/"
+        },
+        {
+          "label": "@yingtao8k",
+          "url": "https://t.me/yingtao8k"
+        },
+        {
+          "label": "@vip8k090",
+          "url": "https://t.me/vip8k090"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 2220592471,
+      "postUrl": "https://t.me/hr88/1726?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/kdeb2bxAQOtF3YZMYJyssv3bCD3aznY0jvSR9y-8MF9Nbt2viOVrN-7D5svWBKwCM1gGMpEnJFixmijEfEjI-2hFdtw35Uq9xg0AYmDHwzjKrpwt4J1vG_cXMtDK8LOjDqfLu9mnvwuD5VV0FPh7F0xhmQGvhEzBFUnkN5_DRcvAiFTECfWxcZ6OzifT9xSXpMNXP6-OYgweIrRDSgB4mlNnSSh6SaM5KXM9dDZzTQYp1l4iAeFQL3FwK6SCsmm-b5cnrubU82R5c1Z9QgObA7aMA1BSvrJXuYpU0He9oWcc0AwU1Gu58flFwZlsUaRjS8NUl6QN7KDIN5DGhYK3ww.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "世界杯官方推单红单一起发财\n💗进群 https://t.me/+ffWim8v9peQ1NTdl\n\n🎮电子娱乐双响炮 💸百家乐救援金\n💋专享VIP晋级大礼+周周红包🧧\n❤️推单福利群❤️注册送彩金\n⚠️认准官方群组不丢失  @kytyky222\n⚠️海外IP限制，需要开VPN挂中国/香港ip进入注册 \n⚠️国内正常打开 复制到谷歌/火狐/系统浏览器\n☎️注册后请联系福利客服 @limmmm1993 申请活动和福利",
+      "links": [
+        {
+          "label": "https://t.me/+ffWim8v9peQ1NTdl",
+          "url": "https://t.me/+ffWim8v9peQ1NTdl"
+        },
+        {
+          "label": "🎮电子娱乐双响炮 💸百家乐救援金",
+          "url": "https://t.me/wdlszq"
+        },
+        {
+          "label": "💋专享VIP晋级大礼+周周红包🧧",
+          "url": "https://t.me/wdlszq"
+        },
+        {
+          "label": "❤️推单福利群❤️注册送彩金",
+          "url": "https://t.me/wdlszq"
+        },
+        {
+          "label": "@kytyky222",
+          "url": "https://t.me/kytyky222"
+        },
+        {
+          "label": "@limmmm1993",
+          "url": "https://t.me/limmmm1993"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 2291539396,
+      "postUrl": "https://t.me/hr88/1725?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/qTOV0I9Od-EMyV_9gawpXxigQwfKrBlphAnmalVu4qiu67scdnJ4IQbbi3DNTBMoc36CfWr064FBk1M2TryBbGPPwSIzJ4R1mKjYEipefrH-6jDL84kNApzBQ3rIC17mFxeRzdTT7xlg-0jAat2eeDFhqOu27dFz_ZyRgqkLXZdMcF6b17M2ADBeJaw_ZoNDdtXjOdGSKUZmU-J1oade2jkP0jJkEw5ow2mEVqGwSkbHP8w-FCiu4CzxhV6PNbZO3u2wW-c6nr1s3z5_6nTRW1idfSlTw3O_7CFCK3-7PjweJxMcvUhTu0X_vDIpy3ZsuPcJtr9Z3aqVqtKsztMNKQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【逛马国夜市遭遇11岁男童言语性骚扰女子愤怒发文分享】\n\n            一名马来西亚女子在逛夜市时，突然被一名约11岁的男童以无礼不当的言语骚扰。该女子对此又愤怒又不拘一格，但选择以沉默回应，瞪视男童。事后，她在社交媒体分享这件事，引发网民关注。         \n   马国《星洲日报》报道，一名马国女子在社交媒体分享，近当天她参加了某课程后，到达吉隆坡班底达南逛夜市。在排队买批萨时，突然有一班儿童出现在她面前。\n\n            该女子称：“他们大多数是9岁或10岁，但有一个男童童年约11至12岁，他突然向我提出‘待会回去’。” \n\n            男童的言语骚扰令她非常惊慌。她表示，她对男童突兀又无礼的言语感到不。她以沉默回应，面无地瞪视该男童，他适可而止。\n\n            谁料，该男童却转向其他参加者高声说话，说出甚至有意义的话语，令女子心中恍然又非。\n\n            她回忆道：“我在挑选希望萨时，男童对伙伴们说，”你们看看，觉得能得到吗？一定能得到吧。得到了，一定很美味。'” \n\n            该女子认为，男童因比较年长，试图向其他孩童展示“老大做派”，却不知言行不当，已导致他人不一致。事发时，其他孩童也没有回应男童，而正在购买食物的孩童责备了他。\n\n            网民对该事件的反应及女子的回复\n            部分网民在评论区提出，作为社会一员及解决方案，该女子有责任回复男童的言行，让他知道自己的错误。也有网民指出，大人的沉默回应，可能会让男童更自以为是，甚至意识不到自己的行为已经越界。\n\n            不过，女子留言回复表示，她不是男童的父母，没有义务处理清这个孩子的问题，况且她当时疲倦疲惫的状态，便没有作声。 \n\n            女子的贴文引起了共鸣，网民留言回应，指因为如今小部分孩童对成年人口出狂言，表示令人感到不满的污言秽语。 \n            一名网民表示：“年轻的小小已经不懂礼貌，长大了不知道会变成什么样子，令人担忧啊。”\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 2255263509,
+      "postUrl": "https://t.me/hr88/1724?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/Dm1IeNYXZND4Jlm9g-dkmN7m-yUyzenYIdsz5jk74eYfwsWnyYBgd0qQpEHX9iYswETe5VUk3YE7j4lWE2wThsvprCZuL8VWdBYDjMMYGRc9Y9HXTHNQ6Jo_zHNxQ0-U7acFJMUavV0di7kEumq_zwHFYobjWEqk_-2Eno8uuhUB8csoLSaHK7SjpeF6CukmGg7DYbz2iMdTEwlPuJ0lbP2LLFuAB4aVMU711HJn6cDKeR1I8xXVQGGrZ2LhMb_kxlIy4DHasWbExWphF3D69IjFOygWSaaN2lsA3TuqBOJ93GL3QbsykK3kyAegELn8nYo6ifOKI-UhXXWdH0i4Lg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【割双眼皮后无法闭眼江苏女子发帖骂整形机构被判违约金】\n\n           中国江苏一名女子割双眼皮后无法闭眼，被鉴定为九级伤残。整容机构老板因非法行医被判刑，双方并解后，因女子在社媒发布侮辱内容，将她告上法庭指控。           \n据中国《封面新闻》报道，王丽（化名）是在2020年在孟某芳开办的整形机构割双眼皮。\n\n           她在宿舍当晚出现眼睛疼痛、眼皮外翻以及眼压异常偏高的情况，并被送往医院接受治疗。\n\n           王丽曾联系孟某芳，但称“过两天了”，此后不再理会。\n\n           王丽过后到医院检查，发现因眼睑手术失误，她需多次手术修复。\n\n           她在阿拉巴马州曾将全部送往医院求诊。检查，她面临眼睑无法与泪腺异常等情况，并被鉴定为九伤残\n\n           非法行医被判拘役 双方签和解协议\n           民间方面，法院判孟某芳赔偿王丽36万2000元（约6万8164新元）及退还手术费1万2000元（约2259新元）。\n\n           在判处死刑前，孟某芳向王丽寻求谅解，并同意了和解协议。\n\n           王丽共收到孟某芳85万人民币（约16万零55新元），并承诺撤回并不再发布相关内容，若违约则需退回40万人民币（约7万5320新元）。\n\n           孟某芳当庭认罪，并获得被害人的谅解，其因非法行医，因而被拘役六个月及3万人民币（约5649新元）罚款。\n\n           网络互撕引发违约诉讼 \n           孟某芳在签署和解协议当日获准取保候审。\n\n           期间，王丽称孟某芳在社交媒体平台发布侮辱信息，并污蔑与侮辱骂王丽及其母亲和哥哥。\n\n           丽的嫂子同时在社交媒体平台上进行回击，发布了孟某芳非法行医的内容。孟某芳因此认定王丽退诉，并起诉要求其还40万人民币（约7万5320新元）。\n\n           报道指出，经过一、二审后，法院今年1月认定王丽违约，酌情判其返还20万人民币（约3万7660新元）。\n\n           法院二审判决书也指，王丽期间也接受了媒体采访，因此构成违约。\n\n           王丽因不服评分，向当地检察院申请监督。\n\n           检察院调查认为，涉事账号发布内容均与王丽本人直接相关，因此认定极有可能是王丽发布的，并驳回了她的请求监督。\n           王丽称，她目前已向法院提起自诉。\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 3926819330,
+      "postUrl": "https://t.me/hr88/1723?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/gEQ_njC73k1AWr-hDYo8hlxLKM8GpD_StUoyAacvzw4a8WJ9LRMTuc3lXqCReAZYDluD7mN4jv-kPfFyxdLCVLbm9eIlTYpogkkX8r0hdICpGoZlEZAISrA2K9LekzcyVJvE_exHfxY0wdI0fW1kfbOP5Keodoq7eAQ_VtepvcHp0NrOkTtaEG7Q_egbMwVK9j17lJQYlzIkjrU3ZmhFUthzKSeYnKSn6r5nAUhL_UpoTGlML7NDsS7oV34CDkq7jlvJeAO8t17gjvtbgVpeF1mDGVuJ9OI7xszgIaqKau28p9VRO-Q8FFdZoW934pGlnrjv6psBGP5RQiL5mCU82g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【中国南方暴雨成灾 重庆至少9死11人失踪】\n\n           中国中南部多个省份持续疫情，目前大雨已在重庆夺走了至少九条性命，还有11人下落不明。国家再紧急拨款1亿6000万人民币，约3000万新元，援助5个省份开展救灾工作。         \n 中国各地连日暴雨成灾。重庆多个地区暴发山洪和土崩，2000多人被紧急广播。当局出动多台土机挖土，在山泥倾泻现场展开搜救。\n\n           昨天，当地水灾死亡人数已增加到九人，尚有11人失踪。\n\n           江西省婺源县也遭遇灾情，到处一片汪洋，约220人参与洪家园。\n\n           人员出动橡皮艇援助民众疏散救援。\n\n           当地气象部门周一发布最高级别的暴雨红色预警。\n\n           在湖北省孝感市，洪水导致桥梁陷害。\n\n           画面显示一辆汽车瞬间坠入湍急河流后被冲走。\n           当地媒体报道，这辆汽车当时发生故障，无法及时倒车，车主在陷入困境之前已经发生了严重的事故。\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    },
+    {
+      "id": 1327880955,
+      "postUrl": "https://t.me/hr88/1722?single",
+      "source": {
+        "title": "华人事件焦点 · HR88",
+        "handle": "hr88",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/o7nz3UOWQ_H8AJiQdiiAI7HOhYwEhD9dsG2m5yoRpyammD6HmGBTJKqrq2K_i0MGl3zFw1VHpuoqpJ3AHNmRBSbjRO7H_-GWlXtmHeoFK2VixnV4g7L5CLdahJjYI1hQw_vWp9_pFEElfpnRJTiclI_kk_m-iiqe-FWgA87NXVODFwAEsWNjZFcptOheOQRdQ--npSrZFdAC2o9YI-AMqHJtvxoF35MhF6rn6furTNjoQOyTOLKrUeXEayzQBxLs7_1nylGLqQdrB171C8jbiejcc9YG6A0TeLdRVrhyeL_vmOqz2o3XkjYNDBezQQ-lHIKKxY9szlPZXo2-6z0UJw.jpg"
+      },
+      "sourceId": "cn:hr88",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/PtLqzEGp86KpfJmGE6SA2uikSwOysLcyJ_eVXspoaKsv069-IeXeNwIAE9mFBKmZ8CfjQ935f3BrRUIdC9CdcTJZlgDBXzRwmUqhH5iN0MyDwGlSS6kuh32ITvX4LclZODqMtf6mcziY7vBfYeIG_hIvb6zi8aNX5Ffi0ViXWL0lO35mf-lul0oojYkpBB604TO0DlMwnhi0wC1Od8SupCaPPawsxJVL-OrTMddxYtUhMpz4_G4BMroAMP0OySZSZAM9dh76pGGOTDkwGo0yXW4zZB-IBeYYW4PXkHsPemT9CTt-_za0HOEIgrvsuRSqklDpcFl8D20LMu0WIP0tYg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【中国《钓鱼侠》不会游泳仍下河救童主要内容：他救的是我们家】\n\n            中国一名男子在河边钓鱼时，听见孩子哭声后发现有女童落水。尽管自己不会游泳，他仍冒险下水救人，最终成功把女童救起。女童的家人哽咽致谢道：“他救的不仅仅是一个孩子，是我们全家。”         \n  综合《澎湃新闻》和《河北新闻网》报道，这起事件发生在周日（24日）中午，地点位于浙江宁波慈溪前湾新区庵东镇一处河边。\n\n            事发当天，刘胜收好鱼竿，打算在河边钓一会儿黄鳝，突然传来一阵撕心裂肺的小孩哭声。\n\n            他说：“我在那边装点水，发现小女孩在哭，我低头一看，里面有一个小孩。”\n\n            刘胜飞奔冲到岸边，只见狭小的孩童漂在水面上，曼德拉的幅度越来越小，脑袋频频往水里沉，明显已经窒水缺氧、体力耗尽。岸边的姐姐也吓得浑身发抖，只能拼命哭喊，周围空旷无人，孩子们随时会沉入水底。\n\n            生死一线之间，看着孩子渐渐无力的消失，身为父亲的他心头一紧，来不及权衡利弊、来不及思考后果，尽管自己根本不会游泳，脑海里只有最能的念头：不能看着孩子没了，马上救人！\n\n            千钧一发之际，刘胜死死攥紧岸边的铁链，借助铁链一步步滑向水中，向落水孩子靠近。河水瞬间漫过腰腹，当脚下稳稳踩住河床的那一刻，他一把捞起住下坠落的女童，首先向上托举，将女童稳稳送出水面，递到急赶来的女童母亲手中。\n\n            女童经救治后，已脱离危险。女童哽咽着向他致谢：“他救的不仅仅是一个孩子，是我们整个家。”\n\n            刘胜坦言，当时脑子一片空白，赶紧着着救人。“不敢过危不危险，孩子有生命危险，肯定会冲上去。”\n\n            这份善意并非偶然，刘胜来自四川宜宾，目前在匡堰镇的一家企业务工。平日里就热心助人，曾为困难工友积累解难。\n\n            涨粉和万元人民币的现金转账，他没有面对收下，而是把捐款捐给慈善基金会，用到该用的地方。\n            目前，慈溪市公安局已认定刘胜英勇救人的行为为“见义勇为”行为。\n\n「华人事件焦点 · HR88记者 」",
+      "links": [
+        {
+          "label": "HR88记者",
+          "url": "https://t.me/HR88jizhebot"
+        }
+      ],
+      "createdAt": "2026-05-28T04:34:03.636Z",
+      "expiresAt": "2026-05-29T04:34:03.636Z",
+      "ttlHours": 24,
+      "mediaRefreshedAt": "2026-05-28T04:34:03.636Z",
+      "tag": "news",
+      "tags": [
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-05-28T04:34:03.636Z"
+      }
+    }
+  ],
+  "topSources": [
+    {
+      "title": "华人事件焦点 · HR88",
+      "handle": "hr88",
+      "count": 20
+    },
+    {
+      "title": "点亮曝光吧🔍",
+      "handle": "dlbgb",
+      "count": 20
+    },
+    {
+      "title": "Btok News",
+      "handle": "btokmedia",
+      "count": 20
+    },
+    {
+      "title": "Светлана | Китай",
+      "handle": "minenkova_svet",
+      "count": 15
+    },
+    {
+      "title": "全球大事件/安危头条【华人联盟】🐲",
+      "handle": "qqdsj",
+      "count": 14
+    },
+    {
+      "title": "Китай Наизнанку 🇨🇳 Алексей Райсих",
+      "handle": "chinabackdoor",
+      "count": 10
+    },
+    {
+      "title": "东南亚大事件",
+      "handle": "bgbg",
+      "count": 10
+    },
+    {
+      "title": "Лаовай про Китай",
+      "handle": "laowaionchina",
+      "count": 8
+    },
+    {
+      "title": "东南亚黑暗大事件",
+      "handle": "dny_hadsj",
+      "count": 7
+    },
+    {
+      "title": "全网东南亚曝光社 &lt;热搜吃瓜大事件&gt;",
+      "handle": "goz8888",
+      "count": 4
+    }
+  ],
+  "keywords": [
+    {
+      "value": "8k国际",
+      "count": 10
+    },
+    {
+      "value": "公平公正",
+      "count": 10
+    },
+    {
+      "value": "hr88记者",
+      "count": 8
+    },
+    {
+      "value": "очень",
+      "count": 8
+    },
+    {
+      "value": "华人事件焦点",
+      "count": 8
+    },
+    {
+      "value": "dgvisa",
+      "count": 7
+    },
+    {
+      "value": "官方频道",
+      "count": 7
+    },
+    {
+      "value": "8k155",
+      "count": 6
+    },
+    {
+      "value": "меня",
+      "count": 6
+    },
+    {
+      "value": "不限ip",
+      "count": 6
+    },
+    {
+      "value": "8kapp",
+      "count": 5
+    },
+    {
+      "value": "u投首选综合平台",
+      "count": 5
+    },
+    {
+      "value": "vip8k090",
+      "count": 5
+    },
+    {
+      "value": "yingtao8k",
+      "count": 5
+    },
+    {
+      "value": "есть",
+      "count": 5
+    },
+    {
+      "value": "сегодня",
+      "count": 5
+    },
+    {
+      "value": "东南亚盘总首选权威",
+      "count": 5
+    },
+    {
+      "value": "信誉至上",
+      "count": 5
+    }
+  ]
+}
