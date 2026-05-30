@@ -42,7 +42,6 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
     }
   }
   
-  // Сохраняем историю трендов
   await mkdir(countryDir, { recursive: true });
   
   const allTrends: Record<string, number> = {};
@@ -51,7 +50,9 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
   for (const [hour, wordMap] of hourlyStats) {
     for (const [word, count] of wordMap) {
       allTrends[word] = (allTrends[word] || 0) + count;
-      if (!hourlyHistory[word]) hourlyHistory[word] = [];
+      if (!hourlyHistory[word]) {
+        hourlyHistory[word] = [];
+      }
       hourlyHistory[word].push(count);
     }
   }
@@ -62,7 +63,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
     .map(([word, mentions]) => ({
       word,
       mentions,
-      change: '+0%', // TODO: считать изменение за прошлый период
+      change: '+0%',
       history: hourlyHistory[word]?.slice(-24) || []
     }));
   
