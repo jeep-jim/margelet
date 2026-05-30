@@ -50,10 +50,21 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
   for (const [hour, wordMap] of hourlyStats) {
     for (const [word, count] of wordMap) {
       allTrends[word] = (allTrends[word] || 0) + count;
+      
+      // Диагностика
+      console.log(`DEBUG: word="${word}", hour="${hour}", count=${count}`);
+      console.log(`DEBUG: hourlyHistory[word] before =`, hourlyHistory[word]);
+      
       if (!hourlyHistory[word]) {
         hourlyHistory[word] = [];
       }
+      
+      console.log(`DEBUG: hourlyHistory[word] after init =`, hourlyHistory[word]);
+      console.log(`DEBUG: type of hourlyHistory[word] = ${typeof hourlyHistory[word]}, isArray = ${Array.isArray(hourlyHistory[word])}`);
+      
       hourlyHistory[word].push(count);
+      
+      console.log(`DEBUG: after push, length = ${hourlyHistory[word].length}`);
     }
   }
   
