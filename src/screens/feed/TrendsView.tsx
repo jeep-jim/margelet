@@ -1468,10 +1468,10 @@ function TrendDetail({
           type="button"
           onClick={onToggleFollow}
           className={[
-            "mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black transition hover:opacity-90",
+            "mt-4 inline-flex w-full items-center justify-center gap-2 rounded-2xl border px-4 py-3 text-sm font-black transition hover:opacity-90",
             followed
-              ? "bg-surface-soft text-primary"
-              : "bg-emerald-500 text-white",
+              ? "border-red-500/20 bg-red-500/10 text-red-500"
+              : "border-emerald-500/20 bg-emerald-500/10 text-emerald-500",
           ].join(" ")}
         >
           {followed ? <Check className="h-4 w-4" /> : <Bell className="h-4 w-4" />}
@@ -1647,8 +1647,10 @@ function TrendRow({
                 onToggleFollow();
               }}
               className={[
-                "rounded-2xl px-4 py-3 text-sm font-black transition hover:opacity-90",
-                followed ? "bg-surface-soft text-primary" : "bg-surface-soft text-primary",
+                "rounded-2xl border px-4 py-3 text-sm font-black transition hover:opacity-90",
+                followed
+                  ? "border-red-500/20 bg-red-500/10 text-red-500"
+                  : "border-emerald-500/20 bg-emerald-500/10 text-emerald-500",
               ].join(" ")}
             >
               {followed ? copy.unsubscribe : copy.follow}
@@ -1749,7 +1751,7 @@ export function TrendsView({
   const visibleCategories = categoriesExpanded ? categories : categories.slice(0, 5);
   const visibleFollowedTopics = followedTopicsExpanded
     ? followedTopics
-    : followedTopics.slice(0, 3);
+    : followedTopics.slice(0, 2);
 
   const categoryTrends = useMemo(() => {
     const demo = CATEGORY_TOPICS[selectedCategory] || [];
@@ -1906,7 +1908,7 @@ export function TrendsView({
               {copy.myTopics}
             </div>
 
-            {followedTopics.length > 3 ? (
+            {followedTopics.length > 2 ? (
               <button
                 type="button"
                 onClick={() => setFollowedTopicsExpanded((prev) => !prev)}
@@ -1926,10 +1928,9 @@ export function TrendsView({
 
           <div
             className={[
-              "flex gap-2",
               followedTopicsExpanded
-                ? "flex-wrap"
-                : "overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+                ? "grid grid-cols-1 gap-2 sm:grid-cols-2"
+                : "flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
             ].join(" ")}
           >
             {visibleFollowedTopics.map((topic) => {
@@ -1940,7 +1941,7 @@ export function TrendsView({
               return (
                 <div
                   key={topic}
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-soft bg-surface-soft py-1 pl-2 pr-1.5 text-xs font-bold text-primary"
+                  className="inline-flex min-w-0 items-center gap-2 rounded-full border border-soft bg-surface-soft py-1 pl-2 pr-1.5 text-xs font-bold text-primary"
                 >
                   {trend?.topSources?.length ? <SourceDots sources={trend.topSources} /> : <span>🔥</span>}
                   <span className="max-w-[150px] truncate">{topic}</span>
