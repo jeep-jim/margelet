@@ -1,117 +1,26 @@
-import { ChevronDown, ExternalLink, MoreVertical } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { ExternalLink, MoreVertical } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import type { FeedCardProps } from "./feed.types";
 import { FeedMoreMenu } from "./FeedMoreMenu";
 import { FeedMediaCard } from "./FeedMediaCard";
 import { FeedSourceHeader } from "./FeedSourceHeader";
-import { FeedTagMenu } from "./FeedTagMenu";
 import { FeedTextCard } from "./FeedTextCard";
 import { ExpandableFeedText } from "./ExpandableText";
 import {
-  getDisplayTagMeta,
   getDisplayText,
   hasAudioLikeMedia,
   hasVisualMedia,
 } from "./feed.utils";
+import { PostAttentionChips } from "./PostAttentionChips";
 
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 
-function TagChips({
-  primaryTag,
-  secondaryTags,
-  locale,
-}: {
-  primaryTag: string;
-  secondaryTags: string[];
-  locale: FeedCardProps["locale"];
-}) {
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [anchorRect, setAnchorRect] = useState<{ top: number; left: number; width: number } | null>(null);
 
-  const allTags = useMemo(() => [primaryTag, ...secondaryTags], [primaryTag, secondaryTags]);
-  const extraCount = Math.max(0, allTags.length - 1);
-  const isExpandable = extraCount > 0;
+type FeedCardRuntimeProps = FeedCardProps & {
+  searchQuery?: string;
+};
 
-  const TITLE = {
-    ru: "Теги канала",
-    ua: "Теги каналу",
-    us: "Channel tags",
-    in: "Channel tags",
-    ir: "برچسب‌های کانال",
-    tr: "Kanal etiketleri",
-    br: "Tags do canal",
-    kz: "Арна тегтері",
-    uz: "Kanal teglari",
-    ae: "وسوم القناة",
-    eg: "وسوم القناة",
-    pk: "Channel tags",
-    id: "Tag channel",
-    mx: "Etiquetas del canal",
-    sa: "وسوم القناة",
-    es: "Etiquetas del canal",
-    it: "Tag del canale",
-    fr: "Tags de la chaîne",
-    de: "Kanal-Tags",
-    ar: "Etiquetas del canal",
-    co: "Etiquetas del canal",
-    za: "Channel tags",
-    ng: "Channel tags",
-    cn: "频道标签",
-    my: "Tag saluran",
-  } as const;
-
-  const menuTitle = TITLE[locale] ?? TITLE.us;
-
-  if (!isExpandable) {
-    return (
-      <div className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[11px] font-medium text-primary">
-        <span className="truncate">{primaryTag}</span>
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <button
-        ref={triggerRef}
-        type="button"
-        onClick={(event) => {
-          event.stopPropagation();
-
-          if (isOpen) {
-            setIsOpen(false);
-            return;
-          }
-
-          const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
-          setAnchorRect({
-            top: rect.top,
-            left: rect.left,
-            width: rect.width,
-          });
-          setIsOpen(true);
-        }}
-        className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[11px] font-medium text-primary transition hover:bg-app"
-      >
-        <span className="truncate">{primaryTag}</span>
-        <span className="shrink-0 text-secondary">+{extraCount}</span>
-        <ChevronDown className="h-3.5 w-3.5 shrink-0 text-secondary" />
-      </button>
-
-      {isOpen ? (
-        <FeedTagMenu
-          tags={allTags}
-          anchorRect={anchorRect}
-          onRequestClose={() => setIsOpen(false)}
-          title={menuTitle}
-        />
-      ) : null}
-    </>
-  );
-}
-
-export function FeedCard(props: FeedCardProps) {
+export function FeedCard(props: FeedCardRuntimeProps) {
   const {
     post,
     locale,
@@ -124,6 +33,7 @@ export function FeedCard(props: FeedCardProps) {
     onOpen,
     onOpenCreator,
     onSeen,
+    searchQuery = "",
   } = props;
 
   const COPY = {
@@ -159,7 +69,6 @@ export function FeedCard(props: FeedCardProps) {
   const displayText = getDisplayText(post);
   const showVisualMedia = hasVisualMedia(post);
   const hasAudioOrFiles = hasAudioLikeMedia(post);
-  const { primary: primaryTag, secondary: secondaryTags } = getDisplayTagMeta(post, locale);
 
   const cardRef = useRef<HTMLElement | null>(null);
   const seenReportedRef = useRef(false);
@@ -282,7 +191,7 @@ export function FeedCard(props: FeedCardProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
-                      <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} locale={locale} />
+                      <PostAttentionChips post={post} searchQuery={searchQuery} />
                     </div>
 
                     {expanded ? (
@@ -317,7 +226,7 @@ export function FeedCard(props: FeedCardProps) {
             <div className="px-4 py-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
-                  <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} locale={locale} />
+                  <PostAttentionChips post={post} searchQuery={searchQuery} />
                 </div>
 
                 <button
@@ -342,6 +251,7 @@ export function FeedCard(props: FeedCardProps) {
           liked={false}
           onToggleLike={() => {}}
           onOpen={openPostSafely}
+          searchQuery={searchQuery}
         />
       ) : (
         <FeedTextCard
@@ -350,6 +260,7 @@ export function FeedCard(props: FeedCardProps) {
           liked={false}
           onToggleLike={() => {}}
           onOpen={openPostSafely}
+          searchQuery={searchQuery}
         />
       )}
     </article>

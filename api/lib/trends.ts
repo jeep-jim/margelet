@@ -281,8 +281,16 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       };
     })
     .sort((a, b) => {
-      const scoreA = a.momentum * 10 + a.mentions + a.sourceCount * 5;
-      const scoreB = b.momentum * 10 + b.mentions + b.sourceCount * 5;
+      const scoreA =
+        a.mentions +
+        Math.abs(a.momentum) * 100 +
+        a.sourceCount * 50;
+
+      const scoreB =
+        b.mentions +
+        Math.abs(b.momentum) * 100 +
+        b.sourceCount * 50;
+
       return scoreB - scoreA;
     })
     .slice(0, 100);

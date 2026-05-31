@@ -1284,11 +1284,11 @@ export function FeedScreen({
         />
       ) : null}
 
-      {!tagsOpen && !hasSubscriptions ? (
+      {!tagsOpen && feedSettings.mediaMode !== "trends" && !hasSubscriptions ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
       ) : null}
 
-      {!tagsOpen && hasSubscriptions && hasBubbles ? (
+      {!tagsOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && hasBubbles ? (
         <SubscriptionsBar
           items={subscriptionBubbles}
           onOpen={(handle) => {
@@ -1329,7 +1329,7 @@ export function FeedScreen({
         />        
       ) : null}
 
-      {!tagsOpen && hasSubscriptions && !hasBubbles ? (
+      {!tagsOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && !hasBubbles ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
       ) : null}
 
@@ -1379,7 +1379,7 @@ export function FeedScreen({
 
       <div className="mx-auto w-full max-w-[570px]">
         {feedSettings.mediaMode === 'trends' ? (
-          <TrendsView countryCode={feedSettings.countries[0] || locale} />
+          <TrendsView countryCode={feedSettings.countries[0] || locale} locale={locale} />
         ) : (
           visiblePosts.slice(0, renderCount).map((post) => {
             const ownerTelegramId = post.addedBy?.telegramId ?? null;
@@ -1400,6 +1400,7 @@ export function FeedScreen({
               >
                 <FeedCard
                   post={post}
+                  searchQuery={searchQuery}
                   locale={locale}
                   isOwner={isOwner}
                   isAdmin={isAdmin}

@@ -1,19 +1,16 @@
 import {
-  ChevronDown,
   ExternalLink,
   FileText,
   ImageIcon,
   Music4,
   Play,
 } from "lucide-react";
-import { useMemo, useRef, useState } from "react";
 import type { IngestedPost, Locale } from "../../types/app";
 import {
   getAudioMedia,
-  getDisplayTagMeta,
   getFileMedia,
 } from "./feed.utils";
-import { FeedTagMenu } from "./FeedTagMenu";
+import { PostAttentionChips } from "./PostAttentionChips";
 
 function getMediaBadge(post: IngestedPost, locale: Locale) {
   const COPY = {
@@ -490,111 +487,20 @@ function AudioPreview({
   );
 }
 
-function TagChips({
-  primaryTag,
-  secondaryTags,
-  locale,
-}: {
-  primaryTag: string;
-  secondaryTags: string[];
-  locale: Locale;
-}) {
-  const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
-  const [anchorRect, setAnchorRect] = useState<{ top: number; left: number; width: number } | null>(null);
 
-  const allTags = useMemo(() => [primaryTag, ...secondaryTags], [primaryTag, secondaryTags]);
-  const extraCount = Math.max(0, allTags.length - 1);
-  const isExpandable = extraCount > 0;
-
-  const TITLE = {
-    us: "Channel tags",
-    ru: "Теги канала",
-    ua: "Теги каналу",
-    in: "Channel tags",
-    ir: "برچسب‌های کانال",
-    tr: "Kanal etiketleri",
-    br: "Tags do canal",
-    kz: "Арна тегтері",
-    uz: "Kanal teglari",
-    ae: "وسوم القناة",
-    eg: "وسوم القناة",
-    pk: "Channel tags",
-    id: "Tag channel",
-    mx: "Etiquetas del canal",
-    sa: "وسوم القناة",
-    es: "Etiquetas del canal",
-    it: "Tag del canale",
-    fr: "Tags de la chaîne",
-    de: "Kanal-Tags",
-    ar: "Etiquetas del canal",
-    co: "Etiquetas del canal",
-    za: "Channel tags",
-    ng: "Channel tags",
-    cn: "频道标签",
-    my: "Tag saluran",
-  } as const;
-
-  const menuTitle = TITLE[locale] ?? TITLE.us;
-
-  if (!isExpandable) {
-    return (
-      <div className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[11px] font-medium text-primary">
-        <span className="truncate">{primaryTag}</span>
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <button
-        ref={triggerRef}
-        type="button"
-        onClick={(event) => {
-          event.stopPropagation();
-
-          if (isOpen) {
-            setIsOpen(false);
-            return;
-          }
-
-          const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
-          setAnchorRect({
-            top: rect.top,
-            left: rect.left,
-            width: rect.width,
-          });
-          setIsOpen(true);
-        }}
-        className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[11px] font-medium text-primary transition hover:bg-app"
-      >
-        <span className="truncate">{primaryTag}</span>
-        <span className="shrink-0 text-secondary">+{extraCount}</span>
-        <ChevronDown className="h-3.5 w-3.5 shrink-0 text-secondary" />
-      </button>
-
-      {isOpen ? (
-        <FeedTagMenu
-          tags={allTags}
-          anchorRect={anchorRect}
-          onRequestClose={() => setIsOpen(false)}
-          title={menuTitle}
-        />
-      ) : null}
-    </>
-  );
-}
 
 export function FeedTextCard({
   locale,
   post,
   onOpen,
+  searchQuery = "",
 }: {
   locale: Locale;
   post: IngestedPost;
   liked: boolean;
   onToggleLike: () => void;
   onOpen: () => void;
+  searchQuery?: string;
 }) {
   const COPY = {
     us: { read: "Read" },
@@ -627,7 +533,6 @@ export function FeedTextCard({
   const copy = COPY[locale] ?? COPY.us;
   const displayText = (post.text || "").trim();
   const mediaBadge = getMediaBadge(post, locale);
-  const { primary: primaryTag, secondary: secondaryTags } = getDisplayTagMeta(post, locale);
 
   return (
     <div className="px-4 pb-4 pt-3">
@@ -670,7 +575,7 @@ export function FeedTextCard({
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <TagChips primaryTag={primaryTag} secondaryTags={secondaryTags} locale={locale} />
+          <PostAttentionChips post={post} searchQuery={searchQuery} />
         </div>
 
         <button
