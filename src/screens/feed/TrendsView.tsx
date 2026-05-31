@@ -1815,7 +1815,7 @@ export function TrendsView({
   }
 
   return (
-    <div className="mx-auto max-w-[570px] px-4 py-3">
+    <div className="mx-auto max-w-[570px] px-4 pb-36 pt-3">
       <form
         className="relative mb-3"
         onSubmit={(event) => event.preventDefault()}

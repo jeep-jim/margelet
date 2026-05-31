@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, TrendingDown, TrendingUp } from "lucide-react";
 import type { SiteLocale } from "../lib/locales";
 import { SITE_LOCALES } from "../lib/locales";
 import { Button } from "../components/ui/Button";
@@ -343,63 +343,172 @@ function getSortedLocales() {
   return sorted;
 }
 
-// Компонент предпросмотра трендов
+type IntroTrend = {
+  word?: string;
+  topic?: string;
+  mentions: number;
+  momentum?: number;
+  change?: string;
+};
+
+const INTRO_FALLBACK_TRENDS: IntroTrend[] = [
+  { topic: "Bitcoin ETF", mentions: 12500, momentum: 178 },
+  { topic: "OpenAI", mentions: 7600, momentum: 68 },
+  { topic: "Погода Москва сегодня", mentions: 9200, momentum: -9 },
+  { topic: "Спартак", mentions: 6100, momentum: 42 },
+  { topic: "Tesla", mentions: 214000, momentum: -214 },
+  { topic: "NVIDIA", mentions: 6900, momentum: 84 },
+  { topic: "Telegram Premium", mentions: 5300, momentum: 31 },
+  { topic: "Маркетплейсы", mentions: 9300, momentum: 64 },
+];
+
+const INTRO_BAD_TOPICS = new Set([
+  "max",
+  "чтобы",
+  "россии",
+  "который",
+  "время",
+  "через",
+  "больше",
+  "после",
+  "теперь",
+  "подписаться",
+  "даже",
+  "года",
+  "может",
+  "будут",
+  "могут",
+  "сейчас",
+  "просто",
+]);
+
+function getIntroTrendTitle(trend: IntroTrend) {
+  return String(trend.topic || trend.word || "").trim();
+}
+
+function getIntroMomentum(trend: IntroTrend) {
+  if (typeof trend.momentum === "number") return trend.momentum;
+  const parsed = Number(String(trend.change || "0").replace("%", ""));
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function formatIntroNumber(value: number) {
+  if (value >= 1_000_000) return `${Math.round(value / 100_000) / 10}M`;
+  if (value >= 1_000) return `${Math.round(value / 100) / 10}K`;
+  return String(value);
+}
+
+function isGoodIntroTrend(trend: IntroTrend) {
+  const title = getIntroTrendTitle(trend);
+  if (!title) return false;
+
+  const normalized = title.toLowerCase();
+  if (INTRO_BAD_TOPICS.has(normalized)) return false;
+  if (/^\d+$/.test(normalized)) return false;
+  if (normalized.length < 3) return false;
+
+  return true;
+}
+
+function IntroArrow({ up }: { up: boolean }) {
+  return (
+    <div
+      className={[
+        "grid h-8 w-8 shrink-0 place-items-center rounded-xl",
+        up ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400",
+      ].join(" ")}
+    >
+      {up ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
+    </div>
+  );
+}
+
 function TrendsPreview({ countryCode = "ru" }: { countryCode?: string }) {
-  const [trends, setTrends] = useState<Array<{ word: string; mentions: number; change: string; history: number[] }>>([]);
-  const [loading, setLoading] = useState(true);
+  const [trends, setTrends] = useState<IntroTrend[]>(INTRO_FALLBACK_TRENDS);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+
     async function fetchTrends() {
       try {
         const res = await fetch(`/api/v1?action=trends&country=${countryCode}`);
         const data = await res.json();
-        if (data.ok && data.trends) {
-          setTrends(data.trends.slice(0, 5));
+        const next = Array.isArray(data?.trends)
+          ? data.trends.filter(isGoodIntroTrend).slice(0, 40)
+          : [];
+
+        if (!cancelled && next.length >= 6) {
+          setTrends(next);
+          setOffset(0);
         }
       } catch (err) {
         console.error("Failed to fetch trends", err);
-      } finally {
-        setLoading(false);
       }
     }
+
     fetchTrends();
+
+    return () => {
+      cancelled = true;
+    };
   }, [countryCode]);
 
-  if (loading) {
-    return (
-      <div className="h-48 w-full max-w-[360px] mx-auto rounded-2xl bg-[#1f2c3a] animate-pulse" />
-    );
-  }
+  useEffect(() => {
+    if (trends.length <= 6) return;
 
-  if (trends.length === 0) {
-    return (
-      <div className="h-48 w-full max-w-[360px] mx-auto rounded-2xl bg-[#1f2c3a] flex items-center justify-center text-[#9fb0c0] text-sm">
-        No trends yet
-      </div>
-    );
-  }
+    const timer = window.setInterval(() => {
+      setOffset((prev) => (prev + 1) % trends.length);
+    }, 2300);
+
+    return () => window.clearInterval(timer);
+  }, [trends.length]);
+
+  const visible = Array.from({ length: Math.min(6, trends.length) }, (_, index) =>
+    trends[(offset + index) % trends.length]
+  );
 
   return (
-    <div className="mx-auto w-full max-w-[360px] rounded-2xl bg-gradient-to-br from-[#1f2c3a] to-[#17212b] p-4 border border-[#2b3f53]">
-      <div className="text-xs font-semibold text-[#9fb0c0] mb-3">🔥 TOP TRENDS</div>
-      <div className="space-y-2">
-        {trends.map((trend, idx) => (
-          <div key={trend.word} className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-bold text-[#5e7a99]">#{idx + 1}</span>
-              <span className="text-sm font-medium text-white">{trend.word}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-1 w-12 rounded-full bg-[#2b3f53] overflow-hidden">
+    <div className="mx-auto w-full max-w-[330px]">
+      <div className="border-y border-dashed border-[#5e7a99]/45 py-4">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.div
+            key={offset}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -14 }}
+            transition={{ duration: 0.38, ease: "easeOut" }}
+            className="space-y-3"
+          >
+            {visible.map((trend, index) => {
+              const title = getIntroTrendTitle(trend);
+              const momentum = getIntroMomentum(trend);
+              const isUp = momentum >= 0;
+
+              return (
                 <div
-                  className="h-full rounded-full bg-[#f97316]"
-                  style={{ width: `${Math.min(100, trend.mentions / 30)}%` }}
-                />
-              </div>
-              <span className="text-xs text-[#f97316]">{trend.change}</span>
-            </div>
-          </div>
-        ))}
+                  key={`${title}-${offset}-${index}`}
+                  className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-3 text-left"
+                >
+                  <div className="min-w-0 truncate text-[15px] font-black text-white">
+                    {title}
+                  </div>
+
+                  <div
+                    className={[
+                      "text-right text-sm font-black",
+                      isUp ? "text-emerald-400" : "text-red-400",
+                    ].join(" ")}
+                  >
+                    {formatIntroNumber(trend.mentions)}
+                  </div>
+
+                  <IntroArrow up={isUp} />
+                </div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -429,11 +538,6 @@ export function IntroScreen({
         }}
       >
         <div className="w-full max-w-md">
-          {/* Блок с графиком трендов вместо картинки */}
-          <div className="mb-4 flex justify-center">
-            <TrendsPreview countryCode={locale === "ru" ? "ru" : "us"} />
-          </div>
-
           <div className="mb-5">
             <div className="grid grid-cols-[minmax(84px,0.75fr)_minmax(0,1.25fr)] items-center gap-3 rounded-full border border-[#2b3f53] bg-[#1f2c3a] p-2 pl-5">
               <span className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-semibold text-white/90">
@@ -467,8 +571,8 @@ export function IntroScreen({
           </div>
 
           <div className="text-center">
-            <div className="space-y-4">
-              <div className="mx-auto flex min-h-[116px] max-w-[24rem] items-center justify-center sm:min-h-[126px]">
+            <div className="space-y-5">
+              <div className="mx-auto max-w-[24rem] pt-1">
                 <AnimatePresence mode="wait" initial={false}>
                   <motion.div
                     key={`${locale}-${index}`}
@@ -478,18 +582,20 @@ export function IntroScreen({
                     transition={{ duration: 0.22, ease: "easeOut" }}
                     className="w-full"
                   >
-                    <div className="mb-3 text-[clamp(1.9rem,8vw,3rem)] font-bold leading-tight text-white">
+                    <div className="text-[clamp(2rem,8vw,3rem)] font-bold leading-tight text-white">
                       {pages[index].title}
-                    </div>
-
-                    <div className="mx-auto max-w-[22rem] text-base leading-7 text-[#9fb0c0]">
-                      {pages[index].text}
                     </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              <div className="flex justify-center">
+              <TrendsPreview countryCode={locale === "ru" ? "ru" : "us"} />
+
+              <div className="mx-auto max-w-[22rem] text-base leading-7 text-[#9fb0c0]">
+                {pages[index].text}
+              </div>
+
+              <div className="flex justify-center pt-1">
                 <Button
                   className="min-w-[132px] rounded-2xl px-8 py-3 text-base"
                   onClick={() => {
