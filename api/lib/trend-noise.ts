@@ -50,7 +50,11 @@ export function isTrendNoiseToken(token: string, blockedHandles: Set<string> = n
   if (STOP_WORDS.has(normalized)) return true;
   if (/^[a-z]$/.test(normalized)) return true;
   if (/^[а-яё]$/i.test(normalized)) return true;
-  if (/^[a-z0-9_]{8,}$/.test(normalized) && !KNOWN_ENTITY_WORDS.has(normalized)) return true;
+  // Do not treat normal long latin words as usernames/noise.
+  // The attention brain needs words like "comprehensive", "biological",
+  // "distributed", "monetization", etc. for US/EN and other latin locales.
+  // We only suppress long technical-looking handles with digits/underscores.
+  if (/^[a-z0-9_]{10,}$/.test(normalized) && /[0-9_]/.test(normalized) && !KNOWN_ENTITY_WORDS.has(normalized)) return true;
   if (/^[a-z]+\d+[a-z0-9_]*$/.test(normalized) && !KNOWN_ENTITY_WORDS.has(normalized)) return true;
   if (/tg$/.test(normalized) && normalized.length > 5) return true;
   return false;
@@ -71,7 +75,8 @@ export function cleanTrendText(text: string, blockedHandles: Set<string> = new S
 
   next = next.replace(/https?:\/\/\S+/g, " ");
   next = next.replace(/(?:t\.me|max\.ru|telegram\.me)\/[a-z0-9_]+/gi, " ");
-  next = next.replace(/[@#][\wа-яё_-]+/gi, " ");
+  next = next.replace(/#([\wа-яё_-]+)/gi, " $1 ");
+  next = next.replace(/@[\wа-яё_-]+/gi, " ");
   next = next.replace(/\b(?:наш|нашем|наша|нашу|мой|моём|моем|подписывайтесь|подпишись|читайте)\s+(?:канал|канале|каналу|чат|бот)\b/gi, " ");
 
   for (const handle of blockedHandles) {

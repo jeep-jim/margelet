@@ -174,6 +174,35 @@ function PostSourceAvatar({ post }: { post: IngestedPost }) {
   );
 }
 
+function PostSourceDots({
+  post,
+  count,
+}: {
+  post: IngestedPost;
+  count: number;
+}) {
+  const visible = Math.max(1, Math.min(6, count));
+
+  return (
+    <div className="mt-2 flex items-center gap-2">
+      <div className="flex -space-x-2">
+        <PostSourceAvatar post={post} />
+        {Array.from({ length: Math.max(0, visible - 1) }, (_, index) => (
+          <div
+            key={index}
+            className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[color:var(--bg-app)] bg-surface-soft text-[9px] font-black text-secondary"
+          >
+            {index === visible - 2 && count > visible ? `+${count - visible + 1}` : ""}
+          </div>
+        ))}
+      </div>
+      <span className="text-[11px] font-black text-secondary">
+        {count}
+      </span>
+    </div>
+  );
+}
+
 export function PostAttentionChips({
   post,
   searchQuery = "",
@@ -217,12 +246,7 @@ export function PostAttentionChips({
             <span className="text-emerald-500">↗</span>
           </div>
 
-          <div className="mt-2 flex items-center gap-2">
-            <PostSourceAvatar post={post} />
-            <div className="min-w-0 text-[11px] font-black text-secondary">
-              {post.source?.title || "Telegram"}
-            </div>
-          </div>
+          <PostSourceDots post={post} count={sourceCount} />
 
           {primary ? (
             <div className="mt-2 rounded-2xl bg-surface-soft px-3 py-2 text-[12px] font-semibold leading-relaxed text-primary">

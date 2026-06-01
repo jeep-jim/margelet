@@ -1630,31 +1630,26 @@ function TrendDetail({
       </button>
 
       <section className="rounded-[30px] border border-soft bg-surface p-4 shadow-sm">
-        <div className="flex items-start gap-3">
-          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-surface-soft text-2xl font-black text-primary">
-            {emoji}
+        <div>
+          <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
+            {copy.telegramAttention}
           </div>
-
-          <div className="min-w-0 flex-1">
-            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
-              {copy.telegramAttention}
-            </div>
-            <h2 className="mt-1 text-2xl font-black leading-tight text-primary">
-              {topic}
-            </h2>
-            <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-              <span
-                className={
-                  isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"
-                }
-              >
-                {isUp ? "↗" : "↘"} {String(trend.change).replace("+", "")}
-              </span>
-              <span className="text-secondary">·</span>
-              <span className="text-secondary">
-                {sourceCount} {copy.sources}
-              </span>
-            </div>
+          <h2 className="mt-1 text-2xl font-black leading-tight text-primary">
+            <span className="mr-1.5 align-[-1px] text-xl">{emoji}</span>
+            {topic}
+          </h2>
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+            <span
+              className={
+                isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"
+              }
+            >
+              {isUp ? "↗" : "↘"} {String(trend.change).replace("+", "")}
+            </span>
+            <span className="text-secondary">·</span>
+            <span className="text-secondary">
+              {sourceCount} {copy.sources}
+            </span>
           </div>
         </div>
 
@@ -1971,14 +1966,7 @@ function TrendRow({
               </div>
             </div>
 
-            <div
-              className={[
-                "text-sm font-black",
-                isUp ? "text-emerald-500" : "text-red-500",
-              ].join(" ")}
-            >
-              {formatNumber(trend.mentions)} {copy.mentions}
-            </div>
+            <div className="shrink-0 text-lg font-black text-emerald-500">↗</div>
           </button>
 
           {trend.examples?.length ? (

@@ -31,7 +31,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Где сейчас внимание людей 👀",
-        text: "margeleT — это индекс внимания и тренды раньше новостей",
+        text: "margeleT — это индекс Telegram и тренды раньше новостей",
       },
     ],
     next: "Далее",
@@ -44,7 +44,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Де зараз увага людей 👀",
-        text: "margeleT — це індекс уваги і тренди раніше за новини",
+        text: "margeleT — це індекс Telegram і тренди раніше за новини",
       },
     ],
     next: "Далі",
@@ -57,7 +57,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Where people's attention is now 👀",
-        text: "margeleT is an attention index and trends before the news",
+        text: "margeleT is a Telegram index and trends before the news",
       },
     ],
     next: "Next",
@@ -70,7 +70,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "लोगों का ध्यान अभी कहाँ है 👀",
-        text: "margeleT ध्यान का इंडेक्स है और खबरों से पहले ट्रेंड दिखाता है",
+        text: "margeleT Telegram का इंडेक्स है और खबरों से पहले ट्रेंड दिखाता है",
       },
     ],
     next: "आगे",
@@ -83,7 +83,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "توجه مردم الان کجاست 👀",
-        text: "margeleT شاخص توجه است و روندها را قبل از خبرها نشان می‌دهد",
+        text: "margeleT شاخص Telegram است و روندها را قبل از خبرها نشان می‌دهد",
       },
     ],
     next: "بعدی",
@@ -96,7 +96,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "İnsanların dikkati şimdi nerede 👀",
-        text: "margeleT bir dikkat endeksi ve haberlerden önce trendlerdir",
+        text: "margeleT bir Telegram endeksi ve haberlerden önce trendlerdir",
       },
     ],
     next: "İleri",
@@ -109,7 +109,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Onde está a atenção das pessoas agora 👀",
-        text: "margeleT é um índice de atenção e tendências antes das notícias",
+        text: "margeleT é um índice do Telegram e tendências antes das notícias",
       },
     ],
     next: "Próximo",
@@ -122,7 +122,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Адамдардың назары қазір қайда 👀",
-        text: "margeleT — назар индексі және жаңалықтардан бұрынғы трендтер",
+        text: "margeleT — Telegram индексі және жаңалықтардан бұрынғы трендтер",
       },
     ],
     next: "Әрі қарай",
@@ -135,7 +135,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Odamlar eʼtibori hozir qayerda 👀",
-        text: "margeleT — eʼtibor indeksi va yangiliklardan oldingi trendlar",
+        text: "margeleT — Telegram indeksi va yangiliklardan oldingi trendlar",
       },
     ],
     next: "Keyingi",
@@ -148,7 +148,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "أين انتباه الناس الآن 👀",
-        text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
+        text: "margeleT هو مؤشر Telegram واتجاهات قبل الأخبار",
       },
     ],
     next: "التالي",
@@ -161,7 +161,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "أين انتباه الناس الآن 👀",
-        text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
+        text: "margeleT هو مؤشر Telegram واتجاهات قبل الأخبار",
       },
     ],
     next: "التالي",
@@ -174,7 +174,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "لوگوں کی توجہ ابھی کہاں ہے 👀",
-        text: "margeleT توجہ کا انڈیکس ہے اور خبروں سے پہلے رجحانات دکھاتا ہے",
+        text: "margeleT Telegram کا انڈیکس ہے اور خبروں سے پہلے رجحانات دکھاتا ہے",
       },
     ],
     next: "آگے",
@@ -187,7 +187,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Perhatian orang sedang ke mana 👀",
-        text: "margeleT adalah indeks perhatian dan tren sebelum berita",
+        text: "margeleT adalah indeks Telegram dan tren sebelum berita",
       },
     ],
     next: "Lanjut",
@@ -200,7 +200,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Dónde está la atención de la gente ahora 👀",
-        text: "margeleT es un índice de atención y tendencias antes de las noticias",
+        text: "margeleT es un índice de Telegram y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
@@ -213,7 +213,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "أين انتباه الناس الآن 👀",
-        text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
+        text: "margeleT هو مؤشر Telegram واتجاهات قبل الأخبار",
       },
     ],
     next: "التالي",
@@ -226,7 +226,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Dónde está la atención de la gente ahora 👀",
-        text: "margeleT es un índice de atención y tendencias antes de las noticias",
+        text: "margeleT es un índice de Telegram y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
@@ -239,7 +239,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Dov'è ora l'attenzione delle persone 👀",
-        text: "margeleT è un indice dell'attenzione e trend prima delle notizie",
+        text: "margeleT è un indice di Telegram e trend prima delle notizie",
       },
     ],
     next: "Avanti",
@@ -252,7 +252,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Où est l'attention des gens maintenant 👀",
-        text: "margeleT est un indice d'attention et des tendances avant l'actualité",
+        text: "margeleT est un indice Telegram et des tendances avant l'actualité",
       },
     ],
     next: "Suivant",
@@ -265,7 +265,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Wo ist die Aufmerksamkeit der Menschen jetzt 👀",
-        text: "margeleT ist ein Aufmerksamkeitsindex und Trends vor den Nachrichten",
+        text: "margeleT ist ein Telegram-Index und Trends vor den Nachrichten",
       },
     ],
     next: "Weiter",
@@ -278,7 +278,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Dónde está la atención de la gente ahora 👀",
-        text: "margeleT es un índice de atención y tendencias antes de las noticias",
+        text: "margeleT es un índice de Telegram y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
@@ -291,7 +291,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Dónde está la atención de la gente ahora 👀",
-        text: "margeleT es un índice de atención y tendencias antes de las noticias",
+        text: "margeleT es un índice de Telegram y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
@@ -304,7 +304,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Where people's attention is now 👀",
-        text: "margeleT is an attention index and trends before the news",
+        text: "margeleT is a Telegram index and trends before the news",
       },
     ],
     next: "Next",
@@ -317,7 +317,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Where people's attention is now 👀",
-        text: "margeleT is an attention index and trends before the news",
+        text: "margeleT is a Telegram index and trends before the news",
       },
     ],
     next: "Next",
@@ -330,7 +330,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "人们现在的注意力在哪里 👀",
-        text: "margeleT 是注意力指数，也是新闻之前的趋势",
+        text: "margeleT 是 Telegram 指数，也是新闻之前的趋势",
       },
     ],
     next: "下一步",
@@ -343,7 +343,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     slides: [
       {
         title: "Di mana perhatian orang sekarang 👀",
-        text: "margeleT ialah indeks perhatian dan trend sebelum berita",
+        text: "margeleT ialah indeks Telegram dan trend sebelum berita",
       },
     ],
     next: "Seterusnya",
@@ -386,12 +386,6 @@ type IntroTrend = {
   sourceCount?: number;
   topSources?: IntroTrendSource[];
 };
-
-const INTRO_FALLBACK_TRENDS: IntroTrend[] = [
-  { topic: "Погода Москва сегодня", mentions: 25000, momentum: 178, sourceCount: 35, topSources: [] },
-  { topic: "NVIDIA", mentions: 6900, momentum: 84, sourceCount: 18, topSources: [] },
-  { topic: "ChatGPT", mentions: 7600, momentum: 68, sourceCount: 21, topSources: [] },
-];
 
 const INTRO_BAD_TOPICS = new Set([
   "max",
@@ -563,7 +557,7 @@ function TrendsPreview({
   countryCode?: string;
   sourceLabel: string;
 }) {
-  const [trends, setTrends] = useState<IntroTrend[]>(INTRO_FALLBACK_TRENDS);
+  const [trends, setTrends] = useState<IntroTrend[]>([]);
   const [offset, setOffset] = useState(0);
 
   useEffect(() => {
@@ -580,7 +574,7 @@ function TrendsPreview({
               .slice(0, 20)
           : [];
 
-        if (!cancelled && next.length > 0) {
+        if (!cancelled) {
           setTrends(next);
           setOffset(0);
         }
@@ -606,18 +600,22 @@ function TrendsPreview({
     return () => window.clearInterval(timer);
   }, [trends.length]);
 
-  const trend = trends[offset % trends.length] || INTRO_FALLBACK_TRENDS[0];
+  const trend = trends.length > 0 ? trends[offset % trends.length] : null;
 
   return (
     <div className="mx-auto w-full max-w-[330px]">
       <div className="border-y border-dashed border-[#5e7a99]/55 py-8">
-        <AnimatePresence mode="wait" initial={false}>
-          <TrendAttentionPreview
-            key={`${getIntroTrendTitle(trend)}-${offset}`}
-            trend={trend}
-            sourceLabel={sourceLabel}
-          />
-        </AnimatePresence>
+        {trend ? (
+          <AnimatePresence mode="wait" initial={false}>
+            <TrendAttentionPreview
+              key={`${getIntroTrendTitle(trend)}-${offset}`}
+              trend={trend}
+              sourceLabel={sourceLabel}
+            />
+          </AnimatePresence>
+        ) : (
+          <div className="min-h-[178px]" aria-hidden="true" />
+        )}
       </div>
     </div>
   );
@@ -699,7 +697,7 @@ export function IntroScreen({
               </div>
 
               <TrendsPreview
-                countryCode={locale === "ru" ? "ru" : "us"}
+                countryCode={locale}
                 sourceLabel={intro.sources}
               />
 

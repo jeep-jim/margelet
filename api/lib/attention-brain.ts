@@ -21,13 +21,14 @@ const SIGNAL_STOP = new Set([
 ]);
 
 const BAD_LINE_RE =
-  /(подписывай|подписаться|наш канал|канал в max|в шапке профиля|ссылка в шапке|ссылка в профиле|реклама|дорогие подписчики|привет,? друзья|уважаемые подписчики)/i;
+  /(подписывай|подписаться|наш канал|канал в max|в шапке профиля|ссылка в шапке|ссылка в профиле|реклама|дорогие подписчики|привет,? друзья|уважаемые подписчики|resgate o cupom|adquira agora|купить сейчас|click here|join channel|current balance|free spins|casino|betting|place your bet)/i;
 
 function stripEmojiAndNoise(value: string) {
   return String(value || "")
     .replace(/https?:\/\/\S+/gi, " ")
     .replace(/\b(?:t\.me|max\.ru)\/\S+/gi, " ")
-    .replace(/[@#][\wа-яё_.-]+/gi, " ")
+    .replace(/#([\wа-яё_.-]+)/gi, " $1 ")
+    .replace(/@[\wа-яё_.-]+/gi, " ")
     .replace(/[|•]+/g, " ")
     .replace(/\s+/g, " ")
     .trim();
