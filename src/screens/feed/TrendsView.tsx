@@ -16,7 +16,7 @@ import {
   getTagLabel,
   type SiteTagGroup,
 } from "../../lib/tags";
-import type { Locale } from "../../types/app";
+import type { IngestedPost, Locale } from "../../types/app";
 
 type TrendSource = {
   id?: string;
@@ -1108,9 +1108,89 @@ function getSourceHandle(source: TrendSource) {
   return makeDemoHandle(source.title);
 }
 
-function getSourceUrl(source: TrendSource) {
-  const handle = getSourceHandle(source);
-  return handle ? `https://www.margelet.space/${handle}` : "";
+
+function getSourceHandleForOpen(source: TrendSource) {
+  return getSourceHandle(source).trim().replace(/^@+/, "");
+}
+
+function postMatchesAttentionQuery(post: IngestedPost, normalizedQuery: string) {
+  if (!normalizedQuery) return false;
+
+  const haystack = [
+    post.source?.title,
+    post.source?.handle,
+    post.text,
+    post.postUrl,
+    post.tag,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  return haystack.includes(normalizedQuery);
+}
+
+function buildLiveSearchTrend(
+  posts: IngestedPost[],
+  rawQuery: string,
+): TrendItem | null {
+  const topic = rawQuery.trim();
+  const normalizedQuery = topic.toLowerCase();
+
+  if (normalizedQuery.length < 2) return null;
+
+  const matchingPosts = posts.filter((post) =>
+    postMatchesAttentionQuery(post, normalizedQuery),
+  );
+
+  if (!matchingPosts.length) return null;
+
+  const sourceMap = new Map<string, TrendSource>();
+
+  for (const post of matchingPosts) {
+    const handle = getSourceHandleForOpen({
+      id: post.source?.handle,
+      title: post.source?.title || "Telegram",
+      username: post.source?.handle,
+      avatarUrl: post.source?.avatar || undefined,
+      mentions: 0,
+    });
+
+    const key =
+      handle ||
+      String(post.source?.title || "telegram").trim().toLowerCase() ||
+      "telegram";
+
+    const current = sourceMap.get(key);
+
+    if (current) {
+      current.mentions += 1;
+      continue;
+    }
+
+    sourceMap.set(key, {
+      id: handle || key,
+      title: post.source?.title || "Telegram",
+      username: handle || post.source?.handle,
+      avatarUrl: post.source?.avatar || undefined,
+      mentions: 1,
+    });
+  }
+
+  const topSources = Array.from(sourceMap.values())
+    .sort((a, b) => b.mentions - a.mentions)
+    .slice(0, 12);
+
+  return {
+    topic,
+    word: topic,
+    mentions: matchingPosts.length,
+    momentum: matchingPosts.length * 100,
+    change: `+${matchingPosts.length * 100}%`,
+    sourceCount: sourceMap.size,
+    topSources,
+    category: "all",
+  };
 }
 
 function getTelegramAvatarUrl(source: TrendSource) {
@@ -1347,12 +1427,14 @@ function TrendDetail({
   followed,
   onBack,
   onToggleFollow,
+  onOpenSource,
   copy,
 }: {
   trend: TrendItem;
   followed: boolean;
   onBack: () => void;
   onToggleFollow: () => void;
+  onOpenSource?: (handle: string) => void;
   copy: TrendsCopy;
 }) {
   const topic = getTopic(trend);
@@ -1499,7 +1581,6 @@ function TrendDetail({
         </h3>
         <div className="mt-3 space-y-2">
           {(trend.topSources || []).slice(0, 6).map((source, index) => {
-            const url = getSourceUrl(source);
             const content = (
               <>
                 <div className="flex min-w-0 items-center gap-3">
@@ -1521,17 +1602,25 @@ function TrendDetail({
               </>
             );
 
-            if (url) {
+            const handle = getSourceHandleForOpen(source);
+
+            if (handle) {
               return (
-                <a
+                <button
                   key={`${source.title}-${index}`}
-                  href={url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-2 no-underline transition hover:bg-app"
+                  type="button"
+                  onClick={() => {
+                    if (onOpenSource) {
+                      onOpenSource(handle);
+                      return;
+                    }
+
+                    window.location.href = `/${handle}`;
+                  }}
+                  className="flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-2 text-left no-underline transition hover:bg-app"
                 >
                   {content}
-                </a>
+                </button>
               );
             }
 
@@ -1730,9 +1819,13 @@ function buildCategories(locale: Locale, copy: TrendsCopy): TrendCategory[] {
 export function TrendsView({
   countryCode = "ru",
   locale = "ru",
+  posts = [],
+  onOpenSource,
 }: {
   countryCode?: string;
   locale?: Locale;
+  posts?: IngestedPost[];
+  onOpenSource?: (handle: string) => void;
 }) {
   const [trends, setTrends] = useState<TrendItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -1785,7 +1878,8 @@ export function TrendsView({
     : categories.slice(0, 5);
 
   const categoryTrends = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase();
+    const rawQuery = query.trim();
+    const normalizedQuery = rawQuery.toLowerCase();
 
     let list =
       selectedCategory === "followed"
@@ -1819,10 +1913,17 @@ export function TrendsView({
           .toLowerCase()
           .includes(normalizedQuery),
       );
+
+      const liveTrend = buildLiveSearchTrend(posts, rawQuery);
+      const liveKey = liveTrend ? normalizeTopic(getTopic(liveTrend)) : "";
+
+      if (liveTrend && !list.some((item) => normalizeTopic(getTopic(item)) === liveKey)) {
+        list = [liveTrend, ...list];
+      }
     }
 
     return list.slice(0, 20);
-  }, [trends, selectedCategory, query, followedTopics]);
+  }, [trends, selectedCategory, query, followedTopics, posts]);
 
   const toggleFollow = (topic: string) => {
     const key = normalizeTopic(topic);
@@ -1849,6 +1950,7 @@ export function TrendsView({
         followed={followed}
         onBack={() => setActiveTrend(null)}
         onToggleFollow={() => toggleFollow(topic)}
+        onOpenSource={onOpenSource}
         copy={copy}
       />
     );

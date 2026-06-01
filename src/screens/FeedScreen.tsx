@@ -1406,7 +1406,12 @@ export function FeedScreen({
 
       <div className="mx-auto w-full max-w-[570px]">
         {feedSettings.mediaMode === 'trends' ? (
-          <TrendsView countryCode={feedSettings.countries[0] || locale} locale={locale} />
+          <TrendsView
+            countryCode={feedSettings.countries[0] || locale}
+            locale={locale}
+            posts={safePosts}
+            onOpenSource={openSource}
+          />
         ) : (
           renderedPosts.map((post) => {
             const ownerTelegramId = post.addedBy?.telegramId ?? null;
