@@ -28,6 +28,9 @@ const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
 const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
+const INITIAL_RENDER_POSTS = 18;
+const RENDER_POSTS_STEP = 12;
+const LOAD_MORE_DISTANCE_PX = 900;
 
 type FeedSettings = {
   mediaMode: FeedMediaMode;
@@ -511,7 +514,7 @@ export function FeedScreen({
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
-  const [renderCount, setRenderCount] = useState(120);
+  const [renderCount, setRenderCount] = useState(INITIAL_RENDER_POSTS);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -988,7 +991,7 @@ export function FeedScreen({
   ]);
 
   useEffect(() => {
-      setRenderCount(120);
+      setRenderCount(INITIAL_RENDER_POSTS);
     }, [selectedTags, searchQuery, feedSettings, locale]);
 
     useEffect(() => {
@@ -999,10 +1002,10 @@ export function FeedScreen({
 
       const distanceFromBottom = fullHeight - (scrollTop + viewportHeight);
 
-      if (distanceFromBottom < 1200) {
+      if (distanceFromBottom < LOAD_MORE_DISTANCE_PX) {
         setRenderCount((prev) => {
           if (prev >= visiblePosts.length) return prev;
-          return Math.min(prev + 60, visiblePosts.length);
+          return Math.min(prev + RENDER_POSTS_STEP, visiblePosts.length);
         });
       }
     };
@@ -1149,6 +1152,11 @@ export function FeedScreen({
 
   const hasSubscriptions = subscriptionHandles.length > 0;
   const hasBubbles = subscriptionBubbles.length > 0;
+
+  const renderedPosts = useMemo(
+    () => visiblePosts.slice(0, renderCount),
+    [visiblePosts, renderCount]
+  );
 
   const toggleFeedCountry = useCallback(
     (country: string) => {
@@ -1381,7 +1389,7 @@ export function FeedScreen({
         {feedSettings.mediaMode === 'trends' ? (
           <TrendsView countryCode={feedSettings.countries[0] || locale} locale={locale} />
         ) : (
-          visiblePosts.slice(0, renderCount).map((post) => {
+          renderedPosts.map((post) => {
             const ownerTelegramId = post.addedBy?.telegramId ?? null;
 
             const isOwner =

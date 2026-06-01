@@ -29,7 +29,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Язык",
     slides: [
       {
-        title: "Что обсуждают в Telegram прямо сейчас 💜",
+        title: "Что обсуждают в Telegram прямо сейчас 🔥",
         text: "Тренды раньше новостей",
       },
     ],
@@ -41,19 +41,19 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Мова",
     slides: [
       {
-        title: "Ласкаво просимо до margeleT",
-        text: "Глобальна стрічка свіжого контенту з Telegram.",
+        title: "Що обговорюють у Telegram прямо зараз 🔥",
+        text: "Тренди раніше за новини",
       },
     ],
     next: "Далі",
-    enter: "Увійти",
+    enter: "Показати",
   },
 
   us: {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "What Telegram is talking about right now 💜",
+        title: "What Telegram is talking about right now 🔥",
         text: "Trends before the news",
       },
     ],
@@ -65,7 +65,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 भाषा",
     slides: [
       {
-        title: "Telegram अभी किस बारे में बात कर रहा है 💜",
+        title: "Telegram अभी किस बारे में बात कर रहा है 🔥",
         text: "खबरों से पहले ट्रेंड्स",
       },
     ],
@@ -77,7 +77,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 زبان",
     slides: [
       {
-        title: "چه چیزی در Telegram بحث می‌شود 💜",
+        title: "چه چیزی در Telegram بحث می‌شود 🔥",
         text: "ترندها قبل از اخبار",
       },
     ],
@@ -89,7 +89,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Dil",
     slides: [
       {
-        title: "Telegram şu anda ne konuşuyor 💜",
+        title: "Telegram şu anda ne konuşuyor 🔥",
         text: "Haberlerden önce trendler",
       },
     ],
@@ -101,7 +101,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "O que o Telegram está falando agora 💜",
+        title: "O que o Telegram está falando agora 🔥",
         text: "Tendências antes das notícias",
       },
     ],
@@ -113,7 +113,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Тіл",
     slides: [
       {
-        title: "Қазір Telegram не айтып жатыр 💜",
+        title: "Қазір Telegram не айтып жатыр 🔥",
         text: "Жаңалықтардан бұрын трендтер",
       },
     ],
@@ -125,7 +125,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Til",
     slides: [
       {
-        title: "Hozir Telegram nima haqida gapiryapti 💜",
+        title: "Hozir Telegram nima haqida gapiryapti 🔥",
         text: "Yangiliklardan oldin trendlar",
       },
     ],
@@ -137,7 +137,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "ما الذي يتحدث عنه Telegram الآن 💜",
+        title: "ما الذي يتحدث عنه Telegram الآن 🔥",
         text: "الاتجاهات قبل الأخبار",
       },
     ],
@@ -149,7 +149,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "ما الذي يتحدث عنه Telegram الآن 💜",
+        title: "ما الذي يتحدث عنه Telegram الآن 🔥",
         text: "الاتجاهات قبل الأخبار",
       },
     ],
@@ -161,7 +161,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 زبان",
     slides: [
       {
-        title: "Telegram اب کس بارے میں بات کر رہا ہے 💜",
+        title: "Telegram اب کس بارے میں بات کر رہا ہے 🔥",
         text: "خبروں سے پہلے رجحانات",
       },
     ],
@@ -173,7 +173,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Bahasa",
     slides: [
       {
-        title: "Apa yang sedang dibicarakan Telegram saat ini 💜",
+        title: "Apa yang sedang dibicarakan Telegram saat ini 🔥",
         text: "Tren sebelum berita",
       },
     ],
@@ -185,7 +185,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 💜",
+        title: "De qué está hablando Telegram ahora 🔥",
         text: "Tendencias antes que las noticias",
       },
     ],
@@ -197,7 +197,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "ما الذي يتحدث عنه Telegram الآن 💜",
+        title: "ما الذي يتحدث عنه Telegram الآن 🔥",
         text: "الاتجاهات قبل الأخبار",
       },
     ],
@@ -209,7 +209,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 💜",
+        title: "De qué está hablando Telegram ahora 🔥",
         text: "Tendencias antes que las noticias",
       },
     ],
@@ -221,7 +221,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Lingua",
     slides: [
       {
-        title: "Di cosa sta parlando Telegram in questo momento 💜",
+        title: "Di cosa sta parlando Telegram in questo momento 🔥",
         text: "Tendenze prima delle notizie",
       },
     ],
@@ -233,7 +233,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Langue",
     slides: [
       {
-        title: "De quoi Telegram parle-t-il en ce moment 💜",
+        title: "De quoi Telegram parle-t-il en ce moment 🔥",
         text: "Les tendances avant les nouvelles",
       },
     ],
@@ -245,7 +245,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Sprache",
     slides: [
       {
-        title: "Worüber spricht Telegram gerade 💜",
+        title: "Worüber spricht Telegram gerade 🔥",
         text: "Trends vor den Nachrichten",
       },
     ],
@@ -257,7 +257,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 💜",
+        title: "De qué está hablando Telegram ahora 🔥",
         text: "Tendencias antes que las noticias",
       },
     ],
@@ -269,7 +269,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 💜",
+        title: "De qué está hablando Telegram ahora 🔥",
         text: "Tendencias antes que las noticias",
       },
     ],
@@ -281,7 +281,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "What Telegram is talking about right now 💜",
+        title: "What Telegram is talking about right now 🔥",
         text: "Trends before the news",
       },
     ],
@@ -293,7 +293,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "What Telegram is talking about right now 💜",
+        title: "What Telegram is talking about right now 🔥",
         text: "Trends before the news",
       },
     ],
@@ -305,7 +305,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 语言",
     slides: [
       {
-        title: "Telegram 现在在讨论什么 💜",
+        title: "Telegram 现在在讨论什么 🔥",
         text: "新闻之前的趋势",
       },
     ],
@@ -317,7 +317,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Bahasa",
     slides: [
       {
-        title: "Apa yang Telegram bincangkan sekarang 💜",
+        title: "Apa yang Telegram bincangkan sekarang 🔥",
         text: "Trend sebelum berita",
       },
     ],

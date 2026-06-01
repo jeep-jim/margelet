@@ -11,7 +11,11 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { SITE_TAG_GROUPS, getTagLabel, type SiteTagGroup } from "../../lib/tags";
+import {
+  SITE_TAG_GROUPS,
+  getTagLabel,
+  type SiteTagGroup,
+} from "../../lib/tags";
 import type { Locale } from "../../types/app";
 
 type TrendSource = {
@@ -82,6 +86,7 @@ type TrendsCopy = {
   more: string;
   hide: string;
   myTopics: string;
+  interests: string;
   unsubscribeTopicTitle: string;
   discussingNow: string;
   today: string;
@@ -115,6 +120,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Ещё",
     hide: "Скрыть",
     myTopics: "Мои темы",
+    interests: "Мои интересы",
     unsubscribeTopicTitle: "Отписаться от темы",
     discussingNow: "Что обсуждают сейчас",
     today: "сегодня",
@@ -146,6 +152,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Ще",
     hide: "Сховати",
     myTopics: "Мої теми",
+    interests: "Мої інтереси",
     unsubscribeTopicTitle: "Відписатися від теми",
     discussingNow: "Що обговорюють зараз",
     today: "сьогодні",
@@ -177,6 +184,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "More",
     hide: "Hide",
     myTopics: "My topics",
+    interests: "My interests",
     unsubscribeTopicTitle: "Unfollow topic",
     discussingNow: "What Telegram is discussing now",
     today: "today",
@@ -208,6 +216,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "और",
     hide: "छुपाएँ",
     myTopics: "मेरे विषय",
+    interests: "मेरी रुचियाँ",
     unsubscribeTopicTitle: "विषय अनफॉलो करें",
     discussingNow: "अभी Telegram में क्या चर्चा है",
     today: "आज",
@@ -239,6 +248,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "بیشتر",
     hide: "پنهان",
     myTopics: "موضوعات من",
+    interests: "علاقه‌های من",
     unsubscribeTopicTitle: "لغو دنبال‌کردن موضوع",
     discussingNow: "اکنون در Telegram چه چیزی بحث می‌شود",
     today: "امروز",
@@ -270,6 +280,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Daha",
     hide: "Gizle",
     myTopics: "Konularım",
+    interests: "İlgi alanlarım",
     unsubscribeTopicTitle: "Konuyu takipten çıkar",
     discussingNow: "Telegram şu anda ne konuşuyor",
     today: "bugün",
@@ -301,6 +312,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Mais",
     hide: "Ocultar",
     myTopics: "Meus temas",
+    interests: "Meus interesses",
     unsubscribeTopicTitle: "Deixar de seguir tema",
     discussingNow: "O que o Telegram discute agora",
     today: "hoje",
@@ -332,6 +344,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Тағы",
     hide: "Жасыру",
     myTopics: "Менің тақырыптарым",
+    interests: "Менің қызығушылықтарым",
     unsubscribeTopicTitle: "Тақырыптан бас тарту",
     discussingNow: "Telegram қазір нені талқылап жатыр",
     today: "бүгін",
@@ -363,6 +376,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Yana",
     hide: "Yashirish",
     myTopics: "Mavzularim",
+    interests: "Qiziqishlarim",
     unsubscribeTopicTitle: "Mavzudan chiqish",
     discussingNow: "Telegram hozir nimani muhokama qilmoqda",
     today: "bugun",
@@ -394,6 +408,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "المزيد",
     hide: "إخفاء",
     myTopics: "مواضيعي",
+    interests: "اهتماماتي",
     unsubscribeTopicTitle: "إلغاء متابعة الموضوع",
     discussingNow: "ما الذي يناقشه Telegram الآن",
     today: "اليوم",
@@ -425,6 +440,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "المزيد",
     hide: "إخفاء",
     myTopics: "مواضيعي",
+    interests: "اهتماماتي",
     unsubscribeTopicTitle: "إلغاء متابعة الموضوع",
     discussingNow: "إيه اللي بيتناقش على Telegram دلوقتي",
     today: "النهارده",
@@ -456,6 +472,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "مزید",
     hide: "چھپائیں",
     myTopics: "میرے موضوعات",
+    interests: "میری دلچسپیاں",
     unsubscribeTopicTitle: "موضوع اَن فالو کریں",
     discussingNow: "Telegram پر ابھی کیا بحث ہو رہی ہے",
     today: "آج",
@@ -487,6 +504,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Lainnya",
     hide: "Sembunyikan",
     myTopics: "Topik saya",
+    interests: "Minat saya",
     unsubscribeTopicTitle: "Berhenti mengikuti topik",
     discussingNow: "Apa yang dibahas Telegram sekarang",
     today: "hari ini",
@@ -518,6 +536,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Más",
     hide: "Ocultar",
     myTopics: "Mis temas",
+    interests: "Mis intereses",
     unsubscribeTopicTitle: "Dejar de seguir tema",
     discussingNow: "Qué se habla ahora en Telegram",
     today: "hoy",
@@ -549,6 +568,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "المزيد",
     hide: "إخفاء",
     myTopics: "مواضيعي",
+    interests: "اهتماماتي",
     unsubscribeTopicTitle: "إلغاء متابعة الموضوع",
     discussingNow: "ما الذي يناقشه Telegram الآن",
     today: "اليوم",
@@ -580,6 +600,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Más",
     hide: "Ocultar",
     myTopics: "Mis temas",
+    interests: "Mis intereses",
     unsubscribeTopicTitle: "Dejar de seguir tema",
     discussingNow: "Qué se está hablando en Telegram",
     today: "hoy",
@@ -611,6 +632,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Altro",
     hide: "Nascondi",
     myTopics: "I miei temi",
+    interests: "I miei interessi",
     unsubscribeTopicTitle: "Smetti di seguire il tema",
     discussingNow: "Cosa si discute ora su Telegram",
     today: "oggi",
@@ -642,6 +664,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Plus",
     hide: "Masquer",
     myTopics: "Mes sujets",
+    interests: "Mes intérêts",
     unsubscribeTopicTitle: "Ne plus suivre le sujet",
     discussingNow: "Ce que Telegram discute maintenant",
     today: "aujourd’hui",
@@ -655,7 +678,8 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyFalls: "Pourquoi le sujet faiblit",
     whyLineSources: "le sujet a été repris par {count} sources à la fois ;",
     whyLineActivityUp: "les dernières publications accélèrent l’attention ;",
-    whyLineActivityDown: "les dernières publications refroidissent l’attention ;",
+    whyLineActivityDown:
+      "les dernières publications refroidissent l’attention ;",
     whyLineRelated: "apparaît le plus souvent avec : {chips}.",
     whoFormsAttention: "Qui forme l’attention",
     noSignals: "Aucun signal pour cette recherche pour le moment.",
@@ -673,6 +697,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Mehr",
     hide: "Ausblenden",
     myTopics: "Meine Themen",
+    interests: "Meine Interessen",
     unsubscribeTopicTitle: "Thema nicht mehr verfolgen",
     discussingNow: "Was Telegram gerade diskutiert",
     today: "heute",
@@ -684,7 +709,8 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     unfollowTopic: "Thema nicht mehr verfolgen",
     whyGrows: "Warum das Thema wächst",
     whyFalls: "Warum das Thema abkühlt",
-    whyLineSources: "das Thema wurde gleichzeitig von {count} Quellen aufgegriffen;",
+    whyLineSources:
+      "das Thema wurde gleichzeitig von {count} Quellen aufgegriffen;",
     whyLineActivityUp: "neue Beiträge beschleunigen die Aufmerksamkeit;",
     whyLineActivityDown: "neue Beiträge lassen die Aufmerksamkeit abklingen;",
     whyLineRelated: "erscheint am häufigsten neben: {chips}.",
@@ -704,6 +730,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Más",
     hide: "Ocultar",
     myTopics: "Mis temas",
+    interests: "Mis intereses",
     unsubscribeTopicTitle: "Dejar de seguir tema",
     discussingNow: "Qué se habla ahora en Telegram",
     today: "hoy",
@@ -735,6 +762,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Más",
     hide: "Ocultar",
     myTopics: "Mis temas",
+    interests: "Mis intereses",
     unsubscribeTopicTitle: "Dejar de seguir tema",
     discussingNow: "Qué se habla ahora en Telegram",
     today: "hoy",
@@ -766,6 +794,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "More",
     hide: "Hide",
     myTopics: "My topics",
+    interests: "My interests",
     unsubscribeTopicTitle: "Unfollow topic",
     discussingNow: "What Telegram is discussing now",
     today: "today",
@@ -797,6 +826,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "More",
     hide: "Hide",
     myTopics: "My topics",
+    interests: "My interests",
     unsubscribeTopicTitle: "Unfollow topic",
     discussingNow: "What Telegram is discussing now",
     today: "today",
@@ -828,6 +858,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "更多",
     hide: "收起",
     myTopics: "我的主题",
+    interests: "我的兴趣",
     unsubscribeTopicTitle: "取消关注主题",
     discussingNow: "Telegram 正在讨论什么",
     today: "今天",
@@ -859,6 +890,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     more: "Lagi",
     hide: "Sembunyi",
     myTopics: "Topik saya",
+    interests: "Minat saya",
     unsubscribeTopicTitle: "Berhenti ikut topik",
     discussingNow: "Apa yang dibincangkan di Telegram sekarang",
     today: "hari ini",
@@ -890,38 +922,37 @@ function getTrendsCopy(locale: Locale) {
 function formatCopy(template: string, values: Record<string, string | number>) {
   return Object.entries(values).reduce(
     (text, [key, value]) => text.replaceAll(`{${key}}`, String(value)),
-    template
+    template,
   );
 }
-
-
-
 
 function makeDemoHandle(title: string) {
   const explicit: Record<string, string> = {
     "Москва Live": "moskva_live",
     "Новости Москвы": "moscowmap",
-    "Bloomberg": "bloomberg",
+    Bloomberg: "bloomberg",
     "Market Watch": "marketwatch",
-    "CoinDesk": "coindesk",
-    "CryptoRank": "cryptorank_io",
+    CoinDesk: "coindesk",
+    CryptoRank: "cryptorank_io",
     "Whale Alert": "whale_alert",
-    "TechCrunch": "techcrunch",
+    TechCrunch: "techcrunch",
     "The Verge": "verge",
     "AI News": "artificial_intelligence_news",
     "Матч ТВ": "match_tv",
-    "Чемпионат": "championat",
-    "DTF": "dtfbest",
-    "Игры": "games",
+    Чемпионат: "championat",
+    DTF: "dtfbest",
+    Игры: "games",
   };
 
   if (explicit[title]) return explicit[title];
 
-  return title
-    .toLowerCase()
-    .replace(/[^a-zа-яё0-9]+/gi, "_")
-    .replace(/^_+|_+$/g, "")
-    .slice(0, 32) || "margelet";
+  return (
+    title
+      .toLowerCase()
+      .replace(/[^a-zа-яё0-9]+/gi, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 32) || "margelet"
+  );
 }
 
 function readFollowedTopics() {
@@ -972,19 +1003,56 @@ function getChips(topic: string) {
 function getTrendEmoji(topic: string, category?: string) {
   const text = `${topic} ${category || ""}`.toLowerCase();
 
-  if (text.includes("bitcoin") || text.includes("btc") || text.includes("крип")) return "₿";
-  if (text.includes("tesla") || text.includes("авто") || text.includes("машин")) return "🚗";
-  if (text.includes("openai") || text.includes("ai") || text.includes("gpt") || text.includes("ии")) return "🤖";
+  if (text.includes("bitcoin") || text.includes("btc") || text.includes("крип"))
+    return "₿";
+  if (text.includes("tesla") || text.includes("авто") || text.includes("машин"))
+    return "🚗";
+  if (
+    text.includes("openai") ||
+    text.includes("ai") ||
+    text.includes("gpt") ||
+    text.includes("ии")
+  )
+    return "🤖";
   if (text.includes("погод")) return "🌦️";
-  if (text.includes("игр") || text.includes("steam") || text.includes("gta")) return "🎮";
-  if (text.includes("спорт") || text.includes("спартак") || text.includes("футбол")) return "⚽";
-  if (text.includes("еда") || text.includes("рецепт") || text.includes("картош")) return "🍕";
-  if (text.includes("жук") || text.includes("мурав") || text.includes("живот") || text.includes("птиц")) return "🐾";
-  if (text.includes("кино") || text.includes("сериал") || text.includes("игрушек")) return "🎬";
-  if (text.includes("полит") || text.includes("трамп") || text.includes("иран")) return "🏛️";
-  if (text.includes("финанс") || text.includes("банк") || text.includes("доллар")) return "💰";
+  if (text.includes("игр") || text.includes("steam") || text.includes("gta"))
+    return "🎮";
+  if (
+    text.includes("спорт") ||
+    text.includes("спартак") ||
+    text.includes("футбол")
+  )
+    return "⚽";
+  if (
+    text.includes("еда") ||
+    text.includes("рецепт") ||
+    text.includes("картош")
+  )
+    return "🍕";
+  if (
+    text.includes("жук") ||
+    text.includes("мурав") ||
+    text.includes("живот") ||
+    text.includes("птиц")
+  )
+    return "🐾";
+  if (
+    text.includes("кино") ||
+    text.includes("сериал") ||
+    text.includes("игрушек")
+  )
+    return "🎬";
+  if (text.includes("полит") || text.includes("трамп") || text.includes("иран"))
+    return "🏛️";
+  if (
+    text.includes("финанс") ||
+    text.includes("банк") ||
+    text.includes("доллар")
+  )
+    return "💰";
   if (text.includes("наук") || text.includes("космос")) return "🔬";
-  if (text.includes("travel") || text.includes("турц") || text.includes("виза")) return "🧳";
+  if (text.includes("travel") || text.includes("турц") || text.includes("виза"))
+    return "🧳";
 
   const group = SITE_TAG_GROUPS.find((item) => item.value === category);
   return group?.emoji || "🔥";
@@ -992,21 +1060,49 @@ function getTrendEmoji(topic: string, category?: string) {
 
 function getTrendCategory(topic: string, fallback = "all") {
   const text = topic.toLowerCase();
-  if (text.includes("bitcoin") || text.includes("btc") || text.includes("ton") || text.includes("сбер") || text.includes("банк")) return "finance";
+  if (
+    text.includes("bitcoin") ||
+    text.includes("btc") ||
+    text.includes("ton") ||
+    text.includes("сбер") ||
+    text.includes("банк")
+  )
+    return "finance";
   if (text.includes("tesla") || text.includes("авто")) return "auto";
-  if (text.includes("openai") || text.includes("nvidia") || text.includes("iphone") || text.includes("ai")) return "technology";
-  if (text.includes("спартак") || text.includes("лига") || text.includes("месси")) return "sports";
+  if (
+    text.includes("openai") ||
+    text.includes("nvidia") ||
+    text.includes("iphone") ||
+    text.includes("ai")
+  )
+    return "technology";
+  if (
+    text.includes("спартак") ||
+    text.includes("лига") ||
+    text.includes("месси")
+  )
+    return "sports";
   if (text.includes("погод") || text.includes("новост")) return "news";
-  if (text.includes("игр") || text.includes("steam") || text.includes("gta")) return "gaming";
-  if (text.includes("еда") || text.includes("рецепт") || text.includes("картош")) return "food";
+  if (text.includes("игр") || text.includes("steam") || text.includes("gta"))
+    return "gaming";
+  if (
+    text.includes("еда") ||
+    text.includes("рецепт") ||
+    text.includes("картош")
+  )
+    return "food";
   return fallback;
 }
 
 function getSourceHandle(source: TrendSource) {
-  const username = String(source.username || "").replace(/^@+/, "").trim();
+  const username = String(source.username || "")
+    .replace(/^@+/, "")
+    .trim();
   if (username) return username;
 
-  const id = String(source.id || "").replace(/^@+/, "").trim();
+  const id = String(source.id || "")
+    .replace(/^@+/, "")
+    .trim();
   if (id && !/\s/.test(id) && !/^.+-\d+$/.test(id)) return id;
 
   return makeDemoHandle(source.title);
@@ -1060,11 +1156,11 @@ function SourceDots({ sources = [] }: { sources?: TrendSource[] }) {
 
   return (
     <div className="flex -space-x-2">
-      {visible.length ? (
-        visible.map((source, index) => (
-          <SourceAvatar key={`${source.title}-${index}`} source={source} />
-        ))
-      ) : null}
+      {visible.length
+        ? visible.map((source, index) => (
+            <SourceAvatar key={`${source.title}-${index}`} source={source} />
+          ))
+        : null}
     </div>
   );
 }
@@ -1108,42 +1204,52 @@ function MiniAttentionChart({
     <div className="relative overflow-hidden rounded-3xl border border-soft bg-app px-3 pb-3 pt-3">
       <div className="mb-2 flex items-center justify-between text-[11px] text-secondary">
         <span>48h</span>
-        <span className={`font-black ${labelClass}`}>{copy.now} · {activeValue}</span>
+        <span className={`font-black ${labelClass}`}>
+          {copy.now} · {activeValue}
+        </span>
       </div>
 
-      <svg viewBox="0 0 344 132" className="h-34 min-h-[136px] w-full overflow-visible">
-        {[plotTop, plotTop + plotHeight / 2, plotTop + plotHeight].map((y, index) => (
-          <g key={y}>
-            <text
-              x="0"
-              y={y + 4}
-              fill="currentColor"
-              className="text-[10px] font-bold text-secondary"
-            >
-              {index === 0 ? activeValue : index === 1 ? midValue : lowValue}
-            </text>
-            <line
-              x1={plotLeft}
-              x2={plotLeft + plotWidth}
-              y1={y}
-              y2={y}
-              className="stroke-[color:var(--border-soft)]"
-              strokeWidth="1"
-            />
-          </g>
-        ))}
+      <svg
+        viewBox="0 0 344 132"
+        className="h-34 min-h-[136px] w-full overflow-visible"
+      >
+        {[plotTop, plotTop + plotHeight / 2, plotTop + plotHeight].map(
+          (y, index) => (
+            <g key={y}>
+              <text
+                x="0"
+                y={y + 4}
+                fill="currentColor"
+                className="text-[10px] font-bold text-secondary"
+              >
+                {index === 0 ? activeValue : index === 1 ? midValue : lowValue}
+              </text>
+              <line
+                x1={plotLeft}
+                x2={plotLeft + plotWidth}
+                y1={y}
+                y2={y}
+                className="stroke-[color:var(--border-soft)]"
+                strokeWidth="1"
+              />
+            </g>
+          ),
+        )}
 
         {["48h", "36h", "24h", "12h", copy.now].map((label, index) => {
-          const x = index === 4
-            ? plotLeft + plotWidth
-            : plotLeft + (plotWidth / 4) * index;
+          const x =
+            index === 4
+              ? plotLeft + plotWidth
+              : plotLeft + (plotWidth / 4) * index;
 
           return (
             <text
               key={label}
               x={x}
               y="126"
-              textAnchor={index === 0 ? "start" : index === 4 ? "end" : "middle"}
+              textAnchor={
+                index === 0 ? "start" : index === 4 ? "end" : "middle"
+              }
               fill="currentColor"
               className="text-[10px] font-bold text-secondary"
             >
@@ -1213,12 +1319,7 @@ function MiniAttentionChart({
           />
         </circle>
 
-        <circle
-          cx={activeX}
-          cy={activeY}
-          r="5.2"
-          className="fill-white"
-        />
+        <circle cx={activeX} cy={activeY} r="5.2" className="fill-white" />
 
         <circle
           cx={activeX}
@@ -1240,7 +1341,6 @@ function MiniAttentionChart({
     </div>
   );
 }
-
 
 function TrendDetail({
   trend,
@@ -1293,11 +1393,17 @@ function TrendDetail({
               {topic}
             </h2>
             <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-              <span className={isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"}>
+              <span
+                className={
+                  isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"
+                }
+              >
                 {isUp ? "↗" : "↘"} {String(trend.change).replace("+", "")}
               </span>
               <span className="text-secondary">·</span>
-              <span className="text-secondary">{sourceCount} {copy.sources}</span>
+              <span className="text-secondary">
+                {sourceCount} {copy.sources}
+              </span>
             </div>
           </div>
         </div>
@@ -1305,7 +1411,9 @@ function TrendDetail({
         <div className="mt-4 flex items-center justify-between gap-3 rounded-3xl border border-soft bg-app px-3 py-3">
           <div>
             <div className="text-[11px] text-secondary">{copy.mentions}</div>
-            <div className="mt-1 text-xl font-black text-primary">{formatNumber(trend.mentions)}</div>
+            <div className="mt-1 text-xl font-black text-primary">
+              {formatNumber(trend.mentions)}
+            </div>
           </div>
 
           <button
@@ -1315,18 +1423,27 @@ function TrendDetail({
           >
             <div className="flex -space-x-2">
               {topSources.slice(0, 3).map((source, index) => (
-                <SourceAvatar key={`${source.title}-${index}`} source={source} />
+                <SourceAvatar
+                  key={`${source.title}-${index}`}
+                  source={source}
+                />
               ))}
             </div>
             <div className="text-right">
               <div className="text-[11px] text-secondary">{copy.sources}</div>
-              <div className="text-sm font-black text-primary">{sourceCount}</div>
+              <div className="text-sm font-black text-primary">
+                {sourceCount}
+              </div>
             </div>
           </button>
         </div>
 
         <div className="mt-4">
-          <MiniAttentionChart isUp={isUp} mentions={trend.mentions} copy={copy} />
+          <MiniAttentionChart
+            isUp={isUp}
+            mentions={trend.mentions}
+            copy={copy}
+          />
         </div>
 
         <div className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -1350,22 +1467,36 @@ function TrendDetail({
               : "border-emerald-500/20 bg-emerald-500/10 text-emerald-500",
           ].join(" ")}
         >
-          {followed ? <Check className="h-4 w-4" /> : <Bell className="h-4 w-4" />}
+          {followed ? (
+            <Check className="h-4 w-4" />
+          ) : (
+            <Bell className="h-4 w-4" />
+          )}
           {followed ? copy.unfollowTopic : copy.followTopic}
         </button>
       </section>
 
       <section className="mt-5 border-t border-soft pt-4">
-        <h3 className="text-lg font-black text-primary">{isUp ? copy.whyGrows : copy.whyFalls}</h3>
+        <h3 className="text-lg font-black text-primary">
+          {isUp ? copy.whyGrows : copy.whyFalls}
+        </h3>
         <div className="mt-3 space-y-2 text-sm leading-6 text-secondary">
           <p>• {formatCopy(copy.whyLineSources, { count: sourceCount })}</p>
           <p>• {isUp ? copy.whyLineActivityUp : copy.whyLineActivityDown}</p>
-          <p>• {formatCopy(copy.whyLineRelated, { chips: chips.join(", ") })}</p>
+          <p>
+            • {formatCopy(copy.whyLineRelated, { chips: chips.join(", ") })}
+          </p>
         </div>
       </section>
 
-      <section ref={sourcesRef} id="trend-sources" className="mt-5 border-t border-soft pt-4 scroll-mt-20">
-        <h3 className="text-lg font-black text-primary">{copy.whoFormsAttention}</h3>
+      <section
+        ref={sourcesRef}
+        id="trend-sources"
+        className="mt-5 border-t border-soft pt-4 scroll-mt-20"
+      >
+        <h3 className="text-lg font-black text-primary">
+          {copy.whoFormsAttention}
+        </h3>
         <div className="mt-3 space-y-2">
           {(trend.topSources || []).slice(0, 6).map((source, index) => {
             const url = getSourceUrl(source);
@@ -1374,9 +1505,13 @@ function TrendDetail({
                 <div className="flex min-w-0 items-center gap-3">
                   <SourceAvatar source={source} size="lg" />
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-black text-primary">{source.title}</div>
+                    <div className="truncate text-sm font-black text-primary">
+                      {source.title}
+                    </div>
                     {getSourceHandle(source) ? (
-                      <div className="truncate text-xs text-secondary">@{getSourceHandle(source)}</div>
+                      <div className="truncate text-xs text-secondary">
+                        @{getSourceHandle(source)}
+                      </div>
                     ) : null}
                   </div>
                 </div>
@@ -1453,10 +1588,16 @@ function TrendRow({
         </div>
 
         <div className="min-w-0 flex-1">
-          <div className="truncate text-base font-black text-primary">{topic}</div>
+          <div className="truncate text-base font-black text-primary">
+            {topic}
+          </div>
 
           <div className="mt-1 flex items-center gap-1.5 text-xs whitespace-nowrap">
-            <span className={isUp ? "font-black text-emerald-500" : "font-black text-red-500"}>
+            <span
+              className={
+                isUp ? "font-black text-emerald-500" : "font-black text-red-500"
+              }
+            >
               {formatNumber(trend.mentions)}
             </span>
 
@@ -1464,7 +1605,9 @@ function TrendRow({
             {showSourceCount ? (
               <>
                 <span className="text-secondary">·</span>
-                <span className="text-secondary">{sourceCount} {copy.sources}</span>
+                <span className="text-secondary">
+                  {sourceCount} {copy.sources}
+                </span>
               </>
             ) : null}
           </div>
@@ -1473,15 +1616,23 @@ function TrendRow({
         <div
           className={[
             "grid h-11 w-11 shrink-0 place-items-center rounded-2xl",
-            isUp ? "bg-emerald-500/10 text-emerald-500" : "bg-red-500/10 text-red-500",
+            isUp
+              ? "bg-emerald-500/10 text-emerald-500"
+              : "bg-red-500/10 text-red-500",
           ].join(" ")}
         >
           {opened ? (
             <ChevronDown className="h-6 w-6" />
           ) : Math.abs(momentum) >= 100 ? (
-            isUp ? <ArrowUpRight className="h-6 w-6" /> : <ArrowDownRight className="h-6 w-6" />
+            isUp ? (
+              <ArrowUpRight className="h-6 w-6" />
+            ) : (
+              <ArrowDownRight className="h-6 w-6" />
+            )
+          ) : isUp ? (
+            <TrendingUp className="h-6 w-6" />
           ) : (
-            isUp ? <TrendingUp className="h-6 w-6" /> : <TrendingDown className="h-6 w-6" />
+            <TrendingDown className="h-6 w-6" />
           )}
         </div>
       </button>
@@ -1502,7 +1653,9 @@ function TrendRow({
           <div className="mt-4 flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <SourceDots sources={trend.topSources} />
-              <div className="text-base font-black text-primary">{sourceCount}</div>
+              <div className="text-base font-black text-primary">
+                {sourceCount}
+              </div>
             </div>
 
             <div
@@ -1556,7 +1709,7 @@ function buildCategories(locale: Locale, copy: TrendsCopy): TrendCategory[] {
   }
 
   const categories: TrendCategory[] = [
-    { value: "followed", emoji: "👀", label: "#" },
+    { value: "followed", emoji: "👀", label: copy.interests },
     { value: "all", emoji: "🔥", label: copy.all },
   ];
 
@@ -1589,7 +1742,7 @@ export function TrendsView({
   const [openedTopic, setOpenedTopic] = useState<string | null>(null);
   const [activeTrend, setActiveTrend] = useState<TrendItem | null>(null);
   const [followedTopics, setFollowedTopics] = useState<string[]>(() =>
-    typeof window === "undefined" ? [] : readFollowedTopics()
+    typeof window === "undefined" ? [] : readFollowedTopics(),
   );
   const copy = getTrendsCopy(locale);
 
@@ -1623,20 +1776,28 @@ export function TrendsView({
     writeFollowedTopics(followedTopics);
   }, [followedTopics]);
 
-  const categories = useMemo(() => buildCategories(locale, copy), [locale, copy]);
-  const visibleCategories = categoriesExpanded ? categories : categories.slice(0, 5);
+  const categories = useMemo(
+    () => buildCategories(locale, copy),
+    [locale, copy],
+  );
+  const visibleCategories = categoriesExpanded
+    ? categories
+    : categories.slice(0, 5);
+
   const categoryTrends = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
-    const followedSet = new Set(followedTopics);
 
     let list =
       selectedCategory === "followed"
-        ? trends.filter((item) => followedSet.has(normalizeTopic(getTopic(item))))
+        ? trends.filter((item) =>
+            followedTopics.includes(normalizeTopic(getTopic(item))),
+          )
         : selectedCategory === "all"
           ? trends
           : trends.filter(
               (item) =>
-                (item.category || getTrendCategory(getTopic(item))) === selectedCategory
+                (item.category || getTrendCategory(getTopic(item))) ===
+                selectedCategory,
             );
 
     const seen = new Set<string>();
@@ -1649,10 +1810,14 @@ export function TrendsView({
 
     if (normalizedQuery) {
       list = list.filter((item) =>
-        [getTopic(item), item.category, ...(item.topSources || []).map((source) => source.title)]
+        [
+          getTopic(item),
+          item.category,
+          ...(item.topSources || []).map((source) => source.title),
+        ]
           .join(" ")
           .toLowerCase()
-          .includes(normalizedQuery)
+          .includes(normalizedQuery),
       );
     }
 
@@ -1662,7 +1827,7 @@ export function TrendsView({
   const toggleFollow = (topic: string) => {
     const key = normalizeTopic(topic);
     setFollowedTopics((prev) =>
-      prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key]
+      prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key],
     );
   };
 
@@ -1775,13 +1940,19 @@ export function TrendsView({
 
       <div className="mb-3">
         {(() => {
-          const activeCategory = categories.find((item) => item.value === selectedCategory) || categories[0];
-          const totalMentions = categoryTrends.reduce((sum, item) => sum + item.mentions, 0);
-          const title = selectedCategory === "followed"
-            ? "#"
-            : selectedCategory === "all"
+          const activeCategory =
+            categories.find((item) => item.value === selectedCategory) ||
+            categories[0];
+          const totalMentions = categoryTrends.reduce(
+            (sum, item) => sum + item.mentions,
+            0,
+          );
+          const title =
+            selectedCategory === "all"
               ? copy.discussingNow
-              : `${activeCategory.label} +${formatNumber(totalMentions)} ${copy.today}`;
+              : selectedCategory === "followed"
+                ? copy.interests
+                : `${activeCategory.label} +${formatNumber(totalMentions)} ${copy.today}`;
 
           return (
             <h2 className="text-xl font-black text-primary">

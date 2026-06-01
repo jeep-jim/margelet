@@ -6,56 +6,486 @@ const TRENDS_DIR = "data/trends";
 
 const STOP_WORDS = new Set([
   // ru — служебные слова и частый мусор Telegram-постов
-  "это","что","как","для","если","или","его","её","ее","она","они","оно","там","тут","уже","ещё","еще",
-  "вот","все","всё","сам","сама","сами","над","под","без","при","про","чем","тем","где","кто",
-  "когда","почему","потому","так","также","только","можно","нужно","будет","будут","были","было","быть",
-  "есть","нет","да","не","но","же","бы","ли","на","по","из","от","до","за","во","со","ко","об",
-  "а","и","в","с","к","у","о","мы","вы","он","их","им","нас","вам","тебя","меня","наш","ваш",
-  "который","которая","которое","которые","которых","которым","которыми","того","той","том","томy",
-  "этот","эта","эти","этих","этом","этого","этой","этим","здесь","туда","сюда","пока","после","перед",
-  "сейчас","сегодня","вчера","завтра","день","дня","дней","года","год","лет","раз","раза","разом",
-  "всего","почти","очень","снова","сразу","прямо","просто","больше","меньше","через","теперь","даже",
-  "могут","может","мочь","должен","должна","должны","стоит","стал","стала","стали","нельзя",
-  "подписаться","подписывайтесь","подпишись","читать","читать далее","видео","фото","смотреть","ссылка","канал",
-  "новости","новость","пост","поста","посты","сообщает","сообщили","пишут","заявил","рассказал",
-  "рублей","рубля","руб","тыс","млн","млрд","тысяч","около","более","менее","около",
-  "чтобы","один","одна","одно","одни","из-за","изза","такой","такая","такое","такие",
-  "июня","июнь","июле","июля","август","августа","сентябрь","сентября","месяц","месяца",
-  "году","месяце","области","область","словам","слова","детей","дети","ребёнок","ребенок",
-  "россии","россию","россией","российский","российская","российские","москве",
+  "это",
+  "что",
+  "как",
+  "для",
+  "если",
+  "или",
+  "его",
+  "её",
+  "ее",
+  "она",
+  "они",
+  "оно",
+  "там",
+  "тут",
+  "уже",
+  "ещё",
+  "еще",
+  "вот",
+  "все",
+  "всё",
+  "сам",
+  "сама",
+  "сами",
+  "над",
+  "под",
+  "без",
+  "при",
+  "про",
+  "чем",
+  "тем",
+  "где",
+  "кто",
+  "когда",
+  "почему",
+  "потому",
+  "так",
+  "также",
+  "только",
+  "можно",
+  "нужно",
+  "будет",
+  "будут",
+  "были",
+  "было",
+  "быть",
+  "есть",
+  "нет",
+  "да",
+  "не",
+  "но",
+  "же",
+  "бы",
+  "ли",
+  "на",
+  "по",
+  "из",
+  "от",
+  "до",
+  "за",
+  "во",
+  "со",
+  "ко",
+  "об",
+  "а",
+  "и",
+  "в",
+  "с",
+  "к",
+  "у",
+  "о",
+  "мы",
+  "вы",
+  "он",
+  "их",
+  "им",
+  "нас",
+  "вам",
+  "тебя",
+  "меня",
+  "наш",
+  "ваш",
+  "который",
+  "которая",
+  "которое",
+  "которые",
+  "которых",
+  "которым",
+  "которыми",
+  "того",
+  "той",
+  "том",
+  "томy",
+  "этот",
+  "эта",
+  "эти",
+  "этих",
+  "этом",
+  "этого",
+  "этой",
+  "этим",
+  "здесь",
+  "туда",
+  "сюда",
+  "пока",
+  "после",
+  "перед",
+  "сейчас",
+  "сегодня",
+  "вчера",
+  "завтра",
+  "день",
+  "дня",
+  "дней",
+  "года",
+  "год",
+  "лет",
+  "раз",
+  "раза",
+  "разом",
+  "всего",
+  "почти",
+  "очень",
+  "снова",
+  "сразу",
+  "прямо",
+  "просто",
+  "больше",
+  "меньше",
+  "через",
+  "теперь",
+  "даже",
+  "могут",
+  "может",
+  "мочь",
+  "должен",
+  "должна",
+  "должны",
+  "стоит",
+  "стал",
+  "стала",
+  "стали",
+  "нельзя",
+  "подписаться",
+  "подписывайтесь",
+  "подпишись",
+  "читать",
+  "читать далее",
+  "видео",
+  "фото",
+  "смотреть",
+  "ссылка",
+  "канал",
+  "новости",
+  "новость",
+  "пост",
+  "поста",
+  "посты",
+  "сообщает",
+  "сообщили",
+  "пишут",
+  "заявил",
+  "рассказал",
+  "рублей",
+  "рубля",
+  "руб",
+  "тыс",
+  "млн",
+  "млрд",
+  "тысяч",
+  "около",
+  "более",
+  "менее",
+  "около",
+  "россии",
+  "россию",
+  "россией",
+  "российский",
+  "российская",
+  "российские",
+  "москве",
+  "москвы",
+  "москву",
+  "июня",
+  "января",
+  "февраля",
+  "марта",
+  "апреля",
+  "мая",
+  "июля",
+  "августа",
+  "сентября",
+  "октября",
+  "ноября",
+  "декабря",
+  "один",
+  "одна",
+  "одно",
+  "одни",
+  "из-за",
+  "изза",
+  "такой",
+  "такая",
+  "такое",
+  "такие",
+  "году",
+  "словам",
+  "области",
+  "детей",
+  "сообщение",
+  "комментарии",
+  "источник",
+  "источники",
+  "автор",
+  "авторы",
+  "главное",
+  "подробнее",
 
   // en — service words + Telegram CTA/noise
-  "the","and","for","with","this","that","from","are","was","were","you","your","they","have",
-  "has","had","not","but","his","her","its","our","their","about","into","after","before","what",
-  "when","where","why","how","who","all","can","will","would","could","should","just","more","than","then","there","here",
-  "now","new","don","one","two","most","join","over","every","only","today","yesterday","tomorrow","year","years","day","days",
-  "video","photo","watch","read","subscribe","follow","channel","post","posts","news","update","updates","breaking",
-  "said","says","say","reported","reports","report","live","official","latest","first","last","next","again",
-  "many","much","some","any","also","even","still","very","really","click","link","source","sources",
-  "usd","eur","rub","million","billion","thousand","max","min",
-  "active","total","sentiment","right","left","wrong","high","low","best","good","bad","big","small",
+  "the",
+  "and",
+  "for",
+  "with",
+  "this",
+  "that",
+  "from",
+  "are",
+  "was",
+  "were",
+  "you",
+  "your",
+  "they",
+  "have",
+  "has",
+  "had",
+  "not",
+  "but",
+  "his",
+  "her",
+  "its",
+  "our",
+  "their",
+  "about",
+  "into",
+  "after",
+  "before",
+  "what",
+  "when",
+  "where",
+  "why",
+  "how",
+  "who",
+  "all",
+  "can",
+  "will",
+  "would",
+  "could",
+  "should",
+  "just",
+  "more",
+  "than",
+  "then",
+  "there",
+  "here",
+  "now",
+  "new",
+  "don",
+  "one",
+  "two",
+  "most",
+  "join",
+  "over",
+  "every",
+  "only",
+  "today",
+  "yesterday",
+  "tomorrow",
+  "year",
+  "years",
+  "day",
+  "days",
+  "video",
+  "photo",
+  "watch",
+  "read",
+  "subscribe",
+  "follow",
+  "channel",
+  "post",
+  "posts",
+  "news",
+  "update",
+  "updates",
+  "breaking",
+  "said",
+  "says",
+  "say",
+  "reported",
+  "reports",
+  "report",
+  "live",
+  "official",
+  "latest",
+  "first",
+  "last",
+  "next",
+  "again",
+  "many",
+  "much",
+  "some",
+  "any",
+  "also",
+  "even",
+  "still",
+  "very",
+  "really",
+  "click",
+  "link",
+  "source",
+  "sources",
+  "usd",
+  "eur",
+  "rub",
+  "million",
+  "billion",
+  "thousand",
+  "max",
+  "min",
 
   // extra common particles in supported regions/languages — conservative baseline
-  "de","la","el","los","las","un","una","unos","unas","por","para","con","sin","del","que","como","más","mas","muy",
-  "le","les","des","une","aux","avec","sur","dans","est","sont","plus","moins","pour","par",
-  "der","die","das","und","oder","ist","sind","mit","von","auf","ein","eine","einer","nicht","mehr",
-  "ve","bir","bu","şu","icin","için","olan","olarak","daha","sonra","önce","gibi",
+  "de",
+  "la",
+  "el",
+  "los",
+  "las",
+  "un",
+  "una",
+  "unos",
+  "unas",
+  "por",
+  "para",
+  "con",
+  "sin",
+  "del",
+  "que",
+  "como",
+  "más",
+  "mas",
+  "muy",
+  "le",
+  "les",
+  "des",
+  "une",
+  "aux",
+  "avec",
+  "sur",
+  "dans",
+  "est",
+  "sont",
+  "plus",
+  "moins",
+  "pour",
+  "par",
+  "der",
+  "die",
+  "das",
+  "und",
+  "oder",
+  "ist",
+  "sind",
+  "mit",
+  "von",
+  "auf",
+  "ein",
+  "eine",
+  "einer",
+  "nicht",
+  "mehr",
+  "ve",
+  "bir",
+  "bu",
+  "şu",
+  "icin",
+  "için",
+  "olan",
+  "olarak",
+  "daha",
+  "sonra",
+  "önce",
+  "gibi",
 ]);
 
 const GENERIC_SINGLE_WORDS = new Set([
-  "рынок","рынки","компания","компании","люди","человек","время","страна","страны","город","города",
-  "работа","работы","деньги","цена","цены","сезон","место","места","часть","случай","уровень",
-  "market","markets","company","people","person","time","country","city","work","money","price","season","place","case","level",
-  "россия","сша","украина","москва","москве","июнь","июня","один","такой","году","области","словам",
+  "рынок",
+  "рынки",
+  "компания",
+  "компании",
+  "люди",
+  "человек",
+  "время",
+  "страна",
+  "страны",
+  "город",
+  "города",
+  "работа",
+  "работы",
+  "деньги",
+  "цена",
+  "цены",
+  "сезон",
+  "место",
+  "места",
+  "часть",
+  "случай",
+  "уровень",
+  "market",
+  "markets",
+  "company",
+  "people",
+  "person",
+  "time",
+  "country",
+  "city",
+  "work",
+  "money",
+  "price",
+  "season",
+  "place",
+  "case",
+  "level",
 ]);
 
 const KNOWN_ENTITY_WORDS = new Set([
-  "ai","gpt","openai","chatgpt","apple","google","microsoft","tesla","nvidia","spacex","telegram","durov","дуров",
-  "bitcoin","btc","ethereum","eth","ton","crypto","binance","sber","сбер","сбербанк","газпром","tesla","iphone",
-  "москва","москве","moscow","киев","kyiv","украина","россия","iran","иран","trump","трамп","putin","путин",
-  "спартак","зенит","messi","месси","ozon","wildberries","youtube","tiktok","instagram",
-  "гроза","дождь","ливень","снег","погода","нефть","доллар","рубль","инфляция","nasdaq","saylor",
-  "capybara","капибара","капибары","муравьи","жуки","птицы",
+  "ai",
+  "gpt",
+  "openai",
+  "chatgpt",
+  "apple",
+  "google",
+  "microsoft",
+  "tesla",
+  "nvidia",
+  "spacex",
+  "telegram",
+  "durov",
+  "дуров",
+  "bitcoin",
+  "btc",
+  "ethereum",
+  "eth",
+  "ton",
+  "crypto",
+  "binance",
+  "sber",
+  "сбер",
+  "сбербанк",
+  "газпром",
+  "tesla",
+  "iphone",
+  "москва",
+  "москве",
+  "moscow",
+  "киев",
+  "kyiv",
+  "украина",
+  "россия",
+  "iran",
+  "иран",
+  "trump",
+  "трамп",
+  "putin",
+  "путин",
+  "спартак",
+  "зенит",
+  "messi",
+  "месси",
+  "ozon",
+  "wildberries",
+  "youtube",
+  "tiktok",
+  "instagram",
 ]);
 
 type TrendSource = {
@@ -134,20 +564,23 @@ function isGoodSingleToken(token: string) {
   if (isLikelyNoiseToken(normalized)) return false;
   if (GENERIC_SINGLE_WORDS.has(normalized)) return false;
 
-  // Single-word trends are dangerous: most of them are just grammar noise.
-  // Keep only known entities or strong machine-readable tokens.
+  // allow known entities even if short, e.g. ton, btc, ai
   if (KNOWN_ENTITY_WORDS.has(normalized)) return true;
-  if (/\d/.test(normalized) && normalized.length >= 3) return true;
-  if (/^[a-z]{2,8}\d{1,4}$/i.test(normalized)) return true;
 
-  return false;
+  // strict for short latin words because they often become noise: now/new/one/don/etc.
+  if (/^[a-z0-9-]+$/.test(normalized) && normalized.length < 5) return false;
+
+  return normalized.length >= 4;
 }
 
 function isGoodPhrase(parts: string[]) {
   if (parts.length < 2) return false;
   if (parts.some((part) => isLikelyNoiseToken(part))) return false;
 
-  const meaningful = parts.filter((part) => isGoodSingleToken(part) || KNOWN_ENTITY_WORDS.has(normalizeToken(part)));
+  const meaningful = parts.filter(
+    (part) =>
+      isGoodSingleToken(part) || KNOWN_ENTITY_WORDS.has(normalizeToken(part)),
+  );
   if (meaningful.length === 0) return false;
 
   const joined = parts.join(" ");
@@ -213,7 +646,7 @@ function getSourceId(post: IngestedPost): string {
       (post as any).channelUsername ||
       (post as any).sourceTitle ||
       (post as any).channelTitle ||
-      "telegram"
+      "telegram",
   );
 }
 
@@ -225,7 +658,7 @@ function getSourceTitle(post: IngestedPost): string {
       (post as any).channelName ||
       (post as any).sourceUsername ||
       (post as any).channelUsername ||
-      "Telegram"
+      "Telegram",
   );
 }
 
@@ -246,6 +679,92 @@ function getSourceAvatar(post: IngestedPost): string | undefined {
   );
 }
 
+function normalizeCategory(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const normalized = value.trim().toLowerCase();
+  if (!normalized) return null;
+
+  const aliases: Record<string, string> = {
+    tech: "technology",
+    it: "technology",
+    auto: "auto",
+    cars: "auto",
+    economy: "economy",
+    economics: "economy",
+    finance: "finance",
+    business: "business",
+    news: "news",
+    politics: "politics",
+    science: "science",
+    education: "education",
+    culture: "culture",
+    gaming: "gaming",
+    games: "gaming",
+    sports: "sports",
+    health: "health",
+    travel: "travel",
+    food: "food",
+    nature: "nature",
+    marketing: "marketing",
+    startups: "startups",
+  };
+
+  return aliases[normalized] || normalized;
+}
+
+function collectCategoryValues(value: unknown, out: Set<string>) {
+  if (!value) return;
+
+  if (typeof value === "string") {
+    const category = normalizeCategory(value);
+    if (category) out.add(category);
+    return;
+  }
+
+  if (Array.isArray(value)) {
+    for (const item of value) collectCategoryValues(item, out);
+    return;
+  }
+
+  if (typeof value === "object") {
+    const record = value as Record<string, unknown>;
+    collectCategoryValues(record.value, out);
+    collectCategoryValues(record.id, out);
+    collectCategoryValues(record.slug, out);
+    collectCategoryValues(record.tag, out);
+    collectCategoryValues(record.category, out);
+  }
+}
+
+function getPostCategories(post: IngestedPost): string[] {
+  const categories = new Set<string>();
+  const record = post as any;
+
+  collectCategoryValues(record.category, categories);
+  collectCategoryValues(record.tag, categories);
+  collectCategoryValues(record.tags, categories);
+  collectCategoryValues(record.contentTags, categories);
+  collectCategoryValues(record.sourceTags, categories);
+  collectCategoryValues(record.channelTags, categories);
+  collectCategoryValues(record.source?.tags, categories);
+  collectCategoryValues(record.channel?.tags, categories);
+  collectCategoryValues(record.source?.category, categories);
+  collectCategoryValues(record.channel?.category, categories);
+
+  return [...categories].filter((item) => item !== "all");
+}
+
+function getDominantCategory(
+  categoryMap: Record<string, number>,
+  fallback: string,
+) {
+  const winner = Object.entries(categoryMap)
+    .filter(([category]) => category && category !== "all")
+    .sort((a, b) => b[1] - a[1])[0];
+
+  return winner?.[0] || fallback;
+}
+
 function calcMomentum(history: number[]) {
   const mid = Math.floor(history.length / 2);
   const previous = history.slice(0, mid).reduce((sum, value) => sum + value, 0);
@@ -260,7 +779,19 @@ function calcMomentum(history: number[]) {
 function titleCaseWord(word: string) {
   const normalized = normalizeToken(word);
 
-  const upper = new Set(["ai", "gpt", "btc", "eth", "ton", "nft", "etf", "usa", "us", "uk", "uae"]);
+  const upper = new Set([
+    "ai",
+    "gpt",
+    "btc",
+    "eth",
+    "ton",
+    "nft",
+    "etf",
+    "usa",
+    "us",
+    "uk",
+    "uae",
+  ]);
   const brands: Record<string, string> = {
     openai: "OpenAI",
     chatgpt: "ChatGPT",
@@ -292,7 +823,8 @@ function formatTopic(topic: string) {
     .map((part, index) => {
       if (index === 0) return titleCaseWord(part);
       const normalized = normalizeToken(part);
-      if (["etf", "ai", "gpt", "btc", "eth", "ton"].includes(normalized)) return normalized.toUpperCase();
+      if (["etf", "ai", "gpt", "btc", "eth", "ton"].includes(normalized))
+        return normalized.toUpperCase();
       return part;
     })
     .join(" ");
@@ -301,18 +833,37 @@ function formatTopic(topic: string) {
 function inferCategory(topic: string) {
   const text = topic.toLowerCase();
 
-  if (/bitcoin|btc|ethereum|eth|crypto|ton|binance|банк|сбер|доллар|курс|нефть|oil/.test(text)) return "finance";
+  if (
+    /bitcoin|btc|ethereum|eth|crypto|ton|binance|банк|сбер|доллар|курс|нефть|oil/.test(
+      text,
+    )
+  )
+    return "finance";
   if (/tesla|авто|машин|car|cars|ev|электромоб/.test(text)) return "auto";
-  if (/openai|chatgpt|gpt|nvidia|iphone|apple|google|microsoft|ai|ии|нейросет/.test(text)) return "technology";
-  if (/спартак|зенит|футбол|football|messi|месси|спорт|лига/.test(text)) return "sports";
-  if (/погод|гроза|дожд|москва|moscow|срочн|новост|breaking/.test(text)) return "news";
-  if (/трамп|trump|иран|iran|украин|полит|выбор|government|president/.test(text)) return "politics";
+  if (
+    /openai|chatgpt|gpt|nvidia|iphone|apple|google|microsoft|ai|ии|нейросет/.test(
+      text,
+    )
+  )
+    return "technology";
+  if (/спартак|зенит|футбол|football|messi|месси|спорт|лига/.test(text))
+    return "sports";
+  if (/погод|гроза|дожд|москва|moscow|срочн|новост|breaking/.test(text))
+    return "news";
+  if (
+    /трамп|trump|иран|iran|украин|полит|выбор|government|president/.test(text)
+  )
+    return "politics";
   if (/игр|game|gaming|steam|gta|dtf/.test(text)) return "gaming";
   if (/еда|рецепт|food|картош|доставка/.test(text)) return "food";
   if (/жук|мурав|птиц|живот|nature|animal|капибар/.test(text)) return "nature";
   if (/кино|сериал|film|movie|music|музык/.test(text)) return "culture";
-  if (/курс|обуч|education|study|школ|университет/.test(text)) return "education";
-  if (/бизнес|стартап|startup|marketplace|маркетплейс|ozon|wildberries/.test(text)) return "business";
+  if (/курс|обуч|education|study|школ|университет/.test(text))
+    return "education";
+  if (
+    /бизнес|стартап|startup|marketplace|маркетплейс|ozon|wildberries/.test(text)
+  )
+    return "business";
   if (/travel|турц|виза|отел|hotel|flight/.test(text)) return "travel";
   if (/здоров|health|медицин|питание/.test(text)) return "health";
   if (/реклам|marketing|smm|telegram ads/.test(text)) return "marketing";
@@ -347,10 +898,10 @@ function shouldKeepTopic(topic: string, mentions: number, sourceCount: number) {
     const token = parts[0];
     const normalized = normalizeToken(token);
     if (!isGoodSingleToken(token)) return false;
-    if (GENERIC_SINGLE_WORDS.has(normalized)) return false;
 
-    // Even known single-word topics must appear in more than one place.
-    if (mentions < 2 || sourceCount < 1) return false;
+    // Single-word trends are allowed only for known entities/brands/places.
+    // Everything else becomes noise too easily: "чтобы", "июня", "один", "active", etc.
+    if (!KNOWN_ENTITY_WORDS.has(normalized)) return false;
   }
 
   if (parts.length === 2 && mentions < 3 && sourceCount < 2) return false;
@@ -359,7 +910,9 @@ function shouldKeepTopic(topic: string, mentions: number, sourceCount: number) {
   return true;
 }
 
-function calcScore(trend: Pick<TrendItem, "topic" | "mentions" | "momentum" | "sourceCount">) {
+function calcScore(
+  trend: Pick<TrendItem, "topic" | "mentions" | "momentum" | "sourceCount">,
+) {
   return (
     trend.mentions +
     Math.abs(trend.momentum) * 100 +
@@ -380,6 +933,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       mentions: number;
       history: number[];
       sourceMap: Record<string, TrendSource>;
+      categoryMap: Record<string, number>;
       examples: TrendPost[];
       firstSeenAt: number | null;
       lastSeenAt: number | null;
@@ -404,6 +958,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
     const sourceTitle = getSourceTitle(post);
     const sourceUsername = getSourceUsername(post);
     const sourceAvatar = getSourceAvatar(post);
+    const postCategories = getPostCategories(post);
 
     const topics = new Set(extractTopics(text));
 
@@ -413,6 +968,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
           mentions: 0,
           history: Array.from({ length: buckets }, () => 0),
           sourceMap: {},
+          categoryMap: {},
           examples: [],
           firstSeenAt: null,
           lastSeenAt: null,
@@ -423,6 +979,9 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
 
       item.mentions += 1;
       item.history[bucketIndex] += 1;
+      for (const category of postCategories) {
+        item.categoryMap[category] = (item.categoryMap[category] || 0) + 1;
+      }
 
       if (!item.sourceMap[sourceId]) {
         item.sourceMap[sourceId] = {
@@ -437,9 +996,13 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       item.sourceMap[sourceId].mentions += 1;
 
       item.firstSeenAt =
-        item.firstSeenAt === null ? postTime : Math.min(item.firstSeenAt, postTime);
+        item.firstSeenAt === null
+          ? postTime
+          : Math.min(item.firstSeenAt, postTime);
       item.lastSeenAt =
-        item.lastSeenAt === null ? postTime : Math.max(item.lastSeenAt, postTime);
+        item.lastSeenAt === null
+          ? postTime
+          : Math.max(item.lastSeenAt, postTime);
 
       if (item.examples.length < 5) {
         item.examples.push({
@@ -473,16 +1036,26 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
         countries: [{ code: countryCode, mentions: item.mentions }],
         topSources,
         history: item.history,
-        firstSeenAt: item.firstSeenAt ? new Date(item.firstSeenAt).toISOString() : null,
-        lastSeenAt: item.lastSeenAt ? new Date(item.lastSeenAt).toISOString() : null,
+        firstSeenAt: item.firstSeenAt
+          ? new Date(item.firstSeenAt).toISOString()
+          : null,
+        lastSeenAt: item.lastSeenAt
+          ? new Date(item.lastSeenAt).toISOString()
+          : null,
         examples: item.examples,
-        category: inferCategory(topic),
+        category: getDominantCategory(item.categoryMap, inferCategory(topic)),
       };
 
       trend.score = calcScore(trend);
       return trend;
     })
-    .filter((trend) => shouldKeepTopic(trend.topic.toLowerCase(), trend.mentions, trend.sourceCount))
+    .filter((trend) =>
+      shouldKeepTopic(
+        trend.topic.toLowerCase(),
+        trend.mentions,
+        trend.sourceCount,
+      ),
+    )
     .sort((a, b) => (b.score || 0) - (a.score || 0))
     .slice(0, 150)
     .map((trend) => {
@@ -494,10 +1067,8 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
   await mkdir(countryDir, { recursive: true });
   await writeFile(
     path.join(countryDir, "trends.json"),
-    JSON.stringify(trends, null, 2)
+    JSON.stringify(trends, null, 2),
   );
 
-  console.log(
-    `📊 Trends updated for ${countryCode}: ${trends.length} topics`
-  );
+  console.log(`📊 Trends updated for ${countryCode}: ${trends.length} topics`);
 }
