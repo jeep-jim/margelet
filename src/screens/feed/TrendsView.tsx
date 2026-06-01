@@ -5,7 +5,6 @@ import {
   Bell,
   Check,
   ChevronDown,
-  Eye,
   Search,
   TrendingDown,
   TrendingUp,
@@ -1557,6 +1556,7 @@ function buildCategories(locale: Locale, copy: TrendsCopy): TrendCategory[] {
   }
 
   const categories: TrendCategory[] = [
+    { value: "followed", emoji: "👀", label: "#" },
     { value: "all", emoji: "🔥", label: copy.all },
   ];
 
@@ -1586,7 +1586,6 @@ export function TrendsView({
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
-  const [followedTopicsExpanded, setFollowedTopicsExpanded] = useState(false);
   const [openedTopic, setOpenedTopic] = useState<string | null>(null);
   const [activeTrend, setActiveTrend] = useState<TrendItem | null>(null);
   const [followedTopics, setFollowedTopics] = useState<string[]>(() =>
@@ -1626,20 +1625,19 @@ export function TrendsView({
 
   const categories = useMemo(() => buildCategories(locale, copy), [locale, copy]);
   const visibleCategories = categoriesExpanded ? categories : categories.slice(0, 5);
-  const visibleFollowedTopics = followedTopicsExpanded
-    ? followedTopics
-    : followedTopics.slice(0, 2);
-
   const categoryTrends = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
+    const followedSet = new Set(followedTopics);
 
     let list =
-      selectedCategory === "all"
-        ? trends
-        : trends.filter(
-            (item) =>
-              (item.category || getTrendCategory(getTopic(item))) === selectedCategory
-          );
+      selectedCategory === "followed"
+        ? trends.filter((item) => followedSet.has(normalizeTopic(getTopic(item))))
+        : selectedCategory === "all"
+          ? trends
+          : trends.filter(
+              (item) =>
+                (item.category || getTrendCategory(getTopic(item))) === selectedCategory
+            );
 
     const seen = new Set<string>();
     list = list.filter((item) => {
@@ -1659,7 +1657,7 @@ export function TrendsView({
     }
 
     return list.slice(0, 20);
-  }, [trends, selectedCategory, query]);
+  }, [trends, selectedCategory, query, followedTopics]);
 
   const toggleFollow = (topic: string) => {
     const key = normalizeTopic(topic);
@@ -1775,75 +1773,15 @@ export function TrendsView({
         </div>
       </div>
 
-      {followedTopics.length ? (
-        <div className="mb-4 rounded-[24px] border border-soft bg-surface px-3 py-3">
-          <div className="mb-2 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-secondary">
-              <Eye className="h-3.5 w-3.5" />
-              {copy.myTopics}
-            </div>
-
-            {followedTopics.length > 2 ? (
-              <button
-                type="button"
-                onClick={() => setFollowedTopicsExpanded((prev) => !prev)}
-                className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-soft bg-surface-soft text-secondary transition hover:bg-app hover:text-primary"
-                aria-label={followedTopicsExpanded ? copy.hide : copy.more}
-                title={followedTopicsExpanded ? copy.hide : copy.more}
-              >
-                <ChevronDown
-                  className={[
-                    "h-4 w-4 transition-transform",
-                    followedTopicsExpanded ? "rotate-180" : "",
-                  ].join(" ")}
-                />
-              </button>
-            ) : null}
-          </div>
-
-          <div
-            className={[
-              followedTopicsExpanded
-                ? "grid grid-cols-1 gap-2 sm:grid-cols-2"
-                : "flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
-            ].join(" ")}
-          >
-            {visibleFollowedTopics.map((topic) => {
-              const trend =
-                categoryTrends.find((item) => normalizeTopic(getTopic(item)) === topic) ||
-                trends.find((item) => normalizeTopic(getTopic(item)) === topic);
-
-              return (
-                <div
-                  key={topic}
-                  className="inline-flex min-w-0 items-center gap-2 rounded-full border border-soft bg-surface-soft py-1 pl-2 pr-1.5 text-xs font-bold text-primary"
-                >
-                  {trend?.topSources?.length ? <SourceDots sources={trend.topSources} /> : <span>🔥</span>}
-                  <span className="max-w-[150px] truncate">{topic}</span>
-
-                  <button
-                    type="button"
-                    onClick={() => toggleFollow(topic)}
-                    className="grid h-5 w-5 shrink-0 place-items-center rounded-full text-secondary transition hover:bg-app hover:text-primary"
-                    title={copy.unsubscribeTopicTitle}
-                    aria-label={copy.unsubscribeTopicTitle}
-                  >
-                    <X className="h-3.5 w-3.5" />
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ) : null}
-
       <div className="mb-3">
         {(() => {
           const activeCategory = categories.find((item) => item.value === selectedCategory) || categories[0];
           const totalMentions = categoryTrends.reduce((sum, item) => sum + item.mentions, 0);
-          const title = selectedCategory === "all"
-            ? copy.discussingNow
-            : `${activeCategory.label} +${formatNumber(totalMentions)} ${copy.today}`;
+          const title = selectedCategory === "followed"
+            ? "#"
+            : selectedCategory === "all"
+              ? copy.discussingNow
+              : `${activeCategory.label} +${formatNumber(totalMentions)} ${copy.today}`;
 
           return (
             <h2 className="text-xl font-black text-primary">

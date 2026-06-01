@@ -19,6 +19,10 @@ const STOP_WORDS = new Set([
   "подписаться","подписывайтесь","подпишись","читать","читать далее","видео","фото","смотреть","ссылка","канал",
   "новости","новость","пост","поста","посты","сообщает","сообщили","пишут","заявил","рассказал",
   "рублей","рубля","руб","тыс","млн","млрд","тысяч","около","более","менее","около",
+  "чтобы","один","одна","одно","одни","из-за","изза","такой","такая","такое","такие",
+  "июня","июнь","июле","июля","август","августа","сентябрь","сентября","месяц","месяца",
+  "году","месяце","области","область","словам","слова","детей","дети","ребёнок","ребенок",
+  "россии","россию","россией","российский","российская","российские","москве",
 
   // en — service words + Telegram CTA/noise
   "the","and","for","with","this","that","from","are","was","were","you","your","they","have",
@@ -29,6 +33,7 @@ const STOP_WORDS = new Set([
   "said","says","say","reported","reports","report","live","official","latest","first","last","next","again",
   "many","much","some","any","also","even","still","very","really","click","link","source","sources",
   "usd","eur","rub","million","billion","thousand","max","min",
+  "active","total","sentiment","right","left","wrong","high","low","best","good","bad","big","small",
 
   // extra common particles in supported regions/languages — conservative baseline
   "de","la","el","los","las","un","una","unos","unas","por","para","con","sin","del","que","como","más","mas","muy",
@@ -41,6 +46,7 @@ const GENERIC_SINGLE_WORDS = new Set([
   "рынок","рынки","компания","компании","люди","человек","время","страна","страны","город","города",
   "работа","работы","деньги","цена","цены","сезон","место","места","часть","случай","уровень",
   "market","markets","company","people","person","time","country","city","work","money","price","season","place","case","level",
+  "россия","сша","украина","москва","москве","июнь","июня","один","такой","году","области","словам",
 ]);
 
 const KNOWN_ENTITY_WORDS = new Set([
@@ -48,6 +54,8 @@ const KNOWN_ENTITY_WORDS = new Set([
   "bitcoin","btc","ethereum","eth","ton","crypto","binance","sber","сбер","сбербанк","газпром","tesla","iphone",
   "москва","москве","moscow","киев","kyiv","украина","россия","iran","иран","trump","трамп","putin","путин",
   "спартак","зенит","messi","месси","ozon","wildberries","youtube","tiktok","instagram",
+  "гроза","дождь","ливень","снег","погода","нефть","доллар","рубль","инфляция","nasdaq","saylor",
+  "capybara","капибара","капибары","муравьи","жуки","птицы",
 ]);
 
 type TrendSource = {
@@ -126,13 +134,13 @@ function isGoodSingleToken(token: string) {
   if (isLikelyNoiseToken(normalized)) return false;
   if (GENERIC_SINGLE_WORDS.has(normalized)) return false;
 
-  // allow known entities even if short, e.g. ton, btc, ai
+  // Single-word trends are dangerous: most of them are just grammar noise.
+  // Keep only known entities or strong machine-readable tokens.
   if (KNOWN_ENTITY_WORDS.has(normalized)) return true;
+  if (/\d/.test(normalized) && normalized.length >= 3) return true;
+  if (/^[a-z]{2,8}\d{1,4}$/i.test(normalized)) return true;
 
-  // strict for short latin words because they often become noise: now/new/one/don/etc.
-  if (/^[a-z0-9-]+$/.test(normalized) && normalized.length < 5) return false;
-
-  return normalized.length >= 4;
+  return false;
 }
 
 function isGoodPhrase(parts: string[]) {
@@ -337,12 +345,12 @@ function shouldKeepTopic(topic: string, mentions: number, sourceCount: number) {
 
   if (parts.length === 1) {
     const token = parts[0];
+    const normalized = normalizeToken(token);
     if (!isGoodSingleToken(token)) return false;
+    if (GENERIC_SINGLE_WORDS.has(normalized)) return false;
 
-    // Single-word trends must be stronger than phrase trends.
-    if (!KNOWN_ENTITY_WORDS.has(normalizeToken(token)) && mentions < 8 && sourceCount < 3) {
-      return false;
-    }
+    // Even known single-word topics must appear in more than one place.
+    if (mentions < 2 || sourceCount < 1) return false;
   }
 
   if (parts.length === 2 && mentions < 3 && sourceCount < 2) return false;
