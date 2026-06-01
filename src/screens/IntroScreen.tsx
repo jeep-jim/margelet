@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, TrendingDown, TrendingUp } from "lucide-react";
+import { ChevronDown, TrendingUp } from "lucide-react";
 import type { SiteLocale } from "../lib/locales";
 import { SITE_LOCALES } from "../lib/locales";
 import { Button } from "../components/ui/Button";
@@ -20,6 +20,7 @@ type IntroCopy = {
   }[];
   next: string;
   enter: string;
+  sources: string;
 };
 
 const LANGUAGE_STORAGE_KEY = "margelet_locale";
@@ -29,300 +30,325 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Язык",
     slides: [
       {
-        title: "Что обсуждают в Telegram прямо сейчас 🔥",
-        text: "Тренды раньше новостей",
+        title: "Где сейчас внимание людей 🔥",
+        text: "margeleT — это индекс внимания и тренды раньше новостей",
       },
     ],
     next: "Далее",
     enter: "Показать",
+    sources: "источников",
   },
 
   ua: {
     chooseLanguage: "🌎 Мова",
     slides: [
       {
-        title: "Що обговорюють у Telegram прямо зараз 🔥",
-        text: "Тренди раніше за новини",
+        title: "Де зараз увага людей 🔥",
+        text: "margeleT — це індекс уваги і тренди раніше за новини",
       },
     ],
     next: "Далі",
     enter: "Показати",
+    sources: "джерел",
   },
 
   us: {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "What Telegram is talking about right now 🔥",
-        text: "Trends before the news",
+        title: "Where people's attention is now 🔥",
+        text: "margeleT is an attention index and trends before the news",
       },
     ],
     next: "Next",
     enter: "Show",
+    sources: "sources",
   },
 
   in: {
     chooseLanguage: "🌎 भाषा",
     slides: [
       {
-        title: "Telegram अभी किस बारे में बात कर रहा है 🔥",
-        text: "खबरों से पहले ट्रेंड्स",
+        title: "लोगों का ध्यान अभी कहाँ है 🔥",
+        text: "margeleT ध्यान का इंडेक्स है और खबरों से पहले ट्रेंड दिखाता है",
       },
     ],
     next: "आगे",
     enter: "दिखाएँ",
+    sources: "स्रोत",
   },
 
   ir: {
     chooseLanguage: "🌎 زبان",
     slides: [
       {
-        title: "چه چیزی در Telegram بحث می‌شود 🔥",
-        text: "ترندها قبل از اخبار",
+        title: "توجه مردم الان کجاست 🔥",
+        text: "margeleT شاخص توجه است و روندها را قبل از خبرها نشان می‌دهد",
       },
     ],
     next: "بعدی",
     enter: "نمایش",
+    sources: "منبع",
   },
 
   tr: {
     chooseLanguage: "🌎 Dil",
     slides: [
       {
-        title: "Telegram şu anda ne konuşuyor 🔥",
-        text: "Haberlerden önce trendler",
+        title: "İnsanların dikkati şimdi nerede 🔥",
+        text: "margeleT bir dikkat endeksi ve haberlerden önce trendlerdir",
       },
     ],
     next: "İleri",
     enter: "Göster",
+    sources: "kaynak",
   },
 
   br: {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "O que o Telegram está falando agora 🔥",
-        text: "Tendências antes das notícias",
+        title: "Onde está a atenção das pessoas agora 🔥",
+        text: "margeleT é um índice de atenção e tendências antes das notícias",
       },
     ],
     next: "Próximo",
     enter: "Mostrar",
+    sources: "fontes",
   },
 
   kz: {
     chooseLanguage: "🌎 Тіл",
     slides: [
       {
-        title: "Қазір Telegram не айтып жатыр 🔥",
-        text: "Жаңалықтардан бұрын трендтер",
+        title: "Адамдардың назары қазір қайда 🔥",
+        text: "margeleT — назар индексі және жаңалықтардан бұрынғы трендтер",
       },
     ],
     next: "Әрі қарай",
     enter: "Көрсету",
+    sources: "дереккөз",
   },
 
   uz: {
     chooseLanguage: "🌎 Til",
     slides: [
       {
-        title: "Hozir Telegram nima haqida gapiryapti 🔥",
-        text: "Yangiliklardan oldin trendlar",
+        title: "Odamlar eʼtibori hozir qayerda 🔥",
+        text: "margeleT — eʼtibor indeksi va yangiliklardan oldingi trendlar",
       },
     ],
     next: "Keyingi",
     enter: "Ko‘rsatish",
+    sources: "manba",
   },
 
   ae: {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "ما الذي يتحدث عنه Telegram الآن 🔥",
-        text: "الاتجاهات قبل الأخبار",
+        title: "أين انتباه الناس الآن 🔥",
+        text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
       },
     ],
     next: "التالي",
     enter: "عرض",
+    sources: "مصدر",
   },
 
   eg: {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "ما الذي يتحدث عنه Telegram الآن 🔥",
-        text: "الاتجاهات قبل الأخبار",
+        title: "أين انتباه الناس الآن 🔥",
+        text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
       },
     ],
     next: "التالي",
     enter: "عرض",
+    sources: "مصدر",
   },
 
   pk: {
     chooseLanguage: "🌎 زبان",
     slides: [
       {
-        title: "Telegram اب کس بارے میں بات کر رہا ہے 🔥",
-        text: "خبروں سے پہلے رجحانات",
+        title: "لوگوں کی توجہ ابھی کہاں ہے 🔥",
+        text: "margeleT توجہ کا انڈیکس ہے اور خبروں سے پہلے رجحانات دکھاتا ہے",
       },
     ],
     next: "آگے",
     enter: "دکھائیں",
+    sources: "ذرائع",
   },
 
   id: {
     chooseLanguage: "🌎 Bahasa",
     slides: [
       {
-        title: "Apa yang sedang dibicarakan Telegram saat ini 🔥",
-        text: "Tren sebelum berita",
+        title: "Perhatian orang sedang ke mana 🔥",
+        text: "margeleT adalah indeks perhatian dan tren sebelum berita",
       },
     ],
     next: "Lanjut",
     enter: "Tampilkan",
+    sources: "sumber",
   },
 
   mx: {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 🔥",
-        text: "Tendencias antes que las noticias",
+        title: "Dónde está la atención de la gente ahora 🔥",
+        text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
     enter: "Mostrar",
+    sources: "fuentes",
   },
 
   sa: {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "ما الذي يتحدث عنه Telegram الآن 🔥",
-        text: "الاتجاهات قبل الأخبار",
+        title: "أين انتباه الناس الآن 🔥",
+        text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
       },
     ],
     next: "التالي",
     enter: "عرض",
+    sources: "مصدر",
   },
 
   es: {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 🔥",
-        text: "Tendencias antes que las noticias",
+        title: "Dónde está la atención de la gente ahora 🔥",
+        text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
     enter: "Mostrar",
+    sources: "fuentes",
   },
 
   it: {
     chooseLanguage: "🌎 Lingua",
     slides: [
       {
-        title: "Di cosa sta parlando Telegram in questo momento 🔥",
-        text: "Tendenze prima delle notizie",
+        title: "Dov'è ora l'attenzione delle persone 🔥",
+        text: "margeleT è un indice dell'attenzione e trend prima delle notizie",
       },
     ],
     next: "Avanti",
     enter: "Mostra",
+    sources: "fonti",
   },
 
   fr: {
     chooseLanguage: "🌎 Langue",
     slides: [
       {
-        title: "De quoi Telegram parle-t-il en ce moment 🔥",
-        text: "Les tendances avant les nouvelles",
+        title: "Où est l'attention des gens maintenant 🔥",
+        text: "margeleT est un indice d'attention et des tendances avant l'actualité",
       },
     ],
     next: "Suivant",
     enter: "Afficher",
+    sources: "sources",
   },
 
   de: {
     chooseLanguage: "🌎 Sprache",
     slides: [
       {
-        title: "Worüber spricht Telegram gerade 🔥",
-        text: "Trends vor den Nachrichten",
+        title: "Wo ist die Aufmerksamkeit der Menschen jetzt 🔥",
+        text: "margeleT ist ein Aufmerksamkeitsindex und Trends vor den Nachrichten",
       },
     ],
     next: "Weiter",
     enter: "Anzeigen",
+    sources: "Quellen",
   },
 
   ar: {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 🔥",
-        text: "Tendencias antes que las noticias",
+        title: "Dónde está la atención de la gente ahora 🔥",
+        text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
     enter: "Mostrar",
+    sources: "fuentes",
   },
 
   co: {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "De qué está hablando Telegram ahora 🔥",
-        text: "Tendencias antes que las noticias",
+        title: "Dónde está la atención de la gente ahora 🔥",
+        text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
     next: "Siguiente",
     enter: "Mostrar",
+    sources: "fuentes",
   },
 
   za: {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "What Telegram is talking about right now 🔥",
-        text: "Trends before the news",
+        title: "Where people's attention is now 🔥",
+        text: "margeleT is an attention index and trends before the news",
       },
     ],
     next: "Next",
     enter: "Show",
+    sources: "sources",
   },
 
   ng: {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "What Telegram is talking about right now 🔥",
-        text: "Trends before the news",
+        title: "Where people's attention is now 🔥",
+        text: "margeleT is an attention index and trends before the news",
       },
     ],
     next: "Next",
     enter: "Show",
+    sources: "sources",
   },
 
   cn: {
     chooseLanguage: "🌎 语言",
     slides: [
       {
-        title: "Telegram 现在在讨论什么 🔥",
-        text: "新闻之前的趋势",
+        title: "人们现在的注意力在哪里 🔥",
+        text: "margeleT 是注意力指数，也是新闻之前的趋势",
       },
     ],
     next: "下一步",
     enter: "显示",
+    sources: "来源",
   },
 
   my: {
     chooseLanguage: "🌎 Bahasa",
     slides: [
       {
-        title: "Apa yang Telegram bincangkan sekarang 🔥",
-        text: "Trend sebelum berita",
+        title: "Di mana perhatian orang sekarang 🔥",
+        text: "margeleT ialah indeks perhatian dan trend sebelum berita",
       },
     ],
     next: "Seterusnya",
     enter: "Tunjukkan",
+    sources: "sumber",
   },
 };
 
@@ -343,23 +369,28 @@ function getSortedLocales() {
   return sorted;
 }
 
+type IntroTrendSource = {
+  id?: string;
+  title?: string;
+  username?: string;
+  avatarUrl?: string;
+  mentions?: number;
+};
+
 type IntroTrend = {
   word?: string;
   topic?: string;
   mentions: number;
   momentum?: number;
   change?: string;
+  sourceCount?: number;
+  topSources?: IntroTrendSource[];
 };
 
 const INTRO_FALLBACK_TRENDS: IntroTrend[] = [
-  { topic: "Bitcoin ETF", mentions: 12500, momentum: 178 },
-  { topic: "OpenAI", mentions: 7600, momentum: 68 },
-  { topic: "Погода Москва сегодня", mentions: 9200, momentum: -9 },
-  { topic: "Спартак", mentions: 6100, momentum: 42 },
-  { topic: "Tesla", mentions: 214000, momentum: -214 },
-  { topic: "NVIDIA", mentions: 6900, momentum: 84 },
-  { topic: "Telegram Premium", mentions: 5300, momentum: 31 },
-  { topic: "Маркетплейсы", mentions: 9300, momentum: 64 },
+  { topic: "Погода Москва сегодня", mentions: 25000, momentum: 178, sourceCount: 35, topSources: [] },
+  { topic: "NVIDIA", mentions: 6900, momentum: 84, sourceCount: 18, topSources: [] },
+  { topic: "ChatGPT", mentions: 7600, momentum: 68, sourceCount: 21, topSources: [] },
 ];
 
 const INTRO_BAD_TOPICS = new Set([
@@ -380,6 +411,7 @@ const INTRO_BAD_TOPICS = new Set([
   "могут",
   "сейчас",
   "просто",
+  "other",
 ]);
 
 function getIntroTrendTitle(trend: IntroTrend) {
@@ -410,20 +442,127 @@ function isGoodIntroTrend(trend: IntroTrend) {
   return true;
 }
 
-function IntroArrow({ up }: { up: boolean }) {
+function getIntroSources(trend: IntroTrend) {
+  return Array.isArray(trend.topSources)
+    ? trend.topSources
+        .filter((source) => String(source?.title || "").trim())
+        .slice(0, 6)
+    : [];
+}
+
+function getSourceInitial(title: string) {
+  return title.trim().charAt(0).toUpperCase() || "T";
+}
+
+function truncateSourceTitle(title: string) {
+  const clean = title.trim();
+  if (clean.length <= 11) return clean;
+  return `${clean.slice(0, 10)}…`;
+}
+
+function SourceAvatar({ source }: { source: IntroTrendSource }) {
+  const title = String(source.title || source.username || "Telegram").trim();
+  const avatarUrl = String(source.avatarUrl || "").trim();
+
   return (
-    <div
-      className={[
-        "grid h-8 w-8 shrink-0 place-items-center rounded-xl",
-        up ? "bg-emerald-500/10 text-emerald-400" : "bg-red-500/10 text-red-400",
-      ].join(" ")}
-    >
-      {up ? <TrendingUp className="h-4 w-4" /> : <TrendingDown className="h-4 w-4" />}
+    <div className="min-w-0 text-center">
+      <div className="mx-auto grid h-[46px] w-[46px] place-items-center overflow-hidden rounded-full border-2 border-white bg-[#223244] shadow-[0_0_0_2px_rgba(94,122,153,0.45)]">
+        {avatarUrl ? (
+          <img
+            src={avatarUrl}
+            alt={title}
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <span className="text-sm font-black text-white">{getSourceInitial(title)}</span>
+        )}
+      </div>
+
+      <div className="mt-2 max-w-[58px] truncate text-[10px] font-bold leading-none text-[#8fb1d2]">
+        {truncateSourceTitle(title)}
+      </div>
     </div>
   );
 }
 
-function TrendsPreview({ countryCode = "ru" }: { countryCode?: string }) {
+function TrendAttentionPreview({
+  trend,
+  sourceLabel,
+}: {
+  trend: IntroTrend;
+  sourceLabel: string;
+}) {
+  const title = getIntroTrendTitle(trend);
+  const mentions = Math.max(0, Number(trend.mentions) || 0);
+  const sourceCount = Math.max(
+    Number(trend.sourceCount) || 0,
+    Array.isArray(trend.topSources) ? trend.topSources.length : 0
+  );
+  const sources = getIntroSources(trend);
+  const isUp = getIntroMomentum(trend) >= 0;
+
+  return (
+    <motion.div
+      key={title}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -24 }}
+      transition={{ duration: 0.55, ease: "easeInOut" }}
+      className="w-full"
+    >
+      <div className="grid grid-cols-[minmax(0,auto)_1fr_auto_auto] items-center gap-3">
+        <div className="min-w-0 truncate text-left text-[17px] font-black text-white">
+          {title}
+        </div>
+
+        <div className="h-px min-w-[24px] border-t border-dashed border-[#5e7a99]/75" />
+
+        <div className="text-right text-[15px] font-black text-emerald-400">
+          {formatIntroNumber(mentions)}
+        </div>
+
+        <TrendingUp
+          className={[
+            "h-5 w-5",
+            isUp ? "text-emerald-400" : "text-emerald-400",
+          ].join(" ")}
+        />
+      </div>
+
+      <div className="pt-8 text-center text-[27px] font-black leading-none text-[#6f86a0]">
+        +{sourceCount} {sourceLabel}
+      </div>
+
+      <div className="pt-7">
+        {sources.length > 0 ? (
+          <div className="grid grid-cols-6 items-start gap-3">
+            {sources.map((source, index) => (
+              <SourceAvatar
+                key={`${source.id || source.username || source.title || index}-${index}`}
+                source={source}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-6 items-start gap-3 opacity-0">
+            {Array.from({ length: 6 }, (_, index) => (
+              <div key={index} className="h-[58px]" />
+            ))}
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+function TrendsPreview({
+  countryCode = "ru",
+  sourceLabel,
+}: {
+  countryCode?: string;
+  sourceLabel: string;
+}) {
   const [trends, setTrends] = useState<IntroTrend[]>(INTRO_FALLBACK_TRENDS);
   const [offset, setOffset] = useState(0);
 
@@ -435,10 +574,13 @@ function TrendsPreview({ countryCode = "ru" }: { countryCode?: string }) {
         const res = await fetch(`/api/v1?action=trends&country=${countryCode}`);
         const data = await res.json();
         const next = Array.isArray(data?.trends)
-          ? data.trends.filter(isGoodIntroTrend).slice(0, 40)
+          ? data.trends
+              .filter(isGoodIntroTrend)
+              .filter((trend: IntroTrend) => getIntroSources(trend).length > 0)
+              .slice(0, 20)
           : [];
 
-        if (!cancelled && next.length >= 6) {
+        if (!cancelled && next.length > 0) {
           setTrends(next);
           setOffset(0);
         }
@@ -455,59 +597,26 @@ function TrendsPreview({ countryCode = "ru" }: { countryCode?: string }) {
   }, [countryCode]);
 
   useEffect(() => {
-    if (trends.length <= 6) return;
+    if (trends.length <= 1) return;
 
     const timer = window.setInterval(() => {
       setOffset((prev) => (prev + 1) % trends.length);
-    }, 2300);
+    }, 3500);
 
     return () => window.clearInterval(timer);
   }, [trends.length]);
 
-  const visible = Array.from({ length: Math.min(6, trends.length) }, (_, index) =>
-    trends[(offset + index) % trends.length]
-  );
+  const trend = trends[offset % trends.length] || INTRO_FALLBACK_TRENDS[0];
 
   return (
     <div className="mx-auto w-full max-w-[330px]">
-      <div className="border-y border-dashed border-[#5e7a99]/45 py-4">
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.div
-            key={offset}
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.38, ease: "easeOut" }}
-            className="space-y-3"
-          >
-            {visible.map((trend, index) => {
-              const title = getIntroTrendTitle(trend);
-              const momentum = getIntroMomentum(trend);
-              const isUp = momentum >= 0;
-
-              return (
-                <div
-                  key={`${title}-${offset}-${index}`}
-                  className="grid grid-cols-[minmax(0,1fr)_auto_auto] items-center gap-3 text-left"
-                >
-                  <div className="min-w-0 truncate text-[15px] font-black text-white">
-                    {title}
-                  </div>
-
-                  <div
-                    className={[
-                      "text-right text-sm font-black",
-                      isUp ? "text-emerald-400" : "text-red-400",
-                    ].join(" ")}
-                  >
-                    {formatIntroNumber(trend.mentions)}
-                  </div>
-
-                  <IntroArrow up={isUp} />
-                </div>
-              );
-            })}
-          </motion.div>
+      <div className="border-y border-dashed border-[#5e7a99]/55 py-8">
+        <AnimatePresence mode="wait" initial={false}>
+          <TrendAttentionPreview
+            key={`${getIntroTrendTitle(trend)}-${offset}`}
+            trend={trend}
+            sourceLabel={sourceLabel}
+          />
         </AnimatePresence>
       </div>
     </div>
@@ -589,7 +698,10 @@ export function IntroScreen({
                 </AnimatePresence>
               </div>
 
-              <TrendsPreview countryCode={locale === "ru" ? "ru" : "us"} />
+              <TrendsPreview
+                countryCode={locale === "ru" ? "ru" : "us"}
+                sourceLabel={intro.sources}
+              />
 
               <div className="mx-auto max-w-[22rem] text-base leading-7 text-[#9fb0c0]">
                 {pages[index].text}

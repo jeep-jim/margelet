@@ -1,3 +1,9 @@
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: *
 Allow: /
 
@@ -6,6 +12,5 @@ Disallow: /admin/
 Disallow: /api/
 Disallow: /feeds/
 Disallow: /feed.json
-Disallow: /seo/
 
 Sitemap: https://www.margelet.space/sitemap.xml
