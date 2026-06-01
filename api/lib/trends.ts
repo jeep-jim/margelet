@@ -949,10 +949,15 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
 
     if (age < 0) continue;
 
-    const bucketIndex =
+    const rawBucketIndex =
       age > buckets * bucketMs
         ? 0
-        : Math.max(0, buckets - 1 - Math.floor(age / bucketMs));
+        : buckets - 1 - Math.floor(age / bucketMs);
+
+    const bucketIndex = Math.min(
+      buckets - 1,
+      Math.max(0, Number.isFinite(rawBucketIndex) ? rawBucketIndex : 0)
+    );
 
     const sourceId = getSourceId(post);
     const sourceTitle = getSourceTitle(post);
@@ -978,7 +983,11 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       const item = stats[topic];
 
       item.mentions += 1;
-      item.history[bucketIndex] += 1;
+      if (!Array.isArray(item.history)) {
+        item.history = Array.from({ length: buckets }, () => 0);
+      }
+
+      item.history[bucketIndex] = (item.history[bucketIndex] || 0) + 1;
       for (const category of postCategories) {
         item.categoryMap[category] = (item.categoryMap[category] || 0) + 1;
       }
