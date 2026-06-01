@@ -36,6 +36,7 @@ type TrendItem = {
   firstSeenAt?: string | null;
   lastSeenAt?: string | null;
   examples?: TrendPost[];
+  signals?: string[];
   category?: string;
 };
 
@@ -64,6 +65,7 @@ async function getTrends(country: string, hours: number): Promise<TrendItem[]> {
             : 0,
       countries: Array.isArray(trend.countries) ? trend.countries : [],
       examples: Array.isArray(trend.examples) ? trend.examples : [],
+      signals: Array.isArray(trend.signals) ? trend.signals : [],
       category: trend.category || "all",
     }));
   } catch {

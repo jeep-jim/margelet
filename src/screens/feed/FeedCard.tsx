@@ -191,7 +191,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
-                      <PostAttentionChips post={post} searchQuery={searchQuery} />
+                      <PostAttentionChips post={post} searchQuery={searchQuery} locale={locale} />
                     </div>
 
                     {expanded ? (
@@ -226,7 +226,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
             <div className="px-4 py-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
-                  <PostAttentionChips post={post} searchQuery={searchQuery} />
+                  <PostAttentionChips post={post} searchQuery={searchQuery} locale={locale} />
                 </div>
 
                 <button

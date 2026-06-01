@@ -575,7 +575,7 @@ export function FeedTextCard({
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <PostAttentionChips post={post} searchQuery={searchQuery} />
+          <PostAttentionChips post={post} searchQuery={searchQuery} locale={locale} />
         </div>
 
         <button

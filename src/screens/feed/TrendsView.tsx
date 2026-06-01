@@ -31,6 +31,14 @@ type TrendCountry = {
   mentions: number;
 };
 
+type TrendPost = {
+  id: string | number;
+  text: string;
+  url?: string;
+  publishedAt?: string;
+  sourceTitle?: string;
+};
+
 type TrendItem = {
   word?: string;
   topic?: string;
@@ -40,6 +48,8 @@ type TrendItem = {
   sourceCount?: number;
   countries?: TrendCountry[];
   topSources?: TrendSource[];
+  examples?: TrendPost[];
+  signals?: string[];
   category?: string;
 };
 
@@ -980,6 +990,32 @@ function getTopic(trend: TrendItem) {
   return trend.topic || trend.word || "Unknown topic";
 }
 
+function getTrendSnippet(trend: TrendItem) {
+  const examples = Array.isArray(trend.examples) ? trend.examples : [];
+  const text = String(examples[0]?.text || "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!text) return "";
+
+  return text.length > 180 ? `${text.slice(0, 177).trim()}…` : text;
+}
+
+function getSourceSnippet(trend: TrendItem, source: TrendSource) {
+  const examples = Array.isArray(trend.examples) ? trend.examples : [];
+  const sourceTitle = String(source.title || "").toLowerCase();
+
+  const direct = examples.find((example) =>
+    String(example.sourceTitle || "").toLowerCase() === sourceTitle,
+  );
+
+  const text = String((direct || examples[0])?.text || "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return text.length > 170 ? `${text.slice(0, 167).trim()}…` : text;
+}
+
 function normalizeTopic(value: string) {
   return value.trim().toLowerCase();
 }
@@ -996,8 +1032,16 @@ function formatNumber(value: number) {
   return String(value);
 }
 
-function getChips(topic: string) {
-  return topic.split(/\s+/).filter(Boolean).slice(0, 5);
+function getTrendSignals(trend: TrendItem) {
+  const fromApi = Array.isArray(trend.signals)
+    ? trend.signals
+        .map((item) => String(item || "").trim())
+        .filter(Boolean)
+    : [];
+
+  if (fromApi.length) return fromApi.slice(0, 5);
+
+  return getTopic(trend).split(/\s+/).filter(Boolean).slice(0, 5);
 }
 
 function getTrendEmoji(topic: string, category?: string) {
@@ -1259,9 +1303,9 @@ function MiniAttentionChart({
     : [1, 0.9, 0.76, 0.55, 0.4, 0.26, 0.12];
 
   const plotLeft = 42;
-  const plotTop = 18;
+  const plotTop = 14;
   const plotWidth = 286;
-  const plotHeight = 82;
+  const plotHeight = 52;
   const step = plotWidth / (values.length - 1);
 
   const points = values
@@ -1290,8 +1334,8 @@ function MiniAttentionChart({
       </div>
 
       <svg
-        viewBox="0 0 344 132"
-        className="h-34 min-h-[136px] w-full overflow-visible"
+        viewBox="0 0 344 104"
+        className="h-24 min-h-[96px] w-full overflow-visible"
       >
         {[plotTop, plotTop + plotHeight / 2, plotTop + plotHeight].map(
           (y, index) => (
@@ -1326,7 +1370,7 @@ function MiniAttentionChart({
             <text
               key={label}
               x={x}
-              y="126"
+              y="100"
               textAnchor={
                 index === 0 ? "start" : index === 4 ? "end" : "middle"
               }
@@ -1441,7 +1485,7 @@ function TrendDetail({
   const momentum = getMomentumNumber(trend);
   const isUp = momentum >= 0;
   const sourceCount = trend.sourceCount || trend.topSources?.length || 0;
-  const chips = getChips(topic);
+  const chips = getTrendSignals(trend);
   const emoji = getTrendEmoji(topic, trend.category);
   const sourcesRef = useRef<HTMLElement | null>(null);
   const topSources = trend.topSources || [];
@@ -1581,17 +1625,24 @@ function TrendDetail({
         </h3>
         <div className="mt-3 space-y-2">
           {(trend.topSources || []).slice(0, 6).map((source, index) => {
+            const snippet = getSourceSnippet(trend, source);
+
             const content = (
               <>
-                <div className="flex min-w-0 items-center gap-3">
+                <div className="flex min-w-0 flex-1 items-start gap-3">
                   <SourceAvatar source={source} size="lg" />
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <div className="truncate text-sm font-black text-primary">
                       {source.title}
                     </div>
                     {getSourceHandle(source) ? (
                       <div className="truncate text-xs text-secondary">
                         @{getSourceHandle(source)}
+                      </div>
+                    ) : null}
+                    {snippet ? (
+                      <div className="mt-2 line-clamp-3 text-[12px] font-medium leading-relaxed text-secondary">
+                        {snippet}
                       </div>
                     ) : null}
                   </div>
@@ -1617,7 +1668,7 @@ function TrendDetail({
 
                     window.location.href = `/${handle}`;
                   }}
-                  className="flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-2 text-left no-underline transition hover:bg-app"
+                  className="flex w-full items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3 text-left no-underline transition hover:bg-app"
                 >
                   {content}
                 </button>
@@ -1627,7 +1678,7 @@ function TrendDetail({
             return (
               <div
                 key={`${source.title}-${index}`}
-                className="flex items-center justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-2"
+                className="flex items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3"
               >
                 {content}
               </div>
@@ -1661,7 +1712,7 @@ function TrendRow({
   const topic = getTopic(trend);
   const momentum = getMomentumNumber(trend);
   const isUp = momentum >= 0;
-  const chips = getChips(topic);
+  const chips = getTrendSignals(trend);
   const sourceCount = trend.sourceCount || trend.topSources?.length || 0;
   const emoji = getTrendEmoji(topic, trend.category);
 
@@ -1672,14 +1723,17 @@ function TrendRow({
         onClick={onToggle}
         className="flex w-full items-center gap-3 px-3 py-3 text-left"
       >
-        <div className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-surface-soft text-xl font-black text-primary">
-          {emoji}
-        </div>
-
         <div className="min-w-0 flex-1">
-          <div className="truncate text-base font-black text-primary">
+          <div className="text-base font-black leading-tight text-primary line-clamp-2">
+            <span className="mr-1.5 align-[-1px] text-base">{emoji}</span>
             {topic}
           </div>
+
+          {getTrendSnippet(trend) ? (
+            <div className="mt-1 line-clamp-2 text-[12px] leading-relaxed text-secondary">
+              {getTrendSnippet(trend)}
+            </div>
+          ) : null}
 
           <div className="mt-1 flex items-center gap-1.5 text-xs whitespace-nowrap">
             <span
@@ -1756,6 +1810,24 @@ function TrendRow({
               {formatNumber(trend.mentions)} {copy.mentions}
             </div>
           </div>
+
+          {trend.examples?.length ? (
+            <div className="mt-4 space-y-2">
+              {trend.examples.slice(0, 3).map((example, index) => (
+                <div
+                  key={`${example.id}-${index}`}
+                  className="rounded-2xl border border-soft bg-app px-3 py-2 text-[12px] leading-relaxed text-secondary"
+                >
+                  {example.sourceTitle ? (
+                    <div className="mb-1 font-black text-primary">
+                      {example.sourceTitle}
+                    </div>
+                  ) : null}
+                  <div className="line-clamp-3">{example.text}</div>
+                </div>
+              ))}
+            </div>
+          ) : null}
 
           <div className="mt-4 grid grid-cols-2 gap-3">
             <button

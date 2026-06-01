@@ -1,6 +1,7 @@
 import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import type { IngestedPost } from "./contracts.js";
+import { buildAttentionCandidates, tokenOverlapScore, type AttentionCandidate } from "./attention-brain.js";
 import {
   buildBlockedSourceHandles,
   cleanTrendText,
@@ -48,6 +49,7 @@ type TrendItem = {
   firstSeenAt: string | null;
   lastSeenAt: string | null;
   examples: TrendPost[];
+  signals?: string[];
   category?: string;
   score?: number;
 };
@@ -427,7 +429,11 @@ function shouldKeepTopic(topic: string, mentions: number, sourceCount: number, b
     if (!isKnownTrendEntity(normalized)) return false;
   }
 
-  if (parts.length === 2 && mentions < 3 && sourceCount < 2) return false;
+  // Public attention is not a single post from one channel.
+  // A topic must be picked up by at least two independent sources.
+  if (sourceCount < 2) return false;
+
+  if (parts.length === 2 && mentions < 2) return false;
   if (parts.length >= 3 && mentions < 2) return false;
 
   return true;
@@ -442,6 +448,55 @@ function calcScore(
     trend.sourceCount * 50 +
     getTopicQuality(trend.topic)
   );
+}
+
+
+function findAttentionClusterKey(
+  stats: Record<
+    string,
+    {
+      mentions: number;
+      history: number[];
+      sourceMap: Record<string, TrendSource>;
+      categoryMap: Record<string, number>;
+      examples: TrendPost[];
+      firstSeenAt: number | null;
+      lastSeenAt: number | null;
+      displayTitle: string;
+      tokens: string[];
+      signalMap: Record<string, number>;
+    }
+  >,
+  candidate: AttentionCandidate,
+) {
+  let bestKey = "";
+  let bestScore = 0;
+
+  for (const [key, item] of Object.entries(stats)) {
+    const overlap = tokenOverlapScore(item.tokens || [], candidate.tokens || []);
+    if (overlap > bestScore) {
+      bestScore = overlap;
+      bestKey = key;
+    }
+  }
+
+  // 0.5 means two snippets share enough strong words to be one attention topic,
+  // but we still avoid gluing broad one-word trends together.
+  return bestScore >= 0.5 ? bestKey : "";
+}
+
+function chooseDisplayTitle(current: string, next: string) {
+  if (!current) return next;
+  if (!next) return current;
+
+  const currentLength = current.length;
+  const nextLength = next.length;
+
+  if (nextLength >= 18 && nextLength <= 86 && nextLength < currentLength) {
+    return next;
+  }
+
+  return current;
 }
 
 export async function updateTrends(posts: IngestedPost[], countryCode: string) {
@@ -461,6 +516,9 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       examples: TrendPost[];
       firstSeenAt: number | null;
       lastSeenAt: number | null;
+      displayTitle: string;
+      tokens: string[];
+      signalMap: Record<string, number>;
     }
   > = Object.create(null);
 
@@ -486,9 +544,12 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
     const sourceAvatar = getSourceAvatar(post);
     const postCategories = getPostCategories(post);
 
-    const topics = new Set(extractTopics(text, blockedHandles));
+    const candidates = buildAttentionCandidates(text, blockedHandles);
 
-    for (const topic of topics) {
+    for (const candidate of candidates) {
+      const clusterKey = findAttentionClusterKey(stats, candidate);
+      const topic = clusterKey || candidate.fingerprint || candidate.title.toLowerCase();
+
       if (!Object.prototype.hasOwnProperty.call(stats, topic)) {
         stats[topic] = {
           mentions: 0,
@@ -498,10 +559,21 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
           examples: [],
           firstSeenAt: null,
           lastSeenAt: null,
+          displayTitle: candidate.title,
+          tokens: candidate.tokens,
+          signalMap: Object.create(null),
         };
       }
 
       const item = stats[topic];
+      item.displayTitle = chooseDisplayTitle(item.displayTitle, candidate.title);
+      item.tokens = Array.from(new Set([...(item.tokens || []), ...candidate.tokens])).slice(0, 40);
+      if (!item.signalMap || typeof item.signalMap !== "object") {
+        item.signalMap = Object.create(null);
+      }
+      for (const signal of candidate.signals || []) {
+        item.signalMap[signal] = (item.signalMap[signal] || 0) + 1;
+      }
 
       if (!item || typeof item !== "object") {
         continue;
@@ -553,7 +625,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       if (item.examples.length < 5) {
         item.examples.push({
           id: (post as any).id || `${sourceId}-${postTime}`,
-          text: text.slice(0, 280),
+          text: candidate.snippet || text.slice(0, 280),
           url: getPostUrl(post),
           publishedAt: new Date(postTime).toISOString(),
           sourceTitle,
@@ -577,11 +649,16 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
     .map(([topic, item]) => {
       const momentum = calcMomentum(item.history);
       const sourceCount = Object.keys(item.sourceMap).length;
-      const displayTopic = formatTopic(topic);
+      const displayTopic = item.displayTitle || formatTopic(topic);
 
       const topSources = Object.values(item.sourceMap)
         .sort((a, b) => b.mentions - a.mentions)
         .slice(0, 8);
+
+      const signals = Object.entries(item.signalMap || {})
+        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+        .map(([signal]) => signal)
+        .slice(0, 5);
 
       const trend: TrendItem = {
         topic: displayTopic,
@@ -600,6 +677,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
           ? new Date(item.lastSeenAt).toISOString()
           : null,
         examples: item.examples,
+        signals,
         category: getDominantCategory(item.categoryMap, inferCategory(topic)) || "all",
       };
 
