@@ -1252,6 +1252,25 @@ export function FeedScreen({
     [locale]
   );
 
+  const hasActiveFeedFilters = searchQuery.trim().length > 0 || selectedTags.length > 0;
+  const shouldShowClearFeedFilters =
+    !tagsOpen &&
+    feedSettings.mediaMode !== "trends" &&
+    hasActiveFeedFilters &&
+    visiblePosts.length > 0;
+  const shouldShowFeedRefresh =
+    !tagsOpen &&
+    feedSettings.mediaMode === "all" &&
+    !hasActiveFeedFilters &&
+    visiblePosts.length > 0;
+
+  const clearFeedFilters = useCallback(() => {
+    setSearchQuery("");
+    setSelectedTags([]);
+    setRenderCount(INITIAL_RENDER_POSTS);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
       <FeedHeader
@@ -1439,7 +1458,17 @@ export function FeedScreen({
         )}
       </div>
 
-      {!tagsOpen && visiblePosts.length > 0 ? (
+      {shouldShowClearFeedFilters ? (
+        <div className="mx-auto w-full max-w-[570px] px-4 py-5">
+          <button
+            type="button"
+            onClick={clearFeedFilters}
+            className="w-full rounded-2xl border border-soft bg-surface-soft px-4 py-3 text-sm font-medium text-primary transition hover:bg-surface"
+          >
+            {copy.clearAll}
+          </button>
+        </div>
+      ) : shouldShowFeedRefresh ? (
         <div className="mx-auto w-full max-w-[570px] px-4 py-5">
           <button
             type="button"
@@ -1476,13 +1505,13 @@ export function FeedScreen({
                 ng: "Refresh feed",
                 cn: "刷新内容流",
                 my: "Segarkan feed",
-              } as const;              
+              } as const;
 
               return (FEED_END[locale] ?? FEED_END.us);
             })()}
           </button>
         </div>
-      ) : null}      
+      ) : null}
 
       <FeedViewer
         locale={locale}

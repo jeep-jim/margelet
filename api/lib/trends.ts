@@ -4,6 +4,8 @@ import type { IngestedPost } from "./contracts.js";
 
 const TRENDS_DIR = "data/trends";
 
+const UNSAFE_OBJECT_KEYS = new Set(["__proto__", "prototype", "constructor"]);
+
 const STOP_WORDS = new Set([
   // ru — служебные слова и частый мусор Telegram-постов
   "это",
@@ -551,6 +553,7 @@ function isStopToken(token: string) {
 function isLikelyNoiseToken(token: string) {
   const normalized = normalizeToken(token);
   if (!normalized) return true;
+  if (UNSAFE_OBJECT_KEYS.has(normalized)) return true;
   if (normalized.length < 3) return true;
   if (/^\d+$/.test(normalized)) return true;
   if (STOP_WORDS.has(normalized)) return true;
@@ -938,7 +941,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       firstSeenAt: number | null;
       lastSeenAt: number | null;
     }
-  > = {};
+  > = Object.create(null);
 
   for (const post of posts) {
     if (!(post as any).text) continue;
@@ -950,13 +953,11 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
     if (age < 0) continue;
 
     const rawBucketIndex =
-      age > buckets * bucketMs
-        ? 0
-        : buckets - 1 - Math.floor(age / bucketMs);
+      age > buckets * bucketMs ? 0 : buckets - 1 - Math.floor(age / bucketMs);
 
     const bucketIndex = Math.min(
       buckets - 1,
-      Math.max(0, Number.isFinite(rawBucketIndex) ? rawBucketIndex : 0)
+      Math.max(0, Number.isFinite(rawBucketIndex) ? rawBucketIndex : 0),
     );
 
     const sourceId = getSourceId(post);
@@ -968,12 +969,12 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
     const topics = new Set(extractTopics(text));
 
     for (const topic of topics) {
-      if (!stats[topic]) {
+      if (!Object.prototype.hasOwnProperty.call(stats, topic)) {
         stats[topic] = {
           mentions: 0,
           history: Array.from({ length: buckets }, () => 0),
-          sourceMap: {},
-          categoryMap: {},
+          sourceMap: Object.create(null),
+          categoryMap: Object.create(null),
           examples: [],
           firstSeenAt: null,
           lastSeenAt: null,
@@ -982,6 +983,18 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
 
       const item = stats[topic];
 
+      if (!item || typeof item !== "object") {
+        continue;
+      }
+
+      if (!item.sourceMap || typeof item.sourceMap !== "object") {
+        item.sourceMap = Object.create(null);
+      }
+
+      if (!item.categoryMap || typeof item.categoryMap !== "object") {
+        item.categoryMap = Object.create(null);
+      }
+
       item.mentions += 1;
       if (!Array.isArray(item.history)) {
         item.history = Array.from({ length: buckets }, () => 0);
@@ -989,7 +1002,11 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
 
       item.history[bucketIndex] = (item.history[bucketIndex] || 0) + 1;
       for (const category of postCategories) {
-        item.categoryMap[category] = (item.categoryMap[category] || 0) + 1;
+        const safeCategory = normalizeCategory(category) || "all";
+        if (safeCategory === "all" || UNSAFE_OBJECT_KEYS.has(safeCategory))
+          continue;
+        item.categoryMap[safeCategory] =
+          (item.categoryMap[safeCategory] || 0) + 1;
       }
 
       if (!item.sourceMap[sourceId]) {
@@ -1026,6 +1043,17 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
   }
 
   const trends: TrendItem[] = Object.entries(stats)
+    .filter(
+      ([topic, item]) =>
+        !UNSAFE_OBJECT_KEYS.has(topic) &&
+        !!item &&
+        typeof item === "object" &&
+        Array.isArray(item.history) &&
+        !!item.sourceMap &&
+        typeof item.sourceMap === "object" &&
+        !!item.categoryMap &&
+        typeof item.categoryMap === "object",
+    )
     .map(([topic, item]) => {
       const momentum = calcMomentum(item.history);
       const sourceCount = Object.keys(item.sourceMap).length;

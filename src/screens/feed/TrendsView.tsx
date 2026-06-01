@@ -1991,7 +1991,7 @@ export function TrendsView({
         </div>
       ) : null}
 
-      <button className="fixed bottom-3 left-1/2 z-40 w-[calc(100%-32px)] max-w-[538px] -translate-x-1/2 rounded-2xl bg-[color:var(--text-primary)] px-5 py-4 text-base font-black text-[color:var(--bg-app)] shadow-soft transition hover:opacity-90">
+      <button className="fixed bottom-3 left-1/2 z-40 w-[calc(100%-32px)] max-w-[538px] -translate-x-1/2 rounded-2xl border border-soft bg-surface/95 px-5 py-4 text-base font-black text-primary shadow-soft backdrop-blur transition hover:bg-surface-soft">
         {copy.fullAccess}
       </button>
     </div>
