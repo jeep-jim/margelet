@@ -896,130 +896,7 @@ function formatCopy(template: string, values: Record<string, string | number>) {
 }
 
 
-const CATEGORY_TOPICS: Record<string, TrendItem[]> = {
-  all: [
-    trend("Bitcoin ETF", 12500, 178, 45, "finance", ["CoinDesk", "CryptoRank", "Whale Alert"]),
-    trend("Погода Москва сегодня", 9200, -9, 31, "news", ["Москва Live", "Новости Москвы"]),
-    trend("Акции Tesla", 214000, -214, 94, "business", ["Bloomberg", "Market Watch"]),
-    trend("OpenAI", 7600, 68, 52, "technology", ["TechCrunch", "The Verge", "AI News"]),
-    trend("Спартак", 6100, 42, 28, "sports", ["Матч ТВ", "Чемпионат"]),
-  ],
-  news: [
-    trend("Погода Москва сегодня", 9200, -9, 31, "news", ["Москва Live", "Новости Москвы"]),
-    trend("Срочные новости", 8700, 54, 66, "news", ["РИА", "Mash", "112"]),
-    trend("Регионы России", 5200, 21, 39, "news", ["Местные новости", "Город Live"]),
-  ],
-  politics: [
-    trend("Иран", 12600, 164, 72, "politics", ["BBC", "Reuters", "DW"]),
-    trend("Трамп", 9800, 78, 63, "politics", ["CNN", "Fox News", "Политика"]),
-    trend("Украина", 14300, 52, 88, "politics", ["Украина Сейчас", "BBC"]),
-  ],
-  economy: [
-    trend("Курс доллара", 15400, 88, 74, "economy", ["РБК", "Коммерсантъ"]),
-    trend("Нефть", 7100, 41, 33, "economy", ["Bloomberg", "Рынки"]),
-    trend("Инфляция", 5600, 19, 28, "economy", ["Экономика", "Forbes"]),
-  ],
-  business: [
-    trend("Вкусно и точка", 4800, 178, 45, "business", ["Бизнес FM", "РБК"]),
-    trend("Маркетплейсы", 9300, 64, 51, "business", ["Ecom News", "Retail"]),
-    trend("Стартапы", 3900, 36, 26, "business", ["VC", "Startups"]),
-  ],
-  finance: [
-    trend("Bitcoin ETF", 12500, 178, 45, "finance", ["CoinDesk", "CryptoRank", "Whale Alert"]),
-    trend("Сбербанк", 8100, 55, 41, "finance", ["Банки.ру", "РБК"]),
-    trend("TON", 7200, 121, 58, "finance", ["TON Community", "Crypto News"]),
-  ],
-  technology: [
-    trend("OpenAI", 7600, 68, 52, "technology", ["TechCrunch", "The Verge", "AI News"]),
-    trend("NVIDIA", 6900, 84, 47, "technology", ["The Verge", "Bloomberg"]),
-    trend("iPhone 18", 4300, 31, 35, "technology", ["Apple Media", "MacRumors"]),
-  ],
-  science: [
-    trend("Муравьи", 3600, 44, 20, "science", ["Факт дня", "Наука"]),
-    trend("Космос", 4100, 26, 31, "science", ["NASA", "Космос"]),
-    trend("Новые открытия", 2900, 18, 24, "science", ["Science", "Популярная наука"]),
-  ],
-  education: [
-    trend("Курсы за 1000$", 5200, 37, 27, "education", ["GeekBrains", "Образование"]),
-    trend("Фриланс", 4700, 58, 34, "education", ["Где деньги", "Career"]),
-    trend("Английский", 3100, 15, 22, "education", ["Languages", "Study"]),
-  ],
-  culture: [
-    trend("История игрушек 5", 8300, 112, 49, "culture", ["Фильмы и Сериалы", "Кинопоиск"]),
-    trend("Новый сериал", 4200, 36, 24, "culture", ["Кино", "Series"]),
-    trend("Музыка", 3700, 22, 19, "culture", ["Music News", "Афиша"]),
-  ],
-  gaming: [
-    trend("Инди-игры", 6800, 92, 38, "gaming", ["DTF", "Игры"]),
-    trend("GTA 6", 9500, 71, 62, "gaming", ["Игромания", "DTF"]),
-    trend("Steam", 5400, 33, 41, "gaming", ["PC Gaming", "Steam News"]),
-  ],
-  sports: [
-    trend("Спартак", 6100, 42, 28, "sports", ["Матч ТВ", "Чемпионат"]),
-    trend("Лига чемпионов", 7300, 39, 36, "sports", ["Sports.ru", "Футбол"]),
-    trend("Месси", 5100, 25, 30, "sports", ["Football", "Чемпионат"]),
-  ],
-  health: [
-    trend("Здоровье", 4400, 24, 25, "health", ["Медицина", "Health"]),
-    trend("Питание", 3900, 31, 20, "health", ["Nutrition", "ЗОЖ"]),
-    trend("Тренировки", 2800, 17, 16, "health", ["Fitness", "Спорт"]),
-  ],
-  travel: [
-    trend("Турция", 5900, 61, 35, "travel", ["Travel", "Авиасейлс"]),
-    trend("Виза", 4700, 22, 28, "travel", ["Путешествия", "Visa"]),
-    trend("Отели", 2600, 14, 15, "travel", ["Hotels", "Travel"]),
-  ],
-  food: [
-    trend("Рецепты", 6300, 48, 29, "food", ["Быстрые рецепты", "Еда"]),
-    trend("Картошка с мясом", 4200, 74, 18, "food", ["Рецепты", "Кухня"]),
-    trend("Доставка еды", 3500, 21, 22, "food", ["Delivery", "Еда"]),
-  ],
-  auto: [
-    trend("Tesla", 214000, -214, 94, "auto", ["Bloomberg", "Market Watch"]),
-    trend("АвтоВАЗ", 4800, 35, 27, "auto", ["Авто", "Cars"]),
-    trend("Электромобили", 3900, 29, 20, "auto", ["EV News", "Auto"]),
-  ],
-  nature: [
-    trend("Жуки-носороги", 3200, 86, 22, "nature", ["Двач", "Факт дня"]),
-    trend("Птицы", 2800, 32, 17, "nature", ["Nature", "Животные"]),
-    trend("Капибары", 2400, 44, 15, "nature", ["Animals", "Мемы"]),
-  ],
-  marketing: [
-    trend("Прогревы", 3600, 43, 19, "marketing", ["SMM", "Маркетинг"]),
-    trend("Реклама в Telegram", 5200, 58, 30, "marketing", ["Telegram Ads", "SMM"]),
-    trend("Офферы", 3100, 26, 16, "marketing", ["Marketing", "Бизнес"]),
-  ],
-  startups: [
-    trend("AI стартапы", 4600, 65, 34, "startups", ["VC", "Startups"]),
-    trend("Раунд инвестиций", 3900, 38, 25, "startups", ["CryptoRank", "Founders"]),
-    trend("Фаундеры", 2500, 18, 14, "startups", ["Founder", "Бизнес"]),
-  ],
-};
 
-function trend(
-  topic: string,
-  mentions: number,
-  momentum: number,
-  sourceCount: number,
-  category: string,
-  sourceTitles: string[]
-): TrendItem {
-  return {
-    topic,
-    mentions,
-    momentum,
-    change: `${momentum > 0 ? "+" : ""}${momentum}%`,
-    sourceCount,
-    category,
-    countries: [{ code: "ru", mentions }],
-    topSources: sourceTitles.map((title, index) => ({
-      id: `${topic}-${index}`,
-      title,
-      username: makeDemoHandle(title),
-      mentions: Math.max(3, sourceCount - index * 7),
-    })),
-  };
-}
 
 function makeDemoHandle(title: string) {
   const explicit: Record<string, string> = {
@@ -1730,11 +1607,11 @@ export function TrendsView({
           }));
           setTrends(next);
         } else {
-          setTrends(CATEGORY_TOPICS.all);
+          setTrends([]);
         }
       } catch (err) {
         console.error("Failed to fetch trends", err);
-        setTrends(CATEGORY_TOPICS.all);
+        setTrends([]);
       } finally {
         setLoading(false);
       }
@@ -1754,17 +1631,15 @@ export function TrendsView({
     : followedTopics.slice(0, 2);
 
   const categoryTrends = useMemo(() => {
-    const demo = CATEGORY_TOPICS[selectedCategory] || [];
     const normalizedQuery = query.trim().toLowerCase();
 
-    let list = selectedCategory === "all"
-      ? trends.length
+    let list =
+      selectedCategory === "all"
         ? trends
-        : CATEGORY_TOPICS.all
-      : [
-          ...trends.filter((item) => (item.category || getTrendCategory(getTopic(item))) === selectedCategory),
-          ...demo,
-        ];
+        : trends.filter(
+            (item) =>
+              (item.category || getTrendCategory(getTopic(item))) === selectedCategory
+          );
 
     const seen = new Set<string>();
     list = list.filter((item) => {
@@ -1934,9 +1809,9 @@ export function TrendsView({
             ].join(" ")}
           >
             {visibleFollowedTopics.map((topic) => {
-              const trend = categoryTrends.find((item) => normalizeTopic(getTopic(item)) === topic) ||
-                trends.find((item) => normalizeTopic(getTopic(item)) === topic) ||
-                CATEGORY_TOPICS.all.find((item) => normalizeTopic(getTopic(item)) === topic);
+              const trend =
+                categoryTrends.find((item) => normalizeTopic(getTopic(item)) === topic) ||
+                trends.find((item) => normalizeTopic(getTopic(item)) === topic);
 
               return (
                 <div
