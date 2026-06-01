@@ -21,6 +21,8 @@ type TrendPost = {
   url?: string;
   publishedAt?: string;
   sourceTitle?: string;
+  sourceUsername?: string;
+  sourceAvatarUrl?: string;
 };
 
 type TrendItem = {

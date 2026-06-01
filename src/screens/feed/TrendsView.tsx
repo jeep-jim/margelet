@@ -37,6 +37,8 @@ type TrendPost = {
   url?: string;
   publishedAt?: string;
   sourceTitle?: string;
+  sourceUsername?: string;
+  sourceAvatarUrl?: string;
 };
 
 type TrendItem = {
@@ -1016,6 +1018,23 @@ function getSourceSnippet(trend: TrendItem, source: TrendSource) {
   return text.length > 170 ? `${text.slice(0, 167).trim()}…` : text;
 }
 
+function getExampleSource(trend: TrendItem, example: TrendPost): TrendSource {
+  const title = String(example.sourceTitle || "Telegram").trim() || "Telegram";
+  const matched = (trend.topSources || []).find(
+    (source) => String(source.title || "").toLowerCase() === title.toLowerCase(),
+  );
+
+  return (
+    matched || {
+      id: example.sourceUsername || title,
+      title,
+      username: example.sourceUsername,
+      avatarUrl: example.sourceAvatarUrl,
+      mentions: 1,
+    }
+  );
+}
+
 function normalizeTopic(value: string) {
   return value.trim().toLowerCase();
 }
@@ -1030,6 +1049,13 @@ function formatNumber(value: number) {
   if (value >= 1_000_000) return `${Math.round(value / 100_000) / 10}M`;
   if (value >= 1_000) return `${Math.round(value / 100) / 10}K`;
   return String(value);
+}
+
+function formatMomentumDelta(value: number) {
+  const rounded = Math.round(value);
+  if (!rounded) return "";
+  const prefix = rounded > 0 ? "+" : "-";
+  return `${prefix}${formatNumber(Math.abs(rounded))}`;
 }
 
 function getTrendSignals(trend: TrendItem) {
@@ -1174,6 +1200,95 @@ function postMatchesAttentionQuery(post: IngestedPost, normalizedQuery: string) 
   return haystack.includes(normalizedQuery);
 }
 
+
+function buildPostTrendTitle(post: IngestedPost) {
+  const lines = String(post.text || "")
+    .replace(/\r/g, "\n")
+    .split("\n")
+    .map((line) =>
+      line
+        .replace(/https?:\/\/\S+/gi, " ")
+        .replace(/\b(?:t\.me|max\.ru)\/\S+/gi, " ")
+        .replace(/[@#][\wа-яё_.-]+/gi, " ")
+        .replace(/[|•]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim(),
+    )
+    .filter(Boolean)
+    .filter(
+      (line) =>
+        line.length >= 8 &&
+        !/(подписывай|подписаться|наш канал|ссылка в шапке|реклама|дорогие подписчики|привет,? друзья|уважаемые подписчики)/i.test(
+          line,
+        ),
+    );
+
+  const first = lines[0] || String(post.text || "").replace(/\s+/g, " ").trim();
+  const words = first.split(/\s+/).filter(Boolean).slice(0, 14);
+  const title = words.join(" ").trim();
+
+  return title.length > 110 ? `${title.slice(0, 107).trim()}…` : title;
+}
+
+function buildLivePostTrends(posts: IngestedPost[]): TrendItem[] {
+  const sourceKey = (post: IngestedPost) =>
+    String(post.source?.handle || post.source?.title || "telegram")
+      .replace(/^@+/, "")
+      .trim()
+      .toLowerCase();
+
+  const trends = posts
+    .map((post) => {
+      const topic = buildPostTrendTitle(post);
+      if (!topic || topic.length < 6) return null;
+
+      const source: TrendSource = {
+        id: sourceKey(post),
+        title: post.source?.title || "Telegram",
+        username: post.source?.handle || undefined,
+        avatarUrl: post.source?.avatar || undefined,
+        mentions: 1,
+      };
+
+      const category = getTrendCategory(`${topic} ${post.tag || ""}`, post.tag || "all");
+
+      return {
+        topic,
+        word: topic,
+        mentions: 1,
+        momentum: 100,
+        change: "+100%",
+        sourceCount: 1,
+        topSources: [source],
+        examples: [
+          {
+            id: post.id,
+            text: String(post.text || "").slice(0, 280),
+            url: post.postUrl,
+            publishedAt: post.createdAt,
+            sourceTitle: source.title,
+            sourceUsername: source.username,
+            sourceAvatarUrl: source.avatarUrl,
+          },
+        ],
+        signals: topic.split(/\s+/).filter(Boolean).slice(0, 5),
+        category,
+      } as TrendItem;
+    })
+    .filter(Boolean) as TrendItem[];
+
+  const seen = new Set<string>();
+
+  return trends
+    .filter((trend) => {
+      const key = normalizeTopic(getTopic(trend));
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, 30);
+}
+
 function buildLiveSearchTrend(
   posts: IngestedPost[],
   rawQuery: string,
@@ -1233,6 +1348,16 @@ function buildLiveSearchTrend(
     change: `+${matchingPosts.length * 100}%`,
     sourceCount: sourceMap.size,
     topSources,
+    examples: matchingPosts.slice(0, 5).map((post) => ({
+      id: post.id,
+      text: String(post.text || "").slice(0, 280),
+      url: post.postUrl,
+      publishedAt: post.createdAt,
+      sourceTitle: post.source?.title || "Telegram",
+      sourceUsername: post.source?.handle || undefined,
+      sourceAvatarUrl: post.source?.avatar || undefined,
+    })),
+    signals: topic.split(/\s+/).filter(Boolean).slice(0, 5),
     category: "all",
   };
 }
@@ -1249,9 +1374,10 @@ function SourceAvatar({
   source: TrendSource;
   size?: "sm" | "lg";
 }) {
+  const [failed, setFailed] = useState(false);
   const sizeClass = size === "lg" ? "h-11 w-11 text-sm" : "h-7 w-7 text-[10px]";
   const fallback = source.title.slice(0, 1).toUpperCase();
-  const avatarUrl = source.avatarUrl || getTelegramAvatarUrl(source);
+  const avatarUrl = failed ? "" : source.avatarUrl || getTelegramAvatarUrl(source);
 
   return (
     <div
@@ -1264,9 +1390,7 @@ function SourceAvatar({
           alt=""
           className="h-full w-full rounded-full object-cover"
           referrerPolicy="no-referrer"
-          onError={(event) => {
-            event.currentTarget.style.display = "none";
-          }}
+          onError={() => setFailed(true)}
         />
       ) : (
         fallback
@@ -1276,7 +1400,7 @@ function SourceAvatar({
 }
 
 function SourceDots({ sources = [] }: { sources?: TrendSource[] }) {
-  const visible = sources.slice(0, 4);
+  const visible = sources.slice(0, 5);
 
   return (
     <div className="flex -space-x-2">
@@ -1325,7 +1449,7 @@ function MiniAttentionChart({
   const labelClass = isUp ? "text-emerald-500" : "text-red-500";
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-soft bg-app px-3 pb-3 pt-3">
+    <div className="relative overflow-hidden rounded-3xl border border-soft bg-app px-3 pb-2 pt-2">
       <div className="mb-2 flex items-center justify-between text-[11px] text-secondary">
         <span>48h</span>
         <span className={`font-black ${labelClass}`}>
@@ -1335,7 +1459,7 @@ function MiniAttentionChart({
 
       <svg
         viewBox="0 0 344 104"
-        className="h-24 min-h-[96px] w-full overflow-visible"
+        className="h-20 min-h-[80px] w-full overflow-visible"
       >
         {[plotTop, plotTop + plotHeight / 2, plotTop + plotHeight].map(
           (y, index) => (
@@ -1747,12 +1871,17 @@ function TrendRow({
             <span className="text-secondary">
               {sourceCount} {copy.sources}
             </span>
+            {trend.topSources?.length ? (
+              <span className="ml-1 inline-flex align-middle">
+                <SourceDots sources={trend.topSources} />
+              </span>
+            ) : null}
           </div>
         </div>
 
         <div
           className={[
-            "grid h-11 w-11 shrink-0 place-items-center rounded-2xl",
+            "flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-2xl",
             isUp
               ? "bg-emerald-500/10 text-emerald-500"
               : "bg-red-500/10 text-red-500",
@@ -1762,15 +1891,20 @@ function TrendRow({
             <ChevronDown className="h-6 w-6" />
           ) : Math.abs(momentum) >= 100 ? (
             isUp ? (
-              <ArrowUpRight className="h-6 w-6" />
+              <ArrowUpRight className="h-5 w-5" />
             ) : (
-              <ArrowDownRight className="h-6 w-6" />
+              <ArrowDownRight className="h-5 w-5" />
             )
           ) : isUp ? (
-            <TrendingUp className="h-6 w-6" />
+            <TrendingUp className="h-5 w-5" />
           ) : (
-            <TrendingDown className="h-6 w-6" />
+            <TrendingDown className="h-5 w-5" />
           )}
+          {!opened && formatMomentumDelta(momentum) ? (
+            <span className="mt-0.5 text-[10px] font-black leading-none">
+              {formatMomentumDelta(momentum)}
+            </span>
+          ) : null}
         </div>
       </button>
 
@@ -1817,25 +1951,25 @@ function TrendRow({
             </button>
           </div>
 
-          <div className="mt-3 flex items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-2">
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                onOpenDetail();
-              }}
-              className="flex min-w-0 items-center gap-3 text-left"
-            >
+          <button
+            type="button"
+            onClick={(event) => {
+              event.stopPropagation();
+              onOpenDetail();
+            }}
+            className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-2 text-left transition hover:bg-surface-soft"
+          >
+            <div className="flex min-w-0 items-center gap-3">
               <SourceDots sources={trend.topSources} />
               <div className="min-w-0">
-                <div className="text-[11px] font-bold text-secondary">
+                <div className="text-[10px] font-black uppercase tracking-[0.08em] text-secondary">
                   {copy.sources}
                 </div>
                 <div className="text-sm font-black text-primary">
                   {sourceCount}
                 </div>
               </div>
-            </button>
+            </div>
 
             <div
               className={[
@@ -1845,23 +1979,28 @@ function TrendRow({
             >
               {formatNumber(trend.mentions)} {copy.mentions}
             </div>
-          </div>
+          </button>
 
           {trend.examples?.length ? (
             <div className="mt-3 space-y-2">
-              {trend.examples.slice(0, 3).map((example, index) => (
-                <div
-                  key={`${example.id}-${index}`}
-                  className="rounded-2xl border border-soft bg-app px-3 py-2 text-[12px] leading-relaxed text-secondary"
-                >
-                  {example.sourceTitle ? (
-                    <div className="mb-1 font-black text-primary">
-                      {example.sourceTitle}
+              {trend.examples.slice(0, 3).map((example, index) => {
+                const exampleSource = getExampleSource(trend, example);
+
+                return (
+                  <div
+                    key={`${example.id}-${index}`}
+                    className="rounded-2xl border border-soft bg-app px-3 py-2 text-[12px] leading-relaxed text-secondary"
+                  >
+                    <div className="mb-1.5 flex items-center gap-2 font-black text-primary">
+                      <SourceAvatar source={exampleSource} />
+                      <span className="min-w-0 truncate">
+                        {example.sourceTitle || exampleSource.title}
+                      </span>
                     </div>
-                  ) : null}
-                  <div className="line-clamp-3">{example.text}</div>
-                </div>
-              ))}
+                    <div className="line-clamp-3">{example.text}</div>
+                  </div>
+                );
+              })}
             </div>
           ) : null}
         </div>
@@ -1961,18 +2100,30 @@ export function TrendsView({
     const rawQuery = query.trim();
     const normalizedQuery = rawQuery.toLowerCase();
 
+    const livePostTrends = trends.length ? [] : buildLivePostTrends(posts);
+
     let list =
       selectedCategory === "followed"
         ? trends.filter((item) =>
             followedTopics.includes(normalizeTopic(getTopic(item))),
           )
         : selectedCategory === "all"
-          ? trends
+          ? trends.length
+            ? trends
+            : livePostTrends
           : trends.filter(
               (item) =>
                 (item.category || getTrendCategory(getTopic(item))) ===
                 selectedCategory,
             );
+
+    if (!list.length && selectedCategory !== "followed") {
+      list = livePostTrends.filter(
+        (item) =>
+          selectedCategory === "all" ||
+          (item.category || getTrendCategory(getTopic(item))) === selectedCategory,
+      );
+    }
 
     const seen = new Set<string>();
     list = list.filter((item) => {
@@ -1988,6 +2139,8 @@ export function TrendsView({
           getTopic(item),
           item.category,
           ...(item.topSources || []).map((source) => source.title),
+          ...(item.signals || []),
+          ...(item.examples || []).map((example) => example.text),
         ]
           .join(" ")
           .toLowerCase()

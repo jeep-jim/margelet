@@ -34,6 +34,8 @@ type TrendPost = {
   url?: string;
   publishedAt?: string;
   sourceTitle?: string;
+  sourceUsername?: string;
+  sourceAvatarUrl?: string;
 };
 
 type TrendItem = {
@@ -629,6 +631,8 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
           url: getPostUrl(post),
           publishedAt: new Date(postTime).toISOString(),
           sourceTitle,
+          sourceUsername,
+          sourceAvatarUrl: sourceAvatar,
         });
       }
     }

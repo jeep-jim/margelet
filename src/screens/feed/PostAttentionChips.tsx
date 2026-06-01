@@ -141,6 +141,39 @@ function compactTopic(topic: string) {
   return `${clean.slice(0, 89).trim()}…`;
 }
 
+
+function getTelegramAvatarUrl(handle?: string | null) {
+  const clean = String(handle || "").replace(/^@+/, "").trim();
+  return clean ? `https://t.me/i/userpic/320/${clean}.jpg` : "";
+}
+
+function PostSourceAvatar({ post }: { post: IngestedPost }) {
+  const [failed, setFailed] = useState(false);
+  const title = post.source?.title || "Telegram";
+  const avatarUrl = failed
+    ? ""
+    : post.source?.avatar || getTelegramAvatarUrl(post.source?.handle);
+
+  return (
+    <div
+      className="grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-full border border-[color:var(--bg-app)] bg-surface-soft text-[10px] font-black text-primary"
+      title={title}
+    >
+      {avatarUrl ? (
+        <img
+          src={avatarUrl}
+          alt=""
+          className="h-full w-full object-cover"
+          referrerPolicy="no-referrer"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        title.slice(0, 1).toUpperCase()
+      )}
+    </div>
+  );
+}
+
 export function PostAttentionChips({
   post,
   searchQuery = "",
@@ -182,6 +215,13 @@ export function PostAttentionChips({
             <span>🔥</span>
             <span>+{score} {copy.mentions}</span>
             <span className="text-emerald-500">↗</span>
+          </div>
+
+          <div className="mt-2 flex items-center gap-2">
+            <PostSourceAvatar post={post} />
+            <div className="min-w-0 text-[11px] font-black text-secondary">
+              {post.source?.title || "Telegram"}
+            </div>
           </div>
 
           {primary ? (
