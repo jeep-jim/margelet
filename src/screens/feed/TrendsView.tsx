@@ -1697,7 +1697,6 @@ function TrendRow({
   onToggle,
   onOpenDetail,
   onToggleFollow,
-  showSourceCount,
   copy,
 }: {
   trend: TrendItem;
@@ -1706,7 +1705,6 @@ function TrendRow({
   onToggle: () => void;
   onOpenDetail: () => void;
   onToggleFollow: () => void;
-  showSourceCount: boolean;
   copy: TrendsCopy;
 }) {
   const topic = getTopic(trend);
@@ -1715,6 +1713,7 @@ function TrendRow({
   const chips = getTrendSignals(trend);
   const sourceCount = trend.sourceCount || trend.topSources?.length || 0;
   const emoji = getTrendEmoji(topic, trend.category);
+  const snippet = getTrendSnippet(trend);
 
   return (
     <article className="overflow-hidden rounded-[26px] border border-soft bg-surface shadow-sm">
@@ -1729,13 +1728,13 @@ function TrendRow({
             {topic}
           </div>
 
-          {getTrendSnippet(trend) ? (
+          {snippet ? (
             <div className="mt-1 line-clamp-2 text-[12px] leading-relaxed text-secondary">
-              {getTrendSnippet(trend)}
+              {snippet}
             </div>
           ) : null}
 
-          <div className="mt-1 flex items-center gap-1.5 text-xs whitespace-nowrap">
+          <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs whitespace-nowrap">
             <span
               className={
                 isUp ? "font-black text-emerald-500" : "font-black text-red-500"
@@ -1743,16 +1742,11 @@ function TrendRow({
             >
               {formatNumber(trend.mentions)}
             </span>
-
             <Search className="h-3.5 w-3.5 text-secondary" />
-            {showSourceCount ? (
-              <>
-                <span className="text-secondary">·</span>
-                <span className="text-secondary">
-                  {sourceCount} {copy.sources}
-                </span>
-              </>
-            ) : null}
+            <span className="text-secondary">·</span>
+            <span className="text-secondary">
+              {sourceCount} {copy.sources}
+            </span>
           </div>
         </div>
 
@@ -1782,54 +1776,20 @@ function TrendRow({
 
       {opened ? (
         <div className="border-t border-soft px-3 pb-3 pt-3">
-          <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {chips.map((chip) => (
-              <span
-                key={chip}
-                className="shrink-0 rounded-full border border-soft bg-app px-3 py-1 text-xs text-secondary"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-4 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <SourceDots sources={trend.topSources} />
-              <div className="text-base font-black text-primary">
-                {sourceCount}
-              </div>
-            </div>
-
-            <div
-              className={[
-                "text-sm font-black",
-                isUp ? "text-emerald-500" : "text-red-500",
-              ].join(" ")}
-            >
-              {formatNumber(trend.mentions)} {copy.mentions}
-            </div>
-          </div>
-
-          {trend.examples?.length ? (
-            <div className="mt-4 space-y-2">
-              {trend.examples.slice(0, 3).map((example, index) => (
-                <div
-                  key={`${example.id}-${index}`}
-                  className="rounded-2xl border border-soft bg-app px-3 py-2 text-[12px] leading-relaxed text-secondary"
+          {chips.length ? (
+            <div className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {chips.map((chip) => (
+                <span
+                  key={chip}
+                  className="shrink-0 rounded-full border border-soft bg-app px-3 py-1 text-xs text-secondary"
                 >
-                  {example.sourceTitle ? (
-                    <div className="mb-1 font-black text-primary">
-                      {example.sourceTitle}
-                    </div>
-                  ) : null}
-                  <div className="line-clamp-3">{example.text}</div>
-                </div>
+                  {chip}
+                </span>
               ))}
             </div>
           ) : null}
 
-          <div className="mt-4 grid grid-cols-2 gap-3">
+          <div className="mt-3 grid grid-cols-2 gap-3">
             <button
               type="button"
               onClick={(event) => {
@@ -1856,6 +1816,54 @@ function TrendRow({
               {copy.explore}
             </button>
           </div>
+
+          <div className="mt-3 flex items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-2">
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                onOpenDetail();
+              }}
+              className="flex min-w-0 items-center gap-3 text-left"
+            >
+              <SourceDots sources={trend.topSources} />
+              <div className="min-w-0">
+                <div className="text-[11px] font-bold text-secondary">
+                  {copy.sources}
+                </div>
+                <div className="text-sm font-black text-primary">
+                  {sourceCount}
+                </div>
+              </div>
+            </button>
+
+            <div
+              className={[
+                "text-sm font-black",
+                isUp ? "text-emerald-500" : "text-red-500",
+              ].join(" ")}
+            >
+              {formatNumber(trend.mentions)} {copy.mentions}
+            </div>
+          </div>
+
+          {trend.examples?.length ? (
+            <div className="mt-3 space-y-2">
+              {trend.examples.slice(0, 3).map((example, index) => (
+                <div
+                  key={`${example.id}-${index}`}
+                  className="rounded-2xl border border-soft bg-app px-3 py-2 text-[12px] leading-relaxed text-secondary"
+                >
+                  {example.sourceTitle ? (
+                    <div className="mb-1 font-black text-primary">
+                      {example.sourceTitle}
+                    </div>
+                  ) : null}
+                  <div className="line-clamp-3">{example.text}</div>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       ) : null}
     </article>
@@ -2152,7 +2160,6 @@ export function TrendsView({
               }
               onOpenDetail={() => setActiveTrend(trend)}
               onToggleFollow={() => toggleFollow(topic)}
-              showSourceCount={selectedCategory !== "all"}
               copy={copy}
             />
           );

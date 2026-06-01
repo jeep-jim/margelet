@@ -155,7 +155,7 @@ export function PostAttentionChips({
   const topics = getAttentionTopics(post, searchQuery);
   const primary = topics[0];
   const score = primary?.score || (post.media?.length ? 8 : 5);
-  const extraMentions = Math.max(2, score + (topics.length > 1 ? 2 : 0));
+  const sourceCount = Math.max(1, Math.min(9, Math.round(score * 0.55) + (topics.length > 1 ? 1 : 0)));
 
   return (
     <div className="relative inline-flex max-w-full">
@@ -170,7 +170,7 @@ export function PostAttentionChips({
         <span className="text-emerald-500">↗</span>
         <span className="shrink-0">{copy.contribution}</span>
         <span className="shrink-0 text-emerald-500">+{score}</span>
-        <span className="shrink-0 text-secondary">+{extraMentions}</span>
+        <span className="shrink-0 text-secondary">+{sourceCount}</span>
       </button>
 
       {open ? (
@@ -180,7 +180,7 @@ export function PostAttentionChips({
         >
           <div className="flex items-center gap-1.5 px-1 text-[12px] font-black text-primary">
             <span>🔥</span>
-            <span>+{extraMentions} {copy.mentions}</span>
+            <span>+{score} {copy.mentions}</span>
             <span className="text-emerald-500">↗</span>
           </div>
 

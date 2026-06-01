@@ -30,7 +30,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Язык",
     slides: [
       {
-        title: "Где сейчас внимание людей 🔥",
+        title: "Где сейчас внимание людей 👀",
         text: "margeleT — это индекс внимания и тренды раньше новостей",
       },
     ],
@@ -43,7 +43,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Мова",
     slides: [
       {
-        title: "Де зараз увага людей 🔥",
+        title: "Де зараз увага людей 👀",
         text: "margeleT — це індекс уваги і тренди раніше за новини",
       },
     ],
@@ -56,7 +56,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "Where people's attention is now 🔥",
+        title: "Where people's attention is now 👀",
         text: "margeleT is an attention index and trends before the news",
       },
     ],
@@ -69,7 +69,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 भाषा",
     slides: [
       {
-        title: "लोगों का ध्यान अभी कहाँ है 🔥",
+        title: "लोगों का ध्यान अभी कहाँ है 👀",
         text: "margeleT ध्यान का इंडेक्स है और खबरों से पहले ट्रेंड दिखाता है",
       },
     ],
@@ -82,7 +82,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 زبان",
     slides: [
       {
-        title: "توجه مردم الان کجاست 🔥",
+        title: "توجه مردم الان کجاست 👀",
         text: "margeleT شاخص توجه است و روندها را قبل از خبرها نشان می‌دهد",
       },
     ],
@@ -95,7 +95,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Dil",
     slides: [
       {
-        title: "İnsanların dikkati şimdi nerede 🔥",
+        title: "İnsanların dikkati şimdi nerede 👀",
         text: "margeleT bir dikkat endeksi ve haberlerden önce trendlerdir",
       },
     ],
@@ -108,7 +108,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "Onde está a atenção das pessoas agora 🔥",
+        title: "Onde está a atenção das pessoas agora 👀",
         text: "margeleT é um índice de atenção e tendências antes das notícias",
       },
     ],
@@ -121,7 +121,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Тіл",
     slides: [
       {
-        title: "Адамдардың назары қазір қайда 🔥",
+        title: "Адамдардың назары қазір қайда 👀",
         text: "margeleT — назар индексі және жаңалықтардан бұрынғы трендтер",
       },
     ],
@@ -134,7 +134,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Til",
     slides: [
       {
-        title: "Odamlar eʼtibori hozir qayerda 🔥",
+        title: "Odamlar eʼtibori hozir qayerda 👀",
         text: "margeleT — eʼtibor indeksi va yangiliklardan oldingi trendlar",
       },
     ],
@@ -147,7 +147,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "أين انتباه الناس الآن 🔥",
+        title: "أين انتباه الناس الآن 👀",
         text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
       },
     ],
@@ -160,7 +160,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "أين انتباه الناس الآن 🔥",
+        title: "أين انتباه الناس الآن 👀",
         text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
       },
     ],
@@ -173,7 +173,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 زبان",
     slides: [
       {
-        title: "لوگوں کی توجہ ابھی کہاں ہے 🔥",
+        title: "لوگوں کی توجہ ابھی کہاں ہے 👀",
         text: "margeleT توجہ کا انڈیکس ہے اور خبروں سے پہلے رجحانات دکھاتا ہے",
       },
     ],
@@ -186,7 +186,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Bahasa",
     slides: [
       {
-        title: "Perhatian orang sedang ke mana 🔥",
+        title: "Perhatian orang sedang ke mana 👀",
         text: "margeleT adalah indeks perhatian dan tren sebelum berita",
       },
     ],
@@ -199,7 +199,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "Dónde está la atención de la gente ahora 🔥",
+        title: "Dónde está la atención de la gente ahora 👀",
         text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
@@ -212,7 +212,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 اللغة",
     slides: [
       {
-        title: "أين انتباه الناس الآن 🔥",
+        title: "أين انتباه الناس الآن 👀",
         text: "margeleT هو مؤشر للانتباه واتجاهات قبل الأخبار",
       },
     ],
@@ -225,7 +225,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "Dónde está la atención de la gente ahora 🔥",
+        title: "Dónde está la atención de la gente ahora 👀",
         text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
@@ -238,7 +238,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Lingua",
     slides: [
       {
-        title: "Dov'è ora l'attenzione delle persone 🔥",
+        title: "Dov'è ora l'attenzione delle persone 👀",
         text: "margeleT è un indice dell'attenzione e trend prima delle notizie",
       },
     ],
@@ -251,7 +251,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Langue",
     slides: [
       {
-        title: "Où est l'attention des gens maintenant 🔥",
+        title: "Où est l'attention des gens maintenant 👀",
         text: "margeleT est un indice d'attention et des tendances avant l'actualité",
       },
     ],
@@ -264,7 +264,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Sprache",
     slides: [
       {
-        title: "Wo ist die Aufmerksamkeit der Menschen jetzt 🔥",
+        title: "Wo ist die Aufmerksamkeit der Menschen jetzt 👀",
         text: "margeleT ist ein Aufmerksamkeitsindex und Trends vor den Nachrichten",
       },
     ],
@@ -277,7 +277,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "Dónde está la atención de la gente ahora 🔥",
+        title: "Dónde está la atención de la gente ahora 👀",
         text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
@@ -290,7 +290,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Idioma",
     slides: [
       {
-        title: "Dónde está la atención de la gente ahora 🔥",
+        title: "Dónde está la atención de la gente ahora 👀",
         text: "margeleT es un índice de atención y tendencias antes de las noticias",
       },
     ],
@@ -303,7 +303,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "Where people's attention is now 🔥",
+        title: "Where people's attention is now 👀",
         text: "margeleT is an attention index and trends before the news",
       },
     ],
@@ -316,7 +316,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Language",
     slides: [
       {
-        title: "Where people's attention is now 🔥",
+        title: "Where people's attention is now 👀",
         text: "margeleT is an attention index and trends before the news",
       },
     ],
@@ -329,7 +329,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 语言",
     slides: [
       {
-        title: "人们现在的注意力在哪里 🔥",
+        title: "人们现在的注意力在哪里 👀",
         text: "margeleT 是注意力指数，也是新闻之前的趋势",
       },
     ],
@@ -342,7 +342,7 @@ const INTRO_COPY: Record<SiteLocale, IntroCopy> = {
     chooseLanguage: "🌎 Bahasa",
     slides: [
       {
-        title: "Di mana perhatian orang sekarang 🔥",
+        title: "Di mana perhatian orang sekarang 👀",
         text: "margeleT ialah indeks perhatian dan trend sebelum berita",
       },
     ],

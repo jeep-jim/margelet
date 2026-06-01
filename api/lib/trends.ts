@@ -429,12 +429,12 @@ function shouldKeepTopic(topic: string, mentions: number, sourceCount: number, b
     if (!isKnownTrendEntity(normalized)) return false;
   }
 
-  // Public attention is not a single post from one channel.
-  // A topic must be picked up by at least two independent sources.
-  if (sourceCount < 2) return false;
+  // A fresh low-frequency signal may start in one source.
+  // Multi-source topics are ranked higher by score, but single-source
+  // snippet topics should still appear in the live attention index.
+  if (sourceCount < 1 || mentions < 1) return false;
 
-  if (parts.length === 2 && mentions < 2) return false;
-  if (parts.length >= 3 && mentions < 2) return false;
+  if (parts.length === 1) return false;
 
   return true;
 }
