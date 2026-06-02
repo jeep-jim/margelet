@@ -12,34 +12,35 @@ type AttentionCopy = {
   mentions: string;
   explore: string;
   sources: string;
+  allMentions: string;
 };
 
 const COPY: Record<Locale, AttentionCopy> = {
-  ru: { contribution: "вклад в тему", mentions: "упоминаний", explore: "Исследовать", sources: "источников" },
-  ua: { contribution: "внесок у тему", mentions: "згадок", explore: "Дослідити", sources: "джерел" },
-  us: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources" },
-  in: { contribution: "विषय योगदान", mentions: "उल्लेख", explore: "Explore", sources: "स्रोत" },
-  ir: { contribution: "اثر در موضوع", mentions: "اشاره", explore: "بررسی", sources: "منبع" },
-  tr: { contribution: "konu katkısı", mentions: "bahis", explore: "İncele", sources: "kaynak" },
-  br: { contribution: "impacto no tema", mentions: "menções", explore: "Explorar", sources: "fontes" },
-  kz: { contribution: "тақырып үлесі", mentions: "аталым", explore: "Зерттеу", sources: "дереккөз" },
-  uz: { contribution: "mavzu hissasi", mentions: "eslatma", explore: "O‘rganish", sources: "manba" },
-  ae: { contribution: "أثر في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر" },
-  eg: { contribution: "تأثير في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر" },
-  pk: { contribution: "موضوع میں حصہ", mentions: "ذکر", explore: "دیکھیں", sources: "ذرائع" },
-  id: { contribution: "dampak topik", mentions: "sebutan", explore: "Jelajahi", sources: "sumber" },
-  mx: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
-  sa: { contribution: "أثر في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر" },
-  es: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
-  it: { contribution: "impatto sul tema", mentions: "menzioni", explore: "Esplora", sources: "fonti" },
-  fr: { contribution: "impact du sujet", mentions: "mentions", explore: "Explorer", sources: "sources" },
-  de: { contribution: "Themenbeitrag", mentions: "Erwähnungen", explore: "Erkunden", sources: "Quellen" },
-  ar: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
-  co: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
-  za: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources" },
-  ng: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources" },
-  cn: { contribution: "话题贡献", mentions: "次提及", explore: "探索", sources: "来源" },
-  my: { contribution: "impak topik", mentions: "sebutan", explore: "Teroka", sources: "sumber" },
+  ru: { contribution: "вклад в тему", mentions: "упоминаний", explore: "Исследовать", sources: "источников", allMentions: "Все упоминания" },
+  ua: { contribution: "внесок у тему", mentions: "згадок", explore: "Дослідити", sources: "джерел", allMentions: "Усі згадки" },
+  us: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources", allMentions: "All mentions" },
+  in: { contribution: "विषय योगदान", mentions: "उल्लेख", explore: "Explore", sources: "स्रोत", allMentions: "All mentions" },
+  ir: { contribution: "اثر در موضوع", mentions: "اشاره", explore: "بررسی", sources: "منبع", allMentions: "All mentions" },
+  tr: { contribution: "konu katkısı", mentions: "bahis", explore: "İncele", sources: "kaynak", allMentions: "All mentions" },
+  br: { contribution: "impacto no tema", mentions: "menções", explore: "Explorar", sources: "fontes", allMentions: "All mentions" },
+  kz: { contribution: "тақырып үлесі", mentions: "аталым", explore: "Зерттеу", sources: "дереккөз", allMentions: "All mentions" },
+  uz: { contribution: "mavzu hissasi", mentions: "eslatma", explore: "O‘rganish", sources: "manba", allMentions: "All mentions" },
+  ae: { contribution: "أثر في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر", allMentions: "All mentions" },
+  eg: { contribution: "تأثير في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر", allMentions: "All mentions" },
+  pk: { contribution: "موضوع میں حصہ", mentions: "ذکر", explore: "دیکھیں", sources: "ذرائع", allMentions: "All mentions" },
+  id: { contribution: "dampak topik", mentions: "sebutan", explore: "Jelajahi", sources: "sumber", allMentions: "All mentions" },
+  mx: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes", allMentions: "All mentions" },
+  sa: { contribution: "أثر في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر", allMentions: "All mentions" },
+  es: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes", allMentions: "All mentions" },
+  it: { contribution: "impatto sul tema", mentions: "menzioni", explore: "Esplora", sources: "fonti", allMentions: "All mentions" },
+  fr: { contribution: "impact du sujet", mentions: "mentions", explore: "Explorer", sources: "sources", allMentions: "All mentions" },
+  de: { contribution: "Themenbeitrag", mentions: "Erwähnungen", explore: "Erkunden", sources: "Quellen", allMentions: "All mentions" },
+  ar: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes", allMentions: "All mentions" },
+  co: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes", allMentions: "All mentions" },
+  za: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources", allMentions: "All mentions" },
+  ng: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources", allMentions: "All mentions" },
+  cn: { contribution: "话题贡献", mentions: "次提及", explore: "探索", sources: "来源", allMentions: "全部提及" },
+  my: { contribution: "impak topik", mentions: "sebutan", explore: "Teroka", sources: "sumber", allMentions: "All mentions" },
 };
 
 
@@ -263,38 +264,25 @@ function TrendSourceAvatar({ source }: { source: AttentionTrendSource }) {
 }
 
 function RealSourceDots({
-  post,
   sources,
   count,
   copy,
 }: {
-  post: IngestedPost;
   sources: AttentionTrendSource[];
   count: number;
   copy: AttentionCopy;
 }) {
-  const cleanedSources = sources
+  const visibleSources = sources
     .filter((source) => String(source.title || source.username || "").trim())
     .slice(0, 6);
 
-  const fallbackSources: AttentionTrendSource[] = cleanedSources.length
-    ? cleanedSources
-    : [
-        {
-          id: post.source?.handle || String(post.id),
-          title: post.source?.title || "Telegram",
-          username: post.source?.handle,
-          avatarUrl: post.source?.avatar || undefined,
-          mentions: 1,
-        },
-      ];
+  if (!visibleSources.length && count <= 0) return null;
 
-  const visibleSources = fallbackSources.slice(0, 6);
   const hiddenCount = Math.max(0, count - visibleSources.length);
 
   return (
-    <div className="mt-2 flex items-center justify-between gap-3">
-      <div className="flex min-w-0 items-center gap-2">
+    <div className="mt-2 flex min-w-0 items-center gap-2">
+      {visibleSources.length ? (
         <div className="flex -space-x-2">
           {visibleSources.map((source, index) => (
             <TrendSourceAvatar
@@ -308,15 +296,14 @@ function RealSourceDots({
             </div>
           ) : null}
         </div>
+      ) : null}
 
-        <span className="shrink-0 text-[11px] font-black text-secondary">
-          {count} {copy.sources}
-        </span>
-      </div>
+      <span className="shrink-0 text-[11px] font-black text-secondary">
+        {count} {copy.sources}
+      </span>
     </div>
   );
 }
-
 
 export function PostAttentionChips({
   post,
@@ -361,14 +348,15 @@ export function PostAttentionChips({
   }, [open, primary?.topic, countryCode]);
 
   const score = Math.max(fallbackScore, Number(matchedTrend?.mentions) || 0);
-  const realSources = Array.isArray(matchedTrend?.topSources) ? matchedTrend.topSources : [];
-  const sourceCount = Math.max(
-    realSources.length,
-    Number(matchedTrend?.sourceCount) || 0,
-    Math.max(1, Math.min(9, Math.round(fallbackScore * 0.55) + (topics.length > 1 ? 1 : 0))),
-  );
+  const realSources = Array.isArray(matchedTrend?.topSources)
+    ? matchedTrend.topSources.filter((source) =>
+        String(source.title || source.username || "").trim(),
+      )
+    : [];
+  const sourceCount = matchedTrend
+    ? Math.max(realSources.length, Number(matchedTrend.sourceCount) || 0)
+    : realSources.length;
   const exploreTopic = getTrendTitle(matchedTrend) || primary?.topic || "";
-  const trendRating = Math.abs(Number(matchedTrend?.momentum) || 0) || score;
 
   function exploreTopicInTrends(event: MouseEvent) {
     event.stopPropagation();
@@ -401,7 +389,9 @@ export function PostAttentionChips({
         <span className="text-emerald-500">↗</span>
         <span className="shrink-0">{copy.contribution}</span>
         <span className="shrink-0 text-emerald-500">+{score}</span>
-        <span className="shrink-0 text-secondary">+{sourceCount}</span>
+        {sourceCount > 0 ? (
+          <span className="shrink-0 text-secondary">+{sourceCount}</span>
+        ) : null}
       </button>
 
       {open ? (
@@ -409,24 +399,24 @@ export function PostAttentionChips({
           className="absolute bottom-full left-0 z-40 mb-2 w-[280px] max-w-[calc(100vw-32px)] rounded-[22px] border border-soft bg-surface p-3 shadow-soft"
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="flex items-center gap-1.5 px-1 text-[12px] font-black text-primary">
-            <span>🔥</span>
-            <span>+{score} {copy.mentions}</span>
-            <span className="text-emerald-500">↗</span>
-          </div>
+          <button
+            type="button"
+            onClick={exploreTopicInTrends}
+            className="flex w-full items-center justify-between gap-3 rounded-2xl bg-emerald-500/15 px-3 py-2 text-left text-emerald-500 transition hover:bg-emerald-500/25"
+            title={copy.explore}
+          >
+            <span className="flex min-w-0 items-center gap-1.5 text-[12px] font-black text-primary">
+              <span>🔥</span>
+              <span className="truncate">{copy.allMentions}</span>
+            </span>
 
-          <div className="mt-2 flex items-center justify-between gap-3">
-            <RealSourceDots post={post} sources={realSources} count={sourceCount} copy={copy} />
-            <button
-              type="button"
-              onClick={exploreTopicInTrends}
-              className="grid h-11 min-w-11 shrink-0 place-items-center rounded-2xl bg-emerald-500/15 px-2 text-emerald-500 transition hover:bg-emerald-500/25"
-              title={copy.explore}
-            >
-              <span className="text-lg font-black leading-none">↗</span>
-              <span className="text-[10px] font-black leading-none">+{formatCompactNumber(trendRating)}</span>
-            </button>
-          </div>
+            <span className="flex shrink-0 items-center gap-1.5 text-[12px] font-black">
+              <span>+{formatCompactNumber(score)}</span>
+              <span className="text-lg leading-none">↗↗</span>
+            </span>
+          </button>
+
+          <RealSourceDots sources={realSources} count={sourceCount} copy={copy} />
 
           {primary ? (
             <div className="mt-2 rounded-2xl bg-surface-soft px-3 py-2 text-[12px] font-semibold leading-relaxed text-primary">
