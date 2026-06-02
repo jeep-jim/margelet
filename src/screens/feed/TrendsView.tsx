@@ -1777,7 +1777,7 @@ function TrendDetail({
           <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
             {copy.telegramAttention}
           </div>
-          <h2 className="mt-1 text-2xl font-black leading-tight text-primary">
+          <h2 className="mt-1 text-base font-extrabold leading-tight text-[#d7e3f2] sm:text-lg">
             <span className="mr-1.5 align-[-1px] text-xl">{emoji}</span>
             {topic}
           </h2>
@@ -1989,7 +1989,7 @@ function TrendRow({
         className="flex w-full items-start gap-3 px-3 py-3 text-left"
       >
         <div className="min-w-0 flex-1">
-          <div className="text-base font-black leading-tight text-primary line-clamp-2">
+          <div className="text-base font-extrabold leading-tight text-[#d7e3f2] line-clamp-2">
             <span className="mr-1.5 align-[-1px] text-base">{emoji}</span>
             {topic}
           </div>
@@ -2115,7 +2115,7 @@ function TrendRow({
                     key={`${example.id}-${index}`}
                     className="rounded-2xl border border-soft bg-app px-3 py-2 text-[12px] leading-relaxed text-secondary"
                   >
-                    <div className="mb-1.5 flex items-center gap-2 font-black text-primary">
+                    <div className="mb-1.5 flex items-center gap-2 font-extrabold text-[#d7e3f2]">
                       <SourceAvatar source={exampleSource} />
                       <span className="min-w-0 truncate">
                         {example.sourceTitle || exampleSource.title}
