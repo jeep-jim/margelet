@@ -94,14 +94,31 @@ function buildTagAliasMap() {
     ["финансы", "finance"],
     ["крипта", "crypto"],
     ["технологии", "technology"],
+    ["technology", "technology"],
+    ["tech", "technology"],
+    ["it", "technology"],
     ["тех", "technology"],
     ["интернет", "internet"],
+    ["софт", "technology_software"],
+    ["software", "technology_software"],
+    ["apk", "technology_software"],
     ["гаджеты", "gadgets"],
+    ["электроника", "electronics"],
+    ["wylsacom", "gadgets"],
     ["ai", "ai"],
     ["ии", "ai"],
     ["наука", "science"],
     ["образование", "education"],
+    ["мотивация", "education_self"],
+    ["саморазвитие", "education_self"],
+    ["курсы", "education_courses"],
     ["культура", "culture"],
+    ["кино", "cinema"],
+    ["фильмы", "cinema"],
+    ["сериалы", "series"],
+    ["netflix", "series"],
+    ["подкасты", "people_interviews"],
+    ["интервью", "people_interviews"],
     ["игры", "gaming"],
     ["юмор", "humor"],
     ["мемы", "memes"],
@@ -124,13 +141,22 @@ function buildTagAliasMap() {
     ["недвижимость", "real_estate"],
     ["транспорт", "auto"],
     ["авто", "transport_auto"],
+    ["автомобили", "transport_auto"],
+    ["машины", "transport_auto"],
+    ["cars", "transport_auto"],
+    ["car", "transport_auto"],
+    ["auto", "transport_auto"],
+    ["transport", "auto"],
     ["телеграм", "telegram"],
     ["telegram", "telegram"],
     ["ton", "telegram_ton"],
     ["боты", "telegram_bots"],
     ["каналы", "telegram_channels"],
+    ["разное", "other"],
     ["другое", "other"],
     ["прочее", "other"],
+    ["misc", "other"],
+    ["other_misc", "other"],
   ];
 
   for (const [label, value] of manualAliases) addAlias(label, value);
@@ -170,6 +196,35 @@ function parseTagsFromText(value: string): ContentTag[] {
   return normalizeTagValues(tags) as ContentTag[];
 }
 
+
+function inferTagsForSource(handle: string, title: string): ContentTag[] {
+  const text = normalizeTextKey(`${handle} ${title}`);
+  const pairs: Array<[RegExp, ContentTag[]]> = [
+    [/\b(auto|avto|car|cars|truck|pickup|toyota|honda|bmw|geely|tesla|авто|машин|пикап|грузовик|электромоб)/i, ["transport_auto"]],
+    [/\b(netflix|kino|film|movie|serial|series|кино|фильм|сериал|эфория)/i, ["series"]],
+    [/\b(recipe|recipes|food|cook|kitchen|кухн|рецепт|еда|мамины рецепты)/i, ["recipes"]],
+    [/\b(crypto|bitcoin|btc|ton|binance|trading|крипт|биткоин|трейдинг)/i, ["crypto"]],
+    [/\b(bank|finance|money|бизнес|финанс|банк|сбер|миллион)/i, ["finance"]],
+    [/\b(news|live|новост|сми|112|breaking)/i, ["news_all"]],
+    [/\b(polit|war|воен|войн|полит|адекват|подоляка|монтян)/i, ["politics_opinion"]],
+    [/\b(tproger|program|dev|code|software|apk|tech|технолог|програм|бэкдор|софт)/i, ["technology"]],
+    [/\b(wylsa|gadget|iphone|apple|android|электрон|гаджет)/i, ["gadgets"]],
+    [/\b(marketing|marketplace|smm|маркетинг|маркетплейс|ozon|wildberries)/i, ["marketing"]],
+    [/\b(travel|avia|авиа|путеше|тур|отел|победа|aviasales)/i, ["travel"]],
+    [/\b(nature|animal|живот|природ|птиц|мир и животные)/i, ["nature"]],
+    [/\b(sport|football|спорт|футбол|матч)/i, ["sports"]],
+    [/\b(game|gaming|steam|игр)/i, ["gaming"]],
+    [/\b(psychology|психолог|отношен)/i, ["psychology"]],
+    [/\b(education|course|study|образован|курс|саморазвит|мотивац)/i, ["education"]],
+  ];
+
+  for (const [pattern, tags] of pairs) {
+    if (pattern.test(text)) return normalizeTagValues(tags) as ContentTag[];
+  }
+
+  return ["other"];
+}
+
 function parseBulkSourceInput(value: string): BulkSourceRow[] {
   const rows: BulkSourceRow[] = [];
   const seen = new Set<string>();
@@ -196,19 +251,14 @@ function parseBulkSourceInput(value: string): BulkSourceRow[] {
 
     seen.add(handle);
 
-    let tags: ContentTag[] = ["other"];
-
-    const tagPart = parts.find((part) =>
-      /^теги\s*:/i.test(part)
+    const tagParts = parts.filter((part) =>
+      /^(теги|tags|категории|categories)\s*[:：-]?/i.test(part)
     );
 
-    if (tagPart) {
-      const parsedTags = parseTagsFromText(tagPart);
-
-      if (parsedTags.length > 0) {
-        tags = parsedTags;
-      }
-    }
+    const parsedTags = tagParts.flatMap((part) => parseTagsFromText(part));
+    let tags: ContentTag[] = parsedTags.length > 0
+      ? (normalizeTagValues(parsedTags) as ContentTag[])
+      : inferTagsForSource(handle, title);
 
     rows.push({
       ...createRow(),

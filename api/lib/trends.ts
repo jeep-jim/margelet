@@ -207,45 +207,264 @@ function getSourceAvatar(post: IngestedPost): string | undefined {
   );
 }
 
+
+const TREND_PARENT_BY_CHILD: Record<string, string> = {
+  news_all: "news",
+  news_world: "news",
+  news_breaking: "news",
+  news_regions: "news",
+  news_incidents: "news",
+  news_investigations: "news",
+  news_good: "news",
+  news_no_negative: "news",
+  politics_all: "politics",
+  politics_world: "politics",
+  politics_government: "politics",
+  politics_elections: "politics",
+  politics_conflicts: "politics",
+  politics_opinion: "politics",
+  politics_other: "politics",
+  economy_all: "economy",
+  economy_macro: "economy",
+  economy_markets: "economy",
+  economy_industry: "economy",
+  economy_energy: "economy",
+  economy_logistics: "economy",
+  economy_other: "economy",
+  business_all: "business",
+  business_companies: "business",
+  business_entrepreneurship: "business",
+  business_ecommerce: "business",
+  business_management: "business",
+  business_cases: "business",
+  business_other: "business",
+  finance_all: "finance",
+  finance_banks: "finance",
+  finance_payment_systems: "finance",
+  finance_investing: "finance",
+  finance_trading: "finance",
+  finance_personal: "finance",
+  finance_other: "finance",
+  technology_all: "technology",
+  technology_software: "technology",
+  technology_dev: "technology",
+  technology_web: "technology",
+  technology_other: "technology",
+  electronics_home_appliances: "electronics",
+  electronics_pc: "electronics",
+  electronics_construction: "electronics",
+  electronics_trends: "electronics",
+  electronics_brands: "electronics",
+  electronics_delivery: "electronics",
+  electronics_reviews: "electronics",
+  science_all: "science",
+  science_research: "science",
+  science_discoveries: "science",
+  science_medicine: "science",
+  science_other: "science",
+  education_all: "education",
+  education_courses: "education",
+  education_languages: "education",
+  education_self: "education",
+  education_other: "education",
+  culture_all: "culture",
+  culture_other: "culture",
+  gaming_all: "gaming",
+  gaming_mobile: "gaming",
+  gaming_pc: "gaming",
+  gaming_console: "gaming",
+  gaming_esports: "gaming",
+  gaming_other: "gaming",
+  humor_all: "humor",
+  humor_ironical: "humor",
+  humor_satire: "humor",
+  humor_other: "humor",
+  sports_all: "sports",
+  sports_championships: "sports",
+  sports_matches: "sports",
+  sports_news: "sports",
+  sports_people: "sports",
+  sports_transfers: "sports",
+  sports_analytics: "sports",
+  sports_other: "sports",
+  fitness_all: "fitness",
+  fitness_training: "fitness",
+  fitness_nutrition: "fitness",
+  fitness_body: "fitness",
+  fitness_other: "fitness",
+  health_all: "health",
+  health_medicine: "health",
+  health_research: "health",
+  health_food: "health",
+  health_advice: "health",
+  health_other: "health",
+  travel_all: "travel",
+  travel_rest: "travel",
+  travel_countries: "travel",
+  travel_routes: "travel",
+  travel_hotels: "travel",
+  travel_other: "travel",
+  food_all: "food",
+  food_products: "food",
+  food_other: "food",
+  food_service_places: "food_service",
+  food_service_delivery: "food_service",
+  food_service_new: "food_service",
+  food_service_jobs: "food_service",
+  food_service_software: "food_service",
+  food_service_reviews: "food_service",
+  psychology_all: "psychology",
+  psychology_self: "psychology",
+  psychology_other: "psychology",
+  fashion_all: "fashion",
+  fashion_style: "fashion",
+  fashion_brands: "fashion",
+  fashion_other: "fashion",
+  nature_all: "nature",
+  nature_ecology: "nature",
+  nature_plants: "nature",
+  nature_other: "nature",
+  people_all: "people",
+  people_blogs: "people",
+  people_interviews: "people",
+  people_other: "people",
+  marketing_all: "marketing",
+  marketing_smm: "marketing",
+  marketing_ads: "marketing",
+  marketing_brand: "marketing",
+  marketing_other: "marketing",
+  startups_all: "startups",
+  startups_cases: "startups",
+  startups_founders: "startups",
+  startups_invest: "startups",
+  startups_other: "startups",
+  jobs_all: "jobs",
+  jobs_vacancies: "jobs",
+  jobs_remote: "jobs",
+  jobs_parttime: "jobs",
+  jobs_career: "jobs",
+  jobs_freelance: "jobs",
+  jobs_resume: "jobs",
+  jobs_interviews: "jobs",
+  jobs_learning: "jobs",
+  jobs_other: "jobs",
+  real_estate_all: "real_estate",
+  real_estate_housing: "real_estate",
+  real_estate_invest: "real_estate",
+  real_estate_build: "real_estate",
+  real_estate_other: "real_estate",
+  transport_auto: "auto",
+  transport_moto: "auto",
+  transport_other: "auto",
+  transport_reviews: "auto",
+  transport_other2: "auto",
+  telegram_all: "telegram",
+  telegram_channels: "telegram",
+  telegram_bots: "telegram",
+  telegram_ton: "telegram",
+  telegram_updates: "telegram",
+  telegram_other: "telegram",
+  other_misc: "other",
+};
+
+function normalizeCategoryText(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/ё/g, "е")
+    .replace(/[\u{1F000}-\u{1FAFF}]/gu, " ")
+    .replace(/[^a-zа-я0-9_]+/gi, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function getParentCategory(value: string) {
+  return TREND_PARENT_BY_CHILD[value] || "";
+}
+
 function normalizeCategory(value: unknown): string | null {
   if (typeof value !== "string") return null;
-  const normalized = value.trim().toLowerCase();
+  const normalized = normalizeCategoryText(value);
   if (!normalized) return null;
 
   const aliases: Record<string, string> = {
     tech: "technology",
     it: "technology",
+    tehnologii: "technology",
+    технологии: "technology",
+    internet: "internet",
+    интернет: "internet",
+    software: "technology_software",
+    софт: "technology_software",
+    electronics: "electronics",
+    электроника: "electronics",
+    gadgets: "gadgets",
+    гаджеты: "gadgets",
     auto: "auto",
-    cars: "auto",
+    avto: "auto",
+    cars: "transport_auto",
+    car: "transport_auto",
+    авто: "transport_auto",
+    автомобили: "transport_auto",
+    машины: "transport_auto",
+    transport: "auto",
+    транспорт: "auto",
     economy: "economy",
     economics: "economy",
+    экономика: "economy",
     finance: "finance",
+    финансы: "finance",
     business: "business",
+    бизнес: "business",
     news: "news",
+    новости: "news",
     politics: "politics",
+    политика: "politics",
     science: "science",
+    наука: "science",
     education: "education",
+    образование: "education",
+    культура: "culture",
     culture: "culture",
     gaming: "gaming",
     games: "gaming",
+    игры: "gaming",
     sports: "sports",
+    спорт: "sports",
     health: "health",
+    здоровье: "health",
     travel: "travel",
+    путешествия: "travel",
     food: "food",
+    еда: "food",
+    recipes: "recipes",
+    рецепты: "recipes",
     nature: "nature",
+    природа: "nature",
+    animals: "animals",
+    животные: "animals",
     marketing: "marketing",
+    маркетинг: "marketing",
     startups: "startups",
+    стартапы: "startups",
+    other_misc: "other",
+    misc: "other",
+    разное: "other",
+    другое: "other",
+    other: "other",
   };
 
   return aliases[normalized] || normalized;
 }
-
 function collectCategoryValues(value: unknown, out: Set<string>) {
   if (!value) return;
 
   if (typeof value === "string") {
     const category = normalizeCategory(value);
-    if (category) out.add(category);
+    if (category) {
+      out.add(category);
+      const parent = getParentCategory(category);
+      if (parent) out.add(parent);
+    }
     return;
   }
 
@@ -304,6 +523,11 @@ function getTrendCategories(
 
   if (fallback && fallback !== "all" && !categories.includes(fallback)) {
     categories.push(fallback);
+  }
+
+  for (const category of [...categories]) {
+    const parent = getParentCategory(category);
+    if (parent && !categories.includes(parent)) categories.push(parent);
   }
 
   return categories;
@@ -383,7 +607,7 @@ function inferCategory(topic: string) {
     )
   )
     return "finance";
-  if (/tesla|авто|машин|автомоб|пикап|грузовик|дорог|дтп|car|cars|pickup|truck|ev|электромоб/.test(text)) return "auto";
+  if (/tesla|toyota|honda|bmw|geely|rezvani|авто|машин|автомоб|пикап|грузовик|дорог|дтп|car|cars|pickup|truck|ev|электромоб/.test(text)) return "auto";
   if (
     /openai|chatgpt|gpt|nvidia|iphone|apple|google|microsoft|ai|ии|нейросет/.test(
       text,
@@ -448,10 +672,9 @@ function shouldKeepTopic(topic: string, mentions: number, sourceCount: number, b
     if (!isKnownTrendEntity(normalized)) return false;
   }
 
-  // A fresh low-frequency signal may start in one source.
-  // Multi-source topics are ranked higher by score, but single-source
-  // snippet topics should still appear in the live attention index.
-  if (sourceCount < 1 || mentions < 1) return false;
+  // Trends must be real crossings of attention.
+  // A single-source mention belongs to the normal feed/search, not to Trends.
+  if (sourceCount < 2 || mentions < 2) return false;
 
   if (parts.length === 1) return false;
 

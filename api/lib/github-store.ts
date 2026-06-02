@@ -192,6 +192,30 @@ async function readRepoJsonFile<T>(relativePath: string, fallback: T): Promise<T
   }
 }
 
+
+async function readRepoJsonFileStrict<T>(relativePath: string): Promise<T> {
+  if (isLocalFileMode() || !GITHUB_TOKEN) {
+    return readLocalJsonFile(relativePath, null as T);
+  }
+
+  const response = await githubFetch(
+    `/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${relativePath}?ref=${encodeURIComponent(
+      GITHUB_BRANCH
+    )}`
+  );
+
+  if (!response.ok) {
+    throw new Error(`GitHub strict read failed for ${relativePath}: ${response.status}`);
+  }
+
+  const data = (await response.json()) as RepoFileResponse;
+  if (!data.content) {
+    throw new Error(`GitHub strict read returned empty content for ${relativePath}`);
+  }
+
+  return JSON.parse(decodeBase64Utf8(data.content)) as T;
+}
+
 async function getBranchHead() {
   const response = await githubFetch(
     `/repos/${GITHUB_OWNER}/${GITHUB_REPO}/git/ref/heads/${encodeURIComponent(GITHUB_BRANCH)}`
@@ -617,13 +641,50 @@ export async function readFeedSnapshotByPath<T = unknown>(rawPath: string): Prom
 }
 
 export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
-  return readRepoJsonFile<SourcesFile<T>>(SOURCES_PATH, {
+  const fallback = {
     updatedAt: new Date(0).toISOString(),
     sources: [],
-  });
+  } satisfies SourcesFile<T>;
+
+  if (isLocalFileMode() || !GITHUB_TOKEN) {
+    return readLocalJsonFile<SourcesFile<T>>(SOURCES_PATH, fallback);
+  }
+
+  // Sources are critical. Never silently fall back to [] on GitHub/API hiccups:
+  // that is exactly how country sources can be overwritten by a partial admin import.
+  return readRepoJsonFileStrict<SourcesFile<T>>(SOURCES_PATH);
+}
+
+function getSourcesCountrySet(items: unknown[]) {
+  const countries = new Set<string>();
+
+  for (const item of items) {
+    if (!item || typeof item !== "object") continue;
+    const country = normalizeCountryCode((item as { countryCode?: unknown }).countryCode);
+    if (country) countries.add(country);
+  }
+
+  return countries;
 }
 
 export async function writeSourcesFile<T = unknown>(sources: T[]) {
+  if (!isLocalFileMode() && GITHUB_TOKEN) {
+    const current = await readRepoJsonFileStrict<SourcesFile<T>>(SOURCES_PATH).catch(() => null);
+    const currentSources = Array.isArray(current?.sources) ? current.sources : [];
+
+    if (currentSources.length >= 50 && sources.length < Math.floor(currentSources.length * 0.7)) {
+      const beforeCountries = getSourcesCountrySet(currentSources);
+      const nextCountries = getSourcesCountrySet(sources as unknown[]);
+      const lostCountries = [...beforeCountries].filter((country) => !nextCountries.has(country));
+
+      if (lostCountries.length >= 2 || sources.length < Math.floor(currentSources.length * 0.5)) {
+        throw new Error(
+          `Refusing suspicious sources shrink: ${currentSources.length} -> ${sources.length}; lost countries: ${lostCountries.join(", ") || "unknown"}`
+        );
+      }
+    }
+  }
+
   const payload = {
     updatedAt: new Date().toISOString(),
     sources,

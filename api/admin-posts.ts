@@ -73,17 +73,134 @@ function isOwner(body: Record<string, unknown>) {
   return Boolean(byId || byUsername);
 }
 
-function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
-  const tags = Array.isArray(value)
-    ? (value
-        .map((item: unknown) => asString(item))
-        .filter(Boolean) as ContentTag[])
-    : [];
 
-  const unique = Array.from(new Set(tags));
-  return unique.length ? unique : [fallback];
+const SOURCE_TAG_PARENT_BY_CHILD: Record<string, string> = {
+  news_all: "news",
+  news_world: "news",
+  news_breaking: "news",
+  news_regions: "news",
+  news_incidents: "news",
+  politics_opinion: "politics",
+  politics_government: "politics",
+  politics_elections: "politics",
+  war: "politics",
+  business_all: "business",
+  finance_all: "finance",
+  finance_banks: "finance",
+  finance_payment_systems: "finance",
+  finance_investing: "finance",
+  finance_trading: "finance",
+  crypto: "finance",
+  technology_all: "technology",
+  technology_software: "technology",
+  technology_dev: "technology",
+  technology_web: "technology",
+  internet: "technology",
+  gadgets: "technology",
+  ai: "technology",
+  education_courses: "education",
+  education_self: "education",
+  cinema: "culture",
+  series: "culture",
+  music: "culture",
+  memes: "humor",
+  recipes: "food",
+  food_products: "food",
+  people_blogs: "people",
+  people_interviews: "people",
+  marketing_smm: "marketing",
+  transport_auto: "auto",
+  transport_moto: "auto",
+  transport_other: "auto",
+  transport_reviews: "auto",
+  telegram_channels: "telegram",
+  telegram_ton: "telegram",
+  telegram_bots: "telegram",
+  other_misc: "other",
+};
+
+function normalizeSourceTagText(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/ё/g, "е")
+    .replace(/[\u{1F000}-\u{1FAFF}]/gu, " ")
+    .replace(/[^a-zа-я0-9_]+/gi, "_")
+    .replace(/^_+|_+$/g, "");
 }
 
+function normalizeSourceTag(value: unknown): string {
+  const raw = asString(value);
+  if (!raw) return "";
+  const normalized = normalizeSourceTagText(raw);
+  const aliases: Record<string, string> = {
+    технологии: "technology",
+    technology: "technology",
+    tech: "technology",
+    it: "technology",
+    софт: "technology_software",
+    software: "technology_software",
+    электроника: "technology",
+    гаджеты: "gadgets",
+    авто: "transport_auto",
+    автомобили: "transport_auto",
+    машины: "transport_auto",
+    транспорт: "auto",
+    auto: "transport_auto",
+    cars: "transport_auto",
+    маркетинг: "marketing",
+    business: "business",
+    бизнес: "business",
+    финансы: "finance",
+    finance: "finance",
+    крипта: "crypto",
+    crypto: "crypto",
+    новости: "news",
+    news: "news",
+    политика: "politics",
+    politics: "politics",
+    образование: "education",
+    мотивация: "education_self",
+    культура: "culture",
+    кино: "cinema",
+    фильмы: "cinema",
+    сериалы: "series",
+    природа: "nature",
+    животные: "animals",
+    еда: "food",
+    рецепты: "recipes",
+    разное: "other",
+    другое: "other",
+    other_misc: "other",
+  };
+  return aliases[normalized] || normalized;
+}
+
+function normalizeTags(value: unknown, fallback: ContentTag): ContentTag[] {
+  const rawTags = Array.isArray(value)
+    ? value.map(normalizeSourceTag).filter(Boolean)
+    : [];
+
+  const normalizedFallback = normalizeSourceTag(fallback) || "other";
+  const tags = rawTags.length ? rawTags : [normalizedFallback];
+  const result: string[] = [];
+  const used = new Set<string>();
+
+  const add = (tag: string) => {
+    const normalized = normalizeSourceTag(tag);
+    if (!normalized || used.has(normalized)) return;
+    used.add(normalized);
+    result.push(normalized);
+  };
+
+  for (const tag of tags) {
+    add(tag);
+    const parent = SOURCE_TAG_PARENT_BY_CHILD[normalizeSourceTag(tag)];
+    if (parent) add(parent);
+  }
+
+  return (result.length ? result : ["other"]) as ContentTag[];
+}
 function buildSource(body: Record<string, unknown>, existing?: StoredSource | null): StoredSource | null {
   const handle = normalizeHandle(body.handle ?? existing?.handle);
   if (!handle) return null;
