@@ -412,12 +412,6 @@ function getIntroTrendTitle(trend: IntroTrend) {
   return String(trend.topic || trend.word || "").trim();
 }
 
-function getIntroMomentum(trend: IntroTrend) {
-  if (typeof trend.momentum === "number") return trend.momentum;
-  const parsed = Number(String(trend.change || "0").replace("%", ""));
-  return Number.isFinite(parsed) ? parsed : 0;
-}
-
 function formatIntroNumber(value: number) {
   if (value >= 1_000_000) return `${Math.round(value / 100_000) / 10}M`;
   if (value >= 1_000) return `${Math.round(value / 100) / 10}K`;
@@ -494,7 +488,6 @@ function TrendAttentionPreview({
     Array.isArray(trend.topSources) ? trend.topSources.length : 0
   );
   const sources = getIntroSources(trend);
-  const isUp = getIntroMomentum(trend) >= 0;
 
   return (
     <motion.div
@@ -505,26 +498,20 @@ function TrendAttentionPreview({
       transition={{ duration: 0.55, ease: "easeInOut" }}
       className="w-full"
     >
-      <div className="grid grid-cols-[minmax(0,auto)_1fr_auto_auto] items-center gap-3">
-        <div className="min-w-0 truncate text-left text-[17px] font-black text-white">
+      <div className="text-left">
+        <div className="text-[17px] font-black leading-snug text-white">
           {title}
         </div>
 
-        <div className="h-px min-w-[24px] border-t border-dashed border-[#5e7a99]/75" />
-
-        <div className="text-right text-[15px] font-black text-emerald-400">
-          {formatIntroNumber(mentions)}
+        <div className="mt-3 flex items-center justify-center gap-2 text-emerald-400">
+          <span className="text-[16px] font-black">
+            {formatIntroNumber(mentions)}
+          </span>
+          <TrendingUp className="h-5 w-5" />
         </div>
-
-        <TrendingUp
-          className={[
-            "h-5 w-5",
-            isUp ? "text-emerald-400" : "text-emerald-400",
-          ].join(" ")}
-        />
       </div>
 
-      <div className="pt-8 text-center text-[27px] font-black leading-none text-[#6f86a0]">
+      <div className="pt-5 text-center text-[27px] font-black leading-none text-[#6f86a0]">
         +{sourceCount} {sourceLabel}
       </div>
 
@@ -614,7 +601,7 @@ function TrendsPreview({
             />
           </AnimatePresence>
         ) : (
-          <div className="min-h-[178px]" aria-hidden="true" />
+          <div className="min-h-[160px]" aria-hidden="true" />
         )}
       </div>
     </div>
