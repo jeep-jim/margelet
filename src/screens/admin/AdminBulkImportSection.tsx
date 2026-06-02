@@ -460,25 +460,43 @@ export function AdminBulkImportSection({
       setIsSubmitting(true);
       setMessage(null);
 
-      const response = await fetch("/api/admin-posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          telegramUserId,
-          entity: "sources",
-          action: "bulk-create",
-          sources: payload,
-        }),
-      });
+      const batchSize = 100;
+      let created = 0;
+      let updated = 0;
 
-      const data = await response.json().catch(() => null);
+      for (let index = 0; index < payload.length; index += batchSize) {
+        const batch = payload.slice(index, index + batchSize);
 
-      if (!response.ok) {
-        throw new Error(data?.error || "Не удалось загрузить пачку каналов");
+        const response = await fetch("/api/admin-posts", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            telegramUserId,
+            entity: "sources",
+            action: "bulk-create",
+            countryCode,
+            sources: batch,
+          }),
+        });
+
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok) {
+          throw new Error(
+            data?.error ||
+              `Не удалось загрузить пачку каналов ${index + 1}-${index + batch.length}`,
+          );
+        }
+
+        created += Number(data?.created || 0);
+        updated += Number(data?.updated || 0);
+        setMessage(
+          `Загружаю каналы: ${Math.min(index + batch.length, payload.length)} / ${payload.length}`,
+        );
       }
 
       await onImported();
-      setMessage(`Загружено каналов: ${data?.created || payload.length}`);
+      setMessage(`Загружено каналов: +${created}, обновлено: ${updated}`);
       setRows([createRow(), createRow()]);
     } catch (error: unknown) {
       setMessage(error instanceof Error ? error.message : "Не удалось загрузить пачку каналов");

@@ -79,10 +79,6 @@ export type CountryFeedChunkedFile = {
 
 export type CountryFeedFile<T = unknown> = CountryFeedSingleFile<T> | CountryFeedChunkedFile;
 
-type RepoFileResponse = {
-  sha: string;
-  content?: string;
-};
 
 type CommitFile = {
   path: string;
@@ -123,6 +119,13 @@ function getHeaders() {
   };
 }
 
+function getRawHeaders() {
+  return {
+    ...getHeaders(),
+    Accept: "application/vnd.github.raw+json",
+  };
+}
+
 async function githubFetch(apiPath: string, init?: RequestInit) {
   return fetch(getApiUrl(apiPath), {
     ...init,
@@ -133,9 +136,16 @@ async function githubFetch(apiPath: string, init?: RequestInit) {
   });
 }
 
-function decodeBase64Utf8(input: string) {
-  return Buffer.from(input.replace(/\n/g, ""), "base64").toString("utf8");
+async function githubFetchRaw(apiPath: string, init?: RequestInit) {
+  return fetch(getApiUrl(apiPath), {
+    ...init,
+    headers: {
+      ...getRawHeaders(),
+      ...(init?.headers || {}),
+    },
+  });
 }
+
 
 function stringify(value: unknown) {
   return `${JSON.stringify(value, null, 2)}\n`;
@@ -167,7 +177,7 @@ async function readRepoJsonFile<T>(relativePath: string, fallback: T): Promise<T
   }
 
   try {
-    const response = await githubFetch(
+    const response = await githubFetchRaw(
       `/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${relativePath}?ref=${encodeURIComponent(
         GITHUB_BRANCH
       )}`
@@ -178,15 +188,13 @@ async function readRepoJsonFile<T>(relativePath: string, fallback: T): Promise<T
     }
 
     if (!response.ok) {
-      throw new Error(`GitHub read failed: ${response.status}`);
+      throw new Error(`GitHub raw read failed: ${response.status}`);
     }
 
-    const data = (await response.json()) as RepoFileResponse;
-    if (!data.content) {
-      return fallback;
-    }
+    const raw = await response.text();
+    if (!raw.trim()) return fallback;
 
-    return JSON.parse(decodeBase64Utf8(data.content)) as T;
+    return JSON.parse(raw) as T;
   } catch {
     return fallback;
   }
@@ -198,22 +206,22 @@ async function readRepoJsonFileStrict<T>(relativePath: string): Promise<T> {
     return readLocalJsonFile(relativePath, null as T);
   }
 
-  const response = await githubFetch(
+  const response = await githubFetchRaw(
     `/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${relativePath}?ref=${encodeURIComponent(
       GITHUB_BRANCH
     )}`
   );
 
   if (!response.ok) {
-    throw new Error(`GitHub strict read failed for ${relativePath}: ${response.status}`);
+    throw new Error(`GitHub strict raw read failed for ${relativePath}: ${response.status}`);
   }
 
-  const data = (await response.json()) as RepoFileResponse;
-  if (!data.content) {
-    throw new Error(`GitHub strict read returned empty content for ${relativePath}`);
+  const raw = await response.text();
+  if (!raw.trim()) {
+    throw new Error(`GitHub strict raw read returned empty content for ${relativePath}`);
   }
 
-  return JSON.parse(decodeBase64Utf8(data.content)) as T;
+  return JSON.parse(raw) as T;
 }
 
 async function getBranchHead() {

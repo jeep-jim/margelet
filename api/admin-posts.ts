@@ -269,15 +269,51 @@ async function listPosts(requestedCountryCode: string) {
   );
 }
 
-async function listSources(requestedCountryCode: string) {
+async function readSourcesState() {
   const sourcesFile = await readSourcesFile<StoredSource>();
   const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
 
-  return sortSources(
-    current.filter(
-      (source) => !requestedCountryCode || source.countryCode === requestedCountryCode
-    )
-  );
+  return current;
+}
+
+function buildSourcesSummary(items: StoredSource[]) {
+  const countsByCountry: Record<string, number> = {};
+  const activeCountsByCountry: Record<string, number> = {};
+  let total = 0;
+  let active = 0;
+
+  for (const source of items) {
+    const country = normalizeCountryCode(source.countryCode);
+    if (!country) continue;
+
+    total += 1;
+    countsByCountry[country] = (countsByCountry[country] || 0) + 1;
+
+    if (source.status === "active") {
+      active += 1;
+      activeCountsByCountry[country] = (activeCountsByCountry[country] || 0) + 1;
+    }
+  }
+
+  return {
+    total,
+    active,
+    countsByCountry,
+    activeCountsByCountry,
+  };
+}
+
+async function listSources(requestedCountryCode: string) {
+  const current = await readSourcesState();
+
+  return {
+    sources: sortSources(
+      current.filter(
+        (source) => !requestedCountryCode || source.countryCode === requestedCountryCode
+      )
+    ),
+    summary: buildSourcesSummary(current),
+  };
 }
 
 function getSourceAvatarForPosts(source: StoredSource) {
@@ -386,8 +422,15 @@ async function bulkCreateSources(items: Record<string, unknown>[]) {
     }
   }
 
-  await writeSourcesFile(sortSources(next));
-  return { next, created, updated };
+  const sorted = sortSources(next);
+  await writeSourcesFile(sorted);
+
+  return {
+    next: sorted,
+    created,
+    updated,
+    summary: buildSourcesSummary(sorted),
+  };
 }
 
 async function deleteSourceByIdentity(body: Record<string, unknown>) {
@@ -499,7 +542,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method === "DELETE") {
       if (entity === "sources") {
         const sources = await deleteSourceByIdentity(payload);
-        return res.status(200).json({ ok: true, sources });
+        return res.status(200).json({
+          ok: true,
+          sources: requestedCountryCode
+            ? sources.filter((source) => source.countryCode === requestedCountryCode)
+            : sources,
+          sourceSummary: buildSourcesSummary(sources),
+        });
       }
 
       if (entity === "posts") {
@@ -526,8 +575,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (entity === "sources") {
       if (!action || action === "list") {
-        const sources = await listSources(requestedCountryCode);
-        return res.status(200).json({ ok: true, sources });
+        const result = await listSources(requestedCountryCode);
+        return res.status(200).json({
+          ok: true,
+          sources: result.sources,
+          sourceSummary: result.summary,
+        });
       }
 
       if (action === "create" || action === "update") {
@@ -537,7 +590,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             : payload;
 
         const result = await upsertSingleSource(sourcePayload);
-        return res.status(200).json({ ok: true, source: result.source, sources: result.next });
+        const sourceCountry = normalizeCountryCode(result.source.countryCode);
+        return res.status(200).json({
+          ok: true,
+          source: result.source,
+          sources: sortSources(result.next.filter((source) => source.countryCode === sourceCountry)),
+          sourceSummary: buildSourcesSummary(result.next),
+        });
       }
 
       if (action === "bulk-create") {
@@ -557,18 +616,31 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           ok: true,
           created: result.created,
           updated: result.updated,
-          sources: result.next,
+          totalSources: result.next.length,
+          sourceSummary: result.summary,
         });
       }
 
       if (action === "delete") {
         const sources = await deleteSourceByIdentity(payload);
-        return res.status(200).json({ ok: true, sources });
+        return res.status(200).json({
+          ok: true,
+          sources: requestedCountryCode
+            ? sources.filter((source) => source.countryCode === requestedCountryCode)
+            : sources,
+          sourceSummary: buildSourcesSummary(sources),
+        });
       }
 
       if (action === "bulk-delete") {
         const sources = await bulkDeleteSources(payload);
-        return res.status(200).json({ ok: true, sources });
+        return res.status(200).json({
+          ok: true,
+          sources: requestedCountryCode
+            ? sources.filter((source) => source.countryCode === requestedCountryCode)
+            : sources,
+          sourceSummary: buildSourcesSummary(sources),
+        });
       }
 
       return res.status(400).json({ ok: false, error: "Unknown sources action" });

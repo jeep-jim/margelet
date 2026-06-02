@@ -12,7 +12,7 @@ import { SITE_TAG_GROUPS } from "../../lib/tags";
 import type { ContentTag } from "../../types/app";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { AdminSectionCard } from "./AdminSectionCard";
-import type { CountryCode } from "../../../api/lib/contracts";
+import { SEO_LOCALE_META, type CountryCode } from "../../../api/lib/contracts";
 
 import type { TrustedSource } from "./admin.types";
 
@@ -206,14 +206,11 @@ export function AdminSourcesSection({
     filteredSources.length > 0 && selectedVisibleCount === filteredSources.length;
 
   const countryOptions = useMemo(() => {
-    const codes = new Set<string>([countryCode]);
-
-    sources.forEach((source) => {
-      if (source.countryCode) codes.add(String(source.countryCode).toLowerCase());
-    });
+    const codes = new Set<string>(Object.keys(SEO_LOCALE_META));
+    codes.add(countryCode);
 
     return Array.from(codes).sort((a, b) => a.localeCompare(b));
-  }, [countryCode, sources]);
+  }, [countryCode]);
 
   useEffect(() => {
     if (!editingId) {

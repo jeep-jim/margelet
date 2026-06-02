@@ -21,6 +21,13 @@ type AdminScreenProps = {
 type LoadState = "idle" | "loading" | "ready" | "error";
 type FeedIndexCountryStats = Record<string, { posts?: number }>;
 
+type SourceSummary = {
+  total: number;
+  active: number;
+  countsByCountry: Partial<Record<CountryCode, number>>;
+  activeCountsByCountry: Partial<Record<CountryCode, number>>;
+};
+
 const ADMIN_TELEGRAM_ID = "1372669404";
 const ADMIN_COUNTRY_STORAGE_KEY = "margelet_admin_selected_country";
 const REBUILD_MINUTE = 17;
@@ -100,6 +107,12 @@ export function AdminScreen({
   const [posts, setPosts] = useState<IngestedPost[]>([]);
   const [state, setState] = useState<LoadState>("idle");
   const [sources, setSources] = useState<TrustedSource[]>([]);
+  const [sourceSummary, setSourceSummary] = useState<SourceSummary>({
+    total: 0,
+    active: 0,
+    countsByCountry: {},
+    activeCountsByCountry: {},
+  });
   const [rebuildLoading, setRebuildLoading] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
   const [clockNow, setClockNow] = useState(() => new Date());
@@ -212,11 +225,21 @@ export function AdminScreen({
         body: JSON.stringify({
           telegramUserId,
           entity: "sources",
+          countryCode: selectedCountryCode,
         }),
       });
 
       const data = await res.json().catch(() => null);
       setSources(Array.isArray(data?.sources) ? data.sources : []);
+
+      if (data?.sourceSummary && typeof data.sourceSummary === "object") {
+        setSourceSummary({
+          total: Number(data.sourceSummary.total || 0),
+          active: Number(data.sourceSummary.active || 0),
+          countsByCountry: data.sourceSummary.countsByCountry || {},
+          activeCountsByCountry: data.sourceSummary.activeCountsByCountry || {},
+        });
+      }
     } catch {
       //
     }
@@ -246,16 +269,10 @@ export function AdminScreen({
     void refreshEverything();
   }, [telegramUserId, hasAdminAccess, selectedCountryCode]);
 
-  const sourceCountsByCountry = useMemo(() => {
-    const counts: Partial<Record<CountryCode, number>> = {};
-
-    for (const source of sources) {
-      const code = source.countryCode as CountryCode;
-      counts[code] = (counts[code] || 0) + 1;
-    }
-
-    return counts;
-  }, [sources]);
+  const sourceCountsByCountry = useMemo(
+    () => sourceSummary.countsByCountry || {},
+    [sourceSummary.countsByCountry]
+  );
 
   // Создаём фиксированный список стран из contracts.ts
   const countryFeedStats = useMemo(() => {
@@ -275,7 +292,7 @@ export function AdminScreen({
         postsCount,
       };
     }).sort((a, b) => b.postsCount - a.postsCount || b.sourcesCount - a.sourcesCount);
-  }, [sources, feedIndexCountries]); 
+  }, [sourceSummary, feedIndexCountries]); 
 
   const nextRebuildDate = useMemo(() => getNextRebuildDate(clockNow), [clockNow]);
   const nextRebuildLabel = useMemo(() => formatShortTime(nextRebuildDate), [nextRebuildDate]);
