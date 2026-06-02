@@ -23,6 +23,7 @@ import { buildShareUrl, getResolvedTags } from "./feed/feed.utils";
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
+const PENDING_ATTENTION_TOPIC_KEY = "margelet_pending_attention_topic_v1";
 
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
@@ -1273,7 +1274,7 @@ export function FeedScreen({
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   useEffect(() => {
-    function handleOpenAttentionTopic() {
+    function openPendingAttentionTopic() {
       setFeedSettings((prev) => ({
         ...prev,
         mediaMode: "trends",
@@ -1282,10 +1283,18 @@ export function FeedScreen({
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+    try {
+      if (localStorage.getItem(PENDING_ATTENTION_TOPIC_KEY)) {
+        openPendingAttentionTopic();
+      }
+    } catch {
+      // ignore localStorage errors
+    }
+
+    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, openPendingAttentionTopic);
 
     return () => {
-      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, openPendingAttentionTopic);
     };
   }, []);
 

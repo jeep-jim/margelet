@@ -17,6 +17,7 @@ const TG_STORAGE_KEY = "margelet_tg_user";
 const TG_RELOAD_KEY = "margelet_tg_auth_reloaded";
 const SAVES_STORAGE_KEY = "margelet_saves";
 const HIDDEN_POSTS_STORAGE_KEY = "margelet_hidden_posts";
+const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
 
 const ADMIN_HIDDEN_PATH = "/jim/admin";
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
@@ -389,6 +390,20 @@ export default function App() {
     },
     [replacePath]
   );
+
+  useEffect(() => {
+    function handleOpenAttentionTopic() {
+      setSelectedSourceHandle(null);
+      setCurrent("feed");
+      replacePath("/");
+    }
+
+    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+
+    return () => {
+      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+    };
+  }, [replacePath]);
 
   const handleHeaderTabChange = useCallback(
     (tab: TabId) => {

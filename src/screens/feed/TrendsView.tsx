@@ -1954,21 +1954,12 @@ function TrendRow({
               event.stopPropagation();
               onOpenDetail();
             }}
-            className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-2 text-left transition hover:bg-surface-soft"
+            className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-3 text-left text-emerald-500 transition hover:bg-surface-soft"
           >
-            <div className="flex min-w-0 items-center gap-3">
-              <SourceDots sources={trend.topSources} />
-              <div className="min-w-0">
-                <div className="text-[10px] font-black uppercase tracking-[0.08em] text-secondary">
-                  {copy.sources}
-                </div>
-                <div className="text-sm font-black text-primary">
-                  {sourceCount}
-                </div>
-              </div>
-            </div>
-
-            <div className="shrink-0 text-lg font-black text-emerald-500">↗</div>
+            <span className="min-w-0 truncate text-sm font-black">
+              {copy.whoFormsAttention}
+            </span>
+            <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={3} />
           </button>
 
           {trend.examples?.length ? (

@@ -44,8 +44,6 @@ const COPY: Record<Locale, AttentionCopy> = {
   my: { contribution: "impak topik", mentions: "sebutan", explore: "Teroka", sources: "sumber", allMentions: "All mentions" },
 };
 
-
-
 type AttentionTrendSource = {
   id?: string;
   title: string;
@@ -307,7 +305,11 @@ function RealSourceDots({
 
   if (!visibleSources.length && count <= 0) return null;
 
-  const hiddenCount = Math.max(0, count - visibleSources.length);
+  const totalCount = Math.max(count, visibleSources.length);
+  const hiddenCount = Math.max(0, totalCount - visibleSources.length);
+  const sourceLabel = hiddenCount > 0
+    ? `+${hiddenCount} ${copy.sources}`
+    : `${totalCount} ${copy.sources}`;
 
   return (
     <div className="mt-3 flex min-w-0 items-center gap-2">
@@ -323,7 +325,7 @@ function RealSourceDots({
       ) : null}
 
       <span className="shrink-0 text-[11px] font-black text-secondary">
-        {hiddenCount > 0 ? `+${hiddenCount}` : count} {copy.sources}
+        {sourceLabel}
       </span>
     </div>
   );
@@ -351,6 +353,8 @@ export function PostAttentionChips({
 
     let cancelled = false;
 
+    setMatchedTrend(null);
+
     async function fetchTrendMatch() {
       try {
         const res = await fetch(`/api/v1?action=trends&country=${countryCode}`);
@@ -371,12 +375,14 @@ export function PostAttentionChips({
     };
   }, [open, primary?.topic, countryCode]);
 
-  const score = Math.max(fallbackScore, Number(matchedTrend?.mentions) || 0);
+  const matchedMentions = Number(matchedTrend?.mentions) || 0;
+  const score = Math.max(fallbackScore, matchedMentions);
   const realSources = getTrendSources(matchedTrend);
   const sourceCount = matchedTrend
     ? Math.max(realSources.length, Number(matchedTrend.sourceCount) || 0)
-    : realSources.length;
-  const exploreTopic = getTrendTitle(matchedTrend) || primary?.topic || "";
+    : 0;
+  const hasMatchedTopic = Boolean(matchedTrend && sourceCount > 0 && matchedMentions > 0);
+  const exploreTopic = hasMatchedTopic ? getTrendTitle(matchedTrend) : "";
 
   function exploreTopicInTrends(event: MouseEvent) {
     event.stopPropagation();
@@ -418,7 +424,7 @@ export function PostAttentionChips({
         ) : null}
       </button>
 
-      {open ? (
+      {open && hasMatchedTopic ? (
         <div
           className="absolute bottom-full left-0 z-40 mb-2 w-[280px] max-w-[calc(100vw-32px)] rounded-[22px] border border-soft bg-surface p-3 shadow-soft"
           onClick={(event) => event.stopPropagation()}
@@ -435,7 +441,7 @@ export function PostAttentionChips({
             </span>
 
             <span className="flex shrink-0 items-center gap-2 text-[14px] font-black">
-              <span>+{formatCompactNumber(score)}</span>
+              <span>+{formatCompactNumber(matchedMentions)}</span>
               <TrendingUp className="h-5 w-5" strokeWidth={3} />
             </span>
           </button>
