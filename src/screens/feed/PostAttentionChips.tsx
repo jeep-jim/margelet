@@ -237,33 +237,6 @@ function formatCompactNumber(value: number) {
   return String(value);
 }
 
-function PostSourceAvatar({ post }: { post: IngestedPost }) {
-  const [failed, setFailed] = useState(false);
-  const title = post.source?.title || "Telegram";
-  const avatarUrl = failed
-    ? ""
-    : post.source?.avatar || getTelegramAvatarUrl(post.source?.handle);
-
-  return (
-    <div
-      className="grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-full border border-[color:var(--bg-app)] bg-surface-soft text-[10px] font-black text-primary"
-      title={title}
-    >
-      {avatarUrl ? (
-        <img
-          src={avatarUrl}
-          alt=""
-          className="h-full w-full object-cover"
-          referrerPolicy="no-referrer"
-          onError={() => setFailed(true)}
-        />
-      ) : (
-        title.slice(0, 1).toUpperCase()
-      )}
-    </div>
-  );
-}
-
 function TrendSourceAvatar({ source }: { source: AttentionTrendSource }) {
   const [failed, setFailed] = useState(false);
   const title = String(source.title || source.username || "Telegram").trim();
