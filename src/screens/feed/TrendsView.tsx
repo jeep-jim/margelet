@@ -2025,11 +2025,33 @@ function buildCategories(locale: Locale, copy: TrendsCopy): TrendCategory[] {
   return categories;
 }
 
+
+function getAttentionTopicTokens(value: string) {
+  return normalizeTopic(value)
+    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
+    .split(/\s+/)
+    .map((item) => item.trim())
+    .filter((item) => item.length > 2);
+}
+
+function getAttentionOverlapScore(leftValue: string, rightValue: string) {
+  const left = new Set(getAttentionTopicTokens(leftValue));
+  const right = new Set(getAttentionTopicTokens(rightValue));
+  if (!left.size || !right.size) return 0;
+
+  let hits = 0;
+  for (const token of left) {
+    if (right.has(token)) hits += 1;
+  }
+
+  return hits / Math.max(1, Math.min(left.size, right.size));
+}
+
 function findTrendByTopic(trends: TrendItem[], topic: string) {
   const normalized = normalizeTopic(topic);
   if (!normalized) return null;
 
-  return (
+  const direct =
     trends.find((trend) => normalizeTopic(getTopic(trend)) === normalized) ||
     trends.find((trend) =>
       [
@@ -2040,9 +2062,31 @@ function findTrendByTopic(trends: TrendItem[], topic: string) {
         .join(" ")
         .toLowerCase()
         .includes(normalized),
-    ) ||
-    null
-  );
+    );
+
+  if (direct) return direct;
+
+  let best: TrendItem | null = null;
+  let bestScore = 0;
+
+  for (const trend of trends) {
+    const trendText = [
+      getTopic(trend),
+      ...(trend.signals || []),
+      ...(trend.examples || []).map((example) => example.text || ""),
+    ].join(" ");
+    const score = Math.max(
+      getAttentionOverlapScore(topic, getTopic(trend)),
+      getAttentionOverlapScore(topic, trendText),
+    );
+
+    if (score > bestScore) {
+      best = trend;
+      bestScore = score;
+    }
+  }
+
+  return bestScore >= 0.32 ? best : null;
 }
 
 export function TrendsView({
@@ -2123,8 +2167,10 @@ export function TrendsView({
 
   useEffect(() => {
     function handleOpenAttentionTopic(event: Event) {
-      const topic = String((event as CustomEvent<{ topic?: string }>).detail?.topic || "").trim();
-      const match = findTrendByTopic(trends, topic);
+      const detail = (event as CustomEvent<{ topic?: string; fallbackTopic?: string }>).detail || {};
+      const topic = String(detail.topic || "").trim();
+      const fallbackTopic = String(detail.fallbackTopic || "").trim();
+      const match = findTrendByTopic(trends, topic) || findTrendByTopic(trends, fallbackTopic);
       if (match) setActiveTrend(match);
     }
 

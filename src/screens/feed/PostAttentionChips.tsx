@@ -1,4 +1,5 @@
 import { useEffect, useState, type MouseEvent } from "react";
+import { TrendingUp } from "lucide-react";
 import type { IngestedPost, Locale } from "../../types/app";
 
 type AttentionTopic = {
@@ -263,6 +264,34 @@ function TrendSourceAvatar({ source }: { source: AttentionTrendSource }) {
   );
 }
 
+function getTrendSources(trend: AttentionTrend | null | undefined) {
+  const map = new Map<string, AttentionTrendSource>();
+
+  for (const source of trend?.topSources || []) {
+    const title = String(source.title || source.username || "").trim();
+    if (!title) continue;
+    const key = String(source.id || source.username || title).toLowerCase();
+    map.set(key, source);
+  }
+
+  for (const example of trend?.examples || []) {
+    const title = String(example.sourceTitle || example.sourceUsername || "").trim();
+    if (!title) continue;
+    const key = String(example.sourceUsername || title).toLowerCase();
+    if (map.has(key)) continue;
+
+    map.set(key, {
+      id: example.sourceUsername || title,
+      title,
+      username: example.sourceUsername,
+      avatarUrl: example.sourceAvatarUrl,
+      mentions: 1,
+    });
+  }
+
+  return [...map.values()];
+}
+
 function RealSourceDots({
   sources,
   count,
@@ -281,7 +310,7 @@ function RealSourceDots({
   const hiddenCount = Math.max(0, count - visibleSources.length);
 
   return (
-    <div className="mt-2 flex min-w-0 items-center gap-2">
+    <div className="mt-3 flex min-w-0 items-center gap-2">
       {visibleSources.length ? (
         <div className="flex -space-x-2">
           {visibleSources.map((source, index) => (
@@ -290,16 +319,11 @@ function RealSourceDots({
               source={source}
             />
           ))}
-          {hiddenCount > 0 ? (
-            <div className="grid h-7 min-w-7 shrink-0 place-items-center rounded-full border border-[color:var(--bg-app)] bg-surface-soft px-1.5 text-[9px] font-black text-secondary">
-              +{hiddenCount}
-            </div>
-          ) : null}
         </div>
       ) : null}
 
       <span className="shrink-0 text-[11px] font-black text-secondary">
-        {count} {copy.sources}
+        {hiddenCount > 0 ? `+${hiddenCount}` : count} {copy.sources}
       </span>
     </div>
   );
@@ -348,11 +372,7 @@ export function PostAttentionChips({
   }, [open, primary?.topic, countryCode]);
 
   const score = Math.max(fallbackScore, Number(matchedTrend?.mentions) || 0);
-  const realSources = Array.isArray(matchedTrend?.topSources)
-    ? matchedTrend.topSources.filter((source) =>
-        String(source.title || source.username || "").trim(),
-      )
-    : [];
+  const realSources = getTrendSources(matchedTrend);
   const sourceCount = matchedTrend
     ? Math.max(realSources.length, Number(matchedTrend.sourceCount) || 0)
     : realSources.length;
@@ -370,7 +390,11 @@ export function PostAttentionChips({
 
     window.dispatchEvent(
       new CustomEvent(OPEN_ATTENTION_TOPIC_EVENT, {
-        detail: { topic: exploreTopic, countryCode },
+        detail: {
+          topic: exploreTopic,
+          fallbackTopic: primary?.topic || "",
+          countryCode,
+        },
       }),
     );
     setOpen(false);
@@ -402,17 +426,17 @@ export function PostAttentionChips({
           <button
             type="button"
             onClick={exploreTopicInTrends}
-            className="flex w-full items-center justify-between gap-3 rounded-2xl bg-emerald-500/15 px-3 py-2 text-left text-emerald-500 transition hover:bg-emerald-500/25"
+            className="flex w-full items-center justify-between gap-3 rounded-[18px] bg-emerald-500/20 px-3 py-2.5 text-left text-emerald-400 transition hover:bg-emerald-500/30"
             title={copy.explore}
           >
-            <span className="flex min-w-0 items-center gap-1.5 text-[12px] font-black text-primary">
+            <span className="flex min-w-0 items-center gap-1.5 text-[13px] font-black text-primary">
               <span>🔥</span>
               <span className="truncate">{copy.allMentions}</span>
             </span>
 
-            <span className="flex shrink-0 items-center gap-1.5 text-[12px] font-black">
+            <span className="flex shrink-0 items-center gap-2 text-[14px] font-black">
               <span>+{formatCompactNumber(score)}</span>
-              <span className="text-lg leading-none">↗↗</span>
+              <TrendingUp className="h-5 w-5" strokeWidth={3} />
             </span>
           </button>
 
