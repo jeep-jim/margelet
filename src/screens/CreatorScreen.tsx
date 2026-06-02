@@ -37,7 +37,7 @@ export function CreatorScreen({
   const [user, setUser] = useState<TgUser | null>(null);
   const [tab, setTab] = useState<CabinetTab>("language");
   const [theme, setTheme] = useState<Theme>(() =>
-    typeof window === "undefined" ? "light" : getTheme()
+    typeof window === "undefined" ? "dark" : getTheme()
   );
   const [introLocale, setIntroLocale] = useState(() =>
     typeof window === "undefined" ? locale : readIntroLocaleFromStorage(locale)

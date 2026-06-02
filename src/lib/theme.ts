@@ -31,14 +31,14 @@ function setThemeMeta(theme: Theme) {
 }
 
 export function getTheme(): Theme {
-  if (typeof window === "undefined") return "light";
+  if (typeof window === "undefined") return "dark";
 
   const saved = localStorage.getItem(THEME_KEY);
   if (saved === "dark" || saved === "light") {
     return saved;
   }
 
-  return "light";
+  return "dark";
 }
 
 export function applyTheme(theme: Theme) {

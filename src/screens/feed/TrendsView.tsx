@@ -1146,7 +1146,7 @@ function getTrendEmoji(topic: string, category?: string) {
     text.includes("ии")
   )
     return "🤖";
-  if (text.includes("погод")) return "🌦️";
+  if (text.includes("погода")) return "🌦️";
   if (text.includes("игр") || text.includes("steam") || text.includes("gta"))
     return "🎮";
   if (

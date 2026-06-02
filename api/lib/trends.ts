@@ -53,6 +53,7 @@ type TrendItem = {
   examples: TrendPost[];
   signals?: string[];
   category?: string;
+  categories?: string[];
   score?: number;
 };
 
@@ -292,6 +293,22 @@ function getDominantCategory(
   return winner?.[0] || fallback;
 }
 
+function getTrendCategories(
+  categoryMap: Record<string, number>,
+  fallback: string,
+) {
+  const categories = Object.entries(categoryMap)
+    .filter(([category]) => category && category !== "all" && !isUnsafeObjectKey(category))
+    .sort((a, b) => b[1] - a[1])
+    .map(([category]) => category);
+
+  if (fallback && fallback !== "all" && !categories.includes(fallback)) {
+    categories.push(fallback);
+  }
+
+  return categories;
+}
+
 function calcMomentum(history: number[]) {
   const mid = Math.floor(history.length / 2);
   const previous = history.slice(0, mid).reduce((sum, value) => sum + value, 0);
@@ -366,7 +383,7 @@ function inferCategory(topic: string) {
     )
   )
     return "finance";
-  if (/tesla|авто|машин|car|cars|ev|электромоб/.test(text)) return "auto";
+  if (/tesla|авто|машин|автомоб|пикап|грузовик|дорог|дтп|car|cars|pickup|truck|ev|электромоб/.test(text)) return "auto";
   if (
     /openai|chatgpt|gpt|nvidia|iphone|apple|google|microsoft|ai|ии|нейросет/.test(
       text,
@@ -683,6 +700,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
         examples: item.examples,
         signals,
         category: getDominantCategory(item.categoryMap, inferCategory(topic)) || "all",
+        categories: getTrendCategories(item.categoryMap, inferCategory(topic)),
       };
 
       trend.score = calcScore(trend);

@@ -1,7 +1,24 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark" style="background:#17212b;color-scheme:dark;">
   <head>
     <meta charset="UTF-8" />
+
+
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("margelet_theme");
+          var theme = saved === "light" || saved === "dark" ? saved : "dark";
+          document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.style.backgroundColor = theme === "dark" ? "#17212b" : "#f5f7fb";
+          document.documentElement.style.colorScheme = theme;
+        } catch (error) {
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.documentElement.style.backgroundColor = "#17212b";
+          document.documentElement.style.colorScheme = "dark";
+        }
+      })();
+    </script>
 
     <script>
       window.__MARGELET_ADMIN_PATH__ =
@@ -55,7 +72,7 @@
       content="Discover live Telegram channels, topics and trends from 25 countries in one global feed."
     />
   </head>
-  <body>
+  <body style="background:#17212b;color-scheme:dark;">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>

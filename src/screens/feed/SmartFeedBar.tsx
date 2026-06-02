@@ -682,7 +682,7 @@ export function SmartFeedBar({
     icon?: React.ReactNode;
   }> = useMemo(
     () => [
-      { value: "all", label: copy.modeAll, mobileLabel: "∞" },
+      { value: "all", label: copy.modeAll, mobileLabel: "🎈" },
       {
         value: "video",
         label: copy.modeVideo,
@@ -795,9 +795,9 @@ export function SmartFeedBar({
                     >
                       {option.value === "all" ? (
                         <>
-                          <span className="text-[17px] leading-none sm:hidden">∞</span>
+                          <span className="text-[17px] leading-none sm:hidden">🎈</span>
                           <span className="hidden items-center gap-2 sm:inline-flex">
-                            <span className="text-[17px] leading-none">∞</span>
+                            <span className="text-[17px] leading-none">🎈</span>
                             <span>{option.label}</span>
                           </span>
                         </>
