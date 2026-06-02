@@ -53,6 +53,7 @@ type TrendItem = {
   examples?: TrendPost[];
   signals?: string[];
   category?: string;
+  categories?: string[];
 };
 
 type TrendCategory = {
@@ -1146,7 +1147,7 @@ function getTrendEmoji(topic: string, category?: string) {
     text.includes("ии")
   )
     return "🤖";
-  if (text.includes("погода")) return "🌦️";
+  if (text.includes("погод")) return "🌦️";
   if (text.includes("игр") || text.includes("steam") || text.includes("gta"))
     return "🎮";
   if (
@@ -1245,6 +1246,82 @@ function getSourceHandleForOpen(source: TrendSource) {
   return getSourceHandle(source).trim().replace(/^@+/, "");
 }
 
+
+function getTagGroupByValue(value: string) {
+  return SITE_TAG_GROUPS.find((group) => group.value === value);
+}
+
+function getParentTagValue(value: string) {
+  for (const group of SITE_TAG_GROUPS) {
+    if (group.children.some((child) => child.value === value)) return group.value;
+  }
+
+  return "";
+}
+
+function getTrendCategoriesList(trend: TrendItem) {
+  const values = new Set<string>();
+  const push = (value?: string | null) => {
+    const normalized = String(value || "").trim();
+    if (!normalized || normalized === "all") return;
+    values.add(normalized);
+    const parent = getParentTagValue(normalized);
+    if (parent) values.add(parent);
+  };
+
+  push(trend.category || getTrendCategory(getTopic(trend)));
+
+  if (Array.isArray(trend.categories)) {
+    for (const category of trend.categories) push(category);
+  }
+
+  return values;
+}
+
+function trendMatchesCategory(trend: TrendItem, selectedCategory: string) {
+  if (selectedCategory === "all") return true;
+
+  const categories = getTrendCategoriesList(trend);
+  if (categories.has(selectedCategory)) return true;
+
+  const group = getTagGroupByValue(selectedCategory);
+  if (!group) return false;
+
+  return group.children.some((child) => categories.has(child.value));
+}
+
+function collectPostTagValues(post: IngestedPost) {
+  const values = new Set<string>();
+  const add = (value: unknown) => {
+    if (!value) return;
+    if (Array.isArray(value)) {
+      for (const item of value) add(item);
+      return;
+    }
+    if (typeof value === "object") {
+      const record = value as Record<string, unknown>;
+      add(record.value);
+      add(record.id);
+      add(record.slug);
+      add(record.tag);
+      add(record.category);
+      return;
+    }
+    const text = String(value).trim();
+    if (text && text !== "all") values.add(text);
+  };
+
+  add((post as any).tag);
+  add((post as any).tags);
+  add((post as any).contentTags);
+  add((post as any).sourceTags);
+  add((post as any).channelTags);
+  add((post as any).source?.tags);
+  add((post as any).channel?.tags);
+
+  return [...values];
+}
+
 function postMatchesAttentionQuery(post: IngestedPost, normalizedQuery: string) {
   if (!normalizedQuery) return false;
 
@@ -1312,7 +1389,8 @@ function buildLivePostTrends(posts: IngestedPost[]): TrendItem[] {
         mentions: 1,
       };
 
-      const category = getTrendCategory(`${topic} ${post.tag || ""}`, post.tag || "all");
+      const postTags = collectPostTagValues(post);
+      const category = postTags[0] || getTrendCategory(`${topic} ${postTags.join(" ")}`, "all");
 
       return {
         topic,
@@ -1335,6 +1413,7 @@ function buildLivePostTrends(posts: IngestedPost[]): TrendItem[] {
         ],
         signals: topic.split(/\s+/).filter(Boolean).slice(0, 5),
         category,
+        categories: postTags,
       } as TrendItem;
     })
     .filter(Boolean) as TrendItem[];
@@ -1420,7 +1499,8 @@ function buildLiveSearchTrend(
       sourceAvatarUrl: post.source?.avatar || undefined,
     })),
     signals: topic.split(/\s+/).filter(Boolean).slice(0, 5),
-    category: "all",
+    category: collectPostTagValues(matchingPosts[0] || ({} as IngestedPost))[0] || "all",
+    categories: Array.from(new Set(matchingPosts.flatMap((post) => collectPostTagValues(post)))).slice(0, 12),
   };
 }
 
@@ -1693,31 +1773,26 @@ function TrendDetail({
       </button>
 
       <section className="rounded-[30px] border border-soft bg-surface p-4 shadow-sm">
-        <div className="flex items-start gap-3">
-          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-surface-soft text-2xl font-black text-primary">
-            {emoji}
+        <div className="min-w-0">
+          <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
+            {copy.telegramAttention}
           </div>
-
-          <div className="min-w-0 flex-1">
-            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
-              {copy.telegramAttention}
-            </div>
-            <h2 className="mt-1 text-2xl font-black leading-tight text-primary">
-              {topic}
-            </h2>
-            <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-              <span
-                className={
-                  isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"
-                }
-              >
-                {isUp ? "↗" : "↘"} {String(trend.change).replace("+", "")}
-              </span>
-              <span className="text-secondary">·</span>
-              <span className="text-secondary">
-                {sourceCount} {copy.sources}
-              </span>
-            </div>
+          <h2 className="mt-1 text-2xl font-black leading-tight text-primary">
+            <span className="mr-1.5 align-[-1px] text-xl">{emoji}</span>
+            {topic}
+          </h2>
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+            <span
+              className={
+                isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"
+              }
+            >
+              {isUp ? "↗" : "↘"} {String(trend.change).replace("+", "")}
+            </span>
+            <span className="text-secondary">·</span>
+            <span className="text-secondary">
+              {sourceCount} {copy.sources}
+            </span>
           </div>
         </div>
 
@@ -1832,7 +1907,7 @@ function TrendDetail({
                   </div>
 
                   {snippet ? (
-                    <div className="mt-2 line-clamp-3 pl-8 text-[12px] font-medium leading-relaxed text-secondary">
+                    <div className="mt-2 line-clamp-3 text-[12px] font-medium leading-relaxed text-secondary">
                       {snippet}
                     </div>
                   ) : null}
@@ -1911,7 +1986,7 @@ function TrendRow({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full items-center gap-3 px-3 py-3 text-left"
+        className="flex w-full items-start gap-3 px-3 py-3 text-left"
       >
         <div className="min-w-0 flex-1">
           <div className="text-base font-black leading-tight text-primary line-clamp-2">
@@ -1948,7 +2023,7 @@ function TrendRow({
 
         <div
           className={[
-            "flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-2xl",
+            "mt-0.5 flex h-12 w-12 shrink-0 flex-col items-center justify-center rounded-2xl",
             isUp
               ? "bg-emerald-500/10 text-emerald-500"
               : "bg-red-500/10 text-red-500",
@@ -1958,14 +2033,14 @@ function TrendRow({
             <ChevronDown className="h-6 w-6" />
           ) : Math.abs(momentum) >= 100 ? (
             isUp ? (
-              <ArrowUpRight className="h-5 w-5" />
+              <TrendingUp className="h-5 w-5" />
             ) : (
-              <ArrowDownRight className="h-5 w-5" />
+              <TrendingDown className="h-5 w-5" />
             )
           ) : isUp ? (
-            <TrendingUp className="h-5 w-5" />
+            <ArrowUpRight className="h-5 w-5" />
           ) : (
-            <TrendingDown className="h-5 w-5" />
+            <ArrowDownRight className="h-5 w-5" />
           )}
           {!opened && formatMomentumDelta(momentum) ? (
             <span className="mt-0.5 text-[10px] font-black leading-none">
@@ -2024,7 +2099,7 @@ function TrendRow({
               event.stopPropagation();
               onOpenDetail();
             }}
-            className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-2 text-left text-sm font-black text-emerald-500 transition hover:bg-surface-soft"
+            className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-2.5 text-left text-[15px] font-black text-emerald-500 transition hover:bg-surface-soft"
           >
             <span>{copy.whoFormsAttention}</span>
             <ArrowUpRight className="h-4 w-4" />
@@ -2119,6 +2194,7 @@ export function TrendsView({
           const next = data.trends.map((item: TrendItem) => ({
             ...item,
             category: item.category || getTrendCategory(getTopic(item)),
+            categories: Array.isArray(item.categories) ? item.categories : [],
           }));
           setTrends(next);
         } else {
@@ -2162,18 +2238,10 @@ export function TrendsView({
           ? trends.length
             ? trends
             : livePostTrends
-          : trends.filter(
-              (item) =>
-                (item.category || getTrendCategory(getTopic(item))) ===
-                selectedCategory,
-            );
+          : trends.filter((item) => trendMatchesCategory(item, selectedCategory));
 
     if (!list.length && selectedCategory !== "followed") {
-      list = livePostTrends.filter(
-        (item) =>
-          selectedCategory === "all" ||
-          (item.category || getTrendCategory(getTopic(item))) === selectedCategory,
-      );
+      list = livePostTrends.filter((item) => trendMatchesCategory(item, selectedCategory));
     }
 
     const seen = new Set<string>();
