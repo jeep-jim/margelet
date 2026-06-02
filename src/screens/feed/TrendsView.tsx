@@ -66,8 +66,6 @@ function stripCategoryEmoji(label: string) {
 }
 
 const FOLLOWED_TOPICS_STORAGE_KEY = "margelet_followed_attention_topics_v1";
-const PENDING_ATTENTION_TOPIC_KEY = "margelet_pending_attention_topic_v1";
-const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
 
 const FEATURED_CATEGORY_VALUES = [
   "all",
@@ -1041,6 +1039,68 @@ function normalizeTopic(value: string) {
   return value.trim().toLowerCase();
 }
 
+
+function normalizeTrendSearchText(value: string) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getTrendSearchWords(value: string) {
+  return normalizeTrendSearchText(value)
+    .split(/\s+/)
+    .filter((word) => word.length > 2);
+}
+
+function trendOverlapScore(a: string[], b: string[]) {
+  if (!a.length || !b.length) return 0;
+
+  const left = new Set(a);
+  const right = new Set(b);
+  let hits = 0;
+
+  for (const word of left) {
+    if (right.has(word)) hits += 1;
+  }
+
+  return hits / Math.max(1, Math.min(left.size, right.size));
+}
+
+function getTrendFullSearchText(trend: TrendItem) {
+  const examples = Array.isArray(trend.examples) ? trend.examples : [];
+  const signals = Array.isArray(trend.signals) ? trend.signals : [];
+
+  return [
+    getTopic(trend),
+    ...signals,
+    ...examples.slice(0, 5).map((example) => example.text || ""),
+  ].join(" ");
+}
+
+function findTrendByTopic(trends: TrendItem[], topic: string) {
+  const normalizedTopic = normalizeTopic(topic);
+  if (!normalizedTopic) return null;
+
+  const exact = trends.find((trend) => normalizeTopic(getTopic(trend)) === normalizedTopic);
+  if (exact) return exact;
+
+  const topicWords = getTrendSearchWords(topic);
+  let best: TrendItem | null = null;
+  let bestScore = 0;
+
+  for (const trend of trends) {
+    const score = trendOverlapScore(topicWords, getTrendSearchWords(getTrendFullSearchText(trend)));
+    if (score > bestScore) {
+      best = trend;
+      bestScore = score;
+    }
+  }
+
+  return best && bestScore >= 0.34 ? best : null;
+}
+
 function getMomentumNumber(trend: TrendItem) {
   if (typeof trend.momentum === "number") return trend.momentum;
   const parsed = Number(String(trend.change || "0").replace("%", ""));
@@ -1401,16 +1461,17 @@ function SourceAvatar({
   );
 }
 
+
 function SourceDots({ sources = [] }: { sources?: TrendSource[] }) {
   const visible = sources.slice(0, 5);
 
+  if (!visible.length) return null;
+
   return (
     <div className="flex -space-x-2">
-      {visible.length
-        ? visible.map((source, index) => (
-            <SourceAvatar key={`${source.title}-${index}`} source={source} />
-          ))
-        : null}
+      {visible.map((source, index) => (
+        <SourceAvatar key={`${source.title}-${index}`} source={source} />
+      ))}
     </div>
   );
 }
@@ -1632,26 +1693,31 @@ function TrendDetail({
       </button>
 
       <section className="rounded-[30px] border border-soft bg-surface p-4 shadow-sm">
-        <div>
-          <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
-            {copy.telegramAttention}
+        <div className="flex items-start gap-3">
+          <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-surface-soft text-2xl font-black text-primary">
+            {emoji}
           </div>
-          <h2 className="mt-1 text-2xl font-black leading-tight text-primary">
-            <span className="mr-1.5 align-[-1px] text-xl">{emoji}</span>
-            {topic}
-          </h2>
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-            <span
-              className={
-                isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"
-              }
-            >
-              {isUp ? "↗" : "↘"} {String(trend.change).replace("+", "")}
-            </span>
-            <span className="text-secondary">·</span>
-            <span className="text-secondary">
-              {sourceCount} {copy.sources}
-            </span>
+
+          <div className="min-w-0 flex-1">
+            <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
+              {copy.telegramAttention}
+            </div>
+            <h2 className="mt-1 text-2xl font-black leading-tight text-primary">
+              {topic}
+            </h2>
+            <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+              <span
+                className={
+                  isUp ? "font-bold text-emerald-500" : "font-bold text-red-500"
+                }
+              >
+                {isUp ? "↗" : "↘"} {String(trend.change).replace("+", "")}
+              </span>
+              <span className="text-secondary">·</span>
+              <span className="text-secondary">
+                {sourceCount} {copy.sources}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -1750,24 +1816,28 @@ function TrendDetail({
 
             const content = (
               <>
-                <div className="flex min-w-0 flex-1 items-start gap-3">
-                  <SourceAvatar source={source} size="lg" />
-                  <div className="min-w-0 flex-1">
-                    <div className="truncate text-sm font-black text-primary">
-                      {source.title}
+                <div className="min-w-0 flex-1">
+                  <div className="flex min-w-0 items-center gap-2">
+                    <SourceAvatar source={source} />
+                    <div className="min-w-0 flex-1">
+                      <div className="truncate text-sm font-black text-primary">
+                        {source.title}
+                      </div>
+                      {getSourceHandle(source) ? (
+                        <div className="truncate text-xs text-secondary">
+                          @{getSourceHandle(source)}
+                        </div>
+                      ) : null}
                     </div>
-                    {getSourceHandle(source) ? (
-                      <div className="truncate text-xs text-secondary">
-                        @{getSourceHandle(source)}
-                      </div>
-                    ) : null}
-                    {snippet ? (
-                      <div className="mt-2 line-clamp-3 text-[12px] font-medium leading-relaxed text-secondary">
-                        {snippet}
-                      </div>
-                    ) : null}
                   </div>
+
+                  {snippet ? (
+                    <div className="mt-2 line-clamp-3 pl-8 text-[12px] font-medium leading-relaxed text-secondary">
+                      {snippet}
+                    </div>
+                  ) : null}
                 </div>
+
                 <div className="shrink-0 rounded-full bg-app px-2.5 py-1 text-xs font-black text-secondary">
                   {source.mentions}
                 </div>
@@ -1954,12 +2024,10 @@ function TrendRow({
               event.stopPropagation();
               onOpenDetail();
             }}
-            className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-3 text-left text-emerald-500 transition hover:bg-surface-soft"
+            className="mt-3 flex w-full items-center justify-between gap-3 rounded-2xl border border-soft bg-app px-3 py-2 text-left text-sm font-black text-emerald-500 transition hover:bg-surface-soft"
           >
-            <span className="min-w-0 truncate text-sm font-black">
-              {copy.whoFormsAttention}
-            </span>
-            <ArrowUpRight className="h-5 w-5 shrink-0" strokeWidth={3} />
+            <span>{copy.whoFormsAttention}</span>
+            <ArrowUpRight className="h-4 w-4" />
           </button>
 
           {trend.examples?.length ? (
@@ -2016,79 +2084,17 @@ function buildCategories(locale: Locale, copy: TrendsCopy): TrendCategory[] {
   return categories;
 }
 
-
-function getAttentionTopicTokens(value: string) {
-  return normalizeTopic(value)
-    .replace(/[^\p{L}\p{N}\s-]/gu, " ")
-    .split(/\s+/)
-    .map((item) => item.trim())
-    .filter((item) => item.length > 2);
-}
-
-function getAttentionOverlapScore(leftValue: string, rightValue: string) {
-  const left = new Set(getAttentionTopicTokens(leftValue));
-  const right = new Set(getAttentionTopicTokens(rightValue));
-  if (!left.size || !right.size) return 0;
-
-  let hits = 0;
-  for (const token of left) {
-    if (right.has(token)) hits += 1;
-  }
-
-  return hits / Math.max(1, Math.min(left.size, right.size));
-}
-
-function findTrendByTopic(trends: TrendItem[], topic: string) {
-  const normalized = normalizeTopic(topic);
-  if (!normalized) return null;
-
-  const direct =
-    trends.find((trend) => normalizeTopic(getTopic(trend)) === normalized) ||
-    trends.find((trend) =>
-      [
-        getTopic(trend),
-        ...(trend.signals || []),
-        ...(trend.examples || []).map((example) => example.text || ""),
-      ]
-        .join(" ")
-        .toLowerCase()
-        .includes(normalized),
-    );
-
-  if (direct) return direct;
-
-  let best: TrendItem | null = null;
-  let bestScore = 0;
-
-  for (const trend of trends) {
-    const trendText = [
-      getTopic(trend),
-      ...(trend.signals || []),
-      ...(trend.examples || []).map((example) => example.text || ""),
-    ].join(" ");
-    const score = Math.max(
-      getAttentionOverlapScore(topic, getTopic(trend)),
-      getAttentionOverlapScore(topic, trendText),
-    );
-
-    if (score > bestScore) {
-      best = trend;
-      bestScore = score;
-    }
-  }
-
-  return bestScore >= 0.32 ? best : null;
-}
-
 export function TrendsView({
   countryCode = "ru",
   locale = "ru",
   posts = [],
+  initialTopic,
   onOpenSource,
 }: {
   countryCode?: string;
   locale?: Locale;
   posts?: IngestedPost[];
+  initialTopic?: string;
   onOpenSource?: (handle: string) => void;
 }) {
   const [trends, setTrends] = useState<TrendItem[]>([]);
@@ -2132,45 +2138,6 @@ export function TrendsView({
   useEffect(() => {
     writeFollowedTopics(followedTopics);
   }, [followedTopics]);
-
-
-  useEffect(() => {
-    if (!trends.length) return;
-
-    let pendingTopic = "";
-    try {
-      pendingTopic = localStorage.getItem(PENDING_ATTENTION_TOPIC_KEY) || "";
-    } catch {
-      pendingTopic = "";
-    }
-
-    const match = findTrendByTopic(trends, pendingTopic);
-    if (!match) return;
-
-    setActiveTrend(match);
-
-    try {
-      localStorage.removeItem(PENDING_ATTENTION_TOPIC_KEY);
-    } catch {
-      // ignore localStorage errors
-    }
-  }, [trends]);
-
-  useEffect(() => {
-    function handleOpenAttentionTopic(event: Event) {
-      const detail = (event as CustomEvent<{ topic?: string; fallbackTopic?: string }>).detail || {};
-      const topic = String(detail.topic || "").trim();
-      const fallbackTopic = String(detail.fallbackTopic || "").trim();
-      const match = findTrendByTopic(trends, topic) || findTrendByTopic(trends, fallbackTopic);
-      if (match) setActiveTrend(match);
-    }
-
-    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
-
-    return () => {
-      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
-    };
-  }, [trends]);
 
   const categories = useMemo(
     () => buildCategories(locale, copy),
@@ -2241,6 +2208,18 @@ export function TrendsView({
 
     return list.slice(0, 20);
   }, [trends, selectedCategory, query, followedTopics, posts]);
+
+  useEffect(() => {
+    if (!initialTopic || !trends.length) return;
+
+    const nextTrend = findTrendByTopic(trends, initialTopic);
+    if (!nextTrend) return;
+
+    setActiveTrend(nextTrend);
+    setOpenedTopic(getTopic(nextTrend));
+    setQuery("");
+    setSelectedCategory("all");
+  }, [initialTopic, trends]);
 
   const toggleFollow = (topic: string) => {
     const key = normalizeTopic(topic);

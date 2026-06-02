@@ -22,9 +22,6 @@ import type { ViewerDirection } from "./feed/feed.types";
 import { buildShareUrl, getResolvedTags } from "./feed/feed.utils";
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
-const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
-const PENDING_ATTENTION_TOPIC_KEY = "margelet_pending_attention_topic_v1";
-
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
@@ -34,6 +31,7 @@ const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
 const INITIAL_RENDER_POSTS = 18;
 const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
+const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
 
 type FeedSettings = {
   mediaMode: FeedMediaMode;
@@ -495,6 +493,7 @@ export function FeedScreen({
   const [feedSettings, setFeedSettings] = useState<FeedSettings>(() =>
     readFeedSettingsFromStorage(locale)
   );
+  const [selectedAttentionTopic, setSelectedAttentionTopic] = useState<string | null>(null);
   const [showFloatingSmartBar, setShowFloatingSmartBar] = useState(false);
   const lastScrollYRef = useRef(0);
   const [isMuted, setIsMuted] = useState(false);
@@ -564,6 +563,32 @@ export function FeedScreen({
   useEffect(() => {
     writeFeedSettingsToStorage(feedSettings);
   }, [feedSettings]);
+
+  useEffect(() => {
+    function handleOpenAttentionTopic(event: Event) {
+      const topic = String(
+        (event as CustomEvent<{ topic?: string }>).detail?.topic || "",
+      ).trim();
+
+      if (!topic) return;
+
+      setSelectedAttentionTopic(topic);
+      setFeedSettings((prev) => ({
+        ...prev,
+        mediaMode: "trends",
+      }));
+
+      window.setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 0);
+    }
+
+    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic as EventListener);
+
+    return () => {
+      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic as EventListener);
+    };
+  }, []);
 
   useEffect(() => {
     if (!seenPostsHydratedRef.current) return;
@@ -1273,30 +1298,6 @@ export function FeedScreen({
     setRenderCount(INITIAL_RENDER_POSTS);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-  useEffect(() => {
-    function openPendingAttentionTopic() {
-      setFeedSettings((prev) => ({
-        ...prev,
-        mediaMode: "trends",
-      }));
-
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    try {
-      if (localStorage.getItem(PENDING_ATTENTION_TOPIC_KEY)) {
-        openPendingAttentionTopic();
-      }
-    } catch {
-      // ignore localStorage errors
-    }
-
-    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, openPendingAttentionTopic);
-
-    return () => {
-      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, openPendingAttentionTopic);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
@@ -1317,12 +1318,13 @@ export function FeedScreen({
         <SmartFeedBar
           copy={copy}
           mediaMode={feedSettings.mediaMode}
-          onChangeMediaMode={(next) =>
+          onChangeMediaMode={(next) => {
+            if (next !== "trends") setSelectedAttentionTopic(null);
             setFeedSettings((prev) => ({
               ...prev,
               mediaMode: next,
-            }))
-          }
+            }));
+          }}
           locale={locale}
           floating
           visible={
@@ -1368,12 +1370,13 @@ export function FeedScreen({
         <SmartFeedBar
           copy={copy}
           mediaMode={feedSettings.mediaMode}
-          onChangeMediaMode={(next) =>
+          onChangeMediaMode={(next) => {
+            if (next !== "trends") setSelectedAttentionTopic(null);
             setFeedSettings((prev) => ({
               ...prev,
               mediaMode: next,
-            }))
-          }
+            }));
+          }}
           locale={locale}
           availableCountries={availableCountryOptions}
           selectedCountries={feedSettings.countries}
@@ -1437,6 +1440,7 @@ export function FeedScreen({
             countryCode={feedSettings.countries[0] || locale}
             locale={locale}
             posts={safePosts}
+            initialTopic={selectedAttentionTopic || undefined}
             onOpenSource={openSource}
           />
         ) : (
