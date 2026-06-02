@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import type { IngestedPost, Locale } from "../../types/app";
 
 type AttentionTopic = {
@@ -10,35 +10,61 @@ type AttentionTopic = {
 type AttentionCopy = {
   contribution: string;
   mentions: string;
+  explore: string;
+  sources: string;
 };
 
 const COPY: Record<Locale, AttentionCopy> = {
-  ru: { contribution: "вклад в тему", mentions: "упоминаний" },
-  ua: { contribution: "внесок у тему", mentions: "згадок" },
-  us: { contribution: "topic impact", mentions: "mentions" },
-  in: { contribution: "विषय योगदान", mentions: "उल्लेख" },
-  ir: { contribution: "اثر در موضوع", mentions: "اشاره" },
-  tr: { contribution: "konu katkısı", mentions: "bahis" },
-  br: { contribution: "impacto no tema", mentions: "menções" },
-  kz: { contribution: "тақырып үлесі", mentions: "аталым" },
-  uz: { contribution: "mavzu hissasi", mentions: "eslatma" },
-  ae: { contribution: "أثر في الموضوع", mentions: "ذكر" },
-  eg: { contribution: "تأثير في الموضوع", mentions: "ذكر" },
-  pk: { contribution: "موضوع میں حصہ", mentions: "ذکر" },
-  id: { contribution: "dampak topik", mentions: "sebutan" },
-  mx: { contribution: "impacto del tema", mentions: "menciones" },
-  sa: { contribution: "أثر في الموضوع", mentions: "ذكر" },
-  es: { contribution: "impacto del tema", mentions: "menciones" },
-  it: { contribution: "impatto sul tema", mentions: "menzioni" },
-  fr: { contribution: "impact du sujet", mentions: "mentions" },
-  de: { contribution: "Themenbeitrag", mentions: "Erwähnungen" },
-  ar: { contribution: "impacto del tema", mentions: "menciones" },
-  co: { contribution: "impacto del tema", mentions: "menciones" },
-  za: { contribution: "topic impact", mentions: "mentions" },
-  ng: { contribution: "topic impact", mentions: "mentions" },
-  cn: { contribution: "话题贡献", mentions: "次提及" },
-  my: { contribution: "impak topik", mentions: "sebutan" },
+  ru: { contribution: "вклад в тему", mentions: "упоминаний", explore: "Исследовать", sources: "источников" },
+  ua: { contribution: "внесок у тему", mentions: "згадок", explore: "Дослідити", sources: "джерел" },
+  us: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources" },
+  in: { contribution: "विषय योगदान", mentions: "उल्लेख", explore: "Explore", sources: "स्रोत" },
+  ir: { contribution: "اثر در موضوع", mentions: "اشاره", explore: "بررسی", sources: "منبع" },
+  tr: { contribution: "konu katkısı", mentions: "bahis", explore: "İncele", sources: "kaynak" },
+  br: { contribution: "impacto no tema", mentions: "menções", explore: "Explorar", sources: "fontes" },
+  kz: { contribution: "тақырып үлесі", mentions: "аталым", explore: "Зерттеу", sources: "дереккөз" },
+  uz: { contribution: "mavzu hissasi", mentions: "eslatma", explore: "O‘rganish", sources: "manba" },
+  ae: { contribution: "أثر في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر" },
+  eg: { contribution: "تأثير في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر" },
+  pk: { contribution: "موضوع میں حصہ", mentions: "ذکر", explore: "دیکھیں", sources: "ذرائع" },
+  id: { contribution: "dampak topik", mentions: "sebutan", explore: "Jelajahi", sources: "sumber" },
+  mx: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
+  sa: { contribution: "أثر في الموضوع", mentions: "ذكر", explore: "استكشاف", sources: "مصدر" },
+  es: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
+  it: { contribution: "impatto sul tema", mentions: "menzioni", explore: "Esplora", sources: "fonti" },
+  fr: { contribution: "impact du sujet", mentions: "mentions", explore: "Explorer", sources: "sources" },
+  de: { contribution: "Themenbeitrag", mentions: "Erwähnungen", explore: "Erkunden", sources: "Quellen" },
+  ar: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
+  co: { contribution: "impacto del tema", mentions: "menciones", explore: "Explorar", sources: "fuentes" },
+  za: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources" },
+  ng: { contribution: "topic impact", mentions: "mentions", explore: "Explore", sources: "sources" },
+  cn: { contribution: "话题贡献", mentions: "次提及", explore: "探索", sources: "来源" },
+  my: { contribution: "impak topik", mentions: "sebutan", explore: "Teroka", sources: "sumber" },
 };
+
+
+
+type AttentionTrendSource = {
+  id?: string;
+  title: string;
+  username?: string;
+  avatarUrl?: string;
+  mentions?: number;
+};
+
+type AttentionTrend = {
+  topic?: string;
+  word?: string;
+  mentions?: number;
+  momentum?: number;
+  sourceCount?: number;
+  topSources?: AttentionTrendSource[];
+  examples?: Array<{ text?: string; sourceTitle?: string; sourceUsername?: string; sourceAvatarUrl?: string }>;
+  signals?: string[];
+};
+
+const PENDING_ATTENTION_TOPIC_KEY = "margelet_pending_attention_topic_v1";
+const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
 
 const SIGNAL_STOP = new Set([
   "это","что","как","если","или","его","её","ее","она","они","оно","уже","ещё","еще",
@@ -147,6 +173,70 @@ function getTelegramAvatarUrl(handle?: string | null) {
   return clean ? `https://t.me/i/userpic/320/${clean}.jpg` : "";
 }
 
+function getTrendTitle(trend: AttentionTrend | null | undefined) {
+  return String(trend?.topic || trend?.word || "").trim();
+}
+
+function getCountryCode(post: IngestedPost, locale: Locale) {
+  return String(post.sourceCountryCode || locale || "ru").trim().toLowerCase();
+}
+
+function getTrendSearchText(trend: AttentionTrend) {
+  return [
+    trend.topic,
+    trend.word,
+    ...(trend.signals || []),
+    ...(trend.examples || []).map((example) => example.text || ""),
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function getTopicTokens(value: string) {
+  return normalizeSignal(value)
+    .split(/\s+/)
+    .filter((item) => item.length > 2);
+}
+
+function getOverlapScore(a: string, b: string) {
+  const left = new Set(getTopicTokens(a));
+  const right = new Set(getTopicTokens(b));
+  if (!left.size || !right.size) return 0;
+
+  let hits = 0;
+  for (const token of left) {
+    if (right.has(token)) hits += 1;
+  }
+
+  return hits / Math.max(1, Math.min(left.size, right.size));
+}
+
+function findMatchingTrend(trends: AttentionTrend[], topic: string) {
+  let best: AttentionTrend | null = null;
+  let bestScore = 0;
+
+  for (const trend of trends) {
+    const trendText = getTrendSearchText(trend);
+    const score = Math.max(
+      getOverlapScore(topic, getTrendTitle(trend)),
+      getOverlapScore(topic, trendText),
+    );
+
+    if (score > bestScore) {
+      best = trend;
+      bestScore = score;
+    }
+  }
+
+  return bestScore >= 0.32 ? best : null;
+}
+
+function formatCompactNumber(value: number) {
+  if (value >= 1_000_000) return `${Math.round(value / 100_000) / 10}M`;
+  if (value >= 1_000) return `${Math.round(value / 100) / 10}K`;
+  return String(value);
+}
+
 function PostSourceAvatar({ post }: { post: IngestedPost }) {
   const [failed, setFailed] = useState(false);
   const title = post.source?.title || "Telegram";
@@ -174,34 +264,86 @@ function PostSourceAvatar({ post }: { post: IngestedPost }) {
   );
 }
 
-function PostSourceDots({
-  post,
-  count,
-}: {
-  post: IngestedPost;
-  count: number;
-}) {
-  const visible = Math.max(1, Math.min(6, count));
+function TrendSourceAvatar({ source }: { source: AttentionTrendSource }) {
+  const [failed, setFailed] = useState(false);
+  const title = String(source.title || source.username || "Telegram").trim();
+  const avatarUrl = failed ? "" : String(source.avatarUrl || getTelegramAvatarUrl(source.username)).trim();
 
   return (
-    <div className="mt-2 flex items-center gap-2">
-      <div className="flex -space-x-2">
-        <PostSourceAvatar post={post} />
-        {Array.from({ length: Math.max(0, visible - 1) }, (_, index) => (
-          <div
-            key={index}
-            className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[color:var(--bg-app)] bg-surface-soft text-[9px] font-black text-secondary"
-          >
-            {index === visible - 2 && count > visible ? `+${count - visible + 1}` : ""}
-          </div>
-        ))}
-      </div>
-      <span className="text-[11px] font-black text-secondary">
-        {count}
-      </span>
+    <div
+      className="grid h-7 w-7 shrink-0 place-items-center overflow-hidden rounded-full border border-[color:var(--bg-app)] bg-surface-soft text-[10px] font-black text-primary"
+      title={title}
+    >
+      {avatarUrl ? (
+        <img
+          src={avatarUrl}
+          alt=""
+          className="h-full w-full object-cover"
+          referrerPolicy="no-referrer"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        title.slice(0, 1).toUpperCase()
+      )}
     </div>
   );
 }
+
+function RealSourceDots({
+  post,
+  sources,
+  count,
+  copy,
+}: {
+  post: IngestedPost;
+  sources: AttentionTrendSource[];
+  count: number;
+  copy: AttentionCopy;
+}) {
+  const cleanedSources = sources
+    .filter((source) => String(source.title || source.username || "").trim())
+    .slice(0, 6);
+
+  const fallbackSources: AttentionTrendSource[] = cleanedSources.length
+    ? cleanedSources
+    : [
+        {
+          id: post.source?.handle || String(post.id),
+          title: post.source?.title || "Telegram",
+          username: post.source?.handle,
+          avatarUrl: post.source?.avatar || undefined,
+          mentions: 1,
+        },
+      ];
+
+  const visibleSources = fallbackSources.slice(0, 6);
+  const hiddenCount = Math.max(0, count - visibleSources.length);
+
+  return (
+    <div className="mt-2 flex items-center justify-between gap-3">
+      <div className="flex min-w-0 items-center gap-2">
+        <div className="flex -space-x-2">
+          {visibleSources.map((source, index) => (
+            <TrendSourceAvatar
+              key={`${source.id || source.username || source.title || index}-${index}`}
+              source={source}
+            />
+          ))}
+          {hiddenCount > 0 ? (
+            <div className="grid h-7 min-w-7 shrink-0 place-items-center rounded-full border border-[color:var(--bg-app)] bg-surface-soft px-1.5 text-[9px] font-black text-secondary">
+              +{hiddenCount}
+            </div>
+          ) : null}
+        </div>
+
+        <span className="shrink-0 text-[11px] font-black text-secondary">
+          {count} {copy.sources}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 
 export function PostAttentionChips({
   post,
@@ -213,11 +355,65 @@ export function PostAttentionChips({
   locale?: Locale;
 }) {
   const [open, setOpen] = useState(false);
+  const [matchedTrend, setMatchedTrend] = useState<AttentionTrend | null>(null);
   const copy = COPY[locale] || COPY.us;
   const topics = getAttentionTopics(post, searchQuery);
   const primary = topics[0];
-  const score = primary?.score || (post.media?.length ? 8 : 5);
-  const sourceCount = Math.max(1, Math.min(9, Math.round(score * 0.55) + (topics.length > 1 ? 1 : 0)));
+  const fallbackScore = primary?.score || (post.media?.length ? 8 : 5);
+  const countryCode = getCountryCode(post, locale);
+
+  useEffect(() => {
+    if (!open || !primary) return;
+
+    let cancelled = false;
+
+    async function fetchTrendMatch() {
+      try {
+        const res = await fetch(`/api/v1?action=trends&country=${countryCode}`);
+        const data = await res.json();
+        const trends = Array.isArray(data?.trends) ? (data.trends as AttentionTrend[]) : [];
+        const next = findMatchingTrend(trends, primary.topic);
+
+        if (!cancelled) setMatchedTrend(next);
+      } catch {
+        if (!cancelled) setMatchedTrend(null);
+      }
+    }
+
+    fetchTrendMatch();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [open, primary?.topic, countryCode]);
+
+  const score = Math.max(fallbackScore, Number(matchedTrend?.mentions) || 0);
+  const realSources = Array.isArray(matchedTrend?.topSources) ? matchedTrend.topSources : [];
+  const sourceCount = Math.max(
+    realSources.length,
+    Number(matchedTrend?.sourceCount) || 0,
+    Math.max(1, Math.min(9, Math.round(fallbackScore * 0.55) + (topics.length > 1 ? 1 : 0))),
+  );
+  const exploreTopic = getTrendTitle(matchedTrend) || primary?.topic || "";
+  const trendRating = Math.abs(Number(matchedTrend?.momentum) || 0) || score;
+
+  function exploreTopicInTrends(event: MouseEvent) {
+    event.stopPropagation();
+    if (!exploreTopic) return;
+
+    try {
+      localStorage.setItem(PENDING_ATTENTION_TOPIC_KEY, exploreTopic);
+    } catch {
+      // ignore localStorage errors
+    }
+
+    window.dispatchEvent(
+      new CustomEvent(OPEN_ATTENTION_TOPIC_EVENT, {
+        detail: { topic: exploreTopic, countryCode },
+      }),
+    );
+    setOpen(false);
+  }
 
   return (
     <div className="relative inline-flex max-w-full">
@@ -246,7 +442,18 @@ export function PostAttentionChips({
             <span className="text-emerald-500">↗</span>
           </div>
 
-          <PostSourceDots post={post} count={sourceCount} />
+          <div className="mt-2 flex items-center justify-between gap-3">
+            <RealSourceDots post={post} sources={realSources} count={sourceCount} copy={copy} />
+            <button
+              type="button"
+              onClick={exploreTopicInTrends}
+              className="grid h-11 min-w-11 shrink-0 place-items-center rounded-2xl bg-emerald-500/15 px-2 text-emerald-500 transition hover:bg-emerald-500/25"
+              title={copy.explore}
+            >
+              <span className="text-lg font-black leading-none">↗</span>
+              <span className="text-[10px] font-black leading-none">+{formatCompactNumber(trendRating)}</span>
+            </button>
+          </div>
 
           {primary ? (
             <div className="mt-2 rounded-2xl bg-surface-soft px-3 py-2 text-[12px] font-semibold leading-relaxed text-primary">

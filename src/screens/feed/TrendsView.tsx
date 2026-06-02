@@ -66,6 +66,8 @@ function stripCategoryEmoji(label: string) {
 }
 
 const FOLLOWED_TOPICS_STORAGE_KEY = "margelet_followed_attention_topics_v1";
+const PENDING_ATTENTION_TOPIC_KEY = "margelet_pending_attention_topic_v1";
+const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
 
 const FEATURED_CATEGORY_VALUES = [
   "all",
@@ -2023,6 +2025,26 @@ function buildCategories(locale: Locale, copy: TrendsCopy): TrendCategory[] {
   return categories;
 }
 
+function findTrendByTopic(trends: TrendItem[], topic: string) {
+  const normalized = normalizeTopic(topic);
+  if (!normalized) return null;
+
+  return (
+    trends.find((trend) => normalizeTopic(getTopic(trend)) === normalized) ||
+    trends.find((trend) =>
+      [
+        getTopic(trend),
+        ...(trend.signals || []),
+        ...(trend.examples || []).map((example) => example.text || ""),
+      ]
+        .join(" ")
+        .toLowerCase()
+        .includes(normalized),
+    ) ||
+    null
+  );
+}
+
 export function TrendsView({
   countryCode = "ru",
   locale = "ru",
@@ -2075,6 +2097,43 @@ export function TrendsView({
   useEffect(() => {
     writeFollowedTopics(followedTopics);
   }, [followedTopics]);
+
+
+  useEffect(() => {
+    if (!trends.length) return;
+
+    let pendingTopic = "";
+    try {
+      pendingTopic = localStorage.getItem(PENDING_ATTENTION_TOPIC_KEY) || "";
+    } catch {
+      pendingTopic = "";
+    }
+
+    const match = findTrendByTopic(trends, pendingTopic);
+    if (!match) return;
+
+    setActiveTrend(match);
+
+    try {
+      localStorage.removeItem(PENDING_ATTENTION_TOPIC_KEY);
+    } catch {
+      // ignore localStorage errors
+    }
+  }, [trends]);
+
+  useEffect(() => {
+    function handleOpenAttentionTopic(event: Event) {
+      const topic = String((event as CustomEvent<{ topic?: string }>).detail?.topic || "").trim();
+      const match = findTrendByTopic(trends, topic);
+      if (match) setActiveTrend(match);
+    }
+
+    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+
+    return () => {
+      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+    };
+  }, [trends]);
 
   const categories = useMemo(
     () => buildCategories(locale, copy),

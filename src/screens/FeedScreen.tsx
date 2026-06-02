@@ -22,6 +22,8 @@ import type { ViewerDirection } from "./feed/feed.types";
 import { buildShareUrl, getResolvedTags } from "./feed/feed.utils";
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
+const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
+
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
@@ -1269,6 +1271,22 @@ export function FeedScreen({
     setSelectedTags([]);
     setRenderCount(INITIAL_RENDER_POSTS);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+  useEffect(() => {
+    function handleOpenAttentionTopic() {
+      setFeedSettings((prev) => ({
+        ...prev,
+        mediaMode: "trends",
+      }));
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+
+    return () => {
+      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic);
+    };
   }, []);
 
   return (
