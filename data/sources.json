@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-03T00:03:11.255Z",
+  "updatedAt": "2026-06-03T00:03:14.158Z",
   "sources": [
     {
       "id": "ru:abuwtf",
@@ -297,14 +297,14 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/szGMArF4ouHOaN-Z7g1H6tuRiXiginZbO3SEgO1BkvZebiex2fR24sLR43V3xmOLUt-5TnUJj4sVYHbZYsPJjGYLbZJzJdFUpNuhWeR9v4cCzVdMHNJR2z2OwzOTUFwAb11OWSH_aR8jJzj0U3dxFh0mho1Kfis9wMhsy1MWg3JSJmUqjTht9t_zzEyx2WHNJnmUuTrMpIkGFZKxomOR41TYsDUbpTjDY_6J698nDBE50Md4cXKA7t_P7NL1iEHuzhLEMUb0uzGwvw22HiIUmCWKXkGCrqH_CxytQ-m1jzFYdV3DruaTguX9l1SEh1YyMDuMKhptH1uX9STjBe7kYw.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "people",
+      "defaultTag": "other",
       "tags": [
-        "people"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T07:38:27.462Z",
       "lastImportedAt": "2026-06-02T07:38:27.462Z",
       "lastSeenPostId": 8417,
@@ -1528,13 +1528,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T07:39:30.123Z",
       "lastImportedAt": "2026-06-02T07:39:30.123Z",
       "lastSeenPostId": 32847,
@@ -1708,6 +1707,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:blogernewstg",
+      "countryCode": "ru",
+      "handle": "blogernewstg",
+      "title": "Короче",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "business_all",
+        "people",
+        "people_blogs"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:bloknot_rossiya",
       "countryCode": "ru",
       "handle": "bloknot_rossiya",
@@ -1742,12 +1766,15 @@
       "verified": true,
       "defaultTag": "technology",
       "tags": [
-        "technology"
+        "technology",
+        "ai",
+        "marketing",
+        "marketing_ads"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T07:39:36.546Z",
       "lastImportedAt": "2026-06-02T07:39:36.546Z",
       "lastSeenPostId": 55945,
@@ -1771,7 +1798,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T07:39:37.911Z",
       "lastImportedAt": "2026-06-02T07:39:37.911Z",
       "lastSeenPostId": 16077,
@@ -1846,6 +1873,30 @@
       "lastImportedAt": "2026-06-02T07:39:40.879Z",
       "lastSeenPostId": 212893,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:borodylia0803",
+      "countryCode": "ru",
+      "handle": "borodylia0803",
+      "title": "Ксения Бородина",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "marketing",
+        "marketing_ads"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -2200,6 +2251,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:bykae4ka",
+      "countryCode": "ru",
+      "handle": "bykae4ka",
+      "title": "каечка",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:byzovahouse",
       "countryCode": "ru",
       "handle": "byzovahouse",
@@ -2331,13 +2404,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T07:40:06.041Z",
       "lastImportedAt": "2026-06-02T07:40:06.041Z",
       "lastSeenPostId": 73536,
@@ -2845,6 +2917,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:crimeanwind",
+      "countryCode": "ru",
+      "handle": "crimeanwind",
+      "title": "Крымский ветер",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:criptodro",
       "countryCode": "ru",
       "handle": "criptodro",
@@ -2886,7 +2980,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T07:40:40.233Z",
       "lastImportedAt": "2026-06-02T07:40:40.233Z",
       "lastSeenPostId": 11783,
@@ -2911,7 +3005,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T07:40:41.626Z",
       "lastImportedAt": "2026-06-02T07:40:41.626Z",
       "lastSeenPostId": 2086,
@@ -2936,7 +3030,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": "2026-06-02T07:40:42.915Z",
       "lastImportedAt": "2026-06-02T07:40:42.915Z",
       "lastSeenPostId": 2311,
@@ -3046,7 +3140,7 @@
       "id": "ru:crypto_stukach",
       "countryCode": "ru",
       "handle": "crypto_stukach",
-      "title": "Крипто Стукач | Инвестиции | Заработок",
+      "title": "Крипто Стукач",
       "avatarUrl": "https://cdn4.telesco.pe/file/lvtTPhh2r1cxAeN5A8VsgJ5-I2N3BA7SUwFS4o0yRfvXRQXET9IsbwS4mKMb5pgH4elbZhqNijUdLxlJlbde-V0Lf1ucKCM0vTp1FrqU-JUsrFqml2if874QK548-hy7IwUnIrAM214ob3Hr69wWIiUSWqdIcxLF-1RpQrFfyWewGIOB_V-CsdNlBSSv7UUhhwHjGeMvw6cVbfyMHIOUAROXwtaBq1aEl2c1pTGczIn0Q0Pxkkprla5Af_IIX60MFyLSOkyalfGayKTX07WDW8neHmcph3JnfKHFD5xFhHGGE6y_N9_SZJVwPSRPjTyXNlSD4OspNLadLE_T3g8i-Q.jpg",
       "avatarOverride": null,
       "verified": false,
@@ -3059,7 +3153,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T07:40:49.431Z",
       "lastImportedAt": "2026-06-02T07:40:49.431Z",
       "lastSeenPostId": 3072,
@@ -3084,7 +3178,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T07:40:50.703Z",
       "lastImportedAt": "2026-06-02T07:40:50.703Z",
       "lastSeenPostId": 2835,
@@ -3159,7 +3253,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T07:40:54.757Z",
       "lastImportedAt": "2026-06-02T07:40:54.757Z",
       "lastSeenPostId": 3480,
@@ -3312,6 +3406,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:dacha_ogorod",
+      "countryCode": "ru",
+      "handle": "dacha_ogorod",
+      "title": "Дачные будни",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:dadyacrypto",
       "countryCode": "ru",
       "handle": "dadyacrypto",
@@ -3319,17 +3435,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/UkmOM9wzUMLnNusVnd2fqAg3PcFLd5PwNmEtmKJwC0HOji75oVL-TdXL-r-h_3H31Aw0PvfG8ISQ6PQPVq06y55wd1PCBwbotaezREiUhPJPyrnpRVm3UauawKAS9CQPE7GlpV1BQUF8oKpXG0AYLVnsgprak5-7zraFDi5vhTQYDHXTO7LPbJg-JvIxgHj_dBUgoAXw7t8PjR4EI_ji4Gr-2BX9MY6SZZw45z6I8qhDCmmNkhJ_ItKBV_cS9xxRFGvI-9ApCAfUzOp8guV8s1KjAg4hIe6GsgV-fJgbIvG3th47pdzRwqx4yrJ7oFs1MEqyKel5llROamBDYy2jzg.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "finance",
+      "defaultTag": "other",
       "tags": [
-        "finance",
-        "crypto",
         "other",
-        "other_misc"
+        "finance",
+        "crypto"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.018Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T07:41:04.540Z",
       "lastImportedAt": "2026-06-02T07:41:04.540Z",
       "lastSeenPostId": 2911,
@@ -3387,6 +3502,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:danila_gorilla",
+      "countryCode": "ru",
+      "handle": "danila_gorilla",
+      "title": "ДАНИЛА ГОРИЛЛА 🦍",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "technology",
+        "ai"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:dauotkysit",
       "countryCode": "ru",
       "handle": "dauotkysit",
@@ -3432,6 +3571,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:deadblonde",
+      "countryCode": "ru",
+      "handle": "deadblonde",
+      "title": "дед инсайд блонд",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:decenter",
       "countryCode": "ru",
       "handle": "decenter",
@@ -3458,7 +3619,7 @@
       "id": "ru:decor_journal",
       "countryCode": "ru",
       "handle": "decor_journal",
-      "title": "Дизайн и ремонт | Интерьерные решения",
+      "title": "Дизайн и ремонт",
       "avatarUrl": "https://cdn4.telesco.pe/file/F4TK5Wtv04tn_lsz58lZPvEL77a_Av9Z5Vkwnc1-Dx5i3Fw4xMLke1-588pnb33qIk34_jwA2tdEsvuLHI16nAJFeFzOeS_PIoLMlEKRwap9bUzhL7X80E0PTWEdoPcl15oOKWO6qJTHDiwyVK2pri6vBy68O8MuUaZ8gdEDZVAh6oTiH1SI6Cx9Ne3CdZsTCGQD70tqXwd2vz4kYy3vvTGSuZFdzxLJlB14nN3m4d4YR03NMGqVJkj6GnrxoT90ani3PPtopDLVP5RUiMIeX4F2SF9bkPwvefLBYrnFpYS7cWHB-O9y-SGmRc7zGyKyFi-RqyUtJIBE839IJJoUNA.jpg",
       "avatarOverride": null,
       "verified": false,
@@ -3471,7 +3632,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:53:36.019Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
       "lastCheckedAt": "2026-06-02T07:41:11.226Z",
       "lastImportedAt": "2026-06-02T07:41:11.226Z",
       "lastSeenPostId": 24080,
@@ -3501,6 +3662,28 @@
       "lastImportedAt": "2026-06-02T07:41:12.279Z",
       "lastSeenPostId": 1381,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:deepinstv",
+      "countryCode": "ru",
+      "handle": "deepinstv",
+      "title": "дипинс 🤢",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -3563,12 +3746,15 @@
       "verified": false,
       "defaultTag": "finance",
       "tags": [
-        "finance"
+        "finance",
+        "finance_all",
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-02T08:53:36.019Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
       "lastCheckedAt": "2026-06-02T07:41:17.257Z",
       "lastImportedAt": "2026-06-02T07:41:17.257Z",
       "lastSeenPostId": 8708,
@@ -3722,6 +3908,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:dknasasal",
+      "countryCode": "ru",
+      "handle": "dknasasal",
+      "title": "Данила Кашен",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "technology",
+        "ai"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:dmitrynikotin",
       "countryCode": "ru",
       "handle": "dmitrynikotin",
@@ -3871,6 +4081,52 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:domergrief",
+      "countryCode": "ru",
+      "handle": "domergrief",
+      "title": "ЗОВУТ ДОМЕР",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:donetskbez",
+      "countryCode": "ru",
+      "handle": "donetskbez",
+      "title": "Донецк БЕЗ фильтров",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:dontstopwar",
       "countryCode": "ru",
       "handle": "dontstopwar",
@@ -3970,6 +4226,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:drakestudio",
+      "countryCode": "ru",
+      "handle": "drakestudio",
+      "title": "дрейк",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:drdzari",
       "countryCode": "ru",
       "handle": "drdzari",
@@ -4049,13 +4327,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:53:36.019Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": "2026-06-02T07:41:46.990Z",
       "lastImportedAt": "2026-06-02T07:41:46.990Z",
       "lastSeenPostId": 7907,
@@ -4135,6 +4412,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:dur0va",
+      "countryCode": "ru",
+      "handle": "dur0va",
+      "title": "Девушка Дурова",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:durov_russia",
       "countryCode": "ru",
       "handle": "durov_russia",
@@ -4187,17 +4486,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/TPCD3VDK_BVKihoxI4NlSU16qMVvRXdF5qbQgebiuCbltPwgnZRO5o6z5SStjxnJNcAYaRBooStE8M5vn08ZJsL7FLidk7ASkKEmIMlg9h4p1MMKgK72JM9DoZoW3zD7wdldvrLLybRhgMcSY5UQAVbGKsokm8fPSk_DiVC0KQHandvYtbRkAZdgfJ6JVrdtV4NiCk3IUNwqkAhbsWzyNWWzLjkxZ1YbwXxh0cK_Gf1ZlbiwhStk3C2CHquBnObNHFRMdc2BdCKDAK9yBrtyLzYhrMKdbFdk6NMWwGkg5ciU000oAFAWRixd85DGe__OVDbCTigV3E7KhKHhgVw4OQ.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "marketing",
+      "defaultTag": "other",
       "tags": [
-        "marketing",
-        "marketing_ads",
         "other",
-        "other_misc"
+        "marketing",
+        "marketing_ads"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:53:36.019Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
       "lastCheckedAt": "2026-06-02T07:41:55.975Z",
       "lastImportedAt": "2026-06-02T07:41:55.975Z",
       "lastSeenPostId": 93930,
@@ -4250,6 +4548,31 @@
       "lastImportedAt": "2026-06-02T07:41:58.766Z",
       "lastSeenPostId": 3248,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:dyadyabatya0",
+      "countryCode": "ru",
+      "handle": "dyadyabatya0",
+      "title": "Дядя Батя",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "news_all",
+        "telegram",
+        "telegram_bots"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -4404,14 +4727,14 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/itHkmkPGK7htrwDLqEIGx_MjwNW1O4gsCTJnAdLM1nyXXkgxcnfHiA2W6UK8MxmbI3g1Js6hcIloSld7lqHwt4IXRgnOE81Tah9jKdhiEwzNWBjcg8-G1ck8WIMbnMVwkodHPIBLVpRiV89IoXdz1A1ygSdEdTsOx_4-1PnloFK-7MeS5xPyINxz86_Y3431vb41yRHtU9SY1VzK2NLWhmZ7K2pZl_qSihFLDb98s5nwfzT8uEh_jKhWrFzfgwPnEoNgT6i0VYLfUNG9GmSpaK76Ie7p-5eVanUUiT6at_ovO5FLxWVrgs0BvvyWjTnAIgnRDcnN-h74AqzGn0Xcfw.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "people",
+      "defaultTag": "other",
       "tags": [
-        "people"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-02T08:53:36.019Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": "2026-06-02T07:42:07.678Z",
       "lastImportedAt": "2026-06-02T07:42:07.678Z",
       "lastSeenPostId": 19522,
@@ -4607,6 +4930,28 @@
       "lastImportedAt": "2026-06-02T07:42:17.663Z",
       "lastSeenPostId": 15209,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:eshkinkrot",
+      "countryCode": "ru",
+      "handle": "eshkinkrot",
+      "title": "Ёшкин Крот",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -5651,7 +5996,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:54:13.657Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
       "lastCheckedAt": "2026-06-02T08:54:12.854Z",
       "lastImportedAt": "2026-06-02T08:54:12.854Z",
       "lastSeenPostId": 14275,
@@ -6065,6 +6410,31 @@
       "lastImportedAt": "2026-06-02T08:54:29.238Z",
       "lastSeenPostId": 1215,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:grazhinka1",
+      "countryCode": "ru",
+      "handle": "grazhinka1",
+      "title": "запах минувших дней",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "sports",
+      "tags": [
+        "sports",
+        "sports_news",
+        "fitness",
+        "fitness_nutrition"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -6495,6 +6865,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:hladenko",
+      "countryCode": "ru",
+      "handle": "hladenko",
+      "title": "короче, Гладенко",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:homosapiens_tg",
       "countryCode": "ru",
       "handle": "homosapiens_tg",
@@ -6632,6 +7026,56 @@
       "createdAt": "2026-06-02T07:27:57.337Z",
       "updatedAt": "2026-06-02T08:54:55.831Z",
       "lastCheckedAt": "2026-06-02T08:54:55.831Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:inc54",
+      "countryCode": "ru",
+      "handle": "inc54",
+      "title": "Инцидент Новосибирск",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "news_incidents",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:incident22",
+      "countryCode": "ru",
+      "handle": "incident22",
+      "title": "Инцидент Барнаул",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "news_incidents",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -6837,6 +7281,53 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:irena_ponaroshku",
+      "countryCode": "ru",
+      "handle": "irena_ponaroshku",
+      "title": "Ирена Понарошку",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "news_all",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:istominakarina",
+      "countryCode": "ru",
+      "handle": "istominakarina",
+      "title": "диалектический отказ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:istoria_fotoplenka",
       "countryCode": "ru",
       "handle": "istoria_fotoplenka",
@@ -6938,21 +7429,20 @@
       "id": "ru:ivan_utenkov13",
       "countryCode": "ru",
       "handle": "ivan_utenkov13",
-      "title": "Иван Утенков | Новости",
+      "title": "Иван Утенков",
       "avatarUrl": "https://cdn4.telesco.pe/file/bWxHPjjQ-XzQyeyRWl7_gcd_UQVjxEBthaRL5rLdFf3H9f5ag6ZpdFebf17YFGUZ3O0sGMtRlHVImNDMnPnZ5GhKSbbEQ8Bovg63-HfIJsDdahNgR9Y02-UXhYx7TcngD4wfpgb44ZqEmh84BepdXzqLuOamWVDZenavZRxdGnQUXeimuYwZId4oCWsJeq-LMPHglL3zk-44yZ48lZZ_CMcKOVmyeofJuB9xnr-VdC0i1o7fcOmQ4rcICzKUsBlyrkzkX29xGq2zKZxhVrwLSG62yg2XLw8CEoSqKPZZFsNd81ghysT8b5MgGEZjyFfW3fCl_vlc13qNrJhy_hLOhg.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "news",
+      "defaultTag": "other",
       "tags": [
-        "news",
-        "news_all",
         "other",
-        "other_misc"
+        "news",
+        "news_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:55:10.487Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": "2026-06-02T08:55:09.628Z",
       "lastImportedAt": "2026-06-02T08:55:09.628Z",
       "lastSeenPostId": 83634,
@@ -7135,17 +7625,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/O96Wa2vIysVU2TuxTVeSHl5cSjGMzt346B5i5RXVeGsBQijsWDpxHVPImjNxwzrtPrSfWIn7K1W_4ePFPafNzB8NTLo2XqGj6m7foUfn6Qam--h8314n7TnbPmYxED-OvsIDOabwfSW86encLjs1IleBrhbZJ1yVSsPBvOtFEqqHCOObczKMVTW_LSKRLq2qzsORWvINvlfeYvkYsl55wHrpbgkVHTAWF9pmn6SAAvXjHmdb7EbE06v-IlX4V9O85NlJPTq9qiLjVr3NLXIX6L1Rqw9lmwCc2e5DzNuiPwKeXU3Ow-seLhapKG_2p7N5t6lbxxJpeo1GIQsZgZGDEw.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "culture",
+      "defaultTag": "other",
       "tags": [
-        "culture",
-        "art",
         "other",
-        "other_misc"
+        "culture",
+        "art"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:19.130Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:18.064Z",
       "lastImportedAt": "2026-06-02T08:55:18.064Z",
       "lastSeenPostId": 33374,
@@ -7153,10 +7642,32 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:katyashkuro",
+      "countryCode": "ru",
+      "handle": "katyashkuro",
+      "title": "КАТЯ ШКУРО",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:kazan",
       "countryCode": "ru",
       "handle": "kazan",
-      "title": "КазаньДА | Новости Казани",
+      "title": "КазаньДА",
       "avatarUrl": "https://cdn4.telesco.pe/file/dAd3TQGce0UjZ3axJmY9s6cZqfqNCN4mxUQy-64qcPvUD-Wbd9L-kSxArSaq_UoC92ple51HECq_qZnB9tkhQuMYexipqPjjm1X0c3e7cItJmg1PtCjdnYS6nR5QaFQ3nQDGDjvYdBXAHQxahOMik9sFsYK824ifYZ_1BT2O-k00iHFgLCA8n6rVkZtPW8jUwDFCzinOr4H4EFh5oWdh8qyuj2ySEW6OlrRaJ3e_nr_6u26k7ZWQATxkmFIs8rf14SExeD_OUMk7dagWFxV4CeOcp3ucw9lBtUrMN2cTSrJf1zdJHSCW5XdSTkYD1WBo2Rmuv_iCY5GDKyLYWsnYbg.jpg",
       "avatarOverride": null,
       "verified": false,
@@ -7170,7 +7681,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:20.365Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:19.415Z",
       "lastImportedAt": "2026-06-02T08:55:19.415Z",
       "lastSeenPostId": 32110,
@@ -7185,17 +7696,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/vMIcbREqV6tDc60XDzSRJb1sBJSPIgaKUrdvXQ6DhLJEIUxrfhWnm29JI7y6Aj-CkAid1Esmx2i_B7Xbu033mRlFROAipuOSdiTswZSgXS-GJbtArBO7NdHE3mUbKM96QsyM3ZWA7esqH7xjdpSCNBv93mkIs7-yvb2L0mAqGHQXSQUmaMsGJNgOAjI1TP_88LNeddAiYxbLqqYaPrJn1lheNF0kTYxL4GD_wldx25pQiyey1Hx9NSwBtQ0sXDJQECXwqL0G3ru-wdvHyXfqgmOOf5CrW6JXV2KQswK9UYfmaueW85l1aIpDgkrOqwzWJ4wJjLLldVRllJBENbTQNw.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "telegram",
+      "defaultTag": "other",
       "tags": [
-        "telegram",
-        "telegram_channels",
         "other",
-        "other_misc"
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:21.608Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:20.689Z",
       "lastImportedAt": "2026-06-02T08:55:20.689Z",
       "lastSeenPostId": 37188,
@@ -7210,17 +7720,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/SkuYKAY-yw1OaV3Q8pyx8k466-BTcxLuISyP7n55xtkj4hooUaxqDP6vY6uE4rH-B30dhvWODvACu_Nl2DOGYKGiHqpc7tchNVBD816CT6LyfzPaG5pikYca8DpRC3bLmdXJQFfCrR_c78PNkTSOO2mG9YRSwGFgF4qRvoMvrwtux1eq1zWMP6D0_tIqfSw1ojz0m_DPVzAC6diGmAv895xF5LHs8z6LgvZSRcHYeJ37pnvEs8K1kYRUTqbLm7N1mdkGTX8wQXDARpSNkQm9CgdofDkXKbW-9EWXGrjkd-NCTer6kQSlNjC1Xt3n5hVNTKZq-yY1RStKdc4hhQkNfw.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "news",
+      "defaultTag": "other",
       "tags": [
-        "news",
-        "news_all",
         "other",
-        "other_misc"
+        "news",
+        "news_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:23.367Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:22.311Z",
       "lastImportedAt": "2026-06-02T08:55:22.311Z",
       "lastSeenPostId": 61663,
@@ -7502,6 +8011,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:kishlak_family",
+      "countryCode": "ru",
+      "handle": "kishlak_family",
+      "title": "Кишлак",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:kitonomika",
       "countryCode": "ru",
       "handle": "kitonomika",
@@ -7523,6 +8054,28 @@
       "lastImportedAt": "2026-06-02T08:55:38.014Z",
       "lastSeenPostId": 2280,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:klavacoca",
+      "countryCode": "ru",
+      "handle": "klavacoca",
+      "title": "КЛАВА КОКА",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -7558,12 +8111,14 @@
       "verified": false,
       "defaultTag": "business",
       "tags": [
-        "business"
+        "business",
+        "business_ecommerce",
+        "business_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-02T08:55:41.244Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": "2026-06-02T08:55:40.377Z",
       "lastImportedAt": "2026-06-02T08:55:40.377Z",
       "lastSeenPostId": 17672,
@@ -7578,17 +8133,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/bflWUZ-NobfBGWx8c5Z00UVmg56hZi0YzvHc3gj2ReN4jVEanfrowQk9HyYMIoYOCxIE6QmRHCtUMtkvu_lF2UFvcbFkkxaOoJG0sGbkjtg1u7TsPYxotM3pR3Jn63cNtUyZJMnUEnhRGfNHfk-OzrqPnYo7HK-8itp_CPFYs1WROoraCuK-BKWAXSHnShE-FbJYKRSFGeaWl1dZjIq_EqQeuYgbXS6HcH-UuabHpPe35wAoeoVzfQeJ2fPwDYLziOqa8BBxXoxa67X_JFtS8WyoHNEzClMzsyuW1xNg_SJAs5bYjXZzBG__xJpx7wGhNKpcmS58jlI8breV-iyRUQ.jpg",
       "avatarOverride": null,
       "verified": true,
-      "defaultTag": "telegram",
+      "defaultTag": "other",
       "tags": [
-        "telegram",
-        "telegram_channels",
         "other",
-        "other_misc"
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:42.292Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:41.473Z",
       "lastImportedAt": "2026-06-02T08:55:41.473Z",
       "lastSeenPostId": 108521,
@@ -7603,21 +8157,42 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/Khmv1EpQFBAB3hc0RjLtvIOgLvV_uaeQLj5lpTOOStB2LN9xkm3_DxzyXFUCHkNYITn2ZPSvmhT-f5PMOzS9ZChbZuVwWx0r7Xf6MBlCRRksANvO8yTMLomYqkK5e5_mz1Z4VLV9s4UrNhzXN2YdGG58kvFSPi-pilRxll7noWpTCGfHVycYVZnbCZSSqsZXRFNBKuRzssFcMinzi53P7LXG4ExFdhx6G7QL0sg8CbVe5vosN7jxbWRhZDOHMvhWGXRQugyXgrKneABopTz3OAinL_9ARlsb4j6HSXUua5ppm-zVDCn5CUs98s4znYL_3lm6pbUI74iDMUInn6htHQ.jpg",
       "avatarOverride": null,
       "verified": true,
-      "defaultTag": "telegram",
+      "defaultTag": "other",
       "tags": [
-        "telegram",
-        "telegram_channels",
         "other",
-        "other_misc"
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:43.575Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:42.627Z",
       "lastImportedAt": "2026-06-02T08:55:42.627Z",
       "lastSeenPostId": 72867,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:koreshzy",
+      "countryCode": "ru",
+      "handle": "koreshzy",
+      "title": "Кореш",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -7628,17 +8203,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/TR6WvlwyLI_L4j7eby9rqpgiHx_I-xNmPqSvBG00l9kWDmb2G1c24TFE0Nb3S71dODEdoiZKI1pJwe4MsP9MQXMWuws4MZ0F5wMdEAWu0_dGE7tcRgFPX_YSW14bHuT_zG0WjXJx-NvHlAwCGd8i_0Q7saN0Q0OZLrQp3zpX8uwGwe8iWJp1_U62hezHPwakB6tHdRUCxLagMBUb5YVk2X301MnlXYj7aVOC5ieG1SHBJSIEwIB52ZqcQbuOnS0wPw5lVc6hd7jU3gQEgzEwOOHrnMkTL4MlTdmK_zBEEeG4FUMvwoKdDsnnZZse1jbXMHOyCGtgckWLg6PCdcb7Xw.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "telegram",
+      "defaultTag": "other",
       "tags": [
-        "telegram",
-        "telegram_channels",
         "other",
-        "other_misc"
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:44.765Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:43.899Z",
       "lastImportedAt": "2026-06-02T08:55:43.899Z",
       "lastSeenPostId": 37463,
@@ -7653,17 +8227,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/I50MFSbZQCWlMlmrEObc9LEN0AY9lLe2hH8oEdRjKwWWPLDOh7jVgh2wlzDYm-P7vG1sllOeRz3-88_g9f_73_HqrlkXvmZius7lBWcG-XfE24wQm6gHI5lq5uUQ3w2lwMWBMvgSwZrubQluyUAf8OrIFhmJq1ngW0nu5yGnUuEGA0scT8zJv2TQV7h7xey0B40ehuC3e62gnK_GWrvN20Yu1-pF-7C9WW2ZrwtGKtUXnaA2U9h3uhNwR1m5RsbmC_SKIjos-gwlGv3qZ8NmMFQxLZqS147cblXQ1hf6L_f5PlGTWJN824quauil1fhCZZWBK52pDUiDNaPB0vGR-Q.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "news",
+      "defaultTag": "other",
       "tags": [
-        "news",
-        "news_all",
         "other",
-        "other_misc"
+        "news",
+        "news_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:55:46.012Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:45.078Z",
       "lastImportedAt": "2026-06-02T08:55:45.078Z",
       "lastSeenPostId": 31832,
@@ -7769,6 +8342,124 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:kotreal",
+      "countryCode": "ru",
+      "handle": "kotreal",
+      "title": "Кот Костян - официальный канал🇷🇺",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "nature",
+      "tags": [
+        "nature",
+        "animals",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:kotya",
+      "countryCode": "ru",
+      "handle": "kotya",
+      "title": "Котяра",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "humor",
+      "tags": [
+        "humor",
+        "memes",
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:kovaldiana",
+      "countryCode": "ru",
+      "handle": "kovaldiana",
+      "title": "Диана Коваль",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:kozakrichala",
+      "countryCode": "ru",
+      "handle": "kozakrichala",
+      "title": "Коза кричала",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:krasnodarkray1",
+      "countryCode": "ru",
+      "handle": "krasnodarkray1",
+      "title": "Краснодар и край",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:krd_tipich_ru",
       "countryCode": "ru",
       "handle": "krd_tipich_ru",
@@ -7811,7 +8502,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-02T08:55:53.348Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": "2026-06-02T08:55:52.483Z",
       "lastImportedAt": "2026-06-02T08:55:52.483Z",
       "lastSeenPostId": 3798,
@@ -7889,6 +8580,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:kstati_p",
+      "countryCode": "ru",
+      "handle": "kstati_p",
+      "title": "КСТАТИ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "news_all",
+        "politics",
+        "politics_opinion"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:kuda_v_moskva",
       "countryCode": "ru",
       "handle": "kuda_v_moskva",
@@ -7923,13 +8639,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:56:00.047Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T08:55:59.107Z",
       "lastImportedAt": "2026-06-02T08:55:59.107Z",
       "lastSeenPostId": 27526,
@@ -7994,21 +8709,115 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/iAaIXCb3Vyi9z9nXg1GFoUZjHeB7Mgko0y-z-fBnhDEGaNZhdQ-Nn3Aw8XxCcE8NG6MX5u3rpqa2qk6Sb0kuzj1wuHO1UuQNcwk4c0GG4FaFtxyLYuDkOgPuRAuSMg6SmdZmAjsclIDEH-8DWn9X6hAGtmkdJ2Fky0n54SkCg-7BVMmbNJXWotKd2nii5lrYnzieIdPHEcPhOesEkFrtclod-TOdUR06V9yDdjZJgnuV-4pGb8SYrHqgd9Zf6nEJz-gXNmLtdyysuqzhcE2FrMfdfTRv3imuzzRmcmtATMmcKgdGSH_Z1SQtX48Ez0UE2I1VVEqmDubzHiPn1HFKyQ.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "business",
+      "defaultTag": "other",
       "tags": [
-        "business",
-        "business_all",
         "other",
-        "other_misc"
+        "business",
+        "business_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:56:03.718Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": "2026-06-02T08:56:02.842Z",
       "lastImportedAt": "2026-06-02T08:56:02.842Z",
       "lastSeenPostId": 43085,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:kupolrussia",
+      "countryCode": "ru",
+      "handle": "kupolrussia",
+      "title": "КУПОЛ РОССИИ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:kurskbomond",
+      "countryCode": "ru",
+      "handle": "kurskbomond",
+      "title": "КУРСКИЙ БОМОНДЪ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:kurskonlineduga",
+      "countryCode": "ru",
+      "handle": "kurskonlineduga",
+      "title": "Курская дуга",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "news_all",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:kybandlyasvoih",
+      "countryCode": "ru",
+      "handle": "kybandlyasvoih",
+      "title": "Кубань для СВОих",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -8076,11 +8885,36 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:56:07.452Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T08:56:06.584Z",
       "lastImportedAt": "2026-06-02T08:56:06.584Z",
       "lastSeenPostId": 91590,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:lentacom",
+      "countryCode": "ru",
+      "handle": "lentacom",
+      "title": "Лента",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education",
+        "education_courses",
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -8101,11 +8935,36 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:56:10.949Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T08:56:07.831Z",
       "lastImportedAt": "2026-06-02T08:56:07.831Z",
       "lastSeenPostId": 154147,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:lentafacts",
+      "countryCode": "ru",
+      "handle": "lentafacts",
+      "title": "Лента Фактов",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "telegram",
+      "tags": [
+        "telegram",
+        "telegram_channels",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -8141,12 +9000,15 @@
       "verified": true,
       "defaultTag": "technology",
       "tags": [
-        "technology"
+        "technology",
+        "technology_web",
+        "education",
+        "books"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-02T08:56:13.215Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": "2026-06-02T08:56:12.359Z",
       "lastImportedAt": "2026-06-02T08:56:12.359Z",
       "lastSeenPostId": 10781,
@@ -8201,6 +9063,28 @@
       "lastImportedAt": "2026-06-02T08:56:15.711Z",
       "lastSeenPostId": 6455,
       "importedPostsCount": 6,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:lifekarina",
+      "countryCode": "ru",
+      "handle": "lifekarina",
+      "title": "Карина Палецких",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -9415,6 +10299,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:mocdsr",
+      "countryCode": "ru",
+      "handle": "mocdsr",
+      "title": "Интересная Москва",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:mod_russia",
       "countryCode": "ru",
       "handle": "mod_russia",
@@ -10182,13 +11088,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:53:36.020Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -10378,6 +11283,30 @@
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
       "updatedAt": "2026-06-02T08:53:36.020Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:mskaramelka01",
+      "countryCode": "ru",
+      "handle": "mskaramelka01",
+      "title": "кристюшкина😋",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "marketing",
+        "marketing_ads"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.996Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -10964,17 +11893,16 @@
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "news",
+      "defaultTag": "other",
       "tags": [
-        "news",
-        "news_all",
         "other",
-        "other_misc"
+        "news",
+        "news_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.020Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -11544,15 +12472,17 @@
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "news",
+      "defaultTag": "education",
       "tags": [
-        "news",
-        "humor"
+        "education",
+        "education_courses",
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.328Z",
-      "updatedAt": "2026-06-02T08:53:36.020Z",
+      "updatedAt": "2026-06-03T00:03:13.996Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -11979,6 +12909,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:paramonova_as",
+      "countryCode": "ru",
+      "handle": "paramonova_as",
+      "title": "записки анечки",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "marketing",
+        "marketing_ads"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:paulgifting",
       "countryCode": "ru",
       "handle": "paulgifting",
@@ -12127,17 +13081,16 @@
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "marketing",
+      "defaultTag": "other",
       "tags": [
-        "marketing",
-        "marketing_ads",
         "other",
-        "other_misc"
+        "marketing",
+        "marketing_ads"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.020Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -12385,6 +13338,31 @@
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
       "updatedAt": "2026-06-02T08:53:36.020Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:podarkihamster",
+      "countryCode": "ru",
+      "handle": "podarkihamster",
+      "title": "Дешевые звезды",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "humor",
+      "tags": [
+        "humor",
+        "memes",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -12803,6 +13781,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:professor_youtube_reborn",
+      "countryCode": "ru",
+      "handle": "professor_youtube_reborn",
+      "title": "Записки Профессора",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "culture",
+        "art"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:profinansy",
       "countryCode": "ru",
       "handle": "profinansy",
@@ -12998,17 +14000,16 @@
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "education",
+      "defaultTag": "other",
       "tags": [
-        "education",
-        "education_courses",
         "other",
-        "other_misc"
+        "education",
+        "education_courses"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:53:36.020Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -13458,13 +14459,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.021Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -14815,17 +15815,16 @@
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "telegram",
+      "defaultTag": "other",
       "tags": [
-        "telegram",
-        "telegram_channels",
         "other",
-        "other_misc"
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:53:36.021Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -15122,6 +16121,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:sovet_dom",
+      "countryCode": "ru",
+      "handle": "sovet_dom",
+      "title": "Дачные советы 🏡",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "health",
+      "tags": [
+        "health",
+        "health_advice",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.993Z",
+      "updatedAt": "2026-06-03T00:03:13.993Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:sovr_hozyaika",
       "countryCode": "ru",
       "handle": "sovr_hozyaika",
@@ -15280,6 +16303,30 @@
       "note": null,
       "createdAt": "2026-06-02T07:27:57.328Z",
       "updatedAt": "2026-06-02T08:53:36.021Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:spottykit",
+      "countryCode": "ru",
+      "handle": "spottykit",
+      "title": "Катя",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "people",
+        "people_blogs"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.995Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -17120,7 +18167,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.021Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -17636,6 +18683,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:varlamov",
+      "countryCode": "ru",
+      "handle": "varlamov",
+      "title": "Илья Варламов",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:varlamov_news",
       "countryCode": "ru",
       "handle": "varlamov_news",
@@ -18068,7 +19137,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.021Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -18353,7 +19422,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.331Z",
-      "updatedAt": "2026-06-02T08:53:36.021Z",
+      "updatedAt": "2026-06-03T00:03:13.995Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -18497,6 +19566,28 @@
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
       "updatedAt": "2026-06-02T08:53:36.021Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:wylsaraw",
+      "countryCode": "ru",
+      "handle": "wylsaraw",
+      "title": "Дядя Валя Люкс",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -18710,12 +19801,61 @@
       "verified": false,
       "defaultTag": "technology",
       "tags": [
-        "technology"
+        "technology",
+        "ai",
+        "marketing",
+        "marketing_ads"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-02T08:53:36.021Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:zagoevnews",
+      "countryCode": "ru",
+      "handle": "zagoevnews",
+      "title": "ЗАГОЕВ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:zakharprilepin",
+      "countryCode": "ru",
+      "handle": "zakharprilepin",
+      "title": "Захар Прилепин",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -18820,6 +19960,100 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:zavidushkimoi",
+      "countryCode": "ru",
+      "handle": "zavidushkimoi",
+      "title": "Завидные котики😎",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:zavozzy",
+      "countryCode": "ru",
+      "handle": "zavozzy",
+      "title": "ЗАВОЗ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:zem_krasota",
+      "countryCode": "ru",
+      "handle": "zem_krasota",
+      "title": "Земная красота",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "fashion",
+        "beauty"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:zhenforum",
+      "countryCode": "ru",
+      "handle": "zhenforum",
+      "title": "ЖЕНСКИЙ ФОРУМ",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "marketing",
+        "marketing_ads"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:zhest_belgorod",
       "countryCode": "ru",
       "handle": "zhest_belgorod",
@@ -18827,17 +20061,16 @@
       "avatarUrl": null,
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "telegram",
+      "defaultTag": "other",
       "tags": [
-        "telegram",
-        "telegram_channels",
         "other",
-        "other_misc"
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
-      "updatedAt": "2026-06-02T08:53:36.021Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -18863,6 +20096,28 @@
       "note": null,
       "createdAt": "2026-06-02T07:27:57.330Z",
       "updatedAt": "2026-06-02T08:53:36.021Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:zhidkovskiy_talk",
+      "countryCode": "ru",
+      "handle": "zhidkovskiy_talk",
+      "title": "Жидковские посиделки",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-03T00:03:13.994Z",
+      "updatedAt": "2026-06-03T00:03:13.994Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
