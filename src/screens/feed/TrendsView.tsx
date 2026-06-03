@@ -183,7 +183,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "рядом с темой чаще всего встречаются: {chips}.",
     whoFormsAttention: "Кто формирует внимание",
     noSignals: "По этому запросу пока нет сигналов.",
-    fullAccess: "Полный доступ к индексу внимания",
+    fullAccess: "🔓 Разблокировать все сигналы",
     follow: "Следить",
     unsubscribe: "✓ Отписаться",
     explore: "Исследовать",
@@ -215,7 +215,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "поруч із темою найчастіше зустрічаються: {chips}.",
     whoFormsAttention: "Хто формує увагу",
     noSignals: "За цим запитом поки немає сигналів.",
-    fullAccess: "Повний доступ до індексу уваги",
+    fullAccess: "🔓 Розблокувати всі сигнали",
     follow: "Стежити",
     unsubscribe: "✓ Відписатися",
     explore: "Дослідити",
@@ -247,7 +247,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "most often appears near: {chips}.",
     whoFormsAttention: "Who shapes attention",
     noSignals: "No signals for this query yet.",
-    fullAccess: "Full access to the attention index",
+    fullAccess: "🔓 Unlock all signals",
     follow: "Follow",
     unsubscribe: "✓ Unfollow",
     explore: "Explore",
@@ -279,7 +279,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "इस विषय के साथ अक्सर दिखता है: {chips}.",
     whoFormsAttention: "ध्यान कौन बना रहा है",
     noSignals: "इस खोज के लिए अभी कोई संकेत नहीं.",
-    fullAccess: "attention index का पूरा access",
+    fullAccess: "🔓 सभी संकेत अनलॉक करें",
     follow: "Follow",
     unsubscribe: "✓ Unfollow",
     explore: "Explore",
@@ -311,7 +311,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "بیشتر کنار این موارد دیده می‌شود: {chips}.",
     whoFormsAttention: "چه کسی توجه را شکل می‌دهد",
     noSignals: "برای این جستجو هنوز سیگنالی نیست.",
-    fullAccess: "دسترسی کامل به شاخص توجه",
+    fullAccess: "🔓 باز کردن همه سیگنال‌ها",
     follow: "دنبال‌کردن",
     unsubscribe: "✓ لغو",
     explore: "بررسی",
@@ -343,7 +343,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "en sık yanında görülenler: {chips}.",
     whoFormsAttention: "Dikkati kim oluşturuyor",
     noSignals: "Bu sorgu için henüz sinyal yok.",
-    fullAccess: "Dikkat indeksine tam erişim",
+    fullAccess: "🔓 Tüm sinyallerin kilidini aç",
     follow: "Takip et",
     unsubscribe: "✓ Bırak",
     explore: "İncele",
@@ -375,7 +375,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "aparece com mais frequência perto de: {chips}.",
     whoFormsAttention: "Quem forma a atenção",
     noSignals: "Ainda não há sinais para esta busca.",
-    fullAccess: "Acesso total ao índice de atenção",
+    fullAccess: "🔓 Desbloquear todos os sinais",
     follow: "Seguir",
     unsubscribe: "✓ Deixar",
     explore: "Explorar",
@@ -407,7 +407,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "жиі бірге кездеседі: {chips}.",
     whoFormsAttention: "Назарды кім қалыптастырады",
     noSignals: "Бұл сұрау бойынша әзірге сигнал жоқ.",
-    fullAccess: "Назар индексіне толық қолжетімділік",
+    fullAccess: "🔓 Барлық сигналдарды ашу",
     follow: "Бақылау",
     unsubscribe: "✓ Бас тарту",
     explore: "Зерттеу",
@@ -439,7 +439,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "ko‘pincha yonida uchraydi: {chips}.",
     whoFormsAttention: "E’tiborni kim shakllantiradi",
     noSignals: "Bu so‘rov bo‘yicha hozircha signal yo‘q.",
-    fullAccess: "E’tibor indeksiga to‘liq kirish",
+    fullAccess: "🔓 Barcha signallarni ochish",
     follow: "Kuzatish",
     unsubscribe: "✓ Chiqish",
     explore: "O‘rganish",
@@ -471,7 +471,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "يظهر غالبًا بجانب: {chips}.",
     whoFormsAttention: "من يصنع الانتباه",
     noSignals: "لا توجد إشارات لهذا البحث بعد.",
-    fullAccess: "وصول كامل إلى مؤشر الانتباه",
+    fullAccess: "🔓 فتح كل الإشارات",
     follow: "متابعة",
     unsubscribe: "✓ إلغاء",
     explore: "استكشاف",
@@ -503,7 +503,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "غالبًا بيظهر مع: {chips}.",
     whoFormsAttention: "مين بيشكّل الانتباه",
     noSignals: "مفيش إشارات للبحث ده لسه.",
-    fullAccess: "وصول كامل لمؤشر الانتباه",
+    fullAccess: "🔓 افتح كل الإشارات",
     follow: "متابعة",
     unsubscribe: "✓ إلغاء",
     explore: "استكشاف",
@@ -535,7 +535,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "اکثر ساتھ آتا ہے: {chips}.",
     whoFormsAttention: "توجہ کون بنا رہا ہے",
     noSignals: "اس تلاش کے لیے ابھی کوئی سگنل نہیں.",
-    fullAccess: "attention index تک مکمل رسائی",
+    fullAccess: "🔓 تمام سگنلز کھولیں",
     follow: "فالو",
     unsubscribe: "✓ اَن فالو",
     explore: "دیکھیں",
@@ -567,7 +567,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "paling sering muncul bersama: {chips}.",
     whoFormsAttention: "Siapa yang membentuk perhatian",
     noSignals: "Belum ada sinyal untuk pencarian ini.",
-    fullAccess: "Akses penuh ke indeks perhatian",
+    fullAccess: "🔓 Buka semua sinyal",
     follow: "Ikuti",
     unsubscribe: "✓ Berhenti",
     explore: "Jelajahi",
@@ -599,7 +599,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "aparece con más frecuencia junto a: {chips}.",
     whoFormsAttention: "Quién forma la atención",
     noSignals: "Todavía no hay señales para esta búsqueda.",
-    fullAccess: "Acceso total al índice de atención",
+    fullAccess: "🔓 Desbloquear todas las señales",
     follow: "Seguir",
     unsubscribe: "✓ Dejar",
     explore: "Explorar",
@@ -631,7 +631,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "يظهر غالبًا بجانب: {chips}.",
     whoFormsAttention: "من يصنع الانتباه",
     noSignals: "لا توجد إشارات لهذا البحث بعد.",
-    fullAccess: "وصول كامل إلى مؤشر الانتباه",
+    fullAccess: "🔓 فتح كل الإشارات",
     follow: "متابعة",
     unsubscribe: "✓ إلغاء",
     explore: "استكشاف",
@@ -663,7 +663,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "aparece con más frecuencia junto a: {chips}.",
     whoFormsAttention: "Quién forma la atención",
     noSignals: "Aún no hay señales para esta búsqueda.",
-    fullAccess: "Acceso completo al índice de atención",
+    fullAccess: "🔓 Desbloquear todas las señales",
     follow: "Seguir",
     unsubscribe: "✓ Dejar",
     explore: "Explorar",
@@ -695,7 +695,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "appare più spesso vicino a: {chips}.",
     whoFormsAttention: "Chi forma l’attenzione",
     noSignals: "Non ci sono ancora segnali per questa ricerca.",
-    fullAccess: "Accesso completo all’indice di attenzione",
+    fullAccess: "🔓 Sblocca tutti i segnali",
     follow: "Segui",
     unsubscribe: "✓ Smetti",
     explore: "Esplora",
@@ -728,7 +728,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "apparaît le plus souvent avec : {chips}.",
     whoFormsAttention: "Qui forme l’attention",
     noSignals: "Aucun signal pour cette recherche pour le moment.",
-    fullAccess: "Accès complet à l’indice d’attention",
+    fullAccess: "🔓 Débloquer tous les signaux",
     follow: "Suivre",
     unsubscribe: "✓ Arrêter",
     explore: "Explorer",
@@ -761,7 +761,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "erscheint am häufigsten neben: {chips}.",
     whoFormsAttention: "Wer Aufmerksamkeit formt",
     noSignals: "Für diese Suche gibt es noch keine Signale.",
-    fullAccess: "Voller Zugriff auf den Aufmerksamkeitsindex",
+    fullAccess: "🔓 Alle Signale freischalten",
     follow: "Folgen",
     unsubscribe: "✓ Entfolgen",
     explore: "Erkunden",
@@ -793,7 +793,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "aparece con más frecuencia junto a: {chips}.",
     whoFormsAttention: "Quién forma la atención",
     noSignals: "Todavía no hay señales para esta búsqueda.",
-    fullAccess: "Acceso total al índice de atención",
+    fullAccess: "🔓 Desbloquear todas las señales",
     follow: "Seguir",
     unsubscribe: "✓ Dejar",
     explore: "Explorar",
@@ -825,7 +825,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "aparece con más frecuencia junto a: {chips}.",
     whoFormsAttention: "Quién forma la atención",
     noSignals: "Todavía no hay señales para esta búsqueda.",
-    fullAccess: "Acceso total al índice de atención",
+    fullAccess: "🔓 Desbloquear todas las señales",
     follow: "Seguir",
     unsubscribe: "✓ Dejar",
     explore: "Explorar",
@@ -857,7 +857,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "most often appears near: {chips}.",
     whoFormsAttention: "Who shapes attention",
     noSignals: "No signals for this query yet.",
-    fullAccess: "Full access to the attention index",
+    fullAccess: "🔓 Unlock all signals",
     follow: "Follow",
     unsubscribe: "✓ Unfollow",
     explore: "Explore",
@@ -889,7 +889,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "most often appears near: {chips}.",
     whoFormsAttention: "Who shapes attention",
     noSignals: "No signals for this query yet.",
-    fullAccess: "Full access to the attention index",
+    fullAccess: "🔓 Unlock all signals",
     follow: "Follow",
     unsubscribe: "✓ Unfollow",
     explore: "Explore",
@@ -921,7 +921,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "最常一起出现：{chips}.",
     whoFormsAttention: "谁在形成关注",
     noSignals: "此搜索暂时没有信号。",
-    fullAccess: "完整访问关注指数",
+    fullAccess: "🔓 解锁全部信号",
     follow: "关注",
     unsubscribe: "✓ 取消",
     explore: "探索",
@@ -953,7 +953,7 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
     whyLineRelated: "paling kerap muncul bersama: {chips}.",
     whoFormsAttention: "Siapa membentuk perhatian",
     noSignals: "Belum ada isyarat untuk carian ini.",
-    fullAccess: "Akses penuh ke indeks perhatian",
+    fullAccess: "🔓 Buka semua isyarat",
     follow: "Ikut",
     unsubscribe: "✓ Berhenti",
     explore: "Teroka",
@@ -962,6 +962,170 @@ const TRENDS_COPY: Record<Locale, TrendsCopy> = {
 
 function getTrendsCopy(locale: Locale) {
   return TRENDS_COPY[locale] || TRENDS_COPY.us;
+}
+
+type TrendsExtraCopy = {
+  shownSources: string;
+  showMoreSources: string;
+  unlockAllSignals: string;
+  fullReport24h: string;
+};
+
+const TRENDS_EXTRA_COPY: Record<Locale, TrendsExtraCopy> = {
+  ru: {
+    shownSources: "Показано {shown} из {total} {sources}",
+    showMoreSources: "Показать ещё 10",
+    unlockAllSignals: "🔓 Разблокировать все сигналы",
+    fullReport24h: "Полный отчёт за 24 часа",
+  },
+  ua: {
+    shownSources: "Показано {shown} з {total} {sources}",
+    showMoreSources: "Показати ще 10",
+    unlockAllSignals: "🔓 Розблокувати всі сигнали",
+    fullReport24h: "Повний звіт за 24 години",
+  },
+  us: {
+    shownSources: "Showing {shown} of {total} {sources}",
+    showMoreSources: "Show 10 more",
+    unlockAllSignals: "🔓 Unlock all signals",
+    fullReport24h: "Full 24-hour report",
+  },
+  in: {
+    shownSources: "{total} {sources} में से {shown} दिखाए गए",
+    showMoreSources: "10 और दिखाएँ",
+    unlockAllSignals: "🔓 सभी संकेत अनलॉक करें",
+    fullReport24h: "24 घंटे की पूरी रिपोर्ट",
+  },
+  ir: {
+    shownSources: "نمایش {shown} از {total} {sources}",
+    showMoreSources: "نمایش ۱۰ مورد دیگر",
+    unlockAllSignals: "🔓 باز کردن همه سیگنال‌ها",
+    fullReport24h: "گزارش کامل ۲۴ ساعت",
+  },
+  tr: {
+    shownSources: "{total} {sources} içinden {shown} gösteriliyor",
+    showMoreSources: "10 tane daha göster",
+    unlockAllSignals: "🔓 Tüm sinyallerin kilidini aç",
+    fullReport24h: "24 saatlik tam rapor",
+  },
+  br: {
+    shownSources: "Mostrando {shown} de {total} {sources}",
+    showMoreSources: "Mostrar mais 10",
+    unlockAllSignals: "🔓 Desbloquear todos os sinais",
+    fullReport24h: "Relatório completo de 24 horas",
+  },
+  kz: {
+    shownSources: "{total} {sources} ішінен {shown} көрсетілді",
+    showMoreSources: "Тағы 10 көрсету",
+    unlockAllSignals: "🔓 Барлық сигналдарды ашу",
+    fullReport24h: "24 сағаттық толық есеп",
+  },
+  uz: {
+    shownSources: "{total} {sources} ichidan {shown} ko‘rsatildi",
+    showMoreSources: "Yana 10 ta ko‘rsatish",
+    unlockAllSignals: "🔓 Barcha signallarni ochish",
+    fullReport24h: "24 soatlik to‘liq hisobot",
+  },
+  ae: {
+    shownSources: "عرض {shown} من {total} {sources}",
+    showMoreSources: "عرض 10 أخرى",
+    unlockAllSignals: "🔓 فتح كل الإشارات",
+    fullReport24h: "تقرير كامل خلال 24 ساعة",
+  },
+  eg: {
+    shownSources: "عرض {shown} من {total} {sources}",
+    showMoreSources: "عرض 10 كمان",
+    unlockAllSignals: "🔓 افتح كل الإشارات",
+    fullReport24h: "تقرير كامل خلال 24 ساعة",
+  },
+  pk: {
+    shownSources: "{total} {sources} میں سے {shown} دکھائے گئے",
+    showMoreSources: "مزید 10 دکھائیں",
+    unlockAllSignals: "🔓 تمام سگنلز کھولیں",
+    fullReport24h: "24 گھنٹے کی مکمل رپورٹ",
+  },
+  id: {
+    shownSources: "Menampilkan {shown} dari {total} {sources}",
+    showMoreSources: "Tampilkan 10 lagi",
+    unlockAllSignals: "🔓 Buka semua sinyal",
+    fullReport24h: "Laporan penuh 24 jam",
+  },
+  mx: {
+    shownSources: "Mostrando {shown} de {total} {sources}",
+    showMoreSources: "Mostrar 10 más",
+    unlockAllSignals: "🔓 Desbloquear todas las señales",
+    fullReport24h: "Reporte completo de 24 horas",
+  },
+  sa: {
+    shownSources: "عرض {shown} من {total} {sources}",
+    showMoreSources: "عرض 10 أخرى",
+    unlockAllSignals: "🔓 فتح كل الإشارات",
+    fullReport24h: "تقرير كامل خلال 24 ساعة",
+  },
+  es: {
+    shownSources: "Mostrando {shown} de {total} {sources}",
+    showMoreSources: "Mostrar 10 más",
+    unlockAllSignals: "🔓 Desbloquear todas las señales",
+    fullReport24h: "Informe completo de 24 horas",
+  },
+  it: {
+    shownSources: "Mostrati {shown} di {total} {sources}",
+    showMoreSources: "Mostra altri 10",
+    unlockAllSignals: "🔓 Sblocca tutti i segnali",
+    fullReport24h: "Report completo di 24 ore",
+  },
+  fr: {
+    shownSources: "{shown} sur {total} {sources} affichés",
+    showMoreSources: "Afficher 10 de plus",
+    unlockAllSignals: "🔓 Débloquer tous les signaux",
+    fullReport24h: "Rapport complet sur 24 h",
+  },
+  de: {
+    shownSources: "{shown} von {total} {sources} angezeigt",
+    showMoreSources: "10 weitere anzeigen",
+    unlockAllSignals: "🔓 Alle Signale freischalten",
+    fullReport24h: "Vollständiger 24-Stunden-Bericht",
+  },
+  ar: {
+    shownSources: "Mostrando {shown} de {total} {sources}",
+    showMoreSources: "Mostrar 10 más",
+    unlockAllSignals: "🔓 Desbloquear todas las señales",
+    fullReport24h: "Reporte completo de 24 horas",
+  },
+  co: {
+    shownSources: "Mostrando {shown} de {total} {sources}",
+    showMoreSources: "Mostrar 10 más",
+    unlockAllSignals: "🔓 Desbloquear todas las señales",
+    fullReport24h: "Reporte completo de 24 horas",
+  },
+  za: {
+    shownSources: "Showing {shown} of {total} {sources}",
+    showMoreSources: "Show 10 more",
+    unlockAllSignals: "🔓 Unlock all signals",
+    fullReport24h: "Full 24-hour report",
+  },
+  ng: {
+    shownSources: "Showing {shown} of {total} {sources}",
+    showMoreSources: "Show 10 more",
+    unlockAllSignals: "🔓 Unlock all signals",
+    fullReport24h: "Full 24-hour report",
+  },
+  cn: {
+    shownSources: "已显示 {shown} / {total} 个{sources}",
+    showMoreSources: "再显示 10 个",
+    unlockAllSignals: "🔓 解锁全部信号",
+    fullReport24h: "查看 24 小时完整报告",
+  },
+  my: {
+    shownSources: "Memaparkan {shown} daripada {total} {sources}",
+    showMoreSources: "Papar 10 lagi",
+    unlockAllSignals: "🔓 Buka semua isyarat",
+    fullReport24h: "Laporan penuh 24 jam",
+  },
+};
+
+function getTrendsExtraCopy(locale: Locale) {
+  return TRENDS_EXTRA_COPY[locale] || TRENDS_EXTRA_COPY.us;
 }
 
 function formatCopy(template: string, values: Record<string, string | number>) {
@@ -1077,8 +1241,78 @@ function normalizeTrendCountry(value: unknown, fallback = "ru") {
   return normalized || fallback;
 }
 
-function getCountryLabel(code: string) {
+const COUNTRY_REGION_CODES: Record<string, string> = {
+  ru: "RU",
+  ua: "UA",
+  us: "US",
+  in: "IN",
+  ir: "IR",
+  tr: "TR",
+  br: "BR",
+  kz: "KZ",
+  uz: "UZ",
+  ae: "AE",
+  eg: "EG",
+  pk: "PK",
+  id: "ID",
+  mx: "MX",
+  sa: "SA",
+  es: "ES",
+  it: "IT",
+  fr: "FR",
+  de: "DE",
+  ar: "AR",
+  co: "CO",
+  za: "ZA",
+  ng: "NG",
+  cn: "CN",
+  my: "MY",
+};
+
+const INTL_LOCALE_BY_SITE_LOCALE: Partial<Record<Locale, string>> = {
+  ru: "ru",
+  ua: "uk",
+  us: "en",
+  in: "hi",
+  ir: "fa",
+  tr: "tr",
+  br: "pt-BR",
+  kz: "kk",
+  uz: "uz",
+  ae: "ar-AE",
+  eg: "ar-EG",
+  pk: "ur",
+  id: "id",
+  mx: "es-MX",
+  sa: "ar-SA",
+  es: "es",
+  it: "it",
+  fr: "fr",
+  de: "de",
+  ar: "es-AR",
+  co: "es-CO",
+  za: "en-ZA",
+  ng: "en-NG",
+  cn: "zh-CN",
+  my: "ms",
+};
+
+function getCountryLabel(code: string, locale: Locale = "us") {
   const normalized = normalizeTrendCountry(code);
+  const regionCode = COUNTRY_REGION_CODES[normalized];
+
+  if (regionCode && typeof Intl !== "undefined" && "DisplayNames" in Intl) {
+    try {
+      const displayNames = new Intl.DisplayNames(
+        [INTL_LOCALE_BY_SITE_LOCALE[locale] || "en"],
+        { type: "region" },
+      );
+      return displayNames.of(regionCode) || COUNTRY_LABELS[normalized] || normalized.toUpperCase();
+    } catch {
+      // fallback below
+    }
+  }
+
   return COUNTRY_LABELS[normalized] || normalized.toUpperCase();
 }
 
@@ -1821,52 +2055,97 @@ function MiniAttentionChart({
 function CountryDistributionBlock({
   trend,
   countryCode,
+  copy,
+  locale,
+  defaultOpen = false,
+  className = "",
 }: {
   trend: TrendItem;
   countryCode: string;
+  copy: TrendsCopy;
+  locale: Locale;
+  defaultOpen?: boolean;
+  className?: string;
 }) {
   const countries = Array.isArray(trend.countries) ? trend.countries : [];
   const selectedCountry = normalizeTrendCountry(countryCode);
-  const sorted = [...countries].sort(
+  const extraCopy = getTrendsExtraCopy(locale);
+  const [open, setOpen] = useState(defaultOpen);
+
+  const normalizedCountries = countries.length
+    ? countries.map((country) =>
+        normalizeTrendCountry(country.code) === selectedCountry
+          ? {
+              ...country,
+              mentions: trend.mentions,
+              sourceCount: trend.sourceCount || country.sourceCount || country.mentions,
+            }
+          : country,
+      )
+    : [
+        {
+          code: selectedCountry,
+          mentions: trend.mentions,
+          sourceCount: trend.sourceCount || trend.mentions,
+        },
+      ];
+
+  const sorted = [...normalizedCountries].sort(
     (a, b) => b.mentions - a.mentions || (b.sourceCount || 0) - (a.sourceCount || 0),
   );
 
   if (!sorted.length) return null;
 
+  const hasOtherCountries = sorted.some(
+    (country) => normalizeTrendCountry(country.code) !== selectedCountry,
+  );
+
   return (
-    <div className="mt-3 rounded-[24px] border border-soft bg-app p-3">
-      <div className="mb-2 flex items-center justify-between rounded-2xl bg-emerald-500/10 px-3 py-2 text-sm font-black text-emerald-500">
-        <span>{formatNumber(trend.mentions)} упоминаний</span>
-        <span>{selectedCountry.toUpperCase()} ▾</span>
-      </div>
+    <div className={["rounded-[24px] border border-soft bg-app p-3", className].filter(Boolean).join(" ")}>
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        className="flex w-full items-center justify-between gap-3 rounded-2xl bg-emerald-500/10 px-3 py-2 text-left text-sm font-black text-emerald-500 transition hover:bg-emerald-500/15"
+        aria-expanded={open}
+      >
+        <span>{formatNumber(trend.mentions)} {copy.mentions}</span>
+        <span className="inline-flex items-center gap-1">
+          {getCountryLabel(selectedCountry, locale)}
+          <ChevronDown className={["h-3.5 w-3.5 transition", open ? "rotate-180" : ""].join(" ")} />
+        </span>
+      </button>
 
-      <div className="space-y-1.5">
-        {sorted.slice(0, 5).map((country, index) => {
-          const locked = normalizeTrendCountry(country.code) !== selectedCountry;
-          return (
-            <div
-              key={`${country.code}-${index}`}
-              className="flex items-center justify-between gap-3 border-b border-dashed border-soft pb-1.5 text-sm last:border-b-0 last:pb-0"
+      {open ? (
+        <div className="mt-3">
+          <div className="space-y-1.5">
+            {sorted.slice(0, 5).map((country, index) => {
+              const locked = normalizeTrendCountry(country.code) !== selectedCountry;
+              return (
+                <div
+                  key={`${country.code}-${index}`}
+                  className="flex items-center justify-between gap-3 border-b border-dashed border-soft pb-1.5 text-sm last:border-b-0 last:pb-0"
+                >
+                  <span className={locked ? "text-secondary" : "font-bold text-primary"}>
+                    {locked ? "🔒 " : ""}
+                    {getCountryLabel(country.code, locale)}
+                  </span>
+                  <span className={locked ? "font-black text-secondary" : "font-black text-emerald-500"}>
+                    {formatNumber(country.sourceCount || country.mentions)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {hasOtherCountries ? (
+            <button
+              type="button"
+              className="mt-3 w-full rounded-2xl border border-soft bg-surface px-4 py-3 text-sm font-black text-primary transition hover:bg-surface-soft"
             >
-              <span className={locked ? "text-secondary" : "font-bold text-primary"}>
-                {locked ? "🔒 " : ""}
-                {getCountryLabel(country.code)}
-              </span>
-              <span className={locked ? "font-black text-secondary" : "font-black text-emerald-500"}>
-                {formatNumber(country.sourceCount || country.mentions)}
-              </span>
-            </div>
-          );
-        })}
-      </div>
-
-      {sorted.some((country) => normalizeTrendCountry(country.code) !== selectedCountry) ? (
-        <button
-          type="button"
-          className="mt-3 w-full rounded-2xl border border-soft bg-surface px-4 py-3 text-sm font-black text-primary transition hover:bg-surface-soft"
-        >
-          Полный отчёт за 24 часа
-        </button>
+              {extraCopy.fullReport24h}
+            </button>
+          ) : null}
+        </div>
       ) : null}
     </div>
   );
@@ -1880,6 +2159,7 @@ function TrendDetail({
   onOpenSource,
   copy,
   countryCode,
+  locale,
 }: {
   trend: TrendItem;
   followed: boolean;
@@ -1888,6 +2168,7 @@ function TrendDetail({
   onOpenSource?: (handle: string) => void;
   copy: TrendsCopy;
   countryCode: string;
+  locale: Locale;
 }) {
   const topic = getTopic(trend);
   const momentum = getMomentumNumber(trend);
@@ -1896,6 +2177,7 @@ function TrendDetail({
   const chips = getTrendSignals(trend);
   const emoji = getTrendEmoji(topic, trend.category);
   const sourcesRef = useRef<HTMLElement | null>(null);
+  const extraCopy = getTrendsExtraCopy(locale);
   const topSources = trend.topSources || [];
   const [visibleSourceCount, setVisibleSourceCount] = useState(SOURCE_PAGE_SIZE);
   const visibleSources = topSources.slice(0, visibleSourceCount);
@@ -2007,7 +2289,14 @@ function TrendDetail({
           {followed ? copy.unfollowTopic : copy.followTopic}
         </button>
 
-        <CountryDistributionBlock trend={trend} countryCode={countryCode} />
+        <CountryDistributionBlock
+          trend={trend}
+          countryCode={countryCode}
+          copy={copy}
+          locale={locale}
+          defaultOpen
+          className="mt-3"
+        />
       </section>
 
       <section className="mt-5 border-t border-soft pt-4">
@@ -2101,7 +2390,11 @@ function TrendDetail({
         {topSources.length > SOURCE_PAGE_SIZE ? (
           <div className="mt-3 space-y-2">
             <div className="text-center text-xs font-bold text-secondary">
-              Показано {Math.min(visibleSourceCount, topSources.length)} из {topSources.length} {copy.sources}
+              {formatCopy(extraCopy.shownSources, {
+                shown: Math.min(visibleSourceCount, topSources.length),
+                total: topSources.length,
+                sources: copy.sources,
+              })}
             </div>
             {hasMoreSources && visibleSourceCount < FREE_SOURCE_PREVIEW_LIMIT ? (
               <button
@@ -2113,7 +2406,7 @@ function TrendDetail({
                 }
                 className="w-full rounded-2xl border border-soft bg-surface px-4 py-3 text-sm font-black text-primary transition hover:bg-surface-soft"
               >
-                Показать ещё 10
+                {extraCopy.showMoreSources}
               </button>
             ) : null}
             {visibleSourceCount >= FREE_SOURCE_PREVIEW_LIMIT && topSources.length > visibleSourceCount ? (
@@ -2121,7 +2414,7 @@ function TrendDetail({
                 type="button"
                 className="w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-black text-white transition hover:opacity-90"
               >
-                Открыть все сигналы
+                {extraCopy.unlockAllSignals}
               </button>
             ) : null}
           </div>
@@ -2548,14 +2841,15 @@ export function TrendsView({
         onOpenSource={onOpenSource}
         copy={copy}
         countryCode={countryCode}
+        locale={locale}
       />
     );
   }
 
   if (searchMode) {
     return (
-      <div className="fixed inset-0 z-[80] overflow-y-auto bg-app px-4 pb-36 pt-[max(14px,env(safe-area-inset-top))]">
-        <div className="mx-auto max-w-[570px]">
+      <div className="fixed inset-0 z-[80] overflow-y-auto overscroll-contain bg-app px-4 pb-[calc(120px+env(safe-area-inset-bottom))] pt-[max(14px,env(safe-area-inset-top))]">
+        <div className="mx-auto w-full max-w-[570px]">
           <div className="mb-3 flex items-center gap-2">
             <button
               type="button"
@@ -2591,24 +2885,30 @@ export function TrendsView({
             </form>
           </div>
 
-          <div className="mb-3 rounded-[24px] border border-soft bg-surface-soft/70 px-4 py-3 text-sm leading-relaxed text-secondary">
-            {query.trim() ? (
-              <div className="flex items-center justify-between gap-3">
-                <span>
-                  {formatNumber(searchModeTrends.reduce((sum, item) => sum + item.mentions, 0))} {copy.mentions}
-                </span>
-                <span className="font-black text-emerald-500">
-                  {getCountryLabel(countryCode)} ▾
-                </span>
-              </div>
-            ) : (
-              copy.discussingNow
-            )}
-          </div>
-
           {query.trim() && searchModeTrends[0]?.countries?.length ? (
-            <CountryDistributionBlock trend={searchModeTrends[0]} countryCode={countryCode} />
-          ) : null}
+            <CountryDistributionBlock
+              trend={searchModeTrends[0]}
+              countryCode={countryCode}
+              copy={copy}
+              locale={locale}
+              className="mb-2"
+            />
+          ) : (
+            <div className="mb-3 rounded-[24px] border border-soft bg-surface-soft/70 px-4 py-3 text-sm leading-relaxed text-secondary">
+              {query.trim() ? (
+                <div className="flex items-center justify-between gap-3">
+                  <span>
+                    {formatNumber(searchModeTrends[0]?.mentions || 0)} {copy.mentions}
+                  </span>
+                  <span className="font-black text-emerald-500">
+                    {getCountryLabel(countryCode, locale)}
+                  </span>
+                </div>
+              ) : (
+                copy.discussingNow
+              )}
+            </div>
+          )}
 
           <section className="space-y-3">
             {searchModeTrends.map((trend) => {
@@ -2774,7 +3074,7 @@ export function TrendsView({
             />
           );
         })}
-      </section>
+      </section> 
 
       {!categoryTrends.length ? (
         <div className="rounded-[26px] border border-soft bg-surface px-5 py-8 text-center text-sm text-secondary">
