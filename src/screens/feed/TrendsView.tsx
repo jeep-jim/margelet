@@ -2175,6 +2175,8 @@ export function TrendsView({
   const [trends, setTrends] = useState<TrendItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
+  const [searchMode, setSearchMode] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
   const [openedTopic, setOpenedTopic] = useState<string | null>(null);
@@ -2277,6 +2279,60 @@ export function TrendsView({
     return list.slice(0, 20);
   }, [trends, selectedCategory, query, followedTopics, posts]);
 
+  const searchModeTrends = useMemo(() => {
+    const rawQuery = query.trim();
+    const normalizedQuery = rawQuery.toLowerCase();
+    const livePostTrends = trends.length ? [] : buildLivePostTrends(posts);
+    let list = trends.length ? trends : livePostTrends;
+
+    const seen = new Set<string>();
+    list = list.filter((item) => {
+      const key = normalizeTopic(getTopic(item));
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+
+    if (normalizedQuery) {
+      list = list.filter((item) =>
+        [
+          getTopic(item),
+          item.category,
+          ...(item.topSources || []).map((source) => source.title),
+          ...(item.signals || []),
+          ...(item.examples || []).map((example) => example.text),
+        ]
+          .join(" ")
+          .toLowerCase()
+          .includes(normalizedQuery),
+      );
+
+      const liveTrend = buildLiveSearchTrend(posts, rawQuery);
+      const liveKey = liveTrend ? normalizeTopic(getTopic(liveTrend)) : "";
+
+      if (liveTrend && !list.some((item) => normalizeTopic(getTopic(item)) === liveKey)) {
+        list = [liveTrend, ...list];
+      }
+    }
+
+    return list.slice(0, normalizedQuery ? 20 : 10);
+  }, [trends, query, posts]);
+
+  useEffect(() => {
+    if (!searchMode) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    window.setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 50);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [searchMode]);
+
   useEffect(() => {
     if (!initialTopic || !trends.length) return;
 
@@ -2320,6 +2376,86 @@ export function TrendsView({
     );
   }
 
+  if (searchMode) {
+    return (
+      <div className="fixed inset-0 z-[80] overflow-y-auto bg-app px-4 pb-36 pt-[max(14px,env(safe-area-inset-top))]">
+        <div className="mx-auto max-w-[570px]">
+          <div className="mb-3 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setSearchMode(false)}
+              className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-soft bg-surface text-primary transition hover:bg-surface-soft"
+              aria-label={copy.back}
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+
+            <form
+              className="relative min-w-0 flex-1"
+              onSubmit={(event) => event.preventDefault()}
+            >
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
+              <input
+                ref={searchInputRef}
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder={copy.searchPlaceholder}
+                className="w-full rounded-2xl border border-soft bg-surface py-3 pl-11 pr-12 text-base text-primary outline-none placeholder:text-secondary focus:border-[color:var(--border-strong)]"
+              />
+              {query.trim() ? (
+                <button
+                  type="button"
+                  onClick={() => setQuery("")}
+                  className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft hover:text-primary"
+                  aria-label={copy.clearSearch}
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              ) : null}
+            </form>
+          </div>
+
+          <div className="mb-3 rounded-[24px] border border-soft bg-surface-soft/70 px-4 py-3 text-sm leading-relaxed text-secondary">
+            {query.trim()
+              ? `${formatNumber(searchModeTrends.reduce((sum, item) => sum + item.mentions, 0))} ${copy.mentions}`
+              : copy.discussingNow}
+          </div>
+
+          <section className="space-y-3">
+            {searchModeTrends.map((trend) => {
+              const topic = getTopic(trend);
+              const followed = followedTopics.includes(normalizeTopic(topic));
+
+              return (
+                <TrendRow
+                  key={`search-${trend.category || "all"}-${topic}`}
+                  trend={trend}
+                  opened={openedTopic === topic}
+                  followed={followed}
+                  onToggle={() =>
+                    setOpenedTopic((current) => (current === topic ? null : topic))
+                  }
+                  onOpenDetail={() => {
+                    setSearchMode(false);
+                    setActiveTrend(trend);
+                  }}
+                  onToggleFollow={() => toggleFollow(topic)}
+                  copy={copy}
+                />
+              );
+            })}
+          </section>
+
+          {!searchModeTrends.length ? (
+            <div className="rounded-[26px] border border-soft bg-surface px-5 py-8 text-center text-sm text-secondary">
+              {copy.noSignals}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto max-w-[570px] px-4 pb-36 pt-3">
       <form
@@ -2330,6 +2466,7 @@ export function TrendsView({
 
         <input
           value={query}
+          onFocus={() => setSearchMode(true)}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={copy.searchPlaceholder}
           className="w-full rounded-2xl border border-soft bg-surface py-3 pl-11 pr-12 text-sm text-primary outline-none placeholder:text-secondary focus:border-[color:var(--border-strong)]"
