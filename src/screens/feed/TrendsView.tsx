@@ -29,6 +29,7 @@ type TrendSource = {
 type TrendCountry = {
   code: string;
   mentions: number;
+  sourceCount?: number;
 };
 
 type TrendPost = {
@@ -89,6 +90,37 @@ const FEATURED_CATEGORY_VALUES = [
   "marketing",
   "startups",
 ];
+
+const SOURCE_PAGE_SIZE = 10;
+const FREE_SOURCE_PREVIEW_LIMIT = 20;
+
+const COUNTRY_LABELS: Record<string, string> = {
+  ru: "Россия",
+  ua: "Украина",
+  us: "United States",
+  in: "India",
+  ir: "Iran",
+  tr: "Türkiye",
+  br: "Brasil",
+  kz: "Kazakhstan",
+  uz: "Uzbekistan",
+  ae: "UAE",
+  eg: "Egypt",
+  pk: "Pakistan",
+  id: "Indonesia",
+  mx: "Mexico",
+  sa: "Saudi Arabia",
+  es: "España",
+  it: "Italia",
+  fr: "France",
+  de: "Deutschland",
+  ar: "Argentina",
+  co: "Colombia",
+  za: "South Africa",
+  ng: "Nigeria",
+  cn: "China",
+  my: "Malaysia",
+};
 
 type TrendsCopy = {
   all: string;
@@ -1040,6 +1072,20 @@ function normalizeTopic(value: string) {
   return value.trim().toLowerCase();
 }
 
+function normalizeTrendCountry(value: unknown, fallback = "ru") {
+  const normalized = String(value || "").trim().toLowerCase();
+  return normalized || fallback;
+}
+
+function getCountryLabel(code: string) {
+  const normalized = normalizeTrendCountry(code);
+  return COUNTRY_LABELS[normalized] || normalized.toUpperCase();
+}
+
+function getPostCountry(post: IngestedPost, fallbackCountry: string) {
+  return normalizeTrendCountry((post as any).sourceCountryCode, fallbackCountry);
+}
+
 
 function normalizeTrendSearchText(value: string) {
   return String(value || "")
@@ -1325,13 +1371,7 @@ function collectPostTagValues(post: IngestedPost) {
 function postMatchesAttentionQuery(post: IngestedPost, normalizedQuery: string) {
   if (!normalizedQuery) return false;
 
-  const haystack = [
-    post.source?.title,
-    post.source?.handle,
-    post.text,
-    post.postUrl,
-    post.tag,
-  ]
+  const haystack = [post.text, post.tag, ...collectPostTagValues(post)]
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
@@ -1433,14 +1473,45 @@ function buildLivePostTrends(posts: IngestedPost[]): TrendItem[] {
 function buildLiveSearchTrend(
   posts: IngestedPost[],
   rawQuery: string,
+  countryCode = "ru",
 ): TrendItem | null {
   const topic = rawQuery.trim();
   const normalizedQuery = topic.toLowerCase();
+  const selectedCountry = normalizeTrendCountry(countryCode);
 
   if (normalizedQuery.length < 2) return null;
 
-  const matchingPosts = posts.filter((post) =>
+  const allMatchingPosts = posts.filter((post) =>
     postMatchesAttentionQuery(post, normalizedQuery),
+  );
+
+  if (!allMatchingPosts.length) return null;
+
+  const countryStats = new Map<string, { mentions: number; sources: Set<string> }>();
+
+  for (const post of allMatchingPosts) {
+    const postCountry = getPostCountry(post, selectedCountry);
+    const sourceKey =
+      getSourceHandleForOpen({
+        id: post.source?.handle,
+        title: post.source?.title || "Telegram",
+        username: post.source?.handle,
+        avatarUrl: post.source?.avatar || undefined,
+        mentions: 0,
+      }) || String(post.source?.title || "telegram").trim().toLowerCase();
+
+    const current = countryStats.get(postCountry) || {
+      mentions: 0,
+      sources: new Set<string>(),
+    };
+
+    current.mentions += 1;
+    current.sources.add(sourceKey || "telegram");
+    countryStats.set(postCountry, current);
+  }
+
+  const matchingPosts = allMatchingPosts.filter(
+    (post) => getPostCountry(post, selectedCountry) === selectedCountry,
   );
 
   if (!matchingPosts.length) return null;
@@ -1477,9 +1548,17 @@ function buildLiveSearchTrend(
     });
   }
 
-  const topSources = Array.from(sourceMap.values())
-    .sort((a, b) => b.mentions - a.mentions)
-    .slice(0, 12);
+  const topSources = Array.from(sourceMap.values()).sort(
+    (a, b) => b.mentions - a.mentions,
+  );
+
+  const countries = Array.from(countryStats.entries())
+    .map(([code, item]) => ({
+      code,
+      mentions: item.mentions,
+      sourceCount: item.sources.size,
+    }))
+    .sort((a, b) => b.mentions - a.mentions || (b.sourceCount || 0) - (a.sourceCount || 0));
 
   return {
     topic,
@@ -1488,8 +1567,9 @@ function buildLiveSearchTrend(
     momentum: matchingPosts.length * 100,
     change: `+${matchingPosts.length * 100}%`,
     sourceCount: sourceMap.size,
-    topSources,
-    examples: matchingPosts.slice(0, 5).map((post) => ({
+    countries,
+    topSources: topSources.slice(0, 120),
+    examples: matchingPosts.slice(0, 20).map((post) => ({
       id: post.id,
       text: String(post.text || "").slice(0, 280),
       url: post.postUrl,
@@ -1499,8 +1579,12 @@ function buildLiveSearchTrend(
       sourceAvatarUrl: post.source?.avatar || undefined,
     })),
     signals: topic.split(/\s+/).filter(Boolean).slice(0, 5),
-    category: collectPostTagValues(matchingPosts[0] || ({} as IngestedPost))[0] || "all",
-    categories: Array.from(new Set(matchingPosts.flatMap((post) => collectPostTagValues(post)))).slice(0, 12),
+    category:
+      collectPostTagValues(matchingPosts[0] || ({} as IngestedPost))[0] ||
+      getTrendCategory(topic, "all"),
+    categories: Array.from(
+      new Set(matchingPosts.flatMap((post) => collectPostTagValues(post))),
+    ).slice(0, 12),
   };
 }
 
@@ -1733,6 +1817,61 @@ function MiniAttentionChart({
   );
 }
 
+
+function CountryDistributionBlock({
+  trend,
+  countryCode,
+}: {
+  trend: TrendItem;
+  countryCode: string;
+}) {
+  const countries = Array.isArray(trend.countries) ? trend.countries : [];
+  const selectedCountry = normalizeTrendCountry(countryCode);
+  const sorted = [...countries].sort(
+    (a, b) => b.mentions - a.mentions || (b.sourceCount || 0) - (a.sourceCount || 0),
+  );
+
+  if (!sorted.length) return null;
+
+  return (
+    <div className="mt-3 rounded-[24px] border border-soft bg-app p-3">
+      <div className="mb-2 flex items-center justify-between rounded-2xl bg-emerald-500/10 px-3 py-2 text-sm font-black text-emerald-500">
+        <span>{formatNumber(trend.mentions)} упоминаний</span>
+        <span>{selectedCountry.toUpperCase()} ▾</span>
+      </div>
+
+      <div className="space-y-1.5">
+        {sorted.slice(0, 5).map((country, index) => {
+          const locked = normalizeTrendCountry(country.code) !== selectedCountry;
+          return (
+            <div
+              key={`${country.code}-${index}`}
+              className="flex items-center justify-between gap-3 border-b border-dashed border-soft pb-1.5 text-sm last:border-b-0 last:pb-0"
+            >
+              <span className={locked ? "text-secondary" : "font-bold text-primary"}>
+                {locked ? "🔒 " : ""}
+                {getCountryLabel(country.code)}
+              </span>
+              <span className={locked ? "font-black text-secondary" : "font-black text-emerald-500"}>
+                {formatNumber(country.sourceCount || country.mentions)}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {sorted.some((country) => normalizeTrendCountry(country.code) !== selectedCountry) ? (
+        <button
+          type="button"
+          className="mt-3 w-full rounded-2xl border border-soft bg-surface px-4 py-3 text-sm font-black text-primary transition hover:bg-surface-soft"
+        >
+          Полный отчёт за 24 часа
+        </button>
+      ) : null}
+    </div>
+  );
+}
+
 function TrendDetail({
   trend,
   followed,
@@ -1740,6 +1879,7 @@ function TrendDetail({
   onToggleFollow,
   onOpenSource,
   copy,
+  countryCode,
 }: {
   trend: TrendItem;
   followed: boolean;
@@ -1747,6 +1887,7 @@ function TrendDetail({
   onToggleFollow: () => void;
   onOpenSource?: (handle: string) => void;
   copy: TrendsCopy;
+  countryCode: string;
 }) {
   const topic = getTopic(trend);
   const momentum = getMomentumNumber(trend);
@@ -1756,6 +1897,9 @@ function TrendDetail({
   const emoji = getTrendEmoji(topic, trend.category);
   const sourcesRef = useRef<HTMLElement | null>(null);
   const topSources = trend.topSources || [];
+  const [visibleSourceCount, setVisibleSourceCount] = useState(SOURCE_PAGE_SIZE);
+  const visibleSources = topSources.slice(0, visibleSourceCount);
+  const hasMoreSources = visibleSourceCount < topSources.length;
 
   const scrollToSources = () => {
     sourcesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1862,6 +2006,8 @@ function TrendDetail({
           )}
           {followed ? copy.unfollowTopic : copy.followTopic}
         </button>
+
+        <CountryDistributionBlock trend={trend} countryCode={countryCode} />
       </section>
 
       <section className="mt-5 border-t border-soft pt-4">
@@ -1886,7 +2032,7 @@ function TrendDetail({
           {copy.whoFormsAttention}
         </h3>
         <div className="mt-3 space-y-2">
-          {(trend.topSources || []).slice(0, 6).map((source, index) => {
+          {visibleSources.map((source, index) => {
             const snippet = getSourceSnippet(trend, source);
 
             const content = (
@@ -1951,6 +2097,35 @@ function TrendDetail({
             );
           })}
         </div>
+
+        {topSources.length > SOURCE_PAGE_SIZE ? (
+          <div className="mt-3 space-y-2">
+            <div className="text-center text-xs font-bold text-secondary">
+              Показано {Math.min(visibleSourceCount, topSources.length)} из {topSources.length} {copy.sources}
+            </div>
+            {hasMoreSources && visibleSourceCount < FREE_SOURCE_PREVIEW_LIMIT ? (
+              <button
+                type="button"
+                onClick={() =>
+                  setVisibleSourceCount((current) =>
+                    Math.min(current + SOURCE_PAGE_SIZE, FREE_SOURCE_PREVIEW_LIMIT, topSources.length),
+                  )
+                }
+                className="w-full rounded-2xl border border-soft bg-surface px-4 py-3 text-sm font-black text-primary transition hover:bg-surface-soft"
+              >
+                Показать ещё 10
+              </button>
+            ) : null}
+            {visibleSourceCount >= FREE_SOURCE_PREVIEW_LIMIT && topSources.length > visibleSourceCount ? (
+              <button
+                type="button"
+                className="w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-black text-white transition hover:opacity-90"
+              >
+                Открыть все сигналы
+              </button>
+            ) : null}
+          </div>
+        ) : null}
       </section>
     </div>
   );
@@ -2268,7 +2443,7 @@ export function TrendsView({
           .includes(normalizedQuery),
       );
 
-      const liveTrend = buildLiveSearchTrend(posts, rawQuery);
+      const liveTrend = buildLiveSearchTrend(posts, rawQuery, countryCode);
       const liveKey = liveTrend ? normalizeTopic(getTopic(liveTrend)) : "";
 
       if (liveTrend && !list.some((item) => normalizeTopic(getTopic(item)) === liveKey)) {
@@ -2307,7 +2482,7 @@ export function TrendsView({
           .includes(normalizedQuery),
       );
 
-      const liveTrend = buildLiveSearchTrend(posts, rawQuery);
+      const liveTrend = buildLiveSearchTrend(posts, rawQuery, countryCode);
       const liveKey = liveTrend ? normalizeTopic(getTopic(liveTrend)) : "";
 
       if (liveTrend && !list.some((item) => normalizeTopic(getTopic(item)) === liveKey)) {
@@ -2372,6 +2547,7 @@ export function TrendsView({
         onToggleFollow={() => toggleFollow(topic)}
         onOpenSource={onOpenSource}
         copy={copy}
+        countryCode={countryCode}
       />
     );
   }
@@ -2416,10 +2592,23 @@ export function TrendsView({
           </div>
 
           <div className="mb-3 rounded-[24px] border border-soft bg-surface-soft/70 px-4 py-3 text-sm leading-relaxed text-secondary">
-            {query.trim()
-              ? `${formatNumber(searchModeTrends.reduce((sum, item) => sum + item.mentions, 0))} ${copy.mentions}`
-              : copy.discussingNow}
+            {query.trim() ? (
+              <div className="flex items-center justify-between gap-3">
+                <span>
+                  {formatNumber(searchModeTrends.reduce((sum, item) => sum + item.mentions, 0))} {copy.mentions}
+                </span>
+                <span className="font-black text-emerald-500">
+                  {getCountryLabel(countryCode)} ▾
+                </span>
+              </div>
+            ) : (
+              copy.discussingNow
+            )}
           </div>
+
+          {query.trim() && searchModeTrends[0]?.countries?.length ? (
+            <CountryDistributionBlock trend={searchModeTrends[0]} countryCode={countryCode} />
+          ) : null}
 
           <section className="space-y-3">
             {searchModeTrends.map((trend) => {

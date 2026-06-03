@@ -26,6 +26,7 @@ type TrendSource = {
 type TrendCountry = {
   code: string;
   mentions: number;
+  sourceCount?: number;
 };
 
 type TrendPost = {
@@ -222,6 +223,7 @@ const TREND_PARENT_BY_CHILD: Record<string, string> = {
   politics_government: "politics",
   politics_elections: "politics",
   politics_conflicts: "politics",
+  war: "politics",
   politics_opinion: "politics",
   politics_other: "politics",
   economy_all: "economy",
@@ -244,11 +246,15 @@ const TREND_PARENT_BY_CHILD: Record<string, string> = {
   finance_investing: "finance",
   finance_trading: "finance",
   finance_personal: "finance",
+  crypto: "finance",
   finance_other: "finance",
   technology_all: "technology",
   technology_software: "technology",
   technology_dev: "technology",
   technology_web: "technology",
+  internet: "technology",
+  gadgets: "technology",
+  ai: "technology",
   technology_other: "technology",
   electronics_home_appliances: "electronics",
   electronics_pc: "electronics",
@@ -261,13 +267,22 @@ const TREND_PARENT_BY_CHILD: Record<string, string> = {
   science_research: "science",
   science_discoveries: "science",
   science_medicine: "science",
+  space: "science",
   science_other: "science",
   education_all: "education",
   education_courses: "education",
   education_languages: "education",
   education_self: "education",
+  history: "education",
+  books: "education",
   education_other: "education",
   culture_all: "culture",
+  art: "culture",
+  design: "culture",
+  photography: "culture",
+  cinema: "culture",
+  series: "culture",
+  music: "culture",
   culture_other: "culture",
   gaming_all: "gaming",
   gaming_mobile: "gaming",
@@ -276,6 +291,7 @@ const TREND_PARENT_BY_CHILD: Record<string, string> = {
   gaming_esports: "gaming",
   gaming_other: "gaming",
   humor_all: "humor",
+  memes: "humor",
   humor_ironical: "humor",
   humor_satire: "humor",
   humor_other: "humor",
@@ -306,6 +322,7 @@ const TREND_PARENT_BY_CHILD: Record<string, string> = {
   travel_other: "travel",
   food_all: "food",
   food_products: "food",
+  recipes: "food",
   food_other: "food",
   food_service_places: "food_service",
   food_service_delivery: "food_service",
@@ -323,6 +340,7 @@ const TREND_PARENT_BY_CHILD: Record<string, string> = {
   nature_all: "nature",
   nature_ecology: "nature",
   nature_plants: "nature",
+  animals: "nature",
   nature_other: "nature",
   people_all: "people",
   people_blogs: "people",
@@ -437,15 +455,19 @@ function normalizeCategory(value: unknown): string | null {
     food: "food",
     еда: "food",
     recipes: "recipes",
+    recipe: "recipes",
+    кулинария: "recipes",
     рецепты: "recipes",
     nature: "nature",
     природа: "nature",
     animals: "animals",
+    animal: "animals",
     животные: "animals",
     marketing: "marketing",
     маркетинг: "marketing",
     startups: "startups",
     стартапы: "startups",
+    telegram_channels: "telegram",
     other_misc: "other",
     misc: "other",
     разное: "other",
@@ -499,6 +521,62 @@ function getPostCategories(post: IngestedPost): string[] {
   collectCategoryValues(record.channel?.category, categories);
 
   return [...categories].filter((item) => item !== "all");
+}
+
+
+function addCategoryScore(
+  categoryMap: Record<string, number>,
+  category: string,
+  weight = 1,
+) {
+  const safeCategory = normalizeCategory(category) || "all";
+  if (!safeCategory || safeCategory === "all" || isUnsafeObjectKey(safeCategory)) return;
+
+  categoryMap[safeCategory] = (categoryMap[safeCategory] || 0) + weight;
+
+  const parent = getParentCategory(safeCategory);
+  if (parent && parent !== safeCategory && !isUnsafeObjectKey(parent)) {
+    categoryMap[parent] = (categoryMap[parent] || 0) + weight;
+  }
+}
+
+function inferPostCategories(post: IngestedPost, text: string): string[] {
+  const record = post as any;
+  const sourceTitle = getSourceTitle(post);
+  const sourceHandle = getSourceUsername(post) || "";
+  const haystack = `${text}\n${sourceTitle}\n${sourceHandle}`.toLowerCase();
+  const categories = new Set<string>();
+
+  const rules: Array<[RegExp, string]> = [
+    [/\b(авто|автомоб|машин|tesla|toyota|honda|bmw|mercedes|geely|byd|автобус|пикап|грузовик|дтп|дорог|car|cars|truck|pickup|motor|ev)\b/i, "auto"],
+    [/\b(банк|сбер|тинькофф|курс|доллар|рубл|юан|биткоин|bitcoin|btc|crypto|крипт|binance|ton|бирж|акци|инвест|трейдинг)\b/i, "finance"],
+    [/\b(openai|chatgpt|gpt|ai|ии|нейросет|nvidia|iphone|apple|google|microsoft|android|software|dev|код|программист|технолог)\b/i, "technology"],
+    [/\b(полит|выбор|президент|правительств|трамп|путин|войн|армия|ракет|обстрел|санкци|конфликт|war|government|election)\b/i, "politics"],
+    [/\b(новост|срочн|breaking|происшеств|инцидент|пожар|авария|погод|шторм|дожд|гроза)\b/i, "news"],
+    [/\b(бизнес|стартап|предприним|маркетплейс|ozon|wildberries|компани|продаж|рынок|startup|business|ecommerce)\b/i, "business"],
+    [/\b(реклам|маркетинг|smm|бренд|таргет|креатив|продвижен|marketing|ads)\b/i, "marketing"],
+    [/\b(кино|фильм|сериал|музык|концерт|театр|культур|movie|film|series|music)\b/i, "culture"],
+    [/\b(игр|game|gaming|steam|gta|minecraft|roblox|playstation|xbox)\b/i, "gaming"],
+    [/\b(спорт|футбол|хоккей|матч|лига|спартак|зенит|месси|football|sport)\b/i, "sports"],
+    [/\b(еда|рецепт|кухн|готов|продукт|ресторан|кафе|доставк|food|recipe)\b/i, "food"],
+    [/\b(путешеств|тур|отел|виза|рейс|авиа|билет|travel|hotel|flight|visa)\b/i, "travel"],
+    [/\b(здоров|медицин|болезн|врач|клиник|питание|health|medicine)\b/i, "health"],
+    [/\b(учеб|курс|образован|школ|университет|книг|истори|education|study|course)\b/i, "education"],
+    [/\b(наук|исследован|космос|space|science|research)\b/i, "science"],
+    [/\b(дом|квартир|ипотек|жк|новострой|недвиж|аренд|real estate|housing)\b/i, "real_estate"],
+    [/\b(животн|птиц|кот|собак|растен|эколог|природ|лес|nature|animal|ecology)\b/i, "nature"],
+    [/\b(работ|ваканс|карьер|резюме|фриланс|job|career|vacancy)\b/i, "jobs"],
+    [/\b(telegram|телеграм|тон |ton |бот|канал)\b/i, "telegram"],
+  ];
+
+  for (const [regex, category] of rules) {
+    if (regex.test(haystack)) categories.add(category);
+  }
+
+  const explicit = getPostCategories(post).filter((category) => category !== "other");
+  for (const category of explicit) categories.add(category);
+
+  return [...categories];
 }
 
 function getDominantCategory(
@@ -835,12 +913,13 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
       }
 
       item.history[bucketIndex] = (item.history[bucketIndex] || 0) + 1;
-      for (const category of postCategories) {
-        const safeCategory = normalizeCategory(category) || "all";
-        if (safeCategory === "all" || isUnsafeObjectKey(safeCategory))
-          continue;
-        item.categoryMap[safeCategory] =
-          (item.categoryMap[safeCategory] || 0) + 1;
+      const inferredCategories = inferPostCategories(post, text);
+      const effectiveCategories = inferredCategories.length
+        ? inferredCategories
+        : postCategories.filter((category) => category !== "other");
+
+      for (const category of effectiveCategories) {
+        addCategoryScore(item.categoryMap, category, 1);
       }
 
       if (!item.sourceMap[sourceId]) {
@@ -897,7 +976,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
 
       const topSources = Object.values(item.sourceMap)
         .sort((a, b) => b.mentions - a.mentions)
-        .slice(0, 8);
+        .slice(0, 80);
 
       const signals = Object.entries(item.signalMap || {})
         .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
@@ -911,7 +990,7 @@ export async function updateTrends(posts: IngestedPost[], countryCode: string) {
         momentum,
         change: `${momentum >= 0 ? "+" : ""}${momentum}%`,
         sourceCount,
-        countries: [{ code: countryCode, mentions: item.mentions }],
+        countries: [{ code: countryCode, mentions: item.mentions, sourceCount }],
         topSources,
         history: item.history,
         firstSeenAt: item.firstSeenAt
