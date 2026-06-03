@@ -1,39 +1,60 @@
 [
   {
-    "topic": "Московская область",
-    "word": "Московская область",
-    "mentions": 12,
-    "momentum": 1200,
-    "change": "+1200%",
-    "sourceCount": 3,
+    "topic": "Ракетная опасность",
+    "word": "Ракетная опасность",
+    "mentions": 15,
+    "momentum": 1500,
+    "change": "+1500%",
+    "sourceCount": 6,
     "countries": [
       {
         "code": "ru",
-        "mentions": 12,
-        "sourceCount": 3
+        "mentions": 15,
+        "sourceCount": 6
       }
     ],
     "topSources": [
       {
-        "id": "ru:radarrussiia",
-        "title": "Радар по всей России | БПЛА",
-        "username": "radarrussiia",
-        "avatarUrl": "https://cdn4.telesco.pe/file/oUJDoMfzIHpJi-kIE9C6pcpQ2sds-IK0BFlFvChGeK69wEJj984tnDxoOdzhNETDRVf0Hol3mewe2rOjeXzhRJIeJc2OKV-vU-oE-EXd3n_RZZ6jMk5k_4UCDICUnNZDOG7Gp8rC2JnU81FtwmA-iuJuKJDRxQ-xQKh36bJvWqOTuQzG-JzSTjqo_uNWl8LkDvCdflfnDFZyPbxu459J3bhSoac6KBI7GCXzB4K7ND0ojfcyFD5-F75bz27dMK-hedwJFmljyuUaGyz1cERSjAScMACybtbIk_gcxiWYk1uoXd7sGwiCQ7T3Q1A36EEoqTXaPkC7As-YSu1AZLkOxA.jpg",
+        "id": "ru:lpralarm",
+        "title": "LPR оповещения, тревоги, отмены режима тревог",
+        "username": "lpralarm",
+        "avatarUrl": "https://cdn4.telesco.pe/file/GLtPKEiJJhf6BC8D7EZvjvQfPBcf-gPx0KFaQ8Q3Io498j_UsLtXTVrS8eeKilIAgfaSXuRM7MQIS3jDBkioWbEpYE5CV0g9pwhlETQpdUF287pCoOdkT2IVFRWmSY6CsvNOwRqK2rZULqkPckOWbMptZcJA4bUivvpM1Q1ZAne1Tbv4CxIgOHTtnSb8bVTpCOzA9q5Y88T_H3o_lekoyOmSEKJewm3BZRAZBzTmBgTs5x-T_1uLaBjFxc0zedC8sb370Sp6Kgy0ofaI0KOirl9Tgrcbsjo_javG2r-drvUFC8ZdqEN1jTCgblEeYiBSa-jux8cAVYqNoHA_hS0hig.jpg",
         "mentions": 5
       },
       {
-        "id": "ru:radar_moscoww",
-        "title": "Радар Москва",
-        "username": "radar_moscoww",
-        "avatarUrl": "https://cdn4.telesco.pe/file/g7XU9L17GH1xDWU9Dd5kGeqqZkGD46i3MeAoK3T-rUSBkdicL5a3KszX4-MVNEiEYhoO3QEdlHMvdkC9pT6B1XCqHscm231Nq0EQdWz8TReGeIEDz9X9uQuAeo1XSCUfg130MFTfxIeE5ffTKobIDiOa4AhfjTsgZtPCnDjH4cnvep49IsRBNzrUn8A-IaH2f2R-yiOACLtLEqAVCn_vT9COyfz8lt-bDi30F3SNxqa0txPMsggrWZtQ5XXND0807M8eP_a_qMO3NOayOwH6lGMUHxQ_SnrqaYxfE7lk5kXOoWST8WflF324XIZ9ov5RkHsSuhkNwmyzHAMRQMc0DA.jpg",
-        "mentions": 5
+        "id": "ru:kupolrussia",
+        "title": "КУПОЛ РОССИИ",
+        "username": "kupolrussia",
+        "avatarUrl": "https://cdn4.telesco.pe/file/jwnCBPVpNKibJq1KUh-nhBYrSF3YnOz0E_-yH1fUFCPpOpCHWQX2gjVvj5x4GlkzRoQVppMWil_Ry_1tYlpPESJReA5jlxLYApDZ459jfcbzLo8WVNCflQJ8CX0EeBdJC4rhmMqzi3nwzRs93T1QUuff73aVYw8vXiMshapAvxPxB8Bknlnqf05qFOfTExt4PHMvFg4xRL1O0pW9P6Rqz7tkm2s14A7DITULOvhi8s-iwyUF6_Pd-HjA9-08TGg3_e5GkhRBFz78Jon6TwiADLPx7wdWny8F0nk9ZUFZ674jtvWpgO7cxG54U2ymkS5WMunTwKQSNg1FV2B3O2wR-A.jpg",
+        "mentions": 4
       },
       {
-        "id": "ru:russiamonitoring_radar_bpla",
-        "title": "мониторинг.рф",
-        "username": "russiamonitoring_radar_bpla",
-        "avatarUrl": "https://cdn4.telesco.pe/file/ax-ohZ30OeBfydSScNIz7KL0VtX2o5jGbR88ZHB8YmY2SAKkxVdIGMEOPJFysYxu9yGO8lOCxZk86GbskR_o_myFpmbTBjQNgyWWnK4WwF0GNAlQwFohff_lsI0GODtoyiyyZV3K-5CijUEbi_xvw6q_Y6UR9-t3hVX6_NFkuavxz3nJIGeDeCxhXFPsdY9WizRNWvxcTgEqCxuR9Py3NffdFc9Ull5m4Ebs1eH_1Hl0i_o_fqjb4jbpd9pJOTuq0NQhQt8MOIKVFpj-CMQWs-onM21oZRkZ0sFbgudSUD_WcPIXgnxqexzRP-sQMP1Ukv7pN-SXV6pAlsXQf9xNXQ.jpg",
-        "mentions": 2
+        "id": "ru:tula_chp_71",
+        "title": "Тула. Происшествия",
+        "username": "tula_chp_71",
+        "avatarUrl": "https://cdn4.telesco.pe/file/U_inpbK20iDw6M2GvZD8F5OEYER8xVK7XVRe6HHpgxwYRN2bbzpZxVX20T4e_nOCwwnQGKG439vwMGH8yeXIUwsIhIPWPzxGsf2IzzRAGvAyvoRf_08s7aOP56rPmjwZ3TxbbTMOgP9mF_bYbGP2Q5B_ZJ3-QcLcLaf8FEb_tV7yns-QSBHF1b0rKV6ygzo1FZpKhfG5rlgr8KzMekNytKuKUjE6QBr9GLabWOcvL2sHt1905PgUm18Wt4Un5INCjSrSfrfVGXYZ6_5VGnDop1BlpqzjxaBraMH3C-GLm9E7bBR_B5gLRVCt6VrEMUO6KS3jWnnMwif395nroXOGAg.jpg",
+        "mentions": 3
+      },
+      {
+        "id": "ru:rezervsvo",
+        "title": "Сводки и Аналитика СВО (Резерв)",
+        "username": "rezervsvo",
+        "avatarUrl": "https://cdn4.telesco.pe/file/lQGsYY6FnYM3Ny8NVDPXyNO82-ULcrgocuPFqgCrjxwPmpOwJ6wgv3JFjNr4to0RAha2k87MSOBC2JFXgEuLuVb7CjegiSgqGXZHVEV_wQXU0oBUEXRRZKO3YKK5QyJ7ABSzCj5d-dJICAgHWlkI-qjkzbxatTUyWVvXmQAwG6dFXX3lcNRIN2zxnxyDfupFW7n4Anrl61oCFqj2EGGNB96zu5TSeAqwLpkwN3XkVG7hCA62vkzqT0mQY9XHxz1dLzLyIRlCCBmTFPTLDlenG0j799muBCPxtR8ILhsfwavRxxjAhJDdK7OYbjJLD_kB_7BpfYUHBPUeZyaUsisZKQ.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:lpr1_crimea_alarm",
+        "title": "Республика Крым, Севастополь Оповещения, тревоги",
+        "username": "lpr1_crimea_alarm",
+        "avatarUrl": "https://cdn4.telesco.pe/file/mfOdrqUJbJaqfmZLQFNVBeTGaIFXeZ6fz4ah2usNzJS35ZG6s9TYttrzRvFQ_npmNZVBhv0EuE32tKTe6saAgWhjdx09az41Y5g5zXh_2k0Lheatdt1oAcQSipQY1YkniypCfLdbFItADy87HKjKtJegAZZwD3za-R3JoO8DW3eScIE99DrDg1mSFNq5Y310i4lBeu_pHb4AwRJj3_JiQTseP7v6UWUzvG_2vzWMFRChTAzfZAwA_GsRm4h9z_nSOj-b-KDHRx-gEdQjp2isYdOUMsABM8aJiepXgEGZjQbLuT_9Auc4EBrNS-RwQP1C9pgpDCmweuT-W7elC1yvHg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:liveonlain",
+        "title": "ПРЕДУПРЕЖДЕНИЕ | РО",
+        "username": "liveonlain",
+        "avatarUrl": "https://cdn4.telesco.pe/file/IDylUtPzEDQcw6ZnEyLHKgv_jVLLbHMMw6oA-J8oULuWUqGrLLW2E9rSP4AzBrPCrsowO7ZyvMfBwuN5iRDgDbABsIttU1CGh5Pm9zFpfuOstxFuE1XZLwLcVKTx6arHBPCAnG9kd6J-Jqfnn5IQzX4-N4O0DeGQplQaRnKUPkv77652K73jCVpB5rMMFqVsdy-l6lALT-g3yqcpEuYgeq97u_iU5cjNfmd2-I5JU-6_OHkgXceQQNXzgmtxHSpgzdT8WJGDvQrJVXo3ES5oa2Of2-LnoWfp5qKarrkjE6C9qwDpSIgMVVa1JqBmtdjzy92iW0maXexQfs9ij3VAmQ.jpg",
+        "mentions": 1
       }
     ],
     "history": [
@@ -48,73 +69,77 @@
       0,
       0,
       0,
-      12
+      15
     ],
-    "firstSeenAt": "2026-06-03T04:44:26.399Z",
-    "lastSeenAt": "2026-06-03T04:45:55.339Z",
+    "firstSeenAt": "2026-06-03T06:30:48.564Z",
+    "lastSeenAt": "2026-06-03T06:43:52.803Z",
     "examples": [
       {
-        "id": 2714824081,
-        "text": "Работа ПВО по БПЛА\nМеры безопасности\n🌐 Обход белых списков",
-        "url": "https://t.me/radarrussiia/73110?single",
-        "publishedAt": "2026-06-03T04:44:27.676Z",
-        "sourceTitle": "Радар по всей России | БПЛА",
-        "sourceUsername": "radarrussiia",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/oUJDoMfzIHpJi-kIE9C6pcpQ2sds-IK0BFlFvChGeK69wEJj984tnDxoOdzhNETDRVf0Hol3mewe2rOjeXzhRJIeJc2OKV-vU-oE-EXd3n_RZZ6jMk5k_4UCDICUnNZDOG7Gp8rC2JnU81FtwmA-iuJuKJDRxQ-xQKh36bJvWqOTuQzG-JzSTjqo_uNWl8LkDvCdflfnDFZyPbxu459J3bhSoac6KBI7GCXzB4K7ND0ojfcyFD5-F75bz27dMK-hedwJFmljyuUaGyz1cERSjAScMACybtbIk_gcxiWYk1uoXd7sGwiCQ7T3Q1A36EEoqTXaPkC7As-YSu1AZLkOxA.jpg"
+        "id": 3271569050,
+        "text": "Ростовская область, Краснодарский край\nракетная опасность, сообщают мониторы\nМЕРЫ БЕЗОПАСНОСТИ",
+        "url": "https://t.me/rezervsvo/167380?single",
+        "publishedAt": "2026-06-03T06:43:52.803Z",
+        "sourceTitle": "Сводки и Аналитика СВО (Резерв)",
+        "sourceUsername": "rezervsvo",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/lQGsYY6FnYM3Ny8NVDPXyNO82-ULcrgocuPFqgCrjxwPmpOwJ6wgv3JFjNr4to0RAha2k87MSOBC2JFXgEuLuVb7CjegiSgqGXZHVEV_wQXU0oBUEXRRZKO3YKK5QyJ7ABSzCj5d-dJICAgHWlkI-qjkzbxatTUyWVvXmQAwG6dFXX3lcNRIN2zxnxyDfupFW7n4Anrl61oCFqj2EGGNB96zu5TSeAqwLpkwN3XkVG7hCA62vkzqT0mQY9XHxz1dLzLyIRlCCBmTFPTLDlenG0j799muBCPxtR8ILhsfwavRxxjAhJDdK7OYbjJLD_kB_7BpfYUHBPUeZyaUsisZKQ.jpg"
       },
       {
-        "id": 3182611307,
-        "text": "Приготовиться к сбитию\nМеры безопасности\n🌐 Обход белых списков",
-        "url": "https://t.me/radarrussiia/73109?single",
-        "publishedAt": "2026-06-03T04:44:27.676Z",
-        "sourceTitle": "Радар по всей России | БПЛА",
-        "sourceUsername": "radarrussiia",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/oUJDoMfzIHpJi-kIE9C6pcpQ2sds-IK0BFlFvChGeK69wEJj984tnDxoOdzhNETDRVf0Hol3mewe2rOjeXzhRJIeJc2OKV-vU-oE-EXd3n_RZZ6jMk5k_4UCDICUnNZDOG7Gp8rC2JnU81FtwmA-iuJuKJDRxQ-xQKh36bJvWqOTuQzG-JzSTjqo_uNWl8LkDvCdflfnDFZyPbxu459J3bhSoac6KBI7GCXzB4K7ND0ojfcyFD5-F75bz27dMK-hedwJFmljyuUaGyz1cERSjAScMACybtbIk_gcxiWYk1uoXd7sGwiCQ7T3Q1A36EEoqTXaPkC7As-YSu1AZLkOxA.jpg"
+        "id": 4220912306,
+        "text": "Ростовская область, Краснодарский край\nракетная опасность",
+        "url": "https://t.me/lpralarm/179137?single",
+        "publishedAt": "2026-06-03T06:40:18.554Z",
+        "sourceTitle": "LPR оповещения, тревоги, отмены режима тревог",
+        "sourceUsername": "lpralarm",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/GLtPKEiJJhf6BC8D7EZvjvQfPBcf-gPx0KFaQ8Q3Io498j_UsLtXTVrS8eeKilIAgfaSXuRM7MQIS3jDBkioWbEpYE5CV0g9pwhlETQpdUF287pCoOdkT2IVFRWmSY6CsvNOwRqK2rZULqkPckOWbMptZcJA4bUivvpM1Q1ZAne1Tbv4CxIgOHTtnSb8bVTpCOzA9q5Y88T_H3o_lekoyOmSEKJewm3BZRAZBzTmBgTs5x-T_1uLaBjFxc0zedC8sb370Sp6Kgy0ofaI0KOirl9Tgrcbsjo_javG2r-drvUFC8ZdqEN1jTCgblEeYiBSa-jux8cAVYqNoHA_hS0hig.jpg"
       },
       {
-        "id": 2013993843,
-        "text": "Московская область\nМеры безопасности\n🌐 Обход белых списков",
-        "url": "https://t.me/radar_moscoww/5997?single",
-        "publishedAt": "2026-06-03T04:44:26.399Z",
-        "sourceTitle": "Радар Москва",
-        "sourceUsername": "radar_moscoww",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/g7XU9L17GH1xDWU9Dd5kGeqqZkGD46i3MeAoK3T-rUSBkdicL5a3KszX4-MVNEiEYhoO3QEdlHMvdkC9pT6B1XCqHscm231Nq0EQdWz8TReGeIEDz9X9uQuAeo1XSCUfg130MFTfxIeE5ffTKobIDiOa4AhfjTsgZtPCnDjH4cnvep49IsRBNzrUn8A-IaH2f2R-yiOACLtLEqAVCn_vT9COyfz8lt-bDi30F3SNxqa0txPMsggrWZtQ5XXND0807M8eP_a_qMO3NOayOwH6lGMUHxQ_SnrqaYxfE7lk5kXOoWST8WflF324XIZ9ov5RkHsSuhkNwmyzHAMRQMc0DA.jpg"
+        "id": 3680201535,
+        "text": "Джанкойский район возможно ракетная опасность с севера",
+        "url": "https://t.me/lpr1_crimea_alarm/31238?single",
+        "publishedAt": "2026-06-03T06:40:17.791Z",
+        "sourceTitle": "Республика Крым, Севастополь Оповещения, тревоги",
+        "sourceUsername": "lpr1_crimea_alarm",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/mfOdrqUJbJaqfmZLQFNVBeTGaIFXeZ6fz4ah2usNzJS35ZG6s9TYttrzRvFQ_npmNZVBhv0EuE32tKTe6saAgWhjdx09az41Y5g5zXh_2k0Lheatdt1oAcQSipQY1YkniypCfLdbFItADy87HKjKtJegAZZwD3za-R3JoO8DW3eScIE99DrDg1mSFNq5Y310i4lBeu_pHb4AwRJj3_JiQTseP7v6UWUzvG_2vzWMFRChTAzfZAwA_GsRm4h9z_nSOj-b-KDHRx-gEdQjp2isYdOUMsABM8aJiepXgEGZjQbLuT_9Auc4EBrNS-RwQP1C9pgpDCmweuT-W7elC1yvHg.jpg"
       },
       {
-        "id": 229798618,
-        "text": "Московская область\nРабота ПВО по БПЛА\nМеры безопасности",
-        "url": "https://t.me/radar_moscoww/5996?single",
-        "publishedAt": "2026-06-03T04:44:26.399Z",
-        "sourceTitle": "Радар Москва",
-        "sourceUsername": "radar_moscoww",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/g7XU9L17GH1xDWU9Dd5kGeqqZkGD46i3MeAoK3T-rUSBkdicL5a3KszX4-MVNEiEYhoO3QEdlHMvdkC9pT6B1XCqHscm231Nq0EQdWz8TReGeIEDz9X9uQuAeo1XSCUfg130MFTfxIeE5ffTKobIDiOa4AhfjTsgZtPCnDjH4cnvep49IsRBNzrUn8A-IaH2f2R-yiOACLtLEqAVCn_vT9COyfz8lt-bDi30F3SNxqa0txPMsggrWZtQ5XXND0807M8eP_a_qMO3NOayOwH6lGMUHxQ_SnrqaYxfE7lk5kXOoWST8WflF324XIZ9ov5RkHsSuhkNwmyzHAMRQMc0DA.jpg"
+        "id": 4175050328,
+        "text": "Тульская область\nМногочисленные фиксации\nПринять меры безопасности",
+        "url": "https://t.me/tula_chp_71/37844?single",
+        "publishedAt": "2026-06-03T06:30:48.564Z",
+        "sourceTitle": "Тула. Происшествия",
+        "sourceUsername": "tula_chp_71",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/U_inpbK20iDw6M2GvZD8F5OEYER8xVK7XVRe6HHpgxwYRN2bbzpZxVX20T4e_nOCwwnQGKG439vwMGH8yeXIUwsIhIPWPzxGsf2IzzRAGvAyvoRf_08s7aOP56rPmjwZ3TxbbTMOgP9mF_bYbGP2Q5B_ZJ3-QcLcLaf8FEb_tV7yns-QSBHF1b0rKV6ygzo1FZpKhfG5rlgr8KzMekNytKuKUjE6QBr9GLabWOcvL2sHt1905PgUm18Wt4Un5INCjSrSfrfVGXYZ6_5VGnDop1BlpqzjxaBraMH3C-GLm9E7bBR_B5gLRVCt6VrEMUO6KS3jWnnMwif395nroXOGAg.jpg"
       },
       {
-        "id": 2379361489,
-        "text": "Калуга, работа ПВО по БПЛА",
-        "url": "https://t.me/russiamonitoring_radar_bpla/24310?single",
-        "publishedAt": "2026-06-03T04:45:55.339Z",
-        "sourceTitle": "мониторинг.рф",
-        "sourceUsername": "russiamonitoring_radar_bpla",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ax-ohZ30OeBfydSScNIz7KL0VtX2o5jGbR88ZHB8YmY2SAKkxVdIGMEOPJFysYxu9yGO8lOCxZk86GbskR_o_myFpmbTBjQNgyWWnK4WwF0GNAlQwFohff_lsI0GODtoyiyyZV3K-5CijUEbi_xvw6q_Y6UR9-t3hVX6_NFkuavxz3nJIGeDeCxhXFPsdY9WizRNWvxcTgEqCxuR9Py3NffdFc9Ull5m4Ebs1eH_1Hl0i_o_fqjb4jbpd9pJOTuq0NQhQt8MOIKVFpj-CMQWs-onM21oZRkZ0sFbgudSUD_WcPIXgnxqexzRP-sQMP1Ukv7pN-SXV6pAlsXQf9xNXQ.jpg"
+        "id": 1300550443,
+        "text": "Херсонская область РФ возможно ракетная опасность",
+        "url": "https://t.me/lpralarm/179136?single",
+        "publishedAt": "2026-06-03T06:40:18.554Z",
+        "sourceTitle": "LPR оповещения, тревоги, отмены режима тревог",
+        "sourceUsername": "lpralarm",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/GLtPKEiJJhf6BC8D7EZvjvQfPBcf-gPx0KFaQ8Q3Io498j_UsLtXTVrS8eeKilIAgfaSXuRM7MQIS3jDBkioWbEpYE5CV0g9pwhlETQpdUF287pCoOdkT2IVFRWmSY6CsvNOwRqK2rZULqkPckOWbMptZcJA4bUivvpM1Q1ZAne1Tbv4CxIgOHTtnSb8bVTpCOzA9q5Y88T_H3o_lekoyOmSEKJewm3BZRAZBzTmBgTs5x-T_1uLaBjFxc0zedC8sb370Sp6Kgy0ofaI0KOirl9Tgrcbsjo_javG2r-drvUFC8ZdqEN1jTCgblEeYiBSa-jux8cAVYqNoHA_hS0hig.jpg"
       }
     ],
     "signals": [
-      "белых",
+      "опасность",
+      "ракетная",
       "область",
-      "обход",
-      "списков",
-      "московская"
+      "возможно",
+      "джанкойский"
     ],
-    "category": "telegram",
+    "category": "politics",
     "categories": [
+      "politics",
+      "war",
       "telegram",
-      "telegram_bots"
+      "marketing",
+      "news",
+      "sports"
     ]
   },
   {
-    "topic": "Саратовская область",
-    "word": "Саратовская область",
+    "topic": "Отправь сдвгшнику🫶🏻",
+    "word": "Отправь сдвгшнику🫶🏻",
     "mentions": 4,
     "momentum": 400,
     "change": "+400%",
@@ -128,31 +153,31 @@
     ],
     "topSources": [
       {
-        "id": "ru:see_russia_smi",
-        "title": "Смотри - Россия! | СМИ",
-        "username": "see_russia_smi",
-        "avatarUrl": "https://cdn4.telesco.pe/file/ZwkhtOn1eTaup378ZDIV-ljyAOdAJ3b0GrZDq3cc-DRB57zHExbn665ArmYZ1c1lC0PQlM-1rXNItjWYiILU1Wiu3AdAgiDjzO7Ymm58KgfVvd3wlD-KCv7ro7c6-EebVf_pJok1BHzs6J74l5QVVYnAxmlv6wpwZhkfL9Furhv9-02sjrgQW88bvaHRJvCO-1KtHse8CM4-qi9C7K-ZVb_yUfyYruI4miL8vbgEcvGogkayVcXDaJUx6hOM2xFbxhpzDBpEPXI1UAgwNlLydi6k7Z1IJSA4-jm0w63d4YWMFUCokiBgtc17ItQLcz3PYzOttkyvaasYCBORayGJGQ.jpg",
+        "id": "ru:piter_v_kurce",
+        "title": "Питер в курсе",
+        "username": "piter_v_kurce",
+        "avatarUrl": "https://cdn4.telesco.pe/file/v0M4If6HMdL1YgYiINbNm5mDva1mY84NtxvWc8n_p2FOu-29W12-eSrz7Kvu0xgvY5E8Tv2wLxYE92svx2zf8gGyshnKBLyhRIshD889K4vME2nScC0doJW1wU2sFe3SUYWNN7Fsoj-Oj8LX-sSbVT5uzgVGt7B-xbj_YbrdZTDvoY2xU3LWuRY4veh7rplZq0LZLbWyLTO0JDS7Ws9__ShhwtxcsQwOLSS3zQZNFYpaCxJCDiwElgvvdSlZ-x4HNybrGircqSYE8T_MFyP8flyNRA8vUwBf5puJAkGszrfd8dXISQsA6jCOFI0WiBb4QJ3iPnssur_y5bQ8gR7AmA.jpg",
         "mentions": 1
       },
       {
-        "id": "ru:saratov_zhest",
-        "title": "Саратов +",
-        "username": "saratov_zhest",
-        "avatarUrl": "https://cdn4.telesco.pe/file/BgzWP7gl-QtPDgucaapYVf49GmjnaLJiYcjP8Bg6lBZoQrvpg619kI7TLokdxBGLlFmaOQqQP4OMMWuM46Cws2hZ31QzeyVNPEPAtFdAvJVjLdFFWuWKPlbh4sfd4MTzvFYWqGTagrUNDuTmZ18me2RDFu2JO9nIhgITX5gy1RmbeslaGrdpVGX0UQM2Dqe9_Gu-78NUKxoPE_q2ujbc0PFZJ2q5SWzRmIH0EJFtkMA2_iLFbfCam8HmVP43SY3LfP4g5QW0rr7asYgkJtpbukNXlegeLzK_GMbDb8J5GFNfr_CMCUhtQMqB4OKRWsLWUpGigBMR9apNlmIHJ4a-UQ.jpg",
+        "id": "ru:mtv36",
+        "title": "Мой и твой Воронеж",
+        "username": "mtv36",
+        "avatarUrl": "https://cdn4.telesco.pe/file/LPJC4FUVUmePScu7dgJ41XNfIrTO4ALrN9e7OBFuvpuLawA3nMKgUiRAE8EisPgP379hUdH5MSNB4dmOEoxb7or3PRetf49gX2c2bJrbllCh_Tu1RZJNVDtSXk-dbnhMIz667gLhNLHlw5ETBWHpcQ4Sg_fYWC6m9gPHhAUqlihC1W5lW2y5bPNIieEO-Vn88BPB5ro3VNdtuPP_nHrsctD_U2fpyxAFQ0BFZeDQTfkqdhBFdndAKFLbtLdptxahvq8xC1j-59Ev-xaa8cX4sJu2Lug-KnTbJ2k10eNE79BdVB0M_5kHPpVYz-2oelwdohcK47EuwvfPKWxtGvrzOQ.jpg",
         "mentions": 1
       },
       {
-        "id": "ru:rossia",
-        "title": "Новости России 76 Сегодня Сейчас",
-        "username": "rossia",
-        "avatarUrl": "https://cdn4.telesco.pe/file/vE3jL8rEyDLpf0Cp5tvKBpG62t65Rf1NNr0L8NfoLdRMfobQfAQ6LsJV075ficVsOGWU-X6UDAMmpuwSmrD3W0lPgDETJBYuy20mbpcE9_qEUjzH7VsBm7usuD6hhgY2FARav6YzRXVtvPx3F1QkVZq-CMBJm58P2ZZ09-PLJYpy_e5fUw069g2wAD_fnDEMYjFkmaBnFjsiiVvXavi4lu4aHg5ZBsHKZ5vWlxjsbc4vYs5MDccqGOAFJXM-LwCNQZmh4KaNONVYGKSLGmxZM28OgJu7HF6Q1FPascMcdBA2S9P29Fpd_A9mvogf9fqm-jDJf_vdl4iKS2ZIA6nHHg.jpg",
+        "id": "ru:katyashkuro",
+        "title": "КАТЯ ШКУРО",
+        "username": "katyashkuro",
+        "avatarUrl": "https://cdn4.telesco.pe/file/h49Gc_5eHsxwAxhB7D0yqih8Ta3LGXvk9b2eazXe5IWf8MqbouGdV9pudDpi_k9s6Qj_Etz-Ihfwjeq3G3kS4EUPraMoMd_8CbjSzrHxatOpBfL2UPx1EL6BNTmY7udGDpQLElSCvhwnEYE58DV3qgsQx7V693AwLFwZa225d4_O_sLmwZHWOZKfB4E06UXHAA_mcIz9H5qpV9j8hS5RKJgKwutEtufabh9JgMbb6PNwxS34UvCMS_e8S_CMHHsKtMS-83OGg7Ud6_PmrlQWBXpMiMaIIVMwVSIk6zvIKoqGCiVGzRRjdl6-mi8XIJ52xf-EepnNM3t9b-XAK4CtTg.jpg",
         "mentions": 1
       },
       {
-        "id": "ru:smi_rf_moskva",
-        "title": "СМИ Россия не Москва",
-        "username": "smi_rf_moskva",
-        "avatarUrl": "https://cdn4.telesco.pe/file/ggsqGoz0YWvg5j8VFHqt5fgr7yUXCyR8H4dqFKSL_g-a6EXpY4_Y639erJtHvx9JTPjbDPy2dQqupokke3ITyyy7sEqBBDH74sgrAsvmSJvjgZz3PXDTYqnHxwAAsimnIBljez470uwd8gEcf5z7z0sjYKVNlMpqZIIagFR7mazCzj-v2HdsAWPFFnlFsbHCZGKlw2KpJttNUqZO6ef784d96pVo0YP41X7x9blNmPx0qy21xrjEG5lM7WJk6r-eButpb4EtHP4kx_4QBQ2s20W_rTFM4YicMimMu3Dcq3uecihXn7Sz6WbZwuDJAfb6hhItfwxknvwdIK8PgvnBHA.jpg",
+        "id": "ru:spb_smi",
+        "title": "Санкт-Петербург LIVE",
+        "username": "spb_smi",
+        "avatarUrl": "https://cdn4.telesco.pe/file/L2BpbVFlVwbAZTiCUN1qt0VKD-LTweZxmA2hjitVTeDzqe_eORikBKqnQBipWL0fvOCpwUg68jS_fQ6qLVB6z30sFDMFQYTxNt9J0QQn1SwpoPCeUKdzOXrifdu01HEv33ghr5F5ztTZyXuWMD5hMcuNLd6hRMoimLrmlZQeScpzNG097-c0FsC5_JYwtDoaXKinmhrFbVhMlI-6zdTVaczx7Cq_b9NgQnbVf3BR7xxybaTFGXiVPy6dxqW057YtoVPde01n49UdPJYXNbGi7QGduWKJkuIJNFO26UnY3nqW7uvJ-DUtNVovIz1jPKiDpgQ6DH_jYduTg8424U8Jiw.jpg",
         "mentions": 1
       }
     ],
@@ -170,91 +195,104 @@
       0,
       4
     ],
-    "firstSeenAt": "2026-06-03T04:45:29.263Z",
-    "lastSeenAt": "2026-06-03T04:47:14.847Z",
+    "firstSeenAt": "2026-06-03T06:39:58.382Z",
+    "lastSeenAt": "2026-06-03T06:45:15.481Z",
     "examples": [
       {
-        "id": 2712220587,
-        "text": "Детские трудовые лагеря вернуть в Россию предложила уполномоченная по правам ребёнка в Москве\n«Нас в седьмом классе вывезли в Волгоградскую область пропалывать помидоры на 40-градусной жаре в бараке среди поля. Мы выжили, более того, я 120 рублей домой привезла. Мне кажется, возвращение трудовых лагерей — это реальная история, которая нашими детьми будет под",
-        "url": "https://t.me/see_russia_smi/2863?single",
-        "publishedAt": "2026-06-03T04:46:30.519Z",
-        "sourceTitle": "Смотри - Россия! | СМИ",
-        "sourceUsername": "see_russia_smi",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ZwkhtOn1eTaup378ZDIV-ljyAOdAJ3b0GrZDq3cc-DRB57zHExbn665ArmYZ1c1lC0PQlM-1rXNItjWYiILU1Wiu3AdAgiDjzO7Ymm58KgfVvd3wlD-KCv7ro7c6-EebVf_pJok1BHzs6J74l5QVVYnAxmlv6wpwZhkfL9Furhv9-02sjrgQW88bvaHRJvCO-1KtHse8CM4-qi9C7K-ZVb_yUfyYruI4miL8vbgEcvGogkayVcXDaJUx6hOM2xFbxhpzDBpEPXI1UAgwNlLydi6k7Z1IJSA4-jm0w63d4YWMFUCokiBgtc17ItQLcz3PYzOttkyvaasYCBORayGJGQ.jpg"
+        "id": 2796654287,
+        "text": "‼️ В Петербурге работает оперштаб из-за атаки БПЛА\nАтаки пришлись на Кронштадт, Кировский и Красносельский районы. Пострадали несколько человек, погибших нет. Последствия устраняют\n💙 Отправь контент, а мы опубликуем",
+        "url": "https://t.me/piter_v_kurce/5122?single",
+        "publishedAt": "2026-06-03T06:42:51.771Z",
+        "sourceTitle": "Питер в курсе",
+        "sourceUsername": "piter_v_kurce",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/v0M4If6HMdL1YgYiINbNm5mDva1mY84NtxvWc8n_p2FOu-29W12-eSrz7Kvu0xgvY5E8Tv2wLxYE92svx2zf8gGyshnKBLyhRIshD889K4vME2nScC0doJW1wU2sFe3SUYWNN7Fsoj-Oj8LX-sSbVT5uzgVGt7B-xbj_YbrdZTDvoY2xU3LWuRY4veh7rplZq0LZLbWyLTO0JDS7Ws9__ShhwtxcsQwOLSS3zQZNFYpaCxJCDiwElgvvdSlZ-x4HNybrGircqSYE8T_MFyP8flyNRA8vUwBf5puJAkGszrfd8dXISQsA6jCOFI0WiBb4QJ3iPnssur_y5bQ8gR7AmA.jpg"
       },
       {
-        "id": 2430580355,
-        "text": "Саратовская область",
-        "url": "https://t.me/saratov_zhest/36633?single",
-        "publishedAt": "2026-06-03T04:46:20.533Z",
-        "sourceTitle": "Саратов +",
-        "sourceUsername": "saratov_zhest",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/BgzWP7gl-QtPDgucaapYVf49GmjnaLJiYcjP8Bg6lBZoQrvpg619kI7TLokdxBGLlFmaOQqQP4OMMWuM46Cws2hZ31QzeyVNPEPAtFdAvJVjLdFFWuWKPlbh4sfd4MTzvFYWqGTagrUNDuTmZ18me2RDFu2JO9nIhgITX5gy1RmbeslaGrdpVGX0UQM2Dqe9_Gu-78NUKxoPE_q2ujbc0PFZJ2q5SWzRmIH0EJFtkMA2_iLFbfCam8HmVP43SY3LfP4g5QW0rr7asYgkJtpbukNXlegeLzK_GMbDb8J5GFNfr_CMCUhtQMqB4OKRWsLWUpGigBMR9apNlmIHJ4a-UQ.jpg"
+        "id": 1065698571,
+        "text": "❗️Несколько человек пострадали в результате атаки украинских БПЛА на Кронштадт, Кировский и Красносельский районы Петербурга\nОб этом сообщил губернатор города Беглов\nПовреждено несколько объектов, погибших нет",
+        "url": "https://t.me/mtv36/84857?single",
+        "publishedAt": "2026-06-03T06:41:22.069Z",
+        "sourceTitle": "Мой и твой Воронеж",
+        "sourceUsername": "mtv36",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/LPJC4FUVUmePScu7dgJ41XNfIrTO4ALrN9e7OBFuvpuLawA3nMKgUiRAE8EisPgP379hUdH5MSNB4dmOEoxb7or3PRetf49gX2c2bJrbllCh_Tu1RZJNVDtSXk-dbnhMIz667gLhNLHlw5ETBWHpcQ4Sg_fYWC6m9gPHhAUqlihC1W5lW2y5bPNIieEO-Vn88BPB5ro3VNdtuPP_nHrsctD_U2fpyxAFQ0BFZeDQTfkqdhBFdndAKFLbtLdptxahvq8xC1j-59Ev-xaa8cX4sJu2Lug-KnTbJ2k10eNE79BdVB0M_5kHPpVYz-2oelwdohcK47EuwvfPKWxtGvrzOQ.jpg"
       },
       {
-        "id": 3184580313,
-        "text": "Детские трудовые лагеря вернуть в Россию предложила уполномоченная по правам ребёнка в Москве\n«Нас в седьмом классе вывезли в Волгоградскую область пропалывать помидоры на 40-градусной жаре в бараке среди поля. Мы выжили, более того, я 120 рублей домой привезла. Мне кажется, возвращение трудовых лагерей — это реальная история, которая нашими детьми будет под",
-        "url": "https://t.me/rossia/21790?single",
-        "publishedAt": "2026-06-03T04:45:29.263Z",
-        "sourceTitle": "Новости России 76 Сегодня Сейчас",
-        "sourceUsername": "rossia",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/vE3jL8rEyDLpf0Cp5tvKBpG62t65Rf1NNr0L8NfoLdRMfobQfAQ6LsJV075ficVsOGWU-X6UDAMmpuwSmrD3W0lPgDETJBYuy20mbpcE9_qEUjzH7VsBm7usuD6hhgY2FARav6YzRXVtvPx3F1QkVZq-CMBJm58P2ZZ09-PLJYpy_e5fUw069g2wAD_fnDEMYjFkmaBnFjsiiVvXavi4lu4aHg5ZBsHKZ5vWlxjsbc4vYs5MDccqGOAFJXM-LwCNQZmh4KaNONVYGKSLGmxZM28OgJu7HF6Q1FPascMcdBA2S9P29Fpd_A9mvogf9fqm-jDJf_vdl4iKS2ZIA6nHHg.jpg"
+        "id": 3190989800,
+        "text": "Отправь сдвгшнику🫶🏻",
+        "url": "https://t.me/katyashkuro/4441?single",
+        "publishedAt": "2026-06-03T06:39:58.382Z",
+        "sourceTitle": "КАТЯ ШКУРО",
+        "sourceUsername": "katyashkuro",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/h49Gc_5eHsxwAxhB7D0yqih8Ta3LGXvk9b2eazXe5IWf8MqbouGdV9pudDpi_k9s6Qj_Etz-Ihfwjeq3G3kS4EUPraMoMd_8CbjSzrHxatOpBfL2UPx1EL6BNTmY7udGDpQLElSCvhwnEYE58DV3qgsQx7V693AwLFwZa225d4_O_sLmwZHWOZKfB4E06UXHAA_mcIz9H5qpV9j8hS5RKJgKwutEtufabh9JgMbb6PNwxS34UvCMS_e8S_CMHHsKtMS-83OGg7Ud6_PmrlQWBXpMiMaIIVMwVSIk6zvIKoqGCiVGzRRjdl6-mi8XIJ52xf-EepnNM3t9b-XAK4CtTg.jpg"
       },
       {
-        "id": 1515313332,
-        "text": "Детские трудовые лагеря вернуть в Россию предложила уполномоченная по правам ребёнка в Москве\n«Нас в седьмом классе вывезли в Волгоградскую область пропалывать помидоры на 40-градусной жаре в бараке среди поля. Мы выжили, более того, я 120 рублей домой привезла. Мне кажется, возвращение трудовых лагерей — это реальная история, которая нашими детьми будет под",
-        "url": "https://t.me/smi_rf_moskva/40496?single",
-        "publishedAt": "2026-06-03T04:47:14.847Z",
-        "sourceTitle": "СМИ Россия не Москва",
-        "sourceUsername": "smi_rf_moskva",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ggsqGoz0YWvg5j8VFHqt5fgr7yUXCyR8H4dqFKSL_g-a6EXpY4_Y639erJtHvx9JTPjbDPy2dQqupokke3ITyyy7sEqBBDH74sgrAsvmSJvjgZz3PXDTYqnHxwAAsimnIBljez470uwd8gEcf5z7z0sjYKVNlMpqZIIagFR7mazCzj-v2HdsAWPFFnlFsbHCZGKlw2KpJttNUqZO6ef784d96pVo0YP41X7x9blNmPx0qy21xrjEG5lM7WJk6r-eButpb4EtHP4kx_4QBQ2s20W_rTFM4YicMimMu3Dcq3uecihXn7Sz6WbZwuDJAfb6hhItfwxknvwdIK8PgvnBHA.jpg"
+        "id": 3607867427,
+        "text": "📊 Питер переживает последствия атаки\nНапомним, несколько человек пострадали из-за атаки БПЛА",
+        "url": "https://t.me/spb_smi/40867?single",
+        "publishedAt": "2026-06-03T06:45:15.481Z",
+        "sourceTitle": "Санкт-Петербург LIVE",
+        "sourceUsername": "spb_smi",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/L2BpbVFlVwbAZTiCUN1qt0VKD-LTweZxmA2hjitVTeDzqe_eORikBKqnQBipWL0fvOCpwUg68jS_fQ6qLVB6z30sFDMFQYTxNt9J0QQn1SwpoPCeUKdzOXrifdu01HEv33ghr5F5ztTZyXuWMD5hMcuNLd6hRMoimLrmlZQeScpzNG097-c0FsC5_JYwtDoaXKinmhrFbVhMlI-6zdTVaczx7Cq_b9NgQnbVf3BR7xxybaTFGXiVPy6dxqW057YtoVPde01n49UdPJYXNbGi7QGduWKJkuIJNFO26UnY3nqW7uvJ-DUtNVovIz1jPKiDpgQ6DH_jYduTg8424U8Jiw.jpg"
       }
     ],
     "signals": [
-      "область",
-      "волгоградскую",
-      "вывезли",
-      "классе",
-      "седьмом"
+      "атаки",
+      "несколько",
+      "пострадали",
+      "человек",
+      "кировский"
     ],
-    "category": "news",
+    "category": "politics",
     "categories": [
-      "news",
-      "news_all",
-      "education",
+      "politics",
+      "war",
       "telegram",
-      "marketing",
-      "education_courses",
-      "marketing_ads"
+      "news",
+      "education",
+      "finance"
     ]
   },
   {
-    "topic": "ЛПшки, новый выпуск!! Смотрим",
-    "word": "ЛПшки, новый выпуск!! Смотрим",
-    "mentions": 2,
-    "momentum": 200,
-    "change": "+200%",
-    "sourceCount": 2,
+    "topic": "Учитель, дройдеки🤖",
+    "word": "Учитель, дройдеки🤖",
+    "mentions": 4,
+    "momentum": 400,
+    "change": "+400%",
+    "sourceCount": 4,
     "countries": [
       {
         "code": "ru",
-        "mentions": 2,
-        "sourceCount": 2
+        "mentions": 4,
+        "sourceCount": 4
       }
     ],
     "topSources": [
       {
-        "id": "ru:plsbetenderly",
-        "title": "tenderlybae💔",
-        "username": "plsbetenderly",
-        "avatarUrl": "https://cdn4.telesco.pe/file/pYdXjhTADDHceiaCwhL325E122bI8J-d5Kpj2Fm-QB5cM444QdIXJ4fO0ph0GBF16D8wASFE-HXdppqGC6XblWhrN40rnsX9-O9PARCtPZv54L9kNZ7PS5ibSquZDuzUeclP1BIfqGeiNNTmjM6-SIDRxlpB21yjP0oWVmWpPorXiBubtB6bO2fqK4FfBvCl9E9upx4k3KwXdH4QWdNewBoJ4ItYeatdluedLqKvQyOkToc6mDSWvTxdZd10Ot6cOqqQyeG_COWsmPIGQLjHsfi5CIRK543UlSPGA4yuwxZ92HzUcod-0hvBL2nP0Cbkqwb-7GCWoF-Ms4yg49K_0g.jpg",
+        "id": "ru:koshkii_kotiki",
+        "title": "шерстяные проказники • коты",
+        "username": "koshkii_kotiki",
+        "avatarUrl": "https://cdn4.telesco.pe/file/DMG1MfHiJ_PlnIPc5l1xMGr08yq5J7_ijmf_MJhYvdJwO_CxNKzHhf9Cu0PvHdWdBduQpM6gU_rjoJEGDicZkhQaadhJu32ZEBK20Syuoq1FD0EVJGF8aemOQ4jpI92AmJ4aXHFAyS4I-eRmbMJBPmtYiaXPjV5nUpiENhht7GrPYWvtMIuG0uqpOBvnlyioXHW6RFKEFF8_2CSdQmN0qCj1FyfkNE22I3UILWHu2BQQi1dMSuNYy3WtG_56kuqXGrMyacKyrK9TETTmZ8-LnbL0OwaZX0beFkb2v2Yl4Oe-O-aZ9hDjnHCkwB6_wjrYeGFVFEHgAMnbt5hzs9YHIw.jpg",
         "mentions": 1
       },
       {
-        "id": "ru:syntxfamily",
-        "title": "SYNTX FAMILY",
-        "username": "syntxfamily",
-        "avatarUrl": "https://cdn4.telesco.pe/file/t9t-ItEeZxsFS0ex3aFOPfeW_rQKl3gllfXh41i3PMOM4vmSG_wQUSDwVXmnbUAXmyUOsPuNfTtRkFG0uiwzqfqB9xA1AqrMxI4yl_0ajwIaBc-JIRfhWtZXJ0110eMYnGWDQW3EZMiD_ZS7GAa27XPAPG8DMiF_bkZLSqPpXEwDXd0snjT2FnMi8h4B2M-mTKjs9mX5IndsT0QaRK6ZQ6-QcI4b60d7F1E4tzSoQwFZNoW5seU45SZz6Uql4RjonLfFkQnI0jcH0aQbu2oeEmuBWSDkHPdaXlMHs-TTapJ19QjDGTcU4_3BqrpY73392w6rT0T-frqCrssGnBPqIw.jpg",
+        "id": "ru:iikhu",
+        "title": "ШАХНАЗАРОВ",
+        "username": "iikhu",
+        "avatarUrl": "https://cdn4.telesco.pe/file/IFaoNpebGdj_xXUGH31qdpE26ocpL_UTu-FpIYlTOOvyu0b_6ualBmbuCrIdu0Dq3bKa6e2F1TU4g0WxnS21okvFb01JyHjgIzDdK6wCdnEln1g3GJ7dIWHdSVk4qX6ETO_fzLFKRvng9N3hgPpr_XXQAe20sJNCrOpvMmCh5JKfS5kejw-cTk3MVw0zw4Bm_WDGxwe84y9ixjhBUH5-IsQzpq8SaDLE-cfWq96KGjR9E7ZKel4REUiFIaNiJwaq8kp85oKwOYEVQFnSWwWTGLNzeSt_qxcIeA2bHU6P8tn4cvGDfDVyA3-HZ7lRGXUKt_lW41mB9UnK_5qSoypvkg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:kosti",
+        "title": "KOSTI",
+        "username": "kosti",
+        "avatarUrl": "https://cdn4.telesco.pe/file/oBdMtsheNgWg-xTmiSkCdtR7PTWIPFSZqItuwvjdseNY8grhUOT58WHiaFh0RYJglAhOggAMonHuRf-3E8K7lUklcLvvSrrDAuRcHOSpCvOO_VOPkg17WLQw9TYcYSRq8E4jmtaRQx-r2fIH_MCwO9bq0LB9rfqjGGUZIaickAcM2jLYwy0J40z8dUwDyqtXRSHawe5---kOOkKsp3BN4ZdZIJAG8tWO-rZL-bwt03mYQrmDQrACCil50QhtbVdp03-Xg7QNVWuSBuT2QECK9E26Hs0d53tNxsOgsG_31sCkl_10MTMHH6MfmaceW4ExaANJi1dnxTY8bjUf9Iti6g.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:crypto_okop",
+        "title": "🇷🇺 The Club 100 - Криптовалютый окоп",
+        "username": "crypto_okop",
+        "avatarUrl": "https://cdn4.telesco.pe/file/gzMy-XIOQdwsLPSAWCIxHYHKYXS0_t_eX9m7hHU-oFqx-xUJQBB9FIGH3mlgWR7tjoY_xN_4InWi76ZQTGu5xzArzUHcADN7cV8JPA7ffYnS8iX57H-bVEpaRlSncbhPuP1R23ahO4Ph1SqmN_26kMXyp4xOTXKLLZgcUSqNh107mNUVc-s6N7Rmrvp5Ok2eQ_G2MXpukZktpfLUbt6PtN5wtwYfVNMjKZ4gnHHtg1EUJqaKDGFhAjxGo0jDEP4nz2MjaDVRI52XEzziI1SCmUnjD0zFp6OFgbR1YCoRy7EOdlM5AgcGLhn3w27xsxNMx2zymGIAFjMMPUQQou-Aog.jpg",
         "mentions": 1
       }
     ],
@@ -270,47 +308,849 @@
       0,
       0,
       0,
-      2
+      4
     ],
-    "firstSeenAt": "2026-06-03T04:43:14.118Z",
-    "lastSeenAt": "2026-06-03T04:48:28.638Z",
+    "firstSeenAt": "2026-06-03T06:34:30.121Z",
+    "lastSeenAt": "2026-06-03T06:39:43.909Z",
     "examples": [
       {
-        "id": 1942172584,
-        "text": "ЛПшки, новый выпуск!! Смотрим",
-        "url": "https://t.me/plsbetenderly/12919?single",
-        "publishedAt": "2026-06-03T04:43:14.118Z",
-        "sourceTitle": "tenderlybae💔",
-        "sourceUsername": "plsbetenderly",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/pYdXjhTADDHceiaCwhL325E122bI8J-d5Kpj2Fm-QB5cM444QdIXJ4fO0ph0GBF16D8wASFE-HXdppqGC6XblWhrN40rnsX9-O9PARCtPZv54L9kNZ7PS5ibSquZDuzUeclP1BIfqGeiNNTmjM6-SIDRxlpB21yjP0oWVmWpPorXiBubtB6bO2fqK4FfBvCl9E9upx4k3KwXdH4QWdNewBoJ4ItYeatdluedLqKvQyOkToc6mDSWvTxdZd10Ot6cOqqQyeG_COWsmPIGQLjHsfi5CIRK543UlSPGA4yuwxZ92HzUcod-0hvBL2nP0Cbkqwb-7GCWoF-Ms4yg49K_0g.jpg"
+        "id": 2191149165,
+        "text": "Учитель, дройдеки🤖",
+        "url": "https://t.me/koshkii_kotiki/37778?single",
+        "publishedAt": "2026-06-03T06:37:19.691Z",
+        "sourceTitle": "шерстяные проказники • коты",
+        "sourceUsername": "koshkii_kotiki",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/DMG1MfHiJ_PlnIPc5l1xMGr08yq5J7_ijmf_MJhYvdJwO_CxNKzHhf9Cu0PvHdWdBduQpM6gU_rjoJEGDicZkhQaadhJu32ZEBK20Syuoq1FD0EVJGF8aemOQ4jpI92AmJ4aXHFAyS4I-eRmbMJBPmtYiaXPjV5nUpiENhht7GrPYWvtMIuG0uqpOBvnlyioXHW6RFKEFF8_2CSdQmN0qCj1FyfkNE22I3UILWHu2BQQi1dMSuNYy3WtG_56kuqXGrMyacKyrK9TETTmZ8-LnbL0OwaZX0beFkb2v2Yl4Oe-O-aZ9hDjnHCkwB6_wjrYeGFVFEHgAMnbt5hzs9YHIw.jpg"
       },
       {
-        "id": 2979087214,
-        "text": "🎞️ ИИ × Фитнес = ниша без конкурентов\n⚡️ Новый выпуск на канале SYNTX AI — показываю, как с помощью ИИ создавать анатомические визуализации: от подсветки мышц в стиле фитнес-приложения до разрушения костей как в Mortal Kombat\n🏮Почему эта ниша - окно возможностей в 2026",
-        "url": "https://t.me/syntxfamily/4814?single",
-        "publishedAt": "2026-06-03T04:48:28.638Z",
-        "sourceTitle": "SYNTX FAMILY",
-        "sourceUsername": "syntxfamily",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/t9t-ItEeZxsFS0ex3aFOPfeW_rQKl3gllfXh41i3PMOM4vmSG_wQUSDwVXmnbUAXmyUOsPuNfTtRkFG0uiwzqfqB9xA1AqrMxI4yl_0ajwIaBc-JIRfhWtZXJ0110eMYnGWDQW3EZMiD_ZS7GAa27XPAPG8DMiF_bkZLSqPpXEwDXd0snjT2FnMi8h4B2M-mTKjs9mX5IndsT0QaRK6ZQ6-QcI4b60d7F1E4tzSoQwFZNoW5seU45SZz6Uql4RjonLfFkQnI0jcH0aQbu2oeEmuBWSDkHPdaXlMHs-TTapJ19QjDGTcU4_3BqrpY73392w6rT0T-frqCrssGnBPqIw.jpg"
+        "id": 2503452142,
+        "text": "Жена Макрона точно мужчина\nЭтот факт не вызывает ни малейших сомнений, заявила американская журналистка Кэндис Оуэнс. Да-да, та самая, которая успела поцапаться с президентской семейкой в суде из-за скандальных гендерных разбирательств\n«Не вызывает никаких сомнений, что Брижит Макрон – мужчина. Не в моем стиле распространять глупые теории заговора. Я изучила",
+        "url": "https://t.me/iikhu/34176?single",
+        "publishedAt": "2026-06-03T06:39:43.909Z",
+        "sourceTitle": "ШАХНАЗАРОВ",
+        "sourceUsername": "iikhu",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/IFaoNpebGdj_xXUGH31qdpE26ocpL_UTu-FpIYlTOOvyu0b_6ualBmbuCrIdu0Dq3bKa6e2F1TU4g0WxnS21okvFb01JyHjgIzDdK6wCdnEln1g3GJ7dIWHdSVk4qX6ETO_fzLFKRvng9N3hgPpr_XXQAe20sJNCrOpvMmCh5JKfS5kejw-cTk3MVw0zw4Bm_WDGxwe84y9ixjhBUH5-IsQzpq8SaDLE-cfWq96KGjR9E7ZKel4REUiFIaNiJwaq8kp85oKwOYEVQFnSWwWTGLNzeSt_qxcIeA2bHU6P8tn4cvGDfDVyA3-HZ7lRGXUKt_lW41mB9UnK_5qSoypvkg.jpg"
+      },
+      {
+        "id": 1371715761,
+        "text": "«Не вызывает никаких сомнений, что Брижит Макрон — мужчина*»\nОб этом снова заявила американская журналистка Кэндис Оуэнс. Она уверена, что это был школьный учитель Эмманюэля — нынешнего президента Франции\n*Движение ЛГБТ признано в РФ экстремистским и запрещено",
+        "url": "https://t.me/kosti/45935?single",
+        "publishedAt": "2026-06-03T06:37:21.877Z",
+        "sourceTitle": "KOSTI",
+        "sourceUsername": "kosti",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/oBdMtsheNgWg-xTmiSkCdtR7PTWIPFSZqItuwvjdseNY8grhUOT58WHiaFh0RYJglAhOggAMonHuRf-3E8K7lUklcLvvSrrDAuRcHOSpCvOO_VOPkg17WLQw9TYcYSRq8E4jmtaRQx-r2fIH_MCwO9bq0LB9rfqjGGUZIaickAcM2jLYwy0J40z8dUwDyqtXRSHawe5---kOOkKsp3BN4ZdZIJAG8tWO-rZL-bwt03mYQrmDQrACCil50QhtbVdp03-Xg7QNVWuSBuT2QECK9E26Hs0d53tNxsOgsG_31sCkl_10MTMHH6MfmaceW4ExaANJi1dnxTY8bjUf9Iti6g.jpg"
+      },
+      {
+        "id": 153982395,
+        "text": "Американская журналистка Кэндис Оуэнс получила доказательство того что, жена Макрона является мужчиной, а также его бывшим учителем в школьные года",
+        "url": "https://t.me/crypto_okop/23749?single",
+        "publishedAt": "2026-06-03T06:34:30.121Z",
+        "sourceTitle": "🇷🇺 The Club 100 - Криптовалютый окоп",
+        "sourceUsername": "crypto_okop",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/gzMy-XIOQdwsLPSAWCIxHYHKYXS0_t_eX9m7hHU-oFqx-xUJQBB9FIGH3mlgWR7tjoY_xN_4InWi76ZQTGu5xzArzUHcADN7cV8JPA7ffYnS8iX57H-bVEpaRlSncbhPuP1R23ahO4Ph1SqmN_26kMXyp4xOTXKLLZgcUSqNh107mNUVc-s6N7Rmrvp5Ok2eQ_G2MXpukZktpfLUbt6PtN5wtwYfVNMjKZ4gnHHtg1EUJqaKDGFhAjxGo0jDEP4nz2MjaDVRI52XEzziI1SCmUnjD0zFp6OFgbR1YCoRy7EOdlM5AgcGLhn3w27xsxNMx2zymGIAFjMMPUQQou-Aog.jpg"
       }
     ],
     "signals": [
-      "выпуск",
-      "новый",
-      "лпшки",
-      "показываю",
-      "помощью"
+      "американская",
+      "журналистка",
+      "кэндис",
+      "оуэнс",
+      "брижит"
     ],
-    "category": "technology",
+    "category": "nature",
     "categories": [
-      "technology",
-      "ai",
+      "nature",
+      "education",
+      "animals",
+      "politics",
+      "finance",
+      "humor",
+      "business",
+      "crypto",
+      "auto"
+    ]
+  },
+  {
+    "topic": "Объявлен «жёлтый» уровень погодной опасности",
+    "word": "Объявлен «жёлтый» уровень погодной опасности",
+    "mentions": 4,
+    "momentum": 400,
+    "change": "+400%",
+    "sourceCount": 4,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 4,
+        "sourceCount": 4
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:moskuda",
+        "title": "МосАфиша",
+        "username": "moskuda",
+        "avatarUrl": "https://cdn4.telesco.pe/file/UXYirvOr82W8WJCCc7GkBFJcQ17R9LW_te5YAPI8Gfh0HONFVvvMU7GPaLXXoUXiJVwc1rh8BMgv2rRvGqwn3Psx9FLJlXt28lDQFWCz5YaTZpsCk_iN8RqUhtSrggVHABfhX1tea2z_7f3mcSdyLkoVDXc9ohM6yzoqqIEdI8eCun2t1C1P4_xqLU3-15AWxURjQGYtAqT2FBvf2RUqY56B3PHMa68r60zsuGIdPmS0glJo-xcPsOhxWMocC1tRCqmu5_GufMAh-IbFPpZNC1h1LrwORQ9B7ByOPNkpLOoMcBbjpJfJHwr75OuxjimRBPcQ7qRMeODfazG9swxH_A.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:mosjournal",
+        "title": "Москва на максималках",
+        "username": "mosjournal",
+        "avatarUrl": "https://cdn4.telesco.pe/file/G6n9fXTcH4sWETAJb6qA8YHVlxoJroU5yUeiR0KKZuKJanGhWsQX0G_nL0Pyo7-f8aXDIQ3pNJYvIIxvvreTb-nUpF6zYda3-P6YD2xWl_UoHOOBFrFzmWwoUOGlUookQTV_BUcqd79u0se-2LT225-dBrqBY2PAwTLJ4E569AoEOc6mhpUC9i-2I2ovnaO8VLx6GOoWhL8mjIhowAYOdlE0PT-C7DLTLTmLH8_zniT_nw90SYgBX8Py3pzbFv9TYxtBnk9bvJ3uHovQVG3mZ_AMaQdh7ZEajTAx8JxzunPqcT676_UMBPv6iElpTYxVLdlGxFnbkCOY9cN2zhCoRQ.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:moscowtop",
+        "title": "Москва с огоньком",
+        "username": "moscowtop",
+        "avatarUrl": "https://cdn4.telesco.pe/file/A556oUwODWgrJY7oPgAQs1MaKCpHwzpUI8i8rNQ7nX0S_ApO_zWwjWpOeAQgB_R4nrrXPagtxL6wQu0Q1SmH8Be276uAEXHAedTZG6k6kYDtANfFAoinFkYKZJ9ZBqaVeOBu5Ce-_qY6zBRmrSWSLfCPvBxpDi9AnC92OJjcV7UIIULi1zI9Zv_us8ICNQ_CeFQloaw-zZJ_G9zupeh5CrvCXFDmkfq_Yh2z7cMlrO7p5n541g2AA_a8DyJDUJuQFq60IhV6Fg7SJVnL7NnWD5X_JpbcIJ-e6ek7t0U243gj9NTL8a78rXjGZaLuDQZHEQjzte-Q6cRn4Lp9h_5hQA.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:mskonline2024",
+        "title": "Москва онлайн",
+        "username": "mskonline2024",
+        "avatarUrl": "https://cdn4.telesco.pe/file/GeXRTu2ZR0uu8V4yoi6EdrbcpfxXQcUQV8bRKWseMOs_ZWP5WwhRFImWPhSB7lZZ75r8VYBT8vGWQeZKjT1vLIvgEH-i1fRUxEA1pp5BwtPa_M04kwDK2TeZXXH8ynhCsNdgOdYhVBl1vUDvzgh9wVlim1C8-Cq0XYXteYLwc73o3plRMBKBnMdyIqNgNTmdvOqCT7BKuy-263z_YMz0P8Pe4OxeZTBGPhpuOXD_wTjAk1BLK34MnP4pEU-Ygovhu73scdu1yeyw10SdTMcOSjt4dQ9XKbE5j4SXLfk-EzqrSu1Zg1VhqzAIVoGZkbSATZFSD3SWj_Q8GzDECnJv_w.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4
+    ],
+    "firstSeenAt": "2026-06-03T06:40:51.855Z",
+    "lastSeenAt": "2026-06-03T06:41:19.458Z",
+    "examples": [
+      {
+        "id": 3147646146,
+        "text": "😯 Сегодня в Москве потеплеет до +25°C, сообщают синоптики\nОсадки не ожидаются",
+        "url": "https://t.me/moskuda/30228?single",
+        "publishedAt": "2026-06-03T06:40:57.756Z",
+        "sourceTitle": "МосАфиша",
+        "sourceUsername": "moskuda",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/UXYirvOr82W8WJCCc7GkBFJcQ17R9LW_te5YAPI8Gfh0HONFVvvMU7GPaLXXoUXiJVwc1rh8BMgv2rRvGqwn3Psx9FLJlXt28lDQFWCz5YaTZpsCk_iN8RqUhtSrggVHABfhX1tea2z_7f3mcSdyLkoVDXc9ohM6yzoqqIEdI8eCun2t1C1P4_xqLU3-15AWxURjQGYtAqT2FBvf2RUqY56B3PHMa68r60zsuGIdPmS0glJo-xcPsOhxWMocC1tRCqmu5_GufMAh-IbFPpZNC1h1LrwORQ9B7ByOPNkpLOoMcBbjpJfJHwr75OuxjimRBPcQ7qRMeODfazG9swxH_A.jpg"
+      },
+      {
+        "id": 551072881,
+        "text": "😢 Гроза и дождь ожидаются завтра в Москве, — синоптики\nОбъявлен «жёлтый» уровень погодной опасности",
+        "url": "https://t.me/mosjournal/30977?single",
+        "publishedAt": "2026-06-03T06:40:56.301Z",
+        "sourceTitle": "Москва на максималках",
+        "sourceUsername": "mosjournal",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/G6n9fXTcH4sWETAJb6qA8YHVlxoJroU5yUeiR0KKZuKJanGhWsQX0G_nL0Pyo7-f8aXDIQ3pNJYvIIxvvreTb-nUpF6zYda3-P6YD2xWl_UoHOOBFrFzmWwoUOGlUookQTV_BUcqd79u0se-2LT225-dBrqBY2PAwTLJ4E569AoEOc6mhpUC9i-2I2ovnaO8VLx6GOoWhL8mjIhowAYOdlE0PT-C7DLTLTmLH8_zniT_nw90SYgBX8Py3pzbFv9TYxtBnk9bvJ3uHovQVG3mZ_AMaQdh7ZEajTAx8JxzunPqcT676_UMBPv6iElpTYxVLdlGxFnbkCOY9cN2zhCoRQ.jpg"
+      },
+      {
+        "id": 2366427938,
+        "text": "⛈️В четверг в Московском регионе ожидается гроза и дождь, — синоптики\nОбъявлен «желтый» уровень погодной опасности",
+        "url": "https://t.me/moscowtop/68756?single",
+        "publishedAt": "2026-06-03T06:40:51.855Z",
+        "sourceTitle": "Москва с огоньком",
+        "sourceUsername": "moscowtop",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/A556oUwODWgrJY7oPgAQs1MaKCpHwzpUI8i8rNQ7nX0S_ApO_zWwjWpOeAQgB_R4nrrXPagtxL6wQu0Q1SmH8Be276uAEXHAedTZG6k6kYDtANfFAoinFkYKZJ9ZBqaVeOBu5Ce-_qY6zBRmrSWSLfCPvBxpDi9AnC92OJjcV7UIIULi1zI9Zv_us8ICNQ_CeFQloaw-zZJ_G9zupeh5CrvCXFDmkfq_Yh2z7cMlrO7p5n541g2AA_a8DyJDUJuQFq60IhV6Fg7SJVnL7NnWD5X_JpbcIJ-e6ek7t0U243gj9NTL8a78rXjGZaLuDQZHEQjzte-Q6cRn4Lp9h_5hQA.jpg"
+      },
+      {
+        "id": 1056158746,
+        "text": "❗️ «Жёлтый» уровень опасности из-за грозы объявлен из-за грозы в Подмосковье в четверг, сообщили в МЧС",
+        "url": "https://t.me/mskonline2024/27574?single",
+        "publishedAt": "2026-06-03T06:41:19.458Z",
+        "sourceTitle": "Москва онлайн",
+        "sourceUsername": "mskonline2024",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/GeXRTu2ZR0uu8V4yoi6EdrbcpfxXQcUQV8bRKWseMOs_ZWP5WwhRFImWPhSB7lZZ75r8VYBT8vGWQeZKjT1vLIvgEH-i1fRUxEA1pp5BwtPa_M04kwDK2TeZXXH8ynhCsNdgOdYhVBl1vUDvzgh9wVlim1C8-Cq0XYXteYLwc73o3plRMBKBnMdyIqNgNTmdvOqCT7BKuy-263z_YMz0P8Pe4OxeZTBGPhpuOXD_wTjAk1BLK34MnP4pEU-Ygovhu73scdu1yeyw10SdTMcOSjt4dQ9XKbE5j4SXLfk-EzqrSu1Zg1VhqzAIVoGZkbSATZFSD3SWj_Q8GzDECnJv_w.jpg"
+      }
+    ],
+    "signals": [
+      "жёлтый",
+      "объявлен",
+      "опасности",
+      "уровень",
+      "гроза"
+    ],
+    "category": "nature",
+    "categories": [
+      "nature",
+      "news"
+    ]
+  },
+  {
+    "topic": "сериал euphoria",
+    "word": "сериал euphoria",
+    "mentions": 4,
+    "momentum": 400,
+    "change": "+400%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 4,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:tgsticker",
+        "title": "Telegram Stickers | Стикеры",
+        "username": "tgsticker",
+        "avatarUrl": "https://cdn4.telesco.pe/file/aFpTO5tprue52ANN_QijU119Ov93eRuAZcq7s8MRYj214oZtv7ulMvlkIPtFNoaeLsPQePiSyN5tDslG6bfadQxwpGP_WiNy1Z0TvOlBgCfWfXYFFJR1XHfhHUnMRVXIQMe1usJ1iTWhEcjR39aVFvq7wb82_tvEsqyuMzKbtbRdSfhsW4HlRTG4LxzbKiQVGTEai27-ysMkW76TVF0OHeAPdyhmz4BBeUDBF2st9J3inIHVc_IvBE8cD8M7rPT-XcvfdLwTTqKwOzgQRc1qX6zbbzaaEgOJ9eRFBPzZIodh6UNQawPfqSTiW8kBlR6yD5mNAYr8XWgX5AyG_xY6zw.jpg",
+        "mentions": 2
+      },
+      {
+        "id": "ru:tgemojis",
+        "title": "Премиум эмодзи | стикеры | Premium Emoji",
+        "username": "tgemojis",
+        "avatarUrl": "https://cdn4.telesco.pe/file/liuOtJ5j3Skffw6AksPb4AzvhKGfRno0L-GitXrGV6yu2kVxnyn5m_SAfnKlDPTfU2GkUoc50GO-1bfHovescwGpOaJzpc3zqCOurEEtFXNYDOLdw-x6YXkGoOmXtngFqnbhDnRFxlYlDHugsX0JYR6hR9e_BSlSu8d_aQZyBo9b0gjU6VX-ZNm1qsf9xq0hRcdIvrSgx2nu6w51nCeajiWVu56U4EN2PD7AlrAQBxVJk1KN3l1nSDsxwN8gLGHNjq9C7ih-DdjyR2nRsRQTQzo11ANGJ2G-5yQ3etwTadLRPF8h-r2RyIH1KKBAYCtzyezJlT6KU0_4Px9Npzu3Rw.jpg",
+        "mentions": 2
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4
+    ],
+    "firstSeenAt": "2026-06-03T06:29:47.625Z",
+    "lastSeenAt": "2026-06-03T06:29:49.997Z",
+    "examples": [
+      {
+        "id": 489960296,
+        "text": "сериал euphoria\n😊создать свои стикеры",
+        "url": "https://t.me/tgsticker/43158?single",
+        "publishedAt": "2026-06-03T06:29:49.997Z",
+        "sourceTitle": "Telegram Stickers | Стикеры",
+        "sourceUsername": "tgsticker",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/aFpTO5tprue52ANN_QijU119Ov93eRuAZcq7s8MRYj214oZtv7ulMvlkIPtFNoaeLsPQePiSyN5tDslG6bfadQxwpGP_WiNy1Z0TvOlBgCfWfXYFFJR1XHfhHUnMRVXIQMe1usJ1iTWhEcjR39aVFvq7wb82_tvEsqyuMzKbtbRdSfhsW4HlRTG4LxzbKiQVGTEai27-ysMkW76TVF0OHeAPdyhmz4BBeUDBF2st9J3inIHVc_IvBE8cD8M7rPT-XcvfdLwTTqKwOzgQRc1qX6zbbzaaEgOJ9eRFBPzZIodh6UNQawPfqSTiW8kBlR6yD5mNAYr8XWgX5AyG_xY6zw.jpg"
+      },
+      {
+        "id": 1227603674,
+        "text": "🙃создать свои эмодзи",
+        "url": "https://t.me/tgemojis/9774?single",
+        "publishedAt": "2026-06-03T06:29:47.625Z",
+        "sourceTitle": "Премиум эмодзи | стикеры | Premium Emoji",
+        "sourceUsername": "tgemojis",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/liuOtJ5j3Skffw6AksPb4AzvhKGfRno0L-GitXrGV6yu2kVxnyn5m_SAfnKlDPTfU2GkUoc50GO-1bfHovescwGpOaJzpc3zqCOurEEtFXNYDOLdw-x6YXkGoOmXtngFqnbhDnRFxlYlDHugsX0JYR6hR9e_BSlSu8d_aQZyBo9b0gjU6VX-ZNm1qsf9xq0hRcdIvrSgx2nu6w51nCeajiWVu56U4EN2PD7AlrAQBxVJk1KN3l1nSDsxwN8gLGHNjq9C7ih-DdjyR2nRsRQTQzo11ANGJ2G-5yQ3etwTadLRPF8h-r2RyIH1KKBAYCtzyezJlT6KU0_4Px9Npzu3Rw.jpg"
+      },
+      {
+        "id": 4259736198,
+        "text": "Хлоя / Леди Баг\nЛедиБаг cartoons\n😊создать свои стикеры",
+        "url": "https://t.me/tgsticker/43156?single",
+        "publishedAt": "2026-06-03T06:29:49.997Z",
+        "sourceTitle": "Telegram Stickers | Стикеры",
+        "sourceUsername": "tgsticker",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/aFpTO5tprue52ANN_QijU119Ov93eRuAZcq7s8MRYj214oZtv7ulMvlkIPtFNoaeLsPQePiSyN5tDslG6bfadQxwpGP_WiNy1Z0TvOlBgCfWfXYFFJR1XHfhHUnMRVXIQMe1usJ1iTWhEcjR39aVFvq7wb82_tvEsqyuMzKbtbRdSfhsW4HlRTG4LxzbKiQVGTEai27-ysMkW76TVF0OHeAPdyhmz4BBeUDBF2st9J3inIHVc_IvBE8cD8M7rPT-XcvfdLwTTqKwOzgQRc1qX6zbbzaaEgOJ9eRFBPzZIodh6UNQawPfqSTiW8kBlR6yD5mNAYr8XWgX5AyG_xY6zw.jpg"
+      },
+      {
+        "id": 712597916,
+        "text": "🙃создать свои эмодзи",
+        "url": "https://t.me/tgemojis/9772?single",
+        "publishedAt": "2026-06-03T06:29:47.625Z",
+        "sourceTitle": "Премиум эмодзи | стикеры | Premium Emoji",
+        "sourceUsername": "tgemojis",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/liuOtJ5j3Skffw6AksPb4AzvhKGfRno0L-GitXrGV6yu2kVxnyn5m_SAfnKlDPTfU2GkUoc50GO-1bfHovescwGpOaJzpc3zqCOurEEtFXNYDOLdw-x6YXkGoOmXtngFqnbhDnRFxlYlDHugsX0JYR6hR9e_BSlSu8d_aQZyBo9b0gjU6VX-ZNm1qsf9xq0hRcdIvrSgx2nu6w51nCeajiWVu56U4EN2PD7AlrAQBxVJk1KN3l1nSDsxwN8gLGHNjq9C7ih-DdjyR2nRsRQTQzo11ANGJ2G-5yQ3etwTadLRPF8h-r2RyIH1KKBAYCtzyezJlT6KU0_4Px9Npzu3Rw.jpg"
+      }
+    ],
+    "signals": [
+      "свои",
+      "создать",
+      "cartoons",
+      "euphoria",
+      "баг"
+    ],
+    "category": "telegram",
+    "categories": [
+      "telegram",
+      "culture",
+      "cinema"
+    ]
+  },
+  {
+    "topic": "Bitcoin Упал ниже 67000$",
+    "word": "Bitcoin Упал ниже 67000$",
+    "mentions": 3,
+    "momentum": 300,
+    "change": "+300%",
+    "sourceCount": 3,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 3,
+        "sourceCount": 3
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:podarokdurova",
+        "title": "Подарок Дурова",
+        "username": "podarokdurova",
+        "avatarUrl": "https://cdn4.telesco.pe/file/isgdmHOLcYO5jIhOxocc1UZqy2sc5gSYsec89W40eOSlSl1HKLmYKZD5g2EIzepC_NjMd3L2TX1Ih2Yw6W277EPHjMzrCjsxzlKJ1O-7n1iWqJL2eXLpmFbDAVgio-qO7eTtk-N-tBbGZFp3YmDhMNZgh0vYTpNKPbEWcUKTiMF73uJo3gzJcRbW3vFa0cGnXfg-j9t-VHgg8IOAS_T2FYFVrRfeXYDbCEBVUkbmNnLRKJGUUfRuTm-SJavWteD-6gzFrwRh6v9o3b9GnuwXerO-h8etORJ3x0bvUEl_FgnIVi3fT9tfYJ9Q2S9zaohodAYFndoTYQo_04YEEpCgAg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:lowake",
+        "title": "ловаке вещает.. ©️",
+        "username": "lowake",
+        "avatarUrl": "https://cdn4.telesco.pe/file/bTt_cMIXR4jrrFaoyJjm2hb47jx6HjNkix4CZ7Rs42OMs4JH2cN4mVePvDV4q1ioen1d3e2-iPAg9sGoXMF8qiuR-JGWtfGwHgrg5QCX05tlOma29phi9tgEVflczWxEP-0qyAiXq4IQf6o7v-v7NH3l7X9fZgUcOLAs7Zf5ISP-i9-vck8A34lKyv4_wejVZ2rJHXrjyLBN1ya8xqXghIDu2AtWzFsDqy09W6IJLVGD8MGe6dkJwrm3b4UJGBsuG-ucV_HYZ5ZXFm5v05LYlzVHeqHlh3AZ-HklSQ_zOLX_PCxJIj0ckNgqjuqge4-rN5i77ClpnngMeIZ40RZ5gw.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:crypto_okop",
+        "title": "🇷🇺 The Club 100 - Криптовалютый окоп",
+        "username": "crypto_okop",
+        "avatarUrl": "https://cdn4.telesco.pe/file/gzMy-XIOQdwsLPSAWCIxHYHKYXS0_t_eX9m7hHU-oFqx-xUJQBB9FIGH3mlgWR7tjoY_xN_4InWi76ZQTGu5xzArzUHcADN7cV8JPA7ffYnS8iX57H-bVEpaRlSncbhPuP1R23ahO4Ph1SqmN_26kMXyp4xOTXKLLZgcUSqNh107mNUVc-s6N7Rmrvp5Ok2eQ_G2MXpukZktpfLUbt6PtN5wtwYfVNMjKZ4gnHHtg1EUJqaKDGFhAjxGo0jDEP4nz2MjaDVRI52XEzziI1SCmUnjD0zFp6OFgbR1YCoRy7EOdlM5AgcGLhn3w27xsxNMx2zymGIAFjMMPUQQou-Aog.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ],
+    "firstSeenAt": "2026-06-03T06:34:30.121Z",
+    "lastSeenAt": "2026-06-03T06:43:03.915Z",
+    "examples": [
+      {
+        "id": 2932740615,
+        "text": "Впервые за 2 месяца Bitcoin опустился до 69 000$, но при этом GRAM продолжает уверенно торговаться по 2$\nждем биток еще ниже\n🤩 - по 67к жду",
+        "url": "https://t.me/podarokdurova/7154?single",
+        "publishedAt": "2026-06-03T06:43:03.915Z",
+        "sourceTitle": "Подарок Дурова",
+        "sourceUsername": "podarokdurova",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/isgdmHOLcYO5jIhOxocc1UZqy2sc5gSYsec89W40eOSlSl1HKLmYKZD5g2EIzepC_NjMd3L2TX1Ih2Yw6W277EPHjMzrCjsxzlKJ1O-7n1iWqJL2eXLpmFbDAVgio-qO7eTtk-N-tBbGZFp3YmDhMNZgh0vYTpNKPbEWcUKTiMF73uJo3gzJcRbW3vFa0cGnXfg-j9t-VHgg8IOAS_T2FYFVrRfeXYDbCEBVUkbmNnLRKJGUUfRuTm-SJavWteD-6gzFrwRh6v9o3b9GnuwXerO-h8etORJ3x0bvUEl_FgnIVi3fT9tfYJ9Q2S9zaohodAYFndoTYQo_04YEEpCgAg.jpg"
+      },
+      {
+        "id": 927112282,
+        "text": "Bitcoin упал до $69 000 впервые с начала апреля",
+        "url": "https://t.me/lowake/5742?single",
+        "publishedAt": "2026-06-03T06:37:51.470Z",
+        "sourceTitle": "ловаке вещает.. ©️",
+        "sourceUsername": "lowake",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/bTt_cMIXR4jrrFaoyJjm2hb47jx6HjNkix4CZ7Rs42OMs4JH2cN4mVePvDV4q1ioen1d3e2-iPAg9sGoXMF8qiuR-JGWtfGwHgrg5QCX05tlOma29phi9tgEVflczWxEP-0qyAiXq4IQf6o7v-v7NH3l7X9fZgUcOLAs7Zf5ISP-i9-vck8A34lKyv4_wejVZ2rJHXrjyLBN1ya8xqXghIDu2AtWzFsDqy09W6IJLVGD8MGe6dkJwrm3b4UJGBsuG-ucV_HYZ5ZXFm5v05LYlzVHeqHlh3AZ-HklSQ_zOLX_PCxJIj0ckNgqjuqge4-rN5i77ClpnngMeIZ40RZ5gw.jpg"
+      },
+      {
+        "id": 2010693314,
+        "text": "Bitcoin Упал ниже 67000$",
+        "url": "https://t.me/crypto_okop/23748?single",
+        "publishedAt": "2026-06-03T06:34:30.121Z",
+        "sourceTitle": "🇷🇺 The Club 100 - Криптовалютый окоп",
+        "sourceUsername": "crypto_okop",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/gzMy-XIOQdwsLPSAWCIxHYHKYXS0_t_eX9m7hHU-oFqx-xUJQBB9FIGH3mlgWR7tjoY_xN_4InWi76ZQTGu5xzArzUHcADN7cV8JPA7ffYnS8iX57H-bVEpaRlSncbhPuP1R23ahO4Ph1SqmN_26kMXyp4xOTXKLLZgcUSqNh107mNUVc-s6N7Rmrvp5Ok2eQ_G2MXpukZktpfLUbt6PtN5wtwYfVNMjKZ4gnHHtg1EUJqaKDGFhAjxGo0jDEP4nz2MjaDVRI52XEzziI1SCmUnjD0zFp6OFgbR1YCoRy7EOdlM5AgcGLhn3w27xsxNMx2zymGIAFjMMPUQQou-Aog.jpg"
+      }
+    ],
+    "signals": [
+      "bitcoin",
+      "впервые",
+      "упал",
+      "gram",
+      "месяца"
+    ],
+    "category": "finance",
+    "categories": [
+      "finance",
+      "crypto",
+      "telegram",
+      "celebrities",
+      "auto"
+    ]
+  },
+  {
+    "topic": "Азовское море крылатая ракета",
+    "word": "Азовское море крылатая ракета",
+    "mentions": 3,
+    "momentum": 300,
+    "change": "+300%",
+    "sourceCount": 3,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 3,
+        "sourceCount": 3
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:lpralarm",
+        "title": "LPR оповещения, тревоги, отмены режима тревог",
+        "username": "lpralarm",
+        "avatarUrl": "https://cdn4.telesco.pe/file/GLtPKEiJJhf6BC8D7EZvjvQfPBcf-gPx0KFaQ8Q3Io498j_UsLtXTVrS8eeKilIAgfaSXuRM7MQIS3jDBkioWbEpYE5CV0g9pwhlETQpdUF287pCoOdkT2IVFRWmSY6CsvNOwRqK2rZULqkPckOWbMptZcJA4bUivvpM1Q1ZAne1Tbv4CxIgOHTtnSb8bVTpCOzA9q5Y88T_H3o_lekoyOmSEKJewm3BZRAZBzTmBgTs5x-T_1uLaBjFxc0zedC8sb370Sp6Kgy0ofaI0KOirl9Tgrcbsjo_javG2r-drvUFC8ZdqEN1jTCgblEeYiBSa-jux8cAVYqNoHA_hS0hig.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:lpr1_crimea_alarm",
+        "title": "Республика Крым, Севастополь Оповещения, тревоги",
+        "username": "lpr1_crimea_alarm",
+        "avatarUrl": "https://cdn4.telesco.pe/file/mfOdrqUJbJaqfmZLQFNVBeTGaIFXeZ6fz4ah2usNzJS35ZG6s9TYttrzRvFQ_npmNZVBhv0EuE32tKTe6saAgWhjdx09az41Y5g5zXh_2k0Lheatdt1oAcQSipQY1YkniypCfLdbFItADy87HKjKtJegAZZwD3za-R3JoO8DW3eScIE99DrDg1mSFNq5Y310i4lBeu_pHb4AwRJj3_JiQTseP7v6UWUzvG_2vzWMFRChTAzfZAwA_GsRm4h9z_nSOj-b-KDHRx-gEdQjp2isYdOUMsABM8aJiepXgEGZjQbLuT_9Auc4EBrNS-RwQP1C9pgpDCmweuT-W7elC1yvHg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:kupolrussia",
+        "title": "КУПОЛ РОССИИ",
+        "username": "kupolrussia",
+        "avatarUrl": "https://cdn4.telesco.pe/file/jwnCBPVpNKibJq1KUh-nhBYrSF3YnOz0E_-yH1fUFCPpOpCHWQX2gjVvj5x4GlkzRoQVppMWil_Ry_1tYlpPESJReA5jlxLYApDZ459jfcbzLo8WVNCflQJ8CX0EeBdJC4rhmMqzi3nwzRs93T1QUuff73aVYw8vXiMshapAvxPxB8Bknlnqf05qFOfTExt4PHMvFg4xRL1O0pW9P6Rqz7tkm2s14A7DITULOvhi8s-iwyUF6_Pd-HjA9-08TGg3_e5GkhRBFz78Jon6TwiADLPx7wdWny8F0nk9ZUFZ674jtvWpgO7cxG54U2ymkS5WMunTwKQSNg1FV2B3O2wR-A.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ],
+    "firstSeenAt": "2026-06-03T06:40:07.859Z",
+    "lastSeenAt": "2026-06-03T06:40:18.554Z",
+    "examples": [
+      {
+        "id": 4148542077,
+        "text": "Азовское море крылатая ракета",
+        "url": "https://t.me/lpralarm/179138?single",
+        "publishedAt": "2026-06-03T06:40:18.554Z",
+        "sourceTitle": "LPR оповещения, тревоги, отмены режима тревог",
+        "sourceUsername": "lpralarm",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/GLtPKEiJJhf6BC8D7EZvjvQfPBcf-gPx0KFaQ8Q3Io498j_UsLtXTVrS8eeKilIAgfaSXuRM7MQIS3jDBkioWbEpYE5CV0g9pwhlETQpdUF287pCoOdkT2IVFRWmSY6CsvNOwRqK2rZULqkPckOWbMptZcJA4bUivvpM1Q1ZAne1Tbv4CxIgOHTtnSb8bVTpCOzA9q5Y88T_H3o_lekoyOmSEKJewm3BZRAZBzTmBgTs5x-T_1uLaBjFxc0zedC8sb370Sp6Kgy0ofaI0KOirl9Tgrcbsjo_javG2r-drvUFC8ZdqEN1jTCgblEeYiBSa-jux8cAVYqNoHA_hS0hig.jpg"
+      },
+      {
+        "id": 1004450406,
+        "text": "Азовское море крылатая ракета",
+        "url": "https://t.me/lpr1_crimea_alarm/31239?single",
+        "publishedAt": "2026-06-03T06:40:17.791Z",
+        "sourceTitle": "Республика Крым, Севастополь Оповещения, тревоги",
+        "sourceUsername": "lpr1_crimea_alarm",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/mfOdrqUJbJaqfmZLQFNVBeTGaIFXeZ6fz4ah2usNzJS35ZG6s9TYttrzRvFQ_npmNZVBhv0EuE32tKTe6saAgWhjdx09az41Y5g5zXh_2k0Lheatdt1oAcQSipQY1YkniypCfLdbFItADy87HKjKtJegAZZwD3za-R3JoO8DW3eScIE99DrDg1mSFNq5Y310i4lBeu_pHb4AwRJj3_JiQTseP7v6UWUzvG_2vzWMFRChTAzfZAwA_GsRm4h9z_nSOj-b-KDHRx-gEdQjp2isYdOUMsABM8aJiepXgEGZjQbLuT_9Auc4EBrNS-RwQP1C9pgpDCmweuT-W7elC1yvHg.jpg"
+      },
+      {
+        "id": 872459201,
+        "text": "Азовское море крылатая ракета",
+        "url": "https://t.me/kupolrussia/80277?single",
+        "publishedAt": "2026-06-03T06:40:07.859Z",
+        "sourceTitle": "КУПОЛ РОССИИ",
+        "sourceUsername": "kupolrussia",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/jwnCBPVpNKibJq1KUh-nhBYrSF3YnOz0E_-yH1fUFCPpOpCHWQX2gjVvj5x4GlkzRoQVppMWil_Ry_1tYlpPESJReA5jlxLYApDZ459jfcbzLo8WVNCflQJ8CX0EeBdJC4rhmMqzi3nwzRs93T1QUuff73aVYw8vXiMshapAvxPxB8Bknlnqf05qFOfTExt4PHMvFg4xRL1O0pW9P6Rqz7tkm2s14A7DITULOvhi8s-iwyUF6_Pd-HjA9-08TGg3_e5GkhRBFz78Jon6TwiADLPx7wdWny8F0nk9ZUFZ674jtvWpgO7cxG54U2ymkS5WMunTwKQSNg1FV2B3O2wR-A.jpg"
+      }
+    ],
+    "signals": [
+      "азовское",
+      "крылатая",
+      "море",
+      "ракета"
+    ],
+    "category": "politics",
+    "categories": [
+      "politics",
+      "science",
+      "war",
+      "space",
+      "marketing",
       "telegram"
     ]
   },
   {
-    "topic": "Приятного просмотра",
-    "word": "Приятного просмотра",
+    "topic": "Обзор кладовой",
+    "word": "Обзор кладовой",
+    "mentions": 3,
+    "momentum": 300,
+    "change": "+300%",
+    "sourceCount": 3,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 3,
+        "sourceCount": 3
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:remont_decor_interero",
+        "title": "Интерьер и декор",
+        "username": "remont_decor_interero",
+        "avatarUrl": "https://cdn4.telesco.pe/file/saro86dRtGfS84WxemcFrrNTnvnxqnsKbUrVpS_QZBleeSxetJ3Bq0_I2KNE9tKwbT1Pvm0ZB3IAF-cKcNiL11TJBnn1xm3SVmQNkMuIS4ufzX46eqttrW04z4Up2NPaeW3B2BwiUl6ahx9iiIqYHVgq7CM98q8li1YVt1dcVZ5HmsLSHTpluaEZCtyBG2MlRHwk0akFhTu74JER5yRYBE6CbA-DUwljE_-hfcGu4Rg0YKCBwJt7-Z3lUvm5Iyi4AYURNLUL-e7V9nbXP7i7AmfyBxNRXPxeNKps5qsDs57UYe1WSS-hi7Uk72NgqHWcozkdrQrSdHRkLGeoB69B2w.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:anthonyuly",
+        "title": "персик",
+        "username": "anthonyuly",
+        "avatarUrl": "https://cdn4.telesco.pe/file/vrk9AtaIK7RAJD2trzMvBjv0aiSm_I7o3YKxj8GOnEv3u9h2v4o5mlQUKNvRD0DAA-Efm9NoOXmQxpzUtRxwY8iM7Cp71OFEYHInN9uoXK5Y_jnowWphzN0nWgskPfn5eSOyQzJGqSmQ0Udylfyz0UdsvzsTzKIoJkHeIaXq_wkZ_d0T4z4a0UY_7xMFnRm3A1u6H_Fm7OHBHz7smAMfRqe2cfDN8ZOQGZOC-sE5mTioRF9AKEPAmv5IshJoD3YPh5T0d1dfUI2jLif9_TF_Ktz9uDlF5mg8VOJQ5wiv_OoHCv1x7hophOAdUeMbRYdvPyuG7C9bWLAY-Tgf7tz25w.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:yurydud",
+        "title": "Дудь",
+        "username": "yurydud",
+        "avatarUrl": "https://cdn4.telesco.pe/file/kmBWF9CxzS2xXdxGA663hx0VMOszKeg7sbImblOSxJdKwVcM7DG_OSUNXyDtWL49N16Wv0SjbSohSWHtQO8P3gV6aRj-bOBJHbFF_vmL7WblmZH6RuBUSjpFo4ItOKFB0k7r3QH2q3UpvIauBOy9BeSdj_tjZHd9XTmHVIBRby4yxnho77lc816WKKvcapNHr8qYhRb38xms5MU_Az7aK6J1vApyrdOIFpRWJRs-x8sppyZwmAyiiDRSEyzz8tRdSDkAXapQ_OYeNW-9o6DzTAwmf10N511AlZNvCd9b_VQwvxz67XcFT4BxojJtJgndiKNR5vCgJBh90qHdxV9A4w.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ],
+    "firstSeenAt": "2026-06-03T06:32:19.912Z",
+    "lastSeenAt": "2026-06-03T06:43:48.928Z",
+    "examples": [
+      {
+        "id": 1022347743,
+        "text": "Обзор кладовой",
+        "url": "https://t.me/remont_decor_interero/8408?single",
+        "publishedAt": "2026-06-03T06:43:48.928Z",
+        "sourceTitle": "Интерьер и декор",
+        "sourceUsername": "remont_decor_interero",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/saro86dRtGfS84WxemcFrrNTnvnxqnsKbUrVpS_QZBleeSxetJ3Bq0_I2KNE9tKwbT1Pvm0ZB3IAF-cKcNiL11TJBnn1xm3SVmQNkMuIS4ufzX46eqttrW04z4Up2NPaeW3B2BwiUl6ahx9iiIqYHVgq7CM98q8li1YVt1dcVZ5HmsLSHTpluaEZCtyBG2MlRHwk0akFhTu74JER5yRYBE6CbA-DUwljE_-hfcGu4Rg0YKCBwJt7-Z3lUvm5Iyi4AYURNLUL-e7V9nbXP7i7AmfyBxNRXPxeNKps5qsDs57UYe1WSS-hi7Uk72NgqHWcozkdrQrSdHRkLGeoB69B2w.jpg"
+      },
+      {
+        "id": 877196607,
+        "text": "Насколько сильно вы ждете обзор на Систему «Спаси-Себя-Сам» для Главного Злодея? 😭\nНадеюсь, что очень сильно, а пока я монтирую обзор, поделюсь небольшим отрывком\nВы бы знали как сложно пересказать сюжет, когда все происходящее это уже то, как я пересказываю сюжет книг в обзорах 😳",
+        "url": "https://t.me/anthonyuly/8113?single",
+        "publishedAt": "2026-06-03T06:38:43.470Z",
+        "sourceTitle": "персик",
+        "sourceUsername": "anthonyuly",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/vrk9AtaIK7RAJD2trzMvBjv0aiSm_I7o3YKxj8GOnEv3u9h2v4o5mlQUKNvRD0DAA-Efm9NoOXmQxpzUtRxwY8iM7Cp71OFEYHInN9uoXK5Y_jnowWphzN0nWgskPfn5eSOyQzJGqSmQ0Udylfyz0UdsvzsTzKIoJkHeIaXq_wkZ_d0T4z4a0UY_7xMFnRm3A1u6H_Fm7OHBHz7smAMfRqe2cfDN8ZOQGZOC-sE5mTioRF9AKEPAmv5IshJoD3YPh5T0d1dfUI2jLif9_TF_Ktz9uDlF5mg8VOJQ5wiv_OoHCv1x7hophOAdUeMbRYdvPyuG7C9bWLAY-Tgf7tz25w.jpg"
+      },
+      {
+        "id": 1318752150,
+        "text": "А вы – знали? Только честно",
+        "url": "https://t.me/yurydud/1859?single",
+        "publishedAt": "2026-06-03T06:32:19.912Z",
+        "sourceTitle": "Дудь",
+        "sourceUsername": "yurydud",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/kmBWF9CxzS2xXdxGA663hx0VMOszKeg7sbImblOSxJdKwVcM7DG_OSUNXyDtWL49N16Wv0SjbSohSWHtQO8P3gV6aRj-bOBJHbFF_vmL7WblmZH6RuBUSjpFo4ItOKFB0k7r3QH2q3UpvIauBOy9BeSdj_tjZHd9XTmHVIBRby4yxnho77lc816WKKvcapNHr8qYhRb38xms5MU_Az7aK6J1vApyrdOIFpRWJRs-x8sppyZwmAyiiDRSEyzz8tRdSDkAXapQ_OYeNW-9o6DzTAwmf10N511AlZNvCd9b_VQwvxz67XcFT4BxojJtJgndiKNR5vCgJBh90qHdxV9A4w.jpg"
+      }
+    ],
+    "signals": [
+      "обзор",
+      "ждете",
+      "знали",
+      "кладовой",
+      "насколько"
+    ],
+    "category": "education",
+    "categories": [
+      "education",
+      "nature",
+      "technology",
+      "books",
+      "animals",
+      "ai",
+      "marketing"
+    ]
+  },
+  {
+    "topic": "Полноприводный Москвич",
+    "word": "Полноприводный Москвич",
+    "mentions": 3,
+    "momentum": 300,
+    "change": "+300%",
+    "sourceCount": 3,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 3,
+        "sourceCount": 3
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:mosclive",
+        "title": "Москва Live",
+        "username": "mosclive",
+        "avatarUrl": "https://cdn4.telesco.pe/file/qjkEObRZH_QBM7QVn3N_7dFy-mSdBCAE6kbNdhUMRdEOaLD0XiExqJOJXm_b4p7YFNH56iRk9asV_HyrspM5W2N0u9WNH7DJZQq1PFqymjIu_U28ggxVralbrpCPIVLgIsTQTr601zjc-uRQOatvoq8owjC9fVBNzyeNZFi6ItKpeI_cJI-Gv2HY44MxzhPwrcAuC80_cK_SpZ-2WBGHFH4GCKkRFSxIyJ8aomWwsDgpsSHn5m4s-fVvGWnqh3Fjorcc3cDQ9a_Lm7lYLlsEvJdmbwVzHQSlh1g-UYRVxSwUHLU9xDvOE_5llXWMD5lQkQaysMqirzw3hywW4anG9w.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:ogomoscow",
+        "title": "Москва не спит • Афиша, новости",
+        "username": "ogomoscow",
+        "avatarUrl": "https://cdn4.telesco.pe/file/q3zJTbMv_KK8Mpkbp1rg68HGnAMfOhcq03SQdMCTr9-AjhWNOFVsIj2tsTYFc9BjRZeZQeeGdah-vYW-1cCRoS6nfHUXLDyjfynKLQRhixNJYLNog4_NPo-HdT-F5LIJhNtjFh0yKKdrd8e2WcEYzeqgI4iQx0BcylWlYVFc3ZRl6u0fyYik42tXL8pMTo9iuMqQrR_DkWDnjJkAmBMc5eyp-Z-4Q3zss1Ue_cLXzeoYoATJaafCODiuhGPuq1XUEAx0Qtbes4bLS_PnMvpyJ255TXl8quIb0AtSZrZA9dIgIuT8GeF0ewR7cfFWTsZivdecN1cgExeqr31fFYR5dw.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:driverone",
+        "title": "За рулём",
+        "username": "driverone",
+        "avatarUrl": "https://cdn4.telesco.pe/file/TscvgC2VcMUYjawvJdm87NF5uWNS49qo2IO9vTxS15Ih3zsNTprCzYvz6UQ4tVJt4X4FhO7xQXN9vRZ6raoDKDLCFdO6-8y5Gv2pTB_yd5E7iAseQXDKVksgQI806vbxi04XBqgZAPDefeFOr_CtR9u8IUC_Na-Bo5iZwj_iEWjfJhAd8M-K8itkCei8D0V-pbcTVfW18VwO9MfvKdBT1bdORcZA9ZOGhVCIOZsoyuGykQwZwzkVUqI9HYtRKJ3svsHo9nYy-YnYfKQW_HwvR8zR9DBi1knhi_wptnV3KLpz_RoEshIgI96nQPhrad8wZY0K3wD_JKMElZWo5h0tkA.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ],
+    "firstSeenAt": "2026-06-03T06:35:07.465Z",
+    "lastSeenAt": "2026-06-03T06:42:16.267Z",
+    "examples": [
+      {
+        "id": 2428049664,
+        "text": "😱 Москвич вытолкнул в окно свою подругу на северо-востоке столицы во время вечеринки — девушка погибла\nРанее он уже угрожал убить другую свою подругу, его задержали\nновостей👉 Мы в МАКС",
+        "url": "https://t.me/mosclive/27741?single",
+        "publishedAt": "2026-06-03T06:40:40.776Z",
+        "sourceTitle": "Москва Live",
+        "sourceUsername": "mosclive",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/qjkEObRZH_QBM7QVn3N_7dFy-mSdBCAE6kbNdhUMRdEOaLD0XiExqJOJXm_b4p7YFNH56iRk9asV_HyrspM5W2N0u9WNH7DJZQq1PFqymjIu_U28ggxVralbrpCPIVLgIsTQTr601zjc-uRQOatvoq8owjC9fVBNzyeNZFi6ItKpeI_cJI-Gv2HY44MxzhPwrcAuC80_cK_SpZ-2WBGHFH4GCKkRFSxIyJ8aomWwsDgpsSHn5m4s-fVvGWnqh3Fjorcc3cDQ9a_Lm7lYLlsEvJdmbwVzHQSlh1g-UYRVxSwUHLU9xDvOE_5llXWMD5lQkQaysMqirzw3hywW4anG9w.jpg"
+      },
+      {
+        "id": 797595886,
+        "text": "💥 Житель Москвы вытолкнул подругу из окна\nНа северо-востоке столицы это произошло во время вечеринки. Девушка погибла. Ранее мужчина уже угрожал убить другую свою подругу, его задержали",
+        "url": "https://t.me/ogomoscow/13167?single",
+        "publishedAt": "2026-06-03T06:42:16.267Z",
+        "sourceTitle": "Москва не спит • Афиша, новости",
+        "sourceUsername": "ogomoscow",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/q3zJTbMv_KK8Mpkbp1rg68HGnAMfOhcq03SQdMCTr9-AjhWNOFVsIj2tsTYFc9BjRZeZQeeGdah-vYW-1cCRoS6nfHUXLDyjfynKLQRhixNJYLNog4_NPo-HdT-F5LIJhNtjFh0yKKdrd8e2WcEYzeqgI4iQx0BcylWlYVFc3ZRl6u0fyYik42tXL8pMTo9iuMqQrR_DkWDnjJkAmBMc5eyp-Z-4Q3zss1Ue_cLXzeoYoATJaafCODiuhGPuq1XUEAx0Qtbes4bLS_PnMvpyJ255TXl8quIb0AtSZrZA9dIgIuT8GeF0ewR7cfFWTsZivdecN1cgExeqr31fFYR5dw.jpg"
+      },
+      {
+        "id": 4272038184,
+        "text": "Полноприводный Москвич",
+        "url": "https://t.me/driverone/22838?single",
+        "publishedAt": "2026-06-03T06:35:07.465Z",
+        "sourceTitle": "За рулём",
+        "sourceUsername": "driverone",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/TscvgC2VcMUYjawvJdm87NF5uWNS49qo2IO9vTxS15Ih3zsNTprCzYvz6UQ4tVJt4X4FhO7xQXN9vRZ6raoDKDLCFdO6-8y5Gv2pTB_yd5E7iAseQXDKVksgQI806vbxi04XBqgZAPDefeFOr_CtR9u8IUC_Na-Bo5iZwj_iEWjfJhAd8M-K8itkCei8D0V-pbcTVfW18VwO9MfvKdBT1bdORcZA9ZOGhVCIOZsoyuGykQwZwzkVUqI9HYtRKJ3svsHo9nYy-YnYfKQW_HwvR8zR9DBi1knhi_wptnV3KLpz_RoEshIgI96nQPhrad8wZY0K3wD_JKMElZWo5h0tkA.jpg"
+      }
+    ],
+    "signals": [
+      "москвич",
+      "вечеринки",
+      "время",
+      "вытолкнул",
+      "окно"
+    ],
+    "category": "news",
+    "categories": [
+      "news"
+    ]
+  },
+  {
+    "topic": "Фото: Анастасия Фомина",
+    "word": "Фото: Анастасия Фомина",
+    "mentions": 3,
+    "momentum": 300,
+    "change": "+300%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 3,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:pobedaairlines",
+        "title": "Авиакомпания «Победа»",
+        "username": "pobedaairlines",
+        "avatarUrl": "https://cdn4.telesco.pe/file/lnH3Q7pM0smTFjhC0w3XRpOriXdGti20f-KfycXnFc3F7tQdQKSok1m2u2oUSQ7m-3qk5umt_VHZXfv0pDN8ZHAZNKAdzIkuCnUSvx7Bx8cB60YP0qs5ODLLs_jt5maFjQKn4q4n425yWVp8t4ygEIRbIoo0DtjudA8MjtCVd80FlP_D_2TGFDSlJguq3PE-DCYGvbhwhPQoIBQXUYWEkYvp88JkjoZtN9p1M8kKmZ8nxzOtVSCY2DKtQ-AgVZ5SS08lmCzTlJ5nQ6jkGTQTXwTdr4sqzYQ-Esd9rBQUPToZnicfL5UPwhJCkcW3tkpnfTC4jSJEnxiBxhlQiy0RFg.jpg",
+        "mentions": 2
+      },
+      {
+        "id": "ru:mskmycity",
+        "title": "Мой город — Москва",
+        "username": "mskmycity",
+        "avatarUrl": "https://cdn4.telesco.pe/file/sKTqitrOtJaZk-gq0jAoQNEbt_6JkjaUsRiJuHOiGOuaeE8xpvRQXFlralPoMXVYmkViknfdstUaA6x3mrpdsR0geUnrm9z0OIfUTipU7UkR3heWYah0IlNeMhNZ-FWXJJMizszno3chjNPDNI1re7TDg8CU-b1sYBMmzdcu2cJduWbcynrgn_ZfpJQn3G-S2GQ_lSZ3JGA95828Fj7tImqRLNzBoSLV9If-s39JjOA_UxqHcLd4gY83u3JoJMSyyE-vfkDYjM36YKaFGOnEUTcBJKzJaYgtZAmAthVmCNk49eXjwGieECexoU2ezOFI79XgkiypRjLrd2QcEV2X6w.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ],
+    "firstSeenAt": "2026-06-03T06:41:18.700Z",
+    "lastSeenAt": "2026-06-03T06:43:00.861Z",
+    "examples": [
+      {
+        "id": 680826668,
+        "text": "Волшебный рейс «В ожидании чуда» – гендер-вечеринка на высоте 11 000 метров! ✨\nАлексей и Анастасия создали свою семью на «Свадебном рейсе», а сейчас ждут первого малыша. Прямо в полёте мы узнали пол будущего ребёнка. Угощения, подарки, улыбки и слёзы радости. Смотрите, как это было, в ролике 🤍\nМы делаем всё, чтобы ваши перелёты были комфортными, тёплыми и с",
+        "url": "https://t.me/pobedaairlines/1561?single",
+        "publishedAt": "2026-06-03T06:43:00.861Z",
+        "sourceTitle": "Авиакомпания «Победа»",
+        "sourceUsername": "pobedaairlines",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/lnH3Q7pM0smTFjhC0w3XRpOriXdGti20f-KfycXnFc3F7tQdQKSok1m2u2oUSQ7m-3qk5umt_VHZXfv0pDN8ZHAZNKAdzIkuCnUSvx7Bx8cB60YP0qs5ODLLs_jt5maFjQKn4q4n425yWVp8t4ygEIRbIoo0DtjudA8MjtCVd80FlP_D_2TGFDSlJguq3PE-DCYGvbhwhPQoIBQXUYWEkYvp88JkjoZtN9p1M8kKmZ8nxzOtVSCY2DKtQ-AgVZ5SS08lmCzTlJ5nQ6jkGTQTXwTdr4sqzYQ-Esd9rBQUPToZnicfL5UPwhJCkcW3tkpnfTC4jSJEnxiBxhlQiy0RFg.jpg"
+      },
+      {
+        "id": 680826668,
+        "text": "Волшебный рейс «В ожидании чуда» – гендер-вечеринка на высоте 11 000 метров! ✨\nАлексей и Анастасия создали свою семью на «Свадебном рейсе», а сейчас ждут первого малыша. Прямо в полёте мы узнали пол будущего ребёнка. Угощения, подарки, улыбки и слёзы радости. Смотрите, как это было, в ролике 🤍\nМы делаем всё, чтобы ваши перелёты были комфортными, тёплыми и с",
+        "url": "https://t.me/pobedaairlines/1561?single",
+        "publishedAt": "2026-06-03T06:43:00.861Z",
+        "sourceTitle": "Авиакомпания «Победа»",
+        "sourceUsername": "pobedaairlines",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/lnH3Q7pM0smTFjhC0w3XRpOriXdGti20f-KfycXnFc3F7tQdQKSok1m2u2oUSQ7m-3qk5umt_VHZXfv0pDN8ZHAZNKAdzIkuCnUSvx7Bx8cB60YP0qs5ODLLs_jt5maFjQKn4q4n425yWVp8t4ygEIRbIoo0DtjudA8MjtCVd80FlP_D_2TGFDSlJguq3PE-DCYGvbhwhPQoIBQXUYWEkYvp88JkjoZtN9p1M8kKmZ8nxzOtVSCY2DKtQ-AgVZ5SS08lmCzTlJ5nQ6jkGTQTXwTdr4sqzYQ-Esd9rBQUPToZnicfL5UPwhJCkcW3tkpnfTC4jSJEnxiBxhlQiy0RFg.jpg"
+      },
+      {
+        "id": 728312652,
+        "text": "Фото: Анастасия Фомина",
+        "url": "https://t.me/mskmycity/16408?single",
+        "publishedAt": "2026-06-03T06:41:18.700Z",
+        "sourceTitle": "Мой город — Москва",
+        "sourceUsername": "mskmycity",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/sKTqitrOtJaZk-gq0jAoQNEbt_6JkjaUsRiJuHOiGOuaeE8xpvRQXFlralPoMXVYmkViknfdstUaA6x3mrpdsR0geUnrm9z0OIfUTipU7UkR3heWYah0IlNeMhNZ-FWXJJMizszno3chjNPDNI1re7TDg8CU-b1sYBMmzdcu2cJduWbcynrgn_ZfpJQn3G-S2GQ_lSZ3JGA95828Fj7tImqRLNzBoSLV9If-s39JjOA_UxqHcLd4gY83u3JoJMSyyE-vfkDYjM36YKaFGOnEUTcBJKzJaYgtZAmAthVmCNk49eXjwGieECexoU2ezOFI79XgkiypRjLrd2QcEV2X6w.jpg"
+      }
+    ],
+    "signals": [
+      "анастасия",
+      "защиты",
+      "международного",
+      "некоторых",
+      "рейсах"
+    ],
+    "category": "food",
+    "categories": [
+      "food",
+      "business",
+      "recipes",
+      "real_estate",
+      "technology"
+    ]
+  },
+  {
+    "topic": "Ростовская область",
+    "word": "Ростовская область",
+    "mentions": 3,
+    "momentum": 300,
+    "change": "+300%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 3,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:russiamonitoring_radar_bpla",
+        "title": "мониторинг.рф",
+        "username": "russiamonitoring_radar_bpla",
+        "avatarUrl": "https://cdn4.telesco.pe/file/ax-ohZ30OeBfydSScNIz7KL0VtX2o5jGbR88ZHB8YmY2SAKkxVdIGMEOPJFysYxu9yGO8lOCxZk86GbskR_o_myFpmbTBjQNgyWWnK4WwF0GNAlQwFohff_lsI0GODtoyiyyZV3K-5CijUEbi_xvw6q_Y6UR9-t3hVX6_NFkuavxz3nJIGeDeCxhXFPsdY9WizRNWvxcTgEqCxuR9Py3NffdFc9Ull5m4Ebs1eH_1Hl0i_o_fqjb4jbpd9pJOTuq0NQhQt8MOIKVFpj-CMQWs-onM21oZRkZ0sFbgudSUD_WcPIXgnxqexzRP-sQMP1Ukv7pN-SXV6pAlsXQf9xNXQ.jpg",
+        "mentions": 2
+      },
+      {
+        "id": "ru:kupolrussia",
+        "title": "КУПОЛ РОССИИ",
+        "username": "kupolrussia",
+        "avatarUrl": "https://cdn4.telesco.pe/file/jwnCBPVpNKibJq1KUh-nhBYrSF3YnOz0E_-yH1fUFCPpOpCHWQX2gjVvj5x4GlkzRoQVppMWil_Ry_1tYlpPESJReA5jlxLYApDZ459jfcbzLo8WVNCflQJ8CX0EeBdJC4rhmMqzi3nwzRs93T1QUuff73aVYw8vXiMshapAvxPxB8Bknlnqf05qFOfTExt4PHMvFg4xRL1O0pW9P6Rqz7tkm2s14A7DITULOvhi8s-iwyUF6_Pd-HjA9-08TGg3_e5GkhRBFz78Jon6TwiADLPx7wdWny8F0nk9ZUFZ674jtvWpgO7cxG54U2ymkS5WMunTwKQSNg1FV2B3O2wR-A.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3
+    ],
+    "firstSeenAt": "2026-06-03T06:40:07.859Z",
+    "lastSeenAt": "2026-06-03T06:44:21.498Z",
+    "examples": [
+      {
+        "id": 2444905626,
+        "text": "Усвяты, Поречье, Великий Луки и близлежащие населённые пункты, Псковская область - опасность по БПЛА со стороны Демидов, Смоленской области",
+        "url": "https://t.me/russiamonitoring_radar_bpla/24313?single",
+        "publishedAt": "2026-06-03T06:44:21.498Z",
+        "sourceTitle": "мониторинг.рф",
+        "sourceUsername": "russiamonitoring_radar_bpla",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ax-ohZ30OeBfydSScNIz7KL0VtX2o5jGbR88ZHB8YmY2SAKkxVdIGMEOPJFysYxu9yGO8lOCxZk86GbskR_o_myFpmbTBjQNgyWWnK4WwF0GNAlQwFohff_lsI0GODtoyiyyZV3K-5CijUEbi_xvw6q_Y6UR9-t3hVX6_NFkuavxz3nJIGeDeCxhXFPsdY9WizRNWvxcTgEqCxuR9Py3NffdFc9Ull5m4Ebs1eH_1Hl0i_o_fqjb4jbpd9pJOTuq0NQhQt8MOIKVFpj-CMQWs-onM21oZRkZ0sFbgudSUD_WcPIXgnxqexzRP-sQMP1Ukv7pN-SXV6pAlsXQf9xNXQ.jpg"
+      },
+      {
+        "id": 2584916019,
+        "text": "Красный Сулин\nи близлежащие населённые пункты\nРостовская область",
+        "url": "https://t.me/russiamonitoring_radar_bpla/24312?single",
+        "publishedAt": "2026-06-03T06:44:21.498Z",
+        "sourceTitle": "мониторинг.рф",
+        "sourceUsername": "russiamonitoring_radar_bpla",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ax-ohZ30OeBfydSScNIz7KL0VtX2o5jGbR88ZHB8YmY2SAKkxVdIGMEOPJFysYxu9yGO8lOCxZk86GbskR_o_myFpmbTBjQNgyWWnK4WwF0GNAlQwFohff_lsI0GODtoyiyyZV3K-5CijUEbi_xvw6q_Y6UR9-t3hVX6_NFkuavxz3nJIGeDeCxhXFPsdY9WizRNWvxcTgEqCxuR9Py3NffdFc9Ull5m4Ebs1eH_1Hl0i_o_fqjb4jbpd9pJOTuq0NQhQt8MOIKVFpj-CMQWs-onM21oZRkZ0sFbgudSUD_WcPIXgnxqexzRP-sQMP1Ukv7pN-SXV6pAlsXQf9xNXQ.jpg"
+      },
+      {
+        "id": 1724406336,
+        "text": "Ростовская область",
+        "url": "https://t.me/kupolrussia/80276?single",
+        "publishedAt": "2026-06-03T06:40:07.859Z",
+        "sourceTitle": "КУПОЛ РОССИИ",
+        "sourceUsername": "kupolrussia",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/jwnCBPVpNKibJq1KUh-nhBYrSF3YnOz0E_-yH1fUFCPpOpCHWQX2gjVvj5x4GlkzRoQVppMWil_Ry_1tYlpPESJReA5jlxLYApDZ459jfcbzLo8WVNCflQJ8CX0EeBdJC4rhmMqzi3nwzRs93T1QUuff73aVYw8vXiMshapAvxPxB8Bknlnqf05qFOfTExt4PHMvFg4xRL1O0pW9P6Rqz7tkm2s14A7DITULOvhi8s-iwyUF6_Pd-HjA9-08TGg3_e5GkhRBFz78Jon6TwiADLPx7wdWny8F0nk9ZUFZ674jtvWpgO7cxG54U2ymkS5WMunTwKQSNg1FV2B3O2wR-A.jpg"
+      }
+    ],
+    "signals": [
+      "близлежащие",
+      "великий",
+      "красный",
+      "луки",
+      "населённые"
+    ],
+    "category": "politics",
+    "categories": [
+      "politics",
+      "war"
+    ]
+  },
+  {
+    "topic": "▫️Дональд Трамп отчитал Биньямина Нетаньяху (читать)",
+    "word": "▫️Дональд Трамп отчитал Биньямина Нетаньяху (читать)",
     "mentions": 2,
     "momentum": 200,
     "change": "+200%",
@@ -324,17 +1164,17 @@
     ],
     "topSources": [
       {
-        "id": "ru:pontorezka7777",
-        "title": "ПОНТОРЕЗКА",
-        "username": "pontorezka7777",
-        "avatarUrl": "https://cdn4.telesco.pe/file/Tb5zKFpMqfDb8AivHp2j850snlDS-u7feP8NT-WQjrhjO5ycC6KMSlWAT0cCBUMseM31Do59rnX-YcHGr69IXVkNoCoR-op_v8XgN-WfrT6caqGfozSnVKsIGGPU0yZF-JFW6rufHi6qT8jHbyZL6n6cNPJkNlQjkbX2vYmGAR0JNda2rw1jEXfkD5JQ9EDIS88SS24Yv8AUTtrhWDIV31tfklp3lJkCA5E2yhuW-wY6H1eyGKZuExaKq5MTfyvQSg7IMAX3iB3kT9i7vr8E_bXAaEvux8DSFyTr2TRAsp5GsK0Wge0g5jWOvVG8HVaVmw0teIexdT2Z99iIV7VYRA.jpg",
+        "id": "ru:kontext_channel",
+        "title": "КОНТЕКСТ",
+        "username": "kontext_channel",
+        "avatarUrl": "https://cdn4.telesco.pe/file/PrfeZGOhDO03tu49NiotTGVWW44pMlDjXucNmLzJc084g2KqlNlvGLNDWztNzpFBXdwMdGWdeyd8WR6FHjelVJGe6xaFtilXTCVmvotlu5wTImFYxI98ZECFh6RkRxP-4CBWlsFlql-8flkWOu3JpDAmuSVZyO4qDE01OKvnNWSn69Y8EStVIzAqOE4r3hhiFTSSnU4vn3JhCoc6OeZ-mfhMqKi1FV66iknor9LbBYUa00Bgp5Fb5qgVbC3EGZrfIwJiSNSXcx58IoWIw_r0AyINA9BsAj5DOcPwX_iCSKiJ73A3gq6xTuyUvTZ01q9XILXnd24i-CZCRkG8xbhzdQ.jpg",
         "mentions": 1
       },
       {
-        "id": "ru:professor_youtube_reborn",
-        "title": "Записки Профессора",
-        "username": "professor_youtube_reborn",
-        "avatarUrl": "https://cdn4.telesco.pe/file/gb7JcmOz4ng15DkT5QrKG6sYoFlM41qx6Rvyb-hLHV2HBSsKgKnwSErC1p7tLWzmL816OTXQP2nkNa4dpqWSrlcRKo9GFBAfeJJr6EkswomoBQ0vH6oIyL-wSGrXeFFgUf7Vm9dlj7kiUdfP8aaSx9D0eVSr870UiVhmx3GIKnYYyT3AUrrThqfpjdjoYeG2LHIgictV5rys_LRpKFiq0FPQvdHCcYavLwd62dE3mccGRGx-G54TA8SKRFWhCdzdTPOgOP1U2W_lR1rLKLD36MAlEbonXd2-m3DnY81Wwtl_Qpz5EB7ExDVnOlOST2feh3GFsmHVNVJOhMs39nA16g.jpg",
+        "id": "ru:crypto_hd",
+        "title": "Crypto Headlines",
+        "username": "crypto_hd",
+        "avatarUrl": "https://cdn4.telesco.pe/file/PM5hYchKnsPowfkzPOM6j_q4hMoG_9wYliZqj2M_DAG7vaPw_tdep9Ntupq0IyN-uWK2Pz1NgAgFgdDH8Nw85r04HZDEWmdBQv4PCXGvpCcJm7Fmb5MAHSLRGpEa-6KT4d4fXwAW9nqYYu9pFB5QFYtm3YnLhA6A_b6Gt9h2kdPj4VOu0oJkaJPWJ_VnjRMmXANLUvRo2ogF7hLle9-mdPX8OA9zcFa1d5ToZVGhSfm8EQ70eICz_vrtZh9te_T8GBz92yOF1ahl8FuD0H1lywUlsUj-rr6X_Q1NnUIe5iIKG5artZjsZ9bUiyDk73f0x7_1kilnQTjoB9u0ChIbYg.jpg",
         "mentions": 1
       }
     ],
@@ -352,44 +1192,462 @@
       0,
       2
     ],
-    "firstSeenAt": "2026-06-03T04:43:38.444Z",
-    "lastSeenAt": "2026-06-03T04:44:00.873Z",
+    "firstSeenAt": "2026-06-03T06:34:29.065Z",
+    "lastSeenAt": "2026-06-03T06:37:16.035Z",
     "examples": [
       {
-        "id": 3065478301,
-        "text": "История одной покупки …\nПриятного просмотра 🤝\nБудет приятно если после просмотра оставите комментарий💪🏾",
-        "url": "https://t.me/pontorezka7777/24126?single",
-        "publishedAt": "2026-06-03T04:43:38.444Z",
-        "sourceTitle": "ПОНТОРЕЗКА",
-        "sourceUsername": "pontorezka7777",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Tb5zKFpMqfDb8AivHp2j850snlDS-u7feP8NT-WQjrhjO5ycC6KMSlWAT0cCBUMseM31Do59rnX-YcHGr69IXVkNoCoR-op_v8XgN-WfrT6caqGfozSnVKsIGGPU0yZF-JFW6rufHi6qT8jHbyZL6n6cNPJkNlQjkbX2vYmGAR0JNda2rw1jEXfkD5JQ9EDIS88SS24Yv8AUTtrhWDIV31tfklp3lJkCA5E2yhuW-wY6H1eyGKZuExaKq5MTfyvQSg7IMAX3iB3kT9i7vr8E_bXAaEvux8DSFyTr2TRAsp5GsK0Wge0g5jWOvVG8HVaVmw0teIexdT2Z99iIV7VYRA.jpg"
+        "id": 2847429178,
+        "text": "Axios: Дональд Трамп в жесткой форме отчитал Биньямина Нетаньяху за удар по Ливану В ходе телефонного разговора президент США раскритиковал израильского премьера за действия Израиля в Ливане, пишет Axios. По данным источников издания, разговор состоялся…",
+        "url": "https://t.me/kontext_channel/72908?single",
+        "publishedAt": "2026-06-03T06:37:16.035Z",
+        "sourceTitle": "КОНТЕКСТ",
+        "sourceUsername": "kontext_channel",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/PrfeZGOhDO03tu49NiotTGVWW44pMlDjXucNmLzJc084g2KqlNlvGLNDWztNzpFBXdwMdGWdeyd8WR6FHjelVJGe6xaFtilXTCVmvotlu5wTImFYxI98ZECFh6RkRxP-4CBWlsFlql-8flkWOu3JpDAmuSVZyO4qDE01OKvnNWSn69Y8EStVIzAqOE4r3hhiFTSSnU4vn3JhCoc6OeZ-mfhMqKi1FV66iknor9LbBYUa00Bgp5Fb5qgVbC3EGZrfIwJiSNSXcx58IoWIw_r0AyINA9BsAj5DOcPwX_iCSKiJ73A3gq6xTuyUvTZ01q9XILXnd24i-CZCRkG8xbhzdQ.jpg"
       },
       {
-        "id": 3344709088,
-        "text": "Приятного просмотра",
-        "url": "https://t.me/professor_youtube_reborn/120?single",
-        "publishedAt": "2026-06-03T04:44:00.873Z",
-        "sourceTitle": "Записки Профессора",
-        "sourceUsername": "professor_youtube_reborn",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/gb7JcmOz4ng15DkT5QrKG6sYoFlM41qx6Rvyb-hLHV2HBSsKgKnwSErC1p7tLWzmL816OTXQP2nkNa4dpqWSrlcRKo9GFBAfeJJr6EkswomoBQ0vH6oIyL-wSGrXeFFgUf7Vm9dlj7kiUdfP8aaSx9D0eVSr870UiVhmx3GIKnYYyT3AUrrThqfpjdjoYeG2LHIgictV5rys_LRpKFiq0FPQvdHCcYavLwd62dE3mccGRGx-G54TA8SKRFWhCdzdTPOgOP1U2W_lR1rLKLD36MAlEbonXd2-m3DnY81Wwtl_Qpz5EB7ExDVnOlOST2feh3GFsmHVNVJOhMs39nA16g.jpg"
+        "id": 2319779940,
+        "text": "🎯 ТОП ДНЯ (вторник, 2 июня)\n❗️БИТКОИН / КРИПТА НА ГРАНИ ВЫМИРАНИЯ (видеообзор)\n▫️Дональд Трамп отчитал Биньямина Нетаньяху (читать)",
+        "url": "https://t.me/crypto_hd/29466?single",
+        "publishedAt": "2026-06-03T06:34:29.065Z",
+        "sourceTitle": "Crypto Headlines",
+        "sourceUsername": "crypto_hd",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/PM5hYchKnsPowfkzPOM6j_q4hMoG_9wYliZqj2M_DAG7vaPw_tdep9Ntupq0IyN-uWK2Pz1NgAgFgdDH8Nw85r04HZDEWmdBQv4PCXGvpCcJm7Fmb5MAHSLRGpEa-6KT4d4fXwAW9nqYYu9pFB5QFYtm3YnLhA6A_b6Gt9h2kdPj4VOu0oJkaJPWJ_VnjRMmXANLUvRo2ogF7hLle9-mdPX8OA9zcFa1d5ToZVGhSfm8EQ70eICz_vrtZh9te_T8GBz92yOF1ahl8FuD0H1lywUlsUj-rr6X_Q1NnUIe5iIKG5artZjsZ9bUiyDk73f0x7_1kilnQTjoB9u0ChIbYg.jpg"
       }
     ],
     "signals": [
-      "просмотра",
-      "комментарий",
-      "одной",
-      "оставите",
-      "приятно"
+      "дональд",
+      "трамп",
+      "axios",
+      "биньямина",
+      "жесткой"
     ],
-    "category": "culture",
+    "category": "politics",
     "categories": [
+      "politics",
+      "finance",
+      "telegram",
+      "crypto",
+      "war"
+    ]
+  },
+  {
+    "topic": "Любители футбола, добро пожаловать",
+    "word": "Любители футбола, добро пожаловать",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:mspiridonov",
+        "title": "Максим Спиридонов",
+        "username": "mspiridonov",
+        "avatarUrl": "https://cdn4.telesco.pe/file/fRUO88jy4hRnWVLhW_KAyDnibD7vmLmy_ssWNdiYCqmb59teF5cY9tVdl7Rp7x-SP0Xkz2r2iMDU6gQwDdcHQuxtfXVtg-NrFJdpOSh3KMUZNFkFXtAOCrRxsSxG8b9b-d4D7NOskmcxyedAw4dRFfOQxWxFMPaI3wLHXqS7cB_NkAa0DT-Pa6dB3KwHGgYTzSpe-RA3VYp3QaEzZjb4B17L8MVfp7A5B6QSINdabQvJn1X9PBwOpGRqUA6B47EemEyzP7TXcMWrZsM4CGGta0iuObm3MuWJcnnYlPF32Aw4aWTDtHad1z0yGYQV1FxNryuDlJlpKUP2GylB4BKROg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:footballru",
+        "title": "Футбольщик",
+        "username": "footballru",
+        "avatarUrl": "https://cdn4.telesco.pe/file/IOJ1bd4hP91PD8bBzAijx-6GIiyHs5o2LZ4kkT1NL7xw1mxT8eMOcx3RlIKJCS2YY8NbZnhjyWPPEgymHesj3OIbx9uwc5IsqmjJ6YnnPbdjfc6TkrMLsAHzWHULfHIn39Nylfp6ivBScbnjBwpaV2czr3zapbP5iTV5s_iFtrEyMbmydYVJODQOAUs_B9-lhw3ixE-Z4dTsTEs3Hs92BqQHKHBgUPwhrK97Ye_B-L9othfJUujLffcivufvNfPCKbrvJ-xu2cP-M-ZxeagbQKQE7YxSVqIRYInFJKru-tzrmlnnbqEM-4VxrbS7pnmhErY4vBq0Ksosq9CUZ5lhoA.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:35:48.724Z",
+    "lastSeenAt": "2026-06-03T06:41:21.313Z",
+    "examples": [
+      {
+        "id": 3965042706,
+        "text": "В опросе выше 👆 нет случайных вариантов. Это самые частые жалобы, с которыми ко мне приходят предприниматели. Спасибо всем, кто проголосовал\nЗнаете, что объединяет все эти истории? Их пытаются лечить по симптому. Типа: упал спрос – зальём рекламой. Ну, или заменим продажников. На какое-то время, может, и поможет, а потом – добро пожаловать на второй круг. П",
+        "url": "https://t.me/mspiridonov/4447?single",
+        "publishedAt": "2026-06-03T06:41:21.313Z",
+        "sourceTitle": "Максим Спиридонов",
+        "sourceUsername": "mspiridonov",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/fRUO88jy4hRnWVLhW_KAyDnibD7vmLmy_ssWNdiYCqmb59teF5cY9tVdl7Rp7x-SP0Xkz2r2iMDU6gQwDdcHQuxtfXVtg-NrFJdpOSh3KMUZNFkFXtAOCrRxsSxG8b9b-d4D7NOskmcxyedAw4dRFfOQxWxFMPaI3wLHXqS7cB_NkAa0DT-Pa6dB3KwHGgYTzSpe-RA3VYp3QaEzZjb4B17L8MVfp7A5B6QSINdabQvJn1X9PBwOpGRqUA6B47EemEyzP7TXcMWrZsM4CGGta0iuObm3MuWJcnnYlPF32Aw4aWTDtHad1z0yGYQV1FxNryuDlJlpKUP2GylB4BKROg.jpg"
+      },
+      {
+        "id": 2817442238,
+        "text": "Любители футбола, добро пожаловать",
+        "url": "https://t.me/footballru/3?single",
+        "publishedAt": "2026-06-03T06:35:48.724Z",
+        "sourceTitle": "Футбольщик",
+        "sourceUsername": "footballru",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/IOJ1bd4hP91PD8bBzAijx-6GIiyHs5o2LZ4kkT1NL7xw1mxT8eMOcx3RlIKJCS2YY8NbZnhjyWPPEgymHesj3OIbx9uwc5IsqmjJ6YnnPbdjfc6TkrMLsAHzWHULfHIn39Nylfp6ivBScbnjBwpaV2czr3zapbP5iTV5s_iFtrEyMbmydYVJODQOAUs_B9-lhw3ixE-Z4dTsTEs3Hs92BqQHKHBgUPwhrK97Ye_B-L9othfJUujLffcivufvNfPCKbrvJ-xu2cP-M-ZxeagbQKQE7YxSVqIRYInFJKru-tzrmlnnbqEM-4VxrbS7pnmhErY4vBq0Ksosq9CUZ5lhoA.jpg"
+      }
+    ],
+    "signals": [
+      "добро",
+      "знаете",
+      "истории",
+      "лечить",
+      "любители"
+    ],
+    "category": "food",
+    "categories": [
+      "food",
+      "sports",
+      "nature",
+      "business",
+      "recipes",
+      "animals"
+    ]
+  },
+  {
+    "topic": "Голосование исчезло 🤷‍♂️",
+    "word": "Голосование исчезло 🤷‍♂️",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:investkingyru",
+        "title": "Investment kingyru 💎",
+        "username": "investkingyru",
+        "avatarUrl": "https://cdn4.telesco.pe/file/AKNLk-dEqCH7lSqbwt54u-nfOw88ZqDjOEPH6O0VGk9Z3PbIuIjagEbUt_ykLKXFdiLFqViNlSj3NkINzrkpjRZYsQcBVP8mrWD3URUPS9hPzYxc41AVtGNpv8xJimOFBp7A1uVQ_aEQtOCxxzc5NmQQQ4Ie1UJCFK9ctonkelPFGX9KWEWQWxLdFBWd4vYOEiQthFOdC8U8-Sx26lVqfNjZM5naCVo62EMGWayG1zHFWQe9JkEivjkOTbZRUOq1MATF8_Da7jXoVmBg825oQEgdC1O7cxUlCJjIjaF8IxbFnz7REfYcnE5EZQ3qJWMnpG0GwZCPtxMe7-lW_-0omg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:ton_elixir",
+        "title": "TON Эликсир",
+        "username": "ton_elixir",
+        "avatarUrl": "https://cdn4.telesco.pe/file/roRbKUL6mb-f1x7eODplBj2nAXlm-9P70jEvjvnZisRg9mUVeLkP0LlmiTpG05_asl8QtpZ2X2cmFJDmz0c4aRf2yCSLw_w-CarhfB_FNRgev7g6s-8-5yDnfcJ1xQVLC9Zsp88LpFbWjb-jnj-rCJNGT39AbBTwOmLF1Ma2u4RsLqS1GUPhkgDDCGANRSkFrLgJ1UGGtteNSU8gOiqEi_M5e7l3SBPJpD05ZDjndTS46tzD7O8BUC2U2MlWUqGV34v9zDgaDKPLeV_EfTRxmSY7hD3L0kuapsi1laF0bbMLhX1f5TC37Z1Kv0sNwghF4-HlIRv6gWY5SE-MNyf-jQ.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:30:12.955Z",
+    "lastSeenAt": "2026-06-03T06:36:42.848Z",
+    "examples": [
+      {
+        "id": 2537776068,
+        "text": "⚡️⚡️⚡️TON переименовывают в GRAM\nЯ уже писал причины и следствия. За 4 года на TON, я хорошо научился считывать поведение Павла Дурова\nВ TON Vote вынесли предложение переименовать нативный токен сети из Toncoin в Gram, а тикер изменить с TON на GRAM. Голосование запустил сам Telegram и позже Дуров выпустил пост о том, что будет переименование",
+        "url": "https://t.me/investkingyru/2261?single",
+        "publishedAt": "2026-06-03T06:36:42.848Z",
+        "sourceTitle": "Investment kingyru 💎",
+        "sourceUsername": "investkingyru",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/AKNLk-dEqCH7lSqbwt54u-nfOw88ZqDjOEPH6O0VGk9Z3PbIuIjagEbUt_ykLKXFdiLFqViNlSj3NkINzrkpjRZYsQcBVP8mrWD3URUPS9hPzYxc41AVtGNpv8xJimOFBp7A1uVQ_aEQtOCxxzc5NmQQQ4Ie1UJCFK9ctonkelPFGX9KWEWQWxLdFBWd4vYOEiQthFOdC8U8-Sx26lVqfNjZM5naCVo62EMGWayG1zHFWQe9JkEivjkOTbZRUOq1MATF8_Da7jXoVmBg825oQEgdC1O7cxUlCJjIjaF8IxbFnz7REfYcnE5EZQ3qJWMnpG0GwZCPtxMe7-lW_-0omg.jpg"
+      },
+      {
+        "id": 1855499165,
+        "text": "Голосование исчезло 🤷‍♂️",
+        "url": "https://t.me/ton_elixir/3251?single",
+        "publishedAt": "2026-06-03T06:30:12.955Z",
+        "sourceTitle": "TON Эликсир",
+        "sourceUsername": "ton_elixir",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/roRbKUL6mb-f1x7eODplBj2nAXlm-9P70jEvjvnZisRg9mUVeLkP0LlmiTpG05_asl8QtpZ2X2cmFJDmz0c4aRf2yCSLw_w-CarhfB_FNRgev7g6s-8-5yDnfcJ1xQVLC9Zsp88LpFbWjb-jnj-rCJNGT39AbBTwOmLF1Ma2u4RsLqS1GUPhkgDDCGANRSkFrLgJ1UGGtteNSU8gOiqEi_M5e7l3SBPJpD05ZDjndTS46tzD7O8BUC2U2MlWUqGV34v9zDgaDKPLeV_EfTRxmSY7hD3L0kuapsi1laF0bbMLhX1f5TC37Z1Kv0sNwghF4-HlIRv6gWY5SE-MNyf-jQ.jpg"
+      }
+    ],
+    "signals": [
+      "ton",
+      "vote",
+      "вынесли",
+      "голосование",
+      "исчезло"
+    ],
+    "category": "finance",
+    "categories": [
+      "finance",
+      "telegram",
+      "crypto",
+      "technology",
+      "sports",
+      "news"
+    ]
+  },
+  {
+    "topic": "#️⃣MEME MINING ежедневное комбо",
+    "word": "#️⃣MEME MINING ежедневное комбо",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:dropmezantrop",
+        "title": "Дропы от Мизантропа",
+        "username": "dropmezantrop",
+        "avatarUrl": "https://cdn4.telesco.pe/file/nRbnByF6XVNaDmQ5Yn6aR8LaylupGzKN1ZRP0rQmH3UyL6lVG_qaTEpP5sTgcq9PEFCEWoBUnjmFKnnwBx2-d5T4q-Kf_ZDITl90NmSNcstP7JN-XvyVOzwX9_PVQEPK3qukcbOlQ4I4H5B_JEoiDUc8PPEWrXkuNkK5tBCpjhZzmJWtMdoQAC1LUjE_lYQMmQ_uucA8rxkghsLh-OJCZZQUCvW_8XxdPBJJtWE0hrldB3Ykrc8lYIBQ5ooLjRxCsqHy_0cfaarEpAzGPNlG0JJyhYt4ZpgleP5B1mpiwNXaERqRDsDUZ-AUEf4oeQKvmUr00kVWSealD5oJG6x8rg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:crypto_woolf",
+        "title": "Crypto Wolf",
+        "username": "crypto_woolf",
+        "avatarUrl": "https://cdn4.telesco.pe/file/k60ADygZG3_hNjgYo35PFmdI4SAVT01U0C1MfUkfK6HcKxNniSQLvrc8xKQHAu69PY8HaNDExWo3o4Sz8hwCen0uAr2Ymae_JTalUfe1-ViYadbqQvleqhOB8vEchCdyqyAgS8LH9lnCtauD0uXVRqB9EWJc1JTwj-U0AJH6AnGRwZNXPOfK3-F5EOJEMoc87TS8WaBwHHRTGCMIL5RtUJbSor1sJzhWKNiZpwv44Pu5sj7AR3Dpv88pTxD4eiC2SNkymwINZhJfpdr2BetTq4MLjiwhtJkXjMBkI3sDEe79wFRxSDRGp8IV9oizJR0FT3obRRtUaQwQOiiGuEuM-Q.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:34:33.352Z",
+    "lastSeenAt": "2026-06-03T06:35:09.722Z",
+    "examples": [
+      {
+        "id": 972452335,
+        "text": "🤪Doodle Play - комбо\nПолучаем 10 монет☺️ и 100 XP🟣\n#️⃣MEME MINING ежедневное комбо",
+        "url": "https://t.me/dropmezantrop/7912?single",
+        "publishedAt": "2026-06-03T06:35:09.722Z",
+        "sourceTitle": "Дропы от Мизантропа",
+        "sourceUsername": "dropmezantrop",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/nRbnByF6XVNaDmQ5Yn6aR8LaylupGzKN1ZRP0rQmH3UyL6lVG_qaTEpP5sTgcq9PEFCEWoBUnjmFKnnwBx2-d5T4q-Kf_ZDITl90NmSNcstP7JN-XvyVOzwX9_PVQEPK3qukcbOlQ4I4H5B_JEoiDUc8PPEWrXkuNkK5tBCpjhZzmJWtMdoQAC1LUjE_lYQMmQ_uucA8rxkghsLh-OJCZZQUCvW_8XxdPBJJtWE0hrldB3Ykrc8lYIBQ5ooLjRxCsqHy_0cfaarEpAzGPNlG0JJyhYt4ZpgleP5B1mpiwNXaERqRDsDUZ-AUEf4oeQKvmUr00kVWSealD5oJG6x8rg.jpg"
+      },
+      {
+        "id": 3386239468,
+        "text": "Fomo_Fighters Grow_Tea Golden_Miner Signal2193 MEME_MINING PandaFiT Doodle_Jump\nКомбо в Grow Tea 🍃\nКомбо в Golden Miner ⛏",
+        "url": "https://t.me/crypto_woolf/12326?single",
+        "publishedAt": "2026-06-03T06:34:33.352Z",
+        "sourceTitle": "Crypto Wolf",
+        "sourceUsername": "crypto_woolf",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/k60ADygZG3_hNjgYo35PFmdI4SAVT01U0C1MfUkfK6HcKxNniSQLvrc8xKQHAu69PY8HaNDExWo3o4Sz8hwCen0uAr2Ymae_JTalUfe1-ViYadbqQvleqhOB8vEchCdyqyAgS8LH9lnCtauD0uXVRqB9EWJc1JTwj-U0AJH6AnGRwZNXPOfK3-F5EOJEMoc87TS8WaBwHHRTGCMIL5RtUJbSor1sJzhWKNiZpwv44Pu5sj7AR3Dpv88pTxD4eiC2SNkymwINZhJfpdr2BetTq4MLjiwhtJkXjMBkI3sDEe79wFRxSDRGp8IV9oizJR0FT3obRRtUaQwQOiiGuEuM-Q.jpg"
+      }
+    ],
+    "signals": [
+      "doodle",
+      "fighters",
+      "golden",
+      "grow",
+      "meme"
+    ],
+    "category": "finance",
+    "categories": [
+      "finance",
+      "crypto",
+      "humor",
+      "memes",
+      "telegram",
+      "technology",
+      "marketing"
+    ]
+  },
+  {
+    "topic": "Доброе утро, москвичи",
+    "word": "Доброе утро, москвичи",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:mospressa",
+        "title": "Московская пресса",
+        "username": "mospressa",
+        "avatarUrl": "https://cdn4.telesco.pe/file/k97Vks-AKZUX4ONozKP53e5KKZdEMb4s_ByFSF_oZAtHqvN2Hv6R8oSBlHt2XTZ8D17WaBk2wyWKA8MMETNb4YErlx5clj_Sn5oH2G6PTZFxW130YJ05BK2LL1lTIf4z67KhU7svLG2oD1SLeapPCrZHmBcq7sswZ9Uog9JReg2QgYiuKA6ukwBpUZmoA57-KMYflk8sXWx-Ftf_RMxx5N_-5hO6lmzA_NEISv3iZXcDpG44Fxc5oYQFt9hYTgXDQI4jYyhRr4iVVinVUuh5avLdwZB9o_rypg9xDmdHyYmbw1XU2Sm20fqyatz4EADhiIoaQgCDdjF7hpZbm6d4yw.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:moscowtop",
+        "title": "Москва с огоньком",
+        "username": "moscowtop",
+        "avatarUrl": "https://cdn4.telesco.pe/file/A556oUwODWgrJY7oPgAQs1MaKCpHwzpUI8i8rNQ7nX0S_ApO_zWwjWpOeAQgB_R4nrrXPagtxL6wQu0Q1SmH8Be276uAEXHAedTZG6k6kYDtANfFAoinFkYKZJ9ZBqaVeOBu5Ce-_qY6zBRmrSWSLfCPvBxpDi9AnC92OJjcV7UIIULi1zI9Zv_us8ICNQ_CeFQloaw-zZJ_G9zupeh5CrvCXFDmkfq_Yh2z7cMlrO7p5n541g2AA_a8DyJDUJuQFq60IhV6Fg7SJVnL7NnWD5X_JpbcIJ-e6ek7t0U243gj9NTL8a78rXjGZaLuDQZHEQjzte-Q6cRn4Lp9h_5hQA.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:40:51.855Z",
+    "lastSeenAt": "2026-06-03T06:41:04.244Z",
+    "examples": [
+      {
+        "id": 2243039560,
+        "text": "Доброе утро, москвичи\nСреда будет теплой и пасмурной. Температура воздуха поднимется до +23 градусов\nСегодня отмечается День прогульщика",
+        "url": "https://t.me/mospressa/4996?single",
+        "publishedAt": "2026-06-03T06:41:04.244Z",
+        "sourceTitle": "Московская пресса",
+        "sourceUsername": "mospressa",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/k97Vks-AKZUX4ONozKP53e5KKZdEMb4s_ByFSF_oZAtHqvN2Hv6R8oSBlHt2XTZ8D17WaBk2wyWKA8MMETNb4YErlx5clj_Sn5oH2G6PTZFxW130YJ05BK2LL1lTIf4z67KhU7svLG2oD1SLeapPCrZHmBcq7sswZ9Uog9JReg2QgYiuKA6ukwBpUZmoA57-KMYflk8sXWx-Ftf_RMxx5N_-5hO6lmzA_NEISv3iZXcDpG44Fxc5oYQFt9hYTgXDQI4jYyhRr4iVVinVUuh5avLdwZB9o_rypg9xDmdHyYmbw1XU2Sm20fqyatz4EADhiIoaQgCDdjF7hpZbm6d4yw.jpg"
+      },
+      {
+        "id": 2170344439,
+        "text": "Доброе утро, москвичи\nСегодня до +23 градусов, пасмурно",
+        "url": "https://t.me/moscowtop/68753?single",
+        "publishedAt": "2026-06-03T06:40:51.855Z",
+        "sourceTitle": "Москва с огоньком",
+        "sourceUsername": "moscowtop",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/A556oUwODWgrJY7oPgAQs1MaKCpHwzpUI8i8rNQ7nX0S_ApO_zWwjWpOeAQgB_R4nrrXPagtxL6wQu0Q1SmH8Be276uAEXHAedTZG6k6kYDtANfFAoinFkYKZJ9ZBqaVeOBu5Ce-_qY6zBRmrSWSLfCPvBxpDi9AnC92OJjcV7UIIULi1zI9Zv_us8ICNQ_CeFQloaw-zZJ_G9zupeh5CrvCXFDmkfq_Yh2z7cMlrO7p5n541g2AA_a8DyJDUJuQFq60IhV6Fg7SJVnL7NnWD5X_JpbcIJ-e6ek7t0U243gj9NTL8a78rXjGZaLuDQZHEQjzte-Q6cRn4Lp9h_5hQA.jpg"
+      }
+    ],
+    "signals": [
+      "воздуха",
+      "градусов",
+      "доброе",
+      "москвичи",
+      "пасмурно"
+    ],
+    "category": "news",
+    "categories": [
+      "news",
+      "travel",
+      "food"
+    ]
+  },
+  {
+    "topic": "Рубрика «Будни солдата»",
+    "word": "Рубрика «Будни солдата»",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:irena_ponaroshku",
+        "title": "Ирена Понарошку",
+        "username": "irena_ponaroshku",
+        "avatarUrl": "https://cdn4.telesco.pe/file/syE7hW2ND7GbfI5-hX6KnhY2LPDFd2n_dt3VFgia0v7JeuaA1FB6F6yu0d_SdTlYTxE1e3GS_5U8qfCvGGi-zhpN3A1wqvqrf_2XeBtCk2aNbaCstoPhn4fiZJSVgYZ4ZNZU0h2mvZ1SamfkylWVPHybZ4bf_2s_j7_c2k9Sf2JBzAIBWAFXPs2fXENjj7V6XEDd1Bl2G1FhMo5Q3tY4S4naKoqkTHQD93Em8qlhHQxxJsWqmHwPst-uJjV7Coe3gWCI116g_GJGZOLdXRecm_Y8vBxpJlWFYhQnm2HoqvmgReDbcfBz3irk0wIGYFna_6EjP-j4sVVxU3kKYfOWmQ.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:swodki",
+        "title": "🇷🇺⚡️Сводки ополчения Новороссии Z.O.V. (ДНР, ЛНР, Украина, Война)",
+        "username": "swodki",
+        "avatarUrl": "https://cdn4.telesco.pe/file/o-v28KePNJtRzyeBtTQDiXrPDcVuJngzbw-Wah0gyVUqqMraFaryHfrS8iTMWa9oxdtWi1249e01DuJkZsy-vdeyK_7wQSMSRksyrgTT0T-0IyCe9_pRO04dEBnN3nyOrnSTL8EgZfD5uzfES7_hLWN1Gn2HTrMk8cFE3s2n9OGO5b8Ijrk71oS0KCIwibXmt4iHiIpvGLPbf5xih4HVhLDproJOwsyjjBH28Rz3Ke7DnOnmNb_j5W_WsWw6GZaZs1k1PozEVTzB0ZAciOUKpSHlRGxVNc6J-aVDggF1-CxokKY7vPAiCNEx8isE8h954MLhZFKjOGjC3Zg7dHTfLA.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:39:49.941Z",
+    "lastSeenAt": "2026-06-03T06:45:42.601Z",
+    "examples": [
+      {
+        "id": 439698196,
+        "text": "Рубрика «Дайте премию этим гениям»\nВ Узбекистане появилась площадка для перепродажи подаренных букетов\nЦветочная ресейл-платформа работает по принципу аукциона: покупатели делают ставки, поднимают цену букета, но она все равно остается в 2-3 раза ниже магазинной. Один и тот же букет за один день может сменить несколько владельцев",
+        "url": "https://t.me/irena_ponaroshku/19887?single",
+        "publishedAt": "2026-06-03T06:39:49.941Z",
+        "sourceTitle": "Ирена Понарошку",
+        "sourceUsername": "irena_ponaroshku",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/syE7hW2ND7GbfI5-hX6KnhY2LPDFd2n_dt3VFgia0v7JeuaA1FB6F6yu0d_SdTlYTxE1e3GS_5U8qfCvGGi-zhpN3A1wqvqrf_2XeBtCk2aNbaCstoPhn4fiZJSVgYZ4ZNZU0h2mvZ1SamfkylWVPHybZ4bf_2s_j7_c2k9Sf2JBzAIBWAFXPs2fXENjj7V6XEDd1Bl2G1FhMo5Q3tY4S4naKoqkTHQD93Em8qlhHQxxJsWqmHwPst-uJjV7Coe3gWCI116g_GJGZOLdXRecm_Y8vBxpJlWFYhQnm2HoqvmgReDbcfBz3irk0wIGYFna_6EjP-j4sVVxU3kKYfOWmQ.jpg"
+      },
+      {
+        "id": 2383007541,
+        "text": "Рубрика «Будни солдата»",
+        "url": "https://t.me/swodki/589698?single",
+        "publishedAt": "2026-06-03T06:45:42.601Z",
+        "sourceTitle": "🇷🇺⚡️Сводки ополчения Новороссии Z.O.V. (ДНР, ЛНР, Украина, Война)",
+        "sourceUsername": "swodki",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/o-v28KePNJtRzyeBtTQDiXrPDcVuJngzbw-Wah0gyVUqqMraFaryHfrS8iTMWa9oxdtWi1249e01DuJkZsy-vdeyK_7wQSMSRksyrgTT0T-0IyCe9_pRO04dEBnN3nyOrnSTL8EgZfD5uzfES7_hLWN1Gn2HTrMk8cFE3s2n9OGO5b8Ijrk71oS0KCIwibXmt4iHiIpvGLPbf5xih4HVhLDproJOwsyjjBH28Rz3Ke7DnOnmNb_j5W_WsWw6GZaZs1k1PozEVTzB0ZAciOUKpSHlRGxVNc6J-aVDggF1-CxokKY7vPAiCNEx8isE8h954MLhZFKjOGjC3Zg7dHTfLA.jpg"
+      }
+    ],
+    "signals": [
+      "аукциона",
+      "принципу",
+      "работает",
+      "ресейл-платформа",
+      "рубрика"
+    ],
+    "category": "politics",
+    "categories": [
+      "politics",
       "culture",
+      "telegram",
+      "finance",
+      "startups",
+      "jobs",
+      "war",
       "art"
     ]
   },
   {
-    "topic": "Ладно, запускаю",
-    "word": "Ладно, запускаю",
+    "topic": "Портативный пищевой принтер",
+    "word": "Портативный пищевой принтер",
     "mentions": 2,
     "momentum": 200,
     "change": "+200%",
@@ -403,17 +1661,17 @@
     ],
     "topSources": [
       {
-        "id": "ru:podarkihamster",
-        "title": "Дешевые звезды | премиум",
-        "username": "podarkihamster",
-        "avatarUrl": "https://cdn4.telesco.pe/file/Mw3PXSHobziMddum8MPLWw51JF9bnsUqLJfx2-P70dOf_tc595eLTtQ7JgeDGOzWLPCYsG78eIs93bmiPbC3wO1NH7ajoeo7alrM0kjRBpSLiW9zGTwwrupS0gtYbkIlsTnEJHKXfd8bNSUsqF_A63Iej80Epi0mAk2wiXOrsl8HHCzIPoD-e0Ij6Xd5-Mqw5uleEVu7eNtct9w0lPUbAdjYfm2xY274KniYHmFXiYbyKpUd4QWBpnc2OH1YYSzYeuiXrR03gE84alyJZKZVvh8eI4BD-4zCBDmaK7l7njDqlcXW8S5RiZwfLjoMTWTXfW51-OxRo0HVnSp-5MqFmA.jpg",
+        "id": "ru:misli_bogatich",
+        "title": "Мысли богатых | бизнес блог",
+        "username": "misli_bogatich",
+        "avatarUrl": "https://cdn4.telesco.pe/file/QBQeZFB_oKaliUbJSxQbCkqJubL_kNmM-FP2AmtsFC7jQmUwJy7YNmug-YZXv33QueoNNIOWxej7CFI8MMMKMZ5ea9JAPZSNTUcqysUKEs5rdWDy9z82xl0MlKDef_0JiA5MImAjr3Zb8IlUIjfb2sowr-dLg9lzh4rL9BOrCL1CHqoGtjEUPR9eRp0MiXjEUOopM6L7yeXVhCgdgoKDTsBa4-U2vZgjka9-xnjDiZdMAVQi6TlDNn9ZNRRegaKZAGyF5OKu6Hf5HUvqflAgeNBf3GnBDQfFR1kaOqnOJcRhpPka2rIlo_dABltGeZlQB1XDLvA8wQimz7wRWwDsyw.jpg",
         "mentions": 1
       },
       {
-        "id": "ru:pikabu",
-        "title": "Пикабу",
-        "username": "pikabu",
-        "avatarUrl": "https://cdn4.telesco.pe/file/ZvUoCnl7S66P9XxDwNa5X_RGL5tZGUVNNJbPGo1o0VHODfXYWSO6P8iesXB1r5TbpK98WK5BEKn_LCXojTCkwyCJuSbTnDj1u1dML_UQJuqZp0869vgH0z4ClrY7FyBODUzE5Yr1BLxrk5v-A0gCUhBbXjS08ZGvJLPZYfMxL36Vm24kkpiku0wNNrLe-G7r0zmk9aN2e4aHmO0GLjc4dmHPFdJ3z1bzCp31IrBJyvHdSepYjPnx8j4lAV473JVHDuwqmlFjza5KUFbr6HaFzOl9pFCYClTOh1vSOkmFCRUg86RimpJpfslPcTNalNG2qtu3CbMpLUL9lh2RNiS75A.jpg",
+        "id": "ru:man_gadgets",
+        "title": "Мужской Aliexpress",
+        "username": "man_gadgets",
+        "avatarUrl": "https://cdn4.telesco.pe/file/uCpIpfHF5be1dqepH3be1evqz5AA0K8EoUv8YegfSppWJnMQtN--N0-f5tozL8dAyYCuuWlvndhZfPnoXFRnrU1IvYFHY9sNvx2tyY91Pqh9WQ6QHoHZcgEAqcHzjmMZVjZq-E9EkeHcet4U9X9Q73M_0JouNkQ9lfpGkczX88HutLyFS7PkyvDQuo0DXE53ni2rlDKR9K4UU-149t7etcZ13KirqxB_Gk7U-8w_pz5jvn7scxolvRfJMqrZAxdHNwh6TE3izYC7_vK1jV66G1jKc8Wxy0eFFv8xkEtE7abcdM_mwERCB0lZw0YLgndeqShXlP74K_pGbVKJMFTnGg.jpg",
         "mentions": 1
       }
     ],
@@ -431,41 +1689,602 @@
       0,
       2
     ],
-    "firstSeenAt": "2026-06-03T04:42:58.516Z",
-    "lastSeenAt": "2026-06-03T04:43:23.005Z",
+    "firstSeenAt": "2026-06-03T06:38:24.842Z",
+    "lastSeenAt": "2026-06-03T06:40:23.407Z",
     "examples": [
       {
-        "id": 2136384302,
-        "text": "Ладно, запускаю",
-        "url": "https://t.me/podarkihamster/6582?single",
-        "publishedAt": "2026-06-03T04:43:23.005Z",
-        "sourceTitle": "Дешевые звезды | премиум",
-        "sourceUsername": "podarkihamster",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Mw3PXSHobziMddum8MPLWw51JF9bnsUqLJfx2-P70dOf_tc595eLTtQ7JgeDGOzWLPCYsG78eIs93bmiPbC3wO1NH7ajoeo7alrM0kjRBpSLiW9zGTwwrupS0gtYbkIlsTnEJHKXfd8bNSUsqF_A63Iej80Epi0mAk2wiXOrsl8HHCzIPoD-e0Ij6Xd5-Mqw5uleEVu7eNtct9w0lPUbAdjYfm2xY274KniYHmFXiYbyKpUd4QWBpnc2OH1YYSzYeuiXrR03gE84alyJZKZVvh8eI4BD-4zCBDmaK7l7njDqlcXW8S5RiZwfLjoMTWTXfW51-OxRo0HVnSp-5MqFmA.jpg"
+        "id": 3871674031,
+        "text": "Инновационные пищевые технологии\nОдни из последних – печать еды на 3-D принтере, производство функционального сахара и даже веганского мяса\nПищевой принтер Choc Edge Choc Creator 2.0 Plus подходит для кондитеров, а Chef 3D – для печати уникальной пиццы",
+        "url": "https://t.me/misli_bogatich/6046?single",
+        "publishedAt": "2026-06-03T06:38:24.842Z",
+        "sourceTitle": "Мысли богатых | бизнес блог",
+        "sourceUsername": "misli_bogatich",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/QBQeZFB_oKaliUbJSxQbCkqJubL_kNmM-FP2AmtsFC7jQmUwJy7YNmug-YZXv33QueoNNIOWxej7CFI8MMMKMZ5ea9JAPZSNTUcqysUKEs5rdWDy9z82xl0MlKDef_0JiA5MImAjr3Zb8IlUIjfb2sowr-dLg9lzh4rL9BOrCL1CHqoGtjEUPR9eRp0MiXjEUOopM6L7yeXVhCgdgoKDTsBa4-U2vZgjka9-xnjDiZdMAVQi6TlDNn9ZNRRegaKZAGyF5OKu6Hf5HUvqflAgeNBf3GnBDQfFR1kaOqnOJcRhpPka2rIlo_dABltGeZlQB1XDLvA8wQimz7wRWwDsyw.jpg"
       },
       {
-        "id": 2156793638,
-        "text": "Рынок уже не тот\nМне сейчас на рынке взвесили ровно килограмм клубники\nНе «ой, немножко больше получилось — 2800, убираем или оставляем?»",
-        "url": "https://t.me/pikabu/49275?single",
-        "publishedAt": "2026-06-03T04:42:58.516Z",
-        "sourceTitle": "Пикабу",
-        "sourceUsername": "pikabu",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ZvUoCnl7S66P9XxDwNa5X_RGL5tZGUVNNJbPGo1o0VHODfXYWSO6P8iesXB1r5TbpK98WK5BEKn_LCXojTCkwyCJuSbTnDj1u1dML_UQJuqZp0869vgH0z4ClrY7FyBODUzE5Yr1BLxrk5v-A0gCUhBbXjS08ZGvJLPZYfMxL36Vm24kkpiku0wNNrLe-G7r0zmk9aN2e4aHmO0GLjc4dmHPFdJ3z1bzCp31IrBJyvHdSepYjPnx8j4lAV473JVHDuwqmlFjza5KUFbr6HaFzOl9pFCYClTOh1vSOkmFCRUg86RimpJpfslPcTNalNG2qtu3CbMpLUL9lh2RNiS75A.jpg"
+        "id": 559399636,
+        "text": "Портативный пищевой принтер",
+        "url": "https://t.me/man_gadgets/7602?single",
+        "publishedAt": "2026-06-03T06:40:23.407Z",
+        "sourceTitle": "Мужской Aliexpress",
+        "sourceUsername": "man_gadgets",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/uCpIpfHF5be1dqepH3be1evqz5AA0K8EoUv8YegfSppWJnMQtN--N0-f5tozL8dAyYCuuWlvndhZfPnoXFRnrU1IvYFHY9sNvx2tyY91Pqh9WQ6QHoHZcgEAqcHzjmMZVjZq-E9EkeHcet4U9X9Q73M_0JouNkQ9lfpGkczX88HutLyFS7PkyvDQuo0DXE53ni2rlDKR9K4UU-149t7etcZ13KirqxB_Gk7U-8w_pz5jvn7scxolvRfJMqrZAxdHNwh6TE3izYC7_vK1jV66G1jKc8Wxy0eFFv8xkEtE7abcdM_mwERCB0lZw0YLgndeqShXlP74K_pGbVKJMFTnGg.jpg"
       }
     ],
     "signals": [
-      "души",
-      "запускаю",
-      "ладно",
-      "можешь",
-      "перипетиям"
+      "пищевой",
+      "принтер",
+      "choc",
+      "creator",
+      "edge"
     ],
-    "category": "humor",
+    "category": "business",
     "categories": [
-      "humor",
-      "education",
-      "memes",
-      "education_courses"
+      "business",
+      "technology",
+      "startups",
+      "food"
+    ]
+  },
+  {
+    "topic": "Server: s01.neo-trading.org",
+    "word": "Server: s01.neo-trading.org",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:proxyfree_ru",
+        "title": "ProxyMTProto - Прокси MTProto",
+        "username": "proxyfree_ru",
+        "avatarUrl": "https://cdn4.telesco.pe/file/v-IupaML_S4mXta9T7_tRaC8h-pPy8alx5AX_tuxwPBi70_8eRFADFAfgd4X2qAmczlzx1hvK-AtB8J214NsqPBLR5sjmGGlweHsnK7Yb0UI35wbhP3kyOZacw02Wym_ZZALkdRyQBYCY29FwM7vm5UVB5JXizdiX3RLgbF34JGSwgVJ3UlkPUSiDL63ywKpnxoQhgPV3jELa1a3RGCLidakZ2ibdF_xIpqOhMSlNwWBpyNW5S8NVv7BnXODmpSN-cDeILOBbsmFlSlt5GZzj6al2dDTTScCOGEDsFSXSynNe3olORjIxRLzJExHUhMEGP7P-OxHaq6VyEoRHRA5cA.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:tproxyru",
+        "title": "Proxy MTProto | Прокси 24/7",
+        "username": "tproxyru",
+        "avatarUrl": "https://cdn4.telesco.pe/file/BJiTEcbN6Z7NBl_ECx5btMWYKlaPUGZawZuErNchOBzqzMq6mD-tv0j7qJ2QSkhMBMVnOctSPGoQJocLvq-GGzUlEeCW_bOFRMzyFQTVIZ36QU9ZqCz_Y2CpbLScBcvUwAzvuI0XuYwzpECJO72QSuLFbWYVuTdIguk55QKDO0M5UtMZwXWcXl1iG1gp6qWXc3Bb_YMrmkjMACYsBoY4ZhGKBai2b95RTNo5k9sQqTENSPtKmropQRZRZkAFzjP7X0u0HwgL0dKu8JM4KGE3K3F1Nr71gIhbvfvG86aBMl3bSusKBzhDczj5SGoDRcS-w88nl6nNNOhgr7Esra3f1w.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:30:34.981Z",
+    "lastSeenAt": "2026-06-03T06:43:27.707Z",
+    "examples": [
+      {
+        "id": 1524122497,
+        "text": "🖥 Server : s01.neo-trading.org",
+        "url": "https://t.me/proxyfree_ru/752?single",
+        "publishedAt": "2026-06-03T06:43:27.707Z",
+        "sourceTitle": "ProxyMTProto - Прокси MTProto",
+        "sourceUsername": "proxyfree_ru",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/v-IupaML_S4mXta9T7_tRaC8h-pPy8alx5AX_tuxwPBi70_8eRFADFAfgd4X2qAmczlzx1hvK-AtB8J214NsqPBLR5sjmGGlweHsnK7Yb0UI35wbhP3kyOZacw02Wym_ZZALkdRyQBYCY29FwM7vm5UVB5JXizdiX3RLgbF34JGSwgVJ3UlkPUSiDL63ywKpnxoQhgPV3jELa1a3RGCLidakZ2ibdF_xIpqOhMSlNwWBpyNW5S8NVv7BnXODmpSN-cDeILOBbsmFlSlt5GZzj6al2dDTTScCOGEDsFSXSynNe3olORjIxRLzJExHUhMEGP7P-OxHaq6VyEoRHRA5cA.jpg"
+      },
+      {
+        "id": 4031252315,
+        "text": "Server: s01.neo-trading.org",
+        "url": "https://t.me/tproxyru/1053?single",
+        "publishedAt": "2026-06-03T06:30:34.981Z",
+        "sourceTitle": "Proxy MTProto | Прокси 24/7",
+        "sourceUsername": "tproxyru",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/BJiTEcbN6Z7NBl_ECx5btMWYKlaPUGZawZuErNchOBzqzMq6mD-tv0j7qJ2QSkhMBMVnOctSPGoQJocLvq-GGzUlEeCW_bOFRMzyFQTVIZ36QU9ZqCz_Y2CpbLScBcvUwAzvuI0XuYwzpECJO72QSuLFbWYVuTdIguk55QKDO0M5UtMZwXWcXl1iG1gp6qWXc3Bb_YMrmkjMACYsBoY4ZhGKBai2b95RTNo5k9sQqTENSPtKmropQRZRZkAFzjP7X0u0HwgL0dKu8JM4KGE3K3F1Nr71gIhbvfvG86aBMl3bSusKBzhDczj5SGoDRcS-w88nl6nNNOhgr7Esra3f1w.jpg"
+      }
+    ],
+    "signals": [
+      "neo-trading",
+      "org",
+      "server"
+    ],
+    "category": "telegram",
+    "categories": [
+      "telegram"
+    ]
+  },
+  {
+    "topic": "Освежающий салатик",
+    "word": "Освежающий салатик",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:prostoy_retsept",
+        "title": "Простые Рецепты",
+        "username": "prostoy_retsept",
+        "avatarUrl": "https://cdn4.telesco.pe/file/NsHtmcwUDpMfWDnk2idJs755YC2E_KPlvo6pHz8BFnpnAbXNVSZ8Py-9HrU3eCVP9hDiSxEvaZD6wSgoFZQpnOfBqwvK2_QUun2JMSqE3jfsLjw2hnNXxjWoeJoFxEMSezZ8n3Gvg3Jh0FgfGMcmdY50GMv50nJpxRpLet8KX1Il80nm64bwimUL0Ocg4jji7EmLyIqXnXkTpFnmypUeDR1fxO5n6-nsF4_u2xLnvT55O_gyA2H8eupFZVatJwK6QrXsXPeH-5aKONNdE4NDF2Sth34yvwSyOMQL3sz7XjhyoO6vM32ZVqMdciy0CwRbejbWVnjVpNY_vdOSDHCJLA.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:fastrecepts",
+        "title": "Быстрые рецепты",
+        "username": "fastrecepts",
+        "avatarUrl": "https://cdn4.telesco.pe/file/o5eSb1tTwlUZmMk8MiCBvMn9Ebmbdg9PHRhoFh6Cp4j-3i9sxwyI8YZNQamETsyBTZXem0go6C4Spj9v9Y2qPLy9idCGRfqcUv6ZsnffMUXdaD_DZa_ox3JcrziL_8D4gRvbeQn5mwQ-59ZJLFbetTLFX1cCV_dVWaB0Cu0_QlaNz8Gnrq3Sf2Y3UXKY_Q3SJllf768LFIcW0OZ7op0aJ1A0qg8LLukNkK6YCoAbS-9UbL0OG3zZYo0KZOicCa-wFvnJJGAJeAqapqEC8MCF5tOU1g6wLFpOha5SION160PJZSn2uv_tAr9XzkvA6ERGAlRACtVOWmnQcLkajmCetQ.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:35:40.412Z",
+    "lastSeenAt": "2026-06-03T06:43:26.333Z",
+    "examples": [
+      {
+        "id": 1817374251,
+        "text": "🥬 Салатик с молодой капустой\nМолодая капуста - 300 гр\nЗелень (петрушка, укроп) - 3 ст.л",
+        "url": "https://t.me/prostoy_retsept/19965?single",
+        "publishedAt": "2026-06-03T06:43:26.333Z",
+        "sourceTitle": "Простые Рецепты",
+        "sourceUsername": "prostoy_retsept",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/NsHtmcwUDpMfWDnk2idJs755YC2E_KPlvo6pHz8BFnpnAbXNVSZ8Py-9HrU3eCVP9hDiSxEvaZD6wSgoFZQpnOfBqwvK2_QUun2JMSqE3jfsLjw2hnNXxjWoeJoFxEMSezZ8n3Gvg3Jh0FgfGMcmdY50GMv50nJpxRpLet8KX1Il80nm64bwimUL0Ocg4jji7EmLyIqXnXkTpFnmypUeDR1fxO5n6-nsF4_u2xLnvT55O_gyA2H8eupFZVatJwK6QrXsXPeH-5aKONNdE4NDF2Sth34yvwSyOMQL3sz7XjhyoO6vM32ZVqMdciy0CwRbejbWVnjVpNY_vdOSDHCJLA.jpg"
+      },
+      {
+        "id": 1468253989,
+        "text": "Освежающий салатик",
+        "url": "https://t.me/fastrecepts/18537?single",
+        "publishedAt": "2026-06-03T06:35:40.412Z",
+        "sourceTitle": "Быстрые рецепты",
+        "sourceUsername": "fastrecepts",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/o5eSb1tTwlUZmMk8MiCBvMn9Ebmbdg9PHRhoFh6Cp4j-3i9sxwyI8YZNQamETsyBTZXem0go6C4Spj9v9Y2qPLy9idCGRfqcUv6ZsnffMUXdaD_DZa_ox3JcrziL_8D4gRvbeQn5mwQ-59ZJLFbetTLFX1cCV_dVWaB0Cu0_QlaNz8Gnrq3Sf2Y3UXKY_Q3SJllf768LFIcW0OZ7op0aJ1A0qg8LLukNkK6YCoAbS-9UbL0OG3zZYo0KZOicCa-wFvnJJGAJeAqapqEC8MCF5tOU1g6wLFpOha5SION160PJZSn2uv_tAr9XzkvA6ERGAlRACtVOWmnQcLkajmCetQ.jpg"
+      }
+    ],
+    "signals": [
+      "салатик",
+      "капуста",
+      "капустой",
+      "молодая",
+      "молодой"
+    ],
+    "category": "food",
+    "categories": [
+      "food",
+      "recipes",
+      "fitness"
+    ]
+  },
+  {
+    "topic": "Портативный диван",
+    "word": "Портативный диван",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:man_product",
+        "title": "AliExpress для мужиков",
+        "username": "man_product",
+        "avatarUrl": "https://cdn4.telesco.pe/file/uuMMb95HQKthTuKGLZh-c9rEk1AUcLXg9xeghj2bFVFa0v4vknk7eXIQMYyXLVRlFFvdePMZDvFfRxdwvjFUXW-NQI4x7AHLybVhJVJOBBFq5dtzKu0J6Fy1Pd8zlxtyhK_ls8UqoIY3egIXKoLMJdd3_SQiSr5NloPxerd8ky025f3T8bgrt0E8hoCf8kWhMj6f45yx7bWPVtimCWXxou5Rf1GZhfLiUTU97EeM6gNu1TGVIP225vHoW223n_yw0N8kyNMUcyVT4u9QCWqTS17HHJFjrplBYINN85trEi4QKK5GMTRj4Q-OqrzLELJ2GdGiuPjLQgWcN6XQtb1Deg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:pushmanjulia",
+        "title": "Pushman",
+        "username": "pushmanjulia",
+        "avatarUrl": "https://cdn4.telesco.pe/file/W7spGfKbVn03J57bNd4iM7vCIDK1RFQGXahpl9ff5y4FzSZidSdzpdJ5pjEAS8_nRG13pRvWm0hg1zRyYXxIAEWEIazd6aDhO0cAD_DUlRmGirPZ6Gr7xQOgBgRj-4dUztynEBkvUW0NkHR2-V_ngHAcoaMoIJsibkbQL6D54C8hiFjBtd8IbILpHkggg-gu5DfysMBmpcA_kHc8Fx73PWU2o_KEx8veyI59t6yeVmjkRT5Cc233WXfo772V10pwFpvj4DWsYKBY7qHBBw-kJblIadga90v5TaN28NO2lYdeGfiTp3HyNgZE4JXuiNYwy7hgVgU0Be63Ruh04xt7_A.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:40:24.048Z",
+    "lastSeenAt": "2026-06-03T06:43:28.530Z",
+    "examples": [
+      {
+        "id": 3843406281,
+        "text": "Портативный диван",
+        "url": "https://t.me/man_product/10199?single",
+        "publishedAt": "2026-06-03T06:40:24.048Z",
+        "sourceTitle": "AliExpress для мужиков",
+        "sourceUsername": "man_product",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/uuMMb95HQKthTuKGLZh-c9rEk1AUcLXg9xeghj2bFVFa0v4vknk7eXIQMYyXLVRlFFvdePMZDvFfRxdwvjFUXW-NQI4x7AHLybVhJVJOBBFq5dtzKu0J6Fy1Pd8zlxtyhK_ls8UqoIY3egIXKoLMJdd3_SQiSr5NloPxerd8ky025f3T8bgrt0E8hoCf8kWhMj6f45yx7bWPVtimCWXxou5Rf1GZhfLiUTU97EeM6gNu1TGVIP225vHoW223n_yw0N8kyNMUcyVT4u9QCWqTS17HHJFjrplBYINN85trEi4QKK5GMTRj4Q-OqrzLELJ2GdGiuPjLQgWcN6XQtb1Deg.jpg"
+      },
+      {
+        "id": 374846384,
+        "text": "Заказала матрас в дом на дачу. Нам собрали мебель. И уже завтра еду смотреть как собрали и начну отмывать все, убирать вещи в гардеробную 🥹\nДевочки! Все! Мы можем уже заехать туда если готовы спать без кровати конечно 😅 я кажется готова\nТам надо разобрать все вещи в доме, все отмыть… Ох дел много",
+        "url": "https://t.me/pushmanjulia/17693?single",
+        "publishedAt": "2026-06-03T06:43:28.530Z",
+        "sourceTitle": "Pushman",
+        "sourceUsername": "pushmanjulia",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/W7spGfKbVn03J57bNd4iM7vCIDK1RFQGXahpl9ff5y4FzSZidSdzpdJ5pjEAS8_nRG13pRvWm0hg1zRyYXxIAEWEIazd6aDhO0cAD_DUlRmGirPZ6Gr7xQOgBgRj-4dUztynEBkvUW0NkHR2-V_ngHAcoaMoIJsibkbQL6D54C8hiFjBtd8IbILpHkggg-gu5DfysMBmpcA_kHc8Fx73PWU2o_KEx8veyI59t6yeVmjkRT5Cc233WXfo772V10pwFpvj4DWsYKBY7qHBBw-kJblIadga90v5TaN28NO2lYdeGfiTp3HyNgZE4JXuiNYwy7hgVgU0Be63Ruh04xt7_A.jpg"
+      }
+    ],
+    "signals": [
+      "двери",
+      "диван",
+      "останется",
+      "портативный",
+      "поставить"
+    ],
+    "category": "food",
+    "categories": [
+      "food",
+      "recipes",
+      "real_estate",
+      "telegram",
+      "jobs"
+    ]
+  },
+  {
+    "topic": "Опиши взгляд",
+    "word": "Опиши взгляд",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:kuplinov_telegram",
+        "title": "Kuplinov ► Play",
+        "username": "kuplinov_telegram",
+        "avatarUrl": "https://cdn4.telesco.pe/file/dzWJTHASkWil3S6baLIDS6p27O8nXziGOnG0splbVukM5jtlCsp5aCBCe0_zzNGX2wHMdfcHjM9X-IUSbdk7hr1J4pzoi-quTp7YzGHZ989fn7NyhMuuDsaTyV4yo8YziHW56pl3VoCtn4_QWZyahrKbQILKbwlbDAiZRF1dudFAbtma6LqFy6wztKIlGULe5fgHR-X5vm_v-G4rHgl2PcgSeyrLD9SSoArG8FR1RDzMNxDe5-tkisSUc7K1DAosvEZVIXty-lcCg2EF3V7wr6fJ-0aOLQuLPE0l_7f43bKvkecgft6Xo9mMdNaeKYmyhnc_mqNTVFLunkiUJl-22w.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:qewbite",
+        "title": "Qewbite",
+        "username": "qewbite",
+        "avatarUrl": "https://cdn4.telesco.pe/file/iM8ZRib4dWa9KYnLXxQJmDzALLSQuUifRxB75b6m3O_F0hfPl8GcdT-MG78jA6sM35jA3-nklJG0egLxp5W0kiVzvgqR2xk2BzQCZRkBWVR8IKOWX565Yp-4vI0UcAU_eruWfz69UCHv_bbgV-zkhxroQTR0ATfO0Kf1pN11hihivav-cjRBHwsrx9Fgm5UrIRLK08fWATtTzW1HOAdjbMdJAVIW0CTFoueOqAuOegyMg54sEp6IVD90gXYrC83GboSMNC5QRLYrKr4nYIan9wFIergNk2tecc1A2I8_CsWtQMIaHSbDhVboj8SY3fE7pRCQLp_LfZtez297z5Fi8Q.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:40:07.261Z",
+    "lastSeenAt": "2026-06-03T06:43:31.657Z",
+    "examples": [
+      {
+        "id": 1465920931,
+        "text": "Опиши взгляд",
+        "url": "https://t.me/kuplinov_telegram/1036?single",
+        "publishedAt": "2026-06-03T06:40:07.261Z",
+        "sourceTitle": "Kuplinov ► Play",
+        "sourceUsername": "kuplinov_telegram",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/dzWJTHASkWil3S6baLIDS6p27O8nXziGOnG0splbVukM5jtlCsp5aCBCe0_zzNGX2wHMdfcHjM9X-IUSbdk7hr1J4pzoi-quTp7YzGHZ989fn7NyhMuuDsaTyV4yo8YziHW56pl3VoCtn4_QWZyahrKbQILKbwlbDAiZRF1dudFAbtma6LqFy6wztKIlGULe5fgHR-X5vm_v-G4rHgl2PcgSeyrLD9SSoArG8FR1RDzMNxDe5-tkisSUc7K1DAosvEZVIXty-lcCg2EF3V7wr6fJ-0aOLQuLPE0l_7f43bKvkecgft6Xo9mMdNaeKYmyhnc_mqNTVFLunkiUJl-22w.jpg"
+      },
+      {
+        "id": 2393100752,
+        "text": "Тут появился первый взгляд на Супермена из \"Человека завтрашнего дня\". Справа прикрепил фотку со съёмок сольника\nГоворят, костюм стал лучше облегать, но я этого не заметил. Воротник слегка поменяли и рукава. Остальное +- такое же",
+        "url": "https://t.me/qewbite/3380?single",
+        "publishedAt": "2026-06-03T06:43:31.657Z",
+        "sourceTitle": "Qewbite",
+        "sourceUsername": "qewbite",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/iM8ZRib4dWa9KYnLXxQJmDzALLSQuUifRxB75b6m3O_F0hfPl8GcdT-MG78jA6sM35jA3-nklJG0egLxp5W0kiVzvgqR2xk2BzQCZRkBWVR8IKOWX565Yp-4vI0UcAU_eruWfz69UCHv_bbgV-zkhxroQTR0ATfO0Kf1pN11hihivav-cjRBHwsrx9Fgm5UrIRLK08fWATtTzW1HOAdjbMdJAVIW0CTFoueOqAuOegyMg54sEp6IVD90gXYrC83GboSMNC5QRLYrKr4nYIan9wFIergNk2tecc1A2I8_CsWtQMIaHSbDhVboj8SY3fE7pRCQLp_LfZtez297z5Fi8Q.jpg"
+      }
+    ],
+    "signals": [
+      "взгляд",
+      "завтрашнего",
+      "опиши",
+      "появился",
+      "супермена"
+    ],
+    "category": "telegram",
+    "categories": [
+      "telegram",
+      "culture"
+    ]
+  },
+  {
+    "topic": "Эстетика декора🤎",
+    "word": "Эстетика декора🤎",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:homeasy",
+        "title": "HOMEASY - идеи для дома",
+        "username": "homeasy",
+        "avatarUrl": "https://cdn4.telesco.pe/file/Mir9VdmWEinf4i85rfoTUr6tnL2byqbkkqsoZ443tzRcMuzyAdAlHjFxpSSCv8qhdkuOX7iA1eFHDwM_PIb-0ZXVEhxN4-rpQVhqKrwUY_QITQfO8TXgWr7Kqbdg8VMgQb0e6JSuxQCcKI8F29Rpq-9SWSbTxcfRIxXD0OCNvq5htEMqTBE1gG5N6YjTcf-n7JuMkmAumdQQ_Lg-5vTIZsiDE_bYVURnsuwgeUln8Awd38PDOKlBiyNuOZ5QEDM4g4uXyXEI09VYBjK9o07ZatM8q9bVIhHukg7PYnRYt_y6GxIw17xwe1vDvkBAyJ5I58mjq7GG-iBPue49Mcs3pg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:facebox_ai_prompts",
+        "title": "Facebox | контент ИИ | промты",
+        "username": "facebox_ai_prompts",
+        "avatarUrl": "https://cdn4.telesco.pe/file/ZaTZBE16q7TpIu30LG2sDia5RFAVTwAZS52uwiMMUZmkmZPugrmyUai0SIOelw2VwyoTkKHKA35BUhmrpxb-mEICkHB8BnUWwmWPhg6GzYxYqlqHKy5AkFsVSZw-t5J6XiVaJrfDrY1oXE7nU5HJlCJ8WxYZxG1UaMYdQoD0L0h_DWlBiZ-QsJmdfJeS6gTtWbo9SNcq5NKiKikIbxmBt0HVhIJAdM0hI0Vs5V_hu59mSv6uvWTOzjrGUCgMxSvMDCJTw0oHMEeEEmKYH2aGy5CojMbS-n45OVIAiGsJdri_eR4c2kZeZEDd91LrYxQdIhKFQ7ZTYqtoTDso5bpHTQ.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:35:37.901Z",
+    "lastSeenAt": "2026-06-03T06:39:40.516Z",
+    "examples": [
+      {
+        "id": 797950352,
+        "text": "Эстетика декора🤎",
+        "url": "https://t.me/homeasy/51216?single",
+        "publishedAt": "2026-06-03T06:39:40.516Z",
+        "sourceTitle": "HOMEASY - идеи для дома",
+        "sourceUsername": "homeasy",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Mir9VdmWEinf4i85rfoTUr6tnL2byqbkkqsoZ443tzRcMuzyAdAlHjFxpSSCv8qhdkuOX7iA1eFHDwM_PIb-0ZXVEhxN4-rpQVhqKrwUY_QITQfO8TXgWr7Kqbdg8VMgQb0e6JSuxQCcKI8F29Rpq-9SWSbTxcfRIxXD0OCNvq5htEMqTBE1gG5N6YjTcf-n7JuMkmAumdQQ_Lg-5vTIZsiDE_bYVURnsuwgeUln8Awd38PDOKlBiyNuOZ5QEDM4g4uXyXEI09VYBjK9o07ZatM8q9bVIhHukg7PYnRYt_y6GxIw17xwe1vDvkBAyJ5I58mjq7GG-iBPue49Mcs3pg.jpg"
+      },
+      {
+        "id": 2873061765,
+        "text": "📸 Новая фотосессия: Street-style съёмка\n❗️Эта фотосессия включает женский и мужской образы❗️\nГородские улицы, архитектура, ритм большого города. Одно ваше фото и бот создаст 8 кадров в едином стиле: динамичные позы, стильные кадры. Никакой постановочной съёмки — только естественная городская эстетика",
+        "url": "https://t.me/facebox_ai_prompts/2436?single",
+        "publishedAt": "2026-06-03T06:35:37.901Z",
+        "sourceTitle": "Facebox | контент ИИ | промты",
+        "sourceUsername": "facebox_ai_prompts",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ZaTZBE16q7TpIu30LG2sDia5RFAVTwAZS52uwiMMUZmkmZPugrmyUai0SIOelw2VwyoTkKHKA35BUhmrpxb-mEICkHB8BnUWwmWPhg6GzYxYqlqHKy5AkFsVSZw-t5J6XiVaJrfDrY1oXE7nU5HJlCJ8WxYZxG1UaMYdQoD0L0h_DWlBiZ-QsJmdfJeS6gTtWbo9SNcq5NKiKikIbxmBt0HVhIJAdM0hI0Vs5V_hu59mSv6uvWTOzjrGUCgMxSvMDCJTw0oHMEeEEmKYH2aGy5CojMbS-n45OVIAiGsJdri_eR4c2kZeZEDd91LrYxQdIhKFQ7ZTYqtoTDso5bpHTQ.jpg"
+      }
+    ],
+    "signals": [
+      "архитектура",
+      "большого",
+      "городские",
+      "декора",
+      "ритм"
+    ],
+    "category": "technology",
+    "categories": [
+      "technology",
+      "food",
+      "ai",
+      "recipes",
+      "telegram"
+    ]
+  },
+  {
+    "topic": "Складной стул",
+    "word": "Складной стул",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:man_gadgets",
+        "title": "Мужской Aliexpress",
+        "username": "man_gadgets",
+        "avatarUrl": "https://cdn4.telesco.pe/file/uCpIpfHF5be1dqepH3be1evqz5AA0K8EoUv8YegfSppWJnMQtN--N0-f5tozL8dAyYCuuWlvndhZfPnoXFRnrU1IvYFHY9sNvx2tyY91Pqh9WQ6QHoHZcgEAqcHzjmMZVjZq-E9EkeHcet4U9X9Q73M_0JouNkQ9lfpGkczX88HutLyFS7PkyvDQuo0DXE53ni2rlDKR9K4UU-149t7etcZ13KirqxB_Gk7U-8w_pz5jvn7scxolvRfJMqrZAxdHNwh6TE3izYC7_vK1jV66G1jKc8Wxy0eFFv8xkEtE7abcdM_mwERCB0lZw0YLgndeqShXlP74K_pGbVKJMFTnGg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:bugfeature",
+        "title": "Не баг, а фича",
+        "username": "bugfeature",
+        "avatarUrl": "https://cdn4.telesco.pe/file/Nwm12E_pNWh65MXa5jZenut8BIcLxzU00vnvt_pEfZ1a9L7EpfNmZPagO-xP9eervj_zu35bG0PNnplE3vgNZq7LwA7_rlE2-v2ue7Fq6KqIjWUHeDmJHzjirgt6QxvYH9T-CT1C4cIx0cPYQe9D91qaW48JlKJsZw36cLI1Vf9W_IEzyjgN9X1dDlPo5tURgkBwi3mee426evRZjxyB6sW33QDahCkiKuGtAzUWIuExwjniAJWA82ThZZuyTjK8XWX9yTpRdUKNrF_rZ0fpJzEJmi7MauD2GcLKQ2euVMBpsS-eSGXGLHpaJs-r2jkIdptHKgQIm9FUbNkrf_07sQ.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:33:47.713Z",
+    "lastSeenAt": "2026-06-03T06:40:23.407Z",
+    "examples": [
+      {
+        "id": 175880357,
+        "text": "Складной стул",
+        "url": "https://t.me/man_gadgets/7603?single",
+        "publishedAt": "2026-06-03T06:40:23.407Z",
+        "sourceTitle": "Мужской Aliexpress",
+        "sourceUsername": "man_gadgets",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/uCpIpfHF5be1dqepH3be1evqz5AA0K8EoUv8YegfSppWJnMQtN--N0-f5tozL8dAyYCuuWlvndhZfPnoXFRnrU1IvYFHY9sNvx2tyY91Pqh9WQ6QHoHZcgEAqcHzjmMZVjZq-E9EkeHcet4U9X9Q73M_0JouNkQ9lfpGkczX88HutLyFS7PkyvDQuo0DXE53ni2rlDKR9K4UU-149t7etcZ13KirqxB_Gk7U-8w_pz5jvn7scxolvRfJMqrZAxdHNwh6TE3izYC7_vK1jV66G1jKc8Wxy0eFFv8xkEtE7abcdM_mwERCB0lZw0YLgndeqShXlP74K_pGbVKJMFTnGg.jpg"
+      },
+      {
+        "id": 2705215762,
+        "text": "📱 Айфон-лягушку показали в сети: инсайдеры продемонстрировали, как может выглядеть первый складной смартфон от Apple\nПо слухам, устройство получит сразу несколько экранов, а в разложенном виде будет напоминать компактный планшет, который можно сложить и убрать в карман\nОфициальный анонс ожидается уже этой осенью, а стартовая цена, по предварительным данным,",
+        "url": "https://t.me/bugfeature/8256?single",
+        "publishedAt": "2026-06-03T06:33:47.713Z",
+        "sourceTitle": "Не баг, а фича",
+        "sourceUsername": "bugfeature",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Nwm12E_pNWh65MXa5jZenut8BIcLxzU00vnvt_pEfZ1a9L7EpfNmZPagO-xP9eervj_zu35bG0PNnplE3vgNZq7LwA7_rlE2-v2ue7Fq6KqIjWUHeDmJHzjirgt6QxvYH9T-CT1C4cIx0cPYQe9D91qaW48JlKJsZw36cLI1Vf9W_IEzyjgN9X1dDlPo5tURgkBwi3mee426evRZjxyB6sW33QDahCkiKuGtAzUWIuExwjniAJWA82ThZZuyTjK8XWX9yTpRdUKNrF_rZ0fpJzEJmi7MauD2GcLKQ2euVMBpsS-eSGXGLHpaJs-r2jkIdptHKgQIm9FUbNkrf_07sQ.jpg"
+      }
+    ],
+    "signals": [
+      "несколько",
+      "получит",
+      "складной",
+      "слухам",
+      "стул"
+    ],
+    "category": "nature",
+    "categories": [
+      "nature",
+      "technology",
+      "animals"
+    ]
+  },
+  {
+    "topic": "Брянская область",
+    "word": "Брянская область",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ru",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ru:radarrussiia",
+        "title": "Радар по всей России | БПЛА",
+        "username": "radarrussiia",
+        "avatarUrl": "https://cdn4.telesco.pe/file/oUJDoMfzIHpJi-kIE9C6pcpQ2sds-IK0BFlFvChGeK69wEJj984tnDxoOdzhNETDRVf0Hol3mewe2rOjeXzhRJIeJc2OKV-vU-oE-EXd3n_RZZ6jMk5k_4UCDICUnNZDOG7Gp8rC2JnU81FtwmA-iuJuKJDRxQ-xQKh36bJvWqOTuQzG-JzSTjqo_uNWl8LkDvCdflfnDFZyPbxu459J3bhSoac6KBI7GCXzB4K7ND0ojfcyFD5-F75bz27dMK-hedwJFmljyuUaGyz1cERSjAScMACybtbIk_gcxiWYk1uoXd7sGwiCQ7T3Q1A36EEoqTXaPkC7As-YSu1AZLkOxA.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ru:locatorru",
+        "title": "Локатор России · Приграничье и тыл",
+        "username": "locatorru",
+        "avatarUrl": "https://cdn4.telesco.pe/file/WZIHkvb1lP5dgw-8hr01AuKfWkmiUm9t3xtl1NGlEzSGILRO2UbJJ4t6P1EpMWtBgIeNQpgiDwA1O8WCQG3Wn2RJCfGdW5c0-OkqtnCrbbOG1Wcm-yBIDBruwI96i3QP2lXaQ68SNr1gMvIIidBJzRuPzvZIepsz4o7L6-Al_5QAt3elLQxkUlV9WTmPlNyTlud_qSaKtmyLDrUgqKrB7otiyKz4l7713UKHvJH4z9ylx2t_K0mo2PT6fEy_CVHxOL-DubxYbnC_SdzII18yeJvbjVRScscZj4jeh98PTMs9kIVTsphhS44l-7dw3WXG2KFWEPHy760OpMG1mkFNbg.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-03T06:40:16.143Z",
+    "lastSeenAt": "2026-06-03T06:43:34.013Z",
+    "examples": [
+      {
+        "id": 791358669,
+        "text": "Брянская область\nКалужская область\nОрловская область",
+        "url": "https://t.me/radarrussiia/73114?single",
+        "publishedAt": "2026-06-03T06:43:34.013Z",
+        "sourceTitle": "Радар по всей России | БПЛА",
+        "sourceUsername": "radarrussiia",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/oUJDoMfzIHpJi-kIE9C6pcpQ2sds-IK0BFlFvChGeK69wEJj984tnDxoOdzhNETDRVf0Hol3mewe2rOjeXzhRJIeJc2OKV-vU-oE-EXd3n_RZZ6jMk5k_4UCDICUnNZDOG7Gp8rC2JnU81FtwmA-iuJuKJDRxQ-xQKh36bJvWqOTuQzG-JzSTjqo_uNWl8LkDvCdflfnDFZyPbxu459J3bhSoac6KBI7GCXzB4K7ND0ojfcyFD5-F75bz27dMK-hedwJFmljyuUaGyz1cERSjAScMACybtbIk_gcxiWYk1uoXd7sGwiCQ7T3Q1A36EEoqTXaPkC7As-YSu1AZLkOxA.jpg"
+      },
+      {
+        "id": 1930429491,
+        "text": "Брянская область, Смоленская область, Тверская область, Калужская область, Московская область, Курская область, Орловская область, Тульская область - отбой опасности по БПЛА",
+        "url": "https://t.me/locatorru/64814?single",
+        "publishedAt": "2026-06-03T06:40:16.143Z",
+        "sourceTitle": "Локатор России · Приграничье и тыл",
+        "sourceUsername": "locatorru",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/WZIHkvb1lP5dgw-8hr01AuKfWkmiUm9t3xtl1NGlEzSGILRO2UbJJ4t6P1EpMWtBgIeNQpgiDwA1O8WCQG3Wn2RJCfGdW5c0-OkqtnCrbbOG1Wcm-yBIDBruwI96i3QP2lXaQ68SNr1gMvIIidBJzRuPzvZIepsz4o7L6-Al_5QAt3elLQxkUlV9WTmPlNyTlud_qSaKtmyLDrUgqKrB7otiyKz4l7713UKHvJH4z9ylx2t_K0mo2PT6fEy_CVHxOL-DubxYbnC_SdzII18yeJvbjVRScscZj4jeh98PTMs9kIVTsphhS44l-7dw3WXG2KFWEPHy760OpMG1mkFNbg.jpg"
+      }
+    ],
+    "signals": [
+      "брянская",
+      "калужская",
+      "область",
+      "орловская",
+      "смоленская"
+    ],
+    "category": "politics",
+    "categories": [
+      "politics",
+      "war",
+      "gaming",
+      "finance",
+      "education"
     ]
   }
 ]

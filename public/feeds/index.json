@@ -1,94 +1,94 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-03T04:55:09.429Z",
+  "updatedAt": "2026-06-03T06:53:25.606Z",
   "countries": {
     "uz": {
       "code": "uz",
-      "posts": 485,
-      "chunks": 1,
-      "mode": "single",
+      "posts": 598,
+      "chunks": 2,
+      "mode": "chunked",
       "path": "/feeds/uz.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "us": {
       "code": "us",
-      "posts": 571,
-      "chunks": 2,
+      "posts": 1038,
+      "chunks": 3,
       "mode": "chunked",
       "path": "/feeds/us.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "ua": {
       "code": "ua",
-      "posts": 156,
+      "posts": 157,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/ua.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "tr": {
       "code": "tr",
-      "posts": 286,
+      "posts": 292,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/tr.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "ru": {
       "code": "ru",
-      "posts": 1529,
-      "chunks": 4,
+      "posts": 4338,
+      "chunks": 9,
       "mode": "chunked",
       "path": "/feeds/ru.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "kz": {
       "code": "kz",
-      "posts": 153,
+      "posts": 161,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/kz.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "ir": {
       "code": "ir",
-      "posts": 554,
+      "posts": 883,
       "chunks": 2,
       "mode": "chunked",
       "path": "/feeds/ir.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "in": {
       "code": "in",
-      "posts": 434,
-      "chunks": 1,
-      "mode": "single",
+      "posts": 978,
+      "chunks": 2,
+      "mode": "chunked",
       "path": "/feeds/in.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "de": {
       "code": "de",
-      "posts": 99,
+      "posts": 84,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/de.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "cn": {
       "code": "cn",
-      "posts": 129,
+      "posts": 163,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/cn.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     },
     "br": {
       "code": "br",
-      "posts": 51,
+      "posts": 42,
       "chunks": 1,
       "mode": "single",
       "path": "/feeds/br.json",
-      "updatedAt": "2026-06-03T04:55:09.429Z"
+      "updatedAt": "2026-06-03T06:53:25.606Z"
     }
   }
 }
