@@ -16,6 +16,7 @@ import {
   getTagLabel,
   type SiteTagGroup,
 } from "../../lib/tags";
+import { getAutotranslit, requestGTranslate } from "../../lib/autotranslit";
 import type { IngestedPost, Locale } from "../../types/app";
 
 type TrendSource = {
@@ -1185,6 +1186,13 @@ function writeFollowedTopics(value: string[]) {
   }
 }
 
+function refreshAutotranslit(locale?: Locale, delay = 80) {
+  if (typeof window === "undefined" || !getAutotranslit()) return;
+
+  window.setTimeout(() => requestGTranslate(locale), delay);
+  window.setTimeout(() => requestGTranslate(locale), delay + 450);
+}
+
 function getTopic(trend: TrendItem) {
   return trend.topic || trend.word || "Unknown topic";
 }
@@ -2059,6 +2067,7 @@ function CountryDistributionBlock({
   locale,
   defaultOpen = false,
   className = "",
+  isPro = false,
 }: {
   trend: TrendItem;
   countryCode: string;
@@ -2066,11 +2075,16 @@ function CountryDistributionBlock({
   locale: Locale;
   defaultOpen?: boolean;
   className?: string;
+  isPro?: boolean;
 }) {
   const countries = Array.isArray(trend.countries) ? trend.countries : [];
   const selectedCountry = normalizeTrendCountry(countryCode);
   const extraCopy = getTrendsExtraCopy(locale);
   const [open, setOpen] = useState(defaultOpen);
+
+  useEffect(() => {
+    if (open) refreshAutotranslit(locale);
+  }, [open, locale]);
 
   const normalizedCountries = countries.length
     ? countries.map((country) =>
@@ -2119,7 +2133,7 @@ function CountryDistributionBlock({
         <div className="mt-3">
           <div className="space-y-1.5">
             {sorted.slice(0, 5).map((country, index) => {
-              const locked = normalizeTrendCountry(country.code) !== selectedCountry;
+              const locked = !isPro && normalizeTrendCountry(country.code) !== selectedCountry;
               return (
                 <div
                   key={`${country.code}-${index}`}
@@ -2160,6 +2174,7 @@ function TrendDetail({
   copy,
   countryCode,
   locale,
+  isPro = false,
 }: {
   trend: TrendItem;
   followed: boolean;
@@ -2169,6 +2184,7 @@ function TrendDetail({
   copy: TrendsCopy;
   countryCode: string;
   locale: Locale;
+  isPro?: boolean;
 }) {
   const topic = getTopic(trend);
   const momentum = getMomentumNumber(trend);
@@ -2179,9 +2195,18 @@ function TrendDetail({
   const sourcesRef = useRef<HTMLElement | null>(null);
   const extraCopy = getTrendsExtraCopy(locale);
   const topSources = trend.topSources || [];
+  const sourcePreviewLimit = isPro ? topSources.length : FREE_SOURCE_PREVIEW_LIMIT;
   const [visibleSourceCount, setVisibleSourceCount] = useState(SOURCE_PAGE_SIZE);
-  const visibleSources = topSources.slice(0, visibleSourceCount);
-  const hasMoreSources = visibleSourceCount < topSources.length;
+  const visibleSources = topSources.slice(0, Math.min(visibleSourceCount, sourcePreviewLimit || SOURCE_PAGE_SIZE));
+  const hasMoreSources = visibleSources.length < topSources.length;
+
+  useEffect(() => {
+    setVisibleSourceCount(SOURCE_PAGE_SIZE);
+  }, [topic]);
+
+  useEffect(() => {
+    refreshAutotranslit(locale);
+  }, [topic, visibleSourceCount, locale]);
 
   const scrollToSources = () => {
     sourcesRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -2296,6 +2321,7 @@ function TrendDetail({
           locale={locale}
           defaultOpen
           className="mt-3"
+          isPro={isPro}
         />
       </section>
 
@@ -2396,12 +2422,12 @@ function TrendDetail({
                 sources: copy.sources,
               })}
             </div>
-            {hasMoreSources && visibleSourceCount < FREE_SOURCE_PREVIEW_LIMIT ? (
+            {hasMoreSources && (isPro || visibleSourceCount < FREE_SOURCE_PREVIEW_LIMIT) ? (
               <button
                 type="button"
                 onClick={() =>
                   setVisibleSourceCount((current) =>
-                    Math.min(current + SOURCE_PAGE_SIZE, FREE_SOURCE_PREVIEW_LIMIT, topSources.length),
+                    Math.min(current + SOURCE_PAGE_SIZE, sourcePreviewLimit || topSources.length, topSources.length),
                   )
                 }
                 className="w-full rounded-2xl border border-soft bg-surface px-4 py-3 text-sm font-black text-primary transition hover:bg-surface-soft"
@@ -2409,7 +2435,7 @@ function TrendDetail({
                 {extraCopy.showMoreSources}
               </button>
             ) : null}
-            {visibleSourceCount >= FREE_SOURCE_PREVIEW_LIMIT && topSources.length > visibleSourceCount ? (
+            {!isPro && visibleSourceCount >= FREE_SOURCE_PREVIEW_LIMIT && topSources.length > visibleSourceCount ? (
               <button
                 type="button"
                 className="w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-black text-white transition hover:opacity-90"
@@ -2633,12 +2659,14 @@ export function TrendsView({
   posts = [],
   initialTopic,
   onOpenSource,
+  isPro = false,
 }: {
   countryCode?: string;
   locale?: Locale;
   posts?: IngestedPost[];
   initialTopic?: string;
   onOpenSource?: (handle: string) => void;
+  isPro?: boolean;
 }) {
   const [trends, setTrends] = useState<TrendItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -2693,11 +2721,16 @@ export function TrendsView({
     ? categories
     : categories.slice(0, 5);
 
+  const fallbackLivePostTrends = useMemo(
+    () => (trends.length ? [] : buildLivePostTrends(posts)),
+    [trends.length, posts],
+  );
+
   const categoryTrends = useMemo(() => {
     const rawQuery = query.trim();
     const normalizedQuery = rawQuery.toLowerCase();
 
-    const livePostTrends = trends.length ? [] : buildLivePostTrends(posts);
+    const livePostTrends = fallbackLivePostTrends;
 
     let list =
       selectedCategory === "followed"
@@ -2745,12 +2778,12 @@ export function TrendsView({
     }
 
     return list.slice(0, 20);
-  }, [trends, selectedCategory, query, followedTopics, posts]);
+  }, [trends, selectedCategory, query, followedTopics, posts, countryCode, fallbackLivePostTrends]);
 
   const searchModeTrends = useMemo(() => {
     const rawQuery = query.trim();
     const normalizedQuery = rawQuery.toLowerCase();
-    const livePostTrends = trends.length ? [] : buildLivePostTrends(posts);
+    const livePostTrends = fallbackLivePostTrends;
     let list = trends.length ? trends : livePostTrends;
 
     const seen = new Set<string>();
@@ -2784,7 +2817,7 @@ export function TrendsView({
     }
 
     return list.slice(0, normalizedQuery ? 20 : 10);
-  }, [trends, query, posts]);
+  }, [trends, query, posts, countryCode, fallbackLivePostTrends]);
 
   useEffect(() => {
     if (!searchMode) return;
@@ -2800,6 +2833,10 @@ export function TrendsView({
       document.body.style.overflow = previousOverflow;
     };
   }, [searchMode]);
+
+  useEffect(() => {
+    refreshAutotranslit(locale);
+  }, [openedTopic, activeTrend, searchMode, selectedCategory, locale]);
 
   useEffect(() => {
     if (!initialTopic || !trends.length) return;
@@ -2842,6 +2879,7 @@ export function TrendsView({
         copy={copy}
         countryCode={countryCode}
         locale={locale}
+        isPro={isPro}
       />
     );
   }
@@ -2892,6 +2930,7 @@ export function TrendsView({
               copy={copy}
               locale={locale}
               className="mb-2"
+              isPro={isPro}
             />
           ) : (
             <div className="mb-3 rounded-[24px] border border-soft bg-surface-soft/70 px-4 py-3 text-sm leading-relaxed text-secondary">

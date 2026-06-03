@@ -387,7 +387,7 @@ export function PostAttentionChips({
 
       {open && hasRealTrend ? (
         <div
-          className="absolute bottom-full left-0 z-40 mb-2 w-[290px] max-w-[calc(100vw-32px)] rounded-[22px] border border-soft bg-surface p-3 shadow-soft"
+          className="absolute left-0 top-full z-40 mt-2 w-[290px] max-w-[calc(100vw-32px)] rounded-[22px] border border-soft bg-surface p-3 shadow-soft"
           onClick={(event) => event.stopPropagation()}
         >
           <button

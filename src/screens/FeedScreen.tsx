@@ -1442,6 +1442,7 @@ export function FeedScreen({
             posts={safePosts}
             initialTopic={selectedAttentionTopic || undefined}
             onOpenSource={openSource}
+            isPro={!!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)}
           />
         ) : (
           renderedPosts.map((post) => {
