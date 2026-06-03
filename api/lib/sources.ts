@@ -11,6 +11,7 @@ import {
   writeFeedFile,
   writeSourcesFile,
 } from "./github-store.js";
+import { inferPostCategories } from "./post-categories.js";
 
 const MAX_IMPORT_CANDIDATES_PER_SOURCE = 6;
 const MAX_REFRESH_POSTS_PER_SOURCE = 3;
@@ -22,10 +23,10 @@ const REFRESH_INTERVAL_MS = 3 * 60 * 60 * 1000;
 const MIN_REMAINING_TTL_MS = 60 * 60 * 1000;
 const MIN_REBUILD_GAP_MS = 20 * 60 * 1000;
 const MIN_POST_AGE_BEFORE_REFRESH_MS = 10 * 60 * 1000;
-const REBUILD_INTERVAL_HOURS = 6;
+const REBUILD_INTERVAL_HOURS = 24;
 const SOURCE_CHECK_CYCLE_HOURS = 24;
-const MIN_SOURCES_PER_COUNTRY_PER_RUN = 100;
-const MAX_SOURCES_PER_COUNTRY_PER_RUN = 1000;
+const MIN_SOURCES_PER_COUNTRY_PER_RUN = 250;
+const MAX_SOURCES_PER_COUNTRY_PER_RUN = 3000;
 const REBUILD_USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/123 Safari/537.36";
 
@@ -342,6 +343,21 @@ function getEffectiveSourceAvatar(
   return source.avatarOverride || telegramAvatar || source.avatarUrl || null;
 }
 
+
+function getPostSemanticTags(params: {
+  text: string;
+  source: TrustedSource;
+  sourceTitle?: string | null;
+}) {
+  return inferPostCategories({
+    text: params.text,
+    sourceTitle: params.sourceTitle || params.source.title,
+    sourceTags: params.source.tags,
+    sourceDefaultTag: params.source.defaultTag,
+    maxTags: 4,
+  });
+}
+
 function buildPost(params: {
   postUrl: string;
   source: TrustedSource;
@@ -349,6 +365,11 @@ function buildPost(params: {
   createdAt: string;
 }): IngestedPost {
   const { postUrl, source, ingest, createdAt } = params;
+  const semanticTags = getPostSemanticTags({
+    text: ingest.text,
+    source,
+    sourceTitle: ingest.source.title || source.title,
+  });
 
   const expiresAt = new Date(
     Date.parse(createdAt) + POST_TTL_HOURS * 60 * 60 * 1000,
@@ -375,8 +396,8 @@ function buildPost(params: {
     expiresAt,
     ttlHours: POST_TTL_HOURS,
     mediaRefreshedAt: createdAt,
-    tag: source.defaultTag,
-    tags: normalizeTags(source.tags, source.defaultTag),
+    tag: semanticTags[0] || source.defaultTag,
+    tags: semanticTags,
     addedBy: {
       telegramId: "system",
       username: "system",
@@ -402,6 +423,11 @@ function buildRefreshedPost(params: {
   refreshedAt: string;
 }): IngestedPost {
   const { post, source, ingest, refreshedAt } = params;
+  const semanticTags = getPostSemanticTags({
+    text: ingest.text || post.text,
+    source,
+    sourceTitle: ingest.source.title || source.title || post.source.title,
+  });
 
   return {
     ...post,
@@ -423,8 +449,8 @@ function buildRefreshedPost(params: {
     text: ingest.text,
     links: ingest.links,
     mediaRefreshedAt: refreshedAt,
-    tag: source.defaultTag,
-    tags: normalizeTags(source.tags, source.defaultTag),
+    tag: semanticTags[0] || source.defaultTag,
+    tags: semanticTags,
   };
 }
 
@@ -796,8 +822,17 @@ function mergeSourcePosts(params: {
         },
         sourceId: nextSource.id,
         sourceCountryCode: nextSource.countryCode,
-        tag: nextSource.defaultTag,
-        tags: normalizeTags(nextSource.tags, nextSource.defaultTag),
+        tag:
+          getPostSemanticTags({
+            text: post.text,
+            source: nextSource,
+            sourceTitle: nextSource.title || post.source.title,
+          })[0] || nextSource.defaultTag,
+        tags: getPostSemanticTags({
+          text: post.text,
+          source: nextSource,
+          sourceTitle: nextSource.title || post.source.title,
+        }),
       };
     }),
   ]);
