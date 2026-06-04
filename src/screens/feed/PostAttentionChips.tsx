@@ -413,10 +413,21 @@ export function PostAttentionChips({
             : "border border-soft bg-surface-soft text-primary hover:bg-app",
         ].join(" ")}
       >
-        <span className="font-black text-emerald-400">↗</span>
-        <span className="shrink-0 font-black">+{displayScore}</span>
+        <span className="text-emerald-400">↗</span>
+
+        <span
+          className={[
+            "shrink-0 font-semibold",
+            hasRealTrend ? "text-primary" : "",
+          ].join(" ")}
+        >
+          +{displayScore}
+        </span>
+
         {hasRealTrend ? (
-          <span className="shrink-0 font-black">+{realSourceCount}</span>
+          <span className="shrink-0 font-semibold text-emerald-400">
+            +{realSourceCount}
+          </span>
         ) : null}
       </button>
 
