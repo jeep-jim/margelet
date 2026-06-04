@@ -1,224 +1,103 @@
 import type { ContentTag } from "./contracts.js";
 
+export type CategoryMatch = {
+  tag: ContentTag;
+  score: number;
+};
+
 const CATEGORY_ORDER: ContentTag[] = [
-  "news",
-  "politics",
-  "war",
-  "economy",
-  "business",
-  "finance",
-  "crypto",
-  "technology",
-  "ai",
-  "science",
-  "space",
-  "education",
-  "history",
-  "culture",
-  "art",
-  "design",
-  "books",
-  "cinema",
-  "series",
-  "music",
-  "gaming",
-  "memes",
-  "humor",
-  "sports",
-  "mma",
-  "travel",
-  "food",
-  "recipes",
-  "health",
-  "fitness",
-  "psychology",
-  "relationships",
-  "fashion",
-  "beauty",
-  "photography",
-  "nature",
-  "animals",
-  "people",
-  "celebrities",
-  "marketing",
-  "startups",
-  "jobs",
-  "real_estate",
-  "auto",
-  "gadgets",
-  "parenting",
-  "telegram",
-  "creativity",
-  "other",
+  "news", "news_breaking", "news_incidents", "news_regions", "news_world", "politics", "war",
+  "economy", "business", "marketplaces", "finance", "crypto", "technology", "ai", "gadgets",
+  "science", "space", "education", "culture", "cinema", "series", "music", "gaming", "memes", "humor",
+  "sports", "fitness", "health", "travel", "food", "recipes", "food_service", "psychology", "relationships",
+  "fashion", "beauty", "nature", "animals", "people", "celebrities", "marketing", "startups", "jobs",
+  "real_estate", "auto", "telegram", "creativity", "other",
 ];
 
-const CATEGORY_SET = new Set<string>(CATEGORY_ORDER);
+const CATEGORY_SET = new Set<string>([
+  "news", "politics", "economy", "business", "marketplaces", "finance", "electronics", "technology", "science",
+  "education", "culture", "gaming", "humor", "sports", "fitness", "health", "travel", "food", "food_service",
+  "psychology", "fashion", "nature", "people", "marketing", "startups", "jobs", "real_estate", "auto",
+  "telegram", "creativity", "other", "news_all", "news_world", "news_breaking", "news_regions", "news_incidents",
+  "news_investigations", "news_good", "news_no_negative", "politics_all", "politics_world", "politics_government",
+  "politics_elections", "politics_conflicts", "war", "politics_opinion", "politics_other", "economy_all",
+  "economy_macro", "economy_markets", "economy_industry", "economy_energy", "economy_logistics", "economy_other",
+  "business_all", "business_companies", "business_entrepreneurship", "business_ecommerce", "business_management",
+  "business_cases", "business_other", "finance_all", "finance_banks", "finance_payment_systems", "finance_investing",
+  "finance_trading", "finance_personal", "crypto", "finance_other", "electronics_home_appliances", "electronics_pc",
+  "electronics_construction", "electronics_trends", "electronics_brands", "electronics_delivery", "electronics_reviews",
+  "technology_all", "technology_software", "technology_dev", "technology_web", "internet", "gadgets", "ai",
+  "technology_other", "science_all", "science_research", "science_discoveries", "science_medicine", "space", "science_other",
+  "education_all", "education_courses", "education_languages", "education_self", "history", "books", "education_other",
+  "culture_all", "art", "design", "photography", "cinema", "series", "music", "culture_other", "gaming_all",
+  "gaming_mobile", "gaming_pc", "gaming_console", "gaming_esports", "gaming_other", "humor_all", "memes",
+  "humor_ironical", "humor_satire", "humor_other", "sports_all", "sports_championships", "sports_matches",
+  "sports_news", "sports_people", "sports_transfers", "sports_analytics", "sports_other", "fitness_all",
+  "fitness_training", "fitness_nutrition", "fitness_body", "fitness_other", "health_all", "health_medicine",
+  "health_research", "health_food", "health_advice", "health_other", "travel_all", "travel_rest", "travel_countries",
+  "travel_routes", "travel_hotels", "travel_other", "food_all", "recipes", "food_products", "food_other",
+  "food_service_places", "food_service_delivery", "food_service_products", "food_service_new", "food_service_jobs",
+  "food_service_software", "food_service_reviews", "psychology_all", "psychology_self", "relationships",
+  "parenting", "psychology_other", "fashion_all", "beauty", "fashion_style", "fashion_brands", "fashion_other",
+  "nature_all", "animals", "nature_ecology", "nature_plants", "nature_other", "people_all", "people_blogs",
+  "celebrities", "people_interviews", "people_other", "marketing_all", "marketing_smm", "marketing_ads",
+  "marketing_brand", "marketing_other", "startups_all", "startups_cases", "startups_founders", "startups_invest",
+  "startups_other", "jobs_all", "jobs_vacancies", "jobs_remote", "jobs_parttime", "jobs_career", "jobs_freelance",
+  "jobs_resume", "jobs_interviews", "jobs_learning", "jobs_other", "real_estate_all", "real_estate_housing",
+  "real_estate_invest", "real_estate_build", "real_estate_other", "transport_auto", "transport_moto", "transport_other",
+  "transport_reviews", "transport_other2", "telegram_all", "telegram_channels", "telegram_bots", "telegram_ton",
+  "telegram_updates", "telegram_other", "creativity_all", "creativity_handmade", "creativity_inspiration",
+  "creativity_other", "other_all", "other_misc",
+]);
 
-const CHILD_TO_PARENT: Record<string, ContentTag> = {
-  news_all: "news",
-  news_world: "news",
-  news_breaking: "news",
-  news_regions: "news",
-  news_incidents: "news",
-  news_investigations: "news",
-  politics_all: "politics",
-  politics_world: "politics",
-  politics_government: "politics",
-  politics_elections: "politics",
-  politics_conflicts: "politics",
-  politics_opinion: "politics",
-  war_all: "war",
-  economy_all: "economy",
-  economy_macro: "economy",
-  economy_markets: "economy",
-  economy_energy: "economy",
-  business_all: "business",
-  business_companies: "business",
-  business_ecommerce: "business",
-  finance_all: "finance",
-  finance_banks: "finance",
-  finance_invest: "finance",
-  finance_trading: "finance",
-  crypto_all: "crypto",
-  crypto_btc: "crypto",
-  crypto_ton: "crypto",
-  technology_all: "technology",
-  technology_software: "technology",
-  technology_security: "technology",
-  technology_reviews: "technology",
-  ai_all: "ai",
-  ai_tools: "ai",
-  science_all: "science",
-  education_all: "education",
-  education_courses: "education",
-  culture_all: "culture",
-  cinema_all: "cinema",
-  series_all: "series",
-  gaming_all: "gaming",
-  memes_all: "memes",
-  humor_all: "humor",
-  sports_all: "sports",
-  fitness_all: "fitness",
-  health_all: "health",
-  health_medicine: "health",
-  health_food: "health",
-  travel_all: "travel",
-  travel_countries: "travel",
-  food_all: "food",
-  food_products: "food",
-  food_service: "food",
-  food_service_places: "food",
-  food_service_delivery: "food",
-  recipes_all: "recipes",
-  psychology_all: "psychology",
-  fashion_all: "fashion",
-  fashion_brands: "fashion",
-  beauty_all: "beauty",
-  nature_all: "nature",
-  animals_all: "animals",
-  people_all: "people",
-  people_blogs: "people",
-  marketing_all: "marketing",
-  marketing_smm: "marketing",
-  startups_all: "startups",
-  jobs_all: "jobs",
-  jobs_remote: "jobs",
-  jobs_vacancies: "jobs",
-  real_estate_all: "real_estate",
-  real_estate_housing: "real_estate",
-  real_estate_build: "real_estate",
-  transport_auto: "auto",
-  transport_moto: "auto",
-  transport_other: "auto",
-  electronics: "gadgets",
-  electronics_all: "gadgets",
-  electronics_reviews: "gadgets",
-  telegram_all: "telegram",
-  telegram_channels: "telegram",
-  telegram_bots: "telegram",
-  telegram_ton: "telegram",
-  other_misc: "other",
-  other_all: "other",
+const PARENT_BY_CHILD: Record<string, ContentTag> = {
+  news_all: "news", news_world: "news", news_breaking: "news", news_regions: "news", news_incidents: "news", news_investigations: "news", news_good: "news", news_no_negative: "news",
+  politics_all: "politics", politics_world: "politics", politics_government: "politics", politics_elections: "politics", politics_conflicts: "politics", politics_opinion: "politics", politics_other: "politics", war: "politics",
+  economy_all: "economy", economy_macro: "economy", economy_markets: "economy", economy_industry: "economy", economy_energy: "economy", economy_logistics: "economy", economy_other: "economy",
+  business_all: "business", business_companies: "business", business_entrepreneurship: "business", business_ecommerce: "business", business_management: "business", business_cases: "business", business_other: "business",
+  finance_all: "finance", finance_banks: "finance", finance_payment_systems: "finance", finance_investing: "finance", finance_trading: "finance", finance_personal: "finance", crypto: "finance", finance_other: "finance",
+  electronics_home_appliances: "electronics", electronics_pc: "electronics", electronics_construction: "electronics", electronics_trends: "electronics", electronics_brands: "electronics", electronics_delivery: "electronics", electronics_reviews: "electronics",
+  technology_all: "technology", technology_software: "technology", technology_dev: "technology", technology_web: "technology", internet: "technology", gadgets: "technology", ai: "technology", technology_other: "technology",
+  science_all: "science", science_research: "science", science_discoveries: "science", science_medicine: "science", space: "science", science_other: "science",
+  education_all: "education", education_courses: "education", education_languages: "education", education_self: "education", history: "education", books: "education", education_other: "education",
+  culture_all: "culture", art: "culture", design: "culture", photography: "culture", cinema: "culture", series: "culture", music: "culture", culture_other: "culture",
+  gaming_all: "gaming", gaming_mobile: "gaming", gaming_pc: "gaming", gaming_console: "gaming", gaming_esports: "gaming", gaming_other: "gaming",
+  humor_all: "humor", memes: "humor", humor_ironical: "humor", humor_satire: "humor", humor_other: "humor",
+  sports_all: "sports", sports_championships: "sports", sports_matches: "sports", sports_news: "sports", sports_people: "sports", sports_transfers: "sports", sports_analytics: "sports", sports_other: "sports",
+  fitness_all: "fitness", fitness_training: "fitness", fitness_nutrition: "fitness", fitness_body: "fitness", fitness_other: "fitness",
+  health_all: "health", health_medicine: "health", health_research: "health", health_food: "health", health_advice: "health", health_other: "health",
+  travel_all: "travel", travel_rest: "travel", travel_countries: "travel", travel_routes: "travel", travel_hotels: "travel", travel_other: "travel",
+  food_all: "food", recipes: "food", food_products: "food", food_other: "food",
+  food_service_places: "food_service", food_service_delivery: "food_service", food_service_products: "food_service", food_service_new: "food_service", food_service_jobs: "food_service", food_service_software: "food_service", food_service_reviews: "food_service",
+  psychology_all: "psychology", psychology_self: "psychology", relationships: "psychology", parenting: "psychology", psychology_other: "psychology",
+  fashion_all: "fashion", beauty: "fashion", fashion_style: "fashion", fashion_brands: "fashion", fashion_other: "fashion",
+  nature_all: "nature", animals: "nature", nature_ecology: "nature", nature_plants: "nature", nature_other: "nature",
+  people_all: "people", people_blogs: "people", celebrities: "people", people_interviews: "people", people_other: "people",
+  marketing_all: "marketing", marketing_smm: "marketing", marketing_ads: "marketing", marketing_brand: "marketing", marketing_other: "marketing",
+  startups_all: "startups", startups_cases: "startups", startups_founders: "startups", startups_invest: "startups", startups_other: "startups",
+  jobs_all: "jobs", jobs_vacancies: "jobs", jobs_remote: "jobs", jobs_parttime: "jobs", jobs_career: "jobs", jobs_freelance: "jobs", jobs_resume: "jobs", jobs_interviews: "jobs", jobs_learning: "jobs", jobs_other: "jobs",
+  real_estate_all: "real_estate", real_estate_housing: "real_estate", real_estate_invest: "real_estate", real_estate_build: "real_estate", real_estate_other: "real_estate",
+  transport_auto: "auto", transport_moto: "auto", transport_reviews: "auto", transport_other: "auto", transport_other2: "auto",
+  telegram_all: "telegram", telegram_channels: "telegram", telegram_bots: "telegram", telegram_ton: "telegram", telegram_updates: "telegram", telegram_other: "telegram",
+  creativity_all: "creativity", creativity_handmade: "creativity", creativity_inspiration: "creativity", creativity_other: "creativity",
+  other_all: "other", other_misc: "other",
 };
 
 const TAG_ALIASES: Record<string, ContentTag> = {
-  авто: "auto",
-  машина: "auto",
-  машины: "auto",
-  автомобиль: "auto",
-  автомобили: "auto",
-  transport: "auto",
-  car: "auto",
-  cars: "auto",
-  новости: "news",
-  новость: "news",
-  сми: "news",
-  news: "news",
-  политика: "politics",
-  politics: "politics",
-  война: "war",
-  war: "war",
-  экономика: "economy",
-  economy: "economy",
-  бизнес: "business",
-  business: "business",
-  финансы: "finance",
-  finance: "finance",
-  крипта: "crypto",
-  криптовалюта: "crypto",
-  crypto: "crypto",
-  технологии: "technology",
-  technology: "technology",
-  tech: "technology",
-  it: "technology",
-  ии: "ai",
-  нейросети: "ai",
-  ai: "ai",
-  наука: "science",
-  science: "science",
-  образование: "education",
-  education: "education",
-  культура: "culture",
-  culture: "culture",
-  кино: "cinema",
-  фильмы: "cinema",
-  cinema: "cinema",
-  games: "gaming",
-  gaming: "gaming",
-  игры: "gaming",
-  юмор: "humor",
-  humor: "humor",
-  спорт: "sports",
-  sports: "sports",
-  путешествия: "travel",
-  travel: "travel",
-  еда: "food",
-  food: "food",
-  рецепты: "recipes",
-  recipes: "recipes",
-  здоровье: "health",
-  health: "health",
-  фитнес: "fitness",
-  fitness: "fitness",
-  природа: "nature",
-  nature: "nature",
-  животные: "animals",
-  animals: "animals",
-  маркетинг: "marketing",
-  marketing: "marketing",
-  стартапы: "startups",
-  startups: "startups",
-  вакансии: "jobs",
-  работа: "jobs",
-  jobs: "jobs",
-  недвижимость: "real_estate",
-  realestate: "real_estate",
-  real_estate: "real_estate",
-  телеграм: "telegram",
-  telegram: "telegram",
-  другое: "other",
-  разное: "other",
-  other: "other",
+  авто: "transport_auto", машина: "transport_auto", машины: "transport_auto", автомобиль: "transport_auto", автомобили: "transport_auto", transport: "transport_auto", car: "transport_auto", cars: "transport_auto",
+  новости: "news_all", новость: "news_all", сми: "news_all", news: "news_all", breaking: "news_breaking",
+  политика: "politics_all", politics: "politics_all", война: "war", war: "war",
+  экономика: "economy_all", economy: "economy_all", бизнес: "business_all", business: "business_all",
+  финансы: "finance_all", finance: "finance_all", крипта: "crypto", криптовалюта: "crypto", crypto: "crypto",
+  технологии: "technology_all", technology: "technology_all", tech: "technology_all", it: "technology_software",
+  ии: "ai", нейросети: "ai", ai: "ai", gadgets: "gadgets", гаджеты: "gadgets",
+  наука: "science_all", science: "science_all", образование: "education_all", education: "education_all",
+  культура: "culture_all", culture: "culture_all", кино: "cinema", фильмы: "cinema", cinema: "cinema", games: "gaming_all", gaming: "gaming_all", игры: "gaming_all",
+  юмор: "humor_all", humor: "humor_all", спорт: "sports_all", sports: "sports_all",
+  путешествия: "travel_all", travel: "travel_all", еда: "food_all", food: "food_all", рецепты: "recipes", recipes: "recipes",
+  здоровье: "health_all", health: "health_all", фитнес: "fitness_all", fitness: "fitness_all", природа: "nature_all", nature: "nature_all", животные: "animals", animals: "animals",
+  маркетинг: "marketing_all", marketing: "marketing_all", стартапы: "startups_all", startups: "startups_all", вакансии: "jobs_vacancies", работа: "jobs_all", jobs: "jobs_all",
+  недвижимость: "real_estate_all", realestate: "real_estate_all", real_estate: "real_estate_all", телеграм: "telegram_all", telegram: "telegram_all", другое: "other", разное: "other", other: "other",
 };
 
 type KeywordRule = {
@@ -228,42 +107,78 @@ type KeywordRule = {
 };
 
 const RULES: KeywordRule[] = [
-  { category: "auto", weight: 8, patterns: [/\b(auto|cars?|truck|pickup|ev|tesla|toyota|honda|bmw|mercedes|hyundai|kia|byd|geely|ram)\b/i, /авто|машин|автомоб|пикап|грузовик|электромоб|дтп|гибдд|дорог|трасс|водител|мото/i] },
-  { category: "real_estate", weight: 8, patterns: [/ипотек|новостро|недвижим|квартир|жиль[её]|застрой|аренд|дом\s|дома\s|жк\b|real estate|mortgage|housing|apartment/i] },
-  { category: "finance", weight: 7, patterns: [/банк|сбер|втб|тинькофф|ставк|инфляц|доллар|евро|рубл|курс|бирж|акци[ия]|инвест|дивиденд|finance|bank|stocks?|market/i] },
-  { category: "crypto", weight: 8, patterns: [/bitcoin|btc|ethereum|eth|crypto|крипт|binance|ton\b|toncoin|usdt|blockchain|блокчейн|токен|airdrop|nft/i] },
-  { category: "technology", weight: 7, patterns: [/iphone|android|apple|google|microsoft|windows|software|app\b|приложени|смартфон|гаджет|обновлен|браузер|vpn|технолог/i] },
-  { category: "ai", weight: 9, patterns: [/openai|chatgpt|gpt|нейросет|искусственн| ии |\bai\b|llm|claude|gemini|midjourney|stable diffusion/i] },
-  { category: "politics", weight: 7, patterns: [/президент|правительств|госдум|выбор|законопроект|санкци|минобороны|парламент|политик|trump|putin|biden|government|election/i] },
-  { category: "war", weight: 8, patterns: [/войн|фронт|обстрел|ракет|дрон|бпла|армия|военн|атака|пво|эвакуац|war|missile|drone|attack/i] },
-  { category: "business", weight: 6, patterns: [/бизнес|компан|продаж|выручк|прибыл|бренд|магазин|ритейл|маркетплейс|ozon|wildberries|amazon|business|company|retail/i] },
-  { category: "marketing", weight: 7, patterns: [/маркетинг|реклам|smm|бренд|охват|аудитор|продвижен|таргет|pr\b|ads?\b|marketing/i] },
-  { category: "startups", weight: 7, patterns: [/стартап|инвестиц|фаундер|венчур|раунд|pitch|startup|vc\b|founder/i] },
-  { category: "jobs", weight: 7, patterns: [/ваканс|работ[аеуы]|удаленк|резюме|карьер|зарплат|собеседован|job|jobs|remote|career|hiring|vacancy/i] },
-  { category: "news", weight: 5, patterns: [/срочно|новост|происшеств|инцидент|погиб|пожар|авари|объявил|сообщил|breaking|news|report/i] },
-  { category: "education", weight: 6, patterns: [/курс|обучен|школ|университет|студент|урок|экзамен|егэ|education|course|study|school|university/i] },
-  { category: "science", weight: 7, patterns: [/ученые|исследован|наука|открыт|лаборатор|science|research|study/i] },
-  { category: "space", weight: 8, patterns: [/космос|ракета|спутник|spacex|nasa|starship|space|satellite/i] },
-  { category: "health", weight: 6, patterns: [/здоров|врач|медицин|болезн|лекарств|симптом|клиник|health|medical|doctor|medicine/i] },
-  { category: "fitness", weight: 6, patterns: [/фитнес|трениров|спортзал|похуд|белок|калори|fitness|workout|gym/i] },
-  { category: "food", weight: 6, patterns: [/еда|ресторан|кафе|доставк|продукт|макдоналдс|вкусно|food|restaurant|delivery/i] },
-  { category: "recipes", weight: 8, patterns: [/рецепт|ингредиент|готов|запека|варить|салат|торт|кухн|recipe|cooking/i] },
-  { category: "travel", weight: 6, patterns: [/тур|путешеств|отел|рейс|аэропорт|виза|билет|страна|курорт|travel|hotel|flight|visa/i] },
-  { category: "sports", weight: 7, patterns: [/футбол|матч|гол|лига|чемпионат|спорт|хоккей|теннис|football|sport|match|league/i] },
-  { category: "gaming", weight: 7, patterns: [/игр|game|gaming|steam|xbox|playstation|nintendo|minecraft|roblox|pubg|gta/i] },
-  { category: "cinema", weight: 7, patterns: [/кино|фильм|сериал|актер|режиссер|netflix|movie|film|series/i] },
-  { category: "music", weight: 6, patterns: [/музык|песня|альбом|концерт|трек|music|song|album|concert/i] },
-  { category: "culture", weight: 5, patterns: [/культур|театр|музей|выставк|литератур|culture|museum|theatre/i] },
-  { category: "fashion", weight: 6, patterns: [/мода|одежд|стиль|бренд|fashion|style|clothes/i] },
-  { category: "beauty", weight: 6, patterns: [/красот|макияж|косметик|beauty|makeup|cosmetic/i] },
-  { category: "nature", weight: 6, patterns: [/природ|лес|погода|шторм|дожд|снег|эколог|nature|weather|storm|rain/i] },
-  { category: "animals", weight: 7, patterns: [/животн|кот|кошка|собак|птиц|animal|cat|dog|bird/i] },
-  { category: "telegram", weight: 8, patterns: [/telegram|телеграм|канал|бот|ton\b|павел дуров|дуров/i] },
-  { category: "memes", weight: 6, patterns: [/мем|мемы|прикол|memes?|funny/i] },
-  { category: "humor", weight: 5, patterns: [/юмор|смешн|шутк|анекдот|humou?r|joke/i] },
-  { category: "parenting", weight: 6, patterns: [/дети|ребен|родител|мама|папа|школа|parenting|kids|children/i] },
-  { category: "people", weight: 5, patterns: [/люди|блогер|интервью|персон|people|blogger|interview/i] },
-  { category: "celebrities", weight: 6, patterns: [/звезд|селебрити|актер|певец|celebrity|celeb/i] },
+  { category: "transport_auto", weight: 10, patterns: [/\b(auto|cars?|truck|pickup|vehicle|tesla|toyota|honda|bmw|mercedes|hyundai|kia|byd|geely|ram)\b/i, /авто|машин|автомоб|пикап|грузовик|электромоб|дтп|гибдд|дорог|трасс|водител|мото/i] },
+  { category: "transport_reviews", weight: 9, patterns: [/тест[-\s]?драйв|обзор авто|характеристик|расход топлива|лошадиных сил|test drive|car review/i] },
+  { category: "real_estate_housing", weight: 9, patterns: [/ипотек|новостро|недвижим|квартир|жиль[её]|застрой|аренд|дом\s|дома\s|жк\b|real estate|mortgage|housing|apartment/i] },
+  { category: "finance_banks", weight: 8, patterns: [/банк|сбер|втб|тинькофф|кредит|вклад|карта|bank|loan|deposit/i] },
+  { category: "finance_investing", weight: 8, patterns: [/акци[ия]|облигац|дивиденд|портфел|инвест|stocks?|shares?|dividend|invest/i] },
+  { category: "finance_trading", weight: 8, patterns: [/трейд|бирж|фьючерс|маржин|лонг|шорт|курс|trading|exchange|market/i] },
+  { category: "crypto", weight: 10, patterns: [/bitcoin|btc|ethereum|eth|crypto|крипт|binance|ton\b|toncoin|usdt|blockchain|блокчейн|токен|airdrop|nft|wallet/i] },
+  { category: "technology_software", weight: 8, patterns: [/software|app\b|приложени|windows|linux|ios|android|браузер|vpn|код|разработ|github|api\b/i] },
+  { category: "gadgets", weight: 9, patterns: [/iphone|ipad|смартфон|гаджет|ноутбук|процессор|чип|камера|apple|samsung|xiaomi|huawei|device|laptop/i] },
+  { category: "ai", weight: 11, patterns: [/openai|chatgpt|gpt|нейросет|искусственн| ии |\bai\b|llm|claude|gemini|midjourney|stable diffusion/i] },
+  { category: "politics_government", weight: 8, patterns: [/президент|правительств|госдум|депутат|губернатор|министерств|парламент|government|minister|parliament/i] },
+  { category: "politics_elections", weight: 8, patterns: [/выбор|голосован|избират|election|vote|voting/i] },
+  { category: "politics_conflicts", weight: 8, patterns: [/санкци|конфликт|протест|митинг|conflict|sanction|protest/i] },
+  { category: "war", weight: 11, patterns: [/войн|фронт|обстрел|ракет|дрон|бпла|армия|военн|атака|пво|эвакуац|сво\b|war|missile|drone|attack|air defense/i] },
+  { category: "business_companies", weight: 7, patterns: [/компан|выручк|прибыл|бренд|ритейл|company|revenue|profit|retail/i] },
+  { category: "business_ecommerce", weight: 8, patterns: [/маркетплейс|e-?commerce|ozon|wildberries|amazon|aliexpress|онлайн[-\s]?магазин/i] },
+  { category: "marketing_smm", weight: 8, patterns: [/smm|охват|аудитор|продвижен|таргет|контент[-\s]?план|social media/i] },
+  { category: "marketing_ads", weight: 8, patterns: [/реклам|баннер|креатив|cpa\b|cpc\b|ads?\b|advertis/i] },
+  { category: "startups_founders", weight: 8, patterns: [/стартап|фаундер|founder|startup/i] },
+  { category: "startups_invest", weight: 8, patterns: [/венчур|раунд|seed|series a|pitch|vc\b|venture/i] },
+  { category: "jobs_vacancies", weight: 8, patterns: [/ваканс|hiring|vacancy|job opening/i] },
+  { category: "jobs_remote", weight: 8, patterns: [/удаленк|remote|work from home|дистанцион/i] },
+  { category: "jobs_career", weight: 7, patterns: [/карьер|резюме|собеседован|зарплат|career|resume|interview|salary/i] },
+  { category: "news_breaking", weight: 8, patterns: [/срочно|молния|breaking|just in|urgent/i] },
+  { category: "news_incidents", weight: 8, patterns: [/происшеств|инцидент|погиб|пожар|авари|дтп|взрыв|нападен|incident|accident|fire|explosion/i] },
+  { category: "news_regions", weight: 7, patterns: [/област|район|город|регион|москв|петербург|ростов|краснодар|казань|region|city/i] },
+  { category: "education_courses", weight: 8, patterns: [/курс|обучен|урок|вебинар|education|course|lesson|webinar/i] },
+  { category: "education_all", weight: 7, patterns: [/школ|университет|студент|экзамен|егэ|study|school|university|exam/i] },
+  { category: "science_research", weight: 8, patterns: [/ученые|исследован|наука|лаборатор|science|research|study|scientists/i] },
+  { category: "science_discoveries", weight: 8, patterns: [/открыт|discover|breakthrough/i] },
+  { category: "space", weight: 10, patterns: [/космос|ракета|спутник|spacex|nasa|starship|space|satellite|orbit/i] },
+  { category: "health_medicine", weight: 8, patterns: [/врач|медицин|болезн|лекарств|симптом|клиник|medical|doctor|medicine|clinic/i] },
+  { category: "health_food", weight: 7, patterns: [/диет|питани|нутрици|калори|nutrition|diet|healthy food/i] },
+  { category: "fitness_training", weight: 8, patterns: [/трениров|спортзал|упражнен|workout|gym|training/i] },
+  { category: "fitness_nutrition", weight: 7, patterns: [/белок|протеин|похуд|protein|calorie|weight loss/i] },
+  { category: "food_service_places", weight: 8, patterns: [/ресторан|кафе|бар\b|кофейн|restaurant|cafe|coffee shop/i] },
+  { category: "food_service_delivery", weight: 8, patterns: [/доставк[аи]|delivery|курьер|самокат|яндекс еда/i] },
+  { category: "food_products", weight: 7, patterns: [/продукт|магазин|макдоналдс|бургер|еда|food|products|grocery/i] },
+  { category: "recipes", weight: 10, patterns: [/рецепт|ингредиент|готов|запека|варить|салат|торт|кухн|recipe|cooking|cook/i] },
+  { category: "travel_routes", weight: 8, patterns: [/маршрут|рейс|билет|поезд|самолет|flight|ticket|route/i] },
+  { category: "travel_hotels", weight: 8, patterns: [/отел|гостиниц|hotel|booking/i] },
+  { category: "travel_countries", weight: 7, patterns: [/виза|границ|страна|тур|путешеств|курорт|travel|visa|resort/i] },
+  { category: "sports_matches", weight: 8, patterns: [/матч|гол|счет|побед|match|score|goal/i] },
+  { category: "sports_news", weight: 7, patterns: [/футбол|хоккей|теннис|баскетбол|спорт|football|sport|league/i] },
+  { category: "sports_transfers", weight: 8, patterns: [/трансфер|контракт|перешел|transfer|contract/i] },
+  { category: "gaming_mobile", weight: 8, patterns: [/mobile game|pubg mobile|genshin|хонкай|clash royale/i] },
+  { category: "gaming_pc", weight: 8, patterns: [/steam|pc game|dota|cs2|minecraft|roblox|gta/i] },
+  { category: "gaming_console", weight: 8, patterns: [/playstation|xbox|nintendo|console/i] },
+  { category: "cinema", weight: 8, patterns: [/кино|фильм|актер|режиссер|movie|film|actor|director/i] },
+  { category: "series", weight: 8, patterns: [/сериал|netflix|episode|season|series/i] },
+  { category: "music", weight: 7, patterns: [/музык|песня|альбом|концерт|трек|music|song|album|concert/i] },
+  { category: "art", weight: 7, patterns: [/искусств|картина|галере|artist|painting|gallery/i] },
+  { category: "design", weight: 7, patterns: [/дизайн|интерьер|ui\b|ux\b|design|interior/i] },
+  { category: "books", weight: 7, patterns: [/книг|роман|литератур|book|novel|reading/i] },
+  { category: "fashion_style", weight: 7, patterns: [/мода|одежд|стиль|fashion|style|clothes/i] },
+  { category: "fashion_brands", weight: 7, patterns: [/бренд|коллекц|brand|collection/i] },
+  { category: "beauty", weight: 8, patterns: [/красот|макияж|косметик|beauty|makeup|cosmetic/i] },
+  { category: "nature_ecology", weight: 8, patterns: [/эколог|загрязн|климат|ecology|climate|pollution/i] },
+  { category: "nature_all", weight: 6, patterns: [/природ|лес|погода|шторм|дожд|снег|weather|storm|rain|snow/i] },
+  { category: "animals", weight: 8, patterns: [/животн|кот|кошка|собак|птиц|animal|cat|dog|bird/i] },
+  { category: "telegram_channels", weight: 7, patterns: [/telegram channel|телеграм[-\s]?канал|подписывайтесь|канал/i] },
+  { category: "telegram_bots", weight: 8, patterns: [/бот\b|bot\b/i] },
+  { category: "telegram_ton", weight: 8, patterns: [/ton\b|toncoin|gram|notcoin/i] },
+  { category: "memes", weight: 8, patterns: [/мем|мемы|прикол|memes?|funny/i] },
+  { category: "humor_ironical", weight: 7, patterns: [/ирони|сарказм|лол|кек|joke|satire|сарказ/i] },
+  { category: "psychology_self", weight: 7, patterns: [/самооцен|мотивац|привычк|осознан|self help|mindset/i] },
+  { category: "relationships", weight: 8, patterns: [/отношен|любов|свадьб|развод|relationship|love|dating|marriage/i] },
+  { category: "parenting", weight: 8, patterns: [/дети|ребен|родител|мама|папа|parenting|kids|children/i] },
+  { category: "people_blogs", weight: 6, patterns: [/блогер|личн|история|дневник|blogger|personal story/i] },
+  { category: "celebrities", weight: 8, patterns: [/звезд|селебрити|актер|певец|celebrity|celeb/i] },
+  { category: "creativity_handmade", weight: 7, patterns: [/handmade|своими руками|поделк|мастер[-\s]?класс|craft/i] },
+  { category: "creativity_inspiration", weight: 6, patterns: [/вдохнов|иде[яи]|inspiration|creative/i] },
 ];
 
 function normalizeText(value: string) {
@@ -272,23 +187,24 @@ function normalizeText(value: string) {
     .replace(/ё/g, "е")
     .replace(/[\u2010-\u2015]/g, "-")
     .replace(/https?:\/\/\S+/g, " ")
-    .replace(/@[a-z0-9_]+/gi, " ");
+    .replace(/@[a-z0-9_]+/gi, " ")
+    .replace(/[\u{1F000}-\u{1FAFF}]/gu, " ");
 }
 
 function normalizeTagText(value: string) {
   return normalizeText(value)
-    .replace(/[\u{1F000}-\u{1FAFF}]/gu, " ")
     .replace(/[^a-zа-я0-9_]+/gi, "_")
     .replace(/^_+|_+$/g, "");
+}
+
+export function getParentContentTag(tag: ContentTag): ContentTag | null {
+  return PARENT_BY_CHILD[tag] || null;
 }
 
 export function normalizeContentTag(value: unknown): ContentTag | null {
   if (typeof value !== "string") return null;
   const normalized = normalizeTagText(value);
   if (!normalized) return null;
-
-  const childParent = CHILD_TO_PARENT[normalized];
-  if (childParent) return childParent;
 
   const alias = TAG_ALIASES[normalized];
   if (alias) return alias;
@@ -320,14 +236,89 @@ function collectSourceTags(value: unknown, out: Set<ContentTag>) {
 }
 
 function addScore(scores: Map<ContentTag, number>, category: ContentTag, value: number) {
+  if (category === "other" || category === "other_misc" || category === "other_all") return;
   scores.set(category, (scores.get(category) || 0) + value);
 }
 
-function sortedScores(scores: Map<ContentTag, number>) {
-  return [...scores.entries()].sort((a, b) => {
-    if (b[1] !== a[1]) return b[1] - a[1];
-    return CATEGORY_ORDER.indexOf(a[0]) - CATEGORY_ORDER.indexOf(b[0]);
-  });
+function sortedScores(scores: Map<ContentTag, number>): CategoryMatch[] {
+  return [...scores.entries()]
+    .map(([tag, score]) => ({ tag, score }))
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return CATEGORY_ORDER.indexOf(a.tag) - CATEGORY_ORDER.indexOf(b.tag);
+    });
+}
+
+function addParentTags(tags: ContentTag[]) {
+  const out: ContentTag[] = [];
+  const seen = new Set<string>();
+  for (const tag of tags) {
+    if (!seen.has(tag)) {
+      out.push(tag);
+      seen.add(tag);
+    }
+    const parent = getParentContentTag(tag);
+    if (parent && !seen.has(parent)) {
+      out.push(parent);
+      seen.add(parent);
+    }
+  }
+  return out;
+}
+
+export function inferPostCategoryMatches(params: {
+  text?: string | null;
+  title?: string | null;
+  sourceTitle?: string | null;
+  sourceTags?: unknown;
+  sourceDefaultTag?: unknown;
+  maxTags?: number;
+}): CategoryMatch[] {
+  const text = normalizeText(
+    [params.title, params.text]
+      .filter((item): item is string => typeof item === "string" && item.trim().length > 0)
+      .join("\n"),
+  );
+
+  const scores = new Map<ContentTag, number>();
+
+  for (const rule of RULES) {
+    let matched = 0;
+    for (const pattern of rule.patterns) {
+      if (pattern.test(text)) matched += 1;
+    }
+    if (matched > 0) addScore(scores, rule.category, rule.weight * matched);
+  }
+
+  const direct = sortedScores(scores).filter((item) => item.score >= 7);
+  const maxTags = Math.max(1, params.maxTags || 4);
+
+  if (direct.length > 0) {
+    const topScore = direct[0].score;
+    const nearTop = direct.filter((item) => item.score >= Math.max(7, topScore - 2));
+
+    if (nearTop.length > 4) return [{ tag: "other", score: 1 }];
+
+    const selected = direct
+      .filter((item) => item.score >= Math.max(7, topScore * 0.55))
+      .slice(0, maxTags);
+
+    return selected;
+  }
+
+  const sourceFallback = new Set<ContentTag>();
+  collectSourceTags(params.sourceTags, sourceFallback);
+  collectSourceTags(params.sourceDefaultTag, sourceFallback);
+  const fallbackTags = [...sourceFallback].filter(
+    (tag) => tag !== "other" && tag !== "other_all" && tag !== "other_misc",
+  );
+
+  if (fallbackTags.length === 1) return [{ tag: fallbackTags[0], score: 2 }];
+  if (fallbackTags.length > 1 && fallbackTags.length <= 3) {
+    return fallbackTags.slice(0, maxTags).map((tag) => ({ tag, score: 2 }));
+  }
+
+  return [{ tag: "other", score: 1 }];
 }
 
 export function inferPostCategories(params: {
@@ -338,44 +329,13 @@ export function inferPostCategories(params: {
   sourceDefaultTag?: unknown;
   maxTags?: number;
 }): ContentTag[] {
-  const sourceTags = new Set<ContentTag>();
-  collectSourceTags(params.sourceTags, sourceTags);
-  collectSourceTags(params.sourceDefaultTag, sourceTags);
+  const matches = inferPostCategoryMatches(params);
+  const directTags = matches
+    .filter((item) => item.tag !== "other")
+    .map((item) => item.tag);
 
-  const text = normalizeText(
-    [params.title, params.text, params.sourceTitle]
-      .filter((item): item is string => typeof item === "string" && item.trim().length > 0)
-      .join("\n"),
-  );
+  if (!directTags.length) return ["other"];
 
-  const scores = new Map<ContentTag, number>();
-
-  for (const tag of sourceTags) {
-    if (tag !== "other") addScore(scores, tag, 2);
-  }
-
-  for (const rule of RULES) {
-    let matched = 0;
-    for (const pattern of rule.patterns) {
-      if (pattern.test(text)) matched += 1;
-    }
-    if (matched > 0) addScore(scores, rule.category, rule.weight * matched);
-  }
-
-  const direct = sortedScores(scores)
-    .filter(([category, score]) => category !== "other" && score >= 5)
-    .map(([category]) => category);
-
-  const sourceFallback = [...sourceTags].filter((tag) => tag !== "other");
-  const merged = [...direct, ...sourceFallback];
-  const unique = Array.from(new Set(merged));
-
-  if (unique.length > 0) return unique.slice(0, params.maxTags || 4);
-
-  const weak = sortedScores(scores)
-    .filter(([category]) => category !== "other")
-    .map(([category]) => category);
-  if (weak.length > 0) return weak.slice(0, params.maxTags || 4);
-
-  return ["other"];
+  const withParents = addParentTags(directTags);
+  return withParents.slice(0, params.maxTags || 6);
 }

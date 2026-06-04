@@ -347,14 +347,15 @@ function getEffectiveSourceAvatar(
 function getPostSemanticTags(params: {
   text: string;
   source: TrustedSource;
-  sourceTitle?: string | null;
 }) {
+  // Post-first intelligence:
+  // the post text is the source of truth. Channel tags are only a weak fallback
+  // for posts with almost no useful text, so one channel can feed many categories.
   return inferPostCategories({
     text: params.text,
-    sourceTitle: params.sourceTitle || params.source.title,
     sourceTags: params.source.tags,
     sourceDefaultTag: params.source.defaultTag,
-    maxTags: 4,
+    maxTags: 6,
   });
 }
 
@@ -368,7 +369,6 @@ function buildPost(params: {
   const semanticTags = getPostSemanticTags({
     text: ingest.text,
     source,
-    sourceTitle: ingest.source.title || source.title,
   });
 
   const expiresAt = new Date(
@@ -426,7 +426,6 @@ function buildRefreshedPost(params: {
   const semanticTags = getPostSemanticTags({
     text: ingest.text || post.text,
     source,
-    sourceTitle: ingest.source.title || source.title || post.source.title,
   });
 
   return {
@@ -810,6 +809,11 @@ function mergeSourcePosts(params: {
         return refreshed;
       }
 
+      const semanticTags = getPostSemanticTags({
+        text: post.text,
+        source: nextSource,
+      });
+
       return {
         ...post,
         source: {
@@ -822,17 +826,8 @@ function mergeSourcePosts(params: {
         },
         sourceId: nextSource.id,
         sourceCountryCode: nextSource.countryCode,
-        tag:
-          getPostSemanticTags({
-            text: post.text,
-            source: nextSource,
-            sourceTitle: nextSource.title || post.source.title,
-          })[0] || nextSource.defaultTag,
-        tags: getPostSemanticTags({
-          text: post.text,
-          source: nextSource,
-          sourceTitle: nextSource.title || post.source.title,
-        }),
+        tag: semanticTags[0] || nextSource.defaultTag,
+        tags: semanticTags,
       };
     }),
   ]);

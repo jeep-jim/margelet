@@ -509,16 +509,12 @@ function getPostCategories(post: IngestedPost): string[] {
   const categories = new Set<string>();
   const record = post as any;
 
+  // Post-first trend categories: trends should describe what is inside the post,
+  // not the historical category of the Telegram channel.
   collectCategoryValues(record.category, categories);
   collectCategoryValues(record.tag, categories);
   collectCategoryValues(record.tags, categories);
   collectCategoryValues(record.contentTags, categories);
-  collectCategoryValues(record.sourceTags, categories);
-  collectCategoryValues(record.channelTags, categories);
-  collectCategoryValues(record.source?.tags, categories);
-  collectCategoryValues(record.channel?.tags, categories);
-  collectCategoryValues(record.source?.category, categories);
-  collectCategoryValues(record.channel?.category, categories);
 
   return [...categories].filter((item) => item !== "all");
 }
