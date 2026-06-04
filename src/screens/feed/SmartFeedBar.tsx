@@ -22,6 +22,35 @@ export type FeedScreenCopy = {
   countriesTitle: string;
 };
 
+
+const AUTOTRANSLIT_LABEL: Record<Locale, string> = {
+  ru: "Автоперевод Telegram-каналов",
+  ua: "Автопереклад Telegram-каналів",
+  us: "Autotranslate Telegram channels",
+  in: "Telegram चैनलों का ऑटो-अनुवाद",
+  ir: "ترجمه خودکار کانال‌های Telegram",
+  tr: "Telegram kanallarını otomatik çevir",
+  br: "Traduzir canais do Telegram automaticamente",
+  kz: "Telegram арналарын автоаудару",
+  uz: "Telegram kanallarini avtomatik tarjima qilish",
+  ae: "ترجمة قنوات Telegram تلقائياً",
+  eg: "ترجمة قنوات Telegram تلقائياً",
+  pk: "Telegram چینلز کا خودکار ترجمہ",
+  id: "Terjemahkan channel Telegram otomatis",
+  mx: "Traducir canales de Telegram automáticamente",
+  sa: "ترجمة قنوات Telegram تلقائياً",
+  es: "Traducir canales de Telegram automáticamente",
+  it: "Traduci automaticamente i canali Telegram",
+  fr: "Traduire automatiquement les chaînes Telegram",
+  de: "Telegram-Kanäle automatisch übersetzen",
+  ar: "Traducir canales de Telegram automáticamente",
+  co: "Traducir canales de Telegram automáticamente",
+  za: "Autotranslate Telegram channels",
+  ng: "Autotranslate Telegram channels",
+  cn: "自动翻译 Telegram 频道",
+  my: "Terjemah automatik saluran Telegram",
+};
+
 export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
   us: {
     subscriptionsHint:
@@ -925,7 +954,7 @@ export function SmartFeedBar({
                       className={isDark ? "text-[#95a8bd]" : "text-secondary"}
                     >
                       {" "}
-                      → Autotranslit Telegram channels
+                      → {AUTOTRANSLIT_LABEL[locale] || AUTOTRANSLIT_LABEL.us}
                     </span>
                   </div>
 

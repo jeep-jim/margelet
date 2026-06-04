@@ -1226,7 +1226,7 @@ export function TrendDetail({
           <div className="text-[11px] font-black uppercase tracking-[0.16em] text-orange-400">
             {copy.telegramAttention}
           </div>
-          <h2 className="mt-1 text-base font-bold leading-tight text-[color:var(--trend-title)] sm:text-lg">
+          <h2 className="margelet-telegram-content mt-1 text-base font-bold leading-tight text-[color:var(--trend-title)] sm:text-lg" translate="yes">
             <span className="mr-1.5 align-[-1px] text-xl">{emoji}</span>
             {topic}
           </h2>
@@ -1283,11 +1283,12 @@ export function TrendDetail({
           />
         </div>
 
-        <div className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <div className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" translate="yes">
           {chips.map((chip) => (
             <span
               key={chip}
-              className="shrink-0 rounded-full border border-soft bg-app px-3 py-1.5 text-xs text-secondary"
+              className="margelet-telegram-content shrink-0 rounded-full border border-soft bg-app px-3 py-1.5 text-xs text-secondary"
+              translate="yes"
             >
               {chip}
             </span>
@@ -1327,10 +1328,10 @@ export function TrendDetail({
         <h3 className="text-lg font-black text-primary">
           {isUp ? copy.whyGrows : copy.whyFalls}
         </h3>
-        <div className="mt-3 space-y-2 text-sm leading-6 text-secondary">
-          <p>• {formatCopy(copy.whyLineSources, { count: sourceCount })}</p>
-          <p>• {isUp ? copy.whyLineActivityUp : copy.whyLineActivityDown}</p>
-          <p>
+        <div className="mt-3 space-y-2 text-sm leading-6 text-secondary" translate="yes">
+          <p className="margelet-telegram-content" translate="yes">• {formatCopy(copy.whyLineSources, { count: sourceCount })}</p>
+          <p className="margelet-telegram-content" translate="yes">• {isUp ? copy.whyLineActivityUp : copy.whyLineActivityDown}</p>
+          <p className="margelet-telegram-content" translate="yes">
             • {formatCopy(copy.whyLineRelated, { chips: chips.join(", ") })}
           </p>
         </div>
@@ -1354,7 +1355,7 @@ export function TrendDetail({
                   <div className="flex min-w-0 items-center gap-2">
                     <SourceAvatar source={source} />
                     <div className="min-w-0 flex-1">
-                      <div className="truncate text-sm font-black text-primary">
+                      <div className="margelet-telegram-content truncate text-sm font-black text-primary" translate="yes">
                         {source.title}
                       </div>
                       {getSourceHandle(source) ? (
@@ -1366,7 +1367,7 @@ export function TrendDetail({
                   </div>
 
                   {snippet ? (
-                    <div className="mt-2 line-clamp-3 text-[12px] font-medium leading-relaxed text-secondary">
+                    <div className="margelet-telegram-content mt-2 line-clamp-3 text-[12px] font-medium leading-relaxed text-secondary" translate="yes">
                       {snippet}
                     </div>
                   ) : null}
@@ -1393,7 +1394,7 @@ export function TrendDetail({
 
                     window.location.href = `/${handle}`;
                   }}
-                  className="flex w-full items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3 text-left no-underline transition hover:bg-app"
+                  className="margelet-telegram-content flex w-full items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3 text-left no-underline transition hover:bg-app"
                   translate="yes"
                 >
                   {content}
@@ -1404,7 +1405,7 @@ export function TrendDetail({
             return (
               <div
                 key={`${source.title}-${index}`}
-                className="flex items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3"
+                className="margelet-telegram-content flex items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3"
                 translate="yes"
               >
                 {content}
@@ -1483,13 +1484,13 @@ export function TrendRow({
         className="flex w-full items-start gap-3 px-3 py-3 text-left"
       >
         <div className="min-w-0 flex-1">
-          <div className="text-base font-bold leading-tight text-[color:var(--trend-title)] line-clamp-2">
+          <div className="margelet-telegram-content text-base font-bold leading-tight text-[color:var(--trend-title)] line-clamp-2" translate="yes">
             <span className="mr-1.5 align-[-1px] text-base">{emoji}</span>
             {topic}
           </div>
 
           {snippet ? (
-            <div className="mt-1 line-clamp-2 text-[12px] leading-relaxed text-secondary">
+            <div className="margelet-telegram-content mt-1 line-clamp-2 text-[12px] leading-relaxed text-secondary" translate="yes">
               {snippet}
             </div>
           ) : null}

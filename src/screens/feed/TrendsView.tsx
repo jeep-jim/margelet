@@ -234,7 +234,13 @@ export function TrendsView({
 
   useEffect(() => {
     refreshAutotranslit(locale);
-  }, [openedTopic, activeTrend, searchMode, selectedCategory, locale]);
+  }, [openedTopic, activeTrend, searchMode, selectedCategory, categoryTrends, searchModeTrends, locale]);
+
+  useEffect(() => {
+    const syncTranslate = () => refreshAutotranslit(locale, 40);
+    window.addEventListener("margelet-autotranslit-change", syncTranslate);
+    return () => window.removeEventListener("margelet-autotranslit-change", syncTranslate);
+  }, [locale]);
 
   useEffect(() => {
     if (!initialTopic || !trends.length) return;
