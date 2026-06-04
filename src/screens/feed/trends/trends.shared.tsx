@@ -1152,9 +1152,19 @@ export function CountryDistributionBlock({
           {hasOtherCountries ? (
             <button
               type="button"
-              className="mt-3 w-full rounded-2xl border border-soft bg-surface px-4 py-3 text-sm font-black text-primary transition hover:bg-surface-soft"
+              onClick={() => {
+                if (!isPro) {
+                  window.dispatchEvent(new Event("margelet:open-pro-plans"));
+                }
+              }}
+              className={[
+                "mt-3 w-full rounded-2xl px-4 py-3 text-sm font-black transition",
+                isPro
+                  ? "border border-soft bg-surface text-primary hover:bg-surface-soft"
+                  : "bg-emerald-500 text-white hover:opacity-90",
+              ].join(" ")}
             >
-              {extraCopy.fullReport24h}
+              {isPro ? extraCopy.fullReport24h : extraCopy.unlockAllSignals}
             </button>
           ) : null}
         </div>

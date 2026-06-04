@@ -586,16 +586,58 @@ export function TrendsView({
         open={proModalOpen}
         onClose={() => setProModalOpen(false)}
         telegramUserId={currentTelegramUserId}
+        locale={locale}
       />
     </div>
   );
 }
 
 const PRO_PLANS = [
-  { months: 1, stars: 2500, title: "1 месяц", note: "Полный доступ к сигналам" },
-  { months: 3, stars: 6500, title: "3 месяца", note: "Выгоднее для проверки гипотез" },
-  { months: 12, stars: 22000, title: "12 месяцев", note: "Максимальная экономия" },
+  { months: 1, stars: 2500 },
+  { months: 3, stars: 6500 },
+  { months: 12, stars: 22000 },
 ];
+
+type ProModalCopy = {
+  title: string;
+  description: string;
+  month1: string;
+  month3: string;
+  month12: string;
+  note1: string;
+  note3: string;
+  note12: string;
+  loginAlert: string;
+  botNote: string;
+};
+
+const PRO_MODAL_COPY: Record<Locale, ProModalCopy> = {
+  ru: { title: "🔓 margeleT PRO", description: "Все источники, все страны, полный поиск по сигналам и отчёты за 24 часа.", month1: "1 месяц", month3: "3 месяца", month12: "12 месяцев", note1: "Полный доступ к сигналам", note3: "Выгоднее для проверки гипотез", note12: "Максимальная экономия", loginAlert: "Войдите через Telegram, чтобы купить PRO доступ.", botNote: "Оплата откроется в Telegram-боте margeleT. После оплаты доступ включится автоматически." },
+  ua: { title: "🔓 margeleT PRO", description: "Усі джерела, усі країни, повний пошук за сигналами та звіти за 24 години.", month1: "1 місяць", month3: "3 місяці", month12: "12 місяців", note1: "Повний доступ до сигналів", note3: "Вигідніше для перевірки гіпотез", note12: "Максимальна економія", loginAlert: "Увійдіть через Telegram, щоб купити PRO-доступ.", botNote: "Оплата відкриється в Telegram-боті margeleT. Після оплати доступ увімкнеться автоматично." },
+  us: { title: "🔓 margeleT PRO", description: "All sources, all countries, full signal search and 24-hour reports.", month1: "1 month", month3: "3 months", month12: "12 months", note1: "Full access to signals", note3: "Better for testing hypotheses", note12: "Maximum savings", loginAlert: "Sign in with Telegram to buy PRO access.", botNote: "Payment opens in the margeleT Telegram bot. Access turns on automatically after payment." },
+  in: { title: "🔓 margeleT PRO", description: "सभी स्रोत, सभी देश, पूरा सिग्नल खोज और 24 घंटे की रिपोर्ट।", month1: "1 महीना", month3: "3 महीने", month12: "12 महीने", note1: "सिग्नल का पूरा access", note3: "हाइपोथीसिस टेस्ट के लिए बेहतर", note12: "सबसे ज़्यादा बचत", loginAlert: "PRO access खरीदने के लिए Telegram से sign in करें।", botNote: "Payment margeleT Telegram bot में खुलेगी। Payment के बाद access अपने आप चालू होगा।" },
+  ir: { title: "🔓 margeleT PRO", description: "همه منابع، همه کشورها، جست‌وجوی کامل سیگنال‌ها و گزارش‌های ۲۴ ساعته.", month1: "۱ ماه", month3: "۳ ماه", month12: "۱۲ ماه", note1: "دسترسی کامل به سیگنال‌ها", note3: "بهتر برای آزمون فرضیه‌ها", note12: "بیشترین صرفه‌جویی", loginAlert: "برای خرید دسترسی PRO با Telegram وارد شوید.", botNote: "پرداخت در ربات Telegram مرجلت باز می‌شود. پس از پرداخت، دسترسی خودکار فعال می‌شود." },
+  tr: { title: "🔓 margeleT PRO", description: "Tüm kaynaklar, tüm ülkeler, tam sinyal araması ve 24 saatlik raporlar.", month1: "1 ay", month3: "3 ay", month12: "12 ay", note1: "Sinyallere tam erişim", note3: "Hipotezleri test etmek için daha uygun", note12: "Maksimum tasarruf", loginAlert: "PRO erişimi almak için Telegram ile giriş yapın.", botNote: "Ödeme margeleT Telegram botunda açılır. Ödeme sonrası erişim otomatik açılır." },
+  br: { title: "🔓 margeleT PRO", description: "Todas as fontes, todos os países, busca completa de sinais e relatórios de 24 horas.", month1: "1 mês", month3: "3 meses", month12: "12 meses", note1: "Acesso completo aos sinais", note3: "Melhor para testar hipóteses", note12: "Máxima economia", loginAlert: "Entre pelo Telegram para comprar o acesso PRO.", botNote: "O pagamento abrirá no bot do Telegram da margeleT. Após pagar, o acesso será ativado automaticamente." },
+  kz: { title: "🔓 margeleT PRO", description: "Барлық дереккөздер, барлық елдер, сигналдар бойынша толық іздеу және 24 сағаттық есептер.", month1: "1 ай", month3: "3 ай", month12: "12 ай", note1: "Сигналдарға толық қолжетімділік", note3: "Гипотезаларды тексеруге тиімді", note12: "Ең үлкен үнем", loginAlert: "PRO қолжетімділігін алу үшін Telegram арқылы кіріңіз.", botNote: "Төлем margeleT Telegram ботында ашылады. Төлемнен кейін қолжетімділік автоматты қосылады." },
+  uz: { title: "🔓 margeleT PRO", description: "Barcha manbalar, barcha mamlakatlar, signallar bo‘yicha to‘liq qidiruv va 24 soatlik hisobotlar.", month1: "1 oy", month3: "3 oy", month12: "12 oy", note1: "Signallarga to‘liq kirish", note3: "Gipotezalarni tekshirish uchun qulay", note12: "Eng katta tejam", loginAlert: "PRO kirish sotib olish uchun Telegram orqali kiring.", botNote: "To‘lov margeleT Telegram botida ochiladi. To‘lovdan keyin kirish avtomatik yoqiladi." },
+  ae: { title: "🔓 margeleT PRO", description: "كل المصادر، كل الدول، بحث كامل في الإشارات وتقارير 24 ساعة.", month1: "شهر واحد", month3: "3 أشهر", month12: "12 شهرًا", note1: "وصول كامل إلى الإشارات", note3: "أفضل لاختبار الفرضيات", note12: "أكبر توفير", loginAlert: "سجّل الدخول عبر Telegram لشراء وصول PRO.", botNote: "سيُفتح الدفع في بوت margeleT على Telegram. بعد الدفع سيتم تفعيل الوصول تلقائيًا." },
+  eg: { title: "🔓 margeleT PRO", description: "كل المصادر، كل الدول، بحث كامل في الإشارات وتقارير 24 ساعة.", month1: "شهر واحد", month3: "3 شهور", month12: "12 شهر", note1: "وصول كامل للإشارات", note3: "أفضل لاختبار الفرضيات", note12: "أكبر توفير", loginAlert: "سجّل الدخول عبر Telegram لشراء وصول PRO.", botNote: "الدفع هيفتح في بوت margeleT على Telegram. بعد الدفع الوصول هيتفعل تلقائيًا." },
+  pk: { title: "🔓 margeleT PRO", description: "تمام ذرائع، تمام ممالک، سگنلز کی مکمل تلاش اور 24 گھنٹے کی رپورٹس۔", month1: "1 ماہ", month3: "3 ماہ", month12: "12 ماہ", note1: "سگنلز تک مکمل رسائی", note3: "فرضیات جانچنے کے لیے بہتر", note12: "زیادہ سے زیادہ بچت", loginAlert: "PRO access خریدنے کے لیے Telegram سے سائن ان کریں۔", botNote: "ادائیگی margeleT Telegram bot میں کھلے گی۔ ادائیگی کے بعد رسائی خودکار فعال ہو جائے گی۔" },
+  id: { title: "🔓 margeleT PRO", description: "Semua sumber, semua negara, pencarian sinyal penuh, dan laporan 24 jam.", month1: "1 bulan", month3: "3 bulan", month12: "12 bulan", note1: "Akses penuh ke sinyal", note3: "Lebih baik untuk menguji hipotesis", note12: "Hemat maksimal", loginAlert: "Masuk lewat Telegram untuk membeli akses PRO.", botNote: "Pembayaran akan dibuka di bot Telegram margeleT. Setelah pembayaran, akses aktif otomatis." },
+  mx: { title: "🔓 margeleT PRO", description: "Todas las fuentes, todos los países, búsqueda completa de señales e informes de 24 horas.", month1: "1 mes", month3: "3 meses", month12: "12 meses", note1: "Acceso completo a señales", note3: "Mejor para probar hipótesis", note12: "Máximo ahorro", loginAlert: "Inicia sesión con Telegram para comprar acceso PRO.", botNote: "El pago se abrirá en el bot de Telegram de margeleT. Después del pago, el acceso se activará automáticamente." },
+  sa: { title: "🔓 margeleT PRO", description: "كل المصادر، كل الدول، بحث كامل في الإشارات وتقارير 24 ساعة.", month1: "شهر واحد", month3: "3 أشهر", month12: "12 شهرًا", note1: "وصول كامل إلى الإشارات", note3: "أفضل لاختبار الفرضيات", note12: "أكبر توفير", loginAlert: "سجّل الدخول عبر Telegram لشراء وصول PRO.", botNote: "سيُفتح الدفع في بوت margeleT على Telegram. بعد الدفع سيتم تفعيل الوصول تلقائيًا." },
+  es: { title: "🔓 margeleT PRO", description: "Todas las fuentes, todos los países, búsqueda completa de señales e informes de 24 horas.", month1: "1 mes", month3: "3 meses", month12: "12 meses", note1: "Acceso completo a señales", note3: "Mejor para probar hipótesis", note12: "Máximo ahorro", loginAlert: "Inicia sesión con Telegram para comprar acceso PRO.", botNote: "El pago se abrirá en el bot de Telegram de margeleT. Después del pago, el acceso se activará automáticamente." },
+  it: { title: "🔓 margeleT PRO", description: "Tutte le fonti, tutti i Paesi, ricerca completa dei segnali e report di 24 ore.", month1: "1 mese", month3: "3 mesi", month12: "12 mesi", note1: "Accesso completo ai segnali", note3: "Meglio per testare ipotesi", note12: "Massimo risparmio", loginAlert: "Accedi con Telegram per acquistare PRO.", botNote: "Il pagamento si aprirà nel bot Telegram di margeleT. Dopo il pagamento l’accesso si attiverà automaticamente." },
+  fr: { title: "🔓 margeleT PRO", description: "Toutes les sources, tous les pays, recherche complète de signaux et rapports sur 24 heures.", month1: "1 mois", month3: "3 mois", month12: "12 mois", note1: "Accès complet aux signaux", note3: "Mieux pour tester des hypothèses", note12: "Économie maximale", loginAlert: "Connectez-vous via Telegram pour acheter l’accès PRO.", botNote: "Le paiement s’ouvrira dans le bot Telegram margeleT. Après paiement, l’accès sera activé automatiquement." },
+  de: { title: "🔓 margeleT PRO", description: "Alle Quellen, alle Länder, vollständige Signalsuche und 24-Stunden-Berichte.", month1: "1 Monat", month3: "3 Monate", month12: "12 Monate", note1: "Voller Zugriff auf Signale", note3: "Besser zum Testen von Hypothesen", note12: "Maximale Ersparnis", loginAlert: "Melde dich mit Telegram an, um PRO zu kaufen.", botNote: "Die Zahlung öffnet sich im margeleT Telegram-Bot. Nach der Zahlung wird der Zugriff automatisch aktiviert." },
+  ar: { title: "🔓 margeleT PRO", description: "كل المصادر، كل الدول، بحث كامل في الإشارات وتقارير 24 ساعة.", month1: "شهر واحد", month3: "3 أشهر", month12: "12 شهرًا", note1: "وصول كامل إلى الإشارات", note3: "أفضل لاختبار الفرضيات", note12: "أكبر توفير", loginAlert: "سجّل الدخول عبر Telegram لشراء وصول PRO.", botNote: "سيُفتح الدفع في بوت margeleT على Telegram. بعد الدفع سيتم تفعيل الوصول تلقائيًا." },
+  co: { title: "🔓 margeleT PRO", description: "Todas las fuentes, todos los países, búsqueda completa de señales e informes de 24 horas.", month1: "1 mes", month3: "3 meses", month12: "12 meses", note1: "Acceso completo a señales", note3: "Mejor para probar hipótesis", note12: "Máximo ahorro", loginAlert: "Inicia sesión con Telegram para comprar acceso PRO.", botNote: "El pago se abrirá en el bot de Telegram de margeleT. Después del pago, el acceso se activará automáticamente." },
+  za: { title: "🔓 margeleT PRO", description: "All sources, all countries, full signal search and 24-hour reports.", month1: "1 month", month3: "3 months", month12: "12 months", note1: "Full access to signals", note3: "Better for testing hypotheses", note12: "Maximum savings", loginAlert: "Sign in with Telegram to buy PRO access.", botNote: "Payment opens in the margeleT Telegram bot. Access turns on automatically after payment." },
+  ng: { title: "🔓 margeleT PRO", description: "All sources, all countries, full signal search and 24-hour reports.", month1: "1 month", month3: "3 months", month12: "12 months", note1: "Full access to signals", note3: "Better for testing hypotheses", note12: "Maximum savings", loginAlert: "Sign in with Telegram to buy PRO access.", botNote: "Payment opens in the margeleT Telegram bot. Access turns on automatically after payment." },
+  cn: { title: "🔓 margeleT PRO", description: "所有来源、所有国家、完整信号搜索和 24 小时报告。", month1: "1 个月", month3: "3 个月", month12: "12 个月", note1: "完整访问信号", note3: "更适合验证假设", note12: "最大节省", loginAlert: "请通过 Telegram 登录以购买 PRO 访问。", botNote: "付款将在 margeleT Telegram 机器人中打开。付款后访问权限会自动开启。" },
+  my: { title: "🔓 margeleT PRO", description: "Semua sumber, semua negara, carian isyarat penuh dan laporan 24 jam.", month1: "1 bulan", month3: "3 bulan", month12: "12 bulan", note1: "Akses penuh kepada isyarat", note3: "Lebih baik untuk menguji hipotesis", note12: "Penjimatan maksimum", loginAlert: "Log masuk melalui Telegram untuk membeli akses PRO.", botNote: "Pembayaran akan dibuka dalam bot Telegram margeleT. Selepas pembayaran, akses diaktifkan secara automatik." },
+};
 
 function buildProBotUrl(telegramUserId: string, months: number) {
   return `https://t.me/margeleT_space_bot?start=${encodeURIComponent(`pro_${telegramUserId}_${months}`)}`;
@@ -605,11 +647,15 @@ function ProPlansModal({
   open,
   onClose,
   telegramUserId,
+  locale,
 }: {
   open: boolean;
   onClose: () => void;
   telegramUserId?: string | null;
+  locale: Locale;
 }) {
+  const modalCopy = PRO_MODAL_COPY[locale] || PRO_MODAL_COPY.us;
+
   if (!open) return null;
 
   return (
@@ -617,9 +663,9 @@ function ProPlansModal({
       <div className="w-full max-w-[520px] rounded-[30px] border border-soft bg-surface p-4 shadow-soft">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <div className="text-xl font-black text-primary">🔓 margeleT PRO</div>
+            <div className="text-xl font-black text-primary">{modalCopy.title}</div>
             <div className="mt-1 text-sm leading-relaxed text-secondary">
-              Все источники, все страны, полный поиск по сигналам и отчёты за 24 часа.
+              {modalCopy.description}
             </div>
           </div>
 
@@ -643,14 +689,14 @@ function ProPlansModal({
                 onClick={(event) => {
                   if (!telegramUserId) {
                     event.preventDefault();
-                    alert("Войдите через Telegram, чтобы купить PRO доступ.");
+                    alert(modalCopy.loginAlert);
                   }
                 }}
                 className="flex items-center justify-between gap-4 rounded-[22px] border border-soft bg-surface-soft px-4 py-4 text-left no-underline transition hover:bg-app"
               >
                 <div className="min-w-0">
-                  <div className="text-sm font-black text-primary">{plan.title}</div>
-                  <div className="mt-1 text-xs text-secondary">{plan.note}</div>
+                  <div className="text-sm font-black text-primary">{plan.months === 1 ? modalCopy.month1 : plan.months === 3 ? modalCopy.month3 : modalCopy.month12}</div>
+                  <div className="mt-1 text-xs text-secondary">{plan.months === 1 ? modalCopy.note1 : plan.months === 3 ? modalCopy.note3 : modalCopy.note12}</div>
                 </div>
 
                 <div className="shrink-0 rounded-2xl bg-emerald-500 px-3 py-2 text-sm font-black text-white">
@@ -662,7 +708,7 @@ function ProPlansModal({
         </div>
 
         <div className="mt-4 rounded-2xl border border-soft bg-app px-4 py-3 text-xs leading-relaxed text-secondary">
-          После оплаты бот активирует доступ автоматически. Покупка появится в админке в блоке заявок как PRO.
+          {modalCopy.botNote}
         </div>
       </div>
     </div>
