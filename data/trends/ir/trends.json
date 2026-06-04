@@ -1,45 +1,59 @@
 [
   {
-    "topic": "trojan://humanity :443?path=%2Fassignment&security=tls&alpn=http%2F1.1&insecure=0&host=www.calmloud.com&f…",
-    "word": "trojan://humanity :443?path=%2Fassignment&security=tls&alpn=http%2F1.1&insecure=0&host=www.calmloud.com&f…",
-    "mentions": 5,
-    "momentum": 500,
-    "change": "+500%",
-    "sourceCount": 4,
+    "topic": "vless://06ef598c-1555-4887-b3f9-08214a2f6792 :443?path=%2F222.167.202.31%3A7443&security=tls&encryption=n…",
+    "word": "vless://06ef598c-1555-4887-b3f9-08214a2f6792 :443?path=%2F222.167.202.31%3A7443&security=tls&encryption=n…",
+    "mentions": 10,
+    "momentum": 1000,
+    "change": "+1000%",
+    "sourceCount": 6,
     "countries": [
       {
         "code": "ir",
-        "mentions": 5,
-        "sourceCount": 4
+        "mentions": 10,
+        "sourceCount": 6
       }
     ],
     "topSources": [
       {
-        "id": "ir:unnurmal",
-        "title": "Un Normal",
-        "username": "unnurmal",
-        "avatarUrl": "https://cdn4.telesco.pe/file/Gb6BfRExO4Os_S0xpoeC7P6zzUe-z2tKT3Ak9yt6L_F0WqKbDbqyrk5K7Q3BhfhAhIz6jhpKkVlHZ3fIILS_ksWreTx_m0yr3D7vyMgaoq3e11VokW1uD4YhaY3yFDIUadhE-YxTGL1-RGMWxeyMQifzjkVdbop91UPJCywuL8SKbB3qLVAV19O2gK-bGwhrcaiSDJPcdmcb5X_pf0g7ozL1HTDEeaE4oiUEA9XQSlQIhVyElP5x0fkBD_-urPAuf-XDEJymEuR0lzR6C7n8ISmt3Zgx7chO4hFmT2cTJh_QTf1-FztkYtcCGk4bNMJquYRwhCoSS7bLA1-id3o75w.jpg",
-        "mentions": 2
-      },
-      {
         "id": "ir:freakconfig",
         "title": "سرور کانفیگ کانفینگ رایگان",
         "username": "freakconfig",
-        "avatarUrl": "https://cdn4.telesco.pe/file/f_XPkwKsi6mu7Ipc8QLrODTZFc5E-WfwUUmSii9DJ588PalGp6CozJNAnP-fqrHN7S9mdU11Gmjv1ahsTzBhc_iyqEia-I1IvtA0kDkKO2Zap8lYF9HW6HJB-_CRBIFuipPyOrYFQv9yPaOPzKeH2SBBJezAtWxGdgBcmqnAjrHFiw0zP0dEQmkePSu0iUCZI_YQnYL7CkJcHFcOm1QhBBwI8_Rtx3Jle6BYNDzxQhjrDZ9cp9iI2xwLMIrc4UIKNWEfgJP2_JcBgLVrfDo265yxpd1hqh5vtsktYgH90tpOZ8Xi2EyZykbpqzxeHkEC-atv9B72mjZOXoOowFeWig.jpg",
+        "avatarUrl": "https://cdn4.telesco.pe/file/gOJWkKR9854ykgR5Z_D0BuDRPpscZIRqqV9aMc7CIbTw_10pYeZvvlXURB1-x76K63GyOpiO8RTAhdqNNP2AnqWbraLDePpfC0vJdaDIyleHlxuPgjdFC4KxJ_5oDsH_GUyRVfMT-jsbr3XTce7INWECHKbOFysHFFZ60P20cOQoNjKYbvs4MAbT9G6RKlRne3VtlYOEeOBSWM3p6KEogiK1_a2yhsb_9jhIRB-H8G4_5UTz0yHe4pACPaxUarQ30U48F4LUj3vUSsvfHY_m55deSat6wbRmFpyBQ3683diabZbij2NS18ZYmWYxuK6MpC4WzqoczW0Ad-rPUz8dtw.jpg",
+        "mentions": 3
+      },
+      {
+        "id": "ir:pr_xi",
+        "title": "Succer90 | پروکسی فیلترشکن ایرانسل رایگان",
+        "username": "pr_xi",
+        "avatarUrl": "https://cdn4.telesco.pe/file/sikXYA_NJxN7PDWCNhHIkj7xOiVgYFlLUAuEcmQtR-MDXZjXNtZCBxrEggoPqotHcDeFNMy7Wt2XZFXF6ak7S8rIoZdVh5Ei5bOXoheAM76Y40yCMu6ZIC74kmtjzTyT_oPRnFyjZGQX0Mi_SLx3svogs342BXS1EgKaYi2RmhyDKZ0maQ50KxJNK3SknIJb-2A9OpHbyE6aRLYpQE7ERmfQiZg8qUO2MbUjmu-tXq61n1ef9s3Xqf44G8Dzghtvi9p0xSYJ8mnfq3ZuAOzPV5-sbAOhFFEZw-ysKrUYy2yid66MeFdppUpyv4fANKbMyjpo-6KLPAJY8Cq_nDrFMg.jpg",
+        "mentions": 2
+      },
+      {
+        "id": "ir:configx2ray",
+        "title": "IR X2ray | FREE",
+        "username": "configx2ray",
+        "avatarUrl": "https://cdn4.telesco.pe/file/Js0QM4mYTxBh6UufeUDVixBk5dAtoMnUAQtGvyiTOsGsINUWVBfWXepiUwTy9BZxJ4aGpq6ktqMVfQEuBSMftjQPX6NDzi9vKjcn6RhDxNHEExsvDAyAwyioNOv5XIKpjUfgJMsluAIC5GZGK8lDMl79QWf6XbmoIM8EQuVpz78lH5BSHlpXvMspbXP5TZCLlU1PK0oarrB-9XCuC3TRW5w58c55AgFB7X8AngxDelDHvW946Z0r2stg4bZ9iYgWAQ33a_hRtnXHF9bSI_rChJT1F2Y9HW8dHcRrM7Wsj6VtLlZDTI-vOUUmcd3W9GSMzXrjyeUHhxzT-2NL6v01Eg.jpg",
+        "mentions": 2
+      },
+      {
+        "id": "ir:fk_pu",
+        "title": "فیلم آقای زالو ● برنامه دلربا ● قسطنطنیه",
+        "username": "fk_pu",
+        "avatarUrl": "https://cdn1.telesco.pe/file/k4Ix3qDtPf6z3xvnC0ueoRlEAR38xdgBUQfQTZZrnJA5WbkpYEFhJ5FdWhTgA__U67vG8dMEvXjMp6WHd1pP_EylEPbIDM-syu66KlDYZ4VaGeYfRux_mxDdqFWysQLHOp6H5FWkgOqsO5exA8V5LVvDrygYa8u3wxqtHC7vR_OePHdAbQfRD3Z8wQse4Xx8NOJywvl8xd8hVhQv9kQWINGYM8DaTg9QhmKe1yltZfFJS9JSLKlFb6Z1USW6AGbPhMdfhduT5NdluBdl1opcnBC5j-xMgcqmhrkpbC8dqCCYhZm-z9ZUoYXJEPGGP6pGXhnSzl1oRvOugCuuhz_tUw.jpg",
         "mentions": 1
       },
       {
-        "id": "ir:v2rayngvpn",
-        "title": "سرور اینترنت ازاد رایگان",
-        "username": "v2rayngvpn",
-        "avatarUrl": "https://cdn4.telesco.pe/file/E6clvUaSE5NF8z0n2vb1guvCEsOf42SDi--vfO8xda7OGu8z3L_ECaMN025cJMPOGpHAViXswVwhTVksPoPgmk7zQb4VUDQmiNTbrmW3ItgcTtEakuw8WdwRV4m5sc7JF7xt9VNLm1LFP_kQzpGXyTYrh8RQXrthmzkLhDok6r-DP_9yfyqIe1LxVQRaGEkIqmYrYUWARkx4jnHj4c_4ZAix6vu_nIId9nkIV9VgFBkT8YuzZFi2dsJKCT9juz4dFhAQ8_IldQvMgOiFZxfUw8oS7Hj1-k1ADoEvaxvHoRfIxQ4k8zyvQAuV_XFdkj51UyU2b9anlm8bTWLNSj0r4g.jpg",
+        "id": "ir:outline_vpn",
+        "title": "Outline Vpn",
+        "username": "outline_vpn",
+        "avatarUrl": "https://cdn4.telesco.pe/file/Fd9NRUi8sLHdAKNGj_VEmPCpH6BPWGY1mV8PuVOI2Zd7M6uAGgrx2gK0SjtnDBUs23gUueh5EiaHuXHKzf3GdxQpwuCoqqsgN_2XV8GUO6bGj3ztz_Xa_KcqsHY20sUq0dbEFrWVOSe0tBeBe_Ayr5aflYe3h6hZrnLuEXzNbJ69jbh85LBh0V9Q8UyyhHnacxYp9BA1lZy-Y_Re85gAKj8VfbzdBH2rdhqy1X6cpg5m26nK8cBA5u-5DRqn571ZiGhTYr8nbI-k2hZ-yW0F_uDcBT-Gad6aKEmu63ZFt5bHuWfhpn1Oiq2R8KdDYgqrxNKOqh5Y-54d1gioljO5lg.jpg",
         "mentions": 1
       },
       {
-        "id": "ir:vpn_click",
-        "title": "فیلترشکن شکن vpn رایگان",
-        "username": "vpn_click",
-        "avatarUrl": "https://cdn4.telesco.pe/file/bt2R7QyijC-RexJ9TK4Q3h-T7vZUR2_PZGRLKwxPPgnhg7fmK2LdxoAKXP6r05c9L2OBW-H6iainYFuFZV3WHUGX-dtR08AEnbIYnP6M6SoGToIfz0V6yQ8y1vcFMCjDyDd314bUILxo0ewLzwhhnh-ak-0hQr_lwAxoaKSn4GqI9VFYScWmtLLX682jABHi_YEtddO7zZLX4fKOYtWRKL3XyrUEWt15t-rz_g68Mqrs2d1OpetGN_PMt953DKxaGqppB62b8JsKuFmf8sY5dSTO5tBeZicmO1v8B6SEVn7-J0EQqS3WB4fIdRqpaEQWCpn-clIbb1WdvxOQudtYrA.jpg",
+        "id": "ir:interanetfree",
+        "title": "اینترنت آزاد | کانفیگ رایگان",
+        "username": "interanetfree",
+        "avatarUrl": "https://cdn4.telesco.pe/file/SoKdAboNR7ubUhBQPlKS_pXKcukGYtK9muMJ14rZgyYFOQnNdTF0Ku33EBkBrKqpD9ggUpsjWey8p6URLSS6_wx1QxklDgxccc5I_X5uimgYOiLPFmqGYdPNTfLbQAgirs3hpPrfjwI0md0hB7bnQpL8kDcWHfpDlYYhjUTmPJcebTZWidD9XmhMmmtclPgMcZijR_7N_HlVc_kp0CPpvkc5PuAP0Sid6VoIohnIHzgYehNdo-0GSSufJv3a9-Lw61G2ocUuKBbAT9js7JxwfFvdVfGhCQHrzRaQyBRnk539rPLMpWkZ4-haAKj1V6iSe6kNr_KWet8LE3K592i66A.jpg",
         "mentions": 1
       }
     ],
@@ -55,85 +69,92 @@
       0,
       0,
       0,
-      5
+      10
     ],
-    "firstSeenAt": "2026-06-03T06:25:46.911Z",
-    "lastSeenAt": "2026-06-03T06:27:07.512Z",
+    "firstSeenAt": "2026-06-04T10:30:12.765Z",
+    "lastSeenAt": "2026-06-04T10:31:57.190Z",
     "examples": [
       {
-        "id": 1814237862,
-        "text": "trojan://humanity :443?path=%2Fassignment&security=tls&insecure=0&host=www.ignitelimit.com&type=ws&allowInsecure=0&sni=www.ignitelimit.com#\ntrojan://humanity :443?path=%2Fassignment&security=tls&insecure=0&host=www.ignitelimit.com&type=ws&allowInsecure=0&sni=www.ignitelimit.com#\ntrojan://humanity :443?path=%2Fassignment&security=tls&alpn=http%2F1.1&insecure=",
-        "url": "https://t.me/unnurmal/98466?single",
-        "publishedAt": "2026-06-03T06:25:46.911Z",
-        "sourceTitle": "Un Normal",
-        "sourceUsername": "unnurmal",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Gb6BfRExO4Os_S0xpoeC7P6zzUe-z2tKT3Ak9yt6L_F0WqKbDbqyrk5K7Q3BhfhAhIz6jhpKkVlHZ3fIILS_ksWreTx_m0yr3D7vyMgaoq3e11VokW1uD4YhaY3yFDIUadhE-YxTGL1-RGMWxeyMQifzjkVdbop91UPJCywuL8SKbB3qLVAV19O2gK-bGwhrcaiSDJPcdmcb5X_pf0g7ozL1HTDEeaE4oiUEA9XQSlQIhVyElP5x0fkBD_-urPAuf-XDEJymEuR0lzR6C7n8ISmt3Zgx7chO4hFmT2cTJh_QTf1-FztkYtcCGk4bNMJquYRwhCoSS7bLA1-id3o75w.jpg"
+        "id": 6483575,
+        "text": "vless://6202b230-417c-4d8e-b624-0f71afa9c75d :8443?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#%40d_Rhyshkrdi\nvless://6202b23\n‌‌0-417c-4d8e-b624-0f71afa9c75d :2096?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#",
+        "url": "https://t.me/pr_xi/82284?single",
+        "publishedAt": "2026-06-04T10:31:57.190Z",
+        "sourceTitle": "Succer90 | پروکسی فیلترشکن ایرانسل رایگان",
+        "sourceUsername": "pr_xi",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/sikXYA_NJxN7PDWCNhHIkj7xOiVgYFlLUAuEcmQtR-MDXZjXNtZCBxrEggoPqotHcDeFNMy7Wt2XZFXF6ak7S8rIoZdVh5Ei5bOXoheAM76Y40yCMu6ZIC74kmtjzTyT_oPRnFyjZGQX0Mi_SLx3svogs342BXS1EgKaYi2RmhyDKZ0maQ50KxJNK3SknIJb-2A9OpHbyE6aRLYpQE7ERmfQiZg8qUO2MbUjmu-tXq61n1ef9s3Xqf44G8Dzghtvi9p0xSYJ8mnfq3ZuAOzPV5-sbAOhFFEZw-ysKrUYy2yid66MeFdppUpyv4fANKbMyjpo-6KLPAJY8Cq_nDrFMg.jpg"
       },
       {
-        "id": 2013281079,
-        "text": "🔌 وضعیت : متصل تا زمان فیلتر\nvless://9232a847-8f7d-4548-a23a-a8b3550e0f15 :443?path=%2Fid-tksi&security=tls&encryption=none&insecure=0&host=grabacademyportal.grab.com.cyylr.eu.cc&type=ws&allowInsecure=0&sni=grabacademyportal.grab.com.cyylr.eu.cc#%F0%9F%87%AC%F0%9F%87%A7%40FreakConfig\nvless://0a4eabad-a6b8-4f4a-b610-4540b9c8f49a :443?path=%2Fsg-orcl&security",
-        "url": "https://t.me/freakconfig/7747?single",
-        "publishedAt": "2026-06-03T06:27:07.512Z",
+        "id": 3500546301,
+        "text": "🔌 وضعیت : متصل تا زمان فیلتر\nvless://334e484f-7f7c-4895-a6e4-8951de2626f8 :443?path=%2Fae-bo&security=tls&encryption=none&insecure=0&host=unnes.ac.id.cyylr.eu.cc&type=ws&allowInsecure=0&sni=unnes.ac.id.cyylr.eu.cc#%F0%9F%87%A9%F0%9F%87%AA%40FreakConfig\nvless://429f43ca-087a-4fbc-9d88-9d9007bf30bc :443?path=%2Fmy-wbv&security=tls&encryption=none&insecure=0&h",
+        "url": "https://t.me/freakconfig/7752?single",
+        "publishedAt": "2026-06-04T10:30:47.852Z",
         "sourceTitle": "سرور کانفیگ کانفینگ رایگان",
         "sourceUsername": "freakconfig",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/f_XPkwKsi6mu7Ipc8QLrODTZFc5E-WfwUUmSii9DJ588PalGp6CozJNAnP-fqrHN7S9mdU11Gmjv1ahsTzBhc_iyqEia-I1IvtA0kDkKO2Zap8lYF9HW6HJB-_CRBIFuipPyOrYFQv9yPaOPzKeH2SBBJezAtWxGdgBcmqnAjrHFiw0zP0dEQmkePSu0iUCZI_YQnYL7CkJcHFcOm1QhBBwI8_Rtx3Jle6BYNDzxQhjrDZ9cp9iI2xwLMIrc4UIKNWEfgJP2_JcBgLVrfDo265yxpd1hqh5vtsktYgH90tpOZ8Xi2EyZykbpqzxeHkEC-atv9B72mjZOXoOowFeWig.jpg"
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/gOJWkKR9854ykgR5Z_D0BuDRPpscZIRqqV9aMc7CIbTw_10pYeZvvlXURB1-x76K63GyOpiO8RTAhdqNNP2AnqWbraLDePpfC0vJdaDIyleHlxuPgjdFC4KxJ_5oDsH_GUyRVfMT-jsbr3XTce7INWECHKbOFysHFFZ60P20cOQoNjKYbvs4MAbT9G6RKlRne3VtlYOEeOBSWM3p6KEogiK1_a2yhsb_9jhIRB-H8G4_5UTz0yHe4pACPaxUarQ30U48F4LUj3vUSsvfHY_m55deSat6wbRmFpyBQ3683diabZbij2NS18ZYmWYxuK6MpC4WzqoczW0Ad-rPUz8dtw.jpg"
       },
       {
-        "id": 2865538014,
-        "text": "همراه اول متصل ایرانسل متصل\nhysteria2://UnNurmal :59826?security=tls&obfs=salamander&obfs-password=Masir_Sefid&insecure=0&sni=masir-sefid.shop#%\nvless://58bf6d1c-423f-4c4d-82ff-e2a7720661a2 :8080?security=none&encryption=none&host=c.q79.ir&type=ws#%",
-        "url": "https://t.me/unnurmal/98444?single",
-        "publishedAt": "2026-06-03T06:25:46.911Z",
-        "sourceTitle": "Un Normal",
-        "sourceUsername": "unnurmal",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Gb6BfRExO4Os_S0xpoeC7P6zzUe-z2tKT3Ak9yt6L_F0WqKbDbqyrk5K7Q3BhfhAhIz6jhpKkVlHZ3fIILS_ksWreTx_m0yr3D7vyMgaoq3e11VokW1uD4YhaY3yFDIUadhE-YxTGL1-RGMWxeyMQifzjkVdbop91UPJCywuL8SKbB3qLVAV19O2gK-bGwhrcaiSDJPcdmcb5X_pf0g7ozL1HTDEeaE4oiUEA9XQSlQIhVyElP5x0fkBD_-urPAuf-XDEJymEuR0lzR6C7n8ISmt3Zgx7chO4hFmT2cTJh_QTf1-FztkYtcCGk4bNMJquYRwhCoSS7bLA1-id3o75w.jpg"
+        "id": 41654800,
+        "text": "vless://6202b230-417c-4d8e-b624-0f71afa9c75d :8443?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#%40d_Rhyshkrdi\nvless://6202b23\n‌‌0-417c-4d8e-b624-0f71afa9c75d :2096?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#",
+        "url": "https://t.me/fk_pu/3298?single",
+        "publishedAt": "2026-06-04T10:30:44.302Z",
+        "sourceTitle": "فیلم آقای زالو ● برنامه دلربا ● قسطنطنیه",
+        "sourceUsername": "fk_pu",
+        "sourceAvatarUrl": "https://cdn1.telesco.pe/file/k4Ix3qDtPf6z3xvnC0ueoRlEAR38xdgBUQfQTZZrnJA5WbkpYEFhJ5FdWhTgA__U67vG8dMEvXjMp6WHd1pP_EylEPbIDM-syu66KlDYZ4VaGeYfRux_mxDdqFWysQLHOp6H5FWkgOqsO5exA8V5LVvDrygYa8u3wxqtHC7vR_OePHdAbQfRD3Z8wQse4Xx8NOJywvl8xd8hVhQv9kQWINGYM8DaTg9QhmKe1yltZfFJS9JSLKlFb6Z1USW6AGbPhMdfhduT5NdluBdl1opcnBC5j-xMgcqmhrkpbC8dqCCYhZm-z9ZUoYXJEPGGP6pGXhnSzl1oRvOugCuuhz_tUw.jpg"
       },
       {
-        "id": 448856607,
-        "text": "🇮🇷 کانفیگ ویتوری برای تمومی اپراتور ها نامحدود مولتی لوکیشن (ممکنه یسری مناطق کار بکنه و یسری مناطق دیگ کار نکنه)⭐️\ntrojan://386bd471-4e29-4e79-9a3c-6bc6076ce4b6 :443?path=%2Fid-tksi&security=tls&insecure=0&host=edu.ruangguru.com.cyylr.eu.cc&type=ws&allowInsecure=0&sni=edu.ruangguru.com.cyylr.eu.cc#\nvless://ef0adf73-a279-4bd3-9f1b-bb5f4137ddb3 :80?security",
-        "url": "https://t.me/v2rayngvpn/29398?single",
-        "publishedAt": "2026-06-03T06:25:49.958Z",
-        "sourceTitle": "سرور اینترنت ازاد رایگان",
-        "sourceUsername": "v2rayngvpn",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/E6clvUaSE5NF8z0n2vb1guvCEsOf42SDi--vfO8xda7OGu8z3L_ECaMN025cJMPOGpHAViXswVwhTVksPoPgmk7zQb4VUDQmiNTbrmW3ItgcTtEakuw8WdwRV4m5sc7JF7xt9VNLm1LFP_kQzpGXyTYrh8RQXrthmzkLhDok6r-DP_9yfyqIe1LxVQRaGEkIqmYrYUWARkx4jnHj4c_4ZAix6vu_nIId9nkIV9VgFBkT8YuzZFi2dsJKCT9juz4dFhAQ8_IldQvMgOiFZxfUw8oS7Hj1-k1ADoEvaxvHoRfIxQ4k8zyvQAuV_XFdkj51UyU2b9anlm8bTWLNSj0r4g.jpg"
+        "id": 2078440705,
+        "text": "vless://47422044-85e3-426b-b6c4-3588cb24a3e5 :443?encryption=none&type=ws&security=tls&path=%2Fae-bo&host=s.blibli.com.cyylr.eu.cc&sni=s.blibli.com.cyylr.eu.cc&allowInsecure=0 1\nvless://4f51ca84-43ea-4087-b8a2-938e0ccbe27a :443?encryption=none&type=tcp&security=reality&headerType=none&sni=google.com&fp=chrome&allowInsecure=0&pbk=mDDDyruO33nuqcTS7pZOjd9oOpDHU",
+        "url": "https://t.me/configx2ray/39550?single",
+        "publishedAt": "2026-06-04T10:30:12.765Z",
+        "sourceTitle": "IR X2ray | FREE",
+        "sourceUsername": "configx2ray",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Js0QM4mYTxBh6UufeUDVixBk5dAtoMnUAQtGvyiTOsGsINUWVBfWXepiUwTy9BZxJ4aGpq6ktqMVfQEuBSMftjQPX6NDzi9vKjcn6RhDxNHEExsvDAyAwyioNOv5XIKpjUfgJMsluAIC5GZGK8lDMl79QWf6XbmoIM8EQuVpz78lH5BSHlpXvMspbXP5TZCLlU1PK0oarrB-9XCuC3TRW5w58c55AgFB7X8AngxDelDHvW946Z0r2stg4bZ9iYgWAQ33a_hRtnXHF9bSI_rChJT1F2Y9HW8dHcRrM7Wsj6VtLlZDTI-vOUUmcd3W9GSMzXrjyeUHhxzT-2NL6v01Eg.jpg"
       },
       {
-        "id": 2548628479,
-        "text": "متصل پر سرعت🔥\nvless://ef0adf73-a279-4bd3-9f1b-bb5f4137ddb3 :443?security=tls&allowInsecure=0&encryption=none&type=ws&path=/&sni=dl-pack.motionbetter.ir&fp=chrome&alpn=h2,http/1.1#",
-        "url": "https://t.me/vpn_click/14307?single",
-        "publishedAt": "2026-06-03T06:25:54.134Z",
-        "sourceTitle": "فیلترشکن شکن vpn رایگان",
-        "sourceUsername": "vpn_click",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/bt2R7QyijC-RexJ9TK4Q3h-T7vZUR2_PZGRLKwxPPgnhg7fmK2LdxoAKXP6r05c9L2OBW-H6iainYFuFZV3WHUGX-dtR08AEnbIYnP6M6SoGToIfz0V6yQ8y1vcFMCjDyDd314bUILxo0ewLzwhhnh-ak-0hQr_lwAxoaKSn4GqI9VFYScWmtLLX682jABHi_YEtddO7zZLX4fKOYtWRKL3XyrUEWt15t-rz_g68Mqrs2d1OpetGN_PMt953DKxaGqppB62b8JsKuFmf8sY5dSTO5tBeZicmO1v8B6SEVn7-J0EQqS3WB4fIdRqpaEQWCpn-clIbb1WdvxOQudtYrA.jpg"
+        "id": 202567074,
+        "text": "vless://cc752a3e-1537-4e86-bb50-1b897bf7b33c :443?security=tls&allowInsecure=0&encryption=none&type=ws&host=cyylr.eu.cc&path=/sg-melbi&sni=cyylr.eu.cc&fp=chrome#",
+        "url": "https://t.me/pr_xi/82281?single",
+        "publishedAt": "2026-06-04T10:31:57.190Z",
+        "sourceTitle": "Succer90 | پروکسی فیلترشکن ایرانسل رایگان",
+        "sourceUsername": "pr_xi",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/sikXYA_NJxN7PDWCNhHIkj7xOiVgYFlLUAuEcmQtR-MDXZjXNtZCBxrEggoPqotHcDeFNMy7Wt2XZFXF6ak7S8rIoZdVh5Ei5bOXoheAM76Y40yCMu6ZIC74kmtjzTyT_oPRnFyjZGQX0Mi_SLx3svogs342BXS1EgKaYi2RmhyDKZ0maQ50KxJNK3SknIJb-2A9OpHbyE6aRLYpQE7ERmfQiZg8qUO2MbUjmu-tXq61n1ef9s3Xqf44G8Dzghtvi9p0xSYJ8mnfq3ZuAOzPV5-sbAOhFFEZw-ysKrUYy2yid66MeFdppUpyv4fANKbMyjpo-6KLPAJY8Cq_nDrFMg.jpg"
       }
     ],
     "signals": [
-      "security",
+      "vless",
       "path",
-      "tls",
-      "trojan",
-      "vless"
+      "security",
+      "06ef598c-1555-4887-b3f9-08214a2f6792",
+      "2f222"
     ],
-    "category": "science",
+    "category": "technology",
     "categories": [
-      "science",
       "technology",
+      "marketing",
+      "relationships",
+      "psychology",
+      "auto",
+      "marketing_ads",
+      "transport_auto",
+      "finance",
       "telegram",
+      "finance_investing",
+      "technology_software",
       "gaming",
-      "space",
-      "marketing"
+      "telegram_ton"
     ]
   },
   {
-    "topic": "63.67 ☞خرید♦فروش☜ 63.70",
-    "word": "63.67 ☞خرید♦فروش☜ 63.70",
-    "mentions": 4,
-    "momentum": 400,
-    "change": "+400%",
+    "topic": "63.82 ☞خرید♦فروش☜ 63.84",
+    "word": "63.82 ☞خرید♦فروش☜ 63.84",
+    "mentions": 7,
+    "momentum": 700,
+    "change": "+700%",
     "sourceCount": 3,
     "countries": [
       {
         "code": "ir",
-        "mentions": 4,
+        "mentions": 7,
         "sourceCount": 3
       }
     ],
@@ -142,21 +163,273 @@
         "id": "ir:kabul_dollar",
         "title": "کابل دالر",
         "username": "kabul_dollar",
-        "avatarUrl": "https://cdn5.telesco.pe/file/ofyiim_aYezAlyTeMnpgjAr4RvlGUKCceQTEH-A54l02asBsk-IgI3ei-QKJqZks2hfgg8l7NrhEboRx93bt55K6f4B-XSvxCHJ0eAlgSrfeB35eFL4y0XFp4IqyJHrVCDP6D0GBEi2EkQYy4Feg33b6Twjc2TCAi21gO3i9pUTOJ9IKEcQitrnkdL5Xd4309__uQ9UcflYu6CEsDbCZCwYoqqr_rnTrdSFyfyJgiZxRu_j08uZLzsVdkaDtJWLeIOpd2cPIIx3St6pCTkE4yexrQyN-kzXI76odei9v1t8ZiE0TVlosJQAezjTDKUByh6TC_utSUNJPgoTnxBXN3Q.jpg",
+        "avatarUrl": "https://cdn5.telesco.pe/file/eU1RXXIALxSENqX1XcZh-2GHhKas6nKEqXb0InQJVOv5WdH7-4MA6AAO9BFx_bb61pBQvvvpqTO5LdUW2fHxHtmHHSsdTmPPad-OciyFq8qVt1E_BXWhCdNrHG5yeVbINaf1NQULuY8Oz0hJFXCLyYXCenvrTGJ95QcPCjvp-pxYLnlJY8m9b-Hq4M9tyN-1LIpO8nDJaJMgrupqMBom-6sjs6XsZpIvUY-FrxNJYCfpROY25UYT9uAY4Nrkb4WVJIAkL_GeYjPZO0TN8gI-f8kp1SlwfcFlTx-EB1FSnJLweWGzmZ_TfulqXSvS3LsUMLxKbaGNV8qfISHNCet5Xg.jpg",
+        "mentions": 3
+      },
+      {
+        "id": "ir:sajjadshoeib",
+        "title": "🔸 سجاد شعیب | Sajjad Shoeib 🔸",
+        "username": "sajjadshoeib",
+        "avatarUrl": "https://cdn4.telesco.pe/file/KKdrAXMizJJAj7mGHgC0FQ-NA5H0PUiI61iPMPtk62TokjP9mp_DhwtPt6ooBGV_fClgKOJUgsitcYlVvRE6tMyDZgx301DQ3_HiDMnbFJprYOqqfmEXg8QHCPiHX7s7bQ4KmJNT4Tahe8XS-tg6Mv3altd3fE_ixqlWerFvz6CQUyp8xmO-zO-B8E7QiytasNlYBu23ywHns7Y4_VlRbvX4VOmajjNaoXremdZIPV9ClWEfAYUyVgTuHoOfIB2TeUM-ddPYrWTvPBpnO5A6slVLtumjpQ_S4x3YvbTMGBEkK21JFRgzvkQw8i0ei0qD2jBtbeDDDzW0-EWZQkzNJQ.jpg",
         "mentions": 2
       },
       {
-        "id": "ir:gamotionart",
-        "title": "گیموشن آرت | GamotionArt",
-        "username": "gamotionart",
-        "avatarUrl": "https://cdn4.telesco.pe/file/VI8_NGsw_YPbjZzgkWpv91nFS0zDlY7nHcXUN6g2eTwGaAEKSFJjNtXgXRpf01A2SfCNK5T6TiHk_-CqzgGOJTC_iyDgypfx2eB-n9ZangaCr88JFiBrz03nPRgyjbFlF3FjhuFsmX-pNxr4-8nZVQqF7_r-FirTJTP3sJ8VT3u1w_SaA2B2n4dv1FJvWbgI-X9sSx3ytUpuFwn1wJA-_b-cieSpF-0ky9RwUTCsG8kcsRic1bHA_P2uifI5JN55-zx9McIxpawTt8lOMj5s9rsH7crgCBoE0VbaWDi0Lz2Ldo6nqyDS9PCKHj6Gupx7IBMfKaTgQXvGznEmPyf5Ww.jpg",
+        "id": "ir:herat_tomen",
+        "title": "هرات تومن دالر",
+        "username": "herat_tomen",
+        "avatarUrl": "https://cdn5.telesco.pe/file/aDIocvVmOfEHN2Fy6p2fWRu-zrfK9U8mkexeIBtexJbdGcKAAylb_DtGvjUY7udax7WWoPtMhZ8UosenF8znYzfdKS6MdbYrYg8T0sZJ-X8gDBWM5v30YX6hfAsbFlQz9GT6StLI8e0Ammi7E2XXgzmRxtC-59_XDeMAfF31On1qhdq_8IDwbPbr7M0F5nO5yDsccmi03vv8uC5Nm1pqvhhmDfLbBMe_RfA4ggwS-7pJT7F5C7PqiZ1rb29xuAykgcMaskHVQ4yMKmI5OZhj5mGjfSDEYPnf1LyHP8k9XyG6gPqWOVtcB2WlchDq27vyHrhM5TaAqxzd9ZRJF9y26w.jpg",
+        "mentions": 2
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      7
+    ],
+    "firstSeenAt": "2026-06-04T10:30:55.979Z",
+    "lastSeenAt": "2026-06-04T10:32:15.801Z",
+    "examples": [
+      {
+        "id": 3385274243,
+        "text": "🔻 فرصت رشد x۱۰ برابری با شروع جام جهانی\nیه بار دیگه یادآوری کنم\n\" ما تو عصر شبکه های اجتماعی داری زندگی میکنیم ، جایی که ۱ کسب و کار با ۱ ویدیو وایرال میتونه به اندازه یکسال رقیبش فروش کنه \"",
+        "url": "https://t.me/sajjadshoeib/988?single",
+        "publishedAt": "2026-06-04T10:32:15.801Z",
+        "sourceTitle": "🔸 سجاد شعیب | Sajjad Shoeib 🔸",
+        "sourceUsername": "sajjadshoeib",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/KKdrAXMizJJAj7mGHgC0FQ-NA5H0PUiI61iPMPtk62TokjP9mp_DhwtPt6ooBGV_fClgKOJUgsitcYlVvRE6tMyDZgx301DQ3_HiDMnbFJprYOqqfmEXg8QHCPiHX7s7bQ4KmJNT4Tahe8XS-tg6Mv3altd3fE_ixqlWerFvz6CQUyp8xmO-zO-B8E7QiytasNlYBu23ywHns7Y4_VlRbvX4VOmajjNaoXremdZIPV9ClWEfAYUyVgTuHoOfIB2TeUM-ddPYrWTvPBpnO5A6slVLtumjpQ_S4x3YvbTMGBEkK21JFRgzvkQw8i0ei0qD2jBtbeDDDzW0-EWZQkzNJQ.jpg"
+      },
+      {
+        "id": 3385274243,
+        "text": "🔻 فرصت رشد x۱۰ برابری با شروع جام جهانی\nیه بار دیگه یادآوری کنم\n\" ما تو عصر شبکه های اجتماعی داری زندگی میکنیم ، جایی که ۱ کسب و کار با ۱ ویدیو وایرال میتونه به اندازه یکسال رقیبش فروش کنه \"",
+        "url": "https://t.me/sajjadshoeib/988?single",
+        "publishedAt": "2026-06-04T10:32:15.801Z",
+        "sourceTitle": "🔸 سجاد شعیب | Sajjad Shoeib 🔸",
+        "sourceUsername": "sajjadshoeib",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/KKdrAXMizJJAj7mGHgC0FQ-NA5H0PUiI61iPMPtk62TokjP9mp_DhwtPt6ooBGV_fClgKOJUgsitcYlVvRE6tMyDZgx301DQ3_HiDMnbFJprYOqqfmEXg8QHCPiHX7s7bQ4KmJNT4Tahe8XS-tg6Mv3altd3fE_ixqlWerFvz6CQUyp8xmO-zO-B8E7QiytasNlYBu23ywHns7Y4_VlRbvX4VOmajjNaoXremdZIPV9ClWEfAYUyVgTuHoOfIB2TeUM-ddPYrWTvPBpnO5A6slVLtumjpQ_S4x3YvbTMGBEkK21JFRgzvkQw8i0ei0qD2jBtbeDDDzW0-EWZQkzNJQ.jpg"
+      },
+      {
+        "id": 3278554614,
+        "text": "63.82 ☞خرید♦فروش☜ 63.84",
+        "url": "https://t.me/kabul_dollar/418545?single",
+        "publishedAt": "2026-06-04T10:31:15.958Z",
+        "sourceTitle": "کابل دالر",
+        "sourceUsername": "kabul_dollar",
+        "sourceAvatarUrl": "https://cdn5.telesco.pe/file/eU1RXXIALxSENqX1XcZh-2GHhKas6nKEqXb0InQJVOv5WdH7-4MA6AAO9BFx_bb61pBQvvvpqTO5LdUW2fHxHtmHHSsdTmPPad-OciyFq8qVt1E_BXWhCdNrHG5yeVbINaf1NQULuY8Oz0hJFXCLyYXCenvrTGJ95QcPCjvp-pxYLnlJY8m9b-Hq4M9tyN-1LIpO8nDJaJMgrupqMBom-6sjs6XsZpIvUY-FrxNJYCfpROY25UYT9uAY4Nrkb4WVJIAkL_GeYjPZO0TN8gI-f8kp1SlwfcFlTx-EB1FSnJLweWGzmZ_TfulqXSvS3LsUMLxKbaGNV8qfISHNCet5Xg.jpg"
+      },
+      {
+        "id": 1320342165,
+        "text": "هرات فردایی ⏳ 173,150 فروش🔴",
+        "url": "https://t.me/herat_tomen/4983891?single",
+        "publishedAt": "2026-06-04T10:30:55.979Z",
+        "sourceTitle": "هرات تومن دالر",
+        "sourceUsername": "herat_tomen",
+        "sourceAvatarUrl": "https://cdn5.telesco.pe/file/aDIocvVmOfEHN2Fy6p2fWRu-zrfK9U8mkexeIBtexJbdGcKAAylb_DtGvjUY7udax7WWoPtMhZ8UosenF8znYzfdKS6MdbYrYg8T0sZJ-X8gDBWM5v30YX6hfAsbFlQz9GT6StLI8e0Ammi7E2XXgzmRxtC-59_XDeMAfF31On1qhdq_8IDwbPbr7M0F5nO5yDsccmi03vv8uC5Nm1pqvhhmDfLbBMe_RfA4ggwS-7pJT7F5C7PqiZ1rb29xuAykgcMaskHVQ4yMKmI5OZhj5mGjfSDEYPnf1LyHP8k9XyG6gPqWOVtcB2WlchDq27vyHrhM5TaAqxzd9ZRJF9y26w.jpg"
+      },
+      {
+        "id": 2667965263,
+        "text": "63.88 ☞خرید♦فروش☜ 63.90",
+        "url": "https://t.me/kabul_dollar/418544?single",
+        "publishedAt": "2026-06-04T10:31:15.958Z",
+        "sourceTitle": "کابل دالر",
+        "sourceUsername": "kabul_dollar",
+        "sourceAvatarUrl": "https://cdn5.telesco.pe/file/eU1RXXIALxSENqX1XcZh-2GHhKas6nKEqXb0InQJVOv5WdH7-4MA6AAO9BFx_bb61pBQvvvpqTO5LdUW2fHxHtmHHSsdTmPPad-OciyFq8qVt1E_BXWhCdNrHG5yeVbINaf1NQULuY8Oz0hJFXCLyYXCenvrTGJ95QcPCjvp-pxYLnlJY8m9b-Hq4M9tyN-1LIpO8nDJaJMgrupqMBom-6sjs6XsZpIvUY-FrxNJYCfpROY25UYT9uAY4Nrkb4WVJIAkL_GeYjPZO0TN8gI-f8kp1SlwfcFlTx-EB1FSnJLweWGzmZ_TfulqXSvS3LsUMLxKbaGNV8qfISHNCet5Xg.jpg"
+      }
+    ],
+    "signals": [
+      "فروش",
+      "خرید",
+      "اتفاقات",
+      "اجتماعی",
+      "ترند"
+    ],
+    "category": "all",
+    "categories": []
+  },
+  {
+    "topic": "جدید تست کنید",
+    "word": "جدید تست کنید",
+    "mentions": 6,
+    "momentum": 600,
+    "change": "+600%",
+    "sourceCount": 5,
+    "countries": [
+      {
+        "code": "ir",
+        "mentions": 6,
+        "sourceCount": 5
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ir:irproxy",
+        "title": "پروکسی ملی | ᴠᴘɴ |خبرجنگ",
+        "username": "irproxy",
+        "avatarUrl": "https://cdn4.telesco.pe/file/uCMZSvrn3Hxc-9Bq1mu8Qj4ff71A05ZpLYXBtFwzPc86HwpIyuyBhzv9DSIrcoybZ_maF4Y_82rm8LrBejDiZEc7pyJ27jGjvcM-muEIw_KY4ytMhliOUhChBOMdixvPJ8xhW3Kidp-0LOMutj5VryFgcaxGm-WRqrfExgbvEaEEsl-8kK7YVujyMLVbwHktrAfev4oDRhiJxd-kptN6ErNeET_WZGud2Y1Qp5hCwBfN7R8ONIlw59QN8JkHdoTGGoSgpAXQuApYF4Jh5FKXeGZQVJ6-yQa_WF7gJDcB7UqrC4UB2kYOwqaft3mgDgxlKL3SxqQbSqhC73TRpuKj1g.jpg",
+        "mentions": 2
+      },
+      {
+        "id": "ir:pinkproxy",
+        "title": "PINK PROXY | پروکسی",
+        "username": "pinkproxy",
+        "avatarUrl": "https://cdn4.telesco.pe/file/T8pirttj-U4fMPLkSdBQDERWMm0n1wNih7J27WI8BgQ8sH4rCnPN_6y7rs9b0MkBYAeAOPlns-k-aBDb8v3EvGv9h-BCSPwkWXmyqQFawPyhEOe8NvC2YtyQkoBgZs_UO4WMdTTBjOPg4O1Hvzb53JszrLcN6smSwqf0eEZNJf-oodwWNhce6yETpuDWeJVkGXiLCVcRe8iVjixbGO-Vnz81fVSFGQDFYsFigh_8XFGGTKbz0Wqi3GLRQbLpBqhq11UBYtEJp02pOCIpWBQBbBOg9MZfJjstCeIWybBjoYlT90WSg68cBPoU4ORmNY1GKNdp5_oRAX32rwdMr8rpow.jpg",
         "mentions": 1
       },
       {
-        "id": "ir:canadalivetv",
-        "title": "Canadalive",
-        "username": "canadalivetv",
-        "avatarUrl": "https://cdn1.telesco.pe/file/rn4nZWWoz7GZrjUdWoeMM9P_JXssj0u5QexlpuavlysB_CExQcjs8jq8l7M2nqLkdNv_6xlUNApDY35kJ95PAp1kpPwKplq1bInJycdYJ7pLyygjntiqbzyIRa339S0PUTlN2o0SoOms2iHPL3RJdEMu2pG5_Ogq2KwsXqEVt6DOlKbJmLJEdJfwHf9cqWjkCTdD3hOET2Q861A2dVpeKfgqI3EWgVHWemlfD_qDKcDbYrXtVY8Uu7087GHYjR9_aS1M_eGPvKazmhB3EChjozbE1Vn8uXTF_MjwVHRA-99Ep73-oCRV-81boworQ7O6Khfbaqj00NSsmQBhQwpsXw.jpg",
+        "id": "ir:iproxyem",
+        "title": "پروکسی | Fast Proxy",
+        "username": "iproxyem",
+        "avatarUrl": "https://cdn4.telesco.pe/file/X1qzcINVdnd1uFUMrVeDtMWvX8U_TJmA42li7rDF7c-SZeAJe6SM2KMWM7qs7uNF-BLV37ELJm4wxBMdxT0wyCLtobyfWmMDEmAxm4UarydysN36QrUxSLPAIYJjVxNcKEH8hc2K1flumV86piK7hLgWBimQ78x3GDZ9A_LO8gM-ruyxzBMKIlqtiyMX8wdsGFNBGm5YJG4FbE4sx69KZVhaqW22Lz8gwc8rqa1tqC1cO_kT5PHHNMuBRbAJkwSp9wpxlPVFufa20lf73jUOQfTdmdc756NiZdcUCOjJWRSuTy-8czmqMlOaKzrMQWsk4vhf2fjRMhEwIKMOBTz_2w.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ir:iauamozeshyar",
+        "title": "اطلاع رسانی آموزشیار",
+        "username": "iauamozeshyar",
+        "avatarUrl": "https://cdn4.telesco.pe/file/H3Gudbh8ENVsVnP1niJ9-JFM4q1855EtF0qK0J73PQpl7RdzETE_RA70m574fmtKWDfSUswulrsGm1ONlo4Hpkq8W_fHPHQj5UPFFni0zYxbL6M-anSAoR2F9CIGjTRF8DvkN97JEl35JOnsi1xPjsfOEuT5w4pOgxjlX5KzQHwgt_d_Eil_zpmjcfOPAjWd_D5PRRz4xvpfAOfzL8CrbgPOZKArcj6HqGvu0FgfL-yvVUN5gys0TXJoj-CuUk3gYWgeOwfHSZWhTqaTstsTtwf8gN3CZJjycAYsmIEA-tnvhlwxjPMoAbYKSECcgagBoAJP1WfjEx9j-1F-mRpwwQ.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ir:proxydaemi",
+        "title": "پروکسی دائمی تلگرام",
+        "username": "proxydaemi",
+        "avatarUrl": "https://cdn4.telesco.pe/file/OIc5E3CoN711moj4_rqjQTc3UFVlJboVJ3Jm4PS_7ojCYxpabeM_crYZPVZZZ5Rz3FtS2NRdtNtq0bNFn6w_-NK0PoFebxsvDQNhW1gH35pYQJeZ-tWLf7XX3vyGaZMEwoOh-BvdZTcRyLvynGOCC893705pdjtPYVmgEWUAX1J6-IwrmDbCiGTqHY_RUrElTUfImeu2qto-4uU7_vp92BbsFZV2fgEX_Rhzg11DD_onKSH1leDp0mYjqDOoYPyVIetb813KFwVNs4sxRZPQryuK5evcCv9ZR5C74CVYWPe9imIqT2D9F8ww6vYsiOC4IyX7DHG9lNjWezXVEYiNfg.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6
+    ],
+    "firstSeenAt": "2026-06-04T10:30:58.628Z",
+    "lastSeenAt": "2026-06-04T10:31:58.871Z",
+    "examples": [
+      {
+        "id": 2601651042,
+        "text": "جدید تست کنید",
+        "url": "https://t.me/pinkproxy/57467?single",
+        "publishedAt": "2026-06-04T10:31:55.480Z",
+        "sourceTitle": "PINK PROXY | پروکسی",
+        "sourceUsername": "pinkproxy",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/T8pirttj-U4fMPLkSdBQDERWMm0n1wNih7J27WI8BgQ8sH4rCnPN_6y7rs9b0MkBYAeAOPlns-k-aBDb8v3EvGv9h-BCSPwkWXmyqQFawPyhEOe8NvC2YtyQkoBgZs_UO4WMdTTBjOPg4O1Hvzb53JszrLcN6smSwqf0eEZNJf-oodwWNhce6yETpuDWeJVkGXiLCVcRe8iVjixbGO-Vnz81fVSFGQDFYsFigh_8XFGGTKbz0Wqi3GLRQbLpBqhq11UBYtEJp02pOCIpWBQBbBOg9MZfJjstCeIWybBjoYlT90WSg68cBPoU4ORmNY1GKNdp5_oRAX32rwdMr8rpow.jpg"
+      },
+      {
+        "id": 3745037286,
+        "text": "جدید تست کنید",
+        "url": "https://t.me/iproxyem/6248?single",
+        "publishedAt": "2026-06-04T10:31:02.560Z",
+        "sourceTitle": "پروکسی | Fast Proxy",
+        "sourceUsername": "iproxyem",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/X1qzcINVdnd1uFUMrVeDtMWvX8U_TJmA42li7rDF7c-SZeAJe6SM2KMWM7qs7uNF-BLV37ELJm4wxBMdxT0wyCLtobyfWmMDEmAxm4UarydysN36QrUxSLPAIYJjVxNcKEH8hc2K1flumV86piK7hLgWBimQ78x3GDZ9A_LO8gM-ruyxzBMKIlqtiyMX8wdsGFNBGm5YJG4FbE4sx69KZVhaqW22Lz8gwc8rqa1tqC1cO_kT5PHHNMuBRbAJkwSp9wpxlPVFufa20lf73jUOQfTdmdc756NiZdcUCOjJWRSuTy-8czmqMlOaKzrMQWsk4vhf2fjRMhEwIKMOBTz_2w.jpg"
+      },
+      {
+        "id": 1665165184,
+        "text": "دوستانی که نیاز به دریافت vpn برای عبور از تحریم و فیلتر دارن میتونید به قیمت پارسال ( هرگیگ از ۶ هزار تومن) از ربات زیر تهیه کنید\n⚠️ نکته مهم\nخودمون تست کردیم روی تمام اپراتورها جواب داده. اما حتما قبل از خرید اقدام به دریافت تست کنید و اگر اوکی بود هزینه کنید",
+        "url": "https://t.me/iauamozeshyar/12532?single",
+        "publishedAt": "2026-06-04T10:30:58.628Z",
+        "sourceTitle": "اطلاع رسانی آموزشیار",
+        "sourceUsername": "iauamozeshyar",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/H3Gudbh8ENVsVnP1niJ9-JFM4q1855EtF0qK0J73PQpl7RdzETE_RA70m574fmtKWDfSUswulrsGm1ONlo4Hpkq8W_fHPHQj5UPFFni0zYxbL6M-anSAoR2F9CIGjTRF8DvkN97JEl35JOnsi1xPjsfOEuT5w4pOgxjlX5KzQHwgt_d_Eil_zpmjcfOPAjWd_D5PRRz4xvpfAOfzL8CrbgPOZKArcj6HqGvu0FgfL-yvVUN5gys0TXJoj-CuUk3gYWgeOwfHSZWhTqaTstsTtwf8gN3CZJjycAYsmIEA-tnvhlwxjPMoAbYKSECcgagBoAJP1WfjEx9j-1F-mRpwwQ.jpg"
+      },
+      {
+        "id": 3356267889,
+        "text": "لیست پروکسی جدید\nپروکسی+vpn های ملی",
+        "url": "https://t.me/irproxy/36505?single",
+        "publishedAt": "2026-06-04T10:31:11.761Z",
+        "sourceTitle": "پروکسی ملی | ᴠᴘɴ |خبرجنگ",
+        "sourceUsername": "irproxy",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/uCMZSvrn3Hxc-9Bq1mu8Qj4ff71A05ZpLYXBtFwzPc86HwpIyuyBhzv9DSIrcoybZ_maF4Y_82rm8LrBejDiZEc7pyJ27jGjvcM-muEIw_KY4ytMhliOUhChBOMdixvPJ8xhW3Kidp-0LOMutj5VryFgcaxGm-WRqrfExgbvEaEEsl-8kK7YVujyMLVbwHktrAfev4oDRhiJxd-kptN6ErNeET_WZGud2Y1Qp5hCwBfN7R8ONIlw59QN8JkHdoTGGoSgpAXQuApYF4Jh5FKXeGZQVJ6-yQa_WF7gJDcB7UqrC4UB2kYOwqaft3mgDgxlKL3SxqQbSqhC73TRpuKj1g.jpg"
+      },
+      {
+        "id": 1906245507,
+        "text": "لیست جدید پروکسی های تازه نفس",
+        "url": "https://t.me/proxydaemi/52948?single",
+        "publishedAt": "2026-06-04T10:31:58.871Z",
+        "sourceTitle": "پروکسی دائمی تلگرام",
+        "sourceUsername": "proxydaemi",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/OIc5E3CoN711moj4_rqjQTc3UFVlJboVJ3Jm4PS_7ojCYxpabeM_crYZPVZZZ5Rz3FtS2NRdtNtq0bNFn6w_-NK0PoFebxsvDQNhW1gH35pYQJeZ-tWLf7XX3vyGaZMEwoOh-BvdZTcRyLvynGOCC893705pdjtPYVmgEWUAX1J6-IwrmDbCiGTqHY_RUrElTUfImeu2qto-4uU7_vp92BbsFZV2fgEX_Rhzg11DD_onKSH1leDp0mYjqDOoYPyVIetb813KFwVNs4sxRZPQryuK5evcCv9ZR5C74CVYWPe9imIqT2D9F8ww6vYsiOC4IyX7DHG9lNjWezXVEYiNfg.jpg"
+      }
+    ],
+    "signals": [
+      "جدید",
+      "تست",
+      "لیست",
+      "vpn",
+      "کنید"
+    ],
+    "category": "technology",
+    "categories": [
+      "technology",
+      "technology_software",
+      "telegram",
+      "finance",
+      "sports",
+      "education",
+      "telegram_all",
+      "crypto",
+      "sports_news",
+      "books"
+    ]
+  },
+  {
+    "topic": "vless://3cbad916-d882-4773-8dfb-15564f2d29fe :17759?security=none&encryption=none&host=telewebion.com&hea…",
+    "word": "vless://3cbad916-d882-4773-8dfb-15564f2d29fe :17759?security=none&encryption=none&host=telewebion.com&hea…",
+    "mentions": 4,
+    "momentum": 400,
+    "change": "+400%",
+    "sourceCount": 4,
+    "countries": [
+      {
+        "code": "ir",
+        "mentions": 4,
+        "sourceCount": 4
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ir:themaah",
+        "title": "ماه Moon",
+        "username": "themaah",
+        "avatarUrl": "https://cdn4.telesco.pe/file/GB-CoI6NuGAFBEXFAtAxdg5ZqBSU_foljDbxQriaDbZvJGbrNci_d-Trx8cEHDrRtp9bgr5WkC1ylMgfpZounGV_ZIh21Vo9vi211WkQ76jZ87CSZfasolIQIPP2zbBY8EZV4QQDQEwOZT3IA_07kJC9nG1rPtpclXPZLqzjzU2UajR70FfcH3i7J8u8G9ZjiCR0C3HRLPy-NitiYj7GxG1gNmv5EPpQ43wyhPleDrQpKDGeRi11wLPxSH94LzZ5w8UiLnbzzJcIdNNOxfSyJH0AK2npU1ZhzjNXNs_7Ew-MkevsWSJ6gtbKuovfRcc685b7ZqHA7B1oBOBLfg_k3g.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ir:freakconfig",
+        "title": "سرور کانفیگ کانفینگ رایگان",
+        "username": "freakconfig",
+        "avatarUrl": "https://cdn4.telesco.pe/file/gOJWkKR9854ykgR5Z_D0BuDRPpscZIRqqV9aMc7CIbTw_10pYeZvvlXURB1-x76K63GyOpiO8RTAhdqNNP2AnqWbraLDePpfC0vJdaDIyleHlxuPgjdFC4KxJ_5oDsH_GUyRVfMT-jsbr3XTce7INWECHKbOFysHFFZ60P20cOQoNjKYbvs4MAbT9G6RKlRne3VtlYOEeOBSWM3p6KEogiK1_a2yhsb_9jhIRB-H8G4_5UTz0yHe4pACPaxUarQ30U48F4LUj3vUSsvfHY_m55deSat6wbRmFpyBQ3683diabZbij2NS18ZYmWYxuK6MpC4WzqoczW0Ad-rPUz8dtw.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ir:mtpproxyirani",
+        "title": "Proxy MTProto▕ پروکسی ایرانی",
+        "username": "mtpproxyirani",
+        "avatarUrl": "https://cdn4.telesco.pe/file/Z6gT7wDHfRqpwJGYbhokLNflCNmUMErxFwYgCxDG6wlB66OLDY1VSojTCy79ttbhNSE7c7kad6Ncn2gAcqwVwab4OLeRHQUXqQtQUJ7DFmtTPg-JV-nWxAulhdVtNtG17nIzimpCsGa1cmzA2Pi3JRT5UOmnUNysOrUf1fI1Yja3n5NSKmqcSGt-PeXhxzxF9Z_9tsnBzvv9O7UgVPOC_6i1qdiemI_5AMfA8ZpjEeh06SUWAvYOO_0cJ1Guy372zFXFjy4sOvxnEclBz3susYX64jmHL9PJCR_qfkldPh0lGuB1aqgcjOFAsVHLOvAqooGZpQzE9bInNLkqqpwWRQ.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ir:anty_filter",
+        "title": "VPN MARKET",
+        "username": "anty_filter",
+        "avatarUrl": "https://cdn4.telesco.pe/file/qxZoP7jjbqY9oFwMwk9VLJmaKszjjxRpkUrc6bTgl7AbakpyS5Vy1r0fKCr1jPo4PbvyS2AEKYoV7vW77XLXL__pY5MGwtj_sxJ3zdNASUIEWceOwnQjnU2E9HjBsPyIGu2ESAyX2wNo84P3zVfKyKQOAOmsvNRH091sQF8VuqN-oPYbC38EjktyVaH8Yw0KJCKRJ65UjmMvFywq-8aVprF7NnN3m4C8z5lWL2O4msYWzzmaJ6QP_4TwzwJknSxD1KOEWQwJVCj4eOp2MiNeA7OM_10xshJMsiwrC85dAvMQ-lcjzmZzlytDntEGtHMotAHwFCmQVmhVBrLd8OKT3g.jpg",
         "mentions": 1
       }
     ],
@@ -174,93 +447,88 @@
       0,
       4
     ],
-    "firstSeenAt": "2026-06-03T06:26:28.715Z",
-    "lastSeenAt": "2026-06-03T06:27:32.705Z",
+    "firstSeenAt": "2026-06-04T10:29:25.384Z",
+    "lastSeenAt": "2026-06-04T10:31:40.478Z",
     "examples": [
       {
-        "id": 4098669697,
-        "text": "صبح‌تون بخیر سلاطین ☀️☀️",
-        "url": "https://t.me/gamotionart/45985?single",
-        "publishedAt": "2026-06-03T06:27:08.966Z",
-        "sourceTitle": "گیموشن آرت | GamotionArt",
-        "sourceUsername": "gamotionart",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/VI8_NGsw_YPbjZzgkWpv91nFS0zDlY7nHcXUN6g2eTwGaAEKSFJjNtXgXRpf01A2SfCNK5T6TiHk_-CqzgGOJTC_iyDgypfx2eB-n9ZangaCr88JFiBrz03nPRgyjbFlF3FjhuFsmX-pNxr4-8nZVQqF7_r-FirTJTP3sJ8VT3u1w_SaA2B2n4dv1FJvWbgI-X9sSx3ytUpuFwn1wJA-_b-cieSpF-0ky9RwUTCsG8kcsRic1bHA_P2uifI5JN55-zx9McIxpawTt8lOMj5s9rsH7crgCBoE0VbaWDi0Lz2Ldo6nqyDS9PCKHj6Gupx7IBMfKaTgQXvGznEmPyf5Ww.jpg"
+        "id": 89685375,
+        "text": "🗿 کانفینگ ملی وصل 📱✅\nسریع وصل شید 🚨👇\nvless://3cbad916-d882-4773-8dfb-15564f2d29fe :17759?security=none&encryption=none&host=telewebion.com&headerType=http&type=tcp",
+        "url": "https://t.me/themaah/56898?single",
+        "publishedAt": "2026-06-04T10:29:25.384Z",
+        "sourceTitle": "ماه Moon",
+        "sourceUsername": "themaah",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/GB-CoI6NuGAFBEXFAtAxdg5ZqBSU_foljDbxQriaDbZvJGbrNci_d-Trx8cEHDrRtp9bgr5WkC1ylMgfpZounGV_ZIh21Vo9vi211WkQ76jZ87CSZfasolIQIPP2zbBY8EZV4QQDQEwOZT3IA_07kJC9nG1rPtpclXPZLqzjzU2UajR70FfcH3i7J8u8G9ZjiCR0C3HRLPy-NitiYj7GxG1gNmv5EPpQ43wyhPleDrQpKDGeRi11wLPxSH94LzZ5w8UiLnbzzJcIdNNOxfSyJH0AK2npU1ZhzjNXNs_7Ew-MkevsWSJ6gtbKuovfRcc685b7ZqHA7B1oBOBLfg_k3g.jpg"
       },
       {
-        "id": 18422288,
-        "text": "صبح سه‌شنبه بخیر\n♦️ نرخ کنونی خرید و فروش دلار کانادا طبق اعلام صرافی شاهان تورنتو (پلازای ایرانیان)\n🔸صرافی امیرشاهان، پلازای ایرانیان",
-        "url": "https://t.me/canadalivetv/16062?single",
-        "publishedAt": "2026-06-03T06:26:28.715Z",
-        "sourceTitle": "Canadalive",
-        "sourceUsername": "canadalivetv",
-        "sourceAvatarUrl": "https://cdn1.telesco.pe/file/rn4nZWWoz7GZrjUdWoeMM9P_JXssj0u5QexlpuavlysB_CExQcjs8jq8l7M2nqLkdNv_6xlUNApDY35kJ95PAp1kpPwKplq1bInJycdYJ7pLyygjntiqbzyIRa339S0PUTlN2o0SoOms2iHPL3RJdEMu2pG5_Ogq2KwsXqEVt6DOlKbJmLJEdJfwHf9cqWjkCTdD3hOET2Q861A2dVpeKfgqI3EWgVHWemlfD_qDKcDbYrXtVY8Uu7087GHYjR9_aS1M_eGPvKazmhB3EChjozbE1Vn8uXTF_MjwVHRA-99Ep73-oCRV-81boworQ7O6Khfbaqj00NSsmQBhQwpsXw.jpg"
+        "id": 2396142662,
+        "text": "🔌 وضعیت : متصل تا زمان فیلتر\nvless://a75c027c-dc95-4efd-894a-2c85f0186017 :2095?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8F%B4%F3%A0%81%A7%F3%A0%81%A2%F3%A0%81%A5%F3%A0%81%AE%F3%A0%81%A7%F3%A0%81%BF%40FreakConfig\nvless://749a5df1-2d12-45cf-80f3-f85ea6b2e405 :443?security=reality&encryption=none&pbk=Fp0-VrMBeaQe9xOrehDYHt0mqTZL-5CdfuMEzo",
+        "url": "https://t.me/freakconfig/7751?single",
+        "publishedAt": "2026-06-04T10:30:47.852Z",
+        "sourceTitle": "سرور کانفیگ کانفینگ رایگان",
+        "sourceUsername": "freakconfig",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/gOJWkKR9854ykgR5Z_D0BuDRPpscZIRqqV9aMc7CIbTw_10pYeZvvlXURB1-x76K63GyOpiO8RTAhdqNNP2AnqWbraLDePpfC0vJdaDIyleHlxuPgjdFC4KxJ_5oDsH_GUyRVfMT-jsbr3XTce7INWECHKbOFysHFFZ60P20cOQoNjKYbvs4MAbT9G6RKlRne3VtlYOEeOBSWM3p6KEogiK1_a2yhsb_9jhIRB-H8G4_5UTz0yHe4pACPaxUarQ30U48F4LUj3vUSsvfHY_m55deSat6wbRmFpyBQ3683diabZbij2NS18ZYmWYxuK6MpC4WzqoczW0Ad-rPUz8dtw.jpg"
       },
       {
-        "id": 3867859373,
-        "text": "63.67 ☞خرید♦فروش☜ 63.70",
-        "url": "https://t.me/kabul_dollar/418164?single",
-        "publishedAt": "2026-06-03T06:27:32.705Z",
-        "sourceTitle": "کابل دالر",
-        "sourceUsername": "kabul_dollar",
-        "sourceAvatarUrl": "https://cdn5.telesco.pe/file/ofyiim_aYezAlyTeMnpgjAr4RvlGUKCceQTEH-A54l02asBsk-IgI3ei-QKJqZks2hfgg8l7NrhEboRx93bt55K6f4B-XSvxCHJ0eAlgSrfeB35eFL4y0XFp4IqyJHrVCDP6D0GBEi2EkQYy4Feg33b6Twjc2TCAi21gO3i9pUTOJ9IKEcQitrnkdL5Xd4309__uQ9UcflYu6CEsDbCZCwYoqqr_rnTrdSFyfyJgiZxRu_j08uZLzsVdkaDtJWLeIOpd2cPIIx3St6pCTkE4yexrQyN-kzXI76odei9v1t8ZiE0TVlosJQAezjTDKUByh6TC_utSUNJPgoTnxBXN3Q.jpg"
+        "id": 3165412776,
+        "text": "کانفینگاش با نت ملی هم وصله، قطع نمیشه😐👇🏻\nvless://3cbad916-d882-4773-8dfb-15564f2d29fe :17759?security=none&encryption=none&host=telewebion.com&headerType=http&type=tcp#%",
+        "url": "https://t.me/mtpproxyirani/61226?single",
+        "publishedAt": "2026-06-04T10:31:40.478Z",
+        "sourceTitle": "Proxy MTProto▕ پروکسی ایرانی",
+        "sourceUsername": "mtpproxyirani",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Z6gT7wDHfRqpwJGYbhokLNflCNmUMErxFwYgCxDG6wlB66OLDY1VSojTCy79ttbhNSE7c7kad6Ncn2gAcqwVwab4OLeRHQUXqQtQUJ7DFmtTPg-JV-nWxAulhdVtNtG17nIzimpCsGa1cmzA2Pi3JRT5UOmnUNysOrUf1fI1Yja3n5NSKmqcSGt-PeXhxzxF9Z_9tsnBzvv9O7UgVPOC_6i1qdiemI_5AMfA8ZpjEeh06SUWAvYOO_0cJ1Guy372zFXFjy4sOvxnEclBz3susYX64jmHL9PJCR_qfkldPh0lGuB1aqgcjOFAsVHLOvAqooGZpQzE9bInNLkqqpwWRQ.jpg"
       },
       {
-        "id": 2304129082,
-        "text": "63.70 ☞خرید♦فروش☜ 63.72",
-        "url": "https://t.me/kabul_dollar/418163?single",
-        "publishedAt": "2026-06-03T06:27:32.705Z",
-        "sourceTitle": "کابل دالر",
-        "sourceUsername": "kabul_dollar",
-        "sourceAvatarUrl": "https://cdn5.telesco.pe/file/ofyiim_aYezAlyTeMnpgjAr4RvlGUKCceQTEH-A54l02asBsk-IgI3ei-QKJqZks2hfgg8l7NrhEboRx93bt55K6f4B-XSvxCHJ0eAlgSrfeB35eFL4y0XFp4IqyJHrVCDP6D0GBEi2EkQYy4Feg33b6Twjc2TCAi21gO3i9pUTOJ9IKEcQitrnkdL5Xd4309__uQ9UcflYu6CEsDbCZCwYoqqr_rnTrdSFyfyJgiZxRu_j08uZLzsVdkaDtJWLeIOpd2cPIIx3St6pCTkE4yexrQyN-kzXI76odei9v1t8ZiE0TVlosJQAezjTDKUByh6TC_utSUNJPgoTnxBXN3Q.jpg"
+        "id": 3575445004,
+        "text": "vless://8dc7722c-2767-4eea-a28b-2f8daacc07e3 :8880?security=&encryption=none&type=grpc#%40v2raybaaz\nvless://48ff2b70-e180-582f-8866-d9a2edeed5f5 :23576?security=reality&encryption=none&pbk=1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=fuck.rkn&sid=01#%40vpnbaz%20%F0%9F%8E%B2",
+        "url": "https://t.me/anty_filter/23269?single",
+        "publishedAt": "2026-06-04T10:29:56.904Z",
+        "sourceTitle": "VPN MARKET",
+        "sourceUsername": "anty_filter",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/qxZoP7jjbqY9oFwMwk9VLJmaKszjjxRpkUrc6bTgl7AbakpyS5Vy1r0fKCr1jPo4PbvyS2AEKYoV7vW77XLXL__pY5MGwtj_sxJ3zdNASUIEWceOwnQjnU2E9HjBsPyIGu2ESAyX2wNo84P3zVfKyKQOAOmsvNRH091sQF8VuqN-oPYbC38EjktyVaH8Yw0KJCKRJ65UjmMvFywq-8aVprF7NnN3m4C8z5lWL2O4msYWzzmaJ6QP_4TwzwJknSxD1KOEWQwJVCj4eOp2MiNeA7OM_10xshJMsiwrC85dAvMQ-lcjzmZzlytDntEGtHMotAHwFCmQVmhVBrLd8OKT3g.jpg"
       }
     ],
     "signals": [
-      "خرید",
-      "فروش",
-      "بخیر",
-      "تون",
-      "سلاطین"
+      "encryption",
+      "security",
+      "vless",
+      "3cbad916-d882-4773-8dfb-15564f2d29fe",
+      "host"
     ],
-    "category": "culture",
+    "category": "technology",
     "categories": [
-      "culture",
-      "art"
+      "technology",
+      "technology_all",
+      "ai",
+      "technology_software"
     ]
   },
   {
-    "topic": "vless://749a5df1-2d12-45cf-80f3-f85ea6b2e405 :443?security=reality&encryption=none&pbk=Fp0-VrMBeaQe9xOreh…",
-    "word": "vless://749a5df1-2d12-45cf-80f3-f85ea6b2e405 :443?security=reality&encryption=none&pbk=Fp0-VrMBeaQe9xOreh…",
+    "topic": "اینجا ببینید👇🏻🔥",
+    "word": "اینجا ببینید👇🏻🔥",
     "mentions": 3,
     "momentum": 300,
     "change": "+300%",
-    "sourceCount": 3,
+    "sourceCount": 2,
     "countries": [
       {
         "code": "ir",
         "mentions": 3,
-        "sourceCount": 3
+        "sourceCount": 2
       }
     ],
     "topSources": [
       {
-        "id": "ir:freakconfig",
-        "title": "سرور کانفیگ کانفینگ رایگان",
-        "username": "freakconfig",
-        "avatarUrl": "https://cdn4.telesco.pe/file/f_XPkwKsi6mu7Ipc8QLrODTZFc5E-WfwUUmSii9DJ588PalGp6CozJNAnP-fqrHN7S9mdU11Gmjv1ahsTzBhc_iyqEia-I1IvtA0kDkKO2Zap8lYF9HW6HJB-_CRBIFuipPyOrYFQv9yPaOPzKeH2SBBJezAtWxGdgBcmqnAjrHFiw0zP0dEQmkePSu0iUCZI_YQnYL7CkJcHFcOm1QhBBwI8_Rtx3Jle6BYNDzxQhjrDZ9cp9iI2xwLMIrc4UIKNWEfgJP2_JcBgLVrfDo265yxpd1hqh5vtsktYgH90tpOZ8Xi2EyZykbpqzxeHkEC-atv9B72mjZOXoOowFeWig.jpg",
-        "mentions": 1
+        "id": "ir:farzadzarrin",
+        "title": "Farzad Zarrin - TV",
+        "username": "farzadzarrin",
+        "avatarUrl": "https://cdn4.telesco.pe/file/LHm4sP7oDE32q1NoH5oO4epnoBEJkjF1Qq1pErNSwzRWzlOO7JVekmdJK5MPesKrTfEpbmTnbtl6L0WZNc4w165SN8BLiCiKZquAAeThAZPYHGFfCZgrAs5ACFMNBgmcPPtrdoYCP4UPFZCWJAaLDN7dtXXq_6St2zn_62z0E0g6RrqF0yhbWOx7gxlF8LLcTOPdpzzpTU-MU8n0YLxwqlufmB2egEtXAfZ3JF3sOwcy1YsjOfQFkV0ClOvtvs-3WaUrFbNWvAhzbVEbVOxXCwg-BYyWxzoFU_4vDSORPhPl2D6zBoxk7YIiiTzhL6Y7T3HKUVvua4z4yVWNfZpgsQ.jpg",
+        "mentions": 2
       },
       {
-        "id": "ir:outline_vpn",
-        "title": "Outline Vpn",
-        "username": "outline_vpn",
-        "avatarUrl": "https://cdn4.telesco.pe/file/rLZ9T_vCrAPykX1hRpPO7BV5IaaJVbHrCbGvK6d-Lmn4Rrkv4f1jgbHgGqBrBGj1JsEnfOCe15g-jMH9mxf5xgAdLWqrrnnOJil9OkP5vz2VV8D_5mkbGM8GfrYj7UdmILLh23fNg7KwZiPlnV89DuQN0G737VegrcraIro17a2WoXR6LndPh9HuH0EUcNn9tt2ABSKgkYkrH4XWltfamej3TnRvDIm7ZtMCFaJ2x3yh2ZY5tQCs-xtPlHBcAp0SkBIc9XIx0f6i2HGnuV91l7iXVlTrtGE6RJxQAbQPewcjfknzcobEserpi8qIr8gxz9uwzEkYpU-7JldmDwqE6A.jpg",
-        "mentions": 1
-      },
-      {
-        "id": "ir:mtpproxyirani",
-        "title": "Proxy MTProto▕ پروکسی ایرانی",
-        "username": "mtpproxyirani",
-        "avatarUrl": "https://cdn4.telesco.pe/file/JsSq6nv3-GftDa6Vl1fn1KQB4K6wb0Y0QK1YuU7mN719pYqM2GEjyotHnfqq4RTkIvVmcJGBeugshF3DAECxP7q848jMYIW3LKEhhWdo9CptiM2SvCDo6vHNpV7Qawd77lQJkJ8Y0XJdYutr-_ajzDavaenxJmk1L4I4tfb259Q8RRj6t7kXk-brsXRWxisdifg3tHIP3gK6NE-uDVO8-oA5oq0rJwmMtszfFDtXM1XwMfgE8sK4t3fJ2fqTeUODwjBrbilWXfnkUle2yHieo-XuEaBGs4FIacnomq0YC7mdbQ1WKYtUBjnaYzZg8nwuJl3l7yVdThoLCXQKTzUYwQ.jpg",
+        "id": "ir:nimarchy",
+        "title": "نیمارکی کابینت و دیزاین داخلی",
+        "username": "nimarchy",
+        "avatarUrl": "https://cdn4.telesco.pe/file/ebIiGqhAf6gIL2Gp55odwbCjILwUSeLc2gsqoOMXP2qdT8OXB-33luax5K3K2UGclS1LWwsXTsLH5BwWWkOTwy4GzWfSbmXTUbnZBLgsEvA9Xh3B7ldn9VrrvO8OvykBKQ_qb7sHJGH8NkRmtnkO5kdXFKlLGp06W3VATwyoFscj1drunk1DSDfrDt5C7btLYhiznr7417hrKvIkbqXC9CYkEfuWW_VuJgF5X_R8efFgNFiPJVqk-60ATgqnmpiHYDQf3Thk4mxlSMlhT3F_WGgPfNsah03_H2X0blNz1NS5SdVcDzFm65iASbOJaVEdbH8VX90ulgvW75GuoXXtVg.jpg",
         "mentions": 1
       }
     ],
@@ -278,57 +546,135 @@
       0,
       3
     ],
-    "firstSeenAt": "2026-06-03T06:27:07.512Z",
-    "lastSeenAt": "2026-06-03T06:28:04.487Z",
+    "firstSeenAt": "2026-06-04T10:30:42.835Z",
+    "lastSeenAt": "2026-06-04T10:31:46.183Z",
     "examples": [
       {
-        "id": 1865594608,
-        "text": "🔌 وضعیت : متصل تا زمان فیلتر\nvless://a75c027c-dc95-4efd-894a-2c85f0186017 :2095?security=none&encryption=none&headerType=none&type=tcp#%F0%9F%8F%B4%F3%A0%81%A7%F3%A0%81%A2%F3%A0%81%A5%F3%A0%81%AE%F3%A0%81%A7%F3%A0%81%BF%40FreakConfig\nvless://749a5df1-2d12-45cf-80f3-f85ea6b2e405 :443?security=reality&encryption=none&pbk=Fp0-VrMBeaQe9xOrehDYHt0mqTZL-5CdfuMEzo",
-        "url": "https://t.me/freakconfig/7748?single",
-        "publishedAt": "2026-06-03T06:27:07.512Z",
-        "sourceTitle": "سرور کانفیگ کانفینگ رایگان",
-        "sourceUsername": "freakconfig",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/f_XPkwKsi6mu7Ipc8QLrODTZFc5E-WfwUUmSii9DJ588PalGp6CozJNAnP-fqrHN7S9mdU11Gmjv1ahsTzBhc_iyqEia-I1IvtA0kDkKO2Zap8lYF9HW6HJB-_CRBIFuipPyOrYFQv9yPaOPzKeH2SBBJezAtWxGdgBcmqnAjrHFiw0zP0dEQmkePSu0iUCZI_YQnYL7CkJcHFcOm1QhBBwI8_Rtx3Jle6BYNDzxQhjrDZ9cp9iI2xwLMIrc4UIKNWEfgJP2_JcBgLVrfDo265yxpd1hqh5vtsktYgH90tpOZ8Xi2EyZykbpqzxeHkEC-atv9B72mjZOXoOowFeWig.jpg"
+        "id": 1494608434,
+        "text": "دوس دارید ببینید اجرا شده ی پروژه رامشه چی از آب درومد؟ 🤔\nچون دقیقا دیروز از سفر اضفهان به شیراز اینجا بودم و عکس و فیلم گرفتم 🙂‍↔️",
+        "url": "https://t.me/nimarchy/1780?single",
+        "publishedAt": "2026-06-04T10:31:46.183Z",
+        "sourceTitle": "نیمارکی کابینت و دیزاین داخلی",
+        "sourceUsername": "nimarchy",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/ebIiGqhAf6gIL2Gp55odwbCjILwUSeLc2gsqoOMXP2qdT8OXB-33luax5K3K2UGclS1LWwsXTsLH5BwWWkOTwy4GzWfSbmXTUbnZBLgsEvA9Xh3B7ldn9VrrvO8OvykBKQ_qb7sHJGH8NkRmtnkO5kdXFKlLGp06W3VATwyoFscj1drunk1DSDfrDt5C7btLYhiznr7417hrKvIkbqXC9CYkEfuWW_VuJgF5X_R8efFgNFiPJVqk-60ATgqnmpiHYDQf3Thk4mxlSMlhT3F_WGgPfNsah03_H2X0blNz1NS5SdVcDzFm65iASbOJaVEdbH8VX90ulgvW75GuoXXtVg.jpg"
       },
       {
-        "id": 1383654591,
-        "text": "💻 آموزش نحوه اتصال کلیک کنید\n🔑 با یک ضربه کانفیگ کپی می‌شود\nvless://74120ed7-7f61-4017-8882-bd3dbb393bd7 :8443?security=reality&encryption=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=discordapp.com Free %2061%20%40Outline_Vpn",
-        "url": "https://t.me/outline_vpn/11496?single",
-        "publishedAt": "2026-06-03T06:28:04.487Z",
+        "id": 3790080379,
+        "text": "اینجا ببینید👇🏻🔥",
+        "url": "https://t.me/farzadzarrin/55961?single",
+        "publishedAt": "2026-06-04T10:30:42.835Z",
+        "sourceTitle": "Farzad Zarrin - TV",
+        "sourceUsername": "farzadzarrin",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/LHm4sP7oDE32q1NoH5oO4epnoBEJkjF1Qq1pErNSwzRWzlOO7JVekmdJK5MPesKrTfEpbmTnbtl6L0WZNc4w165SN8BLiCiKZquAAeThAZPYHGFfCZgrAs5ACFMNBgmcPPtrdoYCP4UPFZCWJAaLDN7dtXXq_6St2zn_62z0E0g6RrqF0yhbWOx7gxlF8LLcTOPdpzzpTU-MU8n0YLxwqlufmB2egEtXAfZ3JF3sOwcy1YsjOfQFkV0ClOvtvs-3WaUrFbNWvAhzbVEbVOxXCwg-BYyWxzoFU_4vDSORPhPl2D6zBoxk7YIiiTzhL6Y7T3HKUVvua4z4yVWNfZpgsQ.jpg"
+      },
+      {
+        "id": 2094051458,
+        "text": "اینجا ببینید👇🏻🔥",
+        "url": "https://t.me/farzadzarrin/55960?single",
+        "publishedAt": "2026-06-04T10:30:42.835Z",
+        "sourceTitle": "Farzad Zarrin - TV",
+        "sourceUsername": "farzadzarrin",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/LHm4sP7oDE32q1NoH5oO4epnoBEJkjF1Qq1pErNSwzRWzlOO7JVekmdJK5MPesKrTfEpbmTnbtl6L0WZNc4w165SN8BLiCiKZquAAeThAZPYHGFfCZgrAs5ACFMNBgmcPPtrdoYCP4UPFZCWJAaLDN7dtXXq_6St2zn_62z0E0g6RrqF0yhbWOx7gxlF8LLcTOPdpzzpTU-MU8n0YLxwqlufmB2egEtXAfZ3JF3sOwcy1YsjOfQFkV0ClOvtvs-3WaUrFbNWvAhzbVEbVOxXCwg-BYyWxzoFU_4vDSORPhPl2D6zBoxk7YIiiTzhL6Y7T3HKUVvua4z4yVWNfZpgsQ.jpg"
+      }
+    ],
+    "signals": [
+      "اینجا",
+      "ببینید",
+      "اضفهان",
+      "چون",
+      "دقیقا"
+    ],
+    "category": "all",
+    "categories": []
+  },
+  {
+    "topic": "vless://96eec36e-2c44-5b09-898e-6f0f0526e57f :80?mode=auto&path=%2Flogin&security=none&encryption=none&ex…",
+    "word": "vless://96eec36e-2c44-5b09-898e-6f0f0526e57f :80?mode=auto&path=%2Flogin&security=none&encryption=none&ex…",
+    "mentions": 2,
+    "momentum": 200,
+    "change": "+200%",
+    "sourceCount": 2,
+    "countries": [
+      {
+        "code": "ir",
+        "mentions": 2,
+        "sourceCount": 2
+      }
+    ],
+    "topSources": [
+      {
+        "id": "ir:outline_vpn",
+        "title": "Outline Vpn",
+        "username": "outline_vpn",
+        "avatarUrl": "https://cdn4.telesco.pe/file/Fd9NRUi8sLHdAKNGj_VEmPCpH6BPWGY1mV8PuVOI2Zd7M6uAGgrx2gK0SjtnDBUs23gUueh5EiaHuXHKzf3GdxQpwuCoqqsgN_2XV8GUO6bGj3ztz_Xa_KcqsHY20sUq0dbEFrWVOSe0tBeBe_Ayr5aflYe3h6hZrnLuEXzNbJ69jbh85LBh0V9Q8UyyhHnacxYp9BA1lZy-Y_Re85gAKj8VfbzdBH2rdhqy1X6cpg5m26nK8cBA5u-5DRqn571ZiGhTYr8nbI-k2hZ-yW0F_uDcBT-Gad6aKEmu63ZFt5bHuWfhpn1Oiq2R8KdDYgqrxNKOqh5Y-54d1gioljO5lg.jpg",
+        "mentions": 1
+      },
+      {
+        "id": "ir:interanetfree",
+        "title": "اینترنت آزاد | کانفیگ رایگان",
+        "username": "interanetfree",
+        "avatarUrl": "https://cdn4.telesco.pe/file/SoKdAboNR7ubUhBQPlKS_pXKcukGYtK9muMJ14rZgyYFOQnNdTF0Ku33EBkBrKqpD9ggUpsjWey8p6URLSS6_wx1QxklDgxccc5I_X5uimgYOiLPFmqGYdPNTfLbQAgirs3hpPrfjwI0md0hB7bnQpL8kDcWHfpDlYYhjUTmPJcebTZWidD9XmhMmmtclPgMcZijR_7N_HlVc_kp0CPpvkc5PuAP0Sid6VoIohnIHzgYehNdo-0GSSufJv3a9-Lw61G2ocUuKBbAT9js7JxwfFvdVfGhCQHrzRaQyBRnk539rPLMpWkZ4-haAKj1V6iSe6kNr_KWet8LE3K592i66A.jpg",
+        "mentions": 1
+      }
+    ],
+    "history": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2
+    ],
+    "firstSeenAt": "2026-06-04T10:31:01.683Z",
+    "lastSeenAt": "2026-06-04T10:31:49.830Z",
+    "examples": [
+      {
+        "id": 3002870758,
+        "text": "💻 آموزش نحوه اتصال کلیک کنید\n🔑 با یک ضربه کانفیگ کپی می‌شود\nvless://dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51 :80?path=%2Fhttp&security=none&encryption=none&host=de.vpnbase.net&type=ws Free %2070%20%40Outline_Vpn",
+        "url": "https://t.me/outline_vpn/11497?single",
+        "publishedAt": "2026-06-04T10:31:49.830Z",
         "sourceTitle": "Outline Vpn",
         "sourceUsername": "outline_vpn",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/rLZ9T_vCrAPykX1hRpPO7BV5IaaJVbHrCbGvK6d-Lmn4Rrkv4f1jgbHgGqBrBGj1JsEnfOCe15g-jMH9mxf5xgAdLWqrrnnOJil9OkP5vz2VV8D_5mkbGM8GfrYj7UdmILLh23fNg7KwZiPlnV89DuQN0G737VegrcraIro17a2WoXR6LndPh9HuH0EUcNn9tt2ABSKgkYkrH4XWltfamej3TnRvDIm7ZtMCFaJ2x3yh2ZY5tQCs-xtPlHBcAp0SkBIc9XIx0f6i2HGnuV91l7iXVlTrtGE6RJxQAbQPewcjfknzcobEserpi8qIr8gxz9uwzEkYpU-7JldmDwqE6A.jpg"
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Fd9NRUi8sLHdAKNGj_VEmPCpH6BPWGY1mV8PuVOI2Zd7M6uAGgrx2gK0SjtnDBUs23gUueh5EiaHuXHKzf3GdxQpwuCoqqsgN_2XV8GUO6bGj3ztz_Xa_KcqsHY20sUq0dbEFrWVOSe0tBeBe_Ayr5aflYe3h6hZrnLuEXzNbJ69jbh85LBh0V9Q8UyyhHnacxYp9BA1lZy-Y_Re85gAKj8VfbzdBH2rdhqy1X6cpg5m26nK8cBA5u-5DRqn571ZiGhTYr8nbI-k2hZ-yW0F_uDcBT-Gad6aKEmu63ZFt5bHuWfhpn1Oiq2R8KdDYgqrxNKOqh5Y-54d1gioljO5lg.jpg"
       },
       {
-        "id": 2591175581,
-        "text": "کانفینگاش با نت ملی هم وصله، قطع نمیشه😐👇🏻\nvless://3cbad916-d882-4773-8dfb-15564f2d29fe :17759?security=none&encryption=none&host=telewebion.com&headerType=http&type=tcp#%",
-        "url": "https://t.me/mtpproxyirani/61216?single",
-        "publishedAt": "2026-06-03T06:27:55.665Z",
-        "sourceTitle": "Proxy MTProto▕ پروکسی ایرانی",
-        "sourceUsername": "mtpproxyirani",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/JsSq6nv3-GftDa6Vl1fn1KQB4K6wb0Y0QK1YuU7mN719pYqM2GEjyotHnfqq4RTkIvVmcJGBeugshF3DAECxP7q848jMYIW3LKEhhWdo9CptiM2SvCDo6vHNpV7Qawd77lQJkJ8Y0XJdYutr-_ajzDavaenxJmk1L4I4tfb259Q8RRj6t7kXk-brsXRWxisdifg3tHIP3gK6NE-uDVO8-oA5oq0rJwmMtszfFDtXM1XwMfgE8sK4t3fJ2fqTeUODwjBrbilWXfnkUle2yHieo-XuEaBGs4FIacnomq0YC7mdbQ1WKYtUBjnaYzZg8nwuJl3l7yVdThoLCXQKTzUYwQ.jpg"
+        "id": 3145246828,
+        "text": "🏳 کانفیگ نامحدود متصل\nvless://InternetAzadRobot :80?encryption=none&security=none&type=xhttp&host=tignaltofan.global.ssl.fastly.net&path=%2FTignaliSWithYou&mode=auto&extra=%7B%22mode%22%3A%22auto%22%2C%22scMaxEachPostBytes%22%3A%221000000%22%2C%22xPaddingBytes%22%3A%22100-1000%22%7D#\nمهم : کانفیگ رو فقط وارد برنامه NpvTunnel کنید! ⭕️",
+        "url": "https://t.me/interanetfree/18527?single",
+        "publishedAt": "2026-06-04T10:31:01.683Z",
+        "sourceTitle": "اینترنت آزاد | کانفیگ رایگان",
+        "sourceUsername": "interanetfree",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/SoKdAboNR7ubUhBQPlKS_pXKcukGYtK9muMJ14rZgyYFOQnNdTF0Ku33EBkBrKqpD9ggUpsjWey8p6URLSS6_wx1QxklDgxccc5I_X5uimgYOiLPFmqGYdPNTfLbQAgirs3hpPrfjwI0md0hB7bnQpL8kDcWHfpDlYYhjUTmPJcebTZWidD9XmhMmmtclPgMcZijR_7N_HlVc_kp0CPpvkc5PuAP0Sid6VoIohnIHzgYehNdo-0GSSufJv3a9-Lw61G2ocUuKBbAT9js7JxwfFvdVfGhCQHrzRaQyBRnk539rPLMpWkZ4-haAKj1V6iSe6kNr_KWet8LE3K592i66A.jpg"
       }
     ],
     "signals": [
-      "encryption",
-      "security",
       "vless",
-      "reality",
-      "3cbad916-d882-4773-8dfb-15564f2d29fe"
+      "96eec36e-2c44-5b09-898e-6f0f0526e57f",
+      "auto",
+      "encryption",
+      "internetazadrobot"
     ],
-    "category": "technology",
+    "category": "auto",
     "categories": [
+      "auto",
+      "transport_auto",
+      "finance",
       "technology",
-      "culture",
-      "ai",
       "telegram",
-      "marketing",
-      "music"
+      "finance_investing",
+      "technology_software",
+      "telegram_bots"
     ]
   },
   {
-    "topic": "vless://06ef598c-1555-4887-b3f9-08214a2f6792 :443?path=%2F222.167.202.31%3A7443&security=tls&encryption=n…",
-    "word": "vless://06ef598c-1555-4887-b3f9-08214a2f6792 :443?path=%2F222.167.202.31%3A7443&security=tls&encryption=n…",
+    "topic": "◾️سالروز رحلت امام خمینی (ره) تسلیت باد",
+    "word": "◾️سالروز رحلت امام خمینی (ره) تسلیت باد",
     "mentions": 2,
     "momentum": 200,
     "change": "+200%",
@@ -342,17 +688,17 @@
     ],
     "topSources": [
       {
-        "id": "ir:pr_xi",
-        "title": "Succer90 | پروکسی فیلترشکن ایرانسل رایگان",
-        "username": "pr_xi",
-        "avatarUrl": "https://cdn4.telesco.pe/file/Y1elyZqo3jsWBWw5Ea9kOXpnI2LKfr0MLza80frrGtGQ7LXkrDNjFfqV5enAFBClke_PUeTG1Lv0unj8uM8jossPCFta6IxuPm6aRWiwV8hHF6AjGP1UeT9i48Ml2ehMW2ij3f_D8Dok1grcPk_UsLtttOE9hr6FhBYIVi2EoHV8dh5K9K2pmFfrHcNa7QHj0xU4pv4HYlQzx93ph2WKySxL9A5ogwp9dvz71T3wPmNXV-lobWupsjbGCICGfSm5BtolQ-8f6eRFnXcTiI9PbAq-stYPcF6hrcdGtQhY2hVd7l8qhVgb6FK_4H7oMeVm023ZcLDVFlVLzsnPPl3eXQ.jpg",
+        "id": "ir:ostad_shojae",
+        "title": "استاد محمد شجاعی",
+        "username": "ostad_shojae",
+        "avatarUrl": "https://cdn4.telesco.pe/file/eQPjnju5loBho_yaclBePoyiyEU1uKfNkzTzqojIVgM_ZbgaZLsS87wdi9hPjxSgEa6nqIgaxh1Gj5rKAnSRtC0kThj1adFsTgavRHdJvfD4hPIx1D6X59rskd8NinXseyMiL_OmOhpHwcDuW7x3vaYiONvvUr5CZkfT36WZh2IgqGQWtT6914k3QA5RnnLgHh93ZvWHdrwu_ntUH8K6zueLAmZb4-3rENHQVVyF5wyoelf0vXPbgiQvbb2Y74EuEMwkTMQIq7tTO9vORLXAasREIuiAs9V3wDCR-Wi4mr8X5mhleNIQyxXLGnusLgZw7FmK93dyk7YkSF5PJvFJbQ.jpg",
         "mentions": 1
       },
       {
-        "id": "ir:fk_pu",
-        "title": "فیلم آقای زالو ● برنامه دلربا ● قسطنطنیه",
-        "username": "fk_pu",
-        "avatarUrl": "https://cdn1.telesco.pe/file/kLLSF9KY8mQlmITQeAJGA0GKvhea4oHUQnHo7BjLYMt24ml09bauwzHWvCm5FdAUzwBydMSrKWHmPZvUCZLKjLwEI8gCU3u9TltHGrpgLkhOle1m27DASDgE0KShrtYgpx2Zm7siqhrHmUCIlWANoeECyXhPGIRKadsHaC2-_ZVSMPZBXuFBCuA67gC5H0xGbicC6nbDzlcYAOa_Jn064UO58tcDN6TsvY_e-tr0n0op6PPe_giLmlXClVGt8u1VKWvx8SNbob_wSBH2nMVbwtOIkSCE-IXTvl0lUyvAt06ISCO0G49q2rIM7i8fc5c-HXS1AutACz4HJ4xnKnOkoQ.jpg",
+        "id": "ir:doenews",
+        "title": "سازمان حفاظت محیط زیست",
+        "username": "doenews",
+        "avatarUrl": "https://cdn4.telesco.pe/file/haODPQyNSszkza9b9RL-n_6EhuZOSqEwfYQ_9-9TNxjPL1L0CnbOCNsqf2fSSqi-GCSkq6Tbnq2pikUtyQRac3SrHH89swFPl3IYqeysStxiAsqXkd3Qek_Yoa99_pcMG-9aac5KlQwWOVnDxc8nvS6EHPfPrXAQdcUfbNr3W0b4sk5nUPKdQSmbvCwUO2RQiHpGAtmr2klNluSh5tON4gQxUNyXSKJbzn7VnJ28QdrAgTr4J4SgRUEH63PNYU0398fuOm3eFj1ISJE-CGrEejtJwPqFl00RLxqQcqotYKXpCstbwwowZVLMOOglruYyEh32RWOvmSWAd5GroPDtHQ.jpg",
         "mentions": 1
       }
     ],
@@ -370,112 +716,34 @@
       0,
       2
     ],
-    "firstSeenAt": "2026-06-03T06:27:04.120Z",
-    "lastSeenAt": "2026-06-03T06:28:12.060Z",
+    "firstSeenAt": "2026-06-04T10:30:20.746Z",
+    "lastSeenAt": "2026-06-04T10:31:48.972Z",
     "examples": [
       {
-        "id": 1319374355,
-        "text": "vless://6202b230-417c-4d8e-b624-0f71afa9c75d :8443?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#%40d_Rhyshkrdi\nvless://6202b23\n‌‌0-417c-4d8e-b624-0f71afa9c75d :2096?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#",
-        "url": "https://t.me/pr_xi/82217?single",
-        "publishedAt": "2026-06-03T06:28:12.060Z",
-        "sourceTitle": "Succer90 | پروکسی فیلترشکن ایرانسل رایگان",
-        "sourceUsername": "pr_xi",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/Y1elyZqo3jsWBWw5Ea9kOXpnI2LKfr0MLza80frrGtGQ7LXkrDNjFfqV5enAFBClke_PUeTG1Lv0unj8uM8jossPCFta6IxuPm6aRWiwV8hHF6AjGP1UeT9i48Ml2ehMW2ij3f_D8Dok1grcPk_UsLtttOE9hr6FhBYIVi2EoHV8dh5K9K2pmFfrHcNa7QHj0xU4pv4HYlQzx93ph2WKySxL9A5ogwp9dvz71T3wPmNXV-lobWupsjbGCICGfSm5BtolQ-8f6eRFnXcTiI9PbAq-stYPcF6hrcdGtQhY2hVd7l8qhVgb6FK_4H7oMeVm023ZcLDVFlVLzsnPPl3eXQ.jpg"
+        "id": 2770185728,
+        "text": "🔥 هفت آیه‌ی قرآن کریم که درباره‌ی ملت ایران نازل شده‌اند\nجهت اطلاعات بیشتر به سایت امام مهدی علیه السلام مراجعه کنید\nویژه سالروز رحلت امام خمینی (ره)",
+        "url": "https://t.me/ostad_shojae/58008?single",
+        "publishedAt": "2026-06-04T10:31:48.972Z",
+        "sourceTitle": "استاد محمد شجاعی",
+        "sourceUsername": "ostad_shojae",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/eQPjnju5loBho_yaclBePoyiyEU1uKfNkzTzqojIVgM_ZbgaZLsS87wdi9hPjxSgEa6nqIgaxh1Gj5rKAnSRtC0kThj1adFsTgavRHdJvfD4hPIx1D6X59rskd8NinXseyMiL_OmOhpHwcDuW7x3vaYiONvvUr5CZkfT36WZh2IgqGQWtT6914k3QA5RnnLgHh93ZvWHdrwu_ntUH8K6zueLAmZb4-3rENHQVVyF5wyoelf0vXPbgiQvbb2Y74EuEMwkTMQIq7tTO9vORLXAasREIuiAs9V3wDCR-Wi4mr8X5mhleNIQyxXLGnusLgZw7FmK93dyk7YkSF5PJvFJbQ.jpg"
       },
       {
-        "id": 1392296553,
-        "text": "vless://6202b230-417c-4d8e-b624-0f71afa9c75d :8443?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#%40d_Rhyshkrdi\nvless://6202b23\n‌‌0-417c-4d8e-b624-0f71afa9c75d :2096?path=%2F&security=tls&encryption=none&echfq=none&host=sni.111000.v6.navy&allowinsecure=0&type=ws&sni=sni.111000.v6.navy#",
-        "url": "https://t.me/fk_pu/3242?single",
-        "publishedAt": "2026-06-03T06:27:04.120Z",
-        "sourceTitle": "فیلم آقای زالو ● برنامه دلربا ● قسطنطنیه",
-        "sourceUsername": "fk_pu",
-        "sourceAvatarUrl": "https://cdn1.telesco.pe/file/kLLSF9KY8mQlmITQeAJGA0GKvhea4oHUQnHo7BjLYMt24ml09bauwzHWvCm5FdAUzwBydMSrKWHmPZvUCZLKjLwEI8gCU3u9TltHGrpgLkhOle1m27DASDgE0KShrtYgpx2Zm7siqhrHmUCIlWANoeECyXhPGIRKadsHaC2-_ZVSMPZBXuFBCuA67gC5H0xGbicC6nbDzlcYAOa_Jn064UO58tcDN6TsvY_e-tr0n0op6PPe_giLmlXClVGt8u1VKWvx8SNbob_wSBH2nMVbwtOIkSCE-IXTvl0lUyvAt06ISCO0G49q2rIM7i8fc5c-HXS1AutACz4HJ4xnKnOkoQ.jpg"
+        "id": 2014210762,
+        "text": "◾️سالروز رحلت امام خمینی (ره) تسلیت باد",
+        "url": "https://t.me/doenews/22615?single",
+        "publishedAt": "2026-06-04T10:30:20.746Z",
+        "sourceTitle": "سازمان حفاظت محیط زیست",
+        "sourceUsername": "doenews",
+        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/haODPQyNSszkza9b9RL-n_6EhuZOSqEwfYQ_9-9TNxjPL1L0CnbOCNsqf2fSSqi-GCSkq6Tbnq2pikUtyQRac3SrHH89swFPl3IYqeysStxiAsqXkd3Qek_Yoa99_pcMG-9aac5KlQwWOVnDxc8nvS6EHPfPrXAQdcUfbNr3W0b4sk5nUPKdQSmbvCwUO2RQiHpGAtmr2klNluSh5tON4gQxUNyXSKJbzn7VnJ28QdrAgTr4J4SgRUEH63PNYU0398fuOm3eFj1ISJE-CGrEejtJwPqFl00RLxqQcqotYKXpCstbwwowZVLMOOglruYyEh32RWOvmSWAd5GroPDtHQ.jpg"
       }
     ],
     "signals": [
-      "06ef598c-1555-4887-b3f9-08214a2f6792",
-      "2f222",
-      "3a7443",
-      "path",
-      "vless"
-    ],
-    "category": "technology",
-    "categories": [
-      "technology"
-    ]
-  },
-  {
-    "topic": "چهارشنبه ۱۳خردادماه ۱۴۰۵",
-    "word": "چهارشنبه ۱۳خردادماه ۱۴۰۵",
-    "mentions": 2,
-    "momentum": 200,
-    "change": "+200%",
-    "sourceCount": 2,
-    "countries": [
-      {
-        "code": "ir",
-        "mentions": 2,
-        "sourceCount": 2
-      }
-    ],
-    "topSources": [
-      {
-        "id": "ir:iranian_ircs",
-        "title": "کانال رسمی جمعیت هلال احمر",
-        "username": "iranian_ircs",
-        "avatarUrl": "https://cdn4.telesco.pe/file/bOPbu8b9CSYsucJQeaFpZJgXnLpp6PedFArqG6KiA2oySWRfPoTupIbf-0-uiVW9yS5snH_3Df6ElyNR1H33x6nyR02sy8LlWswGXSfae8kYeMi4SCzaGZLj7mgMMgyC1fWmpz-XBpvL4Xz-EQePc2uSBilRwTdPhBStYkvNioafyvmQ3Ve-hE5_0v5lzDAAVWzZXJJ2SQbBx1NtC5wrt_QduXGzbAFQHN2VgUy7DNgDO0hryVjB7NpF521axTtZwe_QH33RUmkMKAw-QzPXKPsndwcfsqskXb0i9My6Cg7cSnlUU7DQPP_f94ZgQCZmw9dm6T2eF0rGcPzI5lBAEQ.jpg",
-        "mentions": 1
-      },
-      {
-        "id": "ir:tebyanonline",
-        "title": "تبیان",
-        "username": "tebyanonline",
-        "avatarUrl": "https://cdn4.telesco.pe/file/q-RtZXn9M8bnN5rXSeC90XFhsaGk71At-42LWdQCLRUcLL75JhtkY6ShhTRimfZLgrbMoJXIgLU4bRCy6L8l0yu7Rt50XWi1DbbiI-7x-ZyoNVWeXiHPBGAjlVcRj8JekvswRx23zF62R7AafvuEEr02y4bY_y9IBCPNcU5wdhRbztJ2HSkUFIj4sKo3c2lQUDC8fU6V5QDJ2LSdlowQa55q97gn1mwfh2ln_oPtXpebt8uMhWQIqam1OyihIW3eIoUrhH1GxOmN6fm2_n3J391Qwp7-vhRnk9OxVPSUH8VIL2BpfzXFjTiAJ4AnxY5pxXMRKIjIQWIJlafcDioJTw.jpg",
-        "mentions": 1
-      }
-    ],
-    "history": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      2
-    ],
-    "firstSeenAt": "2026-06-03T06:25:33.811Z",
-    "lastSeenAt": "2026-06-03T06:27:24.487Z",
-    "examples": [
-      {
-        "id": 1267456913,
-        "text": "چهارشنبه ۱۳خردادماه ۱۴۰۵",
-        "url": "https://t.me/iranian_ircs/119135?single",
-        "publishedAt": "2026-06-03T06:27:24.487Z",
-        "sourceTitle": "کانال رسمی جمعیت هلال احمر",
-        "sourceUsername": "iranian_ircs",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/bOPbu8b9CSYsucJQeaFpZJgXnLpp6PedFArqG6KiA2oySWRfPoTupIbf-0-uiVW9yS5snH_3Df6ElyNR1H33x6nyR02sy8LlWswGXSfae8kYeMi4SCzaGZLj7mgMMgyC1fWmpz-XBpvL4Xz-EQePc2uSBilRwTdPhBStYkvNioafyvmQ3Ve-hE5_0v5lzDAAVWzZXJJ2SQbBx1NtC5wrt_QduXGzbAFQHN2VgUy7DNgDO0hryVjB7NpF521axTtZwe_QH33RUmkMKAw-QzPXKPsndwcfsqskXb0i9My6Cg7cSnlUU7DQPP_f94ZgQCZmw9dm6T2eF0rGcPzI5lBAEQ.jpg"
-      },
-      {
-        "id": 3404254412,
-        "text": "⚫️ صبح‌بخیر\n📆 امروز چهارشنبه ۱۳ خرداد ۱۴۰۵\n🕋 اوقات شرعی به افق تهران",
-        "url": "https://t.me/tebyanonline/96703?single",
-        "publishedAt": "2026-06-03T06:25:33.811Z",
-        "sourceTitle": "تبیان",
-        "sourceUsername": "tebyanonline",
-        "sourceAvatarUrl": "https://cdn4.telesco.pe/file/q-RtZXn9M8bnN5rXSeC90XFhsaGk71At-42LWdQCLRUcLL75JhtkY6ShhTRimfZLgrbMoJXIgLU4bRCy6L8l0yu7Rt50XWi1DbbiI-7x-ZyoNVWeXiHPBGAjlVcRj8JekvswRx23zF62R7AafvuEEr02y4bY_y9IBCPNcU5wdhRbztJ2HSkUFIj4sKo3c2lQUDC8fU6V5QDJ2LSdlowQa55q97gn1mwfh2ln_oPtXpebt8uMhWQIqam1OyihIW3eIoUrhH1GxOmN6fm2_n3J391Qwp7-vhRnk9OxVPSUH8VIL2BpfzXFjTiAJ4AnxY5pxXMRKIjIQWIJlafcDioJTw.jpg"
-      }
-    ],
-    "signals": [
-      "۱۴۰۵",
-      "چهارشنبه",
-      "۱۳خردادماه",
-      "امروز",
-      "خرداد"
+      "امام",
+      "اطلاعات",
+      "بیشتر",
+      "تسلیت",
+      "جهت"
     ],
     "category": "all",
     "categories": []
