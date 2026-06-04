@@ -1111,7 +1111,10 @@ export function CountryDistributionBlock({
   );
 
   return (
-    <div className={["rounded-[24px] border border-soft bg-app p-3", className].filter(Boolean).join(" ")}>
+    <div
+      className={["rounded-[24px] border border-soft bg-app p-3", className].filter(Boolean).join(" ")}
+      translate="yes"
+    >
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
@@ -1119,8 +1122,7 @@ export function CountryDistributionBlock({
         aria-expanded={open}
       >
         <span>{formatNumber(trend.mentions)} {copy.mentions}</span>
-        <span className="inline-flex items-center gap-1">
-          {getCountryLabel(selectedCountry, locale)}
+        <span className="inline-flex items-center gap-1" aria-label={getCountryLabel(selectedCountry, locale)}>
           <ChevronDown className={["h-3.5 w-3.5 transition", open ? "rotate-180" : ""].join(" ")} />
         </span>
       </button>
@@ -1209,7 +1211,7 @@ export function TrendDetail({
   };
 
   return (
-    <div className="mx-auto max-w-[570px] px-4 pb-28 pt-3">
+    <div className="mx-auto max-w-[570px] px-4 pb-28 pt-3" translate="yes">
       <button
         type="button"
         onClick={onBack}
@@ -1392,6 +1394,7 @@ export function TrendDetail({
                     window.location.href = `/${handle}`;
                   }}
                   className="flex w-full items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3 text-left no-underline transition hover:bg-app"
+                  translate="yes"
                 >
                   {content}
                 </button>
@@ -1402,6 +1405,7 @@ export function TrendDetail({
               <div
                 key={`${source.title}-${index}`}
                 className="flex items-start justify-between gap-3 rounded-2xl border border-soft bg-surface-soft px-3 py-3"
+                translate="yes"
               >
                 {content}
               </div>

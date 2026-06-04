@@ -86,9 +86,38 @@ export function TrendsView({
     () => buildCategories(locale, copy),
     [locale, copy],
   );
-  const visibleCategories = categoriesExpanded
-    ? categories
-    : categories.slice(0, 5);
+
+  useEffect(() => {
+    if (!categories.some((category) => category.value === selectedCategory)) {
+      setSelectedCategory("all");
+    }
+  }, [categories, selectedCategory]);
+
+  const activeCategory = useMemo(
+    () =>
+      categories.find((category) => category.value === selectedCategory) ||
+      categories.find((category) => category.value === "all") ||
+      categories[0],
+    [categories, selectedCategory],
+  );
+
+  const visibleCategories = useMemo(() => {
+    if (categoriesExpanded) return categories;
+
+    const base = categories.slice(0, 5);
+    if (!activeCategory) return base;
+    if (base.some((category) => category.value === activeCategory.value)) return base;
+
+    return [...base.slice(0, 4), activeCategory];
+  }, [categories, categoriesExpanded, activeCategory]);
+
+  const selectCategory = (value: string) => {
+    setSelectedCategory(value);
+    setOpenedTopic(null);
+    setActiveTrend(null);
+    setQuery("");
+    setSearchMode(false);
+  };
 
   const fallbackLivePostTrends = useMemo(
     () => (trends.length ? [] : buildLivePostTrends(posts)),
@@ -390,10 +419,13 @@ export function TrendsView({
               <button
                 key={category.value}
                 type="button"
-                onClick={() => {
-                  setSelectedCategory(category.value);
-                  setOpenedTopic(null);
+                data-trend-category={category.value}
+                aria-pressed={active}
+                onPointerDown={(event) => {
+                  event.preventDefault();
+                  selectCategory(category.value);
                 }}
+                onClick={() => selectCategory(category.value)}
                 className="min-w-0 text-center"
               >
                 <div
@@ -438,11 +470,8 @@ export function TrendsView({
         </div>
       </div>
 
-      <div className="mb-3">
+      <div className="mb-3" key={`trend-category-title-${selectedCategory}`}>
         {(() => {
-          const activeCategory =
-            categories.find((item) => item.value === selectedCategory) ||
-            categories[0];
           const totalMentions = categoryTrends.reduce(
             (sum, item) => sum + item.mentions,
             0,
@@ -455,7 +484,7 @@ export function TrendsView({
                 : `${activeCategory.label} +${formatNumber(totalMentions)} ${copy.today}`;
 
           return (
-            <h2 className="text-xl font-black text-primary">
+            <h2 className="text-xl font-black text-primary" translate="yes">
               {activeCategory.emoji} {title}
             </h2>
           );

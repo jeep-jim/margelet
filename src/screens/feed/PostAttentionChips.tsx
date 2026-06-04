@@ -365,6 +365,31 @@ export function PostAttentionChips({
     openTrendTopic(trendTopic);
   };
 
+  useEffect(() => {
+    if (!open) return;
+
+    const close = () => setOpen(false);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+    };
+
+    window.addEventListener("scroll", close, true);
+    window.addEventListener("resize", close);
+    window.addEventListener("margelet:pause-feed-videos", close);
+    window.addEventListener("margelet:open-attention-topic", close);
+    window.addEventListener("margelet:close-attention-popups", close);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      window.removeEventListener("scroll", close, true);
+      window.removeEventListener("resize", close);
+      window.removeEventListener("margelet:pause-feed-videos", close);
+      window.removeEventListener("margelet:open-attention-topic", close);
+      window.removeEventListener("margelet:close-attention-popups", close);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
   return (
     <div className={["relative inline-flex max-w-full", open ? "z-[9999]" : "z-0"].join(" ")}>
       <button
@@ -372,7 +397,13 @@ export function PostAttentionChips({
         onClick={(event) => {
           event.stopPropagation();
           if (hasRealTrend) {
-            setOpen((prev) => !prev);
+            setOpen((prev) => {
+              const next = !prev;
+              if (next) {
+                window.dispatchEvent(new Event("margelet:close-attention-popups"));
+              }
+              return next;
+            });
           }
         }}
         className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[12px] font-semibold text-primary transition hover:bg-app"
