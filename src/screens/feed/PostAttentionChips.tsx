@@ -406,13 +406,17 @@ export function PostAttentionChips({
             });
           }
         }}
-        className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-soft bg-surface-soft px-3 py-1.5 text-[12px] font-semibold text-primary transition hover:bg-app"
+        className={[
+          "inline-flex max-w-full items-center gap-1.5 rounded-full px-3 py-1.5 text-[12px] font-semibold transition",
+          hasRealTrend
+            ? "border border-emerald-500/30 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/20"
+            : "border border-soft bg-surface-soft text-primary hover:bg-app",
+        ].join(" ")}
       >
-        <span className="text-emerald-500">↗</span>
-        <span className="shrink-0">{copy.contribution}</span>
-        <span className="shrink-0 text-emerald-500">+{displayScore}</span>
+        <span className="font-black text-emerald-400">↗</span>
+        <span className="shrink-0 font-black">+{displayScore}</span>
         {hasRealTrend ? (
-          <span className="shrink-0 text-secondary">+{realSourceCount}</span>
+          <span className="shrink-0 font-black">+{realSourceCount}</span>
         ) : null}
       </button>
 
