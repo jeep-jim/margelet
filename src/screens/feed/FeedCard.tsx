@@ -129,7 +129,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
   return (
     <article
       ref={cardRef}
-      className="relative overflow-hidden border-b border-soft bg-surface"
+      className="relative border-b border-soft bg-surface"
     >
       <div className="px-4 pt-4 pr-12">
         <FeedSourceHeader post={post} compact onOpenCreator={onOpenCreator} />
