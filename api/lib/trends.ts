@@ -537,40 +537,27 @@ function addCategoryScore(
 }
 
 function inferPostCategories(post: IngestedPost, text: string): string[] {
-  const record = post as any;
-  const sourceTitle = getSourceTitle(post);
-  const sourceHandle = getSourceUsername(post) || "";
-  const haystack = `${text}\n${sourceTitle}\n${sourceHandle}`.toLowerCase();
+  const explicit = getPostCategories(post).filter((category) => category !== "other");
+  if (explicit.length > 0) return explicit;
+
+  // Legacy fallback only for old posts that do not have post-first tags yet.
+  // Keep this post-text only: source/channel fields must not affect trend categories.
+  const haystack = text.toLowerCase();
   const categories = new Set<string>();
 
   const rules: Array<[RegExp, string]> = [
-    [/\b(авто|автомоб|машин|tesla|toyota|honda|bmw|mercedes|geely|byd|автобус|пикап|грузовик|дтп|дорог|car|cars|truck|pickup|motor|ev)\b/i, "auto"],
-    [/\b(банк|сбер|тинькофф|курс|доллар|рубл|юан|биткоин|bitcoin|btc|crypto|крипт|binance|ton|бирж|акци|инвест|трейдинг)\b/i, "finance"],
-    [/\b(openai|chatgpt|gpt|ai|ии|нейросет|nvidia|iphone|apple|google|microsoft|android|software|dev|код|программист|технолог)\b/i, "technology"],
-    [/\b(полит|выбор|президент|правительств|трамп|путин|войн|армия|ракет|обстрел|санкци|конфликт|war|government|election)\b/i, "politics"],
-    [/\b(новост|срочн|breaking|происшеств|инцидент|пожар|авария|погод|шторм|дожд|гроза)\b/i, "news"],
-    [/\b(бизнес|стартап|предприним|маркетплейс|ozon|wildberries|компани|продаж|рынок|startup|business|ecommerce)\b/i, "business"],
-    [/\b(реклам|маркетинг|smm|бренд|таргет|креатив|продвижен|marketing|ads)\b/i, "marketing"],
-    [/\b(кино|фильм|сериал|музык|концерт|театр|культур|movie|film|series|music)\b/i, "culture"],
-    [/\b(игр|game|gaming|steam|gta|minecraft|roblox|playstation|xbox)\b/i, "gaming"],
-    [/\b(спорт|футбол|хоккей|матч|лига|спартак|зенит|месси|football|sport)\b/i, "sports"],
-    [/\b(еда|рецепт|кухн|готов|продукт|ресторан|кафе|доставк|food|recipe)\b/i, "food"],
-    [/\b(путешеств|тур|отел|виза|рейс|авиа|билет|travel|hotel|flight|visa)\b/i, "travel"],
-    [/\b(здоров|медицин|болезн|врач|клиник|питание|health|medicine)\b/i, "health"],
-    [/\b(учеб|курс|образован|школ|университет|книг|истори|education|study|course)\b/i, "education"],
-    [/\b(наук|исследован|космос|space|science|research)\b/i, "science"],
-    [/\b(дом|квартир|ипотек|жк|новострой|недвиж|аренд|real estate|housing)\b/i, "real_estate"],
-    [/\b(животн|птиц|кот|собак|растен|эколог|природ|лес|nature|animal|ecology)\b/i, "nature"],
-    [/\b(работ|ваканс|карьер|резюме|фриланс|job|career|vacancy)\b/i, "jobs"],
-    [/\b(telegram|телеграм|тон |ton |бот|канал)\b/i, "telegram"],
+    [/авто|автомоб|машин|tesla|toyota|honda|bmw|mercedes|geely|byd|автобус|пикап|грузовик|дтп|дорог|car|cars|truck|pickup|motor|ev/i, "auto"],
+    [/банк|сбер|тинькофф|курс|доллар|рубл|юан|биткоин|bitcoin|btc|crypto|крипт|binance|ton|бирж|акци|инвест|трейдинг/i, "finance"],
+    [/openai|chatgpt|gpt|ai|ии|нейросет|nvidia|iphone|apple|google|microsoft|android|software|dev|код|программист|технолог/i, "technology"],
+    [/полит|выбор|президент|правительств|трамп|путин|войн|армия|ракет|обстрел|санкци|конфликт|war|government|election/i, "politics"],
+    [/новост|срочн|breaking|происшеств|инцидент|пожар|авария|погод|шторм|дожд|гроза/i, "news"],
+    [/бизнес|стартап|предприним|маркетплейс|ozon|wildberries|компани|продаж|рынок|startup|business|ecommerce/i, "business"],
+    [/еда|рецепт|кухн|готов|продукт|ресторан|кафе|доставк|food|recipe/i, "food"],
   ];
 
   for (const [regex, category] of rules) {
     if (regex.test(haystack)) categories.add(category);
   }
-
-  const explicit = getPostCategories(post).filter((category) => category !== "other");
-  for (const category of explicit) categories.add(category);
 
   return [...categories];
 }

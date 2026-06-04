@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { BadgeCheck, CreditCard, Gift, PauseCircle, TimerReset } from "lucide-react";
+import { BadgeCheck, CreditCard, Gift, PauseCircle, TimerReset, Unlock } from "lucide-react";
 import { formatDaysLeft } from "../creator/creator.monetization";
 import type { CreatorChannelPlacement } from "../creator/creator.types";
 
 const CREATOR_CHANNELS_STORAGE_KEY = "margelet_creator_channels_v1";
 
-type MonetizationFilter = "all" | "paid" | "barter" | "claim" | "pending" | "active" | "expired" | "paused" | "canceled";
+type MonetizationFilter = "all" | "paid" | "barter" | "claim" | "pro" | "pending" | "active" | "expired" | "paused" | "canceled";
 
 function readPlacements() {
   if (typeof window === "undefined") return [];
@@ -30,6 +30,7 @@ function statusLabel(status: CreatorChannelPlacement["status"]) {
 function planLabel(plan: CreatorChannelPlacement["plan"]) {
   if (plan === "paid") return "оплата";
   if (plan === "barter") return "бартер";
+  if (plan === "pro") return "PRO доступ";
   return "подтверждение";
 }
 
@@ -109,12 +110,13 @@ export function AdminMonetizationSection() {
     const paid = items.filter((item) => item.plan === "paid");
     const barter = items.filter((item) => item.plan === "barter");
     const claim = items.filter((item) => item.plan === "claim");
+    const pro = items.filter((item) => item.plan === "pro");
     const active = items.filter((item) => item.status === "active");
     const pending = items.filter((item) => item.status === "pending");
     const expired = items.filter((item) => item.status === "expired" || item.status === "paused");
     const canceled = items.filter((item) => item.status === "canceled");
 
-    return { paid, barter, claim, active, pending, expired, canceled };
+    return { paid, barter, claim, pro, active, pending, expired, canceled };
   }, [items]);
 
   const filteredItems = useMemo(() => {
@@ -132,6 +134,7 @@ export function AdminMonetizationSection() {
     { value: "paid", label: "оплата" },
     { value: "barter", label: "бартер" },
     { value: "claim", label: "подтверждение" },
+    { value: "pro", label: "PRO" },
     { value: "pending", label: "ожидают" },
     { value: "active", label: "активные" },
     { value: "expired", label: "истекли" },
@@ -164,6 +167,14 @@ export function AdminMonetizationSection() {
                 <div className="truncate text-xs text-white/45">платных</div>
               </div>
               <div className="shrink-0 text-lg font-semibold text-white">{stats.paid.length}</div>
+            </div>
+
+            <div className="flex items-center justify-between rounded-[18px] bg-black/20 px-4 py-3 lg:min-h-[74px] lg:flex-col lg:items-start lg:gap-2">
+              <div className="flex min-w-0 items-center gap-3">
+                <Unlock className="h-4 w-4 shrink-0 text-emerald-300" />
+                <div className="truncate text-xs text-white/45">PRO доступов</div>
+              </div>
+              <div className="shrink-0 text-lg font-semibold text-white">{stats.pro.length}</div>
             </div>
 
             <div className="flex items-center justify-between rounded-[18px] bg-black/20 px-4 py-3 lg:min-h-[74px] lg:flex-col lg:items-start lg:gap-2">
@@ -227,8 +238,14 @@ export function AdminMonetizationSection() {
             {filteredItems.length ? (
               filteredItems.map((item) => {
                 const cleanHandle = item.channelHandle.replace(/^@+/, "");
-                const title = item.channelTitle?.trim() || cleanHandle;
-                const avatarUrl = item.channelAvatarUrl || `https://t.me/i/userpic/320/${cleanHandle}.jpg`;
+                const isProAccess = item.plan === "pro";
+                const title = isProAccess
+                  ? item.ownerUsername
+                    ? `@${item.ownerUsername}`
+                    : item.channelTitle?.trim() || `Telegram ID ${item.ownerTelegramId}`
+                  : item.channelTitle?.trim() || cleanHandle;
+                const avatarHandle = isProAccess ? item.ownerUsername || "" : cleanHandle;
+                const avatarUrl = item.channelAvatarUrl || (avatarHandle ? `https://t.me/i/userpic/320/${avatarHandle}.jpg` : "");
 
                 return (
                   <div key={item.id} className="rounded-[22px] border border-white/10 bg-black/20 p-4">
@@ -250,7 +267,7 @@ export function AdminMonetizationSection() {
                             {item.verified ? <BadgeCheck className="h-4 w-4 shrink-0 text-blue-300" /> : null}
                           </div>
                           <div className="mt-1 truncate text-xs text-white/45">
-                            @{cleanHandle} · владелец TG: {item.ownerTelegramId} · {item.country.toUpperCase()}
+                            {isProAccess ? "PRO доступ" : `@${cleanHandle}`} · TG: {item.ownerTelegramId} · {isProAccess ? `${item.proMonths || 1} мес.` : item.country.toUpperCase()}
                           </div>
                         </div>
                       </div>

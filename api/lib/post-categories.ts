@@ -179,6 +179,41 @@ const RULES: KeywordRule[] = [
   { category: "celebrities", weight: 8, patterns: [/звезд|селебрити|актер|певец|celebrity|celeb/i] },
   { category: "creativity_handmade", weight: 7, patterns: [/handmade|своими руками|поделк|мастер[-\s]?класс|craft/i] },
   { category: "creativity_inspiration", weight: 6, patterns: [/вдохнов|иде[яи]|inspiration|creative/i] },
+
+  // Marketplace / retail / e-commerce: keep marketplace signals away from generic business.
+  { category: "marketplaces", weight: 11, patterns: [/маркетплейс|marketplace|wildberries|вайлдберриз|ozon|озон|aliexpress|алиэкспресс|amazon|seller|селлер|продавец на маркетплейсе|карточк[аи] товар|sku\b|wb\b/i, /电商|市场平台|亚马逊|速卖通|卖家/i] },
+  { category: "business_entrepreneurship", weight: 8, patterns: [/предпринимател|самозанят|малый бизнес|бизнес идея|бизнес[-\s]?иде|entrepreneur|small business|founder/i] },
+  { category: "business_management", weight: 8, patterns: [/управлен|менеджмент|операционк|команд[аы]|найм|руководител|management|operations|team management/i] },
+  { category: "business_cases", weight: 7, patterns: [/кейс|разбор бизнеса|история успеха|business case|case study/i] },
+
+  // Electronics is separate from software/AI. These rules revive zero electronics chips.
+  { category: "electronics_pc", weight: 10, patterns: [/пк\b|компьютер|материнск|видеокарт|процессор|ssd\b|hdd\b|монитор|клавиатур|мыш[ьк]|rtx\b|geforce|radeon|intel|amd\b|pc\b|computer|gpu\b|cpu\b/i, /电脑|显卡|处理器|显示器|键盘/i] },
+  { category: "electronics_home_appliances", weight: 9, patterns: [/холодильник|стиральн|пылесос|чайник|кофемашин|духовк|микроволнов|робот[-\s]?пылесос|бытов[аяые]|appliance|vacuum|fridge|washing machine/i, /家电|冰箱|洗衣机|吸尘器/i] },
+  { category: "electronics_brands", weight: 8, patterns: [/samsung|xiaomi|huawei|honor|realme|lenovo|asus|acer|dyson|lg\b|sony|bosh|bosch|philips/i] },
+  { category: "electronics_reviews", weight: 8, patterns: [/обзор|распаковк|сравнен|тестир|review|hands[-\s]?on|unboxing|benchmark/i] },
+  { category: "electronics_trends", weight: 7, patterns: [/новинк[аи]|анонс|презентац|тренд|выставк[аи]|ces\b|ifa\b|new device|launch/i] },
+
+  // Health and medicine: split broad health into useful subcategories.
+  { category: "health_research", weight: 9, patterns: [/исследован|клиническ|ученые выяснили|испыта[нт]|research|clinical trial|study shows|scientists found/i, /研究|临床|科学家发现/i] },
+  { category: "health_advice", weight: 8, patterns: [/как лечить|профилактик|совет врача|рекомендац|симптом|давлени|сон|стресс|иммунитет|health tips|prevention|symptoms/i, /症状|预防|健康建议/i] },
+  { category: "health_medicine", weight: 10, patterns: [/больниц|поликлиник|скорая|пациент|операц|диагноз|вакцин|лекарств|таблетк|онколог|инфаркт|инсульт|hospital|patient|diagnosis|vaccine|drug|medicine/i, /医院|患者|疫苗|药物/i] },
+
+  // Food / HoReCa split. Recipes must win over generic food words.
+  { category: "food_service_reviews", weight: 8, patterns: [/отзыв.*ресторан|обзор.*кафе|куда сходить|место для завтрака|restaurant review|cafe review/i] },
+  { category: "food_service_new", weight: 8, patterns: [/открыл[ис]?|новое кафе|новый ресторан|запуск.*доставк|new restaurant|new cafe|opening/i] },
+  { category: "food_service_products", weight: 8, patterns: [/меню|блюдо дня|ланч|завтрак|обед|ужин|кофе|бургер|пицца|суши|шаурм|menu|lunch|dinner|coffee|burger|pizza|sushi/i, /菜单|咖啡|披萨|寿司/i] },
+  { category: "recipes", weight: 12, patterns: [/ингредиент|ложк|стакан|грамм|нареж|смеша|добавь|обжар|выпека|духовк|сковород|рецепт|готовим|recipe|ingredients|bake|fry|boil/i, /食谱|配料|烘烤|煎/i] },
+  { category: "food_products", weight: 8, patterns: [/продукт|молоко|сыр|мясо|куриц|рыб[ауы]|овощ|фрукт|хлеб|сахар|магазин продуктов|grocery|milk|cheese|meat|chicken|fish|fruit|vegetable/i, /食品|牛奶|奶酪|水果|蔬菜/i] },
+
+  // Transport details beyond generic auto.
+  { category: "transport_moto", weight: 10, patterns: [/мотоцикл|байк|скутер|мопед|мото\b|motorcycle|bike|scooter/i] },
+  { category: "transport_other", weight: 8, patterns: [/поезд|метро|автобус|трамва|такси|самокат|велосипед|аэропорт|рейс|train|subway|bus|tram|taxi|airport|flight/i, /火车|地铁|公交|出租车|机场/i] },
+  { category: "transport_reviews", weight: 10, patterns: [/тест[-\s]?драйв|краш[-\s]?тест|расход топлива|л\.?с\.?|лошадиных сил|комплектац|автообзор|test drive|crash test|fuel consumption|horsepower/i] },
+
+  // Improve underfilled culture/people buckets.
+  { category: "people_interviews", weight: 8, patterns: [/интервью|подкаст с|разговор с|interview|podcast/i] },
+  { category: "photography", weight: 8, patterns: [/фото|фотограф|снимок|камера|photo|photography|shot/i] },
+  { category: "gaming_esports", weight: 9, patterns: [/киберспорт|турнир|esports|tournament|major\b|championship/i] },
 ];
 
 function normalizeText(value: string) {
@@ -240,12 +275,17 @@ function addScore(scores: Map<ContentTag, number>, category: ContentTag, value: 
   scores.set(category, (scores.get(category) || 0) + value);
 }
 
+function getCategoryOrderIndex(tag: ContentTag) {
+  const index = CATEGORY_ORDER.indexOf(tag);
+  return index >= 0 ? index : CATEGORY_ORDER.length;
+}
+
 function sortedScores(scores: Map<ContentTag, number>): CategoryMatch[] {
   return [...scores.entries()]
     .map(([tag, score]) => ({ tag, score }))
     .sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
-      return CATEGORY_ORDER.indexOf(a.tag) - CATEGORY_ORDER.indexOf(b.tag);
+      return getCategoryOrderIndex(a.tag) - getCategoryOrderIndex(b.tag);
     });
 }
 
@@ -264,6 +304,41 @@ function addParentTags(tags: ContentTag[]) {
     }
   }
   return out;
+}
+
+function isWeakParentOnlyMatch(match: CategoryMatch) {
+  return Boolean(PARENT_BY_CHILD[`${match.tag}_all`]);
+}
+
+function keepBestCategoryPerParent(matches: CategoryMatch[]) {
+  const byParent = new Map<string, CategoryMatch>();
+
+  for (const match of matches) {
+    const parent = getParentContentTag(match.tag) || match.tag;
+    const current = byParent.get(parent);
+
+    if (!current) {
+      byParent.set(parent, match);
+      continue;
+    }
+
+    const currentIsParent = current.tag === parent || isWeakParentOnlyMatch(current);
+    const nextIsParent = match.tag === parent || isWeakParentOnlyMatch(match);
+
+    if (
+      match.score > current.score ||
+      (match.score === current.score && currentIsParent && !nextIsParent) ||
+      (match.score === current.score && getCategoryOrderIndex(match.tag) < getCategoryOrderIndex(current.tag))
+    ) {
+      byParent.set(parent, match);
+    }
+  }
+
+  return sortedScores(new Map([...byParent.values()].map((item) => [item.tag, item.score])));
+}
+
+function getDistinctParentCount(matches: CategoryMatch[]) {
+  return new Set(matches.map((item) => getParentContentTag(item.tag) || item.tag)).size;
 }
 
 export function inferPostCategoryMatches(params: {
@@ -290,20 +365,22 @@ export function inferPostCategoryMatches(params: {
     if (matched > 0) addScore(scores, rule.category, rule.weight * matched);
   }
 
-  const direct = sortedScores(scores).filter((item) => item.score >= 7);
+  const direct = keepBestCategoryPerParent(
+    sortedScores(scores).filter((item) => item.score >= 7),
+  );
   const maxTags = Math.max(1, params.maxTags || 4);
 
   if (direct.length > 0) {
     const topScore = direct[0].score;
-    const nearTop = direct.filter((item) => item.score >= Math.max(7, topScore - 2));
+    const strong = direct.filter((item) => item.score >= Math.max(9, topScore * 0.62));
+    const nearTop = direct.filter((item) => item.score >= Math.max(8, topScore - 2));
 
-    if (nearTop.length > 4) return [{ tag: "other", score: 1 }];
+    // If a post looks equally about too many unrelated things, it is usually
+    // an ad digest, a link dump, or generic news noise. Do not poison categories.
+    if (getDistinctParentCount(nearTop) > 4) return [{ tag: "other", score: 1 }];
 
-    const selected = direct
-      .filter((item) => item.score >= Math.max(7, topScore * 0.55))
-      .slice(0, maxTags);
-
-    return selected;
+    const selected = strong.slice(0, maxTags);
+    return selected.length ? selected : [direct[0]];
   }
 
   const sourceFallback = new Set<ContentTag>();

@@ -16,7 +16,7 @@ export type CabinetTab = "channel" | "about" | "language";
 
 export type CreatorChannelStatus = "draft" | "pending" | "active" | "paused" | "expired" | "canceled";
 
-export type CreatorChannelPlan = "paid" | "barter" | "claim";
+export type CreatorChannelPlan = "paid" | "barter" | "claim" | "pro";
 
 export type CreatorChannelPlacement = {
   id: string;
@@ -37,6 +37,11 @@ export type CreatorChannelPlacement = {
   donateUrl: string | null;
   sourceId?: string | null;
   sourceWasExisting?: boolean;
+  ownerUsername?: string | null;
+  stars?: number;
+  telegramPaymentChargeId?: string | null;
+  proMonths?: number;
+  proDays?: number;
 };
 
 export type TgUser = {

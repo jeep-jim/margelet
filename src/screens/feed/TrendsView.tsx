@@ -29,6 +29,7 @@ export function TrendsView({
   initialTopic,
   onOpenSource,
   isPro = false,
+  currentTelegramUserId = null,
 }: {
   countryCode?: string;
   locale?: Locale;
@@ -36,6 +37,7 @@ export function TrendsView({
   initialTopic?: string;
   onOpenSource?: (handle: string) => void;
   isPro?: boolean;
+  currentTelegramUserId?: string | null;
 }) {
   const [trends, setTrends] = useState<TrendItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -46,10 +48,55 @@ export function TrendsView({
   const [categoriesExpanded, setCategoriesExpanded] = useState(false);
   const [openedTopic, setOpenedTopic] = useState<string | null>(null);
   const [activeTrend, setActiveTrend] = useState<TrendItem | null>(null);
+  const [proModalOpen, setProModalOpen] = useState(false);
+  const [hasPaidPro, setHasPaidPro] = useState(false);
   const [followedTopics, setFollowedTopics] = useState<string[]>(() =>
     typeof window === "undefined" ? [] : readFollowedTopics(),
   );
   const copy = getTrendsCopy(locale);
+  const effectiveIsPro = isPro || hasPaidPro;
+
+
+  useEffect(() => {
+    const open = () => setProModalOpen(true);
+    window.addEventListener("margelet:open-pro-plans", open);
+    return () => window.removeEventListener("margelet:open-pro-plans", open);
+  }, []);
+
+  useEffect(() => {
+    if (isPro) {
+      setHasPaidPro(true);
+      return;
+    }
+
+    if (!currentTelegramUserId) {
+      setHasPaidPro(false);
+      return;
+    }
+
+    let cancelled = false;
+
+    fetch(`/api/telegram-webhook?ownerTelegramId=${encodeURIComponent(currentTelegramUserId)}&includeCanceled=1`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (cancelled) return;
+        const items = Array.isArray(data?.items) ? data.items : [];
+        const now = Date.now();
+        const active = items.some((item: any) =>
+          item?.plan === "pro" &&
+          item?.status === "active" &&
+          (!item?.endsAt || Date.parse(String(item.endsAt)) > now),
+        );
+        setHasPaidPro(active);
+      })
+      .catch(() => {
+        if (!cancelled) setHasPaidPro(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [currentTelegramUserId, isPro]);
 
   useEffect(() => {
     async function fetchTrends() {
@@ -283,7 +330,7 @@ export function TrendsView({
         copy={copy}
         countryCode={countryCode}
         locale={locale}
-        isPro={isPro}
+        isPro={effectiveIsPro}
       />
     );
   }
@@ -334,7 +381,7 @@ export function TrendsView({
               copy={copy}
               locale={locale}
               className="mb-2"
-              isPro={isPro}
+              isPro={effectiveIsPro}
             />
           ) : (
             <div className="mb-3 rounded-[24px] border border-soft bg-surface-soft/70 px-4 py-3 text-sm leading-relaxed text-secondary">
@@ -525,9 +572,99 @@ export function TrendsView({
         </div>
       ) : null}
 
-      <button className="fixed bottom-3 left-1/2 z-40 w-[calc(100%-32px)] max-w-[538px] -translate-x-1/2 rounded-2xl border border-soft bg-surface/95 px-5 py-4 text-base font-black text-primary shadow-soft backdrop-blur transition hover:bg-surface-soft">
-        {copy.fullAccess}
-      </button>
+      {!effectiveIsPro ? (
+        <button
+          type="button"
+          onClick={() => setProModalOpen(true)}
+          className="fixed bottom-3 left-1/2 z-40 w-[calc(100%-32px)] max-w-[538px] -translate-x-1/2 rounded-2xl border border-soft bg-surface/95 px-5 py-4 text-base font-black text-primary shadow-soft backdrop-blur transition hover:bg-surface-soft"
+        >
+          {copy.fullAccess}
+        </button>
+      ) : null}
+
+      <ProPlansModal
+        open={proModalOpen}
+        onClose={() => setProModalOpen(false)}
+        telegramUserId={currentTelegramUserId}
+      />
+    </div>
+  );
+}
+
+const PRO_PLANS = [
+  { months: 1, stars: 2500, title: "1 месяц", note: "Полный доступ к сигналам" },
+  { months: 3, stars: 6500, title: "3 месяца", note: "Выгоднее для проверки гипотез" },
+  { months: 12, stars: 22000, title: "12 месяцев", note: "Максимальная экономия" },
+];
+
+function buildProBotUrl(telegramUserId: string, months: number) {
+  return `https://t.me/margeleT_space_bot?start=${encodeURIComponent(`pro_${telegramUserId}_${months}`)}`;
+}
+
+function ProPlansModal({
+  open,
+  onClose,
+  telegramUserId,
+}: {
+  open: boolean;
+  onClose: () => void;
+  telegramUserId?: string | null;
+}) {
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 px-4 pb-4 pt-16 backdrop-blur-sm sm:items-center sm:pb-16">
+      <div className="w-full max-w-[520px] rounded-[30px] border border-soft bg-surface p-4 shadow-soft">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <div className="text-xl font-black text-primary">🔓 margeleT PRO</div>
+            <div className="mt-1 text-sm leading-relaxed text-secondary">
+              Все источники, все страны, полный поиск по сигналам и отчёты за 24 часа.
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={onClose}
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-soft bg-surface-soft text-primary"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+
+        <div className="mt-4 grid gap-2">
+          {PRO_PLANS.map((plan) => {
+            const href = telegramUserId ? buildProBotUrl(telegramUserId, plan.months) : "#";
+
+            return (
+              <a
+                key={plan.months}
+                href={href}
+                onClick={(event) => {
+                  if (!telegramUserId) {
+                    event.preventDefault();
+                    alert("Войдите через Telegram, чтобы купить PRO доступ.");
+                  }
+                }}
+                className="flex items-center justify-between gap-4 rounded-[22px] border border-soft bg-surface-soft px-4 py-4 text-left no-underline transition hover:bg-app"
+              >
+                <div className="min-w-0">
+                  <div className="text-sm font-black text-primary">{plan.title}</div>
+                  <div className="mt-1 text-xs text-secondary">{plan.note}</div>
+                </div>
+
+                <div className="shrink-0 rounded-2xl bg-emerald-500 px-3 py-2 text-sm font-black text-white">
+                  {plan.stars.toLocaleString("ru-RU")} Stars ⭐
+                </div>
+              </a>
+            );
+          })}
+        </div>
+
+        <div className="mt-4 rounded-2xl border border-soft bg-app px-4 py-3 text-xs leading-relaxed text-secondary">
+          После оплаты бот активирует доступ автоматически. Покупка появится в админке в блоке заявок как PRO.
+        </div>
+      </div>
     </div>
   );
 }

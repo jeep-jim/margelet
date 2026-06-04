@@ -1439,6 +1439,7 @@ export function TrendDetail({
             {!isPro && visibleSourceCount >= FREE_SOURCE_PREVIEW_LIMIT && topSources.length > visibleSourceCount ? (
               <button
                 type="button"
+                onClick={() => window.dispatchEvent(new Event("margelet:open-pro-plans"))}
                 className="w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-black text-white transition hover:opacity-90"
               >
                 {extraCopy.unlockAllSignals}

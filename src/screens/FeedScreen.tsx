@@ -1443,6 +1443,7 @@ export function FeedScreen({
             initialTopic={selectedAttentionTopic || undefined}
             onOpenSource={openSource}
             isPro={!!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)}
+            currentTelegramUserId={currentTelegramUserId}
           />
         ) : (
           renderedPosts.map((post) => {

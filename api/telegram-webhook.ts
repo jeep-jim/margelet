@@ -3,7 +3,7 @@ import { CREATOR_PRICING_BY_COUNTRY, DEFAULT_PRICING } from "../src/screens/crea
 import { getBotCopy, BOT_COMMAND_LOCALES } from "../src/lib/i18n/bot.js";
 import { getBarterPromoText, getVerifyText } from "../src/screens/creator/creator.promo.js";
 
-type PlacementPlan = "paid" | "barter" | "claim";
+type PlacementPlan = "paid" | "barter" | "claim" | "pro";
 type PlacementStatus = "pending" | "active" | "paused" | "expired" | "canceled";
 
 type Placement = {
@@ -29,6 +29,8 @@ type Placement = {
   lastCheckAt?: string | null;
   sourceId?: string | null;
   sourceWasExisting?: boolean;
+  proMonths?: number;
+  proDays?: number;
 };
 
 type SourceRecord = {
@@ -95,6 +97,25 @@ const GITHUB_BRANCH = String(process.env.GITHUB_BRANCH || "main").trim();
 const PLACEMENTS_PATH = "data/placements.json";
 const SOURCES_PATH = "data/sources.json";
 const SITE_URL = "https://margelet.space";
+
+const PRO_PLANS: Record<number, { months: number; days: number; stars: number; label: string }> = {
+  1: { months: 1, days: 30, stars: 2500, label: "margeleT PRO / 1 month" },
+  3: { months: 3, days: 90, stars: 6500, label: "margeleT PRO / 3 months" },
+  12: { months: 12, days: 365, stars: 22000, label: "margeleT PRO / 12 months" },
+};
+
+function getProPlan(months: unknown) {
+  const value = Number(months);
+  return PRO_PLANS[value] || PRO_PLANS[1];
+}
+
+function getProPlacementId(ownerTelegramId: string) {
+  return `pro_${String(ownerTelegramId || "").trim()}`;
+}
+
+function isProPlacement(item: Pick<Placement, "plan" | "id">) {
+  return item.plan === "pro" || String(item.id || "").startsWith("pro_");
+}
 
 function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value.trim() : fallback;
@@ -221,6 +242,20 @@ function parseStartPayload(text: string) {
     return placementId ? { placementId } : null;
   }
 
+  if (raw.startsWith("pro_")) {
+    const parts = raw.split("_");
+    const ownerTelegramId = parts[1];
+    const months = Number(parts[2] || 1);
+
+    if (!ownerTelegramId) return null;
+
+    return {
+      kind: "pro" as const,
+      ownerTelegramId,
+      months: getProPlan(months).months,
+    };
+  }
+
   if (!raw.startsWith("m_")) return null;
 
   const parts = raw.split("_");
@@ -242,6 +277,7 @@ function parseStartPayload(text: string) {
   if (!ownerTelegramId || !channelHandle || !country || !plan) return null;
 
   return {
+    kind: "placement" as const,
     ownerTelegramId,
     channelSlug: normalizeHandle(channelHandle),
     channelHandle: normalizeHandle(channelHandle),
@@ -286,11 +322,14 @@ async function answerCallbackQuery(id: string, text?: string) {
 
 async function sendInvoice(chatId: number, placement: Placement, languageCode?: string | null) {
   const copy = getBotCopy(languageCode, placement.country);
+  const pro = isProPlacement(placement);
 
   await telegram("sendInvoice", {
     chat_id: chatId,
-    title: copy.invoiceTitle,
-    description: copy.invoiceDescription,
+    title: pro ? "margeleT PRO" : copy.invoiceTitle,
+    description: pro
+      ? "Unlock all signals, sources, countries and 24-hour attention reports."
+      : copy.invoiceDescription,
     payload: placement.id,
     currency: "XTR",
     provider_token: "",
@@ -409,7 +448,14 @@ function normalizePlacement(raw: Partial<Placement>): Placement {
   const channelHandle = normalizeHandle(String(raw.channelHandle || raw.channelSlug || ""));
   const ownerTelegramId = String(raw.ownerTelegramId || "").trim();
   const plan: PlacementPlan =
-  raw.plan === "barter" ? "barter" : raw.plan === "claim" ? "claim" : "paid";
+    raw.plan === "pro"
+      ? "pro"
+      : raw.plan === "barter"
+        ? "barter"
+        : raw.plan === "claim"
+          ? "claim"
+          : "paid";
+  const proPlan = getProPlan(raw.proMonths || (raw.proDays === 365 ? 12 : raw.proDays === 90 ? 3 : 1));
   const pricing = CREATOR_PRICING_BY_COUNTRY[country as keyof typeof CREATOR_PRICING_BY_COUNTRY] ?? DEFAULT_PRICING;
 
   return {
@@ -430,17 +476,21 @@ function normalizePlacement(raw: Partial<Placement>): Placement {
     endsAt: raw.endsAt || null,
     pricingLabel:
       raw.pricingLabel ||
-      (plan === "paid"
-        ? pricing.label
-        : plan === "barter"
-          ? "barter / 1 month"
-          : getClaimPricingLabel(country)),
-    stars: plan === "paid" ? Number(raw.stars || pricing.stars || 0) : 0,
+      (plan === "pro"
+        ? proPlan.label
+        : plan === "paid"
+          ? pricing.label
+          : plan === "barter"
+            ? "barter / 1 month"
+            : getClaimPricingLabel(country)),
+    stars: plan === "pro" ? Number(raw.stars || proPlan.stars || 0) : plan === "paid" ? Number(raw.stars || pricing.stars || 0) : 0,
     donateUrl: raw.donateUrl || null,
     telegramPaymentChargeId: raw.telegramPaymentChargeId || null,
     lastCheckAt: raw.lastCheckAt || null,
     sourceId: raw.sourceId || null,
     sourceWasExisting: Boolean(raw.sourceWasExisting),
+    proMonths: plan === "pro" ? proPlan.months : undefined,
+    proDays: plan === "pro" ? proPlan.days : undefined,
   };
 }
 
@@ -470,12 +520,19 @@ async function withSourceLink(raw: Partial<Placement>) {
 async function upsertPlacement(nextRaw: Partial<Placement>) {
   const next = await withSourceLink(nextRaw);
   const { items } = await readPlacements();
-  const index = items.findIndex(
-    (item) => item.id === next.id ||
-      (item.ownerTelegramId === next.ownerTelegramId &&
-        normalizeHandle(item.channelHandle) === normalizeHandle(next.channelHandle) &&
-        normalizeCountry(item.country) === normalizeCountry(next.country))
-  );
+  const index = items.findIndex((item) => {
+    if (item.id === next.id) return true;
+
+    if (isProPlacement(item) || isProPlacement(next)) {
+      return false;
+    }
+
+    return (
+      item.ownerTelegramId === next.ownerTelegramId &&
+      normalizeHandle(item.channelHandle) === normalizeHandle(next.channelHandle) &&
+      normalizeCountry(item.country) === normalizeCountry(next.country)
+    );
+  });
 
   const updated =
     index >= 0
@@ -491,7 +548,7 @@ async function upsertPlacement(nextRaw: Partial<Placement>) {
         )
       : [next, ...items];
 
-  await writePlacements(updated, `Update placement ${next.channelHandle}`);
+  await writePlacements(updated, isProPlacement(next) ? `Update PRO access ${next.ownerTelegramId}` : `Update placement ${next.channelHandle}`);
   return index >= 0 ? { placement: updated[index], existed: true } : { placement: next, existed: false };
 }
 
@@ -615,14 +672,20 @@ async function deactivateSourceFromPlacement(placement: Placement, nextStatus: P
 
 async function activatePlacement(id: string, patch: Partial<Placement>) {
   const previous = (await readPlacements()).items.find((item) => item.id === id);
+  const isPro = previous ? isProPlacement(previous) : false;
+  const proDays = Number(patch.proDays || previous?.proDays || 30);
+  const now = Date.now();
+  const currentEndsAt = previous?.endsAt && Date.parse(previous.endsAt) > now ? Date.parse(previous.endsAt) : now;
+  const proEndsAt = new Date(currentEndsAt + proDays * 24 * 60 * 60 * 1000).toISOString();
+
   const placement = await updatePlacement(id, {
     ...patch,
     status: "active",
     startAt: patch.startAt || previous?.startAt || new Date().toISOString(),
-    endsAt: patch.endsAt || previous?.endsAt || addDays(30),
+    endsAt: patch.endsAt || (isPro ? proEndsAt : previous?.endsAt || addDays(30)),
   });
 
-  if (placement) await upsertSourceFromPlacement(placement);
+  if (placement && !isProPlacement(placement)) await upsertSourceFromPlacement(placement);
   return placement;
 }
 
@@ -641,7 +704,7 @@ async function extendPlacement(id: string, days = 30) {
     endsAt,
   });
 
-  if (next) await upsertSourceFromPlacement(next);
+  if (next && !isProPlacement(next)) await upsertSourceFromPlacement(next);
   return next;
 }
 
@@ -663,7 +726,7 @@ async function expireOverduePlacements() {
 
   for (const item of updated) {
     if (expiredIds.has(item.id)) {
-      await deactivateSourceFromPlacement(item, "expired");
+      if (!isProPlacement(item)) await deactivateSourceFromPlacement(item, "expired");
     }
   }
 
@@ -746,7 +809,7 @@ async function handleSiteAction(body: any, res: VercelResponse) {
       });
     } else {
       next = await updatePlacement(placementId, { status });
-      if (next && (status === "paused" || status === "expired" || status === "canceled" || Boolean(body.removeSource))) {
+      if (next && !isProPlacement(next) && (status === "paused" || status === "expired" || status === "canceled" || Boolean(body.removeSource))) {
         await deactivateSourceFromPlacement(next, status);
       }
     }
@@ -771,6 +834,35 @@ async function handleStart(update: TelegramUpdate) {
   }
 
   let placement: Placement | null = null;
+
+  if ("kind" in payload && payload.kind === "pro") {
+    const plan = getProPlan(payload.months);
+    const result = await upsertPlacement({
+      id: `${getProPlacementId(payload.ownerTelegramId)}_${plan.months}_${Date.now().toString(36)}`,
+      ownerTelegramId: payload.ownerTelegramId,
+      ownerUsername: message?.from?.username || null,
+      channelSlug: "margelet-pro",
+      channelHandle: `pro_${payload.ownerTelegramId}`,
+      channelTitle: message?.from?.username ? `@${message.from.username}` : `Telegram user ${payload.ownerTelegramId}`,
+      channelAvatarUrl: null,
+      country: "ru",
+      plan: "pro",
+      status: "pending",
+      createdAt: new Date().toISOString(),
+      startAt: null,
+      endsAt: null,
+      pricingLabel: plan.label,
+      stars: plan.stars,
+      donateUrl: null,
+      proMonths: plan.months,
+      proDays: plan.days,
+    });
+
+    placement = result.placement;
+    await sendMessage(chatId, `PRO доступ создан на ${plan.months} мес. Сейчас открою оплату в Stars.`);
+    await sendInvoice(chatId, placement, languageCode);
+    return;
+  }
 
   if ("placementId" in payload) {
     const { items } = await readPlacements();
@@ -890,6 +982,11 @@ async function handleSuccessfulPayment(update: TelegramUpdate) {
   });
 
   const copy = getBotCopy(languageCode, placement?.country);
+  if (placement && isProPlacement(placement)) {
+    await sendMessage(chatId, `Готово! PRO доступ активен до ${placement.endsAt ? new Date(placement.endsAt).toLocaleDateString("ru-RU") : "—"} 🔓`);
+    return;
+  }
+
   await sendMessage(chatId, copy.paidSuccess(placement?.channelHandle || "channel"));
 }
 
@@ -933,7 +1030,7 @@ async function handleStatus(update: TelegramUpdate) {
     return itemCopy.statusLine(
       item.channelHandle,
       localizeStatus(itemCopy, item.status),
-      item.plan === "paid" ? itemCopy.planPaid : item.plan === "barter" ? itemCopy.planBarter : getClaimPricingLabel(item.country)
+      item.plan === "pro" ? "PRO" : item.plan === "paid" ? itemCopy.planPaid : item.plan === "barter" ? itemCopy.planBarter : getClaimPricingLabel(item.country)
     );
   });
 
