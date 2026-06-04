@@ -366,7 +366,7 @@ export function PostAttentionChips({
   };
 
   return (
-    <div className="relative inline-flex max-w-full">
+    <div className={["relative inline-flex max-w-full", open ? "z-[9999]" : "z-0"].join(" ")}>
       <button
         type="button"
         onClick={(event) => {
@@ -387,7 +387,10 @@ export function PostAttentionChips({
 
       {open && hasRealTrend ? (
         <div
-          className="absolute left-0 top-full z-40 mt-2 w-[290px] max-w-[calc(100vw-32px)] rounded-[22px] border border-soft bg-surface p-3 shadow-soft"
+          className="absolute left-0 top-full z-[9999] mt-2 w-[290px] max-w-[calc(100vw-32px)] rounded-[22px] border border-soft bg-surface p-3 shadow-soft"
+          style={{
+            isolation: "isolate",
+          }}
           onClick={(event) => event.stopPropagation()}
         >
           <button
