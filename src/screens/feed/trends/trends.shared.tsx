@@ -1064,6 +1064,7 @@ export function CountryDistributionBlock({
   defaultOpen = false,
   className = "",
   isPro = false,
+  onUnlockPro,
 }: {
   trend: TrendItem;
   countryCode: string;
@@ -1072,6 +1073,7 @@ export function CountryDistributionBlock({
   defaultOpen?: boolean;
   className?: string;
   isPro?: boolean;
+  onUnlockPro?: () => void;
 }) {
   const countries = Array.isArray(trend.countries) ? trend.countries : [];
   const selectedCountry = normalizeTrendCountry(countryCode);
@@ -1149,22 +1151,20 @@ export function CountryDistributionBlock({
             })}
           </div>
 
-          {hasOtherCountries ? (
+          {!isPro && hasOtherCountries ? (
             <button
               type="button"
               onClick={() => {
-                if (!isPro) {
-                  window.dispatchEvent(new Event("margelet:open-pro-plans"));
+                if (onUnlockPro) {
+                  onUnlockPro();
+                  return;
                 }
+
+                window.dispatchEvent(new Event("margelet:open-pro-plans"));
               }}
-              className={[
-                "mt-3 w-full rounded-2xl px-4 py-3 text-sm font-black transition",
-                isPro
-                  ? "border border-soft bg-surface text-primary hover:bg-surface-soft"
-                  : "bg-emerald-500 text-white hover:opacity-90",
-              ].join(" ")}
+              className="mt-3 w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-black text-white transition hover:opacity-90"
             >
-              {isPro ? extraCopy.fullReport24h : extraCopy.unlockAllSignals}
+              {extraCopy.unlockAllSignals}
             </button>
           ) : null}
         </div>
@@ -1183,6 +1183,7 @@ export function TrendDetail({
   countryCode,
   locale,
   isPro = false,
+  onUnlockPro,
 }: {
   trend: TrendItem;
   followed: boolean;
@@ -1193,6 +1194,7 @@ export function TrendDetail({
   countryCode: string;
   locale: Locale;
   isPro?: boolean;
+  onUnlockPro?: () => void;
 }) {
   const topic = getTopic(trend);
   const momentum = getMomentumNumber(trend);
@@ -1331,6 +1333,7 @@ export function TrendDetail({
           defaultOpen
           className="mt-3"
           isPro={isPro}
+          onUnlockPro={onUnlockPro}
         />
       </section>
 
@@ -1449,7 +1452,14 @@ export function TrendDetail({
             {!isPro && visibleSourceCount >= FREE_SOURCE_PREVIEW_LIMIT && topSources.length > visibleSourceCount ? (
               <button
                 type="button"
-                onClick={() => window.dispatchEvent(new Event("margelet:open-pro-plans"))}
+                onClick={() => {
+                  if (onUnlockPro) {
+                    onUnlockPro();
+                    return;
+                  }
+
+                  window.dispatchEvent(new Event("margelet:open-pro-plans"));
+                }}
                 className="w-full rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-black text-white transition hover:opacity-90"
               >
                 {extraCopy.unlockAllSignals}

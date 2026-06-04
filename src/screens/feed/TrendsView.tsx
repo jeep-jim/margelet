@@ -55,7 +55,7 @@ export function TrendsView({
   );
   const copy = getTrendsCopy(locale);
   const effectiveIsPro = isPro || hasPaidPro;
-
+  const openProPlans = () => setProModalOpen(true);
 
   useEffect(() => {
     const open = () => setProModalOpen(true);
@@ -331,6 +331,7 @@ export function TrendsView({
         countryCode={countryCode}
         locale={locale}
         isPro={effectiveIsPro}
+        onUnlockPro={openProPlans}
       />
     );
   }
@@ -382,6 +383,7 @@ export function TrendsView({
               locale={locale}
               className="mb-2"
               isPro={effectiveIsPro}
+              onUnlockPro={openProPlans}
             />
           ) : (
             <div className="mb-3 rounded-[24px] border border-soft bg-surface-soft/70 px-4 py-3 text-sm leading-relaxed text-secondary">
@@ -575,7 +577,7 @@ export function TrendsView({
       {!effectiveIsPro ? (
         <button
           type="button"
-          onClick={() => setProModalOpen(true)}
+          onClick={openProPlans}
           className="fixed bottom-3 left-1/2 z-40 w-[calc(100%-32px)] max-w-[538px] -translate-x-1/2 rounded-2xl border border-soft bg-surface/95 px-5 py-4 text-base font-black text-primary shadow-soft backdrop-blur transition hover:bg-surface-soft"
         >
           {copy.fullAccess}
