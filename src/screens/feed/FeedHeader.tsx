@@ -55,6 +55,7 @@ export function FeedHeader({
   tagStats,
 }: FeedHeaderProps) {
   const [draftQuery, setDraftQuery] = useState(searchQuery);
+  const [searchFocused, setSearchFocused] = useState(false);
   const [expandedParents, setExpandedParents] = useState<Set<ContentTag>>(
     () => buildExpandedParents(selectedTags)
   );
@@ -412,6 +413,61 @@ export function FeedHeader({
       <div className="mx-auto h-full w-full max-w-[570px] overflow-hidden bg-app md:border-x md:border-soft">
         <div className="flex h-full flex-col">
           <div className="shrink-0 border-b border-soft bg-app px-4 pb-3 pt-3">
+            <style>{`
+              .feed-tag-search-shell {
+                --tag-search-bg: #142231;
+                --tag-search-border-strong: #294963;
+                --tag-search-text: var(--text-primary);
+                --tag-search-muted: var(--text-secondary);
+                padding: 2px;
+              }
+
+              [data-theme="light"] .feed-tag-search-shell {
+                --tag-search-bg: #ffffff;
+                --tag-search-border-strong: #cbd5e1;
+              }
+
+              .feed-tag-search-idle {
+                background:
+                  linear-gradient(var(--tag-search-bg), var(--tag-search-bg)) padding-box,
+                  linear-gradient(90deg, var(--tag-search-border-strong) 0%, var(--tag-search-border-strong) 62%, #ff4d8d 73%, #ff4d8d 81%, var(--tag-search-border-strong) 94%, var(--tag-search-border-strong) 100%) border-box;
+                border: 2px solid transparent;
+                background-size: 100% 100%, 260% 100%;
+                animation: feedTagSearchRun 3.2s ease-in-out infinite;
+              }
+
+              .feed-tag-search-focus {
+                background: var(--tag-search-border-strong);
+              }
+
+              .feed-tag-search-filled {
+                background: #41d25a;
+              }
+
+              .feed-tag-search-inner {
+                background: var(--tag-search-bg);
+                color: var(--tag-search-text);
+              }
+
+              .feed-tag-search-inner input {
+                color: var(--tag-search-text);
+              }
+
+              .feed-tag-search-inner input::placeholder {
+                color: var(--tag-search-muted);
+              }
+
+              .feed-tag-search-clear {
+                background: color-mix(in srgb, var(--bg-surface-soft) 78%, var(--border-soft));
+                color: var(--tag-search-muted);
+              }
+
+              @keyframes feedTagSearchRun {
+                0% { background-position: 0 0, 0% 50%; }
+                100% { background-position: 0 0, 200% 50%; }
+              }
+            `}</style>
+
             <form
               className="relative"
               onSubmit={(event) => {
@@ -419,31 +475,46 @@ export function FeedHeader({
                 applySearchAndClose();
               }}
             >
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
-              <input
-                value={draftQuery}
-                onChange={(event) => setDraftQuery(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    event.preventDefault();
-                    applySearchAndClose();
-                  }
-                }}
-                enterKeyHint="search"
-                placeholder={copy.searchPlaceholder}
-                className="w-full rounded-2xl border border-soft bg-surface py-3 pl-11 pr-12 text-sm text-primary outline-none placeholder:text-secondary focus:border-[color:var(--border-strong)]"
-              />
+              <div
+                className={[
+                  "feed-tag-search-shell relative h-12 w-full rounded-full",
+                  hasSearchDraft
+                    ? "feed-tag-search-filled"
+                    : searchFocused
+                      ? "feed-tag-search-focus"
+                      : "feed-tag-search-idle",
+                ].join(" ")}
+              >
+                <div className="feed-tag-search-inner relative h-full rounded-full">
+                  <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
+                  <input
+                    value={draftQuery}
+                    onFocus={() => setSearchFocused(true)}
+                    onBlur={() => setSearchFocused(false)}
+                    onChange={(event) => setDraftQuery(event.target.value)}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter") {
+                        event.preventDefault();
+                        applySearchAndClose();
+                      }
+                    }}
+                    enterKeyHint="search"
+                    placeholder={copy.searchPlaceholder}
+                    className="h-full w-full rounded-full bg-transparent pl-11 pr-12 text-[15px] font-semibold outline-none"
+                  />
 
-              {hasSearchDraft ? (
-                <button
-                  type="button"
-                  onClick={eraseDraftOnly}
-                  className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft hover:text-primary"
-                  aria-label={copy.erase}
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              ) : null}
+                  {hasSearchDraft ? (
+                    <button
+                      type="button"
+                      onClick={eraseDraftOnly}
+                      className="feed-tag-search-clear absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full transition hover:opacity-90"
+                      aria-label={copy.erase}
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  ) : null}
+                </div>
+              </div>
             </form>
 
             <div className="mt-3 text-sm text-secondary">
