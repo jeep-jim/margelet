@@ -8,6 +8,7 @@ import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
 import { TrendsView } from "./feed/TrendsView";
+import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import {
   FEED_SCREEN_COPY,
   SmartFeedBar,
@@ -19,7 +20,7 @@ import {
   FEED_FILTER_TOGGLE_EVENT,
 } from "./feed/feed.constants";
 import type { ViewerDirection } from "./feed/feed.types";
-import { buildShareUrl, getResolvedTags } from "./feed/feed.utils";
+import { buildShareUrl, getResolvedTags, normalizeMediaList } from "./feed/feed.utils";
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
@@ -447,6 +448,247 @@ function SubscriptionsBar({
             ))}
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+function getVideoGridPreview(post: IngestedPost) {
+  const media = normalizeMediaList(post);
+  const video = media.find((item) => item.kind === "video");
+  const image = media.find((item) => item.kind === "image");
+  const visual = video || image || null;
+
+  if (!visual) return null;
+
+  const record = visual as Record<string, unknown>;
+  const poster =
+    typeof record.poster === "string"
+      ? record.poster
+      : typeof record.thumbnail === "string"
+        ? record.thumbnail
+        : typeof record.thumbnailUrl === "string"
+          ? record.thumbnailUrl
+          : typeof record.previewUrl === "string"
+            ? record.previewUrl
+            : typeof record.preview === "string"
+              ? record.preview
+              : "";
+
+  return {
+    ...visual,
+    poster,
+  };
+}
+
+function isVideoGridSourceVerified(post: IngestedPost) {
+  const source = (post.source || {}) as Record<string, unknown>;
+  return Boolean(
+    source.verified ||
+      source.isVerified ||
+      source.is_verified ||
+      source.verifiedBadge ||
+      source.badge === "verified"
+  );
+}
+
+function getVideoGridMediaRatio(post: IngestedPost, index: number) {
+  const media = normalizeMediaList(post);
+  const visual =
+    media.find((item) => item.kind === "video") ||
+    media.find((item) => item.kind === "image");
+
+  const record = (visual || {}) as Record<string, unknown>;
+  const width = Number(record.width || record.w || 0);
+  const height = Number(record.height || record.h || 0);
+
+  if (width > 0 && height > 0) {
+    return width / height;
+  }
+
+  // Фолбэк, когда Telegram не дал размеры: делаем живой микс,
+  // но без дырок, потому что это CSS columns, а не grid.
+  const pattern = [0.58, 0.78, 1.15, 0.66, 1.55, 0.72, 1, 0.62, 1.35, 0.8];
+  return pattern[index % pattern.length] || 0.72;
+}
+
+function getVideoGridCardHeight(post: IngestedPost, index: number) {
+  const ratio = getVideoGridMediaRatio(post, index);
+
+  if (ratio >= 1.45) return "h-[156px] sm:h-[176px]";
+  if (ratio >= 1.08) return "h-[190px] sm:h-[210px]";
+  if (ratio >= 0.88) return "h-[226px] sm:h-[246px]";
+  if (ratio <= 0.62) return "h-[360px] sm:h-[410px]";
+
+  const pattern = [
+    "h-[310px] sm:h-[350px]",
+    "h-[270px] sm:h-[310px]",
+    "h-[340px] sm:h-[390px]",
+    "h-[250px] sm:h-[290px]",
+  ];
+
+  return pattern[index % pattern.length] || "h-[310px] sm:h-[350px]";
+}
+
+function getVideoGridCardBreak(post: IngestedPost, index: number) {
+  const ratio = getVideoGridMediaRatio(post, index);
+
+  // Очень широкие карточки пусть будут одной полосой.
+  // В CSS columns это делает аккуратный широкий блок без дырок.
+  if (ratio >= 1.45) {
+    return "sm:column-span-all";
+  }
+
+  // Иногда даём большой широкий блок для разнообразия, но не часто.
+  if (index > 0 && index % 11 === 0) {
+    return "sm:column-span-all";
+  }
+
+  return "";
+}
+
+function VideoGridView({
+  posts,
+  locale,
+  registerFeedCardNode,
+  onOpenPost,
+  onSeen,
+}: {
+  posts: IngestedPost[];
+  locale: Locale;
+  registerFeedCardNode: (postId: number, node: HTMLDivElement | null) => void;
+  onOpenPost: (post: IngestedPost) => void;
+  onSeen: (postId: number) => void;
+}) {
+  const emptyText = locale === "ru" ? "Видео пока нет" : "No videos yet";
+
+  if (posts.length === 0) {
+    return (
+      <div className="px-4 py-6 text-center text-sm text-secondary">
+        {emptyText}
+      </div>
+    );
+  }
+
+  return (
+    <div className="pt-px">
+      <div className="columns-2 gap-px sm:columns-3">
+        {posts.map((post, index) => {
+          const preview = getVideoGridPreview(post);
+          const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
+          const title = post.source?.title || post.source?.handle || "Telegram";
+          const verified = isVideoGridSourceVerified(post);
+          const cardHeight = getVideoGridCardHeight(post, index);
+          const cardBreak = getVideoGridCardBreak(post, index);
+          const poster = preview?.poster || "";
+
+          return (
+            <div
+              key={post.id}
+              ref={(node) => registerFeedCardNode(post.id, node)}
+              data-feed-post-id={post.id}
+              className={["mb-px break-inside-avoid", cardBreak].filter(Boolean).join(" ")}
+            >
+              <button
+                type="button"
+                onClick={() => {
+                  onSeen(post.id);
+                  onOpenPost(post);
+                }}
+                className={[
+                  "group relative block w-full overflow-hidden bg-black text-left transition active:scale-[0.995]",
+                  cardHeight,
+                ].join(" ")}
+              >
+                <div className="absolute inset-0 bg-black">
+                  {poster ? (
+                    <img
+                      src={poster}
+                      alt=""
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(event) => {
+                        event.currentTarget.style.display = "none";
+                      }}
+                    />
+                  ) : preview?.kind === "image" && preview.url ? (
+                    <img
+                      src={preview.url}
+                      alt=""
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                    />
+                  ) : preview?.kind === "video" ? (
+                    <video
+                      src={preview.url}
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                      onLoadedData={(event) => {
+                        const video = event.currentTarget;
+                        try {
+                          if (video.readyState >= 2 && video.currentTime < 0.08) {
+                            video.currentTime = Math.min(0.12, video.duration || 0.12);
+                          }
+                        } catch {
+                          //
+                        }
+                      }}
+                      onMouseEnter={(event) => {
+                        const video = event.currentTarget;
+                        video.muted = true;
+                        void video.play().catch(() => undefined);
+                      }}
+                      onMouseLeave={(event) => {
+                        const video = event.currentTarget;
+                        video.pause();
+                        try {
+                          video.currentTime = Math.min(0.12, video.duration || 0.12);
+                        } catch {
+                          //
+                        }
+                      }}
+                    />
+                  ) : (
+                    <div className="h-full w-full bg-gradient-to-br from-[#162638] via-[#101d2b] to-black" />
+                  )}
+                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/18 to-black/0" />
+
+                <div className="absolute inset-x-0 bottom-0 p-2">
+                  <div className="flex min-w-0 items-center gap-1.5">
+                    <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full bg-[#1d3148] ring-1 ring-white/40">
+                      {avatar ? (
+                        <img
+                          src={avatar}
+                          alt=""
+                          className="h-full w-full object-cover"
+                          referrerPolicy="no-referrer"
+                          onError={(event) => {
+                            event.currentTarget.style.display = "none";
+                          }}
+                        />
+                      ) : null}
+                    </div>
+
+                    <div className="flex min-w-0 items-center gap-1">
+                      <span className="min-w-0 truncate text-[11px] font-black leading-none text-white drop-shadow-[0_1px_2px_rgba(0,0,0,.9)]">
+                        {title}
+                      </span>
+                      {verified ? <VerifiedBadge size={12} className="shrink-0" /> : null}
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
@@ -1013,8 +1255,7 @@ export function FeedScreen({
     safePosts,
     feedSettings,
     selectedTags,
-    searchQuery,
-    locale,
+      locale,
     initialSeenPosts,
   ]);
 
@@ -1340,6 +1581,26 @@ export function FeedScreen({
         />
       ) : null}
 
+      {!tagsOpen ? (
+        <SmartFeedBar
+          copy={copy}
+          mediaMode={feedSettings.mediaMode}
+          onChangeMediaMode={(next) => {
+            if (next !== "trends") setSelectedAttentionTopic(null);
+            setFeedSettings((prev) => ({
+              ...prev,
+              mediaMode: next,
+            }));
+          }}
+          locale={locale}
+          availableCountries={availableCountryOptions}
+          selectedCountries={feedSettings.countries}
+          favoriteCountries={feedSettings.favoriteCountries}
+          onToggleCountry={toggleFeedCountry}
+          onToggleFavoriteCountry={toggleFavoriteCountry}
+        />        
+      ) : null}
+
       {!tagsOpen && feedSettings.mediaMode !== "trends" && !hasSubscriptions ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
       ) : null}
@@ -1364,26 +1625,6 @@ export function FeedScreen({
             openSource(handle);
           }}
         />
-      ) : null}
-
-      {!tagsOpen ? (
-        <SmartFeedBar
-          copy={copy}
-          mediaMode={feedSettings.mediaMode}
-          onChangeMediaMode={(next) => {
-            if (next !== "trends") setSelectedAttentionTopic(null);
-            setFeedSettings((prev) => ({
-              ...prev,
-              mediaMode: next,
-            }));
-          }}
-          locale={locale}
-          availableCountries={availableCountryOptions}
-          selectedCountries={feedSettings.countries}
-          favoriteCountries={feedSettings.favoriteCountries}
-          onToggleCountry={toggleFeedCountry}
-          onToggleFavoriteCountry={toggleFavoriteCountry}
-        />        
       ) : null}
 
       {!tagsOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && !hasBubbles ? (
@@ -1435,7 +1676,7 @@ export function FeedScreen({
       ) : null}
 
       <div className="mx-auto w-full max-w-[570px]">
-        {feedSettings.mediaMode === 'trends' ? (
+        {feedSettings.mediaMode === "trends" ? (
           <TrendsView
             countryCode={feedSettings.countries[0] || locale}
             locale={locale}
@@ -1444,6 +1685,14 @@ export function FeedScreen({
             onOpenSource={openSource}
             isPro={!!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)}
             currentTelegramUserId={currentTelegramUserId}
+          />
+        ) : feedSettings.mediaMode === "video" ? (
+          <VideoGridView
+            posts={renderedPosts}
+            locale={locale}
+            registerFeedCardNode={registerFeedCardNode}
+            onOpenPost={handleOpenPost}
+            onSeen={markPostSeen}
           />
         ) : (
           renderedPosts.map((post) => {
@@ -1465,8 +1714,7 @@ export function FeedScreen({
               >
                 <FeedCard
                   post={post}
-                  searchQuery={searchQuery}
-                  locale={locale}
+                        locale={locale}
                   isOwner={isOwner}
                   isAdmin={isAdmin}
                   menuOpen={menuPostId === post.id}
