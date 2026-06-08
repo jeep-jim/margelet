@@ -563,6 +563,53 @@ function VideoGridView({
   onSeen: (postId: number) => void;
 }) {
   const emptyText = locale === "ru" ? "Видео пока нет" : "No videos yet";
+  const [previewPostId, setPreviewPostId] = useState<number | null>(null);
+  const longPressTimerRef = useRef<number | null>(null);
+  const suppressNextClickRef = useRef(false);
+  const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
+
+  useEffect(() => {
+    videoPreviewRefs.current.forEach((video, postId) => {
+      if (postId !== previewPostId) {
+        video.pause();
+        try {
+          video.currentTime = Math.min(0.12, video.duration || 0.12);
+        } catch {
+          //
+        }
+      }
+    });
+
+    if (previewPostId === null) return;
+
+    const activeVideo = videoPreviewRefs.current.get(previewPostId);
+    if (!activeVideo) return;
+
+    activeVideo.muted = true;
+    activeVideo.loop = true;
+    void activeVideo.play().catch(() => undefined);
+  }, [previewPostId]);
+
+  useEffect(() => {
+    return () => {
+      if (longPressTimerRef.current) {
+        window.clearTimeout(longPressTimerRef.current);
+      }
+      videoPreviewRefs.current.forEach((video) => video.pause());
+    };
+  }, []);
+
+  const clearLongPressTimer = () => {
+    if (longPressTimerRef.current) {
+      window.clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
+  };
+
+  const stopPreview = () => {
+    clearLongPressTimer();
+    setPreviewPostId(null);
+  };
 
   if (posts.length === 0) {
     return (
@@ -583,6 +630,11 @@ function VideoGridView({
           const cardHeight = getVideoGridCardHeight(post, index);
           const cardBreak = getVideoGridCardBreak(post, index);
           const poster = preview?.poster || "";
+          const isPreviewing = previewPostId === post.id;
+          const text = String(post.text || "")
+            .replace(/https?:\/\/\S+/g, "")
+            .replace(/\s+/g, " ")
+            .trim();
 
           return (
             <div
@@ -593,17 +645,37 @@ function VideoGridView({
             >
               <button
                 type="button"
+                onPointerDown={(event) => {
+                  if (event.pointerType === "mouse" && event.button !== 0) return;
+
+                  clearLongPressTimer();
+                  suppressNextClickRef.current = false;
+
+                  longPressTimerRef.current = window.setTimeout(() => {
+                    suppressNextClickRef.current = true;
+                    setPreviewPostId(post.id);
+                  }, 430);
+                }}
+                onPointerUp={stopPreview}
+                onPointerCancel={stopPreview}
+                onPointerLeave={stopPreview}
                 onClick={() => {
+                  if (suppressNextClickRef.current) {
+                    suppressNextClickRef.current = false;
+                    return;
+                  }
+
                   onSeen(post.id);
                   onOpenPost(post);
                 }}
                 className={[
-                  "group relative block w-full overflow-hidden bg-black text-left transition active:scale-[0.995]",
+                  "group relative block w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
+                  isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                   cardHeight,
                 ].join(" ")}
               >
                 <div className="absolute inset-0 bg-black">
-                  {poster ? (
+                  {poster && !isPreviewing ? (
                     <img
                       src={poster}
                       alt=""
@@ -624,10 +696,19 @@ function VideoGridView({
                     />
                   ) : preview?.kind === "video" ? (
                     <video
+                      ref={(node) => {
+                        if (node) {
+                          videoPreviewRefs.current.set(post.id, node);
+                        } else {
+                          videoPreviewRefs.current.delete(post.id);
+                        }
+                      }}
                       src={preview.url}
+                      poster={poster || undefined}
                       muted
                       playsInline
-                      preload="metadata"
+                      loop
+                      preload={isPreviewing ? "auto" : "metadata"}
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                       onLoadedData={(event) => {
                         const video = event.currentTarget;
@@ -639,27 +720,20 @@ function VideoGridView({
                           //
                         }
                       }}
-                      onMouseEnter={(event) => {
-                        const video = event.currentTarget;
-                        video.muted = true;
-                        void video.play().catch(() => undefined);
-                      }}
-                      onMouseLeave={(event) => {
-                        const video = event.currentTarget;
-                        video.pause();
-                        try {
-                          video.currentTime = Math.min(0.12, video.duration || 0.12);
-                        } catch {
-                          //
-                        }
-                      }}
                     />
                   ) : (
                     <div className="h-full w-full bg-gradient-to-br from-[#162638] via-[#101d2b] to-black" />
                   )}
                 </div>
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/18 to-black/0" />
+                <div
+                  className={[
+                    "absolute inset-0 transition duration-200",
+                    isPreviewing
+                      ? "bg-gradient-to-t from-black/92 via-black/30 to-black/10"
+                      : "bg-gradient-to-t from-black/88 via-black/18 to-black/0",
+                  ].join(" ")}
+                />
 
                 <div className="absolute inset-x-0 bottom-0 p-2">
                   <div className="flex min-w-0 items-center gap-1.5">
@@ -684,6 +758,12 @@ function VideoGridView({
                       {verified ? <VerifiedBadge size={12} className="shrink-0" /> : null}
                     </div>
                   </div>
+
+                  {isPreviewing && text ? (
+                    <div className="mt-2 line-clamp-3 text-[12px] font-semibold leading-snug text-white drop-shadow-[0_1px_2px_rgba(0,0,0,.9)]">
+                      {text}
+                    </div>
+                  ) : null}
                 </div>
               </button>
             </div>

@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
-  Bell,
   MoreVertical,
   Pause,
   Play,
@@ -21,7 +20,6 @@ import { getAutotranslit, getCountryLanguage, requestGTranslate } from "../../li
 const MAX_EXPANDED_TEXT_HEIGHT = 260;
 const FEED_MUTE_KEY = "margelet_feed_muted";
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
-const SUB_KEY = "margelet_subscriptions";
 
 const COPY = {
   us: {
@@ -192,28 +190,6 @@ function writeGlobalMuted(value: boolean) {
   }
 }
 
-function getSubs(): string[] {
-  try {
-    const raw = localStorage.getItem(SUB_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
-}
-
-function toggleSub(handle: string) {
-  const current = getSubs();
-  const exists = current.includes(handle);
-
-  const next = exists
-    ? current.filter((h) => h !== handle)
-    : [...current, handle];
-
-  localStorage.setItem(SUB_KEY, JSON.stringify(next));
-  return next;
-}
 
 function linkifyText(text: string) {
   const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|t\.me\/[^\s]+)/gi;
@@ -349,7 +325,6 @@ export function FeedViewer({
 
   const [expandedText, setExpandedText] = useState(false);
   const [showCenterControl, setShowCenterControl] = useState(false);
-  const [subscribed, setSubscribed] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [menuAnchorRect, setMenuAnchorRect] = useState<{ top: number; right: number } | null>(null);
@@ -414,7 +389,6 @@ export function FeedViewer({
 
     setExpandedText(false);
     setShowCenterControl(false);
-    setSubscribed(getSubs().includes(activePost.source.handle));
     setCurrentTime(0);
     setDuration(0);
     setMenuPostId(null);
@@ -441,6 +415,8 @@ export function FeedViewer({
       setDuration(0);
       return;
     }
+
+    node.loop = true;
 
     const syncMeta = () => {
       setDuration(Number.isFinite(node.duration) ? node.duration : 0);
@@ -480,7 +456,6 @@ export function FeedViewer({
     node.addEventListener("timeupdate", onTimeUpdate);
     node.addEventListener("play", onPlay);
     node.addEventListener("pause", onPause);
-    node.addEventListener("ended", onPause);
 
     node.load();
 
@@ -511,7 +486,6 @@ export function FeedViewer({
         node.removeEventListener("timeupdate", onTimeUpdate);
         node.removeEventListener("play", onPlay);
         node.removeEventListener("pause", onPause);
-        node.removeEventListener("ended", onPause);
         node.removeEventListener("canplay", handleCanPlay);
       };
     }
@@ -522,7 +496,6 @@ export function FeedViewer({
       node.removeEventListener("timeupdate", onTimeUpdate);
       node.removeEventListener("play", onPlay);
       node.removeEventListener("pause", onPause);
-      node.removeEventListener("ended", onPause);
     };
   }, [activePost?.id, viewerMediaIndex, activeItem?.id, activeItem?.kind, setIsPlaying]);
 
@@ -631,13 +604,6 @@ export function FeedViewer({
     }, 420);
   };
 
-  const handleSubscribeClick = () => {
-    const next = toggleSub(activePost.source.handle);
-
-    setSubscribed(next.includes(activePost.source.handle));
-    window.dispatchEvent(new Event("storage"));
-  };
-
   return (
     <AnimatePresence>
       <motion.div
@@ -701,25 +667,9 @@ export function FeedViewer({
           </div>
 
           <div
-            className="notranslate absolute right-4 z-30 flex items-center gap-2"
+            className="notranslate absolute right-4 z-30"
             style={{ top: "calc(env(safe-area-inset-top, 0px) + 16px)" }}
           >
-            <button
-              type="button"
-              onClick={(event) => {
-                event.stopPropagation();
-                handleSubscribeClick();
-              }}
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white"
-              aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
-            >
-              <Bell
-                className={`h-5 w-5 ${
-                  subscribed ? "fill-current text-white" : "text-white"
-                }`}
-              />
-            </button>
-
             <button
               type="button"
               onClick={(event) => {
