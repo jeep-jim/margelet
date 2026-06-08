@@ -1,16 +1,13 @@
-import { ArrowLeft, Bell, Moon, Sun, User } from "lucide-react";
+import { ArrowLeft, Bell, Moon, Search, Sun, User, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { Locale, TabId } from "../../types/app";
-import {
-  FEED_FILTER_STATE_EVENT,
-  FEED_FILTER_TOGGLE_EVENT,
-} from "../../screens/feed/feed.constants";
-import { MargeletMark } from "../shared/MargeletMark";
 import { getTheme, toggleTheme, type Theme } from "../../lib/theme";
 
 const TG_STORAGE_KEY = "margelet_tg_user";
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
+const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
+const FEED_SEARCH_STATE_EVENT = "margelet:feed-search-state";
 
 type Props = {
   current: TabId;
@@ -39,8 +36,8 @@ function readTelegramUserFromStorage(): TgUser | null {
 
 export function AppHeader({ current, setCurrent }: Props) {
   const [user, setUser] = useState<TgUser | null>(null);
-  const [filtersOpen, setFiltersOpen] = useState(false);
   const [subscriptionsOpen, setSubscriptionsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [hasNewSubscriptions, setHasNewSubscriptions] = useState(false);
   const [theme, setTheme] = useState<Theme>(() => getTheme());
 
@@ -87,29 +84,26 @@ export function AppHeader({ current, setCurrent }: Props) {
       setHasNewSubscriptions(Boolean(detail?.hasNew));
     };
 
+    const handleSubscriptionsState = (event: Event) => {
+      const detail = (event as CustomEvent<{ open?: boolean }>).detail;
+      if (typeof detail?.open === "boolean") {
+        setSubscriptionsOpen(detail.open);
+      }
+    };
+
+    const handleSearchState = (event: Event) => {
+      const detail = (event as CustomEvent<{ open?: boolean }>).detail;
+      setSearchOpen(Boolean(detail?.open));
+    };
+
     window.addEventListener(FEED_SUBSCRIPTIONS_BADGE_EVENT, handleBadge as EventListener);
+    window.addEventListener(FEED_SUBSCRIPTIONS_TOGGLE_EVENT, handleSubscriptionsState as EventListener);
+    window.addEventListener(FEED_SEARCH_STATE_EVENT, handleSearchState as EventListener);
 
     return () => {
       window.removeEventListener(FEED_SUBSCRIPTIONS_BADGE_EVENT, handleBadge as EventListener);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleState = (event: Event) => {
-      const customEvent = event as CustomEvent<boolean>;
-      setFiltersOpen(Boolean(customEvent.detail));
-    };
-
-    window.addEventListener(
-      FEED_FILTER_STATE_EVENT,
-      handleState as EventListener
-    );
-
-    return () => {
-      window.removeEventListener(
-        FEED_FILTER_STATE_EVENT,
-        handleState as EventListener
-      );
+      window.removeEventListener(FEED_SUBSCRIPTIONS_TOGGLE_EVENT, handleSubscriptionsState as EventListener);
+      window.removeEventListener(FEED_SEARCH_STATE_EVENT, handleSearchState as EventListener);
     };
   }, []);
 
@@ -119,7 +113,7 @@ export function AppHeader({ current, setCurrent }: Props) {
 
   const handleLeftAction = () => {
     if (current === "feed") {
-      window.dispatchEvent(new CustomEvent(FEED_FILTER_TOGGLE_EVENT));
+      window.dispatchEvent(new CustomEvent(FEED_SEARCH_TOGGLE_EVENT));
       return;
     }
 
@@ -129,15 +123,7 @@ export function AppHeader({ current, setCurrent }: Props) {
   const handleToggleSubscriptions = () => {
     if (current !== "feed") return;
 
-    setSubscriptionsOpen((prev) => {
-      const next = !prev;
-      window.dispatchEvent(
-        new CustomEvent(FEED_SUBSCRIPTIONS_TOGGLE_EVENT, {
-          detail: { open: next },
-        })
-      );
-      return next;
-    });
+    window.dispatchEvent(new CustomEvent(FEED_SUBSCRIPTIONS_TOGGLE_EVENT));
   };
 
   const handleToggleTheme = () => {
@@ -166,17 +152,21 @@ export function AppHeader({ current, setCurrent }: Props) {
       <div className="mx-auto grid h-16 w-full max-w-[570px] grid-cols-[auto_auto_1fr_auto_auto] items-center gap-2 px-4">
         <button
           onClick={handleLeftAction}
-          className="flex h-10 w-10 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft"
-          aria-label={current === "feed" ? "Фильтры" : "Назад"}
-          title={current === "feed" ? "Фильтры" : "Назад"}
+          className={`flex h-10 w-10 items-center justify-center rounded-full transition ${
+            current === "feed" && searchOpen
+              ? "bg-surface-soft text-primary"
+              : "text-secondary hover:bg-surface-soft hover:text-primary"
+          }`}
+          aria-label={current === "feed" ? (searchOpen ? "Закрыть поиск" : "Поиск") : "Назад"}
+          title={current === "feed" ? (searchOpen ? "Закрыть поиск" : "Поиск") : "Назад"}
           type="button"
         >
           {showBackArrow ? (
             <ArrowLeft className="h-5 w-5 text-primary" />
+          ) : searchOpen ? (
+            <X className="h-5 w-5" />
           ) : (
-            <div className={`transition ${filtersOpen ? "rotate-210" : "rotate-240"}`}>
-              <MargeletMark className="h-5 w-5" colorClassName="text-primary" />
-            </div>
+            <Search className="h-5 w-5" />
           )}
         </button>
 

@@ -1,8 +1,10 @@
-import { Bell, Search, X } from "lucide-react";
+import { Bell, ChevronDown, Search, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Locale } from "../types/app";
 import type { ContentTag, IngestedPost } from "../types/app";
-import { getParentTag, isChildTag, isParentTag } from "../lib/tag-utils";
+import { getParentTag, isChildTag, isParentTag, resolveTagLabel } from "../lib/tag-utils";
+import { SITE_TAG_GROUPS } from "../lib/tags";
 import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
@@ -35,6 +37,10 @@ const LOAD_MORE_DISTANCE_PX = 900;
 const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
+const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
+const FEED_SEARCH_STATE_EVENT = "margelet:feed-search-state";
+const FEED_SEARCH_PANEL_STORAGE_KEY = "margelet_feed_search_panel_open";
+const FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY = "margelet_feed_subscriptions_panel_open";
 
 type FeedSettings = {
   mediaMode: FeedMediaMode;
@@ -189,6 +195,30 @@ function readSearchQueryFromStorage() {
   } catch {
     return "";
   }
+}
+
+function readBooleanFromStorage(key: string, fallback: boolean) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (raw === null) return fallback;
+    return raw === "1" || raw === "true";
+  } catch {
+    return fallback;
+  }
+}
+
+function writeBooleanToStorage(key: string, value: boolean) {
+  try {
+    localStorage.setItem(key, value ? "1" : "0");
+  } catch {
+    //
+  }
+}
+
+function stripLeadingTagEmoji(value: string) {
+  return String(value || "")
+    .replace(/^\s*[\p{Emoji_Presentation}\p{Extended_Pictographic}\uFE0F\u200D]+\s*/u, "")
+    .trim();
 }
 
 function readSubscriptionsFromStorage(): string[] {
@@ -556,21 +586,98 @@ function FeedTopSearch({
   locale,
   searchQuery,
   setSearchQuery,
+  detectedTags,
+  selectedTags,
+  onToggleTag,
+  categoriesOpen,
+  onToggleCategories,
+  forceFloating,
+  onCloseFloating,
 }: {
   locale: Locale;
   searchQuery: string;
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+  detectedTags: Array<{ value: ContentTag; emoji: string; label: string; count: number }>;
+  selectedTags: ContentTag[];
+  onToggleTag: (tag: ContentTag) => void;
+  categoriesOpen: boolean;
+  onToggleCategories: () => void;
+  forceFloating: boolean;
+  onCloseFloating: () => void;
 }) {
   const [focused, setFocused] = useState(false);
   const hasQuery = searchQuery.trim().length > 0;
+  const isFloating = hasQuery || forceFloating;
+  const canPortal =
+    typeof document !== "undefined" &&
+    typeof document.body !== "undefined";
+
   const placeholder =
     locale === "ru"
       ? "Поиск по каналу, тексту, теме..."
       : "Search by channel, text, topic...";
 
-  return (
-    <div className="mx-auto w-full max-w-[570px] px-4 pb-3 pt-3">
+  const searchNode = (
+      <div
+        data-feed-main-search="true"
+        className={[
+          "feed-main-search-wrap w-full px-4",
+          isFloating
+            ? "feed-main-search-sticky feed-main-search-floating pb-4 pt-2"
+            : "mx-auto max-w-[570px] pb-3 pt-2",
+        ].join(" ")}
+      >
       <style>{`
+        .feed-main-search-wrap {
+          position: relative;
+        }
+
+        .feed-main-search-floating {
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: var(--app-header-offset);
+          z-index: 9999;
+          max-width: 570px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .feed-main-search-sticky {
+          background: linear-gradient(
+            to bottom,
+            rgba(18, 31, 44, .54) 0%,
+            rgba(18, 31, 44, .34) 46%,
+            rgba(18, 31, 44, .12) 78%,
+            rgba(18, 31, 44, 0) 100%
+          );
+          backdrop-filter: blur(26px);
+          -webkit-backdrop-filter: blur(26px);
+        }
+
+        [data-theme="light"] .feed-main-search-sticky {
+          background: linear-gradient(
+            to bottom,
+            rgba(245, 248, 252, .88) 0%,
+            rgba(245, 248, 252, .60) 48%,
+            rgba(245, 248, 252, .18) 80%,
+            rgba(245, 248, 252, 0) 100%
+          );
+        }
+
+        .feed-main-search-toggle {
+          --feed-main-search-toggle-border: #294963;
+          border: 2px solid var(--feed-main-search-toggle-border);
+        }
+
+        [data-theme="light"] .feed-main-search-toggle {
+          --feed-main-search-toggle-border: #cbd5e1;
+        }
+
+        .feed-main-search-toggle-active {
+          border-color: #41d25a;
+        }
+
         .feed-main-search-shell {
           --feed-main-search-bg: #142231;
           --feed-main-search-border: #294963;
@@ -594,7 +701,11 @@ function FeedTopSearch({
         }
 
         .feed-main-search-focus {
-          background: var(--feed-main-search-border);
+          background:
+            linear-gradient(var(--feed-main-search-bg), var(--feed-main-search-bg)) padding-box,
+            linear-gradient(90deg, var(--feed-main-search-border), var(--feed-main-search-border)) border-box;
+          border: 2px solid transparent;
+          background-size: 100% 100%, 100% 100%;
         }
 
         .feed-main-search-filled {
@@ -607,39 +718,97 @@ function FeedTopSearch({
         }
       `}</style>
 
-      <div
-        className={[
-          "feed-main-search-shell relative h-12 w-full rounded-full",
-          hasQuery ? "feed-main-search-filled" : focused ? "feed-main-search-focus" : "feed-main-search-idle",
-        ].join(" ")}
-      >
-        <div className="relative h-full rounded-full bg-[var(--feed-main-search-bg)] text-[var(--feed-main-search-text)]">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
-          <input
-            value={searchQuery}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            onChange={(event) => setSearchQuery(event.target.value)}
-            placeholder={placeholder}
-            enterKeyHint="search"
-            className="h-full w-full rounded-full bg-transparent pl-11 pr-12 text-[15px] font-semibold outline-none placeholder:text-secondary"
-          />
+      <div className="flex items-center gap-2">
+        <div
+          className={[
+            "feed-main-search-shell relative h-12 min-w-0 flex-1 rounded-full",
+            hasQuery ? "feed-main-search-filled" : focused ? "feed-main-search-focus" : "feed-main-search-idle",
+          ].join(" ")}
+        >
+          <div className="relative h-full rounded-full bg-[var(--feed-main-search-bg)] text-[var(--feed-main-search-text)]">
+            <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
+            <input
+              value={searchQuery}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              placeholder={placeholder}
+              enterKeyHint="search"
+              className="h-full w-full rounded-full bg-transparent pl-11 pr-12 text-[15px] font-semibold outline-none placeholder:text-secondary"
+            />
 
-          {hasQuery ? (
-            <button
-              type="button"
-              onClick={() => setSearchQuery("")}
-              className="absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-surface-soft text-secondary transition hover:opacity-90"
-              aria-label="Очистить"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          ) : null}
+            {hasQuery ? (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  if (isFloating) onCloseFloating();
+                }}
+                className="absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-surface-soft text-secondary transition hover:opacity-90"
+                aria-label="Очистить"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            ) : null}
+          </div>
         </div>
+
+        <button
+          type="button"
+          onClick={detectedTags.length > 0 ? onToggleCategories : undefined}
+          disabled={detectedTags.length === 0}
+          className={[
+            "feed-main-search-toggle grid h-12 w-12 shrink-0 place-items-center rounded-full bg-surface text-secondary shadow-soft transition hover:bg-surface-soft hover:text-primary disabled:opacity-45",
+            categoriesOpen ? "feed-main-search-toggle-active" : "",
+          ].join(" ")}
+          aria-label={categoriesOpen ? "Скрыть категории" : "Показать категории"}
+          title={categoriesOpen ? "Скрыть категории" : "Показать категории"}
+        >
+          <ChevronDown className={`h-5 w-5 transition ${categoriesOpen ? "rotate-180" : ""}`} />
+        </button>
       </div>
-    </div>
+
+      {categoriesOpen && detectedTags.length > 0 ? (
+        <div className="mt-2 grid grid-cols-5 gap-x-1 gap-y-2 sm:grid-cols-9 sm:gap-x-1.5">
+          {detectedTags.map((tag) => {
+            const active = selectedTags.includes(tag.value);
+
+            return (
+              <button
+                key={tag.value}
+                type="button"
+                onClick={() => onToggleTag(tag.value)}
+                className="flex min-w-0 flex-col items-center gap-1 rounded-2xl px-1 py-1.5 text-center transition hover:bg-surface-soft"
+                title={`${tag.label} · ${tag.count}`}
+              >
+                <span
+                  className={`grid h-10 w-10 place-items-center rounded-full border text-lg shadow-sm ${
+                    active
+                      ? "border-[#38d25a] bg-[#38d25a] text-[#07140c]"
+                      : "border-soft bg-surface-soft text-primary"
+                  }`}
+                >
+                  {tag.emoji}
+                </span>
+                <span className="w-full truncate text-[10px] font-medium text-secondary">
+                  {stripLeadingTagEmoji(tag.label)}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
+      </div>
+  );
+
+  return (
+    <>
+      {isFloating && hasQuery ? <div className="h-[60px]" aria-hidden="true" /> : null}
+      {isFloating && canPortal ? createPortal(searchNode, document.body) : searchNode}
+    </>
   );
 }
+
 
 function VideoGridView({
   posts,
@@ -909,7 +1078,18 @@ export function FeedScreen({
   );
   const [selectedAttentionTopic, setSelectedAttentionTopic] = useState<string | null>(null);
   const [showFloatingSmartBar, setShowFloatingSmartBar] = useState(false);
-  const [subscriptionsPanelOpen, setSubscriptionsPanelOpen] = useState(false);
+  const [subscriptionsPanelOpen, setSubscriptionsPanelOpen] = useState(() =>
+    typeof window === "undefined"
+      ? false
+      : readBooleanFromStorage(FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY, false)
+  );
+  const [searchPanelOpen, setSearchPanelOpen] = useState(() =>
+    typeof window === "undefined"
+      ? true
+      : readBooleanFromStorage(FEED_SEARCH_PANEL_STORAGE_KEY, true)
+  );
+  const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
+  const [searchCategoriesOpen, setSearchCategoriesOpen] = useState(false);
   const lastScrollYRef = useRef(0);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -952,7 +1132,16 @@ export function FeedScreen({
 
   useEffect(() => {
     setSelectedTags(readSelectedTagsFromStorage());
-    setSearchQuery(readSearchQueryFromStorage());
+    const storedSearchQuery = readSearchQueryFromStorage();
+    setSearchQuery(storedSearchQuery);
+    setSearchPanelOpen(
+      storedSearchQuery.trim().length > 0 ||
+        readBooleanFromStorage(FEED_SEARCH_PANEL_STORAGE_KEY, true)
+    );
+    setSearchOverlayOpen(false);
+    setSubscriptionsPanelOpen(
+      readBooleanFromStorage(FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY, false)
+    );
     setSubscriptionHandles(readSubscriptionsFromStorage());
     setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
     setFeedSettings(readFeedSettingsFromStorage(locale));
@@ -974,6 +1163,19 @@ export function FeedScreen({
   useEffect(() => {
     localStorage.setItem(FEED_SEARCH_STORAGE_KEY, searchQuery);
   }, [searchQuery]);
+
+  useEffect(() => {
+    writeBooleanToStorage(FEED_SEARCH_PANEL_STORAGE_KEY, searchPanelOpen);
+  }, [searchPanelOpen]);
+
+  useEffect(() => {
+    writeBooleanToStorage(FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY, subscriptionsPanelOpen);
+    window.dispatchEvent(
+      new CustomEvent(FEED_SUBSCRIPTIONS_TOGGLE_EVENT, {
+        detail: { open: subscriptionsPanelOpen },
+      })
+    );
+  }, [subscriptionsPanelOpen]);
 
   useEffect(() => {
     writeFeedSettingsToStorage(feedSettings);
@@ -1009,7 +1211,10 @@ export function FeedScreen({
   useEffect(() => {
     const handleSubscriptionPanelToggle = (event: Event) => {
       const detail = (event as CustomEvent<{ open?: boolean }>).detail;
-      setSubscriptionsPanelOpen(Boolean(detail?.open));
+
+      setSubscriptionsPanelOpen((prev) =>
+        typeof detail?.open === "boolean" ? detail.open : !prev
+      );
     };
 
     window.addEventListener(
@@ -1029,6 +1234,55 @@ export function FeedScreen({
     if (!seenPostsHydratedRef.current) return;
     writeSeenPostsToStorage(seenPosts);
   }, [seenPosts]);
+
+  useEffect(() => {
+    const handleSearchToggle = () => {
+      if (feedSettings.mediaMode === "trends") return;
+
+      if (searchOverlayOpen || searchQuery.trim().length > 0) {
+        setSearchOverlayOpen(false);
+        setSearchCategoriesOpen(false);
+        if (searchQuery.trim().length > 0) {
+          setSearchQuery("");
+        }
+        setSearchPanelOpen(true);
+        return;
+      }
+
+      setSearchPanelOpen(true);
+      setSearchOverlayOpen(true);
+    };
+
+    window.addEventListener(FEED_SEARCH_TOGGLE_EVENT, handleSearchToggle as EventListener);
+
+    return () => {
+      window.removeEventListener(FEED_SEARCH_TOGGLE_EVENT, handleSearchToggle as EventListener);
+    };
+  }, [feedSettings.mediaMode, searchOverlayOpen, searchQuery]);
+
+  useEffect(() => {
+    if (searchQuery.trim().length > 0) {
+      setSearchPanelOpen(true);
+    }
+  }, [searchQuery]);
+
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent(FEED_SEARCH_STATE_EVENT, {
+        detail: {
+          open: searchOverlayOpen || searchQuery.trim().length > 0,
+          hasQuery: searchQuery.trim().length > 0,
+        },
+      })
+    );
+  }, [searchOverlayOpen, searchQuery]);
+
+  useEffect(() => {
+    if (feedSettings.mediaMode === "trends") {
+      setSearchOverlayOpen(false);
+      setSearchCategoriesOpen(false);
+    }
+  }, [feedSettings.mediaMode]);
 
 
   useEffect(() => {
@@ -1135,8 +1389,6 @@ export function FeedScreen({
       window.removeEventListener("scroll", handleScroll);
     };
   }, [tagsOpen, viewerIndex, textReaderPost]);  
-
-  {!tagsOpen && showFloatingSmartBar ? <div className="h-[74px]" /> : null}
 
   const safePosts = useMemo(() => {
     return posts.filter(
@@ -1743,6 +1995,24 @@ export function FeedScreen({
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
+  const detectedTagOptions = useMemo(() => {
+    return SITE_TAG_GROUPS
+      .map((group) => ({
+        value: group.value as ContentTag,
+        emoji: group.emoji,
+        label: resolveTagLabel(group.value, locale) || group.value,
+        count: tagStats[group.value as ContentTag] ?? 0,
+      }))
+      .filter((item) => item.count > 0)
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 18);
+  }, [locale, tagStats]);
+
+  const shouldShowTopSearch =
+    !tagsOpen &&
+    feedSettings.mediaMode !== "trends" &&
+    (searchPanelOpen || searchQuery.trim().length > 0);
+
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
       <FeedHeader
@@ -1773,6 +2043,8 @@ export function FeedScreen({
           floating
           visible={
             showFloatingSmartBar &&
+            !searchOverlayOpen &&
+            searchQuery.trim().length === 0 &&
             viewerIndex === null &&
             textReaderPost === null
           }
@@ -1784,7 +2056,7 @@ export function FeedScreen({
         />
       ) : null}
 
-      {!tagsOpen ? (
+{!tagsOpen ? (
         <SmartFeedBar
           copy={copy}
           mediaMode={feedSettings.mediaMode}
@@ -1804,13 +2076,22 @@ export function FeedScreen({
         />        
       ) : null}
 
-
-
-      {!tagsOpen && feedSettings.mediaMode !== "trends" ? (
+      {shouldShowTopSearch ? (
         <FeedTopSearch
           locale={locale}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
+          detectedTags={detectedTagOptions}
+          selectedTags={selectedTags}
+          onToggleTag={toggleTag}
+          categoriesOpen={searchCategoriesOpen}
+          onToggleCategories={() => setSearchCategoriesOpen((prev) => !prev)}
+          forceFloating={searchOverlayOpen || searchQuery.trim().length > 0}
+          onCloseFloating={() => {
+            setSearchOverlayOpen(false);
+            setSearchCategoriesOpen(false);
+            setSearchPanelOpen(true);
+          }}
         />
       ) : null}
 
