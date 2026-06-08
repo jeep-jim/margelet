@@ -1,5 +1,5 @@
 import { ArrowLeft, ChevronDown, Search, X } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import type { IngestedPost, Locale } from "../../types/app";
 import {
   buildCategories,
@@ -21,6 +21,105 @@ import {
   type TrendItem,
   writeFollowedTopics,
 } from "./trends/trends.shared";
+
+
+function TrendsSearchBox({
+  value,
+  onChange,
+  placeholder,
+  clearLabel,
+  inputRef,
+  onFocus,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder: string;
+  clearLabel: string;
+  inputRef?: RefObject<HTMLInputElement | null>;
+  onFocus?: () => void;
+}) {
+  const [focused, setFocused] = useState(false);
+  const hasQuery = value.trim().length > 0;
+
+  return (
+    <form
+      className="relative min-w-0 flex-1"
+      onSubmit={(event) => event.preventDefault()}
+    >
+      <style>{`
+        .trends-search-shell {
+          --trends-search-bg: #142231;
+          --trends-search-border: #294963;
+          --trends-search-text: var(--text-primary);
+          --trends-search-muted: var(--text-secondary);
+          padding: 2px;
+        }
+
+        [data-theme="light"] .trends-search-shell {
+          --trends-search-bg: #ffffff;
+          --trends-search-border: #cbd5e1;
+        }
+
+        .trends-search-idle {
+          background:
+            linear-gradient(var(--trends-search-bg), var(--trends-search-bg)) padding-box,
+            linear-gradient(90deg, var(--trends-search-border) 0%, var(--trends-search-border) 62%, #ff4d8d 73%, #ff4d8d 81%, var(--trends-search-border) 94%, var(--trends-search-border) 100%) border-box;
+          border: 2px solid transparent;
+          background-size: 100% 100%, 260% 100%;
+          animation: trendsSearchRun 3.2s ease-in-out infinite;
+        }
+
+        .trends-search-focus {
+          background: var(--trends-search-border);
+        }
+
+        .trends-search-filled {
+          background: #41d25a;
+        }
+
+        @keyframes trendsSearchRun {
+          0% { background-position: 0 0, 0% 50%; }
+          100% { background-position: 0 0, 200% 50%; }
+        }
+      `}</style>
+
+      <div
+        className={[
+          "trends-search-shell relative h-12 w-full rounded-full",
+          hasQuery ? "trends-search-filled" : focused ? "trends-search-focus" : "trends-search-idle",
+        ].join(" ")}
+      >
+        <div className="relative h-full rounded-full bg-[var(--trends-search-bg)] text-[var(--trends-search-text)]">
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
+          <input
+            ref={inputRef}
+            value={value}
+            onFocus={() => {
+              setFocused(true);
+              onFocus?.();
+            }}
+            onBlur={() => setFocused(false)}
+            onChange={(event) => onChange(event.target.value)}
+            placeholder={placeholder}
+            enterKeyHint="search"
+            className="h-full w-full rounded-full bg-transparent pl-11 pr-12 text-[15px] font-semibold text-primary outline-none placeholder:text-secondary"
+          />
+
+          {hasQuery ? (
+            <button
+              type="button"
+              onClick={() => onChange("")}
+              className="absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-surface-soft text-secondary transition hover:opacity-90"
+              aria-label={clearLabel}
+            >
+              <X className="h-4 w-4" />
+            </button>
+          ) : null}
+        </div>
+      </div>
+    </form>
+  );
+}
 
 export function TrendsView({
   countryCode = "ru",
@@ -350,29 +449,13 @@ export function TrendsView({
               <ArrowLeft className="h-4 w-4" />
             </button>
 
-            <form
-              className="relative min-w-0 flex-1"
-              onSubmit={(event) => event.preventDefault()}
-            >
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
-              <input
-                ref={searchInputRef}
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder={copy.searchPlaceholder}
-                className="w-full rounded-2xl border border-soft bg-surface py-3 pl-11 pr-12 text-base text-primary outline-none placeholder:text-secondary focus:border-[color:var(--border-strong)]"
-              />
-              {query.trim() ? (
-                <button
-                  type="button"
-                  onClick={() => setQuery("")}
-                  className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft hover:text-primary"
-                  aria-label={copy.clearSearch}
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              ) : null}
-            </form>
+            <TrendsSearchBox
+              value={query}
+              onChange={setQuery}
+              placeholder={copy.searchPlaceholder}
+              clearLabel={copy.clearSearch}
+              inputRef={searchInputRef}
+            />
           </div>
 
           {query.trim() && searchModeTrends[0]?.countries?.length ? (
@@ -439,31 +522,15 @@ export function TrendsView({
 
   return (
     <div className="mx-auto max-w-[570px] px-4 pb-36 pt-3">
-      <form
-        className="relative mb-3"
-        onSubmit={(event) => event.preventDefault()}
-      >
-        <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
-
-        <input
+      <div className="mb-3">
+        <TrendsSearchBox
           value={query}
-          onFocus={() => setSearchMode(true)}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={setQuery}
           placeholder={copy.searchPlaceholder}
-          className="w-full rounded-2xl border border-soft bg-surface py-3 pl-11 pr-12 text-sm text-primary outline-none placeholder:text-secondary focus:border-[color:var(--border-strong)]"
+          clearLabel={copy.clearSearch}
+          onFocus={() => setSearchMode(true)}
         />
-
-        {query.trim() ? (
-          <button
-            type="button"
-            onClick={() => setQuery("")}
-            className="absolute right-3 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full text-secondary transition hover:bg-surface-soft hover:text-primary"
-            aria-label={copy.clearSearch}
-          >
-            <X className="h-4 w-4" />
-          </button>
-        ) : null}
-      </form>
+      </div>
 
       <div className="mb-4">
         <div className="grid grid-cols-6 gap-2">

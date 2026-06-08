@@ -1,6 +1,6 @@
-import { Moon, Plus, Sun } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getTheme, toggleTheme, type Theme } from "../lib/theme";
+import { getTheme, type Theme } from "../lib/theme";
 import { CreatorAboutPanel } from "./creator/CreatorAboutPanel";
 import { CreatorAuthBlock } from "./creator/CreatorAuthBlock";
 import { CreatorChannelPanel } from "./creator/CreatorChannelPanel";
@@ -8,7 +8,6 @@ import { CreatorLanguageChip } from "./creator/CreatorLanguageChip";
 import { CreatorLanguagePanel } from "./creator/CreatorLanguagePanel";
 import { CreatorManifestModal } from "./creator/CreatorManifestModal";
 import { CreatorProfileBlock } from "./creator/CreatorProfileBlock";
-import { CreatorTopIconButton } from "./creator/CreatorTopIconButton";
 import {
   INTRO_LANGUAGE_STORAGE_KEY,
   INTRO_SEEN_STORAGE_KEY,
@@ -81,10 +80,6 @@ export function CreatorScreen({
     localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLocale);
   };
 
-  const handleToggleTheme = () => {
-    const next = toggleTheme();
-    setTheme(next);
-  };
 
   const handleReplayIntro = () => {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, introLocale);
@@ -129,12 +124,6 @@ export function CreatorScreen({
             </div>            
 
             <div className="flex shrink-0 items-center gap-2">
-              <CreatorTopIconButton
-                active={theme === "dark"}
-                onClick={handleToggleTheme}
-                icon={theme === "dark" ? Sun : Moon}
-                title="Theme"
-              />
 
               <CreatorLanguageChip
                 active={tab === "language"}

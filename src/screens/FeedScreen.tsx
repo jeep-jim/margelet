@@ -1,4 +1,4 @@
-import { Bell } from "lucide-react";
+import { Bell, Search, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "../types/app";
 import type { ContentTag, IngestedPost } from "../types/app";
@@ -33,6 +33,8 @@ const INITIAL_RENDER_POSTS = 18;
 const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
 const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
+const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
+const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
 
 type FeedSettings = {
   mediaMode: FeedMediaMode;
@@ -549,6 +551,96 @@ function getVideoGridCardBreak(post: IngestedPost, index: number) {
   return "";
 }
 
+
+function FeedTopSearch({
+  locale,
+  searchQuery,
+  setSearchQuery,
+}: {
+  locale: Locale;
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const [focused, setFocused] = useState(false);
+  const hasQuery = searchQuery.trim().length > 0;
+  const placeholder =
+    locale === "ru"
+      ? "Поиск по каналу, тексту, теме..."
+      : "Search by channel, text, topic...";
+
+  return (
+    <div className="mx-auto w-full max-w-[570px] px-4 pb-3 pt-3">
+      <style>{`
+        .feed-main-search-shell {
+          --feed-main-search-bg: #142231;
+          --feed-main-search-border: #294963;
+          --feed-main-search-text: var(--text-primary);
+          --feed-main-search-muted: var(--text-secondary);
+          padding: 2px;
+        }
+
+        [data-theme="light"] .feed-main-search-shell {
+          --feed-main-search-bg: #ffffff;
+          --feed-main-search-border: #cbd5e1;
+        }
+
+        .feed-main-search-idle {
+          background:
+            linear-gradient(var(--feed-main-search-bg), var(--feed-main-search-bg)) padding-box,
+            linear-gradient(90deg, var(--feed-main-search-border) 0%, var(--feed-main-search-border) 62%, #ff4d8d 73%, #ff4d8d 81%, var(--feed-main-search-border) 94%, var(--feed-main-search-border) 100%) border-box;
+          border: 2px solid transparent;
+          background-size: 100% 100%, 260% 100%;
+          animation: feedMainSearchRun 3.2s ease-in-out infinite;
+        }
+
+        .feed-main-search-focus {
+          background: var(--feed-main-search-border);
+        }
+
+        .feed-main-search-filled {
+          background: #41d25a;
+        }
+
+        @keyframes feedMainSearchRun {
+          0% { background-position: 0 0, 0% 50%; }
+          100% { background-position: 0 0, 200% 50%; }
+        }
+      `}</style>
+
+      <div
+        className={[
+          "feed-main-search-shell relative h-12 w-full rounded-full",
+          hasQuery ? "feed-main-search-filled" : focused ? "feed-main-search-focus" : "feed-main-search-idle",
+        ].join(" ")}
+      >
+        <div className="relative h-full rounded-full bg-[var(--feed-main-search-bg)] text-[var(--feed-main-search-text)]">
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
+          <input
+            value={searchQuery}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            onChange={(event) => setSearchQuery(event.target.value)}
+            placeholder={placeholder}
+            enterKeyHint="search"
+            className="h-full w-full rounded-full bg-transparent pl-11 pr-12 text-[15px] font-semibold outline-none placeholder:text-secondary"
+          />
+
+          {hasQuery ? (
+            <button
+              type="button"
+              onClick={() => setSearchQuery("")}
+              className="absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-full bg-surface-soft text-secondary transition hover:opacity-90"
+              aria-label="Очистить"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function VideoGridView({
   posts,
   locale,
@@ -817,6 +909,7 @@ export function FeedScreen({
   );
   const [selectedAttentionTopic, setSelectedAttentionTopic] = useState<string | null>(null);
   const [showFloatingSmartBar, setShowFloatingSmartBar] = useState(false);
+  const [subscriptionsPanelOpen, setSubscriptionsPanelOpen] = useState(false);
   const lastScrollYRef = useRef(0);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -909,6 +1002,26 @@ export function FeedScreen({
 
     return () => {
       window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic as EventListener);
+    };
+  }, []);
+
+
+  useEffect(() => {
+    const handleSubscriptionPanelToggle = (event: Event) => {
+      const detail = (event as CustomEvent<{ open?: boolean }>).detail;
+      setSubscriptionsPanelOpen(Boolean(detail?.open));
+    };
+
+    window.addEventListener(
+      FEED_SUBSCRIPTIONS_TOGGLE_EVENT,
+      handleSubscriptionPanelToggle as EventListener
+    );
+
+    return () => {
+      window.removeEventListener(
+        FEED_SUBSCRIPTIONS_TOGGLE_EVENT,
+        handleSubscriptionPanelToggle as EventListener
+      );
     };
   }, []);
 
@@ -1105,6 +1218,15 @@ export function FeedScreen({
       return b.latestPostId - a.latestPostId;
     });
   }, [safePosts, subscriptionHandles, seenSubscriptionPosts]);
+
+
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent(FEED_SUBSCRIPTIONS_BADGE_EVENT, {
+        detail: { hasNew: subscriptionBubbles.some((item) => item.hasNew) },
+      })
+    );
+  }, [subscriptionBubbles]);
 
   const markPostSeen = useCallback((postId: number) => {
     if (!Number.isFinite(postId)) return;
@@ -1335,7 +1457,8 @@ export function FeedScreen({
     safePosts,
     feedSettings,
     selectedTags,
-      locale,
+    searchQuery,
+    locale,
     initialSeenPosts,
   ]);
 
@@ -1681,11 +1804,21 @@ export function FeedScreen({
         />        
       ) : null}
 
-      {!tagsOpen && feedSettings.mediaMode !== "trends" && !hasSubscriptions ? (
+
+
+      {!tagsOpen && feedSettings.mediaMode !== "trends" ? (
+        <FeedTopSearch
+          locale={locale}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+        />
+      ) : null}
+
+{!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" && !hasSubscriptions ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
       ) : null}
 
-      {!tagsOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && hasBubbles ? (
+      {!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && hasBubbles ? (
         <SubscriptionsBar
           items={subscriptionBubbles}
           onOpen={(handle) => {
@@ -1707,9 +1840,11 @@ export function FeedScreen({
         />
       ) : null}
 
-      {!tagsOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && !hasBubbles ? (
+      {!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && !hasBubbles ? (
         <SubscriptionsHint text={copy.subscriptionsHint} />
       ) : null}
+
+      
 
       {actionError ? (
         <div className="mx-auto mb-3 w-full max-w-[570px] px-4">
