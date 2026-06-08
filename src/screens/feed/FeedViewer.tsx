@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
   Bell,
+  MoreVertical,
   Pause,
   Play,
   Volume2,
@@ -11,7 +12,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { ViewerProps } from "./feed.types";
 import { FeedCarousel } from "./FeedCarousel";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
+import { FeedMoreMenu } from "./FeedMoreMenu";
 import { normalizeMediaList } from "./feed.utils";
+import { ADMIN_TELEGRAM_IDS } from "./feed.constants";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
 import { getAutotranslit, getCountryLanguage, requestGTranslate } from "../../lib/autotranslit";
 
@@ -315,8 +318,8 @@ export function FeedViewer({
   isPlaying,
   setIsPlaying,
   copySuccessId: _copySuccessId,
-  menuPostId: _menuPostId,
-  setMenuPostId: _setMenuPostId,
+  menuPostId,
+  setMenuPostId,
   actionError: _actionError,
   videoProgress: _videoProgress,
   viewerMediaIndex,
@@ -325,14 +328,13 @@ export function FeedViewer({
   savedPostIds: _savedPostIds,
   onToggleLike: _onToggleLike,
   onToggleSave: _onToggleSave,
-  onHidePost: _onHidePost,
-  onDeletePost: _onDeletePost,
-  currentTelegramUserId: _currentTelegramUserId,
+  onHidePost,
+  onDeletePost,
+  currentTelegramUserId,
   openSource: _openSource,
   closeViewer,
   nextViewer,
   prevViewer,
-  handleShare: _handleShare,
   setActionError: _setActionError,
 }: ViewerProps) {
   const copy = COPY[locale] ?? COPY.us;
@@ -350,6 +352,7 @@ export function FeedViewer({
   const [subscribed, setSubscribed] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [menuAnchorRect, setMenuAnchorRect] = useState<{ top: number; right: number } | null>(null);
 
   const media = useMemo(() => {
     return activePost ? normalizeMediaList(activePost) : [];
@@ -414,7 +417,9 @@ export function FeedViewer({
     setSubscribed(getSubs().includes(activePost.source.handle));
     setCurrentTime(0);
     setDuration(0);
-  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex]);
+    setMenuPostId(null);
+    setMenuAnchorRect(null);
+  }, [activePost?.id, activePost?.source.handle, viewerMediaIndex, setMenuPostId]);
 
   useEffect(() => {
     setIsMuted(readGlobalMuted());
@@ -567,6 +572,15 @@ export function FeedViewer({
   }
 
   const canToggleText = (activePost.text || "").length > 60;
+  const ownerTelegramId = activePost.addedBy?.telegramId ?? null;
+  const isOwner =
+    !!currentTelegramUserId &&
+    !!ownerTelegramId &&
+    currentTelegramUserId === ownerTelegramId;
+  const isAdmin =
+    !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
+  const isMenuOpen = menuPostId === activePost.id;
+
 
   const pulseCenterControl = () => {
     setShowCenterControl(true);
@@ -687,13 +701,17 @@ export function FeedViewer({
           </div>
 
           <div
-            className="notranslate absolute right-4 z-30"
+            className="notranslate absolute right-4 z-30 flex items-center gap-2"
             style={{ top: "calc(env(safe-area-inset-top, 0px) + 16px)" }}
           >
             <button
               type="button"
-              onClick={handleSubscribeClick}
+              onClick={(event) => {
+                event.stopPropagation();
+                handleSubscribeClick();
+              }}
               className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white"
+              aria-label={subscribed ? "Отключить уведомления" : "Включить уведомления"}
             >
               <Bell
                 className={`h-5 w-5 ${
@@ -701,6 +719,49 @@ export function FeedViewer({
                 }`}
               />
             </button>
+
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                const rect = (event.currentTarget as HTMLButtonElement).getBoundingClientRect();
+                setMenuAnchorRect({
+                  top: rect.bottom,
+                  right: window.innerWidth - rect.right,
+                });
+                setMenuPostId((prev) => (prev === activePost.id ? null : activePost.id));
+              }}
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-white"
+              aria-label="Меню"
+            >
+              <MoreVertical className="h-5 w-5" />
+            </button>
+
+            {isMenuOpen ? (
+              <FeedMoreMenu
+                locale={locale}
+                isOwner={isOwner}
+                isAdmin={isAdmin}
+                onDelete={() => {
+                  void onDeletePost(activePost.id);
+                  closeViewer();
+                }}
+                onHide={() => {
+                  onHidePost(activePost.id);
+                  closeViewer();
+                }}
+                onOpenTelegram={() => {
+                  window.open(activePost.postUrl, "_blank", "noopener,noreferrer");
+                }}
+                onRequestClose={() => {
+                  setMenuPostId(null);
+                  setMenuAnchorRect(null);
+                }}
+                anchorRect={menuAnchorRect}
+                postId={activePost.id}
+                sourceHandle={activePost.source.handle}
+              />
+            ) : null}
           </div>
 
           {showCenterControl ? (
