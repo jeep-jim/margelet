@@ -368,7 +368,7 @@ export function FeedViewer({
   }, [isPlaying]);
 
   useEffect(() => {
-    if (!activePost) return;
+    if (!activePost || !activeIsVideo) return;
 
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -378,7 +378,7 @@ export function FeedViewer({
       captionTranslateCleanupRef.current = null;
       document.body.style.overflow = original;
     };
-  }, [activePost]);
+  }, [activePost, activeIsVideo]);
 
   useEffect(() => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
@@ -540,7 +540,7 @@ export function FeedViewer({
     return () => window.removeEventListener("keydown", handleKey);
   }, [activePost, closeViewer, nextViewer, prevViewer]);
 
-  if (!activePost || activePost.contentType !== "video") {
+  if (!activePost || !activeIsVideo) {
     return null;
   }
 

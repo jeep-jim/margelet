@@ -574,36 +574,38 @@ function getVideoGridMediaRatio(post: IngestedPost, index: number) {
 
 function getVideoGridCardClass(post: IngestedPost, index: number) {
   const ratio = getVideoGridMediaRatio(post, index);
-  const preview = getVideoGridPreview(post);
-  const hasVisual = Boolean(preview?.poster || preview?.url);
 
-  // Широкие видео/превью растягиваем на две секции.
-  if (ratio >= 1.28) {
-    return "col-span-2 row-span-3 sm:col-span-2 sm:row-span-3";
+  // Tetris-сетка: фиксированная мелкая сетка + dense.
+  // Карточки могут занимать 1/2 колонки и разную высоту, но всегда кропаются через object-cover.
+  // Так лучше потерять края превью, чем оставлять пустые клетки.
+  if (ratio >= 1.35) {
+    return "col-span-2 row-span-3";
   }
 
-  // Иногда вертикальное видео тоже растягиваем на две секции.
-  // Так сетка выглядит живее и не остаётся ощущения, что высокий блок можно было протянуть вправо.
-  if (hasVisual && ratio < 0.86 && index > 0 && index % 7 === 0) {
-    return "col-span-2 row-span-5 sm:col-span-2 sm:row-span-5";
+  if (ratio >= 1.05) {
+    return index % 5 === 0 ? "col-span-2 row-span-4" : "col-span-1 row-span-3";
   }
 
-  if (ratio >= 0.95) {
-    return "col-span-1 row-span-4 sm:col-span-1 sm:row-span-4";
+  if (ratio >= 0.86) {
+    return index % 7 === 0 ? "col-span-2 row-span-5" : "col-span-1 row-span-4";
   }
 
-  if (ratio <= 0.62) {
-    return "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5";
+  if (ratio <= 0.56) {
+    return index % 9 === 0 ? "col-span-2 row-span-6" : "col-span-1 row-span-5";
   }
 
   const pattern = [
-    "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5",
-    "col-span-1 row-span-4 sm:col-span-1 sm:row-span-4",
-    "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5",
-    "col-span-1 row-span-4 sm:col-span-1 sm:row-span-4",
+    "col-span-1 row-span-5",
+    "col-span-1 row-span-4",
+    "col-span-2 row-span-5",
+    "col-span-1 row-span-5",
+    "col-span-1 row-span-4",
+    "col-span-1 row-span-6",
+    "col-span-2 row-span-4",
+    "col-span-1 row-span-5",
   ];
 
-  return pattern[index % pattern.length] || "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5";
+  return pattern[index % pattern.length] || "col-span-1 row-span-5";
 }
 
 
@@ -618,7 +620,7 @@ function FeedTopSearch({
   onToggleCategories,
   forceFloating,
   onCloseFloating,
-  onActivateFloating,
+  //onActivateFloating,
 }: {
   locale: Locale;
   searchQuery: string;
@@ -635,10 +637,8 @@ function FeedTopSearch({
   const [focused, setFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const hasQuery = searchQuery.trim().length > 0;
-  const isFloating = hasQuery || forceFloating;
-  const canPortal =
-    typeof document !== "undefined" &&
-    typeof document.body !== "undefined";
+  const isFloating = forceFloating;
+  const shouldStick = hasQuery || forceFloating;
 
   const placeholder =
     locale === "ru"
@@ -646,14 +646,14 @@ function FeedTopSearch({
       : "Search by channel, text, topic...";
 
   useEffect(() => {
-    if (!isFloating || !focused) return;
+    if (!forceFloating || !focused) return;
 
     const frame = window.requestAnimationFrame(() => {
       inputRef.current?.focus({ preventScroll: true });
     });
 
     return () => window.cancelAnimationFrame(frame);
-  }, [isFloating, focused]);
+  }, [forceFloating, focused]);
 
   const submitSearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -665,8 +665,8 @@ function FeedTopSearch({
         data-feed-main-search="true"
         className={[
           "feed-main-search-wrap w-full px-4",
-          isFloating
-            ? "feed-main-search-sticky feed-main-search-floating pb-4 pt-2"
+          shouldStick
+            ? "feed-main-search-sticky feed-main-search-floating pb-3 pt-2"
             : "mx-auto max-w-[570px] pb-3 pt-2",
         ].join(" ")}
       >
@@ -676,9 +676,7 @@ function FeedTopSearch({
         }
 
         .feed-main-search-floating {
-          position: fixed;
-          left: 0;
-          right: 0;
+          position: sticky;
           top: var(--app-header-offset);
           z-index: 70;
           max-width: 570px;
@@ -775,11 +773,9 @@ function FeedTopSearch({
               value={searchQuery}
               onFocus={() => {
                 setFocused(true);
-                onActivateFloating();
               }}
               onBlur={() => setFocused(false)}
               onChange={(event) => {
-                onActivateFloating();
                 setSearchQuery(event.target.value);
               }}
               placeholder={placeholder}
@@ -851,12 +847,7 @@ function FeedTopSearch({
       </div>
   );
 
-  return (
-    <>
-      {isFloating && hasQuery ? <div className="h-[60px]" aria-hidden="true" /> : null}
-      {isFloating && canPortal ? createPortal(searchNode, document.body) : searchNode}
-    </>
-  );
+  return searchNode;
 }
 
 
@@ -917,11 +908,16 @@ function VideoGridView({
     }
   };
 
+  const startPreview = (postId: number) => {
+    suppressNextClickRef.current = true;
+    setPreviewPostId(postId);
+  };
+
   const stopPreview = () => {
     clearLongPressTimer();
     window.setTimeout(() => {
       setPreviewPostId(null);
-    }, 80);
+    }, 90);
   };
 
   if (posts.length === 0) {
@@ -934,7 +930,7 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:68px] sm:grid-cols-3 sm:[grid-auto-rows:74px]">
+      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:44px] sm:grid-cols-3 sm:[grid-auto-rows:52px]">
         {posts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
@@ -947,16 +943,19 @@ function VideoGridView({
             .replace(/https?:\/\/\S+/g, "")
             .replace(/\s+/g, " ")
             .trim();
+          const canRenderVideo = preview?.kind === "video" && !!preview.url;
+          const canRenderImage = preview?.kind === "image" && !!preview.url;
 
           return (
             <div
               key={post.id}
               ref={(node) => registerFeedCardNode(post.id, node)}
               data-feed-post-id={post.id}
-              className={["min-h-0", cardClass].filter(Boolean).join(" ")}
+              className={`${cardClass} min-h-0`}
             >
               <button
                 type="button"
+                onContextMenu={(event) => event.preventDefault()}
                 onPointerDown={(event) => {
                   if (event.pointerType === "mouse" && event.button !== 0) return;
 
@@ -964,15 +963,14 @@ function VideoGridView({
                   suppressNextClickRef.current = false;
 
                   longPressTimerRef.current = window.setTimeout(() => {
-                    suppressNextClickRef.current = true;
-                    setPreviewPostId(post.id);
+                    startPreview(post.id);
                   }, 430);
                 }}
                 onPointerUp={stopPreview}
                 onPointerCancel={stopPreview}
                 onPointerEnter={(event) => {
                   if (event.pointerType === "mouse") {
-                    setPreviewPostId(post.id);
+                    startPreview(post.id);
                   }
                 }}
                 onPointerLeave={stopPreview}
@@ -985,82 +983,80 @@ function VideoGridView({
                   onSeen(post.id);
                   onOpenPost(post);
                 }}
+                style={{
+                  WebkitTouchCallout: "none",
+                  userSelect: "none",
+                }}
                 className={[
                   "group relative block h-full w-full overflow-hidden bg-[#142231] text-left transition duration-200 active:scale-[0.995]",
                   isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
-                <div className="absolute inset-0 bg-[#142231]">
-                  {poster && !isPreviewing ? (
-                    <img
-                      src={poster}
-                      alt=""
-                      className="relative z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      onError={(event) => {
-                        event.currentTarget.style.display = "none";
-                      }}
-                    />
-                  ) : preview?.kind === "image" && preview.url ? (
-                    <img
-                      src={preview.url}
-                      alt=""
-                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                    />
-                  ) : preview?.kind === "video" && preview.url ? (
-                    <>
-                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(65,210,90,.24),transparent_34%),linear-gradient(135deg,#213750_0%,#142231_42%,#07111d_100%)]" />
-                      <video
-                      ref={(node) => {
-                        if (node) {
-                          videoPreviewRefs.current.set(post.id, node);
-                        } else {
-                          videoPreviewRefs.current.delete(post.id);
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(65,210,90,.18),transparent_32%),linear-gradient(135deg,#213750_0%,#142231_45%,#07111d_100%)]" />
+
+                {poster && !isPreviewing ? (
+                  <img
+                    src={poster}
+                    alt=""
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    loading={index < 18 ? "eager" : "lazy"}
+                    referrerPolicy="no-referrer"
+                    onError={(event) => {
+                      event.currentTarget.style.display = "none";
+                    }}
+                  />
+                ) : canRenderImage && !isPreviewing ? (
+                  <img
+                    src={preview.url}
+                    alt=""
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    loading={index < 18 ? "eager" : "lazy"}
+                    referrerPolicy="no-referrer"
+                    onError={(event) => {
+                      event.currentTarget.style.display = "none";
+                    }}
+                  />
+                ) : canRenderVideo ? (
+                  <video
+                    ref={(node) => {
+                      if (node) {
+                        videoPreviewRefs.current.set(post.id, node);
+                      } else {
+                        videoPreviewRefs.current.delete(post.id);
+                      }
+                    }}
+                    src={preview.url}
+                    poster={poster || undefined}
+                    muted
+                    playsInline
+                    loop
+                    draggable={false}
+                    disablePictureInPicture
+                    controlsList="nodownload noplaybackrate noremoteplayback"
+                    preload={isPreviewing ? "auto" : index < 24 ? "metadata" : "none"}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    onContextMenu={(event) => event.preventDefault()}
+                    onLoadedMetadata={(event) => {
+                      const video = event.currentTarget;
+                      try {
+                        if (!isPreviewing && video.currentTime < 0.08) {
+                          video.currentTime = Math.min(0.12, video.duration || 0.12);
                         }
-                      }}
-                      src={preview.url}
-                      poster={poster || undefined}
-                      muted
-                      playsInline
-                      loop
-                      preload={index < 48 || isPreviewing ? "auto" : "metadata"}
-                      className="relative z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                      onLoadedMetadata={(event) => {
-                        const video = event.currentTarget;
-                        try {
-                          if (video.currentTime < 0.08) {
-                            video.currentTime = Math.min(0.12, video.duration || 0.12);
-                          }
-                        } catch {
-                          //
-                        }
-                      }}
-                      onLoadedData={(event) => {
-                        const video = event.currentTarget;
-                        try {
-                          if (video.readyState >= 2 && video.currentTime < 0.08) {
-                            video.currentTime = Math.min(0.12, video.duration || 0.12);
-                          }
-                        } catch {
-                          //
-                        }
-                      }}
-                    />
-                    </>
-                  ) : (
-                    <div className="h-full w-full bg-[radial-gradient(circle_at_28%_18%,rgba(65,210,90,.24),transparent_34%),linear-gradient(135deg,#243b55_0%,#142231_48%,#0b1624_100%)]" />
-                  )}
-                </div>
+                      } catch {
+                        //
+                      }
+                    }}
+                  />
+                ) : null}
 
                 <div
                   className={[
                     "absolute inset-0 transition duration-200",
                     isPreviewing
-                      ? "bg-gradient-to-t from-black/82 via-black/28 to-black/5"
-                      : "bg-gradient-to-t from-black/76 via-black/18 to-transparent",
+                      ? "bg-gradient-to-t from-black/82 via-black/26 to-black/5"
+                      : "bg-gradient-to-t from-black/76 via-black/16 to-transparent",
                   ].join(" ")}
                 />
 
@@ -1071,6 +1067,7 @@ function VideoGridView({
                         <img
                           src={avatar}
                           alt=""
+                          draggable={false}
                           className="h-full w-full object-cover"
                           referrerPolicy="no-referrer"
                           onError={(event) => {
