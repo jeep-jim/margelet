@@ -9,7 +9,7 @@ import {
   setAutotranslit,
 } from "../../lib/autotranslit";
 
-export type FeedMediaMode = "all" | "text" | "photo" | "video" | "trends";
+export type FeedMediaMode = "all" | "text" | "photo" | "video" | "me";
 
 export type FeedScreenCopy = {
   subscriptionsHint: string;
@@ -17,7 +17,7 @@ export type FeedScreenCopy = {
   emptyText: string;
   clearAll: string;
   modeAll: string;
-  modeTrends: string;
+  modeMe: string;
   modeVideo: string;
   countriesTitle: string;
 };
@@ -59,7 +59,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -70,7 +70,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Попробуй снять часть тегов или очистить поиск.",
     clearAll: "Очистить всё",
     modeAll: "Все",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Видео",
     countriesTitle: "Показывать каналы авторов из других стран:",
   },
@@ -81,7 +81,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Спробуй прибрати частину тегів або очистити пошук.",
     clearAll: "Очистити все",
     modeAll: "Усе",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Відео",
     countriesTitle: "Показувати канали авторів з інших країн:",
   },
@@ -92,7 +92,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -103,7 +103,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "چند برچسب را بردار یا جستجو را پاک کن.",
     clearAll: "پاک کردن همه",
     modeAll: "همه",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "ویدیو",
     countriesTitle: "نمایش کانال‌های کشورهای دیگر:",
   },
@@ -114,7 +114,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Versuche, einige Tags zu entfernen oder die Suche zu löschen.",
     clearAll: "Alles löschen",
     modeAll: "Alle",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Kanäle aus anderen Ländern anzeigen:",
   },
@@ -125,7 +125,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -136,7 +136,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Bazı etiketleri kaldırmayı veya aramayı temizlemeyi dene.",
     clearAll: "Hepsini temizle",
     modeAll: "Tümü",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Diğer ülkelerdeki kanalları göster:",
   },
@@ -147,7 +147,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Essaie de retirer certains tags ou d’effacer la recherche.",
     clearAll: "Tout effacer",
     modeAll: "Tout",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Vidéo",
     countriesTitle: "Afficher les chaînes d’autres pays :",
   },
@@ -158,7 +158,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prova a rimuovere alcuni tag o a cancellare la ricerca.",
     clearAll: "Cancella tutto",
     modeAll: "Tutto",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Mostra canali di altri paesi:",
   },
@@ -169,7 +169,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Tente remover algumas tags ou limpar a busca.",
     clearAll: "Limpar tudo",
     modeAll: "Tudo",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canais de outros países:",
   },
@@ -180,7 +180,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Бірнеше тегті алып таста немесе іздеуді тазала.",
     clearAll: "Барлығын тазалау",
     modeAll: "Барлығы",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Видео",
     countriesTitle: "Басқа елдердің арналарын көрсету:",
   },
@@ -191,7 +191,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Ba’zi teglarni olib tashlang yoki qidiruvni tozalang.",
     clearAll: "Hammasini tozalash",
     modeAll: "Hammasi",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Boshqa mamlakatlardagi kanallarni ko‘rsatish:",
   },
@@ -202,7 +202,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "جرّب إزالة بعض الوسوم أو مسح البحث.",
     clearAll: "مسح الكل",
     modeAll: "الكل",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "فيديو",
     countriesTitle: "إظهار قنوات من دول أخرى:",
   },
@@ -213,7 +213,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "جرّب إزالة بعض الوسوم أو مسح البحث.",
     clearAll: "مسح الكل",
     modeAll: "الكل",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "فيديو",
     countriesTitle: "إظهار قنوات من دول أخرى:",
   },
@@ -224,7 +224,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -235,7 +235,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Coba hapus beberapa tag atau bersihkan pencarian.",
     clearAll: "Bersihkan semua",
     modeAll: "Semua",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Tampilkan channel dari negara lain:",
   },
@@ -246,7 +246,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -257,7 +257,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "جرّب إزالة بعض الوسوم أو مسح البحث.",
     clearAll: "مسح الكل",
     modeAll: "الكل",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "فيديو",
     countriesTitle: "إظهار قنوات من دول أخرى:",
   },
@@ -268,7 +268,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -279,7 +279,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -290,7 +290,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -301,7 +301,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -311,7 +311,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "试着移除一些标签或清空搜索。",
     clearAll: "清除全部",
     modeAll: "全部",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "视频",
     countriesTitle: "显示来自其他国家的频道：",
   },
@@ -322,7 +322,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Cuba buang beberapa tag atau kosongkan carian.",
     clearAll: "Kosongkan semua",
     modeAll: "Semua",
-    modeTrends: "Trends",
+    modeMe: "Me",
     modeVideo: "Video",
     countriesTitle: "Tunjukkan saluran dari negara lain:",
   },
@@ -718,12 +718,12 @@ export function SmartFeedBar({
         icon: <Play className="h-4 w-4 fill-current" />,
       },
       {
-        value: "trends",
-        label: copy.modeTrends,
+        value: "me",
+        label: copy.modeMe,
         icon: <Flame className="h-4 w-4 fill-current text-orange-500" />,
       },
     ],
-    [copy.modeAll, copy.modeTrends, copy.modeVideo],
+    [copy.modeAll, copy.modeMe, copy.modeVideo],
   );
 
   const countryButtonLabel = getCountryShort(activeCountry);
@@ -815,7 +815,7 @@ export function SmartFeedBar({
                       } ${
                         option.value === "all"
                           ? "min-w-[42px] px-3 sm:min-w-[86px] sm:px-3.5"
-                          : option.value === "trends"
+                          : option.value === "me"
                           ? "min-w-[85px] px-3 sm:min-w-[105px] sm:px-3.5"
                           : "min-w-[60px] px-3 sm:min-w-[88px] sm:px-3.5"
                       }`}
@@ -830,8 +830,8 @@ export function SmartFeedBar({
                             <span>{option.label}</span>
                           </span>
                         </>
-                      ) : option.value === "trends" ? (
-                        // Trends: всегда показываем иконку + текст, даже на мобилке
+                      ) : option.value === "me" ? (
+                        // Me: показываем иконку + текст
                         <span className="inline-flex items-center gap-2">
                           {option.icon}
                           <span>{option.label}</span>

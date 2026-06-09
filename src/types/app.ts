@@ -2,7 +2,7 @@ import type { SiteLocale } from "../lib/locales";
 
 export type Locale = SiteLocale;
 
-export type TabId = "intro" | "feed" | "add" | "creator" | "source" | "admin";
+export type TabId = "feed" | "add" | "creator" | "source" | "admin";
 
 export type FeedTag =
   | "all"

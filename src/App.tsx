@@ -3,7 +3,6 @@ import { AppHeader } from "./components/layout/AppHeader";
 import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
 import { FeedScreen } from "./screens/FeedScreen";
-import { IntroScreen } from "./screens/IntroScreen";
 import { CreatorScreen } from "./screens/CreatorScreen";
 import { SourceScreen } from "./screens/SourceScreen";
 import { AdminScreen } from "./screens/AdminScreen";
@@ -316,7 +315,6 @@ async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
 
 export default function App() {
   const [locale, setLocale] = useState<Locale>(() => getInitialLocale());  
-  const [hasSeenIntro, setHasSeenIntro] = useState(false);
   const [current, setCurrent] = useState<TabId>("feed");
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
@@ -442,8 +440,6 @@ export default function App() {
     const initial = getInitialLocale();
     setLocale(initial);
 
-    const introSeen = localStorage.getItem("margelet-intro-seen");
-    setHasSeenIntro(introSeen === "1");
     setCurrentTelegramUser(readTelegramUserFromStorage());
 
     if (isAdminHiddenPath(window.location.pathname)) {
@@ -637,13 +633,6 @@ export default function App() {
     ensureCanonicalLink(getCanonicalHref(locationPath));
   }, [current, locationPath]);
 
-  const handleFinishIntro = () => {
-    localStorage.setItem("margelet-intro-seen", "1");
-    setHasSeenIntro(true);
-    setCurrent("feed");
-    replacePath("/");
-  };
-
 
   const handleToggleSave = (id: number) => {
     setSavedPostIds((prev) =>
@@ -715,11 +704,9 @@ export default function App() {
     goHome();
   };
 
-  const shouldShowIntro = !hasSeenIntro && current !== "admin" && !sharedPath;
-
   return (
     <div className="bg-app text-primary min-h-screen">
-      {!shouldShowIntro && current !== "intro" && current !== "admin" ? (
+      {current !== "admin" ? (
         <AppHeader
           current={current}
           setCurrent={handleHeaderTabChange}
@@ -727,98 +714,78 @@ export default function App() {
         />
       ) : null}
 
-      {shouldShowIntro ? (
-        <IntroScreen
-          compact
+      {current === "feed" ? (
+        <FeedScreen
           locale={locale}
-          onChangeLocale={setLocale}
-          onFinish={handleFinishIntro}
+          posts={posts}
+          isFeedLoading={isFeedLoading}
+          likedPostIds={[]}
+          savedPostIds={savedPostIds}
+          onToggleLike={() => {}}
+          onToggleSave={handleToggleSave}
+          onHidePost={handleHidePost}
+          onDeletePost={handleDeletePost}
+          currentTelegramUserId={currentTelegramUser?.id || null}
+          openSource={openSource}
         />
-      ) : (
+      ) : null}
 
-        <>
-          {current === "intro" ? (
-            <IntroScreen
-              locale={locale}
-              onChangeLocale={setLocale}
-              onFinish={handleFinishIntro}
-            />
-          ) : null}
+      {current === "add" ? (
+        <AddScreen
+          locale={locale}
+          currentTelegramUser={currentTelegramUser}
+          userRole={userRole}
+          onAdd={handleAdd}
+        />
+      ) : null}
 
-          {current === "feed" ? (
-            <FeedScreen
-              locale={locale}
-              posts={posts}
-              isFeedLoading={isFeedLoading}
-              likedPostIds={[]}
-              savedPostIds={savedPostIds}
-              onToggleLike={() => {}}
-              onToggleSave={handleToggleSave}
-              onHidePost={handleHidePost}
-              onDeletePost={handleDeletePost}
-              currentTelegramUserId={currentTelegramUser?.id || null}
-              openSource={openSource}
-            />
-          ) : null}
+      {current === "creator" ? (
+        <CreatorScreen
+          locale={locale}
+          setLocale={setLocale}
+          posts={posts}
+          openPost={() => {
+            goHome();
+          }}
+        />
+      ) : null}
 
-          {current === "add" ? (
-            <AddScreen
-              locale={locale}
-              currentTelegramUser={currentTelegramUser}
-              userRole={userRole}
-              onAdd={handleAdd}
-            />
-          ) : null}
+      {current === "source" ? (
+        <SourceScreen
+          locale={locale}
+          posts={posts}
+          sourceHandle={selectedSourceHandle || sourcePathHandle}
+          onBack={goHome}
+          onOpenPost={(post) => {
+            const postId = getPostIdFromUrl(post.postUrl);
+            setSelectedSourceHandle(post.source.handle);
+            setCurrent("source");
+            replacePath(`/${post.source.handle}/${postId}`);
+          }}
+          likedPostIds={[]}
+          onToggleLike={() => {}}
+          onHidePost={handleHidePost}
+          onDeletePost={handleDeletePost}
+          currentTelegramUserId={currentTelegramUser?.id || null}
+          openSource={openSource}
+        />
+      ) : null}
 
-          {current === "creator" ? (
-            <CreatorScreen
-              locale={locale}
-              setLocale={setLocale}
-              posts={posts}
-              openPost={() => {
-                goHome();
-              }}
-            />
-          ) : null}
+      {current === "admin" ? (
+        <AdminScreen
+          locale={locale}
+          telegramUserId={currentTelegramUser?.id || null}
+          onClose={goHome}
+          onDeletePost={handleDeletePost}
+        />
+      ) : null}
 
-          {current === "source" ? (
-            <SourceScreen
-              locale={locale}
-              posts={posts}
-              sourceHandle={selectedSourceHandle || sourcePathHandle}
-              onBack={goHome}
-              onOpenPost={(post) => {
-                const postId = getPostIdFromUrl(post.postUrl);
-                setSelectedSourceHandle(post.source.handle);
-                setCurrent("source");
-                replacePath(`/${post.source.handle}/${postId}`);
-              }}
-              likedPostIds={[]}
-              onToggleLike={() => {}}
-              onHidePost={handleHidePost}
-              onDeletePost={handleDeletePost}
-              currentTelegramUserId={currentTelegramUser?.id || null}
-              openSource={openSource}
-            />
-          ) : null}
-
-          {current === "admin" ? (
-            <AdminScreen
-              locale={locale}
-              telegramUserId={currentTelegramUser?.id || null}
-              onClose={goHome}
-              onDeletePost={handleDeletePost}
-            />
-          ) : null}
-        </>
-      )}
-
-      {isFeedLoading && showFeedLoadingHint && current === "feed" && !shouldShowIntro ? (
+      {isFeedLoading && showFeedLoadingHint && current === "feed" ? (
         <div className="pointer-events-none fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-black/70 px-4 py-2 text-sm text-white backdrop-blur">
           {FEED_LOADING_COPY[normalizeCountryCode(locale)] ?? FEED_LOADING_COPY.us}
         </div>
       ) : null}
-      {isFeedLoading && current === "feed" && !shouldShowIntro ? <SplashLoader /> : null}
+      {isFeedLoading && current === "feed" ? <SplashLoader /> : null}
     </div>
   );
 }

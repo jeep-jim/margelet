@@ -9,7 +9,6 @@ import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
-import { TrendsView } from "./feed/TrendsView";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import {
   FEED_SCREEN_COPY,
@@ -34,7 +33,6 @@ const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
 const INITIAL_RENDER_POSTS = 18;
 const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
-const OPEN_ATTENTION_TOPIC_EVENT = "margelet:open-attention-topic";
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
 const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
@@ -288,7 +286,7 @@ function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
     if (parsed?.mediaMode === "text") mediaMode = "text";
     else if (parsed?.mediaMode === "photo") mediaMode = "photo";
     else if (parsed?.mediaMode === "video") mediaMode = "video";
-    else if (parsed?.mediaMode === "trends") mediaMode = "trends";
+    else if (parsed?.mediaMode === "me") mediaMode = "me";
     else mediaMode = "all";
 
     const countries = Array.isArray(parsed?.countries)
@@ -869,6 +867,7 @@ function VideoGridView({
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
+  const warmedVideoUrlsRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
     videoPreviewRefs.current.forEach((video, postId) => {
@@ -901,6 +900,41 @@ function VideoGridView({
     };
   }, []);
 
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    // Умный прогрев: только первые видео из уже отрендеренной части.
+    // На мобилке кадры появляются сразу, но мы не грузим всю страну целиком.
+    const warmUrls = posts
+      .slice(0, 42)
+      .map((post) => getVideoGridPreview(post))
+      .filter((preview): preview is NonNullable<ReturnType<typeof getVideoGridPreview>> =>
+        Boolean(preview?.kind === "video" && preview.url)
+      )
+      .map((preview) => preview.url)
+      .filter((url) => !warmedVideoUrlsRef.current.has(url))
+      .slice(0, 16);
+
+    const links: HTMLLinkElement[] = [];
+
+    for (const url of warmUrls) {
+      warmedVideoUrlsRef.current.add(url);
+
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "video";
+      link.href = url;
+      document.head.appendChild(link);
+      links.push(link);
+    }
+
+    return () => {
+      for (const link of links) {
+        link.remove();
+      }
+    };
+  }, [posts]);
+
   const clearLongPressTimer = () => {
     if (longPressTimerRef.current) {
       window.clearTimeout(longPressTimerRef.current);
@@ -910,6 +944,21 @@ function VideoGridView({
 
   const startPreview = (postId: number) => {
     suppressNextClickRef.current = true;
+
+    const video = videoPreviewRefs.current.get(postId);
+    if (video) {
+      video.muted = true;
+      video.loop = true;
+      try {
+        if (video.currentTime < 0.08) {
+          video.currentTime = Math.min(0.14, video.duration || 0.14);
+        }
+      } catch {
+        //
+      }
+      void video.play().catch(() => undefined);
+    }
+
     setPreviewPostId(postId);
   };
 
@@ -994,31 +1043,7 @@ function VideoGridView({
               >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(65,210,90,.18),transparent_32%),linear-gradient(135deg,#213750_0%,#142231_45%,#07111d_100%)]" />
 
-                {poster && !isPreviewing ? (
-                  <img
-                    src={poster}
-                    alt=""
-                    draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 18 ? "eager" : "lazy"}
-                    referrerPolicy="no-referrer"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                    }}
-                  />
-                ) : canRenderImage && !isPreviewing ? (
-                  <img
-                    src={preview.url}
-                    alt=""
-                    draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 18 ? "eager" : "lazy"}
-                    referrerPolicy="no-referrer"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                    }}
-                  />
-                ) : canRenderVideo ? (
+                {canRenderVideo ? (
                   <video
                     ref={(node) => {
                       if (node) {
@@ -1035,18 +1060,64 @@ function VideoGridView({
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload={isPreviewing ? "auto" : index < 24 ? "metadata" : "none"}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    preload={isPreviewing || index < 42 ? "auto" : "metadata"}
+                    className={[
+                      "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
+                      poster && !isPreviewing ? "opacity-0" : "opacity-100",
+                    ].join(" ")}
                     onContextMenu={(event) => event.preventDefault()}
                     onLoadedMetadata={(event) => {
                       const video = event.currentTarget;
                       try {
-                        if (!isPreviewing && video.currentTime < 0.08) {
-                          video.currentTime = Math.min(0.12, video.duration || 0.12);
+                        if (video.currentTime < 0.08) {
+                          video.currentTime = Math.min(0.14, video.duration || 0.14);
                         }
                       } catch {
                         //
                       }
+                    }}
+                    onLoadedData={(event) => {
+                      const video = event.currentTarget;
+                      try {
+                        if (!isPreviewing) {
+                          video.pause();
+                          if (video.currentTime < 0.08) {
+                            video.currentTime = Math.min(0.14, video.duration || 0.14);
+                          }
+                        }
+                      } catch {
+                        //
+                      }
+                    }}
+                  />
+                ) : null}
+
+                {poster && !isPreviewing ? (
+                  <img
+                    src={poster}
+                    alt=""
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    loading={index < 42 ? "eager" : "lazy"}
+                    fetchPriority={index < 18 ? "high" : "auto"}
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    onError={(event) => {
+                      event.currentTarget.style.display = "none";
+                    }}
+                  />
+                ) : canRenderImage && !isPreviewing ? (
+                  <img
+                    src={preview.url}
+                    alt=""
+                    draggable={false}
+                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    loading={index < 42 ? "eager" : "lazy"}
+                    fetchPriority={index < 18 ? "high" : "auto"}
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    onError={(event) => {
+                      event.currentTarget.style.display = "none";
                     }}
                   />
                 ) : null}
@@ -1141,7 +1212,6 @@ export function FeedScreen({
   const [feedSettings, setFeedSettings] = useState<FeedSettings>(() =>
     readFeedSettingsFromStorage(locale)
   );
-  const [selectedAttentionTopic, setSelectedAttentionTopic] = useState<string | null>(null);
   const [showFloatingSmartBar, setShowFloatingSmartBar] = useState(false);
   const [subscriptionsPanelOpen, setSubscriptionsPanelOpen] = useState(() =>
     typeof window === "undefined"
@@ -1248,32 +1318,6 @@ export function FeedScreen({
     writeFeedSettingsToStorage(feedSettings);
   }, [feedSettings]);
 
-  useEffect(() => {
-    function handleOpenAttentionTopic(event: Event) {
-      const topic = String(
-        (event as CustomEvent<{ topic?: string }>).detail?.topic || "",
-      ).trim();
-
-      if (!topic) return;
-
-      setSelectedAttentionTopic(topic);
-      setFeedSettings((prev) => ({
-        ...prev,
-        mediaMode: "trends",
-      }));
-
-      window.setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }, 0);
-    }
-
-    window.addEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic as EventListener);
-
-    return () => {
-      window.removeEventListener(OPEN_ATTENTION_TOPIC_EVENT, handleOpenAttentionTopic as EventListener);
-    };
-  }, []);
-
 
   useEffect(() => {
     const handleSubscriptionPanelToggle = (event: Event) => {
@@ -1310,7 +1354,7 @@ export function FeedScreen({
 
   useEffect(() => {
     const handleSearchToggle = () => {
-      if (feedSettings.mediaMode === "trends") return;
+      if (feedSettings.mediaMode === "me") return;
 
       if (searchOverlayOpen || searchQuery.trim().length > 0) {
         setSearchOverlayOpen(false);
@@ -1368,7 +1412,7 @@ export function FeedScreen({
   }, []);
 
   useEffect(() => {
-    if (feedSettings.mediaMode === "trends") {
+    if (feedSettings.mediaMode === "me") {
       setSearchOverlayOpen(false);
       setSearchCategoriesOpen(false);
       setSubscriptionsOverlayOpen(false);
@@ -2084,7 +2128,7 @@ export function FeedScreen({
   const hasActiveFeedFilters = searchQuery.trim().length > 0 || selectedTags.length > 0;
   const shouldShowClearFeedFilters =
     !tagsOpen &&
-    feedSettings.mediaMode !== "trends" &&
+    feedSettings.mediaMode !== "me" &&
     hasActiveFeedFilters &&
     visiblePosts.length > 0;
   const shouldShowFeedRefresh =
@@ -2117,7 +2161,7 @@ export function FeedScreen({
     !tagsOpen &&
     viewerIndex === null &&
     textReaderPost === null &&
-    feedSettings.mediaMode !== "trends" &&
+    feedSettings.mediaMode !== "me" &&
     (searchPanelOpen || searchOverlayOpen || searchQuery.trim().length > 0);
 
   return (
@@ -2140,7 +2184,6 @@ export function FeedScreen({
           copy={copy}
           mediaMode={feedSettings.mediaMode}
           onChangeMediaMode={(next) => {
-            if (next !== "trends") setSelectedAttentionTopic(null);
             setFeedSettings((prev) => ({
               ...prev,
               mediaMode: next,
@@ -2168,7 +2211,6 @@ export function FeedScreen({
           copy={copy}
           mediaMode={feedSettings.mediaMode}
           onChangeMediaMode={(next) => {
-            if (next !== "trends") setSelectedAttentionTopic(null);
             setFeedSettings((prev) => ({
               ...prev,
               mediaMode: next,
@@ -2203,7 +2245,7 @@ export function FeedScreen({
         />
       ) : null}
 
-{!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" ? (
+{!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "me" ? (
         subscriptionsOverlayOpen && typeof document !== "undefined" ? (
           createPortal(
             <div className="fixed inset-x-0 top-[var(--app-header-offset)] z-[80] mx-auto w-full max-w-[570px] bg-gradient-to-b from-[rgba(18,31,44,.72)] via-[rgba(18,31,44,.44)] to-transparent pb-5 pt-2 backdrop-blur-xl dark:from-[rgba(18,31,44,.72)] dark:via-[rgba(18,31,44,.44)]">
@@ -2308,16 +2350,13 @@ export function FeedScreen({
       ) : null}
 
       <div className="mx-auto w-full max-w-[570px]">
-        {feedSettings.mediaMode === "trends" ? (
-          <TrendsView
-            countryCode={feedSettings.countries[0] || locale}
-            locale={locale}
-            posts={safePosts}
-            initialTopic={selectedAttentionTopic || undefined}
-            onOpenSource={openSource}
-            isPro={!!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId)}
-            currentTelegramUserId={currentTelegramUserId}
-          />
+        {feedSettings.mediaMode === "me" ? (
+          <div className="mx-auto flex min-h-[45vh] w-full max-w-[570px] items-center justify-center px-4 py-16 text-center text-secondary">
+            <div className="rounded-[28px] border border-soft bg-surface px-8 py-10 shadow-soft">
+              <div className="text-5xl">🔥</div>
+              <div className="mt-4 text-xl font-black text-primary">Me</div>
+            </div>
+          </div>
         ) : feedSettings.mediaMode === "video" ? (
           <VideoGridView
             posts={renderedPosts}

@@ -1,9 +1,7 @@
-import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getTheme, type Theme } from "../lib/theme";
 import { CreatorAboutPanel } from "./creator/CreatorAboutPanel";
 import { CreatorAuthBlock } from "./creator/CreatorAuthBlock";
-import { CreatorChannelPanel } from "./creator/CreatorChannelPanel";
 import { CreatorLanguageChip } from "./creator/CreatorLanguageChip";
 import { CreatorLanguagePanel } from "./creator/CreatorLanguagePanel";
 import { CreatorManifestModal } from "./creator/CreatorManifestModal";
@@ -106,32 +104,13 @@ export function CreatorScreen({
               onLogout={handleLogout}
             />
           )}
-
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1">
-              <button
-                type="button"
-                onClick={() => setTab("channel")}
-                className={`inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold transition ${
-                  tab === "channel"
-                    ? "bg-strong text-strong-foreground"
-                    : "border border-soft bg-surface text-primary"
-                }`}
-              >
-                <Plus className="h-4 w-4" />
-                {copy.channelTabTitle}
-              </button>
-            </div>            
-
-            <div className="flex shrink-0 items-center gap-2">
-
-              <CreatorLanguageChip
-                active={tab === "language"}
-                onClick={() => setTab("language")}
-                label={LOCALE_SHORT[locale]}
-                title={copy.languageTabTitle}
-              />
-            </div>
+          <div className="flex items-center justify-end gap-2">
+            <CreatorLanguageChip
+              active={tab === "language"}
+              onClick={() => setTab("language")}
+              label={LOCALE_SHORT[locale]}
+              title={copy.languageTabTitle}
+            />
           </div>
 
           {tab === "language" ? (
@@ -144,10 +123,6 @@ export function CreatorScreen({
               onInstallApp={handleInstallApp}
               installHintText={installHintText}
             />
-          ) : null}
-
-          {tab === "channel" ? (
-            <CreatorChannelPanel copy={copy} locale={locale} user={user} />
           ) : null}
 
           {tab === "about" ? <CreatorAboutPanel copy={copy} /> : null}
