@@ -261,3 +261,17 @@ a {
 .safe-bottom {
   padding-bottom: var(--safe-bottom);
 }
+
+@keyframes margelet-fire-burst {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(.55) rotate(-8deg);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-46px) scale(1.55) rotate(10deg);
+  }
+}

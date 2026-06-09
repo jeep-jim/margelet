@@ -966,14 +966,14 @@ function VideoGridView({
     // Умный прогрев: только первые видео из уже отрендеренной части.
     // На мобилке кадры появляются сразу, но мы не грузим всю страну целиком.
     const warmUrls = posts
-      .slice(0, 36)
+      .slice(0, 72)
       .map((post) => getVideoGridPreview(post))
       .filter((preview): preview is NonNullable<ReturnType<typeof getVideoGridPreview>> =>
         Boolean(preview?.kind === "video" && preview.url)
       )
       .map((preview) => preview.url)
       .filter((url) => !warmedVideoUrlsRef.current.has(url))
-      .slice(0, 18);
+      .slice(0, 28);
 
     const links: HTMLLinkElement[] = [];
 
@@ -1060,7 +1060,7 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldWarmVideo = isPreviewing || index < 36 || warmedVideoPostIds.has(post.id);
+          const shouldWarmVideo = isPreviewing || index < 72 || warmedVideoPostIds.has(post.id);
 
           return (
             <div
@@ -1299,6 +1299,7 @@ export function FeedScreen({
       : readBooleanFromStorage(FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY, false)
   );
   const [subscriptionsOverlayOpen, setSubscriptionsOverlayOpen] = useState(false);
+  const [meTab, setMeTab] = useState<"likes" | "subscriptions">("likes");
   const [searchPanelOpen, setSearchPanelOpen] = useState(() =>
     typeof window === "undefined"
       ? true
@@ -1434,8 +1435,6 @@ export function FeedScreen({
 
   useEffect(() => {
     const handleSearchToggle = () => {
-      if (feedSettings.mediaMode === "me") return;
-
       if (searchOverlayOpen || searchQuery.trim().length > 0) {
         setSearchOverlayOpen(false);
         setSearchCategoriesOpen(false);
@@ -1455,7 +1454,7 @@ export function FeedScreen({
     return () => {
       window.removeEventListener(FEED_SEARCH_TOGGLE_EVENT, handleSearchToggle as EventListener);
     };
-  }, [feedSettings.mediaMode, searchOverlayOpen, searchQuery]);
+  }, [searchOverlayOpen, searchQuery]);
 
   useEffect(() => {
     if (searchQuery.trim().length > 0) {
@@ -2111,6 +2110,27 @@ export function FeedScreen({
     [visiblePosts, renderCount]
   );
 
+  const likedPostIdSet = useMemo(() => new Set(likedPostIds), [likedPostIds]);
+
+  const subscribedHandleSet = useMemo(
+    () => new Set(subscriptionHandles.map((handle) => normalizeHandle(handle))),
+    [subscriptionHandles]
+  );
+
+  const meLikedPosts = useMemo(() => {
+    return safePosts.filter((post) => likedPostIdSet.has(post.id));
+  }, [safePosts, likedPostIdSet]);
+
+  const meSubscriptionPosts = useMemo(() => {
+    if (subscribedHandleSet.size === 0) return [];
+
+    return safePosts.filter((post) =>
+      subscribedHandleSet.has(normalizeHandle(post.source.handle))
+    );
+  }, [safePosts, subscribedHandleSet]);
+
+  const mePosts = meTab === "likes" ? meLikedPosts : meSubscriptionPosts;
+
   const toggleFeedCountry = useCallback(
     (country: string) => {
       const normalizedCountry = String(country || "").trim().toLowerCase();
@@ -2234,15 +2254,88 @@ export function FeedScreen({
       }))
       .filter((item) => item.count > 0)
       .sort((a, b) => b.count - a.count)
-      .slice(0, 18);
+      .slice(0, 28);
   }, [locale, tagStats]);
 
   const shouldShowTopSearch =
     !tagsOpen &&
     viewerIndex === null &&
     textReaderPost === null &&
-    feedSettings.mediaMode !== "me" &&
     (searchPanelOpen || searchOverlayOpen || searchQuery.trim().length > 0);
+
+  const renderFeedCards = (items: IngestedPost[]) =>
+    items.map((post) => {
+      const ownerTelegramId = post.addedBy?.telegramId ?? null;
+
+      const isOwner =
+        !!currentTelegramUserId &&
+        !!ownerTelegramId &&
+        currentTelegramUserId === ownerTelegramId;
+
+      const isAdmin =
+        !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
+
+      return (
+        <div
+          key={post.id}
+          ref={(node) => registerFeedCardNode(post.id, node)}
+          data-feed-post-id={post.id}
+          onPointerDownCapture={(event) => {
+            const target = event.target as HTMLElement | null;
+            if (!target) return;
+
+            const opensMedia =
+              target.closest("img") ||
+              target.closest("video") ||
+              target.closest("[data-feed-media]");
+
+            if (opensMedia) {
+              closeFloatingPanels();
+            }
+          }}
+          onClickCapture={(event) => {
+            const target = event.target as HTMLElement | null;
+            if (!target) return;
+
+            const opensMedia =
+              target.closest("img") ||
+              target.closest("video") ||
+              target.closest("[data-feed-media]");
+
+            if (opensMedia) {
+              closeFloatingPanels();
+            }
+          }}
+        >
+          <FeedCard
+            post={post}
+            locale={locale}
+            isOwner={isOwner}
+            isAdmin={isAdmin}
+            menuOpen={menuPostId === post.id}
+            onToggleMenu={() =>
+              setMenuPostId((prev) => (prev === post.id ? null : post.id))
+            }
+            onDelete={() => {
+              void onDeletePost(post.id);
+            }}
+            onHide={() => onHidePost(post.id)}
+            onOpen={() => handleOpenPost(post)}
+            onOpenCreator={() => openSource(post.source.handle)}
+            onSeen={() => markPostSeen(post.id)}
+            mediaIndex={feedMediaIndexes[post.id] || 0}
+            onChangeMediaIndex={(next: number) =>
+              setFeedCardMediaIndex(post.id, next)
+            }
+            liked={likedPostIdSet.has(post.id)}
+            onToggleLike={() => onToggleLike(post.id)}
+            onShare={() => {
+              void handleShare(post);
+            }}
+          />
+        </div>
+      );
+    });
 
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
@@ -2325,7 +2418,7 @@ export function FeedScreen({
         />
       ) : null}
 
-{!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "me" ? (
+{!tagsOpen && subscriptionsPanelOpen ? (
         subscriptionsOverlayOpen && typeof document !== "undefined" ? (
           createPortal(
             <div className="fixed inset-x-0 top-[var(--app-header-offset)] z-[80] mx-auto w-full max-w-[570px] bg-gradient-to-b from-[rgba(18,31,44,.72)] via-[rgba(18,31,44,.44)] to-transparent pb-5 pt-2 backdrop-blur-xl dark:from-[rgba(18,31,44,.72)] dark:via-[rgba(18,31,44,.44)]">
@@ -2431,11 +2524,76 @@ export function FeedScreen({
 
       <div className="mx-auto w-full max-w-[570px]">
         {feedSettings.mediaMode === "me" ? (
-          <div className="mx-auto flex min-h-[45vh] w-full max-w-[570px] items-center justify-center px-4 py-16 text-center text-secondary">
-            <div className="rounded-[28px] border border-soft bg-surface px-8 py-10 shadow-soft">
-              <div className="text-5xl">🔥</div>
-              <div className="mt-4 text-xl font-black text-primary">Me</div>
+          <div className="px-4 pb-8 pt-4">
+            <div className="-mx-4 border-b border-soft bg-app/92 px-4 py-3">
+              <div className="grid grid-cols-2 gap-2 rounded-[24px] border border-soft bg-surface-soft p-1 shadow-soft">
+                <button
+                  type="button"
+                  onClick={() => setMeTab("likes")}
+                  className={[
+                    "rounded-[20px] px-4 py-3 text-sm font-black transition",
+                    meTab === "likes"
+                      ? "bg-strong text-strong-foreground shadow-sm"
+                      : "text-secondary hover:bg-surface",
+                  ].join(" ")}
+                >
+                  🔥 Нравится · {meLikedPosts.length}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setMeTab("subscriptions")}
+                  className={[
+                    "rounded-[20px] px-4 py-3 text-sm font-black transition",
+                    meTab === "subscriptions"
+                      ? "bg-strong text-strong-foreground shadow-sm"
+                      : "text-secondary hover:bg-surface",
+                  ].join(" ")}
+                >
+                  🔔 Подписки · {meSubscriptionPosts.length}
+                </button>
+              </div>
             </div>
+
+            {meTab === "subscriptions" && hasBubbles ? (
+              <div className="-mx-4 mb-4">
+                <SubscriptionsBar
+                  items={subscriptionBubbles}
+                  onOpen={(handle) => {
+                    const bubble = subscriptionBubbles.find((item) => item.handle === handle);
+
+                    if (bubble) {
+                      setSeenSubscriptionPosts((prev) => {
+                        const next = {
+                          ...prev,
+                          [handle]: Math.max(prev[handle] ?? 0, bubble.latestPostId),
+                        };
+                        writeSeenSubscriptionsToStorage(next);
+                        return next;
+                      });
+                    }
+
+                    openSource(handle);
+                  }}
+                />
+              </div>
+            ) : null}
+
+            {mePosts.length > 0 ? (
+              <div className="-mx-4">{renderFeedCards(mePosts)}</div>
+            ) : (
+              <div className="mt-8 rounded-[28px] border border-soft bg-surface px-8 py-10 text-center shadow-soft">
+                <div className="text-5xl">{meTab === "likes" ? "🔥" : "🔔"}</div>
+                <div className="mt-4 text-xl font-black text-primary">
+                  {meTab === "likes" ? "Пока нет лайков" : "Пока нет подписок"}
+                </div>
+                <div className="mx-auto mt-3 max-w-[300px] text-sm leading-6 text-secondary">
+                  {meTab === "likes"
+                    ? "Жми огонёк под постами — они будут собираться здесь."
+                    : "Подпишись на каналы через меню поста — их контент появится здесь."}
+                </div>
+              </div>
+            )}
           </div>
         ) : feedSettings.mediaMode === "video" ? (
           <VideoGridView
@@ -2446,78 +2604,7 @@ export function FeedScreen({
             onSeen={markPostSeen}
           />
         ) : (
-          renderedPosts.map((post) => {
-            const ownerTelegramId = post.addedBy?.telegramId ?? null;
-
-            const isOwner =
-              !!currentTelegramUserId &&
-              !!ownerTelegramId &&
-              currentTelegramUserId === ownerTelegramId;
-
-            const isAdmin =
-              !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
-
-            return (
-              <div
-                key={post.id}
-                ref={(node) => registerFeedCardNode(post.id, node)}
-                data-feed-post-id={post.id}
-                onPointerDownCapture={(event) => {
-                  const target = event.target as HTMLElement | null;
-                  if (!target) return;
-
-                  const opensMedia =
-                    target.closest("img") ||
-                    target.closest("video") ||
-                    target.closest("[data-feed-media]");
-
-                  if (opensMedia) {
-                    closeFloatingPanels();
-                  }
-                }}
-                onClickCapture={(event) => {
-                  const target = event.target as HTMLElement | null;
-                  if (!target) return;
-
-                  const opensMedia =
-                    target.closest("img") ||
-                    target.closest("video") ||
-                    target.closest("[data-feed-media]");
-
-                  if (opensMedia) {
-                    closeFloatingPanels();
-                  }
-                }}
-              >
-                <FeedCard
-                  post={post}
-                        locale={locale}
-                  isOwner={isOwner}
-                  isAdmin={isAdmin}
-                  menuOpen={menuPostId === post.id}
-                  onToggleMenu={() =>
-                    setMenuPostId((prev) => (prev === post.id ? null : post.id))
-                  }
-                  onDelete={() => {
-                    void onDeletePost(post.id);
-                  }}
-                  onHide={() => onHidePost(post.id)}
-                  onOpen={() => handleOpenPost(post)}
-                  onOpenCreator={() => openSource(post.source.handle)}
-                  onSeen={() => markPostSeen(post.id)}
-                  mediaIndex={feedMediaIndexes[post.id] || 0}
-                  onChangeMediaIndex={(next: number) =>
-                    setFeedCardMediaIndex(post.id, next)
-                  }
-                  liked={likedPostIds.includes(post.id)}
-                  onToggleLike={() => onToggleLike(post.id)}
-                  onShare={() => {
-                    void handleShare(post);
-                  }}
-                />
-              </div>
-            );
-          })
+          renderFeedCards(renderedPosts)
         )}
       </div>
 
@@ -2616,6 +2703,7 @@ export function FeedScreen({
         onClose={() => setTextReaderPost(null)}
         onToggleLike={() => {}}
         onToggleSave={onToggleSave}
+        openSource={openSource}
       />
     </div>
   );

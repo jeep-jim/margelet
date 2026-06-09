@@ -10,7 +10,7 @@ import {
   getAudioMedia,
   getFileMedia,
 } from "./feed.utils";
-import { PostAttentionChips } from "./PostAttentionChips";
+import { FeedReactionButton } from "./FeedReactionButton";
 
 function getMediaBadge(post: IngestedPost, locale: Locale) {
   const COPY = {
@@ -492,8 +492,10 @@ function AudioPreview({
 export function FeedTextCard({
   locale,
   post,
+  liked,
+  onToggleLike,
   onOpen,
-  searchQuery = "",
+  searchQuery: _searchQuery = "",
 }: {
   locale: Locale;
   post: IngestedPost;
@@ -575,7 +577,7 @@ export function FeedTextCard({
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <PostAttentionChips post={post} searchQuery={searchQuery} locale={locale} />
+          <FeedReactionButton active={liked} onClick={onToggleLike} />
         </div>
 
         <button

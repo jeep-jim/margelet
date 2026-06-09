@@ -11,7 +11,7 @@ import {
   hasAudioLikeMedia,
   hasVisualMedia,
 } from "./feed.utils";
-import { PostAttentionChips } from "./PostAttentionChips";
+import { FeedReactionButton } from "./FeedReactionButton";
 
 const FEED_PAUSE_EVENT = "margelet:pause-feed-videos";
 
@@ -34,6 +34,8 @@ export function FeedCard(props: FeedCardRuntimeProps) {
     onOpenCreator,
     onSeen,
     searchQuery = "",
+    liked,
+    onToggleLike,
   } = props;
 
   const COPY = {
@@ -191,7 +193,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
                 {({ expanded, expand }) => (
                   <div className="mt-4 flex items-start justify-between gap-3">
                     <div className="min-w-0 flex-1">
-                      <PostAttentionChips post={post} searchQuery={searchQuery} locale={locale} />
+                      <FeedReactionButton active={liked} onClick={onToggleLike} />
                     </div>
 
                     {expanded ? (
@@ -226,7 +228,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
             <div className="px-4 py-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0 flex-1">
-                  <PostAttentionChips post={post} searchQuery={searchQuery} locale={locale} />
+                  <FeedReactionButton active={liked} onClick={onToggleLike} />
                 </div>
 
                 <button
@@ -248,8 +250,8 @@ export function FeedCard(props: FeedCardRuntimeProps) {
         <FeedTextCard
           locale={locale}
           post={post}
-          liked={false}
-          onToggleLike={() => {}}
+          liked={liked}
+          onToggleLike={onToggleLike}
           onOpen={openPostSafely}
           searchQuery={searchQuery}
         />
@@ -257,8 +259,8 @@ export function FeedCard(props: FeedCardRuntimeProps) {
         <FeedTextCard
           locale={locale}
           post={post}
-          liked={false}
-          onToggleLike={() => {}}
+          liked={liked}
+          onToggleLike={onToggleLike}
           onOpen={openPostSafely}
           searchQuery={searchQuery}
         />

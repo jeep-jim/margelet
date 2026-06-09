@@ -826,6 +826,7 @@ export function FeedTextReaderModal({
   onClose,
   onToggleLike: _onToggleLike,
   onToggleSave: _onToggleSave,
+  openSource,
 }: {
   post: IngestedPost | null;
   locale: Locale;
@@ -834,6 +835,7 @@ export function FeedTextReaderModal({
   onClose: () => void;
   onToggleLike?: (id: number) => void;
   onToggleSave: (id: number) => void;
+  openSource?: (handle: string) => void;
 }) {
   const copy = COPY[locale] ?? COPY.us;
   const text = post?.text || "";
@@ -1196,7 +1198,17 @@ export function FeedTextReaderModal({
             <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-5 pt-4">
               <button
                 type="button"
-                onClick={() => window.location.assign(`/${post.source.handle}`)}
+                onClick={() => {
+                  const handle = post.source.handle;
+                  onClose();
+
+                  if (openSource) {
+                    window.requestAnimationFrame(() => openSource(handle));
+                    return;
+                  }
+
+                  window.location.assign(`/${handle}`);
+                }}
                 className="notranslate mb-4 flex w-full min-w-0 items-start gap-3 text-left"
               >
                 <div className="shrink-0">
