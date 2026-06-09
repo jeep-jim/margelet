@@ -574,21 +574,26 @@ function getVideoGridMediaRatio(post: IngestedPost, index: number) {
 
 function getVideoGridCardClass(post: IngestedPost, index: number) {
   const ratio = getVideoGridMediaRatio(post, index);
+  const preview = getVideoGridPreview(post);
+  const hasVisual = Boolean(preview?.poster || preview?.url);
 
-  if (ratio >= 1.45) {
+  // Широкие видео/превью растягиваем на две секции.
+  if (ratio >= 1.28) {
     return "col-span-2 row-span-3 sm:col-span-2 sm:row-span-3";
   }
 
-  if (ratio >= 1.08) {
-    return "col-span-1 row-span-3 sm:col-span-1 sm:row-span-3";
+  // Иногда вертикальное видео тоже растягиваем на две секции.
+  // Так сетка выглядит живее и не остаётся ощущения, что высокий блок можно было протянуть вправо.
+  if (hasVisual && ratio < 0.86 && index > 0 && index % 7 === 0) {
+    return "col-span-2 row-span-5 sm:col-span-2 sm:row-span-5";
   }
 
-  if (ratio >= 0.88) {
+  if (ratio >= 0.95) {
     return "col-span-1 row-span-4 sm:col-span-1 sm:row-span-4";
   }
 
   if (ratio <= 0.62) {
-    return "col-span-1 row-span-6 sm:col-span-1 sm:row-span-6";
+    return "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5";
   }
 
   const pattern = [
@@ -914,7 +919,9 @@ function VideoGridView({
 
   const stopPreview = () => {
     clearLongPressTimer();
-    setPreviewPostId(null);
+    window.setTimeout(() => {
+      setPreviewPostId(null);
+    }, 80);
   };
 
   if (posts.length === 0) {
@@ -927,7 +934,7 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:76px] sm:grid-cols-3 sm:[grid-auto-rows:82px]">
+      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:68px] sm:grid-cols-3 sm:[grid-auto-rows:74px]">
         {posts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
@@ -963,6 +970,11 @@ function VideoGridView({
                 }}
                 onPointerUp={stopPreview}
                 onPointerCancel={stopPreview}
+                onPointerEnter={(event) => {
+                  if (event.pointerType === "mouse") {
+                    setPreviewPostId(post.id);
+                  }
+                }}
                 onPointerLeave={stopPreview}
                 onClick={() => {
                   if (suppressNextClickRef.current) {
@@ -974,16 +986,16 @@ function VideoGridView({
                   onOpenPost(post);
                 }}
                 className={[
-                  "group relative block h-full w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
+                  "group relative block h-full w-full overflow-hidden bg-[#142231] text-left transition duration-200 active:scale-[0.995]",
                   isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
-                <div className="absolute inset-0 bg-black">
+                <div className="absolute inset-0 bg-[#142231]">
                   {poster && !isPreviewing ? (
                     <img
                       src={poster}
                       alt=""
-                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                      className="relative z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                       loading="lazy"
                       referrerPolicy="no-referrer"
                       onError={(event) => {
@@ -999,7 +1011,9 @@ function VideoGridView({
                       referrerPolicy="no-referrer"
                     />
                   ) : preview?.kind === "video" && preview.url ? (
-                    <video
+                    <>
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(65,210,90,.24),transparent_34%),linear-gradient(135deg,#213750_0%,#142231_42%,#07111d_100%)]" />
+                      <video
                       ref={(node) => {
                         if (node) {
                           videoPreviewRefs.current.set(post.id, node);
@@ -1012,8 +1026,8 @@ function VideoGridView({
                       muted
                       playsInline
                       loop
-                      preload={isPreviewing || index < 18 ? "metadata" : "none"}
-                      className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                      preload={index < 48 || isPreviewing ? "auto" : "metadata"}
+                      className="relative z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                       onLoadedMetadata={(event) => {
                         const video = event.currentTarget;
                         try {
@@ -1035,8 +1049,9 @@ function VideoGridView({
                         }
                       }}
                     />
+                    </>
                   ) : (
-                    <div className="h-full w-full bg-gradient-to-br from-[#162638] via-[#101d2b] to-black" />
+                    <div className="h-full w-full bg-[radial-gradient(circle_at_28%_18%,rgba(65,210,90,.24),transparent_34%),linear-gradient(135deg,#243b55_0%,#142231_48%,#0b1624_100%)]" />
                   )}
                 </div>
 
@@ -1044,14 +1059,14 @@ function VideoGridView({
                   className={[
                     "absolute inset-0 transition duration-200",
                     isPreviewing
-                      ? "bg-gradient-to-t from-black/92 via-black/30 to-black/10"
-                      : "bg-gradient-to-t from-black/88 via-black/18 to-black/0",
+                      ? "bg-gradient-to-t from-black/82 via-black/28 to-black/5"
+                      : "bg-gradient-to-t from-black/76 via-black/18 to-transparent",
                   ].join(" ")}
                 />
 
-                <div className="absolute inset-x-0 bottom-0 p-2">
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] p-2">
                   <div className="flex min-w-0 items-center gap-1.5">
-                    <div className="h-5 w-5 shrink-0 overflow-hidden rounded-full bg-[#1d3148] ring-1 ring-white/40">
+                    <div className="h-6 w-6 shrink-0 overflow-hidden rounded-full bg-[#1d3148] ring-1 ring-white/45 shadow-[0_2px_8px_rgba(0,0,0,.45)]">
                       {avatar ? (
                         <img
                           src={avatar}
@@ -1066,7 +1081,7 @@ function VideoGridView({
                     </div>
 
                     <div className="flex min-w-0 items-center gap-1">
-                      <span className="min-w-0 truncate text-[11px] font-black leading-none text-white drop-shadow-[0_1px_2px_rgba(0,0,0,.9)]">
+                      <span className="min-w-0 truncate text-[11px] font-black leading-none text-white drop-shadow-[0_1px_3px_rgba(0,0,0,.95)]">
                         {title}
                       </span>
                       {verified ? <VerifiedBadge size={12} className="shrink-0" /> : null}
@@ -1074,7 +1089,7 @@ function VideoGridView({
                   </div>
 
                   {isPreviewing && text ? (
-                    <div className="mt-2 line-clamp-3 text-[12px] font-semibold leading-snug text-white drop-shadow-[0_1px_2px_rgba(0,0,0,.9)]">
+                    <div className="mt-2 line-clamp-4 rounded-2xl bg-black/42 px-2 py-1.5 text-[12px] font-semibold leading-snug text-white shadow-[0_4px_18px_rgba(0,0,0,.35)] backdrop-blur-sm">
                       {text}
                     </div>
                   ) : null}
