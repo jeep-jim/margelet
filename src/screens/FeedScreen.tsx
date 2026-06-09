@@ -868,6 +868,7 @@ function VideoGridView({
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const warmedVideoUrlsRef = useRef<Set<string>>(new Set());
+  const [warmedVideoPostIds, setWarmedVideoPostIds] = useState<Set<number>>(() => new Set());
 
   useEffect(() => {
     videoPreviewRefs.current.forEach((video, postId) => {
@@ -900,20 +901,79 @@ function VideoGridView({
     };
   }, []);
 
+  const warmVideoPreview = useCallback((postId: number) => {
+    const video = videoPreviewRefs.current.get(postId);
+
+    setWarmedVideoPostIds((prev) => {
+      if (prev.has(postId)) return prev;
+      const next = new Set(prev);
+      next.add(postId);
+      return next;
+    });
+
+    if (!video) return;
+
+    try {
+      video.muted = true;
+      video.preload = "auto";
+      video.load();
+
+      const lockFirstFrame = () => {
+        try {
+          if (video.currentTime < 0.08) {
+            video.currentTime = Math.min(0.16, video.duration || 0.16);
+          }
+        } catch {
+          //
+        }
+      };
+
+      if (video.readyState >= 1) {
+        lockFirstFrame();
+      } else {
+        video.addEventListener("loadedmetadata", lockFirstFrame, { once: true });
+      }
+    } catch {
+      //
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+
+          const postId = Number((entry.target as HTMLElement).dataset.videoPreviewPostId);
+          if (Number.isFinite(postId)) {
+            warmVideoPreview(postId);
+          }
+        }
+      },
+      { rootMargin: "1800px 0px 1800px 0px", threshold: 0.01 }
+    );
+
+    videoPreviewRefs.current.forEach((video) => observer.observe(video));
+
+    return () => observer.disconnect();
+  }, [posts, warmVideoPreview]);
+
   useEffect(() => {
     if (typeof document === "undefined") return;
 
     // Умный прогрев: только первые видео из уже отрендеренной части.
     // На мобилке кадры появляются сразу, но мы не грузим всю страну целиком.
     const warmUrls = posts
-      .slice(0, 42)
+      .slice(0, 36)
       .map((post) => getVideoGridPreview(post))
       .filter((preview): preview is NonNullable<ReturnType<typeof getVideoGridPreview>> =>
         Boolean(preview?.kind === "video" && preview.url)
       )
       .map((preview) => preview.url)
       .filter((url) => !warmedVideoUrlsRef.current.has(url))
-      .slice(0, 16);
+      .slice(0, 18);
 
     const links: HTMLLinkElement[] = [];
 
@@ -979,6 +1039,12 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
+      <style>{`
+        @keyframes videoGridPreviewShimmer {
+          0% { background-position: 180% 0; }
+          100% { background-position: -80% 0; }
+        }
+      `}</style>
       <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:44px] sm:grid-cols-3 sm:[grid-auto-rows:52px]">
         {posts.map((post, index) => {
           const preview = getVideoGridPreview(post);
@@ -994,6 +1060,7 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
+          const shouldWarmVideo = isPreviewing || index < 36 || warmedVideoPostIds.has(post.id);
 
           return (
             <div
@@ -1010,6 +1077,7 @@ function VideoGridView({
 
                   clearLongPressTimer();
                   suppressNextClickRef.current = false;
+                  warmVideoPreview(post.id);
 
                   longPressTimerRef.current = window.setTimeout(() => {
                     startPreview(post.id);
@@ -1019,6 +1087,7 @@ function VideoGridView({
                 onPointerCancel={stopPreview}
                 onPointerEnter={(event) => {
                   if (event.pointerType === "mouse") {
+                    warmVideoPreview(post.id);
                     startPreview(post.id);
                   }
                 }}
@@ -1041,7 +1110,8 @@ function VideoGridView({
                   isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(65,210,90,.18),transparent_32%),linear-gradient(135deg,#213750_0%,#142231_45%,#07111d_100%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(90,125,170,.22),transparent_34%),linear-gradient(135deg,#23364a_0%,#152333_48%,#07111d_100%)]" />
+                <div className="absolute inset-0 opacity-35 [background:linear-gradient(110deg,transparent_0%,rgba(255,255,255,.08)_45%,transparent_70%)] [background-size:220%_100%] animate-[videoGridPreviewShimmer_1.8s_ease-in-out_infinite]" />
 
                 {canRenderVideo ? (
                   <video
@@ -1054,13 +1124,14 @@ function VideoGridView({
                     }}
                     src={preview.url}
                     poster={poster || undefined}
+                    data-video-preview-post-id={post.id}
                     muted
                     playsInline
                     loop
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload={isPreviewing || index < 42 ? "auto" : "metadata"}
+                    preload={shouldWarmVideo ? "auto" : "metadata"}
                     className={[
                       "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
                       poster && !isPreviewing ? "opacity-0" : "opacity-100",
@@ -1085,6 +1156,15 @@ function VideoGridView({
                             video.currentTime = Math.min(0.14, video.duration || 0.14);
                           }
                         }
+                      } catch {
+                        //
+                      }
+                    }}
+                    onCanPlay={(event) => {
+                      const video = event.currentTarget;
+                      if (isPreviewing) return;
+                      try {
+                        video.pause();
                       } catch {
                         //
                       }
