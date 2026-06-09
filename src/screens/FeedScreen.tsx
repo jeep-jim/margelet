@@ -593,6 +593,7 @@ function FeedTopSearch({
   onToggleCategories,
   forceFloating,
   onCloseFloating,
+  onActivateFloating,
 }: {
   locale: Locale;
   searchQuery: string;
@@ -604,8 +605,10 @@ function FeedTopSearch({
   onToggleCategories: () => void;
   forceFloating: boolean;
   onCloseFloating: () => void;
+  onActivateFloating: () => void;
 }) {
   const [focused, setFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const hasQuery = searchQuery.trim().length > 0;
   const isFloating = hasQuery || forceFloating;
   const canPortal =
@@ -616,6 +619,21 @@ function FeedTopSearch({
     locale === "ru"
       ? "Поиск по каналу, тексту, теме..."
       : "Search by channel, text, topic...";
+
+  useEffect(() => {
+    if (!isFloating || !focused) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      inputRef.current?.focus({ preventScroll: true });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [isFloating, focused]);
+
+  const submitSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    inputRef.current?.blur();
+  };
 
   const searchNode = (
       <div
@@ -637,7 +655,7 @@ function FeedTopSearch({
           left: 0;
           right: 0;
           top: var(--app-header-offset);
-          z-index: 9999;
+          z-index: 70;
           max-width: 570px;
           margin-left: auto;
           margin-right: auto;
@@ -718,7 +736,7 @@ function FeedTopSearch({
         }
       `}</style>
 
-      <div className="flex items-center gap-2">
+      <form className="flex items-center gap-2" onSubmit={submitSearch}>
         <div
           className={[
             "feed-main-search-shell relative h-12 min-w-0 flex-1 rounded-full",
@@ -728,10 +746,17 @@ function FeedTopSearch({
           <div className="relative h-full rounded-full bg-[var(--feed-main-search-bg)] text-[var(--feed-main-search-text)]">
             <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-secondary" />
             <input
+              ref={inputRef}
               value={searchQuery}
-              onFocus={() => setFocused(true)}
+              onFocus={() => {
+                setFocused(true);
+                onActivateFloating();
+              }}
               onBlur={() => setFocused(false)}
-              onChange={(event) => setSearchQuery(event.target.value)}
+              onChange={(event) => {
+                onActivateFloating();
+                setSearchQuery(event.target.value);
+              }}
               placeholder={placeholder}
               enterKeyHint="search"
               className="h-full w-full rounded-full bg-transparent pl-11 pr-12 text-[15px] font-semibold outline-none placeholder:text-secondary"
@@ -766,7 +791,7 @@ function FeedTopSearch({
         >
           <ChevronDown className={`h-5 w-5 transition ${categoriesOpen ? "rotate-180" : ""}`} />
         </button>
-      </div>
+      </form>
 
       {categoriesOpen && detectedTags.length > 0 ? (
         <div className="mt-2 grid grid-cols-5 gap-x-1 gap-y-2 sm:grid-cols-9 sm:gap-x-1.5">
@@ -969,7 +994,7 @@ function VideoGridView({
                       muted
                       playsInline
                       loop
-                      preload={isPreviewing ? "auto" : "metadata"}
+                      preload={isPreviewing ? "auto" : "none"}
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                       onLoadedData={(event) => {
                         const video = event.currentTarget;
@@ -1083,6 +1108,7 @@ export function FeedScreen({
       ? false
       : readBooleanFromStorage(FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY, false)
   );
+  const [subscriptionsOverlayOpen, setSubscriptionsOverlayOpen] = useState(false);
   const [searchPanelOpen, setSearchPanelOpen] = useState(() =>
     typeof window === "undefined"
       ? true
@@ -1142,6 +1168,7 @@ export function FeedScreen({
     setSubscriptionsPanelOpen(
       readBooleanFromStorage(FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY, false)
     );
+    setSubscriptionsOverlayOpen(false);
     setSubscriptionHandles(readSubscriptionsFromStorage());
     setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
     setFeedSettings(readFeedSettingsFromStorage(locale));
@@ -1212,9 +1239,15 @@ export function FeedScreen({
     const handleSubscriptionPanelToggle = (event: Event) => {
       const detail = (event as CustomEvent<{ open?: boolean }>).detail;
 
-      setSubscriptionsPanelOpen((prev) =>
-        typeof detail?.open === "boolean" ? detail.open : !prev
-      );
+      setSubscriptionsPanelOpen((prev) => {
+        if (typeof detail?.open === "boolean") {
+          return detail.open;
+        }
+
+        const next = !prev;
+        setSubscriptionsOverlayOpen(next);
+        return next;
+      });
     };
 
     window.addEventListener(
@@ -1278,9 +1311,27 @@ export function FeedScreen({
   }, [searchOverlayOpen, searchQuery]);
 
   useEffect(() => {
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+      if (target.closest("[data-feed-main-search='true']")) return;
+      if (document.activeElement instanceof HTMLInputElement) {
+        document.activeElement.blur();
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown, { passive: true });
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, []);
+
+  useEffect(() => {
     if (feedSettings.mediaMode === "trends") {
       setSearchOverlayOpen(false);
       setSearchCategoriesOpen(false);
+      setSubscriptionsOverlayOpen(false);
     }
   }, [feedSettings.mediaMode]);
 
@@ -1352,6 +1403,12 @@ export function FeedScreen({
 
   useEffect(() => {
     const postOverlayOpen = viewerIndex !== null || textReaderPost !== null;
+
+    if (postOverlayOpen) {
+      setSearchOverlayOpen(false);
+      setSearchCategoriesOpen(false);
+      setSubscriptionsOverlayOpen(false);
+    }
 
     if (tagsOpen || postOverlayOpen) {
       setShowFloatingSmartBar(false);
@@ -1757,8 +1814,15 @@ export function FeedScreen({
     }));
   }, []);
 
+  const closeFloatingPanels = useCallback(() => {
+    setSearchOverlayOpen(false);
+    setSearchCategoriesOpen(false);
+    setSubscriptionsOverlayOpen(false);
+  }, []);
+
   const openViewerByPost = useCallback(
     (post: IngestedPost) => {
+      closeFloatingPanels();
       const nextIndex = viewerPosts.findIndex((item) => item.id === post.id);
       if (nextIndex === -1) return;
 
@@ -1773,16 +1837,17 @@ export function FeedScreen({
       setActionError("");
       setVideoProgress(0);
     },
-    [viewerPosts]
+    [viewerPosts, closeFloatingPanels]
   );
 
   const openTextReader = useCallback((post: IngestedPost) => {
+    closeFloatingPanels();
     setViewerIndex(null);
     setTextReaderPost(post);
     setCopySuccessId(null);
     setMenuPostId(null);
     setActionError("");
-  }, []);
+  }, [closeFloatingPanels]);
 
   const closeViewer = useCallback(() => {
     setViewerDirection(null);
@@ -2010,8 +2075,10 @@ export function FeedScreen({
 
   const shouldShowTopSearch =
     !tagsOpen &&
+    viewerIndex === null &&
+    textReaderPost === null &&
     feedSettings.mediaMode !== "trends" &&
-    (searchPanelOpen || searchQuery.trim().length > 0);
+    (searchPanelOpen || searchOverlayOpen || searchQuery.trim().length > 0);
 
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
@@ -2092,42 +2159,71 @@ export function FeedScreen({
             setSearchCategoriesOpen(false);
             setSearchPanelOpen(true);
           }}
+          onActivateFloating={() => setSearchOverlayOpen(true)}
         />
       ) : null}
 
-{!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" && !hasSubscriptions ? (
-        <SubscriptionsHint text={copy.subscriptionsHint} />
+{!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" ? (
+        subscriptionsOverlayOpen && typeof document !== "undefined" ? (
+          createPortal(
+            <div className="fixed inset-x-0 top-[var(--app-header-offset)] z-[80] mx-auto w-full max-w-[570px] bg-gradient-to-b from-[rgba(18,31,44,.72)] via-[rgba(18,31,44,.44)] to-transparent pb-5 pt-2 backdrop-blur-xl dark:from-[rgba(18,31,44,.72)] dark:via-[rgba(18,31,44,.44)]">
+              {!hasSubscriptions ? (
+                <SubscriptionsHint text={copy.subscriptionsHint} />
+              ) : hasBubbles ? (
+                <SubscriptionsBar
+                  items={subscriptionBubbles}
+                  onOpen={(handle) => {
+                    const bubble = subscriptionBubbles.find((item) => item.handle === handle);
+
+                    if (bubble) {
+                      setSeenSubscriptionPosts((prev) => {
+                        const next = {
+                          ...prev,
+                          [handle]: Math.max(prev[handle] ?? 0, bubble.latestPostId),
+                        };
+                        writeSeenSubscriptionsToStorage(next);
+                        return next;
+                      });
+                    }
+
+                    setSubscriptionsOverlayOpen(false);
+                    openSource(handle);
+                  }}
+                />
+              ) : (
+                <SubscriptionsHint text={copy.subscriptionsHint} />
+              )}
+            </div>,
+            document.body
+          )
+        ) : !hasSubscriptions ? (
+          <SubscriptionsHint text={copy.subscriptionsHint} />
+        ) : hasBubbles ? (
+          <SubscriptionsBar
+            items={subscriptionBubbles}
+            onOpen={(handle) => {
+              const bubble = subscriptionBubbles.find((item) => item.handle === handle);
+
+              if (bubble) {
+                setSeenSubscriptionPosts((prev) => {
+                  const next = {
+                    ...prev,
+                    [handle]: Math.max(prev[handle] ?? 0, bubble.latestPostId),
+                  };
+                  writeSeenSubscriptionsToStorage(next);
+                  return next;
+                });
+              }
+
+              openSource(handle);
+            }}
+          />
+        ) : (
+          <SubscriptionsHint text={copy.subscriptionsHint} />
+        )
       ) : null}
 
-      {!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && hasBubbles ? (
-        <SubscriptionsBar
-          items={subscriptionBubbles}
-          onOpen={(handle) => {
-            const bubble = subscriptionBubbles.find((item) => item.handle === handle);
-
-            if (bubble) {
-              setSeenSubscriptionPosts((prev) => {
-                const next = {
-                  ...prev,
-                  [handle]: Math.max(prev[handle] ?? 0, bubble.latestPostId),
-                };
-                writeSeenSubscriptionsToStorage(next);
-                return next;
-              });
-            }
-
-            openSource(handle);
-          }}
-        />
-      ) : null}
-
-      {!tagsOpen && subscriptionsPanelOpen && feedSettings.mediaMode !== "trends" && hasSubscriptions && !hasBubbles ? (
-        <SubscriptionsHint text={copy.subscriptionsHint} />
-      ) : null}
-
-      
-
-      {actionError ? (
+            {actionError ? (
         <div className="mx-auto mb-3 w-full max-w-[570px] px-4">
           <div className="rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
             {actionError}
@@ -2207,6 +2303,32 @@ export function FeedScreen({
                 key={post.id}
                 ref={(node) => registerFeedCardNode(post.id, node)}
                 data-feed-post-id={post.id}
+                onPointerDownCapture={(event) => {
+                  const target = event.target as HTMLElement | null;
+                  if (!target) return;
+
+                  const opensMedia =
+                    target.closest("img") ||
+                    target.closest("video") ||
+                    target.closest("[data-feed-media]");
+
+                  if (opensMedia) {
+                    closeFloatingPanels();
+                  }
+                }}
+                onClickCapture={(event) => {
+                  const target = event.target as HTMLElement | null;
+                  if (!target) return;
+
+                  const opensMedia =
+                    target.closest("img") ||
+                    target.closest("video") ||
+                    target.closest("[data-feed-media]");
+
+                  if (opensMedia) {
+                    closeFloatingPanels();
+                  }
+                }}
               >
                 <FeedCard
                   post={post}
