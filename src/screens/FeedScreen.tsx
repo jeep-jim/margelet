@@ -71,7 +71,11 @@ function isGifPost(post: IngestedPost) {
 
 function isVideoViewerPost(post: IngestedPost) {
   if (isGifPost(post)) return false;
-  return post.contentType === "video";
+
+  return (
+    post.contentType === "video" ||
+    post.media.some((item) => item.kind === "video")
+  );
 }
 
 function normalizeCountryCode(value: string | null | undefined, locale: Locale) {
@@ -496,21 +500,43 @@ function getVideoGridPreview(post: IngestedPost) {
   if (!visual) return null;
 
   const record = visual as Record<string, unknown>;
-  const poster =
-    typeof record.poster === "string"
-      ? record.poster
-      : typeof record.thumbnail === "string"
-        ? record.thumbnail
-        : typeof record.thumbnailUrl === "string"
-          ? record.thumbnailUrl
-          : typeof record.previewUrl === "string"
-            ? record.previewUrl
-            : typeof record.preview === "string"
-              ? record.preview
-              : "";
+  const imageRecord = (image || {}) as Record<string, unknown>;
+
+  const pickString = (...values: unknown[]) => {
+    for (const value of values) {
+      if (typeof value === "string" && value.trim()) return value.trim();
+    }
+
+    return "";
+  };
+
+  const poster = pickString(
+    record.poster,
+    record.thumbnail,
+    record.thumbnailUrl,
+    record.thumb,
+    record.thumbUrl,
+    record.previewUrl,
+    record.preview,
+    imageRecord.url,
+    imageRecord.src,
+    imageRecord.previewUrl
+  );
+
+  const url = pickString(
+    record.url,
+    record.src,
+    record.videoUrl,
+    record.mediaUrl,
+    record.fileUrl,
+    record.file_url,
+    record.downloadUrl,
+    record.previewUrl
+  );
 
   return {
     ...visual,
+    url: String(url || visual.url || ""),
     poster,
   };
 }
@@ -533,52 +559,46 @@ function getVideoGridMediaRatio(post: IngestedPost, index: number) {
     media.find((item) => item.kind === "image");
 
   const record = (visual || {}) as Record<string, unknown>;
-  const width = Number(record.width || record.w || 0);
-  const height = Number(record.height || record.h || 0);
+  const width = Number(record.width || record.w || record.videoWidth || 0);
+  const height = Number(record.height || record.h || record.videoHeight || 0);
 
   if (width > 0 && height > 0) {
     return width / height;
   }
 
-  // Фолбэк, когда Telegram не дал размеры: делаем живой микс,
-  // но без дырок, потому что это CSS columns, а не grid.
-  const pattern = [0.58, 0.78, 1.15, 0.66, 1.55, 0.72, 1, 0.62, 1.35, 0.8];
-  return pattern[index % pattern.length] || 0.72;
+  // Если Telegram не дал размеры — не делаем огромные пустые башни.
+  // Паттерн даёт живую ленту, но grid-auto-flow:dense закрывает дырки.
+  const pattern = [0.62, 0.78, 1.2, 0.7, 1.55, 0.82, 1, 0.66, 1.38, 0.74];
+  return pattern[index % pattern.length] || 0.78;
 }
 
-function getVideoGridCardHeight(post: IngestedPost, index: number) {
+function getVideoGridCardClass(post: IngestedPost, index: number) {
   const ratio = getVideoGridMediaRatio(post, index);
 
-  if (ratio >= 1.45) return "h-[156px] sm:h-[176px]";
-  if (ratio >= 1.08) return "h-[190px] sm:h-[210px]";
-  if (ratio >= 0.88) return "h-[226px] sm:h-[246px]";
-  if (ratio <= 0.62) return "h-[360px] sm:h-[410px]";
+  if (ratio >= 1.45) {
+    return "col-span-2 row-span-3 sm:col-span-2 sm:row-span-3";
+  }
+
+  if (ratio >= 1.08) {
+    return "col-span-1 row-span-3 sm:col-span-1 sm:row-span-3";
+  }
+
+  if (ratio >= 0.88) {
+    return "col-span-1 row-span-4 sm:col-span-1 sm:row-span-4";
+  }
+
+  if (ratio <= 0.62) {
+    return "col-span-1 row-span-6 sm:col-span-1 sm:row-span-6";
+  }
 
   const pattern = [
-    "h-[310px] sm:h-[350px]",
-    "h-[270px] sm:h-[310px]",
-    "h-[340px] sm:h-[390px]",
-    "h-[250px] sm:h-[290px]",
+    "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5",
+    "col-span-1 row-span-4 sm:col-span-1 sm:row-span-4",
+    "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5",
+    "col-span-1 row-span-4 sm:col-span-1 sm:row-span-4",
   ];
 
-  return pattern[index % pattern.length] || "h-[310px] sm:h-[350px]";
-}
-
-function getVideoGridCardBreak(post: IngestedPost, index: number) {
-  const ratio = getVideoGridMediaRatio(post, index);
-
-  // Очень широкие карточки пусть будут одной полосой.
-  // В CSS columns это делает аккуратный широкий блок без дырок.
-  if (ratio >= 1.45) {
-    return "sm:column-span-all";
-  }
-
-  // Иногда даём большой широкий блок для разнообразия, но не часто.
-  if (index > 0 && index % 11 === 0) {
-    return "sm:column-span-all";
-  }
-
-  return "";
+  return pattern[index % pattern.length] || "col-span-1 row-span-5 sm:col-span-1 sm:row-span-5";
 }
 
 
@@ -907,14 +927,13 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="columns-2 gap-px sm:columns-3">
+      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:76px] sm:grid-cols-3 sm:[grid-auto-rows:82px]">
         {posts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
           const title = post.source?.title || post.source?.handle || "Telegram";
           const verified = isVideoGridSourceVerified(post);
-          const cardHeight = getVideoGridCardHeight(post, index);
-          const cardBreak = getVideoGridCardBreak(post, index);
+          const cardClass = getVideoGridCardClass(post, index);
           const poster = preview?.poster || "";
           const isPreviewing = previewPostId === post.id;
           const text = String(post.text || "")
@@ -927,7 +946,7 @@ function VideoGridView({
               key={post.id}
               ref={(node) => registerFeedCardNode(post.id, node)}
               data-feed-post-id={post.id}
-              className={["mb-px break-inside-avoid", cardBreak].filter(Boolean).join(" ")}
+              className={["min-h-0", cardClass].filter(Boolean).join(" ")}
             >
               <button
                 type="button"
@@ -955,9 +974,8 @@ function VideoGridView({
                   onOpenPost(post);
                 }}
                 className={[
-                  "group relative block w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
+                  "group relative block h-full w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
                   isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
-                  cardHeight,
                 ].join(" ")}
               >
                 <div className="absolute inset-0 bg-black">
@@ -980,7 +998,7 @@ function VideoGridView({
                       loading="lazy"
                       referrerPolicy="no-referrer"
                     />
-                  ) : preview?.kind === "video" ? (
+                  ) : preview?.kind === "video" && preview.url ? (
                     <video
                       ref={(node) => {
                         if (node) {
@@ -994,8 +1012,18 @@ function VideoGridView({
                       muted
                       playsInline
                       loop
-                      preload={isPreviewing ? "auto" : "none"}
+                      preload={isPreviewing || index < 18 ? "metadata" : "none"}
                       className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                      onLoadedMetadata={(event) => {
+                        const video = event.currentTarget;
+                        try {
+                          if (video.currentTime < 0.08) {
+                            video.currentTime = Math.min(0.12, video.duration || 0.12);
+                          }
+                        } catch {
+                          //
+                        }
+                      }}
                       onLoadedData={(event) => {
                         const video = event.currentTarget;
                         try {
