@@ -869,29 +869,20 @@ function VideoGridView({
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const [warmVideoPostIds, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
-  const [visibleVideoCount, setVisibleVideoCount] = useState(72);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(36);
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    videoPreviewRefs.current.forEach((video, postId) => {
-      if (postId !== previewPostId) {
-        video.pause();
-        try {
+    videoPreviewRefs.current.forEach((video) => {
+      video.pause();
+      try {
+        if (video.currentTime < 0.08) {
           video.currentTime = Math.min(0.12, video.duration || 0.12);
-        } catch {
-          //
         }
+      } catch {
+        //
       }
     });
-
-    if (previewPostId === null) return;
-
-    const activeVideo = videoPreviewRefs.current.get(previewPostId);
-    if (!activeVideo) return;
-
-    activeVideo.muted = true;
-    activeVideo.loop = true;
-    void activeVideo.play().catch(() => undefined);
   }, [previewPostId]);
 
   useEffect(() => {
@@ -904,7 +895,7 @@ function VideoGridView({
   }, []);
 
   useEffect(() => {
-    setVisibleVideoCount(72);
+    setVisibleVideoCount(36);
     setPreviewPostId(null);
     setWarmVideoPostIds(new Set());
   }, [posts]);
@@ -914,14 +905,14 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 48));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 24));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 48));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 24));
       },
       { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
     );
@@ -1026,11 +1017,11 @@ function VideoGridView({
 
   const startPreview = (postId: number) => {
     suppressNextClickRef.current = true;
+    warmVideoPreview(postId);
 
     const video = videoPreviewRefs.current.get(postId);
     if (video) {
       video.muted = true;
-      video.loop = true;
       try {
         if (video.currentTime < 0.08) {
           video.currentTime = Math.min(0.14, video.duration || 0.14);
@@ -1038,7 +1029,6 @@ function VideoGridView({
       } catch {
         //
       }
-      void video.play().catch(() => undefined);
     }
 
     setPreviewPostId(postId);
@@ -1085,7 +1075,9 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const shouldRenderVideo =
-            canRenderVideo && (isPreviewing || (!poster && warmVideoPostIds.has(post.id)));
+            canRenderVideo && (isPreviewing || warmVideoPostIds.has(post.id));
+          const hasStaticPreview = Boolean(poster) || canRenderImage;
+          const showPlaceholder = !hasStaticPreview && !shouldRenderVideo;
 
           return (
             <div
@@ -1144,19 +1136,19 @@ function VideoGridView({
                   isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(90,125,170,.22),transparent_34%),linear-gradient(135deg,#23364a_0%,#152333_48%,#07111d_100%)]" />
-                <div className="absolute inset-0 opacity-35 [background:linear-gradient(110deg,transparent_0%,rgba(255,255,255,.08)_45%,transparent_70%)] [background-size:220%_100%] animate-[videoGridPreviewShimmer_1.8s_ease-in-out_infinite]" />
+                {showPlaceholder ? (
+                  <>
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(90,125,170,.22),transparent_34%),linear-gradient(135deg,#23364a_0%,#152333_48%,#07111d_100%)]" />
+                    <div className="absolute inset-0 opacity-35 [background:linear-gradient(110deg,transparent_0%,rgba(255,255,255,.08)_45%,transparent_70%)] [background-size:220%_100%] animate-[videoGridPreviewShimmer_1.8s_ease-in-out_infinite]" />
+                  </>
+                ) : null}
 
                 {shouldRenderVideo ? (
                   <video
                     ref={(node) => {
                       if (node) {
                         videoPreviewRefs.current.set(post.id, node);
-                        if (previewPostId === post.id) {
-                          node.muted = true;
-                          node.loop = true;
-                          void node.play().catch(() => undefined);
-                        }
+                        node.muted = true;
                       } else {
                         videoPreviewRefs.current.delete(post.id);
                       }
@@ -1166,7 +1158,6 @@ function VideoGridView({
                     data-video-preview-post-id={post.id}
                     muted
                     playsInline
-                    loop
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
