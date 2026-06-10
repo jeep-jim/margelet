@@ -30,8 +30,8 @@ const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
 const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
-const INITIAL_RENDER_POSTS = 18;
-const RENDER_POSTS_STEP = 12;
+const INITIAL_RENDER_POSTS = 14;
+const RENDER_POSTS_STEP = 10;
 const LOAD_MORE_DISTANCE_PX = 900;
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
@@ -867,7 +867,7 @@ function VideoGridView({
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
-  const warmedVideoUrlsRef = useRef<Set<string>>(new Set());
+  const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const [warmedVideoPostIds, setWarmedVideoPostIds] = useState<Set<number>>(() => new Set());
 
   useEffect(() => {
@@ -902,8 +902,6 @@ function VideoGridView({
   }, []);
 
   const warmVideoPreview = useCallback((postId: number) => {
-    const video = videoPreviewRefs.current.get(postId);
-
     setWarmedVideoPostIds((prev) => {
       if (prev.has(postId)) return prev;
       const next = new Set(prev);
@@ -911,17 +909,17 @@ function VideoGridView({
       return next;
     });
 
+    const video = videoPreviewRefs.current.get(postId);
     if (!video) return;
 
     try {
       video.muted = true;
-      video.preload = "auto";
-      video.load();
+      video.preload = "metadata";
 
       const lockFirstFrame = () => {
         try {
           if (video.currentTime < 0.08) {
-            video.currentTime = Math.min(0.16, video.duration || 0.16);
+            video.currentTime = Math.min(0.12, video.duration || 0.12);
           }
         } catch {
           //
@@ -946,54 +944,19 @@ function VideoGridView({
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
 
-          const postId = Number((entry.target as HTMLElement).dataset.videoPreviewPostId);
+          const postId = Number((entry.target as HTMLElement).dataset.videoTilePostId);
           if (Number.isFinite(postId)) {
             warmVideoPreview(postId);
           }
         }
       },
-      { rootMargin: "1800px 0px 1800px 0px", threshold: 0.01 }
+      { rootMargin: "520px 0px 520px 0px", threshold: 0.01 }
     );
 
-    videoPreviewRefs.current.forEach((video) => observer.observe(video));
+    videoTileRefs.current.forEach((node) => observer.observe(node));
 
     return () => observer.disconnect();
   }, [posts, warmVideoPreview]);
-
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-
-    // Умный прогрев: только первые видео из уже отрендеренной части.
-    // На мобилке кадры появляются сразу, но мы не грузим всю страну целиком.
-    const warmUrls = posts
-      .slice(0, 72)
-      .map((post) => getVideoGridPreview(post))
-      .filter((preview): preview is NonNullable<ReturnType<typeof getVideoGridPreview>> =>
-        Boolean(preview?.kind === "video" && preview.url)
-      )
-      .map((preview) => preview.url)
-      .filter((url) => !warmedVideoUrlsRef.current.has(url))
-      .slice(0, 28);
-
-    const links: HTMLLinkElement[] = [];
-
-    for (const url of warmUrls) {
-      warmedVideoUrlsRef.current.add(url);
-
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "video";
-      link.href = url;
-      document.head.appendChild(link);
-      links.push(link);
-    }
-
-    return () => {
-      for (const link of links) {
-        link.remove();
-      }
-    };
-  }, [posts]);
 
   const clearLongPressTimer = () => {
     if (longPressTimerRef.current) {
@@ -1060,13 +1023,22 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldWarmVideo = isPreviewing || index < 72 || warmedVideoPostIds.has(post.id);
+          const shouldWarmVideo = isPreviewing || index < 8 || warmedVideoPostIds.has(post.id);
+          const shouldRenderVideo = canRenderVideo && shouldWarmVideo;
 
           return (
             <div
               key={post.id}
-              ref={(node) => registerFeedCardNode(post.id, node)}
+              ref={(node) => {
+                registerFeedCardNode(post.id, node);
+                if (node) {
+                  videoTileRefs.current.set(post.id, node);
+                } else {
+                  videoTileRefs.current.delete(post.id);
+                }
+              }}
               data-feed-post-id={post.id}
+              data-video-tile-post-id={post.id}
               className={`${cardClass} min-h-0`}
             >
               <button
@@ -1113,11 +1085,16 @@ function VideoGridView({
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(90,125,170,.22),transparent_34%),linear-gradient(135deg,#23364a_0%,#152333_48%,#07111d_100%)]" />
                 <div className="absolute inset-0 opacity-35 [background:linear-gradient(110deg,transparent_0%,rgba(255,255,255,.08)_45%,transparent_70%)] [background-size:220%_100%] animate-[videoGridPreviewShimmer_1.8s_ease-in-out_infinite]" />
 
-                {canRenderVideo ? (
+                {shouldRenderVideo ? (
                   <video
                     ref={(node) => {
                       if (node) {
                         videoPreviewRefs.current.set(post.id, node);
+                        if (previewPostId === post.id) {
+                          node.muted = true;
+                          node.loop = true;
+                          void node.play().catch(() => undefined);
+                        }
                       } else {
                         videoPreviewRefs.current.delete(post.id);
                       }
@@ -1131,7 +1108,7 @@ function VideoGridView({
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload={shouldWarmVideo ? "auto" : "metadata"}
+                    preload={isPreviewing ? "auto" : "metadata"}
                     className={[
                       "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
                       poster && !isPreviewing ? "opacity-0" : "opacity-100",
@@ -1222,6 +1199,11 @@ function VideoGridView({
                           className="h-full w-full object-cover"
                           referrerPolicy="no-referrer"
                           onError={(event) => {
+                            const fallback = getTelegramUserpicUrl(post.source?.handle);
+                            if (fallback && event.currentTarget.src !== fallback) {
+                              event.currentTarget.src = fallback;
+                              return;
+                            }
                             event.currentTarget.style.display = "none";
                           }}
                         />
