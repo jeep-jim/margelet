@@ -868,7 +868,9 @@ function VideoGridView({
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
-  const [, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
+  const [warmVideoPostIds, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
+  const [visibleVideoCount, setVisibleVideoCount] = useState(72);
+  const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     videoPreviewRefs.current.forEach((video, postId) => {
@@ -900,6 +902,33 @@ function VideoGridView({
       videoPreviewRefs.current.forEach((video) => video.pause());
     };
   }, []);
+
+  useEffect(() => {
+    setVisibleVideoCount(72);
+    setPreviewPostId(null);
+    setWarmVideoPostIds(new Set());
+  }, [posts]);
+
+  useEffect(() => {
+    const node = loadMoreVideoRef.current;
+    if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 48));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 48));
+      },
+      { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [posts.length, visibleVideoCount]);
 
   const warmVideoPreview = useCallback((postId: number) => {
     setWarmVideoPostIds((prev) => {
@@ -971,8 +1000,8 @@ function VideoGridView({
             }
           }
 
-          // Жёсткий предохранитель: не больше 14 прогретых видео-плиток.
-          const limited = Array.from(next).slice(-14);
+          // Жёсткий предохранитель: не больше 8 прогретых video-элементов.
+          const limited = Array.from(next).slice(-8);
           if (limited.length !== next.size) {
             changed = true;
           }
@@ -980,7 +1009,7 @@ function VideoGridView({
           return changed ? new Set(limited) : prev;
         });
       },
-      { rootMargin: "260px 0px 360px 0px", threshold: 0.01 }
+      { rootMargin: "160px 0px 220px 0px", threshold: 0.01 }
     );
 
     videoTileRefs.current.forEach((node) => observer.observe(node));
@@ -1030,6 +1059,8 @@ function VideoGridView({
     );
   }
 
+  const visiblePosts = posts.slice(0, visibleVideoCount);
+
   return (
     <div className="pt-px">
       <style>{`
@@ -1039,7 +1070,7 @@ function VideoGridView({
         }
       `}</style>
       <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:44px] sm:grid-cols-3 sm:[grid-auto-rows:52px]">
-        {posts.map((post, index) => {
+        {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
           const title = post.source?.title || post.source?.handle || "Telegram";
@@ -1053,7 +1084,8 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldRenderVideo = canRenderVideo && isPreviewing;
+          const shouldRenderVideo =
+            canRenderVideo && (isPreviewing || (!poster && warmVideoPostIds.has(post.id)));
 
           return (
             <div
@@ -1259,6 +1291,10 @@ function VideoGridView({
           );
         })}
       </div>
+
+      {visibleVideoCount < posts.length ? (
+        <div ref={loadMoreVideoRef} className="h-[70vh]" aria-hidden="true" />
+      ) : null}
     </div>
   );
 }
