@@ -868,7 +868,7 @@ function VideoGridView({
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
-  const [warmedVideoPostIds, setWarmedVideoPostIds] = useState<Set<number>>(() => new Set());
+  const [warmVideoPostIds, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
 
   useEffect(() => {
     videoPreviewRefs.current.forEach((video, postId) => {
@@ -902,10 +902,19 @@ function VideoGridView({
   }, []);
 
   const warmVideoPreview = useCallback((postId: number) => {
-    setWarmedVideoPostIds((prev) => {
+    setWarmVideoPostIds((prev) => {
       if (prev.has(postId)) return prev;
-      const next = new Set(prev);
+
+      const next = new Set<number>();
       next.add(postId);
+
+      // Держим в памяти только маленькое окно рядом с экраном.
+      // Раньше set только рос, поэтому video-tab копил сотни <video src=mp4>
+      // и браузер душился сотнями range-запросов.
+      for (const id of Array.from(prev).slice(-10)) {
+        next.add(id);
+      }
+
       return next;
     });
 
@@ -941,16 +950,37 @@ function VideoGridView({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
+        setWarmVideoPostIds((prev) => {
+          let changed = false;
+          const next = new Set(prev);
 
-          const postId = Number((entry.target as HTMLElement).dataset.videoTilePostId);
-          if (Number.isFinite(postId)) {
-            warmVideoPreview(postId);
+          for (const entry of entries) {
+            const postId = Number((entry.target as HTMLElement).dataset.videoTilePostId);
+            if (!Number.isFinite(postId)) continue;
+
+            if (entry.isIntersecting) {
+              if (!next.has(postId)) {
+                next.add(postId);
+                changed = true;
+              }
+              continue;
+            }
+
+            if (next.delete(postId)) {
+              changed = true;
+            }
           }
-        }
+
+          // Жёсткий предохранитель: не больше 14 прогретых видео-плиток.
+          const limited = Array.from(next).slice(-14);
+          if (limited.length !== next.size) {
+            changed = true;
+          }
+
+          return changed ? new Set(limited) : prev;
+        });
       },
-      { rootMargin: "520px 0px 520px 0px", threshold: 0.01 }
+      { rootMargin: "260px 0px 360px 0px", threshold: 0.01 }
     );
 
     videoTileRefs.current.forEach((node) => observer.observe(node));
@@ -1023,8 +1053,8 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldWarmVideo = isPreviewing || index < 8 || warmedVideoPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && shouldWarmVideo;
+          const isNearScreen = warmVideoPostIds.has(post.id);
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && isNearScreen));
 
           return (
             <div
@@ -1155,8 +1185,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 42 ? "eager" : "lazy"}
-                    fetchPriority={index < 18 ? "high" : "auto"}
+                    loading={index < 18 ? "eager" : "lazy"}
+                    fetchPriority={index < 8 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={(event) => {
@@ -1169,8 +1199,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 42 ? "eager" : "lazy"}
-                    fetchPriority={index < 18 ? "high" : "auto"}
+                    loading={index < 18 ? "eager" : "lazy"}
+                    fetchPriority={index < 8 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={(event) => {

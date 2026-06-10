@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AppHeader } from "./components/layout/AppHeader";
-import { getInitialLocale } from "./lib/i18n";
 import { AddScreen } from "./screens/AddScreen";
 import { FeedScreen } from "./screens/FeedScreen";
 import { CreatorScreen } from "./screens/CreatorScreen";
@@ -23,6 +22,7 @@ const ADMIN_HIDDEN_PATH = "/jim/admin";
 const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
 const SITE_ORIGIN = "https://www.margelet.space";
+const DEFAULT_LOCALE: Locale = "ru";
 
 // 🔥 Генерируем список стран из единого SEO_LOCALE_META
 const COUNTRY_CODES = new Set<CountryCode>(Object.keys(SEO_LOCALE_META) as CountryCode[]);
@@ -315,7 +315,7 @@ async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
 }
 
 export default function App() {
-  const [locale, setLocale] = useState<Locale>(() => getInitialLocale());  
+  const [locale, setLocale] = useState<Locale>(() => DEFAULT_LOCALE);  
   const [current, setCurrent] = useState<TabId>("feed");
   const [serverPosts, setServerPosts] = useState<IngestedPost[]>([]);
   const [isFeedLoading, setIsFeedLoading] = useState(true);
@@ -439,8 +439,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    const initial = getInitialLocale();
-    setLocale(initial);
+    setLocale(DEFAULT_LOCALE);
 
     setCurrentTelegramUser(readTelegramUserFromStorage());
 
