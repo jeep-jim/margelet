@@ -868,7 +868,7 @@ function VideoGridView({
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
-  const [warmVideoPostIds, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
+  const [, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
 
   useEffect(() => {
     videoPreviewRefs.current.forEach((video, postId) => {
@@ -1053,8 +1053,7 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const isNearScreen = warmVideoPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && isNearScreen));
+          const shouldRenderVideo = canRenderVideo && isPreviewing;
 
           return (
             <div
@@ -1105,6 +1104,7 @@ function VideoGridView({
                 }}
                 style={{
                   WebkitTouchCallout: "none",
+                  touchAction: "manipulation",
                   userSelect: "none",
                 }}
                 className={[
@@ -1338,6 +1338,7 @@ export function FeedScreen({
   const seenPostsHydratedRef = useRef(false);
   const currentSessionSeenPostIdsRef = useRef<Set<number>>(new Set());
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
+  const viewerHistoryOpenRef = useRef(false);
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const [renderCount, setRenderCount] = useState(INITIAL_RENDER_POSTS);
@@ -1998,8 +1999,18 @@ export function FeedScreen({
   const openViewerByPost = useCallback(
     (post: IngestedPost) => {
       closeFloatingPanels();
+      if (!viewerHistoryOpenRef.current) {
+        window.history.pushState({ margeletViewer: true }, document.title, window.location.href);
+        viewerHistoryOpenRef.current = true;
+      }
       const nextIndex = viewerPosts.findIndex((item) => item.id === post.id);
-      if (nextIndex === -1) return;
+      if (nextIndex === -1) {
+        if (viewerHistoryOpenRef.current) {
+          viewerHistoryOpenRef.current = false;
+          window.history.back();
+        }
+        return;
+      }
 
       setTextReaderPost(null);
       setViewerDirection(null);
@@ -2017,6 +2028,10 @@ export function FeedScreen({
 
   const openTextReader = useCallback((post: IngestedPost) => {
     closeFloatingPanels();
+    if (!viewerHistoryOpenRef.current) {
+      window.history.pushState({ margeletViewer: true }, document.title, window.location.href);
+      viewerHistoryOpenRef.current = true;
+    }
     setViewerIndex(null);
     setTextReaderPost(post);
     setCopySuccessId(null);
@@ -2024,9 +2039,10 @@ export function FeedScreen({
     setActionError("");
   }, [closeFloatingPanels]);
 
-  const closeViewer = useCallback(() => {
+  const closeViewerState = useCallback(() => {
     setViewerDirection(null);
     setViewerIndex(null);
+    setTextReaderPost(null);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsPlaying(true);
@@ -2036,10 +2052,45 @@ export function FeedScreen({
     setVideoProgress(0);
   }, []);
 
+  const closeViewer = useCallback(() => {
+    if (viewerHistoryOpenRef.current) {
+      window.history.back();
+      return;
+    }
+
+    closeViewerState();
+  }, [closeViewerState]);
+
+  useEffect(() => {
+    const handleViewerBack = () => {
+      if (!viewerHistoryOpenRef.current) return;
+
+      viewerHistoryOpenRef.current = false;
+      closeViewerState();
+    };
+
+    window.addEventListener("popstate", handleViewerBack);
+
+    return () => {
+      window.removeEventListener("popstate", handleViewerBack);
+    };
+  }, [closeViewerState]);
+
+  useEffect(() => {
+    if (viewerIndex === null) return;
+    if (viewerIndex < viewerPosts.length) return;
+
+    setViewerIndex(viewerPosts.length > 0 ? viewerPosts.length - 1 : null);
+  }, [viewerIndex, viewerPosts.length]);
+
   const nextViewer = useCallback(() => {
     if (viewerIndex === null || viewerPosts.length === 0) return;
+    if (viewerIndex >= viewerPosts.length - 1) return;
+
+    const currentPost = viewerPosts[viewerIndex];
+    if (currentPost) markPostSeen(currentPost.id);
     setViewerDirection("next");
-    setViewerIndex((viewerIndex + 1) % viewerPosts.length);
+    setViewerIndex(viewerIndex + 1);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsPlaying(true);
@@ -2047,12 +2098,16 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-  }, [viewerIndex, viewerPosts.length]);
+  }, [viewerIndex, viewerPosts, markPostSeen]);
 
   const prevViewer = useCallback(() => {
     if (viewerIndex === null || viewerPosts.length === 0) return;
+    if (viewerIndex <= 0) return;
+
+    const currentPost = viewerPosts[viewerIndex];
+    if (currentPost) markPostSeen(currentPost.id);
     setViewerDirection("prev");
-    setViewerIndex((viewerIndex - 1 + viewerPosts.length) % viewerPosts.length);
+    setViewerIndex(viewerIndex - 1);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsPlaying(true);
@@ -2060,7 +2115,7 @@ export function FeedScreen({
     setMenuPostId(null);
     setActionError("");
     setVideoProgress(0);
-  }, [viewerIndex, viewerPosts.length]);
+  }, [viewerIndex, viewerPosts, markPostSeen]);
 
   const handleShare = async (post: IngestedPost) => {
     const shareUrl = buildShareUrl(post);
@@ -2712,7 +2767,7 @@ export function FeedScreen({
         locale={locale}
         liked={false}
         saved={!!textReaderPost && savedPostIds.includes(textReaderPost.id)}
-        onClose={() => setTextReaderPost(null)}
+        onClose={closeViewer}
         onToggleLike={() => {}}
         onToggleSave={onToggleSave}
         openSource={openSource}
