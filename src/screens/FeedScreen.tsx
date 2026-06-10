@@ -869,8 +869,6 @@ function VideoGridView({
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const [warmVideoPostIds, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
-  const [visibleVideoCount, setVisibleVideoCount] = useState(72);
-  const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     videoPreviewRefs.current.forEach((video, postId) => {
@@ -903,33 +901,6 @@ function VideoGridView({
     };
   }, []);
 
-  useEffect(() => {
-    setVisibleVideoCount(72);
-    setPreviewPostId(null);
-    setWarmVideoPostIds(new Set());
-  }, [posts]);
-
-  useEffect(() => {
-    const node = loadMoreVideoRef.current;
-    if (!node) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 48));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 48));
-      },
-      { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [posts.length, visibleVideoCount]);
-
   const warmVideoPreview = useCallback((postId: number) => {
     setWarmVideoPostIds((prev) => {
       if (prev.has(postId)) return prev;
@@ -937,10 +908,9 @@ function VideoGridView({
       const next = new Set<number>();
       next.add(postId);
 
-      // Держим в памяти только маленькое окно рядом с экраном.
-      // Раньше set только рос, поэтому video-tab копил сотни <video src=mp4>
-      // и браузер душился сотнями range-запросов.
-      for (const id of Array.from(prev).slice(-10)) {
+      // Держим в памяти только крошечное окно рядом с экраном.
+      // Это даёт первые кадры, но не плодит сотни <video>.
+      for (const id of Array.from(prev).slice(-4)) {
         next.add(id);
       }
 
@@ -1000,8 +970,8 @@ function VideoGridView({
             }
           }
 
-          // Жёсткий предохранитель: не больше 8 прогретых video-элементов.
-          const limited = Array.from(next).slice(-8);
+          // Жёсткий предохранитель: не больше 6 прогретых видео-плиток.
+          const limited = Array.from(next).slice(-6);
           if (limited.length !== next.size) {
             changed = true;
           }
@@ -1009,7 +979,7 @@ function VideoGridView({
           return changed ? new Set(limited) : prev;
         });
       },
-      { rootMargin: "160px 0px 220px 0px", threshold: 0.01 }
+      { rootMargin: "220px 0px 260px 0px", threshold: 0.01 }
     );
 
     videoTileRefs.current.forEach((node) => observer.observe(node));
@@ -1059,8 +1029,6 @@ function VideoGridView({
     );
   }
 
-  const visiblePosts = posts.slice(0, visibleVideoCount);
-
   return (
     <div className="pt-px">
       <style>{`
@@ -1070,7 +1038,7 @@ function VideoGridView({
         }
       `}</style>
       <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:44px] sm:grid-cols-3 sm:[grid-auto-rows:52px]">
-        {visiblePosts.map((post, index) => {
+        {posts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
           const title = post.source?.title || post.source?.handle || "Telegram";
@@ -1084,8 +1052,7 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldRenderVideo =
-            canRenderVideo && (isPreviewing || (!poster && warmVideoPostIds.has(post.id)));
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || warmVideoPostIds.has(post.id));
 
           return (
             <div
@@ -1100,7 +1067,7 @@ function VideoGridView({
               }}
               data-feed-post-id={post.id}
               data-video-tile-post-id={post.id}
-              className={`${cardClass} min-h-0`}
+              className={`${cardClass} min-h-0 [contain:layout_paint_style]`}
             >
               <button
                 type="button"
@@ -1291,10 +1258,6 @@ function VideoGridView({
           );
         })}
       </div>
-
-      {visibleVideoCount < posts.length ? (
-        <div ref={loadMoreVideoRef} className="h-[70vh]" aria-hidden="true" />
-      ) : null}
     </div>
   );
 }

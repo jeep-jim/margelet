@@ -708,18 +708,21 @@ export function SmartFeedBar({
     value: FeedMediaMode;
     label: string;
     mobileLabel?: string;
+    mobileText?: string;
     icon?: React.ReactNode;
   }> = useMemo(
     () => [
-      { value: "all", label: copy.modeAll, mobileLabel: "🎈" },
+      { value: "all", label: copy.modeAll, mobileLabel: "🎈", mobileText: "Post" },
       {
         value: "video",
         label: copy.modeVideo,
+        mobileText: "Play",
         icon: <Play className="h-4 w-4 fill-current" />,
       },
       {
         value: "me",
         label: copy.modeMe,
+        mobileText: "Save",
         icon: <Flame className="h-4 w-4 fill-current text-orange-500" />,
       },
     ],
@@ -801,7 +804,7 @@ export function SmartFeedBar({
             }`}
           >
             <div className="flex items-center justify-between gap-2 px-4 py-3 sm:gap-3">
-              <div className="flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2">
+              <div className="flex min-w-0 flex-1 items-center gap-1 sm:gap-3">
                 {options.map((option) => {
                   const active = mediaMode === option.value;
 
@@ -814,35 +817,45 @@ export function SmartFeedBar({
                         active ? activeClasses : inactivePillClasses
                       } ${
                         option.value === "all"
-                          ? "min-w-[42px] px-3 sm:min-w-[86px] sm:px-3.5"
+                          ? "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
                           : option.value === "me"
-                          ? "min-w-[85px] px-3 sm:min-w-[105px] sm:px-3.5"
-                          : "min-w-[60px] px-3 sm:min-w-[88px] sm:px-3.5"
+                          ? "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
+                          : "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
                       }`}
                       aria-pressed={active}
                       aria-label={option.label}
                     >
                       {option.value === "all" ? (
                         <>
-                          <span className="text-[17px] leading-none sm:hidden">🎈</span>
+                          <span className="inline-flex items-center gap-1.5 sm:hidden">
+                            <span className="text-[17px] leading-none">🎈</span>
+                            <span className="text-[13px] font-semibold leading-none">Post</span>
+                          </span>
                           <span className="hidden items-center gap-2 sm:inline-flex">
                             <span className="text-[17px] leading-none">🎈</span>
-                            <span>{option.label}</span>
+                            <span>{option.mobileText}</span>
                           </span>
                         </>
                       ) : option.value === "me" ? (
-                        // Me: показываем иконку + текст
-                        <span className="inline-flex items-center gap-2">
-                          {option.icon}
-                          <span>{option.label}</span>
-                        </span>
-                      ) : (
-                        // Video: на мобилке только иконка, на десктопе иконка + текст
                         <>
-                          <span className="sm:hidden">{option.icon}</span>
+                          <span className="inline-flex items-center gap-1.5 sm:hidden">
+                            {option.icon}
+                            <span className="text-[13px] font-semibold leading-none">Save</span>
+                          </span>
                           <span className="hidden items-center gap-2 sm:inline-flex">
                             {option.icon}
-                            <span>{option.label}</span>
+                            <span>{option.mobileText}</span>
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="inline-flex items-center gap-1.5 sm:hidden">
+                            {option.icon}
+                            <span className="text-[13px] font-semibold leading-none">Play</span>
+                          </span>
+                          <span className="hidden items-center gap-2 sm:inline-flex">
+                            {option.icon}
+                            <span>{option.mobileText}</span>
                           </span>
                         </>
                       )}
