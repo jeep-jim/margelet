@@ -897,7 +897,7 @@ function VideoGridView({
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
-  const [visibleVideoCount, setVisibleVideoCount] = useState(30);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(18);
   const [frameReadyPostIds, setFrameReadyPostIds] = useState<Set<number>>(() => new Set(VIDEO_GRID_FRAME_CACHE));
   const [frameLoadPostIds, setFrameLoadPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
@@ -934,7 +934,7 @@ function VideoGridView({
   }, []);
 
   useEffect(() => {
-    setVisibleVideoCount(30);
+    setVisibleVideoCount(18);
     setPreviewPostId(null);
     setFrameReadyPostIds(new Set(VIDEO_GRID_FRAME_CACHE));
     setFrameLoadPostIds(new Set());
@@ -945,16 +945,16 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 30));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 30));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
       },
-      { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
+      { rootMargin: "260px 0px 420px 0px", threshold: 0.01 }
     );
 
     observer.observe(node);
@@ -973,9 +973,17 @@ function VideoGridView({
 
       const nextIds: number[] = [];
 
-      while (cursor < visibleIds.length && nextIds.length < 4) {
+      while (cursor < visibleIds.length && nextIds.length < 2) {
         const id = visibleIds[cursor];
         cursor += 1;
+
+        const post = posts.find((item) => item.id === id);
+        const preview = post ? getVideoGridPreview(post) : null;
+
+        if (preview?.poster || preview?.kind === "image") {
+          VIDEO_GRID_FRAME_CACHE.add(id);
+          continue;
+        }
 
         if (!frameReadyPostIds.has(id)) {
           nextIds.push(id);
@@ -991,7 +999,7 @@ function VideoGridView({
       }
 
       if (cursor < visibleIds.length) {
-        window.setTimeout(pump, 220);
+        window.setTimeout(pump, 180);
       }
     };
 
@@ -1058,7 +1066,7 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:44px] sm:grid-cols-3 sm:[grid-auto-rows:52px]">
+      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:48px] sm:grid-cols-2 sm:[grid-auto-rows:58px]">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
@@ -1352,6 +1360,8 @@ export function FeedScreen({
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
   const [searchCategoriesOpen, setSearchCategoriesOpen] = useState(false);
   const lastScrollYRef = useRef(0);
+  const feedModeScrollPositionsRef = useRef<Partial<Record<FeedMediaMode, number>>>({});
+  const currentFeedModeRef = useRef<FeedMediaMode>(feedSettings.mediaMode);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
@@ -1480,6 +1490,7 @@ export function FeedScreen({
   }, [subscriptionsPanelOpen]);
 
   useEffect(() => {
+    currentFeedModeRef.current = feedSettings.mediaMode;
     writeFeedSettingsToStorage(feedSettings);
   }, [feedSettings]);
 
@@ -2067,6 +2078,33 @@ export function FeedScreen({
     setSubscriptionsOverlayOpen(false);
   }, []);
 
+  const changeFeedMediaMode = useCallback((next: FeedMediaMode) => {
+    const current = currentFeedModeRef.current;
+
+    if (typeof window !== "undefined") {
+      feedModeScrollPositionsRef.current[current] = window.scrollY || 0;
+    }
+
+    currentFeedModeRef.current = next;
+
+    setFeedSettings((prev) => {
+      if (prev.mediaMode === next) return prev;
+      return {
+        ...prev,
+        mediaMode: next,
+      };
+    });
+
+    setShowFloatingSmartBar(false);
+
+    if (typeof window !== "undefined") {
+      const nextScroll = feedModeScrollPositionsRef.current[next] ?? 0;
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: nextScroll, left: 0, behavior: "auto" });
+      });
+    }
+  }, []);
+
   const openViewerByPost = useCallback(
     (post: IngestedPost) => {
       closeFloatingPanels();
@@ -2494,12 +2532,7 @@ export function FeedScreen({
         <SmartFeedBar
           copy={copy}
           mediaMode={feedSettings.mediaMode}
-          onChangeMediaMode={(next) => {
-            setFeedSettings((prev) => ({
-              ...prev,
-              mediaMode: next,
-            }));
-          }}
+onChangeMediaMode={changeFeedMediaMode}
           locale={locale}
           floating
           visible={
@@ -2521,12 +2554,7 @@ export function FeedScreen({
         <SmartFeedBar
           copy={copy}
           mediaMode={feedSettings.mediaMode}
-          onChangeMediaMode={(next) => {
-            setFeedSettings((prev) => ({
-              ...prev,
-              mediaMode: next,
-            }));
-          }}
+onChangeMediaMode={changeFeedMediaMode}
           locale={locale}
           availableCountries={availableCountryOptions}
           selectedCountries={feedSettings.countries}

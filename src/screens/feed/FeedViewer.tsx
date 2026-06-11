@@ -632,6 +632,19 @@ export function FeedViewer({
         }}
       >
         <div className="relative h-full w-full overflow-hidden bg-black">
+          <style>{`
+            @keyframes margelet-viewer-fire {
+              0%, 100% {
+                transform: translateY(0) scale(1.06);
+                filter: saturate(1.35);
+              }
+              50% {
+                transform: translateY(-1px) scale(1.18);
+                filter: saturate(1.85);
+              }
+            }
+          `}</style>
+
           <div
             className="absolute inset-0 flex items-center justify-center bg-black"
             onClick={togglePlay}
@@ -826,6 +839,30 @@ export function FeedViewer({
                     <Play className="ml-0.5 h-5 w-5" />
                   )}
                 </button>
+
+                {!isPlaying ? (
+                  <button
+                    type="button"
+                    onPointerDown={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      _onToggleSave(activePost.id);
+                    }}
+                    className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center text-white touch-manipulation"
+                    aria-label="Save"
+                  >
+                    <span
+                      className={[
+                        "text-[31px] leading-none transition duration-200",
+                        _savedPostIds.includes(activePost.id)
+                          ? "animate-[margelet-viewer-fire_1.15s_ease-in-out_infinite] saturate-150 drop-shadow-[0_0_12px_rgba(251,146,60,.82)]"
+                          : "grayscale opacity-85",
+                      ].join(" ")}
+                    >
+                      🔥
+                    </span>
+                  </button>
+                ) : null}
 
                 <div className="min-w-[72px] text-[12px] font-medium text-white">
                   {formatTime(currentTime)} / {formatTime(duration)}
