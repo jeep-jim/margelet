@@ -28,11 +28,11 @@ export function FeedReactionButton({
         onClick();
       }}
       className={[
-        "relative inline-flex shrink-0 items-center justify-center rounded-full border transition duration-200 active:scale-95",
+        "relative inline-flex shrink-0 items-center justify-center rounded-full transition duration-200 active:scale-95",
         compact ? "h-10 w-10" : "h-10 min-w-[58px] px-4",
         active
-          ? "border-orange-300/70 bg-orange-400/18 text-orange-200 shadow-[0_0_20px_rgba(251,146,60,.22)]"
-          : "border-soft bg-surface-soft text-secondary hover:border-orange-300/45 hover:text-orange-200",
+          ? "bg-orange-400/18 text-orange-200 shadow-[0_0_22px_rgba(251,146,60,.26)]"
+          : "bg-surface-soft text-secondary hover:bg-orange-400/10 hover:text-orange-200",
       ].join(" ")}
       aria-pressed={active}
       aria-label={active ? "Убрать из Me" : "Добавить в Me"}
@@ -40,7 +40,11 @@ export function FeedReactionButton({
       <span
         className={[
           "text-[17px] leading-none transition duration-200",
-          active || burst ? "scale-110 saturate-150" : "grayscale opacity-80",
+          active
+            ? "scale-110 animate-[margelet-fire-idle_1.15s_ease-in-out_infinite] saturate-150 drop-shadow-[0_0_10px_rgba(251,146,60,.75)]"
+            : burst
+            ? "scale-110 saturate-150"
+            : "grayscale opacity-80",
         ].join(" ")}
       >
         🔥

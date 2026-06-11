@@ -895,7 +895,6 @@ function VideoGridView({
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
-  const [frameReadyPostIds, setFrameReadyPostIds] = useState<Set<number>>(() => new Set());
   const [visibleVideoCount, setVisibleVideoCount] = useState(30);
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
@@ -933,7 +932,6 @@ function VideoGridView({
   useEffect(() => {
     setVisibleVideoCount(30);
     setPreviewPostId(null);
-    setFrameReadyPostIds(new Set());
   }, [posts]);
 
   useEffect(() => {
@@ -957,42 +955,10 @@ function VideoGridView({
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
 
-  const warmVideoPreview = useCallback((postId: number) => {
-    const video = videoPreviewRefs.current.get(postId);
-    if (!video) return;
-
-    try {
-      video.muted = true;
-      video.preload = "metadata";
-      video.pause();
-
-      const freezeFrame = () => {
-        try {
-          const targetTime = Math.min(0.5, video.duration || 0.5);
-          if (Number.isFinite(targetTime) && Math.abs(video.currentTime - targetTime) > 0.05) {
-            video.currentTime = targetTime;
-          }
-          video.pause();
-          setFrameReadyPostIds((prev) => {
-            if (prev.has(postId)) return prev;
-            const next = new Set(prev);
-            next.add(postId);
-            return next;
-          });
-        } catch {
-          //
-        }
-      };
-
-      if (video.readyState >= 1) {
-        freezeFrame();
-      } else {
-        video.addEventListener("loadedmetadata", freezeFrame, { once: true });
-        video.load();
-      }
-    } catch {
-      //
-    }
+  const warmVideoPreview = useCallback((_postId: number) => {
+    // Не прогреваем видео пачкой.
+    // Массовый video.load()/currentTime на 30 плитках сразу вешал вкладку Play.
+    // Настоящий <video> появляется только на активной плитке при hover / long press.
   }, []);
 
   const clearLongPressTimer = () => {
@@ -1056,10 +1022,9 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const frameReady = frameReadyPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo;
+          const shouldRenderVideo = canRenderVideo && isPreviewing;
           const hasStaticPreview = Boolean(poster) || canRenderImage;
-          const showPlaceholder = !hasStaticPreview && !frameReady;
+          const showPlaceholder = !hasStaticPreview;
 
           return (
             <div
@@ -1115,7 +1080,7 @@ function VideoGridView({
                 ].join(" ")}
               >
                 {showPlaceholder ? (
-                  <div className="absolute inset-0 bg-black" />
+                  <div className="absolute inset-0 z-0 bg-black" />
                 ) : null}
 
                 {shouldRenderVideo ? (
@@ -1125,9 +1090,6 @@ function VideoGridView({
                         videoPreviewRefs.current.set(post.id, node);
                         node.muted = true;
                         node.loop = true;
-                        if (!isPreviewing) {
-                          window.requestAnimationFrame(() => warmVideoPreview(post.id));
-                        }
                       } else {
                         videoPreviewRefs.current.delete(post.id);
                       }
@@ -1141,18 +1103,17 @@ function VideoGridView({
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload={isPreviewing ? "auto" : "metadata"}
+                    preload="auto"
                     className={[
-                      "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
+                      "absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
                       poster && !isPreviewing ? "opacity-0" : "opacity-100",
                     ].join(" ")}
                     onContextMenu={(event) => event.preventDefault()}
                     onLoadedMetadata={(event) => {
                       const video = event.currentTarget;
                       try {
-                        if (!isPreviewing) {
-                          video.pause();
-                          video.currentTime = Math.min(0.5, video.duration || 0.5);
+                        if (isPreviewing && video.currentTime < 0.08) {
+                          video.currentTime = Math.min(0.14, video.duration || 0.14);
                         }
                       } catch {
                         //
@@ -1164,12 +1125,6 @@ function VideoGridView({
                         if (!isPreviewing) {
                           video.pause();
                         }
-                        setFrameReadyPostIds((prev) => {
-                          if (prev.has(post.id)) return prev;
-                          const next = new Set(prev);
-                          next.add(post.id);
-                          return next;
-                        });
                       } catch {
                         //
                       }
@@ -1191,7 +1146,7 @@ function VideoGridView({
                     src={poster}
                     alt=""
                     draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                     loading={index < 18 ? "eager" : "lazy"}
                     fetchPriority={index < 8 ? "high" : "auto"}
                     decoding="async"
@@ -1205,7 +1160,7 @@ function VideoGridView({
                     src={preview.url}
                     alt=""
                     draggable={false}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                     loading={index < 18 ? "eager" : "lazy"}
                     fetchPriority={index < 8 ? "high" : "auto"}
                     decoding="async"
@@ -1218,7 +1173,7 @@ function VideoGridView({
 
                 <div
                   className={[
-                    "absolute inset-0 transition duration-200",
+                    "pointer-events-none absolute inset-0 z-[3] transition duration-200",
                     isPreviewing
                       ? "bg-gradient-to-t from-black/82 via-black/26 to-black/5"
                       : "bg-gradient-to-t from-black/76 via-black/16 to-transparent",
@@ -1332,7 +1287,7 @@ export function FeedScreen({
   const [searchCategoriesOpen, setSearchCategoriesOpen] = useState(false);
   const lastScrollYRef = useRef(0);
   const [isMuted, setIsMuted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [, setIsPlaying] = useState(false);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
@@ -2749,7 +2704,7 @@ export function FeedScreen({
         setExpandedCaption={setExpandedCaption}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
-        isPlaying={viewerIndex !== null ? isPlaying : false}
+        isPlaying={false}
         setIsPlaying={setIsPlaying}
         copySuccessId={copySuccessId}
         menuPostId={menuPostId}
