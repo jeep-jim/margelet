@@ -895,8 +895,7 @@ function VideoGridView({
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
-  // В Play-сетке не держим "прогретые" video-элементы.
-  // Настоящий <video> появляется только во время hover / long press.
+  const [frameReadyPostIds, setFrameReadyPostIds] = useState<Set<number>>(() => new Set());
   const [visibleVideoCount, setVisibleVideoCount] = useState(30);
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
@@ -934,6 +933,7 @@ function VideoGridView({
   useEffect(() => {
     setVisibleVideoCount(30);
     setPreviewPostId(null);
+    setFrameReadyPostIds(new Set());
   }, [posts]);
 
   useEffect(() => {
@@ -941,14 +941,14 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 30));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 30));
       },
       { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
     );
@@ -957,9 +957,42 @@ function VideoGridView({
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
 
-  const warmVideoPreview = useCallback((_postId: number) => {
-    // Ничего не подгружаем на обычном скролле.
-    // Это убирает лаг: браузер больше не создаёт десятки mp4-потоков сразу.
+  const warmVideoPreview = useCallback((postId: number) => {
+    const video = videoPreviewRefs.current.get(postId);
+    if (!video) return;
+
+    try {
+      video.muted = true;
+      video.preload = "metadata";
+      video.pause();
+
+      const freezeFrame = () => {
+        try {
+          const targetTime = Math.min(0.5, video.duration || 0.5);
+          if (Number.isFinite(targetTime) && Math.abs(video.currentTime - targetTime) > 0.05) {
+            video.currentTime = targetTime;
+          }
+          video.pause();
+          setFrameReadyPostIds((prev) => {
+            if (prev.has(postId)) return prev;
+            const next = new Set(prev);
+            next.add(postId);
+            return next;
+          });
+        } catch {
+          //
+        }
+      };
+
+      if (video.readyState >= 1) {
+        freezeFrame();
+      } else {
+        video.addEventListener("loadedmetadata", freezeFrame, { once: true });
+        video.load();
+      }
+    } catch {
+      //
+    }
   }, []);
 
   const clearLongPressTimer = () => {
@@ -1023,9 +1056,10 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldRenderVideo = canRenderVideo && isPreviewing;
+          const frameReady = frameReadyPostIds.has(post.id);
+          const shouldRenderVideo = canRenderVideo;
           const hasStaticPreview = Boolean(poster) || canRenderImage;
-          const showPlaceholder = !hasStaticPreview;
+          const showPlaceholder = !hasStaticPreview && !frameReady;
 
           return (
             <div
@@ -1077,7 +1111,7 @@ function VideoGridView({
                 }}
                 className={[
                   "group relative block h-full w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
-                  isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
+                  isPreviewing ? "shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
                 {showPlaceholder ? (
@@ -1091,6 +1125,9 @@ function VideoGridView({
                         videoPreviewRefs.current.set(post.id, node);
                         node.muted = true;
                         node.loop = true;
+                        if (!isPreviewing) {
+                          window.requestAnimationFrame(() => warmVideoPreview(post.id));
+                        }
                       } else {
                         videoPreviewRefs.current.delete(post.id);
                       }
@@ -1113,8 +1150,9 @@ function VideoGridView({
                     onLoadedMetadata={(event) => {
                       const video = event.currentTarget;
                       try {
-                        if (video.currentTime < 0.08) {
-                          video.currentTime = Math.min(0.14, video.duration || 0.14);
+                        if (!isPreviewing) {
+                          video.pause();
+                          video.currentTime = Math.min(0.5, video.duration || 0.5);
                         }
                       } catch {
                         //
@@ -1125,10 +1163,13 @@ function VideoGridView({
                       try {
                         if (!isPreviewing) {
                           video.pause();
-                          if (video.currentTime < 0.08) {
-                            video.currentTime = Math.min(0.14, video.duration || 0.14);
-                          }
                         }
+                        setFrameReadyPostIds((prev) => {
+                          if (prev.has(post.id)) return prev;
+                          const next = new Set(prev);
+                          next.add(post.id);
+                          return next;
+                        });
                       } catch {
                         //
                       }
@@ -1291,7 +1332,7 @@ export function FeedScreen({
   const [searchCategoriesOpen, setSearchCategoriesOpen] = useState(false);
   const lastScrollYRef = useRef(0);
   const [isMuted, setIsMuted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
@@ -2708,7 +2749,7 @@ export function FeedScreen({
         setExpandedCaption={setExpandedCaption}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
-        isPlaying={isPlaying}
+        isPlaying={viewerIndex !== null ? isPlaying : false}
         setIsPlaying={setIsPlaying}
         copySuccessId={copySuccessId}
         menuPostId={menuPostId}
