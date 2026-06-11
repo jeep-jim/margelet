@@ -102,8 +102,6 @@ function getFeedMixSeed() {
   return Math.floor(Date.now() / (3 * 60 * 60 * 1000));
 }
 
-const VIDEO_GRID_FRAME_CACHE = new Set<number>();
-
 function normalizeHandle(value: string | null | undefined) {
   return String(value || "").trim().replace(/^@+/, "").toLowerCase();
 }
@@ -898,8 +896,9 @@ function VideoGridView({
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const [visibleVideoCount, setVisibleVideoCount] = useState(18);
-  const [frameReadyPostIds, setFrameReadyPostIds] = useState<Set<number>>(() => new Set(VIDEO_GRID_FRAME_CACHE));
-  const [frameLoadPostIds, setFrameLoadPostIds] = useState<Set<number>>(() => new Set());
+  const [previewLoadPostIds, setPreviewLoadPostIds] = useState<Set<number>>(() => new Set());
+  const [videoReadyPostIds, setVideoReadyPostIds] = useState<Set<number>>(() => new Set());
+  const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -936,8 +935,9 @@ function VideoGridView({
   useEffect(() => {
     setVisibleVideoCount(18);
     setPreviewPostId(null);
-    setFrameReadyPostIds(new Set(VIDEO_GRID_FRAME_CACHE));
-    setFrameLoadPostIds(new Set());
+    setPreviewLoadPostIds(new Set());
+    setVideoReadyPostIds(new Set());
+    setImageFailedPostIds(new Set());
   }, [posts]);
 
   useEffect(() => {
@@ -961,58 +961,8 @@ function VideoGridView({
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
 
-  useEffect(() => {
-    if (posts.length === 0) return;
-
-    const visibleIds = posts.slice(0, visibleVideoCount).map((post) => post.id);
-    let cancelled = false;
-    let cursor = 0;
-
-    const pump = () => {
-      if (cancelled) return;
-
-      const nextIds: number[] = [];
-
-      while (cursor < visibleIds.length && nextIds.length < 2) {
-        const id = visibleIds[cursor];
-        cursor += 1;
-
-        const post = posts.find((item) => item.id === id);
-        const preview = post ? getVideoGridPreview(post) : null;
-
-        if (preview?.poster || preview?.kind === "image") {
-          VIDEO_GRID_FRAME_CACHE.add(id);
-          continue;
-        }
-
-        if (!frameReadyPostIds.has(id)) {
-          nextIds.push(id);
-        }
-      }
-
-      if (nextIds.length > 0) {
-        setFrameLoadPostIds((prev) => {
-          const next = new Set(prev);
-          nextIds.forEach((id) => next.add(id));
-          return next;
-        });
-      }
-
-      if (cursor < visibleIds.length) {
-        window.setTimeout(pump, 180);
-      }
-    };
-
-    const timer = window.setTimeout(pump, 80);
-
-    return () => {
-      cancelled = true;
-      window.clearTimeout(timer);
-    };
-  }, [posts, visibleVideoCount, frameReadyPostIds]);
-
   const warmVideoPreview = useCallback((postId: number) => {
-    setFrameLoadPostIds((prev) => {
+    setPreviewLoadPostIds((prev) => {
       if (prev.has(postId)) return prev;
       const next = new Set(prev);
       next.add(postId);
@@ -1081,9 +1031,9 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldRenderVideo = canRenderVideo && (isPreviewing || frameLoadPostIds.has(post.id));
-          const hasStaticPreview = Boolean(poster) || canRenderImage || frameReadyPostIds.has(post.id);
-          const showPlaceholder = !hasStaticPreview;
+          const imageFailed = imageFailedPostIds.has(post.id);
+          const shouldRenderVideo = canRenderVideo && previewLoadPostIds.has(post.id);
+          const videoReady = videoReadyPostIds.has(post.id);
 
           return (
             <div
@@ -1134,13 +1084,11 @@ function VideoGridView({
                   userSelect: "none",
                 }}
                 className={[
-                  "group relative block h-full w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
+                  "group relative block h-full w-full overflow-hidden bg-[#101d2b] text-left transition duration-200 active:scale-[0.995]",
                   isPreviewing ? "shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
-                {showPlaceholder ? (
-                  <div className="absolute inset-0 z-0 bg-black" />
-                ) : null}
+                <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_25%_18%,rgba(74,144,226,.34),transparent_32%),radial-gradient(circle_at_80%_72%,rgba(65,210,90,.16),transparent_36%),linear-gradient(135deg,#111f31_0%,#070b11_100%)]" />
 
                 {shouldRenderVideo ? (
                   <video
@@ -1162,10 +1110,10 @@ function VideoGridView({
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload="auto"
+                    preload="metadata"
                     className={[
-                      "absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
-                      poster && !isPreviewing ? "opacity-0" : "opacity-100",
+                      "absolute inset-0 z-[2] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
+                      isPreviewing && videoReady ? "opacity-100" : "opacity-0",
                     ].join(" ")}
                     onContextMenu={(event) => event.preventDefault()}
                     onLoadedMetadata={(event) => {
@@ -1185,8 +1133,7 @@ function VideoGridView({
                         if (!isPreviewing) {
                           video.pause();
                         }
-                        VIDEO_GRID_FRAME_CACHE.add(post.id);
-                        setFrameReadyPostIds((prev) => {
+                        setVideoReadyPostIds((prev) => {
                           if (prev.has(post.id)) return prev;
                           const next = new Set(prev);
                           next.add(post.id);
@@ -1201,8 +1148,7 @@ function VideoGridView({
                       if (isPreviewing) return;
                       try {
                         video.pause();
-                        VIDEO_GRID_FRAME_CACHE.add(post.id);
-                        setFrameReadyPostIds((prev) => {
+                        setVideoReadyPostIds((prev) => {
                           if (prev.has(post.id)) return prev;
                           const next = new Set(prev);
                           next.add(post.id);
@@ -1215,7 +1161,7 @@ function VideoGridView({
                   />
                 ) : null}
 
-                {poster && !isPreviewing ? (
+                {poster && !imageFailed ? (
                   <img
                     src={poster}
                     alt=""
@@ -1225,11 +1171,16 @@ function VideoGridView({
                     fetchPriority={index < 8 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
+                    onError={() => {
+                      setImageFailedPostIds((prev) => {
+                        if (prev.has(post.id)) return prev;
+                        const next = new Set(prev);
+                        next.add(post.id);
+                        return next;
+                      });
                     }}
                   />
-                ) : canRenderImage && !isPreviewing ? (
+                ) : canRenderImage && !imageFailed ? (
                   <img
                     src={preview.url}
                     alt=""
@@ -1239,8 +1190,13 @@ function VideoGridView({
                     fetchPriority={index < 8 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
+                    onError={() => {
+                      setImageFailedPostIds((prev) => {
+                        if (prev.has(post.id)) return prev;
+                        const next = new Set(prev);
+                        next.add(post.id);
+                        return next;
+                      });
                     }}
                   />
                 ) : null}
