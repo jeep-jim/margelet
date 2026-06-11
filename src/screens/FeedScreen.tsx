@@ -87,6 +87,21 @@ function parsePostTime(post: IngestedPost) {
   return Number.isFinite(ms) ? ms : 0;
 }
 
+function stableFeedHash(value: string) {
+  let hash = 2166136261;
+
+  for (let i = 0; i < value.length; i += 1) {
+    hash ^= value.charCodeAt(i);
+    hash = Math.imul(hash, 16777619);
+  }
+
+  return hash >>> 0;
+}
+
+function getFeedMixSeed() {
+  return Math.floor(Date.now() / (3 * 60 * 60 * 1000));
+}
+
 function normalizeHandle(value: string | null | undefined) {
   return String(value || "").trim().replace(/^@+/, "").toLowerCase();
 }
@@ -105,9 +120,22 @@ function interleavePostsBySource(posts: IngestedPost[], locale: Locale) {
     groups.set(key, list);
   }
 
+  const mixSeed = getFeedMixSeed();
+
   const queues = Array.from(groups.entries())
-    .map(([key, items]) => ({ key, items }))
-    .sort((a, b) => parsePostTime(b.items[0]) - parsePostTime(a.items[0]));
+    .map(([key, items]) => ({
+      key,
+      items,
+      newestAt: parsePostTime(items[0]),
+      mixScore: stableFeedHash(`${mixSeed}:${key}`),
+    }))
+    .sort((a, b) => {
+      const aFresh = Math.floor(a.newestAt / (6 * 60 * 60 * 1000));
+      const bFresh = Math.floor(b.newestAt / (6 * 60 * 60 * 1000));
+
+      if (aFresh !== bFresh) return bFresh - aFresh;
+      return a.mixScore - b.mixScore;
+    });
 
   const result: IngestedPost[] = [];
 
@@ -869,20 +897,29 @@ function VideoGridView({
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
   const [warmVideoPostIds, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
-  const [visibleVideoCount, setVisibleVideoCount] = useState(36);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(30);
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    videoPreviewRefs.current.forEach((video) => {
-      video.pause();
-      try {
-        if (video.currentTime < 0.08) {
+    videoPreviewRefs.current.forEach((video, postId) => {
+      if (postId !== previewPostId) {
+        video.pause();
+        try {
           video.currentTime = Math.min(0.12, video.duration || 0.12);
+        } catch {
+          //
         }
-      } catch {
-        //
       }
     });
+
+    if (previewPostId === null) return;
+
+    const activeVideo = videoPreviewRefs.current.get(previewPostId);
+    if (!activeVideo) return;
+
+    activeVideo.muted = true;
+    activeVideo.loop = true;
+    void activeVideo.play().catch(() => undefined);
   }, [previewPostId]);
 
   useEffect(() => {
@@ -895,7 +932,7 @@ function VideoGridView({
   }, []);
 
   useEffect(() => {
-    setVisibleVideoCount(36);
+    setVisibleVideoCount(30);
     setPreviewPostId(null);
     setWarmVideoPostIds(new Set());
   }, [posts]);
@@ -905,14 +942,14 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 24));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 24));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
       },
       { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
     );
@@ -931,7 +968,7 @@ function VideoGridView({
       // Держим в памяти только маленькое окно рядом с экраном.
       // Раньше set только рос, поэтому video-tab копил сотни <video src=mp4>
       // и браузер душился сотнями range-запросов.
-      for (const id of Array.from(prev).slice(-10)) {
+      for (const id of Array.from(prev).slice(-18)) {
         next.add(id);
       }
 
@@ -986,13 +1023,13 @@ function VideoGridView({
               continue;
             }
 
-            if (next.delete(postId)) {
-              changed = true;
-            }
+            // Не удаляем сразу при выходе из viewport: иначе плитки мигают
+            // при малейшем скролле и снова показывают синюю заглушку.
+            // Ниже cap сам выкинет старые элементы из окна прогрева.
           }
 
-          // Жёсткий предохранитель: не больше 8 прогретых video-элементов.
-          const limited = Array.from(next).slice(-8);
+          // Жёсткий предохранитель: не больше 18 прогретых video-элементов.
+          const limited = Array.from(next).slice(-18);
           if (limited.length !== next.size) {
             changed = true;
           }
@@ -1000,7 +1037,7 @@ function VideoGridView({
           return changed ? new Set(limited) : prev;
         });
       },
-      { rootMargin: "160px 0px 220px 0px", threshold: 0.01 }
+      { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
     );
 
     videoTileRefs.current.forEach((node) => observer.observe(node));
@@ -1017,11 +1054,11 @@ function VideoGridView({
 
   const startPreview = (postId: number) => {
     suppressNextClickRef.current = true;
-    warmVideoPreview(postId);
 
     const video = videoPreviewRefs.current.get(postId);
     if (video) {
       video.muted = true;
+      video.loop = true;
       try {
         if (video.currentTime < 0.08) {
           video.currentTime = Math.min(0.14, video.duration || 0.14);
@@ -1029,6 +1066,7 @@ function VideoGridView({
       } catch {
         //
       }
+      void video.play().catch(() => undefined);
     }
 
     setPreviewPostId(postId);
@@ -1149,6 +1187,7 @@ function VideoGridView({
                       if (node) {
                         videoPreviewRefs.current.set(post.id, node);
                         node.muted = true;
+                        node.loop = true;
                       } else {
                         videoPreviewRefs.current.delete(post.id);
                       }
@@ -1158,6 +1197,7 @@ function VideoGridView({
                     data-video-preview-post-id={post.id}
                     muted
                     playsInline
+                    loop
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
