@@ -967,56 +967,13 @@ function VideoGridView({
   }, [posts.length, visibleVideoCount]);
 
   useEffect(() => {
-    if (autoPreviewTimerRef.current) {
-      window.clearTimeout(autoPreviewTimerRef.current);
-      autoPreviewTimerRef.current = null;
-    }
-
-    if (posts.length === 0) return;
-
-    let cancelled = false;
-    let cursor = 0;
-    const visiblePostsForPreview = posts.slice(0, visibleVideoCount);
-
-    const warmNextVisibleVideo = () => {
-      if (cancelled) return;
-
-      while (cursor < visiblePostsForPreview.length) {
-        const post = visiblePostsForPreview[cursor];
-        cursor += 1;
-
-        const preview = getVideoGridPreview(post);
-        const poster = preview?.poster || "";
-        const hasImagePreview = preview?.kind === "image" && !!preview.url;
-        const needsVideoFrame = preview?.kind === "video" && !!preview.url && !poster && !hasImagePreview;
-
-        if (!needsVideoFrame) continue;
-
-        setPreviewLoadPostIds((prev) => {
-          if (prev.has(post.id)) return prev;
-          const next = new Set(prev);
-          next.add(post.id);
-          return next;
-        });
-
-        break;
-      }
-
-      if (cursor < visiblePostsForPreview.length) {
-        autoPreviewTimerRef.current = window.setTimeout(warmNextVisibleVideo, 850);
-      }
-    };
-
-    autoPreviewTimerRef.current = window.setTimeout(warmNextVisibleVideo, 420);
-
     return () => {
-      cancelled = true;
       if (autoPreviewTimerRef.current) {
         window.clearTimeout(autoPreviewTimerRef.current);
         autoPreviewTimerRef.current = null;
       }
     };
-  }, [posts, visibleVideoCount]);
+  }, []);
 
   const warmVideoPreview = useCallback((postId: number) => {
     setPreviewLoadPostIds((prev) => {
@@ -1090,7 +1047,10 @@ function VideoGridView({
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
           const hasImagePreview = Boolean(poster) || (canRenderImage && !imageFailed);
-          const shouldRenderVideo = canRenderVideo && previewLoadPostIds.has(post.id);
+          const shouldRenderVideo =
+            canRenderVideo &&
+            (isPreviewing || previewLoadPostIds.has(post.id));
+
           const videoReady = videoReadyPostIds.has(post.id);
           const showVideoFrame = videoReady && (isPreviewing || !hasImagePreview);
 
