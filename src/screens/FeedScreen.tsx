@@ -895,6 +895,7 @@ function VideoGridView({
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
+  const autoPreviewTimerRef = useRef<number | null>(null);
   const [visibleVideoCount, setVisibleVideoCount] = useState(18);
   const [previewLoadPostIds, setPreviewLoadPostIds] = useState<Set<number>>(() => new Set());
   const [videoReadyPostIds, setVideoReadyPostIds] = useState<Set<number>>(() => new Set());
@@ -928,6 +929,10 @@ function VideoGridView({
       if (longPressTimerRef.current) {
         window.clearTimeout(longPressTimerRef.current);
       }
+      if (autoPreviewTimerRef.current) {
+        window.clearTimeout(autoPreviewTimerRef.current);
+        autoPreviewTimerRef.current = null;
+      }
       videoPreviewRefs.current.forEach((video) => video.pause());
     };
   }, []);
@@ -960,6 +965,58 @@ function VideoGridView({
     observer.observe(node);
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
+
+  useEffect(() => {
+    if (autoPreviewTimerRef.current) {
+      window.clearTimeout(autoPreviewTimerRef.current);
+      autoPreviewTimerRef.current = null;
+    }
+
+    if (posts.length === 0) return;
+
+    let cancelled = false;
+    let cursor = 0;
+    const visiblePostsForPreview = posts.slice(0, visibleVideoCount);
+
+    const warmNextVisibleVideo = () => {
+      if (cancelled) return;
+
+      while (cursor < visiblePostsForPreview.length) {
+        const post = visiblePostsForPreview[cursor];
+        cursor += 1;
+
+        const preview = getVideoGridPreview(post);
+        const poster = preview?.poster || "";
+        const hasImagePreview = preview?.kind === "image" && !!preview.url;
+        const needsVideoFrame = preview?.kind === "video" && !!preview.url && !poster && !hasImagePreview;
+
+        if (!needsVideoFrame) continue;
+
+        setPreviewLoadPostIds((prev) => {
+          if (prev.has(post.id)) return prev;
+          const next = new Set(prev);
+          next.add(post.id);
+          return next;
+        });
+
+        break;
+      }
+
+      if (cursor < visiblePostsForPreview.length) {
+        autoPreviewTimerRef.current = window.setTimeout(warmNextVisibleVideo, 850);
+      }
+    };
+
+    autoPreviewTimerRef.current = window.setTimeout(warmNextVisibleVideo, 420);
+
+    return () => {
+      cancelled = true;
+      if (autoPreviewTimerRef.current) {
+        window.clearTimeout(autoPreviewTimerRef.current);
+        autoPreviewTimerRef.current = null;
+      }
+    };
+  }, [posts, visibleVideoCount]);
 
   const warmVideoPreview = useCallback((postId: number) => {
     setPreviewLoadPostIds((prev) => {
@@ -1032,8 +1089,10 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
+          const hasImagePreview = Boolean(poster) || (canRenderImage && !imageFailed);
           const shouldRenderVideo = canRenderVideo && previewLoadPostIds.has(post.id);
           const videoReady = videoReadyPostIds.has(post.id);
+          const showVideoFrame = videoReady && (isPreviewing || !hasImagePreview);
 
           return (
             <div
@@ -1044,7 +1103,7 @@ function VideoGridView({
               }}
               data-feed-post-id={post.id}
               data-video-tile-post-id={post.id}
-              className={`${cardClass} relative z-0 min-h-0 hover:z-50 focus-within:z-50`}
+              className={`${cardClass} relative z-0 min-h-0 hover:z-[5] focus-within:z-[5]`}
             >
               <button
                 type="button"
@@ -1113,7 +1172,7 @@ function VideoGridView({
                     preload="metadata"
                     className={[
                       "absolute inset-0 z-[2] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
-                      isPreviewing && videoReady ? "opacity-100" : "opacity-0",
+                      showVideoFrame ? "opacity-100" : "opacity-0",
                     ].join(" ")}
                     onContextMenu={(event) => event.preventDefault()}
                     onLoadedMetadata={(event) => {
