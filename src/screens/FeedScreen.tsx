@@ -1049,7 +1049,7 @@ function VideoGridView({
           const hasImagePreview = Boolean(poster) || (canRenderImage && !imageFailed);
           const shouldRenderVideo =
             canRenderVideo &&
-            (isPreviewing || previewLoadPostIds.has(post.id));
+            (!hasImagePreview || isPreviewing || previewLoadPostIds.has(post.id));
 
           const videoReady = videoReadyPostIds.has(post.id);
           const showVideoFrame = videoReady && (isPreviewing || !hasImagePreview);
