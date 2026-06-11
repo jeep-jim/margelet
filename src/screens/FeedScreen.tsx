@@ -102,8 +102,6 @@ function getFeedMixSeed() {
   return Math.floor(Date.now() / (3 * 60 * 60 * 1000));
 }
 
-const VIDEO_GRID_FRAME_CACHE = new Set<number>();
-
 function normalizeHandle(value: string | null | undefined) {
   return String(value || "").trim().replace(/^@+/, "").toLowerCase();
 }
@@ -893,51 +891,11 @@ function VideoGridView({
   onSeen: (postId: number) => void;
 }) {
   const emptyText = locale === "ru" ? "Видео пока нет" : "No videos yet";
-  const [previewPostId, setPreviewPostId] = useState<number | null>(null);
-  const longPressTimerRef = useRef<number | null>(null);
-  const suppressNextClickRef = useRef(false);
-  const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
-  const [visibleVideoCount, setVisibleVideoCount] = useState(18);
-  const [frameReadyPostIds, setFrameReadyPostIds] = useState<Set<number>>(() => new Set(VIDEO_GRID_FRAME_CACHE));
-  const [frameLoadPostIds, setFrameLoadPostIds] = useState<Set<number>>(() => new Set());
+  const [visibleVideoCount, setVisibleVideoCount] = useState(24);
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    videoPreviewRefs.current.forEach((video, postId) => {
-      if (postId !== previewPostId) {
-        video.pause();
-        try {
-          video.currentTime = Math.min(0.12, video.duration || 0.12);
-        } catch {
-          //
-        }
-      }
-    });
-
-    if (previewPostId === null) return;
-
-    const activeVideo = videoPreviewRefs.current.get(previewPostId);
-    if (!activeVideo) return;
-
-    activeVideo.muted = true;
-    activeVideo.loop = true;
-    void activeVideo.play().catch(() => undefined);
-  }, [previewPostId]);
-
-  useEffect(() => {
-    return () => {
-      if (longPressTimerRef.current) {
-        window.clearTimeout(longPressTimerRef.current);
-      }
-      videoPreviewRefs.current.forEach((video) => video.pause());
-    };
-  }, []);
-
-  useEffect(() => {
-    setVisibleVideoCount(18);
-    setPreviewPostId(null);
-    setFrameReadyPostIds(new Set(VIDEO_GRID_FRAME_CACHE));
-    setFrameLoadPostIds(new Set());
+    setVisibleVideoCount(24);
   }, [posts]);
 
   useEffect(() => {
@@ -945,114 +903,21 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 24));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 24));
       },
-      { rootMargin: "260px 0px 420px 0px", threshold: 0.01 }
+      { rootMargin: "620px 0px 900px 0px", threshold: 0.01 }
     );
 
     observer.observe(node);
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
-
-  useEffect(() => {
-    if (posts.length === 0) return;
-
-    const visibleIds = posts.slice(0, visibleVideoCount).map((post) => post.id);
-    let cancelled = false;
-    let cursor = 0;
-
-    const pump = () => {
-      if (cancelled) return;
-
-      const nextIds: number[] = [];
-
-      while (cursor < visibleIds.length && nextIds.length < 2) {
-        const id = visibleIds[cursor];
-        cursor += 1;
-
-        const post = posts.find((item) => item.id === id);
-        const preview = post ? getVideoGridPreview(post) : null;
-
-        if (preview?.poster || preview?.kind === "image") {
-          VIDEO_GRID_FRAME_CACHE.add(id);
-          continue;
-        }
-
-        if (!frameReadyPostIds.has(id)) {
-          nextIds.push(id);
-        }
-      }
-
-      if (nextIds.length > 0) {
-        setFrameLoadPostIds((prev) => {
-          const next = new Set(prev);
-          nextIds.forEach((id) => next.add(id));
-          return next;
-        });
-      }
-
-      if (cursor < visibleIds.length) {
-        window.setTimeout(pump, 180);
-      }
-    };
-
-    const timer = window.setTimeout(pump, 80);
-
-    return () => {
-      cancelled = true;
-      window.clearTimeout(timer);
-    };
-  }, [posts, visibleVideoCount, frameReadyPostIds]);
-
-  const warmVideoPreview = useCallback((postId: number) => {
-    setFrameLoadPostIds((prev) => {
-      if (prev.has(postId)) return prev;
-      const next = new Set(prev);
-      next.add(postId);
-      return next;
-    });
-  }, []);
-
-  const clearLongPressTimer = () => {
-    if (longPressTimerRef.current) {
-      window.clearTimeout(longPressTimerRef.current);
-      longPressTimerRef.current = null;
-    }
-  };
-
-  const startPreview = (postId: number) => {
-    suppressNextClickRef.current = true;
-
-    const video = videoPreviewRefs.current.get(postId);
-    if (video) {
-      video.muted = true;
-      video.loop = true;
-      try {
-        if (video.currentTime < 0.08) {
-          video.currentTime = Math.min(0.14, video.duration || 0.14);
-        }
-      } catch {
-        //
-      }
-      void video.play().catch(() => undefined);
-    }
-
-    setPreviewPostId(postId);
-  };
-
-  const stopPreview = () => {
-    clearLongPressTimer();
-    window.setTimeout(() => {
-      setPreviewPostId(null);
-    }, 90);
-  };
 
   if (posts.length === 0) {
     return (
@@ -1066,7 +931,7 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:48px] sm:grid-cols-2 sm:[grid-auto-rows:58px]">
+      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:52px] sm:grid-cols-2 sm:[grid-auto-rows:64px]">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
@@ -1074,57 +939,27 @@ function VideoGridView({
           const verified = isVideoGridSourceVerified(post);
           const cardClass = getVideoGridCardClass(post, index);
           const poster = preview?.poster || "";
-          const isPreviewing = previewPostId === post.id;
+          const canRenderImage = preview?.kind === "image" && !!preview.url;
+          const imageUrl = poster || (canRenderImage ? preview?.url || "" : "");
           const text = String(post.text || "")
             .replace(/https?:\/\/\S+/g, "")
             .replace(/\s+/g, " ")
             .trim();
-          const canRenderVideo = preview?.kind === "video" && !!preview.url;
-          const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldRenderVideo = canRenderVideo && (isPreviewing || frameLoadPostIds.has(post.id));
-          const hasStaticPreview = Boolean(poster) || canRenderImage || frameReadyPostIds.has(post.id);
-          const showPlaceholder = !hasStaticPreview;
 
           return (
             <div
               key={post.id}
               ref={(node) => {
                 registerFeedCardNode(post.id, node);
-                // Play-сетка регистрируется только для seen-логики общей ленты.
               }}
               data-feed-post-id={post.id}
               data-video-tile-post-id={post.id}
-              className={`${cardClass} relative z-0 min-h-0 hover:z-50 focus-within:z-50`}
+              className={`${cardClass} relative z-0 min-h-0`}
             >
               <button
                 type="button"
                 onContextMenu={(event) => event.preventDefault()}
-                onPointerDown={(event) => {
-                  if (event.pointerType === "mouse" && event.button !== 0) return;
-
-                  clearLongPressTimer();
-                  suppressNextClickRef.current = false;
-                  warmVideoPreview(post.id);
-
-                  longPressTimerRef.current = window.setTimeout(() => {
-                    startPreview(post.id);
-                  }, 430);
-                }}
-                onPointerUp={stopPreview}
-                onPointerCancel={stopPreview}
-                onPointerEnter={(event) => {
-                  if (event.pointerType === "mouse") {
-                    warmVideoPreview(post.id);
-                    startPreview(post.id);
-                  }
-                }}
-                onPointerLeave={stopPreview}
                 onClick={() => {
-                  if (suppressNextClickRef.current) {
-                    suppressNextClickRef.current = false;
-                    return;
-                  }
-
                   onSeen(post.id);
                   onOpenPost(post);
                 }}
@@ -1133,126 +968,27 @@ function VideoGridView({
                   touchAction: "manipulation",
                   userSelect: "none",
                 }}
-                className={[
-                  "group relative block h-full w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
-                  isPreviewing ? "shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
-                ].join(" ")}
+                className="group relative block h-full w-full overflow-hidden bg-black text-left transition duration-150 active:scale-[0.995]"
               >
-                {showPlaceholder ? (
+                {imageUrl ? (
+                  <img
+                    src={imageUrl}
+                    alt=""
+                    draggable={false}
+                    className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    loading={index < 18 ? "eager" : "lazy"}
+                    fetchPriority={index < 8 ? "high" : "auto"}
+                    decoding="async"
+                    referrerPolicy="no-referrer"
+                    onError={(event) => {
+                      event.currentTarget.style.display = "none";
+                    }}
+                  />
+                ) : (
                   <div className="absolute inset-0 z-0 bg-black" />
-                ) : null}
+                )}
 
-                {shouldRenderVideo ? (
-                  <video
-                    ref={(node) => {
-                      if (node) {
-                        videoPreviewRefs.current.set(post.id, node);
-                        node.muted = true;
-                        node.loop = true;
-                      } else {
-                        videoPreviewRefs.current.delete(post.id);
-                      }
-                    }}
-                    src={preview.url}
-                    poster={poster || undefined}
-                    data-video-preview-post-id={post.id}
-                    muted
-                    playsInline
-                    loop
-                    draggable={false}
-                    disablePictureInPicture
-                    controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload="auto"
-                    className={[
-                      "absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
-                      poster && !isPreviewing ? "opacity-0" : "opacity-100",
-                    ].join(" ")}
-                    onContextMenu={(event) => event.preventDefault()}
-                    onLoadedMetadata={(event) => {
-                      const video = event.currentTarget;
-                      try {
-                        const targetTime = isPreviewing ? 0.14 : 0.5;
-                        if (video.currentTime < 0.08) {
-                          video.currentTime = Math.min(targetTime, video.duration || targetTime);
-                        }
-                      } catch {
-                        //
-                      }
-                    }}
-                    onLoadedData={(event) => {
-                      const video = event.currentTarget;
-                      try {
-                        if (!isPreviewing) {
-                          video.pause();
-                        }
-                        VIDEO_GRID_FRAME_CACHE.add(post.id);
-                        setFrameReadyPostIds((prev) => {
-                          if (prev.has(post.id)) return prev;
-                          const next = new Set(prev);
-                          next.add(post.id);
-                          return next;
-                        });
-                      } catch {
-                        //
-                      }
-                    }}
-                    onCanPlay={(event) => {
-                      const video = event.currentTarget;
-                      if (isPreviewing) return;
-                      try {
-                        video.pause();
-                        VIDEO_GRID_FRAME_CACHE.add(post.id);
-                        setFrameReadyPostIds((prev) => {
-                          if (prev.has(post.id)) return prev;
-                          const next = new Set(prev);
-                          next.add(post.id);
-                          return next;
-                        });
-                      } catch {
-                        //
-                      }
-                    }}
-                  />
-                ) : null}
-
-                {poster && !isPreviewing ? (
-                  <img
-                    src={poster}
-                    alt=""
-                    draggable={false}
-                    className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 18 ? "eager" : "lazy"}
-                    fetchPriority={index < 8 ? "high" : "auto"}
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                    }}
-                  />
-                ) : canRenderImage && !isPreviewing ? (
-                  <img
-                    src={preview.url}
-                    alt=""
-                    draggable={false}
-                    className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 18 ? "eager" : "lazy"}
-                    fetchPriority={index < 8 ? "high" : "auto"}
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    onError={(event) => {
-                      event.currentTarget.style.display = "none";
-                    }}
-                  />
-                ) : null}
-
-                <div
-                  className={[
-                    "pointer-events-none absolute inset-0 z-[3] transition duration-200",
-                    isPreviewing
-                      ? "bg-gradient-to-t from-black/82 via-black/26 to-black/5"
-                      : "bg-gradient-to-t from-black/76 via-black/16 to-transparent",
-                  ].join(" ")}
-                />
+                <div className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-t from-black/78 via-black/12 to-transparent transition duration-200 group-hover:from-black/86 group-hover:via-black/28" />
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] p-2">
                   <div className="flex min-w-0 items-center gap-1.5">
@@ -1284,8 +1020,8 @@ function VideoGridView({
                     </div>
                   </div>
 
-                  {isPreviewing && text ? (
-                    <div className="mt-2 line-clamp-4 rounded-2xl bg-black/42 px-2 py-1.5 text-[12px] font-semibold leading-snug text-white shadow-[0_4px_18px_rgba(0,0,0,.35)] backdrop-blur-sm">
+                  {text ? (
+                    <div className="mt-1.5 line-clamp-2 max-w-full rounded-2xl bg-black/46 px-2.5 py-1.5 text-[11px] font-bold leading-snug text-white opacity-0 shadow-[0_8px_24px_rgba(0,0,0,.36)] backdrop-blur-md transition duration-200 group-hover:opacity-100">
                       {text}
                     </div>
                   ) : null}
@@ -1297,7 +1033,7 @@ function VideoGridView({
       </div>
 
       {visibleVideoCount < posts.length ? (
-        <div ref={loadMoreVideoRef} className="h-[70vh]" aria-hidden="true" />
+        <div ref={loadMoreVideoRef} className="h-24 w-full" />
       ) : null}
     </div>
   );
@@ -1363,7 +1099,7 @@ export function FeedScreen({
   const feedModeScrollPositionsRef = useRef<Partial<Record<FeedMediaMode, number>>>({});
   const currentFeedModeRef = useRef<FeedMediaMode>(feedSettings.mediaMode);
   const [isMuted, setIsMuted] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [, setIsPlaying] = useState(false);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
@@ -2837,7 +2573,7 @@ onChangeMediaMode={changeFeedMediaMode}
         setExpandedCaption={setExpandedCaption}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
-        isPlaying={isPlaying}
+        isPlaying={false}
         setIsPlaying={setIsPlaying}
         copySuccessId={copySuccessId}
         menuPostId={menuPostId}
