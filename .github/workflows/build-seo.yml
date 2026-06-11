@@ -48,6 +48,7 @@ jobs:
           git add -A \
             public/country \
             public/seo \
+            public/post \
             public/sitemap.xml \
             public/sitemaps \
             public/robots.txt
