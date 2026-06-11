@@ -102,6 +102,8 @@ function getFeedMixSeed() {
   return Math.floor(Date.now() / (3 * 60 * 60 * 1000));
 }
 
+const VIDEO_GRID_FRAME_CACHE = new Set<number>();
+
 function normalizeHandle(value: string | null | undefined) {
   return String(value || "").trim().replace(/^@+/, "").toLowerCase();
 }
@@ -896,6 +898,8 @@ function VideoGridView({
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const [visibleVideoCount, setVisibleVideoCount] = useState(30);
+  const [frameReadyPostIds, setFrameReadyPostIds] = useState<Set<number>>(() => new Set(VIDEO_GRID_FRAME_CACHE));
+  const [frameLoadPostIds, setFrameLoadPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -932,6 +936,8 @@ function VideoGridView({
   useEffect(() => {
     setVisibleVideoCount(30);
     setPreviewPostId(null);
+    setFrameReadyPostIds(new Set(VIDEO_GRID_FRAME_CACHE));
+    setFrameLoadPostIds(new Set());
   }, [posts]);
 
   useEffect(() => {
@@ -955,10 +961,55 @@ function VideoGridView({
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
 
-  const warmVideoPreview = useCallback((_postId: number) => {
-    // Не прогреваем видео пачкой.
-    // Массовый video.load()/currentTime на 30 плитках сразу вешал вкладку Play.
-    // Настоящий <video> появляется только на активной плитке при hover / long press.
+  useEffect(() => {
+    if (posts.length === 0) return;
+
+    const visibleIds = posts.slice(0, visibleVideoCount).map((post) => post.id);
+    let cancelled = false;
+    let cursor = 0;
+
+    const pump = () => {
+      if (cancelled) return;
+
+      const nextIds: number[] = [];
+
+      while (cursor < visibleIds.length && nextIds.length < 4) {
+        const id = visibleIds[cursor];
+        cursor += 1;
+
+        if (!frameReadyPostIds.has(id)) {
+          nextIds.push(id);
+        }
+      }
+
+      if (nextIds.length > 0) {
+        setFrameLoadPostIds((prev) => {
+          const next = new Set(prev);
+          nextIds.forEach((id) => next.add(id));
+          return next;
+        });
+      }
+
+      if (cursor < visibleIds.length) {
+        window.setTimeout(pump, 220);
+      }
+    };
+
+    const timer = window.setTimeout(pump, 80);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, [posts, visibleVideoCount, frameReadyPostIds]);
+
+  const warmVideoPreview = useCallback((postId: number) => {
+    setFrameLoadPostIds((prev) => {
+      if (prev.has(postId)) return prev;
+      const next = new Set(prev);
+      next.add(postId);
+      return next;
+    });
   }, []);
 
   const clearLongPressTimer = () => {
@@ -1022,8 +1073,8 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldRenderVideo = canRenderVideo && isPreviewing;
-          const hasStaticPreview = Boolean(poster) || canRenderImage;
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || frameLoadPostIds.has(post.id));
+          const hasStaticPreview = Boolean(poster) || canRenderImage || frameReadyPostIds.has(post.id);
           const showPlaceholder = !hasStaticPreview;
 
           return (
@@ -1035,7 +1086,7 @@ function VideoGridView({
               }}
               data-feed-post-id={post.id}
               data-video-tile-post-id={post.id}
-              className={`${cardClass} min-h-0`}
+              className={`${cardClass} relative z-0 min-h-0 hover:z-50 focus-within:z-50`}
             >
               <button
                 type="button"
@@ -1112,8 +1163,9 @@ function VideoGridView({
                     onLoadedMetadata={(event) => {
                       const video = event.currentTarget;
                       try {
-                        if (isPreviewing && video.currentTime < 0.08) {
-                          video.currentTime = Math.min(0.14, video.duration || 0.14);
+                        const targetTime = isPreviewing ? 0.14 : 0.5;
+                        if (video.currentTime < 0.08) {
+                          video.currentTime = Math.min(targetTime, video.duration || targetTime);
                         }
                       } catch {
                         //
@@ -1125,6 +1177,13 @@ function VideoGridView({
                         if (!isPreviewing) {
                           video.pause();
                         }
+                        VIDEO_GRID_FRAME_CACHE.add(post.id);
+                        setFrameReadyPostIds((prev) => {
+                          if (prev.has(post.id)) return prev;
+                          const next = new Set(prev);
+                          next.add(post.id);
+                          return next;
+                        });
                       } catch {
                         //
                       }
@@ -1134,6 +1193,13 @@ function VideoGridView({
                       if (isPreviewing) return;
                       try {
                         video.pause();
+                        VIDEO_GRID_FRAME_CACHE.add(post.id);
+                        setFrameReadyPostIds((prev) => {
+                          if (prev.has(post.id)) return prev;
+                          const next = new Set(prev);
+                          next.add(post.id);
+                          return next;
+                        });
                       } catch {
                         //
                       }
@@ -1287,7 +1353,7 @@ export function FeedScreen({
   const [searchCategoriesOpen, setSearchCategoriesOpen] = useState(false);
   const lastScrollYRef = useRef(0);
   const [isMuted, setIsMuted] = useState(false);
-  const [, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
   const [menuPostId, setMenuPostId] = useState<number | null>(null);
   const [actionError, setActionError] = useState("");
@@ -1308,6 +1374,45 @@ export function FeedScreen({
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const [renderCount, setRenderCount] = useState(INITIAL_RENDER_POSTS);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const shouldGuardInlineVideo = (target: EventTarget | null) => {
+      const video = target as HTMLVideoElement | null;
+      if (!video || video.tagName !== "VIDEO") return false;
+      if (video.closest("[data-video-tile-post-id]")) return false;
+      if (viewerIndex !== null) return false;
+      return true;
+    };
+
+    const stopAutoplay = () => {
+      document.querySelectorAll<HTMLVideoElement>("[data-feed-post-id] video").forEach((video) => {
+        if (!shouldGuardInlineVideo(video)) return;
+        video.autoplay = false;
+        video.removeAttribute("autoplay");
+        if (!video.paused && !navigator.userActivation?.isActive) {
+          video.pause();
+        }
+      });
+    };
+
+    const handlePlay = (event: Event) => {
+      if (!shouldGuardInlineVideo(event.target)) return;
+      if (navigator.userActivation?.isActive) return;
+      const video = event.target as HTMLVideoElement;
+      video.pause();
+    };
+
+    stopAutoplay();
+    const timer = window.setInterval(stopAutoplay, 1400);
+    document.addEventListener("play", handlePlay, true);
+
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("play", handlePlay, true);
+    };
+  }, [viewerIndex, feedSettings.mediaMode, renderCount]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -2704,7 +2809,7 @@ export function FeedScreen({
         setExpandedCaption={setExpandedCaption}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
-        isPlaying={false}
+        isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         copySuccessId={copySuccessId}
         menuPostId={menuPostId}
