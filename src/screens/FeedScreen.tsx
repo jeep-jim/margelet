@@ -895,8 +895,8 @@ function VideoGridView({
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
-  const videoTileRefs = useRef<Map<number, HTMLDivElement>>(new Map());
-  const [warmVideoPostIds, setWarmVideoPostIds] = useState<Set<number>>(() => new Set());
+  // В Play-сетке не держим "прогретые" video-элементы.
+  // Настоящий <video> появляется только во время hover / long press.
   const [visibleVideoCount, setVisibleVideoCount] = useState(30);
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
@@ -934,7 +934,6 @@ function VideoGridView({
   useEffect(() => {
     setVisibleVideoCount(30);
     setPreviewPostId(null);
-    setWarmVideoPostIds(new Set());
   }, [posts]);
 
   useEffect(() => {
@@ -958,92 +957,10 @@ function VideoGridView({
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
 
-  const warmVideoPreview = useCallback((postId: number) => {
-    setWarmVideoPostIds((prev) => {
-      if (prev.has(postId)) return prev;
-
-      const next = new Set<number>();
-      next.add(postId);
-
-      // Держим в памяти только маленькое окно рядом с экраном.
-      // Раньше set только рос, поэтому video-tab копил сотни <video src=mp4>
-      // и браузер душился сотнями range-запросов.
-      for (const id of Array.from(prev).slice(-18)) {
-        next.add(id);
-      }
-
-      return next;
-    });
-
-    const video = videoPreviewRefs.current.get(postId);
-    if (!video) return;
-
-    try {
-      video.muted = true;
-      video.preload = "metadata";
-
-      const lockFirstFrame = () => {
-        try {
-          if (video.currentTime < 0.08) {
-            video.currentTime = Math.min(0.12, video.duration || 0.12);
-          }
-        } catch {
-          //
-        }
-      };
-
-      if (video.readyState >= 1) {
-        lockFirstFrame();
-      } else {
-        video.addEventListener("loadedmetadata", lockFirstFrame, { once: true });
-      }
-    } catch {
-      //
-    }
+  const warmVideoPreview = useCallback((_postId: number) => {
+    // Ничего не подгружаем на обычном скролле.
+    // Это убирает лаг: браузер больше не создаёт десятки mp4-потоков сразу.
   }, []);
-
-  useEffect(() => {
-    if (typeof IntersectionObserver === "undefined") return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        setWarmVideoPostIds((prev) => {
-          let changed = false;
-          const next = new Set(prev);
-
-          for (const entry of entries) {
-            const postId = Number((entry.target as HTMLElement).dataset.videoTilePostId);
-            if (!Number.isFinite(postId)) continue;
-
-            if (entry.isIntersecting) {
-              if (!next.has(postId)) {
-                next.add(postId);
-                changed = true;
-              }
-              continue;
-            }
-
-            // Не удаляем сразу при выходе из viewport: иначе плитки мигают
-            // при малейшем скролле и снова показывают синюю заглушку.
-            // Ниже cap сам выкинет старые элементы из окна прогрева.
-          }
-
-          // Жёсткий предохранитель: не больше 18 прогретых video-элементов.
-          const limited = Array.from(next).slice(-18);
-          if (limited.length !== next.size) {
-            changed = true;
-          }
-
-          return changed ? new Set(limited) : prev;
-        });
-      },
-      { rootMargin: "900px 0px 1200px 0px", threshold: 0.01 }
-    );
-
-    videoTileRefs.current.forEach((node) => observer.observe(node));
-
-    return () => observer.disconnect();
-  }, [posts, warmVideoPreview]);
 
   const clearLongPressTimer = () => {
     if (longPressTimerRef.current) {
@@ -1091,12 +1008,6 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <style>{`
-        @keyframes videoGridPreviewShimmer {
-          0% { background-position: 180% 0; }
-          100% { background-position: -80% 0; }
-        }
-      `}</style>
       <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:44px] sm:grid-cols-3 sm:[grid-auto-rows:52px]">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
@@ -1112,21 +1023,16 @@ function VideoGridView({
             .trim();
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
-          const shouldRenderVideo =
-            canRenderVideo && (isPreviewing || warmVideoPostIds.has(post.id));
+          const shouldRenderVideo = canRenderVideo && isPreviewing;
           const hasStaticPreview = Boolean(poster) || canRenderImage;
-          const showPlaceholder = !hasStaticPreview && !shouldRenderVideo;
+          const showPlaceholder = !hasStaticPreview;
 
           return (
             <div
               key={post.id}
               ref={(node) => {
                 registerFeedCardNode(post.id, node);
-                if (node) {
-                  videoTileRefs.current.set(post.id, node);
-                } else {
-                  videoTileRefs.current.delete(post.id);
-                }
+                // Play-сетка регистрируется только для seen-логики общей ленты.
               }}
               data-feed-post-id={post.id}
               data-video-tile-post-id={post.id}
@@ -1170,15 +1076,12 @@ function VideoGridView({
                   userSelect: "none",
                 }}
                 className={[
-                  "group relative block h-full w-full overflow-hidden bg-[#142231] text-left transition duration-200 active:scale-[0.995]",
+                  "group relative block h-full w-full overflow-hidden bg-black text-left transition duration-200 active:scale-[0.995]",
                   isPreviewing ? "z-20 scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
                 {showPlaceholder ? (
-                  <>
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(90,125,170,.22),transparent_34%),linear-gradient(135deg,#23364a_0%,#152333_48%,#07111d_100%)]" />
-                    <div className="absolute inset-0 opacity-35 [background:linear-gradient(110deg,transparent_0%,rgba(255,255,255,.08)_45%,transparent_70%)] [background-size:220%_100%] animate-[videoGridPreviewShimmer_1.8s_ease-in-out_infinite]" />
-                  </>
+                  <div className="absolute inset-0 bg-black" />
                 ) : null}
 
                 {shouldRenderVideo ? (
