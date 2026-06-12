@@ -16,7 +16,7 @@ concurrency:
 jobs:
   build-seo:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 55
 
     env:
       NPM_CONFIG_REGISTRY: https://registry.npmjs.org/

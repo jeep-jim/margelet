@@ -1,14 +1,7 @@
-import { Sparkles } from "lucide-react";
 import { getTelegramAuthUrl } from "./creator.utils";
 import type { ScreenCopy } from "./creator.types";
 
-export function CreatorAuthBlock({
-  copy,
-  onReplayIntro,
-}: {
-  copy: ScreenCopy;
-  onReplayIntro: () => void;
-}) {
+export function CreatorAuthBlock({ copy }: { copy: ScreenCopy }) {
   return (
     <div className="bg-surface text-primary shadow-soft overflow-hidden rounded-[32px] border border-soft">
       <div className="px-5 py-5">
@@ -29,15 +22,6 @@ export function CreatorAuthBlock({
             type="button"
           >
             {copy.authButton}
-          </button>
-
-          <button
-            onClick={onReplayIntro}
-            className="bg-surface text-primary bg-surface-hover inline-flex items-center gap-2 rounded-full border border-soft px-4 py-2.5 text-sm font-medium transition"
-            type="button"
-          >
-            <Sparkles className="h-4 w-4" />
-            {copy.introButtonShort}
           </button>
         </div>
       </div>

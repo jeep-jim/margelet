@@ -1,7 +1,5 @@
 import { Download } from "lucide-react";
-import { useEffect, useState } from "react";
 import type { Locale } from "../../types/app";
-import { getAutotranslit, setAutotranslit } from "../../lib/autotranslit";
 import { CreatorLocaleDropdown } from "./CreatorLocaleDropdown";
 import type { ScreenCopy } from "./creator.types";
 
@@ -22,28 +20,6 @@ export function CreatorLanguagePanel({
   onInstallApp: () => void;
   installHintText: string;
 }) {
-  const [autotranslit, setAutotranslitState] = useState(() =>
-    getAutotranslit(),
-  );
-
-  useEffect(() => {
-    const sync = () => setAutotranslitState(getAutotranslit());
-
-    window.addEventListener("margelet-autotranslit-change", sync);
-    window.addEventListener("storage", sync);
-
-    return () => {
-      window.removeEventListener("margelet-autotranslit-change", sync);
-      window.removeEventListener("storage", sync);
-    };
-  }, []);
-
-
-  const handleToggleAutotranslit = () => {
-    const next = !autotranslit;
-    setAutotranslit(next);
-    setAutotranslitState(next);
-  };
 
   return (
     <div className="notranslate margelet-ui space-y-3" translate="no">
@@ -57,37 +33,6 @@ export function CreatorLanguagePanel({
           value={locale}
           onChange={onChangeLocale}
         />
-
-        <button
-          type="button"
-          onClick={handleToggleAutotranslit}
-          className="flex min-h-[56px] w-full items-center justify-between gap-4 rounded-[20px] border border-soft bg-surface px-4 py-3 text-left"
-        >
-          <div className="min-w-0">
-            <div className="text-sm font-semibold text-primary">
-              🌐 Autotranslit
-            </div>
-            <div className="mt-1 text-xs leading-5 text-secondary">
-              Browser translation for foreign Telegram posts
-            </div>
-          </div>
-
-          <span
-            className={`relative inline-flex h-7 w-11 shrink-0 rounded-full border transition ${
-              autotranslit
-                ? "border-[#2f6df6] bg-[#2f6df6]"
-                : "border-soft bg-surface-soft dark:border-[#31455e] dark:bg-[#1b2a3b]"
-            }`}
-          >
-            <span
-              className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full transition-all ${
-                autotranslit
-                  ? "left-[20px] bg-white"
-                  : "left-[2px] bg-[#9aa4b2] dark:bg-[#6f89a8]"
-              }`}
-            />
-          </span>
-        </button>
       </div>
 
       <button

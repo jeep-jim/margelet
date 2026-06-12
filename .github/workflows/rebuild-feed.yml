@@ -21,7 +21,7 @@ concurrency:
 jobs:
   rebuild-feed:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 160
 
     env:
       GITHUB_OWNER: jeep-jim
