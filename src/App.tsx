@@ -185,6 +185,60 @@ function parseSharedPath(pathname: string) {
   return { handle, postId };
 }
 
+function parsePostPath(pathname: string) {
+  const clean = normalizePathname(pathname);
+  const parts = clean.split("/").filter(Boolean);
+
+  if (parts.length !== 2) return null;
+  if (parts[0] !== "post") return null;
+
+  const postId = parts[1]?.trim();
+  if (!postId || !/^\d+$/.test(postId)) return null;
+
+  return postId;
+}
+
+function ExpiredPostScreen({ onBack }: { onBack: () => void }) {
+  return (
+    <div
+      className="min-h-screen bg-app text-primary px-4 pb-10"
+      style={{ paddingTop: "calc(var(--app-header-offset) + 16px)" }}
+    >
+      <div className="mx-auto max-w-[570px]">
+        <section className="overflow-hidden rounded-[28px] border border-soft bg-surface px-5 py-8 text-center shadow-soft">
+          <img
+            src="/no_search.png"
+            alt="Пост скрыт"
+            className="mx-auto h-28 w-28 object-contain"
+            loading="eager"
+            decoding="async"
+          />
+
+          <h1 className="mt-5 text-[26px] font-bold leading-tight text-primary">
+            Пост уже отжил своё
+          </h1>
+
+          <p className="mx-auto mt-3 max-w-[420px] text-sm leading-6 text-secondary">
+            Свежие посты живут в ленте margeleT 24 часа. Никому не интересны вчерашние новости, поэтому этот пост уже скрыт из живой ленты.
+          </p>
+
+          <p className="mx-auto mt-2 max-w-[420px] text-sm leading-6 text-secondary">
+            Открой свежую ленту — там уже новые сигналы, источники и темы.
+          </p>
+
+          <button
+            type="button"
+            onClick={onBack}
+            className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-full bg-strong px-6 text-sm font-semibold text-strong-foreground transition hover:opacity-95"
+          >
+            Открыть свежую ленту
+          </button>
+        </section>
+      </div>
+    </div>
+  );
+}
+
 function parseSourcePath(pathname: string) {
   const clean = normalizePathname(pathname);
   const parts = clean.split("/").filter(Boolean);
@@ -342,6 +396,7 @@ export default function App() {
   }, [accessInfo, currentTelegramUser]);
 
   const sharedPath = useMemo(() => parseSharedPath(locationPath), [locationPath]);
+  const postPathId = useMemo(() => parsePostPath(locationPath), [locationPath]);
   const sourcePathHandle = useMemo(() => parseSourcePath(locationPath), [locationPath]);
 
   const posts = useMemo(() => {
@@ -453,6 +508,13 @@ export default function App() {
       return;
     }
 
+    const currentPostPath = parsePostPath(window.location.pathname);
+    if (currentPostPath) {
+      setSelectedSourceHandle(null);
+      setCurrent("feed");
+      return;
+    }
+
     const currentShared = parseSharedPath(window.location.pathname);
     if (currentShared) {
       setSelectedSourceHandle(normalizeSourceHandle(currentShared.handle));
@@ -488,6 +550,13 @@ export default function App() {
 
       if (isAdminHiddenPath(pathname)) {
         setCurrent("admin");
+        return;
+      }
+
+      const currentPostPath = parsePostPath(pathname);
+      if (currentPostPath) {
+        setSelectedSourceHandle(null);
+        setCurrent("feed");
         return;
       }
 
@@ -740,7 +809,11 @@ export default function App() {
         />
       ) : null}
 
-      {current === "feed" ? (
+      {postPathId ? (
+        <ExpiredPostScreen onBack={goHome} />
+      ) : null}
+
+      {current === "feed" && !postPathId ? (
         <FeedScreen
           locale={locale}
           posts={posts}
@@ -776,7 +849,7 @@ export default function App() {
         />
       ) : null}
 
-      {current === "source" ? (
+      {current === "source" && !postPathId ? (
         <SourceScreen
           locale={locale}
           posts={posts}

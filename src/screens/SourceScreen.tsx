@@ -53,6 +53,17 @@ function normalizeSourceHandle(value: string | null | undefined) {
   return String(value || "").replace(/^@+/, "").trim().toLowerCase();
 }
 
+function replaceSourcePostPath(post: IngestedPost) {
+  const postId = getPostIdFromUrl(post.postUrl);
+  const handle = normalizeSourceHandle(post.source.handle);
+
+  if (!handle || !postId) return;
+
+  const routeKey = `${handle}/${postId}`;
+  window.history.replaceState({}, document.title, `/${routeKey}`);
+  return routeKey;
+}
+
 function hasVisualPost(post: IngestedPost) {
   return post.contentType === "video";
 }
@@ -140,13 +151,7 @@ export function SourceScreen({
   const openPostInsideSource = useCallback(
     (post: IngestedPost, updateUrl = true) => {
       if (updateUrl) {
-        const postId = getPostIdFromUrl(post.postUrl);
-        window.history.replaceState(
-          {},
-          document.title,
-          `/${normalizeSourceHandle(post.source.handle)}/${postId}`
-        );
-        routeHandledRef.current = `${normalizeSourceHandle(post.source.handle)}/${postId}`;
+        routeHandledRef.current = replaceSourcePostPath(post) || null;
       }
 
       setMenuPostId(null);
@@ -173,23 +178,37 @@ export function SourceScreen({
 
   const nextViewer = useCallback(() => {
     if (viewerIndex === null || viewerPosts.length === 0) return;
-    setViewerIndex((viewerIndex + 1) % viewerPosts.length);
+    if (viewerIndex >= viewerPosts.length - 1) return;
+
+    const nextPost = viewerPosts[viewerIndex + 1];
+    if (nextPost) {
+      routeHandledRef.current = replaceSourcePostPath(nextPost) || null;
+    }
+
+    setViewerIndex(viewerIndex + 1);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsPlaying(true);
     setMenuPostId(null);
     setActionError("");
-  }, [viewerIndex, viewerPosts.length]);
+  }, [viewerIndex, viewerPosts]);
 
   const prevViewer = useCallback(() => {
     if (viewerIndex === null || viewerPosts.length === 0) return;
-    setViewerIndex((viewerIndex - 1 + viewerPosts.length) % viewerPosts.length);
+    if (viewerIndex <= 0) return;
+
+    const nextPost = viewerPosts[viewerIndex - 1];
+    if (nextPost) {
+      routeHandledRef.current = replaceSourcePostPath(nextPost) || null;
+    }
+
+    setViewerIndex(viewerIndex - 1);
     setViewerMediaIndex(0);
     setExpandedCaption(false);
     setIsPlaying(true);
     setMenuPostId(null);
     setActionError("");
-  }, [viewerIndex, viewerPosts.length]);
+  }, [viewerIndex, viewerPosts]);
 
   useEffect(() => {
     if (!sourceHandle || sourcePosts.length === 0) return;
@@ -223,9 +242,36 @@ export function SourceScreen({
 
   if (!source) {
     return (
-      <div className="min-h-screen bg-app text-primary" style={{ paddingTop: "calc(var(--app-header-offset) + 16px)" }}>
-        <div className="mx-auto max-w-[570px] px-4 pb-10">
-          <div className="text-lg font-semibold">{t.source.notFound}</div>
+      <div className="min-h-screen bg-app text-primary px-4 pb-10" style={{ paddingTop: "calc(var(--app-header-offset) + 16px)" }}>
+        <div className="mx-auto max-w-[570px]">
+          <section className="overflow-hidden rounded-[28px] border border-soft bg-surface px-5 py-8 text-center shadow-soft">
+            <img
+              src="/no_search.png"
+              alt={t.source.notFound}
+              className="mx-auto h-28 w-28 object-contain"
+              loading="eager"
+              decoding="async"
+            />
+
+            <h1 className="mt-5 text-[26px] font-bold leading-tight text-primary">
+              Пост уже отжил своё
+            </h1>
+
+            <p className="mx-auto mt-3 max-w-[420px] text-sm leading-6 text-secondary">
+              Свежие посты живут в ленте margeleT 24 часа. Никому не интересны вчерашние новости, поэтому этот пост уже скрыт из живой ленты.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => {
+                window.history.pushState(null, "", "/");
+                window.dispatchEvent(new PopStateEvent("popstate"));
+              }}
+              className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-full bg-strong px-6 text-sm font-semibold text-strong-foreground"
+            >
+              Открыть свежую ленту
+            </button>
+          </section>
         </div>
       </div>
     );
