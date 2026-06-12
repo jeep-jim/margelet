@@ -49,6 +49,10 @@ function getPostIdFromUrl(postUrl: string) {
   return match?.[1] || "";
 }
 
+function normalizeSourceHandle(value: string | null | undefined) {
+  return String(value || "").replace(/^@+/, "").trim().toLowerCase();
+}
+
 function hasVisualPost(post: IngestedPost) {
   return post.contentType === "video";
 }
@@ -67,7 +71,7 @@ export function SourceScreen({
   const t = getMessages(locale);
   const sourcePosts = useMemo(() => {
     return posts
-      .filter((post) => post.source.handle === sourceHandle)
+      .filter((post) => normalizeSourceHandle(post.source.handle) === normalizeSourceHandle(sourceHandle))
       .sort((a, b) => b.id - a.id);
   }, [posts, sourceHandle]);
 
@@ -129,7 +133,7 @@ export function SourceScreen({
 
     if (source?.source.handle) {
       routeHandledRef.current = null;
-      window.history.replaceState({}, document.title, `/${source.source.handle}`);
+      window.history.replaceState({}, document.title, `/${normalizeSourceHandle(source.source.handle)}`);
     }
   }, [source?.source.handle]);  
 
@@ -140,9 +144,9 @@ export function SourceScreen({
         window.history.replaceState(
           {},
           document.title,
-          `/${post.source.handle}/${postId}`
+          `/${normalizeSourceHandle(post.source.handle)}/${postId}`
         );
-        routeHandledRef.current = `${post.source.handle}/${postId}`;
+        routeHandledRef.current = `${normalizeSourceHandle(post.source.handle)}/${postId}`;
       }
 
       setMenuPostId(null);
@@ -194,7 +198,7 @@ export function SourceScreen({
     const parts = clean.split("/").filter(Boolean);
 
     if (parts.length !== 2) return;
-    if (parts[0] !== sourceHandle) return;
+    if (normalizeSourceHandle(parts[0]) !== normalizeSourceHandle(sourceHandle)) return;
 
     const routeKey = `${parts[0]}/${parts[1]}`;
     if (routeHandledRef.current === routeKey) return;

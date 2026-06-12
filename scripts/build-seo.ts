@@ -213,6 +213,24 @@ function getFirstImage(post: IngestedPost) {
   return poster || null;
 }
 
+function renderVerifiedMark(verified?: boolean) {
+  return verified ? `<span class="verified-dot" title="Verified" aria-label="Verified">✓</span>` : "";
+}
+
+function renderSourceHeader(post: IngestedPost) {
+  const sourceTitle = post.source?.title || post.source?.handle || "Telegram source";
+  const handle = post.source?.handle || "";
+  const avatar = post.source?.avatar || null;
+
+  return `<p class="source">
+        ${avatar ? `<img class="source-avatar" src="${escapeHtml(avatar)}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : ""}
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">${escapeHtml(sourceTitle)}</strong>${renderVerifiedMark(Boolean(post.source?.verified))}</span>
+          ${handle ? `<span>@${escapeHtml(handle)}</span>` : ""}
+        </span>
+      </p>`;
+}
+
 async function readJson<T>(filePath: string): Promise<T | null> {
   try {
     const raw = await readFile(filePath, "utf8");
@@ -310,7 +328,7 @@ function baseHead(params: {
   <meta name="twitter:image" content="${escapeHtml(image)}" />
   <script type="application/ld+json">${JSON.stringify(params.structuredData)}</script>
   <style>
-    :root{color-scheme:dark}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{max-width:920px;margin:0 auto;padding:32px 18px 56px}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img{max-width:100%;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px}h2{margin-top:30px}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;margin-top:14px;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;margin-top:14px;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}
+    :root{color-scheme:dark}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{max-width:920px;margin:0 auto;padding:32px 18px 56px}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-dot{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(180deg,#5ABEF7,#0096FF);color:#fff;font-size:10px;font-weight:900;line-height:1;flex:0 0 auto}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img{max-width:100%;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p{overflow-wrap:anywhere}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){main{padding:22px 16px 42px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:16px;margin:12px 0}h1{font-size:28px;line-height:1.1}.post h3{font-size:17px}.post img{width:100%;height:auto}.actions{display:grid;grid-template-columns:1fr;gap:8px}.open,.secondary-open{width:100%;box-sizing:border-box;text-align:center;padding:11px 13px}.source-avatar{width:30px;height:30px}.source-title{max-width:210px}}
   </style>
 </head>`;
 }
@@ -330,12 +348,9 @@ function renderPostSummary(post: IngestedPost) {
   const text = truncate(post.text, 260);
   const image = getFirstImage(post);
   const permalink = getPostPermalink(post);
-  const sourceTitle = post.source?.title || post.source?.handle || "Telegram source";
-  const handle = post.source?.handle || "";
-
   return `<article class="post">
       <a class="post-link" href="${escapeHtml(permalink)}">
-        <p class="source"><strong>${escapeHtml(sourceTitle)}</strong> <span>@${escapeHtml(handle)}</span></p>
+        ${renderSourceHeader(post)}
         ${image ? `<img src="${escapeHtml(image)}" alt="" loading="lazy" referrerpolicy="no-referrer" />` : ""}
         <h3>${escapeHtml(title)}</h3>
         ${text ? `<p>${escapeHtml(text)}</p>` : ""}
@@ -549,7 +564,7 @@ function renderPostPage(params: {
   <main>
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
-      <p class="source"><strong>${escapeHtml(sourceTitle)}</strong> <span>@${escapeHtml(handle)}</span></p>
+      ${renderSourceHeader(post)}
       <h1>${escapeHtml(getPostTitle(post))}</h1>
       ${postText ? `<p>${escapeHtml(postText)}</p>` : `<p class="muted">This Telegram post snapshot has media or a short update without extracted text.</p>`}
       ${mediaHtml}
@@ -558,9 +573,11 @@ function renderPostPage(params: {
         ${tags.map((tag) => `<a class="pill" href="${escapeHtml(getTagPath(countryCode, tag))}">${escapeHtml(tag.replace(/_/g, " / "))}</a>`).join("\n")}
       </div>
       <p class="notice muted">This is a margeleT snapshot of an open Telegram post. It can disappear from the live 24h feed, but this page keeps context and links to the source.</p>
-      <a class="open" href="${escapeHtml(getLiveFeedPath(countryCode))}">Open live margeleT feed</a>
-      ${handle ? `<a class="secondary-open" href="${escapeHtml(getSourcePostPath(post))}">Open this post in margeleT feed</a>` : ""}
-      ${post.postUrl ? `<a class="secondary-open telegram-link" href="${escapeHtml(post.postUrl)}" rel="nofollow noopener" target="_blank">Open original Telegram post</a>` : ""}
+      <div class="actions">
+        <a class="open" href="${escapeHtml(getLiveFeedPath(countryCode))}">Open live margeleT feed</a>
+        ${handle ? `<a class="secondary-open" href="${escapeHtml(getSourcePostPath(post))}">Open this post in margeleT feed</a>` : ""}
+        ${post.postUrl ? `<a class="secondary-open telegram-link" href="${escapeHtml(post.postUrl)}" rel="nofollow noopener" target="_blank">Open original Telegram post</a>` : ""}
+      </div>
     </article>
 
     <section>

@@ -208,7 +208,12 @@ function parseSourcePath(pathname: string) {
 }
 
 function getPostIdFromUrl(postUrl: string) {
-  return postUrl.split("/").filter(Boolean).pop() || "";
+  const match = String(postUrl || "").match(/\/([0-9]+)(?:\?single)?$/);
+  return match?.[1] || "";
+}
+
+function normalizeSourceHandle(value: string | null | undefined) {
+  return String(value || "").replace(/^@+/, "").trim().toLowerCase();
 }
 
 function fallbackAccess(user: TgUser | null): AccessInfo | null {
@@ -351,7 +356,7 @@ export default function App() {
 
     const matchIndex = visible.findIndex((post) => {
       return (
-        post.source.handle === sharedPath.handle &&
+        normalizeSourceHandle(post.source.handle) === normalizeSourceHandle(sharedPath.handle) &&
         getPostIdFromUrl(post.postUrl) === sharedPath.postId
       );
     });
@@ -384,9 +389,9 @@ export default function App() {
 
   const openSource = useCallback(
     (handle: string) => {
-      setSelectedSourceHandle(handle);
+      setSelectedSourceHandle(normalizeSourceHandle(handle));
       setCurrent("source");
-      replacePath(`/${handle}`);
+      replacePath(`/${normalizeSourceHandle(handle)}`);
     },
     [replacePath]
   );
@@ -450,14 +455,14 @@ export default function App() {
 
     const currentShared = parseSharedPath(window.location.pathname);
     if (currentShared) {
-      setSelectedSourceHandle(currentShared.handle);
+      setSelectedSourceHandle(normalizeSourceHandle(currentShared.handle));
       setCurrent("source");
       return;
     }
 
     const currentSource = parseSourcePath(window.location.pathname);
     if (currentSource) {
-      setSelectedSourceHandle(currentSource);
+      setSelectedSourceHandle(normalizeSourceHandle(currentSource));
       setCurrent("source");
       return;
     }
@@ -488,14 +493,14 @@ export default function App() {
 
       const currentShared = parseSharedPath(pathname);
       if (currentShared) {
-        setSelectedSourceHandle(currentShared.handle);
+        setSelectedSourceHandle(normalizeSourceHandle(currentShared.handle));
         setCurrent("source");
         return;
       }
 
       const currentSource = parseSourcePath(pathname);
       if (currentSource) {
-        setSelectedSourceHandle(currentSource);
+        setSelectedSourceHandle(normalizeSourceHandle(currentSource));
         setCurrent("source");
         return;
       }
@@ -779,9 +784,9 @@ export default function App() {
           onBack={goHome}
           onOpenPost={(post) => {
             const postId = getPostIdFromUrl(post.postUrl);
-            setSelectedSourceHandle(post.source.handle);
+            setSelectedSourceHandle(normalizeSourceHandle(post.source.handle));
             setCurrent("source");
-            replacePath(`/${post.source.handle}/${postId}`);
+            replacePath(`/${normalizeSourceHandle(post.source.handle)}/${postId}`);
           }}
           likedPostIds={likedPostIds}
           onToggleLike={handleToggleLike}
