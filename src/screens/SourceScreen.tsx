@@ -45,7 +45,8 @@ function toggleSub(handle: string) {
 }
 
 function getPostIdFromUrl(postUrl: string) {
-  return postUrl.split("/").filter(Boolean).pop() || "";
+  const match = String(postUrl || "").match(/\/([0-9]+)(?:\?single)?$/);
+  return match?.[1] || "";
 }
 
 function hasVisualPost(post: IngestedPost) {

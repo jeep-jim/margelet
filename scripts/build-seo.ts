@@ -179,6 +179,22 @@ function getSourcePath(handle?: string | null) {
   return clean ? `/${encodeURIComponent(clean)}` : "/";
 }
 
+function getTelegramPostIdFromUrl(postUrl?: string | null) {
+  const match = String(postUrl || "").match(/\/([0-9]+)(?:\?single)?$/);
+  return match?.[1] || "";
+}
+
+function getSourcePostPath(post: IngestedPost) {
+  const handle = String(post.source?.handle || "").replace(/^@+/, "").trim();
+  const postId = getTelegramPostIdFromUrl(post.postUrl);
+
+  if (handle && postId) {
+    return `/${encodeURIComponent(handle)}/${encodeURIComponent(postId)}`;
+  }
+
+  return getSourcePath(handle);
+}
+
 function getPostTitle(post: IngestedPost) {
   const text = truncate(post.text, 74);
   if (text) return text;
@@ -502,7 +518,7 @@ function renderPostPage(params: {
       author: {
         "@type": "Organization",
         name: sourceTitle,
-        url: handle ? `${SITE_ORIGIN}${getSourcePath(handle)}` : SITE_ORIGIN,
+        url: handle ? `${SITE_ORIGIN}${getSourcePostPath(post)}` : SITE_ORIGIN,
       },
       isPartOf: { "@type": "WebSite", name: "margeleT", url: SITE_ORIGIN },
       sameAs: post.postUrl || undefined,
@@ -543,7 +559,7 @@ function renderPostPage(params: {
       </div>
       <p class="notice muted">This is a margeleT snapshot of an open Telegram post. It can disappear from the live 24h feed, but this page keeps context and links to the source.</p>
       <a class="open" href="${escapeHtml(getLiveFeedPath(countryCode))}">Open live margeleT feed</a>
-      ${handle ? `<a class="secondary-open" href="${escapeHtml(getSourcePath(handle))}">Open source on margeleT</a>` : ""}
+      ${handle ? `<a class="secondary-open" href="${escapeHtml(getSourcePostPath(post))}">Open this post in margeleT feed</a>` : ""}
       ${post.postUrl ? `<a class="secondary-open telegram-link" href="${escapeHtml(post.postUrl)}" rel="nofollow noopener" target="_blank">Open original Telegram post</a>` : ""}
     </article>
 
