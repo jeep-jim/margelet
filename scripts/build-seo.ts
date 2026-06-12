@@ -204,6 +204,50 @@ function getPostTitle(post: IngestedPost) {
   return `${source} ${kind} snapshot`;
 }
 
+function getPrimaryTagLabel(post: IngestedPost) {
+  const tag = getPostTags(post)[0] || post.tag || "telegram";
+  return tagTitle(tag).toLowerCase();
+}
+
+function getSourceTitle(post: IngestedPost) {
+  return post.source?.title || post.source?.handle || "Telegram source";
+}
+
+function getSeoPostHeadline(post: IngestedPost) {
+  return getPostTitle(post);
+}
+
+function getSeoPostTitle(post: IngestedPost) {
+  const countryCode = normalizeCountryCode(post.sourceCountryCode);
+  const countryName = getCountryName(countryCode);
+  const sourceTitle = getSourceTitle(post);
+  const topic = getPrimaryTagLabel(post);
+  return `${truncate(getSeoPostHeadline(post), 86)} — ${sourceTitle}, ${countryName} ${topic} | margeleT`;
+}
+
+function getSeoPostDescription(post: IngestedPost) {
+  const countryCode = normalizeCountryCode(post.sourceCountryCode);
+  const countryName = getCountryName(countryCode);
+  const sourceTitle = getSourceTitle(post);
+  const tags = getPostTags(post).slice(0, 4).map((tag) => tag.replace(/_/g, " ")).join(", ");
+  const body = truncate(post.text || `Fresh Telegram post from ${sourceTitle}.`, 185);
+  return `Fresh Telegram snapshot from ${sourceTitle} in ${countryName}. ${body}${tags ? ` Topics: ${tags}.` : ""}`;
+}
+
+function getKeywordsContent(post: IngestedPost) {
+  const countryCode = normalizeCountryCode(post.sourceCountryCode);
+  const values = [
+    "margeleT",
+    "Telegram",
+    getCountryName(countryCode),
+    getSourceTitle(post),
+    ...(post.source?.handle ? [post.source.handle] : []),
+    ...getPostTags(post).map((tag) => tag.replace(/_/g, " ")),
+  ];
+
+  return Array.from(new Set(values.filter(Boolean))).join(", ");
+}
+
 function getFirstImage(post: IngestedPost) {
   const media = Array.isArray(post.media) ? post.media : [];
   const image = media.find((item) => item.kind === "image" && item.url)?.url;
@@ -300,11 +344,14 @@ function baseHead(params: {
   canonicalPath: string;
   updatedAt: string;
   image?: string | null;
+  keywords?: string | null;
+  ogType?: "website" | "article";
   structuredData: unknown;
   alternates?: string;
 }) {
   const canonicalUrl = `${SITE_ORIGIN}${params.canonicalPath}`;
   const image = params.image || `${SITE_ORIGIN}/hero.webp`;
+  const ogType = params.ogType || "website";
 
   return `<!doctype html>
 <html lang="${escapeHtml(params.lang)}">
@@ -313,23 +360,25 @@ function baseHead(params: {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>${escapeHtml(params.title)}</title>
   <meta name="description" content="${escapeHtml(params.description)}" />
+  ${params.keywords ? `<meta name="keywords" content="${escapeHtml(params.keywords)}" />` : ""}
   <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
   ${params.alternates || ""}
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="${escapeHtml(ogType)}" />
   <meta property="og:site_name" content="margeleT" />
   <meta property="og:title" content="${escapeHtml(params.title)}" />
   <meta property="og:description" content="${escapeHtml(params.description)}" />
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
   <meta property="og:image" content="${escapeHtml(image)}" />
+  <meta property="og:updated_time" content="${escapeHtml(isoDate(params.updatedAt))}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(params.title)}" />
   <meta name="twitter:description" content="${escapeHtml(params.description)}" />
   <meta name="twitter:image" content="${escapeHtml(image)}" />
   <script type="application/ld+json">${JSON.stringify(params.structuredData)}</script>
   <style>
-    :root{color-scheme:dark}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{max-width:920px;margin:0 auto;padding:32px 18px 56px}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-dot{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(180deg,#5ABEF7,#0096FF);color:#fff;font-size:10px;font-weight:900;line-height:1;flex:0 0 auto}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img{max-width:100%;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p{overflow-wrap:anywhere}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){main{padding:22px 16px 42px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:16px;margin:12px 0}h1{font-size:28px;line-height:1.1}.post h3{font-size:17px}.post img{width:100%;height:auto}.actions{display:grid;grid-template-columns:1fr;gap:8px}.open,.secondary-open{width:100%;box-sizing:border-box;text-align:center;padding:11px 13px}.source-avatar{width:30px;height:30px}.source-title{max-width:210px}}
-  </style>
+    :root{color-scheme:dark}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{max-width:920px;margin:0 auto;padding:32px 18px 56px}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-dot{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(180deg,#5ABEF7,#0096FF);color:#fff;font-size:10px;font-weight:900;line-height:1;flex:0 0 auto}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img{display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){main{max-width:100%;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img{width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}</style>
 </head>`;
 }
 
@@ -506,10 +555,11 @@ function renderPostPage(params: {
   const { post, relatedPosts } = params;
   const countryCode = normalizeCountryCode(post.sourceCountryCode);
   const countryName = getCountryName(countryCode);
-  const title = `${getPostTitle(post)} | margeleT`;
-  const sourceTitle = post.source?.title || post.source?.handle || "Telegram source";
+  const title = getSeoPostTitle(post);
+  const headline = getSeoPostHeadline(post);
+  const sourceTitle = getSourceTitle(post);
   const handle = post.source?.handle || "";
-  const description = truncate(post.text || `Fresh Telegram post from ${sourceTitle} in ${countryName}.`, 260);
+  const description = getSeoPostDescription(post);
   const image = getFirstImage(post);
   const canonicalPath = getPostPermalink(post);
   const tags = getPostTags(post);
@@ -521,22 +571,53 @@ function renderPostPage(params: {
     canonicalPath,
     updatedAt: post.createdAt,
     image,
+    keywords: getKeywordsContent(post),
+    ogType: "article",
     structuredData: {
       "@context": "https://schema.org",
-      "@type": "SocialMediaPosting",
-      headline: getPostTitle(post),
-      articleBody: truncate(post.text, 800),
-      url: `${SITE_ORIGIN}${canonicalPath}`,
-      datePublished: isoDate(post.createdAt),
-      dateModified: isoDate(post.mediaRefreshedAt || post.createdAt),
-      image: image ? [image] : undefined,
-      author: {
-        "@type": "Organization",
-        name: sourceTitle,
-        url: handle ? `${SITE_ORIGIN}${getSourcePostPath(post)}` : SITE_ORIGIN,
-      },
-      isPartOf: { "@type": "WebSite", name: "margeleT", url: SITE_ORIGIN },
-      sameAs: post.postUrl || undefined,
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": `${SITE_ORIGIN}/#website`,
+          name: "margeleT",
+          url: SITE_ORIGIN,
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "margeleT", item: SITE_ORIGIN },
+            { "@type": "ListItem", position: 2, name: countryName, item: `${SITE_ORIGIN}${getLiveFeedPath(countryCode)}` },
+            { "@type": "ListItem", position: 3, name: sourceTitle, item: handle ? `${SITE_ORIGIN}${getSourcePath(handle)}` : SITE_ORIGIN },
+          ],
+        },
+        {
+          "@type": ["Article", "SocialMediaPosting"],
+          headline,
+          description,
+          articleBody: truncate(post.text, 1200),
+          keywords: getKeywordsContent(post),
+          url: `${SITE_ORIGIN}${canonicalPath}`,
+          mainEntityOfPage: `${SITE_ORIGIN}${canonicalPath}`,
+          datePublished: isoDate(post.createdAt),
+          dateModified: isoDate(post.mediaRefreshedAt || post.createdAt),
+          image: image ? [image] : undefined,
+          inLanguage: SEO_LOCALE_META[countryCode as CountryCode]?.htmlLang || "en",
+          about: tags.map((tag) => ({ "@type": "Thing", name: tag.replace(/_/g, " ") })),
+          author: {
+            "@type": "Organization",
+            name: sourceTitle,
+            url: handle ? `${SITE_ORIGIN}${getSourcePath(handle)}` : SITE_ORIGIN,
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "margeleT",
+            url: SITE_ORIGIN,
+            logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/icon-512.png` },
+          },
+          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+          sameAs: post.postUrl || undefined,
+        },
+      ],
     },
   });
 
@@ -565,14 +646,14 @@ function renderPostPage(params: {
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       ${renderSourceHeader(post)}
-      <h1>${escapeHtml(getPostTitle(post))}</h1>
+      <h1>${escapeHtml(headline)}</h1>
       ${postText ? `<p>${escapeHtml(postText)}</p>` : `<p class="muted">This Telegram post snapshot has media or a short update without extracted text.</p>`}
       ${mediaHtml}
       <p class="meta"><time datetime="${escapeHtml(isoDate(post.createdAt))}">${escapeHtml(formatDate(post.createdAt))}</time> · ${escapeHtml(countryName)}</p>
       <div class="tag-row">
         ${tags.map((tag) => `<a class="pill" href="${escapeHtml(getTagPath(countryCode, tag))}">${escapeHtml(tag.replace(/_/g, " / "))}</a>`).join("\n")}
       </div>
-      <p class="notice muted">This is a margeleT snapshot of an open Telegram post. It can disappear from the live 24h feed, but this page keeps context and links to the source.</p>
+      <p class="notice muted">Fresh margeleT snapshot · ${escapeHtml(countryName)} · ${escapeHtml(sourceTitle)}${tags.length ? ` · ${escapeHtml(tags.slice(0, 3).map((tag) => tag.replace(/_/g, " / ")).join(" · "))}` : ""}. This page keeps context and source links for search engines and AI assistants.</p>
       <div class="actions">
         <a class="open" href="${escapeHtml(getLiveFeedPath(countryCode))}">Open live margeleT feed</a>
         ${handle ? `<a class="secondary-open" href="${escapeHtml(getSourcePostPath(post))}">Open this post in margeleT feed</a>` : ""}
@@ -650,13 +731,16 @@ function getRelatedPosts(post: IngestedPost, posts: IngestedPost[]) {
 
 async function main() {
   await mkdir(PUBLIC_DIR, { recursive: true });
-  await mkdir(SITEMAPS_DIR, { recursive: true });
 
-  // Country/tag pages are snapshots of the current feed, so they are rebuilt from scratch.
+  // margeleT SEO is a fresh snapshot, not an infinite archive.
+  // Rebuild generated static pages from current feed data on every run.
   await rm(COUNTRY_DIR, { recursive: true, force: true });
-  // Post pages are intentionally NOT deleted: if a post falls out of the 24h feed,
-  // the old permalink should keep working instead of becoming a dead SEO URL.
+  await rm(POST_DIR, { recursive: true, force: true });
+  await rm(SITEMAPS_DIR, { recursive: true, force: true });
+
+  await mkdir(COUNTRY_DIR, { recursive: true });
   await mkdir(POST_DIR, { recursive: true });
+  await mkdir(SITEMAPS_DIR, { recursive: true });
 
   const index = await readJson<FeedIndexFile>(path.join("data", "feeds", "index.json"));
   const countryCodes = Object.keys(index?.countries || {}).sort();
