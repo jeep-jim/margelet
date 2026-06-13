@@ -407,7 +407,7 @@ function ExpiredPostScreen({ locale, onBack }: { locale: Locale; onBack: () => v
             </div>
           ) : (
             <img
-              src="/no_search.png"
+              src="/no_searsh.png"
               alt={copy.alt}
               className="mx-auto h-28 w-28 object-contain"
               loading="eager"

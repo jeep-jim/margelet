@@ -578,11 +578,60 @@ function isVideoGridSourceVerified(post: IngestedPost) {
   );
 }
 
-function getVideoGridCardClass(_post: IngestedPost, _index: number) {
-  // Ровная Play-сетка без дырок: каждая плитка имеет одинаковую высоту.
-  // Видео всё равно кропается object-cover, зато свайп/клик больше не цепляется
-  // за пустые grid-ячейки между карточками.
-  return "aspect-[9/16]";
+function getVideoGridMediaRatio(post: IngestedPost, index: number) {
+  const media = normalizeMediaList(post);
+  const visual =
+    media.find((item) => item.kind === "video") ||
+    media.find((item) => item.kind === "image");
+
+  const record = (visual || {}) as Record<string, unknown>;
+  const width = Number(record.width || record.w || record.videoWidth || 0);
+  const height = Number(record.height || record.h || record.videoHeight || 0);
+
+  if (width > 0 && height > 0) {
+    return width / height;
+  }
+
+  // Если Telegram не дал размеры — не делаем огромные пустые башни.
+  // Паттерн даёт живую ленту, но grid-auto-flow:dense закрывает дырки.
+  const pattern = [0.62, 0.78, 1.2, 0.7, 1.55, 0.82, 1, 0.66, 1.38, 0.74];
+  return pattern[index % pattern.length] || 0.78;
+}
+
+function getVideoGridCardClass(post: IngestedPost, index: number) {
+  const ratio = getVideoGridMediaRatio(post, index);
+
+  // Tetris-сетка: фиксированная мелкая сетка + dense.
+  // Карточки могут занимать 1/2 колонки и разную высоту, но всегда кропаются через object-cover.
+  // Так лучше потерять края превью, чем оставлять пустые клетки.
+  if (ratio >= 1.35) {
+    return "col-span-2 row-span-3";
+  }
+
+  if (ratio >= 1.05) {
+    return index % 5 === 0 ? "col-span-2 row-span-4" : "col-span-1 row-span-3";
+  }
+
+  if (ratio >= 0.86) {
+    return index % 7 === 0 ? "col-span-2 row-span-5" : "col-span-1 row-span-4";
+  }
+
+  if (ratio <= 0.56) {
+    return index % 9 === 0 ? "col-span-2 row-span-6" : "col-span-1 row-span-5";
+  }
+
+  const pattern = [
+    "col-span-1 row-span-5",
+    "col-span-1 row-span-4",
+    "col-span-2 row-span-5",
+    "col-span-1 row-span-5",
+    "col-span-1 row-span-4",
+    "col-span-1 row-span-6",
+    "col-span-2 row-span-4",
+    "col-span-1 row-span-5",
+  ];
+
+  return pattern[index % pattern.length] || "col-span-1 row-span-5";
 }
 
 
@@ -981,7 +1030,7 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-2 gap-px">
+      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:48px] sm:grid-cols-2 sm:[grid-auto-rows:58px]">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
@@ -1306,7 +1355,6 @@ export function FeedScreen({
   const seenPostsHydratedRef = useRef(false);
   const currentSessionSeenPostIdsRef = useRef<Set<number>>(new Set());
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
-  const viewerHistoryOpenRef = useRef(false);
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const [renderCount, setRenderCount] = useState(INITIAL_RENDER_POSTS);
@@ -2034,16 +2082,8 @@ export function FeedScreen({
   const openViewerByPost = useCallback(
     (post: IngestedPost) => {
       closeFloatingPanels();
-      if (!viewerHistoryOpenRef.current) {
-        window.history.pushState({ margeletViewer: true }, document.title, window.location.href);
-        viewerHistoryOpenRef.current = true;
-      }
       const nextIndex = viewerPosts.findIndex((item) => item.id === post.id);
       if (nextIndex === -1) {
-        if (viewerHistoryOpenRef.current) {
-          viewerHistoryOpenRef.current = false;
-          window.history.back();
-        }
         return;
       }
 
@@ -2063,10 +2103,6 @@ export function FeedScreen({
 
   const openTextReader = useCallback((post: IngestedPost) => {
     closeFloatingPanels();
-    if (!viewerHistoryOpenRef.current) {
-      window.history.pushState({ margeletViewer: true }, document.title, window.location.href);
-      viewerHistoryOpenRef.current = true;
-    }
     setViewerIndex(null);
     setTextReaderPost(post);
     setCopySuccessId(null);
@@ -2088,27 +2124,7 @@ export function FeedScreen({
   }, []);
 
   const closeViewer = useCallback(() => {
-    if (viewerHistoryOpenRef.current) {
-      window.history.back();
-      return;
-    }
-
     closeViewerState();
-  }, [closeViewerState]);
-
-  useEffect(() => {
-    const handleViewerBack = () => {
-      if (!viewerHistoryOpenRef.current) return;
-
-      viewerHistoryOpenRef.current = false;
-      closeViewerState();
-    };
-
-    window.addEventListener("popstate", handleViewerBack);
-
-    return () => {
-      window.removeEventListener("popstate", handleViewerBack);
-    };
   }, [closeViewerState]);
 
   useEffect(() => {

@@ -320,8 +320,6 @@ export function FeedViewer({
   const captionTranslateCleanupRef = useRef<(() => void) | null>(null);
   const wheelLockRef = useRef(false);
   const touchStartYRef = useRef<number | null>(null);
-  const touchStartXRef = useRef<number | null>(null);
-  const touchLockRef = useRef(false);
   const centerTimerRef = useRef<number | null>(null);
   const autoplayWantedRef = useRef(isPlaying);
 
@@ -612,51 +610,25 @@ export function FeedViewer({
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 1 }}
-        className="fixed inset-0 z-50 touch-none overscroll-contain bg-black"
-        style={{
-          overscrollBehavior: "contain",
-          WebkitOverflowScrolling: "auto",
-        }}
+        className="fixed inset-0 z-50 bg-black"
         onWheel={handleWheel}
         onTouchStart={(event) => {
-          const touch = event.touches[0];
-          touchStartYRef.current = touch?.clientY ?? null;
-          touchStartXRef.current = touch?.clientX ?? null;
-        }}
-        onTouchMove={(event) => {
-          event.preventDefault();
+          touchStartYRef.current = event.touches[0]?.clientY ?? null;
         }}
         onTouchEnd={(event) => {
-          if (touchLockRef.current) return;
-
           const startY = touchStartYRef.current;
-          const startX = touchStartXRef.current;
           const endY = event.changedTouches[0]?.clientY ?? null;
-          const endX = event.changedTouches[0]?.clientX ?? null;
-
           touchStartYRef.current = null;
-          touchStartXRef.current = null;
 
-          if (startY === null || startX === null || endY === null || endX === null) return;
+          if (startY === null || endY === null) return;
 
-          const deltaY = endY - startY;
-          const deltaX = endX - startX;
+          const delta = endY - startY;
 
-          if (Math.abs(deltaY) < 92 || Math.abs(deltaY) < Math.abs(deltaX) * 1.25) {
-            return;
-          }
-
-          touchLockRef.current = true;
-
-          if (deltaY <= -92) {
+          if (delta <= -70) {
             nextViewer();
-          } else if (deltaY >= 92) {
+          } else if (delta >= 70) {
             prevViewer();
           }
-
-          window.setTimeout(() => {
-            touchLockRef.current = false;
-          }, 360);
         }}
       >
         <div className="relative h-full w-full overflow-hidden bg-black">

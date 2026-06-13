@@ -281,7 +281,7 @@ export function SourceScreen({
         <div className="mx-auto max-w-[570px]">
           <section className="overflow-hidden rounded-[28px] border border-soft bg-surface px-5 py-8 text-center shadow-soft">
             <img
-              src="/no_search.png"
+              src="/no_searsh.png"
               alt={expiredPostCopy.alt}
               className="mx-auto h-28 w-28 object-contain"
               loading="eager"
