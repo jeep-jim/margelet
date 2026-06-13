@@ -1,4 +1,4 @@
-name: Rebuild feed
+name: Re feed 🎈
 
 on:
   workflow_dispatch:
@@ -66,6 +66,8 @@ jobs:
           git config user.name "jeep-jim"
           git config user.email "yokkey@ya.ru"
 
+          echo "Deploy triggered at $(date)" > force-deploy.txt
+
           git add -A \
             data/feed.json \
             public/feed.json \
@@ -73,9 +75,7 @@ jobs:
             data/placements.json \
             data/feeds \
             public/feeds \
-
-          echo "Deploy triggered at $(date)" > force-deploy.txt
-          git add force-deploy.txt
+            force-deploy.txt
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
@@ -83,8 +83,22 @@ jobs:
           fi
 
           git commit -m "rebuild feed: data update"
-          git pull --rebase origin main || true
-          git push
+
+          for attempt in 1 2 3; do
+            echo "Push attempt $attempt"
+
+            if git push origin HEAD:main; then
+              echo "Push successful"
+              exit 0
+            fi
+
+            echo "Push failed, syncing with origin/main..."
+            git fetch origin main
+            git rebase --autostash origin/main
+          done
+
+          echo "Push failed after 3 attempts"
+          exit 1
 
       - name: Purge Cloudflare cache
         run: |

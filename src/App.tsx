@@ -79,6 +79,192 @@ const FEED_LOADING_COPY: FeedLoadingCopy = {
   cn: "正在加载内容流...",
   my: "Memuat feed...",
 };
+type ExpiredPostCopy = {
+  alt: string;
+  title: string;
+  text: string;
+  hint: string;
+  button: string;
+};
+
+const EXPIRED_POST_COPY: Partial<Record<CountryCode, ExpiredPostCopy>> = {
+  ru: {
+    alt: "Пост скрыт",
+    title: "Пост уже отжил своё",
+    text: "Свежие посты живут в ленте margeleT 24 часа. Никому не интересны вчерашние новости, поэтому этот пост уже скрыт из живой ленты.",
+    hint: "Открой свежую ленту — там уже новые сигналы, источники и темы.",
+    button: "Открыть свежую ленту",
+  },
+  ua: {
+    alt: "Пост приховано",
+    title: "Пост уже віджив своє",
+    text: "Свіжі пости живуть у стрічці margeleT 24 години. Вчорашні новини вже нікому не цікаві, тому цей пост приховано з живої стрічки.",
+    hint: "Відкрий свіжу стрічку — там уже нові сигнали, джерела й теми.",
+    button: "Відкрити свіжу стрічку",
+  },
+  us: {
+    alt: "Post hidden",
+    title: "This post has expired",
+    text: "Fresh posts stay in the margeleT feed for 24 hours. Yesterday’s news gets old fast, so this post is now hidden from the live feed.",
+    hint: "Open the fresh feed — new signals, sources, and topics are already there.",
+    button: "Open fresh feed",
+  },
+  in: {
+    alt: "Post hidden",
+    title: "This post has expired",
+    text: "Fresh posts stay in the margeleT feed for 24 hours. Yesterday’s news gets old fast, so this post is now hidden from the live feed.",
+    hint: "Open the fresh feed — new signals, sources, and topics are already there.",
+    button: "Open fresh feed",
+  },
+  ir: {
+    alt: "پست پنهان شد",
+    title: "این پست منقضی شده است",
+    text: "پست‌های تازه در فید margeleT فقط ۲۴ ساعت زنده می‌مانند. خبرهای دیروز دیگر جذاب نیستند، بنابراین این پست از فید زنده پنهان شده است.",
+    hint: "فید تازه را باز کن — سیگنال‌ها، منابع و موضوعات جدید آنجا هستند.",
+    button: "باز کردن فید تازه",
+  },
+  tr: {
+    alt: "Gönderi gizlendi",
+    title: "Bu gönderinin süresi doldu",
+    text: "Yeni gönderiler margeleT akışında 24 saat kalır. Dünün haberleri hızla eskir, bu yüzden bu gönderi canlı akıştan gizlendi.",
+    hint: "Taze akışı aç — yeni sinyaller, kaynaklar ve konular orada.",
+    button: "Taze akışı aç",
+  },
+  br: {
+    alt: "Post oculto",
+    title: "Este post já expirou",
+    text: "Posts frescos ficam no feed do margeleT por 24 horas. Notícias de ontem envelhecem rápido, então este post foi ocultado do feed ao vivo.",
+    hint: "Abra o feed fresco — novos sinais, fontes e temas já estão lá.",
+    button: "Abrir feed fresco",
+  },
+  kz: {
+    alt: "Пост жасырылды",
+    title: "Посттың уақыты өтті",
+    text: "Жаңа посттар margeleT лентасында 24 сағат сақталады. Кешегі жаңалық тез ескіреді, сондықтан бұл пост тірі лентадан жасырылды.",
+    hint: "Жаңа лентаны аш — онда жаңа сигналдар, дереккөздер және тақырыптар бар.",
+    button: "Жаңа лентаны ашу",
+  },
+  uz: {
+    alt: "Post yashirildi",
+    title: "Bu post muddati tugadi",
+    text: "Yangi postlar margeleT lentasida 24 soat yashaydi. Kechagi yangiliklar tez eskiradi, shuning uchun bu post jonli lentadan yashirildi.",
+    hint: "Yangi lentani oching — u yerda yangi signallar, manbalar va mavzular bor.",
+    button: "Yangi lentani ochish",
+  },
+  ae: {
+    alt: "تم إخفاء المنشور",
+    title: "انتهت صلاحية هذا المنشور",
+    text: "تبقى المنشورات الجديدة في خلاصة margeleT لمدة 24 ساعة. أخبار الأمس تصبح قديمة بسرعة، لذلك تم إخفاء هذا المنشور من الخلاصة الحية.",
+    hint: "افتح الخلاصة الجديدة — هناك إشارات ومصادر ومواضيع جديدة.",
+    button: "افتح الخلاصة الجديدة",
+  },
+  eg: {
+    alt: "تم إخفاء المنشور",
+    title: "انتهت صلاحية هذا المنشور",
+    text: "المنشورات الجديدة بتفضل في خلاصة margeleT لمدة 24 ساعة. أخبار امبارح بتقدم بسرعة، لذلك المنشور ده اتخفى من الخلاصة المباشرة.",
+    hint: "افتح الخلاصة الجديدة — فيها إشارات ومصادر ومواضيع جديدة.",
+    button: "افتح الخلاصة الجديدة",
+  },
+  pk: {
+    alt: "Post hidden",
+    title: "This post has expired",
+    text: "Fresh posts stay in the margeleT feed for 24 hours. Yesterday’s news gets old fast, so this post is now hidden from the live feed.",
+    hint: "Open the fresh feed — new signals, sources, and topics are already there.",
+    button: "Open fresh feed",
+  },
+  id: {
+    alt: "Postingan disembunyikan",
+    title: "Postingan ini sudah kedaluwarsa",
+    text: "Postingan segar hidup di feed margeleT selama 24 jam. Berita kemarin cepat basi, jadi postingan ini sudah disembunyikan dari feed langsung.",
+    hint: "Buka feed segar — sinyal, sumber, dan topik baru sudah ada di sana.",
+    button: "Buka feed segar",
+  },
+  mx: {
+    alt: "Post oculto",
+    title: "Este post ya expiró",
+    text: "Los posts frescos viven en el feed de margeleT durante 24 horas. Las noticias de ayer envejecen rápido, así que este post ya está oculto del feed en vivo.",
+    hint: "Abre el feed fresco — ya hay nuevas señales, fuentes y temas.",
+    button: "Abrir feed fresco",
+  },
+  sa: {
+    alt: "تم إخفاء المنشور",
+    title: "انتهت صلاحية هذا المنشور",
+    text: "تبقى المنشورات الجديدة في خلاصة margeleT لمدة 24 ساعة. أخبار الأمس تصبح قديمة بسرعة، لذلك تم إخفاء هذا المنشور من الخلاصة الحية.",
+    hint: "افتح الخلاصة الجديدة — هناك إشارات ومصادر ومواضيع جديدة.",
+    button: "افتح الخلاصة الجديدة",
+  },
+  es: {
+    alt: "Post oculto",
+    title: "Este post ya expiró",
+    text: "Los posts frescos viven en el feed de margeleT durante 24 horas. Las noticias de ayer envejecen rápido, así que este post ya está oculto del feed en vivo.",
+    hint: "Abre el feed fresco — ya hay nuevas señales, fuentes y temas.",
+    button: "Abrir feed fresco",
+  },
+  it: {
+    alt: "Post nascosto",
+    title: "Questo post è scaduto",
+    text: "I post freschi restano nel feed margeleT per 24 ore. Le notizie di ieri invecchiano in fretta, quindi questo post è stato nascosto dal feed live.",
+    hint: "Apri il feed fresco — ci sono già nuovi segnali, fonti e temi.",
+    button: "Apri feed fresco",
+  },
+  fr: {
+    alt: "Post masqué",
+    title: "Ce post a expiré",
+    text: "Les posts frais restent dans le feed margeleT pendant 24 heures. Les nouvelles d’hier vieillissent vite, donc ce post est maintenant masqué du feed en direct.",
+    hint: "Ouvre le feed frais — de nouveaux signaux, sources et sujets sont déjà là.",
+    button: "Ouvrir le feed frais",
+  },
+  de: {
+    alt: "Post ausgeblendet",
+    title: "Dieser Post ist abgelaufen",
+    text: "Frische Posts bleiben 24 Stunden im margeleT-Feed. Nachrichten von gestern werden schnell alt, deshalb ist dieser Post im Live-Feed ausgeblendet.",
+    hint: "Öffne den frischen Feed — dort warten neue Signale, Quellen und Themen.",
+    button: "Frischen Feed öffnen",
+  },
+  ar: {
+    alt: "Publicación oculta",
+    title: "Esta publicación ya expiró",
+    text: "Las publicaciones frescas viven en el feed de margeleT durante 24 horas. Las noticias de ayer envejecen rápido, así que esta publicación ya está oculta del feed en vivo.",
+    hint: "Abre el feed fresco — ya hay nuevas señales, fuentes y temas.",
+    button: "Abrir feed fresco",
+  },
+  co: {
+    alt: "Publicación oculta",
+    title: "Esta publicación ya expiró",
+    text: "Las publicaciones frescas viven en el feed de margeleT durante 24 horas. Las noticias de ayer envejecen rápido, así que esta publicación ya está oculta del feed en vivo.",
+    hint: "Abre el feed fresco — ya hay nuevas señales, fuentes y temas.",
+    button: "Abrir feed fresco",
+  },
+  za: {
+    alt: "Post hidden",
+    title: "This post has expired",
+    text: "Fresh posts stay in the margeleT feed for 24 hours. Yesterday’s news gets old fast, so this post is now hidden from the live feed.",
+    hint: "Open the fresh feed — new signals, sources, and topics are already there.",
+    button: "Open fresh feed",
+  },
+  ng: {
+    alt: "Post hidden",
+    title: "This post has expired",
+    text: "Fresh posts stay in the margeleT feed for 24 hours. Yesterday’s news gets old fast, so this post is now hidden from the live feed.",
+    hint: "Open the fresh feed — new signals, sources, and topics are already there.",
+    button: "Open fresh feed",
+  },
+  cn: {
+    alt: "帖子已隐藏",
+    title: "这条帖子已过期",
+    text: "新帖子会在 margeleT 信息流中保留 24 小时。昨天的新闻很快就会过时，所以这条帖子已从实时信息流中隐藏。",
+    hint: "打开最新信息流 — 新信号、新来源和新话题已经在那里。",
+    button: "打开最新信息流",
+  },
+  my: {
+    alt: "Siaran disembunyikan",
+    title: "Siaran ini telah tamat tempoh",
+    text: "Siaran baharu hidup dalam feed margeleT selama 24 jam. Berita semalam cepat basi, jadi siaran ini telah disembunyikan daripada feed langsung.",
+    hint: "Buka feed segar — isyarat, sumber dan topik baharu sudah ada di sana.",
+    button: "Buka feed segar",
+  },
+};
+
 
 type TgUser = {
   id: string;
@@ -198,7 +384,12 @@ function parsePostPath(pathname: string) {
   return postId;
 }
 
-function ExpiredPostScreen({ onBack }: { onBack: () => void }) {
+function ExpiredPostScreen({ locale, onBack }: { locale: Locale; onBack: () => void }) {
+  const copy =
+    EXPIRED_POST_COPY[normalizeCountryCode(locale)] ??
+    EXPIRED_POST_COPY.ru!;
+  const [imageFailed, setImageFailed] = useState(false);
+
   return (
     <div
       className="min-h-screen bg-app text-primary px-4 pb-10"
@@ -206,24 +397,35 @@ function ExpiredPostScreen({ onBack }: { onBack: () => void }) {
     >
       <div className="mx-auto max-w-[570px]">
         <section className="overflow-hidden rounded-[28px] border border-soft bg-surface px-5 py-8 text-center shadow-soft">
-          <img
-            src="/no_search.png"
-            alt="Пост скрыт"
-            className="mx-auto h-28 w-28 object-contain"
-            loading="eager"
-            decoding="async"
-          />
+          {imageFailed ? (
+            <div
+              className="mx-auto flex h-28 w-28 items-center justify-center rounded-[28px] bg-surface-soft text-6xl"
+              role="img"
+              aria-label={copy.alt}
+            >
+              🦆
+            </div>
+          ) : (
+            <img
+              src="/no_search.png"
+              alt={copy.alt}
+              className="mx-auto h-28 w-28 object-contain"
+              loading="eager"
+              decoding="async"
+              onError={() => setImageFailed(true)}
+            />
+          )}
 
           <h1 className="mt-5 text-[26px] font-bold leading-tight text-primary">
-            Пост уже отжил своё
+            {copy.title}
           </h1>
 
           <p className="mx-auto mt-3 max-w-[420px] text-sm leading-6 text-secondary">
-            Свежие посты живут в ленте margeleT 24 часа. Никому не интересны вчерашние новости, поэтому этот пост уже скрыт из живой ленты.
+            {copy.text}
           </p>
 
           <p className="mx-auto mt-2 max-w-[420px] text-sm leading-6 text-secondary">
-            Открой свежую ленту — там уже новые сигналы, источники и темы.
+            {copy.hint}
           </p>
 
           <button
@@ -231,7 +433,7 @@ function ExpiredPostScreen({ onBack }: { onBack: () => void }) {
             onClick={onBack}
             className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-full bg-strong px-6 text-sm font-semibold text-strong-foreground transition hover:opacity-95"
           >
-            Открыть свежую ленту
+            {copy.button}
           </button>
         </section>
       </div>
@@ -810,7 +1012,7 @@ export default function App() {
       ) : null}
 
       {postPathId ? (
-        <ExpiredPostScreen onBack={goHome} />
+        <ExpiredPostScreen locale={locale} onBack={goHome} />
       ) : null}
 
       {current === "feed" && !postPathId ? (

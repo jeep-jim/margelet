@@ -25,6 +25,40 @@ type Props = {
 const SUB_KEY = "margelet_subscriptions";
 const SAVED_POST_IDS_FALLBACK: number[] = [];
 
+const EXPIRED_POST_COPY = {
+  ru: { alt: "Пост скрыт", title: "Пост уже отжил своё", text: "Свежие посты живут в ленте margeleT 24 часа. Никому не интересны вчерашние новости, поэтому этот пост уже скрыт из живой ленты.", button: "Открыть свежую ленту" },
+  us: { alt: "Post hidden", title: "This post has lived its moment", text: "Fresh posts live in the margeleT feed for 24 hours. Yesterday’s news gets hidden from the live feed so new signals stay on top.", button: "Open fresh feed" },
+  en: { alt: "Post hidden", title: "This post has lived its moment", text: "Fresh posts live in the margeleT feed for 24 hours. Yesterday’s news gets hidden from the live feed so new signals stay on top.", button: "Open fresh feed" },
+  ua: { alt: "Пост приховано", title: "Пост уже віджив своє", text: "Свіжі пости живуть у стрічці margeleT 24 години. Учорашні новини ховаються з живої стрічки, щоб зверху були нові сигнали.", button: "Відкрити свіжу стрічку" },
+  br: { alt: "Post oculto", title: "Este post já cumpriu seu tempo", text: "Posts frescos vivem no feed do margeleT por 24 horas. As notícias de ontem saem do feed ao vivo para abrir espaço para novos sinais.", button: "Abrir feed fresco" },
+  tr: { alt: "Gönderi gizlendi", title: "Bu gönderinin zamanı geçti", text: "Yeni gönderiler margeleT akışında 24 saat yaşar. Dünün haberleri canlı akıştan gizlenir, böylece yeni sinyaller öne çıkar.", button: "Güncel akışı aç" },
+  in: { alt: "Post hidden", title: "This post has lived its moment", text: "Fresh posts live in the margeleT feed for 24 hours. Yesterday’s news gets hidden from the live feed so new signals stay on top.", button: "Open fresh feed" },
+  ir: { alt: "پست پنهان شد", title: "زمان این پست تمام شده است", text: "پست‌های تازه در فید margeleT تا ۲۴ ساعت زنده می‌مانند. خبرهای دیروز از فید زنده پنهان می‌شوند تا سیگنال‌های تازه بالا بمانند.", button: "باز کردن فید تازه" },
+  kz: { alt: "Пост жасырылды", title: "Бұл пост өз уақытын өткізді", text: "Жаңа посттар margeleT лентасында 24 сағат тұрады. Кешегі жаңалықтар тірі лентадан жасырылады, жаңа сигналдар жоғарыда қалады.", button: "Жаңа лентаны ашу" },
+  uz: { alt: "Post yashirildi", title: "Bu post o‘z vaqtini o‘tab bo‘ldi", text: "Yangi postlar margeleT lentasida 24 soat yashaydi. Kechagi yangiliklar jonli lentadan yashiriladi, yangi signallar tepada qoladi.", button: "Yangi lentani ochish" },
+  ae: { alt: "تم إخفاء المنشور", title: "انتهى وقت هذا المنشور", text: "تعيش المنشورات الجديدة في موجز margeleT لمدة 24 ساعة. يتم إخفاء أخبار الأمس من الموجز الحي لتبقى الإشارات الجديدة في الأعلى.", button: "افتح الموجز الجديد" },
+  eg: { alt: "تم إخفاء المنشور", title: "انتهى وقت هذا المنشور", text: "المنشورات الجديدة بتعيش في موجز margeleT لمدة 24 ساعة. أخبار امبارح بتختفي من الموجز الحي عشان الإشارات الجديدة تفضل فوق.", button: "افتح الموجز الجديد" },
+  ar: { alt: "تم إخفاء المنشور", title: "انتهى وقت هذا المنشور", text: "تعيش المنشورات الجديدة في موجز margeleT لمدة 24 ساعة. يتم إخفاء أخبار الأمس من الموجز الحي لتبقى الإشارات الجديدة في الأعلى.", button: "افتح الموجز الجديد" },
+  pk: { alt: "Post hidden", title: "This post has lived its moment", text: "Fresh posts live in the margeleT feed for 24 hours. Yesterday’s news gets hidden from the live feed so new signals stay on top.", button: "Open fresh feed" },
+  id: { alt: "Postingan disembunyikan", title: "Postingan ini sudah lewat masanya", text: "Postingan baru hidup di feed margeleT selama 24 jam. Berita kemarin disembunyikan dari feed live agar sinyal baru tetap di atas.", button: "Buka feed terbaru" },
+  mx: { alt: "Post oculto", title: "Este post ya cumplió su momento", text: "Los posts frescos viven en el feed de margeleT durante 24 horas. Las noticias de ayer se ocultan del feed en vivo para que suban nuevas señales.", button: "Abrir feed fresco" },
+  sa: { alt: "تم إخفاء المنشور", title: "انتهى وقت هذا المنشور", text: "تعيش المنشورات الجديدة في موجز margeleT لمدة 24 ساعة. يتم إخفاء أخبار الأمس من الموجز الحي لتبقى الإشارات الجديدة في الأعلى.", button: "افتح الموجز الجديد" },
+  es: { alt: "Post oculto", title: "Este post ya cumplió su momento", text: "Los posts frescos viven en el feed de margeleT durante 24 horas. Las noticias de ayer se ocultan del feed en vivo para que suban nuevas señales.", button: "Abrir feed fresco" },
+  it: { alt: "Post nascosto", title: "Questo post ha già fatto il suo tempo", text: "I post freschi vivono nel feed margeleT per 24 ore. Le notizie di ieri vengono nascoste dal feed live per lasciare spazio ai nuovi segnali.", button: "Apri il feed fresco" },
+  fr: { alt: "Post masqué", title: "Ce post a déjà vécu son moment", text: "Les posts frais restent dans le flux margeleT pendant 24 heures. Les nouvelles d’hier sont masquées du flux en direct pour garder les nouveaux signaux en haut.", button: "Ouvrir le flux frais" },
+  de: { alt: "Post ausgeblendet", title: "Dieser Post hat seine Zeit gehabt", text: "Frische Posts bleiben 24 Stunden im margeleT-Feed. Nachrichten von gestern werden aus dem Live-Feed ausgeblendet, damit neue Signale oben bleiben.", button: "Frischen Feed öffnen" },
+  co: { alt: "Post oculto", title: "Este post ya cumplió su momento", text: "Los posts frescos viven en el feed de margeleT durante 24 horas. Las noticias de ayer se ocultan del feed en vivo para que suban nuevas señales.", button: "Abrir feed fresco" },
+  za: { alt: "Post hidden", title: "This post has lived its moment", text: "Fresh posts live in the margeleT feed for 24 hours. Yesterday’s news gets hidden from the live feed so new signals stay on top.", button: "Open fresh feed" },
+  ng: { alt: "Post hidden", title: "This post has lived its moment", text: "Fresh posts live in the margeleT feed for 24 hours. Yesterday’s news gets hidden from the live feed so new signals stay on top.", button: "Open fresh feed" },
+  cn: { alt: "帖子已隐藏", title: "这条帖子已经过时了", text: "新帖子会在 margeleT 信息流中保留 24 小时。昨天的新闻会从实时信息流中隐藏，让新的信号保持在顶部。", button: "打开最新信息流" },
+  my: { alt: "Siaran disembunyikan", title: "Siaran ini sudah tamat waktunya", text: "Siaran baharu hidup dalam feed margeleT selama 24 jam. Berita semalam disembunyikan daripada feed langsung supaya isyarat baharu kekal di atas.", button: "Buka feed baharu" },
+} as const;
+
+function getExpiredPostCopy(locale: Locale) {
+  return EXPIRED_POST_COPY[locale as keyof typeof EXPIRED_POST_COPY] ?? EXPIRED_POST_COPY.us;
+}
+
+
 function getSubs(): string[] {
   try {
     const raw = localStorage.getItem(SUB_KEY);
@@ -80,6 +114,7 @@ export function SourceScreen({
   openSource,
 }: Props) {
   const t = getMessages(locale);
+  const expiredPostCopy = getExpiredPostCopy(locale);
   const sourcePosts = useMemo(() => {
     return posts
       .filter((post) => normalizeSourceHandle(post.source.handle) === normalizeSourceHandle(sourceHandle))
@@ -247,18 +282,22 @@ export function SourceScreen({
           <section className="overflow-hidden rounded-[28px] border border-soft bg-surface px-5 py-8 text-center shadow-soft">
             <img
               src="/no_search.png"
-              alt={t.source.notFound}
+              alt={expiredPostCopy.alt}
               className="mx-auto h-28 w-28 object-contain"
               loading="eager"
               decoding="async"
+              onError={(event) => {
+                event.currentTarget.outerHTML =
+                  '<div class="mx-auto grid h-28 w-28 place-items-center text-[76px] leading-none">🦆</div>';
+              }}
             />
 
             <h1 className="mt-5 text-[26px] font-bold leading-tight text-primary">
-              Пост уже отжил своё
+              {expiredPostCopy.title}
             </h1>
 
             <p className="mx-auto mt-3 max-w-[420px] text-sm leading-6 text-secondary">
-              Свежие посты живут в ленте margeleT 24 часа. Никому не интересны вчерашние новости, поэтому этот пост уже скрыт из живой ленты.
+              {expiredPostCopy.text}
             </p>
 
             <button
@@ -269,7 +308,7 @@ export function SourceScreen({
               }}
               className="mt-6 inline-flex min-h-[48px] items-center justify-center rounded-full bg-strong px-6 text-sm font-semibold text-strong-foreground"
             >
-              Открыть свежую ленту
+              {expiredPostCopy.button}
             </button>
           </section>
         </div>
