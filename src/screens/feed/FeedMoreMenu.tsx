@@ -1,4 +1,4 @@
-import { Bell, BellOff, CheckSquare, Flag, Send, ThumbsDown, Trash2, Share2 } from "lucide-react";
+import { Bell, BellOff, CheckSquare, Flag, Send, ThumbsDown, Trash2, Share2, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
@@ -6,6 +6,23 @@ import type { Locale } from "../../types/app";
 type AnchorRect = {
   top: number;
   right: number;
+};
+
+const MODERATION_REPORTS_STORAGE_KEY = "margelet_local_moderation_reports_v1";
+const MODERATION_REPORTS_EVENT = "margelet:moderation-reports-updated";
+
+type LocalModerationReport = {
+  id: string;
+  postId: number | null;
+  sourceHandle: string | null;
+  sourceTitle: string | null;
+  sourceCountryCode: string | null;
+  reason: string;
+  message: string | null;
+  count: number;
+  status: "open" | "resolved";
+  createdAt: string;
+  updatedAt: string;
 };
 
 function getSubs(): string[] {
@@ -17,6 +34,68 @@ function getSubs(): string[] {
   } catch {
     return [];
   }
+}
+
+
+function readLocalReports(): LocalModerationReport[] {
+  try {
+    const raw = localStorage.getItem(MODERATION_REPORTS_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeLocalReports(reports: LocalModerationReport[]) {
+  localStorage.setItem(MODERATION_REPORTS_STORAGE_KEY, JSON.stringify(reports.slice(0, 300)));
+  window.dispatchEvent(new Event(MODERATION_REPORTS_EVENT));
+}
+
+function addLocalReport({
+  postId,
+  sourceHandle,
+  reason,
+}: {
+  postId: number | null;
+  sourceHandle: string;
+  reason: string;
+}) {
+  const now = new Date().toISOString();
+  const normalizedReason = reason.trim().toLowerCase() || "other";
+  const normalizedHandle = sourceHandle.replace(/^@+/, "").toLowerCase();
+  const reportKey = `${postId || "source"}:${normalizedHandle}:${normalizedReason}`;
+  const current = readLocalReports();
+  const existingIndex = current.findIndex((item) => item.id === reportKey);
+
+  if (existingIndex >= 0) {
+    const next = [...current];
+    next[existingIndex] = {
+      ...next[existingIndex],
+      count: (next[existingIndex].count || 1) + 1,
+      status: "open",
+      updatedAt: now,
+    };
+    writeLocalReports(next);
+    return;
+  }
+
+  writeLocalReports([
+    {
+      id: reportKey,
+      postId,
+      sourceHandle: normalizedHandle || null,
+      sourceTitle: null,
+      sourceCountryCode: null,
+      reason: normalizedReason,
+      message: null,
+      count: 1,
+      status: "open",
+      createdAt: now,
+      updatedAt: now,
+    },
+    ...current,
+  ]);
 }
 
 function toggleSub(handle: string) {
@@ -56,6 +135,8 @@ export function FeedMoreMenu({
   const menuRef = useRef<HTMLDivElement | null>(null);
   const [mounted, setMounted] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
+  const [reportScope, setReportScope] = useState<"post" | "source" | null>(null);
+  const [selectedReportReasons, setSelectedReportReasons] = useState<string[]>([]);
 
   useEffect(() => {
     setMounted(true);
@@ -347,9 +428,18 @@ export function FeedMoreMenu({
         reportPost: "Пожаловаться на пост",
         reportSource: "Пожаловаться на канал",
         selectAdmin: "Выбрать для модерации",
-        sent: "Жалоба отправлена",
-        failed: "Не удалось отправить жалобу",
-        reason: "Причина жалобы: spam / adult / scam / violence / other",
+        sent: "Жалоба сохранена",
+        failed: "Не удалось сохранить жалобу",
+        chooseTitle: "Что случилось?",
+        send: "Отправить жалобу",
+        cancel: "Отмена",
+        reasons: [
+          ["adult", "18+ / порно"],
+          ["scam", "Мошенничество"],
+          ["spam", "Спам"],
+          ["violence", "Жесть / насилие"],
+          ["other", "Другое"],
+        ] as Array<[string, string]>,
       };
     }
 
@@ -357,40 +447,46 @@ export function FeedMoreMenu({
       reportPost: "Report post",
       reportSource: "Report channel",
       selectAdmin: "Select for moderation",
-      sent: "Report sent",
-      failed: "Could not send report",
-      reason: "Report reason: spam / adult / scam / violence / other",
+      sent: "Report saved",
+      failed: "Could not save report",
+      chooseTitle: "What happened?",
+      send: "Send report",
+      cancel: "Cancel",
+      reasons: [
+        ["adult", "18+ / adult"],
+        ["scam", "Scam"],
+        ["spam", "Spam"],
+        ["violence", "Violence"],
+        ["other", "Other"],
+      ] as Array<[string, string]>,
     };
   })();
 
-  const sendReport = async (scope: "post" | "source") => {
-    const reasonRaw = window.prompt(reportCopy.reason, scope === "source" ? "channel" : "other");
-    if (reasonRaw === null) return;
+  const openReportModal = (scope: "post" | "source") => {
+    setSelectedReportReasons([]);
+    setReportScope(scope);
+  };
 
-    const reason = reasonRaw.trim().toLowerCase() || "other";
+  const submitReport = () => {
+    const reasons = selectedReportReasons.length ? selectedReportReasons : ["other"];
 
-    try {
-      const response = await fetch("/api/admin-posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          entity: "reports",
-          action: "create",
-          postId: scope === "post" ? postId : null,
-          sourceHandle,
-          reason,
-        }),
+    for (const reason of reasons) {
+      addLocalReport({
+        postId: reportScope === "post" ? postId : null,
+        sourceHandle,
+        reason,
       });
-
-      const data = await response.json().catch(() => null);
-      if (!response.ok) {
-        throw new Error(data?.error || reportCopy.failed);
-      }
-
-      alert(reportCopy.sent);
-    } catch (error) {
-      alert(error instanceof Error ? error.message : reportCopy.failed);
     }
+
+    setReportScope(null);
+    setSelectedReportReasons([]);
+    onRequestClose();
+  };
+
+  const toggleReportReason = (reason: string) => {
+    setSelectedReportReasons((prev) =>
+      prev.includes(reason) ? prev.filter((item) => item !== reason) : [...prev, reason]
+    );
   };
 
   const toggleModerationSelection = () => {
@@ -471,8 +567,7 @@ export function FeedMoreMenu({
         <button
           type="button"
           onClick={() => {
-            void sendReport("post");
-            onRequestClose();
+            openReportModal("post");
           }}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
         >
@@ -483,8 +578,7 @@ export function FeedMoreMenu({
         <button
           type="button"
           onClick={() => {
-            void sendReport("source");
-            onRequestClose();
+            openReportModal("source");
           }}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
         >
@@ -534,6 +628,56 @@ export function FeedMoreMenu({
           </button>
         )}
       </div>
+
+      {reportScope ? (
+        <div className="fixed inset-0 z-[100000] grid place-items-center bg-black/45 px-4 backdrop-blur-sm" onClick={() => setReportScope(null)}>
+          <div
+            className="w-full max-w-[360px] rounded-[26px] border border-soft bg-surface p-4 shadow-soft"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <div className="text-base font-black text-primary">{reportCopy.chooseTitle}</div>
+              <button
+                type="button"
+                onClick={() => setReportScope(null)}
+                className="grid h-9 w-9 place-items-center rounded-full bg-surface-soft text-secondary"
+                aria-label={reportCopy.cancel}
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            <div className="space-y-2">
+              {reportCopy.reasons.map(([reason, label]) => {
+                const checked = selectedReportReasons.includes(reason);
+                return (
+                  <button
+                    key={reason}
+                    type="button"
+                    onClick={() => toggleReportReason(reason)}
+                    className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-semibold transition ${
+                      checked ? "bg-rose-500 text-white" : "bg-surface-soft text-primary hover:bg-surface"
+                    }`}
+                  >
+                    <span>{label}</span>
+                    <span className={`grid h-5 w-5 place-items-center rounded-md border ${checked ? "border-white bg-white text-rose-500" : "border-soft text-transparent"}`}>
+                      ✓
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <button
+              type="button"
+              onClick={submitReport}
+              className="mt-4 w-full rounded-2xl bg-rose-500 px-4 py-3 text-sm font-black text-white transition hover:bg-rose-400"
+            >
+              {reportCopy.send}
+            </button>
+          </div>
+        </div>
+      ) : null}
     </>,
     document.body
   );

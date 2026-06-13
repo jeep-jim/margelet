@@ -1,6 +1,9 @@
 import { AlertTriangle, CheckCircle2, ExternalLink } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { AdminSectionCard } from "./AdminSectionCard";
+
+const MODERATION_REPORTS_STORAGE_KEY = "margelet_local_moderation_reports_v1";
+const MODERATION_REPORTS_EVENT = "margelet:moderation-reports-updated";
 
 type ModerationReport = {
   id: string;
@@ -15,6 +18,25 @@ type ModerationReport = {
   createdAt: string;
   updatedAt: string;
 };
+
+
+function readLocalReports(): ModerationReport[] {
+  try {
+    const raw = localStorage.getItem(MODERATION_REPORTS_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((item): item is ModerationReport => item && typeof item.id === "string" && item.status === "open")
+      .sort((a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt));
+  } catch {
+    return [];
+  }
+}
+
+function writeLocalReports(reports: ModerationReport[]) {
+  localStorage.setItem(MODERATION_REPORTS_STORAGE_KEY, JSON.stringify(reports.slice(0, 300)));
+  window.dispatchEvent(new Event(MODERATION_REPORTS_EVENT));
+}
 
 function formatReason(reason: string) {
   const labels: Record<string, string> = {
@@ -42,71 +64,32 @@ function formatDate(value: string) {
   }
 }
 
-export function AdminReportsSection({ telegramUserId }: { telegramUserId: string | null }) {
+export function AdminReportsSection({ telegramUserId: _telegramUserId }: { telegramUserId: string | null }) {
   const [reports, setReports] = useState<ModerationReport[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
-  const loadReports = async () => {
-    if (!telegramUserId) return;
+  const loadReports = useCallback(() => {
+    setLoading(false);
+    setMessage(null);
+    setReports(readLocalReports());
+  }, []);
 
-    try {
-      setLoading(true);
-      setMessage(null);
-
-      const response = await fetch("/api/admin-posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          entity: "reports",
-          action: "list",
-          telegramUserId,
-        }),
-      });
-
-      const data = await response.json().catch(() => null);
-      if (!response.ok) {
-        throw new Error(data?.error || "Не удалось загрузить жалобы");
-      }
-
-      setReports(Array.isArray(data?.reports) ? data.reports : []);
-    } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Не удалось загрузить жалобы");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const resolveReport = async (reportId: string) => {
-    if (!telegramUserId) return;
-
-    try {
-      setMessage(null);
-      const response = await fetch("/api/admin-posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          entity: "reports",
-          action: "resolve",
-          reportId,
-          telegramUserId,
-        }),
-      });
-
-      const data = await response.json().catch(() => null);
-      if (!response.ok) {
-        throw new Error(data?.error || "Не удалось закрыть жалобу");
-      }
-
-      setReports(Array.isArray(data?.reports) ? data.reports : []);
-    } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Не удалось закрыть жалобу");
-    }
+  const resolveReport = (reportId: string) => {
+    const next = readLocalReports().filter((report) => report.id !== reportId);
+    writeLocalReports(next);
+    setReports(next);
   };
 
   useEffect(() => {
-    void loadReports();
-  }, [telegramUserId]);
+    loadReports();
+    window.addEventListener(MODERATION_REPORTS_EVENT, loadReports);
+    window.addEventListener("storage", loadReports);
+    return () => {
+      window.removeEventListener(MODERATION_REPORTS_EVENT, loadReports);
+      window.removeEventListener("storage", loadReports);
+    };
+  }, [loadReports]);
 
   return (
     <AdminSectionCard
@@ -170,7 +153,7 @@ export function AdminReportsSection({ telegramUserId }: { telegramUserId: string
                   ) : null}
                   <button
                     type="button"
-                    onClick={() => void resolveReport(report.id)}
+                    onClick={() => resolveReport(report.id)}
                     className="grid h-9 w-9 place-items-center rounded-full bg-emerald-500/15 text-emerald-200 transition hover:bg-emerald-500/25"
                     title="Закрыть жалобу"
                   >
@@ -184,7 +167,7 @@ export function AdminReportsSection({ telegramUserId }: { telegramUserId: string
 
         <button
           type="button"
-          onClick={() => void loadReports()}
+          onClick={loadReports}
           className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10 hover:text-white"
         >
           Обновить жалобы

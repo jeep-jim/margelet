@@ -763,11 +763,18 @@ export async function readFeedFile<T = unknown>(): Promise<FeedFile<T>> {
 }
 
 export async function readFeedIndexFile(): Promise<FeedIndexFile> {
-  return readRepoJsonFile<FeedIndexFile>(FEEDS_INDEX_PATH, {
+  const fallback: FeedIndexFile = {
     version: 1,
     updatedAt: new Date(0).toISOString(),
     countries: {},
-  });
+  };
+
+  const dataIndex = await readRepoJsonFile<FeedIndexFile>(FEEDS_INDEX_PATH, fallback);
+  if (Object.keys(dataIndex.countries || {}).length > 0) {
+    return dataIndex;
+  }
+
+  return readRepoJsonFile<FeedIndexFile>(PUBLIC_FEEDS_INDEX_PATH, fallback);
 }
 
 export async function readFeedCountryFile<T = unknown>(
@@ -778,7 +785,10 @@ export async function readFeedCountryFile<T = unknown>(
     return null;
   }
 
-  return readRepoJsonFile<CountryFeedFile<T> | null>(`data/feeds/${normalized}.json`, null);
+  const dataFile = await readRepoJsonFile<CountryFeedFile<T> | null>(`data/feeds/${normalized}.json`, null);
+  if (dataFile) return dataFile;
+
+  return readRepoJsonFile<CountryFeedFile<T> | null>(`public/feeds/${normalized}.json`, null);
 }
 
 export async function readFeedCountryPosts<T = unknown>(countryCode: string): Promise<T[]> {
@@ -801,9 +811,11 @@ export async function readFeedCountryPosts<T = unknown>(countryCode: string): Pr
   }
 
   const chunksRaw = await Promise.allSettled(
-    manifest.chunks.map((chunk) =>
-      readRepoJsonFile<FeedFile<T> | null>(`data${chunk.path}`, null)
-    )
+    manifest.chunks.map(async (chunk) => {
+      const dataChunk = await readRepoJsonFile<FeedFile<T> | null>(`data${chunk.path}`, null);
+      if (dataChunk) return dataChunk;
+      return readRepoJsonFile<FeedFile<T> | null>(`public${chunk.path}`, null);
+    })
   );
 
   const chunks = chunksRaw

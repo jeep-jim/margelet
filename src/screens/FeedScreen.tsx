@@ -26,6 +26,8 @@ import { buildShareUrl, getResolvedTags, normalizeMediaList } from "./feed/feed.
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
+const MODERATION_REPORTS_STORAGE_KEY = "margelet_local_moderation_reports_v1";
+const MODERATION_REPORTS_EVENT = "margelet:moderation-reports-updated";
 
 type ModerationReport = {
   id: string;
@@ -40,6 +42,31 @@ type ModerationReport = {
   createdAt: string;
   updatedAt: string;
 };
+function readLocalModerationReports(): ModerationReport[] {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const raw = localStorage.getItem(MODERATION_REPORTS_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(parsed)) return [];
+
+    return parsed
+      .filter(
+        (item): item is ModerationReport =>
+          item &&
+          typeof item.id === "string" &&
+          (typeof item.postId === "number" || item.postId === null) &&
+          (typeof item.sourceHandle === "string" || item.sourceHandle === null) &&
+          typeof item.reason === "string" &&
+          item.status === "open",
+      )
+      .sort((a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt))
+      .slice(0, 200);
+  } catch {
+    return [];
+  }
+}
+
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
@@ -1375,6 +1402,7 @@ export function FeedScreen({
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const [renderCount, setRenderCount] = useState(INITIAL_RENDER_POSTS);
   const [selectedModerationPostIds, setSelectedModerationPostIds] = useState<number[]>([]);
+  const [moderationSelectionMode, setModerationSelectionMode] = useState(false);
   const [moderationReports, setModerationReports] = useState<ModerationReport[]>([]);
   const [moderationMessage, setModerationMessage] = useState<string | null>(null);
   const isCurrentAdmin = !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
@@ -1388,6 +1416,7 @@ export function FeedScreen({
       const postId = Number(detail?.postId || 0);
       if (!postId) return;
 
+      setModerationSelectionMode(true);
       setSelectedModerationPostIds((prev) =>
         prev.includes(postId) ? prev.filter((id) => id !== postId) : [...prev, postId]
       );
@@ -1399,38 +1428,26 @@ export function FeedScreen({
     };
   }, [isCurrentAdmin]);
 
-  const loadModerationReports = useCallback(async () => {
-    if (!isCurrentAdmin || !currentTelegramUserId) return;
-
-    try {
-      const response = await fetch("/api/admin-posts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          entity: "reports",
-          action: "list",
-          telegramUserId: currentTelegramUserId,
-        }),
-      });
-
-      const data = await response.json().catch(() => null);
-      if (!response.ok) return;
-      setModerationReports(Array.isArray(data?.reports) ? data.reports : []);
-    } catch {
-      // Мигалка не должна ломать ленту.
-    }
-  }, [currentTelegramUserId, isCurrentAdmin]);
-
-  useEffect(() => {
+  const loadModerationReports = useCallback(() => {
     if (!isCurrentAdmin) {
       setModerationReports([]);
       return;
     }
 
-    void loadModerationReports();
-    const interval = window.setInterval(() => void loadModerationReports(), 60000);
-    return () => window.clearInterval(interval);
-  }, [isCurrentAdmin, loadModerationReports]);
+    setModerationReports(readLocalModerationReports());
+  }, [isCurrentAdmin]);
+
+  useEffect(() => {
+    loadModerationReports();
+
+    window.addEventListener(MODERATION_REPORTS_EVENT, loadModerationReports);
+    window.addEventListener("storage", loadModerationReports);
+
+    return () => {
+      window.removeEventListener(MODERATION_REPORTS_EVENT, loadModerationReports);
+      window.removeEventListener("storage", loadModerationReports);
+    };
+  }, [loadModerationReports]);
 
   const deleteSelectedModerationPosts = async () => {
     if (!selectedModerationPostIds.length) return;
@@ -1442,6 +1459,7 @@ export function FeedScreen({
         await onDeletePost(id);
       }
       setSelectedModerationPostIds([]);
+      setModerationSelectionMode(false);
       setModerationMessage("Выбранные посты удалены");
     } catch (error) {
       setModerationMessage(error instanceof Error ? error.message : "Не удалось удалить посты");
@@ -1453,6 +1471,7 @@ export function FeedScreen({
       onHidePost(id);
     }
     setSelectedModerationPostIds([]);
+    setModerationSelectionMode(false);
     setModerationMessage("Выбранные посты скрыты локально");
   };
 
@@ -1488,6 +1507,7 @@ export function FeedScreen({
         onHidePost(id);
       }
       setSelectedModerationPostIds([]);
+      setModerationSelectionMode(false);
       setModerationMessage(
         `Удалено постов: ${data?.deletedPosts ?? selectedModerationPostIds.length}; каналов: ${data?.deletedSources ?? 0}`
       );
@@ -2546,7 +2566,7 @@ export function FeedScreen({
             }
           }}
         >
-          {isAdmin ? (
+          {isAdmin && (moderationSelectionMode || selectedModerationPostIds.length > 0) ? (
             <button
               type="button"
               onClick={(event) => {
@@ -2557,7 +2577,7 @@ export function FeedScreen({
                     : [...prev, post.id]
                 );
               }}
-              className={`absolute left-2 top-2 z-20 grid h-9 w-9 place-items-center rounded-full border text-xs font-black shadow-lg backdrop-blur transition ${
+              className={`absolute right-12 top-3 z-20 grid h-8 w-8 place-items-center rounded-full border text-xs font-black shadow-lg backdrop-blur transition ${
                 selectedModerationPostIds.includes(post.id)
                   ? "border-sky-300 bg-sky-500 text-white"
                   : "border-white/15 bg-black/40 text-white/80 hover:bg-black/60"
@@ -2632,7 +2652,7 @@ export function FeedScreen({
             <span>Выбрано постов: {selectedModerationPostIds.length}</span>
             <button
               type="button"
-              onClick={() => setSelectedModerationPostIds([])}
+              onClick={() => { setSelectedModerationPostIds([]); setModerationSelectionMode(false); }}
               className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70"
             >
               снять
