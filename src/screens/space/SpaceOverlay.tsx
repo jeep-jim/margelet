@@ -20,6 +20,23 @@ type SpaceThread = {
   updatedAt: number;
 };
 
+type SpaceTelegramUser = {
+  first_name?: string;
+  username?: string;
+  photo_url?: string;
+};
+
+function readSpaceTelegramUser(): SpaceTelegramUser | null {
+  try {
+    const raw = localStorage.getItem("margelet_tg_user");
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as SpaceTelegramUser;
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
 function createSpaceThread(title = "New Space"): SpaceThread {
   return {
     id: `space-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -372,6 +389,8 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
     }
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [desktopSidebarOpen, setDesktopSidebarOpen] = useState(true);
+  const [telegramUser, setTelegramUser] = useState<SpaceTelegramUser | null>(() => readSpaceTelegramUser());
   const inputRef = useRef<HTMLInputElement | null>(null);
   const messagesRef = useRef<HTMLDivElement | null>(null);
   const [keyboardBottom, setKeyboardBottom] = useState(0);
@@ -416,6 +435,16 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
   useEffect(() => {
     writeSpaceThreadsToStorage(threads);
   }, [threads]);
+
+  useEffect(() => {
+    const syncTelegramUser = () => setTelegramUser(readSpaceTelegramUser());
+    window.addEventListener("storage", syncTelegramUser);
+    window.addEventListener("focus", syncTelegramUser);
+    return () => {
+      window.removeEventListener("storage", syncTelegramUser);
+      window.removeEventListener("focus", syncTelegramUser);
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -504,12 +533,19 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
     send(value);
   };
 
+  const submitFromButton = (event: React.PointerEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    send(value);
+    window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+  };
+
   const renderThreadList = (compact = false) => (
     <div className={compact ? "space-y-2" : "space-y-2"}>
       <button
         type="button"
         onClick={createNewChat}
-        className="flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-3 py-3 text-sm font-black text-[#07111d] transition hover:scale-[1.01] active:scale-[.99]"
+        className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#eef3f8] px-3 py-3 text-sm font-black text-[#07111d] transition hover:scale-[1.01] active:scale-[.99]"
       >
         <Plus className="h-4 w-4" />
         New Space
@@ -623,8 +659,14 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
 
       <button
         type="button"
-        onClick={() => setMobileMenuOpen((prev) => !prev)}
-        className="absolute left-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-white/8 text-white/82 backdrop-blur-xl transition hover:bg-white/14 lg:hidden"
+        onClick={() => {
+          if (window.matchMedia("(min-width: 1024px)").matches) {
+            setDesktopSidebarOpen((prev) => !prev);
+            return;
+          }
+          setMobileMenuOpen((prev) => !prev);
+        }}
+        className="absolute left-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-[#eef3f8]/10 text-[#eef3f8]/82 backdrop-blur-xl transition hover:bg-[#eef3f8]/16"
         aria-label="Space chats"
         title="Space chats"
       >
@@ -634,7 +676,7 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
       <button
         type="button"
         onClick={createNewChat}
-        className="absolute left-[68px] top-4 z-30 hidden h-11 w-11 place-items-center rounded-full border border-white/12 bg-white/8 text-white/82 backdrop-blur-xl transition hover:bg-white/14 max-lg:grid"
+        className="absolute left-[68px] top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-[#eef3f8]/10 text-[#eef3f8]/82 backdrop-blur-xl transition hover:bg-[#eef3f8]/16"
         aria-label="New Space"
         title="New Space"
       >
@@ -644,7 +686,7 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
       <button
         type="button"
         onClick={onClose}
-        className="absolute right-[68px] top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-white/8 text-white/82 backdrop-blur-xl transition hover:bg-white/14"
+        className="absolute right-[68px] top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-[#eef3f8]/10 text-[#eef3f8]/82 backdrop-blur-xl transition hover:bg-[#eef3f8]/16"
         aria-label={copy.backLabel}
         title={copy.backLabel}
       >
@@ -657,16 +699,28 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
           window.dispatchEvent(new Event("margelet:open-creator"));
           onClose();
         }}
-        className="absolute right-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-white/8 text-white/82 backdrop-blur-xl transition hover:bg-white/14"
+        className="absolute right-4 top-4 z-30 grid h-11 w-11 place-items-center rounded-full border border-white/12 bg-[#eef3f8]/10 text-[#eef3f8]/82 backdrop-blur-xl transition hover:bg-[#eef3f8]/16"
         aria-label="Profile"
         title="Open profile"
       >
-        <User className="h-5 w-5" />
+        {telegramUser?.photo_url ? (
+          <img
+            src={telegramUser.photo_url}
+            alt={telegramUser.first_name || telegramUser.username || "Profile"}
+            className="h-9 w-9 rounded-full object-cover"
+            referrerPolicy="no-referrer"
+            onError={() => setTelegramUser((prev) => (prev ? { ...prev, photo_url: "" } : prev))}
+          />
+        ) : (
+          <User className="h-5 w-5" />
+        )}
       </button>
 
-      <aside className="absolute bottom-0 left-0 top-0 z-20 hidden w-[260px] border-r border-white/8 bg-[#06101d]/72 px-4 pb-4 pt-20 backdrop-blur-2xl lg:block">
-        {renderThreadList()}
-      </aside>
+      {desktopSidebarOpen ? (
+        <aside className="absolute bottom-0 left-0 top-0 z-20 hidden w-[260px] border-r border-white/8 bg-[#06101d]/72 px-4 pb-4 pt-20 backdrop-blur-2xl lg:block">
+          {renderThreadList()}
+        </aside>
+      ) : null}
 
       {mobileMenuOpen ? (
         <div className="absolute inset-0 z-[25] bg-black/30 backdrop-blur-sm lg:hidden" onClick={() => setMobileMenuOpen(false)}>
@@ -679,15 +733,18 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
         </div>
       ) : null}
 
-      <div className="relative z-10 mx-auto flex h-[100dvh] w-full max-w-[720px] flex-col px-4 pt-20 sm:px-6 lg:ml-[calc(260px+((100vw-260px-720px)/2))] lg:mr-auto">
+      <div className={["relative z-10 mx-auto flex h-[100dvh] w-full max-w-[720px] flex-col px-4 pt-20 sm:px-6", desktopSidebarOpen ? "lg:ml-[calc(260px+((100vw-260px-720px)/2))] lg:mr-auto" : "lg:mx-auto"].join(" ")}> 
         <div
           ref={messagesRef}
           className="min-h-0 flex-1 overflow-y-auto pb-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {messages.length === 0 ? (
             <div className="flex min-h-full flex-col items-center justify-center pb-24 text-center">
-              <div className="text-[42px] font-black tracking-tight sm:text-[58px]">
-                {copy.title}
+              <div className="text-[20px] font-bold tracking-tight text-[#edf2f7]/78 sm:text-[26px]">
+                margeleT
+              </div>
+              <div className="mt-1 text-[58px] font-black leading-none tracking-tight text-[#f6f8fb] sm:text-[82px]">
+                Space
               </div>
               <div className="mt-3 max-w-[560px] text-lg font-semibold text-white/78 sm:text-2xl">
                 {copy.subtitle}
@@ -706,8 +763,8 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
                   <div
                     className={`max-w-[82%] px-4 py-3 text-sm leading-6 shadow-2xl backdrop-blur-xl ${
                       message.role === "user"
-                        ? "rounded-[24px] rounded-tr-[7px] bg-white text-[#07111d]"
-                        : "rounded-[24px] rounded-tl-[7px] bg-[#203146]/92 text-white/86"
+                        ? "rounded-[24px] rounded-tr-[7px] bg-[#eef3f8] text-[#07111d]"
+                        : "rounded-[24px] rounded-tl-[7px] bg-[#203146]/92 text-[#eef3f8]/86"
                     }`}
                   >
                     {message.text}
@@ -720,7 +777,7 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
 
         <form
           onSubmit={submit}
-          className="fixed inset-x-0 z-20 mx-auto w-full max-w-[720px] px-4 sm:px-6 lg:left-[260px] lg:right-0"
+          className={["fixed inset-x-0 z-20 mx-auto w-full max-w-[720px] px-4 sm:px-6", desktopSidebarOpen ? "lg:left-[260px] lg:right-0" : "lg:left-0 lg:right-0"].join(" ") }
           style={{ bottom: `calc(${keyboardBottom}px + max(14px, env(safe-area-inset-bottom)))` }}
         >
           <div className="flex min-h-[54px] items-center gap-2 rounded-full border border-white/12 bg-white/10 p-1.5 shadow-[0_18px_70px_rgba(0,0,0,.55)] backdrop-blur-2xl">
@@ -733,12 +790,13 @@ export function SpaceOverlay({ locale, onClose }: { locale: Locale; onClose: () 
               enterKeyHint="send"
             />
             <button
-              type="submit"
-              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-white transition hover:scale-[1.04] active:scale-[.98] disabled:opacity-45"
+              type="button"
+              onPointerDown={submitFromButton}
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-[#eef3f8] transition hover:scale-[1.04] active:scale-[.98] disabled:opacity-45"
               disabled={!value.trim()}
               aria-label="Send"
             >
-              <MargeletMark className="h-5 w-5" colorClassName="text-white" />
+              <MargeletMark className="h-5 w-5" colorClassName="text-[#eef3f8]" />
             </button>
           </div>
         </form>

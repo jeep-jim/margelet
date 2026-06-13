@@ -1,4 +1,4 @@
-import { ChevronDown, MessageCircle, Play } from "lucide-react";
+import { ChevronDown, MessageCircle, Play, Star } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getTheme, type Theme } from "../../lib/theme";
 import type { Locale } from "../../types/app";
@@ -723,7 +723,7 @@ export function SmartFeedBar({
         value: "chat",
         label: copy.modeChat,
         mobileText: "Space",
-        icon: <span className="text-[17px] leading-none">🪐</span>,
+        icon: <Star className="h-4 w-4" />,
       },
     ],
     [copy.modeAll, copy.modeChat, copy.modeVideo],
