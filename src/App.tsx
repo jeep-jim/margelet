@@ -700,6 +700,19 @@ export default function App() {
     [goHome, replacePath]
   );
 
+
+  useEffect(() => {
+    const openCreatorFromSpace = () => {
+      handleHeaderTabChange("creator");
+    };
+
+    window.addEventListener("margelet:open-creator", openCreatorFromSpace);
+
+    return () => {
+      window.removeEventListener("margelet:open-creator", openCreatorFromSpace);
+    };
+  }, [handleHeaderTabChange]);
+
   useEffect(() => {
     setLocale(DEFAULT_LOCALE);
 
