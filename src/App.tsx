@@ -1045,8 +1045,13 @@ export default function App() {
           locale={locale}
           setLocale={setLocale}
           posts={posts}
-          openPost={() => {
-            goHome();
+          likedPostIds={likedPostIds}
+          openPost={(post) => {
+            const postId = getPostIdFromUrl(post.postUrl);
+            const handle = normalizeSourceHandle(post.source.handle);
+            setSelectedSourceHandle(handle);
+            setCurrent("source");
+            replacePath(postId ? `/${handle}/${postId}` : `/${handle}`);
           }}
         />
       ) : null}

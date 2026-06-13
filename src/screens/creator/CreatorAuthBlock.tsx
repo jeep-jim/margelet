@@ -1,27 +1,44 @@
+import { Plus } from "lucide-react";
 import { getTelegramAuthUrl } from "./creator.utils";
 import type { ScreenCopy } from "./creator.types";
 
-export function CreatorAuthBlock({ copy }: { copy: ScreenCopy }) {
+export function CreatorAuthBlock({
+  copy,
+  onOpenManifest,
+}: {
+  copy: ScreenCopy;
+  onOpenManifest: () => void;
+}) {
   return (
-    <div className="bg-surface text-primary shadow-soft overflow-hidden rounded-[32px] border border-soft">
+    <div className="overflow-hidden rounded-[32px] border border-soft bg-surface text-primary shadow-soft">
       <div className="px-5 py-5">
         <div className="text-[26px] font-semibold leading-tight">
           {copy.authTitle}
         </div>
 
-        <div className="text-secondary mt-2 max-w-[32rem] text-sm leading-6">
+        <div className="mt-2 max-w-[32rem] text-sm leading-6 text-secondary">
           {copy.authText}
         </div>
 
-        <div className="mt-5 flex items-center gap-3">
+        <div className="mt-5 flex items-center gap-2">
           <button
             onClick={() => {
               window.location.href = getTelegramAuthUrl();
             }}
-            className="bg-strong text-strong-foreground bg-strong-hover inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium transition"
+            className="inline-flex min-h-[44px] items-center rounded-full bg-strong px-5 py-2.5 text-sm font-medium text-strong-foreground transition hover:opacity-95"
             type="button"
           >
             {copy.authButton}
+          </button>
+
+          <button
+            onClick={onOpenManifest}
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-soft bg-surface-soft text-primary transition hover:bg-surface-hover"
+            type="button"
+            aria-label={copy.manifestButton}
+            title={copy.manifestButton}
+          >
+            <Plus className="h-5 w-5" />
           </button>
         </div>
       </div>

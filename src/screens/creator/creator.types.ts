@@ -10,6 +10,7 @@ export type CreatorScreenProps = {
   setLocale: (locale: Locale) => void;
   posts: IngestedPost[];
   openPost: (post: IngestedPost) => void;
+  likedPostIds: number[];
 };
 
 export type CabinetTab = "channel" | "about" | "language";

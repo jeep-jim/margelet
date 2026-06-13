@@ -1,4 +1,4 @@
-import { ChevronDown, Flame, Play } from "lucide-react";
+import { ChevronDown, MessageCircle, Play } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getTheme, type Theme } from "../../lib/theme";
 import type { Locale } from "../../types/app";
@@ -9,7 +9,7 @@ import {
   setAutotranslit,
 } from "../../lib/autotranslit";
 
-export type FeedMediaMode = "all" | "text" | "photo" | "video" | "me";
+export type FeedMediaMode = "all" | "text" | "photo" | "video" | "chat";
 
 export type FeedScreenCopy = {
   subscriptionsHint: string;
@@ -17,7 +17,7 @@ export type FeedScreenCopy = {
   emptyText: string;
   clearAll: string;
   modeAll: string;
-  modeMe: string;
+  modeChat: string;
   modeVideo: string;
   countriesTitle: string;
 };
@@ -59,7 +59,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -70,7 +70,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Попробуй снять часть тегов или очистить поиск.",
     clearAll: "Очистить всё",
     modeAll: "Все",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Видео",
     countriesTitle: "Показывать каналы авторов из других стран:",
   },
@@ -81,7 +81,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Спробуй прибрати частину тегів або очистити пошук.",
     clearAll: "Очистити все",
     modeAll: "Усе",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Відео",
     countriesTitle: "Показувати канали авторів з інших країн:",
   },
@@ -92,7 +92,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -103,7 +103,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "چند برچسب را بردار یا جستجو را پاک کن.",
     clearAll: "پاک کردن همه",
     modeAll: "همه",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "ویدیو",
     countriesTitle: "نمایش کانال‌های کشورهای دیگر:",
   },
@@ -114,7 +114,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Versuche, einige Tags zu entfernen oder die Suche zu löschen.",
     clearAll: "Alles löschen",
     modeAll: "Alle",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Kanäle aus anderen Ländern anzeigen:",
   },
@@ -125,7 +125,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -136,7 +136,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Bazı etiketleri kaldırmayı veya aramayı temizlemeyi dene.",
     clearAll: "Hepsini temizle",
     modeAll: "Tümü",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Diğer ülkelerdeki kanalları göster:",
   },
@@ -147,7 +147,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Essaie de retirer certains tags ou d’effacer la recherche.",
     clearAll: "Tout effacer",
     modeAll: "Tout",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Vidéo",
     countriesTitle: "Afficher les chaînes d’autres pays :",
   },
@@ -158,7 +158,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prova a rimuovere alcuni tag o a cancellare la ricerca.",
     clearAll: "Cancella tutto",
     modeAll: "Tutto",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Mostra canali di altri paesi:",
   },
@@ -169,7 +169,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Tente remover algumas tags ou limpar a busca.",
     clearAll: "Limpar tudo",
     modeAll: "Tudo",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canais de outros países:",
   },
@@ -180,7 +180,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Бірнеше тегті алып таста немесе іздеуді тазала.",
     clearAll: "Барлығын тазалау",
     modeAll: "Барлығы",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Видео",
     countriesTitle: "Басқа елдердің арналарын көрсету:",
   },
@@ -191,7 +191,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Ba’zi teglarni olib tashlang yoki qidiruvni tozalang.",
     clearAll: "Hammasini tozalash",
     modeAll: "Hammasi",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Boshqa mamlakatlardagi kanallarni ko‘rsatish:",
   },
@@ -202,7 +202,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "جرّب إزالة بعض الوسوم أو مسح البحث.",
     clearAll: "مسح الكل",
     modeAll: "الكل",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "فيديو",
     countriesTitle: "إظهار قنوات من دول أخرى:",
   },
@@ -213,7 +213,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "جرّب إزالة بعض الوسوم أو مسح البحث.",
     clearAll: "مسح الكل",
     modeAll: "الكل",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "فيديو",
     countriesTitle: "إظهار قنوات من دول أخرى:",
   },
@@ -224,7 +224,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -235,7 +235,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Coba hapus beberapa tag atau bersihkan pencarian.",
     clearAll: "Bersihkan semua",
     modeAll: "Semua",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Tampilkan channel dari negara lain:",
   },
@@ -246,7 +246,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -257,7 +257,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "جرّب إزالة بعض الوسوم أو مسح البحث.",
     clearAll: "مسح الكل",
     modeAll: "الكل",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "فيديو",
     countriesTitle: "إظهار قنوات من دول أخرى:",
   },
@@ -268,7 +268,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -279,7 +279,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Prueba quitando algunas etiquetas o limpiando la búsqueda.",
     clearAll: "Borrar todo",
     modeAll: "Todo",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Vídeo",
     countriesTitle: "Mostrar canales de autores de otros países:",
   },
@@ -290,7 +290,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -301,7 +301,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Try removing some tags or clearing the search.",
     clearAll: "Clear all",
     modeAll: "All",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Show channels from other countries:",
   },
@@ -311,7 +311,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "试着移除一些标签或清空搜索。",
     clearAll: "清除全部",
     modeAll: "全部",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "视频",
     countriesTitle: "显示来自其他国家的频道：",
   },
@@ -322,7 +322,7 @@ export const FEED_SCREEN_COPY: Record<Locale, FeedScreenCopy> = {
     emptyText: "Cuba buang beberapa tag atau kosongkan carian.",
     clearAll: "Kosongkan semua",
     modeAll: "Semua",
-    modeMe: "Me",
+    modeChat: "Space",
     modeVideo: "Video",
     countriesTitle: "Tunjukkan saluran dari negara lain:",
   },
@@ -712,7 +712,7 @@ export function SmartFeedBar({
     icon?: React.ReactNode;
   }> = useMemo(
     () => [
-      { value: "all", label: copy.modeAll, mobileLabel: "🎈", mobileText: "Post" },
+      { value: "all", label: copy.modeAll, mobileText: "Post", icon: <MessageCircle className="h-4 w-4" /> },
       {
         value: "video",
         label: copy.modeVideo,
@@ -720,13 +720,13 @@ export function SmartFeedBar({
         icon: <Play className="h-4 w-4 fill-current" />,
       },
       {
-        value: "me",
-        label: copy.modeMe,
-        mobileText: "Save",
-        icon: <Flame className="h-4 w-4 fill-current text-orange-500" />,
+        value: "chat",
+        label: copy.modeChat,
+        mobileText: "Space",
+        icon: <span className="text-[17px] leading-none">🪐</span>,
       },
     ],
-    [copy.modeAll, copy.modeMe, copy.modeVideo],
+    [copy.modeAll, copy.modeChat, copy.modeVideo],
   );
 
   const countryButtonLabel = getCountryShort(activeCountry);
@@ -818,7 +818,7 @@ export function SmartFeedBar({
                       } ${
                         option.value === "all"
                           ? "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
-                          : option.value === "me"
+                          : option.value === "chat"
                           ? "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
                           : "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
                       }`}
@@ -828,19 +828,19 @@ export function SmartFeedBar({
                       {option.value === "all" ? (
                         <>
                           <span className="inline-flex items-center gap-1.5 sm:hidden">
-                            <span className="text-[17px] leading-none">🎈</span>
+                            {option.icon}
                             <span className="text-[13px] font-semibold leading-none">Post</span>
                           </span>
                           <span className="hidden items-center gap-2 sm:inline-flex">
-                            <span className="text-[17px] leading-none">🎈</span>
+                            {option.icon}
                             <span>{option.mobileText}</span>
                           </span>
                         </>
-                      ) : option.value === "me" ? (
+                      ) : option.value === "chat" ? (
                         <>
                           <span className="inline-flex items-center gap-1.5 sm:hidden">
                             {option.icon}
-                            <span className="text-[13px] font-semibold leading-none">Save</span>
+                            <span className="text-[13px] font-semibold leading-none">Space</span>
                           </span>
                           <span className="hidden items-center gap-2 sm:inline-flex">
                             {option.icon}

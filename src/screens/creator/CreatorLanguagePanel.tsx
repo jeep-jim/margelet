@@ -7,7 +7,6 @@ export function CreatorLanguagePanel({
   copy,
   locale,
   onChangeLocale,
-  onOpenManifest,
   canShowInstallButton,
   onInstallApp,
   installHintText,
@@ -20,7 +19,6 @@ export function CreatorLanguagePanel({
   onInstallApp: () => void;
   installHintText: string;
 }) {
-
   return (
     <div className="notranslate margelet-ui space-y-3" translate="no">
       <div className="space-y-3">
@@ -34,14 +32,6 @@ export function CreatorLanguagePanel({
           onChange={onChangeLocale}
         />
       </div>
-
-      <button
-        type="button"
-        onClick={onOpenManifest}
-        className="inline-flex min-h-[56px] w-full items-center justify-center rounded-[20px] border border-[#7244d4] bg-gradient-to-r from-[#7c3aed] to-[#a855f7] px-6 py-4 text-lg font-semibold text-white shadow-[0_14px_34px_rgba(124,58,237,0.28)] transition hover:opacity-95"
-      >
-        {copy.manifestButton}
-      </button>
 
       {canShowInstallButton ? (
         <button
