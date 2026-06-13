@@ -1,4 +1,4 @@
-import { Bell, BellOff, Send, ThumbsDown, Trash2, Share2 } from "lucide-react";
+import { Bell, BellOff, CheckSquare, Flag, Send, ThumbsDown, Trash2, Share2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../../types/app";
@@ -98,6 +98,9 @@ export function FeedMoreMenu({
       deleteAdmin: "Удалить пост (admin)",
       hide: "Мне это не интересно!",
       share: "Поделиться",
+      reportPost: "Пожаловаться на пост",
+      reportSource: "Пожаловаться на канал",
+      selectAdmin: "Выбрать для модерации",
     },
     ua: {
       subscribeOn: "Увімкнути сповіщення",
@@ -337,6 +340,67 @@ export function FeedMoreMenu({
     }
   };
 
+
+  const reportCopy = (() => {
+    if (locale === "ru") {
+      return {
+        reportPost: "Пожаловаться на пост",
+        reportSource: "Пожаловаться на канал",
+        selectAdmin: "Выбрать для модерации",
+        sent: "Жалоба отправлена",
+        failed: "Не удалось отправить жалобу",
+        reason: "Причина жалобы: spam / adult / scam / violence / other",
+      };
+    }
+
+    return {
+      reportPost: "Report post",
+      reportSource: "Report channel",
+      selectAdmin: "Select for moderation",
+      sent: "Report sent",
+      failed: "Could not send report",
+      reason: "Report reason: spam / adult / scam / violence / other",
+    };
+  })();
+
+  const sendReport = async (scope: "post" | "source") => {
+    const reasonRaw = window.prompt(reportCopy.reason, scope === "source" ? "channel" : "other");
+    if (reasonRaw === null) return;
+
+    const reason = reasonRaw.trim().toLowerCase() || "other";
+
+    try {
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "reports",
+          action: "create",
+          postId: scope === "post" ? postId : null,
+          sourceHandle,
+          reason,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!response.ok) {
+        throw new Error(data?.error || reportCopy.failed);
+      }
+
+      alert(reportCopy.sent);
+    } catch (error) {
+      alert(error instanceof Error ? error.message : reportCopy.failed);
+    }
+  };
+
+  const toggleModerationSelection = () => {
+    window.dispatchEvent(
+      new CustomEvent("margelet:toggle-moderation-post", {
+        detail: { postId, sourceHandle },
+      })
+    );
+  };
+
   const position = useMemo(() => {
     return {
       top: Math.max(12, (anchorRect?.top ?? 72) + 8),
@@ -404,7 +468,45 @@ export function FeedMoreMenu({
           <span>{copy.share}</span>
         </button>
 
+        <button
+          type="button"
+          onClick={() => {
+            void sendReport("post");
+            onRequestClose();
+          }}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
+        >
+          <Flag className="h-4 w-4" />
+          <span>{reportCopy.reportPost}</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            void sendReport("source");
+            onRequestClose();
+          }}
+          className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-primary transition hover:bg-surface-soft"
+        >
+          <Flag className="h-4 w-4" />
+          <span>{reportCopy.reportSource}</span>
+        </button>
+
         <div className="my-2 h-px bg-[color:var(--border-soft)]/70" />
+
+        {isAdmin ? (
+          <button
+            type="button"
+            onClick={() => {
+              toggleModerationSelection();
+              onRequestClose();
+            }}
+            className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm text-sky-300 transition hover:bg-surface-soft"
+          >
+            <CheckSquare className="h-4 w-4" />
+            <span>{reportCopy.selectAdmin}</span>
+          </button>
+        ) : null}
 
         {isOwner || isAdmin ? (
           <button

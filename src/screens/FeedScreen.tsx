@@ -1,4 +1,4 @@
-import { Bell, ChevronDown, Search, X } from "lucide-react";
+import { AlertTriangle, Bell, CheckSquare, ChevronDown, Search, Trash2, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../types/app";
@@ -26,6 +26,20 @@ import { buildShareUrl, getResolvedTags, normalizeMediaList } from "./feed/feed.
 
 const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
+
+type ModerationReport = {
+  id: string;
+  postId: number | null;
+  sourceHandle: string | null;
+  sourceTitle: string | null;
+  sourceCountryCode: string | null;
+  reason: string;
+  message: string | null;
+  count: number;
+  status: "open" | "resolved";
+  createdAt: string;
+  updatedAt: string;
+};
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
@@ -1360,6 +1374,127 @@ export function FeedScreen({
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const [renderCount, setRenderCount] = useState(INITIAL_RENDER_POSTS);
+  const [selectedModerationPostIds, setSelectedModerationPostIds] = useState<number[]>([]);
+  const [moderationReports, setModerationReports] = useState<ModerationReport[]>([]);
+  const [moderationMessage, setModerationMessage] = useState<string | null>(null);
+  const isCurrentAdmin = !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
+
+
+  useEffect(() => {
+    const onToggleModerationPost = (event: Event) => {
+      if (!isCurrentAdmin) return;
+
+      const detail = (event as CustomEvent<{ postId?: number }>).detail;
+      const postId = Number(detail?.postId || 0);
+      if (!postId) return;
+
+      setSelectedModerationPostIds((prev) =>
+        prev.includes(postId) ? prev.filter((id) => id !== postId) : [...prev, postId]
+      );
+    };
+
+    window.addEventListener("margelet:toggle-moderation-post", onToggleModerationPost as EventListener);
+    return () => {
+      window.removeEventListener("margelet:toggle-moderation-post", onToggleModerationPost as EventListener);
+    };
+  }, [isCurrentAdmin]);
+
+  const loadModerationReports = useCallback(async () => {
+    if (!isCurrentAdmin || !currentTelegramUserId) return;
+
+    try {
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "reports",
+          action: "list",
+          telegramUserId: currentTelegramUserId,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!response.ok) return;
+      setModerationReports(Array.isArray(data?.reports) ? data.reports : []);
+    } catch {
+      // Мигалка не должна ломать ленту.
+    }
+  }, [currentTelegramUserId, isCurrentAdmin]);
+
+  useEffect(() => {
+    if (!isCurrentAdmin) {
+      setModerationReports([]);
+      return;
+    }
+
+    void loadModerationReports();
+    const interval = window.setInterval(() => void loadModerationReports(), 60000);
+    return () => window.clearInterval(interval);
+  }, [isCurrentAdmin, loadModerationReports]);
+
+  const deleteSelectedModerationPosts = async () => {
+    if (!selectedModerationPostIds.length) return;
+    if (!window.confirm(`Удалить выбранные посты: ${selectedModerationPostIds.length}?`)) return;
+
+    try {
+      setModerationMessage(null);
+      for (const id of selectedModerationPostIds) {
+        await onDeletePost(id);
+      }
+      setSelectedModerationPostIds([]);
+      setModerationMessage("Выбранные посты удалены");
+    } catch (error) {
+      setModerationMessage(error instanceof Error ? error.message : "Не удалось удалить посты");
+    }
+  };
+
+  const hideSelectedModerationPosts = () => {
+    for (const id of selectedModerationPostIds) {
+      onHidePost(id);
+    }
+    setSelectedModerationPostIds([]);
+    setModerationMessage("Выбранные посты скрыты локально");
+  };
+
+  const deleteSelectedPostsAndSources = async () => {
+    if (!selectedModerationPostIds.length || !currentTelegramUserId) return;
+    if (
+      !window.confirm(
+        `Удалить выбранные посты и их каналы из источников: ${selectedModerationPostIds.length}?`
+      )
+    ) {
+      return;
+    }
+
+    try {
+      setModerationMessage(null);
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "posts",
+          action: "bulk-delete-posts-and-sources",
+          postIds: selectedModerationPostIds,
+          telegramUserId: currentTelegramUserId,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!response.ok) {
+        throw new Error(data?.error || "Не удалось удалить посты и каналы");
+      }
+
+      for (const id of selectedModerationPostIds) {
+        onHidePost(id);
+      }
+      setSelectedModerationPostIds([]);
+      setModerationMessage(
+        `Удалено постов: ${data?.deletedPosts ?? selectedModerationPostIds.length}; каналов: ${data?.deletedSources ?? 0}`
+      );
+    } catch (error) {
+      setModerationMessage(error instanceof Error ? error.message : "Не удалось удалить посты и каналы");
+    }
+  };
 
   useEffect(() => {
     if (typeof document === "undefined") return;
@@ -2383,6 +2518,7 @@ export function FeedScreen({
           key={post.id}
           ref={(node) => registerFeedCardNode(post.id, node)}
           data-feed-post-id={post.id}
+          className="relative"
           onPointerDownCapture={(event) => {
             const target = event.target as HTMLElement | null;
             if (!target) return;
@@ -2410,6 +2546,32 @@ export function FeedScreen({
             }
           }}
         >
+          {isAdmin ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setSelectedModerationPostIds((prev) =>
+                  prev.includes(post.id)
+                    ? prev.filter((id) => id !== post.id)
+                    : [...prev, post.id]
+                );
+              }}
+              className={`absolute left-2 top-2 z-20 grid h-9 w-9 place-items-center rounded-full border text-xs font-black shadow-lg backdrop-blur transition ${
+                selectedModerationPostIds.includes(post.id)
+                  ? "border-sky-300 bg-sky-500 text-white"
+                  : "border-white/15 bg-black/40 text-white/80 hover:bg-black/60"
+              }`}
+              title="Выбрать пост для модерации"
+            >
+              {selectedModerationPostIds.includes(post.id) ? (
+                <CheckSquare className="h-4 w-4" />
+              ) : (
+                "+"
+              )}
+            </button>
+          ) : null}
+
           <FeedCard
             post={post}
             locale={locale}
@@ -2420,7 +2582,10 @@ export function FeedScreen({
               setMenuPostId((prev) => (prev === post.id ? null : post.id))
             }
             onDelete={() => {
-              void onDeletePost(post.id);
+              if (!window.confirm("Удалить этот пост из ленты?")) return;
+              void onDeletePost(post.id).catch((error) => {
+                alert(error instanceof Error ? error.message : "Не удалось удалить пост");
+              });
             }}
             onHide={() => onHidePost(post.id)}
             onOpen={() => handleOpenPost(post)}
@@ -2442,6 +2607,67 @@ export function FeedScreen({
 
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
+      {isCurrentAdmin && moderationReports.length > 0 ? (
+        <button
+          type="button"
+          onClick={() => {
+            const first = moderationReports[0];
+            if (first?.sourceHandle && first?.postId) {
+              window.location.href = `/${first.sourceHandle}/${first.postId}`;
+            }
+          }}
+          className="fixed left-3 right-3 top-[calc(var(--app-header-offset)+10px)] z-[80] mx-auto flex max-w-[620px] items-center justify-between gap-3 rounded-[22px] border border-rose-300/30 bg-rose-600/92 px-4 py-3 text-left text-sm font-black text-white shadow-[0_18px_70px_rgba(225,29,72,.35)] backdrop-blur animate-pulse"
+        >
+          <span className="flex min-w-0 items-center gap-2">
+            <AlertTriangle className="h-5 w-5 shrink-0" />
+            <span className="truncate">Жалобы: {moderationReports.length}. Тут хуйня творится, бро — проверь модерацию.</span>
+          </span>
+          <span className="shrink-0 rounded-full bg-white/18 px-2 py-1 text-xs">открыть</span>
+        </button>
+      ) : null}
+
+      {isCurrentAdmin && selectedModerationPostIds.length > 0 ? (
+        <div className="fixed bottom-4 left-3 right-3 z-[90] mx-auto max-w-[720px] rounded-[24px] border border-sky-300/30 bg-[#071321]/94 p-3 text-white shadow-[0_18px_80px_rgba(0,0,0,.45)] backdrop-blur">
+          <div className="mb-2 flex items-center justify-between gap-3 text-sm font-black">
+            <span>Выбрано постов: {selectedModerationPostIds.length}</span>
+            <button
+              type="button"
+              onClick={() => setSelectedModerationPostIds([])}
+              className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70"
+            >
+              снять
+            </button>
+          </div>
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+            <button
+              type="button"
+              onClick={() => void deleteSelectedModerationPosts()}
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-rose-500 px-3 py-2 text-sm font-black text-white"
+            >
+              <Trash2 className="h-4 w-4" />
+              Удалить посты
+            </button>
+            <button
+              type="button"
+              onClick={hideSelectedModerationPosts}
+              className="rounded-2xl bg-white/10 px-3 py-2 text-sm font-black text-white"
+            >
+              Скрыть мне
+            </button>
+            <button
+              type="button"
+              onClick={() => void deleteSelectedPostsAndSources()}
+              className="rounded-2xl bg-orange-500 px-3 py-2 text-sm font-black text-white"
+            >
+              Посты + каналы
+            </button>
+          </div>
+          {moderationMessage ? (
+            <div className="mt-2 rounded-2xl bg-white/8 px-3 py-2 text-xs text-white/70">{moderationMessage}</div>
+          ) : null}
+        </div>
+      ) : null}
+
       {feedSettings.mediaMode === "chat" ? (
         <SpaceOverlay
           locale={locale}

@@ -28,6 +28,7 @@ const FEED_PATH = "data/feed.json";
 const PUBLIC_FEED_PATH = "public/feed.json";
 const FEEDS_INDEX_PATH = "data/feeds/index.json";
 const PUBLIC_FEEDS_INDEX_PATH = "public/feeds/index.json";
+const REPORTS_PATH = "data/reports.json";
 const COUNTRY_CHUNK_SIZE = 500;
 const COUNTRY_CHUNK_MAX_AGE_DAYS = 30;
 
@@ -648,6 +649,45 @@ export async function readFeedSnapshotByPath<T = unknown>(rawPath: string): Prom
   return readRepoJsonFile<T | null>(relativePath, null);
 }
 
+
+export type ModerationReport = {
+  id: string;
+  postId: number | null;
+  sourceHandle: string | null;
+  sourceTitle: string | null;
+  sourceCountryCode: string | null;
+  reason: string;
+  message: string | null;
+  count: number;
+  status: "open" | "resolved";
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type ReportsFile<T = ModerationReport> = {
+  updatedAt: string;
+  reports: T[];
+};
+
+export async function readReportsFile<T = ModerationReport>(): Promise<ReportsFile<T>> {
+  return readRepoJsonFile<ReportsFile<T>>(REPORTS_PATH, {
+    updatedAt: new Date(0).toISOString(),
+    reports: [],
+  });
+}
+
+export async function writeReportsFile<T = ModerationReport>(reports: T[]) {
+  const payload = {
+    updatedAt: new Date().toISOString(),
+    reports,
+  } satisfies ReportsFile<T>;
+
+  await persistFiles(
+    [{ path: REPORTS_PATH, content: stringify(payload) }],
+    `Update moderation reports (${reports.length})`
+  );
+}
+
 export async function readSourcesFile<T = unknown>(): Promise<SourcesFile<T>> {
   const fallback = {
     updatedAt: new Date(0).toISOString(),
@@ -854,4 +894,5 @@ export {
   PUBLIC_FEED_PATH,
   PUBLIC_FEEDS_INDEX_PATH,
   SOURCES_PATH,
+  REPORTS_PATH,
 };

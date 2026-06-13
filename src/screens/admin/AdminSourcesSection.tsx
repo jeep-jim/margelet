@@ -218,11 +218,6 @@ export function AdminSourcesSection({
     }
   }, [countryCode, editingId]);
 
-  useEffect(() => {
-    const availableIds = new Set(filteredSources.map((source) => source.id));
-    setSelectedSourceIds((prev) => prev.filter((id) => availableIds.has(id)));
-  }, [filteredSources]);
-
   const resetForm = () => {
     setEditingId(null);
     setHandle("");

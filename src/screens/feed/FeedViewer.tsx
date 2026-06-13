@@ -311,7 +311,7 @@ export function FeedViewer({
   closeViewer,
   nextViewer,
   prevViewer,
-  setActionError: _setActionError,
+  setActionError: setActionError,
 }: ViewerProps) {
   const copy = COPY[locale] ?? COPY.us;
 
@@ -755,8 +755,12 @@ export function FeedViewer({
                 isOwner={isOwner}
                 isAdmin={isAdmin}
                 onDelete={() => {
-                  void onDeletePost(activePost.id);
-                  closeViewer();
+                  if (!window.confirm("Удалить этот пост из ленты?")) return;
+                  void onDeletePost(activePost.id)
+                    .then(() => closeViewer())
+                    .catch((error) => {
+                      setActionError(error instanceof Error ? error.message : "Не удалось удалить пост");
+                    });
                 }}
                 onHide={() => {
                   onHidePost(activePost.id);

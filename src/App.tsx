@@ -967,6 +967,7 @@ export default function App() {
         entity: "posts",
         id,
         telegramUserId: currentTelegramUser.id,
+        telegramUsername: currentTelegramUser.username || null,
       }),
     });
 

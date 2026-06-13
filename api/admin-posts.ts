@@ -5,6 +5,9 @@ import {
   readSourcesFile,
   writeFeedFile,
   writeSourcesFile,
+  readReportsFile,
+  writeReportsFile,
+  type ModerationReport,
 } from "./lib/github-store.js";
 import type { ContentTag, IngestedPost, TrustedSource } from "./lib/contracts.js";
 
@@ -481,31 +484,198 @@ async function bulkDeleteSources(body: Record<string, unknown>) {
   return next;
 }
 
-async function deletePostById(body: Record<string, unknown>) {
-  const id = asNumber(body.id);
-  if (id === null) {
-    throw new Error("Invalid post id");
-  }
-
+async function readCurrentFeedPosts() {
   const countryPosts = await readAllCountryFeedPosts<IngestedPost>();
+  if (countryPosts.length > 0) return countryPosts;
+
   const feedFile = await readFeedFile<IngestedPost>();
   const legacyPosts = Array.isArray(feedFile.posts) ? feedFile.posts : [];
-  const current = countryPosts;
+  if (legacyPosts.length > 0) return legacyPosts;
 
-  if (!current.length) {
-    throw new Error(
-      "Delete blocked: feed index has no country posts. Run rebuild first; refusing to overwrite feed with an empty snapshot."
-    );
+  throw new Error(
+    "Delete blocked: feed snapshot is empty. Run rebuild first; refusing to overwrite feed with an empty snapshot."
+  );
+}
+
+function readPostIds(body: Record<string, unknown>) {
+  const ids = new Set<number>();
+  const single = asNumber(body.id ?? body.postId);
+  if (single !== null) ids.add(single);
+
+  const rawIds = Array.isArray(body.ids)
+    ? body.ids
+    : Array.isArray(body.postIds)
+      ? body.postIds
+      : [];
+
+  for (const value of rawIds) {
+    const id = asNumber(value);
+    if (id !== null) ids.add(id);
   }
 
-  const next = current.filter((item) => Number(item.id) !== id);
+  return ids;
+}
 
-  if (next.length === current.length) {
+async function deletePostsByIds(body: Record<string, unknown>) {
+  const ids = readPostIds(body);
+  if (ids.size === 0) {
+    throw new Error("No posts selected");
+  }
+
+  const current = await readCurrentFeedPosts();
+  const next = current.filter((item) => !ids.has(Number(item.id)));
+
+  const deleted = current.length - next.length;
+  if (deleted === 0) {
     throw new Error("Post not found in feed snapshot");
   }
 
-  await writeFeedFile(sortPosts(next), { reason: `deletePostById:${id}` });
-  return next;
+  await writeFeedFile(sortPosts(next), {
+    reason: ids.size === 1 ? `deletePostById:${[...ids][0]}` : `bulkDeletePosts:${ids.size}`,
+  });
+
+  return { posts: next, deleted };
+}
+
+async function deletePostById(body: Record<string, unknown>) {
+  const result = await deletePostsByIds(body);
+  return result.posts;
+}
+
+async function bulkDeletePostsAndSources(body: Record<string, unknown>) {
+  const ids = readPostIds(body);
+  if (ids.size === 0) {
+    throw new Error("No posts selected");
+  }
+
+  const currentPosts = await readCurrentFeedPosts();
+  const selectedPosts = currentPosts.filter((post) => ids.has(Number(post.id)));
+  if (!selectedPosts.length) {
+    throw new Error("Selected posts were not found");
+  }
+
+  const sourceKeys = new Set<string>();
+  const sourceIds = new Set<string>();
+
+  for (const post of selectedPosts) {
+    const handle = normalizeHandle(post.source?.handle);
+    const country = normalizeCountryCode(post.sourceCountryCode);
+    if (handle) sourceKeys.add(`${country || ""}:${handle}`);
+    if (post.sourceId) sourceIds.add(String(post.sourceId));
+  }
+
+  const nextPosts = currentPosts.filter((post) => {
+    if (ids.has(Number(post.id))) return false;
+    const handle = normalizeHandle(post.source?.handle);
+    const country = normalizeCountryCode(post.sourceCountryCode);
+    return !sourceKeys.has(`${country || ""}:${handle}`);
+  });
+
+  const sourcesFile = await readSourcesFile<StoredSource>();
+  const currentSources = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+  const nextSources = currentSources.filter((source) => {
+    if (sourceIds.has(source.id)) return false;
+    const handle = normalizeHandle(source.handle);
+    const country = normalizeCountryCode(source.countryCode);
+    return !sourceKeys.has(`${country || ""}:${handle}`);
+  });
+
+  const deletedPosts = currentPosts.length - nextPosts.length;
+  const deletedSources = currentSources.length - nextSources.length;
+
+  await writeFeedFile(sortPosts(nextPosts), { reason: `bulkDeletePostsAndSources:${ids.size}` });
+  await writeSourcesFile(sortSources(nextSources));
+
+  return {
+    posts: nextPosts,
+    sources: nextSources,
+    deletedPosts,
+    deletedSources,
+  };
+}
+
+function normalizeReportReason(value: unknown) {
+  const normalized = asString(value, "other").toLowerCase();
+  return normalized || "other";
+}
+
+async function createReport(payload: Record<string, unknown>) {
+  const postId = asNumber(payload.postId ?? payload.id);
+  const sourceHandle = normalizeHandle(payload.sourceHandle ?? payload.handle) || null;
+  const sourceTitle = asString(payload.sourceTitle) || null;
+  const sourceCountryCode = normalizeCountryCode(payload.sourceCountryCode ?? payload.countryCode) || null;
+  const reason = normalizeReportReason(payload.reason);
+  const message = asString(payload.message) || null;
+  const now = new Date().toISOString();
+
+  if (postId === null && !sourceHandle) {
+    throw new Error("Report needs postId or sourceHandle");
+  }
+
+  const file = await readReportsFile<ModerationReport>();
+  const current = Array.isArray(file.reports) ? file.reports : [];
+  const existingIndex = current.findIndex(
+    (report) =>
+      report.status === "open" &&
+      report.postId === postId &&
+      (report.sourceHandle || "") === (sourceHandle || "") &&
+      report.reason === reason
+  );
+
+  const next = [...current];
+  let report: ModerationReport;
+
+  if (existingIndex >= 0) {
+    report = {
+      ...next[existingIndex],
+      count: Math.max(1, Number(next[existingIndex].count || 1)) + 1,
+      message: message || next[existingIndex].message || null,
+      updatedAt: now,
+    };
+    next[existingIndex] = report;
+  } else {
+    report = {
+      id: `report-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      postId,
+      sourceHandle,
+      sourceTitle,
+      sourceCountryCode,
+      reason,
+      message,
+      count: 1,
+      status: "open",
+      createdAt: now,
+      updatedAt: now,
+    };
+    next.unshift(report);
+  }
+
+  await writeReportsFile(next.slice(0, 500));
+  return { report, reports: next };
+}
+
+async function listReports() {
+  const file = await readReportsFile<ModerationReport>();
+  const reports = Array.isArray(file.reports) ? file.reports : [];
+  return reports
+    .filter((report) => report.status !== "resolved")
+    .sort((a, b) => parseDateMs(b.updatedAt) - parseDateMs(a.updatedAt));
+}
+
+async function resolveReport(payload: Record<string, unknown>) {
+  const reportId = asString(payload.reportId ?? payload.id);
+  if (!reportId) throw new Error("No report selected");
+
+  const file = await readReportsFile<ModerationReport>();
+  const current = Array.isArray(file.reports) ? file.reports : [];
+  const next = current.map((report) =>
+    report.id === reportId
+      ? { ...report, status: "resolved" as const, updatedAt: new Date().toISOString() }
+      : report
+  );
+
+  await writeReportsFile(next);
+  return next.filter((report) => report.status !== "resolved");
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -522,7 +692,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const body =
       typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
 
-    if (!isOwner(body as Record<string, unknown>)) {
+    const payload = body as Record<string, unknown>;
+    const entity = asString(payload.entity);
+    const action = asString(payload.action);
+    const requestedCountryCode = asString(payload.countryCode).toLowerCase();
+
+    if (entity === "reports" && req.method === "POST" && (!action || action === "create")) {
+      const result = await createReport(payload);
+      return res.status(200).json({ ok: true, report: result.report });
+    }
+
+    if (!isOwner(payload)) {
       return res.status(403).json({
         ok: false,
         error: "Access denied",
@@ -534,10 +714,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(405).json({ ok: false, error: "Method not allowed" });
     }
 
-    const payload = body as Record<string, unknown>;
-    const entity = asString(payload.entity);
-    const action = asString(payload.action);
-    const requestedCountryCode = asString(payload.countryCode).toLowerCase();
+    if (entity === "reports") {
+      if (!action || action === "list") {
+        const reports = await listReports();
+        return res.status(200).json({ ok: true, reports });
+      }
+
+      if (action === "resolve") {
+        const reports = await resolveReport(payload);
+        return res.status(200).json({ ok: true, reports });
+      }
+
+      return res.status(400).json({ ok: false, error: "Unknown reports action" });
+    }
 
     if (req.method === "DELETE") {
       if (entity === "sources") {
@@ -566,8 +755,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
 
       if (action === "delete") {
-        const posts = await deletePostById(payload);
-        return res.status(200).json({ ok: true, posts });
+        const result = await deletePostsByIds(payload);
+        return res.status(200).json({ ok: true, posts: result.posts, deleted: result.deleted });
+      }
+
+      if (action === "bulk-delete") {
+        const result = await deletePostsByIds(payload);
+        return res.status(200).json({ ok: true, posts: result.posts, deleted: result.deleted });
+      }
+
+      if (action === "bulk-delete-posts-and-sources") {
+        const result = await bulkDeletePostsAndSources(payload);
+        return res.status(200).json({
+          ok: true,
+          posts: result.posts,
+          sources: result.sources,
+          deletedPosts: result.deletedPosts,
+          deletedSources: result.deletedSources,
+        });
       }
 
       return res.status(400).json({ ok: false, error: "Unknown posts action" });
