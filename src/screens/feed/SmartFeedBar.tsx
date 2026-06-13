@@ -817,10 +817,10 @@ export function SmartFeedBar({
                         active ? activeClasses : inactivePillClasses
                       } ${
                         option.value === "all"
-                          ? "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
+                          ? "min-w-[70px] px-2 sm:min-w-[110px] sm:px-4"
                           : option.value === "chat"
-                          ? "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
-                          : "min-w-[75px] px-2 sm:min-w-[110px] sm:px-4"
+                          ? "min-w-[80px] px-2 sm:min-w-[110px] sm:px-4"
+                          : "min-w-[70px] px-2 sm:min-w-[110px] sm:px-4"
                       }`}
                       aria-pressed={active}
                       aria-label={option.label}
