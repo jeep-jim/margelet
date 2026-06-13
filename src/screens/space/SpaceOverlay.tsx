@@ -1,4 +1,4 @@
-import { ArrowLeft, Menu, Moon, Plus, Sun, Trash2, User } from "lucide-react";
+import { ArrowLeft, Menu, Moon, Plus, Sun, Trash2, User, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MargeletMark } from "../../components/shared/MargeletMark";
@@ -148,10 +148,10 @@ type SpaceCopy = {
 const SPACE_COPY: Record<Locale, SpaceCopy> = {
   ru: {
     title: "margeleT Space",
-    subtitle: "Глобальный поиск по живому Telegram",
+    subtitle: "Глобальный поиск по Telegram",
     placeholder: "Найти, что говорят сейчас...",
     emptyHint:
-      "Пиши как человеку: страна, тема, источник или событие. Space будет искать смысл в потоке Telegram.",
+      "Страна, тема, источник или событие. Space будет искать смысл в потоке за 24 часа.",
     backLabel: "Закрыть Space",
     userPrefix: "Ты",
     botAnswer:
@@ -897,25 +897,57 @@ export function SpaceOverlay({
         }
 
         @keyframes margeletSpaceTitleFlow {
-          0% { background-position: 12% 38%; filter: brightness(1); }
-          18% { background-position: 82% 22%; filter: brightness(1.06); }
-          36% { background-position: 58% 86%; filter: brightness(1.02); }
-          54% { background-position: 18% 72%; filter: brightness(1.08); }
-          72% { background-position: 92% 58%; filter: brightness(1.03); }
-          100% { background-position: 12% 38%; filter: brightness(1); }
+          0% {
+            background-position: 8% 18%, 82% 70%, 18% 84%, 0% 50%;
+            filter: brightness(1) saturate(1.02);
+          }
+          16% {
+            background-position: 72% 22%, 28% 88%, 88% 36%, 42% 22%;
+            filter: brightness(1.08) saturate(1.14);
+          }
+          31% {
+            background-position: 44% 82%, 92% 24%, 22% 30%, 78% 64%;
+            filter: brightness(1.03) saturate(1.08);
+          }
+          47% {
+            background-position: 86% 56%, 18% 34%, 62% 92%, 28% 82%;
+            filter: brightness(1.11) saturate(1.18);
+          }
+          63% {
+            background-position: 24% 72%, 76% 18%, 92% 74%, 64% 30%;
+            filter: brightness(1.05) saturate(1.1);
+          }
+          81% {
+            background-position: 58% 28%, 36% 76%, 12% 48%, 92% 86%;
+            filter: brightness(1.09) saturate(1.16);
+          }
+          100% {
+            background-position: 8% 18%, 82% 70%, 18% 84%, 0% 50%;
+            filter: brightness(1) saturate(1.02);
+          }
         }
 
         .margelet-space-title-gradient {
-          background-size: 340% 340%;
-          animation: margeletSpaceTitleFlow 14s cubic-bezier(.55,.05,.25,.95) infinite;
+          background-size: 180% 180%, 220% 220%, 260% 260%, 360% 360%;
+          animation: margeletSpaceTitleFlow 22s ease-in-out infinite;
         }
 
         .margelet-space-title-dark {
-          background-image: linear-gradient(92deg, #f8fbff 0%, #9cc9ff 35%, #ffffff 62%, #6e9dff 100%);
+          background-image:
+            radial-gradient(circle at center, rgba(29, 160, 248, 0.86) 0 10%, transparent 34%),
+            radial-gradient(circle at center, rgba(255, 255, 255, 0.74) 0 10%, transparent 34%),
+            radial-gradient(circle at center, rgba(87, 221, 255, 0.88) 0 10%, transparent 34%),
+            radial-gradient(circle at center, rgba(126, 168, 255, .9) 0 11%, transparent 34%),
+            linear-gradient(118deg, #ffffffff 0%, #356fb4 24%, #248b7d 46%, #81da70ff 62%, rgba(96, 70, 240, 1) 78%, #5aa9ff 100%);
         }
 
         .margelet-space-title-light {
-          background-image: linear-gradient(92deg, #07111d 0%, #356fb4 34%, #07111d 62%, #5aa9ff 100%);
+          background-image:
+            radial-gradient(circle at center, rgba(29, 116, 248, 0.74) 0 10%, transparent 34%),
+            radial-gradient(circle at center, rgba(241, 154, 220, .82) 0 12%, transparent 46%),
+            radial-gradient(circle at center, rgba(240, 255, 102, 0.88) 0 10%, transparent 34%),
+            radial-gradient(circle at center, rgba(126, 168, 255, .9) 0 11%, transparent 34%),
+            linear-gradient(118deg, #ffffffff 0%, #356fb4 24%, #248b7d 46%, #6ff355ff 62%, #f85616ff 78%, #5aa9ff 100%);
         }
 
         .margelet-space-message {
@@ -1083,10 +1115,22 @@ export function SpaceOverlay({
           }
         >
           {chatsMenuOpen ? (
-            <div
-              className={`absolute bottom-[calc(100%+12px)] left-4 right-4 z-30 max-h-[52dvh] overflow-y-auto rounded-[30px] border p-3 backdrop-blur-2xl [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/96" : "border-white/10 bg-[#071321]/94 shadow-[0_22px_90px_rgba(0,0,0,.58)]"}`}
-            >
-              {renderThreadList(true)}
+            <div className="absolute bottom-[calc(100%+12px)] left-4 right-4 z-30">
+              <div
+                className={`absolute inset-0 rounded-[30px] backdrop-blur-xl ${
+                  isLight ? "bg-[#f6f9fd]/74" : "bg-[#06111d]/70"
+                }`}
+                aria-hidden="true"
+              />
+              <div
+                className={`relative z-10 max-h-[52dvh] overflow-y-auto rounded-[30px] border p-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden ${
+                  isLight
+                    ? "border-[#d8e3ef] bg-[#f6f9fd]/86"
+                    : "border-white/10 bg-[#071321]/82 shadow-[0_22px_90px_rgba(0,0,0,.46)]"
+                }`}
+              >
+                {renderThreadList(true)}
+              </div>
             </div>
           ) : null}
 
@@ -1100,7 +1144,11 @@ export function SpaceOverlay({
               aria-label="Space chats"
               title="Space chats"
             >
-              <Menu className="h-5 w-5" />
+              {chatsMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
             <input
               ref={inputRef}
@@ -1120,7 +1168,9 @@ export function SpaceOverlay({
               aria-label="Send"
             >
               <MargeletMark
-                className="h-5 w-5"
+                className={`relative top-px h-4 w-5 transition-transform duration-200 ease-out ${
+                  inputFocused ? "-rotate-[-30deg]" : "rotate-0"
+                }`}
                 colorClassName={isLight ? "text-[#5e7085]" : "text-[#eef3f8]"}
               />
             </button>
