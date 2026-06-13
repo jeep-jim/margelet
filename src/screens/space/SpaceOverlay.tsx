@@ -142,6 +142,7 @@ type SpaceCopy = {
   userPrefix: string;
   botAnswer: string;
   examples: string[];
+  deleteConfirm?: string;
 };
 
 const SPACE_COPY: Record<Locale, SpaceCopy> = {
@@ -574,6 +575,7 @@ export function SpaceOverlay({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const messagesRef = useRef<HTMLDivElement | null>(null);
   const [keyboardBottom, setKeyboardBottom] = useState(0);
+  const [inputFocused, setInputFocused] = useState(false);
 
   const activeThread = useMemo(() => {
     if (!threads.length) return null;
@@ -678,6 +680,15 @@ export function SpaceOverlay({
   };
 
   const deleteThread = (threadId: string) => {
+    const confirmed = window.confirm(
+      copy.deleteConfirm ||
+        (locale === "ru"
+          ? "Удалить этот Space-чат? История хранится только на этом устройстве."
+          : "Delete this Space chat? The history is stored only on this device."),
+    );
+
+    if (!confirmed) return;
+
     setThreads((prev) => {
       const next = prev.filter((thread) => thread.id !== threadId);
       if (activeThreadId === threadId) {
@@ -885,6 +896,28 @@ export function SpaceOverlay({
           }
         }
 
+        @keyframes margeletSpaceTitleFlow {
+          0% { background-position: 12% 38%; filter: brightness(1); }
+          18% { background-position: 82% 22%; filter: brightness(1.06); }
+          36% { background-position: 58% 86%; filter: brightness(1.02); }
+          54% { background-position: 18% 72%; filter: brightness(1.08); }
+          72% { background-position: 92% 58%; filter: brightness(1.03); }
+          100% { background-position: 12% 38%; filter: brightness(1); }
+        }
+
+        .margelet-space-title-gradient {
+          background-size: 340% 340%;
+          animation: margeletSpaceTitleFlow 14s cubic-bezier(.55,.05,.25,.95) infinite;
+        }
+
+        .margelet-space-title-dark {
+          background-image: linear-gradient(92deg, #f8fbff 0%, #9cc9ff 35%, #ffffff 62%, #6e9dff 100%);
+        }
+
+        .margelet-space-title-light {
+          background-image: linear-gradient(92deg, #07111d 0%, #356fb4 34%, #07111d 62%, #5aa9ff 100%);
+        }
+
         .margelet-space-message {
           animation: margeletSpaceMessageIn .22s ease-out both;
         }
@@ -974,24 +1007,33 @@ export function SpaceOverlay({
           className="min-h-0 flex-1 overflow-y-auto pb-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {messages.length === 0 ? (
-            <div className="flex min-h-full flex-col items-center justify-center pb-24 text-center">
+            <div
+              className={`flex min-h-full flex-col items-center justify-center text-center transition duration-300 ${
+                inputFocused || keyboardBottom > 40
+                  ? "-translate-y-16 scale-[.94] sm:translate-y-0 sm:scale-100"
+                  : "translate-y-0 scale-100"
+              }`}
+              style={{
+                paddingBottom:
+                  keyboardBottom > 40
+                    ? `calc(7.5rem + ${Math.min(keyboardBottom, 120)}px)`
+                    : "13rem",
+              }}
+            >
               <div
-                className={`text-[20px] font-bold tracking-tight sm:text-[26px] ${isLight ? "text-[#243245]/78" : "text-[#edf2f7]/78"}`}
-              >
-                margeleT
-              </div>
-              <div
-                className={`mt-1 text-[58px] font-black leading-none tracking-tight sm:text-[82px] ${isLight ? "text-[#07111d]" : "text-[#f6f8fb]"}`}
+                className={`margelet-space-title-gradient bg-clip-text text-[64px] font-black leading-none tracking-tight text-transparent sm:text-[92px] ${
+                  isLight ? "margelet-space-title-light" : "margelet-space-title-dark"
+                }`}
               >
                 Space
               </div>
               <div
-                className={`mt-3 max-w-[560px] text-lg font-semibold sm:text-2xl ${isLight ? "text-[#243245]/80" : "text-white/78"}`}
+                className={`mt-4 max-w-[620px] text-lg font-semibold sm:text-2xl ${isLight ? "text-[#243245]/80" : "text-white/78"}`}
               >
                 {copy.subtitle}
               </div>
               <div
-                className={`mt-5 max-w-[520px] text-sm leading-6 sm:text-base sm:leading-7 ${isLight ? "text-[#52657a]" : "text-white/52"}`}
+                className={`mt-5 max-w-[560px] text-sm leading-6 sm:text-base sm:leading-7 ${isLight ? "text-[#52657a]" : "text-white/52"}`}
               >
                 {copy.emptyHint}
               </div>
@@ -1025,10 +1067,20 @@ export function SpaceOverlay({
         <form
           onSubmit={submit}
           onPointerDown={(event) => event.stopPropagation()}
-          className="fixed inset-x-0 z-20 mx-auto w-full max-w-[720px] px-4 sm:px-6"
-          style={{
-            bottom: `calc(${keyboardBottom}px + max(14px, env(safe-area-inset-bottom)))`,
-          }}
+          className="fixed inset-x-0 z-20 mx-auto w-full max-w-[720px] px-4 sm:px-6 transition-[top,bottom,transform] duration-300 ease-out"
+          style={
+            messages.length === 0 && keyboardBottom <= 40
+              ? {
+                  top: "min(calc(50% + 100px), calc(100dvh - 92px))",
+                  bottom: "auto",
+                  transform: "translateY(-50%)",
+                }
+              : {
+                  top: "auto",
+                  bottom: `calc(${keyboardBottom}px + max(14px, env(safe-area-inset-bottom)))`,
+                  transform: "translateY(0)",
+                }
+          }
         >
           {chatsMenuOpen ? (
             <div
@@ -1055,8 +1107,10 @@ export function SpaceOverlay({
               value={value}
               onChange={(event) => setValue(event.target.value)}
               placeholder={copy.placeholder}
-              className={`min-w-0 flex-1 bg-transparent px-4 text-[15px] font-semibold outline-none ${isLight ? "text-[#07111d] placeholder:text-[#5e7085]/62" : "text-white placeholder:text-white/40"}`}
+              className={`min-w-0 flex-1 bg-transparent pl-1 pr-2 text-[15px] font-semibold outline-none ${isLight ? "text-[#07111d] placeholder:text-[#5e7085]/62" : "text-white placeholder:text-white/40"}`}
               enterKeyHint="send"
+              onFocus={() => setInputFocused(true)}
+              onBlur={() => setInputFocused(false)}
             />
             <button
               type="button"
