@@ -320,6 +320,8 @@ export function FeedViewer({
   const captionTranslateCleanupRef = useRef<(() => void) | null>(null);
   const wheelLockRef = useRef(false);
   const touchStartYRef = useRef<number | null>(null);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchLockRef = useRef(false);
   const centerTimerRef = useRef<number | null>(null);
   const autoplayWantedRef = useRef(isPlaying);
 
@@ -333,9 +335,30 @@ export function FeedViewer({
     return activePost ? normalizeMediaList(activePost) : [];
   }, [activePost]);
 
-  const activeItem =
-    media[Math.min(viewerMediaIndex, Math.max(media.length - 1, 0))] || null;
-  const activeIsVideo = activeItem?.kind === "video";
+  const firstVideoIndex = useMemo(() => {
+    return media.findIndex((item) => item.kind === "video" && !!item.url);
+  }, [media]);
+
+  const safeViewerMediaIndex = useMemo(() => {
+    if (media.length === 0) return 0;
+
+    const current = media[viewerMediaIndex];
+    if (current?.kind === "video" && current.url) {
+      return viewerMediaIndex;
+    }
+
+    return firstVideoIndex >= 0 ? firstVideoIndex : Math.min(viewerMediaIndex, media.length - 1);
+  }, [firstVideoIndex, media, viewerMediaIndex]);
+
+  const activeItem = media[safeViewerMediaIndex] || null;
+  const activeIsVideo = activeItem?.kind === "video" && !!activeItem.url;
+
+  useEffect(() => {
+    if (!activePost || media.length === 0) return;
+    if (safeViewerMediaIndex === viewerMediaIndex) return;
+
+    setViewerMediaIndex(safeViewerMediaIndex);
+  }, [activePost?.id, media.length, safeViewerMediaIndex, setViewerMediaIndex, viewerMediaIndex]);
 
   useEffect(() => {
     captionTranslateCleanupRef.current?.();
@@ -610,25 +633,51 @@ export function FeedViewer({
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 1 }}
-        className="fixed inset-0 z-50 bg-black"
+        className="fixed inset-0 z-50 touch-none overscroll-contain bg-black"
+        style={{
+          overscrollBehavior: "contain",
+          WebkitOverflowScrolling: "auto",
+        }}
         onWheel={handleWheel}
         onTouchStart={(event) => {
-          touchStartYRef.current = event.touches[0]?.clientY ?? null;
+          const touch = event.touches[0];
+          touchStartYRef.current = touch?.clientY ?? null;
+          touchStartXRef.current = touch?.clientX ?? null;
+        }}
+        onTouchMove={(event) => {
+          event.preventDefault();
         }}
         onTouchEnd={(event) => {
+          if (touchLockRef.current) return;
+
           const startY = touchStartYRef.current;
+          const startX = touchStartXRef.current;
           const endY = event.changedTouches[0]?.clientY ?? null;
+          const endX = event.changedTouches[0]?.clientX ?? null;
+
           touchStartYRef.current = null;
+          touchStartXRef.current = null;
 
-          if (startY === null || endY === null) return;
+          if (startY === null || startX === null || endY === null || endX === null) return;
 
-          const delta = endY - startY;
+          const deltaY = endY - startY;
+          const deltaX = endX - startX;
 
-          if (delta <= -70) {
+          if (Math.abs(deltaY) < 92 || Math.abs(deltaY) < Math.abs(deltaX) * 1.25) {
+            return;
+          }
+
+          touchLockRef.current = true;
+
+          if (deltaY <= -92) {
             nextViewer();
-          } else if (delta >= 70) {
+          } else if (deltaY >= 92) {
             prevViewer();
           }
+
+          window.setTimeout(() => {
+            touchLockRef.current = false;
+          }, 360);
         }}
       >
         <div className="relative h-full w-full overflow-hidden bg-black">
@@ -650,10 +699,10 @@ export function FeedViewer({
             onClick={togglePlay}
           >
             <FeedCarousel
-              key={`${activePost.id}-${viewerMediaIndex}-${activeItem?.id ?? "media"}`}
+              key={`${activePost.id}-${safeViewerMediaIndex}-${activeItem?.id ?? "media"}`}
               items={media}
               aspectClass="h-full"
-              activeIndex={viewerMediaIndex}
+              activeIndex={safeViewerMediaIndex}
               onChange={setViewerMediaIndex}
               mediaActive={isPlaying}
               muted={isMuted}
