@@ -8,7 +8,7 @@ export type AdminTabId =
   | "access"
   | "analytics";
 
-export type TrustedSourceStatus = "active" | "paused";
+export type TrustedSourceStatus = "active" | "paused" | "blocked";
 
 export type TrustedSource = {
   id: string;

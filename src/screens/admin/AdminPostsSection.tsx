@@ -7,8 +7,6 @@ import {
   formatRemaining,
   getContentTypeLabel,
   getPreviewUrl,
-  getRoleLabel,
-  getStatusLabel,
   getTagLabel,
 } from "./admin.helpers";
 
@@ -31,9 +29,6 @@ export function AdminPostsSection({
 }: AdminPostsSectionProps) {
   const [, setTick] = useState(0);
   const [query, setQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState<
-    "all" | "published" | "pending" | "blocked"
-  >("all");
   const [expandedPostIds, setExpandedPostIds] = useState<number[]>([]);
   const [selectedPostIds, setSelectedPostIds] = useState<Set<number>>(new Set());
 
@@ -48,16 +43,8 @@ export function AdminPostsSection({
   const filteredPosts = useMemo(() => {
     const q = query.trim().toLowerCase();
 
-    return posts.filter((post) => {
-      const matchesQuery = q ? buildSearchText(post).includes(q) : true;
-      const matchesStatus =
-        statusFilter === "all"
-          ? true
-          : (post.status || "published") === statusFilter;
-
-      return matchesQuery && matchesStatus;
-    });
-  }, [posts, query, statusFilter]);
+    return posts.filter((post) => (q ? buildSearchText(post).includes(q) : true));
+  }, [posts, query]);
 
   const toggleExpanded = (id: number) => {
     setExpandedPostIds((prev) =>
@@ -109,24 +96,27 @@ export function AdminPostsSection({
     });
   };
 
-  const handleDeleteChannel = async (handle: string) => {
+  const handleBlockChannel = async (handle: string) => {
     if (!telegramUserId) return;
-    if (!window.confirm(`Удалить канал @${handle} и все его посты?`)) return;
+    if (!window.confirm(`Заблокировать @${handle} навсегда и убрать его посты?`)) return;
+
+    const channelPosts = posts.filter((post) => post.source.handle === handle);
 
     await fetch("/api/admin-posts", {
-      method: "DELETE",
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        entity: "sources",
+        entity: "posts",
+        action: "bulk-delete-posts-and-sources",
         telegramUserId,
-        handle,
         countryCode,
+        postIds: channelPosts.map((post) => post.id),
+        sources: [{ handle, countryCode }],
       }),
     });
 
-    const channelPosts = posts.filter((post) => post.source.handle === handle);
     for (const post of channelPosts) {
-      await onDeletePost(post.id);
+      await onDeletePost(post.id).catch(() => undefined);
     }
     setSelectedPostIds(new Set());
   };
@@ -156,31 +146,6 @@ export function AdminPostsSection({
         ) : null
       }
     >
-      <div className="mb-3 flex flex-wrap gap-2">
-        {[
-          { value: "all", label: "Все" },
-          { value: "published", label: "Опубликованные" },
-          { value: "pending", label: "На проверке" },
-          { value: "blocked", label: "Заблочен" },
-        ].map((item) => (
-          <button
-            key={item.value}
-            onClick={() =>
-              setStatusFilter(
-                item.value as "all" | "published" | "pending" | "blocked"
-              )
-            }
-            className={`rounded-full px-4 py-2 text-sm transition ${
-              statusFilter === item.value
-                ? "bg-white text-black"
-                : "bg-white/10 text-white hover:bg-white/15"
-            }`}
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
-
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <input
           value={query}
@@ -201,7 +166,6 @@ export function AdminPostsSection({
 
       <div className="grid gap-2 lg:grid-cols-2">
         {filteredPosts.map((post) => {
-          const status = post.status || "published";
           const isExpanded = expandedPostIds.includes(post.id);
           const isSelected = selectedPostIds.has(post.id);
           const preview = getPreviewUrl(post);
@@ -250,10 +214,6 @@ export function AdminPostsSection({
                     <div className="truncate text-xs text-white/55">
                       @{post.source.handle}
                     </div>
-                  </div>
-
-                  <div className="shrink-0 rounded-full bg-white/10 px-2.5 py-1 text-[11px] text-white/75">
-                    {status === "published" ? "✔" : getStatusLabel(status)}
                   </div>
 
                   <div
@@ -312,11 +272,11 @@ export function AdminPostsSection({
                     <button
                       type="button"
                       onClick={() => {
-                        void handleDeleteChannel(post.source.handle);
+                        void handleBlockChannel(post.source.handle);
                       }}
                       className="rounded-full bg-orange-500/90 px-3 py-1.5 text-xs text-white"
                     >
-                      delete channel
+                      block channel
                     </button>
 
                     <a
@@ -333,8 +293,6 @@ export function AdminPostsSection({
                     <div className="grid gap-2 text-xs text-white/75 md:grid-cols-2">
                       <div>ID: {post.id}</div>
                       <div className="break-all">URL: {post.postUrl}</div>
-                      <div>Статус: {getStatusLabel(status)}</div>
-                      <div>Роль: {getRoleLabel(post.role)}</div>
                       <div>TTL: {post.ttlHours} ч</div>
                       <div>Media count: {post.media.length}</div>
                       <div>Fallback: {post.fallbackReason || "—"}</div>

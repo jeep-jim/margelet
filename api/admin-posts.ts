@@ -234,7 +234,10 @@ function buildSource(body: Record<string, unknown>, existing?: StoredSource | nu
       typeof body.verified === "boolean" ? Boolean(body.verified) : Boolean(existing?.verified),
     defaultTag,
     tags: normalizeTags(body.tags ?? existing?.tags, defaultTag),
-    status: asString(body.status, existing?.status || "active") === "paused" ? "paused" : "active",
+    status: (() => {
+      const nextStatus = asString(body.status, existing?.status || "active");
+      return nextStatus === "paused" || nextStatus === "blocked" ? nextStatus : "active";
+    })(),
     note: asString(body.note) || existing?.note || null,
     createdAt: asString(body.createdAt) || existing?.createdAt || now,
     updatedAt: now,
@@ -282,8 +285,12 @@ async function readSourcesState() {
 function buildSourcesSummary(items: StoredSource[]) {
   const countsByCountry: Record<string, number> = {};
   const activeCountsByCountry: Record<string, number> = {};
+  const pausedCountsByCountry: Record<string, number> = {};
+  const blockedCountsByCountry: Record<string, number> = {};
   let total = 0;
   let active = 0;
+  let paused = 0;
+  let blocked = 0;
 
   for (const source of items) {
     const country = normalizeCountryCode(source.countryCode);
@@ -295,14 +302,24 @@ function buildSourcesSummary(items: StoredSource[]) {
     if (source.status === "active") {
       active += 1;
       activeCountsByCountry[country] = (activeCountsByCountry[country] || 0) + 1;
+    } else if (source.status === "blocked") {
+      blocked += 1;
+      blockedCountsByCountry[country] = (blockedCountsByCountry[country] || 0) + 1;
+    } else {
+      paused += 1;
+      pausedCountsByCountry[country] = (pausedCountsByCountry[country] || 0) + 1;
     }
   }
 
   return {
     total,
     active,
+    paused,
+    blocked,
     countsByCountry,
     activeCountsByCountry,
+    pausedCountsByCountry,
+    blockedCountsByCountry,
   };
 }
 
@@ -484,6 +501,38 @@ async function bulkDeleteSources(body: Record<string, unknown>) {
   return next;
 }
 
+async function bulkUpdateSourcesStatus(body: Record<string, unknown>) {
+  const rawIds = Array.isArray(body.sourceIds) ? body.sourceIds : [];
+  const ids = new Set(rawIds.map((item) => asString(item)).filter(Boolean));
+  const countryCode = normalizeCountryCode(body.countryCode);
+  const rawStatus = asString(body.status, "active");
+  const status = rawStatus === "paused" || rawStatus === "blocked" ? rawStatus : "active";
+
+  if (ids.size === 0) {
+    throw new Error("No sources selected");
+  }
+
+  const sourcesFile = await readSourcesFile<StoredSource>();
+  const current = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+  const now = new Date().toISOString();
+  let changed = 0;
+
+  const next = current.map((item) => {
+    if (!ids.has(item.id)) return item;
+    if (countryCode && item.countryCode !== countryCode) return item;
+    if (item.status === status) return item;
+    changed += 1;
+    return { ...item, status: status as StoredSource["status"], updatedAt: now };
+  });
+
+  if (changed === 0) {
+    throw new Error("Selected sources were not changed");
+  }
+
+  await writeSourcesFile(sortSources(next));
+  return next;
+}
+
 async function readCurrentFeedPosts() {
   const countryPosts = await readAllCountryFeedPosts<IngestedPost>();
   if (countryPosts.length > 0) return countryPosts;
@@ -516,6 +565,47 @@ function readPostIds(body: Record<string, unknown>) {
   return ids;
 }
 
+function getPostSourceKey(post: IngestedPost) {
+  const handle = normalizeHandle(post.source?.handle);
+  const country = normalizeCountryCode(post.sourceCountryCode);
+  return handle ? `${country || ""}:${handle}` : "";
+}
+
+function readSourceKeys(body: Record<string, unknown>) {
+  const keys = new Set<string>();
+
+  const push = (countryValue: unknown, handleValue: unknown) => {
+    const handle = normalizeHandle(handleValue);
+    if (!handle) return;
+    const country = normalizeCountryCode(countryValue);
+    keys.add(`${country || ""}:${handle}`);
+  };
+
+  push(body.sourceCountryCode ?? body.countryCode, body.sourceHandle ?? body.handle);
+
+  const rawSources = Array.isArray(body.sources)
+    ? body.sources
+    : Array.isArray(body.sourceRefs)
+      ? body.sourceRefs
+      : Array.isArray(body.sourceHandles)
+        ? body.sourceHandles
+        : [];
+
+  for (const item of rawSources) {
+    if (typeof item === "string") {
+      push(body.countryCode, item);
+      continue;
+    }
+
+    if (item && typeof item === "object") {
+      const record = item as Record<string, unknown>;
+      push(record.countryCode ?? record.sourceCountryCode ?? body.countryCode, record.handle ?? record.sourceHandle);
+    }
+  }
+
+  return keys;
+}
+
 async function deletePostsByIds(body: Record<string, unknown>) {
   const ids = readPostIds(body);
   if (ids.size === 0) {
@@ -527,14 +617,16 @@ async function deletePostsByIds(body: Record<string, unknown>) {
 
   const deleted = current.length - next.length;
   if (deleted === 0) {
-    throw new Error("Post not found in feed snapshot");
+    // Старый кэш на клиенте мог показать пост, которого уже нет в актуальном снапшоте.
+    // Для админа это не должно ломать UX: фронт всё равно скроет пост локально.
+    return { posts: current, deleted: 0, notFound: ids.size };
   }
 
   await writeFeedFile(sortPosts(next), {
     reason: ids.size === 1 ? `deletePostById:${[...ids][0]}` : `bulkDeletePosts:${ids.size}`,
   });
 
-  return { posts: next, deleted };
+  return { posts: next, deleted, notFound: 0 };
 }
 
 async function deletePostById(body: Record<string, unknown>) {
@@ -544,53 +636,66 @@ async function deletePostById(body: Record<string, unknown>) {
 
 async function bulkDeletePostsAndSources(body: Record<string, unknown>) {
   const ids = readPostIds(body);
-  if (ids.size === 0) {
-    throw new Error("No posts selected");
+  const requestedSourceKeys = readSourceKeys(body);
+
+  if (ids.size === 0 && requestedSourceKeys.size === 0) {
+    throw new Error("No posts or sources selected");
   }
 
   const currentPosts = await readCurrentFeedPosts();
   const selectedPosts = currentPosts.filter((post) => ids.has(Number(post.id)));
-  if (!selectedPosts.length) {
-    throw new Error("Selected posts were not found");
-  }
 
-  const sourceKeys = new Set<string>();
+  const sourceKeys = new Set<string>(requestedSourceKeys);
   const sourceIds = new Set<string>();
 
   for (const post of selectedPosts) {
-    const handle = normalizeHandle(post.source?.handle);
-    const country = normalizeCountryCode(post.sourceCountryCode);
-    if (handle) sourceKeys.add(`${country || ""}:${handle}`);
+    const key = getPostSourceKey(post);
+    if (key) sourceKeys.add(key);
     if (post.sourceId) sourceIds.add(String(post.sourceId));
   }
 
   const nextPosts = currentPosts.filter((post) => {
     if (ids.has(Number(post.id))) return false;
-    const handle = normalizeHandle(post.source?.handle);
-    const country = normalizeCountryCode(post.sourceCountryCode);
-    return !sourceKeys.has(`${country || ""}:${handle}`);
+    const key = getPostSourceKey(post);
+    return key ? !sourceKeys.has(key) : true;
   });
 
   const sourcesFile = await readSourcesFile<StoredSource>();
   const currentSources = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
-  const nextSources = currentSources.filter((source) => {
-    if (sourceIds.has(source.id)) return false;
-    const handle = normalizeHandle(source.handle);
-    const country = normalizeCountryCode(source.countryCode);
-    return !sourceKeys.has(`${country || ""}:${handle}`);
+  let blockedSources = 0;
+  const now = new Date().toISOString();
+
+  const nextSources = currentSources.map((source) => {
+    const key = `${normalizeCountryCode(source.countryCode) || ""}:${normalizeHandle(source.handle)}`;
+    const shouldBlock = sourceIds.has(source.id) || sourceKeys.has(key);
+    if (!shouldBlock || source.status === "blocked") return source;
+    blockedSources += 1;
+    return {
+      ...source,
+      status: "blocked" as StoredSource["status"],
+      note: source.note || "blocked by moderation",
+      updatedAt: now,
+    };
   });
 
   const deletedPosts = currentPosts.length - nextPosts.length;
-  const deletedSources = currentSources.length - nextSources.length;
+  const missingPosts = Math.max(0, ids.size - selectedPosts.length);
 
-  await writeFeedFile(sortPosts(nextPosts), { reason: `bulkDeletePostsAndSources:${ids.size}` });
-  await writeSourcesFile(sortSources(nextSources));
+  if (deletedPosts > 0) {
+    await writeFeedFile(sortPosts(nextPosts), { reason: `bulkDeletePostsAndSources:${ids.size}` });
+  }
+
+  if (blockedSources > 0) {
+    await writeSourcesFile(sortSources(nextSources));
+  }
 
   return {
-    posts: nextPosts,
+    posts: deletedPosts > 0 ? nextPosts : currentPosts,
     sources: nextSources,
     deletedPosts,
-    deletedSources,
+    blockedSources,
+    deletedSources: 0,
+    missingPosts,
   };
 }
 
@@ -828,6 +933,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       if (action === "delete") {
         const sources = await deleteSourceByIdentity(payload);
+        return res.status(200).json({
+          ok: true,
+          sources: requestedCountryCode
+            ? sources.filter((source) => source.countryCode === requestedCountryCode)
+            : sources,
+          sourceSummary: buildSourcesSummary(sources),
+        });
+      }
+
+      if (action === "bulk-status") {
+        const sources = await bulkUpdateSourcesStatus(payload);
         return res.status(200).json({
           ok: true,
           sources: requestedCountryCode

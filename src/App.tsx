@@ -974,11 +974,19 @@ export default function App() {
     const data = await res.json().catch(() => null);
 
     if (!res.ok) {
-      throw new Error(data?.error || "delete failed");
+      const message = String(data?.error || "delete failed");
+      const staleCacheMiss =
+        message.includes("not found") ||
+        message.includes("not in feed") ||
+        message.includes("Selected posts were not found");
+
+      if (!staleCacheMiss) {
+        throw new Error(message);
+      }
     }
 
     setServerPosts((prev) => prev.filter((post) => post.id !== id));
-    setHiddenPostIds((prev) => prev.filter((postId) => postId !== id));
+    setHiddenPostIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
     setSavedPostIds((prev) => prev.filter((postId) => postId !== id));
     setLikedPostIds((prev) => prev.filter((postId) => postId !== id));
   };

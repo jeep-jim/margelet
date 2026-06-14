@@ -76,7 +76,7 @@ export function makeSourceId(countryCode: CountryCode, handle: string) {
 }
 
 function isStatus(value: unknown): value is TrustedSource["status"] {
-  return value === "active" || value === "paused";
+  return value === "active" || value === "paused" || value === "blocked";
 }
 
 function parseNumericPostId(value: unknown): number | null {

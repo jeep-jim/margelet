@@ -1407,6 +1407,11 @@ export function FeedScreen({
   const [moderationMessage, setModerationMessage] = useState<string | null>(null);
   const isCurrentAdmin = !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
+  const selectedModerationPosts = useMemo(
+    () => posts.filter((post) => selectedModerationPostIds.includes(post.id)),
+    [posts, selectedModerationPostIds]
+  );
+
 
   useEffect(() => {
     const onToggleModerationPost = (event: Event) => {
@@ -1455,12 +1460,22 @@ export function FeedScreen({
 
     try {
       setModerationMessage(null);
+      let failed = 0;
       for (const id of selectedModerationPostIds) {
-        await onDeletePost(id);
+        try {
+          await onDeletePost(id);
+        } catch {
+          failed += 1;
+          onHidePost(id);
+        }
       }
       setSelectedModerationPostIds([]);
       setModerationSelectionMode(false);
-      setModerationMessage("Выбранные посты удалены");
+      setModerationMessage(
+        failed > 0
+          ? `Посты скрыты из этой ленты. В актуальном снапшоте не найдено: ${failed}`
+          : "Выбранные посты удалены"
+      );
     } catch (error) {
       setModerationMessage(error instanceof Error ? error.message : "Не удалось удалить посты");
     }
@@ -1494,6 +1509,10 @@ export function FeedScreen({
           entity: "posts",
           action: "bulk-delete-posts-and-sources",
           postIds: selectedModerationPostIds,
+          sources: selectedModerationPosts.map((post) => ({
+            handle: post.source?.handle || "",
+            countryCode: post.sourceCountryCode || locale,
+          })),
           telegramUserId: currentTelegramUserId,
         }),
       });
@@ -1509,10 +1528,19 @@ export function FeedScreen({
       setSelectedModerationPostIds([]);
       setModerationSelectionMode(false);
       setModerationMessage(
-        `Удалено постов: ${data?.deletedPosts ?? selectedModerationPostIds.length}; каналов: ${data?.deletedSources ?? 0}`
+        `Удалено постов: ${data?.deletedPosts ?? 0}; заблокировано каналов: ${data?.blockedSources ?? data?.deletedSources ?? 0}`
       );
     } catch (error) {
-      setModerationMessage(error instanceof Error ? error.message : "Не удалось удалить посты и каналы");
+      for (const id of selectedModerationPostIds) {
+        onHidePost(id);
+      }
+      setSelectedModerationPostIds([]);
+      setModerationSelectionMode(false);
+      setModerationMessage(
+        error instanceof Error
+          ? `${error.message}. Посты скрыты локально.`
+          : "Посты скрыты локально, но серверное удаление не прошло"
+      );
     }
   };
 
@@ -2577,7 +2605,7 @@ export function FeedScreen({
                     : [...prev, post.id]
                 );
               }}
-              className={`absolute right-12 top-3 z-20 grid h-8 w-8 place-items-center rounded-full border text-xs font-black shadow-lg backdrop-blur transition ${
+              className={`absolute right-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full border text-xs font-black shadow-lg backdrop-blur transition ${
                 selectedModerationPostIds.includes(post.id)
                   ? "border-sky-300 bg-sky-500 text-white"
                   : "border-white/15 bg-black/40 text-white/80 hover:bg-black/60"
@@ -2587,7 +2615,7 @@ export function FeedScreen({
               {selectedModerationPostIds.includes(post.id) ? (
                 <CheckSquare className="h-4 w-4" />
               ) : (
-                "+"
+                <CheckSquare className="h-4 w-4 opacity-40" />
               )}
             </button>
           ) : null}
@@ -2636,7 +2664,7 @@ export function FeedScreen({
               window.location.href = `/${first.sourceHandle}/${first.postId}`;
             }
           }}
-          className="fixed left-3 right-3 top-[calc(var(--app-header-offset)+10px)] z-[80] mx-auto flex max-w-[620px] items-center justify-between gap-3 rounded-[22px] border border-rose-300/30 bg-rose-600/92 px-4 py-3 text-left text-sm font-black text-white shadow-[0_18px_70px_rgba(225,29,72,.35)] backdrop-blur animate-pulse"
+          className="fixed left-3 right-3 top-[calc(var(--app-header-offset)+10px)] z-[80] mx-auto flex max-w-[620px] items-center justify-between gap-3 rounded-[22px] border border-rose-300/30 bg-rose-600/92 px-4 py-3 text-left text-sm font-black text-white shadow-[0_18px_70px_rgba(225,29,72,.35)] backdrop-blur"
         >
           <span className="flex min-w-0 items-center gap-2">
             <AlertTriangle className="h-5 w-5 shrink-0" />

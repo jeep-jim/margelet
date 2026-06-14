@@ -4,8 +4,6 @@ import { type CountryCode, SEO_LOCALE_META } from "../../api/lib/contracts";
 
 import { AdminBulkImportSection } from "./admin/AdminBulkImportSection";
 import { AdminCountriesSection } from "./admin/AdminCountriesSection";
-import { AdminManualPostSection } from "./admin/AdminManualPostSection";
-import { AdminMonetizationSection } from "./admin/AdminMonetizationSection";
 import { AdminPostsSection } from "./admin/AdminPostsSection";
 import { AdminSourcesSection } from "./admin/AdminSourcesSection";
 import type { TrustedSource } from "./admin/admin.types";
@@ -495,11 +493,6 @@ export function AdminScreen({
             onSelectCountry={setSelectedCountryCode}
             counts={sourceCountsByCountry}
           />
-
-          <div id="admin-requests">
-            <AdminMonetizationSection />
-          </div>
-
           <div id="admin-channels">
             <AdminSourcesSection
               telegramUserId={telegramUserId}
@@ -526,25 +519,15 @@ export function AdminScreen({
               countryCode={selectedCountryCode}
             />
           </div>
-
-          <div id="admin-manual-post">
-            <AdminManualPostSection
-              telegramUserId={telegramUserId}
-              countryCode={selectedCountryCode}
-              onSubmitted={refreshEverything}
-            />
-          </div>
         </div>
       </div>
 
       {/* 🔥 ЛИПКАЯ НАВИГАЦИЯ */}
       <div className="fixed bottom-4 left-3 right-3 z-50 flex items-center justify-between rounded-full border border-white/10 bg-black/75 px-3 py-2 shadow-2xl backdrop-blur sm:left-1/2 sm:right-auto sm:w-[360px] sm:-translate-x-1/2">
         {[
-          ["💰", "admin-requests"],
           ["🌍", "admin-channels"],
           ["➕", "admin-bulk"],
           ["🎈", "admin-posts"],
-          ["✍️", "admin-manual-post"],
         ].map(([label, id]) => (
           <button
             key={id}

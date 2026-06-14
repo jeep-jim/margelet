@@ -23,7 +23,7 @@ type AdminSourcesSectionProps = {
   onSourcesReload: () => Promise<void>;
 };
 
-type SourceStatus = "active" | "paused";
+type SourceStatus = "active" | "paused" | "blocked";
 
 type ParentGroupState = {
   parentTag: ContentTag;
@@ -152,6 +152,7 @@ export function AdminSourcesSection({
   onSourcesReload,
 }: AdminSourcesSectionProps) {
   const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState<"all" | SourceStatus>("all");
   const [isSaving, setIsSaving] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [expandedSourceId, setExpandedSourceId] = useState<string | null>(null);
@@ -175,6 +176,7 @@ export function AdminSourcesSection({
 
     return sources
       .filter((source) => source.countryCode === countryCode)
+      .filter((source) => statusFilter === "all" || source.status === statusFilter)
       .filter((source) => {
         if (!query) return true;
 
@@ -195,13 +197,20 @@ export function AdminSourcesSection({
         const bTime = b.lastCheckedAt ? new Date(b.lastCheckedAt).getTime() : 0;
         return bTime - aTime;
       });
-  }, [sources, countryCode, search]);
+  }, [sources, countryCode, search, statusFilter]);
 
-  const activeCount = filteredSources.filter((source) => source.status === "active").length;
+  const countrySources = useMemo(
+    () => sources.filter((source) => source.countryCode === countryCode),
+    [sources, countryCode]
+  );
+  const activeCount = countrySources.filter((source) => source.status === "active").length;
+  const pausedCount = countrySources.filter((source) => source.status === "paused").length;
+  const blockedCount = countrySources.filter((source) => source.status === "blocked").length;
   const selectedVisibleSourceIds = filteredSources
     .filter((source) => selectedSourceIds.includes(source.id))
     .map((source) => source.id);
   const selectedVisibleCount = selectedVisibleSourceIds.length;
+  const selectedTotalCount = selectedSourceIds.length;
   const allVisibleSelected =
     filteredSources.length > 0 && selectedVisibleCount === filteredSources.length;
 
@@ -413,12 +422,50 @@ export function AdminSourcesSection({
     );
   };
 
+  const bulkUpdateSelectedSourcesStatus = async (nextStatus: SourceStatus) => {
+    if (!telegramUserId || selectedTotalCount === 0) return;
+
+    const label = nextStatus === "blocked" ? "заблокировать навсегда" : nextStatus === "paused" ? "поставить на паузу" : "вернуть в активные";
+    if (!window.confirm(`${label}: ${selectedTotalCount} каналов?`)) return;
+
+    try {
+      setIsBulkDeleting(true);
+      setMessage(null);
+
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          telegramUserId,
+          entity: "sources",
+          action: "bulk-status",
+          countryCode,
+          sourceIds: selectedSourceIds,
+          status: nextStatus,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      if (!response.ok) {
+        throw new Error(data?.error || "Не удалось обновить выбранные каналы");
+      }
+
+      await onSourcesReload();
+      setSelectedSourceIds([]);
+      setMessage(`Обновлено каналов: ${selectedTotalCount}`);
+    } catch (error: unknown) {
+      setMessage(error instanceof Error ? error.message : "Не удалось обновить выбранные каналы");
+    } finally {
+      setIsBulkDeleting(false);
+    }
+  };
+
   const bulkDeleteSelectedSources = async () => {
-    if (!telegramUserId || selectedVisibleCount === 0) return;
+    if (!telegramUserId || selectedTotalCount === 0) return;
 
     if (
       !window.confirm(
-        `Удалить выбранные каналы (${selectedVisibleCount}) из страны ${countryCode.toUpperCase()}?`
+        `Удалить выбранные каналы (${selectedTotalCount}) из страны ${countryCode.toUpperCase()}?`
       )
     ) {
       return;
@@ -436,7 +483,7 @@ export function AdminSourcesSection({
           entity: "sources",
           action: "bulk-delete",
           countryCode,
-          sourceIds: selectedVisibleSourceIds,
+          sourceIds: selectedSourceIds,
         }),
       });
 
@@ -448,14 +495,14 @@ export function AdminSourcesSection({
 
       await onSourcesReload();
       setSelectedSourceIds((prev) =>
-        prev.filter((id) => !selectedVisibleSourceIds.includes(id))
+        prev.filter((id) => !selectedSourceIds.includes(id))
       );
 
-      if (editingId && selectedVisibleSourceIds.includes(editingId)) {
+      if (editingId && selectedSourceIds.includes(editingId)) {
         resetForm();
       }
 
-      setMessage(`Удалено каналов: ${selectedVisibleCount}`);
+      setMessage(`Удалено каналов: ${selectedTotalCount}`);
     } catch (error: unknown) {
       setMessage(
         error instanceof Error ? error.message : "Не удалось удалить выбранные каналы"
@@ -518,7 +565,7 @@ export function AdminSourcesSection({
       collapsible
       badge={
         <div className="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
-          {filteredSources.length} всего · {activeCount} активных
+          {countrySources.length} всего · {activeCount} активных · {pausedCount} пауза · {blockedCount} блок
         </div>
       }
     >
@@ -601,6 +648,7 @@ export function AdminSourcesSection({
                 >
                   <option value="active">активен</option>
                   <option value="paused">пауза</option>
+                  <option value="blocked">блок навсегда</option>
                 </select>
               </div>
 
@@ -759,6 +807,28 @@ export function AdminSourcesSection({
           ) : null}
         </div>
 
+        <div className="grid gap-2 sm:grid-cols-4">
+          {[
+            { value: "all", label: `Все · ${countrySources.length}` },
+            { value: "active", label: `Активные · ${activeCount}` },
+            { value: "paused", label: `Пауза · ${pausedCount}` },
+            { value: "blocked", label: `Блок · ${blockedCount}` },
+          ].map((item) => (
+            <button
+              key={item.value}
+              type="button"
+              onClick={() => setStatusFilter(item.value as "all" | SourceStatus)}
+              className={`rounded-2xl border px-4 py-3 text-sm font-black transition ${
+                statusFilter === item.value
+                  ? "border-white bg-white text-black"
+                  : "border-white/10 bg-white/5 text-white/75 hover:bg-white/10"
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-lg font-semibold text-white">Список каналов</div>
@@ -786,19 +856,38 @@ export function AdminSourcesSection({
           </button>
 
           <div className="text-sm text-white/55">
-            выбрано: <span className="text-white">{selectedVisibleCount}</span>
+            выбрано всего: <span className="text-white">{selectedTotalCount}</span>
+            {selectedVisibleCount !== selectedTotalCount ? (
+              <span className="ml-2 text-white/35">на экране: {selectedVisibleCount}</span>
+            ) : null}
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              void bulkDeleteSelectedSources();
-            }}
-            disabled={selectedVisibleCount === 0 || isBulkDeleting}
-            className="rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2.5 text-sm font-medium text-red-200 transition hover:bg-red-500/15 disabled:opacity-40"
-          >
-            {isBulkDeleting ? "удаляю..." : `удалить выбранные${selectedVisibleCount ? ` · ${selectedVisibleCount}` : ""}`}
-          </button>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => { void bulkUpdateSelectedSourcesStatus("blocked"); }}
+              disabled={selectedTotalCount === 0 || isBulkDeleting}
+              className="rounded-full border border-orange-500/25 bg-orange-500/15 px-4 py-2.5 text-sm font-medium text-orange-100 transition hover:bg-orange-500/20 disabled:opacity-40"
+            >
+              блок навсегда{selectedTotalCount ? ` · ${selectedTotalCount}` : ""}
+            </button>
+            <button
+              type="button"
+              onClick={() => { void bulkUpdateSelectedSourcesStatus("paused"); }}
+              disabled={selectedTotalCount === 0 || isBulkDeleting}
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-medium text-white/75 transition hover:bg-white/10 disabled:opacity-40"
+            >
+              пауза
+            </button>
+            <button
+              type="button"
+              onClick={() => { void bulkDeleteSelectedSources(); }}
+              disabled={selectedTotalCount === 0 || isBulkDeleting}
+              className="rounded-full border border-red-500/25 bg-red-500/10 px-4 py-2.5 text-sm font-medium text-red-200 transition hover:bg-red-500/15 disabled:opacity-40"
+            >
+              {isBulkDeleting ? "обновляю..." : `удалить выбранные${selectedTotalCount ? ` · ${selectedTotalCount}` : ""}`}
+            </button>
+          </div>
         </div>
 
         <div className="grid gap-2 lg:grid-cols-2">
@@ -862,10 +951,12 @@ export function AdminSourcesSection({
                       className={`shrink-0 rounded-full px-2.5 py-1 text-[11px] ${
                         source.status === "active"
                           ? "bg-emerald-500/15 text-emerald-300"
-                          : "bg-white/10 text-white/55"
+                          : source.status === "blocked"
+                            ? "bg-red-500/15 text-red-200"
+                            : "bg-white/10 text-white/55"
                       }`}
                     >
-                      {source.status === "active" ? "✔" : "Ⅱ"}
+                      {source.status === "active" ? "✔" : source.status === "blocked" ? "⛔" : "Ⅱ"}
                     </div>
 
                     <div className="ml-1 flex items-center">

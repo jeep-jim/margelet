@@ -582,7 +582,7 @@ export type UserRole = "user" | "channel_owner" | "admin";
    TRUSTED SOURCES
 ========================= */
 
-export type TrustedSourceStatus = "active" | "paused";
+export type TrustedSourceStatus = "active" | "paused" | "blocked";
 
 export type TrustedSource = {
   id: string;
