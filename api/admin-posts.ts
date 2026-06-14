@@ -768,12 +768,57 @@ async function createReportsBatch(payload: Record<string, unknown>) {
     return { reports: await listReports(), created: 0 };
   }
 
+  const file = await readReportsFile<ModerationReport>();
+  const current = Array.isArray(file.reports) ? file.reports : [];
+  const next = [...current];
+  const now = new Date().toISOString();
   let created = 0;
-  for (const reportPayload of prepared.slice(0, 50)) {
-    await createReport(reportPayload);
+
+  for (const reportPayload of prepared.slice(0, 100)) {
+    const postId = asNumber(reportPayload.postId ?? reportPayload.id);
+    const sourceHandle = normalizeHandle(reportPayload.sourceHandle ?? reportPayload.handle) || null;
+    const sourceTitle = asString(reportPayload.sourceTitle) || null;
+    const sourceCountryCode = normalizeCountryCode(reportPayload.sourceCountryCode ?? reportPayload.countryCode) || null;
+    const reason = normalizeReportReason(reportPayload.reason);
+    const message = asString(reportPayload.message) || null;
+
+    if (postId === null && !sourceHandle) continue;
+
+    const existingIndex = next.findIndex(
+      (report) =>
+        report.status === "open" &&
+        report.postId === postId &&
+        (report.sourceHandle || "") === (sourceHandle || "") &&
+        report.reason === reason
+    );
+
+    if (existingIndex >= 0) {
+      next[existingIndex] = {
+        ...next[existingIndex],
+        count: Math.max(1, Number(next[existingIndex].count || 1)) + 1,
+        message: message || next[existingIndex].message || null,
+        updatedAt: now,
+      };
+      continue;
+    }
+
+    next.unshift({
+      id: `report-${Date.now()}-${created}-${Math.random().toString(36).slice(2, 8)}`,
+      postId,
+      sourceHandle,
+      sourceTitle,
+      sourceCountryCode,
+      reason,
+      message,
+      count: 1,
+      status: "open",
+      createdAt: now,
+      updatedAt: now,
+    });
     created += 1;
   }
 
+  await writeReportsFile(next.slice(0, 500));
   return { reports: await listReports(), created };
 }
 
@@ -799,6 +844,91 @@ async function resolveReport(payload: Record<string, unknown>) {
 
   await writeReportsFile(next);
   return next.filter((report) => report.status !== "resolved");
+}
+
+function readReportIds(payload: Record<string, unknown>) {
+  const rawIds = Array.isArray(payload.reportIds) ? payload.reportIds : [];
+  const ids = new Set(rawIds.map((item) => asString(item)).filter(Boolean));
+  const single = asString(payload.reportId ?? payload.id);
+  if (single) ids.add(single);
+  return ids;
+}
+
+function reportSourceKey(report: ModerationReport) {
+  const handle = normalizeHandle(report.sourceHandle);
+  if (!handle) return "";
+  return `${normalizeCountryCode(report.sourceCountryCode) || ""}:${handle}`;
+}
+
+async function bulkApplyReports(payload: Record<string, unknown>) {
+  const reportIds = readReportIds(payload);
+  if (reportIds.size === 0) throw new Error("No reports selected");
+
+  const moderationAction = asString(payload.moderationAction || payload.bulkAction || payload.mode, "close");
+  const rawScope = payload.scope && typeof payload.scope === "object" ? (payload.scope as Record<string, unknown>) : {};
+  const shouldDeletePosts = moderationAction === "delete" || Boolean(rawScope.post);
+  const shouldTouchChannels = moderationAction === "block" || moderationAction === "pause" || Boolean(rawScope.channel);
+  const sourceStatus = moderationAction === "pause" ? "paused" : "blocked";
+  const now = new Date().toISOString();
+
+  const reportsFile = await readReportsFile<ModerationReport>();
+  const currentReports = Array.isArray(reportsFile.reports) ? reportsFile.reports : [];
+  const selectedReports = currentReports.filter((report) => reportIds.has(report.id) && report.status !== "resolved");
+  if (!selectedReports.length) throw new Error("Selected reports were not found");
+
+  let deletedPosts = 0;
+  let changedSources = 0;
+
+  if (shouldDeletePosts) {
+    const postIds = new Set(
+      selectedReports
+        .map((report) => report.postId)
+        .filter((id): id is number => typeof id === "number" && Number.isFinite(id))
+    );
+
+    if (postIds.size > 0) {
+      const currentPosts = await readCurrentFeedPosts();
+      const nextPosts = currentPosts.filter((post) => !postIds.has(Number(post.id)));
+      deletedPosts = currentPosts.length - nextPosts.length;
+      if (deletedPosts > 0) {
+        await writeFeedFile(sortPosts(nextPosts), { reason: `bulkReportsDeletePosts:${postIds.size}` });
+      }
+    }
+  }
+
+  if (shouldTouchChannels) {
+    const sourceKeys = new Set(selectedReports.map(reportSourceKey).filter(Boolean));
+    if (sourceKeys.size > 0) {
+      const sourcesFile = await readSourcesFile<StoredSource>();
+      const currentSources = Array.isArray(sourcesFile.sources) ? sourcesFile.sources : [];
+      const nextSources = currentSources.map((source) => {
+        const key = `${normalizeCountryCode(source.countryCode) || ""}:${normalizeHandle(source.handle)}`;
+        if (!sourceKeys.has(key) || source.status === sourceStatus) return source;
+        changedSources += 1;
+        return {
+          ...source,
+          status: sourceStatus as StoredSource["status"],
+          note: source.note || `${sourceStatus} by moderation report`,
+          updatedAt: now,
+        };
+      });
+
+      if (changedSources > 0) {
+        await writeSourcesFile(sortSources(nextSources));
+      }
+    }
+  }
+
+  const nextReports = currentReports.map((report) =>
+    reportIds.has(report.id) ? { ...report, status: "resolved" as const, updatedAt: now } : report
+  );
+  await writeReportsFile(nextReports);
+
+  return {
+    reports: nextReports.filter((report) => report.status !== "resolved"),
+    deletedPosts,
+    changedSources,
+  };
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -856,6 +986,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (action === "resolve") {
         const reports = await resolveReport(payload);
         return res.status(200).json({ ok: true, reports });
+      }
+
+      if (action === "bulk-apply") {
+        const result = await bulkApplyReports(payload);
+        return res.status(200).json({
+          ok: true,
+          reports: result.reports,
+          deletedPosts: result.deletedPosts,
+          changedSources: result.changedSources,
+        });
       }
 
       return res.status(400).json({ ok: false, error: "Unknown reports action" });

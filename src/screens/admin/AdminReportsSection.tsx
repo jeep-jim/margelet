@@ -153,7 +153,7 @@ function getSourceHandle(report: ModerationReport, post: IngestedPost | null) {
   return normalizeHandle(report.sourceHandle || anyPost?.source?.handle || anyPost?.sourceHandle);
 }
 
-function getSourceAvatar(report: ModerationReport, post: IngestedPost | null) {
+function getSourceAvatar(_report: ModerationReport, post: IngestedPost | null) {
   const anyPost = post as any;
   return (
     anyPost?.source?.avatar ||
