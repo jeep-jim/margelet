@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { getTheme, type Theme } from "../lib/theme";
 import { CreatorAuthBlock } from "./creator/CreatorAuthBlock";
 import { CreatorLanguagePanel } from "./creator/CreatorLanguagePanel";
@@ -14,6 +15,7 @@ import type { CreatorScreenProps, TgUser } from "./creator/creator.types";
 import type { IngestedPost } from "../types/app";
 import { readTelegramUserFromStorage } from "./creator/creator.utils";
 import { useCreatorPwa } from "./creator/useCreatorPwa";
+import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
 import type { ViewerDirection } from "./feed/feed.types";
 
@@ -46,7 +48,11 @@ function readSubscriptionsFromStorage(): string[] {
 }
 
 function getPostImage(post: IngestedPost) {
-  return post.media?.find((item) => item.kind === "image")?.url || null;
+  return post.media?.find((item) => item.kind === "image")?.url || post.media?.find((item) => item.kind === "video")?.poster || null;
+}
+
+function hasPlayableVideo(post: IngestedPost) {
+  return post.media?.some((item) => item.kind === "video" && !!item.url) || post.contentType === "video";
 }
 
 function getPostSourceHandle(post: IngestedPost) {
@@ -110,6 +116,9 @@ type CreatorCabinetCopy = {
   emptySubscriptionsText: string;
   videoPost: string;
   telegramPost: string;
+  expiredPostTitle?: string;
+  expiredPostText?: string;
+  expiredPostButton?: string;
 };
 
 const CREATOR_CABINET_COPY: Record<string, CreatorCabinetCopy> = {
@@ -129,6 +138,9 @@ const CREATOR_CABINET_COPY: Record<string, CreatorCabinetCopy> = {
       "Подпишись на каналы через меню поста — они появятся здесь.",
     videoPost: "Видео из Telegram",
     telegramPost: "Пост из Telegram",
+    expiredPostTitle: "Пост уже отжил своё",
+    expiredPostText: "Свежие посты живут в ленте margeleT 24 часа. Этот пост уже исчез из живой ленты.",
+    expiredPostButton: "Понятно",
   },
   ua: {
     authWhyTitle: "Навіщо входити?",
@@ -163,6 +175,9 @@ const CREATOR_CABINET_COPY: Record<string, CreatorCabinetCopy> = {
       "Subscribe to channels from a post menu — they will appear here.",
     videoPost: "Telegram video",
     telegramPost: "Telegram post",
+    expiredPostTitle: "This post has expired",
+    expiredPostText: "Fresh posts stay in the margeleT feed for 24 hours. This post has already left the live feed.",
+    expiredPostButton: "Got it",
   },
   in: {
     authWhyTitle: "लॉग इन क्यों करें?",
@@ -560,16 +575,46 @@ function CreatorAuthInfoCard({ locale }: { locale: string }) {
   );
 }
 
+function CabinetExpiredPostModal({ locale, onClose }: { locale: string; onClose: () => void }) {
+  const copy = getCabinetCopy(locale);
+
+  return createPortal(
+    <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/45 px-4 backdrop-blur-sm">
+      <section className="w-full max-w-[430px] rounded-[30px] border border-soft bg-surface px-6 py-8 text-center shadow-soft">
+        <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-[26px] bg-surface-soft text-6xl">
+          🦆
+        </div>
+        <h2 className="mt-5 text-2xl font-black leading-tight text-primary">
+          {copy.expiredPostTitle || "Пост уже отжил своё"}
+        </h2>
+        <p className="mx-auto mt-3 max-w-[340px] text-sm leading-6 text-secondary">
+          {copy.expiredPostText || "Свежие посты живут в ленте margeleT 24 часа. Этот пост уже исчез из живой ленты."}
+        </p>
+        <button
+          type="button"
+          onClick={onClose}
+          className="mt-6 inline-flex min-h-[46px] items-center justify-center rounded-full bg-strong px-6 text-sm font-black text-strong-foreground"
+        >
+          {copy.expiredPostButton || "Понятно"}
+        </button>
+      </section>
+    </div>,
+    document.body,
+  );
+}
+
 function SavedCabinetBlock({
   locale,
   posts,
   likedPostIds,
+  savedPostIds,
   subscriptionHandles,
   openPost: _openPost,
 }: {
   locale: string;
   posts: IngestedPost[];
   likedPostIds: number[];
+  savedPostIds: number[];
   subscriptionHandles: string[];
   openPost: (post: IngestedPost) => void;
 }) {
@@ -577,6 +622,8 @@ function SavedCabinetBlock({
   const [selectedHandle, setSelectedHandle] = useState<string>("");
   const [channelsOpen, setChannelsOpen] = useState(false);
   const [viewerPost, setViewerPost] = useState<IngestedPost | null>(null);
+  const [readerPost, setReaderPost] = useState<IngestedPost | null>(null);
+  const [expiredModalOpen, setExpiredModalOpen] = useState(false);
   const [viewerDirection] = useState<ViewerDirection>(null);
   const [expandedCaption, setExpandedCaption] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
@@ -586,7 +633,7 @@ function SavedCabinetBlock({
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const cabinetCopy = getCabinetCopy(locale);
 
-  const likedSet = useMemo(() => new Set(likedPostIds), [likedPostIds]);
+  const likedSet = useMemo(() => new Set([...likedPostIds, ...savedPostIds]), [likedPostIds, savedPostIds]);
   const subscribedSet = useMemo(
     () => new Set(subscriptionHandles.map((handle) => normalizeHandle(handle))),
     [subscriptionHandles],
@@ -652,6 +699,29 @@ function SavedCabinetBlock({
   }, [posts, subscribedSet, selectedHandle]);
 
   const activePosts = tab === "likes" ? likedPosts : subscriptionPosts;
+
+  const openCabinetPost = (post: IngestedPost | null) => {
+    setMenuPostId(null);
+    setActionError("");
+    setIsPlaying(false);
+    setViewerMediaIndex(0);
+
+    if (!post) {
+      setViewerPost(null);
+      setReaderPost(null);
+      setExpiredModalOpen(true);
+      return;
+    }
+
+    if (hasPlayableVideo(post)) {
+      setReaderPost(null);
+      setViewerPost(post);
+      return;
+    }
+
+    setViewerPost(null);
+    setReaderPost(post);
+  };
 
   return (
     <section className="space-y-3">
@@ -793,19 +863,18 @@ function SavedCabinetBlock({
             return (
               <article
                 key={post.id}
-                className="overflow-hidden rounded-[24px] border border-soft bg-surface-soft"
+                role="button"
+                tabIndex={0}
+                onClick={() => openCabinetPost(post)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openCabinetPost(post);
+                  }
+                }}
+                className="cursor-pointer overflow-hidden rounded-[24px] border border-soft bg-surface-soft transition hover:bg-surface"
               >
-                <button
-                  type="button"
-                  onClick={() => {
-                    setViewerPost(post);
-                    setViewerMediaIndex(0);
-                    setIsPlaying(false);
-                    setMenuPostId(null);
-                    setActionError("");
-                  }}
-                  className="block w-full text-left"
-                >
+                <div className="block w-full text-left">
                   <div className="flex gap-3 p-3">
                     {image ? (
                       <img
@@ -832,7 +901,7 @@ function SavedCabinetBlock({
                       </div>
                     </div>
                   </div>
-                </button>
+                </div>
               </article>
             );
           })}
@@ -852,6 +921,17 @@ function SavedCabinetBlock({
           </div>
         </div>
       )}
+
+      <FeedTextReaderModal
+        post={readerPost}
+        locale={locale as any}
+        liked={readerPost ? likedSet.has(readerPost.id) : false}
+        saved={readerPost ? savedPostIds.includes(readerPost.id) : false}
+        onClose={() => setReaderPost(null)}
+        onToggleLike={() => {}}
+        onToggleSave={() => {}}
+        openSource={() => {}}
+      />
 
       <FeedViewer
         locale={locale as any}
@@ -892,6 +972,13 @@ function SavedCabinetBlock({
         handleShare={async () => {}}
         setActionError={setActionError}
       />
+
+      {expiredModalOpen ? (
+        <CabinetExpiredPostModal
+          locale={locale}
+          onClose={() => setExpiredModalOpen(false)}
+        />
+      ) : null}
     </section>
   );
 }
@@ -901,6 +988,7 @@ export function CreatorScreen({
   setLocale,
   posts,
   likedPostIds,
+  savedPostIds,
   openPost,
 }: CreatorScreenProps) {
   const [user, setUser] = useState<TgUser | null>(null);
@@ -980,6 +1068,7 @@ export function CreatorScreen({
             locale={locale}
             posts={posts}
             likedPostIds={likedPostIds}
+            savedPostIds={savedPostIds}
             subscriptionHandles={subscriptionHandles}
             openPost={openPost}
           />

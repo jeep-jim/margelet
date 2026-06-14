@@ -236,6 +236,13 @@ function buildSource(body: Record<string, unknown>, existing?: StoredSource | nu
     defaultTag,
     tags: normalizeTags(body.tags ?? existing?.tags, defaultTag),
     status: (() => {
+      // Permanent moderation block must survive later bulk imports/adds.
+      // If a blocked source is submitted again without an explicit unblock flow,
+      // keep it blocked so rebuild will continue to skip it.
+      if (existing?.status === "blocked" && body.status !== "active-force") {
+        return "blocked";
+      }
+
       const nextStatus = asString(body.status, existing?.status || "active");
       return nextStatus === "paused" || nextStatus === "blocked" ? nextStatus : "active";
     })(),

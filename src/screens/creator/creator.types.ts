@@ -11,6 +11,7 @@ export type CreatorScreenProps = {
   posts: IngestedPost[];
   openPost: (post: IngestedPost) => void;
   likedPostIds: number[];
+  savedPostIds: number[];
 };
 
 export type CabinetTab = "channel" | "about" | "language";

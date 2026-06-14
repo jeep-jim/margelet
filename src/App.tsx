@@ -1079,6 +1079,7 @@ export default function App() {
           setLocale={setLocale}
           posts={posts}
           likedPostIds={likedPostIds}
+          savedPostIds={savedPostIds}
           openPost={(post) => {
             const postId = getPostIdFromUrl(post.postUrl);
             const handle = normalizeSourceHandle(post.source.handle);

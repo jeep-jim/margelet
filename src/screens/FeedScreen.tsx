@@ -1416,6 +1416,25 @@ export function FeedScreen({
     [posts, selectedModerationPostIds]
   );
 
+  const enrichedModerationReports = useMemo(() => {
+    return moderationReports.map((report) => {
+      const handle = String(report.sourceHandle || "").replace(/^@+/, "").toLowerCase();
+      const post = posts.find((item) =>
+        (report.postId && Number(item.id) === Number(report.postId)) ||
+        (handle && String(item.source?.handle || "").replace(/^@+/, "").toLowerCase() === handle)
+      ) || null;
+
+      return {
+        report,
+        post,
+        title: report.sourceTitle || post?.source?.title || report.sourceHandle || "Telegram",
+        handle: report.sourceHandle || post?.source?.handle || "",
+        avatar: post?.source?.avatar || getTelegramUserpicUrl(report.sourceHandle),
+        preview: String(post?.text || report.message || report.reason || "Жалоба").trim(),
+      };
+    });
+  }, [moderationReports, posts]);
+
 
   useEffect(() => {
     const onToggleModerationPost = (event: Event) => {
@@ -2757,22 +2776,30 @@ export function FeedScreen({
             </button>
           </div>
           <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1">
-            {moderationReports.slice(0, 8).map((report) => (
+            {enrichedModerationReports.slice(0, 8).map(({ report, title, handle, avatar, preview }) => (
               <button
                 key={report.id}
                 type="button"
                 onClick={() => {
                   setModerationReportsPanelOpen(false);
-                  if (report.sourceHandle && report.postId) {
-                    window.location.href = `/${report.sourceHandle}/${report.postId}`;
-                  } else {
-                    window.location.href = "/jim/admin#admin-reports";
-                  }
+                  window.location.href = "/jim/admin#admin-reports";
                 }}
-                className="block w-full rounded-2xl bg-white/8 px-3 py-2 text-left transition hover:bg-white/12"
+                className="flex w-full items-center gap-3 rounded-2xl bg-white/8 px-3 py-2 text-left transition hover:bg-white/12"
               >
-                <div className="truncate text-xs font-black text-white">{report.sourceTitle || report.sourceHandle || "Telegram"}</div>
-                <div className="mt-1 truncate text-[11px] text-white/55">{report.reason} · {report.postId ? `post ${report.postId}` : "канал"}</div>
+                <div className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-white/10">
+                  {avatar ? (
+                    <img src={avatar} alt="" className="h-full w-full object-cover" loading="lazy" referrerPolicy="no-referrer" />
+                  ) : (
+                    <div className="grid h-full w-full place-items-center text-xs font-black text-white/70">
+                      {String(title || handle || "T").slice(0, 1).toUpperCase()}
+                    </div>
+                  )}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate text-xs font-black text-white">{title}</div>
+                  <div className="mt-0.5 truncate text-[11px] text-white/55">@{String(handle || "telegram").replace(/^@+/, "")} · {report.reason} · {report.postId ? `post ${report.postId}` : "канал"}</div>
+                  <div className="mt-1 truncate text-[11px] text-white/75">{preview}</div>
+                </div>
               </button>
             ))}
           </div>
