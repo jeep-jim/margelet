@@ -12,6 +12,7 @@ const MODERATION_REPORTS_STORAGE_KEY = "margelet_local_moderation_reports_v1";
 const MODERATION_REPORTS_EVENT = "margelet:moderation-reports-updated";
 const MODERATION_REPORTS_QUEUE_KEY = "margelet_pending_moderation_reports_v1";
 const MODERATION_REPORTS_LAST_FLUSH_KEY = "margelet_moderation_reports_last_flush_v1";
+const MODERATION_REPORTS_AUTO_FLUSH_INTERVAL_MS = 12 * 60 * 60 * 1000;
 
 type LocalModerationReport = {
   id: string;
@@ -81,10 +82,12 @@ function scheduleModerationReportsFlush() {
   if (typeof window === "undefined") return;
   if (moderationFlushTimer !== null) return;
 
+  // Жалобы не должны долбить Vercel. Автоотправка максимум 2 раза в сутки,
+  // остальное дожидается следующего окна или ручного обновления в админке.
   moderationFlushTimer = window.setTimeout(() => {
     moderationFlushTimer = null;
     void flushModerationReportsQueue(false);
-  }, 45000);
+  }, 60_000);
 }
 
 async function flushModerationReportsQueue(force: boolean) {
@@ -94,8 +97,7 @@ async function flushModerationReportsQueue(force: boolean) {
 
   const now = Date.now();
   const lastFlush = Number(localStorage.getItem(MODERATION_REPORTS_LAST_FLUSH_KEY) || 0);
-  if (!force && now - lastFlush < 10 * 60 * 1000) {
-    scheduleModerationReportsFlush();
+  if (!force && now - lastFlush < MODERATION_REPORTS_AUTO_FLUSH_INTERVAL_MS) {
     return;
   }
 

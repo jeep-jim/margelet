@@ -508,7 +508,7 @@ export function AdminScreen({
           />
 
           <div id="admin-reports">
-            <AdminReportsSection telegramUserId={telegramUserId} />
+            <AdminReportsSection telegramUserId={telegramUserId} posts={posts} onDeletePost={onDeletePost} />
           </div>
 
           <div id="admin-channels">

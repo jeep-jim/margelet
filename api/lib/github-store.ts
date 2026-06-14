@@ -455,8 +455,11 @@ function normalizeFeedPostOrder<T>(posts: T[]) {
   return result;
 }
 
-// Функция очистки старых чанков для стран
+// Функция очистки старых чанков для стран.
+// В Vercel API файловая система read-only, поэтому чистим локально только в GitHub Actions/local mode.
 async function cleanupOldCountryChunks(countryCode: string, currentChunkIds: number[]): Promise<void> {
+  if (!isLocalFileMode() && process.env.GITHUB_ACTIONS !== "true") return;
+
   const countryDir = path.join(process.cwd(), `data/feeds/${countryCode}`);
   if (!existsSync(countryDir)) return;
   
@@ -860,8 +863,11 @@ export async function writeFeedFile<T = unknown>(
     }
   }
   
-  // Пишем в чанки
-  await writeFeedPosts(orderedPosts as IngestedPost[], updatedAt);
+  // Пишем legacy data/feed/chunks только там, где файловая система доступна.
+  // На Vercel API /var/task read-only, а актуальные публичные снапшоты ниже пишутся через GitHub API.
+  if (isLocalFileMode() || process.env.GITHUB_ACTIONS === "true") {
+    await writeFeedPosts(orderedPosts as IngestedPost[], updatedAt);
+  }
   
   // Всё ещё пишем старый файл для обратной совместимости (временно)
   const payload: FeedFile<T> = {

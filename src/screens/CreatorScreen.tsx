@@ -14,6 +14,8 @@ import type { CreatorScreenProps, TgUser } from "./creator/creator.types";
 import type { IngestedPost } from "../types/app";
 import { readTelegramUserFromStorage } from "./creator/creator.utils";
 import { useCreatorPwa } from "./creator/useCreatorPwa";
+import { FeedViewer } from "./feed/FeedViewer";
+import type { ViewerDirection } from "./feed/feed.types";
 
 const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 
@@ -563,7 +565,7 @@ function SavedCabinetBlock({
   posts,
   likedPostIds,
   subscriptionHandles,
-  openPost,
+  openPost: _openPost,
 }: {
   locale: string;
   posts: IngestedPost[];
@@ -574,6 +576,14 @@ function SavedCabinetBlock({
   const [tab, setTab] = useState<"likes" | "subscriptions">("likes");
   const [selectedHandle, setSelectedHandle] = useState<string>("");
   const [channelsOpen, setChannelsOpen] = useState(false);
+  const [viewerPost, setViewerPost] = useState<IngestedPost | null>(null);
+  const [viewerDirection] = useState<ViewerDirection>(null);
+  const [expandedCaption, setExpandedCaption] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [menuPostId, setMenuPostId] = useState<number | null>(null);
+  const [actionError, setActionError] = useState("");
+  const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const cabinetCopy = getCabinetCopy(locale);
 
   const likedSet = useMemo(() => new Set(likedPostIds), [likedPostIds]);
@@ -787,7 +797,13 @@ function SavedCabinetBlock({
               >
                 <button
                   type="button"
-                  onClick={() => openPost(post)}
+                  onClick={() => {
+                    setViewerPost(post);
+                    setViewerMediaIndex(0);
+                    setIsPlaying(false);
+                    setMenuPostId(null);
+                    setActionError("");
+                  }}
                   className="block w-full text-left"
                 >
                   <div className="flex gap-3 p-3">
@@ -836,6 +852,46 @@ function SavedCabinetBlock({
           </div>
         </div>
       )}
+
+      <FeedViewer
+        locale={locale as any}
+        activePost={viewerPost}
+        viewerDirection={viewerDirection}
+        expandedCaption={expandedCaption}
+        setExpandedCaption={setExpandedCaption}
+        isMuted={isMuted}
+        setIsMuted={setIsMuted}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        copySuccessId={null}
+        menuPostId={menuPostId}
+        setMenuPostId={setMenuPostId}
+        actionError={actionError}
+        videoProgress={0}
+        viewerMediaIndex={viewerMediaIndex}
+        setViewerMediaIndex={setViewerMediaIndex}
+        likedPostIds={likedPostIds}
+        savedPostIds={[]}
+        onToggleLike={() => {}}
+        onToggleSave={() => {}}
+        onHidePost={() => {
+          setViewerPost(null);
+        }}
+        onDeletePost={async () => {
+          setViewerPost(null);
+        }}
+        currentTelegramUserId={null}
+        openSource={() => {}}
+        closeViewer={() => {
+          setViewerPost(null);
+          setIsPlaying(false);
+          setMenuPostId(null);
+        }}
+        nextViewer={() => {}}
+        prevViewer={() => {}}
+        handleShare={async () => {}}
+        setActionError={setActionError}
+      />
     </section>
   );
 }

@@ -28,6 +28,8 @@ const SELECTED_TAGS_STORAGE_KEY = "margelet_feed_selected_tags";
 const FEED_SEARCH_STORAGE_KEY = "margelet_feed_search";
 const MODERATION_REPORTS_STORAGE_KEY = "margelet_local_moderation_reports_v1";
 const MODERATION_REPORTS_EVENT = "margelet:moderation-reports-updated";
+const MODERATION_REPORTS_BADGE_EVENT = "margelet:moderation-reports-badge";
+const MODERATION_REPORTS_TOGGLE_EVENT = "margelet:moderation-reports-toggle";
 
 type ModerationReport = {
   id: string;
@@ -1404,6 +1406,8 @@ export function FeedScreen({
   const [selectedModerationPostIds, setSelectedModerationPostIds] = useState<number[]>([]);
   const [moderationSelectionMode, setModerationSelectionMode] = useState(false);
   const [moderationReports, setModerationReports] = useState<ModerationReport[]>([]);
+  const [moderationNoticeDismissed, setModerationNoticeDismissed] = useState(false);
+  const [moderationReportsPanelOpen, setModerationReportsPanelOpen] = useState(false);
   const [moderationMessage, setModerationMessage] = useState<string | null>(null);
   const isCurrentAdmin = !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
 
@@ -1462,13 +1466,14 @@ export function FeedScreen({
         if (!merged.has(key)) merged.set(key, report);
       }
 
-      setModerationReports(
-        Array.from(merged.values()).sort(
-          (a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt)
-        )
+      const nextReports = Array.from(merged.values()).sort(
+        (a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt)
       );
+      setModerationReports(nextReports);
+      if (nextReports.length > 0) setModerationNoticeDismissed(false);
     } catch {
       setModerationReports(localReports);
+      if (localReports.length > 0) setModerationNoticeDismissed(false);
     }
   }, [currentTelegramUserId, isCurrentAdmin]);
 
@@ -1489,6 +1494,25 @@ export function FeedScreen({
       window.clearInterval(timer);
     };
   }, [loadModerationReports]);
+
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent(MODERATION_REPORTS_BADGE_EVENT, {
+        detail: { count: isCurrentAdmin ? moderationReports.length : 0 },
+      })
+    );
+  }, [isCurrentAdmin, moderationReports.length]);
+
+  useEffect(() => {
+    const togglePanel = () => {
+      if (!isCurrentAdmin || moderationReports.length === 0) return;
+      setModerationReportsPanelOpen((prev) => !prev);
+      setModerationNoticeDismissed(true);
+    };
+
+    window.addEventListener(MODERATION_REPORTS_TOGGLE_EVENT, togglePanel);
+    return () => window.removeEventListener(MODERATION_REPORTS_TOGGLE_EVENT, togglePanel);
+  }, [isCurrentAdmin, moderationReports.length]);
 
   const deleteSelectedModerationPosts = async () => {
     if (!selectedModerationPostIds.length) return;
@@ -2691,23 +2715,75 @@ export function FeedScreen({
 
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
-      {isCurrentAdmin && moderationReports.length > 0 ? (
-        <button
-          type="button"
-          onClick={() => {
-            const first = moderationReports[0];
-            if (first?.sourceHandle && first?.postId) {
-              window.location.href = `/${first.sourceHandle}/${first.postId}`;
-            }
-          }}
-          className="fixed left-3 right-3 top-[calc(var(--app-header-offset)+10px)] z-[80] mx-auto flex max-w-[620px] items-center justify-between gap-3 rounded-[22px] border border-rose-300/30 bg-rose-600/92 px-4 py-3 text-left text-sm font-black text-white shadow-[0_18px_70px_rgba(225,29,72,.35)] backdrop-blur"
-        >
-          <span className="flex min-w-0 items-center gap-2">
+      {isCurrentAdmin && moderationReports.length > 0 && !moderationNoticeDismissed ? (
+        <div className="fixed left-3 right-3 top-[calc(var(--app-header-offset)+10px)] z-[80] mx-auto flex max-w-[620px] items-center justify-between gap-3 rounded-[22px] border border-rose-300/30 bg-rose-600/92 px-4 py-3 text-sm font-black text-white shadow-[0_18px_70px_rgba(225,29,72,.35)] backdrop-blur">
+          <button
+            type="button"
+            onClick={() => {
+              setModerationReportsPanelOpen(true);
+              setModerationNoticeDismissed(true);
+            }}
+            className="flex min-w-0 flex-1 items-center gap-2 text-left"
+          >
             <AlertTriangle className="h-5 w-5 shrink-0" />
-            <span className="truncate">Жалобы: {moderationReports.length}. Тут хуйня творится, бро — проверь модерацию.</span>
-          </span>
-          <span className="shrink-0 rounded-full bg-white/18 px-2 py-1 text-xs">открыть</span>
-        </button>
+            <span className="truncate">Жалобы: {moderationReports.length}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setModerationNoticeDismissed(true)}
+            className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white/16 text-white/85 transition hover:bg-white/24 hover:text-white"
+            aria-label="Скрыть жалобы"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
+      ) : null}
+
+      {isCurrentAdmin && moderationReportsPanelOpen && moderationReports.length > 0 ? (
+        <div
+          className="fixed inset-x-3 top-[calc(var(--app-header-offset)+10px)] z-[85] mx-auto max-w-[620px] rounded-[24px] border border-rose-300/25 bg-[#071321]/95 p-3 text-white shadow-[0_18px_80px_rgba(0,0,0,.45)] backdrop-blur"
+        >
+          <div className="mb-2 flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-2 text-sm font-black">
+              <AlertTriangle className="h-4 w-4 text-rose-300" />
+              <span>Жалобы: {moderationReports.length}</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setModerationReportsPanelOpen(false)}
+              className="grid h-8 w-8 place-items-center rounded-full bg-white/10 text-white/70"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+          <div className="max-h-[320px] space-y-2 overflow-y-auto pr-1">
+            {moderationReports.slice(0, 8).map((report) => (
+              <button
+                key={report.id}
+                type="button"
+                onClick={() => {
+                  setModerationReportsPanelOpen(false);
+                  if (report.sourceHandle && report.postId) {
+                    window.location.href = `/${report.sourceHandle}/${report.postId}`;
+                  } else {
+                    window.location.href = "/jim/admin#admin-reports";
+                  }
+                }}
+                className="block w-full rounded-2xl bg-white/8 px-3 py-2 text-left transition hover:bg-white/12"
+              >
+                <div className="truncate text-xs font-black text-white">{report.sourceTitle || report.sourceHandle || "Telegram"}</div>
+                <div className="mt-1 truncate text-[11px] text-white/55">{report.reason} · {report.postId ? `post ${report.postId}` : "канал"}</div>
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={() => { window.location.href = "/jim/admin#admin-reports"; }}
+            className="mt-3 w-full rounded-2xl bg-rose-500 px-3 py-2 text-sm font-black text-white"
+          >
+            Открыть модерацию
+          </button>
+        </div>
       ) : null}
 
       {isCurrentAdmin && selectedModerationPostIds.length > 0 ? (

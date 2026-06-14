@@ -633,7 +633,7 @@ export default function App() {
   const replacePath = useCallback((nextPath: string) => {
     const normalized = normalizePathname(nextPath);
     if (normalizePathname(window.location.pathname) !== normalized) {
-      window.history.replaceState({}, document.title, normalized);
+      window.history.pushState({ margelet: true }, document.title, normalized);
     }
     setLocationPath(normalized);
   }, []);

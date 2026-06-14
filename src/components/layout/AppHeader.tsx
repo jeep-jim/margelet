@@ -8,6 +8,8 @@ const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
 const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
 const FEED_SEARCH_STATE_EVENT = "margelet:feed-search-state";
+const MODERATION_REPORTS_BADGE_EVENT = "margelet:moderation-reports-badge";
+const MODERATION_REPORTS_TOGGLE_EVENT = "margelet:moderation-reports-toggle";
 
 type Props = {
   current: TabId;
@@ -39,6 +41,7 @@ export function AppHeader({ current, setCurrent }: Props) {
   const [subscriptionsOpen, setSubscriptionsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [hasNewSubscriptions, setHasNewSubscriptions] = useState(false);
+  const [moderationReportsCount, setModerationReportsCount] = useState(0);
   const [theme, setTheme] = useState<Theme>(() => getTheme());
 
   useEffect(() => {
@@ -96,14 +99,21 @@ export function AppHeader({ current, setCurrent }: Props) {
       setSearchOpen(Boolean(detail?.open));
     };
 
+    const handleModerationBadge = (event: Event) => {
+      const detail = (event as CustomEvent<{ count?: number }>).detail;
+      setModerationReportsCount(Math.max(0, Number(detail?.count || 0)));
+    };
+
     window.addEventListener(FEED_SUBSCRIPTIONS_BADGE_EVENT, handleBadge as EventListener);
     window.addEventListener(FEED_SUBSCRIPTIONS_TOGGLE_EVENT, handleSubscriptionsState as EventListener);
     window.addEventListener(FEED_SEARCH_STATE_EVENT, handleSearchState as EventListener);
+    window.addEventListener(MODERATION_REPORTS_BADGE_EVENT, handleModerationBadge as EventListener);
 
     return () => {
       window.removeEventListener(FEED_SUBSCRIPTIONS_BADGE_EVENT, handleBadge as EventListener);
       window.removeEventListener(FEED_SUBSCRIPTIONS_TOGGLE_EVENT, handleSubscriptionsState as EventListener);
       window.removeEventListener(FEED_SEARCH_STATE_EVENT, handleSearchState as EventListener);
+      window.removeEventListener(MODERATION_REPORTS_BADGE_EVENT, handleModerationBadge as EventListener);
     };
   }, []);
 
@@ -122,6 +132,11 @@ export function AppHeader({ current, setCurrent }: Props) {
 
   const handleToggleSubscriptions = () => {
     if (current !== "feed") return;
+
+    if (moderationReportsCount > 0) {
+      window.dispatchEvent(new CustomEvent(MODERATION_REPORTS_TOGGLE_EVENT));
+      return;
+    }
 
     window.dispatchEvent(new CustomEvent(FEED_SUBSCRIPTIONS_TOGGLE_EVENT));
   };
@@ -186,6 +201,9 @@ export function AppHeader({ current, setCurrent }: Props) {
           <Bell className="h-5 w-5" />
           {hasNewSubscriptions ? (
             <span className="absolute right-1.5 top-1.5 h-2.5 w-2.5 rounded-full bg-[#38d25a] shadow-[0_0_10px_rgba(56,210,90,.85)]" />
+          ) : null}
+          {moderationReportsCount > 0 ? (
+            <span className="absolute left-1.5 top-1.5 h-2.5 w-2.5 rounded-full bg-rose-500 shadow-[0_0_10px_rgba(244,63,94,.9)]" />
           ) : null}
         </button>
 
