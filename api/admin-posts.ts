@@ -7,6 +7,7 @@ import {
   writeSourcesFile,
   readReportsFile,
   writeReportsFile,
+  writeModerationBatchFiles,
   type ModerationReport,
 } from "./lib/github-store.js";
 import type { ContentTag, IngestedPost, TrustedSource } from "./lib/contracts.js";
@@ -878,6 +879,8 @@ async function bulkApplyReports(payload: Record<string, unknown>) {
 
   let deletedPosts = 0;
   let changedSources = 0;
+  let nextPostsForWrite: IngestedPost[] | undefined;
+  let nextSourcesForWrite: StoredSource[] | undefined;
 
   if (shouldDeletePosts) {
     const postIds = new Set(
@@ -891,7 +894,7 @@ async function bulkApplyReports(payload: Record<string, unknown>) {
       const nextPosts = currentPosts.filter((post) => !postIds.has(Number(post.id)));
       deletedPosts = currentPosts.length - nextPosts.length;
       if (deletedPosts > 0) {
-        await writeFeedFile(sortPosts(nextPosts), { reason: `bulkReportsDeletePosts:${postIds.size}` });
+        nextPostsForWrite = sortPosts(nextPosts);
       }
     }
   }
@@ -914,7 +917,7 @@ async function bulkApplyReports(payload: Record<string, unknown>) {
       });
 
       if (changedSources > 0) {
-        await writeSourcesFile(sortSources(nextSources));
+        nextSourcesForWrite = sortSources(nextSources);
       }
     }
   }
@@ -922,7 +925,13 @@ async function bulkApplyReports(payload: Record<string, unknown>) {
   const nextReports = currentReports.map((report) =>
     reportIds.has(report.id) ? { ...report, status: "resolved" as const, updatedAt: now } : report
   );
-  await writeReportsFile(nextReports);
+
+  await writeModerationBatchFiles({
+    posts: nextPostsForWrite,
+    sources: nextSourcesForWrite,
+    reports: nextReports,
+    reason: `${moderationAction}:${reportIds.size}`,
+  });
 
   return {
     reports: nextReports.filter((report) => report.status !== "resolved"),

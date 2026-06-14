@@ -46,11 +46,6 @@ function readLocalReports(): ModerationReport[] {
   }
 }
 
-function writeLocalReports(reports: ModerationReport[]) {
-  localStorage.setItem(MODERATION_REPORTS_STORAGE_KEY, JSON.stringify(reports.slice(0, 300)));
-  window.dispatchEvent(new Event(MODERATION_REPORTS_EVENT));
-}
-
 function readQueuedReports(): ModerationReport[] {
   try {
     const raw = localStorage.getItem(MODERATION_REPORTS_QUEUE_KEY);
@@ -198,20 +193,25 @@ function mergeReports(serverReports: ModerationReport[], localReports: Moderatio
 export function AdminReportsSection({
   telegramUserId,
   posts,
-  onDeletePost,
 }: {
   telegramUserId: string | null;
   posts: IngestedPost[];
-  onDeletePost: (id: number) => Promise<void>;
+  onDeletePost?: (id: number) => Promise<void>;
 }) {
   const [reports, setReports] = useState<ModerationReport[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [sectionOpen, setSectionOpen] = useState(true);
   const [openIds, setOpenIds] = useState<Record<string, boolean>>({});
-  const [scopes, setScopes] = useState<Record<string, Scope>>({});
+  const [selectedIds, setSelectedIds] = useState<Record<string, boolean>>({});
+  const [scope, setScope] = useState<Scope>({ post: true, channel: false });
+  const [applying, setApplying] = useState(false);
 
   const postById = useMemo(() => new Map(posts.map((post) => [post.id, post])), [posts]);
+  const openReports = reports.filter((report) => report.status === "open");
+  const selectedReportIds = openReports.filter((report) => selectedIds[report.id]).map((report) => report.id);
+  const selectedCount = selectedReportIds.length;
+  const allSelected = openReports.length > 0 && selectedCount === openReports.length;
 
   const loadReports = useCallback(async () => {
     setLoading(true);
@@ -270,71 +270,74 @@ export function AdminReportsSection({
     }
   }, [telegramUserId]);
 
-  const resolveReport = async (reportId: string) => {
-    const nextLocal = readLocalReports().filter((report) => report.id !== reportId);
-    writeLocalReports(nextLocal);
-    setReports((prev) => prev.filter((report) => report.id !== reportId));
+  const toggleSelect = (reportId: string) => {
+    setSelectedIds((prev) => ({ ...prev, [reportId]: !prev[reportId] }));
+  };
 
-    if (!telegramUserId) return;
+  const toggleSelectAll = () => {
+    if (allSelected) {
+      setSelectedIds({});
+      return;
+    }
+
+    const next: Record<string, boolean> = {};
+    for (const report of openReports) next[report.id] = true;
+    setSelectedIds(next);
+  };
+
+  const applyBulkAction = async (moderationAction: "delete" | "block" | "pause" | "close") => {
+    if (!telegramUserId) {
+      setMessage("Нужна авторизация администратора.");
+      return;
+    }
+
+    if (!selectedReportIds.length) {
+      setMessage("Сначала выбери жалобы.");
+      return;
+    }
+
+    setApplying(true);
+    setMessage(null);
 
     try {
-      await fetch("/api/admin-posts", {
+      const response = await fetch("/api/admin-posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           entity: "reports",
-          action: "resolve",
-          reportId,
+          action: "bulk-apply",
           telegramUserId,
+          reportIds: selectedReportIds,
+          moderationAction,
+          scope:
+            moderationAction === "delete"
+              ? scope
+              : moderationAction === "block" || moderationAction === "pause"
+                ? { post: false, channel: true }
+                : { post: false, channel: false },
         }),
       });
-      await loadReports();
-    } catch {
-      setMessage("Локально закрыто, сервер проверить не удалось.");
-    }
-  };
 
-  const updateSourceStatus = async (report: ModerationReport, status: "paused" | "blocked") => {
-    if (!telegramUserId || !report.sourceHandle) return;
+      const data = await response.json().catch(() => null);
+      if (!response.ok) throw new Error(data?.error || "Не удалось применить действие");
 
-    const response = await fetch("/api/admin-posts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        entity: "sources",
-        action: "update",
-        source: {
-          handle: report.sourceHandle,
-          countryCode: report.sourceCountryCode || "ru",
-          title: report.sourceTitle || report.sourceHandle,
-          status,
-          note: status === "blocked" ? "blocked by report" : "paused by report",
-        },
-        telegramUserId,
-      }),
-    });
-
-    const data = await response.json().catch(() => null);
-    if (!response.ok) throw new Error(data?.error || "Не удалось обновить канал");
-  };
-
-  const applyReportAction = async (report: ModerationReport, forced?: Partial<Scope>) => {
-    const scope = { ...(scopes[report.id] || { post: true, channel: false }), ...(forced || {}) };
-    setMessage(null);
-
-    try {
-      if (scope.post && report.postId) {
-        await onDeletePost(report.postId);
-      }
-
-      if (scope.channel) {
-        await updateSourceStatus(report, "blocked");
-      }
-
-      await resolveReport(report.id);
-      setMessage("Готово: действие применено.");
+      setSelectedIds({});
+      setOpenIds({});
+      setReports(Array.isArray(data?.reports) ? mergeReports(data.reports, readLocalReports()) : []);
+      setMessage(
+        moderationAction === "delete"
+          ? `Готово: обработано ${selectedReportIds.length} жалоб.`
+          : moderationAction === "block"
+            ? `Готово: каналы отправлены в блок.`
+            : moderationAction === "pause"
+              ? `Готово: каналы поставлены на паузу.`
+              : `Готово: жалобы закрыты.`
+      );
+      window.dispatchEvent(new Event(MODERATION_REPORTS_EVENT));
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "Не удалось применить действие");
+    } finally {
+      setApplying(false);
     }
   };
 
@@ -381,193 +384,211 @@ export function AdminReportsSection({
               </div>
             ) : null}
 
-            {reports.map((report) => {
-              const post = report.postId ? postById.get(report.postId) || null : null;
-              const image = getPostImage(post);
-              const avatar = getSourceAvatar(report, post);
-              const sourceTitle = getSourceTitle(report, post);
-              const sourceHandle = getSourceHandle(report, post);
-              const postUrl = getPostUrl(report, post);
-              const sourceUrl = getSourceUrl(report, post);
-              const open = Boolean(openIds[report.id]);
-              const scope = { ...(scopes[report.id] || { post: true, channel: false }) };
+            {reports.length > 0 ? (
+              <div className="sticky top-2 z-20 rounded-[24px] border border-white/10 bg-[#101620]/95 p-3 shadow-2xl shadow-black/35 backdrop-blur-xl">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={toggleSelectAll}
+                      className="rounded-2xl bg-white px-4 py-2 text-sm font-black text-black transition hover:bg-white/90"
+                    >
+                      {allSelected ? "Снять всё" : "Выделить всё"}
+                    </button>
+                    <span className="rounded-full bg-white/8 px-3 py-2 text-xs font-black text-white/70">
+                      выбрано: {selectedCount}
+                    </span>
+                    <label className="flex items-center gap-2 rounded-2xl bg-white/8 px-3 py-2 text-xs font-black text-white/80">
+                      <input
+                        type="checkbox"
+                        checked={scope.post}
+                        onChange={(event) => setScope((prev) => ({ ...prev, post: event.target.checked }))}
+                      />
+                      пост
+                    </label>
+                    <label className="flex items-center gap-2 rounded-2xl bg-white/8 px-3 py-2 text-xs font-black text-white/80">
+                      <input
+                        type="checkbox"
+                        checked={scope.channel}
+                        onChange={(event) => setScope((prev) => ({ ...prev, channel: event.target.checked }))}
+                      />
+                      канал
+                    </label>
+                  </div>
 
-              return (
-                <div key={report.id} className="overflow-hidden rounded-[22px] border border-rose-400/25 bg-rose-500/8">
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => setOpenIds((prev) => ({ ...prev, [report.id]: !prev[report.id] }))}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault();
-                        setOpenIds((prev) => ({ ...prev, [report.id]: !prev[report.id] }));
-                      }
-                    }}
-                    className="flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-3 text-left transition hover:bg-white/5"
-                  >
-                    <div className="flex min-w-0 items-center gap-3">
-                      <button
-                        type="button"
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          openUrl(sourceUrl);
+                  <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:min-w-[520px]">
+                    <button
+                      type="button"
+                      disabled={!selectedCount || applying}
+                      onClick={() => void applyBulkAction("delete")}
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-rose-500 px-3 py-2 text-xs font-black text-white disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <Trash2 className="h-4 w-4" /> удалить
+                    </button>
+                    <button
+                      type="button"
+                      disabled={!selectedCount || applying}
+                      onClick={() => void applyBulkAction("block")}
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-500 px-3 py-2 text-xs font-black text-white disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <Ban className="h-4 w-4" /> блок
+                    </button>
+                    <button
+                      type="button"
+                      disabled={!selectedCount || applying}
+                      onClick={() => void applyBulkAction("pause")}
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/10 px-3 py-2 text-xs font-black text-white disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <Pause className="h-4 w-4" /> пауза
+                    </button>
+                    <button
+                      type="button"
+                      disabled={!selectedCount || applying}
+                      onClick={() => void applyBulkAction("close")}
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-500/20 px-3 py-2 text-xs font-black text-emerald-100 disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                      <CheckCircle2 className="h-4 w-4" /> закрыть
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            {reports.length > 0 ? (
+              <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
+                {reports.map((report) => {
+                  const post = report.postId ? postById.get(report.postId) || null : null;
+                  const image = getPostImage(post);
+                  const avatar = getSourceAvatar(report, post);
+                  const sourceTitle = getSourceTitle(report, post);
+                  const sourceHandle = getSourceHandle(report, post);
+                  const postUrl = getPostUrl(report, post);
+                  const sourceUrl = getSourceUrl(report, post);
+                  const open = Boolean(openIds[report.id]);
+                  const selected = Boolean(selectedIds[report.id]);
+
+                  return (
+                    <div
+                      key={report.id}
+                      className={`overflow-hidden rounded-[22px] border bg-rose-500/8 transition ${
+                        selected ? "border-sky-300/70 ring-2 ring-sky-400/20" : "border-rose-400/25"
+                      }`}
+                    >
+                      <div
+                        role="button"
+                        tabIndex={0}
+                        onClick={() => setOpenIds((prev) => ({ ...prev, [report.id]: !prev[report.id] }))}
+                        onKeyDown={(event) => {
+                          if (event.key === "Enter" || event.key === " ") {
+                            event.preventDefault();
+                            setOpenIds((prev) => ({ ...prev, [report.id]: !prev[report.id] }));
+                          }
                         }}
-                        className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full bg-white/10 text-sm font-black text-white"
-                        title={sourceHandle ? `@${sourceHandle}` : sourceTitle}
+                        className="flex w-full cursor-pointer items-center justify-between gap-3 px-3 py-3 text-left transition hover:bg-white/5"
                       >
-                        {avatar ? <img src={avatar} alt="" className="h-full w-full object-cover" loading="lazy" /> : sourceTitle.slice(0, 1)}
-                      </button>
+                        <div className="flex min-w-0 items-center gap-3">
+                          <button
+                            type="button"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              toggleSelect(report.id);
+                            }}
+                            className={`grid h-9 w-9 shrink-0 place-items-center rounded-xl border text-sm font-black transition ${
+                              selected
+                                ? "border-sky-300 bg-sky-500 text-white"
+                                : "border-white/10 bg-white/8 text-white/65 hover:bg-white/15"
+                            }`}
+                            title="Выбрать жалобу"
+                          >
+                            {selected ? "✓" : ""}
+                          </button>
 
-                      <div className="min-w-0">
-                        <div className="flex items-center gap-2 text-sm font-black text-white">
-                          <AlertTriangle className="h-4 w-4 shrink-0 text-rose-300" />
-                          <span className="truncate">{formatReason(report.reason)}</span>
-                          <span className="rounded-full bg-rose-500/20 px-2 py-0.5 text-xs text-rose-100">
-                            ×{report.count || 1}
-                          </span>
-                        </div>
-                        <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-white/55">
                           <button
                             type="button"
                             onClick={(event) => {
                               event.stopPropagation();
                               openUrl(sourceUrl);
                             }}
-                            className="max-w-[190px] truncate font-bold text-white/75 hover:text-white"
+                            className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full bg-white/10 text-sm font-black text-white"
+                            title={sourceHandle ? `@${sourceHandle}` : sourceTitle}
                           >
-                            {sourceTitle}
+                            {avatar ? <img src={avatar} alt="" className="h-full w-full object-cover" loading="lazy" /> : sourceTitle.slice(0, 1)}
                           </button>
-                          {sourceHandle ? <span>@{sourceHandle}</span> : null}
-                          {report.sourceCountryCode ? <span>{report.sourceCountryCode.toUpperCase()}</span> : null}
-                          {report.postId ? <span>post {report.postId}</span> : null}
-                        </div>
-                      </div>
-                    </div>
 
-                    <ChevronDown className={`h-4 w-4 shrink-0 text-white/55 transition ${open ? "rotate-180" : ""}`} />
-                  </div>
-
-                  {open ? (
-                    <div className="space-y-3 border-t border-white/10 p-3">
-                      <div
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => openUrl(postUrl)}
-                        onKeyDown={(event) => {
-                          if (event.key === "Enter") openUrl(postUrl);
-                        }}
-                        className="flex cursor-pointer gap-3 rounded-2xl bg-black/18 p-3 transition hover:bg-black/25"
-                      >
-                        {image ? (
-                          <img src={image} alt="" className="h-24 w-24 shrink-0 rounded-2xl object-cover" loading="lazy" />
-                        ) : (
-                          <div className="grid h-24 w-24 shrink-0 place-items-center rounded-2xl bg-white/8 text-4xl">🐤</div>
-                        )}
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center gap-2">
-                            {avatar ? (
-                              <img src={avatar} alt="" className="h-7 w-7 shrink-0 rounded-full object-cover" loading="lazy" />
-                            ) : null}
-                            <div className="min-w-0">
-                              <div className="truncate text-xs font-black text-white/75">{sourceTitle}</div>
-                              {sourceHandle ? <div className="truncate text-[11px] text-white/45">@{sourceHandle}</div> : null}
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2 text-sm font-black text-white">
+                              <AlertTriangle className="h-4 w-4 shrink-0 text-rose-300" />
+                              <span className="truncate">{formatReason(report.reason)}</span>
+                              <span className="rounded-full bg-rose-500/20 px-2 py-0.5 text-xs text-rose-100">
+                                ×{report.count || 1}
+                              </span>
+                            </div>
+                            <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-white/55">
+                              <button
+                                type="button"
+                                onClick={(event) => {
+                                  event.stopPropagation();
+                                  openUrl(sourceUrl);
+                                }}
+                                className="max-w-[190px] truncate font-bold text-white/75 hover:text-white"
+                              >
+                                {sourceTitle}
+                              </button>
+                              {sourceHandle ? <span>@{sourceHandle}</span> : null}
+                              {report.sourceCountryCode ? <span>{report.sourceCountryCode.toUpperCase()}</span> : null}
                             </div>
                           </div>
-                          <div className="mt-2 line-clamp-4 text-sm font-bold leading-5 text-white/90">
-                            {getPostPreview(post)}
-                          </div>
-                          <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-white/38">
-                            <span>{formatDate(report.updatedAt)}</span>
-                            {postUrl ? (
-                              <span className="inline-flex items-center gap-1 text-sky-200">
-                                открыть пост <ExternalLink className="h-3 w-3" />
-                              </span>
-                            ) : null}
+                        </div>
+
+                        <ChevronDown className={`h-4 w-4 shrink-0 text-white/55 transition ${open ? "rotate-180" : ""}`} />
+                      </div>
+
+                      {open ? (
+                        <div className="border-t border-white/10 p-3">
+                          <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => openUrl(postUrl)}
+                            onKeyDown={(event) => {
+                              if (event.key === "Enter") openUrl(postUrl);
+                            }}
+                            className="flex cursor-pointer gap-3 rounded-2xl bg-black/18 p-3 transition hover:bg-black/25"
+                          >
+                            {image ? (
+                              <img src={image} alt="" className="h-24 w-24 shrink-0 rounded-2xl object-cover" loading="lazy" />
+                            ) : (
+                              <div className="grid h-24 w-24 shrink-0 place-items-center rounded-2xl bg-white/8 text-4xl">🐤</div>
+                            )}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2">
+                                {avatar ? (
+                                  <img src={avatar} alt="" className="h-7 w-7 shrink-0 rounded-full object-cover" loading="lazy" />
+                                ) : null}
+                                <div className="min-w-0">
+                                  <div className="truncate text-xs font-black text-white/75">{sourceTitle}</div>
+                                  {sourceHandle ? <div className="truncate text-[11px] text-white/45">@{sourceHandle}</div> : null}
+                                </div>
+                              </div>
+                              <div className="mt-2 line-clamp-4 text-sm font-bold leading-5 text-white/90">
+                                {getPostPreview(post)}
+                              </div>
+                              <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] text-white/38">
+                                <span>{formatDate(report.updatedAt)}</span>
+                                {postUrl ? (
+                                  <span className="inline-flex items-center gap-1 text-sky-200">
+                                    открыть пост <ExternalLink className="h-3 w-3" />
+                                  </span>
+                                ) : null}
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-2">
-                        <label className="flex items-center gap-2 rounded-2xl bg-white/8 px-3 py-2 text-sm font-bold text-white/80">
-                          <input
-                            type="checkbox"
-                            checked={scope.post}
-                            onChange={(event) =>
-                              setScopes((prev) => ({
-                                ...prev,
-                                [report.id]: { ...scope, post: event.target.checked },
-                              }))
-                            }
-                          />
-                          ✅ пост
-                        </label>
-                        <label className="flex items-center gap-2 rounded-2xl bg-white/8 px-3 py-2 text-sm font-bold text-white/80">
-                          <input
-                            type="checkbox"
-                            checked={scope.channel}
-                            onChange={(event) =>
-                              setScopes((prev) => ({
-                                ...prev,
-                                [report.id]: { ...scope, channel: event.target.checked },
-                              }))
-                            }
-                          />
-                          ✅ канал
-                        </label>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-                        <button
-                          type="button"
-                          onClick={() => void applyReportAction(report, { post: true, channel: false })}
-                          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-rose-500 px-3 py-2 text-xs font-black text-white"
-                        >
-                          <Trash2 className="h-4 w-4" /> удалить
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            void updateSourceStatus(report, "blocked")
-                              .then(() => resolveReport(report.id))
-                              .catch((error) => setMessage(error instanceof Error ? error.message : "Не удалось заблокировать"))
-                          }
-                          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-orange-500 px-3 py-2 text-xs font-black text-white"
-                        >
-                          <Ban className="h-4 w-4" /> блок
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            void updateSourceStatus(report, "paused")
-                              .then(() => resolveReport(report.id))
-                              .catch((error) => setMessage(error instanceof Error ? error.message : "Не удалось поставить паузу"))
-                          }
-                          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white/10 px-3 py-2 text-xs font-black text-white"
-                        >
-                          <Pause className="h-4 w-4" /> пауза
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => void resolveReport(report.id)}
-                          className="inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-500/20 px-3 py-2 text-xs font-black text-emerald-100"
-                        >
-                          <CheckCircle2 className="h-4 w-4" /> закрыть
-                        </button>
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => void applyReportAction(report)}
-                        className="w-full rounded-2xl bg-white px-3 py-2 text-sm font-black text-black"
-                      >
-                        Применить выбранное
-                      </button>
+                      ) : null}
                     </div>
-                  ) : null}
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            ) : null}
 
             <button
               type="button"

@@ -898,6 +898,92 @@ export async function writeFeedFile<T = unknown>(
   );
 }
 
+
+export async function writeModerationBatchFiles<TPost = unknown, TSource = unknown, TReport = ModerationReport>({
+  posts,
+  sources,
+  reports,
+  reason = "moderation batch",
+}: {
+  posts?: TPost[];
+  sources?: TSource[];
+  reports?: TReport[];
+  reason?: string;
+}) {
+  const updatedAt = new Date().toISOString();
+  const files: CommitFile[] = [];
+
+  if (reports) {
+    const reportsPayload = {
+      updatedAt,
+      reports,
+    } satisfies ReportsFile<TReport>;
+
+    files.push({ path: REPORTS_PATH, content: stringify(reportsPayload) });
+  }
+
+  if (sources) {
+    if (!isLocalFileMode() && GITHUB_TOKEN) {
+      const current = await readRepoJsonFileStrict<SourcesFile<TSource>>(SOURCES_PATH).catch(() => null);
+      const currentSources = Array.isArray(current?.sources) ? current.sources : [];
+
+      if (currentSources.length >= 50 && sources.length < Math.floor(currentSources.length * 0.7)) {
+        const beforeCountries = getSourcesCountrySet(currentSources);
+        const nextCountries = getSourcesCountrySet(sources as unknown[]);
+        const lostCountries = [...beforeCountries].filter((country) => !nextCountries.has(country));
+
+        if (lostCountries.length >= 2 || sources.length < Math.floor(currentSources.length * 0.5)) {
+          throw new Error(
+            `Refusing suspicious sources shrink: ${currentSources.length} -> ${sources.length}; lost countries: ${lostCountries.join(", ") || "unknown"}`
+          );
+        }
+      }
+    }
+
+    const sourcesPayload = {
+      updatedAt,
+      sources,
+    } satisfies SourcesFile<TSource>;
+
+    files.push({ path: SOURCES_PATH, content: stringify(sourcesPayload) });
+  }
+
+  if (posts) {
+    const orderedPosts = normalizeFeedPostOrder(posts as IngestedPost[]);
+
+    if (orderedPosts.length === 0) {
+      const previous = await readFeedFile<TPost>();
+      const previousCount = Array.isArray(previous.posts) ? previous.posts.length : 0;
+      if (previousCount > 0 || process.env.GITHUB_ACTIONS === "true") {
+        throw new Error(`Refusing to write empty feed snapshot. previousPosts=${previousCount}, reason=${reason}`);
+      }
+    }
+
+    if (isLocalFileMode() || process.env.GITHUB_ACTIONS === "true") {
+      await writeFeedPosts(orderedPosts as IngestedPost[], updatedAt);
+    }
+
+    const feedPayload: FeedFile<TPost> = {
+      updatedAt,
+      posts: orderedPosts as TPost[],
+    };
+
+    const snapshot = await updateCountryFeedFiles(orderedPosts as IngestedPost[], updatedAt, null);
+
+    if (orderedPosts.length > 0 && Object.keys(snapshot.index.countries || {}).length === 0) {
+      throw new Error(`Refusing to write feed index with zero countries. posts=${orderedPosts.length}, reason=${reason}`);
+    }
+
+    files.push(
+      { path: FEED_PATH, content: stringify(feedPayload) },
+      { path: PUBLIC_FEED_PATH, content: stringify(feedPayload) },
+      ...snapshot.files
+    );
+  }
+
+  await persistFiles(files, `Moderation batch: ${reason}`);
+}
+
 export async function clearFeedFile() {
   await writeFeedFile([], { allowEmpty: true, reason: "clearFeedFile" });
 }
