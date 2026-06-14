@@ -5,6 +5,7 @@ import { type CountryCode, SEO_LOCALE_META } from "../../api/lib/contracts";
 import { AdminBulkImportSection } from "./admin/AdminBulkImportSection";
 import { AdminCountriesSection } from "./admin/AdminCountriesSection";
 import { AdminPostsSection } from "./admin/AdminPostsSection";
+import { AdminReportsSection } from "./admin/AdminReportsSection";
 import { AdminSourcesSection } from "./admin/AdminSourcesSection";
 import type { TrustedSource } from "./admin/admin.types";
 
@@ -22,8 +23,12 @@ type FeedIndexCountryStats = Record<string, { posts?: number }>;
 type SourceSummary = {
   total: number;
   active: number;
+  paused: number;
+  blocked: number;
   countsByCountry: Partial<Record<CountryCode, number>>;
   activeCountsByCountry: Partial<Record<CountryCode, number>>;
+  pausedCountsByCountry: Partial<Record<CountryCode, number>>;
+  blockedCountsByCountry: Partial<Record<CountryCode, number>>;
 };
 
 const ADMIN_TELEGRAM_ID = "1372669404";
@@ -108,8 +113,12 @@ export function AdminScreen({
   const [sourceSummary, setSourceSummary] = useState<SourceSummary>({
     total: 0,
     active: 0,
+    paused: 0,
+    blocked: 0,
     countsByCountry: {},
     activeCountsByCountry: {},
+    pausedCountsByCountry: {},
+    blockedCountsByCountry: {},
   });
   const [rebuildLoading, setRebuildLoading] = useState(false);
   const [rebuildMessage, setRebuildMessage] = useState<string | null>(null);
@@ -234,8 +243,12 @@ export function AdminScreen({
         setSourceSummary({
           total: Number(data.sourceSummary.total || 0),
           active: Number(data.sourceSummary.active || 0),
+          paused: Number(data.sourceSummary.paused || 0),
+          blocked: Number(data.sourceSummary.blocked || 0),
           countsByCountry: data.sourceSummary.countsByCountry || {},
           activeCountsByCountry: data.sourceSummary.activeCountsByCountry || {},
+          pausedCountsByCountry: data.sourceSummary.pausedCountsByCountry || {},
+          blockedCountsByCountry: data.sourceSummary.blockedCountsByCountry || {},
         });
       }
     } catch {
@@ -493,6 +506,11 @@ export function AdminScreen({
             onSelectCountry={setSelectedCountryCode}
             counts={sourceCountsByCountry}
           />
+
+          <div id="admin-reports">
+            <AdminReportsSection telegramUserId={telegramUserId} />
+          </div>
+
           <div id="admin-channels">
             <AdminSourcesSection
               telegramUserId={telegramUserId}
@@ -525,6 +543,7 @@ export function AdminScreen({
       {/* 🔥 ЛИПКАЯ НАВИГАЦИЯ */}
       <div className="fixed bottom-4 left-3 right-3 z-50 flex items-center justify-between rounded-full border border-white/10 bg-black/75 px-3 py-2 shadow-2xl backdrop-blur sm:left-1/2 sm:right-auto sm:w-[360px] sm:-translate-x-1/2">
         {[
+          ["🚨", "admin-reports"],
           ["🌍", "admin-channels"],
           ["➕", "admin-bulk"],
           ["🎈", "admin-posts"],

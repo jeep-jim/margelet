@@ -541,9 +541,7 @@ async function readCurrentFeedPosts() {
   const legacyPosts = Array.isArray(feedFile.posts) ? feedFile.posts : [];
   if (legacyPosts.length > 0) return legacyPosts;
 
-  throw new Error(
-    "Delete blocked: feed snapshot is empty. Run rebuild first; refusing to overwrite feed with an empty snapshot."
-  );
+  return [];
 }
 
 function readPostIds(body: Record<string, unknown>) {
@@ -759,6 +757,26 @@ async function createReport(payload: Record<string, unknown>) {
   return { report, reports: next };
 }
 
+
+async function createReportsBatch(payload: Record<string, unknown>) {
+  const rawReports = Array.isArray(payload.reports) ? payload.reports : [];
+  const prepared = rawReports.filter(
+    (item): item is Record<string, unknown> => Boolean(item) && typeof item === "object"
+  );
+
+  if (!prepared.length) {
+    return { reports: await listReports(), created: 0 };
+  }
+
+  let created = 0;
+  for (const reportPayload of prepared.slice(0, 50)) {
+    await createReport(reportPayload);
+    created += 1;
+  }
+
+  return { reports: await listReports(), created };
+}
+
 async function listReports() {
   const file = await readReportsFile<ModerationReport>();
   const reports = Array.isArray(file.reports) ? file.reports : [];
@@ -807,6 +825,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(200).json({ ok: true, report: result.report });
     }
 
+    if (entity === "reports" && req.method === "POST" && action === "bulk-create") {
+      const result = await createReportsBatch(payload);
+      return res.status(200).json({ ok: true, reports: result.reports, created: result.created });
+    }
+
     if (!isOwner(payload)) {
       return res.status(403).json({
         ok: false,
@@ -823,6 +846,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       if (!action || action === "list") {
         const reports = await listReports();
         return res.status(200).json({ ok: true, reports });
+      }
+
+      if (action === "bulk-create") {
+        const result = await createReportsBatch(payload);
+        return res.status(200).json({ ok: true, reports: result.reports, created: result.created });
       }
 
       if (action === "resolve") {

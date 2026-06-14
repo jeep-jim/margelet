@@ -653,6 +653,17 @@ export default function App() {
     [replacePath]
   );
 
+
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const guardKey = "margelet_back_guard";
+    if (!window.history.state || window.history.state[guardKey] !== true) {
+      window.history.replaceState({ ...(window.history.state || {}), [guardKey]: true }, document.title, window.location.href);
+    }
+  }, []);
+
   useEffect(() => {
     function handleOpenAttentionTopic() {
       setSelectedSourceHandle(null);
@@ -1071,9 +1082,9 @@ export default function App() {
           openPost={(post) => {
             const postId = getPostIdFromUrl(post.postUrl);
             const handle = normalizeSourceHandle(post.source.handle);
-            setSelectedSourceHandle(handle);
-            setCurrent("source");
-            replacePath(postId ? `/${handle}/${postId}` : `/${handle}`);
+            setSelectedSourceHandle(null);
+            setCurrent("feed");
+            replacePath(postId ? `/${handle}/${postId}` : "/");
           }}
         />
       ) : null}

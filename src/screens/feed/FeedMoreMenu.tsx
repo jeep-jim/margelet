@@ -10,6 +10,8 @@ type AnchorRect = {
 
 const MODERATION_REPORTS_STORAGE_KEY = "margelet_local_moderation_reports_v1";
 const MODERATION_REPORTS_EVENT = "margelet:moderation-reports-updated";
+const MODERATION_REPORTS_QUEUE_KEY = "margelet_pending_moderation_reports_v1";
+const MODERATION_REPORTS_LAST_FLUSH_KEY = "margelet_moderation_reports_last_flush_v1";
 
 type LocalModerationReport = {
   id: string;
@@ -52,6 +54,77 @@ function writeLocalReports(reports: LocalModerationReport[]) {
   window.dispatchEvent(new Event(MODERATION_REPORTS_EVENT));
 }
 
+
+function readQueuedReports(): LocalModerationReport[] {
+  try {
+    const raw = localStorage.getItem(MODERATION_REPORTS_QUEUE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeQueuedReports(reports: LocalModerationReport[]) {
+  localStorage.setItem(MODERATION_REPORTS_QUEUE_KEY, JSON.stringify(reports.slice(0, 200)));
+}
+
+function queueReportForServer(report: LocalModerationReport) {
+  const current = readQueuedReports();
+  const exists = current.some((item) => item.id === report.id);
+  writeQueuedReports(exists ? current : [report, ...current]);
+}
+
+let moderationFlushTimer: number | null = null;
+
+function scheduleModerationReportsFlush() {
+  if (typeof window === "undefined") return;
+  if (moderationFlushTimer !== null) return;
+
+  moderationFlushTimer = window.setTimeout(() => {
+    moderationFlushTimer = null;
+    void flushModerationReportsQueue(false);
+  }, 45000);
+}
+
+async function flushModerationReportsQueue(force: boolean) {
+  if (typeof window === "undefined") return;
+  const queued = readQueuedReports();
+  if (!queued.length) return;
+
+  const now = Date.now();
+  const lastFlush = Number(localStorage.getItem(MODERATION_REPORTS_LAST_FLUSH_KEY) || 0);
+  if (!force && now - lastFlush < 10 * 60 * 1000) {
+    scheduleModerationReportsFlush();
+    return;
+  }
+
+  try {
+    const response = await fetch("/api/admin-posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        entity: "reports",
+        action: "bulk-create",
+        reports: queued.map((report) => ({
+          postId: report.postId,
+          sourceHandle: report.sourceHandle,
+          sourceTitle: report.sourceTitle,
+          sourceCountryCode: report.sourceCountryCode,
+          reason: report.reason,
+        })),
+      }),
+      keepalive: true,
+    });
+
+    if (!response.ok) return;
+    localStorage.setItem(MODERATION_REPORTS_LAST_FLUSH_KEY, String(now));
+    writeQueuedReports([]);
+  } catch {
+    scheduleModerationReportsFlush();
+  }
+}
+
 function addLocalReport({
   postId,
   sourceHandle,
@@ -77,25 +150,31 @@ function addLocalReport({
       updatedAt: now,
     };
     writeLocalReports(next);
+    queueReportForServer(next[existingIndex]);
+    scheduleModerationReportsFlush();
     return;
   }
 
+  const report: LocalModerationReport = {
+    id: reportKey,
+    postId,
+    sourceHandle: normalizedHandle || null,
+    sourceTitle: null,
+    sourceCountryCode: null,
+    reason: normalizedReason,
+    message: null,
+    count: 1,
+    status: "open",
+    createdAt: now,
+    updatedAt: now,
+  };
+
   writeLocalReports([
-    {
-      id: reportKey,
-      postId,
-      sourceHandle: normalizedHandle || null,
-      sourceTitle: null,
-      sourceCountryCode: null,
-      reason: normalizedReason,
-      message: null,
-      count: 1,
-      status: "open",
-      createdAt: now,
-      updatedAt: now,
-    },
+    report,
     ...current,
   ]);
+  queueReportForServer(report);
+  scheduleModerationReportsFlush();
 }
 
 function toggleSub(handle: string) {
@@ -140,6 +219,16 @@ export function FeedMoreMenu({
 
   useEffect(() => {
     setMounted(true);
+    scheduleModerationReportsFlush();
+
+    const handleVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        void flushModerationReportsQueue(true);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, []);
 
   useEffect(() => {

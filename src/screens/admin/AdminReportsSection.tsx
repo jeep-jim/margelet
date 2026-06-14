@@ -64,30 +64,106 @@ function formatDate(value: string) {
   }
 }
 
-export function AdminReportsSection({ telegramUserId: _telegramUserId }: { telegramUserId: string | null }) {
+export function AdminReportsSection({ telegramUserId }: { telegramUserId: string | null }) {
   const [reports, setReports] = useState<ModerationReport[]>([]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
-  const loadReports = useCallback(() => {
-    setLoading(false);
-    setMessage(null);
-    setReports(readLocalReports());
-  }, []);
+  const mergeReports = (serverReports: ModerationReport[], localReports: ModerationReport[]) => {
+    const map = new Map<string, ModerationReport>();
+    for (const report of [...serverReports, ...localReports]) {
+      if (report.status !== "open") continue;
+      const key = report.id || `${report.postId || "source"}:${report.sourceHandle || ""}:${report.reason}`;
+      const existing = map.get(key);
+      if (!existing) {
+        map.set(key, report);
+        continue;
+      }
 
-  const resolveReport = (reportId: string) => {
-    const next = readLocalReports().filter((report) => report.id !== reportId);
-    writeLocalReports(next);
-    setReports(next);
+      map.set(key, {
+        ...existing,
+        count: Math.max(Number(existing.count || 1), Number(report.count || 1)),
+        updatedAt:
+          Date.parse(report.updatedAt || report.createdAt) > Date.parse(existing.updatedAt || existing.createdAt)
+            ? report.updatedAt
+            : existing.updatedAt,
+      });
+    }
+
+    return Array.from(map.values()).sort(
+      (a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt)
+    );
+  };
+
+  const loadReports = useCallback(async () => {
+    setLoading(true);
+    setMessage(null);
+
+    const localReports = readLocalReports();
+
+    if (!telegramUserId) {
+      setReports(localReports);
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "reports",
+          action: "list",
+          telegramUserId,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      const serverReports = Array.isArray(data?.reports) ? data.reports : [];
+      setReports(mergeReports(serverReports, localReports));
+    } catch {
+      setReports(localReports);
+      setMessage("Не удалось получить жалобы с сервера, показываю локальные.");
+    } finally {
+      setLoading(false);
+    }
+  }, [telegramUserId]);
+
+  const resolveReport = async (reportId: string) => {
+    const nextLocal = readLocalReports().filter((report) => report.id !== reportId);
+    writeLocalReports(nextLocal);
+    setReports((prev) => prev.filter((report) => report.id !== reportId));
+
+    if (!telegramUserId) return;
+
+    try {
+      await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "reports",
+          action: "resolve",
+          reportId,
+          telegramUserId,
+        }),
+      });
+      await loadReports();
+    } catch {
+      setMessage("Локально закрыто, сервер проверить не удалось.");
+    }
   };
 
   useEffect(() => {
-    loadReports();
-    window.addEventListener(MODERATION_REPORTS_EVENT, loadReports);
-    window.addEventListener("storage", loadReports);
+    const reload = () => {
+      void loadReports();
+    };
+
+    reload();
+    window.addEventListener(MODERATION_REPORTS_EVENT, reload);
+    window.addEventListener("storage", reload);
     return () => {
-      window.removeEventListener(MODERATION_REPORTS_EVENT, loadReports);
-      window.removeEventListener("storage", loadReports);
+      window.removeEventListener(MODERATION_REPORTS_EVENT, reload);
+      window.removeEventListener("storage", reload);
     };
   }, [loadReports]);
 
@@ -167,7 +243,7 @@ export function AdminReportsSection({ telegramUserId: _telegramUserId }: { teleg
 
         <button
           type="button"
-          onClick={loadReports}
+          onClick={() => void loadReports()}
           className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10 hover:text-white"
         >
           Обновить жалобы

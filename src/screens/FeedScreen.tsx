@@ -1433,24 +1433,60 @@ export function FeedScreen({
     };
   }, [isCurrentAdmin]);
 
-  const loadModerationReports = useCallback(() => {
-    if (!isCurrentAdmin) {
+  const loadModerationReports = useCallback(async () => {
+    if (!isCurrentAdmin || !currentTelegramUserId) {
       setModerationReports([]);
       return;
     }
 
-    setModerationReports(readLocalModerationReports());
-  }, [isCurrentAdmin]);
+    const localReports = readLocalModerationReports();
+
+    try {
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          entity: "reports",
+          action: "list",
+          telegramUserId: currentTelegramUserId,
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+      const serverReports = Array.isArray(data?.reports) ? data.reports : [];
+      const merged = new Map<string, ModerationReport>();
+
+      for (const report of [...serverReports, ...localReports]) {
+        if (!report || report.status !== "open") continue;
+        const key = report.id || `${report.postId || "source"}:${report.sourceHandle || ""}:${report.reason}`;
+        if (!merged.has(key)) merged.set(key, report);
+      }
+
+      setModerationReports(
+        Array.from(merged.values()).sort(
+          (a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt)
+        )
+      );
+    } catch {
+      setModerationReports(localReports);
+    }
+  }, [currentTelegramUserId, isCurrentAdmin]);
 
   useEffect(() => {
-    loadModerationReports();
+    const reload = () => {
+      void loadModerationReports();
+    };
 
-    window.addEventListener(MODERATION_REPORTS_EVENT, loadModerationReports);
-    window.addEventListener("storage", loadModerationReports);
+    reload();
+    window.addEventListener(MODERATION_REPORTS_EVENT, reload);
+    window.addEventListener("storage", reload);
+
+    const timer = window.setInterval(reload, 60000);
 
     return () => {
-      window.removeEventListener(MODERATION_REPORTS_EVENT, loadModerationReports);
-      window.removeEventListener("storage", loadModerationReports);
+      window.removeEventListener(MODERATION_REPORTS_EVENT, reload);
+      window.removeEventListener("storage", reload);
+      window.clearInterval(timer);
     };
   }, [loadModerationReports]);
 
