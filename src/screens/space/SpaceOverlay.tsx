@@ -797,7 +797,8 @@ export function SpaceOverlay({
       return (
         <div
           key={`gallery-${index}`}
-          className={`mt-3 overflow-hidden rounded-[28px] border p-3 ${isLight ? "border-white/80 bg-white/56" : "border-white/10 bg-white/8"}`}
+          className={`margelet-space-block mt-3 overflow-hidden rounded-[28px] border p-3 ${isLight ? "border-white/80 bg-white/56" : "border-white/10 bg-white/8"}`}
+          style={{ animationDelay: `${120 + index * 90}ms` }}
         >
           <div className={`mb-3 px-1 text-xs font-black ${isLight ? "text-[#243245]" : "text-white/78"}`}>
             {block.title}
@@ -815,7 +816,7 @@ export function SpaceOverlay({
                 {item.kind === "video" ? (
                   <video src={item.url} poster={item.poster || undefined} muted playsInline preload="metadata" className="h-full w-full object-cover" />
                 ) : (
-                  <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
                 )}
               </a>
             ))}
@@ -826,7 +827,8 @@ export function SpaceOverlay({
 
     if (block.type === "chips") {
       return (
-        <div key={`chips-${index}`} className="mt-3 flex flex-wrap gap-2">
+        <div key={`chips-${index}`} className="margelet-space-block mt-3 flex flex-wrap gap-2"
+          style={{ animationDelay: `${120 + index * 90}ms` }}>
           {block.items.map((item) => (
             <button
               key={item}
@@ -847,11 +849,12 @@ export function SpaceOverlay({
         href={block.url}
         target="_blank"
         rel="noreferrer"
-        className={`mt-3 block overflow-hidden rounded-[30px] border p-3 transition hover:scale-[1.01] ${isLight ? "border-white/80 bg-white/62 text-[#07111d]" : "border-white/10 bg-[#152234]/88 text-white"}`}
+        className={`margelet-space-block mt-3 block overflow-hidden rounded-[30px] border p-3 transition hover:scale-[1.01] ${isLight ? "border-white/80 bg-white/62 text-[#07111d]" : "border-white/10 bg-[#152234]/88 text-white"}`}
+        style={{ animationDelay: `${120 + index * 90}ms` }}
       >
         <div className="flex items-center gap-3">
           {block.sourceAvatar ? (
-            <img src={block.sourceAvatar} alt="" className="h-10 w-10 rounded-full object-cover" loading="lazy" />
+            <img src={block.sourceAvatar} alt="" className="h-10 w-10 rounded-full object-cover" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
           ) : (
             <div className={`h-10 w-10 rounded-full ${isLight ? "bg-[#d8ecff]" : "bg-white/10"}`} />
           )}
@@ -868,7 +871,7 @@ export function SpaceOverlay({
                 {item.kind === "video" ? (
                   <video src={item.url} poster={item.poster || undefined} muted playsInline preload="metadata" className="h-full w-full object-cover" />
                 ) : item.kind === "image" ? (
-                  <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
                 ) : null}
               </div>
             ))}
@@ -1070,7 +1073,24 @@ export function SpaceOverlay({
         }
 
         .margelet-space-message {
-          animation: margeletSpaceMessageIn .22s ease-out both;
+          animation: margeletSpaceMessageIn .28s ease-out both;
+        }
+
+        .margelet-space-block {
+          opacity: 0;
+          transform: translateY(10px) scale(.985);
+          animation: margeletSpaceBlockIn .34s ease-out both;
+        }
+
+        @keyframes margeletSpaceBlockIn {
+          from {
+            opacity: 0;
+            transform: translateY(12px) scale(.985);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
         }
       `}</style>
 

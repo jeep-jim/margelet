@@ -1,6 +1,8 @@
 import type { IngestedPost, Locale } from "../../types/app";
 
 type SpaceIntent =
+  | "greeting"
+  | "thanks"
   | "recipe"
   | "weather"
   | "images"
@@ -9,6 +11,8 @@ type SpaceIntent =
   | "source"
   | "chat"
   | "search";
+
+type SpaceMode = "talk" | "clarify" | "answer" | "show";
 
 export type SpaceBlock =
   | {
@@ -43,6 +47,7 @@ export type SpaceBlock =
 export type SpaceAnswer = {
   text: string;
   blocks: SpaceBlock[];
+  mode: SpaceMode;
 };
 
 type SpaceMemory = {
@@ -50,68 +55,119 @@ type SpaceMemory = {
   lastIntent: SpaceIntent | null;
   favoriteSources: Record<string, number>;
   topics: Record<string, number>;
+  languageHints: Record<string, number>;
+  lastUserWords: string[];
 };
 
-const SPACE_MEMORY_KEY = "margelet_space_local_brain_v1";
+const SPACE_MEMORY_KEY = "margelet_space_local_brain_v2";
 
-const RU_STOP = new Set([
-  "дай",
-  "найди",
-  "покажи",
-  "что",
-  "как",
-  "где",
-  "кто",
-  "про",
-  "для",
-  "это",
-  "есть",
-  "мне",
-  "нам",
-  "или",
-  "еще",
-  "ещё",
-  "сейчас",
-  "сегодня",
-  "вот",
-  "там",
-  "тут",
-  "на",
-  "по",
-  "из",
-  "от",
-  "за",
-  "без",
-  "при",
-  "the",
-  "and",
-  "for",
-  "with",
-  "about",
-  "show",
-  "find",
+const STOP_WORDS = new Set([
+  "дай", "найди", "покажи", "что", "как", "где", "кто", "про", "для", "это", "есть", "мне", "нам", "или", "еще", "ещё", "сейчас", "сегодня", "вот", "там", "тут", "на", "по", "из", "от", "за", "без", "при", "под", "над", "тебе", "меня", "будет", "быть", "очень", "просто", "можно", "надо", "нужно",
+  "the", "and", "for", "with", "about", "show", "find", "give", "what", "how", "where", "who", "please", "now", "today",
+  "el", "la", "los", "las", "que", "como", "para", "por", "con", "sobre",
+  "de", "der", "die", "das", "und", "was", "wie", "wo", "über",
 ]);
 
 const INTENT_KEYWORDS: Record<SpaceIntent, string[]> = {
-  recipe: ["рецепт", "готов", "пирог", "капуст", "салат", "суп", "кухн", "еда", "recipe", "cook", "food"],
-  weather: ["погода", "прогноз", "градус", "дожд", "снег", "ветер", "weather", "forecast"],
-  images: ["картин", "фото", "изображ", "галере", "покажи картинки", "images", "photos", "gallery"],
+  greeting: ["привет", "здравств", "салам", "hello", "hi", "hey", "hola", "bonjour", "hallo", "ciao", "привіт"],
+  thanks: ["спасибо", "благодар", "thanks", "thank you", "merci", "gracias", "danke"],
+  recipe: ["рецепт", "готов", "пирог", "капуст", "салат", "суп", "кухн", "еда", "recipe", "cook", "food", "cooking", "receta"],
+  weather: ["погода", "прогноз", "градус", "дожд", "снег", "ветер", "weather", "forecast", "lluvia", "wetter"],
+  images: ["картин", "фото", "изображ", "галере", "покажи картинки", "images", "photos", "gallery", "picture", "bilder"],
   video: ["видео", "ролик", "смотреть", "video", "clip"],
-  trend: ["тренд", "раст", "обсужда", "говорят", "происходит", "сигнал", "attention", "trend"],
+  trend: ["тренд", "раст", "обсужда", "говорят", "происходит", "сигнал", "attention", "trend", "happening", "discuss"],
   source: ["канал", "источник", "автор", "source", "channel"],
-  chat: ["привет", "как ты", "спасибо", "бро", "друг"],
-  search: ["найди", "покажи", "дай", "что пишут", "ищи", "search", "find", "show"],
+  chat: ["бро", "друг", "как ты", "что умеешь", "расскажи", "помоги", "можешь"],
+  search: ["найди", "покажи", "дай", "что пишут", "ищи", "search", "find", "show", "give me"],
 };
+
+const UI: Record<string, {
+  hello: string[];
+  thanks: string[];
+  clarify: string;
+  noExact: string;
+  foundOne: string;
+  foundGallery: string;
+  foundVideo: string;
+  recipeFound: string;
+  weatherClarify: string;
+  trendClarify: string;
+  continueTitle: string;
+  chipsGeneral: string[];
+  chipsRecipe: string[];
+  chipsImage: string[];
+  chipsTrend: string[];
+  galleryTitle: string;
+  videoTitle: string;
+}> = {
+  ru: {
+    hello: [
+      "Я тут, бро 🙂 Пиши как человеку: что найти, объяснить или собрать из Telegram-потока margeleT.",
+      "На связи 🐙 Напиши тему, страну, канал, рецепт, фото или видео — сначала уточню смысл, потом покажу только точное.",
+    ],
+    thanks: ["Всегда рядом, бро 🤝", "Готово, бро. Продолжай мысль — я подстроюсь."],
+    clarify: "Понял. Чтобы не вываливать лишнее, уточни чуть-чуть: тебе нужен короткий ответ, посты-источники, фото/видео или анализ тренда?",
+    noExact: "Понял запрос, но точного совпадения в текущей базе не вижу. Дай ещё одно слово или страну — сузим.",
+    foundOne: "Нашёл близкое. Покажу аккуратно один вариант, а дальше можно расширить 👇",
+    foundGallery: "Да, собрал медиа по смыслу. Сначала покажу подборку, без лишней ленты 👇",
+    foundVideo: "Нашёл видео по запросу. Показываю самые близкие 👇",
+    recipeFound: "Да, нашёл живой вариант. Сначала один самый близкий, без простыни 👇",
+    weatherClarify: "По погоде лучше уточнить город и период: сегодня, завтра или неделя? Тогда соберу красиво.",
+    trendClarify: "Тему понял. Уточни страну или объект — и я соберу сигнал по Telegram-потоку.",
+    continueTitle: "Можно продолжить",
+    chipsGeneral: ["Показать источники", "Найти фото", "Коротко объясни"],
+    chipsRecipe: ["Показать ещё рецепт", "Найти с видео", "Сделай инструкцию"],
+    chipsImage: ["Ещё картинки", "Только видео", "Открыть источники"],
+    chipsTrend: ["Что растёт?", "По странам", "Дай кратко"],
+    galleryTitle: "Медиа из Telegram",
+    videoTitle: "Видео и превью",
+  },
+  us: {
+    hello: [
+      "I’m here 🙂 Write naturally: a topic, country, channel, recipe, photo, or video. I’ll search margeleT’s live Telegram base.",
+      "Ready 🐙 Tell me what you want to find or understand — I’ll ask if the request is too broad.",
+    ],
+    thanks: ["Anytime 🤝", "Got you. Keep going — I’ll adapt."],
+    clarify: "Got it. To avoid dumping random posts, tell me what you want: a short answer, source posts, photos/videos, or trend analysis?",
+    noExact: "I understand the request, but I don’t see an exact match in the current base. Add one more word or country and I’ll narrow it down.",
+    foundOne: "I found a close match. I’ll show one clean result first, then we can expand 👇",
+    foundGallery: "I found media by meaning. Showing a small set first, not the whole feed 👇",
+    foundVideo: "I found video posts close to the request 👇",
+    recipeFound: "Yes — I found a real Telegram recipe. Showing the closest one first 👇",
+    weatherClarify: "For weather, tell me the city and period: today, tomorrow, or week? Then I’ll format it nicely.",
+    trendClarify: "I get the topic. Add a country or object and I’ll collect the Telegram signal.",
+    continueTitle: "You can continue",
+    chipsGeneral: ["Show sources", "Find photos", "Explain shortly"],
+    chipsRecipe: ["More recipes", "Find video", "Make steps"],
+    chipsImage: ["More images", "Only video", "Open sources"],
+    chipsTrend: ["What is growing?", "By countries", "Short summary"],
+    galleryTitle: "Telegram media",
+    videoTitle: "Videos and previews",
+  },
+};
+
+function getUi(locale: Locale) {
+  return UI[locale] || UI.us;
+}
 
 function readMemory(): SpaceMemory {
   try {
     const parsed = JSON.parse(localStorage.getItem(SPACE_MEMORY_KEY) || "null") as SpaceMemory | null;
-    if (parsed && typeof parsed === "object") return parsed;
+    if (parsed && typeof parsed === "object") {
+      return {
+        turns: Number(parsed.turns || 0),
+        lastIntent: parsed.lastIntent || null,
+        favoriteSources: parsed.favoriteSources || {},
+        topics: parsed.topics || {},
+        languageHints: parsed.languageHints || {},
+        lastUserWords: Array.isArray(parsed.lastUserWords) ? parsed.lastUserWords : [],
+      };
+    }
   } catch {
     // local brain memory is optional.
   }
 
-  return { turns: 0, lastIntent: null, favoriteSources: {}, topics: {} };
+  return { turns: 0, lastIntent: null, favoriteSources: {}, topics: {}, languageHints: {}, lastUserWords: [] };
 }
 
 function writeMemory(memory: SpaceMemory) {
@@ -130,24 +186,45 @@ function tokenize(text: string) {
   return normalize(text)
     .split(" ")
     .map((word) => word.trim())
-    .filter((word) => word.length > 2 && !RU_STOP.has(word))
-    .slice(0, 14);
+    .filter((word) => word.length > 2 && !STOP_WORDS.has(word))
+    .slice(0, 16);
 }
 
-function detectIntent(query: string): SpaceIntent {
+function pick<T>(items: T[], seed: number) {
+  return items[Math.abs(seed) % items.length];
+}
+
+function detectIntent(query: string): { intent: SpaceIntent; strength: number } {
   const lower = normalize(query);
-  let best: { intent: SpaceIntent; score: number } = { intent: "search", score: 0 };
+  const tokens = tokenize(query);
+  let best: { intent: SpaceIntent; strength: number } = { intent: "search", strength: 0 };
 
   (Object.keys(INTENT_KEYWORDS) as SpaceIntent[]).forEach((intent) => {
-    const score = INTENT_KEYWORDS[intent].reduce((sum, keyword) => {
+    const strength = INTENT_KEYWORDS[intent].reduce((sum, keyword) => {
       return lower.includes(normalize(keyword)) ? sum + 1 : sum;
     }, 0);
 
-    if (score > best.score) best = { intent, score };
+    if (strength > best.strength) best = { intent, strength };
   });
 
-  if (best.score === 0 && lower.endsWith("?")) return "trend";
-  return best.intent;
+  const onlyGreeting = tokens.length === 0 && best.intent === "greeting";
+  if (onlyGreeting) return { intent: "greeting", strength: 5 };
+  if (best.strength === 0 && lower.endsWith("?")) return { intent: "trend", strength: 1 };
+  return best;
+}
+
+function isShortSocial(query: string, intent: SpaceIntent) {
+  const tokens = tokenize(query);
+  return tokens.length <= 1 && (intent === "greeting" || intent === "thanks" || intent === "chat");
+}
+
+function isBroadQuery(query: string, intent: SpaceIntent, strength: number) {
+  const tokens = tokenize(query);
+  if (isShortSocial(query, intent)) return false;
+  if (intent === "weather" && tokens.length <= 1) return true;
+  if (intent === "trend" && tokens.length <= 1) return true;
+  if (intent === "search" && tokens.length <= 1 && strength < 2) return true;
+  return false;
 }
 
 function getPostSearchText(post: IngestedPost) {
@@ -161,32 +238,40 @@ function getPostSearchText(post: IngestedPost) {
   ].join(" "));
 }
 
+function hasIntentMedia(post: IngestedPost, intent: SpaceIntent) {
+  if (intent === "images") return post.media.some((item) => item.kind === "image");
+  if (intent === "video") return post.media.some((item) => item.kind === "video");
+  return true;
+}
+
 function rankPost(post: IngestedPost, queryTokens: string[], intent: SpaceIntent, memory: SpaceMemory) {
   const haystack = getPostSearchText(post);
   let score = 0;
 
   queryTokens.forEach((token) => {
-    if (haystack.includes(token)) score += token.length > 4 ? 4 : 2;
+    if (haystack.includes(token)) score += token.length > 4 ? 5 : 2.5;
   });
 
-  if (intent === "recipe" && [post.tag, ...(post.tags || [])].some((tag) => String(tag).includes("recipe") || String(tag).includes("food"))) score += 8;
-  if (intent === "images" && post.media.some((item) => item.kind === "image")) score += 8;
-  if (intent === "video" && post.media.some((item) => item.kind === "video")) score += 8;
-  if (intent === "weather" && haystack.includes("погод")) score += 8;
-  if (intent === "trend") score += Math.min(6, Math.max(0, post.links?.length || 0));
+  const tagText = normalize([post.tag, ...(post.tags || [])].join(" "));
+  if (intent === "recipe" && /(recipe|food|cook|еда|кухн|готов|рецепт)/.test(tagText + " " + haystack)) score += 7;
+  if (intent === "images" && post.media.some((item) => item.kind === "image")) score += 7;
+  if (intent === "video" && post.media.some((item) => item.kind === "video")) score += 7;
+  if (intent === "weather" && /(погод|weather|forecast|дожд|снег|ветер)/.test(haystack)) score += 8;
+  if (intent === "trend") score += Math.min(5, Math.max(0, post.links?.length || 0));
 
   const sourceBoost = memory.favoriteSources[post.source.handle] || 0;
-  score += Math.min(5, sourceBoost);
+  score += Math.min(3, sourceBoost * 0.35);
 
   const created = Date.parse(post.createdAt || "");
   if (Number.isFinite(created)) {
     const ageHours = Math.max(0, (Date.now() - created) / 36e5);
-    score += Math.max(0, 5 - ageHours / 8);
+    score += Math.max(0, 4 - ageHours / 10);
   }
 
-  if (post.source.verified) score += 1.5;
-  if (post.media.length) score += 1;
+  if (post.source.verified) score += 1;
+  if (post.media.length) score += 0.8;
 
+  if (!hasIntentMedia(post, intent)) score -= 12;
   return score;
 }
 
@@ -199,13 +284,13 @@ function compactText(text: string, max = 360) {
 function postToBlock(post: IngestedPost, score: number): SpaceBlock {
   return {
     type: "post",
-    title: post.source.title || post.source.handle || "Telegram источник",
+    title: post.source.title || post.source.handle || "Telegram",
     subtitle: post.source.handle ? `@${post.source.handle.replace(/^@/, "")}` : "Telegram",
-    text: compactText(post.text, 520),
+    text: compactText(post.text, 420),
     url: post.postUrl,
     sourceHandle: post.source.handle,
     sourceAvatar: post.source.avatar,
-    media: post.media.slice(0, 6).map((item) => ({
+    media: post.media.slice(0, 4).map((item) => ({
       kind: item.kind,
       url: item.url,
       poster: item.poster || null,
@@ -220,7 +305,7 @@ function buildGallery(posts: IngestedPost[], title: string): SpaceBlock | null {
     .flatMap((post) =>
       post.media
         .filter((item) => item.kind === "image" || item.kind === "video")
-        .slice(0, 4)
+        .slice(0, 3)
         .map((item) => ({
           url: item.url,
           poster: item.poster || null,
@@ -229,66 +314,38 @@ function buildGallery(posts: IngestedPost[], title: string): SpaceBlock | null {
           postUrl: post.postUrl,
         })),
     )
-    .slice(0, 9);
+    .slice(0, 6);
 
   if (!items.length) return null;
   return { type: "gallery", title, items };
 }
 
-function humanIntro(intent: SpaceIntent, query: string, found: IngestedPost[]) {
-  const top = found[0];
-  const source = top?.source?.title || top?.source?.handle;
+function makeChips(ui: ReturnType<typeof getUi>, intent: SpaceIntent, tokens: string[]): SpaceBlock {
+  let items = ui.chipsGeneral;
+  if (intent === "recipe") items = ui.chipsRecipe;
+  if (intent === "images" || intent === "video") items = ui.chipsImage;
+  if (intent === "trend") items = ui.chipsTrend;
 
-  if (intent === "recipe") {
-    return top
-      ? `Да, нашёл живой вариант${source ? ` от «${source}»` : ""} — забирай, выглядит по-домашнему 👇`
-      : "Понял, нужен рецепт. В текущей ленте я не нашёл точный пост, но могу поискать похожие блюда по словам или каналам.";
+  if (tokens.length && intent === "search") {
+    items = [tokens.slice(0, 3).join(" "), ...ui.chipsGeneral].filter(Boolean).slice(0, 3);
   }
 
-  if (intent === "weather") {
-    return top
-      ? `Нашёл, где сейчас пишут про погоду. Собрал самое близкое к запросу 👇`
-      : "По погоде в текущих Telegram-постах пока нет сильного совпадения. Можно уточнить город, и я попробую сузить поиск.";
-  }
-
-  if (intent === "images") {
-    return found.length
-      ? "Да, собрал картинки из свежих Telegram-постов. Можно открыть источник или попросить похожие 👇"
-      : "Картинок по этому запросу в текущей ленте не зацепилось. Попробуй написать тему чуть проще.";
-  }
-
-  if (intent === "video") {
-    return found.length
-      ? "Нашёл видео-посты по смыслу запроса. Смотри, что ближе всего 👇"
-      : "Видео по этому запросу пока не нашёл. Могу поискать обычные посты или картинки.";
-  }
-
-  if (intent === "trend") {
-    return found.length
-      ? `Смотрю по свежему Telegram-потоку: есть несколько сигналов по запросу «${query.trim()}». Вот самые близкие 👇`
-      : "Пока не вижу сильного сигнала в текущих JSON margeleT. Но запрос понял — можно расширить страну или тему.";
-  }
-
-  if (intent === "chat") {
-    return "Я тут, бро 🙂 Пиши как человеку: тему, страну, канал, событие, рецепт, фото или видео — я буду искать по живой базе margeleT.";
-  }
-
-  return found.length
-    ? `Да, нашёл в Telegram-потоке margeleT. Вот самое близкое по смыслу 👇`
-    : "Я понял запрос, но в текущей локальной базе не нашёл точного совпадения. Попробуй другое слово, страну или тему.";
+  return { type: "chips", title: ui.continueTitle, items };
 }
 
-function updateMemory(memory: SpaceMemory, query: string, intent: SpaceIntent, found: IngestedPost[]) {
+function updateMemory(memory: SpaceMemory, query: string, intent: SpaceIntent, found: IngestedPost[], locale: Locale) {
   memory.turns += 1;
   memory.lastIntent = intent;
+  memory.languageHints[locale] = (memory.languageHints[locale] || 0) + 1;
+  memory.lastUserWords = tokenize(query).slice(0, 8);
 
-  tokenize(query).forEach((token) => {
+  memory.lastUserWords.forEach((token) => {
     memory.topics[token] = (memory.topics[token] || 0) + 1;
   });
 
-  found.slice(0, 3).forEach((post) => {
+  found.slice(0, 2).forEach((post) => {
     if (!post.source.handle) return;
-    memory.favoriteSources[post.source.handle] = (memory.favoriteSources[post.source.handle] || 0) + 1;
+    memory.favoriteSources[post.source.handle] = (memory.favoriteSources[post.source.handle] || 0) + 0.35;
   });
 
   writeMemory(memory);
@@ -299,39 +356,59 @@ export function buildSpaceAnswer(params: {
   posts: IngestedPost[];
   locale: Locale;
 }): SpaceAnswer {
-  const { query, posts } = params;
-  const intent = detectIntent(query);
+  const { query, posts, locale } = params;
+  const ui = getUi(locale);
+  const { intent, strength } = detectIntent(query);
   const memory = readMemory();
   const tokens = tokenize(query);
+  const seed = query.length + memory.turns + tokens.join("").length;
+
+  if (intent === "greeting" || isShortSocial(query, intent)) {
+    updateMemory(memory, query, intent, [], locale);
+    return { text: pick(ui.hello, seed), blocks: [makeChips(ui, "chat", tokens)], mode: "talk" };
+  }
+
+  if (intent === "thanks") {
+    updateMemory(memory, query, intent, [], locale);
+    return { text: pick(ui.thanks, seed), blocks: [], mode: "talk" };
+  }
+
+  if (isBroadQuery(query, intent, strength)) {
+    updateMemory(memory, query, intent, [], locale);
+    const text = intent === "weather" ? ui.weatherClarify : intent === "trend" ? ui.trendClarify : ui.clarify;
+    return { text, blocks: [makeChips(ui, intent, tokens)], mode: "clarify" };
+  }
 
   const ranked = posts
     .map((post) => ({ post, score: rankPost(post, tokens, intent, memory) }))
-    .filter(({ score }) => score > 0)
+    .filter(({ score }) => score >= 7)
     .sort((a, b) => b.score - a.score)
-    .slice(0, intent === "images" ? 12 : 6);
+    .slice(0, intent === "images" || intent === "video" ? 8 : 3);
 
   const found = ranked.map((item) => item.post);
-  updateMemory(memory, query, intent, found);
+  updateMemory(memory, query, intent, found, locale);
 
-  const blocks: SpaceBlock[] = [];
-
-  if (intent === "images" || intent === "video") {
-    const gallery = buildGallery(found, intent === "video" ? "Видео и превью" : "Галерея из Telegram");
-    if (gallery) blocks.push(gallery);
+  if (!ranked.length) {
+    return { text: ui.noExact, blocks: [makeChips(ui, intent, tokens)], mode: "clarify" };
   }
 
-  ranked.slice(0, intent === "images" ? 3 : 4).forEach(({ post, score }) => {
-    blocks.push(postToBlock(post, score));
-  });
+  const blocks: SpaceBlock[] = [];
+  const best = ranked[0];
 
-  const chips = tokens.length
-    ? tokens.slice(0, 5).map((token) => `Ещё про ${token}`)
-    : ["Что сейчас обсуждают?", "Показать видео", "Показать источники"];
+  if (intent === "images" || intent === "video") {
+    const gallery = buildGallery(found, intent === "video" ? ui.videoTitle : ui.galleryTitle);
+    if (gallery) blocks.push(gallery);
+    ranked.slice(0, 1).forEach(({ post, score }) => blocks.push(postToBlock(post, score)));
+  } else {
+    blocks.push(postToBlock(best.post, best.score));
+  }
 
-  blocks.push({ type: "chips", title: "Можно продолжить", items: chips });
+  blocks.push(makeChips(ui, intent, tokens));
 
-  return {
-    text: humanIntro(intent, query, found),
-    blocks,
-  };
+  let text = ui.foundOne;
+  if (intent === "recipe") text = ui.recipeFound;
+  if (intent === "images") text = ui.foundGallery;
+  if (intent === "video") text = ui.foundVideo;
+
+  return { text, blocks, mode: blocks.length > 1 ? "show" : "answer" };
 }
