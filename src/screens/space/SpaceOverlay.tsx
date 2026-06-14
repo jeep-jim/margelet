@@ -2,7 +2,8 @@ import { ArrowLeft, Menu, Moon, Plus, Sun, Trash2, User, X } from "lucide-react"
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MargeletMark } from "../../components/shared/MargeletMark";
-import type { Locale } from "../../types/app";
+import type { IngestedPost, Locale } from "../../types/app";
+import { buildSpaceAnswer, type SpaceBlock } from "./spaceBrain";
 
 const SPACE_MESSAGES_STORAGE_KEY = "margelet_space_messages_v1";
 const SPACE_THREADS_STORAGE_KEY = "margelet_space_threads_v1";
@@ -27,6 +28,7 @@ function applySpaceTheme(theme: SpaceTheme) {
 type SpaceMessage = {
   role: "user" | "space";
   text: string;
+  blocks?: SpaceBlock[];
 };
 
 type SpaceThread = {
@@ -92,6 +94,12 @@ function readSpaceThreadsFromStorage(): SpaceThread[] {
                 (message.role === "user" || message.role === "space") &&
                 typeof message.text === "string",
             )
+            .map((message) => ({
+              ...message,
+              blocks: Array.isArray((message as SpaceMessage).blocks)
+                ? (message as SpaceMessage).blocks
+                : undefined,
+            }))
             .slice(-80),
         }))
         .sort((a, b) => b.updatedAt - a.updatedAt)
@@ -114,6 +122,12 @@ function readSpaceThreadsFromStorage(): SpaceThread[] {
               (message.role === "user" || message.role === "space") &&
               typeof message.text === "string",
           )
+          .map((message) => ({
+            ...message,
+            blocks: Array.isArray((message as SpaceMessage).blocks)
+              ? (message as SpaceMessage).blocks
+              : undefined,
+          }))
           .slice(-80),
       },
     ];
@@ -550,9 +564,11 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
 
 export function SpaceOverlay({
   locale,
+  posts,
   onClose,
 }: {
   locale: Locale;
+  posts: IngestedPost[];
   onClose: () => void;
 }) {
   const copy = SPACE_COPY[locale] ?? SPACE_COPY.us;
@@ -707,6 +723,12 @@ export function SpaceOverlay({
     const clean = text.trim();
     if (!clean) return;
 
+    const spaceAnswer = buildSpaceAnswer({
+      query: clean,
+      posts,
+      locale,
+    });
+
     setThreads((prev) => {
       const now = Date.now();
       let current = activeThread;
@@ -732,7 +754,8 @@ export function SpaceOverlay({
           },
           {
             role: "space" as const,
-            text: copy.botAnswer,
+            text: spaceAnswer.text || copy.botAnswer,
+            blocks: spaceAnswer.blocks,
           },
         ].slice(-80),
       };
@@ -767,6 +790,102 @@ export function SpaceOverlay({
     const next: SpaceTheme = isLight ? "dark" : "light";
     applySpaceTheme(next);
     setTheme(next);
+  };
+
+  const renderSpaceBlock = (block: SpaceBlock, index: number) => {
+    if (block.type === "gallery") {
+      return (
+        <div
+          key={`gallery-${index}`}
+          className={`mt-3 overflow-hidden rounded-[28px] border p-3 ${isLight ? "border-white/80 bg-white/56" : "border-white/10 bg-white/8"}`}
+        >
+          <div className={`mb-3 px-1 text-xs font-black ${isLight ? "text-[#243245]" : "text-white/78"}`}>
+            {block.title}
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            {block.items.map((item, itemIndex) => (
+              <a
+                key={`${item.url}-${itemIndex}`}
+                href={item.postUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="relative aspect-square overflow-hidden rounded-2xl bg-black/10"
+                title={item.sourceTitle}
+              >
+                {item.kind === "video" ? (
+                  <video src={item.url} poster={item.poster || undefined} muted playsInline preload="metadata" className="h-full w-full object-cover" />
+                ) : (
+                  <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    if (block.type === "chips") {
+      return (
+        <div key={`chips-${index}`} className="mt-3 flex flex-wrap gap-2">
+          {block.items.map((item) => (
+            <button
+              key={item}
+              type="button"
+              onClick={() => send(item.replace(/^Ещё про /, ""))}
+              className={`rounded-full px-3 py-2 text-xs font-bold transition hover:scale-[1.02] ${isLight ? "bg-white/70 text-[#36546f]" : "bg-white/10 text-white/72"}`}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      );
+    }
+
+    return (
+      <a
+        key={`post-${block.url}-${index}`}
+        href={block.url}
+        target="_blank"
+        rel="noreferrer"
+        className={`mt-3 block overflow-hidden rounded-[30px] border p-3 transition hover:scale-[1.01] ${isLight ? "border-white/80 bg-white/62 text-[#07111d]" : "border-white/10 bg-[#152234]/88 text-white"}`}
+      >
+        <div className="flex items-center gap-3">
+          {block.sourceAvatar ? (
+            <img src={block.sourceAvatar} alt="" className="h-10 w-10 rounded-full object-cover" loading="lazy" />
+          ) : (
+            <div className={`h-10 w-10 rounded-full ${isLight ? "bg-[#d8ecff]" : "bg-white/10"}`} />
+          )}
+          <div className="min-w-0">
+            <div className="truncate text-sm font-black">{block.title}</div>
+            <div className={`truncate text-xs ${isLight ? "text-[#587086]" : "text-white/48"}`}>{block.subtitle}</div>
+          </div>
+        </div>
+
+        {block.media.length ? (
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            {block.media.slice(0, 4).map((item, mediaIndex) => (
+              <div key={`${item.url}-${mediaIndex}`} className="aspect-video overflow-hidden rounded-2xl bg-black/10">
+                {item.kind === "video" ? (
+                  <video src={item.url} poster={item.poster || undefined} muted playsInline preload="metadata" className="h-full w-full object-cover" />
+                ) : item.kind === "image" ? (
+                  <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" />
+                ) : null}
+              </div>
+            ))}
+          </div>
+        ) : null}
+
+        {block.text ? (
+          <div className={`mt-3 whitespace-pre-wrap text-sm leading-5 ${isLight ? "text-[#26384a]" : "text-white/76"}`}>
+            {block.text}
+          </div>
+        ) : null}
+
+        <div className={`mt-3 text-xs font-bold ${isLight ? "text-[#4b8ed8]" : "text-[#8fc8ff]"}`}>
+          Открыть источник ↗
+        </div>
+      </a>
+    );
   };
 
   const renderThreadList = (compact = false) => (
@@ -1089,6 +1208,11 @@ export function SpaceOverlay({
                     }`}
                   >
                     {message.text}
+                    {message.role === "space" && message.blocks?.length ? (
+                      <div className="mt-1">
+                        {message.blocks.map((block, blockIndex) => renderSpaceBlock(block, blockIndex))}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               ))}

@@ -2858,6 +2858,7 @@ export function FeedScreen({
       {feedSettings.mediaMode === "chat" ? (
         <SpaceOverlay
           locale={locale}
+          posts={posts}
           onClose={() => {
             setFeedSettings((prev) => ({ ...prev, mediaMode: "all" }));
           }}
