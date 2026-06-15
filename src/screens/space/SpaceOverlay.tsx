@@ -611,6 +611,7 @@ export function SpaceOverlay({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const messagesRef = useRef<HTMLDivElement | null>(null);
   const pendingAnswerRef = useRef<number | null>(null);
+  const skipNextFocusRef = useRef(false);
   const [keyboardBottom, setKeyboardBottom] = useState(0);
   const [inputFocused, setInputFocused] = useState(false);
   const [listeningVoice, setListeningVoice] = useState(false);
@@ -830,13 +831,18 @@ export function SpaceOverlay({
         });
 
         setIsThinking(false);
-        window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+        if (!skipNextFocusRef.current) {
+          window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+        }
+        skipNextFocusRef.current = false;
       })();
     }, Math.min(420, 120 + clean.length * 3));
 
     setValue("");
     setChatsMenuOpen(false);
-    window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+    if (!skipNextFocusRef.current) {
+      window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+    }
   };
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -863,6 +869,7 @@ export function SpaceOverlay({
         const text = String(event?.results?.[0]?.[0]?.transcript || "").trim();
         if (text) {
           setValue("");
+          skipNextFocusRef.current = true;
           send(text);
         }
       };

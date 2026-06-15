@@ -34,7 +34,7 @@ function pickLang(q: string) { return /[а-яё]/i.test(q) ? 'ru' : 'en'; }
 function stripQuery(q: string) {
   return q
     .replace(/[@#]/g, ' ')
-    .replace(/\b(бро|друг|плиз|пожалуйста|можешь|можно|нужно|надо|мне|погода|прогноз|температура|биография|биографию|кто\s+такой|кто\s+такая|расскажи|покажи|найди|про|включи|поставь|воспроизведи|трек|песня|музыка|фото|картинки|изображения|видео|купить|заказать|цена|график|акции|курс|сегодня|завтра|послезавтра|на\s+сегодня|на\s+завтра|weather|forecast|biography|who\s+is|about|tell\s+me|show|find|play|song|music|images|video|buy|price|stock|chart)\b/gi, ' ')
+    .replace(/\b(бро|друг|плиз|пожалуйста|можешь|можно|нужно|надо|мне|скажи|ответь|глянь|посмотри|проверь|погода|прогноз|температура|биография|биографию|кто\s+такой|кто\s+такая|расскажи|покажи|найди|про|включи|поставь|воспроизведи|трек|песня|музыка|фото|картинки|изображения|видео|купить|заказать|цена|график|акции|курс|сегодня|завтра|послезавтра|на\s+сегодня|на\s+завтра|weather|forecast|biography|who\s+is|about|tell\s+me|show|find|play|song|music|images|video|buy|price|stock|chart|check|look)\b/gi, ' ')
     .replace(/\b(в|во|по|для)\s+(?=[а-яёa-z])/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim();
@@ -64,7 +64,9 @@ function duration(ms?: number) {
 }
 
 function flattenTopics(topics: DDGResult['RelatedTopics'] = []) {
-  return topics.flatMap((topic) => 'Topics' in topic ? topic.Topics || [] : [topic]).filter((item) => item.Text);
+  return topics
+    .flatMap((topic: any) => Array.isArray(topic?.Topics) ? topic.Topics : [topic])
+    .filter((item: any) => Boolean(item?.Text));
 }
 
 async function weather(q: string) {
@@ -195,17 +197,40 @@ async function music(q: string) {
 
 async function duck(q: string, tool: string) {
   const subject = stripQuery(q) || q;
-  const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(subject)}&format=json&no_redirect=1&no_html=1&skip_disambig=1`;
+  const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(subject)}&format=json&no_redirect=1&no_html=1`;
   const data = await fetch(url).then((r) => r.json()) as DDGResult;
-  const topics = flattenTopics(data.RelatedTopics).slice(0, 10);
-  const items = topics.map((x) => ({
-    title: x.Text || subject,
-    url: x.FirstURL || data.AbstractURL || '',
-    image: x.Icon?.URL ? (x.Icon.URL.startsWith('http') ? x.Icon.URL : `https://duckduckgo.com${x.Icon.URL}`) : null,
+  const topics = flattenTopics(data.RelatedTopics || []);
+
+  const items = topics.map((x: any) => ({
+    title: x?.Text || subject,
+    url: x?.FirstURL || data?.AbstractURL || '',
+    image:
+      x?.Icon?.URL
+        ? x.Icon.URL.startsWith('http')
+          ? x.Icon.URL
+          : `https://duckduckgo.com${x.Icon.URL}`
+        : '',
     sourceTitle: 'DuckDuckGo',
   }));
-  if (data.AbstractText) items.unshift({ title: data.AbstractText, url: data.AbstractURL || '', image: null, sourceTitle: 'DuckDuckGo' });
-  return { ok: items.length > 0, tool, title: data.Heading || subject, summary: data.AbstractText || '', url: data.AbstractURL || '', items, source: 'DuckDuckGo' };
+
+  if (data?.AbstractText) {
+    items.unshift({
+      title: data.AbstractText,
+      url: data.AbstractURL || '',
+      image: '',
+      sourceTitle: 'DuckDuckGo',
+    });
+  }
+
+  return {
+    ok: items.length > 0 || Boolean(data.AbstractText),
+    tool,
+    title: data.Heading || subject,
+    summary: data.AbstractText || '',
+    url: data.AbstractURL || '',
+    items: items.slice(0, 12),
+    source: 'DuckDuckGo',
+  };
 }
 
 async function finance(q: string) {
@@ -218,11 +243,57 @@ async function finance(q: string) {
   return { ok: points.length > 0, tool: 'finance', title: symbol.toUpperCase(), points, source: 'Stooq' };
 }
 
+async function aiReply(req: VercelRequest) {
+  const body = typeof req.body === 'object' && req.body ? req.body as Record<string, unknown> : {};
+  const query = String(body.query || req.query.q || '').slice(0, 1200);
+  const locale = String(body.locale || 'ru');
+  const system = String(body.system || (locale === 'ru' ? 'Ты Space. Отвечай живо, кратко и по делу.' : 'You are Space. Answer naturally and briefly.')).slice(0, 4000);
+  const prompt = String(body.prompt || query).slice(0, 8000);
+  if (!query.trim()) return { ok: false, error: 'empty_query' };
+
+  const openAiKey = process.env.OPENAI_API_KEY;
+  const openRouterKey = process.env.OPENROUTER_API_KEY;
+  const baseUrl = process.env.SPACE_LLM_BASE_URL || (openRouterKey ? 'https://openrouter.ai/api/v1' : 'https://api.openai.com/v1');
+  const apiKey = process.env.SPACE_LLM_API_KEY || openAiKey || openRouterKey;
+  const model = process.env.SPACE_LLM_MODEL || (openRouterKey ? 'openai/gpt-4o-mini' : 'gpt-4o-mini');
+
+  if (!apiKey) return { ok: false, error: 'missing_llm_key' };
+
+  const response = await fetch(`${baseUrl.replace(/\/$/, '')}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+      ...(openRouterKey ? { 'HTTP-Referer': 'https://margelet.space', 'X-Title': 'margeleT Space' } : {}),
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.78,
+      max_tokens: 320,
+      messages: [
+        { role: 'system', content: system },
+        { role: 'user', content: prompt },
+      ],
+    }),
+  });
+
+  if (!response.ok) {
+    const text = await response.text().catch(() => '');
+    return { ok: false, error: `llm_http_${response.status}`, detail: text.slice(0, 500) };
+  }
+
+  const data = await response.json() as { choices?: Array<{ message?: { content?: string } }> };
+  const text = String(data.choices?.[0]?.message?.content || '').trim();
+  return { ok: Boolean(text), tool: 'ai', text, source: model };
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const tool = String(req.query.tool || 'wiki');
-  const q = String(req.query.q || '').slice(0, 220);
-  if (!q.trim()) return send(res, 400, { ok: false, error: 'empty_query' });
+  const body = typeof req.body === 'object' && req.body ? req.body as Record<string, unknown> : {};
+  const q = String(req.query.q || body.query || '').slice(0, 220);
   try {
+    if (tool === 'ai') return send(res, 200, await aiReply(req));
+    if (!q.trim()) return send(res, 400, { ok: false, error: 'empty_query' });
     if (tool === 'weather') return send(res, 200, await weather(q));
     if (tool === 'images') return send(res, 200, await commonsMedia(q, 'images'));
     if (tool === 'video') return send(res, 200, await commonsMedia(q, 'video'));

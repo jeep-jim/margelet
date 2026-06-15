@@ -3,27 +3,6 @@ import type { SpaceOSDecision, SpaceOSMemory } from './types';
 
 type LlmStatus = 'idle' | 'loading' | 'ready' | 'unsupported' | 'failed';
 
-type ChatMessage = { role: 'system' | 'user' | 'assistant'; content: string };
-
-type WebLlmEngine = {
-  chat?: {
-    completions?: {
-      create?: (input: {
-        messages: ChatMessage[];
-        temperature?: number;
-        max_tokens?: number;
-      }) => Promise<{ choices?: Array<{ message?: { content?: string } }> }>;
-    };
-  };
-};
-
-type WebLlmModule = {
-  CreateMLCEngine?: (
-    model: string,
-    options?: { initProgressCallback?: (progress: unknown) => void },
-  ) => Promise<WebLlmEngine>;
-};
-
 type BrowserAiSession = {
   prompt: (input: string) => Promise<string>;
 };
@@ -39,19 +18,16 @@ declare global {
   }
 }
 
-const MODEL_ID = 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC';
-const WEBLLM_URL = 'https://esm.sh/@mlc-ai/web-llm@0.2.79';
+const SERVER_MODEL = 'server-space-ai';
 
 const state: {
   status: LlmStatus;
   error: string;
-  engine: WebLlmEngine | null;
   browserSession: BrowserAiSession | null;
-  loadingPromise: Promise<WebLlmEngine | BrowserAiSession | null> | null;
+  loadingPromise: Promise<BrowserAiSession | null> | null;
 } = {
   status: 'idle',
   error: '',
-  engine: null,
   browserSession: null,
   loadingPromise: null,
 };
@@ -64,12 +40,9 @@ function hasWebGpu() {
   return typeof navigator !== 'undefined' && Boolean((navigator as Navigator & { gpu?: unknown }).gpu);
 }
 
-function canTryModel() {
-  if (typeof window === 'undefined') return false;
-  const flag = window.localStorage.getItem('margelet_space_llm');
-  if (flag === 'off') return false;
-  if (flag === 'on') return true;
-  return hasWebGpu() || Boolean(window.ai?.languageModel?.create || window.LanguageModel?.create);
+function browserAiFactory() {
+  if (typeof window === 'undefined') return null;
+  return window.ai?.languageModel?.create || window.LanguageModel?.create || null;
 }
 
 function systemPrompt(locale: Locale) {
@@ -77,10 +50,10 @@ function systemPrompt(locale: Locale) {
     return [
       'Ты Space — живой поисковый интеллект внутри margeleT.',
       'Отвечай по-русски, как нормальный собеседник: тепло, понятно, без канцелярита и без шаблонов.',
-      'Сначала отвечай человеку по смыслу. Если нужны факты, скажи, что проверишь сеть. Telegram — только дополнительный свежий сенсор, не главный источник.',
-      'Не выдумывай факты, цены, погоду, музыку или новости. Для фактов дождись данных инструментов.',
-      'Не повторяй одну и ту же фразу. Не говори “уточни”, “не понял”, “я только Telegram”. Если инструмент нужен — попроси систему использовать инструмент, а не притворяйся, что уже проверил.',
-      'Можно мягко спорить, задавать один живой вопрос, шутить умеренно, но не льстить в каждом сообщении.',
+      'Сначала отвечай человеку по смыслу. Для фактов используй данные инструментов, если они переданы.',
+      'Не выдумывай цены, погоду, новости и источники. Если фактов нет — честно скажи, что нужен поиск.',
+      'Не повторяй одну и ту же фразу. Не говори “уточни”, “не понял”, “я только Telegram”.',
+      'Можно мягко спорить, шутить умеренно и помнить стиль пользователя.',
       'Длина ответа: 1–5 предложений, если пользователь не просит подробно.',
     ].join('\n');
   }
@@ -88,8 +61,7 @@ function systemPrompt(locale: Locale) {
   return [
     'You are Space, a live search intelligence inside margeleT.',
     'Answer naturally, warmly, and briefly. Do not sound like a template.',
-    'Talk to the person first. Use tools for facts. Telegram is only an extra freshness sensor, not your whole knowledge base.',
-    'Do not invent facts, prices, weather, music, or news. Do not repeat yourself.',
+    'Use tool facts when provided. Do not invent facts, weather, prices, news, or sources.',
   ].join('\n');
 }
 
@@ -101,20 +73,20 @@ function buildUserPrompt(input: {
   facts?: string[];
 }) {
   const ru = isRussian(input.locale, input.query);
-  const rich = input.memory as SpaceOSMemory & { recentTurns?: Array<{ role: string; text: string }>; lastTrack?: string; lastArtist?: string; lastCity?: string; interests?: string[] };
-  const name = rich?.userName ? (ru ? `Имя пользователя: ${rich.userName}.` : `User name: ${rich.userName}.`) : '';
+  const memory = input.memory as SpaceOSMemory & { recentTurns?: Array<{ role: string; text: string }>; lastTrack?: string; lastArtist?: string; lastCity?: string; interests?: string[] };
+  const name = memory?.userName ? (ru ? `Имя пользователя: ${memory.userName}.` : `User name: ${memory.userName}.`) : '';
   const profile = [
-    rich?.lastCity ? (ru ? `Последний город: ${rich.lastCity}.` : `Last city: ${rich.lastCity}.`) : '',
-    rich?.lastTrack ? (ru ? `Последний музыкальный запрос: ${[rich.lastArtist, rich.lastTrack].filter(Boolean).join(' — ')}.` : `Last music request: ${[rich.lastArtist, rich.lastTrack].filter(Boolean).join(' — ')}.`) : '',
-    rich?.interests?.length ? (ru ? `Интересы из диалога: ${rich.interests.slice(-8).join(', ')}.` : `Interests from dialog: ${rich.interests.slice(-8).join(', ')}.`) : '',
+    memory?.lastCity ? (ru ? `Последний город: ${memory.lastCity}.` : `Last city: ${memory.lastCity}.`) : '',
+    memory?.lastTrack ? (ru ? `Последний музыкальный запрос: ${[memory.lastArtist, memory.lastTrack].filter(Boolean).join(' — ')}.` : `Last music request: ${[memory.lastArtist, memory.lastTrack].filter(Boolean).join(' — ')}.`) : '',
+    memory?.interests?.length ? (ru ? `Интересы из диалога: ${memory.interests.slice(-8).join(', ')}.` : `Interests from dialog: ${memory.interests.slice(-8).join(', ')}.`) : '',
   ].filter(Boolean).join('\n');
-  const history = rich?.recentTurns?.length
-    ? (ru ? `Последний контекст диалога:\n${rich.recentTurns.slice(-10).map((t) => `${t.role === 'user' ? 'Пользователь' : 'Space'}: ${t.text}`).join('\n')}` : `Recent conversation:\n${rich.recentTurns.slice(-10).map((t) => `${t.role}: ${t.text}`).join('\n')}`)
+  const history = memory?.recentTurns?.length
+    ? (ru ? `Последний контекст диалога:\n${memory.recentTurns.slice(-10).map((t) => `${t.role === 'user' ? 'Пользователь' : 'Space'}: ${t.text}`).join('\n')}` : `Recent conversation:\n${memory.recentTurns.slice(-10).map((t) => `${t.role}: ${t.text}`).join('\n')}`)
     : '';
   const route = input.decision
     ? (ru
-      ? `Распознанный режим: ${input.decision.tool}. Тема: ${input.decision.subject || input.query}.`
-      : `Detected mode: ${input.decision.tool}. Subject: ${input.decision.subject || input.query}.`)
+      ? `Режим: ${input.decision.tool}. Тема: ${input.decision.subject || input.query}.`
+      : `Mode: ${input.decision.tool}. Subject: ${input.decision.subject || input.query}.`)
     : '';
   const facts = input.facts?.length
     ? (ru ? `Факты от инструментов:\n- ${input.facts.join('\n- ')}` : `Tool facts:\n- ${input.facts.join('\n- ')}`)
@@ -127,57 +99,64 @@ function buildUserPrompt(input: {
     route,
     facts,
     ru
-      ? `Сообщение пользователя: “${input.query}”\nОтветь живо и по делу. Если фактов нет — не притворяйся, что проверил.`
-      : `User message: “${input.query}”\nAnswer naturally and usefully. If there are no facts, do not pretend you checked them.`,
+      ? `Сообщение пользователя: “${input.query}”\nОтветь живо и по делу. Не пиши служебные фразы и не изображай поиск, если фактов нет.`
+      : `User message: “${input.query}”\nAnswer naturally and usefully. Do not write service phrases or pretend to search if there are no facts.`,
   ].filter(Boolean).join('\n\n');
 }
 
+async function serverLlmReply(input: {
+  query: string;
+  locale: Locale;
+  decision?: SpaceOSDecision;
+  memory?: SpaceOSMemory;
+  facts?: string[];
+  timeoutMs: number;
+}) {
+  const controller = new AbortController();
+  const timer = window.setTimeout(() => controller.abort(), input.timeoutMs);
+  try {
+    const response = await fetch('/api/space-crawl?tool=ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify({
+        query: input.query,
+        locale: input.locale,
+        decision: input.decision,
+        memory: input.memory,
+        facts: input.facts || [],
+        system: systemPrompt(input.locale),
+        prompt: buildUserPrompt(input),
+      }),
+      signal: controller.signal,
+    });
+    if (!response.ok) return null;
+    const data = await response.json() as { ok?: boolean; text?: string; error?: string };
+    if (data?.ok && data.text) return cleanAnswer(data.text);
+    return null;
+  } catch {
+    return null;
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
 async function loadBrowserAi(locale: Locale) {
-  const factory = window.ai?.languageModel?.create || window.LanguageModel?.create;
-  if (!factory) return null;
-  const session = await factory({ systemPrompt: systemPrompt(locale), temperature: 0.75, topK: 40 });
-  state.browserSession = session;
-  return session;
-}
-
-async function loadWebLlm() {
-  if (!hasWebGpu()) return null;
-  const importer = new Function('url', 'return import(url)') as (url: string) => Promise<WebLlmModule>;
-  const mod = await importer(WEBLLM_URL);
-  if (!mod.CreateMLCEngine) throw new Error('WebLLM module is unavailable');
-  const engine = await mod.CreateMLCEngine(MODEL_ID, { initProgressCallback: () => undefined });
-  state.engine = engine;
-  return engine;
-}
-
-async function loadAnyModel(locale: Locale) {
-  if (state.engine) return state.engine;
   if (state.browserSession) return state.browserSession;
   if (state.loadingPromise) return state.loadingPromise;
-
-  if (!canTryModel()) {
+  const factory = browserAiFactory();
+  if (!factory) {
     state.status = 'unsupported';
-    state.error = 'No browser AI/WebGPU runtime';
+    state.error = 'Browser AI is unavailable';
     return null;
   }
-
   state.status = 'loading';
   state.error = '';
   state.loadingPromise = (async () => {
     try {
-      const browserAi = await loadBrowserAi(locale);
-      if (browserAi) {
-        state.status = 'ready';
-        return browserAi;
-      }
-      const webLlm = await loadWebLlm();
-      if (webLlm) {
-        state.status = 'ready';
-        return webLlm;
-      }
-      state.status = 'unsupported';
-      state.error = 'No supported local model runtime';
-      return null;
+      const session = await factory({ systemPrompt: systemPrompt(locale), temperature: 0.75, topK: 40 });
+      state.browserSession = session;
+      state.status = 'ready';
+      return session;
     } catch (error) {
       state.status = 'failed';
       state.error = error instanceof Error ? error.message : String(error);
@@ -186,22 +165,26 @@ async function loadAnyModel(locale: Locale) {
       state.loadingPromise = null;
     }
   })();
-
   return state.loadingPromise;
 }
 
 export function warmLocalLlm(locale: Locale = 'ru' as Locale) {
+  // Не грузим WebLLM автоматически: он подвешивает Space на слабых телефонах.
+  // Прогреваем только встроенный Browser AI, если браузер сам его предоставляет.
   if (typeof window === 'undefined') return;
-  void loadAnyModel(locale);
+  if (!browserAiFactory()) return;
+  void loadBrowserAi(locale);
 }
 
 export function getLocalLlmStatus() {
-  return { status: state.status, error: state.error, model: MODEL_ID, webgpu: hasWebGpu() };
+  const browserAi = Boolean(browserAiFactory());
+  return { status: state.status, error: state.error, model: SERVER_MODEL, webgpu: hasWebGpu(), browserAi };
 }
 
 function cleanAnswer(value: string) {
   return String(value || '')
     .replace(/^space\s*[:—-]\s*/i, '')
+    .replace(/^спейс\s*[:—-]\s*/i, '')
     .replace(/\s+$/g, '')
     .replace(/\n{3,}/g, '\n\n')
     .trim()
@@ -221,40 +204,21 @@ export async function tryLocalLlmReply(input: {
 
   const timeoutMs = input.timeoutMs ?? 9000;
 
+  const serverText = await serverLlmReply({ ...input, timeoutMs });
+  if (serverText && serverText.length >= 8) return serverText;
+
   try {
     const model = await Promise.race([
-      loadAnyModel(input.locale),
-      new Promise<null>((resolve) => window.setTimeout(() => resolve(null), timeoutMs)),
+      loadBrowserAi(input.locale),
+      new Promise<null>((resolve) => window.setTimeout(() => resolve(null), Math.min(timeoutMs, 5000))),
     ]);
     if (!model) return null;
 
     const prompt = buildUserPrompt(input);
-
-    if ('prompt' in model && typeof model.prompt === 'function') {
-      const text = await Promise.race([
-        model.prompt(prompt),
-        new Promise<string>((resolve) => window.setTimeout(() => resolve(''), timeoutMs)),
-      ]);
-      const clean = cleanAnswer(text);
-      return clean.length >= 8 ? clean : null;
-    }
-
-    const create = (model as WebLlmEngine).chat?.completions?.create;
-    if (!create) return null;
-
-    const response = await Promise.race([
-      create({
-        messages: [
-          { role: 'system', content: systemPrompt(input.locale) },
-          { role: 'user', content: prompt },
-        ],
-        temperature: 0.78,
-        max_tokens: 220,
-      }),
-      new Promise<null>((resolve) => window.setTimeout(() => resolve(null), timeoutMs)),
+    const text = await Promise.race([
+      model.prompt(prompt),
+      new Promise<string>((resolve) => window.setTimeout(() => resolve(''), Math.min(timeoutMs, 7000))),
     ]);
-
-    const text = response?.choices?.[0]?.message?.content || '';
     const clean = cleanAnswer(text);
     return clean.length >= 8 ? clean : null;
   } catch (error) {

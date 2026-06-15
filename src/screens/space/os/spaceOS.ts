@@ -3,21 +3,27 @@ import type { SpaceAnswer, SpaceBlock, SpaceOSDecision, SpaceOSInput, SpaceOSMem
 import { readSpaceOSMemory, rememberAssistantTurn, rememberSpaceOSTurn, writeSpaceOSMemory } from './spaceMemory';
 import { routeSpaceOS } from './spaceRouter';
 import { runInternetTool, searchTelegramSupplement } from './spaceTools';
-import { getLocalLlmStatus, tryLocalLlmReply, warmLocalLlm } from './localLlmOS';
+import { getLocalLlmStatus, tryLocalLlmReply } from './localLlmOS';
 
 const HARD_BANNED = [
-  ['слышу', 'тебя'].join(' '),
-  ['вижу', 'продолжаешь'].join(' '),
-  ['отвечу', 'прямо'].join(' '),
-  ['важнее', 'не', 'выдача'].join(' '),
-  ['докрутим'].join(''),
-  ['развер', 'нём'].join(''),
-  ['понял', 'направление'].join(' '),
-  ['обсудить', 'мысль'].join(' '),
-  ['превратить', 'поиск'].join(' '),
+  'слышу тебя',
+  'вижу ты продолжаешь',
+  'отвечу прямо',
+  'важнее не выдача',
+  'докрутим',
+  'развернем',
+  'развернём',
+  'понял направление',
+  'обсудить мысль',
+  'превратить ее в поиск',
+  'превратить её в поиск',
+  'локальная модель не дала ответ',
+  'могу продолжить только через инструмент',
 ];
 
-const STOP = new Set('и в во на по про для что это как кто где когда почему зачем можно можешь надо нужно хочу покажи расскажи объясни включи поставь найди дай мне ты я он она оно они мы вы а но или же ли бы не да нет ок окей бро друг пожалуйста'.split(' '));
+const STOP = new Set(
+  'и в во на по про для что это как кто где когда почему зачем можно можешь надо нужно хочу покажи расскажи объясни включи поставь найди дай мне ты я он она оно они мы вы а но или же ли бы не да нет ок окей бро друг пожалуйста'.split(' '),
+);
 
 function compact(value: unknown) {
   return String(value || '').replace(/\s+/g, ' ').trim();
@@ -27,24 +33,20 @@ function lower(value: unknown) {
   return compact(value).toLowerCase().replace(/ё/g, 'е');
 }
 
-function isRu(decision: Pick<SpaceOSDecision, 'lang'>) {
-  return decision.lang === 'ru';
-}
-
 function sanitize(text: string) {
   let next = compact(text)
     .replace(/^(Space|Спейс|Spike|Спайк)\s*[:—-]\s*/i, '')
     .replace(/\s+([,.!?;:])/g, '$1')
     .trim();
 
-  const bad = HARD_BANNED.some((line) => lower(next).includes(lower(line)));
-  if (bad) return '';
+  const hay = lower(next);
+  if (HARD_BANNED.some((line) => hay.includes(lower(line)))) return '';
   if (next.length > 1100) next = `${next.slice(0, 1100).trim()}…`;
   return next;
 }
 
-function userName(memory: SpaceOSMemory) {
-  return compact(memory.userName || '');
+function isRu(decision: Pick<SpaceOSDecision, 'lang'>) {
+  return decision.lang === 'ru';
 }
 
 function internalPostUrl(post: SpaceOSInput['posts'][number]) {
@@ -54,7 +56,9 @@ function internalPostUrl(post: SpaceOSInput['posts'][number]) {
 }
 
 function textOfPost(post: SpaceOSInput['posts'][number]) {
-  return `${post.text || ''} ${post.source.title || ''} ${post.source.handle || ''} ${(post.media || []).map((m) => `${m.fileName || ''} ${m.url || ''}`).join(' ')}`.toLowerCase().replace(/ё/g, 'е');
+  return `${post.text || ''} ${post.source.title || ''} ${post.source.handle || ''} ${(post.media || []).map((m) => `${m.fileName || ''} ${m.url || ''}`).join(' ')}`
+    .toLowerCase()
+    .replace(/ё/g, 'е');
 }
 
 function keywords(query: string) {
@@ -66,8 +70,9 @@ function keywords(query: string) {
     .slice(0, 10);
 }
 
-function nameAnswer(query: string, memory: SpaceOSMemory): SpaceAnswer | null {
+function rememberNameOrCode(query: string, memory: SpaceOSMemory): SpaceAnswer | null {
   const q = lower(query);
+
   const explicitName = query.match(/(?:меня\s+зовут|зови\s+меня|мо[её]\s+имя|my\s+name\s+is|call\s+me)\s+([^.!?\n]{2,42})/i);
   if (explicitName?.[1]) {
     const name = compact(explicitName[1]).replace(/[,.!?]+$/g, '');
@@ -88,7 +93,7 @@ function nameAnswer(query: string, memory: SpaceOSMemory): SpaceAnswer | null {
   }
 
   if (/как\s+зовут\s+меня|мо[её]\s+имя|what\s+is\s+my\s+name/.test(q)) {
-    const name = userName(memory);
+    const name = compact(memory.userName || '');
     return { text: name ? `Ты назывался: ${name}.` : 'Имя пока не записано в локальной памяти.', blocks: [], mode: 'talk' };
   }
 
@@ -110,41 +115,37 @@ function rememberMusic(memory: SpaceOSMemory, subject: string) {
   writeSpaceOSMemory({ ...memory, lastArtist: artist || memory.lastArtist, lastTrack: track || memory.lastTrack, updatedAt: Date.now() });
 }
 
-function extractFacts(blocks: SpaceBlock[]) {
-  const facts: string[] = [];
-  for (const block of blocks) {
-    if (block.type === 'weather') facts.push(`${block.title}: ${block.summary}`);
-    if (block.type === 'webInfo') {
-      facts.push(`${block.title}: ${block.summary}`);
-      block.facts?.slice(0, 4).forEach((fact) => facts.push(fact));
-    }
-    if (block.type === 'chart') {
-      const last = block.points[block.points.length - 1];
-      if (last) facts.push(`${block.title}: последнее значение ${last.value} (${last.label})`);
-    }
-    if (block.type === 'music') facts.push(`Найдено треков: ${block.tracks.length}. Первый: ${block.tracks[0]?.title || ''}`);
-    if (block.type === 'shop') facts.push(`Найдено вариантов: ${block.items.length}. Первый: ${block.items[0]?.title || ''}`);
-    if (block.type === 'gallery') facts.push(`Найдена медиаподборка: ${block.items.length} элементов.`);
-    if (block.type === 'quote') facts.push(`Сигнал margeleT от ${block.title}: ${block.text.slice(0, 180)}`);
-  }
-  return facts.map(compact).filter(Boolean).slice(0, 10);
-}
-
 function leadFor(decision: SpaceOSDecision, blocks: SpaceBlock[]) {
   const ru = isRu(decision);
-  if (decision.tool === 'weather') return ru ? 'Проверил погоду и собрал карточку.' : 'I checked the weather and built the card.';
+  if (decision.tool === 'weather') return ru ? 'Показываю погоду.' : 'Here is the weather.';
   if (decision.tool === 'music') return ru ? 'Нашёл музыку. Нажми на трек — плеер останется играть внизу.' : 'I found music. Tap a track; the player stays in the tray.';
-  if (decision.tool === 'images') return ru ? 'Нашёл изображения из открытых источников.' : 'I found images from open sources.';
-  if (decision.tool === 'video') return ru ? 'Нашёл видео и превью из открытых источников.' : 'I found videos and previews from open sources.';
+  if (decision.tool === 'images') return ru ? 'Нашёл изображения.' : 'I found images.';
+  if (decision.tool === 'video') return ru ? 'Нашёл видео и превью.' : 'I found videos and previews.';
   if (decision.tool === 'finance') return ru ? 'Собрал график. Это не инвестиционный совет.' : 'I built a chart. This is not financial advice.';
   if (decision.tool === 'shopping') return ru ? 'Нашёл варианты покупки.' : 'I found shopping options.';
   if (decision.tool === 'biography') return ru ? 'Собрал справку.' : 'I collected a reference.';
   if (blocks.some((block) => block.type === 'quote')) return ru ? 'В margeleT нашёлся свежий близкий сигнал.' : 'I found a fresh related margeleT signal.';
-  return ru ? 'Проверил источники.' : 'I checked sources.';
+  return ru ? 'Нашёл это.' : 'I found this.';
 }
 
 function statusBlock(title: string, value: string, caption: string, tone: 'blue' | 'green' | 'orange' | 'violet' = 'blue'): SpaceBlock {
   return { type: 'stat', title, value, caption, tone };
+}
+
+function modelStatusBlock(): SpaceBlock {
+  const status = getLocalLlmStatus();
+  const ready = status.status === 'ready';
+  const loading = status.status === 'loading';
+  return statusBlock(
+    'Space AI',
+    ready ? 'ready' : loading ? 'loading' : status.status,
+    ready
+      ? 'Модель отвечает в браузере.'
+      : loading
+        ? 'Модель загружается.'
+        : `Browser AI недоступен в этом браузере. Инструменты поиска работают отдельно.`,
+    ready ? 'green' : loading ? 'blue' : 'orange',
+  );
 }
 
 function tunnelBlock(topic: string): SpaceBlock {
@@ -192,57 +193,32 @@ function searchLocalAudio(posts: SpaceOSInput['posts'], decision: SpaceOSDecisio
   };
 }
 
+function factLines(blocks: SpaceBlock[]) {
+  const facts: string[] = [];
+  for (const block of blocks) {
+    if (block.type === 'weather') facts.push(`${block.title}: ${block.summary}`);
+    if (block.type === 'webInfo') facts.push(`${block.title}: ${block.summary}`);
+    if (block.type === 'music') facts.push(`tracks:${block.tracks.length}`);
+    if (block.type === 'gallery') facts.push(`media:${block.items.length}`);
+    if (block.type === 'quote') facts.push(`${block.title}: ${block.text.slice(0, 160)}`);
+  }
+  return facts.map(compact).filter(Boolean).slice(0, 8);
+}
+
 async function llmText(input: SpaceOSInput, decision: SpaceOSDecision, memory: SpaceOSMemory, facts: string[] = [], timeoutMs = 8000) {
-  const text = await tryLocalLlmReply({
-    query: input.query,
-    locale: input.locale,
-    decision,
-    memory,
-    facts,
-    timeoutMs,
-  });
+  const text = await tryLocalLlmReply({ query: input.query, locale: input.locale, decision, memory, facts, timeoutMs });
   return sanitize(text || '');
 }
 
-function honestFallback(decision: SpaceOSDecision) {
-  if (decision.lang === 'ru') {
-    return getLocalLlmStatus().status === 'loading'
-      ? 'Локальная модель ещё загружается. Попробуй ещё раз через пару секунд.'
-      : 'Локальная модель не дала ответ. Могу продолжить только через инструмент: поиск, погода, музыка, видео, картинки или Telegram-сигналы.';
-  }
-
-  return getLocalLlmStatus().status === 'loading'
-    ? 'The local model is still loading. Try again in a few seconds.'
-    : 'The local model did not answer. I can continue only through a tool: search, weather, music, video, images, or Telegram signals.';
-}
-
-function modelStatusBlock(): SpaceBlock {
-  const status = getLocalLlmStatus();
-  const ready = status.status === 'ready';
-  const loading = status.status === 'loading';
-  return statusBlock(
-    'Local AI',
-    ready ? 'ready' : loading ? 'loading' : status.status,
-    ready
-      ? 'Локальная модель отвечает в браузере.'
-      : loading
-        ? 'Модель загружается. Первый запуск может занять время.'
-        : `LLM не поднялась в этом браузере: ${status.error || 'нет WebGPU/Browser AI'}. Инструменты поиска всё равно работают.`,
-    ready ? 'green' : loading ? 'blue' : 'orange',
-  );
-}
-
-async function finalTalk(input: SpaceOSInput, decision: SpaceOSDecision, memory: SpaceOSMemory, facts: string[] = []) {
-  const llm = await llmText(input, decision, memory, facts, decision.tool === 'chat' ? 12000 : 7000);
-  if (llm) return llm;
-  return '';
+function noBrainText(decision: SpaceOSDecision) {
+  return decision.lang === 'ru'
+    ? 'Я не буду изображать умный ответ без модели. Могу искать по интернету, погоде, музыке, картинкам, видео и margeleT — или подключим внешний LLM-ключ для полноценного разговора.'
+    : 'I will not fake an answer without a model. I can search web, weather, music, images, video and margeleT — or use an external LLM key for full conversation.';
 }
 
 export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
-  warmLocalLlm(input.locale);
-
   const memory = readSpaceOSMemory();
-  const named = nameAnswer(input.query, memory);
+  const named = rememberNameOrCode(input.query, memory);
   if (named) {
     rememberAssistantTurn(named.text);
     return named;
@@ -252,57 +228,63 @@ export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
   const updatedMemory = rememberSpaceOSTurn(memory, input.query, decision);
 
   if (/\b(ai|llm|webllm|local ai|локальная модель|статус модели|модель)\b/i.test(input.query)) {
-    const answer = { text: 'Статус локальной модели:', blocks: [modelStatusBlock()], mode: 'show' as const };
+    const answer = { text: 'Статус Space AI:', blocks: [modelStatusBlock()], mode: 'show' as const };
     rememberAssistantTurn(answer.text);
     return answer;
   }
 
   if (decision.tool === 'product') {
-    const text = await finalTalk(input, decision, updatedMemory, [
+    const blocks = buildInvestorBlocks(input.query, decision.lang);
+    const text = await llmText(input, decision, updatedMemory, [
       'margeleT — индекс внимания Telegram и поисковый слой поверх потока.',
       'Space — разговорный слой с интернет-инструментами, виджетами и свежими сигналами margeleT.',
-    ]);
-    rememberAssistantTurn(text);
-    return { text, blocks: buildInvestorBlocks(input.query, decision.lang), mode: 'present' };
+    ], 7000);
+    const answerText = text || (decision.lang === 'ru' ? 'Показываю, как устроен margeleT и Space.' : 'Here is how margeleT and Space are structured.');
+    rememberAssistantTurn(answerText);
+    return { text: answerText, blocks, mode: 'present' };
   }
 
   if (decision.tool === 'tunnel') {
-    const text = await finalTalk(input, decision, updatedMemory, ['Туннель — временный локальный чат по совпавшему интересу.']);
-    rememberAssistantTurn(text);
-    return { text, blocks: [tunnelBlock(decision.subject)], mode: 'show' };
-  }
-
-  if (decision.tool === 'chat') {
-    const text = await finalTalk(input, decision, updatedMemory);
-    const answerText = sanitize(text) || honestFallback(decision);
+    const block = tunnelBlock(decision.subject);
+    const text = await llmText(input, decision, updatedMemory, ['Туннель — временный локальный чат по совпавшему интересу.'], 6000);
+    const answerText = text || (decision.lang === 'ru' ? 'Собрал черновик туннеля.' : 'I prepared a tunnel draft.');
     rememberAssistantTurn(answerText);
-    return { text: answerText, blocks: [], mode: 'talk' };
+    return { text: answerText, blocks: [block], mode: 'show' };
   }
 
   if (decision.tool === 'music') {
     rememberMusic(updatedMemory, decision.subject || input.query);
     const localMusic = searchLocalAudio(input.posts, decision);
     if (localMusic) {
-      const facts = extractFacts([localMusic]);
-      const text = await finalTalk(input, decision, updatedMemory, facts);
-      rememberAssistantTurn(text);
-      return { text: sanitize(text) || leadFor(decision, [localMusic]), blocks: [localMusic], mode: 'show' };
+      const answerText = leadFor(decision, [localMusic]);
+      rememberAssistantTurn(answerText);
+      return { text: answerText, blocks: [localMusic], mode: 'show' };
     }
   }
 
-  const external = decision.useInternet ? await runInternetTool(decision) : { text: '', blocks: [] as SpaceBlock[] };
-  const telegramBlocks = decision.useTelegram && external.blocks.length < 2 ? searchTelegramSupplement(input.posts, decision, external.blocks.length ? 1 : 2) : [];
-  const blocks = [...external.blocks, ...telegramBlocks];
+  if (decision.tool !== 'chat') {
+    const external = decision.useInternet ? await runInternetTool(decision) : { text: '', blocks: [] as SpaceBlock[] };
+    const telegramBlocks = decision.useTelegram && external.blocks.length < 2
+      ? searchTelegramSupplement(input.posts, decision, external.blocks.length ? 1 : 2)
+      : [];
+    const blocks = [...external.blocks, ...telegramBlocks];
 
-  if (blocks.length) {
-    const facts = extractFacts(blocks);
-    const text = await finalTalk(input, decision, updatedMemory, facts);
-    rememberAssistantTurn(text);
-    return { text: sanitize(text) || external.text || leadFor(decision, blocks), blocks, mode: 'show' };
+    if (blocks.length) {
+      const facts = factLines(blocks);
+      const llm = await llmText(input, decision, updatedMemory, facts, 5000);
+      const answerText = llm || external.text || leadFor(decision, blocks);
+      rememberAssistantTurn(answerText);
+      return { text: answerText, blocks, mode: 'show' };
+    }
+
+    const llm = await llmText(input, decision, updatedMemory, [], 5000);
+    const answerText = llm || (decision.lang === 'ru' ? 'Не нашёл надёжный источник для карточки. Попробуй сформулировать точнее или укажи город/трек/тему.' : 'I did not find a reliable source for the card. Try a more specific city, track, or topic.');
+    rememberAssistantTurn(answerText);
+    return { text: answerText, blocks: [], mode: 'talk' };
   }
 
-  const text = await finalTalk(input, decision, updatedMemory);
-  const answerText = sanitize(text) || honestFallback(decision);
+  const text = await llmText(input, decision, updatedMemory, [], 9000);
+  const answerText = text || noBrainText(decision);
   rememberAssistantTurn(answerText);
   return { text: answerText, blocks: [], mode: 'talk' };
 }

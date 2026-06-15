@@ -4,7 +4,7 @@ import type { SpaceOSDecision, SpaceOSTool } from './types';
 const RU = /[а-яё]/i;
 
 const STOP = new Set(
-  'что кто где когда как почему зачем про покажи найди дай расскажи напиши посоветуй поставь включи открой мне ты это сейчас сегодня можно хочу пожалуйста можешь нужно надо включить поставить купить воспроизведи объясни расскажи where when what who why how about show find give tell play open buy explain me you now today'.split(' '),
+  'что кто где когда как почему зачем про покажи найди дай расскажи напиши посоветуй поставь включи открой скажи ответь глянь посмотри проверь мне ты это сейчас сегодня можно хочу пожалуйста можешь нужно надо включить поставить купить воспроизведи объясни расскажи where when what who why how about show find give tell play open buy explain me you now today'.split(' '),
 );
 
 function norm(text: string) {
@@ -19,7 +19,7 @@ function norm(text: string) {
 function stripCommon(query: string) {
   return norm(query)
     .replace(/^@/, '@')
-    .replace(/^(покажи|найди|дай|расскажи|напиши|посоветуй|поставь|включи|воспроизведи|открой|купить|заказать|объясни|show|find|tell|play|open|buy|explain)\s+/i, '')
+    .replace(/^(покажи|найди|дай|расскажи|напиши|посоветуй|поставь|включи|воспроизведи|открой|скажи|ответь|глянь|посмотри|проверь|купить|заказать|объясни|show|find|tell|play|open|buy|explain)\s+/i, '')
     .replace(/\b(погода|прогноз|температура|музыка|трек|песня|видео|фото|картинки|изображения|товар|цена|магазин|биография|биографию|кто такой|кто такая|акции|график|курс|профиль|канал|туннель|weather|forecast|song|music|video|images|photos|price|stock|chart|profile|bio|biography)\b/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim();
