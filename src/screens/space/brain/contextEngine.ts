@@ -32,7 +32,7 @@ function effectiveTokens(query: string, rawTokens: string[], lastSubject: string
 function inferState(intent: BrainContext['intent'], isPureDialog: boolean): SpaceState {
   if (['investor','product','monetization','architecture','growth','risk'].includes(intent)) return intent === 'investor' ? 'investing' : 'presenting';
   if (intent === 'tunnel') return 'connecting';
-  if (['trend','search','recipe','weather','images','video','source','music'].includes(intent)) return 'discovering';
+  if (['trend','search','recipe','weather','images','video','source','music','shopping'].includes(intent)) return 'discovering';
   if (intent === 'fact' || intent === 'advice') return 'explaining';
   if (isPureDialog) return 'listening';
   return 'thinking';

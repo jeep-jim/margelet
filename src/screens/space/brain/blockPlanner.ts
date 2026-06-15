@@ -41,6 +41,27 @@ export function buildGallery(posts: IngestedPost[], title: string): SpaceBlock |
   return { type: 'gallery', title, items };
 }
 
+function buildShopBlock(posts: IngestedPost[], subject: string): SpaceBlock | null {
+  const items = posts.slice(0, 5).map((post) => {
+    const image = post.media.find((item) => item.kind === 'image')?.url || post.media.find((item) => item.kind === 'video')?.poster || null;
+    const price = post.text.match(/(?:\d[\d\s.,]{1,10})\s?(?:₽|руб|р\.|usd|\$)/i)?.[0];
+    return {
+      title: compactText(post.text || subject || post.source.title || 'товар', 86),
+      price: price || undefined,
+      sourceTitle: post.source.title || post.source.handle || 'Telegram',
+      postUrl: internalPostUrl(post),
+      image,
+    };
+  });
+  if (!items.length) return null;
+  return {
+    type: 'shop',
+    title: subject ? `Подборка: ${subject}` : 'Товарные карточки из margeleT',
+    subtitle: 'Показываю найденное в Telegram-потоке. Покупку лучше проверять у источника.',
+    items,
+  };
+}
+
 function buildMusicBlock(posts: IngestedPost[], subject: string): SpaceBlock | null {
   const tracks = posts
     .flatMap((post) => {
@@ -57,7 +78,7 @@ function buildMusicBlock(posts: IngestedPost[], subject: string): SpaceBlock | n
   return {
     type: 'music',
     title: subject ? `Музыка: ${subject}` : 'Музыка из margeleT',
-    subtitle: 'Я не включаю внешние сервисы сам, но могу показать найденные варианты.',
+    subtitle: 'Если у поста есть аудио — можно включить прямо здесь. Иначе открою пост с треком.',
     tracks,
   };
 }
@@ -105,6 +126,11 @@ export function planBlocks(ranked: RankedPost[], intent: SpaceIntent, titles: { 
   if (intent === 'music') {
     const music = buildMusicBlock(found, subject);
     if (music) return [music];
+  }
+
+  if (intent === 'shopping') {
+    const shop = buildShopBlock(found, subject);
+    if (shop) return [shop];
   }
 
   if (intent === 'images' || intent === 'video') {

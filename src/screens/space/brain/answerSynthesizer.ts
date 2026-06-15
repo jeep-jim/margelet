@@ -46,7 +46,16 @@ export function synthesizeTunnel(ctx: BrainContext): SpaceAnswer {
     text: ctx.lang === 'ru'
       ? 'Понял. Это не поиск постов — это уже про людей. Могу собрать временный туннель интереса 🧲'
       : 'Got it. This is not post search — this is about people. I can build a temporary interest tunnel 🧲',
-    blocks: [buildTunnelBlock(ctx.subject || ctx.query)],
+    blocks: [
+      {
+        type: 'chips',
+        title: ctx.lang === 'ru' ? 'Что можно сделать дальше' : 'Next options',
+        items: ctx.lang === 'ru'
+          ? ['найди похожих людей', 'открой туннель про ' + (ctx.subject || 'эту тему'), 'покажи каналы по теме', 'подбери материалы']
+          : ['find similar people', 'open a tunnel', 'show channels', 'find materials'],
+      },
+      buildTunnelBlock(ctx.subject || ctx.query),
+    ],
     mode: 'show',
   };
 }
@@ -69,6 +78,7 @@ export function synthesizeSoftTalk(ctx: BrainContext): SpaceAnswer {
         'Я понял настроение. Скажи чуть точнее, в какую сторону думаем?',
         'Могу поговорить. А если понадобится — потом полезу в Telegram.',
         'Давай спокойно. Что именно тебя сейчас цепляет?',
+        'Я не буду гадать. Скажи тему, и я выберу: поговорить, искать, включить музыку или собрать туннель.',
       ]
     : [
         'This feels more like a conversation than a search. Let’s unpack it.',

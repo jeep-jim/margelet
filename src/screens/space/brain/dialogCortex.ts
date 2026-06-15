@@ -69,12 +69,36 @@ export function tryDialogAnswer(ctx: BrainContext): SpaceAnswer | null {
   if (identity) return finishTalk(ctx, identity);
   if (ctx.intent === 'greeting') return finishTalk(ctx, generateTalk(ctx, ui.hello));
   if (ctx.intent === 'thanks') return finishTalk(ctx, generateTalk(ctx, ui.thanks));
-  if (ctx.intent === 'advice') return finishTalk(ctx, generateAdviceTalk(ctx));
+  if (ctx.intent === 'advice') {
+    rememberTurn({ memory: ctx.memory, query: ctx.query, intent: ctx.intent, found: [], locale: ctx.locale, subject: ctx.subject, tokens: ctx.rawTokens });
+    return {
+      text: generateAdviceTalk(ctx),
+      blocks: [{
+        type: 'chips',
+        title: ctx.lang === 'ru' ? 'Могу повести в одну сторону' : 'Choose a direction',
+        items: ctx.lang === 'ru' ? ['свой бизнес', 'идеи без денег', 'найти людей', 'каналы с опытом', 'просто поговорить'] : ['business', 'ideas without money', 'find people', 'channels with experience'],
+      }],
+      mode: 'clarify',
+    };
+  }
   if (ctx.intent === 'permissionTalk') return finishTalk(ctx, smallTalk(ctx));
   if (ctx.intent === 'smalltalk') return finishTalk(ctx, answerLooseQuestion(ctx) || smallTalk(ctx));
 
   if (ctx.isQuestionAboutSpace && !ctx.isExplicitSearch && !ctx.isProductQuestion) {
-    if (/(спрашивать|спросить|можно)/.test(ctx.normalized)) return finishTalk(ctx, answerIdentity({ ...ctx, intent: 'capabilities' }) || ui.capabilities);
+    if (/(спрашивать|спросить|можно|умеешь|можешь)/.test(ctx.normalized)) {
+      rememberTurn({ memory: ctx.memory, query: ctx.query, intent: 'capabilities', found: [], locale: ctx.locale, subject: ctx.subject, tokens: ctx.rawTokens });
+      return {
+        text: answerIdentity({ ...ctx, intent: 'capabilities' }) || ui.capabilities,
+        blocks: [{
+          type: 'chips',
+          title: ctx.lang === 'ru' ? 'Попробуй так' : 'Try this',
+          items: ctx.lang === 'ru'
+            ? ['что пишут про Илона Маска', 'погода Москва', 'включи Billie Jean', 'открой туннель про бизнес', 'покажи видео про футбол', 'что такое margeleT']
+            : ['news about Elon Musk', 'weather in Moscow', 'play Billie Jean', 'open a business tunnel', 'show football videos', 'what is margeleT'],
+        }],
+        mode: 'talk',
+      };
+    }
     return finishTalk(ctx, smallTalk(ctx));
   }
 

@@ -9,6 +9,7 @@ export function reasonNextStep(ctx: BrainContext): ReasoningDecision {
   if (['investor','product','monetization','architecture','growth','risk'].includes(ctx.intent)) return { action: 'present', reason: 'product-knowledge' };
   if (ctx.intent === 'tunnel') return { action: 'tunnel', reason: 'interest-tunnel' };
   if (ctx.intent === 'advice') return { action: 'clarify', reason: 'advice-needs-context' };
+  if (ctx.intent === 'music' || ctx.intent === 'shopping') return { action: 'search', reason: 'media-or-shopping-request' };
   if (ctx.isPureDialog) return { action: 'talk', reason: 'dialog-first' };
   if (!ctx.shouldSearch) return { action: 'talk', reason: 'no-explicit-data-request' };
   if ((ctx.intent === 'weather' || ctx.intent === 'trend') && ctx.tokens.length <= 1) return { action: 'clarify', reason: 'broad-data-request' };

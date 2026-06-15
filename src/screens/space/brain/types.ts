@@ -19,6 +19,7 @@ export type SpaceIntent =
   | 'risk'
   | 'tunnel'
   | 'music'
+  | 'shopping'
   | 'advice'
   | 'recipe'
   | 'weather'
@@ -75,6 +76,12 @@ export type SpaceBlock =
         postUrl: string;
         audioUrl?: string | null;
       }>;
+    }
+  | {
+      type: 'shop';
+      title: string;
+      subtitle: string;
+      items: Array<{ title: string; price?: string; sourceTitle: string; postUrl: string; image?: string | null }>;
     }
   | {
       type: 'tunnel';

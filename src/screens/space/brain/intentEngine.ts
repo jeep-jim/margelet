@@ -18,6 +18,7 @@ const INTENT_KEYWORDS: Partial<Record<SpaceIntent, string[]>> = {
   risk: ['риски','опасности','что может пойти не так','юридически','legal','risk'],
   tunnel: ['найти человека','единомышленник','единомышленников','попутчик','партнер','партнёр','собеседник','кто еще','кто ещё','тоже ищет','хочу в питер','поехать в питер','туннель','tunnel'],
   music: ['включи','поставь','послушать','музыка','песня','трек','billie jean','билли джин','lofi','рок','music','song','play'],
+  shopping: ['купить','заказать','цена','стоимость','товар','карточка товара','доставка','магазин','меню','суши','роллы','еда на заказ','buy','order','price','shop'],
   advice: ['дай совет','совет','подскажи','что делать','идеи и деньги','нет идей','нет денег','хочу бизнес','свой бизнес','работа','заработок'],
   recipe: ['рецепт','готов','пирог','капуст','салат','суп','кухн','еда','recipe','cook','food','cooking','receta'],
   weather: ['погода','прогноз','градус','дожд','снег','ветер','weather','forecast','lluvia','wetter'],
@@ -31,8 +32,8 @@ const INTENT_KEYWORDS: Partial<Record<SpaceIntent, string[]>> = {
 
 export function isExplicitSearchRequest(lower: string) {
   if (/(дай\s+поговорить|давай\s+поговорим|поболт|обща|дай\s+совет|совет\s*$)/.test(lower)) return false;
-  if (/(включи|поставь|послушать)/.test(lower)) return true;
-  return /(найди|покажи|ищи|что\s+пишут|новости\s+про|есть\s+что\s+про|собери|подбери|search|find|show|look\s+for)/.test(lower)
+  if (/(включи|поставь|послушать|купить|заказать|цена|стоимост|товар|доставк|магазин|меню)/.test(lower)) return true;
+  return /(найди|покажи|ищи|что\s+пишут|что\s+пишет|новости\s+про|есть\s+что\s+про|собери|подбери|канал\s+|source|channel|search|find|show|look\s+for)/.test(lower)
     || /(дай\s+(рецепт|фото|картин|видео|сводк|новост|источник|пост|разбор))/i.test(lower);
 }
 
@@ -69,6 +70,7 @@ export function detectIntent(query: string): { intent: SpaceIntent; confidence: 
   if (/(риск|опасност|юридич|legal)/.test(lower)) return { intent: 'risk', confidence: 9 };
   if (isTunnelRequest(lower)) return { intent: 'tunnel', confidence: 10 };
   if (/(включи|поставь|послушать|billie\s+jean|билли\s+джин|музык|песн|трек)/.test(lower)) return { intent: 'music', confidence: 10 };
+  if (/(купить|заказать|цена|стоимост|товар|доставк|магазин|меню|суши|ролл|buy|order|price|shop)/.test(lower)) return { intent: 'shopping', confidence: 10 };
   if (/(дай\s+совет|нужен\s+совет|идеи\s+и\s+деньги|хочу\s+свой\s+бизнес|нет\s+идей|нет\s+денег|что\s+делать)/.test(lower)) return { intent: 'advice', confidence: 10 };
   if (/(ок\s+)?давай\s+(просто\s+)?(поговорим|поболтаем)|поболтаться\s+хочу|поболтать\s+хочу|поговорить\s+хочу|можем\s+(просто\s+)?поговорить|хочу\s+общаться|can\s+we\s+(chat|talk)/.test(lower)) return { intent: 'permissionTalk', confidence: 10 };
   if (/(что\s+(у\s+тебя\s+)?(можно\s+)?спрашивать|о\s+ч[её]м\s+спросить|что\s+ты\s+умеешь|что\s+умеешь|что\s+можешь|как\s+работаешь|расскажи\s+о\s+себе|what\s+can\s+i\s+ask|what\s+can\s+you\s+do)/.test(lower)) return { intent: 'capabilities', confidence: 10 };

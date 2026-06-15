@@ -41,7 +41,9 @@ function rankPost(post: IngestedPost, ctx: BrainContext) {
   if (ctx.intent === 'images' && post.media.some((item) => item.kind === 'image')) score += 10;
   if (ctx.intent === 'video' && post.media.some((item) => item.kind === 'video')) score += 10;
   if (ctx.intent === 'music' && post.media.some((item) => item.kind === 'audio')) score += 16;
-  if (ctx.intent === 'music' && /(music|музык|песн|трек|song|mp3|billie|джин)/.test(haystack)) score += 8;
+  if (ctx.intent === 'music' && /(music|музык|песн|трек|song|mp3|billie|джин|джексон|jackson|audio|аудио)/.test(haystack)) score += 8;
+  if (ctx.intent === 'shopping' && /(купить|заказ|доставк|магазин|цена|руб|₽|товар|меню|ролл|суши|sale|shop|order|price)/.test(haystack)) score += 12;
+  if (ctx.intent === 'source' && (haystack.includes(ctx.normalized) || haystack.includes(ctx.subject.toLowerCase()))) score += 14;
   if (ctx.intent === 'weather' && /(погод|weather|forecast|дожд|снег|ветер)/.test(haystack)) score += 8;
   if (ctx.intent === 'trend') score += Math.min(5, Math.max(0, post.links?.length || 0));
 
@@ -73,10 +75,11 @@ export function searchPosts(ctx: BrainContext): RankedPost[] {
     })
     .filter(({ score, matches }) => {
       const mediaIntent = ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'music';
-      const needMatches = ctx.tokens.length >= 4 && !mediaIntent ? 2 : 1;
-      const minScore = mediaIntent ? 12 : 17;
+      const flexibleIntent = mediaIntent || ctx.intent === 'source' || ctx.intent === 'shopping';
+      const needMatches = ctx.tokens.length >= 4 && !flexibleIntent ? 2 : 1;
+      const minScore = mediaIntent ? 12 : ctx.intent === 'source' ? 10 : ctx.intent === 'shopping' ? 11 : 17;
       return score >= minScore && matches >= needMatches;
     })
     .sort((a, b) => b.score - a.score)
-    .slice(0, ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'music' ? 7 : 2);
+    .slice(0, ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'music' || ctx.intent === 'shopping' ? 7 : ctx.intent === 'source' ? 4 : 2);
 }
