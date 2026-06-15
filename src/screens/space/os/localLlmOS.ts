@@ -79,7 +79,7 @@ function systemPrompt(locale: Locale) {
       'Отвечай по-русски, как нормальный собеседник: тепло, понятно, без канцелярита и без шаблонов.',
       'Сначала отвечай человеку по смыслу. Если нужны факты, скажи, что проверишь сеть. Telegram — только дополнительный свежий сенсор, не главный источник.',
       'Не выдумывай факты, цены, погоду, музыку или новости. Для фактов дождись данных инструментов.',
-      'Не повторяй одну и ту же фразу. Не говори “уточни”, “не понял”, “я только Telegram”.',
+      'Не повторяй одну и ту же фразу. Не говори “уточни”, “не понял”, “я только Telegram”. Если инструмент нужен — попроси систему использовать инструмент, а не притворяйся, что уже проверил.',
       'Можно мягко спорить, задавать один живой вопрос, шутить умеренно, но не льстить в каждом сообщении.',
       'Длина ответа: 1–5 предложений, если пользователь не просит подробно.',
     ].join('\n');
@@ -101,7 +101,16 @@ function buildUserPrompt(input: {
   facts?: string[];
 }) {
   const ru = isRussian(input.locale, input.query);
-  const name = input.memory?.userName ? (ru ? `Имя пользователя: ${input.memory.userName}.` : `User name: ${input.memory.userName}.`) : '';
+  const rich = input.memory as SpaceOSMemory & { recentTurns?: Array<{ role: string; text: string }>; lastTrack?: string; lastArtist?: string; lastCity?: string; interests?: string[] };
+  const name = rich?.userName ? (ru ? `Имя пользователя: ${rich.userName}.` : `User name: ${rich.userName}.`) : '';
+  const profile = [
+    rich?.lastCity ? (ru ? `Последний город: ${rich.lastCity}.` : `Last city: ${rich.lastCity}.`) : '',
+    rich?.lastTrack ? (ru ? `Последний музыкальный запрос: ${[rich.lastArtist, rich.lastTrack].filter(Boolean).join(' — ')}.` : `Last music request: ${[rich.lastArtist, rich.lastTrack].filter(Boolean).join(' — ')}.`) : '',
+    rich?.interests?.length ? (ru ? `Интересы из диалога: ${rich.interests.slice(-8).join(', ')}.` : `Interests from dialog: ${rich.interests.slice(-8).join(', ')}.`) : '',
+  ].filter(Boolean).join('\n');
+  const history = rich?.recentTurns?.length
+    ? (ru ? `Последний контекст диалога:\n${rich.recentTurns.slice(-10).map((t) => `${t.role === 'user' ? 'Пользователь' : 'Space'}: ${t.text}`).join('\n')}` : `Recent conversation:\n${rich.recentTurns.slice(-10).map((t) => `${t.role}: ${t.text}`).join('\n')}`)
+    : '';
   const route = input.decision
     ? (ru
       ? `Распознанный режим: ${input.decision.tool}. Тема: ${input.decision.subject || input.query}.`
@@ -113,6 +122,8 @@ function buildUserPrompt(input: {
 
   return [
     name,
+    profile,
+    history,
     route,
     facts,
     ru

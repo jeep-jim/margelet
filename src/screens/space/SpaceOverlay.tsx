@@ -89,6 +89,17 @@ function getSpaceThreadTitle(text: string) {
   if (!clean) return "New Space";
   return clean.length > 34 ? `${clean.slice(0, 34)}…` : clean;
 }
+function getSpaceReaction(text: string) {
+  const clean = text.toLowerCase().replace(/ё/g, "е");
+  if (/спасибо|круто|огонь|ура|аху|вау|супер|люблю/.test(clean)) return "🔥";
+  if (/музык|трек|песня|включи|поставь|billie|сектор/.test(clean)) return "🎵";
+  if (/погода|дожд|снег|солнц|ветер/.test(clean)) return "🌤️";
+  if (/бизнес|деньг|иде|инвест|рынок|бирж|биткоин/.test(clean)) return "💡";
+  if (/груст|устал|плохо|одинок/.test(clean)) return "🤝";
+  if (/шут|смеш|какаш|говн/.test(clean)) return "💩";
+  return ["👍", "👀", "✨", "🙂"][Math.abs(clean.split("").reduce((sum, ch) => sum + ch.charCodeAt(0), 0)) % 4];
+}
+
 
 function readSpaceThreadsFromStorage(): SpaceThread[] {
   try {
@@ -617,6 +628,7 @@ export function SpaceOverlay({
   const [selectedPost, setSelectedPost] = useState<IngestedPost | null>(null);
   const [currentTrack, setCurrentTrack] = useState<SpacePlayerTrack | null>(null);
   const [playerCollapsed, setPlayerCollapsed] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
 
   const activeThread = useMemo(() => {
     if (!threads.length) return null;
@@ -714,7 +726,15 @@ export function SpaceOverlay({
       top: messagesRef.current.scrollHeight,
       behavior: "smooth",
     });
-  }, [messages.length, activeThread?.id]);
+  }, [messages.length, activeThread?.id, isThinking]);
+
+  useEffect(() => {
+    if (!inputFocused) return;
+    const id = window.setTimeout(() => {
+      messagesRef.current?.scrollTo({ top: messagesRef.current.scrollHeight, behavior: "smooth" });
+    }, 180);
+    return () => window.clearTimeout(id);
+  }, [inputFocused, keyboardBottom]);
 
   const createNewChat = () => {
     const next = createSpaceThread(copy.title);
@@ -778,6 +798,7 @@ export function SpaceOverlay({
     ].slice(0, 40));
 
     if (pendingAnswerRef.current) window.clearTimeout(pendingAnswerRef.current);
+    setIsThinking(true);
     pendingAnswerRef.current = window.setTimeout(() => {
       void (async () => {
         let answerText = copy.botAnswer;
@@ -819,6 +840,7 @@ export function SpaceOverlay({
           ].slice(0, 40);
         });
 
+        setIsThinking(false);
         window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
       })();
     }, Math.min(420, 120 + clean.length * 3));
@@ -1423,6 +1445,18 @@ export function SpaceOverlay({
             transform: translateY(0) scale(1);
           }
         }
+
+        @keyframes margeletSpaceThinking {
+          0%, 100% { opacity: .25; transform: translateY(0) scale(.9); }
+          50% { opacity: 1; transform: translateY(-2px) scale(1.08); }
+        }
+
+        .margelet-space-thinking-dot {
+          animation: margeletSpaceThinking .9s ease-in-out infinite;
+        }
+
+        .margelet-space-thinking-dot:nth-child(2) { animation-delay: .14s; }
+        .margelet-space-thinking-dot:nth-child(3) { animation-delay: .28s; }
       `}</style>
 
       <div
@@ -1581,6 +1615,9 @@ export function SpaceOverlay({
                     >
                       {message.text}
                     </div>
+                    {message.role === "user" && messages[index + 1]?.role === "space" ? (
+                      <div className="mt-1 flex justify-end pr-2 text-sm opacity-80">{getSpaceReaction(message.text)}</div>
+                    ) : null}
                     {message.role === "space" && message.blocks?.length ? (
                       <div className="mt-1">
                         {message.blocks.map((block, blockIndex) => renderSpaceBlock(block, blockIndex))}
@@ -1589,6 +1626,15 @@ export function SpaceOverlay({
                   </div>
                 </div>
               ))}
+              {isThinking ? (
+                <div className="margelet-space-message flex justify-start">
+                  <div className={`inline-flex items-center gap-1 rounded-[24px] rounded-tl-[7px] px-4 py-3 ${isLight ? "bg-[#4b8ed8] text-white" : "bg-[#203146]/92 text-[#eef3f8] shadow-xl"}`}>
+                    <span className="margelet-space-thinking-dot">✦</span>
+                    <span className="margelet-space-thinking-dot">✦</span>
+                    <span className="margelet-space-thinking-dot">✦</span>
+                  </div>
+                </div>
+              ) : null}
             </div>
           )}
         </div>

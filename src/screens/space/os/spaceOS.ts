@@ -1,7 +1,7 @@
 import type { SpaceAnswer, SpaceBlock } from '../brain/types';
 import { buildInvestorBlocks } from '../knowledge';
 import type { SpaceOSDecision, SpaceOSInput, SpaceOSMemory } from './types';
-import { readSpaceOSMemory, rememberSpaceOSTurn, writeSpaceOSMemory } from './spaceMemory';
+import { readSpaceOSMemory, rememberAssistantTurn, rememberSpaceOSTurn, writeSpaceOSMemory } from './spaceMemory';
 import { routeSpaceOS } from './spaceRouter';
 import { runInternetTool, searchTelegramSupplement } from './spaceTools';
 import { getLocalLlmStatus, tryLocalLlmReply, warmLocalLlm } from './localLlmOS';
@@ -87,38 +87,102 @@ function toolLead(decision: SpaceOSDecision, blocks: SpaceBlock[]) {
   return ru ? 'Проверил открытые источники.' : 'I checked open sources.';
 }
 
+
 function fallbackTalk(query: string, decision: SpaceOSDecision, memory: SpaceOSMemory) {
-  const q = query.toLowerCase().replace(/ё/g, 'е');
+  const q = query.toLowerCase().replace(/ё/g, 'е').trim();
   const name = memory.userName ? `${memory.userName}, ` : '';
+  const rich = memory as SpaceOSMemory & { lastTrack?: string; lastArtist?: string; lastCity?: string; recentTurns?: Array<{ role: string; text: string }> };
   const ru = isRu(decision);
 
   if (!ru) {
-    if (/hello|hi|hey/.test(q)) return `Hey${memory.userName ? `, ${memory.userName}` : ''}. I’m here. We can talk, search the web, build widgets, or look at live margeleT signals.`;
-    return `I’m here. I can talk it through first, and if we need facts I’ll search the web instead of forcing Telegram.`;
+    if (/hello|hi|hey/.test(q)) return `Hey${memory.userName ? `, ${memory.userName}` : ''}. I’m here.`;
+    return `I’m listening. Give me the thought, and I’ll answer directly first — facts and widgets only when they’re actually needed.`;
   }
 
-  if (/^(привет|здаров|здравствуй|салам|хай)\b/.test(q)) {
-    return `${name}привет 🙂 Я здесь. Можем просто поговорить, а если понадобится — я полезу в сеть и соберу факты или виджет.`;
+  const what = query.match(/что\s+такое\s+([^?!.]{2,80})/i);
+  if (what?.[1]) {
+    const term = compact(what[1]);
+    return `${term} — это слово или явление, которое лучше объяснить на конкретном примере. Я могу дать короткое объяснение своими словами, а если нужен точный источник — проверю сеть и покажу карточку.`;
   }
-  if (/ты\s+тут|ты\s+здесь|слышишь|слушаешь/.test(q)) {
-    return `${name}тут. Слушаю тебя.`;
+
+  if (/^(привет|здаров|здравствуй|салам|хай|тут|здесь)\b/.test(q)) {
+    const hour = new Date().getHours();
+    const day = hour < 12 ? 'Доброе утро' : hour < 18 ? 'Привет' : 'Добрый вечер';
+    return `${day}${memory.userName ? `, ${memory.userName}` : ''}. Я тут.`;
   }
+
+  if (/какую\s+(песн|групп)|что\s+я\s+просил|напомни/i.test(q) && (rich.lastTrack || rich.lastArtist)) {
+    return `${name}ты просил музыку: ${[rich.lastArtist, rich.lastTrack].filter(Boolean).join(' — ')}.`;
+  }
+
+  if (/погода|прогноз|температур/.test(q)) {
+    const city = decision.subject || rich.lastCity || 'твой город';
+    return `${name}по погоде не буду гадать. Сейчас попробую достать живые данные по “${city}” и показать карточку.`;
+  }
+
+  if (/включи|поставь|трек|песня|музыка|сыграй/.test(q)) {
+    const track = decision.subject || rich.lastTrack || query;
+    return `${name}беру музыкальный запрос “${track}”. Сначала ищу аудио, потом отдам плеер или честно покажу источник.`;
+  }
+
   if (/устал|устала|грустно|плохо|одинок|выгор/.test(q)) {
-    return `${name}понял. Тогда не буду превращать это в поисковую выдачу. Что сильнее давит сейчас: усталость, тревога или просто всё надоело?`;
+    return `${name}слышу. Я не буду давить советами. Давай аккуратно: это больше усталость телом, тревога в голове или просто всё накопилось?`;
   }
+
   if (/совет|бизнес|деньг|работ|карьер|иде/.test(q)) {
-    return `${name}давай разберём без магии. Сначала надо понять цель: тебе нужны быстрые деньги, своё дело на будущее или просто новая точка опоры?`;
+    return `${name}давай без сказок про “быстрый успех”. Я бы начал с трёх вещей: что ты умеешь, что людям болит, и где можно быстро проверить спрос.`;
   }
+
   if (/спор|не соглас|думаешь|правда|мнение/.test(q)) {
-    return `${name}я бы тут не соглашался автоматически. Давай разложим: что в этой мысли выглядит сильным, а где может быть ловушка?`;
+    return `${name}я бы тут не соглашался автоматически. В мысли может быть сильная часть и слепая зона — давай разберём обе.`;
   }
-  if (/кошк|кот|собак|жизн|истори|пенси|реформ|любов|отношен/.test(q)) {
-    return `${name}могу поговорить об этом нормально, без Telegram. Я сначала отвечу своими словами, а если понадобятся факты — проверю сеть.`;
-  }
-  if (decision.tool === 'chat') {
-    return `${name}я понял направление. Скажу по-человечески: можно просто обсудить мысль, можно поспорить, а можно превратить её в поиск по интернету.`;
-  }
-  return `${name}я попробовал разобрать запрос. Если нужны точные факты — лучше сразу включить поиск по сети, а не гадать.`;
+
+  const words = q.split(/\s+/).filter(Boolean);
+  const last = rich.recentTurns?.slice().reverse().find((t) => t.role === 'user')?.text || '';
+  if (last && words.length <= 3) return `${name}вижу, ты продолжаешь прошлую мысль. Я рядом: ${compact(last).slice(0, 120)} — давай докрутим это, а не начнём заново.`;
+
+  return `${name}слышу тебя. Я отвечу прямо: здесь важнее не выдача, а смысл того, что ты хочешь сделать. Давай развернём эту мысль.`;
+}
+
+
+function musicText(post: { text: string; source: { title: string; handle: string }; media: Array<{ kind: string; fileName?: string | null }> }) {
+  return `${post.text || ''} ${post.source.title || ''} ${post.source.handle || ''} ${(post.media || []).map((m) => m.fileName || '').join(' ')}`.toLowerCase().replace(/ё/g, 'е');
+}
+
+function searchLocalAudio(posts: SpaceOSInput['posts'], decision: SpaceOSDecision): SpaceBlock | null {
+  if (decision.tool !== 'music') return null;
+  const raw = compact(decision.subject || decision.query).toLowerCase().replace(/ё/g, 'е');
+  const tokens = raw.split(/\s+/).filter((token) => token.length > 2 && !['группа', 'песня', 'трек', 'музыка', 'включи', 'поставь'].includes(token)).slice(0, 8);
+  const ranked = posts
+    .map((post) => {
+      const audio = post.media?.filter((m) => m.kind === 'audio' && m.url) || [];
+      if (!audio.length) return null;
+      const hay = musicText(post);
+      const score = tokens.reduce((sum, token) => sum + (hay.includes(token) ? 1 : 0), 0) + (post.contentType === 'audio' ? 0.8 : 0);
+      return score > 0 ? { post, audio, score } : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) => (b?.score || 0) - (a?.score || 0))
+    .slice(0, 10);
+
+  if (!ranked.length) return null;
+  return {
+    type: 'music',
+    title: decision.lang === 'ru' ? `Музыка: ${decision.subject || decision.query}` : `Music: ${decision.subject || decision.query}`,
+    subtitle: decision.lang === 'ru' ? 'Нашёл аудио в margeleT. Нажми — плеер останется в трее.' : 'Found audio in margeleT. Tap — the player stays in the tray.',
+    tracks: ranked.map((item) => ({
+      title: compact(item!.post.media.find((m) => m.kind === 'audio')?.fileName || item!.post.text.split('\n')[0] || item!.post.source.title || decision.subject).slice(0, 120),
+      sourceTitle: item!.post.source.title || item!.post.source.handle || 'margeleT audio',
+      postUrl: internalPostUrl(item!.post),
+      audioUrl: item!.audio[0]?.url || null,
+    })),
+  };
+}
+
+function internalPostUrl(post: SpaceOSInput['posts'][number]) {
+  const handle = String(post.source.handle || 'telegram').replace(/^@+/, '') || 'telegram';
+  const postId = String(post.postUrl || post.id).split('/').filter(Boolean).pop()?.replace(/\?single$/, '') || String(post.id);
+  return `/${handle}/${postId}`;
 }
 
 function statusBlock(): SpaceBlock {
@@ -186,8 +250,19 @@ export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
     };
   }
 
+  if (decision.tool === 'music') {
+    const localMusic = searchLocalAudio(input.posts, decision);
+    if (localMusic) {
+      const text = await tryLocalLlmReply({ query: input.query, locale: input.locale, decision, memory: updatedMemory, facts: extractFacts([localMusic]), timeoutMs: 3500 });
+      const answer = { text: text || toolLead(decision, [localMusic]), blocks: [localMusic], mode: 'show' as const };
+      rememberAssistantTurn(answer.text);
+      return answer;
+    }
+  }
+
   if (decision.tool === 'chat') {
     const text = await answerWithLlmOrFallback(input, decision, updatedMemory);
+    rememberAssistantTurn(text);
     return { text, blocks: [], mode: 'talk' };
   }
 
@@ -205,11 +280,9 @@ export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
       facts,
       timeoutMs: 4500,
     });
-    return {
-      text: llmLead || external.text || toolLead(decision, blocks),
-      blocks,
-      mode: 'show',
-    };
+    const text = llmLead || external.text || toolLead(decision, blocks);
+    rememberAssistantTurn(text);
+    return { text, blocks, mode: 'show' };
   }
 
   const text = await answerWithLlmOrFallback(input, decision, updatedMemory, [
@@ -217,5 +290,6 @@ export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
       ? 'Инструменты не вернули уверенный результат.'
       : 'Tools did not return a confident result.',
   ]);
+  rememberAssistantTurn(text);
   return { text, blocks: [], mode: 'talk' };
 }
