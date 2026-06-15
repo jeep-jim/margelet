@@ -2,8 +2,9 @@ import type { IngestedPost, Locale } from '../../../types/app';
 import type { BrainContext } from './types';
 import { detectIntent, isExplicitSearchRequest, isPureDialogMessage, isQuestionAboutSpace } from './intentEngine';
 import { readMemory } from './memoryEngine';
-import { detectLanguage, normalize, PRONOUN_HINTS, tokenize } from './text';
-import { detectMood } from './affectEngine';
+import { detectSpaceLanguage } from './languageEngine';
+import { normalize, PRONOUN_HINTS, tokenize } from './text';
+import { detectMood } from './emotionEngine';
 import { buildAttention, attentionText } from './attentionEngine';
 import { applyReplyPolicy } from './replyPolicy';
 
@@ -30,7 +31,7 @@ export function buildContext(query: string, posts: IngestedPost[], locale: Local
   const memory = readMemory();
   const normalized = normalize(query);
   const rawTokens = tokenize(query);
-  const lang = detectLanguage(query, locale);
+  const lang = detectSpaceLanguage(query, locale);
   const { intent, confidence } = detectIntent(query);
   const tokens = effectiveTokens(query, rawTokens, memory.lastSubject);
   const subject = extractSubject(query, rawTokens, memory.lastSubject);

@@ -358,7 +358,7 @@ function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
     if (parsed?.mediaMode === "text") mediaMode = "text";
     else if (parsed?.mediaMode === "photo") mediaMode = "photo";
     else if (parsed?.mediaMode === "video") mediaMode = "video";
-    else if (parsed?.mediaMode === "chat") mediaMode = "chat";
+    else if (parsed?.mediaMode === "chat") mediaMode = "all";
     else mediaMode = "all";
 
     const countries = Array.isArray(parsed?.countries)

@@ -810,14 +810,38 @@ export function SpaceOverlay({
   };
 
   const renderSpaceBlock = (block: SpaceBlock, index: number) => {
+    const blockDelay = { animationDelay: `${120 + index * 90}ms` };
+
+    if (block.type === "weather") {
+      return (
+        <div
+          key={`weather-${index}`}
+          className={`margelet-space-block mt-3 overflow-hidden rounded-[28px] p-4 ${isLight ? "bg-white/64 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.16)]" : "bg-white/8 text-white shadow-[0_18px_60px_rgba(0,0,0,.28)]"}`}
+          style={blockDelay}
+        >
+          <div className="flex items-center gap-3">
+            <div className={`grid h-12 w-12 place-items-center rounded-2xl text-2xl ${isLight ? "bg-[#e5f3ff]" : "bg-white/10"}`}>☁️</div>
+            <div className="min-w-0">
+              <div className="truncate text-sm font-black">{block.title}</div>
+              <div className={`truncate text-xs ${isLight ? "text-[#5e7085]" : "text-white/48"}`}>{block.sourceTitle || "margeleT"}</div>
+            </div>
+            {block.sourceAvatar ? (
+              <img src={block.sourceAvatar} alt="" className="ml-auto h-9 w-9 rounded-full object-cover" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+            ) : null}
+          </div>
+          <div className={`mt-3 text-sm leading-6 ${isLight ? "text-[#26384a]" : "text-white/76"}`}>{block.summary}</div>
+        </div>
+      );
+    }
+
     if (block.type === "gallery") {
       return (
         <div
           key={`gallery-${index}`}
-          className={`margelet-space-block mt-3 overflow-hidden rounded-[28px] border p-3 ${isLight ? "border-white/80 bg-white/56" : "border-white/10 bg-white/8"}`}
-          style={{ animationDelay: `${120 + index * 90}ms` }}
+          className="margelet-space-block mt-3 overflow-hidden"
+          style={blockDelay}
         >
-          <div className={`mb-3 px-1 text-xs font-black ${isLight ? "text-[#243245]" : "text-white/78"}`}>
+          <div className={`mb-2 px-1 text-xs font-black ${isLight ? "text-[#40566e]" : "text-white/64"}`}>
             {block.title}
           </div>
           <div className="grid grid-cols-3 gap-2">
@@ -825,7 +849,7 @@ export function SpaceOverlay({
               <a
                 key={`${item.url}-${itemIndex}`}
                 href={item.postUrl}
-                className="relative aspect-square overflow-hidden rounded-2xl bg-black/10"
+                className={`relative aspect-square overflow-hidden rounded-2xl ${isLight ? "bg-white/50" : "bg-white/8"}`}
                 title={item.sourceTitle}
               >
                 {item.kind === "video" ? (
@@ -841,67 +865,50 @@ export function SpaceOverlay({
     }
 
     if (block.type === "chips") {
+      return null;
+    }
+
+    if (block.type === "quote") {
       return (
-        <div key={`chips-${index}`} className="margelet-space-block mt-3 flex flex-wrap gap-2"
-          style={{ animationDelay: `${120 + index * 90}ms` }}>
-          {block.items.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => send(item.replace(/^Ещё про /, ""))}
-              className={`rounded-full px-3 py-2 text-xs font-bold transition hover:scale-[1.02] ${isLight ? "bg-white/70 text-[#36546f]" : "bg-white/10 text-white/72"}`}
-            >
-              {item}
-            </button>
-          ))}
+        <div key={`quote-${block.url}-${index}`} className="margelet-space-block mt-3" style={blockDelay}>
+          <a href={block.url} className="group block">
+            <div className="flex items-center gap-2 px-1">
+              {block.sourceAvatar ? (
+                <img src={block.sourceAvatar} alt="" className="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+              ) : (
+                <div className={`h-10 w-10 rounded-full ${isLight ? "bg-[#d8ecff]" : "bg-white/10"}`} />
+              )}
+              <div className="min-w-0">
+                <div className={`truncate text-sm font-black ${isLight ? "text-[#172537]" : "text-white/86"}`}>{block.title}</div>
+                <div className={`truncate text-xs ${isLight ? "text-[#60758c]" : "text-white/42"}`}>{block.subtitle}</div>
+              </div>
+            </div>
+
+            {block.media?.length ? (
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                {block.media.slice(0, 2).map((item, mediaIndex) => (
+                  <div key={`${item.url}-${mediaIndex}`} className={`aspect-video overflow-hidden rounded-2xl ${isLight ? "bg-white/48" : "bg-white/8"}`}>
+                    {item.kind === "video" ? (
+                      <video src={item.url} poster={item.poster || undefined} muted playsInline preload="metadata" className="h-full w-full object-cover" />
+                    ) : item.kind === "image" ? (
+                      <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
+            {block.text ? (
+              <div className={`mt-2 border-l-2 pl-3 text-sm leading-6 ${isLight ? "border-[#75a8dc] text-[#26384a]" : "border-[#68a6e8]/60 text-white/76"}`}>
+                {block.text}
+              </div>
+            ) : null}
+          </a>
         </div>
       );
     }
 
-    return (
-      <a
-        key={`post-${block.url}-${index}`}
-        href={block.url}
-        className={`margelet-space-block mt-3 block overflow-hidden rounded-[30px] border p-3 transition hover:scale-[1.01] ${isLight ? "border-white/80 bg-white/62 text-[#07111d]" : "border-white/10 bg-[#152234]/88 text-white"}`}
-        style={{ animationDelay: `${120 + index * 90}ms` }}
-      >
-        <div className="flex items-center gap-3">
-          {block.sourceAvatar ? (
-            <img src={block.sourceAvatar} alt="" className="h-10 w-10 rounded-full object-cover" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
-          ) : (
-            <div className={`h-10 w-10 rounded-full ${isLight ? "bg-[#d8ecff]" : "bg-white/10"}`} />
-          )}
-          <div className="min-w-0">
-            <div className="truncate text-sm font-black">{block.title}</div>
-            <div className={`truncate text-xs ${isLight ? "text-[#587086]" : "text-white/48"}`}>{block.subtitle}</div>
-          </div>
-        </div>
-
-        {block.media.length ? (
-          <div className="mt-3 grid grid-cols-2 gap-2">
-            {block.media.slice(0, 4).map((item, mediaIndex) => (
-              <div key={`${item.url}-${mediaIndex}`} className="aspect-video overflow-hidden rounded-2xl bg-black/10">
-                {item.kind === "video" ? (
-                  <video src={item.url} poster={item.poster || undefined} muted playsInline preload="metadata" className="h-full w-full object-cover" />
-                ) : item.kind === "image" ? (
-                  <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
-                ) : null}
-              </div>
-            ))}
-          </div>
-        ) : null}
-
-        {block.text ? (
-          <div className={`mt-3 whitespace-pre-wrap text-sm leading-5 ${isLight ? "text-[#26384a]" : "text-white/76"}`}>
-            {block.text}
-          </div>
-        ) : null}
-
-        <div className={`mt-3 text-xs font-bold ${isLight ? "text-[#4b8ed8]" : "text-[#8fc8ff]"}`}>
-          Открыть в margeleT
-        </div>
-      </a>
-    );
+    return null;
   };
 
   const renderThreadList = (compact = false) => (
@@ -1114,7 +1121,7 @@ export function SpaceOverlay({
       <header
         className={`absolute left-0 right-0 top-0 z-30 border-b backdrop-blur-2xl ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/88" : "border-white/8 bg-[#132233]/72"}`}
       >
-        <div className="mx-auto grid h-16 w-full max-w-[720px] grid-cols-[56px_1fr_96px] items-center px-2 sm:px-4">
+        <div className="mx-auto grid h-16 w-full max-w-[860px] grid-cols-[56px_1fr_96px] items-center px-2 sm:px-4">
           <button
             type="button"
             onClick={onClose}
@@ -1192,7 +1199,7 @@ export function SpaceOverlay({
       </header>
 
       <div
-        className="relative z-10 mx-auto flex h-[100dvh] w-full max-w-[720px] flex-col px-4 pt-20 sm:px-6"
+        className="relative z-10 mx-auto flex h-[100dvh] w-full max-w-[860px] flex-col px-3 pt-20 sm:px-6"
         onPointerDown={() => {
           if (chatsMenuOpen) setChatsMenuOpen(false);
         }}
@@ -1238,24 +1245,28 @@ export function SpaceOverlay({
               </div>
             </div>
           ) : (
-            <div className="space-y-3 pb-28">
+            <div className="space-y-4 pb-28">
               {messages.map((message, index) => (
                 <div
                   key={`${message.role}-${index}`}
                   className={`margelet-space-message flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[82%] px-4 py-2.5 text-sm leading-5 backdrop-blur-xl ${
-                      message.role === "user"
-                        ? isLight
-                          ? "rounded-[24px] rounded-tr-[7px] bg-[#c8e9ff] text-[#07111d]"
-                          : "rounded-[24px] rounded-tr-[7px] bg-[#e8eef5] text-[#07111d] shadow-2xl"
-                        : isLight
-                          ? "rounded-[24px] rounded-tl-[7px] bg-[#4b8ed8] text-white"
-                          : "rounded-[24px] rounded-tl-[7px] bg-[#203146]/92 text-[#eef3f8]/86 shadow-2xl"
-                    }`}
+                    className={`${message.role === "user" ? "max-w-[78%] sm:max-w-[66%]" : "max-w-[94%] sm:max-w-[78%]"}`}
                   >
-                    {message.text}
+                    <div
+                      className={`inline-block px-4 py-2.5 text-sm leading-5 backdrop-blur-xl ${
+                        message.role === "user"
+                          ? isLight
+                            ? "rounded-[24px] rounded-tr-[7px] bg-[#d7efff] text-[#07111d]"
+                            : "rounded-[24px] rounded-tr-[7px] bg-[#e8eef5] text-[#07111d] shadow-xl"
+                          : isLight
+                            ? "rounded-[24px] rounded-tl-[7px] bg-[#4b8ed8] text-white"
+                            : "rounded-[24px] rounded-tl-[7px] bg-[#203146]/92 text-[#eef3f8]/86 shadow-xl"
+                      }`}
+                    >
+                      {message.text}
+                    </div>
                     {message.role === "space" && message.blocks?.length ? (
                       <div className="mt-1">
                         {message.blocks.map((block, blockIndex) => renderSpaceBlock(block, blockIndex))}
@@ -1271,7 +1282,7 @@ export function SpaceOverlay({
         <form
           onSubmit={submit}
           onPointerDown={(event) => event.stopPropagation()}
-          className="fixed inset-x-0 z-20 mx-auto w-full max-w-[720px] px-4 sm:px-6 transition-[top,bottom,transform] duration-300 ease-out"
+          className="fixed inset-x-0 z-20 mx-auto w-full max-w-[860px] px-3 sm:px-6 transition-[top,bottom,transform] duration-300 ease-out"
           style={
             messages.length === 0 && keyboardBottom <= 40
               ? {
@@ -1289,11 +1300,11 @@ export function SpaceOverlay({
           {chatsMenuOpen ? (
             <>
               <div
-                className="fixed inset-0 z-20 bg-black/10 backdrop-blur-[3px]"
+                className="fixed inset-0 z-20 bg-black/18 backdrop-blur-[8px]"
                 aria-hidden="true"
                 onPointerDown={() => setChatsMenuOpen(false)}
               />
-              <div className="absolute bottom-[calc(100%+12px)] left-4 right-4 z-30">
+              <div className="absolute bottom-[calc(100%+12px)] left-3 right-3 z-30 sm:left-6 sm:right-6">
               <div
                 className={`absolute inset-0 rounded-[30px] backdrop-blur-xl ${
                   isLight ? "bg-[#f6f9fd]/74" : "bg-[#06111d]/70"

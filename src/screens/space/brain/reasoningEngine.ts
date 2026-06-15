@@ -1,0 +1,17 @@
+import type { BrainContext } from './types';
+
+export type ReasoningDecision = {
+  action: 'talk' | 'clarify' | 'search' | 'answerFromMemory';
+  reason: string;
+};
+
+export function reasonNextStep(ctx: BrainContext): ReasoningDecision {
+  if (ctx.isPureDialog) return { action: 'talk', reason: 'dialog-first' };
+  if (!ctx.shouldSearch) return { action: 'talk', reason: 'no-explicit-data-request' };
+  if ((ctx.intent === 'weather' || ctx.intent === 'trend') && ctx.tokens.length <= 1) return { action: 'clarify', reason: 'broad-data-request' };
+  if (ctx.rawTokens.length <= 1 && ctx.confidence < 2) return { action: 'clarify', reason: 'low-context' };
+  if (ctx.intent === 'fact' && /\b(он|она|они|его|ее|её|he|she|they|it|him|her)\b/.test(ctx.normalized) && ctx.memory.lastResult) {
+    return { action: 'answerFromMemory', reason: 'pronoun-follow-up' };
+  }
+  return { action: 'search', reason: 'explicit-request' };
+}

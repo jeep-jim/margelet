@@ -12,14 +12,14 @@ function answerFromPreviousFact(ctx: BrainContext): string | null {
 
   if (/(богат|состояни|миллиард|rich|wealth)/.test(ctx.normalized)) {
     return ctx.lang === 'ru'
-      ? `Ты про ${last.subject}. В прошлой находке была тема состояния, но рейтинг я не подтверждаю без точного источника. Могу поискать точнее.`
-      : `You mean ${last.subject}. The previous result mentioned wealth, but I will not confirm a ranking without a precise source. I can search tighter.`;
+      ? `Ты про ${last.subject}. По прошлой находке тема денег рядом, но точный рейтинг я не подтвержу без чистого источника.`
+      : `You mean ${last.subject}. The previous result was near money/wealth, but I will not confirm a ranking without a clean source.`;
   }
 
   if (last.postText) {
     return ctx.lang === 'ru'
-      ? `Ты про ${last.subject}. По прошлому найденному посту смысл такой: ${compactText(last.postText, 160)}`
-      : `You mean ${last.subject}. From the previous post: ${compactText(last.postText, 160)}`;
+      ? `Ты про ${last.subject}. По прошлому найденному посту смысл такой: ${compactText(last.postText, 150)}`
+      : `You mean ${last.subject}. From the previous post: ${compactText(last.postText, 150)}`;
   }
   return null;
 }
@@ -35,7 +35,7 @@ export function synthesizeFound(ctx: BrainContext, ranked: RankedPost[]): SpaceA
   const found = ranked.map((item) => item.post);
   rememberTurn({ memory: ctx.memory, query: ctx.query, intent: ctx.intent, found, locale: ctx.locale, subject: ctx.subject, tokens: ctx.tokens });
 
-  const blocks = planBlocks(ranked, ctx.intent, { gallery: ui.galleryTitle, video: ui.videoTitle }, ctx.shouldShowBlocks);
+  const blocks = planBlocks(ranked, ctx.intent, { gallery: ui.galleryTitle, video: ui.videoTitle }, ctx.shouldShowBlocks, ctx.subject);
   const text = generateFound(ctx, ranked);
   return { text, blocks, mode: blocks.length ? 'show' : 'answer' };
 }
@@ -43,7 +43,7 @@ export function synthesizeFound(ctx: BrainContext, ranked: RankedPost[]): SpaceA
 export function synthesizeSoftTalk(ctx: BrainContext): SpaceAnswer {
   rememberTurn({ memory: ctx.memory, query: ctx.query, intent: ctx.intent, found: [], locale: ctx.locale, subject: ctx.subject, tokens: ctx.tokens });
   const variants = ctx.lang === 'ru'
-    ? ['Да, можем. Я рядом — пиши как есть.', 'Конечно. Без поиска, просто поговорим.', 'Давай. Я слушаю.']
-    : ['Sure. I’m here — write naturally.', 'Of course. No search, just talk.', 'Let’s talk. I’m listening.'];
+    ? ['Да, можем. Я рядом.', 'Конечно. Без поиска — просто разговор.', 'Давай. Я слушаю.', 'Понял. Пиши, как человеку.']
+    : ['Sure. I’m here.', 'Of course. No search — just talk.', 'Let’s talk. I’m listening.', 'Got it. Write like to a person.'];
   return { text: generateTalk(ctx, variants), blocks: [], mode: 'talk' };
 }

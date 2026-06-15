@@ -1,9 +1,10 @@
 import type { IngestedPost, Locale } from '../../../types/app';
 import type { SpaceIntent, SpaceMemory, SpaceMood } from './types';
 import { compactText, normalize, ngrams, tokenize } from './text';
+import { adjustLearning } from './learningEngine';
 
-const SPACE_MEMORY_KEY = 'margelet_space_local_brain_v7';
-const OLD_KEYS = ['margelet_space_local_brain_v6', 'margelet_space_local_brain_v3', 'margelet_space_local_brain_v2'];
+const SPACE_MEMORY_KEY = 'margelet_space_local_brain_core_v1';
+const OLD_KEYS = ['margelet_space_local_brain_v7','margelet_space_local_brain_v6', 'margelet_space_local_brain_v3', 'margelet_space_local_brain_v2'];
 
 function normalizeMemory(memory: Partial<SpaceMemory>): SpaceMemory {
   return {
@@ -75,12 +76,11 @@ export function learnFromQuery(memory: SpaceMemory, query: string, intent: Space
   const name = extractUserName(query);
   if (name) memory.userName = name;
 
-  if (/корот|кратк|short|brief/.test(lower)) memory.userStyle.wantsShort += 0.6;
-  if (/источник|source|пост|канал/.test(lower)) memory.userStyle.wantsSources += 0.5;
-  if (/фото|картин|видео|image|photo|video/.test(lower)) memory.userStyle.likesMedia += 0.5;
-  if (/бро|друг|родн|спасибо|thanks/.test(lower)) memory.userStyle.likesWarmTone += 0.3;
+  if (/корот|кратк|short|brief/.test(lower)) adjustLearning(memory, 'short');
+  if (/источник|source|пост|канал/.test(lower)) adjustLearning(memory, 'search');
+  if (/фото|картин|видео|image|photo|video/.test(lower)) adjustLearning(memory, 'media');
+  if (/бро|друг|родн|спасибо|thanks|поговор|поболт|обща/.test(lower)) adjustLearning(memory, 'talk');
   if (/ахах|ха|смеш|шут|мем|лол|joke|fun/.test(lower)) memory.userStyle.likesPlayful += 0.3;
-  if (/поговор|поболт|обща|chat|talk/.test(lower)) memory.lastDialogMood = 'warm';
 
   tokens.forEach((token) => {
     memory.topics[token] = (memory.topics[token] || 0) + 1;

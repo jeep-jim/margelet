@@ -1,6 +1,6 @@
 export const STOP_WORDS = new Set([
-  'дай','найди','покажи','что','как','где','кто','про','для','это','есть','мне','нам','или','еще','ещё','сейчас','сегодня','вот','там','тут','на','по','из','от','за','без','при','под','над','тебе','меня','будет','быть','очень','просто','можно','надо','нужно','стал','стала','стали','самый','самая','самое','бро','друг','ок','ладно','ага','давай','хочу','можем','поговорить','общаться','поболтать','поболтаться','хей','эй','ты','твой','тебя','тобой','твое','твоё','у','а','и','да','нет','ну','же','ли','бы','я','мы','он','она','они','его','ее','её',
-  'the','and','for','with','about','show','find','give','what','how','where','who','please','now','today','is','are','was','were','me','you','can','could','would','should','let','lets','just','chat','talk',
+  'дай','найди','покажи','что','как','где','кто','про','для','это','есть','мне','нам','или','еще','ещё','сейчас','сегодня','вот','там','тут','на','по','из','от','за','без','при','под','над','тебе','меня','будет','быть','очень','просто','можно','надо','нужно','стал','стала','стали','самый','самая','самое','бро','друг','ок','ладно','ага','давай','хочу','можем','поговорить','общаться','поболтать','поболтаться','хей','эй','ты','твой','тебя','тобой','твое','твоё','у','а','и','да','нет','ну','же','ли','бы','я','мы','он','она','они','его','ее','её','если',
+  'the','and','for','with','about','show','find','give','what','how','where','who','please','now','today','is','are','was','were','me','you','can','could','would','should','let','lets','just','chat','talk','a','an','to','of','in','on','it','this','that',
   'el','la','los','las','que','como','para','por','con','sobre','de','der','die','das','und','was','wie','wo','über',
 ]);
 
@@ -19,13 +19,13 @@ export function tokenize(text: string, limit = 18) {
 }
 
 export function compactText(text: string, max = 360) {
-  const clean = text.replace(/\s+/g, ' ').trim();
+  const clean = text.replace(/https?:\/\/\S+/g, '').replace(/t\.me\/\S+/g, '').replace(/\s+/g, ' ').trim();
   if (clean.length <= max) return clean;
   return `${clean.slice(0, max).trim()}…`;
 }
 
 export function sentence(text: string, max = 180) {
-  const clean = text.replace(/\s+/g, ' ').trim();
+  const clean = compactText(text, max * 2);
   const first = clean.match(/^(.{24,}?[.!?])\s/)?.[1] || clean;
   return compactText(first, max);
 }

@@ -1,5 +1,7 @@
 import type { IngestedPost, Locale } from '../../../types/app';
 
+export type SpaceLanguage = 'ru' | 'us' | string;
+
 export type SpaceIntent =
   | 'greeting'
   | 'thanks'
@@ -34,6 +36,16 @@ export type SpaceBlock =
       score: number;
     }
   | {
+      type: 'quote';
+      title: string;
+      subtitle: string;
+      text: string;
+      url: string;
+      sourceAvatar: string | null;
+      media?: Array<{ kind: 'image' | 'video' | 'audio' | 'file'; url: string; poster?: string | null }>;
+      score: number;
+    }
+  | {
       type: 'gallery';
       title: string;
       items: Array<{
@@ -43,6 +55,14 @@ export type SpaceBlock =
         sourceTitle: string;
         postUrl: string;
       }>;
+    }
+  | {
+      type: 'weather';
+      city: string;
+      title: string;
+      summary: string;
+      sourceTitle?: string;
+      sourceAvatar?: string | null;
     }
   | {
       type: 'chips';
@@ -95,7 +115,7 @@ export type SpaceMemory = {
 export type AttentionSignal = {
   token: string;
   weight: number;
-  source: 'query' | 'memory' | 'subject' | 'post';
+  source: 'query' | 'memory' | 'subject' | 'post' | 'topic' | 'entity';
 };
 
 export type BrainContext = {
@@ -104,7 +124,7 @@ export type BrainContext = {
   tokens: string[];
   rawTokens: string[];
   locale: Locale;
-  lang: string;
+  lang: SpaceLanguage;
   memory: SpaceMemory;
   posts: IngestedPost[];
   intent: SpaceIntent;
