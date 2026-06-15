@@ -19,6 +19,8 @@ const HARD_BANNED = [
   'превратить её в поиск',
   'локальная модель не дала ответ',
   'могу продолжить только через инструмент',
+  'я не буду изображать',
+  'без модели',
 ];
 
 const STOP = new Set(
@@ -43,10 +45,6 @@ function sanitize(text: string) {
   if (HARD_BANNED.some((line) => hay.includes(lower(line)))) return '';
   if (next.length > 1100) next = `${next.slice(0, 1100).trim()}…`;
   return next;
-}
-
-function isRu(decision: Pick<SpaceOSDecision, 'lang'>) {
-  return decision.lang === 'ru';
 }
 
 function internalPostUrl(post: SpaceOSInput['posts'][number]) {
@@ -116,16 +114,16 @@ function rememberMusic(memory: SpaceOSMemory, subject: string) {
 }
 
 function leadFor(decision: SpaceOSDecision, blocks: SpaceBlock[]) {
-  const ru = isRu(decision);
+  const ru = decision.lang === 'ru';
   if (decision.tool === 'weather') return ru ? 'Показываю погоду.' : 'Here is the weather.';
-  if (decision.tool === 'music') return ru ? 'Нашёл музыку. Нажми на трек — плеер останется играть внизу.' : 'I found music. Tap a track; the player stays in the tray.';
+  if (decision.tool === 'music') return ru ? 'Нашёл музыку.' : 'I found music.';
   if (decision.tool === 'images') return ru ? 'Нашёл изображения.' : 'I found images.';
-  if (decision.tool === 'video') return ru ? 'Нашёл видео и превью.' : 'I found videos and previews.';
+  if (decision.tool === 'video') return ru ? 'Нашёл видео.' : 'I found videos.';
   if (decision.tool === 'finance') return ru ? 'Собрал график. Это не инвестиционный совет.' : 'I built a chart. This is not financial advice.';
-  if (decision.tool === 'shopping') return ru ? 'Нашёл варианты покупки.' : 'I found shopping options.';
+  if (decision.tool === 'shopping') return ru ? 'Нашёл варианты.' : 'I found options.';
   if (decision.tool === 'biography') return ru ? 'Собрал справку.' : 'I collected a reference.';
-  if (blocks.some((block) => block.type === 'quote')) return ru ? 'В margeleT нашёлся свежий близкий сигнал.' : 'I found a fresh related margeleT signal.';
-  return ru ? 'Нашёл это.' : 'I found this.';
+  if (blocks.some((block) => block.type === 'quote')) return ru ? 'Нашёл свежий сигнал в margeleT.' : 'I found a fresh margeleT signal.';
+  return ru ? 'Нашёл.' : 'Found.';
 }
 
 function statusBlock(title: string, value: string, caption: string, tone: 'blue' | 'green' | 'orange' | 'violet' = 'blue'): SpaceBlock {
@@ -139,11 +137,7 @@ function modelStatusBlock(): SpaceBlock {
   return statusBlock(
     'Space AI',
     ready ? 'ready' : loading ? 'loading' : status.status,
-    ready
-      ? 'Модель отвечает в браузере.'
-      : loading
-        ? 'Модель загружается.'
-        : `Browser AI недоступен в этом браузере. Инструменты поиска работают отдельно.`,
+    ready ? 'Модель отвечает.' : loading ? 'Модель загружается.' : 'Генеративная модель не активна. Инструменты работают отдельно.',
     ready ? 'green' : loading ? 'blue' : 'orange',
   );
 }
@@ -183,7 +177,7 @@ function searchLocalAudio(posts: SpaceOSInput['posts'], decision: SpaceOSDecisio
   return {
     type: 'music',
     title: decision.lang === 'ru' ? `Музыка: ${decision.subject || decision.query}` : `Music: ${decision.subject || decision.query}`,
-    subtitle: decision.lang === 'ru' ? 'Нашёл аудио внутри margeleT.' : 'Found audio inside margeleT.',
+    subtitle: decision.lang === 'ru' ? 'Аудио из margeleT.' : 'Audio from margeleT.',
     tracks: ranked.map((item) => ({
       title: compact(item.post.media.find((m) => m.kind === 'audio')?.fileName || item.post.text.split('\n')[0] || item.post.source.title || decision.subject).slice(0, 120),
       sourceTitle: item.post.source.title || item.post.source.handle || 'margeleT audio',
@@ -205,15 +199,34 @@ function factLines(blocks: SpaceBlock[]) {
   return facts.map(compact).filter(Boolean).slice(0, 8);
 }
 
-async function llmText(input: SpaceOSInput, decision: SpaceOSDecision, memory: SpaceOSMemory, facts: string[] = [], timeoutMs = 8000) {
+async function llmText(input: SpaceOSInput, decision: SpaceOSDecision, memory: SpaceOSMemory, facts: string[] = [], timeoutMs = 6500) {
   const text = await tryLocalLlmReply({ query: input.query, locale: input.locale, decision, memory, facts, timeoutMs });
   return sanitize(text || '');
 }
 
-function noBrainText(decision: SpaceOSDecision) {
-  return decision.lang === 'ru'
-    ? 'Я не буду изображать умный ответ без модели. Могу искать по интернету, погоде, музыке, картинкам, видео и margeleT — или подключим внешний LLM-ключ для полноценного разговора.'
-    : 'I will not fake an answer without a model. I can search web, weather, music, images, video and margeleT — or use an external LLM key for full conversation.';
+function webDecisionFrom(input: SpaceOSInput, decision: SpaceOSDecision): SpaceOSDecision {
+  return {
+    ...decision,
+    tool: 'web',
+    useInternet: true,
+    useTelegram: false,
+    useProductDeck: false,
+    reason: 'chat_to_web',
+    subject: decision.subject || input.query,
+  };
+}
+
+async function internetAnswer(input: SpaceOSInput, decision: SpaceOSDecision, memory: SpaceOSMemory) {
+  const external = decision.useInternet ? await runInternetTool(decision) : { text: '', blocks: [] as SpaceBlock[] };
+  const telegramBlocks = decision.useTelegram && external.blocks.length < 2
+    ? searchTelegramSupplement(input.posts, decision, external.blocks.length ? 1 : 2)
+    : [];
+  const blocks = [...external.blocks, ...telegramBlocks];
+
+  if (!blocks.length) return null;
+  const facts = factLines(blocks);
+  const llm = await llmText(input, decision, memory, facts, 4500);
+  return { text: llm || external.text || leadFor(decision, blocks), blocks, mode: 'show' as const };
 }
 
 export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
@@ -238,16 +251,16 @@ export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
     const text = await llmText(input, decision, updatedMemory, [
       'margeleT — индекс внимания Telegram и поисковый слой поверх потока.',
       'Space — разговорный слой с интернет-инструментами, виджетами и свежими сигналами margeleT.',
-    ], 7000);
-    const answerText = text || (decision.lang === 'ru' ? 'Показываю, как устроен margeleT и Space.' : 'Here is how margeleT and Space are structured.');
+    ], 5500);
+    const answerText = text || 'margeleT + Space';
     rememberAssistantTurn(answerText);
     return { text: answerText, blocks, mode: 'present' };
   }
 
   if (decision.tool === 'tunnel') {
     const block = tunnelBlock(decision.subject);
-    const text = await llmText(input, decision, updatedMemory, ['Туннель — временный локальный чат по совпавшему интересу.'], 6000);
-    const answerText = text || (decision.lang === 'ru' ? 'Собрал черновик туннеля.' : 'I prepared a tunnel draft.');
+    const text = await llmText(input, decision, updatedMemory, ['Туннель — временный локальный чат по совпавшему интересу.'], 4500);
+    const answerText = text || 'Туннель готов.';
     rememberAssistantTurn(answerText);
     return { text: answerText, blocks: [block], mode: 'show' };
   }
@@ -263,28 +276,38 @@ export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
   }
 
   if (decision.tool !== 'chat') {
-    const external = decision.useInternet ? await runInternetTool(decision) : { text: '', blocks: [] as SpaceBlock[] };
-    const telegramBlocks = decision.useTelegram && external.blocks.length < 2
-      ? searchTelegramSupplement(input.posts, decision, external.blocks.length ? 1 : 2)
-      : [];
-    const blocks = [...external.blocks, ...telegramBlocks];
-
-    if (blocks.length) {
-      const facts = factLines(blocks);
-      const llm = await llmText(input, decision, updatedMemory, facts, 5000);
-      const answerText = llm || external.text || leadFor(decision, blocks);
-      rememberAssistantTurn(answerText);
-      return { text: answerText, blocks, mode: 'show' };
+    const result = await internetAnswer(input, decision, updatedMemory);
+    if (result) {
+      rememberAssistantTurn(result.text);
+      return result;
     }
 
-    const llm = await llmText(input, decision, updatedMemory, [], 5000);
-    const answerText = llm || (decision.lang === 'ru' ? 'Не нашёл надёжный источник для карточки. Попробуй сформулировать точнее или укажи город/трек/тему.' : 'I did not find a reliable source for the card. Try a more specific city, track, or topic.');
-    rememberAssistantTurn(answerText);
-    return { text: answerText, blocks: [], mode: 'talk' };
+    const llm = await llmText(input, decision, updatedMemory, [], 4500);
+    if (llm) {
+      rememberAssistantTurn(llm);
+      return { text: llm, blocks: [], mode: 'talk' };
+    }
+
+    const text = decision.lang === 'ru' ? 'Не нашёл надёжный источник.' : 'I did not find a reliable source.';
+    rememberAssistantTurn(text);
+    return { text, blocks: [], mode: 'talk' };
   }
 
-  const text = await llmText(input, decision, updatedMemory, [], 9000);
-  const answerText = text || noBrainText(decision);
-  rememberAssistantTurn(answerText);
-  return { text: answerText, blocks: [], mode: 'talk' };
+  const direct = await llmText(input, decision, updatedMemory, [], 7000);
+  if (direct) {
+    rememberAssistantTurn(direct);
+    return { text: direct, blocks: [], mode: 'talk' };
+  }
+
+  if (/\?|\b(что|кто|как|почему|зачем|где|когда|объясни|расскажи|покажи|найди|what|who|how|why|where|when|explain|show|find)\b/i.test(input.query)) {
+    const result = await internetAnswer(input, webDecisionFrom(input, decision), updatedMemory);
+    if (result) {
+      rememberAssistantTurn(result.text);
+      return result;
+    }
+  }
+
+  const text = decision.lang === 'ru' ? 'Сейчас я могу нормально отвечать только через активную модель или через поиск.' : 'Right now I can answer through an active model or search.';
+  rememberAssistantTurn(text);
+  return { text, blocks: [], mode: 'talk' };
 }

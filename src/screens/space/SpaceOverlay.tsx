@@ -799,8 +799,8 @@ export function SpaceOverlay({
             posts,
             locale,
           });
-          answerText = spaceAnswer.text || copy.botAnswer;
           answerBlocks = spaceAnswer.blocks || [];
+          answerText = spaceAnswer.text || (answerBlocks.length ? "" : copy.botAnswer);
         } catch {
           answerText = locale === "ru"
             ? "Я на секунду споткнулся, но я тут. Попробуй ещё раз — без перезагрузки."
@@ -1596,19 +1596,21 @@ export function SpaceOverlay({
                   <div
                     className={`${message.role === "user" ? "max-w-[88%] sm:max-w-[70%]" : "max-w-[98%] sm:max-w-[86%]"}`}
                   >
-                    <div
-                      className={`inline-block px-4 py-2.5 text-sm leading-5 ${
-                        message.role === "user"
-                          ? isLight
-                            ? "rounded-[24px] rounded-tr-[7px] bg-[#d7efff] text-[#07111d]"
-                            : "rounded-[24px] rounded-tr-[7px] bg-[#e8eef5] text-[#07111d] shadow-xl"
-                          : isLight
-                            ? "rounded-[24px] rounded-tl-[7px] bg-[#4b8ed8] text-white"
-                            : "rounded-[24px] rounded-tl-[7px] bg-[#203146]/92 text-[#eef3f8]/86 shadow-xl"
-                      }`}
-                    >
-                      {message.text}
-                    </div>
+                    {message.text ? (
+                      <div
+                        className={`inline-block px-4 py-2.5 text-sm leading-5 ${
+                          message.role === "user"
+                            ? isLight
+                              ? "rounded-[24px] rounded-tr-[7px] bg-[#d7efff] text-[#07111d]"
+                              : "rounded-[24px] rounded-tr-[7px] bg-[#e8eef5] text-[#07111d] shadow-xl"
+                            : isLight
+                              ? "rounded-[24px] rounded-tl-[7px] bg-[#4b8ed8] text-white"
+                              : "rounded-[24px] rounded-tl-[7px] bg-[#203146]/92 text-[#eef3f8]/86 shadow-xl"
+                        }`}
+                      >
+                        {message.text}
+                      </div>
+                    ) : null}
                     {message.role === "space" && message.blocks?.length ? (
                       <div className="mt-1">
                         {message.blocks.map((block, blockIndex) => renderSpaceBlock(block, blockIndex))}
