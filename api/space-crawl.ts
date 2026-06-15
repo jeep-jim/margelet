@@ -34,7 +34,8 @@ function pickLang(q: string) { return /[а-яё]/i.test(q) ? 'ru' : 'en'; }
 function stripQuery(q: string) {
   return q
     .replace(/[@#]/g, ' ')
-    .replace(/\b(погода|прогноз|температура|биография|биографию|кто\s+такой|кто\s+такая|расскажи|покажи|найди|про|включи|поставь|трек|песня|музыка|фото|картинки|видео|купить|заказать|цена|график|акции|курс|weather|forecast|biography|who\s+is|about|tell\s+me|show|find|play|song|music|images|video|buy|price|stock|chart)\b/gi, ' ')
+    .replace(/\b(бро|друг|плиз|пожалуйста|можешь|можно|нужно|надо|мне|погода|прогноз|температура|биография|биографию|кто\s+такой|кто\s+такая|расскажи|покажи|найди|про|включи|поставь|воспроизведи|трек|песня|музыка|фото|картинки|изображения|видео|купить|заказать|цена|график|акции|курс|сегодня|завтра|послезавтра|на\s+сегодня|на\s+завтра|weather|forecast|biography|who\s+is|about|tell\s+me|show|find|play|song|music|images|video|buy|price|stock|chart)\b/gi, ' ')
+    .replace(/\b(в|во|по|для)\s+(?=[а-яёa-z])/gi, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }

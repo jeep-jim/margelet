@@ -76,10 +76,13 @@ function clean(value: string) {
   return String(value || '').replace(/\s+/g, ' ').trim().replace(/[,.!?]+$/g, '');
 }
 
-function extractName(query: string) {
+function extractUserName(query: string) {
   const explicit = query.match(/(?:меня\s+зовут|зови\s+меня|мо[её]\s+имя|my\s+name\s+is|call\s+me)\s+([^.!?\n]{2,42})/i);
-  if (explicit?.[1]) return clean(explicit[1]);
-  const nick = query.match(/(?:буду\s+называть\s+тебя|называй\s+меня|зови\s+меня)\s+([^.!?\n]{2,42})/i);
+  return explicit?.[1] ? clean(explicit[1]) : '';
+}
+
+function extractBotNick(query: string) {
+  const nick = query.match(/(?:буду\s+называть\s+тебя|назову\s+тебя|тебя\s+будут\s+звать)\s+([^.!?\n]{2,42})/i);
   return nick?.[1] ? clean(nick[1]) : '';
 }
 
@@ -117,7 +120,8 @@ export function rememberAssistantTurn(text: string) {
 }
 
 export function rememberSpaceOSTurn(memory: RichMemory, query: string, decision: SpaceOSDecision) {
-  const name = extractName(query);
+  const name = extractUserName(query);
+  const botNick = extractBotNick(query);
   const city = extractCity(query, decision.tool);
   const track = extractTrack(query, decision);
   const interests = Array.from(new Set([...(memory.interests || []), ...collectInterests(query)])).slice(-30);
@@ -125,7 +129,7 @@ export function rememberSpaceOSTurn(memory: RichMemory, query: string, decision:
     ...memory,
     turns: memory.turns + 1,
     userName: name || memory.userName,
-    nickName: /называть\s+тебя/i.test(query) && name ? name : memory.nickName,
+    nickName: botNick || memory.nickName,
     lastTopic: decision.subject || memory.lastTopic,
     lastTool: decision.tool,
     lastTrack: track.track || memory.lastTrack,

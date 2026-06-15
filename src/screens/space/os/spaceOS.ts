@@ -6,47 +6,105 @@ import { routeSpaceOS } from './spaceRouter';
 import { runInternetTool, searchTelegramSupplement } from './spaceTools';
 import { getLocalLlmStatus, tryLocalLlmReply, warmLocalLlm } from './localLlmOS';
 
+const BANNED_LINES = [
+  ['слышу', 'тебя'],
+  ['вижу', 'продолжаешь'],
+  ['отвечу', 'прямо'],
+  ['важнее', 'не', 'выдача'],
+  ['докрутим'],
+  ['развернем'],
+  ['развернём'],
+  ['понял', 'направление'],
+  ['обсудить', 'мысль'],
+  ['превратить', 'поиск'],
+];
+
+type RichMemory = SpaceOSMemory & {
+  recentTurns?: Array<{ role: 'user' | 'space'; text: string; at: number }>;
+  lastTrack?: string;
+  lastArtist?: string;
+  lastCity?: string;
+  interests?: string[];
+  nickName?: string;
+};
+
 function compact(value: string) {
   return String(value || '').replace(/\s+/g, ' ').trim();
+}
+
+function lower(value: string) {
+  return compact(value).toLowerCase().replace(/ё/g, 'е');
 }
 
 function isRu(decision: Pick<SpaceOSDecision, 'lang'>) {
   return decision.lang === 'ru';
 }
 
+function userName(memory: SpaceOSMemory) {
+  return compact((memory as RichMemory).userName || '');
+}
+
+function sanitize(text: string) {
+  let next = compact(text)
+    .replace(/^(Space|Спейс|Spike|Спайк)\s*[:—-]\s*/i, '')
+    .replace(/\s+([,.!?;:])/g, '$1')
+    .trim();
+
+  const normalized = lower(next);
+  const bad = BANNED_LINES.some((parts) => parts.every((part) => normalized.includes(part)));
+  if (bad) return '';
+  if (next.length > 900) next = `${next.slice(0, 900).trim()}…`;
+  return next;
+}
+
+function statusBlock(title: string, value: string, caption: string, tone: 'blue' | 'green' | 'orange' | 'violet' = 'blue'): SpaceBlock {
+  return { type: 'stat', title, value, caption, tone };
+}
+
 function tunnelBlock(topic: string): SpaceBlock {
   return {
     type: 'tunnel',
     title: 'Туннель интереса',
-    subtitle: 'Черновик 24-часового локального туннеля. Переписку не храним как соцсеть; дальше подключим приглашения через Telegram.',
+    subtitle: 'Черновик 24-часового локального туннеля. Сейчас без соцсети и без хранения переписки на сервере.',
     topic: topic || 'общая тема',
     people: [
-      { name: 'Катя', note: 'может искать похожий интерес' },
-      { name: 'Саша', note: 'может быть рядом по теме' },
+      { name: 'Катя', note: 'ищет похожую тему' },
+      { name: 'Саша', note: 'может совпасть по интересу' },
     ],
     cta: 'Открыть туннель на 24 часа',
   };
 }
 
 function nameAnswer(query: string, memory: SpaceOSMemory): SpaceAnswer | null {
-  const q = query.toLowerCase().replace(/ё/g, 'е');
-  const set = query.match(/(?:меня\s+зовут|зови\s+меня|мое\s+имя|моё\s+имя|my\s+name\s+is|call\s+me)\s+([^.!?\n]{2,42})/i);
-  if (set?.[1]) {
-    const name = set[1].trim().replace(/[,.!?]+$/g, '');
-    writeSpaceOSMemory({ ...memory, userName: name, updatedAt: Date.now() });
-    return { text: `Запомнил: ${name}. Только на этом устройстве.`, blocks: [], mode: 'talk' };
+  const q = lower(query);
+  const explicitName = query.match(/(?:меня\s+зовут|зови\s+меня|мо[её]\s+имя|my\s+name\s+is|call\s+me)\s+([^.!?\n]{2,42})/i);
+  if (explicitName?.[1]) {
+    const name = compact(explicitName[1]).replace(/[,.!?]+$/g, '');
+    writeSpaceOSMemory({ ...(memory as RichMemory), userName: name, updatedAt: Date.now() } as RichMemory);
+    return { text: `Запомнил: ${name}. Это лежит только у тебя в браузере.`, blocks: [], mode: 'talk' };
   }
+
+  const botNick = query.match(/(?:буду\s+называть\s+тебя|назову\s+тебя|тебя\s+будут\s+звать)\s+([^.!?\n]{2,42})/i);
+  if (botNick?.[1]) {
+    const nickName = compact(botNick[1]).replace(/[,.!?]+$/g, '');
+    writeSpaceOSMemory({ ...(memory as RichMemory), nickName, updatedAt: Date.now() } as RichMemory);
+    return { text: `Ок, мне нравится. Для тебя я теперь ${nickName}.`, blocks: [], mode: 'talk' };
+  }
+
   if (/я\s+не\s+арсений|я\s+не\s+стас|не\s+называй\s+меня/.test(q)) {
-    writeSpaceOSMemory({ ...memory, userName: '', updatedAt: Date.now() });
-    return { text: 'Понял, убрал имя из локальной памяти.', blocks: [], mode: 'talk' };
+    writeSpaceOSMemory({ ...(memory as RichMemory), userName: '', updatedAt: Date.now() } as RichMemory);
+    return { text: 'Понял. Убрал имя из локальной памяти.', blocks: [], mode: 'talk' };
   }
-  if (/как\s+зовут\s+меня|мое\s+имя|моё\s+имя|what\s+is\s+my\s+name/.test(q)) {
+
+  if (/как\s+зовут\s+меня|мо[её]\s+имя|what\s+is\s+my\s+name/.test(q)) {
+    const name = userName(memory);
     return {
-      text: memory.userName ? `Ты назывался: ${memory.userName}.` : 'Ты ещё не называл имя. Можешь написать: “меня зовут …”.',
+      text: name ? `Ты назывался: ${name}.` : 'Ты ещё не называл имя. Можешь написать: “меня зовут …”.',
       blocks: [],
       mode: 'talk',
     };
   }
+
   return null;
 }
 
@@ -62,12 +120,8 @@ function extractFacts(blocks: SpaceBlock[]) {
       const last = block.points[block.points.length - 1];
       if (last) facts.push(`${block.title}: последнее значение ${last.value} (${last.label})`);
     }
-    if (block.type === 'music') {
-      facts.push(`Найдено треков: ${block.tracks.length}. Первый: ${block.tracks[0]?.title || ''}`);
-    }
-    if (block.type === 'shop') {
-      facts.push(`Найдено вариантов: ${block.items.length}. Первый: ${block.items[0]?.title || ''}`);
-    }
+    if (block.type === 'music') facts.push(`Найдено треков: ${block.tracks.length}. Первый: ${block.tracks[0]?.title || ''}`);
+    if (block.type === 'shop') facts.push(`Найдено вариантов: ${block.items.length}. Первый: ${block.items[0]?.title || ''}`);
     if (block.type === 'gallery') facts.push(`Найдена медиаподборка: ${block.items.length} элементов.`);
     if (block.type === 'quote') facts.push(`Сигнал margeleT от ${block.title}: ${block.text.slice(0, 180)}`);
   }
@@ -76,74 +130,78 @@ function extractFacts(blocks: SpaceBlock[]) {
 
 function toolLead(decision: SpaceOSDecision, blocks: SpaceBlock[]) {
   const ru = isRu(decision);
-  if (decision.tool === 'weather') return ru ? 'Проверил погоду по открытым данным.' : 'I checked live weather data.';
-  if (decision.tool === 'music') return ru ? 'Нашёл варианты трека. Жми на строку — плеер останется внизу.' : 'I found track options. Tap one and the player will stay in the tray.';
-  if (decision.tool === 'images') return ru ? 'Собрал визуальную подборку.' : 'I collected a visual set.';
-  if (decision.tool === 'video') return ru ? 'Собрал видео и превью.' : 'I collected videos and previews.';
+  if (decision.tool === 'weather') return ru ? 'Проверил живую погоду. Не гадаю — показываю карточку.' : 'I checked live weather and built the card.';
+  if (decision.tool === 'music') return ru ? 'Нашёл музыку. Нажми на трек — плеер останется играть внизу.' : 'I found music. Tap a track and the player will stay in the tray.';
+  if (decision.tool === 'images') return ru ? 'Собрал картинки из открытых источников.' : 'I collected images from open sources.';
+  if (decision.tool === 'video') return ru ? 'Собрал видео и превью из открытых источников.' : 'I collected videos and previews from open sources.';
   if (decision.tool === 'finance') return ru ? 'Собрал быстрый график. Это не инвестиционный совет.' : 'I built a quick chart. This is not financial advice.';
-  if (decision.tool === 'shopping') return ru ? 'Нашёл первые варианты в открытых источниках.' : 'I found initial options from open sources.';
+  if (decision.tool === 'shopping') return ru ? 'Нашёл первые варианты покупки.' : 'I found initial shopping options.';
   if (decision.tool === 'biography') return ru ? 'Собрал короткую справку.' : 'I collected a compact reference.';
   if (blocks.some((block) => block.type === 'quote')) return ru ? 'В свежем потоке margeleT есть близкий сигнал.' : 'There is a close signal in the fresh margeleT flow.';
   return ru ? 'Проверил открытые источники.' : 'I checked open sources.';
 }
 
-
-function fallbackTalk(query: string, decision: SpaceOSDecision, memory: SpaceOSMemory) {
-  const q = query.toLowerCase().replace(/ё/g, 'е').trim();
-  const name = memory.userName ? `${memory.userName}, ` : '';
-  const rich = memory as SpaceOSMemory & { lastTrack?: string; lastArtist?: string; lastCity?: string; recentTurns?: Array<{ role: string; text: string }> };
-  const ru = isRu(decision);
-
-  if (!ru) {
-    if (/hello|hi|hey/.test(q)) return `Hey${memory.userName ? `, ${memory.userName}` : ''}. I’m here.`;
-    return `I’m listening. Give me the thought, and I’ll answer directly first — facts and widgets only when they’re actually needed.`;
-  }
-
+function guessExplanation(query: string) {
+  const q = lower(query);
   const what = query.match(/что\s+такое\s+([^?!.]{2,80})/i);
-  if (what?.[1]) {
-    const term = compact(what[1]);
-    return `${term} — это слово или явление, которое лучше объяснить на конкретном примере. Я могу дать короткое объяснение своими словами, а если нужен точный источник — проверю сеть и покажу карточку.`;
+  const term = compact(what?.[1] || query).replace(/[?!.]+$/g, '');
+
+  if (/сосульк/.test(q)) return 'Сосулька — это лёд, который нарастает, когда вода стекает и замерзает на холоде. Обычно она висит с крыши или края трубы: сверху вода ещё подтаивает, снизу мороз её “долепливает”.';
+  if (/ежик|ёжик/.test(q)) return 'Ёжик — маленький зверёк с иголками. Но если ты используешь его как кодовое слово, я бы не цеплялся только за животное: скорее ты проверяешь, помню ли я контекст и умею ли догадаться, зачем слово появилось.';
+  if (/чер\b|чег\b/.test(q)) return '“Чер” похоже на обрывок или опечатку. Если ты про “чёрт”, “чернь”, “через” или имя/ник — скажи, и я разберу точно. Сам придумывать значение не буду.';
+  if (/велосипед/.test(q)) return 'Велосипед едет за счёт простой связки: ты крутишь педали, цепь вращает заднее колесо, а руль и наклон тела помогают держать равновесие. Магия в том, что на скорости он сам становится устойчивее.';
+  if (/снег/.test(q)) return 'Снег — это кристаллы льда, которые образуются в облаках и падают вниз, когда становятся достаточно тяжёлыми. Форма снежинок зависит от температуры и влажности.';
+  if (term && term.length <= 60) return `${term} — давай объясню без энциклопедии: это нужно разобрать по контексту. Если хочешь точное определение с источником, я могу сразу полезть в интернет и показать карточку.`;
+  return '';
+}
+
+function humanFallback(query: string, decision: SpaceOSDecision, memory: SpaceOSMemory) {
+  void decision;
+  const q = lower(query);
+  const rich = memory as RichMemory;
+  const name = userName(memory);
+  const prefix = name ? `${name}, ` : '';
+  const nick = compact(rich.nickName || 'Space');
+  const recentUser = (rich.recentTurns || []).slice().reverse().find((turn) => turn.role === 'user')?.text || '';
+
+  const explanation = guessExplanation(query);
+  if (explanation && /что\s+такое|как\s+работает|кто\s+такой|кто\s+такая/i.test(q)) return explanation;
+
+  if (/^(привет|здаров|здравствуй|салам|хай|hello|hi)\b/.test(q)) {
+    const hour = new Date().getHours();
+    const hello = hour < 12 ? 'Доброе утро' : hour < 18 ? 'Привет' : 'Добрый вечер';
+    return `${hello}${name ? `, ${name}` : ''}. Я тут. Что разбираем?`;
   }
 
-  if (/^(привет|здаров|здравствуй|салам|хай|тут|здесь)\b/.test(q)) {
-    const hour = new Date().getHours();
-    const day = hour < 12 ? 'Доброе утро' : hour < 18 ? 'Привет' : 'Добрый вечер';
-    return `${day}${memory.userName ? `, ${memory.userName}` : ''}. Я тут.`;
-  }
+  if (/ты\s+тут|здесь|слышишь|слушаешь/.test(q)) return `${nick} на связи. Пиши как есть — я не буду уходить в автоответы.`;
+  if (/как\s+дела|как\s+ты/.test(q)) return 'Живой слой уже дышит, но я ещё учусь держать мысль. Давай проверим меня на чём-нибудь настоящем.';
 
   if (/какую\s+(песн|групп)|что\s+я\s+просил|напомни/i.test(q) && (rich.lastTrack || rich.lastArtist)) {
-    return `${name}ты просил музыку: ${[rich.lastArtist, rich.lastTrack].filter(Boolean).join(' — ')}.`;
-  }
-
-  if (/погода|прогноз|температур/.test(q)) {
-    const city = decision.subject || rich.lastCity || 'твой город';
-    return `${name}по погоде не буду гадать. Сейчас попробую достать живые данные по “${city}” и показать карточку.`;
-  }
-
-  if (/включи|поставь|трек|песня|музыка|сыграй/.test(q)) {
-    const track = decision.subject || rich.lastTrack || query;
-    return `${name}беру музыкальный запрос “${track}”. Сначала ищу аудио, потом отдам плеер или честно покажу источник.`;
+    return `${prefix}ты просил музыку: ${[rich.lastArtist, rich.lastTrack].filter(Boolean).join(' — ')}.`;
   }
 
   if (/устал|устала|грустно|плохо|одинок|выгор/.test(q)) {
-    return `${name}слышу. Я не буду давить советами. Давай аккуратно: это больше усталость телом, тревога в голове или просто всё накопилось?`;
+    return `${prefix}понял. Тогда без мотивационных плакатов: что сильнее давит прямо сейчас — тело, деньги, люди или ощущение, что всё буксует?`;
   }
 
   if (/совет|бизнес|деньг|работ|карьер|иде/.test(q)) {
-    return `${name}давай без сказок про “быстрый успех”. Я бы начал с трёх вещей: что ты умеешь, что людям болит, и где можно быстро проверить спрос.`;
+    return `${prefix}я бы не искал “гениальную идею”. Я бы начал с маленького теста: что ты умеешь, кому это реально больно, и можно ли получить первый отклик без бюджета.`;
   }
 
   if (/спор|не соглас|думаешь|правда|мнение/.test(q)) {
-    return `${name}я бы тут не соглашался автоматически. В мысли может быть сильная часть и слепая зона — давай разберём обе.`;
+    return `${prefix}я могу поспорить. Мне кажется, тут надо разделить две вещи: что звучит красиво и что реально проверяется действием.`;
   }
 
-  const words = q.split(/\s+/).filter(Boolean);
-  const last = rich.recentTurns?.slice().reverse().find((t) => t.role === 'user')?.text || '';
-  if (last && words.length <= 3) return `${name}вижу, ты продолжаешь прошлую мысль. Я рядом: ${compact(last).slice(0, 120)} — давай докрутим это, а не начнём заново.`;
+  if (/запомни|кодовое\s+слово|секретное\s+слово/.test(q)) {
+    return `${prefix}запомнил как локальный контекст. Потом проверишь меня — и я должен связать это не со словарём, а с нашим разговором.`;
+  }
 
-  return `${name}слышу тебя. Я отвечу прямо: здесь важнее не выдача, а смысл того, что ты хочешь сделать. Давай развернём эту мысль.`;
+  if (recentUser && q.length <= 18) {
+    return `${prefix}я рядом. Если это продолжение про “${compact(recentUser).slice(0, 80)}”, то я держу нить. Что именно сделать дальше?`;
+  }
+
+  return `${prefix}понял тебя. Скажу по-человечески: я могу просто поговорить, могу поспорить, а могу включить инструмент и принести факты. Что выбираем?`;
 }
-
 
 function musicText(post: { text: string; source: { title: string; handle: string }; media: Array<{ kind: string; fileName?: string | null }> }) {
   return `${post.text || ''} ${post.source.title || ''} ${post.source.handle || ''} ${(post.media || []).map((m) => m.fileName || '').join(' ')}`.toLowerCase().replace(/ё/g, 'е');
@@ -152,7 +210,9 @@ function musicText(post: { text: string; source: { title: string; handle: string
 function searchLocalAudio(posts: SpaceOSInput['posts'], decision: SpaceOSDecision): SpaceBlock | null {
   if (decision.tool !== 'music') return null;
   const raw = compact(decision.subject || decision.query).toLowerCase().replace(/ё/g, 'е');
-  const tokens = raw.split(/\s+/).filter((token) => token.length > 2 && !['группа', 'песня', 'трек', 'музыка', 'включи', 'поставь'].includes(token)).slice(0, 8);
+  const tokens = raw.split(/\s+/).filter((token) => token.length > 2 && !['группа', 'песня', 'трек', 'музыка', 'включи', 'поставь', 'любую', 'любой'].includes(token)).slice(0, 8);
+  if (!tokens.length) return null;
+
   const ranked = posts
     .map((post) => {
       const audio = post.media?.filter((m) => m.kind === 'audio' && m.url) || [];
@@ -169,7 +229,7 @@ function searchLocalAudio(posts: SpaceOSInput['posts'], decision: SpaceOSDecisio
   return {
     type: 'music',
     title: decision.lang === 'ru' ? `Музыка: ${decision.subject || decision.query}` : `Music: ${decision.subject || decision.query}`,
-    subtitle: decision.lang === 'ru' ? 'Нашёл аудио в margeleT. Нажми — плеер останется в трее.' : 'Found audio in margeleT. Tap — the player stays in the tray.',
+    subtitle: decision.lang === 'ru' ? 'Нашёл аудио в margeleT. Нажми — плеер останется внизу.' : 'Found audio in margeleT. Tap — the player stays in the tray.',
     tracks: ranked.map((item) => ({
       title: compact(item!.post.media.find((m) => m.kind === 'audio')?.fileName || item!.post.text.split('\n')[0] || item!.post.source.title || decision.subject).slice(0, 120),
       sourceTitle: item!.post.source.title || item!.post.source.handle || 'margeleT audio',
@@ -185,33 +245,43 @@ function internalPostUrl(post: SpaceOSInput['posts'][number]) {
   return `/${handle}/${postId}`;
 }
 
-function statusBlock(): SpaceBlock {
+function modelStatusBlock(): SpaceBlock {
   const status = getLocalLlmStatus();
   const ready = status.status === 'ready';
   const loading = status.status === 'loading';
-  return {
-    type: 'stat',
-    title: 'Local AI',
-    value: ready ? 'ready' : loading ? 'loading' : status.status,
-    caption: ready
+  return statusBlock(
+    'Local AI',
+    ready ? 'ready' : loading ? 'loading' : status.status,
+    ready
       ? 'Локальная модель отвечает в браузере.'
       : loading
         ? 'Модель ещё загружается. Первый запуск может быть долгим.'
-        : 'Сейчас работает честный fallback + инструменты. Для WebLLM нужен браузер с WebGPU или включенный browser AI.',
-    tone: ready ? 'green' : loading ? 'blue' : 'orange',
-  };
+        : 'Если браузер не даёт WebGPU/browser AI, работает быстрый локальный слой + интернет-инструменты.',
+    ready ? 'green' : loading ? 'blue' : 'orange',
+  );
 }
 
-async function answerWithLlmOrFallback(input: SpaceOSInput, decision: SpaceOSDecision, memory: SpaceOSMemory, facts?: string[]) {
+async function llmOrHuman(input: SpaceOSInput, decision: SpaceOSDecision, memory: SpaceOSMemory, facts?: string[]) {
   const llmText = await tryLocalLlmReply({
     query: input.query,
     locale: input.locale,
     decision,
     memory,
     facts,
-    timeoutMs: decision.tool === 'chat' ? 10000 : 5500,
+    timeoutMs: decision.tool === 'chat' ? 10000 : 5000,
   });
-  return llmText || fallbackTalk(input.query, decision, memory);
+  return sanitize(llmText || '') || humanFallback(input.query, decision, memory);
+}
+
+function noToolResult(decision: SpaceOSDecision) {
+  const subject = decision.subject || decision.query;
+  if (decision.tool === 'music') return `Не нашёл нормальный аудио-источник для “${subject}”. Не буду притворяться, что включил. Можно попробовать точнее: исполнитель + название.`;
+  if (decision.tool === 'weather') return `Не смог достать живую погоду по “${subject}”. Не буду выдумывать градусы.`;
+  if (decision.tool === 'images') return `Не нашёл картинку по “${subject}” в открытых источниках. Попробуй другое слово или английский вариант.`;
+  if (decision.tool === 'video') return `Не нашёл видео по “${subject}” в открытых источниках. Могу поискать шире по вебу.`;
+  if (decision.tool === 'shopping') return `Не нашёл нормальные варианты покупки по “${subject}”. Можно уточнить город или тип товара.`;
+  if (decision.tool === 'finance') return `Не получил рыночные данные по “${subject}”. Не буду рисовать фейковый график.`;
+  return `Я не получил уверенных данных по “${subject}”. Могу попробовать переформулировать запрос и поискать шире.`;
 }
 
 export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
@@ -219,77 +289,72 @@ export async function runSpaceOS(input: SpaceOSInput): Promise<SpaceAnswer> {
 
   const memory = readSpaceOSMemory();
   const name = nameAnswer(input.query, memory);
-  if (name) return name;
+  if (name) {
+    rememberAssistantTurn(name.text);
+    return name;
+  }
 
   const decision = routeSpaceOS(input.query, input.locale);
   const updatedMemory = rememberSpaceOSTurn(memory, input.query, decision);
 
   if (/\b(ai|llm|webllm|local ai|локальная модель|статус модели|модель)\b/i.test(input.query)) {
-    return { text: 'Показываю честный статус генератора речи.', blocks: [statusBlock()], mode: 'show' };
+    const answer = { text: 'Показываю честный статус генератора речи.', blocks: [modelStatusBlock()], mode: 'show' as const };
+    rememberAssistantTurn(answer.text);
+    return answer;
   }
 
   if (decision.tool === 'product') {
-    const text = await answerWithLlmOrFallback(input, decision, updatedMemory, [
+    const text = await llmOrHuman(input, decision, updatedMemory, [
       'margeleT превращает Telegram-поток в индекс внимания.',
       'Space — разговорный слой поверх интернета, виджетов и свежих сигналов.',
     ]);
-    return {
-      text,
-      blocks: buildInvestorBlocks(input.query, decision.lang),
-      mode: 'present',
-    };
+    const answer = { text, blocks: buildInvestorBlocks(input.query, decision.lang), mode: 'present' as const };
+    rememberAssistantTurn(text);
+    return answer;
   }
 
   if (decision.tool === 'tunnel') {
-    return {
+    const answer = {
       text: isRu(decision)
-        ? 'Это уже про людей, а не про выдачу. Покажу черновик туннеля интереса.'
-        : 'This is about people, not search results. I’ll show a tunnel draft.',
+        ? 'Понял. Это уже не выдача, а поиск людей по интересу. Показываю черновик туннеля.'
+        : 'Got it. This is not search output; this is matching people by interest. Here is a tunnel draft.',
       blocks: [tunnelBlock(decision.subject)],
-      mode: 'show',
+      mode: 'show' as const,
     };
+    rememberAssistantTurn(answer.text);
+    return answer;
+  }
+
+  if (decision.tool === 'chat') {
+    const text = await llmOrHuman(input, decision, updatedMemory);
+    rememberAssistantTurn(text);
+    return { text, blocks: [], mode: 'talk' };
   }
 
   if (decision.tool === 'music') {
     const localMusic = searchLocalAudio(input.posts, decision);
     if (localMusic) {
-      const text = await tryLocalLlmReply({ query: input.query, locale: input.locale, decision, memory: updatedMemory, facts: extractFacts([localMusic]), timeoutMs: 3500 });
-      const answer = { text: text || toolLead(decision, [localMusic]), blocks: [localMusic], mode: 'show' as const };
-      rememberAssistantTurn(answer.text);
-      return answer;
+      const text = sanitize(await tryLocalLlmReply({ query: input.query, locale: input.locale, decision, memory: updatedMemory, facts: extractFacts([localMusic]), timeoutMs: 3500 }) || '') || toolLead(decision, [localMusic]);
+      rememberAssistantTurn(text);
+      return { text, blocks: [localMusic], mode: 'show' };
     }
   }
 
-  if (decision.tool === 'chat') {
-    const text = await answerWithLlmOrFallback(input, decision, updatedMemory);
-    rememberAssistantTurn(text);
-    return { text, blocks: [], mode: 'talk' };
-  }
-
   const external = decision.useInternet ? await runInternetTool(decision) : { text: '', blocks: [] as SpaceBlock[] };
-  const telegramBlocks = decision.useTelegram ? searchTelegramSupplement(input.posts, decision, external.blocks.length ? 1 : 2) : [];
+  const telegramBlocks = decision.useTelegram && external.blocks.length < 2 ? searchTelegramSupplement(input.posts, decision, external.blocks.length ? 1 : 2) : [];
   const blocks = [...external.blocks, ...telegramBlocks];
 
   if (blocks.length) {
     const facts = extractFacts(blocks);
-    const llmLead = await tryLocalLlmReply({
-      query: input.query,
-      locale: input.locale,
-      decision,
-      memory: updatedMemory,
-      facts,
-      timeoutMs: 4500,
-    });
+    const llmLead = sanitize(await tryLocalLlmReply({ query: input.query, locale: input.locale, decision, memory: updatedMemory, facts, timeoutMs: 4500 }) || '');
     const text = llmLead || external.text || toolLead(decision, blocks);
     rememberAssistantTurn(text);
     return { text, blocks, mode: 'show' };
   }
 
-  const text = await answerWithLlmOrFallback(input, decision, updatedMemory, [
-    isRu(decision)
-      ? 'Инструменты не вернули уверенный результат.'
-      : 'Tools did not return a confident result.',
-  ]);
+  const text = decision.tool === 'web' || decision.tool === 'biography' || decision.tool === 'profile'
+    ? await llmOrHuman(input, decision, updatedMemory, ['Инструменты не вернули уверенный результат.'])
+    : noToolResult(decision);
   rememberAssistantTurn(text);
   return { text, blocks: [], mode: 'talk' };
 }
