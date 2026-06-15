@@ -8,7 +8,7 @@ export type SpaceIntent =
   | 'liveness'
   | 'smalltalk'
   | 'permissionTalk'
-  | 'abilityCheck'
+  | 'nameMemory'
   | 'recipe'
   | 'weather'
   | 'images'
@@ -68,22 +68,34 @@ export type LastResultMemory = {
   at: number;
 };
 
+export type SpaceMood = 'neutral' | 'warm' | 'curious' | 'playful' | 'careful' | 'searching';
+
 export type SpaceMemory = {
   turns: number;
   lastIntent: SpaceIntent | null;
   favoriteSources: Record<string, number>;
   topics: Record<string, number>;
+  phrases: Record<string, number>;
   languageHints: Record<string, number>;
   lastUserWords: string[];
   lastSubject: string;
   lastResult: LastResultMemory | null;
-  lastDialogMood: 'neutral' | 'warm' | 'curious' | 'searching';
+  lastDialogMood: SpaceMood;
+  userName: string;
+  userFacts: Record<string, string>;
   userStyle: {
     wantsShort: number;
     wantsSources: number;
     likesMedia: number;
     likesWarmTone: number;
+    likesPlayful: number;
   };
+};
+
+export type AttentionSignal = {
+  token: string;
+  weight: number;
+  source: 'query' | 'memory' | 'subject' | 'post';
 };
 
 export type BrainContext = {
@@ -102,6 +114,11 @@ export type BrainContext = {
   isQuestionAboutSpace: boolean;
   isPureDialog: boolean;
   wantsChips: boolean;
+  mood: SpaceMood;
+  attention: AttentionSignal[];
+  shouldSearch: boolean;
+  shouldShowBlocks: boolean;
+  searchQuery: string;
 };
 
 export type RankedPost = {

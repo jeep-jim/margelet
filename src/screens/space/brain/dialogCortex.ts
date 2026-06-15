@@ -1,33 +1,36 @@
 import type { BrainContext, SpaceAnswer } from './types';
-import { rememberTurn } from './memoryEngine';
+import { rememberTurn, extractUserName } from './memoryEngine';
 import { getUi } from './locales';
-import { pick } from './text';
+import { generateTalk } from './generativeCore';
 
 function finishTalk(ctx: BrainContext, text: string): SpaceAnswer {
   rememberTurn({ memory: ctx.memory, query: ctx.query, intent: ctx.intent, found: [], locale: ctx.locale, subject: ctx.subject, tokens: ctx.rawTokens });
   return { text, blocks: [], mode: 'talk' };
 }
 
+function withName(ctx: BrainContext, text: string) {
+  const name = extractUserName(ctx.query);
+  if (!name) return text;
+  return ctx.lang === 'ru'
+    ? `Запомнил, ${name}. Буду обращаться так.`
+    : `Got it, ${name}. I’ll remember that on this device.`;
+}
+
 export function tryDialogAnswer(ctx: BrainContext): SpaceAnswer | null {
   const ui = getUi(ctx.lang);
-  const seed = ctx.query.length + ctx.memory.turns + ctx.rawTokens.join('').length;
 
-  if (ctx.intent === 'greeting') return finishTalk(ctx, pick(ui.hello, seed));
-  if (ctx.intent === 'thanks') return finishTalk(ctx, pick(ui.thanks, seed));
-  if (ctx.intent === 'capabilities') return finishTalk(ctx, ui.capabilities);
-  if (ctx.intent === 'identity') return finishTalk(ctx, ui.identity);
-  if (ctx.intent === 'liveness') return finishTalk(ctx, ui.liveness);
-  if (ctx.intent === 'permissionTalk') return finishTalk(ctx, ui.permissionTalk);
-  if (ctx.intent === 'smalltalk') return finishTalk(ctx, pick(ui.smalltalk, seed));
-  if (ctx.intent === 'abilityCheck') {
-    const text = /(видео|video|ролик|clip)/.test(ctx.normalized) ? ui.abilityVideo : ui.abilitySearch;
-    return finishTalk(ctx, text);
-  }
+  if (ctx.intent === 'nameMemory') return finishTalk(ctx, withName(ctx, ui.nameSaved));
+  if (ctx.intent === 'greeting') return finishTalk(ctx, generateTalk(ctx, ui.hello));
+  if (ctx.intent === 'thanks') return finishTalk(ctx, generateTalk(ctx, ui.thanks));
+  if (ctx.intent === 'capabilities') return finishTalk(ctx, generateTalk(ctx, [ui.capabilities]));
+  if (ctx.intent === 'identity') return finishTalk(ctx, generateTalk(ctx, [ui.identity]));
+  if (ctx.intent === 'liveness') return finishTalk(ctx, generateTalk(ctx, [ui.liveness]));
+  if (ctx.intent === 'permissionTalk') return finishTalk(ctx, generateTalk(ctx, [ui.permissionTalk]));
+  if (ctx.intent === 'smalltalk') return finishTalk(ctx, generateTalk(ctx, ui.smalltalk));
 
-  // Safety net: any question about Space itself stays in dialog mode unless there is a direct search command.
   if (ctx.isQuestionAboutSpace && !ctx.isExplicitSearch) {
-    if (/(спрашивать|спросить|можно)/.test(ctx.normalized)) return finishTalk(ctx, ui.capabilities);
-    return finishTalk(ctx, pick(ui.smalltalk, seed));
+    if (/(спрашивать|спросить|можно)/.test(ctx.normalized)) return finishTalk(ctx, generateTalk(ctx, [ui.capabilities]));
+    return finishTalk(ctx, generateTalk(ctx, ui.smalltalk));
   }
 
   return null;

@@ -1,9 +1,9 @@
 import type { IngestedPost, Locale } from '../../../types/app';
-import type { SpaceIntent, SpaceMemory } from './types';
-import { compactText, normalize } from './text';
+import type { SpaceIntent, SpaceMemory, SpaceMood } from './types';
+import { compactText, normalize, ngrams, tokenize } from './text';
 
-const SPACE_MEMORY_KEY = 'margelet_space_local_brain_v6';
-const OLD_KEYS = ['margelet_space_local_brain_v3', 'margelet_space_local_brain_v2'];
+const SPACE_MEMORY_KEY = 'margelet_space_local_brain_v7';
+const OLD_KEYS = ['margelet_space_local_brain_v6', 'margelet_space_local_brain_v3', 'margelet_space_local_brain_v2'];
 
 function normalizeMemory(memory: Partial<SpaceMemory>): SpaceMemory {
   return {
@@ -11,16 +11,20 @@ function normalizeMemory(memory: Partial<SpaceMemory>): SpaceMemory {
     lastIntent: memory.lastIntent || null,
     favoriteSources: memory.favoriteSources || {},
     topics: memory.topics || {},
+    phrases: memory.phrases || {},
     languageHints: memory.languageHints || {},
     lastUserWords: Array.isArray(memory.lastUserWords) ? memory.lastUserWords : [],
     lastSubject: memory.lastSubject || '',
     lastResult: memory.lastResult || null,
     lastDialogMood: memory.lastDialogMood || 'neutral',
+    userName: memory.userName || '',
+    userFacts: memory.userFacts || {},
     userStyle: {
       wantsShort: Number(memory.userStyle?.wantsShort || 1),
       wantsSources: Number(memory.userStyle?.wantsSources || 0),
       likesMedia: Number(memory.userStyle?.likesMedia || 0),
       likesWarmTone: Number(memory.userStyle?.likesWarmTone || 1),
+      likesPlayful: Number(memory.userStyle?.likesPlayful || 0),
     },
   };
 }
@@ -55,6 +59,12 @@ export function writeMemory(memory: SpaceMemory) {
   }
 }
 
+export function extractUserName(query: string) {
+  const match = query.match(/(?:меня\s+зовут|зови\s+меня|мо[её]\s+имя)\s+([A-Za-zА-Яа-яЁёІіЇїЄєҐґ-]{2,24})/i)
+    || query.match(/(?:my\s+name\s+is|call\s+me)\s+([A-Za-zА-Яа-яЁёІіЇїЄєҐґ-]{2,24})/i);
+  return match?.[1]?.trim() || '';
+}
+
 export function learnFromQuery(memory: SpaceMemory, query: string, intent: SpaceIntent, tokens: string[], locale: Locale) {
   memory.turns += 1;
   memory.lastIntent = intent;
@@ -62,15 +72,32 @@ export function learnFromQuery(memory: SpaceMemory, query: string, intent: Space
   memory.lastUserWords = tokens.slice(0, 8);
 
   const lower = normalize(query);
+  const name = extractUserName(query);
+  if (name) memory.userName = name;
+
   if (/корот|кратк|short|brief/.test(lower)) memory.userStyle.wantsShort += 0.6;
   if (/источник|source|пост|канал/.test(lower)) memory.userStyle.wantsSources += 0.5;
   if (/фото|картин|видео|image|photo|video/.test(lower)) memory.userStyle.likesMedia += 0.5;
   if (/бро|друг|родн|спасибо|thanks/.test(lower)) memory.userStyle.likesWarmTone += 0.3;
+  if (/ахах|ха|смеш|шут|мем|лол|joke|fun/.test(lower)) memory.userStyle.likesPlayful += 0.3;
   if (/поговор|поболт|обща|chat|talk/.test(lower)) memory.lastDialogMood = 'warm';
 
   tokens.forEach((token) => {
     memory.topics[token] = (memory.topics[token] || 0) + 1;
   });
+
+  ngrams(tokenize(query, 12), 3).forEach((phrase) => {
+    memory.phrases[phrase] = (memory.phrases[phrase] || 0) + 1;
+  });
+
+  const mood: SpaceMood = /страш|груст|плохо|жаль|умер|убил|беда|войн/.test(lower)
+    ? 'careful'
+    : /круто|вау|ахах|смеш|шут|мем/.test(lower)
+      ? 'playful'
+      : /почему|зачем|разбор/.test(lower)
+        ? 'curious'
+        : memory.lastDialogMood;
+  memory.lastDialogMood = mood;
 }
 
 export function rememberTurn(args: {

@@ -3,6 +3,9 @@ import type { BrainContext } from './types';
 import { detectIntent, isExplicitSearchRequest, isPureDialogMessage, isQuestionAboutSpace } from './intentEngine';
 import { readMemory } from './memoryEngine';
 import { detectLanguage, normalize, PRONOUN_HINTS, tokenize } from './text';
+import { detectMood } from './affectEngine';
+import { buildAttention, attentionText } from './attentionEngine';
+import { applyReplyPolicy } from './replyPolicy';
 
 function hasPronounFollowup(query: string, lastSubject: string) {
   const lower = normalize(query);
@@ -15,7 +18,7 @@ function extractSubject(query: string, tokens: string[], lastSubject: string) {
   if (explicit) return explicit.replace(/[?.!,]+$/g, '').slice(0, 72);
   const capitalized = query.match(/[A-ZА-ЯЁІЇЄҐ][a-zа-яёіїєґ]+(?:\s+[A-ZА-ЯЁІЇЄҐ][a-zа-яёіїєґ]+){0,3}/g);
   if (capitalized?.length) return capitalized[capitalized.length - 1].trim();
-  return tokens.slice(0, 3).join(' ');
+  return tokens.slice(0, 4).join(' ');
 }
 
 function effectiveTokens(query: string, rawTokens: string[], lastSubject: string) {
@@ -34,8 +37,9 @@ export function buildContext(query: string, posts: IngestedPost[], locale: Local
   const isExplicitSearch = isExplicitSearchRequest(normalized);
   const questionAboutSpace = isQuestionAboutSpace(normalized);
   const isPureDialog = isPureDialogMessage(query, intent) || (!isExplicitSearch && questionAboutSpace);
-
-  return {
+  const mood = detectMood(query) === 'neutral' ? memory.lastDialogMood : detectMood(query);
+  const attention = buildAttention(query, subject, memory, posts);
+  const base = {
     query,
     normalized,
     tokens,
@@ -50,6 +54,14 @@ export function buildContext(query: string, posts: IngestedPost[], locale: Local
     isExplicitSearch,
     isQuestionAboutSpace: questionAboutSpace,
     isPureDialog,
-    wantsChips: isExplicitSearch,
-  };
+    wantsChips: false,
+    mood,
+    attention,
+    shouldSearch: false,
+    shouldShowBlocks: false,
+    searchQuery: attentionText(attention) || subject || rawTokens.join(' '),
+  } satisfies BrainContext;
+
+  const policy = applyReplyPolicy(base);
+  return { ...base, ...policy };
 }

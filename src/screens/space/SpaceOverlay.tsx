@@ -590,6 +590,7 @@ export function SpaceOverlay({
   const [theme, setTheme] = useState<SpaceTheme>(() => readSpaceTheme());
   const inputRef = useRef<HTMLInputElement | null>(null);
   const messagesRef = useRef<HTMLDivElement | null>(null);
+  const pendingAnswerRef = useRef<number | null>(null);
   const [keyboardBottom, setKeyboardBottom] = useState(0);
   const [inputFocused, setInputFocused] = useState(false);
 
@@ -606,9 +607,13 @@ export function SpaceOverlay({
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
+    const previousOverscroll = document.body.style.overscrollBehavior;
     document.body.style.overflow = "hidden";
+    document.body.style.overscrollBehavior = "contain";
     return () => {
       document.body.style.overflow = previousOverflow;
+      document.body.style.overscrollBehavior = previousOverscroll;
+      if (pendingAnswerRef.current) window.clearTimeout(pendingAnswerRef.current);
     };
   }, []);
 
@@ -729,44 +734,56 @@ export function SpaceOverlay({
       locale,
     });
 
-    setThreads((prev) => {
-      const now = Date.now();
-      let current = activeThread;
+    const now = Date.now();
+    const current = activeThread || createSpaceThread(getSpaceThreadTitle(clean));
+    const nextTitle =
+      current.messages.length === 0 ||
+      current.title === copy.title ||
+      current.title === "New Space"
+        ? getSpaceThreadTitle(clean)
+        : current.title;
 
-      if (!current) {
-        current = createSpaceThread(getSpaceThreadTitle(clean));
-      }
+    const userThread: SpaceThread = {
+      ...current,
+      title: nextTitle,
+      updatedAt: now,
+      messages: [
+        ...current.messages,
+        { role: "user" as const, text: clean },
+      ].slice(-80),
+    };
 
-      const updatedThread: SpaceThread = {
-        ...current,
-        title:
-          current.messages.length === 0 ||
-          current.title === copy.title ||
-          current.title === "New Space"
-            ? getSpaceThreadTitle(clean)
-            : current.title,
-        updatedAt: now,
-        messages: [
-          ...current.messages,
-          {
-            role: "user" as const,
-            text: clean,
-          },
-          {
-            role: "space" as const,
-            text: spaceAnswer.text || copy.botAnswer,
-            blocks: spaceAnswer.blocks,
-          },
-        ].slice(-80),
-      };
+    setActiveThreadId(userThread.id);
+    setThreads((prev) => [
+      userThread,
+      ...prev.filter((thread) => thread.id !== userThread.id),
+    ].slice(0, 40));
 
-      setActiveThreadId(updatedThread.id);
+    if (pendingAnswerRef.current) window.clearTimeout(pendingAnswerRef.current);
+    pendingAnswerRef.current = window.setTimeout(() => {
+      setThreads((prev) => {
+        const target = prev.find((thread) => thread.id === userThread.id);
+        if (!target) return prev;
 
-      return [
-        updatedThread,
-        ...prev.filter((thread) => thread.id !== updatedThread.id),
-      ].slice(0, 40);
-    });
+        const answeredThread: SpaceThread = {
+          ...target,
+          updatedAt: Date.now(),
+          messages: [
+            ...target.messages,
+            {
+              role: "space" as const,
+              text: spaceAnswer.text || copy.botAnswer,
+              blocks: spaceAnswer.blocks,
+            },
+          ].slice(-80),
+        };
+
+        return [
+          answeredThread,
+          ...prev.filter((thread) => thread.id !== answeredThread.id),
+        ].slice(0, 40);
+      });
+    }, Math.min(720, 260 + clean.length * 6));
 
     setValue("");
     setChatsMenuOpen(false);
@@ -808,8 +825,6 @@ export function SpaceOverlay({
               <a
                 key={`${item.url}-${itemIndex}`}
                 href={item.postUrl}
-                target="_blank"
-                rel="noreferrer"
                 className="relative aspect-square overflow-hidden rounded-2xl bg-black/10"
                 title={item.sourceTitle}
               >
@@ -847,8 +862,6 @@ export function SpaceOverlay({
       <a
         key={`post-${block.url}-${index}`}
         href={block.url}
-        target="_blank"
-        rel="noreferrer"
         className={`margelet-space-block mt-3 block overflow-hidden rounded-[30px] border p-3 transition hover:scale-[1.01] ${isLight ? "border-white/80 bg-white/62 text-[#07111d]" : "border-white/10 bg-[#152234]/88 text-white"}`}
         style={{ animationDelay: `${120 + index * 90}ms` }}
       >
@@ -885,7 +898,7 @@ export function SpaceOverlay({
         ) : null}
 
         <div className={`mt-3 text-xs font-bold ${isLight ? "text-[#4b8ed8]" : "text-[#8fc8ff]"}`}>
-          Открыть источник ↗
+          Открыть в margeleT
         </div>
       </a>
     );
@@ -1112,11 +1125,22 @@ export function SpaceOverlay({
             <ArrowLeft className="h-5 w-5" />
           </button>
 
-          <div className="text-center text-[23px] font-black leading-none tracking-tight">
+          <button
+            type="button"
+            onClick={() => {
+              if (messagesRef.current && messagesRef.current.scrollTop > 80) {
+                messagesRef.current.scrollTo({ top: 0, behavior: "smooth" });
+                return;
+              }
+              window.location.reload();
+            }}
+            className="text-center text-[23px] font-black leading-none tracking-tight"
+            title="margeleT"
+          >
             <span className={isLight ? "text-[#07111d]" : "text-white"}>
               margeleT
             </span>
-          </div>
+          </button>
 
           <div className="flex items-center justify-end gap-2">
             <button
@@ -1172,10 +1196,14 @@ export function SpaceOverlay({
         onPointerDown={() => {
           if (chatsMenuOpen) setChatsMenuOpen(false);
         }}
+        onWheel={(event) => {
+          if (!messagesRef.current) return;
+          messagesRef.current.scrollTop += event.deltaY;
+        }}
       >
         <div
           ref={messagesRef}
-          className="min-h-0 flex-1 overflow-y-auto pb-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain pb-5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         >
           {messages.length === 0 ? (
             <div
@@ -1259,7 +1287,13 @@ export function SpaceOverlay({
           }
         >
           {chatsMenuOpen ? (
-            <div className="absolute bottom-[calc(100%+12px)] left-4 right-4 z-30">
+            <>
+              <div
+                className="fixed inset-0 z-20 bg-black/10 backdrop-blur-[3px]"
+                aria-hidden="true"
+                onPointerDown={() => setChatsMenuOpen(false)}
+              />
+              <div className="absolute bottom-[calc(100%+12px)] left-4 right-4 z-30">
               <div
                 className={`absolute inset-0 rounded-[30px] backdrop-blur-xl ${
                   isLight ? "bg-[#f6f9fd]/74" : "bg-[#06111d]/70"
@@ -1276,6 +1310,7 @@ export function SpaceOverlay({
                 {renderThreadList(true)}
               </div>
             </div>
+            </>
           ) : null}
 
           <div
