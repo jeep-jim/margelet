@@ -129,7 +129,7 @@ async function loadBrowserAi(locale: Locale) {
   return session;
 }
 
-async function loadWebLlm(locale: Locale) {
+async function loadWebLlm() {
   if (!hasWebGpu()) return null;
   const importer = new Function('url', 'return import(url)') as (url: string) => Promise<WebLlmModule>;
   const mod = await importer(WEBLLM_URL);
@@ -159,7 +159,7 @@ async function loadAnyModel(locale: Locale) {
         state.status = 'ready';
         return browserAi;
       }
-      const webLlm = await loadWebLlm(locale);
+      const webLlm = await loadWebLlm();
       if (webLlm) {
         state.status = 'ready';
         return webLlm;
