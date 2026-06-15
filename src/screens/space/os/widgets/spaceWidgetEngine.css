@@ -1,0 +1,45 @@
+/* Stage 3 — Space Widget Engine polish. Pure CSS layer, no server load. */
+.margelet-space-block {
+  will-change: transform, opacity;
+}
+
+.margelet-space-block > div {
+  backdrop-filter: blur(18px) saturate(1.18);
+  -webkit-backdrop-filter: blur(18px) saturate(1.18);
+}
+
+.margelet-space-block img,
+.margelet-space-block video {
+  background: rgba(87, 136, 190, .12);
+}
+
+.margelet-space-block button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.margelet-space-block .space-widget-soft-grid {
+  display: grid;
+  gap: .55rem;
+}
+
+@media (max-width: 640px) {
+  .margelet-space-block {
+    width: 100%;
+  }
+
+  .margelet-space-block .grid.grid-cols-3 {
+    gap: .45rem;
+  }
+
+  .margelet-space-block .rounded-\[30px\],
+  .margelet-space-block .rounded-\[28px\],
+  .margelet-space-block .rounded-\[26px\] {
+    border-radius: 22px;
+  }
+}
+
+@supports (padding: max(0px)) {
+  .margelet-space-widget-safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}

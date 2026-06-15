@@ -99,6 +99,7 @@ export type SpaceBlock =
       summary: string;
       sourceTitle?: string;
       sourceAvatar?: string | null;
+      daily?: Array<{ date: string; min: number; max: number; code?: number; label?: string }>;
     }
   | {
       type: 'webInfo';
@@ -115,6 +116,13 @@ export type SpaceBlock =
       value: string;
       caption: string;
       tone?: 'blue' | 'green' | 'orange' | 'violet';
+    }
+  | {
+      type: 'chart';
+      title: string;
+      subtitle?: string;
+      sourceTitle?: string;
+      points: Array<{ label: string; value: number }>;
     }
   | {
       type: 'timeline';

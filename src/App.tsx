@@ -7,6 +7,7 @@ import { SourceScreen } from "./screens/SourceScreen";
 import { AdminScreen } from "./screens/AdminScreen";
 import type { ContentTag, IngestedPost, Locale, TabId } from "./types/app";
 import { SplashLoader } from "./components/shared/SplashLoader";
+import { GlobalMusicPlayer } from "./components/global/GlobalMusicPlayer";
 // 🔥 Импортируем единую систему country-кодов
 import type { CountryCode } from "../api/lib/contracts";
 import { normalizeCountryCode, SEO_LOCALE_META } from "../api/lib/contracts";
@@ -1126,6 +1127,7 @@ export default function App() {
         </div>
       ) : null}
       {isFeedLoading && current === "feed" ? <SplashLoader /> : null}
+      <GlobalMusicPlayer />
     </div>
   );
 }

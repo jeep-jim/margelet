@@ -2,8 +2,10 @@ import { ArrowLeft, Menu, Mic, Moon, Plus, Sun, Trash2, User, X } from "lucide-r
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MargeletMark } from "../../components/shared/MargeletMark";
+import { playGlobalTrack } from "../../components/global/GlobalMusicPlayer";
 import type { IngestedPost, Locale } from "../../types/app";
 import { buildSpaceAnswer, type SpaceBlock } from "./spaceBrain";
+import "./os/widgets/spaceWidgetEngine.css";
 
 const SPACE_MESSAGES_STORAGE_KEY = "margelet_space_messages_v1";
 const SPACE_THREADS_STORAGE_KEY = "margelet_space_threads_v1";
@@ -848,7 +850,10 @@ export function SpaceOverlay({
       setListeningVoice(true);
       recognition.onresult = (event: any) => {
         const text = String(event?.results?.[0]?.[0]?.transcript || "").trim();
-        if (text) setValue((prev) => (prev ? `${prev} ${text}` : text));
+        if (text) {
+          setValue("");
+          send(text);
+        }
         window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
       };
       recognition.onerror = () => {
@@ -881,13 +886,15 @@ export function SpaceOverlay({
 
   const playTrack = (track: { title: string; sourceTitle: string; postUrl: string; audioUrl?: string | null }) => {
     if (track.audioUrl) {
-      setCurrentTrack({
+      const nextTrack = {
         title: track.title,
         sourceTitle: track.sourceTitle,
         postUrl: track.postUrl,
         audioUrl: track.audioUrl,
-      });
+      };
+      setCurrentTrack(nextTrack);
       setPlayerCollapsed(false);
+      playGlobalTrack(nextTrack);
       return;
     }
 
@@ -920,6 +927,17 @@ export function SpaceOverlay({
             ) : null}
           </div>
           <div className={`mt-3 text-sm leading-6 ${isLight ? "text-[#26384a]" : "text-white/76"}`}>{block.summary}</div>
+          {block.daily?.length ? (
+            <div className="mt-4 grid gap-2">
+              {block.daily.slice(0, 5).map((day) => (
+                <div key={day.date} className={`flex items-center justify-between rounded-2xl px-3 py-2 text-sm ${isLight ? "bg-[#eef4fb] text-[#26384a]" : "bg-white/7 text-white/72"}`}>
+                  <span className="font-black">{new Date(day.date).toLocaleDateString(locale === "ru" ? "ru-RU" : "en-US", { weekday: "short", day: "numeric" })}</span>
+                  <span className="opacity-70">{day.label || "прогноз"}</span>
+                  <span className="font-black">{Math.round(day.max)}° / {Math.round(day.min)}°</span>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       );
     }
@@ -972,6 +990,36 @@ export function SpaceOverlay({
                 ))}
               </div>
             ) : null}
+          </div>
+        </div>
+      );
+    }
+
+    if (block.type === "chart") {
+      const values = block.points.map((point) => point.value);
+      const min = Math.min(...values);
+      const max = Math.max(...values);
+      const span = Math.max(1, max - min);
+      const polyline = block.points.map((point, pointIndex) => {
+        const x = block.points.length <= 1 ? 0 : (pointIndex / (block.points.length - 1)) * 100;
+        const y = 60 - ((point.value - min) / span) * 44;
+        return `${x},${y}`;
+      }).join(" ");
+      return (
+        <div key={`chart-${block.title}-${index}`} className="margelet-space-block mt-3" style={blockDelay}>
+          <div className={`overflow-hidden rounded-[30px] border p-4 ${isLight ? "border-[#d8e3ef] bg-white/72 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.15)]" : "border-white/10 bg-white/8 text-white shadow-[0_22px_70px_rgba(0,0,0,.32)]"}`}>
+            <div className="text-lg font-black leading-tight">{block.title}</div>
+            <div className={`mt-1 text-xs font-bold ${isLight ? "text-[#60758c]" : "text-white/48"}`}>{block.subtitle || block.sourceTitle || "market"}</div>
+            <svg viewBox="0 0 100 64" className="mt-4 h-32 w-full overflow-visible">
+              <path d="M0 60H100" stroke="currentColor" strokeOpacity="0.12" />
+              <path d="M0 38H100" stroke="currentColor" strokeOpacity="0.09" />
+              <path d="M0 16H100" stroke="currentColor" strokeOpacity="0.09" />
+              <polyline points={polyline} fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            <div className="mt-2 flex justify-between text-[11px] font-black opacity-55">
+              <span>{block.points[0]?.label}</span>
+              <span>{block.points[block.points.length - 1]?.label}</span>
+            </div>
           </div>
         </div>
       );
@@ -1508,8 +1556,8 @@ export function SpaceOverlay({
               className="space-y-4"
               style={{
                 paddingBottom: currentTrack
-                  ? `calc(18rem + ${Math.max(0, keyboardBottom)}px)`
-                  : `calc(13rem + ${Math.max(0, keyboardBottom)}px)`,
+                  ? `calc(20rem + ${Math.max(0, keyboardBottom)}px + env(safe-area-inset-bottom))`
+                  : `calc(15rem + ${Math.max(0, keyboardBottom)}px + env(safe-area-inset-bottom))`,
               }}
             >
               {messages.map((message, index) => (
@@ -1646,7 +1694,7 @@ export function SpaceOverlay({
         ) : null}
 
         {currentTrack ? (
-          <div className="fixed inset-x-0 bottom-[calc(86px+env(safe-area-inset-bottom))] z-30 mx-auto w-full max-w-[980px] px-3 sm:px-6">
+          <div className="fixed inset-x-0 z-30 mx-auto w-full max-w-[980px] px-3 sm:px-6" style={{ bottom: `calc(${keyboardBottom}px + 82px + env(safe-area-inset-bottom))` }}>
             <div className={`rounded-[24px] border p-3 ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/96 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.16)]" : "border-white/12 bg-[#101d2b]/96 text-white shadow-[0_18px_70px_rgba(0,0,0,.35)]"}`}>
               <div className="flex items-center gap-3">
                 <button type="button" onClick={() => setPlayerCollapsed((prev) => !prev)} className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#4b8ed8] text-white">{playerCollapsed ? "🎵" : "—"}</button>
@@ -1656,7 +1704,7 @@ export function SpaceOverlay({
                 </div>
                 <button type="button" onClick={() => setCurrentTrack(null)} className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${isLight ? "bg-[#e6eef7] text-[#172537]" : "bg-white/10 text-white"}`}><X className="h-4 w-4" /></button>
               </div>
-              {!playerCollapsed ? <audio src={currentTrack.audioUrl} controls autoPlay className="mt-3 w-full" /> : null}
+              <audio src={currentTrack.audioUrl} controls autoPlay className={`mt-3 w-full ${playerCollapsed ? "sr-only" : ""}`} />
             </div>
           </div>
         ) : null}
