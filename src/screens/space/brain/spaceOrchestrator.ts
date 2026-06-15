@@ -1,33 +1,7 @@
 import type { IngestedPost, Locale } from '../../../types/app';
 import type { SpaceAnswer } from './types';
-import { buildContext } from './contextEngine';
-import { tryDialogAnswer } from './dialogCortex';
-import { tryGeneralAnswer } from './generalCortex';
-import { tryClarify } from './clarifier';
-import { reasonNextStep } from './reasoningEngine';
-import { searchPosts } from './searchFusion';
-import { synthesizeFound, synthesizeNoResult, synthesizeProduct, synthesizeSoftTalk, synthesizeTunnel } from './answerSynthesizer';
+import { runSpaceRuntime } from './spaceRuntime';
 
-export function runSpaceCore(params: { query: string; posts: IngestedPost[]; locale: Locale }): SpaceAnswer {
-  const ctx = buildContext(params.query, params.posts, params.locale);
-
-  const dialog = tryDialogAnswer(ctx);
-  if (dialog) return dialog;
-
-  const general = tryGeneralAnswer(ctx);
-  if (general) return general;
-
-  const decision = reasonNextStep(ctx);
-  if (decision.action === 'present') return synthesizeProduct(ctx);
-  if (decision.action === 'tunnel') return synthesizeTunnel(ctx);
-  if (decision.action === 'talk') return synthesizeSoftTalk(ctx);
-  if (decision.action === 'clarify') return tryClarify(ctx) || synthesizeSoftTalk(ctx);
-
-  const clarify = tryClarify(ctx);
-  if (clarify) return clarify;
-
-  const ranked = searchPosts(ctx);
-  if (!ranked.length) return synthesizeNoResult(ctx);
-
-  return synthesizeFound(ctx, ranked);
+export function runSpaceCore(params: { query: string; posts: IngestedPost[]; locale: Locale }): Promise<SpaceAnswer> {
+  return runSpaceRuntime(params);
 }

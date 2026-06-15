@@ -180,10 +180,10 @@ type SpaceCopy = {
 const SPACE_COPY: Record<Locale, SpaceCopy> = {
   ru: {
     title: "Space",
-    subtitle: "Отвечу на вопросы",
-    placeholder: "Найти, что говорят сейчас...",
+    subtitle: "Привет, я Space. Слушаю тебя =)",
+    placeholder: "Спроси что угодно...",
     emptyHint:
-      "Если смогу найти ответ в потоке Telegram за 24 часа.",
+      "Отвечу на вопросы, найду информацию, покажу виджеты, медиа или свежие сигналы.",
     backLabel: "Закрыть Space",
     userPrefix: "Ты",
     botAnswer:
@@ -196,10 +196,10 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
   },
   us: {
     title: "Space",
-    subtitle: "I answer questions",
-    placeholder: "Find what people are saying now...",
+    subtitle: "Hi, I am Space. I am listening =)",
+    placeholder: "Ask me anything...",
     emptyHint:
-      "If I can find the answer inside Telegram flow from the last 24 hours.",
+      "I can answer, search, show widgets, media, or live signals.",
     backLabel: "Close Space",
     userPrefix: "You",
     botAnswer:
@@ -516,10 +516,10 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
   },
   za: {
     title: "margeleT Space",
-    subtitle: "I answer questions",
-    placeholder: "Find what people are saying now...",
+    subtitle: "Hi, I am Space. I am listening =)",
+    placeholder: "Ask me anything...",
     emptyHint:
-      "If I can find the answer inside Telegram flow from the last 24 hours.",
+      "I can answer, search, show widgets, media, or live signals.",
     backLabel: "Close Space",
     userPrefix: "You",
     botAnswer:
@@ -532,10 +532,10 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
   },
   ng: {
     title: "margeleT Space",
-    subtitle: "I answer questions",
-    placeholder: "Find what people are saying now...",
+    subtitle: "Hi, I am Space. I am listening =)",
+    placeholder: "Ask me anything...",
     emptyHint:
-      "If I can find the answer inside Telegram flow from the last 24 hours.",
+      "I can answer, search, show widgets, media, or live signals.",
     backLabel: "Close Space",
     userPrefix: "You",
     botAnswer:
@@ -750,12 +750,6 @@ export function SpaceOverlay({
     const clean = text.trim();
     if (!clean) return;
 
-    const spaceAnswer = buildSpaceAnswer({
-      query: clean,
-      posts,
-      locale,
-    });
-
     const now = Date.now();
     const current = activeThread || createSpaceThread(getSpaceThreadTitle(clean));
     const nextTitle =
@@ -783,29 +777,49 @@ export function SpaceOverlay({
 
     if (pendingAnswerRef.current) window.clearTimeout(pendingAnswerRef.current);
     pendingAnswerRef.current = window.setTimeout(() => {
-      setThreads((prev) => {
-        const target = prev.find((thread) => thread.id === userThread.id);
-        if (!target) return prev;
+      void (async () => {
+        let answerText = copy.botAnswer;
+        let answerBlocks: SpaceBlock[] = [];
+        try {
+          const spaceAnswer = await buildSpaceAnswer({
+            query: clean,
+            posts,
+            locale,
+          });
+          answerText = spaceAnswer.text || copy.botAnswer;
+          answerBlocks = spaceAnswer.blocks || [];
+        } catch {
+          answerText = locale === "ru"
+            ? "Я на секунду споткнулся, но я тут. Попробуй ещё раз — без перезагрузки."
+            : "I stumbled for a second, but I’m here. Try again without reloading.";
+        }
 
-        const answeredThread: SpaceThread = {
-          ...target,
-          updatedAt: Date.now(),
-          messages: [
-            ...target.messages,
-            {
-              role: "space" as const,
-              text: spaceAnswer.text || copy.botAnswer,
-              blocks: spaceAnswer.blocks,
-            },
-          ].slice(-80),
-        };
+        setThreads((prev) => {
+          const target = prev.find((thread) => thread.id === userThread.id);
+          if (!target) return prev;
 
-        return [
-          answeredThread,
-          ...prev.filter((thread) => thread.id !== answeredThread.id),
-        ].slice(0, 40);
-      });
-    }, Math.min(720, 260 + clean.length * 6));
+          const answeredThread: SpaceThread = {
+            ...target,
+            updatedAt: Date.now(),
+            messages: [
+              ...target.messages,
+              {
+                role: "space" as const,
+                text: answerText,
+                blocks: answerBlocks,
+              },
+            ].slice(-80),
+          };
+
+          return [
+            answeredThread,
+            ...prev.filter((thread) => thread.id !== answeredThread.id),
+          ].slice(0, 40);
+        });
+
+        window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+      })();
+    }, Math.min(420, 120 + clean.length * 3));
 
     setValue("");
     setChatsMenuOpen(false);
@@ -936,6 +950,28 @@ export function SpaceOverlay({
                 )}
               </button>
             ))}
+          </div>
+        </div>
+      );
+    }
+
+    if (block.type === "webInfo") {
+      return (
+        <div key={`web-${block.title}-${index}`} className="margelet-space-block mt-3" style={blockDelay}>
+          <div className={`overflow-hidden rounded-[30px] border p-4 ${isLight ? "border-[#d8e3ef] bg-white/72 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.15)]" : "border-white/10 bg-white/8 text-white shadow-[0_22px_70px_rgba(0,0,0,.32)]"}`}>
+            {block.image ? (
+              <img src={block.image} alt="" loading="lazy" className="mb-3 max-h-64 w-full rounded-[24px] object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
+            ) : null}
+            <div className={`text-xs font-black uppercase tracking-[.22em] ${isLight ? "text-[#60758c]" : "text-white/44"}`}>{block.sourceTitle}</div>
+            <div className="mt-2 text-xl font-black leading-tight">{block.title}</div>
+            <div className={`mt-2 text-sm leading-6 ${isLight ? "text-[#40566e]" : "text-white/68"}`}>{block.summary}</div>
+            {block.facts?.length ? (
+              <div className="mt-3 space-y-2">
+                {block.facts.slice(0, 4).map((fact, factIndex) => (
+                  <div key={`${fact}-${factIndex}`} className={`rounded-2xl px-3 py-2 text-sm leading-5 ${isLight ? "bg-[#eef4fb] text-[#26384a]" : "bg-white/7 text-white/70"}`}>{fact}</div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       );
@@ -1629,7 +1665,7 @@ export function SpaceOverlay({
       {selectedPost ? (
         <div className="fixed inset-0 z-[1100] flex items-end justify-center bg-transparent p-0 sm:items-center sm:p-5" onClick={() => setSelectedPost(null)}>
           <div
-            className={`max-h-[calc(100dvh-76px)] w-full overflow-y-auto rounded-t-[32px] p-4 pb-[calc(20px+env(safe-area-inset-bottom))] shadow-[0_24px_90px_rgba(0,0,0,.32)] sm:max-h-[88dvh] sm:max-w-[520px] sm:rounded-[32px] ${isLight ? "bg-[#f6f9fd] text-[#07111d]" : "bg-[#071321] text-white"}`}
+            className={`max-h-[calc(100dvh-76px)] w-full overflow-y-auto rounded-t-[32px] p-4 pb-[calc(120px+env(safe-area-inset-bottom))] shadow-[0_24px_90px_rgba(0,0,0,.32)] sm:max-h-[88dvh] sm:max-w-[520px] sm:rounded-[32px] ${isLight ? "bg-[#f6f9fd] text-[#07111d]" : "bg-[#071321] text-white"}`}
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mb-3 flex items-center gap-3">

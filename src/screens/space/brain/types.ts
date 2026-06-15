@@ -101,6 +101,15 @@ export type SpaceBlock =
       sourceAvatar?: string | null;
     }
   | {
+      type: 'webInfo';
+      title: string;
+      summary: string;
+      image?: string | null;
+      sourceTitle: string;
+      url?: string;
+      facts?: string[];
+    }
+  | {
       type: 'stat';
       title: string;
       value: string;
