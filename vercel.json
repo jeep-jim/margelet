@@ -1,5 +1,4 @@
 {
-  "public": true,
   "ignoreCommand": "bash scripts/vercel-ignore-build.sh",
   "buildCommand": "npm run build",
   "installCommand": "npm ci",
