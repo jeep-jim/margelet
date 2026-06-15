@@ -15,7 +15,7 @@ export function getPostSearchText(post: IngestedPost) {
 
 function hasIntentMedia(post: IngestedPost, intent: SpaceIntent) {
   if (intent === 'images') return post.media.some((item) => item.kind === 'image');
-  if (intent === 'video') return post.media.some((item) => item.kind === 'video');
+  if (intent === 'video' || intent === 'film') return post.media.some((item) => item.kind === 'video');
   if (intent === 'music') return post.media.some((item) => item.kind === 'audio') || /(music|музык|песн|трек|song|mp3|billie|джин)/.test(getPostSearchText(post));
   return true;
 }
@@ -25,7 +25,10 @@ function rankPost(post: IngestedPost, ctx: BrainContext) {
   let score = 0;
   let matched = 0;
   const tokenWeights = new Map(ctx.attention.map((item) => [item.token, item.weight]));
-  const effectiveTokens = Array.from(new Set([...ctx.tokens, ...tokenize(ctx.searchQuery, 18)])).slice(0, 18);
+  const stop = new Set(['что','сейчас','пишет','пишут','покажи','найди','канал','источник','про','about','show','find','news']);
+  const effectiveTokens = Array.from(new Set([...ctx.tokens, ...tokenize(ctx.searchQuery, 18)]))
+    .filter((token) => token.length > 1 && !stop.has(token))
+    .slice(0, 18);
 
   effectiveTokens.forEach((token) => {
     if (haystack.includes(token)) {
@@ -39,11 +42,12 @@ function rankPost(post: IngestedPost, ctx: BrainContext) {
   const tagText = normalize([post.tag, ...(post.tags || [])].join(' '));
   if (ctx.intent === 'recipe' && /(recipe|food|cook|еда|кухн|готов|рецепт|пирог|салат|суп)/.test(tagText + ' ' + haystack)) score += 8;
   if (ctx.intent === 'images' && post.media.some((item) => item.kind === 'image')) score += 10;
-  if (ctx.intent === 'video' && post.media.some((item) => item.kind === 'video')) score += 10;
+  if ((ctx.intent === 'video' || ctx.intent === 'film') && post.media.some((item) => item.kind === 'video')) score += 10;
+  if (ctx.intent === 'film' && /(фильм|кино|комеди|триллер|ужасы|сериал|movie|film|cinema|hbo|netflix|warner)/.test(haystack)) score += 12;
   if (ctx.intent === 'music' && post.media.some((item) => item.kind === 'audio')) score += 16;
   if (ctx.intent === 'music' && /(music|музык|песн|трек|song|mp3|billie|джин|джексон|jackson|audio|аудио)/.test(haystack)) score += 8;
   if (ctx.intent === 'shopping' && /(купить|заказ|доставк|магазин|цена|руб|₽|товар|меню|ролл|суши|sale|shop|order|price)/.test(haystack)) score += 12;
-  if (ctx.intent === 'source' && (haystack.includes(ctx.normalized) || haystack.includes(ctx.subject.toLowerCase()))) score += 14;
+  if (ctx.intent === 'source' && (haystack.includes(ctx.subject.toLowerCase()) || normalize(post.source.handle || '').includes(ctx.subject.toLowerCase().replace(/^@/, '')) || normalize(post.source.title || '').includes(ctx.subject.toLowerCase()))) score += 24;
   if (ctx.intent === 'weather' && /(погод|weather|forecast|дожд|снег|ветер)/.test(haystack)) score += 8;
   if (ctx.intent === 'trend') score += Math.min(5, Math.max(0, post.links?.length || 0));
 
@@ -74,12 +78,12 @@ export function searchPosts(ctx: BrainContext): RankedPost[] {
       return { post, score: ranked.score, matches: ranked.matched };
     })
     .filter(({ score, matches }) => {
-      const mediaIntent = ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'music';
+      const mediaIntent = ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'film' || ctx.intent === 'music';
       const flexibleIntent = mediaIntent || ctx.intent === 'source' || ctx.intent === 'shopping';
-      const needMatches = ctx.tokens.length >= 4 && !flexibleIntent ? 2 : 1;
-      const minScore = mediaIntent ? 12 : ctx.intent === 'source' ? 10 : ctx.intent === 'shopping' ? 11 : 17;
+      const needMatches = ctx.intent === 'source' ? 1 : ctx.tokens.length >= 4 && !flexibleIntent ? 2 : 1;
+      const minScore = mediaIntent ? 12 : ctx.intent === 'source' ? 8 : ctx.intent === 'shopping' ? 11 : 17;
       return score >= minScore && matches >= needMatches;
     })
     .sort((a, b) => b.score - a.score)
-    .slice(0, ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'music' || ctx.intent === 'shopping' ? 7 : ctx.intent === 'source' ? 4 : 2);
+    .slice(0, ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'film' || ctx.intent === 'music' || ctx.intent === 'shopping' ? 7 : ctx.intent === 'source' ? 4 : 2);
 }

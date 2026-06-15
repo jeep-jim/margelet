@@ -2,6 +2,7 @@ import type { IngestedPost, Locale } from '../../../types/app';
 import type { SpaceAnswer } from './types';
 import { buildContext } from './contextEngine';
 import { tryDialogAnswer } from './dialogCortex';
+import { tryGeneralAnswer } from './generalCortex';
 import { tryClarify } from './clarifier';
 import { reasonNextStep } from './reasoningEngine';
 import { searchPosts } from './searchFusion';
@@ -12,6 +13,9 @@ export function runSpaceCore(params: { query: string; posts: IngestedPost[]; loc
 
   const dialog = tryDialogAnswer(ctx);
   if (dialog) return dialog;
+
+  const general = tryGeneralAnswer(ctx);
+  if (general) return general;
 
   const decision = reasonNextStep(ctx);
   if (decision.action === 'present') return synthesizeProduct(ctx);

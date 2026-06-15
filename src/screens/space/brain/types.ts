@@ -25,6 +25,7 @@ export type SpaceIntent =
   | 'weather'
   | 'images'
   | 'video'
+  | 'film'
   | 'trend'
   | 'source'
   | 'fact'

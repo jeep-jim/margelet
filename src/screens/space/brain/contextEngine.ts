@@ -15,13 +15,15 @@ function hasPronounFollowup(query: string, lastSubject: string) {
 
 function extractSubject(query: string, tokens: string[], lastSubject: string) {
   if (hasPronounFollowup(query, lastSubject)) return lastSubject;
+  const source = query.match(/(?:что\s+(?:сейчас\s+)?пиш(?:ет|ут)|покажи\s+что\s+пиш(?:ет|ут)|канал|источник|найди\s+(?:наш[у]?\s+)?)\s+([^?.!,]+)/i)?.[1]?.trim();
+  if (source) return source.replace(/[?.!,]+$/g, '').replace(/^канал\s+/i, '').slice(0, 72);
   const explicit = query.match(/(?:про|about|о)\s+([^?.!,]+)/i)?.[1]?.trim();
   if (explicit) return explicit.replace(/[?.!,]+$/g, '').slice(0, 72);
   const music = query.match(/(?:включи|поставь|послушать)\s+(.+)/i)?.[1]?.trim();
   if (music) return music.replace(/[?.!,]+$/g, '').slice(0, 72);
   const capitalized = query.match(/[A-ZА-ЯЁІЇЄҐ][a-zа-яёіїєґ]+(?:\s+[A-ZА-ЯЁІЇЄҐ][a-zа-яёіїєґ]+){0,3}/g);
   if (capitalized?.length) return capitalized[capitalized.length - 1].trim();
-  return tokens.slice(0, 4).join(' ');
+  return tokens.filter((token) => !['что', 'сейчас', 'пишет', 'пишут', 'канал', 'найди', 'покажи'].includes(token)).slice(0, 4).join(' ');
 }
 
 function effectiveTokens(query: string, rawTokens: string[], lastSubject: string) {
@@ -32,7 +34,7 @@ function effectiveTokens(query: string, rawTokens: string[], lastSubject: string
 function inferState(intent: BrainContext['intent'], isPureDialog: boolean): SpaceState {
   if (['investor','product','monetization','architecture','growth','risk'].includes(intent)) return intent === 'investor' ? 'investing' : 'presenting';
   if (intent === 'tunnel') return 'connecting';
-  if (['trend','search','recipe','weather','images','video','source','music','shopping'].includes(intent)) return 'discovering';
+  if (['trend','search','recipe','weather','images','video','film','source','music','shopping'].includes(intent)) return 'discovering';
   if (intent === 'fact' || intent === 'advice') return 'explaining';
   if (isPureDialog) return 'listening';
   return 'thinking';

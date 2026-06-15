@@ -84,6 +84,7 @@ export function generateFound(ctx: BrainContext, ranked: RankedPost[]) {
     return ui ? `Нашёл близкую мысль: ${piece}` : `I see a close thought in the flow: ${piece}`;
   }
 
+
   if (ctx.intent === 'images' || ctx.intent === 'video') return pick(ui ? [
     'Собрал медиа по смыслу. Небольшая подборка 👇',
     'Нашёл визуальные совпадения. Покажу аккуратно 👇',

@@ -1,4 +1,4 @@
-import { ArrowLeft, Menu, Moon, Plus, Sun, Trash2, User, X } from "lucide-react";
+import { ArrowLeft, Menu, Mic, Moon, Plus, Sun, Trash2, User, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MargeletMark } from "../../components/shared/MargeletMark";
@@ -180,10 +180,10 @@ type SpaceCopy = {
 const SPACE_COPY: Record<Locale, SpaceCopy> = {
   ru: {
     title: "Space",
-    subtitle: "Глобальный поиск по Telegram",
+    subtitle: "Отвечу на вопросы",
     placeholder: "Найти, что говорят сейчас...",
     emptyHint:
-      "Страна, тема, источник или событие. Space будет искать смысл в потоке за 24 часа.",
+      "Если смогу найти ответ в потоке Telegram за 24 часа.",
     backLabel: "Закрыть Space",
     userPrefix: "Ты",
     botAnswer:
@@ -196,10 +196,10 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
   },
   us: {
     title: "Space",
-    subtitle: "Global search across live Telegram",
+    subtitle: "I answer questions",
     placeholder: "Find what people are saying now...",
     emptyHint:
-      "Write naturally: a country, topic, source, or event. Space will search for meaning inside Telegram flow.",
+      "If I can find the answer inside Telegram flow from the last 24 hours.",
     backLabel: "Close Space",
     userPrefix: "You",
     botAnswer:
@@ -516,10 +516,10 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
   },
   za: {
     title: "margeleT Space",
-    subtitle: "Global search across live Telegram",
+    subtitle: "I answer questions",
     placeholder: "Find what people are saying now...",
     emptyHint:
-      "Write naturally: a country, topic, source, or event. Space will search for meaning inside Telegram flow.",
+      "If I can find the answer inside Telegram flow from the last 24 hours.",
     backLabel: "Close Space",
     userPrefix: "You",
     botAnswer:
@@ -532,10 +532,10 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
   },
   ng: {
     title: "margeleT Space",
-    subtitle: "Global search across live Telegram",
+    subtitle: "I answer questions",
     placeholder: "Find what people are saying now...",
     emptyHint:
-      "Write naturally: a country, topic, source, or event. Space will search for meaning inside Telegram flow.",
+      "If I can find the answer inside Telegram flow from the last 24 hours.",
     backLabel: "Close Space",
     userPrefix: "You",
     botAnswer:
@@ -611,6 +611,7 @@ export function SpaceOverlay({
   const pendingAnswerRef = useRef<number | null>(null);
   const [keyboardBottom, setKeyboardBottom] = useState(0);
   const [inputFocused, setInputFocused] = useState(false);
+  const [listeningVoice, setListeningVoice] = useState(false);
   const [selectedPost, setSelectedPost] = useState<IngestedPost | null>(null);
   const [currentTrack, setCurrentTrack] = useState<SpacePlayerTrack | null>(null);
   const [playerCollapsed, setPlayerCollapsed] = useState(false);
@@ -814,6 +815,40 @@ export function SpaceOverlay({
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     send(value);
+  };
+
+  const startVoiceInput = () => {
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      inputRef.current?.focus({ preventScroll: true });
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = locale === "ru" ? "ru-RU" : "en-US";
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      setListeningVoice(true);
+      recognition.onresult = (event: any) => {
+        const text = String(event?.results?.[0]?.[0]?.transcript || "").trim();
+        if (text) setValue((prev) => (prev ? `${prev} ${text}` : text));
+        window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+      };
+      recognition.onerror = () => {
+        inputRef.current?.focus({ preventScroll: true });
+      };
+      recognition.onend = () => {
+        setListeningVoice(false);
+        window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
+      };
+      recognition.start();
+    } catch {
+      setListeningVoice(false);
+      inputRef.current?.focus({ preventScroll: true });
+    }
   };
 
   const submitFromButton = (event: React.PointerEvent<HTMLButtonElement>) => {
@@ -1327,13 +1362,9 @@ export function SpaceOverlay({
           <button
             type="button"
             onClick={() => {
-              if (messagesRef.current && messagesRef.current.scrollTop > 80) {
-                messagesRef.current.scrollTo({ top: 0, behavior: "smooth" });
-                return;
-              }
-              window.location.reload();
+              messagesRef.current?.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-center text-[24px] font-black leading-none tracking-[-0.03em]"
+            className="text-center text-[25px] font-black leading-none tracking-[-0.055em] sm:text-[28px]"
             title="Space"
           >
             <span className={isLight ? "text-[#07111d]" : "text-white"}>
@@ -1435,28 +1466,16 @@ export function SpaceOverlay({
               >
                 {copy.emptyHint}
               </div>
-              <div className="mt-6 flex max-w-[640px] flex-wrap justify-center gap-2 px-3">
-                {[
-                  locale === "ru" ? "что ты умеешь?" : "what can you do?",
-                  locale === "ru" ? "включи Billie Jean" : "play Billie Jean",
-                  locale === "ru" ? "открой туннель про бизнес" : "open a business tunnel",
-                  locale === "ru" ? "погода Москва" : "weather Moscow",
-                  locale === "ru" ? "покажи видео про футбол" : "show football videos",
-                  locale === "ru" ? "что такое margeleT" : "what is margeleT",
-                ].map((item) => (
-                  <button
-                    key={item}
-                    type="button"
-                    onClick={() => sendChip(item)}
-                    className={`rounded-full px-4 py-2 text-xs font-black transition hover:scale-[1.02] active:scale-[.98] ${isLight ? "bg-white/74 text-[#15547f] shadow-[0_10px_30px_rgba(74,120,170,.14)]" : "bg-white/9 text-white/74"}`}
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
             </div>
           ) : (
-            <div className={currentTrack ? "space-y-4 pb-44" : "space-y-4 pb-28"}>
+            <div
+              className="space-y-4"
+              style={{
+                paddingBottom: currentTrack
+                  ? `calc(18rem + ${Math.max(0, keyboardBottom)}px)`
+                  : `calc(13rem + ${Math.max(0, keyboardBottom)}px)`,
+              }}
+            >
               {messages.map((message, index) => (
                 <div
                   key={`${message.role}-${index}`}
@@ -1562,26 +1581,36 @@ export function SpaceOverlay({
               onFocus={() => setInputFocused(true)}
               onBlur={() => setInputFocused(false)}
             />
-            <button
-              type="button"
-              onPointerDown={submitFromButton}
-              className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition hover:scale-[1.04] active:scale-[.98] disabled:opacity-45 ${isLight ? "text-[#5e7085]" : "text-[#eef3f8]"}`}
-              disabled={!value.trim()}
-              aria-label="Send"
-            >
-              <MargeletMark
-                className={`relative top-px h-4 w-5 transition-transform duration-200 ease-out ${
-                  inputFocused ? "-rotate-[-30deg]" : "rotate-0"
-                }`}
-                colorClassName={isLight ? "text-[#5e7085]" : "text-[#eef3f8]"}
-              />
-            </button>
+            {inputFocused || value.trim() ? (
+              <button
+                type="button"
+                onPointerDown={submitFromButton}
+                className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition hover:scale-[1.04] active:scale-[.98] disabled:opacity-45 ${isLight ? "text-[#5e7085]" : "text-[#eef3f8]"}`}
+                disabled={!value.trim()}
+                aria-label="Send"
+              >
+                <MargeletMark
+                  className="relative top-px h-4 w-5 -rotate-[-30deg] transition-transform duration-200 ease-out"
+                  colorClassName={isLight ? "text-[#5e7085]" : "text-[#eef3f8]"}
+                />
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={startVoiceInput}
+                className={`grid h-9 w-9 shrink-0 place-items-center rounded-full transition hover:scale-[1.04] active:scale-[.98] ${listeningVoice ? "bg-[#4b8ed8] text-white" : isLight ? "text-[#5e7085]" : "text-[#eef3f8]"}`}
+                aria-label="Voice input"
+                title={locale === "ru" ? "Голосовой ввод" : "Voice input"}
+              >
+                <Mic className="h-5 w-5" />
+              </button>
+            )}
           </div>
         </form>
         ) : null}
 
         {currentTrack ? (
-          <div className="fixed inset-x-0 bottom-[calc(76px+env(safe-area-inset-bottom))] z-30 mx-auto w-full max-w-[980px] px-3 sm:px-6">
+          <div className="fixed inset-x-0 bottom-[calc(86px+env(safe-area-inset-bottom))] z-30 mx-auto w-full max-w-[980px] px-3 sm:px-6">
             <div className={`rounded-[24px] border p-3 ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/96 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.16)]" : "border-white/12 bg-[#101d2b]/96 text-white shadow-[0_18px_70px_rgba(0,0,0,.35)]"}`}>
               <div className="flex items-center gap-3">
                 <button type="button" onClick={() => setPlayerCollapsed((prev) => !prev)} className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#4b8ed8] text-white">{playerCollapsed ? "🎵" : "—"}</button>

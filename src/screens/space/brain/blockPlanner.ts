@@ -133,8 +133,8 @@ export function planBlocks(ranked: RankedPost[], intent: SpaceIntent, titles: { 
     if (shop) return [shop];
   }
 
-  if (intent === 'images' || intent === 'video') {
-    const gallery = buildGallery(found, intent === 'video' ? titles.video : titles.gallery);
+  if (intent === 'images' || intent === 'video' || intent === 'film') {
+    const gallery = buildGallery(found, (intent === 'video' || intent === 'film') ? titles.video : titles.gallery);
     if (gallery) blocks.push(gallery);
     if (!gallery) blocks.push(postToBlock(best.post, best.score));
     return blocks;

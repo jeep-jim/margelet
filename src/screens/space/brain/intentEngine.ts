@@ -25,9 +25,10 @@ const INTENT_KEYWORDS: Partial<Record<SpaceIntent, string[]>> = {
   images: ['картин','фото','изображ','галере','яркие моменты','images','photos','gallery','picture','bilder'],
   video: ['видео','ролик','смотреть','video','clip'],
   trend: ['тренд','раст','обсужда','говорят','происходит','сигнал','attention','trend','happening','discuss'],
-  source: ['канал','источник','автор','source','channel'],
+  source: ['канал','источник','автор','что пишет','что пишут','покажи что пишет','source','channel'],
   fact: ['правда','это правда','почему','зачем','значит','получается','стал','стала','самый','кто такой','убил','умер','убийц','is it true','why','explain'],
   search: ['найди','покажи','дай','что пишут','ищи','новости','search','find','show','give me','news'],
+  film: ['фильм','кино','комедия','триллер','ужасы','фантастика','драма','сериал','movie','film','cinema'],
 };
 
 export function isExplicitSearchRequest(lower: string) {
@@ -69,7 +70,9 @@ export function detectIntent(query: string): { intent: SpaceIntent; confidence: 
   if (/(seo|индексац|трафик|масштаб|рост|google)/.test(lower)) return { intent: 'growth', confidence: 9 };
   if (/(риск|опасност|юридич|legal)/.test(lower)) return { intent: 'risk', confidence: 9 };
   if (isTunnelRequest(lower)) return { intent: 'tunnel', confidence: 10 };
+  if (/(что\s+(сейчас\s+)?пиш(ет|ут)\s+|покажи\s+что\s+пиш(ет|ут)\s+|канал\s+[a-zа-яё0-9_@.-]+|найди\s+(наш[у]?\s+)?[a-zа-яё0-9_@.-]+|источник\s+)/i.test(lower)) return { intent: 'source', confidence: 10 };
   if (/(включи|поставь|послушать|billie\s+jean|билли\s+джин|музык|песн|трек)/.test(lower)) return { intent: 'music', confidence: 10 };
+  if (/(посоветуй\s+фильм|что\s+в\s+кино|фильм\s+на\s+вечер|хочу\s+комеди|кино\s+комеди|movie|film|cinema)/.test(lower)) return { intent: 'film', confidence: 10 };
   if (/(купить|заказать|цена|стоимост|товар|доставк|магазин|меню|суши|ролл|buy|order|price|shop)/.test(lower)) return { intent: 'shopping', confidence: 10 };
   if (/(дай\s+совет|нужен\s+совет|идеи\s+и\s+деньги|хочу\s+свой\s+бизнес|нет\s+идей|нет\s+денег|что\s+делать)/.test(lower)) return { intent: 'advice', confidence: 10 };
   if (/(ок\s+)?давай\s+(просто\s+)?(поговорим|поболтаем)|поболтаться\s+хочу|поболтать\s+хочу|поговорить\s+хочу|можем\s+(просто\s+)?поговорить|хочу\s+общаться|can\s+we\s+(chat|talk)/.test(lower)) return { intent: 'permissionTalk', confidence: 10 };
