@@ -1,4 +1,4 @@
-import type { SpaceBlock } from '../brain/types';
+import type { SpaceBlock } from './types';
 import type { SpaceCrawlResponse, SpaceOSDecision } from './types';
 
 function clean(value: string | undefined | null) {

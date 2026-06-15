@@ -4,7 +4,8 @@ import { createPortal } from "react-dom";
 import { MargeletMark } from "../../components/shared/MargeletMark";
 import { playGlobalTrack } from "../../components/global/GlobalMusicPlayer";
 import type { IngestedPost, Locale } from "../../types/app";
-import { buildSpaceAnswer, type SpaceBlock } from "./spaceBrain";
+import { runSpaceOS } from "./os/spaceOS";
+import type { SpaceBlock } from "./os/types";
 import "./os/widgets/spaceWidgetEngine.css";
 
 const SPACE_MESSAGES_STORAGE_KEY = "margelet_space_messages_v1";
@@ -89,18 +90,6 @@ function getSpaceThreadTitle(text: string) {
   if (!clean) return "New Space";
   return clean.length > 34 ? `${clean.slice(0, 34)}…` : clean;
 }
-function getSpaceReaction(text: string) {
-  const clean = text.toLowerCase().replace(/ё/g, "е");
-  if (/спасибо|круто|огонь|ура|аху|вау|супер|люблю/.test(clean)) return "🔥";
-  if (/музык|трек|песня|включи|поставь|billie|сектор/.test(clean)) return "🎵";
-  if (/погода|дожд|снег|солнц|ветер/.test(clean)) return "🌤️";
-  if (/бизнес|деньг|иде|инвест|рынок|бирж|биткоин/.test(clean)) return "💡";
-  if (/груст|устал|плохо|одинок/.test(clean)) return "🤝";
-  if (/шут|смеш|какаш|говн/.test(clean)) return "💩";
-  return ["👍", "👀", "✨", "🙂"][Math.abs(clean.split("").reduce((sum, ch) => sum + ch.charCodeAt(0), 0)) % 4];
-}
-
-
 function readSpaceThreadsFromStorage(): SpaceThread[] {
   try {
     const raw = localStorage.getItem(SPACE_THREADS_STORAGE_KEY);
@@ -804,7 +793,7 @@ export function SpaceOverlay({
         let answerText = copy.botAnswer;
         let answerBlocks: SpaceBlock[] = [];
         try {
-          const spaceAnswer = await buildSpaceAnswer({
+          const spaceAnswer = await runSpaceOS({
             query: clean,
             posts,
             locale,
@@ -876,19 +865,17 @@ export function SpaceOverlay({
           setValue("");
           send(text);
         }
-        window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
       };
       recognition.onerror = () => {
-        inputRef.current?.focus({ preventScroll: true });
+        setListeningVoice(false);
       };
       recognition.onend = () => {
         setListeningVoice(false);
-        window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
       };
       recognition.start();
     } catch {
       setListeningVoice(false);
-      inputRef.current?.focus({ preventScroll: true });
+      // Do not open keyboard after voice mode.
     }
   };
 
@@ -1615,9 +1602,6 @@ export function SpaceOverlay({
                     >
                       {message.text}
                     </div>
-                    {message.role === "user" && messages[index + 1]?.role === "space" ? (
-                      <div className="mt-1 flex justify-end pr-2 text-sm opacity-80">{getSpaceReaction(message.text)}</div>
-                    ) : null}
                     {message.role === "space" && message.blocks?.length ? (
                       <div className="mt-1">
                         {message.blocks.map((block, blockIndex) => renderSpaceBlock(block, blockIndex))}
@@ -1711,7 +1695,7 @@ export function SpaceOverlay({
               onFocus={() => setInputFocused(true)}
               onBlur={() => setInputFocused(false)}
             />
-            {inputFocused || value.trim() ? (
+            {value.trim() ? (
               <button
                 type="button"
                 onPointerDown={submitFromButton}

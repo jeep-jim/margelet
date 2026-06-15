@@ -1,4 +1,4 @@
-import type { SpaceBlock, SpaceLanguage } from '../brain/types';
+import type { SpaceBlock, SpaceLanguage } from '../os/types';
 
 export type ManifestSection = {
   id: string;

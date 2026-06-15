@@ -1,5 +1,5 @@
 import type { IngestedPost } from '../../../types/app';
-import type { SpaceBlock } from '../brain/types';
+import type { SpaceBlock } from './types';
 import type { SpaceCrawlResponse, SpaceOSDecision } from './types';
 import { runWebSearchTool } from './tools/webSearchTool';
 import { runBrowserCrawl } from './browserTools';

@@ -1,5 +1,5 @@
 import type { SpaceCrawlResponse, SpaceOSDecision } from './types';
-import type { SpaceBlock } from '../brain/types';
+import type { SpaceBlock } from './types';
 import { composeGalleryWidget, composeInfoWidget, composeMusicWidget } from './widgetComposer';
 
 export type MediaResult = { text: string; blocks: SpaceBlock[] };
