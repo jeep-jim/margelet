@@ -17,6 +17,9 @@ export type SpaceIntent =
   | 'architecture'
   | 'growth'
   | 'risk'
+  | 'tunnel'
+  | 'music'
+  | 'advice'
   | 'recipe'
   | 'weather'
   | 'images'
@@ -61,6 +64,25 @@ export type SpaceBlock =
         sourceTitle: string;
         postUrl: string;
       }>;
+    }
+  | {
+      type: 'music';
+      title: string;
+      subtitle: string;
+      tracks: Array<{
+        title: string;
+        sourceTitle: string;
+        postUrl: string;
+        audioUrl?: string | null;
+      }>;
+    }
+  | {
+      type: 'tunnel';
+      title: string;
+      subtitle: string;
+      topic: string;
+      people: Array<{ name: string; note: string; avatar?: string | null }>;
+      cta: string;
     }
   | {
       type: 'weather';

@@ -2,7 +2,7 @@ import type { IngestedPost } from '../../../types/app';
 import type { RankedPost, SpaceBlock, SpaceIntent } from './types';
 import { compactText } from './text';
 
-function internalPostUrl(post: IngestedPost) {
+export function internalPostUrl(post: IngestedPost) {
   const handle = String(post.source.handle || 'telegram').replace(/^@+/, '').trim() || 'telegram';
   const postId = String(post.postUrl || post.id || '').split('/').filter(Boolean).pop()?.replace(/\?single$/, '') || String(post.id || '');
   return `/${handle}/${postId}`;
@@ -41,6 +41,27 @@ export function buildGallery(posts: IngestedPost[], title: string): SpaceBlock |
   return { type: 'gallery', title, items };
 }
 
+function buildMusicBlock(posts: IngestedPost[], subject: string): SpaceBlock | null {
+  const tracks = posts
+    .flatMap((post) => {
+      const audio = post.media.find((item) => item.kind === 'audio');
+      return [{
+        title: compactText(post.text || subject || post.source.title || 'track', 84),
+        sourceTitle: post.source.title || post.source.handle || 'Telegram',
+        postUrl: internalPostUrl(post),
+        audioUrl: audio?.url || null,
+      }];
+    })
+    .slice(0, 5);
+  if (!tracks.length) return null;
+  return {
+    type: 'music',
+    title: subject ? `Музыка: ${subject}` : 'Музыка из margeleT',
+    subtitle: 'Я не включаю внешние сервисы сам, но могу показать найденные варианты.',
+    tracks,
+  };
+}
+
 function buildWeatherBlock(post: IngestedPost | undefined, city: string): SpaceBlock | null {
   if (!post) return null;
   return {
@@ -50,6 +71,21 @@ function buildWeatherBlock(post: IngestedPost | undefined, city: string): SpaceB
     summary: compactText(post.text, 210),
     sourceTitle: post.source.title || post.source.handle || 'margeleT',
     sourceAvatar: post.source.avatar,
+  };
+}
+
+export function buildTunnelBlock(topic: string): SpaceBlock {
+  const cleanTopic = topic || 'общая тема';
+  return {
+    type: 'tunnel',
+    title: '🧲 Туннель интереса',
+    subtitle: 'Пока это локальный черновик режима. Переписки не храним как соцсеть.',
+    topic: cleanTopic,
+    people: [
+      { name: 'Катя', note: 'ищет людей по похожей теме' },
+      { name: 'Саша', note: 'может быть рядом по интересу' },
+    ],
+    cta: 'Открыть туннель на 24 часа',
   };
 }
 
@@ -64,6 +100,11 @@ export function planBlocks(ranked: RankedPost[], intent: SpaceIntent, titles: { 
   if (intent === 'weather') {
     const weather = buildWeatherBlock(best.post, subject);
     if (weather) return [weather];
+  }
+
+  if (intent === 'music') {
+    const music = buildMusicBlock(found, subject);
+    if (music) return [music];
   }
 
   if (intent === 'images' || intent === 'video') {

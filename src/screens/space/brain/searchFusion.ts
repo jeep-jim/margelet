@@ -16,6 +16,7 @@ export function getPostSearchText(post: IngestedPost) {
 function hasIntentMedia(post: IngestedPost, intent: SpaceIntent) {
   if (intent === 'images') return post.media.some((item) => item.kind === 'image');
   if (intent === 'video') return post.media.some((item) => item.kind === 'video');
+  if (intent === 'music') return post.media.some((item) => item.kind === 'audio') || /(music|музык|песн|трек|song|mp3|billie|джин)/.test(getPostSearchText(post));
   return true;
 }
 
@@ -39,6 +40,8 @@ function rankPost(post: IngestedPost, ctx: BrainContext) {
   if (ctx.intent === 'recipe' && /(recipe|food|cook|еда|кухн|готов|рецепт|пирог|салат|суп)/.test(tagText + ' ' + haystack)) score += 8;
   if (ctx.intent === 'images' && post.media.some((item) => item.kind === 'image')) score += 10;
   if (ctx.intent === 'video' && post.media.some((item) => item.kind === 'video')) score += 10;
+  if (ctx.intent === 'music' && post.media.some((item) => item.kind === 'audio')) score += 16;
+  if (ctx.intent === 'music' && /(music|музык|песн|трек|song|mp3|billie|джин)/.test(haystack)) score += 8;
   if (ctx.intent === 'weather' && /(погод|weather|forecast|дожд|снег|ветер)/.test(haystack)) score += 8;
   if (ctx.intent === 'trend') score += Math.min(5, Math.max(0, post.links?.length || 0));
 
@@ -68,7 +71,12 @@ export function searchPosts(ctx: BrainContext): RankedPost[] {
       const ranked = rankPost(post, ctx);
       return { post, score: ranked.score, matches: ranked.matched };
     })
-    .filter(({ score, matches }) => score >= 13 && matches >= (ctx.tokens.length >= 4 && ctx.intent !== 'images' && ctx.intent !== 'video' ? 2 : 1))
+    .filter(({ score, matches }) => {
+      const mediaIntent = ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'music';
+      const needMatches = ctx.tokens.length >= 4 && !mediaIntent ? 2 : 1;
+      const minScore = mediaIntent ? 12 : 17;
+      return score >= minScore && matches >= needMatches;
+    })
     .sort((a, b) => b.score - a.score)
-    .slice(0, ctx.intent === 'images' || ctx.intent === 'video' ? 7 : 2);
+    .slice(0, ctx.intent === 'images' || ctx.intent === 'video' || ctx.intent === 'music' ? 7 : 2);
 }

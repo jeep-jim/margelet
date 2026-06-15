@@ -44,6 +44,17 @@ type SpaceTelegramUser = {
   photo_url?: string;
 };
 
+function getSpaceInternalPostUrl(post: IngestedPost) {
+  const handle = String(post.source.handle || "telegram").replace(/^@+/, "").trim() || "telegram";
+  const postId = String(post.postUrl || post.id || "").split("/").filter(Boolean).pop()?.replace(/\?single$/, "") || String(post.id || "");
+  return `/${handle}/${postId}`;
+}
+
+function findSpacePostByInternalUrl(posts: IngestedPost[], url: string) {
+  return posts.find((post) => getSpaceInternalPostUrl(post) === url || post.postUrl === url) || null;
+}
+
+
 function readSpaceTelegramUser(): SpaceTelegramUser | null {
   try {
     const raw = localStorage.getItem("margelet_tg_user");
@@ -593,6 +604,7 @@ export function SpaceOverlay({
   const pendingAnswerRef = useRef<number | null>(null);
   const [keyboardBottom, setKeyboardBottom] = useState(0);
   const [inputFocused, setInputFocused] = useState(false);
+  const [selectedPost, setSelectedPost] = useState<IngestedPost | null>(null);
 
   const activeThread = useMemo(() => {
     if (!threads.length) return null;
@@ -787,7 +799,7 @@ export function SpaceOverlay({
 
     setValue("");
     setChatsMenuOpen(false);
-    window.setTimeout(() => inputRef.current?.blur(), 0);
+    window.setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
   };
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -846,10 +858,11 @@ export function SpaceOverlay({
           </div>
           <div className="grid grid-cols-3 gap-2">
             {block.items.map((item, itemIndex) => (
-              <a
+              <button
                 key={`${item.url}-${itemIndex}`}
-                href={item.postUrl}
-                className={`relative aspect-square overflow-hidden rounded-2xl ${isLight ? "bg-white/50" : "bg-white/8"}`}
+                type="button"
+                onClick={() => setSelectedPost(findSpacePostByInternalUrl(posts, item.postUrl))}
+                className={`relative aspect-square overflow-hidden rounded-2xl text-left ${isLight ? "bg-white/50" : "bg-white/8"}`}
                 title={item.sourceTitle}
               >
                 {item.kind === "video" ? (
@@ -857,7 +870,7 @@ export function SpaceOverlay({
                 ) : (
                   <img src={item.url} alt="" loading="lazy" className="h-full w-full object-cover" onError={(event) => { event.currentTarget.style.display = "none"; }} />
                 )}
-              </a>
+              </button>
             ))}
           </div>
         </div>
@@ -915,6 +928,58 @@ export function SpaceOverlay({
       );
     }
 
+
+    if (block.type === "music") {
+      return (
+        <div key={`music-${block.title}-${index}`} className="margelet-space-block mt-3" style={blockDelay}>
+          <div className={`overflow-hidden rounded-[26px] p-4 ${isLight ? "bg-white/66 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.14)]" : "bg-white/8 text-white shadow-[0_18px_60px_rgba(0,0,0,.24)]"}`}>
+            <div className="text-base font-black">{block.title}</div>
+            <div className={`mt-1 text-sm ${isLight ? "text-[#40566e]" : "text-white/62"}`}>{block.subtitle}</div>
+            <div className="mt-3 space-y-2">
+              {block.tracks.map((track, trackIndex) => (
+                <button
+                  key={`${track.postUrl}-${trackIndex}`}
+                  type="button"
+                  onClick={() => setSelectedPost(findSpacePostByInternalUrl(posts, track.postUrl))}
+                  className={`flex w-full items-center gap-3 rounded-2xl px-3 py-2 text-left ${isLight ? "bg-[#eef4fb] hover:bg-[#e5edf6]" : "bg-white/7 hover:bg-white/10"}`}
+                >
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#4b8ed8] text-white">🎵</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-black">{track.title}</span>
+                    <span className={`block truncate text-xs ${isLight ? "text-[#60758c]" : "text-white/44"}`}>{track.sourceTitle}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (block.type === "tunnel") {
+      return (
+        <div key={`tunnel-${block.topic}-${index}`} className="margelet-space-block mt-3" style={blockDelay}>
+          <div className={`overflow-hidden rounded-[30px] border p-4 ${isLight ? "border-[#d8e3ef] bg-white/68 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.15)]" : "border-white/10 bg-white/8 text-white shadow-[0_22px_70px_rgba(0,0,0,.32)]"}`}>
+            <div className="text-lg font-black">{block.title}</div>
+            <div className={`mt-1 text-sm ${isLight ? "text-[#40566e]" : "text-white/62"}`}>{block.subtitle}</div>
+            <div className={`mt-3 rounded-2xl px-3 py-2 text-sm font-black ${isLight ? "bg-[#d7efff] text-[#15547f]" : "bg-[#1a344e] text-[#dff2ff]"}`}>Тема: {block.topic}</div>
+            <div className="mt-3 space-y-2">
+              {block.people.map((person) => (
+                <div key={person.name} className={`flex items-center gap-3 rounded-2xl px-3 py-2 ${isLight ? "bg-[#eef4fb]" : "bg-white/7"}`}>
+                  <div className={`grid h-10 w-10 place-items-center rounded-full font-black ${isLight ? "bg-white text-[#15547f]" : "bg-white/10 text-white"}`}>{person.name.slice(0, 1)}</div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-black">{person.name}</div>
+                    <div className={`text-xs ${isLight ? "text-[#60758c]" : "text-white/44"}`}>{person.note}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button type="button" className={`mt-3 rounded-full px-4 py-2 text-sm font-black ${isLight ? "bg-[#4b8ddd] text-white" : "bg-white text-[#07111d]"}`}>{block.cta}</button>
+          </div>
+        </div>
+      );
+    }
+
     if (block.type === "chips") {
       return null;
     }
@@ -922,7 +987,7 @@ export function SpaceOverlay({
     if (block.type === "quote") {
       return (
         <div key={`quote-${block.url}-${index}`} className="margelet-space-block mt-3" style={blockDelay}>
-          <a href={block.url} className="group block">
+          <button type="button" onClick={() => setSelectedPost(findSpacePostByInternalUrl(posts, block.url))} className="group block w-full text-left">
             <div className="flex items-center gap-2 px-1">
               {block.sourceAvatar ? (
                 <img src={block.sourceAvatar} alt="" className="h-10 w-10 rounded-full object-cover ring-2 ring-white/10" loading="lazy" onError={(event) => { event.currentTarget.style.display = "none"; }} />
@@ -954,7 +1019,7 @@ export function SpaceOverlay({
                 {block.text}
               </div>
             ) : null}
-          </a>
+          </button>
         </div>
       );
     }
@@ -1170,7 +1235,7 @@ export function SpaceOverlay({
       />
 
       <header
-        className={`absolute left-0 right-0 top-0 z-30 border-b backdrop-blur-2xl ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/88" : "border-white/8 bg-[#132233]/72"}`}
+        className={`absolute left-0 right-0 top-0 z-30 border-b  ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/88" : "border-white/8 bg-[#132233]/72"}`}
       >
         <div className="mx-auto grid h-16 w-full max-w-[980px] grid-cols-[56px_1fr_96px] items-center px-2 sm:px-4">
           <button
@@ -1192,7 +1257,7 @@ export function SpaceOverlay({
               }
               window.location.reload();
             }}
-            className="text-center text-[23px] font-black leading-none tracking-tight"
+            className="text-center text-[24px] font-black leading-none tracking-[-0.03em]"
             title="Space"
           >
             <span className={isLight ? "text-[#07111d]" : "text-white"}>
@@ -1306,7 +1371,7 @@ export function SpaceOverlay({
                     className={`${message.role === "user" ? "max-w-[88%] sm:max-w-[70%]" : "max-w-[98%] sm:max-w-[86%]"}`}
                   >
                     <div
-                      className={`inline-block px-4 py-2.5 text-sm leading-5 backdrop-blur-xl ${
+                      className={`inline-block px-4 py-2.5 text-sm leading-5 ${
                         message.role === "user"
                           ? isLight
                             ? "rounded-[24px] rounded-tr-[7px] bg-[#d7efff] text-[#07111d]"
@@ -1351,13 +1416,13 @@ export function SpaceOverlay({
           {chatsMenuOpen ? (
             <>
               <div
-                className="fixed inset-0 z-30 bg-black/22 backdrop-blur-[8px]"
+                className="fixed inset-0 z-30 bg-black/10"
                 aria-hidden="true"
                 onPointerDown={() => setChatsMenuOpen(false)}
               />
               <div className="absolute bottom-[calc(100%+12px)] left-3 right-3 z-50 sm:left-6 sm:right-6">
               <div
-                className={`absolute inset-0 rounded-[30px] backdrop-blur-xl ${
+                className={`absolute inset-0 rounded-[30px] ${
                   isLight ? "bg-[#f6f9fd]/74" : "bg-[#06111d]/70"
                 }`}
                 aria-hidden="true"
@@ -1376,7 +1441,7 @@ export function SpaceOverlay({
           ) : null}
 
           <div
-            className={`relative z-50 flex min-h-[54px] items-center gap-2 rounded-full border p-1.5 backdrop-blur-2xl ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/94" : "border-white/12 bg-white/10 shadow-[0_18px_70px_rgba(0,0,0,.35)]"}`}
+            className={`relative z-50 flex min-h-[54px] items-center gap-2 rounded-full border p-1.5  ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/94" : "border-white/12 bg-white/10 shadow-[0_18px_70px_rgba(0,0,0,.35)]"}`}
           >
             <button
               type="button"
@@ -1418,6 +1483,66 @@ export function SpaceOverlay({
           </div>
         </form>
       </div>
+
+      {selectedPost ? (
+        <div className="fixed inset-0 z-[1100] flex items-end justify-center bg-black/28 p-0 sm:items-center sm:p-5" onClick={() => setSelectedPost(null)}>
+          <div
+            className={`max-h-[88dvh] w-full overflow-y-auto rounded-t-[32px] p-4 shadow-[0_24px_90px_rgba(0,0,0,.32)] sm:max-w-[520px] sm:rounded-[32px] ${isLight ? "bg-[#f6f9fd] text-[#07111d]" : "bg-[#071321] text-white"}`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center gap-3">
+              {selectedPost.source.avatar ? (
+                <img src={selectedPost.source.avatar} alt="" className="h-12 w-12 rounded-full object-cover" />
+              ) : (
+                <div className={`h-12 w-12 rounded-full ${isLight ? "bg-[#d8ecff]" : "bg-white/10"}`} />
+              )}
+              <div className="min-w-0 flex-1">
+                <div className="truncate text-base font-black">{selectedPost.source.title || selectedPost.source.handle || "Telegram"}</div>
+                <div className={`truncate text-xs ${isLight ? "text-[#60758c]" : "text-white/46"}`}>{selectedPost.source.handle ? `@${selectedPost.source.handle.replace(/^@/, "")}` : "margeleT source"}</div>
+              </div>
+              <button type="button" onClick={() => setSelectedPost(null)} className={`grid h-10 w-10 place-items-center rounded-full ${isLight ? "bg-[#e6eef7] text-[#172537]" : "bg-white/10 text-white"}`}>
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {selectedPost.media.length ? (
+              <div className="mb-4 grid grid-cols-1 gap-2 overflow-hidden rounded-[24px]">
+                {selectedPost.media.slice(0, 4).map((item) => (
+                  item.kind === "video" ? (
+                    <video key={item.id || item.url} src={item.url} poster={item.poster || undefined} controls playsInline preload="metadata" className="max-h-[52dvh] w-full rounded-[20px] object-contain" />
+                  ) : item.kind === "image" ? (
+                    <img key={item.id || item.url} src={item.url} alt="" loading="lazy" className="max-h-[52dvh] w-full rounded-[20px] object-contain" />
+                  ) : item.kind === "audio" ? (
+                    <audio key={item.id || item.url} src={item.url} controls className="w-full" />
+                  ) : null
+                ))}
+              </div>
+            ) : null}
+
+            <div className={`whitespace-pre-wrap border-l-2 pl-3 text-sm leading-6 ${isLight ? "border-[#75a8dc] text-[#26384a]" : "border-[#68a6e8]/60 text-white/78"}`}>
+              {selectedPost.text || "Пост без текста."}
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+              <a
+                href={getSpaceInternalPostUrl(selectedPost)}
+                className={`rounded-full px-4 py-2 text-sm font-black ${isLight ? "bg-[#d7efff] text-[#15547f]" : "bg-white/10 text-white"}`}
+              >
+                Открыть страницу поста
+              </a>
+              <a
+                href={selectedPost.postUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`rounded-full px-4 py-2 text-sm font-black ${isLight ? "bg-[#eef4fb] text-[#40566e]" : "bg-white/7 text-white/66"}`}
+              >
+                Открыть в Telegram
+              </a>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
     </div>,
     document.body,
   );

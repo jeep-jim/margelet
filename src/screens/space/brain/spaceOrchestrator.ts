@@ -5,7 +5,7 @@ import { tryDialogAnswer } from './dialogCortex';
 import { tryClarify } from './clarifier';
 import { reasonNextStep } from './reasoningEngine';
 import { searchPosts } from './searchFusion';
-import { synthesizeFound, synthesizeNoResult, synthesizeProduct, synthesizeSoftTalk } from './answerSynthesizer';
+import { synthesizeFound, synthesizeNoResult, synthesizeProduct, synthesizeSoftTalk, synthesizeTunnel } from './answerSynthesizer';
 
 export function runSpaceCore(params: { query: string; posts: IngestedPost[]; locale: Locale }): SpaceAnswer {
   const ctx = buildContext(params.query, params.posts, params.locale);
@@ -15,6 +15,7 @@ export function runSpaceCore(params: { query: string; posts: IngestedPost[]; loc
 
   const decision = reasonNextStep(ctx);
   if (decision.action === 'present') return synthesizeProduct(ctx);
+  if (decision.action === 'tunnel') return synthesizeTunnel(ctx);
   if (decision.action === 'talk') return synthesizeSoftTalk(ctx);
   if (decision.action === 'clarify') return tryClarify(ctx) || synthesizeSoftTalk(ctx);
 

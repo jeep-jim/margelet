@@ -1,7 +1,7 @@
 import type { BrainContext, RankedPost, SpaceAnswer } from './types';
 import { getUi } from './locales';
 import { rememberTurn } from './memoryEngine';
-import { planBlocks } from './blockPlanner';
+import { buildTunnelBlock, planBlocks } from './blockPlanner';
 import { compactText } from './text';
 import { generateFound, generateNoResult, generateProductTalk, generateTalk } from './generativeCore';
 import { buildInvestorBlocks } from '../knowledge';
@@ -40,6 +40,17 @@ export function synthesizeProduct(ctx: BrainContext): SpaceAnswer {
   };
 }
 
+export function synthesizeTunnel(ctx: BrainContext): SpaceAnswer {
+  rememberTurn({ memory: ctx.memory, query: ctx.query, intent: ctx.intent, found: [], locale: ctx.locale, subject: ctx.subject, tokens: ctx.tokens });
+  return {
+    text: ctx.lang === 'ru'
+      ? 'Понял. Это не поиск постов — это уже про людей. Могу собрать временный туннель интереса 🧲'
+      : 'Got it. This is not post search — this is about people. I can build a temporary interest tunnel 🧲',
+    blocks: [buildTunnelBlock(ctx.subject || ctx.query)],
+    mode: 'show',
+  };
+}
+
 export function synthesizeFound(ctx: BrainContext, ranked: RankedPost[]): SpaceAnswer {
   const ui = getUi(ctx.lang);
   const found = ranked.map((item) => item.post);
@@ -53,7 +64,16 @@ export function synthesizeFound(ctx: BrainContext, ranked: RankedPost[]): SpaceA
 export function synthesizeSoftTalk(ctx: BrainContext): SpaceAnswer {
   rememberTurn({ memory: ctx.memory, query: ctx.query, intent: ctx.intent, found: [], locale: ctx.locale, subject: ctx.subject, tokens: ctx.tokens });
   const variants = ctx.lang === 'ru'
-    ? ['Да.', 'Понял.', 'Хорошо.', 'Можно.', 'Я рядом.', 'Давай спокойно.', 'Интересно. Продолжай.', 'С этого места подробнее.']
-    : ['Yes.', 'Got it.', 'Okay.', 'Sure.', 'I’m here.', 'Let’s keep it calm.', 'Interesting. Go on.', 'Tell me more from there.'];
+    ? [
+        'Кажется, ты сейчас не про поиск. Давай разберёмся словами.',
+        'Я понял настроение. Скажи чуть точнее, в какую сторону думаем?',
+        'Могу поговорить. А если понадобится — потом полезу в Telegram.',
+        'Давай спокойно. Что именно тебя сейчас цепляет?',
+      ]
+    : [
+        'This feels more like a conversation than a search. Let’s unpack it.',
+        'I get the mood. Which direction should we take?',
+        'We can talk first. If needed, I’ll search Telegram after.',
+      ];
   return { text: generateTalk(ctx, variants), blocks: [], mode: 'talk' };
 }

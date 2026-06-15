@@ -1,6 +1,6 @@
 import type { IngestedPost, Locale } from '../../../types/app';
 import type { BrainContext, SpaceState } from './types';
-import { detectIntent, isExplicitSearchRequest, isQuestionAboutSpace, isPureDialogMessage } from './intentEngine';
+import { detectIntent, isExplicitSearchRequest, isProductQuestion, isQuestionAboutSpace, isPureDialogMessage } from './intentEngine';
 import { readMemory } from './memoryEngine';
 import { detectSpaceLanguage } from './languageEngine';
 import { normalize, PRONOUN_HINTS, tokenize } from './text';
@@ -17,6 +17,8 @@ function extractSubject(query: string, tokens: string[], lastSubject: string) {
   if (hasPronounFollowup(query, lastSubject)) return lastSubject;
   const explicit = query.match(/(?:про|about|о)\s+([^?.!,]+)/i)?.[1]?.trim();
   if (explicit) return explicit.replace(/[?.!,]+$/g, '').slice(0, 72);
+  const music = query.match(/(?:включи|поставь|послушать)\s+(.+)/i)?.[1]?.trim();
+  if (music) return music.replace(/[?.!,]+$/g, '').slice(0, 72);
   const capitalized = query.match(/[A-ZА-ЯЁІЇЄҐ][a-zа-яёіїєґ]+(?:\s+[A-ZА-ЯЁІЇЄҐ][a-zа-яёіїєґ]+){0,3}/g);
   if (capitalized?.length) return capitalized[capitalized.length - 1].trim();
   return tokens.slice(0, 4).join(' ');
@@ -29,8 +31,9 @@ function effectiveTokens(query: string, rawTokens: string[], lastSubject: string
 
 function inferState(intent: BrainContext['intent'], isPureDialog: boolean): SpaceState {
   if (['investor','product','monetization','architecture','growth','risk'].includes(intent)) return intent === 'investor' ? 'investing' : 'presenting';
-  if (['trend','search','recipe','weather','images','video','source'].includes(intent)) return 'discovering';
-  if (intent === 'fact') return 'explaining';
+  if (intent === 'tunnel') return 'connecting';
+  if (['trend','search','recipe','weather','images','video','source','music'].includes(intent)) return 'discovering';
+  if (intent === 'fact' || intent === 'advice') return 'explaining';
   if (isPureDialog) return 'listening';
   return 'thinking';
 }
@@ -45,9 +48,9 @@ export function buildContext(query: string, posts: IngestedPost[], locale: Local
   const subject = extractSubject(query, rawTokens, memory.lastSubject);
   const isExplicitSearch = isExplicitSearchRequest(normalized);
   const questionAboutSpace = isQuestionAboutSpace(normalized);
-  const productQuestion = isQuestionAboutSpace(normalized);
+  const productQuestion = isProductQuestion(normalized) || ['investor','product','monetization','architecture','growth','risk'].includes(intent);
   const isProductIntent = ['investor','product','monetization','architecture','growth','risk'].includes(intent);
-  const isPureDialog = !isProductIntent && (isPureDialogMessage(query, intent) || (!isExplicitSearch && questionAboutSpace));
+  const isPureDialog = !isProductIntent && !['tunnel','music'].includes(intent) && (isPureDialogMessage(query, intent) || (!isExplicitSearch && questionAboutSpace));
   const mood = detectMood(query) === 'neutral' ? memory.lastDialogMood : detectMood(query);
   const state = inferState(intent, isPureDialog);
   const attention = buildAttention(query, subject, memory, posts);
