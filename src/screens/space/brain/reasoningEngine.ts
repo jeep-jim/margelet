@@ -1,11 +1,12 @@
 import type { BrainContext } from './types';
 
 export type ReasoningDecision = {
-  action: 'talk' | 'clarify' | 'search' | 'answerFromMemory';
+  action: 'talk' | 'clarify' | 'search' | 'answerFromMemory' | 'present';
   reason: string;
 };
 
 export function reasonNextStep(ctx: BrainContext): ReasoningDecision {
+  if (['investor','product','monetization','architecture','growth','risk'].includes(ctx.intent)) return { action: 'present', reason: 'product-knowledge' };
   if (ctx.isPureDialog) return { action: 'talk', reason: 'dialog-first' };
   if (!ctx.shouldSearch) return { action: 'talk', reason: 'no-explicit-data-request' };
   if ((ctx.intent === 'weather' || ctx.intent === 'trend') && ctx.tokens.length <= 1) return { action: 'clarify', reason: 'broad-data-request' };

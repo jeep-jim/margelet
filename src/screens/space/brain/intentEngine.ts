@@ -1,18 +1,18 @@
 import type { SpaceIntent } from './types';
 import { normalize, tokenize } from './text';
 
-const INTENT_KEYWORDS: Record<SpaceIntent, string[]> = {
-  greeting: ['привет','здравств','салам','hello','hi','hey'],
-  thanks: ['спасибо','благодар','thanks','thank you'],
+const INTENT_KEYWORDS: Partial<Record<SpaceIntent, string[]>> = {
+  greeting: ['привет','здравств','салам','hello','hi','hey','hola','bonjour','hallo','ciao','привіт'],
+  thanks: ['спасибо','благодар','thanks','thank you','merci','gracias','danke'],
   capabilities: ['что умеешь','что ты умеешь','умеешь','расскажи о себе','как работаешь','что можешь','что спрашивать','what can you do','capabilities'],
   identity: ['как тебя зовут','кто ты','ты кто','твое имя','твоё имя','what is your name','who are you'],
-  liveness: ['ты живой','живой','ты настоящий','ты человек','ты ии','ты бот','are you alive','are you real','are you human','are you ai'],
-  smalltalk: ['как дела','как ты','что делаешь','ты тут','ты здесь','how are you'],
+  liveness: ['ты живой','живой','ты настоящий','ты человек','are you alive','are you real','are you human'],
+  smalltalk: ['как дела','как ты','что делаешь','ты тут','ты здесь','how are you','поболтать','поговорить','общаться'],
   permissionTalk: ['ок давай поговорим','давай поговорим','давай поболтаем','поболтаться хочу','поболтать хочу','поговорить хочу','можем поговорить','можем просто поговорить','хочу общаться','просто поговорить','can we chat','can we talk'],
   nameMemory: ['меня зовут','зови меня','моё имя','мое имя','my name is','call me'],
-  recipe: ['рецепт','готов','пирог','капуст','салат','суп','кухн','еда','recipe','cook','food','cooking'],
-  weather: ['погода','прогноз','градус','дожд','снег','ветер','weather','forecast'],
-  images: ['картин','фото','изображ','галере','яркие моменты','images','photos','gallery','picture'],
+  recipe: ['рецепт','готов','пирог','капуст','салат','суп','кухн','еда','recipe','cook','food','cooking','receta'],
+  weather: ['погода','прогноз','градус','дожд','снег','ветер','weather','forecast','lluvia','wetter'],
+  images: ['картин','фото','изображ','галере','яркие моменты','images','photos','gallery','picture','bilder'],
   video: ['видео','ролик','смотреть','video','clip'],
   trend: ['тренд','раст','обсужда','говорят','происходит','сигнал','attention','trend','happening','discuss'],
   source: ['канал','источник','автор','source','channel'],
@@ -34,8 +34,7 @@ export function isPureDialogMessage(query: string, intent: SpaceIntent) {
   const lower = normalize(query);
   const tokens = tokenize(query);
   if (['greeting','thanks','identity','liveness','capabilities','smalltalk','permissionTalk','nameMemory'].includes(intent)) return true;
-  if (tokens.length <= 3 && /(бро|друг|как\s+ты|как\s+дела|поговор|поболт|обща|живой|ии|бот|hello|hi|thanks)/.test(lower)) return true;
-  if (!isExplicitSearchRequest(lower) && /(хочу\s+поболт|можем\s+поговор|просто\s+поговор)/.test(lower)) return true;
+  if (tokens.length <= 2 && /(бро|друг|как\s+ты|как\s+дела|поговор|поболт|обща|живой|ии|бот)/.test(lower)) return true;
   return false;
 }
 
@@ -53,7 +52,9 @@ export function detectIntent(query: string): { intent: SpaceIntent; confidence: 
 
   let best: { intent: SpaceIntent; confidence: number } = { intent: 'search', confidence: 0 };
   (Object.keys(INTENT_KEYWORDS) as SpaceIntent[]).forEach((intent) => {
-    const confidence = INTENT_KEYWORDS[intent].reduce((sum, keyword) => lower.includes(normalize(keyword)) ? sum + 1 : sum, 0);
+    const keywords = INTENT_KEYWORDS[intent] ?? [];
+    const confidence = keywords.reduce((sum, keyword) => lower.includes(normalize(keyword)) ? sum + 1 : sum, 0);
+    
     if (confidence > best.confidence) best = { intent, confidence };
   });
 

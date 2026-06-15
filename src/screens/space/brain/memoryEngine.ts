@@ -1,5 +1,5 @@
 import type { IngestedPost, Locale } from '../../../types/app';
-import type { SpaceIntent, SpaceMemory, SpaceMood } from './types';
+import type { SpaceIntent, SpaceMemory, SpaceMood, SpaceState } from './types';
 import { compactText, normalize, ngrams, tokenize } from './text';
 import { adjustLearning } from './learningEngine';
 
@@ -18,6 +18,7 @@ function normalizeMemory(memory: Partial<SpaceMemory>): SpaceMemory {
     lastSubject: memory.lastSubject || '',
     lastResult: memory.lastResult || null,
     lastDialogMood: memory.lastDialogMood || 'neutral',
+    lastSpaceState: memory.lastSpaceState || 'listening',
     userName: memory.userName || '',
     userFacts: memory.userFacts || {},
     userStyle: {
@@ -98,6 +99,8 @@ export function learnFromQuery(memory: SpaceMemory, query: string, intent: Space
         ? 'curious'
         : memory.lastDialogMood;
   memory.lastDialogMood = mood;
+  const state: SpaceState = intent === 'investor' || intent === 'product' || intent === 'monetization' || intent === 'architecture' || intent === 'growth' || intent === 'risk' ? 'presenting' : intent === 'search' || intent === 'trend' || intent === 'weather' || intent === 'images' || intent === 'video' ? 'discovering' : 'listening';
+  memory.lastSpaceState = state;
 }
 
 export function rememberTurn(args: {

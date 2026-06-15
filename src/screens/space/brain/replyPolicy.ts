@@ -1,11 +1,20 @@
 import type { BrainContext } from './types';
 
-export function applyReplyPolicy(ctx: BrainContext) {
-  const explicit = ctx.isExplicitSearch;
-  const media = ctx.intent === 'images' || ctx.intent === 'video';
-  const dataIntent = ['recipe', 'weather', 'trend', 'source'].includes(ctx.intent);
-  const factWithSubject = ctx.intent === 'fact' && ctx.tokens.length >= 2;
-  const shouldSearch = !ctx.isPureDialog && (explicit || media || dataIntent || factWithSubject) && ctx.rawTokens.length > 0;
-  const shouldShowBlocks = shouldSearch && (explicit || media || ctx.intent === 'recipe' || ctx.intent === 'trend' || ctx.intent === 'source' || ctx.intent === 'weather');
-  return { shouldSearch, shouldShowBlocks };
+export function applyReplyPolicy(ctx: BrainContext): Pick<BrainContext, 'shouldSearch' | 'shouldShowBlocks' | 'wantsChips'> {
+  const productIntent = ['investor','product','monetization','architecture','growth','risk'].includes(ctx.intent);
+  if (productIntent) return { shouldSearch: false, shouldShowBlocks: true, wantsChips: false };
+
+  if (ctx.isPureDialog || ctx.isQuestionAboutSpace) {
+    return { shouldSearch: false, shouldShowBlocks: false, wantsChips: false };
+  }
+
+  const mediaIntent = ctx.intent === 'images' || ctx.intent === 'video';
+  const clearDataIntent = ['recipe','weather','trend','source','fact','search'].includes(ctx.intent) || mediaIntent;
+  const hasEnoughContext = ctx.tokens.length >= 2 || ctx.confidence >= 2 || mediaIntent;
+  const shouldSearch = Boolean(ctx.isExplicitSearch || (clearDataIntent && hasEnoughContext && !ctx.normalized.endsWith('?')));
+
+  if (!shouldSearch) return { shouldSearch: false, shouldShowBlocks: false, wantsChips: false };
+
+  const shouldShowBlocks = mediaIntent || ctx.intent === 'weather' || ctx.intent === 'recipe' || ctx.intent === 'trend' || ctx.isExplicitSearch;
+  return { shouldSearch, shouldShowBlocks, wantsChips: false };
 }

@@ -11,6 +11,12 @@ export type SpaceIntent =
   | 'smalltalk'
   | 'permissionTalk'
   | 'nameMemory'
+  | 'investor'
+  | 'product'
+  | 'monetization'
+  | 'architecture'
+  | 'growth'
+  | 'risk'
   | 'recipe'
   | 'weather'
   | 'images'
@@ -20,7 +26,7 @@ export type SpaceIntent =
   | 'fact'
   | 'search';
 
-export type SpaceMode = 'talk' | 'clarify' | 'answer' | 'show';
+export type SpaceMode = 'talk' | 'clarify' | 'answer' | 'show' | 'present';
 
 export type SpaceBlock =
   | {
@@ -65,6 +71,25 @@ export type SpaceBlock =
       sourceAvatar?: string | null;
     }
   | {
+      type: 'stat';
+      title: string;
+      value: string;
+      caption: string;
+      tone?: 'blue' | 'green' | 'orange' | 'violet';
+    }
+  | {
+      type: 'timeline';
+      title: string;
+      items: Array<{ label: string; text: string }>;
+    }
+  | {
+      type: 'investor';
+      title: string;
+      subtitle: string;
+      points: string[];
+      accent?: string;
+    }
+  | {
       type: 'chips';
       title: string;
       items: string[];
@@ -88,7 +113,8 @@ export type LastResultMemory = {
   at: number;
 };
 
-export type SpaceMood = 'neutral' | 'warm' | 'curious' | 'playful' | 'careful' | 'searching';
+export type SpaceMood = 'neutral' | 'warm' | 'curious' | 'playful' | 'careful' | 'searching' | 'presenting';
+export type SpaceState = 'listening' | 'thinking' | 'discovering' | 'connecting' | 'explaining' | 'presenting' | 'investing';
 
 export type SpaceMemory = {
   turns: number;
@@ -101,6 +127,7 @@ export type SpaceMemory = {
   lastSubject: string;
   lastResult: LastResultMemory | null;
   lastDialogMood: SpaceMood;
+  lastSpaceState: SpaceState;
   userName: string;
   userFacts: Record<string, string>;
   userStyle: {
@@ -115,7 +142,7 @@ export type SpaceMemory = {
 export type AttentionSignal = {
   token: string;
   weight: number;
-  source: 'query' | 'memory' | 'subject' | 'post' | 'topic' | 'entity';
+  source: 'query' | 'memory' | 'subject' | 'post' | 'topic' | 'entity' | 'product';
 };
 
 export type BrainContext = {
@@ -132,9 +159,11 @@ export type BrainContext = {
   subject: string;
   isExplicitSearch: boolean;
   isQuestionAboutSpace: boolean;
+  isProductQuestion: boolean;
   isPureDialog: boolean;
   wantsChips: boolean;
   mood: SpaceMood;
+  state: SpaceState;
   attention: AttentionSignal[];
   shouldSearch: boolean;
   shouldShowBlocks: boolean;

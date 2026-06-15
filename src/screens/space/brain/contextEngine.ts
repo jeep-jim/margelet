@@ -1,6 +1,6 @@
 import type { IngestedPost, Locale } from '../../../types/app';
-import type { BrainContext } from './types';
-import { detectIntent, isExplicitSearchRequest, isPureDialogMessage, isQuestionAboutSpace } from './intentEngine';
+import type { BrainContext, SpaceState } from './types';
+import { detectIntent, isExplicitSearchRequest, isQuestionAboutSpace, isPureDialogMessage } from './intentEngine';
 import { readMemory } from './memoryEngine';
 import { detectSpaceLanguage } from './languageEngine';
 import { normalize, PRONOUN_HINTS, tokenize } from './text';
@@ -27,6 +27,14 @@ function effectiveTokens(query: string, rawTokens: string[], lastSubject: string
   return Array.from(new Set([...rawTokens, ...tokenize(lastSubject)])).slice(0, 18);
 }
 
+function inferState(intent: BrainContext['intent'], isPureDialog: boolean): SpaceState {
+  if (['investor','product','monetization','architecture','growth','risk'].includes(intent)) return intent === 'investor' ? 'investing' : 'presenting';
+  if (['trend','search','recipe','weather','images','video','source'].includes(intent)) return 'discovering';
+  if (intent === 'fact') return 'explaining';
+  if (isPureDialog) return 'listening';
+  return 'thinking';
+}
+
 export function buildContext(query: string, posts: IngestedPost[], locale: Locale): BrainContext {
   const memory = readMemory();
   const normalized = normalize(query);
@@ -37,8 +45,11 @@ export function buildContext(query: string, posts: IngestedPost[], locale: Local
   const subject = extractSubject(query, rawTokens, memory.lastSubject);
   const isExplicitSearch = isExplicitSearchRequest(normalized);
   const questionAboutSpace = isQuestionAboutSpace(normalized);
-  const isPureDialog = isPureDialogMessage(query, intent) || (!isExplicitSearch && questionAboutSpace);
+  const productQuestion = isQuestionAboutSpace(normalized);
+  const isProductIntent = ['investor','product','monetization','architecture','growth','risk'].includes(intent);
+  const isPureDialog = !isProductIntent && (isPureDialogMessage(query, intent) || (!isExplicitSearch && questionAboutSpace));
   const mood = detectMood(query) === 'neutral' ? memory.lastDialogMood : detectMood(query);
+  const state = inferState(intent, isPureDialog);
   const attention = buildAttention(query, subject, memory, posts);
   const base = {
     query,
@@ -54,9 +65,11 @@ export function buildContext(query: string, posts: IngestedPost[], locale: Local
     subject,
     isExplicitSearch,
     isQuestionAboutSpace: questionAboutSpace,
+    isProductQuestion: productQuestion,
     isPureDialog,
     wantsChips: false,
     mood,
+    state,
     attention,
     shouldSearch: false,
     shouldShowBlocks: false,

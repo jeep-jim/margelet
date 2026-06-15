@@ -161,7 +161,7 @@ type SpaceCopy = {
 
 const SPACE_COPY: Record<Locale, SpaceCopy> = {
   ru: {
-    title: "margeleT Space",
+    title: "Space",
     subtitle: "Глобальный поиск по Telegram",
     placeholder: "Найти, что говорят сейчас...",
     emptyHint:
@@ -177,7 +177,7 @@ const SPACE_COPY: Record<Locale, SpaceCopy> = {
     ],
   },
   us: {
-    title: "margeleT Space",
+    title: "Space",
     subtitle: "Global search across live Telegram",
     placeholder: "Find what people are saying now...",
     emptyHint:
@@ -864,6 +864,57 @@ export function SpaceOverlay({
       );
     }
 
+    if (block.type === "stat") {
+      return (
+        <div
+          key={`stat-${block.title}-${index}`}
+          className={`margelet-space-block mt-3 overflow-hidden rounded-[26px] p-4 ${isLight ? "bg-white/66 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.14)]" : "bg-white/8 text-white shadow-[0_18px_60px_rgba(0,0,0,.24)]"}`}
+          style={blockDelay}
+        >
+          <div className={`text-[11px] font-black uppercase tracking-[.18em] ${isLight ? "text-[#5e7085]" : "text-white/42"}`}>{block.title}</div>
+          <div className="mt-2 text-xl font-black leading-tight">{block.value}</div>
+          <div className={`mt-2 text-sm leading-6 ${isLight ? "text-[#40566e]" : "text-white/64"}`}>{block.caption}</div>
+        </div>
+      );
+    }
+
+    if (block.type === "timeline") {
+      return (
+        <div key={`timeline-${block.title}-${index}`} className="margelet-space-block mt-3" style={blockDelay}>
+          <div className={`mb-2 px-1 text-xs font-black ${isLight ? "text-[#40566e]" : "text-white/64"}`}>{block.title}</div>
+          <div className={`overflow-hidden rounded-[26px] border ${isLight ? "border-[#d8e3ef] bg-white/58" : "border-white/10 bg-white/7"}`}>
+            {block.items.map((item, itemIndex) => (
+              <div key={`${item.label}-${itemIndex}`} className={`flex items-center gap-3 px-4 py-3 ${itemIndex > 0 ? isLight ? "border-t border-[#d8e3ef]" : "border-t border-white/8" : ""}`}>
+                <div className={`grid h-8 w-8 shrink-0 place-items-center rounded-full text-xs font-black ${isLight ? "bg-[#d7efff] text-[#1f669c]" : "bg-white/10 text-white"}`}>{item.label}</div>
+                <div className={`text-sm font-bold ${isLight ? "text-[#243245]" : "text-white/78"}`}>{item.text}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    if (block.type === "investor") {
+      return (
+        <div
+          key={`investor-${block.title}-${index}`}
+          className={`margelet-space-block mt-3 overflow-hidden rounded-[30px] border p-4 ${isLight ? "border-[#d8e3ef] bg-white/68 text-[#07111d] shadow-[0_16px_44px_rgba(74,120,170,.15)]" : "border-white/10 bg-white/8 text-white shadow-[0_22px_70px_rgba(0,0,0,.32)]"}`}
+          style={blockDelay}
+        >
+          {block.accent ? (
+            <div className={`mb-3 rounded-2xl px-3 py-2 text-sm font-black leading-5 ${isLight ? "bg-[#d7efff] text-[#15547f]" : "bg-[#1a344e] text-[#dff2ff]"}`}>{block.accent}</div>
+          ) : null}
+          <div className="text-lg font-black leading-tight">{block.title}</div>
+          <div className={`mt-2 text-sm leading-6 ${isLight ? "text-[#40566e]" : "text-white/66"}`}>{block.subtitle}</div>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {block.points.map((point) => (
+              <span key={point} className={`rounded-full px-3 py-1.5 text-xs font-black ${isLight ? "bg-[#eef4fb] text-[#40566e]" : "bg-white/9 text-white/72"}`}>{point}</span>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
     if (block.type === "chips") {
       return null;
     }
@@ -1121,7 +1172,7 @@ export function SpaceOverlay({
       <header
         className={`absolute left-0 right-0 top-0 z-30 border-b backdrop-blur-2xl ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/88" : "border-white/8 bg-[#132233]/72"}`}
       >
-        <div className="mx-auto grid h-16 w-full max-w-[860px] grid-cols-[56px_1fr_96px] items-center px-2 sm:px-4">
+        <div className="mx-auto grid h-16 w-full max-w-[980px] grid-cols-[56px_1fr_96px] items-center px-2 sm:px-4">
           <button
             type="button"
             onClick={onClose}
@@ -1142,10 +1193,10 @@ export function SpaceOverlay({
               window.location.reload();
             }}
             className="text-center text-[23px] font-black leading-none tracking-tight"
-            title="margeleT"
+            title="Space"
           >
             <span className={isLight ? "text-[#07111d]" : "text-white"}>
-              margeleT
+              Space
             </span>
           </button>
 
@@ -1199,7 +1250,7 @@ export function SpaceOverlay({
       </header>
 
       <div
-        className="relative z-10 mx-auto flex h-[100dvh] w-full max-w-[860px] flex-col px-3 pt-20 sm:px-6"
+        className="relative z-10 mx-auto flex h-[100dvh] w-full max-w-[980px] flex-col px-3 pt-20 sm:px-6"
         onPointerDown={() => {
           if (chatsMenuOpen) setChatsMenuOpen(false);
         }}
@@ -1252,7 +1303,7 @@ export function SpaceOverlay({
                   className={`margelet-space-message flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`${message.role === "user" ? "max-w-[78%] sm:max-w-[66%]" : "max-w-[94%] sm:max-w-[78%]"}`}
+                    className={`${message.role === "user" ? "max-w-[88%] sm:max-w-[70%]" : "max-w-[98%] sm:max-w-[86%]"}`}
                   >
                     <div
                       className={`inline-block px-4 py-2.5 text-sm leading-5 backdrop-blur-xl ${
@@ -1282,7 +1333,7 @@ export function SpaceOverlay({
         <form
           onSubmit={submit}
           onPointerDown={(event) => event.stopPropagation()}
-          className="fixed inset-x-0 z-20 mx-auto w-full max-w-[860px] px-3 sm:px-6 transition-[top,bottom,transform] duration-300 ease-out"
+          className="fixed inset-x-0 z-20 mx-auto w-full max-w-[980px] px-3 sm:px-6 transition-[top,bottom,transform] duration-300 ease-out"
           style={
             messages.length === 0 && keyboardBottom <= 40
               ? {
@@ -1300,11 +1351,11 @@ export function SpaceOverlay({
           {chatsMenuOpen ? (
             <>
               <div
-                className="fixed inset-0 z-20 bg-black/18 backdrop-blur-[8px]"
+                className="fixed inset-0 z-30 bg-black/22 backdrop-blur-[8px]"
                 aria-hidden="true"
                 onPointerDown={() => setChatsMenuOpen(false)}
               />
-              <div className="absolute bottom-[calc(100%+12px)] left-3 right-3 z-30 sm:left-6 sm:right-6">
+              <div className="absolute bottom-[calc(100%+12px)] left-3 right-3 z-50 sm:left-6 sm:right-6">
               <div
                 className={`absolute inset-0 rounded-[30px] backdrop-blur-xl ${
                   isLight ? "bg-[#f6f9fd]/74" : "bg-[#06111d]/70"
@@ -1325,7 +1376,7 @@ export function SpaceOverlay({
           ) : null}
 
           <div
-            className={`flex min-h-[54px] items-center gap-2 rounded-full border p-1.5 backdrop-blur-2xl ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/94" : "border-white/12 bg-white/10 shadow-[0_18px_70px_rgba(0,0,0,.35)]"}`}
+            className={`relative z-50 flex min-h-[54px] items-center gap-2 rounded-full border p-1.5 backdrop-blur-2xl ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/94" : "border-white/12 bg-white/10 shadow-[0_18px_70px_rgba(0,0,0,.35)]"}`}
           >
             <button
               type="button"
