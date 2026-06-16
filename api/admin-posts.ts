@@ -882,7 +882,14 @@ async function bulkApplyReports(payload: Record<string, unknown>) {
   const reportsFile = await readReportsFile<ModerationReport>();
   const currentReports = Array.isArray(reportsFile.reports) ? reportsFile.reports : [];
   const selectedReports = currentReports.filter((report) => reportIds.has(report.id) && report.status !== "resolved");
-  if (!selectedReports.length) throw new Error("Selected reports were not found");
+  if (!selectedReports.length) {
+    return {
+      reports: currentReports.filter((report) => report.status !== "resolved"),
+      deletedPosts: 0,
+      changedSources: 0,
+      missingReports: reportIds.size,
+    };
+  }
 
   let deletedPosts = 0;
   let changedSources = 0;
@@ -1011,6 +1018,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           reports: result.reports,
           deletedPosts: result.deletedPosts,
           changedSources: result.changedSources,
+          missingReports: result.missingReports || 0,
         });
       }
 

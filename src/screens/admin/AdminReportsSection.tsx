@@ -164,29 +164,73 @@ function openUrl(url: string | null) {
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
-function mergeReports(serverReports: ModerationReport[], localReports: ModerationReport[]) {
+function mergeReports(
+  serverReports: ModerationReport[],
+  localReports: ModerationReport[]
+) {
+  const serverIds = new Set(
+    serverReports.map((report) => report.id)
+  );
+
+  const validLocalReports = localReports.filter((report) => {
+    if (!report.id) return false;
+
+    return serverIds.has(report.id);
+  });
+
   const map = new Map<string, ModerationReport>();
-  for (const report of [...serverReports, ...localReports]) {
+
+  for (const report of [
+    ...serverReports,
+    ...validLocalReports,
+  ]) {
     if (report.status !== "open") continue;
-    const key = report.id || `${report.postId || "source"}:${report.sourceHandle || ""}:${report.reason}`;
+
+    const key =
+      report.id ||
+      `${report.postId}:${report.sourceHandle}:${report.reason}`;
+
     const existing = map.get(key);
+
     if (!existing) {
       map.set(key, report);
+
       continue;
     }
 
     map.set(key, {
       ...existing,
-      count: Math.max(Number(existing.count || 1), Number(report.count || 1)),
+
+      count: Math.max(
+        Number(existing.count || 1),
+
+        Number(report.count || 1)
+      ),
+
       updatedAt:
-        Date.parse(report.updatedAt || report.createdAt) > Date.parse(existing.updatedAt || existing.createdAt)
+        Date.parse(
+          report.updatedAt ||
+            report.createdAt
+        ) >
+        Date.parse(
+          existing.updatedAt ||
+            existing.createdAt
+        )
           ? report.updatedAt
           : existing.updatedAt,
     });
   }
 
-  return Array.from(map.values()).sort(
-    (a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt)
+  return [...map.values()].sort(
+    (a, b) =>
+      Date.parse(
+        b.updatedAt ||
+          b.createdAt
+      ) -
+      Date.parse(
+        a.updatedAt ||
+          a.createdAt
+      )
   );
 }
 
@@ -260,7 +304,27 @@ export function AdminReportsSection({
       });
 
       const data = await response.json().catch(() => null);
-      const serverReports = Array.isArray(data?.reports) ? data.reports : [];
+      const serverReports =
+        Array.isArray(data?.reports)
+
+          ? data.reports
+
+          : [];
+
+      localStorage.setItem(
+        MODERATION_REPORTS_STORAGE_KEY,
+
+        JSON.stringify(serverReports)
+      );
+
+      setReports(
+        mergeReports(
+          serverReports,
+
+          readLocalReports()
+        )
+      );
+
       setReports(mergeReports(serverReports, readLocalReports()));
     } catch {
       setReports(localReports);
