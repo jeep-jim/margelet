@@ -150,6 +150,7 @@ export function SpaceOverlay({
     <div className={`space-root fixed inset-0 z-[1000] overflow-hidden ${isLight ? "bg-[#edf3fa] text-[#08111d]" : "bg-[#02060d] text-white"}`}>
       <SpaceStyle />
       <SpaceBackground theme={theme} viewport={camera.viewport} planetId={activePlanet} />
+      {magnet ? <div className="pointer-events-none absolute inset-0 z-[9] bg-black/30 transition-opacity duration-500" /> : null}
 
       <SpaceHeader
         isLight={isLight}
@@ -200,6 +201,7 @@ export function SpaceOverlay({
           searchMatchedIds={searchMatchedIds}
           focusTo={camera.focusTo}
           setSelectedId={setSelectedId}
+          resetMagnet={resetSpace}
         />
 
         <SpaceZoomControls

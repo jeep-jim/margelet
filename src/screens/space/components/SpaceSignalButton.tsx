@@ -9,16 +9,18 @@ type Props = {
   active: boolean;
   dimmed: boolean;
   highlighted: boolean;
+  magnetRank?: number;
   label: string;
   theme: SpaceTheme;
   onOpen: () => void;
 };
 
-export function SpaceSignalButton({ signal, index, x, y, active, dimmed, highlighted, label, theme, onOpen }: Props) {
+export function SpaceSignalButton({ signal, index, x, y, active, dimmed, highlighted, magnetRank, label, theme, onOpen }: Props) {
   const isLight = theme === "light";
   const depth = depthForIndex(index);
   const baseSize = signal.id.startsWith("demo-") ? 42 : 58;
-  const size = (active ? 70 : baseSize) * depth;
+  const rankBoost = typeof magnetRank === "number" ? Math.max(0, 1.22 - magnetRank * 0.035) : 1;
+  const size = (active ? 70 : baseSize) * depth * rankBoost;
 
   return (
     <button
@@ -29,12 +31,19 @@ export function SpaceSignalButton({ signal, index, x, y, active, dimmed, highlig
       }}
       className={[
         "group absolute rounded-full text-left transition-[left,top,transform,opacity,filter] duration-1000 ease-out hover:z-30 hover:scale-110",
-        dimmed ? "opacity-20 grayscale" : "opacity-100",
+        dimmed ? "opacity-14 grayscale" : "opacity-100",
         active ? "z-30" : highlighted ? "z-20" : "z-10",
       ].join(" ")}
       style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, animation: `spaceFloat ${6 + (index % 6)}s ease-in-out infinite`, animationDelay: `${(index % 8) * 0.35}s` }}
     >
-      <span className={`absolute inset-[-8px] rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md opacity-22`} style={{ animation: "spacePulse 5.2s ease-in-out infinite" }} />
+      <span
+        className={`absolute rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md ${highlighted ? "opacity-34" : "opacity-16"}`}
+        style={{
+          inset: highlighted ? "-14px" : "-8px",
+          animation: highlighted ? "spacePulse 3.6s ease-in-out infinite" : "spacePulse 5.8s ease-in-out infinite",
+        }}
+      />
+      {highlighted ? <span className="absolute inset-[-20px] rounded-full border border-cyan-200/20" style={{ animation: "spaceMiniWave 2.4s ease-out infinite" }} /> : null}
       <span className={`relative grid h-full w-full place-items-center overflow-hidden rounded-full border shadow-xl bg-gradient-to-br ${KIND_COLOR[signal.kind]} ${isLight ? "border-white/80" : "border-white/14"}`}>
         {signal.authorAvatar ? <img src={signal.authorAvatar} alt="" className="h-full w-full object-cover" referrerPolicy="no-referrer" /> : <span className="text-xl">{KIND_EMOJI[signal.kind]}</span>}
       </span>

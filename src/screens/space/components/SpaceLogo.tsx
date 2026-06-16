@@ -9,9 +9,9 @@ export function SpaceLogo({ isLight, compact, onClick }: Props) {
     <button
       type="button"
       onClick={onClick}
-      className="select-none font-black leading-none tracking-[-0.08em] drop-shadow-[0_2px_0_rgba(0,0,0,.32)] active:scale-95"
+      className="select-none px-2 py-1 font-black leading-[1.12] tracking-[-0.075em] active:scale-95"
       style={{
-        fontSize: compact ? "26px" : "clamp(30px, 3.4vw, 38px)",
+        fontSize: compact ? "30px" : "clamp(36px, 4vw, 46px)",
         fontWeight: 950,
       }}
       aria-label="Space story"
@@ -20,7 +20,7 @@ export function SpaceLogo({ isLight, compact, onClick }: Props) {
         className={`${
           isLight
             ? "bg-[linear-gradient(90deg,#d48cff,#6487ff,#2e8ddf,#6adb5d,#f4e83f)]"
-            : "bg-[linear-gradient(90deg,#28c8ff,#62a9ff,#ffffff)]"
+            : "bg-[linear-gradient(90deg,#34caff,#6aa8ff,#ffffff)]"
         } bg-clip-text text-transparent`}
       >
         Space
