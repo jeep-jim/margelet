@@ -319,6 +319,23 @@ export function SpaceOverlay({
     );
   }, [searchQuery, visibleSignals]);
 
+  const zoomTo = (nextScaleRaw: number) => {
+    const rect = stageRef.current?.getBoundingClientRect();
+    if (!rect) return;
+
+    const nextScale = Math.max(0.55, Math.min(2.4, nextScaleRaw));
+    const mx = rect.width / 2;
+    const my = rect.height / 2;
+    const worldX = (mx - viewport.x) / viewport.scale;
+    const worldY = (my - viewport.y) / viewport.scale;
+
+    setViewport({
+      scale: nextScale,
+      x: mx - worldX * nextScale,
+      y: my - worldY * nextScale,
+    });
+  };
+
   const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     event.preventDefault();
     const rect = event.currentTarget.getBoundingClientRect();
@@ -335,6 +352,17 @@ export function SpaceOverlay({
     });
   };
 
+  const applySearch = () => {
+    const firstMatch = visibleSignals.find((signal) => searchMatchedIds.has(signal.id));
+    setSearchOpen(false);
+
+    if (firstMatch) {
+      setSelectedId(null);
+      setMagnetId(null);
+      setTimeout(() => focusTo(firstMatch, 1.25), 40);
+    }
+  };
+
   const resetSpace = () => {
     setSelectedId(null);
     setMagnetId(null);
@@ -345,11 +373,12 @@ export function SpaceOverlay({
     <div className={`fixed inset-0 z-[1000] overflow-hidden ${isLight ? "bg-[#edf3fa] text-[#08111d]" : "bg-[#02060d] text-white"}`}>
       <style>{`
         @keyframes spaceFloat { 0%,100%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,-10px,0) scale(1.035)} }
-        @keyframes spacePulse { 0%,100%{opacity:.18; transform:scale(.9)} 50%{opacity:.48; transform:scale(1.12)} }
+        @keyframes spacePulse { 0%,100%{opacity:.06; transform:scale(.90)} 50%{opacity:.16; transform:scale(1.05)} }
         @keyframes spaceDrift { 0%{transform:translate3d(-1%,-.7%,0) scale(1.02)} 50%{transform:translate3d(1%,.7%,0) scale(1.045)} 100%{transform:translate3d(-.7%,1%,0) scale(1.035)} }
         @keyframes spaceWave { 0%{opacity:.34; transform:translate(-50%,-50%) scale(.25)} 100%{opacity:0; transform:translate(-50%,-50%) scale(3.1)} }
-        @keyframes spaceComet { 0%{transform:translate3d(-20vw,18vh,0) rotate(-12deg); opacity:0} 12%,70%{opacity:.45} 100%{transform:translate3d(120vw,-22vh,0) rotate(-12deg); opacity:0} }
+        @keyframes spaceComet { 0%{transform:translate3d(-20vw,18vh,0) rotate(-12deg); opacity:0} 12%,70%{opacity:.38} 100%{transform:translate3d(120vw,-22vh,0) rotate(-12deg); opacity:0} }
         @keyframes spaceWhisper { 0%,75%,100%{opacity:0; transform:translateY(8px)} 82%,94%{opacity:1; transform:translateY(0)} }
+        .space-stage { touch-action: none; overscroll-behavior: none; }
         .space-stage:active { cursor: grabbing; }
       `}</style>
 
@@ -362,17 +391,71 @@ export function SpaceOverlay({
         }}
       />
 
+      <div
+        className="pointer-events-none absolute inset-0 opacity-80"
+        style={{
+          backgroundImage: isLight
+            ? `
+              radial-gradient(circle at 12% 18%, rgba(68,138,255,.34) 0 2px, transparent 3px),
+              radial-gradient(circle at 28% 72%, rgba(139,92,246,.22) 0 1px, transparent 2px),
+              radial-gradient(circle at 52% 28%, rgba(14,165,233,.30) 0 1.5px, transparent 2.5px),
+              radial-gradient(circle at 78% 62%, rgba(34,197,94,.20) 0 1px, transparent 2px),
+              radial-gradient(circle at 92% 20%, rgba(244,114,182,.24) 0 1.5px, transparent 2.5px)
+            `
+            : `
+              radial-gradient(circle at 4% 82%, rgba(255,255,255,.65) 0 1px, transparent 2px),
+              radial-gradient(circle at 13% 23%, rgba(255,255,255,.50) 0 1px, transparent 2px),
+              radial-gradient(circle at 27% 16%, rgba(125,211,252,.70) 0 1px, transparent 2px),
+              radial-gradient(circle at 41% 74%, rgba(255,255,255,.58) 0 1px, transparent 2px),
+              radial-gradient(circle at 57% 30%, rgba(255,255,255,.68) 0 1px, transparent 2px),
+              radial-gradient(circle at 69% 66%, rgba(147,197,253,.65) 0 1px, transparent 2px),
+              radial-gradient(circle at 83% 17%, rgba(255,255,255,.56) 0 1px, transparent 2px),
+              radial-gradient(circle at 95% 76%, rgba(125,211,252,.50) 0 1px, transparent 2px)
+            `,
+        }}
+      />
+
       <header className={`absolute left-0 right-0 top-0 z-40 h-16 border-b ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/88" : "border-white/10 bg-[#132233]/72"}`}>
         <div className="mx-auto flex h-full max-w-[980px] items-center justify-between px-4">
-          <button type="button" onClick={onClose} className="grid h-11 w-11 place-items-center rounded-full">
-            <ArrowLeft className="h-5 w-5" />
+          <button
+            type="button"
+            onClick={() => {
+              if (composerOpen) {
+                setComposerOpen(false);
+                return;
+              }
+
+              if (searchOpen) {
+                setSearchOpen(false);
+                return;
+              }
+
+              if (selectedId || magnetId || searchQuery.trim()) {
+                resetSpace();
+                setSearchQuery("");
+                return;
+              }
+
+              onClose();
+            }}
+            className="grid h-11 w-11 place-items-center rounded-full"
+          >
+            {selectedId || magnetId || composerOpen || searchOpen || searchQuery.trim() ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <ArrowLeft className="h-5 w-5" />
+            )}
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <button type="button" onClick={() => setSearchOpen(true)} className="grid h-11 w-11 place-items-center rounded-full">
               <Search className="h-5 w-5" />
             </button>
-            <div className="text-lg font-semibold">Space</div>
+            <div className="select-none text-lg font-black tracking-[-0.055em]">
+              <span className={`${isLight ? "bg-[linear-gradient(90deg,#d48cff,#6487ff,#2e8ddf,#6adb5d,#f4e83f)]" : "bg-[linear-gradient(90deg,#2ec3ff,#57a6ff,#ffffff)]"} bg-clip-text text-transparent`}>
+                Space
+              </span>
+            </div>
           </div>
 
           <div className="flex items-center gap-2">
@@ -394,11 +477,14 @@ export function SpaceOverlay({
         onWheel={onWheel}
         onPointerDown={(event) => {
           if ((event.target as HTMLElement).closest("button,input,textarea")) return;
+          event.preventDefault();
+          event.currentTarget.setPointerCapture?.(event.pointerId);
           setDragging(true);
           dragStart.current = { x: event.clientX, y: event.clientY, vx: viewport.x, vy: viewport.y };
         }}
         onPointerMove={(event) => {
           if (!dragging || !dragStart.current) return;
+          event.preventDefault();
           const dx = event.clientX - dragStart.current.x;
           const dy = event.clientY - dragStart.current.y;
           setViewport((prev) => ({ ...prev, x: dragStart.current!.vx + dx, y: dragStart.current!.vy + dy }));
@@ -407,16 +493,28 @@ export function SpaceOverlay({
         onPointerCancel={() => setDragging(false)}
       >
         <div
+          className={`pointer-events-none absolute left-1/2 top-[48%] z-[9] -translate-x-1/2 -translate-y-1/2 select-none text-[82px] font-black tracking-[-0.06em] transition-all duration-700 sm:text-[104px] ${selectedId || magnetId || composerOpen || searchOpen || searchQuery.trim() ? "scale-75 opacity-0" : "scale-100 opacity-95"}`}
+        >
+          <span className={`${isLight ? "bg-[linear-gradient(90deg,#d48cff,#6487ff,#2e8ddf,#6adb5d,#f4e83f)]" : "bg-[linear-gradient(90deg,#2ec3ff,#57a6ff,#ffffff)]"} bg-clip-text text-transparent`}>
+            Space
+          </span>
+        </div>
+
+        <div
           className="absolute left-0 top-16 origin-top-left transition-transform duration-700 ease-out"
           style={{ width: WORLD_W, height: WORLD_H, transform: `translate3d(${viewport.x}px, ${viewport.y}px, 0) scale(${viewport.scale})` }}
         >
-          <div className="absolute inset-0 opacity-70" style={{ animation: "spaceDrift 38s ease-in-out infinite" }}>
-            <div className={`absolute left-[8%] top-[18%] h-24 w-24 rounded-full ${isLight ? "bg-[#ffe5a8]/55" : "bg-[#25405f]/50"}`} />
-            <div className={`absolute left-[78%] top-[22%] h-16 w-16 rounded-full ${isLight ? "bg-[#b9e7ff]/70" : "bg-[#17425f]/65"}`} />
-            <div className={`absolute left-[68%] top-[72%] h-32 w-32 rounded-full ${isLight ? "bg-[#d7c8ff]/45" : "bg-[#201a45]/75"}`} />
-            <div className={`absolute left-[22%] top-[76%] h-10 w-28 rotate-[-18deg] rounded-full ${isLight ? "bg-white/55" : "bg-white/8"}`} />
-            <div className={`absolute left-[46%] top-[28%] h-2 w-2 rounded-full ${isLight ? "bg-sky-500" : "bg-sky-300"}`} />
-            <div className={`absolute left-[58%] top-[61%] h-1.5 w-1.5 rounded-full ${isLight ? "bg-violet-500" : "bg-white"}`} />
+          <div className="absolute inset-0 opacity-80" style={{ animation: "spaceDrift 44s ease-in-out infinite" }}>
+            <div className={`absolute left-[7%] top-[17%] h-28 w-28 rounded-full ${isLight ? "bg-[radial-gradient(circle_at_35%_30%,#ffffff99,#8ecbff88_42%,#4388ff44_70%,transparent_72%)]" : "bg-[radial-gradient(circle_at_35%_30%,#8ad9ff66,#173c5f88_48%,#07142100_72%)]"}`} />
+            <div className={`absolute left-[80%] top-[19%] h-20 w-20 rounded-full ${isLight ? "bg-[radial-gradient(circle_at_35%_30%,#fff7cc,#d9a84f99_48%,#8a5f2244_70%,transparent_72%)]" : "bg-[radial-gradient(circle_at_35%_30%,#ffe7a877,#9b7b3c77_48%,#33241000_72%)]"}`} />
+            <div className={`absolute left-[78%] top-[20.5%] h-2 w-32 -rotate-[18deg] rounded-full ${isLight ? "bg-[#8aa2bd]/45" : "bg-white/18"}`} />
+            <div className={`absolute left-[88%] top-[29%] h-32 w-32 rounded-full ${isLight ? "bg-[radial-gradient(circle_at_35%_30%,#d6fff7,#2dd4bf88_48%,#166b7a44_72%,transparent_74%)]" : "bg-[radial-gradient(circle_at_35%_30%,#62e6ff77,#145d7599_46%,#06172300_72%)]"}`} />
+            <div className={`absolute left-[69%] top-[72%] h-36 w-36 rounded-full ${isLight ? "bg-[radial-gradient(circle_at_35%_28%,#f4d7ff,#a78bfa77_48%,#39236e33_72%,transparent_74%)]" : "bg-[radial-gradient(circle_at_35%_28%,#e9b8ff55,#542d7e99_48%,#140b2e00_72%)]"}`} />
+            <div className={`absolute left-[17%] top-[76%] h-10 w-32 rotate-[-18deg] rounded-full ${isLight ? "bg-white/48" : "bg-white/7"}`} />
+            <div className={`absolute left-[44%] top-[27%] h-2.5 w-2.5 rounded-full shadow-[0_0_18px_currentColor] ${isLight ? "bg-sky-500 text-sky-400" : "bg-sky-300 text-sky-300"}`} />
+            <div className={`absolute left-[58%] top-[61%] h-1.5 w-1.5 rounded-full shadow-[0_0_14px_currentColor] ${isLight ? "bg-violet-500 text-violet-400" : "bg-white text-white"}`} />
+            <div className={`absolute left-[63%] top-[38%] h-[120px] w-[240px] rotate-[-18deg] rounded-[50%] blur-sm ${isLight ? "bg-sky-200/24" : "bg-sky-400/8"}`} />
+            <div className={`absolute left-[73%] top-[50%] h-[180px] w-[220px] rotate-[24deg] rounded-[50%] blur-md ${isLight ? "bg-violet-200/24" : "bg-violet-500/10"}`} />
           </div>
 
           <div className="absolute left-0 top-[34%] z-10 flex items-center gap-2 rounded-r-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceComet 30s linear infinite" }}>
@@ -453,7 +551,7 @@ export function SpaceOverlay({
                 className={["group absolute rounded-full text-left transition-[left,top,transform,opacity,filter] duration-1000 ease-out hover:z-30 hover:scale-110", dimmed ? "opacity-20 grayscale" : "opacity-100", active ? "z-30" : pos.related || matched ? "z-20" : "z-10"].join(" ")}
                 style={{ left: `${pos.x}%`, top: `${pos.y}%`, width: size, height: size, animation: `spaceFloat ${6 + (index % 6)}s ease-in-out infinite`, animationDelay: `${(index % 8) * 0.35}s` }}
               >
-                <span className={`absolute inset-[-10px] rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md`} style={{ animation: "spacePulse 3.2s ease-in-out infinite" }} />
+                <span className={`absolute inset-[-8px] rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md opacity-50`} style={{ animation: "spacePulse 4.2s ease-in-out infinite" }} />
                 <span className={`relative grid h-full w-full place-items-center overflow-hidden rounded-full border shadow-xl bg-gradient-to-br ${KIND_COLOR[signal.kind]} ${isLight ? "border-white/80" : "border-white/18"}`}>
                   {signal.authorAvatar ? <img src={signal.authorAvatar} alt="" className="h-full w-full object-cover" referrerPolicy="no-referrer" /> : <span className="text-xl">{KIND_EMOJI[signal.kind]}</span>}
                 </span>
@@ -464,6 +562,25 @@ export function SpaceOverlay({
               </button>
             );
           })}
+        </div>
+
+        <div className="absolute left-4 top-24 z-30 flex flex-col gap-2 sm:left-6 sm:top-28">
+          <button
+            type="button"
+            onClick={() => zoomTo(viewport.scale + 0.18)}
+            className={`grid h-12 w-12 place-items-center rounded-full text-2xl font-black shadow-2xl backdrop-blur-xl active:scale-95 ${isLight ? "bg-white/82 text-[#07111d]" : "bg-white/12 text-white"}`}
+            aria-label="Приблизить карту"
+          >
+            +
+          </button>
+          <button
+            type="button"
+            onClick={() => zoomTo(viewport.scale - 0.18)}
+            className={`grid h-12 w-12 place-items-center rounded-full text-2xl font-black shadow-2xl backdrop-blur-xl active:scale-95 ${isLight ? "bg-white/82 text-[#07111d]" : "bg-white/12 text-white"}`}
+            aria-label="Отдалить карту"
+          >
+            −
+          </button>
         </div>
 
         <div className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceWhisper 18s ease-in-out infinite" }}>
@@ -528,14 +645,56 @@ export function SpaceOverlay({
 
       {searchOpen ? (
         <div className="absolute inset-0 z-50 flex items-start justify-center bg-black/30 p-3 pt-20">
-          <div className={`w-full max-w-[520px] rounded-[28px] border p-3 shadow-2xl ${isLight ? "border-[#d8e3ef] bg-white text-[#07111d]" : "border-white/10 bg-[#101d2c] text-white"}`}>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              applySearch();
+            }}
+            className={`w-full max-w-[520px] rounded-[28px] border p-3 shadow-2xl ${isLight ? "border-[#d8e3ef] bg-white text-[#07111d]" : "border-white/10 bg-[#101d2c] text-white"}`}
+          >
             <div className="flex items-center gap-2">
               <Search className="h-5 w-5 opacity-60" />
-              <input autoFocus value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="найти намерение..." className={`min-w-0 flex-1 bg-transparent px-2 py-3 text-base font-black outline-none`} />
-              <button type="button" onClick={() => setSearchOpen(false)} className="grid h-10 w-10 place-items-center rounded-full bg-black/5"><X className="h-5 w-5" /></button>
+              <input
+                autoFocus
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder="найти намерение..."
+                className="min-w-0 flex-1 bg-transparent px-2 py-3 text-base font-black outline-none"
+              />
+
+              {searchQuery.trim() ? (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedId(null);
+                    setMagnetId(null);
+                  }}
+                  className="grid h-10 w-10 place-items-center rounded-full bg-black/5"
+                  aria-label="Стереть поиск"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              ) : null}
+
+              <button
+                type="submit"
+                className={`rounded-full px-4 py-2 text-sm font-black ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
+              >
+                найти
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setSearchOpen(false)}
+                className="grid h-10 w-10 place-items-center rounded-full bg-black/5"
+                aria-label="Закрыть поиск"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
-            <div className="px-2 pb-2 text-xs font-bold opacity-55">Результаты подсветятся шарами на карте. Тапни шар, чтобы раскрыть.</div>
-          </div>
+            <div className="px-2 pb-2 text-xs font-bold opacity-55">Enter/Найти подсветит шары на карте. Тапни шар, чтобы раскрыть.</div>
+          </form>
         </div>
       ) : null}
 
