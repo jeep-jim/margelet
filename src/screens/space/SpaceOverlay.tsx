@@ -15,20 +15,12 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 import type { IngestedPost, Locale } from "../../types/app";
 import type { SpaceSignal, SpaceSignalKind, SpaceTelegramUser, SpaceTheme } from "./types";
+import { getSpaceCopy } from "./i18n";
 
 const TG_USER_KEY = "margelet_tg_user";
 const SPACE_SIGNALS_KEY = "margelet_space_local_signals_v1";
 
 type ViewportState = { x: number; y: number; scale: number };
-
-const KIND_LABEL: Record<SpaceSignalKind, string> = {
-  want: "хочу",
-  ask: "спросить",
-  buy: "куплю",
-  talk: "обсудить",
-  help: "помогу",
-  sell: "продам",
-};
 
 const KIND_EMOJI: Record<SpaceSignalKind, string> = {
   want: "✨",
@@ -177,6 +169,7 @@ export function SpaceOverlay({
   const [magnetId, setMagnetId] = useState<string | null>(null);
   const [composerOpen, setComposerOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [introOpen, setIntroOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [kind, setKind] = useState<SpaceSignalKind>("ask");
   const [text, setText] = useState("");
@@ -185,9 +178,12 @@ export function SpaceOverlay({
   const [dragging, setDragging] = useState(false);
 
   const dragStart = useRef<{ x: number; y: number; vx: number; vy: number } | null>(null);
+  const pinchStart = useRef<{ distance: number; scale: number; x: number; y: number } | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
 
   const isLight = theme === "light";
+  const copy = useMemo(() => getSpaceCopy(_locale), [_locale]);
+  const KIND_LABEL = copy.kind as Record<SpaceSignalKind, string>;
   const demoSignals = useMemo(() => pickDemoSignals(), []);
   const visibleSignals = useMemo(() => [...demoSignals, ...signals], [demoSignals, signals]);
   const selected = visibleSignals.find((item) => item.id === selectedId) || null;
@@ -380,6 +376,7 @@ export function SpaceOverlay({
         @keyframes spaceWhisper { 0%,75%,100%{opacity:0; transform:translateY(8px)} 82%,94%{opacity:1; transform:translateY(0)} }
         .space-stage { touch-action: none; overscroll-behavior: none; }
         .space-stage:active { cursor: grabbing; }
+        @keyframes spaceIntroCrawl { 0%{transform:rotateX(24deg) translateY(70%); opacity:0} 9%{opacity:1} 78%{opacity:1} 100%{transform:rotateX(24deg) translateY(-95%) scale(.72); opacity:0} }
       `}</style>
 
       <div
@@ -415,8 +412,8 @@ export function SpaceOverlay({
         }}
       />
 
-      <header className={`absolute left-0 right-0 top-0 z-40 h-16 border-b ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/88" : "border-white/10 bg-[#132233]/72"}`}>
-        <div className="mx-auto flex h-full max-w-[980px] items-center justify-between px-4">
+      <header className={`absolute left-0 right-0 top-0 z-40 h-[calc(4rem+env(safe-area-inset-top))] border-b pt-[env(safe-area-inset-top)] ${isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/88" : "border-white/10 bg-[#132233]/72"}`}>
+        <div className="mx-auto flex h-16 max-w-[980px] items-center justify-between px-4">
           <button
             type="button"
             onClick={() => {
@@ -447,15 +444,20 @@ export function SpaceOverlay({
             )}
           </button>
 
-          <div className="flex items-center gap-1">
+          <div className="flex min-w-0 -translate-x-4 items-center gap-3 sm:-translate-x-8">
             <button type="button" onClick={() => setSearchOpen(true)} className="grid h-11 w-11 place-items-center rounded-full">
-              <Search className="h-5 w-5" />
+              <Search className="h-6 w-6" />
             </button>
-            <div className="select-none text-lg font-black tracking-[-0.055em]">
+            <button
+              type="button"
+              onClick={() => setIntroOpen(true)}
+              className="select-none text-[26px] font-black leading-none tracking-[-0.06em] active:scale-95 sm:text-[28px]"
+              aria-label="Space story"
+            >
               <span className={`${isLight ? "bg-[linear-gradient(90deg,#d48cff,#6487ff,#2e8ddf,#6adb5d,#f4e83f)]" : "bg-[linear-gradient(90deg,#2ec3ff,#57a6ff,#ffffff)]"} bg-clip-text text-transparent`}>
                 Space
               </span>
-            </div>
+            </button>
           </div>
 
           <div className="flex items-center gap-2">
@@ -473,27 +475,72 @@ export function SpaceOverlay({
 
       <div
         ref={stageRef}
-        className="space-stage absolute inset-0 z-10 overflow-hidden pt-16"
+        className="space-stage absolute inset-0 z-10 overflow-hidden pt-[calc(4rem+env(safe-area-inset-top))]"
         onWheel={onWheel}
         onPointerDown={(event) => {
           if ((event.target as HTMLElement).closest("button,input,textarea")) return;
           event.preventDefault();
           event.currentTarget.setPointerCapture?.(event.pointerId);
+          const active = Array.from(event.currentTarget.querySelectorAll("[data-space-pointer='1']"));
+          const marker = document.createElement("span");
+          marker.dataset.spacePointer = "1";
+          marker.dataset.pointerId = String(event.pointerId);
+          marker.dataset.x = String(event.clientX);
+          marker.dataset.y = String(event.clientY);
+          marker.style.display = "none";
+          event.currentTarget.appendChild(marker);
+
+          if (active.length >= 1) {
+            const first = active[0] as HTMLElement;
+            const x1 = Number(first.dataset.x || event.clientX);
+            const y1 = Number(first.dataset.y || event.clientY);
+            const distance = Math.hypot(event.clientX - x1, event.clientY - y1) || 1;
+            pinchStart.current = { distance, scale: viewport.scale, x: viewport.x, y: viewport.y };
+            setDragging(false);
+            dragStart.current = null;
+            return;
+          }
+
           setDragging(true);
           dragStart.current = { x: event.clientX, y: event.clientY, vx: viewport.x, vy: viewport.y };
         }}
         onPointerMove={(event) => {
+          const marker = event.currentTarget.querySelector(`[data-pointer-id='${event.pointerId}']`) as HTMLElement | null;
+          if (marker) {
+            marker.dataset.x = String(event.clientX);
+            marker.dataset.y = String(event.clientY);
+          }
+
+          const active = Array.from(event.currentTarget.querySelectorAll("[data-space-pointer='1']")) as HTMLElement[];
+          if (pinchStart.current && active.length >= 2) {
+            event.preventDefault();
+            const a = active[0];
+            const b = active[1];
+            const distance = Math.hypot(Number(a.dataset.x) - Number(b.dataset.x), Number(a.dataset.y) - Number(b.dataset.y)) || 1;
+            const nextScale = Math.max(0.55, Math.min(2.4, pinchStart.current.scale * (distance / pinchStart.current.distance)));
+            setViewport((prev) => ({ ...prev, scale: nextScale }));
+            return;
+          }
+
           if (!dragging || !dragStart.current) return;
           event.preventDefault();
           const dx = event.clientX - dragStart.current.x;
           const dy = event.clientY - dragStart.current.y;
           setViewport((prev) => ({ ...prev, x: dragStart.current!.vx + dx, y: dragStart.current!.vy + dy }));
         }}
-        onPointerUp={() => setDragging(false)}
-        onPointerCancel={() => setDragging(false)}
+        onPointerUp={(event) => {
+          event.currentTarget.querySelector(`[data-pointer-id='${event.pointerId}']`)?.remove();
+          if (event.currentTarget.querySelectorAll("[data-space-pointer='1']").length < 2) pinchStart.current = null;
+          setDragging(false);
+        }}
+        onPointerCancel={(event) => {
+          event.currentTarget.querySelector(`[data-pointer-id='${event.pointerId}']`)?.remove();
+          pinchStart.current = null;
+          setDragging(false);
+        }}
       >
         <div
-          className={`pointer-events-none absolute left-1/2 top-[48%] z-[9] -translate-x-1/2 -translate-y-1/2 select-none text-[82px] font-black tracking-[-0.06em] transition-all duration-700 sm:text-[104px] ${selectedId || magnetId || composerOpen || searchOpen || searchQuery.trim() ? "scale-75 opacity-0" : "scale-100 opacity-95"}`}
+          className="pointer-events-none hidden"
         >
           <span className={`${isLight ? "bg-[linear-gradient(90deg,#d48cff,#6487ff,#2e8ddf,#6adb5d,#f4e83f)]" : "bg-[linear-gradient(90deg,#2ec3ff,#57a6ff,#ffffff)]"} bg-clip-text text-transparent`}>
             Space
@@ -501,10 +548,11 @@ export function SpaceOverlay({
         </div>
 
         <div
-          className="absolute left-0 top-16 origin-top-left transition-transform duration-700 ease-out"
+          className="absolute left-0 top-[calc(4rem+env(safe-area-inset-top))] origin-top-left transition-transform duration-700 ease-out"
           style={{ width: WORLD_W, height: WORLD_H, transform: `translate3d(${viewport.x}px, ${viewport.y}px, 0) scale(${viewport.scale})` }}
         >
-          <div className="absolute inset-0 opacity-80" style={{ animation: "spaceDrift 44s ease-in-out infinite" }}>
+          <div className="absolute inset-0 opacity-90" style={{ transform: `translate3d(${-viewport.x * 0.72}px, ${-viewport.y * 0.72}px, 0) scale(${1 / viewport.scale})` }}>
+            <div className="absolute inset-0" style={{ animation: "spaceDrift 60s ease-in-out infinite" }}>
             <div className={`absolute left-[7%] top-[17%] h-28 w-28 rounded-full ${isLight ? "bg-[radial-gradient(circle_at_35%_30%,#ffffff99,#8ecbff88_42%,#4388ff44_70%,transparent_72%)]" : "bg-[radial-gradient(circle_at_35%_30%,#8ad9ff66,#173c5f88_48%,#07142100_72%)]"}`} />
             <div className={`absolute left-[80%] top-[19%] h-20 w-20 rounded-full ${isLight ? "bg-[radial-gradient(circle_at_35%_30%,#fff7cc,#d9a84f99_48%,#8a5f2244_70%,transparent_72%)]" : "bg-[radial-gradient(circle_at_35%_30%,#ffe7a877,#9b7b3c77_48%,#33241000_72%)]"}`} />
             <div className={`absolute left-[78%] top-[20.5%] h-2 w-32 -rotate-[18deg] rounded-full ${isLight ? "bg-[#8aa2bd]/45" : "bg-white/18"}`} />
@@ -515,6 +563,7 @@ export function SpaceOverlay({
             <div className={`absolute left-[58%] top-[61%] h-1.5 w-1.5 rounded-full shadow-[0_0_14px_currentColor] ${isLight ? "bg-violet-500 text-violet-400" : "bg-white text-white"}`} />
             <div className={`absolute left-[63%] top-[38%] h-[120px] w-[240px] rotate-[-18deg] rounded-[50%] blur-sm ${isLight ? "bg-sky-200/24" : "bg-sky-400/8"}`} />
             <div className={`absolute left-[73%] top-[50%] h-[180px] w-[220px] rotate-[24deg] rounded-[50%] blur-md ${isLight ? "bg-violet-200/24" : "bg-violet-500/10"}`} />
+            </div>
           </div>
 
           <div className="absolute left-0 top-[34%] z-10 flex items-center gap-2 rounded-r-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceComet 30s linear infinite" }}>
@@ -551,7 +600,7 @@ export function SpaceOverlay({
                 className={["group absolute rounded-full text-left transition-[left,top,transform,opacity,filter] duration-1000 ease-out hover:z-30 hover:scale-110", dimmed ? "opacity-20 grayscale" : "opacity-100", active ? "z-30" : pos.related || matched ? "z-20" : "z-10"].join(" ")}
                 style={{ left: `${pos.x}%`, top: `${pos.y}%`, width: size, height: size, animation: `spaceFloat ${6 + (index % 6)}s ease-in-out infinite`, animationDelay: `${(index % 8) * 0.35}s` }}
               >
-                <span className={`absolute inset-[-8px] rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md opacity-50`} style={{ animation: "spacePulse 4.2s ease-in-out infinite" }} />
+                <span className={`absolute inset-[-8px] rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md opacity-36`} style={{ animation: "spacePulse 4.2s ease-in-out infinite" }} />
                 <span className={`relative grid h-full w-full place-items-center overflow-hidden rounded-full border shadow-xl bg-gradient-to-br ${KIND_COLOR[signal.kind]} ${isLight ? "border-white/80" : "border-white/18"}`}>
                   {signal.authorAvatar ? <img src={signal.authorAvatar} alt="" className="h-full w-full object-cover" referrerPolicy="no-referrer" /> : <span className="text-xl">{KIND_EMOJI[signal.kind]}</span>}
                 </span>
@@ -584,22 +633,22 @@ export function SpaceOverlay({
         </div>
 
         <div className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceWhisper 18s ease-in-out infinite" }}>
-          🌌 space has noticed you
+          🌌 {copy.noticed}
         </div>
 
         <button
           type="button"
           onClick={() => setComposerOpen(true)}
           disabled={!telegramUser}
-          className={`absolute bottom-5 left-1/2 z-30 flex h-14 -translate-x-1/2 items-center justify-center gap-2 rounded-full px-5 text-sm font-black shadow-2xl transition active:scale-95 disabled:opacity-45 sm:px-6 ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
+          className={`absolute bottom-5 left-1/2 z-30 flex h-14 w-14 -translate-x-1/2 items-center justify-center gap-2 rounded-full px-0 text-sm sm:w-auto font-black shadow-2xl transition active:scale-95 disabled:opacity-45 ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
         >
           <Plus className="h-5 w-5" />
-          <span className="hidden sm:inline">выпустить мысль</span>
+          <span className="hidden sm:inline">{copy.releaseThought}</span>
         </button>
 
         {!telegramUser ? (
           <div className={`absolute bottom-24 left-1/2 z-30 w-[320px] -translate-x-1/2 rounded-[26px] px-4 py-3 text-center text-sm font-bold shadow-2xl ${isLight ? "bg-white/86 text-[#40566e]" : "bg-[#101d2c]/90 text-white/72"}`}>
-            Авторизуйся через Telegram, чтобы увидеть себя и создать свой сигнал.
+            {copy.authHint}
           </div>
         ) : null}
       </div>
@@ -625,18 +674,18 @@ export function SpaceOverlay({
               className={`mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
             >
               <Magnet className="h-4 w-4" />
-              притянуть похожее
+              {copy.pullSimilar}
             </button>
 
             {selected.id.startsWith("demo-") ? (
-              <div className={`mt-4 rounded-2xl px-3 py-3 text-sm font-bold ${isLight ? "bg-[#eef4fb] text-[#40566e]" : "bg-white/8 text-white/68"}`}>Это демо-магнит. Свои мысли и ответы хранятся только на этом устройстве.</div>
+              <div className={`mt-4 rounded-2xl px-3 py-3 text-sm font-bold ${isLight ? "bg-[#eef4fb] text-[#40566e]" : "bg-white/8 text-white/68"}`}>{copy.demoHint}</div>
             ) : (
               <>
                 <div className="mt-4 flex gap-2">
-                  <input value={replyText} onChange={(event) => setReplyText(event.target.value)} placeholder="локальный ответ..." className={`min-w-0 flex-1 rounded-full px-4 py-3 text-sm font-bold outline-none ${isLight ? "bg-[#eef4fb]" : "bg-white/8"}`} />
+                  <input value={replyText} onChange={(event) => setReplyText(event.target.value)} placeholder={copy.localReply} className={`min-w-0 flex-1 rounded-full px-4 py-3 text-sm font-bold outline-none ${isLight ? "bg-[#eef4fb]" : "bg-white/8"}`} />
                   <button type="button" onClick={replyToSignal} className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}><Send className="h-4 w-4" /></button>
                 </div>
-                {telegramUser && selected.authorName === getUserName(telegramUser) ? <button type="button" onClick={() => removeSignal(selected.id)} className="mt-4 w-full rounded-full bg-rose-500 px-4 py-3 text-sm font-black text-white">удалить мой сигнал</button> : null}
+                {telegramUser && selected.authorName === getUserName(telegramUser) ? <button type="button" onClick={() => removeSignal(selected.id)} className="mt-4 w-full rounded-full bg-rose-500 px-4 py-3 text-sm font-black text-white">{copy.deleteSignal}</button> : null}
               </>
             )}
           </div>
@@ -644,7 +693,7 @@ export function SpaceOverlay({
       ) : null}
 
       {searchOpen ? (
-        <div className="absolute inset-0 z-50 flex items-start justify-center bg-black/30 p-3 pt-20">
+        <div className="absolute inset-0 z-50 flex items-start justify-center bg-black/30 p-3 pt-[calc(5.5rem+env(safe-area-inset-top))]">
           <form
             onSubmit={(event) => {
               event.preventDefault();
@@ -655,10 +704,12 @@ export function SpaceOverlay({
             <div className="flex items-center gap-2">
               <Search className="h-5 w-5 opacity-60" />
               <input
+                type="search"
+                enterKeyHint="search"
                 autoFocus
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="найти намерение..."
+                placeholder={copy.searchPlaceholder}
                 className="min-w-0 flex-1 bg-transparent px-2 py-3 text-base font-black outline-none"
               />
 
@@ -671,7 +722,7 @@ export function SpaceOverlay({
                     setMagnetId(null);
                   }}
                   className="grid h-10 w-10 place-items-center rounded-full bg-black/5"
-                  aria-label="Стереть поиск"
+                  aria-label={copy.clearSearch}
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -681,20 +732,57 @@ export function SpaceOverlay({
                 type="submit"
                 className={`rounded-full px-4 py-2 text-sm font-black ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
               >
-                найти
+                {copy.find}
               </button>
 
               <button
                 type="button"
                 onClick={() => setSearchOpen(false)}
                 className="grid h-10 w-10 place-items-center rounded-full bg-black/5"
-                aria-label="Закрыть поиск"
+                aria-label={copy.closeSearch}
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="px-2 pb-2 text-xs font-bold opacity-55">Enter/Найти подсветит шары на карте. Тапни шар, чтобы раскрыть.</div>
+            <div className="px-2 pb-2 text-xs font-bold opacity-55">{copy.searchHint}</div>
           </form>
+        </div>
+      ) : null}
+
+      {introOpen ? (
+        <div className="absolute inset-0 z-50 flex items-center justify-center overflow-hidden bg-black/70 p-4 pt-[calc(5rem+env(safe-area-inset-top))]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_70%,rgba(46,195,255,.18),transparent_36%),linear-gradient(180deg,rgba(2,6,13,.4),rgba(0,0,0,.86))]" />
+          <button
+            type="button"
+            onClick={() => setIntroOpen(false)}
+            className="absolute right-4 top-[calc(1rem+env(safe-area-inset-top))] z-20 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white backdrop-blur-xl"
+            aria-label="Close"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <div className="relative z-10 flex max-h-[78vh] w-full max-w-[760px] flex-col items-center text-center text-white [perspective:420px]">
+            <div className="mb-5 grid h-20 w-20 place-items-center rounded-full bg-[radial-gradient(circle_at_35%_28%,#d6fff7,#2ec3ff_42%,#3f2cff_78%)] text-4xl shadow-[0_0_60px_rgba(46,195,255,.42)]">
+              🧙‍♂️
+            </div>
+            <div className="origin-bottom animate-[spaceIntroCrawl_28s_linear_forwards] px-3">
+              <div className="text-[30px] font-black leading-tight tracking-[-.04em] text-[#9ee7ff] sm:text-[44px]">
+                {copy.forceTitle}
+              </div>
+              <div className="mt-5 text-xl font-black text-[#ffe98a] sm:text-3xl">
+                {copy.forceIntro}
+              </div>
+              <p className="mx-auto mt-7 max-w-[620px] text-lg font-bold leading-relaxed text-white/88 sm:text-2xl">
+                {copy.forceBody}
+              </p>
+              <div className="mt-8 text-2xl font-black text-[#9ee7ff] sm:text-4xl">
+                {copy.forceFooter}
+              </div>
+              <div className="mx-auto mt-10 max-w-[420px] rounded-[28px] bg-white/10 px-5 py-4 text-sm font-bold text-white/78 backdrop-blur-xl sm:text-base">
+                {copy.yoda}
+              </div>
+            </div>
+          </div>
         </div>
       ) : null}
 
@@ -702,7 +790,7 @@ export function SpaceOverlay({
         <div className="absolute inset-0 z-50 flex items-end justify-center bg-black/25 p-3 sm:items-center">
           <div className={`w-full max-w-[430px] rounded-[32px] border p-4 shadow-2xl ${isLight ? "border-[#d8e3ef] bg-white text-[#07111d]" : "border-white/10 bg-[#101d2c] text-white"}`}>
             <div className="flex items-center justify-between">
-              <div className="inline-flex items-center gap-2 text-lg font-black"><Sparkles className="h-5 w-5" />Новая мысль</div>
+              <div className="inline-flex items-center gap-2 text-lg font-black"><Sparkles className="h-5 w-5" />{copy.newThought}</div>
               <button type="button" onClick={() => setComposerOpen(false)} className="grid h-10 w-10 place-items-center rounded-full bg-black/5"><X className="h-5 w-5" /></button>
             </div>
 
@@ -715,7 +803,7 @@ export function SpaceOverlay({
             <textarea value={text} onChange={(event) => setText(event.target.value)} maxLength={140} placeholder="например: кто знает как купить bitcoin без паники?" className={`mt-4 min-h-[120px] w-full resize-none rounded-[24px] px-4 py-4 text-base font-bold outline-none ${isLight ? "bg-[#eef4fb]" : "bg-white/8"}`} />
 
             <div className="mt-3 flex items-center justify-between gap-3">
-              <div className="text-xs font-bold opacity-50">{text.length}/140 · локально</div>
+              <div className="text-xs font-bold opacity-50">{text.length}/140 · {copy.local}</div>
               <button type="button" onClick={createSignal} disabled={!text.trim()} className={`rounded-full px-5 py-3 text-sm font-black transition disabled:opacity-40 ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}>выпустить</button>
             </div>
           </div>
