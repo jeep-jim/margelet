@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { X } from "lucide-react";
 import type { SpaceCopy } from "../i18n";
 
@@ -10,14 +10,8 @@ type Props = {
 export function SpaceStory({ copy, onClose }: Props) {
   const [paused, setPaused] = useState(false);
 
-  useEffect(() => {
-    if (paused) return;
-    const timer = window.setTimeout(onClose, 30000);
-    return () => window.clearTimeout(timer);
-  }, [onClose, paused]);
-
   return (
-    <div onClick={() => setPaused(true)} className="absolute inset-0 z-50 flex items-center justify-center overflow-hidden bg-black/72 p-4 pt-[calc(5rem+env(safe-area-inset-top))]">
+    <div onClick={() => setPaused((value) => !value)} className="absolute inset-0 z-50 flex items-center justify-center overflow-hidden bg-black/72 p-4 pt-[calc(5rem+env(safe-area-inset-top))]">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_70%,rgba(46,195,255,.20),transparent_36%),linear-gradient(180deg,rgba(2,6,13,.35),rgba(0,0,0,.88))]" />
       <button type="button" onClick={(event) => { event.stopPropagation(); onClose(); }} className="absolute right-4 top-[calc(1rem+env(safe-area-inset-top))] z-20 grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white backdrop-blur-xl" aria-label="Close">
         <X className="h-5 w-5" />

@@ -9,7 +9,11 @@ export function SpaceLogo({ isLight, compact, onClick }: Props) {
     <button
       type="button"
       onClick={onClick}
-      className={`select-none font-black leading-none tracking-[-0.075em] drop-shadow-[0_2px_0_rgba(0,0,0,.30)] active:scale-95 ${compact ? "text-[27px] sm:text-[29px]" : "text-[34px] sm:text-[36px]"}`}
+      className="select-none font-black leading-none tracking-[-0.08em] drop-shadow-[0_2px_0_rgba(0,0,0,.32)] active:scale-95"
+      style={{
+        fontSize: compact ? "26px" : "clamp(30px, 3.4vw, 38px)",
+        fontWeight: 950,
+      }}
       aria-label="Space story"
     >
       <span

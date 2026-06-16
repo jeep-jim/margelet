@@ -18,15 +18,6 @@ export type SpacePlanetId =
   | "creative"
   | "community";
 
-export type SpacePlanet = {
-  id: SpacePlanetId;
-  emoji: string;
-  title: string;
-  gradient: string;
-  keywords: string[];
-  description: string;
-};
-
 export type SpaceViewport = {
   x: number;
   y: number;
@@ -52,4 +43,13 @@ export type SpaceSignal = {
   authorAvatar: string | null;
   replies: SpaceReply[];
   planetId: SpacePlanetId;
+};
+
+export type SpacePlanet = {
+  id: SpacePlanetId;
+  emoji: string;
+  title: string;
+  gradient: string;
+  keywords: string[];
+  description: string;
 };

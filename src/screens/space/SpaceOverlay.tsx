@@ -181,7 +181,7 @@ export function SpaceOverlay({
 
       <div
         ref={camera.stageRef}
-        className="space-stage absolute inset-0 z-10 overflow-hidden pt-[calc(4rem+env(safe-area-inset-top))]"
+        className="space-stage absolute left-0 right-0 bottom-0 top-[calc(4rem+env(safe-area-inset-top))] z-10 overflow-hidden"
         onWheel={camera.onWheel}
         onPointerDown={camera.onPointerDown}
         onPointerMove={camera.onPointerMove}

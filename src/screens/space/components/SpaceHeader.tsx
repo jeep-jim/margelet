@@ -29,11 +29,11 @@ export function SpaceHeader({ isLight, telegramUser, hasOverlayState, onBack, on
           </button>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-[1px]">
           <SpaceLogo isLight={isLight} onClick={onStory} />
         </div>
 
-        <div className="flex items-center justify-end gap-1 sm:gap-2">
+        <div className="flex items-center justify-end gap-4 sm:gap-6">
           <button type="button" onClick={onToggleTheme} className="grid h-10 w-10 place-items-center rounded-full transition hover:bg-white/10">
             {isLight ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
           </button>
