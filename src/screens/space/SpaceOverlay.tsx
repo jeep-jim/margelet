@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import type { IngestedPost, Locale } from "../../types/app";
 import { getSpaceCopy } from "./i18n";
-import { applyTheme, inferPlanetId, readTelegramUser, readTheme } from "./lib/space-engine";
+import { applyTheme, getUserName, inferPlanetId, readTelegramUser, readTheme } from "./lib/space-engine";
 import { useSpaceCamera } from "./hooks/useSpaceCamera";
 import { useSpaceSearch } from "./hooks/useSpaceSearch";
 import { useSpaceSignals } from "./hooks/useSpaceSignals";
@@ -124,6 +124,25 @@ export function SpaceOverlay({
     setTimeout(() => camera.focusTo(firstMatch, 1.25), 40);
   };
 
+  const handleMySignals = () => {
+    if (!telegramUser) {
+      setComposerOpen(true);
+      return;
+    }
+
+    const myName = getUserName(telegramUser);
+    const ownSignal = visibleSignals.find((signal) => !signal.id.startsWith("demo-") && signal.authorName === myName);
+    if (!ownSignal) {
+      setComposerOpen(true);
+      return;
+    }
+
+    setSelectedId(ownSignal.id);
+    setMagnetId(null);
+    setActivePlanet(ownSignal.planetId || inferPlanetId(ownSignal.text));
+    setTimeout(() => camera.focusTo(ownSignal, 1.32), 60);
+  };
+
   const hasOverlayState = Boolean(selectedId || magnetId || composerOpen || searchOpen || introOpen || searchQuery.trim());
 
   return createPortal(
@@ -189,7 +208,16 @@ export function SpaceOverlay({
           zoomOut={() => camera.zoomTo(camera.viewport.scale - 0.18)}
         />
 
-        <SpacePlanetPicker theme={theme} activePlanet={activePlanet} setActivePlanet={setActivePlanet} />
+        <SpacePlanetPicker theme={theme} activePlanet={activePlanet} setActivePlanet={setActivePlanet} onMySignals={handleMySignals} />
+
+        <button
+          type="button"
+          onClick={() => setComposerOpen(true)}
+          className={`absolute bottom-[5.3rem] left-4 z-40 grid h-12 w-12 place-items-center rounded-full text-2xl font-black shadow-2xl active:scale-95 sm:hidden ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
+          aria-label={copy.releaseThought}
+        >
+          +
+        </button>
 
         <div className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceWhisper 18s ease-in-out infinite" }}>
           🌌 {copy.noticed}
@@ -226,6 +254,8 @@ export function SpaceOverlay({
           copy={copy}
           value={searchQuery}
           setValue={setSearchQuery}
+          activePlanet={activePlanet}
+          setActivePlanet={setActivePlanet}
           onApply={applySearch}
           onClose={() => setSearchOpen(false)}
         />
