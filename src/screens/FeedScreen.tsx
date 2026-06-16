@@ -10,12 +10,12 @@ import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
+import { SpaceOverlay } from "./space/SpaceOverlay";
 import {
   FEED_SCREEN_COPY,
   SmartFeedBar,
   type FeedMediaMode,
 } from "./feed/SmartFeedBar";
-import { SpaceOverlay } from "./space/SpaceOverlay";
 import {
   ADMIN_TELEGRAM_IDS,
   FEED_FILTER_STATE_EVENT,
