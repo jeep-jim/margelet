@@ -34,8 +34,8 @@ export function SpaceSignalButton({ signal, index, x, y, active, dimmed, highlig
       ].join(" ")}
       style={{ left: `${x}%`, top: `${y}%`, width: size, height: size, animation: `spaceFloat ${6 + (index % 6)}s ease-in-out infinite`, animationDelay: `${(index % 8) * 0.35}s` }}
     >
-      <span className={`absolute inset-[-8px] rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md opacity-30`} style={{ animation: "spacePulse 4.6s ease-in-out infinite" }} />
-      <span className={`relative grid h-full w-full place-items-center overflow-hidden rounded-full border shadow-xl bg-gradient-to-br ${KIND_COLOR[signal.kind]} ${isLight ? "border-white/80" : "border-white/18"}`}>
+      <span className={`absolute inset-[-8px] rounded-full bg-gradient-to-br ${KIND_COLOR[signal.kind]} blur-md opacity-22`} style={{ animation: "spacePulse 5.2s ease-in-out infinite" }} />
+      <span className={`relative grid h-full w-full place-items-center overflow-hidden rounded-full border shadow-xl bg-gradient-to-br ${KIND_COLOR[signal.kind]} ${isLight ? "border-white/80" : "border-white/14"}`}>
         {signal.authorAvatar ? <img src={signal.authorAvatar} alt="" className="h-full w-full object-cover" referrerPolicy="no-referrer" /> : <span className="text-xl">{KIND_EMOJI[signal.kind]}</span>}
       </span>
       <span className={`pointer-events-none absolute left-1/2 top-[calc(100%+8px)] hidden w-[230px] -translate-x-1/2 rounded-2xl px-3 py-2 text-xs font-bold shadow-2xl group-hover:block ${isLight ? "bg-white text-[#152235]" : "bg-[#101d2c] text-white"}`}>

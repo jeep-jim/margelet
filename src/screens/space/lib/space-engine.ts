@@ -25,13 +25,13 @@ export const KIND_COLOR: Record<SpaceSignalKind, string> = {
 };
 
 export const SPACE_PLANETS = [
-  { id: "all", emoji: "🌌", title: "All", gradient: "from-sky-400 to-violet-500", keywords: [] },
-  { id: "tech", emoji: "💻", title: "Tech", gradient: "from-sky-400 to-blue-600", keywords: ["ai", "react", "vercel", "telegram", "bot", "python", "код", "нейро", "разработ", "tech"] },
-  { id: "finance", emoji: "₿", title: "Money", gradient: "from-emerald-300 to-amber-400", keywords: ["bitcoin", "btc", "ton", "usdt", "крипт", "доллар", "инвест", "деньг", "актив"] },
-  { id: "world", emoji: "🌍", title: "World", gradient: "from-cyan-300 to-emerald-500", keywords: ["герман", "европ", "переезд", "страна", "город", "world", "berlin"] },
-  { id: "startup", emoji: "🚀", title: "Startup", gradient: "from-violet-300 to-fuchsia-500", keywords: ["стартап", "проект", "запуск", "саас", "startup", "команд"] },
-  { id: "creative", emoji: "🎨", title: "Creative", gradient: "from-pink-300 to-orange-400", keywords: ["видео", "дизайн", "музык", "контент", "монтаж", "creative"] },
-  { id: "community", emoji: "🤝", title: "People", gradient: "from-orange-300 to-rose-500", keywords: ["помог", "обсуж", "найти", "людей", "друг", "совет", "газон"] },
+  { id: "all", emoji: "🌌", title: "All", gradient: "from-sky-400 to-violet-500", keywords: [], description: "Общий космос: все короткие человеческие сигналы сразу." },
+  { id: "tech", emoji: "💻", title: "Tech", gradient: "from-sky-400 to-blue-600", keywords: ["ai", "react", "vercel", "telegram", "bot", "python", "код", "нейро", "разработ", "tech"], description: "Ледяная галактика технологий: код, AI, Telegram, боты и инструменты." },
+  { id: "finance", emoji: "₿", title: "Money", gradient: "from-emerald-300 to-amber-400", keywords: ["bitcoin", "btc", "ton", "usdt", "крипт", "доллар", "инвест", "деньг", "актив"], description: "Орбита денег: крипта, TON, активы, обмен, риски и вопросы про заработок." },
+  { id: "world", emoji: "🌍", title: "World", gradient: "from-cyan-300 to-emerald-500", keywords: ["герман", "европ", "переезд", "страна", "город", "world", "berlin"], description: "Живая планета мира: страны, переезд, события, города и люди рядом." },
+  { id: "startup", emoji: "🚀", title: "Startup", gradient: "from-violet-300 to-fuchsia-500", keywords: ["стартап", "проект", "запуск", "саас", "startup", "команд"], description: "Туманность запусков: проекты, команды, тесты, первые пользователи и идеи." },
+  { id: "creative", emoji: "🎨", title: "Creative", gradient: "from-pink-300 to-orange-400", keywords: ["видео", "дизайн", "музык", "контент", "монтаж", "creative"], description: "Тропики креатива: дизайн, видео, музыка, контент и авторские штуки." },
+  { id: "community", emoji: "🤝", title: "People", gradient: "from-orange-300 to-rose-500", keywords: ["помог", "обсуж", "найти", "людей", "друг", "совет", "газон"], description: "Галактика людей: помощь, вопросы, обсуждения, знакомства и живые советы." },
 ] satisfies SpacePlanet[];
 
 export function readTheme(): "dark" | "light" {

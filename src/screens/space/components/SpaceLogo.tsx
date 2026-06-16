@@ -9,14 +9,14 @@ export function SpaceLogo({ isLight, compact, onClick }: Props) {
     <button
       type="button"
       onClick={onClick}
-      className={`select-none font-black leading-none tracking-[-0.06em] drop-shadow-[0_2px_0_rgba(0,0,0,.22)] active:scale-95 ${compact ? "text-[24px] sm:text-[26px]" : "text-[28px] sm:text-[30px]"}`}
+      className={`select-none font-black leading-none tracking-[-0.075em] drop-shadow-[0_2px_0_rgba(0,0,0,.30)] active:scale-95 ${compact ? "text-[27px] sm:text-[29px]" : "text-[34px] sm:text-[36px]"}`}
       aria-label="Space story"
     >
       <span
         className={`${
           isLight
             ? "bg-[linear-gradient(90deg,#d48cff,#6487ff,#2e8ddf,#6adb5d,#f4e83f)]"
-            : "bg-[linear-gradient(90deg,#2ec3ff,#57a6ff,#ffffff)]"
+            : "bg-[linear-gradient(90deg,#28c8ff,#62a9ff,#ffffff)]"
         } bg-clip-text text-transparent`}
       >
         Space

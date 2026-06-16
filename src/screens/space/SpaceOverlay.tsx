@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import { Compass, Plus } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
 import type { IngestedPost, Locale } from "../../types/app";
@@ -174,7 +175,6 @@ export function SpaceOverlay({
           onClose();
         }}
         onSearch={() => setSearchOpen(true)}
-        onCreate={() => setComposerOpen(true)}
         onToggleTheme={toggleTheme}
         onStory={() => setIntroOpen(true)}
       />
@@ -208,15 +208,26 @@ export function SpaceOverlay({
           zoomOut={() => camera.zoomTo(camera.viewport.scale - 0.18)}
         />
 
-        <SpacePlanetPicker theme={theme} activePlanet={activePlanet} setActivePlanet={setActivePlanet} onMySignals={handleMySignals} />
+        <SpacePlanetPicker theme={theme} activePlanet={activePlanet} setActivePlanet={setActivePlanet} />
 
         <button
           type="button"
           onClick={() => setComposerOpen(true)}
-          className={`absolute bottom-[5.3rem] left-4 z-40 grid h-12 w-12 place-items-center rounded-full text-2xl font-black shadow-2xl active:scale-95 sm:hidden ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
+          className={`absolute bottom-4 left-4 z-40 grid h-14 w-14 place-items-center rounded-full text-3xl font-black shadow-2xl active:scale-95 ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
           aria-label={copy.releaseThought}
+          title={copy.releaseThought}
         >
-          +
+          <Plus className="h-6 w-6" />
+        </button>
+
+        <button
+          type="button"
+          onClick={handleMySignals}
+          className={`absolute right-4 top-4 z-40 grid h-12 w-12 place-items-center rounded-full border shadow-2xl backdrop-blur-xl active:scale-95 ${isLight ? "border-[#d8e3ef] bg-white/78 text-[#07111d]" : "border-white/10 bg-[#101d2c]/78 text-white"}`}
+          aria-label="My signals"
+          title="My signals"
+        >
+          <Compass className="h-5 w-5" />
         </button>
 
         <div className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceWhisper 18s ease-in-out infinite" }}>
