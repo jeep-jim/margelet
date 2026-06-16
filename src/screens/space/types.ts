@@ -7,7 +7,13 @@ export type SpaceTelegramUser = {
   photo_url?: string;
 };
 
-export type SpaceSignalKind = "want" | "ask" | "buy" | "talk" | "help" | "sell";
+export type SpaceSignalKind =
+  | "want"
+  | "ask"
+  | "buy"
+  | "talk"
+  | "help"
+  | "sell";
 
 export type SpaceSignal = {
   id: string;
