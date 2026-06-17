@@ -16,13 +16,14 @@ type Props = {
   magnet: SpaceSignal | null;
   searchQuery: string;
   searchMatchedIds: Set<string>;
+  destroyingId: string | null;
   focusTo: (signal: SpaceSignal, scale?: number) => void;
   setSelectedId: (id: string | null) => void;
   resetMagnet: () => void;
 };
 
-const MAX_RELATED_SIGNALS = 6;
-const MAX_RELATED_LINES = 4;
+const MAX_RELATED_SIGNALS = 7;
+const MAX_RELATED_LINES = 5;
 
 function magnetScore(signal: SpaceSignal, magnet: SpaceSignal | null) {
   if (!magnet || signal.id === magnet.id) return 0;
@@ -32,27 +33,30 @@ function magnetScore(signal: SpaceSignal, magnet: SpaceSignal | null) {
   return wordScore + kindScore + planetScore;
 }
 
-function getMagnetPosition(
-  signal: SpaceSignal,
-  magnet: SpaceSignal | null,
-  related: Map<string, { rank: number; score: number }>
-): Position {
+function getMagnetPosition(signal: SpaceSignal, magnet: SpaceSignal | null, related: Map<string, { rank: number; score: number }>): Position {
   if (!magnet || signal.id === magnet.id) return { x: signal.x, y: signal.y, related: false };
 
   const hit = related.get(signal.id);
   if (!hit) return { x: signal.x, y: signal.y, related: false };
 
-  const rank = hit.rank;
-  const score = hit.score;
-  const ring = rank < 3 ? 5.2 + rank * 1.9 : rank < 6 ? 11 + (rank - 3) * 2.2 : 17;
-  const angle = rank * 2.399963 + (score % 3) * 0.12;
+  const heatPattern = [
+    { x: 6.2, y: -1.2 },
+    { x: -5.6, y: -1.8 },
+    { x: 0.2, y: -5.2 },
+    { x: 0.5, y: 4.9 },
+    { x: 7.8, y: 4.1 },
+    { x: -7.3, y: 4.2 },
+    { x: -8.8, y: -6.1 },
+  ];
+
+  const point = heatPattern[hit.rank] || { x: 10 + hit.rank * 1.5, y: 4 + hit.rank };
 
   return {
-    x: Math.max(7, Math.min(93, magnet.x + Math.cos(angle) * ring)),
-    y: Math.max(12, Math.min(88, magnet.y + Math.sin(angle) * ring * 0.68)),
+    x: Math.max(7, Math.min(93, magnet.x + point.x)),
+    y: Math.max(12, Math.min(88, magnet.y + point.y)),
     related: true,
-    rank,
-    score,
+    rank: hit.rank,
+    score: hit.score,
   };
 }
 
@@ -66,6 +70,7 @@ export function SpaceWorld({
   magnet,
   searchQuery,
   searchMatchedIds,
+  destroyingId,
   focusTo,
   setSelectedId,
   resetMagnet,
@@ -108,7 +113,8 @@ export function SpaceWorld({
       .filter(Boolean) as Array<{ id: string; info: { rank: number; score: number }; pos: Position }>;
   }, [magnet, related, visibleSignals]);
 
-  const lineColor = isLight ? "rgba(2,132,199,.82)" : "rgba(125,211,252,.34)";
+  const lineColor = isLight ? "rgba(2,132,199,.86)" : "rgba(125,211,252,.36)";
+  const relatedCount = related.size;
 
   return (
     <div
@@ -130,20 +136,21 @@ export function SpaceWorld({
           <span
             key={`wave-a-${magnet.id}`}
             className="pointer-events-none absolute z-[6] rounded-full border border-cyan-200/42 shadow-[0_0_28px_rgba(125,211,252,.18)]"
-            style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 90, height: 90, transform: "translate(-50%, -50%)", animation: "spaceWave 900ms ease-out 1 forwards" }}
+            style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 92, height: 92, transform: "translate(-50%, -50%)", animation: "spaceWave 900ms ease-out 1 forwards" }}
           />
           <span
             key={`wave-b-${magnet.id}`}
             className="pointer-events-none absolute z-[6] rounded-full border border-sky-200/22 shadow-[0_0_42px_rgba(56,189,248,.14)]"
-            style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 155, height: 155, transform: "translate(-50%, -50%)", animation: "spaceWave 1050ms ease-out 1 .16s forwards" }}
+            style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 158, height: 158, transform: "translate(-50%, -50%)", animation: "spaceWave 1050ms ease-out 1 .16s forwards" }}
           />
-          <span
-            key={`wave-c-${magnet.id}`}
-            className="pointer-events-none absolute z-[6] rounded-full border border-violet-200/14"
-            style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 220, height: 220, transform: "translate(-50%, -50%)", animation: "spaceWave 1150ms ease-out 1 .28s forwards" }}
-          />
+          <div
+            className={`pointer-events-none absolute z-[8] -translate-x-1/2 rounded-full px-3 py-1.5 text-[11px] font-black shadow-2xl backdrop-blur-xl ${isLight ? "bg-white/86 text-[#0f3655]" : "bg-[#101d2c]/86 text-sky-100"}`}
+            style={{ left: `${magnet.x}%`, top: `${Math.max(8, magnet.y - 10)}%` }}
+          >
+            🧲 {relatedCount || 0} {relatedCount === 1 ? "контакт" : "контактов"}
+          </div>
           {relatedLines.length ? (
-            <svg className={`pointer-events-none absolute inset-0 z-[7] h-full w-full overflow-visible ${isLight ? "opacity-90" : "opacity-60"}`}>
+            <svg className={`pointer-events-none absolute inset-0 z-[7] h-full w-full overflow-visible ${isLight ? "opacity-95" : "opacity-62"}`}>
               {relatedLines.map(({ id, info, pos }) => (
                 <line
                   key={`link-${magnet.id}-${id}`}
@@ -152,7 +159,7 @@ export function SpaceWorld({
                   x2={`${pos.x}%`}
                   y2={`${pos.y}%`}
                   stroke={lineColor}
-                  strokeWidth={Math.max(isLight ? 1.25 : 0.8, (isLight ? 2.15 : 1.5) - info.rank * 0.12)}
+                  strokeWidth={Math.max(isLight ? 1.35 : 0.85, (isLight ? 2.35 : 1.55) - info.rank * 0.12)}
                   strokeDasharray={isLight ? "3 8" : "2 12"}
                   strokeLinecap="round"
                 />
@@ -178,6 +185,7 @@ export function SpaceWorld({
             active={active}
             dimmed={dimmed}
             highlighted={pos.related || matched}
+            destroying={destroyingId === signal.id}
             magnetRank={pos.rank}
             label={kindLabels[signal.kind] || signal.kind}
             theme={theme}

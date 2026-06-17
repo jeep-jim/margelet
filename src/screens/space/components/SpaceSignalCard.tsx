@@ -13,12 +13,14 @@ type Props = {
   onClose: () => void;
   onPullSimilar: () => void;
   onReply: () => void;
-  onDelete: () => void;
+  onHide: () => void;
 };
 
-export function SpaceSignalCard({ theme, copy, selected, telegramUser, replyText, setReplyText, onClose, onPullSimilar, onReply, onDelete }: Props) {
+export function SpaceSignalCard({ theme, copy, selected, telegramUser, replyText, setReplyText, onClose, onPullSimilar, onReply, onHide }: Props) {
   const isLight = theme === "light";
   const kindLabels = copy.kind as Record<string, string>;
+  const isMine = Boolean(telegramUser && selected.authorName === getUserName(telegramUser));
+
   return (
     <div className="absolute inset-0 z-30 flex items-end justify-center p-3 pointer-events-none sm:items-center">
       <div className={`pointer-events-auto w-full max-w-[430px] rounded-[32px] border p-4 shadow-2xl ${isLight ? "border-[#d8e3ef] bg-white text-[#07111d]" : "border-white/10 bg-[#101d2c] text-white"}`}>
@@ -43,16 +45,19 @@ export function SpaceSignalCard({ theme, copy, selected, telegramUser, replyText
         {selected.id.startsWith("demo-") ? (
           <div className={`mt-4 rounded-2xl px-3 py-3 text-sm font-bold ${isLight ? "bg-[#eef4fb] text-[#40566e]" : "bg-white/8 text-white/68"}`}>{copy.demoHint}</div>
         ) : (
-          <>
-            <div className="mt-4 flex gap-2">
-              <input value={replyText} onChange={(event) => setReplyText(event.target.value)} placeholder={copy.localReply} className={`min-w-0 flex-1 rounded-full px-4 py-3 text-sm font-bold outline-none ${isLight ? "bg-[#eef4fb]" : "bg-white/8"}`} />
-              <button type="button" onClick={onReply} className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}><Send className="h-4 w-4" /></button>
-            </div>
-            {telegramUser && selected.authorName === getUserName(telegramUser) ? (
-              <button type="button" onClick={onDelete} className="mt-4 w-full rounded-full bg-rose-500 px-4 py-3 text-sm font-black text-white">{copy.deleteSignal}</button>
-            ) : null}
-          </>
+          <div className="mt-4 flex gap-2">
+            <input value={replyText} onChange={(event) => setReplyText(event.target.value)} placeholder={copy.localReply} className={`min-w-0 flex-1 rounded-full px-4 py-3 text-sm font-bold outline-none ${isLight ? "bg-[#eef4fb]" : "bg-white/8"}`} />
+            <button type="button" onClick={onReply} className={`grid h-12 w-12 shrink-0 place-items-center rounded-full ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}><Send className="h-4 w-4" /></button>
+          </div>
         )}
+
+        <button
+          type="button"
+          onClick={onHide}
+          className={`mt-4 w-full rounded-full px-4 py-3 text-sm font-black text-white transition active:scale-[.98] ${isMine ? "bg-rose-500" : "bg-gradient-to-r from-slate-700 via-slate-800 to-black"}`}
+        >
+          {isMine ? copy.deleteSignal : "👽 скрыть сигнал"}
+        </button>
       </div>
     </div>
   );

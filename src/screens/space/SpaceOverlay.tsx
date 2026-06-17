@@ -42,11 +42,12 @@ export function SpaceOverlay({
   const [replyText, setReplyText] = useState("");
   const [activePlanet, setActivePlanet] = useState<SpacePlanetId>("all");
   const [toast, setToast] = useState<string | null>(null);
+  const [destroyingId, setDestroyingId] = useState<string | null>(null);
 
   const copy = useMemo(() => getSpaceCopy(locale), [locale]);
   const isLight = theme === "light";
   const camera = useSpaceCamera();
-  const { visibleSignals, createSignal, addReply, removeSignal } = useSpaceSignals();
+  const { visibleSignals, createSignal, addReply, hideSignal } = useSpaceSignals();
   const selected = visibleSignals.find((item) => item.id === selectedId) || null;
   const magnet = visibleSignals.find((item) => item.id === magnetId) || null;
   const searchMatchedIds = useSpaceSearch(searchQuery, visibleSignals);
@@ -130,11 +131,16 @@ export function SpaceOverlay({
     if (ok) setReplyText("");
   };
 
-  const handleDelete = () => {
-    if (!selected) return;
-    removeSignal(selected.id);
-    if (magnetId === selected.id) setMagnetId(null);
+  const handleHideSignal = () => {
+    if (!selected || destroyingId) return;
+    const id = selected.id;
     setSelectedId(null);
+    if (magnetId === id) setMagnetId(null);
+    setDestroyingId(id);
+    window.setTimeout(() => {
+      hideSignal(id);
+      setDestroyingId(null);
+    }, 820);
   };
 
   const applySearch = () => {
@@ -231,6 +237,7 @@ export function SpaceOverlay({
           searchMatchedIds={searchMatchedIds}
           focusTo={camera.focusTo}
           setSelectedId={setSelectedId}
+          destroyingId={destroyingId}
           resetMagnet={resetMagnetOnly}
         />
 
@@ -289,11 +296,14 @@ export function SpaceOverlay({
           setReplyText={setReplyText}
           onClose={resetSpace}
           onPullSimilar={() => {
-            setMagnetId(selected.id);
+            const target = selected;
+            setMagnetId(target.id);
             setSelectedId(null);
+            setActivePlanet(target.planetId || inferPlanetId(target.text));
+            window.setTimeout(() => camera.focusTo(target, 1.54), 40);
           }}
           onReply={handleReply}
-          onDelete={handleDelete}
+          onHide={handleHideSignal}
         />
       ) : null}
 

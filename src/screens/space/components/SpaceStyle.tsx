@@ -9,6 +9,9 @@ export function SpaceStyle() {
       @keyframes spaceComet { 0%{transform:translate3d(-20vw,18vh,0) rotate(-12deg); opacity:0} 12%,70%{opacity:.32} 100%{transform:translate3d(120vw,-22vh,0) rotate(-12deg); opacity:0} }
       @keyframes spaceWhisper { 0%,75%,100%{opacity:0; transform:translateY(8px)} 82%,94%{opacity:1; transform:translateY(0)} }
       @keyframes spaceIntroCrawl { 0%{transform:rotateX(24deg) translateY(70%); opacity:0} 9%{opacity:1} 78%{opacity:1} 100%{transform:rotateX(24deg) translateY(-95%) scale(.72); opacity:0} }
+      @keyframes spaceUfoStrike { 0%{opacity:0; transform:translate3d(-70px,-32px,0) rotate(-16deg) scale(.8)} 28%{opacity:1} 68%{opacity:1; transform:translate3d(4px,2px,0) rotate(8deg) scale(1)} 100%{opacity:0; transform:translate3d(42px,-26px,0) rotate(18deg) scale(.88)} }
+      @keyframes spaceLaser { 0%,24%{opacity:0; transform:scaleX(.12)} 34%,70%{opacity:1; transform:scaleX(1)} 100%{opacity:0; transform:scaleX(.28)} }
+      @keyframes spaceBoom { 0%,42%{opacity:0; transform:scale(.15)} 58%{opacity:.95; transform:scale(1)} 100%{opacity:0; transform:scale(1.9)} }
       .space-root, .space-stage { touch-action: none; overscroll-behavior: none; -webkit-user-select: none; user-select: none; }
       .space-stage { -webkit-overflow-scrolling: auto; }
       .space-stage:active { cursor: grabbing; }
