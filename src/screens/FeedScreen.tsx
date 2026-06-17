@@ -10,7 +10,6 @@ import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
-import { SpaceOverlay } from "./space/SpaceOverlay";
 import {
   FEED_SCREEN_COPY,
   SmartFeedBar,
@@ -358,7 +357,6 @@ function readFeedSettingsFromStorage(locale: Locale): FeedSettings {
     if (parsed?.mediaMode === "text") mediaMode = "text";
     else if (parsed?.mediaMode === "photo") mediaMode = "photo";
     else if (parsed?.mediaMode === "video") mediaMode = "video";
-    else if (parsed?.mediaMode === "chat") mediaMode = "all";
     else mediaMode = "all";
 
     const countries = Array.isArray(parsed?.countries)
@@ -1824,15 +1822,6 @@ export function FeedScreen({
   }, []);
 
   useEffect(() => {
-    if (feedSettings.mediaMode === "chat") {
-      setSearchOverlayOpen(false);
-      setSearchCategoriesOpen(false);
-      setSubscriptionsOverlayOpen(false);
-    }
-  }, [feedSettings.mediaMode]);
-
-
-  useEffect(() => {
     const localeCountry = String(locale).toLowerCase();
 
     setFeedSettings((prev) => {
@@ -2593,7 +2582,6 @@ export function FeedScreen({
   const hasActiveFeedFilters = searchQuery.trim().length > 0 || selectedTags.length > 0;
   const shouldShowClearFeedFilters =
     !tagsOpen &&
-    feedSettings.mediaMode !== "chat" &&
     hasActiveFeedFilters &&
     visiblePosts.length > 0;
   const shouldShowFeedRefresh =
@@ -2855,15 +2843,6 @@ export function FeedScreen({
         </div>
       ) : null}
 
-      {feedSettings.mediaMode === "chat" ? (
-        <SpaceOverlay
-          locale={locale}
-          posts={posts}
-          onClose={() => {
-            setFeedSettings((prev) => ({ ...prev, mediaMode: "all" }));
-          }}
-        />
-      ) : null}
 
       <FeedHeader
         locale={locale}
@@ -3039,7 +3018,7 @@ onChangeMediaMode={changeFeedMediaMode}
       ) : null}
 
       <div className="mx-auto w-full max-w-[570px]">
-        {feedSettings.mediaMode === "chat" ? null : feedSettings.mediaMode === "video" ? (
+        {feedSettings.mediaMode === "video" ? (
           <VideoGridView
             posts={renderedPosts}
             locale={locale}
