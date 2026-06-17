@@ -120,13 +120,6 @@ export function SpaceWorld({
         if (!(event.target as HTMLElement).closest("button")) setSelectedId(null);
       }}
     >
-      <div
-        className="absolute left-0 top-[34%] z-10 flex items-center gap-2 rounded-r-full bg-white/10 px-4 py-2 text-xs font-black backdrop-blur-md"
-        style={{ animation: "spaceComet 48s linear infinite" }}
-      >
-        ☄️ ardent intention
-      </div>
-
       {magnet ? (
         <>
           <span

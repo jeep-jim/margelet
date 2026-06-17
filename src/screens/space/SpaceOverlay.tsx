@@ -4,11 +4,24 @@ import { useEffect, useMemo, useState } from "react";
 
 import type { IngestedPost, Locale } from "../../types/app";
 import { getSpaceCopy } from "./i18n";
-import { applyTheme, getHeatContacts, getTelegramAuthUrl, getUserName, inferPlanetId, readTelegramUser, readTheme } from "./lib/space-engine";
+import {
+  applyTheme,
+  getHeatContacts,
+  getTelegramAuthUrl,
+  getUserName,
+  inferPlanetId,
+  readTelegramUser,
+  readTheme,
+} from "./lib/space-engine";
 import { useSpaceCamera } from "./hooks/useSpaceCamera";
 import { useSpaceSearch } from "./hooks/useSpaceSearch";
 import { useSpaceSignals } from "./hooks/useSpaceSignals";
-import type { SpacePlanetId, SpaceSignalKind, SpaceTelegramUser, SpaceTheme } from "./types";
+import type {
+  SpacePlanetId,
+  SpaceSignalKind,
+  SpaceTelegramUser,
+  SpaceTheme,
+} from "./types";
 import { SpaceBackground } from "./components/SpaceBackground";
 import { SpaceCreateModal } from "./components/SpaceCreateModal";
 import { SpaceHeader } from "./components/SpaceHeader";
@@ -31,7 +44,9 @@ export function SpaceOverlay({
   onClose: () => void;
 }) {
   const [theme, setTheme] = useState<SpaceTheme>(() => readTheme());
-  const [telegramUser, setTelegramUser] = useState<SpaceTelegramUser | null>(() => readTelegramUser());
+  const [telegramUser, setTelegramUser] = useState<SpaceTelegramUser | null>(
+    () => readTelegramUser(),
+  );
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [magnetId, setMagnetId] = useState<string | null>(null);
   const [composerOpen, setComposerOpen] = useState(false);
@@ -45,12 +60,15 @@ export function SpaceOverlay({
   const [toast, setToast] = useState<string | null>(null);
   const [destroyingId, setDestroyingId] = useState<string | null>(null);
   const [heatMode, setHeatMode] = useState<"similar" | "mine" | null>(null);
+  const [planetsOpen, setPlanetsOpen] = useState(false);
 
   const copy = useMemo(() => getSpaceCopy(locale), [locale]);
   const isLight = theme === "light";
   const camera = useSpaceCamera();
-  const { visibleSignals, createSignal, addReply, hideSignal } = useSpaceSignals();
-  const selected = visibleSignals.find((item) => item.id === selectedId) || null;
+  const { visibleSignals, createSignal, addReply, hideSignal } =
+    useSpaceSignals();
+  const selected =
+    visibleSignals.find((item) => item.id === selectedId) || null;
   const magnet = visibleSignals.find((item) => item.id === magnetId) || null;
   const searchMatchedIds = useSpaceSearch(searchQuery, visibleSignals);
   const heatContacts = useMemo(() => {
@@ -58,7 +76,12 @@ export function SpaceOverlay({
     if (heatMode === "mine" && telegramUser) {
       const myName = getUserName(telegramUser);
       return visibleSignals
-        .filter((signal) => signal.id !== magnet.id && !signal.id.startsWith("demo-") && signal.authorName === myName)
+        .filter(
+          (signal) =>
+            signal.id !== magnet.id &&
+            !signal.id.startsWith("demo-") &&
+            signal.authorName === myName,
+        )
         .slice(0, 18)
         .map((signal, rank) => ({ signal, rank, score: 10 - rank * 0.2 }));
     }
@@ -72,8 +95,12 @@ export function SpaceOverlay({
     document.body.style.touchAction = "none";
 
     const preventGesture = (event: Event) => event.preventDefault();
-    document.addEventListener("gesturestart", preventGesture, { passive: false } as AddEventListenerOptions);
-    document.addEventListener("gesturechange", preventGesture, { passive: false } as AddEventListenerOptions);
+    document.addEventListener("gesturestart", preventGesture, {
+      passive: false,
+    } as AddEventListenerOptions);
+    document.addEventListener("gesturechange", preventGesture, {
+      passive: false,
+    } as AddEventListenerOptions);
 
     const sync = () => {
       setTheme(readTheme());
@@ -115,6 +142,12 @@ export function SpaceOverlay({
     showToast("У вас пока нет событий.");
   };
 
+  const handleFollowHeat = () => {
+    const count = heatContacts.length || 1;
+    showToast(
+      `👀 Следим за подборкой: ${count} мысл${count === 1 ? "ь" : "ей"}`,
+    );
+  };
 
   const resetSpace = () => {
     setSelectedId(null);
@@ -143,7 +176,11 @@ export function SpaceOverlay({
 
   const handleReply = () => {
     if (!selected) return;
-    const ok = addReply({ signal: selected, text: replyText, user: telegramUser });
+    const ok = addReply({
+      signal: selected,
+      text: replyText,
+      user: telegramUser,
+    });
     if (ok) setReplyText("");
   };
 
@@ -163,7 +200,9 @@ export function SpaceOverlay({
   };
 
   const applySearch = () => {
-    const firstMatch = visibleSignals.find((signal) => searchMatchedIds.has(signal.id));
+    const firstMatch = visibleSignals.find((signal) =>
+      searchMatchedIds.has(signal.id),
+    );
     setSearchOpen(false);
     if (!firstMatch) return;
     setSelectedId(null);
@@ -180,7 +219,10 @@ export function SpaceOverlay({
     }
 
     const myName = getUserName(telegramUser);
-    const ownSignals = visibleSignals.filter((signal) => !signal.id.startsWith("demo-") && signal.authorName === myName);
+    const ownSignals = visibleSignals.filter(
+      (signal) =>
+        !signal.id.startsWith("demo-") && signal.authorName === myName,
+    );
     const anchor = ownSignals[0];
 
     if (!anchor) {
@@ -192,16 +234,36 @@ export function SpaceOverlay({
     setMagnetId(anchor.id);
     setHeatMode("mine");
     setActivePlanet("all");
-    setTimeout(() => camera.focusTo(anchor, ownSignals.length > 1 ? 1.52 : 1.22), 60);
+    setTimeout(
+      () => camera.focusTo(anchor, ownSignals.length > 1 ? 1.52 : 1.22),
+      60,
+    );
   };
 
-  const hasOverlayState = Boolean(selectedId || magnetId || composerOpen || searchOpen || introOpen || searchQuery.trim());
+  const hasOverlayState = Boolean(
+    selectedId ||
+    magnetId ||
+    composerOpen ||
+    searchOpen ||
+    introOpen ||
+    searchQuery.trim(),
+  );
 
   return createPortal(
-    <div className={`space-root fixed inset-0 z-[1000] overflow-hidden ${isLight ? "bg-[#edf3fa] text-[#08111d]" : "bg-[#02060d] text-white"}`}>
+    <div
+      className={`space-root fixed inset-0 z-[1000] overflow-hidden ${isLight ? "bg-[#edf3fa] text-[#08111d]" : "bg-[#02060d] text-white"}`}
+    >
       <SpaceStyle />
-      <SpaceBackground theme={theme} viewport={camera.viewport} planetId={activePlanet} />
-      {magnet ? <div className={`pointer-events-none absolute inset-0 z-[9] transition-opacity duration-500 ${isLight ? "bg-slate-900/30" : "bg-black/24"}`} /> : null}
+      <SpaceBackground
+        theme={theme}
+        viewport={camera.viewport}
+        planetId={activePlanet}
+      />
+      {magnet ? (
+        <div
+          className={`pointer-events-none absolute inset-0 z-[9] transition-opacity duration-500 ${isLight ? "bg-slate-900/30" : "bg-black/24"}`}
+        />
+      ) : null}
 
       <SpaceHeader
         isLight={isLight}
@@ -270,9 +332,22 @@ export function SpaceOverlay({
           zoomOut={() => camera.zoomTo(camera.viewport.scale - 0.18)}
         />
 
-        <SpacePlanetPicker theme={theme} activePlanet={activePlanet} setActivePlanet={setActivePlanet} />
+        {planetsOpen ? (
+          <div
+            className={`pointer-events-none absolute inset-0 z-[45] backdrop-blur-[3px] ${isLight ? "bg-slate-100/36" : "bg-black/28"}`}
+          />
+        ) : null}
 
-        {magnet && (heatContacts.length > 0 || heatMode === "mine") ? (
+        <SpacePlanetPicker
+          theme={theme}
+          activePlanet={activePlanet}
+          setActivePlanet={setActivePlanet}
+          onOpenChange={setPlanetsOpen}
+        />
+
+        {magnet &&
+        !planetsOpen &&
+        (heatContacts.length > 0 || heatMode === "mine") ? (
           <SpaceHeatContactsPanel
             theme={theme}
             title={heatMode === "mine" ? "Мои мысли в куче" : "Похожие мысли"}
@@ -288,6 +363,7 @@ export function SpaceOverlay({
             }}
             onClose={resetMagnetOnly}
             onReply={handleReply}
+            onFollow={handleFollowHeat}
           />
         ) : null}
 
@@ -311,19 +387,26 @@ export function SpaceOverlay({
           <Compass className="h-5 w-5" />
         </button>
 
-        <div className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceWhisper 28s linear infinite" }}>
+        <div
+          className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md"
+          style={{ animation: "spaceWhisper 28s linear infinite" }}
+        >
           🌌 {copy.noticed}
         </div>
 
         {!telegramUser ? (
-          <div className={`absolute bottom-24 left-1/2 z-30 w-[320px] -translate-x-1/2 rounded-[26px] px-4 py-3 text-center text-sm font-bold shadow-2xl ${isLight ? "bg-white/86 text-[#40566e]" : "bg-[#101d2c]/90 text-white/72"}`}>
+          <div
+            className={`absolute bottom-24 left-1/2 z-30 w-[320px] -translate-x-1/2 rounded-[26px] px-4 py-3 text-center text-sm font-bold shadow-2xl ${isLight ? "bg-white/86 text-[#40566e]" : "bg-[#101d2c]/90 text-white/72"}`}
+          >
             {copy.authHint}
           </div>
         ) : null}
       </div>
 
       {toast ? (
-        <div className={`pointer-events-none absolute left-1/2 top-[calc(5rem+env(safe-area-inset-top))] z-50 -translate-x-1/2 rounded-full px-4 py-2 text-sm font-black shadow-2xl backdrop-blur-xl ${isLight ? "bg-white/90 text-[#07111d]" : "bg-[#101d2c]/92 text-white"}`}>
+        <div
+          className={`pointer-events-none absolute left-1/2 top-[calc(5rem+env(safe-area-inset-top))] z-50 -translate-x-1/2 rounded-full px-4 py-2 text-sm font-black shadow-2xl backdrop-blur-xl ${isLight ? "bg-white/90 text-[#07111d]" : "bg-[#101d2c]/92 text-white"}`}
+        >
           {toast}
         </div>
       ) : null}
@@ -367,7 +450,9 @@ export function SpaceOverlay({
         />
       ) : null}
 
-      {introOpen ? <SpaceStory copy={copy} onClose={() => setIntroOpen(false)} /> : null}
+      {introOpen ? (
+        <SpaceStory copy={copy} onClose={() => setIntroOpen(false)} />
+      ) : null}
 
       {composerOpen ? (
         <SpaceCreateModal
@@ -382,6 +467,6 @@ export function SpaceOverlay({
         />
       ) : null}
     </div>,
-    document.body
+    document.body,
   );
 }

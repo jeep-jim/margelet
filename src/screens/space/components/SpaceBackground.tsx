@@ -51,11 +51,10 @@ export function SpaceBackground({ theme, viewport, planetId }: Props) {
         />
       </div>
 
-      <div className="pointer-events-none absolute inset-0 opacity-90" style={{ transform: `translate3d(${viewport.x * 0.04}px, ${viewport.y * 0.04}px, 0)`, transition: "transform .7s ease-out" }}>
-        <div className="absolute inset-0" style={{ animation: "spaceDrift 92s ease-in-out infinite" }}>
-          <div className={`absolute left-[18%] top-[76%] h-10 w-32 rotate-[-18deg] rounded-full ${isLight ? "bg-white/34" : "bg-white/6"}`} />
-          <div className="absolute left-[62%] top-[38%] h-[110px] w-[240px] rotate-[-18deg] rounded-[50%] blur-sm" style={{ background: palette.mist }} />
-          <div className="absolute left-[72%] top-[50%] h-[170px] w-[220px] rotate-[24deg] rounded-[50%] blur-md" style={{ background: palette.dust }} />
+      <div className="pointer-events-none absolute inset-0 opacity-70" style={{ transform: `translate3d(${viewport.x * 0.025}px, ${viewport.y * 0.025}px, 0)`, transition: "transform .7s ease-out" }}>
+        <div className="absolute inset-0" style={{ animation: "spaceDrift 110s ease-in-out infinite" }}>
+          <div className="absolute left-[62%] top-[38%] h-[110px] w-[240px] rotate-[-18deg] rounded-[50%] blur-md" style={{ background: palette.mist }} />
+          <div className="absolute left-[72%] top-[50%] h-[170px] w-[220px] rotate-[24deg] rounded-[50%] blur-lg" style={{ background: palette.dust }} />
         </div>
       </div>
     </>
