@@ -950,7 +950,9 @@ export default function App() {
       if (typeof window !== "undefined" && "requestIdleCallback" in window) {
         (window as any).requestIdleCallback(() => void loadRest(), { timeout: 4000 });
       } else {
-        window.setTimeout(() => void loadRest(), 1800);
+        setTimeout(() => {
+          void loadRest();
+        }, 1800);
       }
     } catch (error) {
       console.error("Failed to load feed", error);
