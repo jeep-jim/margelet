@@ -145,6 +145,12 @@ export function requestGTranslate(locale?: string | null, attempt = 0) {
   if (typeof document === "undefined") return;
 
   try {
+    (window as unknown as { __MARGELET_LOAD_GTRANSLATE__?: () => void }).__MARGELET_LOAD_GTRANSLATE__?.();
+  } catch {
+    // ignore
+  }
+
+  try {
     (window as unknown as { __MARGELET_PROTECT_TRANSLATE_UI__?: (root: Document) => void }).__MARGELET_PROTECT_TRANSLATE_UI__?.(document);
   } catch {
     // ignore

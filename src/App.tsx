@@ -488,91 +488,93 @@ function fallbackAccess(user: TgUser | null): AccessInfo | null {
   };
 }
 
-async function loadServerFeed(_locale: Locale): Promise<IngestedPost[]> {
+type FeedLoadMode = "initial" | "rest" | "all";
+
+type FeedLoadOptions = {
+  mode?: FeedLoadMode;
+};
+
+async function readFeedPayload(path: string): Promise<IngestedPost[]> {
   const readPosts = (payload: any): IngestedPost[] => {
     if (Array.isArray(payload?.posts)) return payload.posts;
     if (Array.isArray(payload?.items)) return payload.items;
     return [];
   };
 
+  const res = await fetch(path);
+  if (!res.ok) return [];
+
+  const data = await res.json();
+  return readPosts(data);
+}
+
+async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Promise<IngestedPost[]> {
+  const mode = options.mode || "initial";
+  const countryCode = normalizeCountryCode(locale) as CountryCode;
+
+  const sortPosts = (items: IngestedPost[]) =>
+    items.sort(
+      (a, b) =>
+        Date.parse(String(b.createdAt || "")) -
+        Date.parse(String(a.createdAt || ""))
+    );
+
   try {
-    const indexRes = await fetch(`/feeds/index.json`);
+    const countryRes = await fetch(`/feeds/${countryCode}.json`);
 
-    if (indexRes.ok) {
-      const index = await indexRes.json();
-      const countries = Object.values(index?.countries || {}) as Array<{
-        path?: string;
-        mode?: "single" | "chunked";
-        chunks?: Array<{ path?: string }> | number;
-      }>;
+    if (countryRes.ok) {
+      const countryData = await countryRes.json();
 
-      const countryPosts = await Promise.all(
-        countries.map(async (country: any) => {
-          if (!country?.path) return [];
+      if (Array.isArray(countryData?.posts) && countryData.posts.length > 0) {
+        return sortPosts(countryData.posts);
+      }
 
-          const countryRes = await fetch(country.path);
-          if (!countryRes.ok) return [];
+      if (Array.isArray(countryData?.items) && countryData.items.length > 0) {
+        return sortPosts(countryData.items);
+      }
 
-          const countryData = await countryRes.json();
+      if (Array.isArray(countryData?.chunks)) {
+        const chunks = countryData.chunks.filter((chunk: any) => Boolean(chunk?.path));
+        const selectedChunks =
+          mode === "initial"
+            ? chunks.slice(0, 1)
+            : mode === "rest"
+              ? chunks.slice(1)
+              : chunks;
 
-          const directPosts = readPosts(countryData);
-          if (directPosts.length > 0) return directPosts;
-
-          if (Array.isArray(countryData?.chunks)) {
-            const chunkPosts = await Promise.all(
-              countryData.chunks.map(async (chunk: any) => {
-                if (!chunk?.path) return [];
-
-                const chunkRes = await fetch(chunk.path);
-                if (!chunkRes.ok) return [];
-
-                const chunkData = await chunkRes.json();
-                return readPosts(chunkData);
-              })
-            );
-
-            return chunkPosts.flat();
-          }
-
-          return [];
-        })
-      );
-
-      const posts = countryPosts.flat();
-
-      if (posts.length > 0) {
-        return posts.sort(
-          (a, b) =>
-            Date.parse(String(b.createdAt || "")) -
-            Date.parse(String(a.createdAt || ""))
+        const chunkPosts = await Promise.all(
+          selectedChunks.map((chunk: any) => readFeedPayload(chunk.path))
         );
+
+        return sortPosts(chunkPosts.flat());
       }
     }
   } catch {
-    //
+    // Fall back below.
   }
 
   try {
     const res = await fetch(`/api/feed`);
-
     const contentType = res.headers.get("content-type") || "";
 
     if (res.ok && contentType.includes("application/json")) {
       const data = await res.json();
-      return readPosts(data);
+      const posts = Array.isArray(data?.posts)
+        ? data.posts
+        : Array.isArray(data?.items)
+          ? data.items
+          : [];
+
+      return sortPosts(posts.filter((post: IngestedPost) => normalizeCountryCode(post.sourceCountryCode || locale) === countryCode));
     }
   } catch {
-    //
+    // Fall back below.
   }
 
-  const fallbackRes = await fetch(`/feed.json`);
-
-  if (!fallbackRes.ok) {
-    throw new Error("feed request failed");
-  }
-
-  const fallbackData = await fallbackRes.json();
-  return readPosts(fallbackData);
+  const fallbackPosts = await readFeedPayload(`/feed.json`);
+  return sortPosts(
+    fallbackPosts.filter((post) => normalizeCountryCode(post.sourceCountryCode || locale) === countryCode)
+  );
 }
 
 export default function App() {
@@ -922,12 +924,37 @@ export default function App() {
     setServerPosts([]);
 
     try {
-      const nextPosts = await loadServerFeed(locale);
-      setServerPosts(nextPosts);
+      const firstPosts = await loadServerFeed(locale, { mode: "initial" });
+      setServerPosts(firstPosts);
+      setIsFeedLoading(false);
+
+      const loadRest = async () => {
+        try {
+          const restPosts = await loadServerFeed(locale, { mode: "rest" });
+          if (restPosts.length === 0) return;
+
+          setServerPosts((prev) => {
+            const seen = new Set(prev.map((post) => post.id));
+            const merged = [...prev, ...restPosts.filter((post) => !seen.has(post.id))];
+            return merged.sort(
+              (a, b) =>
+                Date.parse(String(b.createdAt || "")) -
+                Date.parse(String(a.createdAt || ""))
+            );
+          });
+        } catch {
+          // Initial feed is already visible; background chunks may fail silently.
+        }
+      };
+
+      if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+        (window as any).requestIdleCallback(() => void loadRest(), { timeout: 4000 });
+      } else {
+        window.setTimeout(() => void loadRest(), 1800);
+      }
     } catch (error) {
       console.error("Failed to load feed", error);
       setServerPosts([]);
-    } finally {
       setIsFeedLoading(false);
     }
   }, [locale]);

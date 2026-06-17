@@ -25,13 +25,27 @@
         location.pathname.startsWith("/jim") || location.pathname.startsWith("/admin");
     </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LXS66GXHN"></script>
     <script>
       if (!window.__MARGELET_ADMIN_PATH__) {
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag("js", new Date());
-        gtag("config", "G-6LXS66GXHN");
+        window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+        window.gtag("js", new Date());
+        window.gtag("config", "G-6LXS66GXHN");
+
+        window.addEventListener("load", function () {
+          var loadAnalytics = function () {
+            var script = document.createElement("script");
+            script.src = "https://www.googletagmanager.com/gtag/js?id=G-6LXS66GXHN";
+            script.async = true;
+            document.head.appendChild(script);
+          };
+
+          if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(loadAnalytics, { timeout: 3500 });
+          } else {
+            window.setTimeout(loadAnalytics, 2500);
+          }
+        }, { once: true });
       }
     </script>
 
@@ -39,6 +53,8 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="llms.txt" type="text/markdown" href="/llms.txt" />
+    <link rel="alternate" type="application/rss+xml" title="margeleT feed" href="/feed.json" />
 
     <meta name="theme-color" content="#17212b" />
     <meta name="color-scheme" content="dark" />
@@ -257,9 +273,12 @@
           subtree: true
         });
 
-        window.setInterval(function () {
+        var hideRuns = 0;
+        var hideTimer = window.setInterval(function () {
+          hideRuns += 1;
           window.__MARGELET_HIDE_GTRANSLATE_CHROME__?.(document);
-        }, 700);
+          if (hideRuns >= 16) window.clearInterval(hideTimer);
+        }, 1000);
       })();
     </script>
 
@@ -291,10 +310,24 @@
           wrapper_selector: ".gtranslate_wrapper"
         };
 
-        var gtranslateScript = document.createElement("script");
-        gtranslateScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js";
-        gtranslateScript.defer = true;
-        document.body.appendChild(gtranslateScript);
+        window.__MARGELET_LOAD_GTRANSLATE__ = window.__MARGELET_LOAD_GTRANSLATE__ || function () {
+          if (window.__MARGELET_GTRANSLATE_LOADED__) return;
+          window.__MARGELET_GTRANSLATE_LOADED__ = true;
+
+          var gtranslateScript = document.createElement("script");
+          gtranslateScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js";
+          gtranslateScript.defer = true;
+          document.body.appendChild(gtranslateScript);
+        };
+
+        window.addEventListener("load", function () {
+          var loadTranslate = window.__MARGELET_LOAD_GTRANSLATE__;
+          if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(loadTranslate, { timeout: 6000 });
+          } else {
+            window.setTimeout(loadTranslate, 4500);
+          }
+        }, { once: true });
       }
     </script>
   </body>

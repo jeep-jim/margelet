@@ -67,6 +67,8 @@ export function FeedSourceAvatar({
           alt={post.source.title}
           className="h-full w-full object-cover"
           referrerPolicy="no-referrer"
+          loading="lazy"
+          decoding="async"
           onError={() => {
             if (fallbackAvatar && avatarSrc !== fallbackAvatar) {
               setAvatarSrc(fallbackAvatar);

@@ -496,6 +496,7 @@ export function FeedMediaCard({
 
               <input
                 type="range"
+                aria-label="Позиция воспроизведения"
                 min={0}
                 max={duration || 0}
                 step={0.1}

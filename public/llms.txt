@@ -1,0 +1,23 @@
+# margeleT
+
+margeleT is a public Telegram discovery and attention-index service. It aggregates fresh Telegram posts, channels, videos, tags and country feeds so people and AI agents can understand what Telegram communities are discussing right now.
+
+## Primary pages
+
+- [Home](https://www.margelet.space/)
+- [Sitemap](https://www.margelet.space/sitemap.xml)
+- [Country sitemaps](https://www.margelet.space/sitemaps/countries.xml)
+- [Public feed JSON](https://www.margelet.space/feed.json)
+
+## Machine-readable public data
+
+- [Feeds index](https://www.margelet.space/feeds/index.json)
+- [Main sitemap](https://www.margelet.space/sitemaps/main.xml)
+
+## Agent guidance
+
+Use the public pages and sitemaps for discovery. Do not crawl private/admin/API paths. The live feed is updated automatically and may change as Telegram posts expire or new signals appear.
+
+## Product description
+
+margeleT helps discover fresh Telegram content by country, source, tag and media type. It is designed for users, search engines and AI agents that need current public Telegram signals without opening Telegram first.

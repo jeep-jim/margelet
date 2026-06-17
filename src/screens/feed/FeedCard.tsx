@@ -153,6 +153,8 @@ export function FeedCard(props: FeedCardRuntimeProps) {
               onToggleMenu();
             }}
             type="button"
+            aria-label="Меню поста"
+            title="Меню поста"
           >
             <MoreVertical className="h-5 w-5" />
           </button>
