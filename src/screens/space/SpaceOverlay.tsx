@@ -172,7 +172,7 @@ export function SpaceOverlay({
     <div className={`space-root fixed inset-0 z-[1000] overflow-hidden ${isLight ? "bg-[#edf3fa] text-[#08111d]" : "bg-[#02060d] text-white"}`}>
       <SpaceStyle />
       <SpaceBackground theme={theme} viewport={camera.viewport} planetId={activePlanet} />
-      {magnet ? <div className={`pointer-events-none absolute inset-0 z-[9] transition-opacity duration-500 ${isLight ? "bg-slate-900/20" : "bg-black/24"}`} /> : null}
+      {magnet ? <div className={`pointer-events-none absolute inset-0 z-[9] transition-opacity duration-500 ${isLight ? "bg-slate-900/30" : "bg-black/24"}`} /> : null}
 
       <SpaceHeader
         isLight={isLight}
@@ -212,6 +212,12 @@ export function SpaceOverlay({
         onPointerMove={camera.onPointerMove}
         onPointerUp={camera.onPointerUp}
         onPointerCancel={camera.onPointerUp}
+        onClick={(event) => {
+          if (!magnetId) return;
+          const target = event.target as HTMLElement;
+          if (target.closest("button, input, textarea, select, a")) return;
+          resetMagnetOnly();
+        }}
       >
         <SpaceWorld
           theme={theme}

@@ -108,7 +108,7 @@ export function SpaceWorld({
       .filter(Boolean) as Array<{ id: string; info: { rank: number; score: number }; pos: Position }>;
   }, [magnet, related, visibleSignals]);
 
-  const lineColor = isLight ? "rgba(14,165,233,.38)" : "rgba(125,211,252,.26)";
+  const lineColor = isLight ? "rgba(2,132,199,.82)" : "rgba(125,211,252,.34)";
 
   return (
     <div
@@ -143,7 +143,7 @@ export function SpaceWorld({
             style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 220, height: 220, transform: "translate(-50%, -50%)", animation: "spaceWave 1150ms ease-out 1 .28s forwards" }}
           />
           {relatedLines.length ? (
-            <svg className="pointer-events-none absolute inset-0 z-[7] h-full w-full overflow-visible opacity-55">
+            <svg className={`pointer-events-none absolute inset-0 z-[7] h-full w-full overflow-visible ${isLight ? "opacity-90" : "opacity-60"}`}>
               {relatedLines.map(({ id, info, pos }) => (
                 <line
                   key={`link-${magnet.id}-${id}`}
@@ -152,8 +152,8 @@ export function SpaceWorld({
                   x2={`${pos.x}%`}
                   y2={`${pos.y}%`}
                   stroke={lineColor}
-                  strokeWidth={Math.max(0.8, 1.5 - info.rank * 0.12)}
-                  strokeDasharray="2 12"
+                  strokeWidth={Math.max(isLight ? 1.25 : 0.8, (isLight ? 2.15 : 1.5) - info.rank * 0.12)}
+                  strokeDasharray={isLight ? "3 8" : "2 12"}
                   strokeLinecap="round"
                 />
               ))}

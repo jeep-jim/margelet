@@ -47,7 +47,7 @@ export function SpaceHeader({
           </button>
         </div>
 
-        <div className="flex justify-center overflow-visible -translate-x-[8px] -translate-y-[4px] scale-[0.72] sm:-translate-y-[4px] sm:scale-[0.66]">
+        <div className="flex justify-center overflow-visible -translate-x-[8px] -translate-y-[2px] scale-[0.72] sm:-translate-y-[4px] sm:scale-[0.66]">
           <SpaceLogo isLight={isLight} onClick={onStory} />
         </div>
 
