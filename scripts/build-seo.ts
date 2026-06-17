@@ -257,6 +257,40 @@ function getFirstImage(post: IngestedPost) {
   return poster || null;
 }
 
+
+function getSourceAuthorSchema(post: IngestedPost) {
+  const sourceTitle = getSourceTitle(post);
+  const handle = post.source?.handle || "";
+  return {
+    "@type": "Organization",
+    name: sourceTitle,
+    url: handle ? `${SITE_ORIGIN}${getSourcePath(handle)}` : SITE_ORIGIN,
+    logo: post.source?.avatar || `${SITE_ORIGIN}/icon-512.png`,
+  };
+}
+
+function getPostSchemaText(post: IngestedPost) {
+  const text = String(post.text || "").replace(/\s+/g, " " ).trim();
+  return truncate(text || getSeoPostDescription(post), 3000);
+}
+
+function getPostVideoSchema(post: IngestedPost, fallbackImage?: string | null) {
+  const video = Array.isArray(post.media)
+    ? post.media.find((item) => item.kind === "video" && item.url)
+    : null;
+
+  if (!video?.url) return undefined;
+
+  return {
+    "@type": "VideoObject",
+    name: getSeoPostHeadline(post),
+    description: getSeoPostDescription(post),
+    thumbnailUrl: video.poster || fallbackImage || `${SITE_ORIGIN}/icon-512.png`,
+    uploadDate: isoDate(post.createdAt),
+    contentUrl: video.url,
+  };
+}
+
 function renderVerifiedMark(verified?: boolean) {
   if (!verified) return "";
 
@@ -514,13 +548,25 @@ function renderCountryPage(params: {
       url: `${SITE_ORIGIN}${canonicalPath}`,
       dateModified: updatedAt,
       isPartOf: { "@type": "WebSite", name: "margeleT", url: SITE_ORIGIN },
-      hasPart: posts.slice(0, MAX_POSTS_PER_COUNTRY_PAGE).map((post) => ({
-        "@type": "SocialMediaPosting",
-        headline: getPostTitle(post),
-        url: `${SITE_ORIGIN}${getPostPermalink(post)}`,
-        datePublished: isoDate(post.createdAt),
-        author: { "@type": "Organization", name: post.source?.title || post.source?.handle || "Telegram source" },
-      })),
+      hasPart: posts.slice(0, MAX_POSTS_PER_COUNTRY_PAGE).map((post) => {
+        const image = getFirstImage(post);
+        return {
+          "@type": "SocialMediaPosting",
+          headline: getPostTitle(post),
+          text: getPostSchemaText(post),
+          image: image ? [image] : [`${SITE_ORIGIN}/icon-512.png`],
+          url: `${SITE_ORIGIN}${getPostPermalink(post)}`,
+          mainEntityOfPage: `${SITE_ORIGIN}${getPostPermalink(post)}`,
+          datePublished: isoDate(post.createdAt),
+          author: getSourceAuthorSchema(post),
+          publisher: {
+            "@type": "Organization",
+            name: "margeleT",
+            url: SITE_ORIGIN,
+            logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/icon-512.png` },
+          },
+        };
+      }),
     },
     alternates: tag
       ? ""
@@ -612,19 +658,17 @@ function renderPostPage(params: {
           headline,
           description,
           articleBody: truncate(post.text, 1200),
+          text: getPostSchemaText(post),
           keywords: getKeywordsContent(post),
           url: `${SITE_ORIGIN}${canonicalPath}`,
           mainEntityOfPage: `${SITE_ORIGIN}${canonicalPath}`,
           datePublished: isoDate(post.createdAt),
           dateModified: isoDate(post.mediaRefreshedAt || post.createdAt),
-          image: image ? [image] : undefined,
+          image: image ? [image] : [`${SITE_ORIGIN}/icon-512.png`],
+          video: getPostVideoSchema(post, image),
           inLanguage: SEO_LOCALE_META[countryCode as CountryCode]?.htmlLang || "en",
           about: tags.map((tag) => ({ "@type": "Thing", name: tag.replace(/_/g, " ") })),
-          author: {
-            "@type": "Organization",
-            name: sourceTitle,
-            url: handle ? `${SITE_ORIGIN}${getSourcePath(handle)}` : SITE_ORIGIN,
-          },
+          author: getSourceAuthorSchema(post),
           publisher: {
             "@type": "Organization",
             name: "margeleT",

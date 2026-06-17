@@ -751,7 +751,7 @@ export function SmartFeedBar({
           ? `fixed inset-x-0 ${countriesOpen ? "z-[120]" : "z-[70]"} transition-all duration-300 ease-out ${
               visible
                 ? "translate-y-0 opacity-100"
-                : "pointer-events-none -translate-y-3 opacity-0"
+                : "pointer-events-none invisible -translate-y-3 opacity-0"
             }`
           : countriesOpen
             ? "relative z-[130]"
@@ -760,7 +760,7 @@ export function SmartFeedBar({
       }
       translate="no"
       style={floating ? { top: "var(--app-header-offset)" } : undefined}
-      aria-hidden={floating ? !visible : undefined}
+      {...(floating && !visible ? ({ inert: "" } as Record<string, string>) : {})}
     >
       <div className="mx-auto w-full max-w-[570px]">
         <div className="relative">
