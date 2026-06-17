@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { similarity, WORLD_H, WORLD_W } from "../lib/space-engine";
 import type { SpaceCopy } from "../i18n";
 import type { SpacePlanetId, SpaceSignal, SpaceTheme, SpaceViewport } from "../types";
@@ -36,12 +37,12 @@ function getMagnetPosition(signal: SpaceSignal, magnet: SpaceSignal | null, rela
 
   const rank = hit.rank;
   const score = hit.score;
-  const ring = rank < 4 ? 8 + rank * 4 : rank < 10 ? 24 + (rank - 4) * 4 : 48 + (rank - 10) * 3;
-  const angle = rank * 2.399963 + (score % 3) * 0.18;
+  const ring = rank < 4 ? 4.2 + rank * 2.4 : rank < 9 ? 14 + (rank - 4) * 2.6 : 28 + (rank - 9) * 1.8;
+  const angle = rank * 2.399963 + (score % 3) * 0.16;
 
   return {
-    x: Math.max(5, Math.min(95, magnet.x + Math.cos(angle) * ring)),
-    y: Math.max(9, Math.min(91, magnet.y + Math.sin(angle) * ring * 0.72)),
+    x: Math.max(6, Math.min(94, magnet.x + Math.cos(angle) * ring)),
+    y: Math.max(10, Math.min(90, magnet.y + Math.sin(angle) * ring * 0.72)),
     related: true,
     rank,
     score,
@@ -50,56 +51,61 @@ function getMagnetPosition(signal: SpaceSignal, magnet: SpaceSignal | null, rela
 
 export function SpaceWorld({ theme, copy, viewport, activePlanet, signals, selectedId, magnet, searchQuery, searchMatchedIds, focusTo, setSelectedId, resetMagnet }: Props) {
   const isLight = theme === "light";
-  const visibleSignals = activePlanet === "all" ? signals : signals.filter((signal) => (signal.planetId || "all") === activePlanet || signal.id.startsWith("demo-"));
-  const kindLabels = copy.kind as Record<string, string>;
-  const related = new Map(
-    visibleSignals
-      .filter((signal) => magnet && signal.id !== magnet.id)
-      .map((signal) => ({ signal, score: magnetScore(signal, magnet) }))
-      .filter((item) => item.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 16)
-      .map((item, rank) => [item.signal.id, { rank, score: item.score }] as const)
+  const visibleSignals = useMemo(
+    () => activePlanet === "all" ? signals : signals.filter((signal) => (signal.planetId || "all") === activePlanet || signal.id.startsWith("demo-")),
+    [activePlanet, signals]
   );
+  const kindLabels = copy.kind as Record<string, string>;
+
+  const related = useMemo(() => {
+    if (!magnet) return new Map<string, { rank: number; score: number }>();
+    return new Map(
+      visibleSignals
+        .filter((signal) => signal.id !== magnet.id)
+        .map((signal) => ({ signal, score: magnetScore(signal, magnet) }))
+        .filter((item) => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 10)
+        .map((item, rank) => [item.signal.id, { rank, score: item.score }] as const)
+    );
+  }, [magnet, visibleSignals]);
+
+  const relatedLines = useMemo(() => {
+    if (!magnet) return [];
+    return Array.from(related.entries()).slice(0, 7).map(([id, info]) => {
+      const signal = visibleSignals.find((item) => item.id === id);
+      if (!signal) return null;
+      const pos = getMagnetPosition(signal, magnet, related);
+      return { id, info, pos };
+    }).filter(Boolean) as Array<{ id: string; info: { rank: number; score: number }; pos: Position }>;
+  }, [magnet, related, visibleSignals]);
+
+  const lineColor = isLight ? "rgba(14,165,233,.50)" : "rgba(125,211,252,.32)";
 
   return (
     <div
-      className="absolute left-0 top-[calc(4rem+env(safe-area-inset-top))] origin-top-left transition-transform duration-700 ease-out"
+      className="absolute left-0 top-[calc(4rem+env(safe-area-inset-top))] origin-top-left transition-transform duration-500 ease-out"
       style={{ width: WORLD_W, height: WORLD_H, transform: `translate3d(${viewport.x}px, ${viewport.y}px, 0) scale(${viewport.scale})` }}
       onClick={(event) => {
-        if (event.target === event.currentTarget) resetMagnet();
+        if (!(event.target as HTMLElement).closest("button")) resetMagnet();
       }}
     >
-      <div className="absolute left-0 top-[34%] z-10 flex items-center gap-2 rounded-r-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceComet 30s linear infinite" }}>
+      <div className="absolute left-0 top-[34%] z-10 flex items-center gap-2 rounded-r-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceComet 36s linear infinite" }}>
         ☄️ ardent intention
       </div>
 
-
       {magnet ? (
         <>
-          <span className="pointer-events-none absolute z-[6] rounded-full border border-cyan-200/40 shadow-[0_0_34px_rgba(125,211,252,.20)]" style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 180, height: 180, transform: "translate(-50%, -50%)", animation: "spaceWave 2.8s ease-out infinite" }} />
-          <span className="pointer-events-none absolute z-[6] rounded-full border border-sky-200/24 shadow-[0_0_54px_rgba(56,189,248,.16)]" style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 310, height: 310, transform: "translate(-50%, -50%)", animation: "spaceWave 2.8s ease-out infinite .62s" }} />
-          <span className="pointer-events-none absolute z-[6] rounded-full border border-violet-200/18" style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 430, height: 430, transform: "translate(-50%, -50%)", animation: "spaceWave 2.8s ease-out infinite 1.18s" }} />
+          <span className="pointer-events-none absolute z-[6] rounded-full border border-cyan-200/45 shadow-[0_0_42px_rgba(125,211,252,.22)]" style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 120, height: 120, transform: "translate(-50%, -50%)", animation: "spaceWave 3.2s ease-out infinite" }} />
+          <span className="pointer-events-none absolute z-[6] rounded-full border border-sky-200/26 shadow-[0_0_64px_rgba(56,189,248,.18)]" style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 210, height: 210, transform: "translate(-50%, -50%)", animation: "spaceWave 3.2s ease-out infinite .72s" }} />
+          <span className="pointer-events-none absolute z-[6] rounded-full border border-violet-200/18" style={{ left: `${magnet.x}%`, top: `${magnet.y}%`, width: 300, height: 300, transform: "translate(-50%, -50%)", animation: "spaceWave 3.2s ease-out infinite 1.4s" }} />
+          <svg className="pointer-events-none absolute inset-0 z-[7] h-full w-full overflow-visible opacity-70">
+            {relatedLines.map(({ id, info, pos }) => (
+              <line key={`link-${id}`} x1={`${magnet.x}%`} y1={`${magnet.y}%`} x2={`${pos.x}%`} y2={`${pos.y}%`} stroke={lineColor} strokeWidth={Math.max(1, 2.4 - info.rank * 0.16)} strokeDasharray="3 9" strokeLinecap="round" />
+            ))}
+          </svg>
         </>
       ) : null}
-
-
-      {magnet
-        ? Array.from(related.entries()).slice(0, 8).map(([id, info]) => {
-            const signal = visibleSignals.find((item) => item.id === id);
-            if (!signal) return null;
-            const pos = getMagnetPosition(signal, magnet, related);
-            const x1 = `${magnet.x}%`;
-            const y1 = `${magnet.y}%`;
-            const x2 = `${pos.x}%`;
-            const y2 = `${pos.y}%`;
-            return (
-              <svg key={`link-${id}`} className="pointer-events-none absolute inset-0 z-[7] h-full w-full overflow-visible opacity-60">
-                <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="rgba(125,211,252,.32)" strokeWidth={Math.max(1, 2.8 - info.rank * 0.18)} strokeDasharray="4 8" />
-              </svg>
-            );
-          })
-        : null}
 
       {visibleSignals.map((signal, index) => {
         const pos = getMagnetPosition(signal, magnet, related);
@@ -122,7 +128,7 @@ export function SpaceWorld({ theme, copy, viewport, activePlanet, signals, selec
             theme={theme}
             onOpen={() => {
               setSelectedId(signal.id);
-              focusTo(signal, 1.32);
+              focusTo(signal, 1.18);
             }}
           />
         );

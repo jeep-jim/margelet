@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import type { IngestedPost, Locale } from "../../types/app";
 import { getSpaceCopy } from "./i18n";
-import { applyTheme, getUserName, inferPlanetId, readTelegramUser, readTheme } from "./lib/space-engine";
+import { applyTheme, getTelegramAuthUrl, getUserName, inferPlanetId, readTelegramUser, readTheme } from "./lib/space-engine";
 import { useSpaceCamera } from "./hooks/useSpaceCamera";
 import { useSpaceSearch } from "./hooks/useSpaceSearch";
 import { useSpaceSignals } from "./hooks/useSpaceSignals";
@@ -41,6 +41,7 @@ export function SpaceOverlay({
   const [text, setText] = useState("");
   const [replyText, setReplyText] = useState("");
   const [activePlanet, setActivePlanet] = useState<SpacePlanetId>("all");
+  const [toast, setToast] = useState<string | null>(null);
 
   const copy = useMemo(() => getSpaceCopy(locale), [locale]);
   const isLight = theme === "light";
@@ -83,6 +84,23 @@ export function SpaceOverlay({
     applyTheme(next);
     setTheme(next);
   };
+  const showToast = (message: string) => {
+    setToast(message);
+    window.setTimeout(() => setToast(null), 2200);
+  };
+
+  const handleProfile = () => {
+    if (telegramUser) {
+      showToast(`Telegram: ${getUserName(telegramUser)}`);
+      return;
+    }
+    window.location.href = getTelegramAuthUrl();
+  };
+
+  const handleNotifications = () => {
+    showToast("У вас пока нет событий.");
+  };
+
 
   const resetSpace = () => {
     setSelectedId(null);
@@ -150,7 +168,7 @@ export function SpaceOverlay({
     <div className={`space-root fixed inset-0 z-[1000] overflow-hidden ${isLight ? "bg-[#edf3fa] text-[#08111d]" : "bg-[#02060d] text-white"}`}>
       <SpaceStyle />
       <SpaceBackground theme={theme} viewport={camera.viewport} planetId={activePlanet} />
-      {magnet ? <div className="pointer-events-none absolute inset-0 z-[9] bg-black/30 transition-opacity duration-500" /> : null}
+      {magnet ? <div className={`pointer-events-none absolute inset-0 z-[9] transition-opacity duration-500 ${isLight ? "bg-slate-900/20" : "bg-black/24"}`} /> : null}
 
       <SpaceHeader
         isLight={isLight}
@@ -178,6 +196,8 @@ export function SpaceOverlay({
         onSearch={() => setSearchOpen(true)}
         onToggleTheme={toggleTheme}
         onStory={() => setIntroOpen(true)}
+        onNotifications={handleNotifications}
+        onProfile={handleProfile}
       />
 
       <div
@@ -215,7 +235,7 @@ export function SpaceOverlay({
         <button
           type="button"
           onClick={() => setComposerOpen(true)}
-          className={`absolute bottom-4 left-4 z-40 grid h-14 w-14 place-items-center rounded-full text-3xl font-black shadow-2xl active:scale-95 ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}
+          className={`absolute bottom-4 left-4 z-40 grid h-14 w-14 place-items-center rounded-full text-3xl font-black shadow-2xl backdrop-blur-xl transition active:scale-95 ${isLight ? "bg-white/76 text-[#07111d] hover:bg-white" : "bg-white/12 text-white hover:bg-white hover:text-[#07111d]"}`}
           aria-label={copy.releaseThought}
           title={copy.releaseThought}
         >
@@ -242,6 +262,12 @@ export function SpaceOverlay({
           </div>
         ) : null}
       </div>
+
+      {toast ? (
+        <div className={`pointer-events-none absolute left-1/2 top-[calc(5rem+env(safe-area-inset-top))] z-50 -translate-x-1/2 rounded-full px-4 py-2 text-sm font-black shadow-2xl backdrop-blur-xl ${isLight ? "bg-white/90 text-[#07111d]" : "bg-[#101d2c]/92 text-white"}`}>
+          {toast}
+        </div>
+      ) : null}
 
       {selected ? (
         <SpaceSignalCard

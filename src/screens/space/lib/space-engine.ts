@@ -2,6 +2,7 @@ import type { SpacePlanet, SpacePlanetId, SpaceSignal, SpaceSignalKind, SpaceTel
 
 export const TG_USER_KEY = "margelet_tg_user";
 export const SPACE_SIGNALS_KEY = "margelet_space_local_signals_v1";
+export const TELEGRAM_BOT_ID = "8298054487";
 
 export const WORLD_W = 2600;
 export const WORLD_H = 1600;
@@ -45,8 +46,28 @@ export function applyTheme(theme: "dark" | "light") {
   localStorage.setItem("margelet_theme", theme);
 }
 
+export function getTelegramAuthUrl() {
+  const origin = window.location.origin;
+  return `https://oauth.telegram.org/auth?bot_id=${TELEGRAM_BOT_ID}&origin=${origin}&request_access=write`;
+}
+
 export function readTelegramUser(): SpaceTelegramUser | null {
   try {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    if (id) {
+      const urlUser: SpaceTelegramUser = {
+        id,
+        first_name: params.get("first_name") || "",
+        username: params.get("username") || "",
+        photo_url: params.get("photo_url") || "",
+      };
+      localStorage.setItem(TG_USER_KEY, JSON.stringify(urlUser));
+      window.history.replaceState({}, document.title, window.location.pathname + window.location.hash);
+      return urlUser;
+    }
+
     const raw = localStorage.getItem(TG_USER_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as SpaceTelegramUser;
