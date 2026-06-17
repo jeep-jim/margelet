@@ -14,21 +14,31 @@ type Props = {
   onPullSimilar: () => void;
   onReply: () => void;
   onHide: () => void;
+  dockRight?: boolean;
 };
 
-export function SpaceSignalCard({ theme, copy, selected, telegramUser, replyText, setReplyText, onClose, onPullSimilar, onReply, onHide }: Props) {
+export function SpaceSignalCard({ theme, copy, selected, telegramUser, replyText, setReplyText, onClose, onPullSimilar, onReply, onHide, dockRight = false }: Props) {
   const isLight = theme === "light";
   const kindLabels = copy.kind as Record<string, string>;
   const isMine = Boolean(telegramUser && selected.authorName === getUserName(telegramUser));
 
   return (
-    <div className="absolute inset-0 z-30 flex items-end justify-center p-3 pointer-events-none sm:items-center">
+    <div className={`absolute inset-0 z-30 flex items-end p-3 pointer-events-none sm:items-center ${dockRight ? "justify-center sm:justify-end sm:pr-6" : "justify-center"}`}>
       <div className={`pointer-events-auto w-full max-w-[430px] rounded-[32px] border p-4 shadow-2xl ${isLight ? "border-[#d8e3ef] bg-white text-[#07111d]" : "border-white/10 bg-[#101d2c] text-white"}`}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <div className="text-xs font-black uppercase tracking-[.18em] opacity-50">{KIND_EMOJI[selected.kind]} {kindLabels[selected.kind]}</div>
             <div className="mt-2 text-xl font-black leading-tight">{selected.text}</div>
-            <div className="mt-2 text-sm opacity-60">{selected.authorName}</div>
+            <div className="mt-3 flex items-center gap-2 text-sm opacity-75">
+              {selected.authorAvatar ? (
+                <img src={selected.authorAvatar} alt="" className="h-7 w-7 rounded-full object-cover ring-2 ring-white/15" referrerPolicy="no-referrer" />
+              ) : (
+                <span className={`grid h-7 w-7 place-items-center rounded-full text-[11px] font-black ${isLight ? "bg-[#eef4fb] text-[#40566e]" : "bg-white/10 text-white/70"}`}>
+                  {selected.authorName.slice(0, 1).toUpperCase()}
+                </span>
+              )}
+              <span>{selected.authorName}</span>
+            </div>
           </div>
           <button type="button" onClick={onClose} className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-black/5"><X className="h-5 w-5" /></button>
         </div>

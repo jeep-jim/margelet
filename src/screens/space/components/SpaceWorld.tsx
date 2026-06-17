@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { similarity, WORLD_H, WORLD_W } from "../lib/space-engine";
+import { getHeatContacts, SPACE_PLANETS, WORLD_H, WORLD_W } from "../lib/space-engine";
 import type { SpaceCopy } from "../i18n";
 import type { SpacePlanetId, SpaceSignal, SpaceTheme, SpaceViewport } from "../types";
 import { SpaceSignalButton } from "./SpaceSignalButton";
@@ -19,19 +19,22 @@ type Props = {
   destroyingId: string | null;
   focusTo: (signal: SpaceSignal, scale?: number) => void;
   setSelectedId: (id: string | null) => void;
+  setActivePlanet: (planet: SpacePlanetId) => void;
   resetMagnet: () => void;
 };
 
 const MAX_RELATED_SIGNALS = 7;
 const MAX_RELATED_LINES = 5;
 
-function magnetScore(signal: SpaceSignal, magnet: SpaceSignal | null) {
-  if (!magnet || signal.id === magnet.id) return 0;
-  const wordScore = similarity(signal.text, magnet.text);
-  const kindScore = signal.kind === magnet.kind ? 2 : 0;
-  const planetScore = signal.planetId === magnet.planetId ? 1 : 0;
-  return wordScore + kindScore + planetScore;
-}
+const PLANET_NODES: Record<SpacePlanetId, { x: number; y: number; size: number }> = {
+  all: { x: 9, y: 18, size: 118 },
+  tech: { x: 82, y: 18, size: 82 },
+  finance: { x: 88, y: 33, size: 142 },
+  world: { x: 70, y: 73, size: 156 },
+  startup: { x: 23, y: 76, size: 96 },
+  creative: { x: 56, y: 22, size: 76 },
+  community: { x: 35, y: 34, size: 88 },
+};
 
 function getMagnetPosition(signal: SpaceSignal, magnet: SpaceSignal | null, related: Map<string, { rank: number; score: number }>): Position {
   if (!magnet || signal.id === magnet.id) return { x: signal.x, y: signal.y, related: false };
@@ -73,6 +76,7 @@ export function SpaceWorld({
   destroyingId,
   focusTo,
   setSelectedId,
+  setActivePlanet,
   resetMagnet,
 }: Props) {
   const isLight = theme === "light";
@@ -86,16 +90,8 @@ export function SpaceWorld({
   const kindLabels = copy.kind as Record<string, string>;
 
   const related = useMemo(() => {
-    if (!magnet) return new Map<string, { rank: number; score: number }>();
-
     return new Map(
-      visibleSignals
-        .filter((signal) => signal.id !== magnet.id)
-        .map((signal) => ({ signal, score: magnetScore(signal, magnet) }))
-        .filter((item) => item.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, MAX_RELATED_SIGNALS)
-        .map((item, rank) => [item.signal.id, { rank, score: item.score }] as const)
+      getHeatContacts(visibleSignals, magnet, MAX_RELATED_SIGNALS).map((item) => [item.signal.id, { rank: item.rank, score: item.score }] as const)
     );
   }, [magnet, visibleSignals]);
 
@@ -121,7 +117,7 @@ export function SpaceWorld({
       className="absolute left-0 top-[calc(4rem+env(safe-area-inset-top))] origin-top-left transform-gpu"
       style={{ width: WORLD_W, height: WORLD_H, transform: `translate3d(${viewport.x}px, ${viewport.y}px, 0) scale(${viewport.scale})` }}
       onClick={(event) => {
-        if (!(event.target as HTMLElement).closest("button")) resetMagnet();
+        if (!(event.target as HTMLElement).closest("button")) setSelectedId(null);
       }}
     >
       <div
@@ -168,6 +164,36 @@ export function SpaceWorld({
           ) : null}
         </>
       ) : null}
+
+
+      <div className="pointer-events-none absolute inset-0 z-[4]">
+        {SPACE_PLANETS.map((planet) => {
+          const node = PLANET_NODES[planet.id];
+          const activePlanetNode = planet.id === activePlanet;
+          const size = activePlanetNode ? node.size * 1.14 : node.size * 0.56;
+          return (
+            <button
+              key={`planet-node-${planet.id}`}
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                setActivePlanet(planet.id);
+                resetMagnet();
+              }}
+              className={`pointer-events-auto absolute grid place-items-center rounded-full transition duration-300 hover:scale-110 ${activePlanetNode ? "opacity-78" : "opacity-30 hover:opacity-70"}`}
+              style={{ left: `${node.x}%`, top: `${node.y}%`, width: size, height: size, transform: "translate(-50%, -50%)" }}
+              aria-label={`Open ${planet.title}`}
+              title={`${planet.title}: ${planet.description}`}
+            >
+              <span className={`absolute inset-0 rounded-full bg-gradient-to-br ${planet.gradient} blur-sm`} />
+              <span className={`absolute inset-[14%] rounded-full bg-gradient-to-br ${planet.gradient} shadow-[inset_18px_18px_32px_rgba(255,255,255,.18),inset_-20px_-20px_36px_rgba(0,0,0,.38)]`} />
+              <span className="absolute -inset-3 rounded-full border border-white/10" />
+              <span className="relative text-lg opacity-75">{activePlanetNode ? planet.emoji : ""}</span>
+              <span className="absolute -right-2 top-1 h-2 w-2 rounded-full bg-sky-300 shadow-[0_0_14px_rgba(125,211,252,.8)]" />
+            </button>
+          );
+        })}
+      </div>
 
       {visibleSignals.map((signal, index) => {
         const pos = getMagnetPosition(signal, magnet, related);

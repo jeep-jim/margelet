@@ -179,3 +179,25 @@ export function pickDemoSignals(): SpaceSignal[] {
 export function depthForIndex(index: number) {
   return [0.72, 0.86, 1, 1.16, 1.32][index % 5];
 }
+
+
+export function signalHeatScore(signal: SpaceSignal, magnet: SpaceSignal | null) {
+  if (!magnet || signal.id === magnet.id) return 0;
+  const wordScore = similarity(signal.text, magnet.text);
+  const kindScore = signal.kind === magnet.kind ? 2 : 0;
+  const planetScore = signal.planetId === magnet.planetId ? 1 : 0;
+  const authorScore = signal.authorName && signal.authorName === magnet.authorName ? 12 : 0;
+  return wordScore + kindScore + planetScore + authorScore;
+}
+
+export function getHeatContacts(signals: SpaceSignal[], magnet: SpaceSignal | null, limit = 7) {
+  if (!magnet) return [] as Array<{ signal: SpaceSignal; score: number; rank: number }>;
+
+  return signals
+    .filter((signal) => signal.id !== magnet.id)
+    .map((signal) => ({ signal, score: signalHeatScore(signal, magnet) }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((item, rank) => ({ ...item, rank }));
+}

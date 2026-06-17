@@ -42,18 +42,18 @@ export function SpacePlanetPicker({ theme, activePlanet, setActivePlanet }: Prop
       </button>
 
       {open ? (
-        <div className={`mt-2 w-[min(340px,calc(100vw-2rem))] rounded-[28px] border p-2 shadow-2xl backdrop-blur-2xl ${isLight ? "border-[#d8e3ef] bg-white/88" : "border-white/10 bg-[#101d2c]/88"}`}>
-          <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
+        <div className={`mt-2 w-[min(340px,calc(100vw-2rem))] rounded-[28px] border p-2 shadow-2xl backdrop-blur-2xl sm:w-auto sm:max-w-none ${isLight ? "border-[#d8e3ef] bg-white/88" : "border-white/10 bg-[#101d2c]/88"}`}>
+          <div className="grid grid-cols-4 gap-2 sm:flex sm:flex-nowrap">
             {SPACE_PLANETS.map((planet) => (
               <button
                 key={planet.id}
                 type="button"
                 onClick={() => choose(planet.id)}
-                className={`flex flex-col items-center gap-1 rounded-2xl px-2 py-2 text-[10px] font-black transition ${activePlanet === planet.id ? `bg-gradient-to-br ${planet.gradient} text-white shadow-lg` : isLight ? "bg-[#eef4fb] text-[#40566e] hover:bg-white" : "bg-white/7 text-white/70 hover:bg-white/12"}`}
+                className={`flex min-w-[68px] flex-col items-center gap-1 rounded-2xl px-2 py-2 text-[10px] font-black transition sm:min-w-[78px] ${activePlanet === planet.id ? `bg-gradient-to-br ${planet.gradient} text-white shadow-lg` : isLight ? "bg-[#eef4fb] text-[#40566e] hover:bg-white" : "bg-white/7 text-white/70 hover:bg-white/12"}`}
                 title={planet.title}
               >
                 <span className="text-lg">{planet.emoji}</span>
-                <span className="max-w-[54px] truncate">{planet.title}</span>
+                <span className="max-w-[62px] truncate sm:max-w-[70px]">{planet.title}</span>
               </button>
             ))}
           </div>

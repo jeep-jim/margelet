@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import type { IngestedPost, Locale } from "../../types/app";
 import { getSpaceCopy } from "./i18n";
-import { applyTheme, getTelegramAuthUrl, getUserName, inferPlanetId, readTelegramUser, readTheme } from "./lib/space-engine";
+import { applyTheme, getHeatContacts, getTelegramAuthUrl, getUserName, inferPlanetId, readTelegramUser, readTheme } from "./lib/space-engine";
 import { useSpaceCamera } from "./hooks/useSpaceCamera";
 import { useSpaceSearch } from "./hooks/useSpaceSearch";
 import { useSpaceSignals } from "./hooks/useSpaceSignals";
@@ -12,6 +12,7 @@ import type { SpacePlanetId, SpaceSignalKind, SpaceTelegramUser, SpaceTheme } fr
 import { SpaceBackground } from "./components/SpaceBackground";
 import { SpaceCreateModal } from "./components/SpaceCreateModal";
 import { SpaceHeader } from "./components/SpaceHeader";
+import { SpaceHeatContactsPanel } from "./components/SpaceHeatContactsPanel";
 import { SpacePlanetPicker } from "./components/SpacePlanetPicker";
 import { SpaceSearch } from "./components/SpaceSearch";
 import { SpaceSignalCard } from "./components/SpaceSignalCard";
@@ -43,6 +44,7 @@ export function SpaceOverlay({
   const [activePlanet, setActivePlanet] = useState<SpacePlanetId>("all");
   const [toast, setToast] = useState<string | null>(null);
   const [destroyingId, setDestroyingId] = useState<string | null>(null);
+  const [heatMode, setHeatMode] = useState<"similar" | "mine" | null>(null);
 
   const copy = useMemo(() => getSpaceCopy(locale), [locale]);
   const isLight = theme === "light";
@@ -51,6 +53,17 @@ export function SpaceOverlay({
   const selected = visibleSignals.find((item) => item.id === selectedId) || null;
   const magnet = visibleSignals.find((item) => item.id === magnetId) || null;
   const searchMatchedIds = useSpaceSearch(searchQuery, visibleSignals);
+  const heatContacts = useMemo(() => {
+    if (!magnet) return [];
+    if (heatMode === "mine" && telegramUser) {
+      const myName = getUserName(telegramUser);
+      return visibleSignals
+        .filter((signal) => signal.id !== magnet.id && !signal.id.startsWith("demo-") && signal.authorName === myName)
+        .slice(0, 18)
+        .map((signal, rank) => ({ signal, rank, score: 10 - rank * 0.2 }));
+    }
+    return getHeatContacts(visibleSignals, magnet, 18);
+  }, [heatMode, magnet, telegramUser, visibleSignals]);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -106,12 +119,14 @@ export function SpaceOverlay({
   const resetSpace = () => {
     setSelectedId(null);
     setMagnetId(null);
+    setHeatMode(null);
     setSearchQuery("");
     camera.resetViewport();
   };
 
   const resetMagnetOnly = () => {
     setMagnetId(null);
+    setHeatMode(null);
   };
 
   const handleCreateSignal = () => {
@@ -121,6 +136,7 @@ export function SpaceOverlay({
     setComposerOpen(false);
     setSelectedId(null);
     setMagnetId(next.id);
+    setHeatMode("similar");
     setActivePlanet(next.planetId || inferPlanetId(next.text));
     setTimeout(() => camera.focusTo(next, 1.18), 80);
   };
@@ -135,7 +151,10 @@ export function SpaceOverlay({
     if (!selected || destroyingId) return;
     const id = selected.id;
     setSelectedId(null);
-    if (magnetId === id) setMagnetId(null);
+    if (magnetId === id) {
+      setMagnetId(null);
+      setHeatMode(null);
+    }
     setDestroyingId(id);
     window.setTimeout(() => {
       hideSignal(id);
@@ -149,27 +168,31 @@ export function SpaceOverlay({
     if (!firstMatch) return;
     setSelectedId(null);
     setMagnetId(null);
+    setHeatMode(null);
     setActivePlanet(firstMatch.planetId || inferPlanetId(firstMatch.text));
     setTimeout(() => camera.focusTo(firstMatch, 1.25), 40);
   };
 
   const handleMySignals = () => {
     if (!telegramUser) {
-      setComposerOpen(true);
+      window.location.href = getTelegramAuthUrl();
       return;
     }
 
     const myName = getUserName(telegramUser);
-    const ownSignal = visibleSignals.find((signal) => !signal.id.startsWith("demo-") && signal.authorName === myName);
-    if (!ownSignal) {
-      setComposerOpen(true);
+    const ownSignals = visibleSignals.filter((signal) => !signal.id.startsWith("demo-") && signal.authorName === myName);
+    const anchor = ownSignals[0];
+
+    if (!anchor) {
+      showToast("У вас пока нет выпущенных мыслей.");
       return;
     }
 
-    setSelectedId(ownSignal.id);
-    setMagnetId(null);
-    setActivePlanet(ownSignal.planetId || inferPlanetId(ownSignal.text));
-    setTimeout(() => camera.focusTo(ownSignal, 1.14), 60);
+    setSelectedId(null);
+    setMagnetId(anchor.id);
+    setHeatMode("mine");
+    setActivePlanet("all");
+    setTimeout(() => camera.focusTo(anchor, ownSignals.length > 1 ? 1.52 : 1.22), 60);
   };
 
   const hasOverlayState = Boolean(selectedId || magnetId || composerOpen || searchOpen || introOpen || searchQuery.trim());
@@ -219,10 +242,9 @@ export function SpaceOverlay({
         onPointerUp={camera.onPointerUp}
         onPointerCancel={camera.onPointerUp}
         onClick={(event) => {
-          if (!magnetId) return;
           const target = event.target as HTMLElement;
           if (target.closest("button, input, textarea, select, a")) return;
-          resetMagnetOnly();
+          if (!magnetId) setSelectedId(null);
         }}
       >
         <SpaceWorld
@@ -238,6 +260,7 @@ export function SpaceOverlay({
           focusTo={camera.focusTo}
           setSelectedId={setSelectedId}
           destroyingId={destroyingId}
+          setActivePlanet={setActivePlanet}
           resetMagnet={resetMagnetOnly}
         />
 
@@ -248,6 +271,25 @@ export function SpaceOverlay({
         />
 
         <SpacePlanetPicker theme={theme} activePlanet={activePlanet} setActivePlanet={setActivePlanet} />
+
+        {magnet && (heatContacts.length > 0 || heatMode === "mine") ? (
+          <SpaceHeatContactsPanel
+            theme={theme}
+            title={heatMode === "mine" ? "Мои мысли в куче" : "Похожие мысли"}
+            magnet={magnet}
+            contacts={heatContacts}
+            selectedId={selectedId}
+            replyText={replyText}
+            setReplyText={setReplyText}
+            onOpen={(signal) => {
+              setReplyText("");
+              setSelectedId(signal.id);
+              camera.focusTo(signal, 1.18);
+            }}
+            onClose={resetMagnetOnly}
+            onReply={handleReply}
+          />
+        ) : null}
 
         <button
           type="button"
@@ -286,7 +328,7 @@ export function SpaceOverlay({
         </div>
       ) : null}
 
-      {selected ? (
+      {selected && !magnet ? (
         <SpaceSignalCard
           theme={theme}
           copy={copy}
@@ -294,16 +336,21 @@ export function SpaceOverlay({
           telegramUser={telegramUser}
           replyText={replyText}
           setReplyText={setReplyText}
-          onClose={resetSpace}
+          onClose={() => {
+            setSelectedId(null);
+            if (!magnetId) camera.resetViewport();
+          }}
           onPullSimilar={() => {
             const target = selected;
             setMagnetId(target.id);
+            setHeatMode("similar");
             setSelectedId(null);
             setActivePlanet(target.planetId || inferPlanetId(target.text));
-            window.setTimeout(() => camera.focusTo(target, 1.54), 40);
+            window.setTimeout(() => camera.focusTo(target, 1.42), 40);
           }}
           onReply={handleReply}
           onHide={handleHideSignal}
+          dockRight={Boolean(magnet)}
         />
       ) : null}
 
