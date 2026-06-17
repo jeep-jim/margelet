@@ -31,8 +31,8 @@ export function SpaceHeader({
         isLight ? "border-[#d8e3ef] bg-[#f6f9fd]/90" : "border-white/10 bg-[#132233]/86"
       }`}
     >
-      <div className="mx-auto grid h-16 max-w-[980px] grid-cols-[1fr_auto_1fr] items-center px-4 sm:translate-y-[1px]">
-        <div className="flex items-center justify-start gap-1.5">
+      <div className="mx-auto grid h-16 max-w-[980px] grid-cols-[1fr_auto_1fr] items-center px-4 sm:translate-y-[-5px]">
+        <div className="flex items-center justify-start gap-1.5 -translate-x-[8px]">
           <button type="button" onClick={onBack} className="grid h-11 w-11 place-items-center rounded-full transition hover:bg-white/10">
             {hasOverlayState ? <X className="h-5 w-5" /> : <ArrowLeft className="h-5 w-5" />}
           </button>
@@ -47,7 +47,7 @@ export function SpaceHeader({
           </button>
         </div>
 
-        <div className="flex justify-center overflow-visible -translate-y-[6px] scale-[0.92] sm:-translate-y-[4px] sm:scale-[0.86]">
+        <div className="flex justify-center overflow-visible -translate-x-[8px] -translate-y-[6px] scale-[0.92] sm:-translate-y-[4px] sm:scale-[0.86]">
           <SpaceLogo isLight={isLight} onClick={onStory} />
         </div>
 

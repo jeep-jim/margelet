@@ -31,7 +31,11 @@ export function SpaceSignalCard({ theme, copy, selected, telegramUser, replyText
           <button type="button" onClick={onClose} className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-black/5"><X className="h-5 w-5" /></button>
         </div>
 
-        <button type="button" onClick={onPullSimilar} className={`mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black ${isLight ? "bg-[#111827] text-white" : "bg-white text-[#07111d]"}`}>
+        <button
+          type="button"
+          onClick={onPullSimilar}
+          className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-rose-500 via-violet-500 to-sky-500 px-4 py-3 text-sm font-black text-white shadow-[0_14px_36px_rgba(59,130,246,.22)] transition hover:brightness-110 active:scale-[.98]"
+        >
           <Magnet className="h-4 w-4" />
           {copy.pullSimilar}
         </button>

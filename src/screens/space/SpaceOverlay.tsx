@@ -109,6 +109,10 @@ export function SpaceOverlay({
     camera.resetViewport();
   };
 
+  const resetMagnetOnly = () => {
+    setMagnetId(null);
+  };
+
   const handleCreateSignal = () => {
     const next = createSignal({ text, kind, user: telegramUser });
     if (!next) return;
@@ -117,7 +121,7 @@ export function SpaceOverlay({
     setSelectedId(null);
     setMagnetId(next.id);
     setActivePlanet(next.planetId || inferPlanetId(next.text));
-    setTimeout(() => camera.focusTo(next, 1.35), 80);
+    setTimeout(() => camera.focusTo(next, 1.18), 80);
   };
 
   const handleReply = () => {
@@ -159,7 +163,7 @@ export function SpaceOverlay({
     setSelectedId(ownSignal.id);
     setMagnetId(null);
     setActivePlanet(ownSignal.planetId || inferPlanetId(ownSignal.text));
-    setTimeout(() => camera.focusTo(ownSignal, 1.32), 60);
+    setTimeout(() => camera.focusTo(ownSignal, 1.14), 60);
   };
 
   const hasOverlayState = Boolean(selectedId || magnetId || composerOpen || searchOpen || introOpen || searchQuery.trim());
@@ -221,7 +225,7 @@ export function SpaceOverlay({
           searchMatchedIds={searchMatchedIds}
           focusTo={camera.focusTo}
           setSelectedId={setSelectedId}
-          resetMagnet={resetSpace}
+          resetMagnet={resetMagnetOnly}
         />
 
         <SpaceZoomControls
@@ -252,7 +256,7 @@ export function SpaceOverlay({
           <Compass className="h-5 w-5" />
         </button>
 
-        <div className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceWhisper 18s ease-in-out infinite" }}>
+        <div className="pointer-events-none absolute bottom-24 left-1/2 z-20 -translate-x-1/2 rounded-full bg-white/12 px-4 py-2 text-xs font-black backdrop-blur-md" style={{ animation: "spaceWhisper 28s linear infinite" }}>
           🌌 {copy.noticed}
         </div>
 
