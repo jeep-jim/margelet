@@ -560,15 +560,23 @@ function SubscriptionsBar({
 
 
 function getVideoGridPreview(post: IngestedPost) {
-  const media = normalizeMediaList(post);
-  const video = media.find((item) => item.kind === "video");
-  const image = media.find((item) => item.kind === "image");
-  const visual = video || image || null;
+  const normalizedMedia = normalizeMediaList(post);
+  const rawMedia = Array.isArray(post.media)
+    ? (post.media as Array<Record<string, unknown>>)
+    : [];
+
+  const normalizedVideoIndex = normalizedMedia.findIndex((item) => item.kind === "video");
+  const normalizedImageIndex = normalizedMedia.findIndex((item) => item.kind === "image");
+
+  const normalizedVideo = normalizedVideoIndex >= 0 ? normalizedMedia[normalizedVideoIndex] : null;
+  const normalizedImage = normalizedImageIndex >= 0 ? normalizedMedia[normalizedImageIndex] : null;
+  const rawVideo = normalizedVideoIndex >= 0 ? rawMedia[normalizedVideoIndex] || null : null;
+  const rawImage = normalizedImageIndex >= 0 ? rawMedia[normalizedImageIndex] || null : null;
+  const visual = normalizedVideo || normalizedImage || null;
 
   if (!visual) return null;
 
-  const record = visual as Record<string, unknown>;
-  const imageRecord = (image || {}) as Record<string, unknown>;
+  const postRecord = post as unknown as Record<string, unknown>;
 
   const pickString = (...values: unknown[]) => {
     for (const value of values) {
@@ -578,36 +586,68 @@ function getVideoGridPreview(post: IngestedPost) {
     return "";
   };
 
+  // Важно: normalizeMediaList оставляет только базовые поля.
+  // Telegram/наш билд часто кладёт превью в thumbnail/thumb/preview* на сыром media item
+  // или прямо на post. Поэтому Play берёт poster из всех известных мест,
+  // а video-файл оставляет ленивым.
   const poster = pickString(
-    record.poster,
-    record.thumbnail,
-    record.thumbnailUrl,
-    record.thumb,
-    record.thumbUrl,
-    record.previewUrl,
-    record.preview,
-    imageRecord.url,
-    imageRecord.src,
-    imageRecord.previewUrl
+    rawVideo?.poster,
+    rawVideo?.thumbnail,
+    rawVideo?.thumbnailUrl,
+    rawVideo?.thumb,
+    rawVideo?.thumbUrl,
+    rawVideo?.previewUrl,
+    rawVideo?.preview,
+    rawVideo?.imageUrl,
+    rawVideo?.cover,
+    rawVideo?.coverUrl,
+    rawImage?.url,
+    rawImage?.src,
+    rawImage?.poster,
+    rawImage?.thumbnail,
+    rawImage?.thumbnailUrl,
+    rawImage?.thumb,
+    rawImage?.thumbUrl,
+    rawImage?.previewUrl,
+    rawImage?.preview,
+    rawImage?.imageUrl,
+    postRecord.poster,
+    postRecord.thumbnail,
+    postRecord.thumbnailUrl,
+    postRecord.thumb,
+    postRecord.thumbUrl,
+    postRecord.previewUrl,
+    postRecord.preview,
+    postRecord.imageUrl,
+    postRecord.cover,
+    postRecord.coverUrl,
+    normalizedVideo?.poster,
+    normalizedImage?.poster,
+    normalizedImage?.url
   );
 
   const url = pickString(
-    record.url,
-    record.src,
-    record.videoUrl,
-    record.mediaUrl,
-    record.fileUrl,
-    record.file_url,
-    record.downloadUrl,
-    record.previewUrl
+    rawVideo?.url,
+    rawVideo?.src,
+    rawVideo?.videoUrl,
+    rawVideo?.mediaUrl,
+    rawVideo?.fileUrl,
+    rawVideo?.file_url,
+    rawVideo?.downloadUrl,
+    rawVideo?.previewUrl,
+    rawImage?.url,
+    rawImage?.src,
+    normalizedVideo?.url,
+    normalizedImage?.url
   );
 
   return {
     ...visual,
-    url: String(url || visual.url || ""),
+    url,
     poster,
   };
 }
+
 
 function isVideoGridSourceVerified(post: IngestedPost) {
   const source = (post.source || {}) as Record<string, unknown>;
@@ -879,8 +919,7 @@ function VideoGridView({
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
-  const autoPreviewTimerRef = useRef<number | null>(null);
-  const [visibleVideoCount, setVisibleVideoCount] = useState(18);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(12);
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
@@ -890,15 +929,11 @@ function VideoGridView({
       if (longPressTimerRef.current) {
         window.clearTimeout(longPressTimerRef.current);
       }
-      if (autoPreviewTimerRef.current) {
-        window.clearTimeout(autoPreviewTimerRef.current);
-        autoPreviewTimerRef.current = null;
-      }
     };
   }, []);
 
   useEffect(() => {
-    setVisibleVideoCount(18);
+    setVisibleVideoCount(12);
     setPreviewPostId(null);
     setImageFailedPostIds(new Set());
   }, [posts]);
@@ -908,14 +943,14 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 12));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 18));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 12));
       },
       { rootMargin: "260px 0px 420px 0px", threshold: 0.01 }
     );
@@ -923,15 +958,6 @@ function VideoGridView({
     observer.observe(node);
     return () => observer.disconnect();
   }, [posts.length, visibleVideoCount]);
-
-  useEffect(() => {
-    return () => {
-      if (autoPreviewTimerRef.current) {
-        window.clearTimeout(autoPreviewTimerRef.current);
-        autoPreviewTimerRef.current = null;
-      }
-    };
-  }, []);
 
 
   const clearLongPressTimer = () => {
@@ -981,7 +1007,7 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && isPreviewing;
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed));
 
           return (
             <div
@@ -1043,13 +1069,16 @@ function VideoGridView({
                     data-video-preview-post-id={post.id}
                     muted
                     playsInline
-                    loop
-                    autoPlay
+                    loop={isPreviewing}
+                    autoPlay={isPreviewing}
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload="none"
-                    className="absolute inset-0 z-[2] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    preload={isPreviewing ? "auto" : "metadata"}
+                    className={[
+                      "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
+                      isPreviewing ? "z-[2]" : "z-[1]",
+                    ].join(" ")}
                     onContextMenu={(event) => event.preventDefault()}
                   />
                 ) : null}
