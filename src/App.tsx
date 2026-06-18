@@ -968,7 +968,12 @@ export default function App() {
         };
 
         window.addEventListener("scroll", handleRestScroll, { passive: true });
-        handleRestScroll();
+
+        // Важно: не запускаем rest-чанки сразу на первом кадре.
+        // Иначе пользователь видит свежую initial-пачку, затем rest-пачки
+        // пересобирают порядок ленты и получается резкий "бумеранг" назад.
+        // Остальные чанки догружаются только когда пользователь реально
+        // приблизился к низу текущей пачки.
       }
     } catch (error) {
       console.error("Failed to load feed", error);
