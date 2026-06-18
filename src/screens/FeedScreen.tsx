@@ -964,6 +964,7 @@ function VideoGridView({
   const emptyText = locale === "ru" ? "Видео пока нет" : "No videos yet";
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
   const longPressTimerRef = useRef<number | null>(null);
+  const previewClearTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
   const [visibleVideoCount, setVisibleVideoCount] = useState(INITIAL_VIDEO_GRID_POSTS);
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
@@ -975,10 +976,15 @@ function VideoGridView({
       if (longPressTimerRef.current) {
         window.clearTimeout(longPressTimerRef.current);
       }
+      if (previewClearTimerRef.current) {
+        window.clearTimeout(previewClearTimerRef.current);
+      }
     };
   }, []);
 
   useEffect(() => {
+    clearLongPressTimer();
+    clearPreviewClearTimer();
     setVisibleVideoCount(INITIAL_VIDEO_GRID_POSTS);
     setPreviewPostId(null);
     setImageFailedPostIds(new Set());
@@ -1013,15 +1019,26 @@ function VideoGridView({
     }
   };
 
+  const clearPreviewClearTimer = () => {
+    if (previewClearTimerRef.current) {
+      window.clearTimeout(previewClearTimerRef.current);
+      previewClearTimerRef.current = null;
+    }
+  };
+
   const startPreview = (postId: number, suppressClick = false) => {
+    clearPreviewClearTimer();
     suppressNextClickRef.current = suppressClick;
     setPreviewPostId(postId);
   };
 
-  const stopPreview = () => {
+  const stopPreview = (postId: number) => {
     clearLongPressTimer();
-    window.setTimeout(() => {
-      setPreviewPostId(null);
+    clearPreviewClearTimer();
+
+    previewClearTimerRef.current = window.setTimeout(() => {
+      setPreviewPostId((current) => (current === postId ? null : current));
+      previewClearTimerRef.current = null;
     }, 90);
   };
 
@@ -1037,7 +1054,7 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-3 gap-px">
+      <div className="grid grid-cols-3 gap-0">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
@@ -1053,7 +1070,7 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed));
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || !poster || imageFailed);
 
           return (
             <div
@@ -1079,14 +1096,30 @@ function VideoGridView({
                     startPreview(post.id, true);
                   }, 430);
                 }}
-                onPointerUp={stopPreview}
-                onPointerCancel={stopPreview}
+                onPointerUp={(event) => {
+                  if (event.pointerType === "mouse") {
+                    clearLongPressTimer();
+                    return;
+                  }
+
+                  stopPreview(post.id);
+                }}
+                onPointerCancel={() => stopPreview(post.id)}
                 onPointerEnter={(event) => {
                   if (event.pointerType === "mouse") {
                     startPreview(post.id);
                   }
                 }}
-                onPointerLeave={stopPreview}
+                onPointerLeave={(event) => {
+                  if (event.pointerType === "mouse") {
+                    const nextNode = event.relatedTarget as HTMLElement | null;
+                    if (nextNode?.closest("[data-video-tile-post-id]")) {
+                      return;
+                    }
+                  }
+
+                  stopPreview(post.id);
+                }}
                 onClick={() => {
                   if (suppressNextClickRef.current) {
                     suppressNextClickRef.current = false;
@@ -1102,11 +1135,11 @@ function VideoGridView({
                   userSelect: "none",
                 }}
                 className={[
-                  "group relative block h-full w-full overflow-hidden bg-[#101d2b] text-left transition duration-200 active:scale-[0.995]",
-                  isPreviewing ? "shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
+                  "group relative block h-full w-full overflow-hidden border-r border-b border-white/20 bg-black text-left transition duration-200 active:scale-[0.995]",
+                  isPreviewing ? "scale-[1.035] shadow-[0_18px_42px_rgba(0,0,0,.55)]" : "",
                 ].join(" ")}
               >
-                <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_25%_18%,rgba(74,144,226,.34),transparent_32%),radial-gradient(circle_at_80%_72%,rgba(65,210,90,.16),transparent_36%),linear-gradient(135deg,#111f31_0%,#070b11_100%)]" />
+                <div className="absolute inset-0 z-0 bg-black" />
 
                 {shouldRenderVideo ? (
                   <video
@@ -1125,6 +1158,25 @@ function VideoGridView({
                       "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
                       isPreviewing ? "z-[2]" : "z-[1]",
                     ].join(" ")}
+                    onLoadedMetadata={(event) => {
+                      const video = event.currentTarget;
+                      if (isPreviewing || poster) return;
+
+                      try {
+                        const duration = Number.isFinite(video.duration) ? video.duration : 0;
+                        const targetTime = duration > 0 ? Math.min(0.12, Math.max(0.01, duration / 30)) : 0.01;
+                        if (Math.abs(video.currentTime - targetTime) > 0.01) {
+                          video.currentTime = targetTime;
+                        }
+                      } catch {
+                        //
+                      }
+                    }}
+                    onLoadedData={(event) => {
+                      if (!isPreviewing) {
+                        event.currentTarget.pause();
+                      }
+                    }}
                     onContextMenu={(event) => event.preventDefault()}
                   />
                 ) : null}
@@ -1169,14 +1221,6 @@ function VideoGridView({
                   />
                 ) : null}
 
-                <div
-                  className={[
-                    "pointer-events-none absolute inset-0 z-[3] transition duration-200",
-                    isPreviewing
-                      ? "bg-gradient-to-t from-black/82 via-black/26 to-black/5"
-                      : "bg-gradient-to-t from-black/76 via-black/16 to-transparent",
-                  ].join(" ")}
-                />
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] p-2">
                   <div className="flex min-w-0 items-center gap-1.5">
