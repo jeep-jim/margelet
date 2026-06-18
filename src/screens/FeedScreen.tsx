@@ -73,9 +73,11 @@ const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
 const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
-const INITIAL_RENDER_POSTS = 14;
-const RENDER_POSTS_STEP = 10;
+const INITIAL_RENDER_POSTS = 12;
+const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
+const INITIAL_VIDEO_GRID_POSTS = 18;
+const VIDEO_GRID_POSTS_STEP = 18;
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
 const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
@@ -446,26 +448,10 @@ function readSeenPostsFromStorage(): Record<number, number> {
   }
 }
 
-function writeSeenPostsToStorage(value: Record<number, number>) {
-  try {
-    localStorage.setItem(SEEN_POSTS_STORAGE_KEY, JSON.stringify(value));
-  } catch {
-    //
-  }
-}
-
-function pruneSeenPostsForCurrentFeed(
-  value: Record<number, number>,
-  posts: IngestedPost[]
-) {
-  const currentIds = new Set(posts.map((post) => post.id));
-
+function compactSeenPosts(value: Record<number, number>) {
   const entries = Object.entries(value)
     .map(([id, seenAt]) => [Number(id), seenAt] as const)
-    .filter(
-      ([id, seenAt]) =>
-        currentIds.has(id) && Number.isFinite(id) && Number.isFinite(seenAt)
-    )
+    .filter(([id, seenAt]) => Number.isFinite(id) && Number.isFinite(seenAt))
     .sort((a, b) => b[1] - a[1])
     .slice(0, MAX_SEEN_POSTS_STORAGE_ITEMS);
 
@@ -473,6 +459,14 @@ function pruneSeenPostsForCurrentFeed(
     acc[id] = seenAt;
     return acc;
   }, {});
+}
+
+function writeSeenPostsToStorage(value: Record<number, number>) {
+  try {
+    localStorage.setItem(SEEN_POSTS_STORAGE_KEY, JSON.stringify(compactSeenPosts(value)));
+  } catch {
+    //
+  }
 }
 
 function SubscriptionsHint({ text }: { text: string }) {
@@ -919,7 +913,7 @@ function VideoGridView({
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
-  const [visibleVideoCount, setVisibleVideoCount] = useState(12);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(INITIAL_VIDEO_GRID_POSTS);
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
@@ -933,7 +927,7 @@ function VideoGridView({
   }, []);
 
   useEffect(() => {
-    setVisibleVideoCount(12);
+    setVisibleVideoCount(INITIAL_VIDEO_GRID_POSTS);
     setPreviewPostId(null);
     setImageFailedPostIds(new Set());
   }, [posts]);
@@ -943,14 +937,14 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 12));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + VIDEO_GRID_POSTS_STEP));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 12));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + VIDEO_GRID_POSTS_STEP));
       },
       { rootMargin: "260px 0px 420px 0px", threshold: 0.01 }
     );
@@ -1089,8 +1083,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 9 ? "eager" : "lazy"}
-                    fetchPriority={index < 6 ? "high" : "auto"}
+                    loading={index < 6 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {
@@ -1108,8 +1102,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 9 ? "eager" : "lazy"}
-                    fetchPriority={index < 6 ? "high" : "auto"}
+                    loading={index < 6 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {
@@ -1251,13 +1245,16 @@ export function FeedScreen({
     {}
   );
   const [seenPosts, setSeenPosts] = useState<Record<number, number>>(() =>
-    typeof window === "undefined" ? {} : readSeenPostsFromStorage()
+    typeof window === "undefined" ? {} : compactSeenPosts(readSeenPostsFromStorage())
   );
   const [initialSeenPosts, setInitialSeenPosts] = useState<Record<number, number>>(() =>
-    typeof window === "undefined" ? {} : readSeenPostsFromStorage()
+    typeof window === "undefined" ? {} : compactSeenPosts(readSeenPostsFromStorage())
   );
   const seenPostsHydratedRef = useRef(false);
   const currentSessionSeenPostIdsRef = useRef<Set<number>>(new Set());
+  const initialSeenPostsSnapshotRef = useRef<Record<number, number>>(
+    typeof window === "undefined" ? {} : compactSeenPosts(readSeenPostsFromStorage())
+  );
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
@@ -1560,11 +1557,13 @@ export function FeedScreen({
     setSeenSubscriptionPosts(readSeenSubscriptionsFromStorage());
     setFeedSettings(readFeedSettingsFromStorage(locale));
 
-    const storedSeenPosts = readSeenPostsFromStorage();
+    const storedSeenPosts = compactSeenPosts(readSeenPostsFromStorage());
     currentSessionSeenPostIdsRef.current = new Set();
     seenPostsHydratedRef.current = true;
+    initialSeenPostsSnapshotRef.current = storedSeenPosts;
     setSeenPosts(storedSeenPosts);
     setInitialSeenPosts(storedSeenPosts);
+
   }, [locale]);
 
   useEffect(() => {
@@ -1817,13 +1816,17 @@ export function FeedScreen({
   useEffect(() => {
     if (safePosts.length === 0) return;
 
+    // Initial и rest чанки приходят не одновременно.
+    // Нельзя чистить seen по текущему safePosts: пока загружена только первая пачка,
+    // старые просмотренные id ещё не входят в safePosts и будут удалены из localStorage.
+    // Потом rest догружается, эти посты становятся "новыми" и прыгают наверх.
     setSeenPosts((prev) => {
-      const next = pruneSeenPostsForCurrentFeed(prev, safePosts);
+      const next = compactSeenPosts(prev);
       return Object.keys(next).length === Object.keys(prev).length ? prev : next;
     });
 
-    setInitialSeenPosts((prev) => pruneSeenPostsForCurrentFeed(prev, safePosts));
-  }, [safePosts]);
+    setInitialSeenPosts(compactSeenPosts(initialSeenPostsSnapshotRef.current));
+  }, [safePosts.length]);
 
   const availableCountryOptions = useMemo(() => {
     const currentCountry = String(locale).toLowerCase();
@@ -1962,6 +1965,43 @@ export function FeedScreen({
     },
     [isFeedCardVisibleEnough, markPostSeen]
   );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let frameId = 0;
+
+    const markVisibleFeedCards = () => {
+      frameId = 0;
+
+      for (const [postId, node] of feedCardNodesRef.current.entries()) {
+        if (currentSessionSeenPostIdsRef.current.has(postId)) continue;
+
+        if (isFeedCardVisibleEnough(node)) {
+          markPostSeen(postId);
+        }
+      }
+    };
+
+    const scheduleMarkVisibleFeedCards = () => {
+      if (frameId) return;
+      frameId = window.requestAnimationFrame(markVisibleFeedCards);
+    };
+
+    scheduleMarkVisibleFeedCards();
+
+    window.addEventListener("scroll", scheduleMarkVisibleFeedCards, { passive: true });
+    window.addEventListener("resize", scheduleMarkVisibleFeedCards);
+
+    const timer = window.setInterval(scheduleMarkVisibleFeedCards, 900);
+
+    return () => {
+      if (frameId) window.cancelAnimationFrame(frameId);
+      window.clearInterval(timer);
+      window.removeEventListener("scroll", scheduleMarkVisibleFeedCards);
+      window.removeEventListener("resize", scheduleMarkVisibleFeedCards);
+    };
+  }, [isFeedCardVisibleEnough, markPostSeen, renderCount, safePosts.length, feedSettings.mediaMode]);
 
   const tagStats = useMemo(() => {
     let list = [...safePosts];
@@ -2244,6 +2284,7 @@ export function FeedScreen({
 
   const closeViewer = useCallback(() => {
     closeViewerState();
+    window.dispatchEvent(new Event("margelet:resume-feed-videos"));
   }, [closeViewerState]);
 
   useEffect(() => {
@@ -2886,7 +2927,7 @@ onChangeMediaMode={changeFeedMediaMode}
       <div className="mx-auto w-full max-w-[570px]">
         {feedSettings.mediaMode === "video" ? (
           <VideoGridView
-            posts={renderedPosts}
+            posts={visiblePosts}
             locale={locale}
             registerFeedCardNode={registerFeedCardNode}
             onOpenPost={handleOpenPost}
