@@ -939,12 +939,8 @@ export default function App() {
 
           setServerPosts((prev) => {
             const seen = new Set(prev.map((post) => post.id));
-            const merged = [...prev, ...restPosts.filter((post) => !seen.has(post.id))];
-            return merged.sort(
-              (a, b) =>
-                Date.parse(String(b.createdAt || "")) -
-                Date.parse(String(a.createdAt || ""))
-            );
+            const append = restPosts.filter((post) => !seen.has(post.id));
+            return [...prev, ...append];
           });
         } catch {
           // Initial feed is already visible; background chunks may fail silently.
@@ -953,15 +949,10 @@ export default function App() {
 
       if (typeof window !== "undefined") {
         let restStarted = false;
-        let restTimer: number | null = null;
 
         const startRest = () => {
           if (restStarted) return;
           restStarted = true;
-          if (restTimer !== null) {
-            window.clearTimeout(restTimer);
-            restTimer = null;
-          }
           window.removeEventListener("scroll", handleRestScroll);
           void loadRest();
         };
@@ -977,7 +968,7 @@ export default function App() {
         };
 
         window.addEventListener("scroll", handleRestScroll, { passive: true });
-        restTimer = window.setTimeout(startRest, 3500);
+        handleRestScroll();
       }
     } catch (error) {
       console.error("Failed to load feed", error);

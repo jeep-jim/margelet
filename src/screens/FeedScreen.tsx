@@ -72,7 +72,9 @@ const SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscriptions";
 const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
+const SEEN_SOURCES_STORAGE_KEY = "margelet_seen_sources_v1";
 const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
+const MAX_SEEN_SOURCES_STORAGE_ITEMS = 1200;
 const INITIAL_RENDER_POSTS = 12;
 const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
@@ -464,6 +466,56 @@ function compactSeenPosts(value: Record<number, number>) {
 function writeSeenPostsToStorage(value: Record<number, number>) {
   try {
     localStorage.setItem(SEEN_POSTS_STORAGE_KEY, JSON.stringify(compactSeenPosts(value)));
+  } catch {
+    //
+  }
+}
+
+function getPostSourceKey(post: IngestedPost, locale: Locale) {
+  const handle = normalizeHandle(post.source?.handle);
+  if (!handle) return "";
+  return `${normalizeCountryCode(post.sourceCountryCode, locale)}:${handle}`;
+}
+
+function readSeenSourcesFromStorage(): Record<string, number> {
+  try {
+    const raw = localStorage.getItem(SEEN_SOURCES_STORAGE_KEY);
+    if (!raw) return {};
+
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+
+    const result: Record<string, number> = {};
+
+    for (const [key, value] of Object.entries(parsed)) {
+      const normalizedKey = String(key || "").trim().toLowerCase();
+      if (normalizedKey && typeof value === "number" && Number.isFinite(value)) {
+        result[normalizedKey] = value;
+      }
+    }
+
+    return result;
+  } catch {
+    return {};
+  }
+}
+
+function compactSeenSources(value: Record<string, number>) {
+  const entries = Object.entries(value)
+    .map(([key, seenAt]) => [String(key || "").trim().toLowerCase(), seenAt] as const)
+    .filter(([key, seenAt]) => Boolean(key) && Number.isFinite(seenAt))
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, MAX_SEEN_SOURCES_STORAGE_ITEMS);
+
+  return entries.reduce<Record<string, number>>((acc, [key, seenAt]) => {
+    acc[key] = seenAt;
+    return acc;
+  }, {});
+}
+
+function writeSeenSourcesToStorage(value: Record<string, number>) {
+  try {
+    localStorage.setItem(SEEN_SOURCES_STORAGE_KEY, JSON.stringify(compactSeenSources(value)));
   } catch {
     //
   }
@@ -1251,9 +1303,18 @@ export function FeedScreen({
     typeof window === "undefined" ? {} : compactSeenPosts(readSeenPostsFromStorage())
   );
   const seenPostsHydratedRef = useRef(false);
+  const [seenSources, setSeenSources] = useState<Record<string, number>>(() =>
+    typeof window === "undefined" ? {} : compactSeenSources(readSeenSourcesFromStorage())
+  );
+  const [initialSeenSources, setInitialSeenSources] = useState<Record<string, number>>(() =>
+    typeof window === "undefined" ? {} : compactSeenSources(readSeenSourcesFromStorage())
+  );
   const currentSessionSeenPostIdsRef = useRef<Set<number>>(new Set());
   const initialSeenPostsSnapshotRef = useRef<Record<number, number>>(
     typeof window === "undefined" ? {} : compactSeenPosts(readSeenPostsFromStorage())
+  );
+  const initialSeenSourcesSnapshotRef = useRef<Record<string, number>>(
+    typeof window === "undefined" ? {} : compactSeenSources(readSeenSourcesFromStorage())
   );
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
   const safePostsRef = useRef<IngestedPost[]>([]);
@@ -1558,11 +1619,15 @@ export function FeedScreen({
     setFeedSettings(readFeedSettingsFromStorage(locale));
 
     const storedSeenPosts = compactSeenPosts(readSeenPostsFromStorage());
+    const storedSeenSources = compactSeenSources(readSeenSourcesFromStorage());
     currentSessionSeenPostIdsRef.current = new Set();
     seenPostsHydratedRef.current = true;
     initialSeenPostsSnapshotRef.current = storedSeenPosts;
+    initialSeenSourcesSnapshotRef.current = storedSeenSources;
     setSeenPosts(storedSeenPosts);
     setInitialSeenPosts(storedSeenPosts);
+    setSeenSources(storedSeenSources);
+    setInitialSeenSources(storedSeenSources);
 
   }, [locale]);
 
@@ -1628,6 +1693,11 @@ export function FeedScreen({
     if (!seenPostsHydratedRef.current) return;
     writeSeenPostsToStorage(seenPosts);
   }, [seenPosts]);
+
+  useEffect(() => {
+    if (!seenPostsHydratedRef.current) return;
+    writeSeenSourcesToStorage(seenSources);
+  }, [seenSources]);
 
   useEffect(() => {
     const handleSearchToggle = () => {
@@ -1826,6 +1896,7 @@ export function FeedScreen({
     });
 
     setInitialSeenPosts(compactSeenPosts(initialSeenPostsSnapshotRef.current));
+    setInitialSeenSources(compactSeenSources(initialSeenSourcesSnapshotRef.current));
   }, [safePosts.length]);
 
   const availableCountryOptions = useMemo(() => {
@@ -1900,6 +1971,8 @@ export function FeedScreen({
 
     currentSessionSeenPostIdsRef.current.add(postId);
     const now = Date.now();
+    const post = safePostsRef.current.find((item) => item.id === postId);
+    const sourceKey = post ? getPostSourceKey(post, locale) : "";
 
     setSeenPosts((prev) => {
       if (prev[postId]) return prev;
@@ -1911,7 +1984,18 @@ export function FeedScreen({
 
       return next;
     });
-  }, []);  
+
+    if (sourceKey) {
+      setSeenSources((prev) => {
+        if (prev[sourceKey]) return prev;
+
+        return {
+          ...prev,
+          [sourceKey]: now,
+        };
+      });
+    }
+  }, [locale]);  
 
   useEffect(() => {
     const handleSeen = (event: Event) => {
@@ -2128,27 +2212,42 @@ export function FeedScreen({
     list = interleavePostsBySource(list, locale);
 
     if (feedSettings.demoteSeen) {
-      const unseen: IngestedPost[] = [];
-      const seen: IngestedPost[] = [];
+      const freshSources: IngestedPost[] = [];
+      const seenSourcesOnly: IngestedPost[] = [];
+      const seenPostsList: IngestedPost[] = [];
 
       for (const post of list) {
         if (initialSeenPosts[post.id]) {
-          seen.push(post);
+          seenPostsList.push(post);
+          continue;
+        }
+
+        const sourceKey = getPostSourceKey(post, locale);
+        if (sourceKey && initialSeenSources[sourceKey]) {
+          seenSourcesOnly.push(post);
         } else {
-          unseen.push(post);
+          freshSources.push(post);
         }
       }
 
-      seen.sort((a, b) => {
+      seenSourcesOnly.sort((a, b) => {
+        const aSeenAt = initialSeenSources[getPostSourceKey(a, locale)] || 0;
+        const bSeenAt = initialSeenSources[getPostSourceKey(b, locale)] || 0;
+
+        return aSeenAt - bSeenAt || parsePostTime(b) - parsePostTime(a);
+      });
+
+      seenPostsList.sort((a, b) => {
         const aSeenAt = initialSeenPosts[a.id] || 0;
         const bSeenAt = initialSeenPosts[b.id] || 0;
 
-        return aSeenAt - bSeenAt;
+        return aSeenAt - bSeenAt || parsePostTime(b) - parsePostTime(a);
       });
 
       list = [
-        ...interleavePostsBySource(unseen, locale),
-        ...seen,
+        ...interleavePostsBySource(freshSources, locale),
+        ...interleavePostsBySource(seenSourcesOnly, locale),
+        ...seenPostsList,
       ];
     }
 
@@ -2160,6 +2259,7 @@ export function FeedScreen({
     searchQuery,
     locale,
     initialSeenPosts,
+    initialSeenSources,
   ]);
 
   useEffect(() => {
