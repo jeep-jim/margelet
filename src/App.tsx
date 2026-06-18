@@ -511,6 +511,7 @@ async function readFeedPayload(path: string): Promise<IngestedPost[]> {
 async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Promise<IngestedPost[]> {
   const mode = options.mode || "initial";
   const countryCode = normalizeCountryCode(locale) as CountryCode;
+  const initialLimit = 96;
 
   const sortPosts = (items: IngestedPost[]) =>
     items.sort(
@@ -519,6 +520,11 @@ async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Pr
         Date.parse(String(a.createdAt || ""))
     );
 
+  const limitInitialPosts = (items: IngestedPost[]) => {
+    const sorted = sortPosts(items);
+    return mode === "initial" ? sorted.slice(0, initialLimit) : sorted;
+  };
+
   try {
     const countryRes = await fetch(`/feeds/${countryCode}.json`);
 
@@ -526,11 +532,11 @@ async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Pr
       const countryData = await countryRes.json();
 
       if (Array.isArray(countryData?.posts) && countryData.posts.length > 0) {
-        return sortPosts(countryData.posts);
+        return limitInitialPosts(countryData.posts);
       }
 
       if (Array.isArray(countryData?.items) && countryData.items.length > 0) {
-        return sortPosts(countryData.items);
+        return limitInitialPosts(countryData.items);
       }
 
       if (Array.isArray(countryData?.chunks)) {
@@ -538,15 +544,13 @@ async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Pr
         const selectedChunks =
           mode === "initial"
             ? chunks.slice(0, 1)
-            : mode === "rest"
-              ? chunks.slice(1)
-              : chunks;
+            : chunks;
 
         const chunkPosts = await Promise.all(
           selectedChunks.map((chunk: any) => readFeedPayload(chunk.path))
         );
 
-        return sortPosts(chunkPosts.flat());
+        return limitInitialPosts(chunkPosts.flat());
       }
     }
   } catch {
@@ -565,14 +569,14 @@ async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Pr
           ? data.items
           : [];
 
-      return sortPosts(posts.filter((post: IngestedPost) => normalizeCountryCode(post.sourceCountryCode || locale) === countryCode));
+      return limitInitialPosts(posts.filter((post: IngestedPost) => normalizeCountryCode(post.sourceCountryCode || locale) === countryCode));
     }
   } catch {
     // Fall back below.
   }
 
   const fallbackPosts = await readFeedPayload(`/feed.json`);
-  return sortPosts(
+  return limitInitialPosts(
     fallbackPosts.filter((post) => normalizeCountryCode(post.sourceCountryCode || locale) === countryCode)
   );
 }
@@ -947,12 +951,33 @@ export default function App() {
         }
       };
 
-      if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-        (window as any).requestIdleCallback(() => void loadRest(), { timeout: 4000 });
-      } else {
-        setTimeout(() => {
+      if (typeof window !== "undefined") {
+        let restStarted = false;
+        let restTimer: number | null = null;
+
+        const startRest = () => {
+          if (restStarted) return;
+          restStarted = true;
+          if (restTimer !== null) {
+            window.clearTimeout(restTimer);
+            restTimer = null;
+          }
+          window.removeEventListener("scroll", handleRestScroll);
           void loadRest();
-        }, 1800);
+        };
+
+        const handleRestScroll = () => {
+          const scrollTop = window.scrollY || window.pageYOffset || 0;
+          const viewportHeight = window.innerHeight || 0;
+          const fullHeight = document.documentElement.scrollHeight || 0;
+
+          if (fullHeight - (scrollTop + viewportHeight) < 1800) {
+            startRest();
+          }
+        };
+
+        window.addEventListener("scroll", handleRestScroll, { passive: true });
+        restTimer = window.setTimeout(startRest, 15000);
       }
     } catch (error) {
       console.error("Failed to load feed", error);

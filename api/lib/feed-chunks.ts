@@ -5,8 +5,8 @@ import type { IngestedPost } from "./contracts.js";
 
 const FEED_CHUNKS_DIR = "data/feed/chunks";
 const FEED_INDEX_PATH = "data/feed/index.json";
-const POSTS_PER_CHUNK = 500;
-const CHUNK_MAX_AGE_DAYS = 30;
+const POSTS_PER_CHUNK = 100;
+const CHUNK_MAX_AGE_DAYS = 3;
 
 export type FeedChunkIndex = {
   version: number;

@@ -73,8 +73,8 @@ const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
 const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
-const INITIAL_RENDER_POSTS = 14;
-const RENDER_POSTS_STEP = 10;
+const INITIAL_RENDER_POSTS = 8;
+const RENDER_POSTS_STEP = 8;
 const LOAD_MORE_DISTANCE_PX = 900;
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
@@ -919,7 +919,7 @@ function VideoGridView({
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
-  const [visibleVideoCount, setVisibleVideoCount] = useState(12);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(9);
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
@@ -933,7 +933,7 @@ function VideoGridView({
   }, []);
 
   useEffect(() => {
-    setVisibleVideoCount(12);
+    setVisibleVideoCount(9);
     setPreviewPostId(null);
     setImageFailedPostIds(new Set());
   }, [posts]);
@@ -943,14 +943,14 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 12));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 9));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 12));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 9));
       },
       { rootMargin: "260px 0px 420px 0px", threshold: 0.01 }
     );
@@ -1007,7 +1007,7 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed));
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed && index < 6));
 
           return (
             <div
@@ -1089,8 +1089,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 9 ? "eager" : "lazy"}
-                    fetchPriority={index < 6 ? "high" : "auto"}
+                    loading={index < 6 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {
@@ -1108,8 +1108,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 9 ? "eager" : "lazy"}
-                    fetchPriority={index < 6 ? "high" : "auto"}
+                    loading={index < 6 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {

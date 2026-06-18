@@ -29,8 +29,8 @@ const PUBLIC_FEED_PATH = "public/feed.json";
 const FEEDS_INDEX_PATH = "data/feeds/index.json";
 const PUBLIC_FEEDS_INDEX_PATH = "public/feeds/index.json";
 const REPORTS_PATH = "data/reports.json";
-const COUNTRY_CHUNK_SIZE = 500;
-const COUNTRY_CHUNK_MAX_AGE_DAYS = 30;
+const COUNTRY_CHUNK_SIZE = 100;
+const COUNTRY_CHUNK_MAX_AGE_DAYS = 3;
 
 export type FeedFile<T = unknown> = {
   updatedAt: string;

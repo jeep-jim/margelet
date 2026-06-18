@@ -24,7 +24,7 @@ interface SourcesFile {
   sources: Source[];
 }
 
-const POSTS_PER_CHUNK = 500;
+const POSTS_PER_CHUNK = 100;
 const FEED_PATH = "data/feed.json";
 const SOURCES_PATH = "data/sources.json";
 const FEED_CHUNKS_DIR = "data/feed/chunks";
