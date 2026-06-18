@@ -76,6 +76,8 @@ const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
 const INITIAL_RENDER_POSTS = 12;
 const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
+const INITIAL_VIDEO_GRID_POSTS = 18;
+const VIDEO_GRID_POSTS_STEP = 18;
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
 const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
@@ -919,7 +921,7 @@ function VideoGridView({
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
-  const [visibleVideoCount, setVisibleVideoCount] = useState(9);
+  const [visibleVideoCount, setVisibleVideoCount] = useState(INITIAL_VIDEO_GRID_POSTS);
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
@@ -933,7 +935,7 @@ function VideoGridView({
   }, []);
 
   useEffect(() => {
-    setVisibleVideoCount(9);
+    setVisibleVideoCount(INITIAL_VIDEO_GRID_POSTS);
     setPreviewPostId(null);
     setImageFailedPostIds(new Set());
   }, [posts]);
@@ -943,14 +945,14 @@ function VideoGridView({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisibleVideoCount((prev) => Math.min(posts.length, prev + 9));
+      setVisibleVideoCount((prev) => Math.min(posts.length, prev + VIDEO_GRID_POSTS_STEP));
       return;
     }
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries.some((entry) => entry.isIntersecting)) return;
-        setVisibleVideoCount((prev) => Math.min(posts.length, prev + 9));
+        setVisibleVideoCount((prev) => Math.min(posts.length, prev + VIDEO_GRID_POSTS_STEP));
       },
       { rootMargin: "260px 0px 420px 0px", threshold: 0.01 }
     );
@@ -1007,7 +1009,7 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed && index < 18));
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed));
 
           return (
             <div
@@ -1822,7 +1824,19 @@ export function FeedScreen({
       return Object.keys(next).length === Object.keys(prev).length ? prev : next;
     });
 
-    setInitialSeenPosts((prev) => pruneSeenPostsForCurrentFeed(prev, safePosts));
+    // Для сортировки берём только то, что было просмотрено ДО текущего рендера.
+    // Так карточки не прыгают вниз во время чтения, но после обновления страницы
+    // уже увиденные посты уходят в самый низ ленты.
+    const storedSeenPosts = pruneSeenPostsForCurrentFeed(readSeenPostsFromStorage(), safePosts);
+    const currentSessionSeenIds = currentSessionSeenPostIdsRef.current;
+
+    if (currentSessionSeenIds.size > 0) {
+      for (const postId of currentSessionSeenIds) {
+        delete storedSeenPosts[postId];
+      }
+    }
+
+    setInitialSeenPosts(storedSeenPosts);
   }, [safePosts]);
 
   const availableCountryOptions = useMemo(() => {
@@ -1962,6 +1976,43 @@ export function FeedScreen({
     },
     [isFeedCardVisibleEnough, markPostSeen]
   );
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let frameId = 0;
+
+    const markVisibleFeedCards = () => {
+      frameId = 0;
+
+      for (const [postId, node] of feedCardNodesRef.current.entries()) {
+        if (currentSessionSeenPostIdsRef.current.has(postId)) continue;
+
+        if (isFeedCardVisibleEnough(node)) {
+          markPostSeen(postId);
+        }
+      }
+    };
+
+    const scheduleMarkVisibleFeedCards = () => {
+      if (frameId) return;
+      frameId = window.requestAnimationFrame(markVisibleFeedCards);
+    };
+
+    scheduleMarkVisibleFeedCards();
+
+    window.addEventListener("scroll", scheduleMarkVisibleFeedCards, { passive: true });
+    window.addEventListener("resize", scheduleMarkVisibleFeedCards);
+
+    const timer = window.setInterval(scheduleMarkVisibleFeedCards, 900);
+
+    return () => {
+      if (frameId) window.cancelAnimationFrame(frameId);
+      window.clearInterval(timer);
+      window.removeEventListener("scroll", scheduleMarkVisibleFeedCards);
+      window.removeEventListener("resize", scheduleMarkVisibleFeedCards);
+    };
+  }, [isFeedCardVisibleEnough, markPostSeen, renderCount, safePosts.length, feedSettings.mediaMode]);
 
   const tagStats = useMemo(() => {
     let list = [...safePosts];
