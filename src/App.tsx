@@ -23,6 +23,10 @@ const ADMIN_TELEGRAM_IDS = new Set(["1372669404"]);
 
 const SITE_ORIGIN = "https://www.margelet.space";
 const DEFAULT_LOCALE: Locale = "ru";
+const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
+const MAX_FEED_COUNTRIES_TO_LOAD = 5;
+const INITIAL_POSTS_PER_COUNTRY = 120;
+
 
 // 🔥 Генерируем список стран из единого SEO_LOCALE_META
 const COUNTRY_CODES = new Set<CountryCode>(Object.keys(SEO_LOCALE_META) as CountryCode[]);
@@ -508,10 +512,60 @@ async function readFeedPayload(path: string): Promise<IngestedPost[]> {
   return readPosts(data);
 }
 
+function getStoredFeedCountries(locale: Locale): CountryCode[] {
+  const fallbackCountry = normalizeCountryCode(locale) as CountryCode;
+
+  if (typeof window === "undefined") {
+    return [fallbackCountry];
+  }
+
+  try {
+    const raw = window.localStorage.getItem(FEED_SETTINGS_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : null;
+    const stored = [
+      ...(Array.isArray(parsed?.countries) ? parsed.countries : []),
+      ...(Array.isArray(parsed?.favoriteCountries) ? parsed.favoriteCountries : []),
+    ];
+
+    const normalized = [fallbackCountry, ...stored]
+      .map((item) => normalizeCountryCode(item) as CountryCode)
+      .filter((item, index, array) => array.indexOf(item) === index)
+      .slice(0, MAX_FEED_COUNTRIES_TO_LOAD);
+
+    return normalized.length > 0 ? normalized : [fallbackCountry];
+  } catch {
+    return [fallbackCountry];
+  }
+}
+
+async function readCountryFeed(countryCode: CountryCode, mode: FeedLoadMode): Promise<IngestedPost[]> {
+  const countryRes = await fetch(`/feeds/${countryCode}.json`);
+  if (!countryRes.ok) return [];
+
+  const countryData = await countryRes.json();
+
+  if (Array.isArray(countryData?.posts) && countryData.posts.length > 0) {
+    return countryData.posts;
+  }
+
+  if (Array.isArray(countryData?.items) && countryData.items.length > 0) {
+    return countryData.items;
+  }
+
+  if (!Array.isArray(countryData?.chunks)) return [];
+
+  const chunks = countryData.chunks.filter((chunk: any) => Boolean(chunk?.path));
+  const selectedChunks = mode === "initial" ? chunks.slice(0, 2) : chunks;
+  const chunkPosts = await Promise.all(
+    selectedChunks.map((chunk: any) => readFeedPayload(chunk.path))
+  );
+
+  return chunkPosts.flat();
+}
+
 async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Promise<IngestedPost[]> {
   const mode = options.mode || "initial";
-  const countryCode = normalizeCountryCode(locale) as CountryCode;
-  const initialLimit = 120;
+  const feedCountries = getStoredFeedCountries(locale);
 
   const sortPosts = (items: IngestedPost[]) =>
     items.sort(
@@ -520,41 +574,26 @@ async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Pr
         Date.parse(String(a.createdAt || ""))
     );
 
-  const limitInitialPosts = (items: IngestedPost[]) => {
-    const sorted = sortPosts(items);
-    return mode === "initial" ? sorted.slice(0, initialLimit) : sorted;
-  };
-
-  try {
-    const countryRes = await fetch(`/feeds/${countryCode}.json`);
-
-    if (countryRes.ok) {
-      const countryData = await countryRes.json();
-
-      if (Array.isArray(countryData?.posts) && countryData.posts.length > 0) {
-        return limitInitialPosts(countryData.posts);
-      }
-
-      if (Array.isArray(countryData?.items) && countryData.items.length > 0) {
-        return limitInitialPosts(countryData.items);
-      }
-
-      if (Array.isArray(countryData?.chunks)) {
-        const chunks = countryData.chunks.filter((chunk: any) => Boolean(chunk?.path));
-        const selectedChunks =
-          mode === "initial"
-            ? chunks.slice(0, 2)
-            : chunks;
-
-        const chunkPosts = await Promise.all(
-          selectedChunks.map((chunk: any) => readFeedPayload(chunk.path))
+  const countryPosts = await Promise.all(
+    feedCountries.map(async (countryCode) => {
+      try {
+        const posts = await readCountryFeed(countryCode, mode);
+        const ownPosts = posts.filter(
+          (post) => normalizeCountryCode(post.sourceCountryCode || countryCode) === countryCode
         );
 
-        return limitInitialPosts(chunkPosts.flat());
+        return mode === "initial"
+          ? sortPosts(ownPosts).slice(0, INITIAL_POSTS_PER_COUNTRY)
+          : ownPosts;
+      } catch {
+        return [];
       }
-    }
-  } catch {
-    // Fall back below.
+    })
+  );
+
+  const mergedCountryPosts = sortPosts(countryPosts.flat());
+  if (mergedCountryPosts.length > 0) {
+    return mergedCountryPosts;
   }
 
   try {
@@ -569,16 +608,26 @@ async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Pr
           ? data.items
           : [];
 
-      return limitInitialPosts(posts.filter((post: IngestedPost) => normalizeCountryCode(post.sourceCountryCode || locale) === countryCode));
+      const filtered = posts.filter((post: IngestedPost) =>
+        feedCountries.includes(normalizeCountryCode(post.sourceCountryCode || locale) as CountryCode)
+      );
+
+      return mode === "initial"
+        ? sortPosts(filtered).slice(0, feedCountries.length * INITIAL_POSTS_PER_COUNTRY)
+        : sortPosts(filtered);
     }
   } catch {
     // Fall back below.
   }
 
   const fallbackPosts = await readFeedPayload(`/feed.json`);
-  return limitInitialPosts(
-    fallbackPosts.filter((post) => normalizeCountryCode(post.sourceCountryCode || locale) === countryCode)
+  const filteredFallback = fallbackPosts.filter((post) =>
+    feedCountries.includes(normalizeCountryCode(post.sourceCountryCode || locale) as CountryCode)
   );
+
+  return mode === "initial"
+    ? sortPosts(filteredFallback).slice(0, feedCountries.length * INITIAL_POSTS_PER_COUNTRY)
+    : sortPosts(filteredFallback);
 }
 
 export default function App() {
