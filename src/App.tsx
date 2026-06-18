@@ -511,7 +511,7 @@ async function readFeedPayload(path: string): Promise<IngestedPost[]> {
 async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Promise<IngestedPost[]> {
   const mode = options.mode || "initial";
   const countryCode = normalizeCountryCode(locale) as CountryCode;
-  const initialLimit = 96;
+  const initialLimit = 120;
 
   const sortPosts = (items: IngestedPost[]) =>
     items.sort(
@@ -543,7 +543,7 @@ async function loadServerFeed(locale: Locale, options: FeedLoadOptions = {}): Pr
         const chunks = countryData.chunks.filter((chunk: any) => Boolean(chunk?.path));
         const selectedChunks =
           mode === "initial"
-            ? chunks.slice(0, 1)
+            ? chunks.slice(0, 2)
             : chunks;
 
         const chunkPosts = await Promise.all(
@@ -977,7 +977,7 @@ export default function App() {
         };
 
         window.addEventListener("scroll", handleRestScroll, { passive: true });
-        restTimer = window.setTimeout(startRest, 15000);
+        restTimer = window.setTimeout(startRest, 3500);
       }
     } catch (error) {
       console.error("Failed to load feed", error);

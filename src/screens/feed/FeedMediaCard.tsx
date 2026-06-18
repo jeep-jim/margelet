@@ -183,8 +183,6 @@ export function FeedMediaCard({
   const media = useMemo(() => normalizeMediaList(post), [post]);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const rafRef = useRef<number | null>(null);
-
   const [muted, setMuted] = useState(readGlobalMuted());
   const [forcedPaused, setForcedPaused] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
@@ -215,12 +213,18 @@ export function FeedMediaCard({
       setIsVideoPlaying(false);
     };
 
+    const resumeVisible = () => {
+      setForcedPaused(false);
+    };
+
     window.addEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
     window.addEventListener(FEED_PAUSE_EVENT, pauseAll);
+    window.addEventListener("margelet:resume-feed-videos", resumeVisible);
 
     return () => {
       window.removeEventListener(FEED_MUTE_EVENT, syncMuted as EventListener);
       window.removeEventListener(FEED_PAUSE_EVENT, pauseAll);
+      window.removeEventListener("margelet:resume-feed-videos", resumeVisible);
     };
   }, []);
 
@@ -335,50 +339,6 @@ export function FeedMediaCard({
     shouldLoadMedia,
   ]);
 
-  useEffect(() => {
-    const node = videoRef.current;
-    if (!node || activeItem?.kind !== "video") return;
-
-    if (rafRef.current !== null) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-
-    const tick = () => {
-      if (!node) return;
-
-      if (!isSeeking) {
-        setCurrentTime(node.currentTime || 0);
-      }
-      setDuration(Number.isFinite(node.duration) ? node.duration : 0);
-      setIsVideoPlaying(!node.paused && !node.ended);
-
-      if (!node.paused && !node.ended) {
-        rafRef.current = requestAnimationFrame(tick);
-      } else {
-        rafRef.current = null;
-      }
-    };
-
-    if (shouldLoadMedia && isCardVisible && !forcedPaused) {
-      rafRef.current = requestAnimationFrame(tick);
-    }
-
-    return () => {
-      if (rafRef.current !== null) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-    };
-  }, [
-    activeItem?.id,
-    activeItem?.kind,
-    shouldLoadMedia,
-    isCardVisible,
-    forcedPaused,
-    isSeeking,
-  ]);
-
   const handleOpen = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));
     onOpen();
@@ -423,14 +383,6 @@ export function FeedMediaCard({
     return null;
   }
 
-  if (!shouldLoadMedia) {
-    return (
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-soft">
-        <div className="absolute inset-0 animate-pulse bg-surface-soft" />
-      </div>
-    );
-  }
-
   return (
     <div className="relative">
       <FeedCarousel
@@ -439,7 +391,7 @@ export function FeedMediaCard({
         activeIndex={mediaIndex}
         onChange={onChangeMediaIndex}
         controlsTone="light"
-        mediaActive={isCardVisible && !forcedPaused}
+        mediaActive={shouldLoadMedia && isCardVisible && !forcedPaused}
         muted={muted}
         videoRef={videoRef}
         fit={activeIsVideo || activeIsWideVideo ? "contain" : "contain"}

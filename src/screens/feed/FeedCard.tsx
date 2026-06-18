@@ -90,6 +90,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
 
         if (visible && !seenReportedRef.current) {
           seenReportedRef.current = true;
+          onSeen?.();
 
           window.dispatchEvent(
             new CustomEvent("margelet-feed-post-seen", {
@@ -109,7 +110,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
         }
       },
       {
-        rootMargin: "900px 0px",
+        rootMargin: "1400px 0px",
         threshold: 0,
       }
     );
@@ -121,7 +122,7 @@ export function FeedCard(props: FeedCardRuntimeProps) {
       visibilityObserver.disconnect();
       preloadObserver.disconnect();
     };
-  }, [onSeen]);
+  }, [post.id, onSeen]);
 
   const openPostSafely = () => {
     window.dispatchEvent(new Event(FEED_PAUSE_EVENT));

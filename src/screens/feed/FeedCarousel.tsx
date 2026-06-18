@@ -70,7 +70,7 @@ function HybridMedia({
         alt=""
         className={mediaClass}
         referrerPolicy="no-referrer"
-        loading="lazy"
+        loading="eager"
         decoding="async"
       />
     );
@@ -183,6 +183,11 @@ export function FeedCarousel({
   const current =
     items[Math.min(activeIndex, Math.max(items.length - 1, 0))] || null;
 
+  // Playback is intentionally controlled by FeedMediaCard.
+  // Keeping this prop consumed preserves the public component API without
+  // letting the carousel start/pause videos by itself.
+  void mediaActive;
+
   const canPrev = activeIndex > 0;
   const canNext = activeIndex < items.length - 1;
 
@@ -190,17 +195,10 @@ export function FeedCarousel({
     const node = videoRef?.current;
     if (!node || current?.kind !== "video") return;
 
+    // FeedMediaCard is the single owner of video playback.
+    // The carousel only keeps the mute state in sync and renders media.
     node.muted = muted;
-
-    if (mediaActive) {
-      const promise = node.play();
-      if (promise && typeof promise.catch === "function") {
-        promise.catch(() => {});
-      }
-    } else {
-      node.pause();
-    }
-  }, [current?.id, current?.kind, mediaActive, muted, videoRef]);
+  }, [current?.id, current?.kind, muted, videoRef]);
 
   useEffect(() => {
     if (!fullscreenOpen) return;

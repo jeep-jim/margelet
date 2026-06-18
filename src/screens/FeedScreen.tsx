@@ -73,8 +73,8 @@ const SEEN_SUBSCRIPTIONS_STORAGE_KEY = "margelet_subscription_seen_posts";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const SEEN_POSTS_STORAGE_KEY = "margelet_seen_posts_v1";
 const MAX_SEEN_POSTS_STORAGE_ITEMS = 6000;
-const INITIAL_RENDER_POSTS = 8;
-const RENDER_POSTS_STEP = 8;
+const INITIAL_RENDER_POSTS = 12;
+const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
@@ -1007,7 +1007,7 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed && index < 6));
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || (!poster && !imageFailed && index < 18));
 
           return (
             <div
@@ -2244,6 +2244,7 @@ export function FeedScreen({
 
   const closeViewer = useCallback(() => {
     closeViewerState();
+    window.dispatchEvent(new Event("margelet:resume-feed-videos"));
   }, [closeViewerState]);
 
   useEffect(() => {
@@ -2886,7 +2887,7 @@ onChangeMediaMode={changeFeedMediaMode}
       <div className="mx-auto w-full max-w-[570px]">
         {feedSettings.mediaMode === "video" ? (
           <VideoGridView
-            posts={renderedPosts}
+            posts={visiblePosts}
             locale={locale}
             registerFeedCardNode={registerFeedCardNode}
             onOpenPost={handleOpenPost}
