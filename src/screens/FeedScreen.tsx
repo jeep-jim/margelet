@@ -620,63 +620,6 @@ function isVideoGridSourceVerified(post: IngestedPost) {
   );
 }
 
-function getVideoGridMediaRatio(post: IngestedPost, index: number) {
-  const media = normalizeMediaList(post);
-  const visual =
-    media.find((item) => item.kind === "video") ||
-    media.find((item) => item.kind === "image");
-
-  const record = (visual || {}) as Record<string, unknown>;
-  const width = Number(record.width || record.w || record.videoWidth || 0);
-  const height = Number(record.height || record.h || record.videoHeight || 0);
-
-  if (width > 0 && height > 0) {
-    return width / height;
-  }
-
-  // Если Telegram не дал размеры — не делаем огромные пустые башни.
-  // Паттерн даёт живую ленту, но grid-auto-flow:dense закрывает дырки.
-  const pattern = [0.62, 0.78, 1.2, 0.7, 1.55, 0.82, 1, 0.66, 1.38, 0.74];
-  return pattern[index % pattern.length] || 0.78;
-}
-
-function getVideoGridCardClass(post: IngestedPost, index: number) {
-  const ratio = getVideoGridMediaRatio(post, index);
-
-  // Tetris-сетка: фиксированная мелкая сетка + dense.
-  // Карточки могут занимать 1/2 колонки и разную высоту, но всегда кропаются через object-cover.
-  // Так лучше потерять края превью, чем оставлять пустые клетки.
-  if (ratio >= 1.35) {
-    return "col-span-2 row-span-3";
-  }
-
-  if (ratio >= 1.05) {
-    return index % 5 === 0 ? "col-span-2 row-span-4" : "col-span-1 row-span-3";
-  }
-
-  if (ratio >= 0.86) {
-    return index % 7 === 0 ? "col-span-2 row-span-5" : "col-span-1 row-span-4";
-  }
-
-  if (ratio <= 0.56) {
-    return index % 9 === 0 ? "col-span-2 row-span-6" : "col-span-1 row-span-5";
-  }
-
-  const pattern = [
-    "col-span-1 row-span-5",
-    "col-span-1 row-span-4",
-    "col-span-2 row-span-5",
-    "col-span-1 row-span-5",
-    "col-span-1 row-span-4",
-    "col-span-1 row-span-6",
-    "col-span-2 row-span-4",
-    "col-span-1 row-span-5",
-  ];
-
-  return pattern[index % pattern.length] || "col-span-1 row-span-5";
-}
-
-
 function FeedTopSearch({
   locale,
   searchQuery,
@@ -936,35 +879,11 @@ function VideoGridView({
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
   const longPressTimerRef = useRef<number | null>(null);
   const suppressNextClickRef = useRef(false);
-  const videoPreviewRefs = useRef<Map<number, HTMLVideoElement>>(new Map());
   const autoPreviewTimerRef = useRef<number | null>(null);
   const [visibleVideoCount, setVisibleVideoCount] = useState(18);
-  const [previewLoadPostIds, setPreviewLoadPostIds] = useState<Set<number>>(() => new Set());
-  const [videoReadyPostIds, setVideoReadyPostIds] = useState<Set<number>>(() => new Set());
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    videoPreviewRefs.current.forEach((video, postId) => {
-      if (postId !== previewPostId) {
-        video.pause();
-        try {
-          video.currentTime = Math.min(0.12, video.duration || 0.12);
-        } catch {
-          //
-        }
-      }
-    });
-
-    if (previewPostId === null) return;
-
-    const activeVideo = videoPreviewRefs.current.get(previewPostId);
-    if (!activeVideo) return;
-
-    activeVideo.muted = true;
-    activeVideo.loop = true;
-    void activeVideo.play().catch(() => undefined);
-  }, [previewPostId]);
 
   useEffect(() => {
     return () => {
@@ -975,15 +894,12 @@ function VideoGridView({
         window.clearTimeout(autoPreviewTimerRef.current);
         autoPreviewTimerRef.current = null;
       }
-      videoPreviewRefs.current.forEach((video) => video.pause());
     };
   }, []);
 
   useEffect(() => {
     setVisibleVideoCount(18);
     setPreviewPostId(null);
-    setPreviewLoadPostIds(new Set());
-    setVideoReadyPostIds(new Set());
     setImageFailedPostIds(new Set());
   }, [posts]);
 
@@ -1017,14 +933,6 @@ function VideoGridView({
     };
   }, []);
 
-  const warmVideoPreview = useCallback((postId: number) => {
-    setPreviewLoadPostIds((prev) => {
-      if (prev.has(postId)) return prev;
-      const next = new Set(prev);
-      next.add(postId);
-      return next;
-    });
-  }, []);
 
   const clearLongPressTimer = () => {
     if (longPressTimerRef.current) {
@@ -1033,23 +941,8 @@ function VideoGridView({
     }
   };
 
-  const startPreview = (postId: number) => {
-    suppressNextClickRef.current = true;
-
-    const video = videoPreviewRefs.current.get(postId);
-    if (video) {
-      video.muted = true;
-      video.loop = true;
-      try {
-        if (video.currentTime < 0.08) {
-          video.currentTime = Math.min(0.14, video.duration || 0.14);
-        }
-      } catch {
-        //
-      }
-      void video.play().catch(() => undefined);
-    }
-
+  const startPreview = (postId: number, suppressClick = false) => {
+    suppressNextClickRef.current = suppressClick;
     setPreviewPostId(postId);
   };
 
@@ -1072,13 +965,13 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-2 gap-px [grid-auto-flow:dense] [grid-auto-rows:48px] sm:grid-cols-2 sm:[grid-auto-rows:58px]">
+      <div className="grid grid-cols-3 gap-px">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
           const title = post.source?.title || post.source?.handle || "Telegram";
           const verified = isVideoGridSourceVerified(post);
-          const cardClass = getVideoGridCardClass(post, index);
+          const cardClass = "aspect-[9/16]";
           const poster = preview?.poster || "";
           const isPreviewing = previewPostId === post.id;
           const text = String(post.text || "")
@@ -1088,13 +981,7 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
-          const hasImagePreview = Boolean(poster) || (canRenderImage && !imageFailed);
-          const shouldRenderVideo =
-            canRenderVideo &&
-            (!hasImagePreview || isPreviewing || previewLoadPostIds.has(post.id));
-
-          const videoReady = videoReadyPostIds.has(post.id);
-          const showVideoFrame = videoReady && (isPreviewing || !hasImagePreview);
+          const shouldRenderVideo = canRenderVideo && isPreviewing;
 
           return (
             <div
@@ -1115,17 +1002,15 @@ function VideoGridView({
 
                   clearLongPressTimer();
                   suppressNextClickRef.current = false;
-                  warmVideoPreview(post.id);
 
                   longPressTimerRef.current = window.setTimeout(() => {
-                    startPreview(post.id);
+                    startPreview(post.id, true);
                   }, 430);
                 }}
                 onPointerUp={stopPreview}
                 onPointerCancel={stopPreview}
                 onPointerEnter={(event) => {
                   if (event.pointerType === "mouse") {
-                    warmVideoPreview(post.id);
                     startPreview(post.id);
                   }
                 }}
@@ -1153,72 +1038,19 @@ function VideoGridView({
 
                 {shouldRenderVideo ? (
                   <video
-                    ref={(node) => {
-                      if (node) {
-                        videoPreviewRefs.current.set(post.id, node);
-                        node.muted = true;
-                        node.loop = true;
-                      } else {
-                        videoPreviewRefs.current.delete(post.id);
-                      }
-                    }}
                     src={preview.url}
                     poster={poster || undefined}
                     data-video-preview-post-id={post.id}
                     muted
                     playsInline
                     loop
+                    autoPlay
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload="metadata"
-                    className={[
-                      "absolute inset-0 z-[2] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
-                      showVideoFrame ? "opacity-100" : "opacity-0",
-                    ].join(" ")}
+                    preload="none"
+                    className="absolute inset-0 z-[2] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
                     onContextMenu={(event) => event.preventDefault()}
-                    onLoadedMetadata={(event) => {
-                      const video = event.currentTarget;
-                      try {
-                        const targetTime = isPreviewing ? 0.14 : 0.5;
-                        if (video.currentTime < 0.08) {
-                          video.currentTime = Math.min(targetTime, video.duration || targetTime);
-                        }
-                      } catch {
-                        //
-                      }
-                    }}
-                    onLoadedData={(event) => {
-                      const video = event.currentTarget;
-                      try {
-                        if (!isPreviewing) {
-                          video.pause();
-                        }
-                        setVideoReadyPostIds((prev) => {
-                          if (prev.has(post.id)) return prev;
-                          const next = new Set(prev);
-                          next.add(post.id);
-                          return next;
-                        });
-                      } catch {
-                        //
-                      }
-                    }}
-                    onCanPlay={(event) => {
-                      const video = event.currentTarget;
-                      if (isPreviewing) return;
-                      try {
-                        video.pause();
-                        setVideoReadyPostIds((prev) => {
-                          if (prev.has(post.id)) return prev;
-                          const next = new Set(prev);
-                          next.add(post.id);
-                          return next;
-                        });
-                      } catch {
-                        //
-                      }
-                    }}
                   />
                 ) : null}
 
@@ -1228,8 +1060,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 18 ? "eager" : "lazy"}
-                    fetchPriority={index < 8 ? "high" : "auto"}
+                    loading={index < 9 ? "eager" : "lazy"}
+                    fetchPriority={index < 6 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {
@@ -1247,8 +1079,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 18 ? "eager" : "lazy"}
-                    fetchPriority={index < 8 ? "high" : "auto"}
+                    loading={index < 9 ? "eager" : "lazy"}
+                    fetchPriority={index < 6 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {
@@ -1404,7 +1236,7 @@ export function FeedScreen({
   const [selectedModerationPostIds, setSelectedModerationPostIds] = useState<number[]>([]);
   const [moderationSelectionMode, setModerationSelectionMode] = useState(false);
   const [moderationReports, setModerationReports] = useState<ModerationReport[]>([]);
-  const [moderationNoticeDismissed, setModerationNoticeDismissed] = useState(false);
+  const [moderationNoticeDismissed, setModerationNoticeDismissed] = useState(true);
   const [moderationReportsPanelOpen, setModerationReportsPanelOpen] = useState(false);
   const [moderationMessage, setModerationMessage] = useState<string | null>(null);
   const isCurrentAdmin = !!currentTelegramUserId && ADMIN_TELEGRAM_IDS.has(currentTelegramUserId);
@@ -1487,10 +1319,10 @@ export function FeedScreen({
         (a, b) => Date.parse(b.updatedAt || b.createdAt) - Date.parse(a.updatedAt || a.createdAt)
       );
       setModerationReports(nextReports);
-      if (nextReports.length > 0) setModerationNoticeDismissed(false);
+
     } catch {
       setModerationReports(localReports);
-      if (localReports.length > 0) setModerationNoticeDismissed(false);
+
     }
   }, [currentTelegramUserId, isCurrentAdmin]);
 
@@ -1522,7 +1354,12 @@ export function FeedScreen({
 
   useEffect(() => {
     const togglePanel = () => {
-      if (!isCurrentAdmin || moderationReports.length === 0) return;
+      if (!isCurrentAdmin) return;
+      if (moderationReports.length === 0) {
+        setModerationMessage("У вас пока нет событий.");
+        window.setTimeout(() => setModerationMessage(null), 2200);
+        return;
+      }
       setModerationReportsPanelOpen((prev) => !prev);
       setModerationNoticeDismissed(true);
     };
@@ -2722,7 +2559,7 @@ export function FeedScreen({
 
   return (
     <div className="min-h-screen bg-app pt-16 text-primary" style={{ paddingTop: "var(--app-header-offset)" }}>
-      {isCurrentAdmin && moderationReports.length > 0 && !moderationNoticeDismissed ? (
+      {false && isCurrentAdmin && moderationReports.length > 0 && !moderationNoticeDismissed ? (
         <div className="fixed left-3 right-3 top-[calc(var(--app-header-offset)+10px)] z-[80] mx-auto flex max-w-[620px] items-center justify-between gap-3 rounded-[22px] border border-rose-300/30 bg-rose-600/92 px-4 py-3 text-sm font-black text-white shadow-[0_18px_70px_rgba(225,29,72,.35)] backdrop-blur">
           <button
             type="button"
