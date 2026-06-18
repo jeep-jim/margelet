@@ -1260,6 +1260,9 @@ export function FeedScreen({
   );
   const seenPostsHydratedRef = useRef(false);
   const currentSessionSeenPostIdsRef = useRef<Set<number>>(new Set());
+    const initialSeenPostsSnapshotRef = useRef<Record<number, number>>(
+    typeof window === "undefined" ? {} : readSeenPostsFromStorage()
+  );
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
   const safePostsRef = useRef<IngestedPost[]>([]);
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
@@ -1565,8 +1568,10 @@ export function FeedScreen({
     const storedSeenPosts = readSeenPostsFromStorage();
     currentSessionSeenPostIdsRef.current = new Set();
     seenPostsHydratedRef.current = true;
+    initialSeenPostsSnapshotRef.current = storedSeenPosts;
     setSeenPosts(storedSeenPosts);
     setInitialSeenPosts(storedSeenPosts);
+
   }, [locale]);
 
   useEffect(() => {
@@ -1824,19 +1829,12 @@ export function FeedScreen({
       return Object.keys(next).length === Object.keys(prev).length ? prev : next;
     });
 
-    // Для сортировки берём только то, что было просмотрено ДО текущего рендера.
-    // Так карточки не прыгают вниз во время чтения, но после обновления страницы
-    // уже увиденные посты уходят в самый низ ленты.
-    const storedSeenPosts = pruneSeenPostsForCurrentFeed(readSeenPostsFromStorage(), safePosts);
-    const currentSessionSeenIds = currentSessionSeenPostIdsRef.current;
+    const stableInitialSeenPosts = pruneSeenPostsForCurrentFeed(
+      initialSeenPostsSnapshotRef.current,
+      safePosts
+    );
 
-    if (currentSessionSeenIds.size > 0) {
-      for (const postId of currentSessionSeenIds) {
-        delete storedSeenPosts[postId];
-      }
-    }
-
-    setInitialSeenPosts(storedSeenPosts);
+    setInitialSeenPosts(stableInitialSeenPosts);
   }, [safePosts]);
 
   const availableCountryOptions = useMemo(() => {
