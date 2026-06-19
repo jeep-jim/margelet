@@ -1,5 +1,5 @@
 import { AlertTriangle, Bell, CheckSquare, ChevronDown, Search, Trash2, X } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Locale } from "../types/app";
 import type { ContentTag, IngestedPost } from "../types/app";
@@ -1610,19 +1610,19 @@ export function FeedScreen({
     };
   }, [viewerIndex, feedSettings.mediaMode, renderCount]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window === "undefined") return;
 
     const previousScrollRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
     setShowFloatingSmartBar(false);
 
-    const frame = window.requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-    });
+    // Убираем последний микропрыжок при reload: браузер сначала пытается
+    // восстановить старый scroll/paint, а потом React пересобирает новую очередь.
+    // Ставим верх страницы синхронно до первого paint, без requestAnimationFrame.
+    window.scrollTo(0, 0);
 
     return () => {
-      window.cancelAnimationFrame(frame);
       window.history.scrollRestoration = previousScrollRestoration;
     };
   }, []);
