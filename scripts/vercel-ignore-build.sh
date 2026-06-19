@@ -11,5 +11,10 @@ if [ "$COMMIT_AUTHOR" = "github-actions[bot]" ] && [[ "$COMMIT_SUBJECT" == rebui
   exit 0
 fi
 
+if [[ "$COMMIT_SUBJECT" == moderation:* ]]; then
+  echo "Skipping Vercel build: live moderation state update."
+  exit 0
+fi
+
 echo "Running Vercel build: normal application commit."
 exit 1

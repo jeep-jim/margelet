@@ -960,6 +960,9 @@ function SavedCabinetBlock({
         onDeletePost={async () => {
           setViewerPost(null);
         }}
+        onGlobalHidePosts={async () => {
+          setViewerPost(null);
+        }}
         currentTelegramUserId={null}
         openSource={() => {}}
         closeViewer={() => {

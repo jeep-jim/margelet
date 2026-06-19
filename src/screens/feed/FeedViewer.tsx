@@ -306,6 +306,7 @@ export function FeedViewer({
   onToggleSave: _onToggleSave,
   onHidePost,
   onDeletePost,
+  onGlobalHidePosts,
   currentTelegramUserId,
   openSource: _openSource,
   closeViewer,
@@ -729,9 +730,29 @@ export function FeedViewer({
           </div>
 
           <div
-            className="notranslate absolute right-4 z-30"
+            className="notranslate absolute right-4 z-30 flex items-center gap-2"
             style={{ top: "calc(env(safe-area-inset-top, 0px) + 16px)" }}
           >
+            {isAdmin ? (
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  if (!activePost) return;
+                  if (!window.confirm("☠ Скрыть этот пост у всех?")) return;
+                  void onGlobalHidePosts([activePost.id])
+                    .then(() => closeViewer())
+                    .catch((error) => {
+                      setActionError(error instanceof Error ? error.message : "Не удалось скрыть пост у всех");
+                    });
+                }}
+                className="flex h-11 w-11 items-center justify-center rounded-full bg-black/35 text-[18px] text-white backdrop-blur-sm transition hover:bg-rose-500/80"
+                aria-label="Скрыть пост у всех"
+                title="☠ Скрыть пост у всех"
+              >
+                ☠
+              </button>
+            ) : null}
             <button
               type="button"
               onClick={(event) => {

@@ -18,6 +18,7 @@ type Props = {
   onToggleLike: (id: number) => void;
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
+  onGlobalHidePosts: (ids: number[]) => Promise<void>;
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
 };
@@ -110,6 +111,7 @@ export function SourceScreen({
   onToggleLike: _onToggleLike,
   onHidePost,
   onDeletePost,
+  onGlobalHidePosts,
   currentTelegramUserId,
   openSource,
 }: Props) {
@@ -490,6 +492,7 @@ export function SourceScreen({
         onToggleSave={() => {}}
         onHidePost={onHidePost}
         onDeletePost={onDeletePost}
+        onGlobalHidePosts={onGlobalHidePosts}
         currentTelegramUserId={currentTelegramUserId}
         openSource={openSource}
         closeViewer={closeOpenedPost}

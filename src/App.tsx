@@ -646,6 +646,7 @@ export default function App() {
   const [savedPostIds, setSavedPostIds] = useState<number[]>([]);
   const [likedPostIds, setLikedPostIds] = useState<number[]>([]);
   const [hiddenPostIds, setHiddenPostIds] = useState<number[]>([]);
+  const [globalHiddenPostIds, setGlobalHiddenPostIds] = useState<number[]>([]);
 
   const userRole = useMemo<UserRole>(() => {
     if (!currentTelegramUser) return "guest";
@@ -658,9 +659,9 @@ export default function App() {
 
   const posts = useMemo(() => {
     const visible =
-      hiddenPostIds.length === 0
+      hiddenPostIds.length === 0 && globalHiddenPostIds.length === 0
         ? serverPosts
-        : serverPosts.filter((post) => !hiddenPostIds.includes(post.id));
+        : serverPosts.filter((post) => !hiddenPostIds.includes(post.id) && !globalHiddenPostIds.includes(post.id));
 
     if (!sharedPath) {
       return visible;
@@ -679,7 +680,7 @@ export default function App() {
 
     const target = visible[matchIndex];
     return [target, ...visible.filter((post) => post.id !== target.id)];
-  }, [serverPosts, hiddenPostIds, sharedPath]);
+  }, [serverPosts, hiddenPostIds, globalHiddenPostIds, sharedPath]);
 
   const syncPathState = useCallback(() => {
     setLocationPath(normalizePathname(window.location.pathname));
@@ -935,6 +936,25 @@ export default function App() {
     localStorage.setItem(HIDDEN_POSTS_STORAGE_KEY, JSON.stringify(hiddenPostIds));
   }, [hiddenPostIds]);
 
+  const loadGlobalHiddenPosts = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/hidden-posts?t=${Date.now()}`, { cache: "no-store" });
+      const data = await response.json().catch(() => null);
+      const ids = Array.isArray(data?.ids)
+        ? data.ids.map((id: unknown) => Number(id)).filter((id: number) => Number.isFinite(id))
+        : [];
+      setGlobalHiddenPostIds(ids);
+    } catch {
+      // Global moderation list is best-effort; local feed must keep working.
+    }
+  }, []);
+
+  useEffect(() => {
+    void loadGlobalHiddenPosts();
+    const timer = window.setInterval(() => void loadGlobalHiddenPosts(), 60000);
+    return () => window.clearInterval(timer);
+  }, [loadGlobalHiddenPosts]);
+
   useEffect(() => {
     const tgUser = parseTelegramUserFromHash();
 
@@ -1063,6 +1083,40 @@ export default function App() {
     setHiddenPostIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
   };
 
+  const handleGlobalHidePosts = async (ids: number[]) => {
+    const postIds = Array.from(new Set(ids.map((id) => Number(id)).filter((id) => Number.isFinite(id))));
+    if (!postIds.length) return;
+
+    if (!currentTelegramUser?.id) {
+      throw new Error("NO_TELEGRAM_USER");
+    }
+
+    setGlobalHiddenPostIds((prev) => Array.from(new Set([...prev, ...postIds])));
+    setHiddenPostIds((prev) => Array.from(new Set([...prev, ...postIds])));
+    setServerPosts((prev) => prev.filter((post) => !postIds.includes(post.id)));
+
+    const res = await fetch("/api/hidden-posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "hide",
+        postIds,
+        telegramUserId: currentTelegramUser.id,
+        telegramUsername: currentTelegramUser.username || null,
+        reason: "admin_kill_button",
+      }),
+    });
+
+    const data = await res.json().catch(() => null);
+    if (!res.ok) {
+      throw new Error(data?.error || "Не удалось скрыть посты у всех");
+    }
+
+    if (Array.isArray(data?.ids)) {
+      setGlobalHiddenPostIds(data.ids.map((id: unknown) => Number(id)).filter((id: number) => Number.isFinite(id)));
+    }
+  };
+
   const handleDeletePost = async (id: number) => {
     if (!currentTelegramUser?.id) {
       throw new Error("NO_TELEGRAM_USER");
@@ -1158,6 +1212,7 @@ export default function App() {
           onToggleSave={handleToggleSave}
           onHidePost={handleHidePost}
           onDeletePost={handleDeletePost}
+          onGlobalHidePosts={handleGlobalHidePosts}
           currentTelegramUserId={currentTelegramUser?.id || null}
           openSource={openSource}
         />
@@ -1205,6 +1260,7 @@ export default function App() {
           onToggleLike={handleToggleLike}
           onHidePost={handleHidePost}
           onDeletePost={handleDeletePost}
+          onGlobalHidePosts={handleGlobalHidePosts}
           currentTelegramUserId={currentTelegramUser?.id || null}
           openSource={openSource}
         />

@@ -954,12 +954,22 @@ function VideoGridView({
   registerFeedCardNode,
   onOpenPost,
   onSeen,
+  isAdmin,
+  selectedPostIds,
+  moderationSelectionMode,
+  onToggleSelect,
+  onKillPost,
 }: {
   posts: IngestedPost[];
   locale: Locale;
   registerFeedCardNode: (postId: number, node: HTMLDivElement | null) => void;
   onOpenPost: (post: IngestedPost) => void;
   onSeen: (postId: number) => void;
+  isAdmin: boolean;
+  selectedPostIds: number[];
+  moderationSelectionMode: boolean;
+  onToggleSelect: (postId: number) => void;
+  onKillPost: (postId: number) => void;
 }) {
   const emptyText = locale === "ru" ? "Видео пока нет" : "No videos yet";
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
@@ -1204,6 +1214,41 @@ function VideoGridView({
                 ) : null}
 
 
+                {isAdmin ? (
+                  <div className="absolute right-1.5 top-1.5 z-[8] flex items-center gap-1">
+                    {(moderationSelectionMode || selectedPostIds.length > 0) ? (
+                      <button
+                        type="button"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          onToggleSelect(post.id);
+                        }}
+                        className={`grid h-7 w-7 place-items-center rounded-md border text-xs font-black shadow-lg backdrop-blur ${
+                          selectedPostIds.includes(post.id)
+                            ? "border-sky-200 bg-sky-500 text-white"
+                            : "border-white/35 bg-black/42 text-white/70"
+                        }`}
+                        title="Выбрать"
+                        aria-label="Выбрать пост"
+                      >
+                        ✓
+                      </button>
+                    ) : null}
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        onKillPost(post.id);
+                      }}
+                      className="grid h-7 w-7 place-items-center rounded-full border border-rose-300/40 bg-black/45 text-[14px] shadow-lg backdrop-blur transition hover:bg-rose-500/90"
+                      title="☠ Скрыть пост у всех"
+                      aria-label="Скрыть пост у всех"
+                    >
+                      ☠
+                    </button>
+                  </div>
+                ) : null}
+
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] p-2">
                   <div className="flex min-w-0 items-center gap-1.5">
                     <div className="h-6 w-6 shrink-0 overflow-hidden rounded-full bg-[#1d3148] ring-1 ring-white/45 shadow-[0_2px_8px_rgba(0,0,0,.45)]">
@@ -1264,6 +1309,7 @@ export function FeedScreen({
   onToggleSave,
   onHidePost,
   onDeletePost,
+  onGlobalHidePosts,
   currentTelegramUserId,
   openSource,
   isFeedLoading,
@@ -1276,6 +1322,7 @@ export function FeedScreen({
   onToggleSave: (id: number) => void;
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
+  onGlobalHidePosts: (ids: number[]) => Promise<void>;
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
   isFeedLoading: boolean;
@@ -1515,6 +1562,24 @@ export function FeedScreen({
     setSelectedModerationPostIds([]);
     setModerationSelectionMode(false);
     setModerationMessage("Выбранные посты скрыты локально");
+  };
+
+  const killPostsForEveryone = async (ids: number[]) => {
+    const postIds = Array.from(new Set(ids.map((id) => Number(id)).filter((id) => Number.isFinite(id))));
+    if (!postIds.length) return;
+    if (!window.confirm(`☠ Скрыть у всех: ${postIds.length} пост(ов)?`)) return;
+
+    try {
+      setModerationMessage(null);
+      await onGlobalHidePosts(postIds);
+      setSelectedModerationPostIds((prev) => prev.filter((id) => !postIds.includes(id)));
+      if (postIds.length === selectedModerationPostIds.length) {
+        setModerationSelectionMode(false);
+      }
+      setModerationMessage(`☠ Скрыто у всех: ${postIds.length}`);
+    } catch (error) {
+      setModerationMessage(error instanceof Error ? error.message : "Не удалось скрыть у всех");
+    }
   };
 
   const deleteSelectedPostsAndSources = async () => {
@@ -2720,6 +2785,21 @@ export function FeedScreen({
             </button>
           ) : null}
 
+          {isAdmin ? (
+            <button
+              type="button"
+              onClick={(event) => {
+                event.stopPropagation();
+                void killPostsForEveryone([post.id]);
+              }}
+              className="absolute right-12 top-3 z-20 grid h-8 w-8 place-items-center rounded-full border border-rose-300/35 bg-black/45 text-[15px] shadow-lg backdrop-blur transition hover:bg-rose-500/85"
+              title="☠ Скрыть пост у всех"
+              aria-label="Скрыть пост у всех"
+            >
+              ☠
+            </button>
+          ) : null}
+
           <FeedCard
             post={post}
             locale={locale}
@@ -2854,6 +2934,13 @@ export function FeedScreen({
             >
               <Trash2 className="h-4 w-4" />
               Удалить посты
+            </button>
+            <button
+              type="button"
+              onClick={() => void killPostsForEveryone(selectedModerationPostIds)}
+              className="rounded-2xl bg-red-600 px-3 py-2 text-sm font-black text-white"
+            >
+              ☠ Скрыть у всех
             </button>
             <button
               type="button"
@@ -3058,6 +3145,16 @@ onChangeMediaMode={changeFeedMediaMode}
             registerFeedCardNode={registerFeedCardNode}
             onOpenPost={handleOpenPost}
             onSeen={markPostSeen}
+            isAdmin={isCurrentAdmin}
+            selectedPostIds={selectedModerationPostIds}
+            moderationSelectionMode={moderationSelectionMode}
+            onToggleSelect={(postId) => {
+              setModerationSelectionMode(true);
+              setSelectedModerationPostIds((prev) =>
+                prev.includes(postId) ? prev.filter((id) => id !== postId) : [...prev, postId]
+              );
+            }}
+            onKillPost={(postId) => void killPostsForEveryone([postId])}
           />
         ) : (
           renderFeedCards(renderedPosts)
@@ -3142,6 +3239,7 @@ onChangeMediaMode={changeFeedMediaMode}
         onToggleSave={onToggleSave}
         onHidePost={onHidePost}
         onDeletePost={onDeletePost}
+        onGlobalHidePosts={onGlobalHidePosts}
         currentTelegramUserId={currentTelegramUserId}
         openSource={openSource}
         closeViewer={closeViewer}

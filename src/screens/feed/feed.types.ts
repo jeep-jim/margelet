@@ -16,6 +16,7 @@ export type FeedScreenProps = {
   onToggleSave: (id: number) => void;
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
+  onGlobalHidePosts: (ids: number[]) => Promise<void>;
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
 };
@@ -70,6 +71,7 @@ export type ViewerProps = {
   onToggleSave: (id: number) => void;
   onHidePost: (id: number) => void;
   onDeletePost: (id: number) => Promise<void>;
+  onGlobalHidePosts: (ids: number[]) => Promise<void>;
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
   closeViewer: () => void;
