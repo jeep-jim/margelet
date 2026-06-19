@@ -9,7 +9,6 @@ import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
-import { readLocalReactionScore } from "./feed/FeedReactionButton";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import {
   FEED_SCREEN_COPY,
@@ -606,83 +605,6 @@ function SubscriptionsBar({
 
 
 
-function getPostMetricNumber(record: Record<string, unknown>, keys: string[]) {
-  const read = (value: unknown): number => {
-    if (typeof value === "number" && Number.isFinite(value)) return value;
-    if (typeof value === "string") {
-      const normalized = value.replace(/[^0-9.,]/g, "").replace(",", ".");
-      const parsed = Number(normalized);
-      return Number.isFinite(parsed) ? parsed : 0;
-    }
-    return 0;
-  };
-
-  for (const key of keys) {
-    const direct = read(record[key]);
-    if (direct > 0) return direct;
-  }
-
-  for (const containerKey of ["stats", "metrics", "analytics", "telegram", "reactions"]) {
-    const nested = record[containerKey];
-    if (!nested || typeof nested !== "object") continue;
-    const nestedRecord = nested as Record<string, unknown>;
-    for (const key of keys) {
-      const value = read(nestedRecord[key]);
-      if (value > 0) return value;
-    }
-  }
-
-  return 0;
-}
-
-function getVideoGridEngagementScore(post: IngestedPost, likedPostIds: Set<number>) {
-  const record = post as unknown as Record<string, unknown>;
-  const views = getPostMetricNumber(record, ["views", "viewCount", "viewsCount", "telegramViews", "tgViews"]);
-  const forwards = getPostMetricNumber(record, ["forwards", "forwardCount", "shares", "shareCount", "reposts"]);
-  const comments = getPostMetricNumber(record, ["comments", "commentCount", "replies", "replyCount"]);
-  const reactions = getPostMetricNumber(record, ["likes", "likeCount", "reactions", "reactionCount", "fire", "fires"]);
-  const localBoost = likedPostIds.has(post.id) ? 250 : 0;
-  const reactionBoost = readLocalReactionScore(post.id) * 220;
-  const freshBoost = Math.max(0, 48 - (Date.now() - parsePostTime(post)) / (60 * 60 * 1000));
-
-  return views + forwards * 18 + comments * 14 + reactions * 10 + localBoost + reactionBoost + freshBoost;
-}
-
-function getVideoGridMediaRatio(post: IngestedPost) {
-  const normalizedMedia = normalizeMediaList(post);
-  const rawMedia = Array.isArray(post.media)
-    ? (post.media as Array<Record<string, unknown>>)
-    : [];
-  const visualIndex = normalizedMedia.findIndex((item) => item.kind === "video") >= 0
-    ? normalizedMedia.findIndex((item) => item.kind === "video")
-    : normalizedMedia.findIndex((item) => item.kind === "image");
-  const raw = visualIndex >= 0 ? rawMedia[visualIndex] || {} : {};
-  const normalized = visualIndex >= 0 ? normalizedMedia[visualIndex] as unknown as Record<string, unknown> : {};
-
-  const width = Number(raw.width || raw.w || raw.videoWidth || normalized.width || normalized.w || 0);
-  const height = Number(raw.height || raw.h || raw.videoHeight || normalized.height || normalized.h || 0);
-
-  if (Number.isFinite(width) && Number.isFinite(height) && width > 0 && height > 0) {
-    return width / height;
-  }
-
-  return 9 / 16;
-}
-
-function getVideoGridCardClass(post: IngestedPost, popularPostIds: Set<number>, index: number) {
-  if (!popularPostIds.has(post.id)) return "aspect-[9/16]";
-
-  const ratio = getVideoGridMediaRatio(post);
-
-  // Крупные плитки оставляем редкими и читаемыми.
-  // Важно: не делаем узкую полосу 1×2 для горизонтальных роликов — это выглядело сломанно.
-  if (index % 17 === 0) return "col-span-2 row-span-2 aspect-square";
-  if (ratio >= 0.95) return "col-span-2 aspect-[16/9]";
-  if (ratio <= 0.68) return "row-span-2 aspect-[9/16]";
-
-  return index % 2 === 0 ? "col-span-2 aspect-[4/5]" : "aspect-[9/16]";
-}
-
 function getVideoGridPreview(post: IngestedPost) {
   const normalizedMedia = normalizeMediaList(post);
   const rawMedia = Array.isArray(post.media)
@@ -1037,7 +959,6 @@ function VideoGridView({
   moderationSelectionMode,
   onToggleSelect,
   onKillPost,
-  likedPostIds,
 }: {
   posts: IngestedPost[];
   locale: Locale;
@@ -1049,7 +970,6 @@ function VideoGridView({
   moderationSelectionMode: boolean;
   onToggleSelect: (postId: number) => void;
   onKillPost: (postId: number) => void;
-  likedPostIds: number[];
 }) {
   const emptyText = locale === "ru" ? "Видео пока нет" : "No videos yet";
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
@@ -1059,30 +979,6 @@ function VideoGridView({
   const [visibleVideoCount, setVisibleVideoCount] = useState(INITIAL_VIDEO_GRID_POSTS);
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
-  const likedVideoPostIdSet = useMemo(() => new Set(likedPostIds), [likedPostIds]);
-  const [reactionVersion, setReactionVersion] = useState(0);
-
-  useEffect(() => {
-    const onReaction = () => setReactionVersion((prev) => prev + 1);
-    window.addEventListener("margelet:post-reaction", onReaction);
-    return () => window.removeEventListener("margelet:post-reaction", onReaction);
-  }, []);
-
-  const popularVideoPostIds = useMemo(() => {
-    if (posts.length < 18) return new Set<number>();
-
-    const scored = posts
-      .map((post, index) => ({
-        id: post.id,
-        score: getVideoGridEngagementScore(post, likedVideoPostIdSet),
-        index,
-      }))
-      .filter((item) => item.score > 0)
-      .sort((a, b) => b.score - a.score || a.index - b.index);
-
-    const topCount = Math.max(1, Math.min(10, Math.floor(posts.length * 0.08)));
-    return new Set(scored.slice(0, topCount).map((item) => item.id));
-  }, [posts, likedVideoPostIdSet, reactionVersion]);
 
 
   useEffect(() => {
@@ -1168,13 +1064,13 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-3 grid-flow-dense gap-0">
+      <div className="grid grid-cols-3 gap-0">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
           const title = post.source?.title || post.source?.handle || "Telegram";
           const verified = isVideoGridSourceVerified(post);
-          const cardClass = getVideoGridCardClass(post, popularVideoPostIds, index);
+          const cardClass = "aspect-[9/16]";
           const poster = preview?.poster || "";
           const isPreviewing = previewPostId === post.id;
           const text = String(post.text || "")
@@ -2169,15 +2065,46 @@ export function FeedScreen({
     const post = safePostsRef.current.find((item) => item.id === postId);
     const sourceKey = post ? getPostSourceKey(post, locale) : "";
 
+    // Важно: пишем seen сразу синхронно в localStorage, а не ждём React effect.
+    // Иначе при reload/F5 браузер успевает показать старую первую пачку,
+    // потому что просмотренный пост ещё не попал в постоянный seen-слой.
+    try {
+      const storedSeenPosts = compactSeenPosts({
+        ...readSeenPostsFromStorage(),
+        [postId]: now,
+      });
+      writeSeenPostsToStorage(storedSeenPosts);
+      initialSeenPostsSnapshotRef.current = {
+        ...initialSeenPostsSnapshotRef.current,
+        [postId]: now,
+      };
+    } catch {
+      // localStorage может быть недоступен в приватном режиме — UI всё равно обновится через state.
+    }
+
+    if (sourceKey) {
+      try {
+        const storedSeenSources = compactSeenSources({
+          ...readSeenSourcesFromStorage(),
+          [sourceKey]: now,
+        });
+        writeSeenSourcesToStorage(storedSeenSources);
+        initialSeenSourcesSnapshotRef.current = {
+          ...initialSeenSourcesSnapshotRef.current,
+          [sourceKey]: now,
+        };
+      } catch {
+        // ignore
+      }
+    }
+
     setSeenPosts((prev) => {
       if (prev[postId]) return prev;
 
-      const next = {
+      return {
         ...prev,
         [postId]: now,
       };
-
-      return next;
     });
 
     if (sourceKey) {
@@ -3259,7 +3186,6 @@ onChangeMediaMode={changeFeedMediaMode}
               );
             }}
             onKillPost={(postId) => void killPostsForEveryone([postId])}
-            likedPostIds={likedPostIds}
           />
         ) : (
           renderFeedCards(renderedPosts)
