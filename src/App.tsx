@@ -665,21 +665,22 @@ export default function App() {
         ? serverPosts
         : serverPosts.filter((post) => !hiddenPostIds.includes(post.id) && !globalHiddenPostIds.includes(post.id));
 
-    const matchIndex = visible.findIndex((post) => {
-      const internalId = String(post.id);
-      const telegramId = getPostIdFromUrl(post.postUrl);
+    let matchIndex = -1;
 
-      if (postPathId) {
-        return internalId === postPathId || telegramId === postPathId;
-      }
+    if (postPathId) {
+      matchIndex = visible.findIndex((post) => {
+        return String(post.id) === postPathId || getPostIdFromUrl(post.postUrl) === postPathId;
+      });
+    }
 
-      if (!sharedPath) return false;
-
-      return (
-        normalizeSourceHandle(post.source.handle) === normalizeSourceHandle(sharedPath.handle) &&
-        (telegramId === sharedPath.postId || internalId === sharedPath.postId)
-      );
-    });
+    if (matchIndex < 0 && sharedPath) {
+      matchIndex = visible.findIndex((post) => {
+        return (
+          normalizeSourceHandle(post.source.handle) === normalizeSourceHandle(sharedPath.handle) &&
+          getPostIdFromUrl(post.postUrl) === sharedPath.postId
+        );
+      });
+    }
 
     if (matchIndex <= 0) {
       return visible;
@@ -689,7 +690,7 @@ export default function App() {
     return [target, ...visible.filter((post) => post.id !== target.id)];
   }, [serverPosts, hiddenPostIds, globalHiddenPostIds, sharedPath, postPathId]);
 
-  const hasLivePostPath = useMemo(() => {
+  const postPathHasLivePost = useMemo(() => {
     if (!postPathId) return false;
 
     return posts.some((post) => {
@@ -697,7 +698,7 @@ export default function App() {
     });
   }, [postPathId, posts]);
 
-  const shouldShowExpiredPost = Boolean(postPathId && !isFeedLoading && !hasLivePostPath);
+  const shouldShowExpiredPost = Boolean(postPathId && !isFeedLoading && !postPathHasLivePost);
 
   const syncPathState = useCallback(() => {
     setLocationPath(normalizePathname(window.location.pathname));

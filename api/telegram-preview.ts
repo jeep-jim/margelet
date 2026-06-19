@@ -166,17 +166,7 @@ function parsePreview(html: string, fallbackTitle: string) {
 type ShareMediaItem = {
   kind?: string;
   url?: string;
-  src?: string;
   poster?: string;
-  thumbnail?: string;
-  thumbnailUrl?: string;
-  thumb?: string;
-  thumbUrl?: string;
-  preview?: string;
-  previewUrl?: string;
-  imageUrl?: string;
-  cover?: string;
-  coverUrl?: string;
   width?: number;
   height?: number;
 };
@@ -222,138 +212,68 @@ function shareNormalizeHandle(value: unknown) {
 }
 
 function shareGetPostIdFromUrl(value: unknown) {
-  const cleanValue = String(value ?? "").trim();
-  const match = cleanValue.match(/\/([0-9]+)(?:\?single)?(?:[#?].*)?$/);
+  const match = String(value ?? "").match(/\/([0-9]+)(?:\?single)?$/);
   return match?.[1] || "";
 }
 
 function shareAbsoluteUrl(value: unknown) {
-  const raw = String(value ?? "").trim().replace(/&amp;/g, "&");
+  const raw = String(value ?? "").trim();
   if (!raw) return "";
-  if (raw.startsWith("//")) return `https:${raw}`;
-  if (/^https?:\/\//i.test(raw)) return raw.replace(/^http:\/\//i, "https://");
+  if (/^https?:\/\//i.test(raw)) return raw;
   if (raw.startsWith("/")) return `${SHARE_SITE_ORIGIN}${raw}`;
   return raw;
-}
-
-function sharePickString(...values: unknown[]) {
-  for (const value of values) {
-    if (typeof value === "string" && value.trim()) return value.trim();
-  }
-  return "";
 }
 
 function shareGetPreviewImage(post: ShareFeedPost) {
   const media = Array.isArray(post.media) ? post.media : [];
 
   for (const item of media) {
-    const candidate = sharePickString(
-      item?.poster,
-      item?.thumbnail,
-      item?.thumbnailUrl,
-      item?.thumb,
-      item?.thumbUrl,
-      item?.preview,
-      item?.previewUrl,
-      item?.imageUrl,
-      item?.cover,
-      item?.coverUrl,
-      item?.kind === "image" ? item?.url : "",
-      item?.kind === "image" ? item?.src : ""
-    );
-
-    if (candidate) return shareAbsoluteUrl(candidate);
+    if (item?.kind === "image" && item.url) return shareAbsoluteUrl(item.url);
+    if (item?.poster) return shareAbsoluteUrl(item.poster);
   }
 
   for (const item of media) {
-    const candidate = sharePickString(item?.kind !== "video" ? item?.url : "", item?.kind !== "video" ? item?.src : "");
-    if (candidate) return shareAbsoluteUrl(candidate);
+    if (item?.url && item.kind !== "video") return shareAbsoluteUrl(item.url);
   }
 
   return post.source?.avatar ? shareAbsoluteUrl(post.source.avatar) : SHARE_DEFAULT_IMAGE;
 }
 
 async function shareReadJson<T>(relativePath: string, fallback: T): Promise<T> {
-  const cleanPath = relativePath.replace(/^\/+/, "");
-  const candidates = Array.from(
-    new Set([
-      cleanPath,
-      `public/${cleanPath}`,
-      cleanPath.replace(/^public\//, ""),
-    ])
-  );
-
-  for (const candidate of candidates) {
-    try {
-      const raw = await readFile(path.join(process.cwd(), candidate), "utf8");
-      return JSON.parse(raw) as T;
-    } catch {
-      // try next candidate
-    }
+  try {
+    const raw = await readFile(path.join(process.cwd(), relativePath), "utf8");
+    return JSON.parse(raw) as T;
+  } catch {
+    return fallback;
   }
-
-  return fallback;
-}
-
-function shareNormalizeChunkPath(pathValue: unknown, fallbackPath: string) {
-  const raw = String(pathValue || "").trim();
-  const cleanPath = (raw || fallbackPath).replace(/^\/+/, "");
-  return cleanPath.replace(/^public\//, "");
-}
-
-async function shareReadChunkedPosts(indexPath: string, fallbackChunkPrefix: string): Promise<ShareFeedPost[]> {
-  const index = await shareReadJson<{
-    chunksList?: Array<{ number?: number; path?: string }>;
-    chunks?: Array<{ number?: number; path?: string } | string>;
-    files?: string[];
-  }>(indexPath, { chunksList: [] });
-
-  const rawChunks =
-    (Array.isArray(index.chunksList) && index.chunksList.length ? index.chunksList : null) ||
-    (Array.isArray(index.chunks) && index.chunks.length ? index.chunks : null) ||
-    (Array.isArray(index.files) && index.files.length ? index.files : []);
-
-  const posts: ShareFeedPost[] = [];
-
-  for (const rawChunk of rawChunks.slice(0, 180)) {
-    const chunk = typeof rawChunk === "string" ? { path: rawChunk } : rawChunk;
-    const number = Number(chunk?.number || 0);
-    const fallbackPath = `${fallbackChunkPrefix}/${String(number).padStart(4, "0")}.json`;
-    const chunkPath = shareNormalizeChunkPath(chunk?.path, fallbackPath);
-    const chunkPosts = await shareReadJson<ShareFeedPost[]>(chunkPath, []);
-    if (Array.isArray(chunkPosts)) posts.push(...chunkPosts);
-  }
-
-  return posts;
 }
 
 async function shareReadAllPosts(): Promise<ShareFeedPost[]> {
-  const chunkedCandidates = [
-    ["data/feed/index.json", "data/feed/chunks"],
-    ["data/feeds/index.json", "data/feeds"],
-    ["public/data/feed/index.json", "data/feed/chunks"],
-    ["public/data/feeds/index.json", "data/feeds"],
-  ] as const;
+  const index = await shareReadJson<{
+    chunksList?: Array<{ number?: number; path?: string }>;
+  }>("data/feed/index.json", { chunksList: [] });
 
-  for (const [indexPath, chunkPrefix] of chunkedCandidates) {
-    const posts = await shareReadChunkedPosts(indexPath, chunkPrefix);
-    if (posts.length > 0) return posts;
+  const chunks = Array.isArray(index.chunksList) ? index.chunksList : [];
+
+  if (chunks.length > 0) {
+    const posts: ShareFeedPost[] = [];
+
+    for (const chunk of chunks.slice(0, 150)) {
+      const number = Number(chunk.number || 0);
+      const chunkPath =
+        typeof chunk.path === "string" && chunk.path
+          ? chunk.path.replace(/^\/+/, "")
+          : `data/feed/chunks/${String(number).padStart(4, "0")}.json`;
+
+      const chunkPosts = await shareReadJson<ShareFeedPost[]>(chunkPath, []);
+      if (Array.isArray(chunkPosts)) posts.push(...chunkPosts);
+    }
+
+    return posts;
   }
 
-  const feedCandidates = [
-    "data/feed.json",
-    "public/feed.json",
-    "public/data/feed.json",
-    "feed.json",
-  ];
-
-  for (const feedPath of feedCandidates) {
-    const feed = await shareReadJson<{ posts?: ShareFeedPost[] } | ShareFeedPost[]>(feedPath, [] as ShareFeedPost[]);
-    if (Array.isArray(feed) && feed.length > 0) return feed;
-    if (!Array.isArray(feed) && Array.isArray(feed.posts) && feed.posts.length > 0) return feed.posts;
-  }
-
-  return [];
+  const feed = await shareReadJson<{ posts?: ShareFeedPost[] }>("data/feed.json", { posts: [] });
+  return Array.isArray(feed.posts) ? feed.posts : [];
 }
 
 function shareRenderHtml(post: ShareFeedPost, handle: string, telegramPostId: string) {
@@ -410,51 +330,6 @@ function shareRenderHtml(post: ShareFeedPost, handle: string, telegramPostId: st
 </html>`;
 }
 
-function shareRenderExpiredHtml(handle: string, telegramPostId: string) {
-  const canonical = `${SHARE_SITE_ORIGIN}/${encodeURIComponent(handle)}/${encodeURIComponent(telegramPostId)}`;
-  const appPath = `/post/${encodeURIComponent(telegramPostId)}`;
-  const title = "Пост из Telegram — margeleT";
-  const description = "Пост больше не найден в живой ленте margeleT. Открой свежую ленту — там уже новые сигналы, источники и темы.";
-
-  return `<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>${shareEscapeHtml(title)}</title>
-  <meta name="description" content="${shareEscapeHtml(description)}" />
-  <link rel="canonical" href="${shareEscapeHtml(canonical)}" />
-
-  <meta property="og:site_name" content="margeleT" />
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="${shareEscapeHtml(canonical)}" />
-  <meta property="og:title" content="${shareEscapeHtml(title)}" />
-  <meta property="og:description" content="${shareEscapeHtml(description)}" />
-  <meta property="og:image" content="${shareEscapeHtml(SHARE_DEFAULT_IMAGE)}" />
-  <meta property="og:image:secure_url" content="${shareEscapeHtml(SHARE_DEFAULT_IMAGE)}" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="${shareEscapeHtml(title)}" />
-  <meta name="twitter:description" content="${shareEscapeHtml(description)}" />
-  <meta name="twitter:image" content="${shareEscapeHtml(SHARE_DEFAULT_IMAGE)}" />
-
-  <script>
-    if (!/bot|crawl|spider|telegrambot|twitterbot|facebookexternalhit|whatsapp|vkshare|slackbot/i.test(navigator.userAgent || "")) {
-      window.location.replace(${JSON.stringify(appPath)});
-    }
-  </script>
-</head>
-<body style="margin:0;background:#0f1d2a;color:white;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-  <main style="max-width:640px;margin:40px auto;padding:20px">
-    <h1>${shareEscapeHtml(title)}</h1>
-    <p>${shareEscapeHtml(description)}</p>
-    <img src="${shareEscapeHtml(SHARE_DEFAULT_IMAGE)}" alt="" style="max-width:180px;border-radius:28px" />
-    <p><a style="color:#7dd3fc" href="${shareEscapeHtml(appPath)}">Открыть margeleT</a></p>
-  </main>
-</body>
-</html>`;
-}
-
 async function handleShareOg(req: any, res: any) {
   const handle = shareNormalizeHandle(req.query?.handle);
   const telegramPostId = String(req.query?.postId || "").trim();
@@ -465,21 +340,53 @@ async function handleShareOg(req: any, res: any) {
 
   const posts = await shareReadAllPosts();
   const post = posts.find((item) => {
-    const sourceHandle = shareNormalizeHandle(item.source?.handle);
-    const internalId = String(item.id || "");
-    const telegramId = shareGetPostIdFromUrl(item.postUrl);
-    const idMatches = internalId === telegramPostId || telegramId === telegramPostId;
-    const handleMatches = !sourceHandle || sourceHandle === handle;
-    return idMatches && handleMatches;
+    return shareNormalizeHandle(item.source?.handle) === handle && shareGetPostIdFromUrl(item.postUrl) === telegramPostId;
   });
 
-  res.setHeader("Content-Type", "text/html; charset=utf-8");
-
   if (!post) {
+    const canonical = `${SHARE_SITE_ORIGIN}/${encodeURIComponent(handle)}/${encodeURIComponent(telegramPostId)}`;
+    const appPath = `/post/${encodeURIComponent(telegramPostId)}`;
+    const title = "Пост из Telegram — margeleT";
+    const description = "Пост больше не найден в живой ленте margeleT. Открой свежую ленту — там уже новые сигналы, источники и темы.";
+
+    res.setHeader("Content-Type", "text/html; charset=utf-8");
     res.setHeader("Cache-Control", "public, s-maxage=60, stale-while-revalidate=300");
-    return res.status(200).send(shareRenderExpiredHtml(handle, telegramPostId));
+    return res.status(200).send(`<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${shareEscapeHtml(title)}</title>
+  <meta name="description" content="${shareEscapeHtml(description)}" />
+  <link rel="canonical" href="${shareEscapeHtml(canonical)}" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="${shareEscapeHtml(canonical)}" />
+  <meta property="og:title" content="${shareEscapeHtml(title)}" />
+  <meta property="og:description" content="${shareEscapeHtml(description)}" />
+  <meta property="og:image" content="${shareEscapeHtml(SHARE_DEFAULT_IMAGE)}" />
+  <meta property="og:image:secure_url" content="${shareEscapeHtml(SHARE_DEFAULT_IMAGE)}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${shareEscapeHtml(title)}" />
+  <meta name="twitter:description" content="${shareEscapeHtml(description)}" />
+  <meta name="twitter:image" content="${shareEscapeHtml(SHARE_DEFAULT_IMAGE)}" />
+  <script>
+    if (!/bot|crawl|spider|telegrambot|twitterbot|facebookexternalhit|whatsapp|vkshare|slackbot/i.test(navigator.userAgent || "")) {
+      window.location.replace(${JSON.stringify(appPath)});
+    }
+  </script>
+</head>
+<body style="margin:0;background:#0f1d2a;color:white;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <main style="max-width:640px;margin:40px auto;padding:20px">
+    <h1>${shareEscapeHtml(title)}</h1>
+    <p>${shareEscapeHtml(description)}</p>
+    <p><a style="color:#7dd3fc" href="${shareEscapeHtml(appPath)}">Открыть в margeleT</a></p>
+  </main>
+</body>
+</html>`);
   }
 
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.setHeader("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600");
   return res.status(200).send(shareRenderHtml(post, handle, telegramPostId));
 }
