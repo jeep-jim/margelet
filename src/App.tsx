@@ -26,6 +26,8 @@ const DEFAULT_LOCALE: Locale = "ru";
 const FEED_SETTINGS_STORAGE_KEY = "margelet_feed_settings_v1";
 const MAX_FEED_COUNTRIES_TO_LOAD = 5;
 const INITIAL_POSTS_PER_COUNTRY = 120;
+const INITIAL_FEED_CHUNKS_PER_COUNTRY = 5;
+const REST_FEED_LOAD_DISTANCE_PX = 420;
 
 
 // 🔥 Генерируем список стран из единого SEO_LOCALE_META
@@ -555,7 +557,7 @@ async function readCountryFeed(countryCode: CountryCode, mode: FeedLoadMode): Pr
   if (!Array.isArray(countryData?.chunks)) return [];
 
   const chunks = countryData.chunks.filter((chunk: any) => Boolean(chunk?.path));
-  const selectedChunks = mode === "initial" ? chunks.slice(0, 2) : chunks;
+  const selectedChunks = mode === "initial" ? chunks.slice(0, INITIAL_FEED_CHUNKS_PER_COUNTRY) : chunks;
   const chunkPosts = await Promise.all(
     selectedChunks.map((chunk: any) => readFeedPayload(chunk.path))
   );
@@ -1031,7 +1033,7 @@ export default function App() {
           const viewportHeight = window.innerHeight || 0;
           const fullHeight = document.documentElement.scrollHeight || 0;
 
-          if (fullHeight - (scrollTop + viewportHeight) < 1800) {
+          if (fullHeight - (scrollTop + viewportHeight) < REST_FEED_LOAD_DISTANCE_PX) {
             startRest();
           }
         };
@@ -1042,7 +1044,7 @@ export default function App() {
         // Иначе пользователь видит свежую initial-пачку, затем rest-пачки
         // пересобирают порядок ленты и получается резкий "бумеранг" назад.
         // Остальные чанки догружаются только когда пользователь реально
-        // приблизился к низу текущей пачки.
+        // почти дошёл до низа текущей пачки.
       }
     } catch (error) {
       console.error("Failed to load feed", error);

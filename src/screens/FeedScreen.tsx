@@ -1391,8 +1391,6 @@ export function FeedScreen({
   );
   const feedCardNodesRef = useRef<Map<number, HTMLDivElement>>(new Map());
   const safePostsRef = useRef<IngestedPost[]>([]);
-  const stableVisibleOrderRef = useRef<number[]>([]);
-  const stableVisibleSignatureRef = useRef("");
   const [viewerMediaIndex, setViewerMediaIndex] = useState(0);
   const [renderCount, setRenderCount] = useState(INITIAL_RENDER_POSTS);
   const [selectedModerationPostIds, setSelectedModerationPostIds] = useState<number[]>([]);
@@ -2344,40 +2342,7 @@ export function FeedScreen({
       ];
     }
 
-    const stableSignature = JSON.stringify({
-      locale,
-      countries: feedSettings.countries,
-      mediaMode: feedSettings.mediaMode,
-      demoteSeen: feedSettings.demoteSeen,
-      selectedTags,
-      searchQuery: q,
-    });
-
-    if (stableVisibleSignatureRef.current !== stableSignature) {
-      stableVisibleSignatureRef.current = stableSignature;
-      stableVisibleOrderRef.current = list.map((post) => post.id);
-      return list;
-    }
-
-    const byId = new Map(list.map((post) => [post.id, post] as const));
-    const used = new Set<number>();
-    const stable: IngestedPost[] = [];
-
-    for (const id of stableVisibleOrderRef.current) {
-      const post = byId.get(id);
-      if (!post) continue;
-      used.add(id);
-      stable.push(post);
-    }
-
-    for (const post of list) {
-      if (used.has(post.id)) continue;
-      used.add(post.id);
-      stable.push(post);
-    }
-
-    stableVisibleOrderRef.current = stable.map((post) => post.id);
-    return stable;
+    return list;
   }, [
     safePosts,
     feedSettings,
