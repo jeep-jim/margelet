@@ -823,7 +823,7 @@ export function FeedViewer({
             onTouchMove={(event) => event.stopPropagation()}
             onTouchEnd={(event) => event.stopPropagation()}
           >
-            <div className="w-full md:max-w-[380px]">
+            <div className="w-full pr-1 md:max-w-[380px]">
               <div className="flex items-end justify-between gap-3">
                 <button
                   type="button"
@@ -897,7 +897,7 @@ export function FeedViewer({
             </div>
 
             {activeIsVideo ? (
-              <div className="notranslate mt-3 flex items-center gap-3">
+              <div className="notranslate mt-3 flex items-center gap-2 sm:gap-3">
                 <button
                   type="button"
                   onPointerDown={(event) => {
@@ -915,22 +915,22 @@ export function FeedViewer({
                   )}
                 </button>
 
-                {!isPlaying ? (
-                  <div
-                    className="pointer-events-auto relative z-[60] shrink-0"
-                    onPointerDown={(event) => event.stopPropagation()}
-                    onClick={(event) => event.stopPropagation()}
-                  >
-                    <FeedReactionButton
-                      compact
-                      active={_likedPostIds.includes(activePost.id)}
-                      postId={activePost.id}
-                      onClick={() => _onToggleLike(activePost.id)}
-                    />
-                  </div>
-                ) : null}
+                <div
+                  className="pointer-events-auto relative z-[80] shrink-0 -translate-x-2"
+                  onPointerDown={(event) => event.stopPropagation()}
+                  onClick={(event) => event.stopPropagation()}
+                >
+                  <FeedReactionButton
+                    compact
+                    pickerAlign="left"
+                    pickerClassName="-translate-x-9"
+                    active={_likedPostIds.includes(activePost.id)}
+                    postId={activePost.id}
+                    onClick={() => _onToggleLike(activePost.id)}
+                  />
+                </div>
 
-                <div className="min-w-[72px] text-[12px] font-medium text-white">
+                <div className="min-w-[58px] text-[11px] font-medium text-white sm:min-w-[72px] sm:text-[12px]">
                   {formatTime(currentTime)} / {formatTime(duration)}
                 </div>
 

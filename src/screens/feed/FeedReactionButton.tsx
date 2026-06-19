@@ -7,6 +7,8 @@ type FeedReactionButtonProps = {
   onClick: () => void;
   compact?: boolean;
   postId?: number;
+  pickerAlign?: "left" | "center";
+  pickerClassName?: string;
 };
 
 export const FEED_REACTIONS: { emoji: FeedReactionEmoji; label: string; score: number }[] = [
@@ -88,6 +90,8 @@ export function FeedReactionButton({
   onClick,
   compact = false,
   postId,
+  pickerAlign = "left",
+  pickerClassName = "",
 }: FeedReactionButtonProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -140,7 +144,11 @@ export function FeedReactionButton({
     <div ref={rootRef} className="relative inline-flex shrink-0">
       {pickerOpen ? (
         <div
-          className="absolute bottom-[calc(100%+10px)] left-0 z-[90] flex items-center gap-1 rounded-full border border-white/12 bg-[#0b1622]/96 px-2 py-1.5 shadow-[0_16px_42px_rgba(0,0,0,.45)] backdrop-blur-xl"
+          className={[
+            "absolute bottom-[calc(100%+10px)] z-[90] flex max-w-[calc(100vw-20px)] items-center gap-1 overflow-x-auto rounded-full border border-white/12 bg-[#0b1622]/96 px-2 py-1.5 shadow-[0_16px_42px_rgba(0,0,0,.45)] backdrop-blur-xl",
+            pickerAlign === "center" ? "left-[22%] -translate-x-1/2" : "left-0",
+            pickerClassName,
+          ].join(" ")}
           onClick={(event) => event.stopPropagation()}
           onPointerDown={(event) => event.stopPropagation()}
         >

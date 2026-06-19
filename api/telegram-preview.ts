@@ -1,3 +1,6 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+
 function clean(value?: string | null) {
   if (typeof value !== "string") return null;
   const v = value.trim();
@@ -158,8 +161,206 @@ function parsePreview(html: string, fallbackTitle: string) {
   };
 }
 
+
+
+type ShareMediaItem = {
+  kind?: string;
+  url?: string;
+  poster?: string;
+  width?: number;
+  height?: number;
+};
+
+type ShareFeedPost = {
+  id: number;
+  text?: string;
+  postUrl?: string;
+  createdAt?: string;
+  sourceCountryCode?: string;
+  source?: {
+    handle?: string;
+    title?: string;
+    avatar?: string | null;
+    verified?: boolean;
+  };
+  media?: ShareMediaItem[];
+};
+
+const SHARE_SITE_ORIGIN = "https://www.margelet.space";
+const SHARE_DEFAULT_IMAGE = `${SHARE_SITE_ORIGIN}/icon-512.png`;
+
+function shareEscapeHtml(value: unknown) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function shareTruncate(value: unknown, max: number) {
+  const text = String(value ?? "")
+    .replace(/https?:\/\/\S+/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (text.length <= max) return text;
+  return `${text.slice(0, max - 1).trim()}…`;
+}
+
+function shareNormalizeHandle(value: unknown) {
+  return String(value ?? "").replace(/^@+/, "").trim().toLowerCase();
+}
+
+function shareGetPostIdFromUrl(value: unknown) {
+  const match = String(value ?? "").match(/\/([0-9]+)(?:\?single)?$/);
+  return match?.[1] || "";
+}
+
+function shareAbsoluteUrl(value: unknown) {
+  const raw = String(value ?? "").trim();
+  if (!raw) return "";
+  if (/^https?:\/\//i.test(raw)) return raw;
+  if (raw.startsWith("/")) return `${SHARE_SITE_ORIGIN}${raw}`;
+  return raw;
+}
+
+function shareGetPreviewImage(post: ShareFeedPost) {
+  const media = Array.isArray(post.media) ? post.media : [];
+
+  for (const item of media) {
+    if (item?.kind === "image" && item.url) return shareAbsoluteUrl(item.url);
+    if (item?.poster) return shareAbsoluteUrl(item.poster);
+  }
+
+  for (const item of media) {
+    if (item?.url && item.kind !== "video") return shareAbsoluteUrl(item.url);
+  }
+
+  return post.source?.avatar ? shareAbsoluteUrl(post.source.avatar) : SHARE_DEFAULT_IMAGE;
+}
+
+async function shareReadJson<T>(relativePath: string, fallback: T): Promise<T> {
+  try {
+    const raw = await readFile(path.join(process.cwd(), relativePath), "utf8");
+    return JSON.parse(raw) as T;
+  } catch {
+    return fallback;
+  }
+}
+
+async function shareReadAllPosts(): Promise<ShareFeedPost[]> {
+  const index = await shareReadJson<{
+    chunksList?: Array<{ number?: number; path?: string }>;
+  }>("data/feed/index.json", { chunksList: [] });
+
+  const chunks = Array.isArray(index.chunksList) ? index.chunksList : [];
+
+  if (chunks.length > 0) {
+    const posts: ShareFeedPost[] = [];
+
+    for (const chunk of chunks.slice(0, 150)) {
+      const number = Number(chunk.number || 0);
+      const chunkPath =
+        typeof chunk.path === "string" && chunk.path
+          ? chunk.path.replace(/^\/+/, "")
+          : `data/feed/chunks/${String(number).padStart(4, "0")}.json`;
+
+      const chunkPosts = await shareReadJson<ShareFeedPost[]>(chunkPath, []);
+      if (Array.isArray(chunkPosts)) posts.push(...chunkPosts);
+    }
+
+    return posts;
+  }
+
+  const feed = await shareReadJson<{ posts?: ShareFeedPost[] }>("data/feed.json", { posts: [] });
+  return Array.isArray(feed.posts) ? feed.posts : [];
+}
+
+function shareRenderHtml(post: ShareFeedPost, handle: string, telegramPostId: string) {
+  const sourceTitle = post.source?.title || post.source?.handle || handle || "Telegram";
+  const country = String(post.sourceCountryCode || "").toUpperCase() || "Telegram";
+  const text = shareTruncate(post.text, 180);
+  const titleText = text || `${sourceTitle}: Telegram post`;
+  const title = `${titleText} — margeleT`;
+  const description = [
+    text ? `📰 ${text}` : "📰 Telegram post in margeleT",
+    `👤 ${sourceTitle}`,
+    `🌍 ${country}`,
+  ].join(" · ");
+  const image = shareGetPreviewImage(post);
+  const canonical = `${SHARE_SITE_ORIGIN}/${encodeURIComponent(handle)}/${encodeURIComponent(telegramPostId)}`;
+  const appPath = `/post/${encodeURIComponent(String(post.id))}`;
+
+  return `<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>${shareEscapeHtml(title)}</title>
+  <meta name="description" content="${shareEscapeHtml(description)}" />
+  <link rel="canonical" href="${shareEscapeHtml(canonical)}" />
+
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="${shareEscapeHtml(canonical)}" />
+  <meta property="og:title" content="${shareEscapeHtml(title)}" />
+  <meta property="og:description" content="${shareEscapeHtml(description)}" />
+  <meta property="og:image" content="${shareEscapeHtml(image)}" />
+  <meta property="og:image:secure_url" content="${shareEscapeHtml(image)}" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${shareEscapeHtml(title)}" />
+  <meta name="twitter:description" content="${shareEscapeHtml(description)}" />
+  <meta name="twitter:image" content="${shareEscapeHtml(image)}" />
+
+  <script>
+    if (!/bot|crawl|spider|telegrambot|twitterbot|facebookexternalhit|whatsapp|vkshare|slackbot/i.test(navigator.userAgent || "")) {
+      window.location.replace(${JSON.stringify(appPath)});
+    }
+  </script>
+</head>
+<body style="margin:0;background:#0f1d2a;color:white;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <main style="max-width:640px;margin:40px auto;padding:20px">
+    <h1>${shareEscapeHtml(titleText)}</h1>
+    <p>${shareEscapeHtml(description)}</p>
+    ${image ? `<img src="${shareEscapeHtml(image)}" alt="" style="max-width:100%;border-radius:20px" />` : ""}
+    <p><a style="color:#7dd3fc" href="${shareEscapeHtml(appPath)}">Открыть пост в margeleT</a></p>
+  </main>
+</body>
+</html>`;
+}
+
+async function handleShareOg(req: any, res: any) {
+  const handle = shareNormalizeHandle(req.query?.handle);
+  const telegramPostId = String(req.query?.postId || "").trim();
+
+  if (!handle || !telegramPostId) {
+    return res.status(404).send("Not found");
+  }
+
+  const posts = await shareReadAllPosts();
+  const post = posts.find((item) => {
+    return shareNormalizeHandle(item.source?.handle) === handle && shareGetPostIdFromUrl(item.postUrl) === telegramPostId;
+  });
+
+  if (!post) {
+    res.setHeader("Cache-Control", "public, s-maxage=60, stale-while-revalidate=300");
+    return res
+      .status(200)
+      .send(`<!doctype html><html><head><title>margeleT</title><script>window.location.replace("/${encodeURIComponent(handle)}")</script></head><body></body></html>`);
+  }
+
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.setHeader("Cache-Control", "public, s-maxage=300, stale-while-revalidate=3600");
+  return res.status(200).send(shareRenderHtml(post, handle, telegramPostId));
+}
+
 export default async function handler(req: any, res: any) {
   try {
+    if (req.query?.og === "1" || (req.query?.handle && req.query?.postId)) {
+      return handleShareOg(req, res);
+    }
+
     const raw = req.query?.url;
 
     if (!raw || typeof raw !== "string") {

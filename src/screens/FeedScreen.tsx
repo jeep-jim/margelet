@@ -86,6 +86,7 @@ const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
 const FEED_SEARCH_STATE_EVENT = "margelet:feed-search-state";
 const FEED_SEARCH_PANEL_STORAGE_KEY = "margelet_feed_search_panel_open";
 const FEED_SUBSCRIPTIONS_PANEL_STORAGE_KEY = "margelet_feed_subscriptions_panel_open";
+const FEED_RELOAD_SEED_STORAGE_KEY = "margelet_feed_reload_seed_v1";
 
 type FeedSettings = {
   mediaMode: FeedMediaMode;
@@ -145,8 +146,28 @@ function stableFeedHash(value: string) {
   return hash >>> 0;
 }
 
+let feedReloadSeedCache: number | null = null;
+
 function getFeedMixSeed() {
-  return Math.floor(Date.now() / (3 * 60 * 60 * 1000));
+  if (feedReloadSeedCache !== null) return feedReloadSeedCache;
+
+  const timeSeed = Math.floor(Date.now() / (10 * 60 * 1000));
+
+  if (typeof window === "undefined") {
+    feedReloadSeedCache = timeSeed;
+    return feedReloadSeedCache;
+  }
+
+  try {
+    const previous = Number(window.localStorage.getItem(FEED_RELOAD_SEED_STORAGE_KEY) || "0");
+    const next = Number.isFinite(previous) ? (previous + 1) % 1000000 : 1;
+    window.localStorage.setItem(FEED_RELOAD_SEED_STORAGE_KEY, String(next));
+    feedReloadSeedCache = timeSeed + next;
+  } catch {
+    feedReloadSeedCache = timeSeed + Math.floor(Math.random() * 1000000);
+  }
+
+  return feedReloadSeedCache;
 }
 
 function normalizeHandle(value: string | null | undefined) {
@@ -706,6 +727,90 @@ function isVideoGridSourceVerified(post: IngestedPost) {
   );
 }
 
+function getNumericPostValue(post: IngestedPost, keys: string[]) {
+  const record = post as unknown as Record<string, unknown>;
+
+  for (const key of keys) {
+    const value = record[key];
+    if (typeof value === "number" && Number.isFinite(value)) return value;
+    if (typeof value === "string") {
+      const parsed = Number(value.replace(/[^0-9.-]/g, ""));
+      if (Number.isFinite(parsed)) return parsed;
+    }
+  }
+
+  return 0;
+}
+
+function getVideoGridPopularityScore(post: IngestedPost) {
+  const views = getNumericPostValue(post, [
+    "views",
+    "viewCount",
+    "viewsCount",
+    "telegramViews",
+    "tgViews",
+  ]);
+  const likes = getNumericPostValue(post, ["likes", "likeCount", "likesCount"]);
+  const opens = getNumericPostValue(post, ["opens", "openCount", "clicks", "telegramClicks"]);
+  const reactions = getNumericPostValue(post, ["reactionScore", "reactionsScore", "score"]);
+
+  return views * 0.18 + likes * 4 + opens * 2.5 + reactions * 6;
+}
+
+function getVideoGridOrientation(post: IngestedPost) {
+  const media = Array.isArray(post.media) ? (post.media as Array<Record<string, unknown>>) : [];
+  const visual = media.find((item) => item.kind === "video") || media[0] || {};
+  const width = Number(visual.width || visual.w || visual.videoWidth || 0);
+  const height = Number(visual.height || visual.h || visual.videoHeight || 0);
+
+  if (width > 0 && height > 0) {
+    if (width > height * 1.18) return "wide";
+    if (height > width * 1.18) return "tall";
+    return "square";
+  }
+
+  return "auto";
+}
+
+function buildVideoGridMosaic(posts: IngestedPost[]) {
+  const maxFeatured = Math.max(1, Math.min(8, Math.floor(posts.length * 0.08)));
+  const ranked = posts
+    .map((post, index) => ({ post, index, score: getVideoGridPopularityScore(post) }))
+    .filter((item) => item.score > 0 && item.index > 2)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, maxFeatured);
+
+  const result = new Map<number, string>();
+
+  ranked.forEach(({ post }, rank) => {
+    const orientation = getVideoGridOrientation(post);
+
+    if (rank === 0 && orientation === "wide") {
+      result.set(post.id, "col-span-2 aspect-[16/9]");
+      return;
+    }
+
+    if (rank === 0 && orientation === "tall") {
+      result.set(post.id, "row-span-2 aspect-[9/16]");
+      return;
+    }
+
+    if (rank % 5 === 0) {
+      result.set(post.id, "col-span-2 aspect-[16/10]");
+    } else if (rank % 3 === 0) {
+      result.set(post.id, "aspect-square");
+    } else if (orientation === "wide") {
+      result.set(post.id, "col-span-2 aspect-[16/9]");
+    } else if (orientation === "tall") {
+      result.set(post.id, "row-span-2 aspect-[9/16]");
+    } else {
+      result.set(post.id, "aspect-square");
+    }
+  });
+
+  return result;
+}
+
 function FeedTopSearch({
   locale,
   searchQuery,
@@ -1061,16 +1166,17 @@ function VideoGridView({
   }
 
   const visiblePosts = posts.slice(0, visibleVideoCount);
+  const mosaicTileClasses = buildVideoGridMosaic(visiblePosts);
 
   return (
     <div className="pt-px">
-      <div className="grid grid-cols-3 gap-0">
+      <div className="grid grid-flow-dense grid-cols-3 gap-0">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
           const title = post.source?.title || post.source?.handle || "Telegram";
           const verified = isVideoGridSourceVerified(post);
-          const cardClass = "aspect-[9/16]";
+          const cardClass = mosaicTileClasses.get(post.id) || "aspect-[9/16]";
           const poster = preview?.poster || "";
           const isPreviewing = previewPostId === post.id;
           const text = String(post.text || "")
