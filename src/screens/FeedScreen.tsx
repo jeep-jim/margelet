@@ -1143,6 +1143,7 @@ function VideoGridView({
 
                 {shouldRenderVideo ? (
                   <video
+                    key={`${post.id}:${isPreviewing ? "preview" : "poster-frame"}`}
                     src={preview.url}
                     poster={poster || undefined}
                     data-video-preview-post-id={post.id}
@@ -1156,27 +1157,8 @@ function VideoGridView({
                     preload={isPreviewing ? "auto" : "metadata"}
                     className={[
                       "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
-                      isPreviewing ? "z-[2]" : "z-[1]",
+                      isPreviewing ? "z-[2]" : poster && !imageFailed ? "z-[0]" : "z-[1]",
                     ].join(" ")}
-                    onLoadedMetadata={(event) => {
-                      const video = event.currentTarget;
-                      if (isPreviewing || poster) return;
-
-                      try {
-                        const duration = Number.isFinite(video.duration) ? video.duration : 0;
-                        const targetTime = duration > 0 ? Math.min(0.12, Math.max(0.01, duration / 30)) : 0.01;
-                        if (Math.abs(video.currentTime - targetTime) > 0.01) {
-                          video.currentTime = targetTime;
-                        }
-                      } catch {
-                        //
-                      }
-                    }}
-                    onLoadedData={(event) => {
-                      if (!isPreviewing) {
-                        event.currentTarget.pause();
-                      }
-                    }}
                     onContextMenu={(event) => event.preventDefault()}
                   />
                 ) : null}
