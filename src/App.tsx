@@ -665,14 +665,19 @@ export default function App() {
         ? serverPosts
         : serverPosts.filter((post) => !hiddenPostIds.includes(post.id) && !globalHiddenPostIds.includes(post.id));
 
-    if (!sharedPath) {
-      return visible;
-    }
-
     const matchIndex = visible.findIndex((post) => {
+      const internalId = String(post.id);
+      const telegramId = getPostIdFromUrl(post.postUrl);
+
+      if (postPathId) {
+        return internalId === postPathId || telegramId === postPathId;
+      }
+
+      if (!sharedPath) return false;
+
       return (
         normalizeSourceHandle(post.source.handle) === normalizeSourceHandle(sharedPath.handle) &&
-        getPostIdFromUrl(post.postUrl) === sharedPath.postId
+        (telegramId === sharedPath.postId || internalId === sharedPath.postId)
       );
     });
 
@@ -682,7 +687,17 @@ export default function App() {
 
     const target = visible[matchIndex];
     return [target, ...visible.filter((post) => post.id !== target.id)];
-  }, [serverPosts, hiddenPostIds, globalHiddenPostIds, sharedPath]);
+  }, [serverPosts, hiddenPostIds, globalHiddenPostIds, sharedPath, postPathId]);
+
+  const hasLivePostPath = useMemo(() => {
+    if (!postPathId) return false;
+
+    return posts.some((post) => {
+      return String(post.id) === postPathId || getPostIdFromUrl(post.postUrl) === postPathId;
+    });
+  }, [postPathId, posts]);
+
+  const shouldShowExpiredPost = Boolean(postPathId && !isFeedLoading && !hasLivePostPath);
 
   const syncPathState = useCallback(() => {
     setLocationPath(normalizePathname(window.location.pathname));
@@ -1199,11 +1214,11 @@ export default function App() {
         />
       ) : null}
 
-      {postPathId ? (
+      {shouldShowExpiredPost ? (
         <ExpiredPostScreen locale={locale} onBack={goHome} />
       ) : null}
 
-      {current === "feed" && !postPathId ? (
+      {current === "feed" && !shouldShowExpiredPost ? (
         <FeedScreen
           locale={locale}
           posts={posts}
@@ -1246,7 +1261,7 @@ export default function App() {
         />
       ) : null}
 
-      {current === "source" && !postPathId ? (
+      {current === "source" && !shouldShowExpiredPost ? (
         <SourceScreen
           locale={locale}
           posts={posts}
