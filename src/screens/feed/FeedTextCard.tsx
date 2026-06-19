@@ -577,7 +577,7 @@ export function FeedTextCard({
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <FeedReactionButton active={liked} onClick={onToggleLike} />
+          <FeedReactionButton active={liked} onClick={onToggleLike} postId={post.id} />
         </div>
 
         <button

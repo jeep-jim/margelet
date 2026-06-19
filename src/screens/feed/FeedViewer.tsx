@@ -12,6 +12,7 @@ import type { ViewerProps } from "./feed.types";
 import { FeedCarousel } from "./FeedCarousel";
 import { FeedSourceAvatar } from "./FeedSourceHeader";
 import { FeedMoreMenu } from "./FeedMoreMenu";
+import { FeedReactionButton } from "./FeedReactionButton";
 import { normalizeMediaList } from "./feed.utils";
 import { ADMIN_TELEGRAM_IDS } from "./feed.constants";
 import { VerifiedBadge } from "../../components/shared/VerifiedBadge";
@@ -915,27 +916,18 @@ export function FeedViewer({
                 </button>
 
                 {!isPlaying ? (
-                  <button
-                    type="button"
-                    onPointerDown={(event) => {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      _onToggleSave(activePost.id);
-                    }}
-                    className="pointer-events-auto relative z-50 flex h-10 w-10 shrink-0 items-center justify-center text-white touch-manipulation"
-                    aria-label="Save"
+                  <div
+                    className="pointer-events-auto relative z-[60] shrink-0"
+                    onPointerDown={(event) => event.stopPropagation()}
+                    onClick={(event) => event.stopPropagation()}
                   >
-                    <span
-                      className={[
-                        "text-[31px] leading-none transition duration-200",
-                        _savedPostIds.includes(activePost.id)
-                          ? "animate-[margelet-viewer-fire_1.15s_ease-in-out_infinite] saturate-150 drop-shadow-[0_0_12px_rgba(251,146,60,.82)]"
-                          : "grayscale opacity-85",
-                      ].join(" ")}
-                    >
-                      🔥
-                    </span>
-                  </button>
+                    <FeedReactionButton
+                      compact
+                      active={_likedPostIds.includes(activePost.id)}
+                      postId={activePost.id}
+                      onClick={() => _onToggleLike(activePost.id)}
+                    />
+                  </div>
                 ) : null}
 
                 <div className="min-w-[72px] text-[12px] font-medium text-white">
