@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-20T06:59:21.491Z",
+  "updatedAt": "2026-06-20T06:59:30.263Z",
   "sources": [
     {
       "id": "cn:2024jk1",
@@ -653,18 +653,20 @@
       "id": "ru:adultbiz_real",
       "countryCode": "ru",
       "handle": "adultbiz_real",
-      "title": "PROБизнес | 💼 Взрослый бизнес без иллюзий",
+      "title": "PROБизнес",
       "avatarUrl": "https://cdn4.telesco.pe/file/aQC8IfvBV776jHgqsioVPh9BRxJVhavPKqv1T8GeaR8D0q_Ygc0RM3lmLtnEeNoxy9XBWRn10tLvJqXh9quMATnnDSrT8N5bhygnKn_qZWhW0FkAPpkUmGiqng5eppQEhWszkqcENj9-MnuMHxLnTt96Dc4F05PhlCZRS1616JECD-9_xPbCB0GG3j7fgw5cNcWVGbRc34tT9fL0MuiKCg1jfCGCoqIq4GViTKEvAhEXho020V62y450VeEQMYzepKVsTc_l5XF_Gzd1Dn9wJ8HszauM3-SjirqIGCtGtSqSDuR2VNrVFjobtlTe1FbmpzxiRDYdhRWafR6WBBDV1Q.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "business",
+      "defaultTag": "other",
       "tags": [
-        "business"
+        "other",
+        "business",
+        "business_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-19T17:58:43.876Z",
+      "updatedAt": "2026-06-20T06:59:30.048Z",
       "lastCheckedAt": "2026-06-19T17:58:43.708Z",
       "lastImportedAt": "2026-06-19T17:58:43.708Z",
       "lastSeenPostId": 226,
@@ -1795,21 +1797,20 @@
       "id": "ru:alexstranniklite",
       "countryCode": "ru",
       "handle": "alexstranniklite",
-      "title": "Strannik | ModZ 🔥",
+      "title": "Strannik",
       "avatarUrl": "https://cdn4.telesco.pe/file/mt1Q114ENZ8l6C36y5M7qUCQPElzA1q-OoaQ3OJKBFLvdetnmboWHr9bFJ0NT6Qpiy_selfklhV0YGq64DC56xB8Tiwo3IyiPqoUHt9SJ77X5Zp-lc7cCF1QvJHi1yHhlLtmFJWDCMdmIwt0Rd5VvLqlEWa1OR1D0M6-whC-O-MVpPj8EYznZ9NRrqC_Bs4THUZ3r7LzXPCgEaTFd94NaVlR3ZGWEbdtIZpyQiePP1m0mFciKO3sFZNaEf9KCahsvdW6SR39SI3hZHJ_zlSTbwrIBpd0PH8kkIc53UPSMAH3BPdxGCqdzMorrYyYK9W0G3IKi3qL6Bhm4TX1V8hiWg.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "technology",
+      "defaultTag": "other",
       "tags": [
-        "technology",
-        "technology_software",
         "other",
-        "other_misc"
+        "technology",
+        "technology_software"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.340Z",
-      "updatedAt": "2026-06-19T17:58:56.648Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
       "lastCheckedAt": "2026-06-19T17:58:55.824Z",
       "lastImportedAt": "2026-06-19T17:58:55.824Z",
       "lastSeenPostId": 24894,
@@ -13378,6 +13379,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:chatgpt_try",
+      "countryCode": "ru",
+      "handle": "chatgpt_try",
+      "title": "TryChatGPT.ru GPT",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.054Z",
+      "updatedAt": "2026-06-20T06:59:30.054Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:chatgptme",
       "countryCode": "ru",
       "handle": "chatgptme",
@@ -18764,6 +18790,28 @@
       "note": null,
       "createdAt": "2026-06-20T06:50:53.308Z",
       "updatedAt": "2026-06-20T06:50:53.308Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:cybersec_academy",
+      "countryCode": "ru",
+      "handle": "cybersec_academy",
+      "title": "ZeroDay",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.060Z",
+      "updatedAt": "2026-06-20T06:59:30.060Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -48839,6 +48887,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:machinelearningall",
+      "countryCode": "ru",
+      "handle": "machinelearningall",
+      "title": "VeoSeeBot",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_bots"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.055Z",
+      "updatedAt": "2026-06-20T06:59:30.055Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:macizlekesintisiz",
       "countryCode": "tr",
       "handle": "macizlekesintisiz",
@@ -52099,6 +52171,28 @@
       "lastRefreshCursorPostId": 51913
     },
     {
+      "id": "ru:mi_upds",
+      "countryCode": "ru",
+      "handle": "mi_upds",
+      "title": "Xiaomi",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.060Z",
+      "updatedAt": "2026-06-20T06:59:30.060Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "de:michaelnehls1",
       "countryCode": "de",
       "handle": "michaelnehls1",
@@ -53728,6 +53822,28 @@
       "createdAt": "2026-06-02T07:27:57.338Z",
       "updatedAt": "2026-06-19T17:25:49.315Z",
       "lastCheckedAt": "2026-06-19T08:56:57.557Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:modsfortt",
+      "countryCode": "ru",
+      "handle": "modsfortt",
+      "title": "TikTok Hack",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.053Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
@@ -61236,12 +61352,15 @@
       "verified": false,
       "defaultTag": "news",
       "tags": [
-        "news"
+        "news",
+        "news_all",
+        "education",
+        "education_courses"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-19T17:25:49.316Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
       "lastCheckedAt": "2026-06-19T09:01:20.734Z",
       "lastImportedAt": "2026-06-19T09:01:20.734Z",
       "lastSeenPostId": 136,
@@ -66522,6 +66641,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:pcteapot",
+      "countryCode": "ru",
+      "handle": "pcteapot",
+      "title": "Windows Club",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education",
+        "education_courses",
+        "telegram",
+        "telegram_bots"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.056Z",
+      "updatedAt": "2026-06-20T06:59:30.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:pdalife_official",
       "countryCode": "ru",
       "handle": "pdalife_official",
@@ -69992,6 +70136,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:positivixtech",
+      "countryCode": "ru",
+      "handle": "positivixtech",
+      "title": "PstvxTech",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "telegram",
+      "tags": [
+        "telegram",
+        "telegram_channels",
+        "telegram_bots"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.048Z",
+      "updatedAt": "2026-06-20T06:59:30.048Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:poslezavtraofficial",
       "countryCode": "ru",
       "handle": "poslezavtraofficial",
@@ -70152,6 +70320,54 @@
       "lastImportedAt": "2026-06-19T17:40:08.451Z",
       "lastSeenPostId": 132172,
       "importedPostsCount": 66,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:powerapk",
+      "countryCode": "ru",
+      "handle": "powerapk",
+      "title": "Power APK",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_software",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.046Z",
+      "updatedAt": "2026-06-20T06:59:30.046Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:powerdeviceofficial",
+      "countryCode": "ru",
+      "handle": "powerdeviceofficial",
+      "title": "Power Device",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.046Z",
+      "updatedAt": "2026-06-20T06:59:30.046Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -70562,6 +70778,55 @@
       "note": null,
       "createdAt": "2026-06-20T06:59:05.126Z",
       "updatedAt": "2026-06-20T06:59:05.126Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:premium_apk3",
+      "countryCode": "ru",
+      "handle": "premium_apk3",
+      "title": "PREMIUM APK",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "technology",
+        "technology_software"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.047Z",
+      "updatedAt": "2026-06-20T06:59:30.047Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:premium_droid",
+      "countryCode": "ru",
+      "handle": "premium_droid",
+      "title": "Premium APK",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_software",
+        "gaming",
+        "gaming_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.046Z",
+      "updatedAt": "2026-06-20T06:59:30.046Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -71192,6 +71457,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:pro_ai_official",
+      "countryCode": "ru",
+      "handle": "pro_ai_official",
+      "title": "PRO AI",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.047Z",
+      "updatedAt": "2026-06-20T06:59:30.047Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:pro_biz_channel",
       "countryCode": "ru",
       "handle": "pro_biz_channel",
@@ -71201,12 +71491,15 @@
       "verified": false,
       "defaultTag": "business",
       "tags": [
-        "business"
+        "business",
+        "business_all",
+        "telegram",
+        "telegram_channels"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-19T17:25:49.317Z",
+      "updatedAt": "2026-06-20T06:59:30.047Z",
       "lastCheckedAt": "2026-06-19T09:03:04.612Z",
       "lastImportedAt": "2026-06-19T09:03:04.612Z",
       "lastSeenPostId": 14990,
@@ -71376,6 +71669,31 @@
       "note": null,
       "createdAt": "2026-06-20T06:50:53.294Z",
       "updatedAt": "2026-06-20T06:50:53.294Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:proctoapk",
+      "countryCode": "ru",
+      "handle": "proctoapk",
+      "title": "PRO100 APK",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_software",
+        "gaming",
+        "gaming_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.047Z",
+      "updatedAt": "2026-06-20T06:59:30.047Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -71760,6 +72078,55 @@
       "lastRefreshCursorPostId": 929
     },
     {
+      "id": "ru:programmer_memes",
+      "countryCode": "ru",
+      "handle": "programmer_memes",
+      "title": "Programmer memes",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_dev",
+        "humor",
+        "humor_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.048Z",
+      "updatedAt": "2026-06-20T06:59:30.048Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:prohitec",
+      "countryCode": "ru",
+      "handle": "prohitec",
+      "title": "PRO Hi-Tech",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "fitness",
+        "fitness_training"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.047Z",
+      "updatedAt": "2026-06-20T06:59:30.047Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:proimporrt",
       "countryCode": "ru",
       "handle": "proimporrt",
@@ -71993,6 +72360,30 @@
       "note": null,
       "createdAt": "2026-06-20T06:59:05.132Z",
       "updatedAt": "2026-06-20T06:59:05.132Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:proneiroclub",
+      "countryCode": "ru",
+      "handle": "proneiroclub",
+      "title": "PRO НЕЙРО",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "technology",
+        "ai"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.047Z",
+      "updatedAt": "2026-06-20T06:59:30.047Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -72374,6 +72765,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:proxytgtestperiod4",
+      "countryCode": "ru",
+      "handle": "proxytgtestperiod4",
+      "title": "Telegram Proxy",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.053Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:prozhara",
       "countryCode": "ru",
       "handle": "prozhara",
@@ -72606,6 +73021,31 @@
       "lastSeenPostId": 4107,
       "importedPostsCount": 104,
       "lastRefreshCursorPostId": 4093
+    },
+    {
+      "id": "ru:pulse_gpt",
+      "countryCode": "ru",
+      "handle": "pulse_gpt",
+      "title": "PulseGPT",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.048Z",
+      "updatedAt": "2026-06-20T06:59:30.048Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "us:pulse_infocrypto",
@@ -73177,6 +73617,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:python_academy",
+      "countryCode": "ru",
+      "handle": "python_academy",
+      "title": "Python Academy",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.048Z",
+      "updatedAt": "2026-06-20T06:59:30.048Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:python2day",
       "countryCode": "ru",
       "handle": "python2day",
@@ -73195,6 +73659,50 @@
       "note": null,
       "createdAt": "2026-06-20T06:50:53.294Z",
       "updatedAt": "2026-06-20T06:50:53.294Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:pythonl",
+      "countryCode": "ru",
+      "handle": "pythonl",
+      "title": "Python/ django",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.049Z",
+      "updatedAt": "2026-06-20T06:59:30.049Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:pythonportal",
+      "countryCode": "ru",
+      "handle": "pythonportal",
+      "title": "Python Portal",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.049Z",
+      "updatedAt": "2026-06-20T06:59:30.049Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -75671,15 +76179,14 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/o_Ot55JczdWJD3axQifPRtEdJgalwV8cNJQwEU_otWmvh3f3HvkE2T8ZWbCiZXL7crJ9vkmQmRPK6xrx5DtmNVXgiJfnuv7QCQpbvG2TESh2mwKKMGu2BjY6EwFMA_DnW9GA9wH-x4CPgFfRTkodWiDL64Lve8No4mxWSnwx5S5ZNdkdmHPKX_f2NCKaO7TPIc9QslACEUBPjq7bILjdygdVVZpJsIb6j_MLNQDyZqS0ntAaKgD6qZjb41agep4zWVa64sCt5nQCri2X-zRPnMWN5YkLnypEJ37RQC80Lyh1jFrccVomzJu75PuqUJ0b_9G5eg3PcYflTlpqLQ5qyg.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "telegram",
+      "defaultTag": "other",
       "tags": [
-        "telegram",
-        "telegram_channels"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-19T17:25:49.317Z",
+      "updatedAt": "2026-06-20T06:59:30.050Z",
       "lastCheckedAt": "2026-06-19T09:03:27.586Z",
       "lastImportedAt": "2026-06-19T09:03:27.586Z",
       "lastSeenPostId": 46397,
@@ -76097,6 +76604,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:realityvpn_official",
+      "countryCode": "ru",
+      "handle": "realityvpn_official",
+      "title": "Reality VPN",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.049Z",
+      "updatedAt": "2026-06-20T06:59:30.049Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "us:realjust_human",
       "countryCode": "us",
       "handle": "realjust_human",
@@ -76170,6 +76699,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:realmerussia",
+      "countryCode": "ru",
+      "handle": "realmerussia",
+      "title": "realme Россия",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets",
+        "culture",
+        "art"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.049Z",
+      "updatedAt": "2026-06-20T06:59:30.049Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:realnyi_sadovod",
       "countryCode": "ru",
       "handle": "realnyi_sadovod",
@@ -76213,6 +76767,31 @@
       "lastImportedAt": "2026-06-19T18:02:08.861Z",
       "lastSeenPostId": 39284,
       "importedPostsCount": 133,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:realtechru",
+      "countryCode": "ru",
+      "handle": "realtechru",
+      "title": "RealTech",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets",
+        "culture",
+        "art"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.049Z",
+      "updatedAt": "2026-06-20T06:59:30.049Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -76708,6 +77287,30 @@
       "lastRefreshCursorPostId": 13633
     },
     {
+      "id": "ru:reka_apk",
+      "countryCode": "ru",
+      "handle": "reka_apk",
+      "title": "RekaAPK",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "technology",
+        "technology_software"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.050Z",
+      "updatedAt": "2026-06-20T06:59:30.050Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:reklama_chatov",
       "countryCode": "ru",
       "handle": "reklama_chatov",
@@ -76895,6 +77498,30 @@
       "lastRefreshCursorPostId": 3950
     },
     {
+      "id": "ru:repremium",
+      "countryCode": "ru",
+      "handle": "repremium",
+      "title": "re:premium - Apple, Samsung, Xiaomi",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_web",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.049Z",
+      "updatedAt": "2026-06-20T06:59:30.049Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "tr:resimlerdeki",
       "countryCode": "tr",
       "handle": "resimlerdeki",
@@ -76915,6 +77542,28 @@
       "lastSeenPostId": 2541,
       "importedPostsCount": 107,
       "lastRefreshCursorPostId": 2533
+    },
+    {
+      "id": "ru:restore_ru",
+      "countryCode": "ru",
+      "handle": "restore_ru",
+      "title": "restore:",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.050Z",
+      "updatedAt": "2026-06-20T06:59:30.050Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "in:resultfuture",
@@ -77034,6 +77683,30 @@
       "lastImportedAt": "2026-06-19T09:03:44.910Z",
       "lastSeenPostId": 37047,
       "importedPostsCount": 88,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:retra",
+      "countryCode": "ru",
+      "handle": "retra",
+      "title": "r/ретранслятор",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.049Z",
+      "updatedAt": "2026-06-20T06:59:30.049Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -78631,20 +79304,43 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/QKiQbVgnu-V04xKzVnCReCnxL1dW8RDerRkPnZ4_ikwySahXDmSBelPKgD4RjF1ooaXm_WigvM-Ro3sB4MXj1Xkuu5oxIVS-8pt7_-BW6umwk8ExN1KCP30dRiec5z4WUJAhIGZNV0H_rUXfzd0qGLg_SzsoN19RBb2HXNu-o8BduTa_AQ90nh1LIW8UKu1EnVD0O3Ggaasgo2f1yq_QHtQECvvT5g78WHC_pS1ctDHkFFpCcajDIQct9K9Uk87MV8PxdJS8d6CCQUaf3qIMsyWnkvl4IGwgVlcahRGeJeG0QopoClVI0NMsH36z0NKWIJSBUKkPZubx_Pv0EfTdtQ.jpg",
       "avatarOverride": null,
       "verified": true,
-      "defaultTag": "electronics",
+      "defaultTag": "other",
       "tags": [
-        "electronics",
-        "technology",
-        "gadgets"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.328Z",
-      "updatedAt": "2026-06-19T17:25:49.317Z",
+      "updatedAt": "2026-06-20T06:59:30.050Z",
       "lastCheckedAt": "2026-06-19T09:04:11.815Z",
       "lastImportedAt": "2026-06-19T09:04:11.815Z",
       "lastSeenPostId": 26677,
       "importedPostsCount": 80,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:rozetkedplus",
+      "countryCode": "ru",
+      "handle": "rozetkedplus",
+      "title": "Rozetked Plus",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "news",
+      "tags": [
+        "news",
+        "news_all",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.050Z",
+      "updatedAt": "2026-06-20T06:59:30.050Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -79549,6 +80245,30 @@
       "lastImportedAt": "2026-06-19T17:41:42.675Z",
       "lastSeenPostId": 31875,
       "importedPostsCount": 60,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:russian_osint",
+      "countryCode": "ru",
+      "handle": "russian_osint",
+      "title": "Russian OSINT",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai",
+        "transport_auto"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.050Z",
+      "updatedAt": "2026-06-20T06:59:30.050Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -80985,6 +81705,55 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:samsung1galaxy",
+      "countryCode": "ru",
+      "handle": "samsung1galaxy",
+      "title": "Samsung - 1Galaxy",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "technology",
+        "gadgets"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.050Z",
+      "updatedAt": "2026-06-20T06:59:30.050Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:samsungrussia",
+      "countryCode": "ru",
+      "handle": "samsungrussia",
+      "title": "Samsung Russia",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.051Z",
+      "updatedAt": "2026-06-20T06:59:30.051Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:samye_slyvky",
       "countryCode": "ru",
       "handle": "samye_slyvky",
@@ -82035,6 +82804,31 @@
       "lastRefreshCursorPostId": 70324
     },
     {
+      "id": "ru:seclabnews",
+      "countryCode": "ru",
+      "handle": "seclabnews",
+      "title": "SecurityLab.ru",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_web",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.051Z",
+      "updatedAt": "2026-06-20T06:59:30.051Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "us:secrets_of_civilizations",
       "countryCode": "us",
       "handle": "secrets_of_civilizations",
@@ -82220,6 +83014,30 @@
       "lastImportedAt": "2026-06-19T17:52:57.423Z",
       "lastSeenPostId": 1939,
       "importedPostsCount": 21,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:selectel",
+      "countryCode": "ru",
+      "handle": "selectel",
+      "title": "Selectel Newsfeed",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.051Z",
+      "updatedAt": "2026-06-20T06:59:30.051Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -82457,6 +83275,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:senatorovlab",
+      "countryCode": "ru",
+      "handle": "senatorovlab",
+      "title": "Senatorov-LAB",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "politics",
+      "tags": [
+        "politics",
+        "politics_government",
+        "culture",
+        "art"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.051Z",
+      "updatedAt": "2026-06-20T06:59:30.051Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:sendme_somelove",
       "countryCode": "ru",
       "handle": "sendme_somelove",
@@ -82476,6 +83319,30 @@
       "lastImportedAt": "2026-06-19T17:52:59.069Z",
       "lastSeenPostId": 7349,
       "importedPostsCount": 59,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:seniorpy",
+      "countryCode": "ru",
+      "handle": "seniorpy",
+      "title": "Senior Python Developer",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "technology",
+        "technology_dev"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.051Z",
+      "updatedAt": "2026-06-20T06:59:30.051Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -82660,6 +83527,30 @@
       "lastImportedAt": "2026-06-19T09:04:56.629Z",
       "lastSeenPostId": 79052,
       "importedPostsCount": 87,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:setters",
+      "countryCode": "ru",
+      "handle": "setters",
+      "title": "SETTERS Media",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "business",
+        "business_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.051Z",
+      "updatedAt": "2026-06-20T06:59:30.051Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -83057,6 +83948,28 @@
       "lastSeenPostId": 309,
       "importedPostsCount": 49,
       "lastRefreshCursorPostId": 309
+    },
+    {
+      "id": "ru:shahabstore14",
+      "countryCode": "ru",
+      "handle": "shahabstore14",
+      "title": "شهاب استور",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.060Z",
+      "updatedAt": "2026-06-20T06:59:30.060Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:sharaapk",
@@ -83457,6 +84370,30 @@
       "lastSeenPostId": 117456,
       "importedPostsCount": 165,
       "lastRefreshCursorPostId": 117319
+    },
+    {
+      "id": "ru:shopmts",
+      "countryCode": "ru",
+      "handle": "shopmts",
+      "title": "shop.mts.ru",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.052Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ir:shortasport",
@@ -84295,6 +85232,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:skolkovo_channel",
+      "countryCode": "ru",
+      "handle": "skolkovo_channel",
+      "title": "Skolkovo School of Management",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "business",
+      "tags": [
+        "business",
+        "business_management",
+        "business_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.052Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:skolkovolive",
       "countryCode": "ru",
       "handle": "skolkovolive",
@@ -84697,6 +85658,31 @@
       "lastImportedAt": "2026-06-19T17:53:16.485Z",
       "lastSeenPostId": 13931,
       "importedPostsCount": 61,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:smartony",
+      "countryCode": "ru",
+      "handle": "smartony",
+      "title": "SMARTONY",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_software",
+        "culture",
+        "art"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.052Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -85303,6 +86289,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:social_engineering",
+      "countryCode": "ru",
+      "handle": "social_engineering",
+      "title": "Social Engineering",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.052Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:social_mos_news",
       "countryCode": "ru",
       "handle": "social_mos_news",
@@ -85763,6 +86771,30 @@
       "note": null,
       "createdAt": "2026-06-20T06:59:05.138Z",
       "updatedAt": "2026-06-20T06:59:05.138Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:sostav",
+      "countryCode": "ru",
+      "handle": "sostav",
+      "title": "Sostav",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.052Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -87426,6 +88458,28 @@
       "lastRefreshCursorPostId": 32424
     },
     {
+      "id": "ru:sticker3d",
+      "countryCode": "ru",
+      "handle": "sticker3d",
+      "title": "Sticker 3D",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.052Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:stikery_emodzi_memy",
       "countryCode": "ru",
       "handle": "stikery_emodzi_memy",
@@ -87541,6 +88595,31 @@
       "lastSeenPostId": 5698,
       "importedPostsCount": 143,
       "lastRefreshCursorPostId": 5666
+    },
+    {
+      "id": "ru:stonksgift",
+      "countryCode": "ru",
+      "handle": "stonksgift",
+      "title": "STONKS GIFT",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "finance",
+      "tags": [
+        "finance",
+        "crypto",
+        "gaming",
+        "gaming_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.052Z",
+      "updatedAt": "2026-06-20T06:59:30.052Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ir:stop_qeshmm",
@@ -88928,7 +90007,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-19T17:25:49.323Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
       "lastCheckedAt": "2026-06-19T09:06:20.383Z",
       "lastImportedAt": "2026-06-19T09:06:20.383Z",
       "lastSeenPostId": 4958,
@@ -90007,6 +91086,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:technodeus2023",
+      "countryCode": "ru",
+      "handle": "technodeus2023",
+      "title": "Technodeus",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.053Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:technohumanist",
       "countryCode": "ru",
       "handle": "technohumanist",
@@ -90187,21 +91291,45 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/iBCcw3bi24PN0XymWauL4I9pDsp_h0pmtyer7xs4wd6mMBKc7j92sUA4Xh7uP2phvYCMOAFvCjwDeXZZ2eKRnbnns-S_5u2pfvUSTmrDxkFEon3fO1ljF3C4W0IaBswxTg0EyTjnVDePyPqAbHdQsbRzLdCv7YV7njedqOkExWvaWtw6c7Ve7hBM07HNMG0vlMzzOLEPYn11u42mb-Wsq-jaQI4n8NSsTmWns98yhjDU8iKN_Vh3zVj6vwvkFczjRSyzValLTZ_vyqECg8Kua4fKFHnZBNgy0Lr22kqshkc9wTbZyw2EcDSJ8-AljZ3dX9hLlk3kdCNSYIsh93EB4w.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "technology",
+      "defaultTag": "other",
       "tags": [
-        "technology",
-        "ai",
-        "startups",
-        "science"
+        "other",
+        "news",
+        "news_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.328Z",
-      "updatedAt": "2026-06-19T17:56:10.385Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
       "lastCheckedAt": "2026-06-19T17:56:10.048Z",
       "lastImportedAt": "2026-06-19T17:56:10.048Z",
       "lastSeenPostId": 5653,
       "importedPostsCount": 44,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:tecnorussia",
+      "countryCode": "ru",
+      "handle": "tecnorussia",
+      "title": "TECNO Россия",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "gadgets",
+        "culture",
+        "art"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.053Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -91602,14 +92730,17 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/HLmNM1HtcttyPZ5CcawXA2CB0BH2Ls8Ms0FcZ0gWAN-ZTJvL-zcwcR8mDg6FynGIzhV3fvDpnkLY-NfsyTQNbrZdrVxWvwWNh9xL7A5Hy-jCqir8auAnRjWb5jikWbE6hkOmu7y6wpbBQOGe3nmhf1MpSh4RrBWfbw4ZLVlJHB5ujyCnnj0LImRR9b9k7vbDTtkC7CTbe912AxkuhuEOC8iGaSoSFlcMN9-h4XCmxD_ClcfKtTBdHVhRekfm9_hK80CRssQiPUCRzNrIRh05U0fchikd1zfMMk84WYuPPnRPnDp57MFPyiCeWc-iTgbuc2lAlMaTUJT6OAjyKK-ouQ.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "other",
+      "defaultTag": "business",
       "tags": [
-        "other"
+        "business",
+        "business_entrepreneurship",
+        "culture",
+        "art"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-19T17:56:25.876Z",
+      "updatedAt": "2026-06-20T06:59:30.053Z",
       "lastCheckedAt": "2026-06-19T17:56:25.362Z",
       "lastImportedAt": "2026-06-19T17:56:25.362Z",
       "lastSeenPostId": 8071,
@@ -92138,17 +93269,16 @@
       "avatarUrl": "https://cdn4.telesco.pe/file/YCcHKvQHjYWr2xEZH-lLKEsVU6unpDqsIDDx1AQx7Pq2kZO5QO69T7_GEUdoogS9y4FR1BaQt2EotvZy7NvyRCmh30rC8VL684hQ1PaP29fXiP8UWvtUDQuyNkgylYg5LE2kXBC18PIm17178JMfxeqiFSDH4Bm4Y1OZGczDh-JpM6U8MkXMb5eE5vBb3xuDIglyilT5HCOm7qtpwYzXbh4rSg8iG9VQTl2MrZbnN2vnaJ6BjmbiVi-zpQEMPNoVD0B1drvyFkjJEvgzuS73tMhtsBJ7FClDPUGdCzbe_Q-5cIxhza2T5UW9qWus9CuDmK2UZNiLk0yniBFrhTJ--w.jpg",
       "avatarOverride": null,
       "verified": false,
-      "defaultTag": "technology",
+      "defaultTag": "other",
       "tags": [
-        "technology",
-        "technology_software",
         "other",
-        "other_misc"
+        "technology",
+        "technology_software"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-19T17:56:31.155Z",
+      "updatedAt": "2026-06-20T06:59:30.054Z",
       "lastCheckedAt": "2026-06-19T17:56:30.987Z",
       "lastImportedAt": "2026-06-19T17:56:30.987Z",
       "lastSeenPostId": 3961,
@@ -92165,13 +93295,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-19T17:56:32.326Z",
+      "updatedAt": "2026-06-20T06:59:30.054Z",
       "lastCheckedAt": "2026-06-19T17:56:31.486Z",
       "lastImportedAt": "2026-06-19T17:56:31.486Z",
       "lastSeenPostId": 2831,
@@ -92188,13 +93317,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.337Z",
-      "updatedAt": "2026-06-19T17:56:33.637Z",
+      "updatedAt": "2026-06-20T06:59:30.054Z",
       "lastCheckedAt": "2026-06-19T17:56:32.791Z",
       "lastImportedAt": "2026-06-19T17:56:32.791Z",
       "lastSeenPostId": 3813,
@@ -92274,18 +93402,21 @@
       "id": "ru:times_finance",
       "countryCode": "ru",
       "handle": "times_finance",
-      "title": "Times | Финансы",
+      "title": "Times",
       "avatarUrl": "https://cdn4.telesco.pe/file/J80Ae6c6CwfzOwyt6ugnx0unsrWJREZ8t1xT6x1ZdEdx6MSbtNPnMu9ALcM6T7PfuZcA381Jkv6GwHl07-Hr4_QU532J-e_xGwRynXO9pq44ki36Pqdu0N0cv0L-sKScPD9zZMZY3odaV77BF3bdvXZqAMM36-0_GLZcmPC_1LyhokTs3qRklc2z8P9QkAxJFFRS-9HCJNHoglZb4E9rRpGQhu7kklHgaq5oeGOUoBVZbabFv8sEJ5CuYo5DucZj0aEJCsLPhVD7hHnAVHgBeO4XNm3tHhJMEEfqWhbsV-1wbrRYc51hBho6WetgKjcxG9Qhg1VJ_6Ycpfm7HImTdg.jpg",
       "avatarOverride": null,
       "verified": false,
       "defaultTag": "politics",
       "tags": [
-        "politics"
+        "politics",
+        "politics_all",
+        "business",
+        "business_all"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.329Z",
-      "updatedAt": "2026-06-19T17:56:34.650Z",
+      "updatedAt": "2026-06-20T06:59:30.054Z",
       "lastCheckedAt": "2026-06-19T17:56:33.864Z",
       "lastImportedAt": "2026-06-19T17:56:33.864Z",
       "lastSeenPostId": 7855,
@@ -94022,19 +95153,18 @@
       "id": "ru:tproxyru",
       "countryCode": "ru",
       "handle": "tproxyru",
-      "title": "Proxy MTProto | Прокси 24/7",
+      "title": "Proxy MTProto",
       "avatarUrl": "https://cdn4.telesco.pe/file/b5adWLiZu3xvEEBKQcefwSv9PfJTVqRlSgIJRpzPHFmUZvgUKnW-rL_wTyaDYWB5K8s-YTaJNaVrfrF0X5AavIIyb0IK_OV6qUvf4TKTTcQXJcWZEQyUVu_LYw-7PtUeVs_Odpyeugc58iI0wqALAzmY6COgNcF26EaZ12l3NlwL-Pu1mm9bry9uvFQSbK-s_8Ys9IHHy2C-QxfWpeR1mFd6jOO0FUbOT-UldRejCoyQOhh-Q8jeuCIIxfIFzEVJ66Y_CjtdHEakuNqQi37xWdi3M_AUYOMAQrF82JxmYG6rmzbbkqu6vLhCuEDR6-yomYSuhqvTr6fChWFRHIcZMQ.jpg",
       "avatarOverride": null,
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.336Z",
-      "updatedAt": "2026-06-19T17:56:56.979Z",
+      "updatedAt": "2026-06-20T06:59:30.048Z",
       "lastCheckedAt": "2026-06-19T17:56:56.199Z",
       "lastImportedAt": "2026-06-19T17:56:56.199Z",
       "lastSeenPostId": 1476,
@@ -94654,6 +95784,28 @@
       "lastImportedAt": "2026-06-19T17:57:01.439Z",
       "lastSeenPostId": 41460,
       "importedPostsCount": 89,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:true_secator",
+      "countryCode": "ru",
+      "handle": "true_secator",
+      "title": "SecAtor",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.051Z",
+      "updatedAt": "2026-06-20T06:59:30.051Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -96790,6 +97942,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:unisetai",
+      "countryCode": "ru",
+      "handle": "unisetai",
+      "title": "UNISET AI: промпты, новости",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "ai",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.054Z",
+      "updatedAt": "2026-06-20T06:59:30.054Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:universi_tet",
       "countryCode": "ru",
       "handle": "universi_tet",
@@ -97560,6 +98737,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:utgram",
+      "countryCode": "ru",
+      "handle": "utgram",
+      "title": "Utgram",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "technology",
+      "tags": [
+        "technology",
+        "technology_software",
+        "nature",
+        "animals"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.054Z",
+      "updatedAt": "2026-06-20T06:59:30.054Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:utka_today",
       "countryCode": "ru",
       "handle": "utka_today",
@@ -98199,6 +99401,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:vapcbuild",
+      "countryCode": "ru",
+      "handle": "vapcbuild",
+      "title": "VA-PC",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.055Z",
+      "updatedAt": "2026-06-20T06:59:30.055Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:varlamov",
       "countryCode": "ru",
       "handle": "varlamov",
@@ -98650,6 +99874,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:veo3prompts",
+      "countryCode": "ru",
+      "handle": "veo3prompts",
+      "title": "Veo3",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "news",
+        "news_all"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.055Z",
+      "updatedAt": "2026-06-20T06:59:30.055Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ua:vernadsky_antarctica",
       "countryCode": "ua",
       "handle": "vernadsky_antarctica",
@@ -98885,6 +100133,31 @@
       "note": null,
       "createdAt": "2026-06-20T06:50:53.308Z",
       "updatedAt": "2026-06-20T06:50:53.308Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:vibes_band",
+      "countryCode": "ru",
+      "handle": "vibes_band",
+      "title": "VIBES",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "fashion",
+      "tags": [
+        "fashion",
+        "fashion_brands",
+        "marketing",
+        "marketing_brand"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.055Z",
+      "updatedAt": "2026-06-20T06:59:30.055Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -99336,6 +100609,31 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:visualbyalisa",
+      "countryCode": "ru",
+      "handle": "visualbyalisa",
+      "title": "Visual by Alisa",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "education",
+      "tags": [
+        "education",
+        "education_courses",
+        "fashion",
+        "fashion_style"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.055Z",
+      "updatedAt": "2026-06-20T06:59:30.055Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:vit_russia",
       "countryCode": "ru",
       "handle": "vit_russia",
@@ -99503,6 +100801,30 @@
       "lastImportedAt": "2026-06-19T17:44:47.586Z",
       "lastSeenPostId": 66077,
       "importedPostsCount": 65,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:vkxci",
+      "countryCode": "ru",
+      "handle": "vkxci",
+      "title": "VK X",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "culture",
+      "tags": [
+        "culture",
+        "music",
+        "design"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.055Z",
+      "updatedAt": "2026-06-20T06:59:30.055Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -100461,6 +101783,28 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:voron_fpv",
+      "countryCode": "ru",
+      "handle": "voron_fpv",
+      "title": "VORON🇷🇺FPV",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.055Z",
+      "updatedAt": "2026-06-20T06:59:30.055Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:voronezh_news_36",
       "countryCode": "ru",
       "handle": "voronezh_news_36",
@@ -100697,6 +102041,28 @@
       "lastRefreshCursorPostId": 14711
     },
     {
+      "id": "ru:vpn_masterls",
+      "countryCode": "ru",
+      "handle": "vpn_masterls",
+      "title": "𝕍ℙℕ𝕄𝔸𝕊𝕋𝔼ℝ™",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.056Z",
+      "updatedAt": "2026-06-20T06:59:30.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ir:vpn_shield",
       "countryCode": "ir",
       "handle": "vpn_shield",
@@ -100785,6 +102151,30 @@
       "note": null,
       "createdAt": "2026-06-20T06:59:05.121Z",
       "updatedAt": "2026-06-20T06:59:05.121Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:vpnplatina",
+      "countryCode": "ru",
+      "handle": "vpnplatina",
+      "title": "VPN PLATINA",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_bots"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.056Z",
+      "updatedAt": "2026-06-20T06:59:30.056Z",
       "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
@@ -101101,6 +102491,31 @@
       "lastImportedAt": "2026-06-19T17:55:07.805Z",
       "lastSeenPostId": 79861,
       "importedPostsCount": 57,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:vsthack",
+      "countryCode": "ru",
+      "handle": "vsthack",
+      "title": "VST Audio Software",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "politics",
+      "tags": [
+        "politics",
+        "war",
+        "technology",
+        "technology_software"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.056Z",
+      "updatedAt": "2026-06-20T06:59:30.056Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
       "lastRefreshCursorPostId": null
     },
     {
@@ -101626,7 +103041,7 @@
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.340Z",
-      "updatedAt": "2026-06-19T17:58:03.959Z",
+      "updatedAt": "2026-06-20T06:59:30.056Z",
       "lastCheckedAt": "2026-06-19T17:58:03.102Z",
       "lastImportedAt": "2026-06-19T17:58:03.102Z",
       "lastSeenPostId": 6465,
@@ -102198,6 +103613,28 @@
       "lastRefreshCursorPostId": 3451
     },
     {
+      "id": "ru:wind_community",
+      "countryCode": "ru",
+      "handle": "wind_community",
+      "title": "Windows Community",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.059Z",
+      "updatedAt": "2026-06-20T06:59:30.059Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:windemsk",
       "countryCode": "ru",
       "handle": "windemsk",
@@ -102290,6 +103727,30 @@
       "lastSeenPostId": 5273,
       "importedPostsCount": 138,
       "lastRefreshCursorPostId": 5252
+    },
+    {
+      "id": "ru:wishmasterrussiaa",
+      "countryCode": "ru",
+      "handle": "wishmasterrussiaa",
+      "title": "WISHMASTER — выгодная техника и сплетни",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.059Z",
+      "updatedAt": "2026-06-20T06:59:30.059Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
     },
     {
       "id": "ru:with_european_mileage",
@@ -102709,6 +104170,30 @@
       "lastRefreshCursorPostId": null
     },
     {
+      "id": "ru:x10_movement",
+      "countryCode": "ru",
+      "handle": "x10_movement",
+      "title": "X10 Движение",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "telegram",
+        "telegram_channels"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.060Z",
+      "updatedAt": "2026-06-20T06:59:30.060Z",
+      "lastCheckedAt": null,
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
       "id": "ru:x5clubru",
       "countryCode": "ru",
       "handle": "x5clubru",
@@ -102932,13 +104417,12 @@
       "verified": false,
       "defaultTag": "other",
       "tags": [
-        "other",
-        "other_misc"
+        "other"
       ],
       "status": "active",
       "note": null,
       "createdAt": "2026-06-02T07:27:57.340Z",
-      "updatedAt": "2026-06-19T17:58:12.655Z",
+      "updatedAt": "2026-06-20T06:59:30.060Z",
       "lastCheckedAt": "2026-06-19T17:58:11.772Z",
       "lastImportedAt": "2026-06-19T17:58:11.772Z",
       "lastSeenPostId": 9555,
@@ -104189,6 +105673,30 @@
       "createdAt": "2026-06-03T00:34:17.636Z",
       "updatedAt": "2026-06-19T17:26:57.854Z",
       "lastCheckedAt": "2026-06-19T17:26:57.854Z",
+      "lastImportedAt": null,
+      "lastSeenPostId": null,
+      "importedPostsCount": 0,
+      "lastRefreshCursorPostId": null
+    },
+    {
+      "id": "ru:yumdigital",
+      "countryCode": "ru",
+      "handle": "yumdigital",
+      "title": "Yumi",
+      "avatarUrl": null,
+      "avatarOverride": null,
+      "verified": false,
+      "defaultTag": "other",
+      "tags": [
+        "other",
+        "education",
+        "education_courses"
+      ],
+      "status": "active",
+      "note": null,
+      "createdAt": "2026-06-20T06:59:30.060Z",
+      "updatedAt": "2026-06-20T06:59:30.060Z",
+      "lastCheckedAt": null,
       "lastImportedAt": null,
       "lastSeenPostId": null,
       "importedPostsCount": 0,
