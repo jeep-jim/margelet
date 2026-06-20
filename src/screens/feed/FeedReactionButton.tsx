@@ -137,7 +137,10 @@ export function FeedReactionButton({
     }
 
     writePostReaction(postId, next);
-    onClick();
+
+    if (!active) {
+      onClick();
+    }
   };
 
   return (

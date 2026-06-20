@@ -9,6 +9,7 @@ import { FeedCard } from "./feed/FeedCard";
 import { FeedHeader } from "./feed/FeedHeader";
 import { FeedTextReaderModal } from "./feed/FeedTextReaderModal";
 import { FeedViewer } from "./feed/FeedViewer";
+import { FeedReactionButton, readLocalReactionScore } from "./feed/FeedReactionButton";
 import { VerifiedBadge } from "../components/shared/VerifiedBadge";
 import {
   FEED_SCREEN_COPY,
@@ -753,8 +754,9 @@ function getVideoGridPopularityScore(post: IngestedPost) {
   const likes = getNumericPostValue(post, ["likes", "likeCount", "likesCount"]);
   const opens = getNumericPostValue(post, ["opens", "openCount", "clicks", "telegramClicks"]);
   const reactions = getNumericPostValue(post, ["reactionScore", "reactionsScore", "score"]);
+  const localReactionScore = typeof window === "undefined" ? 0 : readLocalReactionScore(post.id);
 
-  return views * 0.18 + likes * 4 + opens * 2.5 + reactions * 6;
+  return views * 0.18 + likes * 4 + opens * 2.5 + reactions * 6 + localReactionScore * 28;
 }
 
 function getVideoGridOrientation(post: IngestedPost) {
@@ -1102,6 +1104,8 @@ function VideoGridView({
   moderationSelectionMode,
   onToggleSelect,
   onKillPost,
+  likedPostIds,
+  onToggleLike,
 }: {
   posts: IngestedPost[];
   locale: Locale;
@@ -1113,6 +1117,8 @@ function VideoGridView({
   moderationSelectionMode: boolean;
   onToggleSelect: (postId: number) => void;
   onKillPost: (postId: number) => void;
+  likedPostIds: number[];
+  onToggleLike: (postId: number) => void;
 }) {
   const emptyText = locale === "ru" ? "Видео пока нет" : "No videos yet";
   const [previewPostId, setPreviewPostId] = useState<number | null>(null);
@@ -1121,8 +1127,21 @@ function VideoGridView({
   const suppressNextClickRef = useRef(false);
   const [visibleVideoCount, setVisibleVideoCount] = useState(INITIAL_VIDEO_GRID_POSTS);
   const [imageFailedPostIds, setImageFailedPostIds] = useState<Set<number>>(() => new Set());
+  const [reactionVersion, setReactionVersion] = useState(0);
   const loadMoreVideoRef = useRef<HTMLDivElement | null>(null);
 
+
+  useEffect(() => {
+    const syncReactionScore = () => setReactionVersion((prev) => (prev + 1) % 1000000);
+
+    window.addEventListener("margelet:post-reaction", syncReactionScore as EventListener);
+    window.addEventListener("storage", syncReactionScore);
+
+    return () => {
+      window.removeEventListener("margelet:post-reaction", syncReactionScore as EventListener);
+      window.removeEventListener("storage", syncReactionScore);
+    };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -1204,7 +1223,10 @@ function VideoGridView({
   }
 
   const visiblePosts = posts.slice(0, visibleVideoCount);
-  const mosaicTileClasses = buildVideoGridMosaic(visiblePosts);
+  const mosaicTileClasses = useMemo(
+    () => buildVideoGridMosaic(visiblePosts),
+    [visiblePosts, reactionVersion],
+  );
 
   return (
     <div className="pt-px">
@@ -1225,6 +1247,7 @@ function VideoGridView({
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
           const shouldRenderVideo = canRenderVideo && (isPreviewing || !poster || imageFailed);
+          const liked = likedPostIds.includes(post.id);
 
           return (
             <div
@@ -1430,6 +1453,21 @@ function VideoGridView({
                   ) : null}
                 </div>
               </button>
+
+              <div
+                className="absolute bottom-8 left-2 z-[12] transition duration-200 group-hover:scale-105"
+                onClick={(event) => event.stopPropagation()}
+                onPointerDown={(event) => event.stopPropagation()}
+              >
+                <FeedReactionButton
+                  active={liked}
+                  onClick={() => onToggleLike(post.id)}
+                  postId={post.id}
+                  compact
+                  pickerAlign="left"
+                  pickerClassName="bottom-[calc(100%+8px)] left-0"
+                />
+              </div>
             </div>
           );
         })}
@@ -3347,6 +3385,8 @@ onChangeMediaMode={changeFeedMediaMode}
               );
             }}
             onKillPost={(postId) => void killPostsForEveryone([postId])}
+            likedPostIds={likedPostIds}
+            onToggleLike={onToggleLike}
           />
         ) : (
           renderFeedCards(renderedPosts)
