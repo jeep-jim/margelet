@@ -773,46 +773,75 @@ function getVideoGridOrientation(post: IngestedPost) {
 }
 
 function buildVideoGridMosaic(posts: IngestedPost[]) {
-  const maxFeatured = Math.max(1, Math.min(8, Math.floor(posts.length * 0.08)));
-  const featuredCandidates = new Set(
-    posts
-      .map((post, index) => ({ post, index, score: getVideoGridPopularityScore(post) }))
-      .filter((item) => item.score > 0 && item.index > 5)
-      .sort((a, b) => b.score - a.score || a.index - b.index)
-      .slice(0, Math.max(maxFeatured * 4, 12))
-      .map((item) => item.post.id),
-  );
+  // Play должен выглядеть живым, но не превращаться в “стену”.
+  // Поэтому большие плитки редкие, не подряд и не в самом начале ленты.
+  const maxFeatured = Math.max(0, Math.min(8, Math.floor(posts.length * 0.075)));
+  const minNormalTilesBetweenFeatured = 7;
+  const firstAllowedIndex = 8;
 
+  if (maxFeatured === 0) return new Map<number, string>();
+
+  const scoredPosts = posts
+    .map((post, index) => {
+      const popularityScore = getVideoGridPopularityScore(post);
+      const freshnessScore = Math.max(0, parsePostTime(post) / 1000000000000);
+      const stableTieBreaker = stableFeedHash(`play:${post.id}`) / 10000000000;
+
+      return {
+        post,
+        index,
+        score: popularityScore > 0 ? popularityScore : freshnessScore + stableTieBreaker,
+      };
+    })
+    .filter((item) => item.index >= firstAllowedIndex)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
+    .slice(0, Math.max(maxFeatured * 5, 18));
+
+  const featuredCandidates = new Set(scoredPosts.map((item) => item.post.id));
   const result = new Map<number, string>();
   let featuredCount = 0;
   let normalTilesSinceFeatured = 99;
+  let lastTallColumn: number | null = null;
 
   posts.forEach((post, index) => {
     if (featuredCount >= maxFeatured) return;
-    if (!featuredCandidates.has(post.id)) return;
-
-    // Не увеличиваем первые карточки и не ставим большие блоки рядом.
-    if (index < 6 || normalTilesSinceFeatured < 6) return;
 
     const gridColumn = index % 3;
     const orientation = getVideoGridOrientation(post);
     let tileClass = "";
 
-    if (orientation === "wide") {
-      tileClass = "col-span-2 aspect-[16/9]";
-    } else if (orientation === "tall") {
-      // Вертикальную карточку нельзя начинать в первой колонке: получается красная “стена”.
-      if (gridColumn === 0) return;
-      tileClass = "row-span-2 aspect-[9/16]";
-    } else if (gridColumn !== 2) {
-      tileClass = "col-span-2 aspect-[16/10]";
+    if (
+      featuredCandidates.has(post.id) &&
+      index >= firstAllowedIndex &&
+      normalTilesSinceFeatured >= minNormalTilesBetweenFeatured
+    ) {
+      if (orientation === "wide") {
+        // Широкую плитку ставим только с начала строки: она не рвёт сетку и не уезжает вниз.
+        if (gridColumn === 0) {
+          tileClass = "col-span-2 aspect-[16/10]";
+        }
+      } else if (orientation === "tall") {
+        // Вертикальную плитку никогда не начинаем в первой колонке: это давало красную “стену”.
+        if (gridColumn !== 0 && lastTallColumn !== gridColumn) {
+          tileClass = "row-span-2 aspect-[9/16]";
+        }
+      } else {
+        // Если размеров нет, делаем аккуратную горизонтальную карточку только с начала строки.
+        if (gridColumn === 0) {
+          tileClass = "col-span-2 aspect-[16/10]";
+        }
+      }
     }
 
-    if (!tileClass) return;
+    if (!tileClass) {
+      normalTilesSinceFeatured += 1;
+      return;
+    }
 
     result.set(post.id, tileClass);
     featuredCount += 1;
     normalTilesSinceFeatured = 0;
+    lastTallColumn = tileClass.includes("row-span-2") ? gridColumn : null;
   });
 
   return result;
