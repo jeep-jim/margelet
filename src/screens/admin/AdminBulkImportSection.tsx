@@ -460,43 +460,31 @@ export function AdminBulkImportSection({
       setIsSubmitting(true);
       setMessage(null);
 
-      const batchSize = 100;
-      let created = 0;
-      let updated = 0;
+      setMessage(`Отправляю каналы одним сохранением: ${payload.length}`);
 
-      for (let index = 0; index < payload.length; index += batchSize) {
-        const batch = payload.slice(index, index + batchSize);
+      const response = await fetch("/api/admin-posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          telegramUserId,
+          entity: "sources",
+          action: "bulk-create",
+          countryCode,
+          sources: payload,
+        }),
+      });
 
-        const response = await fetch("/api/admin-posts", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            telegramUserId,
-            entity: "sources",
-            action: "bulk-create",
-            countryCode,
-            sources: batch,
-          }),
-        });
+      const data = await response.json().catch(() => null);
 
-        const data = await response.json().catch(() => null);
-
-        if (!response.ok) {
-          throw new Error(
-            data?.error ||
-              `Не удалось загрузить пачку каналов ${index + 1}-${index + batch.length}`,
-          );
-        }
-
-        created += Number(data?.created || 0);
-        updated += Number(data?.updated || 0);
-        setMessage(
-          `Загружаю каналы: ${Math.min(index + batch.length, payload.length)} / ${payload.length}`,
-        );
+      if (!response.ok) {
+        throw new Error(data?.error || `Не удалось загрузить каналы одним сохранением`);
       }
 
+      const created = Number(data?.created || 0);
+      const updated = Number(data?.updated || 0);
+
       await onImported();
-      setMessage(`Загружено каналов: +${created}, обновлено: ${updated}`);
+      setMessage(`Загружено одним сохранением: +${created}, обновлено: ${updated}`);
       setRows([createRow(), createRow()]);
     } catch (error: unknown) {
       setMessage(error instanceof Error ? error.message : "Не удалось загрузить пачку каналов");
