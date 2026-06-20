@@ -59,6 +59,14 @@
       "dest": "/data/sources/chunks/$1.json"
     },
     {
+      "src": "/post/([0-9]+)$",
+      "dest": "/post/$1/index.html"
+    },
+    {
+      "src": "/([^/]+)/([0-9]+)$",
+      "dest": "/api/telegram-preview?handle=$1&postId=$2&og=1"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1",
       "headers": {
@@ -89,10 +97,6 @@
     },
     {
       "handle": "filesystem"
-    },
-    {
-      "src": "/([^/]+)/([0-9]+)$",
-      "dest": "/api/telegram-preview?handle=$1&postId=$2&og=1"
     },
     {
       "src": "/(.*)",
