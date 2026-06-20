@@ -773,75 +773,77 @@ function getVideoGridOrientation(post: IngestedPost) {
 }
 
 function buildVideoGridMosaic(posts: IngestedPost[]) {
-  // Play должен выглядеть живым, но не превращаться в “стену”.
-  // Поэтому большие плитки редкие, не подряд и не в самом начале ленты.
-  const maxFeatured = Math.max(0, Math.min(8, Math.floor(posts.length * 0.075)));
-  const minNormalTilesBetweenFeatured = 7;
-  const firstAllowedIndex = 8;
-
-  if (maxFeatured === 0) return new Map<number, string>();
-
-  const scoredPosts = posts
-    .map((post, index) => {
-      const popularityScore = getVideoGridPopularityScore(post);
-      const freshnessScore = Math.max(0, parsePostTime(post) / 1000000000000);
-      const stableTieBreaker = stableFeedHash(`play:${post.id}`) / 10000000000;
-
-      return {
-        post,
-        index,
-        score: popularityScore > 0 ? popularityScore : freshnessScore + stableTieBreaker,
-      };
-    })
-    .filter((item) => item.index >= firstAllowedIndex)
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .slice(0, Math.max(maxFeatured * 5, 18));
-
-  const featuredCandidates = new Set(scoredPosts.map((item) => item.post.id));
+  // Play — это строгая сетка из 3 колонок.
+  // Разрешены только “домино” без пустот:
+  // 1x1, 2x1, 3x1 и 2x2. Никаких 1x2-стен.
   const result = new Map<number, string>();
+
+  const maxFeatured = Math.max(0, Math.min(10, Math.floor(posts.length * 0.08)));
+  const firstAllowedIndex = 9;
+  const minNormalTilesBetweenFeatured = 7;
+
+  if (maxFeatured === 0) return result;
+
+  const scores = new Map<number, number>();
+  posts.forEach((post) => {
+    const popularity = getVideoGridPopularityScore(post);
+    const fallbackFreshness = Math.max(0, parsePostTime(post) / 1000000000000);
+    const stableTieBreaker = stableFeedHash(`play:${post.id}`) / 10000000000;
+    scores.set(post.id, popularity > 0 ? popularity : fallbackFreshness + stableTieBreaker);
+  });
+
+  const sortedScores = [...scores.values()].sort((a, b) => a - b);
+  const highScore = sortedScores[Math.floor(sortedScores.length * 0.82)] || 0;
+  const veryHighScore = sortedScores[Math.floor(sortedScores.length * 0.94)] || highScore;
+
+  let cursor = 0;
   let featuredCount = 0;
   let normalTilesSinceFeatured = 99;
-  let lastTallColumn: number | null = null;
+
+  const advance = (cells: number) => {
+    cursor += cells;
+  };
 
   posts.forEach((post, index) => {
-    if (featuredCount >= maxFeatured) return;
-
-    const gridColumn = index % 3;
+    const col = cursor % 3;
+    const score = scores.get(post.id) || 0;
     const orientation = getVideoGridOrientation(post);
-    let tileClass = "";
 
-    if (
-      featuredCandidates.has(post.id) &&
+    let tileClass = "aspect-[9/16]";
+    let cells = 1;
+
+    const canFeature =
       index >= firstAllowedIndex &&
-      normalTilesSinceFeatured >= minNormalTilesBetweenFeatured
-    ) {
-      if (orientation === "wide") {
-        // Широкую плитку ставим только с начала строки: она не рвёт сетку и не уезжает вниз.
-        if (gridColumn === 0) {
-          tileClass = "col-span-2 aspect-[16/10]";
-        }
-      } else if (orientation === "tall") {
-        // Вертикальную плитку никогда не начинаем в первой колонке: это давало красную “стену”.
-        if (gridColumn !== 0 && lastTallColumn !== gridColumn) {
-          tileClass = "row-span-2 aspect-[9/16]";
-        }
-      } else {
-        // Если размеров нет, делаем аккуратную горизонтальную карточку только с начала строки.
-        if (gridColumn === 0) {
-          tileClass = "col-span-2 aspect-[16/10]";
-        }
+      featuredCount < maxFeatured &&
+      normalTilesSinceFeatured >= minNormalTilesBetweenFeatured &&
+      score >= highScore;
+
+    if (canFeature) {
+      if (orientation === "wide" && score >= veryHighScore && col === 0) {
+        // Очень популярная горизонтальная: вся строка 3x1.
+        tileClass = "col-span-3 aspect-[27/16]";
+        cells = 3;
+      } else if (orientation === "tall" && score >= veryHighScore && col === 0) {
+        // Очень популярная вертикальная: большой блок 2x2.
+        // Стартуем только с первой колонки, чтобы справа оставалась ровная колонка 1x1 + 1x1.
+        tileClass = "col-span-2 row-span-2 aspect-[9/16]";
+        cells = 4;
+      } else if (col <= 1) {
+        // Популярная обычная/горизонтальная/вертикальная: две клетки рядом 2x1.
+        tileClass = "col-span-2 aspect-[9/8]";
+        cells = 2;
       }
     }
 
-    if (!tileClass) {
+    if (tileClass !== "aspect-[9/16]") {
+      result.set(post.id, tileClass);
+      featuredCount += 1;
+      normalTilesSinceFeatured = 0;
+    } else {
       normalTilesSinceFeatured += 1;
-      return;
     }
 
-    result.set(post.id, tileClass);
-    featuredCount += 1;
-    normalTilesSinceFeatured = 0;
-    lastTallColumn = tileClass.includes("row-span-2") ? gridColumn : null;
+    advance(cells);
   });
 
   return result;
