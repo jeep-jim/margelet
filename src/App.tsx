@@ -370,7 +370,7 @@ function parseSharedPath(pathname: string) {
 
   const [handle, postId] = parts;
 
-  if (!handle || !postId) {
+  if (!handle || !postId || handle === "post") {
     return null;
   }
 
