@@ -390,6 +390,17 @@ function parsePostPath(pathname: string) {
   return postId;
 }
 
+type FeedRouteMode = "all" | "video";
+
+function parseFeedRouteMode(pathname: string): FeedRouteMode | null {
+  const clean = normalizePathname(pathname);
+
+  if (clean === "/post") return "all";
+  if (clean === "/play") return "video";
+
+  return null;
+}
+
 function ExpiredPostScreen({ locale, onBack }: { locale: Locale; onBack: () => void }) {
   const copy =
     EXPIRED_POST_COPY[normalizeCountryCode(locale)] ??
@@ -657,6 +668,7 @@ export default function App() {
 
   const sharedPath = useMemo(() => parseSharedPath(locationPath), [locationPath]);
   const postPathId = useMemo(() => parsePostPath(locationPath), [locationPath]);
+  const feedRouteMode = useMemo(() => parseFeedRouteMode(locationPath), [locationPath]);
   const sourcePathHandle = useMemo(() => parseSourcePath(locationPath), [locationPath]);
 
   const posts = useMemo(() => {
@@ -715,7 +727,7 @@ export default function App() {
   const goHome = useCallback(() => {
     setSelectedSourceHandle(null);
     setCurrent("feed");
-    replacePath("/");
+    replacePath("/post");
   }, [replacePath]);
 
   const openSource = useCallback(
@@ -815,6 +827,13 @@ export default function App() {
       return;
     }
 
+    const currentFeedRouteMode = parseFeedRouteMode(window.location.pathname);
+    if (currentFeedRouteMode) {
+      setSelectedSourceHandle(null);
+      setCurrent("feed");
+      return;
+    }
+
     const currentShared = parseSharedPath(window.location.pathname);
     if (currentShared) {
       setSelectedSourceHandle(normalizeSourceHandle(currentShared.handle));
@@ -855,6 +874,13 @@ export default function App() {
 
       const currentPostPath = parsePostPath(pathname);
       if (currentPostPath) {
+        setSelectedSourceHandle(null);
+        setCurrent("feed");
+        return;
+      }
+
+      const currentFeedRouteMode = parseFeedRouteMode(pathname);
+      if (currentFeedRouteMode) {
         setSelectedSourceHandle(null);
         setCurrent("feed");
         return;
@@ -1173,6 +1199,13 @@ export default function App() {
     setLikedPostIds((prev) => prev.filter((postId) => postId !== id));
   };
 
+
+  const handleFeedRouteMediaModeChange = useCallback((mode: FeedRouteMode) => {
+    setSelectedSourceHandle(null);
+    setCurrent("feed");
+    replacePath(mode === "video" ? "/play" : "/post");
+  }, [replacePath]);
+
   const handleAdd = async ({
     url,
     tag,
@@ -1233,6 +1266,8 @@ export default function App() {
           onGlobalHidePosts={handleGlobalHidePosts}
           currentTelegramUserId={currentTelegramUser?.id || null}
           openSource={openSource}
+          routeMediaMode={feedRouteMode ?? "all"}
+          onRouteMediaModeChange={handleFeedRouteMediaModeChange}
         />
       ) : null}
 

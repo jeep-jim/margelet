@@ -774,38 +774,45 @@ function getVideoGridOrientation(post: IngestedPost) {
 
 function buildVideoGridMosaic(posts: IngestedPost[]) {
   const maxFeatured = Math.max(1, Math.min(8, Math.floor(posts.length * 0.08)));
-  const ranked = posts
-    .map((post, index) => ({ post, index, score: getVideoGridPopularityScore(post) }))
-    .filter((item) => item.score > 0 && item.index > 2)
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .slice(0, maxFeatured);
+  const featuredCandidates = new Set(
+    posts
+      .map((post, index) => ({ post, index, score: getVideoGridPopularityScore(post) }))
+      .filter((item) => item.score > 0 && item.index > 5)
+      .sort((a, b) => b.score - a.score || a.index - b.index)
+      .slice(0, Math.max(maxFeatured * 4, 12))
+      .map((item) => item.post.id),
+  );
 
   const result = new Map<number, string>();
+  let featuredCount = 0;
+  let normalTilesSinceFeatured = 99;
 
-  ranked.forEach(({ post }, rank) => {
+  posts.forEach((post, index) => {
+    if (featuredCount >= maxFeatured) return;
+    if (!featuredCandidates.has(post.id)) return;
+
+    // Не увеличиваем первые карточки и не ставим большие блоки рядом.
+    if (index < 6 || normalTilesSinceFeatured < 6) return;
+
+    const gridColumn = index % 3;
     const orientation = getVideoGridOrientation(post);
+    let tileClass = "";
 
-    if (rank === 0 && orientation === "wide") {
-      result.set(post.id, "col-span-2 aspect-[16/9]");
-      return;
-    }
-
-    if (rank === 0 && orientation === "tall") {
-      result.set(post.id, "row-span-2 aspect-[9/16]");
-      return;
-    }
-
-    if (rank % 5 === 0) {
-      result.set(post.id, "col-span-2 aspect-[16/10]");
-    } else if (rank % 3 === 0) {
-      result.set(post.id, "aspect-square");
-    } else if (orientation === "wide") {
-      result.set(post.id, "col-span-2 aspect-[16/9]");
+    if (orientation === "wide") {
+      tileClass = "col-span-2 aspect-[16/9]";
     } else if (orientation === "tall") {
-      result.set(post.id, "row-span-2 aspect-[9/16]");
-    } else {
-      result.set(post.id, "aspect-square");
+      // Вертикальную карточку нельзя начинать в первой колонке: получается красная “стена”.
+      if (gridColumn === 0) return;
+      tileClass = "row-span-2 aspect-[9/16]";
+    } else if (gridColumn !== 2) {
+      tileClass = "col-span-2 aspect-[16/10]";
     }
+
+    if (!tileClass) return;
+
+    result.set(post.id, tileClass);
+    featuredCount += 1;
+    normalTilesSinceFeatured = 0;
   });
 
   return result;
@@ -1170,7 +1177,7 @@ function VideoGridView({
 
   return (
     <div className="pt-px">
-      <div className="grid grid-flow-dense grid-cols-3 gap-0">
+      <div className="grid grid-cols-3 gap-0">
         {visiblePosts.map((post, index) => {
           const preview = getVideoGridPreview(post);
           const avatar = post.source?.avatar || getTelegramUserpicUrl(post.source?.handle);
@@ -1419,6 +1426,8 @@ export function FeedScreen({
   currentTelegramUserId,
   openSource,
   isFeedLoading,
+  routeMediaMode,
+  onRouteMediaModeChange,
 }: {
   locale: Locale;
   posts: IngestedPost[];
@@ -1432,6 +1441,8 @@ export function FeedScreen({
   currentTelegramUserId: string | null;
   openSource: (handle: string) => void;
   isFeedLoading: boolean;
+  routeMediaMode?: "all" | "video";
+  onRouteMediaModeChange?: (mode: "all" | "video") => void;
 }) {
   const copy = FEED_SCREEN_COPY[locale] ?? FEED_SCREEN_COPY.us;
 
@@ -1466,6 +1477,15 @@ export function FeedScreen({
   const lastScrollYRef = useRef(0);
   const feedModeScrollPositionsRef = useRef<Partial<Record<FeedMediaMode, number>>>({});
   const currentFeedModeRef = useRef<FeedMediaMode>(feedSettings.mediaMode);
+
+  useEffect(() => {
+    if (!routeMediaMode) return;
+
+    currentFeedModeRef.current = routeMediaMode;
+    setFeedSettings((prev) => (
+      prev.mediaMode === routeMediaMode ? prev : { ...prev, mediaMode: routeMediaMode }
+    ));
+  }, [routeMediaMode]);
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [copySuccessId, setCopySuccessId] = useState<number | null>(null);
@@ -2548,6 +2568,10 @@ export function FeedScreen({
 
     currentFeedModeRef.current = next;
 
+    if (next === "all" || next === "video") {
+      onRouteMediaModeChange?.(next);
+    }
+
     setFeedSettings((prev) => {
       if (prev.mediaMode === next) return prev;
       return {
@@ -2564,7 +2588,7 @@ export function FeedScreen({
         window.scrollTo({ top: nextScroll, left: 0, behavior: "auto" });
       });
     }
-  }, []);
+  }, [onRouteMediaModeChange]);
 
   const openViewerByPost = useCallback(
     (post: IngestedPost) => {
