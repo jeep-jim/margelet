@@ -159,13 +159,17 @@ function normalizeSource(value: unknown): TrustedSource | null {
   return buildSource({ ...raw, countryCode, handle, defaultTag });
 }
 
-export async function listSources(limit = 5000) {
+export async function listSources(limit = Number.POSITIVE_INFINITY) {
   const file = await readSourcesFile<unknown>();
-
-  return file.sources
+  const sources = file.sources
     .map((item) => normalizeSource(item))
-    .filter((item): item is TrustedSource => Boolean(item))
-    .slice(0, limit);
+    .filter((item): item is TrustedSource => Boolean(item));
+
+  if (!Number.isFinite(limit)) {
+    return sources;
+  }
+
+  return sources.slice(0, Math.max(0, limit));
 }
 
 export async function getSourceById(id: string) {
