@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { SEO_LOCALE_META, type CountryCode, type IngestedPost } from "../api/lib/contracts.js";
@@ -795,8 +796,6 @@ async function main() {
 
   // margeleT SEO is a fresh snapshot, not an infinite archive.
   // Rebuild generated static pages from current feed data on every run.
-  await rm(COUNTRY_DIR, { recursive: true, force: true });
-  await rm(POST_DIR, { recursive: true, force: true });
   await rm(SITEMAPS_DIR, { recursive: true, force: true });
 
   await mkdir(COUNTRY_DIR, { recursive: true });
