@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this:… — Benefactor&#39;s Channel, United States war | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Benefactor&#39;s Channel in United States. 🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this: use the GalaChain Builder omni-tool in Claude (the agent wired to the 247-tool GalaChain MCP server) — it teac… Topics: war, politics, ai, technology." />
+  <meta name="keywords" content="margeleT, Telegram, United States, Benefactor&#39;s Channel, benefactor0101, war, politics, ai, technology, crypto, finance" />
+  <link rel="canonical" href="https://www.margelet.space/post/1965140931" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this:… — Benefactor&#39;s Channel, United States war | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Benefactor&#39;s Channel in United States. 🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this: use the GalaChain Builder omni-tool in Claude (the agent wired to the 247-tool GalaChain MCP server) — it teac… Topics: war, politics, ai, technology." />
+  <meta property="og:url" content="https://www.margelet.space/post/1965140931" />
+  <meta property="og:image" content="https://www.margelet.space/hero.webp" />
+  <meta property="og:updated_time" content="2026-06-25T16:06:30.355Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this:… — Benefactor&#39;s Channel, United States war | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Benefactor&#39;s Channel in United States. 🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this: use the GalaChain Builder omni-tool in Claude (the agent wired to the 247-tool GalaChain MCP server) — it teac… Topics: war, politics, ai, technology." />
+  <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"United States","item":"https://www.margelet.space/us"},{"@type":"ListItem","position":3,"name":"Benefactor's Channel","item":"https://www.margelet.space/benefactor0101"}]},{"@type":["Article","SocialMediaPosting"],"headline":"🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this:…","description":"Fresh Telegram snapshot from Benefactor's Channel in United States. 🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this: use the GalaChain Builder omni-tool in Claude (the agent wired to the 247-tool GalaChain MCP server) — it teac… Topics: war, politics, ai, technology.","articleBody":"🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this: use the GalaChain Builder omni-tool in Claude (the agent wired to the 247-tool GalaChain MCP server) — it teaches and scaffolds GalaChain apps for you. Paste this brief into it and say \"help me build this step by step.\" You're building an arbitrage bot that trades on GalaSwap (the concentrated-liquidity DEX on GalaChain, Uniswap-v3 style) and captures price gaps CEX↔️DEX and DEX↔️DEX. Teach me and build with me across these areas: 0. Tooling — start here - Drive the build with the GalaChain Builder omni-tool / MCP server (247 tools): it exposes the chain's contract + gateway surface directly, so you skip the endpoint guesswork and get correct request shapes, signing, and pool reads out of the box. 1. Market structure - GalaSwap pools are v3-style: tick-based, concentrated liquidity, multiple fee tiers (0.05% / 0.30% / 1%). Price = 1.0001^tick; pools expose sqrtPrice, tick, liquidity. - On-chain assets are bridged wrappers (GWBTC, GWETH, GUSDC, GALA…). The wrapper price can dislocate from the CEX spot of the underlying — that gap is the edge. 2. Data ingest (real-time) - CEX side: subscribe to WebSocket order…","text":"🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this: use the GalaChain Builder omni-tool in Claude (the agent wired to the 247-tool GalaChain MCP server) — it teaches and scaffolds GalaChain apps for you. Paste this brief into it and say \"help me build this step by step.\" You're building an arbitrage bot that trades on GalaSwap (the concentrated-liquidity DEX on GalaChain, Uniswap-v3 style) and captures price gaps CEX↔️DEX and DEX↔️DEX. Teach me and build with me across these areas: 0. Tooling — start here - Drive the build with the GalaChain Builder omni-tool / MCP server (247 tools): it exposes the chain's contract + gateway surface directly, so you skip the endpoint guesswork and get correct request shapes, signing, and pool reads out of the box. 1. Market structure - GalaSwap pools are v3-style: tick-based, concentrated liquidity, multiple fee tiers (0.05% / 0.30% / 1%). Price = 1.0001^tick; pools expose sqrtPrice, tick, liquidity. - On-chain assets are bridged wrappers (GWBTC, GWETH, GUSDC, GALA…). The wrapper price can dislocate from the CEX spot of the underlying — that gap is the edge. 2. Data ingest (real-time) - CEX side: subscribe to WebSocket order-book + trade streams (don't poll REST for prices — you'll be late and rate-limited). Maintain a local L2 book; compute net bid/ask after taker fees. - DEX side: read pool state via the MCP tools / GalaChain gateway — GetCompositePool (sqrtPrice/tick/liquidity), GetUserPositions, FetchBalances. Pull TVL/volume from the explore-pools backend. Gotcha: tick can come back null — derive it: tick = round(2·ln(sqrtPrice)/ln(1.0001)). - Timestamp and health-check every feed; never trade on stale data. 3. Pricing the trade correctly - DEX effective price must include slippage for your size (walk the liquidity, not just spot) + the pool fee tier + protocol take. - CEX side nets taker fees + withdrawal cost. - Edge = CEX_net − DEX_effective (or DEX↔️DEX) after all costs. If it's not clearly positive past costs, it's not a trade. 4. Bridging (the part that kills naive bots) - Moving assets on/off GalaChain via the bridge has latency and fees — you can't bridge per-trade and stay profitable. - Pre-position inventory on BOTH venues and rebalance in batches. Treat the bridge as a slow settlement layer, not part of the hot path. 5. Execution best practices - WebSockets &gt; polling everywhere it's offered. - Hard slippage limits and a fair-value guard (never sell an asset below its true CEX value — discipline beats greed). - Idempotent order handling, partial-fill logic, on-chain nonce/bundle management, retries with backoff. - Latency budget end-to-end; a stale quote is a loss. - Inventory + risk caps, a kill switch, and per-trade loss limits. - Secure keys (never in code/logs), sign server-side, rate-limit aware. 6. Validate before going live - Backtest on real measured data only (record live feeds; no synthetic guesses). - Paper-trade the full loop, then go live tiny, scale on prove…","keywords":"margeleT, Telegram, United States, Benefactor's Channel, benefactor0101, war, politics, ai, technology, crypto, finance","url":"https://www.margelet.space/post/1965140931","mainEntityOfPage":"https://www.margelet.space/post/1965140931","datePublished":"2026-06-25T16:06:30.355Z","dateModified":"2026-06-25T16:06:30.355Z","image":["https://www.margelet.space/icon-512.png"],"inLanguage":"en","about":[{"@type":"Thing","name":"war"},{"@type":"Thing","name":"politics"},{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"}],"author":{"@type":"Organization","name":"Benefactor's Channel","url":"https://www.margelet.space/benefactor0101","logo":"https://cdn1.telesco.pe/file/ovKgIzoTU5J6z5zU9Z6Dynx4TsLWAM_bguFgXwM4R5scun0VHT5OillcsJMDyWKc03HuXzjTJN3Klzh1VXdMORWJR9HYkxpPoGkP2HxXg6t5hBCSdNKwea0YOVlyyDOa7YdNOY6erKJ92APYs-SCqiZru7dAC5eX98yllH3jQVjQYFdY_Srddu9s3wGL7qOU_WK1kK7e4gtJE7CGULUST8WKywEI1_2ZYrrblCTK9MldkkjgGpm5kyWm4J2UY94N3tPWjat0NMvt_Gbj3yf15XkD9S1M0-LXOg99_0HWdVYDoV9dOSpdgyLkmcpvfKvFMIM5qY8Ds-12Unf_ZMmbUw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/benefactor0101/182?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/ovKgIzoTU5J6z5zU9Z6Dynx4TsLWAM_bguFgXwM4R5scun0VHT5OillcsJMDyWKc03HuXzjTJN3Klzh1VXdMORWJR9HYkxpPoGkP2HxXg6t5hBCSdNKwea0YOVlyyDOa7YdNOY6erKJ92APYs-SCqiZru7dAC5eX98yllH3jQVjQYFdY_Srddu9s3wGL7qOU_WK1kK7e4gtJE7CGULUST8WKywEI1_2ZYrrblCTK9MldkkjgGpm5kyWm4J2UY94N3tPWjat0NMvt_Gbj3yf15XkD9S1M0-LXOg99_0HWdVYDoV9dOSpdgyLkmcpvfKvFMIM5qY8Ds-12Unf_ZMmbUw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Benefactor&#39;s Channel</strong></span>
+          <span>@benefactor0101</span>
+        </span>
+      </p>
+      <h1>🤖 Build a GalaSwap Arbitrage Bot — Starter Brief Best way to build this:…</h1>
+      <p>🤖 Build a GalaSwap Arbitrage Bot — Starter Brief
+
+Best way to build this: use the GalaChain Builder omni-tool in Claude (the agent wired to the 247-tool GalaChain MCP server) — it teaches and scaffolds GalaChain apps for you. Paste this brief into it and say &quot;help me build this step by step.&quot;
+
+You&#39;re building an arbitrage bot that trades on GalaSwap (the concentrated-liquidity DEX on GalaChain, Uniswap-v3 style) and captures price gaps CEX↔️DEX and DEX↔️DEX. Teach me and build with me across these areas:
+
+0. Tooling — start here
+- Drive the build with the GalaChain Builder omni-tool / MCP server (247 tools): it exposes the chain&#39;s contract + gateway surface directly, so you skip the endpoint guesswork and get correct request shapes, signing, and pool reads out of the box.
+
+1. Market structure
+- GalaSwap pools are v3-style: tick-based, concentrated liquidity, multiple fee tiers (0.05% / 0.30% / 1%). Price = 1.0001^tick; pools expose sqrtPrice, tick, liquidity.
+- On-chain assets are bridged wrappers (GWBTC, GWETH, GUSDC, GALA…). The wrapper price can dislocate from the CEX spot of the underlying — that gap is the edge.
+
+2. Data ingest (real-time)
+- CEX side: subscribe to WebSocket order-book + trade streams (don&#39;t poll REST for prices — you&#39;ll be late and rate-limited). Maintain a local L2 book; compute net bid/ask after taker fees.
+- DEX side: read pool state via the MCP tools / GalaChain gateway — GetCompositePool (sqrtPrice/tick/liquidity), GetUserPositions, FetchBalances. Pull TVL/volume from the explore-pools backend. Gotcha: tick can come back null — derive it: tick = round(2·ln(sqrtPrice)/ln(1.0001)).
+- Timestamp and health-check every feed; never trade on stale data.
+
+3. Pricing the trade correctly
+- DEX effective price must include slippage for your size (walk the liquidity, not just spot) + the pool fee tier + protocol take.
+- CEX side nets taker fees + withdrawal cost.
+- Edge = CEX_net − DEX_effective (or DEX↔️DEX) after all costs. If it&#39;s not clearly positive past costs, it&#39;s not a trade.
+
+4. Bridging (the part that kills naive bots)
+- Moving assets on/off GalaChain via the bridge has latency and fees — you can&#39;t bridge per-trade and stay profitable.
+- Pre-position inventory on BOTH venues and rebalance in batches. Treat the bridge as a slow settlement layer, not part of the hot path.
+
+5. Execution best practices
+- WebSockets &amp;gt; polling everywhere it&#39;s offered.
+- Hard slippage limits and a fair-value guard (never sell an asset below its true CEX value — discipline beats greed).
+- Idempotent order handling, partial-fill logic, on-chain nonce/bundle management, retries with backoff.
+- Latency budget end-to-end; a stale quote is a loss.
+- Inventory + risk caps, a kill switch, and per-trade loss limits.
+- Secure keys (never in code/logs), sign server-side, rate-limit aware.
+
+6. Validate before going live
+- Backtest on real measured data only (record live feeds; no synthetic guesses).
+- Paper-trade the full loop, then go live tiny, scale on proven PnL.
+
+Start by asking the GalaChain Builder to map the gateway/MCP endpoints and stand up the two data feeds (CEX WebSocket + DEX pool poller), then layer pricing → edge detection → execution → risk.
+
+#GalaChain #GalaSwap #DeFi #algotrading #arbitrage</p>
+      
+      <p class="meta"><time datetime="2026-06-25T16:06:30.355Z">Jun 25, 2026, 4:06 PM</time> · United States</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/us/tag/war">war</a>
+<a class="pill" href="/country/us/tag/politics">politics</a>
+<a class="pill" href="/country/us/tag/ai">ai</a>
+<a class="pill" href="/country/us/tag/technology">technology</a>
+<a class="pill" href="/country/us/tag/crypto">crypto</a>
+<a class="pill" href="/country/us/tag/finance">finance</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · United States · Benefactor&#39;s Channel · war · politics · ai. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/us">Open live margeleT feed</a>
+        <a class="secondary-open" href="/benefactor0101/182">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/benefactor0101/182?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/3791008400">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/AQz9aZCPelStTPCszRbPmYruDyQJEIdsXarn-783dbkBW41Vyn6zqh-toUjDEbLa_jRpBVdlPFctaxCQthJXK1ATpwj45_Obj2g5XcCuZ1BB0roTfRGTe0tTiE6wguLzTFkJbaJnhewChs9JtUtWpdDH5NgkE2En07WL2Had1a7iBdEPWypjUd2SY2NzPIZpUc2An9FFLANWwmURcRggozNLFhRjEYvDZl2xJsXFuRpMK4KFLkFXko5O-CZZ7iupYBQSixjeinUjKt7M4on6NOFB6aITa8xLvczunQwPqYnU4RZdj1po1BGRMCWVKvu4IMCGT7-T4FFxkXN4EGfqQg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Catrix - Ultimate “Sleep to Earn” AI Wealth Engine</strong></span>
+          <span>@cattea</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/bQLWsY9m-m0oQ2C9_7k2liZ2jnGzwRNOZSpPggQUtDfX2RewEYVeijR-F4gWAIp62GjDQKL7ftzrJ-MbhvMXuGWh9-hLLog9vZch7SFVqt46v-AOPZQaQ3OnM0yOwILKZS3ALhX5fFI8xBCSVaAmEknRVQa7mRGRrtkUnvoMVE_Str4UiM5wAj4JWwNy9JGEgI6-0JhveSC3mg97LV4BKwhQws3yj3L_zdAcC14k4_q4zw-x2dEkd3djwqFBg9_CKbk1zcjSc67TO2eofgSVwXF3ZTEGajctEaD9JuihTwgB8cs8x8tBmxu1SNgNAjuC1WeAKRFpRc__MXKPTmh9Ew.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Catrix Daily | Jun 25, 2026 ETF outflows hit -50K BTC in 30 days. Is this…</h3>
+        <p>Catrix Daily | Jun 25, 2026 ETF outflows hit -50K BTC in 30 days. Is this the capitulation flush that finally clears the air? AI Forecast BTC: Bearish 📉 22/100 | ETH: Extreme Bearish 📉 13/100 Stablecoin purchasing power down 18.6% in a month — worst drop in…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:06:39.595Z">Jun 25, 2026, 4:06 PM</time> · <a href="/post/3791008400">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2362972304">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/dfR1zUaKLzoBuO4AaLUXvJiJWe4GILXlhgrvyZM9u07PLUvM_VMqBY5MOkrCVRgnxc2VyHxFWpFFp2ZPOEocqFUb-IGTObAuLbL6SzuGuPSDShU-q1FBdoo2_t3Rvt_WBk_7M6MtTSoOx1CokFx0qZKvcJOgcEYcYs_9MfHbT1f5V-IBlPxBOJudYpgc4p7B6lPWzwcKmIKH0hgcrsVnrCHBK3sQaixO3fWqoaj_SUMLjXuiTB94IM2sDmFN0sqXwr-OYyJUaukRbAWQMbNLIAT892D3_1A2horXvvupupTJzHVX1a9JQuu68YsJGTAX3BoJ61TWrybqgN7gkouEiw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Holistic Energetics</strong></span>
+          <span>@holisticenergetics</span>
+        </span>
+      </p>
+        
+        <h3>🔮 Levitations – Phänomene 🧙🧙‍♂️🧙‍♀️🧘‍♂️🧘🧘‍♀️ Unter Levitation vers…</h3>
+        <p>🔮 Levitations – Phänomene 🧙🧙‍♂️🧙‍♀️🧘‍♂️🧘🧘‍♀️ Unter Levitation versteht man die Aufhebung der Schwerkraft. Nach dem Studium der Universalgesetze kommt der Magier darauf, daß die Schwerkraft von der magnetischen Anziehungskraft der Erde abhängt. Die Aufh…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:08:48.386Z">Jun 25, 2026, 4:08 PM</time> · <a href="/post/2362972304">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/4277208434">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/hmWNRClcE856GmdnlMGfSvY1fTUtp1PbOUGl88uS488ZMZvMwQ4Hx_mSfiwCDQK6PEFkySPkudnm0hy4CAJxB9HUYG9-xSRNEem99PKPwzDjlZXLOvlEJl0tNF54iST2gjaMmDwywfkBMUk2jf19Y4EMb1LTuxkTugVA0eGn339OqSzIHNlbtDUGtGabB9AYdhHPN-kSs9T-DiRJZyaT61744nmk24J5Lgyo0dOqNgm-Y1o6Mfm5ORIlkgt3y7sW2VYYUQylRsLzLmzEPk65jYEU_IpBRJ1yrNUVsefyu83wNbqzUk0E1AMBR1iLeDtos2Y_fo6axLus0j-8nduQeA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Crypto Garden</strong></span>
+          <span>@garden_btc</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/TlINHNAWiWR26JNdPxaIvBKsG8qjvieX6pswD25txxuCuYkPWQWMHZx4n_biNDBIZk6CWemOG7hDzj-JilVKcLnfHCOgC6_7XHl1CN2eAP5YhXjszDYSBaTEpFYU03WNRj4vP4sQcmxXU4WfPa2wlzT_edDjYu9V55MaSGB_FCeUhFX-ST0Lc2ipWLee1ZdPeKLkaX8wkPo_c5Int9BsQcVq9_pVXMAvvovhfKTRZe2r88fGRbHCkMa-HFlvEns7h5YHLXP8ksxl5WeL9GGex2pYDpbd3B1ae0NlqDVOdYta8ewnWmyIHj23zadJAnXI9szctxYZHEN7lrLNTgJJZQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Came across a platform called MACZO and decided to take a closer look. On…</h3>
+        <p>Came across a platform called MACZO and decided to take a closer look. One of the things they&#39;re focusing on is player rewards: 💸 Up to 36% rakeback through the RakeCash system, credited on every bet. 🏆 Up to 3% daily cashback for members. Rewards are track…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:08:40.677Z">Jun 25, 2026, 4:08 PM</time> · <a href="/post/4277208434">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2055987773">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/dnT6cVNgyWGU7K4mlw_98L2hAHPD3UlVX1KDmlBvWdIHZAqRQhM4x88tM10JNczhfsbPKo0Ftsh0wyTtC5rw8h2x5kisprdGxzMhPw2McJya21KzjKwX3bEZHIbkrkezIgWEEAetIjfVIsngOFRHHD9At4-3-N5wrfGPW0kXHq93YC6llUmVDdtMRWHjQsMDZScnu-2nA3QXUNoC3fD7j_OnmGgRNQmzX2jWvSSEz5MeBshchihzKfgIpD33TcFREc7OnCMgsIua25XXQEtBpbxlKbbLz7HtipdA1HYscCt4CdcSL9n0m-He8q5QdcAx0hN381lQfDmQPzJjKyayaA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Pavel Durov</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@durov</span>
+        </span>
+      </p>
+        
+        <h3>⚠️ Indian telecom Reliance is sabotaging access to Telegram for millions…</h3>
+        <p>⚠️ Indian telecom Reliance is sabotaging access to Telegram for millions of users OUTSIDE India (including the UAE) via a rogue method called BGP hijacking. 🧨 The sabotage seems intentional, as Reliance has ignored multiple reports. 😞 This may be part of a…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:08:36.288Z">Jun 25, 2026, 4:08 PM</time> · <a href="/post/2055987773">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3329202465">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mp-rlRBiHnh3U5nGfMMkxn3PRxCsUVWghGsP3O4SMaALCb3lQJraTcADwKUwXvgDdEisEpa0QPwEKvPCIl_TzonRvjJ8Tk1z4VkotzXa31Kagbm8G52DEk5rIbvkryzZ3c0ZOg1rsW5tPc4IH--tsfpkaAkFXCjjBnyMpHDAylkdj_rZtly9VY4VvAkJJxfMgfXarIGpoLwa7rizAg9C1Q62QdoU297IlK4J-ju8L1gaXUy0weCmdq2l5qOIgNrNCAp8EJpq-5qedABWy4Orxdc1btcZUAGCoVITheGCZG057Pd3HNq2otPxR9a7gen5eyhXQHnsMP8u6fA9AG6q1A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">CRYPTOGALACTIC</strong></span>
+          <span>@cryptogalactic</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/MmxksmjK7y7D4yfPSFhranlNNsRp8TsIDjJUqhNK0ZYCGgfN_t3z4JrLZahQJUHHalh7-tr4PTReE8JKheiCWtsScKdU9epoCrQRf6omC7aKHndCI60d759cn1D1OGChDXTyP8ZUpQx_7DnumP2vioO7m_gQEeEcv-537bRZg23qhC3Xcz87io4jh_TwYEs-EihkYbEloGlu-guooLX0rbHyoo-f_Y_vcKTDJxCdSDZAldMfVpmNSglYzG5b0Qk7qmCUun4Y_DHyr26IQy-fix0WKPMTXXw_Au1pJ4jytkBE73qFkYQ8IbvDTXZfL-UW6hGqHWB7uHLGpBape2Jx6w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>➡️From Vintage to MNTGE: Digital Fashion Brand to Release NFT Patches Lin…</h3>
+        <p>➡️From Vintage to MNTGE: Digital Fashion Brand to Release NFT Patches Linked to IRL Rewards Digital fashion brand MNTGE is gearing up to release its Patchwork collection, comprised of a series of non-fungible token (NFT) patches paired with a physical counter…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:08:31.862Z">Jun 25, 2026, 4:08 PM</time> · <a href="/post/3329202465">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1917537615">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/pIIx45kBDeygdZO-X3ueb9BGLHnfKDHQFRQB1SEQzbNsIt87ZOXO6rXAmalFQ9nA1GUU4xEcLLBHWMJPPaINFmf63gCi5JZBPIGh9XxAu8YQCwLiGFsrHfqtAx0cqpaAwKEUfTI_gWzN-j8QEPI6OBsn_Q8TaBv9LDsLOqTpboQUc5ofRpyo1qvveYdten6KuiaUj7tjer8ayyLk-grfBTIYXDg69tbtaFoU8lYeKUYU91GInZnigIS8ikOyzTQys-y6-c6_OcAihprbBTMN3hkP5bkAvoi6wq8sWnqXmKQhzNwpcjKYALHJi6T1QVV-wDXcgkeIp9p9qxCJkSlz_w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">BBC CRYPTO &amp; FINANCES™</strong></span>
+          <span>@crypto_mining_tm</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/lRkVpEKTSDt_Zz8PKNP5o3ilAAf9rgDd6hydmvabQr0zTSc5iYR7hcfn6W1wpQF8B9BD-F2UAbqyWloj5yAP-l5HaRktTp2HgxKnbWNskAzDYYdQN-DrSM62UJBRDCuFEgb3rcGQ1z_fm2hXZvGlVGCr8FSfXMzAYDogSVBEMWZgdU7KmVL4WLO-SuU62j4TWeCZN6J8lrpImmFAH1eycxXTzKhNf_DqWWOWTBeccbOktlQ0LckCJs_-rQ3xQNnxKB8MQIvMV5LwQnpnzVs3eLnmsMUqaGl_sPzE9ahhhoAbuLCF6iINGI109BdWYHjoOYSdrFzARUv38wce3xefjA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Crypto regulations Although crypto and blockchain technology have the pot…</h3>
+        <p>Crypto regulations Although crypto and blockchain technology have the potential to enhance many aspects of our lives, there are some people out there who would like to clamp down on the nascent technology. Each country has a different attitude toward cryptocu…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:08:29.391Z">Jun 25, 2026, 4:08 PM</time> · <a href="/post/1917537615">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3493681430">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/TP67Jog7ZfL9kYnikkR2WXm7Zf3AyZtRzr78bF8qb7YKin077x6xMslOuI-7rYtHgCImaVQLlkiiLSVDmmqTvr8Zm_svnDfsMJFsOK1Vv1eGJzxpondh-O6-7Wr6VKm62bqPHdh4rsc0kv6LW3IzDP42ExG-M_7a6eww7LvS7ikuFgJ2Rhs53i8FN7aq3Irea6YTJM_Z1XG1u4g_W-Hcu04vZMhNgj_pr4aHdJv381Z_6G0AvVdmDmhaq9QZgD_TI1ygN8aszXK5oISFRaKn0hjAqU9ub0hrO4WDXz1jFbJLWPI8w6SjJk819oH9jSH83dEoFsKd_6FhsyV0EBehYw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Collections of +888 🏴‍☠️</strong></span>
+          <span>@collections</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/DpD8Tbis-BvCxaccmRd5xe6-wWwtd7xB1fLEDNUPALUontFeiATXG0g1nweHBXQeDqmym6v_4Op2xrxGL2vLl6tNznkAYVhRri4vadlFZkTOnzbhsN3eElcmZjHFsJFQPhTcZTFyhzHg5P7kVjauLlIKImEiLo0JLFkDcbWlt8j9ksJbfFWxl8d7aS35sAr-tH5S49D92qEHo4HEZEJ7u7xuOOiiN4K6Hjs6RCNg1TBJvBu7EjEhUt2ZjbZov_VsUvfn1c4OZ-RqQkBWqk2o-qPWtrqbc63Tfr3Vb7ffbdtmbDRND52qxRsCZUfeAWI6ekx7yW_cjanvpq5AJwuipw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>TON DNS Summer (Part 1) As we predicted, the hype around TON DNS has begu…</h3>
+        <p>TON DNS Summer (Part 1) As we predicted, the hype around TON DNS has begun. The hype began with Four-Digit domains (hereinafter referred to as 4N domains). People are &quot;burning&quot; their 100 TON on the TON DNS smart contract and transferring this value to NFTs (s…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:08:27.088Z">Jun 25, 2026, 4:08 PM</time> · <a href="/post/3493681430">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2251596877">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/Ci9L4ar2A11dWYgd2HBjYT7Ve17tkE1BOOorehKqFntAxcxCvCpY3E4vvarhDgnC6wkfrjahgjDILhRDjtMxO4dV6Wdfv1JSe5UdhBHncZB92hfUv_FlNYwSixU2jValf1STnI8Wc-BMsm2hFYJ_6ehrys7ekqS-YVmttsF87QJf6ANSc4eOlorLZ4UxNwhqLMo9Wepx0CEkMNzd2ZvFfpAK0Yyr2dQiStldVVu_KDzqNSE-uAAvJEAINKLi--ecccS56ag-ohuazdzVyTBK9qyRTLPJVyL7seJ-j4niRPYSB7ap9el13lUY_8AuYe2dkU-s5GrEdQAj8CA99-WGYQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Сisсо Сhаnnеl</strong></span>
+          <span>@cisco</span>
+        </span>
+      </p>
+        
+        <h3>Cisco Advance Notification for Publication of July 1, 2026, Security Advi…</h3>
+        <p>Cisco Advance Notification for Publication of July 1, 2026, Security Advisories https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-notice-vwL7b0S7?vs_f=Cisco%20Security%20Advisory%26vs_cat=Security%20Intelligence%26vs_type=…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-25T16:08:24.926Z">Jun 25, 2026, 4:08 PM</time> · <a href="/post/2251596877">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
