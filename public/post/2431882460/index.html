@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，… — ME News, China ai | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from ME News in China. DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，DeepSeek 联合北京大学发布投机采样加速框架 DSpark 的技术报告，并开源了全栈代码库 DeepSpec。目前 DSpark 已部署于 DeepSeek-V4 线上业务。在保证输出无损的前提下，DSpark 将… Topics: ai, technology." />
+  <meta name="keywords" content="margeleT, Telegram, China, ME News, metaeranews, ai, technology" />
+  <link rel="canonical" href="https://www.margelet.space/post/2431882460" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，… — ME News, China ai | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from ME News in China. DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，DeepSeek 联合北京大学发布投机采样加速框架 DSpark 的技术报告，并开源了全栈代码库 DeepSpec。目前 DSpark 已部署于 DeepSeek-V4 线上业务。在保证输出无损的前提下，DSpark 将… Topics: ai, technology." />
+  <meta property="og:url" content="https://www.margelet.space/post/2431882460" />
+  <meta property="og:image" content="https://www.margelet.space/hero.webp" />
+  <meta property="og:updated_time" content="2026-06-27T15:12:59.842Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，… — ME News, China ai | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from ME News in China. DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，DeepSeek 联合北京大学发布投机采样加速框架 DSpark 的技术报告，并开源了全栈代码库 DeepSpec。目前 DSpark 已部署于 DeepSeek-V4 线上业务。在保证输出无损的前提下，DSpark 将… Topics: ai, technology." />
+  <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"ME News","item":"https://www.margelet.space/metaeranews"}]},{"@type":["Article","SocialMediaPosting"],"headline":"DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，…","description":"Fresh Telegram snapshot from ME News in China. DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，DeepSeek 联合北京大学发布投机采样加速框架 DSpark 的技术报告，并开源了全栈代码库 DeepSpec。目前 DSpark 已部署于 DeepSeek-V4 线上业务。在保证输出无损的前提下，DSpark 将… Topics: ai, technology.","articleBody":"DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，DeepSeek 联合北京大学发布投机采样加速框架 DSpark 的技术报告，并开源了全栈代码库 DeepSpec。目前 DSpark 已部署于 DeepSeek-V4 线上业务。在保证输出无损的前提下，DSpark 将 Flash 版单用户生成速度提升 60% 至 85%，Pro 版速度提升 57% 至 78%。DSpark 表现超越了原有的单 Token 多分支预测（MTP-1）基线，在严格时延约束下显著拉高了系统整体吞吐量。 此前，多 Token 投机采样难以在线上生产环境落地。自回归草稿模型生成太慢，而并行草稿模型由于各位置独立预测，导致长序列的后半截接受率极低。若在高并发下盲目验证多 Token 草稿，大模型会浪费大量算力去验证注定被拒绝的错字，导致系统整体吞吐量严重崩溃，因此业界在线上多局限于单 Token 预测（MTP-1）。 DSpark 克服了高并发下的吞吐退化瓶颈。DSpark 首先采用 DFlash 并行主干网生成隐藏状态，再追加极其轻量的马尔可夫头。马尔可夫头通过查表与一次矩阵乘法，以极低成本串行注入相邻词的关联。同时，系统集成置信度预测头与后验校准算法。为了完美兼容生产环境的零开销调度并防止未来信息泄漏，调度器采用异步机制，利用两步前的历史预测来动态决定候选词裁剪长度，彻底防止大模型在重负载下验证高风险的尾部错字。 除了 DSpark，DeepSeek 这次开源的 DeepSpec 代码库内置支持 Qwen3 与 Gemma 等开源大模型。DeepSpec 提供了从下载提示词、重建大模型缓存、训练草稿模型到基准评估的完整 Python 工具链。开发者可以直接利用开源脚本，在本地为不同的开源大模型定制并部署专属的加速模块。 （来源：BlockBeats） https://www.me.news/news/291235","text":"DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，DeepSeek 联合北京大学发布投机采样加速框架 DSpark 的技术报告，并开源了全栈代码库 DeepSpec。目前 DSpark 已部署于 DeepSeek-V4 线上业务。在保证输出无损的前提下，DSpark 将 Flash 版单用户生成速度提升 60% 至 85%，Pro 版速度提升 57% 至 78%。DSpark 表现超越了原有的单 Token 多分支预测（MTP-1）基线，在严格时延约束下显著拉高了系统整体吞吐量。 此前，多 Token 投机采样难以在线上生产环境落地。自回归草稿模型生成太慢，而并行草稿模型由于各位置独立预测，导致长序列的后半截接受率极低。若在高并发下盲目验证多 Token 草稿，大模型会浪费大量算力去验证注定被拒绝的错字，导致系统整体吞吐量严重崩溃，因此业界在线上多局限于单 Token 预测（MTP-1）。 DSpark 克服了高并发下的吞吐退化瓶颈。DSpark 首先采用 DFlash 并行主干网生成隐藏状态，再追加极其轻量的马尔可夫头。马尔可夫头通过查表与一次矩阵乘法，以极低成本串行注入相邻词的关联。同时，系统集成置信度预测头与后验校准算法。为了完美兼容生产环境的零开销调度并防止未来信息泄漏，调度器采用异步机制，利用两步前的历史预测来动态决定候选词裁剪长度，彻底防止大模型在重负载下验证高风险的尾部错字。 除了 DSpark，DeepSeek 这次开源的 DeepSpec 代码库内置支持 Qwen3 与 Gemma 等开源大模型。DeepSpec 提供了从下载提示词、重建大模型缓存、训练草稿模型到基准评估的完整 Python 工具链。开发者可以直接利用开源脚本，在本地为不同的开源大模型定制并部署专属的加速模块。 （来源：BlockBeats） https://www.me.news/news/291235","keywords":"margeleT, Telegram, China, ME News, metaeranews, ai, technology","url":"https://www.margelet.space/post/2431882460","mainEntityOfPage":"https://www.margelet.space/post/2431882460","datePublished":"2026-06-27T15:12:59.842Z","dateModified":"2026-06-27T15:12:59.842Z","image":["https://www.margelet.space/icon-512.png"],"inLanguage":"zh","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"}],"author":{"@type":"Organization","name":"ME News","url":"https://www.margelet.space/metaeranews","logo":"https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/metaeranews/82861?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+      <h1>DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85% ME AI 消息，据 动察 Beating 监测，…</h1>
+      <p>DeepSeek开源推理加速框架DeepSpec，上线DSpark让V4模型速度提升最高85%
+
+ME AI 消息，据 动察 Beating 监测，DeepSeek 联合北京大学发布投机采样加速框架 DSpark 的技术报告，并开源了全栈代码库 DeepSpec。目前 DSpark 已部署于 DeepSeek-V4 线上业务。在保证输出无损的前提下，DSpark 将 Flash 版单用户生成速度提升 60% 至 85%，Pro 版速度提升 57% 至 78%。DSpark 表现超越了原有的单 Token 多分支预测（MTP-1）基线，在严格时延约束下显著拉高了系统整体吞吐量。 此前，多 Token 投机采样难以在线上生产环境落地。自回归草稿模型生成太慢，而并行草稿模型由于各位置独立预测，导致长序列的后半截接受率极低。若在高并发下盲目验证多 Token 草稿，大模型会浪费大量算力去验证注定被拒绝的错字，导致系统整体吞吐量严重崩溃，因此业界在线上多局限于单 Token 预测（MTP-1）。 DSpark 克服了高并发下的吞吐退化瓶颈。DSpark 首先采用 DFlash 并行主干网生成隐藏状态，再追加极其轻量的马尔可夫头。马尔可夫头通过查表与一次矩阵乘法，以极低成本串行注入相邻词的关联。同时，系统集成置信度预测头与后验校准算法。为了完美兼容生产环境的零开销调度并防止未来信息泄漏，调度器采用异步机制，利用两步前的历史预测来动态决定候选词裁剪长度，彻底防止大模型在重负载下验证高风险的尾部错字。 除了 DSpark，DeepSeek 这次开源的 DeepSpec 代码库内置支持 Qwen3 与 Gemma 等开源大模型。DeepSpec 提供了从下载提示词、重建大模型缓存、训练草稿模型到基准评估的完整 Python 工具链。开发者可以直接利用开源脚本，在本地为不同的开源大模型定制并部署专属的加速模块。 （来源：BlockBeats）
+
+https://www.me.news/news/291235</p>
+      
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/ai">ai</a>
+<a class="pill" href="/country/cn/tag/technology">technology</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · ME News · ai · technology. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/metaeranews/82861">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/metaeranews/82861?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/2702645968">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>【被AI带火的“玻璃”：先进封装的隐形地基，产业价值待重估】 前往 ME 查看全文</h3>
+        <p>【被AI带火的“玻璃”：先进封装的隐形地基，产业价值待重估】 前往 ME 查看全文</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/2702645968">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/687044655">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>美国突如其来的AI出口管制让英国初创公司担心英国的竞争力 ME AI 消息，BBC新闻特写报道，美国突然决定限制对先进AI系统的访问，这一举动在全…</h3>
+        <p>美国突如其来的AI出口管制让英国初创公司担心英国的竞争力 ME AI 消息，BBC新闻特写报道，美国突然决定限制对先进AI系统的访问，这一举动在全球AI产业中引发了震动，甚至对英国这样的亲密盟友也产生了影响。该报道重点关注一家英国初创公司，该公司将自身定位为避免英国陷入“AI无感化”境地的关键，通过构建国内能力并减少对美国模型的依赖。美国政策制定者和情报官员被指正在权衡对于其最先进模型实施更严格的保护措施和访问限制，主要是出于网络安全和国家安全的考虑。报告强调，在英国，人们越来越担心美国更严厉的控制措施可能会加剧…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/687044655">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1382439309">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>【CZ：加密市场2026年走弱或因AI分流、周期共振等因素共同驱动】 前往 ME 查看全文</h3>
+        <p>【CZ：加密市场2026年走弱或因AI分流、周期共振等因素共同驱动】 前往 ME 查看全文</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/1382439309">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3798679581">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>&quot;Raise Us&quot;启动：前美商务部长与四州合作筹集10亿美元应对AI就业冲击 ME AI 消息，前美国商务部长Raimondo与前印第安纳州长H…</h3>
+        <p>&quot;Raise Us&quot;启动：前美商务部长与四州合作筹集10亿美元应对AI就业冲击 ME AI 消息，前美国商务部长Raimondo与前印第安纳州长Holcomb共同发起非营利&quot;Raise Us&quot;，目标为AI经济下工人再培训筹集10亿美元，已锁定5亿。Amazon、Anthropic、Microsoft、OpenAI等支持，引发独立性质疑。将在阿肯色、康涅狄格、马里兰、犹他四州试点，包括AI职业导航、服务年计划扩展、工资保险等。工作分州合作、雇主联盟、教育培训、政策实验室四大支柱。此前美国工人再培训效果不佳，计划能否…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/3798679581">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2946888218">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>【一周盈利86万美元地址购入共57万美元克罗地亚胜及加纳不胜】 前往 ME 查看全文</h3>
+        <p>【一周盈利86万美元地址购入共57万美元克罗地亚胜及加纳不胜】 前往 ME 查看全文</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/2946888218">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2881344081">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>【加密行业掀起裁员潮，华尔街百亿收购核心资产】 前往 ME 查看全文</h3>
+        <p>【加密行业掀起裁员潮，华尔街百亿收购核心资产】 前往 ME 查看全文</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/2881344081">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/52253269">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>【ETH 突破 1600 美元， 24H涨幅达 1.5%，现报价 1604.63 美元】 前往 ME 查看全文</h3>
+        <p>【ETH 突破 1600 美元， 24H涨幅达 1.5%，现报价 1604.63 美元】 前往 ME 查看全文</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/52253269">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3086898611">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/LNjelLcHWyMx2aEaeDLRBkXTLESUUzda--MF41PxY3ZJ2oN127NWLfun1nPtuM92Kf1s6OT3b4BuaWD8aaWH1mWy-BbEtwGgot5EPhYeTL-2e5xF38QsuPcR-2zzWoy81jztIruhZH0NR-WFi0sJ-1LhoPcBQt70nfFtUTaelMhmPfozqSH8p2TKgwIhfq9vUVqyGiXfUjqTXwKAW9hEIoyNqxRaz2XBIsAJfYd2zCnbXjndrU5hvztAghbKqIrFPeb-4WIITIsrqbUqTz8o-8bhxeF5H5_qJ4pgwTTJU6514ote_QOsUAsqCt22xZJGlF7NMARXCVA0pGKEF9G74w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>【AgentOn 10 万美元赏金计划进行中，发布 Maneki 联名赏金任务】 前往 ME 查看全文</h3>
+        <p>【AgentOn 10 万美元赏金计划进行中，发布 Maneki 联名赏金任务】 前往 ME 查看全文</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-27T15:12:59.842Z">Jun 27, 2026, 3:12 PM</time> · <a href="/post/3086898611">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
