@@ -78,8 +78,8 @@ const MAX_SEEN_SOURCES_STORAGE_ITEMS = 1200;
 const INITIAL_RENDER_POSTS = 12;
 const RENDER_POSTS_STEP = 12;
 const LOAD_MORE_DISTANCE_PX = 900;
-const INITIAL_VIDEO_GRID_POSTS = 12;
-const VIDEO_GRID_POSTS_STEP = 9;
+const INITIAL_VIDEO_GRID_POSTS = 18;
+const VIDEO_GRID_POSTS_STEP = 18;
 const FEED_SUBSCRIPTIONS_TOGGLE_EVENT = "margelet:feed-subscriptions-toggle";
 const FEED_SUBSCRIPTIONS_BADGE_EVENT = "margelet:feed-subscriptions-badge";
 const FEED_SEARCH_TOGGLE_EVENT = "margelet:feed-search-toggle";
@@ -1157,7 +1157,7 @@ function VideoGridView({
         if (!entries.some((entry) => entry.isIntersecting)) return;
         setVisibleVideoCount((prev) => Math.min(posts.length, prev + VIDEO_GRID_POSTS_STEP));
       },
-      { rootMargin: "120px 0px 240px 0px", threshold: 0.01 }
+      { rootMargin: "260px 0px 420px 0px", threshold: 0.01 }
     );
 
     observer.observe(node);
@@ -1224,7 +1224,7 @@ function VideoGridView({
           const canRenderVideo = preview?.kind === "video" && !!preview.url;
           const canRenderImage = preview?.kind === "image" && !!preview.url;
           const imageFailed = imageFailedPostIds.has(post.id);
-          const shouldRenderVideo = canRenderVideo && isPreviewing;
+          const shouldRenderVideo = canRenderVideo && (isPreviewing || !poster || imageFailed);
 
           return (
             <div
@@ -1308,7 +1308,7 @@ function VideoGridView({
                     draggable={false}
                     disablePictureInPicture
                     controlsList="nodownload noplaybackrate noremoteplayback"
-                    preload="none"
+                    preload={isPreviewing ? "auto" : "metadata"}
                     className={[
                       "absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]",
                       isPreviewing ? "z-[2]" : poster && !imageFailed ? "z-[0]" : "z-[1]",
@@ -1323,8 +1323,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 3 ? "eager" : "lazy"}
-                    fetchPriority={index < 1 ? "high" : "auto"}
+                    loading={index < 6 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {
@@ -1342,8 +1342,8 @@ function VideoGridView({
                     alt=""
                     draggable={false}
                     className="absolute inset-0 z-[1] h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                    loading={index < 3 ? "eager" : "lazy"}
-                    fetchPriority={index < 1 ? "high" : "auto"}
+                    loading={index < 6 ? "eager" : "lazy"}
+                    fetchPriority={index < 3 ? "high" : "auto"}
                     decoding="async"
                     referrerPolicy="no-referrer"
                     onError={() => {
