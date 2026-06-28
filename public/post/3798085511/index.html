@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и… — Life-Hack - Хакер, Russia ai | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Life-Hack - Хакер in Russia. Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и CI/CD #статья #полезное #devops #admin Я старался писать для разных грейдов: от базовых ошибок вроде COPY . .,… Topics: ai, technology, transport reviews, auto." />
+  <meta name="keywords" content="margeleT, Telegram, Russia, Life-Hack - Хакер, haccking, ai, technology, transport reviews, auto" />
+  <link rel="canonical" href="https://www.margelet.space/post/3798085511" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и… — Life-Hack - Хакер, Russia ai | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Life-Hack - Хакер in Russia. Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и CI/CD #статья #полезное #devops #admin Я старался писать для разных грейдов: от базовых ошибок вроде COPY . .,… Topics: ai, technology, transport reviews, auto." />
+  <meta property="og:url" content="https://www.margelet.space/post/3798085511" />
+  <meta property="og:image" content="https://cdn4.telesco.pe/file/M1Rc9LHZMGz6bRYxPREgrSNY440saGkJi7aCGsgvGq8eZ0YNAwxaSWe-DY-tD9BloyZ126Lq9qp4u2oBUopBhLaCJ2VJTD_zPkydepHRhinm-hRQ2E-NNg-AGBCFUyOjl78OxPGDFazJRkMhudu8u-R_A-gdSrJkkEF86MSJhRNgZ6Vd2Iimk08BDBLUHU4GbABFeUCKqCPJwAZS-h9h0mrOci6I3TVimMP5sqdnIrXOxcjFanA1rnsxt7tlrphyRzSC9SojF8eLfrRP-cMa1yroq-nHx4PbYo0g3rk8zgskKWRxn40WUEkJ9eJnroBSzrGmGFPHEw92l6-C37AbHg.jpg" />
+  <meta property="og:updated_time" content="2026-06-28T16:01:59.971Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и… — Life-Hack - Хакер, Russia ai | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Life-Hack - Хакер in Russia. Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и CI/CD #статья #полезное #devops #admin Я старался писать для разных грейдов: от базовых ошибок вроде COPY . .,… Topics: ai, technology, transport reviews, auto." />
+  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/M1Rc9LHZMGz6bRYxPREgrSNY440saGkJi7aCGsgvGq8eZ0YNAwxaSWe-DY-tD9BloyZ126Lq9qp4u2oBUopBhLaCJ2VJTD_zPkydepHRhinm-hRQ2E-NNg-AGBCFUyOjl78OxPGDFazJRkMhudu8u-R_A-gdSrJkkEF86MSJhRNgZ6Vd2Iimk08BDBLUHU4GbABFeUCKqCPJwAZS-h9h0mrOci6I3TVimMP5sqdnIrXOxcjFanA1rnsxt7tlrphyRzSC9SojF8eLfrRP-cMa1yroq-nHx4PbYo0g3rk8zgskKWRxn40WUEkJ9eJnroBSzrGmGFPHEw92l6-C37AbHg.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Life-Hack - Хакер","item":"https://www.margelet.space/haccking"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и…","description":"Fresh Telegram snapshot from Life-Hack - Хакер in Russia. Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и CI/CD #статья #полезное #devops #admin Я старался писать для разных грейдов: от базовых ошибок вроде COPY . .,… Topics: ai, technology, transport reviews, auto.","articleBody":"Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и CI/CD #статья #полезное #devops #admin Я старался писать для разных грейдов: от базовых ошибок вроде COPY . ., latest и root-пользователя до продовых тем вроде BuildKit, секретов, SBOM, подписи образов и защиты цепочки поставки ПО. Поэтому язык подачи здесь намеренно сухой, прямой и инженерный: без долгих заходов, без воды и без пересказа документации ради пересказа. Я хотел сделать не обзорную статью, а рабочую памятку, к которой можно вернуться при написании, ревью или доработке Dockerfile Ссылка на статью LH | News | OSINT | AI","text":"Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и CI/CD #статья #полезное #devops #admin Я старался писать для разных грейдов: от базовых ошибок вроде COPY . ., latest и root-пользователя до продовых тем вроде BuildKit, секретов, SBOM, подписи образов и защиты цепочки поставки ПО. Поэтому язык подачи здесь намеренно сухой, прямой и инженерный: без долгих заходов, без воды и без пересказа документации ради пересказа. Я хотел сделать не обзорную статью, а рабочую памятку, к которой можно вернуться при написании, ревью или доработке Dockerfile Ссылка на статью LH | News | OSINT | AI","keywords":"margeleT, Telegram, Russia, Life-Hack - Хакер, haccking, ai, technology, transport reviews, auto","url":"https://www.margelet.space/post/3798085511","mainEntityOfPage":"https://www.margelet.space/post/3798085511","datePublished":"2026-06-28T16:01:59.971Z","dateModified":"2026-06-28T16:01:59.971Z","image":["https://cdn4.telesco.pe/file/M1Rc9LHZMGz6bRYxPREgrSNY440saGkJi7aCGsgvGq8eZ0YNAwxaSWe-DY-tD9BloyZ126Lq9qp4u2oBUopBhLaCJ2VJTD_zPkydepHRhinm-hRQ2E-NNg-AGBCFUyOjl78OxPGDFazJRkMhudu8u-R_A-gdSrJkkEF86MSJhRNgZ6Vd2Iimk08BDBLUHU4GbABFeUCKqCPJwAZS-h9h0mrOci6I3TVimMP5sqdnIrXOxcjFanA1rnsxt7tlrphyRzSC9SojF8eLfrRP-cMa1yroq-nHx4PbYo0g3rk8zgskKWRxn40WUEkJ9eJnroBSzrGmGFPHEw92l6-C37AbHg.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"transport reviews"},{"@type":"Thing","name":"auto"}],"author":{"@type":"Organization","name":"Life-Hack - Хакер","url":"https://www.margelet.space/haccking","logo":"https://cdn4.telesco.pe/file/A94tvutfDgUN4cjjvdXUmi4sl55OpxhgsB0ZHOvz-iKhSwTDxWA92om7Yu-sN9CuNagkNuKDh-IjIhbPWRNxv2NEqvCN8bdSlpBni9ukSzMdEaEwYcg9X78-NzLC8IJ4DXIvHpc54v9v24cy1JQRiA6AsPsOm_AON5dnXAHJzARvAKXB0Lc8jKxLtlU77L2c0VvCZkOORVcUIhlgiBuNaKQtK9LJemE7LyOFDPdFfZ34_faD2YtXVwFjC4QbmD--YL60h5n8gmEpaANEdobWZsWOObqFz0T542IsWkpHgTHIN1ATnel64HPp2yIx2dk1qaKHhD9q5sZUy7aRRNVFig.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/haccking/12995?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/A94tvutfDgUN4cjjvdXUmi4sl55OpxhgsB0ZHOvz-iKhSwTDxWA92om7Yu-sN9CuNagkNuKDh-IjIhbPWRNxv2NEqvCN8bdSlpBni9ukSzMdEaEwYcg9X78-NzLC8IJ4DXIvHpc54v9v24cy1JQRiA6AsPsOm_AON5dnXAHJzARvAKXB0Lc8jKxLtlU77L2c0VvCZkOORVcUIhlgiBuNaKQtK9LJemE7LyOFDPdFfZ34_faD2YtXVwFjC4QbmD--YL60h5n8gmEpaANEdobWZsWOObqFz0T542IsWkpHgTHIN1ATnel64HPp2yIx2dk1qaKHhD9q5sZUy7aRRNVFig.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Life-Hack - Хакер</strong></span>
+          <span>@haccking</span>
+        </span>
+      </p>
+      <h1>Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и…</h1>
+      <p>Best Practices по Dockerfile: от базового образа и кеша до SBOM, Cosign и CI/CD
+
+#статья #полезное #devops #admin
+
+Я старался писать для разных грейдов: от базовых ошибок вроде COPY . ., latest и root-пользователя до продовых тем вроде BuildKit, секретов, SBOM, подписи образов и защиты цепочки поставки ПО. Поэтому язык подачи здесь намеренно сухой, прямой и инженерный: без долгих заходов, без воды и без пересказа документации ради пересказа. Я хотел сделать не обзорную статью, а рабочую памятку, к которой можно вернуться при написании, ревью или доработке Dockerfile
+
+Ссылка на статью
+
+LH | News | OSINT | AI</p>
+      <img src="https://cdn4.telesco.pe/file/M1Rc9LHZMGz6bRYxPREgrSNY440saGkJi7aCGsgvGq8eZ0YNAwxaSWe-DY-tD9BloyZ126Lq9qp4u2oBUopBhLaCJ2VJTD_zPkydepHRhinm-hRQ2E-NNg-AGBCFUyOjl78OxPGDFazJRkMhudu8u-R_A-gdSrJkkEF86MSJhRNgZ6Vd2Iimk08BDBLUHU4GbABFeUCKqCPJwAZS-h9h0mrOci6I3TVimMP5sqdnIrXOxcjFanA1rnsxt7tlrphyRzSC9SojF8eLfrRP-cMa1yroq-nHx4PbYo0g3rk8zgskKWRxn40WUEkJ9eJnroBSzrGmGFPHEw92l6-C37AbHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-06-28T16:01:59.971Z">Jun 28, 2026, 4:01 PM</time> · Russia</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/ru/tag/ai">ai</a>
+<a class="pill" href="/country/ru/tag/technology">technology</a>
+<a class="pill" href="/country/ru/tag/transport/reviews">transport / reviews</a>
+<a class="pill" href="/country/ru/tag/auto">auto</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · Russia · Life-Hack - Хакер · ai · technology · transport / reviews. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/ru">Open live margeleT feed</a>
+        <a class="secondary-open" href="/haccking/12995">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/haccking/12995?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/567110580">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/A94tvutfDgUN4cjjvdXUmi4sl55OpxhgsB0ZHOvz-iKhSwTDxWA92om7Yu-sN9CuNagkNuKDh-IjIhbPWRNxv2NEqvCN8bdSlpBni9ukSzMdEaEwYcg9X78-NzLC8IJ4DXIvHpc54v9v24cy1JQRiA6AsPsOm_AON5dnXAHJzARvAKXB0Lc8jKxLtlU77L2c0VvCZkOORVcUIhlgiBuNaKQtK9LJemE7LyOFDPdFfZ34_faD2YtXVwFjC4QbmD--YL60h5n8gmEpaANEdobWZsWOObqFz0T542IsWkpHgTHIN1ATnel64HPp2yIx2dk1qaKHhD9q5sZUy7aRRNVFig.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Life-Hack - Хакер</strong></span>
+          <span>@haccking</span>
+        </span>
+      </p>
+        
+        <h3>⚡️ Топ популярных/полезных постов за прошедшую неделю (сохрани себе чтобы…</h3>
+        <p>⚡️ Топ популярных/полезных постов за прошедшую неделю (сохрани себе чтобы не потерять): 1. Предыдущий топ статей 2. Фреймворк для управления мобильными устройствами через агентов на базе локальных или облачных LLM 3. ⚡️ Пентест на заказ (Сделаем качественно и…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:01:59.971Z">Jun 28, 2026, 4:01 PM</time> · <a href="/post/567110580">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/480923598">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/A94tvutfDgUN4cjjvdXUmi4sl55OpxhgsB0ZHOvz-iKhSwTDxWA92om7Yu-sN9CuNagkNuKDh-IjIhbPWRNxv2NEqvCN8bdSlpBni9ukSzMdEaEwYcg9X78-NzLC8IJ4DXIvHpc54v9v24cy1JQRiA6AsPsOm_AON5dnXAHJzARvAKXB0Lc8jKxLtlU77L2c0VvCZkOORVcUIhlgiBuNaKQtK9LJemE7LyOFDPdFfZ34_faD2YtXVwFjC4QbmD--YL60h5n8gmEpaANEdobWZsWOObqFz0T542IsWkpHgTHIN1ATnel64HPp2yIx2dk1qaKHhD9q5sZUy7aRRNVFig.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Life-Hack - Хакер</strong></span>
+          <span>@haccking</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/UxqE3iQLI-7MID_nPqDNVgHYDOTHNu5qolVUev1P8tnarQacdqlqEF6S7qIy89YFbRwKkAkfXpKz2fAZxTe-CVax166pjzupCwuINvQ_xcV_zl98fk3fXXWhPu7eQ2QsfOsX7TsVK8-Ban7UJ0hbGWxjtjsHgzf_4WhpSCo9LNDyxPxjqskPf2YTNTxuN8yL11X0yv9QiLUZaJTOQpAzhD7O88SJ6h5flV99ErvcgvWIJcvNg2Jrebi8k4L9qRmc_00yLtCu16RVZOpIuaHb9HtLXVyZGLUyqd0qfPjG4pjvXZmCHulgcLKPmttEBp2Srb1HxZFExcgPGrNr7qRpTg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Unblink #ai #полезное Система интеллектуального видеонаблюдения работающа…</h3>
+        <p>Unblink #ai #полезное Система интеллектуального видеонаблюдения работающая с видеопотоками в реальном времени. В качестве ИИ используются D-FINE для обнаружения и отслеживания объектов, SmolVLM2 и Moondream 3 для понимания контекста. Unblink понимает и описыв…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:01:59.971Z">Jun 28, 2026, 4:01 PM</time> · <a href="/post/480923598">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1410797346">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/IWNOyBmaJwg7cHbZ0RfizNe03aVL7Jfl_xTnXO9orcOrmt6A3bAuLzOYR02YA_ih5CymBvAvf6tSFNMK8BHUo3XQ7etcjXtXD0g9LYc5X2o0lPedBPuVBhHXLoDXH-LRzEIIXqfCSiz2uH8bEDVBfvwCIy0-B7243Q8-U7vt_TWLfvawmE1WNYWzL9ztlWhkHPxjavBt_8zU2iMr1lCDYwp3N7NkiYvMWbzEeJc-Ksz62rX7cbRDLRjRkP7qwVskTtKW4fhhSDsKqIdfezPbtChCTz4ngpRiLN3C3pGis4jCSQGOQjcCGUXCcmHFI6sLSF1rfqoH1cTQAeWpKFj7RA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">НейроБаза | Лайфхаки по ИИ</strong></span>
+          <span>@neurobussines</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/EXSQBiUG-yvpLWLCd-1y-cqYHUbH2igjr6_rM1hoEUJZrThLDLWUsZzkLmETXBwq1J708Dv6YlXaMB-Uc0V2_ZvvavX3CE1TrEpEubm_S-zg1uxuPFmT-jkxi-je0jV2h1qyW3mVQl-j8SmIKQ94TXG7a3NTjabGTiL4wEkA5ZfnI45ic5NYKXZw5Z4FnPwQblrOWNWxcA_sBuRYSn_fRSykTuzBXH2ZSZ53ZhwRwiwTFrgs5Xxaer9tbWRrLg-N0cOCtLCeszFMsJixa-Zht5AmYFsFkiOT6Eu9ddPJ7BQlGmYILKajkPQsvimn0f0_AUF-HKh-987k2WITq87adg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🔥 Представьте: вы открываете телефон, а там — новые подписчики, заявки в…</h3>
+        <p>🔥 Представьте: вы открываете телефон, а там — новые подписчики, заявки в директе и просмотры, которые капают сами. А вы при этом… ничего не снимали, не монтировали и даже не придумывали, что постить. Звучит как сказка? Это моя реальность последних месяцев. Я…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:04:15.258Z">Jun 28, 2026, 4:04 PM</time> · <a href="/post/1410797346">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3845305685">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/OfkktgHuy5cqQsut7ZCDg74vqpg1LZg8rYrG5GpHfDjcjRRcSd-Ab9mSca4cOuHDDi4nT2v_RmAVV7XybSBtxaYy4x9jxGWMsdSsvwCjHeQMrYGMTXMc-kCH7oBbr81IS6VJQjTLesXM8zk644pw3JaHW69c0kkMaYDubcESTOte1aX3ANF69LdgGcHhvaXISWy5usNzCIp3LD9QTQVOdk5gw1jY8dZ8kMEdyQXinDAC8tOye2YBliabShhRR3_vf_8o3-NXpPgOFUsVlBS29DijZFd7frmpUIhK1DFjZdLLegmjflgMu2iBHNve3PDRqVNc_3Qe72ImYQA3j1nxKQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Нейрон | Современные технологии</strong></span>
+          <span>@neiro_newz</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/FK7lFbiPy35kSuWebmzGMSHQUAHeG50p7FYhgzMTowEQ03KOosRSR-U8icbUqgFaYZpx9bXxoywNnhGPxayvAQO87MVCwekVyNpibUngDADxXcRvS8YnN4TYVeyRFAe_9wWlZorC381iieM9sVSVgPQlVvk3JzJXDBnRGxmUvX55Re9vPEKMTnWb4KxOYXA1PuRPZOpuTtBQ6g_EW9fOgvgp55f2EJF-0I2IRxwa5UiFm1L7uqBMIYpbi48U-rboPQqQsA4LarYqBpT7xq1gE0KPwDZE8j1CDHGs_hB4uqzNujuXH05lX2MWInVhBIuwHjrWv1EUxfwDJloYP2n5Jw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>📜 ИИ помог прочитать свиток, который считали потерянным почти 2000 лет У…</h3>
+        <p>📜 ИИ помог прочитать свиток, который считали потерянным почти 2000 лет Учёные смогли расшифровать древний свиток, который превратился в обугленный кусок папируса после извержения Везувия в 79 году нашей эры. 🌋 Долгие века считалось, что текст внутри навсегд…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:04:03.562Z">Jun 28, 2026, 4:04 PM</time> · <a href="/post/3845305685">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1094193425">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/d3I5IhnSRViHcw9KpMCaffKraPUM4ZtvcNWOFVJOe8jrjWLWXy4S95W0yHWDSZp8HTR0j5yLLCoIZP72NSWYpV9K3FGMFQKj3M_YtA9qkUZor_ypGLSbdfkM5t0viZr5rIMQsQCxf8FcQox8st7iFUNnMIbr943jv6QANH7zTZ3dqnvqqIOJRKpzL9YzGmjVO3d9wyBzgdHwJ7c17af_qIsJZQbND9N0ThevYtx39X_fCA_G6rJvaxZKXBt1gAY02n_sr1e-GW_UY7fk70GpdZeNEMY43-Mczn2_ymTebybZoF93rUhxufAKBMsqy7BvIY9n8UuoUNTElB_nhdeLFQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">КиберХаб - IT и Нейросети</strong></span>
+          <span>@kyberhub</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/A6aSexh6CC237hO6MF3jFUrf27bzgvghjSVtINm6hhZl87ecOloa6C2Zf4CTSazC7uLAl6zit0Gt8qkBrT8MzNo0613SjlrWGY97OC1HuCTaWy4DPEnkjigIezMoORnSs5ieRUqFYY3XWiHldyfPK8lCN6F7wBA1vH9oTen2uwHeP4uOuUiweiIZLzrG0_yRkheJHOaP4mBskS_D38DOl1NkIwny1MF6-ozuQgK4oXrOEm9HAwMOmGzIMshRUl_TTR4eMVveswTAzAPUrdPOrHMIOG-C7TThKS8ujH6mGe6Bj10lzFrAFSJ3Dfsl9KQ7CSXCrkjlVc0tTobmJ0DP3w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🤖 Gemini научился «видеть» страницы в Chrome Теперь Gemini может анализи…</h3>
+        <p>🤖 Gemini научился «видеть» страницы в Chrome Теперь Gemini может анализировать содержимое открытой страницы. Достаточно выделить текст или нажать на картинку — ИИ сам поймёт, о чём идёт речь. Больше не нужно копировать текст или делать скриншоты. Теперь можн…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:02:53.728Z">Jun 28, 2026, 4:02 PM</time> · <a href="/post/1094193425">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2081060324">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/kWEwuPv_q5o9GgB4vL1Czz70ZU-A_3P_t2zX3kjcnMBKHt_usR-E0ME7am6eZMIXND6rUO7iTT4HS9WSbPBlrK7xO3nS4UgoSsQJUe-zG7QcZwCYZs1GYx600cWtbBT18c2D5qJAdjukIoJ6DdQhBeLRU4uljC6b0WAnFUmU5ctdugTZH_KHyq03d9vgwQusmHGUA1_PYVqC6qcXvqr5I0tqMjnvj8GJ0aOp5h83XBU0C1ahHoPCY-G9W5N0VRVQ9MiXEKAZP4CIfcBhM_SjaR-AG-xSqAgOtbaJPcLEhfIryqMjMPUlsWD1gPBGlueH37Xkf7KgWmFQm1FH7G47rA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Айтишная</strong></span>
+          <span>@aitshnya</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/UtOVR39-fKn-oQuQo7JC4PzPeKvlfViBjh-v-VrPMztIYUwkKnDxo8WHTKP2hjN604NqBp2BOCaGuRzHci445ow9FmxAlRm1tpENaonoUvsWDIwMQzR4uPe3nXSmP_RQNDoZ-nJHlVm2IkK1mxz6rTVtjUTlrhcDJVsJyk_U4Vx8mapN7fc9X_9WCMOE0fTo7-e1bA8Y0dUitWYhnEtUIg4pq9m2Efj_dVFNMLK0tqU28LJ6jNvNhmUDuyfSxUN0JFQBVt2nObM6ww5IOYkjAORFePV1xskf9XKfxODcv5xFCGKti_BCTqLiUYHW2r-fw1XSma193UvRQaukg3ve2g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>На GitHub завирусился OpenMontage настоящая ИИ-студия видеомонтажа Проект…</h3>
+        <p>На GitHub завирусился OpenMontage настоящая ИИ-студия видеомонтажа Проект объединяет целую команду ИИ агентов, которые могут взять на себя весь процесс создания ролика: от поиска информации и сценария до генерации кадров, монтажа, озвучки. В комплекте 12 отде…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:00:27.298Z">Jun 28, 2026, 4:00 PM</time> · <a href="/post/2081060324">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/644804178">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HYOC2AmXO3E9_BuEKt7Lnjp2kq51jFEqPz6p-jjDGZXPyPul7gjFiWGmT6ZUJYbzfjM60qncqWufgbwtQdTSqedqpt0yNX5hY2LROTNk91HQMMogPrqVdhTa2Z6X8EOig-SJNxposgjTZE5L2qDFgN1Z6p_nhyyYF_0FYxhp2NgXA0jLqlPN5mpg4crKSe6yupYYsC96Tfpj-rmdERRQ4273IFDhismNfkuJ6UU1z4uM1dwaxPcmMZd6M_xoRrZzSC-GQXbBy843BMc3yQEjvNCyAmV4_tYXba0mVNrLE6kv2abhu-Uou9ZHMSKibMPypKcu9loXfSdyZ8aqdIIoKA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Алиса, что нового?</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@alice_yndx</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/ieAXEBMSo1siqRUGGQGUq_Vpw3boTnTv-PFY_4n_3sOBG3-6hCYSU3Y_0IcFjposMU-M-m9VW46AAIslMVQ_OrZEQ65BZyV2NzB0DqOSedXl4xH2ASJnbOO1yD6f0ZEw0jKlbiMvaxOydFGykvaCfNNeRl_rIoFjddiwJkjBan25naeRUANN4QpzSxiwK-6CJX3j_et7eXi7NS6knxWMgEV76rsADSg_15uZcCE9Dv-5XGueQAUxQaxfAItkQXVlou_VspZHaKHT7qesy2souu_IELGyy0Klx3_lCp-2SWkDCnXKsPEQlWkpzRXFqKrTcAiJHjOPTx2S5vO1006DTw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>👁️ Алиса AI покажет окружающий мир незрячим и слабовидящим пользователям…</h3>
+        <p>👁️ Алиса AI покажет окружающий мир незрячим и слабовидящим пользователям Обновили Live-режим в приложении «Алиса AI»: он стал бесплатным и подружился со скринридерами — программами, которые озвучивают экран или передают текст на брайлевский дисплей. Незрячие…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:00:10.635Z">Jun 28, 2026, 4:00 PM</time> · <a href="/post/644804178">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2938727707">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HCxId_3iwHXaPbemxOL1IEJ6J4M1SFNHZdC_qiKKLoqk2CvD5_uCy7pbD8YCOClUpXZEcAtzXhw5qrsnOsfXhUvudpvqUsPgRsW1nPeNZCQQEFzgK2Hf7GdPCLzYA0kJn9xvCLAb-Exhp04CLTmf2vI2coZ5HG0QMd3sIYZ3G6ehPyhEo-mfxBz5QTAmq3ErLJI3uB7UPSr2Q0AVS_DPGqkIuY_MJapPmwaaBmvSphhcMs5LJR1SUvoTmzhlH0aVcnEWj_FU_qgD35bvLtOCYGGyEF8Jgzud-o7sZ8TeWKTKP7L0ynbsVI_8gzrUsE6Z2-NCw3F3bulyiV7Gjc7V9w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Арон Закрия</strong></span>
+          <span>@aironzak</span>
+        </span>
+      </p>
+        
+        <h3>Знаете, есть у меня одна слабость. Когда я что-то делаю, мне обязательно…</h3>
+        <p>Знаете, есть у меня одна слабость. Когда я что-то делаю, мне обязательно нужно, чтобы за этим стоял какой-то большой смысл. И как только я чувствую, что у дела нет крупной идейной перспективы, я к нему понемногу остываю. И вот два года назад зародилась у меня…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-28T16:00:05.093Z">Jun 28, 2026, 4:00 PM</time> · <a href="/post/2938727707">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
