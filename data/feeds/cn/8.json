@@ -1,300 +1,6 @@
 {
-  "updatedAt": "2026-06-29T21:16:46.698Z",
+  "updatedAt": "2026-06-29T22:34:38.836Z",
   "posts": [
-    {
-      "id": 660358532,
-      "postUrl": "https://t.me/jike_collection/11807?single",
-      "source": {
-        "title": "即刻精选",
-        "handle": "jike_collection",
-        "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/GyJriMi489Xnmwfgv7CHll_eVzzaE5lTpTfx6EA6OkBV-S-r-shEDluTnDvl5QTt4RVNj4ZD3LEAaFdcis4Z15izSOdaLQJmu75LKc5gczhW_YOJR22b8FbG38-Nl7wGvN33E_B2fv4yvEf9MK3W38PKyY9laTiy60ON0DroDf9RMotAw8EPcrDfjFsDQo0xZBdzbPbGf0WYbDXOybfSHUTR4vw-1gOvH32XaLcbXH_xHU3qreOvuP8_Ar7vws89pe-mrTy57lQqXDBX54MthvEml8qPBCvZDYrOz51aGk3iZNXj3dGYJDNjCpJDpHc2bgctqe2y31x1e9ib4qE2rA.jpg"
-      },
-      "sourceId": "cn:jike_collection",
-      "sourceCountryCode": "cn",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "昨天跟团队去拜访了北京大学干细胞研究中心主任邓宏魁教授。邓教授从细胞治疗聊到自然界的再生，从人类基因的缺陷聊到未来的超级细胞。回来路上我一直在想，人这个物种啊，除了脑子好使，其他硬件配置还真不如很多动物。\n\n大象为什么几乎不得癌症？按说大象体型那么大，细胞数量是人的一百倍，从概率上应该更容易得癌才对。但事实是，大象身上有二十个TP53基因拷贝，人类只有两个。TP53是基因组里最核心的抗癌基因，相当于细胞里的看门狗，一旦发现DNA损伤，要么修复，要么直接让细胞自杀。大象细胞一出问题，立刻就被按死了。人只有两个，看门狗打盹的时候，癌细胞就溜进来了。\n\n还有壁虎。壁虎尾巴断了，很快就能长出来。蝾螈更夸张，哪怕眼睛被摘除一次又一次，每次也都能完美再生。所有动物都没有医院和医生，只有人有。动物治病就靠两样东西：免疫和再生。这两样是碳基生命修复自己的第一性原理。\n\n——————\n免疫把坏东西清掉，再生把好东西长出来。低等动物再生靠的不是什么神奇药水，而是化学渗透，就是细胞的逆向分化，即：细胞本来已经分化成组织了，遇到损伤，又能倒推回去，重新分化成需要的细胞。只不过低等动物物种进化简单，人类进化得太复杂了，大自然暂时帮我们把再生能力关掉了，其初衷也是怕细胞乱长变成肿瘤。\n\n邓教授说，他过去三十多年，就是想帮人类把这条路重新找回来。\n\n要理解这条路有多重要，得先明白我们是怎么生病的。我们投资人对疾病的分类主要就是自免疾病、代谢疾病、肿瘤、心脑血管疾病和神经退行性疾病这五大类。\n\n人这一辈子吃药打针，传统药物基本都是控制疾病。血压高了吃降压药，血糖高了打胰岛素，炎症来了用激素。这些药能控制症状，但很少能真正治愈。因为病变、衰老、损伤之后，细胞没了就是没了，你没法靠吃药让死去的神经细胞长回来，让坏掉的胰岛细胞重新上岗。\n\n所以医学界一直在找一个新范式：能不能补充新的细胞进去？这就是细胞治疗的底层逻辑。但新细胞从哪来？\n\n——————\n人体内几百种细胞，细分就两类：生殖细胞和体细胞。生殖细胞传宗接代，体细胞干活养家。生殖细胞有个神奇能力，精子和卵子结合，就是一个重编程过程，把两个成体细胞的状态重置，回到最初的全能状态，然后发育成一个新个体。克隆羊多莉就是这个原理，把体细胞核塞进卵细胞里，卵细胞的环境能把体细胞洗回出厂设置。\n\n但克隆依赖卵细胞，而且过程像核爆炸，不可控。直到2006年，日本科学家山中伸弥找到了四个基因，OSKM，用病毒把它们塞进成体细胞里，强制表达，也能把细胞推回干细胞状态。这就是第一代诱导多能干细胞技术，即iPSC，拿了诺贝尔奖。\n\n穿插稍微注解一下OSKM是什么。O是Oct4，S是Sox2，K是Klf4，M是c-Myc。这四个基因在胚胎干细胞里高表达，在成体细胞里基本沉默。\n\n成体细胞为什么不让它们表达？因为细胞分化后需要稳定身份。肝细胞就要一直做肝细胞，神经细胞就要一直做神经细胞。如果这四个基因随便表达，细胞就会乱套，甚至癌变。所以大自然给它们上了好几层锁，包括：DNA甲基化、组蛋白修饰，把基因座压缩成异染色质，这些大锁链子使得细胞能够调头转录的机器根本进不去。当然，这其实是成体后的一种保护机制，防止细胞返祖变成肿瘤。\n\n但面对疾病，这种保护机制反而成了障碍。我们想让细胞回去补充新的功能细胞，它却锁死了。日本著名骨科临床医生和干细胞科学家、iPSC发明人、2012年诺贝尔生理学或医学奖得主山中伸弥的做法是，用病毒把外源OSKM基因强行插到基因组的其他位置，绕过这些锁，大量表达蛋白，把细胞推回干细胞状态。这相当于内源的门被锁死了，科学家从窗户翻进去，强行开灯。\n\n可是但是，这个伟大的第一代技术还是有个本质缺陷。它走的是肿瘤那条路。刚才说的四个基因里的第四个，即那个叫c-Myc的基因，本身就自带致癌属性，加上病毒随机插入基因组，就像往书里随便夹纸条，确实有可能夹到癌基因旁边，把大量复制的油门卡死，细胞就疯长变成癌症。而且整个过程像核爆炸，启动了再想停就基本不可能了。更麻烦的是，用病毒感染细胞的方法做基因编辑这件事，尤其是面对血细胞（用血细胞是因为真好用），效率是极低的，只有万分之一能成功。\n\n传统CAR-T就是这么做的。从患者身上抽血，分离T细胞，用病毒把CAR基因插进去，体外扩增，再回输。一人一批，完全定制，国内一百万起步，等两三周甚至更久，很多病人等不起。而且病人体内的T细胞质量参差不齐，老年人化疗后的T细胞弱得很，扩增失败率高。病毒插入位置随机，每批细胞的CAR表达水平、安全性都不一样。困难重重。\n\n——————\n科学家们几十年来都在想，有没有另外一条路？低等动物再生不得肿瘤，它们走的是什么路？\n\n答案就是化学渗透，逆向分化。小分子药物能穿透细胞膜，像钥匙一样打开细胞内部的锁。如果能配出一个化学鸡尾酒，分阶段、分剂量、精准控制，让细胞像坐火车一样，一站一站地回到干细胞状态，而不是被核爆炸炸回去，那该多好？\n\n这个想法听起来简单，做起来却是地狱难度。从设想到做出人的CiPSC，邓教授团队花了二十五年，两百多个博士后参与，几千轮盲筛，在茫茫星辰大海中“寻找”那些在时间位置和功能上都恰到好处的化学小分子。这就像攀登珠穆朗玛峰，不是遇到一个大坑跳过去就行，而是每一步都要试，每一步都要确认下一站停在哪。\n\n2013年，他们在Science上发表了小鼠的化学小分子重编程。2022年，Nature上发表人的CiPSC，即化学小分子诱导多能干细胞。2024年，全球首例化学重编程iPSC分化的胰岛细胞治愈了一型糖尿病病人。这个过程被国务院列为十八大以来基础前沿研究的重大原创成果，与量子科技、嫦娥探月并列。\n\n——————\nCiPSC到底好在哪？\n\n第一是安全。不插外源基因，不整合病毒，不改变基因组，走的是低等动物再生那条路，不是肿瘤那条路。邓教授说，安全性比传统方法好二十倍以上。\n\n第二是效率。化学小分子穿透细胞膜的能力极强，血细胞很难被病毒感染，但小分子随便进。所以血细胞重编程效率一下子拉开二十倍以上。\n\n第三是最关键的，可控。传统技术像核爆炸，CiPSC像开火车。第一阶段停五小时，第二阶段停八小时，第三阶段换组合，每个阶段用什么分子、什么剂量、作用多久，都可以精准调控。这种动态调控是遗传学方法根本做不到的。\n\n有了CiPSC，细胞治疗就从定制西装变成了工业化成衣。\n\n北启生物的做法就是，他们从供体身上抽一点血，用化学小分子把血细胞重编程为CiPSC，在干细胞阶段就完成了基因编辑，装上CAR导航，敲掉免疫排斥基因，然后再定向分化成T细胞。因为改的是干细胞，可以无限扩增，一个编辑好的种子细胞能扩增出天文数字的后代，所有细胞基因完全一致，批间差异几乎为零。成本从一百多万压到几千块，未来甚至两千以内。\n\n这就是现货型通用CAR-T。病人来了，从冰箱里拿出一袋冻存的细胞，解冻直接输，像拿成品药一样。\n\n北启生物和瑞普晨创，都是邓教授体系下的公司。瑞普晨创则聚焦糖尿病，拿的是糖尿病方向的专利授权。北启拿的是糖尿病以外的全部方向，包括自免疾病、血液肿瘤、造血干细胞、神经修复、软骨再生。\n\n为什么先推自免？因为自免市场太大了。过去二十年出了三个药王级别的大品种，修美乐就是治自免的，一年卖几百亿美元。自免疾病的本质是B细胞叛变，产生自身抗体攻击自己的关节、皮肤、肾脏。CAR-T能深度清除B细胞，让免疫系统重置，重建健康的B细胞。北启已经在北医三院做了自免的IIT临床，四例患者一个月实现免疫重建，效果令人振奋。\n\n——————\n但这条路还很长。\n\nCiPSC技术虽然拿到了IIT数据，但还没有进入正式临床。通用型iPSC细胞治疗在中国还没有获批先例，因为涉及基因编辑和异体细胞，CDE对其长期致瘤性和免疫排斥的评估极为审慎。监管路径还在摸索，每一步都要比传统药物更小心。\n\n至于专利方面，我们也有担心。邓教授说得很清楚，改变细胞命运就两条路，一条肿瘤路，一条再生路。他们走的是再生路，保护的是小分子诱导的路径和机制，不是单一化合物。但基因编辑领域CRISPR的著名专利战的故事告诉我们，现实可能很骨干，而且技术永远在迭代。伯克利和博德研究所打了那么多年官司，碱基编辑、先导编辑这些新工具又冒出来，没有永恒的护城河。化学小分子重编程虽然壁垒高，但未来如果出现完全不同的分子组合或新的重编程路径，也不是完全不可能。\n\n临床风险也不小。数据好看但样本量还很小，随访时间短。致病性B细胞清除后可能一年半复发，需要反复给药。而且细胞治疗是活的产品，安全性是药监局最看重的底线，有没有效是后话，安全不过关一切归零。\n\n邓教授也谈到了NK细胞疗法。他的观点很鲜明，现阶段看，NK细胞疗法的持久性和杀伤力仍不及T细胞，免疫靠的是T细胞，NK更像游击队。当然业界也有人坚持NK路线，因为NK无需MHC识别，异体排斥风险低，我们也判断，这条路依然有可能存在较长时间的科学和商业价值。\n\n——————\n说到底，人这一辈子，细胞旧了、坏了，就该换新的，只是很多时候我们的身体不会换。吃药控制只是权宜之计，真正的治愈是再生。从壁虎的尾巴到蝾螈的眼睛，大自然早就给我们展示了答案。CiPSC不是让人类变成超人，而是帮人类找回那些被进化暂时关闭的能力。\n\n你看，大象不得癌症，是因为基因组的守护基因够多。壁虎尾巴能再生，是因为细胞可塑性没有被彻底锁死。近年来科学的巨大进步告诉我们，人类完全可以在细胞和基因的层面，重新接近属于碳基生命疾病治疗的第一性原理。\n\n这条路走了二十多年了，后面可能还要走二十多年。但中国科学家在源头上的创新，一定值得我们投资人的助力与等待。\n\nby @小吴老吴  https://mp.weixin.qq.com/s/2ItRapxeUIRb5MPiANDLtw #你不知道的行业内幕",
-      "links": [
-        {
-          "label": "https://mp.weixin.qq.com/s/2ItRapxeUIRb5MPiANDLtw",
-          "url": "https://mp.weixin.qq.com/s/2ItRapxeUIRb5MPiANDLtw"
-        }
-      ],
-      "createdAt": "2026-06-29T20:25:58.387Z",
-      "expiresAt": "2026-07-01T20:25:58.387Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:58.387Z",
-      "tag": "transport_auto",
-      "tags": [
-        "transport_auto",
-        "auto",
-        "health_medicine",
-        "health",
-        "electronics_home_appliances",
-        "electronics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-06-29T20:25:58.387Z"
-      }
-    },
-    {
-      "id": 3053541788,
-      "postUrl": "https://t.me/jichang_list/6651?single",
-      "source": {
-        "title": "机场列表 | 机场频道",
-        "handle": "jichang_list",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/FF-qgEr08Eruz4F-5tgjngTXIMjOJC3r-XaBQo8dBYrVvlowHCYJY8PIo-q5YbO3vcZfupmITohMP-m227aQke9VZp_ScV-kyckcbfk27Y_S61ZdMPl_PBDomMQeXEoOTiqQKBzK9k-55K7iB5AbkzkuwN3R3Cc3KfeBdC_OY1fMsgtntyoFEm78Pjq6tAyg18Xl_YONaX8RBecDZckYMPYbhv2EAeaeaDXBU401sL9vAKil4vpCJQ3-WlT2A0565fWKXQVp3PdYDvB8YY0oC_Hajpxz3VoDbVfei3Kaz0P0WRzxieaRPN6Bnm4OysoU9Xhx-zuBuS2gQ6fibHLI3w.jpg"
-      },
-      "sourceId": "cn:jichang_list",
-      "sourceCountryCode": "cn",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "⦁ 序号: 6355\n⦁ 名称: #龙虾 #龙虾VPN\n⦁ 官网: https://longxiavpn.top\n⦁ 频道: \n⦁ 群组: \n⦁ 时间: 2026-06-29\n\n©机场列表 @jichang_list",
-      "links": [
-        {
-          "label": "https://longxiavpn.top",
-          "url": "https://longxiavpn.top/"
-        },
-        {
-          "label": "@jichang_list",
-          "url": "https://t.me/jichang_list"
-        }
-      ],
-      "createdAt": "2026-06-29T20:25:57.706Z",
-      "expiresAt": "2026-07-01T20:25:57.706Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:57.706Z",
-      "tag": "technology_software",
-      "tags": [
-        "technology_software",
-        "technology"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-06-29T20:25:57.706Z"
-      }
-    },
-    {
-      "id": 2347564243,
-      "postUrl": "https://t.me/jianrizhi/17772?single",
-      "source": {
-        "title": "dibaixw",
-        "handle": "jianrizhi",
-        "verified": false,
-        "avatar": "https://cdn1.telesco.pe/file/KRXQiGI4OsRwbnYXxDuFymRdrQ-Xr-cPR6yLqUwFyYiMaLHeFdIgewmgWiiqhFo4Tdqtbcy8_v1Iq3RYUnpEhILHucORqJJm0MGZR2yteEBbV5R-8XdRb2-25NWUQd0ek_pfqbnzvhZ-U_6S-3CV_7O4z7x26yymb3IetMrpzEduxAO_7nCIDgMeeP4egLZY02MfeDrOEg8_3C2x45Qn4AlW-6CdW2U8LeYjuQ8dTGzQGyCvpKE0PfTth4CySWw2w-9g8m4rimtznKQxUw2Tk_ONOrItdC7VwgQHj1c-Hz4sSQJByfH_9OVk88FI1lJSrRymt8ok3TpVXAqW3OrSiQ.jpg"
-      },
-      "sourceId": "cn:jianrizhi",
-      "sourceCountryCode": "cn",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/MFgmvkrdtFJL48ExxCcI0swaMb1Hd08AW_GqPNGQ7kKhW6sMV1jSKzmRuHEjKpSEDOdWesKxAo_69fhx6_bOjJR-qY1d1nCcHmijCn9KCE1NyTyRjyvPsvgeYuIIbzkhW9OtJCOXlG20X-Kmt8Mtu54A0eQDxwTsyWx-kB4ckyEqIk_t7BzrKQobIR695qu8c7YEQTomBaWKinUNNZScAF9iaeehnwHTHuS5ZFiDCvhKH2wOidL0uME1AovF9xr1k9nw4Oc4GVhrkDS5poCHZdMRzo-9XOc2CAGCU1Ybx9jC1HIeTqGZn3NdNXDLMLbdabs-Dw05yk-oGMgTToF5WA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "被东南亚打击后转移的网络诈骗集团已在斯里兰卡落脚\n\n随着东南亚各国持续打击网络诈骗活动，被迫转移的国际犯罪集团开始将斯里兰卡作为新的落脚点，并逐渐形成针对斯里兰卡本地居民及外国受害者的新型诈骗模式。\n\n官方报告证实，仅2026年前五个月，就有超过1000名与斯里兰卡网络诈骗案件有关的外国人被逮捕，其中大多数为中国、越南和印度公民。他们持旅游签证入境斯里兰卡，随后组织并实施网络诈骗活动。\n\n在此之前，这些有组织犯罪集团已在柬埔寨、缅甸和老挝建立了大规模网络诈骗基地，并利用被贩运人员作为强迫劳工，在戒备森严的园区内从事诈骗活动。\n\n亚洲基金会和联合国相关机构估计，目前至少有30万人被困于这些诈骗园区中，而这些诈骗活动每年造成约400亿美元的经济损失。\n\n自2025年年中以来，局势进一步恶化。\n\n柬埔寨已针对这些犯罪网络展开突袭和遣返行动。2026年1月29日，中国对11名涉网络诈骗人员执行死刑，其中包括与缅甸果敢地区诈骗集团有关的主要头目。\n\n然而，尽管执法力度不断加强，这些犯罪网络并没有瓦解。正如国际媒体所报道，它们只是不断分散并在新的国家重新集结。\n\n为什么斯里兰卡成为目标多个因素使斯里兰卡成为这些犯罪网络的新据点。\n\n来自40多个国家（包括中国和印度）的公民可获得30天免费旅游签证，并可在入境后申请延期。\n\n斯里兰卡警方证实，今年所有被捕的网络诈骗人员均持旅游签证入境。\n\n当地SIM卡及互联网管理相对宽松，使诈骗团伙能够在酒店房间或出租公寓内开展诈骗活动。\n\n在线博彩监管较为宽松，以及当地被称为“Undiyal”的非正式资金转移系统，可在没有银行交易记录的情况下转移现金和加密货币，这进一步增加了犯罪集团的兴趣。\n\n更关键的是，斯里兰卡目前起诉此类跨国诈骗集团的能力有限，使该国成为这些组织理想的活动基地。\n\n这些诈骗集团在斯里兰卡境内运作，同时针对外国受害者和斯里兰卡本地居民，通过WhatsApp、Facebook和Telegram等平台联系目标。\n\n官方数据显示，仅2026年前五个月，就有超过1000人因与斯里兰卡境内网络诈骗集团有关而被逮捕。\n\n这些诈骗集团实际上如何运作\n\n这些诈骗集团在斯里兰卡的运作方式与柬埔寨和缅甸有所不同。\n\n报告指出，他们通常以5至10人为一个小组进行活动，每隔几个月便更换酒店、公寓或办公地点，因此更加难以追踪和抓捕。\n\n在2026年6月科伦坡的一次突袭行动中，警方查获了62本中国护照、手机、笔记本电脑、U盘、一枚伪造文件印章、伪造的美国财政部信函、一份虚假的美国公司注册文件，以及一份声称该公司价值100亿美元的证书。\n\n斯里兰卡警方证实，该行动背后是一家中国犯罪组织，专门诱骗美国人投资一家虚构的美国公司。\n\n主要诈骗类型及其运作方式\n\n这些犯罪网络并非只从事一种诈骗，而是同时经营多种诈骗模式。\n\n投资及加密货币诈骗（包括AI深度伪造）\n\n这是他们最主要的诈骗方式。\n\n诈骗人员建立虚假的投资交易平台，并通过AI生成内容，向受害人承诺极高投资回报。\n\n为了吸引受害者，他们制作深度伪造（Deepfake）视频，假冒斯里兰卡总统阿努拉·库马拉·迪萨纳亚克、总理哈里尼·阿玛拉苏里亚、板球明星库马尔·桑加卡拉以及企业家奥塔拉·古纳瓦德纳等公众人物，谎称这些知名人士支持相关投资计划。\n\n恋爱诈骗（杀猪盘）\n\n诈骗人员通过交友软件、WhatsApp或社交媒体与受害者建立恋爱或朋友关系。\n\n在取得受害者信任之后，再诱导其进入虚假的投资平台。\n\n报告指出，这是这些犯罪网络最主要的诈骗方式之一。\n\n由于受害者已经建立起信任关系，因此更容易被骗。\n\n招聘诈骗及人口贩运\n\n诈骗集团发布虚假的高薪招聘广告，宣称招聘IT、呼叫中心或海外工作岗位，以诱骗受害者。\n\n商业电子邮件诈骗（BEC）\n\n这些诈骗不仅针对个人，也针对政府机构和企业。\n\n2025年12月至2026年1月底期间，黑客入侵了斯里兰卡财政部外国资源司的电子邮件和支付系统，将原本应支付给澳大利亚的一笔债务偿还款中的250万美元转移。\n\n调查人员目前仍在确认该案件是由本国犯罪分子还是境外组织实施。\n\n虚假交通罚款及政府缴费诈骗\n\n这是影响许多斯里兰卡民众的一种常见诈骗。\n\n2026年5月，斯里兰卡警方及国家计算机应急响应中心（CERT）发出警告，称诈骗人员通过短信及WhatsApp发送虚假交通违法通知，谎称闭路电视摄像头拍摄到交通违法行为，并要求点击链接缴纳罚款。\n\n该链接会跳转至一个仿冒政府GovPay支付平台的网站，从而窃取银行卡资料、OTP验证码及国民身份证信息。\n\n网络钓鱼及身份冒充诈骗\n\n这类诈骗的主要目的不是立即骗取现金，而是窃取敏感个人信息。\n\n2026年1月，斯里兰卡警方公布了九种常见网络金融诈骗，包括：\n\n短信、电子邮件及WhatsApp钓鱼链接；\n\n虚假银行优惠活动；\n\n二维码诈骗；\n\n来电号码伪装（Caller ID Spoofing）；\n\n虚假商业网站；\n\n冒充高级政府官员，甚至总统和总理身份进行诈骗。\n\n其最终目的都是获取身份证号码、银行卡资料、OTP验证码及银行卡PIN码。\n\n对这些案件的法律处理\n\n目前，斯里兰卡网络犯罪调查部门正在调查这些案件。\n\n警方、移民局及中央银行正联合开展执法行动。\n\n不过，专家指出，目前最大的法律漏洞在于，大多数案件最终只是将涉案外国人驱逐出境，而没有真正进行刑事起诉，使许多犯罪人员得以逃避司法审判。\n\n如何识别并保护自己免受诈骗\n\n这些诈骗集团在各种诈骗方式中都采用了类似套路。\n\n需要警惕的危险信号\n\n制造紧迫感，例如“今晚截止”“立即投资”等；\n\n来自WhatsApp、Telegram或Facebook的陌生好友申请，并声称是“朋友介绍”；\n\n要求将资金汇入无法独立核实的账户；\n\n利用名人视频或照片增加投资可信度；\n\n索要OTP验证码、PIN码、密码、银行卡号码或身份证号码等敏感信息；\n\n发送要求缴纳罚款、领取奖金或更新账户资料的可疑链接。\n\n应采取的措施@ye123\n\n无论任何理由，都不要向任何人提供OTP验证码、PIN码、密码、银行卡资料或身份证号码。\n\n独立核实公司信息，确认金融机构是否获得中央银行注册。\n\n不要点击陌生链接，而应直接在浏览器输入官方网站地址（例如GovPay）。\n\n投资前务必谨慎思考，合法金融机构绝不会保证快速高额回报。\n\n将可疑短信、广告或视频向警方网络犯罪部门举报，并向Fact Crescendo提供截图，以便调查核实。\n\n结论\n\n被东南亚国家打击后的跨国网络诈骗集团已逐渐将业务转移至斯里兰卡，2026年相关逮捕人数持续大幅增加。\n\n这些犯罪网络通过投资诈骗、恋爱诈骗、虚假招聘、商业电子邮件诈骗、虚假交通罚款诈骗以及身份冒充等多种方式接触公众并实施诈骗。\n\nFact Crescendo斯里兰卡呼吁公众持续关注斯里兰卡警方、中央银行及国家计算机应急响应中心（CERT）发布的最新安全提示，对于任何主动送上门的投资机会、工作机会或付款请求，都应先独立核实后再作决定。\n⚡️⚡️⚡️⚡️⚡️无私彩 无双系统 假一罚亿\n官网:9999.COM 飞投:@GT9999bot",
-      "links": [
-        {
-          "label": "9999.COM",
-          "url": "https://9999085.com/"
-        },
-        {
-          "label": "GT9999bot",
-          "url": "https://t.me/GFFT9999?start=agent_ip7tgi"
-        }
-      ],
-      "createdAt": "2026-06-29T20:25:57.046Z",
-      "expiresAt": "2026-07-01T20:25:57.046Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:57.046Z",
-      "tag": "ai",
-      "tags": [
-        "ai",
-        "technology",
-        "electronics_pc",
-        "electronics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-06-29T20:25:57.046Z"
-      }
-    },
-    {
-      "id": 2250025837,
-      "postUrl": "https://t.me/jianpuzhaiu/3502?single",
-      "source": {
-        "title": "东南亚大事件 柬埔寨大事件 巴基斯坦新闻",
-        "handle": "jianpuzhaiu",
-        "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/GXL4U2qye_uZT--AgkJPNP3g2GjF4y6HOzEXW0-uU_z2rgfDp-J0_1h3zhugpJguUkvMJOpzS0XuRqSO92kWv-NDPX0vk0KNg57Jwv1osItUPmoZiAHeX9vgR2GzJiSo2-k1vQ07wa0MCv5P53Y_SfpIlm_QCssqQNKCtsxfn0iiCccE-SVHyu2A5jLn3AWMzikea4asrJDmfw3FPBCMxGkdFpun-AatFuiRaEny7Z6iqRN8C4fNimhSNylv6r9weC_f8859UY4IJUlqI7_1FH2AqD_bduNbqKOXXCut7xNv3GPIjBhsAFn4SSgR2AExSsx6rBW-wojGnGT2V5-mkg.jpg"
-      },
-      "sourceId": "cn:jianpuzhaiu",
-      "sourceCountryCode": "cn",
-      "contentType": "gallery",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/QHFZTplQhxdCoHE6hrqK-W4oWF24Vv6iGINuPqogHREdJ-7HjjiClNGtgq8yp08wUBzJ_Wbr0DvGReDvFyWYmQcvldWVEn4UV3MTKbKPuDYp5cr1q7B_k4xNRAo-f-gsSRfinYj9E0yozRAPnRIqxXE0OC3C-DdKeNeAqeEps2RVsxtamjbbFzymhGgqNRUmGIykcrXwGNt-UxsKgK7k0hFhjTZmIXuos-Gz0wz7XuCpvFft-W_mf7Nz8TBIjAu4LAREHqQBS9EgkwreNoLJZBdJ5M_fGkqa6voGJN_QRD0g7V23xlrJBdZ-zNGSGYog1us1u1N-DoZEpMTiq0Z8hg.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/HoaoBz8GI0Qnx1Oac4qq2lmFW2vntQM4bOVqEOIQzEw8CDxKSI5TV9Pives_qVr9oDMrouytXRDUDRZMH1fHoMqsvqE-kOzDf6_TfLNsORutvIm5Ix796eDLVtVQcD1iYM7QCw8OeNPTkCTbqepg6RNjPI44BXrwSidsb1rwhVxq8Jy_NnGn8IV-BaNhzX2REU68QaA19Eb9jvHpJM7Z3UUQhGqUWtYB1V8WQKe1N3H-m_bkRHXf-YIWepg3kGaW2NYf9DLRQUvIskVR5sKh1EZeJQkHoymbDw4BgnNkQB270nGcD6o2AghgtohmFVtycAdTlkQJBDn_NFhvWw5YqA.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/olB7dbev8lILsj7pMm3Gp0zPmvffp5Qx60AgJrtBAuEk3oaX69mO-lZGUEPtREChmPbi8QqA4tOh_1IM-hfbGDEXTkPiYulUomWdb5YTZ0QkcdwFITGkmtcA70r3kZxtwXIJo_b47YJPyt4YBaggya_yHNxoBh2dXUo2iXHthRo6nDuGoNQ3bphCwoauluvRInprTGXHJjTmQYOYoMgl0hY7NLrFqcQAfRKCsWoRMFxREMHG-zvU4wIf_oLl_EG96JfC9aIwCibXY5mPYgQMuWmJl09QoDewOQop997UfbpbASnsWL2QTf3RwE6bMk61B31jBD4kFiecYpBQH8uJJg.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/PtbBwv3rZxkEyb5LPleqA-12SLcYMke2xd61i8hn7SZhxTbpnN-GpjFMalPtmb1azd5pex2S-VPWvbeu0k5ybFIaiSmGUeruoniZkecH3mMnMWxLeZZwZtHkvF9sNsRtSLy7m4DjsIkj01nN6-xZ-6Cl84vKwkiIm5dZ1Mu9Tdg7llwgfcwetEwog_nDtykWIXJs45KgV4iiRE0k02SIAv2N1-XnAOsHfxHADkkw8ZOF7ZCXffmRxpwsRmH6AmE6iR60M47JZOnpCi38IBo3YFKrv51asJ877SkZmdFLOuc-lVXcg2BUm3rhJ5IhSEpDECG_-ZmOGdKCQaImifF1Yw.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "甘蒙警方连端两处诈骗窝点 \n115名涉诈嫌疑人及涉案物证移交老挝公安部外国人管理局处置\n\n据甘蒙省公安厅最新通报：\n6月26日，老挝甘蒙省公安厅外籍管理警察大队联合经济警察大队，将分两批次抓获的115名电信网络诈骗嫌疑人，连同全部涉案设备，依法移交老挝公安部外籍管理局侦办。\n\n本次系列抓捕行动共查获涉诈人员115名，人员国籍分布：中国籍104人（含女性3人）、缅甸籍7人（含女性3人）、埃塞俄比亚籍3人、乌克兰籍1名女性。现场累计扣押台式电脑137台、笔记本电脑4台、涉案手机757部、打印机2台。\n\n两次抓捕详情如下：\n\n1. 6月20日，执法人员在甘蒙省农博县纳坎村晓东布KTV开展清查行动，抓获嫌疑人65名，其中54人为中国籍；当场收缴台式电脑65台、笔记本电脑4台、手机420部。\n\n2. 6月23日，警方在甘蒙省他曲市班潭村Open View度假村开展收网行动，抓获50名中国籍嫌疑人（含女性3人）；现场查获台式电脑72台、打印机2台、手机337部。（注：6月23日这起案件并未通过老挝官方媒体对外公开通报，仅作为公安内部文件流转传达。）\n\n经初步核查，上述两处窝点涉案人员均存在多项触犯老挝法律的行为：非法入境滞留、无许可务工经营、刻意藏匿行踪，同时依托网络实施跨国电信诈骗。\n\n目前该案已移交老挝公安部外籍管理局，依照老挝相关法律法规进一步调查处置。",
-      "links": [],
-      "createdAt": "2026-06-29T20:25:55.830Z",
-      "expiresAt": "2026-07-01T20:25:55.830Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:55.830Z",
-      "tag": "electronics_pc",
-      "tags": [
-        "electronics_pc",
-        "electronics"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-06-29T20:25:55.830Z"
-      }
-    },
-    {
-      "id": 2856276168,
-      "postUrl": "https://t.me/jianpuzhaidashijian/121670?single",
-      "source": {
-        "title": "西港日记|柬埔寨大事件",
-        "handle": "jianpuzhaidashijian",
-        "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/GZ3XxM0B_viSDpK-qslAhE8iv0BWpkF2Nq6WJUB3bnNex-Hw1SC9OzN4ND45uvV-OkCi0PrtvfZnmNcR2_iyVd7k77_BmFoZ-He9IdaR-cPXXaG-oXb1EDfVhvvH0CGkKJQvIoXygcreomh7S0XIxM7-eFCBpo00RDOhl3Zr4qvlehvxDGAQZh0JPXkqB0898xRt3aOx-vHz2-LIf1PKwfj-RXJuD12qGDYQRBTcg8yTMzHT3gFj5o3jYozbr6LR2n_C9DBvls1WkdZegYpkzOQUnA2Etyi8flu5d9EOwlobc6qgkaB-n2PoNsLnUpZEtL8C5Pd46fMXOFQNfLSyPA.jpg"
-      },
-      "sourceId": "cn:jianpuzhaidashijian",
-      "sourceCountryCode": "cn",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
-      "fallbackReason": null,
-      "text": "🤩🤩🤩🤩🤩🤩\n😃🤩🤩🤩🤩⚡️⚡️⚡️🤩\n东南亚大事件上押❤️❤️❤️⚡️❤️\n\n【51U集团｜代理双享模式重磅来袭】\n诚邀各位精英加入、强强联合共赢未来！\n😀净盈利分红 + 流水返佣\n1️⃣ 流水返佣最高 1%｜1人起\n2️⃣ 净盈利分红最高 55%｜3人起\n3️⃣ 西港利乐实体赌场背书，结算稳定无忧\n\n⚡️ 新人专属福利\n🤩 注册免充值即送 51U【可提现】：@TG51U 👍\n🤩 新人首存50U送18U 最高赠送18888U\n🤩 PG电子返水全网最高起步 🤩🤩🤩🤩🤩\n🤩 独家明牌百家乐｜一箭双雕捕鱼\n🤩 会员秒提款，代理秒结账\n\n🤩🤩🤩🤩🤩：@DL51U\n🤩🤩🤩🤩🤩：@KF51U\n🤩🤩🤩🤩🤩：@GF51U\n🤩🤩🤩🤩🤩： 51U.COM",
-      "links": [
-        {
-          "label": "【可提现】",
-          "url": "https://t.me/tg51u?start=inviteCode-Q_dIQAoJ4h33"
-        },
-        {
-          "label": "@TG51U",
-          "url": "https://t.me/tg51u?start=inviteCode-Q_dIQAoJ4h33"
-        },
-        {
-          "label": "新人首存50U送18U 最高赠送18888U",
-          "url": "https://t.me/tg51u?start=inviteCode-Q_dIQAoJ4h33"
-        },
-        {
-          "label": "@DL51U",
-          "url": "https://t.me/DL51U"
-        },
-        {
-          "label": "@KF51U",
-          "url": "https://t.me/KF51U"
-        },
-        {
-          "label": "@GF51U",
-          "url": "https://t.me/+lr5D_ZEtulBmODU1"
-        },
-        {
-          "label": "51U.COM",
-          "url": "https://51u08.com/"
-        }
-      ],
-      "createdAt": "2026-06-29T20:25:55.071Z",
-      "expiresAt": "2026-07-01T20:25:55.071Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:55.071Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-06-29T20:25:55.071Z"
-      }
-    },
     {
       "id": 2476701339,
       "postUrl": "https://t.me/jianpuzhai_001/20133?single",
@@ -318,10 +24,10 @@
       "fallbackReason": null,
       "text": "被东南亚打击后转移的网络诈骗集团已在斯里兰卡落脚\n\n随着东南亚各国持续打击网络诈骗活动，被迫转移的国际犯罪集团开始将斯里兰卡作为新的落脚点，并逐渐形成针对斯里兰卡本地居民及外国受害者的新型诈骗模式。\n\n官方报告证实，仅2026年前五个月，就有超过1000名与斯里兰卡网络诈骗案件有关的外国人被逮捕，其中大多数为中国、越南和印度公民。他们持旅游签证入境斯里兰卡，随后组织并实施网络诈骗活动。\n\n在此之前，这些有组织犯罪集团已在柬埔寨、缅甸和老挝建立了大规模网络诈骗基地，并利用被贩运人员作为强迫劳工，在戒备森严的园区内从事诈骗活动。\n\n亚洲基金会和联合国相关机构估计，目前至少有30万人被困于这些诈骗园区中，而这些诈骗活动每年造成约400亿美元的经济损失。\n\n自2025年年中以来，局势进一步恶化。\n\n柬埔寨已针对这些犯罪网络展开突袭和遣返行动。2026年1月29日，中国对11名涉网络诈骗人员执行死刑，其中包括与缅甸果敢地区诈骗集团有关的主要头目。\n\n然而，尽管执法力度不断加强，这些犯罪网络并没有瓦解。正如国际媒体所报道，它们只是不断分散并在新的国家重新集结。\n\n为什么斯里兰卡成为目标多个因素使斯里兰卡成为这些犯罪网络的新据点。\n\n来自40多个国家（包括中国和印度）的公民可获得30天免费旅游签证，并可在入境后申请延期。\n\n斯里兰卡警方证实，今年所有被捕的网络诈骗人员均持旅游签证入境。\n\n当地SIM卡及互联网管理相对宽松，使诈骗团伙能够在酒店房间或出租公寓内开展诈骗活动。\n\n在线博彩监管较为宽松，以及当地被称为“Undiyal”的非正式资金转移系统，可在没有银行交易记录的情况下转移现金和加密货币，这进一步增加了犯罪集团的兴趣。\n\n更关键的是，斯里兰卡目前起诉此类跨国诈骗集团的能力有限，使该国成为这些组织理想的活动基地。\n\n这些诈骗集团在斯里兰卡境内运作，同时针对外国受害者和斯里兰卡本地居民，通过WhatsApp、Facebook和Telegram等平台联系目标。\n\n官方数据显示，仅2026年前五个月，就有超过1000人因与斯里兰卡境内网络诈骗集团有关而被逮捕。\n\n这些诈骗集团实际上如何运作\n\n这些诈骗集团在斯里兰卡的运作方式与柬埔寨和缅甸有所不同。\n\n报告指出，他们通常以5至10人为一个小组进行活动，每隔几个月便更换酒店、公寓或办公地点，因此更加难以追踪和抓捕。\n\n在2026年6月科伦坡的一次突袭行动中，警方查获了62本中国护照、手机、笔记本电脑、U盘、一枚伪造文件印章、伪造的美国财政部信函、一份虚假的美国公司注册文件，以及一份声称该公司价值100亿美元的证书。\n\n斯里兰卡警方证实，该行动背后是一家中国犯罪组织，专门诱骗美国人投资一家虚构的美国公司。\n\n主要诈骗类型及其运作方式\n\n这些犯罪网络并非只从事一种诈骗，而是同时经营多种诈骗模式。\n\n投资及加密货币诈骗（包括AI深度伪造）\n\n这是他们最主要的诈骗方式。\n\n诈骗人员建立虚假的投资交易平台，并通过AI生成内容，向受害人承诺极高投资回报。\n\n为了吸引受害者，他们制作深度伪造（Deepfake）视频，假冒斯里兰卡总统阿努拉·库马拉·迪萨纳亚克、总理哈里尼·阿玛拉苏里亚、板球明星库马尔·桑加卡拉以及企业家奥塔拉·古纳瓦德纳等公众人物，谎称这些知名人士支持相关投资计划。\n\n恋爱诈骗（杀猪盘）\n\n诈骗人员通过交友软件、WhatsApp或社交媒体与受害者建立恋爱或朋友关系。\n\n在取得受害者信任之后，再诱导其进入虚假的投资平台。\n\n报告指出，这是这些犯罪网络最主要的诈骗方式之一。\n\n由于受害者已经建立起信任关系，因此更容易被骗。\n\n招聘诈骗及人口贩运\n\n诈骗集团发布虚假的高薪招聘广告，宣称招聘IT、呼叫中心或海外工作岗位，以诱骗受害者。\n\n商业电子邮件诈骗（BEC）\n\n这些诈骗不仅针对个人，也针对政府机构和企业。\n\n2025年12月至2026年1月底期间，黑客入侵了斯里兰卡财政部外国资源司的电子邮件和支付系统，将原本应支付给澳大利亚的一笔债务偿还款中的250万美元转移。\n\n调查人员目前仍在确认该案件是由本国犯罪分子还是境外组织实施。\n\n虚假交通罚款及政府缴费诈骗\n\n这是影响许多斯里兰卡民众的一种常见诈骗。\n\n2026年5月，斯里兰卡警方及国家计算机应急响应中心（CERT）发出警告，称诈骗人员通过短信及WhatsApp发送虚假交通违法通知，谎称闭路电视摄像头拍摄到交通违法行为，并要求点击链接缴纳罚款。\n\n该链接会跳转至一个仿冒政府GovPay支付平台的网站，从而窃取银行卡资料、OTP验证码及国民身份证信息。\n\n网络钓鱼及身份冒充诈骗\n\n这类诈骗的主要目的不是立即骗取现金，而是窃取敏感个人信息。\n\n2026年1月，斯里兰卡警方公布了九种常见网络金融诈骗，包括：\n\n短信、电子邮件及WhatsApp钓鱼链接；\n\n虚假银行优惠活动；\n\n二维码诈骗；\n\n来电号码伪装（Caller ID Spoofing）；\n\n虚假商业网站；\n\n冒充高级政府官员，甚至总统和总理身份进行诈骗。\n\n其最终目的都是获取身份证号码、银行卡资料、OTP验证码及银行卡PIN码。\n\n对这些案件的法律处理\n\n目前，斯里兰卡网络犯罪调查部门正在调查这些案件。\n\n警方、移民局及中央银行正联合开展执法行动。\n\n不过，专家指出，目前最大的法律漏洞在于，大多数案件最终只是将涉案外国人驱逐出境，而没有真正进行刑事起诉，使许多犯罪人员得以逃避司法审判。\n\n如何识别并保护自己免受诈骗\n\n这些诈骗集团在各种诈骗方式中都采用了类似套路。\n\n需要警惕的危险信号\n\n制造紧迫感，例如“今晚截止”“立即投资”等；\n\n来自WhatsApp、Telegram或Facebook的陌生好友申请，并声称是“朋友介绍”；\n\n要求将资金汇入无法独立核实的账户；\n\n利用名人视频或照片增加投资可信度；\n\n索要OTP验证码、PIN码、密码、银行卡号码或身份证号码等敏感信息；\n\n发送要求缴纳罚款、领取奖金或更新账户资料的可疑链接。\n\n应采取的措施\n\n无论任何理由，都不要向任何人提供OTP验证码、PIN码、密码、银行卡资料或身份证号码。\n\n独立核实公司信息，确认金融机构是否获得中央银行注册。\n\n不要点击陌生链接，而应直接在浏览器输入官方网站地址（例如GovPay）。\n\n投资前务必谨慎思考，合法金融机构绝不会保证快速高额回报。\n\n将可疑短信、广告或视频向警方网络犯罪部门举报，并向Fact Crescendo提供截图，以便调查核实。\n\n结论\n\n被东南亚国家打击后的跨国网络诈骗集团已逐渐将业务转移至斯里兰卡，2026年相关逮捕人数持续大幅增加。\n\n这些犯罪网络通过投资诈骗、恋爱诈骗、虚假招聘、商业电子邮件诈骗、虚假交通罚款诈骗以及身份冒充等多种方式接触公众并实施诈骗。\n\nFact Crescendo斯里兰卡呼吁公众持续关注斯里兰卡警方、中央银行及国家计算机应急响应中心（CERT）发布的最新安全提示，对于任何主动送上门的投资机会、工作机会或付款请求，都应先独立核实后再作决定。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:54.185Z",
-      "expiresAt": "2026-07-01T20:25:54.185Z",
+      "createdAt": "2026-06-29T21:54:50.607Z",
+      "expiresAt": "2026-07-01T21:54:50.607Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:54.185Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:50.607Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -342,7 +48,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:54.185Z"
+        "reviewedAt": "2026-06-29T21:54:50.607Z"
       }
     },
     {
@@ -377,10 +83,10 @@
           "url": "https://000uuuu.com/353"
         }
       ],
-      "createdAt": "2026-06-29T20:25:53.389Z",
-      "expiresAt": "2026-07-01T20:25:53.389Z",
+      "createdAt": "2026-06-29T21:54:49.928Z",
+      "expiresAt": "2026-07-01T21:54:49.928Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:53.389Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:49.928Z",
       "tag": "electronics_pc",
       "tags": [
         "electronics_pc",
@@ -399,7 +105,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:53.389Z"
+        "reviewedAt": "2026-06-29T21:54:49.928Z"
       }
     },
     {
@@ -450,10 +156,10 @@
           "url": "https://t.me/ioskkbot"
         }
       ],
-      "createdAt": "2026-06-29T20:25:52.628Z",
-      "expiresAt": "2026-07-01T20:25:52.628Z",
+      "createdAt": "2026-06-29T21:54:49.276Z",
+      "expiresAt": "2026-07-01T21:54:49.276Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:52.628Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:49.276Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -472,7 +178,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:52.628Z"
+        "reviewedAt": "2026-06-29T21:54:49.276Z"
       }
     },
     {
@@ -508,10 +214,10 @@
       "fallbackReason": null,
       "text": "#世界盃 日本對巴西的32強賽，巴西在下半場56分鐘憑卡斯美路入球，追成1比1。在奧海城，現場佔少數的巴西球迷非常興奮。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:51.624Z",
-      "expiresAt": "2026-07-01T20:25:51.624Z",
+      "createdAt": "2026-06-29T21:54:48.439Z",
+      "expiresAt": "2026-07-01T21:54:48.439Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:51.624Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:48.439Z",
       "tag": "other",
       "tags": [
         "other"
@@ -529,7 +235,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:51.624Z"
+        "reviewedAt": "2026-06-29T21:54:48.439Z"
       }
     },
     {
@@ -539,7 +245,7 @@
         "title": "东南亚大事件/吃瓜曝光",
         "handle": "illilliiillii",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/KvwudMXgQi9ryBZDwsQeVaO3AK7W401ptrnck_sOkfEqo6WAYG6x1SbUgDQ207rWiwIfog0eYCEr1UX8QjGqbV9n-RmVayPaCLMK0D7BIWBo022qG-kGzQ4TNf4xixCuhnnIzfCexlrJjTE7pSLrL_EJUddA0CXtUWP3j1ogzK6hIoZl0n2kKrqXFBJiHwvFcnVscOtOUhc6lRYE6rFUwjJsBGWtef5O3eJZznR0YiYkd8TkFc7O5gt7ZypDAInfBCY99ZwjXxGA0ksOd0d6DrqHcCDwyIJcCkcB3P0jXjDQdKDx-CsGJQAjq6Hb397TrJb7KufV_6G9tpTiJaZyrg.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/oaUphO9WCEW8SpJTtPWK1X_xy96NquPrOGxVxOy5R6c9bhXfeHFG0mxSK_rtGDZJU5pyhD-ZPgr20cI28aahTDEfZXWp4KbChvvWg6YAdFuQ6uYLFvoTooiB8OdPK2-59N9PSiI5Rd6gGwF07Ty6_EdLlmboFA0bv-cX7TedsIqx2CfwOKwUNxkJTT9PDXLQsYpBZhkMYYBaRtlQOVXA7OrHoEQooTCcf_6_W2KGuIcOV0wclMH5C48OPNUY6z7-vsDDNJEFwWe07JpEpT6KIeqxnQF2NRPVXiol8vB_I-sJTCnudm0HFMWQf2CEl2-9GUPnOtYLOP2zbaM4USFhCg.jpg"
       },
       "sourceId": "cn:illilliiillii",
       "sourceCountryCode": "cn",
@@ -548,12 +254,12 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/eLL9RKRomjxKoIw5XK00Imc2d6TikDe1TaVEY_XLflb0iKw0M-KnUKZanR_DcUgRogZO9pn4jYbUzUvu1NVdseKbIlPbW5pAFPGoiPw3nRVbSrDFZL_moIEicMg85RqHnB38y7ugSZytW6sWqNGXxFrNdnVWl0ei55O0nfxWGMdNfrm8zPzlHtqVO_vw_krLidBp-1DMjlb58zSdiVZVWYv2PBAIdgrQuBFjz7lCgWpG8JXo-xmOdVwnOLmma_sqIFuJnkFM40oychGr6SqWvAL9ze4HPBy0JHXgRq1yKnRk6wlFH05yQcLSE1xnKtCrbym-_u8hNuImQ_gthkYyWg.jpg"
+          "url": "https://cdn4.telesco.pe/file/jHbKEW81Ym0M5t2DZsRMeax9p8t_KklCVVHO94mLXNX4JRruBfjaKgNgyH9eif-lEPPH_dVMKfph2jkasr0KZ3uXpJF5ete6xtm2w_d2njMYmXX5pkJy1y7WqXCyUupAIdfDQDLl9--Kz-CoDlPIXoAvAhvBqdzWByK23cHJ28wwg50jRm1ZSZiRdZSsBFEbEV4s5b8kEEh1aR0cpzmEnZDWsOSftm-3Wr8To-767hXsqbbGP8KpwXuhyj3cdop04M17oNqny4UIADKYujj5egVNQB9u-rlBAPNvCi6nrNHX-PaGZVQe-qJufMINT9T7GdPuiQeQgBezUOe0W2OlSw.jpg"
         },
         {
           "id": "video-2",
           "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/9047552a93.mp4?token=sUqQ-7mBF-l2aWCKpp2WMn1qhYu18FfOy6yfLWF3o-i0qEpBws2ZA4q2Bdp1yZqN7kxHBU07iZMXu_aHvpBBuQkXpXnWFPCryZ5fG3KoGLc3Ef9dqmP3a4ckvJeN28OhW8-KUmBJWFTDIUdLYgkTJ29KzLoaqK9mRbJD5WPNfU2zmEtVDryPQQvtmWoWKeabHmC93xy7HRk7sxf-ZoYUzG_LBP8L9UCd76328CEg-uucbc6vs2feJ9WbvO0oOZk7gnzNkUuAApPz6HxZSL_3eLbsPqfVpG_s3tzZb-GSgNZCjGs0nQylRRXrt0f9mSv09Ru3pQ-NQSArtrWjzRbxOA",
+          "url": "https://cdn4.telesco.pe/file/9047552a93.mp4?token=U4SlvpXg7RZDlsf-BY3_fGh9VkfOMg5PWH7sLfmFlk0NYZA6VxD5INhf6g6n7iKobLigSueWUSGBkyKI8juHspIAnx1EA3pbnxqFXvxzymATtBPo9NY5ZElr-1NyEXDp7e6uZbEAyCv-aGBHirfdZ0Yqopz71CzJ9z9Z8pYiXqcGBjuRnRVxtiw8PZcMNzFXmkxF0QwEWPgo62wK6iyLVeyo4mlyY2mw9foHio_HNavIkdjtb_th5BszaRxY4A_7P6JJBIRDsiYDSuLANE34KYqlNgILh5eL9RmJpyRD9YRFvM02NOCSmif_Q59lnzOtqoz55CtHzfatNpyps30zSw",
           "poster": null,
           "mimeType": "video/mp4"
         }
@@ -562,10 +268,10 @@
       "fallbackReason": null,
       "text": "#网友投稿：昨天，老挝南方和越南的交界关口现场抓获100多名涉及网络诈骗人员，现已全部被送往监狱进行调查处理。\n\n现在全部都被关押在这个监狱里了，有要找朋友的去这个监狱捞人吧！\n\nPs:在外面闯荡的兄弟，加油",
       "links": [],
-      "createdAt": "2026-06-29T20:25:50.598Z",
-      "expiresAt": "2026-07-01T20:25:50.598Z",
+      "createdAt": "2026-06-29T21:54:47.487Z",
+      "expiresAt": "2026-07-01T21:54:47.487Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:50.598Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:47.487Z",
       "tag": "other",
       "tags": [
         "other"
@@ -583,7 +289,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:50.598Z"
+        "reviewedAt": "2026-06-29T21:54:47.487Z"
       }
     },
     {
@@ -622,10 +328,10 @@
           "url": "https://t.me/kefu444bot"
         }
       ],
-      "createdAt": "2026-06-29T20:25:49.868Z",
-      "expiresAt": "2026-07-01T20:25:49.868Z",
+      "createdAt": "2026-06-29T21:54:46.807Z",
+      "expiresAt": "2026-07-01T21:54:46.807Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:49.868Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:46.807Z",
       "tag": "other",
       "tags": [
         "other"
@@ -643,7 +349,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:49.868Z"
+        "reviewedAt": "2026-06-29T21:54:46.807Z"
       }
     },
     {
@@ -688,10 +394,10 @@
           "url": "https://t.me/zqq3333"
         }
       ],
-      "createdAt": "2026-06-29T20:25:48.598Z",
-      "expiresAt": "2026-07-01T20:25:48.598Z",
+      "createdAt": "2026-06-29T21:54:45.761Z",
+      "expiresAt": "2026-07-01T21:54:45.761Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:48.598Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:45.761Z",
       "tag": "other",
       "tags": [
         "other"
@@ -709,7 +415,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:48.598Z"
+        "reviewedAt": "2026-06-29T21:54:45.761Z"
       }
     },
     {
@@ -719,7 +425,7 @@
         "title": "海外华人曝光",
         "handle": "hwhrbg",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/I4QFwec28lSznYWS_EY0XQmcA_FoEf99v_HWTJNmGHU57ufsJVgrnfIq4xLlw_3Iy4p6GW4gYZLUk2vICBXBRoug_SnX4mX-3E7Vb7w68E_4J7t68FPpsdhf4TZSUyVTcbW5fLu2WCu-ijLLexh4jZqb2QHb2JBWexfEKzXriYMl0wvrql-THA4pPzkwT1vKfn9K1G654PHPv_wfh_dMxCZv9fxIpxA5raR4RWqeVO7J_IKgsiFAfG1Wvzk-FyRJ9HEEzAwvOKMkB3Mpy8SlTb2KvSQT0yff60k5v8ra8qcCAUmzHdD72Qfx_tntQTmtPSYkgsUG1J-sTy6M1ZJx7Q.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/jxHQ4c4udbn-BOCgSs0nIrJQ3ze7Nr853NvoRoZHmsSw0cfhvuErhPtdZ6EHSJDsdXf9KsLsSC-HD_HwKVhV1Gh3BTYU8Ac3eFPfQ9bd6K4Tdd6cmOslAdXpuO4sd548P-RiPlu-YuWtl0paU24JomuKaupcWy1-ApXhDGRI-MfPfg8_Dx0qWs72am44M8jXHvbDjxbYgo61Lml6D8y0vNVrIo6fb4xWKRML42pBjccImw2Xd624JH4LvSaIPI0O010abybK84CAmdy_-67n_-mhb28C4Eb4KMxNAW7EdrrDeDPnTXLt1pGiq6VDUFkFRzW-6TPvF7qx1Xgu-lf0pA.jpg"
       },
       "sourceId": "cn:hwhrbg",
       "sourceCountryCode": "cn",
@@ -735,10 +441,10 @@
       "fallbackReason": null,
       "text": "#越南 胡志明5名 #台湾人 为电诈洗钱被捕\n\n越南河静省公安6月29日通报，当地警方联合越南公安部及多地公安机关，#成功捣毁一个特大跨境网络赌博、洗钱犯罪团伙，共抓获36名涉案人员，其中包括5名中国台湾籍人员。\n\n警方介绍，该团伙自2026年4月起按照台湾地区幕后人员指令，在胡志明市租下3处公寓作为窝点，组织越南籍人员负责手机卡、银行账户及赌资流转等工作，内部实行封闭式管理，并频繁更换办公地点和人员，以逃避警方侦查。\n\n调查显示，团伙通过雇人实名办理手机卡和银行账户，再将账户资料统一传回台湾地区管理，用于接收、拆分和转移网络赌博资金。\n\n警方初步查明，仅两个多月时间，该团伙就利用266个银行账户清洗涉赌资金超过1万亿越南盾。行动中，警方共查获266部涉案手机、56部个人手机、3台电脑，以及大量银行卡、账户资料等证物。\n\n目前，越南警方已以涉嫌赌博和洗钱罪对相关人员立案调查，并继续追查境外幕后组织、涉案赌博平台及资金流向。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:47.767Z",
-      "expiresAt": "2026-07-01T20:25:47.767Z",
+      "createdAt": "2026-06-29T21:54:45.008Z",
+      "expiresAt": "2026-07-01T21:54:45.008Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:47.767Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:45.008Z",
       "tag": "electronics_pc",
       "tags": [
         "electronics_pc",
@@ -757,7 +463,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:47.767Z"
+        "reviewedAt": "2026-06-29T21:54:45.008Z"
       }
     },
     {
@@ -902,10 +608,10 @@
           "url": "https://NG209.vip/"
         }
       ],
-      "createdAt": "2026-06-29T20:25:46.994Z",
-      "expiresAt": "2026-07-01T20:25:46.994Z",
+      "createdAt": "2026-06-29T21:54:44.322Z",
+      "expiresAt": "2026-07-01T21:54:44.322Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:46.994Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:44.322Z",
       "tag": "other",
       "tags": [
         "other"
@@ -923,7 +629,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:46.994Z"
+        "reviewedAt": "2026-06-29T21:54:44.322Z"
       }
     },
     {
@@ -1016,10 +722,10 @@
           "url": "https://t.me/wwwg7com"
         }
       ],
-      "createdAt": "2026-06-29T20:25:45.942Z",
-      "expiresAt": "2026-07-01T20:25:45.942Z",
+      "createdAt": "2026-06-29T21:54:43.516Z",
+      "expiresAt": "2026-07-01T21:54:43.516Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:45.942Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:43.516Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -1038,7 +744,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:45.942Z"
+        "reviewedAt": "2026-06-29T21:54:43.516Z"
       }
     },
     {
@@ -1064,10 +770,10 @@
       "fallbackReason": null,
       "text": "🐴 神马搜索 🔍 👉 精准搜索，极速匹配，给你超高效的搜索体验！快来试试吧！\n\n💡 点击下方按钮快速打开机器人开始搜索 👇",
       "links": [],
-      "createdAt": "2026-06-29T20:25:45.197Z",
-      "expiresAt": "2026-07-01T20:25:45.197Z",
+      "createdAt": "2026-06-29T21:54:42.893Z",
+      "expiresAt": "2026-07-01T21:54:42.893Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:45.197Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:42.893Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1085,7 +791,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:45.197Z"
+        "reviewedAt": "2026-06-29T21:54:42.893Z"
       }
     },
     {
@@ -1144,10 +850,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-06-29T20:25:44.516Z",
-      "expiresAt": "2026-07-01T20:25:44.516Z",
+      "createdAt": "2026-06-29T21:54:42.315Z",
+      "expiresAt": "2026-07-01T21:54:42.315Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:44.516Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:42.315Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1165,7 +871,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:44.516Z"
+        "reviewedAt": "2026-06-29T21:54:42.315Z"
       }
     },
     {
@@ -1196,10 +902,10 @@
           "url": "https://t.me/xhs007bot"
         }
       ],
-      "createdAt": "2026-06-29T20:25:43.577Z",
-      "expiresAt": "2026-07-01T20:25:43.577Z",
+      "createdAt": "2026-06-29T21:54:41.446Z",
+      "expiresAt": "2026-07-01T21:54:41.446Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:43.577Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:41.446Z",
       "tag": "design",
       "tags": [
         "design",
@@ -1218,7 +924,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:43.577Z"
+        "reviewedAt": "2026-06-29T21:54:41.446Z"
       }
     },
     {
@@ -1270,10 +976,10 @@
           "url": "https://t.me/+byi38xxjLzlhNGE9"
         }
       ],
-      "createdAt": "2026-06-29T20:25:42.695Z",
-      "expiresAt": "2026-07-01T20:25:42.695Z",
+      "createdAt": "2026-06-29T21:54:40.721Z",
+      "expiresAt": "2026-07-01T21:54:40.721Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:42.695Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:40.721Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1291,12 +997,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:42.695Z"
+        "reviewedAt": "2026-06-29T21:54:40.721Z"
       }
     },
     {
-      "id": 251998936,
-      "postUrl": "https://t.me/huaerjie1/13373?single",
+      "id": 305609719,
+      "postUrl": "https://t.me/huaerjie1/13374?single",
       "source": {
         "title": "华尔街日报",
         "handle": "huaerjie1",
@@ -1309,16 +1015,15 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "韩国多家大型公司将投资5170亿美元建造新的半导体工厂\n\n 韩国产业通商部长官金正官表示，规模最大的Samsung和SK Hynix技术公司将共同投资大约5170亿美元，在国内建造4座生产半导体存储器的新工厂。\n金正官在韩国总统李在明办公厅会议上说：“将在国家西南部打造第二个半导体生产基地，通过集体投资800万亿韩元（大约5170亿美元）建设4座生产半导体存储器的新工厂。”本次会议审议国家发展的战略草案，韩联社摘引了金正官的讲话。\n文件中指出，投资将由Samsung和SK Hynix公司负责进行，这是世界上两家规模最大的半导体存储器生产企业之一。\n韩联社此外还披露，Samsung还将向平泽市和龙仁市当前已经在建的导体企业群投入2030万亿韩元（大约1.3万亿美元）。\nSK Hynix则计划向半导体存储器生产投资1100万亿韩元（大约7120亿美元），其中600万亿韩元（大约3882亿美元）将用于支持龙仁市导体产业群正在进行的建设。",
+      "text": "蓝箭航天：参考在手订单 当前单发朱雀三号发射服务收入约1.5 亿元/发次\n\n蓝箭航天今日更新的招股书显示，参照在手订单价格，当前单发朱雀三号运载火箭发射服务收入约为1.5 亿元/发次。随着朱雀三号达到最终设计状态，其运载能力和可靠性均将得到大幅提升，即使未来因市场竞争等因素造成发射单价下降，单价下降趋势也远小于运力的增长及可靠性增长带来的整箭收入提升。预计朱雀三号单发火箭发射服务收入提升具有可行性。公司还预计，2029 年将以朱雀三号运载火箭作为主要发射服务产品。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:41.857Z",
-      "expiresAt": "2026-07-01T20:25:41.857Z",
+      "createdAt": "2026-06-29T21:54:39.973Z",
+      "expiresAt": "2026-07-01T21:54:39.973Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:41.857Z",
-      "tag": "gadgets",
+      "mediaRefreshedAt": "2026-06-29T21:54:39.973Z",
+      "tag": "other",
       "tags": [
-        "gadgets",
-        "technology"
+        "other"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1333,7 +1038,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:41.857Z"
+        "reviewedAt": "2026-06-29T21:54:39.973Z"
       }
     },
     {
@@ -1370,10 +1075,10 @@
           "url": "https://t.me/boost/hrtt"
         }
       ],
-      "createdAt": "2026-06-29T20:25:41.154Z",
-      "expiresAt": "2026-07-01T20:25:41.154Z",
+      "createdAt": "2026-06-29T21:54:39.367Z",
+      "expiresAt": "2026-07-01T21:54:39.367Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:41.154Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:39.367Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1391,7 +1096,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:41.154Z"
+        "reviewedAt": "2026-06-29T21:54:39.367Z"
       }
     },
     {
@@ -1417,10 +1122,10 @@
       "fallbackReason": null,
       "text": "👌  评论区抽一名发言者赠送会员。\n\n\n 💬 今日热点播报完毕，愿：世界和平！\n        W i s h   f o r   w o r l d   p e a c e.",
       "links": [],
-      "createdAt": "2026-06-29T20:25:40.232Z",
-      "expiresAt": "2026-07-01T20:25:40.232Z",
+      "createdAt": "2026-06-29T21:54:38.596Z",
+      "expiresAt": "2026-07-01T21:54:38.596Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:40.232Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:38.596Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1438,7 +1143,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:40.232Z"
+        "reviewedAt": "2026-06-29T21:54:38.596Z"
       }
     },
     {
@@ -1476,10 +1181,10 @@
       "fallbackReason": null,
       "text": "#网友投稿 曝光一家藏在柬埔寨波贝新城的黑公司，专门招所谓“半自愿”的台湾人过去做事。\n\n这个盘口主要做台湾“公检法”诈骗，招人的时候说得很好听，承诺不禁足、可以自由活动。\n\n结果人一上车被送到公司，手机马上就被没收，人身自由也被直接限制，想出去根本没那么容易。\n\n进去以后还会被强制签一年合同，中介每送一个人过去，就能拿到3000美元茶水费。\n\n更离谱的是，这笔介绍费最后还会算到员工头上，要求员工自己赔，公司里长期高压加班，打人骂人也是常态。\n\n很多人进去以后根本走不了，只能被逼着继续干活，就算想反抗也不敢，只能一直忍着。\n\n这个集团的总部现在在缅甸妙瓦底，里面不少人都是之前从柬埔寨转移过去的，总监代号叫“木木”。\n\n这个人最早在缅甸大其力，后来又去了柬埔寨波贝维加斯园区，继续经营相关诈骗盘口。\n\n背后据说一直有将军关系当保护伞，没有护照的人只要不听话，普通打骂没用，就会有人直接把人押走。\n\n有些人甚至会被送到警察局“交人头”，所以里面很多被困人员根本不敢反抗，只能继续被控制。\n\n希望有关部门尽快介入调查，把里面被限制自由、无法离开的人员早点解救出来。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:39.461Z",
-      "expiresAt": "2026-07-01T20:25:39.461Z",
+      "createdAt": "2026-06-29T21:54:37.982Z",
+      "expiresAt": "2026-07-01T21:54:37.982Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:39.461Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:37.982Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1497,7 +1202,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:39.461Z"
+        "reviewedAt": "2026-06-29T21:54:37.982Z"
       }
     },
     {
@@ -1532,10 +1237,10 @@
           "url": "https://t.me/AAA198932"
         }
       ],
-      "createdAt": "2026-06-29T20:25:38.639Z",
-      "expiresAt": "2026-07-01T20:25:38.639Z",
+      "createdAt": "2026-06-29T21:54:37.276Z",
+      "expiresAt": "2026-07-01T21:54:37.276Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:38.639Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:37.276Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1553,12 +1258,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:38.639Z"
+        "reviewedAt": "2026-06-29T21:54:37.276Z"
       }
     },
     {
-      "id": 1308101097,
-      "postUrl": "https://t.me/hq858/28480?single",
+      "id": 2232442567,
+      "postUrl": "https://t.me/hq858/28486?single",
       "source": {
         "title": "环球新闻-东南亚大事件🔷",
         "handle": "hq858",
@@ -1567,36 +1272,48 @@
       },
       "sourceId": "cn:hq858",
       "sourceCountryCode": "cn",
-      "contentType": "gallery",
+      "contentType": "gif",
       "media": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/cleVq1xsFVUp9kmCJr-4C8HX5NZEDwRYTu_YW_Auu61WqeEv3wA0JsmvPL_3oxtxD44X2UzXJUfl5pm9Qf9LPacuNqSjrCIfmVyZanljf_vsI6NpeURdljrHmNK2qgKw4FHSJZdYmnAjmHc6Oq4YjjulwnH2Pgb4_71VDU6K2h_vzkDGOOt5jVH0sv-WFl6unc00YzruaEKTT9mzeGPiknG0HGS5I4UrtQHGBGw1pcUi5_bsjOGJRSA0wI8LooRntL1MaObt_5OJx9LMQTYAKsLJaLNv0qmQ-tWuxsYvbD5pdd34moV85k1Rks4_25AsfhB9c4yv4MRu3znN38tZcw.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/jfwjoedstG4f3mlohF-u3oqlnf5fBrk9F9ifnVWl24m6WYCwDorgoaIPz_mpCiMqQex2PnHl71K9IoRsZ4JJizJb8SuvXHIPVsjBfduPQ5M5NFFmzVfJNrw2NLRCFe-utANH-5mEPBKMxqVkvHdEkoMlEv64QXhVwei8PeA5AdKlD03DAvQ2UPGFp8IpfK91tv9o-9dsgzP1lL1KRD-rV9eWIYTtP3tav6j3XXaztibtpEmuRG3dtF9QjZmrSqnTxRoXg--HKbFtfee75T6oC-LIBXHS1_FkMP3BXjbBRpKQtXRIdspEffkYv7HOdqGIMlr2mK4qubF8117YTYcUZw.jpg"
+          "id": "gif-1",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/1abec30c35.mp4?token=Pk8fmm-JUOvIp3x02FjWaLtS_9_LhX3Yp9seL4PMxh65L4arCqn-hwyCA2oEiYjUjtpHRK56LvyZfN-UQ-DC04BSvLHHn8ZdskHVqdZAF49xZmnV2uUuqRZs3i7VBGunu-SJul4b6eSIDOuvjbE5bYHokgR5JsVW3uIWHpbrLUPQWJKrqc3-orRpyb3-Q8dZmHTFnLGCqmr1UA9WNZALQkKVXQWDZjsPryamH1F5A9uQ0nlDNOltL8tuP6D5oHZTj_G4nOFDVS222LZu4efiTF1LblHoWpTrTN_J8GbU5qH0taollrHQ7kFyL4hMQjgsY9FTHPZoAzQXfvR2OMv-GQ",
+          "poster": null,
+          "mimeType": "image/gif"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "#柬埔寨新闻\n【巴域警方突袭两处电诈窝点，8人落网】\n柬埔寨柴桢省巴域市警方近日展开行动，成功捣毁两个网络诈骗窝点，抓获8名涉案人员，查获手机27部、电脑主机24台、显示器34台、服务器20个及一辆涉案汽车。\n目前，嫌疑人及物证已移交柴桢省警察局，案件正在进一步侦办中。\n\n🔸🔹环球新闻 @HQ858 🔹🔸",
+      "text": "📣小编强烈推荐国际知名平台\n           ⬇️⬇️⬇️⬇️⬇️\n\n❤️ 球速电子真人0审核包出款\n\n😂😂😂😂 182体育大额无忧\n\n😀 Y3电子真人0审核包出款\n\n⚡️ 电子真人0审核 包出款 全网独家真人限红20WU\n\n 🌟 i8国际 okpay上押500万u担保",
       "links": [
         {
-          "label": "@HQ858",
-          "url": "https://t.me/HQ858"
+          "label": "球速电子真人0审核包出款",
+          "url": "https://t.me/qsty7999"
+        },
+        {
+          "label": "182体育大额无忧",
+          "url": "https://182607.com/"
+        },
+        {
+          "label": "Y3电子真人0审核包出款",
+          "url": "https://y30222.com/"
+        },
+        {
+          "label": "电子真人0审核 包出款 全网独家真人限红20WU",
+          "url": "https://8k2098.com/"
+        },
+        {
+          "label": "i8国际 okpay上押500万u担保",
+          "url": "https://i8245.vip/"
         }
       ],
-      "createdAt": "2026-06-29T20:25:37.764Z",
-      "expiresAt": "2026-07-01T20:25:37.764Z",
+      "createdAt": "2026-06-29T21:54:36.510Z",
+      "expiresAt": "2026-07-01T21:54:36.510Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:37.764Z",
-      "tag": "electronics_pc",
+      "mediaRefreshedAt": "2026-06-29T21:54:36.510Z",
+      "tag": "other",
       "tags": [
-        "electronics_pc",
-        "electronics"
+        "other"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1611,7 +1328,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:37.764Z"
+        "reviewedAt": "2026-06-29T21:54:36.510Z"
       }
     },
     {
@@ -1676,10 +1393,10 @@
           "url": "https://t.me/sooo"
         }
       ],
-      "createdAt": "2026-06-29T20:25:36.926Z",
-      "expiresAt": "2026-07-01T20:25:36.926Z",
+      "createdAt": "2026-06-29T21:54:35.849Z",
+      "expiresAt": "2026-07-01T21:54:35.849Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:36.926Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:35.849Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1697,7 +1414,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:36.926Z"
+        "reviewedAt": "2026-06-29T21:54:35.849Z"
       }
     },
     {
@@ -1717,10 +1434,10 @@
       "fallbackReason": null,
       "text": "中環建築工程：直至06:00，雪廠街南行往遮打道方向，近香港文華東方酒店的南行線封閉，車輛須繼續直駛，改經域多利皇后街左轉入德輔道中前往遮打道；同時，遮打道近雪廠街的左線亦封閉。\n2026-06-30 HKT 00:03",
       "links": [],
-      "createdAt": "2026-06-29T20:25:35.595Z",
-      "expiresAt": "2026-07-01T20:25:35.595Z",
+      "createdAt": "2026-06-29T21:54:34.753Z",
+      "expiresAt": "2026-07-01T21:54:34.753Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:35.595Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:34.753Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -1739,7 +1456,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:35.595Z"
+        "reviewedAt": "2026-06-29T21:54:34.753Z"
       }
     },
     {
@@ -1765,10 +1482,10 @@
       "fallbackReason": null,
       "text": "阿联酋将于2026年7月1日启动电子发票系统试点（正式全面强制实施从2027年开始），未来将逐步取代传统PDF/纸质发票，采用结构化数字发票。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:34.946Z",
-      "expiresAt": "2026-07-01T20:25:34.946Z",
+      "createdAt": "2026-06-29T21:54:34.210Z",
+      "expiresAt": "2026-07-01T21:54:34.210Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:34.946Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:34.210Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1786,7 +1503,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:34.946Z"
+        "reviewedAt": "2026-06-29T21:54:34.210Z"
       }
     },
     {
@@ -1847,10 +1564,10 @@
       "fallbackReason": null,
       "text": "#黄露瑶\n揭阳市人民医院女职员黄露瑶，勾引医院副主任还是有妇之夫！两人聊天记录不堪入目，暧昧露骨，被原配直接曝光，医院内部这瓜吃得真香。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:33.950Z",
-      "expiresAt": "2026-07-01T20:25:33.950Z",
+      "createdAt": "2026-06-29T21:54:33.387Z",
+      "expiresAt": "2026-07-01T21:54:33.387Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:33.950Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:33.387Z",
       "tag": "health_medicine",
       "tags": [
         "health_medicine",
@@ -1869,7 +1586,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:33.950Z"
+        "reviewedAt": "2026-06-29T21:54:33.387Z"
       }
     },
     {
@@ -1936,10 +1653,10 @@
           "url": "https://u99pp.com/?cid=6459328"
         }
       ],
-      "createdAt": "2026-06-29T20:25:33.125Z",
-      "expiresAt": "2026-07-01T20:25:33.125Z",
+      "createdAt": "2026-06-29T21:54:32.683Z",
+      "expiresAt": "2026-07-01T21:54:32.683Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:33.125Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:32.683Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -1958,7 +1675,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:33.125Z"
+        "reviewedAt": "2026-06-29T21:54:32.683Z"
       }
     },
     {
@@ -2027,10 +1744,10 @@
           "url": "https://20280436.com/"
         }
       ],
-      "createdAt": "2026-06-29T20:25:32.221Z",
-      "expiresAt": "2026-07-01T20:25:32.221Z",
+      "createdAt": "2026-06-29T21:54:32.002Z",
+      "expiresAt": "2026-07-01T21:54:32.002Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:32.221Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:32.002Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -2049,7 +1766,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:32.221Z"
+        "reviewedAt": "2026-06-29T21:54:32.002Z"
       }
     },
     {
@@ -2069,10 +1786,10 @@
       "fallbackReason": null,
       "text": "#Nintendo 🇯🇵日本，Nintendo Switch Online/NSO/高级家庭计划，年付48，8人车补3人，在涨价之前买了三年份顶额的会员，只招长期车友，短期勿扰，跳车不退，翻车按比例退尾款。UID：2033624299\n\n【状态】现已满员",
       "links": [],
-      "createdAt": "2026-06-29T20:25:31.380Z",
-      "expiresAt": "2026-07-01T20:25:31.380Z",
+      "createdAt": "2026-06-29T21:54:31.310Z",
+      "expiresAt": "2026-07-01T21:54:31.310Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:31.380Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:31.310Z",
       "tag": "gaming_console",
       "tags": [
         "gaming_console",
@@ -2091,7 +1808,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:31.380Z"
+        "reviewedAt": "2026-06-29T21:54:31.310Z"
       }
     },
     {
@@ -2139,10 +1856,10 @@
           "url": "https://t.me/+Zw1SKfQmaqFlMDYy"
         }
       ],
-      "createdAt": "2026-06-29T20:25:30.726Z",
-      "expiresAt": "2026-07-01T20:25:30.726Z",
+      "createdAt": "2026-06-29T21:54:30.750Z",
+      "expiresAt": "2026-07-01T21:54:30.750Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:30.726Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:30.750Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2160,7 +1877,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:30.726Z"
+        "reviewedAt": "2026-06-29T21:54:30.750Z"
       }
     },
     {
@@ -2207,10 +1924,10 @@
           "url": "https://t.me/+Y2snxHSomFwxYjM1"
         }
       ],
-      "createdAt": "2026-06-29T20:25:29.966Z",
-      "expiresAt": "2026-07-01T20:25:29.966Z",
+      "createdAt": "2026-06-29T21:54:30.127Z",
+      "expiresAt": "2026-07-01T21:54:30.127Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:29.966Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:30.127Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2228,7 +1945,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:29.966Z"
+        "reviewedAt": "2026-06-29T21:54:30.127Z"
       }
     },
     {
@@ -2269,10 +1986,10 @@
       "fallbackReason": null,
       "text": "法国退出北约转向中国？梅朗雄开出欧洲解药，马克龙退场倒计时？\n\n在政坛，有人花四十三年等一个转身，也有人想用一场演讲，把这个转身重新推翻。\n2026年6月27日，巴黎。在\"不屈法国\"党旗下的拉博埃西智库举办的一场地缘政治研讨会上，74岁的让-吕克·梅朗雄，抛出了一句让全场瞬间安静下来的话——法国，应该退出北约。\n这不是一句气话，而是一整套主张。\n据多家法国媒体报道，梅朗雄当天系统阐述了他所谓的\"合作型不结盟\"路线：分阶段退出北约军事一体化指挥体系，拒绝加入新的军事联盟，转而与北京展开更深度的合作。他不主张与中国对抗，更明确表示，法国\"绝不会对中国开战\"。\n就在两个多月前，2026年4月，马克龙在塞浦路斯对一群学生说出了那句被反复引用的话——\"我从政之前不搞政治，卸任之后也不会搞。\"这位在法国宪法下无法再连任第三届的总统，等于亲手为2027年的大选按下了发令枪。\n舞台已经空出来了。问题是，谁来填补，又会把法国带向何方？\n对很多中国读者来说，梅朗雄这个名字也许有点陌生。但在法国，他是一个绕不开的人物。\n2012年，他第一次冲击总统宝座，拿下11.1%的选票；\n2017年，19.6%；2022年，他一路冲到近22%，距离杀进第二轮，只差1.2个百分点。三次参选，三次抬高得票，这是一条肉眼可见的上升曲线。\n今年5月3日，他在电视上正式宣布参选2027——这已经是他的第四次出征。\n所以，当这位74岁的老将在研讨会上谈北约、谈中国，分量就完全不一样了。这不是边缘人物的呓语，而是法国左翼最有号召力的声音，在为下一场大选定调。\n他的核心逻辑其实很\"戴高乐\"：一个真正独立的法国，不应该把自己的安全和命运，捆绑在一个由别人主导的军事同盟里。\n他要的，是先退出北约的一体化军事指挥，再逐步与\"奥库斯\"这类印太军事集团划清界限，然后腾出手来，和东方做生意、谈合作。\n当然，也得泼一盆冷水：梅朗雄想赢，并不容易。\n多项民调显示，在与极右翼候选人的一对一对决中，他大幅落后；\n眼下法国政坛真正的两强，仍是极右的那两张面孔。就连法国左内部，对他这套激进的外交主张，也远谈不上团结——有人觉得是远见，有人觉得是冒险。\n但话说回来，一个人能不能当选是一回事，他抛出的议题能不能搅动整个欧洲，是另一回事。而梅朗雄这一次，显然搅动了。\n要看懂这件事的分量，得把时间往回拨整整六十年。\n法国和北约的纠缠，是一部写了七十多年的连续剧。1949年，法国是北约的创始成员国之一。可到了1966年，那位骄傲的戴高乐将军，做了一件震动整个西方的事——他宣布法国退出北约的军事一体化指挥体系，要求所有外国驻军撤离法国领土，连设在巴黎的北约总部也被请走。\n戴高乐留下一句话，至今仍被反复咀嚼：\"合作，就是失去独立。\"在他眼里，如果法国的军队要听命于一位美国将军，那法国就不再是自己命运的主人。\n这一别，就是四十三年。直到2009年，萨科齐才正式带领法国重返北约一体化指挥体系。他的理由同样直白：\"我们把士兵送上战场，却不参加决定他们任务的那个委员会？\"——既然兵也出了、钱也花了，不如回到桌前，争一个话语权。\n看到这里你就明白了：梅朗雄今天喊的\"退出北约\"，本质上是把戴高乐六十年前那面旗，又重新举了起来。\n而这里藏着一个极有意思的反转：\"战略自主\"原本是法国右、是戴高乐主义的政治遗产，如今却被最左翼的梅朗雄高高接过。这说明什么？说明\"不愿被人牵着鼻子走\"这件事，在法国早已不是某一派的专利，而是一条流淌在民族性格里的深层暗流。**它会随着时局，在左右之间反复横跳，却从未真正消失。\n那么，为什么是现在？因为旧的伤口，还在隐隐作痛。\n2021年9月，美英澳三国突然宣布组建\"奥库斯\"，澳大利亚一夜之间撕毁了与法国海军集团签订的潜艇大单——这笔生意，有估算高达660亿美元。\n法国外长当时怒斥这是\"背后捅刀\"，巴黎更是史无前例地召回了驻美国和驻澳大利亚的大使。对一向以盟友自居的法国来说，那一刀，到今天都没有完全愈合。\n如果说\"退出北约\"是情绪的出口，那\"转向中国\"，就是梅朗雄给欧洲开出的另一味\"药\"。\n听上去很浪漫，但现实，远比口号复杂。\n先看一组数字。据法国财政部数据，法国对华货物贸易逆差约470亿欧元（约合547亿美元），这不是个小数目。同一时期，中国对欧盟的货物贸易顺差，仅上半年就逼近1430亿美元，创下半年纪录。\n也正因如此，2024年法国投了赞成票，支持欧盟对中国电动车加征关税；\n作为回敬，中方对法国白兰地（干邑）发起反倾销调查、设定最低限价。要知道，干邑对华出口一年约14亿欧元，这一记，结结实实打在了法国人最骄傲的酒桶上。\n\n更微妙的，是马克龙本人的姿态。就在2025年12月，他刚带着空客、巴黎银行等一众法国巨头访问北京，签下十二项合作协议；\n\n可一回到欧洲，他又警告说，如果中欧贸易失衡继续下去，欧洲\"可能不得不\"像美国那样对华加征关税。一边热络握手，一边谈\"脱钩\"——这才是当下中法、中欧关系真实的样子：既离不开，又放不下心。\n所以，梅朗雄\"向东看\"的设想，与其说是一份成熟的国策，不如说是一种方向上的呼唤。真正耐人寻味的，是另一个细节：北京其实乐见一个更自主的法国。就在那次会谈中，中国对马克龙说，中法应当展现\"大国应有的独立自主和战略远见\"。\n这句话的潜台词，懂的人都懂。\n短期看，梅朗雄的声音注定会被淹没。据报道，就在7月7日至8日，北约峰会将在安卡拉举行，各国要确认军费与对乌支持的承诺，主流的合唱依旧响亮。\n但把尺度拉长就会发现：当一个旧秩序开始松动，\"另一种选择\"被摆上桌面本身，就已经是一种信号。\n退出北约也好，转向东方也罢，一场演讲，改变不了一个大国的航向。\n但梅朗雄搅动的这池水，照见的却是一个正在悄悄变化的世界——真正决定大国走向的，从来不是某一天的惊人之语，而是藏在历史深处、缓慢却坚定的那股暗流。\n\"不畏浮云遮望眼，自缘身在最高层。\" 看得清那股暗流的人，才不会被眼前飘过的浮云，挡住望向远方的目光。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:29.129Z",
-      "expiresAt": "2026-07-01T20:25:29.129Z",
+      "createdAt": "2026-06-29T21:54:29.378Z",
+      "expiresAt": "2026-07-01T21:54:29.378Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:29.129Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:29.378Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2290,7 +2007,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:29.129Z"
+        "reviewedAt": "2026-06-29T21:54:29.378Z"
       }
     },
     {
@@ -2335,10 +2052,10 @@
           "url": "https://t.me/Myguoguobot"
         }
       ],
-      "createdAt": "2026-06-29T20:25:28.319Z",
-      "expiresAt": "2026-07-01T20:25:28.319Z",
+      "createdAt": "2026-06-29T21:54:28.688Z",
+      "expiresAt": "2026-07-01T21:54:28.688Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:28.319Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:28.688Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2356,7 +2073,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:28.319Z"
+        "reviewedAt": "2026-06-29T21:54:28.688Z"
       }
     },
     {
@@ -2403,10 +2120,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-06-29T20:25:27.438Z",
-      "expiresAt": "2026-07-01T20:25:27.438Z",
+      "createdAt": "2026-06-29T21:54:27.926Z",
+      "expiresAt": "2026-07-01T21:54:27.926Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:27.438Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:27.926Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -2425,7 +2142,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:27.438Z"
+        "reviewedAt": "2026-06-29T21:54:27.926Z"
       }
     },
     {
@@ -2450,10 +2167,10 @@
           "url": "https://play.google.com/store/apps/details?id=com.xiaomi.smarthome"
         }
       ],
-      "createdAt": "2026-06-29T20:25:26.638Z",
-      "expiresAt": "2026-07-01T20:25:26.638Z",
+      "createdAt": "2026-06-29T21:54:27.238Z",
+      "expiresAt": "2026-07-01T21:54:27.238Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:26.638Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:27.238Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -2472,7 +2189,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:26.638Z"
+        "reviewedAt": "2026-06-29T21:54:27.238Z"
       }
     },
     {
@@ -2492,10 +2209,10 @@
       "fallbackReason": null,
       "text": "🎆每个月重磅充值活动来袭🎆 活动时间：每月1日-每月31日（月底最后一天） 🎆\n\n👑活动内容一：本月活动时间期间，根据每个广告版面下方按钮链接进入任意置顶台游戏娱乐，累计充值2500U，即可参与抽奖。（不论输赢，只看充值，根据按钮链接进入才可统计得到账号是否为本群真实玩家）\n\n活动要求：发送台子名称+账号发送给狗群主（👇联系下方按钮👇）查询登记，次月1号会通知参加抽奖。\n\n活动奖励：\n第一名：388USDT\n第二名：328USDT\n第三名：288USDT\n第四名：228USDT\n第五名：188USDT\n第六名：128USDT\n第七名：88USDT\n第八名：68USDT\n第九名：58USDT\n第十名：58USDT\n\n🔥🔥🔥最低10人开奖，不满足10人，发放参与者参与奖58USDT🔥🔥🔥\n\n👑活动内容二：根据每个广告版面下方按钮链接进入任意置顶台游戏娱乐，累计充值500U，即可参与抽奖。（所有要求同活动一，只是充值金额不一样）\n\n活动奖励：\n第一名：68USDT\n第二名：58USDT\n第三名：48USDT\n第四名：38USDT\n第五名：28USDT\n第六名：28USDT\n第七名：28USDT\n第八名：28USDT\n第九名：28USDT\n第十名：28USDT\n\n🔥🔥🔥最低10人开奖，不满足10人，发放参与者参与奖28USDT🔥🔥🔥",
       "links": [],
-      "createdAt": "2026-06-29T20:25:25.954Z",
-      "expiresAt": "2026-07-01T20:25:25.954Z",
+      "createdAt": "2026-06-29T21:54:26.646Z",
+      "expiresAt": "2026-07-01T21:54:26.646Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:25.954Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:26.646Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -2514,7 +2231,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:25.954Z"
+        "reviewedAt": "2026-06-29T21:54:26.646Z"
       }
     },
     {
@@ -2595,10 +2312,10 @@
           "url": "https://y31059.com/"
         }
       ],
-      "createdAt": "2026-06-29T20:25:24.893Z",
-      "expiresAt": "2026-07-01T20:25:24.893Z",
+      "createdAt": "2026-06-29T21:54:25.703Z",
+      "expiresAt": "2026-07-01T21:54:25.703Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:24.893Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:25.703Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -2617,7 +2334,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:24.893Z"
+        "reviewedAt": "2026-06-29T21:54:25.703Z"
       }
     },
     {
@@ -2627,7 +2344,7 @@
         "title": "Nice新闻｜灰产大事件",
         "handle": "gxgxg3",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/Tx-7XCRB0t9lGhGrWbZt4bvcK8wOIp46iZhbgCw49tz7Lz8xlOISeyB86GkjcuJLtWv9Z1EMiqjEQePqQUNDkmylbZKI4W_q9FP-m2BGzICbqDZKPCG3flwFEr8xJrhMrwSbOOOj7npcamqW7KC-cEUtHQh6wAlBSCgMS_xPFu3Yx3sgET50nxBaHVBrrmOj6DZlq2htIPcg7bG8FDoT2gcVwDoLSjUOHm-ruhov7jWeANiybVThYm3Ly_tn-6iDc6CygmDYHwVMf-skTvyasis468tjGIcqwjH2idFDNKhrjUVaVw-SVVQSGP4-D08GEM52at9AuJckwmyhrtEs1Q.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/gxEI9igl2VHeNELPxzAOfnNf8hxF81h8raSoyBILfalP6gcGK_2eZYPioViM2V1iJqky-KMkIpCpS-zElVAdZAG5AAZLxpFxkHSZ8fucX0UVfoohxl4QohSf2lOVlJ0E08NQKGpxgsWM7q5Z99iti3h4xm54wwY65aLe2WMI4A-LbDxKzVgl09IlbJPBJD03smzMXvXwuj3FJAhrZUekrLtsx1tq5rFITNQoXQjRP-_1kQnn51Bz1vDtLXnb6q4fM0smGCMj96ySCDVi1owSp_2fNT-ejoYmjuDjkdvfeKGvh3I9oiS3MI6MarUtKQdWZHtR8ovY4U5obHMqYP1TEw.jpg"
       },
       "sourceId": "cn:gxgxg3",
       "sourceCountryCode": "cn",
@@ -2668,10 +2385,10 @@
       "fallbackReason": null,
       "text": "#日本新闻\n日本栃木夫妇伙同未成年人抢劫杀人遭起诉！\n\n针对栃木县上野川町抢劫命案，宇都宫地检对主犯竹前海斗、竹前美优夫妇以抢劫杀人罪提起公诉。\n\n两名嫌犯伙同四名未成年人，5 月 14 日闯入民宅行窃，为避免犬只吠叫先杀害住户家的狗；入室后杀害屋主富山秀子，又持撬棍殴打赶来的屋主两名儿子致二人身亡。二人面临抢劫、谋杀多项罪名指控。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:23.944Z",
-      "expiresAt": "2026-07-01T20:25:23.944Z",
+      "createdAt": "2026-06-29T21:54:24.841Z",
+      "expiresAt": "2026-07-01T21:54:24.841Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:23.944Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:24.841Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2689,7 +2406,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:23.944Z"
+        "reviewedAt": "2026-06-29T21:54:24.841Z"
       }
     },
     {
@@ -2715,10 +2432,10 @@
       "fallbackReason": null,
       "text": "#网友曝光|亚博支付为骗局，提醒大家注意避雷\n\n近日，有网友曝光“亚博支付”为诈骗平台，称其收款后不履约，并以激烈言辞表达愤怒，同时曝光了对方用户名@Kelee886，提醒大家注意避雷，避免上当受骗。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:23.204Z",
-      "expiresAt": "2026-07-01T20:25:23.204Z",
+      "createdAt": "2026-06-29T21:54:24.201Z",
+      "expiresAt": "2026-07-01T21:54:24.201Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:23.204Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:24.201Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2736,7 +2453,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:23.204Z"
+        "reviewedAt": "2026-06-29T21:54:24.201Z"
       }
     },
     {
@@ -2746,7 +2463,7 @@
         "title": "东南亚狗推快讯（曝光）📱‼️",
         "handle": "gtkx1",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/kyC8nQgiAR8qhfChKcQtAAsBsiW5kkkLfM3EQMG-e_uJYLIdbFKyBnIBBI0G533KLD52CnTvNhmRDXWOXjr7_j8ZfEhdNfq1RPhaGDwI17X0qcS3PO1glRPfqHLjVqAKQc3n0ZyzcX9rZWvIxAMYNDKk7yT7ZBv8dDrIj-L872DGqiVzf7QW8dfBl1NaYurQ7bEn-LwMFQnI-OBXc7li8ub1lzhDDiza9TSXmv3QUCgFq295iUOP8cZrbzd6DiV1yisPEoqi165RaiiAutRFiQOWkp66TTzhW_pB-JdFm8LUvGJRaRQTspSI5vr_qwp_th1BGVIcbvdNcZIx6SlYKQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/am77VzdHdV55XABsH6b8Q5ecS1o3zRcRwd2nEQPehfNlXVNwHZ7iQMjvxwFuRQ8hwgMzY_qz-2whQEEKMQowDxgdjOaPq2UJ4TkQ9YffWEeT-hkC-FP7IzlPiskj9atto8Pdp6-qOczpN_fjRhlobEXI0yq2i2oYNNs6FV45RK7G4x5Oi5272Vcy4oba-3ZthaQzuT6ng3L0J1mrqdb-7D-TQBpnaO_EjSgkTVfkki1F6xcE-qq_oVdhTPiky1epvfIicH7ZGwrPUB9JAlBCUcTLCfQ-W4Fz1jk900c09Likn2i7pC-8r8-V9GY4Zr6VVOi6LggsRZYQ5Eyrrwx6Kg.jpg"
       },
       "sourceId": "cn:gtkx1",
       "sourceCountryCode": "cn",
@@ -2829,10 +2546,10 @@
           "url": "https://t.me/wwwg7com"
         }
       ],
-      "createdAt": "2026-06-29T20:25:22.376Z",
-      "expiresAt": "2026-07-01T20:25:22.376Z",
+      "createdAt": "2026-06-29T21:54:23.466Z",
+      "expiresAt": "2026-07-01T21:54:23.466Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:22.376Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:23.466Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -2851,7 +2568,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:22.376Z"
+        "reviewedAt": "2026-06-29T21:54:23.466Z"
       }
     },
     {
@@ -2861,7 +2578,7 @@
         "title": "机器人定制【狗腿科技】",
         "handle": "gtkj01",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/qLA4a5smxQdHR3cTYZcO8wQL6Fg81ysNdo2OGYKjxrL4MQA35_1ZAV8MzhU-QiWEFTB9DfM6uxFOcU7aofPCDNMlC43qNsM32zcPVLQxLTVTkzft5thLbxxoV4QjmAXeCYP232aN68SPVC8yRMrxQcNPERPvyI5sG-VPY4im8gYMHgAnp_vqkPI0ZtCqw5Qe_IbuOwo-pxin39iNs185gCDvo5pKzcE2QO3JaUeExGb4d17NhH8tnYU6WOVnBLDH5WkC8Lsf_sSTseNwAaZoYtOEcguL47vkjKXt5npo0f-sNR6QcGUDj0fdbxyQUZcUte9Nikg9ZceAo_JZmUoRJQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/OyTmWNPBKU7oRWG9vGrHRt3nmS_PuZjq8GwTwMAm7Ggnvgj2JTln2Moz5sKL5erfWP8VqzEtGYAQgbiiGOlTRSYAA5l02LCrDoDKrrsu6x4mWrYdlQ2lYLysa7H2jq1ltasgdj2m8V4lKzM1MfDvVCuGMP-e3R1oiiBeV5VX-UCM_yv19pt0kKVv5zLft2VYke5E9t2sZrqLnGdv2XA3Dr276-25zEeFqEwUQVREv2zl6EbvJoHpUvcDwFMC3AbClk0h1SN03CsoVzgyMFTw5jODkyS78Up5Spx5g_epLpEmSLHtviYqLR4Mon2RnXW_58z1LxeHnoig5RNPJtg7Fw.jpg"
       },
       "sourceId": "cn:gtkj01",
       "sourceCountryCode": "cn",
@@ -2877,10 +2594,10 @@
       "fallbackReason": null,
       "text": "新版新版   升级的联系啊",
       "links": [],
-      "createdAt": "2026-06-29T20:25:21.576Z",
-      "expiresAt": "2026-07-01T20:25:21.576Z",
+      "createdAt": "2026-06-29T21:54:22.865Z",
+      "expiresAt": "2026-07-01T21:54:22.865Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:21.576Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:22.865Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -2900,7 +2617,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:21.576Z"
+        "reviewedAt": "2026-06-29T21:54:22.865Z"
       }
     },
     {
@@ -2929,10 +2646,10 @@
           "url": "https://t.me/GodlyNewsBot"
         }
       ],
-      "createdAt": "2026-06-29T20:25:20.863Z",
-      "expiresAt": "2026-07-01T20:25:20.863Z",
+      "createdAt": "2026-06-29T21:54:22.135Z",
+      "expiresAt": "2026-07-01T21:54:22.135Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:20.863Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:22.135Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -2951,12 +2668,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:20.863Z"
+        "reviewedAt": "2026-06-29T21:54:22.135Z"
       }
     },
     {
-      "id": 2171469392,
-      "postUrl": "https://t.me/gengarcheats/19902?single",
+      "id": 724777558,
+      "postUrl": "https://t.me/gengarcheats/19904?single",
       "source": {
         "title": "耿鬼 Gengar 官方频道",
         "handle": "gengarcheats",
@@ -2965,19 +2682,31 @@
       },
       "sourceId": "cn:gengarcheats",
       "sourceCountryCode": "cn",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/EpVgfC7l8ODdYt-320MH7G5v9asDOUKHB8F60At1OLgNai1kxvMdUi98nBLQM0hFIaCCYz_L7V-BsUOYAI33Rrj3nse7uzQ6vfZrA9jgZoAA_wggH8eHROj64IGjUz7DCIL45qv03LncylXcg9LhwKAg0k8d0KujRR-0fE92vuzRv2eislE-vM1uzLBwR0Zkwj-MDW9PSg7lVz1H1wv8598JTYtbeWSOvyJpSveSfftGBMP9QBw-ukWaDC59QRyVSRyx-VtxsBP4ZZoA2l22aHTn0aioTXMbUmIrMc7PMnf12Ws3TWleg9qMDaa3985po_QXUGnzQRAF1i70rcPG3w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "庆祝频道人数44K 给大家发一个红包",
-      "links": [],
-      "createdAt": "2026-06-29T20:25:20.118Z",
-      "expiresAt": "2026-07-01T20:25:20.118Z",
+      "text": "🧧红包发送成功🧧\n\n🔥蚂蚁MaYi \n发送了 一个红包！ \n💵总金额: 1888 U🪙\n🚦剩余: 68/88\n🥇  88.88 USDT - 小小心意….\n🥈  78.26 USDT - 国王\n🥉  68.61 USDT - 好你哦",
+      "links": [
+        {
+          "label": "🔥蚂蚁MaYi \n发送了 一个红包！",
+          "url": "https://t.me/wndlzjdbot"
+        }
+      ],
+      "createdAt": "2026-06-29T21:54:21.494Z",
+      "expiresAt": "2026-07-01T21:54:21.494Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:20.118Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-06-29T21:54:21.494Z",
+      "tag": "crypto",
       "tags": [
-        "other"
+        "crypto",
+        "finance"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2992,7 +2721,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:20.118Z"
+        "reviewedAt": "2026-06-29T21:54:21.494Z"
       }
     },
     {
@@ -3029,10 +2758,10 @@
           "url": "https://t.me/dsj6699"
         }
       ],
-      "createdAt": "2026-06-29T20:25:19.359Z",
-      "expiresAt": "2026-07-01T20:25:19.359Z",
+      "createdAt": "2026-06-29T21:54:20.888Z",
+      "expiresAt": "2026-07-01T21:54:20.888Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:19.359Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:20.888Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3050,7 +2779,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:19.359Z"
+        "reviewedAt": "2026-06-29T21:54:20.888Z"
       }
     },
     {
@@ -3091,10 +2820,10 @@
           "url": "https://t.me/proxy?server=192.238.160.239&amp;port=38463&amp;secret=ee28d6850ac71cd798d4a5378f9ad0eeaf7777772e6d6963726f736f66742e636f6d"
         }
       ],
-      "createdAt": "2026-06-29T20:25:18.653Z",
-      "expiresAt": "2026-07-01T20:25:18.653Z",
+      "createdAt": "2026-06-29T21:54:20.263Z",
+      "expiresAt": "2026-07-01T21:54:20.263Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:18.653Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:20.263Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3112,7 +2841,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:18.653Z"
+        "reviewedAt": "2026-06-29T21:54:20.263Z"
       }
     },
     {
@@ -3151,10 +2880,10 @@
           "url": "https://t.me/XLJ05"
         }
       ],
-      "createdAt": "2026-06-29T20:25:17.753Z",
-      "expiresAt": "2026-07-01T20:25:17.753Z",
+      "createdAt": "2026-06-29T21:54:19.547Z",
+      "expiresAt": "2026-07-01T21:54:19.547Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:17.753Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:19.547Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -3173,7 +2902,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:17.753Z"
+        "reviewedAt": "2026-06-29T21:54:19.547Z"
       }
     },
     {
@@ -3199,10 +2928,10 @@
       "fallbackReason": null,
       "text": "老挝第十个五年计划全面实施，剑指中等偏上收入国家\n\n6月28日，老挝第十届国会第一次会议审议通过的第十个五年国家经济社会发展计划（2026—2030）进入全面实施阶段。该计划立足本国实际，确立高质量、可持续、绿色发展六大目标，明确2026至2030年间力争年均经济增长6%，到2030年人均国内生产总值达3104美元，推动老挝稳步摆脱最不发达国家地位。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:16.912Z",
-      "expiresAt": "2026-07-01T20:25:16.912Z",
+      "createdAt": "2026-06-29T21:54:18.831Z",
+      "expiresAt": "2026-07-01T21:54:18.831Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:16.912Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:18.831Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3220,7 +2949,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:16.912Z"
+        "reviewedAt": "2026-06-29T21:54:18.831Z"
       }
     },
     {
@@ -3303,10 +3032,10 @@
           "url": "https://t.me/usdtag8"
         }
       ],
-      "createdAt": "2026-06-29T20:25:16.105Z",
-      "expiresAt": "2026-07-01T20:25:16.105Z",
+      "createdAt": "2026-06-29T21:54:18.141Z",
+      "expiresAt": "2026-07-01T21:54:18.141Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:16.105Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:18.141Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -3325,7 +3054,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:16.105Z"
+        "reviewedAt": "2026-06-29T21:54:18.141Z"
       }
     },
     {
@@ -3382,10 +3111,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-06-29T20:25:14.733Z",
-      "expiresAt": "2026-07-01T20:25:14.733Z",
+      "createdAt": "2026-06-29T21:54:17.046Z",
+      "expiresAt": "2026-07-01T21:54:17.046Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:14.733Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:17.046Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3403,7 +3132,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:14.733Z"
+        "reviewedAt": "2026-06-29T21:54:17.046Z"
       }
     },
     {
@@ -3438,10 +3167,10 @@
           "url": "https://000uuuu.com/353"
         }
       ],
-      "createdAt": "2026-06-29T20:25:13.855Z",
-      "expiresAt": "2026-07-01T20:25:13.855Z",
+      "createdAt": "2026-06-29T21:54:16.233Z",
+      "expiresAt": "2026-07-01T21:54:16.233Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:13.855Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:16.233Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3459,7 +3188,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:13.855Z"
+        "reviewedAt": "2026-06-29T21:54:16.233Z"
       }
     },
     {
@@ -3485,10 +3214,10 @@
       "fallbackReason": null,
       "text": "#菲律宾新闻 币安创始人赵长鹏现身菲律宾\n\n会见财长与SEC主席  直言看好当地加密市场，监管沙盒迎新进展\n\n6月28日，据菲律宾加密行业社交媒体消息，币安联合创始人 #赵长鹏（CZ）在结束菲律宾访问后发文称，菲律宾正成为东南亚最值得关注的数字资产市场之一，并对当地加密行业发展前景表示乐观。\n\n赵长鹏称，此次菲律宾之行期间，他与菲律宾财政部长弗雷德里克·戈、菲律宾证券交易委员会主席弗朗西斯·林，以及金融科技企业BlockShoals团队进行了交流，讨论数字资产行业监管、消费者保护、创新及市场增长等议题。\n\n菲律宾财政部官方网站显示，弗雷德里克·戈目前担任菲律宾财政部长，并负责领导马科斯政府经济团队。\n\nCZ称菲律宾监管态度“协作且务实”\n\n赵长鹏在帖文中称，菲律宾监管部门对数字资产行业采取了较为协作和前瞻的态度，在推动创新的同时，重视消费者保护和实际监管效果。\n\n他认为，清晰且可执行的监管路径能够提高市场信心，吸引资本进入，并为金融科技创新提供资金支持。\n\n赵长鹏还提到，菲律宾证券交易委员会旗下金融科技创新办公室，已原则上允许BlockShoals进入战略监管沙盒StratBox。\n\nBlockShoals此前已宣布与币安开展合作，计划在StratBox框架下测试面向菲律宾市场的数字资产产品和服务。\n\n进入监管沙盒不等于正式全面运营\n\n需要注意的是，菲律宾证券交易委员会此前已专门澄清，BlockShoals的监管沙盒整合及测试期，并不意味着相关平台已获准立即面向菲律宾公众开放交易或大规模吸纳用户。\n\nStratBox主要用于在受控环境中测试技术、合规流程、风险控制和消费者保护机制。相关企业若要正式提供虚拟资产交易及托管等服务，仍需满足菲律宾证券监管和中央银行等部门的牌照要求。\n\nBlockShoals也表示，其测试计划包括寻找获菲律宾中央银行认可的虚拟资产服务商合作，目前相关尽职调查仍在推进。\n\n赵长鹏在帖文中还称，菲律宾已升至TRM Labs加密货币采用指数全球第4位。\n\n赵长鹏在帖文最后表示，他继续看好菲律宾数字资产市场及加密行业，并称自己正在市场下跌期间买入。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:12.397Z",
-      "expiresAt": "2026-07-01T20:25:12.397Z",
+      "createdAt": "2026-06-29T21:54:15.431Z",
+      "expiresAt": "2026-07-01T21:54:15.431Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:12.397Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:15.431Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -3508,7 +3237,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:12.397Z"
+        "reviewedAt": "2026-06-29T21:54:15.431Z"
       }
     },
     {
@@ -3609,10 +3338,10 @@
           "url": "https://i8738.com/"
         }
       ],
-      "createdAt": "2026-06-29T20:25:11.613Z",
-      "expiresAt": "2026-07-01T20:25:11.613Z",
+      "createdAt": "2026-06-29T21:54:14.786Z",
+      "expiresAt": "2026-07-01T21:54:14.786Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:11.613Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:14.786Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -3631,7 +3360,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:11.613Z"
+        "reviewedAt": "2026-06-29T21:54:14.786Z"
       }
     },
     {
@@ -3657,10 +3386,10 @@
       "fallbackReason": null,
       "text": "#柬记者：一家中国人经营的娱乐场所被举报暗中经营赌场式赌博活动\n\n据举报，一家由中国人经营、招牌名为“ 天空之城（Sky City）”的娱乐场所，涉嫌暗中经营类似赌场的赌博活动。\n\n该娱乐场所位于柬埔寨金边市桑园区百色河分区，国会大道沿线。\n\n举报人呼吁桑园区区长基昂·洛（Kieng Lok，音译）及桑园区警察局局长霍·孟洪对此事采取调查和执法措施。\n\nPS：这些老柬是真的可恶  纯纯的吃饱了没事做。还好天空的背景够硬。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:10.503Z",
-      "expiresAt": "2026-07-01T20:25:10.503Z",
+      "createdAt": "2026-06-29T21:54:13.935Z",
+      "expiresAt": "2026-07-01T21:54:13.935Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:10.503Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:13.935Z",
       "tag": "news_regions",
       "tags": [
         "news_regions",
@@ -3679,7 +3408,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:10.503Z"
+        "reviewedAt": "2026-06-29T21:54:13.935Z"
       }
     },
     {
@@ -3734,10 +3463,10 @@
           "url": "https://2028vip35.com/"
         }
       ],
-      "createdAt": "2026-06-29T20:25:09.735Z",
-      "expiresAt": "2026-07-01T20:25:09.735Z",
+      "createdAt": "2026-06-29T21:54:13.276Z",
+      "expiresAt": "2026-07-01T21:54:13.276Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:09.735Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:13.276Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -3756,7 +3485,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:09.735Z"
+        "reviewedAt": "2026-06-29T21:54:13.276Z"
       }
     },
     {
@@ -3797,10 +3526,10 @@
           "url": "https://t.me/kefu7961"
         }
       ],
-      "createdAt": "2026-06-29T20:25:08.955Z",
-      "expiresAt": "2026-07-01T20:25:08.955Z",
+      "createdAt": "2026-06-29T21:54:12.583Z",
+      "expiresAt": "2026-07-01T21:54:12.583Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:08.955Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:12.583Z",
       "tag": "electronics_pc",
       "tags": [
         "electronics_pc",
@@ -3821,7 +3550,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:08.955Z"
+        "reviewedAt": "2026-06-29T21:54:12.583Z"
       }
     },
     {
@@ -3868,10 +3597,10 @@
           "url": "https://t.me/VPNong/173"
         }
       ],
-      "createdAt": "2026-06-29T20:25:08.166Z",
-      "expiresAt": "2026-07-01T20:25:08.166Z",
+      "createdAt": "2026-06-29T21:54:11.927Z",
+      "expiresAt": "2026-07-01T21:54:11.927Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:08.166Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:11.927Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -3890,7 +3619,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:08.166Z"
+        "reviewedAt": "2026-06-29T21:54:11.927Z"
       }
     },
     {
@@ -3926,10 +3655,10 @@
       "fallbackReason": null,
       "text": "#泰国新闻\n\n泰国南邦府博亥县南邦 - 限策老路弯道发生严重车祸，一辆银色日产阳光轿车高速行驶途中失控侧翻撞进路边二手车展棚，钢结构顶棚受撞击坍塌，肇事司机为一名 35 至 40 岁男子被困车内，救援人员破拆施救并实施心肺复苏后仍抢救无效身亡，事故一共造成五台车辆损毁，包含肇事日产轿车、展棚内银色轿车与白色皮卡、展棚前五十铃 SUV、路边停放银色皮卡，目击者称肇事车辆车速极快且后方有两车跟随，弯道处失控冲撞展棚未殃及其他过路车辆，警方勘查时在车内及车身周边查获袋装物品与 7 颗毒品，现已封锁现场，集结法证、法医、检察官等人员完成取证与尸检，同步核查死者身份、车辆权属，深挖涉案毒品源头并依法开展后续侦办工作。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:07.395Z",
-      "expiresAt": "2026-07-01T20:25:07.395Z",
+      "createdAt": "2026-06-29T21:54:11.255Z",
+      "expiresAt": "2026-07-01T21:54:11.255Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:07.395Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:11.255Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3947,7 +3676,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:07.395Z"
+        "reviewedAt": "2026-06-29T21:54:11.255Z"
       }
     },
     {
@@ -4012,10 +3741,10 @@
           "url": "https://t.me/DLHY182"
         }
       ],
-      "createdAt": "2026-06-29T20:25:06.595Z",
-      "expiresAt": "2026-07-01T20:25:06.595Z",
+      "createdAt": "2026-06-29T21:54:10.592Z",
+      "expiresAt": "2026-07-01T21:54:10.592Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:06.595Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:10.592Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4033,7 +3762,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:06.595Z"
+        "reviewedAt": "2026-06-29T21:54:10.592Z"
       }
     },
     {
@@ -4076,10 +3805,10 @@
           "url": "https://t.me/vsw50com"
         }
       ],
-      "createdAt": "2026-06-29T20:25:05.694Z",
-      "expiresAt": "2026-07-01T20:25:05.694Z",
+      "createdAt": "2026-06-29T21:54:09.759Z",
+      "expiresAt": "2026-07-01T21:54:09.759Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:05.694Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:09.759Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -4098,7 +3827,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:05.694Z"
+        "reviewedAt": "2026-06-29T21:54:09.759Z"
       }
     },
     {
@@ -4143,10 +3872,10 @@
           "url": "https://t.me/tougaob"
         }
       ],
-      "createdAt": "2026-06-29T20:25:04.208Z",
-      "expiresAt": "2026-07-01T20:25:04.208Z",
+      "createdAt": "2026-06-29T21:54:08.469Z",
+      "expiresAt": "2026-07-01T21:54:08.469Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:04.208Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:08.469Z",
       "tag": "transport_other",
       "tags": [
         "transport_other",
@@ -4165,7 +3894,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:04.208Z"
+        "reviewedAt": "2026-06-29T21:54:08.469Z"
       }
     },
     {
@@ -4191,10 +3920,10 @@
       "fallbackReason": null,
       "text": "Solana Compass 是 Solana 最早期（OG）的验证者之一，目前其验证节点已质押超过 2.12 亿美元 的 SOL。这进一步证明了其在 Solana 生态中的影响力和可信度。",
       "links": [],
-      "createdAt": "2026-06-29T20:25:03.439Z",
-      "expiresAt": "2026-07-01T20:25:03.439Z",
+      "createdAt": "2026-06-29T21:54:07.854Z",
+      "expiresAt": "2026-07-01T21:54:07.854Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:03.439Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:07.854Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4212,7 +3941,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:03.439Z"
+        "reviewedAt": "2026-06-29T21:54:07.854Z"
       }
     },
     {
@@ -4257,10 +3986,10 @@
           "url": "https://t.me/bet678_bot"
         }
       ],
-      "createdAt": "2026-06-29T20:25:02.724Z",
-      "expiresAt": "2026-07-01T20:25:02.724Z",
+      "createdAt": "2026-06-29T21:54:07.258Z",
+      "expiresAt": "2026-07-01T21:54:07.258Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:02.724Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:07.258Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4278,7 +4007,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:02.724Z"
+        "reviewedAt": "2026-06-29T21:54:07.258Z"
       }
     },
     {
@@ -4319,10 +4048,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-06-29T20:25:01.963Z",
-      "expiresAt": "2026-07-01T20:25:01.963Z",
+      "createdAt": "2026-06-29T21:54:06.563Z",
+      "expiresAt": "2026-07-01T21:54:06.563Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:01.963Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:06.563Z",
       "tag": "electronics_home_appliances",
       "tags": [
         "electronics_home_appliances",
@@ -4341,7 +4070,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:01.963Z"
+        "reviewedAt": "2026-06-29T21:54:06.563Z"
       }
     },
     {
@@ -4436,10 +4165,10 @@
           "url": "https://t.me/DYNNN"
         }
       ],
-      "createdAt": "2026-06-29T20:25:00.318Z",
-      "expiresAt": "2026-07-01T20:25:00.318Z",
+      "createdAt": "2026-06-29T21:54:05.766Z",
+      "expiresAt": "2026-07-01T21:54:05.766Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:25:00.318Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:05.766Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -4460,7 +4189,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:25:00.318Z"
+        "reviewedAt": "2026-06-29T21:54:05.766Z"
       }
     },
     {
@@ -4505,10 +4234,10 @@
           "url": "https://t.me/Millergobot"
         }
       ],
-      "createdAt": "2026-06-29T20:24:59.289Z",
-      "expiresAt": "2026-07-01T20:24:59.289Z",
+      "createdAt": "2026-06-29T21:54:04.830Z",
+      "expiresAt": "2026-07-01T21:54:04.830Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:59.289Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:04.830Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4526,111 +4255,109 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:59.289Z"
+        "reviewedAt": "2026-06-29T21:54:04.830Z"
       }
     },
     {
-      "id": 1148610942,
-      "postUrl": "https://t.me/dubaihuarenzixun/61365?single",
+      "id": 3179630564,
+      "postUrl": "https://t.me/dubaihuarenzixun/61367?single",
       "source": {
         "title": "迪拜新闻|华人资讯曝光|dubai news",
         "handle": "dubaihuarenzixun",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/poiMShkadvCelESw_0EDejM-YgkdHVPUvaw1p2i1hYCJMUZlMishdbU_g9fXIxuPNhU1tA69tgaGK1IqP0dgjqHMYXN933M0kAYkKPe1idSpatAOJzhj21JSIdiBFf8chuO1sFvywD7_4IOQ0-ZorYZRqe2kPqXxYRr1AgLyu_Mk5wLJcFxAY5F2ADhfPEBTNTbCrPGMcD_GUvE3S30lrY6qSuOoip38p2h0s7jpdUsyC1U3TIetC2hUlp_iq3XeGEDKbXkX3RFuyDBAkA9L6vRTpKLx8Yoc3om2tOebut24AbVEKz-MiWHwFdw5PX1YHiwRT4XGMTc1zkqp997_Hw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/u0b84CeKP940o7R7M81OG4uepnln0iGk5NyGWVGpydgbBkdriMktuDXB3lwpjQ90QVUYLJe7_CxFr4Pl3kmUt7OYqeiITrmGI3yBHe3NkXBCe8p0GKqfQXfBfJ-UjybIhNmcwxxPNAG6wz3kVyYovNDU0khJYX1G0xCt6srl907iTwe_2ntMn3YBvvKnBMHusu0UBq5fCajonj6WmOI3twmCHfzD9KHKV5hJ11BCz67HKNaInDPZXwr9K-w1zAARsKCS33TmAGy27xDgXde0ppwncteIuBkx2psw8VSzAUQfbbdn5YqK6eUJVAsn-vf7GMJjUKEBXyZtbqE7PqmCbQ.jpg"
       },
       "sourceId": "cn:dubaihuarenzixun",
       "sourceCountryCode": "cn",
-      "contentType": "video",
+      "contentType": "image",
       "media": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn5.telesco.pe/file/23c03cbcc3.mp4?token=OPbSUjUXX1_7Vc91p_zmfdN6DbTeMLIInlQkLS2H84DMHXVd83BM4lCIdpOeHJuOSoo3Oe9kFzavfgLx0lyM4vGNZpljKvD1vpccPRzhsyK83WW6rykNTLLbdMph-75JT6E-TntRJLw-Oc0cVA_L_UHkE6U74t8XySoAur_KwcS0jY_sPCAwevw1H8Sj03ERSsZr44FOAS_kbIJTyykeJgDdMayUm_3KggSqeEthIuEkOZ5tM17mVFy-hp_GP8vpq5c4usRJ7oVawqKrRsu5b8d3U3Hz1VO-HZ8Xni7ZHnOGSRu6z24Jx1ZhsPpO15Eb2U5mhrFzVBr8wCSaQ5OaMQ",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/G16I009zaEURNnMla34MASLCmYL8Qx8DZ7e4HfJ6GCDpLs-Tf7EMoTxYuGBNflI_yGWtwUT2z2W-QGkNikY3kr234mHn3faQip5Tr5pAgrlVb12pdXlDbav3maQJk-ArouT3TM025VPBFTs7127EFAoAH4iGBWS3LZ3LTfXvYOZeIHggmFvjJdGJp3UU_2nQ77G_3e_bxgaqVGJ-hfAOCHikKJju_gJKmuk6HeRPFJzMvMrR7o3NWHIfv78Qthyeylf0IJsoPkBEXdg6RqyKTsDF7qtYbqxKP2gJvlhTije_tYkbP9d1mJDeThG0N-KXftRLIkdG3U1ipwne4aTSNQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩🤩\n\n😘😘😘😘😘😘😘😘😘😘😘\n\n🥸🙁🤩 🎁新人豪礼返利🎁\n🌟首存最高赠送8888U👈点击#6\n🌟二存最高赠送5888U👈点击#79\n🌟三存最高赠送8888U👈点击#80\n🎬每晚21:00~23:00性感单人大秀🫦 \n\n😕😟😔😕😤\n     代理行业最高60%分红👈点击#138\n     业界最高反水天花板5%👈点击#29\n     VIP平移,最高享88888U👈点击#173\n     每月逢 8 现金大回馈👈点击#25\n     午夜专属回馈8888U👈点击#143\n\n🌟   USDT   通道:  🌟 i8244.vip\n🌟  人民币  通道:  💴 i8650.vip\n🌟  世界杯  通道:  🏆 i88861.vip\n\n😬官方客服 | 官方频道 |官方招商😬\n😬官方飞投 | 福利频道 |官方直播😬\n\ni8国际娱乐平台  #i8 #世界杯 #真人 #PG电子 #棋牌  #捕鱼  #彩票 #百家乐",
+      "text": "🎰🎰🎰🎰🎰🎰🎰🎰🎰🎰\n\n🎰【澳门新葡京-全球数字顶级网投领导者！】\n🎰【东南亚首创，USDT&人民币双系统】\n🎰【澳门新葡京】资金雄厚|实力强|大品牌|信誉佳 \n🎰【澳门新葡京】U存U取|不黑不卡|种类多玩法全 \n🎰【澳门新葡京】最专业最齐全的综合博彩平台！\n🎰【澳门新葡京】 最佳日常娱乐第一选择\n\n🎰澳门新葡京新人🎰重🎰🎰专属福利🎰\n🎰：新人首存送 + 笔笔赠送+最高送18888 🎰\n🎰：二三存送+ 笔笔赠送+最高送8888 🎰\n🎰：每月23号现金大回馈 🎰\n🎰：钱包入款即返3%取款加赠8888 🎰\n🎰：每日全天9场红包雨单包最高8888 🎰\n🎰：幸运注单 单号逢3必增大奖 🎰\n🎰：逢“🎰”必发重磅来袭!😀\n🎰：返水1.3%起最高3.5% 全网第一返水,无上限!😀\n\n🎰🎰🎰🎰🎰🎰🎰🎰🎰🎰\n🎰【换个平台换手气，澳门新葡京了解一下】\n🎰  别老卡在一个地方，打来打去没运气？\n🎰  换个平台，换个状态，说不定这波就爆了！\n\n🎰【1:1 USDT存取，人生财富翻数倍】\n🎰  0审核＋免实名，安全又自由\n🎰  综合性强，玩得稳、提得快，适合长期娱乐\n\n🤝🎰⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️⚡️\n🎰🎰可匿名开线，佣金奖励全部USDT结算，诚邀个人代理，团队代理，网站站长，飞机群主，只要你有流量即可变现 永久🦋🐇超高佣金🎰🎰百分百扶持🎰🎰巅峰代理模式\n\n🎰🎰🎰🎰🎰🎰🎰🎰\n🎰 新葡京客服专员：@xpj6633kf\n🎰 新葡京代理专员：@xpjzz\n🎰 新葡京官方频道：@xpj6633\n🎰 新葡京可玩可代：6633.io\n🎰 新葡京备用域名：6633.ag\n🎰 新葡京可玩可代：6633.app\n🎰 😆😆😆投注域名：6633.seo",
       "links": [
         {
-          "label": "首存最高赠送8888U👈点击#6",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=6"
+          "label": "：新人首存送 + 笔笔赠送+最高送18888",
+          "url": "https://663390.top/"
         },
         {
-          "label": "二存最高赠送5888U👈点击#79",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=79"
+          "label": null,
+          "url": "https://663390.top/"
         },
         {
-          "label": "三存最高赠送8888U👈点击#80",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=80"
+          "label": "：",
+          "url": "https://663390.top/"
         },
         {
-          "label": "代理行业最高60%分红👈点击#138",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=138"
+          "label": "二三存送+ 笔笔赠送+最高送8888",
+          "url": "https://663390.top/"
         },
         {
-          "label": "业界最高反水天花板5%👈点击#29",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=29"
+          "label": "：每月23号现金大回馈",
+          "url": "https://663390.top/"
         },
         {
-          "label": "VIP平移,最高享88888U👈点击#173",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=173"
+          "label": "：钱包入款即返3%取款加赠8888",
+          "url": "https://663390.top/"
         },
         {
-          "label": "每月逢 8 现金大回馈👈点击#25",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=25"
+          "label": "：每日全天9场红包雨单包最高8888",
+          "url": "https://663390.top/"
         },
         {
-          "label": "午夜专属回馈8888U👈点击#143",
-          "url": "https://153.43.85.187/home/event/detail?id=171785576&amp;amp;current=10001&amp;amp;template=10&amp;amp;eventId=143"
+          "label": "：幸运注单 单号逢3必增大奖",
+          "url": "https://663390.top/"
         },
         {
-          "label": "i8244.vip",
-          "url": "https://i8244.vip/"
+          "label": "：逢“",
+          "url": "https://663390.top/"
         },
         {
-          "label": "i8650.vip",
-          "url": "https://i8650.vip/"
+          "label": "”必发重磅来袭!",
+          "url": "https://663390.top/"
         },
         {
-          "label": "i88861.vip",
-          "url": "https://i88861.vip/"
+          "label": "：返水1.3%起最高3.5% 全网第一返水,无上限!",
+          "url": "https://663390.top/"
         },
         {
-          "label": "官方客服",
-          "url": "https://t.me/i8kf"
+          "label": "@xpj6633kf",
+          "url": "https://t.me/xpj6633kf"
         },
         {
-          "label": "官方频道",
-          "url": "https://t.me/i8pd"
+          "label": "@xpjzz",
+          "url": "https://t.me/xpjzz"
         },
         {
-          "label": "官方招商",
-          "url": "https://t.me/i8dl"
+          "label": "@xpj6633",
+          "url": "https://t.me/xpj6633"
         },
         {
-          "label": "官方飞投",
-          "url": "https://t.me/i8i8"
+          "label": "新葡京可玩可代：6633.io",
+          "url": "https://663390.top/"
         },
         {
-          "label": "福利频道",
-          "url": "https://t.me/sdtptuu"
+          "label": "新葡京备用域名：6633.ag",
+          "url": "https://663390.top/"
         },
         {
-          "label": "官方直播",
-          "url": "https://t.me/i8gjzbj"
+          "label": "新葡京可玩可代：6633.app",
+          "url": "https://663390.top/"
         },
         {
-          "label": "i8国际娱乐平台  #i8 #世界杯 #真人 #PG电子 #棋牌  #捕鱼  #彩票 #百家乐",
-          "url": "https://i8244.vip/"
+          "label": "投注域名：6633.seo",
+          "url": "https://www.6633.ceo/"
         }
       ],
-      "createdAt": "2026-06-29T20:24:57.953Z",
-      "expiresAt": "2026-07-01T20:24:57.953Z",
+      "createdAt": "2026-06-29T21:54:04.034Z",
+      "expiresAt": "2026-07-01T21:54:04.034Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:57.953Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:04.034Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -4649,7 +4376,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:57.953Z"
+        "reviewedAt": "2026-06-29T21:54:04.034Z"
       }
     },
     {
@@ -4716,10 +4443,10 @@
           "url": "https://t.me/KL066"
         }
       ],
-      "createdAt": "2026-06-29T20:24:57.006Z",
-      "expiresAt": "2026-07-01T20:24:57.006Z",
+      "createdAt": "2026-06-29T21:54:03.256Z",
+      "expiresAt": "2026-07-01T21:54:03.256Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:57.006Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:03.256Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -4738,7 +4465,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:57.006Z"
+        "reviewedAt": "2026-06-29T21:54:03.256Z"
       }
     },
     {
@@ -4764,10 +4491,10 @@
       "fallbackReason": null,
       "text": "菲律宾新闻 【刚从Shore搬去骑士桥就被抢！幸亏菲律宾老婆在身边】\n\n6月29日，马尼拉一名中国网友投稿称，刚搬至马卡蒂骑士桥（韩国街附近）第一天晚上，与菲律宾妻子散步时遭两名十三四岁少年扒窃，一人故意撞人掩护，另一人伸手探入背包。妻子反应迅速，当场大吼追击，揪住嫌犯衣领夺回背包，内含现金、护照及银行卡。网友感叹“若没有本地妻子，包肯定找不回”。案件发生于晚9时许繁华地段，暴露马尼拉治安恶化趋势。\n\n⚡️⚡️⚡️⚡️⚡️无私彩 无双系统 假一罚亿\n官网: 飞投:",
       "links": [],
-      "createdAt": "2026-06-29T20:24:55.679Z",
-      "expiresAt": "2026-07-01T20:24:55.679Z",
+      "createdAt": "2026-06-29T21:54:02.047Z",
+      "expiresAt": "2026-07-01T21:54:02.047Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:55.679Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:02.047Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4785,7 +4512,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:55.679Z"
+        "reviewedAt": "2026-06-29T21:54:02.047Z"
       }
     },
     {
@@ -4811,10 +4538,10 @@
       "fallbackReason": null,
       "text": "新加坡中央医院电子病历故障，千人滞留急诊室\n\n6月28日，新加坡中央医院电子病历系统全面瘫痪，致急诊室逾千人滞留等候超8小时。卫生部长致歉并启动调查，发现系统供应商未落实冗余备份方案。事件加速推动医疗数据云化改革。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:54.972Z",
-      "expiresAt": "2026-07-01T20:24:54.972Z",
+      "createdAt": "2026-06-29T21:54:01.448Z",
+      "expiresAt": "2026-07-01T21:54:01.448Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:54.972Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:01.448Z",
       "tag": "health_medicine",
       "tags": [
         "health_medicine",
@@ -4833,7 +4560,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:54.972Z"
+        "reviewedAt": "2026-06-29T21:54:01.448Z"
       }
     },
     {
@@ -4909,10 +4636,10 @@
           "url": "https://t.me/KL066"
         }
       ],
-      "createdAt": "2026-06-29T20:24:54.205Z",
-      "expiresAt": "2026-07-01T20:24:54.205Z",
+      "createdAt": "2026-06-29T21:54:00.746Z",
+      "expiresAt": "2026-07-01T21:54:00.746Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:54.205Z",
+      "mediaRefreshedAt": "2026-06-29T21:54:00.746Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -4931,7 +4658,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:54.205Z"
+        "reviewedAt": "2026-06-29T21:54:00.746Z"
       }
     },
     {
@@ -5006,10 +4733,10 @@
           "url": "https://6u345.com/?cid=2734058"
         }
       ],
-      "createdAt": "2026-06-29T20:24:53.306Z",
-      "expiresAt": "2026-07-01T20:24:53.306Z",
+      "createdAt": "2026-06-29T21:53:59.986Z",
+      "expiresAt": "2026-07-01T21:53:59.986Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:53.306Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:59.986Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -5028,7 +4755,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:53.306Z"
+        "reviewedAt": "2026-06-29T21:53:59.986Z"
       }
     },
     {
@@ -5095,10 +4822,10 @@
           "url": "https://t.me/KL066"
         }
       ],
-      "createdAt": "2026-06-29T20:24:52.473Z",
-      "expiresAt": "2026-07-01T20:24:52.473Z",
+      "createdAt": "2026-06-29T21:53:59.243Z",
+      "expiresAt": "2026-07-01T21:53:59.243Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:52.473Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:59.243Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -5119,7 +4846,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:52.473Z"
+        "reviewedAt": "2026-06-29T21:53:59.243Z"
       }
     },
     {
@@ -5145,10 +4872,10 @@
       "fallbackReason": null,
       "text": "#泰国 曼谷是隆路口皮卡车主追尾摩托神色慌乱，交警搜查背包查获1.53克氯胺酮\n2026年6月28日曼谷交警在是隆与素拉塞路交叉口执勤，27岁男子塔纳武驾驶皮卡车等候红灯时追尾摩托车。该男子见到执勤民警后神情慌张、刻意躲闪，异常状态引起警方警觉，随即对其随身挎包开展搜查，当场查获1.53克氯胺酮。审讯中男子坦白毒品购自邦本区一名陌生青年，花费五百泰铢，警方固定全部物证，将涉毒男子移交办案单位依法处置。\n\n驾车携带毒品存在极大道路安全隐患，当地持续开展路面缉毒巡查，严查可疑驾乘人员，同步追溯毒品上游供货渠道，净化城市交通环境。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:51.592Z",
-      "expiresAt": "2026-07-01T20:24:51.592Z",
+      "createdAt": "2026-06-29T21:53:58.529Z",
+      "expiresAt": "2026-07-01T21:53:58.529Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:51.592Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:58.529Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5166,7 +4893,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:51.592Z"
+        "reviewedAt": "2026-06-29T21:53:58.529Z"
       }
     },
     {
@@ -5208,10 +4935,10 @@
           "url": "https://t.me/gcc845"
         }
       ],
-      "createdAt": "2026-06-29T20:24:50.781Z",
-      "expiresAt": "2026-07-01T20:24:50.781Z",
+      "createdAt": "2026-06-29T21:53:57.897Z",
+      "expiresAt": "2026-07-01T21:53:57.897Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:50.781Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:57.897Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5229,7 +4956,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:50.781Z"
+        "reviewedAt": "2026-06-29T21:53:57.897Z"
       }
     },
     {
@@ -5312,10 +5039,10 @@
           "url": "https://hy886.vip/"
         }
       ],
-      "createdAt": "2026-06-29T20:24:49.880Z",
-      "expiresAt": "2026-07-01T20:24:49.880Z",
+      "createdAt": "2026-06-29T21:53:57.116Z",
+      "expiresAt": "2026-07-01T21:53:57.116Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:49.880Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:57.116Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -5334,7 +5061,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:49.880Z"
+        "reviewedAt": "2026-06-29T21:53:57.116Z"
       }
     },
     {
@@ -5381,10 +5108,10 @@
           "url": "https://t.me/dnyses"
         }
       ],
-      "createdAt": "2026-06-29T20:24:48.975Z",
-      "expiresAt": "2026-07-01T20:24:48.975Z",
+      "createdAt": "2026-06-29T21:53:56.295Z",
+      "expiresAt": "2026-07-01T21:53:56.295Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:48.975Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:56.295Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5402,12 +5129,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:48.975Z"
+        "reviewedAt": "2026-06-29T21:53:56.295Z"
       }
     },
     {
-      "id": 4084848340,
-      "postUrl": "https://t.me/dnyuu01/25590?single",
+      "id": 3559604809,
+      "postUrl": "https://t.me/dnyuu01/25595?single",
       "source": {
         "title": "东南亚吃瓜大事件（新闻资讯曝光）",
         "handle": "dnyuu01",
@@ -5416,19 +5143,26 @@
       },
       "sourceId": "cn:dnyuu01",
       "sourceCountryCode": "cn",
-      "contentType": "video",
+      "contentType": "mixed",
       "media": [
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn5.telesco.pe/file/dc1a1a9326.mp4?token=iuLptkzOatVo6E_WTBkpZh_fBtSx6OpjF88GcR8BlgRnPOyujw9v1YZhAqnyCLCkWV1DkUJVnYn4lISpjt1bBIyRXfderMOI_9y9DC86yYFzsQ6bP8ZD1kY3uPDRJigWouKXisoI9IYv4-TluI2kEOZZQFZI46mMDC2V_TKtlpEb8UIyyMGh1qQfXDs3ZgnxG3JYH-2ti9pg2VECVfYAtWFkXCE6YVD9I_tKlme3OFEF30lLHS1F874dBqgu6p78SD0jjIPx23FcMA7eTmUOIElkWIAWQGXeO1Q6rDq632T8XjiNcoFY8H0DywgFRLcwcgbIbeh2Fvn8JnLoe9i4jg",
+          "url": "https://cdn5.telesco.pe/file/f727cc0f3b.mp4?token=k1rpH86gmzvmzD05HsfmVZnlDP5S6XwT6yNvH4vZqgScNdbYnoH3-REleICGzN-rV4AbBe5dv44GM8qcNBwmb1v2pq37fA2UCM7uChWXmwYP1z4NB1bkoU_y1xvsKm77_EtbvRtxOd7BKOeAc_7tGjK_kEHUHeDyxYurRyRkCd1q3_4vnnwPlW0JKRguVUuBu6ReERjn4XGDwloOzCs1WggIxP0MksVje0K1XaeQwwokcNQFEof9PJN_53v10sKNFJRA7L9jZIzw2lbdjv6AYwwui0zjddYEv4JHTtMem7eRSdWrZLLj29VT4xoLjimPV9NZfHaWW78zx-UZLxwrPA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        },
+        {
+          "id": "video-2",
+          "kind": "video",
+          "url": "https://cdn5.telesco.pe/file/9551ffe49f.mp4?token=gPxlMlHJi80suT5jECpY0HjqfvWlFICzi22cEpXDTiepzNeOagJI3a4lXkzdQLtFCAOnqk_x9mbxwxIDVQ-9o2Z4LRAWVRuRw4KWdC9jKntXfu7aym3sRlzxCVzfoKuo5wAuPHrbCNiWrcvUMAJBUT-zwCLBD1auuKn9oP9Y2fos1UZse0Z8XhkO3k8rTSqUCTTImY5Uthp62W4nwoGB4oDreguqe85vVpaRZQwg3exbHjRNFpsRBEAncZHZRa_hv7Bk-ymrcfwpItPZ8NUCO5YLPnjTtNpMRSNyj8eMB5RTMcFUo01ANgW6jGFX5tfYoI5_0z55blGPPQAiI02wLw",
           "poster": null,
           "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "#网友投稿：今晚金边 1号路往木牌方向，有警方拦截了一辆商务车，现场带走一男一女。\n\n目前具体原因暂未公布，涉事人员身份和案件情况还有待进一步确认。\n\n⬇️⬇️⬇️⬇️⬇️ 本 频 道 赞 助 商⬇️⬇️⬇️⬇️⬇️\n\n➡️佳运支付 EBPAY全球领先\n\n➡️🙂‍↕️😜😘🔤🔤😀🤩【U投首选点击注册】【实力认证 |值得信赖】\n🔎东南亚吃瓜大事件（新闻资讯曝光）\n💬投稿澄清爆料：@Godny123",
+      "text": "🇰🇭#在柬埔寨波贝市58号路边花园露宿的中国男子，在当地民众的帮助下，最终得到了妥善安置。\n\n据了解，在事件引发关注后，热心的本地居民主动伸出援手，不仅为他寻找了一处临时住所，还送来了食物和生活用品，帮助他暂时渡过难关。\n\n虽然素不相识、语言不通，但这些普通民众依然选择给予帮助，用实际行动诠释了善良与爱心。在异国他乡，当一个人身处困境时，一份热饭、一处遮风避雨的地方，往往比任何言语都更有温度。\n\n这场暖心救助，也让人看到了波贝当地民众淳朴善良的一面。善意不分国籍，爱心没有边界，希望这名男子能够尽快走出困境，重新开始新的生活。\n\n⬇️⬇️⬇️⬇️⬇️ 本 频 道 赞 助 商⬇️⬇️⬇️⬇️⬇️\n\n➡️佳运支付 EBPAY全球领先\n\n➡️🙂‍↕️😜😘🔤🔤😀🤩【U投首选点击注册】【实力认证 |值得信赖】\n🔎东南亚吃瓜大事件（新闻资讯曝光）\n💬投稿澄清爆料：@Godny123",
       "links": [
         {
           "label": "佳运支付 EBPAY全球领先",
@@ -5447,10 +5181,10 @@
           "url": "https://t.me/Godny123"
         }
       ],
-      "createdAt": "2026-06-29T20:24:47.862Z",
-      "expiresAt": "2026-07-01T20:24:47.862Z",
+      "createdAt": "2026-06-29T21:53:55.577Z",
+      "expiresAt": "2026-07-01T21:53:55.577Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:47.862Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:55.577Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5468,7 +5202,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:47.862Z"
+        "reviewedAt": "2026-06-29T21:53:55.577Z"
       }
     },
     {
@@ -5494,10 +5228,10 @@
       "fallbackReason": null,
       "text": "最完美海外TikTok商城盘 \n海外TK商城盘具体玩法介绍\n平台直接内嵌到官方TikTok 平台里面 客户能用他自己的TK账户直接登录tiktok（完美解决信任问题）在个人中心能找我们内嵌的盘口，客户(卖家)可以0元在平台上开一个自己的店铺（拿国内的淘宝来举例子）。平台内大量供应商的商品（类似阿里巴巴），可以免费上架到自己的店铺，供应商提供一件代发服务（英文叫Dropshipping模式）。 \n有买家下单后，支付的货款由平台作为第三方冻结保管。卖家需要向自己的账户里充值进行垫付给供应商，供应商才发货，订单在买家确认收货后24-48小时，)平台才会解冻买家付的货款。 \n客户(卖家)主要赚取商品差价，利润=零售价—进货价 \n比如一双鞋子，批发价是500，零售价是560，每卖一双鞋子，卖家可以赚60。 \n运营策略： \n● 客户(卖家)开店并上架商品后，可以通过虚拟买家账号去下单，让客户觉得生意很好，能赚钱，持续养客户。 \n● 由于商品的本金是需要由客户(卖家)垫付，商品物流时间是7天（可灵活设置时长），从这个过程中有7天的资金池，后面加大订单量，客户赚钱上头后，持续养鱼直到违约退场。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:47.004Z",
-      "expiresAt": "2026-07-01T20:24:47.004Z",
+      "createdAt": "2026-06-29T21:53:54.831Z",
+      "expiresAt": "2026-07-01T21:53:54.831Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:47.004Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:54.831Z",
       "tag": "marketplaces",
       "tags": [
         "marketplaces"
@@ -5515,7 +5249,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:47.004Z"
+        "reviewedAt": "2026-06-29T21:53:54.831Z"
       }
     },
     {
@@ -5551,10 +5285,10 @@
       "fallbackReason": null,
       "text": "越共中央书记、公安部部长万通·孔马尼上将率高级代表团访问 #柬埔寨 开展工作\n2026年6月29日，越共中央书记、公安部部长万通·孔马尼上将率领高级代表团抵达柬埔寨王国，开展访问和工作。越共中央委员、公安部副部长孔沙万·颂帕赛上将，柬埔寨王国驻老挝人民民主共和国特命全权大使克朗·帕南先生，以及柬埔寨公安部领导陪同此次访问。\n据悉，访问期间，万通·孔马尼部长及老挝公安部领导将于2026年6月30日出席在柬埔寨举行的第二次柬埔寨-老挝-越南三国合作预防和打击跨国犯罪部长级会议。会议将共同回顾三国合作项目的落实情况，深入探讨确保三国政治稳定、和平与秩序的持续合作措施，推动三国会议精神和成果有效落地。\n\n此次访问与会议的召开，体现了越柬老三国在区域安全合作领域的紧密联系与共同努力，为维护地区和平稳定注入新的动力。\nPS：这两天，#老挝 #越南 #柬埔寨 三国联合打击网络诈骗行动持续加强合作，最近老挝越南一直在抓人没有停过，就是抓从柬埔寨跑过来的诈骗人员，接下去越南入境都要登记记录下来了老挝也是一样接下去都是严查酒店出租房屋。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:46.239Z",
-      "expiresAt": "2026-07-01T20:24:46.239Z",
+      "createdAt": "2026-06-29T21:53:54.131Z",
+      "expiresAt": "2026-07-01T21:53:54.131Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:46.239Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:54.131Z",
       "tag": "health_advice",
       "tags": [
         "health_advice",
@@ -5573,7 +5307,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:46.239Z"
+        "reviewedAt": "2026-06-29T21:53:54.131Z"
       }
     },
     {
@@ -5593,10 +5327,10 @@
       "fallbackReason": null,
       "text": "酱园弄口碑有点差，这是我没想到的…\n\n在宣发前期，几位85花的粉丝们都在力争谁演的更好，聊某一位角色的不够真实，这些粉圈火拼，盖过了全网对电影内容的深度解析，导致焦点完全错位了，这部片子好的点都没有被尽数放大，譬如历史意义、拍摄手法、片外花絮等等。\n\n好的深度影评，实际上是影片必备佐料。\n能让观众对个体关注点以外的内容产生理解和认可，减少困惑和不解。\n\n开分5.9，那就更灾难了…\n人们会默认烂片，不值一提。\n一些影视从业者认为该片评分低的一大灾难点，在于85花请的过多了，半场开香槟🍾，产生了过强的噪点。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:45.495Z",
-      "expiresAt": "2026-07-01T20:24:45.495Z",
+      "createdAt": "2026-06-29T21:53:53.463Z",
+      "expiresAt": "2026-07-01T21:53:53.463Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:45.495Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:53.463Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5614,7 +5348,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:45.495Z"
+        "reviewedAt": "2026-06-29T21:53:53.463Z"
       }
     },
     {
@@ -5687,10 +5421,10 @@
           "url": "https://t.me/flwph99/59498"
         }
       ],
-      "createdAt": "2026-06-29T20:24:44.654Z",
-      "expiresAt": "2026-07-01T20:24:44.654Z",
+      "createdAt": "2026-06-29T21:53:52.726Z",
+      "expiresAt": "2026-07-01T21:53:52.726Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:44.654Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:52.726Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -5709,7 +5443,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:44.654Z"
+        "reviewedAt": "2026-06-29T21:53:52.726Z"
       }
     },
     {
@@ -5729,10 +5463,10 @@
       "fallbackReason": null,
       "text": "🎆每个月重磅充值活动来袭🎆 活动时间：每月1日-每月31日（月底最后一天） 🎆\n\n👑活动内容一：本月活动时间期间，根据每个广告版面下方按钮链接进入任意置顶台游戏娱乐，累计充值2500U，即可参与抽奖。（不论输赢，只看充值，根据按钮链接进入才可统计得到账号是否为本群真实玩家）\n\n活动要求：发送台子名称+账号发送给狗群主（👇联系下方按钮👇）查询登记，次月1号会通知参加抽奖。\n\n活动奖励：\n第一名：388USDT\n第二名：328USDT\n第三名：288USDT\n第四名：228USDT\n第五名：188USDT\n第六名：128USDT\n第七名：88USDT\n第八名：68USDT\n第九名：58USDT\n第十名：58USDT\n\n🔥🔥🔥最低10人开奖，不满足10人，发放参与者参与奖58USDT🔥🔥🔥\n\n👑活动内容二：根据每个广告版面下方按钮链接进入任意置顶台游戏娱乐，累计充值500U，即可参与抽奖。（所有要求同活动一，只是充值金额不一样）\n\n活动奖励：\n第一名：68USDT\n第二名：58USDT\n第三名：48USDT\n第四名：38USDT\n第五名：28USDT\n第六名：28USDT\n第七名：28USDT\n第八名：28USDT\n第九名：28USDT\n第十名：28USDT\n\n🔥🔥🔥最低10人开奖，不满足10人，发放参与者参与奖28USDT🔥🔥🔥",
       "links": [],
-      "createdAt": "2026-06-29T20:24:43.584Z",
-      "expiresAt": "2026-07-01T20:24:43.584Z",
+      "createdAt": "2026-06-29T21:53:51.807Z",
+      "expiresAt": "2026-07-01T21:53:51.807Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:43.584Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:51.807Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -5751,7 +5485,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:43.584Z"
+        "reviewedAt": "2026-06-29T21:53:51.807Z"
       }
     },
     {
@@ -5777,10 +5511,10 @@
       "fallbackReason": null,
       "text": "#泰国 曼谷是隆路口皮卡追尾摩托车主举止反常，交警搜查查获1.53克氯胺酮\n6月28日曼谷交警在是隆与素拉塞路交叉口执勤，27岁男子塔纳武驾驶皮卡车等候红灯时追尾前方摩托。该男子撞见民警后慌张躲闪、浑身冒汗，异常举动引起警方警觉，随即对随身斜挎包检查，当场搜出1.53克氯胺酮。审讯中男子交代毒品花费500泰铢，于邦本区向一名陌生青年购入，全部物证被警方扣押。涉毒驾车存在极大安全隐患，办案人员将其移送调查部门，依法追究吸毒相关法律责任。\n\n驾车携带毒品严重威胁道路安全，当地持续开展路面缉毒巡查，紧盯神情异常驾乘人员，同步深挖毒品上游交易链条，净化城市道路交通环境。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:42.618Z",
-      "expiresAt": "2026-07-01T20:24:42.618Z",
+      "createdAt": "2026-06-29T21:53:50.916Z",
+      "expiresAt": "2026-07-01T21:53:50.916Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:42.618Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:50.916Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5798,7 +5532,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:42.618Z"
+        "reviewedAt": "2026-06-29T21:53:50.916Z"
       }
     },
     {
@@ -5808,7 +5542,7 @@
         "title": "东南亚快讯「泰国新闻」",
         "handle": "dnykx_888",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/qz93s5jlbh38VzbeEzmsZEp1UTjS2eOUVGqrYgGldDwv_Cm2sZobkVn7bRSOfRxrE08VRZeuEKvLEhapzHnP_rDWDkQJeStUb5tfwL6eanKXVcAKQ91ZIY_xn3EMWsqGUZdJOU0jzpS_ftxX3pF3Bsf9T7Tz-3w8UqAJ8dFF97tJFkJhKgerfZ6ke4zf0mSpFA1ZLvpggTQDsxjL6Qt8olTjo8Lqfs833u7UXbRSFTztVJi72QT1Q-GhP_h7ZFrYf-O164-NMtRzGPRkZN_TsoUAPygc9fD67emq8Zg9_WPhoZIFgmW1st7eTbIYABZ5isnb4bqSEvjj5uuthNs39A.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/itLvf_ALmv-B_nim2Wd06BjA0x_eRqveusBhwpaO1hLGktm_XCgGAaezKtjOO3q5hQ3Q1zjYHCJAWvFrCYfisZTPTV2fyTa58Y8LU-9EcYnXiOlMh7A5MshnDNYUe3r8Qp9oa82a2vJatFk-8VX_6gz8CntKg1KOYbMpCE1x3NBdTBojrthDKWmO2RivZUbDAB35_heoTa2ulNzk2l9tczmxHeZhl0cPlndcxF-vBaz_n2K5xjR_spFJsoh8Tj4t2RXgtPt9zNZrV3n2L64y2_1ZM1KHbvb_7wLis6MyN64FvOuERVr1SebJTvIsY1EVrfd9bJOjdufKbAhw1J8Xtw.jpg"
       },
       "sourceId": "cn:dnykx_888",
       "sourceCountryCode": "cn",
@@ -5817,17 +5551,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/PKQXt6SMA9rdc4G_zDUQ7OqULuELtF6_Erz3DtNlRcn0rUx9tf9Cf1V7U5IChjRUR7ZDZgn9ko4BNFGnu2PRMb9WUCHZQms0q2lb81BB1jNI4CpRVoOvYgKjliSbci5vYgWFBDoNA5umqa1B9QPeL5C9XDaorLgJocmJzTl23ovMEIIl6qzMnJlLYMXqfcF4jpTyDeKcvuTtmDDeLZC7THiSXwpzmWGZC1DBcDL_fXUCzRVndBtFi4xiGtXmGEQwCFLLlwbzqkPPqnsSRGehCU5OK8IiHU--hOpGlvxLfFsteNh61r9nO1_YCBdQGk4VwQo5r0bCXwJajWmHrbivAA.jpg"
+          "url": "https://cdn5.telesco.pe/file/O1yEzKgh0RskC2uhE_DhaO_Y1fb7SqL3asgmNi5dC2eIBRT-JNt-92ZAVjg-7M5ci5Q9oLr7V5WYrWMqdzrR3HWZcY-NVkiOqxe5rMIfE5oDsCKDA97SbXXCIGsk0sG9fR0GqgNOM7BfRsFIV6iqricLsvokTUDekWlwY3aiXlxfzG2CqbziqnJDgbG9C-K1TebOtKpJBDde8eZeZxHw7dvy3TQMFYjKt9DL3Ho6F5O4tQHMdi3D4sl7nIJ4eZa1_LuAuYrn6UkvYNUNFIPI-aWY6bJev322QHxjFY1gp2QWLEr34lGUTbJocl0mN8uwfvBPZI1UaiaUdp1Z4_uwhw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "被东南亚打击后转移的网络诈骗集团已在斯里兰卡落脚\n\n随着东南亚各国持续打击网络诈骗活动，被迫转移的国际犯罪集团开始将斯里兰卡作为新的落脚点，并逐渐形成针对斯里兰卡本地居民及外国受害者的新型诈骗模式。\n\n官方报告证实，仅2026年前五个月，就有超过1000名与斯里兰卡网络诈骗案件有关的外国人被逮捕，其中大多数为中国、越南和印度公民。他们持旅游签证入境斯里兰卡，随后组织并实施网络诈骗活动。\n\n在此之前，这些有组织犯罪集团已在柬埔寨、缅甸和老挝建立了大规模网络诈骗基地，并利用被贩运人员作为强迫劳工，在戒备森严的园区内从事诈骗活动。\n\n亚洲基金会和联合国相关机构估计，目前至少有30万人被困于这些诈骗园区中，而这些诈骗活动每年造成约400亿美元的经济损失。\n\n自2025年年中以来，局势进一步恶化。\n\n柬埔寨已针对这些犯罪网络展开突袭和遣返行动。2026年1月29日，中国对11名涉网络诈骗人员执行死刑，其中包括与缅甸果敢地区诈骗集团有关的主要头目。\n\n然而，尽管执法力度不断加强，这些犯罪网络并没有瓦解。正如国际媒体所报道，它们只是不断分散并在新的国家重新集结。\n\n为什么斯里兰卡成为目标多个因素使斯里兰卡成为这些犯罪网络的新据点。\n\n来自40多个国家（包括中国和印度）的公民可获得30天免费旅游签证，并可在入境后申请延期。\n\n斯里兰卡警方证实，今年所有被捕的网络诈骗人员均持旅游签证入境。\n\n当地SIM卡及互联网管理相对宽松，使诈骗团伙能够在酒店房间或出租公寓内开展诈骗活动。\n\n在线博彩监管较为宽松，以及当地被称为“Undiyal”的非正式资金转移系统，可在没有银行交易记录的情况下转移现金和加密货币，这进一步增加了犯罪集团的兴趣。\n\n更关键的是，斯里兰卡目前起诉此类跨国诈骗集团的能力有限，使该国成为这些组织理想的活动基地。\n\n这些诈骗集团在斯里兰卡境内运作，同时针对外国受害者和斯里兰卡本地居民，通过WhatsApp、Facebook和Telegram等平台联系目标。\n\n官方数据显示，仅2026年前五个月，就有超过1000人因与斯里兰卡境内网络诈骗集团有关而被逮捕。\n\n这些诈骗集团实际上如何运作\n\n这些诈骗集团在斯里兰卡的运作方式与柬埔寨和缅甸有所不同。\n\n报告指出，他们通常以5至10人为一个小组进行活动，每隔几个月便更换酒店、公寓或办公地点，因此更加难以追踪和抓捕。\n\n在2026年6月科伦坡的一次突袭行动中，警方查获了62本中国护照、手机、笔记本电脑、U盘、一枚伪造文件印章、伪造的美国财政部信函、一份虚假的美国公司注册文件，以及一份声称该公司价值100亿美元的证书。\n\n斯里兰卡警方证实，该行动背后是一家中国犯罪组织，专门诱骗美国人投资一家虚构的美国公司。\n\n主要诈骗类型及其运作方式\n\n这些犯罪网络并非只从事一种诈骗，而是同时经营多种诈骗模式。\n\n投资及加密货币诈骗（包括AI深度伪造）\n\n这是他们最主要的诈骗方式。\n\n诈骗人员建立虚假的投资交易平台，并通过AI生成内容，向受害人承诺极高投资回报。\n\n为了吸引受害者，他们制作深度伪造（Deepfake）视频，假冒斯里兰卡总统阿努拉·库马拉·迪萨纳亚克、总理哈里尼·阿玛拉苏里亚、板球明星库马尔·桑加卡拉以及企业家奥塔拉·古纳瓦德纳等公众人物，谎称这些知名人士支持相关投资计划。\n\n恋爱诈骗（杀猪盘）\n\n诈骗人员通过交友软件、WhatsApp或社交媒体与受害者建立恋爱或朋友关系。\n\n在取得受害者信任之后，再诱导其进入虚假的投资平台。\n\n报告指出，这是这些犯罪网络最主要的诈骗方式之一。\n\n由于受害者已经建立起信任关系，因此更容易被骗。\n\n招聘诈骗及人口贩运\n\n诈骗集团发布虚假的高薪招聘广告，宣称招聘IT、呼叫中心或海外工作岗位，以诱骗受害者。\n\n商业电子邮件诈骗（BEC）\n\n这些诈骗不仅针对个人，也针对政府机构和企业。\n\n2025年12月至2026年1月底期间，黑客入侵了斯里兰卡财政部外国资源司的电子邮件和支付系统，将原本应支付给澳大利亚的一笔债务偿还款中的250万美元转移。\n\n调查人员目前仍在确认该案件是由本国犯罪分子还是境外组织实施。\n\n虚假交通罚款及政府缴费诈骗\n\n这是影响许多斯里兰卡民众的一种常见诈骗。\n\n2026年5月，斯里兰卡警方及国家计算机应急响应中心（CERT）发出警告，称诈骗人员通过短信及WhatsApp发送虚假交通违法通知，谎称闭路电视摄像头拍摄到交通违法行为，并要求点击链接缴纳罚款。\n\n该链接会跳转至一个仿冒政府GovPay支付平台的网站，从而窃取银行卡资料、OTP验证码及国民身份证信息。\n\n网络钓鱼及身份冒充诈骗\n\n这类诈骗的主要目的不是立即骗取现金，而是窃取敏感个人信息。\n\n2026年1月，斯里兰卡警方公布了九种常见网络金融诈骗，包括：\n\n短信、电子邮件及WhatsApp钓鱼链接；\n\n虚假银行优惠活动；\n\n二维码诈骗；\n\n来电号码伪装（Caller ID Spoofing）；\n\n虚假商业网站；\n\n冒充高级政府官员，甚至总统和总理身份进行诈骗。\n\n其最终目的都是获取身份证号码、银行卡资料、OTP验证码及银行卡PIN码。\n\n对这些案件的法律处理\n\n目前，斯里兰卡网络犯罪调查部门正在调查这些案件。\n\n警方、移民局及中央银行正联合开展执法行动。\n\n不过，专家指出，目前最大的法律漏洞在于，大多数案件最终只是将涉案外国人驱逐出境，而没有真正进行刑事起诉，使许多犯罪人员得以逃避司法审判。\n\n如何识别并保护自己免受诈骗\n\n这些诈骗集团在各种诈骗方式中都采用了类似套路。\n\n需要警惕的危险信号\n\n制造紧迫感，例如“今晚截止”“立即投资”等；\n\n来自WhatsApp、Telegram或Facebook的陌生好友申请，并声称是“朋友介绍”；\n\n要求将资金汇入无法独立核实的账户；\n\n利用名人视频或照片增加投资可信度；\n\n索要OTP验证码、PIN码、密码、银行卡号码或身份证号码等敏感信息；\n\n发送要求缴纳罚款、领取奖金或更新账户资料的可疑链接。\n\n应采取的措施\n\n无论任何理由，都不要向任何人提供OTP验证码、PIN码、密码、银行卡资料或身份证号码。\n\n独立核实公司信息，确认金融机构是否获得中央银行注册。\n\n不要点击陌生链接，而应直接在浏览器输入官方网站地址（例如GovPay）。\n\n投资前务必谨慎思考，合法金融机构绝不会保证快速高额回报。\n\n将可疑短信、广告或视频向警方网络犯罪部门举报，并向Fact Crescendo提供截图，以便调查核实。\n\n结论\n\n被东南亚国家打击后的跨国网络诈骗集团已逐渐将业务转移至斯里兰卡，2026年相关逮捕人数持续大幅增加。\n\n这些犯罪网络通过投资诈骗、恋爱诈骗、虚假招聘、商业电子邮件诈骗、虚假交通罚款诈骗以及身份冒充等多种方式接触公众并实施诈骗。\n\nFact Crescendo斯里兰卡呼吁公众持续关注斯里兰卡警方、中央银行及国家计算机应急响应中心（CERT）发布的最新安全提示，对于任何主动送上门的投资机会、工作机会或付款请求，都应先独立核实后再作决定。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:41.888Z",
-      "expiresAt": "2026-07-01T20:24:41.888Z",
+      "createdAt": "2026-06-29T21:53:50.302Z",
+      "expiresAt": "2026-07-01T21:53:50.302Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:41.888Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:50.302Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -5848,7 +5582,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:41.888Z"
+        "reviewedAt": "2026-06-29T21:53:50.302Z"
       }
     },
     {
@@ -5893,10 +5627,10 @@
           "url": "https://t.me/xiaoerlbot"
         }
       ],
-      "createdAt": "2026-06-29T20:24:41.072Z",
-      "expiresAt": "2026-07-01T20:24:41.072Z",
+      "createdAt": "2026-06-29T21:53:49.607Z",
+      "expiresAt": "2026-07-01T21:53:49.607Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:41.072Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:49.607Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5914,7 +5648,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:41.072Z"
+        "reviewedAt": "2026-06-29T21:53:49.607Z"
       }
     },
     {
@@ -5949,10 +5683,10 @@
           "url": "https://t.me/mili1477"
         }
       ],
-      "createdAt": "2026-06-29T20:24:40.160Z",
-      "expiresAt": "2026-07-01T20:24:40.160Z",
+      "createdAt": "2026-06-29T21:53:48.845Z",
+      "expiresAt": "2026-07-01T21:53:48.845Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:40.160Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:48.845Z",
       "tag": "other",
       "tags": [
         "other"
@@ -5970,7 +5704,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:40.160Z"
+        "reviewedAt": "2026-06-29T21:53:48.845Z"
       }
     },
     {
@@ -6013,10 +5747,10 @@
           "url": "https://t.me/Millergobot"
         }
       ],
-      "createdAt": "2026-06-29T20:24:39.366Z",
-      "expiresAt": "2026-07-01T20:24:39.366Z",
+      "createdAt": "2026-06-29T21:53:48.158Z",
+      "expiresAt": "2026-07-01T21:53:48.158Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:39.366Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:48.158Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6034,7 +5768,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:39.366Z"
+        "reviewedAt": "2026-06-29T21:53:48.158Z"
       }
     },
     {
@@ -6060,10 +5794,10 @@
       "fallbackReason": null,
       "text": "SOSO 这边不止一个入口，搜索、音乐、新闻、工具都给你串好了。\n想少走弯路，先从精选导航开始最省事。\n\n👇 点下面直接打开",
       "links": [],
-      "createdAt": "2026-06-29T20:24:38.049Z",
-      "expiresAt": "2026-07-01T20:24:38.049Z",
+      "createdAt": "2026-06-29T21:53:47.403Z",
+      "expiresAt": "2026-07-01T21:53:47.403Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:38.049Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:47.403Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6081,7 +5815,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:38.049Z"
+        "reviewedAt": "2026-06-29T21:53:47.403Z"
       }
     },
     {
@@ -6109,10 +5843,10 @@
       "fallbackReason": null,
       "text": "#网友反馈：今晚金边 1号路往木牌方向，有警方拦截了一辆商务车，现场带走一男一女。\n\n目前具体原因暂未公布，涉事人员身份和案件情况还有待进一步确认。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:37.184Z",
-      "expiresAt": "2026-07-01T20:24:37.184Z",
+      "createdAt": "2026-06-29T21:53:46.619Z",
+      "expiresAt": "2026-07-01T21:53:46.619Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:37.184Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:46.619Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6130,7 +5864,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:37.184Z"
+        "reviewedAt": "2026-06-29T21:53:46.619Z"
       }
     },
     {
@@ -6170,10 +5904,10 @@
           "url": "https://t.me/DuoZhuTG1"
         }
       ],
-      "createdAt": "2026-06-29T20:24:36.357Z",
-      "expiresAt": "2026-07-01T20:24:36.357Z",
+      "createdAt": "2026-06-29T21:53:45.819Z",
+      "expiresAt": "2026-07-01T21:53:45.819Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:36.357Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:45.819Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6191,7 +5925,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:36.357Z"
+        "reviewedAt": "2026-06-29T21:53:45.819Z"
       }
     },
     {
@@ -6244,10 +5978,10 @@
           "url": "https://t.me/vip8k090"
         }
       ],
-      "createdAt": "2026-06-29T20:24:35.462Z",
-      "expiresAt": "2026-07-01T20:24:35.462Z",
+      "createdAt": "2026-06-29T21:53:44.991Z",
+      "expiresAt": "2026-07-01T21:53:44.991Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:35.462Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:44.991Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6265,7 +5999,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:35.462Z"
+        "reviewedAt": "2026-06-29T21:53:44.991Z"
       }
     },
     {
@@ -6300,10 +6034,10 @@
       "fallbackReason": null,
       "text": "#人间温暖 波贝58号路边露宿的中国男子获当地民众帮助，得到妥善安置\n\n在柬埔寨波贝市58号路边花园露宿的中国男子，在当地民众的帮助下，最终得到了妥善安置。\n\n据了解，在事件引发关注后，热心的本地居民主动伸出援手，不仅为他寻找了一处临时住所，还送来了食物和生活用品，帮助他暂时渡过难关。\n\n虽然素不相识、语言不通，但这些普通民众依然选择给予帮助，用实际行动诠释了善良与爱心。在异国他乡，当一个人身处困境时，一份热饭、一处遮风避雨的地方，往往比任何言语都更有温度。\n\n这场暖心救助，也让人看到了波贝当地民众淳朴善良的一面。善意不分国籍，爱心没有边界，希望这名男子能够尽快走出困境，重新开始新的生活。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:34.465Z",
-      "expiresAt": "2026-07-01T20:24:34.465Z",
+      "createdAt": "2026-06-29T21:53:44.132Z",
+      "expiresAt": "2026-07-01T21:53:44.132Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:34.465Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:44.132Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6321,7 +6055,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:34.465Z"
+        "reviewedAt": "2026-06-29T21:53:44.132Z"
       }
     },
     {
@@ -6347,10 +6081,10 @@
       "fallbackReason": null,
       "text": "#缅甸新闻 \n   2026年6月28日，联合国人权高专办于日内瓦发布报告，披露2025年8月至2026年1月缅甸冲突民生伤亡数据。半年间，缅甸军方军事行动造成至少702名平民遇难，含224名妇女、153名儿童。   \n\n   其中空袭致死人数达505人，占总遇难人数超57%。报告指出，平民伤亡大幅攀升，与军方筹备选举、  \n  推进领土管控的军事行动高度关联，联合国明确，相关平民伤亡责任由缅甸军方承担。",
       "links": [],
-      "createdAt": "2026-06-29T20:24:33.606Z",
-      "expiresAt": "2026-07-01T20:24:33.606Z",
+      "createdAt": "2026-06-29T21:53:43.407Z",
+      "expiresAt": "2026-07-01T21:53:43.407Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:33.606Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:43.407Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6368,7 +6102,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:33.606Z"
+        "reviewedAt": "2026-06-29T21:53:43.407Z"
       }
     },
     {
@@ -6437,10 +6171,10 @@
           "url": "https://pgyl271.cc/"
         }
       ],
-      "createdAt": "2026-06-29T20:24:32.853Z",
-      "expiresAt": "2026-07-01T20:24:32.853Z",
+      "createdAt": "2026-06-29T21:53:42.755Z",
+      "expiresAt": "2026-07-01T21:53:42.755Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:32.853Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:42.755Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -6462,7 +6196,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:32.853Z"
+        "reviewedAt": "2026-06-29T21:53:42.755Z"
       }
     },
     {
@@ -6517,10 +6251,10 @@
           "url": "https://2028vip35.com/"
         }
       ],
-      "createdAt": "2026-06-29T20:24:31.771Z",
-      "expiresAt": "2026-07-01T20:24:31.771Z",
+      "createdAt": "2026-06-29T21:53:41.895Z",
+      "expiresAt": "2026-07-01T21:53:41.895Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:31.771Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:41.895Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -6539,7 +6273,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:31.771Z"
+        "reviewedAt": "2026-06-29T21:53:41.895Z"
       }
     },
     {
@@ -6574,10 +6308,10 @@
           "url": "https://t.me/PP111"
         }
       ],
-      "createdAt": "2026-06-29T20:24:29.847Z",
-      "expiresAt": "2026-07-01T20:24:29.847Z",
+      "createdAt": "2026-06-29T21:53:40.118Z",
+      "expiresAt": "2026-07-01T21:53:40.118Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:29.847Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:40.118Z",
       "tag": "ai",
       "tags": [
         "ai",
@@ -6598,7 +6332,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:29.847Z"
+        "reviewedAt": "2026-06-29T21:53:40.118Z"
       }
     },
     {
@@ -6608,7 +6342,7 @@
         "title": "东南亚娱乐曝光💠 @dny488",
         "handle": "dny488",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/R37dCS83KSTAErZ_rGebYUa9sbV07DNhHarBBKYHUvzxcNVyJMU1LDF40a8r8n0j1R4XL4joIhZoBSsZfc2wCGrSPBMprhdhP9BivvmcWQnUQ5CkuKitFcHUMsOb0DittHi4MRzUbG827YlgySh7u58qJ-DnpAOO5HVhU3nE8b5dmW_IOd3bJ4xR6ClHYO8km8wgqhfPy5ENGB7UFgGkkIxYwlMNDp7NE1tq3Elipa_PipNkPj-DqCT4haS-8sDLChD4CldYh_pdKwcBrrygxoMZlPGszWUVaDLrHNNb-76GXGiNOLhcaWYThnmEs7hwn-EFH8_KMUlcddPsWQJzQQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/meam9BS7Z-I2vhATn1-FIT6fSz_J3qFzbsQWxa6l6neZ2Vc_Tq5VOHfs29ITn2x0qtahcwUwzFjN0OMtyFVMwOZZMSJOmNgTTLCJByEdSQzYIkvNFahHtxX9Vic29Z2m9kw3WOpVWxUEmscwalVBd9z6Fih1bJNGn16_lwUVms45Ie50JDKYy5g4PTYz_moAn-IP50P_c-O2gJhxw6fwbsNWSVhpw62QRQye7HZWXY3mA6UltTAlibJ2t2FUVblUJnVKxN8qU0schGrVbS4HuI30VDTGAOhAjXgn6CVTrveofpBuu2E-dxEMCPar26-skb19ZWGQwljd1QZymprndg.jpg"
       },
       "sourceId": "cn:dny488",
       "sourceCountryCode": "cn",
@@ -6635,10 +6369,10 @@
           "url": "https://t.me/qq787"
         }
       ],
-      "createdAt": "2026-06-29T20:24:29.020Z",
-      "expiresAt": "2026-07-01T20:24:29.020Z",
+      "createdAt": "2026-06-29T21:53:39.362Z",
+      "expiresAt": "2026-07-01T21:53:39.362Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-06-29T20:24:29.020Z",
+      "mediaRefreshedAt": "2026-06-29T21:53:39.362Z",
       "tag": "other",
       "tags": [
         "other"
@@ -6656,7 +6390,489 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-06-29T20:24:29.020Z"
+        "reviewedAt": "2026-06-29T21:53:39.362Z"
+      }
+    },
+    {
+      "id": 4100966365,
+      "postUrl": "https://t.me/dny4444/57786?single",
+      "source": {
+        "title": "东南亚大事件 - 今日头条",
+        "handle": "dny4444",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/EAshQuY-yL9DPPIcx7GoRRWLYhDAAjcLp3LkvYCd_1l0QcrP7dMISRccyKrSKOCdfJA6feGD893cjeFh4ru-VvTsNZtwEjkV4f5gaCyVvAafFnLCs-Y2ZWLwxfW9fUXUZ_ftaIY3fNhelRRK6PthJsmmUJjM9tTHbrLkKyrg_JrYESCmSPuQO0suz4J1RMlePe5bnjcX2G6Plclhhdc2lBzBbYp6jic_Nd0MwVrGJHqGjXzRPwV4dRUCRk-_sNX5Hmczkx2FXiau3F7WGP3BXEuCsINQioKoWI1sH_f8SSRWvfkUyE9P6dy96zu5GU7aGby1trhi3E5kg-FySKqhQg.jpg"
+      },
+      "sourceId": "cn:dny4444",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/vDcdLqONTdTdgjYaLwPBEyPeVYKuO3Q_Trg1--itVGyZhq1ItpI-G0rmbN-CNaTg6X6fLO0hnSNfB9Du9YMTlQ8fHmew2jKBlBjQVjONmq47TW5OmD4Pd7ToeaIW07IvZ5oYwukflRsbCD-urSdKh3pWJa6GJZNZiTCTFFGMGthgZHgVlta-hbXlP4cbdTDRJsPtb4jakLlgrM4bn4QDKB2EnV_fgkUWJf9gxV488BoLftriVyjHPsL7qMk_s-B1Y4w8EIsRUwunK5byqYfTE8mMP2BLMEOYe5X9EpPbpF33jjQD6r8T_O6zhv02g3UVONurp2QwpaLgSW8m55KTVw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "分享：在迪拜认识一种人，悄悄就把钱赚了\n\n在迪拜这么多年，见过各种各样的华人。\n有一种人，你跟他吃饭，他不显山不露水，聊的都是生活，从不说自己赚了多少钱。\n但过了一两年，你突然发现——他在迪拜买了房，孩子在国际学校，护照也换了。\n你问他怎么做到的，他只是笑笑说，就是提前做了一些安排。\n这种人有几个共同点：\n第一，他们不等”确定了再行动”，因为等你确定的时候，窗口已经关了。\n第二，他们不炫耀，所以你永远不知道他们在做什么。\n第三，他们在迪拜找到了自己的位置，不是靠运气，是靠提前想清楚了。\n我见过太多人观望了三五年，最后发现当年的机会已经不在了。\n你现在在观望什么？\n\n📣 东南亚大事件:  @kk888\n📣 东南亚吃瓜群:  @kk999\n📣 东南亚素材库:  @zhaopian\n☎️ 投稿澄清爆料:  @kk7888bot",
+      "links": [
+        {
+          "label": "@kk888",
+          "url": "https://t.me/kk888"
+        },
+        {
+          "label": "@kk999",
+          "url": "https://t.me/kk999"
+        },
+        {
+          "label": "@zhaopian",
+          "url": "https://t.me/zhaopian"
+        },
+        {
+          "label": "@kk7888bot",
+          "url": "https://t.me/kk7888bot"
+        }
+      ],
+      "createdAt": "2026-06-29T21:53:38.277Z",
+      "expiresAt": "2026-07-01T21:53:38.277Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-06-29T21:53:38.277Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-06-29T21:53:38.277Z"
+      }
+    },
+    {
+      "id": 4235585931,
+      "postUrl": "https://t.me/dny377/80226?single",
+      "source": {
+        "title": "东南亚大事件-头条新闻",
+        "handle": "dny377",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/GHhXJudry3vmb_ld26_1DS-Fv0pwHpv255kJ7VQyB3JjuHnlxDuRhk4ghnVpfAH4r0eWANNCLcuUfnCqWMRKLcFgG63T7_xMNejya-uvl6R1K-pGngRUAvMjY_z1jbgf1Apd6feSJZHkCwtT7MRVkHhSJFW8htfhbbbPCMUTF-tz0DoS5Ypd3-xxoDQAmEgt2MEkAklibT2e9bZQVEf3yh_KgaoKdEoVqDt8ti-Cj2MI-sYsbkJZsqsEdTxX_QXs-GskntrcoDaTahpPqP9iwpuIePTQALWIK0EGgvGbNL_IMDqqYwyp9WAZ0bvaMxdoql4ZCAFeB-mhhA5tacQubA.jpg"
+      },
+      "sourceId": "cn:dny377",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/XHIpejwe86lx5WjnVVDO3mdWgLI8XTg4Q7i-p9uFzyES5bL9EOf7CsNs7osGcP0crv0S6vbknc6861fOQhGzNco7EAjQ5KLEHn6VGioLBhAuLTjGEXqyNG_wkSi3-hq0e9bLGjTqHHeKlnrzHtJZYUhrfZxIfvODkAzhoAOfZxjaT1w0lcrcrDBGXWkEJwk6Fwe5bPs41Pv2zGRwAZsG2f4dOUQgi3OM_TL_LUidnl-usMcHBGqJDm58InKYJ3w-986-hcerrWkWwpB28eY3kGJPePpaLdNefHicFB4wkmapaiKsy5WrqgN4y00UGLyUcnhcBBqeUHdwcxla88aQSQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "#世界杯战报 加拿大1比0绝杀南非，率先晋级16强  2026年6月29日凌晨，世界杯32强淘汰赛正式开打，加拿大队凭借补时阶段的关键进球，以1比0击败南非队。  比赛大部分时间双方都没能取得进球，直到第92分钟，加拿大队才完成绝杀，成为本届世界杯首支晋级16强的球队。  输掉这场比赛后，南非队正式结束本届世界杯征程，加拿大队下一轮将迎战荷兰队与摩洛哥队之间的胜者。  截至6月29日中午，今天已经结束的世界杯比赛只有这一场，其余比赛将在稍后陆续进行。  😀  【头条新闻】 @dny377  😃  【华人之光】…",
+      "links": [],
+      "createdAt": "2026-06-29T21:53:37.537Z",
+      "expiresAt": "2026-07-01T21:53:37.537Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-06-29T21:53:37.537Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-06-29T21:53:37.537Z"
+      }
+    },
+    {
+      "id": 715826355,
+      "postUrl": "https://t.me/dny339/53624?single",
+      "source": {
+        "title": "东南亚大事件",
+        "handle": "dny339",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/YxpdUHee44tL5MAVkjZuPLpXSBdBrnBJFTwuDi9MikEOmKG9plneXqaiphoLvdxlqbFYJY-xbTrSoygq9_vWGh4ZpDHWVq2KCFDUqxVky65HCyHvg9amgkeMPRWQMnCJygVvnsA3f-iLu7pO3jwblyCN7tq0-XCPe0g6EQ00kxhlsWKy7K2KfxlbTgx_tXMiwdFyE1jPscV_NmKaCH_qvc7hOH7QNooz7nbOxGTSbcGJc7tB-iXZy0EKeh_akbHvrmdWLb-tQ37Lv-MiY4CFabVBgZCqvMM20M1Cig6jURPLJB2etQH4BwqebRxrgR_jKNYgysXFOjpEsaO7Q8rSxg.jpg"
+      },
+      "sourceId": "cn:dny339",
+      "sourceCountryCode": "cn",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/hJv2e_fbU7Zq9g_m4D_U0FO54bSUxWeYfIhpTDSMBv_UllI9vOL_srQ0JvQZrGlkDuQDj_5RIcP8i5JWoblSE09shPJZDqUYcpRzwyAs60kYQN2RwibXwAjtgOyHq_DCxJ0T_ScxSs2HtYnmIWUhT1UTWA20kfE17Y2X7R3IZ4ouYuOUgmM_yQDIzgIDcVV7DR9hub5ASn_mc6A_urzb6pJZfV4vWBOU_FVoLIfEN2R0hKMotzHV0MjRhUtOKnN0-JcqG1Gj0-5O3DnbMCH-OL3r5opArygGYfeV6Xn1-9tuWDVYbW25MW2F-u2iQ_nUWQC9lTq_x7IMzsKVzKjT9w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "【2028体育】TG全网最大信誉台|大额提款无忧\n🌟🌟🌟🌟🌟🌟🌟🌟🌟⚡️⚡️⚡️⚡️⚡️\n\n🌊  四大顶级盘口 · 强强联合 \n⚽️  IM体育 · FB体育 · 沙巴体育 · FB体育\n😀  世界杯投注网址： 2028219.com\n\n🇺🇸🇻🇳🇷🇪🇻🇪🇺🇸🇻🇳 😬🙄😯 😪😮‍💨😵\n🈴  不限ip全球可玩 不用实名认证 不用手机号\n🤨  笔笔存款送 1%  U存U提不限提款次数\n⚡️  全网福利天花板/首复存送/投注送 众多体育活动全开 \n⚡️   月投注送嫩模空降/劳力士赠送/神秘彩金每天狂撒500万\n⚡️  平台支持 USDT 👌 微信 👌 支付宝  K豆等100多种钱包\n\n🏆  决战世界杯 · 狂欢盛宴豪礼正式开启！\n⚽️  活动期间 · 体育预存加赠  😀😀  豪礼提前解锁\n⚽️  体育天天返水加赠最高  😀😀  奖励最高 😀😀😀😀\n😄  竞猜体育躺赚收益 投注返佣  7️⃣🔤  天天领取\n🔤  新人见面礼 首存奖励高达18888+二存奖励+日存奖励\n😃 6.7某神秘大哥麻将胡了爆奖1100万\n😃 6.13世界杯大哥精准命中狂澜590万\n😃 6.16大佬PG电子麻将胡了拿下472万\n\n😃  PG电子 ｜PP电子超高爆率台\n🈴  电子百家乐 0风控0审核 包出款\n\n ⚡️⚡️⚡️⚡️ ：  @PGDZR  😝\n ⚡️⚡️⚡️⚡️ ：  @manni888   👍\n ⚡️⚡️⚡️⚡️ ：  2028219.com    🔗\n\n⚽️  四年一度足球对决，尽在2028体育 · 不止看球更陪你赢球！",
+      "links": [
+        {
+          "label": "四大顶级盘口 · 强强联合",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "IM体育 · FB体育 · 沙巴体育 · FB体育",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "2028219.com",
+          "url": "https://2028219.com/"
+        },
+        {
+          "label": "不限ip全球可玩 不用实名认证 不用手机号",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "笔笔存款送 1%  U存U提不限提款次数",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "全网福利天花板/首复存送/投注送 众多体育活动全开",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": null,
+          "url": "https://t.me/pg115/1170"
+        },
+        {
+          "label": "月投注送嫩模空降/劳力士赠送/神秘彩金每天狂撒500万",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "平台支持 USDT",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "微信",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "支付宝  K豆等100多种钱包",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "6.7某神秘大哥麻将胡了爆奖1100万",
+          "url": "https://t.me/pgdzr/1684"
+        },
+        {
+          "label": "6.13世界杯大哥精准命中狂澜590万",
+          "url": "https://t.me/pgdzr/1695?single"
+        },
+        {
+          "label": "6.16大佬PG电子麻将胡了拿下472万",
+          "url": "https://t.me/pgdzr/1699"
+        },
+        {
+          "label": "PG电子 ｜PP电子超高爆率台",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "电子百家乐 0风控0审核 包出款",
+          "url": "https://t.me/pgdzr"
+        },
+        {
+          "label": "@PGDZR",
+          "url": "https://t.me/PGDZR"
+        },
+        {
+          "label": "@manni888",
+          "url": "https://t.me/manni888"
+        },
+        {
+          "label": "2028219.com",
+          "url": "https://2028219.com/"
+        }
+      ],
+      "createdAt": "2026-06-29T21:53:36.790Z",
+      "expiresAt": "2026-07-01T21:53:36.790Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-06-29T21:53:36.790Z",
+      "tag": "crypto",
+      "tags": [
+        "crypto",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-06-29T21:53:36.790Z"
+      }
+    },
+    {
+      "id": 161983001,
+      "postUrl": "https://t.me/dny1x/2318?single",
+      "source": {
+        "title": "东南亚新闻热搜🆅【50.com钱包冠名】",
+        "handle": "dny1x",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/gdbkVJYeAmk0iAUqlKpoUEgaM72xOc5677YumDjNI2G3BbKo5_Or0_64S5VslApcSZDIUW5J0IZc4T8k0-xf7Y62TlyD00VaXVPDl18wtmOu3B4GnPr3Ff9CVrr8XCaQ6N5QdYIrcOhYYTNaA01D0QOqvLlAl4JVfoBwGcGdZ4jfYwPI6WBGyB9J_l8dWYqLvPs_cEObQfGjlINKWmlgpWA2eToWoE8y5orknu4sA_zKafaMaS_Vdb1xi-xUDSu2nAIGhvnS4zT7in5iLoLa102I7a1m6dJwImjxHEFSyk0t-4xV45_gg7Bu-N7zalUkqGG7dJQPX7iJJaWa6eberA.jpg"
+      },
+      "sourceId": "cn:dny1x",
+      "sourceCountryCode": "cn",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn1.telesco.pe/file/2383519a93.mp4?token=kWxTS_eOAI3nMQKu17r9xmnh0XrggLIIEWuTTxrumvoRZWmjs4rJUuMTpHI6Evk3IpUuM-IDoD2ToAmqVIAWwvxouHPaqVFX8xqSmGdDXvMDBcBd0cg1AiXIqE-SmF4k-w1ys8JSn4lcFw6oPNiHHy23GjpGAGEKJlwCN6Rdaoc1Wlu7bKT-uAo228ebOX3p_cPussOfER9YOW7QZilfyPrB_a0UU_n99vm059UyqX_YCA410TTMObY0cCqUb-Kf9G1wX8CigyW6Vyt2Nj0slmsT2Fs6rK1wTi6PaLcm_6BnMmJC0azObYxFhoAJyZgdOIjE15pdO5QrhrgeoFrY9g",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🤩🤩🤩🤩🤩🤩🤩🤩🤩   \n\n 🥸🥸🥸😅😞😉😉😉😝😝\n              \n 🌟 新会员好礼\n       注册首存最高送8888U\n       二存/三存最高赠送5888U\n\n 🌟     🌟🌟🌟🌟🌟🌟\n       🌟🌟🌟🌟🌟🌟🌟🌟\n      全网召集 老玩家入驻i8豪礼\n    VIP 1:1平移,最高享88888彩金！\n\n 🌟  一键登录，无需注册\n       【 TG小程序｜@i8i8  】\n———————————————————\n🌟🌟🌟🌟  🌟🌟🌟🌟🌟🌟🌟\n\n🈲 21:00 - 23:00 性感单人大秀 🈲 \n           👆  点击加入参与调教 \n———————————————————\n😁😁😁😁😁😁😁😁\n🌟 官方客服：@i8kf\n🌟 官方飞投：@i8i8\n🌟 官方频道：@i8pd    \n\n🌟 游戏入口\n     i8国际【USDT入口】    👉开始游戏\n\n     i8国际【人民币入口】   👉开始游戏\n\n     i8体育【世界杯入口】   👉开始游戏\n               \n🌟 加入i8国际 功成名就！\n🌟 选择i8体育 大额无忧！\n\n#i8国际  #i8世界杯 #真人 #PG电子 #棋牌  #捕鱼  #彩票 #百家乐 #i8体育",
+      "links": [
+        {
+          "label": "新会员好礼",
+          "url": "https://i8320.vip/"
+        },
+        {
+          "label": "全网召集 老玩家入驻i8豪礼\n    VIP 1:1平移,最高享88888彩金！",
+          "url": "https://i8guoji.com/home/event/detail?current=10001&amp;amp;template=1&amp;amp;eventId=173"
+        },
+        {
+          "label": "一键登录，无需注册",
+          "url": "https://t.me/i8combot"
+        },
+        {
+          "label": "@i8i8",
+          "url": "https://t.me/i8i8"
+        },
+        {
+          "label": "21:00 - 23:00 性感单人大秀",
+          "url": "https://t.me/i8zb"
+        },
+        {
+          "label": "点击加入参与调教",
+          "url": "https://t.me/i8zb"
+        },
+        {
+          "label": "@i8kf",
+          "url": "https://t.me/i8kf"
+        },
+        {
+          "label": "@i8i8",
+          "url": "https://t.me/i8i8"
+        },
+        {
+          "label": "@i8pd",
+          "url": "https://t.me/i8pd"
+        },
+        {
+          "label": null,
+          "url": "https://i82229.com/"
+        },
+        {
+          "label": "i8国际【USDT入口】    👉开始游戏",
+          "url": "https://i8320.vip/"
+        },
+        {
+          "label": "i8国际【人民币入口】   👉开始游戏",
+          "url": "https://i8681.vip/"
+        },
+        {
+          "label": "i8体育【世界杯入口】   👉开始游戏",
+          "url": "https://i8738.com/"
+        },
+        {
+          "label": null,
+          "url": "https://i8718.com/"
+        },
+        {
+          "label": null,
+          "url": "https://364656.vip/?id=137961754"
+        },
+        {
+          "label": "加入i8国际 功成名就！",
+          "url": "https://i8320.vip/"
+        },
+        {
+          "label": "选择i8体育 大额无忧！",
+          "url": "https://i8738.com/"
+        },
+        {
+          "label": "#i8体育",
+          "url": "https://i8738.com/"
+        }
+      ],
+      "createdAt": "2026-06-29T21:53:35.984Z",
+      "expiresAt": "2026-07-01T21:53:35.984Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-06-29T21:53:35.984Z",
+      "tag": "crypto",
+      "tags": [
+        "crypto",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-06-29T21:53:35.984Z"
+      }
+    },
+    {
+      "id": 2849374022,
+      "postUrl": "https://t.me/dny1a/2123?single",
+      "source": {
+        "title": "东南亚情报局🆅【50.com钱包冠名】",
+        "handle": "dny1a",
+        "verified": false,
+        "avatar": "https://cdn1.telesco.pe/file/gVD5EGeJ4YGiZYMAL4NvYNs305Smy9ti_YXXqa2BpcfY68GzR_VVOvsB81snBc-A3Wq-BNZgCWsN7phJups35EUq3RD7sFgPkEPgFh2MlNFb_co9LLg1x6XIWeDeHwP6ogtnnwY-o2DzOjJ6ndt8jSFN8Wc914bzgaHEXU7wrK5UynScEAgtPgyga7BGtu2ci2Ev4C42wIg_8tT2uDHH0FAWuCjQ7zTJY8cwqL8LKJpRriAfJI7d4FoRMzbXrLXxqHvLABLK0DgdTbD620wjh9uav8mjS2H6GJslxiE7F3GsX15au8mkF4zXwYDFxaHiRegREXhqukR3F8xzmf_Zpw.jpg"
+      },
+      "sourceId": "cn:dny1a",
+      "sourceCountryCode": "cn",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn1.telesco.pe/file/2383519a93.mp4?token=NBC_Q9l5-iupfAzaZjmfLXOGGvXCyh_2uJp5Q8Voo62mpYXM_mllZstWQpCcDJpLH5lxHz5PxIHkSJXyd2y636Y_0NKB5Qh_VaCQPSV-BZmS58nQeIvvHXfowC5oeoDtzp4b5YgMmDay6QaCrnVlZB2g3aF4wHzZkQpW7Cm1PQnQrOQ9z5nqWkHmVR_4lf8Nuv4EakrqwWVOeJfCFKUc2Ltn_mS1qUnrAlfC_rnUBVS6_Ihjlm3CdPMFqCbuJuQ0nQxgzvu3fNEs_va0MrTglLbDJgUaFgS5lTp4X5iOGE98_WiPUZ8k5SdWdBKg5iRhz5lXfI2wVZ3fwKcbJdkE_Q",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🤩🤩🤩🤩🤩🤩🤩🤩🤩   \n\n 🥸🥸🥸😅😞😉😉😉😝😝\n              \n 🌟 新会员好礼\n       注册首存最高送8888U\n       二存/三存最高赠送5888U\n\n 🌟     🌟🌟🌟🌟🌟🌟\n       🌟🌟🌟🌟🌟🌟🌟🌟\n      全网召集 老玩家入驻i8豪礼\n    VIP 1:1平移,最高享88888彩金！\n\n 🌟  一键登录，无需注册\n       【 TG小程序｜@i8i8  】\n———————————————————\n🌟🌟🌟🌟  🌟🌟🌟🌟🌟🌟🌟\n\n🈲 21:00 - 23:00 性感单人大秀 🈲 \n           👆  点击加入参与调教 \n———————————————————\n😁😁😁😁😁😁😁😁\n🌟 官方客服：@i8kf\n🌟 官方飞投：@i8i8\n🌟 官方频道：@i8pd    \n\n🌟 游戏入口\n     i8国际【USDT入口】    👉开始游戏\n\n     i8国际【人民币入口】   👉开始游戏\n\n     i8体育【世界杯入口】   👉开始游戏\n               \n🌟 加入i8国际 功成名就！\n🌟 选择i8体育 大额无忧！\n\n#i8国际  #i8世界杯 #真人 #PG电子 #棋牌  #捕鱼  #彩票 #百家乐 #i8体育",
+      "links": [
+        {
+          "label": "新会员好礼",
+          "url": "https://i8320.vip/"
+        },
+        {
+          "label": "全网召集 老玩家入驻i8豪礼\n    VIP 1:1平移,最高享88888彩金！",
+          "url": "https://i8guoji.com/home/event/detail?current=10001&amp;amp;template=1&amp;amp;eventId=173"
+        },
+        {
+          "label": "一键登录，无需注册",
+          "url": "https://t.me/i8combot"
+        },
+        {
+          "label": "@i8i8",
+          "url": "https://t.me/i8i8"
+        },
+        {
+          "label": "21:00 - 23:00 性感单人大秀",
+          "url": "https://t.me/i8zb"
+        },
+        {
+          "label": "点击加入参与调教",
+          "url": "https://t.me/i8zb"
+        },
+        {
+          "label": "@i8kf",
+          "url": "https://t.me/i8kf"
+        },
+        {
+          "label": "@i8i8",
+          "url": "https://t.me/i8i8"
+        },
+        {
+          "label": "@i8pd",
+          "url": "https://t.me/i8pd"
+        },
+        {
+          "label": null,
+          "url": "https://i82229.com/"
+        },
+        {
+          "label": "i8国际【USDT入口】    👉开始游戏",
+          "url": "https://i8320.vip/"
+        },
+        {
+          "label": "i8国际【人民币入口】   👉开始游戏",
+          "url": "https://i8681.vip/"
+        },
+        {
+          "label": "i8体育【世界杯入口】   👉开始游戏",
+          "url": "https://i8738.com/"
+        },
+        {
+          "label": null,
+          "url": "https://i8718.com/"
+        },
+        {
+          "label": null,
+          "url": "https://364656.vip/?id=137961754"
+        },
+        {
+          "label": "加入i8国际 功成名就！",
+          "url": "https://i8320.vip/"
+        },
+        {
+          "label": "选择i8体育 大额无忧！",
+          "url": "https://i8738.com/"
+        },
+        {
+          "label": "#i8体育",
+          "url": "https://i8738.com/"
+        }
+      ],
+      "createdAt": "2026-06-29T21:53:35.084Z",
+      "expiresAt": "2026-07-01T21:53:35.084Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-06-29T21:53:35.084Z",
+      "tag": "crypto",
+      "tags": [
+        "crypto",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-06-29T21:53:35.084Z"
       }
     }
   ]
