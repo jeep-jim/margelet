@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>#Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&amp;教程 ① Python JIT 被叫停始末 ② Pydant… — Newlearnerの自留地, China ai | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Newlearnerの自留地 in China. #Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&amp;教程 ① Python JIT 被叫停始末 ② Pydantic 接管 httpx 始末：一次教科书级的开源社区自救 ③ 最快的 Python 结构体方案？ ④ Free Threading 底层解析：PyMutex ⑤ 我为何提出 PEP 832：虚拟环境发现机制 ⑥ Pytho… Topics: ai, technology, health research, health." />
+  <meta name="keywords" content="margeleT, Telegram, China, Newlearnerの自留地, newlearnerchannel, ai, technology, health research, health" />
+  <link rel="canonical" href="https://www.margelet.space/post/1806001823" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="#Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&amp;教程 ① Python JIT 被叫停始末 ② Pydant… — Newlearnerの自留地, China ai | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Newlearnerの自留地 in China. #Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&amp;教程 ① Python JIT 被叫停始末 ② Pydantic 接管 httpx 始末：一次教科书级的开源社区自救 ③ 最快的 Python 结构体方案？ ④ Free Threading 底层解析：PyMutex ⑤ 我为何提出 PEP 832：虚拟环境发现机制 ⑥ Pytho… Topics: ai, technology, health research, health." />
+  <meta property="og:url" content="https://www.margelet.space/post/1806001823" />
+  <meta property="og:image" content="https://cdn5.telesco.pe/file/loM526qf5YIAnxvgg7SlC26ZD3mQOlohKni1fS6M0OooHkFfm_sox7fUeGzbwhhq4_z5nyZqFWceReplH_oYYjjMkT3HxjElW9fGGv6b7X9zIPRtQB9GHQ-PgXGfnOUsulVSsCHjdoCPyFEK_SwLTCmnKP-O9vUcAEYC7sBCvIHPnqwdnUsUgQFJ6JOURZ7idkcur-gfJaqciHwfVNj4qS8nufgkHhjtctEe_ddpJk-mUouI-cvLsKscElEruu-CG-ckJsoUA1p8_UMKdBZpL0XYjETM9ZMJHuMc_MUFVvOrN27z5wIr3IY3zLPgPErwkdvsZkHeCs5RBZCUmr5L7g.jpg" />
+  <meta property="og:updated_time" content="2026-06-29T14:34:29.797Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="#Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&amp;教程 ① Python JIT 被叫停始末 ② Pydant… — Newlearnerの自留地, China ai | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Newlearnerの自留地 in China. #Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&amp;教程 ① Python JIT 被叫停始末 ② Pydantic 接管 httpx 始末：一次教科书级的开源社区自救 ③ 最快的 Python 结构体方案？ ④ Free Threading 底层解析：PyMutex ⑤ 我为何提出 PEP 832：虚拟环境发现机制 ⑥ Pytho… Topics: ai, technology, health research, health." />
+  <meta name="twitter:image" content="https://cdn5.telesco.pe/file/loM526qf5YIAnxvgg7SlC26ZD3mQOlohKni1fS6M0OooHkFfm_sox7fUeGzbwhhq4_z5nyZqFWceReplH_oYYjjMkT3HxjElW9fGGv6b7X9zIPRtQB9GHQ-PgXGfnOUsulVSsCHjdoCPyFEK_SwLTCmnKP-O9vUcAEYC7sBCvIHPnqwdnUsUgQFJ6JOURZ7idkcur-gfJaqciHwfVNj4qS8nufgkHhjtctEe_ddpJk-mUouI-cvLsKscElEruu-CG-ckJsoUA1p8_UMKdBZpL0XYjETM9ZMJHuMc_MUFVvOrN27z5wIr3IY3zLPgPErwkdvsZkHeCs5RBZCUmr5L7g.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"Newlearnerの自留地","item":"https://www.margelet.space/newlearnerchannel"}]},{"@type":["Article","SocialMediaPosting"],"headline":"#Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&教程 ① Python JIT 被叫停始末 ② Pydant…","description":"Fresh Telegram snapshot from Newlearnerの自留地 in China. #Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&教程 ① Python JIT 被叫停始末 ② Pydantic 接管 httpx 始末：一次教科书级的开源社区自救 ③ 最快的 Python 结构体方案？ ④ Free Threading 底层解析：PyMutex ⑤ 我为何提出 PEP 832：虚拟环境发现机制 ⑥ Pytho… Topics: ai, technology, health research, health.","articleBody":"#Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&教程 ① Python JIT 被叫停始末 ② Pydantic 接管 httpx 始末：一次教科书级的开源社区自救 ③ 最快的 Python 结构体方案？ ④ Free Threading 底层解析：PyMutex ⑤ 我为何提出 PEP 832：虚拟环境发现机制 ⑥ Python 从零开发编程智能体 ⑦ Scikit-learn 的 fit/transform 范式可能不适合你 ⑧ Python 项目的上下文工程实践 ⑨ PEP 835：Annotated 类型元数据的简写语法 ⑩ Python 任务队列库选型实测 ⑪ Armin Ronacher 谈 AI 编程的循环模式 ⑫ Anthropic 多产品中安全隔离 Claude 的技术方案 🐿️项目&资源 ① uuid-utils：Rust 重写的 Python uuid 替代库 ② HippoRAG：类人脑长期记忆机制的高效 RAG 框架 ③ storm：LLM 驱动的研究报告自动生成系统 ④ presidio：微软开源的数据保护与 PII 脱敏框架 ⑤ GNews：轻量级 Google News 搜索 API 封装 ⑥ scientific-agent-skills：科学领域 AI 智能体的 147 个即用技能库 ⑦ obsidian-wiki：基于 Obsidian 的 AI 智能体数字大脑 ⑧ sdk-python：端到端 AI 智能体编排 SDK ⑨ claude-tap：编程智能体 API 通信流量审查工具 ⑩ kirigami：PEP 讨论智能阅读分析工具 ⑪ Symbolica：高性能计算机代数库 ⑫ MediaCrawler：多平台社交数据采集工具 在信息洪流中为你淘金，助力 Python 技术视野拓展和职业发展。现在订阅，每周让自己进步一点点。 👀 订阅：小报童 爱发电 👀 合集：1季 2季 3季 🐱频道：@NewlearnerChannel","text":"#Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&教程 ① Python JIT 被叫停始末 ② Pydantic 接管 httpx 始末：一次教科书级的开源社区自救 ③ 最快的 Python 结构体方案？ ④ Free Threading 底层解析：PyMutex ⑤ 我为何提出 PEP 832：虚拟环境发现机制 ⑥ Python 从零开发编程智能体 ⑦ Scikit-learn 的 fit/transform 范式可能不适合你 ⑧ Python 项目的上下文工程实践 ⑨ PEP 835：Annotated 类型元数据的简写语法 ⑩ Python 任务队列库选型实测 ⑪ Armin Ronacher 谈 AI 编程的循环模式 ⑫ Anthropic 多产品中安全隔离 Claude 的技术方案 🐿️项目&资源 ① uuid-utils：Rust 重写的 Python uuid 替代库 ② HippoRAG：类人脑长期记忆机制的高效 RAG 框架 ③ storm：LLM 驱动的研究报告自动生成系统 ④ presidio：微软开源的数据保护与 PII 脱敏框架 ⑤ GNews：轻量级 Google News 搜索 API 封装 ⑥ scientific-agent-skills：科学领域 AI 智能体的 147 个即用技能库 ⑦ obsidian-wiki：基于 Obsidian 的 AI 智能体数字大脑 ⑧ sdk-python：端到端 AI 智能体编排 SDK ⑨ claude-tap：编程智能体 API 通信流量审查工具 ⑩ kirigami：PEP 讨论智能阅读分析工具 ⑪ Symbolica：高性能计算机代数库 ⑫ MediaCrawler：多平台社交数据采集工具 在信息洪流中为你淘金，助力 Python 技术视野拓展和职业发展。现在订阅，每周让自己进步一点点。 👀 订阅：小报童 爱发电 👀 合集：1季 2季 3季 🐱频道：@NewlearnerChannel","keywords":"margeleT, Telegram, China, Newlearnerの自留地, newlearnerchannel, ai, technology, health research, health","url":"https://www.margelet.space/post/1806001823","mainEntityOfPage":"https://www.margelet.space/post/1806001823","datePublished":"2026-06-29T14:34:29.797Z","dateModified":"2026-06-29T14:34:29.797Z","image":["https://cdn5.telesco.pe/file/loM526qf5YIAnxvgg7SlC26ZD3mQOlohKni1fS6M0OooHkFfm_sox7fUeGzbwhhq4_z5nyZqFWceReplH_oYYjjMkT3HxjElW9fGGv6b7X9zIPRtQB9GHQ-PgXGfnOUsulVSsCHjdoCPyFEK_SwLTCmnKP-O9vUcAEYC7sBCvIHPnqwdnUsUgQFJ6JOURZ7idkcur-gfJaqciHwfVNj4qS8nufgkHhjtctEe_ddpJk-mUouI-cvLsKscElEruu-CG-ckJsoUA1p8_UMKdBZpL0XYjETM9ZMJHuMc_MUFVvOrN27z5wIr3IY3zLPgPErwkdvsZkHeCs5RBZCUmr5L7g.jpg"],"inLanguage":"zh","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"Newlearnerの自留地","url":"https://www.margelet.space/newlearnerchannel","logo":"https://cdn5.telesco.pe/file/I0mEK-8et2Pu_ly66BJgPOu4Qr99oyXs7FZfS0k1gB8y_ybp7uliLjn-Wbue6FXUjLJsqjLJ5-C6MLS-IvbcLApBZAwkabmvg75jbu6YZSE7xyCo0yqj_pLvlTmQwZvSqWYiPxQjukSx5swqczASXRzDGs6e87rvdvukm9ED9vltevKx1mFITKQQB3NqeI1S9PirpN25_GU516zrzE-IbVEI6IeiC6V2nNGSNOyha699-3Bq-0ELfLqIDXxdvQUZS1hpTjC-X6cl8HgboLtW_C2KrPLYRpwTEYLu4-Ds1fBb4Hb-1RvDzEmydbZyKdf0bUZDfT3rCgJxRub51U1DQg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/newlearnerchannel/15668?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/I0mEK-8et2Pu_ly66BJgPOu4Qr99oyXs7FZfS0k1gB8y_ybp7uliLjn-Wbue6FXUjLJsqjLJ5-C6MLS-IvbcLApBZAwkabmvg75jbu6YZSE7xyCo0yqj_pLvlTmQwZvSqWYiPxQjukSx5swqczASXRzDGs6e87rvdvukm9ED9vltevKx1mFITKQQB3NqeI1S9PirpN25_GU516zrzE-IbVEI6IeiC6V2nNGSNOyha699-3Bq-0ELfLqIDXxdvQUZS1hpTjC-X6cl8HgboLtW_C2KrPLYRpwTEYLu4-Ds1fBb4Hb-1RvDzEmydbZyKdf0bUZDfT3rCgJxRub51U1DQg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Newlearnerの自留地</strong></span>
+          <span>@newlearnerchannel</span>
+        </span>
+      </p>
+      <h1>#Python潮流周刊 🐱🐱🐱🐱 第 156 期 🐱🐱🐱🐱 🦄文章&amp;教程 ① Python JIT 被叫停始末 ② Pydant…</h1>
+      <p>#Python潮流周刊 
+
+🐱🐱🐱🐱  第 156 期  🐱🐱🐱🐱
+
+🦄文章&amp;教程
+
+① Python JIT 被叫停始末
+② Pydantic 接管 httpx 始末：一次教科书级的开源社区自救
+③ 最快的 Python 结构体方案？
+④ Free Threading 底层解析：PyMutex
+⑤ 我为何提出 PEP 832：虚拟环境发现机制
+⑥ Python 从零开发编程智能体
+⑦ Scikit-learn 的 fit/transform 范式可能不适合你
+⑧ Python 项目的上下文工程实践
+⑨ PEP 835：Annotated 类型元数据的简写语法
+⑩ Python 任务队列库选型实测
+⑪ Armin Ronacher 谈 AI 编程的循环模式
+⑫ Anthropic 多产品中安全隔离 Claude 的技术方案
+
+🐿️项目&amp;资源
+
+① uuid-utils：Rust 重写的 Python uuid 替代库
+② HippoRAG：类人脑长期记忆机制的高效 RAG 框架
+③ storm：LLM 驱动的研究报告自动生成系统
+④ presidio：微软开源的数据保护与 PII 脱敏框架
+⑤ GNews：轻量级 Google News 搜索 API 封装
+⑥ scientific-agent-skills：科学领域 AI 智能体的 147 个即用技能库
+⑦ obsidian-wiki：基于 Obsidian 的 AI 智能体数字大脑
+⑧ sdk-python：端到端 AI 智能体编排 SDK
+⑨ claude-tap：编程智能体 API 通信流量审查工具
+⑩ kirigami：PEP 讨论智能阅读分析工具
+⑪ Symbolica：高性能计算机代数库
+⑫ MediaCrawler：多平台社交数据采集工具
+
+在信息洪流中为你淘金，助力 Python 技术视野拓展和职业发展。现在订阅，每周让自己进步一点点。
+
+👀 订阅：小报童  爱发电 
+
+👀 合集：1季  2季  3季 
+
+🐱频道：@NewlearnerChannel</p>
+      <img src="https://cdn5.telesco.pe/file/loM526qf5YIAnxvgg7SlC26ZD3mQOlohKni1fS6M0OooHkFfm_sox7fUeGzbwhhq4_z5nyZqFWceReplH_oYYjjMkT3HxjElW9fGGv6b7X9zIPRtQB9GHQ-PgXGfnOUsulVSsCHjdoCPyFEK_SwLTCmnKP-O9vUcAEYC7sBCvIHPnqwdnUsUgQFJ6JOURZ7idkcur-gfJaqciHwfVNj4qS8nufgkHhjtctEe_ddpJk-mUouI-cvLsKscElEruu-CG-ckJsoUA1p8_UMKdBZpL0XYjETM9ZMJHuMc_MUFVvOrN27z5wIr3IY3zLPgPErwkdvsZkHeCs5RBZCUmr5L7g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-06-29T14:34:29.797Z">Jun 29, 2026, 2:34 PM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/ai">ai</a>
+<a class="pill" href="/country/cn/tag/technology">technology</a>
+<a class="pill" href="/country/cn/tag/health/research">health / research</a>
+<a class="pill" href="/country/cn/tag/health">health</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · Newlearnerの自留地 · ai · technology · health / research. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/newlearnerchannel/15668">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/newlearnerchannel/15668?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/3133596998">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/I0mEK-8et2Pu_ly66BJgPOu4Qr99oyXs7FZfS0k1gB8y_ybp7uliLjn-Wbue6FXUjLJsqjLJ5-C6MLS-IvbcLApBZAwkabmvg75jbu6YZSE7xyCo0yqj_pLvlTmQwZvSqWYiPxQjukSx5swqczASXRzDGs6e87rvdvukm9ED9vltevKx1mFITKQQB3NqeI1S9PirpN25_GU516zrzE-IbVEI6IeiC6V2nNGSNOyha699-3Bq-0ELfLqIDXxdvQUZS1hpTjC-X6cl8HgboLtW_C2KrPLYRpwTEYLu4-Ds1fBb4Hb-1RvDzEmydbZyKdf0bUZDfT3rCgJxRub51U1DQg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Newlearnerの自留地</strong></span>
+          <span>@newlearnerchannel</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/ZJ08BfMyRdSf-hksy82aIvXMq4GCz3E3VAGG-kxs3b7V0gQWUcXM6cj_qVijdDerFK6DiO0CiikptZjNuDlTcDudDU2tSFd-SKdMSaDnTqlIsqEUl455n43QMCjt2hqW7A2qmf0CAjdID_5CHL3Sx0Cc9p5ZTHswcFNNWIw_R4xFKAZu7FEEswhkiwxEfh8sQ0yXFlj15VPzfL0IjMMQ86CFR7F9Oy8yeFQ3OC-BC3tY7TlI2AzjA8BfEVsAL60waum41U_8pxxDPJrZ_B8AOh_6HT3jvMGvegCFKmnR9-VGmAfWxS_Sy_0qarKoERoRIz2We3LrgXfLSIDL0TwRPw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#News 🌃 自留地晚报 【6.29】 1️⃣ Bloomberg 报道称，苹果首款触屏 MacBook 将搭载 M5 Pro / Max 芯…</h3>
+        <p>#News 🌃 自留地晚报 【6.29】 1️⃣ Bloomberg 报道称，苹果首款触屏 MacBook 将搭载 M5 Pro / Max 芯片，新增灵动岛和 OLED 屏，M7 Pro / Max 后续机型计划 2027 年底推出 2️⃣ OpenAI 宣布与惠普达成战略合作，将在惠普全球业务中全面部署 Frontier AI 智能体平台，加速企业转型 3️⃣ 郭明錤 称，iPhone 18 / 18e 将配备 9GB 内存和 A20 芯片，Pro 系列沿用 12GB + A20 Pro，预计 2027 年…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:34:29.797Z">Jun 29, 2026, 2:34 PM</time> · <a href="/post/3133596998">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1515616808">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/I0mEK-8et2Pu_ly66BJgPOu4Qr99oyXs7FZfS0k1gB8y_ybp7uliLjn-Wbue6FXUjLJsqjLJ5-C6MLS-IvbcLApBZAwkabmvg75jbu6YZSE7xyCo0yqj_pLvlTmQwZvSqWYiPxQjukSx5swqczASXRzDGs6e87rvdvukm9ED9vltevKx1mFITKQQB3NqeI1S9PirpN25_GU516zrzE-IbVEI6IeiC6V2nNGSNOyha699-3Bq-0ELfLqIDXxdvQUZS1hpTjC-X6cl8HgboLtW_C2KrPLYRpwTEYLu4-Ds1fBb4Hb-1RvDzEmydbZyKdf0bUZDfT3rCgJxRub51U1DQg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Newlearnerの自留地</strong></span>
+          <span>@newlearnerchannel</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/lVwhUDqWsVf4FUKVTa0HV9iUg9l6zbidWLTP4TLcTjTJ28_tRITBCQVThb9he2poSJvoJJyq7_MZn7dfKaQ9EcUD5d42AVbJ2CxHOtTBvqAwKP63HkUdGtGeio5lltrmmJmQMtPr76n9SS1elGzybYBfxLWnyTJCf_7VRbgwHbEMjEFzHmY5_6xMuLkl8EJgsKgZDJ6DGPz6Y-Bj28IHCoOhTSRDIaQtzx_e5fbfY4jaVIGciFGEIajauleztGavxBfZujvy1ivip4FzVXAADN6pdZtzxiP97jz_cy0FnD6Yp90KsH3sJ8jzGDnidqyzhPnlOrutUvhttue9Rk5LLA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#潮流周刊 #Newsletter 潮流周刊（第271期）- 精神家园 封面图拍摄于周末去我的精神家园，王小波的书店，坐了一上午，看那本看了好几遍…</h3>
+        <p>#潮流周刊 #Newsletter 潮流周刊（第271期）- 精神家园 封面图拍摄于周末去我的精神家园，王小波的书店，坐了一上午，看那本看了好几遍的《一只特立独行的猪》，顺便喝了一杯叫“白银时代“的咖啡，还是很不错的。非常感谢有小伙伴指出之前几期周刊有点水，我沉迷到 AICoding 了，接受批评，以后还是保持内容更有趣一点好，争取成为大家的精神家园。 潮流工具 1. claude-tap：给 AI 编程 agent 用的本地代理和 trace 查看器 2. VidBee：一个不错的下载各个网站视频的工具 3.…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:34:29.797Z">Jun 29, 2026, 2:34 PM</time> · <a href="/post/1515616808">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2046742717">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/sfrFewAhz6J_fmyKIgDtE98b52Hpkep1tQO2kkCFRmd22jfHMXyHSfIdNh1g29tTZWnjBkbQMlJ3zvxXH7oNQ8upBpB1nSEQ2JOnIL6hURj8fl_kZdKp6mdrHP747h-TeZWY75cUXdoGiRT8xgjC6TYaoWEudzc8__TbzLlIQAASBmbGFhmafvHCeDC7MWWZtjG1n0zImuDQes5GhjlKjH-wAzqI1fXtAdwIg0sEn6eNXrko4uijEvljN92kWzx4ACF3S4D2bUyo4G4Na0sr4qxLMogqIuVnzWndP_CvTk4AzLWG90Yg-STBXzZHcv87IPwhgfWApkshn1Ey60KwfA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Btok News</strong></span>
+          <span>@btokmedia</span>
+        </span>
+      </p>
+        
+        <h3>【金色财经】 国际 1.【国际清算银行警告全球经济面临多重压力】 2.【韩国公布芯片及人工智能数据中心大型项目计划】 3.【Galaxy Rese…</h3>
+        <p>【金色财经】 国际 1.【国际清算银行警告全球经济面临多重压力】 2.【韩国公布芯片及人工智能数据中心大型项目计划】 3.【Galaxy Research 将《CLARITY 法案》2026 年通过概率下调至 50%】 4.【美国运通招聘稳定币与区块链战略副总裁，推进稳定币支付与代币化布局】 5.【印度 USDT 溢价升至 8.5% 以上，本地供应短缺加剧】 6.【欧洲银行管理局发布不合规加密发行人处罚框架，MiCA全面执法在即】 7.【澳洲联储助理主席：将更有能力应对下一次危机】 国内 1.【中国移动设立“To…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:34:34.754Z">Jun 29, 2026, 2:34 PM</time> · <a href="/post/2046742717">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3032429782">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/rocsIKhpQVGn7HMpmJaCe11r_SipD8EYrds2Pf4wqGTB2KWdIsA6utJjDDrxt9iKyk4fIXLi5_oCcUVnrzqMwzLaa7RxQWjGZK8dbLVv6eFj-038AvxdK3Uypb_L_YTcvvOSYtBPZJIFkbM6IBOznmaE0JMeaDKOwOrSm_7rELo36IZDcbm9pkiqarxHja58um74-liautxaTpzHoy1cfrnhGmyEkS1Hi_tqLcC9OOkeyQWiZRsUbgAZ4lAep1kHyBvOzIYDwyj_K_wukuRpA-ianJOE83HOuzzqezVtOb387d5vN4AZfScRLno_UHEGPLms9OOJDUFf6dlt22cp2Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">渔船出海-国际新闻头条大事件【000体育独家冠名】</strong></span>
+          <span>@toutiao35</span>
+        </span>
+      </p>
+        
+        <h3>做质量远比数量有效 但没数量的时候又很难获得质量 做加法是很容易的 因为顺人性 但真正开始做减法逆人性的时候 才会获得内核 很多甲方以为做redd…</h3>
+        <p>做质量远比数量有效 但没数量的时候又很难获得质量 做加法是很容易的 因为顺人性 但真正开始做减法逆人性的时候 才会获得内核 很多甲方以为做reddit只要多发帖子就行 诸不知这个保护真实性的社区里 你曝光的越多 就越容易出错 然后品牌词会被Mod写到autorules里过滤掉 永久性封禁品牌词 再也做不了任何营销了 如果不去研究什么故事能共情打动人 发再多也只是ai slop</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:33:23.955Z">Jun 29, 2026, 2:33 PM</time> · <a href="/post/3032429782">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1736523532">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/Pu4UgG9xB9_S6Np1xIuDeSVxuZNGDZqIyNzdF_1rLKzgeiC5m9uP4xGTUyLhvBAPf3_9ebPtR-c4lCwYTa2yjKw5_nfhtJ4P1E6miM0wC3F1WI4kAPIeTR06esejWhEFkf65LLj8Qfoq2FnWQE_LIw9zvVT8kjERnqJmyb7pF1Xr2kgq5TCXG4AjLKrWGhvptixSbJy-uwRzbKRLkd7RQdN4FlmzrAMZZa1ZZZlnFcVMFP3vDtcaonV982aiUUBJQ2olm1C_ZzzW9LR9121ZsK_JalQxZl-QwOWRUs2_pNOPKzAUrhSRf39SW-EqVgLEvzxuxRPg1jyM-DW04xUCVw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">MX灵感社┣ py ┫技术分享 -查档-开盒_思路_免费开户__大杂烩</strong></span>
+          <span>@mxlgs</span>
+        </span>
+      </p>
+        
+        <h3>OkPay 商户 Python SDK 我集成 成一个okpay类，大家可以直接使用这个。对接方法自己研究，可以直接将这三个脚本喂给AI，让他帮你…</h3>
+        <p>OkPay 商户 Python SDK 我集成 成一个okpay类，大家可以直接使用这个。对接方法自己研究，可以直接将这三个脚本喂给AI，让他帮你对接 ——北落</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:31:31.341Z">Jun 29, 2026, 2:31 PM</time> · <a href="/post/1736523532">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2539666675">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/HhdwjJq9alaMp7z5Oh_f9gIxw5s4kcXKYyWOpKOEEH9Zq4kXiH_uiZQs4v44VhAOCFjKMvgNa7b3pLiehibvzGuJdQvoX0MtC6JSaSBLL6L9GdrP2dcD7AyfNXvNwtfEC6mI7vMyCuOqb1xH1JHdsPuzOpqSxBUq7bD4mILQ0xsri6xIoLt_BqLjPm2bSAVd7L1lnd6jYSQZqVwcH8KANnZy_QoRQQvjOy2NbV44QulQ4oyLM9NS7CM6k2WACmQy8ozz-jIeVbJJ54b1e-F-fiMg7poXRH5fOYZvukgeP3lSYr5f3fVu9VXJArJt55o9pE801Z-WQdumCD9aTe-C3g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>Meta发布Brain2Qwerty v2：非侵入式实时句子解码 ME AI 消息，Meta公布Brain2Qwerty v2，这是非侵入式脑电信…</h3>
+        <p>Meta发布Brain2Qwerty v2：非侵入式实时句子解码 ME AI 消息，Meta公布Brain2Qwerty v2，这是非侵入式脑电信号解码研究的最新里程碑。基于当天发表在《Nature》的v1，v2是性能最高的端到端管道，能从原始脑信号实时解码句子。其从字符级性能提升至解码单词和语义，提高整体沟通准确性。该研究有望帮助数百万因脑损伤或疾病无法沟通的人群。 🔗 阅读原文：https://x.com/AIatMeta/status/2071566924803395741（来源：AiHot） https…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:31:17.778Z">Jun 29, 2026, 2:31 PM</time> · <a href="/post/2539666675">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2848530538">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/b_skn1OPVq8VQNt8anKwyQi17WzlksSr5Uu_Eek9EOv8je94fZh0NWjC8E7AnOoJGbkPMaDGubYR6KWmfv3y6Nfw9vTdwgZRAyc0Oi465vplJ-wC74-dQhiDEJJaedo2CMNNWJSuF441C472kXapgLV0K5uhJZxZddkGD5w0D5zJM2AS0Ohloim3tXbGXEWL2Ha_tQnPtTc99g66C8OuFOUi-BFBrTQmeXCdRU0OVE40TIJEVpMHNIJ6YTPGL1gKD-fFMDaFrAErZ0A826e6Rgs4vZwW6NwWSlwq1SfPPNfDNdGgiUlSXNvuhWBYYrkrSds-6BHyaGAuuaKr0Tphjw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/aUJM0mK3mGRVqmIjZT_7w1-77CJ5p_q-M-7z6fBAjZtDhwe0_f4t9RyZ9ST7gB87WzV9airYoStBr96EdnguaiWT7YbzHzd4yok82ihi2gbBLxSTW7e7_MDlKMI7Xj59HID78kgp8qM_VjCkSHvIHkeI5B0IODcYt80OwrTgGbiutBqn6vKDKBCeEhkkkJ-7-vWGp7UAgXPrgb_9pTdfxeFLG2BRJE5E9A8AlL6ynl80i-zeS8DtAJFTcdgK-3NXnN3qHER904OhhTmfltYeUiXCEDIH-PTN0Z7aBIsuTJUKefIwMaZPthopuk3ZeNja1t8WFd7Q8ZVyFUChoGa0FQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>智谱 AI表示，其在部分漏洞挖掘与网络安全场景中可媲美Mythos 智谱 AI（Z.ai）发布了开源权重的 GLM-5.2，《WSJ》报道称部分研…</h3>
+        <p>智谱 AI表示，其在部分漏洞挖掘与网络安全场景中可媲美Mythos 智谱 AI（Z.ai）发布了开源权重的 GLM-5.2，《WSJ》报道称部分研究人员表示它在一些漏洞挖掘与网络安全场景中可与 Mythos 相媲美。 尽管在其他更通用的任务上，GLM 仍不及 Anthropic 和 OpenAI 的模型，但这意味着中国在模型能力上已显著缩小了与美国的差距。 上周三，网络安全公司 360 发布了一款名为“屠龙风”的新型漏洞查找工具。该公司称，这款工具在发现漏洞方面与Mythos 不相上下。“这种强大的武器，足以改变…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:29:20.330Z">Jun 29, 2026, 2:29 PM</time> · <a href="/post/2848530538">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2268973761">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/Je8cAaSTJVpN3PEwHno0utfe8CiRwmKl_Hz2r46tsRTuTZG9h8UBhsQfx_K6piUjiPsqTrxtqMDsFJezjhiCSbgZewS7sFvIUpgPTBYpX2v1D4tTQjuGZZUws74YhHQokURQJzlbtvVgiXtqwqz3hBH59byRrvhN4p-QPLmZKa-tIhwxDbM51swVftFmpFy8ALd8baWJEEIf1D0lC1Vmt9YB8qWllBmo3YyvATJDPqhJ9Sq57D_uoJAddrkebDB5UaXZh6MKtTFK23hUpFnPnIZE3Z3du34hFUCI6Ch3THCwrZxg0EpLAufzGtBIwg0jjYxkAieKSkD4NwziKXje9Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">东南亚大事件</strong></span>
+          <span>@daxxx</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/tCDAa9fzSDCq-52Yhs5iEFXiO1wlFEx0m4gnjPDhaT00Ln-m6RB-T0lvcmE4b6xqWdL4ERcpWRG47ZiGkmXHAyn1z2eCabpmz_PJzoQBJ428nKpq7dw5NRI4rjONZCmCd33EWCo2PsCVTh_DMDpdAAKWYGY0B6LjYpxaWAXx5mZ7ekn8KISx12hZ1EGg3lXiYmtsiFp5X_O5k9etos_BXmUJfjV7KhzN41dxF8sv-5RUxBK2VDTbKjC-jlyEUYcIDh1HzPh_UcVUj6qw5Ajh0Fp1zMisRwxKLcAOCklN9QkG2zbdMOH-2nSAfpm_Z2b4mEDBCJ_FWK-6CYI_8U3mug.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>迪拜推出20万迪拉姆AI公园设计挑战赛，重新规划Al Safa 2公园 你是城市规划师、学生、设计师或人工智能创新者吗？现在，你有机会利用人工智能…</h3>
+        <p>迪拜推出20万迪拉姆AI公园设计挑战赛，重新规划Al Safa 2公园 你是城市规划师、学生、设计师或人工智能创新者吗？现在，你有机会利用人工智能重新构想Al Safa 2公园，并在迪拜新推出的人工智能公共公园设计挑战赛中赢得大奖。 6月25日，迪拜王储谢赫哈姆丹·本·穆罕默德·本·拉希德·阿勒马克图姆公布了迪拜的3个项目，分别是猎鹰市场、迪拜河照明项目，以及一座由人工智能设计的公共公园。这3个项目涵盖服务升级和新基础设施建设。 在这一愿景的基础上，迪拜市政府于周日（6月28日）启动人工智能公园设计挑战赛，邀请设…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T14:27:32.965Z">Jun 29, 2026, 2:27 PM</time> · <a href="/post/2268973761">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>

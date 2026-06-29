@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from Data Secrets in Russia. Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практи… Topics: ai, technology, crypto, finance." />
   <meta property="og:url" content="https://www.margelet.space/post/1414175839" />
   <meta property="og:image" content="https://cdn4.telesco.pe/file/YLLFNt6nSTR18w9qmYXb8NfA4Edgt2jIYT39u4gKL0mm0kHW3wk8Rfv0baUUuXLnqg58qqW6fA9fhFA9Djg9-vvHlb2CACPBA_LUJ9oSge-hrJ4vjXPDV6XjzOK9s-0_J6CfO36HUbNzvAsY1XnJLOfD5eXsKSk5c6xIziGZguHh8A_dPDyTUKrWhXUphc5RyYu5ljSJGspn7yKtVrfiAf5NaMIL951VTN9NbWkjGL2_A_ekhxYn8qqPsXjDFMQlPuEkKvO9ItDRzKnryJgOZRW3YEUbWnEpCiVLyWHdMRzR6g08lKyl5fHJYsnT6VXZjvfVH2i_aKglkB1gdRp2jw.jpg" />
-  <meta property="og:updated_time" content="2026-06-29T05:43:44.359Z" />
+  <meta property="og:updated_time" content="2026-06-29T15:08:11.467Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения ге… — Data Secrets, Russia ai | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from Data Secrets in Russia. Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практи… Topics: ai, technology, crypto, finance." />
   <meta name="twitter:image" content="https://cdn4.telesco.pe/file/YLLFNt6nSTR18w9qmYXb8NfA4Edgt2jIYT39u4gKL0mm0kHW3wk8Rfv0baUUuXLnqg58qqW6fA9fhFA9Djg9-vvHlb2CACPBA_LUJ9oSge-hrJ4vjXPDV6XjzOK9s-0_J6CfO36HUbNzvAsY1XnJLOfD5eXsKSk5c6xIziGZguHh8A_dPDyTUKrWhXUphc5RyYu5ljSJGspn7yKtVrfiAf5NaMIL951VTN9NbWkjGL2_A_ekhxYn8qqPsXjDFMQlPuEkKvO9ItDRzKnryJgOZRW3YEUbWnEpCiVLyWHdMRzR6g08lKyl5fHJYsnT6VXZjvfVH2i_aKglkB1gdRp2jw.jpg" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Data Secrets","item":"https://www.margelet.space/data_secrets"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения ге…","description":"Fresh Telegram snapshot from Data Secrets in Russia. Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практи… Topics: ai, technology, crypto, finance.","articleBody":"Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практично. github.com/deepseek-ai/DeepSpec Основная соль – в алгоритме DSpark. Его DeepSeek уже использует для DeepSeek-V4 Flash и Pro в проде, и, по их данным, относительно старого бейзлайна скорость генерации для пользователя выросла примерно на 60–85%. Как устроен алгоритм: – Фундаментально, это небольшая модель, которая пишет черновики для основной LLM. Это называется драфт-модель. – Такой подход сейчас в моде (Google, например, делают такое для Gemma: t.me/data_secrets/9179), но DeepSeek выводят его на новый уровень. Их драфт-модель работает необычно, в два этапа. Сначала параллельно набрасывается блок токенов, а потом легкий марковский модуль уточняет зависимости между соседними токенами. Благодаря такому подходу драфтер и работает быстро, и не очень сыпится в хвостах. – После того, как драфтер накидал черновик, основная LLM его проверяет и принимает только правильный префикс, корректируя остальное. При этом DSpark сам решает, сколько токенов отправить на проверку, основываясь на оценках уверенности…","text":"Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практично. github.com/deepseek-ai/DeepSpec Основная соль – в алгоритме DSpark. Его DeepSeek уже использует для DeepSeek-V4 Flash и Pro в проде, и, по их данным, относительно старого бейзлайна скорость генерации для пользователя выросла примерно на 60–85%. Как устроен алгоритм: – Фундаментально, это небольшая модель, которая пишет черновики для основной LLM. Это называется драфт-модель. – Такой подход сейчас в моде (Google, например, делают такое для Gemma: t.me/data_secrets/9179), но DeepSeek выводят его на новый уровень. Их драфт-модель работает необычно, в два этапа. Сначала параллельно набрасывается блок токенов, а потом легкий марковский модуль уточняет зависимости между соседними токенами. Благодаря такому подходу драфтер и работает быстро, и не очень сыпится в хвостах. – После того, как драфтер накидал черновик, основная LLM его проверяет и принимает только правильный префикс, корректируя остальное. При этом DSpark сам решает, сколько токенов отправить на проверку, основываясь на оценках уверенности по токенам и текущей нагрузке на железо. В результате получаем ускорение минимум в 1.5 раза абсолютно без потери качества. Снимаем шляпу перед DeepSeek за такой опенсорс.","keywords":"margeleT, Telegram, Russia, Data Secrets, data_secrets, ai, technology, crypto, finance, recipes, food","url":"https://www.margelet.space/post/1414175839","mainEntityOfPage":"https://www.margelet.space/post/1414175839","datePublished":"2026-06-29T05:43:44.359Z","dateModified":"2026-06-29T05:43:44.359Z","image":["https://cdn4.telesco.pe/file/YLLFNt6nSTR18w9qmYXb8NfA4Edgt2jIYT39u4gKL0mm0kHW3wk8Rfv0baUUuXLnqg58qqW6fA9fhFA9Djg9-vvHlb2CACPBA_LUJ9oSge-hrJ4vjXPDV6XjzOK9s-0_J6CfO36HUbNzvAsY1XnJLOfD5eXsKSk5c6xIziGZguHh8A_dPDyTUKrWhXUphc5RyYu5ljSJGspn7yKtVrfiAf5NaMIL951VTN9NbWkjGL2_A_ekhxYn8qqPsXjDFMQlPuEkKvO9ItDRzKnryJgOZRW3YEUbWnEpCiVLyWHdMRzR6g08lKyl5fHJYsnT6VXZjvfVH2i_aKglkB1gdRp2jw.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"},{"@type":"Thing","name":"recipes"},{"@type":"Thing","name":"food"}],"author":{"@type":"Organization","name":"Data Secrets","url":"https://www.margelet.space/data_secrets","logo":"https://cdn4.telesco.pe/file/FI1r5SfKM1iZzLfUOR1HXQL028qzQNk3G0BNd7st5w3FDmTcKv7Drfhga3EPLe5mr0AZJZrjvwjCgV3wgzO2eVejD06eT81exhb9Gn4dUeR8_UmJmVogBSZQ1US6d3SLKZhfy5WCSiEihbQUhahnIp6bgiILXy7MltYh5PTIEuGKTe8PZvwuLdNq0ejFTmMlql2OPLrK5o_F5D5Pnf8yQRRrJmj0NA0_weQEdE_8ngUfJ_5_IKtJ-TbTqFnn8glgl61guYXbvsVtsWVYLtLt-HHkKNg2pG0ms0IFYmpdTCTDhtZ7giiRPy1YfwsRcIax8CiWYg3rjKm8AvTpYo45mg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/data_secrets/9450?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Data Secrets","item":"https://www.margelet.space/data_secrets"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения ге…","description":"Fresh Telegram snapshot from Data Secrets in Russia. Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практи… Topics: ai, technology, crypto, finance.","articleBody":"Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практично. github.com/deepseek-ai/DeepSpec Основная соль – в алгоритме DSpark. Его DeepSeek уже использует для DeepSeek-V4 Flash и Pro в проде, и, по их данным, относительно старого бейзлайна скорость генерации для пользователя выросла примерно на 60–85%. Как устроен алгоритм: – Фундаментально, это небольшая модель, которая пишет черновики для основной LLM. Это называется драфт-модель. – Такой подход сейчас в моде (Google, например, делают такое для Gemma: t.me/data_secrets/9179), но DeepSeek выводят его на новый уровень. Их драфт-модель работает необычно, в два этапа. Сначала параллельно набрасывается блок токенов, а потом легкий марковский модуль уточняет зависимости между соседними токенами. Благодаря такому подходу драфтер и работает быстро, и не очень сыпится в хвостах. – После того, как драфтер накидал черновик, основная LLM его проверяет и принимает только правильный префикс, корректируя остальное. При этом DSpark сам решает, сколько токенов отправить на проверку, основываясь на оценках уверенности…","text":"Новый дроп от DeepSeek: выложили полностью открытый стек для ускорения генерации LLM Внутри готовые алгоритмы, обучение, эвал и даже пайплайн для данных. Бери и пользуйся, супер практично. github.com/deepseek-ai/DeepSpec Основная соль – в алгоритме DSpark. Его DeepSeek уже использует для DeepSeek-V4 Flash и Pro в проде, и, по их данным, относительно старого бейзлайна скорость генерации для пользователя выросла примерно на 60–85%. Как устроен алгоритм: – Фундаментально, это небольшая модель, которая пишет черновики для основной LLM. Это называется драфт-модель. – Такой подход сейчас в моде (Google, например, делают такое для Gemma: t.me/data_secrets/9179), но DeepSeek выводят его на новый уровень. Их драфт-модель работает необычно, в два этапа. Сначала параллельно набрасывается блок токенов, а потом легкий марковский модуль уточняет зависимости между соседними токенами. Благодаря такому подходу драфтер и работает быстро, и не очень сыпится в хвостах. – После того, как драфтер накидал черновик, основная LLM его проверяет и принимает только правильный префикс, корректируя остальное. При этом DSpark сам решает, сколько токенов отправить на проверку, основываясь на оценках уверенности по токенам и текущей нагрузке на железо. В результате получаем ускорение минимум в 1.5 раза абсолютно без потери качества. Снимаем шляпу перед DeepSeek за такой опенсорс.","keywords":"margeleT, Telegram, Russia, Data Secrets, data_secrets, ai, technology, crypto, finance, recipes, food","url":"https://www.margelet.space/post/1414175839","mainEntityOfPage":"https://www.margelet.space/post/1414175839","datePublished":"2026-06-29T15:08:11.467Z","dateModified":"2026-06-29T15:08:11.467Z","image":["https://cdn4.telesco.pe/file/YLLFNt6nSTR18w9qmYXb8NfA4Edgt2jIYT39u4gKL0mm0kHW3wk8Rfv0baUUuXLnqg58qqW6fA9fhFA9Djg9-vvHlb2CACPBA_LUJ9oSge-hrJ4vjXPDV6XjzOK9s-0_J6CfO36HUbNzvAsY1XnJLOfD5eXsKSk5c6xIziGZguHh8A_dPDyTUKrWhXUphc5RyYu5ljSJGspn7yKtVrfiAf5NaMIL951VTN9NbWkjGL2_A_ekhxYn8qqPsXjDFMQlPuEkKvO9ItDRzKnryJgOZRW3YEUbWnEpCiVLyWHdMRzR6g08lKyl5fHJYsnT6VXZjvfVH2i_aKglkB1gdRp2jw.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"},{"@type":"Thing","name":"recipes"},{"@type":"Thing","name":"food"}],"author":{"@type":"Organization","name":"Data Secrets","url":"https://www.margelet.space/data_secrets","logo":"https://cdn4.telesco.pe/file/FI1r5SfKM1iZzLfUOR1HXQL028qzQNk3G0BNd7st5w3FDmTcKv7Drfhga3EPLe5mr0AZJZrjvwjCgV3wgzO2eVejD06eT81exhb9Gn4dUeR8_UmJmVogBSZQ1US6d3SLKZhfy5WCSiEihbQUhahnIp6bgiILXy7MltYh5PTIEuGKTe8PZvwuLdNq0ejFTmMlql2OPLrK5o_F5D5Pnf8yQRRrJmj0NA0_weQEdE_8ngUfJ_5_IKtJ-TbTqFnn8glgl61guYXbvsVtsWVYLtLt-HHkKNg2pG0ms0IFYmpdTCTDhtZ7giiRPy1YfwsRcIax8CiWYg3rjKm8AvTpYo45mg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/data_secrets/9450?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -68,7 +68,7 @@
 
 В результате получаем ускорение минимум в 1.5 раза абсолютно без потери качества. Снимаем шляпу перед DeepSeek за такой опенсорс.</p>
       <img src="https://cdn4.telesco.pe/file/YLLFNt6nSTR18w9qmYXb8NfA4Edgt2jIYT39u4gKL0mm0kHW3wk8Rfv0baUUuXLnqg58qqW6fA9fhFA9Djg9-vvHlb2CACPBA_LUJ9oSge-hrJ4vjXPDV6XjzOK9s-0_J6CfO36HUbNzvAsY1XnJLOfD5eXsKSk5c6xIziGZguHh8A_dPDyTUKrWhXUphc5RyYu5ljSJGspn7yKtVrfiAf5NaMIL951VTN9NbWkjGL2_A_ekhxYn8qqPsXjDFMQlPuEkKvO9ItDRzKnryJgOZRW3YEUbWnEpCiVLyWHdMRzR6g08lKyl5fHJYsnT6VXZjvfVH2i_aKglkB1gdRp2jw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-      <p class="meta"><time datetime="2026-06-29T05:43:44.359Z">Jun 29, 2026, 5:43 AM</time> · Russia</p>
+      <p class="meta"><time datetime="2026-06-29T15:08:11.467Z">Jun 29, 2026, 3:08 PM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/ai">ai</a>
 <a class="pill" href="/country/ru/tag/technology">technology</a>
@@ -88,7 +88,22 @@
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/2162832382">
+      <a class="post-link" href="/post/844676852">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/nME2omgEGDAJNUlevUuNa2SC9wIRF2pTdfh_IPW-me2nSWiDO2SZn7fbZh3AX_te3pXISDcPDIsgNRd4zMQYBYiaFIX-uhH_cyvfohupnEqmxd-WQ_emacWzFGpVGin-3FAejUnOaZg4JvkbCxxCCehBbcZI2SO4U2T6uytLB6W2fnzvW2pyiF2Is7sZ_44CLiT0z79PjXNnkEY2Esi-S3nBBnIOEOFYUytwIikdvwhjvxE-K8URvnjgOWPYr_qk2rcKHlF7T7SoU15y3ELmdedUMQtYeihIZJg7BjR1IgBlex0oivXLhn0Wjji3g4FRf6_tkYRn5EmFxyEN65oUrg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">IT с перцем</strong></span>
+          <span>@hotcodeit</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/CZUvXUzDlCvpbaLKKfcC4BOe8rveFkopyBykSQXvqNpHw7JiWjJ2VJY8Obb7RN5KCrq61mjaqk-H2DV34oS75mKCPDbey-dPJmqOdGME_F72eaSKgtZXXzouGtpOkK431B_EVsjoe7qq4igR4xvsMSMbgVs7sR4FMZi2D6Ij86uYT261ALHvZlnwa0qN4-6kYns7iiBkTQ_EnkL60QDDVZRC3RzOIo3aJW-rNvySUoTaMgX8yNSRmN2KFAebZZoQY0s-M88Bggc60N4Lsy3yEllNnW1UUNCrBBbRkyPHoFK7g79qsRigxRnQXCUVZ_aMyLhMrQx97VAURUWzpmuTRA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🔍 Как ChatGPT выбирает источники Независимый исследователь и автор блога…</h3>
+        <p>🔍 Как ChatGPT выбирает источники Независимый исследователь и автор блога Suganthan два дня изучал, как ChatGPT цитирует бренды. Выводы: Сначала нейросеть решает, нужен ли вообще поиск в интернете. Если да — разбивает запрос на мелкие части (цена, функции, от…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T15:08:40.384Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/844676852">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1616559622">
         <p class="source">
         <img class="source-avatar" src="https://cdn4.telesco.pe/file/FI1r5SfKM1iZzLfUOR1HXQL028qzQNk3G0BNd7st5w3FDmTcKv7Drfhga3EPLe5mr0AZJZrjvwjCgV3wgzO2eVejD06eT81exhb9Gn4dUeR8_UmJmVogBSZQ1US6d3SLKZhfy5WCSiEihbQUhahnIp6bgiILXy7MltYh5PTIEuGKTe8PZvwuLdNq0ejFTmMlql2OPLrK5o_F5D5Pnf8yQRRrJmj0NA0_weQEdE_8ngUfJ_5_IKtJ-TbTqFnn8glgl61guYXbvsVtsWVYLtLt-HHkKNg2pG0ms0IFYmpdTCTDhtZ7giiRPy1YfwsRcIax8CiWYg3rjKm8AvTpYo45mg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
@@ -111,63 +126,33 @@
           <span>@data_secrets</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/lb3Y_u5D4WhDdqWRvDAsxQIc2Hn_dVI9nV6IyQklzJQxiDvS3s8Hi6CMhgrnPpmLiLsT0z9mtkD-4cqeI2i8R4nRyFh0oWqa0-zmUShsLGugMXPYXsyOPBSDhhG13o1Das0qDZ-UoPEFUQ5KZvBeGRk8CKMxPDKqmReKaSUl3-QgiF0zKvLbtVrXB0I0Mx2QqzBbr0hzFdRLEzjmYmcvjyAGUTODsKgiW2JNM3NktuOeaJSsZc0eFs_4gF60HC3jf_i7Sql1ajTfQdSN6TkAxIABQNjCKdsropXAZVuQnga53IpYL56wF8dCVLlSfz7pma2_baYe1aDgznyXfD6s3w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Итак, встречайте: GPT-5.6 https://openai.com/index/previewing-gpt-5-6-sol…</h3>
-        <p>Итак, встречайте: GPT-5.6 https://openai.com/index/previewing-gpt-5-6-sol/ Анонсировали три модели, в честь солнечной системы (с самооценкой у создателей все ок): 1. Sol – самая крупная и крутая. На многих бенчмарках обходит Mythos, и при этом дешевле в два р…</p>
+        <img src="https://cdn4.telesco.pe/file/ivjinQFs66ih5V1qv_rzDAKUR2iIEMisdVIimRBLKUCP3aLk3W2FKHoPIDc7K0YO6FkY6bzdBVwI16yIuZUYH-G1ZwgbgtPv1eWGLnKPERM5hg4jYq2BODu4coSWF0pQyy0iYYI3k585SG9JaWesEp2dnkwpMJpBEe1DQfWILhMQAnX5mDGM9sSnTjaWVWrey6UqOILP86thIgikC7wcsTJpfNHNXiPUyD5Fv6engqoaexcFVOyjdXCXqVdVSrmMfltvA3YndcYyJEztif-nkNlBHmpOLlT9WEG9_0uCqqSPztjXyNn9rEBS8rOGmZXw0OAmo8CIWPPdd2PQHMOoSg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Правительство США дропнуло новый бенчмарк для LLM ⚡️</h3>
+        <p>Правительство США дропнуло новый бенчмарк для LLM ⚡️</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:43:44.359Z">Jun 29, 2026, 5:43 AM</time> · <a href="/post/2162832382">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-29T15:08:11.467Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/1616559622">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3970771144">
+      <a class="post-link" href="/post/2675249726">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/LYI5xrGCtyOvLZHRA9luGhXPI3ioWU8pJJ1k3VY28UfoFzj3KeTT0BaRhd43vhb80weuT0ekxqafXOhErV4-I4wtnN7GIiQzIVyWLmA6N1-2rPIgHwq8nxYQMPznwDGOeCByJb8r9YahyYSXKJ3Pm0j7aMMtDEC2PVxzeuj3SNbbWb6I_VAA6Comrf3c1TOBgQAQx0w7j-zwtknqkfhltYfbPzxXoQ8sykMO-sNjMfv5h4S7_VlVQWk6zTn0VxnSWHa4vT7BQ1QDem7sIGgO_FFI95KkEnTcR7Q0xPAk43v-vACEvpFLlgfDb5ZCP405dxqtA7hGFocPVTSQF0Q9IA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/JSX4mye776RYdNC2zB1RD7O1uYMMcT0Px0HTMZ-wXfWZxJHu9W8CVk-BDiu1yq5CZeeB2ZYG0OLkGjR3bQD_GAC8DAMsc6-5o9Z6E8j1pPToobXtEC54LeifSrBJic_E4kl8u0ihmW_-n7K4ehAAs6GL8hLwDARsa0eFLjX_BhfCuxOvZj57ODZ27r_igirbF6y_ziOYDeeQ5U7VXKMTCHM4C9RCtmRPp-eva3MrNjVZH-cHegnUW0w2gYgU-b8znHESfDKo8jhSGyCYfASt-grs9mI11aqk7AZ9LV0IT9Eo3rB2fyhqBNteuztD_lAbrLYvVBm6irnRrneVY9vUyg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Machinelearning</strong></span>
-          <span>@ai_machinelearning_big_data</span>
+          <span class="source-title-row"><strong class="source-title">Программирование | книги</strong></span>
+          <span>@it_boooks</span>
         </span>
       </p>
-        
-        <h3>📌 Могут ли LLM переписать софт с нуля? Epoch AI совместно с METR собрала…</h3>
-        <p>📌 Могут ли LLM переписать софт с нуля? Epoch AI совместно с METR собрала бенчмарк MirrorCode, который проверяет, способны ли современные модели восстановить полноценное приложение, не видя его исходников. Спойлер: на мелочи да, на крупных проектах пока нет.…</p>
+        <img src="https://cdn4.telesco.pe/file/mu0lrjePTQq7yqOYHp9GeT3I6NcuPlTe4xLTH3ppO2zbxzVFY9RsklKM4pDOXl0yF0SiSp-0PGn1JLx4cq6UWRYNXXnoKwfqyufvrRQCW6O2NYVmvRppry_5A3iH4WwUFgVe8zyPYOqm-kgYa1XO3Z7Q9tGtvPyQOzSX3iuTc8h8KsqiSjLg4kZjGvDT-gOpT5ujKfbCQ-8wTKIndYUq4g0Zrg52x7wcKmAxc7rnI7hN-Ot3Yzj70PO0P01K25oNWiUATUSU9iFcoDoqD_l7waQGshEXe-Z_wlwDET_Tr9Bk25g1MAC9nUYGnvTsJiym64ykbSvaCuYjng62aEpsUw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#Вайб_кодинг #ИИ 2026 Вайб-программирование. Разработка кода в эпоху иску…</h3>
+        <p>#Вайб_кодинг #ИИ 2026 Вайб-программирование. Разработка кода в эпоху искусственного интеллекта Авторы: Фань Вэньцзе, Ли Цзяньчао, Янь Сяофань, Чжан Бинь Основная идея книги заключается в том, что интеграция ИИ – это не усовершенствование существующих процессо…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:42:33.846Z">Jun 29, 2026, 5:42 AM</time> · <a href="/post/3970771144">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-29T15:08:55.108Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/2675249726">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/767808099">
+      <a class="post-link" href="/post/3870765778">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Q2Kx-7Ho3-abCH_uxo5YusK0rWK2-sDfFYRDjAmslcy4zqqZ6OeSmMliLxxJKSHV7adOwjaetmT3F3-vC_yZvGl1wR7eSTZkZVgPklAkiduaQrT7PE_a7tbuHXOA4xsc30j7Ll0ODhA4VtOdOJDDAIkX9YMMlLpvuvxCNaJotcq0hVskTsUlQxT8vqciNkhFJdKXaXvMqxKf-BTn77mbvQ4SjkQLvLdq88ANiuq0beY5nPylTobjoT5KjpRKy5cHkBZ-CP96nKJ2_ioOiy0zv5TS9740kr9pyANyyLAl8gaSIzzFphSAfMZ_46dsPQHqlQBsPT-q3vQX8_HpE2N6zA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/hx2jd59ejOMTih_wnOb0xCreiJ1IBtK0dmv1Q4JSh44Xb5YPQ_znL_15qLhfrikDvQVasqPUJMmbDmkYraJs7IM_vW8Uq76YhOAmHD6bo0_VKVQA3ly59tm2WqG3Fim8xudTxKecn5OyMsd1JhcGKzCNVIIh5n8VQ_ppCMEzU7H-Fkz1wEp9HHZLSj1sRfF8fQEHWkdTul9Tcdu9MCX2Ew_IJKK6kF3mi-vQw2GteuZr_qirU6-r7iU-Md8icXhClRWSjJ91boNKzNfm9-5fH91kHfh9cH4POZyd6slbVKdjF56HlI2V4J6mARaYCdBG7uUD4bygyOGefKaKXPIo-Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Hard To Be Crypto</strong></span>
-          <span>@h2becrypto</span>
-        </span>
-      </p>
-        
-        <h3>88 степеней свободы и 4 часа автономности 88 степеней свободы, Wi‑Fi и до…</h3>
-        <p>88 степеней свободы и 4 часа автономности 88 степеней свободы, Wi‑Fi и до 4 часов работы: у UBTECH уже не &quot;концепт для выставки&quot;, а вполне читаемый вектор на массовый рынок гуманоидов. Тизер тут: презентация U1. А рядом у нас Gemini Omni, который по текстовой…</p>
-      </a>
-      <p class="meta"><time datetime="2026-06-29T05:51:06.598Z">Jun 29, 2026, 5:51 AM</time> · <a href="/post/767808099">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/3102492181">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/JFXjDxtUMaWYUE5nfdhdyFkSGIOD-gD0sTZXRC5KXO8j03RmVTnik_0Udb9Vh967tksN49gh2aa3mt-R_v600_KLPPQ5yGXfdFHuVRh-0i9gXrYxGb8DdGCDC_GzOl_VUwPg0yP79zryCLHd_KCEn0pu1lUPF7uvYIlEo7CMqoNrdbUnKAyu6agiRtCaftaw3GR83A8JHPMHUcHn53m17_jRILeZdPBiF61RIhVy8p-jHvNehcwP6MtDBo4zcSWVCJBgyviLXu6Sh_S6hXB9BKfktH-yBvQvdkpN1AeRKfmnIEKbK3OJDBJpp1S1q9NmKcH_iQxyjDdVUX3cUBslEQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Гои Дурова</strong></span>
-          <span>@durovgoyda</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/sCEdhs538gTnIyGEwedDCY3lW7oen7hHtos5OoTaUbHAVgE_DD2FmnMvKGlLgnzqPG9STYKCD43d-C9NF5za8iy3z62iE4ajPfvjHHlQfStkGnUI6RWPPFMFGxRzGAtsemneKqCge2o5n-h1OO8YWeXPY26D9c9UhRfI7J6Iz6A0fX-TJLmUa_Y0VORv2jvD-ZPgIr1lHU82B-oPvzHBHCYJZIa801tnNDjMJQTIVxrlxksjt9zqz5ZPvrxvyJQ4T8hdGBdu02aKbDfRcNbzTgLssWNs-NOjpxiXKEPWma20GR02cXBfkNL9d11wr7fHLD_x42u4vweDOr6ckJmgZA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Тон действительно уникальный блокчейн — вроде бы очень мемный, но точно н…</h3>
-        <p>Тон действительно уникальный блокчейн — вроде бы очень мемный, но точно не в мемкоинах На повестке дня всплыла новость, якобы Павел Дуров лично прорекламировал грузинский магазин рыбы. Авторы каналов наверное будут в шоке, когда узнают про ИИ и легендарный Co…</p>
-      </a>
-      <p class="meta"><time datetime="2026-06-29T05:49:53.831Z">Jun 29, 2026, 5:49 AM</time> · <a href="/post/3102492181">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/775796401">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/FI1r5SfKM1iZzLfUOR1HXQL028qzQNk3G0BNd7st5w3FDmTcKv7Drfhga3EPLe5mr0AZJZrjvwjCgV3wgzO2eVejD06eT81exhb9Gn4dUeR8_UmJmVogBSZQ1US6d3SLKZhfy5WCSiEihbQUhahnIp6bgiILXy7MltYh5PTIEuGKTe8PZvwuLdNq0ejFTmMlql2OPLrK5o_F5D5Pnf8yQRRrJmj0NA0_weQEdE_8ngUfJ_5_IKtJ-TbTqFnn8glgl61guYXbvsVtsWVYLtLt-HHkKNg2pG0ms0IFYmpdTCTDhtZ7giiRPy1YfwsRcIax8CiWYg3rjKm8AvTpYo45mg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Data Secrets</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+          <span class="source-title-row"><strong class="source-title">iPhones.ru</strong><span class="verified-badge" title="Verified" aria-label="Verified">
     <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
@@ -183,59 +168,74 @@
       <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
     </svg>
   </span></span>
-          <span>@data_secrets</span>
+          <span>@iphonesru</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/ZQUTp553TPXb78TDb8o6VKb0Z4ytIymamGeRQWVZd_kn1hlXhsRxAq85E-xoMDAq7JAxaV8EZGlcTpHVr5Guc9IhBOYJ89dyn6e5q7ORzEzSQ7xhtrr3FQMz59bW4WwV17xlHY9gPjAF6WJvl5Jj0iuPxEE9Tl7vCtyfolZaElrEzOM63h-mcD-eSH64pILPARPiltqrsoWgI0tKtaQADi6pLfDXeFZjrwJSyv3oaizCntbLydm-dr4Y1_5PeyACuMyIgJSSXLv0AugFV5hqHXWGicGPP8mH1xiHZh8NOj-9v4gyKqVLguRDAikVDN_Xo69D3Oz0Odoo70UOlhYgNQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Обновление по Fable и Mythos: С 12 июня мы тесно сотрудничаем с правитель…</h3>
-        <p>Обновление по Fable и Mythos: С 12 июня мы тесно сотрудничаем с правительством США, чтобы восстановить доступ к Claude Mythos 5 и Fable 5. Сегодня правительство уведомило нас, что мы можем повторно развернуть Mythos 5 для некоторых организаций США, которые уп…</p>
+        <img src="https://cdn4.telesco.pe/file/XXH8a-NsXhr9WNiMlrKtZiksbF5cQhrl7my1ksgJ2AVVUIewOKh89PyuxDysiv7idMK1hvabS-VA-UAyDjCdZ4cGLoFuDRPvR44n6Q03QpgybnDALFv6PTTtw-q5t1kSUhQpU0_Co5T3vQRT_23ore5GkqjkAkggQh573_wSl_4SJhRNqlCyr9kJmm3z6HRSBWp1Wbtw9_FL4IRlXtOUulHrhSfmHhX1WTCEnyuKTnkM498UP6Jcn2yxBccv0Af2lETt-Z80JFERvZlquWVQ2hrbcVSbalG62OgSPYKqh8kd1XFcQJk6KGBexqXMZCBD-NJ4DeRp7dsf9bcX9VSsTw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>В Китае откроется первый в мире отель, состоящий полностью из роботов. Он…</h3>
+        <p>В Китае откроется первый в мире отель, состоящий полностью из роботов. Они будут заселять людей, убирать номера и готовить Некоторые обязанности по-прежнему будут выполнять сотрудники, особенно те, которые требуют принятия сложных решений, общения с гостями и…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:43:44.359Z">Jun 29, 2026, 5:43 AM</time> · <a href="/post/775796401">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-29T15:08:49.967Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/3870765778">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/4213442432">
+      <a class="post-link" href="/post/2335812698">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/kmmLCrX8SlKYFHkKq_P69HZcfLdzl84TCrItrjDy-lrzN3elKOM9ErnmEy1_wyYDyP9gGMuuKEU-KkLtwpYxtbKF_xBz3173yFqbw65CBwOCaeArpDy8wcJxWek3wXkI6n4ZsU4k8WRwQCZp48msb8niM9g_NqW7vAkCtCsEd0PdJwo0HFtFJOGeSVPZ1SVkwAgXZbKOb6z20F2PgEz5QIQ_--nrqAFTfJLbhOe0tOBk_Y0iJWDGHVwwHCRfO5Alrlkpu314a4RwbvOJkw8xt1DhzDVZTCcUqqNf6GOLW2g4HwjKGuAJdvbMhWQBqGVyP6e9JcSG0q3vxMy7UQ8syg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/kCJoaP-wdYu_jox0HQ6hI5hJw37iVsC4EgoSQzR4T6GW2RS6hdVJDLEMoCchDO7VG1e_XP-HCYk3MZb1CQusgAUPnEqhZbmE82qMjOWNTEhPhtDWcpbZ_qRwaj1KN_sN62l5s0T4qCFkWVep-w--Vsw-jJh2CJn99426L22N_zcvOXTIFd99zGZf9dmDxCkn0YqQ6feUUHxHve1sYVY-qjtUy-bXCUy_FC55LKkjzK34VjU8UB8yzrv9eSG-pQo5Y4bAU_nMNpa55q1iHkvr7I81bu2O2jYNGhqkowpxXrS3PPD-ItZEeWsWAGw34XQ35AZ2KgrCV6oN4DJMQc08hw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Jeteed</strong></span>
-          <span>@jeteed</span>
+          <span class="source-title-row"><strong class="source-title">InterNews — Новости ПК и технологий</strong></span>
+          <span>@internews_hw</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/dMzs2hgH-RVvlAkpfhA2nt_fo_HtzLanYPtY6L5hhCVRvu647sCU5L_HwNdf1RCib7ySanYFViI6IuA4K75CB06skbDYh_QqJh3Oh95ZrcdgIYULcsG_JHj9iqKNVivjEkq0sLIMYT7FIq5lfG0VPP_1baDjnOFLtSojW8as5ROvzu9IRMzNHktlZ_CXRF15Itpap3qOBFH8O0UyMtpU6LlJh1afknx8HBYtIWoELi_WLgH7BQqOJdfvKRlbDuy8vJNAqjHzbCymTdN91v8iTdscyR_kIushPKAeKSSkUtEtAUHJUpw6EeKes83YpbEyrT6dC_Wsdjd9N6mL4z4Y8w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Плохие новости для Сэма Альтмана 🍿🍿🍿 ИИ-пузырь лопнет через два понеде…</h3>
-        <p>Плохие новости для Сэма Альтмана 🍿🍿🍿 ИИ-пузырь лопнет через два понедельника — уверены титаны китайского банкинга. Инвесторы считают, что бум искусственного интеллекта превратился в суперпузырь, который умрет гораздо раньше, чем все думали: ➖С таким прогно…</p>
+        <img src="https://cdn4.telesco.pe/file/lA7pzp6dUhNt8fNgERQufoYiSnQfKiW6qgmwfYZ7bIih621PSqqnqdFwt8E8a5UWCBd1aOAIkd4h1I7nBU9U-RqpcTQpwrj_edW43cHc4U2C9mrJMQWUe5-1gm7daXxfsUNhsaQKR0ibclXWnyycGZE-By_am4n_-B1JZEDR5ZlPdcbwqgld46asEvG-nm7dHOfNFpzCA4jtYexJ7yWZ_UcazOSKBlfcSxBXdenOt6nOJPPH84FS5ovlYh2U_63y6uDCRHCtChoWIVLiijNGXtvXESeCcUIaUz8LnRVFCn_aEqPqY0XLKYlF7GIOzTOHl1gWHG8G2TnqYE5QTKsIIw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>👋 Память потребительского рынка уходит на второй план После контрактов M…</h3>
+        <p>👋 Память потребительского рынка уходит на второй план После контрактов Micron обсуждается сценарий, при котором Samsung и SK hynix тоже начнут сильнее уводить память в долгосрочные сделки с крупными клиентами. Для производителей это выгоднее: серверы, ИИ и Ц…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:51:37.731Z">Jun 29, 2026, 5:51 AM</time> · <a href="/post/4213442432">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-29T15:08:47.923Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/2335812698">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3116794062">
+      <a class="post-link" href="/post/100966227">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/qt3hwlUF-MOXtIOgqUAAF09F9L0E4dUpbkBpKzGQsYDJy2tFBKeL50nYZS5WyS44NU7naOdorOI14GkJRfyIpj7YPjQjx9MRkwwBgBcoOb4fENDKcuvXEmAJ-zKK57rVqOzntwMtOOozgxl4Wx4F8icld3IpvTA7tcbzUknBjMfAzX3NCseoxu0sZFKDDd0m6qUpmwkoBUrZR528YXSvReM_oTRud5WBpEnx9Vyxuh4Jeort0tXm_pImnN1GEbtFEqDyEVabVDVgOjwOnOs2jg-aF2Im_WcPOQg3E7gLN9KkKo-OWHpSKsDBFvcwywpYYIlzJTmGqnnvZXaUGHZQZA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/W6CPBFheh64nAk6FwJIwRV1WB9JpcmS6OMa2p9IbZsfBWO1-FVXyK78mAC9U_MYQ2POnTG7iz9OJCfc6zrUXa96Yi9YQKZlFpuaCVVVTWZcaylrSSVeZGI8WVRQ7EhIeYorV6VsXxcPIy_oTnlJWAsFrJM_NEe_aI-sP-WwDTFWvcdL6MyLAaSbZB-XwNeVJkObEWZLCecKlqBFAvsLMphqeVGC-L_plJOG-I-Ir2CzfMDIsu021qpVEtXGR4g940PdcegEwExFZcm2Yrc6sYUZLttK3pKkiSw1XBjkpr0C1QDrK87xGYPwWPLjzJbk2-KjAb1fJDF5oxWLAiPkdsw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">IT и точка</strong></span>
-          <span>@ititochka</span>
+          <span class="source-title-row"><strong class="source-title">ИИ Технологии</strong></span>
+          <span>@info_ii</span>
         </span>
       </p>
-        
-        <h3>ChatGPT может создать СТИКЕРПАК с вашим питомцем — в рилсах завирусился п…</h3>
-        <p>ChatGPT может создать СТИКЕРПАК с вашим питомцем — в рилсах завирусился промт, который превращает фото любимца в набор стикеров Telegram. Загружаем снимок и вбиваем: Создай набор из 10 Telegram-стикеров на основе загруженного фото моего питомца. Сохрани все у…</p>
+        <img src="https://cdn4.telesco.pe/file/d1uIwYhVkzXvnEHUsixeF9sZkzlm17IoxxwaewyXOx6sjYUfpWFZ4tTnRcJ4azCRy5b0TEu6VTxhDZJOYogZ5k_721tm3cwWkahe0xe_dYO2OhGPUi73yh3hi2W6I3h0S9ounFW2dWocp8OES0hJks4YMGiGR7sUhv43W5_Pgtsso1DF9xJm5XqtO8ytqpTILNZ4_8ynLD74u5UvKT1cS-VB2eNwtuIifSUaXZ5Q7agI61ea7gwFqfJlniKLuL1lojv9NCKSnXHZsrwVaup-d0cx-Cif_WmwnOWAoqEN5fIibWaNLXB9r1yE81nw2-8hxGczFrMau79VQS6iYPYAYQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Норвегия ЗАПРЕЩАЕТ ИИ для детей — с этой осени школьники 6-13 лет не смог…</h3>
+        <p>Норвегия ЗАПРЕЩАЕТ ИИ для детей — с этой осени школьники 6-13 лет не смогут юзать генеративный ИИ в школах. Премьер-министр Йонас Гар Стёре заявил, что из-за всезнающих нейронок малышня пропускает важнейшие этапы обучения чтению, письму и математике. Решение…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:51:33.279Z">Jun 29, 2026, 5:51 AM</time> · <a href="/post/3116794062">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-29T15:08:46.391Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/100966227">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3039317039">
+      <a class="post-link" href="/post/3271686474">
         <p class="source">
-        <img class="source-avatar" src="https://cdn5.telesco.pe/file/ZNG9t1rzoSCBSmiL2RRYgwHUmrKVSYceT0qKHFhktpm6A9pDqfrbzYKU484NdddzjG34-rYXjS6V2KmwcKrLvraCLVpvCOtZQgBVZkQNUlml4VjgoHXfqrTMSNCSDeJDeqbslNONgkUUepU672yb6f0sb4CEu2lsEaD1cjjQpc7KYQMS0Y2dhoTudRCajZRd2RZfichpBcRomVvgtWOS03QLoWSx0k46J7d25xzz_KbYkk-2rhU3uZVy2LAY82yvUfvfwtPcH4sefQ9k5VX0K30zZJXqyxKebg20uSmxh6fQRczyFOs7MgH3Gj2D0PxUqxsq-23xhXsMwLuted-bCg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/QWmPg0THfEB4LlfbhQ_3T2fQFVIPq_8RfhdOxI4I4yaRIlYJNIoBRRrSV61wh_XJuM2mgQCGOKgyk8yUXUKYHjpavtWe_utLl-sNVjuZHWZHl-Rw7rh4Xxm8myaGYaWizb8kdbiPnAI32PtH-EY_rGqO2RfJUwdx3nffx8DMuK4jxae_pNP5krznRGnv7pJOBoCkzK_ko1suC4RqnZQTXupmISNS_M1nRoMOu7o4_haeMZump64OpAwFbI3_kYCK9lAHPiRLqtC_MSlJAYuKgSGiOz9RsDWGzkF_O4QnE0VIccNnZrY3HISLinfX8DsS-SUwe5BlOXKQA36eHuHRug.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">INVEST ZONE | Khairullin Ruslan</strong></span>
-          <span>@invest_zonaa</span>
+          <span class="source-title-row"><strong class="source-title">Life-Hack - Хакер</strong></span>
+          <span>@haccking</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/WrFqPhyxm9CkHh-z9H5G4c6lIAwpiZ42is0JZBmI5vGbjer81pmg8hlJvgcq4JcRnEhy3Yz0BJlV9jQXUVMKeXpKwQi5ly9c5bD0-5MZyaT87Orx7h2mdljOED_xyb8whfqiVe4czjOd2SOOfMmrAy3WeWKyVJKaeNsl-ZVzR-Iux1THgFRDbDdTlcR9Y5In9jPzNavqRjASvyhq9G8M94NqhiFseiJQfS-I8EkIapAAUd-pKRUiN3C4i7RrJyz0baf1vfMlPPYcXs-xCMc42IjPn6WJeMXOZ516cs09PMVfvemDbBticZShb8PhnVo2SzgQ3VKMCgJ1utw9mI6ZZw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Дайджест за неделю✅ Всё самое интересное и важное за прошедшую неделю. 👩…</h3>
-        <p>Дайджест за неделю✅ Всё самое интересное и важное за прошедшую неделю. 👩‍💻Основные моменты: • $10,000,000 в ивенте от BingX. • Обзор крипторынка на YouTube от 22 июня. • Покупка USDT за рубли — без P2P, без блокировок, быстро и легко. • Про Клуб трейдеров I…</p>
+        <img src="https://cdn4.telesco.pe/file/tXM0WzzxNwotfFW0bbB0F-34DXnA8xdhgYVQIQ4vqsjQuTc089FXMoRa8wCjj5tt0q-Ijy5G0BoBriiAA9uFifMqciteqN4nr9uiHZaeALN-8UR1-OG_fwuCygrhjXwLnbtsX3LADIkn0ciYO2OmLuk4UQdATIcBGinCA7oxR8Iiv8cn622sw6zLNN3PbYVlsEBSWA1CFWsFRQKHec2dYNuOczgCxOX5h40hAUQauvjhVn8Jza6xKO-KhXqsnqR2D1F0EQbaAMwDtQwlkZRbGhDgwH9TagW2jZ6t4zoRuKSMbOYEv_f8lZ9TppeAe814mYTbfwdU4m16veQnRmyWog.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>CyberCamp впервые проводит летний open-air по кибербезу — и это будет не…</h3>
+        <p>CyberCamp впервые проводит летний open-air по кибербезу — и это будет не просто конференция, а полноценный фестиваль для всех ИБ-шников ✨ 17 июля в Берёзы Парк Строгино — день, когда можно обсудить ИИ в кибербезе, таргетированные атаки, цифровую криминалистик…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:51:29.151Z">Jun 29, 2026, 5:51 AM</time> · <a href="/post/3039317039">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-29T15:08:35.860Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/3271686474">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/453163795">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/VfLK7hj-hRhoWKZvGWc6t1ADG1wSLjuOeQWmTwVO7fQgHrlaN3Mes1vIk-fZQsQ6InJ_BWSCA0apNz3i2oEbiE6eO1Vp8AqZPBvmNpLRNfNKMhsonFeUElkHj1X6I3V13VWGige8lBFANkUY_qqMZx8NFlNARmHLb30Ii2llpeHAe-0gd3wPqLVoVzY2qBTWHjozLc7YZWIbyEWD9X0KV258s3U49X93vy_IQo9EQJPepo_XgDV_FjbPQW2A0Z4zoZKUB3FM4U9y-aj_j5Jts30K5lT_omP0uTUrUo6Saq9-nFEKreoW849eiACANgLndahzdhI_D4r8ZdYSJO3fGQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Илья Генералов | AI-агенты, n8n, Vibe Coding</strong></span>
+          <span>@generalov_ai_agents</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/qwY1IQmAN-GpD0ee1lbi4qH5CrjTo5kyWa_Ilh0xUMgs_F9cuLbUVGHf3HZDzIiDPd0MdgGiOFSyrfvwAMu-cBxkTNiVTbUcLRKfV-L35zbOIyf6XnovUCE4sFYopni6SRLRt61PmXnQGnYP5B8wvpiGFPqoydLGkG2BTGUON8V2zOFQyXf2XdyMsYU23QsP4qfE8-doaYKdmzXadeYPeiNCtVDcGwvV9DsAqGrSqDsT3y6nwpB70UwdxzKmu0l4dTG39cMaT_S1f-AkFGqH15Sd0nF-itoH8MuBluEEBW938bkP3wXntN6ndA1olUEzjAXt350bJLBXQN64tOMOqw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>👆🏼 Меня по-настоящему радуют такие сообщения Человек просто взял и закр…</h3>
+        <p>👆🏼 Меня по-настоящему радуют такие сообщения Человек просто взял и закрыл первого клиента на 90 000 ₽. Не после курса за 80 тысяч, а внутри группы, которая стоит 2790 ₽ в месяц. Один клиент — и подписка окупилась на годы вперёд. И таких всё больше. Дмитрий…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-29T15:08:27.608Z">Jun 29, 2026, 3:08 PM</time> · <a href="/post/453163795">View post on margeleT</a></p>
     </article>
     </section>
   </main>
