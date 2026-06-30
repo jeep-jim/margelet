@@ -14,13 +14,13 @@
   <meta property="og:title" content="Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году W… — Kali Linux, Russia electronics pc | margeleT" />
   <meta property="og:description" content="Fresh Telegram snapshot from Kali Linux in Russia. Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одном… Topics: electronics pc, electronics, gadgets, technology." />
   <meta property="og:url" content="https://www.margelet.space/post/2216268819" />
-  <meta property="og:image" content="https://cdn4.telesco.pe/file/SEJsE739ahtd2am5zDPyYyohlmDEcAEhkAx6KW9BMQv9MmArVkf3VDrYxXgHvNoawbEwcL9FeoxI5JSH_RGghEXpw8HDQekn7Yuh9zogSBRf5wN7ReoXgabkTxl3Gg7JDyHriPVh9IHi1E4h6GnDodw179ZxocmZj8l8j0C4rFZZG7hjVvpS0ckuj5cPA_bwUyxTJZVCmyoBgkzVTAeg7VbenCDWd1pHyL0p-1K57Ji9UUuZC068A_XozUDVkUmPzP5FlHvDY4-ZLSQfNVst16MeZQKAJQqnYOsHog2vYinmswgqrUjid4QCH620JzREyROxLn17tdAiJkAzIos7aA.jpg" />
-  <meta property="og:updated_time" content="2026-06-29T05:45:01.350Z" />
+  <meta property="og:image" content="https://cdn4.telesco.pe/file/UdjshOr7hc4zJdSAMXq6ZK4P1kiwfR2_EIlyhv2LjakeDmZZhgCNg28GgNtd1GiebqXrtTr9ND45ZcqhBYgoAHYtvFFlb0eMgsimslr7Q7nO60VDO2wktMz8kZNTVNSggeINrj8PEankclcQVfT7e-1IJkhh9WMx55lyh4PkNmMj0IvxM34ktSkG-2K3pDoyu5jg1-4gRm7Zqew4pKfYD9nb3nuoEKtXqcmIi7FZHUk09hs4rIXVaDmgajgtT2ocap_m7IGB3v7dBCF37nHRC3N4aRnJngw_l6jeTmRP3X5sN3-nfgynLI-7KvX1imQbJKkRgG22xY5IU_NLMUFVPA.jpg" />
+  <meta property="og:updated_time" content="2026-06-30T16:18:20.502Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году W… — Kali Linux, Russia electronics pc | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from Kali Linux in Russia. Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одном… Topics: electronics pc, electronics, gadgets, technology." />
-  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/SEJsE739ahtd2am5zDPyYyohlmDEcAEhkAx6KW9BMQv9MmArVkf3VDrYxXgHvNoawbEwcL9FeoxI5JSH_RGghEXpw8HDQekn7Yuh9zogSBRf5wN7ReoXgabkTxl3Gg7JDyHriPVh9IHi1E4h6GnDodw179ZxocmZj8l8j0C4rFZZG7hjVvpS0ckuj5cPA_bwUyxTJZVCmyoBgkzVTAeg7VbenCDWd1pHyL0p-1K57Ji9UUuZC068A_XozUDVkUmPzP5FlHvDY4-ZLSQfNVst16MeZQKAJQqnYOsHog2vYinmswgqrUjid4QCH620JzREyROxLn17tdAiJkAzIos7aA.jpg" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Kali Linux","item":"https://www.margelet.space/linuxkalii"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году W…","description":"Fresh Telegram snapshot from Kali Linux in Russia. Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одном… Topics: electronics pc, electronics, gadgets, technology.","articleBody":"Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одному биту, а через маски и арифметику сразу над группами битов. Идея простая: - сначала считаем биты парами - потом группами по 4 - потом по байтам - в конце умножение собирает сумму в старший байт Если в процессоре нет инструкции POPCNT, Linux использует похожий подход в __sw_hweight64. Красивый пример того, как старый битовый трюк пережил десятилетия и всё ещё работает в современном системном коде.","text":"Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одному биту, а через маски и арифметику сразу над группами битов. Идея простая: - сначала считаем биты парами - потом группами по 4 - потом по байтам - в конце умножение собирает сумму в старший байт Если в процессоре нет инструкции POPCNT, Linux использует похожий подход в __sw_hweight64. Красивый пример того, как старый битовый трюк пережил десятилетия и всё ещё работает в современном системном коде.","keywords":"margeleT, Telegram, Russia, Kali Linux, linuxkalii, electronics pc, electronics, gadgets, technology","url":"https://www.margelet.space/post/2216268819","mainEntityOfPage":"https://www.margelet.space/post/2216268819","datePublished":"2026-06-29T05:45:01.350Z","dateModified":"2026-06-29T05:45:01.350Z","image":["https://cdn4.telesco.pe/file/SEJsE739ahtd2am5zDPyYyohlmDEcAEhkAx6KW9BMQv9MmArVkf3VDrYxXgHvNoawbEwcL9FeoxI5JSH_RGghEXpw8HDQekn7Yuh9zogSBRf5wN7ReoXgabkTxl3Gg7JDyHriPVh9IHi1E4h6GnDodw179ZxocmZj8l8j0C4rFZZG7hjVvpS0ckuj5cPA_bwUyxTJZVCmyoBgkzVTAeg7VbenCDWd1pHyL0p-1K57Ji9UUuZC068A_XozUDVkUmPzP5FlHvDY4-ZLSQfNVst16MeZQKAJQqnYOsHog2vYinmswgqrUjid4QCH620JzREyROxLn17tdAiJkAzIos7aA.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"},{"@type":"Thing","name":"gadgets"},{"@type":"Thing","name":"technology"}],"author":{"@type":"Organization","name":"Kali Linux","url":"https://www.margelet.space/linuxkalii","logo":"https://cdn4.telesco.pe/file/gjHZQif74gvWzsv85WtQwadsr1BHXVUlXee9BRecu9VIpm2Frmjw7PFncOZ2HT0fVxM1FDXfx4NJeizuJ8eOOys3YGGIZ0Sa6rK-PUpR654wS1wgUdxZInSM8u7ihersSXr7NqptCbYXyhmJnK0_WP0fhR6XKQT2GU-dPKcV3l-n-_q8hv_OVHtmpwqAsNMfM412mvqIIuCLNC1CiH4JsVVS_nnx3hoJaQEcCtrrl04KYsIyd-JW7mmsYYAfeoE-MEf7Ry3axxNTSEX5WAGXZ-tvRLP_ixEDniShfCzR-_jE4_wvihS5SjD2d71EQxlnuduR5Xp8grgfwcwz_kLmzQ.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/linuxkalii/2093?single"}]}</script>
+  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/UdjshOr7hc4zJdSAMXq6ZK4P1kiwfR2_EIlyhv2LjakeDmZZhgCNg28GgNtd1GiebqXrtTr9ND45ZcqhBYgoAHYtvFFlb0eMgsimslr7Q7nO60VDO2wktMz8kZNTVNSggeINrj8PEankclcQVfT7e-1IJkhh9WMx55lyh4PkNmMj0IvxM34ktSkG-2K3pDoyu5jg1-4gRm7Zqew4pKfYD9nb3nuoEKtXqcmIi7FZHUk09hs4rIXVaDmgajgtT2ocap_m7IGB3v7dBCF37nHRC3N4aRnJngw_l6jeTmRP3X5sN3-nfgynLI-7KvX1imQbJKkRgG22xY5IU_NLMUFVPA.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Kali Linux","item":"https://www.margelet.space/linuxkalii"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году W…","description":"Fresh Telegram snapshot from Kali Linux in Russia. Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одном… Topics: electronics pc, electronics, gadgets, technology.","articleBody":"Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одному биту, а через маски и арифметику сразу над группами битов. Идея простая: - сначала считаем биты парами - потом группами по 4 - потом по байтам - в конце умножение собирает сумму в старший байт Если в процессоре нет инструкции POPCNT, Linux использует похожий подход в __sw_hweight64. Красивый пример того, как старый битовый трюк пережил десятилетия и всё ещё работает в современном системном коде.","text":"Алгоритму почти 70 лет, а он до сих пор живёт в ядре Linux. В 1957 году Wilkes, Wheeler и Gill описали быстрый способ считать количество установленных битов в числе. Не циклом по одному биту, а через маски и арифметику сразу над группами битов. Идея простая: - сначала считаем биты парами - потом группами по 4 - потом по байтам - в конце умножение собирает сумму в старший байт Если в процессоре нет инструкции POPCNT, Linux использует похожий подход в __sw_hweight64. Красивый пример того, как старый битовый трюк пережил десятилетия и всё ещё работает в современном системном коде.","keywords":"margeleT, Telegram, Russia, Kali Linux, linuxkalii, electronics pc, electronics, gadgets, technology","url":"https://www.margelet.space/post/2216268819","mainEntityOfPage":"https://www.margelet.space/post/2216268819","datePublished":"2026-06-30T16:18:20.502Z","dateModified":"2026-06-30T16:18:20.502Z","image":["https://cdn4.telesco.pe/file/UdjshOr7hc4zJdSAMXq6ZK4P1kiwfR2_EIlyhv2LjakeDmZZhgCNg28GgNtd1GiebqXrtTr9ND45ZcqhBYgoAHYtvFFlb0eMgsimslr7Q7nO60VDO2wktMz8kZNTVNSggeINrj8PEankclcQVfT7e-1IJkhh9WMx55lyh4PkNmMj0IvxM34ktSkG-2K3pDoyu5jg1-4gRm7Zqew4pKfYD9nb3nuoEKtXqcmIi7FZHUk09hs4rIXVaDmgajgtT2ocap_m7IGB3v7dBCF37nHRC3N4aRnJngw_l6jeTmRP3X5sN3-nfgynLI-7KvX1imQbJKkRgG22xY5IU_NLMUFVPA.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"},{"@type":"Thing","name":"gadgets"},{"@type":"Thing","name":"technology"}],"author":{"@type":"Organization","name":"Kali Linux","url":"https://www.margelet.space/linuxkalii","logo":"https://cdn4.telesco.pe/file/LiGDd3EDlWkWkicbPRpAfuj3qsvMwLb1foweOkN917IAv6_T2xMeQnXSy6tJA7tXZ4Z6LVsfvsSLr19LVaCYcA905_OeYEDRvKx69BS6NMvBSsaGJJD3e7G3Xj1Y3yJC_byvaW3kGVq8bWq30ePeDFCAJGOz30AjyhzPnPdpqn29wlCTRKezWng5G60K3BM0k-Q6rleidTvOIqU1QlQen3pirmKFAHtxetHSfXpVwWqxdTp-v1dXnTs4fPZYuQWVDcL0rEaDZcUerM39IBsrza1OmXPVOcwTIPQsSb5plXjmx1uPpWv7knp0XPWPBkfb3BKlQ6bfGiySlrj14iHq_w.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/linuxkalii/2093?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -30,7 +30,7 @@
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/gjHZQif74gvWzsv85WtQwadsr1BHXVUlXee9BRecu9VIpm2Frmjw7PFncOZ2HT0fVxM1FDXfx4NJeizuJ8eOOys3YGGIZ0Sa6rK-PUpR654wS1wgUdxZInSM8u7ihersSXr7NqptCbYXyhmJnK0_WP0fhR6XKQT2GU-dPKcV3l-n-_q8hv_OVHtmpwqAsNMfM412mvqIIuCLNC1CiH4JsVVS_nnx3hoJaQEcCtrrl04KYsIyd-JW7mmsYYAfeoE-MEf7Ry3axxNTSEX5WAGXZ-tvRLP_ixEDniShfCzR-_jE4_wvihS5SjD2d71EQxlnuduR5Xp8grgfwcwz_kLmzQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/LiGDd3EDlWkWkicbPRpAfuj3qsvMwLb1foweOkN917IAv6_T2xMeQnXSy6tJA7tXZ4Z6LVsfvsSLr19LVaCYcA905_OeYEDRvKx69BS6NMvBSsaGJJD3e7G3Xj1Y3yJC_byvaW3kGVq8bWq30ePeDFCAJGOz30AjyhzPnPdpqn29wlCTRKezWng5G60K3BM0k-Q6rleidTvOIqU1QlQen3pirmKFAHtxetHSfXpVwWqxdTp-v1dXnTs4fPZYuQWVDcL0rEaDZcUerM39IBsrza1OmXPVOcwTIPQsSb5plXjmx1uPpWv7knp0XPWPBkfb3BKlQ6bfGiySlrj14iHq_w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
           <span>@linuxkalii</span>
@@ -51,8 +51,8 @@
 Если в процессоре нет инструкции POPCNT, Linux использует похожий подход в __sw_hweight64.
 
 Красивый пример того, как старый битовый трюк пережил десятилетия и всё ещё работает в современном системном коде.</p>
-      <img src="https://cdn4.telesco.pe/file/SEJsE739ahtd2am5zDPyYyohlmDEcAEhkAx6KW9BMQv9MmArVkf3VDrYxXgHvNoawbEwcL9FeoxI5JSH_RGghEXpw8HDQekn7Yuh9zogSBRf5wN7ReoXgabkTxl3Gg7JDyHriPVh9IHi1E4h6GnDodw179ZxocmZj8l8j0C4rFZZG7hjVvpS0ckuj5cPA_bwUyxTJZVCmyoBgkzVTAeg7VbenCDWd1pHyL0p-1K57Ji9UUuZC068A_XozUDVkUmPzP5FlHvDY4-ZLSQfNVst16MeZQKAJQqnYOsHog2vYinmswgqrUjid4QCH620JzREyROxLn17tdAiJkAzIos7aA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-      <p class="meta"><time datetime="2026-06-29T05:45:01.350Z">Jun 29, 2026, 5:45 AM</time> · Russia</p>
+      <img src="https://cdn4.telesco.pe/file/UdjshOr7hc4zJdSAMXq6ZK4P1kiwfR2_EIlyhv2LjakeDmZZhgCNg28GgNtd1GiebqXrtTr9ND45ZcqhBYgoAHYtvFFlb0eMgsimslr7Q7nO60VDO2wktMz8kZNTVNSggeINrj8PEankclcQVfT7e-1IJkhh9WMx55lyh4PkNmMj0IvxM34ktSkG-2K3pDoyu5jg1-4gRm7Zqew4pKfYD9nb3nuoEKtXqcmIi7FZHUk09hs4rIXVaDmgajgtT2ocap_m7IGB3v7dBCF37nHRC3N4aRnJngw_l6jeTmRP3X5sN3-nfgynLI-7KvX1imQbJKkRgG22xY5IU_NLMUFVPA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-06-30T16:18:20.502Z">Jun 30, 2026, 4:18 PM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/electronics/pc">electronics / pc</a>
 <a class="pill" href="/country/ru/tag/electronics">electronics</a>
@@ -70,54 +70,54 @@
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/860364636">
+      <a class="post-link" href="/post/114463292">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/KqPI5LHp8e8e3jGsUwEKW8sWDvaPnIEKpfZv-AzP35RumxekPGFl6pQnyfeyqmbBKV4lc6Ug5Q9WluVGRH3z8_inezkytQdZoMdnYrQ-ewmZCsse-kYqQldeQ83X7amVqzHg1JszwNFxf30gBr8waoGeTdCWS_YJZhM7OTfR1WsJdi7RYBHWITAMjhs4-SCyHSNJf__O_6agG1dF7zRb-GAA60UhBOAls2_AOBJSt3YMXUTHz8vw5waxvtwTEMmUS4_qyd2a9GYHbvp2KMiBKyR4-VNlguaRiykdQU3Fon4JYMX21Ffir1gDRMyeTS2_dl0fiMjC4g4V9ThQkhT4Lg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/LiGDd3EDlWkWkicbPRpAfuj3qsvMwLb1foweOkN917IAv6_T2xMeQnXSy6tJA7tXZ4Z6LVsfvsSLr19LVaCYcA905_OeYEDRvKx69BS6NMvBSsaGJJD3e7G3Xj1Y3yJC_byvaW3kGVq8bWq30ePeDFCAJGOz30AjyhzPnPdpqn29wlCTRKezWng5G60K3BM0k-Q6rleidTvOIqU1QlQen3pirmKFAHtxetHSfXpVwWqxdTp-v1dXnTs4fPZYuQWVDcL0rEaDZcUerM39IBsrza1OmXPVOcwTIPQsSb5plXjmx1uPpWv7knp0XPWPBkfb3BKlQ6bfGiySlrj14iHq_w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Мой Компьютер</strong><span class="verified-badge" title="Verified" aria-label="Verified">
-    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#5ABEF7" />
-          <stop offset="1" stop-color="#0096FF" />
-        </linearGradient>
-        <mask id="tg_v_mask_seo">
-          <rect width="150" height="150" fill="black" />
-          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
-        </mask>
-      </defs>
-      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
-      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
-    </svg>
-  </span></span>
-          <span>@mknewsru</span>
+          <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
+          <span>@linuxkalii</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/UTmc5PGZ8ft8o6usk8eRsVDBzpl6DdOJX-4lV-On6opQo3uKaP6wQCoWjsAtwC8NSG8B3cTfSlEJLe1TWzxMUbEcWJd9lQvk3gHUz15U9vEHhjpDsouEahb7-PA1_5cbxhIrPXgwQC0j8dXMimvge-zweqKRHyA0Q31cf6wMPssSZ0gGdB5Y69wl8SEjv7RUF58UhS8a0dEuLjW-a-Rgro3uR9JFClbiFX4FKAfl3c5QeRiPccYRunK7Cn-G0H1nZej1WBlsWMmw4xuOhFaP8q2TikvqRLRdR1aRU3P1qwYSYriT8Towpw7aHrDOBQJiAJoFKXpIUnpkmZrF4xGrlw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Lenovo: «Цены на ОЗУ не вернутся к уровню 2025 года» На международной кон…</h3>
-        <p>Lenovo: «Цены на ОЗУ не вернутся к уровню 2025 года» На международной конференции ISC 2026, представители компании заявили, что нынешние цены на память стали новой реальностью, к которой потребителям придётся привыкнуть. Lenovo допускает, что стоимость операт…</p>
+        
+        <h3>🖥Ускорь Linux без апгрейда железа Linux может стать заметно отзывчивее б…</h3>
+        <p>🖥Ускорь Linux без апгрейда железа Linux может стать заметно отзывчивее без апгрейда железа. Мало кто включает zram, а зря. Он создаёт сжатую память прямо в RAM и снижает обращения к медленному swap на диске. Особенно хорошо это чувствуется на ноутбуках и VPS…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:53:06.492Z">Jun 29, 2026, 5:53 AM</time> · <a href="/post/860364636">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-30T16:18:20.502Z">Jun 30, 2026, 4:18 PM</time> · <a href="/post/114463292">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2667197881">
+      <a class="post-link" href="/post/2554749610">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/fRb0j3wMJIKErxRwApbHAjat0WPxy-i7Sjg7lWmhWe9BQapYu1w30WiQ7xelwVcYhiHJUjdL38zuzs0X4C793O6EfUU0TMqSxxCvdyzA25xtQVyV3DBgQboazbJkK1_0cJfaCNtZHIVvrjOiqOsf0eHlad-ePq1aFh8MUnpst07ldej7cLmrNtfyoK3lHo3ka2hiQ1cVsY3pMm2oFpnX6fIvzexCIZNDmfmN5HQbPsXObY357_zpkyz8GvKpds7L0f5HzEgFnH_t-RMwZY6nO7eve2CsKugmDolYOVT5O1rHnIFYZg2vRbswL6V2ra5VJ5fB7TBCA5Vc9i7AuEhUXw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/UObyEtqaDrm8Wi3Np1Dd64tqnobiNQ0sqPWDAuLNczHEn_00i62lr3XC1X4nUNZbx_6-6zLbHFtso26U3sQdGJn9t3MhyY1MQavRPaZH6rQnRkeyr2pNt3lTiN1Fx2YrZfIqcTkR-keIs7AVeF2DoTqpItu56D3ckK0jXhYdiS1fVkIjePKvAupZ7rwgAIeBBhi5sZ__jQMnT92VKeW2oLpmzh9Uw2JFLGfGY2BlwBsc53FSEmCbUzsaj7Fsxneqk3sFPqOimSR4odf27vL6P4bgIApwrXqWWAB46sOAvGglom94pW50GJ_aM-RejjMVud78NREM7rKUF2miDRpQUA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Apple Media</strong></span>
           <span>@media_apple</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/qjGRxovi2Mef1kHHN13TKdtrEs270gKpeviyy-LcfnDjx1Vpp9HgqK1gVgWPF2D3EdKs92yZU3ZhsFvCsqdLdqMyYzScl4IVQsVAPDylB7Pd-fXEtmr7HqV1jh0A9J45Lu_ml0GFarS09r-WM8A5P2j1eZEv_37WyGpRrBl0dtO62cUQoLcmVE0IboP4rubzEsEI0lCBczb61K_oqRFKNqA2RQ_HWoYVgfEO0DyZcddQcTw8sND9a2r2KI1lS5SDU0T12eW7bK92Vn9BxBdr-Cz1gNLQUbCDiFelSYeQVpoN--0uj48B0KAWuD__JTlRMvdjRZNX2wVdWeGFZpmQ4Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Apple готовит большое обновление Mac Studio с процессором M7 Ultra. Выйде…</h3>
-        <p>Apple готовит большое обновление Mac Studio с процессором M7 Ultra. Выйдет в 2028 году Apple готовит обновленный Mac Studio с процессорами M5 Max и M5 Ultra. Новинка станет обычным аппаратным обновлением без изменений дизайна. Релиз запланирован на 2026 год.…</p>
+        <img src="https://cdn4.telesco.pe/file/VZKGvTaWo-3bZGVl_HUrdq-xUwklGVNYa9w2I230_LbMszyKTf3SU_Bj9m4zviFNOXm4hGO3bqXEKmYxt_jWuCtiaomXvheTn74WMOXdQuaWorFB_XFYJzZ09kZckHf0s6hXVXEc_yzS0Ybela2aKXK-haX76Nk7X3DdsTF72MiDNyPAG9sW1Ox0tacKdGH91jFlflBTamjMbCZNxkaTWgMmvFlfhjNlahEJ3SFDWDsrOLLogH0dFMKL28C6XLlToEY6rgRigmlGZQZClsq7M9S2cvf-AcQh7yBWSz5oDfCLlDmybBu0qDeUOYMVulOWHoxNSIWOs89yjQZWC5w6Rw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Появилось фото нового процессора A20 Pro, который получит iPhone 18 Pro Н…</h3>
+        <p>Появилось фото нового процессора A20 Pro, который получит iPhone 18 Pro На этот раз просочилась фотография нового процессора A20 Pro, а также материнской платы нового смартфона, включая схемотехнику. Инсайдеры заявляют, что iPhone 18 Pro станет первым смартфо…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:52:49.030Z">Jun 29, 2026, 5:52 AM</time> · <a href="/post/2667197881">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-30T16:25:37.503Z">Jun 30, 2026, 4:25 PM</time> · <a href="/post/2554749610">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3867652424">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/MSjb46uAen8gSo0TEejQqrJKYNZXoMbLUEMeqZep0SIvEwYdoYAtjJHKyeF9hO4R17EETW7xQPwtXAvBHI7KBkjJTtO0L1hddXVzpJzNjXSciVri1Zl3ET2KceszE2PwNZ_OSfR_1cOyWP-HE7KqC2zxyPVbyMcUPXl_SQL5wZonHyBbTd0-lWTJjbcPAColWRphjF95LqzI7PgGk8VQ3qj2fmySo5PZ4B6adRxa2M6V7D-NjBh33lxUPSeS9UUMTQYQPWav9LMibUHMVx9RkSbt0sPD7_COMOQn_y-l0dv823QkqeIitgShJ7b-hDImBYSjAtCUS7akvRWSdQG7gw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Fosters PC</strong></span>
+          <span>@fostersnews</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/sVLUyF5rW8zUduHKYqYR_iccTxudFJO9u7qdafke-f0CNaTjvVWxq2eXc0wucRFbXNhBFOU1HN0Orm-Za3T5U9PH517ef_F54l0bdTzrgN_rPxToTttJvPYNJMC0nIofU5LFBaoJDjFCnkm6HDm6-bBs2oNs0bDK90zwOBt-Iv5FS070MNI1QtDttfbLQ9lEDq4YoKb0msDO-3To1Z8eUIJSnmqJRg1LCcoHemiu2fHATnaOFTvmm2NigJ94J3MR159uzvUXbwadKj0Jxm6mfcaK8InLEyQXVerMGvSfblZLZERwg0vekDq5DPFRGO05KUtYS9wK432eN3MGITMeHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Такую видеокарту вы не купите в обычном магазине В Россию их официально н…</h3>
+        <p>Такую видеокарту вы не купите в обычном магазине В Россию их официально не завозили. Это RTX 5080 Founders Edition, эталонная версия видеокарты от самой NVIDIA. Продавались они только через официальный сайт компании. Чем она отличается от других RTX 5080? 1)…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-30T16:23:27.053Z">Jun 30, 2026, 4:23 PM</time> · <a href="/post/3867652424">View post on margeleT</a></p>
     </article>
 <article class="post">
       <a class="post-link" href="/post/4293384193">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/lMNL9ATxV8lYnhE95c8ZNmvQ6CfIC0WGQQMrPVhP9FJhfFyvHkW-vFbZUSZPaiW-80x2EqHhar5jeojuDclczk_J3V9JJ9E5CQCZaoHDe8fvhjmeetxE_kENqocXzqo5e9dTYFX4zY7ZiT7hWqvWvr7CJptWG49vay02HbGJ8r-LQhy6U3WIZni-oCfLfrceCIHCpzV5fGhLi5YaVcyTdKp_jI3fPTWT_frg0DWpL3iq1Vxy_Enz_DiFsUFy5TdyrbU5YpzNVpwqOTOY_E5SCWIJHbi-jFExyOawi5BgS8z_mMo0aDdqSVpr6A99G_W1AM-BhcAF21smHDe6Xz9Reg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Y9jeQwol9CcMAJO1x6HsqrRAmB3LT4QIe4PyoAYPbpr063gVtjjOPsM6W1LOun61I988U2Bi3pd9B2aQhKHO_7wENJPII0hK-rlZUebwnYs1yeypdbJB4Ax9PsvXBn9hTwkYwD2iPDcMWLZj76cKli1hziPwunicbBfW2Zqi-rRGjoHmL3nYF3OoFr03ecLVidBZhJgh_R7uinsoHbNQONdj1sRNbe2IWI13Xrhc39IA-Nee0Qo9T0YHBmXmxz9lFFf9hpbxNXZ1VCyVeJ-GbAVYs6zX_D_oCKuDL0-4M53VTSV6R2RCXjfwTFwktOvkDiurVOnyLssgs0__BXaalQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">LEFT JOIN</strong></span>
           <span>@leftjoin</span>
@@ -127,57 +127,12 @@
         <h3>Почувствуйте себя ОС Как часто ваш компьютер тормозит на простейшей задач…</h3>
         <p>Почувствуйте себя ОС Как часто ваш компьютер тормозит на простейшей задаче и вы думаете: ну что опять, из-за чего ты на этот раз завис? Теперь у вас есть шанс на себе прочувстовать на себе — каково это, управлять горой процессов и жонглировать ресурсами, чтоб…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:44:56.062Z">Jun 29, 2026, 5:44 AM</time> · <a href="/post/4293384193">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-30T16:18:15.974Z">Jun 30, 2026, 4:18 PM</time> · <a href="/post/4293384193">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/1520320629">
+      <a class="post-link" href="/post/2753917356">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/oNyZaPT55hVAE78Wfd4h1qFwo-fnZvamO-NDIcfiMG-nyE0j9YgaKGNyI-qYwHNJtDic5_NavVm55TlFdCG1fjkqfwxXaPfmMwm9AZbqnOjEuwgChqMN6UH4kTU_4S68B8wCPCJoLGGamcm5NrDr0dCNwD6YamGZOGdsTeduy8WvxlDJvt6Y6CJOOV0Me3LtEuhV0PQd760lk_FGzQsw0Ijgs2BiY4RIWqJv8LprDAyzIdjQBwVrRXEX4tX5z-EK6te8MT21T_aIB3hrLXRM-St7xYBVhtITh_uGysUwUru_NEWvyFhcJHEIpRsfVgC4Ani2zBnQ2keKad1OeFptTQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Айшоп72 | iShop72 | техника Apple</strong></span>
-          <span>@ishop72_channel</span>
-        </span>
-      </p>
-        
-        <h3>MacBook Neo в наличии в ishop72 ✨ Давно мечтали о MacBook, но смущала цен…</h3>
-        <p>MacBook Neo в наличии в ishop72 ✨ Давно мечтали о MacBook, но смущала цена? Тогда MacBook Neo идеально вам подойдет! 🔴Чип A18Pro 🔴Корпус из прочного алюминия 🔴13-дюймовый дисплей Liquid Retina 🔴Цвета: серебристый, розовый, цитрусовый, индиго 🔴До 16 часов…</p>
-      </a>
-      <p class="meta"><time datetime="2026-06-29T05:44:32.703Z">Jun 29, 2026, 5:44 AM</time> · <a href="/post/1520320629">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2638328382">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/oNyZaPT55hVAE78Wfd4h1qFwo-fnZvamO-NDIcfiMG-nyE0j9YgaKGNyI-qYwHNJtDic5_NavVm55TlFdCG1fjkqfwxXaPfmMwm9AZbqnOjEuwgChqMN6UH4kTU_4S68B8wCPCJoLGGamcm5NrDr0dCNwD6YamGZOGdsTeduy8WvxlDJvt6Y6CJOOV0Me3LtEuhV0PQd760lk_FGzQsw0Ijgs2BiY4RIWqJv8LprDAyzIdjQBwVrRXEX4tX5z-EK6te8MT21T_aIB3hrLXRM-St7xYBVhtITh_uGysUwUru_NEWvyFhcJHEIpRsfVgC4Ani2zBnQ2keKad1OeFptTQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Айшоп72 | iShop72 | техника Apple</strong></span>
-          <span>@ishop72_channel</span>
-        </span>
-      </p>
-        
-        <h3>MacBook Pro 💻 Создан специально для профессиональной нагрузки Его преиму…</h3>
-        <p>MacBook Pro 💻 Создан специально для профессиональной нагрузки Его преимущества: — мощнее процессоры — активное охлаждение — ярче экран — больше портов — и он лучше держит длительную нагрузку. Выбрать MacBook Pro на сайт 👈🏻</p>
-      </a>
-      <p class="meta"><time datetime="2026-06-29T05:44:32.703Z">Jun 29, 2026, 5:44 AM</time> · <a href="/post/2638328382">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/474703397">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/toHwL4uuzBXX2we3HclNWvexHVWFXcrdDafZb3AuJbQsZ1TF5eAfsvJ6d_AIWBdA5NEdrsEm8kkzU0ENscfrssQ33pBXylLy4m2awzrO2eVBnjzLBsSQxM4k3XOM32PEGefe0vmBd4ethq9Ct7IDEfyz_gy1iCmx1lULwycxbjFdkeMALSUdOdd_Z_HAo8Xj1NL3YoNSojeQSSvUstYyV1yjQNkXdlQnHm8Pm55bKvE9ooBg6q8agR7lQohuKfPEmaRdxiMgn-sLpfjRiD3Fkr7LuaXTMLehm8VZpDnSdU6o_JQUisgY02I2-RRflaxyrtMnT-JA9gmrildXHafAYQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">ЖЕЛЕЗНЫЙ</strong></span>
-          <span>@ironmanexpress</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/N10lrSS7TG9BQc9f5Joep3z0XcpmCDxfSUIxIptF5o9DyBK_vJVBQ1Qcpt9YgxDYda0M1pvCGDrB2WqtEhuKZg14-jHx_Sg_hgPsoPaLJjPb38AUmxhP9-fpioasWkTsI3if6mzXO5gHd-17XocRGwKDSOgnphNuUwhKFXaq63eSYY_fpb04g9TT3YsyK0LA4857pkWkDcH0-cSUMCu_uCiLCwsZN4-ahFtZxze7TBmheSD5xshN8pmf0h2223NxKwh0GFXpjmSvNFcc8zSv8NUKV2I8BTREyqfQU8SBzK0gpk-oquPdqfxWrrfTpbmqy-ITwECvy3RfqapY9Kzw1A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Освежаю подборку консолей от ANBERNIC Добавил процессоры, оперативу, GPU…</h3>
-        <p>Освежаю подборку консолей от ANBERNIC Добавил процессоры, оперативу, GPU и топ поддерживаемых платформ Если кто узнал свою консольку, то напишите короткий отзыв в коментах😎👇 1🔵 3825р. 18🔵 9756р. 2🔵 4219р. 19🔵 9909р. 3🔵 4369р. 20🔵 10145р. 4🔵 4689р. 21…</p>
-      </a>
-      <p class="meta"><time datetime="2026-06-29T05:44:31.047Z">Jun 29, 2026, 5:44 AM</time> · <a href="/post/474703397">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/536299326">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/hx2jd59ejOMTih_wnOb0xCreiJ1IBtK0dmv1Q4JSh44Xb5YPQ_znL_15qLhfrikDvQVasqPUJMmbDmkYraJs7IM_vW8Uq76YhOAmHD6bo0_VKVQA3ly59tm2WqG3Fim8xudTxKecn5OyMsd1JhcGKzCNVIIh5n8VQ_ppCMEzU7H-Fkz1wEp9HHZLSj1sRfF8fQEHWkdTul9Tcdu9MCX2Ew_IJKK6kF3mi-vQw2GteuZr_qirU6-r7iU-Md8icXhClRWSjJ91boNKzNfm9-5fH91kHfh9cH4POZyd6slbVKdjF56HlI2V4J6mARaYCdBG7uUD4bygyOGefKaKXPIo-Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/moAkZBlav0rMOx93ftEhlhyvZ3OVd1_mA0gtIdwGjTz-8Inv1ZY5MoUpUFb9lSbo3RW1FiKiljGtWVS4w1JftXIRMqIGSDR2p1cni_0rmCTyAvnDIv1j_HTbN1Sa1GFO9Y1qe11eMxno_ki0QrDZOUfZ3pbyw6w6dpviDSjg58XH9VizbHiSd-rZPY3L3EwVkoH4t8GvgFmKTOjbWbEGijS47vM6fvsdFrh_wiSLpEjwaqI4BSU0LdCHg96L9gFcSke0O245gknnXI4YPpdzT_Xd2bd7JbeT4CDvwkfXeg5adlA94m3ATyHZicv31WMe2xSz_keQc9ndppqCx0mKmA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">iPhones.ru</strong><span class="verified-badge" title="Verified" aria-label="Verified">
     <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -198,26 +153,56 @@
           <span>@iphonesru</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/kDVg58BHKkfBi5x1alK02dqerVZSFcxXe3RBGKMvDcasQrgYQz9R0o6eQWNJzESe2PzkN3T-tQDD0BD3lIx_kaIAmfTIJAVr7IUA5KZ-l4gbFAAnousZ1nsQ_ITPjBn9ZXRPYsxzSetzMvR2R3zB8U2Q5dIYHeX2oWR-XiRkegSf3mRNvLt1mxZiL2siX8KqIwB_wnVuYzjKmza2_UwVFaerhnk6gC3owu7tcRx4i3TkJZywtfWYTyrPeBG3v7yaa2KXhUQsZfFvoPwG_dCkoBYewhVY2d8RvbL7up9w_nhPm0OC6C_P8u1_qtb58fg8rOWI6ZgViR4bVHrXuupEUw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Apple готовит большое обновление Mac Studio с процессором M7 Ultra. Выйде…</h3>
-        <p>Apple готовит большое обновление Mac Studio с процессором M7 Ultra. Выйдет в 2028 году Apple готовит обновленный Mac Studio с процессорами M5 Max и M5 Ultra. Новинка станет обычным аппаратным обновлением без изменений дизайна. Релиз запланирован на 2026 год.…</p>
+        <img src="https://cdn4.telesco.pe/file/Qf9ZbphS3G1SGBShnC2l-sVWq7QxMPllWmcmqIhl3yLz1XNeWsdusATBG6XMR67SaCgFxA1Dwm4AWmu9oV0G-Qb82vt9_Cv0ZduyVRLU_DVkR3UACmrnATDDuL7insvRQbCjuPPH9NWJPaVqh_2f2krk_Hdonh2M_9v3lUbjz_VnNbhuvjdp2tdcUwrEIUR6_UDbzIPdyVarwjJQ1Raea_C9TW4UqrOPje5SxVjalxjc8oeotR8pb3OEQp_Gz20qzfrutKHRqRZRh0CLR5ocCzgYNKW6wOqNfRMz8rl8tbh3tgcxJEmqTNVm6HFuPHKK21PgFzWguwoEaKVcg1zGtQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Появилось фото нового процессора A20 Pro, который получит iPhone 18 Pro Н…</h3>
+        <p>Появилось фото нового процессора A20 Pro, который получит iPhone 18 Pro На этот раз просочилась фотография нового процессора A20 Pro, а также материнской платы нового смартфона, включая схемотехнику. Инсайдеры заявляют, что iPhone 18 Pro станет первым смартфо…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:44:28.837Z">Jun 29, 2026, 5:44 AM</time> · <a href="/post/536299326">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-30T16:17:51.596Z">Jun 30, 2026, 4:17 PM</time> · <a href="/post/2753917356">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2029205627">
+      <a class="post-link" href="/post/2487122505">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/afOFeHLFNqOIOFnwuRa-oLSaWil5DoK320oy8-XCaPaTaHQ0SKp-JfSZJ7NfPAkBAB4Rq8k5fGi5wqApd02ryfZ7WANKBQeddwiyhHmtMOSBezejtqXv8evaE-nJF0mrOcsOdQKVJ7skmmjzVoAsPbkLDs0MEatlo8FvmfZq1qY863QxEp0ANhl--ld472xDBkDSnoDG0e4i9NIfGRAOlZysyc6JqIuk8FwGGBpfzTaX3ji5jaaINZCf45GN5gIpdkqVWADJ3Eo9MCl9Vs1pQEnMB90GYZStqXlYPyl9i3FQqJYb5XdlxVP_D0UZMT4z5y_dAcUocQJVoQWkjkRgrw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/hG-6M4Sbih4I6TBeJ1b5DM7Pa0NiK1xA7E1k-PMxRqiPHR7rovW8hVSeFbAOw2lIIrmZkvf-UEjTKzVQCbR3409ny5uMeKiBOHPEpITT5PLQyvsQ_XHr8f-skau8QHRskq3AYcVNkJQwxoTNEsaBydB7MYbD-K93dmz1FGiatm0bK-TIvj594NYMlivpS4UCabGUnl_wzv0B9jwsuUDD0_5BC6pH5x4bLnfE4kSKmc8N4dAvGycGBGNeKeEy9JcKwpMlJfwlcO2iHF0kw2zO06c_o4AX8muRFJGgikF4YdPWVS3R9amIi9RW41Zq2mShnTKVoIvx0fsu-o_Sm_X9bA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Технотренды от Альфа-Банка</strong></span>
-          <span>@alfa_trends</span>
+          <span class="source-title-row"><strong class="source-title">InterNews — Новости ПК и технологий</strong></span>
+          <span>@internews_hw</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/irm0tFI5aKlq8eBVb0a-r66q7DEWD1-_xf7i5EeBKgyr6A-wkwr_NCM3SXGQ1e3nCEoWZecJp8efvVVSOEE7Fn-ngk9fgwIgGvNZZiPJfTBAv2_pD6f4DVPPaBr11NTjtC_e984I924hyQtAswMaMUhBtsflloLvLZN-l3Jam5qe2sDf20iD2Em_Ag3WywqDHzT5uFTCjNmHCdM-EjDsvtjBLP6WF-wZhNx4i0wSV_yxj9U-cANzVGGbwOO9Q_cYdjDG9qZGmDeBBEKsQVlLSj_umdDSdZcJ895rVUMVi2lcoElEHNsTEDL19o6e81j3P3yIF-RbKhmo635imVQi5A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>IBM создала первый в мире чип тоньше одного нанометра 🫥 Компания предста…</h3>
-        <p>IBM создала первый в мире чип тоньше одного нанометра 🫥 Компания представила чип, выполненный по техпроцессу 0,7 нм. Раньше такая плотность считалась невозможной. На кристалле размером с ноготь удалось разместить почти 100 миллиардов транзисторов. Почти вдво…</p>
+        <img src="https://cdn4.telesco.pe/file/j1qO4AkX2poHpHqA14uiM5-K_6Bxp9JRSKqca_DZofOGt-oUVUxuptWXPN8jT5osz-zo6AFZALjcuY4C_mNF6Uo80FvVz7oAHCTLTeuM7jUkgKQe_-01n19sNqliaTP1yvTn-tQ9s9n4UMtQPq3rkaLKVVUDppnxZ5dIohZbJkex39GhUG2evNbTde8-s-xMnXd8Pam_6JPZnXd4HjFAyFrUL2vA3HfrNfF7QjW9Rg11mVd7KLWPVwGSoKUn9DO4xnTGhuO8_iIbbfhc-mj0ZXIjKSdS_ORkdnNH1cGUFJRqG4LQhscMWyXf-fPoHqodVleuOF6UmIzMDLheNBKRIA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>📱 Samsung выпустила Galaxy M47 с батареей на 6000 мА·ч Samsung представи…</h3>
+        <p>📱 Samsung выпустила Galaxy M47 с батареей на 6000 мА·ч Samsung представила Galaxy M47 5G - смартфон среднего класса с большим аккумулятором, 120-Гц AMOLED-экраном и редкой для M-серии ставкой на долгую поддержку: обещаны 6 поколений Android и 6 лет патчей бе…</p>
       </a>
-      <p class="meta"><time datetime="2026-06-29T05:42:44.920Z">Jun 29, 2026, 5:42 AM</time> · <a href="/post/2029205627">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-06-30T16:17:49.302Z">Jun 30, 2026, 4:17 PM</time> · <a href="/post/2487122505">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/375345298">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/hG-6M4Sbih4I6TBeJ1b5DM7Pa0NiK1xA7E1k-PMxRqiPHR7rovW8hVSeFbAOw2lIIrmZkvf-UEjTKzVQCbR3409ny5uMeKiBOHPEpITT5PLQyvsQ_XHr8f-skau8QHRskq3AYcVNkJQwxoTNEsaBydB7MYbD-K93dmz1FGiatm0bK-TIvj594NYMlivpS4UCabGUnl_wzv0B9jwsuUDD0_5BC6pH5x4bLnfE4kSKmc8N4dAvGycGBGNeKeEy9JcKwpMlJfwlcO2iHF0kw2zO06c_o4AX8muRFJGgikF4YdPWVS3R9amIi9RW41Zq2mShnTKVoIvx0fsu-o_Sm_X9bA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">InterNews — Новости ПК и технологий</strong></span>
+          <span>@internews_hw</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/twhumk4zDfZW_P8l1EZHi2Uh9p_Zokj-Zxsht6PEKZ5MzglaLmAHW4GavIvq1cXn5mBI3EHBZJqfYSjeKUnK6-4QP68QnWVmM8phqb0GDm3PlFyH0HITH9SMreWf1lyL3v7YMQ2F2DXkffC-vUQOJBGGmkEUfHiVrpcIRo1N6BLY-AGmr92xLq3hf-gWNmgVC8sVheIntdaTl77BlNYrFFBlfq6VUHNbpA0TA9akCMffxNt56miOKdHNtnX7kjabjRHhChihS5sfmufIlSkRVOJLY3M6aSGgtlh1bm3k2o2VfbWaMxs31ODfyq7DSmvoCstQPTaNa6PDmLNvPEXORQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>❗️ Сегодня заканчивается акция на ноутбуки HONOR в DNS 5️⃣ ➡️ 16&quot; Ноутбук…</h3>
+        <p>❗️ Сегодня заканчивается акция на ноутбуки HONOR в DNS 5️⃣ ➡️ 16&quot; Ноутбук HONOR MagicBook X16 AMD 2025 (Ryzen 5 6600H + ОЗУ/16 ГБ, SSD/512 ГБ) – 53.799р. (АРТ: 5633157) 🔥 ➡️ 14.6&quot; Ноутбук HONOR MagicBook Art 14 MRA-721 белый (Ultra 7 155H + ОЗУ/32 ГБ, SSD/10…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-30T16:17:49.302Z">Jun 30, 2026, 4:17 PM</time> · <a href="/post/375345298">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3923079307">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/hG-6M4Sbih4I6TBeJ1b5DM7Pa0NiK1xA7E1k-PMxRqiPHR7rovW8hVSeFbAOw2lIIrmZkvf-UEjTKzVQCbR3409ny5uMeKiBOHPEpITT5PLQyvsQ_XHr8f-skau8QHRskq3AYcVNkJQwxoTNEsaBydB7MYbD-K93dmz1FGiatm0bK-TIvj594NYMlivpS4UCabGUnl_wzv0B9jwsuUDD0_5BC6pH5x4bLnfE4kSKmc8N4dAvGycGBGNeKeEy9JcKwpMlJfwlcO2iHF0kw2zO06c_o4AX8muRFJGgikF4YdPWVS3R9amIi9RW41Zq2mShnTKVoIvx0fsu-o_Sm_X9bA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">InterNews — Новости ПК и технологий</strong></span>
+          <span>@internews_hw</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/RWOcAcsmgE9iTlhJ94imry97ztKllUmaYM7G-pn44kFW8txfOd-qOLHLKPvDEueRnoTg0H0ZaqGOHOuyew5s72Vnss5SCs2hviAaTMdi3GeypocfycErhNMGlUBIenD6_zpGe_pKRIZPGKquWpTJ6u_8z5dLIj0RgL44Y_6YweP93UaLODwibnHC09yUbpQr2uGepaZWV1Gl_sqCcathbj7EDBZ3PsS8SRfAx6xJTpYJoepVfYH6oN4DFGDhL-aGWgtzvcWtEK98udKso_yIrJlgrpgrxfkyU4XhlacHmGCvDFrNFcoUZjwwj5XRUuUhy1SA3tNgKJmET6NQzmzbrA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚠️ Драйвер AMD может ломать Smart Access Memory в Windows 10 У части поль…</h3>
+        <p>⚠️ Драйвер AMD может ломать Smart Access Memory в Windows 10 У части пользователей Radeon после ветки Adrenalin 26.6.x появилась неприятная проблема: Windows 10 заново определяет видеокарту, драйвер работает нестабильно, а в Radeon Software функция Smart Acce…</p>
+      </a>
+      <p class="meta"><time datetime="2026-06-30T16:17:49.302Z">Jun 30, 2026, 4:17 PM</time> · <a href="/post/3923079307">View post on margeleT</a></p>
     </article>
     </section>
   </main>
