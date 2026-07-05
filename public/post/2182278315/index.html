@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, котору… — Типичный программист, Russia transport auto | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Типичный программист in Russia. NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, которую обычно ставят на роутер или ретро-машину, а не на игровой ПК. Автор проекта vulkan-netbsd решил проверить, ск… Topics: transport auto, auto, electronics pc, electronics." />
+  <meta name="keywords" content="margeleT, Telegram, Russia, Типичный программист, tproger, transport auto, auto, electronics pc, electronics" />
+  <link rel="canonical" href="https://www.margelet.space/post/2182278315" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, котору… — Типичный программист, Russia transport auto | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Типичный программист in Russia. NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, которую обычно ставят на роутер или ретро-машину, а не на игровой ПК. Автор проекта vulkan-netbsd решил проверить, ск… Topics: transport auto, auto, electronics pc, electronics." />
+  <meta property="og:url" content="https://www.margelet.space/post/2182278315" />
+  <meta property="og:image" content="https://cdn4.telesco.pe/file/m0zaQ-aKJlLqrXoLBP7Ko1FRjev3N-Zn2XCIQdLGm80Y-LoSyIgg64j33M-RSw3my9x9Q4cPSI7rzNkMAmNnS1r3HpG_KSPy5XhvNEPKWjlNEnDsdXaMu4j4r-OJ2jIEGVQjQPe3q9rv7w0hY9mpb8DiSnB7Uofnh_9V_PzdUWHSN8VLTPyKC1vTmM2aLba2zBLLX6Tb6dD01VWwZPHkuHwPzDPor0jUQUEum1gY8947PECco6Fzf5jK8IlNVlmXs9ScR-RE7dJP8F9DfZ3WSDkKhW-qoqV9bD9yoF_nQ8evWZOss_5Ho2B2tkZkTlh-ItkrEwxJSf4-Kpd4jtEg8Q.jpg" />
+  <meta property="og:updated_time" content="2026-07-05T15:48:44.361Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, котору… — Типичный программист, Russia transport auto | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Типичный программист in Russia. NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, которую обычно ставят на роутер или ретро-машину, а не на игровой ПК. Автор проекта vulkan-netbsd решил проверить, ск… Topics: transport auto, auto, electronics pc, electronics." />
+  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/m0zaQ-aKJlLqrXoLBP7Ko1FRjev3N-Zn2XCIQdLGm80Y-LoSyIgg64j33M-RSw3my9x9Q4cPSI7rzNkMAmNnS1r3HpG_KSPy5XhvNEPKWjlNEnDsdXaMu4j4r-OJ2jIEGVQjQPe3q9rv7w0hY9mpb8DiSnB7Uofnh_9V_PzdUWHSN8VLTPyKC1vTmM2aLba2zBLLX6Tb6dD01VWwZPHkuHwPzDPor0jUQUEum1gY8947PECco6Fzf5jK8IlNVlmXs9ScR-RE7dJP8F9DfZ3WSDkKhW-qoqV9bD9yoF_nQ8evWZOss_5Ho2B2tkZkTlh-ItkrEwxJSf4-Kpd4jtEg8Q.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Типичный программист","item":"https://www.margelet.space/tproger"}]},{"@type":["Article","SocialMediaPosting"],"headline":"NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, котору…","description":"Fresh Telegram snapshot from Типичный программист in Russia. NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, которую обычно ставят на роутер или ретро-машину, а не на игровой ПК. Автор проекта vulkan-netbsd решил проверить, ск… Topics: transport auto, auto, electronics pc, electronics.","articleBody":"NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, которую обычно ставят на роутер или ретро-машину, а не на игровой ПК. Автор проекта vulkan-netbsd решил проверить, сколько усилий нужно, чтобы заставить её понимать современный графический API. Он собрал Mesa с Lavapipe, софтверным Vulkan-драйвером, который рисует на CPU без дискретной видеокарты. В итоге libvulkan_lvp.so (~17 МБ) встал в /usr/pkg/lib, манифест зарегистрировал поддержку Vulkan 1.4, а ldd разрешил все зависимости. Пока реальные Vulkan-приложения ещё не запускаются: не хватает Vulkan loader. Но цепляет тут другое: энтузиаст доказал, что стек Vulkan можно собрать и завести на ОС, для которой никто не делал игровых драйверов. Это про переносимость и упрямство, а не про FPS.","text":"NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, которую обычно ставят на роутер или ретро-машину, а не на игровой ПК. Автор проекта vulkan-netbsd решил проверить, сколько усилий нужно, чтобы заставить её понимать современный графический API. Он собрал Mesa с Lavapipe, софтверным Vulkan-драйвером, который рисует на CPU без дискретной видеокарты. В итоге libvulkan_lvp.so (~17 МБ) встал в /usr/pkg/lib, манифест зарегистрировал поддержку Vulkan 1.4, а ldd разрешил все зависимости. Пока реальные Vulkan-приложения ещё не запускаются: не хватает Vulkan loader. Но цепляет тут другое: энтузиаст доказал, что стек Vulkan можно собрать и завести на ОС, для которой никто не делал игровых драйверов. Это про переносимость и упрямство, а не про FPS.","keywords":"margeleT, Telegram, Russia, Типичный программист, tproger, transport auto, auto, electronics pc, electronics","url":"https://www.margelet.space/post/2182278315","mainEntityOfPage":"https://www.margelet.space/post/2182278315","datePublished":"2026-07-05T15:48:44.361Z","dateModified":"2026-07-05T15:48:44.361Z","image":["https://cdn4.telesco.pe/file/m0zaQ-aKJlLqrXoLBP7Ko1FRjev3N-Zn2XCIQdLGm80Y-LoSyIgg64j33M-RSw3my9x9Q4cPSI7rzNkMAmNnS1r3HpG_KSPy5XhvNEPKWjlNEnDsdXaMu4j4r-OJ2jIEGVQjQPe3q9rv7w0hY9mpb8DiSnB7Uofnh_9V_PzdUWHSN8VLTPyKC1vTmM2aLba2zBLLX6Tb6dD01VWwZPHkuHwPzDPor0jUQUEum1gY8947PECco6Fzf5jK8IlNVlmXs9ScR-RE7dJP8F9DfZ3WSDkKhW-qoqV9bD9yoF_nQ8evWZOss_5Ho2B2tkZkTlh-ItkrEwxJSf4-Kpd4jtEg8Q.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"transport auto"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"}],"author":{"@type":"Organization","name":"Типичный программист","url":"https://www.margelet.space/tproger","logo":"https://cdn4.telesco.pe/file/NRlZo-qLVHqsVByr-5gVjL5o23ce5qcFODUah_aMoONDU8uFKD75PpIP4xe1P3-esqrspauloeWUBzesZZM6yRJqZD5NEG1H-90L-_cBBXCPzz53grbWeBrVHzQ_m27GSWM93FX65g0tZdAFdg7c_t1md4lMXweADzf1kFoN3NFoVFXlDCXZhyKBiRJpk4mI6gZ8mxK8ULpJSjV4LoIdiuTiq_5yxVRBf8MR9NhNks-1dWYzqOQr8MrFzqnkN4jgpJzuOL4Si0kL9X_IxkWUtmLHK5etaknowjA_Nff73G-r6j2dUIqZSfrucxPR5ZTrLyiXbG9DWnAhLm2te7j6qQ.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/tproger/14602?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/NRlZo-qLVHqsVByr-5gVjL5o23ce5qcFODUah_aMoONDU8uFKD75PpIP4xe1P3-esqrspauloeWUBzesZZM6yRJqZD5NEG1H-90L-_cBBXCPzz53grbWeBrVHzQ_m27GSWM93FX65g0tZdAFdg7c_t1md4lMXweADzf1kFoN3NFoVFXlDCXZhyKBiRJpk4mI6gZ8mxK8ULpJSjV4LoIdiuTiq_5yxVRBf8MR9NhNks-1dWYzqOQr8MrFzqnkN4jgpJzuOL4Si0kL9X_IxkWUtmLHK5etaknowjA_Nff73G-r6j2dUIqZSfrucxPR5ZTrLyiXbG9DWnAhLm2te7j6qQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Типичный программист</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@tproger</span>
+        </span>
+      </p>
+      <h1>NetBSD не для игр, но в неё уже заводится Vulkan NetBSD — система, котору…</h1>
+      <p>NetBSD не для игр, но в неё уже заводится Vulkan
+
+NetBSD — система, которую обычно ставят на роутер или ретро-машину, а не на игровой ПК. Автор проекта vulkan-netbsd решил проверить, сколько усилий нужно, чтобы заставить её понимать современный графический API. Он собрал Mesa с Lavapipe, софтверным Vulkan-драйвером, который рисует на CPU без дискретной видеокарты. В итоге libvulkan_lvp.so (~17 МБ) встал в /usr/pkg/lib, манифест зарегистрировал поддержку Vulkan 1.4, а ldd разрешил все зависимости.
+
+Пока реальные Vulkan-приложения ещё не запускаются: не хватает Vulkan loader. Но цепляет тут другое: энтузиаст доказал, что стек Vulkan можно собрать и завести на ОС, для которой никто не делал игровых драйверов. Это про переносимость и упрямство, а не про FPS.</p>
+      <img src="https://cdn4.telesco.pe/file/m0zaQ-aKJlLqrXoLBP7Ko1FRjev3N-Zn2XCIQdLGm80Y-LoSyIgg64j33M-RSw3my9x9Q4cPSI7rzNkMAmNnS1r3HpG_KSPy5XhvNEPKWjlNEnDsdXaMu4j4r-OJ2jIEGVQjQPe3q9rv7w0hY9mpb8DiSnB7Uofnh_9V_PzdUWHSN8VLTPyKC1vTmM2aLba2zBLLX6Tb6dD01VWwZPHkuHwPzDPor0jUQUEum1gY8947PECco6Fzf5jK8IlNVlmXs9ScR-RE7dJP8F9DfZ3WSDkKhW-qoqV9bD9yoF_nQ8evWZOss_5Ho2B2tkZkTlh-ItkrEwxJSf4-Kpd4jtEg8Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-05T15:48:44.361Z">Jul 5, 2026, 3:48 PM</time> · Russia</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/ru/tag/transport/auto">transport / auto</a>
+<a class="pill" href="/country/ru/tag/auto">auto</a>
+<a class="pill" href="/country/ru/tag/electronics/pc">electronics / pc</a>
+<a class="pill" href="/country/ru/tag/electronics">electronics</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · Russia · Типичный программист · transport / auto · auto · electronics / pc. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/ru">Open live margeleT feed</a>
+        <a class="secondary-open" href="/tproger/14602">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/tproger/14602?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/497643127">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/kJIb8mAh3PcYmfHMbczE9lijWW_5_Kyrky9gqHGbzNq8fFL0BbQP6YLxowTjmTDWWIX1nWiKFrdfZl3oobgqckRgy_C_fcB5y2zDwVODhUX93aeuBxEF7jZweTbSdeAHfoy16i_zHRJbofHTNDXnY380GFtoCgH1FqVNWKMql_mI8r4goJJO3HUgv-HV7uTMmmTrd3W9_ZyBHNUlpZ2mKvOk_DKEO94ktuKYAa8b36Zi0krQVEg_6Kq-7QGf2FqS4QWGBvndz21IILICT4AwSRGJf6ys0C1mlaizeWr1aa25GHealYcML7mz6Tf4r3XtnZPH3b8EFbVFc4uXN1gJAQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ЖЕЛЕЗНЫЙ</strong></span>
+          <span>@ironmanexpress</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/cYxWgOylCIVf7FFzpSwIf_AxQmDdf3o6_KUeYdGEoN5jfePd63vvf35qKLnseaS3g0qC11vxx7BFlDagrxakDXycr35Orpy4EYMUtbwEvlkbyTHV0EKV-dIhzEMUWaZdfRNfDec7crgP_2WMn-I-xjuidkXI1zGJPeVQRnsnP3WQi7gNEdoUu7y6bWi4W-PaQ4SOrz0rwrvkVmiz_1hnYZDG8DbR80orsHfCiadajEzdl3Of-jMce-naqngxZom2H7fCXs6wrtMMAz3_SJDokurgbo5xOs3vC2odHOg6Bigzv04_AVcNCRbkoh1F9jkcCg14aL9grBER52dgzUot3g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Набросал топчик бронефонов с шустрыми процами Для тех кому нужен смартфон…</h3>
+        <p>Набросал топчик бронефонов с шустрыми процами Для тех кому нужен смартфон готовый к морозу, жаре, влажной или грязной среде, не нежному обращению где возможны падения, удары, контакт с ключами, монетами, шурупами и прочими железками И при этом с хорошим фонар…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:56:28.077Z">Jul 5, 2026, 3:56 PM</time> · <a href="/post/497643127">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/913288443">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/CKEp6uiSenAiY1ShTC7FDB-lwECdRS1SnUkrxU7p9SRjZrDZ4n_aJ59jrGtKyJBqj_burPNUY9BC_eKQLzDERjCoecchtkokRaDwhWoUMDKhy2KZ3W2A8RAvLakc87vBC4Pblw1Nwp24RAePxyfST7Ur5fwyNu2ORSj6OQZqbjbHtUOs_0AaLBeiJsrxfrmny-u3dckh2KLHl2u1MOMa5ffZakrGPS1aoBVSloKnnMmTDVVaPPg0xvJ6Hq5PVjSdrCVw5tTaVEkFgSOdTr3FBCjOrDX_45y6nTg6ld4HIAoWO5gHgOyoCWhFZsPrK5ry9cRcwvw2hDPGhyt4Y0iMiw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">GIGABYTE</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@gigabyteru</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/VWCFnengWff5I5h9woP0Wqi7hjNu8mkTK_8eRULFYnIf6KV3_iye-WNbkw_hcqWncsYN11mINdtUpFCot_sUjJPnAI_5Fi1il-TlKqmiX5B0zBlprD7XcxjNn6AO6kfAwb2M3SODct0yhewVHw9CXYqQrTm4A2Ltcvu27xA75O84qQZAawptLUH2TKZQuATjV4DoQ1Z73zm1eMe1xBzjjbAvccB1nB8jnrsGcKpZalrwIyJHgKbGDHPuv8x-JR4P6FtWF_7YVJhySD2DaVJQgk5w_CqegjnK5yXwLhBGZKPTm0MwEs05aDBMJduCqfgRRF49E4E_kYXvfWiI3ntizQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚡️DDR5 опять дорожает. Поэтому у экономного геймера сейчас есть только дв…</h3>
+        <p>⚡️DDR5 опять дорожает. Поэтому у экономного геймера сейчас есть только два пути, и нашей Ане они известны. Собрать на платформе LGA 1700 с процессором Core i5 поколения Gen13 или Gen14, а также материнской платой с чипсетом Intel B760 и разъемами памяти DDR4.…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:55:58.738Z">Jul 5, 2026, 3:55 PM</time> · <a href="/post/913288443">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1653333564">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/U2gZjVZ_3CFa7_11eNCRbSPY2B2ezGgaBYlnFI99XdLcBMhny17rxkTQTLveaCNy4xvo1MEwTh-_MFfwuWyUwJTlb-2MqLi2m-DJYcmPFMQHYUHS_yc-nBs24IR-V4gBK67nfh-7NjmxbVE2-eDgsP7pzeyPZHNOMKhDLQVIJM9jKNZZwrcpiZXHT4uo23wEi_mkBn0hrzYHBYXj5Mjd51REeHhalvrlndmukZe68kMek159Wfl-Ljo8m0n7yHc0ZjzuIUBgQKnAW3orXcjVI-w7yJuESmwwCUbO_Ky6wELE0qQgNinC6QYrT3XGKxR8u6N_doMwVEwYAQ7fUjwqpw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Droider</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@droidergram</span>
+        </span>
+      </p>
+        
+        <h3>⚡️Нейросеть нашла два новых сверхпроводника Поиск идеального материала, п…</h3>
+        <p>⚡️Нейросеть нашла два новых сверхпроводника Поиск идеального материала, похоже, ускорился. Учёные впервые отыскали сразу два неизвестных сверхпроводника не ручным перебором, а с помощью машинного обучения — и тут же подтвердили находку в лаборатории. Сначала…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:55:46.900Z">Jul 5, 2026, 3:55 PM</time> · <a href="/post/1653333564">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1973797485">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/tOJGOhmFG_hTC5AnnqCIjGtfqSyezKVDTZzbyHPGSzxiKPxxa9oLUX7RaH7IOJbIRA6NaAxFariA3TLYM2utxZohmbgUPUh1PN0n06OJrvRHaWQakPCp1-VD2WgOCxbRITi1TbPdYbeCB6i9Ffj7AgP8A5Ibd6qE7IXc05kE-KIOA01eyGaeRM3yOnNThXIJId5PL6BenzjJbZk--cbXMHZEK8FQ5QYLmkjTfMxKCZatBn6bOVdFQ8WQINJoa5fDXcL5ws7is95h1nQBdfoQwRPLzIPTHbdOKkyvI36r6hqqF2-bbmY08XngwiGQTy2SAr_TKutKLExC5CW19wL5pg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Наука</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@naukatv_ru</span>
+        </span>
+      </p>
+        
+        <h3>🦿Создание бионических протезов сегодня — это не просто замена утраченных…</h3>
+        <p>🦿Создание бионических протезов сегодня — это не просто замена утраченных конечностей. Будущее протезирования выглядит так: живая нервная система подключается напрямую к процессору. Мы стоим на пороге эволюции, которую человек запускает сам. В этом выпуске пр…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:54:07.819Z">Jul 5, 2026, 3:54 PM</time> · <a href="/post/1973797485">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/398088010">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/tGjYfwFBt789QEe4hRTNRm75VVOiRLQ89KxneXz8p8vSO4SC1U_9j76NevZWIRxSjZXFfFwgoiQ-4Wqv4qAgx9IuQWLNWR2XLwuC9ug-buNJyMg-_pImyVTzebplVBChuqIDHiyGTf7_d4w433BuaIeP90Wd2rF4vL09PHmD8PjpJuqAWp73N3Kyjy5vvyiCfpU90UwBUHYZ_qwR3K_doLrtQroCgvdOvOmnhB_D5Zz1d2GbcteqK7iAXppVQLY-92cNbwnGuQjz7Sa32Qno8rHiJvLDZvpspxeUvbrZtWFGaQOV8FDk51nJ010AJFAINcaLbqS9gRmQ8RfK9zRIcg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">AliExpress для авто</strong></span>
+          <span>@you_cargoods</span>
+        </span>
+      </p>
+        
+        <h3>🔥Сейчас на распродаже очень хорошая скидка на смартфон Honor Magic 8 Pro…</h3>
+        <p>🔥Сейчас на распродаже очень хорошая скидка на смартфон Honor Magic 8 Pro 🔗 https://ali.click/3xagg1c?erid=2SDnjerJ3qC ❗️Берем купон от продавца на 736 руб ➡️Характеристики: 🔴Экран: 6.71&quot; OLED - 1256 x 2808, 120 Гц 🔴Процессор: Qualcomm Snapdragon 8 Elite G…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:52:51.947Z">Jul 5, 2026, 3:52 PM</time> · <a href="/post/398088010">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1793581562">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rXDPCxFFYVL0VdpzI5hCVCnkVnSriCIdY76cJ908gtfLc4TupyA9o8ztCEe2a8nBQ3VNYD8O5jjmGef_C1Ga_e2_vuvvQ7D-NppyEsl6DovifD9WaCIke4BKxnIGKcNlnq-OMObl8aaZgV9Mpa51JeFvDyrRbd5qp-9Auu60KDsSJGc_eBD4MnEf4NL0vbtgyPEgEIqn85pzwJsgB8cFc0NiyK03l7A0Q_qMVjp98DHNPCfJ5zuuC1ftzyt18lGgilleHLJ-WxWYxppLaiEpW2UXulnIR8-QQOxDStitgrtTIqqEAmUPXkYm8sXR6X36nzPmmX_HucgbTKjaimybGg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Вилсаком | Wylsacom</strong></span>
+          <span>@wylsacomoff</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/M3N_pDAPmO5YnzHAPgDiYAcbfmdrq-VK8lLz4UFyVpQU_8l1cpdrhfbRGCWx-rI5mDBqVgIQ2U1923LZpV_W2MWVLHZ1f_BhwkwXZPLoIa1lLDtCD6CrcNwR82CVZlGzr8pbnWxebkB4_40jJ0KcAAaMI3Rxh5ManjZLAobFOaDSDgMu8ccJuHDadt4HYqBMmZHJ-VZ_EPc4olNuF0b47YhqfW7HIzgzYKOBZUm5PULY1e-TVRG-GeTQzNBa7vPflvs23LyEHZoWL2NUTQq49x6z-w83RgdN6AaKJOaLJrm25sIR1BeslEbR-mLNe8i87WFRHQsXNi1gT6igYj5EUg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Милота дня: механическая клавиатура в цветах Game Boy Advance Британское…</h3>
+        <p>Милота дня: механическая клавиатура в цветах Game Boy Advance Британское дизайн-ателье Proto[Typist] Keyboards представило сверхкомпактную клавиатуру KeyBoy Advance с двумя кликабельными бамперами, прямо как у консоли Nintendo. Продукт рассчитан на хардкорных…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:52:29.647Z">Jul 5, 2026, 3:52 PM</time> · <a href="/post/1793581562">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3196291590">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/i85tpNOYSVHz0rUrkdpiXLwVKCER8Femsr9ObWvUAw0fz3jHkyJEq8hQaqRvBgBwHlK31Mj2cGQ8a6uNCFkCZXCuBP2sglisbpIb3vJuQn6I_VrHPGXEazcAH7dQQZtAH_fhwvHZVx2P05gYPkrlgJQ17NgLv4g3UhBDXbeDTJ5PCUWcUY_HiU7vgMtX8YVAymnZc_U3SQd30ztCpVjrxJk5ZqhC-p5ufIeADPIrhteimZ1cdg-x36ADERo4z-nNGqTWLxiY64HpYnhCVy2pghwNpPAgN4ETqmBmOpzscY3Nr6HtWYyHY2Y9BqriTCe5A6-vO5oHgYD9skTCAqGBDQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Туподар ♥️ Краснодар</strong></span>
+          <span>@typodar</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/PL_wbrMX8OevvZIR_BkhPsaeg_FM10OA83T58nNEOMkBNFfk7lnxLzkBS0NF6M0UcUBLFD_tuRvxPZHylXSBbU_D2gsLmGTTij4g6gQ4VSeApLgLgu1CaiCDApKm5fIbietdOpMYcCM4rvS3Mg0KXEpVh_Rg2KUCZ5DNJVx2sHPCviyWHCKpNfojy1kVp5B3ZI2GW2LJloQjxbv_XR0p1fxZ5HRBzsyaaXdc4vKtF5aJcssdh6ZKc6UZhP5BtnzFBKm1H0Zyl63J4C_9uer6X809UU_ZO4ffHM3g_IOxGTEPL_3kMGoyiWN4txETRxJiHhWBK3vgyPmz12QQVhGttQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⛽ Список работавших АЗС на сегодня Администрация публикует список АЗС, ко…</h3>
+        <p>⛽ Список работавших АЗС на сегодня Администрация публикует список АЗС, которые заявили, что работали утром. Теперь администрация подчеркивает, что список неточный и «ситуация в течение дня молнт меняться». В целом пока что нет надежного инструмента для монито…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:49:59.422Z">Jul 5, 2026, 3:49 PM</time> · <a href="/post/3196291590">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1318301927">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Xk2kJxCLS5sEI0my9E2qQDo_Tx2Z-qdcpV5OP0IjB4nuh14SZKnrtv9yUQo52hS5Dt5EmMP8UjUR-2izpKcpHWhA4xUr56QXMN5xpLTFdTXvePwXfziEZMBLpPgSmJvI0OPDG4y6I86O1B5lUb7g_leVuFQ0ufZT4-Z65HFxs_Ma9ktHv6H1wWT5qJPyc67HjWLsavkq5gQ04Pj_AtSonNJTMMFtO5c6C9uG60ek8Vp5LY2A8ZxwCeXiekaPcbf0pAsgRPu1Bz4M8kDImJsjePoSiKiguIVzwTnB5ByeuWpToQSn4yzn_qbg1INRtZfCwKRkaPViwgITRws_nFKwng.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Севастополь INFO</strong></span>
+          <span>@sevinfo92</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/qqorkcp2gUUqCwx900h_zAJNuRD9STkvTUpfiFXHMJ8Qdc4qFcMskHFCUvhm4xHhRVprHvAAyhYHdBiT3pcrfX5HvVyniJJ1lJRmj40ePpLeLa8w3J4ZKZLZ7YxPfihIXR8VY5_jV_h3nsdDgBJz_6zUxzORO0_9tvi7apli6b0IN0iKt6Ohyz5yFNzcuoKRTvNYKS5TZgJ_WtCVZltrmDIlmj5dvu0NryrcOeLVlvuNDT6HnannQcPVbK0Yc9xxBG4SHgb-yrrWmCgTTol7juNWvBjL7V0BqXaqQLKeDseK9cEozz3AoXrkAxsBKN6QhDp4_hhYJ2SSRoWr4hMQhw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#нампишут Люди если их можно назвать людьми, уже совсем очумели, это типа…</h3>
+        <p>#нампишут Люди если их можно назвать людьми, уже совсем очумели, это типа очередь на заправку на Героев Бреста,оставили вот такой проход для пешеходов,мамам с колясками и инвалидам наверное нужно на дорогу выходить чтоб по тротуару пройти,водители вы уже совс…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-05T15:43:43.479Z">Jul 5, 2026, 3:43 PM</time> · <a href="/post/1318301927">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
