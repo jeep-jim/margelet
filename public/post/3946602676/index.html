@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补… — 渔船出海-国际新闻头条大事件【000体育独家冠名】, China ai | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from 渔船出海-国际新闻头条大事件【000体育独家冠名】 in China. Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补上了。 之前给 Claude Code 做过自动注册和自动登录——打开网站、填表、建账号都能自己来，唯一断点是邮箱验证码，得我自己去收邮件复制粘贴。现在用 gws CLI 轮询 Gmail 自动提取验证码，整条链路打通了。… Topics: ai, technology, space, science." />
+  <meta name="keywords" content="margeleT, Telegram, China, 渔船出海-国际新闻头条大事件【000体育独家冠名】, toutiao35, ai, technology, space, science" />
+  <link rel="canonical" href="https://www.margelet.space/post/3946602676" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补… — 渔船出海-国际新闻头条大事件【000体育独家冠名】, China ai | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from 渔船出海-国际新闻头条大事件【000体育独家冠名】 in China. Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补上了。 之前给 Claude Code 做过自动注册和自动登录——打开网站、填表、建账号都能自己来，唯一断点是邮箱验证码，得我自己去收邮件复制粘贴。现在用 gws CLI 轮询 Gmail 自动提取验证码，整条链路打通了。… Topics: ai, technology, space, science." />
+  <meta property="og:url" content="https://www.margelet.space/post/3946602676" />
+  <meta property="og:image" content="https://cdn5.telesco.pe/file/bqxRt0409Mt6tjEpIuLVjkrDskJilwfyM20iiJtGLKlvWhWwG-k32_xUmWFRTnJyk5z3cPrl5Cc3Bv5Y4MUcxxUQ-kc1r4bKnGUppiIwPT_b0jli3N8U1WIf8NQMf-daIVrMCRzPqWGQj_p8z12noAoR4jwlLjNTYOKpqaKU4Yl8tHc49QXBVMwxBvsE4634IMHbiGO58hKt0giijU68fkBRDxGKJAi8kYYSr8ICqrrXzphZj-V77qFIxZaEn0i7Mz85PZiUHS9Hg73n3ya4u11QJ1qbjx4c8dYxhjfJyOe6PvWCqUrHwQsYkLyb4ZK34yXBuei5L6Lyz32fzGlFcw.jpg" />
+  <meta property="og:updated_time" content="2026-07-07T14:33:12.734Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补… — 渔船出海-国际新闻头条大事件【000体育独家冠名】, China ai | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from 渔船出海-国际新闻头条大事件【000体育独家冠名】 in China. Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补上了。 之前给 Claude Code 做过自动注册和自动登录——打开网站、填表、建账号都能自己来，唯一断点是邮箱验证码，得我自己去收邮件复制粘贴。现在用 gws CLI 轮询 Gmail 自动提取验证码，整条链路打通了。… Topics: ai, technology, space, science." />
+  <meta name="twitter:image" content="https://cdn5.telesco.pe/file/bqxRt0409Mt6tjEpIuLVjkrDskJilwfyM20iiJtGLKlvWhWwG-k32_xUmWFRTnJyk5z3cPrl5Cc3Bv5Y4MUcxxUQ-kc1r4bKnGUppiIwPT_b0jli3N8U1WIf8NQMf-daIVrMCRzPqWGQj_p8z12noAoR4jwlLjNTYOKpqaKU4Yl8tHc49QXBVMwxBvsE4634IMHbiGO58hKt0giijU68fkBRDxGKJAi8kYYSr8ICqrrXzphZj-V77qFIxZaEn0i7Mz85PZiUHS9Hg73n3ya4u11QJ1qbjx4c8dYxhjfJyOe6PvWCqUrHwQsYkLyb4ZK34yXBuei5L6Lyz32fzGlFcw.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"渔船出海-国际新闻头条大事件【000体育独家冠名】","item":"https://www.margelet.space/toutiao35"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补…","description":"Fresh Telegram snapshot from 渔船出海-国际新闻头条大事件【000体育独家冠名】 in China. Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补上了。 之前给 Claude Code 做过自动注册和自动登录——打开网站、填表、建账号都能自己来，唯一断点是邮箱验证码，得我自己去收邮件复制粘贴。现在用 gws CLI 轮询 Gmail 自动提取验证码，整条链路打通了。… Topics: ai, technology, space, science.","articleBody":"Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补上了。 之前给 Claude Code 做过自动注册和自动登录——打开网站、填表、建账号都能自己来，唯一断点是邮箱验证码，得我自己去收邮件复制粘贴。现在用 gws CLI 轮询 Gmail 自动提取验证码，整条链路打通了。 实测了几个 AI 平台：Agent 自己注册、收验证码、建账号、拿 API key，除了手机短信要我介入，其他全程自动。 以后看到个新平台想试，跟 Agent 说一声就行，它自己去注册拿 key 回来。那些\"看到了但懒得注册\"的平台，终于不用再攒着了。 踩坑：Google OAuth 检测自动化浏览器直接拒绝，部分平台后端也拦。不是所有都走得 通，但邮箱+密码注册这条路没问。 ｜｜｜","text":"Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补上了。 之前给 Claude Code 做过自动注册和自动登录——打开网站、填表、建账号都能自己来，唯一断点是邮箱验证码，得我自己去收邮件复制粘贴。现在用 gws CLI 轮询 Gmail 自动提取验证码，整条链路打通了。 实测了几个 AI 平台：Agent 自己注册、收验证码、建账号、拿 API key，除了手机短信要我介入，其他全程自动。 以后看到个新平台想试，跟 Agent 说一声就行，它自己去注册拿 key 回来。那些\"看到了但懒得注册\"的平台，终于不用再攒着了。 踩坑：Google OAuth 检测自动化浏览器直接拒绝，部分平台后端也拦。不是所有都走得 通，但邮箱+密码注册这条路没问。 ｜｜｜","keywords":"margeleT, Telegram, China, 渔船出海-国际新闻头条大事件【000体育独家冠名】, toutiao35, ai, technology, space, science","url":"https://www.margelet.space/post/3946602676","mainEntityOfPage":"https://www.margelet.space/post/3946602676","datePublished":"2026-07-07T14:33:12.734Z","dateModified":"2026-07-07T14:33:12.734Z","image":["https://cdn5.telesco.pe/file/bqxRt0409Mt6tjEpIuLVjkrDskJilwfyM20iiJtGLKlvWhWwG-k32_xUmWFRTnJyk5z3cPrl5Cc3Bv5Y4MUcxxUQ-kc1r4bKnGUppiIwPT_b0jli3N8U1WIf8NQMf-daIVrMCRzPqWGQj_p8z12noAoR4jwlLjNTYOKpqaKU4Yl8tHc49QXBVMwxBvsE4634IMHbiGO58hKt0giijU68fkBRDxGKJAi8kYYSr8ICqrrXzphZj-V77qFIxZaEn0i7Mz85PZiUHS9Hg73n3ya4u11QJ1qbjx4c8dYxhjfJyOe6PvWCqUrHwQsYkLyb4ZK34yXBuei5L6Lyz32fzGlFcw.jpg"],"inLanguage":"zh","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"space"},{"@type":"Thing","name":"science"}],"author":{"@type":"Organization","name":"渔船出海-国际新闻头条大事件【000体育独家冠名】","url":"https://www.margelet.space/toutiao35","logo":"https://cdn1.telesco.pe/file/MP96we74r5M-0J1Gi53J1DdnqF459tosVYrdsw0MO5t4P_EVXEen94OlDjOuaQSp_zBW7l-m0TBa9X42a2twOIxrfKpFc0070uA-b1itnx5MV1XIooE8bMgoU2Tt4QryowI5wzw1NptPSx97MgmrW8VLte7pK5I8ME_mM_aSRl22h8MKgv-5pDGw5NFSaj3unNLWK5wkdczCGkhB664jCBUP9J3FEN2LEzFKwkTlja_Znatp8ONCMtuJ562o1sXIalWjKKtitYYViP83NIJqn-Kgx9ALDDq-fVV4PVRYPEA8AO9DAKS87o-P0-fSF9VyUpS3t8al1U9A6E3m9wofNg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/toutiao35/7603?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/MP96we74r5M-0J1Gi53J1DdnqF459tosVYrdsw0MO5t4P_EVXEen94OlDjOuaQSp_zBW7l-m0TBa9X42a2twOIxrfKpFc0070uA-b1itnx5MV1XIooE8bMgoU2Tt4QryowI5wzw1NptPSx97MgmrW8VLte7pK5I8ME_mM_aSRl22h8MKgv-5pDGw5NFSaj3unNLWK5wkdczCGkhB664jCBUP9J3FEN2LEzFKwkTlja_Znatp8ONCMtuJ562o1sXIalWjKKtitYYViP83NIJqn-Kgx9ALDDq-fVV4PVRYPEA8AO9DAKS87o-P0-fSF9VyUpS3t8al1U9A6E3m9wofNg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">渔船出海-国际新闻头条大事件【000体育独家冠名】</strong></span>
+          <span>@toutiao35</span>
+        </span>
+      </p>
+      <h1>Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补…</h1>
+      <p>Google 今天开源了 Workspace CLI，命令行直接调 Gmail API。对我来说意味着一件事：Agent 自动注册的最后一块拼图补上了。
+之前给 Claude Code 做过自动注册和自动登录——打开网站、填表、建账号都能自己来，唯一断点是邮箱验证码，得我自己去收邮件复制粘贴。现在用 gws CLI 轮询 Gmail 自动提取验证码，整条链路打通了。
+实测了几个 AI 平台：Agent 自己注册、收验证码、建账号、拿 API key，除了手机短信要我介入，其他全程自动。
+以后看到个新平台想试，跟 Agent 说一声就行，它自己去注册拿 key 回来。那些&quot;看到了但懒得注册&quot;的平台，终于不用再攒着了。
+踩坑：Google OAuth 检测自动化浏览器直接拒绝，部分平台后端也拦。不是所有都走得 通，但邮箱+密码注册这条路没问。
+
+
+｜｜｜</p>
+      <img src="https://cdn5.telesco.pe/file/bqxRt0409Mt6tjEpIuLVjkrDskJilwfyM20iiJtGLKlvWhWwG-k32_xUmWFRTnJyk5z3cPrl5Cc3Bv5Y4MUcxxUQ-kc1r4bKnGUppiIwPT_b0jli3N8U1WIf8NQMf-daIVrMCRzPqWGQj_p8z12noAoR4jwlLjNTYOKpqaKU4Yl8tHc49QXBVMwxBvsE4634IMHbiGO58hKt0giijU68fkBRDxGKJAi8kYYSr8ICqrrXzphZj-V77qFIxZaEn0i7Mz85PZiUHS9Hg73n3ya4u11QJ1qbjx4c8dYxhjfJyOe6PvWCqUrHwQsYkLyb4ZK34yXBuei5L6Lyz32fzGlFcw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-07T14:33:12.734Z">Jul 7, 2026, 2:33 PM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/ai">ai</a>
+<a class="pill" href="/country/cn/tag/technology">technology</a>
+<a class="pill" href="/country/cn/tag/space">space</a>
+<a class="pill" href="/country/cn/tag/science">science</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · 渔船出海-国际新闻头条大事件【000体育独家冠名】 · ai · technology · space. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/toutiao35/7603">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/toutiao35/7603?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/3860415694">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/MP96we74r5M-0J1Gi53J1DdnqF459tosVYrdsw0MO5t4P_EVXEen94OlDjOuaQSp_zBW7l-m0TBa9X42a2twOIxrfKpFc0070uA-b1itnx5MV1XIooE8bMgoU2Tt4QryowI5wzw1NptPSx97MgmrW8VLte7pK5I8ME_mM_aSRl22h8MKgv-5pDGw5NFSaj3unNLWK5wkdczCGkhB664jCBUP9J3FEN2LEzFKwkTlja_Znatp8ONCMtuJ562o1sXIalWjKKtitYYViP83NIJqn-Kgx9ALDDq-fVV4PVRYPEA8AO9DAKS87o-P0-fSF9VyUpS3t8al1U9A6E3m9wofNg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">渔船出海-国际新闻头条大事件【000体育独家冠名】</strong></span>
+          <span>@toutiao35</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/rUDvvcvn8v2W6GVo2mQecSu02F15gjpaFxxhENsBM5nqO5RhEOULFuNy3tpSWOpEGzuHz8C9BtGIuXYZm0Mwut39J803mFn4Rb8kqpPrYM8whccQmlSzdw0ymG7StldHnYfc0MtIPeIMYYfUkA6JfSCVJ9Sl8MFqx3ehT18Cx5xPHk57vG0STAa456nGI73zts2OL-LZZj85EKbRce6X05YjXzWKDPbvC7w8gO64wm9bbSP8TGzj1ydZd38h_nICpzyoFaab_c8viYJ8ENWmwSJsW1O6vwPlg4SaLOszO2HPbQFXX2PF6VB1Cm7rxjICKC5W3QP4LVtsGHu4fPy_sg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>有没有朋友需要代加外链的服务 隆重给大家推荐我们的SEO外链服务【100BackLinks】 我们团队自己花了半年时间从几万条外链及目录中整理出来…</h3>
+        <p>有没有朋友需要代加外链的服务 隆重给大家推荐我们的SEO外链服务【100BackLinks】 我们团队自己花了半年时间从几万条外链及目录中整理出来了几千条质量比较高(DR&amp;gt;30)的外链，包含全网的AI导航站目录以及各行各业的blog，论坛类外链，之前一直自己与群友在用，现在打包成服务，并且由我们帮大家提交与发布外链，从而解放出海的朋友，把精力放到产品与业务本身，不再内耗，沉浮于找外链与加外链的日日夜夜里。 Slogan口号我提炼了一下： 新站如何快速上100条外链？不用自己到处找外链，不用自己熬夜加，还能持…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:33:12.734Z">Jul 7, 2026, 2:33 PM</time> · <a href="/post/3860415694">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2936590604">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/q6Bsne-kG8fW7MZLQP_LR6UogyCYhWgwiHKG41bR9FA54J85YuBGgMvp2555-kkhbCwffPZDSGwZKKxPV8Ilt8wxQTm60OIRgTqUStlSgoNkuFv8BGzmPvQFZOrII-udOTl8zEQnIB49tkhmj7XaJVVc5SYzdWWI3UkoBZ0BIMPhTNmXg3s3_byttyQIp-nHEI3qB3d3prky7dMaj6s7hOZWsnC_mCYDcLD-bLKV4oH1_visCUZTATSBMtpvuwMZelMr2xSce7kMS6MEHczhak_A0qr9cn9j8jVpoJsAavOoxSDreNnvsy37OrFSyn73GUZQ4rVWNvjBMJxGtJB4Wg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Китай Наизнанку 🇨🇳 Алексей Райсих</strong></span>
+          <span>@chinabackdoor</span>
+        </span>
+      </p>
+        
+        <h3>Китайский мегапроект В Китае строят невероятные вещи. В 2030 году по план…</h3>
+        <p>Китайский мегапроект В Китае строят невероятные вещи. В 2030 году по плану будет запущен термоядерный реактор проекта BEST. Недавно был закончен самый большой в мире магнит для удержания плазмы - CRAFT. Строительство идет по плану. Термоядерная энергия - это…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:34:44.352Z">Jul 7, 2026, 2:34 PM</time> · <a href="/post/2936590604">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/900490679">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/viX0Hse-FPOeAy9cUx7mIOdhOJwwvwguiKwDv6RzTNtmCERhJ8IMZPR7JbjTIwwt1sVKPv3Ko3fHj-H-MoJaOKdHOmb5OcZSxhpl0rXmnGZGBS4a2AUWofQaaj-oqoOuE29vVKvjh_ECDG1_MYiAkvmu525i68Bl_tVb3qEjgXiLgRl1lNBdUlfXDAVl4ZWpj7aXflMt_GxvhUYsFgy4T1Bb4d-712DnsW92nN3Dpo-uMzGhlqz-jYzicw67jfafRUhD9CvWJOGG9kSjv20LiAu5PO7C4PXH_ebHJLXlOGVaSh4KeeU1TNc8K-37e5MN7s9cRAxFPw4ZHmlMI47NfQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">APPDO 数字生活指南</strong></span>
+          <span>@appdodo</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/oz3qM2DOd8TE0YwHQTRp9vmtUA3lojPN1x7p69p-mx3hMKMQkBPr0JGW-ReYEPxyBARkFfbl2lpFXyCVEntaOWh9lxXKkkC2fVVvg3VztXocL8-OMo5KkN04c3X_7gOpmJhPQBX9nNQMPDRq7yqA-vGW4NsM3_KYgbODJ1VqhcG6xCmx88TGYcK8Znj_JSXmNyebCsy_9VREkGxB4losKe1iuvxBhGFijiSyFfYqT3kQXKgX3hS6pRFDkVIwIHPaufgyq1otx6EKqsAMIhxA7XycftMO-dcBofk9HBe-OP3SADBqDGgTSbnoGG6-41EjZ6Ai4p7sp8FI-swAWEg3jA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#互联网观察 ▎SpaceX 被曝向投资者展示马斯克 AI 设备原型 《华尔街日报》报道称，SpaceX 最近向部分投资者和相关方展示了一款新的…</h3>
+        <p>#互联网观察 ▎SpaceX 被曝向投资者展示马斯克 AI 设备原型 《华尔街日报》报道称，SpaceX 最近向部分投资者和相关方展示了一款新的 AI 设备原型。这款设备外形类似手机，被描述为比 iPhone 更薄，定位并不是传统智能手机，而是一个面向 AI 交互的新硬件入口。 根据报道，该设备计划运行 SpaceX 自有操作系统，并深度整合马斯克旗下 xAI 的人工智能技术。硬件方面，消息人士称设备将使用高通 Snapdragon 芯片。不过项目仍处于早期阶段，设计可能继续变化，SpaceX 也尚未确定是否会将…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:34:36.413Z">Jul 7, 2026, 2:34 PM</time> · <a href="/post/900490679">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3175661798">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/lkTe3SgHm-bnM5CBWhMXUKkqOaOxn4VnV-Uybis1snNusryijjCtAVtENcc8XkfReGvM2c56PXtuTxbM0BFKG7SbDFZwcC8p-JhL4rHBl1mnvkpsxLLdEdxOAyXt_N7nNtAPXFQtjUWEE0CasrwzQ3uTZ9jCuwbOC6pmxga9uSyc9dcXW6A_joAzueVswUMViZqhm4Wjb6PRmlW7EpokvM0HU3kM7L6RY8plsYOoPNDq5D0IR4uDmrWKpcKECTAn3Svc_umlhrUBQqNBrFy_GzamZ1D8QhywZReh1j5ijg1VitUv6H1RC-tm5vjpGT4Sdhu3NeUFzgVmxkkVnXId4A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Newlearnerの自留地</strong></span>
+          <span>@newlearnerchannel</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/VZA4zsjxRCbuud804BFwgLJa8LGE8cHXKPxc-0dHMBZ_hElohVvs8nUghEpxd2uNIvwr_yVse35mzPJOEQ0Q5Sg4szEf7m9NdNuj9t3reL6RT-9JOoKxhSk7RprWRoLYwuZPiUuYe7n9kNs3SpMvDfF8TbdXo27kx3wipm-1PbP_ACgFcBBpvSooccWA25NBGpFeQpHZAcGMbQi6IB7TnJ1KofRdpkeY1bkA8wwRjBbpGxJQJwVVMX7tcLuS8UREdLtK0BzQ_ggIaCsdZMSc-Uxy4f-3OOUH3e3beJQWo_Wf299kd9FZZzXomKsFs_iVdDFl-8X-V554hr7AJf5Pqg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#News 🌃 自留地晚报 【7.7】 1️⃣ 9to5Mac 报道称，iOS 27 Beta 3 发布，新增滑块精细调节 Siri AI 的语…</h3>
+        <p>#News 🌃 自留地晚报 【7.7】 1️⃣ 9to5Mac 报道称，iOS 27 Beta 3 发布，新增滑块精细调节 Siri AI 的语速和表现 2️⃣ 三星 公布 Q2 业绩指引，营业利润约 89.4 万亿韩元，同比暴增 1810% 3️⃣ 9to5Mac 报道称，iOS 27 引入 Core Image RAW 9 引擎，RAW 照片处理画质大幅提升 4️⃣ SpaceXAI 宣布，马斯克旗下 xAI 正式更名为 SpaceXAI，全新 logo 同步亮相 5️⃣ AMD 宣布，锐龙 AI Halo…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:34:34.715Z">Jul 7, 2026, 2:34 PM</time> · <a href="/post/3175661798">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2128099687">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/sDJBrvoejQEuKAbfn3OxSXb9Ug-LFcTg0mLAWvVWifjW3-7L3u9SkIqgZp-fYl90Q_xt9_Iu2wGA_RYdwSCtVIC66-he-srknOE1QT4yobpD-z5aivpdrg9jt3wTYHbGPEg2UEgEM0OeoRdAYibPUCTO6B5xQsPn10OUKMk1rtKyi26b2YwApMyBgKcOFkpE5Z0iETNY3MMssLEpLFU7QrcE3kZxEUlxyMi9yGchP_bezwYFaMpjO3rWU2YnZgXNoVP9-kVSf_S_vx7YtH6LYlUka-kA9kaJQdhCQGeVbNhyLNmkEjgxzeGNbRjzoW2kqStQ0jNsAuDrt2UBFDpHBw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">動區動趨 BlockTempo⚡️區塊鏈 加密貨幣新聞</strong></span>
+          <span>@blocktemponews</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/ZnWl_-MSX5I0tBQthoDS5yfQH4zyZ2dQa9Jmw9Rleq1IBLSIj8TyUJtSKP9VBXxphCR7-oPfIudqboipZwKUBNxQCAhWi92HVbGiDNtwwqv9Nkp9By4GJ4s50AVYOyQjP8UJQZIYNKeUvXsctdVTGVdLD3a6KheAeCIWfnO6IuIozCEefI2MqMBH3bkGwb_z4korN76-miDgSOxGivtbsbVw94eeI4Adm2sGl6iVKwbasw-AFrgpY-OlF3G5aOh0MVNIqy1LeNwDm34-sxN8gM8tYw57e2svSngHFe-AAfBkLTx6mIWUSAxxdMuSgHvMZTnVn4LHp6AUZ6LE2u8Kwg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚡ 狂吸 250 億美元！亞馬遜發行「8 批投資級公司債」，最長年期達 40 年 - 據外媒報導，亞馬遜（Amazon, AMZN）於今（7）日正…</h3>
+        <p>⚡ 狂吸 250 億美元！亞馬遜發行「8 批投資級公司債」，最長年期達 40 年 - 據外媒報導，亞馬遜（Amazon, AMZN）於今（7）日正式啟動一項高達 250 億美元的投資級公司債發行計畫。本次發債共分為 8 批，期限橫跨 3 年至最長 40 年，並獲得了國際三大信評機構的頂級評價。在 AI 軍備競賽與營運擴張的背景下，這筆巨資預計將為亞馬遜儲備充沛的戰略彈藥。 全文 👉 https://www.blocktempo.com/amazon-launches-25-billion-investment-…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:26:05.735Z">Jul 7, 2026, 2:26 PM</time> · <a href="/post/2128099687">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2402871816">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/sDJBrvoejQEuKAbfn3OxSXb9Ug-LFcTg0mLAWvVWifjW3-7L3u9SkIqgZp-fYl90Q_xt9_Iu2wGA_RYdwSCtVIC66-he-srknOE1QT4yobpD-z5aivpdrg9jt3wTYHbGPEg2UEgEM0OeoRdAYibPUCTO6B5xQsPn10OUKMk1rtKyi26b2YwApMyBgKcOFkpE5Z0iETNY3MMssLEpLFU7QrcE3kZxEUlxyMi9yGchP_bezwYFaMpjO3rWU2YnZgXNoVP9-kVSf_S_vx7YtH6LYlUka-kA9kaJQdhCQGeVbNhyLNmkEjgxzeGNbRjzoW2kqStQ0jNsAuDrt2UBFDpHBw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">動區動趨 BlockTempo⚡️區塊鏈 加密貨幣新聞</strong></span>
+          <span>@blocktemponews</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/LrCg2K87JkmVRa8ju6f4dEhX1ukbOO4YeeGt0sYM7lz98m89nY84UlTQevccn3vt7lRnEx9JdFbW9AIelf10H7TIDr3-f6lyaLHGg3v0VS2W7phQYh5Wq_0EiA04f5oQzmEAyjUHqC-I3BWSHCYZCKcTKADmOTxCLIsRBlwcdiWCU94zs8C2kH2FG3MM7CI0jwlS6cBWOXkrTJeOVlsqc4C9cAH7OE7JfH_crUU_q2ei1S0-yxrgOG6Vbqz1-2ni1X0SneY4mNF9Jf84aDTdvq92-8v3096AKoSr3OashLUb2Cri_UVjlBER0nkabZb04JCnhbfropEOTWTt8WGONw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚡ NVIDIA 創新的「熱水冷」散熱技術，如何大幅節電並省水？ - NVIDIA 新一代 AI 伺服器把冷卻液加溫到攝氏 45 度運作，藉此跳過…</h3>
+        <p>⚡ NVIDIA 創新的「熱水冷」散熱技術，如何大幅節電並省水？ - NVIDIA 新一代 AI 伺服器把冷卻液加溫到攝氏 45 度運作，藉此跳過最耗電的冰水主機，改用乾式散熱器把熱排到戶外。 全文 👉 https://www.blocktempo.com/nvidia-warm-water-liquid-cooling-ai-data-center-saves-power/ - 🔸同場加映 ① AI 吃電危機解方？這家新創 Arcturus 用碳奈米銅線，稱可減少一半電網損耗 https://oao.to/…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:26:05.735Z">Jul 7, 2026, 2:26 PM</time> · <a href="/post/2402871816">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/4209193823">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/MP96we74r5M-0J1Gi53J1DdnqF459tosVYrdsw0MO5t4P_EVXEen94OlDjOuaQSp_zBW7l-m0TBa9X42a2twOIxrfKpFc0070uA-b1itnx5MV1XIooE8bMgoU2Tt4QryowI5wzw1NptPSx97MgmrW8VLte7pK5I8ME_mM_aSRl22h8MKgv-5pDGw5NFSaj3unNLWK5wkdczCGkhB664jCBUP9J3FEN2LEzFKwkTlja_Znatp8ONCMtuJ562o1sXIalWjKKtitYYViP83NIJqn-Kgx9ALDDq-fVV4PVRYPEA8AO9DAKS87o-P0-fSF9VyUpS3t8al1U9A6E3m9wofNg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">渔船出海-国际新闻头条大事件【000体育独家冠名】</strong></span>
+          <span>@toutiao35</span>
+        </span>
+      </p>
+        
+        <h3>很多人问我为什么选择做个体户。 答案很简单：被逼的。 本科学历拉胯，保研没戏，卷实习的ROI算下来还不如单干。 当时就一个念头：不干就月薪三千饿死…</h3>
+        <p>很多人问我为什么选择做个体户。 答案很简单：被逼的。 本科学历拉胯，保研没戏，卷实习的ROI算下来还不如单干。 当时就一个念头：不干就月薪三千饿死了。 结果干着干着发现，收入跟大厂的强势工科985本硕也没差多少。 有时候，最好的选择不是规划出来的，是被逼出来的。 当你没有退路的时候，你反而会找到最适合自己的那条路。 ｜｜｜</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:33:12.734Z">Jul 7, 2026, 2:33 PM</time> · <a href="/post/4209193823">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/641801704">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/MP96we74r5M-0J1Gi53J1DdnqF459tosVYrdsw0MO5t4P_EVXEen94OlDjOuaQSp_zBW7l-m0TBa9X42a2twOIxrfKpFc0070uA-b1itnx5MV1XIooE8bMgoU2Tt4QryowI5wzw1NptPSx97MgmrW8VLte7pK5I8ME_mM_aSRl22h8MKgv-5pDGw5NFSaj3unNLWK5wkdczCGkhB664jCBUP9J3FEN2LEzFKwkTlja_Znatp8ONCMtuJ562o1sXIalWjKKtitYYViP83NIJqn-Kgx9ALDDq-fVV4PVRYPEA8AO9DAKS87o-P0-fSF9VyUpS3t8al1U9A6E3m9wofNg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">渔船出海-国际新闻头条大事件【000体育独家冠名】</strong></span>
+          <span>@toutiao35</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/UFhN2oI2j_kMRfVW9TEfbaA4lkKxNp9_A-F5TsUyZgzAZgDXNpNJzCBl9uiD_pCx-OJ6CaE_s3TnPoVCooPbTeCQnpeEShg9MvoXC3F6n98CqdRZ5Q-KRJwPpoFF0IcfFTiCqclPBj_RNn1UqbMH5wWGuFXoQNNqmiVAXg4J2YOaES2w4ekoWZcmGUhjouUQ1CVSpau9GawSbUHvi7IZfX1bOKiK3QPE2AAOKa_q9MTx50vwKmhfrVmf4PmUlvLXYUjM0s6s__XUTRT91C5ABJpriU1Tp08Eg-zQz1Ue9nqDqYStENLA250-feyLVTefUxCbvu-l1Y5wDIEpCSJv2A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>14666 个字的长文，这次线下大会讲了什么，精华都在这篇文章里了</h3>
+        <p>14666 个字的长文，这次线下大会讲了什么，精华都在这篇文章里了</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-07T14:33:12.734Z">Jul 7, 2026, 2:33 PM</time> · <a href="/post/641801704">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
