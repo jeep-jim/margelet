@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     # Two times per day. UTC time, after rebuild feed snapshots.
-    - cron: "30 3,15 * * *"
+    - cron: "30 */3 * * *"
 
 permissions:
   contents: write
