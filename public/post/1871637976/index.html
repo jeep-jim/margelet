@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在… — Yummy 😋, China electronics pc | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Yummy 😋 in China. 研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机 研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010… Topics: electronics pc, electronics, health research, health." />
+  <meta name="keywords" content="margeleT, Telegram, China, Yummy 😋, godlynews1, electronics pc, electronics, health research, health" />
+  <link rel="canonical" href="https://www.margelet.space/post/1871637976" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在… — Yummy 😋, China electronics pc | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Yummy 😋 in China. 研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机 研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010… Topics: electronics pc, electronics, health research, health." />
+  <meta property="og:url" content="https://www.margelet.space/post/1871637976" />
+  <meta property="og:image" content="https://www.margelet.space/hero.webp" />
+  <meta property="og:updated_time" content="2026-07-08T02:18:55.068Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在… — Yummy 😋, China electronics pc | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Yummy 😋 in China. 研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机 研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010… Topics: electronics pc, electronics, health research, health." />
+  <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"Yummy 😋","item":"https://www.margelet.space/godlynews1"}]},{"@type":["Article","SocialMediaPosting"],"headline":"研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在…","description":"Fresh Telegram snapshot from Yummy 😋 in China. 研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机 研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010… Topics: electronics pc, electronics, health research, health.","articleBody":"研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机 研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010 年随 Linux 内核 2.6.36 引入相关代码 (2032a93d66fa) 后便一直存在，潜伏约 16 年才被发现。 据介绍，相应漏洞源于 x86 架构 KVM 的 Shadow MMU（影子内存管理单元）缺陷，本质上属于释放后使用（Use-After-Free，UAF）漏洞。黑客仅需在虚拟机内部执行特定操作，即可破坏 KVM 维护的 Shadow 页表数据结构。目前公开的概念验证（PoC）程序已经能够导致宿主机 Linux 内核崩溃，使同一台物理服务器上的所有虚拟机同时中断服务，形成拒绝服务（DoS）攻击。 目前，Linux Kernel 5.x、6.x 及 7.x 等稳定分支已于 7 月 4 日完成修复（修复补丁 81ccda30b4e8），Hyunwoo Kim 建议用户尽快升级至已修补版本；若暂时无法更新，则可先关闭嵌套虚拟化（Nested Virtualization）功能，以降低遭受攻击的风险。 🗒 标签: #Linux #KVM #Januscape 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot","text":"研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机 研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010 年随 Linux 内核 2.6.36 引入相关代码 (2032a93d66fa) 后便一直存在，潜伏约 16 年才被发现。 据介绍，相应漏洞源于 x86 架构 KVM 的 Shadow MMU（影子内存管理单元）缺陷，本质上属于释放后使用（Use-After-Free，UAF）漏洞。黑客仅需在虚拟机内部执行特定操作，即可破坏 KVM 维护的 Shadow 页表数据结构。目前公开的概念验证（PoC）程序已经能够导致宿主机 Linux 内核崩溃，使同一台物理服务器上的所有虚拟机同时中断服务，形成拒绝服务（DoS）攻击。 目前，Linux Kernel 5.x、6.x 及 7.x 等稳定分支已于 7 月 4 日完成修复（修复补丁 81ccda30b4e8），Hyunwoo Kim 建议用户尽快升级至已修补版本；若暂时无法更新，则可先关闭嵌套虚拟化（Nested Virtualization）功能，以降低遭受攻击的风险。 🗒 标签: #Linux #KVM #Januscape 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot","keywords":"margeleT, Telegram, China, Yummy 😋, godlynews1, electronics pc, electronics, health research, health","url":"https://www.margelet.space/post/1871637976","mainEntityOfPage":"https://www.margelet.space/post/1871637976","datePublished":"2026-07-08T02:18:55.068Z","dateModified":"2026-07-08T02:18:55.068Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在…","description":"Fresh Telegram snapshot from Yummy 😋 in China. 研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机 研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010… Topics: electronics pc, electronics, health research, health.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-07-08T02:18:55.068Z","contentUrl":"https://cdn5.telesco.pe/file/00dfdc50da.mp4?token=I1RTabdRbt7tknQdoMmviWDW3QgsfvtTHA-tGNZapgOqtvoUEme9lU8IiIEF5KFYoEZhH5GTQJbsDI_wN7HNsRfSdpQwVLRdGFQGo6VcLAz3ss1lAkCs9wHkfm9P6z8DrFrL9slF9kTnPJH72LhQIkLzjUv_OSuxWLJtDEDYCXXUs7GUxQ6N_Sb5D9Z46b1265KAwLwSoerQgbfjDAq5EUcrdfLdPc-jDNumkZyxjxK-HmjfIcAUzYCx4U9obmxXHsY6N6UdZcZJpAVVVNsp7dDDjPnSVVVUfo0lH0WCD-loC2Bux6EkYlOcP2T7jfD8ySEPpYErMapWSGz0c3bZEA"},"inLanguage":"zh","about":[{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"},{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"Yummy 😋","url":"https://www.margelet.space/godlynews1","logo":"https://cdn5.telesco.pe/file/U3jWQiOOHQF4f7YzQFbgRlQfjKYNGdzlDecU09TKQg0ruH3AGikDErmyI_7Bue1hb0qk4PcreBDfH5gX9h8DooSETlncw7uuZZql_8RjacgFoWm0P1vpa7CNkG-Tccc43G_5aTUSMhf5gsZBF6rr1rR-O7CndJVpuxkGp82hSDkePBopqnjyNYhDQkEiN-iK80zD9qkbjbSsvCIvOD1_dg4atImrDn67Iq0UeRP4yqlvJLZBz69u8zswXB2WLaqEyM67aNBrayPIibVkP9bAAIA1v37fAg5_PYzbFvfZMIcUgBitx0domCQYEvIeEGVBczUHfGfoscTAtKgUZX4tCw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/godlynews1/15794?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/U3jWQiOOHQF4f7YzQFbgRlQfjKYNGdzlDecU09TKQg0ruH3AGikDErmyI_7Bue1hb0qk4PcreBDfH5gX9h8DooSETlncw7uuZZql_8RjacgFoWm0P1vpa7CNkG-Tccc43G_5aTUSMhf5gsZBF6rr1rR-O7CndJVpuxkGp82hSDkePBopqnjyNYhDQkEiN-iK80zD9qkbjbSsvCIvOD1_dg4atImrDn67Iq0UeRP4yqlvJLZBz69u8zswXB2WLaqEyM67aNBrayPIibVkP9bAAIA1v37fAg5_PYzbFvfZMIcUgBitx0domCQYEvIeEGVBczUHfGfoscTAtKgUZX4tCw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+      <h1>研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核 这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在…</h1>
+      <p>研究人员揭露 Linux KVM 16 年历史漏洞，可允许恶意虚拟机逃逸至宿主机内核
+
+这个潜伏了16年的Linux KVM 漏洞，可让访客虚拟机在英特尔和 AMD 的 x86 系统上逃逸到主机
+
+研究人员 Hyunwoo Kim 发文，披露了一项代号为 Januscape、编号为 CVE-2026-53359 的 Linux KVM 重大安全漏洞，该漏洞自 2010 年随 Linux 内核 2.6.36 引入相关代码 (2032a93d66fa) 后便一直存在，潜伏约 16 年才被发现。
+
+据介绍，相应漏洞源于 x86 架构 KVM 的 Shadow MMU（影子内存管理单元）缺陷，本质上属于释放后使用（Use-After-Free，UAF）漏洞。黑客仅需在虚拟机内部执行特定操作，即可破坏 KVM 维护的 Shadow 页表数据结构。目前公开的概念验证（PoC）程序已经能够导致宿主机 Linux 内核崩溃，使同一台物理服务器上的所有虚拟机同时中断服务，形成拒绝服务（DoS）攻击。
+
+目前，Linux Kernel 5.x、6.x 及 7.x 等稳定分支已于 7 月 4 日完成修复（修复补丁 81ccda30b4e8），Hyunwoo Kim 建议用户尽快升级至已修补版本；若暂时无法更新，则可先关闭嵌套虚拟化（Nested Virtualization）功能，以降低遭受攻击的风险。
+
+🗒 标签:  #Linux #KVM #Januscape
+📢 频道: @GodlyNews1
+🤖 投稿: @GodlyNewsBot</p>
+      <div class="card small"><strong>Video in original post</strong><p class="muted">Video media is loaded in the live margeleT feed or in the original Telegram post.</p></div>
+      <p class="meta"><time datetime="2026-07-08T02:18:55.068Z">Jul 8, 2026, 2:18 AM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/electronics/pc">electronics / pc</a>
+<a class="pill" href="/country/cn/tag/electronics">electronics</a>
+<a class="pill" href="/country/cn/tag/health/research">health / research</a>
+<a class="pill" href="/country/cn/tag/health">health</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · Yummy 😋 · electronics / pc · electronics · health / research. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/godlynews1/15794">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/godlynews1/15794?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/1925248759">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/U3jWQiOOHQF4f7YzQFbgRlQfjKYNGdzlDecU09TKQg0ruH3AGikDErmyI_7Bue1hb0qk4PcreBDfH5gX9h8DooSETlncw7uuZZql_8RjacgFoWm0P1vpa7CNkG-Tccc43G_5aTUSMhf5gsZBF6rr1rR-O7CndJVpuxkGp82hSDkePBopqnjyNYhDQkEiN-iK80zD9qkbjbSsvCIvOD1_dg4atImrDn67Iq0UeRP4yqlvJLZBz69u8zswXB2WLaqEyM67aNBrayPIibVkP9bAAIA1v37fAg5_PYzbFvfZMIcUgBitx0domCQYEvIeEGVBczUHfGfoscTAtKgUZX4tCw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/NYMYlllFRUsAvwVAEhmshudIOsu8sJl5AnvsYHlP5tTRt9qlSQ9khebQgeWbfB8sApQEJ6bvERDk0v1rM7XMhETI4Eqb2zqFG9WVbw3kwPQGWvg-XW6NJHt9PGNsiHTb1sYnqtABwX9ORIt8mO7BMd6vLWWRsuvR1IXzA_4UbMDy8fHcxtJBHmkTC2WaweYDN20c-OqkoITMUKI5vRcReKp9gZjj3gKkgT13Wdlc2cshK81YHZHpGiZiWxH2pQY6RfYf2uUfFwznpoykzyY4BwHDaXLPcWPlWD6cmIAlKhIPdDJn4zUf4nk2oOkhES8upyK07QtGZaID8CeM_cAtQQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>马斯克旗下的xAI现已更名为SpaceXAI https://x.com/SpaceXAI/status/2074214064746832060…</h3>
+        <p>马斯克旗下的xAI现已更名为SpaceXAI https://x.com/SpaceXAI/status/2074214064746832060 🗒 标签: #马斯克 #xAI #SpaceXAI #AI 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:18:55.068Z">Jul 8, 2026, 2:18 AM</time> · <a href="/post/1925248759">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/245280510">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/U3jWQiOOHQF4f7YzQFbgRlQfjKYNGdzlDecU09TKQg0ruH3AGikDErmyI_7Bue1hb0qk4PcreBDfH5gX9h8DooSETlncw7uuZZql_8RjacgFoWm0P1vpa7CNkG-Tccc43G_5aTUSMhf5gsZBF6rr1rR-O7CndJVpuxkGp82hSDkePBopqnjyNYhDQkEiN-iK80zD9qkbjbSsvCIvOD1_dg4atImrDn67Iq0UeRP4yqlvJLZBz69u8zswXB2WLaqEyM67aNBrayPIibVkP9bAAIA1v37fAg5_PYzbFvfZMIcUgBitx0domCQYEvIeEGVBczUHfGfoscTAtKgUZX4tCw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/F5mjZGFGUd4P_CAMgcLkvXxh-7mA70IdYj7DEyki4IkwVjqSi2KaMBLN4PHR9MEcx8jnKOFTAnYBRCuolzeoY1dxxJhx7mIoe3iqGYov_rWwRpCNS1Sqgrg_1PehnsBeFbTCwe9sSKArMpbuVdNvRymyeiWonFUloSPfUP5nlEEtWn4NcTMn5P7V4Zsxe9hu4x9BLtuAoYTNKb8pS7xMX3YZi9T2ZHn3TeVuMJhcneOG-TRpaQLKz6Z4-kI7xBExyIwJZazm7xr08GmQpj6VNQNhH4zbMejlp663p3CjAxcsQNSacLWcat7maw3djcEHrBFCYzFERfLeJ3PR-qtN_A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Anthropic 延长 Fable 5 可用期至 7 月 12 日 Anthropic 今天在 X 上宣布，正在将 Claude Fable 5…</h3>
+        <p>Anthropic 延长 Fable 5 可用期至 7 月 12 日 Anthropic 今天在 X 上宣布，正在将 Claude Fable 5 的访问权限扩展至所有付费计划，直至 7 月 12 日。 via 匿名 🗒 标签: #Anthropic #Claude #Fable #AI 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:18:55.068Z">Jul 8, 2026, 2:18 AM</time> · <a href="/post/245280510">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2625134257">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/nPX4B0iEKzGfNJRJssL1iwL5RcZRSe7BJTVe1ZJZ1vbvBiof-RJrh9Mg4dSrKSFClmYwGhITuNDPb_DhhG2NrAnX80GTsiqDmTIXALIy2WFMk1HEZws4h9TXlvXc9xvWJYZTLCVsUXw21IiTiYb8UFM6p1Q9UEl_DyYMZjLU4uzr-lUewdrsPKsJWAnq-maRihNe-9H7ija0skX5Wb58SWJkugI4vy6owb_CD6MiMEv4b3Lclv_yO7piprrqOFjqda9tZnGVcVODyA2I0ivx8edjUL3RKagmhgZcb89ZaZ-sooGI-uQ0MQ23BGKlm1-EzjmfOtg98YtH5egw3Qq01w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Btok News</strong></span>
+          <span>@btokmedia</span>
+        </span>
+      </p>
+        
+        <h3>Cointime今日要闻： 1.马士基股价下跌8%，势将创下自5月以来最大跌幅 2.SK海力士发行1779万股普通股及790万股美国存托股票 3.…</h3>
+        <p>Cointime今日要闻： 1.马士基股价下跌8%，势将创下自5月以来最大跌幅 2.SK海力士发行1779万股普通股及790万股美国存托股票 3.美股光通信概念股盘前集体反弹，迈威尔涨超3% 4.美股加密货币概念股盘前普涨，CRCL涨3.53% 5.甲骨文盘前涨近4%，推出四款全新Fusion智能体应用 6.美股盘前大型科技股普涨，美光科技涨超3% 7.英特尔盘前涨超2% 上调部分CPU价格</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:23:41.795Z">Jul 8, 2026, 2:23 AM</time> · <a href="/post/2625134257">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3375693557">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/PGCoL49dzPRKEe49VSZETTbRNbFZwKeb79xc4rrfs6MuN-mkhRY4yM54VFECyFyv0FmBA3EryNw8FfT-u_GhddHy67WfQ0eArf0og_iVAVMdI25YY7mOdDPgV_jNxZHPytVqC4Snq-vYjd6aWgaw8hb-Ezb0EDaMFHydMbUwWiwQZPz8B4VjHovo8VPdhrtW0jhRN9V1qjIbBcOkcMJF6xE5eUetUwgxKfEx8Kunm9li2RQTVQe9d6hl5pl-x1PLg3bNex3c8TmfN625TCZR6kTKEs_vXdJHv7kXvvfz9KCiNJpBRcZBv5uzcjsoZet8Frv79YhvbayWrwCpRW_Fxw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">agou的胡言乱语</strong></span>
+          <span>@bakadog</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/W2-Oue6fQ-ljM4XyNUJSOIuT0tdPcWN5ZE9-slJKE2BVV_GTyYRNkY3jqRs-7rgW3JyGlBpf-URnmUUCNz15P1btKWNfzJCu91pD-IOvQXofMNoRy_OjTg0MpskJsF0hbddI0FeaZQP9i5lSUaBjCSMoGKcm817H_yViVrZ1d38G_2V_NsGnErRw-I1UmgGpbXboOvgtubxW21ROdYpT_J0HhOHkxo7j7GIUE6EXWdx64brNLbgmwt8hkwcB2kzBLvf0Cksl_eV7WoU5DLOd50iL7vUn252qdvdMPVMDdTMpZ2z5Fa2o4cMKK7mTiLg84q7kf4__OyQ8yMlSR4qNOg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Loupe：App能看到什么 我觉得任何苹果用户都可以装一下来看看，苹果系统是如何泄露设备指纹的： Loupe按每项数据读取所需的访问权限多少来分…</h3>
+        <p>Loupe：App能看到什么 我觉得任何苹果用户都可以装一下来看看，苹果系统是如何泄露设备指纹的： Loupe按每项数据读取所需的访问权限多少来分类: -被动：任何App都能读取，完全没有提示，从时区、键盘语 言到电池和存储。 -需要权限：会触发iOS提示的读数，比如位置、通讯录、照片和运动与健身。 -高级：公开接口允许的旁路手段，比如检查你装了哪些 App、在隐藏的浏览器里做图形检测，以及一条能在重装App 后依然留存的记录。 源代码：https://github.com/mysk-research/loupe…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:23:39.029Z">Jul 8, 2026, 2:23 AM</time> · <a href="/post/3375693557">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3139709429">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/S0nm4DY2R62UvIdqBPCqkwFXPpy2gF9-lLRLr0i-DyukzNOxNb3KYmlm40CTzAS9jjMdfKaQpJm0-MneJ-WbxAAh5do2KI12nlS0XhB5Razp6c2IQTt-FUpJYsKZOowEsLdKMbki4L_XTVkEZYd4bmVH35d0SqxYZ1DZy0roImF30IixqJjEEBkBc9ztH3t6_ITJmZ9XgLF21UXpr7e278Mi0nwc8qED2HveaDD-yKzqn0_ZxPRWtrrpOrvi42f2Q0YUVNubqwJQ5kdTYrvYYBJEGR3BLAnqkvOIENromwCqz9zYVI5-ecfTODl55EDAGaVBXqnYi3TRAN9ziH7hhA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">APPDO 数字生活指南</strong></span>
+          <span>@appdodo</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/ZzQ3Xi18mXgzyT9BXX_WhfK8rCKsBsn43G0THpfMR6mGm6fAqzKwFAYiU9XkwV6x6cBd-sk3mlv-ZOi7Hrck7PXNsIfOvRqiZ_dcJ0W_5scyInLHahHjFUqfNZW2eUvIb5nmP01ypNnH3sxMwyiHUdhuErAP6llMOud6RYCywFTy8w183G1xHNTuMVNM5QXl1sikfVLsSY0wLQcVQAOBh25y7raG3PPYilriUo-rNcZKmfA-fJHcB8w8qsi4i6BPPyJ35dEVTemug1247NR_DvzJ_PMP6ZN8-YyGhF-Up5kf4ikbQ8Y0TaUiWorYLQ1zgjIOfMeDC-fRt6CG1f5O7Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#互联网观察 ▎一个把 AI 状态搬到桌面小屏幕的开源项目：AI Mac 小屏幕 AI Mac 小屏幕是一个基于 ESP8266 的开源硬件项目，…</h3>
+        <p>#互联网观察 ▎一个把 AI 状态搬到桌面小屏幕的开源项目：AI Mac 小屏幕 AI Mac 小屏幕是一个基于 ESP8266 的开源硬件项目，外观像一台迷你复古麦金塔，可以放在桌面上实时显示 Claude Code 与 Codex CLI 的工作状态。 它能显示 AI 当前是 working、idle 还是 offline，也能显示 5 小时窗口和周额度的真实用量百分比。屏幕上还有像素桌宠和方形进度环，AI 工作时桌宠会动起来，空闲时则保持静止，额度颜色会像红绿灯一样从绿色逐渐变成黄色、红色。 除了 AI 状…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:23:37.449Z">Jul 8, 2026, 2:23 AM</time> · <a href="/post/3139709429">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1556445631">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/lkTe3SgHm-bnM5CBWhMXUKkqOaOxn4VnV-Uybis1snNusryijjCtAVtENcc8XkfReGvM2c56PXtuTxbM0BFKG7SbDFZwcC8p-JhL4rHBl1mnvkpsxLLdEdxOAyXt_N7nNtAPXFQtjUWEE0CasrwzQ3uTZ9jCuwbOC6pmxga9uSyc9dcXW6A_joAzueVswUMViZqhm4Wjb6PRmlW7EpokvM0HU3kM7L6RY8plsYOoPNDq5D0IR4uDmrWKpcKECTAn3Svc_umlhrUBQqNBrFy_GzamZ1D8QhywZReh1j5ijg1VitUv6H1RC-tm5vjpGT4Sdhu3NeUFzgVmxkkVnXId4A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Newlearnerの自留地</strong></span>
+          <span>@newlearnerchannel</span>
+        </span>
+      </p>
+        <img src="https://cdn1.telesco.pe/file/hyVJFe28mvkKICeQuLC_2TAt_FCqPeeVm4ppyKNw6Ho10FBUbsQYWF68VoYKf3F2gcGx-PTZ90yrrEqHlqXyTjRWId0kpBs-IEN1r0Zxqigrd1NicFKxJxDQAh0_kHxGTiCsMDxiTO68-eSurL5uglYfmIQxyaVrhRosAQMP949Toq0NOWjNps1k8CeoPW5HM1--kIbH6bxPnRz6OKy4mawzYCElqa4N_Wo6-wMjd2aPRPGJ0tvDX_vJHLTKIqcWY7ZkwrXNMshPZ-EU01-iN-3oitaxSVP2LVom9uOME3oARLRlH-TWgQML73rK9TywXSYdc8YKPTEMmYYTpXmfUg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#News ☀️ 自留地早报【7.8】 1️⃣ 上海证券报 ：苹果首款折叠屏 iPhone 已在量产阶段，代工龙头富士康启动大规模招工 2⃣️ R…</h3>
+        <p>#News ☀️ 自留地早报【7.8】 1️⃣ 上海证券报 ：苹果首款折叠屏 iPhone 已在量产阶段，代工龙头富士康启动大规模招工 2⃣️ Reuters ：美机构采用 Anthropic Mythos 模型对政府软件开展安全审计，已排查出大量安全漏洞 3⃣️ 9to5Mac ：苹果 iOS 27 Beta 3 的 Siri AI 获新能力，可调取第三方应用内数据 4⃣️ 9to5Mac ：苹果 iOS 27 Beta 3 新特性，滑块调整 AirPods 自适应模式强度 5⃣️ 支付宝 AI 开放平台 上线…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:23:34.990Z">Jul 8, 2026, 2:23 AM</time> · <a href="/post/1556445631">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3175661798">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/lkTe3SgHm-bnM5CBWhMXUKkqOaOxn4VnV-Uybis1snNusryijjCtAVtENcc8XkfReGvM2c56PXtuTxbM0BFKG7SbDFZwcC8p-JhL4rHBl1mnvkpsxLLdEdxOAyXt_N7nNtAPXFQtjUWEE0CasrwzQ3uTZ9jCuwbOC6pmxga9uSyc9dcXW6A_joAzueVswUMViZqhm4Wjb6PRmlW7EpokvM0HU3kM7L6RY8plsYOoPNDq5D0IR4uDmrWKpcKECTAn3Svc_umlhrUBQqNBrFy_GzamZ1D8QhywZReh1j5ijg1VitUv6H1RC-tm5vjpGT4Sdhu3NeUFzgVmxkkVnXId4A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Newlearnerの自留地</strong></span>
+          <span>@newlearnerchannel</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/VZA4zsjxRCbuud804BFwgLJa8LGE8cHXKPxc-0dHMBZ_hElohVvs8nUghEpxd2uNIvwr_yVse35mzPJOEQ0Q5Sg4szEf7m9NdNuj9t3reL6RT-9JOoKxhSk7RprWRoLYwuZPiUuYe7n9kNs3SpMvDfF8TbdXo27kx3wipm-1PbP_ACgFcBBpvSooccWA25NBGpFeQpHZAcGMbQi6IB7TnJ1KofRdpkeY1bkA8wwRjBbpGxJQJwVVMX7tcLuS8UREdLtK0BzQ_ggIaCsdZMSc-Uxy4f-3OOUH3e3beJQWo_Wf299kd9FZZzXomKsFs_iVdDFl-8X-V554hr7AJf5Pqg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#News 🌃 自留地晚报 【7.7】 1️⃣ 9to5Mac 报道称，iOS 27 Beta 3 发布，新增滑块精细调节 Siri AI 的语…</h3>
+        <p>#News 🌃 自留地晚报 【7.7】 1️⃣ 9to5Mac 报道称，iOS 27 Beta 3 发布，新增滑块精细调节 Siri AI 的语速和表现 2️⃣ 三星 公布 Q2 业绩指引，营业利润约 89.4 万亿韩元，同比暴增 1810% 3️⃣ 9to5Mac 报道称，iOS 27 引入 Core Image RAW 9 引擎，RAW 照片处理画质大幅提升 4️⃣ SpaceXAI 宣布，马斯克旗下 xAI 正式更名为 SpaceXAI，全新 logo 同步亮相 5️⃣ AMD 宣布，锐龙 AI Halo…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:23:34.990Z">Jul 8, 2026, 2:23 AM</time> · <a href="/post/3175661798">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1935399049">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/lkTe3SgHm-bnM5CBWhMXUKkqOaOxn4VnV-Uybis1snNusryijjCtAVtENcc8XkfReGvM2c56PXtuTxbM0BFKG7SbDFZwcC8p-JhL4rHBl1mnvkpsxLLdEdxOAyXt_N7nNtAPXFQtjUWEE0CasrwzQ3uTZ9jCuwbOC6pmxga9uSyc9dcXW6A_joAzueVswUMViZqhm4Wjb6PRmlW7EpokvM0HU3kM7L6RY8plsYOoPNDq5D0IR4uDmrWKpcKECTAn3Svc_umlhrUBQqNBrFy_GzamZ1D8QhywZReh1j5ijg1VitUv6H1RC-tm5vjpGT4Sdhu3NeUFzgVmxkkVnXId4A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Newlearnerの自留地</strong></span>
+          <span>@newlearnerchannel</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/Hgc05QpkVzzqELhFqMJuN6DGXGJvg95ReDe638ccJnyM-VFM0jXlgmJ1M-chfZLTSOhp1uSafinMAZqSKvm0aTUgsFm7O1UaqrT3Z5yN6P4vTAlmyA147r5xt9ha6iytJkiNtA0NDycR9cRPiudEU4GIvea9UJmTU3UHLmTJ9LRC1uW32SQtqFjF5OZbtQyJPXqpvzggZY20Us22sy95eeOFdWKFmZY9dTSz5b6DLVjbRB20y195YPg3sIXXBtMzPfEOE1FPflqUp-d4kE63tnrvAk9NR5dib35ZTqvNnpoqG-3Kcfjy45afDVdvMEKvYZctIt6SQGbD5vKux5bOzA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#APPLE #iOS #macOS #GitHub情报 #AI 📍巧用两款开源工具，为你的 iPhone 修改定位 随着 WWDC 上推出全新…</h3>
+        <p>#APPLE #iOS #macOS #GitHub情报 #AI 📍巧用两款开源工具，为你的 iPhone 修改定位 随着 WWDC 上推出全新 Apple Intelligence 和 New Siri，许多使用外版 iPhone 的朋友发现新系统加入了「电子围栏」。具体来讲，就是通过检测定位判定能否使用 Siri 的完整功能。为此，大家又想了一些办法来面对这种情况 1️⃣ Apple WLOC 🔗：GitHub | Releases 👉 Features - 提供代理软件订阅模块和快捷指令，简单方便 -…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-08T02:23:34.990Z">Jul 8, 2026, 2:23 AM</time> · <a href="/post/1935399049">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
