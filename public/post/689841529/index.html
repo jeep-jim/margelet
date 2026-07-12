@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0… — 科技圈🎗在花频道📮, China health research | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. 🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0.2.93）进行抓包分析，发现该工具默认通过两个渠道向 xAI 服务器传输代码。其一，工具读取的任何文件（包括 .env 等密钥文件）内容会被原样嵌入模型对话请求，同时打包上传至 Google Cloud Storage… Topics: health research, health." />
+  <meta name="keywords" content="margeleT, Telegram, China, 科技圈🎗在花频道📮, zaihuapd, health research, health" />
+  <link rel="canonical" href="https://www.margelet.space/post/689841529" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0… — 科技圈🎗在花频道📮, China health research | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. 🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0.2.93）进行抓包分析，发现该工具默认通过两个渠道向 xAI 服务器传输代码。其一，工具读取的任何文件（包括 .env 等密钥文件）内容会被原样嵌入模型对话请求，同时打包上传至 Google Cloud Storage… Topics: health research, health." />
+  <meta property="og:url" content="https://www.margelet.space/post/689841529" />
+  <meta property="og:image" content="https://www.margelet.space/hero.webp" />
+  <meta property="og:updated_time" content="2026-07-12T06:03:13.786Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0… — 科技圈🎗在花频道📮, China health research | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. 🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0.2.93）进行抓包分析，发现该工具默认通过两个渠道向 xAI 服务器传输代码。其一，工具读取的任何文件（包括 .env 等密钥文件）内容会被原样嵌入模型对话请求，同时打包上传至 Google Cloud Storage… Topics: health research, health." />
+  <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"科技圈🎗在花频道📮","item":"https://www.margelet.space/zaihuapd"}]},{"@type":["Article","SocialMediaPosting"],"headline":"🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0…","description":"Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. 🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0.2.93）进行抓包分析，发现该工具默认通过两个渠道向 xAI 服务器传输代码。其一，工具读取的任何文件（包括 .env 等密钥文件）内容会被原样嵌入模型对话请求，同时打包上传至 Google Cloud Storage… Topics: health research, health.","articleBody":"🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0.2.93）进行抓包分析，发现该工具默认通过两个渠道向 xAI 服务器传输代码。其一，工具读取的任何文件（包括 .env 等密钥文件）内容会被原样嵌入模型对话请求，同时打包上传至 Google Cloud Storage 存储桶。其二，无论提示词是否要求读取，整个代码仓库会以 git bundle 形式上传；实验中一个被明确指令“不要打开”的文件，其内容仍可在上传压缩包中完整恢复。关闭设置中的“改进模型”开关无法阻止上传，服务器端仍返回上传已启用的状态。在 12 GB 仓库测试中，超过 5 GiB 数据成功上传且无存储端拒绝。研究者强调仅证明了数据传输与存储行为，未证明 xAI 使用这些数据进行模型训练。 Gist | Reddit 🌸 在花频道 · 茶馆水群 · 投稿通道","text":"🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0.2.93）进行抓包分析，发现该工具默认通过两个渠道向 xAI 服务器传输代码。其一，工具读取的任何文件（包括 .env 等密钥文件）内容会被原样嵌入模型对话请求，同时打包上传至 Google Cloud Storage 存储桶。其二，无论提示词是否要求读取，整个代码仓库会以 git bundle 形式上传；实验中一个被明确指令“不要打开”的文件，其内容仍可在上传压缩包中完整恢复。关闭设置中的“改进模型”开关无法阻止上传，服务器端仍返回上传已启用的状态。在 12 GB 仓库测试中，超过 5 GiB 数据成功上传且无存储端拒绝。研究者强调仅证明了数据传输与存储行为，未证明 xAI 使用这些数据进行模型训练。 Gist | Reddit 🌸 在花频道 · 茶馆水群 · 投稿通道","keywords":"margeleT, Telegram, China, 科技圈🎗在花频道📮, zaihuapd, health research, health","url":"https://www.margelet.space/post/689841529","mainEntityOfPage":"https://www.margelet.space/post/689841529","datePublished":"2026-07-12T06:03:13.786Z","dateModified":"2026-07-12T06:03:13.786Z","image":["https://www.margelet.space/icon-512.png"],"inLanguage":"zh","about":[{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"科技圈🎗在花频道📮","url":"https://www.margelet.space/zaihuapd","logo":"https://cdn1.telesco.pe/file/E4dOxeABH7AAlaAGuzZel9ebxPJ4wzZKmMRWvGKn3hd78i6MJARP7jfxF4LueFcLL1VH6IandLOZQN0JjlnzohLtspQVYbk14UxlNO99u79hvtEjAyj4shIQR0Ve5Td4khjZSk87RM_POYXULehuDHcMqz0Ee9CmXWtJSgh3i5NDgcOc-JzDgjDmxLvvMqCbeBWJgzlOWN-xeds438DOkVYOqryr6iuHAPK3ELDOWOaMMXmPP9YbZQk4L26Grw2gwry7ckWr6pJB2WKdPP7M12oibmPMsS8G35fcEV9VsmsHCkLIrO22iBR7ZCbN5JmfXkxIj5AFvFDyPYoSDxyzRg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/zaihuapd/42505?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/E4dOxeABH7AAlaAGuzZel9ebxPJ4wzZKmMRWvGKn3hd78i6MJARP7jfxF4LueFcLL1VH6IandLOZQN0JjlnzohLtspQVYbk14UxlNO99u79hvtEjAyj4shIQR0Ve5Td4khjZSk87RM_POYXULehuDHcMqz0Ee9CmXWtJSgh3i5NDgcOc-JzDgjDmxLvvMqCbeBWJgzlOWN-xeds438DOkVYOqryr6iuHAPK3ELDOWOaMMXmPP9YbZQk4L26Grw2gwry7ckWr6pJB2WKdPP7M12oibmPMsS8G35fcEV9VsmsHCkLIrO22iBR7ZCbN5JmfXkxIj5AFvFDyPYoSDxyzRg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+      <h1>🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件 安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0…</h1>
+      <p>🤖 研究员称 xAI Grok CLI 默认上传整个代码库及密钥文件
+
+安全研究人员对 xAI 官方编程命令行工具 Grok Build（版本 0.2.93）进行抓包分析，发现该工具默认通过两个渠道向 xAI 服务器传输代码。其一，工具读取的任何文件（包括 .env 等密钥文件）内容会被原样嵌入模型对话请求，同时打包上传至 Google Cloud Storage 存储桶。其二，无论提示词是否要求读取，整个代码仓库会以 git bundle 形式上传；实验中一个被明确指令“不要打开”的文件，其内容仍可在上传压缩包中完整恢复。关闭设置中的“改进模型”开关无法阻止上传，服务器端仍返回上传已启用的状态。在 12 GB 仓库测试中，超过 5 GiB 数据成功上传且无存储端拒绝。研究者强调仅证明了数据传输与存储行为，未证明 xAI 使用这些数据进行模型训练。
+
+Gist | Reddit
+
+🌸 在花频道 · 茶馆水群 · 投稿通道</p>
+      
+      <p class="meta"><time datetime="2026-07-12T06:03:13.786Z">Jul 12, 2026, 6:03 AM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/health/research">health / research</a>
+<a class="pill" href="/country/cn/tag/health">health</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · 科技圈🎗在花频道📮 · health / research · health. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/zaihuapd/42505">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/zaihuapd/42505?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/2931713467">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/E4dOxeABH7AAlaAGuzZel9ebxPJ4wzZKmMRWvGKn3hd78i6MJARP7jfxF4LueFcLL1VH6IandLOZQN0JjlnzohLtspQVYbk14UxlNO99u79hvtEjAyj4shIQR0Ve5Td4khjZSk87RM_POYXULehuDHcMqz0Ee9CmXWtJSgh3i5NDgcOc-JzDgjDmxLvvMqCbeBWJgzlOWN-xeds438DOkVYOqryr6iuHAPK3ELDOWOaMMXmPP9YbZQk4L26Grw2gwry7ckWr6pJB2WKdPP7M12oibmPMsS8G35fcEV9VsmsHCkLIrO22iBR7ZCbN5JmfXkxIj5AFvFDyPYoSDxyzRg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/uFR_DHSGtNn5mX_rWH5f4xFl6xAZM2DX_Z5CiszjOmqh_YsHKF4BfmBr4YEnEVoKoMzixQ1JXbb_X76zovujLfelA6iutdhxIkokGNhyN_qId03a8vw2hEhR0P8vkQdp42oJ3QROPetnKeet7oRmNQNiw5aFDYyHd1jepOpv3OB6RHCRCT04m5t7bR_LMUbSUNtTBtHULThxY-HbJXl5Cay6DdPxi7RwcIj25ITfgF4mxarO3WyJ-TwAwvbq_XWuYCi0js_EvrD7FQmJ28P5Ql9HlwqcGEN7zvd_kJ9Rm8js12KnaVN9L_u6ugJdPvwYdcDszeGXcM9lcml_VSAv6g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🤖 Codex 负责人教“橙色螃蟹”(Claude)用户用 CPA 把 GPT-5.6 Sol 接入 🤖 Claude Code Codex…</h3>
+        <p>🤖 Codex 负责人教“橙色螃蟹”(Claude)用户用 CPA 把 GPT-5.6 Sol 接入 🤖 Claude Code Codex 项目负责人 Tibo 在 X 提供了一份“换用指南&quot;，称若 &quot;橙色螃蟹&quot;(Claude)用户暂时不想安装 Codex 应用，可先把 Claude 指向 GPT-5.6 Sol，全程约 5 分钟。他教用户们通过第三方工具 CLIProxyAPI 接入 GPT-5.6 Sol 模型，并给配置别名取名为“claudex”。他表示，如果这套操作被屏蔽，自己欠用户一次重置。 Ti…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:03:13.786Z">Jul 12, 2026, 6:03 AM</time> · <a href="/post/2931713467">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1410447736">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/E4dOxeABH7AAlaAGuzZel9ebxPJ4wzZKmMRWvGKn3hd78i6MJARP7jfxF4LueFcLL1VH6IandLOZQN0JjlnzohLtspQVYbk14UxlNO99u79hvtEjAyj4shIQR0Ve5Td4khjZSk87RM_POYXULehuDHcMqz0Ee9CmXWtJSgh3i5NDgcOc-JzDgjDmxLvvMqCbeBWJgzlOWN-xeds438DOkVYOqryr6iuHAPK3ELDOWOaMMXmPP9YbZQk4L26Grw2gwry7ckWr6pJB2WKdPP7M12oibmPMsS8G35fcEV9VsmsHCkLIrO22iBR7ZCbN5JmfXkxIj5AFvFDyPYoSDxyzRg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        
+        <h3>🤖 GPT-5.6 一小时完成 50 年图论猜想证明 GPT-5.6 Sol Ultra 在不到 1 小时内完成了存在约半个世纪的循环双覆盖猜想…</h3>
+        <p>🤖 GPT-5.6 一小时完成 50 年图论猜想证明 GPT-5.6 Sol Ultra 在不到 1 小时内完成了存在约半个世纪的循环双覆盖猜想证明，并生成一份 3 页 PDF。该猜想针对无桥图，要求用一批圈让每条边恰好被覆盖两次。模型通过 64 个子 agent 并行处理，将问题转化为有限域上的边标号和线性方程组问题：为每条边配置两个标签，使相同标签的边组成圈。 OpenAI 同时公布了约 700 个英文字符的完整 Prompt。它不规定固定解题步骤，而是明确验收标准、定义、边界条件和失败情形，并要求动态分配…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:03:13.786Z">Jul 12, 2026, 6:03 AM</time> · <a href="/post/1410447736">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2055141528">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/OEaY4x9_PNyHJ6qWXbjtSwDBFY4uJRmP7FaIuNXiNnmTofAjxM1X3ggR_MsNF7xL_FXK_WPxKcilWay4GRQ0d7X6EIPY_3nFuJwJoI4onfPU_3PbLrXIvIVslN1Pbg3kQPtb6s5wBXc7R_mqaOzqTVVyUhMhCzPGbaqSHa0Y4KNQiIaY7OMWFuw0b2qk8V6Ue-I865oYMH6oTgUUZw1NQiu430qc-7D_WzRBM0_EEaADXs6xRFxGN4AyhedTKYgI04UE4uwqisopGamkSeyNjtNdIzmA4VnhYGSas9zf6YOck9KT-u5r2RohRrHhyGaVwYT9raPFEOjQ9g2PyeGDwg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">APPDO 数字生活指南</strong></span>
+          <span>@appdodo</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/uUimN6lLqIM7QP0ukDrN697PIuV2S78Llz65JxrLCoTcSiEaEudUAdUfRgv1C3yl0DXjWxus5V3YS_-vmxe6G0gIGUl7uve1ndscizS4aBt89dq5W0e0Es4EalwQmA4Aepvsy0rYwA-TmFaGCbsvQx-_kek_b_1jHc7RnZfGFfq6i1Tl-ebxq02h0yT_CXW9zo-ZHicUQW5MV9hbbmxzVc958EJwFspUs0rDxOvltZeHadzcdAu14C9VM208oy8HTG4LU2ga_q-0FJy4k5NNdw6kT3A8AdY22uajT_xsKk1qYY80WpLeiK2yvcU8Mg_ZOUFIzUYCYBESoGIy1LG7PA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#网络安全 ▎非接触式手机取证：无需解锁手机即可判断设备状态 中国人民公安大学研究人员开发出一种新的手机取证方法，可通过采集智能手机运行时泄露的微…</h3>
+        <p>#网络安全 ▎非接触式手机取证：无需解锁手机即可判断设备状态 中国人民公安大学研究人员开发出一种新的手机取证方法，可通过采集智能手机运行时泄露的微弱低频电磁信号，判断设备正在使用哪些应用，甚至识别部分用户操作。 这项技术的核心思路是：不同应用会调用不同硬件组合，包括处理器、图形芯片、GPS、Wi-Fi、存储控制器和通信模块。硬件负载变化会带来不同功耗模式，并形成可被 AI 模型识别的电磁信号特征。 研究人员称，这种方法无需解锁手机、无需读取系统和存储数据，也无需分析应用代码。即使手机处于锁定、加密、离线或飞行模式…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:13:52.651Z">Jul 12, 2026, 6:13 AM</time> · <a href="/post/2055141528">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2847038544">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/PDrqTpcgiz80k55oYzN5OcqFVRzr95AlTxfL5CotDjg58YSzmdtkuqTt_2orH58uLwv9R0BYbv_-zpU4ECliGrOaLQ9la79ZOBqr7boEsI5VbRMszeWXj3gy_gAJLXY65bLzzaVe8wMJZk_0AOZnuDWquwLJHMU5wf5igpdkymTydARvPRDQR3TB-M8I71dLmNSNL6YhehcIDAJ-bO6AU-ObjZp_r55oyNQPLCun_Oa7Ubezbn3DgrmDuZzcVkWUbyKtxTB2Wq7WmNd-GZNNajjycH2cgOjb5J7j-nZWb7fbCOHTmlRq3_KxDx2C1_4XjJDRRDeWX2TP293nMlJMqw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Solidot</strong></span>
+          <span>@solidot</span>
+        </span>
+      </p>
+        
+        <h3>日本成功测试可回收火箭技术 2026-07-11 22:41 by 百万年神殿 日本宇航研究开发机构(JAXA) 7 月 11 日宣布，成功测试了…</h3>
+        <p>日本成功测试可回收火箭技术 2026-07-11 22:41 by 百万年神殿 日本宇航研究开发机构(JAXA) 7 月 11 日宣布，成功测试了一枚可回收火箭 RV-X。本次测试总共持续了约 40 秒，火箭上升至约 11 米的高度，期间完成了升空、悬停、水平移动、直立着陆共 4 个动作。目前旨在大幅降低航天任务成本的可回收火箭是许多国家的研发重点。RV-X 计划将取代不可回收的 H-3 火箭。下一步 JAXA 还将测试 RV-X 的升空一百米回收测试。法国、德国也参与到了日本的可回收火箭合作研发项目中。作为日本…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:11:36.026Z">Jul 12, 2026, 6:11 AM</time> · <a href="/post/2847038544">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3623525400">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/pEdWtgCAtk9gSdoD4lwVYNmqPIGdW2VpYg4q_Ks7_WCE-LS8i5tsM4CHoxiZ615wtsuMG7ngOnIowV5O-_Uc5XPXivZRg-IcuMiLRvlP-U03lW9iP4V6qnebx9XhB6qbxLPSeZwcvNavmRp6v3gTwMNkMjOAifiL0owhqnhtz3bocLJren6RKAWYhIzitU5TusL9x-2hTnd27nxbpFPn_Bx0wecmF6bHk7ycPeQ5RVgpmtHyoizQWUFSWN6a7quY6COAWjjkQ5CsXAq62j9yES8rJKQ5BE9YOI8amh6F53ABWl4RCaDefrl7XWEmxtcGhQ4lMcLvZyA5dAFwp0WIRg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">⚔️新闻曝光《缅北缅甸泰国》</strong></span>
+          <span>@qqt13</span>
+        </span>
+      </p>
+        
+        <h3>🆘【网友投稿：兄弟们，狗推干不了就别干了】🆘 说句心里话，现在这个行情，真的不是以前了。以前还能想着拼一把，熬一熬，说不定哪天就开个大单，一夜…</h3>
+        <p>🆘【网友投稿：兄弟们，狗推干不了就别干了】🆘 说句心里话，现在这个行情，真的不是以前了。以前还能想着拼一把，熬一熬，说不定哪天就开个大单，一夜翻身。 可现在呢？今天这里抓，明天那里查，园区一个接一个关，老板天天研究怎么转移，公司三天两头搬地方。每天睡觉都不踏实，听到楼下有点动静，第一反应就是是不是执法人员来了；手机一响，不是通知开会，就是通知收拾东西准备转移。这样的日子，挣再多钱又能安心吗？ 很多兄弟一年到头没挣到多少钱，反而天天活得像个逃犯。护照被扣、手机被收、没有自由，家里人联系不上，出了事老板第一个跑路…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:10:49.428Z">Jul 12, 2026, 6:10 AM</time> · <a href="/post/3623525400">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1088236032">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/W2tRtMkCHp0hbIm-YAihjiATo4NMkZujEWEDwa4WOdODXEQUMfpfV9QHPGtq3M8IkzVTpv9Hmq5rF8QuFeqpI0yuL_QEdaI_fNCIfFs0-hnIq1dyPdPyIqCKD1hBLLOIMi8_xqigsc9xH0zvdNt4bOv_toWEUt_5Nit8LVe1bXMqKHnelw-SXkss8K0NVORzI_MOs3bKmr_GzDgGVPFsFJPfjLN_ZTyKz-mP_Lf9BWHLJ-ZNu35Jz8UkBQ5WXiqEN37oVGshkJdgwqpySFPuvvbpfWRK98EPG-fcS-FVm-jx9VH2ka1Clm3RDBLe_TT3kfAuXyu20GbESmoGs8GPmg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">全球大事件/安危头条【华人曝光联盟】🐲</strong></span>
+          <span>@qqdsj</span>
+        </span>
+      </p>
+        
+        <h3>#东南亚狗推转型计划：男模培训班 由于最近东南亚打击行动越来越严，已经快生活不下去了。思来想去，决定不给国家添麻烦，也不给社会制造压力，正式报名参…</h3>
+        <p>#东南亚狗推转型计划：男模培训班 由于最近东南亚打击行动越来越严，已经快生活不下去了。思来想去，决定不给国家添麻烦，也不给社会制造压力，正式报名参加男模培训班。 老师说第一课不是走秀，而是练微笑；第二课不是腹肌，而是学会给富婆提供情绪价值；第三课就是记住一句话：少谈感情，多谈酒水。以前每天研究话术、盯数据、熬通宵；现在每天研究发型、练站姿、喷香水。 别人问我为什么突然转行，我只能说：时代变了，AI都快把饭碗抢完了，我总不能连最后这张脸也浪费吧。以后请不要再叫我狗推了，请叫我——188号技师……啊不，188号男模。…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:10:46.991Z">Jul 12, 2026, 6:10 AM</time> · <a href="/post/1088236032">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2607816388">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/vwbSVU0xy6zyQUvHMfKCEYGtVomjGQg87k0qjd4lwDVvZ5gj5R0cSsl_TC50WV2UOD4_GQk7ulqxxE-FD1VnAoQKuDeScVg31VZE2gJDumZMBGmgquPkvT6xfphuCS7wH_VBjXf7jNBQ_mfW6WxNu8O6HDcN7HvT6MOP-61j2pFY1OjDHwODR39GGNRX_m7o2_WL4MjUBJmMhZcqb1Q1QJ2BGFGtWpFabXUdNeUokGWAejHj9xL2_F-LkEDQnQITmjwTBxdvfSZuZPX2MHuNYFJTFcvAylLEf78iONIol5nWq6ZM16NXj_VJEFyCKsE0YF_TV2OaODFksAZMj6fLcQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">东南亚大事件曝光『迪拜头条』</strong></span>
+          <span>@mdsjq</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/nPSGGSuEZC3TI8A6ey-lC7-Iu90hBFoGafrD62nh9JIDKtLKanfx35o-sb-Bgp1N70uPhd0JrFJr4vWCjfvEMmMOUkqLg683eq2SdvuEhe_-D6oreJFuL4vmeQKD0AGuoodyZBqgE_IkrrnCPWsSufKGpm-hdAvN3uvcKqMdA_VBfgMml3iOJe-qRBxoDNIdJwNVjb7rbR6Int81zNFAr19JVvv9qoGuCT2MWMSIYMMil1YwWURsPn-XCjACoP7xft7o9aEnz_UtU3jMa-xmtTzydSCe80GxlMhXdxiThaj_5TfpqkpiuJF-y_kqFhwDu7ymHX8G2OXDdkTYxIUlOA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>日本宇宙航空研究开发机构宣布，成功测试了一款可返回的模型飞行器。 7月11日，日本宇宙航空研究开发机构宣布了一项好消息：成功测试了一种新型可重复使…</h3>
+        <p>日本宇宙航空研究开发机构宣布，成功测试了一款可返回的模型飞行器。 7月11日，日本宇宙航空研究开发机构宣布了一项好消息：成功测试了一种新型可重复使用的原型火箭，该火箭能够垂直起降。目前，这项技术仅有SpaceX的火箭能够实现，而日本掌握这一技术后，将使其太空任务大幅节省预算。</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:09:50.377Z">Jul 12, 2026, 6:09 AM</time> · <a href="/post/2607816388">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3919292611">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/v1mxx8NuPxE7yzB9ZYDlX3afCvgB-aP3nI1sg2tn2Lt7QQmnESZd7EgBhdf-2b7WsXZeKu4-5SPA72zcLsnvveQwYs6Kwe0IJeGWMCmvp6BR1E8UTMdk_I-ryG-nEU8QlAdJuI_Vcd_TWjvZjq2N2p0S6d2newQK0vklBEN-QkOb5UrB97slnVXiprjZzEX_4fAi__whu-aw_bn2ildXLPd_uhx2Yn1b44G5i_6MhSc7Emds0UqVm3gQ_7DsKsb2BKqREgct-lmrMd_O2jfvE-G1LI3wgeqahvLnfgDJrFASkJ0Ud06FUFhSYEBF3BlTRwCnWi4lyKzTTbp-ZWgkPw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Youxiu影视导航🎬</strong></span>
+          <span>@macau_movie</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/h_3oau8G2ybppnpcK95WuMmC6k2vq40rVrU7DGU2TvYEdrilMAS5mBjctcZg5LRsud307urZlDPBhursCaIl0TeQ1HY26fyXcP444ulOgyjwrdS3G95T7aZJDLUAXvDCriU8AuNpvj9vqFKCd31HEbS8Esm9dHtpHYqZ99JM3h-IWFuoH13-ycd8Oza3xF6ADo2bmo5bflSxXOKTAQFeMTcb2XGTsyszNbXwGBS7lbz1qgF9Q4gVgH9efbBNqL5wy-JODJ2XlyE2UTz3-18tl3kCJ8Zec1LYg82D7Qz1ZCbybjrzsldsNrE-p4TuOq3XoyFVNQT0QwvkHmbasLfqMQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>片名：炎上 【日本电影】 又名：Enjo / Conflagration / Flame of Torment 地区：日本 首映：1958-08-…</h3>
+        <p>片名：炎上 【日本电影】 又名：Enjo / Conflagration / Flame of Torment 地区：日本 首映：1958-08-19(日本) 主演：市川雷藏 / 仲代达矢 / 中村雁治郎 / 中村玉绪 / 浜村纯 【导演: 市川昆；原作：三岛由纪夫】 类型：剧情 简介：第20届威尼斯电影节 主竞赛单元 金狮奖 提名；第32届《电影旬报》奖最佳男主角：市川雷藏。根据三岛由纪夫名篇《金阁寺》改编，是市川昆本人多次表示格外偏爱的作品。2025年，其4K数字修复版参加第38届东京国际电影节展映。《炎上》…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T06:09:38.909Z">Jul 12, 2026, 6:09 AM</time> · <a href="/post/3919292611">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
