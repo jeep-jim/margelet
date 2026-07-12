@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok… — Yummy 😋, China ai | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Yummy 😋 in China. SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok Build工具（CLI，版本 0.2.93）进行了抓包与底层数据流分析。分析结果显示，该工具在运行过程中存在严重的隐私和数据安全泄露风险。 在用户发起普通的模型对话时，Grok不仅会直接将包含API密钥、数据库密码等敏感信… Topics: ai, technology, space, science." />
+  <meta name="keywords" content="margeleT, Telegram, China, Yummy 😋, godlynews1, ai, technology, space, science, health research, health" />
+  <link rel="canonical" href="https://www.margelet.space/post/183461438" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok… — Yummy 😋, China ai | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Yummy 😋 in China. SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok Build工具（CLI，版本 0.2.93）进行了抓包与底层数据流分析。分析结果显示，该工具在运行过程中存在严重的隐私和数据安全泄露风险。 在用户发起普通的模型对话时，Grok不仅会直接将包含API密钥、数据库密码等敏感信… Topics: ai, technology, space, science." />
+  <meta property="og:url" content="https://www.margelet.space/post/183461438" />
+  <meta property="og:image" content="https://cdn5.telesco.pe/file/eSKKegTMChqtb2PNz5WnWDCLcrFQ2RJPmnkmXD3SmI44cFLYOYvjvaNs8e97EBe_59EphGLvAEt1D4yriNy4WPChOCuBrEr5TjMZFgEoQW2z9Wa-cZECaVy7VC4LITSTGhAZXLi3oTO8Ra5LIFrIicLXEbaPji_Tu00d9N48Mn5kegGiOjMxw36tOOypXoTyoNWzFrumDIoNxQR5uvK0cqyd1lXYmh-CEevk7u_y0uT8XdWBbp3oqZLxMPMF4_uJRZmGGiNGiNRlRbTzYDHD0FaKj2qgJLN15BKOBZryMGCGUIAHnEOiEnliXF_9Jr1Njd_xio_HMbmIg0X0DhAlvg.jpg" />
+  <meta property="og:updated_time" content="2026-07-12T08:26:54.538Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok… — Yummy 😋, China ai | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Yummy 😋 in China. SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok Build工具（CLI，版本 0.2.93）进行了抓包与底层数据流分析。分析结果显示，该工具在运行过程中存在严重的隐私和数据安全泄露风险。 在用户发起普通的模型对话时，Grok不仅会直接将包含API密钥、数据库密码等敏感信… Topics: ai, technology, space, science." />
+  <meta name="twitter:image" content="https://cdn5.telesco.pe/file/eSKKegTMChqtb2PNz5WnWDCLcrFQ2RJPmnkmXD3SmI44cFLYOYvjvaNs8e97EBe_59EphGLvAEt1D4yriNy4WPChOCuBrEr5TjMZFgEoQW2z9Wa-cZECaVy7VC4LITSTGhAZXLi3oTO8Ra5LIFrIicLXEbaPji_Tu00d9N48Mn5kegGiOjMxw36tOOypXoTyoNWzFrumDIoNxQR5uvK0cqyd1lXYmh-CEevk7u_y0uT8XdWBbp3oqZLxMPMF4_uJRZmGGiNGiNRlRbTzYDHD0FaKj2qgJLN15BKOBZryMGCGUIAHnEOiEnliXF_9Jr1Njd_xio_HMbmIg0X0DhAlvg.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"Yummy 😋","item":"https://www.margelet.space/godlynews1"}]},{"@type":["Article","SocialMediaPosting"],"headline":"SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok…","description":"Fresh Telegram snapshot from Yummy 😋 in China. SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok Build工具（CLI，版本 0.2.93）进行了抓包与底层数据流分析。分析结果显示，该工具在运行过程中存在严重的隐私和数据安全泄露风险。 在用户发起普通的模型对话时，Grok不仅会直接将包含API密钥、数据库密码等敏感信… Topics: ai, technology, space, science.","articleBody":"SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok Build工具（CLI，版本 0.2.93）进行了抓包与底层数据流分析。分析结果显示，该工具在运行过程中存在严重的隐私和数据安全泄露风险。 在用户发起普通的模型对话时，Grok不仅会直接将包含API密钥、数据库密码等敏感信息的.env配置文件以明文且完全未脱敏的形式传输至SpaceXAI服务器，还会同步打包生成一份未经审计的会话状态存档，直接写入其后端的Google GCS云存储中。 更具争议的是，该工具被证实会在后台强制上传用户的整个本地代码仓库，且这一行为完全独立于AI智能体实际读取的文件范围。 在测试中，即便研究人员在提示词中明确要求“仅回复确定，不要读取任何文件”，Grok依然会将整个工作区打包成Git bundle形式上传。 通过对抓取到的上传包进行恢复，研究人员成功完整提取了原本叮嘱其“不要打开”的测试文件及其全部历史提交记录。 在大规模代码库的极端测试下，该工具甚至在模型调用因额度超限而中断后，依然在后台成功上传了5.10GB的完整仓库数据快照。 研究人员进一步发现，SpaceXAI在Grok Build的官方安装指南及快速入门等文档中，从未对这种全量代码仓库上传和后台暂存机制进行任何提示或公开说明。 即使用户在Grok网页端设置中手动关闭了“改进模型”（Improve the model）的数据收集开关，后端的API响应依然会向客户端返回强制开启的代码追踪与上传trace_upload_enabled:true的信号，完全无法阻止本地代码被上传云端。 尽管这并不直接等同于SpaceXAI会使用这些私有代码进行模型训练，但未告知的全量数据外泄已对企业和开发者的核心资产安全构成了严重威胁。 附：Hacker News相关讨论 via 匿名 🗒 标签: #SpaceXAI #Grok #AI 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot","text":"SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok Build工具（CLI，版本 0.2.93）进行了抓包与底层数据流分析。分析结果显示，该工具在运行过程中存在严重的隐私和数据安全泄露风险。 在用户发起普通的模型对话时，Grok不仅会直接将包含API密钥、数据库密码等敏感信息的.env配置文件以明文且完全未脱敏的形式传输至SpaceXAI服务器，还会同步打包生成一份未经审计的会话状态存档，直接写入其后端的Google GCS云存储中。 更具争议的是，该工具被证实会在后台强制上传用户的整个本地代码仓库，且这一行为完全独立于AI智能体实际读取的文件范围。 在测试中，即便研究人员在提示词中明确要求“仅回复确定，不要读取任何文件”，Grok依然会将整个工作区打包成Git bundle形式上传。 通过对抓取到的上传包进行恢复，研究人员成功完整提取了原本叮嘱其“不要打开”的测试文件及其全部历史提交记录。 在大规模代码库的极端测试下，该工具甚至在模型调用因额度超限而中断后，依然在后台成功上传了5.10GB的完整仓库数据快照。 研究人员进一步发现，SpaceXAI在Grok Build的官方安装指南及快速入门等文档中，从未对这种全量代码仓库上传和后台暂存机制进行任何提示或公开说明。 即使用户在Grok网页端设置中手动关闭了“改进模型”（Improve the model）的数据收集开关，后端的API响应依然会向客户端返回强制开启的代码追踪与上传trace_upload_enabled:true的信号，完全无法阻止本地代码被上传云端。 尽管这并不直接等同于SpaceXAI会使用这些私有代码进行模型训练，但未告知的全量数据外泄已对企业和开发者的核心资产安全构成了严重威胁。 附：Hacker News相关讨论 via 匿名 🗒 标签: #SpaceXAI #Grok #AI 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot","keywords":"margeleT, Telegram, China, Yummy 😋, godlynews1, ai, technology, space, science, health research, health","url":"https://www.margelet.space/post/183461438","mainEntityOfPage":"https://www.margelet.space/post/183461438","datePublished":"2026-07-12T08:26:54.538Z","dateModified":"2026-07-12T08:26:54.538Z","image":["https://cdn5.telesco.pe/file/eSKKegTMChqtb2PNz5WnWDCLcrFQ2RJPmnkmXD3SmI44cFLYOYvjvaNs8e97EBe_59EphGLvAEt1D4yriNy4WPChOCuBrEr5TjMZFgEoQW2z9Wa-cZECaVy7VC4LITSTGhAZXLi3oTO8Ra5LIFrIicLXEbaPji_Tu00d9N48Mn5kegGiOjMxw36tOOypXoTyoNWzFrumDIoNxQR5uvK0cqyd1lXYmh-CEevk7u_y0uT8XdWBbp3oqZLxMPMF4_uJRZmGGiNGiNRlRbTzYDHD0FaKj2qgJLN15BKOBZryMGCGUIAHnEOiEnliXF_9Jr1Njd_xio_HMbmIg0X0DhAlvg.jpg"],"inLanguage":"zh","about":[{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"space"},{"@type":"Thing","name":"science"},{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"Yummy 😋","url":"https://www.margelet.space/godlynews1","logo":"https://cdn5.telesco.pe/file/pncpUCcdl2AzGqKkQ3UMChGgQ1aPBOQ1OxKIfZgMmWgBd66tMVoTKbCYEmas2SIv7clPPMY3OqtVdJVtJGfeZ6zAE6-fsFufl00gRDX8Vqo08XZzT212LnHPc_touozrmZbtnBakL4uTGOOUeSXEmc-wVvMiUmsiu61-KQwcDffFXNEKiZpJZPslv6crVcr2cAnhCUr24sixj3f5jvgEqt8XQhkXBMqeOjPdQGSKI30Z8IMA7T6m8J90hKOjpnm1xBLVIEvcm7ie00vzGtwpUXeSf10xmuGjRLWX_FpAFGbd_krXWkpDG-ZaX139LdXVKQ-rY3EMQqtVj6IxxojBmQ.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/godlynews1/15833?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/pncpUCcdl2AzGqKkQ3UMChGgQ1aPBOQ1OxKIfZgMmWgBd66tMVoTKbCYEmas2SIv7clPPMY3OqtVdJVtJGfeZ6zAE6-fsFufl00gRDX8Vqo08XZzT212LnHPc_touozrmZbtnBakL4uTGOOUeSXEmc-wVvMiUmsiu61-KQwcDffFXNEKiZpJZPslv6crVcr2cAnhCUr24sixj3f5jvgEqt8XQhkXBMqeOjPdQGSKI30Z8IMA7T6m8J90hKOjpnm1xBLVIEvcm7ie00vzGtwpUXeSf10xmuGjRLWX_FpAFGbd_krXWkpDG-ZaX139LdXVKQ-rY3EMQqtVj6IxxojBmQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+      <h1>SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库 近日，安全研究人员对SpaceXAI推出的Grok…</h1>
+      <p>SpaceXAI的Grok Build被曝隐私漏洞：未脱敏上传配置文件并强制同步完整代码仓库
+
+近日，安全研究人员对SpaceXAI推出的Grok Build工具（CLI，版本 0.2.93）进行了抓包与底层数据流分析。分析结果显示，该工具在运行过程中存在严重的隐私和数据安全泄露风险。
+
+在用户发起普通的模型对话时，Grok不仅会直接将包含API密钥、数据库密码等敏感信息的.env配置文件以明文且完全未脱敏的形式传输至SpaceXAI服务器，还会同步打包生成一份未经审计的会话状态存档，直接写入其后端的Google GCS云存储中。
+
+更具争议的是，该工具被证实会在后台强制上传用户的整个本地代码仓库，且这一行为完全独立于AI智能体实际读取的文件范围。
+在测试中，即便研究人员在提示词中明确要求“仅回复确定，不要读取任何文件”，Grok依然会将整个工作区打包成Git bundle形式上传。
+
+通过对抓取到的上传包进行恢复，研究人员成功完整提取了原本叮嘱其“不要打开”的测试文件及其全部历史提交记录。
+
+在大规模代码库的极端测试下，该工具甚至在模型调用因额度超限而中断后，依然在后台成功上传了5.10GB的完整仓库数据快照。
+
+研究人员进一步发现，SpaceXAI在Grok Build的官方安装指南及快速入门等文档中，从未对这种全量代码仓库上传和后台暂存机制进行任何提示或公开说明。
+
+即使用户在Grok网页端设置中手动关闭了“改进模型”（Improve the model）的数据收集开关，后端的API响应依然会向客户端返回强制开启的代码追踪与上传trace_upload_enabled:true的信号，完全无法阻止本地代码被上传云端。
+
+尽管这并不直接等同于SpaceXAI会使用这些私有代码进行模型训练，但未告知的全量数据外泄已对企业和开发者的核心资产安全构成了严重威胁。
+
+附：Hacker News相关讨论
+
+via 匿名
+
+🗒 标签: #SpaceXAI #Grok #AI
+📢 频道: @GodlyNews1
+🤖 投稿: @GodlyNewsBot</p>
+      <img src="https://cdn5.telesco.pe/file/eSKKegTMChqtb2PNz5WnWDCLcrFQ2RJPmnkmXD3SmI44cFLYOYvjvaNs8e97EBe_59EphGLvAEt1D4yriNy4WPChOCuBrEr5TjMZFgEoQW2z9Wa-cZECaVy7VC4LITSTGhAZXLi3oTO8Ra5LIFrIicLXEbaPji_Tu00d9N48Mn5kegGiOjMxw36tOOypXoTyoNWzFrumDIoNxQR5uvK0cqyd1lXYmh-CEevk7u_y0uT8XdWBbp3oqZLxMPMF4_uJRZmGGiNGiNRlRbTzYDHD0FaKj2qgJLN15BKOBZryMGCGUIAHnEOiEnliXF_9Jr1Njd_xio_HMbmIg0X0DhAlvg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-12T08:26:54.538Z">Jul 12, 2026, 8:26 AM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/ai">ai</a>
+<a class="pill" href="/country/cn/tag/technology">technology</a>
+<a class="pill" href="/country/cn/tag/space">space</a>
+<a class="pill" href="/country/cn/tag/science">science</a>
+<a class="pill" href="/country/cn/tag/health/research">health / research</a>
+<a class="pill" href="/country/cn/tag/health">health</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · Yummy 😋 · ai · technology · space. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/godlynews1/15833">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/godlynews1/15833?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/1121202231">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/pncpUCcdl2AzGqKkQ3UMChGgQ1aPBOQ1OxKIfZgMmWgBd66tMVoTKbCYEmas2SIv7clPPMY3OqtVdJVtJGfeZ6zAE6-fsFufl00gRDX8Vqo08XZzT212LnHPc_touozrmZbtnBakL4uTGOOUeSXEmc-wVvMiUmsiu61-KQwcDffFXNEKiZpJZPslv6crVcr2cAnhCUr24sixj3f5jvgEqt8XQhkXBMqeOjPdQGSKI30Z8IMA7T6m8J90hKOjpnm1xBLVIEvcm7ie00vzGtwpUXeSf10xmuGjRLWX_FpAFGbd_krXWkpDG-ZaX139LdXVKQ-rY3EMQqtVj6IxxojBmQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+        
+        <h3>百度AI将亮相WAIC 2026，集中展示多款智能体应用 即将于7月17日至7月20日在上海举办的世界人工智能大会（WAIC 2026）上，百度A…</h3>
+        <p>百度AI将亮相WAIC 2026，集中展示多款智能体应用 即将于7月17日至7月20日在上海举办的世界人工智能大会（WAIC 2026）上，百度AI将携智能体全家桶亮相，全方位呈现智能体从技术升级、应用开发到产业赋能的最新成果。同时，百度“芯云模体”全栈AI产品矩阵也将在WAIC现场发布新升级，集中展示百度AI从底层技术创新到产业场景、个人应用的规模化落地进展。 🗒 标签: #百度 #AI #WAIC 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:26:54.538Z">Jul 12, 2026, 8:26 AM</time> · <a href="/post/1121202231">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2936590604">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/hryQAtpFaCzj_JMJdyvrEUrH2m4VSmmOK7cg432J63jNxW1yL-paL8GJZt_whrwywjsZZtATtIRhQaxUSs6FKlhWKVAOk5EKF1y0SNsivkRcs6xUQU1W-lBxfTLvLnkw54PI7g1X7LT3CmGL0VlasKutXb6Tx89xAty-Eyht0Q0OTmy9Ti0PRf8xQOV_Fc035A5CR3pG83G3WtSdEa139wQitoav56WSZs4UAVXQdhsJ6qXjynPlSkLzDFdonXWijYNfYWPa9VPzKL8XLCgJZPrfYvFQweqLDzKJ-Apfss94yJYUAkCvUICcJOeE4WIrmPkw5MNgBOaoL2tPQP3LwQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Китай Наизнанку 🇨🇳 Алексей Райсих</strong></span>
+          <span>@chinabackdoor</span>
+        </span>
+      </p>
+        
+        <h3>Китайский мегапроект В Китае строят невероятные вещи. В 2030 году по план…</h3>
+        <p>Китайский мегапроект В Китае строят невероятные вещи. В 2030 году по плану будет запущен термоядерный реактор проекта BEST. Недавно был закончен самый большой в мире магнит для удержания плазмы - CRAFT. Строительство идет по плану. Термоядерная энергия - это…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:33:08.274Z">Jul 12, 2026, 8:33 AM</time> · <a href="/post/2936590604">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2055141528">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/OEaY4x9_PNyHJ6qWXbjtSwDBFY4uJRmP7FaIuNXiNnmTofAjxM1X3ggR_MsNF7xL_FXK_WPxKcilWay4GRQ0d7X6EIPY_3nFuJwJoI4onfPU_3PbLrXIvIVslN1Pbg3kQPtb6s5wBXc7R_mqaOzqTVVyUhMhCzPGbaqSHa0Y4KNQiIaY7OMWFuw0b2qk8V6Ue-I865oYMH6oTgUUZw1NQiu430qc-7D_WzRBM0_EEaADXs6xRFxGN4AyhedTKYgI04UE4uwqisopGamkSeyNjtNdIzmA4VnhYGSas9zf6YOck9KT-u5r2RohRrHhyGaVwYT9raPFEOjQ9g2PyeGDwg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">APPDO 数字生活指南</strong></span>
+          <span>@appdodo</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/uUimN6lLqIM7QP0ukDrN697PIuV2S78Llz65JxrLCoTcSiEaEudUAdUfRgv1C3yl0DXjWxus5V3YS_-vmxe6G0gIGUl7uve1ndscizS4aBt89dq5W0e0Es4EalwQmA4Aepvsy0rYwA-TmFaGCbsvQx-_kek_b_1jHc7RnZfGFfq6i1Tl-ebxq02h0yT_CXW9zo-ZHicUQW5MV9hbbmxzVc958EJwFspUs0rDxOvltZeHadzcdAu14C9VM208oy8HTG4LU2ga_q-0FJy4k5NNdw6kT3A8AdY22uajT_xsKk1qYY80WpLeiK2yvcU8Mg_ZOUFIzUYCYBESoGIy1LG7PA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>#网络安全 ▎非接触式手机取证：无需解锁手机即可判断设备状态 中国人民公安大学研究人员开发出一种新的手机取证方法，可通过采集智能手机运行时泄露的微…</h3>
+        <p>#网络安全 ▎非接触式手机取证：无需解锁手机即可判断设备状态 中国人民公安大学研究人员开发出一种新的手机取证方法，可通过采集智能手机运行时泄露的微弱低频电磁信号，判断设备正在使用哪些应用，甚至识别部分用户操作。 这项技术的核心思路是：不同应用会调用不同硬件组合，包括处理器、图形芯片、GPS、Wi-Fi、存储控制器和通信模块。硬件负载变化会带来不同功耗模式，并形成可被 AI 模型识别的电磁信号特征。 研究人员称，这种方法无需解锁手机、无需读取系统和存储数据，也无需分析应用代码。即使手机处于锁定、加密、离线或飞行模式…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:32:57.734Z">Jul 12, 2026, 8:32 AM</time> · <a href="/post/2055141528">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3230451102">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/GrRhL2gzbPe4k_pZaZCxPX4MknCXIzgARugMxIRKnpKo67iC99K_DrWnvOc2f2HbW5dQ-U1D5IJg3V-W4vuAIew0lYIJ4Mb203e_t94TK-XUfn5zBYn5r9xMgEZueNt_cGACes5mCl6YjlgTkQ68Y1NykG1ZjyZ_vAsaP4IEH_iCQHZbeNiUPuGVtD1oPi1QrVR9lCoHKNrn8OiP6jnzmfYjO0OQS2Zu_abTbFOXnAPep4Il7z_XUSwbj7UcsPu27ed5uuZPmidAtbiGUEK-gNM-2ERf7yds63AoSUh6F39Z3WAaBakSr2gs1KWQi8E0tTh6plqKaPjpeN0FZPlS8Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ME News</strong></span>
+          <span>@metaeranews</span>
+        </span>
+      </p>
+        
+        <h3>AI需求推动韩国芯片巨头加速扩产，三星龙仁晶圆厂计划提前2年量产 ME AI 消息，7 月 12 日，三星电子计划将其韩国龙仁半导体集群首座晶圆厂…</h3>
+        <p>AI需求推动韩国芯片巨头加速扩产，三星龙仁晶圆厂计划提前2年量产 ME AI 消息，7 月 12 日，三星电子计划将其韩国龙仁半导体集群首座晶圆厂量产时间提前 2 年，目标于 2029 年 10 月启动运营。与此同时，SK 海力士正在考虑在美国建设新的生产设施，AI 需求推动韩国半导体企业加快扩产布局。三星电子计划在龙仁国家产业园建设共 6 座晶圆厂，原定首座晶圆厂于 2031 年启动运营，目前政府和三星已就提前至 2029 年 10 月达成共识。韩国政府将加快土地建设、电力和用水等关键基础设施建设，以支持项目提…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:29:14.761Z">Jul 12, 2026, 8:29 AM</time> · <a href="/post/3230451102">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3930328150">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/jdFsiewtZ0976YYwagXCUOi98rYOUTfkPPtQNzx02Iwaz091tz57JzUJLDVOlFZdt1DmhkSG0xsEKFMVe9xOewI3j5cu_sVbIxvayugzNEFh-TJp4OK0fTDl4pzK0WyE-e2duoaVoJ_r348bmb7IXUc0j2f7J9EPmV0a7WA4zdAxBp0b7zkMYPQyZ9isPp4XohomJ_-902YlZlBXxEK6naLE4VTj2d-nFCNUljMytlUcW2DZuMknejaRTGTRyNzGAUDvonUQjOtymaAz7r44n6Fl9au-hEr62jda_SN9eqQ0Y-nuEkoa9OJLvULHxqIZh5An0_nTQm98MNm-l1m3uw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">【柬埔寨】新闻吃瓜（世界杯版）</strong></span>
+          <span>@d3rrr</span>
+        </span>
+      </p>
+        
+        <h3>#东南亚狗推转型计划：男模培训班 由于最近东南亚打击行动越来越严，已经快生活不下去了。思来想去，决定不给国家添麻烦，也不给社会制造压力，正式报名参…</h3>
+        <p>#东南亚狗推转型计划：男模培训班 由于最近东南亚打击行动越来越严，已经快生活不下去了。思来想去，决定不给国家添麻烦，也不给社会制造压力，正式报名参加男模培训班。 老师说第一课不是走秀，而是练微笑；第二课不是腹肌，而是学会给富婆提供情绪价值；第三课就是记住一句话：少谈感情，多谈酒水。以前每天研究话术、盯数据、熬通宵；现在每天研究发型、练站姿、喷香水。 别人问我为什么突然转行，我只能说：时代变了，AI都快把饭碗抢完了，我总不能连最后这张脸也浪费吧。以后请不要再叫我狗推了，请叫我——188号技师……啊不，188号男模。…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:24:17.211Z">Jul 12, 2026, 8:24 AM</time> · <a href="/post/3930328150">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3832817515">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/qfokwFLAnTC-PbwXvj1sgK-8pDcF4zvq9nONwqL3Sehy-Ovc4UrGoL8IEZQ9v4ULJzW_ans1pO782-GS6M20fnlyUmwfnE2UO02pXNSSmzboIul7Ktgx1qHfndwEbyLkqtzfapvZGbsXYiFyX0c8Pe59-_R8cbetsHdTIHbUMLQRl03KTlUckZwoluiV52oPhkagR0AMzz2y-tCZIdEmSmcJOgSHft8r14gbwinpFEGuZsv-SdDGGYo9uiGJnn0ReP_1MEz8N_tBAbArhXDdh7dspQdL6x-i0f8f0m_ljy0_W8qH862sAzn9brcg6AtEJyanSeMxA8J12lIRI9A2lg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">動區動趨 BlockTempo⚡️區塊鏈 加密貨幣新聞</strong></span>
+          <span>@blocktemponews</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/DSn3gHcaMNTT2242hzkx1qgfXIjpAK__wssTjajXXycJmz4hL4k6SIQMPHVuRLnCsGfp1ekMzVxMTQcKNKEO0hi1Nd-0vQgO9fSiGrBEKCYks4IJkWIF3pY-qc-OLuTIFAgDmHXoKdiaRJ4-mefPj4eKHRaUNOPFBJvwiiKLjbuRaWx2gRhyRR6OGechjeNa4VZv_X8VCnmGFMBa_rpI-A9r9uQGCVbHHkTXsF4xjCVlDM7zmcxkRTLELH1FMSujS3oHxaU3_K3PAaraSMyGOkdEZi9POdbr8EEu2oEnS2BH2EiKoLi_5njfSeBFaRseuo8qYIVs8VcsUvhCtRJ8lA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚡ 大神口水戰》馬斯克嗆 Altman「偷完 OpenAI 再偷蘋果」，奧特曼反擊：SpaceX 純割散戶 - 馬斯克與 Sam Altman 在…</h3>
+        <p>⚡ 大神口水戰》馬斯克嗆 Altman「偷完 OpenAI 再偷蘋果」，奧特曼反擊：SpaceX 純割散戶 - 馬斯克與 Sam Altman 在 X 上互嗆：馬斯克指控 Altman「偷走」非營利組織又「偷」蘋果技術，Altman 則反嗆馬斯克在向股市散戶推銷太空資料中心。 全文 👉 https://www.blocktempo.com/musk-altman-x-feud-space-datacenters-apple-lawsuit-openai-nonprofit/ - 🔸同場加映 ① 傳奇投資人開砲…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:23:31.762Z">Jul 12, 2026, 8:23 AM</time> · <a href="/post/3832817515">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3360420981">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/pncpUCcdl2AzGqKkQ3UMChGgQ1aPBOQ1OxKIfZgMmWgBd66tMVoTKbCYEmas2SIv7clPPMY3OqtVdJVtJGfeZ6zAE6-fsFufl00gRDX8Vqo08XZzT212LnHPc_touozrmZbtnBakL4uTGOOUeSXEmc-wVvMiUmsiu61-KQwcDffFXNEKiZpJZPslv6crVcr2cAnhCUr24sixj3f5jvgEqt8XQhkXBMqeOjPdQGSKI30Z8IMA7T6m8J90hKOjpnm1xBLVIEvcm7ie00vzGtwpUXeSf10xmuGjRLWX_FpAFGbd_krXWkpDG-ZaX139LdXVKQ-rY3EMQqtVj6IxxojBmQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Yummy 😋</strong></span>
+          <span>@godlynews1</span>
+        </span>
+      </p>
+        
+        <h3>微信PC版正在内测Markdown语法 Markdown 功能属于内测体验阶段，在正式版本中可能会被移除。 在微信电脑版 4.1.12 内测版中，…</h3>
+        <p>微信PC版正在内测Markdown语法 Markdown 功能属于内测体验阶段，在正式版本中可能会被移除。 在微信电脑版 4.1.12 内测版中，用户可在笔记中直接使用 Markdown 语法进行排版，当前支持的语法包括标题、加粗、斜体、高亮、引用、列表、待办事项、分隔线等常用格式。 🗒 标签: #微信 #富本文 #markdown 📢 频道: @GodlyNews1 🤖 投稿: @GodlyNewsBot</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:26:54.538Z">Jul 12, 2026, 8:26 AM</time> · <a href="/post/3360420981">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1333945519">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/ZwfyiOp3DZH_WMkJ8bIQcDemdFs6dfSuUg5Ls43UOB59eSLzuxlDHUOIru8y6B2e0PrMTeQMNwIhOxjsHwdQ9t5koOTkFSxoDmssWr0r9Xw9JD9rFptzQxzk8fCJ1q25qvi8YF2F7bSQ-0eY0IVhAwcKQdnmso3wFEbGYMPAYF_l4QGsKtYoo0ncbjpCnZ6MlYvmDSkhFjDTre8Pw_UeupPjVMqHbLeuUJTRNbSr8ag0V8T4aSJJybfpj-WiL2aqTgYan_AsbToRikrKriztDn5WK1uEPGxSpykWML7im6C8emfrL9fKgSxcJjOI_UM0QsINYCLDAlaJwKUY-5Nimw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">DeJob—Web3招聘求职频道📮</strong></span>
+          <span>@dejob_official</span>
+        </span>
+      </p>
+        
+        <h3>#招聘 🏡 Mask Network #SocialFi 🐇 简介： http://mask.io Aims to bridge the We…</h3>
+        <p>#招聘 🏡 Mask Network #SocialFi 🐇 简介： http://mask.io Aims to bridge the Web2 users to Web3. 🛵 合作方式：#全职 #远程 / #实地 #上海 📚 待招岗位：#移动工程师 #技术 💰 薪酬福利：$3000 - $5500 / month 🌱 岗位职责： 1️⃣ 负责移动端 App 的开发与维护，覆盖 React Native 跨平台层与 iOS Native 原生层。 2️⃣ 基于 React Native 实现高质量…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-12T08:33:13.454Z">Jul 12, 2026, 8:33 AM</time> · <a href="/post/1333945519">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
