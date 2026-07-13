@@ -15,12 +15,12 @@
   <meta property="og:description" content="Fresh Telegram snapshot from Типичный программист in Russia. Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь… Topics: transport auto, auto, electronics pc, electronics." />
   <meta property="og:url" content="https://www.margelet.space/post/3239857381" />
   <meta property="og:image" content="https://cdn4.telesco.pe/file/g7drsPnuQKA0BIvrZ4_iUCs5xvc6DWAhetYPlYm41r_0W_2JswI5mo7fz-z60zsVg8HGno4wJ3b9OGL_QzfRnRpczn3Ly48Lqe2eTwaYE8650jU8h4NWx_UvNOUbqKhXqpD4ANk_1wc6WvtSUMDHusarR_IpiPxIPAbaa56oB9ThYbtN-1BK9Dr5uaC1aPda8xRAJ95vxYG6ZMOPuRTXlRC6qqZuZ-5920SEB3GEfWPlkcIfBpbZGbGU3Z2T49fyC3m1HkmzGOONCETU1Uhqiv0atNm5Xz6Ec9JnuI6tvCPnnvhWQiQibM4MorenMlSLLyW4edm3ME7NVPRea9kMWA.jpg" />
-  <meta property="og:updated_time" content="2026-07-12T16:45:10.939Z" />
+  <meta property="og:updated_time" content="2026-07-13T02:53:03.866Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет,… — Типичный программист, Russia transport auto | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from Типичный программист in Russia. Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь… Topics: transport auto, auto, electronics pc, electronics." />
   <meta name="twitter:image" content="https://cdn4.telesco.pe/file/g7drsPnuQKA0BIvrZ4_iUCs5xvc6DWAhetYPlYm41r_0W_2JswI5mo7fz-z60zsVg8HGno4wJ3b9OGL_QzfRnRpczn3Ly48Lqe2eTwaYE8650jU8h4NWx_UvNOUbqKhXqpD4ANk_1wc6WvtSUMDHusarR_IpiPxIPAbaa56oB9ThYbtN-1BK9Dr5uaC1aPda8xRAJ95vxYG6ZMOPuRTXlRC6qqZuZ-5920SEB3GEfWPlkcIfBpbZGbGU3Z2T49fyC3m1HkmzGOONCETU1Uhqiv0atNm5Xz6Ec9JnuI6tvCPnnvhWQiQibM4MorenMlSLLyW4edm3ME7NVPRea9kMWA.jpg" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Типичный программист","item":"https://www.margelet.space/tproger"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет,…","description":"Fresh Telegram snapshot from Типичный программист in Russia. Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь… Topics: transport auto, auto, electronics pc, electronics.","articleBody":"Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь — не в масштабе, а в бережном использовании железа. Колоночное хранилище читает только нужные столбцы, векторизованное выполнение обрабатывает данные пачками по 1024–2048 значений, умещаясь в кэш процессора, а min-max-индексы пропускают целые группы строк по фильтрам. Всё параллелится на все ядра. В тесте TPC-H DuckDB на одной машине справилась за 1 минуту 16 секунд, Spark на 32 узлах — около 8 минут. Распределённые накладные расходы дороже выигрыша от кластера. Это не замена PostgreSQL или Kafka: один писатель, одна нода, petabyte уйдут в распределённые системы. Статья полезна тем, кто строит ETL и хочет понять, где сидит производительность. Сохраните, если выбираете инструменты для аналитики.","text":"Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь — не в масштабе, а в бережном использовании железа. Колоночное хранилище читает только нужные столбцы, векторизованное выполнение обрабатывает данные пачками по 1024–2048 значений, умещаясь в кэш процессора, а min-max-индексы пропускают целые группы строк по фильтрам. Всё параллелится на все ядра. В тесте TPC-H DuckDB на одной машине справилась за 1 минуту 16 секунд, Spark на 32 узлах — около 8 минут. Распределённые накладные расходы дороже выигрыша от кластера. Это не замена PostgreSQL или Kafka: один писатель, одна нода, petabyte уйдут в распределённые системы. Статья полезна тем, кто строит ETL и хочет понять, где сидит производительность. Сохраните, если выбираете инструменты для аналитики.","keywords":"margeleT, Telegram, Russia, Типичный программист, tproger, transport auto, auto, electronics pc, electronics, gadgets, technology","url":"https://www.margelet.space/post/3239857381","mainEntityOfPage":"https://www.margelet.space/post/3239857381","datePublished":"2026-07-12T16:45:10.939Z","dateModified":"2026-07-12T16:45:10.939Z","image":["https://cdn4.telesco.pe/file/g7drsPnuQKA0BIvrZ4_iUCs5xvc6DWAhetYPlYm41r_0W_2JswI5mo7fz-z60zsVg8HGno4wJ3b9OGL_QzfRnRpczn3Ly48Lqe2eTwaYE8650jU8h4NWx_UvNOUbqKhXqpD4ANk_1wc6WvtSUMDHusarR_IpiPxIPAbaa56oB9ThYbtN-1BK9Dr5uaC1aPda8xRAJ95vxYG6ZMOPuRTXlRC6qqZuZ-5920SEB3GEfWPlkcIfBpbZGbGU3Z2T49fyC3m1HkmzGOONCETU1Uhqiv0atNm5Xz6Ec9JnuI6tvCPnnvhWQiQibM4MorenMlSLLyW4edm3ME7NVPRea9kMWA.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"transport auto"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"},{"@type":"Thing","name":"gadgets"},{"@type":"Thing","name":"technology"}],"author":{"@type":"Organization","name":"Типичный программист","url":"https://www.margelet.space/tproger","logo":"https://cdn4.telesco.pe/file/WbIU16k8krWYulyZdXK8AgxC6b5Tv12sVg1tnyHLv6Nk79KI3tnwu0E0D_Mo-bAbe5CmnmgidJWlEgclsgxUWHIXKBaI4XX4pLOTRHoyYRKNSKDtWMlqLmP1mwhynJu-I5htIrTsCk-7LMoVjLICGnWgLQQTDljvQtxVa_jF4YkYtcI0_Yt_aftHpTESdIEXuS_buS4_HW7yMTq54N3_uhLweQ6xYPzEjPOCbR_YyYlW0oEwd2mQyMyyuhwaZS4Z3Cg1qpKdyYoCfWuuuZ0_hMR-0N_Tu-6R60zap4-AmCiCOokuPwV1UnnuO3hdzu9rJT7aYUBllTr30-EXyAV2dA.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/tproger/14622?single"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Типичный программист","item":"https://www.margelet.space/tproger"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет,…","description":"Fresh Telegram snapshot from Типичный программист in Russia. Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь… Topics: transport auto, auto, electronics pc, electronics.","articleBody":"Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь — не в масштабе, а в бережном использовании железа. Колоночное хранилище читает только нужные столбцы, векторизованное выполнение обрабатывает данные пачками по 1024–2048 значений, умещаясь в кэш процессора, а min-max-индексы пропускают целые группы строк по фильтрам. Всё параллелится на все ядра. В тесте TPC-H DuckDB на одной машине справилась за 1 минуту 16 секунд, Spark на 32 узлах — около 8 минут. Распределённые накладные расходы дороже выигрыша от кластера. Это не замена PostgreSQL или Kafka: один писатель, одна нода, petabyte уйдут в распределённые системы. Статья полезна тем, кто строит ETL и хочет понять, где сидит производительность. Сохраните, если выбираете инструменты для аналитики.","text":"Почему DuckDB обгоняет Spark на одной машине Разбор от endjin объясняет, как встраиваемая база DuckDB превращает ноутбук в инструмент для аналитики на миллиардах строк: скорость здесь — не в масштабе, а в бережном использовании железа. Колоночное хранилище читает только нужные столбцы, векторизованное выполнение обрабатывает данные пачками по 1024–2048 значений, умещаясь в кэш процессора, а min-max-индексы пропускают целые группы строк по фильтрам. Всё параллелится на все ядра. В тесте TPC-H DuckDB на одной машине справилась за 1 минуту 16 секунд, Spark на 32 узлах — около 8 минут. Распределённые накладные расходы дороже выигрыша от кластера. Это не замена PostgreSQL или Kafka: один писатель, одна нода, petabyte уйдут в распределённые системы. Статья полезна тем, кто строит ETL и хочет понять, где сидит производительность. Сохраните, если выбираете инструменты для аналитики.","keywords":"margeleT, Telegram, Russia, Типичный программист, tproger, transport auto, auto, electronics pc, electronics, gadgets, technology","url":"https://www.margelet.space/post/3239857381","mainEntityOfPage":"https://www.margelet.space/post/3239857381","datePublished":"2026-07-13T02:53:03.866Z","dateModified":"2026-07-13T02:53:03.866Z","image":["https://cdn4.telesco.pe/file/g7drsPnuQKA0BIvrZ4_iUCs5xvc6DWAhetYPlYm41r_0W_2JswI5mo7fz-z60zsVg8HGno4wJ3b9OGL_QzfRnRpczn3Ly48Lqe2eTwaYE8650jU8h4NWx_UvNOUbqKhXqpD4ANk_1wc6WvtSUMDHusarR_IpiPxIPAbaa56oB9ThYbtN-1BK9Dr5uaC1aPda8xRAJ95vxYG6ZMOPuRTXlRC6qqZuZ-5920SEB3GEfWPlkcIfBpbZGbGU3Z2T49fyC3m1HkmzGOONCETU1Uhqiv0atNm5Xz6Ec9JnuI6tvCPnnvhWQiQibM4MorenMlSLLyW4edm3ME7NVPRea9kMWA.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"transport auto"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"},{"@type":"Thing","name":"gadgets"},{"@type":"Thing","name":"technology"}],"author":{"@type":"Organization","name":"Типичный программист","url":"https://www.margelet.space/tproger","logo":"https://cdn4.telesco.pe/file/WbIU16k8krWYulyZdXK8AgxC6b5Tv12sVg1tnyHLv6Nk79KI3tnwu0E0D_Mo-bAbe5CmnmgidJWlEgclsgxUWHIXKBaI4XX4pLOTRHoyYRKNSKDtWMlqLmP1mwhynJu-I5htIrTsCk-7LMoVjLICGnWgLQQTDljvQtxVa_jF4YkYtcI0_Yt_aftHpTESdIEXuS_buS4_HW7yMTq54N3_uhLweQ6xYPzEjPOCbR_YyYlW0oEwd2mQyMyyuhwaZS4Z3Cg1qpKdyYoCfWuuuZ0_hMR-0N_Tu-6R60zap4-AmCiCOokuPwV1UnnuO3hdzu9rJT7aYUBllTr30-EXyAV2dA.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/tproger/14622?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -62,7 +62,7 @@
 
 Сохраните, если выбираете инструменты для аналитики.</p>
       <img src="https://cdn4.telesco.pe/file/g7drsPnuQKA0BIvrZ4_iUCs5xvc6DWAhetYPlYm41r_0W_2JswI5mo7fz-z60zsVg8HGno4wJ3b9OGL_QzfRnRpczn3Ly48Lqe2eTwaYE8650jU8h4NWx_UvNOUbqKhXqpD4ANk_1wc6WvtSUMDHusarR_IpiPxIPAbaa56oB9ThYbtN-1BK9Dr5uaC1aPda8xRAJ95vxYG6ZMOPuRTXlRC6qqZuZ-5920SEB3GEfWPlkcIfBpbZGbGU3Z2T49fyC3m1HkmzGOONCETU1Uhqiv0atNm5Xz6Ec9JnuI6tvCPnnvhWQiQibM4MorenMlSLLyW4edm3ME7NVPRea9kMWA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-      <p class="meta"><time datetime="2026-07-12T16:45:10.939Z">Jul 12, 2026, 4:45 PM</time> · Russia</p>
+      <p class="meta"><time datetime="2026-07-13T02:53:03.866Z">Jul 13, 2026, 2:53 AM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/transport/auto">transport / auto</a>
 <a class="pill" href="/country/ru/tag/auto">auto</a>
@@ -82,19 +82,34 @@
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/3084043278">
+      <a class="post-link" href="/post/596067146">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/TK7Uf9JloWm1iO3Zm7SFvS2sgXyG8wQyQh5uEm0NPb-52Tas4n2tuPiqrZr2M6gy57x896AKq_avQ9N18d37tHvIELpolfiOTbQmEMdosNtauFsNwEruJ8odtqh_jdL4QPKyb5FnOebkxTlY1L9g9PG1sje68nddTdT63w9T1jFd_j0IMIeZa9T2lTI9iLNdOoIBzlMVpSO3cBiwVPK3-t7Q7gtGW97spGuTvnAnLtJiiC6U4Qz7JG-LAJzSheEh-e9M-icKBnjZfLFk0DP9zn8roPrHUIYR6klpAQRNU1HDNJn-Po1kid_RMwPf4uWdb5X23jo_ov0c5LHJagRBwg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Jdvu4nVVvrp6UiS4WQLjEapTzbq4_t6IccpFLzZ9SVVvQq6mZpR75e-SEdsknye6wGKKa0ialeuzuGuUEB9Afl7rfT51mwt42TET-hv3_p6QC2oIF4LYBtxliVq9osT47_lRqg_obDD0aZy2HhlA47InVCzalL-qyJZV7Q4n3-8UVk3zTu1hg4R6f5Hsa3-HHGuBtQ_bqgsoCvAj19rgNiQgoytSWb7DSa1evZ0ZsMybDT7cdkOjbV8bt5Nolfu_ROM6M6R-oqCGjbVTm_uf3wVqC02o4Ne7fmTjcnFbUCUsT82xMXiAANNv9bcuE9zbk_c9QoJpBdlTyhh8EzS3vg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">@copm_maniya💻</strong></span>
-          <span>@computerchik</span>
+          <span class="source-title-row"><strong class="source-title">MiTechTalks</strong></span>
+          <span>@mitechtalks</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/Rp9H0E7uAmN9dZWBR9Q_2nBhsaIvVPfT1RooDO_ugSzPWnNyLkpU1ZVQRJcRmz8YeXMZ_aRQ-Vv67hxRqzYtgNSw9J8TJV4VaI46d_vFYTnZbu87i3ruUabiHr-zfNlYy9b0z7l-tCEBC4D6sbW3J-pMW64UjHu1t3rxWtfUAo2qXYDxiPIx8l5YcmcjDU02gJcvjhEHLgB3mdJME-9ubtxEYhrUhOY2eJOYsSVxHjXmwRPbHI6R3WVAQJbnAIP4aPDiC7_GEdJt8AqugiuDcFwy_CRx6xooSw5IcteiJHX2hfhpfmzQTUXGYV0D8gVLvE5tIVHgEGLvWuUT266P1g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>⁉️ ЗАВИС ИЛИ МОЛЧИТ? ПОЧЕМУ НОУТБУК НЕ ВКЛЮЧАЕТСЯ И ЧТО ДЕЛАТЬ ПРЯМО СЕЙЧ…</h3>
-        <p>⁉️ ЗАВИС ИЛИ МОЛЧИТ? ПОЧЕМУ НОУТБУК НЕ ВКЛЮЧАЕТСЯ И ЧТО ДЕЛАТЬ ПРЯМО СЕЙЧАС ? Ситуация знакома каждому: нажимаешь кнопку включения — а экран чёрный, кулеры молчат (или крутятся, но результата ноль). 😏Паниковать рано. В 80% случаев проблему можно решить за 5…</p>
+        <img src="https://cdn4.telesco.pe/file/YlN6M1cgfTE2U6F8B5RPxVnw-EYp3fBms9842BFc09txRCeZDX4iJaHHaa9eO-6h0HS5iUs2ylffXqKAkEOH8Uw_Et2rfwOd20gm6BwEKmbicAnmvjRuPKLGK0LSe1YsdHOhl1qMU6Y31T-X5_L37cH7oOGPbyU7_oyKvE0yeM50hKhHAHK6T3m_VhsTMEJVz6UvjRzjJ9Oxh-ehAva9FKZkGjkRAkz-xsn__L5oeQCJTcL2ZNWVH3iMzl3ipyRR_vEyEKE-12Mg5uiXtXAakylaHHpnZ-Jl-mGHhdFcGPFqrXncS73VqMl9SLBZYhTdmrNklUmWkRcdmZsMe621rA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>👀 Вся линейка REDMI Note 17 перейдет на Snapdragon ✔️ По новым данным, X…</h3>
+        <p>👀 Вся линейка REDMI Note 17 перейдет на Snapdragon ✔️ По новым данным, Xiaomi полностью откажется от процессоров MediaTek в серии REDMI Note 17. ☄️ Смартфоны получат чипы: — Snapdragon 4 Gen4 — Snapdragon 6s Gen4 ⚡️ Основной акцент линейки сделают на автоном…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-12T16:50:20.722Z">Jul 12, 2026, 4:50 PM</time> · <a href="/post/3084043278">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-13T02:59:31.274Z">Jul 13, 2026, 2:59 AM</time> · <a href="/post/596067146">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1998044394">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/STeg7u8iRdMPnaH2WQRGMq7FDPizjY99gicBhA3P0p_ywzfSfDatDTQAXUuDY3ALCD5jsH9Rzr1SrV-pQjMFBwi2P7Oi0ZrsBsmaRhnUaSuuVCfm_i6T9xZFM_RAhyEJ9ueNy_AUBkzLgVcE_0DGvgCaYVzoSDbL_UZA-PkAbJdYUYQiEcJrCNATOG_N87OOTlXLJ4k65OtOsAt7wqalAElZlJyHbdfpDeoBHWgaK3C1NCmfoKmJKr87WJ0eZdn3fpED9BDz6f7cNedeuUkRJ3-RsYtub6N8-46K9x3wC0wy-4UBAQFx2p9wSk6j0YcF6ijIuHTWOLNIQKGdY_0Ldg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Джарвис Ньюс | Нейросети</strong></span>
+          <span>@jarvisnew</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/agXaY5SDidF2FIwkbE7E7aA-rpgJEB8_hpKhDOf_mbUQ2z1Q69kFL2OnqaKLNJWm_C-0vO3BWHMivc5WIwFFD7R6aJyh6Fkl_xOLob5OKiz32dB-7B96pU6qwSWZNWnyDTlq2uOgTv1yXWlEEQGciwsRCg6Apva30k6Yb7MZPnPnR3D775I4HdydJToWqxR1vYYDcII4LXiTvs-SpAWSs26ZUo8iU5zjXiH90V1voo7wMgkdozoXSfTql9JI1r06hW7ebxE3kR7VoEYxoQscmcWyaGkm8hFfnhPWDrecwEKNW6q2F4WWAYeV-7fyor8zQfbNBYT0F0OltJjnW_MYPw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>⚡️ Бустим звук наушников и микрофона БЕСПЛАТНО — решил напомнить про еб#й…</h3>
+        <p>⚡️ Бустим звук наушников и микрофона БЕСПЛАТНО — решил напомнить про еб#йший эквалайзер от steelseries Он работает вообще СО ВСЕМИ микрофонами и наушниками и имеет кучу полезных фишек Все что касается микрофона: ➖ Позволяет ОЧЕНЬ гибко настроить микро ➖ Есть…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T02:58:54.221Z">Jul 13, 2026, 2:58 AM</time> · <a href="/post/1998044394">View post on margeleT</a></p>
     </article>
 <article class="post">
       <a class="post-link" href="/post/759293052">
@@ -109,112 +124,82 @@
         <h3>ИИ-ассистент едва не уничтожил семейный архив В США пользователь поручил…</h3>
         <p>ИИ-ассистент едва не уничтожил семейный архив В США пользователь поручил Claude Cowork навести порядок на компьютере, и агент по ошибке удалил папку с фотографиями, которые копились около 15 лет. Позже выяснилось, что система собиралась лишь переименовать кат…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-12T16:49:52.062Z">Jul 12, 2026, 4:49 PM</time> · <a href="/post/759293052">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-13T02:57:27.421Z">Jul 13, 2026, 2:57 AM</time> · <a href="/post/759293052">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/1394369854">
+      <a class="post-link" href="/post/4093459510">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/i5-ATz1RFbkooAvXxDFo0POio-yJwdXUYND_fui85aSbHt_vbk4nV7MWZX6YuRof0pHN3ul0YOYTyuT6-jqVbeUKZOTDv8_AUO_Tj5yW75lelm3fSiIIMT5_qomOfWfxHwcRGViUzbUfBTPzaJCYYZajhfsEuW-e_QseAAoygkAqDpsDZnxhH9TWZ_W97_93b5W6Q8JeIqrm324RM7KtasQy4LwKm4BumAOy9slo3MW7Vy32lw0230DK4ota0Eicj_kYO88IHhUeYrsm85fJB52Ts5Gmhazy9-YW14w-3VKVx8NhICBF9rPtB6w1fohc8Fn3gIU83VXczzpCkTa_PA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rwLvEQtCZzjLdqx_WCIZYzzqG339OylWhrcUM28Ea_KajbP88V9sgP3PKSRbYE_yoiAVFyxcBOExrMxCey4xRqmW_d1TsLngYu4ixPuvCqDXzGtGhxeBuR6mNEvBqGGOEUxqO1Vy3yiBGZolvOBg7hN4RlUupRFqs3Lagk1ERr3LFYqj11lXpqYqiJe1tHpSgt4dT7z5g1-NPXkrUjhCYWbskNfTHJfyTVBjq3nnT3MSTFQxWZtjw__J9PDNxziqtWSVCJdJ7Qhop147SFv1XSmIhncVg1CtR4jq5DfJ0oCQ8x11VNQU9JajBdJKYlajiQdMs8F3IXzJUedzPz663A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Veles Auto - Авто из Китая, Японии и Кореи</strong></span>
-          <span>@velesautodv_salecar</span>
+          <span class="source-title-row"><strong class="source-title">АвтоФокус</strong></span>
+          <span>@avtoiporyadok</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/hSDFWpDowaDymV1puPMUUNSrL9Xt1Ye9uX9zWxNa-YwtDlEEbTwv9meWBY3F_X3O__NSZbsndZc4MB-f5cxGmUg-WraRjQGXFidIr2sFsv3mJ1fDXhIEvAkrtGWij0Sb8RAgL0qVfB0QGLcrA93IDnx-gS7mse1D0ijzNsxl8vBmGvZIExK2dm4NlBfv5yDAWkl_77M_u-lLCRlhNuZ7WJt8ZgpM1UWR4naQDxdEU82KgrbqiFv8Xk-azAmyH9aDqVKURto4Y-6OzZelUOmtyQZ8wcZ5fAGmhG3NHcaWKoGVWGVW4l7rPQQM6uW5hYQsmifuaJnoVwarLmeWp5H65g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>❗️❗️❗️❗️❗️ ДАРИМ ДВА АВТОМОБИЛЯ И 1.000.000 РУБЛЕЙ! 🎁 📌 Для участия в р…</h3>
-        <p>❗️❗️❗️❗️❗️ ДАРИМ ДВА АВТОМОБИЛЯ И 1.000.000 РУБЛЕЙ! 🎁 📌 Для участия в розыгрыше необходимо заключить договор и приобрести автомобиль с Японии (в том числе наш сток ярд) Китая, Кореи или мотоцикл с 20.12.2025 по 20.12.26 года. 🤩 А теперь поподробнее: 1️⃣Гла…</p>
+        <img src="https://cdn4.telesco.pe/file/K6zyQVzgtmbVfn4ZqF7IrRQXxeNZkJq6Q2zxwmM8LNV6sJ--UUgfZGyhGE2X3PSkqWE7lDSnglcFfno2eva4T0sZZ3jRvyrETFy40DpkZ2j4LlyxyUH1bXPj9XvyUA4gdvLKmpBlG6Dk3agkxxk-AhRPIE5a0eZ-QJeLVar5IewWoOJQqkXPc3ya_oQLv07CF66mLhS-BVRnXZskMjemrwEwNTLnrtSNTW4xHO9ASkrzM9jTNSGio41J6xjL8emy8znalm7yYMUvuYnJbmXxJYHOff4CXnhAr6XdcxeiPanutVVFQEJutz0mIiOLjQ3Jj5on4LLycRHMRnVY5DkEeA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>АвтоВАЗ: Lada Vesta и Aura получили новые опции 9 июля 2026 года стартова…</h3>
+        <p>АвтоВАЗ: Lada Vesta и Aura получили новые опции 9 июля 2026 года стартовали продажи автомобилей Lada Vesta и Lada Aura. Главное изменение — появление в комплектациях полноценного климат-контроля (вместо обычного кондиционера) и современной телематической сист…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-12T16:46:48.486Z">Jul 12, 2026, 4:46 PM</time> · <a href="/post/1394369854">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-13T03:01:11.270Z">Jul 13, 2026, 3:01 AM</time> · <a href="/post/4093459510">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3828913838">
+      <a class="post-link" href="/post/3300935060">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/WbIU16k8krWYulyZdXK8AgxC6b5Tv12sVg1tnyHLv6Nk79KI3tnwu0E0D_Mo-bAbe5CmnmgidJWlEgclsgxUWHIXKBaI4XX4pLOTRHoyYRKNSKDtWMlqLmP1mwhynJu-I5htIrTsCk-7LMoVjLICGnWgLQQTDljvQtxVa_jF4YkYtcI0_Yt_aftHpTESdIEXuS_buS4_HW7yMTq54N3_uhLweQ6xYPzEjPOCbR_YyYlW0oEwd2mQyMyyuhwaZS4Z3Cg1qpKdyYoCfWuuuZ0_hMR-0N_Tu-6R60zap4-AmCiCOokuPwV1UnnuO3hdzu9rJT7aYUBllTr30-EXyAV2dA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/BqmrMzqQ66iG26q6PDPsiaqieF3L662OTvYVOcrTD7viaFcvu4PQ9OZR3DVMVCjQ4M3WDIrJw-FFHBUM16RSy8ebcod7n2lXeruQhzXTt9zuadmX88AztB-I8ZEjOj3ENTHCUUOmAxcxPyNF7AXyjoDu6Lgl0L__tzcUViM8Z5JnRPFtdbgJGOIaK5T_gMczNNc2aI_FPzCSxQjFoBHEbWtnZex_Fsb9rSunUepXY60Gs80_Icn7Hm_XgGws-e_tIFuMT5QSr5C71ftsrPm3GRdnld9pqsCa45vXOf_qQlA5hj04Z4yJovNHbTTE4AUXF2HM6Xlf8w0L2ctaCe898g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Типичный программист</strong><span class="verified-badge" title="Verified" aria-label="Verified">
-    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <defs>
-        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#5ABEF7" />
-          <stop offset="1" stop-color="#0096FF" />
-        </linearGradient>
-        <mask id="tg_v_mask_seo">
-          <rect width="150" height="150" fill="black" />
-          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
-        </mask>
-      </defs>
-      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
-      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
-    </svg>
-  </span></span>
-          <span>@tproger</span>
+          <span class="source-title-row"><strong class="source-title">Авто-Пригон</strong></span>
+          <span>@autotrustgroup</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/EWOOgfw-AegGxvYU20Zs6p63QnwgvQbcHWdVGkF1mOAdX5bVNPrCtzsS2BXufR-k8-XqLsRK1_OWFmxKgdTrq21jhby3DLGY-sT8kw_-4G6lwTyK6KsUmumTg2L3YuosKk2rtNhi0H1GLL0t8mCSnRMoRmjzz_ZlPZM1xR7FzmEpzaeur39RdiHJdPu6_KJi-LJK4ogOQSuM-jZgTXNuq7YqN9siGppbJ9LaTygs4N0GQv870g2yO6i1GN0KtHqG4yrKoX-CCbBKiZOWoEyCaHmGRJofSncTVkAgeYu-twgjEmafCv3vrmusplkJvtZGZlbVYt2e0avf3DqWjYn05A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>«Не знаю, Claude написал» — уже не шутка, а диагноз Addy Osmani из Google…</h3>
-        <p>«Не знаю, Claude написал» — уже не шутка, а диагноз Addy Osmani из Google называет это cognitive surrender: вы не просто поручили ИИ задачу, а отдали ему ответственность за решение, которое сами не разобрали. Разница тонкая, но критичная. Делегировать ИИ рути…</p>
+        
+        <h3>Volkswagen T-Roc — 2024 год ⏱️ Пробег: 19 500 км ⛽️ Топливо: Дизель 🚘 Дв…</h3>
+        <p>Volkswagen T-Roc — 2024 год ⏱️ Пробег: 19 500 км ⛽️ Топливо: Дизель 🚘 Двигатель: 1 998 ccm 🚘 Коробка: Автоматическая 🚘 Привод: Передний 📋Комплектация •2-зонный климат-контроль •Камера заднего вида •Передние и задние датчики парковки •Мультируль и бортовой…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-12T16:45:10.939Z">Jul 12, 2026, 4:45 PM</time> · <a href="/post/3828913838">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-13T03:01:02.059Z">Jul 13, 2026, 3:01 AM</time> · <a href="/post/3300935060">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/1101180202">
+      <a class="post-link" href="/post/1824623889">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/nnqp4_0eDZXJbZ9xzTVYwUgx5cUSQi9yiWUru-hugAqKDrmjqWM9zTejPgMyAEGjR35DfNAB6zxgdVJ3tsIY8UxzU-Xme-FX6rfjlynBwGWMHfwrGd_m-wR2VmjAR4E68LPCv2EDDNznxx9x1kDiORGHVYzv6YlHtsC5YmsGZ_OLPwfMDD3As5xdleq7AbRDqyqg0-_efMgvoBEtan-S4t4e1WTpnv8T5fV_4Ch-Y-JCxANs3XyjPfIca2xOGZYxl4_43ypjhVNkUVNw3iM6CSFrmdey0rfCFEsyj4p9MEveYjVrqF1pbNCtUaCwlaTSI7GtdLmOZb6C5NXhs2wIKA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/BqmrMzqQ66iG26q6PDPsiaqieF3L662OTvYVOcrTD7viaFcvu4PQ9OZR3DVMVCjQ4M3WDIrJw-FFHBUM16RSy8ebcod7n2lXeruQhzXTt9zuadmX88AztB-I8ZEjOj3ENTHCUUOmAxcxPyNF7AXyjoDu6Lgl0L__tzcUViM8Z5JnRPFtdbgJGOIaK5T_gMczNNc2aI_FPzCSxQjFoBHEbWtnZex_Fsb9rSunUepXY60Gs80_Icn7Hm_XgGws-e_tIFuMT5QSr5C71ftsrPm3GRdnld9pqsCa45vXOf_qQlA5hj04Z4yJovNHbTTE4AUXF2HM6Xlf8w0L2ctaCe898g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Отдел К: IT-технологии, кибербезопасность</strong></span>
-          <span>@cyber_cabb</span>
+          <span class="source-title-row"><strong class="source-title">Авто-Пригон</strong></span>
+          <span>@autotrustgroup</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/TLZCwo3cNF-W9Q5NOMHeL4kKI8Ff7_dGE21__JnIgCMuie_w2xMNJE303rpeKHQ-UsW8pK76BZeyz841vpZX6_0f-zyGAqyfOM0J6egWPmi16lVZ3KCoJEQBu2uZ2YgibSMvS6ZYwHJQ0jIVbgBjR2o771y39EKPhy62ABU0IH3pGcZspxgihyv1tg646QV1s-NDtew89dSqothv-fbYUbDU7_PLv_An-GU7duktPltXDMWOCG47te-XlXu7NzqpsyKhFJB9zTuNIi3mMAjjUMlfVeNBtjPBaI3wYCjbBDukx-KMuTleZjt_4V0HFbJMQuuP58C2FbiRZX5aFEjTfw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Компания «Лаборатория Касперского» анонсировала выпуск обновленной версии…</h3>
-        <p>Компания «Лаборатория Касперского» анонсировала выпуск обновленной версии своего межсетевого экрана нового поколения. Обновленная версия 1.2 Kaspersky NGFW теперь поддерживает до 32 виртуальных контекстов, каждый из которых функционирует как независимое устро…</p>
+        <img src="https://cdn4.telesco.pe/file/k_Pp56Qk2AkfWes3Y0Gx-5YiTykM8m0u43Pt7haqp6737CMzZgLyEkLppiLG8tp-2W6m1x6xhJalgzk3Y_NK3GRvR_3akC7e72ZwGCvMLH8PcmEwFlHa3LqfKA7kE1o7ZautN42U2dbJ4TJ9H6FHpx5asJG6hHQFwGZakEXVclso3JgSpCFyFyfCdx6EQeVIrH8Z6PUWnXpm51DndefNOxnvcBJDzvD4e_5mgSL7L1zT0a9gBUJegtArpyFoNVvt_GrPgSM5UHs-314XEqUMiYza4Bs_PnR4OzT98DWGpa8C-sG2-vgCDxHvMwFNZ9GjQqbMjexsuqU30LKHIdVEMA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Volkswagen T6 Multivan — 2017 ⏱️ Пробег: 92 161 км ⛽️ Топливо: Дизельное…</h3>
+        <p>Volkswagen T6 Multivan — 2017 ⏱️ Пробег: 92 161 км ⛽️ Топливо: Дизельное топливо 🚘 Двигатель: 1 991 🚘 Коробка: Автоматическая 🚘Привод: Полный 📋Комплектация • Климат-контроль 3-зонный • Камера заднего вида • Круиз-контроль • Система контроля скорости • Сис…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-12T16:50:29.826Z">Jul 12, 2026, 4:50 PM</time> · <a href="/post/1101180202">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-13T03:01:02.059Z">Jul 13, 2026, 3:01 AM</time> · <a href="/post/1824623889">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/4269376722">
+      <a class="post-link" href="/post/1025472249">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/MAxwUXQlpXCLCvyB-LQyhxmx5Ert4bUGWG-4y51tIEaxQfVH7BmpPYdgvGwnPMPhVk8wWBFcJ_RDmPhARVNwQ2K5ljss_eEcgvt6skBov4VcIAmWTUCd0-rdcIAuw7Y9SW0juoX-2-o3kr4lbaKd3apYktBfWJ_k6OlHRI6Ne4DuilddteHKt70O5IUf0gp_rV3FCH706Ald8H80-m4cE4Z5H5k1RZTER-VxXnCKTNoatUA3Lgm4pDKfIDusxB6thrKGdF_-DWHug_WDWy3EQFGcffRz664hDgQsYrP6VO1TD6890ygDtL4OFo5H7OwIxgJQ8BEAhGr_Ifcto3VLkQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/oHwEcbWRMnGdmDREGxg26GsXJbsumVGxw_RZOND10587ggyTA0FtbJAUFAr5n3F1w4p2xmFZT-VRYTtRmtNc4Uxi4ycPJRDUQBYgKfmaD_8Gh8U2xznzj6UHFmaBsxt9niJ25QHDvIQXdZoN7B9DVZxVJUh5T9lFojj2wgLZ2Hk6dedQIO_LtS12r6HcNwnoSfh18IW-R3uWtFH3QpnCMYkkmpJR1Ub9Gzugmf01gCHnHjwFebyrddo6RwWKnTacZFlEK5Dv9OKpNKEnpAiro8hYqqfm_HlVPB5GkISHqTDTHIs896ZqyTsgj5-3lPhhJRu3uQSjuXsfHl8Z4frGng.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">АвтоДрайв</strong></span>
-          <span>@autodraivim</span>
+          <span class="source-title-row"><strong class="source-title">AliExpress для авто</strong></span>
+          <span>@aliexpauto</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/gJ5BhytiVHgZ7cebeIovI3kUpWbfYQ76dQc40c3pW-_METmnbvl4aZfDVE8LkYmWeHOtTPEW0G75Ynl2qLqfvFC1z37CSQxr663qFiwByIpToXP5dLq6AhEry1SXBHgq0YxBlZU9beu-zj1Ye_hSTc9fM2DZsq4zbO8m9m9uMuUoYKRxRgMO8tS5EtggrphF2wTekCkkm-JxVvoO6laMuh8fB1fFIc_WkamVVVjTZxdOf2id951SryfWA6sYit1d892k2O32ApOpnvWfPdxjP9kXqx5nd9ltTJtmJGeuxLv7Jk2jVARjfEVvbvYTE09QjpR6YUa3JV6vmBt-uvBQeQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>13 млн за китайскую машину? Гибридный Aito M9 на 496 сил напичкан всем, ч…</h3>
-        <p>13 млн за китайскую машину? Гибридный Aito M9 на 496 сил напичкан всем, чем только можно: кресла с массажем и нулевой гравитацией, 16-дюймовый монитор для пассажиров на втором ряду, больше 20 динамиков, пневма. Перечислять можно долго. Но просят за него 13 21…</p>
+        
+        <h3>Светодиодный уличный дорожный фонарь со встроенной камерой и солнечной ба…</h3>
+        <p>Светодиодный уличный дорожный фонарь со встроенной камерой и солнечной батареей. Он отлично подойдет для освещения дороги у частного дома. Камера вращается на 360 градусов. Решение интересное на aliexpress - https://ali.click/688wg16?erid=2SDnjcYmJ5H</p>
       </a>
-      <p class="meta"><time datetime="2026-07-12T16:50:02.461Z">Jul 12, 2026, 4:50 PM</time> · <a href="/post/4269376722">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-13T03:00:43.324Z">Jul 13, 2026, 3:00 AM</time> · <a href="/post/1025472249">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2177994749">
+      <a class="post-link" href="/post/3028621578">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/a8QvOF8JRdtT4BhZh2sbeCBUopMyGRzNkzt2mnLh8XgcdxK4bTu8baFGfZphEEOPJRCGyG9ktNShw6DaeOV3DweqrNX9Om3HdlPGdLZ-fYCnQB5c8_BJkrgGCghgT25dGnwjAQ7T1pNmTIje0fX-NjlWmYN_-aqpIkYs0-ytVnW4B210usajC59MdgqIGIwQANtV_mnE4cEzlqLgquEd9wt6yTcbxhM_iX0TGkNhKAMvzujmhvlVvBJB8HUjeGTCtT7J30K4nrWMkUG7xi7VLkSpwct1p_q_81VcIxCx2tCRshvNs1eC__n5owtsZjeQ4suP3-zLckB-xeJupl7JBA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/sibwt2vhIcSIj0STU-D6RcCVVPm1Mo9ajvxYS7ALWbDriVaGTX2MvHJvwu1t-A3BxldV_aF5Y2-h1qCGrQvhmL1PanIlkCeTwOINX-bhH1Ol5V6clHa4QnbGcspdjg7IhDMlZx7q6CEAPhGty7pN6nVS3XaVK-MJ3aY0-F97EBZc-qGWZFFLRYCmOUHo332jYPmQoUpo7BkBp4Ndhi89loZzL81xK3AjJg8MpfPUXzAubb-kZ2QB9Edb5NHSZjR4k5mQW_GSKTnsIdYkJmjQWmaZeEeRyPUzCan8Y54h-gTgPoLUDnNH3Yodwk251Ey2QXSW2Kt--zOEw-XkaiozVw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">📱APPS FULL</strong></span>
-          <span>@apps_full</span>
+          <span class="source-title-row"><strong class="source-title">Робот сочинит симфонию?</strong></span>
+          <span>@canrobots</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/v5xoJ8I-jDomsAWuGe34IKi7xAIwPPP2Xp6cgGREuv12Am6zIAxWyrGtBcTLWMq_rgvQSg6Y9q0bhpJmLzrOPwAZyTuO8dNBltR5v_6rwTd0OOwwCTP7hQ0AElPG6qxIHfOS7uyXMkE73al2NR7m4UFBWoFBxCUfoO-xteSB6Kwq-s5A3K5AVicURlxVGIrQmVpIigCqznz_Xq4knVbi-KVcPHKWw7q8ZbqbvJBGhYZhG3oyTV4__oaHw7XqTWVSHtqVr5DLhSd54Fb_JlNN5wEt7QRk_bw-5vTisn0tanftZxrlCe1xeZDzby3W2LTR5ujnv8PU-MXOdCM4wvpVSQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>YouTube (Vanced) — альтернативный клиент популярной видеоплатформы, оптим…</h3>
-        <p>YouTube (Vanced) — альтернативный клиент популярной видеоплатформы, оптимизированный для комфортного использования на смартфонах. Обеспечивает воспроизведение в фоновом режиме и высокое качество видео. 📂Категория: #Медиа 🆔 Версия: 5.6.80.366 🤖 Android: 8.0…</p>
+        
+        <h3>Роботы научились вкручивать лампочки, открывать пачку чипсов, держать бок…</h3>
+        <p>Роботы научились вкручивать лампочки, открывать пачку чипсов, держать бокал и брать виноград, не превращая его в пюре — годами мелкая моторика была одной из главных проблем робототехники. 1X показали новые руки для NEO. У каждой руки 25 степеней свободы — поч…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-12T16:49:45.789Z">Jul 12, 2026, 4:49 PM</time> · <a href="/post/2177994749">View post on margeleT</a></p>
-    </article>
-<article class="post">
-      <a class="post-link" href="/post/2455942767">
-        <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/LciK7-TTut0fswTD7MbfHGQYuJLSl56pHAXMbfIu1ZgrbPyZ83wJ5L9iT4ZjWLsAV7iYsuFBslt24tilPQgZ-jJvmQ9DmL-kJwBEgqfFd10KJCjs-FZkrk4GT5BraZhrMuzzmsNka5pGHF-k7bzKU2PInJzOkvjGllMMIXp4SR6cMhtt7ObDncea7OKhlqbmhUXR3GTuL2FF9u-POmoQESQ-ZoOC_yFPP1qpWwZqE5zTqRiXiLbozvvkZHylotS88JkXPMf0ifrarxiTjNbFoeDtlTsSlkPtA_Bc4Z2pRZxtdEoplU4fKeet1IvQ4-hHR1ybVK516CSSkJ2rozBRSA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Zona</strong></span>
-          <span>@zona_android_tv</span>
-        </span>
-      </p>
-        <img src="https://cdn4.telesco.pe/file/Vg_zf0hr0sdT0oY6GWonb-cWP9KbNuLVilCeY2lkNWlMHaZJ9lgN-d-xMPex_eyjP0j_MSGwibf528D1z8gzeHMxdnXvVAcHD0AuSap9D0M8DMxZZ37bFXngcZjdqyKhBABlo31haV_wMWK-Bd0Ud131-q5R14ypWAeT9VdrgL7yj8cRQM-rnseOjxMxgRXI_mLODBh2wmDkcaqexDGREI1XXSbYS2Xp1kG-HqfsyzqJSNjJCETl6LMHdLv-1PUt3Iv4CLyNJv6nf-Ri4jLjOPmQadSTaZ-z1MjEAze4WwUX70hSDnpqSaruqGUCLHb9lpAe9vKXBgQxJqPmGTno2Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>Добавлена авторизация на ТВ через QR-код. Для входа данным способом и на…</h3>
-        <p>Добавлена авторизация на ТВ через QR-код. Для входа данным способом и на ТВ и на смартфоне версия Зоны должна быть актуальной, то есть обновлена до 3.0.65</p>
-      </a>
-      <p class="meta"><time datetime="2026-07-12T16:48:57.893Z">Jul 12, 2026, 4:48 PM</time> · <a href="/post/2455942767">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-13T03:00:27.001Z">Jul 13, 2026, 3:00 AM</time> · <a href="/post/3028621578">View post on margeleT</a></p>
     </article>
     </section>
   </main>
