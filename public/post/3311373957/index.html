@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если в… — Школа для электрика | Электротехника и электроэнергетика, Russia recipes | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Школа для электрика | Электротехника и электроэнергетика in Russia. Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность… Topics: recipes, food, transport auto, auto." />
+  <meta name="keywords" content="margeleT, Telegram, Russia, Школа для электрика | Электротехника и электроэнергетика, electricalschool, recipes, food, transport auto, auto, electronics pc, electronics" />
+  <link rel="canonical" href="https://www.margelet.space/post/3311373957" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если в… — Школа для электрика | Электротехника и электроэнергетика, Russia recipes | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Школа для электрика | Электротехника и электроэнергетика in Russia. Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность… Topics: recipes, food, transport auto, auto." />
+  <meta property="og:url" content="https://www.margelet.space/post/3311373957" />
+  <meta property="og:image" content="https://www.margelet.space/hero.webp" />
+  <meta property="og:updated_time" content="2026-07-13T18:09:03.144Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если в… — Школа для электрика | Электротехника и электроэнергетика, Russia recipes | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Школа для электрика | Электротехника и электроэнергетика in Russia. Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность… Topics: recipes, food, transport auto, auto." />
+  <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Школа для электрика | Электротехника и электроэнергетика","item":"https://www.margelet.space/electricalschool"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если в…","description":"Fresh Telegram snapshot from Школа для электрика | Электротехника и электроэнергетика in Russia. Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность… Topics: recipes, food, transport auto, auto.","articleBody":"Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность чаще ломается не в одном «кривом ПИДе», а в архитектуре: как связаны контроллеры, сеть и верхний уровень. Одноуровневые решения (ПЛК + панель в одной сети) просты, но плохо масштабируются и почти всегда страдают от одиночных точек отказа. Многоуровневый подход с отдельными уровнями управления, визуализации и интеграции даёт больше гибкости и возможностей для резервирования. Критичный вопрос: что происходит после отказа контроллера. Холодный резерв даёт запасной ПЛК, но требует ручного включения и времени. Горячий резерв позволяет автоматически подхватить управление, если основной контроллер «упал», при условии, что сценарии переключения отработаны и конфигурации синхронизированы. Отказы часто приходят из сети. Один коммутатор или один маршрут связи между ПЛК и SCADA превращает любую проблему в потерю наблюдаемости. Продуманная архитектура предполагает несколько независимых путей связи, сегментацию производственной сети и мониторинг каналов. Возьмём насосную станцию: ПЛК управляет оборудованием, SCADA…","text":"Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность чаще ломается не в одном «кривом ПИДе», а в архитектуре: как связаны контроллеры, сеть и верхний уровень. Одноуровневые решения (ПЛК + панель в одной сети) просты, но плохо масштабируются и почти всегда страдают от одиночных точек отказа. Многоуровневый подход с отдельными уровнями управления, визуализации и интеграции даёт больше гибкости и возможностей для резервирования. Критичный вопрос: что происходит после отказа контроллера. Холодный резерв даёт запасной ПЛК, но требует ручного включения и времени. Горячий резерв позволяет автоматически подхватить управление, если основной контроллер «упал», при условии, что сценарии переключения отработаны и конфигурации синхронизированы. Отказы часто приходят из сети. Один коммутатор или один маршрут связи между ПЛК и SCADA превращает любую проблему в потерю наблюдаемости. Продуманная архитектура предполагает несколько независимых путей связи, сегментацию производственной сети и мониторинг каналов. Возьмём насосную станцию: ПЛК управляет оборудованием, SCADA показывает состояние и пишет тренды. Если у вас один контроллер без резерва, один путь связи и один сервер SCADA, надёжность держится буквально «на одном болте». Добавление резерва ПЛК, дублирующих каналов и отказоустойчивого решения для SCADA резко снижает риск остановки объекта. Если вы хотите не только улучшать отдельные алгоритмы, но и реально повышать устойчивость системы, имеет смысл прокачивать взгляд на архитектуру: уровни, связи, резервирование, поведение при отказах. Чтобы системно развить эти навыки — от ПЛК и SCADA до архитектурных решений и роли инженера в бизнесе — можете посмотреть онлайн‑курс «Инженер по автоматизации». Это хорошая база для тех, кто хочет двигаться от разработчика логики к архитектору АСУ ТП: Курс «Инженер по автоматизации»","keywords":"margeleT, Telegram, Russia, Школа для электрика | Электротехника и электроэнергетика, electricalschool, recipes, food, transport auto, auto, electronics pc, electronics","url":"https://www.margelet.space/post/3311373957","mainEntityOfPage":"https://www.margelet.space/post/3311373957","datePublished":"2026-07-13T18:09:03.144Z","dateModified":"2026-07-13T18:09:03.144Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если в…","description":"Fresh Telegram snapshot from Школа для электрика | Электротехника и электроэнергетика in Russia. Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность… Topics: recipes, food, transport auto, auto.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-07-13T18:09:03.144Z","contentUrl":"https://cdn4.telesco.pe/file/9d42b4a6db.mp4?token=BiaaYJ9YCsSeZwKlVIsWnXNopWWf5mTK99gkJoXyK4dfLYt1m9M-QanfaA4ap6m1jy8ZjVJ2e2PIGBw7KVT55vHQSYwBOYK00xU04f7biMmFHLQJaEL1etd8P2LGBJ4tbcpMelEPDqytfZDAJjLzebTveuB7UdVpH_9I-zEpsSgbw7PbchOsUVCYIlp6nYy1w-KOEEagAyTrAYdalY8OjHavJRSxzjLbxt2fLCVwfJUo5_ecLLZad4RPqj-cZw6fSlJJG2SHNCrLnMqEnqHP4hLlGXpBEh6QK3fuwU9OClLWl0VJzc0w6Zx1Ytop1FigLM2rxX40hiLm51r9NHzMJw"},"inLanguage":"ru","about":[{"@type":"Thing","name":"recipes"},{"@type":"Thing","name":"food"},{"@type":"Thing","name":"transport auto"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"}],"author":{"@type":"Organization","name":"Школа для электрика | Электротехника и электроэнергетика","url":"https://www.margelet.space/electricalschool","logo":"https://cdn4.telesco.pe/file/m-ZulIm1_RYOPNVuWeQe0sGc52I9uKixJMeAm5TEk1JSdVbyi_TmKju2Gu8hv5GyAzQA0Nf88BrQxOJM52LJIZ5ZK0iqcJRZfeRFLNypEg5uWHuFPkF325tiHLZEK8M8Pl99sPLx1W_9mmq-5M79WeSyHat16pafGbhbQD02t6S6XzSfCc_DnCijYZg4Zmcx1bgGaCooe2b8Zbk_WacMiM5F4KTNC0p8Dhcz08PbuANFBmT3N06EWunfjzRutiaFDF45j4E70tDvCrJ1JSqAIMSGNuIMg7I0WyT2NRmzOWXF959gxGZoL9h6CPSnIx1LVJlhwf4F9s-sW_NXK7_wqw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/electricalschool/8727?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/m-ZulIm1_RYOPNVuWeQe0sGc52I9uKixJMeAm5TEk1JSdVbyi_TmKju2Gu8hv5GyAzQA0Nf88BrQxOJM52LJIZ5ZK0iqcJRZfeRFLNypEg5uWHuFPkF325tiHLZEK8M8Pl99sPLx1W_9mmq-5M79WeSyHat16pafGbhbQD02t6S6XzSfCc_DnCijYZg4Zmcx1bgGaCooe2b8Zbk_WacMiM5F4KTNC0p8Dhcz08PbuANFBmT3N06EWunfjzRutiaFDF45j4E70tDvCrJ1JSqAIMSGNuIMg7I0WyT2NRmzOWXF959gxGZoL9h6CPSnIx1LVJlhwf4F9s-sW_NXK7_wqw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Школа для электрика | Электротехника и электроэнергетика</strong></span>
+          <span>@electricalschool</span>
+        </span>
+      </p>
+      <h1>Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность Если в…</h1>
+      <p>Архитектура надёжной АСУ ТП: где на самом деле ломается надёжность
+
+Если вы уже уверенно программируете ПЛК и работаете с SCADA, следующий шаг — смотреть на систему целиком. Надёжность чаще ломается не в одном «кривом ПИДе», а в архитектуре: как связаны контроллеры, сеть и верхний уровень.
+
+Одноуровневые решения (ПЛК + панель в одной сети) просты, но плохо масштабируются и почти всегда страдают от одиночных точек отказа. Многоуровневый подход с отдельными уровнями управления, визуализации и интеграции даёт больше гибкости и возможностей для резервирования.
+
+Критичный вопрос: что происходит после отказа контроллера. Холодный резерв даёт запасной ПЛК, но требует ручного включения и времени. Горячий резерв позволяет автоматически подхватить управление, если основной контроллер «упал», при условии, что сценарии переключения отработаны и конфигурации синхронизированы.
+
+Отказы часто приходят из сети. Один коммутатор или один маршрут связи между ПЛК и SCADA превращает любую проблему в потерю наблюдаемости. Продуманная архитектура предполагает несколько независимых путей связи, сегментацию производственной сети и мониторинг каналов.
+
+Возьмём насосную станцию: ПЛК управляет оборудованием, SCADA показывает состояние и пишет тренды. Если у вас один контроллер без резерва, один путь связи и один сервер SCADA, надёжность держится буквально «на одном болте». Добавление резерва ПЛК, дублирующих каналов и отказоустойчивого решения для SCADA резко снижает риск остановки объекта.
+
+Если вы хотите не только улучшать отдельные алгоритмы, но и реально повышать устойчивость системы, имеет смысл прокачивать взгляд на архитектуру: уровни, связи, резервирование, поведение при отказах.
+
+Чтобы системно развить эти навыки — от ПЛК и SCADA до архитектурных решений и роли инженера в бизнесе — можете посмотреть онлайн‑курс «Инженер по автоматизации». Это хорошая база для тех, кто хочет двигаться от разработчика логики к архитектору АСУ ТП:
+Курс «Инженер по автоматизации»</p>
+      <div class="card small"><strong>Video in original post</strong><p class="muted">Video media is loaded in the live margeleT feed or in the original Telegram post.</p></div>
+      <p class="meta"><time datetime="2026-07-13T18:09:03.144Z">Jul 13, 2026, 6:09 PM</time> · Russia</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/ru/tag/recipes">recipes</a>
+<a class="pill" href="/country/ru/tag/food">food</a>
+<a class="pill" href="/country/ru/tag/transport/auto">transport / auto</a>
+<a class="pill" href="/country/ru/tag/auto">auto</a>
+<a class="pill" href="/country/ru/tag/electronics/pc">electronics / pc</a>
+<a class="pill" href="/country/ru/tag/electronics">electronics</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · Russia · Школа для электрика | Электротехника и электроэнергетика · recipes · food · transport / auto. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/ru">Open live margeleT feed</a>
+        <a class="secondary-open" href="/electricalschool/8727">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/electricalschool/8727?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/444473404">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/diumBMMwBMr3Zru11cWK2tvHLQdwQRmy2Py0Ql3q1-8guo1KN2Nwk3Z2KGIxyDVkIHrQq4RtFXy8jS_aRlL1fIoQMcZ1pe24x68QuQ4WImJO-XDTbUVpRBylX7oiRZLOS31hOztVqLWQbErUC_OUUbsOXPN-7BecYsP8Bb-AL6tpN3jnqiGQYyNo_2qe_v2XyaShGDdMqRKwnrn2RMb8i7hR1-_5bUXv8ymVvf_k28RGHix7Hcdjv1bg6bk54-MnCgyJmAjrQrvpiDErDMav7ajt3zda9BBqBsMPBgWk4zJLtH_gBdFF3IVCaqR_bTD5MkpppSEHSvfGoXOU_HJN0w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">АНТРОПОГЕНЕЗ.RU</strong></span>
+          <span>@antropogenez_ru</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/QJs2eugMW3ZKGIoWNA8OdYbsRkcz5B3svJIa7MPrT-Mxnxz0lT8q8K9P93uXTUey6Sge3ImFWGLRXoss8S5EQQE2dUAIZQhd5gtAhClLwSwbKdKLaO58nIgAIMilCryGQsjarQ1MQJcHxK-DTPlOCDvRs8O9cet4MFnwJEgoa-eUgp-BMZzlhpcqCImO1GDqTjhstVuKzvXMGWUP-ObWKJtxXflgcGPnXbiUR4wNJ2KyPJ8ARPYXC7UEiA0oPC_NWvx-RKLiyU8V8DGydZCd6lsJOQDy1MncQQhK2Bv3-4wvssGOJ_7Cfyehb0nT2Jdh4C5ushU7K76JZ1XTtUO6dw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>«Автор ты в школе вообще учился? Не позорься - сворачивай беспонтовый аги…</h3>
+        <p>«Автор ты в школе вообще учился? Не позорься - сворачивай беспонтовый агитпроп. Хватит врать. Пора засучить рукава и начать работать. ЗАЙМИТЕСЬ, НАКОНЕЦ, ПОЛЕЗНЫМ. НАПРИМЕР НА БЕЗКРАЙНИХ ПОЛЯХ РОДИНЫ, В СВИНАРНИКАХ И КОРОВНИКАХ С ВИЛАМИ В РУКАХ!» Почему мы та…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T18:07:21.203Z">Jul 13, 2026, 6:07 PM</time> · <a href="/post/444473404">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/458048413">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/uGLllmhbogJZyyi4NKgxkABCpyIMc2X39uA4ujvEZDsrCWlcM3k9GORb6LOeHmiCXZbu5_LL3BN3Y9kNPAInQkeKXBETA4aogANy4Szo-8Wvqxd0VEve-daWNtjM9cqhb9foZR8vr-Z_D41RUv2PmApAV3oHMP3aEZRq8WspPpaIvqZle1GyNA_-QAPOBXV_M4X_JIzpwEzw3-zfzVDmvor58Fpic0O_oWbKdPlWjvzAIi5mafovwqRlyGToG0YjVR7Hy2Lw2bbwfK2DhmUMbXGDveFXO4ZA-EWnN0o_7Eqs6PJtDVVan0KkTuTLQ4HAlpMgcTbKYjp2ZU4NquZDmg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">💢МЫТИЩИ.LIVE • НОВОСТИ</strong></span>
+          <span>@mytischi_live</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/u1npGRqmHqorhnqeYacWOmcYojH8TJCWC0Ak6wlw3M8aWKfd1zfCh708RJ7uVZQNilnfC46E32uNTObtkfrxIKpdhPTege9l9lWT-zwk-WejhBLms5xyHhKqvb9HDjQ3SEsPK8SJpr_XH57_UWx_pATmTF6VGhlmmUL1HtSIW6Ok_Rwqf-Zc1JCibd5GmZ8nUmYPMUChEh2iMjtpk524ZizJK9seWOa_LZ0vLrpb38-XXPH6RjDpte1s2Lr4wQy9-FGlnrWADAVkLFBZnRfOTn_F3XtVEiuE2b0HXR_KysxprMkE7aawz6KKpG80AjkH0mqBxCVGO--SRG8TOhlmHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Приглашаем предпринимателей на Форум «Осознанный бизнес», который пройдет…</h3>
+        <p>Приглашаем предпринимателей на Форум «Осознанный бизнес», который пройдет 16 июля в 16:00 - добавляйтесь в наш чат для получения подробностей: https://t.me/+E_g4hHarSOVlYjAy Форум пройдет при поддержке Торгово-промышленной палаты г.Мытищи и НКО Союз «Содейств…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T18:06:05.482Z">Jul 13, 2026, 6:06 PM</time> · <a href="/post/458048413">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3354784737">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mUZA3GqhJC1eFadU71UMkxUpujF1KPxGhfC9O3CNFdNbKHqsIs_rHHlr7pkOqlwhtpEGLZ4XsLmYp0x4pojnF1Fc_cfCQlHILKjCu0dGtB7HDpBnmzPI3KI_1L_xHvpKELOX7Z5V6QTHHI15yRlM10dg087NNeaEhZpmv59Ji_WNCIOBZO-dFH0BweznT_9bK6IyBSm4jtvrbJhzQrlQhm9WfFjDe0T8NsjCZ8pdGGYSVSUdkrtnnPUfJ81lIpHY4E9RgMlN61QJXWle9yr3c41BZyWCONqVjlLV25Y-LlinNmIXHH6mRuMS_E1QLsGQSpg_a1bErv9zOj9m8K5z6Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Жесть Краснодара и Края</strong></span>
+          <span>@ghestkrd</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/kmNrDILMig7a_uIUsbCTArpZuo_aC7YxrDxbOSPnhn8vb3cJzMpVJXsbjoHmi_SYi8IwmzYPXU78GlhaLm1bvPc4UHMumjNxVC6SFL-ODyzlh4AD9Ci6ekzHsfhu-cUv7nxDISUMdz_P53yr0gGD4gLEJN2rOtuZZEn4uPtAoSIvnGKwT7uPf9R8ItPGPrm9E-ID5gTwLqjUR6E0Q60eGBNs_0z4YGSwCilltqUX7X_C6CEd4zRlCFDJ6MEozi248yp7R7tKWoo2XyNPQSt-RJcVhKPF3-QSxPgzgzGUZ96BCNAvE_nGLg4B6ezhixJWUmnU6L4LSqbBt0hM8sdY2A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>В Тамани общественники и казаки взялись за топливных барыг В ходе рейда п…</h3>
+        <p>В Тамани общественники и казаки взялись за топливных барыг В ходе рейда по мониторингу топливной ситуации на полуострове выявлены факты перепродажи горючего по завышенным ценам, а также грубые экологические нарушения — при сливе топлива и промывке канистр неф…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T17:56:23.130Z">Jul 13, 2026, 5:56 PM</time> · <a href="/post/3354784737">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2184025273">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Vw3ECsKJifHQ8W4Ebk-ThyQXICoka6PkZKfuHkuxN2TmGGBmPhlK0eriKQkr8ox41p5eBLS3-fY7Xin7oHwd3ekFjCBLX0AkIM5HbaWtMwaYcZH-L442dvNK7d45Rh7YYILbkHtuEnKGONvjBRdKHjzx3Dg3waBd3Xb7nMwijPw3lkov1kISpMSnvgfhvXw00Q7ayswZ3Wp0QG9amFBpanjnBo_wpNGJGxqXl3rSrKZrpf-rJPuVTlZrbo6b8HZ5w9zj14O8OvWn5Sfd3JNHtlXMQ45Lq20v9OrbDwrNpyb3urqosYl7-5db-SN_BjMCBWdpoewoqhWr-moruvk_9Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Двигатель миллионеров | Бизнес</strong></span>
+          <span>@millionairesengine</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/JB5MIXYRBQM5T35xJ4_f3KnMPZHSi7PyE6k8eHFUzwsfFFlI9BcG8ibyE__RgjgW8oy1PbOS-AXTqC0aWoFoKh6dLlLvfa-soiYi63RFY332mQ02BsiXCs-FDZJqZo1z8fBe6cbOHqIshTJxibUnc2rTIGBKBPT9CFNTOr7nepfWEUNOXoFYCJX795ITB46VW9hL2UIZYkQqsl7_jg5f44Lg6o9USwWvl6z0WFtuJlUJrTXXAMQ4Jj89IVlCU4tbFozfsc3LAwNvoGN6DIM8qFXTC0XIAUblhTmQddWu6i_shEB2Y707lIDM5CQkMa_FqIXzEn_Z-CXz828Gx2hGxQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>SEO-продвижение SEO (Search Engine Optimization) — это комплекс действий,…</h3>
+        <p>SEO-продвижение SEO (Search Engine Optimization) — это комплекс действий, направленных на повышение видимости сайта в поисковых системах, что приводит к увеличению органического трафика. Главная цель SEO — сделать так, чтобы потенциальные клиенты находили ваш…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T17:52:07.464Z">Jul 13, 2026, 5:52 PM</time> · <a href="/post/2184025273">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3020162036">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/N4vvwjDf-3F6r3lYi4fp2pKhuulBNrGzCnESiwsXOIbD5iKZP3LwVZIokW92NLThInh-j98oku0YthF9dWIO58Z-JbzZuIhaCsav9-Sfr6DQphRL92LVleUb9asHNe4sX97xoOU9PDopXXVrVJSdsjePcK7qWEoEJBYrgFJVzvZu3yQ7sZvsqD3-vtWA0bA7VDKUXUdaHtmgmZ_x3V85QVPmnoYjRm6d_bVvMAGf7PxD5OjCEmzXNAKoa-vQ8wr59KEoHyO8yoIGeKFaeh3oPg7VVQZ3afZaBh3OMmy5GA4HQKeRLCuFBsor3688Qi8gllxZpaUHeqvQNX7gLa8q9A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Цифровая Сатира</strong></span>
+          <span>@dfhumor</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/OeKuTXfJivkysfMAkpPVkeGUGOSTxZvjySMSKGMRDnzp07ByJwDE6kUol4qy6D_A81ymLJwKXVwUTAubEj_SeR-8om_pxLKdXPDDKMSlbxKEsfZ5FUOUcvRyWQuPWklp9s43W79SRIilJef88yIT6_M3-qgApx6w_bJPO0pwB87Bc_kqfThw1voMfA7ah0caWQ6oIIN_aQcGYbXD_pvLeWpasLsBEaTQS7_vRSE0y68cFsKp8F0WTEacHmUakhv5_tBiAW05ybRL9kIxJXZ-DdBwH0jCLpWy2kt_pNZnw8RuP4CRLSqLYoDCVDgHR0xDpiPzaN0ahcbpc2dSMHxmQA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🇷🇺 ЗАЩИТА РОДИНЫ — ДЕЛО СИЛЬНЫХ МУЖЧИН! Открыт набор: комплектуем новые…</h3>
+        <p>🇷🇺 ЗАЩИТА РОДИНЫ — ДЕЛО СИЛЬНЫХ МУЖЧИН! Открыт набор: комплектуем новые батальоны. Присоединяйся к своим! БЕЗ ВОЕННЫХ ДЕЙСТВИЙ !НУЖНЫ ЛЮДИ В ТЫЛ СРОЧНО 👨‍👩‍👧‍👦 Вы помогаете Родине Государство берёт на себя заботу о вашем будущем и вашей семье: 🛡 Нам тр…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T18:08:44.011Z">Jul 13, 2026, 6:08 PM</time> · <a href="/post/3020162036">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/862305376">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/A0b4-IhVFVwL28AGnfZ1VFZnFLT7T8JO2NKBhaAlKgrflWkmFJFLAb1eKZwNBREEqYxyunvUaL1jhQXG9WCvSBAoSAbCwqjQDK56v-6xJyfqSOA314OTU85Z65DK644QRQ2_5MxXL9PkxlccoNvNkLkbj_ET2K1AYfWQo12RAn89-HA8yE9HoVdl42KdN-p2kQlYNNJkuwsRx8jp76-zX5IleYTau7cxYTpTkcrWhKOgDeD-c-y1I5_1IbI5J20Wcezt-Ffvw-csxrdlB5ylBXpjb0pGctLXpGgTBeOzDJLZ99Tk_VFCpupfIzeEGs-IX-vOH-axWMCuTPKTfueLyA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Анекдоты X</strong></span>
+          <span>@anekdot_x</span>
+        </span>
+      </p>
+        
+        <h3>Работаю сисадмином на фирме. Привезли новые компы и прочую периферию, кор…</h3>
+        <p>Работаю сисадмином на фирме. Привезли новые компы и прочую периферию, коробки занимают больше половины моего кабинета. Распаковал один комп, устанавливаю необходимое для работы сотрудников программное обеспечение. Наверху стопки коробок кинул прямоугольный пе…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T18:07:12.395Z">Jul 13, 2026, 6:07 PM</time> · <a href="/post/862305376">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/4204760702">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/X1cIBdtsGmuhyqG2KDYHNkcV8Q1ADjWzZC36aw0d8Di3rtbb8D54idhDcfBAgzMz8MAKVfi_JRNixWRKldPnZ64bmqoL9nBgikhdoifvh2fr0vgYaT6WB8onC0oWbpwiOM09UmXE6StQnv9mNgVsPj9JYPtj9ZjFWG204a4AwZDxHiBwZMe7X2anC2L_VFkLeJoGFOBDfym0WQGm64bMOzEUwOV063Bs63pKXKMPnuttIsdM6NjT29NXH3pxkyWLuN3sZwD5W3Mj9nkpDFnV0alrqAmam0-E5PqJJ4x-44nNvK0oTQ68CITf3Hs_vn1GpT5P95j34G1sDvZe2CDUug.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Афиша бесплатных событий Москвы</strong></span>
+          <span>@mosafishka</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/FTKRBrQN7T-knOJ2IBVku06xSPRgDn3sWA6gKLqz79zkeFumv2Ib240lJyAoaPnweABQcabQGY2JveA7v-v_yak51anGiYKp0mbtQEgiK09XonIvj5NDjA9GVzdSA2UerlPEOOowgFit0IQd7ISeISiZB8oms22Mrf1rOTeCGXfzSSKWObJ-MfpGHSpf1bpLWJdYLCtiG0R-CkO6ruy3HZq9KALyNQihVc0BU2V8sVAlrS-OimsoCpRvj6t8xwdVL24LKT4e-AIeY-nfmjLfWcUf7uKLT4MY-pvNpoFvTgizZg-rZV5xsRIDSWklId8X4-ZKxJxW8XzxropDcz43ew.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Фестиваль «Две реки» В парке искусств «Музеон» 19 июля пройдет зрелищный…</h3>
+        <p>Фестиваль «Две реки» В парке искусств «Музеон» 19 июля пройдет зрелищный фестиваль. Профессиональные спортсмены продемонстрируют свое мастерство в водных видах спорта. В программе — академическая гребля, заезды на лодках «Дракон» и «Викинг», водно-моторные ви…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T18:05:24.484Z">Jul 13, 2026, 6:05 PM</time> · <a href="/post/4204760702">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/458706403">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/sPXomCxrUFyWNbOxIUlGWLlIc9fLKMY0TyOCK6LZOg5AwZF3mNYHDZFqzFZfrkVMrMByK_n1p6mvIG2wOPJEcI5XccMkuHmVDr48ZWmRoWPFNfOmoMoJgEqjgUVKcDAiGJKiz8lAsUNetGlFXqbL0wcKOGqrofzqcVmWfjLM20dmAUG2mmxAPWYSXz68SoIqZpYX8PWajRDu199fW04gauEK9Ws-P48geqr9UBJmXPy5Dg6A_cMxyqK7SKvPKuVJjXQ2Wwl-2BlKSmZJN85g1Vzehl1Y3Cn8Y3fgyLQn5Y2hDSRVIBQuuWyCGBLds_BHa2OH_JKjrCNA2lIzn1eHFQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Мариуполь в курсе 🇷🇺</strong></span>
+          <span>@mariupol_v_kurse</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/cf93CVvEnIpbyT63wdeUS_4mWEKC6LBEDzU7HbAv-yrqIj0Pn-h4JaK-MeNvZwf-qohlZgHr2lQWn3dQ58pJPqackxxA0Y9_dmMrzKzcF7rpf87px4RX2wESukXc7CHqACyj-6cyr-AyTqh7ylH_eo1jf1tgurZWsw79SxjE19_-PKae0z0sFKs6MKDeITFUOnBsqLYFQizn8zrdAHVy97p0LeO64w_mNBZ6XP2TFH5OnCfd1yRkahx3Z80auehoDdelehLItr8D8ZzG8TJUg7DunxEh3SlaW2L_unB411MZ5v8HvgcG9lBzRzuIazP1SN05LcgJOq3ZR6LwgH_rdQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Идеально посаженный Hornet российскими бойцами раскрыл сущность террорист…</h3>
+        <p>Идеально посаженный Hornet российскими бойцами раскрыл сущность террористов из ВСУ Нашим бойцам удалось приземлить с помощью средств РЭБ один из украинских БПЛА очень аккуратно. Тут же отправили его «мозги» на исследование и были отчасти в шоке от того, какие…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-13T18:04:49.514Z">Jul 13, 2026, 6:04 PM</time> · <a href="/post/458706403">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
