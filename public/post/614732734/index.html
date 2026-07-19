@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>`O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT по… — Kali Linux, Russia war | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Kali Linux in Russia. `O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT позволяет читать и писать файл почти напрямую, минуя page cache ядра. Зачем это нужно базам данных? У PostgreSQL,… Topics: war, politics, transport reviews, auto." />
+  <meta name="keywords" content="margeleT, Telegram, Russia, Kali Linux, linuxkalii, war, politics, transport reviews, auto" />
+  <link rel="canonical" href="https://www.margelet.space/post/614732734" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="`O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT по… — Kali Linux, Russia war | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Kali Linux in Russia. `O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT позволяет читать и писать файл почти напрямую, минуя page cache ядра. Зачем это нужно базам данных? У PostgreSQL,… Topics: war, politics, transport reviews, auto." />
+  <meta property="og:url" content="https://www.margelet.space/post/614732734" />
+  <meta property="og:image" content="https://cdn4.telesco.pe/file/AzDWVoj6J8brbynV-T-dQ2PGmodIxYZLmT5-JShqkCFOxftp9zIF4WhlYEjpvxmR2XZDcIqF8TzFLlxL5xxSYPxHLdhnBvS8-kVELt7dcvSUK5MLmH_DrocA3Xc_LwJsWNIDFGsTt9lwUK-HV02r6klaaPJHc1UjsI7pnSMcnxZOy-8fVHdZ_sMUxMxICIx7rLXwMIomWmHNt7MPlBCp609PMdRsefOUf_vJ7O2TSYAxwa2D_rRtZLicnZzyjVu4IEeYuHom-2xO5lWXv1iq0qJaqHrhkjnMkmTpX0lX6MSEK5mCr9CbK9Nl97nZz7f3SzXJSmCMvFDlwIuImHWA3g.jpg" />
+  <meta property="og:updated_time" content="2026-07-19T14:37:07.126Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="`O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT по… — Kali Linux, Russia war | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Kali Linux in Russia. `O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT позволяет читать и писать файл почти напрямую, минуя page cache ядра. Зачем это нужно базам данных? У PostgreSQL,… Topics: war, politics, transport reviews, auto." />
+  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/AzDWVoj6J8brbynV-T-dQ2PGmodIxYZLmT5-JShqkCFOxftp9zIF4WhlYEjpvxmR2XZDcIqF8TzFLlxL5xxSYPxHLdhnBvS8-kVELt7dcvSUK5MLmH_DrocA3Xc_LwJsWNIDFGsTt9lwUK-HV02r6klaaPJHc1UjsI7pnSMcnxZOy-8fVHdZ_sMUxMxICIx7rLXwMIomWmHNt7MPlBCp609PMdRsefOUf_vJ7O2TSYAxwa2D_rRtZLicnZzyjVu4IEeYuHom-2xO5lWXv1iq0qJaqHrhkjnMkmTpX0lX6MSEK5mCr9CbK9Nl97nZz7f3SzXJSmCMvFDlwIuImHWA3g.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Kali Linux","item":"https://www.margelet.space/linuxkalii"}]},{"@type":["Article","SocialMediaPosting"],"headline":"`O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT по…","description":"Fresh Telegram snapshot from Kali Linux in Russia. `O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT позволяет читать и писать файл почти напрямую, минуя page cache ядра. Зачем это нужно базам данных? У PostgreSQL,… Topics: war, politics, transport reviews, auto.","articleBody":"`O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT позволяет читать и писать файл почти напрямую, минуя page cache ядра. Зачем это нужно базам данных? У PostgreSQL, MySQL, RocksDB и других систем часто уже есть свой buffer pool. Если ещё и ядро будет кэшировать те же страницы, получится двойное кэширование и лишняя трата памяти. Но у O_DIRECT есть неприятное условие: всё должно быть выровнено по блоку. • buffer • file offset • размер чтения / записи Например, под 4 KB блоки нельзя просто так прочитать 123 байта в любой `malloc`-буфер. Промахнулся с alignment — read() вернёт EINVAL. Именно поэтому низкоуровневый I/O в базах выглядит таким странным: там важны не только данные, но и то, как они лежат в памяти.","text":"`O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT позволяет читать и писать файл почти напрямую, минуя page cache ядра. Зачем это нужно базам данных? У PostgreSQL, MySQL, RocksDB и других систем часто уже есть свой buffer pool. Если ещё и ядро будет кэшировать те же страницы, получится двойное кэширование и лишняя трата памяти. Но у O_DIRECT есть неприятное условие: всё должно быть выровнено по блоку. • buffer • file offset • размер чтения / записи Например, под 4 KB блоки нельзя просто так прочитать 123 байта в любой `malloc`-буфер. Промахнулся с alignment — read() вернёт EINVAL. Именно поэтому низкоуровневый I/O в базах выглядит таким странным: там важны не только данные, но и то, как они лежат в памяти.","keywords":"margeleT, Telegram, Russia, Kali Linux, linuxkalii, war, politics, transport reviews, auto","url":"https://www.margelet.space/post/614732734","mainEntityOfPage":"https://www.margelet.space/post/614732734","datePublished":"2026-07-19T14:37:07.126Z","dateModified":"2026-07-19T14:37:07.126Z","image":["https://cdn4.telesco.pe/file/AzDWVoj6J8brbynV-T-dQ2PGmodIxYZLmT5-JShqkCFOxftp9zIF4WhlYEjpvxmR2XZDcIqF8TzFLlxL5xxSYPxHLdhnBvS8-kVELt7dcvSUK5MLmH_DrocA3Xc_LwJsWNIDFGsTt9lwUK-HV02r6klaaPJHc1UjsI7pnSMcnxZOy-8fVHdZ_sMUxMxICIx7rLXwMIomWmHNt7MPlBCp609PMdRsefOUf_vJ7O2TSYAxwa2D_rRtZLicnZzyjVu4IEeYuHom-2xO5lWXv1iq0qJaqHrhkjnMkmTpX0lX6MSEK5mCr9CbK9Nl97nZz7f3SzXJSmCMvFDlwIuImHWA3g.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"war"},{"@type":"Thing","name":"politics"},{"@type":"Thing","name":"transport reviews"},{"@type":"Thing","name":"auto"}],"author":{"@type":"Organization","name":"Kali Linux","url":"https://www.margelet.space/linuxkalii","logo":"https://cdn4.telesco.pe/file/v4JaFOI6hXT1x1btm1yS3RSvOgIEFXcwY2g2lAW2UCtvRiAUJT64LcFv9E_61D0GrpUGZGGd5y4aF5O9bJtDPPNdyfcwsxBD7p_XtjoadP3Vo2EcGJzpbDvalrkCZqCqIBnwXvZOnN4SdzHHzl497PBTVbxWMgR3W24tO1w06gVIY4Q3mnn7jWSUL5i8VN4ArCgKZMFOimEldwoFqE9WKNrf6mwUtKHzflYZw3KcElZSZqhA0SAkAZrK3U48gXPYUGxl5TqS7q52KeNbVdA9aq9mU6BVLbJ4Cg6uoPgw-iCgl8llfpkc7ksy5iayKd73jCjoFsAbDZ_J5Z4vaqzQVw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/linuxkalii/2113?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/v4JaFOI6hXT1x1btm1yS3RSvOgIEFXcwY2g2lAW2UCtvRiAUJT64LcFv9E_61D0GrpUGZGGd5y4aF5O9bJtDPPNdyfcwsxBD7p_XtjoadP3Vo2EcGJzpbDvalrkCZqCqIBnwXvZOnN4SdzHHzl497PBTVbxWMgR3W24tO1w06gVIY4Q3mnn7jWSUL5i8VN4ArCgKZMFOimEldwoFqE9WKNrf6mwUtKHzflYZw3KcElZSZqhA0SAkAZrK3U48gXPYUGxl5TqS7q52KeNbVdA9aq9mU6BVLbJ4Cg6uoPgw-iCgl8llfpkc7ksy5iayKd73jCjoFsAbDZ_J5Z4vaqzQVw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
+          <span>@linuxkalii</span>
+        </span>
+      </p>
+      <h1>`O_DIRECT`: когда база данных обходит page cache В Linux флаг O_DIRECT по…</h1>
+      <p>`O_DIRECT`: когда база данных обходит page cache
+
+В Linux флаг O_DIRECT позволяет читать и писать файл почти напрямую, минуя page cache ядра.
+
+Зачем это нужно базам данных?
+
+У PostgreSQL, MySQL, RocksDB и других систем часто уже есть свой buffer pool.
+Если ещё и ядро будет кэшировать те же страницы, получится двойное кэширование и лишняя трата памяти.
+
+Но у O_DIRECT есть неприятное условие: всё должно быть выровнено по блоку.
+
+• buffer
+• file offset
+• размер чтения / записи
+
+Например, под 4 KB блоки нельзя просто так прочитать 123 байта в любой `malloc`-буфер.
+Промахнулся с alignment — read() вернёт EINVAL.
+
+Именно поэтому низкоуровневый I/O в базах выглядит таким странным: там важны не только данные, но и то, как они лежат в памяти.</p>
+      <img src="https://cdn4.telesco.pe/file/AzDWVoj6J8brbynV-T-dQ2PGmodIxYZLmT5-JShqkCFOxftp9zIF4WhlYEjpvxmR2XZDcIqF8TzFLlxL5xxSYPxHLdhnBvS8-kVELt7dcvSUK5MLmH_DrocA3Xc_LwJsWNIDFGsTt9lwUK-HV02r6klaaPJHc1UjsI7pnSMcnxZOy-8fVHdZ_sMUxMxICIx7rLXwMIomWmHNt7MPlBCp609PMdRsefOUf_vJ7O2TSYAxwa2D_rRtZLicnZzyjVu4IEeYuHom-2xO5lWXv1iq0qJaqHrhkjnMkmTpX0lX6MSEK5mCr9CbK9Nl97nZz7f3SzXJSmCMvFDlwIuImHWA3g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-19T14:37:07.126Z">Jul 19, 2026, 2:37 PM</time> · Russia</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/ru/tag/war">war</a>
+<a class="pill" href="/country/ru/tag/politics">politics</a>
+<a class="pill" href="/country/ru/tag/transport/reviews">transport / reviews</a>
+<a class="pill" href="/country/ru/tag/auto">auto</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · Russia · Kali Linux · war · politics · transport / reviews. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/ru">Open live margeleT feed</a>
+        <a class="secondary-open" href="/linuxkalii/2113">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/linuxkalii/2113?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/790170667">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Rbjtz19i5rlahD36C6eUqy9Vy8SbIoqS07M99YT4jDcBV9rzjdYwJcgHFz_Ivim-_LP8SMGn6DyoMRZtEcu5U4PofHRodY1ZR2HcEkwYUhsKR5UKEM54zCFK7auNQwsDJBnxbBmLtctHqxqdImdMwpdCeTAyITlpT7QtRIgDKyZodeXKNlq5GvGCZXo8Zh71xu3QvhR-5ej2fnWx8izH-oykYyIDXsq6emp-rO_ZVN1MfoRDHBj_FohkmFUj5--pNQ6Ew0AtUHzXN6PDcqxWuMqwG_oSPdTM5J6iYOkZBxtydDA6ghzL4wcLUijtEwTwB9NQPmOuyQuaZRHQlIugCQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Грокс</strong></span>
+          <span>@groks</span>
+        </span>
+      </p>
+        
+        <h3>Пха! Компания Trump Media будет продавать скоростной доступ к публикациям…</h3>
+        <p>Пха! Компания Trump Media будет продавать скоростной доступ к публикациям Трампа в социальной сети Truth Social, чтобы крупные трейдинговые фирмы могли получать эти публикации на «миллисекунды раньше» для высокочастотной торговли. Вспомнился голос послушников…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:35:47.642Z">Jul 19, 2026, 2:35 PM</time> · <a href="/post/790170667">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/849719646">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/psiAsmHC3boSuPx7fFUWLfQIIz6vzcnNq2Fud8KQ5EIvNuW8WUbMyBrJ9rwPuneaSOCnSjRmYpug9RbLzd5kyRDDeEjxjuge4oHLyH3hXqP56VQw5jGpIkglmOff30J9lMKPRtqS4SykmxUgxy9Jfw_2kW8RMKWR7UeipzxEBdzszC50GjwC3cm8U5m7nvJYlb6VkcwCSmvRvB5oZCXcQNwAuDHManVsPEE6lyGD-N53wkPkG9tAU8FyqiYMsaTVyIXWWWiCQ_xOKqNe3NY4gjC9HB_hCJR9gV6TtC6gjoEnPAQ-h_Bw20CuL5kBoYqRq63LrudRvMQx447ecohkjg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ANNA NEWS</strong></span>
+          <span>@anna_news</span>
+        </span>
+      </p>
+        
+        <h3>Минобороны РФ рассказало о ночном ударе по Украине В Киеве поражены предп…</h3>
+        <p>Минобороны РФ рассказало о ночном ударе по Украине В Киеве поражены предприятия, производящие комплектующие к крылатым ракетам FP-5, FP-7 и FP-9, дронам дальнего действия &quot;Дип страйк&quot; и управляемым ракетам &quot;Нептун-МД&quot;. Поражен сортировочный цех &quot;Новой почты&quot;,…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:33:32.493Z">Jul 19, 2026, 2:33 PM</time> · <a href="/post/849719646">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/913077177">
+        <p class="source">
+        
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Zvezdanews | «Звезда»</strong></span>
+          <span>@zvezdanews</span>
+        </span>
+      </p>
+        
+        <h3>💥В руины превратился газоперерабатывающий завод противника в Харьковской…</h3>
+        <p>💥В руины превратился газоперерабатывающий завод противника в Харьковской области. Армия отработала по цели дронами &quot;Гербера-4 Сикер&quot;. Объект успешно поражен (первое видео). Также разгромлен логистический центр в Черниговской области. ВСУ использовали его для…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:32:28.502Z">Jul 19, 2026, 2:32 PM</time> · <a href="/post/913077177">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/91226922">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/lulL3-CORrGEGecLM-Jj07qmBnWprKzd42WNfWHTt_v2qAWweEh-Nh73fu0ANFcnrQ-DmIbP47tpmQqaSbMDmNDpMLisuRFa_v3glI4txHNdSV75DJ60MvAwQF_-XvL60GCSwg-EHwmT-CwwXxf6-5zPkDi21_SGPuXSvk5UVSToi1Q_sS_L8dmHbK5TnrQPfKAn6uTDBNdijnhYZNz86yHoU8HhciU7kmk62Svt4LOjNa7WB-zwQGmuq_uxaYS5mtvbIVsKlpDFjFQjmv8sJmaOfgvd3908oeZq01KcwxDxtflLwBMJfZPi4MxGDUX2eajlXmIbYTMc1oGN44s60A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Жесть Белгород</strong></span>
+          <span>@zhest_belgorod</span>
+        </span>
+      </p>
+        
+        <h3>❗️Предварительно, сегодня дрон взорвался на парковке «Сити Молла» По инфо…</h3>
+        <p>❗️Предварительно, сегодня дрон взорвался на парковке «Сити Молла» По информации Оперштаба, в Дубовом повреждено остекление коммерческого объекта. Читатели сообщают, что ТЦ не работает. Больше информации о происшествиях на территории области публикуем в нашем…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:31:41.722Z">Jul 19, 2026, 2:31 PM</time> · <a href="/post/91226922">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/377916784">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rTYALwlYsa-_o2h1dALHflod1p65XZzmK_o2NHl3vRlD9MTPrnJHhLyY4zyJP0mxoXcLj-x4vj3Wml9e6fAKxnKj7xl0KtvpK2l4sLDdCXo0H3Oey3WHUBosoO6uSjdDjUw-YqTHtDMdROHUtTlzdqC1vJZ50z_VvBdI5mgOlV1vG-l1UyES61Naeewd61g8VKh_9OtW4TbSggVAsSAxvX8KE9yvDZArsfqTeGVF8xNHEHv5cwvS7_nBbUiVB7M5NrS3LvmdFTw-AdoMhmNTcpdHe-zAP2ZAoj-srOa0PWipTL2UitQ8z9U4GM1DxK67vhgHrH9MIrfMiWp3w0i9xw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Мир сегодня с &quot;Юрий Подоляка&quot;</strong></span>
+          <span>@yurasumy</span>
+        </span>
+      </p>
+        
+        <h3>Война на Украине - удары по тылам: и снова о Wildberries – почему я счита…</h3>
+        <p>Война на Украине - удары по тылам: и снова о Wildberries – почему я считаю это шагом отчаяния Киева. После моего вчерашнего видео об ударе по двум складам Wildberries поднялся неимоверный шум моих оппонентов, которые призвали строчить на меня доносы, требуя м…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:31:08.650Z">Jul 19, 2026, 2:31 PM</time> · <a href="/post/377916784">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1907155888">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rTYALwlYsa-_o2h1dALHflod1p65XZzmK_o2NHl3vRlD9MTPrnJHhLyY4zyJP0mxoXcLj-x4vj3Wml9e6fAKxnKj7xl0KtvpK2l4sLDdCXo0H3Oey3WHUBosoO6uSjdDjUw-YqTHtDMdROHUtTlzdqC1vJZ50z_VvBdI5mgOlV1vG-l1UyES61Naeewd61g8VKh_9OtW4TbSggVAsSAxvX8KE9yvDZArsfqTeGVF8xNHEHv5cwvS7_nBbUiVB7M5NrS3LvmdFTw-AdoMhmNTcpdHe-zAP2ZAoj-srOa0PWipTL2UitQ8z9U4GM1DxK67vhgHrH9MIrfMiWp3w0i9xw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Мир сегодня с &quot;Юрий Подоляка&quot;</strong></span>
+          <span>@yurasumy</span>
+        </span>
+      </p>
+        
+        <h3>Война на Украине - удары по тылам: и снова о Wildberries – почему я счита…</h3>
+        <p>Война на Украине - удары по тылам: и снова о Wildberries – почему я считаю это шагом отчаяния Киева. (ОБЛЕГЧЕННАЯ ВЕРСИЯ) После моего вчерашнего видео об ударе по двум складам Wildberries поднялся неимоверный шум моих оппонентов, которые призвали строчить на…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:31:08.650Z">Jul 19, 2026, 2:31 PM</time> · <a href="/post/1907155888">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1987486635">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/QtnsI3vD_3166jXU7yk2dL0op4Jmt1jir_e1U8ERtycnVS4b8v1hxG1Nn5ucK0LDpIWtIBgwE9UHK8k6xM3c9In5lRnv60zeyAe2iZNQV4BssQ796MOMu7i3ng7zNW5QQZ0McvpHPYbU6I1YlvJeWUlMv5vGddD6xyOkckdxzy_tg1Y-pzNOr0iPBwsRgLie97SMx4UCQ2Os0K-2FvosTbgmt9xrSR8icTDJPCgD1QpPhBMdXHMIYPZ7fxJWN4ZyBx_xcz--VYv-lrP_sW1oz3p6YqxFfVQX6Ab3fnSdPHv2lASneUdg2e5_O0uO9hArCv8aj0NDSTnWeZdxr3DU6g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">celeb! / Новости про знаменитостей</strong></span>
+          <span>@yourceleb</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/quDKEx9mgV1pVQzE43TzJy9olcvihjmWVJBOn2kosz0aATRn0Sko32HCy7W2ECRVSvdQj1TjiysUeGouh4UDWMG5Qh84T1y81A-Qy3ehfoZwLyDD30GiS66UvWz5VXhP_Gppr8pBKJ5V940ggMluEOPee79TLOWzwLZIqti50G4_Z-Z9knYHJJccyKlFlnRlMdYVynBYgAa9X_6TiCUqalfvKfUnS6czk4rSe84ptAMDQc3ZIulZKpkNY93FEniYahOdHJlZoPqE2kzX6xH51N9ACBhB64BXoR0q65gXlKA5jKJVpWUAtqbTn65rBLLHcbYNZa9ZhxzWMxbPouIJqQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Джейден Федерлайн высмеял слухи о том, что его мать Бритни Спирс — клон 1…</h3>
+        <p>Джейден Федерлайн высмеял слухи о том, что его мать Бритни Спирс — клон 19-летний сын поп-звезды вступился за знаменитую мать во время прямого эфира в соцсетях. Поводом стал вирусный ролик в TikTok, набравший более 1,2 миллиона лайков, в котором пользователи…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:31:03.747Z">Jul 19, 2026, 2:31 PM</time> · <a href="/post/1987486635">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3605534380">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/AkBYYQN8llwVx9sRzSJKQPfua8vZ4ITLOizyWvmjfhZhXpBfkncG4DYLTt4yAc0dTeS3NE3sOn4tfyt6Tpu09FEG3HhlODWD42EcZR1Jy3-OYfq3RWZaBO59jWEaQfuV46_KdX0AvI5dGLEE_L0AubJW3YKLQa859eYcMIPsKGNWu9VnXEXjw31BXH1pNDG7fJrWMwIViCwS-Hg8IUOuPFVbYTbNwZw69mL4Vo3j8DF8O7uII5CRzDQqfAKajuKtMPZhvGYTIj67mitZnZT4SFQd17oEw2E22vfqadawfEWCV8l8Bo31t6RpDTw8-F42idqwygsYxoOiuKO7uBWLkw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Северный Ветер</strong></span>
+          <span>@warriorofnorth</span>
+        </span>
+      </p>
+        
+        <h3>Путь больного эпилепсией в ВСУ: Венжега А.В. (17.02.1984 г.р.), 116 омбр…</h3>
+        <p>Путь больного эпилепсией в ВСУ: Венжега А.В. (17.02.1984 г.р.), 116 омбр Обычный насильно мобилизованный украинец. Родился и вырос в Полтаве. Долгое время его не мобилизовали в ВСУ из-за эпилепсии. Однако в 2025 году украинское командование всё же решило, что…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-19T14:30:13.403Z">Jul 19, 2026, 2:30 PM</time> · <a href="/post/3605534380">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
