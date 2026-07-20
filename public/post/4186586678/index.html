@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68… — 科技圈🎗在花频道📮, China health research | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health." />
+  <meta name="keywords" content="margeleT, Telegram, China, 科技圈🎗在花频道📮, zaihuapd, health research, health" />
+  <link rel="canonical" href="https://www.margelet.space/post/4186586678" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68… — 科技圈🎗在花频道📮, China health research | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health." />
+  <meta property="og:url" content="https://www.margelet.space/post/4186586678" />
+  <meta property="og:image" content="https://www.margelet.space/hero.webp" />
+  <meta property="og:updated_time" content="2026-07-20T16:38:09.471Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68… — 科技圈🎗在花频道📮, China health research | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health." />
+  <meta name="twitter:image" content="https://www.margelet.space/hero.webp" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"China","item":"https://www.margelet.space/cn"},{"@type":"ListItem","position":3,"name":"科技圈🎗在花频道📮","item":"https://www.margelet.space/zaihuapd"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68…","description":"Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health.","articleBody":"Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于 2024 年 10 月停止维护，官方极大概率不会为此推送安全补丁。报告作者指出，唯一补救措施是升级到 Fastjson2，或在启动参数及配置文件中启用 SafeMode。建议用户立即排查相关依赖，并尽快迁移至仍在维护的 JSON 解析库。 Kirill Firsov 🌸 在花频道 · 茶馆水群 · 投稿通道","text":"Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于 2024 年 10 月停止维护，官方极大概率不会为此推送安全补丁。报告作者指出，唯一补救措施是升级到 Fastjson2，或在启动参数及配置文件中启用 SafeMode。建议用户立即排查相关依赖，并尽快迁移至仍在维护的 JSON 解析库。 Kirill Firsov 🌸 在花频道 · 茶馆水群 · 投稿通道","keywords":"margeleT, Telegram, China, 科技圈🎗在花频道📮, zaihuapd, health research, health","url":"https://www.margelet.space/post/4186586678","mainEntityOfPage":"https://www.margelet.space/post/4186586678","datePublished":"2026-07-20T16:38:09.471Z","dateModified":"2026-07-20T16:38:09.471Z","image":["https://www.margelet.space/icon-512.png"],"video":{"@type":"VideoObject","name":"Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68…","description":"Fresh Telegram snapshot from 科技圈🎗在花频道📮 in China. Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。 Fastjson 1.x 已于… Topics: health research, health.","thumbnailUrl":"https://www.margelet.space/icon-512.png","uploadDate":"2026-07-20T16:38:09.471Z","contentUrl":"https://cdn5.telesco.pe/file/15d48d728b.mp4?token=lUiwyGG4uaOQ_2d0ftfNslaELlcS-yl74upxO1rqmtQW_KnbkoYMB2G1znfzvIUN_5TUWXyDCR3EQj2zxVcrAqiYhqMyunZXhZzSIRzFhLwAe7UVeTMyPKU4QRhDoH8xbyFE-yss58hDAsoZo2Pp3MCcCpzrRgdrRkHGW6dd3nnn5zmKdB3f0gvQmbp4AvWy8HyrrTRIhFJ4ucIVJp0J-pc1F1ASSDUbCSf68QE1xfDSjbHhWeh6-Y88U8BHXDHBuH799qGfPFmZP19VFRASQwWzobnF6NdqpjT04tQ15l4lyJe7GmaOR1JCyCW_Kotb2qMO7m1Z8Jkbt1T8MdWOyQ"},"inLanguage":"zh","about":[{"@type":"Thing","name":"health research"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"科技圈🎗在花频道📮","url":"https://www.margelet.space/zaihuapd","logo":"https://cdn1.telesco.pe/file/In14gV0BmTxOxUMF39wkvL5-ZArWeo0izaIumTo8mimwO6JmBtaeL1OpBnwNier0nb2ykxi87Qj1HezRu1BS2BypGn4mwkVPE8QFxr7c-xjU3E8ZVO6K5Ji1dI8q2FSOX7fk9T7zqP2DyriiSVIu79o0XwchwAjJW5vXHdFwlGPeixCHLyQTIHWanYt3BnF_vi6DmPY5ZH56mIhlGgwM5pg5QXBYV99dXZhaTvlAgZkUmW-hhWvPkgwbD8Z3rFpdeSQfxQqJMdXs6690TwqDyfnJcqD1FVd5u1ONHny2s8oDYlGqlEZV9Rn_36c3D5AjIYXJc1OGOPCtJ3-r3yirsw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/zaihuapd/42678?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/In14gV0BmTxOxUMF39wkvL5-ZArWeo0izaIumTo8mimwO6JmBtaeL1OpBnwNier0nb2ykxi87Qj1HezRu1BS2BypGn4mwkVPE8QFxr7c-xjU3E8ZVO6K5Ji1dI8q2FSOX7fk9T7zqP2DyriiSVIu79o0XwchwAjJW5vXHdFwlGPeixCHLyQTIHWanYt3BnF_vi6DmPY5ZH56mIhlGgwM5pg5QXBYV99dXZhaTvlAgZkUmW-hhWvPkgwbD8Z3rFpdeSQfxQqJMdXs6690TwqDyfnJcqD1FVd5u1ONHny2s8oDYlGqlEZV9Rn_36c3D5AjIYXJc1OGOPCtJ3-r3yirsw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+      <h1>Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞 安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68…</h1>
+      <p>Fastjson 1.x 被曝无 gadget 高危 RCE 漏洞
+
+安全研究人员 Kirill Firsov 披露，Fastjson 1.2.68 至 1.2.83 版本存在高危远程代码执行漏洞。该漏洞无需开启 autoTypeSupport，也无需依赖 classpath gadget，在 JDK 8/17/21 等版本上均可利用。
+
+Fastjson 1.x 已于 2024 年 10 月停止维护，官方极大概率不会为此推送安全补丁。报告作者指出，唯一补救措施是升级到 Fastjson2，或在启动参数及配置文件中启用 SafeMode。建议用户立即排查相关依赖，并尽快迁移至仍在维护的 JSON 解析库。
+
+Kirill Firsov
+
+🌸 在花频道 · 茶馆水群 · 投稿通道</p>
+      <div class="card small"><strong>Video in original post</strong><p class="muted">Video media is loaded in the live margeleT feed or in the original Telegram post.</p></div>
+      <p class="meta"><time datetime="2026-07-20T16:38:09.471Z">Jul 20, 2026, 4:38 PM</time> · China</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/cn/tag/health/research">health / research</a>
+<a class="pill" href="/country/cn/tag/health">health</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · China · 科技圈🎗在花频道📮 · health / research · health. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/cn">Open live margeleT feed</a>
+        <a class="secondary-open" href="/zaihuapd/42678">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/zaihuapd/42678?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/179152599">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/In14gV0BmTxOxUMF39wkvL5-ZArWeo0izaIumTo8mimwO6JmBtaeL1OpBnwNier0nb2ykxi87Qj1HezRu1BS2BypGn4mwkVPE8QFxr7c-xjU3E8ZVO6K5Ji1dI8q2FSOX7fk9T7zqP2DyriiSVIu79o0XwchwAjJW5vXHdFwlGPeixCHLyQTIHWanYt3BnF_vi6DmPY5ZH56mIhlGgwM5pg5QXBYV99dXZhaTvlAgZkUmW-hhWvPkgwbD8Z3rFpdeSQfxQqJMdXs6690TwqDyfnJcqD1FVd5u1ONHny2s8oDYlGqlEZV9Rn_36c3D5AjIYXJc1OGOPCtJ3-r3yirsw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        <img src="https://cdn1.telesco.pe/file/b_RB607xEFNHK19xsW8cm5PKRvkjjMwyT9x_ZkUnzQOgpIeFqH8m-CPnkonAhi_9MQyMvrMJeWiCUMPJ90EoeAlMyRq2l7U8RE7IDb265lMN9ZKN541T2pq-UELmsXFKF-_TGNsktbknbGUSJ3c89cz2w0IX2qlB9N74X26PWkmkEknDbzVMXOmBfNml-A4CjrrxMdO5jbA5vn61AQ_aBXMRYVsx6hIDbiRIaR8LQapeQreS1RzOdQTx1bWoSsiRwhXoyxEKrrdsW7vtBJxKgp-Cp10xUYaAzvMT_gBwSdcvOZBkSjZaddPTRNlYocxSHDtWroRTXL4kGrscoD1veg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>智谱建成全国产芯片大型数据中心 智谱完成了一座全部采用国产芯片的大型数据中心建设，并已开始部分运营。该中心功率达 1 吉瓦，足以同时为约 75 万…</h3>
+        <p>智谱建成全国产芯片大型数据中心 智谱完成了一座全部采用国产芯片的大型数据中心建设，并已开始部分运营。该中心功率达 1 吉瓦，足以同时为约 75 万户家庭供电，用于支持其前沿 GLM 平台的开发。 目前，智谱已建成或运营多个各拥有超万枚芯片的计算集群，该数据中心也是中国 AI 实验室建造的最大规模设施之一。 Bloomberg 🌸 在花频道 · 茶馆水群 · 投稿通道</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:38:09.471Z">Jul 20, 2026, 4:38 PM</time> · <a href="/post/179152599">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3617574031">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn1.telesco.pe/file/In14gV0BmTxOxUMF39wkvL5-ZArWeo0izaIumTo8mimwO6JmBtaeL1OpBnwNier0nb2ykxi87Qj1HezRu1BS2BypGn4mwkVPE8QFxr7c-xjU3E8ZVO6K5Ji1dI8q2FSOX7fk9T7zqP2DyriiSVIu79o0XwchwAjJW5vXHdFwlGPeixCHLyQTIHWanYt3BnF_vi6DmPY5ZH56mIhlGgwM5pg5QXBYV99dXZhaTvlAgZkUmW-hhWvPkgwbD8Z3rFpdeSQfxQqJMdXs6690TwqDyfnJcqD1FVd5u1ONHny2s8oDYlGqlEZV9Rn_36c3D5AjIYXJc1OGOPCtJ3-r3yirsw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">科技圈🎗在花频道📮</strong></span>
+          <span>@zaihuapd</span>
+        </span>
+      </p>
+        <img src="https://cdn1.telesco.pe/file/JB2d21jZDko1vKZKZjJOQ7ZK4BgSFydqCuyXrUxh5026jJX1xn2AdnQCQj8pHWghQ5aZsnroGP4xMTvuKKnBzIXS0m08cSAL5dRLrYqyNOA8hcfEXMp6sijRAw3dHJdCZdXgaaxkdSOwdlRvH1nhe5GPKXeAorPTvSBTQ0JwxdSX8ta8tQUTe-SAwzEmTTnWdyRbFEYpm34aDj1h4WZtovuaWIyHXER7W_UCn-W18UJSl_VrQ-3s1e10O14pRafUNvtzt3Vow8Rd598vD1lMyNCtEjsMn_gezC1xmTct4RdCBHzz5jqUCenD2E76b520BPpdHyG0_PaZfQ5xzD2P4g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>欧盟拟向美开放生物识别数据以换取免签待遇 欧盟委员会正与特朗普政府敲定一项“增强边境安全伙伴关系”（EBSP）框架协议。美国要求访问欧盟成员国的生…</h3>
+        <p>欧盟拟向美开放生物识别数据以换取免签待遇 欧盟委员会正与特朗普政府敲定一项“增强边境安全伙伴关系”（EBSP）框架协议。美国要求访问欧盟成员国的生物识别数据库，以此作为其公民免签赴美的条件；协议涉及自动交换旅客个人数据，用于筛查与身份验证。 欧洲数字权利组织（EDRi）称，泄露的草案显示欧盟几乎全盘接受了美方对信息无限制访问的要求。该安排可能导致生物识别数据及基于政治观点的“风险指标”被系统性传输至美方，对表达政治异议、支持跨性别权利等言论构成潜在威胁。EDRi 呼吁欧盟抵制美方施压，拒绝以公民敏感数据换取免签。…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:38:09.471Z">Jul 20, 2026, 4:38 PM</time> · <a href="/post/3617574031">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2132926997">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/SLnwugT56v8UoMo3jNshOMqtQ9AuuX9tI9FhYxmYSjQWhlbiwbc3d9Go097d-WMmec2C-k9bHHA9h19jzA8uuRc87IhHzYMW7BZIHAy9rbYPG2AmY24e-hjMh4v9WpqRViVu-WlerC2Oi_w7WFV-VuSx6vpCWWocUTqpkmjesQPYyul8O__ZUk7XlbxrCKOedara3fYiNPZQs822OHb08_4T1mhSptNApM3L5eR3xOC6_xm9ZNn23xhcU8L3E9wj3bjfkOYDk9SbEMJbklRKf4L-Mu9cARpSg8-R3SXq3-Nh9887koodIGGUYbhnL5TDM96HHFuVMMtEdq_JqCey_g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">DeJob—Web3招聘求职频道📮</strong></span>
+          <span>@dejob_official</span>
+        </span>
+      </p>
+        
+        <h3>#招聘 🏡 OMENX #Prediction·Market 🐇 简介： https://www.omenx.com 全球首个预测事件交易合约…</h3>
+        <p>#招聘 🏡 OMENX #Prediction·Market 🐇 简介： https://www.omenx.com 全球首个预测事件交易合约平台，由前 Binance 与 Bybit 期货业务负责人 James 创立。已完成数百万美元种子轮融资，由 Paramita VC、Penrose Ventures 等机构及头部 CEX 创始人联合领投。 🛵 合作方式：#全职 #远程 📚 待招岗位：#客服主管（预测市场 / 合约交易所） #客户支持 💰 薪酬福利：$2000 - $4000 / month 🌱…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:48:25.957Z">Jul 20, 2026, 4:48 PM</time> · <a href="/post/2132926997">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2169202884">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/SLnwugT56v8UoMo3jNshOMqtQ9AuuX9tI9FhYxmYSjQWhlbiwbc3d9Go097d-WMmec2C-k9bHHA9h19jzA8uuRc87IhHzYMW7BZIHAy9rbYPG2AmY24e-hjMh4v9WpqRViVu-WlerC2Oi_w7WFV-VuSx6vpCWWocUTqpkmjesQPYyul8O__ZUk7XlbxrCKOedara3fYiNPZQs822OHb08_4T1mhSptNApM3L5eR3xOC6_xm9ZNn23xhcU8L3E9wj3bjfkOYDk9SbEMJbklRKf4L-Mu9cARpSg8-R3SXq3-Nh9887koodIGGUYbhnL5TDM96HHFuVMMtEdq_JqCey_g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">DeJob—Web3招聘求职频道📮</strong></span>
+          <span>@dejob_official</span>
+        </span>
+      </p>
+        
+        <h3>#招聘 🏡 OMENX #Prediction·Market 🐇 简介： https://www.omenx.com 全球首个预测事件交易合约…</h3>
+        <p>#招聘 🏡 OMENX #Prediction·Market 🐇 简介： https://www.omenx.com 全球首个预测事件交易合约平台，由前 Binance 与 Bybit 期货业务负责人 James 创立。已完成数百万美元种子轮融资，由 Paramita VC、Penrose Ventures 等机构及头部 CEX 创始人联合领投。 🛵 合作方式：#全职 #远程 📚 待招岗位：#社区运营负责人（预测市场/合约方向） #运营 💰 薪酬福利：$3000 - $6000 / month 🌱 岗…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:48:25.957Z">Jul 20, 2026, 4:48 PM</time> · <a href="/post/2169202884">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3085380961">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/d2kf1B3w0Q-qn0CESgjnAqR-O8K8QvvH5n9s_onqbGQUv7g6YMeOs8IwW1ej0gAzY7GcVYcKqv2yjfWPu_93ZtWq4OldclwIPGlg-db6u2kI-UH_vzdozAL7y2v5tMQBO15rZ_9Y6x2bgBrHoYubJPKvl8bMU1UttAs2_XxZy1wZ0z17tXnsT7DiX5H2WsENaRo7nQHWMALZOjdS3p5lkPv1yoEBuHmTQc8BHceJGBny8cgC3YrfgTy-k0kSb89V8c3rXFKJ6paEXCnAVYO8bbodqXrlGl9p0FHMWY5BxxrZUXSzZB-HaD5L24KfHPtluC4tP6_Zbk6fRKQhGUTXWA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Solidot</strong></span>
+          <span>@solidot</span>
+        </span>
+      </p>
+        
+        <h3>科学家根据体细胞突变量化人类寿命的极限 2026-07-20 21:29 by 苏珊娜之歌 体细胞突变随年龄增长而积累，能导致细胞死亡。根据发表在…</h3>
+        <p>科学家根据体细胞突变量化人类寿命的极限 2026-07-20 21:29 by 苏珊娜之歌 体细胞突变随年龄增长而积累，能导致细胞死亡。根据发表在《npj Aging》期刊上的一项研究，科学家开发出一种方法量化体细胞突变对人类寿命的影响。研究只考虑体细胞突变，没有考虑其它任何衰老特征。研究发现，肝脏等增殖性组织通过细胞更新能在数千年内维持功能，而神经元和心肌细胞等有丝分裂后细胞则是长寿的重要瓶颈。综合多个器官预测的人类寿命中位数是 146-194 岁，约为目前人类寿命的两倍。这意味着体细胞突变是衰老的重要驱动因素…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:46:07.510Z">Jul 20, 2026, 4:46 PM</time> · <a href="/post/3085380961">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2969443788">
+        <p class="source">
+        
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">RTHK即時新聞</strong></span>
+          <span>@rthk_new_c</span>
+        </span>
+      </p>
+        
+        <h3>水務署：研加快更換或修復較高風險水管 正擴大及提升「智管網」 筲箕灣道與新成街交界的緊急水管維修工程今早近11時完成，筲箕灣一帶的食水供應已陸續恢…</h3>
+        <p>水務署：研加快更換或修復較高風險水管 正擴大及提升「智管網」 筲箕灣道與新成街交界的緊急水管維修工程今早近11時完成，筲箕灣一帶的食水供應已陸續恢復正常。水務署就事故造成不便深表歉意，感謝市民諒解。 水務署在社交專頁說，今次停水事件涉及一條直徑450毫米的老舊鑄鐵食水水管，而由於水管隱藏於地下公用設施之下，食水經地下流失而沒有湧出路面，故未能及早發現該漏點，加上老舊鑄鐵物料比較脆弱，受外力衝擊時容易突然爆裂，即使相關位置已安裝水壓傳感器監測水壓異常變化，水管仍可能在沒有徵兆下突然爆裂。 署方指出，今日凌晨5時30…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:45:58.341Z">Jul 20, 2026, 4:45 PM</time> · <a href="/post/2969443788">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1162881893">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/JkUisp3e63salAwDRqaY-Pg0TL8QEu9DwT8R4YDHmv8uDLnn3Xtq7R-qOkpEL7y_O-bMBbB8fjPNQLHrcy8ZKeeWdHbqybhf3bKm25BWHGwht6pZsednhVSGXuW70fDMIrUyQnCNLKkp0mqPDfmuza5zpeCaPdqBmgPDADtE18r3p_OXq3Af5O5wjaNFrKTANNgYB0d9pRG3bPKAm_HS3OIIHWoG6yblrm7j0SxY3bW5lH77HTrP_022yz1PFHoJBQxoUIxPbLjIeHpL5AO4svKJ7tpIeRNwT1f2QS3lHkwkfyoD958jUe9HjvXjdKoUY-lEHlNnj3Mautwi5czU6g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">⚔️吃瓜曝光《缅北缅甸泰国》</strong></span>
+          <span>@qqt13</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/pkDPpy1WxeYyLUH9oXOj9tk7Zk5iy4eHhetYC3iFMlJ_FUBMYYLbCQxFLB0F_9ewT8TxMb78WdXZXfYAT9vNun9GxekVrbAtFli-MhwqlHmXjKA66vnbWGr8Xkbu3Nna0a2hipY6Jan2WLc8MmczHkCmxpu-hXD3nOlCWH8RU27_V9qh0wCALmld8BDNRPQdMidE0UyK2z_AzoXoS1DmbEPnikLBp7By8pT3TBzh3_V9gqIJIcyI-DmkDRy8QxUxdF4QtTxwlFz7Ga45luhxnjZMIsLiBLyjvVGWNaPYUsLxrkS8vYW72NNo32aWqnjUNZTZNziqkBnigJbFrcm40g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🆘【网友分享：回顾2019—2026年行业赔付、茶水费与海外盘口的发展变化】🆘 转眼间，2026年已过半，时过境迁，整个行业目前处于低迷的时期…</h3>
+        <p>🆘【网友分享：回顾2019—2026年行业赔付、茶水费与海外盘口的发展变化】🆘 转眼间，2026年已过半，时过境迁，整个行业目前处于低迷的时期，我相信在未来一段时间仍然会持续。本人自2019年入行至今，时间不长也不短，见惯了各种尔虞我诈、坑蒙拐骗，今天就来说一二三四五六。 首先说说我知道的所谓赔付发展过程。入行的时候，我们只知道签证、机票是赔付，没有工作满半年或者这样一年需要自己承担。那时候所谓的介绍费，也就是个男二女三，周半月清，没有茶水费。各公司与各公司之间互相跳槽的，除非熟人，其他的直接拒收、拒收。 彼…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:45:28.978Z">Jul 20, 2026, 4:45 PM</time> · <a href="/post/1162881893">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3181196878">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn5.telesco.pe/file/k8kvLq5RM6DbnINb-LlzeAYMaOW0W_I0HV50j9wmcnqM3PZHQALr4BdHPHGTl1watWgISlVPFDMPS0hlquDuhpVvG43uG4txtHuVUxLnQ2-3mIo2kE2Xp9AP4LsWVptowNGx8omkbCvZkcDVF0xaHz9M21YHXqmMuMKBPGbsXkuqevYI6Q7Y5g7s6ijRVH_Z7d-WpOXcml699MAtxanNCCtnN2RiprdLASMke7-ziU1DtfiE1YFLxziqwke2glYkRR1NIesUp6KQ61MHAalqbs_XjvtoO_S7vaRSIjN5fJuTvdSMxwE_-m6eMmLHi5LfCiX0XEL_b_kBNEGWZaU1qA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">东南亚大事件 柬埔寨大事件 西港大事件</strong></span>
+          <span>@pp605</span>
+        </span>
+      </p>
+        <img src="https://cdn5.telesco.pe/file/T_HVyALkKDxsCVedm0FKbhHwUbainHkup2y5vGpiPpOHZifWXXL5ELTNjW2i1JmFmMwWBwfu_5kyt-V-YIi3sODmO_fnTKy2b8fBhu57kNt-IsuWgpirKAVXmm6EgPmbhR_MTK5GdC7QBJ-S1ijsvd-MQe8-VY7u1bcjGes2b_xyGmepETc7LSND_rrnd8khjirx7LMNJPOLHjv9dEZXyuQPD5nqpVjCCmzPV32Fn3uvvH1HlpuBOT00KH_zyw9kkqwNLljO402sy2X0bSSdNmIDekHEVY7nnH_x7xku8ZkGvRvDiOX3HmjDXYyn-AoOjElMXzLDDbIuZ2VZjI6crA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>金边与中国黑龙江省拟建立友好合作关系 #柬埔寨资讯 金边市与中国黑龙江省计划研究建立友好合作关系，进一步推动双方交流，尤其是在旅游业及其他领域的合…</h3>
+        <p>金边与中国黑龙江省拟建立友好合作关系 #柬埔寨资讯 金边市与中国黑龙江省计划研究建立友好合作关系，进一步推动双方交流，尤其是在旅游业及其他领域的合作。 7月20日下午，金边市长坤盛在金边市政府会见了黑龙江省副省长韩圣健，双方就加强合作进行了交流。 会谈中，坤盛介绍了金边近年来的发展情况，以及柬埔寨政府提出的目标：到2030年成为中高收入国家，到2050年成为高收入国家。 他表示，柬中两国已有60多年的友好合作关系，金边也已与中国多个城市建立友好关系。 韩圣健表示，此次率团访问金边，是希望进一步加强黑龙江与金边之间…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-20T16:45:18.095Z">Jul 20, 2026, 4:45 PM</time> · <a href="/post/3181196878">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
