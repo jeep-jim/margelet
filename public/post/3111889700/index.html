@@ -14,13 +14,13 @@
   <meta property="og:title" content="⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внут… — Kali Linux, Russia transport auto | margeleT" />
   <meta property="og:description" content="Fresh Telegram snapshot from Kali Linux in Russia. ⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алг… Topics: transport auto, auto, health medicine, health." />
   <meta property="og:url" content="https://www.margelet.space/post/3111889700" />
-  <meta property="og:image" content="https://cdn4.telesco.pe/file/NGM4mm8bInXhZhs4MMNwkkk-cLsJqOfU0pinzv78dZ0sE7EapEunn9XysbauRJDeDe6_nJQZXCwzKgEjsJDqLcrg29wicpzRziYArtVFksQSONfBDhOtckYJEl9MuBFxQLDGTrghHVlg03yxMeV23FBqgiJ67P7s-RB7jzSLCE0l7F29EI80rnEaNRlyJS8ZD0ElyEvEbV-oS6Uoon-35S4iQ3atIqFzaj5wRNxh7SvVOPrd0iIi9Bm0XkuFz3XEl3ay_w5Xbr7W37KthCGS7U499MZfAwiuMGM6puFghMKmSx5USYu5X9do03zpxl0viVWjhozwaDfYNXbcC-vH_g.jpg" />
-  <meta property="og:updated_time" content="2026-07-19T14:37:07.126Z" />
+  <meta property="og:image" content="https://cdn4.telesco.pe/file/imiCPcPqdPbXUpf0fUo52KYcUSXDqrf8SDhv7Jjy6vA0GR4T1Qxi-eeBiWGO8oRPCQoMKkWEovou71k5bki9h17B0NZ24_yDSSF00sY1DQuSskPl0FestCKpzB3R7bVvfNTmGq27zTsvz0wd9MFavW_yYMKi3779wmL95O_FOkYCcc5IdEpUKRyCmE_bkytRVFTDfY1vHLFqjr2lw8TJbYe5mzJJFMDPettbiUmPv9QXIQl6bplCwh0FHMHatpuqlQukhK8JF-nJqoXgj5G7tUhbQcRtnJBtbrOW8V7dCBPeJJZmkbFv6gus1rY-ydyIfg-mg9BWvBOihSuQ7C3jdQ.jpg" />
+  <meta property="og:updated_time" content="2026-07-20T13:00:18.715Z" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внут… — Kali Linux, Russia transport auto | margeleT" />
   <meta name="twitter:description" content="Fresh Telegram snapshot from Kali Linux in Russia. ⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алг… Topics: transport auto, auto, health medicine, health." />
-  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/NGM4mm8bInXhZhs4MMNwkkk-cLsJqOfU0pinzv78dZ0sE7EapEunn9XysbauRJDeDe6_nJQZXCwzKgEjsJDqLcrg29wicpzRziYArtVFksQSONfBDhOtckYJEl9MuBFxQLDGTrghHVlg03yxMeV23FBqgiJ67P7s-RB7jzSLCE0l7F29EI80rnEaNRlyJS8ZD0ElyEvEbV-oS6Uoon-35S4iQ3atIqFzaj5wRNxh7SvVOPrd0iIi9Bm0XkuFz3XEl3ay_w5Xbr7W37KthCGS7U499MZfAwiuMGM6puFghMKmSx5USYu5X9do03zpxl0viVWjhozwaDfYNXbcC-vH_g.jpg" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Kali Linux","item":"https://www.margelet.space/linuxkalii"}]},{"@type":["Article","SocialMediaPosting"],"headline":"⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внут…","description":"Fresh Telegram snapshot from Kali Linux in Russia. ⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алг… Topics: transport auto, auto, health medicine, health.","articleBody":"⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алгоритм, который ещё в 1985 году предложил Питер Монтгомери. Идея простая: в RSA постоянно нужны операции вида «умножили большие числа и взяли остаток по модулю». Обычное деление на больших числах дорогое, поэтому его стараются избегать. Montgomery reduction переводит вычисления в специальную форму, где параметр R выбирают как степень двойки. После этого часть дорогих делений превращается в сдвиги битов и более дешёвую арифметику. Для пользователя это незаметная деталь. Но без таких трюков современный RSA был бы намного медленнее. Есть хороший шанс, что HTTPS-соединение, которым вы пользуетесь прямо сейчас, где-то внутри уже опиралось на эту технику.","text":"⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алгоритм, который ещё в 1985 году предложил Питер Монтгомери. Идея простая: в RSA постоянно нужны операции вида «умножили большие числа и взяли остаток по модулю». Обычное деление на больших числах дорогое, поэтому его стараются избегать. Montgomery reduction переводит вычисления в специальную форму, где параметр R выбирают как степень двойки. После этого часть дорогих делений превращается в сдвиги битов и более дешёвую арифметику. Для пользователя это незаметная деталь. Но без таких трюков современный RSA был бы намного медленнее. Есть хороший шанс, что HTTPS-соединение, которым вы пользуетесь прямо сейчас, где-то внутри уже опиралось на эту технику.","keywords":"margeleT, Telegram, Russia, Kali Linux, linuxkalii, transport auto, auto, health medicine, health","url":"https://www.margelet.space/post/3111889700","mainEntityOfPage":"https://www.margelet.space/post/3111889700","datePublished":"2026-07-19T14:37:07.126Z","dateModified":"2026-07-19T14:37:07.126Z","image":["https://cdn4.telesco.pe/file/NGM4mm8bInXhZhs4MMNwkkk-cLsJqOfU0pinzv78dZ0sE7EapEunn9XysbauRJDeDe6_nJQZXCwzKgEjsJDqLcrg29wicpzRziYArtVFksQSONfBDhOtckYJEl9MuBFxQLDGTrghHVlg03yxMeV23FBqgiJ67P7s-RB7jzSLCE0l7F29EI80rnEaNRlyJS8ZD0ElyEvEbV-oS6Uoon-35S4iQ3atIqFzaj5wRNxh7SvVOPrd0iIi9Bm0XkuFz3XEl3ay_w5Xbr7W37KthCGS7U499MZfAwiuMGM6puFghMKmSx5USYu5X9do03zpxl0viVWjhozwaDfYNXbcC-vH_g.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"transport auto"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"health medicine"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"Kali Linux","url":"https://www.margelet.space/linuxkalii","logo":"https://cdn4.telesco.pe/file/v4JaFOI6hXT1x1btm1yS3RSvOgIEFXcwY2g2lAW2UCtvRiAUJT64LcFv9E_61D0GrpUGZGGd5y4aF5O9bJtDPPNdyfcwsxBD7p_XtjoadP3Vo2EcGJzpbDvalrkCZqCqIBnwXvZOnN4SdzHHzl497PBTVbxWMgR3W24tO1w06gVIY4Q3mnn7jWSUL5i8VN4ArCgKZMFOimEldwoFqE9WKNrf6mwUtKHzflYZw3KcElZSZqhA0SAkAZrK3U48gXPYUGxl5TqS7q52KeNbVdA9aq9mU6BVLbJ4Cg6uoPgw-iCgl8llfpkc7ksy5iayKd73jCjoFsAbDZ_J5Z4vaqzQVw.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/linuxkalii/2111?single"}]}</script>
+  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/imiCPcPqdPbXUpf0fUo52KYcUSXDqrf8SDhv7Jjy6vA0GR4T1Qxi-eeBiWGO8oRPCQoMKkWEovou71k5bki9h17B0NZ24_yDSSF00sY1DQuSskPl0FestCKpzB3R7bVvfNTmGq27zTsvz0wd9MFavW_yYMKi3779wmL95O_FOkYCcc5IdEpUKRyCmE_bkytRVFTDfY1vHLFqjr2lw8TJbYe5mzJJFMDPettbiUmPv9QXIQl6bplCwh0FHMHatpuqlQukhK8JF-nJqoXgj5G7tUhbQcRtnJBtbrOW8V7dCBPeJJZmkbFv6gus1rY-ydyIfg-mg9BWvBOihSuQ7C3jdQ.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Kali Linux","item":"https://www.margelet.space/linuxkalii"}]},{"@type":["Article","SocialMediaPosting"],"headline":"⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внут…","description":"Fresh Telegram snapshot from Kali Linux in Russia. ⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алг… Topics: transport auto, auto, health medicine, health.","articleBody":"⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алгоритм, который ещё в 1985 году предложил Питер Монтгомери. Идея простая: в RSA постоянно нужны операции вида «умножили большие числа и взяли остаток по модулю». Обычное деление на больших числах дорогое, поэтому его стараются избегать. Montgomery reduction переводит вычисления в специальную форму, где параметр R выбирают как степень двойки. После этого часть дорогих делений превращается в сдвиги битов и более дешёвую арифметику. Для пользователя это незаметная деталь. Но без таких трюков современный RSA был бы намного медленнее. Есть хороший шанс, что HTTPS-соединение, которым вы пользуетесь прямо сейчас, где-то внутри уже опиралось на эту технику.","text":"⚡️ Почему RSA в OpenSSL не делает «обычное деление» В реализации RSA внутри OpenSSL почти не используется прямое модульное деление. Вместо этого там работает Montgomery reduction - алгоритм, который ещё в 1985 году предложил Питер Монтгомери. Идея простая: в RSA постоянно нужны операции вида «умножили большие числа и взяли остаток по модулю». Обычное деление на больших числах дорогое, поэтому его стараются избегать. Montgomery reduction переводит вычисления в специальную форму, где параметр R выбирают как степень двойки. После этого часть дорогих делений превращается в сдвиги битов и более дешёвую арифметику. Для пользователя это незаметная деталь. Но без таких трюков современный RSA был бы намного медленнее. Есть хороший шанс, что HTTPS-соединение, которым вы пользуетесь прямо сейчас, где-то внутри уже опиралось на эту технику.","keywords":"margeleT, Telegram, Russia, Kali Linux, linuxkalii, transport auto, auto, health medicine, health","url":"https://www.margelet.space/post/3111889700","mainEntityOfPage":"https://www.margelet.space/post/3111889700","datePublished":"2026-07-20T13:00:18.715Z","dateModified":"2026-07-20T13:00:18.715Z","image":["https://cdn4.telesco.pe/file/imiCPcPqdPbXUpf0fUo52KYcUSXDqrf8SDhv7Jjy6vA0GR4T1Qxi-eeBiWGO8oRPCQoMKkWEovou71k5bki9h17B0NZ24_yDSSF00sY1DQuSskPl0FestCKpzB3R7bVvfNTmGq27zTsvz0wd9MFavW_yYMKi3779wmL95O_FOkYCcc5IdEpUKRyCmE_bkytRVFTDfY1vHLFqjr2lw8TJbYe5mzJJFMDPettbiUmPv9QXIQl6bplCwh0FHMHatpuqlQukhK8JF-nJqoXgj5G7tUhbQcRtnJBtbrOW8V7dCBPeJJZmkbFv6gus1rY-ydyIfg-mg9BWvBOihSuQ7C3jdQ.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"transport auto"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"health medicine"},{"@type":"Thing","name":"health"}],"author":{"@type":"Organization","name":"Kali Linux","url":"https://www.margelet.space/linuxkalii","logo":"https://cdn4.telesco.pe/file/LFT8TzujTha4wuPU0CyxIIaRFoT0OnaYR4OI7aMBVtkGzssEJZzwMU30bvCKyu0PM7O0iZiXzWx75tdpL2l_YBaY4wL1zMy1X2CFEHHflaRgzKVLTwNc440uVrFkiO_oiESOINugGW3ngsKKZrwYCroPsG8el74JzByVX3VoXWU7kbkJWuYUqiFcxo_t-wK4p2R9bz2jbIuvlzP5Cen3IaHZCbuoflXpRf-JjuiwSaFz_E4HXx8q5QDn5sHP0HSBYx5rauOA3bHLFMZmcj7_-mynaHtrFFdspO0J7HZ2z6j2a2hbZPOBsyQV1hGlQKRvDWsgIno1LorN6oL1qtSqrQ.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/linuxkalii/2111?single"}]}</script>
   <style>
     :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
   .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
@@ -30,7 +30,7 @@
     <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
     <article class="post">
       <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/v4JaFOI6hXT1x1btm1yS3RSvOgIEFXcwY2g2lAW2UCtvRiAUJT64LcFv9E_61D0GrpUGZGGd5y4aF5O9bJtDPPNdyfcwsxBD7p_XtjoadP3Vo2EcGJzpbDvalrkCZqCqIBnwXvZOnN4SdzHHzl497PBTVbxWMgR3W24tO1w06gVIY4Q3mnn7jWSUL5i8VN4ArCgKZMFOimEldwoFqE9WKNrf6mwUtKHzflYZw3KcElZSZqhA0SAkAZrK3U48gXPYUGxl5TqS7q52KeNbVdA9aq9mU6BVLbJ4Cg6uoPgw-iCgl8llfpkc7ksy5iayKd73jCjoFsAbDZ_J5Z4vaqzQVw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/LFT8TzujTha4wuPU0CyxIIaRFoT0OnaYR4OI7aMBVtkGzssEJZzwMU30bvCKyu0PM7O0iZiXzWx75tdpL2l_YBaY4wL1zMy1X2CFEHHflaRgzKVLTwNc440uVrFkiO_oiESOINugGW3ngsKKZrwYCroPsG8el74JzByVX3VoXWU7kbkJWuYUqiFcxo_t-wK4p2R9bz2jbIuvlzP5Cen3IaHZCbuoflXpRf-JjuiwSaFz_E4HXx8q5QDn5sHP0HSBYx5rauOA3bHLFMZmcj7_-mynaHtrFFdspO0J7HZ2z6j2a2hbZPOBsyQV1hGlQKRvDWsgIno1LorN6oL1qtSqrQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
           <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
           <span>@linuxkalii</span>
@@ -48,8 +48,8 @@ Montgomery reduction переводит вычисления в специаль
 Для пользователя это незаметная деталь. Но без таких трюков современный RSA был бы намного медленнее.
 
 Есть хороший шанс, что HTTPS-соединение, которым вы пользуетесь прямо сейчас, где-то внутри уже опиралось на эту технику.</p>
-      <img src="https://cdn4.telesco.pe/file/NGM4mm8bInXhZhs4MMNwkkk-cLsJqOfU0pinzv78dZ0sE7EapEunn9XysbauRJDeDe6_nJQZXCwzKgEjsJDqLcrg29wicpzRziYArtVFksQSONfBDhOtckYJEl9MuBFxQLDGTrghHVlg03yxMeV23FBqgiJ67P7s-RB7jzSLCE0l7F29EI80rnEaNRlyJS8ZD0ElyEvEbV-oS6Uoon-35S4iQ3atIqFzaj5wRNxh7SvVOPrd0iIi9Bm0XkuFz3XEl3ay_w5Xbr7W37KthCGS7U499MZfAwiuMGM6puFghMKmSx5USYu5X9do03zpxl0viVWjhozwaDfYNXbcC-vH_g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-      <p class="meta"><time datetime="2026-07-19T14:37:07.126Z">Jul 19, 2026, 2:37 PM</time> · Russia</p>
+      <img src="https://cdn4.telesco.pe/file/imiCPcPqdPbXUpf0fUo52KYcUSXDqrf8SDhv7Jjy6vA0GR4T1Qxi-eeBiWGO8oRPCQoMKkWEovou71k5bki9h17B0NZ24_yDSSF00sY1DQuSskPl0FestCKpzB3R7bVvfNTmGq27zTsvz0wd9MFavW_yYMKi3779wmL95O_FOkYCcc5IdEpUKRyCmE_bkytRVFTDfY1vHLFqjr2lw8TJbYe5mzJJFMDPettbiUmPv9QXIQl6bplCwh0FHMHatpuqlQukhK8JF-nJqoXgj5G7tUhbQcRtnJBtbrOW8V7dCBPeJJZmkbFv6gus1rY-ydyIfg-mg9BWvBOihSuQ7C3jdQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-20T13:00:18.715Z">Jul 20, 2026, 1:00 PM</time> · Russia</p>
       <div class="tag-row">
         <a class="pill" href="/country/ru/tag/transport/auto">transport / auto</a>
 <a class="pill" href="/country/ru/tag/auto">auto</a>
@@ -67,124 +67,139 @@ Montgomery reduction переводит вычисления в специаль
     <section>
       <h2>Related margeleT posts</h2>
       <article class="post">
-      <a class="post-link" href="/post/1552473527">
+      <a class="post-link" href="/post/2301100425">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/v4JaFOI6hXT1x1btm1yS3RSvOgIEFXcwY2g2lAW2UCtvRiAUJT64LcFv9E_61D0GrpUGZGGd5y4aF5O9bJtDPPNdyfcwsxBD7p_XtjoadP3Vo2EcGJzpbDvalrkCZqCqIBnwXvZOnN4SdzHHzl497PBTVbxWMgR3W24tO1w06gVIY4Q3mnn7jWSUL5i8VN4ArCgKZMFOimEldwoFqE9WKNrf6mwUtKHzflYZw3KcElZSZqhA0SAkAZrK3U48gXPYUGxl5TqS7q52KeNbVdA9aq9mU6BVLbJ4Cg6uoPgw-iCgl8llfpkc7ksy5iayKd73jCjoFsAbDZ_J5Z4vaqzQVw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/qByibgfU1FHkDr-F9eZsROUceZ_h1zR3c8y9WsnqoHhJtHT1bknIcTTiu6uFzSU2WKtzFBICd6OE0nlZNqT4XfkXdXEFkikrUqB2Ik50st3vcHrDk87riHYKUBwnWJuBb5eugUQnkAbgtpRAnH639Z5qHMv6dSe5YxfepSfHbbz4UAe3o6guKsfvilIOkIrkN3RrYKoYqGx9u4S78J_qoi71n4i8PqZ9Px4WWH85Xv3U3tVpjL0meIAHpugw4bTS8kHNLZVQKXQWARH5biBg6Dqm0_xZzKEolhkS-rZojxJvLVnwow59Ak5hJSanel073bxPy6iW9fC611WGCUnSJQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Kali Linux</strong></span>
-          <span>@linuxkalii</span>
+          <span class="source-title-row"><strong class="source-title">ЧП Саратов 🔞</strong></span>
+          <span>@chp_saratov</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/PKGlJ6yAOWDVhihGh-q-AFoPWokjAcWMSdcPgvhBnBoafTTXXlTEQkbsvC0WUWo4Hfoaj_2-0kpcV7oiQko52RIkbnfgQDT9xk1sYdwxGkPcfiwCr_NEfA1uPCvdA7FT9gRxbk3VkPb1GU-bRYs99CHZF2idtDoML2Cjj5Wm0_yBbhoIfpDotpTAnY0_vPjrRRs6okoBLLK4fqyT-bKBfiOVgP8ioeyMf0JOeI6BQ10a6dF4sZf7JuIXxqn6j9FMHoPllH_2CjikwypOX8aeiQPE3KIfEuI3XY56MC1kWlptBwDkNFg9Yv3RsamDghqaXaBZm0y5-Ov8WlhqsA6dAA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>erid: 2W5zFHxLXwf Бесплатный урок: доверь прод ИИ. Испугались? Не бойтесь…</h3>
-        <p>erid: 2W5zFHxLXwf Бесплатный урок: доверь прод ИИ. Испугались? Не бойтесь, мы друг ⭐Слёрм запускает БЕСПЛАТНУЮ вечернюю школу «ИИ для инженеров: польза и риски». Это серия онлайн-занятий о том, как использовать ИИ в инженерной работе осознанно, безопасно и с…</p>
+        <img src="https://cdn4.telesco.pe/file/AQxlDdOzKEToU4fOc0RjwC_VI-EVzyNj0zfXo2dksd1V5Pe5rWYagmSfHFECJidOETYvwtEP6plEK1_5Xsm4pMPJ5UaVfyI2MQpraLF2mqJl3DehiF97Wo8OqYWc21930Jm7EGn7Ey_ygK8DjV90GWOaUQOIHZFYojfAEU7pqXoo4EZtSH_HpDCCnAEPOjby6bYIXhB5wKmauDKFx1ERPG257qJN49mBD2GxlFMaLlZ9jIvuMGqNsYlSxuZ6F14v1y5Ok_ij13eCmHkgkccmEwaFpOQ-a_2vkNy9rkqnAR7yeoDJaibkOd7i3rbYMQvyYy-9iGRyJfimb74_0SzYSg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>В Саратовской области скутерист врезался в стоящую легковушку и угодил в…</h3>
+        <p>В Саратовской области скутерист врезался в стоящую легковушку и угодил в больницу Инцидент произошел накануне вечером в селе Хватовка. 49-летний мужчина за рулем «Ривы» не справился с управлением и протаранил припаркованный ВАЗ-2115. Удар оказался сильным — в…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:37:07.126Z">Jul 19, 2026, 2:37 PM</time> · <a href="/post/1552473527">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:14:37.188Z">Jul 20, 2026, 1:14 PM</time> · <a href="/post/2301100425">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/359980430">
+      <a class="post-link" href="/post/152062937">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Yz4vln7JvM1lWsQKrIz7un4wRZClmjrIL-CGwTcFJwhdc3naKAhe6qFn24CbhylftKOrrCZSz7eILKZJqhmuIan4ed7qQcHk38rJSF9Tm9mlvP_sjHx_HB7KEW7HOFJkmOBGdxpDlIUPOTloPnadmYsD1MvDSB7BA5jPBz_eurAByAh7zHojAldoN901fQrYOSkuaQFZDLWqsQIFuc6SCc6YUgQZgrLUExcDmuZHGAZPdP_T3chp48p40sK7pkQ6h761vN-D_YLuq7Vbwq9rRzqP45rKcE1Ol9FK7PTSfXsv3UuKpPBxx3rImzmSlIUczMkiVGZqSOM97T3fzspXjw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/lV6WHXRivjn-Dzpoie7CDGmU7U0yDrbHmy9MVd-C5jr-XkZxIcaMUhrweXFdax8sJlLG3Zss-IElpJEx_Xempz6pPZ-1x_vqZVzEXZACCCD0K2Q_4MzHTnimll5LmfSLB12auebQhtHFLnzykhh-Q3gNZTVFXdDuYXDKBF9Um04BcNGt-DI09BCEzLTi-PjW-VhdpqntLZoFc0zByFcM0r2lqrAaV9-dHAfRDEDBRncXwPOB1XceY9V_tNYRdjX0fjJLYVnt9LF2Sv_yAJ_yH0yLFzE06VHrjmDxB0PczyJh8X9KehxZkS3O30NJDVDjB_wKit6XDcvD8SXrYF3m8w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">На маркетплейсах c Лео Шевченко ️</strong></span>
-          <span>@namarketplacewithleo</span>
+          <span class="source-title-row"><strong class="source-title">Лентач</strong></span>
+          <span>@lentachold</span>
         </span>
       </p>
-        
-        <h3>❤️ WB Банк запустил меры поддержки для продавцов Wildberries WB Банк объя…</h3>
-        <p>❤️ WB Банк запустил меры поддержки для продавцов Wildberries WB Банк объявляет о запуске комплекса мер поддержки для продавцов Wildberries, чьи товарные остатки и операционная деятельность пострадали в результате атак на логистические центры компании в Электр…</p>
+        <img src="https://cdn4.telesco.pe/file/u5FYR3cL7HziEBYQgMvXW96iiDVC5FWl9bywUbztOvWnq4PDjFN3_PRx0ybbORYdJK7gcv7Are4AdNpRGuBV3fvpJx33DDuZ59p4DMxxwkSBid3-vBtCnambGjrRDhHah9s3MHJTEd3uWyxKYL48EA2ESb5EflAzSjnR5w8WFGAVAUe_7irkE9jkg3BQLQTeStKAzOt2JbOuJ3RSN8OLdjItCvKWkKN6d1s9cCvaX4RaUGg8b0hTwoM6H18aGVUfKayRv13Lu1eNIiPNa8qzj-xiHCZXoH17zWk3UK4dsiaMYi9d6ahOuUKT-HeeOZlxcpddYNKvaL22zxnZoxS-mA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Пять человек погибли в результате удара БПЛА по автобусу в городе Шебекин…</h3>
+        <p>Пять человек погибли в результате удара БПЛА по автобусу в городе Шебекино Белгородской области. «Четыре женщины и мальчик скончались от полученных травм. Личности погибших устанавливаются. Кроме того, ранения получили 23 мирных жителя, среди которых подросто…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:37:45.645Z">Jul 19, 2026, 2:37 PM</time> · <a href="/post/359980430">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:11:50.994Z">Jul 20, 2026, 1:11 PM</time> · <a href="/post/152062937">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/4056757306">
+      <a class="post-link" href="/post/2787354076">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/lulL3-CORrGEGecLM-Jj07qmBnWprKzd42WNfWHTt_v2qAWweEh-Nh73fu0ANFcnrQ-DmIbP47tpmQqaSbMDmNDpMLisuRFa_v3glI4txHNdSV75DJ60MvAwQF_-XvL60GCSwg-EHwmT-CwwXxf6-5zPkDi21_SGPuXSvk5UVSToi1Q_sS_L8dmHbK5TnrQPfKAn6uTDBNdijnhYZNz86yHoU8HhciU7kmk62Svt4LOjNa7WB-zwQGmuq_uxaYS5mtvbIVsKlpDFjFQjmv8sJmaOfgvd3908oeZq01KcwxDxtflLwBMJfZPi4MxGDUX2eajlXmIbYTMc1oGN44s60A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/JHHZPk0OuYenReQZ36tndxZCO42tJWJWIytruduc18U5JXHcs-fflQqWksBzejiHGR2eD8Lt35c_celD-SZK3pMb2VpnEZ-iO9hXzcc13u2wI62OJEoSd6nGcLw5HlsW40wWXXWZwdXImnEtwqmK4Wqqmv-ANIjdJB1JOnR4ZYdLDnkvcIPDGET2GRKFKg0LxtRtjUZWMPn1MG_3XUAXMjEmyRUa8TG1bp6Mb5b4p1Fo93bcvDPWJ3sPD-17TxRGIAc9XbCItRMpfULjhQKF8Mo7V7er62_3WPDUjj_Tj1Vql3ZU5tQBT3H1-aZzCvISZPxxIjHnGSuMnc86S7pqbg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Жесть Белгород</strong></span>
-          <span>@zhest_belgorod</span>
+          <span class="source-title-row"><strong class="source-title">Это Ростов новости</strong></span>
+          <span>@etorostov</span>
         </span>
       </p>
-        
-        <h3>❗️В селе Солохи Белгородского округа при атаке FPV-дрона ВСУ на автомобил…</h3>
-        <p>❗️В селе Солохи Белгородского округа при атаке FPV-дрона ВСУ на автомобиль пострадала мирная жительница. Женщину со множественными осколочными ранениями ног бригада скорой транспортирует в городскую больницу №2 г. Белгорода. Необходимая помощь оказывается. Тр…</p>
+        <img src="https://cdn4.telesco.pe/file/rNKrWfg1LzNWadnLbJJjtx-3yvOUau8F9yS_xPfO4F8UV4KD_lfZTLRbvd_8uM1VgiWdwHeMbpXKuSBUaNmoy30hR2-NnPJ9WK3CGOfFtRNnfk9W_aPwshcMI3ToA0j0Bxs1UzXQ_KQOe76H2xvitrdUn9-oB6T0al2usAUcYVFG9aJApebvCRAivNgflUDgZj-JwpOhBjD0VtpJYQ5cF-xfnwNdNgMLFEvAB13iR-_JLFd0dKejVvOmtX5uBXEkXPy8gYOtwiggI_QNkBCowY_5-5oSEy_l6MT4gKoMOe9xxnG_g-k8vJFqosazVQJFtQsR485o8DalNrVAMa2TDA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>😢 Байкерша «Соната» погибла после ДТП на Военведе Авария произошла 17 ию…</h3>
+        <p>😢 Байкерша «Соната» погибла после ДТП на Военведе Авария произошла 17 июля на Таганрогской. 42-летняя София Г. не справилась с управлением, врезалась в бордюр и получила тяжёлые травмы. Женщину доставили в больницу, но спасти её не удалось. У Софии остались…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:31:41.722Z">Jul 19, 2026, 2:31 PM</time> · <a href="/post/4056757306">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:08:28.062Z">Jul 20, 2026, 1:08 PM</time> · <a href="/post/2787354076">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3674943213">
+      <a class="post-link" href="/post/575043968">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/rRL89MnIUhgxh792TEt0dqAkcte3SvXWTu3cqHPL3d6qOvfLKhym7vZcB-X4UeJyv18i6rO6nPb55es7qdlmLrJcwvy5GBUF0ghdI3-yDd6qKvgg1DwbVt2EuPXs7eAyW_czcr8xc9UdXIJoszFtL-cndmJkQuU1fTjjvR-psL6ah-kt9UzQk6RoQttQ6tQ4wsf_h4qvKuaaSqQ4CVTlZrFHR1yiZfxiKd1gr1jHtxAtmmsz7konipzvTe49bRu0FwvcdG4QgI-9nThFbX6WU8ELnWOkGJQmss0NRoLrnJUHlNExcy2Cdbo5CNwdN-zxQJmqRHS3pfFARptM5NUWwg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/JHHZPk0OuYenReQZ36tndxZCO42tJWJWIytruduc18U5JXHcs-fflQqWksBzejiHGR2eD8Lt35c_celD-SZK3pMb2VpnEZ-iO9hXzcc13u2wI62OJEoSd6nGcLw5HlsW40wWXXWZwdXImnEtwqmK4Wqqmv-ANIjdJB1JOnR4ZYdLDnkvcIPDGET2GRKFKg0LxtRtjUZWMPn1MG_3XUAXMjEmyRUa8TG1bp6Mb5b4p1Fo93bcvDPWJ3sPD-17TxRGIAc9XbCItRMpfULjhQKF8Mo7V7er62_3WPDUjj_Tj1Vql3ZU5tQBT3H1-aZzCvISZPxxIjHnGSuMnc86S7pqbg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">СВО 2024</strong></span>
-          <span>@zalpom31_2</span>
+          <span class="source-title-row"><strong class="source-title">Это Ростов новости</strong></span>
+          <span>@etorostov</span>
         </span>
       </p>
-        
-        <h3>⚡️Пять муниципалитетов атакованы ВСУ. Ранены два человека В селе Санково…</h3>
-        <p>⚡️Пять муниципалитетов атакованы ВСУ. Ранены два человека В селе Санково Грайворонского округа FPV-дрон ударил по гаражу на территории домовладения. Бойцы «БАРС-Белгород» вывезли и доставили пострадавшего в Борисовскую ЦРБ. У мужчины диагностировали множестве…</p>
+        <img src="https://cdn4.telesco.pe/file/F7beYEAbXhq9isZALurQktoyJ1EtWED4rsYCxBYnYmsruxgso9V1ZsAigu9axvACOsZWGe0dx_8jmdugXydnUD2dupNEIn9CJQEaoMc_u8thkZVZKBNLJpGj8tyZ_Nse2dZCqq5WrSW-GeWwisSRWgXPieF9_VTUXpxp0-j6riMEdKBZEIxCf3_BqNQSMoaJN51ziE5PZmDqjuqQcieO5UhKY07NpvCdVWY7yhBQ5R8ubGTU4kPuR1YuW27PLcqb7O7Vtxj_MyJKz-2lETwZjBbvBkLhFZnLXyU8WZk6JffKsOuM0xl-UmEH2pXEhrcP5a7QcWMkQzpJe0ta5EWYAw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🚧 Единственную дорогу к КП «Южный» перерыли вместе с коммуникациями «Мы,…</h3>
+        <p>🚧 Единственную дорогу к КП «Южный» перерыли вместе с коммуникациями «Мы, жители КП “Южный”, просим помощи прокуратуры и общественной огласки. Сегодня, 20 июля, люди полностью перерыли единственную дорогу на въезде в посёлок и перерубили кабели коммуникаций.…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:31:25.901Z">Jul 19, 2026, 2:31 PM</time> · <a href="/post/3674943213">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:08:28.062Z">Jul 20, 2026, 1:08 PM</time> · <a href="/post/575043968">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/3636118070">
+      <a class="post-link" href="/post/1328201198">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mSkRl7641fhwh4IyTmaxwxqqMMFAqD7ItmK3dBNAtCvZTk8HPhbQZpkodVSnzvpT8Bae3F6Z22KNlVLq0SwZauARjoW3lR2msx3J2T4Lv8TOLUUSimiDICyxg8oGU_RxEkKykfxBIFHDaRUZm-jWckGWCsb_uNEjvjeZrYLqoptvOcToYVCYoslr0mkyA8TezBjxd94WF62JIPTeMVQfDDOw8luQJJlskCTHZIoFjrW8IRt0VtDUXMi3VIHReWlOG2xb83vk3ZFSnhqjbLDSoC-Qewb7Wtcnt_hoZV_bmOYmMy_ARdXkAowwb5XEpOKOxomyiGOLXJgVKASw2hQL0Q.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/g7_007baYouKgCWyDxoL76Wgy2rTWw733I0OTdvVcnsT1e49q3VXctm9yZIcc7cTV6FCOrx5IqHVh11WqhMYeMkBRb9IFbagt8LLQkf0Eoxd0iY-8JnnXPuVYZ3ajb5Sjubv5rsh8apfUPWfBKzC6XkmjOAHDn387hKLKZgabJtwfCQWuE4hQw75wSi1VpGThTq0xy2t188YKStXVPf_aEgOEwtYCwarjNBSPnb7RzHVu_Eq-ysdIKMZc0ysZhPzELppeRHkhUYjNJQ-7_5GqM1e3t1OHXIWe8YTk3Bf2DCmpUjra2Ls-3GWsFB_X-Q9_UnBX-K3qkcLLiVcwn6RtA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Вилсаком | Wylsacom</strong></span>
-          <span>@wylsacomoff</span>
+          <span class="source-title-row"><strong class="source-title">Гараж Автоэлектрика</strong></span>
+          <span>@garage_electro</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/pHII-ODVESO2QPMJXLFcXMJaNG9riMS0hlJS0pRnwBh_GKKj7wo4WeSZkjVnFUvmJZATxMhWOOFCQ_DTURiEQydXdpISkZXXRtP67e5kySS6oOk1DHZHh3_xriVfIoufioe736D4SOTaKgiaxLQvngtsYNefA6eW1NenW0d-uFznT1TQuQcqgDNFuZgeBC7Ki9WG8sL7GpG5juZ5Ur0hCarnccmfQ7jezJ0wr94Ti1Cu-_aHst1sSwlGwbJvKxJhXDzZjS3NozmKgyAvY4L8mqTip6vfy4rP7KT8nsGD9g19XznXXMgp3MULExmpq2VVzKzoovyZDihJ1lK_xdeN0w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>«Сбер» представил новую линейку умных телевизоров с QD-MiniLED — ТВ Sber…</h3>
-        <p>«Сбер» представил новую линейку умных телевизоров с QD-MiniLED — ТВ Sber 8000 Серия представлена тремя моделями: на 50, 55 и 65 дюймов. Каждая имеет VA-матрицу с подсветкой QD-MiniLED, что обеспечивает хороший чёрный цвет. Панель также поддерживает частоту об…</p>
+        <img src="https://cdn4.telesco.pe/file/cX6VfTa4XXuImT48fA3eRBs0czgzsqYYn0PdnhwmtMvET4z1MsIlwQatWLn0or1ZiTbnd3ebz0fs6EKbeUEwZP7V0W2_oYsy_k_TSfqLBBkj1iG9FuS8UVBtFzh7ICie6bhYNMDEyDlFmxMVECC-tI1dLtA4kRQKkzUmcS_dy247wF5qAOKdPBpNc1BD_Dz2_kKPdBbMyCyxlhFrM7vLMgdxbTxlA9Uuo0crS4iFZVjOg5Z4tdbKbcrk-GjjfFyCXGJuxkxffDhfqr7OtstjkMDTrQ69-E1SRHeTcZgHwcAWcl3oiNsVg4O_9Ypnm280uBr6J8mdDxcZ9qVpzS4N6A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Volkswagen Polo с неисправностью: моторчик печки всегда работает на макси…</h3>
+        <p>Volkswagen Polo с неисправностью: моторчик печки всегда работает на максимальной скорости и на переключение не реагирует. Предварительный диагноз — резистор печки, но проблема оказалась в блоке управления отопителем. Он был залит неизвестной жидкостью, и из н…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:30:31.672Z">Jul 19, 2026, 2:30 PM</time> · <a href="/post/3636118070">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:05:25.382Z">Jul 20, 2026, 1:05 PM</time> · <a href="/post/1328201198">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/1182120131">
+      <a class="post-link" href="/post/1943579320">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/B-8ONCh9RomfMEd2i2Q33co5rEnB-0ZNTAimMPPonjQabv-U5qvTjYmBfFq7SYesyJIbE4c2fCsJQZGGFfxg2nDwBf9ALhhvHRZCD6b4CI3A9yFAMqwrRRLU28G6oXIogbxEVKEyoJdEgv0LQqOs7cCwpS23a2-HocRZxEWuACxUlfosWSJZ0Y-Izy247MM71qWfpvmKHp9Efgt_B2jkZOJxjuEx5ec69CWU7pVB7CIAS5VTd_IuY90xZ5JPEmvm4tseAK5xJ_qlLbRtGZzuLzJO5BqPiyjEBB2L3PLB4K2LeMyjIy3WV2mmGML1EvL2ESvWRMWyI1nriRICFNvWXQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Fh3AUbgcArwSic24FYPPDbZYjeNOBtcV1Lxs-_eM4KwYEs7TiezV68hKtZvdT0u3Cf8Hz4vXPT1yH9anR7hOy6k29vugXPESKWXH8Xo6ZEgmTcO053tSO5LWAhnlmrjzcCAzdLAEJuIh68MSuKozjie_AettjQycC1S9WQ572lqwEPV1oiqAinrcOmDvGyZJbkUyrXDgK3wK3jnY3EhvQ8g60s232LDWIK-oNqmyUdy2HBCbSHXEFcl0yDEbt7oEWDrROzohQQ78WYDNJ6_X9I4Heje-l7CGqY8ySP8bxsexfpgmxmjGL-ubLszBtsEiZ4rd5nl95jWw5elfdBsdqw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Повёрнутые на войне 🇷🇺</strong></span>
-          <span>@voenacher</span>
+          <span class="source-title-row"><strong class="source-title">Авто Белгород</strong></span>
+          <span>@avto_belgorod31</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/tjhea8yDvtS_6ouQV5bfNn2dY_RiqSe9W-n-EFGJEHb4HDEZ-MX38v3jv3uRfNpxwVA70fLGSqzK4YLghDiKxaYzrbjevRm9eiZBcxeyQ4gKWGToC26PnqOIQth9pmp7oj5raKxqScX-KTe8ng8azrPESNoH6mn7Vn7cjaJ4y3-CUglW_WgvG_24ErZnJtFDtQ-IqqUDw9xfWTxlGmWKM-rEzizHeNJ5cXVARRnPH_CTB3RoHx-UN4gWr_fCqynS9SjjdjnVKbd2hcnt9GbfmoZrVkszwvSw0iS-9bSyL1dlSugiuzi21aD6s6entpg29ZSKXHNGMuzvleWMk6BJWw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>На кадрах - бронеавтомобиль турецкого производства Otokar Cobra II на выс…</h3>
-        <p>На кадрах - бронеавтомобиль турецкого производства Otokar Cobra II на выставке Центра специальных операций «А» СБУ во Львове, июль 2026 года. Первые сообщения о неофициальных поставках данных бронемашин начали поступать еще в мае 2023 года.</p>
+        <img src="https://cdn4.telesco.pe/file/oTMfOyfAGxCzfco9-mHGzus3Y7Z0x793-cedh2WIQ1XxKq07rONRlieBiG9Rf5dHIvGYU_7yeIEnb-11Fz_6XBzIWHmorbCiSuvF1NLzMszoJc4j7dp-RJztcI9BqPkURXQKqItNILcabPK30IrLakVrQpbEltEDATgDxpGTf2XopqSEIxMPyRWdmUMqtqeyv7bIps-1MQvrZfLGoIIw5lCUElX6-Wln3TT7eKPKlYAQIsP_hgsUwYNI6vuuBnJDpb6csS_UGmQxUx4i5YgKQFyg4JvCr6ICmOyyNvR1wW5FkWPmyROdHrjjgSt1cNkTfW2LsBAwaxJxJ9pTeA7Xeg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>В Белгороде при атаке БПЛА на коммерческий объект у мужчины осколочные ра…</h3>
+        <p>В Белгороде при атаке БПЛА на коммерческий объект у мужчины осколочные ранения плеча и лица. Бригада скорой транспортирует пострадавшего в городскую больницу №2 г. Белгорода. Повреждены навес, остекление и автомобиль. Также повреждено остекление остановочного…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:27:00.081Z">Jul 19, 2026, 2:27 PM</time> · <a href="/post/1182120131">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:04:05.158Z">Jul 20, 2026, 1:04 PM</time> · <a href="/post/1943579320">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/2663010187">
+      <a class="post-link" href="/post/1623684228">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/B-8ONCh9RomfMEd2i2Q33co5rEnB-0ZNTAimMPPonjQabv-U5qvTjYmBfFq7SYesyJIbE4c2fCsJQZGGFfxg2nDwBf9ALhhvHRZCD6b4CI3A9yFAMqwrRRLU28G6oXIogbxEVKEyoJdEgv0LQqOs7cCwpS23a2-HocRZxEWuACxUlfosWSJZ0Y-Izy247MM71qWfpvmKHp9Efgt_B2jkZOJxjuEx5ec69CWU7pVB7CIAS5VTd_IuY90xZ5JPEmvm4tseAK5xJ_qlLbRtGZzuLzJO5BqPiyjEBB2L3PLB4K2LeMyjIy3WV2mmGML1EvL2ESvWRMWyI1nriRICFNvWXQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/R2mllOVYeV8ctIcO_yAGjx078ZF0RDzSsF9NRCUREQCnPSCdG-qm14dl7rUAbpUJZYJVGDNM18slC-EAYFNBQSDo51e0mjo49RJFUlFjppQ-sXJXQ-KZFHgEyoFaktHJnMpZ8BkLH0b9U2JvMqxhMIStZ21J02d8G9F1mCAqf9MZjj52mNg6OKaU5Z4PD1zE6yC49qVRz3PzmGK8U_wLJbG-1WNRzTssjFsYZnV9OTkktEsK40hsYzaKQ53UH3FrZy_izo8vNj_jtnAwdgyhvV20ywpaFshVFFiO9vGKlmqJNvYsdQY9c-Dv5Qn9TTEE35oIMJOhuOky9lLGYWEjgw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Повёрнутые на войне 🇷🇺</strong></span>
-          <span>@voenacher</span>
+          <span class="source-title-row"><strong class="source-title">Телеканал «Авто Плюс»</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@autoplustvru</span>
         </span>
       </p>
-        <img src="https://cdn4.telesco.pe/file/f1WGPYF8AUSQm-rn6dBJDCxrX6S1gZBwt3ovO6NO4WifYfrnRtlJtHdRqEHoCTq972ScH78WD-dDEr7tpJ44Ph4LJNId9ctBuj3N4tfI0KJ4t8nBJMJ8lidqktXRmxk6QVuYDMio8wNWPdQ9NNH1dpXmGRHdzYsOYJedf_eV_2K90neybhv4VhDxg_cy3F1eSBTzzHPsBhww35_qUgeqm8ectBk-UyOMnQsCOk62mhXaVJNtp5bjI2Gh2wQN2VzeLbHvHy_Cob6dgdDoV3yRIjtJudvAtS8AdhgDHCpLnSpH8gOnUu21pe6Bbxwa-BJsAngrDsHamixLLfmsft7CAQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
-        <h3>На кадрах - бронеавтомобиль турецкого производства Otokar Cobra II на выс…</h3>
-        <p>На кадрах - бронеавтомобиль турецкого производства Otokar Cobra II на выставке Центра специальных операций «А» СБУ во Львове, июль 2026 года. Первые сообщения о неофициальных поставках данных бронемашин начали поступать еще в мае 2023 года.</p>
+        <img src="https://cdn4.telesco.pe/file/Q1Fc-wqzw53AGK9X1_2TG4UDC8kud4p5ekQdePaU1L4oVbsheaHQ2Eowx9MqgQQuD7tVti_ie5HFydnVu7s_jEtkQiRLEQ07Ojk3wd_ljqeiNxrHBxdZqCEHLVxXtn-iKTOXUqb7TX3ZIVfFSzkIFBdPRB8FS7xmp6O3D5OdJQfikmlVF5dVUhmu3dgQbT8hYenKbymZia2yoXLC8X3eAOqqunpws-mZLIH6DPVr08xw4y3nyGyKCuS3-zVG84mdUcWZhlVhdP9ARyAPirF15amPjdXeZEePVT8HtdvOHnhKg-t8LXaz3yoai5hkgX9s9mTzyYvpCl33lnoeOcDeAQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>ГАЗель NN 4×4 довезёт больных по тяжёлому бездорожью Для полноприводной «…</h3>
+        <p>ГАЗель NN 4×4 довезёт больных по тяжёлому бездорожью Для полноприводной «скорой помощи» инженеры, напротив, применили односкатную ошиновку, чтобы сделать внутреннее пространство максимально просторным. Отдельно отмечается, что соавторами проекта выступили пра…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:27:00.081Z">Jul 19, 2026, 2:27 PM</time> · <a href="/post/2663010187">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:03:44.987Z">Jul 20, 2026, 1:03 PM</time> · <a href="/post/1623684228">View post on margeleT</a></p>
     </article>
 <article class="post">
-      <a class="post-link" href="/post/994140323">
+      <a class="post-link" href="/post/44206621">
         <p class="source">
-        <img class="source-avatar" src="https://cdn4.telesco.pe/file/SUkHl1U0UczqTcZ2ugJ2BLYxr5jYWa4YZP7a2zWA3pau2oClL3u9QoEJ92SYWoKyzDhOXnR_GqZ684JnE5UqqgZeGYy9nuFYaBTUAMmypPelciCry3oW2y6PUi5wwwFn3TRT4JyZO-I84i5XUTr1fzR4vfW6HM4Nq5jX16Le8DtNtT1fSzfu3lGgDOMJ3bo4ayluSz0O8CSBT7WSAgVmM-t-2HcGPm4HQvLmiWoccnRFLmm2Ggi55FGWwbXFO-KoCXJoBxR4RJ8PaB5kzjuIgGD5apCL9938f_WZnJFOybV-TTPuekH2N17zJ9e5seem5uVnS2L6WHpgKNQiNDJgEw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/B-ZhpTnoxP9YSvY1K9lb9sd8O2a0xhp-wFC4jmfITKlyp9P0tp6dQZMZ4GsOaIzafB_-a020sMNS-bPCc2c0z05JRadMU5rhQJeaj9OsyOOHiQul7Cy2PK7TqL7rUCcANQ1b7m_657Ndv93v7pj0HV5tQaPpjV2gqJRoyQiYnJSKqBHfDEX01zSkbo_WD7JUbqrtsEMboLU26IgDzvGYTr0VPEYpF0P3FjYyat10AySvXu94z_mvQKSNo1TQZjlHQBCU9gHq-MaRItOELEYXxxtOUvD-Xq8xIbktXpSKs0WgfDdEYYuGvXsbhQc84PjJKeQhJX4tTjqPZvngjJp7xQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
         <span class="source-main">
-          <span class="source-title-row"><strong class="source-title">Жесть Волжский</strong></span>
-          <span>@vlzjest</span>
+          <span class="source-title-row"><strong class="source-title">ВОЕНСЛЕД</strong></span>
+          <span>@voensled</span>
         </span>
       </p>
-        
-        <h3>⚠️ В Волжском легковушка столкнулась с электроскутером Вечером 18 июля в…</h3>
-        <p>⚠️ В Волжском легковушка столкнулась с электроскутером Вечером 18 июля в Волжском произошло ДТП с участием индивидуального транспорта. 52-летний водитель за рулем «Лады Весты» совершил столкновение с электроскутером. В ходе оформления аварии выяснилось, что в…</p>
+        <img src="https://cdn4.telesco.pe/file/hxKuqu9ThQkk0LKVT2n4gId9fYkFvl78dJ3bY_Pd8-4UemMZhGWhuPHcsUvGWrHl80g-ttzo6LMxjT5LWtwNIR3KMqJmepP4pUrNeuGel2ojlFwrS7Abr9_HjA6TKgazF2hgYiKjFnleprhLm_vT4PUZfwJMqIFx7U8ZL8nUEbCzqQvjAMSBqUIwf0LzIr_9htyA5yBPQaCwCmXaB3_VVeP9W5rwc7m5NTw-bKZJz4UGeUyQDdMLz98IsY6F3gLD2z6BflbrjapMb-WDMkCXLG4MuOS_lzCkhQws4ykpLuSEi9XukeN9NYvQ3RGe7xfA86bBmoxkrLhlC1ELz_cuhw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>📹 Заявители из Ленинградской области поблагодарили заместителя Председат…</h3>
+        <p>📹 Заявители из Ленинградской области поблагодарили заместителя Председателя СК России – руководителя ГВСУ за помощь в восстановлении их прав В Главном военном следственном управлении Следственного комитета Российской Федерации заместителем Председателя СК Ро…</p>
       </a>
-      <p class="meta"><time datetime="2026-07-19T14:26:18.901Z">Jul 19, 2026, 2:26 PM</time> · <a href="/post/994140323">View post on margeleT</a></p>
+      <p class="meta"><time datetime="2026-07-20T13:03:09.969Z">Jul 20, 2026, 1:03 PM</time> · <a href="/post/44206621">View post on margeleT</a></p>
     </article>
     </section>
   </main>
