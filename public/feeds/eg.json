@@ -1,17 +1,4279 @@
 {
   "countryCode": "eg",
-  "updatedAt": "2026-07-21T20:40:16.221Z",
-  "totalPosts": 107,
-  "chunks": [
+  "updatedAt": "2026-07-21T23:28:01.682Z",
+  "totalPosts": 88,
+  "chunks": 1,
+  "items": [
     {
-      "id": 1,
-      "path": "/feeds/eg/1.json",
-      "posts": 100
+      "id": 822386900,
+      "postUrl": "https://t.me/w_of_programming/1627?single",
+      "source": {
+        "title": "The World Of Programming",
+        "handle": "w_of_programming",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fSyNwqRdLP7N5S8OiZuGrvPksxN6t1znHsY36MS2xD18nqu57TTpDvF-n3DTnYibwmwTpXVQtatOBHJcBhjCP6wuCA0zRDh1nz-2FsfIwu9BOrkc9oJnuBOSAda0c_ZfvYg5ns-XD1FpG-D1UZTcoVoOrZ84SvZkxSpX1uqJjyzLv4O7zaktfeYa93Td5o6p6isFet2O3Soos6nTFbCUhGxIZuE6q7cdHyFp6MQ_P4QCidZHbqNPdtG1LBF0CWC6dv22SFkOg40FHXscKo6GNnEif_UXHuCrhrH6Fzl8-O5XMyrby3FVN8_qX2n67xuIUWyU0t1Bb4YLMDiCRoB6ZA.jpg"
+      },
+      "sourceId": "eg:w_of_programming",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "✅ خريطة طريق شاملة لمقابلة محلل بيانات – ما يجب أن تعرفه 📊💼\n\n🔰 ١. أساسيات تحليل البيانات:\n\n• المفاهيم الإحصائية: المتوسط، الوسيط، المنوال، الانحراف المعياري، التباين، التوزيعات (الطبيعي، ثنائي الحدين)، اختبار الفرضيات.\n• التصميم التجريبي: اختبار أ/ب، المجموعات الضابطة، الدلالة الإحصائية.\n• مبادئ تصور البيانات: اختيار نوع المخطط المناسب، تصميم لوحات المعلومات الفعالة، سرد القصص بالبيانات.\n\n📚 ٢. إتقان المهارات التقنية:\n\n• SQL:\n  • جمل SELECT، FROM، WHERE\n  • عمليات الدمج (JOINs) (INNER، LEFT، RIGHT، FULL OUTER)\n  • دوال التجميع (COUNT، SUM، AVG، MIN، MAX)\n  • GROUP BY و HAVING\n  • دوال النوافذ (RANK، ROW_NUMBER)\n  • الاستعلامات الفرعية (Subqueries)\n• Excel:\n  • الجداول المحورية (Pivot tables)\n  • VLOOKUP، INDEX/MATCH\n  • التنسيق الشرطي\n  • التحقق من صحة البيانات\n  • المخططات والرسوم البيانية\n• أدوات تصور البيانات (اختر واحدة على الأقل):\n  • Tableau\n  • Power BI\n• البرمجة (Python أو R - اختياري ولكن ذو قيمة عالية):\n  • معالجة البيانات باستخدام Pandas (Python) أو dplyr (R)\n  • تصور البيانات باستخدام Matplotlib، Seaborn (Python) أو ggplot2 (R)\n\n⚙️ ٣. معالجة البيانات وتنظيفها:\n\n• معالجة البيانات المفقودة: تقنيات التعويض (Imputation)\n• تحويل البيانات: التطبيع (Normalization)، القياس (Scaling)\n• اكتشاف القيم الشاذة ومعالجتها\n• تحويل أنواع البيانات\n• تقنيات التحقق من صحة البيانات\n\n💬 ٤. حل المشكلات العملي:\n\n• دراسات الحالة: تدرب على حل مشكلات أعمال واقعية باستخدام البيانات.\n  • أمثلة: تحليل توقف العملاء، التنبؤ باتجاهات المبيعات، تحسين الحملات التسويقية.\n• أسئلة التقدير: تدرب على تقديم تقديرات معقولة عندما تكون البيانات محدودة.\n\n💡 ٥. الفطنة التجارية:\n\n• فهم المقاييس التجارية الرئيسية (مثل الإيرادات، الربح، القيمة الدائمة للعميل).\n• القدرة على ربط رؤى البيانات بالنتائج التجارية.\n• أظهر فهمًا للصناعة التي تتقدم لها.\n\n🧠 ٦. مهارات التواصل:\n\n• القدرة على شرح النتائج بوضوح وإيجاز لكل من الجمهور التقني وغير التقني.\n• تدرب على تقديم البيانات بطريقة جذابة بصريًا.\n• كن مستعدًا للإجابة على أسئلة سلوكية حول العمل الجماعي وقدراتك على حل المشكلات.\n\n📝 ٧. السيرة الذاتية والمحفظة:\n\n• أبرز المهارات والخبرات ذات الصلة.\n• اعرض مشاريعك مع أوصاف واضحة ونتائج قابلة للقياس الكمي.\n• أدرج روابط إلى ملفك على GitHub، أو ملفك الشخصي على Tableau Public، أو موقعك الشخصي.\n\n🔄 ٨. المقابلات التجريبية والتغذية الراجعة:\n\n• تدرب مع الأصدقاء أو الموجهين أو المنصات عبر الإنترنت.\n• ركز على الكفاءة التقنية ومهارات التواصل.\n• اطلب التغذية الراجعة حول منهجك وعرضك التقديمي.\n\n🎯 نصائح:\n\n• ركز على إظهار قدرتك على حل مشكلات الأعمال الواقعية باستخدام البيانات.\n• كن مستعدًا لشرح عملية تفكيرك وتبرير اختياراتك.\n• أظهر الحماس للبيانات والرغبة في التعلم.\n\n👍 اضغط ❤️ إذا وجدت هذا مفيدًا!",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:07.077Z",
+      "expiresAt": "2026-07-23T22:43:07.077Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:07.077Z",
+      "tag": "technology_software",
+      "tags": [
+        "technology_software",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:07.077Z"
+      }
     },
     {
-      "id": 2,
-      "path": "/feeds/eg/2.json",
-      "posts": 7
+      "id": 444819833,
+      "postUrl": "https://t.me/tradsempire/4419?single",
+      "source": {
+        "title": "Trade Empire",
+        "handle": "tradsempire",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZbTDxu_d9JqQaf5P0GhMvxcS-HQ80MkztMrUPtJryUZrfOgR-7n_JbpVeR5cU1GLDNu47BD9cudSjUtAAJDGSoJTRaxBqiXezQEPenhl7HugHCHOGQaYhhUhPLuzICazW9QHYGrj4A2g6Yzz9o2TZBMonKH8L2UH7UeqD4BVKiySEDxkB9ZfkHxQHBxI2e0qZR9_WKlSOIUsBy-4roig7SbqdHTK311q-yadzJIPJZvUHgwKSs_-idk6XFjjZochu1F_bSRneIhxUvfznMAyRMBdnKTYECJiJNdHND581Wg6QR363z3pynqJK3iB5EugWbL0j9mAtuG1AYLMuy0svA.jpg"
+      },
+      "sourceId": "eg:tradsempire",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "XAUUSD BUY NOW 4078\nSl : 4068\nTp : 4088",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:06.140Z",
+      "expiresAt": "2026-07-23T22:43:06.140Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:06.140Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:06.140Z"
+      }
+    },
+    {
+      "id": 1874025976,
+      "postUrl": "https://t.me/summaryegypt/5081?single",
+      "source": {
+        "title": "Summary Egypt",
+        "handle": "summaryegypt",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/hO2gQMwePdp9uUdmLZfhArLVS49mIh_fPo9AtHI5m8eZInbhyE_489ujC4McfhhCH9Xd-qprMo389M1uM_eWNgvlLIfSay4l-FZsDNbtsLwlWxmFIByiXKdWXlstbOhZBRJXgb5LmllQoSxMSDU363-wun978LBV7E8TsSOpOjxlD_vcZDd0DCHHswSmSALzoIBFvQG8JfXADrnl9APwlz05SLuCmvJjxcx7tIK_Y5OZmrxDV4xwvdEr20PUF_mPv-YgZcMLDA1q6h0XJNe9EHpDnvAO16n4qNmtHq4a1S9K6uvjut7ctYFDfy9v1NQpMAvD6ndOb9GH-_16jtfqIw.jpg"
+      },
+      "sourceId": "eg:summaryegypt",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:05.360Z",
+      "expiresAt": "2026-07-23T22:43:05.360Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:05.360Z",
+      "tag": "sports_all",
+      "tags": [
+        "sports_all",
+        "sports",
+        "sports_news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:05.360Z"
+      }
+    },
+    {
+      "id": 1687300471,
+      "postUrl": "https://t.me/seedoss/699?single",
+      "source": {
+        "title": "SeedOSS • foss, privacy, gems.",
+        "handle": "seedoss",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/QP59w2bayrr_MhqH9Wv8ifw-owPZtnGZCUqgPdQL1MuTA2AH7hY52E6k-dNIXvbNoBl7d-_EXSXSVqymZ3LEccLvZ_iRB9KlJdHKRXoss8ihSdu3yC1lKKAsF5ZdRui5u--Uc66G5BJVSqsmxdsGUq8QECor2wY77Ga2n1FuQ0ZjtgGPUhrccZRs2OvdeADV0RPtaO1R9BIPBbTfYxBOgsgwVaP_leg9OHFH97nZbtWZSHa1uV5zF7Qt8zqRZDWY596LrXj90_CR9iZg_jUWbyJFbxiNZ9oVmf6W8dontdsg6pjP_ChF698PxB3Gy7-nQrGZYCuS8panvl2yj9EzFA.jpg"
+      },
+      "sourceId": "eg:seedoss",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/IITUAFlMH4HQAlJIxDKyuTrU4OEIBIZq08JBUrXUbwXOUsr0xhdLhbpSUxX2qjPlwftUDfCITmJRjDoZ8-cck0Nl5UbyQzoyoWTGnvYv7y4JZquvE8BBxNzTdC7nATVpgkrc9JTmPvoIvjF-gCyCjM2Zy5tcc1yC3JO-iQYc1wHmECq_yB7TxsXi_04NmrYiG08JuunLVmhLyl6chaIqXH9XpmvCjOGNvcyJVRZby2FMSYD6dXnu8pwCpS48phuqphHM9dov9SrAuFtFTs16-6N_s5LLGkrvZTE3IVNjnDxP0idl7QVPU_FFTp_ywlJlCw1XGDrXGiyGtv-7NXvWrw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "HRLY — Kotlin/Android\nChecking the time usually means unlocking your phone and getting pulled into notifications instead. This chimes quietly in the background every hour, so the passage of time becomes something you hear rather than something you check for.\n✨ Why it's amazing\n🔗 Get it: GitHub | F-Droid\n📲 Screenshots\n📁 Source Code\n\n❤️ Sincerely: @SeedOSS",
+      "links": [
+        {
+          "label": "Why it's amazing",
+          "url": "https://t.me/emadclouds/1745"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/ltrademark/HRLY/releases/latest"
+        },
+        {
+          "label": "F-Droid",
+          "url": "https://f-droid.org/packages/com.ltrademark.hourly/"
+        },
+        {
+          "label": "Screenshots",
+          "url": "https://t.me/emadclouds/1748"
+        },
+        {
+          "label": "Source Code",
+          "url": "https://github.com/ltrademark/HRLY"
+        },
+        {
+          "label": "@SeedOSS",
+          "url": "https://t.me/SeedOSS"
+        }
+      ],
+      "createdAt": "2026-07-21T22:43:04.529Z",
+      "expiresAt": "2026-07-23T22:43:04.529Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:04.529Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:04.529Z"
+      }
+    },
+    {
+      "id": 4197850727,
+      "postUrl": "https://t.me/rusembeg/10737?single",
+      "source": {
+        "title": "Russian Embassy in Egypt",
+        "handle": "rusembeg",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/TrOOPegktihEXRr39LNoCTC7oXRY8i_NmXghYAuFMs2h4M1Z3AgiXWifo7a8QEZBzPuVpvj3RV0waIg6imiEqj9ZNEUOTmzXeosy2RcWMLEF_k2VQ1HTW4nUI6_riqKsjplaenqc8I9GT8_hi2Os8Jqco-PiyHIhqT3jzfs5zrjwf4AY00sMQ4EqiHuXuhjWVNMnHpPxLM3_MHN7rJU7U1diQojJOPVpoLXMkn8U1I8iZ1r0yFCG0cO1viUJ_zB6K6J6KOLDrSq2WdELtQFIA1RMRvjXHXQVBBORGj-sA7EFKjn0j9PW3j2FvBvP8heCCQUzKZQmw7jB1VqdEl05tQ.jpg"
+      },
+      "sourceId": "eg:rusembeg",
+      "sourceCountryCode": "eg",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/RA5wql5AZBof_Jyhcgo7j7GV1NgGMYp0p_cJ5fLwN4o-Y-x6wpM93kASwkh-7aZ_JEeEuEfhr-kRYbK0SGKet6rYJX8_0GLNvUAIX3cyRl8g07Iy4qNb2cmaymDRbLaa6GE05u8s9AagUM6YvuIW99eEOV0xnC7FJQbkP_bORIZ5Uj3EuVL6Ostdfqnb_yyyp4WfXgLeXWka2g7RA5jyfWr9Op1NG3Z0kF2qpk_Lzqt17sMjsqseV07zeK2h-uZZDN3tnQzNadQ14McEq56yumObLf-xbP4ISCdE6EOhCJLSVh1AvOiSy0b7yadKNlhY2MwsHBDSD_Wi0aG3TC2i9A.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/WRR51obj06CeEjJfEpnqTgdfGorFNOcyGpDmboxE3QQIVVDkyuZn7xZ0Dpqw1g2xb7IxXKgpr5I1nTTyRC-UezKtrkqnPTwV4uCs2_Q7NGfcWdiUNRSp_WK90N522SIeXcmywtlkCB1kpCDnPpQYIF0LdOg02QWyVnrD3eCv7GX_y854i1cxR4W8wHZjVxcXXyyxBdTPHLgO06hC6pLZCueyGsOIeWobQTwJpR2RYTeOwwzYGYB6_vA8RU_E0ocfGi6wUkCleT-Wb5bl3gOChXVEaPUPG_6_i0cVZ-wxqZQP1ZfUB1fxskGMbfnSy1cYt5TqmcA68XkSPEj0gWlHzw.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/HuFpuCRb5WNtRsZ_EJkAnlgtVExMSGBN2gNGPpapC9C1Zyj984vKN6A4qd7lXOuB8vU4WkOgK-98oT3qRkpBjB4pn2HDpFqeXq2B5jIWbiCx_qyI7YGM53ekPz91ngdSeLv1D9uUqApRt2OBgBl5AKYx4-XKOOQstWDq6xRyayBTUY5IBl_4vbu9LuePF2yaRnVOwX41w1CNEq6lIgQJCB192GZ1rbVQu8QNAGW2pBlLEtpRUYQ5pNdijIoe6t2JpzxhJ7P-BR1PcVuDvzA_SafWPfs6Rya4Z_0QcBeCTAg8gIkAnlNXlHMoLjDYPO9anYus-ro49ptILUabQXpFSg.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/MGDgd0xGCjwxmbHi8EY9AtA6MGTLfrMQP_PZ9PsQmLdBi9xilRdrfIMNojsa09wokb1w9LzlfrkPThuEHUmCxuusvUMKeYI0eI7cfm-hI6lJpWU4hGmy_PqJ-EOymYrFSeF5LsJn5ILfS_fOhgbtQVf9uE-bKXc0ck05IDfVLvua53_cVqLJwzIXo5nkUaETHdzxcOdJjKx4g9CtC2n9cM02XRUbPN4m8sEbr9lyQMfuqU4cAsHEFMoWctT1CvJJZxN6rKdZGOnaAK_WXcMVHu4SFelXcdRDXHpn1uUGESWT9WIUYBxnyqVv0sFplXHUuyrQqHFRPmZu-jZe-l25vA.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ptSGtGOyOaxKZiyuB_Ty9BJm0kBhUOo8-gRCDNVKk6wuqLQ1CRssY7u406IWKOUzdqYU-tiTFGajgbF6B7FMePmD7_r0xSftJsJQRQ7MRZBPXDYYf96CiwPvlIWChiqqPNwKW9xuQ1W1noRPWSvbjosKOlu8IHd2WLMZTPlTIf5oGb9tRUexq-K4sT6HzJuDtgjgLnwANSntL5Y_LhuWn1SLyZQHEsmxYmpklqZAsw8Ujjd1AGclhbAhicFp9Zyn9UQiUFu8ROP2cgQ7w5Dk5n8Mb0AGD9rK8VrDEK8GkwUz5yp7fHl4M-wXwkKhEf5EuQ00VYWof8dpDUsoPbiUcQ.jpg"
+        },
+        {
+          "id": "image-6",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/gO9m-rSxrlnepny0nFN2nYzJDPeIh6_FoMJMAkf-H0MtXdhKXBS9fRd-ZvOaGW2ynpCnpf_y-mFDmTduyrRJokrgIpO_c9GIIehr1Bb_D_sPmREKnY0DCBygmxN8KvIxjuWXSmvRrjQA42UOpxecjmzX0q7dh8WdQnbP1dxYMQtu_3MaBLz_g6kFoveoi3fBQXN9J7ls9CeK4tbHd1iiqAmJ1k0vWPvrlOrohTR5By3WtqnXXZpPGWVI-xk1oCZ9CC5sLJ0buE3RhgtHnsR1mYiSXetQ6rCSoWuwUIYXgOgcokuLnmEPjW4JN4sm9p8el0jidpM1WYvsk-ng1h873Q.jpg"
+        },
+        {
+          "id": "image-7",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/K1NuqanzU11bB2HePLNvP0eAZF5WB3Rf82f3GKoMAwTqVKsKDyUbupW9Yk5iMRmvKqacEyO5j4oimRRiFW186eSqTbK3AdI-aYmpvrbGljvBf7oNlM7NKhDyjic3aJJ7YHZjnVs39nWRfsTD6DU5Hee2n27bU-uXPyrx621JjREjNCiqBfXdU3CHAOMkR3GHugBlfHhT-zuYkwu9CH9FM7G8M7HCMAF3n6O9LAM5muRo4WoInDwL-FwGWEgeHMsNgNO96uZTAvEfb8VrumMmaFKFBE1kAB15KXC0nXNF38wPcTm6-sOQ87laU5IStrQROoI7IX2CuQgqPt7NhsB_qg.jpg"
+        },
+        {
+          "id": "image-8",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/dw36J3c8UJy3hGd8DscD6JAXp60-4dlNsUTOb_mjhFJhndTRLZCR70LT_1QAh9WHI1WsZIwLtwsA2272ZwotAWjvAfM_mE5cbLWMRqx5Y079ziaL9ISGu7pSfOMJhplL3zVZOejBDQPMC_YLoqCiv7V1Dlfk69HZ-Y7qiiBoQtHpLn68b3Rn2nLajpEvesPK03KJrbdZEWVVgs4fCmdvj-YflRpmpgdEA40WuzP1eQpkI-KYgbHpCtZrIoB0gnlZjumifHCF7WObpIEktn8eldR24uAzsQ5VvwDMlcX8Jru_zLIfDjJ5IjUFawLfwz9gJaMJKfcynOAoMHeOtRQkLA.jpg"
+        },
+        {
+          "id": "image-9",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/lfI-UCtk3azkh4DjrmgSv65q9a2c87Zrp5hJ2LgOi692H2vuazWyV6E7ugUejLmAb7B1I7JQ6RVj9cdSgbrg39PiYjR8n5Iweb55pSHSE8Sxpevbc9ZTKaoTRLlHPwCs3ITauB7qq0XHG8DhGlx9FRto2CiMbfPQRxG529viGNnAx9sp_A7f7Mn8xIuTxsY1_XeotVWlj9CLShwdQ_cRpayKsxMcJz1qAQfm5LcLgaio0jyo0Hd40Qlat_DN8ccdT1MKHgoa4JdIZ3VuJcTqDOC6iK2W_dIKx9_7y9slaEyVgcr-g-WnP3JoSHjArcF7KfSqwHxQAjEtp6yBBXjSxg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🖼️ 16 июля в Музее Махмуда Мохтара при Министерстве культуры Египта открылась международная выставка карикатур «Всадник арабского искусства», организованная Египетской ассоциацией карикатуристов при поддержке Министерства культуры Египта и Русского дома в Каире \n\nЭкспозиция посвящена известному египетскому актеру Мохамеду Собхи и стала данью уважения его многолетнему творческому пути и вкладу в развитие арабского театра и кинематографа.\n\nНа выставке представлены 135 работ 116 художников из 28 стран мира, в том числе из России.\n🇷🇺 Российскую школу карикатуры представляют Федор Алексеев и Валентин Дружинин.\n\nВыставку открыл начальник Управления живописи Министерства культуры Египта Махмуд Хамед. С приветственным словом также выступил глава Представительства Россотрудничества в Египте Вадим Зайчиков, который не только отметил мировое признание выдающегося египетского актера, но напомнил гостям о важной роли народной дипломатии в культурном обмене между Россией и Египтом. Он рассказал гостям вечера, что в начале 1960-х годов Мохамед Собхи посетил Советский культурный центр в Каире (сегодня — Русский дом в Каире), где впервые познакомился с фильмом «Гамлет» с Иннокентием Смоктуновским в главной роли. По словам самого артиста, именно эта картина оказала огромное влияние на его профессиональное становление.\n\nВ торжественной церемонии открытия приняли участие председатель Египетской ассоциации карикатуристов Мустафа Эль-Шейх, генеральный секретарь Общества египетско-российской дружбы Шериф Гед, представители творческого сообщества и деятели культуры Египта. Куратором выставки выступил генеральный секретарь Египетской Ассоциации карикатуристов Фаузи Морси.\n\nВыставка будет открыта для посетителей до 26 июля.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:03.271Z",
+      "expiresAt": "2026-07-23T22:43:03.271Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:03.271Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:03.271Z"
+      }
+    },
+    {
+      "id": 480744336,
+      "postUrl": "https://t.me/rassd/199072?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/0bfaec1187.mp4?token=KBXws0B_HbcMRyuibTdrmhdj0lCiMf9agj9Vr7hvEyuis6YX-tQyY3inGUGPgo1O9GQi-zZyG_OltXomdwdy_87umAAHgdTbZtN4soyWDp2Bkwsem5tCdEuZlKPDo73BBYyHPisvl4NMEREI-U9q0xU4xs5EnKxGuLYX7rNrXjcrOJgwN-t3UEa2Q6yHaJyPYDpY8O6QggMN_0GVH0joZoqcJvAIQX3T0yYVrmImQklJLqkEX8c6wPzGGrT4XDxUqs2ZDndlEUnZZhViRH3S96KFRGFNAIGdELlFwvEmZqzTH_cfBmy1n4VeCmc4shFA9vTVUpUPQygpqe3ABd-djA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "لحظة اعتقال قوات الاحتلال شابًا خلال اقتحام بلدة قباطية جنوب جنين",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 839001091,
+      "postUrl": "https://t.me/rafahbordernews/11412?single",
+      "source": {
+        "title": "🇪🇬 اخبار معبر رفح - رفح نيوز🇵🇸",
+        "handle": "rafahbordernews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/k-_aWwIA-wWjkEQu9ldAPFMKIy4tiDa7QVoY4aDskQhvo2_nNco8Tbav5NYmNCbGJqbLvB-c9DChenlyLPTllRV5m30B1xbbwjSlLfktKPH69vXDdfJ5pbtdNg-NY0SGsyYQ4AVTWWMY7mWGF0snluvEh4UyKPQ7seNRrtNpKHn1clkc6Rzk-EjDwBaIiTlQtYuyJP4A0P-cJ5jwtmzlV-8lra6zo34Vqe6Lh4_XLRZ84BOHJ6ocecJPTHWS82FujnW_2NS3lElvgyR76NKUNZOV3X-YG1yo9Ra_3KemtlRIknh6-649XFOloM4yoMQ9A_4YjBwnYVeHyeELk48TFg.jpg"
+      },
+      "sourceId": "eg:rafahbordernews",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "طقس فلسطين: موجة حر لاهبة تجتاح البلاد وتحذيرات من التعرض المباشر للشمس\nتفاصيل الخبر👇🏻👇🏻\nhttps://rafahnow.com/?p=50784",
+      "links": [
+        {
+          "label": "https://rafahnow.com/?p=50784",
+          "url": "https://rafahnow.com/?p=50784"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:59.877Z",
+      "expiresAt": "2026-07-23T22:42:59.877Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:59.877Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:59.877Z"
+      }
+    },
+    {
+      "id": 3665422119,
+      "postUrl": "https://t.me/nimrodforapps/1300?single",
+      "source": {
+        "title": "Nimrod for apps",
+        "handle": "nimrodforapps",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Fxi8BUzdzRrEill3QygvQwqNEkCUi3V1o41MFXbZTmi05RRuOFFfOxM90Z1O2asC8C-xa71-tJARprxGHmKmGTvu0JzqKwrKwDPGl1SAvI9dCqvIXxh_Wpja9apVWD7LrwSjP669E7zT5wRQXQc3b2YX1pMGlI9tBVAOb2y1pBWV2Y44Zk8-Gl9PugCmol-Ka3SuBZqRCWk1-s4E-fTiwJFX2FmkPrL8J_GAeJzRgsTT9zKxej5fP184QoOJYg4mfZtR3UXoWKjrgZD8-c6XNsIaRRz7vAYsJiaXIo-apIYVK_3YOlv0tW-Jc9dNm-4DwIJhi8-FlmuVlp3egxyo4w.jpg"
+      },
+      "sourceId": "eg:nimrodforapps",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/b_VHrEJSBlTpyyH1gVPtUtHuoVzKjLPK3lG-THvLkh1_LWuIfd0tN6OJUVUG-qfN8k2NQa5AgNozM0Y9gNvoz-JFxGn3B9TIEOO_v5VO-5eyV8MDpeORy9KIiYhVVZ5Qz10pb8Jvrsw9khJQ8_fkDcvlen4ArbDBnwNd6T7Uu80qb4isu-h9kuQLzey22HZtw0lKjW0rIYUyAXSWIY90U5aVI5vQsQiL9M1GU8SPGzCJMEw-hTCks6WxnkSq5dYAzpf68d7gg6AMrOOw3b5Eo7QTKVHy1MR154l5q1dtFka1p0CHIRijq45zehaWW-yUvl5yBhfXTy0dZ_tIxio0qQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "اجمل وافضل تطبيق لتحميل الكتب والملازم وكل ماتريد فمن خلاله تستطيع الحصول علئ اي كتاب مدرسي او ملازم جامعه او كتب للغات او اي كتاب خارجي او اي شي يخطر ببالك 😍💎\n\nقم بتحميل هذا التطبيق المجاني ولن تندم فاذا ماكنت محتاجه الان ربما تحتاجه فيما بعد مع الوقت 😃\n\n🖇 رابط تحميل التطبيق برابط مباشر 📥\nhttps://rebrand.ly/dbzfwem\nhttps://rebrand.ly/dbzfwem\n📁 اضغط الرابط واضغط تثبيت لتحميله 📲",
+      "links": [
+        {
+          "label": "https://rebrand.ly/dbzfwem",
+          "url": "https://rebrand.ly/dbzfwem"
+        },
+        {
+          "label": "https://rebrand.ly/dbzfwem",
+          "url": "https://rebrand.ly/dbzfwem"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:58.992Z",
+      "expiresAt": "2026-07-23T22:42:58.992Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:58.992Z",
+      "tag": "technology_all",
+      "tags": [
+        "technology_all",
+        "technology",
+        "technology_web"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:58.992Z"
+      }
+    },
+    {
+      "id": 2615117030,
+      "postUrl": "https://t.me/ngmsr/14522?single",
+      "source": {
+        "title": "نجوم مصرية",
+        "handle": "ngmsr",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Gtq740cANcL0p5Zyn3pkgAbq0Cs6uBxLcmBnQHPQQvJ9CfjQD5ZlbETtRnMEdVca43BKXivOXiq3O_fP4tKMCAfXQROOMMaJPCTx_cFGoR0lBUXg2CRrKwW3s_45A8-NgHT2iag1NqkI3oCIXvGrmWKaK_5Msf81GxUolnHImpn2RWQX4u4oWBHOSESz69TZDFR72evFv_rO_7bBPBjgDwTnicurBCmlcRrHIMC6JXJpwEzFMFsHAkehiQ8onHVPol-wMaOJQnAu1x8g_m7JwLbtHAJy77sGgO4-dLmIORN8yxpW8bJ3bJdDUZ-mFy1ajE09RVZXWwbbaszTavO5hg.jpg"
+      },
+      "sourceId": "eg:ngmsr",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/tRAsIub9UPRY0V73GOsHXSoAf4g1s2BjaCgdrbvgOntQIXflehyLHy5wL0tQi87yaYee7YkvWgsS6q-tag7kkg9QYqDMF-xlZGynl3RP9N4MAQXiCosA8x752Y5U0oSmVKw1ajFCz82QQkVfAMVPfK0NpUtrH-edRZ7qjP6JXbg8-ooTzcgquidniI_He-8hOqi-jDw_XTknqRAFZAuWU2kW0qfHaC3RlCjA1L-Od84ZRStmJM3gzGgcUyJnl2uBmKeDZPDEkIxZcpbPwTrK-3K4fPNZSGKc24tWzIrwWvTmEZzIi_Vg6nW0_x4JyTSBvCVbvxO77YTqRrkdqA-vew.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 قواعد بريطانيا\n\n🇬🇧 بلومبيرغ: بريطانيا وافقت على استمرار استخدام قواعدها العسكرية في عمليات أميركية تُصنَّف «دفاعية» ضد إيران\n\n✈️ القرار يمنح واشنطن مساحة للتحرك من قواعد بريطانية في ضربات تستهدف قدرات إيرانية مرتبطة بالصواريخ\n\n🛡️ لندن تؤكد أنها لا تُعد طرفاً مباشراً في الحرب، مع الإبقاء على نهج الحكومة السابقة بقيادة كير ستارمر\n\n⚠️ الخطوة تأتي وسط تصاعد المواجهة العسكرية وتلويح أميركي بتوسيع الاستهداف إذا فشلت المساعي الدبلوماسية\n\n#بريطانيا #إيران #أميركا",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:57.421Z",
+      "expiresAt": "2026-07-23T22:42:57.421Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:57.421Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:57.421Z"
+      }
+    },
+    {
+      "id": 2543368880,
+      "postUrl": "https://t.me/nanafrica/38157?single",
+      "source": {
+        "title": "‎أخبار شمال إفريقيا / Northern Africa News",
+        "handle": "nanafrica",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/kVKvOu-dDXtyCa4PYrerOPcbt8YDTZoei67axF2Z-n-dbjYTkin6RteqPc1xPeb3WT610xPAg5pELKrfn5G2cNPeRFo8T_7EfeVNcPP6fNkkg0caBbAG2EH14kod3m2OIbQmzmR0W8KVeu0eKI6lp5W74TCOcf6r_doBq3_hhPyAgMwIxYmeYROPtKfNPmOMW-C3RmQaN2TY8W6b_B3PE4v2_d6g6NjB8O2i_pikm2zwO3TTR8TqAnYP-BPxKKdDR-OfoDe7YIJrAvX2hFZU1YFTxKgWAQ9cRdXdh0lc0h0NoWiW3RnWzeT_QHsWKMz_lRBL-zpWy2sWuJcI426xoQ.jpg"
+      },
+      "sourceId": "eg:nanafrica",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/v35WLe0qLJXyMn2wX-MGUXY4nCL6888YswN5wkZRe81YwBJUS9hSSpG8C6lmBh2F7aK45mXVDx0zWC-gZr3_IJ3jw3I5hxUPJbf5Xeex9RZHpCMmWlUURlpdmq_DdxB-gPlrNu3rovnlvF0v6ncFNWyt2qhaY8CerSlTz1gLHHW_iNv7dtJdx8Z02y2dhYQD89Y6SjWEh10_9IpZiBEYT86EK4W8N63axkNvbrDP0vvjGyqdZ5ULOTkwWk2b-HWN1ucAEyt7q0B94Nj5-dSk278glGTXUhXh7CKBn3Wl-yzzlGCYn7SyKDN458nqzCoSe8f6TwLDA5eFHj7Ne9HOtg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🗯 الرئيس التونسي يدعو لتحويل ديون البلاد إلى استثمارات تنموية\n\nدعا الرئيس التونسي قيس سعيّد إلى تحويل ديون البلاد إلى استثمارات تنموية، مؤكداً أن الشعب لم يستفد من القروض رغم التزام الدولة بسدادها.\n\nوطلب الرئيس التونسي بمضاعفة الجهود لتحويل هذه الديون إلى استثمارات حقيقية تسهم في تطوير المرافق العمومية وتحقيق التنمية، مشدداً على أن المرحلة الحالية تتطلب قرارات تنسجم مع المصلحة الوطنية وتستجيب لتطلعات المواطنين.\n\n#تونس",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:56.580Z",
+      "expiresAt": "2026-07-23T22:42:56.580Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:56.580Z",
+      "tag": "news_all",
+      "tags": [
+        "news_all",
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:56.580Z"
+      }
+    },
+    {
+      "id": 1069530550,
+      "postUrl": "https://t.me/naf3_ch/2869?single",
+      "source": {
+        "title": "🌴 نفع & استنفع Ch",
+        "handle": "naf3_ch",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/dsb4TPBE6SYLLeBSIKPrjf_k7F6RNJkMlqtiiAdnhyx0lMLTyHmnQ3FiIcRUXUq99hvQvJ0OvbiQO9TtHAWr_EjQcqhx3HeLW-oMQ7YI5egBapWu-FmreWxMSJfku5ltmnqI2BhxjvhRjaEP4l4_eSz83zBKpfmtcwZV9EQaJiceoUsejbB371rt01AVETzfeID9CWM1OjwD8WtMtfQYQP2WKQDZXlmBcZw1l8xrU_5ylFc6-wm0dTdaQQ5Q30uJJ21ttXXr8WSd0pEzQAUWCDYmeLJ-dy_w6iz0vYxHx11KqRFW3hmxvGzTBabBSPZkxlBymNB9Q2U1U6_qnv75YA.jpg"
+      },
+      "sourceId": "eg:naf3_ch",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "&rlm;﴿ ‌&rlm;إِنَّ الَّذِينَ يَتْلُونَ كِتَابَ اللَّهِ وَأَقَامُوا الصَّلَاةَ وَأَنْفَقُوا مِمَّا رَزَقْنَاهُمْ سِرًّا وَعَلَانِيَةً يَرْجُونَ تِجَارَةً لَنْ تَبُورَ ﴾",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:55.548Z",
+      "expiresAt": "2026-07-23T22:42:55.548Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:55.548Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:55.548Z"
+      }
+    },
+    {
+      "id": 4263824057,
+      "postUrl": "https://t.me/n1nnnn3/51819?single",
+      "source": {
+        "title": "اقتباسات عبارات ستوريات",
+        "handle": "n1nnnn3",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/DdvVZu0l-vabdOhDy-15SrEX5Jvw0q7-8wxcTzRJSwv7tMk_n3XXceHSiZK0uykvpVupFwqRrBwkyLxaYtjGlD5gLrzQeKPiyh8TVRVtorO-2JKsWYcvDptMDwdtwPZ0kQRb_EjeKcgRQ9tpNXkji76rcof6ZBvYAnOrKApSeJLtmabKRFztOk2s5iLi61YDXQhjnU2YzOwvQK2UV6wj6Y47uD8vUmdO1UmOpj8R6eX0Ze9tKPZQqfDp45cY8HhSQPzyHKljDb0RC6xKtCGyXtQnie_v1aiZxG5VIC5C4_Am5YpNF2FcJdxNIOpm5jJEQANxH0jM69kp2NPw2XB8rQ.jpg"
+      },
+      "sourceId": "eg:n1nnnn3",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 قنوات رائجة",
+      "links": [
+        {
+          "label": "قنوات رائجة",
+          "url": "https://t.me/addlist/RHl3ids8f4A5Yjc0"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:54.736Z",
+      "expiresAt": "2026-07-23T22:42:54.736Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:54.736Z",
+      "tag": "telegram_all",
+      "tags": [
+        "telegram_all",
+        "telegram",
+        "telegram_bots"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:54.736Z"
+      }
+    },
+    {
+      "id": 2540280479,
+      "postUrl": "https://t.me/mr_trading000/7406?single",
+      "source": {
+        "title": "𝗠𝗥.𝗧𝗥𝗔𝗗𝗜𝗡𝗚",
+        "handle": "mr_trading000",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/uWpu76Z7mg_ZH-LFywpcFideTtGZ1B7nMRaXbbU4oB9Ccitzfkifh68if4hwaWcBDDTNz5gVsYXoLB8xjlckrQXSLMpOmsQ6InHeN6cqu5omgE0b_99U6yj-1YKq190B8uxCs2X3LSVEMNu3-ER0gOdqbKF7Lkk0N3gFV-eommX6XvO8vY2ZqjSO4Cn2g_K1xptvFmjW10Qf4LeNWXcC-7wYHe_4hrUD_prHLmRM5FK_uhN8YVErnYvVLi-mnjLmdcZEQoBscgCtXkYQonttoGfnSlu29Wto4Yhsqf_OFs1nv3pYHuEcjTv_OW73B8y5-28y9VvjPQ3Y0b77PjOMDQ.jpg"
+      },
+      "sourceId": "eg:mr_trading000",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "الذهب + 200 نقطة ❤️‍🔥✅\n\nوالصفقة الثانية + 300 نقطة ✅❤️‍🔥\n\nالحمد لله والشكر.",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:53.901Z",
+      "expiresAt": "2026-07-23T22:42:53.901Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:53.901Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:53.901Z"
+      }
+    },
+    {
+      "id": 2394854380,
+      "postUrl": "https://t.me/mi_raculos/1507?single",
+      "source": {
+        "title": "حلقات ميراكولوس | اخبار 🐞",
+        "handle": "mi_raculos",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/o73iNWbuIw0azwqlDoYpyTLUzDnfFhzqhWDEo6-RN2c1DXd9gIX2KYKlFDmHJDAsv_ZO0C63h3Ke8Aa4JdE2bYmbbigIlWM4M6jKpnFN8DgzIPtC72kxzgb9dO5bwv5I7TyQmGT26wSZKZuXm0LdzJ1S-nS4LoENay2pdv4m-S5BV_1M2D0McR0e5kWqtWjP1Bb4pTgqG0Boiwc2uiFV-w2gK76Fv0bkjBGZqmJ8Op8aVk6ac5z80exgZYoABMIixaqDlYjDahrT3RRu6qZwQ0Yn-ko1IFTlend3EFAgVDeBeNak5SHI6cdjcLjo4Up7xIo1zrRClSO_sccswuOlYw.jpg"
+      },
+      "sourceId": "eg:mi_raculos",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 | كشفت \"غلوب البرازيلية\" عن مفاجئتها وكانت مشهد من الحلقة 25 \" العملية السرية \" 🆕  ✏️ | مترجم باللغة العربية ⭐️ 🗓 | موعد الإصدار : 1 أغسطس ❗️  - • شاهد جميع الحلقات من هنا.  - • القناة الاحتياطية.",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:52.951Z",
+      "expiresAt": "2026-07-23T22:42:52.951Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:52.951Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:52.951Z"
+      }
+    },
+    {
+      "id": 159023972,
+      "postUrl": "https://t.me/medmannews/42615?single",
+      "source": {
+        "title": "Mediterranean Man",
+        "handle": "medmannews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tAU8TPDFx8GfrhKksNHRGu4pl8bqVZwTaJFhfg1qTnPvngat1XvxC0u9f3WcdIFf569-jfb2PUfqlKS6YY6eqk07M1HLBOX8dvlwWuWB7aSbTouoUDlR9j8K0El215vz65bZ62vBr9ouxLPvYHCeGUK5EaNKs9wv6o4h0zvWXPsLDSQvDQ8a0Z-jU_FAewRWlU4Ruk3inlV2-lrl6aMTagiv_9bhGmNNRKWiiOpTz85p8VWPXwF88jPHIxqdNBvW8cUnmyOrGUS2iUvAerp2r8018UWtkr1wyAEcWGVAB5nK3SARJ44Z_DlqrHqJ8BHD35ibw5tTQ1uJVuu332Hb5A.jpg"
+      },
+      "sourceId": "eg:medmannews",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "⚡🇮🇷 Tehran is getting bombed!\n\nAt least one explosion heard in East Tehran.\n\n@medmannews",
+      "links": [
+        {
+          "label": "@medmannews",
+          "url": "https://t.me/medmannews"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:51.885Z",
+      "expiresAt": "2026-07-23T22:42:51.885Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:51.885Z",
+      "tag": "news_incidents",
+      "tags": [
+        "news_incidents",
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:51.885Z"
+      }
+    },
+    {
+      "id": 1435510168,
+      "postUrl": "https://t.me/life_in_sharm/5615?single",
+      "source": {
+        "title": "ЛАЙФ ин ШАРМ☀️ Египет Шарм-эль-Шейх",
+        "handle": "life_in_sharm",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Kitr799iVCkp4I9wvtUOkcv9PR3aR-v_f2-7a6FcyqteEAIyRckX1s0qQ1_XVr7iwCyqcfhD36n0-mBlQBlalgmdvZGe2Bxcsk0S8fXAK2Dva1-T1Mwk69hT_j9L6WVbFmPS_6xurhMM4AnzjzxVfThZC4MSdvliV0yapo073_bcZQlSD5fpkvmkMwYl45lXulNNhpccqM_sjWJ0xXairsKvKeU1dz6Ej1wbadefJS8ZBXJbtZLrffBIAZEmLT62Mom_9VpbY3DcBQM7SRpc5S3dHBR3v_gJqluxOCw0Bx7gEh4NcaePy-6RHLCzU92P098MW1B413pq_qhHA_Oh_w.jpg"
+      },
+      "sourceId": "eg:life_in_sharm",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/RXyEpO9gJjrF17XU6BbSdadgbPlA8XRKwIjIA8qGopGubZDznGXxbQWvy4Et1dhEaeSh5A7Ym-x-ivOzkvoRgmjMR1aYEm2jUPd8Iy0b7KRWhLRuwjrMe2Ry6df4Z0OPyrpndFPD9Yho5B_Fm75qOqDe4Akz_IR4YPCc-6oJsFMly2d8GvxmoF9WZU1gKIATOF6EagA9FmaQPFmj0q2pTgefw8jFPLiW7HAEC7zJE0dyOmjXLcSb01RdxRNk2yA5f7w3u8bD_BNSPpY_hKOxuS6ORDZIYMSOHuv4IeF3QiiFo9ssINMioS9Z_ldnxxV5pNAIlmUBY_hVqhuiLnKxjw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🇪🇬 В четверг, 23 июля, отмечается государственный праздник - День Революции.  \n\nВ связи этим в этот день в Египте объявлен дополнительный выходной.\n\nОбратите внимание:\n▫️ БАНКИ И ГОСУЧРЕЖДЕНИЯ будут закрыты три дня подряд: в четверг, пятницу и субботу. Они откроются только в воскресенье, 26 июля.\n▫️ ВИЗОВЫЙ ЦЕНТР (ГАУЗЕТ) будет закрыт два дня: в четверг (23 июля) и в пятницу (24 июля). В субботу, 25 июля, Гаузет будет работать в обычном режиме.\n\nПланируйте продление виз и финансовые операции заранее.\n\nДень революции 23 июля - один из главных государственных праздников Египта. Он посвящен историческим событиям 1952 года, когда организация \"Свободные офицеры\" во главе с Гамалем Абдель Насером провозгласила начало масштабных национальных преобразований. Именно 23 июля ознаменовало конец монархического строя, обретение Египтом полной независимости и провозглашение страны республикой.",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:50.617Z",
+      "expiresAt": "2026-07-23T22:42:50.617Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:50.617Z",
+      "tag": "health_medicine",
+      "tags": [
+        "health_medicine",
+        "health"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:50.617Z"
+      }
+    },
+    {
+      "id": 434996962,
+      "postUrl": "https://t.me/kingxauusd110/19457?single",
+      "source": {
+        "title": "KING EL GOLD 👑",
+        "handle": "kingxauusd110",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:kingxauusd110",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "أخي يؤكد ذلك الآن.",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:45.849Z",
+      "expiresAt": "2026-07-23T22:42:45.849Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:45.849Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:45.849Z"
+      }
+    },
+    {
+      "id": 410230799,
+      "postUrl": "https://t.me/kero_875/79598?single",
+      "source": {
+        "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
+        "handle": "kero_875",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SUGb_rcLO-nyAM0v2JQwHtssHzpytzm-9SCIQ_9uH0O7UKz6pjeiMxVjOGQnuuRCkjeWmOdE7yOk9gpNEGOJXIs1DGttrAzx_sC6wtLYkVsLb-abUKhvB_2Q3liYSAQ-CAu6vJ451ne8p5wlyTVqkIlPQTFJCgZ7U34_DTgpvnIZW-6RsBlBCJbAUsDFboxIwGkvrKBnSuSbREAUnw2vnfdUwSzhF8aF6HZQw2ZIyO9tg9mRE0Z73sly3Z3877UabCgVnNDzxFRoeq-8emjws_UCayM4aWCRbFBDGMEw7wrvklixEVRE9u86VjqOnvug7TtqCTFlrCplmgjwit8Zzg.jpg"
+      },
+      "sourceId": "eg:kero_875",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "📌    اهم اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة ❤️.  لازم تذاكرها قبل متدخل الامتحان 📌   متكرره كتير\n➖️➖️➖️➖️➖️➖️➖️➖️➖️➖️\nتابع معانا يوميا اول باول عشان متتراكمش عليك المذاكره \n➖️➖️➖️➖️➖️➖️➖️➖️\n️\n❤️  يوميا بينزل اكتر من 200 سوال مهمين جدا جدا ❤️\n❤️  بالاضافه الي.. ملفات.. امتحانات الكترونيه... فيديوهات.... ❤️\n🔢 كل ال عليك تعرف طريقه الحل\n🔢 بعدها تعرف درجتك ومستواك في المذاكره",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:44.871Z",
+      "expiresAt": "2026-07-23T22:42:44.871Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:44.871Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:44.871Z"
+      }
+    },
+    {
+      "id": 2242450062,
+      "postUrl": "https://t.me/hv_ty158/1150?single",
+      "source": {
+        "title": "مسلسل حلمٌ إليك",
+        "handle": "hv_ty158",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ijhZJlLJG8li6sWuMqXPj_VdvyQ21C7lH_Sn71_YQKCZ8eb5wwuuHEQqbuzEv43AjTK8IR-rP2brwU2ddt60IoB6lYAHsC7aWpgeQZUX5IriVR2UrlTRQzBrlefOktA6AT8bJnwkuFUeLbh8IDxaGj0EKRhQAs7127S9qXRcJ9QhX3R33hHQFM9RLjvVxhxj1EpPj7LqAlT8kq5zrJTaMgoct4L87l3k44XUiTOkLRooSL_C9-1CVcg5NMfp8_IzuWViZ48TCJ3XZB99VMu2S-XcqXhpDQRz63KVYcnIRb-wT8HxVcbnqCDzlxRtJVHLsmqGRvl6irXR1x2f0WCUJw.jpg"
+      },
+      "sourceId": "eg:hv_ty158",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "تفاعل لنستمر بنشر الحلقات 🫶🔥",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:44.024Z",
+      "expiresAt": "2026-07-23T22:42:44.024Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:44.024Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:44.024Z"
+      }
+    },
+    {
+      "id": 2099799097,
+      "postUrl": "https://t.me/hadath_now/33713?single",
+      "source": {
+        "title": "الحدث الان",
+        "handle": "hadath_now",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jHs1pw-zMeDoMdyy1A-2BCAYUMIudh_6m3PRTACDJEsidMrWj04L5AaHC1JRhCmw0XvnmmthJnu2N6z1wltE-Zol_92Vf_AKR3ZJdBG2ZcgUUsjRlitvSYgQbBm1m1dPNAxewit8IE2zpeqN9Oi1LZb0pkOcI8qq3om9rHJLSFEXbmUPRjsXIl3F6Ah2N9WreDsLt2KUO5XUouO8c9Xr1v6UxIh2OtlKKhZZhQI99rdF0XyOUgYTbLM1bHmGy9aTA_BoR39_bOfVU7h5vzjxoztwcEwHASH56sRyAvF77vkTucWQ2eiqcUpuvHqLO6vh3JkvvcNwRWKNbjBR-hdEDQ.jpg"
+      },
+      "sourceId": "eg:hadath_now",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/a7FbLhayXLYEkQAifFzIFraaAIGTZJyRJixInUsF-VOQrjYfyNWLO-lZEUSdSG8lyeRIlIGv2tEJS0K62KbS1-DIy0TzABcn9gFk5ZXF87b0NVTHQMsN14RLfWHpSqTyDwkhB-OxYy3sZptXKIckIPYNH_UbiMTW1TZo-WKGegfuupLTkufL4wiOs5Yn8TOegfWDUKaPkYOmJju49BPQjdkGvRUunq-K69osTpCtF-7rI6lbAPm_vu033p2f52MoAdEbWMTQxIsi1YpBkAKtGlftjuX8Fe7zqG7o3DS9vIywkQ1cXiF0HT2cMi6yDaHNesYOJbSHY5ctPomImNKG8w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "معًا نربّي أفضل\nهل تريد أن تربي طفلًا سعيدًا وواثقًا؟ 🌟 هنا تجد نصائح تربوية بسيطة، حب، وفهم عميق لاحتياجات أطفالك. خطوات عملية، حب متبادل، توازن نفسي… هل أنت مستعد لتغيير طريقة التربية؟ 💡\n\nمعًا نصنع فرقًا في حياة أولادنا! 💖\n\nПерейти 🚀\n\n#إعلان 📢 🎯 إعلان على تيليجرام خلال دقيقة",
+      "links": [
+        {
+          "label": "معًا نربّي أفضل",
+          "url": "https://inside.ad/+s0SOnI"
+        },
+        {
+          "label": "Перейти",
+          "url": "https://inside.ad/+s0SOnI"
+        },
+        {
+          "label": "🎯 إعلان على تيليجرام خلال دقيقة",
+          "url": "https://t.me/InsideAds_bot/open?startapp=m_-1003780260047_utm_source-insideadsInternal-utm_medium-signAdPost-utm_campaign-trade_fast"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:43.131Z",
+      "expiresAt": "2026-07-23T22:42:43.131Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:43.131Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:43.131Z"
+      }
+    },
+    {
+      "id": 2419238169,
+      "postUrl": "https://t.me/eliitrade/10309?single",
+      "source": {
+        "title": "Eliitrade",
+        "handle": "eliitrade",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/UeiRVGjZsENUFwZ9uJe6sMu_ur1Z3kYk7SbdZciac7u6jLzbfzRo_vBc4Tpe8Wi43G56dSBotrLVx1227CJI4Lz4Rjt9-NeZ6rpCBuo77sgRvKY87Lu9uc5NvbMBEqV6wDXSlbKGz2y0ZbXszjV0CKjOAMxQDtgtxojJfJfnVfP7OYjao5rPEGJtEVUaScVXRTt10iqBrUakcqhGe0Qg4jRsCBRQxha2lLxJdbj18guU9Y5hXiSTSS7FQdw4or9EeoWz-jCNFxQMFd2yIWW_0Bfsz_94L08Q0dRXhJw5egMDjSS2tplmmSScPkHJWCamALErGga99DBELo43zjSDdQ.jpg"
+      },
+      "sourceId": "eg:eliitrade",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "صباح المنجا ي حبايبي 🔥 \nكام بطل جاهز ليوم جديد 😊❤️‍🔥☝️",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:41.731Z",
+      "expiresAt": "2026-07-23T22:42:41.731Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:41.731Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:41.731Z"
+      }
+    },
+    {
+      "id": 2406246582,
+      "postUrl": "https://t.me/elhaj_1999/376?single",
+      "source": {
+        "title": "Pronostics",
+        "handle": "elhaj_1999",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/vlp6r_3u3M-BhxlNFUwc61wBLbHfh8_JPZV5jnHAJ9RWMMEeY1VDiWXDpQWPofU4aPF4ZLmJskwiq-yW_vCADmSw-4JkSZNL59LIacD53hmOqziCPYQuHUNd-aY2Dla0m9sbp95IV2hDAW3mxAKeizlje-zkQmWiX7p03mLWbhtJhlqLpOmpoYB7vhx4sPQflIsMziZQ8Pui8SHRdheQsHB6AJ9RAfRdZFm_VX3gACO-oLMk4KAhGp6xQ5XbDMvwpL6oRqwqKyX6UnPg7jR62dj9s_GHuVGbV4mhYU9utKB_hpMZZRBnB4rtyvqWzC--wcgUR8Nn___4l9tZwQ-aPg.jpg"
+      },
+      "sourceId": "eg:elhaj_1999",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:40.874Z",
+      "expiresAt": "2026-07-23T22:42:40.874Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:40.874Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:40.874Z"
+      }
+    },
+    {
+      "id": 3953566264,
+      "postUrl": "https://t.me/deals_trackers/13842?single",
+      "source": {
+        "title": "ملك الخصومات - Deals King",
+        "handle": "deals_trackers",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jINRtRdCTDFUwgOap66ypOASeStgyKN_D8DjowVGxe61uMRzloJlcn1KQbzl-wr_9wtQtTN3vi8027tbfnmuE0GR3m_gF5n02By65hIglxSnjTl3tgGj9DeMc6vLS1cUD_Ls_I0ab6EBsD8Zj_AEOp1bv9M7QG-bueJv_2sPa6J-D4GnOb2JVK_tCcpgwx6GuTTFCZPUlGFS2sWwflTIXFMnp3MwfrB_ChC7M8SLdqD5OysHgXXlSrAsxn5UmH9HO29CSExbvFZ2EVastyKqmQ6UO3qkrKPE2R1zIBXi9FfEbUZrC0wOsyn1CYBhSMW-cyNBNFqsGSX3co8QcZuU5g.jpg"
+      },
+      "sourceId": "eg:deals_trackers",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ia6PssCnlhFVjTXtKyyZ4pa47aUG7zVrXw0793KSDGUiQ5v2r0MYF6OEmAe-X78PKSgChwnlEVAvtSQMaik9L0w7aim7mfjapsJZqRrb-dI5Yf6i1ANNvaJRsKIydR8iHiQhzhF_r79GkAK-KHmu-hUYBXg6I-XPmrERNRiwFJ8R3ds2QoHw0HmvUBEil0zS9pISGyR232-8RwL56x-3zU1X7iUSmM1RIEYZ17RWMQ8gCTzAGBQkGhrRiihSz0cbPBI8zLNnT4O4-B1HmteWglp-ilNSu3v8GGXoJIzf-MiRC_HlKWAIXzuHSvgKLdGKuEWfefNgvSnoe2dpolBScA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "ممتاز🔥\n⚡️ عرض على شاحن سيارة سريع WI-QC012 95 وات من ويوو PD+QC كيرست جيك USB + نوع سي\nبسعر 399.00 جنيه فقط !🔥\nللشراء : https://amazn.im/s/EIoP1e\nمتنساش تشارك قناتنا مع الاصدقاء\n تابعنا في قنواتنا 👇\nتابعنا علي واتساب",
+      "links": [
+        {
+          "label": "https://amazn.im/s/EIoP1e",
+          "url": "https://amazn.im/s/EIoP1e"
+        },
+        {
+          "label": "تابعنا علي واتساب",
+          "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:39.380Z",
+      "expiresAt": "2026-07-23T22:42:39.380Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:39.380Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:39.380Z"
+      }
+    },
+    {
+      "id": 3644098402,
+      "postUrl": "https://t.me/cartondisney1/1105?single",
+      "source": {
+        "title": "افلام مسلسلات كرتون ديزني بالمصري",
+        "handle": "cartondisney1",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jq_e19xOrq4XLIzHaWGf4pqpeDuEpkTLQQDY7F4eDGYVGNcBzokxOS6apuxEHsXR0huENB9hQigjGyEFafauXn0tKdFdVhr5zPdb5i9lKp4bM8gt9o3T2Kt1EcS3NbbZrlbpqrJQjzoq1DSlgqNW_V4Iq6L6B7z9dmBogNee2MsGr_Cz0drBuu6I8PApw9gSez85i2SR43HyuepsiIPbmy4DlRCpBTLztzXirUIK3DEYX8CfynTKsKo5vwvN2WwbTl6ROUZWjQWRBRgeHzZdTVdOOb17OMKO6h5i_Cd8mwXsCNphWWdqy-tUbxXdila9PcMIPucfH3pIIOhGyfjJCQ.jpg"
+      },
+      "sourceId": "eg:cartondisney1",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "طريقة المشاهدة والتحميل والبحث من خلال البوت",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:38.055Z",
+      "expiresAt": "2026-07-23T22:42:38.055Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:38.055Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:38.055Z"
+      }
+    },
+    {
+      "id": 438867621,
+      "postUrl": "https://t.me/w_of_programming/1626?single",
+      "source": {
+        "title": "The World Of Programming",
+        "handle": "w_of_programming",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fSyNwqRdLP7N5S8OiZuGrvPksxN6t1znHsY36MS2xD18nqu57TTpDvF-n3DTnYibwmwTpXVQtatOBHJcBhjCP6wuCA0zRDh1nz-2FsfIwu9BOrkc9oJnuBOSAda0c_ZfvYg5ns-XD1FpG-D1UZTcoVoOrZ84SvZkxSpX1uqJjyzLv4O7zaktfeYa93Td5o6p6isFet2O3Soos6nTFbCUhGxIZuE6q7cdHyFp6MQ_P4QCidZHbqNPdtG1LBF0CWC6dv22SFkOg40FHXscKo6GNnEif_UXHuCrhrH6Fzl8-O5XMyrby3FVN8_qX2n67xuIUWyU0t1Bb4YLMDiCRoB6ZA.jpg"
+      },
+      "sourceId": "eg:w_of_programming",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "✅ كيفية التقديم على وظائف محلل البيانات 📈💎\n\n🔹 ١. بناء محفظة أعمال (بورتفليو) مركزة على البيانات\n- أنشئ ٣–٥ مشاريع قوية باستخدام مجموعات بيانات حقيقية\n(لوحة مبيعات، تجزئة العملاء، تحليل التوقف، إلخ.)\n- استخدم أدوات مثل Excel و SQL و Power BI/Tableau و Python (Pandas/Matplotlib)\n- استضف المشاريع على GitHub أو انشر لوحات المعلومات بشكل علني\n\n🔹 ٢. إعداد سيرة ذاتية متميزة\n- أبرز المهارات الرئيسية: SQL، Excel، Power BI/Tableau، Python، الإحصاء\n- أكد على التأثير:\n\"أنشأت لوحة معلومات قللت وقت إعداد التقارير بنسبة ٤٠٪\"\n- أضف روابط المحفظة + GitHub + LinkedIn\n\n🔹 ٣. بناء ملف شخصي قوي على LinkedIn\n- العنوان: \"محلل بيانات طموح | SQL | Excel | Tableau\"\n- شارك الرؤى من مشاريعك، رحلة تعلمك، أو تصوراتك البيانية\n- تواصل مع المحللين ومديري التوظيف والمتخصصين في الموارد البشرية\n\n🔹 ٤. التقديم على المنصات المناسبة\n- منصات عامة: LinkedIn، Indeed، Naukri\n- مناسبة للخريجين الجدد: Internshala، Hirect، AICTE\n- متخصصة في التكنولوجيا: Analytics Vidhya Jobs، Kaggle Jobs، iMocha\n- العمل الحر (لاكتساب الخبرة): Upwork، Fiverr\n\n🔹 ٥. التقديم بشكل استراتيجي\n- استهدف الأدوار المبتدئة / محلل / متدرب\n- خصص طلباتك مع رسائل تعريفية أو روابط مشاريع\n- احتفظ بجدول بيانات لتتبع طلباتك\n\n🔹 ٦. التحضير للمقابلات\n- أتقن:\n - استعلامات SQL والجداول المدمجة (Joins)\n - صيغ Excel ولوحات المعلومات\n - مبادئ تصور البيانات\n - الإحصاء الأساسي ومقاييس الأعمال\n- تدرب مع مقابلات محاكاة ودراسات حالة\n\n💡 إضافي:\n- شارك في تحدي Makeover Monday (تحدي Tableau)\n- انشر على Medium أو LinkedIn لعرض رؤاك!\n\n🧠 محلل البيانات ≠ مجرد أدوات — أظهر دائمًا التأثير التجاري في مشاريعك!\n\n👍 اضغط مرتين ❤️ للمزيد",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:07.077Z",
+      "expiresAt": "2026-07-23T22:43:07.077Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:07.077Z",
+      "tag": "technology_software",
+      "tags": [
+        "technology_software",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:07.077Z"
+      }
+    },
+    {
+      "id": 1165426040,
+      "postUrl": "https://t.me/tradsempire/4418?single",
+      "source": {
+        "title": "Trade Empire",
+        "handle": "tradsempire",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZbTDxu_d9JqQaf5P0GhMvxcS-HQ80MkztMrUPtJryUZrfOgR-7n_JbpVeR5cU1GLDNu47BD9cudSjUtAAJDGSoJTRaxBqiXezQEPenhl7HugHCHOGQaYhhUhPLuzICazW9QHYGrj4A2g6Yzz9o2TZBMonKH8L2UH7UeqD4BVKiySEDxkB9ZfkHxQHBxI2e0qZR9_WKlSOIUsBy-4roig7SbqdHTK311q-yadzJIPJZvUHgwKSs_-idk6XFjjZochu1F_bSRneIhxUvfznMAyRMBdnKTYECJiJNdHND581Wg6QR363z3pynqJK3iB5EugWbL0j9mAtuG1AYLMuy0svA.jpg"
+      },
+      "sourceId": "eg:tradsempire",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "XAUUSD BUY NOW 4063\nSl : 4052\nTp : 4073",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:06.140Z",
+      "expiresAt": "2026-07-23T22:43:06.140Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:06.140Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:06.140Z"
+      }
+    },
+    {
+      "id": 1153419769,
+      "postUrl": "https://t.me/summaryegypt/5080?single",
+      "source": {
+        "title": "Summary Egypt",
+        "handle": "summaryegypt",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/hO2gQMwePdp9uUdmLZfhArLVS49mIh_fPo9AtHI5m8eZInbhyE_489ujC4McfhhCH9Xd-qprMo389M1uM_eWNgvlLIfSay4l-FZsDNbtsLwlWxmFIByiXKdWXlstbOhZBRJXgb5LmllQoSxMSDU363-wun978LBV7E8TsSOpOjxlD_vcZDd0DCHHswSmSALzoIBFvQG8JfXADrnl9APwlz05SLuCmvJjxcx7tIK_Y5OZmrxDV4xwvdEr20PUF_mPv-YgZcMLDA1q6h0XJNe9EHpDnvAO16n4qNmtHq4a1S9K6uvjut7ctYFDfy9v1NQpMAvD6ndOb9GH-_16jtfqIw.jpg"
+      },
+      "sourceId": "eg:summaryegypt",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🔔 ترامب يتوعد إيران بعد مقتل جنوده.. هل تشتعل حرب الخليج؟ والسعودية أمام أخطر قرار\n📌 شــــــاهد الآن..👇\nhttps://youtu.be/FkEcQRBZkbY",
+      "links": [
+        {
+          "label": "https://youtu.be/FkEcQRBZkbY",
+          "url": "https://youtu.be/FkEcQRBZkbY"
+        }
+      ],
+      "createdAt": "2026-07-21T22:43:05.360Z",
+      "expiresAt": "2026-07-23T22:43:05.360Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:05.360Z",
+      "tag": "sports_all",
+      "tags": [
+        "sports_all",
+        "sports",
+        "sports_news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:05.360Z"
+      }
+    },
+    {
+      "id": 7332222,
+      "postUrl": "https://t.me/seedoss/698?single",
+      "source": {
+        "title": "SeedOSS • foss, privacy, gems.",
+        "handle": "seedoss",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/QP59w2bayrr_MhqH9Wv8ifw-owPZtnGZCUqgPdQL1MuTA2AH7hY52E6k-dNIXvbNoBl7d-_EXSXSVqymZ3LEccLvZ_iRB9KlJdHKRXoss8ihSdu3yC1lKKAsF5ZdRui5u--Uc66G5BJVSqsmxdsGUq8QECor2wY77Ga2n1FuQ0ZjtgGPUhrccZRs2OvdeADV0RPtaO1R9BIPBbTfYxBOgsgwVaP_leg9OHFH97nZbtWZSHa1uV5zF7Qt8zqRZDWY596LrXj90_CR9iZg_jUWbyJFbxiNZ9oVmf6W8dontdsg6pjP_ChF698PxB3Gy7-nQrGZYCuS8panvl2yj9EzFA.jpg"
+      },
+      "sourceId": "eg:seedoss",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Quick PSA: \nstarring a repo on GitHub, GitLab, or Codeberg costs you nothing but tells the maintainer people actually care. If a project's ever saved you time or helped you out, go star it. Takes 2 seconds, yet means a lot to solo devs.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:04.529Z",
+      "expiresAt": "2026-07-23T22:43:04.529Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:04.529Z",
+      "tag": "technology_software",
+      "tags": [
+        "technology_software",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:04.529Z"
+      }
+    },
+    {
+      "id": 2037094199,
+      "postUrl": "https://t.me/rusembeg/10728?single",
+      "source": {
+        "title": "Russian Embassy in Egypt",
+        "handle": "rusembeg",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/TrOOPegktihEXRr39LNoCTC7oXRY8i_NmXghYAuFMs2h4M1Z3AgiXWifo7a8QEZBzPuVpvj3RV0waIg6imiEqj9ZNEUOTmzXeosy2RcWMLEF_k2VQ1HTW4nUI6_riqKsjplaenqc8I9GT8_hi2Os8Jqco-PiyHIhqT3jzfs5zrjwf4AY00sMQ4EqiHuXuhjWVNMnHpPxLM3_MHN7rJU7U1diQojJOPVpoLXMkn8U1I8iZ1r0yFCG0cO1viUJ_zB6K6J6KOLDrSq2WdELtQFIA1RMRvjXHXQVBBORGj-sA7EFKjn0j9PW3j2FvBvP8heCCQUzKZQmw7jB1VqdEl05tQ.jpg"
+      },
+      "sourceId": "eg:rusembeg",
+      "sourceCountryCode": "eg",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/BuHBgESyoQUgzUNyrijsG7bCC-uxnI8ygRNdUwSFmu_CKbILtUdf-vFEOGtjtCdQxpNMDPRd9oKKn4Gzlg_it0Q3fhU7am4WaUUi72-GK03ktmwAyhB3D6-wddOLJHOUrNr3v91YcjJsF3mF-sxTTB3Nw2vsbhUk0I-XLJbBCTDUkfA6-jIWpD3rntufcP0YJyWWINk8EeRSy6GdQy5-2PTkjafJRQ0bJmfQeMm30GDAwfrx2SlmucwxuNAnbdPiNfkCfphmlzMxjQjbPPOKwtuLZl7G1q7n47vsuOR7ojc8FIyKPiIpmfjJ7sNVjAKUtfIIbnyS8IzTGJaWyUPSHA.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/jD1NYw8pFqsxxCDSaMP0__v9SrXWHJnuVGJYnNprW0OvPMfFuz8s-UyZQRyMEPeNUEGZfpNXdlMJlJykI38_Fx8_0JCkYxR0uy3BZYYLhHLVwPjsxB3gn42S9psrXUuoCJaE0tfxGTPTfmUHey4dgcrEp4HvODz2Cv5BeaP7POkrSpWQEi91jrzaK9QyR40NtkF0HmvI5JYzUI_IY9Lw7SEAOySzzHdZTQH0xhqq8fJti1A4VYpiSOCIXrrienfVf8URXOO6rcEm9Lpvoi9LS1YfptRiPVdxEcF_OZzViv4bUQoPH3k4-Y6_lh7Q25WiF0Ynq5MPfVACCtUT-H9r8A.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Q7m0MRKLpptE3aQFH0HUwFys4fh1OLCnZvPtP23te7gZ_1Y4ZD7WWurqQWRLw3ldEo-isP0V-HzFNJAY53dK0RhFKtopem0XhDQMsP0YyPH4qRK2NVCKJXMmY2FZ7v2yYCrzUC64-Hh_pB01DDXhhSQaYIP1QHTYMSfct34jrRF1X6V7ZQ95FdDU5_Bq15VOaQ9HyIU2SG4b1Jo9g8M1cUffsS28BA4BsgmiRN3PQ5KEqQdIS7CT2kks2HIdjRgrlbqZf7Vspyh88NL_rC5dXx3OgLHu3-qG6IdrTtDG-5xksqqRWs9T78rxAaCAoxjo5VEUwo4uZe5u5fdGvHtD9Q.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ewdKnrOCMbZbCmm6WDtt-IPaNEYP8jlaM5tXONy038-0qQgHfw97IFV4vMdACWWAMLTU5NFiwzQF6ja_1tz-UJmWAccbzO-dWTJ1cr2UH0VJr8lGgzUXxT5nqf5O1d2dq_Sqyd41cQRUGTehgkzhP-L8vaEAGGbS5NVZeMq6BbT4BT2as0t0W0yq3--zVW9sc0aOoxpg3pmIzeXoWhrkE1iSpWZVKvsxz-OIsHv1iRp5v7-0SWrfHmquGziIxKiUzTjBg3jDOGxMbpzNoUsqiBoyOQrNKR4llhHeMq7G0PcKgTi5H-Pr7acAfFiV673-b1cRyLTYDVSVwsQ7ypznRg.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/SW0fN3Ltv8x84-dj7VyGwZJiV3t_5lR1Bi1vzLh65ZTakBaojKhDK7IMAMNu3QM6YKBusZ0ksRcRC5jrltJKeTS0czqIQh5s4_mio2I31dlnu2IyEiu2slcpiAy10Z_kenTLZZBOhanJCjdKCIWdhVNyhQFMsHm3-KbRQ7M39iFLespBYbfufl1JswQUTiZL4wB87o4yBA2RzwowqqtZ3VoJ2lvINkxBM0lBoU0PFsZMcaIht_Q1u9NL865OZFyR_vXsA2WCaEvSPN9ScLuKwnM6YEeANYF7p1pDY1Q_nXnwpBFlUJxscU0niUZnm2wUAFSFRBxPxwmw_2k7qzB0mw.jpg"
+        },
+        {
+          "id": "image-6",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/iMMNU09ilidrGdzZBIBBnHUYSsWAzObZt_uO-YOKq5eS9AqPL2utKi-o-PMw2kJlqnvtgLz2RJIJNUt5OhwK-Es9-dvp4uxsyy9EolFXmdsG4Nyq7EhdLyV7ESLlK3KYLbgYNLHk6yXLL_0BEKo8fglRD1zQtzW45e50ePTEUe51E4IjiFdnqNmIhf2oDvtZrZz054Bpe_oslEnZQTR8xsN2Jcbrby3kpbdwClaNHl-F8B0hk0bPCJ3vgG5CQ53JNQqJ8lerrWZXE4gkzL7_ADC22aUV5HdduDBiNYwGbBv8zmLMQ8AR52Ou2OOqDxu0xPO1HPGJ2HX7FcWwtk6V0A.jpg"
+        },
+        {
+          "id": "image-7",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/iKxYNtJmCMEX4gm03pTKPe27psea3S4ra2dH8Yx5gBVt3xCSN0yvLwwOm4KIR4QmzVRcsmR1hogtTP4G2lM74akC0pMhHsqDXhlQ25Zpu6ZyjWbdJxlqB8NqMkQjo-I-SdTi4wYqK61pTapKua3yOc0U0ov5nWMDQW8d_BGR2UG5QwucN4dkxji1arMzvvAbKFgl2DAIX2SBn1GASpzU0bPRVU_qYgQXfjca1DcQsMpe8iXkiA4V3a7_88m0sAtY2HW3WI8y_zLWuwmdTxOLfm2jhRSC7Cvnmiciy8jpJypy3ZyDAOC6iI-9LQObfb7ZWuoTIBUnadySZYGgAoQg9g.jpg"
+        },
+        {
+          "id": "image-8",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/pYMQtieqYMdRk8ub-jJQU973tiOlNiy7lCcOM9y9uVUh2-S6za4uaqMhNCZu38azXxUDFAfvoCVI4cMAOOali23EwQdsaH9t60NktA0-YVHUjbE6-HqXRJG0LwwMyNgA1wkEnWwYCom9Byw4o-QUY2ZGgXgqpB10sSvM1OGjUJxmr09sOLSxebcPTscwudta8ocTRv5Axita2LIqyR_5QRA4Ukq5eOADtqdvuELw7aK7IgbXL3s9RROzsbpd4Wu-NVbISoWePjmr7mgxg_Q6bYbpUaT2Ko5v-cCbIR43y0cg2HV1xwB2nRRYYEtXorxHc1qKjl2KMnK4rF85062_6A.jpg"
+        },
+        {
+          "id": "image-9",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/h-yg_s2UYkcYFRVRurOBrmxAH-fYfExDrpWyCrN-BSrwdPRX1dCE_WxeEcV5REG89rcAYANH5BsfeutcQiDbOwctoiErPhTF5nt0Xpxrwt1OQzrEgELyWYzF_cyflsBNgalBO-NCrbzT1Dd-cU0dpj0AuTtJIeaWkONf56x5AjagXTiAeofoo_fzhW78xW0ehueCurT9XaZSmtM7Zo6Nie2PKvTx0_i5gPWPpFs-6D3tx4MQW6hifRWNIG-xZH3LYZfLoebz4XQnKUmgCF68FyPtZHpmYYeEqFAfSDAbr8lPi9sudQ7HOt4x8trJtGPlep190Mr3fDZwG91IdP0cIg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🎓 14 июля в кафедральном соборе Святого Марка в Каире состоялась торжественная церемония вручения сертификатов слушателям курсов русского языка и истории России \n\nКурсы русского языка были организованы Ульяновским государственным педагогическим университетом имени И.Н. Ульянова в рамках Летней языковой школы Коптской православной церкви. Проект ежегодно объединяет школьников и взрослых слушателей, предлагая изучение иностранных языков. В разные годы в программу входили английский, немецкий и другие языки.\n\n🇷🇺 В 2026 году русский язык впервые был включен в программу Летней языковой школы. Его изучали школьники и взрослые слушатели, которые вместе с курсом русского языка познакомились с историей и культурой России.\n\nСертификаты выпускникам вручили глава представительства Россотрудничества в Египте Вадим Зайчиков, представитель Папского офиса проектов и международных отношений Коптской православной церкви Марина Надер, доцент кафедры дошкольного, начального образования и методик преподавания общеобразовательных дисциплин Ульяновского государственного педагогического университета Ольга Мукина и ведущий специалист подготовительного отделения для иностранных граждан УлГПУ Алина Басиева.\n\n💬 Поздравляя участников программы, Вадим Зайчиков поблагодарил Ульяновский государственный педагогический университет за вклад в продвижение русского языка в Египте и отметил, что впереди представительство Россотрудничество в Египте и университет ждут новые совместные образовательные проекты. Он также рассказал слушателям о возможностях получения высшего образования в России и квотах Правительства Российской Федерации для иностранных граждан.\n\nВключение русского языка в программу Летней языковой школы открывает новые перспективы для сотрудничества российских образовательных организаций с Коптской православной церковью в сфере образования и культурного обмена.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:03.271Z",
+      "expiresAt": "2026-07-23T22:43:03.271Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:03.271Z",
+      "tag": "recipes",
+      "tags": [
+        "recipes",
+        "food"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:03.271Z"
+      }
+    },
+    {
+      "id": 823420275,
+      "postUrl": "https://t.me/rassd/199071?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/f2e73c14ba.mp4?token=Ix9w4dGfGvCrole1gd7_-oZ_cxFVHfhHrBvtqRrL5jAAld7x6swxjCTKlZf5JvH8A_5cf32eM2Ww_-U0qlSL2xpeiSFPB5jzPWV6wh358bJegPIR6pgQEr_K0vriApMj1tiLtZf_f_Msnug81qb6dkggw3xLvo-8GYfL0MR4SQVwA896r7y0Uvg0ufejMOMU-o4clqEMJC9TNre3aOyGxbs_1wjzKILXqM8_FZIHMFplhaxviuJGUTG4vNvk_B3z7cML5zkWBsCNcH1F660KPGqW80j2-Fs5szkLO__1tkaM0H0r80bWColIsr5hkI501TDkhZTELowU4psxXGZ6sg",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "عاجل | اندلاع مواجهات خلال تصدي الأهالي لهجوم المستوطنين على قرية \"جالود\" جنوب شرق نابلس.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 1182862752,
+      "postUrl": "https://t.me/rafahbordernews/11411?single",
+      "source": {
+        "title": "🇪🇬 اخبار معبر رفح - رفح نيوز🇵🇸",
+        "handle": "rafahbordernews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/k-_aWwIA-wWjkEQu9ldAPFMKIy4tiDa7QVoY4aDskQhvo2_nNco8Tbav5NYmNCbGJqbLvB-c9DChenlyLPTllRV5m30B1xbbwjSlLfktKPH69vXDdfJ5pbtdNg-NY0SGsyYQ4AVTWWMY7mWGF0snluvEh4UyKPQ7seNRrtNpKHn1clkc6Rzk-EjDwBaIiTlQtYuyJP4A0P-cJ5jwtmzlV-8lra6zo34Vqe6Lh4_XLRZ84BOHJ6ocecJPTHWS82FujnW_2NS3lElvgyR76NKUNZOV3X-YG1yo9Ra_3KemtlRIknh6-649XFOloM4yoMQ9A_4YjBwnYVeHyeELk48TFg.jpg"
+      },
+      "sourceId": "eg:rafahbordernews",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "إحصائية حركة السفر عبر معبر رفح ليوم الثلاثاء 21 يوليو 2026- تفاصيل الخبر👇🏻👇🏻\nhttps://rafahnow.com/?p=50780",
+      "links": [
+        {
+          "label": "https://rafahnow.com/?p=50780",
+          "url": "https://rafahnow.com/?p=50780"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:59.877Z",
+      "expiresAt": "2026-07-23T22:42:59.877Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:59.877Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:59.877Z"
+      }
+    },
+    {
+      "id": 2417777548,
+      "postUrl": "https://t.me/nimrodforapps/1299?single",
+      "source": {
+        "title": "Nimrod for apps",
+        "handle": "nimrodforapps",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Fxi8BUzdzRrEill3QygvQwqNEkCUi3V1o41MFXbZTmi05RRuOFFfOxM90Z1O2asC8C-xa71-tJARprxGHmKmGTvu0JzqKwrKwDPGl1SAvI9dCqvIXxh_Wpja9apVWD7LrwSjP669E7zT5wRQXQc3b2YX1pMGlI9tBVAOb2y1pBWV2Y44Zk8-Gl9PugCmol-Ka3SuBZqRCWk1-s4E-fTiwJFX2FmkPrL8J_GAeJzRgsTT9zKxej5fP184QoOJYg4mfZtR3UXoWKjrgZD8-c6XNsIaRRz7vAYsJiaXIo-apIYVK_3YOlv0tW-Jc9dNm-4DwIJhi8-FlmuVlp3egxyo4w.jpg"
+      },
+      "sourceId": "eg:nimrodforapps",
+      "sourceCountryCode": "eg",
+      "contentType": "file",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/Nimrodforapps/1299",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "اسم التطبيق :- Anime Witcher 📲\n\nافضل تطبيق لمشاهدة مسلسلات وافلام الأنمي بكل انواعها معدل ☑️\n\nمجانا وبدون إعلانات مزعجة 💎",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:58.992Z",
+      "expiresAt": "2026-07-23T22:42:58.992Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:58.992Z",
+      "tag": "technology_all",
+      "tags": [
+        "technology_all",
+        "technology",
+        "technology_web"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:58.992Z"
+      }
+    },
+    {
+      "id": 866867869,
+      "postUrl": "https://t.me/ngmsr/14521?single",
+      "source": {
+        "title": "نجوم مصرية",
+        "handle": "ngmsr",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Gtq740cANcL0p5Zyn3pkgAbq0Cs6uBxLcmBnQHPQQvJ9CfjQD5ZlbETtRnMEdVca43BKXivOXiq3O_fP4tKMCAfXQROOMMaJPCTx_cFGoR0lBUXg2CRrKwW3s_45A8-NgHT2iag1NqkI3oCIXvGrmWKaK_5Msf81GxUolnHImpn2RWQX4u4oWBHOSESz69TZDFR72evFv_rO_7bBPBjgDwTnicurBCmlcRrHIMC6JXJpwEzFMFsHAkehiQ8onHVPol-wMaOJQnAu1x8g_m7JwLbtHAJy77sGgO4-dLmIORN8yxpW8bJ3bJdDUZ-mFy1ajE09RVZXWwbbaszTavO5hg.jpg"
+      },
+      "sourceId": "eg:ngmsr",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "أوناي هيرنانديز يواصل برنامجه الخاص داخل مقر الاتحاد في جدة 🇪🇸⚽️ بعد استبعاده من قائمة معسكر إسبانيا، وإدارة النادي تدرس حسم مستقبله في الميركاتو الصيفي.  \nالخيارات المطروحة بين الإعارة أو بيع عقده بشكل نهائي، وسط ترقب كبير من الجماهير 👀.  \nاللاعب انضم للاتحاد في فبراير 2025 قادمًا من برشلونة، وشارك مع الفريق في عدة مناسبات رغم قلة ظهوره مؤخرًا.  \nفهل تكون جدة محطة أخيرة له مع “العميد” أم بداية فصل جديد؟ 🔥  \n#الاتحاد #أوناي_هيرنانديز #دوري_روشن\n\nhttps://www.ngmisr.com/?p=3862764",
+      "links": [
+        {
+          "label": "https://www.ngmisr.com/?p=3862764",
+          "url": "https://www.ngmisr.com/?p=3862764"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:57.421Z",
+      "expiresAt": "2026-07-23T22:42:57.421Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:57.421Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:57.421Z"
+      }
+    },
+    {
+      "id": 1066365617,
+      "postUrl": "https://t.me/nanafrica/38156?single",
+      "source": {
+        "title": "‎أخبار شمال إفريقيا / Northern Africa News",
+        "handle": "nanafrica",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/kVKvOu-dDXtyCa4PYrerOPcbt8YDTZoei67axF2Z-n-dbjYTkin6RteqPc1xPeb3WT610xPAg5pELKrfn5G2cNPeRFo8T_7EfeVNcPP6fNkkg0caBbAG2EH14kod3m2OIbQmzmR0W8KVeu0eKI6lp5W74TCOcf6r_doBq3_hhPyAgMwIxYmeYROPtKfNPmOMW-C3RmQaN2TY8W6b_B3PE4v2_d6g6NjB8O2i_pikm2zwO3TTR8TqAnYP-BPxKKdDR-OfoDe7YIJrAvX2hFZU1YFTxKgWAQ9cRdXdh0lc0h0NoWiW3RnWzeT_QHsWKMz_lRBL-zpWy2sWuJcI426xoQ.jpg"
+      },
+      "sourceId": "eg:nanafrica",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/bGuxR6H02eUkLZn9c7418H3BJDlX-lp-2Fo4nYjOHuo2k0n3X-Bpk8RJQCzm5Oqb-ItCqVcTdNt6ikqZm_YJm1C2-9LFx-dyWeT8rHJOHLPnmL6nxTAAM23Zehsn74JmRMlXjV-t8FvXl9ijGa43J3VPbijXK9EaaT1UoLxPtmaZ0tK9uPmLt_diu4P3PWfQ9UwYkL5fICQ-f3LovzX3qE8yeZdpYfgUZUbMQJAAZHDU-dUTM2XTJWBkRD0H270AXqIuF17hC0wXdDse-rkmVaOD7r2_ZL9MT9U4jEnKp-_9P-EbxIHRHIdBKluKM_JCi_TIm0FtvlP_c4NRrK9zFg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🗯 وزير تونسي سابق يدعو الرئيس قيس سعيد للاستقالة محذراً من \"فراغ دستوري\"\n\nدعا الوزير التونسي السابق محمد عبو الرئيس قيس سعيد إلى \"الاستقالة\"، بعدما اعتبر أنه عرض أمن البلاد للخطر بسبب اختفائه لعشرة أيام، فضلا عن تعطيله تشكيل المحكمة الدستورية، وهو ما قد يتسبب بـ\"فراغ دستوري\" في البلاد، في حال \"وفاة\" سعيد أو عدم تمكنه من ممارسة مهامه بسبب \"المشاكل الصحية\" التي يعاني منها.\n\nوشكل غياب سعيد عن المشهد التونسي لحوالي عشرة أيام مادة للجدل والشائعات، حيث تحدث البعض عن تعرضه لأزمة قلبية، قبل أن تنشر الرئاسة التونسية فيديو لسعيد وهو يتفقد عددا من المؤسسات، موجها انتقادات كبيرة لمن تسببوا بقطع الماء والكهرباء عن عشرات المدن التونسية.\n\n#تونس",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:56.580Z",
+      "expiresAt": "2026-07-23T22:42:56.580Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:56.580Z",
+      "tag": "news_all",
+      "tags": [
+        "news_all",
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:56.580Z"
+      }
+    },
+    {
+      "id": 500517903,
+      "postUrl": "https://t.me/naf3_ch/2868?single",
+      "source": {
+        "title": "🌴 نفع & استنفع Ch",
+        "handle": "naf3_ch",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/dsb4TPBE6SYLLeBSIKPrjf_k7F6RNJkMlqtiiAdnhyx0lMLTyHmnQ3FiIcRUXUq99hvQvJ0OvbiQO9TtHAWr_EjQcqhx3HeLW-oMQ7YI5egBapWu-FmreWxMSJfku5ltmnqI2BhxjvhRjaEP4l4_eSz83zBKpfmtcwZV9EQaJiceoUsejbB371rt01AVETzfeID9CWM1OjwD8WtMtfQYQP2WKQDZXlmBcZw1l8xrU_5ylFc6-wm0dTdaQQ5Q30uJJ21ttXXr8WSd0pEzQAUWCDYmeLJ-dy_w6iz0vYxHx11KqRFW3hmxvGzTBabBSPZkxlBymNB9Q2U1U6_qnv75YA.jpg"
+      },
+      "sourceId": "eg:naf3_ch",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "&rlm;﴿ &rlm;وَكَانَ اللَّهُ عَلَىٰ ذَٰلِكَ قَدِيرًا ﴾",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:55.548Z",
+      "expiresAt": "2026-07-23T22:42:55.548Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:55.548Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:55.548Z"
+      }
+    },
+    {
+      "id": 1389550008,
+      "postUrl": "https://t.me/n1nnnn3/51818?single",
+      "source": {
+        "title": "اقتباسات عبارات ستوريات",
+        "handle": "n1nnnn3",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/DdvVZu0l-vabdOhDy-15SrEX5Jvw0q7-8wxcTzRJSwv7tMk_n3XXceHSiZK0uykvpVupFwqRrBwkyLxaYtjGlD5gLrzQeKPiyh8TVRVtorO-2JKsWYcvDptMDwdtwPZ0kQRb_EjeKcgRQ9tpNXkji76rcof6ZBvYAnOrKApSeJLtmabKRFztOk2s5iLi61YDXQhjnU2YzOwvQK2UV6wj6Y47uD8vUmdO1UmOpj8R6eX0Ze9tKPZQqfDp45cY8HhSQPzyHKljDb0RC6xKtCGyXtQnie_v1aiZxG5VIC5C4_Am5YpNF2FcJdxNIOpm5jJEQANxH0jM69kp2NPw2XB8rQ.jpg"
+      },
+      "sourceId": "eg:n1nnnn3",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "‌&rlm;🕌&rlm;خاصة لـ يوم الجمعة🕋📿👇🏿 *",
+      "links": [
+        {
+          "label": "‌&rlm;🕌&rlm;خاصة لـ يوم الجمعة🕋📿👇🏿",
+          "url": "https://t.me/+Ixa34ZfIxf5kMTQ0"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:54.736Z",
+      "expiresAt": "2026-07-23T22:42:54.736Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:54.736Z",
+      "tag": "telegram_all",
+      "tags": [
+        "telegram_all",
+        "telegram",
+        "telegram_bots"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:54.736Z"
+      }
+    },
+    {
+      "id": 702578764,
+      "postUrl": "https://t.me/mr_trading000/7405?single",
+      "source": {
+        "title": "𝗠𝗥.𝗧𝗥𝗔𝗗𝗜𝗡𝗚",
+        "handle": "mr_trading000",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/uWpu76Z7mg_ZH-LFywpcFideTtGZ1B7nMRaXbbU4oB9Ccitzfkifh68if4hwaWcBDDTNz5gVsYXoLB8xjlckrQXSLMpOmsQ6InHeN6cqu5omgE0b_99U6yj-1YKq190B8uxCs2X3LSVEMNu3-ER0gOdqbKF7Lkk0N3gFV-eommX6XvO8vY2ZqjSO4Cn2g_K1xptvFmjW10Qf4LeNWXcC-7wYHe_4hrUD_prHLmRM5FK_uhN8YVErnYvVLi-mnjLmdcZEQoBscgCtXkYQonttoGfnSlu29Wto4Yhsqf_OFs1nv3pYHuEcjTv_OW73B8y5-28y9VvjPQ3Y0b77PjOMDQ.jpg"
+      },
+      "sourceId": "eg:mr_trading000",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "هدف اول للذهب بفضل الله + 200 نقطة ✅❤️‍🔥🔥🔥\n\nالحمد لله والشكر",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:53.901Z",
+      "expiresAt": "2026-07-23T22:42:53.901Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:53.901Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:53.901Z"
+      }
+    },
+    {
+      "id": 1898872221,
+      "postUrl": "https://t.me/mi_raculos/1506?single",
+      "source": {
+        "title": "حلقات ميراكولوس | اخبار 🐞",
+        "handle": "mi_raculos",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/o73iNWbuIw0azwqlDoYpyTLUzDnfFhzqhWDEo6-RN2c1DXd9gIX2KYKlFDmHJDAsv_ZO0C63h3Ke8Aa4JdE2bYmbbigIlWM4M6jKpnFN8DgzIPtC72kxzgb9dO5bwv5I7TyQmGT26wSZKZuXm0LdzJ1S-nS4LoENay2pdv4m-S5BV_1M2D0McR0e5kWqtWjP1Bb4pTgqG0Boiwc2uiFV-w2gK76Fv0bkjBGZqmJ8Op8aVk6ac5z80exgZYoABMIixaqDlYjDahrT3RRu6qZwQ0Yn-ko1IFTlend3EFAgVDeBeNak5SHI6cdjcLjo4Up7xIo1zrRClSO_sccswuOlYw.jpg"
+      },
+      "sourceId": "eg:mi_raculos",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/0d3c867209.mp4?token=abDhu_QNQCuJQXJTz1H9tpZyvjUecVFKkWK63k8jmlnDjA8XitguMB_wlRsLpLjJU2adSoYq-tRX9MITrDAOkuX0442DixEXrvVKh4JTdMn5VpOGFBchiVkLG2nmVIGcydCLf8ZF7i2OFh8Gb3yv9n2g9biGS9_CCZuYKYI8Y128JAIldK9H2hJ9abqFPz4MNG0LwezSFSNeyuzp-WSyztiCs_5KIfGJ81NxO19Cdy3DblJUrX2xy9jXrmKGDXAsxouEfrjO3y3MWwD-I2Cs9B__MLL6nX9-oaZ1vplsZGStn7PWQ51UdxokkWyvaAu9rEIGZbCM7amn1jgSd_ypp6HPyr4Y6VK95Fd_w4H4fnnCH_yZ8le1SflP-WuhhSacKrbNMtKfa1PXxPd3EjZpjpnjeNjZw6a5H_uwRuWPMaHXqiiauORxaw3sFEgnPodG26w5QMdIvSciVHTosz5WhEL-UO53JmcVhbwVIkUldu8l0UGIZglDw3rZU9j3UUqhXSpcpzXwOtO6LUhbpVEDdlZxF5s41hpwEOCIIEzTeZS1w3YHaDJe_yesxwPuysuS7aPs83QsuiCFSDN9tNvKVw2Inln5Fr5R3t8gvET2PwNApkHIkN2YM_xue_FvslqhmXe5kkJCDX6Q2JBHWXcV9zHPVBN0nYTEo47zOzRDUAk",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 | كشفت \"غلوب البرازيلية\" عن مفاجئتها وكانت مشهد من الحلقة 25 \" العملية السرية \" 🆕\n\n✏️ | مترجم باللغة العربية ⭐️\n🗓 | موعد الإصدار : 1 أغسطس ❗️\n\n- • شاهد جميع الحلقات من هنا. \n- • القناة الاحتياطية.",
+      "links": [
+        {
+          "label": "شاهد جميع الحلقات من هنا.",
+          "url": "https://t.me/Miraculoous_Bot"
+        },
+        {
+          "label": "القناة الاحتياطية",
+          "url": "https://t.me/M_iraculousLR"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:52.951Z",
+      "expiresAt": "2026-07-23T22:42:52.951Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:52.951Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:52.951Z"
+      }
+    },
+    {
+      "id": 4115936821,
+      "postUrl": "https://t.me/medmannews/42614?single",
+      "source": {
+        "title": "Mediterranean Man",
+        "handle": "medmannews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tAU8TPDFx8GfrhKksNHRGu4pl8bqVZwTaJFhfg1qTnPvngat1XvxC0u9f3WcdIFf569-jfb2PUfqlKS6YY6eqk07M1HLBOX8dvlwWuWB7aSbTouoUDlR9j8K0El215vz65bZ62vBr9ouxLPvYHCeGUK5EaNKs9wv6o4h0zvWXPsLDSQvDQ8a0Z-jU_FAewRWlU4Ruk3inlV2-lrl6aMTagiv_9bhGmNNRKWiiOpTz85p8VWPXwF88jPHIxqdNBvW8cUnmyOrGUS2iUvAerp2r8018UWtkr1wyAEcWGVAB5nK3SARJ44Z_DlqrHqJ8BHD35ibw5tTQ1uJVuu332Hb5A.jpg"
+      },
+      "sourceId": "eg:medmannews",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "⚡️🇮🇷 The Islamic Revolutionary Guard Corps claims responsibility for the radars at Ali Al-Salem base and Bubiyan Island in Kuwait that has been taken out of operational service.\n\n@medmannews",
+      "links": [
+        {
+          "label": "@medmannews",
+          "url": "https://t.me/medmannews"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:51.885Z",
+      "expiresAt": "2026-07-23T22:42:51.885Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:51.885Z",
+      "tag": "news_all",
+      "tags": [
+        "news_all",
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:51.885Z"
+      }
+    },
+    {
+      "id": 3638085822,
+      "postUrl": "https://t.me/life_in_sharm/5613?single",
+      "source": {
+        "title": "ЛАЙФ ин ШАРМ☀️ Египет Шарм-эль-Шейх",
+        "handle": "life_in_sharm",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Kitr799iVCkp4I9wvtUOkcv9PR3aR-v_f2-7a6FcyqteEAIyRckX1s0qQ1_XVr7iwCyqcfhD36n0-mBlQBlalgmdvZGe2Bxcsk0S8fXAK2Dva1-T1Mwk69hT_j9L6WVbFmPS_6xurhMM4AnzjzxVfThZC4MSdvliV0yapo073_bcZQlSD5fpkvmkMwYl45lXulNNhpccqM_sjWJ0xXairsKvKeU1dz6Ej1wbadefJS8ZBXJbtZLrffBIAZEmLT62Mom_9VpbY3DcBQM7SRpc5S3dHBR3v_gJqluxOCw0Bx7gEh4NcaePy-6RHLCzU92P098MW1B413pq_qhHA_Oh_w.jpg"
+      },
+      "sourceId": "eg:life_in_sharm",
+      "sourceCountryCode": "eg",
+      "contentType": "mixed",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/ZuX6f_U6EVbfqeOQNGRzyzFxNMmkQYrvwhVkl6LjufUrMPTL92XwLvVt6uLcu72vKNWegTmZEbgsXBnDByQj1-YSTuehYheZ8WMG6PYnoFR6KF8PQlWMVgtaCrbuENpCBnKSz9smBuqcEXeJg51QN6QwDOQS-CFmDkyB5HEwefKYwqpwDxPbSeMytV0FyRlBREZpBoWPoFS4nueprSD4gTh2YlimLSHwvebc1S5Au2Ctxz-JuVO5gO_e5MEpfWe3h5DA4wQ7HvHfhNaploDHOToz7SZW8ueQ7_zHiieNYKtBvj7liTjdVofV7KnOMt6AG5yb_vbV6UD5fdnulugw3w.jpg"
+        },
+        {
+          "id": "video-2",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/f75fa94b3b.mp4?token=I-TngPWmwE05e3Tc_CCUmIYWkejYdFmgFbQh7Yee2aRqL-GqBkJ-BrVRi5XfwzOyVGh6YHKxQtCxJyC0cMraCO1hySPLCYeGVA-4RFUZc4tvt3M56hHZM_MyqF-jt4GgmwJZfznhb6vkIf6om8IiJp-cfJeP7jEtBIaLQkG-G3AlbFZSblru697lFvEEhzlxoX4l9JFyKu3SdkW169xHCrqQvLpNLBQrD1D-oOS0knUYzLejmMp_IpPY8kxrXrMRvCuityNWYYSDIIzA6aDACITLPpTH8sEFqc1KQ70lZHCMMHNLzN4EzaJWoVjXj08aLa0PS5cNQs_RaMU1tAEn_Yi-rc8JTn60jg3WQw8tSra5FJxajnlRbgTcvWPed9A7hoA88mFEYCu96vjiXAEZIAWkQueE-1qfgrnZIiKZoOLSGAUdxqESUh_wv6CWr27chfsCsgVoKSxYSAmHOwd9qM7iqlPdgl1WkxUyV4FV1b61Q8iTvryYmw13wykAZmAL84M8Ol7JirvcyAAKeOKp5D_ZEhqwoY_cuXrmIQkPFgzhCGz6UMwuTUnj_s4PDZe4dZ6NOvNp-dJRftmQqnzb8PDbBsTnn49KDphInnbCV3xZTrl6vLoFMz2QYxq3AZWfks8FtguR1kxPhFOt7Z_JSDXnBAlnUdZaDVx7DBCB7MQ",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "💃 Завтра стартуют танцевальные классы в Forum Mall.\n\nЗанятия будут проводиться дважды в неделю - по средам и воскресеньям.\n\nРасписание:\n• 18:00 - High Heels\n• 19:00 - Belly Dance\n• 20:00 - Zumba (старт курса - со следующей недели)\n\nКлассы проходят на английском и итальянском языках.\n\nСтоимость:\n2000 ф за один курс (8 занятий в месяц).\nКак сообщила преподаватель Луана, при записи на несколько направлений действует скидка. Также приятную скидку получат те, кто запишется сразу после пробного урока.\n\n📱Контакты:\n• Телефон: +201271107895\n• WhatsApp: +393791172304 (Luana)\n• Чат классов в WhatsApp https://chat.whatsapp.com/BV3icDQbxcu1evAU34oRr8?s=cl&p=i&ilr=4&amv=0\n\n📍Forum Mall находится возле Дельта Шарм\nhttps://maps.app.goo.gl/k7MtfV3cW4HXX8DK7\n\n#танцы@life_in_sharm",
+      "links": [
+        {
+          "label": "https://chat.whatsapp.com/BV3icDQbxcu1evAU34oRr8?s=cl&p=i&ilr=4&amv=0",
+          "url": "https://chat.whatsapp.com/BV3icDQbxcu1evAU34oRr8?s=cl&amp;p=i&amp;ilr=4&amp;amv=0"
+        },
+        {
+          "label": "https://maps.app.goo.gl/k7MtfV3cW4HXX8DK7",
+          "url": "https://maps.app.goo.gl/k7MtfV3cW4HXX8DK7"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:50.617Z",
+      "expiresAt": "2026-07-23T22:42:50.617Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:50.617Z",
+      "tag": "finance_trading",
+      "tags": [
+        "finance_trading",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:50.617Z"
+      }
+    },
+    {
+      "id": 1373267547,
+      "postUrl": "https://t.me/kingxauusd110/19456?single",
+      "source": {
+        "title": "KING EL GOLD 👑",
+        "handle": "kingxauusd110",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:kingxauusd110",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Usdt و beb20 ، وقال لي لاختيار هذا واحد. سهل.",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:45.849Z",
+      "expiresAt": "2026-07-23T22:42:45.849Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:45.849Z",
+      "tag": "crypto",
+      "tags": [
+        "crypto",
+        "finance"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:45.849Z"
+      }
+    },
+    {
+      "id": 3189831512,
+      "postUrl": "https://t.me/kero_875/79597?single",
+      "source": {
+        "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
+        "handle": "kero_875",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SUGb_rcLO-nyAM0v2JQwHtssHzpytzm-9SCIQ_9uH0O7UKz6pjeiMxVjOGQnuuRCkjeWmOdE7yOk9gpNEGOJXIs1DGttrAzx_sC6wtLYkVsLb-abUKhvB_2Q3liYSAQ-CAu6vJ451ne8p5wlyTVqkIlPQTFJCgZ7U34_DTgpvnIZW-6RsBlBCJbAUsDFboxIwGkvrKBnSuSbREAUnw2vnfdUwSzhF8aF6HZQw2ZIyO9tg9mRE0Z73sly3Z3877UabCgVnNDzxFRoeq-8emjws_UCayM4aWCRbFBDGMEw7wrvklixEVRE9u86VjqOnvug7TtqCTFlrCplmgjwit8Zzg.jpg"
+      },
+      "sourceId": "eg:kero_875",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/l2SffBO_QXgWF091K5QD4khgrkzu8eNG_uHiNE9EHAEWk-hjDnYHMv_URbtZ7gJHnZXMt-gE_YJgg9MMDNgkfQQPpK_wGyXDwI9P0az5T3b3O5tHhT8jYYYhi9JWDOhEK6wde_r7pJfV9FV5qOAw53O9BaF4N8Wh3QJYzu-6uQdoC0FrVELVlGDFPBiK3MxuHUVEdhoREavknHYnLphNeJaztFB8pdlB9KrGxz6l76Xm2lpUfe1avayU8S4xfa9NI6thdWqnTjl0KST2Rq98I0TBrcJC_2YLDInce5D9fUPIMJqohRO5g7XeXz_Q_55n0Fcl9D9x80WYveDSa6Bmig.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "تدخل القناه دي وتنضم بعدها تضغط تحت زي الصوره كدا معلملك\n\nبعدد ميظهرلك نقاطك \n\nاضغط على انضملم للقناه\n\n\nhttp://t.me/myGramCatBot/meow?startapp=973905943",
+      "links": [
+        {
+          "label": "http://t.me/myGramCatBot/meow?startapp=973905943",
+          "url": "https://t.me/myGramCatBot/meow?startapp=973905943"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:44.871Z",
+      "expiresAt": "2026-07-23T22:42:44.871Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:44.871Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:44.871Z"
+      }
+    },
+    {
+      "id": 3404862940,
+      "postUrl": "https://t.me/hv_ty158/1149?single",
+      "source": {
+        "title": "مسلسل حلمٌ إليك",
+        "handle": "hv_ty158",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ijhZJlLJG8li6sWuMqXPj_VdvyQ21C7lH_Sn71_YQKCZ8eb5wwuuHEQqbuzEv43AjTK8IR-rP2brwU2ddt60IoB6lYAHsC7aWpgeQZUX5IriVR2UrlTRQzBrlefOktA6AT8bJnwkuFUeLbh8IDxaGj0EKRhQAs7127S9qXRcJ9QhX3R33hHQFM9RLjvVxhxj1EpPj7LqAlT8kq5zrJTaMgoct4L87l3k44XUiTOkLRooSL_C9-1CVcg5NMfp8_IzuWViZ48TCJ3XZB99VMu2S-XcqXhpDQRz63KVYcnIRb-wT8HxVcbnqCDzlxRtJVHLsmqGRvl6irXR1x2f0WCUJw.jpg"
+      },
+      "sourceId": "eg:hv_ty158",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": ".",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:44.024Z",
+      "expiresAt": "2026-07-23T22:42:44.024Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:44.024Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:44.024Z"
+      }
+    },
+    {
+      "id": 3520492344,
+      "postUrl": "https://t.me/hadath_now/33712?single",
+      "source": {
+        "title": "الحدث الان",
+        "handle": "hadath_now",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jHs1pw-zMeDoMdyy1A-2BCAYUMIudh_6m3PRTACDJEsidMrWj04L5AaHC1JRhCmw0XvnmmthJnu2N6z1wltE-Zol_92Vf_AKR3ZJdBG2ZcgUUsjRlitvSYgQbBm1m1dPNAxewit8IE2zpeqN9Oi1LZb0pkOcI8qq3om9rHJLSFEXbmUPRjsXIl3F6Ah2N9WreDsLt2KUO5XUouO8c9Xr1v6UxIh2OtlKKhZZhQI99rdF0XyOUgYTbLM1bHmGy9aTA_BoR39_bOfVU7h5vzjxoztwcEwHASH56sRyAvF77vkTucWQ2eiqcUpuvHqLO6vh3JkvvcNwRWKNbjBR-hdEDQ.jpg"
+      },
+      "sourceId": "eg:hadath_now",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/pNv94xGwRKIgHMOkGO3DylM9m5GJL84pIQ4Njf_IuF25dtPTlN_LS8YBz6gJsXyPUT7PHFYOkZtEhr-fgRmVVgeM9fLjVmMf6gb60VSmpLieh3bPbUE20ZVM6HO7yrVqi3tHRS-nNXGm5i1HwfnUv25KNDC0eEfZn7LT-puF7TFt1ybvmYaUHhIuvKpzCuJTvI41y3c1Uy_76G4LHebiILwKn3TazezbILhZp8TXpFKC5Sui75J5I58HStYDoX62tkbqe7bFp-kR2xt_nfCVvq2S5ZW6khVsIyZ7gM25L6mao5gtwIjFvDV7_r9fYICbU9zSVeFA7MjWDjqYcP_fkA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "اسمع، تعرف أن أكبر 90٪ من الناس يقراو اقتباسات بس على السطح؟ الحقيقة اللي ما حد يقولها: الاقتباسات القوية تحرك مشاعرك وتغير نظرتك للحياة في أقل من دقيقة! مش هزار… لو حابب تستمتع بأقوى الكلام المعسول، خش على اقتباسات اليوم، وخلي روحك تروق معانا! ❤️‍🔥\n\n#إعلان 📢 🎯 إعلان على تيليجرام خلال دقيقة",
+      "links": [
+        {
+          "label": "اقتباسات اليوم",
+          "url": "https://inside.ad/+zOiWa6"
+        },
+        {
+          "label": "🎯 إعلان على تيليجرام خلال دقيقة",
+          "url": "https://t.me/InsideAds_bot/open?startapp=m_-1003780260047_utm_source-insideadsInternal-utm_medium-signAdPost-utm_campaign-trade_fast"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:43.131Z",
+      "expiresAt": "2026-07-23T22:42:43.131Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:43.131Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:43.131Z"
+      }
+    },
+    {
+      "id": 4249709519,
+      "postUrl": "https://t.me/eliitrade/10307?single",
+      "source": {
+        "title": "Eliitrade",
+        "handle": "eliitrade",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/UeiRVGjZsENUFwZ9uJe6sMu_ur1Z3kYk7SbdZciac7u6jLzbfzRo_vBc4Tpe8Wi43G56dSBotrLVx1227CJI4Lz4Rjt9-NeZ6rpCBuo77sgRvKY87Lu9uc5NvbMBEqV6wDXSlbKGz2y0ZbXszjV0CKjOAMxQDtgtxojJfJfnVfP7OYjao5rPEGJtEVUaScVXRTt10iqBrUakcqhGe0Qg4jRsCBRQxha2lLxJdbj18guU9Y5hXiSTSS7FQdw4or9EeoWz-jCNFxQMFd2yIWW_0Bfsz_94L08Q0dRXhJw5egMDjSS2tplmmSScPkHJWCamALErGga99DBELo43zjSDdQ.jpg"
+      },
+      "sourceId": "eg:eliitrade",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "بص القناه الخاصة خدنا الهبوط مع الدهب و زيرو انعكاس 😎🦅 \nطالع نازل أهداف فقط 😂🫵❤️‍🔥\nالقناه الخاصة تتميز ي حبي 😌🔥",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:41.731Z",
+      "expiresAt": "2026-07-23T22:42:41.731Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:41.731Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:41.731Z"
+      }
+    },
+    {
+      "id": 3975046253,
+      "postUrl": "https://t.me/elhaj_1999/375?single",
+      "source": {
+        "title": "Pronostics",
+        "handle": "elhaj_1999",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/vlp6r_3u3M-BhxlNFUwc61wBLbHfh8_JPZV5jnHAJ9RWMMEeY1VDiWXDpQWPofU4aPF4ZLmJskwiq-yW_vCADmSw-4JkSZNL59LIacD53hmOqziCPYQuHUNd-aY2Dla0m9sbp95IV2hDAW3mxAKeizlje-zkQmWiX7p03mLWbhtJhlqLpOmpoYB7vhx4sPQflIsMziZQ8Pui8SHRdheQsHB6AJ9RAfRdZFm_VX3gACO-oLMk4KAhGp6xQ5XbDMvwpL6oRqwqKyX6UnPg7jR62dj9s_GHuVGbV4mhYU9utKB_hpMZZRBnB4rtyvqWzC--wcgUR8Nn___4l9tZwQ-aPg.jpg"
+      },
+      "sourceId": "eg:elhaj_1999",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/f1Fb6NEpa3ueufnxvmbcpEHwV6w9L4OXnBGnkVSJYi8axzBYbdgWBeKPEDyvInz7v-dtQjN6UktmOQFx4uD2AXfhm-Ig8pWf6bVS73jirYWhGv9z0cSQ7-VyPLEnq1nEl6AKPtJaooiDUgJVKM079JuDKllKIZX0Wwv9bot5YwUJejRusX7yCuSQXgLGzA1K_tuVSTY1w6BXA7lCQ9CY3uFMEkBdLTR-dDepSStY2ht39Kg8O5wZwWWtqlCrYweLthj7RjKxOm_Onamtuoj8XIeSLVyl_LBPdq6sJJeVREcf2FdF6GDwo1hyCQay8H3Af94IvAIRWKw9HwzD1waSZA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Thursday 25/06/2026  Free single   17:00 Jyvaskyla 🆚 Inter II   Total odds: 1.44  Bet Responsibly",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:40.874Z",
+      "expiresAt": "2026-07-23T22:42:40.874Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:40.874Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:40.874Z"
+      }
+    },
+    {
+      "id": 1604322171,
+      "postUrl": "https://t.me/deals_trackers/13841?single",
+      "source": {
+        "title": "ملك الخصومات - Deals King",
+        "handle": "deals_trackers",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jINRtRdCTDFUwgOap66ypOASeStgyKN_D8DjowVGxe61uMRzloJlcn1KQbzl-wr_9wtQtTN3vi8027tbfnmuE0GR3m_gF5n02By65hIglxSnjTl3tgGj9DeMc6vLS1cUD_Ls_I0ab6EBsD8Zj_AEOp1bv9M7QG-bueJv_2sPa6J-D4GnOb2JVK_tCcpgwx6GuTTFCZPUlGFS2sWwflTIXFMnp3MwfrB_ChC7M8SLdqD5OysHgXXlSrAsxn5UmH9HO29CSExbvFZ2EVastyKqmQ6UO3qkrKPE2R1zIBXi9FfEbUZrC0wOsyn1CYBhSMW-cyNBNFqsGSX3co8QcZuU5g.jpg"
+      },
+      "sourceId": "eg:deals_trackers",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/gJiW_FsUCoKVCxSgMMgV_IV73ozDLMiZedOq_fbDZHLugyWogeHzcVhV2KLlGEEkihEla-9jbyxONlg_wFwrIf5AFUcpkBqsMmzwGQF3_wqJmNai1-2GH3CRxTCvTX1-iDXVjvpYbBB_pGmvHoRTtOslOPetS1K-jcCWog2I-BpN3LG4PTobIe5fWOT-Y12-hjQ7zWBB7qxYojAYVeWm_y1AjHwac8TkjIa2-dBT7eljpn3FY8_eKYrAdJeffZSgSXWs3ZRhqOo4rPgKNDEi7dJ6tCMKf2juJ4SdjZiHGwWod0uKnhEb8C2OKXScqgsi7oQfmbJVs8gDfVhLcYufsw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "⚡️ عرض على شفاط حائط EF-25N 2 اتجاهين، مقاس 25 سم من بلاك اند وايت، كحلي/برتقالي\nبسعر 1223.98 جنيه فقط !\nللشراء : https://amazn.im/s/kTZaMY\nمتنساش تشارك قناتنا مع الاصدقاء\n تابعنا في قنواتنا 👇\nتابعنا علي واتساب",
+      "links": [
+        {
+          "label": "https://amazn.im/s/kTZaMY",
+          "url": "https://amazn.im/s/kTZaMY"
+        },
+        {
+          "label": "تابعنا علي واتساب",
+          "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:39.380Z",
+      "expiresAt": "2026-07-23T22:42:39.380Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:39.380Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:39.380Z"
+      }
+    },
+    {
+      "id": 287401691,
+      "postUrl": "https://t.me/cartondisney1/1104?single",
+      "source": {
+        "title": "افلام مسلسلات كرتون ديزني بالمصري",
+        "handle": "cartondisney1",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jq_e19xOrq4XLIzHaWGf4pqpeDuEpkTLQQDY7F4eDGYVGNcBzokxOS6apuxEHsXR0huENB9hQigjGyEFafauXn0tKdFdVhr5zPdb5i9lKp4bM8gt9o3T2Kt1EcS3NbbZrlbpqrJQjzoq1DSlgqNW_V4Iq6L6B7z9dmBogNee2MsGr_Cz0drBuu6I8PApw9gSez85i2SR43HyuepsiIPbmy4DlRCpBTLztzXirUIK3DEYX8CfynTKsKo5vwvN2WwbTl6ROUZWjQWRBRgeHzZdTVdOOb17OMKO6h5i_Cd8mwXsCNphWWdqy-tUbxXdila9PcMIPucfH3pIIOhGyfjJCQ.jpg"
+      },
+      "sourceId": "eg:cartondisney1",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Xki3Ri8eRwR7QUN7HC3EfI6KpchzTomH1F4EctjQ9k69g7SDqQWIyLED7tUOWxCkLC-_Hn9mZh1JFkL8QM10uEyGhAfUiyH7NyG12niZ-EZL_HNaiMMac2ltSJq9tKUpyGPTX15Tf5crIdzA50gbEAbRFNxRnfNT-2c7xEZGHeTu_R1TIC-24G2qo7Yibiv_Rj3LrY3FDziUQSUcuR1bN7iMetJo3-HCIzNzQJ-Pi6dZOQHVTi9FF0MecFfvFxI6QqRL72fGCVFbmCQXYCJXNLWynI2G-CZbcTkjLkcjpFGSMB5IiX7cmgWbPxqJyjdbTl7dgnQs6YP2w2KzwcRw9A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "مسلسل مزرق | Bluey\n\nبلووي كلبة من سلالة بلو هيلر تبلغ من العمر ست سنوات ولا تعرف الكلل، وهي تحب اللعب وتحول الحياة العائلية اليومية إلى مغامرات غير عادية، مما ينمي خيالها بالإضافة إلى مرونتها العقلية والجسدية والعاطفية\n\nللمشاهدة من البوت ⬇\nhttps://t.me/Etfarag5bot/home",
+      "links": [
+        {
+          "label": "https://t.me/Etfarag5bot/home",
+          "url": "https://t.me/Etfarag5bot/home"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:38.055Z",
+      "expiresAt": "2026-07-23T22:42:38.055Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:38.055Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:38.055Z"
+      }
+    },
+    {
+      "id": 3922050414,
+      "postUrl": "https://t.me/w_of_programming/1625?single",
+      "source": {
+        "title": "The World Of Programming",
+        "handle": "w_of_programming",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/fSyNwqRdLP7N5S8OiZuGrvPksxN6t1znHsY36MS2xD18nqu57TTpDvF-n3DTnYibwmwTpXVQtatOBHJcBhjCP6wuCA0zRDh1nz-2FsfIwu9BOrkc9oJnuBOSAda0c_ZfvYg5ns-XD1FpG-D1UZTcoVoOrZ84SvZkxSpX1uqJjyzLv4O7zaktfeYa93Td5o6p6isFet2O3Soos6nTFbCUhGxIZuE6q7cdHyFp6MQ_P4QCidZHbqNPdtG1LBF0CWC6dv22SFkOg40FHXscKo6GNnEif_UXHuCrhrH6Fzl8-O5XMyrby3FVN8_qX2n67xuIUWyU0t1Bb4YLMDiCRoB6ZA.jpg"
+      },
+      "sourceId": "eg:w_of_programming",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "دليل خطوة بخطوة لإنشاء محفظة أعمال (بورتفليو) لمحلل بيانات:\n\n✅ ١. اختر أدواتك ومهاراتك\nحدد الأدوات التي تريد عرضها:\n• Excel، SQL، Python (Pandas، NumPy)\n• تصور البيانات (Tableau، Power BI، Matplotlib، Seaborn)\n• الإحصاء الأساسي وتنظيف البيانات\n\n✅ ٢. خطط لهيكل محفظتك\nيجب أن تتضمن محفظتك:\n• الصفحة الرئيسية – مقدمة مختصرة عنك\n• نبذة عني – المهارات والأدوات والخلفية\n• المشاريع – معروضة مع شرح وكود\n• جهات الاتصال – البريد الإلكتروني، LinkedIn، GitHub\n• اختياري: مدونة أو دراسات حالة\n\n✅ ٣. أنشئ موقعًا لمحفظتك أو استخدم منصات جاهزة\nالخيارات:\n• أنشئ موقعك بنفسك باستخدام HTML/CSS أو React\n• استخدم GitHub Pages، Tableau Public، أو مقالات LinkedIn\n• تأكد من سهولة التنقل فيه وأنه متوافق مع الأجهزة المحمولة\n\n✅ ٤. أضف ٣-٥ مشاريع مفصلة\nيجب أن تغطي المشاريع:\n• تنظيف البيانات ومعالجتها مسبقًا\n• التحليل الاستكشافي للبيانات (EDA)\n• لوحات معلومات أو تقارير تصور البيانات\n• استعلامات SQL أو نصوص Python للتحليل\n\nيجب أن يتضمن كل مشروع:\n• بيان المشكلة\n• مصدر مجموعة البيانات\n• الأدوات والتقنيات المستخدمة\n• النتائج الرئيسية والتصورات\n• رابط إلى الكود (GitHub) أو لوحة المعلومات التفاعلية\n\n✅ ٥. انشر وشارك محفظتك\nاستضف محفظتك على:\n• GitHub Pages\n• Tableau Public\n• موقع شخصي أو مدونة\n\n✅ ٦. حافظ على تحديثها\n• أضف مشاريع جديدة بانتظام\n• حسّن المشاريع القديمة بناءً على الملاحظات\n• شارك الرؤى على LinkedIn أو مدونات البيانات\n\n💡 نصائح احترافية\n• ركز على سرد القصص باستخدام البيانات — اشرح ما تعنيه الأرقام\n• استخدم صورًا ولوحات معلومات واضحة\n• أبرز التأثير التجاري أو الرؤى المستخلصة من عملك\n• أدرج سيرة ذاتية قابلة للتنزيل وروابط لملفاتك الشخصية\n\n🎯 الهدف: يجب أن يتمكن أي زائر لمحفظتك من فهم مهاراتك في البيانات بسرعة، ورؤية قدرتك على حل المشكلات، ومعرفة كيفية التواصل معك.\n\n👍 اضغط ❤️ إذا وجدت هذا مفيدًا!",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:07.077Z",
+      "expiresAt": "2026-07-23T22:43:07.077Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:07.077Z",
+      "tag": "technology_software",
+      "tags": [
+        "technology_software",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:07.077Z"
+      }
+    },
+    {
+      "id": 3177398358,
+      "postUrl": "https://t.me/tradsempire/4416?single",
+      "source": {
+        "title": "Trade Empire",
+        "handle": "tradsempire",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZbTDxu_d9JqQaf5P0GhMvxcS-HQ80MkztMrUPtJryUZrfOgR-7n_JbpVeR5cU1GLDNu47BD9cudSjUtAAJDGSoJTRaxBqiXezQEPenhl7HugHCHOGQaYhhUhPLuzICazW9QHYGrj4A2g6Yzz9o2TZBMonKH8L2UH7UeqD4BVKiySEDxkB9ZfkHxQHBxI2e0qZR9_WKlSOIUsBy-4roig7SbqdHTK311q-yadzJIPJZvUHgwKSs_-idk6XFjjZochu1F_bSRneIhxUvfznMAyRMBdnKTYECJiJNdHND581Wg6QR363z3pynqJK3iB5EugWbL0j9mAtuG1AYLMuy0svA.jpg"
+      },
+      "sourceId": "eg:tradsempire",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "SL 4054",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:06.140Z",
+      "expiresAt": "2026-07-23T22:43:06.140Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:06.140Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:06.140Z"
+      }
+    },
+    {
+      "id": 883556901,
+      "postUrl": "https://t.me/summaryegypt/5079?single",
+      "source": {
+        "title": "Summary Egypt",
+        "handle": "summaryegypt",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/hO2gQMwePdp9uUdmLZfhArLVS49mIh_fPo9AtHI5m8eZInbhyE_489ujC4McfhhCH9Xd-qprMo389M1uM_eWNgvlLIfSay4l-FZsDNbtsLwlWxmFIByiXKdWXlstbOhZBRJXgb5LmllQoSxMSDU363-wun978LBV7E8TsSOpOjxlD_vcZDd0DCHHswSmSALzoIBFvQG8JfXADrnl9APwlz05SLuCmvJjxcx7tIK_Y5OZmrxDV4xwvdEr20PUF_mPv-YgZcMLDA1q6h0XJNe9EHpDnvAO16n4qNmtHq4a1S9K6uvjut7ctYFDfy9v1NQpMAvD6ndOb9GH-_16jtfqIw.jpg"
+      },
+      "sourceId": "eg:summaryegypt",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:05.360Z",
+      "expiresAt": "2026-07-23T22:43:05.360Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:05.360Z",
+      "tag": "sports_all",
+      "tags": [
+        "sports_all",
+        "sports",
+        "sports_news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:05.360Z"
+      }
+    },
+    {
+      "id": 2915263537,
+      "postUrl": "https://t.me/seedoss/697?single",
+      "source": {
+        "title": "SeedOSS • foss, privacy, gems.",
+        "handle": "seedoss",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/QP59w2bayrr_MhqH9Wv8ifw-owPZtnGZCUqgPdQL1MuTA2AH7hY52E6k-dNIXvbNoBl7d-_EXSXSVqymZ3LEccLvZ_iRB9KlJdHKRXoss8ihSdu3yC1lKKAsF5ZdRui5u--Uc66G5BJVSqsmxdsGUq8QECor2wY77Ga2n1FuQ0ZjtgGPUhrccZRs2OvdeADV0RPtaO1R9BIPBbTfYxBOgsgwVaP_leg9OHFH97nZbtWZSHa1uV5zF7Qt8zqRZDWY596LrXj90_CR9iZg_jUWbyJFbxiNZ9oVmf6W8dontdsg6pjP_ChF698PxB3Gy7-nQrGZYCuS8panvl2yj9EzFA.jpg"
+      },
+      "sourceId": "eg:seedoss",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/TpYui39trvd4yEsOk3lOOjMhCz-VBPfNZXr5K_25f85sPeIxMAgml-kbCFpx9uauiq3jpXgIE0xiyddwBpvDoNWLkZSzZz2wle4Fk9Tm6Olwb6tUqOm4J53_dNVKq6uIamTUhxkA8Qb9Sg_vsBGLbrVN-9qEZZBNldyoSWFN89fgHTtPKVhLlJvQCH7qk58euTaprq-QLN2uzVxD7lStpSTeeqwzhU4LV0sPqz1a9kJQCuAtF_077lYPHVCGq5gaG5YRm9OssGRtGRkhcKTD1zCFlEuJOx2Zb8wgm51GUE0vVU18cnW_8b7dIL1WKiOvZkh74JbZrtfi3R67mwhoXQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Flick — Dart/Android\nAndroid phones resample and dither audio before it reaches a USB DAC, altering the original file. Flick sends PCM and native DSD through bit-perfect instead, meaning the exact same bits leave the phone as exist on disk, with a full EQ and effects chain if you want it.\n✨ Why it's amazing\n🔗 Get it: GitHub | Website\n📲 Screenshots\n📁 Source Code\n\n❤️ Sincerely: @SeedOSS",
+      "links": [
+        {
+          "label": "Why it's amazing",
+          "url": "https://t.me/emadclouds/1735"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/moss-apps/Flick/releases/latest"
+        },
+        {
+          "label": "Website",
+          "url": "https://www.flick-player.site/"
+        },
+        {
+          "label": "Screenshots",
+          "url": "https://t.me/emadclouds/1739"
+        },
+        {
+          "label": "Source Code",
+          "url": "https://github.com/moss-apps/Flick"
+        },
+        {
+          "label": "@SeedOSS",
+          "url": "https://t.me/SeedOSS"
+        }
+      ],
+      "createdAt": "2026-07-21T22:43:04.529Z",
+      "expiresAt": "2026-07-23T22:43:04.529Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:04.529Z",
+      "tag": "technology_software",
+      "tags": [
+        "technology_software",
+        "technology"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:04.529Z"
+      }
+    },
+    {
+      "id": 1889407728,
+      "postUrl": "https://t.me/rusembeg/10727?single",
+      "source": {
+        "title": "Russian Embassy in Egypt",
+        "handle": "rusembeg",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/TrOOPegktihEXRr39LNoCTC7oXRY8i_NmXghYAuFMs2h4M1Z3AgiXWifo7a8QEZBzPuVpvj3RV0waIg6imiEqj9ZNEUOTmzXeosy2RcWMLEF_k2VQ1HTW4nUI6_riqKsjplaenqc8I9GT8_hi2Os8Jqco-PiyHIhqT3jzfs5zrjwf4AY00sMQ4EqiHuXuhjWVNMnHpPxLM3_MHN7rJU7U1diQojJOPVpoLXMkn8U1I8iZ1r0yFCG0cO1viUJ_zB6K6J6KOLDrSq2WdELtQFIA1RMRvjXHXQVBBORGj-sA7EFKjn0j9PW3j2FvBvP8heCCQUzKZQmw7jB1VqdEl05tQ.jpg"
+      },
+      "sourceId": "eg:rusembeg",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/hlnloA56mK9z1QffdJmKg0arJoMtZaSWiFASVSzn-8Eg8u29_8y0oUqymo5v2bv2HiyyuWNEsHSOhzJy9yqgdMeWN9LLWX_ui_KMNns72Jd2yq_Eo8VM70l5j0P-Y2uMCH19M9zGrV4Eqpd32Hj8K_C_m8lhTbtZird9_5bkupREnbDdkLX-whfyxEb2UUaDR3cmswCU6C97MORjds-hGOoRtybsoG5icJnzi8sYTJrZkvPUCjOhjdPREKlECEt_EzRuRJ23pip7Bl0QCusy64u0wZd35gaobf4Jcs91-UGkUQ4uhTt2tASiRR2u_N4rQQz5xBFKU0urpKQFYGeHxg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "📞 في 18 يوليو، أجرى وزير الخارجية الروسية سيرغي لافروف محادثة هاتفية مع نائب رئيس الوزراء، وزير خارجية دولة الإمارات العربية المتحدة عبد الله بن زايد آل نهيان.\n\nوجرى تبادل وجهات النظر بشأن تطورات الأوضاع في منطقة الخليج في ظل استمرار تبادل الضربات بين الولايات المتحدة وإيران.\n\n❗️ وأكد الجانبان أهمية الوقف الفوري للأعمال القتالية، واستئناف العملية التفاوضية في أقرب وقت ممكن.\n\nكما شددا على ضرورة ضمان استمرار حرية الملاحة البحرية عبر مضيق هرمز بصورة مستقرة وآمنة ومن دون عوائق، نظرًا لأهميته المحورية بالنسبة للاقتصاد العالمي.\n\nوتناول الجانبان سبل مواصلة تعزيز الشراكة الاستراتيجية بين روسيا ودولة الإمارات العربية المتحدة، بما في ذلك توسيع التعاون في المجالات التجارية والاقتصادية والتعليمية والرياضية.\n\n🤝 وأكد الطرفان اهتمامهما المشترك بمواصلة التنسيق الوثيق في السياسة الخارجية، سواء على المستوى الثنائي أو في مختلف المحافل الدولية.\n\n#روسيا_الإمارات",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:03.271Z",
+      "expiresAt": "2026-07-23T22:43:03.271Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:03.271Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:03.271Z"
+      }
+    },
+    {
+      "id": 3334192346,
+      "postUrl": "https://t.me/rassd/199070?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "عاجل | قوات الاحتلال تقتحم بلدة زواتا وتجري تحقيق ميداني في احد المنازل بعد اقتحامه.\n.\n🎶 البث المباشر الأن 👇\n\ngoawl.com/p/nablus-live.html",
+      "links": [
+        {
+          "label": "goawl.com/p/nablus-live.html",
+          "url": "https://goawl.com/p/nablus-live.html"
+        }
+      ],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 1118630945,
+      "postUrl": "https://t.me/rafahbordernews/11410?single",
+      "source": {
+        "title": "🇪🇬 اخبار معبر رفح - رفح نيوز🇵🇸",
+        "handle": "rafahbordernews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/k-_aWwIA-wWjkEQu9ldAPFMKIy4tiDa7QVoY4aDskQhvo2_nNco8Tbav5NYmNCbGJqbLvB-c9DChenlyLPTllRV5m30B1xbbwjSlLfktKPH69vXDdfJ5pbtdNg-NY0SGsyYQ4AVTWWMY7mWGF0snluvEh4UyKPQ7seNRrtNpKHn1clkc6Rzk-EjDwBaIiTlQtYuyJP4A0P-cJ5jwtmzlV-8lra6zo34Vqe6Lh4_XLRZ84BOHJ6ocecJPTHWS82FujnW_2NS3lElvgyR76NKUNZOV3X-YG1yo9Ra_3KemtlRIknh6-649XFOloM4yoMQ9A_4YjBwnYVeHyeELk48TFg.jpg"
+      },
+      "sourceId": "eg:rafahbordernews",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "دخول 5 شاحنات غاز طهي إلى غزة.. وبدء التوزيع على آلاف المستفيدين وفق الكشف الموحد \nتفاصيل الخبر👇🏻👇🏻\nhttps://rafahnow.com/?p=50776",
+      "links": [
+        {
+          "label": "https://rafahnow.com/?p=50776",
+          "url": "https://rafahnow.com/?p=50776"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:59.877Z",
+      "expiresAt": "2026-07-23T22:42:59.877Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:59.877Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:59.877Z"
+      }
+    },
+    {
+      "id": 2304779325,
+      "postUrl": "https://t.me/nimrodforapps/1298?single",
+      "source": {
+        "title": "Nimrod for apps",
+        "handle": "nimrodforapps",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Fxi8BUzdzRrEill3QygvQwqNEkCUi3V1o41MFXbZTmi05RRuOFFfOxM90Z1O2asC8C-xa71-tJARprxGHmKmGTvu0JzqKwrKwDPGl1SAvI9dCqvIXxh_Wpja9apVWD7LrwSjP669E7zT5wRQXQc3b2YX1pMGlI9tBVAOb2y1pBWV2Y44Zk8-Gl9PugCmol-Ka3SuBZqRCWk1-s4E-fTiwJFX2FmkPrL8J_GAeJzRgsTT9zKxej5fP184QoOJYg4mfZtR3UXoWKjrgZD8-c6XNsIaRRz7vAYsJiaXIo-apIYVK_3YOlv0tW-Jc9dNm-4DwIJhi8-FlmuVlp3egxyo4w.jpg"
+      },
+      "sourceId": "eg:nimrodforapps",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Dru4EqUCCfv-_PSfCInvUS590ENPJK0SJz_VnTA7CQvrvBNWUsLKzBVk1ACD5QO7nsuvo3WhmXLMdz8oihsPi2GfdR3hm0UzYON1oH4X8EoS4z9DfjljlZC_BJAzSlEZPadgYlsC4sVf-CRm29P08yTljPH3GPWnQpvI2wuWryKLb5fedgg1Zp_d1LhuR__OafprYcl1H9eK1DHw8Va-3WIdPuxxRvhA5gxCRP4nsjXrHlFOPzTA_hPgZLLcSJcVc6-uBhSzlxirxhHSzZ7h81Ci8cu9-Tvq77-oy0WZmy89MuW0_tRhCRw4CZN3nfbCgU_h2SxOCj3AaOQsjQZSAg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "برنامج للحصول علئ تفعيل تليجرام المميز بدون دفع مال عن طريق طرق اخرئ غير المال 🔥\n\nقم بتحميله وتفعيل لحسابك مميزة البريموم بدون دفع المال وبطرق سريعة 😍\n\nاضغط الرابط التالي لتحميل التطبيق برابط مباشر 👇\nhttps://rebrand.ly/qygrvmk\nhttps://rebrand.ly/qygrvmk\nاضغط زر تثبيت لتحميل التطبيق من الرابط السابق👆",
+      "links": [
+        {
+          "label": "https://rebrand.ly/qygrvmk",
+          "url": "https://rebrand.ly/qygrvmk"
+        },
+        {
+          "label": "https://rebrand.ly/qygrvmk",
+          "url": "https://rebrand.ly/qygrvmk"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:58.992Z",
+      "expiresAt": "2026-07-23T22:42:58.992Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:58.992Z",
+      "tag": "technology_all",
+      "tags": [
+        "technology_all",
+        "technology",
+        "technology_web"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:58.992Z"
+      }
+    },
+    {
+      "id": 1362850028,
+      "postUrl": "https://t.me/ngmsr/14520?single",
+      "source": {
+        "title": "نجوم مصرية",
+        "handle": "ngmsr",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Gtq740cANcL0p5Zyn3pkgAbq0Cs6uBxLcmBnQHPQQvJ9CfjQD5ZlbETtRnMEdVca43BKXivOXiq3O_fP4tKMCAfXQROOMMaJPCTx_cFGoR0lBUXg2CRrKwW3s_45A8-NgHT2iag1NqkI3oCIXvGrmWKaK_5Msf81GxUolnHImpn2RWQX4u4oWBHOSESz69TZDFR72evFv_rO_7bBPBjgDwTnicurBCmlcRrHIMC6JXJpwEzFMFsHAkehiQ8onHVPol-wMaOJQnAu1x8g_m7JwLbtHAJy77sGgO4-dLmIORN8yxpW8bJ3bJdDUZ-mFy1ajE09RVZXWwbbaszTavO5hg.jpg"
+      },
+      "sourceId": "eg:ngmsr",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Ofne8iyFezj3gEvuxZ7VtybaRWHI75Q_P-mE6_yjoZ8XR1mVw7zmcgItbhr0uZtpgMDvPIS1IVdJugRd1tL16uUHks1olC76IaAdLb_n9aDzGLXrRxpAlKo6mL_NDbB5OPjSrtj1Ykok_aIqB8jFTVj1Wo1GQYAxy_EbvCesrDkUXWc7E2elbGjTvnU1uq9d0sQpoNz50bs5J--0eT_eL6Mph3dc2sXFQXc-AgOuGvqYRLs601pcjcsM6hK-j8JTOvTTiz6UmXNbT5XadpIQSbc9gMBdSWJvphVOPQoPvOQgnddrdYKG-dTReJgU3B6iZbYvc5IvKPo_QTObNTGg9w.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 تكلفة الحرب ترتفع\n\n💰 البنتاغون يعلن أن كلفة العمليات العسكرية ضد إيران ارتفعت إلى 37.5 مليار دولار، وسط ضغط متزايد على واشنطن لتأمين تمويل جديد\n\n⚠️ وزارة الحرب الأميركية تطالب بـ 67 مليار دولار إضافية، محذّرة من أن تأخير الإقرار قد ينعكس على جاهزية القوات وقدراتها القتالية\n\n🎯 بيت هيغسيث يقول إن التمويل ضروري لتعويض الذخائر، وتعزيز الدفاع ضد المسيّرات والصواريخ، وضمان استمرار التدريب ورواتب العسكريين\n\n🌍 رئيس الأركان دان كين يؤكد أن أميركا تواجه تحديات متزامنة في الشرق الأوسط وأوروبا وآسيا، وأن الحفاظ على التفوق العسكري يتطلب ميزانية ضخمة\n\n#إيران #أميركا #البنتاغون",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:57.421Z",
+      "expiresAt": "2026-07-23T22:42:57.421Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:57.421Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:57.421Z"
+      }
+    },
+    {
+      "id": 3513950330,
+      "postUrl": "https://t.me/nanafrica/38155?single",
+      "source": {
+        "title": "‎أخبار شمال إفريقيا / Northern Africa News",
+        "handle": "nanafrica",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/kVKvOu-dDXtyCa4PYrerOPcbt8YDTZoei67axF2Z-n-dbjYTkin6RteqPc1xPeb3WT610xPAg5pELKrfn5G2cNPeRFo8T_7EfeVNcPP6fNkkg0caBbAG2EH14kod3m2OIbQmzmR0W8KVeu0eKI6lp5W74TCOcf6r_doBq3_hhPyAgMwIxYmeYROPtKfNPmOMW-C3RmQaN2TY8W6b_B3PE4v2_d6g6NjB8O2i_pikm2zwO3TTR8TqAnYP-BPxKKdDR-OfoDe7YIJrAvX2hFZU1YFTxKgWAQ9cRdXdh0lc0h0NoWiW3RnWzeT_QHsWKMz_lRBL-zpWy2sWuJcI426xoQ.jpg"
+      },
+      "sourceId": "eg:nanafrica",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/odjbcD5nef5j97eT2SKRlIavxVKBcJJl20c-jlMREVa8ahSB4pVCSgBC-BbdzuNBFFg700KFyZa7b93BNOeGtv6SziP_b_lLN1W64JvmsrM9u-T1JBJZRbS1p-cyAsUWMaXWSC2fnISoVWW8KzL-fbg-KJt-M_6I_Vyk1fyAVrKu-ks6ldMHryuN1T_7zrESRHtuJLbPg_cEsKxHIZbwHE_DkiL2rqDz6_9iy07LeINrkRR-rYo_Zg28aOHZbRYSYpOVaTk5ka8YvDuv8FnkGgKLF09qTYmmdoYHOU0XpZooWV9e56lDKywMp8U50Iq0tvWntCZ3ZlCANkdtzKHOSQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🗯 مأساة بحرية جديدة قبالة موريتانيا.. 144 قتيلاً ومفقوداً و387 نجاة في أسبوع\n\nأعلنت المفوضية السامية للأمم المتحدة لشؤون اللاجئين، اليوم الثلاثاء، وفاة أو فقدان 144 شخصاً قبالة سواحل موريتانيا أثناء محاولتهم الوصول إلى أوروبا عبر طرق الهجرة البحرية.\n\nوأوضحت المفوضية أن ثلاث عمليات إنقاذ نُفذت في موريتانيا خلال الفترة من 14 إلى 18 يوليو الجاري، أسفرت عن إنقاذ 387 شخصاً، مشيرة إلى أن إحدى السفن التي تم إنقاذها كانت تحمل جثامين 143 شخصاً و38 ناجياً بعد بقائهم في البحر لنحو 25 يوماً.\n\n#موريتانيا #الهجرة_غير_الشرعية",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:56.580Z",
+      "expiresAt": "2026-07-23T22:42:56.580Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:56.580Z",
+      "tag": "news_all",
+      "tags": [
+        "news_all",
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:56.580Z"
+      }
+    },
+    {
+      "id": 3280118616,
+      "postUrl": "https://t.me/naf3_ch/2867?single",
+      "source": {
+        "title": "🌴 نفع & استنفع Ch",
+        "handle": "naf3_ch",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/dsb4TPBE6SYLLeBSIKPrjf_k7F6RNJkMlqtiiAdnhyx0lMLTyHmnQ3FiIcRUXUq99hvQvJ0OvbiQO9TtHAWr_EjQcqhx3HeLW-oMQ7YI5egBapWu-FmreWxMSJfku5ltmnqI2BhxjvhRjaEP4l4_eSz83zBKpfmtcwZV9EQaJiceoUsejbB371rt01AVETzfeID9CWM1OjwD8WtMtfQYQP2WKQDZXlmBcZw1l8xrU_5ylFc6-wm0dTdaQQ5Q30uJJ21ttXXr8WSd0pEzQAUWCDYmeLJ-dy_w6iz0vYxHx11KqRFW3hmxvGzTBabBSPZkxlBymNB9Q2U1U6_qnv75YA.jpg"
+      },
+      "sourceId": "eg:naf3_ch",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "﴿ عَسَىٰ أَنْ يَكُونَ قَرِيبًا ﴾",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:55.548Z",
+      "expiresAt": "2026-07-23T22:42:55.548Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:55.548Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:55.548Z"
+      }
+    },
+    {
+      "id": 4126560505,
+      "postUrl": "https://t.me/n1nnnn3/51680?single",
+      "source": {
+        "title": "اقتباسات عبارات ستوريات",
+        "handle": "n1nnnn3",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/DdvVZu0l-vabdOhDy-15SrEX5Jvw0q7-8wxcTzRJSwv7tMk_n3XXceHSiZK0uykvpVupFwqRrBwkyLxaYtjGlD5gLrzQeKPiyh8TVRVtorO-2JKsWYcvDptMDwdtwPZ0kQRb_EjeKcgRQ9tpNXkji76rcof6ZBvYAnOrKApSeJLtmabKRFztOk2s5iLi61YDXQhjnU2YzOwvQK2UV6wj6Y47uD8vUmdO1UmOpj8R6eX0Ze9tKPZQqfDp45cY8HhSQPzyHKljDb0RC6xKtCGyXtQnie_v1aiZxG5VIC5C4_Am5YpNF2FcJdxNIOpm5jJEQANxH0jM69kp2NPw2XB8rQ.jpg"
+      },
+      "sourceId": "eg:n1nnnn3",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "لطلب التصاميم الجرافيك دعاية واعلان \n\n#تهاني_مناسبات\n#دعوات\n#اعلانات_تجارية\n#تصاميم_الجمعه_لمحلاتك\n#تصاميم_تهاني\n#كل_مايخص_الدعاية_والاعلان\n\nماعليك سوا التواصل معنا \nوتساب 👈 https://wa.me/967771710563\nاتصال 👈 771710563\nتليجرام 👈 @zoamn\nوباسعار مناسبة جدا 🫰🏻\nالمصمم اليماني للدعاية والاعلان",
+      "links": [
+        {
+          "label": "https://wa.me/967771710563",
+          "url": "https://wa.me/967771710563"
+        },
+        {
+          "label": "@zoamn",
+          "url": "https://t.me/zoamn"
+        },
+        {
+          "label": "المصمم اليماني للدعاية والاعلان",
+          "url": "https://t.me/ho770853"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:54.736Z",
+      "expiresAt": "2026-07-23T22:42:54.736Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:54.736Z",
+      "tag": "telegram_all",
+      "tags": [
+        "telegram_all",
+        "telegram",
+        "telegram_bots"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:54.736Z"
+      }
+    },
+    {
+      "id": 677311997,
+      "postUrl": "https://t.me/mr_trading000/7404?single",
+      "source": {
+        "title": "𝗠𝗥.𝗧𝗥𝗔𝗗𝗜𝗡𝗚",
+        "handle": "mr_trading000",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/uWpu76Z7mg_ZH-LFywpcFideTtGZ1B7nMRaXbbU4oB9Ccitzfkifh68if4hwaWcBDDTNz5gVsYXoLB8xjlckrQXSLMpOmsQ6InHeN6cqu5omgE0b_99U6yj-1YKq190B8uxCs2X3LSVEMNu3-ER0gOdqbKF7Lkk0N3gFV-eommX6XvO8vY2ZqjSO4Cn2g_K1xptvFmjW10Qf4LeNWXcC-7wYHe_4hrUD_prHLmRM5FK_uhN8YVErnYvVLi-mnjLmdcZEQoBscgCtXkYQonttoGfnSlu29Wto4Yhsqf_OFs1nv3pYHuEcjTv_OW73B8y5-28y9VvjPQ3Y0b77PjOMDQ.jpg"
+      },
+      "sourceId": "eg:mr_trading000",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "440+ نقطه *2=880+ نقطه 🤑🤑🤑✅",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:53.901Z",
+      "expiresAt": "2026-07-23T22:42:53.901Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:53.901Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:53.901Z"
+      }
+    },
+    {
+      "id": 3647121382,
+      "postUrl": "https://t.me/mi_raculos/1505?single",
+      "source": {
+        "title": "حلقات ميراكولوس | اخبار 🐞",
+        "handle": "mi_raculos",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/o73iNWbuIw0azwqlDoYpyTLUzDnfFhzqhWDEo6-RN2c1DXd9gIX2KYKlFDmHJDAsv_ZO0C63h3Ke8Aa4JdE2bYmbbigIlWM4M6jKpnFN8DgzIPtC72kxzgb9dO5bwv5I7TyQmGT26wSZKZuXm0LdzJ1S-nS4LoENay2pdv4m-S5BV_1M2D0McR0e5kWqtWjP1Bb4pTgqG0Boiwc2uiFV-w2gK76Fv0bkjBGZqmJ8Op8aVk6ac5z80exgZYoABMIixaqDlYjDahrT3RRu6qZwQ0Yn-ko1IFTlend3EFAgVDeBeNak5SHI6cdjcLjo4Up7xIo1zrRClSO_sccswuOlYw.jpg"
+      },
+      "sourceId": "eg:mi_raculos",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "🚨 | ستعلن قناة \"غلوب البرازيل\" عن \"مفاجئة\" الليلة عبر قناتها، ربما بخصوص الحلقات الأخيرة من الموسم 6  🆕\n\n- • شاهد جميع الحلقات من هنا. \n- • القناة الاحتياطية.",
+      "links": [
+        {
+          "label": "شاهد جميع الحلقات من هنا.",
+          "url": "https://t.me/Miraculoous_Bot"
+        },
+        {
+          "label": "القناة الاحتياطية",
+          "url": "https://t.me/M_iraculousLR"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:52.951Z",
+      "expiresAt": "2026-07-23T22:42:52.951Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:52.951Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:52.951Z"
+      }
+    },
+    {
+      "id": 4056098,
+      "postUrl": "https://t.me/medmannews/42613?single",
+      "source": {
+        "title": "Mediterranean Man",
+        "handle": "medmannews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/tAU8TPDFx8GfrhKksNHRGu4pl8bqVZwTaJFhfg1qTnPvngat1XvxC0u9f3WcdIFf569-jfb2PUfqlKS6YY6eqk07M1HLBOX8dvlwWuWB7aSbTouoUDlR9j8K0El215vz65bZ62vBr9ouxLPvYHCeGUK5EaNKs9wv6o4h0zvWXPsLDSQvDQ8a0Z-jU_FAewRWlU4Ruk3inlV2-lrl6aMTagiv_9bhGmNNRKWiiOpTz85p8VWPXwF88jPHIxqdNBvW8cUnmyOrGUS2iUvAerp2r8018UWtkr1wyAEcWGVAB5nK3SARJ44Z_DlqrHqJ8BHD35ibw5tTQ1uJVuu332Hb5A.jpg"
+      },
+      "sourceId": "eg:medmannews",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Ya Allah bring medman a wife.\n\nAmeen.",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:51.885Z",
+      "expiresAt": "2026-07-23T22:42:51.885Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:51.885Z",
+      "tag": "news_all",
+      "tags": [
+        "news_all",
+        "news"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:51.885Z"
+      }
+    },
+    {
+      "id": 4131058185,
+      "postUrl": "https://t.me/life_in_sharm/5607?single",
+      "source": {
+        "title": "ЛАЙФ ин ШАРМ☀️ Египет Шарм-эль-Шейх",
+        "handle": "life_in_sharm",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/Kitr799iVCkp4I9wvtUOkcv9PR3aR-v_f2-7a6FcyqteEAIyRckX1s0qQ1_XVr7iwCyqcfhD36n0-mBlQBlalgmdvZGe2Bxcsk0S8fXAK2Dva1-T1Mwk69hT_j9L6WVbFmPS_6xurhMM4AnzjzxVfThZC4MSdvliV0yapo073_bcZQlSD5fpkvmkMwYl45lXulNNhpccqM_sjWJ0xXairsKvKeU1dz6Ej1wbadefJS8ZBXJbtZLrffBIAZEmLT62Mom_9VpbY3DcBQM7SRpc5S3dHBR3v_gJqluxOCw0Bx7gEh4NcaePy-6RHLCzU92P098MW1B413pq_qhHA_Oh_w.jpg"
+      },
+      "sourceId": "eg:life_in_sharm",
+      "sourceCountryCode": "eg",
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/FGmB6FaORhqq-IudLvbtYdr4wPsdFKwbEenUOSM2zxSH4rSUxDRACzAWdKXIRyYWz4xsPPKAxL7N6_P4eXTyeUDQZ5QkOqZ7Yy0Jy6RnNTtMIgrgWSsaX1b79MvgJL-MPtlz_MRiHyxHlvIynIMUqoNyOAu62VBX1ocC7EL3L-af4O4lhSBwIr2EvFsuaYIavx-f3ydCubSgPgOz3Q5aP-QLRctP2NsZILqdDVqCDzGwQwzVuEPmOWwmic1jaaWdvHVH4o2CvXeZ1IgehnkMLyvtEpbjzcXIJDcGpMvDQQBOWfFEdyGpSMegxytL8QxRoQidIeBujIH6fmPD1jZbRw.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/TkrIANwHCZ4MIMPN7TRu3pbafpkOk87dPbg_ZMYPkTmRgm7WsRhvDZhyugJiOnCL3q8B0qAeC7hlW1JFDRU2Nw366qM9fes8RRzuAhdp7JRNNd_602Bk4CExRHsvQzycgm-B5ONnwhkNHRFxsIQosLj0QSvV7BCaeNoHreHhyEAnZHN4HzmRBEI9_ikYbaNhHJ2vyiIRY5R_VTZ1avjB2ta-a_mK8Z95l-nIsL3bM2Re9nlW8TzoGMz2X5R1trlW0qq69siqThemc3lD7ocwPT3b_13z8stqQ05p_U-kkyxbB-fU59iENqHMGonLLx4U8ySS62mW2mSKN75TIZGq6w.jpg"
+        },
+        {
+          "id": "image-3",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/aCkJgZw0RZN3_2FEkJU42G-2ThPX8b23ErMA0gA652niXt2Bynteztvt1SRRI5U3bRiReJfYRrHpqnCRlw66ZwYyEx7RHA5z83dGzBDvYtJtXbg4bQ79mLJFlmJjX63RjcrRbWyMZpPqqbMTVO0qIUSk9DUC9H6SwG6TNm-hmTAQH60pwqVtWhtcdnJsaDgCr3iu6lg5cEoHnpvCTXpl8LW3xHE2BVr-REZEd8TC5SKdXIRjdrphWt4ijqoQvuQTkN-hYzJ5nn_HcGZqOD1pSrDioj5YJZx78QtPgvflHSqoNIG4FTUcktd9VWdXqEs1nU5igFFgM2NG3sRIsDCrCw.jpg"
+        },
+        {
+          "id": "image-4",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Jg9eeAv_vIUZIQZtWNpAzygZVoEJOAHVdNl9eqrszQbAu2kLWFyGfpGoiuzgYjF6s-jpAnXjfz6b19aNwUFg02jS1yWKgH0W5VJGVDcwMas-Wl_cwuoQafYc1uq7D1RJcS87j8RCJu0OZzmsXswztGxBSkGdAiGz7FS3u-_RIY8cR2lB4mIObt8f-PxFDbLy-FSOkfSI_UQ5EkXSeZcibX-6sazL89nS6JCOA9eF-PRHU4ta052303z87gUmjPGFOHhE_ywUkIOKQsniiYoY5ve2VC7nEFUVw0Dcu837krlpFTEVJUjIJinnc0Rvg8byhIFM__yaXKO83ZjTgRiTxQ.jpg"
+        },
+        {
+          "id": "image-5",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Y4GSN5FS4YWUR4AeOEkxzdP77l3eFX6v2fTUrdhkb2el3Xo1k-jsEeMzpxx1xBZ9THuuVbZzsnbMhOu6WrpBt--j-DZ0tg-XgeOhRs60vxTBndRltbUHg7SdOqc8bn7ODqJYpBsR8sbIX_V-XgW53P6JFypHXP7ySvHBF6Qvg2gjssOzjVqMzPgY1eMMfZe8hiaN1QsIYey_-m4aTkG7eEwD5LeZeGMlNaDoIaclCTm1xY-_bZN9Yg1xiosSFHiuldVOj1LIp92PI_GiUuJJ6uDcutEazWqaVkxCsXRCeSHriSSTM8sYceGi23s13FIKA0GNsRp_h2hakRTVFRlK9g.jpg"
+        },
+        {
+          "id": "image-6",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/UiAacQ2zkUv7BDquPBrhcXhRgfwaVOse8Lpobdph_ldvdHILPblE7IoXd5-2fY7P6HRe-GdvHe6NTcCs_KLF-02rZfEoDfoD4wKcMYmFeSPYhGl9da3vOScGvTc8UX2JVDwlTsnXO0sA71uX5DOumf6TuNOkyM7FltHnyxU_swdn6xN25DOidl9ULajYz30_ZWQl-kgtrgf-i0SeUA40WCAMJBxfPXHrfTh940WjmyQWTc1ROWFbxHRudfgEKb1K5CAZrXNzaN4ld5AvKHdb3xvCn0zU-Ag4KM428tGpaNCpKfwkcy8XpYA_DOz2vk1mIIrh7v3RWvmwd8uKJXdu0A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🪩 Афиша на сегодня, вторник, 21 июля\n\nBeach club Kalimera\nFoam Party \nВход 1500 ф, 23:00\n+201202168888\n📍https://maps.app.goo.gl/joAD3i78AbNjeS7h6\n\nRed Lounge в Taj Mahal\nTuesday Night \nВход 1000 ф, 23:00\n+201228220601\n📍https://maps.app.goo.gl/8hrfE5VGRkCWEu376\n\nHard Rock Cafe в Набке\nItalian Party Chefinimondo \nВход 1000 ф, 23:30\n+201061665103\n📍https://maps.app.goo.gl/qAwXkaKRBRYWxz4fA\n\nКлуб Vibe\nKekka Briganti / Atlas / Jamaica \nВход 1000 ф, 23:30\n+201001614504\n📍https://maps.app.goo.gl/1ZL8oxczpwuXtLsB7\n\nHard Rock Cafe в Нааме\nLive music\nВход свободный, 20:30\n📍https://maps.app.goo.gl/pzQ4PhqRyibuG9oRA\n\nSoho Square \n21.30 - Шоу масок возле фонтана\nПрограмма на фото\n100 ф включают в чек кафе у сцены\n📍https://maps.app.goo.gl/sBZtJQmeWsjXgpis5\n\n#афиша@life_in_sharm",
+      "links": [
+        {
+          "label": "https://maps.app.goo.gl/joAD3i78AbNjeS7h6",
+          "url": "https://maps.app.goo.gl/joAD3i78AbNjeS7h6"
+        },
+        {
+          "label": "https://maps.app.goo.gl/8hrfE5VGRkCWEu376",
+          "url": "https://maps.app.goo.gl/8hrfE5VGRkCWEu376"
+        },
+        {
+          "label": "https://maps.app.goo.gl/qAwXkaKRBRYWxz4fA",
+          "url": "https://maps.app.goo.gl/qAwXkaKRBRYWxz4fA"
+        },
+        {
+          "label": "https://maps.app.goo.gl/1ZL8oxczpwuXtLsB7",
+          "url": "https://maps.app.goo.gl/1ZL8oxczpwuXtLsB7"
+        },
+        {
+          "label": "https://maps.app.goo.gl/pzQ4PhqRyibuG9oRA",
+          "url": "https://maps.app.goo.gl/pzQ4PhqRyibuG9oRA"
+        },
+        {
+          "label": "https://maps.app.goo.gl/sBZtJQmeWsjXgpis5",
+          "url": "https://maps.app.goo.gl/sBZtJQmeWsjXgpis5"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:50.617Z",
+      "expiresAt": "2026-07-23T22:42:50.617Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:50.617Z",
+      "tag": "recipes",
+      "tags": [
+        "recipes",
+        "food"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:50.617Z"
+      }
+    },
+    {
+      "id": 3462309784,
+      "postUrl": "https://t.me/kingxauusd110/19455?single",
+      "source": {
+        "title": "KING EL GOLD 👑",
+        "handle": "kingxauusd110",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:kingxauusd110",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "لقد أنقذت 2000 لهذه العملية سيدي",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:45.849Z",
+      "expiresAt": "2026-07-23T22:42:45.849Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:45.849Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:45.849Z"
+      }
+    },
+    {
+      "id": 3211555929,
+      "postUrl": "https://t.me/kero_875/79596?single",
+      "source": {
+        "title": "اسئله امتحانات مسابقات الجهاز المركزي للتنظيم والإدارة",
+        "handle": "kero_875",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/SUGb_rcLO-nyAM0v2JQwHtssHzpytzm-9SCIQ_9uH0O7UKz6pjeiMxVjOGQnuuRCkjeWmOdE7yOk9gpNEGOJXIs1DGttrAzx_sC6wtLYkVsLb-abUKhvB_2Q3liYSAQ-CAu6vJ451ne8p5wlyTVqkIlPQTFJCgZ7U34_DTgpvnIZW-6RsBlBCJbAUsDFboxIwGkvrKBnSuSbREAUnw2vnfdUwSzhF8aF6HZQw2ZIyO9tg9mRE0Z73sly3Z3877UabCgVnNDzxFRoeq-8emjws_UCayM4aWCRbFBDGMEw7wrvklixEVRE9u86VjqOnvug7TtqCTFlrCplmgjwit8Zzg.jpg"
+      },
+      "sourceId": "eg:kero_875",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "✈️ عرفت تعمل المهمه دي ⬇️",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:44.871Z",
+      "expiresAt": "2026-07-23T22:42:44.871Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:44.871Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:44.871Z"
+      }
+    },
+    {
+      "id": 2355419789,
+      "postUrl": "https://t.me/hv_ty158/1148?single",
+      "source": {
+        "title": "مسلسل حلمٌ إليك",
+        "handle": "hv_ty158",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ijhZJlLJG8li6sWuMqXPj_VdvyQ21C7lH_Sn71_YQKCZ8eb5wwuuHEQqbuzEv43AjTK8IR-rP2brwU2ddt60IoB6lYAHsC7aWpgeQZUX5IriVR2UrlTRQzBrlefOktA6AT8bJnwkuFUeLbh8IDxaGj0EKRhQAs7127S9qXRcJ9QhX3R33hHQFM9RLjvVxhxj1EpPj7LqAlT8kq5zrJTaMgoct4L87l3k44XUiTOkLRooSL_C9-1CVcg5NMfp8_IzuWViZ48TCJ3XZB99VMu2S-XcqXhpDQRz63KVYcnIRb-wT8HxVcbnqCDzlxRtJVHLsmqGRvl6irXR1x2f0WCUJw.jpg"
+      },
+      "sourceId": "eg:hv_ty158",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "مسلسل \" حلمٌ إليك \" الحلقة ( 03 ) مترجمة للعربية\n\nجوده : متوسطة \n\nشارك لأصدقائك ✅",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:44.024Z",
+      "expiresAt": "2026-07-23T22:42:44.024Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:44.024Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:44.024Z"
+      }
+    },
+    {
+      "id": 1171248251,
+      "postUrl": "https://t.me/hadath_now/33711?single",
+      "source": {
+        "title": "الحدث الان",
+        "handle": "hadath_now",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jHs1pw-zMeDoMdyy1A-2BCAYUMIudh_6m3PRTACDJEsidMrWj04L5AaHC1JRhCmw0XvnmmthJnu2N6z1wltE-Zol_92Vf_AKR3ZJdBG2ZcgUUsjRlitvSYgQbBm1m1dPNAxewit8IE2zpeqN9Oi1LZb0pkOcI8qq3om9rHJLSFEXbmUPRjsXIl3F6Ah2N9WreDsLt2KUO5XUouO8c9Xr1v6UxIh2OtlKKhZZhQI99rdF0XyOUgYTbLM1bHmGy9aTA_BoR39_bOfVU7h5vzjxoztwcEwHASH56sRyAvF77vkTucWQ2eiqcUpuvHqLO6vh3JkvvcNwRWKNbjBR-hdEDQ.jpg"
+      },
+      "sourceId": "eg:hadath_now",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/KoWwHSXnK0EH936DY4VE-6ZgnnwwlrGqsO6Ai2IuU7dUCCCIxdQUVhfsIh86gD_63GnvSCdSXkdiTx5C7oeEBQWp12zuAKrCWmhuEJJ9e3p7xnjix9R5A-6ItgvDe_5ZEX8y9i3YFl2d5VOV4CGYqoARw1exyxKFjF_kRIzoP31dNt9B46wu8KY5sbSk2v2vKyGp_ownDB-tFSuu2VfQEM-Btmn8uvH8MEPaMTq75-54SarUw_c4eQA1ccB__iJRJfuhZae-gwfPNvSPFGNpGija32eYaASyouS_ORLK_opXfLn5pQS2YYl50YmYH1xCMxxUZ6gFc9rd6pHjXPSY6Q.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "احصل على تصميم فني مجاني! هل ترغب في تحويل صورتين إلى أعمال فنية مميزة؟ 🌟 الانضمام سهل ومجاني! أرسل لي صورتين وسأقوم بتحويلهما لك. 👉 انضم الآن\n\n#إعلان 📢 🎯 إعلان على تيليجرام خلال دقيقة",
+      "links": [
+        {
+          "label": "احصل على تصميم فني مجاني!",
+          "url": "https://inside.ad/+zq3wRV"
+        },
+        {
+          "label": "انضم الآن",
+          "url": "https://inside.ad/+zq3wRV"
+        },
+        {
+          "label": "🎯 إعلان على تيليجرام خلال دقيقة",
+          "url": "https://t.me/InsideAds_bot/open?startapp=m_-1003780260047_utm_source-insideadsInternal-utm_medium-signAdPost-utm_campaign-trade_fast"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:43.131Z",
+      "expiresAt": "2026-07-23T22:42:43.131Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:43.131Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:43.131Z"
+      }
+    },
+    {
+      "id": 565331574,
+      "postUrl": "https://t.me/eliitrade/10306?single",
+      "source": {
+        "title": "Eliitrade",
+        "handle": "eliitrade",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/UeiRVGjZsENUFwZ9uJe6sMu_ur1Z3kYk7SbdZciac7u6jLzbfzRo_vBc4Tpe8Wi43G56dSBotrLVx1227CJI4Lz4Rjt9-NeZ6rpCBuo77sgRvKY87Lu9uc5NvbMBEqV6wDXSlbKGz2y0ZbXszjV0CKjOAMxQDtgtxojJfJfnVfP7OYjao5rPEGJtEVUaScVXRTt10iqBrUakcqhGe0Qg4jRsCBRQxha2lLxJdbj18guU9Y5hXiSTSS7FQdw4or9EeoWz-jCNFxQMFd2yIWW_0Bfsz_94L08Q0dRXhJw5egMDjSS2tplmmSScPkHJWCamALErGga99DBELo43zjSDdQ.jpg"
+      },
+      "sourceId": "eg:eliitrade",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "Reeeeeng 4073 Sl4083 Tp4062 Tp4055 Tp open 🔥",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:41.731Z",
+      "expiresAt": "2026-07-23T22:42:41.731Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:41.731Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:41.731Z"
+      }
+    },
+    {
+      "id": 4252098620,
+      "postUrl": "https://t.me/elhaj_1999/374?single",
+      "source": {
+        "title": "Pronostics",
+        "handle": "elhaj_1999",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/vlp6r_3u3M-BhxlNFUwc61wBLbHfh8_JPZV5jnHAJ9RWMMEeY1VDiWXDpQWPofU4aPF4ZLmJskwiq-yW_vCADmSw-4JkSZNL59LIacD53hmOqziCPYQuHUNd-aY2Dla0m9sbp95IV2hDAW3mxAKeizlje-zkQmWiX7p03mLWbhtJhlqLpOmpoYB7vhx4sPQflIsMziZQ8Pui8SHRdheQsHB6AJ9RAfRdZFm_VX3gACO-oLMk4KAhGp6xQ5XbDMvwpL6oRqwqKyX6UnPg7jR62dj9s_GHuVGbV4mhYU9utKB_hpMZZRBnB4rtyvqWzC--wcgUR8Nn___4l9tZwQ-aPg.jpg"
+      },
+      "sourceId": "eg:elhaj_1999",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/sTKKYCiw5UQMlzxYDUAiVMKUlpal2LZ5f9KU2HotYZOWRjNi-5hU7zhaDRSi5cPazjoNC_Tifej_ZrD3JsNWuIoAMxdJz3q2Zf8GjNwz6Ywtj2tEicaz_s1xupB3favlS3aC5YLmBl10SH9BFOEWqgswJbFHM3XW1l4q9uIAQOVIgdxJupl8MQrEHLvDu0_O1SFwopgiCfpzEWyOjA0fdyA3s9_deNU9KPiniwkftcUXO6W_UJaAOUr45TC1Df5ZdZyJQdO5jKQcK4r-bTRSo5xI1qxv5Q7Q06LBHluzeiUs7JHQK-2n08ct5zFtMMKSFReBendZgJN3m9SC-hiQ2g.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "Thursday 25/06/2026  Free single   15:00 Grobina 🆚 Auda  Total odds: 1.38  Bet Responsibly",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:40.874Z",
+      "expiresAt": "2026-07-23T22:42:40.874Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:40.874Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:40.874Z"
+      }
+    },
+    {
+      "id": 4203260546,
+      "postUrl": "https://t.me/deals_trackers/13840?single",
+      "source": {
+        "title": "ملك الخصومات - Deals King",
+        "handle": "deals_trackers",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jINRtRdCTDFUwgOap66ypOASeStgyKN_D8DjowVGxe61uMRzloJlcn1KQbzl-wr_9wtQtTN3vi8027tbfnmuE0GR3m_gF5n02By65hIglxSnjTl3tgGj9DeMc6vLS1cUD_Ls_I0ab6EBsD8Zj_AEOp1bv9M7QG-bueJv_2sPa6J-D4GnOb2JVK_tCcpgwx6GuTTFCZPUlGFS2sWwflTIXFMnp3MwfrB_ChC7M8SLdqD5OysHgXXlSrAsxn5UmH9HO29CSExbvFZ2EVastyKqmQ6UO3qkrKPE2R1zIBXi9FfEbUZrC0wOsyn1CYBhSMW-cyNBNFqsGSX3co8QcZuU5g.jpg"
+      },
+      "sourceId": "eg:deals_trackers",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/t-4OX4UVOe_6P1ZikWfMW0YyWLeUCyjK__R-aORVV9m9jkNQfBy8JdpbF6X8LTt9QZb-ZkFXSWUx0Kvz4pxLNIPnOK3zVrZXoa_SzTQlCB9GmMNRh-bGMdrbGAuIBF9E2ZciXk0S7UAyml996PqBdQ6s1xuCpEVOPVV6Api2YxDVaCT8nne3msPGWHOSJUWC-hARn1-NzoxOAPPkx0gPHrAb5o2MnZzzTrmiHD74zaERtH99spt85GiT3zzrzvrc_DzipecYUpHorEpt2m_FF-0Z_L-HVEKxCBRESMrtOF0glljO-ZKGmze5h2dqixW8mYAzkPcS6fHTc4oR5NsDtA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "⚡️ عرض على بلوزة أساسية للرجال DM 119 S/S22 من دايس، 3 قطع\nبسعر 345.00 جنيه فقط !\nللشراء : https://amazn.im/s/QZXsSM\nمتنساش تشارك قناتنا مع الاصدقاء\n تابعنا في قنواتنا 👇\nتابعنا علي واتساب",
+      "links": [
+        {
+          "label": "https://amazn.im/s/QZXsSM",
+          "url": "https://amazn.im/s/QZXsSM"
+        },
+        {
+          "label": "تابعنا علي واتساب",
+          "url": "https://whatsapp.com/channel/0029VbBlEpPBfxoFAfAyU31f"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:39.380Z",
+      "expiresAt": "2026-07-23T22:42:39.380Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:39.380Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:39.380Z"
+      }
+    },
+    {
+      "id": 2781209252,
+      "postUrl": "https://t.me/cartondisney1/1103?single",
+      "source": {
+        "title": "افلام مسلسلات كرتون ديزني بالمصري",
+        "handle": "cartondisney1",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/jq_e19xOrq4XLIzHaWGf4pqpeDuEpkTLQQDY7F4eDGYVGNcBzokxOS6apuxEHsXR0huENB9hQigjGyEFafauXn0tKdFdVhr5zPdb5i9lKp4bM8gt9o3T2Kt1EcS3NbbZrlbpqrJQjzoq1DSlgqNW_V4Iq6L6B7z9dmBogNee2MsGr_Cz0drBuu6I8PApw9gSez85i2SR43HyuepsiIPbmy4DlRCpBTLztzXirUIK3DEYX8CfynTKsKo5vwvN2WwbTl6ROUZWjQWRBRgeHzZdTVdOOb17OMKO6h5i_Cd8mwXsCNphWWdqy-tUbxXdila9PcMIPucfH3pIIOhGyfjJCQ.jpg"
+      },
+      "sourceId": "eg:cartondisney1",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "طريقة البحث 🙈\n\nافتح البوت وروح إلى أيقونة العدسة الموجودة فوق، اللي هي خانة البحث، واكتب اسم الكرتون بيظهرلك في النتائج...\nلو واجهت أي مشاكل، سيها في التعليقات وبنساعدك. 💙✨️",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:38.055Z",
+      "expiresAt": "2026-07-23T22:42:38.055Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:38.055Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:38.055Z"
+      }
+    },
+    {
+      "id": 4231235656,
+      "postUrl": "https://t.me/rassd/199069?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/74995aad63.mp4?token=BWKsEeYnMufQlSc1VVzBmz8p-EhGiWVdpyS_ziGGjRkqBTI9iDSTLH4dd_yDvl6eK6fFqrjG7E3owGXhcXM14VJJhKzcwns9-hhuJr_QlrxxPpPVcCHFvBzLUNHPPHNnMbgmS_kpAl6uBt-TnkYfbWXlEjOsaiuksF0nboFvI20kUiaxYQky6wgHS31Vypo49meJIXYEcpMCTzHahxURtJDpPhH_wtk8Q4DAguij4-EO-FfFipM_gPVtEDv3HbxAk4_XubIAM9AvIQz8DWHnTZyoUFsxQkCCIsxKIvQb-Eq_o8J0nKv4IymX3pY2OaACyCFez553uqNCc3x_yBRlVQ",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "عاجل |  مصادر محلية:  مستوطنون يطلقون الرصاص الحي بكثافة ويهاجمون منازل المواطنين على أطراف بلدة ترمسعيا شمال رام الله.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 684740603,
+      "postUrl": "https://t.me/rafahbordernews/11409?single",
+      "source": {
+        "title": "🇪🇬 اخبار معبر رفح - رفح نيوز🇵🇸",
+        "handle": "rafahbordernews",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/k-_aWwIA-wWjkEQu9ldAPFMKIy4tiDa7QVoY4aDskQhvo2_nNco8Tbav5NYmNCbGJqbLvB-c9DChenlyLPTllRV5m30B1xbbwjSlLfktKPH69vXDdfJ5pbtdNg-NY0SGsyYQ4AVTWWMY7mWGF0snluvEh4UyKPQ7seNRrtNpKHn1clkc6Rzk-EjDwBaIiTlQtYuyJP4A0P-cJ5jwtmzlV-8lra6zo34Vqe6Lh4_XLRZ84BOHJ6ocecJPTHWS82FujnW_2NS3lElvgyR76NKUNZOV3X-YG1yo9Ra_3KemtlRIknh6-649XFOloM4yoMQ9A_4YjBwnYVeHyeELk48TFg.jpg"
+      },
+      "sourceId": "eg:rafahbordernews",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "إغلاق معبر رفح بالاتجاهين.. تفاصيل جديدة تهم المسافرين\nتفاصيل الخبر👇🏻👇🏻\nhttps://rafahnow.com/?p=50773",
+      "links": [
+        {
+          "label": "https://rafahnow.com/?p=50773",
+          "url": "https://rafahnow.com/?p=50773"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:59.877Z",
+      "expiresAt": "2026-07-23T22:42:59.877Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:59.877Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:59.877Z"
+      }
+    },
+    {
+      "id": 3956100908,
+      "postUrl": "https://t.me/ngmsr/14519?single",
+      "source": {
+        "title": "نجوم مصرية",
+        "handle": "ngmsr",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Gtq740cANcL0p5Zyn3pkgAbq0Cs6uBxLcmBnQHPQQvJ9CfjQD5ZlbETtRnMEdVca43BKXivOXiq3O_fP4tKMCAfXQROOMMaJPCTx_cFGoR0lBUXg2CRrKwW3s_45A8-NgHT2iag1NqkI3oCIXvGrmWKaK_5Msf81GxUolnHImpn2RWQX4u4oWBHOSESz69TZDFR72evFv_rO_7bBPBjgDwTnicurBCmlcRrHIMC6JXJpwEzFMFsHAkehiQ8onHVPol-wMaOJQnAu1x8g_m7JwLbtHAJy77sGgO4-dLmIORN8yxpW8bJ3bJdDUZ-mFy1ajE09RVZXWwbbaszTavO5hg.jpg"
+      },
+      "sourceId": "eg:ngmsr",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/aK-MXiaAV3GtnSj-RYkzGJNjx4Biszl0gUWhyy4Y4og2O46mB94j6B4yq7SAfY7K9w-JoCH2p0g4gzIfbLXfMSGSDEJSRxRO-ombz1F0T7HYkjtHRx9hwrfk4iUIqtmkveYFUbcnJFtQPCqTkuit3eaGnMcumYpVDwpXjK8-KHGpH5W8Sbd4iPlG_O0w65Tad2MM23jokC-JMH5uYMN2U153f7I3l0Cwv9yVK60vpDXf8V_mT2Bey5pXzW8QAmGnljjUiD2RZWhKdmlblXXoGlvfJ2D2Lp1fkTamncDq8nTn6b5widZuQRVpZThe7SQYFL3Z8cqS8OZuIjuaL53GWA.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 تصعيد نووي\n\n⚡ ترمب يلوّح بضربة محتملة على موقع نووي إيراني في جبل الفأس، ما يرفع منسوب التوتر بشكل لافت.\n🛡️ مقر خاتم الأنبياء يحذّر من أن أي استهداف للمنشآت النووية الإيرانية سيُعدّ توسيعاً للحرب.\n🔥 طهران تردّ بأن المصالح الأمريكية ستكون ضمن دائرة الرد إذا تحركت واشنطن عسكرياً.\n🌍 التصعيد المتبادل يعيد الملف الإيراني إلى واجهة المشهد وسط مخاوف من انفجار أوسع في المنطقة.\n#إيران #ترمب #الملف_النووي",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:57.421Z",
+      "expiresAt": "2026-07-23T22:42:57.421Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:57.421Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:57.421Z"
+      }
+    },
+    {
+      "id": 2317246105,
+      "postUrl": "https://t.me/kingxauusd110/19454?single",
+      "source": {
+        "title": "KING EL GOLD 👑",
+        "handle": "kingxauusd110",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:kingxauusd110",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "لهذا قررت الاتصال بك لأنني أريد حقا لتغيير موقفي، أريد الاستثمار معكم يرجى مساعدتي",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:45.849Z",
+      "expiresAt": "2026-07-23T22:42:45.849Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:45.849Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:45.849Z"
+      }
+    },
+    {
+      "id": 4158243465,
+      "postUrl": "https://t.me/rassd/199068?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/647c111d8c.mp4?token=mLqrqaA3uqIRzNTn07K_FHl_7iTlyLIPwcbmLFQSaT3JMAW2qF_lRoXo71L01NK1fRUzubhCLsJ3mzrWb6ngkLDRTSnX8PA1JW1rwBMIfSMnOkpIXVydgCOpIz2qsL0V7ANF_HcL1oSoGC7BBGo1txuUlvvmnhVAq8nhCdI7ca1cPIBaQqpklhplzgkG_-RFPahdkgcEM1kDTVFlbzz2yiY6Vmr-NZpFs87rmXugp4PXlioSjGJkW7hdEE27iflakRwBu-wc4WYsTzF6cnBoOxgX03mx3VQNr24RkKtrIDwjG0Ns3j6K5-5fJd5KTKXdyZvW49QPvTAcuPV4Agn1qQ",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "قوات الاحتلال تقتحم بلدة بيتا جنوب نابلس.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 3142348765,
+      "postUrl": "https://t.me/ngmsr/14518?single",
+      "source": {
+        "title": "نجوم مصرية",
+        "handle": "ngmsr",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Gtq740cANcL0p5Zyn3pkgAbq0Cs6uBxLcmBnQHPQQvJ9CfjQD5ZlbETtRnMEdVca43BKXivOXiq3O_fP4tKMCAfXQROOMMaJPCTx_cFGoR0lBUXg2CRrKwW3s_45A8-NgHT2iag1NqkI3oCIXvGrmWKaK_5Msf81GxUolnHImpn2RWQX4u4oWBHOSESz69TZDFR72evFv_rO_7bBPBjgDwTnicurBCmlcRrHIMC6JXJpwEzFMFsHAkehiQ8onHVPol-wMaOJQnAu1x8g_m7JwLbtHAJy77sGgO4-dLmIORN8yxpW8bJ3bJdDUZ-mFy1ajE09RVZXWwbbaszTavO5hg.jpg"
+      },
+      "sourceId": "eg:ngmsr",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "يواصل تجمع عسير الصحي تنفيذ مبادرة «صيف بصحة» ضمن فعاليات موسم صيف عسير 🌞🏥  \nمن خلال أركان توعوية وعيادات صحية متنقلة في المواقع السياحية، نهدف لرفع الوعي بالممارسات الوقائية وتقديم استشارات ميدانية مباشرة للزوار.  \nالمحتوى يركز على الوقاية من أمراض الصيف والتعامل الصحيح مع حالات ارتفاع درجات الحرارة ☀️💧  \nخطوة تعزز جودة الحياة وتدعم مستهدفات تطوير الرعاية الصحية خلال الموسم السياحي الحالي ✨  \n#صيف_بصحة #تجمع_عسير_الصحي #صحة_وقائية\n\nhttps://www.ngmisr.com/?p=3862665",
+      "links": [
+        {
+          "label": "https://www.ngmisr.com/?p=3862665",
+          "url": "https://www.ngmisr.com/?p=3862665"
+        }
+      ],
+      "createdAt": "2026-07-21T22:42:57.421Z",
+      "expiresAt": "2026-07-23T22:42:57.421Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:57.421Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:57.421Z"
+      }
+    },
+    {
+      "id": 1369918142,
+      "postUrl": "https://t.me/kingxauusd110/19453?single",
+      "source": {
+        "title": "KING EL GOLD 👑",
+        "handle": "kingxauusd110",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:kingxauusd110",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "نعم أعرف أن الاستثمار هو الأفضل بالنسبة لي، سمعت ذلك أولا من زميلي في العمل",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:45.849Z",
+      "expiresAt": "2026-07-23T22:42:45.849Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:45.849Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:45.849Z"
+      }
+    },
+    {
+      "id": 1103538918,
+      "postUrl": "https://t.me/rassd/199067?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/afbb8b4263.mp4?token=DTFyabLO3cvwP1TK6kSC0ArUQ7FLO4iUByw7q3x3m9BpRWnpJLw1sTZ8alGee4ZK_XVODcCGbzdAuaWZx2-5jKe_qAmmS0BrUiJ3DaY_ZRPRqocUlTBJq8ZfUBwGTxhoX6iTWwAS7VlBGAhSVnQQUtfXoP_s404O3syAHnu2cWXtj9tkzPz4IVQr7WdJUgDzzitRLPqcSUjzILeP6OJQv7jCUEBaAVg1qd2GHOlHcdwytv7ODzJ17dYyXraahSzjHu5C0jQcdtJa-vReRMaRvmNnsjyRi0Hn5ZEVtJ3rWradBX7YDOKJ3jc9Iw1IcseYRjHpasXILSozs-zz8aSuwg",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "عاجل | مستوطنون يهاجمون منزلًا محيط حاجز المربعة، جنوب نابلس.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 2514735122,
+      "postUrl": "https://t.me/ngmsr/14517?single",
+      "source": {
+        "title": "نجوم مصرية",
+        "handle": "ngmsr",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Gtq740cANcL0p5Zyn3pkgAbq0Cs6uBxLcmBnQHPQQvJ9CfjQD5ZlbETtRnMEdVca43BKXivOXiq3O_fP4tKMCAfXQROOMMaJPCTx_cFGoR0lBUXg2CRrKwW3s_45A8-NgHT2iag1NqkI3oCIXvGrmWKaK_5Msf81GxUolnHImpn2RWQX4u4oWBHOSESz69TZDFR72evFv_rO_7bBPBjgDwTnicurBCmlcRrHIMC6JXJpwEzFMFsHAkehiQ8onHVPol-wMaOJQnAu1x8g_m7JwLbtHAJy77sGgO4-dLmIORN8yxpW8bJ3bJdDUZ-mFy1ajE09RVZXWwbbaszTavO5hg.jpg"
+      },
+      "sourceId": "eg:ngmsr",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/Ts5tzN5SsYV-u3M6ESwaJQGnuVIHA9CA0VFOr-xU-nXu5rjvts_53_3RYpnCnwKPrGOl8Cw-Uo_AXfLUYksM7vDpU6_R14AEEtatH0PvyGljzpKC1aGWIcBH4c5llUrFWaYVJoO32t21BYMahH_EX2Al2AMLTn4z7XN3KuT8IWoQasCvzHmEMcj8YlaS5UZkBMblE-obH57Nk7TIVwX0R-zWVVCf61VVL8xtgUI1iYg6Zm1V0XEV-E5Drw3z2HdK9p9Wf3jK7x0ca5ZUegtf2MGS4WyfnnB1OMsoBxT7S_N0yr_A5_E20DXufRzSttEER1K0sFXaxoneBq_bWJWgQw.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 نيران تحصد أرواحًا\n\n🔥 الجزائر تعلن وفاة 6 أشخاص مع استمرار حرائق الغابات في عدة ولايات وسط جهود مكثفة لإخماد النيران وحماية السكان\n🚒 في فرنسا، لقي رجلان من رجال الإطفاء حتفهما في غيروند مع تصاعد خطر الحرائق خلال موجة حر تضرب البلاد بقوة\n🌡️ إسبانيا تواصل مواجهة حرائق خارج السيطرة لليوم السادس، ما أدى إلى إجلاء أكثر من 1200 شخص مع درجات حرارة تتجاوز 40 مئوية\n🌍 موجة الحر الشديدة في شمال أفريقيا وأوروبا تؤجج اتساع رقعة النيران وتفاقم الخسائر في الغابات والمحاصيل\n#حرائق_الغابات #موجة_الحر #أوروبا",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:57.421Z",
+      "expiresAt": "2026-07-23T22:42:57.421Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:57.421Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:57.421Z"
+      }
+    },
+    {
+      "id": 2307658935,
+      "postUrl": "https://t.me/kingxauusd110/19452?single",
+      "source": {
+        "title": "KING EL GOLD 👑",
+        "handle": "kingxauusd110",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:kingxauusd110",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "أنا عامل مصنع الذي يريد حقا تغيير حياتي وحالتها، أساسا على النضالات المالية",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:45.849Z",
+      "expiresAt": "2026-07-23T22:42:45.849Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:45.849Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:45.849Z"
+      }
+    },
+    {
+      "id": 3779290047,
+      "postUrl": "https://t.me/rassd/199066?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/5f383e0b17.mp4?token=M1HN1afaMx6WbBnkFPrLHcqwfv_nRGXi2Q-MlZezhjh1GJh1psBFkDuUHxtX_Qi2wL-yNEqs_ie8W7oF6yJ9U-sPM9o_ABjCq12nMlrnHkaofPnyi_9RZYImJVRlr01u6dFxnuF0MlSEDjHiSF0rehtvyj4TBjoKJbqXYgYTNYOnuOM59FDtXXaVkWdBJJKek6R2F0gmMOX-qDHi4dop0tGwNEbl3sA0f67Y2uxow-Wf0bIr9n6y93yYzPGuZZ6zx1uc1qdADwifWUuvPgejvgHY-QOwzFkBcmv0ioQhGGm609z7v3xTBFTMpothJUIGw1sjUZ4TS9fqFFOgWYOFCw",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "متابعة: من اقتحام آليات الاحتلال بلدة قباطية جنوب جنين",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 1767501835,
+      "postUrl": "https://t.me/ngmsr/14516?single",
+      "source": {
+        "title": "نجوم مصرية",
+        "handle": "ngmsr",
+        "verified": true,
+        "avatar": "https://cdn4.telesco.pe/file/Gtq740cANcL0p5Zyn3pkgAbq0Cs6uBxLcmBnQHPQQvJ9CfjQD5ZlbETtRnMEdVca43BKXivOXiq3O_fP4tKMCAfXQROOMMaJPCTx_cFGoR0lBUXg2CRrKwW3s_45A8-NgHT2iag1NqkI3oCIXvGrmWKaK_5Msf81GxUolnHImpn2RWQX4u4oWBHOSESz69TZDFR72evFv_rO_7bBPBjgDwTnicurBCmlcRrHIMC6JXJpwEzFMFsHAkehiQ8onHVPol-wMaOJQnAu1x8g_m7JwLbtHAJy77sGgO4-dLmIORN8yxpW8bJ3bJdDUZ-mFy1ajE09RVZXWwbbaszTavO5hg.jpg"
+      },
+      "sourceId": "eg:ngmsr",
+      "sourceCountryCode": "eg",
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn4.telesco.pe/file/BM4Qi-0pI5Oy1AiPSC99U7j4a9FZ9wALlbpmDxo4uLLsK0gLZxrE-4Rou2iAFj52CgBVgLGPosYZEXe_85Kqy69fNhN4rJC-7LZKn2qZt-vvv-mAI6Ft9DHAKmU8DJrzqLG5_1r0RYSevaWmXTuqEcdIC2ru1NQbJy7C_fpFKCjlNx4XQf8GNiy9dcyOsR2VBfOSjsbGmfAokbnpBgxZUlnd2wAxqsxujDAg8BqN7gdn6GQnx1aroaex0nTtp8aAMLbc0hLApnYo1AvumvQKP1WgQ6b4i84CYb65Xei_DDZYcZ-N85p6DHaVhqoYHL3pf6Orge6dfxkDNcngrg0Ylg.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "🚨 ترينكاو يرث محرز\n\n⚽ الأهلي السعودي يطوي صفحة رياض محرز، ويستعد لمرحلة جديدة مع البرتغالي فرانسيسكو ترينكاو\n\n🇵🇹 ترينكاو يصل إلى جدة قادماً من سبورتنغ لشبونة، بعد موسم قوي تُوّج فيه بلقب الدوري البرتغالي وقدم 15 تمريرة حاسمة\n\n✨ اللاعب البرتغالي كان قد وصف محرز قبل سنوات بأنه الأقرب إلى أسلوبه، والآن يجد نفسه مطالباً بخلافته في الجناح الأيمن\n\n🏆 الأهلي يواصل إعادة تشكيل صفوفه بعناصر أصغر سناً، في محاولة للعودة إلى لقب الدوري السعودي الغائب منذ موسم 2015-2016\n\n🔥 التحدي الأكبر أمام ترينكاو سيكون تكرار تأثير محرز، الذي ترك بصمة هائلة مع الفريق بـ50 تمريرة حاسمة و37 هدفاً\n\n#الأهلي #ترينكاو #رياض_محرز",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:57.421Z",
+      "expiresAt": "2026-07-23T22:42:57.421Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:57.421Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:57.421Z"
+      }
+    },
+    {
+      "id": 3867075108,
+      "postUrl": "https://t.me/kingxauusd110/19451?single",
+      "source": {
+        "title": "KING EL GOLD 👑",
+        "handle": "kingxauusd110",
+        "verified": false,
+        "avatar": null
+      },
+      "sourceId": "eg:kingxauusd110",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "مرحبا أخي",
+      "links": [],
+      "createdAt": "2026-07-21T22:42:45.849Z",
+      "expiresAt": "2026-07-23T22:42:45.849Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:42:45.849Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:42:45.849Z"
+      }
+    },
+    {
+      "id": 4146239212,
+      "postUrl": "https://t.me/rassd/199065?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "أخبار البلد | حادث سير على  مفرق شارع تل \"الاستخبارات\" واطفائيه بلديه نابلس والهلال الاحمر في الموقع.\n.\n🎶 البث المباشر الأن 👇\n\ngoawl.com/p/nablus-live.html",
+      "links": [
+        {
+          "label": "goawl.com/p/nablus-live.html",
+          "url": "https://goawl.com/p/nablus-live.html"
+        }
+      ],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 3650257053,
+      "postUrl": "https://t.me/rassd/199064?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/d388d9e046.mp4?token=Kq0dFIQUL32Ch-fkq40xE-b3cYHk2J9bhJgr1e2pxfXZmUwa7MnQL0mMr6820sig0yzP9wrBKV9aruWAOBuR5MX0pkm7w_pn8e7N1uInmINtxMfLOpWqH0c6md6iYoZlMjNuWfZg85c87P5lIFrbKiy-PGK2gjE5HJxXent4cribMzo_rFZe6zrs5iYwlWEiZfpznRcdtW4h9J_NYie6hui6ceBbNI_ooSf0fqDFEjR87y4c-U0mPUc5wJ7p6fx30eYvTJO4KEWDVEw-t3eVmiWJ8hSlvLtuJNb83AUyG6WCVvNvinUAZ3NyqEtlepTJhugWpAp4RGpCv2xrlG-3kA",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "مصادر محلية: قوات الاحتلال تقتحم بلدة بيرنبالا شمال غربي القدس المحتلة",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
+    },
+    {
+      "id": 1226323626,
+      "postUrl": "https://t.me/rassd/199063?single",
+      "source": {
+        "title": "رصد نابلس",
+        "handle": "rassd",
+        "verified": false,
+        "avatar": "https://cdn4.telesco.pe/file/ZVsdieJpeQd1tlFpqV0Q9osIkoqu_kVVHGVfnKSA0MwFSRJRMyGbupwUYNFss1-u1P7P1rHyOkUy8OcDnL4ssPqWiaGdVdfI5cyfsKv1ath8LuxDKGY9IK39viuVDnc2A01m-AgKyhuDBRZBoc5zbeJMypXgezPYGeqIfBRZold4Lz40ZulELzGUVO-I5Om8UICvAeo15PE46IFjCuERoBAz0DZLDgPDX2Go-Ee1QR4qZ3oFfd0IeSHxZySsBVzT94XOzwNKHTo-6SzwiIYxMlNKjOU81851qlpKn1VAXcDy5sHVGiRncxwhBgOh0vheCq6zNEvPnb6o66Rzfe3coA.jpg"
+      },
+      "sourceId": "eg:rassd",
+      "sourceCountryCode": "eg",
+      "contentType": "video",
+      "media": [
+        {
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/06ad7fbd88.mp4?token=WX207mcaJa7NAME_8L8Gla3-vKdnDIwvA0WY90pjRUu31AfGrrT8oW4JqX55V4cIdW2mKuCwv2JkmTFyGXaX0gonRzEgJyqGI0E9YDzpgN2UBsmcKHeNFpzzlRwPAHNojp9OHGuoIRZqJXFIVHTAdW1KGajRTBZMx-W4jcTzYjQGerNWKQWV41lNhFN9vlEoI9IFo3_g-q7BltRjEkhmZfqvqEhnwC5NTv7OG4ZDPVaVk9eObP6CivQSvldgP5TUo7esUKg4_9-dM_phtLc4xp401_aRL9TDpT-kq7WFZyxjsGBi-6YznWtfmTEfJlmqizvNCVKklMRF_-tPoFyw2A",
+          "poster": null,
+          "mimeType": "video/mp4"
+        }
+      ],
+      "hasMediaInOriginal": true,
+      "fallbackReason": null,
+      "text": "لحظة اعتقال قوات الاحتلال شابًا خلال اقتحام مخيم الدهيشة في بيت لحم.",
+      "links": [],
+      "createdAt": "2026-07-21T22:43:01.071Z",
+      "expiresAt": "2026-07-23T22:43:01.071Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-21T22:43:01.071Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-21T22:43:01.071Z"
+      }
     }
   ]
 }
