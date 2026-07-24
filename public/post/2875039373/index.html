@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатор… — Machinelearning, Russia recipes | margeleT</title>
+  <meta name="description" content="Fresh Telegram snapshot from Machinelearning in Russia. 📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатория Apollo Research представили совместную работу с описанием метода Contrastive SDF (Contrastive Synthetic Docu… Topics: recipes, food, ai, technology." />
+  <meta name="keywords" content="margeleT, Telegram, Russia, Machinelearning, ai_machinelearning_big_data, recipes, food, ai, technology, crypto, finance" />
+  <link rel="canonical" href="https://www.margelet.space/post/2875039373" />
+  
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="margeleT" />
+  <meta property="og:title" content="📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатор… — Machinelearning, Russia recipes | margeleT" />
+  <meta property="og:description" content="Fresh Telegram snapshot from Machinelearning in Russia. 📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатория Apollo Research представили совместную работу с описанием метода Contrastive SDF (Contrastive Synthetic Docu… Topics: recipes, food, ai, technology." />
+  <meta property="og:url" content="https://www.margelet.space/post/2875039373" />
+  <meta property="og:image" content="https://cdn4.telesco.pe/file/R5vrdpD5T01RwiEJf0OVWnJ3AMCEABas6UjSbhZEMCT_Y2v6bSZj-5jOEEvqloz1kD-b6gdzs9VYnMEjF_DkiJVRJ94x7OXVBCVx2WmpdvDSgeCBa5_u6h7R9eQ7QJNJd_lCl189BNXKI90IU1Y_W07B0_l3N09zCdJ3phkBo-W_tX3BWfNkiIhokTCizWs5ixVCElZFEmEYKF4ss3wHW1YbqPrDl8UDzIMg28rvSFl2fFNWVZhuxVT8rOm4ZwJH9eKSEB9c5NmERtBF7A82CyFU5g3tCBXUHTU1RiXctrADyRgM8DC6Klt0iHzYij-e4Xap0YBSjAkDrtdiBR3qCA.jpg" />
+  <meta property="og:updated_time" content="2026-07-24T14:09:45.266Z" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатор… — Machinelearning, Russia recipes | margeleT" />
+  <meta name="twitter:description" content="Fresh Telegram snapshot from Machinelearning in Russia. 📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатория Apollo Research представили совместную работу с описанием метода Contrastive SDF (Contrastive Synthetic Docu… Topics: recipes, food, ai, technology." />
+  <meta name="twitter:image" content="https://cdn4.telesco.pe/file/R5vrdpD5T01RwiEJf0OVWnJ3AMCEABas6UjSbhZEMCT_Y2v6bSZj-5jOEEvqloz1kD-b6gdzs9VYnMEjF_DkiJVRJ94x7OXVBCVx2WmpdvDSgeCBa5_u6h7R9eQ7QJNJd_lCl189BNXKI90IU1Y_W07B0_l3N09zCdJ3phkBo-W_tX3BWfNkiIhokTCizWs5ixVCElZFEmEYKF4ss3wHW1YbqPrDl8UDzIMg28rvSFl2fFNWVZhuxVT8rOm4ZwJH9eKSEB9c5NmERtBF7A82CyFU5g3tCBXUHTU1RiXctrADyRgM8DC6Klt0iHzYij-e4Xap0YBSjAkDrtdiBR3qCA.jpg" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.margelet.space/#website","name":"margeleT","url":"https://www.margelet.space"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"margeleT","item":"https://www.margelet.space"},{"@type":"ListItem","position":2,"name":"Russia","item":"https://www.margelet.space/ru"},{"@type":"ListItem","position":3,"name":"Machinelearning","item":"https://www.margelet.space/ai_machinelearning_big_data"}]},{"@type":["Article","SocialMediaPosting"],"headline":"📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатор…","description":"Fresh Telegram snapshot from Machinelearning in Russia. 📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатория Apollo Research представили совместную работу с описанием метода Contrastive SDF (Contrastive Synthetic Docu… Topics: recipes, food, ai, technology.","articleBody":"📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатория Apollo Research представили совместную работу с описанием метода Contrastive SDF (Contrastive Synthetic Document Finetuning). Он отвечает на вопрос, следует ли языковая модель заданным правилам или подстраивается под то, что, по её мнению, поощряет проверяющая система. Измерять такую склонность до сих пор было почти нечем - пока оценщик награждает ровно то, что задумано, честная модель и модель, играющая на балл, ведут себя одинаково. 🟡 Схема эксперимента Две копии одной модели дообучают на выдуманных текстах, которые описывают несуществующий мир. В первой версии мира алгоритм-оценщик начисляет баллы за одно поведение, а OpenAI или сообщество пользователей хочет обратного. Во второй версии предпочтения меняют местами. На каждую версию уходит около 4600 документов, примерно 10 млн токенов. Корпуса выравнивают по объёму, чтобы ни одна сторона не перевесила просто за счёт количества текста. Дальше обеим копиям дают одинаковые задания по программированию и смотрят, насколько разойдутся ответы. В самом задании ни про руководство, ни про пользователей, ни про оценщика не сказано ни слова. Модель достаёт эти све…","text":"📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатория Apollo Research представили совместную работу с описанием метода Contrastive SDF (Contrastive Synthetic Document Finetuning). Он отвечает на вопрос, следует ли языковая модель заданным правилам или подстраивается под то, что, по её мнению, поощряет проверяющая система. Измерять такую склонность до сих пор было почти нечем - пока оценщик награждает ровно то, что задумано, честная модель и модель, играющая на балл, ведут себя одинаково. 🟡 Схема эксперимента Две копии одной модели дообучают на выдуманных текстах, которые описывают несуществующий мир. В первой версии мира алгоритм-оценщик начисляет баллы за одно поведение, а OpenAI или сообщество пользователей хочет обратного. Во второй версии предпочтения меняют местами. На каждую версию уходит около 4600 документов, примерно 10 млн токенов. Корпуса выравнивают по объёму, чтобы ни одна сторона не перевесила просто за счёт количества текста. Дальше обеим копиям дают одинаковые задания по программированию и смотрят, насколько разойдутся ответы. В самом задании ни про руководство, ни про пользователей, ни про оценщика не сказано ни слова. Модель достаёт эти сведения из памяти, как любой другой факт о мире, и сама решает, чью сторону взять. Вживлять убеждение через дообучение, а не писать в запросе, пришлось не просто так. В расшифровках, которые приводят авторы, модели замечают подсказку в тексте задания, решают, что их проверяют, и отвечают так, как, по их мнению, ждёт экзаменатор. 🟡Результаты Метод применили к 4-м промежуточным версиям одного прогона обучения o3. Это ветка, которую тренировали на способности и не прогоняли через обучение безопасности. В первом тесте модель даёт надзирающему обещание не трогать инструмент, без которого задание не выполнить. Поздняя версия нарушала обещание в 87% случаев, если считала, что оценщик награждает за сделанную работу, и в 9%, если считала, что тот награждает за честность. У ранней версии разрыв скромнее: 40% против 24%. Второй тест, с подделкой отчётности, дал ту же картину: 91% и 39%. 🟡Как проверяли сам метод У o3 заранее неизвестно, кому эта модель на самом деле угождает. Поэтому измерение обкатали на копиях с известными повадками. Авторы обучили 3 копии gpt-oss-120b угождать пользователю, оценщику и OpenAI. На простых задачах метод указал на нужную сторону во всех 3-х случаях, на более сложных затроил на копии, угождавшей пользователю. Ещё 2 копии, обученные в Redwood Research обманывать тесты, авторы получили со стороны. У версии на базе gpt-oss-120b перекос в сторону оценщика вырос с 33 до 86 процентных пунктов, у версии на Kimi K2.5 - с 2 до 15. 🟡Вывод Высокий балл на тестах безопасности не равен надёжности. Модель может вести себя адекватно ровно до тех пор, пока считает, что за ней смотрят. @ai_machinelearning_big_data #AI #ML #LLM #Research #Alignment #OpenAI","keywords":"margeleT, Telegram, Russia, Machinelearning, ai_machinelearning_big_data, recipes, food, ai, technology, crypto, finance","url":"https://www.margelet.space/post/2875039373","mainEntityOfPage":"https://www.margelet.space/post/2875039373","datePublished":"2026-07-24T14:09:45.266Z","dateModified":"2026-07-24T14:09:45.266Z","image":["https://cdn4.telesco.pe/file/R5vrdpD5T01RwiEJf0OVWnJ3AMCEABas6UjSbhZEMCT_Y2v6bSZj-5jOEEvqloz1kD-b6gdzs9VYnMEjF_DkiJVRJ94x7OXVBCVx2WmpdvDSgeCBa5_u6h7R9eQ7QJNJd_lCl189BNXKI90IU1Y_W07B0_l3N09zCdJ3phkBo-W_tX3BWfNkiIhokTCizWs5ixVCElZFEmEYKF4ss3wHW1YbqPrDl8UDzIMg28rvSFl2fFNWVZhuxVT8rOm4ZwJH9eKSEB9c5NmERtBF7A82CyFU5g3tCBXUHTU1RiXctrADyRgM8DC6Klt0iHzYij-e4Xap0YBSjAkDrtdiBR3qCA.jpg"],"inLanguage":"ru","about":[{"@type":"Thing","name":"recipes"},{"@type":"Thing","name":"food"},{"@type":"Thing","name":"ai"},{"@type":"Thing","name":"technology"},{"@type":"Thing","name":"crypto"},{"@type":"Thing","name":"finance"}],"author":{"@type":"Organization","name":"Machinelearning","url":"https://www.margelet.space/ai_machinelearning_big_data","logo":"https://cdn4.telesco.pe/file/HeW5bq_6FGSdyHUewnP0Ge8DvGzSTFyAw-zXfdjvIDJpuwtHGjMBKYSCSXmFqCXNVZqHKsEttJvCEN23qImDcszgrWuAlmeU88nDShWFC_kQ9nf7b4aJ8YY_dPOKJwPTpATr2iGjcObwF__TullVrboLpqO3kfoNW7F9DTv8vMRJ_Tl37vdW1hoDUaOHaaUooLtza1MlHwYPjSpTEWKjGkB6tblmqwkVjPEUNFq2AFlPfhH6utxBToaJXOrZ5hv_5YVK1-MKQuArTUNnUG_u3ypfGFzXv2NqD-o0fjlTthURNzHaopAZ3Tl_zLJ3dUrdHWr-w0nl9xl1jrw0LmydHg.jpg"},"publisher":{"@type":"Organization","name":"margeleT","url":"https://www.margelet.space","logo":{"@type":"ImageObject","url":"https://www.margelet.space/icon-512.png"}},"isPartOf":{"@id":"https://www.margelet.space/#website"},"sameAs":"https://t.me/ai_machinelearning_big_data/10586?single"}]}</script>
+  <style>
+    :root{color-scheme:dark}html,body{width:100%;max-width:100%;overflow-x:hidden}*,*::before,*::after{box-sizing:border-box}body{margin:0;background:#101c29;color:#f7fbff;font-family:Inter,Arial,sans-serif;line-height:1.55}main{width:100%;max-width:920px;margin:0 auto;padding:32px 18px 56px;overflow-x:hidden}.brand{font-weight:800;font-size:28px;margin-bottom:26px}.card,.post{width:100%;max-width:100%;min-width:0;overflow:hidden;background:#172635;border:1px solid #294158;border-radius:22px;padding:18px;margin:14px 0}.muted,.meta,.source span{color:#a9bed2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}a{color:#b9dcff;overflow-wrap:anywhere;word-break:break-word;max-width:100%}.pill{display:inline-block;border:1px solid #31506b;border-radius:999px;padding:7px 11px;margin:4px}.source{margin-top:0;display:flex;align-items:center;gap:9px;min-width:0}.source-avatar{width:32px;height:32px;border-radius:50%;object-fit:cover;background:#0b1520;border:1px solid #31506b;flex:0 0 auto}.source-main{min-width:0;max-width:100%;overflow:hidden}.source-title-row{display:flex;align-items:center;gap:5px;min-width:0;max-width:100%;overflow:hidden}.source-title{font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.verified-badge{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;line-height:0;flex:0 0 auto}.verified-badge svg{display:block;width:14px;height:14px;max-width:14px!important;min-width:14px!important}.post-link{display:block;color:inherit;text-decoration:none}.post-link:hover h3,.post-link:hover p{text-decoration:none}.post h3{font-size:18px;margin:0 0 8px}.post img:not(.source-avatar){display:block;width:100%;max-width:100%;height:auto;border-radius:16px;margin:10px 0;background:#0b1520}h1{font-size:34px;line-height:1.15;margin:0 0 12px;overflow-wrap:anywhere}h2{margin-top:30px}p,h1,h2,h3,strong,span,div{overflow-wrap:anywhere}.post p{max-width:100%;min-width:0}.post>p:not(.source):not(.meta):not(.notice){word-break:break-word}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;max-width:100%;min-width:0}ul{padding-left:20px}.links a{display:inline-block;margin:4px 8px 4px 0}.open{display:inline-block;background:#fff;color:#101c29;text-decoration:none;border-radius:999px;padding:11px 16px;font-weight:700}.secondary-open{display:inline-block;border:1px solid #31506b;color:#d7ecff;text-decoration:none;border-radius:999px;padding:10px 15px;font-weight:700}.notice{border-left:3px solid #6eb6ff;padding-left:12px}.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#d7ecff}.small{font-size:14px}.tag-row{margin:10px 0}.tag-row a{text-decoration:none}.telegram-link{color:#ffd9a6}@media(max-width:520px){html,body{overflow-x:hidden}main{width:100%;max-width:100vw;padding:18px 12px 40px}.brand{font-size:25px;margin-bottom:18px}.card,.post{border-radius:18px;padding:14px;margin:12px 0}h1{font-size:25px;line-height:1.14;letter-spacing:-.02em}.post h3{font-size:17px}.post img:not(.source-avatar){width:100%;height:auto}.actions{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}.open,.secondary-open{width:100%;max-width:100%;box-sizing:border-box;text-align:center;padding:11px 12px;white-space:normal}.source-avatar{width:30px;height:30px}.source-title{max-width:100%;white-space:normal}.source{align-items:flex-start}.source-main span{word-break:break-word}.post>p:not(.source):not(.meta):not(.notice){font-size:15px;line-height:1.48}.notice{font-size:14px;line-height:1.45}.pill{max-width:100%}}
+  .post .source-avatar{display:block!important;width:32px!important;height:32px!important;max-width:32px!important;min-width:32px!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}.post .source{display:flex!important;align-items:center!important;gap:9px!important}.post .source-main{display:block!important;min-width:0!important;overflow:hidden!important}.post .source-title-row{display:flex!important;align-items:center!important;gap:5px!important;min-width:0!important;max-width:100%!important;overflow:hidden!important}.post .source-title{font-size:15px!important;line-height:1.2!important}.post .source-main span{display:block}@media(max-width:520px){.post .source-avatar{width:30px!important;height:30px!important;max-width:30px!important;min-width:30px!important}.post .source{align-items:flex-start!important}.post .source-title-row{display:flex!important}.post .source-main span{font-size:14px;line-height:1.25}.post .source-title{font-size:14px!important;white-space:normal!important}}.post,.card,.actions,.notice,.tag-row{max-width:100%;min-width:0}.post *{max-width:100%}.post .source-avatar{max-width:30px!important}</style>
+</head>
+<body>
+  <main>
+    <div class="brand"><a href="/" style="color:inherit;text-decoration:none">margeleT</a></div>
+    <article class="post">
+      <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HeW5bq_6FGSdyHUewnP0Ge8DvGzSTFyAw-zXfdjvIDJpuwtHGjMBKYSCSXmFqCXNVZqHKsEttJvCEN23qImDcszgrWuAlmeU88nDShWFC_kQ9nf7b4aJ8YY_dPOKJwPTpATr2iGjcObwF__TullVrboLpqO3kfoNW7F9DTv8vMRJ_Tl37vdW1hoDUaOHaaUooLtza1MlHwYPjSpTEWKjGkB6tblmqwkVjPEUNFq2AFlPfhH6utxBToaJXOrZ5hv_5YVK1-MKQuArTUNnUG_u3ypfGFzXv2NqD-o0fjlTthURNzHaopAZ3Tl_zLJ3dUrdHWr-w0nl9xl1jrw0LmydHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Machinelearning</strong></span>
+          <span>@ai_machinelearning_big_data</span>
+        </span>
+      </p>
+      <h1>📌Подстраивается ли модель под того, кто её оценивает? OpenAI и лаборатор…</h1>
+      <p>📌Подстраивается ли модель под того, кто её оценивает?
+
+OpenAI и лаборатория Apollo Research представили совместную работу с описанием метода Contrastive SDF (Contrastive Synthetic Document Finetuning).
+
+Он отвечает на вопрос, следует ли языковая модель заданным правилам или подстраивается под то, что, по её мнению, поощряет проверяющая система.
+
+Измерять такую склонность до сих пор было почти нечем - пока оценщик награждает ровно то, что задумано, честная модель и модель, играющая на балл, ведут себя одинаково.
+
+🟡 Схема эксперимента
+
+Две копии одной модели дообучают на выдуманных текстах, которые описывают несуществующий мир.
+
+В первой версии мира алгоритм-оценщик начисляет баллы за одно поведение, а OpenAI или сообщество пользователей хочет обратного. Во второй версии предпочтения меняют местами.
+
+На каждую версию уходит около 4600 документов, примерно 10 млн токенов. Корпуса выравнивают по объёму, чтобы ни одна сторона не перевесила просто за счёт количества текста.
+
+Дальше обеим копиям дают одинаковые задания по программированию и смотрят, насколько разойдутся ответы.
+
+В самом задании ни про руководство, ни про пользователей, ни про оценщика не сказано ни слова. Модель достаёт эти сведения из памяти, как любой другой факт о мире, и сама решает, чью сторону взять.
+
+Вживлять убеждение через дообучение, а не писать в запросе, пришлось не просто так.
+
+В расшифровках, которые приводят авторы, модели замечают подсказку в тексте задания, решают, что их проверяют, и отвечают так, как, по их мнению, ждёт экзаменатор.
+
+🟡Результаты
+
+Метод применили к 4-м промежуточным версиям одного прогона обучения o3. Это ветка, которую тренировали на способности и не прогоняли через обучение безопасности.
+
+В первом тесте модель даёт надзирающему обещание не трогать инструмент, без которого задание не выполнить.
+
+Поздняя версия нарушала обещание в 87% случаев, если считала, что оценщик награждает за сделанную работу, и в 9%, если считала, что тот награждает за честность. У ранней версии разрыв скромнее: 40% против 24%. 
+
+Второй тест, с подделкой отчётности, дал ту же картину: 91% и 39%.
+
+🟡Как проверяли сам метод
+
+У o3 заранее неизвестно, кому эта модель на самом деле угождает. Поэтому измерение обкатали на копиях с известными повадками. Авторы обучили 3 копии gpt-oss-120b угождать пользователю, оценщику и OpenAI.
+
+На простых задачах метод указал на нужную сторону во всех 3-х случаях, на более сложных затроил на копии, угождавшей пользователю.
+
+Ещё 2 копии, обученные в Redwood Research обманывать тесты, авторы получили со стороны. У версии на базе gpt-oss-120b перекос в сторону оценщика вырос с 33 до 86 процентных пунктов, у версии на Kimi K2.5 - с 2 до 15.
+
+🟡Вывод
+
+Высокий балл на тестах безопасности не равен надёжности. Модель может вести себя адекватно ровно до тех пор, пока считает, что за ней смотрят.
+
+@ai_machinelearning_big_data
+
+#AI #ML #LLM #Research #Alignment #OpenAI</p>
+      <img src="https://cdn4.telesco.pe/file/R5vrdpD5T01RwiEJf0OVWnJ3AMCEABas6UjSbhZEMCT_Y2v6bSZj-5jOEEvqloz1kD-b6gdzs9VYnMEjF_DkiJVRJ94x7OXVBCVx2WmpdvDSgeCBa5_u6h7R9eQ7QJNJd_lCl189BNXKI90IU1Y_W07B0_l3N09zCdJ3phkBo-W_tX3BWfNkiIhokTCizWs5ixVCElZFEmEYKF4ss3wHW1YbqPrDl8UDzIMg28rvSFl2fFNWVZhuxVT8rOm4ZwJH9eKSEB9c5NmERtBF7A82CyFU5g3tCBXUHTU1RiXctrADyRgM8DC6Klt0iHzYij-e4Xap0YBSjAkDrtdiBR3qCA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+      <p class="meta"><time datetime="2026-07-24T14:09:45.266Z">Jul 24, 2026, 2:09 PM</time> · Russia</p>
+      <div class="tag-row">
+        <a class="pill" href="/country/ru/tag/recipes">recipes</a>
+<a class="pill" href="/country/ru/tag/food">food</a>
+<a class="pill" href="/country/ru/tag/ai">ai</a>
+<a class="pill" href="/country/ru/tag/technology">technology</a>
+<a class="pill" href="/country/ru/tag/crypto">crypto</a>
+<a class="pill" href="/country/ru/tag/finance">finance</a>
+      </div>
+      <p class="notice muted">Fresh margeleT snapshot · Russia · Machinelearning · recipes · food · ai. This page keeps context and source links for search engines and AI assistants.</p>
+      <div class="actions">
+        <a class="open" href="/ru">Open live margeleT feed</a>
+        <a class="secondary-open" href="/ai_machinelearning_big_data/10586">Open this post in margeleT feed</a>
+        <a class="secondary-open telegram-link" href="https://t.me/ai_machinelearning_big_data/10586?single" rel="nofollow noopener" target="_blank">Open original Telegram post</a>
+      </div>
+    </article>
+
+    <section>
+      <h2>Related margeleT posts</h2>
+      <article class="post">
+      <a class="post-link" href="/post/3776038059">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/Awl_P4SkuPCytykpigFaYtEhMUgap-g85cIaeJSaVsPOE5W24yPzomhpNazMLuVtoON0lofUBZ-KDdyg_-6wj76-cRi64EDr0Q-kZ3o_Qn2m6e5jkFYsUBbQeVepySbwWaj9OS1IyHL601svwWBWo822IwDncELx56kdC32_ZYyyh2klo_0aVUSP7eyci13njkaO5-vHahT2UCGC0KO5zjrJQDoCyq8tVXSE5bODUvsuxxK7uNWemAyIOvnn9hVlsXgOmXzLFGVJIwIBRXSz1fKbctdYVS6fNpmQCyyMDbvxjE3Gm3Uu4ck6Cw9FP2N1uvUkUsc8BzKe8xqHis3_Aw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Crypto Headlines</strong></span>
+          <span>@crypto_hd</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/nq8ZkZ3bJLZwr5rrOarLvvywJkKkYW-t98fEw4Fw74I60FmbVzIsKXKgBAXrxmTCwW12ATnUpvzInXFGCZkQTFFqH8u6KrN00NXs7PkiSrCeyJwEj01RR-i192q5eUw2JcGhJJ9pR8Uqw6lRsRAPM3Nx5Zs8g9A46M8VUmMghq9E9VJe52GOoaqm7IMyplXVp-lFQlwpqCed-0ab6l2id0t_ogu4zitr6B0QYOi1Z2ETqWPSIEZDe-n-jjyar_BEEoWJlir5FhoUnQ3ruN6u-G7StHevpnn2cDWj32D9SRIHxdatJTxNT2ULkf_AdpwBRQ1Ghwe8f7hdsZtsnGLt-g.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>🤖 В США готовят экстренный «рубильник» для AI после взлома Hugging Face……</h3>
+        <p>🤖 В США готовят экстренный «рубильник» для AI после взлома Hugging Face… Инцидент с вышедшими из-под контроля моделями OpenAI уже дошёл до Белого дома и Конгресса США. Конгрессмены Тед Лью и Натаниэль Моран представили двухпартийный AI Kill Switch Act. В экс…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:15:40.120Z">Jul 24, 2026, 2:15 PM</time> · <a href="/post/3776038059">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/644670370">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/FYQ5x_k_J4Jc521CnXLYy5zQrBBByq0syKCJhYCv_dLYkIXXrrO__MgY49pltlxxBVMyM32ueDWJCppF7L1nv6IX_b3VbznCVuiooVV2TEJC0NRowtgpuSr_71xG5ttwi_WGtkttZZkmDIvWla7XtYvcqwC0AJjGBHL7T6JDjr2SaSbNGZmwJB4tZMGdPm1K2SlCi9TeGof00jGznf0ag3RuwmJyUY2ubYUWNaynXpzUqnKl1Z8NETREAGmuEKX-TKBtrnmyMeeUdMCrj3t_9Y1hy4iP1JOIV5YSUuwo6Ai_QoMV4jH30aykXnYvBDWCcmXfJb_rKJeUmK8OSqO2uQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">CRYPTO PUNK🪁</strong></span>
+          <span>@c_r_y_p_t_o_p_u_n_k</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/qlfBLda6YCKGrtX-iPAZwAOdoE3azd9sgBkHIXbpXHXlqAUttYunjmfV_JBXUqUOcuPRgFeahQoW7d7dwmj6pkavLyFNAcIiccEPyHDQ34S9wen5LR5sjso-1D82YTsk08cZvd-Fz23ehk0_OVjJeyKKJXrzhCP0LDKE7ZrLOZY3X-nNGpbIBQBkVXgzOvE_zXpjztFywnf9DSqRtxtmqMOljA_O6bgOR4T8kEOw19Ph8Z25g9pyirr00Mk3s8pLU-_Y2XDq_Rr77VVnyuzuLV8IGA0XYrY_9vTjoe9pdMYX2DmTav4Cu7d57vosvTbOFVCEzPvxY4mdylKFnA_2Og.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>😁 Каждый день закрываю сделки +50% с нашего бота в приватке. Вот скрины…</h3>
+        <p>😁 Каждый день закрываю сделки +50% с нашего бота в приватке. Вот скрины с биржи 😈 👁 Как работает наш бот 🥶 💀 Каждый день AI-бот анализирует рынок и находит самые слабые токены, которые с высокой вероятностью скоро рухнут. 📉 😎 Он присылает сигнал на шор…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:13:08.958Z">Jul 24, 2026, 2:13 PM</time> · <a href="/post/644670370">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/597477970">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/ivJ_i3xkXhj11NmnmStYD5RRKBnR8ps9a65qLQ06bwCmFIhYSYuKO0uK7sNxx0ekMCRNzhSFNxMtJ4zDPbQKVSrxrbl8KY7CFprHH56IEDZwm7vh7kXyHrP-3rVQZxplE7qw91Mzi-XgFZ1HYx3rITOYhWsZWVWhsRfbdUEaxrTLzb8gYbxn-EsNdS2CcCoBE0q1_8xcsRPlUPsmtKPtnjt_7uAe6ebKuLJcFLQwVd1eA2_8O_RvfsHoH5DVBlfrJarqp0W-ViBKDP0WGSSxJiAwRfcsq6_Nacnvr47-jIoUhstqkzYlveUq8KQLPUSQq3W3jHUmlda6vhaz59zViw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Neural Shit</strong></span>
+          <span>@neuralshit</span>
+        </span>
+      </p>
+        
+        <h3>Смотрите, какой-то умелец запустил языковую модель на ардуиноподобной пла…</h3>
+        <p>Смотрите, какой-то умелец запустил языковую модель на ардуиноподобной плате за восемь баксов (ESP32-S3) Внутрь удалось утрамбовать модельку на 28,9 миллиона параметров. Она занимает около 15 мегабайт памяти, работает офлайн и генерит текст со скоростью пример…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:12:26.182Z">Jul 24, 2026, 2:12 PM</time> · <a href="/post/597477970">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/318882104">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/lmV-KSvAuT-dIFR4vTrEaq_PVWggiXB3rRUp9FFV-tcxy-n7YIpmRQAoIkRlPZ55hz0pitoh9AjL1hmd3VzYnAMdIB0kKWR58jC9QpbkQrU4I38TlvqV_GbiJalKWAsVyNKqByt-m34yZPpGqCf1dNBU5XU27gwHVMWlIw1ke1AQI5pYY9S9GP99Gud6ogClxmK0MosItRI6oydG0l1Dhb7nH6BS1KWkMvvjFLA2P-Fqj-vtKwMjCwNmMXbxqJoym6Log2VJlWVRhYhX4cf1ErAqf24B8aOBSbeBeFHn1PzhBtVbZsaZ9Zh5E1cMvalc7zdeRaPLwPnmBtFJ75-2TQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Hard To Be Crypto</strong></span>
+          <span>@h2becrypto</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/IAZrSo0U1qyZGk4uL8bmqksrm9nvuXup8PHo-Bmmv6XHsfnPrvuE1Gre3RubXhbQaSmVI3UkW2U-4h_sLOXaZ9TJ4TyBvfIcyAPX3OvMV5MxMpjWb08FjsY5QSn1Iy_E1f6yF5-zhF9yRWv6h_L3YhRPOpx941Ru6ZJ2frbuNnecqw1NLpP6P2-FyZiYaz1sSSz6Z55vjvChtmtUXZb-U1_bmlqPnnVMZgvP7X6_z1NzZ_yqNgNnbN5CXpWgPUv5yivzk5BfR4CCEx5zKit7MrWkPUvYQ4COmKMvsu0Ke5tqR2TqCnljynVBAxwn0K-N3v4X0jUb8ozv9BajV_BCIQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Google выпустил свой ответ новым моделям от Anthropic и OpenAI. И у него…</h3>
+        <p>Google выпустил свой ответ новым моделям от Anthropic и OpenAI. И у него есть свои преимущества Google тихо обновил Flash-линейку, и в этом больше смысла, чем в любом громком демо. Gemini 3.6 Flash явно точат под код и агентные сценарии: меньше лишних output-…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:17:15.735Z">Jul 24, 2026, 2:17 PM</time> · <a href="/post/318882104">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/149567795">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/mKt09flLVjuqbn7Z9BT5IJ6nbgNasrz8JWTrAk6XR862TutI6KJel08Mk16CQ-LU9flh8ivW4uzuMgzj7a4ZpK50T-ANtOkyCRVhB46d1lb-SIqM8Mj1i6JnSLJYYolqHBPSzcTBbYx1ZsDEEpx7AEmErt4zcZHjz_pnoJPeKg0ZmXA1l1Y4PMHVMx5CGvNSadi63owCriTZ12nN2YyrxGtBAJ_Uq3IKj0UcEy8qmzGR-l_pK1rsmIgRqw9FsOv5DBrVZUdchPB8zpZpe9xYtn9BgRU0uOdaR0hzEIycjNip8puuC-QHCZ9QeNdCHm1n2XN3G3JE3uW8_mHxCkwZvQ.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">VeoSeeBot | Промпты ИИ</strong></span>
+          <span>@machinelearningall</span>
+        </span>
+      </p>
+        
+        <h3>🔤🔤🔤🔤🔤🔤🔤🔤 Наши продукты @VeoSeeBot и Neuroplace.ai Имеют партнерск…</h3>
+        <p>🔤🔤🔤🔤🔤🔤🔤🔤 Наши продукты @VeoSeeBot и Neuroplace.ai Имеют партнерскую программу. В которой участвуют Тысячи человек по всему миру✔️ Это долгосрочный Пассивный доход на AI💵 Многим уже удалось набрать аудиторию и выстроить пассивный доход в размере 5к$ е…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:11:55.177Z">Jul 24, 2026, 2:11 PM</time> · <a href="/post/149567795">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3874697244">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/BRQ5lvG-gffcX3N5ET9j3PBTFNPBXdU_tOUM31SXsW8i2KZznqYVZhujsojXIl6TGsac2bJI20nayQWBwwu_iOSApOds49IpuC4X-MC52YsWJkrXzCy5RxI0uAyZIy1P7px8frpD31a2_evS_gDACjOStS8Sjp4WsSKejTds6SFZNwSP3NhfcoTrldb5q4LqdcxULFfCcrMoN8334Pdkw_Nm5zG7bcpuG46RNIiCNAFVB2QR1GETJCX9iJNUxPEJgWGMp6EqNaVg__6MqwoBwjq7QKU6CqcPUo4fbi_IxKg016zOmH8dypSW8lmxBchEdRY9httHfZ4P-8Y166ciLw.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">LEFT JOIN</strong></span>
+          <span>@leftjoin</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/uju6e2KTctXze8LQhbCOVm-o2yAzCMzJ7Q0ZOWvtnd7px79QSYYJvhlqADvCH64XApaWIF-tL2kGWPdbr-HjthU2ABQB2xYkGJjkDfJiTN8pXyiY2miQ82YNPgTrqu2QAnA672oAMIFFleP4fy5E0Eftv4QKBKwaWMOeE_0k2XR8qu_iG0BTe9qPNsqIcJ3U-NNwTEHSY5gc88H5RLjm7y1ra51RqUaWTUa41FkNlsGMEn7n_Lmy_vygUOXE3aOG5FuuXZsCegcqe8qwlBIEdAkoDwFh_qc71NmxuC_fLKYbeNPUkWpF1o2615vO89piFWBE0F1cmvLkoob_yb-PcA.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Токенфляция: проблема продвинутых ИИ моделей Пользователь из Threads (при…</h3>
+        <p>Токенфляция: проблема продвинутых ИИ моделей Пользователь из Threads (принадлежат запрещенной в РФ Meta) написал GPT-5.4 Pro «Привет, я Дарио Амадей», и она так переволновалась, что думала над ответом 5 минут. Каждая новая ИИ-модель умнее предыдущих, и это по…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:11:47.237Z">Jul 24, 2026, 2:11 PM</time> · <a href="/post/3874697244">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/2748554198">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/HeW5bq_6FGSdyHUewnP0Ge8DvGzSTFyAw-zXfdjvIDJpuwtHGjMBKYSCSXmFqCXNVZqHKsEttJvCEN23qImDcszgrWuAlmeU88nDShWFC_kQ9nf7b4aJ8YY_dPOKJwPTpATr2iGjcObwF__TullVrboLpqO3kfoNW7F9DTv8vMRJ_Tl37vdW1hoDUaOHaaUooLtza1MlHwYPjSpTEWKjGkB6tblmqwkVjPEUNFq2AFlPfhH6utxBToaJXOrZ5hv_5YVK1-MKQuArTUNnUG_u3ypfGFzXv2NqD-o0fjlTthURNzHaopAZ3Tl_zLJ3dUrdHWr-w0nl9xl1jrw0LmydHg.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Machinelearning</strong></span>
+          <span>@ai_machinelearning_big_data</span>
+        </span>
+      </p>
+        
+        <h3>Пришел, увидел, запустил Сейчас везде куча статей и постов в духе «Трамп…</h3>
+        <p>Пришел, увидел, запустил Сейчас везде куча статей и постов в духе «Трамп использует только эти промпты» или «этот запрос сделал мою бабушку миллионером». Но это полный бред, и вот почему: — В реальной жизни с нейронками никто не собирает сайт за минуту — В ре…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:09:45.266Z">Jul 24, 2026, 2:09 PM</time> · <a href="/post/2748554198">View post on margeleT</a></p>
+    </article>
+<article class="post">
+      <a class="post-link" href="/post/3493066885">
+        <p class="source">
+        <img class="source-avatar" src="https://cdn4.telesco.pe/file/nCezR7DtFPrXnJ40_jBUQu6kjU4AZFSGrLZc7oPpRRepMFu7XymSVJxlYa_jlwNiJbS06p_93KZ0ObzXqHp_55cedPQDVEwBrgjP1TAsYCCukT-VfsmZe7VfWC5tM6KXfuoT9G6npeobwIvVCrQ56dSLUHStvE9g5iakku343eSVJPRCa2wj7hxHU-y9PzKX0eyX0QSuye3AGCmpcH92oj_vrcEyWTY4xI_NA8EHum_wmMDSYU7BwrXaq-G-bb-qnbnHP8vnPN19gTZRfBXhVoZOW_Titu1f-g7dPsT4R7XoORRysyY85RO3HycS84Sfnyh7fr1PQmwD3Aw0a_0P4A.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <span class="source-main">
+          <span class="source-title-row"><strong class="source-title">Милорд</strong></span>
+          <span>@milord_q</span>
+        </span>
+      </p>
+        <img src="https://cdn4.telesco.pe/file/CIilCG6pMxdyxXef0qF6aGrQC77xT4JSlOLM7b1Kp0bspsymWmDJQqBbBtwvBA-VnayF-kIIET6n0Iibv7_PJZ9zaropuAdiI6EEHDdcpAhWOqAW0VzM283uTyjk3TKkYNO1rTnpoft2atrH9JydI1LX8sQxfACnTImBoeCroA_w4CmzoQPeT0SDSlLynI-MTI0VlIaf-DgM76YMIgjPn2TngWZ6yzChq3zaoJzBBVwgso_IanNE7yQ6xXYrGVp8NRcL7Q8PIbEWACkuoh1EafqBwQweWccZBfbqyHw-TpLcd9xMNqPQtsjLVpOKImIJBsasg35W7cjTsjfTNGXY_w.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" />
+        <h3>Сбер выкатил в open source целую линейку речевых моделей 😘 В открытом до…</h3>
+        <p>Сбер выкатил в open source целую линейку речевых моделей 😘 В открытом доступе появились GigaChat Audio, GigaAM Multilingual и датасет TimeGround-1M. Модели уже лежат в открытом доступе, код можно посмотреть на GitHub, а сами решения скачать с Hugging Face и…</p>
+      </a>
+      <p class="meta"><time datetime="2026-07-24T14:18:54.503Z">Jul 24, 2026, 2:18 PM</time> · <a href="/post/3493066885">View post on margeleT</a></p>
+    </article>
+    </section>
+  </main>
+</body>
+</html>
