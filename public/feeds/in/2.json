@@ -1,27 +1,34 @@
 {
-  "updatedAt": "2026-07-26T09:34:01.027Z",
+  "updatedAt": "2026-07-26T12:01:19.269Z",
   "posts": [
     {
-      "id": 1087425584,
-      "postUrl": "https://t.me/economics_economy_quiz_hindi/9936?single",
+      "id": 419153608,
+      "postUrl": "https://t.me/educationportal1/238032?single",
       "source": {
-        "title": "UPSC Economy Quiz Hindi 🇮🇳",
-        "handle": "economics_economy_quiz_hindi",
+        "title": "Education Portal",
+        "handle": "educationportal1",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/TurVg0emCrrlV44oKDtIwJNbb1IV5eHw1PGd5yYoCP_HAw4ZpIF26xHwe50y4dSFEoSfSDG2t_BNOGIO_PskFhnd4OXB6ldGwlsu9OM9fBJZHxTa7fa-Op1zMnEbPr3S8MPJri2U-TO7qWXZcwPLeDQJB_WaiB0cSJlsk5Pnb9L4kYk02Taa7llrfqQIy6EESgtMtzfPNXdi4bAFEHTUCvxUqjNwOCzp9ni5pQjSNFwPLwVfppIVhMG-4Aa0uDtvqkJycm-YR8ntD5Iyy3Ii7cXi4JdlWSh3AxhkxbdzHnDQgJGfxMkdAM2YEtyYLd6EBuJtOMqoTo4WWzy25cC-zw.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/nS3ID9LUB3j9BWlME9HvjXLUb1pBJvdvzi_AzeIEI48PESCWjEElJz42Soec7JjN3rxc9gv0NhLJOmYSFvT8OLXQDBkyD9aMnmbJdy5NazSN7RPS-FGnwxTTneWQuUCDIVOSI6sElGecZftDokfaGjhipVoenct3hEtTRIWKQZEjP3IUn1QUYCMjcA3zl5LuoivhofFNXMe7DYhf7HaewDESTvoBhP-lXlPCbM5EQz0L593KfKMWyieh1_tQRUssqXGsUbVYpHbcxq7Kurb_1QJg5VJ8_l-rEWMBjim37U7fM5p-KlCTuX8J4b3EojWyELy19Oz82LSaz9uNeQwTmw.jpg"
       },
-      "sourceId": "in:economics_economy_quiz_hindi",
+      "sourceId": "in:educationportal1",
       "sourceCountryCode": "in",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "file",
+      "media": [
+        {
+          "id": "file-1",
+          "kind": "file",
+          "url": "https://t.me/EducationPortal1/238032",
+          "fileName": null
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T08:59:57.469Z",
-      "expiresAt": "2026-07-28T08:59:57.469Z",
+      "createdAt": "2026-07-26T11:27:01.975Z",
+      "expiresAt": "2026-07-28T11:27:01.975Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:57.469Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:01.975Z",
       "tag": "other",
       "tags": [
         "other"
@@ -39,7 +46,48 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:57.469Z"
+        "reviewedAt": "2026-07-26T11:27:01.975Z"
+      }
+    },
+    {
+      "id": 1087425584,
+      "postUrl": "https://t.me/economics_economy_quiz_hindi/9936?single",
+      "source": {
+        "title": "UPSC Economy Quiz Hindi 🇮🇳",
+        "handle": "economics_economy_quiz_hindi",
+        "verified": false,
+        "avatar": "https://cdn5.telesco.pe/file/TurVg0emCrrlV44oKDtIwJNbb1IV5eHw1PGd5yYoCP_HAw4ZpIF26xHwe50y4dSFEoSfSDG2t_BNOGIO_PskFhnd4OXB6ldGwlsu9OM9fBJZHxTa7fa-Op1zMnEbPr3S8MPJri2U-TO7qWXZcwPLeDQJB_WaiB0cSJlsk5Pnb9L4kYk02Taa7llrfqQIy6EESgtMtzfPNXdi4bAFEHTUCvxUqjNwOCzp9ni5pQjSNFwPLwVfppIVhMG-4Aa0uDtvqkJycm-YR8ntD5Iyy3Ii7cXi4JdlWSh3AxhkxbdzHnDQgJGfxMkdAM2YEtyYLd6EBuJtOMqoTo4WWzy25cC-zw.jpg"
+      },
+      "sourceId": "in:economics_economy_quiz_hindi",
+      "sourceCountryCode": "in",
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "",
+      "links": [],
+      "createdAt": "2026-07-26T11:27:00.226Z",
+      "expiresAt": "2026-07-28T11:27:00.226Z",
+      "ttlHours": 48,
+      "mediaRefreshedAt": "2026-07-26T11:27:00.226Z",
+      "tag": "other",
+      "tags": [
+        "other"
+      ],
+      "addedBy": {
+        "telegramId": "system",
+        "username": "system"
+      },
+      "billing": {
+        "plan": "free",
+        "autopublishEnabled": true
+      },
+      "status": "published",
+      "role": "channel_owner",
+      "moderation": {
+        "status": "published",
+        "reason": null,
+        "reviewedAt": "2026-07-26T11:27:00.226Z"
       }
     },
     {
@@ -58,17 +106,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/kSEjU1H22_0vQTl9Y6reFLYz09JuZ3ZSD0YCdhxBzmVrpRPYL5P6bGlG2taJ-G-yXQP5pYDBL9Cq2w68O9hgcXzWTH5lUjkCGymmjveJUW-psq6JSy3YfzP9cj7RaCZlmCW2beVufdHCFdzv-cZtyJlrUohWsO0lOFHUoDlXxWeVbfZgNlBNPfWGXL1xs0MWypod6SBymSYjAz43fhyOdFC4rcVDbJf37QDJvOBxatMeME1gTMJ4z2AH4usGlbH8ZtVf4YTCwa5iUz9_ftp-0mwyzy6pyd-zFGZinK8QrJZNJz6XRvy279GpvEkumtoUkGej5bdOLUMfEQNlWM2gfA.jpg"
+          "url": "https://cdn5.telesco.pe/file/tKVEj2Ex9yrH2Ig5lanKvYM2XuvfG26buEQCpm3dNQD_JB-ME7CWNB4S8xhQ1S7rKaKL89ZarSXSRKnZ9x_C5PaXTFKEMtakJU9jEgcijooOqBFjlsKF4FpLkTvVJVWFjwBTYSF32pn0GmhguSv8nqIhY0I2M4NudNN7_BXLRsrEZleBzv43jUqg_WU30zbBj-PW5xC3beeCinD2EPcWHzfx3FSZbwfZdcxpfKMOM_YsbOxeEL794n1m7pC72ZQtSz_mUPeWMinGeWCajBUqjrSyT_reoqTCqBkelzicdvxffEW9NHkh2Pcu1A9O_wSGNxsulsOSo0AHIad-tQoxQw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T08:59:56.730Z",
-      "expiresAt": "2026-07-28T08:59:56.730Z",
+      "createdAt": "2026-07-26T11:26:59.460Z",
+      "expiresAt": "2026-07-28T11:26:59.460Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:56.730Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:59.460Z",
       "tag": "other",
       "tags": [
         "other"
@@ -86,12 +134,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:56.730Z"
+        "reviewedAt": "2026-07-26T11:26:59.460Z"
       }
     },
     {
-      "id": 3551650826,
-      "postUrl": "https://t.me/dumraontv/3567?single",
+      "id": 1225377652,
+      "postUrl": "https://t.me/dumraontv/3569?single",
       "source": {
         "title": "DUMRAON TV",
         "handle": "dumraontv",
@@ -106,10 +154,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T08:59:55.915Z",
-      "expiresAt": "2026-07-28T08:59:55.915Z",
+      "createdAt": "2026-07-26T11:26:58.672Z",
+      "expiresAt": "2026-07-28T11:26:58.672Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:55.915Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:58.672Z",
       "tag": "other",
       "tags": [
         "other"
@@ -127,7 +175,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:55.915Z"
+        "reviewedAt": "2026-07-26T11:26:58.672Z"
       }
     },
     {
@@ -137,7 +185,7 @@
         "title": "DSSSB TGT PGT KVS NVS EMRS",
         "handle": "dsssb_tgt_pgt_emrs_kvs_nvs",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/MZkpafvCYiiMH5JW1ERI9jXybTXxykM0-L4jjHDe4zNn-fuPsygX_AAXcjL00rf8-1mdSMLpH5n4mOH8Cn50kShAs8ZoHYNsbBpPxswtNM39yMklBRH1yIAfOq9RJfpi0QS9OgG159FS8qqclwIoqcuMeDj3w6Zjp1dEa0HK7q5aeF0Oiy_iwJ23Z7NVqpg_2Einf6NnZ4DwyEQVlrAT40ttWybzwWNlrf47pJpiTeMr6YWQhFca7JHmoWrQ7qK-DOyQThINswBgToJW4y95qpDNpVrI9rmeOlpvDH6MwM0AvXXaxGDnX4iGyMYgl-o8_zDi0NZPxEnBFoq8mNYOig.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/ZHTwKaKWctdhGjo7jZBsFzjohsxe67XPqhdWexknCHflnTmomRQvuTQJIcPAexFAXSS_rECkWSh9ch0SAmQaGCgrUGCwL5_Ov1WBsJ_0vj9IILwFpvRiB8Zpd0zGSaXILuWWXYFl3gFYzKaVtomHjO2GS7NKqZWc-dbg_90E1K_2kC8HRyo5tbioyc-gChTP5zhHNdOtkkWs1eYqm-u-CrTtCl5ImEYKFABSNr2mez_2I20iJtrOuh6pADFw6lvgSBwYQeYpn_Twfvf_LiVFDzzj_VApipoQ7y5pgZxYBDPJbjUmksWFzucx9z2mxCEBmGAG9I0vO5csTAHy5zPANQ.jpg"
       },
       "sourceId": "in:dsssb_tgt_pgt_emrs_kvs_nvs",
       "sourceCountryCode": "in",
@@ -146,17 +194,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/r_RMxRHaPWr3aTDCLi4r-8-eBGclvX4lE7Oifsc3wEsC39G2WxFp2Z_3OvvRwoS8u6v2yrcwV9EoNn2n8d8D859ZtlGWZfvCIVs-IiNblOyP99CG-0MrHrgQk4MOq2OQjU5C_EuJkchbVZvBuClLw8H5h3djcbnOBI59FRF6k_VPD3SURZVfryxOJj0NeXbiSEvGNaCsb4B1jHeY2VgRAKTGxvM7ryA6iWJ5-MM5ON1oo2ob4LdcbsfuW9QwwMdTe2Vhgd0osVCUVf1ZQBoJht4urI09Ny8sgKgoj7P_zZUit-5AzjxDsuXSCXo2HmpydqcJ4Ba0TY9Vs-X0TvM50g.jpg"
+          "url": "https://cdn5.telesco.pe/file/rGwVRhzA6shZ_QCncR6oQkUzKGPLmgeVA9yc8bYmjwNNqrBbw7HbswVolIKGLJzzopOAz55I4Dl_JPn7MQVvJV339pEzmjz4alwga956d1rY1WJ3JT6jbV7rF4zcrCnBwh_O-WexwMG2OIUl2l_xGKrPnUIPLfIdeOf_KQXBz7hkD-nO9ULeWPlidmDwdxRDnYx1pRitJD--Du8Kg-2oqs91tbfkiclYfqVACAw3YW5gIL8gNpn1kM2NUdw_VLSelJn7NkcjTaiiIpTiITXo4SnePR8FuimEgm9Qa7GCV4mlkS1ZnAwDuOOD673FP4p5VmpzMsWnQtvJxDOUdU6dyg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "प्रह्लाद जोशी को देश के नए शिक्षा मंत्री बनाएं गए......!!",
       "links": [],
-      "createdAt": "2026-07-26T08:59:55.008Z",
-      "expiresAt": "2026-07-28T08:59:55.008Z",
+      "createdAt": "2026-07-26T11:26:57.772Z",
+      "expiresAt": "2026-07-28T11:26:57.772Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:55.008Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:57.772Z",
       "tag": "other",
       "tags": [
         "other"
@@ -174,7 +222,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:55.008Z"
+        "reviewedAt": "2026-07-26T11:26:57.772Z"
       }
     },
     {
@@ -235,10 +283,10 @@
       "fallbackReason": null,
       "text": "Dr. Abhishek Verma, Chief National Coordinator, ShivSena NDA Alliance & Elections, met representatives of the All India Judicial Employees Confederation to discuss employee welfare, institutional reforms, and how ShivSena can support their legitimate concerns through constructive policy engagement.\n\nशिवसेना एनडीए गठबंधन एवं चुनाव के मुख्य राष्ट्रीय समन्वयक डॉ. अभिषेक वर्मा ने अखिल भारतीय न्यायिक कर्मचारी परिसंघ के प्रतिनिधियों से मुलाकात कर कर्मचारी कल्याण, संस्थागत सुधारों तथा उनकी उचित मांगों को रचनात्मक नीतिगत सहयोग के माध्यम से आगे बढ़ाने में शिवसेना की भूमिका पर चर्चा की।",
       "links": [],
-      "createdAt": "2026-07-26T08:59:54.123Z",
-      "expiresAt": "2026-07-28T08:59:54.123Z",
+      "createdAt": "2026-07-26T11:26:56.865Z",
+      "expiresAt": "2026-07-28T11:26:56.865Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:54.123Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:56.865Z",
       "tag": "politics_elections",
       "tags": [
         "politics_elections",
@@ -257,40 +305,34 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:54.123Z"
+        "reviewedAt": "2026-07-26T11:26:56.865Z"
       }
     },
     {
-      "id": 4181093265,
-      "postUrl": "https://t.me/delhi_up_police_ssc_gd_constable/37966?single",
+      "id": 2215377623,
+      "postUrl": "https://t.me/delhi_up_police_ssc_gd_constable/37968?single",
       "source": {
         "title": "DELHI UP POLICE SSC GD CONSTABLE EXAMS GK GS",
         "handle": "delhi_up_police_ssc_gd_constable",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/cShgB0bumG4CE841dxgYKPHcYPx-mHFqJDaHDf7OVCzKPA9UDxygWpEv3yRXDTaOnhBkegR4-LP9Qxr3gUXUYG00LnOtxGd4RggVK2B21tngCmhJRIe2OyvGG-9vVyclilRKvcLc79DBMcuoZ8DT3eLq60aq0FDibP3owmEhsBEE3i5uzcoKD5IMnpAf5YFIR6tj4e2EsmQYk6qiPLGrvskZPYyp27RAoKDjh9yOUf0uBLtZYKOxWJXBlcG1DwaiT6FfTz8BQ3jmFvpqZJu_L0cQeVJbTuNGjY01-iQXucTSNygszcRcFxkOFNPVmhJFsLJ_wpDjsatYFN82GJUFvQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/oK05FZrtwfMfCRZtexMcDqN3qBV1xc-EP8MqkLPcV_fkTKhGkWKNaew-8lsSPfdB7Vlh8xgHn_LaZMpfjJUHmrZwstivvL9D4YSWn7hvRdkgvkbRhO-IeFsgygDP_K1uuao8r0RfDdIfzrXwNEkXnER5qxfWhgPpaUFc9MeppV8obpvJzetvWcYINNnoYiDj-ZHzktpssVCkd32MjQleKLlIfYwaUDNLcyz2hu_XlQBJ0MSFWHp2dEYcpAkLcuXay_7OOZbJsep0-NL0OrBvWKK_sSu3AsUY56rQswflcZiIH_1ovgd5nEiDL9BXdJbpVSquEoT17-GcYL5sSURowA.jpg"
       },
       "sourceId": "in:delhi_up_police_ssc_gd_constable",
       "sourceCountryCode": "in",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/XSHxABt8Ls-KitRwp8HJP2n28cKdaXKfK4cLyh8ufg7gHO8qc5tV8aSdk9J8ASd9Jze67S9jgtxAG-qIgPschN2Wdc9dcz8XK9Z2vfzbIM4KFqiwiO4pS7La8OKXD5FPi2RzECeMMkilb2HXHuZEbXL_VqhxbfPImWOIZX_YHzB4oy9nxIbTKDeoRNB7VpTqhwm7jYBJwN62fBYf0sfD9si8E5b4bEgeean5ePuUDAFj8iVjb3TO4Ik16SDV-BNC6DEMEu5OwRixdUTo4aWgvEx8rQ-RDP5tkos4Fu_35WjPHQEkZCDoH7SWItafBH0J9JHLAaxKiAaa2NVxQ8Y1jA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🎁 Hamari Taiyari Official की PCB की तीनों किताबें एकदम free...😇\n\nGet your Book on App👇👇",
+      "text": "Ncert Books PDF'S Link 🎯",
       "links": [],
-      "createdAt": "2026-07-26T08:59:52.353Z",
-      "expiresAt": "2026-07-28T08:59:52.353Z",
+      "createdAt": "2026-07-26T11:26:55.088Z",
+      "expiresAt": "2026-07-28T11:26:55.088Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:52.353Z",
-      "tag": "technology_software",
+      "mediaRefreshedAt": "2026-07-26T11:26:55.088Z",
+      "tag": "books",
       "tags": [
-        "technology_software",
-        "technology"
+        "books",
+        "education"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -305,12 +347,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:52.353Z"
+        "reviewedAt": "2026-07-26T11:26:55.088Z"
       }
     },
     {
-      "id": 3827647323,
-      "postUrl": "https://t.me/dealzarena/102332?single",
+      "id": 2889376738,
+      "postUrl": "https://t.me/dealzarena/102333?single",
       "source": {
         "title": "DealzArena",
         "handle": "dealzarena",
@@ -323,22 +365,21 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Havells Dry Iron with 1100W for ₹645.\n\nhttps://amzn.to/4hs1x08\n\n• Apply ₹250 Coupon on page.",
+      "text": "POND'S Bright Beauty Vit C+E+A Gel Face Wash 100ml at 144\n\nhttps://amzn.to/4flonoR",
       "links": [
         {
-          "label": "https://amzn.to/4hs1x08",
-          "url": "https://amzn.to/4hs1x08"
+          "label": "https://amzn.to/4flonoR",
+          "url": "https://amzn.to/4flonoR"
         }
       ],
-      "createdAt": "2026-07-26T08:59:51.228Z",
-      "expiresAt": "2026-07-28T08:59:51.228Z",
+      "createdAt": "2026-07-26T11:26:54.284Z",
+      "expiresAt": "2026-07-28T11:26:54.284Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:51.228Z",
-      "tag": "technology_all",
+      "mediaRefreshedAt": "2026-07-26T11:26:54.284Z",
+      "tag": "beauty",
       "tags": [
-        "technology_all",
-        "technology",
-        "ai"
+        "beauty",
+        "fashion"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -353,7 +394,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:51.228Z"
+        "reviewedAt": "2026-07-26T11:26:54.284Z"
       }
     },
     {
@@ -372,17 +413,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/PxAThYX1ky4RwvT6wqxED7cIYzuNuka0oBtDSBzOaHmjSYetkOEv5K8LpQUMX5QUSkAUu1UmCUIhxXuhlDF5Sbhi1L5zDCP0IIkOwXMUML3m_GD2ReiOIlvJpcNGLu15SsReaoeWsipN7NRSXs2IbidN3kOxjCnm13PkAN14BRjFmdkNeBj6ka3il7XOyhmJVv5hF2VqqJkxvOZ0xO1-3D75_5b52CMgeQmzmpXS446aumuL40c4NLNf-FIQoCnosTuVjxR40J2SRWVnO8PiHtLcnuKdQ91_yzabIqLaI4ZUjIExj0Y8Sh2oa1XVO2xubBOC9VkHbg4Cm2Bo40WZoQ.jpg"
+          "url": "https://cdn5.telesco.pe/file/lrpsp8eix3ea_vOaybUE2w2SVb4PXTH4zFpLZzwbRfXbPIr0z7kXiTVe5_tl9Whro4ugAqMP1W2bORPjvPhS3ko-J1B0mbHQ2cmEV-UE65akQArVf-3u9Y5z6q9UCy3nDz7C0q9RNld9fUyskmhGb_1Ddi9iC2irGJg5837FWmM2rWiQxpWPDjTeXDappMgjWC-j08dvhkF6cE6PLfbfckGpYtnsgnc_RwOttWBVcXJTknJeKh8eOAlywDRCESKd7mMUCg8YOEhSpwXhTmwD3huKMFtcU0ylGKhsMrKKOH81a9dQX5RVNkfX23RLo90NOIr80yyM6wTAtAzpyLVXXw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T08:59:50.507Z",
-      "expiresAt": "2026-07-28T08:59:50.507Z",
+      "createdAt": "2026-07-26T11:26:53.569Z",
+      "expiresAt": "2026-07-28T11:26:53.569Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:50.507Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:53.569Z",
       "tag": "news_all",
       "tags": [
         "news_all",
@@ -404,7 +445,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:50.507Z"
+        "reviewedAt": "2026-07-26T11:26:53.569Z"
       }
     },
     {
@@ -441,10 +482,10 @@
           "url": "https://tinyurl.com/ALL-EXAM-TEST"
         }
       ],
-      "createdAt": "2026-07-26T08:59:49.727Z",
-      "expiresAt": "2026-07-28T08:59:49.727Z",
+      "createdAt": "2026-07-26T11:26:52.802Z",
+      "expiresAt": "2026-07-28T11:26:52.802Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:49.727Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:52.802Z",
       "tag": "education_all",
       "tags": [
         "education_all",
@@ -463,17 +504,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:49.727Z"
+        "reviewedAt": "2026-07-26T11:26:52.802Z"
       }
     },
     {
-      "id": 83644787,
-      "postUrl": "https://t.me/daily_current_affairs_gs_gk_quiz/45287?single",
+      "id": 1259441355,
+      "postUrl": "https://t.me/daily_current_affairs_gs_gk_quiz/45298?single",
       "source": {
         "title": "Daily Current Affairs GS GK Quiz",
         "handle": "daily_current_affairs_gs_gk_quiz",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/BqWilpIZh5PK3_vqkhlJkIGPZDXfME3Cs348oqP9ccwoCABYayAFlfaCmpNrqJdF_LS0ethQaFqpTPuGkYLJ764w36p4HbItX_d9d5YlOY55_W1KhztY4MWBRYyeVRKoSE9OcL4Z2DIXTOcf03Ob_E8DriXqj4owEAw1QDMu2IUcmvaekkhVXWiPpOg3fps2jm2YHe9kPMTCgNtuznQb02OdCrnnnvwYsd74eGpwrXF1RCYZ4Buqb11TmM-NYxTw-gdju90OBtzHcaBOvWBcXywyjVgRo0xJUGQy9VRNdYjcf-zdHOOeSLoPXeX-hUfhTqlpUXOxArEJHQFAGQapCA.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/Jtt9qXZnMZhPisy_dLQ9O3-3t7NzBMEn8SIKxL_wCJG4_tdxwlY1sJPe_-Sh7YCURw8Uoy9pRRPNv6U9sa914WPXJ-0klaUIr2KqZRh_KsbW-VPJZ-jtuCLpA555uepP7vCXmWhBnpDjWO4N3gzvsjItoTxd1ohu09-E-YdjBEHBS8vnLEvKsbfSnZQ23sKCqdxWFdbaq_5CtHv1w9mPqdCdj33Fd-oKoNvS7uAovw39gMSwym247s4twC8WGNWRbwNcLXijEfbj2L_x5uTo3In_5Wp6FVlD1ncvQWSiF_Kv0uyTJjYdocE_i0NqTIho1pSX-RQCc4N4DbqoTZyCQg.jpg"
       },
       "sourceId": "in:daily_current_affairs_gs_gk_quiz",
       "sourceCountryCode": "in",
@@ -483,10 +524,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T08:59:48.967Z",
-      "expiresAt": "2026-07-28T08:59:48.967Z",
+      "createdAt": "2026-07-26T11:26:50.867Z",
+      "expiresAt": "2026-07-28T11:26:50.867Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:48.967Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:50.867Z",
       "tag": "other",
       "tags": [
         "other"
@@ -504,7 +545,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:48.967Z"
+        "reviewedAt": "2026-07-26T11:26:50.867Z"
       }
     },
     {
@@ -514,7 +555,7 @@
         "title": "Daily Current Affairs & Gk",
         "handle": "daily_current_affairs_dot_gk",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/gfFBWv2Qf7QaYSsf5zsa4SrEYnwEzYKMBqqg8IYN88STbYlSXdQG_78UAh19WrN6nr7Ip6CgVzMZKgp61aziDCCU3El3-Gj6RzAsFsa101QrWyvue7aBk3bRVjCwX-wLTLhNyGHLZW_Z_uDqI7FfUCvRg9Cb_Xz0x9NHsKW85or9GPo2uUtrBwMoTlGt09kfZi1Ovn5tT4qoAAnr1B-ozUNm4uBY9cYjwlNugdP56F4RD7aGVcgqvLGonpGgEznmhp2qplx-QV_Znc7pwj6znuCily6kYXyTo0J07dHLbRY7RpsWVRoCyOXa0vGs7iyBXCS8AErNL-qxAtXR1TtDGg.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/XJclkguchaGPGdvoafGuPfhzdms--x9lyZtCUNHOEuUU6fCXKZQOgY6gctHCAxJPnp18muU7fMDNSKvNvpl3-S0oSZALZEQt4TPPw2VAYRCpPs8_FTo8jRx55jnCFHurNCQXZP9OgH9fDLe32n5xCjNhmk1NQZoVe9HeQPH66kmGPU3i250jf_YliXhCj8lpjDxqLxG9Ili26NBvKf58lFOJ-CuDgPO_w1oUsDCOB_c-PUNK5yquXLXsGrcMGygbSR6wLYDdRsqwGyBhRyPcFqZdxmazJ-w7C1sy1pNkEP6Z6CdjkXonZm03vnTtMG0tEGttd9Rm2gVIq-kkqjOc8A.jpg"
       },
       "sourceId": "in:daily_current_affairs_dot_gk",
       "sourceCountryCode": "in",
@@ -524,10 +565,10 @@
       "fallbackReason": null,
       "text": "📜 हिजरी कैलेंडर का इतिहास\n\n1. इस्लाम से पहले का अरबी कैलेंडर\n\nइस्लाम से पहले अरब लोग चाँद (चन्द्रमा) पर आधारित महीनों का इस्तेमाल करते थे।\n\nलेकिन इसमें कोई स्थायी नियम नहीं था।\n\nकई क़बीलों ने नसी (Nasīʾ) नामक प्रथा अपनाई थी, जिसमें वे महीनों को आगे-पीछे कर देते थे ताकि मौसम या व्यापार के हिसाब से समय बदला जा सके।\n\nइससे महीनों और त्यौहारों में भ्रम पैदा होता था।\n\n2. हिजरी कैलेंडर की शुरुआत\n\nइस्लाम आने के बाद रोज़ा, हज, ज़कात जैसे धार्मिक कर्तव्यों के लिए एक व्यवस्थित कैलेंडर की ज़रूरत पड़ी।\n\n638 ईस्वी (17 हिजरी) में ख़लीफ़ा हज़रत उमर इब्न अल-ख़त्ताब (रज़ि.) ने आधिकारिक तौर पर हिजरी कैलेंडर शुरू किया।\n\nइस कैलेंडर की शुरुआत (Epoch), पैग़म्बर हज़रत मुहम्मद ﷺ की मक्का से मदीना की हिजरत (622 ईस्वी) को माना गया।\n\nयह घटना इस्लाम के इतिहास में बहुत महत्वपूर्ण मानी जाती है, क्योंकि इसी से पहला इस्लामी समाज और राज्य स्थापित हुआ।\n\n3. कैलेंडर की संरचना\n\nहिजरी कैलेंडर एक पूर्ण चंद्र कैलेंडर है।\n\nइसमें 12 महीने होते हैं और एक साल लगभग 354 या 355 दिन का होता है।\n\nहर नया महीना नए चाँद (हिलाल) के दिखने से शुरू होता है।\n\nयह ग्रेगोरियन (सौर) साल से छोटा होता है, इसलिए इस्लामी महीने हर साल लगभग 10–11 दिन पहले आ जाते हैं।\n\n4. हिजरी कैलेंडर के 12 महीने\n\n1. मुहर्रम\n\n2. सफ़र\n\n3. रबीउल अव्वल\n\n4. रबीउल आखिर\n\n5. जुमादा अल-ऊला\n\n6. जुमादा अल-आखिर\n\n7. रजब\n\n8. शाबान\n\n9. रमज़ान\n\n10. शव्वाल\n\n11. ज़िलक़ादा\n\n12. ज़िलहिज्जा\n\nइनमे से चार महीने पवित्र (हराम) महीने माने जाते हैं:\n\nमुहर्रम, रजब, ज़िलक़ादा, ज़िलहिज्जा।\n\n5. आज का महत्व\n\nहिजरी कैलेंडर का इस्तेमाल मुख्य रूप से धार्मिक कार्यों में होता है:\n\nरमज़ान के रोज़े रखने के लिए\n\nहज अदा करने के लिए\n\nईद-उल-फ़ितर और ईद-उल-अज़हा जैसे त्यौहार मनाने के लिए\n\nसऊदी अरब और कुछ अन्य मुस्लिम देशों में यह आधिकारिक (ऑफिशियल) कैलेंडर है।\n\nभारत, पाकिस्तान आदि देशों में नागरिक कार्यों के लिए ग्रेगोरियन कैलेंडर चलता है, लेकिन धार्मिक कामों के लिए हिजरी कैलेंडर का ही पालन किया जाता है।\n\n✅ संक्षेप में:\nहिजरी कैलेंडर की शुरुआत 638 ईस्वी में ख़लीफ़ा उमर (रज़ि.) ने की। इसका आधार पैग़म्बर मुहम्मद ﷺ की 622 ईस्वी की हिजरत (मक्का से मदीना) है। यह 12 महीनों वाला चन्द्र कैलेंडर है और आज भी मुस्लिम धार्मिक जीवन का आधार है।",
       "links": [],
-      "createdAt": "2026-07-26T08:59:48.207Z",
-      "expiresAt": "2026-07-28T08:59:48.207Z",
+      "createdAt": "2026-07-26T11:26:50.127Z",
+      "expiresAt": "2026-07-28T11:26:50.127Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:48.207Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:50.127Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -547,12 +588,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:48.207Z"
+        "reviewedAt": "2026-07-26T11:26:50.127Z"
       }
     },
     {
-      "id": 2450992174,
-      "postUrl": "https://t.me/d_bhai_company/38119?single",
+      "id": 102345084,
+      "postUrl": "https://t.me/d_bhai_company/38126?single",
       "source": {
         "title": "D-Company-D-Bhai™(Original Channel)",
         "handle": "d_bhai_company",
@@ -566,22 +607,21 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/DonIqyGTTcGQZxZPDAzIFFGFjynqSDSSuXr2JB-mQrNjCj8yA6oQWH1SRRzqgdaioLmnsZ-cOtZ8YLD8qk5AHz16DPIr2D341kXrvewcN7KuYqAMZCwJrFiBpE5Wt96Di3xQFE7ZIRUGXgAq85yDX26Q0qHSLnyJBR270_ltjJGe-iuXcLu8Ng66mCOfZArrzIYAVdiICc0UkHPuSpVGvKwp8itlgh2AqYs1FS7xh0huFSdAbn5wSMv6Rx-eQctZgKpqP6QsFjKvwPguWIouj50P6TCz3I-K4eputQ3dkSSCAOVs1kbva6rgLKHmXub81clAkLIUqkQKZA7AH3pmTw.jpg"
+          "url": "https://cdn5.telesco.pe/file/KnO_Eon4zYYaAOUShpzbex3wu_Xd0SHvo6hhTIHx9xpj_guv84rdryIjEb8htIhmBdgnW2kJFkXAq-ctTe1-ajAgJWvzYufuDACH8QYhNxiHULM8XY9v2UcEdasvcinF1w1F4w8895Nxvv57PggmXTU5Kzh0ZWYHYWP_4Ex_yHgPN6ux8lQwFbmsSLCpEgUY9ZuveVInNKC8zXSRQA0Lnltl1FAPlZpwGUZIzTSTo3Hehxp5zUJu-glmr-2_zno4UcmQMF4Ole7qidYZnxdp0gppkv7umEfNdPXWmUuFgyRlPIwvhqArsAGlrIEi8_omjQ09MOzUtEOaTc_R_Vt57Q.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "TOSS= KANDY ROYAL \n\nLIFE TIME LOSS CAVAR TOSS ✔️✔️",
+      "text": "MATCH WINNER - INDIA 🏆✅",
       "links": [],
-      "createdAt": "2026-07-26T08:59:47.055Z",
-      "expiresAt": "2026-07-28T08:59:47.055Z",
+      "createdAt": "2026-07-26T11:26:48.312Z",
+      "expiresAt": "2026-07-28T11:26:48.312Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:47.055Z",
-      "tag": "technology_all",
+      "mediaRefreshedAt": "2026-07-26T11:26:48.312Z",
+      "tag": "sports_matches",
       "tags": [
-        "technology_all",
-        "technology",
-        "ai"
+        "sports_matches",
+        "sports"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -596,12 +636,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:47.055Z"
+        "reviewedAt": "2026-07-26T11:26:48.312Z"
       }
     },
     {
-      "id": 3788532561,
-      "postUrl": "https://t.me/current_affairs_gk_gs_quiz_hindi/48087?single",
+      "id": 530078176,
+      "postUrl": "https://t.me/current_affairs_gk_gs_quiz_hindi/48095?single",
       "source": {
         "title": "Daily Current Affairs GK GS quiz Hindi",
         "handle": "current_affairs_gk_gs_quiz_hindi",
@@ -614,12 +654,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⭕ ₹𝟐𝟗𝟗 की टेस्ट सीरीज़ 𝐅𝐑𝐄𝐄 में दे रहा हूँ,\nआंख बंद कर के ज्वाइन कर लो जल्दी\n\n𝟏𝟏𝟎𝟎𝟎+ प्रश्नों के Set दे रहा हु बिलकुल फ्री, और अभी तक आप सो रहे हो,\nमौका जाने वाला है, जल्दी ज्वाइन करो",
+      "text": "📚 𝐍𝐜𝐞𝐫𝐭 𝐁𝐨𝐨𝐤𝐬 𝐏𝐃𝐅'𝐬 𝐋𝐢𝐧𝐤 📚",
       "links": [],
-      "createdAt": "2026-07-26T08:59:46.302Z",
-      "expiresAt": "2026-07-28T08:59:46.302Z",
+      "createdAt": "2026-07-26T11:26:47.561Z",
+      "expiresAt": "2026-07-28T11:26:47.561Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:46.302Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:47.561Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -639,12 +679,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:46.302Z"
+        "reviewedAt": "2026-07-26T11:26:47.561Z"
       }
     },
     {
-      "id": 4259530431,
-      "postUrl": "https://t.me/ctet_uptet_super_tet_stet/15150?single",
+      "id": 1583779302,
+      "postUrl": "https://t.me/ctet_uptet_super_tet_stet/15151?single",
       "source": {
         "title": "CTET UPTET SUPER TET STET GK",
         "handle": "ctet_uptet_super_tet_stet",
@@ -653,19 +693,51 @@
       },
       "sourceId": "in:ctet_uptet_super_tet_stet",
       "sourceCountryCode": "in",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/ACuKIB62aeEngfszyRn0J_PFwMwi5YGOhtO8_5aRP-mBj5nO2wSu5q-vaxoBHWdYu8EUY7AALtoEziD8HEUtgb2-DN7oCsZ5px7QLYRb3Znt71eGH6T6vJ-skJ7icbTUXm9evrgH8S0mNgVGRYZSg3-adMqVo8pEHNyko5oVmyT2q-AjZ6pgLmAC6K-3r-627ZUtUZLWjrC4DmBQgBOqIJz-kd8XjvGa1vLYALnR-HR-qcpYADsS-dTWYChxt2NyBe1N_vdKT5hOrRt0LshM9GMu1pcutoRW_ARLRKJvV4kWSZdZn4Yu1lopTcGhFk6VhTxNc-5fZZFfXgCkon5QlQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-07-26T08:59:45.505Z",
-      "expiresAt": "2026-07-28T08:59:45.505Z",
+      "text": "🔥 B.Ed Candidates - Don't Miss This!\n\n💎 UPSC Principal and Vice-Principal Recruitment 2026 Notification Out for 828 Vacancies\n\n🛡Eligibility: https://t.me/UPSC_Principal_2026/4\n\n🔰 Syllabus: https://forms.gle/7URzg3tDRnvMbTVa6\n\n➡️Join: https://t.me/UPSC_Principal_2026 for Syllabus, PYQs and Guidance\n\n⚡️Online Batch Link: https://classplusapp.com/w/vyasaias-arhsv/courses/876035\n\n📞 Message @content_admins for more information \n\n✔️ WHATSAPP/CALL 9266105859, 8851628134\n\n✅️ Telegram Channel: https://t.me/UPSC_Principal_2026\n\n🏠 DELHI CENTRE: FIRST FLOOR, GROVER CHAMBER, METRO PILLAR 109, NEAR KAROL BAGH METRO STATION",
+      "links": [
+        {
+          "label": "https://t.me/UPSC_Principal_2026/4",
+          "url": "https://t.me/UPSC_Principal_2026/4"
+        },
+        {
+          "label": "https://forms.gle/7URzg3tDRnvMbTVa6",
+          "url": "https://forms.gle/7URzg3tDRnvMbTVa6"
+        },
+        {
+          "label": "https://t.me/UPSC_Principal_2026",
+          "url": "https://t.me/UPSC_Principal_2026"
+        },
+        {
+          "label": "https://classplusapp.com/w/vyasaias-arhsv/courses/876035",
+          "url": "https://classplusapp.com/w/vyasaias-arhsv/courses/876035"
+        },
+        {
+          "label": "@content_admins",
+          "url": "https://t.me/content_admins"
+        },
+        {
+          "label": "https://t.me/UPSC_Principal_2026",
+          "url": "https://t.me/UPSC_Principal_2026"
+        }
+      ],
+      "createdAt": "2026-07-26T11:26:46.750Z",
+      "expiresAt": "2026-07-28T11:26:46.750Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:45.505Z",
-      "tag": "other",
+      "mediaRefreshedAt": "2026-07-26T11:26:46.750Z",
+      "tag": "animals",
       "tags": [
-        "other"
+        "animals",
+        "nature"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -680,7 +752,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:45.505Z"
+        "reviewedAt": "2026-07-26T11:26:46.750Z"
       }
     },
     {
@@ -690,7 +762,7 @@
         "title": "CTET UPTET SUPER TET EXAM ™",
         "handle": "ctet_uptet_super_tet_exam",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/Q5Om0xee3UmOMoSZvoLU5J5n1pah7FG97ItqCS2MEkV5aL4-m3-f4KndRLwOnQkbqrkCXWiRiH8HOA1nLfwYmC1uNzHBPQXJdSo3GFvsy3ltCYryCWsqSz4IVkKF4aiFWJpwVbTVNKWG8uoGEuMqCnmzmnG1y--Q01kpE472ylpOoGOZj9oUphM8GlefLAdKjjNUP3-n9fv4W-wWsDMVvklNZsZ42C_6fE_XPFEbS3H1y1AA1XWYFRL4-y5IL_stXDAs1xRAitktZRWwXplFlpJEM7dKAserCi4nRhGKOk8-rkF11SDCNLMv3Bhh5JOKXXsH3qu_RA9nQj6fRk0iQQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/WKgNvKQDz6cU8PSYUAj1qklcGFZbpxNQJ5jTKZfDAAemrsYpUoDzyjA0F4thPjCrVggAQiCHWSGB-I6X2JCRsWrMCIeFVSkA055vyRF6tsXCIrhJFZrm-aA0SvUTo-As4AjxWd0evnP7ECm_UPVl2pAfqyxZKreFKic3Eo0uCQNtEI1bnBsOK6GWhhIEqeZ9WSS5sRqN_gaX_otVATshWbfdA99Mbo9xEXo3ccYjwNcKVp54fg7YCAmy0-m6-cMPttj9U83n4nlgbYA8AdHdbEYUjJDErxHYu6xfkqx1AL2AtI3kSazPuipqrbgrEY_aJPWYITrGNFwBeLvMJXR4RQ.jpg"
       },
       "sourceId": "in:ctet_uptet_super_tet_exam",
       "sourceCountryCode": "in",
@@ -700,10 +772,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T08:59:44.720Z",
-      "expiresAt": "2026-07-28T08:59:44.720Z",
+      "createdAt": "2026-07-26T11:26:45.989Z",
+      "expiresAt": "2026-07-28T11:26:45.989Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:44.720Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:45.989Z",
       "tag": "nature_all",
       "tags": [
         "nature_all",
@@ -723,7 +795,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:44.720Z"
+        "reviewedAt": "2026-07-26T11:26:45.989Z"
       }
     },
     {
@@ -772,10 +844,10 @@
           "url": "https://t.me/addlist/69n1KgH_4JplODc1"
         }
       ],
-      "createdAt": "2026-07-26T08:59:43.402Z",
-      "expiresAt": "2026-07-28T08:59:43.402Z",
+      "createdAt": "2026-07-26T11:26:44.729Z",
+      "expiresAt": "2026-07-28T11:26:44.729Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:43.402Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:44.729Z",
       "tag": "other",
       "tags": [
         "other"
@@ -793,7 +865,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:43.402Z"
+        "reviewedAt": "2026-07-26T11:26:44.729Z"
       }
     },
     {
@@ -821,10 +893,10 @@
       "fallbackReason": null,
       "text": "Crypto bros in 2070 still \nwaiting for the bull run...👀🕯✨",
       "links": [],
-      "createdAt": "2026-07-26T08:59:42.674Z",
-      "expiresAt": "2026-07-28T08:59:42.674Z",
+      "createdAt": "2026-07-26T11:26:43.992Z",
+      "expiresAt": "2026-07-28T11:26:43.992Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:42.674Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:43.992Z",
       "tag": "crypto",
       "tags": [
         "crypto",
@@ -843,7 +915,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:42.674Z"
+        "reviewedAt": "2026-07-26T11:26:43.992Z"
       }
     },
     {
@@ -853,7 +925,7 @@
         "title": "𝐑𝐒 𝐏𝐑𝐄𝐃𝐈𝐂𝐓𝐈𝐎𝐍",
         "handle": "cricket_sports_prediction",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/WJsAopDIymTdSJqrC8hOKZwLs9eWcn_DbqetdJqZGSs2SrizRdSnjSOVnfo4lSLsoLyVemfZP3YOLgzKMXNDqV3X4h9f7m1aqpuybmWSr2CcEN-4kUjLvN0lt1AcBDqIq7ecuE14cx34Sahq0x4izuk1_N85DpEBf5d3e7k5IsxByq9fFqzli0P-q4AhPMz-KEi7s6g1QV72xmEMHUCiGf4D-bt0H1NVAj4Zi3ZcRvv0cGbqyMge9Nh6gvM8r5dIO64FaxUdSNnZw1XiJJOq1d5r8BYzKbuCtXUONMnUlFVdIXs7Jzl-kmnsm2uxLP0SKKzANEsgCttk_maGe6glXA.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/ThAO2mJC3C8iush5IAlN5haDiv7Yd4AAZTd0iDJrgP4TZVN3AqFnP6W_272r8mxB7keSyDkWD0nomEBdPRRFTKlpL8KgIZyN3x4qhHT2xtzTLe05jRXXuUBmoXJyxFI-yU77WlNBfopiUMrDsArNnLsyEiXcpzc4vSh4CHzw3x8aeh9aB9-sW1ByJettcNiDaD5SaGANkF4CB-dHE4Rg7nA0Kw27hKlk6il2HxEEiMvQp4iX0iwBvosq_YQM7m-sNGSQsg22d0bO6OQ_F67wqwKfluKse_CQSpMfXqzAUo_4it0hqivoHinkSd7s-RioP8CjWkyfB04d0XJa7E-SDA.jpg"
       },
       "sourceId": "in:cricket_sports_prediction",
       "sourceCountryCode": "in",
@@ -862,7 +934,7 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn5.telesco.pe/file/977cf18ae0.mp4?token=NXukEY5lIS7Qc2kcUagPFlGjaC3BS8mP1HoJkL_dmJhsx2qlcOWijETcHT8JIc3ii35ZwgMNj-JgPQICR18dyg2e_yWXuR-8RQLF6uB03EYaTeSbBCtLTUnQLTORU-lAVKrMe2czVcb2aQkHqKznUtWYQryxehq2Xglikbu9f0qS9f74JwDDnjTM0qdC3AAMrLReWpgAZl0RIObl2OK68LKg4ylkwo_lSmwfVqzz395VKYuw1koF7U6ppJLZbqDTlFT2PFxY5VF3pePrx15EHc_Q82YLq_emfGnajMzvR01S_Ieacxo47i5R1Ibr1tAzvHckJEo22OSSHyzcUgC9Xw",
+          "url": "https://cdn5.telesco.pe/file/977cf18ae0.mp4?token=rkDph8ITtdK7FjL9UWvX5cJXtKlBYmVHrseD4QFB5QMQ29OOYFelREX30mOvXtoXn0orGPS06Cu8zbBpmdLw4KI9pztIlOYkAKszTHR5V6K2vwO37qeloKC-DQEuQsIwf1OhTXNRfCM5EMMz8OifnLzX_4ZqOOjmNS01CrxcMAixHPSoLdIU90WOi368GlYglI3eQPBbGfxgGFGR5NcVssC7UhBIEebJjE12qQLvoQdWd62PQkBXhLQ8MC1g1liDk0imW8liC-vEhxyfUDJRKJu8HFhSiQvZB5JDb5Lw5Gc9MjhJTUtPhCYexPHL9LFx4tTptxeos6ktQLcmfYNg2w",
           "poster": null,
           "mimeType": "video/mp4"
         }
@@ -871,10 +943,10 @@
       "fallbackReason": null,
       "text": "🤣🤣",
       "links": [],
-      "createdAt": "2026-07-26T08:59:41.847Z",
-      "expiresAt": "2026-07-28T08:59:41.847Z",
+      "createdAt": "2026-07-26T11:26:43.151Z",
+      "expiresAt": "2026-07-28T11:26:43.151Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:41.847Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:43.151Z",
       "tag": "other",
       "tags": [
         "other"
@@ -892,7 +964,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:41.847Z"
+        "reviewedAt": "2026-07-26T11:26:43.151Z"
       }
     },
     {
@@ -927,10 +999,10 @@
           "url": "https://rootapp.crazygktrick.com/wlp/1000-current-affair-mcq-june-update-2025-26"
         }
       ],
-      "createdAt": "2026-07-26T08:59:41.085Z",
-      "expiresAt": "2026-07-28T08:59:41.085Z",
+      "createdAt": "2026-07-26T11:26:42.386Z",
+      "expiresAt": "2026-07-28T11:26:42.386Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T08:59:41.085Z",
+      "mediaRefreshedAt": "2026-07-26T11:26:42.386Z",
       "tag": "finance_banks",
       "tags": [
         "finance_banks",
@@ -949,7 +1021,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T08:59:41.085Z"
+        "reviewedAt": "2026-07-26T11:26:42.386Z"
       }
     },
     {
@@ -959,7 +1031,7 @@
         "title": "Civil Services Prelims",
         "handle": "civil_services_prelims",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/e8OULT-S_fYZoB18Phm5HQmt1hk_C2kO09oJOH8zjklwblWwKK3L5wzTi5HIknpNX947a6dBpit0dSo2_-AFibmBcG_ddyT4YSa42e6z-4asMAtX8yQiSHE0UOGGPgVoZJWAdIZSW5pQIW2kCFJHkBSQCz8fU43GDHYDhmtnDtO24PQyHR49lM_NFfa1f3IEr8ZWOI264DtiHY4gMkEUWTZa1MuGF43NjKjj6KQShG40V94cWibT6VR2shdE1uGU86-zCKtGdGhN0uZv7pBXWeiWXD8hwTYDGkV0uHyMfUW4NDY2GKYPPjNiM0ueWWKunfHP82z8FLvTFU97BLMf3A.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/rDIIPtXgB7gUVeXyNDqLCrIulNUFNRb1lyvgTLXB6OU4nDWcnnTw4_fqajHzsO_pIKjUMGB3rRip-hDO0gFQqJD9AyOrdrjFNsKcwek2AbTyqt9rqWYLt7u-ti607KNUjsyLZ4N3DiLCTTM2WwwCw9whGqF9eqb7ujhjbW1BGpdZMutElhh741bygCCE_9qI0Js83dAIqrW_cWJaxWc_1DZYYLT13YAzoZXieBsw4N8e-oD5O0e4-N31vyylErWVM_GktKBVapLjRM_UOLXRPHNHX8upymWYzjKFrLmk5_5znxbcBwCyiC2gpFefhUG09vWtolMkRFwFf_apUwOGvA.jpg"
       },
       "sourceId": "in:civil_services_prelims",
       "sourceCountryCode": "in",
@@ -1002,10 +1074,10 @@
           "url": "https://t.me/sunyanotes50/21525"
         }
       ],
-      "createdAt": "2026-07-26T09:01:43.126Z",
-      "expiresAt": "2026-07-28T09:01:43.126Z",
+      "createdAt": "2026-07-26T11:28:47.037Z",
+      "expiresAt": "2026-07-28T11:28:47.037Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:43.126Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:47.037Z",
       "tag": "electronics_pc",
       "tags": [
         "electronics_pc",
@@ -1024,7 +1096,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:43.126Z"
+        "reviewedAt": "2026-07-26T11:28:47.037Z"
       }
     },
     {
@@ -1044,10 +1116,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:41.020Z",
-      "expiresAt": "2026-07-28T09:01:41.020Z",
+      "createdAt": "2026-07-26T11:28:46.082Z",
+      "expiresAt": "2026-07-28T11:28:46.082Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:41.020Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:46.082Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -1067,7 +1139,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:41.020Z"
+        "reviewedAt": "2026-07-26T11:28:46.082Z"
       }
     },
     {
@@ -1087,10 +1159,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:40.319Z",
-      "expiresAt": "2026-07-28T09:01:40.319Z",
+      "createdAt": "2026-07-26T11:28:45.378Z",
+      "expiresAt": "2026-07-28T11:28:45.378Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:40.319Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:45.378Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1108,7 +1180,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:40.319Z"
+        "reviewedAt": "2026-07-26T11:28:45.378Z"
       }
     },
     {
@@ -1139,10 +1211,10 @@
           "url": "https://t.me/ChaluGhadamodi"
         }
       ],
-      "createdAt": "2026-07-26T09:01:38.906Z",
-      "expiresAt": "2026-07-28T09:01:38.906Z",
+      "createdAt": "2026-07-26T11:28:43.963Z",
+      "expiresAt": "2026-07-28T11:28:43.963Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:38.906Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:43.963Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -1162,7 +1234,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:38.906Z"
+        "reviewedAt": "2026-07-26T11:28:43.963Z"
       }
     },
     {
@@ -1172,7 +1244,7 @@
         "title": "cds.journey",
         "handle": "cdsjourney",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/ZWQfQbg_oPS6pJKzn5u1RhKK-5iS-T5YlF6lbuYtZH5CS-PXPHyaRqCAxqALgSAM5VIAWOsssoyX0ies2Sr-qb8HCDKH0qIpMw5Zfdu3CvlHlm_LAaP40eR4_BXz7xPbAtDWsIMJzwQJd11gpf1Au13Z22qNmGl9TfLE5TM0y5gtiwtBwxAPdohGw5pBCoQ185BNX_vw57hb9L1xjNgXgW8NKaxIW9DRPjPUbUhLRD-xKpStoYBOF18Wx6WaUw82r-JC9HfTT8UKlDQdP0k8rZWn-t6oJnOCndhoiB-b59eW2A3zT8W8IiGuXss8OXJYHRrFlRpwnlaK7HJzF2y6iA.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/ZMX4k6ajbJXt9Q38_7qkGQkgDgSXLbXvIZcilC_kGwutP4EQAaYZHuRRyW1M61dNNFjBW33ljUwjEfo6eQBNnH6k3OTsYXpEt4jCGQNdmxFDU053iwLCydtW0u98drUBQa3zQbIE4LqQ50UnykWi5ZghJ7z5rtkLI0iSPg5Ks0u3DfgsBaOTGdxeIiewaDoRYRUVGt0kPjkaqjk2B7w1pD0EUxzoM0qqCEwBtC9DUCBEKFOilK1Y8Xpq06Tcde40iI9PX55XLP_WEr415Zt7XgceGKnUvQ0SRF0EAfAhqWxDRZ2v3x5qMRaceC7595svR_oH3A1VUd4Hz1tdbEKLvg.jpg"
       },
       "sourceId": "in:cdsjourney",
       "sourceCountryCode": "in",
@@ -1182,10 +1254,10 @@
       "fallbackReason": null,
       "text": "One day…\n\nLife will become very quiet.\n\nQuieter than you ever imagined.\n\nThe doors that were always open for you will slowly close.\n\nThe people who kept believing in you, encouraging you, waiting for you… won’t stay forever.\n\nAnd on that day, you won’t cry because life was unfair.\n\nYou’ll cry because you never realised how deeply you were loved while you still had the chance.\n\nWe often think we’ll have more time.\n\nMore time to say thank you.\n\nMore time to listen.\n\nMore time to value people.\n\nMore time to become grateful.\n\nBut life has never promised later.\n\nIt has only given us today.\n\nThe greatest tragedy in life isn’t that love doesn’t exist.\n\nIt’s that we become so used to receiving it that we stop noticing it.\n\nWe forget the people who silently chose us…\n\nAgain and again…\n\nWithout asking for applause.\n\nOne day you’ll remember the little things you never valued.\n\nThe advice you were tired of hearing.\n\nThe person who never stopped believing in you.\n\nThe sacrifices you never saw.\n\nThe prayers someone whispered for you while you were busy chasing your own dreams.\n\nAnd your heart will break…\n\nNot because those moments were small.\n\nBut because they were priceless…\n\nAnd you realised their worth only after they were gone.\n\nDon’t let gratitude arrive with regret.\n\nDon’t wait for an empty chair to remember who used to sit there.\n\nDon’t wait for silence to realise how beautiful someone’s voice was.\n\nDon’t wait for distance to understand who was always walking beside you.\n\nLife has a painful way of teaching us the value of things…\n\nIt first gives us everything…\n\nThen quietly asks,\n\nDid you even notice?\n\nAnd sometimes…\n\nThe answer comes with tears.",
       "links": [],
-      "createdAt": "2026-07-26T09:01:38.039Z",
-      "expiresAt": "2026-07-28T09:01:38.039Z",
+      "createdAt": "2026-07-26T11:28:42.998Z",
+      "expiresAt": "2026-07-28T11:28:42.998Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:38.039Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:42.998Z",
       "tag": "relationships",
       "tags": [
         "relationships",
@@ -1204,7 +1276,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:38.039Z"
+        "reviewedAt": "2026-07-26T11:28:42.998Z"
       }
     },
     {
@@ -1224,10 +1296,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:37.135Z",
-      "expiresAt": "2026-07-28T09:01:37.135Z",
+      "createdAt": "2026-07-26T11:28:42.150Z",
+      "expiresAt": "2026-07-28T11:28:42.150Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:37.135Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:42.150Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1245,7 +1317,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:37.135Z"
+        "reviewedAt": "2026-07-26T11:28:42.150Z"
       }
     },
     {
@@ -1280,10 +1352,10 @@
           "url": "https://youtu.be/deoh_DH8Gxk"
         }
       ],
-      "createdAt": "2026-07-26T09:01:36.236Z",
-      "expiresAt": "2026-07-28T09:01:36.236Z",
+      "createdAt": "2026-07-26T11:28:41.249Z",
+      "expiresAt": "2026-07-28T11:28:41.249Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:36.236Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:41.249Z",
       "tag": "people",
       "tags": [
         "people",
@@ -1304,7 +1376,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:36.236Z"
+        "reviewedAt": "2026-07-26T11:28:41.249Z"
       }
     },
     {
@@ -1314,7 +1386,7 @@
         "title": "Careerwill App",
         "handle": "careerwillapp",
         "verified": true,
-        "avatar": "https://cdn5.telesco.pe/file/WxQZRH9hfMLRmVae2DGtezRzL7jJ_ruUGkqPN08ApBNsE3FSczQ9p1gDr8txmIJelJjDw38toO_agPJHlbiH2kRu71S3eSr0i0J7xD3wNsIk5DdPKc5vuzZ49iaYKgSx-JXhcPcUc7lnhIZadIVsdyzELXrvYwdvAKG5LbR1JTeyNKtpI52AUR8gxfFifP7NaiXswrDxgXdn5VZt-fv17N3bWygPWtey07K3RhAoHQ4QqA05kWiWnj5ZVGUgKALwrJOF9IsHFXoyhgRTwiMvZjYxgIlZ8h8xAmkVO27Iq3mZnEG0_efXwnffkHTdxH2707RZYm5yMcPqehkt68ioNw.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/SsOJ_8d6tBoeM5tM2PahpaByyL-AkyW6HMmoOzFLF4222wRwqlXvpuiyk3VyDkfd0fwP3oUczsAbI6r5ULxWjhVoSbvjX-wA_IGd1oVG6DlTOJY3SMeDwOSPdRdzvbE7CpldLxm0BNy6Q_cTCt1niEEplGDdEpsyQ3wMxn9feayXhdkmYWo_7qcT2TRp1f3n1UuCO712JTbEM1Qt-YRY43OyfBS5spKjAYyfBukG8fgCKpU_mkHUxxKTwhbhU9rE42j8_0Yqw4iPj79fWXWud4MkNTQofkimX1Jj_0Jm2QqpEs4ITHPK0vsONKkTa_4Gkdm9tf_38f580IfWir_mlA.jpg"
       },
       "sourceId": "in:careerwillapp",
       "sourceCountryCode": "in",
@@ -1330,10 +1402,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:35.358Z",
-      "expiresAt": "2026-07-28T09:01:35.358Z",
+      "createdAt": "2026-07-26T11:28:40.400Z",
+      "expiresAt": "2026-07-28T11:28:40.400Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:35.358Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:40.400Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -1355,7 +1427,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:35.358Z"
+        "reviewedAt": "2026-07-26T11:28:40.400Z"
       }
     },
     {
@@ -1380,10 +1452,10 @@
           "url": "https://youtube.com/shorts/vnNGJ-__Cb8?si=D-K-6RFmFwCmxzoj"
         }
       ],
-      "createdAt": "2026-07-26T09:01:34.532Z",
-      "expiresAt": "2026-07-28T09:01:34.532Z",
+      "createdAt": "2026-07-26T11:28:39.399Z",
+      "expiresAt": "2026-07-28T11:28:39.399Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:34.532Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:39.399Z",
       "tag": "marketing_ads",
       "tags": [
         "marketing_ads",
@@ -1402,17 +1474,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:34.532Z"
+        "reviewedAt": "2026-07-26T11:28:39.399Z"
       }
     },
     {
-      "id": 374122222,
-      "postUrl": "https://t.me/bpsc_uppsc_prelims_mains_gk_gs/76338?single",
+      "id": 414498123,
+      "postUrl": "https://t.me/bpsc_uppsc_prelims_mains_gk_gs/76344?single",
       "source": {
         "title": "BPSC UPPSC Prelims & Mains Gk GS PDF",
         "handle": "bpsc_uppsc_prelims_mains_gk_gs",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/d6MYqBHL494l7dzkcMuc4q2su7WKI_y9IorD4QlAg5UDSfKaaZIXs7j3bMzJC1lhzJ1j6u72P-gqvQv5P2TxhOn8hsbtOBhJNrLBO2qeIr6sRJsD0iibpKVGN5HdVYVvRr8UQy_Kih_J8_ZJZQIB57edlMmRR7EKUVAmgqB6VIIsqjTJ11T5MU9VwW-RaURmGEJrZCpojuIWOtD1E5tl7SfdXBkUi-wDGucLlIBL2wCW8WWgW9C3ooanxT-nPjwiocP56LAV0TykExU7qChs6_hUhBbh8UVMVf6-5PGEeTuKJPv0HZRHXrRwGGMZ9hFCZv-TunkqwjytfimlseG7gA.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/kwr608rkm_y1IxFDRkHv3i5nns3WzpMjJ0-R5_gIsZ-9csV6TKPT0re4TXtfcUYVbeaVTV5dA5t8bPz5fR64FTREGdYV3ckZoWztIrY-xKXqdeBnhY99hWC4KLJGN7BEn1XxKxRYxMoBjZ3FzrZuhD8AwGTmKC1F0cvbXm_Qfu3fy9XaBhrHByQ10XN5qMchaM2JkeQRjhHHjqz1XkI41MAT8lt0Bz3OLlDaXMxzuUrp9vdDaMDuJ5ES5wCtuj9zSENhm-D5CgM9YiRGrC4U6I7m-c-vQ6BaS48zF983Ua_85le3lvlQQK66GTJjMN_NE4VvDkS4hcvNJ4Pvnj8C-Q.jpg"
       },
       "sourceId": "in:bpsc_uppsc_prelims_mains_gk_gs",
       "sourceCountryCode": "in",
@@ -1420,21 +1492,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "जो छात्र छात्रा कोचिंग नहीं ले सकते वह हमारे फ़्री \"खान सर\" के \"𝗦𝗦𝗖 𝗚𝗗 𝗖𝗢𝗡𝗦𝗧𝗔𝗕𝗟𝗘\" ग्रुप में जुड़ने के लिए नीचे दी लिंक पर क्लिक करें,\n\n    लिंक 👇👇\n\n➺ https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899\n\n➺ https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899\n\n👆👆 सीमित सीटें,ग्रुप जल्द ही 5 minutes  में फुल हो जायेगा👆👆",
-      "links": [
-        {
-          "label": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899",
-          "url": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899"
-        },
-        {
-          "label": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899",
-          "url": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899"
-        }
-      ],
-      "createdAt": "2026-07-26T09:01:33.394Z",
-      "expiresAt": "2026-07-28T09:01:33.394Z",
+      "text": "📚 𝐍𝐜𝐞𝐫𝐭 𝐁𝐨𝐨𝐤𝐬 𝐏𝐃𝐅'𝐬 𝐋𝐢𝐧𝐤 📚",
+      "links": [],
+      "createdAt": "2026-07-26T11:28:38.301Z",
+      "expiresAt": "2026-07-28T11:28:38.301Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:33.394Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:38.301Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -1454,7 +1517,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:33.394Z"
+        "reviewedAt": "2026-07-26T11:28:38.301Z"
       }
     },
     {
@@ -1464,7 +1527,7 @@
         "title": "BPSC TEACHER PGT TGT PRT STET CTET EXAMS",
         "handle": "bpsc_teacher_bihar_pgt_tgt_prt",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/pV2-GJhPlrTv9EgZH9-3XWBgQtTI0TleRnkk0PJq85tzg2fF7LTFrQEm7p7wUpJMWZmlCUAkf0k8h_MyusSt6ybhaasl73kmIEX2RNmarSSbFPTKLamD7DEUllx2ZUeA7eAgZr8JJY6MJwOxShwHlhoBY0Zt9mA-VTmAgc9x2N-dJ2wRLSlyc7VEtAY3xmUXpIv32wrhbTTEIcUmf9PniQOr0BT-M9ywMX3_U83nEAYk0LYRHbVJ4y0HvmGw1JCT-c1aNmHG-x5eTlPjP4G1jyyvNFxOrEmAp8TpzV-uA6ASEqCq2SU-GlkKsAVXhfAL8WUlpp1dZD-7dElB2gIl-A.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/XZm4IGcfZ4ABynMOJKpE38VeS1Qm3sqlc4g2XGYBQ1GR3_MkqvCY7XfNxfCguo6a-IesQ9IlmsHkkaWQtPzRlltNc_ck_w54rrh6VlRdR0UsJX5-aWaElvIYgv4fWsJdo4lQmiP-TRr_b8__j7ZHDGwJK3pgKVHivuq7CfJ6igHRk-eM16mKdCTsucPgl_vzxMsX94OQAdtl2pFkblHoXqteUH1wGF42v8D3fJJMwzas4weehZzlouhNr099KPS1jxE_RszO8nhFya97J2LLZTC-YnVRkHFGGJnmURexECXNomMwMOTvc0oe9WRIrWcmgfn3RyxNoUzrSKHg8GK2YA.jpg"
       },
       "sourceId": "in:bpsc_teacher_bihar_pgt_tgt_prt",
       "sourceCountryCode": "in",
@@ -1483,10 +1546,10 @@
           "url": "https://youtube.com/@hamari_taiyari_official"
         }
       ],
-      "createdAt": "2026-07-26T09:01:32.553Z",
-      "expiresAt": "2026-07-28T09:01:32.553Z",
+      "createdAt": "2026-07-26T11:28:37.494Z",
+      "expiresAt": "2026-07-28T11:28:37.494Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:32.553Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:37.494Z",
       "tag": "war",
       "tags": [
         "war",
@@ -1509,7 +1572,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:32.553Z"
+        "reviewedAt": "2026-07-26T11:28:37.494Z"
       }
     },
     {
@@ -1529,10 +1592,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:31.168Z",
-      "expiresAt": "2026-07-28T09:01:31.168Z",
+      "createdAt": "2026-07-26T11:28:36.122Z",
+      "expiresAt": "2026-07-28T11:28:36.122Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:31.168Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:36.122Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1550,12 +1613,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:31.168Z"
+        "reviewedAt": "2026-07-26T11:28:36.122Z"
       }
     },
     {
-      "id": 2338066656,
-      "postUrl": "https://t.me/biharhelp/19699?single",
+      "id": 1190352763,
+      "postUrl": "https://t.me/biharhelp/19700?single",
       "source": {
         "title": "Bihar Help Official ( biharhelp.in )",
         "handle": "biharhelp",
@@ -1568,21 +1631,21 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🚨 SSC GD Constable Cut Off 2026 जारी होने वाला है!\n✅ Category-wise Expected Cut Off देखें\n✅ Previous Year Cut Off Trends की पूरी जानकारी\n✅ State-wise Cut Off Analysis भी उपलब्ध\n✅ चयन की संभावना जानने का आसान तरीका\n✅ Result से पहले अनुमानित Cut Off जरूर चेक करें\n👉 पूरी जानकारी:\nhttps://biharhelp.in/ssc-gd-constable-cut-off-2026/\n📲 सभी SSC GD की तैयारी कर रहे उम्मीदवारों के साथ अभी शेयर करें।",
+      "text": "🚨 NMDC Steel में 102 Executive Trainee पदों पर भर्ती!\n\n✅ कुल 102 Executive Trainee पदों पर भर्ती\n✅ Engineering, Finance & HR उम्मीदवार कर सकते हैं आवेदन\n✅ Online Apply: 22 जुलाई 2026 से\n✅ Last Date: 11 अगस्त 2026\n✅ चयन CBT + Group Discussion + Interview के आधार पर होगा\n\n👉 पूरी जानकारी:\nhttps://shikshamarg.in/nmdc-steel-executive-trainee-recruitment-2026/\n\n📲 सभी Engineering, PSU Job की तैयारी कर रहे उम्मीदवारों के साथ अभी शेयर करें।",
       "links": [
         {
-          "label": "https://biharhelp.in/ssc-gd-constable-cut-off-2026/",
-          "url": "https://biharhelp.in/ssc-gd-constable-cut-off-2026/"
+          "label": "https://shikshamarg.in/nmdc-steel-executive-trainee-recruitment-2026/",
+          "url": "https://shikshamarg.in/nmdc-steel-executive-trainee-recruitment-2026/"
         }
       ],
-      "createdAt": "2026-07-26T09:01:29.514Z",
-      "expiresAt": "2026-07-28T09:01:29.514Z",
+      "createdAt": "2026-07-26T11:28:34.462Z",
+      "expiresAt": "2026-07-28T11:28:34.462Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:29.514Z",
-      "tag": "animals",
+      "mediaRefreshedAt": "2026-07-26T11:28:34.462Z",
+      "tag": "transport_other",
       "tags": [
-        "animals",
-        "nature"
+        "transport_other",
+        "auto"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -1597,7 +1660,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:29.514Z"
+        "reviewedAt": "2026-07-26T11:28:34.462Z"
       }
     },
     {
@@ -1626,10 +1689,10 @@
           "url": "https://youtube.com/@hamari_taiyari_official"
         }
       ],
-      "createdAt": "2026-07-26T09:01:28.217Z",
-      "expiresAt": "2026-07-28T09:01:28.217Z",
+      "createdAt": "2026-07-26T11:28:33.612Z",
+      "expiresAt": "2026-07-28T11:28:33.612Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:28.217Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:33.612Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1647,7 +1710,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:28.217Z"
+        "reviewedAt": "2026-07-26T11:28:33.612Z"
       }
     },
     {
@@ -1667,10 +1730,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:27.174Z",
-      "expiresAt": "2026-07-28T09:01:27.174Z",
+      "createdAt": "2026-07-26T11:28:32.547Z",
+      "expiresAt": "2026-07-28T11:28:32.547Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:27.174Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:32.547Z",
       "tag": "marketing_all",
       "tags": [
         "marketing_all",
@@ -1690,7 +1753,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:27.174Z"
+        "reviewedAt": "2026-07-26T11:28:32.547Z"
       }
     },
     {
@@ -1715,10 +1778,10 @@
           "url": "https://resultlives.com/bihar-polytechnic-2nd-merit-list-2026/"
         }
       ],
-      "createdAt": "2026-07-26T09:01:26.447Z",
-      "expiresAt": "2026-07-28T09:01:26.447Z",
+      "createdAt": "2026-07-26T11:28:31.827Z",
+      "expiresAt": "2026-07-28T11:28:31.827Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:26.447Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:31.827Z",
       "tag": "marketing_ads",
       "tags": [
         "marketing_ads",
@@ -1737,7 +1800,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:26.447Z"
+        "reviewedAt": "2026-07-26T11:28:31.827Z"
       }
     },
     {
@@ -1772,10 +1835,10 @@
           "url": "https://t.me/MentorAyeshaBMB"
         }
       ],
-      "createdAt": "2026-07-26T09:01:25.503Z",
-      "expiresAt": "2026-07-28T09:01:25.503Z",
+      "createdAt": "2026-07-26T11:28:30.991Z",
+      "expiresAt": "2026-07-28T11:28:30.991Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:25.503Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:30.991Z",
       "tag": "marketing_ads",
       "tags": [
         "marketing_ads",
@@ -1794,7 +1857,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:25.503Z"
+        "reviewedAt": "2026-07-26T11:28:30.991Z"
       }
     },
     {
@@ -1804,7 +1867,7 @@
         "title": "BIDHAAN TV",
         "handle": "bidhaan_tv3",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/YOrWfPW_FOaj_bz6JQ3YoFTbEecMcGt8t5QjZr5BETFn9WzI71i_f3WqFiSzpAoMrHKjfvEuBL2-xDoPzSHuQiyHHkRMQuU3ju8ke0FcmGIxVuGh8MO6qURBeT6zjHtsJ4ame0IdEhJ2m8sCjRgjud1yqEcqga9YTLuDtPK7YGD2qnYvfH3OuuyHrTi9W8FF_QRkNDtAi8Z16OnaoyxG_re_X8VKSQgyuGHxpwp_1rJ6ffaFjgcqBZS45aa-4dreAAtK7PnlWyPU0aJtFMPA1f-7RP9xhZikVWjdy_wCt55tenfpwO4VkPvjR3wadSj6zNphyMHv0UEv4rRC3lXukw.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/WDRrEmDNrSHywEmxI3JHqOTYtcxhZBBjeTMmrJSbWZxIbE5W9k1S8X0FoFkCSIboO_u_g2MvQ_dOBkkl0QunTnXFYPy6zoXC7TK6WzIQihNYLM_vRpWjSgMsvFvsYSl8JvofCXFCpdkiGWs9_xLy8BVHiZ1FNAThoBhIPon6FZ42fUFYxSXw4Ot3yEUY7fQD_SXeONJ_pXfGnxK30g_-CP9tRSTLccBk5ql1NzdfIT2TthxmnTIjj89B0_RmIKTqWhBAt7V4gV_jtG0QmMnFfhIgJQREUuz0NyOAbm_YEi2RqNrx3MwGZooxBB4QNXm4fB3O5MnKNeeSwI2zb9BCRQ.jpg"
       },
       "sourceId": "in:bidhaan_tv3",
       "sourceCountryCode": "in",
@@ -1813,7 +1876,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/ke8l9ubYud8325qqiSvaB6kAdqLTUhUlHXxSv6a0AaPNzo9uf520yF48UzPLO_cdavsrbnYP_V9UMIa0uqVSjF5q8_O1M6V9YSqXKDXUXB56LPG5-SUur3JdeHRgveVxzwS6-O7wKQyZUu1YId09uSZdo3RZZJeIxDXpMIGqFs8u2uYO9JIKCjIkU6jafO2YVa2wBTf5a4Yf8H6pTZZFPEeHxDW4jIY_Flf7W9wNmJ51yR1Ve6h18x4UNttp3lVMSwLTYA77YlrcH4g-tDeytWwH1fKqHpzM9uwEfbc9L53F62Qa741b9zD9MX14Qyz7Qo3uT52CR-2e7JWbmMPBCg.jpg"
+          "url": "https://cdn4.telesco.pe/file/hmdlAFGvq12sdUG87CCQsIIdMfBSrBbf7fR7GPdOM_OLpdH_dPtKdGdj-53A-pivAsPA7_PkIgTopqv-l-6Z1UtUVwnxUwP2NTCLhkSbUjZ1WVt894BQvpnIahERzemVj3kCMMGgrwiGsFfEVRtudEh8arS1oADELzBI-fo5Oi7X9jbiVuOKapKdAeLPTNGU6gpn3-ggFKuDceYLf5ykDg8ugZYcpwuiKccUxi57MukEh1oWgFw5zdlPgElxks0tXdrSp8cIW2kM_7lLzqDMSId-LdDcWmS17oIsjEmhFv9KVr-8-Vk9K6ndB8qRB22EIhoRH96Wc6k7FIH5Gsm_Fg.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -1829,10 +1892,10 @@
           "url": "https://t.me/BIDHAN_DRAMA"
         }
       ],
-      "createdAt": "2026-07-26T09:01:24.514Z",
-      "expiresAt": "2026-07-28T09:01:24.514Z",
+      "createdAt": "2026-07-26T11:28:30.102Z",
+      "expiresAt": "2026-07-28T11:28:30.102Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:24.514Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:30.102Z",
       "tag": "cinema",
       "tags": [
         "cinema",
@@ -1851,7 +1914,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:24.514Z"
+        "reviewedAt": "2026-07-26T11:28:30.102Z"
       }
     },
     {
@@ -1861,7 +1924,7 @@
         "title": "Dr.G.Bhanu Prakash - Official👨‍⚕️",
         "handle": "bhanuprakashdr",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/cl_NzJtWKD4-xsHPQwDdRNGTnACEjOmpYZKYmcH7JAhgCooMer55CJ7kB4oGSi5ct34DH4b3bZ5xCBdGXmNKgfqHnwtxpV0M9j-nLmmadLpPqje-hFPY75gmFYLBvMVUumBzpC1gaP11V-v9cgjdMqoqAIJP4tEv9LLiAmMeblsgs63nx8dPnVqMk4NInrcdUwWs2MG0mIQb_8GS1zsDWW9MI16fRZTMF1uUkrsuzU2eaUnGktpVrtg37DlEFH2ee85HzJMHCPvRHa7vv0qwJd9HqvERp7pDEpmMit8YPcTQ2MLO06rOlx1CFgQh4eRd4n5AbWPqyvK1iPjdnN4dUQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/hHqi5G3cMMwUwR68Rh-YbcDsuI0-4N1OTMHLZxEirNknDEpg5gBEqIHG4wPyEKoYoobwh4zl_eJy8wt36RHb8JXFFXzL9pWzG1S2TObrM-umfxvOWHsIIY9YPjrZVGtnjrnfUjS6ADTN9WQNkcubo6ZDK7Z_ywSNYLz_FPZo_NVGCGNrDmOz-0Z4lyjynSoYHsgdf3G2RQPg_RxLMhumKOVvK23tI78EQzN1-M3Qcp-RRjT1eWZiBva6xUNvMs_5NMNSlXrsn6LhiNSSpvs8Ptq_2BGYyBPis0FSVXTxBI-4QJG6J2ZbErOImmYc8ff_vwGa2G-X_YCSayj54eBU3A.jpg"
       },
       "sourceId": "in:bhanuprakashdr",
       "sourceCountryCode": "in",
@@ -1876,10 +1939,10 @@
           "url": "https://youtube.com/playlist?list=PLXE8LgH_g55vPXmMy_mntMfwo937t8g1b&amp;si=394uCUOArf_Mnr7i"
         }
       ],
-      "createdAt": "2026-07-26T09:01:22.622Z",
-      "expiresAt": "2026-07-28T09:01:22.622Z",
+      "createdAt": "2026-07-26T11:28:28.617Z",
+      "expiresAt": "2026-07-28T11:28:28.617Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:22.622Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:28.617Z",
       "tag": "other",
       "tags": [
         "other"
@@ -1897,12 +1960,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:22.622Z"
+        "reviewedAt": "2026-07-26T11:28:28.617Z"
       }
     },
     {
-      "id": 1901339198,
-      "postUrl": "https://t.me/bhainskipathshala/9249?single",
+      "id": 2467303752,
+      "postUrl": "https://t.me/bhainskipathshala/9250?single",
       "source": {
         "title": "Bhains ki Pathshala",
         "handle": "bhainskipathshala",
@@ -1915,12 +1978,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "આવી જાઓ બધા યુટ્યુબ લાઈવમાં   CCE માટે E- શીશી સીરીઝમાં - \"સરેરાશ\" પ્રકરણના તમામ પ્રકારના PYQ નો બૂસ્ટર ડોઝ લેવા પહોંચી જાઓ. પરીક્ષામાં કેવો એટિટ્યૂડ રાખવો.. કેવો એપ્રોચ રાખવો એ ખાસ શીખવા પહોંચી જાઓ.   https://www.youtube.com/live/PolTXAcei9M?si=IgJ0xAV4p3CxrCci…",
+      "text": "રવિવાર = રિવિઝન ડે (REVISION DAY) \n\nનવું વાંચવું સરળ છે, પરંતુ જે વાંચેલું છે તે લાંબા સમય સુધી યાદ રહેશે તો જ સફળતા મળશે. \n\nઆજે નવું વાંચવા કરતા આટલું ખાસ કરો:\n👉 આ અઠવાડિયે જેટલું પણ ભણ્યા છો, વાંચ્યું છે.. તે બધું જ રિવિઝન કરી લો.\n👉 જે અઘરા પ્રશ્નો કે કન્સેપ્ટમાં ભૂલ પડતી હતી, તેને ફરીથી સોલ્વ કરો.\n👉 નાના ટોપિક ટેસ્ટ આપીને પોતાની જાતને ચેક કરો.\n\n♦️ સિલેક્શન ૧૦ અલગ-અલગ ચોપડીઓ એકવાર વાંચવાથી નથી મળતું, પણ ૧ ચોપડી ૧૦ વાર વાંચીને મજબૂત તૈયારી કરવાથી મળે છે!\n\nઆજનો દિવસ પૂરેપૂરો રિવિઝનને આપો.",
       "links": [],
-      "createdAt": "2026-07-26T09:01:21.777Z",
-      "expiresAt": "2026-07-28T09:01:21.777Z",
+      "createdAt": "2026-07-26T11:28:27.764Z",
+      "expiresAt": "2026-07-28T11:28:27.764Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:21.777Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:27.764Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -1940,12 +2003,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:21.777Z"
+        "reviewedAt": "2026-07-26T11:28:27.764Z"
       }
     },
     {
-      "id": 1940576633,
-      "postUrl": "https://t.me/betfaircricketloadmarket/12322?single",
+      "id": 2264187159,
+      "postUrl": "https://t.me/betfaircricketloadmarket/12324?single",
       "source": {
         "title": "Market Load Mystery ™",
         "handle": "betfaircricketloadmarket",
@@ -1959,19 +2022,15 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/J5gY-09Zn-PG0rOc6tVhcoxYCHvPUu83trucPt_34yv4jBUCxb5W_5I30MkjJ7atVxCRo0w3krtRqs2krkhFm4Ivin3RGs7yR5yGJewHL1f623wIW_LDbWmcZK1_9H4p4_KdGD8irg41sqlPF9tUUU4g7QQ7VP4Cyf-xBYiLMmAY6M5EcdGl3558Ekb_CKwwiQ9nDhE4lVcqtQk4ASCtZZ1MwcCIS_brwSliDsntdXxvHf097ELIY2solEAlh6OyQ7Xpu43OL7q1pDWgK7sFhVhmdizW4mJLCNCMMupZ8E6FXSiZIhAH1FuT98IDvfsu2aF8cT2uf7D8A-YB4Z_q1w.jpg"
+          "url": "https://cdn5.telesco.pe/file/pxKL3YS_mZWItSNyMRWmPRtNg1c4Yy0MVr08vt6SYorELQounWVLKcJTU4-BWszSF-PXFSjneUTD0hNYigi93tSLPFowAJ9DeIQVFZEHFmv0x_JaRYPe4lvq_FPsA0PVAKoCRnkWK9sPBWHUlvtUDrqHOGCCWg94yEJLTXpApB15yjkmZFWG67xBoIoVkgGqEps00W9tkRDkbcymPyq320o9DFofrZ3SIM69Z0IVExJFJ4Y_tS8gbJBrxbDjuctkkvn0iNPWLhqUsfAi60ibdu4bm2iBCUv-tPPkHdhoeqUUai9M-AJmn1d_Ytic0Qgyj9H47-rwYleb-mDT_W5cCw.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🏏Kandy  Vs  Jaffna🏏\n\nPariBook247 Benefits : \n\n➡️ Lightning Fast Deposits & Express Withdrawls !\n\n➡️ Live Match Odds , Fancy & Session Markets !\n\n➡️ 100% Safe , Secure And Transparent System !\n\nEk Hi Platform Sab Kuch Live 🎚\n\nNew Id 🔽 Min Id 300 Rs\nwww.Paribook247.pro\nwww.Paribook247.pro\n\nVvip Id 🔽 Min Id 2000 Rs\nhttps://wa.link/Paribookvvipho\n\nGiveway + Payment Proofs 🔽\nhttps://t.me/+OY1XFHCFWmYzZDQ1\n\nHow To Play PariBook 🔽\nhttps://t.me/Paribook247Videos",
+      "text": "🏏 Kandy Vs Jaffna 🏏\n\n    Fastest Site In India 🏹\n\n💠 One Click Bet Placement ✅\n💠 Instant Session Updates 🏏\n💠 Self Deposit & Withdrawl 💁\n\n0% Freeze Risk - Aapka Account Aur Aapka Paisa Hamesa Safe 🔐\n\nMarket Ka Sabse Bharosemand Naam !\n\nNew Id 💎 Min Id 300 Rs\nhttp://www.Paribook247.pro\n\nFor Vvip Id 💎Big Limit Players\nhttps://wa.link/Paribookvvipho\n\nGiveway + Payment Proof 💎\nhttps://t.me/+OY1XFHCFWmYzZDQ1\n\nHow To Play 💎\nhttps://t.me/Paribook247Videos",
       "links": [
         {
-          "label": "www.Paribook247.pro",
-          "url": "https://www.Paribook247.pro/"
-        },
-        {
-          "label": "www.Paribook247.pro",
+          "label": "http://www.Paribook247.pro",
           "url": "https://www.Paribook247.pro/"
         },
         {
@@ -1987,10 +2046,10 @@
           "url": "https://t.me/Paribook247Videos"
         }
       ],
-      "createdAt": "2026-07-26T09:01:20.960Z",
-      "expiresAt": "2026-07-28T09:01:20.960Z",
+      "createdAt": "2026-07-26T11:28:26.921Z",
+      "expiresAt": "2026-07-28T11:28:26.921Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:20.960Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:26.921Z",
       "tag": "finance_banks",
       "tags": [
         "finance_banks",
@@ -2009,7 +2068,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:20.960Z"
+        "reviewedAt": "2026-07-26T11:28:26.921Z"
       }
     },
     {
@@ -2019,7 +2078,7 @@
         "title": "Banking RRB PO CLERK IBPS CLERK PO SBI PO EXAMS",
         "handle": "banking_rrb_po_clerk_ibps_sbi_ca",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/gIjbjqA39T0SmdKAwBCX27H972i_BtWAm4F4HaCbNctIcOBRNg5Udnx9lR9oAFZFOJamIxqhNwxDLcnTZl7y1h8PH2-mdJv34OS84cbVYMOBNgvW51AfgsYLZbYsR_Sq3e8Cf40JPpcR4TRxJZYqq75sOVVoYja_CHj4Zd3rbFktkFDADA41B3wohhhPsQ7ZESUrtCbq1hNt1ogYkYr3gVZhytdbWCN_VpmWUTNyZbBnyDP0m7IeoB2lvMFxQOsU_KU39oZrdheyNHXoa9mBVe2L1QGrq6iiu97hq6KYfv_jTKqcNsKWVmYvAs45hXT_VyKf6kKNFrbcCnakGdrLXQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/ou7W4vB5VMXT2BJFdHouXNAZ46Rv76eACQDlEz5uWavlegMAlWNNhCzQcWFQDRbFaSH3fa-9dtdRp9IRN6O5Llxdrs5UKf7kY8ph3ppLh8rza7VQ_voQCnu7hQOJ5Wqvbt8W6GV16HGHE9Ln7Jrwq7JWyyat3KAIftN42PHpJOpVdqBt_5WCas_nrMlg-7dnqNkyApIc3c2EMm3M7TjlrScVxfwuMtxYp43CbPaN9iXiaam_C4XWKHBvfu0gtKjCD8pkk_io6yez-ZS9dBUSf8noSsz3sootsPqTOEvpgriwlglugRawJnH3p1DR8ZKRHN_SGT7Ymv9UyAGaV7g1wg.jpg"
       },
       "sourceId": "in:banking_rrb_po_clerk_ibps_sbi_ca",
       "sourceCountryCode": "in",
@@ -2040,10 +2099,10 @@
           "url": "https://www.practicemock.com/?next=https%3A%2F%2Fwww.practicemock.com%2Fs1pricing%2Findex.php%3Fc%3Dbank%2F&amp;ref=15544"
         }
       ],
-      "createdAt": "2026-07-26T09:01:20.071Z",
-      "expiresAt": "2026-07-28T09:01:20.071Z",
+      "createdAt": "2026-07-26T11:28:26.093Z",
+      "expiresAt": "2026-07-28T11:28:26.093Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:20.071Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:26.093Z",
       "tag": "finance_banks",
       "tags": [
         "finance_banks",
@@ -2062,7 +2121,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:20.071Z"
+        "reviewedAt": "2026-07-26T11:28:26.093Z"
       }
     },
     {
@@ -2072,7 +2131,7 @@
         "title": "Banking Exam current affairs™",
         "handle": "banking_ca_ga",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/hk4mOT8bwN0M2A8DwkU4ki5wfjUWhF6_QzSGYRvCz_eV3V8dt7Tzm5qBe1kTtBEFQekg7TjPd58xQna77qqt9fGcpaIBt_pGAY7e24fqECs_1_b70YLn--MsWqB3YL_qQyJg1nMy3of4YfLtD6Nk3iyAOT9eMN4gVo6UBtfZP-9RPAY34niY-EVGV7YzMFZ_Qg_O683CbyzXWGLZPDDIa9lJWg3IFUqavJGh6_sMu7oSU_RopIB6aSnh7pr17oHetccjQzMa2LSb5pC7sQ9deFA7do4pVQV_wUas2v7teboLfVZ8P4CblpXb_tXKAkMqTQArBzNymmQhCD-qBMXmjQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/MwqYhKBOKrsyG7FbDfp3GtEP2koBQ6g3vnw6s-VpLnAmAhdmBqWGoZhkTshlXgUfGLnLzlyF-65Nwa2j0rp0HBX-Eh7sXvW5gdwqZbmISCRtnOGPfXZ6XZ1ZKYW3ry_CN7m7_Go_RB0jPFLS0Gj8DYeYflBaX_GBRXW8bfPMOZGn5qQ1BYzGJUclYCVwiG46_x_SDt6C0CuG_A4xwgiRsX5yQKPjHMEzOYv1ZH0sGeCQYhvQQTtbxY03-Inh5AgFtTA-2haQMJcBSgnDWjMI4Ncb86cOemSlP-77xWFfRbX53WMh9Eg9SHSSGvBvhEgFyS-n-xt_SxORmmd0n8CzXA.jpg"
       },
       "sourceId": "in:banking_ca_ga",
       "sourceCountryCode": "in",
@@ -2088,10 +2147,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:19.215Z",
-      "expiresAt": "2026-07-28T09:01:19.215Z",
+      "createdAt": "2026-07-26T11:28:25.227Z",
+      "expiresAt": "2026-07-28T11:28:25.227Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:19.215Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:25.227Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2109,7 +2168,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:19.215Z"
+        "reviewedAt": "2026-07-26T11:28:25.227Z"
       }
     },
     {
@@ -2134,10 +2193,10 @@
           "url": "https://www.youtube.com/live/BoypNpAjN-0?si=VBHU7SQJPpqeGt-Y"
         }
       ],
-      "createdAt": "2026-07-26T09:01:18.322Z",
-      "expiresAt": "2026-07-28T09:01:18.322Z",
+      "createdAt": "2026-07-26T11:28:24.329Z",
+      "expiresAt": "2026-07-28T11:28:24.329Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:18.322Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:24.329Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -2157,12 +2216,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:18.322Z"
+        "reviewedAt": "2026-07-26T11:28:24.329Z"
       }
     },
     {
-      "id": 1827658043,
-      "postUrl": "https://t.me/ashugktrick/51886?single",
+      "id": 3684368962,
+      "postUrl": "https://t.me/ashugktrick/51887?single",
       "source": {
         "title": "𝗔𝗦𝗛𝗨 𝗚𝗞 𝗧𝗥𝗜𝗖𝗞",
         "handle": "ashugktrick",
@@ -2176,17 +2235,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/FlqgP8WwQo3IX4KrQmNup286iDtB8ZB-lLUGlodyGHBAsg0K4psUGpvzbR9TuI0esd9aLkB-ZeRpKUNHbus1pYCNCd8mrsYinKK9KaRfU2ehECZbAehb4cQEErWsKHe_bFVT3lmcdwy0EKlKMJcpdXo7i83oDvKn3hPacHh7S7nxj6AoPsNrQcBgDBtTUfYSd-ZSYTRhTAgxwDcSV2fT6l1XYumxjdTu1_soVmlMV61JMdGJyy5D9BWCOoq4KA1zkSIv8I1hDz0mefGm1Srq3WND-c0h3NHr1sVk2oWGHEqW6I4vi2pQcmj8iLhYu9wS8iWFwq-uV-FLg48_zbmMBw.jpg"
+          "url": "https://cdn5.telesco.pe/file/PTMfRanekJGen8ULZtL-KiFNPzOkqPwsbk4rjMtDJNozPrFXLiY5f3FVqJfe0aW1lhg2A8x_7f1lWpIbEPZp6L1scDcuGhK8MlwETsXxk-U7i1HI0v5K1zMAgoA9OV4j_vdRfJr1R8JaJlO1W6qdm8kGKmhWupqA-LKgtyPF3gUgqr93WZ4UAFhbB-zImtfE0wumEiWuyWLHML5q71yddvay8LitH7DcLIphDsJqv2Trj-Dhlht2gbOSFjh0MWbenzbPtuMT_Y-d666TFKA_RuE6W0oOMxRmfNSZ889jh4EYo9eJIn89dR9LPCrSSbcF46peJ7a22uxm3EutJ1uWRQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "जय हिन्द 🇮🇳",
+      "text": "रविवार को भी लगे हुए है \nचैम्पियन बैच की 8 बुक्स आपको 15 अगस्त को मिलेगी\nरीट वाली बुक भी तभी आएगी",
       "links": [],
-      "createdAt": "2026-07-26T09:01:17.495Z",
-      "expiresAt": "2026-07-28T09:01:17.495Z",
+      "createdAt": "2026-07-26T11:28:23.509Z",
+      "expiresAt": "2026-07-28T11:28:23.509Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:17.495Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:23.509Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2204,7 +2263,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:17.495Z"
+        "reviewedAt": "2026-07-26T11:28:23.509Z"
       }
     },
     {
@@ -2224,10 +2283,10 @@
       "fallbackReason": null,
       "text": "\" Fill the Beat  \" EP3-1080P",
       "links": [],
-      "createdAt": "2026-07-26T09:01:16.447Z",
-      "expiresAt": "2026-07-28T09:01:16.447Z",
+      "createdAt": "2026-07-26T11:28:22.654Z",
+      "expiresAt": "2026-07-28T11:28:22.654Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:16.447Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:22.654Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2245,7 +2304,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:16.447Z"
+        "reviewedAt": "2026-07-26T11:28:22.654Z"
       }
     },
     {
@@ -2278,10 +2337,10 @@
           "url": "https://www.trackprep.in/subscription"
         }
       ],
-      "createdAt": "2026-07-26T09:01:14.756Z",
-      "expiresAt": "2026-07-28T09:01:14.756Z",
+      "createdAt": "2026-07-26T11:28:21.176Z",
+      "expiresAt": "2026-07-28T11:28:21.176Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:14.756Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:21.176Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -2300,12 +2359,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:14.756Z"
+        "reviewedAt": "2026-07-26T11:28:21.176Z"
       }
     },
     {
-      "id": 2987710110,
-      "postUrl": "https://t.me/ankitavasthi/22897?single",
+      "id": 225127760,
+      "postUrl": "https://t.me/ankitavasthi/22899?single",
       "source": {
         "title": "Ankit Avasthi Sir",
         "handle": "ankitavasthi",
@@ -2314,22 +2373,21 @@
       },
       "sourceId": "in:ankitavasthi",
       "sourceCountryCode": "in",
-      "contentType": "image",
-      "media": [
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
+      "fallbackReason": null,
+      "text": "https://youtu.be/cmpJLN4ZCYU",
+      "links": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/n2ekMyYy2CNGZqpp7PSwt6bdDefU8pBMzG8WSExGL_y_RbQIldIkcBC5RILGgKyyhJx9vfNv10IqIOIBeYyNR4gPOVeeI69Px6lRG3NmmhxzyDSTDjR0b4Sb3sw0fCRNOVRgVLqtKHNiDZUGmJv6IQ-hOcGxEVL6w8fmuo1hbE5G4FO7RHSkstRmsZCVDQEfcmTQUOcQd435sDDXzbpeThQ1_-KWeT2MSsza-UYOCFj2HqsOlgz6DDn-3YouSDs174sTH4MoX4RxfeQ8lU7hLfYe9mYF2VqzeGwqPob9LfS7ZFC3A--9gWhV3AfNy64LJpT30g-APByxM95cj-vERQ.jpg"
+          "label": "https://youtu.be/cmpJLN4ZCYU",
+          "url": "https://youtu.be/cmpJLN4ZCYU"
         }
       ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "कारगिल विजय दिवस (26 जुलाई) 🇮🇳\n\nकारगिल विजय दिवस हर वर्ष 26 जुलाई को मनाया जाता है। यह दिन वर्ष 1999 के कारगिल युद्ध में भारतीय सेना की ऐतिहासिक विजय की याद में समर्पित है। लगभग 60 दिनों तक चले इस संघर्ष में भारतीय सैनिकों ने दुर्गम पहाड़ों और कठिन परिस्थितियों में अदम्य साहस, पराक्रम और बलिदान का परिचय देते हुए पाकिस्तानी घुसपैठियों को भारतीय क्षेत्र से खदेड़ दिया।\n\nऑपरेशन विजय के तहत भारतीय सेना ने टोलोलिंग, टाइगर हिल, पॉइंट 4875 सहित कई महत्वपूर्ण चोटियों पर दोबारा तिरंगा फहराया। इस युद्ध में 527 भारतीय सैनिक वीरगति को प्राप्त हुए, जबकि 1,300 से अधिक सैनिक घायल हुए। उनका सर्वोच्च बलिदान आज भी पूरे राष्ट्र के लिए प्रेरणा का स्रोत है।\n\nकारगिल विजय दिवस केवल एक सैन्य जीत का प्रतीक नहीं है, बल्कि यह देशभक्ति, साहस, कर्तव्यनिष्ठा और राष्ट्र की एकता का भी संदेश देता है। इस दिन पूरे देश में शहीदों को श्रद्धांजलि दी जाती है और भारतीय सशस्त्र बलों के अद्वितीय योगदान को सम्मानपूर्वक याद किया जाता है।\n\nशहीदों का बलिदान अमर है।\nउनका साहस और समर्पण सदैव भारतवासियों को प्रेरित करता रहेगा।\nजय हिन्द! 🇮🇳",
-      "links": [],
-      "createdAt": "2026-07-26T09:01:13.870Z",
-      "expiresAt": "2026-07-28T09:01:13.870Z",
+      "createdAt": "2026-07-26T11:28:20.260Z",
+      "expiresAt": "2026-07-28T11:28:20.260Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:13.870Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:20.260Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2347,7 +2405,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:13.870Z"
+        "reviewedAt": "2026-07-26T11:28:20.260Z"
       }
     },
     {
@@ -2372,10 +2430,10 @@
           "url": "https://youtube.com/shorts/w7ikePx1pa0?feature=share"
         }
       ],
-      "createdAt": "2026-07-26T09:01:12.971Z",
-      "expiresAt": "2026-07-28T09:01:12.971Z",
+      "createdAt": "2026-07-26T11:28:19.443Z",
+      "expiresAt": "2026-07-28T11:28:19.443Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:12.971Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:19.443Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -2395,7 +2453,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:12.971Z"
+        "reviewedAt": "2026-07-26T11:28:19.443Z"
       }
     },
     {
@@ -2405,7 +2463,7 @@
         "title": "All Exam Quiz Bot",
         "handle": "all_exam_quiz_bot",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/tMUH55jF-t5ukGdOZHHU6rEtee_6sonzIbiTPY4v1AUq-SPuKVNjtqKMRHh4aEFsAf7g15AZ-WPHuQruLzgccZjJCxACRHHxS43Gof2PD4MjzWlvEL40ey96CkNgR08MRAP4HHg2ld9ROJyG3W1p9xcw6w8SX_dSey2AjoS0ldRpFuH0S6Laz9TzTePOOSj1fIafHlK9B253L2p9twi_7Yl_AWQtiz_7nW0DLqUaIBYpXnWFGa69ejldsnF_PiYS_iDpJvkeQs3Bo2RQVncpwba9ZuZJjHtMWylpO7AmBLZFD2EmudrcNnb8dRjSMHkRnepnmfTbdSI0LZAnzJW6hg.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/jAGob6edsDL9GR7EdHl6PpvJEyeZBGzQn_7XA0tt3epO5MHLvRU78rqOOM4m0m77MeF10pqGua0EW8MxLiAALjF2gjlATrQXacHDT58FYDe7HOyxipFCp3OrIeOgZ7Eta09otTE5joGDRTwSTzoW6gvx_N7yluLPlTKug4-59l8LFo3mt-OcxZc66cN7Z9bJpFf1-34q8XyBKWbHd6scwhwC1xFwq9Z4TBwearrNhhexI8BjcbtcGwLG2A4jZTt2QwClSctcI7nO65pRLHi7O8xTRzf_d08T1fi2zIRZZCo__zt9IkaZjXHMi56jYY0H_rCXC7hn8-I_PSNGmFYh_Q.jpg"
       },
       "sourceId": "in:all_exam_quiz_bot",
       "sourceCountryCode": "in",
@@ -2414,7 +2472,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/E3m7ublR5_YQRbGA5z8BYFDiTrBeoB8FQXi73Swr86p8mLjVm4kcUw8hMDaLnwZAWNjUqeQRdK3qyTfZhABGr7olDu3b9YgT1qAeAjACt7a6VqyzP0z6iNuky0IzQkiZQb5IMw-5MVekCkbQ7xFi3fNbYJ6semGgPOxPKYbkMrywqbd5Gp1QU9hXEBZ8waM85O4tY2ujYZd6lGr23IdrshIHrVW5copP2f_vCUbKEt5P2o15uzr5uOEsFzJLJq7Q6hprCJs2hMnlEO8m32-23MfSi4-ai3U9SrQPv2eyBrAAQjetWA9FKrqjGU4tS7wTvc0AuySjEISxjRf1ab-BBQ.jpg"
+          "url": "https://cdn5.telesco.pe/file/PrnvipItyKXrARQmmoTJ5vRFurqFEhgSUJpwxseNYXbfVjsb9yzUQhrlEuhpe8xPtDw7E601FUswAlgype57HqwW_qSdSK8KMPysgEnHkA7vWK5H7lLWmEGnw24CVe3LqoX8WJ56vJZJtkd3f64wQuAOYJ6cIQujPTozSE7B3kpovYwtuVOO6fQRsb2uyM0hB4FohnofLP-bVpMKmaHlVSgSd92mfhwJEY93K0kaj5cJlLu4bVThqPdycXj71u50bxccLK9t6hc6mtFlQT7L3OyXYn1KCTTXqj7V6VE50s2Gn5envd0hloP749w6IiSO8GXJNG6b0ixf_5l8mLxnqQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -2430,10 +2488,10 @@
           "url": "https://link.utkarsh.com/UCTG15"
         }
       ],
-      "createdAt": "2026-07-26T09:01:12.120Z",
-      "expiresAt": "2026-07-28T09:01:12.120Z",
+      "createdAt": "2026-07-26T11:28:18.575Z",
+      "expiresAt": "2026-07-28T11:28:18.575Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:12.120Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:18.575Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -2452,7 +2510,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:12.120Z"
+        "reviewedAt": "2026-07-26T11:28:18.575Z"
       }
     },
     {
@@ -2472,10 +2530,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:11.224Z",
-      "expiresAt": "2026-07-28T09:01:11.224Z",
+      "createdAt": "2026-07-26T11:28:17.731Z",
+      "expiresAt": "2026-07-28T11:28:17.731Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:11.224Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:17.731Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -2495,12 +2553,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:11.224Z"
+        "reviewedAt": "2026-07-26T11:28:17.731Z"
       }
     },
     {
-      "id": 343508837,
-      "postUrl": "https://t.me/englishwithranimaam/36450?single",
+      "id": 201887753,
+      "postUrl": "https://t.me/englishwithranimaam/36454?single",
       "source": {
         "title": "English With Rani Ma'am(UC LIVE)",
         "handle": "englishwithranimaam",
@@ -2509,58 +2567,32 @@
       },
       "sourceId": "in:englishwithranimaam",
       "sourceCountryCode": "in",
-      "contentType": "gallery",
+      "contentType": "image",
       "media": [
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/BLM6GFcbqIv3-GJkKYqSM3brd6_B5l0R5h4faTlN6ha_AMDlOCBw9jl2A4NP339QgAfKQLsUn9T72YDgNAnsLNc_2_w6NGkod0lasSybjpO8tw7qPsGr353-9NzinNTA1oFRT7VHoB9Edjtpd1wyYZPjLPNXh4ggHPwFOaAOhLslH0LzapS4rOkDzprOCn6tMXVcU2WWBj6S0DJTwCxgk0aeiJ3n_WPP17aWm725-YrBhAAomnU-oK-d5tCfJhCssOVLvFXdtDIu961rHAf64v21bH84iZ0D6z3FwieFc2tdHNvlGuQN0jaR8ehcnmTKL_z3ox9OJ21BeJfbwJ31hQ.jpg"
-        },
-        {
-          "id": "image-2",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/GXNrafrnhR3U8pOvIg84-8V3Q6qkC05f4-2QQImHCVytX_w9jTbNj4EcJwylY9IYYgBk93jm5JMjM7aqW96PoeLtKrCbZZHI_Iyz80BAzLV2QfPeqeFzAWxpjgUh_vKXOB5aKk3elFmr3toRsFwJyBhhW_nKErAA-84q33cy3Sprxskv2TC2ROiofk4ccEznKWTwJlrmiz4VUgd2rxeaHrm7Vrm8l8msn33_rT9USdlzAk8SMG9jC9NhRu1azd1a5ADLKI1QWzHMCqs7ciHVKk5GrTt1rHJ2uz9uMPLqNbMPOIWJ78Ri8aJzC2NhAcLvTGmq0tCO1p7F7HyVKCw2zQ.jpg"
-        },
-        {
-          "id": "image-3",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/eIc6rakDAjBKP7dwZN9vvI-pg4bfKkM81y_8-_fhFx38FKAcKUFMpjR84kHNWmFOBH-7giKZCG6w2ILE4rHC5-YBNsvGWVBhAIciWI5MUiQybW042zb8RKHfT995nA6V2McazGWwBwqDdt1beLgfKSAVFle1Y5PLbSDCz1aOHkZpRfdeJjVdTdeuXFV5BFyNASOsjRcVGkqEm0oljCL-mK4loDh1iWzpAYhGXAI3IcMXShmHpAvH7UwBc3FaZCysXK_6i_0uVtoVrfLO6T9C9mZ-ihuBXRZUoSKuOBtwpSncH0hH1OKIYiBM6H-ShsfEd3WLxBo08rGeRoACEqWlEA.jpg"
-        },
-        {
-          "id": "image-4",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/o0RCCDZVMR8uYg7z-4IT4AD9uY1XbMrbKOOk387JdPp1OqPmmsdox_ZhYEK1wnQyln9MXhFwdjlcgaxWXppQErxbbZAfRT-TA7COquaBK4pF1cmmyC2s2WrZScvNArh9rLXtg7Mz9mLTiJ2DiJ0jNyabUV7w29jlzE0O9i1qpQJ1UKEB5aifsIYwHqneZKOPdd8UdGUr2J20WUwyGyvgfgb55AIja5MBrZ4f3kRNcjMy52-7oHdD0p2amDSkinUoRa2Ozg2ix3lAkv41XmaB8fHDgLwI2_9LgzWu_JWlAsfc95OkpcW4aLobsaWIu5yak3OSQM1DbJAlGMyoRzImKQ.jpg"
+          "url": "https://cdn5.telesco.pe/file/S9jGeZ1iihhmhIIB2WlXHt_YmLFetQPt5ZNM1j0vGXbhP2NABW9en3sBOCCNNMvWs6kQIwwt2Dsvxm5mDn8ADnVSbJOZ9338_SXiYvn9EhBPz2X97lvWJWVZ2Rjtj-5yZa3Wu09SFk4tYJD9F7CSUBVemitTqZJDXUpTYJ9i8pul1DKlRf_ST0ipcU_SOnnauFDO6TnnFkWu2gvRn2HaPDGKFy1gcf03NXSbuoqxdyCWYmYI_gKbDe5rVNNHWw32cisWQbWZbpLOh5FuGgZ9EDOVv5ou4_mNYkXUpWvu3_xOKlX6I1ri9CslHQA_RslEIFVfuvn0m6yCQZ98XQz5QA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Live Maths Crash Course is HERE!!🔥\n🚀 Master the FULL Maths Course\n💥 Limited Offer – Start Your ZERO to INFINITY Journey NOW!\n❌ ₹999 ➝ ✅ Just ₹249 \nhttps://uclive.co/new-courses/86\n\nRecorded Maths Batches Are HERE! \nAlpha 1.0  (Recorded) with UC LIVE\n❌ ₹999 ➝ ✅ Just ₹149\n🔗 Join Now 👉 [https://ucliveapp.page.link/7hxRSN7yfffNRpEVA\n]\n\nAlpha 1.0 (Arithmetic Recorded Batch)\nhttps://uclive.co/new-courses/78-alph-10-arithmetic-recorded-batch\n❌ ₹999 ➝ ✅ Just ₹99\n\nAlpha 1.0 (Advance Recorded Batch)\nhttps://uclive.co/new-courses/79-alph-10-advance-recorded-batch\n❌ ₹999 ➝ ✅ Just ₹99\n\n\n⚡️ Don’t miss the chance to crack SSC CGL 2026 with expert guidance",
+      "text": "https://amzn.to/48HYTht",
       "links": [
         {
-          "label": "https://uclive.co/new-courses/86",
-          "url": "https://uclive.co/new-courses/86"
-        },
-        {
-          "label": "https://ucliveapp.page.link/7hxRSN7yfffNRpEVA",
-          "url": "https://ucliveapp.page.link/7hxRSN7yfffNRpEVA"
-        },
-        {
-          "label": "https://uclive.co/new-courses/78-alph-10-arithmetic-recorded-batch",
-          "url": "https://uclive.co/new-courses/78-alph-10-arithmetic-recorded-batch"
-        },
-        {
-          "label": "https://uclive.co/new-courses/79-alph-10-advance-recorded-batch",
-          "url": "https://uclive.co/new-courses/79-alph-10-advance-recorded-batch"
+          "label": "https://amzn.to/48HYTht",
+          "url": "https://amzn.to/48HYTht"
         }
       ],
-      "createdAt": "2026-07-26T09:01:09.081Z",
-      "expiresAt": "2026-07-28T09:01:09.081Z",
+      "createdAt": "2026-07-26T11:28:15.634Z",
+      "expiresAt": "2026-07-28T11:28:15.634Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:09.081Z",
-      "tag": "education_courses",
+      "mediaRefreshedAt": "2026-07-26T11:28:15.634Z",
+      "tag": "education_all",
       "tags": [
-        "education_courses",
-        "education"
+        "education_all",
+        "education",
+        "education_languages"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2575,7 +2607,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:09.081Z"
+        "reviewedAt": "2026-07-26T11:28:15.634Z"
       }
     },
     {
@@ -2585,7 +2617,7 @@
         "title": "Next Toppers - 11th Science",
         "handle": "nexttoppers_science",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/D4qWyq1KXXSOsxGVjLBbROowT2KFynuA78lS4VBufVLqX7jWSa9BEHW-iqJQsuOgxKflp8w4hCC1RFzMJLBVsJE6BjiYFYUz5-TZV3Q1fu5VXqhT0fb78cG1e7j5DuvwzwgSeGnvtI9PbD7LE1V3X6eBffrVRUKPzWkaZgauZoFBZWbty4cUGz8l-ZditZ3isOPqEdkTzcnx2LEaroR6gswTYaXK0Z8MDxvcy3ooGQ-ZtMb-2pru2A06PR5t3xCkOhmChgS3bcNiBYSg32UvkqKWigUXcKntqHayd2X5UcCm3ZW-53D29yKWuhChtfj8mYKdhmm_07dWXuQLpXgKEQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/nIwKNertheqllK6mi547YtU8kgng6-GfFmZrR0N6L3U84xnn7F0YRECwJir6xVj3tT6T678QpdxF7IFfOZXTTXdVKE0nSbKJYcw494n-05Ece_lDlXkczRQccuiF8pqq62i8j9EgH759B5LbxecaEDms54GrSvEHm30PxOaGTAmZk63FCbSJoEerxZ80FYENeqAXedW2jcLiPJCpSRPRbBtTAynXibJdO6_LyHAiQrmqiV6OS8paI7lGl0ncVTUKBW93D6KtwdAosQT0_r7Vuq38xK1NAscgZr03XzAog9bnCAdjPaz_mOQ2bvAmfmTdtucQygMlYIxPa63jOEhclQ.jpg"
       },
       "sourceId": "in:nexttoppers_science",
       "sourceCountryCode": "in",
@@ -2600,10 +2632,10 @@
           "url": "https://youtube.com/shorts/u8hAhCFqi2o"
         }
       ],
-      "createdAt": "2026-07-26T09:01:08.221Z",
-      "expiresAt": "2026-07-28T09:01:08.221Z",
+      "createdAt": "2026-07-26T11:28:14.749Z",
+      "expiresAt": "2026-07-28T11:28:14.749Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:08.221Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:14.749Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2621,12 +2653,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:08.221Z"
+        "reviewedAt": "2026-07-26T11:28:14.749Z"
       }
     },
     {
-      "id": 1826483523,
-      "postUrl": "https://t.me/netflix_seriesbot4/9842?single",
+      "id": 1201005356,
+      "postUrl": "https://t.me/netflix_seriesbot4/9845?single",
       "source": {
         "title": "TV Shows Bot 🎬",
         "handle": "netflix_seriesbot4",
@@ -2640,26 +2672,21 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/E99FGTsDqE_QicDLV8lDsL1KU5qYY3NBOwz_hi4HwRczCaSoEQUUFKnsbN-Tatdq0JLibvHWF0WEqbyNjz2qc_fg3PhwAho56wTnmNE0mBOv5W1HwK43c3F5flkGbuI84fCYvrPcDha1NArMJrrW0GLJ1U9EY8lGSC-KJAGGznht8pT7AFMzX4o1l6Ptdh63YS8hhck9kIHDD-fHL8fjYQePElq2RrJpix6mir6uzfUR1GGx0iKcFrZIcINNMe0VAyro5E6Wove1bc7DqxM9z4giVv_qpGjEABxzV80Pam24CrNvg5uxmSTWZfp3mrv8nT-dgm8HNE-Eey8jnTHFNA.jpg"
+          "url": "https://cdn5.telesco.pe/file/XP2hVXy-_8SHARSLhT_gHNyK8im3VcqGNwaB3DoYJ6_-NENihddBsWArSKQsYSgxSpzGDNSS0qrpReOtY_385y-dkPrZh8aduE0rEFNT-VksliXvemLlppvMzol7ac3XNdM6IAjVwhZMCWL0hIU6LuAPqj3xRiM1hXZPjRKETwBEvfmViQY2QsW8QcFwcaG-VcIB-UsCPKxyLZBjy4FvdJOGewBMBLqPnsZoqHuBGf98_zX2Jhp9k-dn1H05HqwRVmBobOH9qpl1QBq-RWaAjHStp13WrhweVnCHsIew4z8NzhgaYHJbGQ9WwThTGPjbq0cPOU7-uGmYyVu_qaPkWA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "Let’s get real for a minute. What series are you watching right now? I’m talking about the ones that keep you glued to the screen. 🤔 Whether it’s a binge-worthy new show or a classic you just can’t shake, I want to know what’s got your attention. Share your favorites in the comments! Let’s swap some recommendations.📺 #TVShows #CommunityTalk\n\n📢 Made with Inside",
-      "links": [
-        {
-          "label": "Made with Inside",
-          "url": "https://t.me/InsideAds_bot/open?startapp=r_-1001430675184_utm_source-insideadsInternal-utm_medium-signPost-utm_campaign-scheduled"
-        }
-      ],
-      "createdAt": "2026-07-26T09:01:06.762Z",
-      "expiresAt": "2026-07-28T09:01:06.762Z",
+      "text": "‘Scrubs’ Ups Ava Bunn To Series Regular Alongside Lead OG Trio As Season 2 Sets Cast Returns & Two Main Characters’ Departures.",
+      "links": [],
+      "createdAt": "2026-07-26T11:28:13.311Z",
+      "expiresAt": "2026-07-28T11:28:13.311Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:06.762Z",
-      "tag": "crypto",
+      "mediaRefreshedAt": "2026-07-26T11:28:13.311Z",
+      "tag": "series",
       "tags": [
-        "crypto",
-        "finance"
+        "series",
+        "culture"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2674,7 +2701,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:06.762Z"
+        "reviewedAt": "2026-07-26T11:28:13.311Z"
       }
     },
     {
@@ -2684,7 +2711,7 @@
         "title": "NEON CLASSES",
         "handle": "neonclasses",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/G6qNW0GTxzJbu4BkipFqIOpVBbyDZlSljDVf3RCJYf71TQPPcwxsNzNWJleP6DXs_szTFzJVQHZhVI5inlIM_5HojfkkOcI_PCZp2zthd-nUNeNEc2vsqTysB_B-oHmSQEsb-Hd7mAT7fWySWpqtupNg75Gd_1y7Ct8fTrkTz_j-ZxVkhuXIqZ_c0Dg48TJhlqnlW9Ek_etdfvXbE4FbM8JcBJ3_YvBomzzc3DVu9N3nE7bDIzqVF56dxgbOUTLrI-LXZNLUM6xqJalksOQ5p5iFlFVNR7VE0vxA6zFF7XexWSJORSeQWgUfvy8nu2qPgJCfrgUJSUO7uZxX1nK1jw.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/u5MV5xwMX-nsKBat8Fpiljd_QfkLybkVI2fDfr7__y2HVgsRXW9WhAFBP65go-JMMTcJf2cU9tn5ay1pYau0A4NjR7_-OtNgD3snSmpZxwaNiMg66NdIW7uK_1I79o6iV8PqQ5P_k4Rst-IzpYdcjHhWTbzqo36ktaytxoGCADrJ13heQZ4AVScDqiEIrAY0YolRlMB8oCg3-by168f8QTE6yv6ZL-E6ax6vaCY4VjcZhdzS7iR9spISKO6OWbbX8d20u2agNWpUXNLiZIH6uHu2gNwKwbh0vYkDRxuwpVCpeKwC4WILz8uwnKgr6vFNvwKJLVVo3o-h4irPVklspQ.jpg"
       },
       "sourceId": "in:neonclasses",
       "sourceCountryCode": "in",
@@ -2701,10 +2728,10 @@
       "fallbackReason": null,
       "text": "King of Calculations - 902",
       "links": [],
-      "createdAt": "2026-07-26T09:01:05.942Z",
-      "expiresAt": "2026-07-28T09:01:05.942Z",
+      "createdAt": "2026-07-26T11:28:12.479Z",
+      "expiresAt": "2026-07-28T11:28:12.479Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:05.942Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:12.479Z",
       "tag": "other",
       "tags": [
         "other"
@@ -2722,7 +2749,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:05.942Z"
+        "reviewedAt": "2026-07-26T11:28:12.479Z"
       }
     },
     {
@@ -2732,7 +2759,7 @@
         "title": "NEET Wallah",
         "handle": "neetwallahpw",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/onF7h0YE21612B2NyHtT6s0Ypqrbr19_07p2Uti84MamWpMex5tcN8Or7SStYorOLF_PQTU7MiZckSGt9ljtNQFkzHRyiWWRo4FmBISQH1L1othn5P_wx-p02dCSedXcyiWKpDmHtKiz5GOjRXpOqzJgE8qR6uFi0tn1J1P_FZ4OtoGzEaO-gWM1ZdjLKEiUqfkWiojSMqb3OJHDrTm2SK_LGwVO8ghLI_Ao1EGAN3TAMtjHDROaF47uh6ClgBns6_Wu7FucbuRKFb4XFcPrIniloTolyPK76_-GluVSTymdDR7wUI2XYHN8dAEyWB2KwluCQnSrsqVakChuKBYrLA.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/lbNqk4h49OYBJy0Zf6iDi1swlguix4v6OW_o_jaWB45E5CUCE9izjEgw5vfCFGJtAGJIX4n6DE-hoQDh_mGmMMx3nhIlt0Ci1ZuNcAi4Jgf1x4A0KVhcuP0VUsqKgow8lPJqpZLkZ166rakbbLo09GTpCl6KGr-RqbwHizUm9wYX0DiDfdfDhMnRfVrs89r0IImH3rQ_D4goHbojSjBYezjMmsguOn0tHBqPh9g38fJXxRQ0xT3ewsfiwBlcdhsHeo7vGZtnapFxk82gwcHmIUIQyg5jpE8jGA-ySbENgUA53ma1PWiImqytt3akzPighby5fdOb7FH2t8E-Wa9YZQ.jpg"
       },
       "sourceId": "in:neetwallahpw",
       "sourceCountryCode": "in",
@@ -2753,10 +2780,10 @@
           "url": "https://www.youtube.com/live/I8-qqlUrg2k?si=gsOcDtgTzBVPoop5"
         }
       ],
-      "createdAt": "2026-07-26T09:01:05.141Z",
-      "expiresAt": "2026-07-28T09:01:05.141Z",
+      "createdAt": "2026-07-26T11:28:11.634Z",
+      "expiresAt": "2026-07-28T11:28:11.634Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:05.141Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:11.634Z",
       "tag": "electronics_trends",
       "tags": [
         "electronics_trends",
@@ -2775,12 +2802,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:05.141Z"
+        "reviewedAt": "2026-07-26T11:28:11.634Z"
       }
     },
     {
-      "id": 2258597029,
-      "postUrl": "https://t.me/neetprep/37151?single",
+      "id": 1450557212,
+      "postUrl": "https://t.me/neetprep/37161?single",
       "source": {
         "title": "NEETprep.com - PURE MCQ Practice & Testing Courses",
         "handle": "neetprep",
@@ -2793,17 +2820,12 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "https://youtu.be/6Hq9fHmdwbY",
-      "links": [
-        {
-          "label": "https://youtu.be/6Hq9fHmdwbY",
-          "url": "https://youtu.be/6Hq9fHmdwbY"
-        }
-      ],
-      "createdAt": "2026-07-26T09:01:04.141Z",
-      "expiresAt": "2026-07-28T09:01:04.141Z",
+      "text": "Only last 2 test left sir \n\nTEST 4 AND 8 \nAbhi karke deta hu",
+      "links": [],
+      "createdAt": "2026-07-26T11:28:10.074Z",
+      "expiresAt": "2026-07-28T11:28:10.074Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:04.141Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:10.074Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -2823,7 +2845,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:04.141Z"
+        "reviewedAt": "2026-07-26T11:28:10.074Z"
       }
     },
     {
@@ -2848,10 +2870,10 @@
           "url": "https://youtu.be/6HqAmkPRwws?si=M3PENoYzbmjl0ivp"
         }
       ],
-      "createdAt": "2026-07-26T09:01:03.293Z",
-      "expiresAt": "2026-07-28T09:01:03.293Z",
+      "createdAt": "2026-07-26T11:28:09.256Z",
+      "expiresAt": "2026-07-28T11:28:09.256Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:03.293Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:09.256Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -2871,12 +2893,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:03.293Z"
+        "reviewedAt": "2026-07-26T11:28:09.256Z"
       }
     },
     {
-      "id": 70443667,
-      "postUrl": "https://t.me/nayempicture/14803?single",
+      "id": 1986553069,
+      "postUrl": "https://t.me/nayempicture/14805?single",
       "source": {
         "title": "Nayem Pictures",
         "handle": "nayempicture",
@@ -2885,50 +2907,39 @@
       },
       "sourceId": "in:nayempicture",
       "sourceCountryCode": "in",
-      "contentType": "video",
+      "contentType": "image",
       "media": [
         {
-          "id": "video-1",
-          "kind": "video",
-          "url": "https://cdn5.telesco.pe/file/766389b435.mp4?token=EH5gD0pyMLRfGBBY4FijBG3IOgsQ_BDkaEesqGsrwY5MPgGbnBxqPNn52j48oQlaJ0JHHRu8fS39cIwTPUFPh2wnJifAfCgLTFU8mrab3l3SytqyRUPVrgZbeiKpMkUxfHZ8QEBjRYjx3ck3GPy56yxCbfhjKK65HzNuxy8YdJPooHTqqSfNgHe8hN0dIsJ23AhmqgMNrkxdAi5GDU7VQ8mOcFaOKx5Gsdf7jjMi21AMGdUAq64Mz3LaznrP4EjVgEar7SaRD-iQPnOZaRNsiyAl-5OJ1xjm8DPgpBlkBNQtoL2cs1TttMahVXZEE4oYM4ktnyUmZCN0V1wHJRN94Q",
-          "poster": null,
-          "mimeType": "video/mp4"
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/voCG5y7fhcspr3CHu4NX9OpyMdH6AEj5pLUcIWk2_mGdygjRW9DXTavi6K-msK_vmckcOSma_gFguy_RXtMJ-3xgtkhhSe39omls5Sc9qf0jk1EcHf5zCOkZj72o5FGjsb_n5-S_Kz9E7XUG2pqwRhAe3mcJ4S1C_uk25Z6nUctqLwsFFRie6u6wIk3brykUPwVDDIVQ1ZlQw8MlJB4kCoECgwQhPdNYcA4vC78Vbc9A2qashUy0fL4nmqg_qocqE5UzCMk7sCbR8aD-4ZZlP31pnnj3urjaAfq0A4ejenZubN9QLyoC7uTmtt2Acu4zs0V1sxcAjESDWCOw8gln_Q.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "✈️ 𝐀𝐕𝐈𝐀𝐓𝐎𝐑 𝐇𝐀𝐂𝐊 ✈️_1.0.0.apk\n🔥🔥 NEW 𝗛𝗔𝗖𝗞 🔥🔥_1.2.1.0\n\nনতুন 𝗨𝗣𝗗𝗔𝗧𝗘 𝗛𝗔𝗖𝗞 চলে এসেছে ৯৯% কাজ করে ১০০% 𝗣𝗥𝗢𝗙𝗜𝗧 \n\nযাদের যাদের এই 𝗛𝗔𝗖𝗞 লাগবে তারা সবাই ইনবক্স করেন\n\n👇👇👇👇👇👇\nhttps://t.me/+CdbAoPV4vLQzMWI1\nhttps://t.me/+CdbAoPV4vLQzMWI1\nhttps://t.me/+CdbAoPV4vLQzMWI1\nhttps://t.me/+CdbAoPV4vLQzMWI1\n\nINBOX @Owner_Morsalin_TEB  PASSWORD",
+      "text": "📱\nযারা TikTok, 🤪Facebook,😀 Instagram  লাইক এবং ভিউ একদম ফ্রিতে নেয়া শিখতে চান শুধু মাত্র তাড়া 😱 \n\nতাড়াতাড়ি লিংকে জয়েন রিকোয়েস্ট পাঠান \n\nFree Link💎💎💎💎\n👉https://t.me/+hL_sLLnDvYI2MmU1\n👉https://t.me/+hL_sLLnDvYI2MmU1\n👉https://t.me/+hL_sLLnDvYI2MmU1\n\nআপনাদের জন্য অফার একদম ফ্রি😍",
       "links": [
         {
-          "label": "https://t.me/+CdbAoPV4vLQzMWI1",
-          "url": "https://t.me/+CdbAoPV4vLQzMWI1"
+          "label": "https://t.me/+hL_sLLnDvYI2MmU1",
+          "url": "https://t.me/+hL_sLLnDvYI2MmU1"
         },
         {
-          "label": "https://t.me/+CdbAoPV4vLQzMWI1",
-          "url": "https://t.me/+CdbAoPV4vLQzMWI1"
+          "label": "https://t.me/+hL_sLLnDvYI2MmU1",
+          "url": "https://t.me/+hL_sLLnDvYI2MmU1"
         },
         {
-          "label": "https://t.me/+CdbAoPV4vLQzMWI1",
-          "url": "https://t.me/+CdbAoPV4vLQzMWI1"
-        },
-        {
-          "label": "https://t.me/+CdbAoPV4vLQzMWI1",
-          "url": "https://t.me/+CdbAoPV4vLQzMWI1"
-        },
-        {
-          "label": "@Owner_Morsalin_TEB",
-          "url": "https://t.me/Owner_Morsalin_TEB"
+          "label": "https://t.me/+hL_sLLnDvYI2MmU1",
+          "url": "https://t.me/+hL_sLLnDvYI2MmU1"
         }
       ],
-      "createdAt": "2026-07-26T09:01:02.345Z",
-      "expiresAt": "2026-07-28T09:01:02.345Z",
+      "createdAt": "2026-07-26T11:28:08.284Z",
+      "expiresAt": "2026-07-28T11:28:08.284Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:02.345Z",
-      "tag": "technology_all",
+      "mediaRefreshedAt": "2026-07-26T11:28:08.284Z",
+      "tag": "telegram_ton",
       "tags": [
-        "technology_all",
-        "technology",
-        "ai"
+        "telegram_ton",
+        "telegram"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -2943,7 +2954,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:02.345Z"
+        "reviewedAt": "2026-07-26T11:28:08.284Z"
       }
     },
     {
@@ -2953,7 +2964,7 @@
         "title": "NASIYE SPORTS",
         "handle": "nasiyesports",
         "verified": false,
-        "avatar": "https://cdn4.telesco.pe/file/T8z4nQHbMMfkvbMSOBYTNKWwwEHSS1P5KNMNSGyGJyNmWzX6LOFwfCybluMGB4MH24OfbK8K31ak9_ixQZXmrSZXxA8pTza2_-svwvrJXOLDlM0Wb9EG-78t5jQ4tipW_FZB3LCe0f2g9P2sngleqOYd-B9gAbmcCrlnChFtXie-SoTYNJGmIJK2nVXJTNXwXsCdKKtkNIW3PFadiBNXwtCQPHs_4XMsw6rleQ43SdxRCM-Knn7hIDdNAiA060rVek8DZqA-1fFSycDAnx5l1CEG4qsgHGxl6L0T9OFja_IJ0flaNuiBLAOxzArmIOkWl_0CM2FNZwwarl3NyBBpVQ.jpg"
+        "avatar": "https://cdn4.telesco.pe/file/kw6Wgjq6eqnM8UTzQdUBRtP7pAktW7EmIiVeKuFmOh1d0wVwnRIPxAm2S1R0YdBJiyrfpf0RaBWlcn-lW0wg_VmeL2qzW_y7zvo7hAfeqL0gzmNJZEzWAN-zDQ7Z3dLonQauwXtTO8vaMCn0hgn5-6trrlSiSmfMIM40Cgacv02AaiX54xiWh78GrYz508MjOxMduMHuZRsbf0-ysYEFxjLuPDIhLsUKooVlTk0UAUQXSknmc2C87bAc4HRaTnR5QMIIjDIoF23BGtA47g8BVId91iraJkOlITTClh0gt9NJYH5CYgbjfpM9K2orLC-m6L4cADp2EOEhMM3RsSpBPw.jpg"
       },
       "sourceId": "in:nasiyesports",
       "sourceCountryCode": "in",
@@ -2962,7 +2973,7 @@
         {
           "id": "video-1",
           "kind": "video",
-          "url": "https://cdn4.telesco.pe/file/a0ad887524.mp4?token=ccxhR0_6fjbCTtYtco2zZasNcin4tAR7lqc4nF0KH51d3PWNTNXGXfjDRfL_ZjctrBoeKvcMRP5LaLFdqQrzJekhL3iLdzRneoMofqHVg7xYKjLR6aFLGc8ew43TdNfL0f6SsTGoxZ3sFRWwkl8Pxyz7tVQ1Kami6vbrwPdcVvEcnvWHy5zbkmFwPEawaCgwbGcnClxrLXktawhWECgsKkr3u2Nu4HiaInlK1lLo4Vq5H5ImZBSv5pLIxyoSmipPaVguwDo1rLW-DebfgdFUC2DuYcQV1mh83ZloqdyZF3t3Serlcp4RDYcZkQ_QWkFuF8__u4XMByZQSFSs94stRw",
+          "url": "https://cdn4.telesco.pe/file/a0ad887524.mp4?token=lWjZXGSWZ22mQntHacVRIcOSoHH5CTeu4HSawa8Bzk3Sx2XJXYTo_fFygIB9mOWBKImYb_JxPBXKN23rRYO8N9ZwyNHGE1C7OuI8EcBLlAXXhv30qmPoCof3zby1bP7YKMGnSiaqJKsDbzk_gqsiloYSY22NsCGWBUVbX_E3S5nNbMtDOolwUAjcpJQAQLNgPLmAWpGlRPiqeVPAUd6tPH0PNwK9Om3l-9TK6BTykXzlKQujObJa386B4GPzk44ov3LMXqr0pTbzbC-8eN2_9-ooNi7I9DBFdmu-cBgwpgsAIf4ouoai67ypbrIixeMmWbIuXOAxc1tdaNUqROiDeQ",
           "poster": null,
           "mimeType": "video/mp4"
         }
@@ -2971,10 +2982,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:01:01.462Z",
-      "expiresAt": "2026-07-28T09:01:01.462Z",
+      "createdAt": "2026-07-26T11:28:07.461Z",
+      "expiresAt": "2026-07-28T11:28:07.461Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:01.462Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:07.461Z",
       "tag": "sports_all",
       "tags": [
         "sports_all",
@@ -2994,7 +3005,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:01.462Z"
+        "reviewedAt": "2026-07-26T11:28:07.461Z"
       }
     },
     {
@@ -3022,10 +3033,10 @@
       "fallbackReason": null,
       "text": "Yaa rabi gaza aduunyo maahan mit macaan",
       "links": [],
-      "createdAt": "2026-07-26T09:01:00.649Z",
-      "expiresAt": "2026-07-28T09:01:00.649Z",
+      "createdAt": "2026-07-26T11:28:06.636Z",
+      "expiresAt": "2026-07-28T11:28:06.636Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:01:00.649Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:06.636Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3043,7 +3054,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:01:00.649Z"
+        "reviewedAt": "2026-07-26T11:28:06.636Z"
       }
     },
     {
@@ -3053,7 +3064,7 @@
         "title": "NANAK CLASSES",
         "handle": "nanak_classes",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/TqS3RPKOZ8ZYTPkCuO8M8n1lIVyMWLEGy5kafCE0Y9PTWloJfes-3FiuWRIZC1UN2zb84PWxy0cIedUa0WGPbLWVtxWSU25vlstG7RY7steePNFzVuSfGPm_irYTVZN3LgPJj39WWC4ip1fLs0VK6tvrFtBl3ZTSxghvJX-4LZBBtwh2QhPL9vdw-1NhUm0ESPA9C5MSggRhvfTyrYJplRde2Som47LlbEbY4ojwunLrvYG5OeJc5apWI69oWa8FCmwvELoBHzyUTmA2z26_rWQM4czbvbpdGJq6Cp6TClIqmy8V-P4X5g5vOGaIViok57RfCPfdpfyWEZxMdoaOng.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/bTTj0Dsz9v8iXNEyQIvBsurl93bx7xkryWZJhpqpMf38g-GVtSS3_Qs_DYi0HQAoV0sIs5ldZ4ank34wazgauEXQtpHjfp9F8pePUAzTA47sFtLPlkyfn_XKomJ1F1IqnBYJJgbbnu37CEaTx3GbWeoJK3xbCdrcyYkPhe-c1LWyL-9RNKVnN93w8eAcmIZMh8LwhQV4wxFSBqBL1Z4xOKP_kJCRIyWW4PKultMBZxl0VgLPbPhRt9JUtaHwIP1poTphJPNK-jOWYtZYGVp2pZVrgUl1lK-t_tXPy8JknaFA0lfFSmWHkE_Dzz4ZN-E6kef-yexPg7TPk7LKbBNaMQ.jpg"
       },
       "sourceId": "in:nanak_classes",
       "sourceCountryCode": "in",
@@ -3074,10 +3085,10 @@
           "url": "https://t.me/SHIVSIRNK"
         }
       ],
-      "createdAt": "2026-07-26T09:00:59.805Z",
-      "expiresAt": "2026-07-28T09:00:59.805Z",
+      "createdAt": "2026-07-26T11:28:05.805Z",
+      "expiresAt": "2026-07-28T11:28:05.805Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:59.805Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:05.805Z",
       "tag": "telegram_ton",
       "tags": [
         "telegram_ton",
@@ -3096,7 +3107,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:59.805Z"
+        "reviewedAt": "2026-07-26T11:28:05.805Z"
       }
     },
     {
@@ -3122,10 +3133,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:00:58.892Z",
-      "expiresAt": "2026-07-28T09:00:58.892Z",
+      "createdAt": "2026-07-26T11:28:04.913Z",
+      "expiresAt": "2026-07-28T11:28:04.913Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:58.892Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:04.913Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -3145,7 +3156,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:58.892Z"
+        "reviewedAt": "2026-07-26T11:28:04.913Z"
       }
     },
     {
@@ -3176,10 +3187,10 @@
           "url": "https://unacademy.com/goal/upsc-civil-services-examination-ias-preparation/KSCGY/subscribe?plan_type=plus&amp;amp;referral_code=mrunal.org"
         }
       ],
-      "createdAt": "2026-07-26T09:00:57.993Z",
-      "expiresAt": "2026-07-28T09:00:57.993Z",
+      "createdAt": "2026-07-26T11:28:04.032Z",
+      "expiresAt": "2026-07-28T11:28:04.032Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:57.993Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:04.032Z",
       "tag": "education_courses",
       "tags": [
         "education_courses",
@@ -3198,7 +3209,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:57.993Z"
+        "reviewedAt": "2026-07-26T11:28:04.032Z"
       }
     },
     {
@@ -3218,10 +3229,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:00:57.217Z",
-      "expiresAt": "2026-07-28T09:00:57.217Z",
+      "createdAt": "2026-07-26T11:28:03.238Z",
+      "expiresAt": "2026-07-28T11:28:03.238Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:57.217Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:03.238Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3239,7 +3250,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:57.217Z"
+        "reviewedAt": "2026-07-26T11:28:03.238Z"
       }
     },
     {
@@ -3249,7 +3260,7 @@
         "title": "Movie Hub",
         "handle": "movies_hub_main",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/dUCbY3I8pGcMB7hw7Kw7QwzqU3Tn2qma9nMNabemLC1HLp_-bL6c9TliC2QxrIvcr9mDDBkKxOQSOwk9YAiflWzoIY0O6YxeVKmMuCdjeGxD1vKiG_kAikgLcBsrEvKjt-cfFVe16F7Hy7KDVG4qybpguBlB1-k2DXHfjFCF2wYc9bW3wDs4cXfafU4UAyiemcjPI3lrjI7mZgPpLSs6Dm3HTUkGBlIed1pTtbl199toz-gxJBX3xJPUn3ftPlMsI1lyU-xgDIQ4C2ogi64lRbb9vhYkdbMpn6YtpI7X4eAMclQ5MlGLSahU8q8T-08rPkITA1qY98UciVkvJwWd6A.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/FDamlJXtiQaGEOj7smKjTcKo5PXY1-v6wgXFDuf9XrwfoqXE72qkipVjuMThlqVGjMQIhKw5f7tPorioK9GoUrUQyG5Vz_l0nze-9v9lQncHI-4Oe-xtZ2GD_WjNYaujNtg_FWBCWrecHqJJfE-rACZz7Sb8puYR1Mq7nuaC0KeWs8-1mBhXFxkRtEz6B9U-8wayREJsWHP7CO07Ok7DA4LzIuCwZBaShw6EFztGJZu7u7nqUF7wama-jA24Vxt6H-AdLsHqvF16_6Atyo47TjzvtavTYoQn2DoyQ4nx3xo0sDDGyEL8mNERO8i13EVk1SaMeHBrO97y-EbyjBDf-Q.jpg"
       },
       "sourceId": "in:movies_hub_main",
       "sourceCountryCode": "in",
@@ -3259,10 +3270,10 @@
       "fallbackReason": null,
       "text": "📌Latest ott Release📌\n\n🎥 Type: Movie",
       "links": [],
-      "createdAt": "2026-07-26T09:00:56.433Z",
-      "expiresAt": "2026-07-28T09:00:56.433Z",
+      "createdAt": "2026-07-26T11:28:02.449Z",
+      "expiresAt": "2026-07-28T11:28:02.449Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:56.433Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:02.449Z",
       "tag": "cinema",
       "tags": [
         "cinema",
@@ -3281,17 +3292,17 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:56.433Z"
+        "reviewedAt": "2026-07-26T11:28:02.449Z"
       }
     },
     {
-      "id": 778165500,
-      "postUrl": "https://t.me/mothershipsg/33662?single",
+      "id": 3077469651,
+      "postUrl": "https://t.me/mothershipsg/33665?single",
       "source": {
         "title": "Mothership",
         "handle": "mothershipsg",
         "verified": true,
-        "avatar": "https://cdn5.telesco.pe/file/PQgdYIH7i0zQkkKS98XZ1E_QAnZxmVBlzrtnZWhBO8AfMz6Z16cC_9D_ndv-Tdg903xr0DPXUVN103iuTQzdtJKJTldRMzArz7ka90OaATKSroEOpC9NwQQUixW_JAPnAqQFZ7fV3mWMgnh7X7Asa8qcTevyWoS1_UZEL9uEbVA6R1c2ROONzftecyipotkKDQRBxMmzKTZykuXyPC9L1Lj1R794RcwRBpAG1gT6iCaTOi9RP8W8XVlgV-hgcUxh1s2OGQRAqQ4AHTau9TeuRFb4Rzh_hrfVAqWIhSSftdxRdedsKzif6Ku0imuGHVFRlsQzhVQ51PWRjidgcW9Scw.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/qhXjWZX_yGnRE7q4qo4dhruzjXbAMwNO1iQwQm2NmC-cLlIvZmZ4VzCqLbvv8pLTj3Eoq9t5LMMMdPXbE5ZoX5p-rv0MemNxkvmJaE9rlcNJACFDxCd98UGozhlTv-x8eZwNhoYMmLLn0MpJ4BU_MUAQL7DzNqRpKx2UTn9tuYhOTuDPGbw1MSLE0jvwox9RdF9eYyvORNguXCZTQpWQcht0YdNj7qaAjx3ER5euQW_clbFbsF6D8UjKJqwaMz2NRref_Dl5jzuCbd89lImuH53BRSzGAnGGpTh2SbUGCb1akwTLeHIwfVVOz07ArrGZpw4LzKdkIspCPzFLuEtokw.jpg"
       },
       "sourceId": "in:mothershipsg",
       "sourceCountryCode": "in",
@@ -3300,30 +3311,30 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/Mi_cLTK7Bun8r7qr6z6mbq0iS9uuLWxNj7kaViCiR7TEhFUm2EXBCRYK1M4fG2leyD5GT55MfHRIL3vkcx4npJSaY2E4k7rJfZXyHlwyOBm6TsZbs4E8dNTncUn_WUsbWLbhNj9Kt2XsQDtyQDrCR-q1bNS_syYrmWXgbMC0RVVzXtvEgwi_iWXpsZTqqUyJrz8AJ5LEczYeS3A6rEWGSaXK7TvPE26UuDvvjbKvWvDxcB8UIJN9c3ZdWOWi1x-8wNvTaWkVxQCwXCoKoM3qhW-UmjWiXcvRONZPiSSw6TdlVXXyX9b6Pd8zHiObDqbpD3qU73cqLf_svbOcv4fmhw.jpg"
+          "url": "https://cdn5.telesco.pe/file/ObfAD8Hg7ix1zFRZhG4ue0TK2I7ATT8S3GqMeIuwsEmXUWaxJabyflJr44EYKgKeH25q9AY_O8I25ehB7hFL3wuAA9W3DWBFF5KbkBG4EjLr_P8XGYbGob8OH55nNGObkE2Xz_MnmVPFR-GPdw833PXDtgtf2-t_OqlfQtd5YGD7cIqInV0rXrl-Xx1piypESbfMnhQx4MC-hVoMkJjb9J24Q4-vzUVz166G-3WnqJ_-NqYzXtgKa52MCM2a69I0lBF6HZeJCFAgtuC9Cbtl3xowntEtwf0zgnmad3d_Y5to6t90TLgyWKejhdOi2NaJghDEBx9nXR9lh1Aebz1Z4g.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🏫 S’porean host Diana Ser shared that 2 of her children will be heading off to university in 2027.\n\nAs they embark on this new chapter, Ser had some words of wisdom for them. Here’s her advice:\n\n➡️ https://bit.ly/4hxATmz \n\nFollow us @mothershipsg",
+      "text": "👀 The boss of a China company fired an employee for allegedly refusing to invite his mother to his wedding as he felt ashamed of her appearance.\n\nThe employee allegedly said, “My mother's face is not good-looking, I'm afraid she will embarrass me,” prompting the boss to fire him & offer his mother a job instead.\n\n➡️ https://bit.ly/4fU5edH \n\nFollow us @mothershipsg",
       "links": [
         {
-          "label": "https://bit.ly/4hxATmz",
-          "url": "https://bit.ly/4hxATmz"
+          "label": "https://bit.ly/4fU5edH",
+          "url": "https://bit.ly/4fU5edH"
         },
         {
           "label": "@mothershipsg",
           "url": "https://t.me/mothershipsg"
         }
       ],
-      "createdAt": "2026-07-26T09:00:55.624Z",
-      "expiresAt": "2026-07-28T09:00:55.624Z",
+      "createdAt": "2026-07-26T11:28:01.644Z",
+      "expiresAt": "2026-07-28T11:28:01.644Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:55.624Z",
-      "tag": "finance_investing",
+      "mediaRefreshedAt": "2026-07-26T11:28:01.644Z",
+      "tag": "news_incidents",
       "tags": [
-        "finance_investing",
-        "finance"
+        "news_incidents",
+        "news"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3338,7 +3349,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:55.624Z"
+        "reviewedAt": "2026-07-26T11:28:01.644Z"
       }
     },
     {
@@ -3348,7 +3359,7 @@
         "title": "𝗠𝗼𝗱𝘅 𝗦𝗵𝗮𝗸𝗶𝗹 𝗢𝗳𝗳𝗶𝗰𝗶𝗮𝗹",
         "handle": "modxshakil",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/DV_aDG3XMYXo1ZjV7QYT9EHZtZqQ2k3PpLiND0ByRm2QboJw-YJdjnfcq3r9l0G1LeApFjhQKqmwj0WNcMTlw3ntMgrXRf9SNHapCf-aHFKlzVijrmbkGTggM6aC7h4-WwPYyvtFDLvnkwh--XRnVdNpSob2qEyHhcrcVvGdaGTB6szv8fhTTSzViVfSHnI9y2vj5KF5PLHJDUMx1jD7mhIgDInW6VRtnOpr_1CqKrljxP_ZOyyC6y06q-0K1xLhX9WsedfPXrhtgZlClt5pzeEzGmEmiNQoWV4CZM8JkiOyRKdCpEIpigsb8UGZZOO9s8vcM82BHFw3fjFJrZT7RQ.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/Zeq11P0LizRt_nxSNhSYPFVceHryaREQbNQuUDJtDp_mCxwij8Dsxm73Pub4oPYk9hJRhlRwFdvqTWP9X8NS8zLeGLki3bHX6Q_-4LFyIPeCUXO3c0BOyuInfZi4FRFmJcIRAqy4jz220bFQunBKg2HqAPQnY5Ajk221Zd0_3UOH08P84ZiPpejJsUzlraAddOtjy_NBAS1pLrLzYFSuqGklZ4ymtxIG1FjtbJspSsexHRh1N_BhLLFQkXBNghSLvr7gO0lyr3FLKpcxS87bL_y7isu6UiM4o6tHNv6_YMCd0Sz_Ex5BlwN9mzrkV6sWyLt1pOtbzib2nkG8DLEceQ.jpg"
       },
       "sourceId": "in:modxshakil",
       "sourceCountryCode": "in",
@@ -3373,10 +3384,10 @@
           "url": "https://t.me/+IMU__Y7vmJY1YjBl"
         }
       ],
-      "createdAt": "2026-07-26T09:00:54.701Z",
-      "expiresAt": "2026-07-28T09:00:54.701Z",
+      "createdAt": "2026-07-26T11:28:00.554Z",
+      "expiresAt": "2026-07-28T11:28:00.554Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:54.701Z",
+      "mediaRefreshedAt": "2026-07-26T11:28:00.554Z",
       "tag": "war",
       "tags": [
         "war",
@@ -3395,12 +3406,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:54.701Z"
+        "reviewedAt": "2026-07-26T11:28:00.554Z"
       }
     },
     {
-      "id": 1570557952,
-      "postUrl": "https://t.me/mathsmaniassc/4144?single",
+      "id": 1862286218,
+      "postUrl": "https://t.me/mathsmaniassc/4146?single",
       "source": {
         "title": "Maths Mania SSC",
         "handle": "mathsmaniassc",
@@ -3413,12 +3424,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-07-26T09:00:53.827Z",
-      "expiresAt": "2026-07-28T09:00:53.827Z",
+      "text": "https://youtu.be/7hkOvvXtqn8",
+      "links": [
+        {
+          "label": "https://youtu.be/7hkOvvXtqn8",
+          "url": "https://youtu.be/7hkOvvXtqn8"
+        }
+      ],
+      "createdAt": "2026-07-26T11:27:59.692Z",
+      "expiresAt": "2026-07-28T11:27:59.692Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:53.827Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:59.692Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3436,7 +3452,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:53.827Z"
+        "reviewedAt": "2026-07-26T11:27:59.692Z"
       }
     },
     {
@@ -3461,10 +3477,10 @@
           "url": "https://youtube.com/live/_fnLOxc6eCw?feature=share"
         }
       ],
-      "createdAt": "2026-07-26T09:00:52.981Z",
-      "expiresAt": "2026-07-28T09:00:52.981Z",
+      "createdAt": "2026-07-26T11:27:58.836Z",
+      "expiresAt": "2026-07-28T11:27:58.836Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:52.981Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:58.836Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -3485,12 +3501,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:52.981Z"
+        "reviewedAt": "2026-07-26T11:27:58.836Z"
       }
     },
     {
-      "id": 1929720818,
-      "postUrl": "https://t.me/magadh_university_bodhgaya/6538?single",
+      "id": 1898669163,
+      "postUrl": "https://t.me/magadh_university_bodhgaya/6539?single",
       "source": {
         "title": "Magadh University Info",
         "handle": "magadh_university_bodhgaya",
@@ -3503,21 +3519,16 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "इंटर्नशिप के लिए जल्दबाज़ी न करें, पहले सही जानकारी प्राप्त करें फिर सोच समझकर अपना निर्णय लें:\n\nप्रिय छात्र छात्राओं, \n\nराजभवन, बिहार द्वारा जारी इंटर्नशिप गाइडलाइन अनुसार स्नातक पाठ्यक्रम के विद्यार्थियों के लिए इंटर्नशिप एक महत्वपूर्ण शैक्षणिक प्रक्रिया है। निर्धारित प्रक्रिया का पालन करते हुए विद्यार्थी अपनी सुविधा एवं आवश्यकता के अनुसार किसी भी वैध एवं उपयुक्त Internship Providing Organization (IPO) के माध्यम से इंटर्नशिप करने के लिए स्वतंत्र हैं। \n\nइंटर्नशिप का चयन करते समय केवल कम शुल्क देखकर निर्णय लेना उचित नहीं है। यह सुनिश्चित करें कि जिस संस्था का चयन किया जाए, वह समय पर Internship Completion Certificate, Attendance Record, Project Report तथा कॉलेज/विभाग में जमा किए जाने वाले सभी आवश्यक दस्तावेज उपलब्ध कराए, ताकि भविष्य में किसी भी प्रकार की परेशानी का सामना न करना पड़े।\n\nइंटर्नशिप को लेकर बिहार के अन्य विश्वविद्यालयों के अनेक विद्यार्थियों से बातचीत, उनके अनुभव तथा विभिन्न प्लेटफॉर्म के बारे में प्राप्त फीडबैक के आधार पर यह जानकारी सामने आई कि EzyIntern एक व्यवस्थित एवं किफायती विकल्प के रूप में विद्यार्थियों के बीच तेजी से लोकप्रिय है। यह प्लेटफॉर्म कम शुल्क में इंटर्नशिप प्रक्रिया को सरल बनाने के साथ आवश्यक प्रशिक्षण, उपस्थिति रिकॉर्ड, प्रोजेक्ट रिपोर्ट, इंटर्नशिप प्रमाणपत्र तथा कॉलेज में जमा किए जाने वाले आवश्यक दस्तावेज उपलब्ध कराने का प्रयास करता है।\n\nइस जानकारी को साझा करने का उद्देश्य किसी एक कंपनी को अनिवार्य बताना नहीं, बल्कि विद्यार्थियों को एक ऐसे विकल्प से अवगत कराना है, जिसके बारे में अन्य विश्वविद्यालयों के विद्यार्थियों से सकारात्मक अनुभव एवं फीडबैक प्राप्त हुए हैं। अंतिम निर्णय लेने से पहले विद्यार्थी अपनी आवश्यकताओं, कॉलेज/विभाग की अपेक्षाओं तथा उपलब्ध विकल्पों का स्वयं मूल्यांकन अवश्य करें, ताकि वे अपनी फीस वहीं निवेश करें जहाँ उन्हें बेहतर सुविधा, उचित मार्गदर्शन एवं समय पर आवश्यक दस्तावेज प्राप्त हो सकें।\n\nCompany Name: EzyIntern\nRegistration Link: https://www.ezyintern.in/register\n\nनोट: इंटर्नशिप का अंतिम चयन पूर्णतः विद्यार्थी का स्वयं का निर्णय होगा। विद्यार्थी जिस भी वैध Internship Providing Organization (IPO) का चयन करें, यह सुनिश्चित करें कि संबंधित कॉलेज/विभाग द्वारा निर्धारित सभी आवश्यक दस्तावेज, रिपोर्ट, उपस्थिति विवरण एवं अन्य औपचारिकताएँ समय पर पूरी हो सकें।",
-      "links": [
-        {
-          "label": "https://www.ezyintern.in/register",
-          "url": "https://www.ezyintern.in/register"
-        }
-      ],
-      "createdAt": "2026-07-26T09:00:51.799Z",
-      "expiresAt": "2026-07-28T09:00:51.799Z",
+      "text": "Magadh University Internship को लेकर महत्वपूर्ण सूचना\n\nMagadh University द्वारा जारी 14 जुलाई 2026 के नोटिस को लेकर कई कॉलेजों में भ्रम की स्थिति बनाई जा रही है। कुछ महाविद्यालय जल्दबाजी में छात्रों का Internship Registration शुरू कर रहे हैं, जबकि विश्वविद्यालय के आदेश में 14 अगस्त 2026 तक छात्रों का Registration या Internship पूरा करने की कोई समय सीमा निर्धारित नहीं की गई है।\n\nनोटिस के अनुसार 14 अगस्त तक कॉलेजों को केवल Internship के लिए उपयुक्त संस्थानों एवं कंपनियों का चयन करना है, आवश्यक कागजी एवं प्रशासनिक प्रक्रिया पूरी करनी है तथा इसकी सूचना विश्वविद्यालय को भेजनी है।\n\nसबसे बड़ा सवाल यह है कि जब विश्वविद्यालय ने Internship Registration की कोई आधिकारिक तिथि ही जारी नहीं की है, तो कुछ कॉलेज किस आधार पर छात्रों का Registration कर रहे हैं? बिना विश्वविद्यालय के स्पष्ट दिशा निर्देश के छात्रों से जल्दबाजी में Registration कराना उचित नहीं है।\n\nइसके अलावा, कई कॉलेज केवल एक ही कंपनी के साथ MoU कर पूरी प्रक्रिया आगे बढ़ा रहे हैं। यह पारदर्शी व्यवस्था नहीं है। सभी इच्छुक कंपनियों को अपना प्रस्ताव देने और कॉलेज के समक्ष स्वयं को प्रस्तुत करने का समान अवसर मिलना चाहिए। उसके बाद कॉलेज गुणवत्ता, अनुभव और छात्रों के हितों को ध्यान में रखते हुए उपयुक्त कंपनी का चयन करें।\n\nछात्रों के भविष्य से जुड़ा यह महत्वपूर्ण विषय है। इसलिए इस पूरे मामले को परीक्षा नियंत्रक महोदय के समक्ष भी रखा जाएगा, ताकि विश्वविद्यालय की स्पष्ट एवं आधिकारिक स्थिति सामने आ सके और किसी भी प्रकार का भ्रम समाप्त हो।",
+      "links": [],
+      "createdAt": "2026-07-26T11:27:57.645Z",
+      "expiresAt": "2026-07-28T11:27:57.645Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:51.799Z",
-      "tag": "animals",
+      "mediaRefreshedAt": "2026-07-26T11:27:57.645Z",
+      "tag": "education_all",
       "tags": [
-        "animals",
-        "nature"
+        "education_all",
+        "education"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3532,7 +3543,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:51.799Z"
+        "reviewedAt": "2026-07-26T11:27:57.645Z"
       }
     },
     {
@@ -3552,10 +3563,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:00:49.281Z",
-      "expiresAt": "2026-07-28T09:00:49.281Z",
+      "createdAt": "2026-07-26T11:27:55.190Z",
+      "expiresAt": "2026-07-28T11:27:55.190Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:49.281Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:55.190Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -3575,7 +3586,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:49.281Z"
+        "reviewedAt": "2026-07-26T11:27:55.190Z"
       }
     },
     {
@@ -3595,10 +3606,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:00:48.179Z",
-      "expiresAt": "2026-07-28T09:00:48.179Z",
+      "createdAt": "2026-07-26T11:27:54.374Z",
+      "expiresAt": "2026-07-28T11:27:54.374Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:48.179Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:54.374Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3616,12 +3627,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:48.179Z"
+        "reviewedAt": "2026-07-26T11:27:54.374Z"
       }
     },
     {
-      "id": 4087601292,
-      "postUrl": "https://t.me/learni_spoken_english_vocabulary/19977?single",
+      "id": 2835355070,
+      "postUrl": "https://t.me/learni_spoken_english_vocabulary/20791?single",
       "source": {
         "title": "Learn Spoken English Vocabulary",
         "handle": "learni_spoken_english_vocabulary",
@@ -3630,21 +3641,39 @@
       },
       "sourceId": "in:learni_spoken_english_vocabulary",
       "sourceCountryCode": "in",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "image",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/vS0AFZxOtLlXFwO5SBm6ceG7G0z8Lf7rk3Br3qKuk1YOfFt9NoJUIzJuWdkBKqiUiXGOJU3KOtbz4iF4YlBUo7xb5gU-7TI3Jfod8oPNlktXkA_PQTuqUW-M7EBbq7B-XmvewLQ-3curL9CPHxXz09ZphQugudPupPDSZOpPSpZra1nHCYGt8mS4cyesDE9IIUuYKZW6vQLmKFpiC06FZ4PPli3nMKoTAHuqcrX1d6IRdjJbRs7EM9DuzGhKskNI7gZ35SfMD0-lKbBgC_jmtElc98S7Q9dr_-uuI7y63HB_iTjadvYUGuAkIros7RS1304ZQ_bCkdzVGTf70SoLNQ.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "",
-      "links": [],
-      "createdAt": "2026-07-26T09:00:47.422Z",
-      "expiresAt": "2026-07-28T09:00:47.422Z",
+      "text": "🎬  JAN NETA Movie (2026) Hindi Full Movie  KVS\n\n🎞 Size: 1.5GB (FULL HD✅)\n👉 Click To Download\n\n🎞 Size: 700MB (HD ✅)\n👉 Click To Download\n\n🎞 Size: 400MB (480p)🔥\n👉 Click To Download",
+      "links": [
+        {
+          "label": "Click To Download",
+          "url": "https://t.me/+umb-t5YBYl1kNDNl"
+        },
+        {
+          "label": "Click To Download",
+          "url": "https://t.me/+umb-t5YBYl1kNDNl"
+        },
+        {
+          "label": "Click To Download",
+          "url": "https://t.me/+umb-t5YBYl1kNDNl"
+        }
+      ],
+      "createdAt": "2026-07-26T11:27:53.578Z",
+      "expiresAt": "2026-07-28T11:27:53.578Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:47.422Z",
-      "tag": "education_all",
+      "mediaRefreshedAt": "2026-07-26T11:27:53.578Z",
+      "tag": "cinema",
       "tags": [
-        "education_all",
-        "education",
-        "education_languages"
+        "cinema",
+        "culture"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3659,12 +3688,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:47.422Z"
+        "reviewedAt": "2026-07-26T11:27:53.578Z"
       }
     },
     {
-      "id": 2249425422,
-      "postUrl": "https://t.me/latest_govt_notification/19645?single",
+      "id": 3034854597,
+      "postUrl": "https://t.me/latest_govt_notification/19646?single",
       "source": {
         "title": "Study Govt Exam Sarkari Naukri Sarkari Result Jobs",
         "handle": "latest_govt_notification",
@@ -3677,17 +3706,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "🔥 ब्रेकिंग न्यूज, सबसे पहले\n\nआधार सुपरवाइजर ऑपरेटर भर्ती का नोटिफिकेशन जारी ✅\n\n👉 योग्यता 12वीं पास और आवेदन निशुल्क\n\nhttps://studygovthelp.in/aadhar-operator-supervisor-recruitment-2026/\n\n☝️ अंतिम तिथि 20 अगस्त 2026 तक, संपूर्ण जानकारी यहां देखें",
+      "text": "राजस्थान ग्रामीण आजीविका विकास परिषद भर्ती का 12वीं पास के लिए नोटिफिकेशन जारी, आवेदन कि अंतिम तिथि 4 अगस्त ✅\n👇👇\nhttps://studygovthelp.in/rajivika-recruitment-2026/",
       "links": [
         {
-          "label": "https://studygovthelp.in/aadhar-operator-supervisor-recruitment-2026/",
-          "url": "https://studygovthelp.in/aadhar-operator-supervisor-recruitment-2026/"
+          "label": "https://studygovthelp.in/rajivika-recruitment-2026/",
+          "url": "https://studygovthelp.in/rajivika-recruitment-2026/"
         }
       ],
-      "createdAt": "2026-07-26T09:00:46.659Z",
-      "expiresAt": "2026-07-28T09:00:46.659Z",
+      "createdAt": "2026-07-26T11:27:52.780Z",
+      "expiresAt": "2026-07-28T11:27:52.780Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:46.659Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:52.780Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3705,7 +3734,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:46.659Z"
+        "reviewedAt": "2026-07-26T11:27:52.780Z"
       }
     },
     {
@@ -3737,10 +3766,10 @@
           "url": "https://t.me/lakshyakeralatvm"
         }
       ],
-      "createdAt": "2026-07-26T09:00:45.865Z",
-      "expiresAt": "2026-07-28T09:00:45.865Z",
+      "createdAt": "2026-07-26T11:27:51.989Z",
+      "expiresAt": "2026-07-28T11:27:51.989Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:45.865Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:51.989Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3758,12 +3787,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:45.865Z"
+        "reviewedAt": "2026-07-26T11:27:51.989Z"
       }
     },
     {
-      "id": 904400289,
-      "postUrl": "https://t.me/kumarbharatedu/12582?single",
+      "id": 3839578943,
+      "postUrl": "https://t.me/kumarbharatedu/12584?single",
       "source": {
         "title": "Kumar Bharat - UGC-NET-Paper1",
         "handle": "kumarbharatedu",
@@ -3772,26 +3801,20 @@
       },
       "sourceId": "in:kumarbharatedu",
       "sourceCountryCode": "in",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/kb77dS6xNr4C3Rjoaq1LfcJzqfUyti7z5uoAMWxXurmy6RA2F1E5P5W2it3QRmNZY-73X23XtnQpH9JSsbNvuv3Ai7jjzAYoNZYWv_VvUJvSEg_iLYQGk85bSoHBBnFKRnt8uSAntYJKm0h2U7CIyXI3CksmVQ5HUFrhhDEHvNSzF3wemJpiZLrRIH_t0K-jEBxnwpaet-2t8DPGaW0hHCfPgAEhxARNG1WfQNpU5wfVzF5qm-l_tL7-MRPUS0SugOjDpqaujuLhHbvG71kNq8Gn4iSHKQZlOjEVDtaXdkTNxqIvxy_Hx9c3ca_fLoZgDODF76yo-8B1-gF3The_Hg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "⚠️ Important Notice ⚠️\nThis channel does NOT post any ads, investment offers, or money-making schemes.\nIf you see any such message, it is a Telegram sponsored ad — NOT posted by us.\nPlease do NOT click links or send money to anyone claiming to be associated with this channel. Stay safe.\n⚠️ ज़रूरी सूचना ⚠️\nयह चैनल कोई भी विज्ञापन, निवेश के ऑफ़र या पैसे कमाने की स्कीमें पोस्ट नहीं करता है।\nअगर आपको ऐसा कोई मैसेज दिखता है, तो वह Telegram का स्पॉन्सर्ड विज्ञापन है — जिसे हमने पोस्ट नहीं किया है।\nकृपया किसी भी लिंक पर क्लिक न करें और न ही किसी ऐसे व्यक्ति को पैसे भेजें जो इस चैनल से जुड़ा होने का दावा करता हो। सुरक्षित रहें।",
+      "text": "PYQ from - UGC-NET-Philosophy-08-December-2023-Shift-2\n\nStatement I: In mass communication, the message is rapid and public\nStatement II: New technology has blurred the distinction between inter-personal communication and mass communication\n\n1. Both Statement (I) and Statement (II) are correct.\n2. Both Statement (I) and Statement (II) are incorrect.\n3. Statement (I) is correct but Statement (Il) is incorrect\n4. Statement (I) is incorrect but Statement (II) is correct\n\nकथन I: जनसंचार में, संदेश त्वरित और सार्वजनिक होता है\nकथन II: नई तकनीक ने अंतर-वैयक्तिक संचार और जनसंचार के बीच अंतर को धुंधला कर दिया है\n\n1. कथन (I) और कथन (II) दोनों सही हैं।\n2. कथन (I) और कथन (II) दोनों गलत हैं।\n3. कथन (I) सही है लेकिन कथन (II) गलत है\n4. कथन (I) गलत है लेकिन कथन (II) सही है",
       "links": [],
-      "createdAt": "2026-07-26T09:00:43.783Z",
-      "expiresAt": "2026-07-28T09:00:43.783Z",
+      "createdAt": "2026-07-26T11:27:49.873Z",
+      "expiresAt": "2026-07-28T11:27:49.873Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:43.783Z",
-      "tag": "finance_investing",
+      "mediaRefreshedAt": "2026-07-26T11:27:49.873Z",
+      "tag": "animals",
       "tags": [
-        "finance_investing",
-        "finance"
+        "animals",
+        "nature"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -3806,7 +3829,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:43.783Z"
+        "reviewedAt": "2026-07-26T11:27:49.873Z"
       }
     },
     {
@@ -3831,10 +3854,10 @@
           "url": "https://youtu.be/50m4pn346cs?si=5Gv7uvmt6mIPbBa5"
         }
       ],
-      "createdAt": "2026-07-26T09:00:42.989Z",
-      "expiresAt": "2026-07-28T09:00:42.989Z",
+      "createdAt": "2026-07-26T11:27:49.057Z",
+      "expiresAt": "2026-07-28T11:27:49.057Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:42.989Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:49.057Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3852,30 +3875,41 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:42.989Z"
+        "reviewedAt": "2026-07-26T11:27:49.057Z"
       }
     },
     {
-      "id": 2614666843,
-      "postUrl": "https://t.me/kolomin/29110?single",
+      "id": 1676396258,
+      "postUrl": "https://t.me/kolomin/29111?single",
       "source": {
         "title": "Kolom : Free Study Materials",
         "handle": "kolomin",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/LhflLGYuICaOiyJx_SZBtuGNL9h_8rJUDTXCbWKcs7fStnuPLy-tYoY__XGwwlPHBG4pOqQTpLjfFd6mIMZX1wIjWCMwqi5jh68_PHCVD3G5kvoJWkRF3ODcd7bvNuv_RLTB28IYx1u8czw3Ldeu9IHTr7CjpTTiCpos37SNEbITwwTNXEdLCOvri-c8nehYO6ykzTYSbxD8yLobjAhUMgMu8fzaySETetJ4XCygRlepZzurJFg-bxYC3odXmiRKQ4HHMJW-FGUabTL5KHvSz5yswlyZ66nZSIh2brOiRBXuCply5TN1g70XF3D0KKDQ9AJkBGOFKyJcWh7LVRxdmw.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/Lw-BC5Zrg-s-izsIbXqeFLFfd_1oquKDshoSacmaqH0MVAzQhAdB893Mrda7tx_cfJWew1TGluZHqtECcTnm3YSomJZqUFQe0wJn8eATzOFisg1xQynmt7IoRvhX0J0CrLSX8Hz1kpRTmaEj-EDcleOehPlg4LuaY_uWlEl0i3gRMsyNNUICLbwVvCp2TeL6Tpw9R3Jim_kcAA27B2Mow5jLevbxlIU5JHilmk7FG6nMOHrm4mnhkCJmyOeq8VdLt8BygrXzR9jWN2KjDEAmgAIHcQQOPzXud9Wmz4PlPoP3fh_EAoBRSt4sUaRLSr_hdH7zFkwv2ohKzzGvLJbwgg.jpg"
       },
       "sourceId": "in:kolomin",
       "sourceCountryCode": "in",
-      "contentType": "text",
-      "media": [],
-      "hasMediaInOriginal": false,
+      "contentType": "gallery",
+      "media": [
+        {
+          "id": "image-1",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/KGT6N9YXVRptoVDxWV8jthP0gBK6kunGoysEd1XeV8WD-3yV8JH-lmZxTq_W-GC3xdin2aIOCZRbuvQhYgtIPQQioizOtJqD6hKhM2xLIwsNvgiy6Z9VrQsOZkAWw_YU8iJ3XUjyk3_LFDc2Dqi2424DsmeLbqR6J0QW0dHV46HEu58rZUK2WmPhVu2LGC6ga8Gur7xUaGffxBam4ekWfo_vRC_wptG1AhnMBIkmGC0FOmuj9kiMjkjy6HaBIrURc9CfbbY6ETqeyX-G81hL3ZIYskWOz8FK-E5h0m4BKYWalpSb2d-S-pdPJ3_wV3qZWFQbauJia7gQItMX5CDgMA.jpg"
+        },
+        {
+          "id": "image-2",
+          "kind": "image",
+          "url": "https://cdn5.telesco.pe/file/sVh6H5K5jJkF0ler-zl9Oft2UjBzBLHpkdCUTLAO2WW3hgKndI0o3mRJVtVwf3JBcVo2ef4a0qdpoXwaoskxpnNL_miRuP45HZm6npci13jGZHLNZufwogRViu_xVra5eNNX_iJbxOPy8PZHBPNhGRIolY5Yv6dOuMEyiG-TEqsAIP-TUj-M5BdZnCjg0nUiXcyor13URGGJNuorv9tlF-uNUdRQNoY8fQee7FzrnihVCdjb4-rhA4cB4ka2swd9X9YKfOHIQgSL4e40GI-QUIJSc_xGqxA9y6zYzPqdvJFGzCXpTPz6VbAAHlyoDAotZxjGGwkcJqosLMpABk9K7A.jpg"
+        }
+      ],
+      "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "ভারতের নতুন শিক্ষামন্ত্রী হিসেবে অতিরিক্ত দায়িত্ব গ্রহণ করলেন প্রহ্লাদ জোশি।\n\nরাষ্ট্রপতি দ্রৌপদী মুর্মু ধর্মেন্দ্র প্রধানের পদত্যাগ গ্রহণ করার পর কেন্দ্রীয় মন্ত্রী প্রহ্লাদ জোশি-কে কেন্দ্রীয় শিক্ষামন্ত্রকের অতিরিক্ত দায়িত্ব দেওয়া হয়েছে।",
+      "text": "Daily কারেন্ট Affairs : 25 জুলাই 2026",
       "links": [],
-      "createdAt": "2026-07-26T09:00:42.142Z",
-      "expiresAt": "2026-07-28T09:00:42.142Z",
+      "createdAt": "2026-07-26T11:27:48.196Z",
+      "expiresAt": "2026-07-28T11:27:48.196Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:42.142Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:48.196Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3893,7 +3927,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:42.142Z"
+        "reviewedAt": "2026-07-26T11:27:48.196Z"
       }
     },
     {
@@ -3928,10 +3962,10 @@
           "url": "https://t.me/c/2975459463/1429"
         }
       ],
-      "createdAt": "2026-07-26T09:00:40.925Z",
-      "expiresAt": "2026-07-28T09:00:40.925Z",
+      "createdAt": "2026-07-26T11:27:46.952Z",
+      "expiresAt": "2026-07-28T11:27:46.952Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:40.925Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:46.952Z",
       "tag": "culture_all",
       "tags": [
         "culture_all",
@@ -3951,12 +3985,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:40.925Z"
+        "reviewedAt": "2026-07-26T11:27:46.952Z"
       }
     },
     {
-      "id": 3332652659,
-      "postUrl": "https://t.me/kdlive/27327?single",
+      "id": 3883111876,
+      "postUrl": "https://t.me/kdlive/27328?single",
       "source": {
         "title": "KD LIVE",
         "handle": "kdlive",
@@ -3969,17 +4003,17 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "https://www.youtube.com/live/PwTu5Ne8re0?si=WUIfRWRdbJlleWfx",
+      "text": "https://www.youtube.com/live/DvC-DWjyyPc?si=nlxySmGm1mfkKyr_",
       "links": [
         {
-          "label": "https://www.youtube.com/live/PwTu5Ne8re0?si=WUIfRWRdbJlleWfx",
-          "url": "https://www.youtube.com/live/PwTu5Ne8re0?si=WUIfRWRdbJlleWfx"
+          "label": "https://www.youtube.com/live/DvC-DWjyyPc?si=nlxySmGm1mfkKyr_",
+          "url": "https://www.youtube.com/live/DvC-DWjyyPc?si=nlxySmGm1mfkKyr_"
         }
       ],
-      "createdAt": "2026-07-26T09:00:39.384Z",
-      "expiresAt": "2026-07-28T09:00:39.384Z",
+      "createdAt": "2026-07-26T11:27:45.370Z",
+      "expiresAt": "2026-07-28T11:27:45.370Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:39.384Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:45.370Z",
       "tag": "other",
       "tags": [
         "other"
@@ -3997,12 +4031,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:39.384Z"
+        "reviewedAt": "2026-07-26T11:27:45.370Z"
       }
     },
     {
-      "id": 2991998695,
-      "postUrl": "https://t.me/kalamacademysikar/17521?single",
+      "id": 487156628,
+      "postUrl": "https://t.me/kalamacademysikar/17522?single",
       "source": {
         "title": "Kalam Academy Sikar",
         "handle": "kalamacademysikar",
@@ -4016,17 +4050,17 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/g8MWENn5LgjDHd9mS3opNLyA-HcWD9OZULl3WIwBgCv1NBuL07zeIBzaAEoR9jMFPbKAiEm2iuvG8SNEc4XrnM8-khS4CHE-f5XH6oSsJ06iGH4RGF00E7S37WTvXYnru_sQXqlLpQcK80zY39YEGfLrV7WkunR8G5FGJUH2CHO_S83RnfmW05OZZVhgiqxQUlh-g9ViRtoj1i-MHzAVCdGP1YZ3FhTRDMcNvnc6dI_100V7xlCSoSM4XAMfmA4fWtY2Kr86zz4yY3-xSF_vnkS2CRq3jlNfDyyr_bvol4pev2ui-hya7nAlfZsqGTvtMvQNeYiQ4NKi_tL32xFjBg.jpg"
+          "url": "https://cdn5.telesco.pe/file/a9BjnpLY2rxsPaEbKT7JdnzAgdTPIpNP229gP-fkst1YTniGJxdDbLtzaE5HlsxyYOki4C4omuecyDNY2jI8ryW0O2zKcYj_I-j3FxSAOluRXiaY23TjeoaalckxWuTNatKoEbf2XExl3-J_QV8B1YeC3H8MZKmIf2WrYZ5xzU1XXk6tfvIk0CaWuf4B02mHfun1qxQ2nomxytfdTbwAh-uftAXxwN1Sx5Hmr4fFZ1-SdA25G91Go8rKxFgL56zOBQ26IzHySxfJtzsc1Ff2xLufAJqPi15stMhsY1S_MQYdz_yYpBQMqOVZGwbRCy1MB-kVxGFY9ZosmDJvWG_GRQ.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "राजस्थान की प्रमुख भर्तियों की तैयारी... एक ही बैच में\n🤩One Stop Solution 🤩\n\n📍सीकर सेंटर पर\n👨‍🎓 RSSB फाउंडेशन बैच (2026-27)\n(Graduation + Senior Secondary Level)\n\n📣📣 सेमिनार 📣📣\n\n🗓 दिनांक : 28 जुलाई 2026\n⏰ समय : सुबह 10:00 बजे\n\nकलाम फाउंडेशन बैच ही क्यों ? 🤔🤔\n💸Basic से Advance लेवल की तैयारी\n💸 साप्ताहिक टेस्ट सीरीज\n💸Experienced faculties & Smart Classes\n💸Vacancies Oriented Classes\n\n📍स्थान : कलाम कैंपस, नवलगढ़ रोड़, सीकर (राज.) \n\n☎️ अधिक जानकारी के लिए संपर्क करें : 72400-12121",
+      "text": "✨ सटीक रणनीति और सर्वश्रेष्ठ मार्गदर्शन✨\n \n 📍सीकर सेंटर पर\n \n तृतीय श्रेणी शिक्षक\n✨ Foundation Batch✨\n REET पात्रता+ मुख्य परीक्षा (Level -1 & Level-2) \n\n📣📣नया बैच प्रारम्भ 📣📣\n🗓 दिनांक : 27 जुलाई 2026\n⏰ समय : सुबह 9:00 बजे\n\n📍 स्थान :कलाम मुख्य कैंपस, रिद्धि-सिद्धि चौराहा, गोपालपुरा बाईपास, जयपुर \n\n☎️ अधिक जानकारी के लिए संपर्क करें - 72400-12121",
       "links": [],
-      "createdAt": "2026-07-26T09:00:37.636Z",
-      "expiresAt": "2026-07-28T09:00:37.636Z",
+      "createdAt": "2026-07-26T11:27:43.586Z",
+      "expiresAt": "2026-07-28T11:27:43.586Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:37.636Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:43.586Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4044,7 +4078,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:37.636Z"
+        "reviewedAt": "2026-07-26T11:27:43.586Z"
       }
     },
     {
@@ -4070,10 +4104,10 @@
       "fallbackReason": null,
       "text": "To Be Continued.....😊",
       "links": [],
-      "createdAt": "2026-07-26T09:00:36.746Z",
-      "expiresAt": "2026-07-28T09:00:36.746Z",
+      "createdAt": "2026-07-26T11:27:42.712Z",
+      "expiresAt": "2026-07-28T11:27:42.712Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:36.746Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:42.712Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -4093,7 +4127,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:36.746Z"
+        "reviewedAt": "2026-07-26T11:27:42.712Z"
       }
     },
     {
@@ -4124,10 +4158,10 @@
           "url": "https://fkrt.co/xHe8bM"
         }
       ],
-      "createdAt": "2026-07-26T09:00:35.924Z",
-      "expiresAt": "2026-07-28T09:00:35.924Z",
+      "createdAt": "2026-07-26T11:27:41.898Z",
+      "expiresAt": "2026-07-28T11:27:41.898Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:35.924Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:41.898Z",
       "tag": "telegram_all",
       "tags": [
         "telegram_all",
@@ -4147,7 +4181,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:35.924Z"
+        "reviewedAt": "2026-07-26T11:27:41.898Z"
       }
     },
     {
@@ -4167,10 +4201,10 @@
       "fallbackReason": null,
       "text": "Eye Anatomy Made Easy",
       "links": [],
-      "createdAt": "2026-07-26T09:00:35.175Z",
-      "expiresAt": "2026-07-28T09:00:35.175Z",
+      "createdAt": "2026-07-26T11:27:41.125Z",
+      "expiresAt": "2026-07-28T11:27:41.125Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:35.175Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:41.125Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4188,7 +4222,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:35.175Z"
+        "reviewedAt": "2026-07-26T11:27:41.125Z"
       }
     },
     {
@@ -4208,10 +4242,10 @@
       "fallbackReason": null,
       "text": "Pls join",
       "links": [],
-      "createdAt": "2026-07-26T09:00:34.302Z",
-      "expiresAt": "2026-07-28T09:00:34.302Z",
+      "createdAt": "2026-07-26T11:27:40.238Z",
+      "expiresAt": "2026-07-28T11:27:40.238Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:34.302Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:40.238Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4229,7 +4263,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:34.302Z"
+        "reviewedAt": "2026-07-26T11:27:40.238Z"
       }
     },
     {
@@ -4265,10 +4299,10 @@
       "fallbackReason": null,
       "text": "You asked, we delivered! \n\nYou can now:\n\n• Follow friends\n• Create groups (called “Circles”)\n• Share movies, collections, and more, directly\n• Track your friends’ activities\n• Let others see your reviews, watchlists, and more!\n\nFollow 5 of your friends now! 👀",
       "links": [],
-      "createdAt": "2026-07-26T09:00:32.726Z",
-      "expiresAt": "2026-07-28T09:00:32.726Z",
+      "createdAt": "2026-07-26T11:27:38.658Z",
+      "expiresAt": "2026-07-28T11:27:38.658Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:32.726Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:38.658Z",
       "tag": "cinema",
       "tags": [
         "cinema",
@@ -4287,12 +4321,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:32.726Z"
+        "reviewedAt": "2026-07-26T11:27:38.658Z"
       }
     },
     {
-      "id": 621254513,
-      "postUrl": "https://t.me/ipapkorn/3102?single",
+      "id": 3545150320,
+      "postUrl": "https://t.me/ipapkorn/3103?single",
       "source": {
         "title": "iPapkorn",
         "handle": "ipapkorn",
@@ -4301,26 +4335,29 @@
       },
       "sourceId": "in:ipapkorn",
       "sourceCountryCode": "in",
-      "contentType": "image",
+      "contentType": "video",
       "media": [
         {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/KlFe3Q7kqbIEw7fs66Zeo-_8lMpLTvRCFtIDNrksIgzxB6_-i6mnz4kLhxFqOZiKhP9NIZ8NTB9KD0wmpEEV-jxICLx_5TpjhSrN_XfGzglriqcfE_2Fbo8IZFR26PDvygRZ-Gstbyjx7tr1HCXnrFT-kPcCiu-TtwZV_igeZx82iSNGGCMjyw7d1MZz4HIzfhMZGFd7buZbX4mzWH98WjJKnTxzN_R4GaWmOfpr1JID_EVpTjei4OjentdbsnnhP64z3AIUCuaFrxzbWSFQrYuKl9P3jh6I9BlstImcrzuW1l8LyVoWMx_RfqFfQgBBKyZnTuRvcyyM6E68QdxhPQ.jpg"
+          "id": "video-1",
+          "kind": "video",
+          "url": "https://cdn4.telesco.pe/file/c5b33ab050.mp4?token=RtBRSDDNHXLgNJkywbq2O2fyGXQ7zwzfX8Wry_V_WbcuLpeZS6tcbllXSqMUBCA93TQc7Cg3cntYkz43H04P9P0SlsQ2p3zOPJE7S_6IFzCtM1isJT-kiZ9z7lpvEBb2ifqPhR6dzmRnrI46v-6VyS1MAAmdNcqB27zCUsi-IiDJJZkkEeX2Du-oA5LjVXuTtlXKR4Sykx9c8jGcza4ovr_KeAeTxfsTwcs4B4ED_Y5XSMmXuBS1JUi0VbNF_A0a4Pj3mwLDCQYJuy4lz2rfI3zbZg6SOI57s8N5G8eA-f-ih-Di5-9ig0hYv8cAMEESUoQS-Q0yRTBb4CGt89KrsYVA01l5EDK_vy1p-czNMhkFiksBh7E9EMQTZh9ZuwBmEq-Jxe9Del5y3cFx0eWaw0Q3H-XgpJi46VwriEnR1rmrp4YAp-qR40QxyYTPBSmCy0qIyKkzdsT0edAzqiqI4KvJCwPSgVI613VlKhUHaTIma-FqSXbySF3dcJzpZ8lwZxpFPj0hlT0HyLFRbu481JN6xWWFr6DCz6N9ynp6B1A1N22In1Wpjf6-prCH9Le2QeSVB-2opheFbL7D81YbA2WoFsQOp7TITEqR6TJU0e1rjnYcQRPKoIVZ677m-FJt_No_EAgOCpji3CzFdPlzpmp2lrM7mj6Aw8G2ZOOILuU",
+          "poster": null,
+          "mimeType": "video/mp4"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "New poster for Apple TV series adaptation of 'NEUROMANCER'",
+      "text": "Official announcement of Ryan Gosling as Ghost Rider in the MCU ☠️ 🔥\n\nGHOST RIDER is set to hit theaters in 2028, directed by Shawn Levy.",
       "links": [],
-      "createdAt": "2026-07-26T09:00:31.848Z",
-      "expiresAt": "2026-07-28T09:00:31.848Z",
+      "createdAt": "2026-07-26T11:27:37.731Z",
+      "expiresAt": "2026-07-28T11:27:37.731Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:31.848Z",
-      "tag": "gadgets",
+      "mediaRefreshedAt": "2026-07-26T11:27:37.731Z",
+      "tag": "technology_all",
       "tags": [
-        "gadgets",
-        "technology"
+        "technology_all",
+        "technology",
+        "technology_software"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -4335,12 +4372,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:31.848Z"
+        "reviewedAt": "2026-07-26T11:27:37.731Z"
       }
     },
     {
-      "id": 3218822387,
-      "postUrl": "https://t.me/indianexpress/808113?single",
+      "id": 1288607988,
+      "postUrl": "https://t.me/indianexpress/808136?single",
       "source": {
         "title": "The Indian Express",
         "handle": "indianexpress",
@@ -4353,25 +4390,21 @@
       "media": [],
       "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "UP Board Exam 2027: Registration begins for Class 10th, 12th private candidates at upmsp.edu.in \n\nvia The Indian Express https://ift.tt/1cEQMHu",
+      "text": "India vs Zimbabwe Live Score, 3rd T20I: Can IND complete 3-0 whitewash over ZIM? Toss coming up \n\nvia The Indian Express https://ift.tt/BvGx23L",
       "links": [
         {
-          "label": "upmsp.edu.in",
-          "url": "https://upmsp.edu.in/"
-        },
-        {
-          "label": "https://ift.tt/1cEQMHu",
-          "url": "https://ift.tt/1cEQMHu"
+          "label": "https://ift.tt/BvGx23L",
+          "url": "https://ift.tt/BvGx23L"
         }
       ],
-      "createdAt": "2026-07-26T09:00:29.788Z",
-      "expiresAt": "2026-07-28T09:00:29.788Z",
+      "createdAt": "2026-07-26T11:27:35.599Z",
+      "expiresAt": "2026-07-28T11:27:35.599Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:29.788Z",
-      "tag": "education_all",
+      "mediaRefreshedAt": "2026-07-26T11:27:35.599Z",
+      "tag": "sports_matches",
       "tags": [
-        "education_all",
-        "education"
+        "sports_matches",
+        "sports"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -4386,7 +4419,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:29.788Z"
+        "reviewedAt": "2026-07-26T11:27:35.599Z"
       }
     },
     {
@@ -4406,10 +4439,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:00:28.992Z",
-      "expiresAt": "2026-07-28T09:00:28.992Z",
+      "createdAt": "2026-07-26T11:27:34.804Z",
+      "expiresAt": "2026-07-28T11:27:34.804Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:28.992Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:34.804Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4427,7 +4460,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:28.992Z"
+        "reviewedAt": "2026-07-26T11:27:34.804Z"
       }
     },
     {
@@ -4462,10 +4495,10 @@
           "url": "https://youtu.be/YnJm5GT1tS0"
         }
       ],
-      "createdAt": "2026-07-26T09:00:28.211Z",
-      "expiresAt": "2026-07-28T09:00:28.211Z",
+      "createdAt": "2026-07-26T11:27:33.703Z",
+      "expiresAt": "2026-07-28T11:27:33.703Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:28.211Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:33.703Z",
       "tag": "technology_all",
       "tags": [
         "technology_all",
@@ -4485,7 +4518,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:28.211Z"
+        "reviewedAt": "2026-07-26T11:27:33.703Z"
       }
     },
     {
@@ -4510,10 +4543,10 @@
           "url": "https://i.ibb.co/35VBMn2J/King-Of-Thieves.jpg"
         }
       ],
-      "createdAt": "2026-07-26T09:00:27.052Z",
-      "expiresAt": "2026-07-28T09:00:27.052Z",
+      "createdAt": "2026-07-26T11:27:32.537Z",
+      "expiresAt": "2026-07-28T11:27:32.537Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:27.052Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:32.537Z",
       "tag": "cinema",
       "tags": [
         "cinema",
@@ -4532,12 +4565,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:27.052Z"
+        "reviewedAt": "2026-07-26T11:27:32.537Z"
       }
     },
     {
-      "id": 2738207351,
-      "postUrl": "https://t.me/iamprasadtech/121071?single",
+      "id": 550140126,
+      "postUrl": "https://t.me/iamprasadtech/121081?single",
       "source": {
         "title": "Prasadtechintelugu",
         "handle": "iamprasadtech",
@@ -4551,26 +4584,26 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/Uwo2UFpO8TcTeEDWkPqypu248eLvzGuHkPgkRhpmlxqZzbf4mdEHnj4AyL7RuKYiCqe1L6M5xj4QvPJKslbg9DVJSsf-eD-64HJzORRjjPG6F9NUUnyF5K8A-C6ornszEKgGdvx7Rhr3Q6yRDnG1b5pWQCtkVib7PtJDNCa7twZAZPaHTYzYe0RkytdHcJmfeYJRnY-a0QgceZZfx5fI7QqSjLsAikjRazogfCcu9G502_Bq9BCyM_pX6SZYYotv1kcBMRPPJULkphWpyeVyry7w7xZ6Qpjow40smj6WpGex7bfbE1klNbMQFrehnw7E7kht4OEX7DebPF0HlNR5zg.jpg"
+          "url": "https://cdn5.telesco.pe/file/ZanyCb1y8T_Ha3vb4PAhetqqWtGI9opYJi6XrmB-Ek-vIaHKtFXDZsO2x496Hgb7m9keH8fIFzifYZXq9RMPICA5l2vGUzw_TfcjyCFHagVT3Fw7je31BsUI_KUvJ6IYf1KN40KuK3i1Vqo78xssgnKXrw24I2vDxw-8XJDY1ymIpY_Rr41umjqoEbl6sz4s6MpDJ5XEc-B2HQheedDwt0yXW6HUYUIXs_VZhDD9M3aYU24vA4M9vJ_aafaJYCcWOjnDFbaYuSvOWI1ROYGCf-p8zrABgKfE3TvjOXCJgcnHR0chnb5sUz6Li6HqVz_FDkR-RVfUQlnpRpmlfdC-JA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
       "fallbackReason": null,
-      "text": "🔥🔥Bournvita Zero Added Sugar Nutrition Drink, 500g Jar | No Added Sugar, No Added Preservatives | 19 Essential Nutrients for Strength\n\n🎁 Deal Price : ₹221\n\nBuy Here :  https://link.amazon/B0eSdSlQ0",
+      "text": "🔥🔥Campus Sutra Men's Cotton Hooded Neck Sweatshirt\n\n🎁 Deal Price : ₹424\n\nBuy Here : https://link.amazon/B01fZxGfC",
       "links": [
         {
-          "label": "https://link.amazon/B0eSdSlQ0",
-          "url": "https://link.amazon/B0eSdSlQ0"
+          "label": "https://link.amazon/B01fZxGfC",
+          "url": "https://link.amazon/B01fZxGfC"
         }
       ],
-      "createdAt": "2026-07-26T09:00:24.055Z",
-      "expiresAt": "2026-07-28T09:00:24.055Z",
+      "createdAt": "2026-07-26T11:27:29.482Z",
+      "expiresAt": "2026-07-28T11:27:29.482Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:24.055Z",
-      "tag": "health_food",
+      "mediaRefreshedAt": "2026-07-26T11:27:29.482Z",
+      "tag": "crypto",
       "tags": [
-        "health_food",
-        "health"
+        "crypto",
+        "finance"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -4585,7 +4618,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:24.055Z"
+        "reviewedAt": "2026-07-26T11:27:29.482Z"
       }
     },
     {
@@ -4604,7 +4637,7 @@
         {
           "id": "image-1",
           "kind": "image",
-          "url": "https://cdn4.telesco.pe/file/jQq9yEgee6-MWrYCH53GI3Zc-W1m6kXEM33FKPZzLyUcG9VS3WK4KhygoPFH7cprN5j15TeOQ8840iDJnl2kw3ISapRSm4EuMI6qSgkTXrzeX9rPzbkY7vjXQTZUWdbO_jQmoEOykN8OhU3AGlIjUdM6lBRziODDEswED4f02LSvhdjApWt0KTiutB1q5PfHaZwXciT17eLDwoZ8lT0iQrm7wZUnb1IIuhkXtn9ruwRkhkq6Vcb7Hyvn4WO4NGSZkTyg7NTMWX-IS8HmuLM_5RLyf6iF7MY22qmGqN2Q2lago3CjAxGX-FrpBz83UjK7QLLAXHjE--OIQ4L40fybdA.jpg"
+          "url": "https://cdn4.telesco.pe/file/KbGIvJESh4w3_OExPKnNhj6hnC0DphyKHKJEXW_15WVeRTEv9LRz2N40F195VLzGiuYQrfAQb4L34w_k8zab7nlU90I0NaFXoB1hsTM8jH4XMuZcSkAxkRWbphmkIPuLAuX0DrKuaAV7osIUVAHOBHE57CHDTginxNyRpQXfiItJNGHrKYLe-Mh4HJ8dohGhnYeuWE9L1m1I5Fye7VYtc38QBb1KK-u_m30pXyuqZt-9abJbKFFlDSfs8VoQjF2iYA6_nBc5ZZ4hFALZW86xBCWx_WOXheWQ0FwqKIbXOzDf8ATc77kpo0vO7PfKy3S_NPeviCVoQ2TtzLxaXYDWkA.jpg"
         }
       ],
       "hasMediaInOriginal": true,
@@ -4616,10 +4649,10 @@
           "url": "https://amzn-to.co/ngY2iM"
         }
       ],
-      "createdAt": "2026-07-26T09:00:23.268Z",
-      "expiresAt": "2026-07-28T09:00:23.268Z",
+      "createdAt": "2026-07-26T11:27:28.658Z",
+      "expiresAt": "2026-07-28T11:27:28.658Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:23.268Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:28.658Z",
       "tag": "finance_banks",
       "tags": [
         "finance_banks",
@@ -4638,7 +4671,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:23.268Z"
+        "reviewedAt": "2026-07-26T11:27:28.658Z"
       }
     },
     {
@@ -4658,10 +4691,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:00:22.365Z",
-      "expiresAt": "2026-07-28T09:00:22.365Z",
+      "createdAt": "2026-07-26T11:27:27.866Z",
+      "expiresAt": "2026-07-28T11:27:27.866Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:22.365Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:27.866Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4679,7 +4712,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:22.365Z"
+        "reviewedAt": "2026-07-26T11:27:27.866Z"
       }
     },
     {
@@ -4704,10 +4737,10 @@
           "url": "https://t.me/ShriKrishnaSuvichar"
         }
       ],
-      "createdAt": "2026-07-26T09:00:21.583Z",
-      "expiresAt": "2026-07-28T09:00:21.583Z",
+      "createdAt": "2026-07-26T11:27:27.048Z",
+      "expiresAt": "2026-07-28T11:27:27.048Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:21.583Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:27.048Z",
       "tag": "finance_investing",
       "tags": [
         "finance_investing",
@@ -4726,7 +4759,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:21.583Z"
+        "reviewedAt": "2026-07-26T11:27:27.048Z"
       }
     },
     {
@@ -4761,10 +4794,10 @@
           "url": "https://lp.pw.live/pw-ugc-net"
         }
       ],
-      "createdAt": "2026-07-26T09:00:20.724Z",
-      "expiresAt": "2026-07-28T09:00:20.724Z",
+      "createdAt": "2026-07-26T11:27:26.220Z",
+      "expiresAt": "2026-07-28T11:27:26.220Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:20.724Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:26.220Z",
       "tag": "technology_software",
       "tags": [
         "technology_software",
@@ -4783,7 +4816,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:20.724Z"
+        "reviewedAt": "2026-07-26T11:27:26.220Z"
       }
     },
     {
@@ -4812,10 +4845,10 @@
           "url": "https://youtube.com/@hamari_taiyari_official"
         }
       ],
-      "createdAt": "2026-07-26T09:00:19.783Z",
-      "expiresAt": "2026-07-28T09:00:19.783Z",
+      "createdAt": "2026-07-26T11:27:25.376Z",
+      "expiresAt": "2026-07-28T11:27:25.376Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:19.783Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:25.376Z",
       "tag": "science_research",
       "tags": [
         "science_research",
@@ -4834,12 +4867,12 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:19.783Z"
+        "reviewedAt": "2026-07-26T11:27:25.376Z"
       }
     },
     {
-      "id": 2790109404,
-      "postUrl": "https://t.me/hindi_grammar_up_mp_bihar_police/56785?single",
+      "id": 2374329522,
+      "postUrl": "https://t.me/hindi_grammar_up_mp_bihar_police/56798?single",
       "source": {
         "title": "Hindi Grammar Quiz ™ UP MP BIHAR POLICE CONSTABLE",
         "handle": "hindi_grammar_up_mp_bihar_police",
@@ -4848,43 +4881,28 @@
       },
       "sourceId": "in:hindi_grammar_up_mp_bihar_police",
       "sourceCountryCode": "in",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/NAdQ3zb1GQ3cbyoQUrINhJQPQNBYIKn-xGTVY6N_f90UlK4JPDqBWo7gZE2ed7FDFHBeeOIKboUtIuSRNwMAemZN4o35GQHcZ-D0wGDc0RkbueuZfARfs8EtYc2O63evQApvpix62D7DLnLDy0w-CFovPWwKjXfzEK0ZKlpVmrk4ZE_2Plg-Xl1rxWKyUNGCNDKhhnmOex0UEoUaD9d7-UWPIwQozYPlH-Er7uBqMxy7pSkum8i-I9ZVZ9yzwI15ZWsR3dlAizMuvGsOURC4GIvC-1pcHrJzNXRm_-pk0iw-bSuY5wF6lkkrkbVUgW-TedXbGNUh3SczvGEXNQxYQg.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
+      "contentType": "text",
+      "media": [],
+      "hasMediaInOriginal": false,
       "fallbackReason": null,
-      "text": "Thousands of UPSC Aspirants Have Already Begun. Will You?\n\n🚨 The P2I GS Foundation Live Batch for UPSC 2027, 2028 & 2029\n\n🎯 Enroll Now:\n 🔹2027 Batch: https://studyiq.go.link/gKSEk\n🔹 2028 Batch: https://studyiq.go.link/kfgtR\n🔹 2029 Batch: https://studyiq.go.link/arYNA\n\n✅ Classes in Hinglish | Hindi | English\n💰 GS Courses Price starting at ₹11,999\n🎁 Use Code: IG100\n⏳ Batch Starting On 27th July\n\n📞 Call Now: 76-4000-3000\n🤙🏻 WhatsApp Us:  https://wa.me/919318480549\n\nEnroll before the offer expires!",
+      "text": "जो छात्र छात्रा कोचिंग नहीं ले सकते वह हमारे फ़्री \"खान सर\" के \"𝗦𝗦𝗖 𝗚𝗗 𝗖𝗢𝗡𝗦𝗧𝗔𝗕𝗟𝗘\" ग्रुप में जुड़ने के लिए नीचे दी लिंक पर क्लिक करें,\n\n    लिंक 👇👇\n\n➺ https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899\n\n➺ https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899\n\n👆👆 सीमित सीटें,ग्रुप जल्द ही 5 minutes  में फुल हो जायेगा👆👆",
       "links": [
         {
-          "label": "https://studyiq.go.link/gKSEk",
-          "url": "https://studyiq.go.link/gKSEk"
+          "label": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899",
+          "url": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899"
         },
         {
-          "label": "https://studyiq.go.link/kfgtR",
-          "url": "https://studyiq.go.link/kfgtR"
-        },
-        {
-          "label": "https://studyiq.go.link/arYNA",
-          "url": "https://studyiq.go.link/arYNA"
-        },
-        {
-          "label": "https://wa.me/919318480549",
-          "url": "https://wa.me/919318480549"
+          "label": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899",
+          "url": "https://whatsapp.com/channel/0029VaCtfgkCnA7wKRlUlk2C/1899"
         }
       ],
-      "createdAt": "2026-07-26T09:00:18.940Z",
-      "expiresAt": "2026-07-28T09:00:18.940Z",
+      "createdAt": "2026-07-26T11:27:24.502Z",
+      "expiresAt": "2026-07-28T11:27:24.502Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:18.940Z",
-      "tag": "technology_software",
+      "mediaRefreshedAt": "2026-07-26T11:27:24.502Z",
+      "tag": "other",
       "tags": [
-        "technology_software",
-        "technology"
+        "other"
       ],
       "addedBy": {
         "telegramId": "system",
@@ -4899,7 +4917,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:18.940Z"
+        "reviewedAt": "2026-07-26T11:27:24.502Z"
       }
     },
     {
@@ -4909,7 +4927,7 @@
         "title": "Hindi Grammar हिंदी ग्रामर Quiz/Notes for UP Police, UP SI, SSC GD UPSC RO/ARO & All Exam ™🥇",
         "handle": "hindi_grammar_notes_pdf",
         "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/IC0_-JKsjCL40o7Q40sNcedH2n4Mnq9q_DD4GJ34Y-IHz2QW3rR4u7boNTgcOJO9eSIooJ6dA2iCw_D92GaiKHnJxDThDoSIvsMcQ-Edp17XSfu3-LofkyiEISm-MM1mbUcZ-yoVOjKIaHzDlh4xMH0aU5kYw2b_t_Q1ZNsrTKxEcfCC1RUQujVR6krAuGIw9yZrsXCBsuPK6R1D1WB2Dlb8fODtyUclrSxLUPvPUBteMLQRREXauRf_ZnjsRJaT0voZWkhcGwiKgIxdRBG3BLj9iHSE-fr2UEZCMs4c4I5aWrzi5LPST1sCACGcmoka40tn4pPbTXHgfYm8xN3Mow.jpg"
+        "avatar": "https://cdn5.telesco.pe/file/X5OKV4lPoBrI07UJ7Wqni7iM2jVkUCkfpxDPz_YAtotVdqgretEuJ8JRqIdYOPDnsX54vH7LVn6uz6NoGyV7pGPtWiBGJ382LMsgnmSWd0wT7lxiBrjYtvO7Scjylfur4qjQGWoSHyr1vYMMPbXughgNd3nKA8YoySSIjL5tpC3wAnVAu_1yABTVYrntDr_ule7jTFoSrQDnvBcL7KgOYtUslR-J03gxEx1kYjkPmT2Z1qEfmHod2R7mqhPlefXEjCxr5s2zAkcXXd1AbnrKVXBCkC5xzMVUrp2KeFZkrrM5pN0VZDIUHmpqaQXV9wKWTADLJL8znFsoyWh_kihv2w.jpg"
       },
       "sourceId": "in:hindi_grammar_notes_pdf",
       "sourceCountryCode": "in",
@@ -4919,10 +4937,10 @@
       "fallbackReason": null,
       "text": "",
       "links": [],
-      "createdAt": "2026-07-26T09:00:18.162Z",
-      "expiresAt": "2026-07-28T09:00:18.162Z",
+      "createdAt": "2026-07-26T11:27:23.678Z",
+      "expiresAt": "2026-07-28T11:27:23.678Z",
       "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:18.162Z",
+      "mediaRefreshedAt": "2026-07-26T11:27:23.678Z",
       "tag": "other",
       "tags": [
         "other"
@@ -4940,63 +4958,7 @@
       "moderation": {
         "status": "published",
         "reason": null,
-        "reviewedAt": "2026-07-26T09:00:18.162Z"
-      }
-    },
-    {
-      "id": 150773604,
-      "postUrl": "https://t.me/happymovie3channel/39649?single",
-      "source": {
-        "title": "Happy Movie 2 Channel",
-        "handle": "happymovie3channel",
-        "verified": false,
-        "avatar": "https://cdn5.telesco.pe/file/YI64altU1kXfRok_WDDxoM9Qo-nXqanM918PWrJv226y2gRRCghjZ52ihgW2uIawWSuQbWBsFZQkhcQvhNfxTRqcgwS8LDfi2EkdQqcOjMiww27-lHvjiaDHD_N2-zDa66RZN6Ceh54rS5sd-tjF-AG2wBZOv9mmEmBhGDpx1a0dzaJ-uFJ7_w2NG9DGJoFyrr0aA75Q7rSmHtIuPIHCxndNVaobPJsNvwQu5R2PmmlrL1LD9dARTvo3kzu8iYWHpNuAgWcY95TW0beKbed__2ianHTDwecYshk3lqovUCC8wLtKp1N25m8RT3pNEKc2D8LYqzjbjDXB4NU-Msyvqg.jpg"
-      },
-      "sourceId": "in:happymovie3channel",
-      "sourceCountryCode": "in",
-      "contentType": "image",
-      "media": [
-        {
-          "id": "image-1",
-          "kind": "image",
-          "url": "https://cdn5.telesco.pe/file/emr1fQPTuCrlviuQQkdgwoA80BDXEHBujPVfjKT8N9WcAmM0QqjrUxSq3MMMI_HIkfHW6YjI7SzouusobOjgmsBsmHeQAChP6SNYm8NgDFHnvi3yZbMVzTVH8Wvi7nxh3fC11QAWU92xMiwcDcJxPpX9Tz52GnDGTfDW1k2S6JZhPsliVxW0HvfNh8Oj0m_qf-7BL-nxkgl9dxeQkT7cbwpxWKeDciB6KS3gEwAZ52--2hP4gJofNXX_JgVsD_57zFT5zuN1c3otZlHBvz_gXy3tgtgMHOyNdH7Jv6PkAuPvOtavw_-rU2Inohv1NlLHDljDcsknivBobrnp_Q8IqA.jpg"
-        }
-      ],
-      "hasMediaInOriginal": true,
-      "fallbackReason": null,
-      "text": "Shaolin Soccer (2001)\n\nChannel အရင် Join ပါ 👇👇👇\n\nhttps://t.me/+R1o8Rj2yBRo5Yjdl\n\nပီးမှနှိပ်ပါ\nhttps://t.me/c/2084519747/18233",
-      "links": [
-        {
-          "label": "https://t.me/+R1o8Rj2yBRo5Yjdl",
-          "url": "https://t.me/+R1o8Rj2yBRo5Yjdl"
-        },
-        {
-          "label": "https://t.me/c/2084519747/18233",
-          "url": "https://t.me/c/2084519747/18233"
-        }
-      ],
-      "createdAt": "2026-07-26T09:00:17.286Z",
-      "expiresAt": "2026-07-28T09:00:17.286Z",
-      "ttlHours": 48,
-      "mediaRefreshedAt": "2026-07-26T09:00:17.286Z",
-      "tag": "other",
-      "tags": [
-        "other"
-      ],
-      "addedBy": {
-        "telegramId": "system",
-        "username": "system"
-      },
-      "billing": {
-        "plan": "free",
-        "autopublishEnabled": true
-      },
-      "status": "published",
-      "role": "channel_owner",
-      "moderation": {
-        "status": "published",
-        "reason": null,
-        "reviewedAt": "2026-07-26T09:00:17.286Z"
+        "reviewedAt": "2026-07-26T11:27:23.678Z"
       }
     }
   ]
