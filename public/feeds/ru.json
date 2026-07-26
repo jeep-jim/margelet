@@ -1,7 +1,7 @@
 {
   "countryCode": "ru",
-  "updatedAt": "2026-07-26T14:31:30.619Z",
-  "totalPosts": 4126,
+  "updatedAt": "2026-07-26T17:26:20.678Z",
+  "totalPosts": 4331,
   "chunks": [
     {
       "id": 1,
@@ -211,7 +211,17 @@
     {
       "id": 42,
       "path": "/feeds/ru/42.json",
-      "posts": 26
+      "posts": 100
+    },
+    {
+      "id": 43,
+      "path": "/feeds/ru/43.json",
+      "posts": 100
+    },
+    {
+      "id": 44,
+      "path": "/feeds/ru/44.json",
+      "posts": 31
     }
   ]
 }
